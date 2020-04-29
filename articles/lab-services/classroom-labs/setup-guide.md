@@ -1,6 +1,6 @@
 ---
-title: Gyorsított tantermi laborbeállítási útmutató az Azure Lab Services-hez
-description: Ez az útmutató segít a laborkészítőknek egy tesztkörnyezet-fiók gyors beállításában az iskolájukon belül való használatra.
+title: Gyorsított tantermi tesztkörnyezet telepítési útmutatója Azure Lab Services
+description: Ez az útmutató segít a labor-készítőknek az iskolán belüli használatra szolgáló labor-fiók gyors beállításában.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,125 +14,125 @@ ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
 ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878102"
 ---
-# <a name="classroom-lab-setup-guide"></a>Tantermi laborbeállítási útmutató
+# <a name="classroom-lab-setup-guide"></a>A tanterem Lab telepítési útmutatója
 
-A labor okainak a diákok számára történő közzétételének folyamata akár több órát is igénybe vehet, attól függően, hogy hány virtuális gép (VM) jön létre a laborban. Legalább egy nap, hogy hozzanak létre egy labor, annak érdekében, hogy megfelelően működik, és hogy elegendő idő, hogy tegye közzé a diákok virtuális gépek.
+A laborok tanulók számára történő közzétételének folyamata akár több órát is igénybe vehet, attól függően, hogy hány virtuális gépet szeretne létrehozni a laborban. Engedélyezzen legalább egy napot a tesztkörnyezet beállításához, hogy megfelelően működjön, és hogy elegendő idő legyen a tanulók virtuális gépei közzétételére.
 
-## <a name="understand-the-lab-requirements-of-your-class"></a>Ismerje meg az osztály laborkövetelményeit
+## <a name="understand-the-lab-requirements-of-your-class"></a>Az osztály laboratóriumi követelményeinek megismerése
 
-Mielőtt új labort állít an- t, vegye figyelembe a következő kérdéseket.
+Új Labor létrehozása előtt vegye figyelembe az alábbi kérdéseket.
 
-### <a name="what-software-requirements-does-the-class-have"></a>Milyen szoftverkövetelményekkel rendelkezik az osztály?
+### <a name="what-software-requirements-does-the-class-have"></a>Milyen szoftverek szükségesek az osztályban?
 
-Az osztály tanulási céljai alapján döntse el, hogy melyik operációs rendszert, alkalmazásokat és eszközöket kell telepíteni a labor virtuális gépein. A tesztkörnyezet virtuális gépeinek beállításához három lehetőség közül választhat:
+Az osztály tanulási céljai alapján döntse el, hogy mely operációs rendszereket, alkalmazásokat és eszközöket kell telepíteni a labor virtuális gépekre. A labor virtuális gépek beállításához három lehetőség közül választhat:
 
-- **Azure Piactér-lemezkép használata:** Az Azure Marketplace több száz lemezképet biztosít, amelyeket labor létrehozásakor használhat. Egyes osztályok, az egyik ilyen képek már tartalmazmindent, amire szüksége van az osztályban.
+- **Azure Marketplace-rendszerkép használata**: az Azure Marketplace több száz képet biztosít, amelyeket a labor létrehozásakor használhat. Egyes osztályok esetében előfordulhat, hogy az egyik rendszerkép már tartalmaz mindent, amire szüksége van az osztályhoz.
 
-- **Hozzon létre egy új egyéni lemezképet:** Létrehozhatja saját egyéni lemezképét egy Azure Marketplace-lemezkép kiindulási pontként való használatával, és további szoftverek telepítésével és konfigurációs módosításokkal testre szabhatja.
+- **Új egyéni rendszerkép létrehozása**: létrehozhat egy saját egyéni rendszerképet az Azure Marketplace-rendszerkép kiindulási pontként való használatával, és testre szabhatja azt a további szoftverek telepítésével és a konfiguráció módosításával.
 
-- **Meglévő egyéni lemezkép használata:** Újra felhasználhatja a korábban létrehozott, illetve az iskola más rendszergazdái vagy oktatói által létrehozott egyéni lemezképeket. Ehhez a rendszergazdáknak konfigurálniuk kell egy megosztott képgalériát, amely az egyéni lemezképek mentéséhez szükséges tárház.
-
-> [!NOTE]
-> A rendszergazdák felelősek az Azure Marketplace-lemezképek és egyéni lemezképek engedélyezéséért, hogy használhassa őket. Egyeztesse az informatikai részleggel annak érdekében, hogy a szükséges képek engedélyezve legyenek. Egyéni létrehozott képek automatikusan engedélyezve vannak a saját laborokban való használatra.
-
-### <a name="what-hardware-requirements-does-the-class-have"></a>Milyen hardverkövetelményekkel rendelkezik az osztály?
-
-A számítási méretek széles skálája közül választhat:
-
-- Egymásba ágyazott virtualizációs méretek, így hozzáférést biztosíthat a diákok egy virtuális gép, amely képes több beágyazott virtuális gépek üzemeltetésére. Ezt a számítási méretet például hálózati tanfolyamokhoz használhatja.
-
-- GPU-méretek, hogy a diákok számítógép-igényes típusú alkalmazásokat használhassanak. Ez a választás például megfelelő lehet a mesterséges intelligencia és a gépi tanulás számára.
-
-Tekintse meg a [virtuális gép méretezési](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing) útmutatóját az elérhető számítási méretek teljes listájának megtekintéséhez.
+- **Meglévő egyéni rendszerkép használata**: felhasználhatja a korábban létrehozott meglévő egyéni lemezképeket, illetve azokat, amelyeket más rendszergazdák vagy oktatók hoztak létre az iskolában. Ehhez a rendszergazdának megosztott képtárat kell konfigurálnia, amely az egyéni lemezképek mentésének tárháza.
 
 > [!NOTE]
-> A labor régiójától függően előfordulhat, hogy kevesebb számítási méret érhető el, mivel ez régiónként változik. Általában válassza ki a legkisebb számítási méretet, amely a legközelebb áll az igényeinek. Az Azure Lab Services segítségével szükség esetén szükség esetén szükség esetén egy másik számítási kapacitással rendelkező új labort is beállíthat.
+> A rendszergazdák felelősek az Azure Marketplace-lemezképek és az Egyéni rendszerképek engedélyezéséhez, hogy azok használhatók legyenek. Az informatikai részleg koordinálásával gondoskodhat arról, hogy a szükséges lemezképek engedélyezve legyenek. A létrehozott egyéni rendszerképek automatikusan engedélyezve lesznek a saját laboratóriumokban való használatra.
 
-### <a name="what-dependencies-does-the-class-have-on-external-azure-or-network-resources"></a>Milyen függőségekkel rendelkezik az osztály külső Azure- vagy hálózati erőforrásoktól?
+### <a name="what-hardware-requirements-does-the-class-have"></a>Milyen hardverkövetelmények vonatkoznak az osztályra?
 
-Ha a tesztkörnyezet virtuális gépei külső erőforrásokat, például adatbázist, fájlmegosztást vagy licencelési kiszolgálót kell használniuk, egyeztessenek a rendszergazdákkal, hogy a tesztkörnyezet hozzáférhessen ezekhez az erőforrásokhoz.
+Számos különböző számítási méret közül választhat:
 
-A virtuális hálózat által *nem* védett Azure-erőforrásokhoz való hozzáféréshez nem kell további konfigurációt keresnie a rendszergazdáknak. Ezeket az erőforrásokat a nyilvános interneten keresztül érheti el.
+- Beágyazott virtualizációs méretek, így hozzáférést biztosíthat a tanulók számára egy olyan virtuális géphez, amely több, beágyazott virtuális gép üzemeltetésére képes. Használhatja például ezt a számítási méretet a hálózatkezelési tanfolyamok esetében.
+
+- GPU-méretek, így a tanulók használhatnak számítógép-igényes típusú alkalmazásokat. Ilyen lehet például a mesterséges intelligencia és a gépi tanulás.
+
+A rendelkezésre álló számítási méretek teljes listájának megtekintéséhez tekintse meg a [virtuális gép méretezési](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing) útmutatóját.
 
 > [!NOTE]
-> Fontolja meg, hogy csökkentheti-e a tesztkörnyezet függőségeit a külső erőforrásoktól azáltal, hogy az erőforrást közvetlenül a virtuális gépre biztosítja. Például, hogy ne kelljen adatokat olvasni egy külső adatbázisból, telepítheti az adatbázist közvetlenül a virtuális gépre.  
+> A labor régiójától függően kevesebb számítási méret érhető el, mivel ez régiónként eltérő lehet. Általában az igényeihez legközelebb eső legkisebb számítási méretet kell kiválasztania. A Azure Lab Services segítségével később is beállíthat egy új labort, ha szükséges, egy másik számítási kapacitással.
 
-### <a name="how-will-costs-be-controlled"></a>Hogyan ellenőrzik a költségeket?
+### <a name="what-dependencies-does-the-class-have-on-external-azure-or-network-resources"></a>Milyen függőségek vannak az osztályban a külső Azure-vagy hálózati erőforrásokon?
 
-A Lab Services használatalapú díjszabási modellt használ, ami azt jelenti, hogy csak a tesztkörnyezet virtuális gépének futtatásáért kell fizetnie. A költségek szabályozásához három lehetőség áll rendelkezésre, amelyeket általában egymással együtt használnak:
+Ha a tesztkörnyezet külső erőforrásokat (például adatbázist, fájlmegosztást vagy licencelési kiszolgálót) kell használnia, egyeztessen a rendszergazdával, és győződjön meg arról, hogy a labor hozzáfér ezekhez az erőforrásokhoz.
 
-- **Ütemezés:** Az ütemezés lehetővé teszi, hogy automatikusan szabályozhatja, hogy a laborok virtuális gépei mikor indulnak el és állnak le.
-- **Kvóta:** A kvóta azt szabályozza, hogy a diákok hány órát férhetnek hozzá a virtuális géphez az ütemezett órákon kívül. Ha a kvóta elérése közben egy diák használja, a virtuális gép automatikusan leáll. A tanuló csak akkor tudja újraindítani a virtuális gép újraindítását, ha a kvóta megnő.
-- **Automatikus leállítás**: Ha engedélyezve van, az automatikus leállítás idoben a Windows virtuális gépek automatikusan leállnak egy bizonyos idő elteltével, miután egy diák leválasztotta a Távoli asztali protokoll (RDP) munkamenetét. Alapértelmezés szerint ez a beállítás le van tiltva.  
+A virtuális hálózat által *nem* védett Azure-erőforrásokhoz való hozzáféréshez a rendszergazdának nem kell további konfigurációkat keresnie. Ezeket az erőforrásokat a nyilvános interneten keresztül érheti el.
+
+> [!NOTE]
+> Érdemes megfontolni, hogy az erőforrást közvetlenül a virtuális gépen biztosíthatja-e, ha csökkenti a labor függőségeit a külső erőforrásokra. Ha például el szeretné távolítani az adatok külső adatbázisból való beolvasásának szükségességét, az adatbázist közvetlenül a virtuális gépre is telepítheti.  
+
+### <a name="how-will-costs-be-controlled"></a>Hogyan történik a költségek szabályozása?
+
+A labor Services az utólagos elszámolású díjszabási modellt használja, ami azt jelenti, hogy csak akkor kell fizetnie, amikor egy Tesztkörnyezet virtuális gépe fut. A költségek szabályozása érdekében három lehetőség közül választhat, amelyek általában egymással együtt használatosak:
+
+- **Schedule**: az ütemterv lehetővé teszi, hogy automatikusan vezérelje a laborok virtuális gépei indításának és leállításának idejét.
+- **Kvóta**: a kvóta azt határozza meg, hogy a tanulók hány óráig férhetnek hozzá egy virtuális géphez az ütemezett órákon kívül. Ha a kvóta eléri a tanulók általi használatot, a rendszer automatikusan leállítja a virtuális gépet. A tanuló nem tudja újraindítani a virtuális gépet, ha a kvóta megnövekszik.
+- **Automatikus leállítás**: Ha engedélyezve van, az automatikus leállítási beállítás azt eredményezi, hogy a Windows rendszerű virtuális gépek bizonyos időtartam után automatikusan leállnak, miután egy tanuló leválasztott egy RDP protokoll (RDP) munkamenetből. Alapértelmezés szerint ez a beállítás le van tiltva.  
 
     > [!NOTE]
-    > Ez a beállítás jelenleg csak a Windows rendszerben létezik.
+    > Ez a beállítás jelenleg csak a Windows esetében létezik.
 
-### <a name="how-will-students-save-their-work"></a>Hogyan fogják a tanulók megmenteni a munkájukat?
+### <a name="how-will-students-save-their-work"></a>Hogyan fogja megmenteni a tanulókat a munkájukat?
 
-A diákok mindegyike saját virtuális gép, amely hozzá van rendelve a labor élettartama. Választhatnak, hogy:
+A tanulók mindegyike saját virtuális gépet rendelt hozzájuk, amelyet a labor élettartama során rendeltek hozzájuk. Választhatnak:
 
 - Mentse közvetlenül a virtuális gépre.
-- Mentés külső helyre, például a OneDrive-ra vagy a GitHubra.
+- Mentse külső helyre, például OneDrive vagy GitHubra.
 
-Lehetőség van a OneDrive automatikus konfigurálására a diákok számára a laborban lévő virtuális gépeken.
+A OneDrive automatikusan konfigurálható a tanulók számára a laboratóriumi virtuális gépeken.
 
 > [!NOTE]
-> Annak érdekében, hogy a tanulók továbbra is hozzáférhessenek a mentett munkájukhoz a laboron kívül, és miután az óra véget ért, azt javasoljuk, hogy a tanulók mentsék a munkájukat egy külső tárházba.
+> Annak biztosítása érdekében, hogy a tanulók továbbra is hozzáférjenek a mentett munkához a laboron kívül, és az osztály befejezése után azt javasoljuk, hogy a tanulók a munkájukat egy külső adattárba mentse.
 
-### <a name="how-will-students-connect-to-their-vm"></a>Hogyan fognak a diákok csatlakozni a virtuális gépükhöz?
+### <a name="how-will-students-connect-to-their-vm"></a>Hogyan csatlakozhatnak a tanulók a virtuális géphez?
 
-RdP–Windows virtuális gépek esetén azt javasoljuk, hogy a diákok a [Microsoft Remote Desktop ügyfelet](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)használják. A Távoli asztali ügyfél támogatja a Mac, a Chromebookok és a Windows rendszert.
+A Windows rendszerű virtuális gépekhez való RDP esetén javasoljuk, hogy a tanulók a [Microsoft távoli asztal ügyfelet](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)használják. Távoli asztal-ügyfél támogatja a Mac, a Chromebook és a Windows rendszert.
 
-Linuxos virtuális gépek esetén a diákok ssh-t vagy RDP-t használhatnak. Ahhoz, hogy a diákok rdp használatával csatlakozzanak, telepítenie és konfigurálnia kell a szükséges RDP- és grafikus felhasználói felület-csomagokat.
+Linux rendszerű virtuális gépek esetén a tanulók SSH-vagy RDP-t is használhatnak. Ahhoz, hogy a tanulók RDP-kapcsolaton keresztül csatlakozhassanak, telepítenie és konfigurálnia kell a szükséges RDP-és GUI-csomagokat.
 
 ## <a name="set-up-your-lab"></a>Tesztkörnyezet beállítása
 
-Miután megértette az osztály laborjának követelményeit, készen áll a beállításra. A labor beállításához kövesse az ebben a szakaszban található hivatkozásokat.
+Miután megértette az osztály laborjának követelményeit, készen áll a beállításra. Az ebben a szakaszban található hivatkozásokat követve megtudhatja, hogyan állíthatja be a labort.
 
-1. **Hozzon létre egy labort.** Az utasításokat az [osztályterem-labor létrehozásáról szóló oktatói oktatóanyagban](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) találja.
+1. **Hozzon létre egy labort.** További útmutatásért tekintse meg a [tantermi labor létrehozásával](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) kapcsolatos útmutatót.
 
     > [!NOTE]
-    > Ha az osztály egymásba ágyazott virtualizációt igényel, olvassa el a [beágyazott virtualizálás engedélyezésének lépéseit.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)
+    > Ha az osztályban beágyazott virtualizálás szükséges, tekintse meg a [beágyazott virtualizálás engedélyezése](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)című témakör lépéseit.
 
-1. **Testre szabhatja a lemezképeket, és közzéteheti a tesztkörnyezetben futó virtuális gépeket.** Csatlakozzon egy speciális virtuális gép, a sablon virtuális gép nevű. Lásd az alábbi útmutatók lépéseit:
-    - [Sablon létrehozása és kezelése virtuális gép](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
+1. **Képek testreszabása és laboratóriumi virtuális gépek közzététele.** Kapcsolódjon egy olyan speciális virtuális géphez, amelyet a sablon virtuális gépe nevez. Tekintse meg a következő útmutatók lépéseit:
+    - [Sablonos virtuális gép létrehozása és kezelése](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
     - [Megosztott rendszerkép-katalógus használata](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-shared-image-gallery)
 
     > [!NOTE]
-    > Ha Windows rendszert használ, a [Windows sablon virtuális gépének előkészítésére](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template)vonatkozó utasításokat is látnia kell. Ezek az utasítások a OneDrive és az Office beállításának lépéseit tartalmazzák a diákok számára.
+    > Ha Windows rendszert használ, a [Windows-sablon virtuális gép előkészítésének](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template)utasításait is látnia kell. Ezek az utasítások a tanulók számára a OneDrive és az Office használatának beállításához szükséges lépéseket tartalmazzák.
 
-1. **Virtuálisgép-készlet és kapacitás kezelése.** Könnyedén skálázhatja fel- vagy le a virtuális gép kapacitását, az osztály által szükséges. Ne feledje, hogy a virtuális gép kapacitásának növelése több órát is igénybe vehet, mert ez magában foglalja az új virtuális gépek beállítását. Tekintse meg a [virtuálisgép-készlet beállításának és kezelésének lépéseit.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)
+1. **VIRTUÁLIS gépek készletének és kapacitásának kezelése.** A virtuálisgép-kapacitást egyszerűen, az osztálya igény szerint méretezheti. Ne feledje, hogy a virtuális gép kapacitása több óráig is eltarthat, mivel ez új virtuális gépek beállítását foglalja magában. Tekintse meg a virtuálisgép- [Készlet beállítása és kezelése](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)című témakör lépéseit.
 
-1. **Laborfelhasználók hozzáadása és kezelése.** Ha felhasználókat szeretne hozzáadni a tesztkörnyezethez, olvassa el az alábbi oktatóanyagok lépéseit:
-   - [Felhasználók hozzáadása a tesztkörnyezethez](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
+1. **Labor-felhasználók hozzáadása és kezelése.** Ha felhasználókat szeretne felvenni a laborba, tekintse át az alábbi oktatóanyagok lépéseit:
+   - [Felhasználók hozzáadása a laborhoz](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
    - [Meghívók küldése a felhasználóknak](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
 
-    A diákok által használható fiókok típusáról a [Diákfiókok című témakörben](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts)talál további információt.
+    További információ a tanulók által használható fiókok típusairól: Student- [fiókok](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts).
   
-1. **Költségvezérlők beállítása.** A tesztkörnyezet költségeinek szabályozásához állítsa be az ütemezéseket, a kvótákat és az automatikus leállítást. Lásd az alábbi oktatóanyagokat:
+1. **A Cost Controls beállítása.** A labor költségeinek szabályozásához állítsa be az ütemterveket, a kvótákat és az automatikus leállítást. Lásd az alábbi oktatóanyagokat:
 
-   - [Ütemezés beállítása](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
+   - [Ütemterv beállítása](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
         > [!NOTE]
-        > A telepített operációs rendszer típusától függően a virtuális gép indítása több percet is igénybe vehet. Annak érdekében, hogy egy tesztkörnyezet virtuális gép készen áll az ütemezett órákban, azt javasoljuk, hogy indítsa el a virtuális gépek 30 perccel előre.
+        > A telepített operációs rendszer típusától függően előfordulhat, hogy a virtuális gép elindításához több percet is igénybe vehet. Annak biztosítása érdekében, hogy a labor virtuális gépek az ütemezett órákon belül használatra készek legyenek, javasoljuk, hogy 30 perccel előre indítsa el a virtuális gépeket.
 
-   - [Kvóták beállítása a felhasználók számára,](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) és [további kvóta beállítása egy adott felhasználóhoz](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
+   - [Kvóták beállítása a felhasználók](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) számára, és [további kvóta beállítása egy adott felhasználó számára](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [Automatikus leállítás engedélyezése a kapcsolat bontásakor](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > Ütemezések, kvóták és automatikus leállítás nem vonatkozik a sablon virtuális gép. Ennek eredményeképpen győződjön meg arról, hogy állítsa le a sablon virtuális gép, ha nem használja. Ellenkező esetben továbbra is költségek merülnek fel. Is, alapértelmezés szerint, amikor létrehoz egy tesztkörnyezet, a sablon virtuális gép automatikusan elindul. Győződjön meg arról, hogy azonnal befejezte a tesztkörnyezet beállítását, és állítsa le a sablon virtuális gép leállítását.
+        > Az ütemtervek, a kvóták és az automatikus leállítás nem vonatkozik a sablon virtuális gépre. Ennek eredményeképpen gondoskodnia kell arról, hogy a sablon virtuális gépe le legyen állítva, ha nincs használatban. Ellenkező esetben továbbra is költségek merülnek fel. Emellett a tesztkörnyezet létrehozásakor alapértelmezés szerint automatikusan elindul a sablon virtuális gépe. Győződjön meg arról, hogy azonnal befejezi a tesztkörnyezet beállítását, és állítsa le a sablon virtuális gépet.
 
-1. **Használja az irányítópultot.** További információt [a labor irányítópultjának használata című témakörben talál.](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)
+1. **Használja az irányítópultot.** Útmutatásért lásd: [a tesztkörnyezet irányítópultjának használata](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 
     > [!NOTE]
-    > Az irányítópulton látható becsült költség a tesztkörnyezet tanulói számára várható maximális költség. Például a diákok *nem* számítanak fel díjat a fel nem használt kvótaórákért. A becsült költségek *nem* tükrözik a sablon virtuális gép vagy a megosztott képtár használatáért felhozott díjakat.
+    > Az irányítópulton látható becsült költségek azt a maximális díjat jelentik, amelyet a tanulók a laborban használhatnak. Például nem számítunk fel díjat a tanulók által fel *nem* használt időtartamokra. A becsült költségek *nem* tükrözik a sablon virtuális gépe vagy a megosztott képkatalógus használatával járó díjakat.
 
 ## <a name="next-steps"></a>További lépések
 

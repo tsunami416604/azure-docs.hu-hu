@@ -1,7 +1,7 @@
 ---
-title: Modellteljesítmény értékelése
+title: Modell teljesítményének kiértékelése
 titleSuffix: ML Studio (classic) - Azure
-description: Ismerje meg, hogyan értékelheti ki a modell teljesítményét az Azure Machine Learning Studio (klasszikus) és a feladathoz elérhető metrikák.
+description: Megtudhatja, hogyan értékelheti ki a modell teljesítményét a Azure Machine Learning Studio (klasszikus) és a feladathoz elérhető metrikák alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,171 +11,171 @@ ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218145"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>A modellteljesítmény kiértékelése az Azure Machine Learning Studio-ban (klasszikus)
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Ez a cikk bemutatja, hogyan értékelheti ki egy modell teljesítményét az Azure Machine Learning Studio (klasszikus) és rövid magyarázatot nyújt a feladathoz rendelkezésre álló metrikák. Három közös felügyelt tanulási forgatókönyv kerül bemutatásra: 
+Ez a cikk bemutatja, hogyan értékelheti ki a modell teljesítményét Azure Machine Learning Studio (klasszikus), és rövid magyarázatot ad a feladathoz elérhető mérőszámokról. Három közös felügyelt tanulási forgatókönyv jelenik meg: 
 
-* Regresszió
-* bináris osztályozás 
-* többosztályos osztályozás
+* regressziós
+* bináris besorolás 
+* többosztályos besorolás
 
 
 
-Egy modell teljesítményének kiértékelése az adatelemzési folyamat egyik alapvető szakasza. Azt jelzi, hogy egy adatkészlet pontozási (előrejelzések) egy betanított modell sikeres. 
+A modell teljesítményének kiértékelése az adatelemzési folyamat egyik alapvető fázisa. Azt jelzi, hogy egy adatkészlethez tartozó pontozási (előrejelzések) hogyan lett kiképezve egy betanított modellből. 
 
-Az Azure Machine Learning Studio (klasszikus) két fő gépi tanulási moduljával támogatja a modellkiértékelést: [a Modell kiértékelése][evaluate-model] és [a keresztérvényesítési modell.][cross-validate-model] Ezek a modulok lehetővé teszik, hogy a modell hogyan teljesít a gépi tanulásban és a statisztikákban gyakran használt metrikák tekintetében.
+A Azure Machine Learning Studio (klasszikus) a modell kiértékelését két fő gépi tanulási modulon keresztül támogatja: a [modell kiértékelése][evaluate-model] és a [több-érvényesítő modell][cross-validate-model]vizsgálata. Ezek a modulok lehetővé teszik, hogy megtekintse, hogyan működik a modell a gépi tanulásban és a statisztikában leggyakrabban használt mérőszámok száma alapján.
 
-## <a name="evaluation-vs-cross-validation"></a>Értékelés és keresztérvényesítés
-Az értékelés és a keresztérvényesítés a modell teljesítményének mérésére szolgál. Mindkettő olyan értékelési mutatókat hoz létre, amelyeket megvizsgálhat vagy összehasonlíthat más modellekével.
+## <a name="evaluation-vs-cross-validation"></a>Értékelés és kereszt-ellenőrzés
+A kiértékelés és a több ellenőrzés a modell teljesítményének mérésére szolgáló szabványos módszer. Mindkettő olyan értékelési mérőszámokat is létrehoz, amelyeket megvizsgálhat vagy összehasonlíthat más modellektől.
 
-[A Model kiértékelése][evaluate-model] egy pontozott adatkészletet vár bemenetként (vagy kettőt arra az esetre, ha két különböző modell teljesítményét szeretné összehasonlítani). Ezért be kell tanítania a modellt a [Betanítási modell][train-model] modul használatával, és előrejelzéseket kell készítenie néhány adatkészleten a [Score Model][score-model] modul használatával, mielőtt kiértékelheti az eredményeket. A kiértékelés a pontozott címkéken/valószínűségeken és a valódi címkéken alapul, amelyek mindegyike a [Score Model][score-model] modul által kimenet.
+A [modell kiértékelése][evaluate-model] egy pontozásos adatkészletet vár bemenetként (vagy két esetben, ha két különböző modell teljesítményét szeretné összehasonlítani). Ezért az eredmények kiértékelése előtt be kell tanítania a modellt a betanítási [modell][train-model] modullal, és néhány adatkészletre vonatkozó előrejelzéseket kell készítenie a [pontszám modell][score-model] modul használatával. A kiértékelés a pontszámok által megjelenített címkéken/valószínűségeken, valamint az igaz címkéken alapul, amelyek mindegyike a [pontszám modell][score-model] modul kimenete.
 
-Azt is megteheti, keresztérvényesítés végrehajtásához számos vonat-score-kiértékelése műveletek (10-szeres) automatikusan a bemeneti adatok különböző részhalmazain. A bemeneti adatok 10 részre vannak felosztva, ahol az egyik tesztelésre van fenntartva, a másik 9 pedig a betanításra. Ez a folyamat ismétlődik 10-szer, és a kiértékelési mutatók átlaga. Ez segít annak meghatározásában, hogy egy modell mennyire általánosítaná az új adatkészleteket. A [kereszt-validate modell][cross-validate-model] modul vesz egy képzetlen modell és néhány címkézett adatkészlet et, és az átlagos eredmények mellett a 10-szeresek kiértékelési eredményeit adja ki.
+Azt is megteheti, hogy több érvényesítést is használhat, hogy a bemeneti adatok különböző részhalmazán automatikusan elvégezze a betanítási pontszámok kiértékelésének műveleteit (10 hajtogatás). A bemeneti adatok 10 részre oszlanak, ahol az egyik a teszteléshez van lefoglalva, a másik 9 pedig a betanításhoz. Ez a folyamat 10 alkalommal ismétlődik, és az értékelési mérőszámok átlaga. Ez segít annak meghatározásában, hogy egy modell milyen jól általánosítható az új adatkészletekhez. A [modell][cross-validate-model] átértékelése modul egy nem betanított modellt és néhány címkézett adatkészletet is végrehajt, és az átlagos eredmények mellett kiértékeli az egyes 10 hajtogatások kiértékelésének eredményét.
 
-A következő szakaszokban egyszerű regressziós és besorolási modelleket hozunk létre, és kiértékeljük azok teljesítményét a [Modell kiértékelése][evaluate-model] és a [Kereszt-érvényesítési modell][cross-validate-model] modulok használatával.
+A következő részekben egyszerű regressziós és besorolási modelleket hozunk létre, és kiértékeljük a teljesítményüket a [kiértékelési modell][evaluate-model] és a [modell-ellenőrzési][cross-validate-model] modulok használatával.
 
 ## <a name="evaluating-a-regression-model"></a>Regressziós modell kiértékelése
-Tegyük fel, hogy meg akarjuk jósolni egy autó árát olyan funkciókkal, mint a méretek, a lóerő, a motor specifikációi és így tovább. Ez egy tipikus regressziós probléma, ahol a célváltozó (*ár*) egy folyamatos numerikus érték. Elfér egy lineáris regressziós modell, amely egy bizonyos autó jellemzőértékei miatt meg tudja jósolni az autó árát. Ez a regressziós modell használható pontszám ugyanazt az adatkészletet, amelybe betanított. Amint megvannak az előre jelzett autóárak, értékelhetjük a modell teljesítményét, ha megnézzük, hogy az előrejelzések átlagosan mennyire térnek el a tényleges áraktól. Ennek illusztrálására a Machine Learning Studio (klasszikus) **Mentett adatkészletek** szakaszában elérhető Automobile *áradat-adatkészleteket (Raw) használjuk.*
+Feltételezzük, hogy az autó árát a méretek, a lóerő, a motor specs és egyéb funkciók használatával szeretnénk előre jelezni. Ez egy tipikus regressziós probléma, amelyben a célként megadott változó (*Ár*) folytonos számérték. Egy lineáris regressziós modellt is használhatunk, amely egy adott autó funkciójának értéke alapján előre jelezheti az autó árát. Ez a regressziós modell a betanított adatkészletek kiértékelésére használható. Az előre jelzett személygépkocsik díjszabásával kiértékeljük a modell teljesítményét, és megvizsgáljuk, hogy az előrejelzések mekkora mértékben térnek el a tényleges árak átlagával. Ennek szemléltetése érdekében a Machine Learning Studio (klasszikus) **tárolt adatkészletek** szakaszában elérhető *Automobile Price (nyers) adatkészletet* használjuk.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Adja hozzá a következő modulokat a munkaterülethez az Azure Machine Learning Studio -ban (klasszikus):
+Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
-* Gépjármű áradatai (Nyers)
+* Az autók árát (nyers)
 * [Lineáris regresszió][linear-regression]
-* [Vonat modell][train-model]
-* [Pontszám modell][score-model]
-* [Modell kiértékelése][evaluate-model]
+* [Modell betanítása][train-model]
+* [Relevanciamodell][score-model]
+* [Modell értékelése][evaluate-model]
 
-Csatlakoztassa a portokat az *1.* [Train Model][train-model]
+Kapcsolja össze a portokat az 1. ábrán látható módon, és állítsa a [Train Model][train-model] modul Label (címke) oszlopát a *Price*értékre.
 
 ![Regressziós modell kiértékelése](./media/evaluate-model-performance/1.png)
 
 1. ábra Regressziós modell kiértékelése.
 
-### <a name="inspecting-the-evaluation-results"></a>Az értékelési eredmények vizsgálata
-A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Visualize* lehetőséget a kiértékelési eredmények megtekintéséhez. A regressziós modellekhez rendelkezésre álló értékelési mutatók a következők: *átlagos abszolút hiba*, legfelső szintű átlagos abszolút *hiba*, relatív *abszolút hiba*, *relatív négyzethiba*és *meghatározási együttható*.
+### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
+A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Megjelenítés* elemet a kiértékelés eredményeinek megtekintéséhez. A regressziós modellekhez elérhető értékelési mérőszámok a következők: *abszolút hiba*, *gyökér középérték abszolút hiba*, *relatív abszolút hiba*, *relatív négyzetes hiba*és a *meghatározási együttható*.
 
-A "hiba" kifejezés itt az előre jelzett érték és a valós érték közötti különbséget jelöli. Ennek a különbségnek az abszolút értékét vagy négyzetét általában úgy számítják ki, hogy az összes példányban a hiba teljes nagyságát rögzítsék, mivel az előre jelzett és a valós érték közötti különbség bizonyos esetekben negatív lehet. A hibametrikák a regressziós modell prediktív teljesítményét mérik az előrejelzések nek a valós értékektől való átlagos eltérése alapján. Az alacsonyabb hibaértékek azt jelentik, hogy a modell pontosabb az előrejelzések készítésében. A nulla általános hibamérő azt jelenti, hogy a modell tökéletesen illeszkedik az adatokhoz.
+A "hiba" kifejezés az előre jelzett érték és a True érték közötti különbséget jelenti. A különbség abszolút értékét vagy négyzetét általában úgy számítjuk ki, hogy az összes példányban a hibák teljes mértékét rögzítik, mivel az előre jelzett és a igaz érték közötti különbség bizonyos esetekben negatív lehet. A hiba mérőszámai egy regressziós modell prediktív teljesítményét mérik a valódi értékekkel kapcsolatos jóslatok középértéke alapján. Az alacsonyabb hibaérték azt jelenti, hogy a modell pontosabb az előrejelzések készítése során. A nulla általános hiba azt jelenti, hogy a modell tökéletesen illeszkedik az adatokhoz.
 
-A meghatározási együttható, amelyet R négyzetnek is neveznek, szintén szabványos módszer annak mérésére, hogy a modell mennyire illeszkedik az adatokhoz. Úgy értelmezhető, mint a modell által magyarázott variációs arány. Ebben az esetben a nagyobb arány jobb, ha az 1 tökéletes illeszkedést jelez.
+A meghatározási együttható, amely az R Squared néven is ismert, a szabványos módszer a modell megfelelő működésének mérésére is. Ezt a modellt a modell által kifejtett variációk arányában lehet értelmezni. Ebben az esetben nagyobb a jobb arány, ahol az 1 a tökéletes illeszkedést jelzi.
 
-![Lineáris regressziós kiértékelési mutatók](./media/evaluate-model-performance/2.png)
+![Lineáris regressziós értékelési mérőszámok](./media/evaluate-model-performance/2.png)
 
-2. ábra Lineáris regressziós kiértékelési mutatók.
+2. ábra Lineáris regressziós értékelési mérőszámok.
 
-### <a name="using-cross-validation"></a>Keresztellenőrzés használata
-Mint korábban említettük, a [Kereszt-érvényesítési modell][cross-validate-model] modul automatikusan végezhet ismételt betanítás, pontozás és értékelések. Ebben az esetben mindössze egy adatkészletre, egy képzetlen modellre és egy [keresztérvényesítési modell][cross-validate-model] modulra van szüksége (lásd az alábbi ábrát). Be kell állítania a címke oszlop *ára* a [Kereszt-modell modul][cross-validate-model] tulajdonságai.
+### <a name="using-cross-validation"></a>Kereszt-ellenőrzés használata
+Ahogy azt korábban említettük, az ismételt képzés, pontozás és értékelések automatikusan elvégezhető a [modell][cross-validate-model] átértékelése modul használatával. Ebben az esetben mindössze egy adatkészletet, egy nem betanított modellt és egy [modellen][cross-validate-model] alapuló modellt tartalmazó modult kell létrehoznia (lásd az alábbi ábrát). Be kell állítania a Label (címke) *oszlopot a* [modell kereszt-érvényesítő][cross-validate-model] moduljának tulajdonságai között.
 
-![Regressziós modell keresztérvényesítése](./media/evaluate-model-performance/3.png)
+![Regressziós modell több ellenőrzése](./media/evaluate-model-performance/3.png)
 
-3. ábra Regressziós modell keresztérvényesítése.
+3. ábra Regressziós modell határokon átnyúló ellenőrzése.
 
-A kísérlet futtatása után a kiértékelési eredményeket a [Kereszt-Modell][cross-validate-model] modul jobb kimeneti portjára kattintva vizsgálhatja meg. Ez részletes képet ad az egyes iterációk (hajtás) metrikáiról és az egyes mutatók átlagértékéről (4. ábra).
+A kísérlet futtatása után megtekintheti a kiértékelés eredményeit a [modell][cross-validate-model] átállítása modul megfelelő kimeneti portjára kattintva. Ez részletes áttekintést nyújt az egyes iterációk (fold) metrikáinak és az egyes mérőszámok átlagos eredményeiről (4. ábra).
 
-![Regressziós modell keresztérvényesítési eredményei](./media/evaluate-model-performance/4.png)
+![Regressziós modell több ellenőrzési eredményei](./media/evaluate-model-performance/4.png)
 
-4. ábra Regressziós modell keresztérvényesítési eredményei.
+4. ábra Egy regressziós modell több ellenőrzési eredménye.
 
-## <a name="evaluating-a-binary-classification-model"></a>Bináris osztályozási modell kiértékelése
-Bináris besorolási forgatókönyv esetén a célváltozónak csak két lehetséges kimenetele van: {0, 1} vagy {false, true}, {negative, positive}. Tegyük fel, hogy a felnőtt alkalmazottak adatkészletét kapja néhány demográfiai és foglalkoztatási változóval, és meg kell adnia a jövedelmi szint előrejelzését, egy bináris változót, amelynek értéke {"<=50 K", ">50 K"}. Más szóval a negatív osztály azokat a munkavállalókat jelöli, akik évente legfeljebb 50 K-t, a pozitív osztály pedig az összes többi alkalmazottat jelöli. A regressziós forgatókönyvhöz, mi is betanítunk egy modellt, néhány adatot pontolunk, és kiértékeljük az eredményeket. A fő különbség itt a metrikák azure Machine Learning Studio (klasszikus) számítási és kimeneti metrikák kiválasztása. A bevételi szint előrejelzési forgatókönyvének szemléltetéséhez a [felnőtt](https://archive.ics.uci.edu/ml/datasets/Adult) adatkészletet használjuk egy Studio (klasszikus) kísérlet létrehozásához, és kiértékeljük egy kétosztályos logisztikai regressziós modell, egy általánosan használt bináris osztályozó teljesítményét.
+## <a name="evaluating-a-binary-classification-model"></a>Bináris besorolási modell kiértékelése
+Bináris besorolási forgatókönyv esetén a célként megadott változónak csak két lehetséges eredménye van, például: {0, 1} vagy {FALSE, true}, {negatív, pozitív}. Tegyük fel, hogy a felnőtt alkalmazottak adatkészlete bizonyos demográfiai és foglalkoztatási változókkal rendelkezik, és a rendszer megkéri, hogy Jósolja meg a bevételi szintet, a {"<= 50 K", ">50 K"} értékkel rendelkező bináris változót. Ez azt jelenti, hogy a negatív osztály a 50 K/év alatti vagy azzal egyenlő alkalmazottakat jelöli, a pozitív osztály pedig az összes többi alkalmazottat jelképezi. A regressziós forgatókönyvhöz hasonlóan a modell betanítása, az egyes adatmennyiségek kiértékelése és az eredmények értékelése is megtörténik. A fő különbség itt a metrikák Azure Machine Learning Studio (klasszikus) számítások és kimenetek kiválasztása. A bevételi szint előrejelzési forgatókönyvének szemléltetéséhez a [felnőtt](https://archive.ics.uci.edu/ml/datasets/Adult) adatkészletet használjuk a Studio (klasszikus) kísérlet létrehozásához és a kétosztályos logisztikai regressziós modell teljesítményének kiértékeléséhez, amely egy gyakran használt bináris osztályozó.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Adja hozzá a következő modulokat a munkaterülethez az Azure Machine Learning Studio -ban (klasszikus):
+Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
-* Felnőtt census income bináris osztályozási adatkészlet
+* Felnőtt népszámlálás jövedelme bináris besorolási adatkészlet
 * [Kétosztályos logisztikai regresszió][two-class-logistic-regression]
-* [Vonat modell][train-model]
-* [Pontszám modell][score-model]
-* [Modell kiértékelése][evaluate-model]
+* [Modell betanítása][train-model]
+* [Relevanciamodell][score-model]
+* [Modell értékelése][evaluate-model]
 
-Csatlakoztassa a portokat az *5.* [Train Model][train-model]
+Kösse össze a portokat az 5. ábrán látható módon, és állítsa a [Train Model][train-model] modul Label (címke) oszlopát a *bevétel*értékre.
 
-![Bináris osztályozási modell kiértékelése](./media/evaluate-model-performance/5.png)
+![Bináris besorolási modell kiértékelése](./media/evaluate-model-performance/5.png)
 
-5. ábra Bináris osztályozási modell kiértékelése.
+5. ábra Bináris besorolási modell kiértékelése.
 
-### <a name="inspecting-the-evaluation-results"></a>Az értékelési eredmények vizsgálata
-A kísérlet futtatása után kattintson a [Modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Visualize* lehetőséget a kiértékelési eredmények megtekintéséhez (7. ábra). A bináris osztályozási modellekhez rendelkezésre álló értékelési mutatók a következők: *Pontosság*, *Pontosság*, *Visszahívás*, *F1 pontszám*és *AUC*. Ezenkívül a modul egy tévesztési mátrixot ad ki, amely a valódi pozitív, hamis negatív, hamis pozitív és valódi negatívok számát, valamint a *ROC,* *a Precision/Recall*és a *Lift* görbék számát mutatja.
+### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
+A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Megjelenítés* elemet a kiértékelés eredményeinek megtekintéséhez (7. ábra). A bináris besorolású modellekhez elérhető értékelési mérőszámok a következők: *pontosság*, *pontosság*, *visszahívás*, *F1 pontszám*és *AUC*. Emellett a modul egy zavart mátrixot jelenít meg, amely a valódi pozitív, a hamis negatív, a hamis pozitív és az igaz negatív érték, valamint a *Roc*, a *pontosság/visszahívás*és a *lift* görbék számát mutatja.
 
-A pontosság egyszerűen a helyesen osztályozott példányok aránya. Ez általában az első mérőszám, amelyet az osztályozó kiértékelésekor megvizsgál. Ha azonban a tesztadatok kiegyensúlyozatlanok (ahol a legtöbb példány az egyik osztályhoz tartozik), vagy ha jobban érdekli valamelyik osztály teljesítménye, a pontosság nem igazán rögzíti az osztályozó hatékonyságát. A jövedelmi szint besorolási forgatókönyv, tegyük fel, hogy teszteli néhány adatot, ahol 99%-a példányok képviselik az emberek, akik kevesebbet keresnek, mint 50K évente. 0,99-es pontosság érhető el a "<=50K" osztály előrejelzésével az összes példányra vonatkozóan. Az osztályozó ebben az esetben úgy tűnik, hogy jó munkát végez összességében, de a valóságban, nem osztályozza a magas jövedelmű egyének (a 1%) Helyesen.
+A pontosság egyszerűen a helyesen besorolt példányok aránya. Az osztályozó kiértékelése során általában az első mérőszámot kell megtekinteni. Ha azonban a teszt adatai kiegyensúlyozatlan (ahol a példányok többsége az egyik osztályhoz tartozik), vagy ha az egyik osztály teljesítményére kíváncsi, a pontosság nem igazán rögzíti az osztályozók hatékonyságát. A bevételi szint besorolási forgatókönyve feltételezi, hogy a példányok 99%-ában olyan személyeket vizsgál, akik évente kevesebb, mint 50 000-et keresnek. 0,99 pontosságot lehet elérni az összes példány "<= 50K" osztályának előrejelzésével. Az osztályozás ebben az esetben úgy tűnik, hogy összességében jó munkát végez, de a valóságban nem tudja osztályozni a magas jövedelmű személyeket (1%) helyesen.
 
-Ebből az okból hasznos, hogy további metrikák, amelyek rögzítik az értékelés konkrétabb szempontjait. Mielőtt az ilyen metrikák részleteit, fontos, hogy megértsék a zavart mátrix egy bináris osztályozási kiértékelés. A képzési készlet osztálycímkéi csak két lehetséges értéket vehetnek fel, amelyeket általában pozitívnak vagy negatívnak nevezünk. Az osztályozó által helyesen előrejelzett pozitív és negatív példányokat valódi pozitívnak (TP) és valódi negatívnak (TN) nevezzük. Hasonlóképpen a helytelenül minősített példányokat hamis pozitív (FP) és hamis negatív (FN) minősítésnek nevezzük. A zűrzavaros mátrix egyszerűen egy táblázat, amely bemutatja a négy kategóriába tartozó példányok számát. Az Azure Machine Learning Studio (klasszikus) automatikusan eldönti, hogy az adatkészlet két osztálya közül melyik a pozitív osztály. Ha az osztálycímkék logikai vagy egész számok, akkor az "igaz" vagy "1" címkével ellátott példányok a pozitív osztályhoz vannak rendelve. Ha a címkék karakterláncok, például a jövedelem adatkészlet, a címkék vannak rendezve betűrendben, és az első szint van kiválasztva, hogy a negatív osztály, míg a második szint a pozitív osztály.
+Emiatt hasznos lehet olyan további mérőszámokat kiszámítani, amelyek a kiértékelés konkrétabb szempontjait rögzítik. Az ilyen mérőszámok részleteinek megismerése előtt fontos megérteni a bináris besorolás kiértékelésének összekeveredési mátrixát. A betanítási készletben lévő osztályok címkéi csak két lehetséges értéket vehetnek igénybe, ami általában pozitív vagy negatív. Az osztályozó becslésének megfelelő pozitív és negatív példányokat igaz pozitív (TP) és True negatives (TN) értékeknek nevezzük. Hasonlóképpen a helytelenül besorolt példányok neve hamis pozitív (FP) és hamis negatív (FN). A zűrzavaros mátrix egyszerűen egy olyan tábla, amely a négy kategóriába tartozó példányok számát jeleníti meg. A Azure Machine Learning Studio (klasszikus) automatikusan eldönti, hogy az adatkészlet két osztályának melyik a pozitív osztálya. Ha az osztályok neve logikai vagy egész szám, akkor a "true" vagy "1" címkézett példányok a pozitív osztályhoz vannak rendelve. Ha a címkék sztringek, például a bevételi adatkészlet, a feliratok betűrendbe vannak rendezve, és az első szint a negatív osztály lesz, míg a második szint a pozitív osztály.
 
-![Bináris osztályozási tévesztési mátrix](./media/evaluate-model-performance/6a.png)
+![Bináris besorolás – zavart mátrix](./media/evaluate-model-performance/6a.png)
 
-6. ábra Bináris osztályozási zavartmátrix.
+6. ábra Bináris besorolás – zavart mátrix.
 
-Visszatérve a jövedelembesorolás problémájára, szeretnénk feltenni néhány értékelési kérdést, amelyek segítenek megérteni az alkalmazott osztályozó teljesítményét. Természetes kérdés: "Azok közül az egyének közül, akiket a modell 50 K>(TP+FP) keresett, hányat minősítettek helyesen (TP)?". Erre a kérdésre a modell **pontossága,** a helyesen osztályozott pozitívumok aránya: TP/(TP+FP) választ kaphat. Egy másik gyakori kérdés: "Az összes magas keresetű alkalmazottak jövedelme >50k (TP + FN), hány nem az osztályozó osztályozni helyesen (TP)". Ez valójában a **Visszahívás**, vagy a valódi pozitív arány: TP /(TP +FN) az osztályozó. Lehet, hogy észre, hogy van egy nyilvánvaló kompromisszum a pontosság és a visszahívás. Például egy viszonylag kiegyensúlyozott adatkészlet, egy osztályozó, amely előrejelzi többnyire pozitív példányok, volna egy magas visszahívás, de egy meglehetősen alacsony pontosságú, mivel sok a negatív példányok lenne tévesen minősítve ami nagyszámú hamis pozitív. Ha meg szeretné tekinteni, hogy ez a két mutató hogyan változik, kattintson a **PONTOSSÁG/VISSZAHÍVÁS** görbére a kiértékelési eredmény kimeneti oldalán (a 7. ábra bal felső részén).
+Ha visszatér a bevétel besorolási problémára, több kiértékelési kérdést is szeretnénk megtenni, amelyek segítenek megérteni a felhasznált osztályozó teljesítményét. Természetes kérdés a következő: "a modell azon személyei számára, akik számára a modell >50 K (TP + FP) beszerzését, hány besorolása helyesen (TP)?" Ezt a kérdést a modell **pontosságának** megkeresésével választhatja ki, amely a megfelelő besorolású pozitívok aránya: TP/(TP + FP). Egy másik gyakori kérdés, hogy "az összes magas jövedelmű alkalmazottak bevétele >50k (TP + FN), hányan osztályozták helyesen a besorolást (TP)". Ez valójában a **visszahívás**, vagy a valódi pozitív arány: az osztályozó TP/(TP + FN). Észreveheti, hogy nyilvánvaló kompromisszum van a pontosság és a visszahívás között. Ha például egy viszonylag kiegyensúlyozott adatkészletet ad meg, egy olyan osztályozó, amely többnyire pozitív példányokat jósol, magas visszahívás lenne, de meglehetősen alacsony pontosságú, mivel a negatív példányok többsége helytelenül van besorolva, ami nagyszámú hamis pozitív értéket eredményez. Ha meg szeretné tekinteni a két metrika változásának feladatát, kattintson a kiértékelés eredményének kimenete oldalon látható **pontosság/visszahívás** görbére (a 7. ábrán a bal felső résznél).
 
-![Bináris osztályozás kiértékelési eredményei](./media/evaluate-model-performance/7.png)
+![Bináris besorolás kiértékelésének eredményei](./media/evaluate-model-performance/7.png)
 
-7. ábra Bináris osztályozás imátleértékelés eredményei.
+7. ábra A bináris besorolás kiértékelésének eredménye.
 
-Egy másik kapcsolódó metrika, amelyet gyakran használnak, az **F1 pontszám,** amely mind a pontosságot, mind a visszahívást figyelembe veszi. Ez a két mutató harmonikus középformája, és így számítják ki: F1 = 2 (precíziós x visszahívás) / (pontosság + visszahívás). Az F1 pontszám egy jó módja annak, hogy összefoglalja az értékelés egy számot, de ez mindig egy jó gyakorlat, hogy nézd meg mind a pontosság és a visszahívás együtt, hogy jobban megértsék, hogyan viselkedik az osztályozó.
+Egy másik kapcsolódó metrika, amelyet gyakran használnak az **F1 pontszám**, amely a pontosságot és a visszahívást is figyelembe veszi. Ez a két metrika harmonikus középértéke, és a következőképpen számítjuk ki: F1 = 2 (precíziós x visszahívás)/(pontosság + visszahívás). Az F1-es pontszám jó módszer arra, hogy egyetlen számon összesítse a kiértékelést, de mindig érdemes megtekinteni a pontosságot, és felidézni, hogy jobban megértse, hogyan viselkedik az osztályozó.
 
-Ezenkívül megvizsgálható a valódi pozitív arány és a **vevő működési jellemző (ROC)** görbéjének hamis pozitív árfolyama és a megfelelő **terület a görbe alatt (AUC)** érték. Minél közelebb van ez a görbe a bal felső sarokhoz, annál jobb az osztályozó teljesítménye (ez maximalizálja a valódi pozitív arányt, miközben minimalizálja a hamis pozitív arányt). Görbék, amelyek közel vannak az átlós a telek, eredménye osztályozók, hogy általában, hogy előrejelzéseket, amelyek közel véletlenszerű találgatás.
+Emellett az is megvizsgálhatja a valódi pozitív arányt és a hamis pozitív arányt a **fogadó működési jellemző (Roc)** görbében és a **görbe (AUC) érték alatti megfelelő területen** . Minél közelebb van a görbe a bal felső sarokban, annál jobb az osztályozó teljesítménye (ami maximalizálja a valódi pozitív arányt, miközben minimalizálja a hamis pozitív arányt). A mintaterület átlója felé közeledő görbék olyan besorolásokból származnak, amelyek általában a véletlenszerű találgatáshoz közeledő előrejelzéseket készítenek.
 
-### <a name="using-cross-validation"></a>Keresztellenőrzés használata
-A regressziós példához hasonlóan keresztellenőrzést is végrehajthatunk az adatok különböző részhalmazainak automatikus betanításához, pontozásához és kiértékeléséhez. Hasonlóképpen használhatjuk a [kereszt-érvényesítési modell][cross-validate-model] modul, egy képzetlen logisztikai regressziós modell, és egy adatkészlet. A címkeoszlopot *a* [Kereszt-modell][cross-validate-model] modul tulajdonságaiban kell bevételre állítani. A kísérlet futtatása után, és kattintson a jobb kimeneti port a [Kereszt-Validate modell][cross-validate-model] modul, láthatjuk a bináris osztályozásmetriai értékek minden hajtás, amellett, hogy az átlagos és szórása az egyes. 
+### <a name="using-cross-validation"></a>Kereszt-ellenőrzés használata
+A regressziós példához hasonlóan több ellenőrzés is elvégezhető az adatok különböző részhalmazának ismételt betanítása, pontszáma és kiértékelése során. Ehhez hasonlóan használhatjuk a [modell Átellenőrzése][cross-validate-model] modult, egy nem betanított logisztikai regressziós modellt és egy adatkészletet. A Label (címke) oszlopot a [modell][cross-validate-model] többtényezős moduljának tulajdonságainál a *bevétel* értékre kell beállítani. Miután futtatta a kísérletet, és rákattintott a [modell][cross-validate-model] átállítása modul jobb oldali kimeneti portjára, minden egyes fold esetében láthatjuk a bináris besorolási mérőszámot, az egyes értékek középértékének és szórásának megfelelően. 
 
-![Bináris osztályozási modell keresztérvényesítése](./media/evaluate-model-performance/8.png)
+![Bináris besorolási modell több ellenőrzése](./media/evaluate-model-performance/8.png)
 
-8. ábra Bináris osztályozási modell keresztérvényesítése.
+8. ábra Bináris besorolási modell határokon átnyúló ellenőrzése.
 
-![Bináris osztályozó keresztérvényesítési eredményei](./media/evaluate-model-performance/9.png)
+![Bináris osztályozó több ellenőrzési eredménye](./media/evaluate-model-performance/9.png)
 
-9. ábra. Bináris osztályozó keresztérvényesítési eredményei.
+9. ábra. Bináris osztályozó több ellenőrzési eredménye.
 
-## <a name="evaluating-a-multiclass-classification-model"></a>Többosztályos osztályozási modell kiértékelése
-Ebben a kísérletben a népszerű [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") adatkészletet fogjuk használni, amely az írisznövény három különböző típusát (osztályait) tartalmazza. Minden példányhoz négy jellemzőérték (sepal hossz/szélesség és sziromhossz/szélesség) tartoznak. Az előző kísérletekben betanítottuk és teszteltük a modelleket ugyanazon adatkészletek használatával. Itt a Split [Data][split] modult használjuk az adatok két részhalmazának létrehozásához, az első betanításához, és a másodikon a pontozáshoz és a kiértékeléshez. Az Iris adatkészlet nyilvánosan elérhető az [UCI Machine Learning Repository,](https://archive.ics.uci.edu/ml/index.html)és letölthető egy [Import Data][import-data] modul.
+## <a name="evaluating-a-multiclass-classification-model"></a>Többosztályos besorolási modell kiértékelése
+Ebben a kísérletben a népszerű [írisz](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") -adatkészletet fogjuk használni, amely az írisz három különböző típusa (osztály) példányát tartalmazza. Az egyes példányok esetében négy szolgáltatási érték (a kétféle hosszúság/szélesség és a szirom hossza/szélessége) szerepel. Az előző kísérletek során az azonos adatkészleteket használó modelleket tanítjuk és teszteltük. Itt az [Adatfelosztási][split] modult használjuk az adathalmazok két részhalmazának létrehozásához, az elsőre a betanításhoz és a pontszám és a kiértékelés során. Az írisz-adatkészlet nyilvánosan elérhető az [UCI Machine learning adattárban](https://archive.ics.uci.edu/ml/index.html), és az [importálási][import-data] modul használatával tölthető le.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Adja hozzá a következő modulokat a munkaterülethez az Azure Machine Learning Studio -ban (klasszikus):
+Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
 * [Adatok importálása][import-data]
 * [Többosztályos döntési erdő][multiclass-decision-forest]
 * [Adatok felosztása][split]
-* [Vonat modell][train-model]
-* [Pontszám modell][score-model]
-* [Modell kiértékelése][evaluate-model]
+* [Modell betanítása][train-model]
+* [Relevanciamodell][score-model]
+* [Modell értékelése][evaluate-model]
 
-Csatlakoztassa a portokat a 10.
+A portok a 10. ábrán látható módon csatlakoztathatók.
 
-Állítsa a Címke oszlop indexét a [Betanítási modell][train-model] modul 5-re. Az adatkészletnek nincs fejlécsora, de tudjuk, hogy az osztályfeliratok az ötödik oszlopban vannak.
+Állítsa a [Train Model][train-model] modul felirat oszlopának indexét 5 értékre. Az adatkészlet nem tartalmaz fejlécsort, de tudjuk, hogy az osztály címkéi az ötödik oszlopban vannak.
 
-Kattintson az [Adatok importálása][import-data] modulra, és állítsa az *Adatforrás* http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.datatulajdonságot webes *URL-címre HTTP-n keresztül,* és az *URL-címet* a parancsra.
+Kattintson az [adatimportálási][import-data] modulra, és állítsa be az *adatforrás* tulajdonságot a *webes URL-címre http-n keresztül*, valamint a következő *URL-címet* : http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
 
-Állítsa be a [felosztási adatok][split] modulban a betanításhoz használandó példányok törtét (például 0,7).
+Állítsa be, hogy a példányok milyen hányadát szeretné használni az [Adatfelosztási][split] modulban (0,7 például) a betanításhoz.
 
-![Többosztályos osztályozó kiértékelése](./media/evaluate-model-performance/10.png)
+![Többosztályos osztályozó értékelése](./media/evaluate-model-performance/10.png)
 
-10. ábra. Többosztályos osztályozó kiértékelése
+10. ábra. Többosztályos osztályozó értékelése
 
-### <a name="inspecting-the-evaluation-results"></a>Az értékelési eredmények vizsgálata
-Futtassa a kísérletet, és kattintson a [kiértékelés modell][evaluate-model]kimeneti portjára. Az értékelés eredményeit ebben az esetben egy zűrzavaros mátrix formájában mutatják be. A mátrix mindhárom osztály tényleges és előre jelzett példányait jeleníti meg.
+### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
+Futtassa a kísérletet, és kattintson a [modell kiértékelése][evaluate-model]kimeneti portjára. A kiértékelés eredményei egy zűrzavaros mátrix formájában jelennek meg, ebben az esetben. A mátrix mindhárom osztály tényleges és előre jelzett példányait mutatja.
 
-![Többosztályos besorolás értékelési eredményei](./media/evaluate-model-performance/11.png)
+![A többosztályos besorolás kiértékelésének eredményei](./media/evaluate-model-performance/11.png)
 
-11. ábra. Többosztályos besorolás értékelési eredményei.
+11. ábra. A többosztályos besorolás kiértékelésének eredményei.
 
-### <a name="using-cross-validation"></a>Keresztellenőrzés használata
-Mint korábban említettük, a [Kereszt-érvényesítési modell][cross-validate-model] modul automatikusan végezhet ismételt betanítás, pontozás és értékelések. Szüksége lenne egy adatkészletre, egy képzetlen modellre és egy [kereszt-érvényesítési modell][cross-validate-model] modulra (lásd az alábbi ábrát). Ismét be kell állítania a [Kereszt-Modell][cross-validate-model] modul címkeoszlopát (ebben az esetben az 5.oszlopindex). A kísérlet futtatása után, és kattintson a jobb kimeneti port a [kereszt-érvényesítési modell,][cross-validate-model]megvizsgálhatja a metrika értékek minden hajtás, valamint a közép-és szórás. Az itt megjelenített metrikák hasonlóak a bináris osztályozási esetben tárgyalt mutatókhoz. A többosztályos osztályozásban azonban a valódi pozitív/negatív és hamis pozitív/negatív értékek számítása osztályonkénti számítással történik, mivel nincs általános pozitív vagy negatív osztály. Például az "Iris-setosa" osztály pontosságának vagy visszahívásának kiszámításakor feltételezzük, hogy ez a pozitív osztály, és az összes többi negatív.
+### <a name="using-cross-validation"></a>Kereszt-ellenőrzés használata
+Ahogy azt korábban említettük, az ismételt képzés, pontozás és értékelések automatikusan elvégezhető a [modell][cross-validate-model] átértékelése modul használatával. Szüksége lesz egy adatkészletre, egy nem betanított modellre és egy többtényezős [modell][cross-validate-model] modulra (lásd az alábbi ábrát). Ismét be kell állítania a [modell kereszt-érvényesítő][cross-validate-model] moduljának felirat oszlopát (ebben az esetben az 5. oszlop). Miután futtatta a kísérletet, és rákattintott a [kereszt-érvényesítő modell][cross-validate-model]megfelelő kimeneti portjára, megvizsgálhatja az egyes kidobások metrikai értékeit, valamint az átlagot és a szórást is. Az itt megjelenő mérőszámok hasonlóak a bináris besorolási esetekben tárgyalt értékekhez. A többosztályos besorolásban azonban a valós pozitív/negatív és a téves pozitív/negatív értékeit a rendszer egy osztály alapján számítja ki, mivel nincs általános pozitív vagy negatív osztály. Például az "írisz-setosa" osztály pontosságának vagy visszahívásának számításakor feltételezzük, hogy ez a pozitív osztály, és az összes többi negatív.
 
-![Többosztályos osztályozási modell keresztérvényesítése](./media/evaluate-model-performance/12.png)
+![Többosztályos besorolási modell kölcsönös ellenőrzése](./media/evaluate-model-performance/12.png)
 
-12. ábra. Többosztályos osztályozási modell keresztérvényesítése.
+12. ábra. Többosztályos besorolási modell kölcsönös ellenőrzése.
 
-![Többosztályos osztályozási modell keresztérvényesítési eredményei](./media/evaluate-model-performance/13.png)
+![Többosztályos besorolási modell több ellenőrzési eredményei](./media/evaluate-model-performance/13.png)
 
-13. ábra. Többosztályos osztályozási modell keresztérvényesítési eredményei.
+13. ábra. Többosztályos besorolási modell több ellenőrzési eredménye.
 
 <!-- Module References -->
 [cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/

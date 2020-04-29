@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Rövid útmutató – Azure Docker CE-fürt Linuxhoz
+title: ELAVULT Rövid útmutató – Azure Docker CE-fürt Linux rendszerhez
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Docker CE-fürtöt Linux-tárolókhoz az Azure Container Service-ben.
 author: iainfoulds
 ms.service: container-service
@@ -8,21 +8,21 @@ ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
 ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481738"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>(ELAVULT) Docker CE-fürt telepítése
+# <a name="deprecated-deploy-docker-ce-cluster"></a>ELAVULT Docker CE-fürt üzembe helyezése
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Ebben a rövid útmutatóban egy Docker CE-fürt az Azure CLI használatával van telepítve. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást helyezünk üzembe és futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
+Ebben a rövid útmutatóban egy Docker CE-fürtöt helyezünk üzembe az Azure CLI használatával. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást helyezünk üzembe és futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
 
 A Docker CE az Azure Container Service-ben előzetes verzióban érhető el, és **éles számítási feladatokra nem használható**.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
@@ -30,7 +30,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik.
 
-A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westus2* helyen.
+A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westus2* helyen.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -53,7 +53,7 @@ Kimenet:
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm-fürt létrehozása
 
-Az Azure Container Service-ben az [az acs create](/cli/azure/acs#az-acs-create) paranccsal hozhat létre Docker CE-fürtöt. A Docker CE régiónkénti elérhetőségéről a [Docker CE ACS-régióiban talál tájékoztatást.](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+Az Azure Container Service-ben az [az acs create](/cli/azure/acs#az-acs-create) paranccsal hozhat létre Docker CE-fürtöt. További információ a Docker CE régiójának rendelkezésre állásáról: [ACS-régiók a Docker CE-hez](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
 A következő példa egy *mySwarmCluster* nevű fürtöt hoz létre egy Linux-főcsomóponttal és három Linux-ügyfélcsomóponttal.
 
@@ -67,7 +67,7 @@ Néhány perc múlva befejeződik a parancs végrehajtása, és visszaadja a fü
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-Ebben a rövid útmutatóban a Docker-swarm-főkiszolgáló és a Docker-ügynökkészlet teljes tartománynát is meg kell tennie. Futtassa az alábbi parancsot a fő és az ügynök FQDN-ek lekéréséhez.
+Ebben a rövid útmutatóban a Docker Swarm Master és a Docker Agent-készlet teljes tartománynevére van szükség. Futtassa az alábbi parancsot a fő és az ügynök FQDN-ek lekéréséhez.
 
 ```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
@@ -159,15 +159,15 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>A kód letöltése
 
-Ebben a rövid útmutatóban előre létrehozott tárolórendszerképek et használtak egy Docker-szolgáltatás létrehozásához. A kapcsolódó alkalmazáskód, Docker-fájl és Compose-fájl a GitHubon érhető el.
+Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használt a Docker-szolgáltatás létrehozásához. A kapcsolódó alkalmazáskód, Docker-fájl és Compose-fájl a GitHubon érhető el.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban üzembe helyezett egy Docker-fürt, és üzembe helyezett egy többtárolós alkalmazást.
+Ebben a rövid útmutatóban egy Docker Swarm-fürtöt telepített, és egy többtárolós alkalmazást helyezett üzembe.
 
-Ha többet szeretne megtudni a Docker-raj azure DevOps-szal való integrálásáról, folytassa a CI/CD-vel a Docker Swarm és az Azure DevOps segítségével.
+Ha többet szeretne megtudni a Docker Swarm és az Azure DevOps integrálásáról, folytassa a CI/CD-val a Docker Swarm és az Azure DevOps használatával.
 
 > [!div class="nextstepaction"]
 > [CI/CD a Docker Swarm és az Azure DevOps használatával](./container-service-docker-swarm-setup-ci-cd.md)

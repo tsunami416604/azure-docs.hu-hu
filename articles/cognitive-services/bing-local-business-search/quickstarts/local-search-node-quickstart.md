@@ -1,7 +1,7 @@
 ---
-title: Gyorsútmutató – Lekérdezés küldése az API-nak a Node.js használatával – Bing helyi üzleti keresés
+title: Rövid útmutató – lekérdezés küldése az API-nak a Node. js használatával – Bing helyi üzleti keresés
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval megkezdheti a kérelmek küldését a Bing Helyi üzleti keresési API-nak, amely egy Azure Cognitive Service.
+description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: d366195f9cd72e6baa88c17203ae93cbbc6cbe6a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475541"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rövid útmutató: Lekérdezés küldése a Bing helyi üzleti keresési API-nak a Node.js használatával
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak a Node. js használatával
 
-Ezzel a rövid útmutatóval megkezdheti a kérelmek küldését a Bing Helyi üzleti keresési API-nak, amely egy Azure Cognitive Service. Bár ez az egyszerű alkalmazás a Node.js fájlban íródott, az API egy RESTful webszolgáltatás, amely kompatibilis bármely programozási nyelvvel, amely képes HTTP-kérelmeket készíteni és elemezni a JSON-t.
+Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás a Node. js-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
-Ez a példaalkalmazás helyi válaszadatokat kér `hotel in Bellevue`le az API-ból a keresési lekérdezéshez.
+Ez a példában szereplő alkalmazás a keresési lekérdezés `hotel in Bellevue`API-ból érkező helyi válaszüzeneteket kéri le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,11 +29,11 @@ Ez a példaalkalmazás helyi válaszadatokat kér `hotel in Bellevue`le az API-b
 
 * A [JavaScript lekérési kódtára](https://github.com/request/request)
 
-A Bing [API-kkal rendelkező Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Használja az ingyenes próbaverzió által biztosított hozzáférési kulcsot.  Lásd még: [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+A Bing API-kkal [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Használja az ingyenes próbaverzió által biztosított hozzáférési kulcsot.  Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Kódforgatókönyv
 
-A következő kód határozza meg, és elküldi a kérelmet. Implementálására a következő lépésekben kerül sor:
+A következő kód meghatározza és elküldi a kérést. Implementálására a következő lépésekben kerül sor:
 
 1. Deklarálja a változókat a végpont gazdagép és útvonal szerinti megadásához.
 2. Adja meg a lekérdezést, és adja hozzá a lekérdezési paramétert.
@@ -94,6 +94,6 @@ Search();
 
 ## <a name="next-steps"></a>További lépések
 
-* [Helyi üzleti keresés rövid útmutató](local-quickstart.md)
-* [Helyi üzleti keresés Java – rövid útmutató](local-search-java-quickstart.md)
-* [Helyi üzleti keresés Python rövid útmutató](local-search-python-quickstart.md)
+* [Helyi üzleti keresés – rövid útmutató](local-quickstart.md)
+* [Helyi üzleti keresés – Java rövid útmutató](local-search-java-quickstart.md)
+* [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

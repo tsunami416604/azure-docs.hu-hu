@@ -5,30 +5,30 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 4f13c171c5fafb13875f5f87d4eb3d6013f0ff30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79486105"
 ---
-A dokumentum `deploymentconfig.json` bejegyzései az [AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)paramétereire vannak leképezve. Az alábbi táblázat a JSON-dokumentumban szereplő entitások és a módszer paraméterei közötti leképezést ismerteti:
+A `deploymentconfig.json` dokumentumtérkép bejegyzései a [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
-| JSON entitás | Metódus paramétere | Leírás |
+| JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
-| `computeType` | NA | A számítási cél. Az ACI esetében az `ACI`értéknek . |
-| `containerResourceRequirements` | NA | A processzor- és memóriaentitások tárolója. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | A leosztandó processzormagok száma. Alapértelmezett`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | A webszolgáltatás számára lefoglalandó memória mennyisége (GB-ban). Alapértelmezett`0.5` |
-| `location` | `location` | Az Azure-régió, ahol ezt a webszolgáltatást telepíti. Ha nincs megadva, a program a munkaterület helyét fogja használni. További részletek a rendelkezésre álló régiókról itt találhatók: [ACI Regions](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
-| `authEnabled` | `auth_enabled` | Engedélyezi-e a webszolgáltatás hitelesítési szolgáltatását. Alapértelmezés szerint hamis |
-| `sslEnabled` | `ssl_enabled` | Engedélyezi-e az SSL-t ehhez a webszolgáltatáshoz. Alapértelmezés szerint hamis. |
-| `appInsightsEnabled` | `enable_app_insights` | Azt jelzi, hogy engedélyezi-e az AppInsights szolgáltatást ehhez a webszolgáltatáshoz. Alapértelmezés szerint hamis |
-| `sslCertificate` | `ssl_cert_pem_file` | Az SSL engedélyezése esetén szükséges tanúsítványfájl |
-| `sslKey` | `ssl_key_pem_file` | Az SSL engedélyezése esetén szükséges kulcsfájl |
-| `cname` | `ssl_cname` | A cname, ha az SSL engedélyezve van |
-| `dnsNameLabel` | `dns_name_label` | A pontozási végpont dns-névcímkéje. Ha nincs megadva, egy egyedi DNS-névcímke jön létre a pontozási végponthoz. |
+| `computeType` | NA | A számítási cél. ACI esetén az értéknek a következőnek kell lennie `ACI`:. |
+| `containerResourceRequirements` | NA | A processzor-és memória-entitások tárolója. |
+| &emsp;&emsp;`cpu` | `cpu_cores` | A lefoglalni kívánt CPU-magok száma. Alapértelmezett`0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | A webszolgáltatás számára lefoglalható memória mennyisége (GB-ban). Alapértelmezett`0.5` |
+| `location` | `location` | Az Azure-régió, amelybe telepíteni szeretné a webszolgáltatást. Ha nincs megadva, a rendszer a munkaterület helyét fogja használni. Az elérhető régiókról további részleteket itt találhat: [ACI-régiók](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+| `authEnabled` | `auth_enabled` | Azt határozza meg, hogy engedélyezi-e az Auth szolgáltatást ehhez a webszolgáltatáshoz. Alapértelmezett értéke false |
+| `sslEnabled` | `ssl_enabled` | Azt határozza meg, hogy engedélyezve van-e az SSL ehhez a webszolgáltatáshoz. Az alapértelmezett érték a false. |
+| `appInsightsEnabled` | `enable_app_insights` | Azt határozza meg, hogy engedélyezi-e a AppInsights ehhez a webszolgáltatáshoz. Alapértelmezett értéke false |
+| `sslCertificate` | `ssl_cert_pem_file` | Az SSL engedélyezése esetén szükséges a tanúsítvány fájlja |
+| `sslKey` | `ssl_key_pem_file` | Az SSL engedélyezése esetén szükség van a kulcs fájlra |
+| `cname` | `ssl_cname` | A CNAME, ha engedélyezve van az SSL |
+| `dnsNameLabel` | `dns_name_label` | A pontozási végpont DNS-neve felirata Ha nincs megadva, a rendszer létrehoz egy egyedi DNS-név címkét a pontozási végponthoz. |
 
-A következő JSON egy példa a CLI-vel használható központi telepítési konfiguráció:
+A következő JSON a parancssori felülettel való használatra példaként használható telepítési konfiguráció:
 
 ```json
 {

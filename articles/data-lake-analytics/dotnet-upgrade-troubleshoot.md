@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Analytics U-SQL feladathibáinak elhárítása a .NET Framework 4.7.2 frissítés miatt
-description: A .NET Framework 4.7.2-es frissítés miatt hibaelhárításaz U-SQL feladathibákkal.
+title: A Azure Data Lake Analytics U-SQL-feladatok hibáinak elhárítása a .NET-keretrendszer 4.7.2 frissítése miatt
+description: A U-SQL-feladatok hibáinak elhárítása a .NET-keretrendszer 4.7.2 való frissítés miatt.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -10,96 +10,96 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79213581"
 ---
-# <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Az Azure Data Lake Analytics a .NET Framework 4.7.2-es verzióra frissít
+# <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>A Azure Data Lake Analytics a .NET-keretrendszer v 4.7.2 frissít
 
-Az Azure Data Lake Analytics alapértelmezett futásideje a .NET Framework 4.5.2-es verzióról a .NET Framework 4.7.2-es verzióra frissít. Ez a módosítás a módosítások feltörésének kis kockázatát mutatja be, ha az U-SQL-kód egyéni szerelvényeket használ, és ezek az egyéni szerelvények .NET könyvtárakat használnak.
+Az alapértelmezett futtatókörnyezet Azure Data Lake Analytics a .NET-keretrendszer v 4.5.2-ről a .NET-keretrendszer v-4.7.2 való frissítésre. Ez a változás kisebb kockázatot jelent, ha az U-SQL-kód egyéni szerelvényeket használ, és ezek az egyéni szerelvények a .NET-kódtárakat használják.
 
-A .NET Framework 4.5.2-ről a 4.7.2-es verzióra történő frissítés azt jelenti, hogy az U-SQL-futásidőben (az alapértelmezett futásidőben) üzembe helyezett . A .
+A .NET-keretrendszer 4.5.2-es verziójáról a 4.7.2 verzióra történő frissítés azt jelenti, hogy az U-SQL-futtatókörnyezetben (az alapértelmezett futtatókörnyezetben) üzembe helyezett .NET-keretrendszer mostantól mindig 4.7.2 lesz. Nincs párhuzamos lehetőség a .NET-keretrendszer verzióihoz.
 
-A .NET Framework 4.7.2-re való frissítés befejezése után a rendszer felügyelt kódja 4.7.2-es verzióként fog futni, a felhasználó által biztosított könyvtárak, például az U-SQL egyéni szerelvények a szerelvény verziójának megfelelő visszamenőlegesen kompatibilis módban fognak futni. keletkezik.
+A .NET-keretrendszer 4.7.2 való frissítés befejezését követően a rendszer felügyelt kódja 4.7.2 verzióként fut, a felhasználó által megadott kódtárak, például a U-SQL egyéni szerelvények a visszafelé kompatibilis módban futnak, amely megfelel a szerelvény által generált verziónak.
 
-- Ha a szerelvény DL-ek a 4.5.2-es verzióhoz jönlétre, az üzembe helyezett keretrendszer 4.5.2-es kódtárakként kezeli őket, így (néhány kivételtől eltekintve) 4.5.2-es szemantikát biztosít.
-- Most már használhatja az U-SQL egyéni szerelvényeket, amelyek a 4.7.2-es verziójú szolgáltatásokat használják, ha a .
+- Ha a szerelvény dll-jei az 4.5.2-es verzióhoz jönnek létre, a központilag telepített keretrendszer 4.5.2 függvénytárként fog megjelenni, amely (néhány kivétellel) 4.5.2-es szemantikai információkkal szolgál.
+- Mostantól olyan U-SQL-alapú egyéni szerelvényeket is használhat, amelyek a 4.7.2-funkciók használatát teszik elérhetővé, ha a .NET-keretrendszer 4.7.2 célozza meg.
 
-A . Javasoljuk, hogy az alábbi eljárással ellenőrizze a visszamenőleges kompatibilitási problémákat.
+A .NET-keretrendszer 4.7.2 való frissítés miatt előfordulhat, hogy a .NET-alapú egyéni szerelvényeket használó U-SQL-feladatokban felmerülő változtatásokat is be kell állítani. Javasoljuk, hogy a visszamenőleges kompatibilitási problémákat az alábbi eljárással keresse meg.
 
-## <a name="how-to-check-for-backwards-compatibility-issues"></a>Hogyan lehet ellenőrizni a visszamenőleges kompatibilitási problémákat
+## <a name="how-to-check-for-backwards-compatibility-issues"></a>A visszamenőleges kompatibilitási problémák ellenőrzése
 
-Ellenőrizze, hogy lehetséges-e a visszamenőleges kompatibilitási problémák, ha az U-SQL egyéni szerelvényeiben futtatja a .NET kompatibilitási ellenőrzéseket a .NET-kódon.
+Ellenőrizze, hogy lehetséges-e a visszamenőleges kompatibilitást okozó hibák elhárítása. Ehhez futtassa a .NET-kompatibilitási ellenőrzéseket a .NET-kódban a U-SQL egyéni szerelvényekben.
 
 > [!Note]
-> Az eszköz nem észleli a tényleges törési módosításokat. csak azokat a .NET API-kat azonosítja, amelyek (bizonyos bemenetek esetében) problémákat okozhatnak. Ha értesítést kap egy problémáról, a kód továbbra is rendben lehet, de további részleteket kell bemegadnia.
+> Az eszköz nem ismeri fel a tényleges törési változásokat. Ez csak az úgynevezett .NET API-k azonosítására szolgál, amelyek (bizonyos bemenetek esetében) problémákat okozhatnak. Ha értesítést kap a hibáról, akkor előfordulhat, hogy a kód továbbra is rendben van, azonban további részleteket is érdemes megadnia.
 
-1. Futtassa a visszafelé kompatibilitás-ellenőrzőt a .NET DLL-eken
-   1. A Visual Studio bővítmény használata a [.NET Portability Analyzer Visual Studio extension-en](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
-   1. Az önálló eszköz letöltése és használata a [GitHub dotnetapiportból.](https://github.com/microsoft/dotnet-apiport) Az önálló eszköz futtatására vonatkozó utasítások a [GitHub dotnetapiport ban találhatók, amely megszakítja a módosításokat](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
-   1. A 4.7.2. kompatibilitást, `read isRetargeting == True` azonosítja a lehetséges problémákat.
-2. Ha az eszköz jelzi, hogy a kódot befolyásolhatja-e a lehetséges visszamenőleges összeférhetetlenség (az inkompatibilitás néhány gyakori példáját alább felsorolta), akkor további
-   1. A kód elemzése és annak azonosítása, hogy a kód értékeket ad-e át az érintett API-knak
-   1. Futásidejű ellenőrzés végrehajtása. A futásidejű üzembe helyezés nem történik egymás mellett az ADLA-ban. A frissítés előtt futásidejű ellenőrzést hajthat végre a VisualStudio helyi futtatásával egy helyi .
-3. Ha valóban hatással van önre a visszafelé inkompatibilitás, tegye meg a szükséges lépéseket a javításhoz (például az adatok vagy a kódlogika javítása).
+1. Futtassa a visszamenőleges kompatibilitás-ellenőrzési szolgáltatást a .NET-DLL-eken vagy a
+   1. A Visual Studio bővítmény használata a [.net-hordozhatósági elemző Visual Studio-bővítményben](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
+   1. Az önálló eszköz letöltése és használata a [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport). Az önálló eszköz futtatására vonatkozó utasítások a [GitHub dotnetapiport-megszakítási változások](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
+   1. 4.7.2. kompatibilitás, `read isRetargeting == True` a lehetséges problémák azonosítása.
+2. Ha az eszköz azt jelzi, hogy a kód érintheti-e a lehetséges visszamenőleges inkompatibilitást (néhány gyakori példa az inkompatibilitásra), további ellenőrzéshez használhatja a következőt:
+   1. A kód elemzése és annak azonosítása, hogy a kód az érintett API-kra mutat-e értékeket
+   1. Végezzen futtatókörnyezet-ellenőrzéseket. A futtatókörnyezet központi telepítése nem párhuzamosan történik a ADLA-ben. A frissítés előtt elvégezheti a futtatókörnyezet ellenőrzését, ha a VisualStudio helyi futtatását helyi .NET-keretrendszerrel 4.7.2 egy jellemző adatkészleten keresztül.
+3. Ha valóban negatív hatással van egy visszafelé inkompatibilitásra, végezze el a szükséges lépéseket a kijavításához (például az adatai vagy a kód logikájának javításához).
 
-A legtöbb esetben nem befolyásolhatja a visszamenőleges összeférhetetlenség.
+A legtöbb esetben nem érinti a visszafelé való inkompatibilitást.
 
 ## <a name="timeline"></a>Idővonal
 
-Itt ellenőrizheti az új futásidejű [hibaidők](runtime-troubleshoot.md)telepítését, és megnézheti a korábbi sikeres feladatokat.
+Itt megtekintheti [a futásidejű új](runtime-troubleshoot.md)futtatókörnyezetet, valamint a korábbi sikeres feladatok megtekintését.
 
-### <a name="what-if-i-cant-get-my-code-reviewed-in-time"></a>Mi a teendő, ha nem tudom időben átvizsgálni a kódomat?
+### <a name="what-if-i-cant-get-my-code-reviewed-in-time"></a>Mi a teendő, ha nem tudom beolvasni a kódot az időben
 
-A feladatot elküldheti a régi futásidejű verzióellen (amely a 4.5.2-es verziót célozza, azonban a . A viselkedés miatt továbbra is előfordulhat, hogy a visszamenőleges kompatibilitási problémák némelyike megtörténik.
+Elküldheti a feladatot a régi futtatókörnyezet-verzióra (amely az 4.5.2-es célzásra épül), azonban a .NET-keretrendszer egymás melletti képességeinek hiánya miatt még csak 4.5.2 kompatibilitási módban fog futni. Ennek a viselkedésnek a miatt továbbra is előfordulhatnak visszamenőleges kompatibilitási problémák.
 
-### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Melyek a leggyakoribb visszafelé kompatibilitási problémák, amelyekkel találkozhat
+### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Melyek a leggyakoribb visszamenőleges kompatibilitási problémák, amelyekkel találkozhat
 
-A leggyakoribb visszafelé inkompatibilitás, hogy az ellenőrző valószínűleg azonosítani (mi generált ez a lista futtatásával az ellenőrző saját belső ADLA-feladatok), amely könyvtárak érintik (megjegyzés: hogy lehet hívni a könyvtárak csak közvetve, ezért fontos, hogy tegye meg a szükséges lépéseket, #1, hogy ellenőrizze, ha a munkahelyek érinti), és a lehetséges intézkedések orvoslására. Megjegyzés: Szinte minden esetben a saját munkahelyünkön, a figyelmeztetések kiderült, hogy hamis pozitív miatt szűk jellegét a legtöbb törés változásokat.
+A leggyakoribb visszamenőleges inkompatibilitás, amelyet az ellenőrzés valószínűleg azonosít (ezt a listát a saját belső ADLA-feladatain futtatjuk), mely könyvtárak érintettek (Megjegyzés: a kódtárak csak közvetett módon hívhatók meg, ezért fontos a szükséges művelet végrehajtása #1 a feladatok érintettvé tételének ellenőrzéséhez) és a lehetséges műveletek orvoslásához. Megjegyzés: a saját feladatokhoz szinte minden esetben a figyelmeztetések hamis pozitívnak bizonyultak a legtöbb feltörési változás miatt.
 
-- Az IAsyncResult.CompletedSzinkron tulajdonságnak helyesnek kell lennie az eredményül kapott feladat befejezéséhez
-  - A TaskFactory.FromAsync hívásakor az IAsyncResult.CompletedSynchronously tulajdonság megvalósításának helyesnek kell lennie az eredményül kapott feladat befejezéséhez. Ez azt, hogy a tulajdonságnak igaz értéket kell visszaadnia, ha a megvalósítás szinkron módon fejeződött be. Korábban a tulajdonság nem lett ellenőrizve.
-  - Érintett könyvtárak: mscorlib, System.Threading.Tasks
-  - Javasolt művelet: Győződjön meg arról, hogy a TaskFactory.FromAsync helyesen ad vissza.
+- A IAsyncResult. CompletedSynchronously tulajdonságnak helyesnek kell lennie az eredményül kapott tevékenység befejezéséhez.
+  - A TaskFactory. FromAsync hívásakor a IAsyncResult. CompletedSynchronously tulajdonság megvalósításának helyesnek kell lennie az eredményül kapott tevékenység befejezéséhez. Vagyis a tulajdonságnak igaz értéket kell visszaadnia, és csak akkor, ha a megvalósítás szinkron módon fejeződött be. Korábban a tulajdonság nincs bejelölve.
+  - Érintett kódtárak: mscorlib, System. Threading. Tasks
+  - Javasolt művelet: Ellenőrizze, hogy a TaskFactory. FromAsync igaz értéket ad-e vissza.
 
-- A DataObject.GetData mostantól UTF-8 néven olvassa be az adatokat
-  - A .NET Framework 4 rendszert megcélzó vagy a .NET Framework 4.5.1-es vagy korábbi verziókon futó alkalmazások esetében a DataObject.GetData a HTML formátumú adatokat ASCII-karakterláncként olvassa be. Ennek eredményeképpen a nem ASCII karaktereket (amelyek ASCII-kódjai nagyobbak 0x7F-nél) két véletlenszerű karakter képviseli.#N##N#A .NET Framework 4.5-ös `DataObject.GetData` vagy újabb rendszert megcélzó és a .NET Framework 4.5.2 rendszeren futó alkalmazások esetében a HTML-formátumú adatokat UTF-8 formátumúként olvassa be, ami a 0x7F-nél nagyobb karaktereket jelöli.
-  - Érintett könyvtárak: Glo
-  - Javasolt művelet: Győződjön meg arról, hogy a beolvasott adatok a kívánt formátumúak
+- A DataObject. GetData mostantól UTF-8-ként kérdezi le az adatfájlokat
+  - A .NET-keretrendszer 4-es verzióját vagy a .NET-keretrendszer 4.5.1-es vagy korábbi verzióit célzó alkalmazások esetében a DataObject. GetData egy ASCII-karakterláncként kéri le a HTML formátumú adatformátumot. Ennek eredményeképpen a nem ASCII karakterek (amelyek ASCII-kódjai nagyobbak, mint 0x7F) két véletlenszerű karakterből állhatnak. #N # #N # a .NET-keretrendszert 4,5-as vagy újabb verzióra irányuló, illetve a .NET-keretrendszer `DataObject.GetData` 4.5.2-es verziójával rendelkező alkalmazások esetében az UTF-8 értékkel rendelkező HTML formátumú adat lekérdezése, amely nagyobb, mint a 0x7F karakter.
+  - Érintett kódtárak: Glo
+  - Javasolt művelet: a beolvasott adatformátumot a kívánt formátumban kell megadni
 
-- Az XmlWriter érvénytelen helyettesítő párokat dob
-  - A .NET Framework 4.5.2-es vagy korábbi verzióit célzó alkalmazások esetében a kivételtartalék kezelés használatával érvénytelen helyettesítő pár írása nem mindig jelent kivételt. A . `ArgumentException`
-  - Érintett tárak: System.Xml, System.Xml.ReaderWriter
-  - Javasolt művelet: Győződjön meg arról, hogy nem érvénytelen helyettesítő párt ír, amely argumentumkivételt okoz
+- A XmlWriter érvénytelen helyettesítő párokat dob
+  - A .NET-keretrendszer 4.5.2-es vagy korábbi verzióit célzó alkalmazások esetén érvénytelen helyettesítő párokat kell megírni, ha a kivétel-visszaállítási szolgáltatás nem mindig kivételt jelez. A .NET-keretrendszer 4,6-at célzó alkalmazások esetében az érvénytelen helyettesítő párok írására tett kísérlet `ArgumentException`.
+  - Érintett kódtárak: System. XML, System. xml. ReaderWriter
+  - Javasolt művelet: Ügyeljen arra, hogy ne írjon be érvénytelen helyettesítő párt, amely argumentum-kivételt eredményez.
 
-- A HtmlTextWriter `<br/>` nem jeleníti meg helyesen az elemet
-  - A . `HtmlTextWriter.RenderBeginTag()` `HtmlTextWriter.RenderEndTag()` `<BR />` `<BR />`
-  - Érintett tárak: System.Web
-  - Javasolt művelet: Győződjön meg `<BR />` arról, hogy beszúrja a várhatóan várt mennyiséget, hogy ne jelenjen meg véletlenszerű viselkedés az éles környezetben
+- A HtmlTextWriter nem teszi `<br/>` lehetővé az elemek megfelelő megjelenítését
+  - A .NET-keretrendszer 4,6-es verziójától `HtmlTextWriter.RenderEndTag()` kezdve az `<BR />` elem meghívása `HtmlTextWriter.RenderBeginTag()` és egy `<BR />` elemmel való beállítása helyesen csak egy (két helyett) lesz.
+  - Érintett kódtárak: System. Web
+  - Javasolt művelet: Ügyeljen arra, hogy beillessze a `<BR />` várt mennyiséget, hogy az éles környezetben ne legyen véletlenszerű viselkedés.
 
-- A CreateDefaultAuthorizationContext hívása null argumentummal megváltozott
-  - A null authorizationPolicies argumentumhoz intézett `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` hívás által visszaadott AuthorizationContext megvalósítása megváltoztatta annak megvalósítását a .
-  - Érintett könyvtárak: System.IdentityModel
-  - Javasolt művelet: Győződjön meg arról, hogy az új várt viselkedést kezeli, ha null engedélyezési házirend van.
+- A CreateDefaultAuthorizationContext hívása null értékű argumentummal megváltozott
+  - A null értékű Applyallocationpolicy argumentum hívásával `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` visszaadott AuthorizationContext megvalósítása megváltoztatta a .NET-keretrendszer 4,6-es verziójának implementációját.
+  - Érintett kódtárak: System. IdentityModel
+  - Javasolt művelet: gondoskodjon arról, hogy az új várt viselkedést kezelje, ha van null engedélyezési házirend
   
-- Az RSACng mostmár helyesen tölti be a nem szabványos kulcsméretű RSA-kulcsokat
-  - A . `GetRSAPublicKey()` `GetRSAPrivateKey()` A `CryptographicException` a "A kért kulcs mérete nem támogatott" üzenet jelenik meg. A . Hasonlóképpen, `RSA.ImportParameters()` `RSACng.ImportParameters()` és most a munka nem szabványos `CryptographicException`kulcs méretben dobás nélkül 's.
-  - Érintett könyvtárak: mscorlib, System.Core
-  - Javasolt művelet: Győződjön meg arról, hogy az RSA-kulcsok a várt módon működnek
+- A RSACng mostantól helyesen tölti be a nem szabványos kulcsú RSA-kulcsokat
+  - A .NET-keretrendszer 4.6.2 előtti verzióiban az RSA-tanúsítványok nem szabványos méretekkel rendelkező ügyfelei nem férhetnek hozzá ezekhez a kulcsokhoz `GetRSAPublicKey()` a `GetRSAPrivateKey()` és a bővítmény módszerein keresztül. `CryptographicException` A "a kért kulcs mérete nem támogatott" üzenet jelenik meg. A .NET-keretrendszer 4.6.2 Ez a probléma kijavítva. Hasonlóképpen, `RSA.ImportParameters()` és `RSACng.ImportParameters()` most már a nem szabványos méretek is használhatók a `CryptographicException`dobások nélkül.
+  - Érintett kódtárak: mscorlib, System. Core
+  - Javasolt művelet: Ellenőrizze, hogy az RSA-kulcsok a várt módon működnek-e
 
-- Az elérési út kettőspont-ellenőrzései szigorúbbak
-  - A . A megfelelő meghajtóelválasztó (kettőspont) szintaxisának ellenőrzése helyesebbé vált, aminek az volt a mellékhatása, hogy néhány URI-útvonalat blokkolt néhány olyan Elérési út API-jában, ahol korábban tolerálták őket.
-  - Érintett könyvtárak: mscorlib, System.Runtime.Extensions
+- Az elérésiút-kettőspont ellenőrzése szigorúbb
+  - A .NET-keretrendszer 4.6.2 számos módosítás történt a korábban nem támogatott elérési utak (hossz és formátum) támogatásához. A megfelelő meghajtó-elválasztó (kettőspont) szintaxisának ellenőrzése pontosabban megtörtént, aminek hatására az egyes URI-útvonalak blokkolása néhány kiválasztott elérési út API-n, ahol a szolgáltatás a tolerált volt.
+  - Érintett kódtárak: mscorlib, System. Runtime. Extensions
   - Javasolt művelet:
 
 - ClaimsIdentity konstruktorok hívásai
-  - A . `T:System.Security.Claims.ClaimsIdentity` `T:System.Security.Principal.IIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` Ha `T:System.Security.Principal.IIdentity` az argumentum `T:System.Security.Claims.ClaimsIdentity` objektum, `P:System.Security.Claims.ClaimsIdentify.Actor` és `T:System.Security.Claims.ClaimsIdentity` az objektum `null`tulajdonsága nem, akkor a `P:System.Security.Claims.ClaimsIdentify.Actor` tulajdonság a `M:System.Security.Claims.ClaimsIdentity.Clone` metódussal lesz csatolva. A Framework 4.6.1-es és `P:System.Security.Claims.ClaimsIdentify.Actor` korábbi verzióiban a tulajdonság meglévő hivatkozásként van csatolva. A változás miatt a . `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Claims.ClaimsIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Principal.IIdentity` A .
-  - Érintett könyvtárak: mscorlib
-  - Javasolt művelet: Győződjön meg arról, hogy a jogcímidentitás a várt módon működik az új futásidőben
+  - A .NET-keretrendszer 4.6.2 kezdve megváltozik a `T:System.Security.Claims.ClaimsIdentity` `T:System.Security.Principal.IIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` tulajdonságot megadó paraméterekkel rendelkező konstruktorok beállítása. Ha az `T:System.Security.Principal.IIdentity` argumentum egy `T:System.Security.Claims.ClaimsIdentity` objektum, és az `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Claims.ClaimsIdentity` objektum tulajdonsága nem `null`, a `P:System.Security.Claims.ClaimsIdentify.Actor` tulajdonság a `M:System.Security.Claims.ClaimsIdentity.Clone` metódussal van csatolva. A keretrendszer 4.6.1-es és korábbi verzióiban `P:System.Security.Claims.ClaimsIdentify.Actor` a tulajdonság meglévő hivatkozásként van csatolva. A módosítás miatt a .NET-keretrendszer 4.6.2 `P:System.Security.Claims.ClaimsIdentify.Actor` kezdve az új `T:System.Security.Claims.ClaimsIdentity` objektum tulajdonsága nem egyenlő a konstruktor `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Principal.IIdentity` argumentumának tulajdonságával. A .NET-keretrendszer 4.6.1-es és korábbi verzióiban ez egyenlő.
+  - Érintett kódtárak: mscorlib
+  - Javasolt művelet: gondoskodjon arról, hogy a ClaimsIdentity a várt módon működjön az új futtatókörnyezetben
 
-- A vezérlőkarakterek szerializálása datacontractjsonininizer-rel mostmár kompatibilis az ECMAScript V6 és V8 rendszerrel
-  - A . A .
-  - Érintett könyvtárak: System.Runtime.Serialization.Json
-  - Javasolt művelet: A DataContractJsonSerializer azonos viselkedésének biztosítása
+- A vezérlési karakterek DataContractJsonSerializer-vel való szerializálása mostantól kompatibilis a ECMAScript v6-val és a V8-val
+  - A .NET-keretrendszer 4.6.2 és korábbi verzióiban a DataContractJsonSerializer nem hajtottak végre olyan speciális vezérlő karaktereket, mint például a \b, a \f és a \t, így az a ECMAScript V6-os és a V8-as szabványokkal kompatibilis. A .NET-keretrendszer 4,7-es verziótól kezdődően a vezérlő karakterek szerializálása kompatibilis a ECMAScript v6 és a V8 használatával.
+  - Érintett kódtárak: System. Runtime. szerializálás. JSON
+  - Javasolt művelet: azonos viselkedés biztosítása a DataContractJsonSerializer

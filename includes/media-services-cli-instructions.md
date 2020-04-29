@@ -9,42 +9,42 @@ ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
 ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79461214"
 ---
-## <a name="use-cli-shell"></a>CLI shell használata
+## <a name="use-cli-shell"></a>A CLI-rendszerhéj használata
 
-Cli-parancsok végrehajtásához ajánlott az [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) használata. **A Cloud Shell** egy ingyenes, interaktív rendszerhéj, amelynek segítségével futtathatja a cikkben ismertetett lépéseket. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület kiválasztásának lehetőségével. Linux-felhasználók választhatják a Bash-felületet, míg a Windows-felhasználók a PowerShellt részesíthetik előnyben.
+A CLI-parancsok végrehajtásához a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) használata javasolt. A **Cloud Shell** egy ingyenes, interaktív felület, amelyet a cikkben szereplő lépések futtatására használhat. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület kiválasztásának lehetőségével. Linux-felhasználók választhatják a Bash-felületet, míg a Windows-felhasználók a PowerShellt részesíthetik előnyben.
 
-A CLI helyileg is telepíthető. A platformra vonatkozó utasításokért [olvassa el Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) című témakört.
+A CLI-t helyileg is telepítheti. A platformra vonatkozó utasításokért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 ### <a name="sign-in"></a>Bejelentkezés
 
-A CLI helyi telepítésének használatához be kell jelentkeznie az Azure-ba. Ez a lépés nem szükséges az Azure Cloud Shell. Jelentkezzen be `az login` a paranccsal.
+A CLI helyi telepítésének használatához be kell jelentkeznie az Azure-ba. Ez a lépés nem szükséges a Azure Cloud Shellhoz. Jelentkezzen be a `az login` paranccsal.
 
-Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőlapot, és a parancssorban található https://aka.ms/devicelogin utasításokat követve meg kell adnia egy engedélyezési kódot, miután a böngészőben navigált.
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőablakot, és a parancssor utasításait követve meg kell adnia egy engedélyezési kódot a böngészőben való https://aka.ms/devicelogin navigálás után.
 
-### <a name="specify-location-of-files"></a>Fájlok helyének megadása
+### <a name="specify-location-of-files"></a>Fájlok helyének meghatározása
 
-Számos Media Services CLI parancs lehetővé teszi, hogy egy fájlnévvel rendelkező paramétert adjaát át. Ha a **Cloud Shellt**használja, feltöltheti a fájlt a clouddrive-ra (bash vagy PowerShell használatával). 
+Számos Media Services CLI-parancs lehetővé teszi, hogy egy paramétert egy fájlnévvel adjon át. Ha **Cloud Shell**használ, feltöltheti a fájlt a clouddrive (a bash vagy a PowerShell használatával). 
 
 ![Fájlok feltöltése]
 
-Akár helyi CLI-t, akár **felhőbeli rendszerhéjat**használ, meg kell adnia a fájl elérési útját az operációs rendszer vagy a felhőbeli rendszerhéj (Bash vagy PowerShell) szerint. Az alábbiakban néhány példa:
+Akár helyi CLI-t, akár **Cloud Shell**használ, meg kell adnia a fájl elérési útját az Ön által használt operációs rendszer vagy Cloud shell (bash vagy PowerShell) alapján. Néhány példa:
 
-A fájl relatív elérési útja (az összes operációs rendszer)
+A fájl relatív elérési útja (minden operációs rendszer)
 
 * `@"mytestfile.json"`
 * `@"../mytestfile.json"`
 
-Abszolút fájlelérési út Linux /Mac és Windows operációs rendszeren
+A fájl abszolút elérési útja Linux/Mac és Windows operációs rendszeren
 
 * `@ "/usr/home/mytestfile.json"`
 *    `@"c:\tmp\user\mytestfile.json"`
 
-Akkor `{file}` használja, ha a parancs a fájl elérési útját kéri. Például: `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Akkor `@{file}` használja, ha a parancs be tölti a megadott fájlt. Például: `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
+Akkor `{file}` használja, ha a parancs a fájl elérési útját kéri. Például: `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Akkor `@{file}` használja, ha a parancs betölti a megadott fájlt. Például: `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
 
 [Fájlok feltöltése]: ./media/media-services-cli/upload-download-files.png

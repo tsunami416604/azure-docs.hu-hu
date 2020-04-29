@@ -10,101 +10,101 @@ ms.date: 08/13/2019
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: f2446a924ceed37c51779efc9d9e94c0252a2067
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80321745"
 ---
-A **Tesztmeghajtó** lapon beállíthat egy bemutatót (vagy "tesztmeghajtót"), amely lehetővé teszi az ügyfelek számára, hogy kipróbálják az ajánlatot, mielőtt elkötelezné magukat a megvásárlás mellett. További információ: [Mi az a Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive). Ha már nem szeretne tesztvezetést biztosítani az ajánlatához, térjen vissza az **Ajánlat beállítási** oldalára, és törölje a jelet **a Tesztvezetés engedélyezése**jelölőnégyzetből.
+A **tesztvezetés** lapon egy bemutatót (vagy "tesztelési meghajtót") állíthat be, amely lehetővé teszi az ügyfeleknek, hogy a megvásárlása előtt kipróbálják az ajánlatot. További információt a [Mi a test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)című cikkben talál. Ha már nem szeretne tesztelési meghajtót biztosítani az ajánlatához, térjen vissza az **ajánlat beállítása** lapra, és törölje a **tesztelési meghajtó engedélyezése**lehetőséget.
 
-### <a name="technical-configuration"></a>Műszaki konfiguráció
-A következő típusú tesztmeghajtók állnak rendelkezésre, mindegyik saját műszaki konfigurációs követelményekkel.
+### <a name="technical-configuration"></a>Technikai konfiguráció
+A következő típusú tesztelési meghajtók érhetők el, amelyek mindegyike saját technikai konfigurációs követelményekkel rendelkezik.
 
 - [Azure Resource Manager](#technical-configuration-for-azure-resource-manager-test-drive)
 - [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
 - [Logikai alkalmazás](#technical-configuration-for-logic-app-test-drive)
-- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives) (műszaki konfiguráció nem szükséges)
+- [Power bi](#technical-configuration-not-required-for-power-bi-test-drives) (technikai konfiguráció nem szükséges)
 
-#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Műszaki konfiguráció az Azure Resource Manager tesztmeghajtójához
+#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó technikai konfigurációja
 
-Egy központi telepítési sablon, amely tartalmazza a megoldásösszes Azure-erőforrást. A forgatókönyvnek megfelelő termékek csak Azure-erőforrásokat használnak. További információ az [Azure Resource Manager tesztmeghajtójának](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)beállításáról.
+Egy központi telepítési sablon, amely tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják. További információ [Azure Resource Manager tesztelési meghajtó](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)beállításáról.
 
-- **Régiók** (kötelező): Jelenleg 26 Azure által támogatott régió van, ahol a tesztmeghajtó elérhetővé tehető. A tesztmeghajtót általában azokban a régiókban szeretné elérhetővé tenni, ahol a legtöbb ügyfél várható, hogy a legjobb teljesítmény hez legközelebb eső régiót választhassák ki. Győződjön meg arról, hogy az előfizetés e kiválasztott régiókban az összes szükséges erőforrás üzembe helyezéséhez engedélyezett.
+- **Régiók** (kötelező): jelenleg 26 Azure által támogatott régió érhető el, ahol a tesztelési meghajtót elérhetővé teheti. Általában elérhetővé szeretné tenni a tesztelési meghajtót azokon a régiókban, ahol a legnagyobb számú ügyfelet tervezi, hogy a lehető legközelebb eső régiót tudják kiválasztani a legjobb teljesítmény érdekében. Győződjön meg arról, hogy az előfizetése jogosult a kiválasztott régiókban minden szükséges erőforrás üzembe helyezésére.
 
-- **Példányok:** Válassza ki a típus (meleg vagy hideg) és a rendelkezésre álló példányok számát, amely megszorozza a régiók száma, ahol az ajánlat elérhető.
+- **Példányok**: válassza ki a típust (gyors vagy hideg) és a rendelkezésre álló példányok számát, amelyet az ajánlat által elérhető régiók számának szorzatával kell megszorozni.
 
-**Gyors**: Az ilyen típusú példány telepítve van, és a hozzáférésre vár a kiválasztott régiónként. Az ügyfelek azonnal hozzáférhetnek a tesztmeghajtó *kokszpéldányaihoz,* ahelyett, hogy meg kellene várniuk a központi telepítést. A kompromisszum az, hogy ezek a példányok mindig fut nak az Azure-előfizetés, így nagyobb uptime költség merülnek fel. Erősen ajánlott, hogy legalább egy *hot* példány, mivel a legtöbb ügyfél nem akar várni a teljes központi telepítések, ami egy lemorzsolódás az ügyfél használat, ha nincs *hot* példány nem érhető el.
+**Gyors**: Ez a típusú példány üzembe van helyezve, és a kiválasztott régióhoz való hozzáférésre vár. Az ügyfelek azonnal hozzáférhetnek a tesztvezetés *gyors* példányaihoz, és nem kell megvárniuk az üzembe helyezést. A kompromisszum azt eredményezi, hogy ezek a példányok mindig az Azure-előfizetésen futnak, így a költségek nagyobb üzemidőt jelentenek. Erősen ajánlott, hogy legalább egy *gyors* példányt lehessen használni, mivel a legtöbb ügyfél nem szeretné megvárni a teljes üzembe helyezést, ami a felhasználói használatból való kiesést eredményezi, ha nem érhető el a *forró* példány.
 
-**Hideg**: Ez a példánytípus a régiónként esetlegesen üzembe helyezhető példányok teljes számát jelöli. A hideg példányok megkövetelik, hogy a teljes Test Drive Resource Manager-sablon üzembe helyezze, amikor egy ügyfél kéri a tesztmeghajtót, így *a hideg* példányok betöltése sokkal lassabb, mint a hot-példányok. *Hot* A kompromisszum az, hogy csak akkor kell fizetnie a tesztvezetés időtartama alatt, *nem* mindig fut az Azure-előfizetés, mint egy *hot* példány.
+**Hideg**: az ilyen típusú példányok az egyes régiókban esetlegesen üzembe helyezhető példányok teljes számát jelölik. A hideg példányok esetében a teljes tesztvezetés Resource Manager-sablon szükséges ahhoz, hogy egy ügyfél a tesztelési meghajtót használja, így a *hideg* példányok sokkal lassabban töltődnek be, mint a *forró* példányok. A kompromisszum az, hogy csak a tesztvezetés időtartamára kell fizetnie, *nem* mindig fut az Azure-előfizetésében, mint a *forró* példányok esetében.
 
-- **Tesztmeghajtó Azure Resource Manager sablon:** Töltse fel az Azure Resource Manager sablont tartalmazó .zip.  Az Azure Resource Manager-sablon létrehozásáról az [Azure Resource Manager-sablonok létrehozása és üzembe helyezése az Azure Portal használatával című](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)rövid útmutató című cikkben olvashat bővebben.
+- **Tesztvezetés Azure Resource Manager sablon**: töltse fel a Azure Resource Manager sablont tartalmazó. zip fájlt.  További információ a Azure Resource Manager sablon létrehozásáról a rövid útmutató a [Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című cikkben található.
 
-- **A tesztvezetés időtartama** (kötelező): Adja meg, hogy a tesztvezetés mennyi ideig maradjon aktív, az óra számalatt. A tesztvezetés automatikusan leáll ezen időszak lejárta után. Ezt az időtartamot csak egész számú órával lehet beállítani (pl. "2" óra, "1,5" érvénytelen).
+- **Tesztelési meghajtó időtartama** (kötelező): adja meg, hogy a tesztvezetés hány óra alatt maradjon aktív állapotban. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után. Ezt az időtartamot csak egész számú órával lehet beállítani (például "2" óra, "1,5" nem érvényes).
 
-#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>A Dynamics 365 tesztvezetés műszaki konfigurációja
+#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technikai konfiguráció a Dynamics 365 Test Drive-hoz
 
-A Microsoft eltávolíthatja a tesztmeghajtó konklúdi beállításának összetettségét a szolgáltatás kiépítésének és üzembe helyezésének üzemeltetésével és karbantartásával az ilyen típusú tesztmeghajtó használatával. Az ilyen típusú üzemeltetett tesztmeghajtókonfiguráció ugyanaz, függetlenül attól, hogy a tesztvezetés Business Central, Customer Engagement vagy Operations közönséget céloz meg.
+A Microsoft el tudja távolítani a tesztelési meghajtó beállításának összetettségét azáltal, hogy a szolgáltatás üzembe helyezését és üzembe helyezését az ilyen típusú tesztelési meghajtó használatával végzi el és tartja karban. Az ilyen típusú üzemeltetett tesztvezetés konfigurációja ugyanaz, függetlenül attól, hogy a tesztvezetés üzleti központi, vevői szerepvállalási vagy műveleti célközönségre irányul.
 
-- **Maximális egyidejű tesztmeghajtók** (kötelező): Állítsa be a tesztvezetés egyszerre használható ügyfeleinek maximális számát. Minden egyidejű felhasználó egy Dynamics 365-licencet használ fel, amíg a tesztmeghajtó aktív, ezért gondoskodnia kell arról, hogy elegendő licenc áll rendelkezésre a maximális korlát beállításának támogatásához. Ajánlott értéke 3-5.
+- Egyidejű **tesztelési meghajtók maximális** száma (kötelező): adja meg, hogy legfeljebb hány ügyfél használhatja egyszerre a tesztelési meghajtót. Az egyidejű felhasználók egy Dynamics 365-licencet használnak, amíg a tesztvezetés aktív, ezért biztosítania kell, hogy elegendő licenc álljon rendelkezésre a maximálisan engedélyezett készlet támogatásához. A 3-5 javasolt értéke.
 
-- **A tesztvezetés időtartama** (kötelező): Adja meg azt az időtartamot, amaddig, amíg a tesztvezetés aktív marad az órák számának meghatározásával. Ennyi óra elteltével a munkamenet véget ér, és már nem használja fel az egyik licencet. Javasoljuk, hogy az ajánlat összetettségétől függően 2-24 órás értéket nyújtson be. Ezt az időtartamot csak egész számú órával lehet beállítani (pl. "2" óra, "1,5" érvénytelen).  A felhasználó új munkamenetet kérhet, ha kifut az időből, és újra hozzá szeretne férni a tesztvezetéshez.
+- **Tesztelési meghajtó időtartama** (kötelező): adja meg, hogy mennyi ideig maradjon aktív a tesztvezetés az órák számának meghatározásával. Ennyi óra elteltével a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ezt az időtartamot csak egész számú órával lehet beállítani (például "2" óra, "1,5" nem érvényes).  Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
 
-- **Példány URL-címe** (kötelező): Az URL-cím, ahol az ügyfél megkezdi a tesztvezetést. Általában az alkalmazást futtató Dynamics 365-példány URL-címe telepített mintaadatokkal (pl. ). `https://testdrive.crm.dynamics.com`
+- **Példány URL-címe** (kötelező): az az URL-cím, amelyben az ügyfél el fogja kezdeni a tesztelési meghajtót. Általában a Dynamics 365-példány URL-címe, amely az alkalmazást az alkalmazással együtt futtatja, és a mintaadatok telepítve vannak (például `https://testdrive.crm.dynamics.com`).
 
-- **Példány webes API-URL-címe** (kötelező): A Dynamics 365-példány webes API-URL-címének lekérése a Microsoft 365-fiókba való bejelentkezéssel és a **Beállítások (Beállítások)** \&lapra való navigálással; **Testreszabás;** \& **Fejlesztői erőforrások** \&gt; **Példánywebes API -,** másolja az itt található URL-t `https://testdrive.crm.dynamics.com/api/data/v9.0`(pl. ).
+- **Példány webes API URL-címe** (kötelező): a Dynamics 365-példány webes API URL-címének lekéréséhez jelentkezzen be a Microsoft 365-fiókjába, és navigáljon a **Beállítások** \&gt; **Testreszabás** \&gt; **Fejlesztői erőforrások** \&gt; A **példány webes API-ját (szolgáltatás gyökerének URL-címe)** másolja az itt `https://testdrive.crm.dynamics.com/api/data/v9.0`található URL-címet (például).
 
-- **Szerepkör neve** (kötelező): Adja meg az egyéni Dynamics 365 tesztmeghajtóban megadott biztonsági szerepkörnevét. Ezt a felhasználó a tesztvezetés során (pl. tesztvezetés-szerepkör) rendeli hozzá.
+- **Szerepkör neve** (kötelező): adja meg az egyéni Dynamics 365-tesztelési meghajtóban definiált biztonsági szerepkör nevét. Ezt a rendszer a tesztelési meghajtó (például a test-Drive-role) során rendeli hozzá a felhasználóhoz.
 
-#### <a name="technical-configuration-for-logic-app-test-drive"></a>A Logic alkalmazás tesztmeghajtójának műszaki konfigurációja
+#### <a name="technical-configuration-for-logic-app-test-drive"></a>Technikai konfiguráció a Logic app Test Drive-hoz
 
-Minden egyéni terméknek az ilyen típusú tesztmeghajtó-telepítési sablont kell használnia, amely számos összetett megoldásarchitektúrát foglal magában. A Logic App tesztmeghajtóinak beállításával kapcsolatos további információkért látogasson el [az Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) and [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) oldalra a GitHubon.
+Minden egyéni terméknek ezt a típusú tesztelési meghajtó-telepítési sablont kell használnia, amely számos összetett megoldási architektúrát magában foglal. A Logic app test Drives beállításával kapcsolatos további információkért látogasson el a [műveletekre](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) és az [ügyfelek részvételére](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) a githubon.
 
-- **Régió** (kötelező, egyválasztós legördülő lista): Jelenleg 26 Azure által támogatott régió van, ahol a tesztmeghajtó elérhetővé tehető. A logikai alkalmazás erőforrásai a kiválasztott régióban lesznek telepítve. Ha a logikai alkalmazás rendelkezik egy adott régióban tárolt egyéni erőforrásokat, győződjön meg arról, hogy a régió itt van kiválasztva. Ennek legjobb módja, ha teljes mértékben telepíti a logic app helyileg az Azure-előfizetésa a portálon, és ellenőrizze, hogy megfelelően működik-e, mielőtt ezt a kiválasztást.
+- **Régió** (kötelező, egyszer használatos legördülő lista): jelenleg 26 Azure által támogatott régió érhető el, ahol a tesztelési meghajtót elérhetővé teheti. A logikai alkalmazás erőforrásai a kiválasztott régióba lesznek telepítve. Ha a logikai alkalmazás egy adott régióban tárolt egyéni erőforrásokkal rendelkezik, győződjön meg arról, hogy a régió itt van kiválasztva. Ennek a legjobb módja a logikai alkalmazás helyi üzembe helyezése az Azure-előfizetésben a portálon, és annak ellenőrzése, hogy az megfelelően működik-e a kijelölés előtt.
 
-- **Maximális egyidejű tesztmeghajtók** (kötelező): Állítsa be a tesztvezetés egyszerre használható ügyfeleinek maximális számát. Ezek a tesztmeghajtók már telepítve vannak, így az ügyfelek azonnal hozzáférhetnek a központi telepítésre való várakozás nélkül.
+- Egyidejű **tesztelési meghajtók maximális** száma (kötelező): adja meg, hogy legfeljebb hány ügyfél használhatja egyszerre a tesztelési meghajtót. Ezek a tesztelési meghajtók már telepítve vannak, és lehetővé teszik, hogy az ügyfelek azonnal hozzáférjenek az üzembe helyezésre való várakozás nélkül.
 
-- **A tesztvezetés időtartama** (kötelező): Adja meg, hogy a tesztvezetés mennyi ideig maradjon aktív, az óra számalatt. A tesztvezetés ezen időszak lejárta után automatikusan leáll.
+- **Tesztelési meghajtó időtartama** (kötelező): adja meg, hogy a tesztvezetés hány óra alatt maradjon aktív állapotban. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
 
-- **Azure-erőforráscsoport neve** (kötelező): Adja meg az [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) nevét, ahol a logic app tesztmeghajtó menti.
+- **Azure-erőforráscsoport neve** (kötelező): adja meg az [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) nevét, amelybe a rendszer menti a logikai alkalmazás tesztelési meghajtóját.
 
-- **Azure-logikai alkalmazás neve** (kötelező): Adja meg a tesztmeghajtót a felhasználóhoz hozzárendelő logikai alkalmazás nevét. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
+- **Azure Logic App-alkalmazás neve** (kötelező): adja meg annak a logikai alkalmazásnak a nevét, amely a tesztelési meghajtót hozzárendeli a felhasználóhoz. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
 
-- **A logic app neve (kötelező):** Adja meg annak a logikai alkalmazásnak a nevét, amely az ügyfél befejezése után dekátlanítja a tesztmeghajtót. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
+- **Logikai alkalmazás nevének** megszüntetése (kötelező): adja meg annak a logikai alkalmazásnak a nevét, amely a tesztelési meghajtót felépíti az ügyfél befejezése után. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
 
-#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>A Power BI tesztmeghajtóihoz nem szükséges műszaki konfiguráció
+#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI tesztelési meghajtókhoz nem szükséges technikai konfiguráció
 
-Azok a termékek, amelyek interaktív Power BI-vizualizációt szeretnének bemutatni, egy beágyazott hivatkozás segítségével megoszthatják az egyéni irányítópultot tesztmeghajtóként, további műszaki konfiguráció nélkül. További információ a[Power BI-sablonalkalmazások](https://docs.microsoft.com/power-bi/service-template-apps-overview) beállításáról.
+Azok a termékek, amelyek interaktív Power BI vizualizációt szeretnének bemutatni, használhatnak egy beágyazott hivatkozást, amellyel megoszthatják az egyéni kialakítású irányítópultokat a tesztelési meghajtóként, és nincs szükség további technikai konfigurációra. További információ a[Power bi](https://docs.microsoft.com/power-bi/service-template-apps-overview) template-alkalmazások beállításáról.
 
-### <a name="deployment-subscription-details"></a>Üzembe helyezési előfizetés részletei
+### <a name="deployment-subscription-details"></a>Központi telepítési előfizetés részletei
 
-A Test Drive az Ön nevében történő üzembe helyezéséhez hozzon létre és adjon meg egy külön, egyedi Azure-előfizetést. (Nem szükséges a Power BI tesztmeghajtóihoz).
+Ha a tesztelési meghajtót az Ön nevében szeretné üzembe helyezni, hozzon létre és adjon meg egy különálló, egyedi Azure-előfizetést. (Power BI tesztelési meghajtók esetében nem szükséges).
 
-- **Azure-előfizetés-azonosító** (az Azure Resource Manager és a Logic alkalmazások esetén szükséges): Adja meg az előfizetés-azonosítót, amely hozzáférést biztosít az Azure-fiókszolgáltatásaihoz az erőforrás-használati jelentések hez és a számlázáshoz. Azt javasoljuk, hogy fontolja meg [egy külön Azure-előfizetés tesztelésére,](https://docs.microsoft.com/azure/billing/billing-create-subscription) ha még nem rendelkezik. Az Azure-előfizetés-azonosítóját az Azure [Portalra](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **Előfizetések** lapjára való navigálással találhatja meg. A lapon megjelenik az előfizetésazonosítója (pl. "a83645ac-1234-5ab6-6789-1h234g764ghty").
+- **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges): adja meg az előfizetés azonosítóját, amely hozzáférést biztosít az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztása esetén megjelenik az előfizetési azonosító (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure AD-bérlőazonosító** (kötelező): Adja meg az Azure Active Directory (AD) [bérlői azonosítóját.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) Az azonosító megkereséséhez jelentkezzen be az [Azure Portalra,](https://portal.azure.com/)válassza a bal oldali menü Active Directory lapját, válassza a **Tulajdonságok** lehetőséget, majd keresse meg a felsorolt **címtárazonosító** számot (pl. 50c464d3-4930-494c-963c-1e951d15360e). A tartománynév URL-címével is megkeresheti a szervezet [https://www.whatismytenantid.com](https://www.whatismytenantid.com)bérlői azonosítóját a következő címen: .
+- **Azure ad-bérlő azonosítója** (kötelező): adja meg a Azure Active Directory (ad) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok** elemet, majd keresse **meg a felsorolt** 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a [https://www.whatismytenantid.com](https://www.whatismytenantid.com)következő helyen:.
 
-- **Azure AD-bérlői név** (dinamikus 365 esetén szükséges): Adja meg az Azure Active Directory (AD) nevét. Ennek a névnek a megkereséséhez jelentkezzen be az [Azure Portalra,](https://portal.azure.com/)a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
+- **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges): adja meg a Azure Active Directory (ad) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 
-- **Azure AD alkalmazásazonosító** (kötelező): Adja meg az Azure Active Directory (AD) [alkalmazásazonosítóját.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) Az azonosító megkereséséhez jelentkezzen be az [Azure Portalra,](https://portal.azure.com/)válassza a bal oldali menü Active Directory lapját, válassza az **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazásazonosítószámot** (például 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure ad** -alkalmazás azonosítója (kötelező): adja meg a Azure Active Directory (ad) [alkalmazás-azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD alkalmazásügyfél-titkos** (kötelező): Adja meg az Azure [AD-alkalmazásügyfél-titkos.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets) Ennek az értéknek a megkereséséhez jelentkezzen be az [Azure Portalra.](https://portal.azure.com/) Válassza az **Azure Active Directory** fülét a bal oldali menüben, válassza az **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a tesztmeghajtó alkalmazást. Ezután válassza **a Tanúsítványok és titkos kulcsok**lehetőséget, válassza az Új **ügyféltitok**lehetőséget, adjon meg egy leírást, válassza a **Soha** **a Lejáratok**csoportban a Soha lehetőséget, majd válassza **a Hozzáadás lehetőséget.** Győződjön meg róla, hogy másolja le az értéket. (Ne navigáljon el az oldalról, mert ezt nem teszi meg, különben nem lesz hozzáférése az értékhez.)
+- **Azure ad-alkalmazás ügyfél-titka** (kötelező): adja meg az Azure ad-alkalmazás [ügyfél-titkos kulcsát](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. Ügyeljen rá, hogy az értéket másolja le. (Ne navigáljon el az oldalról, mielőtt ezt megtenné, különben nem lesz hozzáférése az értékhez.)
 
-Ne feledje, hogy **mentse,** mielőtt a következő szakasz!
+Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
-### <a name="test-drive-listings-optional"></a>Tesztvezetés listái (nem kötelező)
+### <a name="test-drive-listings-optional"></a>Tesztelési meghajtók listázása (nem kötelező)
 
-A **Test Drive listázási lista** a **Tesztmeghajtó** lapon található beállítás on-át jeleníti meg azokat a nyelveket (és piacokat), ahol a tesztvezetés elérhető, jelenleg az angol (Egyesült Államok) az egyetlen elérhető hely. Ezenkívül ezen az oldalon megjelenik a nyelvspecifikus listaállapot, valamint a hozzáadott dátum/idő. Meg kell határoznia a tesztvezetés részleteit (leírás, felhasználói kézikönyv, videók stb.) az egyes nyelvekhez/piacokhoz.
+A test Drive (tesztelési meghajtó) **lapon található** tesztelési **meghajtók listázása** lehetőség megjeleníti azokat a nyelveket (és piacokat), ahol a tesztelési meghajtó elérhető, jelenleg angol (Egyesült Államok) az egyetlen elérhető hely. Ezen felül az oldal megjeleníti a nyelvspecifikus lista állapotát és a hozzáadott dátumot és időt. Meg kell határoznia a tesztvezetés részleteit (Leírás, felhasználói kézikönyv, videók stb.) az egyes nyelvekhez/piacokhoz.
 
-- **Leírás** (kötelező): Írja le a tesztvezetést, a bemutatást, a felhasználó által kísérletezendő célokat, a feltárandó funkciókat és minden olyan releváns információt, amely segít a felhasználónak eldönteni, hogy beszerezze-e az ajánlatot. Ebben a mezőben legfeljebb 3000 karakter nyi szöveg adható meg. 
+- **Leírás** (kötelező): írja le a tesztelési meghajtót, hogy mit kell bemutatni, a felhasználó által a kísérlethez szükséges célokat, a felderített funkciókat, valamint minden olyan releváns információt, amellyel a felhasználó eldöntheti, hogy szeretné-e beszerezni az ajánlatot. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. 
 
-- **Hozzáférés-információk** (az Azure Resource Manager és logic tesztmeghajtók esetén szükséges): Magyarázza el, hogy mit kell tudnia az ügyfélnek a tesztmeghajtó eléréséhez és használatához. Végigvezethet egy forgatókönyvet az ajánlat használatáról, és pontosan azt, hogy az ügyfélnek mit kell tudnia a funkciók eléréséhez a tesztvezetés során. Ebben a mezőben legfeljebb 10 000 karakternyi szöveg adható meg.
+- **Hozzáférési információk** (Azure Resource Manager és logikai tesztelési meghajtókhoz szükséges): ismertesse, hogy az ügyfélnek milyen információra van szüksége ahhoz, hogy hozzáférhessen és használhassa ezt a teszt meghajtót. Tekintse át az ajánlat használatát, és pontosan azt, amit az ügyfélnek tudnia kell a szolgáltatások eléréséhez a tesztelési meghajtón. Ebben a mezőben legfeljebb 10 000 karaktert lehet megadni.
 
-- **Használati útmutató** (kötelező): A tesztvezetés élményének részletes áttekintése. A felhasználói kézikönyvnek pontosan azt kell kiterjednie, hogy mit szeretne az ügyfélnek a tesztvezetés megtapasztalásából, és referenciaként kell szolgálnia az esetleges kérdéseikhez. A fájlnak PDF formátumúnak kell lennie, és feltöltés után el kell nevezni (legfeljebb 255 karakter).
+- **Felhasználói kézikönyv** (kötelező): részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
 
-- **Videók hozzáadása** (nem kötelező): A videókat fel lehet tölteni a YouTube-ra vagy a Vimeo-ra, és itt hivatkozással lehet hivatkozni egy linkre és egy miniatűr képre (533 x 324 képpont), hogy az ügyfél megtekinthesse az információk átjárását, hogy jobban megérthesse a tesztvezetést, beleértve az ajánlat funkcióinak sikeres használatát és az előnyeiket kiemelő forgatókönyveket.
+- **Videók: videók hozzáadása** (nem kötelező): a videók feltölthetők a YouTube vagy a Vimeo webhelyre, és a hivatkozás és a miniatűr képét (533 x 324 képpont) is feltölthetik, így az ügyfelek megtekinthetik az információ lépéseit, hogy könnyebben megértsék a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát, valamint az előnyeiket kiemelő forgatókönyveket
   - **Név** (kötelező)
-  - **URL (csak YouTube vagy Vimeo)** (kötelező)
-  - **Thumbnail (533 x 324px)**: A képfájlnak PNG formátumúnak kell lennie.
+  - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
+  - **Miniatűr (533 x 324px)**: a képfájlnak png formátumúnak kell lennie.
 
-A mezők **kitöltése** után válassza a Mentés lehetőséget.
+A mezők befejezése után válassza a **Mentés** lehetőséget.

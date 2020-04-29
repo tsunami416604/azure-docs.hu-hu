@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: 652d42d6e2d9e909c3a03bd82a3a36f91bc73807
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80419537"
 ---
 A szolgáltatás egyszerűen beállítható, de ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram segítségével tesztelheti a kapcsolatot az alkalmazás-konzolról. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az **eszközök** > **kudu**. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a **Debug konzol** lapra. Ha az alkalmazásból szeretné beolvasni a Azure Portal által üzemeltetett konzolt, lépjen az **eszközök** > **konzolra**.

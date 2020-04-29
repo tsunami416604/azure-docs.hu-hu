@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitások használata az Azure API Management ben | Microsoft dokumentumok
-description: Ismerje meg, hogyan használhatja a felügyelt identitásokat az API Management ben
+title: Felügyelt identitások használata az Azure API Managementban | Microsoft Docs
+description: Ismerje meg, hogyan használhatók a felügyelt identitások a API Management
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,31 +12,31 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
 ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249632"
 ---
-# <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure API Managementben
+# <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure-ban API Management
 
-Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást egy API Management szolgáltatáspéldányhoz, és hogyan érhet el más erőforrásokat. Az Azure Active Directory (Azure AD) által létrehozott felügyelt identitás lehetővé teszi, hogy az API Management-példány könnyen és biztonságosan hozzáférjen más Azure AD-védett erőforrásokhoz, például az Azure Key Vaulthoz. Ezt az identitást az Azure kezeli, és nem követeli meg, hogy kiépítse vagy elforgassa a titkos kulcsokat. A felügyelt identitásokról a [Mi az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md)című témakörben talál további információt.
+Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást egy API Management szolgáltatási példányhoz, és hogyan férhet hozzá más erőforrásokhoz. Azure Active Directory (Azure AD) által generált felügyelt identitás lehetővé teszi, hogy a API Management-példány könnyen és biztonságosan hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz, például a Azure Key Vaulthoz. Ezt az identitást az Azure felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. A felügyelt identitásokkal kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Felügyelt identitás létrehozása API Management-példányhoz
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-Felügyelt identitás beállítása a portálon, először hozzon létre egy API Management-példányt a szokásos módon, majd engedélyezze a funkciót.
+Ha felügyelt identitást szeretne beállítani a portálon, először létre kell hoznia egy API Management példányt a szokásos módon, majd engedélyeznie kell a szolgáltatást.
 
-1. Hozzon létre egy API Management-példányt a portálon, ahogy általában tenné. Keresse meg a portálon.
-2. Válassza **a Felügyelt szolgáltatás identitásait**.
-3. Váltás a Regisztráció az Azure Active Directoryval be Kattintson a Mentés gombra.
+1. A szokásos módon hozzon létre egy API Management példányt a portálon. Navigáljon a portálon.
+2. Válassza a **felügyelt szolgáltatás identitások**lehetőséget.
+3. Váltson a Azure Active Directory-ra való regisztrációra. Kattintson a Mentés gombra.
 
 ![Az MSI engedélyezése](./media/api-management-msi/enable-msi.png)
 
-### <a name="using-the-azure-resource-manager-template"></a>Az Azure Resource Manager sablon használata
+### <a name="using-the-azure-resource-manager-template"></a>A Azure Resource Manager sablon használata
 
-Létrehozhat egy API Management-példányt identitással, ha a következő tulajdonságot tartalmazza az erőforrás-definícióban:
+A következő tulajdonságot az erőforrás-definícióban is létrehozhatja az identitással rendelkező API Management-példányt:
 
 ```json
 "identity" : {
@@ -44,9 +44,9 @@ Létrehozhat egy API Management-példányt identitással, ha a következő tulaj
 }
 ```
 
-Ez arra utasítja az Azure-t, hogy hozza létre és kezelje az API Management-példány identitását.
+Ez azt jelzi, hogy az Azure létrehozza és kezeli az API Management-példány identitását.
 
-Egy teljes Azure Resource Manager-sablon például a következőkre néz ki:
+A teljes Azure Resource Manager sablon például a következőhöz hasonló lehet:
 
 ```json
 {
@@ -72,19 +72,19 @@ Egy teljes Azure Resource Manager-sablon például a következőkre néz ki:
     }]
 }
 ```
-## <a name="use-the-managed-service-identity-to-access-other-resources"></a>A felügyelt szolgáltatásidentitás használata más erőforrások eléréséhez
+## <a name="use-the-managed-service-identity-to-access-other-resources"></a>A felügyelt szolgáltatás identitásának használata más erőforrásokhoz való hozzáféréshez
 
 > [!NOTE]
-> Jelenleg felügyelt identitások segítségével szerezhet tanúsítványokat az Azure Key Vault api management egyéni tartománynevek. További forgatókönyvek hamarosan támogatni fogják.
+> A felügyelt identitások jelenleg API Management egyéni tartománynevek Azure Key Vault tanúsítványok beszerzésére használhatók. Hamarosan további forgatókönyvek is támogatottak lesznek.
 >
 >
 
 
-### <a name="obtain-a-certificate-from-azure-key-vault"></a>Tanúsítvány beszerzése az Azure Key Vaultból
+### <a name="obtain-a-certificate-from-azure-key-vault"></a>Tanúsítvány beszerzése Azure Key Vault
 
 #### <a name="prerequisites"></a>Előfeltételek
-1. A pfx-tanúsítványt tartalmazó Key Vaultnak ugyanabban az Azure-előfizetésben és az API-felügyeleti szolgáltatással megegyező erőforráscsoportban kell lennie. Ez az Azure Resource Manager sablon követelménye.
-2. A titkos titok tartalomtípusának *alkalmazásnak/x-pkcs12-nek*kell lennie. A tanúsítvány feltöltéséhez a következő parancsfájl használható:
+1. A pfx-tanúsítványt tartalmazó Key Vaultnak ugyanahhoz az Azure-előfizetéshez kell tartoznia, és ugyanazt az erőforráscsoportot kell megadnia, mint a API Management szolgáltatásnak. Ez a Azure Resource Manager sablon követelménye.
+2. A titkos kód tartalomtípusának az *Application/x-PKCS12/pfx-profil*kell lennie. A tanúsítvány feltöltéséhez a következő szkriptet használhatja:
 
 ```powershell
 $pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 
@@ -101,13 +101,13 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 ```
 
 > [!Important]
-> Ha a tanúsítvány objektumverziója nincs megadva, az API Management automatikusan beszerzi a tanúsítvány újabb verzióját a Key Vaultba való feltöltés után.
+> Ha nincs megadva a tanúsítvány objektum-verziója, akkor a API Management automatikusan beolvassa a tanúsítvány újabb verzióját, miután feltöltötte Key Vault.
 
-A következő példa egy Azure Resource Manager-sablont mutat be, amely a következő lépéseket tartalmazza:
+Az alábbi példa egy Azure Resource Manager sablont mutat be, amely a következő lépéseket tartalmazza:
 
-1. Hozzon létre egy API Management-példányt felügyelt identitással.
-2. Frissítse az Azure Key Vault-példány hozzáférési szabályzatait, és engedélyezze, hogy az API Management-példány titkokat szerezzen be belőle.
-3. Frissítse az API Management-példányt egyéni tartománynév beállításával a Key Vault-példány tanúsítványán keresztül.
+1. Hozzon létre egy API Management példányt felügyelt identitással.
+2. Frissítse egy Azure Key Vault példány hozzáférési szabályzatait, és engedélyezze, hogy a API Management-példány megszerezze a titkos kulcsokat.
+3. Frissítse a API Management példányt úgy, hogy egyéni tartománynevet állít be a Key Vault-példány tanúsítványán keresztül.
 
 ```json
 {
@@ -233,8 +233,8 @@ A következő példa egy Azure Resource Manager-sablont mutat be, amely a követ
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure-erőforrások felügyelt identitásairól:
+További információ az Azure-erőforrások felügyelt identitásáról:
 
-* [Mi az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md)
+* [Az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates)
 * [Hitelesítés felügyelt identitással egy házirendben](./api-management-authentication-policies.md#ManagedIdentity)

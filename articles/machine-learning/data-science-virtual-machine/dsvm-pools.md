@@ -1,8 +1,8 @@
 ---
-title: Közös medencék
+title: Megosztott készletek
 titleSuffix: Azure Data Science Virtual Machine
-description: Ismerje meg, hogyan hozhat létre & az adatelemzési virtuális gépek (DSVM-ek) megosztott készletét egy csapat megosztott erőforrásaként telepítheti.
-keywords: deep learning, AI, data science tools, data science virtual machine, geospatial analytics, team data science process
+description: Megtudhatja, hogyan hozhat létre & az adatelemzési Virtual Machines (Dsvm) megosztott készletét megosztott erőforrásként üzembe helyezni egy csapat számára.
+keywords: Deep learning, AI, adatelemzési eszközök, adatelemzési virtuális gép, térinformatikai elemzés, csoportos adatelemzési folyamat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -11,51 +11,51 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477340"
 ---
-# <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Adatelemzési virtuális gépek megosztott készletének létrehozása
+# <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Adatelemzési Virtual Machines megosztott készletének létrehozása
 
-Ebben a cikkben megtudhatja, hogyan hozhat létre egy megosztott készlet adatelemzési virtuális gépek (DSVMs) egy csapat. A megosztott készlet használatának előnyei közé tartozik a jobb erőforrás-kihasználtság, a könnyebb megosztás és együttműködés, valamint a DSVM-erőforrások hatékonyabb kezelése.
+Ebből a cikkből megtudhatja, hogyan hozhat létre az adatelemzési Virtual Machines (Dsvm) megosztott készletét egy csapat számára. A megosztott készlet használatának előnyei közé tartozik a jobb erőforrás-használat, a könnyebb megosztás és együttműködés, valamint a DSVM erőforrások hatékonyabb kezelése.
 
-Számos módszerrel és technológiával hozhat létre DSVM-készletet. Ez a cikk az interaktív virtuális gépek (VM-ek) készleteire összpontosít. Egy másik felügyelt számítási infrastruktúra az Azure Machine Learning Compute. További információt a Számítási célok beállítása című témakörben [talál.](../how-to-set-up-training-targets.md#amlcompute)
+Számos módszert és technológiát használhat a Dsvm készletének létrehozásához. Ez a cikk az interaktív virtuális gépek (VM-EK) készleteit tárgyalja. Egy alternatív felügyelt számítási infrastruktúra Azure Machine Learning számítás. További információ: [számítási célok beállítása](../how-to-set-up-training-targets.md#amlcompute).
 
-## <a name="interactive-vm-pool"></a>Interaktív virtuális gép készlet
+## <a name="interactive-vm-pool"></a>Interaktív virtuálisgép-készlet
 
-Az interaktív virtuális gépek készlete, amelyet a teljes AI/data science csapat megoszt, lehetővé teszi a felhasználók számára, hogy jelentkezzen be a DSVM egy rendelkezésre álló példányába, ahelyett, hogy a felhasználók minden egyes csoportjához külön példányt rendelkezne. Ez a beállítás lehetővé teszi az erőforrások jobb rendelkezésre állását és hatékonyabb kihasználását.
+A teljes AI/adatelemzési csapat által megosztott interaktív virtuális gépek készlete lehetővé teszi a felhasználók számára, hogy a DSVM elérhető példányára jelentkezzenek be ahelyett, hogy dedikált példányt kellene létrehoznia az egyes felhasználók számára. Ez a beállítás lehetővé teszi az erőforrások jobb rendelkezésre állását és hatékonyabb kihasználását.
 
-Az [Azure virtuálisgép-méretezési beállítások](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) technológia interaktív virtuálisgép-készlet létrehozásához. Skálázható készletek használatával azonos, terheléselosztásos és automatikus skálázási virtuális gépek csoportját hozhat létre és kezelheti.
+Az [Azure virtuálisgép-méretezési](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) csoportok technológiájának használatával interaktív virtuálisgép-készletet hozhat létre. A méretezési csoportok segítségével azonos, elosztott terhelésű és automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti.
 
-A felhasználó bejelentkezik a fő készlet IP- vagy DNS-címére. A méretezési készlet automatikusan irányítja a munkamenetet egy elérhető DSVM-hez a méretezési készletben. Mivel a felhasználók konzisztens és ismerős környezetet szeretnének, függetlenül attól, hogy a virtuális gépbe bejelentkeznek, a méretezési csoportban lévő virtuális gép összes példánya megosztott hálózati meghajtót, például egy Azure Files-megosztást vagy egy hálózati fájlrendszer (NFS) megosztást. A felhasználó megosztott munkaterülete általában az egyes példányokra csatlakoztatott megosztott fájltárolóban marad.
+A felhasználó bejelentkezik a fő készlet IP-címére vagy DNS-címére. A méretezési csoport automatikusan átirányítja a munkamenetet a méretezési csoport egy elérhető DSVM. Mivel a felhasználók egységes és ismerős környezetet kívánnak, függetlenül attól, hogy milyen virtuális gépről jelentkeznek be, a méretezési csoport minden példánya megosztott hálózati meghajtót csatlakoztat, például egy Azure Files megosztást vagy egy hálózati fájlrendszert (NFS-megosztást). A felhasználó megosztott munkaterülete általában az egyes példányokra csatlakoztatott megosztott fájlon marad.
 
-A [GitHubon](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json)található egy minta Azure Resource Manager-sablon, amely az Ubuntu DSVM-példányokkal egy méretezési csoportot hoz létre. Az Azure Resource Manager-sablon [paraméterfájljának](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) egy mintáját találja ugyanazon a helyen.
+Megtalálhatja a [githubon](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json)található Ubuntu DSVM-példányokkal rendelkező méretezési csoport létrehozására szolgáló minta Azure Resource Manager sablont. Ugyanazon a helyen talál egy [mintát a Azure Resource Manager](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) sablonhoz.
 
-A méretezési csoportot az Azure Resource Manager sablonból hozhatja létre, ha megadja a paraméterfájl értékeit az Azure CLI-ben:
+A méretezési csoport a Azure Resource Manager sablon alapján hozható létre az Azure CLI-ben található paraméterérték értékének megadásával:
 
 ```azurecli-interactive
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
 az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
 ```
 
-Az előző parancsok feltételezik, hogy:
+Az előző parancsok feltételezik, hogy rendelkezik az alábbiakkal:
 
-* A paraméterfájl másolata a méretezési csoport példányához megadott értékekkel.
+* A paraméter fájljának másolata a méretezési csoport példányához megadott értékekkel.
 * A virtuálisgép-példányok száma.
-* Az Azure Files megosztására mutató mutatók.
-* Az egyes virtuális gépeken leszcsatolva lévő tárfiók hitelesítő adatai.
+* A Azure Files megosztásra mutató mutatók.
+* A Storage-fiók hitelesítő adatai, amelyek az egyes virtuális gépekre lesznek csatlakoztatva.
 
-A paraméterfájlra helyileg hivatkozik a parancsok. A parancsfájlban paramétereket is átadhat, vagy kérheti őket.  
+A paraméter fájlját helyileg kell hivatkozni a parancsokban. A paramétereket beágyazottként is átadhatja, vagy rákérdezheti őket a parancsfájlban.  
 
-Az előző sablon lehetővé teszi az SSH és a JupyterHub port az előtér-skálán készlet az Ubuntu DSVMs háttér-készlet. Felhasználóként a virtuális gépre egy biztonságos rendszerhéjon (SSH) vagy a JupyterHubon a szokásos módon jelentkezik be. Mivel a virtuálisgép-példányok dinamikusan skálázhatók fel- és leskálázhatók, minden állapotot menteni kell a csatlakoztatott Azure Files megosztásba. Ugyanezt a módszert használhatja a Windows DSVM-ek készletének létrehozásához.
+Az előző sablon lehetővé teszi, hogy az SSH és a JupyterHub port az előtér-méretezési csoportból az Ubuntu-Dsvm háttér-készlete legyen. Felhasználóként a virtuális gépre egy Secure Shell (SSH) vagy a JupyterHub normál módon jelentkezhet be. Mivel a virtuálisgép-példányok dinamikusan méretezhetők vagy leállíthatók, minden állapotot a csatlakoztatott Azure Files-megosztásba kell menteni. Ugyanezt a megközelítést használhatja a Windows Dsvm készletének létrehozásához.
 
-Az [Azure Files-megosztást csatlakoztató parancsfájl](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) a GitHub Azure DataScienceVM-tárházában is elérhető. A parancsfájl csatlakoztatja az Azure Files megosztása a megadott csatlakoztatási pont a paraméterfájlban. A parancsfájl a csatlakoztatott meghajtóhoz való lágy hivatkozásokat is létrehoz a kezdeti felhasználó kezdőkönyvtárában. Az Azure Files megosztás felhasználóspecifikus jegyzetfüzetkönyvtára a `$HOME/notebooks/remote` címtárhoz van csatolva, így a felhasználók elérhetik, futtathatják és menthetik jupyter-jegyzetfüzeteiket. Használhatja ugyanazt a konvenciót, amikor további felhasználókat hoz létre a virtuális gépen, hogy az egyes felhasználók Jupyter munkaterületét az Azure Files megosztásra irányítsa.
+A [Azure Files megosztást csatlakoztató szkript](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) a GitHub Azure DataScienceVM adattárában is elérhető. A parancsfájl a paraméter fájljának megadott csatlakoztatási pontján csatlakoztatja a Azure Files megosztást. A parancsfájl emellett a kezdeti felhasználó kezdőkönyvtárának hivatkozásait is létrehozza a csatlakoztatott meghajtóra. A Azure Files-megosztásban lévő felhasználó-specifikus jegyzetfüzet-könyvtár nem kapcsolódik a `$HOME/notebooks/remote` címtárhoz, így a felhasználók hozzáférhetnek, futtathatnak és menthetik a Jupyter-jegyzetfüzeteket. Ugyanezt az egyezményt akkor használhatja, ha további felhasználókat hoz létre a virtuális gépen, hogy az egyes felhasználók Jupyter-munkaterületét az Azure Files-megosztásra irányítsa.
 
-A virtuálisgépek méretezési készletei támogatják az automatikus skálázást. Beállíthatja, hogy mikor hozzon létre további példányokat, és mikor kell lekicsinyíteni a példányokat. Például lefelé skálázhatja a nulla példányok menteni a felhőhardver-használati költségek, ha a virtuális gépek nem használják egyáltalán. A virtuálisgép-méretezési csoportok dokumentációs lapjai részletes lépéseket tartalmaznak az [automatikus skálázáshoz.](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)
+A virtuálisgép-méretezési csoportok támogatják az automatikus skálázást. Szabályokat állíthat be a további példányok létrehozásához és a példányok méretezési idejéhez. Ha például a virtuális gépeket egyáltalán nem használják, a Felhőbeli hardver használati költségeire csökkentheti a példányok méretét. A virtuálisgép-méretezési csoportok dokumentációs oldalain részletes útmutatást talál az automatikus [skálázáshoz](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Közös identitás beállítása](dsvm-common-identity.md)
-* [A hitelesítő adatok biztonságos tárolása a felhőbeli erőforrások eléréséhez](dsvm-secure-access-keys.md)
+* [Hitelesítő adatok biztonságos tárolása a felhőalapú erőforrások eléréséhez](dsvm-secure-access-keys.md)

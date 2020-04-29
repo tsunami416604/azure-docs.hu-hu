@@ -1,5 +1,5 @@
 ---
-title: Bing Visual Search JavaScript-ügyféltár – rövid útmutató
+title: Bing Visual Search JavaScript ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: 404529bf269f899603b92c6c23b0d95cd2749ee5
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550022"
 ---
-Ezzel a rövid útmutatóval a JavaScript-ügyfélkódtár használatával megkezdheti a rendszerelemzéseket a Bing Visual Search szolgáltatásból. Bár a Bing Visual Search a legtöbb programozási nyelvvel kompatibilis REST API-val rendelkezik, az ügyfélkódtár egyszerű módot kínál a szolgáltatás alkalmazásokba való integrálására. A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 
+Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a JavaScript ügyféloldali kódtár használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)található. 
 
-[Referenciadokumentációs](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [könyvtár forráskódjának](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [csomagja (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [Samples](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[A dokumentációs](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [-csomagjához (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Node.js](https://www.nodejs.org/)
-* A Bing Visual Search ügyfélkódtár JavaScripthez
-    * Ha egy konzolalkalmazást a Bing Visual Search ügyféltárhasználatával szeretne beállítani, futtassa a következő parancsokat:
+* A JavaScripthez készült Bing Visual Search ügyféloldali kódtár
+    * A következő parancsok futtatásával állíthatja be a konzol alkalmazást a Bing Visual Search ügyféloldali kódtár használatával:
         1. `npm install ms-rest-azure`
         2. `npm install azure-cognitiveservices-visualsearch`.
 
@@ -33,7 +33,7 @@ Ezzel a rövid útmutatóval a JavaScript-ügyfélkódtár használatával megke
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt kedvenc IDE-jében vagy szerkesztőjében, és adja hozzá a következő követelményeket. Ezután hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációazonosítóhoz és a feltölteni kívánt lemezkép fájlelérési útjához. 
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá az alábbi követelményeket. Ezután hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs AZONOSÍTÓhoz és a feltölteni kívánt rendszerkép elérési útjához. 
 
     ```javascript
     const os = require("os");
@@ -47,7 +47,7 @@ Ezzel a rövid útmutatóval a JavaScript-ügyfélkódtár használatával megke
     let filePath = "../Data/image.jpg";
     ```
 
-2. Az ügyfél példányosítsa meg.
+2. Hozza létre az ügyfelet.
 
     ```javascript
     let visualSearchClient = new Search.VisualSearchClient(credentials);
@@ -55,7 +55,7 @@ Ezzel a rövid útmutatóval a JavaScript-ügyfélkódtár használatával megke
 
 ## <a name="search-for-images"></a>Képek keresése
 
-1. Olvasásra használható `fs.createReadStream()` a képfájlban, és változókat hozhat létre a keresési kérelemhez és az eredményekhez. Ezután használja az ügyfelet a képek kereséséhez.
+1. A `fs.createReadStream()` használatával beolvashatja a képfájlt, és változókat hozhat létre a keresési kérelemhez és az eredményekhez. Ezután használja az ügyfelet a képek kereséséhez.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);

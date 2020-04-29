@@ -1,65 +1,65 @@
 ---
-title: Az Azure Blockchain Workbench konfigurációs metaadatokra vonatkozó hivatkozása
-description: Az Azure Blockchain Workbench Előzetes alkalmazás konfigurációs metaadatai – áttekintés.
+title: Az Azure Blockchain Workbench konfigurációs metaadat-referenciája
+description: Az Azure Blockchain Workbench előzetes verziójának alkalmazás-konfigurációs metaadatok áttekintése.
 ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 661e795f0e85f872b1072a8f641b8938115c5d7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252193"
 ---
-# <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain Workbench konfigurációs útmutatója
+# <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain Workbench konfigurációs referenciája
 
-Az Azure Blockchain Workbench-alkalmazások többrésztvevős munkafolyamatok, amelyeket konfigurációs metaadatok és intelligens szerződéskód határoz meg. A konfigurációs metaadatok határozzák meg a blockchain alkalmazás magas szintű munkafolyamatait és interakciós modelljét. Az intelligens szerződések határozzák meg a blockchain alkalmazás üzleti logikáját. A Workbench konfigurációt és intelligens szerződéskódot használ a blockchain alkalmazás felhasználói élményének létrehozásához.
+Az Azure Blockchain Workbench alkalmazások a konfigurációs metaadatok és az intelligens szerződési kódok által meghatározott többrésztvevős munkafolyamatok. A konfigurációs metaadatok a blockchain alkalmazás magas szintű munkafolyamatait és interakciós modelljét határozzák meg. Az intelligens szerződések határozzák meg a blockchain alkalmazás üzleti logikáját. A Workbench konfigurációs és intelligens szerződési kódot használ a blockchain alkalmazás felhasználói élményének létrehozásához.
 
-A konfigurációmetaadatai a következő információkat határozzák meg az egyes blokklánc-alkalmazásokhoz:
+A konfigurációs metaadatok a következő információkat határozzák meg az egyes blockchain-alkalmazásokhoz:
 
-* A blockchain alkalmazás neve és leírása
-* Egyedi szerepkörök a blockchain alkalmazáson belül cselekedhető vagy részt vevő felhasználók számára
-* Egy vagy több munkafolyamat. Minden munkafolyamat állapotgépként működik az üzleti logika áramlásának szabályozásához. A munkafolyamatok lehetnek függetlenek, vagy kölcsönhatásba léphetnek egymással.
+* A blockchain-alkalmazás neve és leírása
+* Egyedi szerepkörök azon felhasználók számára, akik a blockchain alkalmazásban működhetnek vagy részt vehetnek
+* Egy vagy több munkafolyamat. Az egyes munkafolyamatok állapotjelző gépnek minősülnek az üzleti logika áramlását vezérelve. A munkafolyamatok egymástól függetlenek lehetnek, vagy egymással kezelhetik egymást.
 
-Minden egyes definiált munkafolyamat a következőket határozza meg:
+Az egyes definiált munkafolyamatok a következőket határozzák meg:
 
 * A munkafolyamat neve és leírása
-* a munkafolyamat tagállamait.  Minden állapot az üzleti logika vezérlési folyamatának egy szakasza. 
-* A következő állapotra való áttéréslépése
-* Az egyes műveletek kezdeményezésére engedélyezett felhasználói szerepkörök
-* Intelligens szerződések, amelyek üzleti logikát képviselnek a kódfájlokban
+* A Munkafolyamat állapota.  Az egyes állapotok az üzleti logika vezérlési folyamatának egyik fázisa. 
+* A következő állapotba való áttérés lépései
+* Az egyes műveletek elindítására jogosult felhasználói szerepkörök
+* A programkódokban az üzleti logikát képviselő intelligens szerződések
 
 ## <a name="application"></a>Alkalmazás
 
-A blokklánc-alkalmazások konfigurációs metaadatokat, munkafolyamatokat és felhasználói szerepköröket tartalmaznak, akik cselekedhetnek vagy részt vehetnek az alkalmazáson belül.
+A blockchain-alkalmazások olyan konfigurációs metaadatokat, munkafolyamatokat és felhasználói szerepköröket tartalmaznak, amelyek az alkalmazásban működhetnek vagy részt vehetnek.
 
 | Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| ApplicationName | Egyedi alkalmazásnév. A megfelelő intelligens szerződésnek ugyanazt az **ApplicationName-t** kell használnia a megfelelő szerződésosztályhoz.  | Igen |
-| DisplayName | Az alkalmazás rövid megjelenítendő neve. | Igen |
-| Leírás | A kérelem leírása. | Nem |
-| Alkalmazási szerepkörök | [ApplicationRoles](#application-roles)gyűjtemény . Felhasználói szerepkörök, akik cselekedhetnek vagy részt vehetnek az alkalmazásban.  | Igen |
-| Munkafolyamatok | [Munkafolyamatok](#workflows)gyűjteménye . Minden munkafolyamat állapotgépként működik az üzleti logika áramlásának szabályozásához. | Igen |
+| ApplicationName | Az alkalmazás egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **ApplicationName** -t kell használnia a vonatkozó szerződési osztályhoz.  | Igen |
+| DisplayName | Az alkalmazás felhasználóbarát megjelenítendő neve. | Igen |
+| Leírás | Az alkalmazás leírása. | Nem |
+| ApplicationRoles | A [ApplicationRoles](#application-roles)gyűjteménye. Azok a felhasználói szerepkörök, akik az alkalmazásban működhetnek vagy részt vehetnek.  | Igen |
+| Munkafolyamatok | [Munkafolyamatok](#workflows)gyűjteménye. Az egyes munkafolyamatok állapotjelző gépnek minősülnek az üzleti logika áramlását vezérelve. | Igen |
 
-Például lásd: [konfigurációs fájl példa](#configuration-file-example).
+Példa: [példa a konfigurációs fájlra](#configuration-file-example).
 
 ## <a name="workflows"></a>Munkafolyamatok
 
-Az alkalmazás üzleti logikája állapotgépként modellezhető, ahol egy művelet művelet eredményeképpen az üzleti logika folyamata egyik állapotból a másikba kerül. A munkafolyamat az ilyen állapotok és műveletek gyűjteménye. Minden munkafolyamat egy vagy több intelligens szerződésből áll, amelyek a kódfájlok üzleti logikáját képviselik. A végrehajtható szerződés a munkafolyamat egy példánya.
+Az alkalmazás üzleti logikája olyan állapotú gépként is modellezhető, amelyben a művelet hatására az üzleti logikának az egyik állapotból a másikba való áthelyezése történik. A munkafolyamat ilyen állapotok és műveletek gyűjteménye. Minden munkafolyamat egy vagy több olyan intelligens szerződést tartalmaz, amely a programkódokban lévő üzleti logikát képviseli. Egy végrehajtható szerződés a munkafolyamat egy példánya.
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | Egyedi munkafolyamat-név. A megfelelő intelligens szerződésnek ugyanazt a nevet kell **használnia** az adott szerződésosztályhoz. | Igen | 50 |
-| DisplayName | A munkafolyamat rövid megjelenítendő neve. | Igen | 255 |
+| Name (Név) | Egyedi munkafolyamat neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a vonatkozó szerződési osztályhoz. | Igen | 50 |
+| DisplayName | A munkafolyamat felhasználóbarát megjelenítendő neve. | Igen | 255 |
 | Leírás | A munkafolyamat leírása. | Nem | 255 |
-| Kezdeményezők | [ApplicationRoles](#application-roles)gyűjtemény . Olyan szerepkörök, amelyek olyan felhasználókhoz vannak rendelve, akik jogosultak szerződéseket létrehozni a munkafolyamatban. | Igen | |
-| StartState (Kezdőállam) | A munkafolyamat kezdeti állapotának neve. | Igen | |
-| Tulajdonságok | [Azonosítók](#identifiers)gyűjteménye . Azokat az adatokat jelöli, amelyek láncon kívül olvashatók vagy egy felhasználói élményeszközben láthatók. | Igen | |
-| Konstruktor | A munkafolyamat egy példányának létrehozásához bemeneti paramétereket határoz meg. | Igen | |
+| Kezdeményezők | A [ApplicationRoles](#application-roles)gyűjteménye. A munkafolyamatban szerződések létrehozására jogosult felhasználókhoz hozzárendelt szerepkörök. | Igen | |
+| StartState | A munkafolyamat kezdeti állapotának neve. | Igen | |
+| Tulajdonságok | [Azonosítók](#identifiers)gyűjteménye. Azokat az adatelemzési eszközöket jelöli, amelyek leolvashatók a láncból, vagy megjeleníthetők a felhasználói élmény eszközben. | Igen | |
+| Konstruktor | Meghatározza a munkafolyamat egy példányának létrehozásához szükséges bemeneti paramétereket. | Igen | |
 | Functions | A munkafolyamatban végrehajtható [függvények](#functions) gyűjteménye. | Igen | |
-| Állapotok | [Munkafolyamat-állapotok](#states)gyűjteménye. | Igen | |
+| Állapotok | Munkafolyamat- [állapotok](#states)gyűjteménye. | Igen | |
 
-Például lásd: [konfigurációs fájl példa](#configuration-file-example).
+Példa: [példa a konfigurációs fájlra](#configuration-file-example).
 
 ## <a name="type"></a>Típus
 
@@ -67,20 +67,20 @@ Támogatott adattípusok.
 
 | Típus | Leírás |
 |-------|-------------|
-| address  | A blokklánc címtípusa, például *szerződések* vagy *felhasználók.* |
-| tömb    | Egyszintű tömb típusú egész, bool, pénz, vagy idő. A tömbök lehetnek statikusak vagy dinamikusak. Az **ElementType segítségével** adja meg a tömbelemeinek adattípusát. Lásd [a példakonfigurációt](#example-configuration-of-type-array). |
-| Bool     | Logikai adattípus. |
-| Szerződés | Szerződés típusú cím. |
-| Enum     | Elnevezett értékek számba vétele. A felsorolástípus használatakor az EnumValues listát is meg kell adnia. Minden érték legfeljebb 255 karakter. Az érvényes értékkarakterek közé tartoznak a kis- és nagybetűk (A-Z, a-z) és a számok (0-9). Lásd [a példakonfigurációt és -használatot a Solidity területen.](#example-configuration-of-type-enum) |
+| address  | A Blockchain, például a *szerződések* vagy a *felhasználók*. |
+| tömb    | Egyszintű tömb, egész szám, bool, pénz vagy idő típusú tömb. A tömbök lehetnek statikusak vagy dinamikusak. A tömbben található elemek adattípusának megadásához használja a **ElementType** . Lásd: [példa konfiguráció](#example-configuration-of-type-array). |
+| logikai     | Logikai adattípus. |
+| szerződés | Szerződés típusú címe. |
+| Enum     | Megnevezett értékek enumerálása. Az enumerálás típusának használatakor megadhatja a EnumValues listáját is. Minden érték 255 karakterből állhat. Az érvényes értékek a következők: kis-és nagybetűk (A-Z, a-z) és számok (0-9). Lásd: [példa konfiguráció és használat a soliding-ben](#example-configuration-of-type-enum). |
 | int      | Egész adattípus. |
-| Pénzt    | Pénz adattípusa. |
+| pénzt    | Pénz adattípus. |
 | state    | Munkafolyamat állapota. |
-| sztring  | Sztring adattípusú. Legfeljebb 4000 karakter. Lásd [a példakonfigurációt](#example-configuration-of-type-string). |
-| felhasználó!     | Felhasználó típusú cím. |
-| time     | Időadattípus. |
-|`[ Application Role Name ]`| Az alkalmazásszerepkörben megadott bármely név. Korlátozza, hogy a felhasználók ilyen szerepkörtípusba legyenek. |
+| sztring  | Sztring adattípusú. 4000 karakter maximális száma. Lásd: [példa konfiguráció](#example-configuration-of-type-string). |
+| felhasználó!     | Felhasználó típusú címe. |
+| time     | Idő adattípus. |
+|`[ Application Role Name ]`| Bármely, az alkalmazás szerepkörben megadott név. Korlátozza a felhasználókat a szerepkör típusának. |
 
-### <a name="example-configuration-of-type-array"></a>Példa típusú tömb konfigurációjára
+### <a name="example-configuration-of-type-array"></a>Tömb típusú konfiguráció
 
 ```json
 {
@@ -98,7 +98,7 @@ Támogatott adattípusok.
 
 #### <a name="using-a-property-of-type-array"></a>Tömb típusú tulajdonság használata
 
-Ha egy tulajdonságot típustömbként határoz meg a konfigurációban, akkor explicit leési függvényt kell megadnia a tömbtípus nyilvános tulajdonságának visszaadására a Solidity függvényben. Példa:
+Ha a konfigurációban típus tömbként definiál egy tulajdonságot, meg kell adnia egy explicit Get függvényt, amely a szilárdtesten lévő tömb típusának nyilvános tulajdonságát adja vissza. Például:
 
 ```
 function GetQuotes() public constant returns (int[]) {
@@ -106,7 +106,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-string"></a>Példa karakterlánc típusú konfigurációra
+### <a name="example-configuration-of-type-string"></a>Karakterlánc típusú konfiguráció
 
 ``` json
 {
@@ -119,7 +119,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-enum"></a>Példa felsorakó típus konfigurációjára
+### <a name="example-configuration-of-type-enum"></a>Példa Enum típusú konfigurációra
 
 ``` json
 {
@@ -133,23 +133,23 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-#### <a name="using-enumeration-type-in-solidity"></a>Felsorolástípus használata a tömörségben
+#### <a name="using-enumeration-type-in-solidity"></a>Számbavételi típus használata a Szilárdtestben
 
-Miután egy felsorolás definiált a konfigurációban, használhatja a sorszámbavételi típusokat a Tömörségben. Például megadhat egy PropertyTypeEnum nevű felsoratot.
+Miután meghatározta a felsorolást a konfigurációban, a számbavételi típusokat a Szilárdtestben is használhatja. Megadhat például egy PropertyTypeEnum nevű enumerálást.
 
 ```
 enum PropertyTypeEnum {House, Townhouse, Condo, Land} PropertyTypeEnum public PropertyType; 
 ```
 
-A karakterláncok listájának meg kell egyeznie a konfiguráció és az intelligens szerződés között, hogy érvényes és konzisztens deklarációk legyenek a Blockchain Workbench-ben.
+A karakterláncok listájának egyeznie kell a konfiguráció és az intelligens szerződés között, hogy érvényes és konzisztens deklarációk legyenek a Blockchain Workbenchben.
 
-Példa hozzárendelésre:
+Hozzárendelési példa:
 
 ```
 PropertyType = PropertyTypeEnum.Townhouse;
 ```
 
-Példa függvényparaméterre: 
+Példa a Function paraméterre: 
 
 ``` 
 function AssetTransfer(string description, uint256 price, PropertyTypeEnum propertyType) public
@@ -166,13 +166,13 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ## <a name="constructor"></a>Konstruktor
 
-A munkafolyamat egy példányának bemeneti paramétereit határozza meg.
+Meghatározza a munkafolyamat egy példányának bemeneti paramétereit.
 
 | Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| Paraméterek | Intelligens szerződés kezdeményezéséhez szükséges [azonosítók](#identifiers) gyűjteménye. | Igen |
+| Paraméterek | Intelligens szerződés elindításához szükséges [azonosítók](#identifiers) gyűjteménye. | Igen |
 
-### <a name="constructor-example"></a>Példa konstruktorra
+### <a name="constructor-example"></a>Konstruktor – példa
 
 ``` json
 {
@@ -199,16 +199,16 @@ A munkafolyamat egy példányának bemeneti paramétereit határozza meg.
 
 ## <a name="functions"></a>Functions
 
-A munkafolyamaton végrehajtható függvényeket határozza meg.
+A munkafolyamaton végrehajtható függvények meghatározása.
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | A függvény egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a nevet kell **használnia** a megfelelő függvényhez. | Igen | 50 |
-| DisplayName | A függvény rövid megjelenítendő neve. | Igen | 255 |
+| Name (Név) | A függvény egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő függvényhez. | Igen | 50 |
+| DisplayName | A függvény felhasználóbarát megjelenítendő neve. | Igen | 255 |
 | Leírás | A függvény leírása | Nem | 255 |
 | Paraméterek | A függvény paramétereinek megfelelő [azonosítók](#identifiers) gyűjteménye. | Igen | |
 
-### <a name="functions-example"></a>Példa függvényekre
+### <a name="functions-example"></a>Függvények – példa
 
 ``` json
 "Functions": [
@@ -247,18 +247,18 @@ A munkafolyamaton végrehajtható függvényeket határozza meg.
 
 ## <a name="states"></a>Állapotok
 
-A munkafolyamaton belüli egyedi állapotok gyűjteménye. Minden állapot rögzít egy lépést az üzleti logika vezérlési folyamatában. 
+Egy munkafolyamaton belül egyedi állapotok gyűjteménye. Az egyes állapotok rögzítik az üzleti logika vezérlési folyamatának lépéseit. 
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | Az állam egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a nevet kell **használnia** a megfelelő állapothoz. | Igen | 50 |
-| DisplayName | Az állapot rövid megjelenítendő neve. | Igen | 255 |
+| Name (Név) | Az állapot egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő állapothoz. | Igen | 50 |
+| DisplayName | Az állapot felhasználóbarát megjelenítendő neve. | Igen | 255 |
 | Leírás | Az állapot leírása. | Nem | 255 |
-| Százalékteljes | A Blockchain Workbench felhasználói felületén megjelenő egész érték az üzleti logika vezérlési folyamatán belüli előrehaladás megjelenítéséhez. | Igen | |
-| Stílus | Vizuális tipp, amely azt jelzi, hogy az állapot sikeres vagy sikertelen állapotot jelent-e. Két érvényes érték `Success` létezik: vagy `Failure`. | Igen | |
-| Áttűnések | Az aktuális állapotról a következő állapotra [való váltandó átmenetek](#transitions) gyűjteménye. | Nem | |
+| KészültségiSzint paraméter értéke | A Blockchain Workbench felhasználói felületén megjelenő egész érték, amely az üzleti logika vezérlési folyamatán belüli előrehaladást mutatja. | Igen | |
+| Stílus | Vizuális mutató, amely azt jelzi, hogy az állapot sikeres vagy sikertelen állapotot képvisel-e. Két érvényes érték létezik: `Success` vagy. `Failure` | Igen | |
+| Áttűnések | Elérhető [átmenetek](#transitions) gyűjteménye az aktuális állapotból a következő készletbe. | Nem | |
 
-### <a name="states-example"></a>Példa államokra
+### <a name="states-example"></a>Állapotok – példa
 
 ``` json
 "States": [
@@ -316,18 +316,18 @@ A munkafolyamaton belüli egyedi állapotok gyűjteménye. Minden állapot rögz
 
 ## <a name="transitions"></a>Áttűnések
 
-Elérhető műveletek a következő állapotban. Egy vagy több felhasználói szerepkör minden államban végrehajthat egy műveletet, ahol egy művelet átválthat egy állapotot a munkafolyamat egy másik állapotába. 
+A következő állapothoz elérhető műveletek. Egy vagy több felhasználói szerepkör minden állapotban végrehajthat egy műveletet, ahol egy művelet egy állapotot áttérhet a munkafolyamat egy másik állapotára. 
 
 | Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| AllowedRoles (AllowedRoles) | Az átmenet kezdeményezésére engedélyezett alkalmazásszerepkörök listája. Előfordulhat, hogy a megadott szerepkör összes felhasználója végrehajthatja a műveletet. | Nem |
-| AllowedInstanceRoles (AllowedInstanceRoles) | Az átmenet kezdeményezésére engedélyezett intelligens szerződésben részt vevő vagy megadott felhasználói szerepkörök listája. A példányszerepkörök a munkafolyamatokon belüli **tulajdonságokban** vannak definiálva. Az AllowedInstanceRoles egy intelligens szerződés példányában részt vevő felhasználót jelöl. Az AllowedInstanceRoles lehetővé teszi, hogy egy műveletet egy szerződéspéldány felhasználói szerepkörére korlátozza.  Előfordulhat például, hogy csak azt szeretné engedélyezni, hogy a szerződést létrehozó felhasználó (InstanceOwner) a szerepkörtípusban (Tulajdonos) szereplő összes felhasználó helyett bonthassa ki, ha megadta a szerepkört az AllowedRoles-ban. | Nem |
-| DisplayName | Az átmenet rövid megjelenítendő neve. | Igen |
+| AllowedRoles | Az áttérés kezdeményezésére jogosult alkalmazások listája. Lehetséges, hogy a megadott szerepkör összes felhasználója el tudja végezni a műveletet. | Nem |
+| AllowedInstanceRoles | Az átállást kezdeményező, az intelligens szerződésben résztvevő vagy megadott felhasználói szerepkörök listája. A példányok szerepkörei a munkafolyamatokon belüli **tulajdonságokban** vannak meghatározva. A AllowedInstanceRoles egy intelligens szerződés egy példányában részt vevő felhasználót jelöl. A AllowedInstanceRoles lehetővé teszi, hogy egy adott szerződési példányban egy felhasználói szerepkörre korlátozza a műveletet.  Előfordulhat például, hogy csak azt szeretné engedélyezni, hogy a szerződést (InstanceOwner) létrehozó felhasználó a szerepkör típusa (tulajdonos) helyett az összes felhasználó számára is lemondható legyen, ha a szerepkört a AllowedRoles-ben adta meg. | Nem |
+| DisplayName | Az átmenet felhasználóbarát megjelenítendő neve. | Igen |
 | Leírás | Az átmenet leírása. | Nem |
 | Függvény | Az átmenetet kezdeményező függvény neve. | Igen |
-| Következő államok | A sikeres átmenet után a lehetséges következő állapotok gyűjteménye. | Igen |
+| NextStates | A sikeres áttérés utáni lehetséges következő állapotok gyűjteménye. | Igen |
 
-### <a name="transitions-example"></a>Példa átmenetekre
+### <a name="transitions-example"></a>Átmenetek – példa
 
 ``` json
 "Transitions": [
@@ -361,14 +361,14 @@ Elérhető műveletek a következő állapotban. Egy vagy több felhasználói s
 
 ## <a name="application-roles"></a>Alkalmazás-szerepkörök
 
-Az alkalmazásszerepkörök olyan szerepköröket határoznak meg, amelyek az alkalmazáson belül cselekedni vagy részt venni kívánó felhasználókhoz rendelhetők. Az alkalmazásszerepkörök segítségével korlátozhatja a műveleteket és a részvételt a blokklánc-alkalmazáson és a megfelelő munkafolyamatokban. 
+Az alkalmazás szerepkörei olyan szerepköröket határoznak meg, amelyek hozzárendelhetők olyan felhasználókhoz, akik az alkalmazáson belül szeretnének működni vagy részt venni. Az alkalmazás szerepkörei a blockchain alkalmazásban és a megfelelő munkafolyamatokban is korlátozhatják a műveleteket és a részvételt. 
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | Az alkalmazásszerepkör egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a nevet kell **használnia** a megfelelő szerepkörhöz. Az alaptípusnevek le vannak foglalva. A Típus névvel megegyező nevű alkalmazásszerepkör nem [nevezhető el.](#type)| Igen | 50 |
-| Leírás | Az alkalmazásszerepkör leírása. | Nem | 255 |
+| Name (Név) | Az alkalmazás szerepkörének egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő szerepkörhöz. Az alaptípusok nevei le vannak foglalva. Az alkalmazás-szerepkör nem nevezhető el ugyanazzal a névvel, mint a [Type](#type)| Igen | 50 |
+| Leírás | Az alkalmazás szerepkörének leírása. | Nem | 255 |
 
-### <a name="application-roles-example"></a>Példa alkalmazásszerepkörökre
+### <a name="application-roles-example"></a>Példa az alkalmazás szerepköreire
 
 ``` json
 "ApplicationRoles": [
@@ -384,16 +384,16 @@ Az alkalmazásszerepkörök olyan szerepköröket határoznak meg, amelyek az al
 ```
 ## <a name="identifiers"></a>Azonosítók
 
-Az azonosítók a munkafolyamat tulajdonságainak, a konstruktornak és a függvényparamétereknek a leírásához használt információk gyűjteményét jelentik. 
+Az azonosítók a munkafolyamat-tulajdonságok, a konstruktorok és a függvények paramétereinek leírására szolgáló információk gyűjteményét jelölik. 
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | A tulajdonság vagy paraméter egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a nevet kell **használnia** a megfelelő tulajdonsághoz vagy paraméterhez. | Igen | 50 |
-| DisplayName | A tulajdonság vagy paraméter rövid megjelenítendő neve. | Igen | 255 |
-| Leírás | A tulajdonság vagy paraméter leírása. | Nem | 255 |
+| Name (Név) | A tulajdonság vagy paraméter egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő tulajdonsághoz vagy paraméterhez. | Igen | 50 |
+| DisplayName | A tulajdonság vagy paraméter felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | A tulajdonság vagy a paraméter leírása. | Nem | 255 |
 | Típus | Tulajdonság [adattípusa](#type). | Igen |
 
-### <a name="identifiers-example"></a>Példa azonosítókra
+### <a name="identifiers-example"></a>Azonosítók – példa
 
 ``` json
 "Properties": [
@@ -418,11 +418,11 @@ Az azonosítók a munkafolyamat tulajdonságainak, a konstruktornak és a függv
 
 ## <a name="configuration-file-example"></a>Példa konfigurációs fájlra
 
-Az eszközátruházás egy intelligens szerződési forgatókönyv nagy értékű eszközök vételére és eladására, amelyekhez ellenőrre és értékbecslőre van szükség. Az eladók az eszközátruházási intelligens szerződés létrehozásával listázhatják eszközeiket. A vevők az intelligens szerződéssel kapcsolatos művelettel tehetnek ajánlatot, és más felek műveleteket tehetnek az eszköz vizsgálatára vagy értékelésére. Miután az eszköz van megjelölve mind ellenőrzött és értékelik, a vevő és az eladó megerősíti az értékesítés újra, mielőtt a szerződés van beállítva, hogy teljes. A folyamat minden egyes pontján minden résztvevő láthatja a szerződés naprakészen történő állapotát. 
+Az adatátviteli szolgáltatás olyan intelligens szerződési forgatókönyv, amely nagy értékű adategységek megvásárlását és értékesítését igényli. Az értékesítők az adategységek átadásával intelligens szerződést hozhatnak létre az eszközeik listázásához. A vásárlók az intelligens szerződéssel kapcsolatos műveletek elvégzésével elvégezhetik az ajánlatokat, és más felek is végezhetnek műveleteket az eszköz vizsgálatához és értékeléséhez. Miután megtörtént a vizsgálat és az értékelés is, a vevő és az eladó megerősíti az értékesítést, mielőtt a szerződés befejeződik. A folyamat minden pontján minden résztvevő megtekinti a szerződés állapotát a frissítés során. 
 
-További információ, beleértve a kódfájlokat, [lásd: eszközátadási minta az Azure Blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
+További információk, például a kódrészletek: [Asset-átviteli minta az Azure Blockchain workbenchhez](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
 
-A következő konfigurációs fájl az eszközátviteli mintához kapcsolódik:
+A következő konfigurációs fájl az Asset átviteli mintája:
 
 ``` json
 {

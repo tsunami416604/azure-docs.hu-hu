@@ -1,6 +1,6 @@
 ---
-title: Az Azure site recovery folyamatkiszolgálójának hibaelhárítása
-description: Ez a cikk az Azure Site Recovery folyamatkiszolgálóval kapcsolatos problémák elhárítását ismerteti
+title: A Azure Site Recovery Process Server hibáinak megoldása
+description: Ez a cikk a Azure Site Recovery Process Serverrel kapcsolatos hibák elhárítását ismerteti
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,135 +8,135 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256860"
 ---
-# <a name="troubleshoot-the-process-server"></a>A folyamatkiszolgáló hibáinak elhárítása
+# <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
 
-A [Site Recovery](site-recovery-overview.md) folyamatkiszolgáló akkor használatos, amikor beállítja a vészhelyreállítást az Azure-ban a helyszíni VMware virtuális gépek és a fizikai kiszolgálók. Ez a cikk a folyamatkiszolgálóval kapcsolatos problémák elhárítását ismerteti, beleértve a replikációs és kapcsolódási problémákat.
+Az [site Recovery](site-recovery-overview.md) Process Server akkor használatos, amikor a helyszíni VMWare virtuális gépek és fizikai kiszolgálók esetében a vész-helyreállítást állítja be az Azure-ba. Ez a cikk a Process Serverrel kapcsolatos hibák elhárítását ismerteti, beleértve a replikálási és csatlakozási problémákat.
 
-[További információ](vmware-physical-azure-config-process-server-overview.md) a folyamatkiszolgálóról.
+[További](vmware-physical-azure-config-process-server-overview.md) információ a Process Serverről.
 
 ## <a name="before-you-start"></a>Előkészületek
 
 A hibaelhárítás megkezdése előtt:
 
-1. Győződjön meg róla, hogy megértette, hogyan kell [figyelni a folyamatszerverek](vmware-physical-azure-monitor-process-server.md).
-2. Tekintse át az alábbi gyakorlati tanácsokat.
-3. Ügyeljen arra, hogy kövesse a [kapacitással kapcsolatos szempontokat,](site-recovery-plan-capacity-vmware.md#capacity-considerations)és használjon méretezési útmutatót a [konfigurációs kiszolgálóhoz](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) vagy az [önálló folyamatkiszolgálókhoz.](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)
+1. Győződjön meg arról, hogy megérti a [folyamat-kiszolgálók figyelését](vmware-physical-azure-monitor-process-server.md).
+2. Tekintse át az alábbi ajánlott eljárásokat.
+3. Ügyeljen arra, hogy kövesse a [kapacitással kapcsolatos szempontokat](site-recovery-plan-capacity-vmware.md#capacity-considerations), és használjon méretezési útmutatót a [konfigurációs kiszolgálóhoz](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) vagy az [önálló folyamat-kiszolgálókhoz](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
 
-## <a name="best-practices-for-process-server-deployment"></a>Gyakorlati tanácsok a folyamatkiszolgáló telepítéséhez
+## <a name="best-practices-for-process-server-deployment"></a>Ajánlott eljárások a Process Server üzembe helyezéséhez
 
-A folyamatkiszolgálók optimális teljesítménye érdekében számos általános ajánlott eljárást foglaltunk össze.
+A folyamat-kiszolgálók optimális teljesítményéhez számos általános ajánlott eljárást összegezünk.
 
-**Legjobb gyakorlat** | **Részletek**
+**Ajánlott eljárás** | **Részletek**
 --- |---
-**Használat** | Győződjön meg arról, hogy a konfigurációs kiszolgáló/önálló folyamatkiszolgáló csak a kívánt célra használatos. Ne futtasson semmi mást a gépen.
-**IP-cím** | Győződjön meg arról, hogy a folyamatkiszolgáló rendelkezik statikus IPv4-címmel, és nincs konfigurálva a NAT.
-**Memória/CPU-használat szabályozása** |Tartsa a CPU és a memória használat alatt 70%.
-**Szabad terület biztosítása** | A szabad terület a folyamatkiszolgáló gyorsítótárlemezterületére vonatkozik. A replikációs adatok a gyorsítótárban tárolódnak, mielőtt feltöltenék az Azure-ba.<br/><br/> Tartsa a szabad területet 25% felett. Ha 20% alá csökken, a replikáció a folyamatkiszolgálóhoz társított replikált gépek reprodukált akta lesz.
+**Használati** | Győződjön meg arról, hogy a konfigurációs kiszolgáló/önálló folyamat kiszolgálója csak a kívánt célra szolgál. Ne futtasson semmi mást a gépen.
+**IP-cím** | Győződjön meg arról, hogy a Process Server statikus IPv4-címe van, és nincs konfigurálva a NAT.
+**Memória/CPU-használat szabályozása** |A processzor és a memória kihasználtsága 70% alatt marad.
+**Szabad terület biztosítása** | A szabad terület a folyamat kiszolgálójának gyorsítótár-lemezterületére utal. Az Azure-ba való feltöltés előtt a replikálási szolgáltatás a gyorsítótárban tárolódik.<br/><br/> Tartsa meg a szabad területet 25% felett. Ha a művelet 20% alá esik, a rendszer a folyamat-kiszolgálóhoz társított replikált gépek esetében a replikálást szabályozza.
 
-## <a name="check-process-server-health"></a>A folyamatkiszolgáló állapotának ellenőrzése
+## <a name="check-process-server-health"></a>A Process Server állapotának keresése
 
-A hibaelhárítás első lépése a folyamatkiszolgáló állapotának és állapotának ellenőrzése. Ehhez tekintse át az összes riasztást, ellenőrizze, hogy a szükséges szolgáltatások futnak-e, és ellenőrizze, hogy van-e szívverés a folyamatkiszolgálótól. Ezeket a lépéseket az alábbi ábra foglalja össze, amelyet a lépések végrehajtásához szükséges eljárások követnek.
+A hibaelhárítás első lépése a Process Server állapotának és állapotának a megkeresése. Ehhez tekintse át az összes riasztást, ellenőrizze, hogy futnak-e a szükséges szolgáltatások, és ellenőrizze, hogy van-e szívverés a folyamat-kiszolgálóról. Ezek a lépések az alábbi ábrán vannak összefoglalva, amelyet a lépések végrehajtásához szükséges eljárások követnek.
 
-![Folyamatkiszolgáló állapotának elhárítása](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
+![A Process Server Health hibáinak megoldása](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
 
-## <a name="step-1-troubleshoot-process-server-health-alerts"></a>1. lépés: Folyamatkiszolgáló állapotára vonatkozó riasztások kal elhárítása
+## <a name="step-1-troubleshoot-process-server-health-alerts"></a>1. lépés: a Process Server állapotával kapcsolatos riasztások hibáinak megoldása
 
-A folyamatkiszolgáló számos állapotriasztást hoz létre. Ezeket a riasztásokat és az ajánlott műveleteket az alábbi táblázat foglalja össze.
+A Process Server számos rendszerállapot-riasztást generál. Ezeket a riasztásokat és az ajánlott műveleteket az alábbi táblázat foglalja össze.
 
-**Riasztástípus** | **Hiba** | **Elhárítása**
+**Riasztástípus** | **Hiba** | **Hibaelhárítás**
 --- | --- | --- 
-![Kifogástalan][green] | None  | A folyamatkiszolgáló csatlakoztatva van és kifogástalan állapotú.
-![Figyelmeztetés][yellow] | A megadott szolgáltatások nem futnak. | 1. Ellenőrizze, hogy futnak-e a szolgáltatások.<br/> 2. Ha a szolgáltatások a várt módon futnak, kövesse az alábbi utasításokat a [kapcsolódási és replikációs problémák elhárításához.](#check-connectivity-and-replication)
-![Figyelmeztetés][yellow]  | A PROCESSZOR-kihasználtság 80%-kal > az elmúlt 15 percben. | 1. Ne adjon hozzá új gépeket.<br/>2. Ellenőrizze, hogy a folyamatkiszolgálót használó virtuális gépek száma [igazodik-e](site-recovery-plan-capacity-vmware.md#capacity-considerations)a megadott korlátokhoz, és fontolja meg egy [további folyamatkiszolgáló beállítását.](vmware-azure-set-up-process-server-scale.md)<br/>3. Kövesse az alábbi utasításokat a [kapcsolódási és replikációs problémák elhárításához](#check-connectivity-and-replication).
-![Kritikus][red] |  A PROCESSZOR kihasználtsága > 95% az elmúlt 15 percben. | 1. Ne adjon hozzá új gépeket.<br/>2. Ellenőrizze, hogy a folyamatkiszolgálót használó virtuális gépek száma [igazodik-e](site-recovery-plan-capacity-vmware.md#capacity-considerations)a megadott korlátokhoz, és fontolja meg egy [további folyamatkiszolgáló beállítását.](vmware-azure-set-up-process-server-scale.md)<br/>3. Kövesse az alábbi utasításokat a [kapcsolódási és replikációs problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Telepítéstervező](https://aka.ms/asr-v2a-deployment-planner) t a VMware/fizikai kiszolgáló replikációjához.
-![Figyelmeztetés][yellow] | A memóriahasználat 80%-> az elmúlt 15 percben. |  1. Ne adjon hozzá új gépeket.<br/>2. Ellenőrizze, hogy a folyamatkiszolgálót használó virtuális gépek száma [igazodik-e](site-recovery-plan-capacity-vmware.md#capacity-considerations)a megadott korlátokhoz, és fontolja meg egy [további folyamatkiszolgáló beállítását.](vmware-azure-set-up-process-server-scale.md)<br/>3. Kövesse a figyelmeztetéssel kapcsolatos utasításokat.<br/> 4. Ha a probléma továbbra is fennáll, kövesse az alábbi utasításokat a [kapcsolódási és replikációs problémák elhárításához](#check-connectivity-and-replication).
-![Kritikus][red] | A memóriahasználat > 95% az elmúlt 15 percben. | 1. Ne adjon hozzá új gépeket, és fontolja meg egy [további folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md)létrehozását .<br/> 2. Kövesse a figyelmeztetéssel kapcsolatos utasításokat.<br/> 3. 4. Ha a probléma továbbra is fennáll, kövesse az alábbi utasításokat a [kapcsolódási és replikációs problémák elhárításához.](#check-connectivity-and-replication)<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Telepítéstervező](https://aka.ms/asr-v2a-deployment-planner) t a VMware/fizikai kiszolgáló replikációs problémáihoz.
-![Figyelmeztetés][yellow] | A gyorsítótármappa szabad területe az elmúlt 15 percben 30%-<. | 1. Ne adjon hozzá új gépeket, és fontolja meg egy [további folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md)létrehozását.<br/>2. Ellenőrizze, hogy a folyamatkiszolgálót használó virtuális gépek száma igazodik-e az [irányelvekhez.](site-recovery-plan-capacity-vmware.md#capacity-considerations)<br/> 3. Kövesse az alábbi utasításokat a [kapcsolódási és replikációs problémák elhárításához](#check-connectivity-and-replication).
-![Kritikus][red] |  Szabad hely < 25% az elmúlt 15 percben | 1. Kövesse a jelen probléma figyelmeztetéséhez kapcsolódó utasításokat.<br/> 2. 3. A [kapcsolódási és replikációs problémák elhárításához](#check-connectivity-and-replication)kövesse az alábbi utasításokat.<br/> 3. Ha a probléma továbbra is fennáll, futtassa a [Telepítéstervező](https://aka.ms/asr-v2a-deployment-planner) t a VMware/fizikai kiszolgáló replikációjához.
-![Kritikus][red] | A folyamatkiszolgáló 15 percig vagy tovább nem szívritmusban érkezik. A tmansvs szolgáltatás nem kommunikál a konfigurációs kiszolgálóval. | 1) Ellenőrizze, hogy a folyamat szerver működik.<br/> 2. Ellenőrizze, hogy a tmassvc fut-e a folyamatkiszolgálón.<br/> 3. Kövesse az alábbi utasításokat a [kapcsolódási és replikációs problémák elhárításához](#check-connectivity-and-replication).
+![Kifogástalan][green] | None  | A Process Server csatlakoztatva van és kifogástalan állapotú.
+![Figyelmeztetés][yellow] | A megadott szolgáltatások nem futnak. | 1. Győződjön meg arról, hogy a szolgáltatások futnak.<br/> 2. Ha a szolgáltatások a várt módon futnak, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
+![Figyelmeztetés][yellow]  | A CPU-kihasználtság > 80%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
+![Kritikus][red] |  A CPU-kihasználtság > 95%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) a VMware/fizikai kiszolgáló replikálásához.
+![Figyelmeztetés][yellow] | Memóriahasználat > 80% az elmúlt 15 percben. |  1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse a figyelmeztetéssel kapcsolatos utasításokat.<br/> 4. Ha a probléma továbbra is fennáll, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
+![Kritikus][red] | Memóriahasználat > 95% az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/> 2. kövesse a figyelmeztetéssel kapcsolatos utasításokat.<br/> 3.4. Ha a probléma továbbra is fennáll, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a VMware/fizikai kiszolgáló replikációs problémáinak [Deployment Plannerát](https://aka.ms/asr-v2a-deployment-planner) .
+![Figyelmeztetés][yellow] | A gyorsítótár-mappa szabad területe < 30% az elmúlt 15 percben. | 1. ne vegyen fel új gépeket, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>2. Győződjön meg arról, hogy a Process Servert használó virtuális gépek száma igazodik az [irányelvekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
+![Kritikus][red] |  Szabad terület < 25% az elmúlt 15 percben | 1. kövesse a probléma figyelmeztetéséhez tartozó utasításokat.<br/> 2.3. A [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication)kövesse az alábbi utasításokat.<br/> 3. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) a VMware/fizikai kiszolgáló replikálásához.
+![Kritikus][red] | A folyamat kiszolgálójának nincs szívverése 15 percig vagy többet. A tmansvs szolgáltatás nem kommunikál a konfigurációs kiszolgálóval. | 1.) győződjön meg arról, hogy a Process Server működik-e.<br/> 2. Győződjön meg arról, hogy a tmassvc fut a Process Serveren.<br/> 3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 
 
-![Táblakulcs](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
+![Tábla kulcsa](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
 
 
-## <a name="step-2-check-process-server-services"></a>2. lépés: Folyamatkiszolgáló-szolgáltatások ellenőrzése
+## <a name="step-2-check-process-server-services"></a>2. lépés: a Process Server-szolgáltatások keresése
 
-A folyamatkiszolgálón futtatandó szolgáltatásokat az alábbi táblázat foglalja össze. A folyamatkiszolgáló telepítésétől függően a szolgáltatások között kisebb különbségek vannak. 
+A folyamat-kiszolgálón futó szolgáltatásokat a következő táblázat foglalja össze. A Process Server üzembe helyezésének módjától függően a szolgáltatások kisebb eltéréseket mutatnak. 
 
-A Microsoft Azure Recovery Services Agent (obengine) kivételével minden szolgáltatás esetében ellenőrizze, hogy a StartType beállítása **Automatikus** vagy **Automatikus (Késleltetett indítás)** értékre van-e állítva.
+A Microsoft Azure Recovery Services ügynök (obengine) kivételével az összes szolgáltatás esetében győződjön meg arról, hogy a StartType **automatikus** vagy **automatikus (Késleltetett indítás)** értékre van beállítva.
  
-**Környezet** | **Szolgáltatások működtetése**
+**Üzembe helyezés** | **Futó szolgáltatások**
 --- | ---
-**Folyamatkiszolgáló a konfigurációs kiszolgálón** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Naplófeltöltési szolgáltatás (LogUpload); InMage Scout alkalmazásszolgáltatás; Microsoft Azure helyreállítási szolgáltatások ügynöke (obengine); InMage Scout VX Agent-Sentinel/Előőrs (svagents); tmansvc; Webes közzétételi szolgáltatás (W3SVC); MySQL; Microsoft Azure webhely-helyreállítási szolgáltatás (dra)
-**Önálló kiszolgálóként futó kiszolgáló feldolgozása** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Naplófeltöltési szolgáltatás (LogUpload); InMage Scout alkalmazásszolgáltatás; Microsoft Azure helyreállítási szolgáltatások ügynöke (obengine); InMage Scout VX Agent-Sentinel/Előőrs (svagents); tmansvc.
-**Az Azure-ban üzembe helyezett folyamatkiszolgáló feladat-visszavételhez** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Naplófeltöltési szolgáltatás (LogUpload)
+**Kiszolgáló feldolgozása a konfigurációs kiszolgálón** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Napló feltöltési szolgáltatása (LogUpload); Inmage Scout Application szolgáltatás; Microsoft Azure Recovery Services ügynök (obengine); Inmage Scout VX-ügynök – Sentinel/Outpost (svagents); tmansvc World Wide Web közzétételi szolgáltatás (W3SVC); MySQL Microsoft Azure Site Recovery szolgáltatás (DRA)
+**Önálló kiszolgálóként futtató kiszolgáló feldolgozása** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Napló feltöltési szolgáltatása (LogUpload); Inmage Scout Application szolgáltatás; Microsoft Azure Recovery Services ügynök (obengine); Inmage Scout VX-ügynök – Sentinel/Outpost (svagents); tmansvc.
+**Az Azure-ban üzembe helyezett Process Server feladat-visszavétel** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Napló feltöltési szolgáltatása (LogUpload)
 
 
-## <a name="step-3-check-the-process-server-heartbeat"></a>3. lépés: Ellenőrizze a folyamatkiszolgáló szívverését
+## <a name="step-3-check-the-process-server-heartbeat"></a>3. lépés: a folyamat kiszolgálójának szívverését vizsgálja
 
-Ha a folyamatkiszolgáló nem jelenik meg szívverés (806-os hibakód), tegye a következőket:
+Ha a Process Server nem rendelkezik szívveréssel (hibakód: 806), tegye a következőket:
 
-1. Ellenőrizze, hogy a folyamatkiszolgáló virtuális gépe működik-e.
-2. Ellenőrizze, hogy vannak-e hibák a naplókban.
+1. Ellenőrizze, hogy a Process Server virtuális gép működik-e.
+2. Keresse meg ezeket a naplókat a hibákért.
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log C\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    C:\ProgramData\ASR\home\svsystems\eventmanager *. log c\programdata\asr\home\svsystems\ monitor_protection*. log
 
-## <a name="check-connectivity-and-replication"></a>A kapcsolat és a replikáció ellenőrzése
+## <a name="check-connectivity-and-replication"></a>A kapcsolat és a replikálás ellenőrzése
 
- A kezdeti és a folyamatban lévő replikációs hibákat gyakran a forrásgépek és a folyamatkiszolgáló, illetve a folyamatkiszolgáló és az Azure közötti kapcsolódási problémák okozzák. Ezeket a lépéseket az alábbi ábra foglalja össze, amelyet a lépések végrehajtásához szükséges eljárások követnek.
+ A kezdeti és a folyamatos replikálási hibákat gyakran a forrásoldali gépek és a Process Server, illetve a Process Server és az Azure közötti csatlakozási problémák okozzák. Ezek a lépések az alábbi ábrán vannak összefoglalva, amelyet a lépések végrehajtásához szükséges eljárások követnek.
 
-![Kapcsolódás és replikáció – problémamegoldás](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
-
-
-## <a name="step-4-verify-time-sync-on-source-machine"></a>4. lépés: Az idő szinkronizálásának ellenőrzése a forrásgépen
-
-Győződjön meg arról, hogy a replikált gép rendszerdátuma/ideje szinkronban van. [További információ](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-
-## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5. lépés: Ellenőrizze anti-vírus szoftver forrásgép
-
-Ellenőrizze, hogy a replikált számítógépen nincs-e víruskereső szoftver blokkolja-e a Site Recovery webhelyhelyreállítását. Ha ki kell zárnia a Site Recovery webhelyet a víruskereső programokból, olvassa el [ezt a cikket.](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)
-
-## <a name="step-6-check-connectivity-from-source-machine"></a>6. lépés: Ellenőrizze a kapcsolatot a forrásgépről
+![A kapcsolat és a replikáció hibáinak megoldása](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
-1. Szükség esetén telepítse a [Telnet-ügyfelet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) a forrásszámítógépre. Ne használja a Ping.Don't use Ping.
-2. A forrásgépről pingelje a folyamatkiszolgálót a HTTPS-porton a Telnet szolgáltatással. Alapértelmezés szerint a 9443 a replikációs forgalom HTTPS-portja.
+## <a name="step-4-verify-time-sync-on-source-machine"></a>4. lépés: a forrásoldali gépen futó idő szinkronizálásának ellenőrzése
+
+Győződjön meg arról, hogy a replikált gép rendszerdátuma és ideje szinkronban van. [További információ](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+
+## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5. lépés: víruskereső szoftver keresése a forrásszámítógépen
+
+Győződjön meg arról, hogy a replikált gépen nem található víruskereső szoftver, Site Recovery blokkolja. Ha ki kell zárnia Site Recovery a víruskereső programokból, tekintse át [ezt a cikket](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
+
+## <a name="step-6-check-connectivity-from-source-machine"></a>6. lépés: a forrás-számítógép kapcsolatának ellenőrzése
+
+
+1. Ha szükséges, telepítse a [Telnet-ügyfelet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) a forrásoldali gépre. Ne használja a ping parancsot.
+2. A forrásoldali gépről Pingelje a HTTPS-porton futó Process Servert a Telnet használatával. Alapértelmezés szerint a 9443 a replikációs forgalom HTTPS-portja.
 
     `telnet <process server IP address> <port>`
 
-3. Ellenőrizze, hogy a kapcsolat sikeres-e.
+3. Ellenőrizze, hogy a sikeres-e a kapcsolatok.
 
 
-**Kapcsolat** | **Részletek** | **Művelet**
+**Kapcsolatok** | **Részletek** | **Művelet**
 --- | --- | ---
-**Sikeres** | A Telnet üres képernyőt jelenít meg, és a folyamatkiszolgáló elérhető. | Nincs szükség további intézkedésre.
-**Sikertelen** | Nem lehet csatlakozni | Győződjön meg arról, hogy a 9443-as bejövő port engedélyezett a folyamatkiszolgálón. Ha például peremhálózattal vagy árnyékolt alhálózattal rendelkezik. Ellenőrizze újra a kapcsolatot.
-**Részben sikeres** | Csatlakozhat, de a forrásgép jelenti, hogy a folyamatkiszolgáló nem érhető el. | Folytassa a következő hibaelhárítási eljárással.
+**Sikeres** | A Telnet egy üres képernyőt jelenít meg, és a Process Server elérhető. | Nincs szükség további műveletre.
+**Sikertelen** | Nem lehet kapcsolatot létesíteni | Győződjön meg arról, hogy a (z) 9443 bejövő port engedélyezett a Process Serveren. Ha például egy peremhálózati hálózat vagy egy szűrt alhálózat van. A kapcsolat ismételt ellenőrzése.
+**Részben sikeres** | Kapcsolódhat, de a forrásszámítógép jelentést küld arról, hogy a folyamat kiszolgálója nem érhető el. | Folytassa a következő hibaelhárítási eljárással.
 
-## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>7. lépés: Elérhetetlen folyamatkiszolgáló hibáinak elhárítása
+## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>7. lépés: nem elérhető Process Server-kiszolgáló hibáinak megoldása
 
-Ha a folyamatkiszolgáló nem érhető el a forrásgépről, a 78186-os hiba jelenik meg. Ha nem oldja meg a problémát, a probléma eredményeképpen mind az alkalmazáskonzisztens, mind az összeomlás-konzisztens helyreállítási pontok nem a várt módon jönnek létre.
+Ha a Process Server nem érhető el a forrásoldali gépről, akkor a 78186-es hiba jelenik meg. Ha nem foglalkozik, ez a probléma az alkalmazás-konzisztens és az összeomlás-konzisztens helyreállítási pontok elérését eredményezi, és nem a várt módon jön létre.
 
-Hibaelhárítás: ellenőrizze, hogy a forrásgép el tudja-e érni a folyamatkiszolgáló IP-címét, és futtassa a cxpsclient eszközt a forrásszámítógépen a végpontok között lévő kapcsolat ellenőrzéséhez.
+A hibák elhárításához ellenőrizze, hogy a forrásszámítógép elérheti-e a folyamat kiszolgálójának IP-címét, majd futtassa a cxpsclient eszközt a forrásoldali gépen a végpontok közötti kapcsolat ellenőrzéséhez.
 
 
-### <a name="check-the-ip-connection-on-the-process-server"></a>Az IP-kapcsolat ellenőrzése a folyamatkiszolgálón
+### <a name="check-the-ip-connection-on-the-process-server"></a>Az IP-kapcsolatok keresése a Process Serveren
 
-Ha a telnet sikeres, de a forrásgép arról számol be, hogy a folyamatkiszolgáló nem érhető el, ellenőrizze, hogy el tudja-e érni a folyamatkiszolgáló IP-címét.
+Ha a Telnet sikeres, de a forrásszámítógép azt jelenti, hogy a folyamat kiszolgálója nem érhető el, ellenőrizze, hogy el tudja-e érni a folyamat kiszolgálójának IP-címét.
 
-1. Webböngészőben próbálja meg elérni a https://<PS_IP>:<PS_Data_Port>/ IP-címet.
-2. Ha ez az ellenőrzés HTTPS-tanúsítványhibát jelez, az normális. Ha figyelmen kívül hagyja a hibát, meg kell jelennie egy 400 - Rossz kérés. Ez azt jelenti, hogy a kiszolgáló nem tudja kiszolgálni a böngészőkérést, és hogy a szabványos HTTPS-kapcsolat rendben van.
-3. Ha ez az ellenőrzés nem működik, jegyezze fel a böngésző hibaüzenetét. Például egy 407-es hiba jelzi a proxyhitelesítéssel kapcsolatos problémát.
+1. Egy böngészőben próbálja meg elérni az IP-https://<PS_IP>: <PS_Data_Port>/.
+2. Ha ez az érték a HTTPS-tanúsítvány hibáját mutatja, ez normális. Ha figyelmen kívül hagyja a hibát, a 400 – hibás kérést kell megjelennie. Ez azt jelenti, hogy a kiszolgáló nem tudja kiszolgálni a böngésző kérését, és hogy a szabványos HTTPS-kapcsolat rendben van.
+3. Ha ez az ellenőrzési folyamat nem működik, jegyezze fel a böngésző hibaüzenetét. Egy 407-es hiba például egy proxy hitelesítéssel kapcsolatos problémát jelez.
 
-### <a name="check-the-connection-with-cxpsclient"></a>Ellenőrizze a kapcsolatot cxpsclient
+### <a name="check-the-connection-with-cxpsclient"></a>A cxpsclient-mel létesített kapcsolatok keresése
 
-Ezenkívül a cxpsclient eszköz futtatásával ellenőrizheti a végpontok közötti kapcsolatot.
+Emellett a cxpsclient eszközt is futtathatja a végpontok közötti kapcsolatok vizsgálatához.
 
 1. Futtassa az eszközt az alábbiak szerint:
 
@@ -144,109 +144,109 @@ Ezenkívül a cxpsclient eszköz futtatásával ellenőrizheti a végpontok köz
     <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
     ```
 
-2. A folyamatkiszolgálón ellenőrizze a létrehozott naplókat ezekben a mappákban:
+2. A folyamat-kiszolgálón keresse meg a létrehozott naplókat ezekben a mappákban:
 
     C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
 
 
 
-### <a name="check-source-vm-logs-for-upload-failures-error-78028"></a>A forrásvirtuális gép naplóinak ellenőrzése feltöltési hibák miatt (78028-as hiba)
+### <a name="check-source-vm-logs-for-upload-failures-error-78028"></a>A forrásként szolgáló virtuális gépek naplófájljainak keresése a feltöltési hibákhoz (78028-es hiba)
 
-A forrásgépekről a folyamatszolgáltatásba letiltott adatfeltöltések problémája összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontok létrejöttét eredményezheti. 
+A forrásoldali gépekről a Process Service-be blokkolt adatfeltöltés miatti probléma az összeomlás-konzisztens és az alkalmazás-konzisztens helyreállítási pontokat is eredményezheti. 
 
-1. A hálózati feltöltési hibák elhárításához keresse meg a naplóhibáit:
+1. A hálózati feltöltési hibák elhárításához a következő naplóban talál hibákat:
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
+    C:\Program Files (x86) \Microsoft Azure-hely Recovery\agent\svagents *. log 
 
 2. A cikkben található további eljárások segítségével megoldhatja az adatok feltöltésével kapcsolatos problémákat.
 
 
 
-## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>8. lépés: Ellenőrizze, hogy a folyamatkiszolgáló adatokat nyom-e le
+## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>8. lépés: annak megállapítása, hogy a folyamat kiszolgálója az adattovábbítást
 
-Ellenőrizze, hogy a folyamatkiszolgáló aktívan lekérdezi-e az adatokat az Azure-ba.
+Győződjön meg arról, hogy a Process Server aktívan küldi az Azure-ba irányuló adatküldést.
 
-  1. A folyamatkiszolgálón nyissa meg a Feladatkezelőt (nyomja le a Ctrl+Shift+Esc billentyűkombinációt).
-  2. Válassza a **Teljesítmény** lapot > **Az Erőforrásfigyelő megnyitása**.
-  3. Az **Erőforrás-figyelő** lapon válassza a **Hálózat** lapot. A **Hálózati tevékenységgel folyamatok csoportban**ellenőrizze, hogy a cbengine.exe aktívan küld-e nagy mennyiségű adatot.
+  1. A Process Serveren nyissa meg a Feladatkezelő eszközt (nyomja le a CTRL + SHIFT + ESC billentyűkombinációt).
+  2. Válassza a **teljesítmény** fület > **Open erőforrás-figyelő**.
+  3. A **erőforrás-figyelő** lapon válassza a **hálózat** lapot. A **folyamatok hálózati tevékenységgel**területen győződjön meg arról, hogy a cbengine. exe aktívan küld-e nagy mennyiségű adat küldését.
 
-       ![Hálózati tevékenységgel rendelkező folyamatok alatti kötetek](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![Kötetek a hálózati tevékenységgel rendelkező folyamatokban](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
-  Ha a cbengine.exe nem küld nagy mennyiségű adatot, hajtsa végre a következő szakaszokban ismertetett lépéseket.
+  Ha a cbengine. exe nem küld nagy mennyiségű adatokat, hajtsa végre az alábbi részekben ismertetett lépéseket.
 
-## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. lépés: Ellenőrizze a folyamatkiszolgáló és az Azure blob storage kapcsolatát
+## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. lépés: az Azure Blob Storage-hoz való kapcsolódási kiszolgáló keresése
 
-1. Az Erőforrás-figyelőben válassza a **cbengine.exe**lehetőséget.
-2. A **TCP-kapcsolatok**csoportban ellenőrizze, hogy van-e kapcsolat a folyamatkiszolgáló és az Azure storage között.
+1. A erőforrás-figyelő területen válassza a **cbengine. exe**elemet.
+2. A **TCP-kapcsolatok**területen ellenőrizze, hogy van-e kapcsolat a Process Server és az Azure Storage között.
 
-  ![A cbengine.exe és az Azure Blob storage URL-címe közötti kapcsolat](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Kapcsolat a cbengine. exe és az Azure Blob Storage URL-címével](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
-### <a name="check-services"></a>Szolgáltatások ellenőrzése
+### <a name="check-services"></a>Szolgáltatások keresése
 
-Ha nincs kapcsolat a folyamatkiszolgáló és az Azure blob storage URL-cím, ellenőrizze, hogy a szolgáltatások futnak.
+Ha nincs kapcsolat a Process Serverrel az Azure Blob Storage URL-címével, ellenőrizze, hogy a szolgáltatások futnak-e.
 
-1. A Vezérlőpulton válassza a **Szolgáltatások**lehetőséget.
-2. Ellenőrizze, hogy futnak-e a következő szolgáltatások:
+1. A vezérlőpulton válassza a **szolgáltatások**lehetőséget.
+2. Ellenőrizze, hogy a következő szolgáltatások futnak-e:
 
     - cxprocessserver
-    - InMage Scout VX ügynök - Sentinel / Előőrs
-    - Microsoft Azure helyreállítási szolgáltatások ügynöke
-    - Microsoft Azure webhely-helyreállítási szolgáltatás
-    - tmansvc között
+    - Inmage Scout VX-ügynök – Sentinel/Outpost
+    - Microsoft Azure Recovery Services ügynök
+    - Microsoft Azure Site Recovery szolgáltatás
+    - tmansvc
 
-3. Indítsa el vagy indítsa újra a nem futó szolgáltatást.
-4. Ellenőrizze, hogy a folyamatkiszolgáló csatlakoztatva van-e és elérhető-e. 
+3. Indítsa el vagy indítsa újra a nem futó szolgáltatásokat.
+4. Ellenőrizze, hogy a Process Server csatlakoztatva van-e és elérhető-e. 
 
-## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>10. lépés: ellenőrizze a folyamatkiszolgáló kapcsolatát az Azure nyilvános IP-címével
+## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>10. lépés: a Process Server Azure nyilvános IP-címhez való kapcsolódásának keresése
 
-1. A folyamatkiszolgáló **%programfiles%\Microsoft Azure Recovery Services Agent\Temp**mappájában nyissa meg a legújabb CBEngineCurr.errlog fájlt.
-2. A fájlban keressen a **443**-as t vagy a **karakterlánc-csatlakozási kísérletet.**
+1. A Process Server **%ProgramFiles%\Microsoft Azure Recovery Services Agent\Temp**nyissa meg a legújabb CBEngineCurr. errlog fájlt.
+2. A fájlban keresse meg a **443**, vagy a karakterlánc- **kapcsolódási kísérlet sikertelen volt**.
 
-  ![Hibanaplók a Temp mappában](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
+  ![A temp mappában található hibák naplói](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 
-3. Ha problémákat lát, az Azure nyilvános IP-címét a CBEngineCurr.currLog fájlban, a 443-as port használatával található:
+3. Ha problémákat tapasztal, a CBEngineCurr. currLog fájlban található Azure nyilvános IP-címet a 443-es porton keresztül találja:
 
   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
 
-5. A folyamatkiszolgáló parancssorában a Telnet segítségével pingelheti az Azure nyilvános IP-címét.
-6. Ha nem tud csatlakozni, kövesse a következő eljárást.
+5. A Process Server parancssorában a Telnet használatával Pingelje az Azure nyilvános IP-címét.
+6. Ha nem tud kapcsolatot létesíteni, kövesse a következő eljárást.
 
-## <a name="step-11-check-process-server-firewall-settings"></a>11. lépés: Ellenőrizze a folyamatkiszolgáló tűzfalbeállításait. 
+## <a name="step-11-check-process-server-firewall-settings"></a>11. lépés: a Process Server tűzfal beállításainak megtekintése. 
 
-Ellenőrizze, hogy a folyamatkiszolgáló IP-címalapú tűzfala blokkolja-e a hozzáférést.
+Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáférést a folyamat kiszolgálóján.
 
-1. IP-címalapú tűzfalszabályok esetén:
+1. IP-cím alapú tűzfalszabályok esetén:
 
-    a) Töltse le a [Microsoft Azure adatközpont IP-tartományainak](https://www.microsoft.com/download/details.aspx?id=41653)teljes listáját.
+    a) töltse le a [Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653)teljes listáját.
 
-    b) Adja hozzá az IP-címtartományokat a tűzfal konfigurációjához, hogy a tűzfal lehetővé tegye az Azure-ral (és az alapértelmezett HTTPS-porttal,443) való kommunikációt.
+    b) adja hozzá az IP-címtartományt a tűzfal konfigurációjához, hogy a tűzfal engedélyezze a kommunikációt az Azure-ban (és az alapértelmezett HTTPS-porton, 443).
 
-    c) IP-címtartományok engedélyezése az előfizetés Azure-régiójához és az Azure West USA régióhoz (hozzáférés-vezérléshez és identitáskezeléshez).
+    c) engedélyezze az előfizetéshez tartozó Azure-régió, illetve az Azure West USA régiója számára az IP-címtartományok használatát (a hozzáférés-vezérléshez és az identitások kezeléséhez).
 
-2. URL-alapú tűzfalak esetén adja hozzá az alábbi táblázatban felsorolt URL-címeket a tűzfal konfigurációjához.
+2. URL-alapú tűzfalak esetén adja hozzá a következő táblázatban felsorolt URL-címeket a tűzfal konfigurációjához.
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 
-## <a name="step-12-verify-process-server-proxy-settings"></a>12. lépés: A folyamatkiszolgáló proxybeállításainak ellenőrzése 
+## <a name="step-12-verify-process-server-proxy-settings"></a>12. lépés: a folyamat-kiszolgáló proxy beállításainak ellenőrzése 
 
-1. Ha proxykiszolgálót használ, győződjön meg arról, hogy a DNS-kiszolgáló feloldja a proxykiszolgáló nevét. Ellenőrizze a konfigurációs kiszolgáló beállításkulcsban való beállításakor megadott értéket **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**mappában.
-2. Győződjön meg arról, hogy ugyanazokat a beállításokat használja az Azure Site Recovery ügynök adatok küldéséhez.
+1. Ha proxykiszolgálót használ, győződjön meg arról, hogy a proxykiszolgáló nevét feloldja a DNS-kiszolgáló. Tekintse meg a konfigurációs kiszolgáló beállításakor megadott értéket a **HKEY_LOCAL_MACHINE \Software\microsoft\azure hely Recovery\ProxySettings**.
+2. Győződjön meg arról, hogy a Azure Site Recovery ügynök ugyanazokat a beállításokat használja az adatküldéshez.
 
-    a) Keressen a **Microsoft Azure Biztonsági másolat keresése**elemre.
+    a) keressen **Microsoft Azure Backup**.
 
-    b) Nyissa meg a **Microsoft Azure Biztonsági másolatot,** és válassza a **Műveletmódosítás** > **tulajdonságai lehetőséget.**
+    b) nyissa meg **Microsoft Azure Backup**, és válassza a **művelet** > **módosítása tulajdonságok**lehetőséget.
 
-    c) A **Proxy konfiguráció jalapján** a proxycímnek meg kell egyeznie a beállításjegyzék beállításaiban megjelenő proxycímmel. Ha nem, módosítsa ugyanarra a címre.
+    c) a proxy **konfigurálása** lapon a proxy címnek meg kell egyeznie a beállításjegyzék-beállításokban megjelenő proxy-címtől. Ha nem, módosítsa azt ugyanarra a címekre.
 
-## <a name="step-13-check-bandwidth"></a>13. lépés: A sávszélesség ellenőrzése
+## <a name="step-13-check-bandwidth"></a>13. lépés: a sávszélesség ellenõrzése
 
-Növelje a folyamatkiszolgáló és az Azure közötti sávszélességet, majd ellenőrizze, hogy a probléma továbbra is fennáll-e.
+Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, és győződjön meg arról, hogy a probléma továbbra is fennáll.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további segítségre van szüksége, tegye fel kérdését az [Azure Site Recovery fórumon.](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) 
+Ha további segítségre van szüksége, tegye fel kérdéseit a [Azure site Recovery fórumba](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

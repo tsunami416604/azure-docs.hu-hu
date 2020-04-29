@@ -1,6 +1,6 @@
 ---
-title: Szűrők definiálása az Azure Media Servicesszolgáltatásban
-description: Ez a témakör azt ismerteti, hogyan hozhat létre szűrőket, hogy az ügyfél használhassa őket az adatfolyam adott szakaszainak streameléséhez. A Media Services dinamikus jegyzékeket hoz létre a szelektív streamelés eléréséhez.
+title: Szűrők definiálása a Azure Media Servicesban
+description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, hogy az ügyfél egy stream adott szakaszait továbbítsa. A Media Services dinamikus jegyzékfájlokat hoz létre a szelektív streaming eléréséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,75 +14,75 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251465"
 ---
 # <a name="filters"></a>Szűrők
 
-Amikor a tartalom az ügyfelek (Élő közvetítés események vagy video igény szerint), az ügyfél szükség lehet nagyobb rugalmasságra, mint amit az alapértelmezett eszköz jegyzékfájljában leírt. Az Azure Media Services előre definiált szűrőkalapján kínál [dinamikus jegyzékfájlokat.](filters-dynamic-manifest-overview.md) 
+Ha a tartalmat az ügyfeleknek (élő adatfolyam-továbbítási eseményeknek vagy igény szerinti videóknak) juttatja el, az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services az előre definiált szűrők alapján [dinamikus jegyzékfájlokat](filters-dynamic-manifest-overview.md) kínál. 
 
-A szűrők olyan kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára, hogy például a következőket tegyék: 
+A szűrők kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára a következő műveleteket: 
 
-- A videónak csak egy részét játssza le (a teljes videó lejátszása helyett). Példa:
-  - A jegyzékfájl kicsinyítése élő esemény ("alklipszűrés") részklipjének megjelenítéséhez, vagy
-  - A videó elejének levágása ("videó vágása").
-- Csak a megadott interpretációkat és/vagy meghatározott nyelvi sávokat jelenítse meg, amelyeket a tartalom lejátszására használt eszköz támogat ("interpretációs szűrés"). 
-- Állítsa be a bemutatóablakot (DVR) annak érdekében, hogy a lejátszóban a DVR ablak ának korlátozott hossza biztosított ("bemutatóablak beállítása").
+- Csak a videó egy szakaszát játssza le (a teljes videó lejátszása helyett). Például:
+  - Csökkentse a jegyzékfájlt az élő események ("alklipek szűrése") alklipének megjelenítéséhez, vagy
+  - Egy videó elejének vágása ("videó vágása").
+- Csak a megadott kiadatások és/vagy a megadott nyelvi sávok továbbítására szolgálnak, amelyeket az eszköz a tartalom ("kiadatási szűrés") használatával támogat. 
+- A bemutató ablak (DVR) módosítása annak érdekében, hogy korlátozott hosszúságú legyen a DVR ablak a lejátszóban ("bemutató ablakának módosítása").
 
-A Media Services lehetővé teszi **fiókszűrők** és **eszközszűrők** létrehozását a tartalomhoz. Ezenkívül az előre létrehozott szűrőket társítani is használhatja egy **streamelési lokátorral.**
+A Media Services lehetővé teszi, hogy a tartalomhoz hozzon létre **fiók-szűrőket** és adategység- **szűrőket** . Emellett az előre létrehozott szűrőket is társíthatja egy **streaming lokátorhoz**.
 
 ## <a name="defining-filters"></a>Szűrők definiálása
 
-Kétféle szűrő létezik: 
+A szűrők két típusa létezik: 
 
-* [Fiókszűrők](https://docs.microsoft.com/rest/api/media/accountfilters) (globális) – az Azure Media Services-fiók bármely eszközére alkalmazható, élettartama a fiók.
-* [Eszközszűrők](https://docs.microsoft.com/rest/api/media/assetfilters) (helyi) – csak olyan eszközre alkalmazható, amelyhez a szűrő a létrehozáskor társítva volt, élettartama van az eszközből. 
+* [Fiókok szűrői](https://docs.microsoft.com/rest/api/media/accountfilters) (globális) – a Azure Media Services fiókban található bármely eszközre alkalmazható, és a fiók élettartama is megoldható.
+* Adategység- [szűrők](https://docs.microsoft.com/rest/api/media/assetfilters) (helyi) – csak olyan objektumra alkalmazhatók, amelynél a szűrő a létrehozáskor hozzá volt rendelve, az eszköz élettartama. 
 
-**A fiókszűrők** és **az eszközszűrők** típusai pontosan azonos tulajdonságokkal rendelkeznek a szűrő definiálásához/leírásához. Az **eszközszűrő**létrehozásakor kívül meg kell adnia azt az eszköznevet, amelyhez a szűrőt társítani szeretné.
+A **fiókok** és az **eszközök szűrőinek** típusai pontosan ugyanazok a tulajdonságok a szűrő definiálásához/leírásához. Az **eszközcsoport**létrehozásakor meg kell adnia azt az objektum nevét, amellyel hozzá szeretné rendelni a szűrőt.
 
-A forgatókönyvtől függően ön dönti el, hogy milyen típusú szűrő megfelelőbb (eszközszűrő vagy fiókszűrő). A fiókszűrők olyan eszközprofilokhoz (interpretációszűréshez) alkalmasak, ahol eszközszűrők használhatók egy adott eszköz vágására.
+A forgatókönyvtől függően eldöntheti, hogy a szűrő milyen típusú legyen alkalmasabb (az eszköz szűrője vagy a fiók szűrője). A fiókok szűrői megfelelőek az eszközök profiljaihoz (a kiadatási szűréshez), ahol az adategységek szűrői használhatók egy adott eszköz kivágásához.
 
 A szűrők leírásához a következő tulajdonságokat használhatja. 
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|firstQuality (elsőMinőség)|A szűrő első minőségi bitrátája.|
-|bemutatóTimeRange|A bemutató időtartománya. Ez a tulajdonság a jegyzékfájl kezdő/végpontjainak, a bemutatóablak hosszának és az élő kezdőpozíciónak a szűrésére szolgál. <br/>További információ: [PresentationTimeRange](#presentationtimerange).|
-|Számok|A számok kiválasztási feltételeket. További információ: [tracks](#tracks)|
+|firstQuality|A szűrő első minőségi bitrátája.|
+|presentationTimeRange|A megjelenítési idő tartománya. Ez a tulajdonság a jegyzékfájl kezdő/záró pontjainak, a megjelenítési időszak hosszának és az élő indítási pozíciónak a szűrésére szolgál. <br/>További információ: [PresentationTimeRange](#presentationtimerange).|
+|nyomon követi|A nyomon követi a kiválasztási feltételeket. További információ: [tracks](#tracks)|
 
-### <a name="presentationtimerange"></a>bemutatóTimeRange
+### <a name="presentationtimerange"></a>presentationTimeRange
 
-Használja ezt a tulajdonságot **eszközszűrőkkel.** A tulajdonságot nem ajánlott **fiókszűrőkkel**beállítani.
+Ezt a tulajdonságot használja az **Asset Filters**használatával. A tulajdonságot nem ajánlott a **fiók szűrőinek**beállításával beállítani.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|**endTimestamp**|Igény szerinti videóra (VoD) vonatkozik.<br/>Az élő közvetítésű bemutató esetében a program csendben figyelmen kívül hagyja, és alkalmazza, amikor a bemutató befejeződik, és az adatfolyam VoD-vá válik.<br/>Ez egy hosszú érték, amely a bemutató abszolút végpontját jelenti, a legközelebbi következő GOP-kezdetre kerekítve. Az egység az időskála, így egy 1800000000 endTimestamp 3 percig lenne.<br/>A startTimestamp és a endTimestamp használatával vágja le a listában (jegyzékfájlban) lévő töredékeket.<br/>Például a startTimestamp=40000000 és az endTimestamp=10000000az alapértelmezett időskálával létrehoz egy lejátszási listát, amely a VoD-bemutató 4 másodperce és 10 másodperce közötti töredékeket tartalmaz. Ha egy töredék közrefogja a határt, az egész töredék szerepelni fog a jegyzékben.|
-|**forceEndTimestamp**|Csak az élő közvetítésre vonatkozik.<br/>Azt jelzi, hogy a endTimestamp tulajdonságnak jelen kell-e lennie. Ha igaz, a endTimestamp paramétert meg kell adni, vagy hibás kérelemkódot kell visszaadni.<br/>Engedélyezett értékek: hamis, igaz.|
-|**liveBackoffDuration**|Csak az élő közvetítésre vonatkozik.<br/> Ez az érték határozza meg a legújabb élő pozíciót, amelyet az ügyfél kereshet.<br/>Ezzel a tulajdonsággal késleltetheti az élő lejátszási pozíciót, és kiszolgálóoldali puffert hozhat létre a játékosok számára.<br/>A tulajdonság egysége időskála (lásd alább).<br/>A maximális visszautazás időtartama 300 másodperc (3000000000).<br/>A 200000000000 érték például azt jelenti, hogy a legfrissebb elérhető tartalom 20 másodperccel késik a valós élő éltől.|
-|**bemutatóAblakIdőtartam**|Csak az élő közvetítésre vonatkozik.<br/>A presentationWindowDuration segítségével a lejátszási listába foglalandó töredékek tolóablakát alkalmazhatja.<br/>A tulajdonság egysége időskála (lásd alább).<br/>Állítsa be például a presentationWindowDuration=1200000000set egy kétperces csúszóablak alkalmazásához. Az élő éltől számított 2 percen belül az adathordozó szerepelni fog a lejátszási listában. Ha egy töredék közrefogja a határt, a teljes töredék szerepelni fog a lejátszási listában. A bemutatóablak minimális időtartama 60 másodperc.|
-|**startTimestamp**|Igény szerinti videóra (VoD) vagy élő közvetítésre vonatkozik.<br/>Ez egy hosszú érték, amely az adatfolyam abszolút kezdőpontját jelöli. Az érték a legközelebbi következő GOP-kezdetre lesz kerekítve. Az egység az időskála, így a startTimestamp 150000000 lenne 15 másodpercig.<br/>A startTimestamp és az endTimestampp használatával vágja le a listában (jegyzékfájlban) lévő töredékeket.<br/>Például a startTimestamp=40000000 és az endTimestamp=10000000az alapértelmezett időskálával létrehoz egy lejátszási listát, amely a VoD-bemutató 4 másodperce és 10 másodperce közötti töredékeket tartalmaz. Ha egy töredék közrefogja a határt, az egész töredék szerepelni fog a jegyzékben.|
-|**Időskála**|A bemutató időtartományában lévő összes időbélyegre és időtartamra vonatkozik, egy másodperc alatt megadott növekmények számaként.<br/>Az alapértelmezett érték 10000000 - tízmillió növekmény egy másodperc alatt, ahol minden növekmény 100 nanoszekundum hosszú lenne.<br/>Ha például 30 másodpercre szeretne beállítani egy startTimestamp értéket, az alapértelmezett időskáláhasználatakor 300000000 értéket kell használnia.|
+|**endTimestamp**|Az igény szerinti videóra vonatkozik (VoD).<br/>Az élő közvetítés megjelenítéséhez a rendszer csendben figyelmen kívül hagyja és alkalmazza a bemutatót, amikor a bemutató véget ér, és az adatfolyam a VoD-ra változik.<br/>Ez egy hosszú érték, amely a bemutató abszolút végpontját jelöli, a legközelebbi következő GOP-kezdésig kerekítve. Az egység az időskála, így a 1800000000-es endTimestamp 3 percet vesz igénybe.<br/>A startTimestamp és a endTimestamp használatával vágja le a lista (manifest) töredékeit.<br/>Például a startTimestamp = 40000000 és a endTimestamp = 100000000 az alapértelmezett időskálával létrehoz egy olyan lejátszási listát, amely 4 másodperc és 10 másodperc közötti töredékeket tartalmaz a VoD-bemutatóból. Ha egy töredék átnyúlik a határt, a teljes töredék szerepelni fog a jegyzékfájlban.|
+|**forceEndTimestamp**|Csak az élő közvetítésre vonatkozik.<br/>Azt jelzi, hogy a endTimestamp tulajdonságnak jelen kell-e lennie. Ha az értéke igaz, a endTimestamp meg kell adni, vagy rossz kérési kódot ad vissza.<br/>Megengedett értékek: false, True.|
+|**liveBackoffDuration**|Csak az élő közvetítésre vonatkozik.<br/> Ez az érték határozza meg azt a legújabb élő pozíciót, amelyet az ügyfél tud keresni.<br/>Ezzel a tulajdonsággal késleltetheti az élő lejátszás pozícióját, és létrehozhatja a játékosok kiszolgálóoldali pufferét.<br/>Ennek a tulajdonságnak az egysége az időskála (lásd alább).<br/>A maximális élő visszatartási időtartam 300 másodperc (3000000000).<br/>A 2000000000 érték például azt jelenti, hogy a legfrissebb elérhető tartalom 20 másodperc van késleltetve a valós élő szélétől.|
+|**presentationWindowDuration**|Csak az élő közvetítésre vonatkozik.<br/>A presentationWindowDuration használatával alkalmazhatja a töredékeket tartalmazó ablakokat egy lejátszási listára.<br/>Ennek a tulajdonságnak az egysége az időskála (lásd alább).<br/>Például állítsa be a presentationWindowDuration = 1200000000 két perces csúszó ablak alkalmazására. A lejátszási lista az élő szélétől számított 2 percen belül adathordozót fog tartalmazni. Ha egy töredék átnyúlik a határt, a teljes töredék szerepelni fog a lejátszási listán. A megjelenítési időszak minimális időtartama 60 másodperc.|
+|**startTimestamp**|A video on demand (VoD) vagy az élő közvetítés szolgáltatásra vonatkozik.<br/>Ez egy hosszú érték, amely a stream abszolút kezdőpontját jelöli. Az érték a legközelebbi következő GOP-kezdésre lesz kerekítve. Az egység az időskála, így a 150000000-es startTimestamp 15 másodpercig tart.<br/>A startTimestamp és a endTimestampp használatával vágja le a lista (manifest) töredékeit.<br/>Például a startTimestamp = 40000000 és a endTimestamp = 100000000 az alapértelmezett időskálával létrehoz egy olyan lejátszási listát, amely 4 másodperc és 10 másodperc közötti töredékeket tartalmaz a VoD-bemutatóból. Ha egy töredék átnyúlik a határt, a teljes töredék szerepelni fog a jegyzékfájlban.|
+|**időskála**|A bemutató időtartományában lévő összes időbélyegre és időtartamra vonatkozik, a növekmények száma egy másodpercben megadva.<br/>Az alapértelmezett érték 10000000-10 000 000, és egy másodperc alatt növekszik, ahol az egyes növekmények 100 nanoszekundumban hosszúak lesznek.<br/>Ha például 30 másodpercen belül szeretné beállítani a startTimestamp, a 300000000 értéket kell használnia az alapértelmezett időkeret használatakor.|
 
-### <a name="tracks"></a>Számok
+### <a name="tracks"></a>Nyomon követi
 
-Megadhatja a szűrőpálya tulajdonságfeltételeinek listáját (FilterTrackPropertyConditions), amely alapján a stream láncsávjait (élő közvetítés vagy igény szerinti videó) dinamikusan létrehozott jegyzékfájlba kell foglalni. A szűrők kombinálása logikai **ÉS** **VAGY** művelettel történik.
+Itt adhatja meg a szűrési nyomon követési tulajdonságok (FilterTrackPropertyConditions) listáját, amely alapján a stream (élő adatfolyam vagy igény szerinti videó) nyomon követhető a dinamikusan létrehozott jegyzékbe. A szűrők logikai **és** és **vagy** művelet használatával kombinálhatók.
 
-A pálya szűrési tulajdonságfeltételei a pályatípusokat, az értékeket (az alábbi táblázatban ismertetjük) és a műveleteket (Equal, NotEqual) írják le. 
+A szűrési tulajdonságok a következő táblázatban ismertetett típusok és műveletek (EQUAL, NotEqual) szerint vannak leírva: Track types (értékek). 
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|**Bitráta**|A sáv bitrátáját használhatja szűrésre.<br/><br/>Az ajánlott érték bitper szekundumban lévő bittartomány. Például: "0-2427000".<br/><br/>Megjegyzés: bár használhat egy adott bitráta értéket, például 250000(bit/másodperc), ez a megközelítés nem ajánlott, mivel a pontos bitsebességek az egyik eszközről a másikra ingadozhatnak.|
-|**Fourcc**|A sáv FourCC értékét használja szűrésre.<br/><br/>Az érték a kodekformátum első eleme a [6381.](https://tools.ietf.org/html/rfc6381) Jelenleg a következő kodekek támogatottak: <br/>Videóhoz: "avc1", "hev1", "hvc1"<br/>Audio: "mp4a", "ec-3"<br/><br/>Egy eszköz sávjának FourCC-értékeinek meghatározásához vegye le és vizsgálja meg a jegyzékfájl.|
-|**Nyelv**|Használja a zeneszám nyelvét a szűréshez.<br/><br/>Az érték az 5646-os számú RFC-ben meghatározott nyelv címkéje. Például "en".|
-|**Név**|A szűréshez használja a zeneszám nevét.|
-|**Típus**|Használja a sáv típusát a szűréshez.<br/><br/>A következő értékek megengedettek: "video", "audio", vagy "text".|
+|**Sávszélességű**|Használja a nyomkövetési sebesség használatát a szűréshez.<br/><br/>A javasolt érték a bitsebességek tartománya, a bitek száma másodpercenként. Például: "0-2427000".<br/><br/>Megjegyzés: egy adott bitráta-érték (például 250000 (bit/másodperc) használata esetén ez a megközelítés nem ajánlott, mivel a pontos bitsebességek az egyik eszközről a másikra ingadoznak.|
+|**FourCC**|A szűrési nyomon követéshez használja a FourCC értékét.<br/><br/>Az érték a codec-formátum első eleme, amely az [RFC 6381](https://tools.ietf.org/html/rfc6381)-ben van megadva. Jelenleg a következő kodekek támogatottak: <br/>Videó: "AVC1", "hev1", "hvc1"<br/>Hang: "mp4a", "EC-3"<br/><br/>Egy adott eszközön lévő zeneszámok FourCC-értékeinek meghatározásához szerezze be és vizsgálja meg a jegyzékfájlt.|
+|**Nyelv**|A szűrési pálya nyelvét használja.<br/><br/>Az érték a felvenni kívánt nyelv címkéje, az RFC 5646-ben megadott módon. Például: "en".|
+|**Név**|Használja a szűrési pálya nevét.|
+|**Típus**|Használja a szűréshez használt nyomkövetési típust.<br/><br/>A következő értékek engedélyezettek: "videó", "hang" vagy "text".|
 
 ### <a name="example"></a>Példa
 
-A következő példa egy élő közvetítésszűrőt határoz meg: 
+Az alábbi példa egy élő adatfolyam-szűrőt definiál: 
 
 ```json
 {
@@ -137,28 +137,28 @@ A következő példa egy élő közvetítésszűrőt határoz meg:
 }
 ```
 
-## <a name="associating-filters-with-streaming-locator"></a>Szűrők társítása a streamelési lokátorral
+## <a name="associating-filters-with-streaming-locator"></a>Szűrők társítása a streaming Locator használatával
 
-Megadhatja az [eszköz- vagy számlaszűrők](filters-concept.md) listáját a [streamelési lokátoron.](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) A [dinamikus csomagzó](dynamic-packaging-overview.md) alkalmazza ezt a szűrőlistát az ügyfél által az URL-ben megadott szűrőkkel együtt. Ez a kombináció [dinamikus jegyzéket](filters-dynamic-manifest-overview.md)hoz létre, amely a streamelési lokátoron megadott URL+ szűrők szűrőin alapul. 
+Megadhatja az [eszköz vagy a fiók szűrőinek](filters-concept.md) listáját a [folyamatos átviteli lokátorban](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). A [dinamikus](dynamic-packaging-overview.md) csomagolás alkalmazza a szűrők listáját, valamint azokat, amelyeket az ügyfél az URL-címben megad. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. 
 
 Lásd az alábbi példákat:
 
-* [Szűrők társítása a streamelési lokátorral – .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Szűrők társítása a streamelési lokátorral - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Szűrők hozzárendelése a streaming Locator-.NET-tel](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Szűrők hozzárendelése az adatfolyam-keresőhöz – parancssori felület](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>Szűrők frissítése
  
-**A streamelési lokátorok** nem frissíthetők, amíg a szűrők frissíthetők. 
+A **folyamatos átviteli lokátor** nem frissíthető a szűrők frissítése közben. 
 
-Nem ajánlott frissíteni az aktívan közzétett **streamelési lokátorhoz**társított szűrők definícióját, különösen akkor, ha a CDN engedélyezve van. A streamelési kiszolgálók és a CDN-ek belső gyorsítótárai elavult gyorsítótárazott adatok visszaadását eredményezhetik. 
+Nem ajánlott frissíteni egy aktívan közzétett **adatfolyam-keresőhöz**társított szűrők definícióját, különösen akkor, ha a CDN engedélyezve van. A streaming-kiszolgálók és a CDNs belső gyorsítótárral rendelkezhetnek, amelyek miatt a rendszer elavult gyorsítótárazott értékeket adhat vissza. 
 
-Ha a szűrő definícióját módosítani kell, fontolja meg egy új szűrő létrehozását, és adja hozzá a **streamelési lokátor** URL-címéhez, vagy közzétesz egy új **streamelési lokátort,** amely közvetlenül hivatkozik a szűrőre.
+Ha módosítani kell a szűrő definícióját, érdemes létrehozni egy új szűrőt, és hozzá kell adni azt a **streaming-lokátor** URL-címéhez, vagy közzé kell tennie egy új **streaming-keresőt** , amely közvetlenül hivatkozik a szűrőre.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi cikkek bemutatják, hogyan hozhat létre szűrőket programozott módon.  
+A következő cikkek bemutatják, hogyan hozhat létre programozott módon szűrőket.  
 
 - [Szűrők létrehozása REST API-kkal](filters-dynamic-manifest-rest-howto.md)
 - [Szűrők létrehozása .NET használatával](filters-dynamic-manifest-dotnet-howto.md)
-- [Szűrők létrehozása CLI-vel](filters-dynamic-manifest-cli-howto.md)
+- [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
 

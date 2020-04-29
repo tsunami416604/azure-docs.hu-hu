@@ -1,6 +1,6 @@
 ---
-title: Biztonsági riasztások az Azure AD-szerepkörökhöz a PIM-ben – Azure AD | Microsoft dokumentumok
-description: Konfigurálja a biztonsági riasztások az Azure AD-szerepkörök kiemelt identitáskezelés az Azure Active Directoryban.
+title: Biztonsági riasztások az Azure AD-szerepkörökhöz a PIM-ben – Azure AD | Microsoft Docs
+description: Az Azure AD-szerepkörökre vonatkozó biztonsági riasztások konfigurálása a Azure Active Directoryban Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,233 +15,233 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253311"
 ---
-# <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Biztonsági riasztások konfigurálása az Azure AD-szerepkörökhöz a kiemelt identitáskezelésben
+# <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management
 
-A kiemelt identitáskezelés (PIM) riasztásokat hoz létre, ha gyanús vagy nem biztonságos tevékenység van az Azure Active Directory (Azure AD) szervezetben. Amikor egy riasztás aktiválódik, megjelenik a kiemelt identitáskezelés irányítópulton. Válassza ki a riasztást egy olyan jelentés megtekintéséhez, amely felsorolja a riasztást kiváltó felhasználókat vagy szerepköröket.
+Privileged Identity Management (PIM) riasztásokat állít elő, amikor gyanús vagy nem biztonságos tevékenység van a Azure Active Directory (Azure AD) szervezetében. Riasztás aktiválásakor a Privileged Identity Management irányítópulton jelenik meg. Válassza ki a riasztást, hogy megjelenjen egy jelentés, amely felsorolja a riasztást kiváltó felhasználókat vagy szerepköröket.
 
 ## <a name="determine-your-version-of-pim"></a>A PIM verziójának meghatározása
 
-2019 novemberétől kezdődően a kiemelt identitáskezelés Azure AD-szerepkörök része frissül egy új verzióra, amely megfelel az Azure-erőforrás-szerepkörök élményének. Ez további funkciókat, valamint [a meglévő API-t is módosítja.](azure-ad-roles-features.md#api-changes) Az új verzió bevezetés alatt, hogy mely eljárásokat követi ebben a cikkben attól függ, hogy a privileged identity management jelenleg rendelkezik-e. Ebben a szakaszban ismertetett lépéseket követve határozza meg, hogy a Kiemelt identitáskezelés melyik verzióját használja. Miután ismeri a kiemelt identitáskezelés verzióját, kiválaszthatja a cikkben az adott verziónak megfelelő eljárásokat.
+A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szerepkörök részét egy új verzióra frissíti a rendszer, amely megfelel az Azure-erőforrás-szerepkörökkel kapcsolatos élményeknek. Ez további funkciókat hoz létre, valamint [a meglévő API módosításait](azure-ad-roles-features.md#api-changes)is. Az új verzió bevezetését követően a cikkben ismertetett eljárások a jelenleg használt Privileged Identity Management verziójától függenek. Az ebben a szakaszban ismertetett lépéseket követve meghatározhatja, hogy a Privileged Identity Management melyik verzióját kell megadnia. A Privileged Identity Management-verziójának megismerése után kiválaszthatja a jelen cikkben szereplő, az adott verziónak megfelelő eljárásokat.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) egy olyan felhasználóval, aki a [kiemelt szerepkör-rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörben van.
-1. Nyissa meg **az Azure AD kiemelt identitáskezelés .** Ha az áttekintő oldal tetején szalaghirdetés található, kövesse a cikk **Új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **Előző verzió** lap utasításait.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
+1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
   [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-Kövesse a cikkben leírt lépéseket az Azure AD-szerepkörök biztonsági riasztásainak vizsgálatához.
+Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökhöz tartozó biztonsági riasztások vizsgálatához.
 
 # <a name="new-version"></a>[Új verzió](#tab/new)
 
-![Azure AD-szerepkörök – Riasztási ablaktábla listák riasztási és súlyosságát](./media/pim-how-to-configure-security-alerts/view-alerts.png)
+![Azure AD-szerepkörök – riasztási ablaktábla, amely a riasztásokat és a súlyosságot tartalmazza](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
-Ez a szakasz az Azure AD-szerepkörök összes biztonsági riasztását, valamint a javítás és a megelőzés módját sorolja fel. A súlyosság jelentése a következő:
+Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztonsági riasztást, valamint a javítás és a megelőzés módját. A súlyosság a következő jelentéssel bír:
 
-- **Magas**: Irányelvsértés miatt azonnali beavatkozást igényel.
-- **Közepes**: Nem igényel azonnali műveletet, de potenciális irányelvsértést jelez.
-- **Alacsony**: Nem igényel azonnali cselekvést, de előnyösebb politikai változást javasol.
+- **Magas**: a szabályzat megsértése miatt azonnali műveletre van szükség.
+- **Közepes**: nincs szükség azonnali műveletre, de az esetleges szabályzat megsértését jelzi.
+- **Alacsony**: nincs szükség azonnali műveletre, de javasolt a szabályzat módosítása.
 
-### <a name="administrators-arent-using-their-privileged-roles"></a>A rendszergazdák nem használják a kiemelt szerepköreiket
-
-| | |
-| --- | --- |
-| **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | Azok a felhasználók, akiknek kiemelt szerepkörökhöz vannak rendelve, nincs szükségük, növelik a támadás esélyét. A támadók számára is könnyebb észrevétlenmaradni a nem aktívan használt fiókokban. |
-| **Hogyan lehet megjavítani?** | Tekintse át a felhasználók a listában, és távolítsa el őket a kiemelt szerepkörök, amelyek nem szükséges. |
-| **Megelőzés** | Kiemelt szerepkörök hozzárendelése csak olyan felhasználókhoz, akik üzleti indoklással rendelkeznek. </br>Rendszeres [hozzáférés-felülvizsgálatok ütemezése](pim-how-to-start-security-review.md) annak ellenőrzéséhez, hogy a felhasználóknak továbbra is szükségük van-e a hozzáférésükre. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a fiókot a kiemelt szerepkörükből. |
-| **Eseményindító** | Akkor aktiválódik, ha a felhasználó egy adott számú napon megy keresztül szerepkör aktiválása nélkül. |
-| **Napok száma** | Ez a beállítás azt a maximális számú napot adja meg, 0 és 100 között, amerre a felhasználó szerepkör aktiválása nélkül is eltud menni.|
-
-### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>A szerepkörök aktiválásához nincs szükség többtényezős hitelesítésre
+### <a name="administrators-arent-using-their-privileged-roles"></a>A rendszergazdák nem használják a Kiemelt szerepköröket
 
 | | |
 | --- | --- |
 | **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | Többtényezős hitelesítés nélkül a sérült felhasználók aktiválhatják a kiemelt szerepköröket. |
-| **Hogyan lehet megjavítani?** | Tekintse át a szerepkörök listáját, és minden szerepkörhöz [többtényezős hitelesítést igényel.](pim-how-to-change-default-settings.md) |
-| **Megelőzés** | [Többfélű fa szükség](pim-how-to-change-default-settings.md) minden szerepkörhöz.  |
-| **A portálon keresztüli kockázatcsökkentési művelet** | A kiemelt szerepkör aktiválásához többtényezős hitelesítésszükséges. |
+| **Miért kapok ez a riasztás?** | Azok a felhasználók, akik Kiemelt szerepköröket rendeltek hozzá, nem kell megnövelniük a támadás esélyét. Emellett a támadók a nem aktívan használatban lévő fiókoknál is könnyebben észrevehetetlen maradnak. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a nem szükséges Kiemelt szerepkörökből. |
+| **Megelőzés** | A Kiemelt szerepköröket csak olyan felhasználók számára rendelheti hozzá, akik rendelkeznek üzleti indoklással. </br>Ütemezze a rendszeres [hozzáférési felülvizsgálatokat](pim-how-to-start-security-review.md) annak ellenőrzéséhez, hogy a felhasználóknak továbbra is szükségük van a hozzáférésre. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a fiókot a Kiemelt szerepkörből. |
+| **Eseményindító** | Akkor aktiválódik, ha egy felhasználó a megadott számú napon belül elhalad a szerepkör aktiválása nélkül. |
+| **Napok száma** | Ez a beállítás határozza meg a napok maximális számát 0 és 100 között, amelyet a felhasználó a szerepkör aktiválása nélkül tud eljárni.|
 
-### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>A szervezet nem rendelkezik Az Azure AD Premium P2
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>A szerepkörök nem igénylik a többtényezős hitelesítést az aktiváláshoz
 
 | | |
 | --- | --- |
 | **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | A jelenlegi Azure AD-szervezet nem rendelkezik az Azure AD Premium P2. |
-| **Hogyan lehet megjavítani?** | Tekintse át az [Azure AD-kiadásokkal](../fundamentals/active-directory-whatis.md)kapcsolatos információkat. Frissítsen az Azure AD Premium P2 csomagra. |
+| **Miért kapok ez a riasztás?** | A többtényezős hitelesítés nélkül a feltört felhasználók is aktiválhatja a Kiemelt szerepköröket. |
+| **Hogyan lehet javítani?** | Tekintse át a szerepkörök listáját, és a [többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) minden szerepkörhöz. |
+| **Megelőzés** | Az [MFA megkövetelése](pim-how-to-change-default-settings.md) minden szerepkörhöz.  |
+| **A portálon belüli kockázatcsökkentő művelet** | A többtényezős hitelesítés szükséges a Kiemelt szerepkör aktiválásához. |
 
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenciális elavult fiókok kiemelt szerepkörben
+### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>A szervezet nem rendelkezik prémium szintű Azure AD P2-vel
+
+| | |
+| --- | --- |
+| **Súlyosság** | Alacsony |
+| **Miért kapok ez a riasztás?** | Az aktuális Azure AD-szervezetnek nincs prémium szintű Azure AD P2-je. |
+| **Hogyan lehet javítani?** | Tekintse át az [Azure ad-kiadásokkal](../fundamentals/active-directory-whatis.md)kapcsolatos információkat. Frissítsen prémium szintű Azure AD P2-re. |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Lehetséges elavult fiókok egy kiemelt szerepkörben
 
 | | |
 | --- | --- |
 | **Súlyosság** | Közepes |
-| **Miért kapok riasztást?** | A kiemelt szerepkörrel rendelkező fiókok nem változtatták meg a jelszavukat az elmúlt 90 napban. Ezek a fiókok lehetnek olyan szolgáltatások vagy megosztott fiókok, amelyek nincsenek karbantartva, és ki vannak téve a támadóknak. |
-| **Hogyan lehet megjavítani?** | Tekintse át a listában szereplő fiókokat. Ha már nincs szükségük hozzáférésre, távolítsa el őket a kiemelt szerepkörökből. |
-| **Megelőzés** | Győződjön meg arról, hogy a megosztott fiókok erős jelszavakat forgatnak, ha a jelszót ismerő felhasználók náluk változás történik. </br>Rendszeresen tekintse át a kiemelt szerepkörrel rendelkező fiókokat [a hozzáférési felülvizsgálatok](pim-how-to-start-security-review.md) használatával, és távolítsa el a már nem szükséges szerepkör-hozzárendeléseket. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a fiókot a kiemelt szerepkörükből. |
-| **Bevált módszerek** | A jelszóval hitelesített és magas szintű rendszergazdai szerepkörökhöz (például globális rendszergazdai vagy biztonsági rendszergazda) rendelt megosztott, szolgáltatás- és segélyhívási fiókokjelszavát a következő esetekben kell elforgatni:<ul><li>Az adminisztratív hozzáférési jogokkal való visszaéléssel vagy az okkal való veszélyeztetéssel járó biztonsági incidensután</li><li>Miután bármely felhasználó jogosultságai megváltoztak, hogy azok már nem rendszergazdai okok (például miután egy alkalmazott, aki rendszergazda volt, elhagyja az informatikai és kilép a szervezet)</li><li>Rendszeres időközönként (például negyedéves vagy éves) időközönként, még akkor is, ha nem történt ismert jogsértés vagy az informatikai személyzet</li></ul>Mivel több en is hozzáférhetnek ezekhez a fiókok hitelesítő adataihoz, a hitelesítő adatokat el kell forgatni annak érdekében, hogy a szerepkörüket elhagyó személyek többé ne férhessenek hozzá a fiókokhoz. [További információ a fiókok védelméről](../users-groups-roles/directory-admin-roles-secure.md) |
+| **Miért kapok ez a riasztás?** | A Kiemelt szerepkörben lévő fiókok nem változtatták meg a jelszavukat az elmúlt 90 napban. Ezek a fiókok lehetnek olyan szolgáltatás-vagy megosztott fiókok, amelyek nincsenek karbantartva és sebezhetők a támadók számára. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő fiókokat. Ha már nincs szükségük hozzáférésre, távolítsa el őket a Kiemelt szerepkörökből. |
+| **Megelőzés** | Ügyeljen arra, hogy a megosztott fiókok erős jelszavakat használjanak, amikor a jelszót ismerő felhasználók módosulnak. </br>A jogosultsági szintű szerepkörökkel rendelkező fiókokat rendszeresen tekintse át [hozzáférési felülvizsgálatok](pim-how-to-start-security-review.md) használatával, és távolítsa el a már nem szükséges szerepkör-hozzárendeléseket. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a fiókot a Kiemelt szerepkörből. |
+| **Ajánlott eljárások** | Megosztott, szolgáltatás-és segélyhívó fiókok, amelyek jelszavas hitelesítéssel és a magas jogosultsági szintű rendszergazdai szerepkörökhöz vannak hozzárendelve, például a globális rendszergazda vagy a biztonsági rendszergazda számára a következő esetekben kell elforgatni a jelszavukat:<ul><li>Az olyan biztonsági incidensek után, amelyekkel visszaélés vagy a rendszergazdai hozzáférési jogosultságok sérülnek</li><li>Miután megtörtént a felhasználói jogosultságok módosítása, hogy azok ne legyenek rendszergazdaként (például egy olyan alkalmazott, aki a rendszergazda, elhagyja vagy elhagyja a szervezetet)</li><li>Rendszeres időközönként (például negyedévente vagy évente), még akkor is, ha nem történt ismert jogsértés vagy az informatikai személyzetre való váltás</li></ul>Mivel több ember fér hozzá ezekhez a fiókokhoz a hitelesítő adatokhoz, a hitelesítő adatokat el kell forgatni annak biztosításához, hogy a szerepköröket elhagyó személyek többé nem férhetnek hozzá a fiókokhoz. [További információ a fiókok biztonságossá tételéről](../users-groups-roles/directory-admin-roles-secure.md) |
 
-### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>A szerepkörök hozzárendelése a kiemelt identitáskezelésen kívül van hozzárendelve
+### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>A szerepkörök hozzárendelése a Privileged Identity Managementon kívül történik
 
 | | |
 | --- | --- |
 | **Súlyosság** | Magasság |
-| **Miért kapok riasztást?** | A kiemelt identitáskezelésen kívül végzett kiemelt szerepkör-hozzárendelések nem megfelelően figyelhetők, és aktív támadást jelezhetnek. |
-| **Hogyan lehet megjavítani?** | Tekintse át a felhasználók a listában, és távolítsa el őket a kiemelt identitáskezelésen kívül hozzárendelt kiemelt szerepkörökből. |
-| **Megelőzés** | Vizsgálja meg, hogy a felhasználók a kiemelt identitáskezelésen kívül hol vannak kiemelt szerepkörökhöz rendelve, és tiltsa le a jövőbeli hozzárendeléseket. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a felhasználót a kiemelt szerepkörből. |
+| **Miért kapok ez a riasztás?** | A Privileged Identity Managementon kívül végrehajtott Kiemelt szerepkör-hozzárendelések nincsenek megfelelően figyelve, és az aktív támadásra utalhatnak. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a Privileged Identity Managementon kívül hozzárendelt Kiemelt szerepkörökből. |
+| **Megelőzés** | Vizsgálja meg, hogy a felhasználók mikor kapnak jogosultsági szintű szerepköröket a Privileged Identity Managementon kívül, és nem tilthatják meg a jövőbeli hozzárendeléseket. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a felhasználót a Kiemelt szerepkörből. |
 
-### <a name="there-are-too-many-global-administrators"></a>Túl sok a globális rendszergazda
-
-| | |
-| --- | --- |
-| **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | A globális rendszergazda a legmagasabb jogosultsági szintű szerepkör. Ha egy globális rendszergazda biztonsága sérül, a támadó minden engedélyéhez hozzáfér, ami az egész rendszert veszélyezteti. |
-| **Hogyan lehet megjavítani?** | Tekintse át a listában szereplő felhasználókat, és távolítson el minden olyan felhasználót, amelynek nincs feltétlenül szüksége a globális rendszergazdai szerepkörre. </br>Rendeljen alacsonyabb jogosultsággal rendelkező szerepköröket ezekhez a felhasználókhoz. |
-| **Megelőzés** | Rendelje hozzá a felhasználóknak a szükséges legkevésbé kiemelt szerepkört. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a fiókot a kiemelt szerepkörükből. |
-| **Eseményindító** | Akkor aktiválódik, ha két különböző feltétel teljesül, és mindkettő konfigurálható. Először el kell érnie a globális rendszergazdák egy bizonyos küszöbértékét. Másodszor, a teljes szerepkör-hozzárendelések bizonyos százalékának globális rendszergazdáknak kell lennie. Ha csak az egyik ilyen mérésnek felel meg, a riasztás nem jelenik meg. |
-| **A globális rendszergazdák minimális száma** | Ez a beállítás adja meg a globális rendszergazdák száma, 2-100, hogy úgy gondolja, hogy túl kevés az Azure AD-szervezet. |
-| **A globális rendszergazdák százalékos aránya** | Ez a beállítás határozza meg a rendszergazdák minimális százalékos, akik globális rendszergazdák, 0%-ról 100%-ra, amely alatt nem szeretné, hogy az Azure AD-szervezet dip. |
-
-### <a name="roles-are-being-activated-too-frequently"></a>A szerepkörök túl gyakran aktiválódnak
+### <a name="there-are-too-many-global-administrators"></a>Túl sok globális rendszergazda van
 
 | | |
 | --- | --- |
 | **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | Ugyanazon felhasználó által ugyanannak a kiemelt szerepkörnek történő többszörös aktiválása támadás jele. |
-| **Hogyan lehet megjavítani?** | Tekintse át a felhasználók a listában, és győződjön meg arról, hogy az [aktiválás időtartama](pim-how-to-change-default-settings.md) a kiemelt szerepkör van beállítva elég hosszú ahhoz, hogy a feladatok elvégzéséhez. |
-| **Megelőzés** | Győződjön meg arról, hogy a kiemelt szerepkörök [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy a felhasználók elvégezzék a feladataikat.</br>[Többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) olyan kiemelt szerepkörök esetében, amelyek fiókjait több rendszergazda osztja meg. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | N/A |
-| **Eseményindító** | Akkor aktiválódik, ha egy felhasználó egy adott időszakon belül többször aktiválja ugyanazt a kiemelt szerepkört. Az aktiválások időtartamát és számát is beállíthatja. |
-| **Aktiválás megújításának időkerete** | Ez a beállítás napokban, órákban, percekben és a gyanús megújítások nyomon követéséhez használni kívánt időszak másodpercében adja meg. |
-| **Az aktiválás megújításának száma** | Ez a beállítás azt adja meg, hogy a választott időkereten belül hány aktiválást szeretne 2 és 100 között. Ezt a beállítást a csúszka mozgatásával vagy a szövegmezőbe beírva módosíthatja. |
+| **Miért kapok ez a riasztás?** | A globális rendszergazda a legmagasabb jogosultsági szintű szerepkör. Ha a globális rendszergazda biztonsága sérül, a támadó hozzáfér az összes engedélyéhez, amely a teljes rendszerét veszélyezteti. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el azokat, amelyek nem feltétlenül szükségesek a globális rendszergazdai szerepkörhöz. </br>Ehelyett alacsonyabb jogosultsági szintű szerepköröket rendelhet hozzájuk a felhasználókhoz. |
+| **Megelőzés** | Rendelje hozzá a felhasználókat a szükséges legalacsonyabb jogosultsági szintű szerepkörhöz. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a fiókot a Kiemelt szerepkörből. |
+| **Eseményindító** | Akkor aktiválódik, ha két különböző feltétel teljesül, és mindkettőt konfigurálhatja. Először el kell érnie a globális rendszergazdák egy bizonyos küszöbértékét. Másodszor, a teljes szerepkör-hozzárendelések egy adott százalékának globális rendszergazdának kell lennie. Ha csak a fenti mérések egyikét elégíti ki, a riasztás nem jelenik meg. |
+| **Globális rendszergazdák minimális száma** | Ez a beállítás határozza meg, hogy az Azure AD-szervezetnek milyen számú globális rendszergazdát kell megadnia (2 – 100). |
+| **Globális rendszergazdák százalékos aránya** | Ezzel a beállítással adható meg, hogy a rendszergazdák milyen minimális százalékos arányban kapják meg a globális rendszergazdákat, 0%-ról 100%-ra, és nem szeretné, hogy az Azure AD-szervezet bemerítést végezzen. |
 
-## <a name="configure-security-alert-settings"></a>Biztonsági riasztásbeállításainak megadása
+### <a name="roles-are-being-activated-too-frequently"></a>Túl gyakran aktiválják a szerepköröket
 
-A Riasztások lapon nyissa meg a **Beállítások lehetőséget.**
+| | |
+| --- | --- |
+| **Súlyosság** | Alacsony |
+| **Miért kapok ez a riasztás?** | Ugyanazon felhasználó több aktiválást is ugyanazzal a jogosultsági szinttel rendelkező szerepkörbe kapcsol egy támadás jeleként. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és győződjön meg arról, hogy a Kiemelt szerepkör [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy elvégezze a feladatait. |
+| **Megelőzés** | Győződjön meg arról, hogy a Kiemelt szerepkörök [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy a felhasználók elvégezzék a feladataikat.</br>[Többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) olyan Kiemelt szerepkörökhöz, amelyek több rendszergazda által megosztott fiókkal rendelkeznek. |
+| **A portálon belüli kockázatcsökkentő művelet** | N/A |
+| **Eseményindító** | Akkor aktiválódik, ha egy felhasználó egy adott időszakon belül többször aktiválja ugyanazt a Kiemelt szerepkört. Beállíthatja az időtartamot és az aktiválások számát is. |
+| **Aktiválás megújítási időkerete** | Ez a beállítás a gyanús megújítások nyomon követéséhez használni kívánt időszakot adja meg napokban, órában, percben és másodpercben. |
+| **Az aktiválás megújításának száma** | Ezzel a beállítással adható meg az aktiválások száma 2 és 100 között, amelyekről értesítést szeretne kapni a választott időkereten belül. A beállítás módosításához mozgassa a csúszkát, vagy írjon be egy számot a szövegmezőbe. |
 
-![Riasztások lap kiemelt Beállítások kal](media/pim-how-to-configure-security-alerts/alert-settings.png)
+## <a name="configure-security-alert-settings"></a>Biztonsági riasztás beállításainak konfigurálása
 
-A környezet és a biztonsági célok eléréséhez testreszabhatja a különböző riasztások beállításait.
+A riasztások lapon lépjen a **Beállítások**elemre.
 
-![A beállítások engedélyezéséhez és konfigurálásához szolgáló riasztás lapjának beállítása](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![Riasztások lap Kiemelt beállításokkal](media/pim-how-to-configure-security-alerts/alert-settings.png)
+
+A különböző riasztások beállításainak testreszabásával dolgozhat a környezettel és a biztonsági célokkal.
+
+![Riasztás beállítása a beállítások engedélyezéséhez és konfigurálásához](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
-![Azure AD-szerepkörök – Riasztási ablaktábla listák riasztási és súlyosságát](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD-szerepkörök – riasztási ablaktábla, amely a riasztásokat és a súlyosságot tartalmazza](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
-Ez a szakasz az Azure AD-szerepkörök összes biztonsági riasztását, valamint a javítás és a megelőzés módját sorolja fel. A súlyosság jelentése a következő:
+Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztonsági riasztást, valamint a javítás és a megelőzés módját. A súlyosság a következő jelentéssel bír:
 
-- **Magas**: Irányelvsértés miatt azonnali beavatkozást igényel.
-- **Közepes**: Nem igényel azonnali műveletet, de potenciális irányelvsértést jelez.
-- **Alacsony**: Nem igényel azonnali cselekvést, de előnyösebb politikai változást javasol.
+- **Magas**: a szabályzat megsértése miatt azonnali műveletre van szükség.
+- **Közepes**: nincs szükség azonnali műveletre, de az esetleges szabályzat megsértését jelzi.
+- **Alacsony**: nincs szükség azonnali műveletre, de javasolt a szabályzat módosítása.
 
-### <a name="administrators-arent-using-their-privileged-roles"></a>A rendszergazdák nem használják a kiemelt szerepköreiket
-
-| | |
-| --- | --- |
-| **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | Azok a felhasználók, akiknek kiemelt szerepkörökhöz vannak rendelve, nincs szükségük, növelik a támadás esélyét. A támadók számára is könnyebb észrevétlenmaradni a nem aktívan használt fiókokban. |
-| **Hogyan lehet megjavítani?** | Tekintse át a felhasználók a listában, és távolítsa el őket a kiemelt szerepkörök, amelyek nem szükséges. |
-| **Megelőzés** | Kiemelt szerepkörök hozzárendelése csak olyan felhasználókhoz, akik üzleti indoklással rendelkeznek. </br>Rendszeres [hozzáférés-felülvizsgálatok ütemezése](pim-how-to-start-security-review.md) annak ellenőrzéséhez, hogy a felhasználóknak továbbra is szükségük van-e a hozzáférésükre. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a fiókot a kiemelt szerepkörükből. |
-| **Eseményindító** | Akkor aktiválódik, ha a felhasználó egy adott számú napon megy keresztül szerepkör aktiválása nélkül. |
-| **Napok száma** | Ez a beállítás azt a maximális számú napot adja meg, 0 és 100 között, amerre a felhasználó szerepkör aktiválása nélkül is eltud menni.|
-
-### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>A szerepkörök aktiválásához nincs szükség többtényezős hitelesítésre
+### <a name="administrators-arent-using-their-privileged-roles"></a>A rendszergazdák nem használják a Kiemelt szerepköröket
 
 | | |
 | --- | --- |
 | **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | Többtényezős hitelesítés nélkül a sérült felhasználók aktiválhatják a kiemelt szerepköröket. |
-| **Hogyan lehet megjavítani?** | Tekintse át a szerepkörök listáját, és minden szerepkörhöz [többtényezős hitelesítést igényel.](pim-how-to-change-default-settings.md) |
-| **Megelőzés** | [Többfélű fa szükség](pim-how-to-change-default-settings.md) minden szerepkörhöz.  |
-| **A portálon keresztüli kockázatcsökkentési művelet** | A kiemelt szerepkör aktiválásához többtényezős hitelesítésszükséges. |
+| **Miért kapok ez a riasztás?** | Azok a felhasználók, akik Kiemelt szerepköröket rendeltek hozzá, nem kell megnövelniük a támadás esélyét. Emellett a támadók a nem aktívan használatban lévő fiókoknál is könnyebben észrevehetetlen maradnak. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a nem szükséges Kiemelt szerepkörökből. |
+| **Megelőzés** | A Kiemelt szerepköröket csak olyan felhasználók számára rendelheti hozzá, akik rendelkeznek üzleti indoklással. </br>Ütemezze a rendszeres [hozzáférési felülvizsgálatokat](pim-how-to-start-security-review.md) annak ellenőrzéséhez, hogy a felhasználóknak továbbra is szükségük van a hozzáférésre. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a fiókot a Kiemelt szerepkörből. |
+| **Eseményindító** | Akkor aktiválódik, ha egy felhasználó a megadott számú napon belül elhalad a szerepkör aktiválása nélkül. |
+| **Napok száma** | Ez a beállítás határozza meg a napok maximális számát 0 és 100 között, amelyet a felhasználó a szerepkör aktiválása nélkül tud eljárni.|
 
-### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>A szervezet nem rendelkezik Az Azure AD Premium P2
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>A szerepkörök nem igénylik a többtényezős hitelesítést az aktiváláshoz
 
 | | |
 | --- | --- |
 | **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | A jelenlegi Azure AD-szervezet nem rendelkezik az Azure AD Premium P2. |
-| **Hogyan lehet megjavítani?** | Tekintse át az [Azure AD-kiadásokkal](../fundamentals/active-directory-whatis.md)kapcsolatos információkat. Frissítsen az Azure AD Premium P2 csomagra. |
+| **Miért kapok ez a riasztás?** | A többtényezős hitelesítés nélkül a feltört felhasználók is aktiválhatja a Kiemelt szerepköröket. |
+| **Hogyan lehet javítani?** | Tekintse át a szerepkörök listáját, és a [többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) minden szerepkörhöz. |
+| **Megelőzés** | Az [MFA megkövetelése](pim-how-to-change-default-settings.md) minden szerepkörhöz.  |
+| **A portálon belüli kockázatcsökkentő művelet** | A többtényezős hitelesítés szükséges a Kiemelt szerepkör aktiválásához. |
 
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenciális elavult fiókok kiemelt szerepkörben
+### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>A szervezet nem rendelkezik prémium szintű Azure AD P2-vel
+
+| | |
+| --- | --- |
+| **Súlyosság** | Alacsony |
+| **Miért kapok ez a riasztás?** | Az aktuális Azure AD-szervezetnek nincs prémium szintű Azure AD P2-je. |
+| **Hogyan lehet javítani?** | Tekintse át az [Azure ad-kiadásokkal](../fundamentals/active-directory-whatis.md)kapcsolatos információkat. Frissítsen prémium szintű Azure AD P2-re. |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Lehetséges elavult fiókok egy kiemelt szerepkörben
 
 | | |
 | --- | --- |
 | **Súlyosság** | Közepes |
-| **Miért kapok riasztást?** | A kiemelt szerepkörrel rendelkező fiókok nem változtatták meg a jelszavukat az elmúlt 90 napban. Ezek a fiókok lehetnek olyan szolgáltatások vagy megosztott fiókok, amelyek nincsenek karbantartva, és ki vannak téve a támadóknak. |
-| **Hogyan lehet megjavítani?** | Tekintse át a listában szereplő fiókokat. Ha már nincs szükségük hozzáférésre, távolítsa el őket a kiemelt szerepkörökből. |
-| **Megelőzés** | Győződjön meg arról, hogy a megosztott fiókok erős jelszavakat forgatnak, ha a jelszót ismerő felhasználók náluk változás történik. </br>Rendszeresen tekintse át a kiemelt szerepkörrel rendelkező fiókokat [a hozzáférési felülvizsgálatok](pim-how-to-start-security-review.md) használatával, és távolítsa el a már nem szükséges szerepkör-hozzárendeléseket. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a fiókot a kiemelt szerepkörükből. |
-| **Bevált módszerek** | A jelszóval hitelesített és magas szintű rendszergazdai szerepkörökhöz (például globális rendszergazdai vagy biztonsági rendszergazda) rendelt megosztott, szolgáltatás- és segélyhívási fiókokjelszavát a következő esetekben kell elforgatni:<ul><li>Az adminisztratív hozzáférési jogokkal való visszaéléssel vagy az okkal való veszélyeztetéssel járó biztonsági incidensután</li><li>Miután bármely felhasználó jogosultságai megváltoztak, hogy azok már nem rendszergazdai okok (például miután egy alkalmazott, aki rendszergazda volt, elhagyja az informatikai és kilép a szervezet)</li><li>Rendszeres időközönként (például negyedéves vagy éves) időközönként, még akkor is, ha nem történt ismert jogsértés vagy az informatikai személyzet</li></ul>Mivel több en is hozzáférhetnek ezekhez a fiókok hitelesítő adataihoz, a hitelesítő adatokat el kell forgatni annak érdekében, hogy a szerepkörüket elhagyó személyek többé ne férhessenek hozzá a fiókokhoz. [További információ](https://aka.ms/breakglass) |
+| **Miért kapok ez a riasztás?** | A Kiemelt szerepkörben lévő fiókok nem változtatták meg a jelszavukat az elmúlt 90 napban. Ezek a fiókok lehetnek olyan szolgáltatás-vagy megosztott fiókok, amelyek nincsenek karbantartva és sebezhetők a támadók számára. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő fiókokat. Ha már nincs szükségük hozzáférésre, távolítsa el őket a Kiemelt szerepkörökből. |
+| **Megelőzés** | Ügyeljen arra, hogy a megosztott fiókok erős jelszavakat használjanak, amikor a jelszót ismerő felhasználók módosulnak. </br>A jogosultsági szintű szerepkörökkel rendelkező fiókokat rendszeresen tekintse át [hozzáférési felülvizsgálatok](pim-how-to-start-security-review.md) használatával, és távolítsa el a már nem szükséges szerepkör-hozzárendeléseket. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a fiókot a Kiemelt szerepkörből. |
+| **Ajánlott eljárások** | Megosztott, szolgáltatás-és segélyhívó fiókok, amelyek jelszavas hitelesítéssel és a magas jogosultsági szintű rendszergazdai szerepkörökhöz vannak hozzárendelve, például a globális rendszergazda vagy a biztonsági rendszergazda számára a következő esetekben kell elforgatni a jelszavukat:<ul><li>Az olyan biztonsági incidensek után, amelyekkel visszaélés vagy a rendszergazdai hozzáférési jogosultságok sérülnek</li><li>Miután megtörtént a felhasználói jogosultságok módosítása, hogy azok ne legyenek rendszergazdaként (például egy olyan alkalmazott, aki a rendszergazda, elhagyja vagy elhagyja a szervezetet)</li><li>Rendszeres időközönként (például negyedévente vagy évente), még akkor is, ha nem történt ismert jogsértés vagy az informatikai személyzetre való váltás</li></ul>Mivel több ember fér hozzá ezekhez a fiókokhoz a hitelesítő adatokhoz, a hitelesítő adatokat el kell forgatni annak biztosításához, hogy a szerepköröket elhagyó személyek többé nem férhetnek hozzá a fiókokhoz. [További információ](https://aka.ms/breakglass) |
 
-### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>A szerepkörök hozzárendelése a kiemelt identitáskezelésen kívül van hozzárendelve
+### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>A szerepkörök hozzárendelése a Privileged Identity Managementon kívül történik
 
 | | |
 | --- | --- |
 | **Súlyosság** | Magasság |
-| **Miért kapok riasztást?** | A kiemelt identitáskezelésen kívül végzett kiemelt szerepkör-hozzárendelések nem megfelelően figyelhetők, és aktív támadást jelezhetnek. |
-| **Hogyan lehet megjavítani?** | Tekintse át a felhasználók a listában, és távolítsa el őket a kiemelt identitáskezelésen kívül hozzárendelt kiemelt szerepkörökből. |
-| **Megelőzés** | Vizsgálja meg, hogy a felhasználók a kiemelt identitáskezelésen kívül hol vannak kiemelt szerepkörökhöz rendelve, és tiltsa le a jövőbeli hozzárendeléseket. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a felhasználót a kiemelt szerepkörből. |
+| **Miért kapok ez a riasztás?** | A Privileged Identity Managementon kívül végrehajtott Kiemelt szerepkör-hozzárendelések nincsenek megfelelően figyelve, és az aktív támadásra utalhatnak. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a Privileged Identity Managementon kívül hozzárendelt Kiemelt szerepkörökből. |
+| **Megelőzés** | Vizsgálja meg, hogy a felhasználók mikor kapnak jogosultsági szintű szerepköröket a Privileged Identity Managementon kívül, és nem tilthatják meg a jövőbeli hozzárendeléseket. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a felhasználót a Kiemelt szerepkörből. |
 
-### <a name="there-are-too-many-global-administrators"></a>Túl sok a globális rendszergazda
-
-| | |
-| --- | --- |
-| **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | A globális rendszergazda a legmagasabb jogosultsági szintű szerepkör. Ha egy globális rendszergazda biztonsága sérül, a támadó minden engedélyéhez hozzáfér, ami az egész rendszert veszélyezteti. |
-| **Hogyan lehet megjavítani?** | Tekintse át a listában szereplő felhasználókat, és távolítson el minden olyan felhasználót, amelynek nincs feltétlenül szüksége a globális rendszergazdai szerepkörre. </br>Rendeljen alacsonyabb jogosultsággal rendelkező szerepköröket ezekhez a felhasználókhoz. |
-| **Megelőzés** | Rendelje hozzá a felhasználóknak a szükséges legkevésbé kiemelt szerepkört. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | Eltávolítja a fiókot a kiemelt szerepkörükből. |
-| **Eseményindító** | Akkor aktiválódik, ha két különböző feltétel teljesül, és mindkettő konfigurálható. Először el kell érnie a globális rendszergazdák egy bizonyos küszöbértékét. Másodszor, a teljes szerepkör-hozzárendelések bizonyos százalékának globális rendszergazdáknak kell lennie. Ha csak az egyik ilyen mérésnek felel meg, a riasztás nem jelenik meg. |
-| **A globális rendszergazdák minimális száma** | Ez a beállítás adja meg a globális rendszergazdák száma, 2-100, hogy úgy gondolja, hogy túl kevés az Azure AD-szervezet. |
-| **A globális rendszergazdák százalékos aránya** | Ez a beállítás határozza meg a rendszergazdák minimális százalékos, akik globális rendszergazdák, 0%-ról 100%-ra, amely alatt nem szeretné, hogy az Azure AD-szervezet dip. |
-
-### <a name="roles-are-being-activated-too-frequently"></a>A szerepkörök túl gyakran aktiválódnak
+### <a name="there-are-too-many-global-administrators"></a>Túl sok globális rendszergazda van
 
 | | |
 | --- | --- |
 | **Súlyosság** | Alacsony |
-| **Miért kapok riasztást?** | Ugyanazon felhasználó által ugyanannak a kiemelt szerepkörnek történő többszörös aktiválása támadás jele. |
-| **Hogyan lehet megjavítani?** | Tekintse át a felhasználók a listában, és győződjön meg arról, hogy az [aktiválás időtartama](pim-how-to-change-default-settings.md) a kiemelt szerepkör van beállítva elég hosszú ahhoz, hogy a feladatok elvégzéséhez. |
-| **Megelőzés** | Győződjön meg arról, hogy a kiemelt szerepkörök [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy a felhasználók elvégezzék a feladataikat.</br>[Többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) olyan kiemelt szerepkörök esetében, amelyek fiókjait több rendszergazda osztja meg. |
-| **A portálon keresztüli kockázatcsökkentési művelet** | N/A |
-| **Eseményindító** | Akkor aktiválódik, ha egy felhasználó egy adott időszakon belül többször aktiválja ugyanazt a kiemelt szerepkört. Az aktiválások időtartamát és számát is beállíthatja. |
-| **Aktiválás megújításának időkerete** | Ez a beállítás napokban, órákban, percekben és a gyanús megújítások nyomon követéséhez használni kívánt időszak másodpercében adja meg. |
-| **Az aktiválás megújításának száma** | Ez a beállítás azt adja meg, hogy a választott időkereten belül hány aktiválást szeretne 2 és 100 között. Ezt a beállítást a csúszka mozgatásával vagy a szövegmezőbe beírva módosíthatja. |
+| **Miért kapok ez a riasztás?** | A globális rendszergazda a legmagasabb jogosultsági szintű szerepkör. Ha a globális rendszergazda biztonsága sérül, a támadó hozzáfér az összes engedélyéhez, amely a teljes rendszerét veszélyezteti. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el azokat, amelyek nem feltétlenül szükségesek a globális rendszergazdai szerepkörhöz. </br>Ehelyett alacsonyabb jogosultsági szintű szerepköröket rendelhet hozzájuk a felhasználókhoz. |
+| **Megelőzés** | Rendelje hozzá a felhasználókat a szükséges legalacsonyabb jogosultsági szintű szerepkörhöz. |
+| **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a fiókot a Kiemelt szerepkörből. |
+| **Eseményindító** | Akkor aktiválódik, ha két különböző feltétel teljesül, és mindkettőt konfigurálhatja. Először el kell érnie a globális rendszergazdák egy bizonyos küszöbértékét. Másodszor, a teljes szerepkör-hozzárendelések egy adott százalékának globális rendszergazdának kell lennie. Ha csak a fenti mérések egyikét elégíti ki, a riasztás nem jelenik meg. |
+| **Globális rendszergazdák minimális száma** | Ez a beállítás határozza meg, hogy az Azure AD-szervezetnek milyen számú globális rendszergazdát kell megadnia (2 – 100). |
+| **Globális rendszergazdák százalékos aránya** | Ezzel a beállítással adható meg, hogy a rendszergazdák milyen minimális százalékos arányban kapják meg a globális rendszergazdákat, 0%-ról 100%-ra, és nem szeretné, hogy az Azure AD-szervezet bemerítést végezzen. |
 
-## <a name="configure-security-alert-settings"></a>Biztonsági riasztásbeállításainak megadása
+### <a name="roles-are-being-activated-too-frequently"></a>Túl gyakran aktiválják a szerepköröket
 
-Testre szabhatja a kiemelt identitáskezelés néhány biztonsági riasztását, hogy a szervezet igényeinek és biztonsági céljainak megfelelően működjön. A biztonsági riasztás beállításainak megnyitásához kövesse az alábbi lépéseket:
+| | |
+| --- | --- |
+| **Súlyosság** | Alacsony |
+| **Miért kapok ez a riasztás?** | Ugyanazon felhasználó több aktiválást is ugyanazzal a jogosultsági szinttel rendelkező szerepkörbe kapcsol egy támadás jeleként. |
+| **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és győződjön meg arról, hogy a Kiemelt szerepkör [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy elvégezze a feladatait. |
+| **Megelőzés** | Győződjön meg arról, hogy a Kiemelt szerepkörök [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy a felhasználók elvégezzék a feladataikat.</br>[Többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) olyan Kiemelt szerepkörökhöz, amelyek több rendszergazda által megosztott fiókkal rendelkeznek. |
+| **A portálon belüli kockázatcsökkentő művelet** | N/A |
+| **Eseményindító** | Akkor aktiválódik, ha egy felhasználó egy adott időszakon belül többször aktiválja ugyanazt a Kiemelt szerepkört. Beállíthatja az időtartamot és az aktiválások számát is. |
+| **Aktiválás megújítási időkerete** | Ez a beállítás a gyanús megújítások nyomon követéséhez használni kívánt időszakot adja meg napokban, órában, percben és másodpercben. |
+| **Az aktiválás megújításának száma** | Ezzel a beállítással adható meg az aktiválások száma 2 és 100 között, amelyekről értesítést szeretne kapni a választott időkereten belül. A beállítás módosításához mozgassa a csúszkát, vagy írjon be egy számot a szövegmezőbe. |
 
-1. Nyissa **meg a kiemelt identitáskezelés az** Azure AD-ben.
+## <a name="configure-security-alert-settings"></a>Biztonsági riasztás beállításainak konfigurálása
 
-1. Válassza az **Azure AD-szerepkörök lehetőséget.**
+A Privileged Identity Management a biztonsági riasztások némelyikét testreszabhatja a szervezet igényeinek és biztonsági céljainak megfelelően. A biztonsági riasztás beállításainak megnyitásához kövesse az alábbi lépéseket:
 
-1. Válassza a **Beállítások,** majd **a Riasztások lehetőséget.**
+1. **Privileged Identity Management** megnyitása az Azure ad-ben.
 
-    ![Azure AD-szerepkörök – Beállítások kijelölt riasztásokkal](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+1. Válassza az **Azure ad-szerepkörök**elemet.
 
-1. Válasszon egy riasztásnevet a riasztás beállításának konfigurálásához.
+1. Válassza a **Beállítások** , majd a **riasztások**lehetőséget.
 
-    ![A kijelölt riasztáshoz a biztonsági riasztás beállításai ablaktábla](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![Azure AD-szerepkörök – beállítások a kiválasztott riasztásokkal](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+
+1. Válassza ki a riasztás nevét az adott riasztás beállításának konfigurálásához.
+
+    ![A kiválasztott riasztáshoz a biztonsági riasztás beállításai panel](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure AD szerepkör-beállításainak konfigurálása a kiemelt identitáskezelésben](pim-how-to-change-default-settings.md)
+- [Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-how-to-change-default-settings.md)

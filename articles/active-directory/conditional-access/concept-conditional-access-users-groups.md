@@ -1,6 +1,6 @@
 ---
 title: Felhasználók és csoportok a feltételes hozzáférési házirendben – Azure Active Directory
-description: Kik felhasználók és csoportok egy Azure AD feltételes hozzáférési szabályzatban
+description: Felhasználók és csoportok az Azure AD feltételes hozzáférési szabályzatában
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,64 +12,64 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755252"
 ---
-# <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: Felhasználók és csoportok
+# <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
-A feltételes hozzáférési házirendnek tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók bevonhatók vagy kizárhatók a feltételes hozzáférési házirendekből. 
+A feltételes hozzáférési szabályzatnak tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók belefoglalhatják vagy kizárhatják a feltételes hozzáférési szabályzatokat. 
 
-![Felhasználó, mint egy jel a döntéseket a feltételes hozzáférés](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+![A felhasználó mint jel a feltételes hozzáférés által hozott döntésekben](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
-## <a name="include-users"></a>Felhasználók felvétele
+## <a name="include-users"></a>Felhasználók belefoglalása
 
-Ez a lista általában tartalmazza az összes felhasználó t a szervezet által megcélzott feltételes hozzáférési házirend. 
+A felhasználók ezen listája általában a feltételes hozzáférési szabályzatban a szervezet által megcélzott összes felhasználót tartalmazza. 
 
-A következő beállítások at lehet felvenni a feltételes hozzáférési házirend ek létrehozásakor.
+A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások érhetők el.
 
 - None
    - Nincs kijelölt felhasználó
 - Minden felhasználó
-   - Minden felhasználó, hogy létezik a könyvtárban, beleértve a B2B vendégek.
+   - Minden olyan felhasználó, aki szerepel a címtárban, beleértve a B2B vendégeket is.
 - Felhasználók és csoportok kiválasztása
    - Minden vendég és külső felhasználó
-      - Ez a választás magában foglalja a B2B `user type` vendégek és `guest`a külső felhasználók, beleértve a felhasználó az attribútum beállítása. Ez a beállítás minden olyan külső felhasználóra is vonatkozik, aki egy másik szervezetből, például egy felhőszolgáltatótól (CSP) jelentkezett be. 
+      - Ez a beállítás tartalmazza a B2B-vendégeket és a külső felhasználókat, `user type` beleértve az attribútummal rendelkező összes felhasználót `guest`. Ez a kijelölés minden olyan külső felhasználóra érvényes, amely egy másik szervezettől, például egy felhőalapú megoldás-szolgáltatótól (CSP) bejelentkezett. 
    - Címtárbeli szerepkörök
-      - Lehetővé teszi a rendszergazdák számára, hogy válasszaki a hozzárendelés meghatározásához használt azure AD címtárszerepkörök. A szervezetek például szigorúbb házirendet hozhatnak létre a globális rendszergazdai szerepkörhöz rendelt felhasználókra vonatkozóan.
+      - Lehetővé teszi a rendszergazdák számára, hogy kiválasszanak bizonyos Azure AD-címtárbeli szerepköröket a hozzárendelés meghatározásához. Előfordulhat például, hogy a szervezetek szigorúbb házirendet hoznak létre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára.
    - Felhasználók és csoportok
-      - Lehetővé teszi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatják azt a csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazást választanak ki felhőalkalmazásként. A csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportokat.
+      - Engedélyezi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatnak egy csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazás van kiválasztva a felhőalapú alkalmazásként. Egy csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy a hozzárendelt biztonsági és terjesztési csoportokat is.
 
 ## <a name="exclude-users"></a>Felhasználók kizárása
 
-Ha a szervezetek egy felhasználót vagy csoportot is bevonnak és kizárnak, a felhasználó vagy csoport ki van zárva a házirendből, mivel a kizárási művelet felülbírálja a házirendbe való belefoglalást. A kizárásokat gyakran használják vészelérési vagy üvegtöréses fiókokhoz. További információ a vészelérési fiókokról és azok fontos tudnivalóiról az alábbi cikkekben található: 
+Ha a szervezetek egyaránt tartalmaznak és kizárnak egy felhasználót vagy csoportot, amelyet a felhasználó vagy csoport kizár a szabályzatból, a kizárási művelet felülbírál egy belefoglalást a házirendbe. A kizárásokat gyakran használják vészhelyzeti hozzáféréshez vagy bomlási fiókokhoz. További információ a segélyhívó fiókokról és azok fontos okairól a következő cikkekben talál további információt: 
 
-* [Vészelérési fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
-* [Rugalmas hozzáférés-vezérlési stratégia létrehozása az Azure Active Directoryval](../authentication/concept-resilient-controls.md)
+* [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
+* [Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory](../authentication/concept-resilient-controls.md)
 
-A következő lehetőségek kizárhatják a feltételes hozzáférési házirendek létrehozásakor.
+A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások választhatók ki.
 
 - Minden vendég és külső felhasználó
-   - Ez a választás magában foglalja a B2B `user type` vendégek és `guest`a külső felhasználók, beleértve a felhasználó az attribútum beállítása. Ez a beállítás minden olyan külső felhasználóra is vonatkozik, aki egy másik szervezetből, például egy felhőszolgáltatótól (CSP) jelentkezett be. 
+   - Ez a beállítás tartalmazza a B2B-vendégeket és a külső felhasználókat, `user type` beleértve az attribútummal rendelkező összes felhasználót `guest`. Ez a kijelölés minden olyan külső felhasználóra érvényes, amely egy másik szervezettől, például egy felhőalapú megoldás-szolgáltatótól (CSP) bejelentkezett. 
 - Címtárbeli szerepkörök
-   - Lehetővé teszi a rendszergazdák számára, hogy válasszaki a hozzárendelés meghatározásához használt azure AD címtárszerepkörök. A szervezetek például szigorúbb házirendet hozhatnak létre a globális rendszergazdai szerepkörhöz rendelt felhasználókra vonatkozóan.
+   - Lehetővé teszi a rendszergazdák számára, hogy kiválasszanak bizonyos Azure AD-címtárbeli szerepköröket a hozzárendelés meghatározásához. Előfordulhat például, hogy a szervezetek szigorúbb házirendet hoznak létre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára.
 - Felhasználók és csoportok
-   - Lehetővé teszi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatják azt a csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazást választanak ki felhőalkalmazásként. A csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportokat.
+   - Engedélyezi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatnak egy csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazás van kiválasztva a felhőalapú alkalmazásként. Egy csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy a hozzárendelt biztonsági és terjesztési csoportokat is.
 
 ### <a name="preventing-administrator-lockout"></a>Rendszergazdai zárolás megakadályozása
 
-Ha meg szeretné akadályozni, hogy a rendszergazda kizárja magát a címtárból a **Minden felhasználóra** és a **Minden alkalmazásra**alkalmazott házirend létrehozásakor, a következő figyelmeztetést fogja látni.
+Annak megakadályozása érdekében, hogy a rendszergazda a saját címtárában zárolja magát, amikor az **összes felhasználóra** és **alkalmazásra**alkalmazott házirendet hoz létre, a következő figyelmeztetés jelenik meg.
 
-> Ne zárkózz ki! Javasoljuk, hogy először a felhasználók egy kis készletére alkalmazzon házirendet, hogy ellenőrizze, hogy a várt módon viselkedik-e. Azt is javasoljuk, hogy legalább egy rendszergazdát zárjon ki ebből a házirendből. Ez biztosítja, hogy továbbra is rendelkezik hozzáféréssel, és szükség esetén frissítheti a házirendet. Tekintse át az érintett felhasználókat és alkalmazásokat.
+> Ne zárja ki magát! Javasoljuk, hogy a szabályzatot egy kis felhasználói csoportba alkalmazzon először annak ellenőrzéséhez, hogy a várt módon viselkedik-e. Javasoljuk továbbá, hogy a szabályzatból legalább egy rendszergazdát kizárjon. Ezzel biztosíthatja, hogy a rendszer továbbra is hozzáférjen, és ha módosításra van szükség, frissítheti a szabályzatot. Tekintse át az érintett felhasználókat és alkalmazásokat.
 
-Alapértelmezés szerint a házirend lehetőséget biztosít az aktuális felhasználó kizárására a házirendből, de ezt az alapértelmezett beállítást a rendszergazda felülbírálhatja az alábbi képen látható módon. 
+Alapértelmezés szerint a házirend lehetővé teszi az aktuális felhasználó kizárását a házirendből, de ezt az alapértelmezett beállítást a rendszergazda felülbírálhatja, ahogy az alábbi képen is látható. 
 
-![Figyelem, ne zárkózz ki!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+![Figyelmeztetés, ne zárja ki magát!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Feltételes hozzáférés: Felhőalapú alkalmazások és műveletek](concept-conditional-access-cloud-apps.md)
+- [Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek](concept-conditional-access-cloud-apps.md)
 
-- [Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
+- [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)

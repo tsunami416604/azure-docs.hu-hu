@@ -1,6 +1,6 @@
 ---
-title: Szabványos kódolóformátumok és kodekek – Azure
-description: Ez a cikk a StandardEncoderPreset-tel használható leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza.
+title: Standard kódoló-formátumok és-kodekek – Azure
+description: Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket a StandardEncoderPreset használhat.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,17 +15,17 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251361"
 ---
-# <a name="standard-encoder-formats-and-codecs"></a>Szabványos kódoló formátumok és kodekek
+# <a name="standard-encoder-formats-and-codecs"></a>Szabványos kódoló-formátumok és-kodekek
 
-Ez a cikk a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)alkalmazással használható leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza. Az egyéni készletek **StandardEncoderPreset**használatával történő létrehozásáról további információt az [Átalakítás létrehozása egyéni készlettel](customize-encoder-presets-how-to.md)című témakörben talál.
+Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)használhat. Az egyéni előállítók **StandardEncoderPreset**használatával történő létrehozásával kapcsolatos információkért lásd az [átalakítás egyéni beállításkészlettel történő létrehozását](customize-encoder-presets-how-to.md)ismertető témakört.
 
-## <a name="input-containerfile-formats"></a>Beviteli tároló/fájlformátumok
+## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátumok
 
 | Fájlformátum (fájlkiterjesztés) | Támogatott |
 | --- | --- |
@@ -41,18 +41,18 @@ Ez a cikk a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/tr
 | WAVE/WAV (.wav) |Igen |
 | QuickTime (.mov) |Igen |
 
-### <a name="audio-formats-in-input-containers"></a>Hangformátumok beviteli tárolókban
+### <a name="audio-formats-in-input-containers"></a>Hangformátumok bemeneti tárolókban
 
-A standard kódoló a következő hangformátumokat támogatja a beviteli tárolókban:
+A standard szintű kódoló támogatja a következő hangformátumok átvitelét a bemeneti tárolókban:
 
-* MXF, GXF és QuickTime fájlok, amelyek hangsávot tartalmaznak átlapolt sztereó vagy 5.1-es mintával
+* MXF-, GXF-és QuickTime-fájlok, amelyek hang-és hangsávokat tartalmazhatnak az összekapcsolt sztereó vagy 5,1-mintákkal
 
 vagy
 
 * Olyan MXF-, GXF- és QuickTime-fájlok, melyekben külön PCM sávban található a hang, de csatornaleképezés (sztereó vagy 5.1) a fájlok metaadataiból származtatható
 
-## <a name="input-video-codecs"></a>Videokodekek bevitele
-| Videokodekek bevitele | Támogatott |
+## <a name="input-video-codecs"></a>Bemeneti videó codec-je
+| Bemeneti videó codec-je | Támogatott |
 | --- | --- |
 | 8 bites/10 bites AVC, akár 4:2:2-esig, ideértve az AVCIntrát is |8 bites 4:2:0-es és 4:2:2-es |
 | Avid DNxHD (MXF-ben) |Igen |
@@ -72,9 +72,9 @@ vagy
 | Apple ProRes Proxy |Igen |
 | Apple ProRes 4444 |Igen |
 | Apple ProRes 4444 XQ |Igen |
-| HEVC/H.265| Fő profil|
+| HEVC/H. 265| Fő profil|
 
-## <a name="input-audio-codecs"></a>Hangkodekek bevitele
+## <a name="input-audio-codecs"></a>Bemeneti hangkodekek
 | Bemeneti hangkodekek | Támogatott |
 | --- | --- |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1-esig) |Igen |
@@ -82,7 +82,7 @@ vagy
 | MP3 (MPEG-1, 3 hangréteg) |Igen |
 | Windows Media Audio |Igen |
 | WAV/PCM |Igen |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Igen |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Igen |
 | AMR (adaptív többsebességű) |Igen |
@@ -92,13 +92,13 @@ vagy
 | Dolby® Digital (E-AC3) |Nem |
 
 ## <a name="output-formats-and-codecs"></a>Kimeneti formátumok és kodekek
-Az alábbi táblázat az exportra támogatott kodekeket és fájlformátumokat sorolja fel.
+A következő táblázat az exportáláshoz támogatott kodekeket és fájlformátumokat sorolja fel.
 
-| Fájlformátum | Videó kodek | Hang kodek |
+| Fájlformátum | Videó kodek | Hangkodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(beleértve a többbitrátásos MP4-tárolókat is) |H.264 (magas, fő és alapvonal profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
-| MPEG2-TS |H.264 (magas, fő és alapvonal profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(többek között a többszörös sávszélességű MP4-tárolók) |H. 264 (magas, fő és alapkonfigurációs profilok) |AAC-LC, it-AAC v1, it-AAC v2 |
+| MPEG2 – TS |H. 264 (magas, fő és alapkonfigurációs profilok) |AAC-LC, it-AAC v1, it-AAC v2 |
 
 ## <a name="next-steps"></a>További lépések
 
-[Átalakítás létrehozása egyéni készlettel](customize-encoder-presets-how-to.md)
+[Átalakítás létrehozása egyéni beállításkészlettel](customize-encoder-presets-how-to.md)

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Hozzáférési csomag létrehozása – Azure AD-jogosultságkezelés
-description: Részletes oktatóanyag az első hozzáférési csomag létrehozásáról az Azure Active Directory jogosultságkezelésében.
+title: Oktatóanyag – hozzáférési csomag létrehozása – Azure AD-jogosultságok kezelése
+description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,251 +17,251 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410590"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: Hozza létre az első hozzáférési csomagot az Azure AD-jogosultságkezelésben
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
-Az alkalmazottak számára szükséges erőforrásokhoz , például csoportokhoz, alkalmazásokhoz és webhelyekhez való hozzáférés kezelése fontos funkció a szervezetek számára. Azt szeretné, hogy az alkalmazottak a megfelelő szintű hozzáférést kell a produktív, és távolítsa el a hozzáférést, ha már nincs szükség.
+A szervezetek számára fontos funkció az összes erőforráshoz, például a csoportokhoz, alkalmazásokhoz és webhelyekhez való hozzáférés kezelése. Azt szeretné, hogy az alkalmazottak a megfelelő szintű hozzáférést biztosítsanak a hatékonysághoz, és el kell távolítaniuk a hozzáférést, ha már nincs rá szükség.
 
-Ebben az oktatóanyagban a Woodgrove Bank informatikai rendszergazdaként dolgozik. A rendszer arra kérte, hogy hozzon létre egy erőforráscsomagot egy olyan marketingkampányhoz, amelyet a belső felhasználók önkiszolgáló kérésre kérhetnek. A kérelmek nem igényelnek jóváhagyást, és a felhasználói hozzáférés 30 nap után lejár. Ebben az oktatóanyagban a marketingkampány erőforrásai csak egyetlen csoportban vannak, de csoportok, alkalmazások vagy SharePoint Online-webhelyek gyűjteménye lehet.
+Ebben az oktatóanyagban a Woodgrove Bank rendszergazdaként működik. A rendszer arra kérte, hogy hozzon létre egy erőforrás-csomagot egy olyan marketingkampányok számára, amelyet a belső felhasználók önkiszolgáló kéréssel használhatnak. A kérések nem igényelnek jóváhagyást, és a felhasználó hozzáférése 30 nap után lejár. Ebben az oktatóanyagban a marketing kampány erőforrásai csak egyetlen csoport tagjai, de lehetnek csoportok, alkalmazások vagy SharePoint Online-webhelyek gyűjteményei.
 
 ![Forgatókönyv áttekintése](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzáférési csomag létrehozása csoporttal erőforrásként
-> * Hozzáférés kérése a címtárban lévő felhasználóknak
-> * Annak bemutatása, hogy egy belső felhasználó hogyan kérheti a hozzáférési csomagot
+> * Hozzáférési csomag létrehozása erőforrásként egy csoporttal
+> * Hozzáférés kérésének engedélyezése a címtárban lévő felhasználónak
+> * Bemutatjuk, hogyan kérheti a belső felhasználó a hozzáférési csomagot
 
-Az Azure Active Directory jogosultságkezelésének üzembe helyezésének folyamatának részletes bemutatásához, beleértve az első hozzáférési csomag létrehozását, tekintse meg az alábbi videót:
+Az Azure Active Directory jogosultságok felügyeletének üzembe helyezési folyamatának lépésenkénti bemutatásához, beleértve az első hozzáférési csomag létrehozását is, tekintse meg a következő videót:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD jogosultságkezelés használatához az alábbi licencek egyikével kell rendelkeznie:
+Az Azure AD-jogosultságok felügyeletének használatához a következő licencek egyike szükséges:
 
 - Prémium szintű Azure AD P2
-- Enterprise Mobility + Security (EMS) E5 licenc
+- Enterprise Mobility + Security (EMS) E5-licenc
 
-További információt a [Licenckövetelmények című témakörben talál.](entitlement-management-overview.md#license-requirements)
+További információkért lásd a [licencekre vonatkozó követelményeket](entitlement-management-overview.md#license-requirements).
 
-## <a name="step-1-set-up-users-and-group"></a>1. lépés: Felhasználók és csoportok beállítása
+## <a name="step-1-set-up-users-and-group"></a>1. lépés: felhasználók és csoportok beállítása
 
-Az erőforráskönyvtár nak egy vagy több megosztandó erőforrása van. Ebben a lépésben hozzon létre egy **marketing erőforrások** nevű csoportot a Woodgrove Bank könyvtárban, amely a jogosultságkezelés célerőforrása. Belső kérelmezőt is beállít.
+Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tartozik. Ebben a lépésben létrehoz egy **marketing-erőforrások** nevű csoportot a Woodgrove Bank címtárában, amely a jogosultságok kezelésének célként szolgáló erőforrása. A belső kérelmezőt is be kell állítania.
 
-**Előfeltételi szerepkör:** Globális rendszergazda vagy felhasználó
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
 ![Felhasználók és csoportok létrehozása](./media/entitlement-management-access-package-first/elm-users-groups.png)
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális rendszergazdaként vagy felhasználóként.  
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként vagy felhasználói rendszergazdaként.  
 
-1. A bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
+1. A bal oldali navigációs sávon kattintson a **Azure Active Directory**elemre.
 
-1. A következő két felhasználó létrehozása vagy konfigurálása. Használhatja ezeket a neveket vagy különböző neveket. **Admin1** lehet az a felhasználó, akijelenleg be van jelentkezve.
+1. Hozza létre vagy konfigurálja a következő két felhasználót. Ezeket a neveket vagy más neveket is használhatja. A **Rendszergazda1** lehet az a felhasználó, aki jelenleg be van jelentkezve.
 
-    | Név | Címtárszerepkör |
+    | Name (Név) | Címtárszerepkör |
     | --- | --- |
-    | **Rendszergazda1** | Globális rendszergazda<br/>– vagy –<br/>Rendszergazda |
-    | **Kérelmező1** | Felhasználó |
+    | **Rendszergazda1** | Globális rendszergazda<br/>– vagy –<br/>Felhasználói rendszergazda |
+    | **Requestor1** | Felhasználó |
 
-1. Hozzon létre egy Marketing típusú Azure AD biztonsági **csoportot,** amelynek tagsági típusa **Assigned.**
+1. Hozzon létre egy **marketing-erőforrások** nevű Azure ad biztonsági csoportot a **hozzárendelt**tagsági típussal.
 
-    Ez a csoport lesz a jogosultságkezelés célerőforrása. A csoport kezdési részének üresnek kell lennie.
+    Ez a csoport lesz a jogosultságok kezelésének cél erőforrása. A csoportnak üresnek kell lennie a tagoktól a kezdéshez.
 
-## <a name="step-2-create-an-access-package"></a>2. lépés: Hozzáférési csomag létrehozása
+## <a name="step-2-create-an-access-package"></a>2. lépés: hozzáférési csomag létrehozása
 
-A *hozzáférési csomag* olyan erőforrások egy kötege, amelyre egy csapatnak vagy projektnek szüksége van, és amelyet házirendek szabályoznak. Az access csomagok *katalógusok*nevű tárolókban vannak definiálva. Ebben a lépésben hozzon létre egy **marketingkampány-hozzáférési** csomagot az **Általános** katalógusban.
+A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak vagy projektnek szüksége van, és amelyekre szabályzat vonatkozik. A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva. Ebben a lépésben létrehoz egy **marketingkampány** -hozzáférési csomagot az **általános** katalógusban.
 
-**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
 ![Hozzáférési csomag létrehozása](./media/entitlement-management-access-package-first/elm-access-package.png)
 
-1. Az Azure Portalon a bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
+1. A Azure Portal a bal oldali navigációs sávon kattintson a **Azure Active Directory**elemre.
 
-2. A bal oldali menüben kattintson **az Identitás-irányítási parancsra.**
+2. A bal oldali menüben kattintson az **identitások szabályozása** elemre.
 
-3. A bal oldali menüben kattintson az **Access-csomagok parancsra.**  Ha az **Access megtagadva**lehetőséget látja, győződjön meg arról, hogy egy Azure AD Premium P2 licenc található a címtárban.
+3. A bal oldali menüben kattintson a **hozzáférési csomagok**elemre.  Ha a **hozzáférés megtagadva**érték jelenik meg, győződjön meg arról, hogy a címtárban van egy prémium szintű Azure ad P2-licenc.
 
-4. Kattintson **az Új hozzáférési csomag gombra.**
+4. Kattintson az **új hozzáférési csomag**elemre.
 
-    ![Jogosultságkezelés az Azure Portalon](./media/entitlement-management-shared/access-packages-list.png)
+    ![Jogosultságok kezelése a Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-5. Az **Alapok** lapon írja be a **Marketingkampány-hozzáférési** csomag nevét és **leírását: Hozzáférés a kampány erőforrásaihoz.**
+5. Az **alapvető beállítások** lapon írja be a **marketing kampány** hozzáférési csomagjának és leírásának nevet a **kampány erőforrásaihoz**.
 
-6. Hagyja a **Katalógus** legördülő listát **Általános**beállításra állítva.
+6. Hagyja meg a **katalógus** legördülő lista **általános**értékre állítását.
 
-    ![Új hozzáférési csomag – Alapok lap](./media/entitlement-management-access-package-first/basics.png)
+    ![Új hozzáférési csomag – alapismeretek lap](./media/entitlement-management-access-package-first/basics.png)
 
-7. Kattintson a **Tovább** gombra az **Erőforrás-szerepkörök** lap megnyitásához.
+7. Kattintson a **tovább** gombra az **erőforrás-szerepkörök** lap megnyitásához.
 
-    Ezen a lapon kiválaszthatja a hozzáférési csomagba felvenni kívánt erőforrásokat és erőforrásszerepkört.
+    Ezen a lapon kiválaszthatja a hozzáférési csomagban szerepeltetni kívánt erőforrásokat és erőforrás-szerepkört.
 
-8. Kattintson **a Csoportok és csoportok gombra.**
+8. Kattintson **a csoportok és**csoportok elemre.
 
-9. A Csoportok kiválasztása ablaktáblában keresse meg és jelölje ki a korábban létrehozott **Marketing erőforrás** csoportot.
+9. A csoportok kiválasztása panelen keresse meg és válassza ki a korábban létrehozott **marketing-erőforrások** csoportot.
 
-    Alapértelmezés szerint az **Általános** katalóguson belüli és kívüli csoportok jelennek meg. Ha az **Általános** katalóguson kívül kijelöl egy csoportot, az hozzáadódik az **Általános** katalógushoz.
+    Alapértelmezés szerint az **általános** katalóguson belüli és kívüli csoportok láthatók. Ha kijelöl egy csoportot az **általános** katalóguson kívül, a rendszer hozzáadja az **általános** katalógushoz.
 
-    ![Új hozzáférési csomag – Erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Új hozzáférési csomag – erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-10. A **Kijelölés gombra** kattintva vegye fel a csoportot a listára.
+10. Kattintson a **kiválasztás** elemre a csoport listához való hozzáadásához.
 
-11. A **Szerepkör** legördülő listában válassza a **Tag**lehetőséget.
+11. A **szerepkör** legördülő listában válassza a **tag**elemet.
 
-    ![Új hozzáférési csomag – Erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles.png)
+    ![Új hozzáférési csomag – erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!NOTE]
-    > Dinamikus [csoportok](../users-groups-roles/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök nem jelennek meg. Ez az elvárt működés.
+    > [Dinamikus csoportok](../users-groups-roles/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök is nem érhetők el. Ez az elvárt működés.
     > ![Forgatókönyv áttekintése](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
 
-12. A **Tovább** gombra kattintva nyissa meg a **Kérések** lapot.
+12. A **tovább** gombra kattintva nyissa meg a **kérelmek** lapot.
 
-    Ezen a lapon létrehoz egy kérelemházirendet. A *házirend* határozza meg a hozzáférési csomagok eléréséhez vezető szabályokat vagy korlátokat. Hozzon létre egy házirendet, amely lehetővé teszi, hogy egy adott felhasználó az erőforráskönyvtárban kérje ezt a hozzáférési csomagot.
+    Ezen a lapon létrehoz egy kérési házirendet. A *szabályzatok határozzák* meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. Olyan házirendet hoz létre, amely lehetővé teszi egy adott felhasználó számára az erőforrás-címtárban a hozzáférési csomag igénylését.
 
-13. A **Felhasználók, akik hozzáférést kérhetnek,** kattintson **a Címa címtárban lévő felhasználók számára** elemre, majd a Konkrét felhasználók és **csoportok**elemre.
+13. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban lévő felhasználók** elemre, majd az **adott felhasználók és csoportok**elemre.
 
-    ![Új hozzáférési csomag – Kérések lap](./media/entitlement-management-access-package-first/requests.png)
+    ![Új hozzáférési csomag – kérelmek lap](./media/entitlement-management-access-package-first/requests.png)
 
-14. Kattintson **a Felhasználók és csoportok hozzáadása gombra.**
+14. Kattintson **a felhasználók és csoportok hozzáadása**lehetőségre.
 
-15. A Felhasználók és csoportok kiválasztása ablaktáblában jelölje ki a korábban létrehozott **Kérelmező1** felhasználót.
+15. A felhasználók és csoportok kiválasztása panelen válassza ki a korábban létrehozott **Requestor1** -felhasználót.
 
-    ![Új hozzáférési csomag – Kérések lap – Felhasználók és csoportok kijelölése](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
+    ![Új hozzáférési csomag – kérelmek lap – felhasználók és csoportok kiválasztása](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
 16. Kattintson a **Kiválasztás** gombra.
 
-17. Görgessen le a **Kérelmek jóváhagyása** és **engedélyezése** szakaszhoz.
+17. Görgessen le a **jóváhagyás** és a **kérelmek engedélyezése** szakaszban.
 
-18. Hagyja, **hogy**a **Jóváhagyás megkövetelése** nem lesz.
+18. A **jóváhagyáshoz** a **nem**érték megadása szükséges.
 
-19. A **Kérelmek engedélyezése**területen kattintson az **Igen** gombra, ha engedélyezni szeretné, hogy a rendszer a létrehozást kérő hozzáférési csomagot igényeljen.
+19. A **kérelmek engedélyezéséhez**kattintson az **Igen** gombra, hogy a hozzáférési csomagot a létrehozásuk után azonnal meg lehessen kérni.
 
-    ![Új hozzáférési csomag – Kérések lap – Jóváhagyás és kérelmek engedélyezése](./media/entitlement-management-access-package-first/requests-approval-enable.png)
+    ![Új hozzáférési csomag – kérelmek lap – jóváhagyás és a kérelmek engedélyezése](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-20. Kattintson a **Tovább** **gombra** az Életciklus lap megnyitásához.
+20. Az **életciklus** lap megnyitásához kattintson a **tovább** gombra.
 
-21. A **Lejárat** szakaszban állítsa be az **Access-csomag-hozzárendelések lejáratát** **A napok száma beállításra.**
+21. A **lejárat** szakaszban adja meg a **hozzáférési csomag hozzárendeléseinek érvényességét** a **napok száma**szerint.
 
-22. A Hozzárendelések beállítása **30** nap **után lejár.**
+22. A **hozzárendelések** beállítása **30** nap után lejár.
 
-    ![Új hozzáférési csomag – Életciklus lap](./media/entitlement-management-access-package-first/lifecycle.png)
+    ![Új hozzáférési csomag – életciklus lap](./media/entitlement-management-access-package-first/lifecycle.png)
 
-23. Kattintson a **Tovább** gombra a **Véleményezés + Létrehozás** lap megnyitásához.
+23. A **tovább** gombra kattintva nyissa meg a **felülvizsgálat + létrehozás** lapot.
 
-    ![Új hozzáférési csomag - Véleményezés + Létrehozás lap](./media/entitlement-management-access-package-first/review-create.png)
+    ![Új hozzáférési csomag – áttekintés + Létrehozás lap](./media/entitlement-management-access-package-first/review-create.png)
 
-    Néhány pillanat múlva meg kell jelennie egy értesítést, hogy a hozzáférési csomag sikeresen létrejött.
+    Néhány pillanat múlva megjelenik egy értesítés arról, hogy a hozzáférési csomag létrehozása sikeres volt.
 
-24. A Marketingkampány hozzáférési csomag bal oldali menüjében kattintson **az Áttekintés gombra.**
+24. A marketing kampány hozzáférési csomagjának bal oldali menüjében kattintson az **Áttekintés**elemre.
 
-25. Másolja a **Saját hozzáférés portál hivatkozását**.
+25. Másolja a **saját hozzáférési portál hivatkozást**.
 
     Ezt a hivatkozást fogja használni a következő lépéshez.
 
-    ![Access-csomag áttekintése – A Saját Hozzáférés portál hivatkozása](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Hozzáférési csomag áttekintése – saját hozzáférési portál hivatkozása](./media/entitlement-management-shared/my-access-portal-link.png)
 
-## <a name="step-3-request-access"></a>3. lépés: Hozzáférés kérése
+## <a name="step-3-request-access"></a>3. lépés: hozzáférés kérése
 
-Ebben a lépésben hajtsa végre a lépéseket, mint a **belső kérelmező,** és hozzáférést kér a hozzáférési csomaghoz. A kérelmezők a Saját Hozzáférés portál on keresztül küldik el a kéréseket. A Saját hozzáférés portál lehetővé teszi a kérelmezők számára, hogy hozzáférési csomagokra vonatkozó kérelmeket küldjenek, megtekinthetik azokat a hozzáférési csomagokat, amelyekhez már rendelkeznek hozzáféréssel, és megtekinthetik a kérelemelőzményeiket.
+Ebben a lépésben a lépéseket a **belső kérelmezőnek** kell elvégeznie, és hozzáférést kell kérnie a hozzáférési csomaghoz. A kérelmező a saját hozzáférési portál nevű hely használatával küldi el a kérelmeit. A saját hozzáférési portál lehetővé teszi, hogy a kérők beküldjék a hozzáférési csomagokat, és megtekintsék a hozzáférési csomagokat, amelyekre már hozzáférhetnek, és megtekinthetik a kérelmek előzményeit.
 
-**Előfeltételi szerepkör:** Belső kérelmező
+**Előfeltételként szükséges szerepkör:** Belső kérelmező
 
-1. Jelentkezzen ki az Azure Portalon.
+1. Jelentkezzen ki a Azure Portalból.
 
-1. Egy új böngészőablakban keresse meg az előző lépésben másolt Saját hozzáférés portál hivatkozást.
+1. Egy új böngészőablakban navigáljon az előző lépésben másolt saját hozzáférési portál hivatkozásra.
 
-1. Jelentkezzen be a Saját hozzáférés portálra **Kereső1**néven.
+1. Jelentkezzen be a saját hozzáférési portálra **Requestor1**néven.
 
-    Meg kell jelennie a **marketingkampány** hozzáférési csomagjának.
+    Ekkor meg kell jelennie a **marketing kampány** hozzáférési csomagjának.
 
-1. Ha szükséges, a **Leírás** oszlopban kattintson a nyílra a hozzáférési csomag részleteinek megtekintéséhez.
+1. Szükség esetén a **Leírás** oszlopban kattintson a nyílra a hozzáférési csomag részleteinek megtekintéséhez.
 
-    ![Saját Hozzáférési portál – Access-csomagok](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![Hozzáférési portál – hozzáférési csomagok](./media/entitlement-management-shared/my-access-access-packages.png)
 
-1. A csomag kijelöléséhez kattintson a pipára.
+1. Kattintson a pipa jelre a csomag kiválasztásához.
 
-1. A **Hozzáférés kérése** ablaktábla megnyitásához kattintson a Hozzáférés kérése elemre.
+1. Kattintson a **hozzáférés kérése** elemre a hozzáférés kérése panel megnyitásához.
 
-    ![Saját hozzáférési portál – Hozzáférés kérése gomb](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
+    ![Hozzáférési portál – hozzáférés kérése gomb](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
 
-1. Az **Üzleti indoklás** mezőbe írja be az **új marketingkampányon dolgozó**indoklást.
+1. Az **üzleti indoklás** mezőbe írja be azt az indoklást, amelyet **az új marketingkampány során dolgozom**.
 
-    ![Saját hozzáférési portál – Hozzáférés kérése](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Hozzáférési portál – hozzáférés kérése](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Kattintson a **Küldés gombra.**
+1. Kattintson a **Submit (Küldés**) gombra.
 
-1. A bal oldali menüben kattintson az **Előzmények kérése** parancsra a kérelem elküldésének ellenőrzéséhez.
+1. A bal oldali menüben kattintson a **kérelmek előzményei** elemre, és ellenőrizze, hogy elküldte-e a kérést.
 
-## <a name="step-4-validate-that-access-has-been-assigned"></a>4. lépés: Annak ellenőrzése, hogy a hozzáférés hozzá van-e rendelve
+## <a name="step-4-validate-that-access-has-been-assigned"></a>4. lépés: annak ellenőrzése, hogy a hozzáférés hozzá van-e rendelve
 
-Ebben a lépésben megerősíti, hogy a **belső kérelmező** höz van rendelve a hozzáférési csomag, és hogy most már a **Marketing erőforráscsoport** tagja.
+Ebben a lépésben megerősíti, hogy a **belső kérelmező** hozzá lett rendelve a hozzáférési csomaghoz, és hogy most már a **marketing-erőforrások** csoport tagja.
 
-**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. Jelentkezzen ki a Saját hozzáférés portálról.
+1. Jelentkezzen ki a saját hozzáférési portálról.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) **rendszergazdaként1.**
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) **Rendszergazda1**.
 
-1. Kattintson **az Azure Active Directory,** majd **az Identitáscégcégcég**elemre.
+1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
 
-1. A bal oldali menüben kattintson az **Access-csomagok parancsra.**
+1. A bal oldali menüben kattintson a **hozzáférési csomagok**elemre.
 
-1. Keresse meg és kattintsa **a Marketingkampány** hozzáférési csomagra.
+1. Keresse meg és kattintson a **marketing kampány** hozzáférési csomag elemre.
 
-1. A bal oldali menüben kattintson a **Kérések parancsra.**
+1. A bal oldali menüben kattintson a **kérelmek**elemre.
 
-    Meg kell jelennie a Requestor1 és a Kezdeti házirend nek **Kézbesítve**állapotúállapotban.
+    Ekkor meg kell jelennie a Requestor1 és a kezdeti házirendnek, amelynek állapota **kézbesítés**.
 
-1. Kattintson a kérelemre a kérelem részleteinek megtekintéséhez.
+1. A kérelem részleteinek megtekintéséhez kattintson a kérelemre.
 
-    ![Access csomag - Részletek kérése](./media/entitlement-management-access-package-first/request-details.png)
+    ![Hozzáférési csomag – kérelem részletei](./media/entitlement-management-access-package-first/request-details.png)
 
-1. A bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
+1. A bal oldali navigációs sávon kattintson a **Azure Active Directory**elemre.
 
-1. Kattintson **a Csoportok gombra,** és nyissa meg a **Marketing erőforrások** csoportot.
+1. Kattintson a **csoportok** elemre, és nyissa meg a **marketing-erőforrások** csoportot.
 
-1. Kattintson **a Tagok gombra.**
+1. Kattintson a **tagok**elemre.
 
-    Meg kell jelennie **Requestor1** szerepel a tag.
+    Ekkor meg kell jelennie a tag **Requestor1** .
 
-    ![Marketingerőforrások tagjai](./media/entitlement-management-access-package-first/group-members.png)
+    ![Marketing-erőforrások tagjai](./media/entitlement-management-access-package-first/group-members.png)
 
-## <a name="step-5-clean-up-resources"></a>5. lépés: Erőforrások karbantartása
+## <a name="step-5-clean-up-resources"></a>5. lépés: erőforrások törlése
 
-Ebben a lépésben eltávolítja a módosításokat, és törli a **Marketingkampány** hozzáférési csomagot.
+Ebben a lépésben eltávolítja a végrehajtott módosításokat, és törli a **marketing kampány** hozzáférési csomagját.
 
-**Előfeltételi szerepkör:**  Globális rendszergazda vagy felhasználó
+**Előfeltételként szükséges szerepkör:**  Globális rendszergazda vagy felhasználói rendszergazda
 
-1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. Nyissa meg a **Marketingkampány** hozzáférési csomagot.
+1. Nyissa meg a **marketing kampány** hozzáférési csomagját.
 
-1. Kattintson **a Hozzárendelések gombra.**
+1. Kattintson a **hozzárendelések**elemre.
 
-1. A **Requestor1 esetében**kattintson a három pontra (**...**), majd a Hozzáférés **eltávolítása parancsra.** A megjelenő üzenetben kattintson az **Igen**gombra.
+1. A **Requestor1**kattintson a három pontra (**...**), majd a **hozzáférés eltávolítása**elemre. A megjelenő üzenetben kattintson az **Igen**gombra.
 
-    Néhány pillanat múlva az állapot kézbesítve ről lejártra változik.
+    Néhány pillanat elteltével az állapot a kézbesítéstől a Lejártig változik.
 
-1. Kattintson **az Erőforrás-szerepkörök gombra.**
+1. Kattintson az **erőforrás-szerepkörök**elemre.
 
-1. **Marketingerőforrások**esetén kattintson a három pontra (**...**), majd az **Erőforrás-szerepkör eltávolítása parancsra.** A megjelenő üzenetben kattintson az **Igen**gombra.
+1. **Marketing-erőforrások**esetében kattintson a három pontra (**...**), majd az **erőforrás-szerepkör eltávolítása**elemre. A megjelenő üzenetben kattintson az **Igen**gombra.
 
 1. Nyissa meg a hozzáférési csomagok listáját.
 
-1. **A marketingkampány ban**kattintson a három pontra (**...**), majd a **Törlés gombra.** A megjelenő üzenetben kattintson az **Igen**gombra.
+1. **Marketingkampány**esetén kattintson a három pontra (**...**), majd a **Törlés**gombra. A megjelenő üzenetben kattintson az **Igen**gombra.
 
-1. Az Azure Active Directoryban törölje a létrehozott felhasználókat, például **a Requestor1** és **az Admin1**szolgáltatást.
+1. A Azure Active Directory törölje a létrehozott felhasználókat, például a **Requestor1** és a **Rendszergazda1**.
 
-1. Törölje a **Marketing erőforrások** csoportot.
+1. Törölje a **marketing-erőforrások** csoportot.
 
 ## <a name="next-steps"></a>További lépések
 
-Továbbadhat a következő cikkhez, és megismerhetjük a jogosultságkezelés gyakori forgatókönyvlépéseit.
+A következő cikkből megismerheti a jogosultságok kezelésének gyakori forgatókönyveit.
 > [!div class="nextstepaction"]
-> [Gyakori forgatókönyvek](entitlement-management-scenarios.md)
+> [Gyakori helyzetek](entitlement-management-scenarios.md)

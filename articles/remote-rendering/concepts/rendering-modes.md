@@ -1,56 +1,56 @@
 ---
 title: Renderelési módok
-description: A kiszolgálóoldali leképezési módok ismertetése
+description: Ismerteti a kiszolgálóoldali megjelenítés különböző módjait
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681700"
 ---
 # <a name="rendering-modes"></a>Renderelési módok
 
-A távoli renderelés két fő üzemmódot kínál, a **TileBasedComposition** és **a DepthBasedComposition** módot. Ezek a módok határozzák meg, hogy a számítási feladatok hogyan oszlanak el a kiszolgáló több GPU-ja között. A módot a kapcsolat idején kell megadni, és futásközben nem módosítható.
+A távoli renderelés két fő üzemmódot kínál: a **TileBasedComposition** mód és a **DepthBasedComposition** mód. Ezek a módok határozzák meg, hogyan oszlanak meg a számítási feladatok több GPU-ban a kiszolgálón. A módot a kapcsolódás időpontjában meg kell adni, és a Futtatás közben nem módosítható.
 
-Mindkét mód jön-val előnyöket, hanem a benne rejlő funkció korlátait, így a szedés a legmegfelelőbb mód használata esetspecifikus.
+Mindkét mód előnyökkel jár, de a szolgáltatásra vonatkozó korlátozásokkal is rendelkezik, ezért a legmegfelelőbb mód kiválasztása a kis-és nagybetűket használja.
 
 ## <a name="modes"></a>Módok
 
-A két mód most részletesebben tárgyalja.
+A két mód már részletesebben szerepel.
 
-### <a name="tilebasedcomposition-mode"></a>"TileBasedComposition" mód
+### <a name="tilebasedcomposition-mode"></a>"TileBasedComposition" üzemmód
 
-**TileBasedComposition** módban minden érintett GPU adott subrectangles (csempe) megjelenítését jeleníti meg a képernyőn. A fő GPU a végső képet a csempékből állítja össze, mielőtt videokeretként elküldené az ügyfélnek. Ennek megfelelően minden GPU-nak ugyanazokat az erőforrásokat kell rendelkeznie a rendereléshez, így a betöltött eszközöknek egyetlen GPU memóriájába kell illeszkedniük.
+**TileBasedComposition** módban az összes érintett GPU a képernyőn megadott alnégyszögeket (csempéket) jeleníti meg. A fő GPU alkotja a csempék végső képét, mielőtt a rendszer videó keretként elküldi az ügyfélnek. Ennek megfelelően minden GPU-nak ugyanazokat az erőforrásokat kell megadnia a rendereléshez, így a betöltött objektumoknak egyetlen GPU memóriába kell illeszkednie.
 
-A renderelésminősége ebben a módban valamivel jobb, mint **a DepthBasedComposition** módban, mivel az MSAA minden GPU teljes geometriáján működhet. A következő képernyőkép azt mutatja, hogy az élsimítás mindkét szélén is megfelelően működik:
+A megjelenítési minőség ebben a módban valamivel jobb, mint a **DepthBasedComposition** módban, mivel a MSAA a geometriák teljes készletén MŰKÖDHET minden GPU számára. Az alábbi képernyőfelvételen látható, hogy az élsimítás megfelelően működik mindkét élek esetében:
 
-![MSAA a TileBasedComposition-ben](./media/service-render-mode-quality.png)
+![MSAA a TileBasedComposition](./media/service-render-mode-quality.png)
 
-Továbbá, ebben az üzemmódban minden alkatrész átkapcsolható egy átlátszó anyagra, vagy átlehet kapcsolni **átlátszó** módra a [HierarchicalStateOverrideComponent segítségével](../overview/features/override-hierarchical-state.md)
+Emellett ebben a módban az egyes részek transzparens anyagokra válthatók, vagy a [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) keresztül átállíthatók a **megtekintési** módra
 
-### <a name="depthbasedcomposition-mode"></a>"DepthBasedComposition" mód
+### <a name="depthbasedcomposition-mode"></a>"DepthBasedComposition" üzemmód
 
-**A DepthBasedComposition** módban minden érintett GPU teljes képernyős felbontásban renderel, de csak a szemcsék egy részhalmaza. A fő GPU végső képösszetétele gondoskodik arról, hogy az alkatrészek megfelelően egyesüljenek a mélységi információiknak megfelelően. Természetesen a memória hasznos terhelése eloszlik a GPU-k között, így lehetővé teszi a renderelési modelleket, amelyek nem férnek el egyetlen GPU memóriájába.
+**DepthBasedComposition** módban minden érintett GPU teljes képernyős felbontásban jelenik meg, de csak a rácsvonalak egy részhalmaza. A fő GPU-ban a végső képösszeállítás gondoskodik arról, hogy a részek megfelelően legyenek egyesítve a részletes információk alapján. A memóriahasználat természetesen a GPU-k között oszlik el, így lehetővé teszi olyan modellek megjelenítését, amelyek nem illenek egyetlen GPU memóriába.
 
-Minden egyes GPU MSAA-t használ a helyi tartalom ellenélezésére. Előfordulhat azonban, hogy a különböző GPU-k szélei között eredendő aliasing is lehet. Ezt a hatást a végső kép utófeldolgozása enyhíti, de az MSAA minősége még mindig rosszabb, mint **a TileBasedComposition** módban.
+Minden egyes GPU MSAA használ az élsimítás helyi tartalmára. Azonban előfordulhat, hogy a különböző GPU-k szélei között belső alias található. Ezt a hatást a utófeldolgozó a végső rendszerkép csökkenti, de a MSAA minősége még rosszabb, mint **TileBasedComposition** módban.
 
-Az MSAA-összetevőket a következő ![kép szemlélteti: MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
+A MSAA összetevők a következő képen láthatók: ![MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
 
-Az élsimítás megfelelően működik a szobor és a függöny között, mivel mindkét rész ugyanazon a GPU-n jelenik meg. Másrészt, a széle között függöny és fal mutat néhány aliasing, mert ez a két rész áll különböző GPU-k.
+Az élsimítás megfelelően működik a szobor és a függöny között, mivel mindkét rész ugyanazon a GPU-on jelenik meg. Másfelől a függöny és a fal közötti szegély néhány aliast mutat be, mivel ez a két rész különálló GPU-ból áll.
 
-Ennek a módnak a legnagyobb korlátozása az, hogy a geometriai alkatrészek nem kapcsolhatók át átlátszó anyagokra dinamikusan, és az **átlátszó** mód sem működik a [HierarchicalStateOverrideComponent esetében.](../overview/features/override-hierarchical-state.md) Más állapot felülbírálási funkciók (vázlat, színárnyalat, ...) nem működik, mégis. A konverziós idő alatt átlátszóként megjelölt anyagok is megfelelően működnek ebben a módban.
+Ennek a módnak a legnagyobb korlátozása, hogy a geometriai részek nem állíthatók be dinamikusan transzparens anyagokra, és a [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)nem is működik a **megtekintési** mód. Más állapot-felülbírálási funkciók (Tagolás, színárnyalatok,...) működnek, bár. Az átváltáskor transzparensként megjelölt anyagok is megfelelően működnek ebben a módban.
 
 ### <a name="performance"></a>Teljesítmény
 
-A két mód teljesítményjellemzői a használati esettől függően változnak, és nehéz észhez érteni vagy általános ajánlásokat tenni. Ha nem korlátozzák a fent említett korlátozások (memória vagy átlátszóság / átlátszó), javasoljuk, hogy próbálja ki mindkét módot, és figyelje a teljesítményt különböző kamerapozíciókkal.
+A mindkét üzemmód teljesítménybeli jellemzői a használati esettől függően változnak, és nehezen indokolható, vagy általános javaslatok is megadhatók. Ha nem korlátozza a fent említett korlátozásokat (memória vagy átlátszóság/megtekintés), javasoljuk, hogy mindkét módot kipróbálhatja, és figyelje a teljesítményt a különböző kamera-pozíciók használatával.
 
-## <a name="setting-the-render-mode"></a>A leképezési mód beállítása
+## <a name="setting-the-render-mode"></a>A renderelési mód beállítása
 
-A távoli renderelési virtuális gépen `AzureSession.ConnectToRuntime` használt `ConnectToRuntimeParams`leképezési mód a .
+A távoli renderelési virtuális gépen használt renderelési mód a következőn `AzureSession.ConnectToRuntime` keresztül `ConnectToRuntimeParams`van megadva:.
 
 ```cs
 async void ExampleConnect(AzureSession session)

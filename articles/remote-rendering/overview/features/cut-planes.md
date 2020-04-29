@@ -1,37 +1,37 @@
 ---
-title: Vágott síkok
-description: Bemutatja, hogy mik a vágott síkok, és hogyan kell használni őket
+title: Síkok kivágása
+description: Ismerteti a kivágott síkokat és azok használatát
 author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.openlocfilehash: 8075d9cd4530bafb12a338830baf0fe22eb03bce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681024"
 ---
-# <a name="cut-planes"></a>Vágott síkok
+# <a name="cut-planes"></a>Síkok kivágása
 
-A *kivágott sík* olyan vizuális jellemző, amely a virtuális sík egyik oldalán képpontokat kap, és felfedi a [szemképek belsejét.](../../concepts/meshes.md)
-Az alábbi kép bemutatja a hatást. A bal oldalon az eredeti háló látható, a jobb oldalon a hálóbelsejében lehet kinézni:
+A *kivágott sík* olyan vizualizációs funkció, amely egy virtuális sík egyik oldalán lévő képpontokat jelenít meg, és kifedi a [Rácsvonalak](../../concepts/meshes.md)belsejét.
+Az alábbi képen a hatás látható. A bal oldalon az eredeti rácsvonal látható, amely a jobb oldalon a Hálón belül látható:
 
-![Kivágási sík](./media/cutplane-1.png)
+![Sík kivágása](./media/cutplane-1.png)
 
 ## <a name="limitations"></a>Korlátozások
 
-* Az Azure Remote Rendering egyelőre **legfeljebb nyolc aktív vágási síkot**támogat. Létrehozhat több kivágott sík összetevőt, de ha egyszerre próbál többet engedélyezni, akkor figyelmen kívül hagyja az aktiválást. Először tiltsa le a többi síkot, ha váltani szeretne, hogy melyik összetevő befolyásolja a jelenetet.
-* Minden kivágási sík hatással van az összes távolról renderelt objektumra. Jelenleg nincs mód adott objektumok vagy hálórészek kizárására.
-* A kivágott síkok pusztán vizuális funkciók, nem befolyásolják a [térbeli lekérdezések](spatial-queries.md)eredményét. Ha azt szeretnénk, hogy ray öntött egy vágott-nyitott háló, beállíthatja a kiindulási pont a sugár, hogy a vágott síkon. Így a sugár csak látható részeket tud eltalálni.
+* Az Azure Remote rendering jelenleg **legfeljebb nyolc aktív kivágású gépet**támogat. Több kivágási sík-összetevőt is létrehozhat, de ha több párhuzamosan próbálkozik, a rendszer figyelmen kívül hagyja az aktiválást. Ha azt szeretné, hogy az adott összetevő milyen hatással legyen a jelenetre, tiltsa le a többi gépet.
+* Minden egyes kivágott sík hatással van az összes távolról kiolvasztott objektumra. Jelenleg nincs lehetőség bizonyos objektumok vagy rácsvonalak kizárására.
+* A kivágott síkok csupán vizualizációs funkciók, nem befolyásolják a [térbeli lekérdezések](spatial-queries.md)eredményét. Ha azt szeretné, hogy a Ray kivágású nyitott rácsvonalba kerüljön, beállíthatja, hogy a Ray kiindulási pontja a kivágási síkon legyen. Így a fénysugár csak a látható részeket tudja megütni.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
-Minden aktív vágási síknak kis költsége merül fel a renderelés során. Tiltsa le vagy törölje a kivágott síkokat, amikor nincs rájuk szükség.
+Az aktív kivágott síkok kis költségekkel járnak a renderelés során. A kivágott síkok letiltása vagy törlése, ha nem szükségesek.
 
-## <a name="cutplanecomponent"></a>CutPlaneComponent (CutPlaneComponent)
+## <a name="cutplanecomponent"></a>CutPlaneComponent
 
-*CutPlaneComponent (CutPlaneComponent )* segítségével vágott síkot adhat a jelenethez. A sík helyét és tájolását az összetevő tulajdonosi [entitása](../../concepts/entities.md)határozza meg .
+Egy *CutPlaneComponent*létrehozásával hozzáadhat egy kivágási síkot a jelenethez. A sík helyét és tájolását az összetevő tulajdonosi [entitása](../../concepts/entities.md)határozza meg.
 
 ```cs
 void CreateCutPlane(AzureSession session, Entity ownerEntity)
@@ -45,17 +45,17 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 
 ### <a name="cutplanecomponent-properties"></a>CutPlaneComponent tulajdonságai
 
-A következő tulajdonságok vannak kitéve a vágott sík komponens:
+A következő tulajdonságok vannak kitéve egy kivágott sík összetevőn:
 
-* **Engedélyezve:** Az alkatrész letiltásával ideiglenesen kikapcsolhatja a vágósíkokat. A letiltott vágású síkok nem merülnek fel renderelési terheléssel, és nem számítanak bele a globális vágási síkkorlátba.
+* **Engedélyezve:** Ideiglenesen kikapcsolhatja a kivágott síkokat az összetevő letiltásával. A letiltott síkok nem terhelik a renderelési terhelést, és nem számítanak bele a globálisan kivágott sík korlátba.
 
-* **Normál:** Megadja, hogy a program melyik irányt (+X,-X,+Y,-Y,+Z,-Z) használja a normál síkként. Ez az irány a tulajdonos entitás tájolásához viszonyítva történik. A tulajdonos entitás áthelyezése és elforgatása a pontos elhelyezéshez.
+* **Normál:** Megadja, hogy a rendszer melyik irányt (+ X,-X, + Y,-Y, + Z,-Z) használja a normál síkon. Ez az irány a tulajdonos entitás tájolásához képest relatív. Helyezze át és forgassa el a tulajdonos entitást a pontos elhelyezéshez.
 
 * **FadeColor** és **FadeLength:**
 
-  Ha a *FadeColor* alfaértéke nem nulla, a kivágott síkhoz közeli képpontok elhalványulnak a FadeColor RGB része felé. Az alfa-csatorna erőssége határozza meg, hogy teljesen elhalványul-e a halványításszíne felé, vagy csak részben. *A FadeLength* határozza meg, hogy ez a fade milyen távolságra kerül sor.
+  Ha a *FadeColor* alfa értéke nem nulla, a kivágási sík közelébe mutató képpontok a FadeColor RGB-részéhez fognak elhalványulni. Az alfa-csatorna erőssége határozza meg, hogy teljes mértékben elhalványul-e az elhalványulás színe, vagy csak részben. A *FadeLength* határozza meg, hogy a Halványítás milyen távolságra legyen végrehajtva.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Egyoldalas renderelés](single-sided-rendering.md)
+* [Egyoldalas megjelenítés](single-sided-rendering.md)
 * [Térbeli lekérdezések](spatial-queries.md)

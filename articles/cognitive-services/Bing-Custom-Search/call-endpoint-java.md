@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A Bing egyéni keresési végpontjának hívása Java használatával | Microsoft dokumentumok'
+title: 'Gyors útmutató: az Bing Custom Search-végpont meghívása a Java használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval megkezdheti a keresési eredmények kérését a Java-ban lévő Bing egyéni keresési példányából.
+description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek megadását javában.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80238891"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rövid útmutató: A Bing egyéni keresési végpontjának hívása Java használatával
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rövid útmutató: az Bing Custom Search-végpont meghívása a Javával
 
-Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a Bing egyéni keresési példányából. Bár ez az alkalmazás Java nyelven íródott, a Bing Egyéni keresési API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java)
+Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérelmezését. Habár ez az alkalmazás Java nyelven íródott, a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Bing egyéni keresési példánya. További információ: További információ [az első Bing egyéni keresési példány létrehozása](quick-start.md) című témakörben.
+- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
 
 - A legújabb [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
@@ -50,7 +50,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
     import com.google.gson.JsonParser;
     ```
 
-2. Hozzon létre `CustomSrchJava`egy osztály nevű , és hozzon létre változókat az előfizetési kulcs, egyéni keresési végpont, és a keresési példány egyéni konfigurációs azonosítóját. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+2. Hozzon létre egy `CustomSrchJava`nevű osztályt, és hozzon létre változókat az előfizetési kulcs, az egyéni keresési végpont és a keresési példány egyéni konfigurációs azonosítója alapján. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
     ...
     ```
 
-3. Hozzon létre `SearchResults` egy másik nevű osztályt, amely tartalmazza a Bing egyéni keresési példányának válaszát.
+3. Hozzon létre egy `SearchResults` másik, nevű osztályt, amely tartalmazza a Bing Custom Search-példány válaszát.
 
     ```csharp
     class SearchResults{
@@ -74,7 +74,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
     }
     ```
 
-4. Hozzon létre `prettify()` egy nevű függvényt a JSON-válasz formázásához a Bing egyéni keresési API-ból.
+4. Hozzon létre egy `prettify()` nevű függvényt, hogy FORMÁZZA a JSON-választ a Bing Custom Search API.
 
     ```java
         // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -88,7 +88,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
 
 ## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása 
 
-1. Hozzon létre `SearchWeb()` egy kérelmet küldő függvényt, és visszaad egy `SearchResults` objektumot. Hozza létre a kérelem URL-címét az egyéni konfigurációs azonosító, a lekérdezés és a végpontadatainak kombinálásával. Adja hozzá az `Ocp-Apim-Subscription-Key` Előfizetés kulcsot a fejléchez.
+1. Hozzon létre egy `SearchWeb()` nevű függvényt, amely egy kérelmet `SearchResults` küld, és visszaad egy objektumot. Hozza létre a kérelem URL-címét az egyéni konfigurációs azonosító, a lekérdezés és a végpont adatainak kombinálásával. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
 
     ```java
     public class CustomSrchJava {
@@ -101,7 +101,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
     ...
     ```
 
-2. Hozzon létre egy adatfolyamot, `SearchResults` és tárolja a JSON-választ egy objektumban.
+2. Hozzon létre egy streamet, és tárolja a `SearchResults` JSON-választ egy objektumban.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
         }
     ```
 
-3. Az alkalmazás fő módszerében `SearchWeb()` hívja meg a keresett kifejezést, 
+3. Az alkalmazás fő metódusában hívja `SearchWeb()` meg a keresési kifejezést, 
 
     ```java
     System.out.println("\nJSON Response:\n");
@@ -132,4 +132,4 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni keresési webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)
+> [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

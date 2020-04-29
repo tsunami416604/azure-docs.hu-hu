@@ -1,5 +1,5 @@
 ---
-title: Bing Video Search C# ügyfélkönyvtár – rövid útmutató
+title: Bing Video Search C# ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: d50e1acd104916d68f7fbb84ff568cf4efc0b46b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289755"
 ---
-Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Bing Video Search ügyfélkódtárban a C# számára. Bár a Bing Video Search a legtöbb programozási nyelvvel kompatibilis REST API-val rendelkezik, az ügyfélkódtár egyszerű módot kínál a szolgáltatás alkalmazásokba való integrálására. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) található további jegyzetekkel és funkciókkal.
+Ezzel a rövid útmutatóval megkezdheti a C#-hoz készült Bing Video Search ügyféloldali kódtár híreinek keresését. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) található további megjegyzésekkel és szolgáltatásokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017-es vagy újabb verzióinak](https://visualstudio.microsoft.com/downloads/)bármely kiadása.
-* A Json.NET keretrendszer, amely [NuGet csomagként](https://www.nuget.org/packages/Newtonsoft.Json/)érhető el.
+* A [Visual Studio 2017 vagy újabb](https://visualstudio.microsoft.com/downloads/)verziójának bármely kiadása.
+* A Json.NET keretrendszer, [amely NuGet-csomagként](https://www.nuget.org/packages/Newtonsoft.Json/)érhető el.
 
-Ha hozzá szeretné adni a Bing Video Search ügyfélkönyvtárat a projekthez, válassza **a NuGet-csomagok kezelése a** Visual **Studióban a Solution Explorer** ből lehetőséget. Vegye fel a `Microsoft.Azure.CognitiveServices.Search.VideoSearch` csomagot.
+Ha hozzá szeretné adni a Bing Video Search ügyféloldali kódtárat a projekthez, válassza a **NuGet-csomagok kezelése** **megoldáskezelő** a Visual Studióban lehetőséget. Vegye fel a `Microsoft.Azure.CognitiveServices.Search.VideoSearch` csomagot.
 
-A [[NuGet Video Search SDK csomag]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) telepítése a következő függőségeket is telepíti:
+A [[NuGet Video Search SDK-csomag]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) telepítése a következő függőségeket is telepíti:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -35,7 +35,7 @@ A [[NuGet Video Search SDK csomag]](https://www.nuget.org/packages/Microsoft.Azu
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a következőket a fő kódfájlhoz.
+1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a következőt a fő kódhoz.
 
     ```csharp
     using System;
@@ -45,7 +45,7 @@ A [[NuGet Video Search SDK csomag]](https://www.nuget.org/packages/Microsoft.Azu
     using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
     ```
 
-2. Az ügyfél létrehozása az előfizetési `ApiKeyServiceClientCredentials` kulccsal létrehozott új objektum létrehozásával és a konstruktor hívásával.
+2. Hozza létre az ügyfelet egy új `ApiKeyServiceClientCredentials` objektum létrehozásával az előfizetési kulccsal, és hívja meg a konstruktort.
 
     ```csharp
     var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
@@ -53,13 +53,13 @@ A [[NuGet Video Search SDK csomag]](https://www.nuget.org/packages/Microsoft.Azu
 
 ## <a name="send-a-search-request-and-process-the-results"></a>Keresési kérelem küldése és az eredmények feldolgozása
 
-1. Az ügyfél segítségével küldjön keresési kérelmet. Használja a "SwiftKey" a keresési lekérdezést.
+1. Egy keresési kérelem küldéséhez használja az ügyfelet. A keresési lekérdezéshez használja a "SwiftKey" kifejezést.
 
     ```csharp
     var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
     ```
 
-2. Ha bármilyen eredményt adott vissza, `videoResults.Value[0]`kap az első a . Ezután nyomtassa ki a videó azonosítóját, címét és url-jét.
+2. Ha bármilyen eredményt adott vissza, szerezze be az elsőt `videoResults.Value[0]`a következővel:. Ezután nyomtassa ki a videó AZONOSÍTÓját, címét és URL-címét.
 
     ```csharp
     if (videoResults.Value.Count > 0)
@@ -80,9 +80,9 @@ A [[NuGet Video Search SDK csomag]](https://www.nuget.org/packages/Microsoft.Azu
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas webalkalmazás létrehozása](../../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Lásd még 
 
 * [Mi az a Bing Video Search API?](../../overview.md)
-* [Kognitív szolgáltatások .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* [A kognitív szolgáltatások .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

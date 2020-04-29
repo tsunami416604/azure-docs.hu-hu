@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420951"
 ---
-Ez a cikk bemutatja, hogyan tölthet fel egy virtuális merevlemezt a helyi gépről egy Azure által kezelt lemezre, vagy egy felügyelt lemezt másolhat egy másik régióba az AzCopy használatával. Ez a folyamat, közvetlen feltöltés, azt is lehetővé teszi, hogy feltölt egy 32 TiB méretű virtuális merevlemezt közvetlenül egy felügyelt lemezre. Jelenleg a közvetlen feltöltés támogatott szabványos HDD, standard SSD és prémium szintű SSD felügyelt lemezek. Ez nem támogatott ultra lemezek, még.
+Ez a cikk azt ismerteti, hogyan tölthetők fel virtuális merevlemezek a helyi gépről egy Azure-beli felügyelt lemezre, illetve hogyan másolhatók felügyelt lemezek egy másik régióba a AzCopy használatával. Ez a folyamat, a közvetlen feltöltés lehetővé teszi, hogy a virtuális merevlemezt akár 32 TiB-ra is feltöltheti közvetlenül egy felügyelt lemezre. A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium szintű SSD által felügyelt lemezek esetében támogatott. Ultra-lemezek esetén nem támogatott.
 
-Ha az Azure-beli IaaS virtuális gépek biztonsági mentési megoldását biztosítja, javasoljuk, hogy közvetlen feltöltéssel állítsa vissza az ügyfelek biztonsági mentését a felügyelt lemezekre. VHD feltöltésekesetén az Azure-on kívüli forrásból, a sebesség a helyi sávszélességtől függ. Azure-beli virtuális gép feltöltésekor vagy másolásakor, akkor a sávszélesség ugyanaz lesz, mint a szabványos HDD-k.
+Ha biztonsági mentési megoldást biztosít a IaaS virtuális gépek számára az Azure-ban, javasoljuk, hogy a közvetlen feltöltés használatával állítsa vissza az ügyfelek biztonsági másolatait a felügyelt lemezekre. Ha a virtuális merevlemezt az Azure-ból külső forrásból tölt fel, a sebesség a helyi sávszélességtől függ. Az Azure-beli virtuális gépekről történő feltöltéskor vagy másoláskor a sávszélesség ugyanaz, mint a standard HDD-k.

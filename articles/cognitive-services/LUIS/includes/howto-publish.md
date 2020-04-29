@@ -11,10 +11,10 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 3b18e185480cc5275b97bba474f1c054c7bd1276
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286710"
 ---
 Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügyfélalkalmazásban, közzé kell tennie az alkalmazást a végponton.
@@ -23,13 +23,13 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 
     ![A LUIS közzététel a végponton gombja a jobb felső menüben](../media/howto-publish/publish-button.png)
 
-2. Válassza ki a **Termelési** helyet, majd a **Kész**lehetőséget.
+2. Válassza ki az **üzemi** tárolóhelyet, majd válassza a **kész**lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![LUIS közzététel a végponton](../media/howto-publish/publish-app-popup.png)
 
-3. A közzététel akkor fejeződik be, amikor megjelenik a sikeresnek megerősítő értesítés.
+3. A közzététel akkor fejeződik be, amikor megjelenik az értesítés sikerességének megerősítése.
 
     ![LUIS közzététel a végponton](../media/howto-publish/publish-endpoint-success.png)
 
-4. Válassza ki a **végpont URL-címeit** az értesítésben az **Azure Resources** lapra való ugráshoz. A végpont URL-címei **példalekérdezésként**vannak felsorolva.
+4. Válassza ki az értesítésben a **végpont URL-címeire** mutató hivatkozást az **Azure-erőforrások** lapra való ugráshoz. A végpont URL-címei a **példa lekérdezésként**jelennek meg.

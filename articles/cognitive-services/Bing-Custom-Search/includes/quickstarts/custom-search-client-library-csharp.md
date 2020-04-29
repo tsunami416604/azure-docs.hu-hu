@@ -1,5 +1,5 @@
 ---
-title: Bing egyéni keresés C# ügyfélkönyvtárának rövid útmutatója
+title: Bing Custom Search C# ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,28 +9,28 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: ba80d1396b30b61bdfe4c121220429f5a7d994b0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79486058"
 ---
-Ismerkedés a C#-hoz tartozó Bing egyéni keresés ügyféltárával. Az alábbi lépésekkel telepítheti a csomagot, és kipróbálhatja az alapvető feladatok példakódját. A Bing egyéni keresési API lehetővé teszi, hogy személyre szabott, hirdetésmentes keresési élményeket hozzon létre az Ön számára fontos témakörökhöz. A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)
+Ismerkedjen meg a C# Bing Custom Search ügyféloldali függvénytárával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Bing Custom Search API lehetővé teszi, hogy testreszabott, ad-ingyenes keresési élményeket hozzon létre az Ön számára fontos témakörökhöz. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)található.
 
-A C# bing egyéni keresési ügyféltár használatával:
-* Keresse meg a keresési eredményeket az interneten a Bing egyéni keresés példányából.
+Használja a C# Bing Custom Search ügyféloldali függvénytárát a következőre:
+* Keresési eredmények keresése a weben a Bing Custom Search-példányból.
 
-[Referenciadokumentációkönyvtár](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet) | [forráskódjának](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) | [mintái](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[A dokumentációs](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Bing egyéni keresési példánya. További információ: További információ [az első Bing egyéni keresési példány létrehozása](../../quick-start.md) című témakörben.
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- A [Visual Studio 2017-es vagy újabb verzióinak](https://www.visualstudio.com/downloads/) bármely kiadása
+- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](../../quick-start.md) című témakört.
+- Microsoft [.net Core](https://www.microsoft.com/net/download/core)
+- A [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/) verziójának bármely kiadása
 - Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
-- A [Bing egyéni keresés](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) Nuget csomag. 
-    - A Visual Studio **Megoldáskezelőjében** kattintson a jobb gombbal a projektre, és válassza a menü **NuGet csomagok kezelése parancsát.** Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
+- A [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet-csomag. 
+    - **Megoldáskezelő** a Visual Studióban kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** menüpontot a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -40,7 +40,7 @@ A C# bing egyéni keresési ügyféltár használatával:
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolalkalmazást a Visual Studióban. Ez után adja hozzá a projekthez az alábbi csomagokat.
+1. Hozzon létre egy új C# konzolos alkalmazást a Visual Studióban. Ez után adja hozzá a projekthez az alábbi csomagokat.
 
     ```csharp
     using System;
@@ -48,7 +48,7 @@ A C# bing egyéni keresési ügyféltár használatával:
     using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
     ```
 
-2. Az alkalmazás fő módszerében példányosítsa meg a keresési ügyfelet az API-kulccsal.
+2. Az alkalmazás fő metódusában hozza létre a keresési ügyfelet az API-kulccsal.
 
     ```csharp
     var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-SUBSCRIPTION-KEY"));
@@ -56,14 +56,14 @@ A C# bing egyéni keresési ügyféltár használatával:
 
 ## <a name="send-the-search-request-and-receive-a-response"></a>A keresési kérelem elküldése és válasz fogadása
     
-1. Keresési lekérdezés küldése az ügyfél `SearchAsync()` metódusával, és mentse a választ. Ügyeljen arra, `YOUR-CUSTOM-CONFIG-ID` hogy cserélje ki a példány konfigurációs azonosítóját (az azonosítót a [Bing egyéni keresési portálon](https://www.customsearch.ai/)találja). Ez a példa az "Xbox" kifejezésre keres.
+1. Küldjön egy keresési lekérdezést az ügyfél `SearchAsync()` metódusának használatával, és mentse a választ. Ne felejtse el lecserélni `YOUR-CUSTOM-CONFIG-ID` a példánya konfigurációs azonosítóját (az azonosítót a [Bing Custom Search portálon](https://www.customsearch.ai/)találja). Ez a példa az "Xbox" kifejezést keresi.
 
     ```csharp
     // This will look up a single query (Xbox).
     var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
     ```
 
-2. A `SearchAsync()` metódus egy `WebData` objektumot ad vissza. Használja az objektumot a `WebPages` talált objektumok on-átitatására. Ez a kód megtalálja az első weboldal eredményt, és megjeleníti a weboldal `Name` és `URL` tulajdonságát.
+2. A `SearchAsync()` metódus egy `WebData` objektumot ad vissza. Az objektum használatával megismételheti `WebPages` a talált objektumokat. Ez a kód megtalálja az első weboldal eredményt, és megjeleníti a weboldal `Name` és `URL` tulajdonságát.
 
     ```csharp
     if (webData?.WebPages?.Value?.Count > 0)
@@ -91,4 +91,4 @@ A C# bing egyéni keresési ügyféltár használatával:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni keresési webalkalmazás létrehozása](../../tutorials/custom-search-web-page.md)
+> [Egyéni keresési Webalkalmazás létrehozása](../../tutorials/custom-search-web-page.md)

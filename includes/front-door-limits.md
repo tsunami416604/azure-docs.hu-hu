@@ -9,52 +9,52 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: 148ec3eccce71ab7a4a6c1391c0fa4753c248bd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334773"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
-| Azure Bejárati ajtó erőforrásai előfizetésenként | 100 |
-| Előtér-állomások, amelyek erőforrásonként egyéni tartományokat tartalmaznak | 500 |
-| Útválasztási szabályok erőforrásonként | 500 |
-| Háttérkészletek erőforrásonként | 50 |
-| Háttérvégénként háttérkészlet | 100 |
-| Útválasztási szabálynak megfelelő útvonalminták | 25 |
+| Azure bejárati ajtó erőforrásai/előfizetés | 100 |
+| Előtér-gazdagépek, amelyeken erőforrásként egyéni tartományok szerepelnek | 500 |
+| Útválasztási szabályok/erőforrás | 500 |
+| Háttérbeli készletek/erőforrás | 50 |
+| Háttérbeli végpontok | 100 |
+| Útválasztási szabálynak megfelelő elérésiút-minták | 25 |
 | URL-címek egyetlen gyorsítótár-kiürítési hívásban | 100 |
-| Egyéni webalkalmazás-tűzfalszabályok házirendenként | 100 |
-| Webalkalmazás tűzfalházirendje előfizetésenként | 100 |
-| A webalkalmazás tűzfala egyéni szabályokonként ifeltételeknek felel meg | 10 |
-| Webalkalmazás tűzfalának IP-címtartományai egyezési feltételenként | 600 |
-| A webalkalmazás tűzfalkarakterlánca megfeleltetési feltételenkénti értékeknek | 10 |
-| Webalkalmazás tűzfalkarakterláncának egyezési értéke | 256 |
-| Webalkalmazás tűzfal A POST törzsparaméterének nevének hossza | 256 |
-| Webalkalmazás-tűzfal HTTP-fejlécének hosszának hossza | 256 |
-| Webalkalmazás-tűzfal cookie-jának hossza | 256 |
-| Webalkalmazás tűzfalÁNAK HTTP-kérelemtörzs-mérete ellenőrizve | 128 KB |
-| Webalkalmazás tűzfalegyéni válasz törzsének hossza | 2 KB |
+| Egyéni webalkalmazási tűzfalszabályok szabályai házirend szerint | 100 |
+| Webalkalmazási tűzfal házirendje előfizetés alapján | 100 |
+| Webalkalmazási tűzfal egyéni szabályoknak megfelelően | 10 |
+| Webalkalmazási tűzfal IP-címeinek egyeztetési feltétele | 600 |
+| Webalkalmazási tűzfal karakterláncának egyeztetési feltétel értéke | 10 |
+| Webalkalmazási tűzfal karakterláncának egyezési értéke | 256 |
+| Webalkalmazási tűzfal a törzs paraméterének neve után | 256 |
+| Webalkalmazási tűzfal HTTP-fejlécének neve hossz | 256 |
+| Webalkalmazási tűzfal cookie-nevének hossza | 256 |
+| Webalkalmazási tűzfal HTTP-kérés törzsének mérete megvizsgálva | 128 KB |
+| Webalkalmazási tűzfal – egyéni válasz törzsének hossza | 2 KB |
 
-### <a name="timeout-values"></a>Idő-eltinési értékek
-#### <a name="client-to-front-door"></a>Ügyfél a bejárati ajtó
-* A Bejárati ajtó tétje 61 másodperces tétlen TCP-kapcsolati időtúllépés.
+### <a name="timeout-values"></a>Időtúllépési értékek
+#### <a name="client-to-front-door"></a>Ügyfélről a bejárat felé
+* A bejárati ajtó 61 másodperces üresjárati TCP-kapcsolati időtúllépéssel rendelkezik.
 
-#### <a name="front-door-to-application-back-end"></a>Bejárati ajtó az alkalmazás háttér-vég
-* Ha a válasz egy darabolt válasz, egy 200-as t ad vissza, ha vagy amikor az első adattömb érkezik.
-* A HTTP-kérelem háttérrendszerbe továbbítása után a Bejárati ajtó 30 másodpercet vár a háttérrendszerelső csomagjára. Ezután egy 503-as hibát ad vissza az ügyfélnek. Ez az érték konfigurálható a sendRecvTimeoutSeconds mezőn keresztül az API-ban.
-    * Gyorsítótárazási forgatókönyvek esetén ez az időtúllépése nem konfigurálható, ezért ha egy kérelem gyorsítótárazott, és az első csomag a Bejárati ajtóból vagy a háttérrendszerből, akkor egy 504-es hiba kerül vissza az ügyfélnek. 
-* Miután az első csomag érkezett a háttérrendszerből, a Bejárati ajtó 30 másodpercet vár egy tétlen időadatban. Ezután egy 503-as hibát ad vissza az ügyfélnek. Ez az időtúlérték nem konfigurálható.
-* A hátsó tcp-munkamenet előbejárata időnyitva 90 másodperc.
+#### <a name="front-door-to-application-back-end"></a>Az alkalmazás háttérbe zárása
+* Ha a válasz egy darabokra épülő válasz, a rendszer a 200 értéket adja vissza, ha az első adathalmaz érkezik.
+* A HTTP-kérésnek a háttérbe való továbbítása után a bejárati ajtó 30 másodpercig várakozik a háttér első csomagjának. Ezután egy 503-es hibát ad vissza az ügyfélnek. Ez az érték konfigurálható az API mező sendRecvTimeoutSeconds keresztül.
+    * Gyorsítótárazási forgatókönyvek esetén ez az időtúllépés nem konfigurálható, így ha egy kérés gyorsítótárazva van, és a rendszer a bejárati ajtótól vagy a háttértől több mint 30 másodpercet vesz igénybe, akkor a rendszer 504-es hibát ad vissza az ügyfélnek. 
+* Miután az első csomag érkezett a háttérből, a bejárati ajtó 30 másodpercig várakozik üresjárati időkorlátban. Ezután egy 503-es hibát ad vissza az ügyfélnek. Ez az időtúllépési érték nem konfigurálható.
+* A back-end TCP-munkamenet időtúllépése 90 másodperc.
 
 ### <a name="upload-and-download-data-limit"></a>Adatkorlát feltöltése és letöltése
 
-|  | Darabolt átviteli kódolással (CTE) | HTTP-darabolás nélkül |
+|  | Darabolásos átvitel kódolásával (TÁBLAKIFEJEZÉSEK) | HTTP-darabolás nélkül |
 | ---- | ------- | ------- |
-| **Letöltés** | A letöltési méret nincs korlátozva. | A letöltési méret nincs korlátozva. |
-| **Feltöltés** |    Nincs korlátozás, amíg minden CTE feltöltés kevesebb, mint 2 GB. | A méret nem lehet nagyobb, mint 2 GB. |
+| **Letöltés** | A letöltési méretnek nincs korlátja. | A letöltési méretnek nincs korlátja. |
+| **Feltöltés** |    Nincs korlát, amíg az egyes TÁBLAKIFEJEZÉSEK-feltöltések száma kevesebb, mint 2 GB. | A méret nem lehet nagyobb 2 GB-nál. |
 
 ### <a name="other-limits"></a>Egyéb korlátok
-* Maximális URL-méret - 8192 bájt - A nyers URL maximális hosszát adja meg (séma + állomásnév + port + elérési út + az URL lekérdezési karakterlánca)
-* Maximális lekérdezési karakterlánc méret - 4096 bájt - A lekérdezési karakterlánc maximális hosszát adja meg bájtban.
-* A HTTP-válasz fejlécének maximális mérete az állapotminta URL-címéből – 4096 bájt – Az állapotminták összes válaszfejlécének maximális hosszát adta meg. 
+* URL-cím maximális mérete – 8 192 bájt – a nyers URL-cím maximális hosszát határozza meg (séma + állomásnév + port + Path + lekérdezési karakterlánc az URL-cím)
+* Lekérdezési karakterlánc maximális mérete – 4 096 bájt – a lekérdezési karakterlánc maximális hosszát adja meg bájtban kifejezve.
+* A HTTP-válasz fejlécének maximális mérete az állapot mintavételi URL-címéből – 4 096 bájt – az állapot-mintavételek összes válasz fejlécének maximális hosszát adja meg. 

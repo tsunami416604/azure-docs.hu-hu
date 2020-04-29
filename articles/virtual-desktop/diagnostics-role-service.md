@@ -1,6 +1,6 @@
 ---
-title: Windows virtuális asztal diagnosztizálása problémák - Azure
-description: A Windows virtuális asztal diagnosztikai szolgáltatásának használata a problémák diagnosztizálására.
+title: Windows rendszerű virtuális asztali problémák diagnosztizálása – Azure
+description: A Windows rendszerű virtuális asztali diagnosztika szolgáltatás használata a problémák diagnosztizálásához.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,112 +9,112 @@ ms.date: 03/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254260"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problémák azonosítása és diagnosztizálása
 
-A Windows virtuális asztal diagnosztikai szolgáltatást kínál, amely lehetővé teszi a rendszergazda számára a problémák azonosítását egyetlen felületen keresztül. A Windows virtuális asztal szerepkörei diagnosztikai tevékenységet naplóznak, amikor a felhasználó a rendszerrel kommunikál. Minden napló olyan releváns információkat tartalmaz, mint például a tranzakcióban részt vevő Windows virtuális asztal szerepkörök, a hibaüzenetek, a bérlői adatok és a felhasználói adatok. A diagnosztikai tevékenységeket végfelhasználói és felügyeleti műveletek is létrehozják, és három fő gyűjtőbe sorolhatók:
+A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltatást biztosít, amely lehetővé teszi, hogy a rendszergazda egyetlen felületen azonosítsa a problémákat. A Windows rendszerű virtuális asztali szerepkörök diagnosztikai tevékenységet naplóznak, amikor egy felhasználó kommunikál a rendszerrel. Minden napló olyan releváns információkat tartalmaz, mint például a tranzakcióban részt vevő Windows virtuális asztali szerepkörök, a hibaüzenetek, a bérlői adatok és a felhasználói adatok. A diagnosztikai tevékenységeket mind a végfelhasználói, mind a rendszergazdai műveletek hozzák létre, és három fő gyűjtőbe sorolhatók:
 
-* Hírcsatorna-előfizetési tevékenységek: a végfelhasználó ezeket a tevékenységeket akkor indítja el, amikor microsoft távoli asztali alkalmazásokon keresztül próbálnak csatlakozni a hírcsatornájukhoz.
-* Csatlakozási tevékenységek: a végfelhasználó ezeket a tevékenységeket akkor indítja el, amikor microsoft távoli asztali alkalmazásokon keresztül próbálnak csatlakozni egy asztalhoz vagy RemoteApp-hoz.
-* Felügyeleti tevékenységek: a rendszergazda minden alkalommal elindítja ezeket a tevékenységeket, amikor felügyeleti műveleteket hajtanak végre a rendszeren, például gazdagépkészleteket hoznak létre, felhasználókat rendelnek az alkalmazáscsoportokhoz, és szerepkör-hozzárendeléseket hoznak létre.
+* Hírcsatorna-előfizetési tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak csatlakozni a hírcsatornához Microsoft Távoli asztal alkalmazásokon keresztül.
+* Kapcsolódási tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak csatlakozni egy asztali vagy RemoteApp-hoz Microsoft Távoli asztal alkalmazáson keresztül.
+* Felügyeleti tevékenységek: a rendszergazda elindítja ezeket a tevékenységeket, amikor felügyeleti műveleteket végez a rendszeren, például a gazdagépek létrehozása, a felhasználók hozzárendelése az alkalmazás-csoportokhoz és a szerepkör-hozzárendelések létrehozása.
   
-Azok a kapcsolatok, amelyek nem érik el a Windows virtuális asztalt, nem jelennek meg a diagnosztikai eredményekben, mert maga a diagnosztikai szerepkör-szolgáltatás része a Windows virtuális asztalnak. A Windows virtuális asztal csatlakozási problémái akkor fordulhatnak elő, ha a végfelhasználó hálózati kapcsolattal kapcsolatos problémákat tapasztal.
+Azok a kapcsolatok, amelyek nem érik el a Windows virtuális asztalt, nem jelennek meg a diagnosztikai eredményekben, mert maga a diagnosztikai szerepkör-szolgáltatás a Windows virtuális asztal része. A Windows rendszerű virtuális asztali kapcsolattal kapcsolatos problémák akkor fordulnak elő, ha a végfelhasználó hálózati kapcsolati problémákba ütközik.
 
-A kezdéshez [töltse le és importálja a Windows Virtual Desktop PowerShell-modult,](/powershell/windows-virtual-desktop/overview/) amelyet a PowerShell-munkamenetben használhat, ha még nem tette meg. Ezután futtassa a következő parancsmast a fiókjába való bejelentkezéshez:
+Első lépésként [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-## <a name="diagnose-issues-with-powershell"></a>A PowerShellnel kapcsolatos problémák diagnosztizálása
+## <a name="diagnose-issues-with-powershell"></a>Problémák diagnosztizálása a PowerShell-lel
 
-A Windows virtuális asztali diagnosztika csak egy PowerShell-parancsmacsat használ, de számos választható paramétert tartalmaz a problémák leszűkítéséhez és elkülönítéséhez. A következő szakaszok a problémák diagnosztizálására futtatható parancsmagokat sorolják fel. A legtöbb szűrő együtt alkalmazható. A zárójelben felsorolt értékeket, például `<tenantName>`a , a helyzetre vonatkozó értékekre kell cserélni.
+A Windows rendszerű virtuális asztali diagnosztika csak egy PowerShell-parancsmagot használ, de számos opcionális paramétert tartalmaz, amelyek segítenek a problémák szűkítéséhez és elkülönítésében. A következő részben azokat a parancsmagokat sorolja fel, amelyeket a problémák diagnosztizálásához futtathat. A legtöbb szűrő együtt is alkalmazható. A zárójelben `<tenantName>`felsorolt értékeket (például) az adott helyzetre érvényes értékekkel kell helyettesíteni.
 
 >[!IMPORTANT]
->A diagnosztikai funkció egyfelhasználós hibaelhárításra alkalmas. A PowerShellt használó összes lekérdezésnek tartalmaznia kell a *-UserName* vagy *a -ActivityID* paramétereket. A figyelési képességek, használja a Log Analytics. A diagnosztikai adatok munkaterületre küldéséről a Diagnosztikai adatok küldéséről a Diagnosztikai adatok használatával a [diagnosztikai funkcióhoz](diagnostics-log-analytics.md) című témakörben talál. 
+>A diagnosztikai funkció az egyfelhasználós hibaelhárításhoz használható. A PowerShellt használó összes lekérdezésnek tartalmaznia kell a *-username* vagy a *-tevékenységazonosító* paramétert. A figyelési képességekhez használja a Log Analytics. A diagnosztikai adatok munkaterületre való küldésével kapcsolatos további információkért tekintse meg [a log Analytics használata a diagnosztikai szolgáltatáshoz](diagnostics-log-analytics.md) című témakört. 
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Diagnosztikai tevékenységek szűrése felhasználó szerint
 
-A **-UserName** paraméter a megadott felhasználó által kezdeményezett diagnosztikai tevékenységek listáját adja vissza, ahogy az a következő példaparancsmagban látható.
+A **-username** paraméter a megadott felhasználó által kezdeményezett diagnosztikai tevékenységek listáját adja vissza, ahogy az az alábbi példában is látható.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
 
-A **-UserName** paraméter más választható szűrési paraméterekkel is kombinálható.
+A **-username** paraméter más nem kötelező szűrési paraméterekkel is kombinálható.
 
 ### <a name="filter-diagnostic-activities-by-time"></a>Diagnosztikai tevékenységek szűrése idő szerint
 
-A visszaadott diagnosztikai tevékenységlista a **-StartTime** és **-EndTime** paraméterekkel szűrhető. A **-StartTime** paraméter egy adott dátumtól kezdődődiagnosztikai tevékenységlistát ad vissza, ahogy az a következő példában látható.
+A visszaadott diagnosztikai tevékenységek listáját a **-kezdő** és a **-** záró paraméterekkel szűrheti. A **-** Kezdődátum paraméter egy megadott dátumtól kezdődő diagnosztikai tevékenységek listáját fogja visszaadni, ahogy az az alábbi példában is látható.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
 ```
 
-A **-EndTime** paraméter hozzáadható egy parancsmaghoz a **-StartTime** paraméterrel, hogy megadhatja azt az időtartamot, amelyhez eredményeket szeretne kapni. A következő példa parancsmag visszaadja a diagnosztikai tevékenységek listáját augusztus 1 és augusztus 10 között.
+A **-befejezési** paramétert hozzáadhatja egy parancsmaghoz a **-kezdő** paraméterrel egy adott időszak megadásához, amelynek eredményét meg szeretné kapni. Az alábbi példában szereplő parancsmag a diagnosztikai tevékenységek listáját augusztus 1-től és augusztus 10-én fogja visszaadni.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
 ```
 
-A **-StartTime** és **-EndTime** paraméterek más választható szűrési paraméterekkel is kombinálhatók.
+A **-kezdő** és **a** záró paraméter is kombinálható más opcionális szűrési paraméterekkel.
 
-### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnosztikai tevékenységek szűrése tevékenységtípus szerint
+### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnosztikai tevékenységek szűrése tevékenység típusa szerint
 
-A diagnosztikai tevékenységeket tevékenységtípus szerint is szűrheti a **-ActivityType** paraméterrel. A következő parancsmag a végfelhasználói kapcsolatok listáját adja vissza:
+A diagnosztikai tevékenységeket tevékenység típusa szerint is szűrheti a **-activityType** paraméterrel. A következő parancsmag a végfelhasználói kapcsolatok listáját fogja visszaadni:
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
 ```
 
-A következő parancsmag a rendszergazdai felügyeleti feladatok listáját adja vissza:
+A következő parancsmag a rendszergazdai felügyeleti feladatok listáját fogja visszaadni:
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
 ```
 
-A **Get-RdsDiagnosticActivities** parancsmag jelenleg nem támogatja a hírcsatorna ActivityType típusként történő megadását.
+A **Get-RdsDiagnosticActivities** parancsmag jelenleg nem támogatja a hírcsatorna activityType való megadását.
 
-### <a name="filter-diagnostic-activities-by-outcome"></a>Diagnosztikai tevékenységek szűrése eredmény szerint
+### <a name="filter-diagnostic-activities-by-outcome"></a>Diagnosztikai tevékenységek szűrése eredmény alapján
 
-A visszaadott diagnosztikai tevékenységlista eredmény szerint szűrhető a **-Outcome** paraméterrel. A következő példa parancsmag a sikeres diagnosztikai tevékenységek listáját adja vissza.
+A visszaadott diagnosztikai tevékenységek listáját a **-eredmény** paraméterrel szűrheti eredményként. A következő példa parancsmag a sikeres diagnosztikai tevékenységek listáját fogja visszaadni.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
 ```
 
-A következő példa parancsmag a sikertelen diagnosztikai tevékenységek listáját adja vissza.
+A következő példa parancsmag a sikertelen diagnosztikai tevékenységek listáját fogja visszaadni.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 ```
 
-A **-Outcome** paraméter más választható szűrési paraméterekkel is kombinálható.
+A **-végeredmény** paraméter más opcionális szűrési paraméterekkel is kombinálható.
 
-### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Adott diagnosztikai tevékenység lekérése tevékenységazonosító szerint
+### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Adott diagnosztikai tevékenység lekérése tevékenység-azonosító alapján
 
-A **-ActivityId** paraméter egy adott diagnosztikai tevékenységet ad vissza, ha létezik, ahogy az a következő példa parancsmagban látható.
+A **-tevékenységazonosító** paraméter adott diagnosztikai tevékenységet ad vissza, ha létezik, ahogy az az alábbi példában is látható.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid>
 ```
 
-### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>Sikertelen tevékenységhibaüzenetek megtekintése tevékenységazonosító szerint
+### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>Hibás tevékenységhez tartozó hibaüzenetek megtekintése tevékenység azonosítója szerint
 
-A sikertelen tevékenység hibaüzeneteinek megtekintéséhez a **-Detailed** paraméterrel kell futtatnia a parancsmatot. A hibák listáját az **Objektum-kijelölés** parancsmag futtatásával tekintheti meg.
+A sikertelen tevékenységhez tartozó hibaüzenetek megtekintéséhez a **-Detailed** paraméterrel kell futtatnia a parancsmagot. A hibák listáját a **Select-Object** parancsmag futtatásával tekintheti meg.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="retrieve-detailed-diagnostic-activities"></a>Részletes diagnosztikai tevékenységek lekérése
+### <a name="retrieve-detailed-diagnostic-activities"></a>Részletes diagnosztikai tevékenységek beolvasása
 
-A **-Részletes** paraméter további részleteket tartalmaz az egyes visszaadott diagnosztikai tevékenységekhez. Az egyes tevékenységek formátuma a tevékenység típusától függően változik. A **-Részletes** paraméter bármely **Get-RdsDiagnosticActivities** lekérdezéshez hozzáadható, ahogy az a következő példában látható.
+A **-Detailed** paraméter további részleteket tartalmaz a visszaadott diagnosztikai tevékenységekről. Az egyes tevékenységek formátuma a tevékenység típusától függően változik. A **-Detailed** paraméter bármely **Get-RdsDiagnosticActivities** lekérdezéshez hozzáadható, ahogy az az alábbi példában is látható.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
@@ -122,54 +122,54 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 ## <a name="common-error-scenarios"></a>Gyakori hibaforgatókönyvek
 
-A hibaesetek a szolgáltatáson belül és a Windows virtuális asztalon kívül vannak kategorizálva.
+A hibákra vonatkozó forgatókönyvek a szolgáltatás belső és külső Windowsos virtuális asztalára vannak kategorizálva.
 
-* Belső probléma: olyan forgatókönyveket határoz meg, amelyeket a bérlői rendszergazda nem tud enyhíteni, és támogatási problémaként kell megoldani. Amikor visszajelzést [aD](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)át a Windows Virtual Desktop Tech Community , tartalmazza a tevékenység azonosítóját és hozzávetőleges időkeretet, amikor a probléma történt.
-* Külső probléma: olyan forgatókönyvekhez kapcsolódik, amelyeket a rendszergazda enyhíthet. Ezek a Windows virtuális asztalon kívül találhatók.
+* Belső probléma: azokat a forgatókönyveket határozza meg, amelyeket nem lehet enyhíteni a bérlői rendszergazda, és támogatási problémaként meg kell oldani. Ha visszajelzést ad a [Windows rendszerű virtuális asztali technikai Közösségen](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)keresztül, adja meg a tevékenység azonosítóját és a probléma előfordulásának hozzávetőleges időkeretét.
+* Külső probléma: olyan forgatókönyvekhez kapcsolódik, amelyeket a rendszergazda enyhítheti. Ezek a Windows rendszerű virtuális asztali gépeken kívül vannak.
 
-Az alábbi táblázat azokat a gyakori hibákat sorolja fel, amelyekbe a rendszergazdák találkozhatnak.
+A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rendszergazdák futtathatnak.
 
 >[!NOTE]
->Ez a lista tartalmazza a leggyakoribb hibákat, és rendszeres ütemben frissül. Annak érdekében, hogy a legfrissebb információkkal rendelkezzen, legalább havonta egyszer ellenőrizze ezt a cikket.
+>Ez a lista a leggyakoribb hibákat tartalmazza, és rendszeresen frissül. Annak érdekében, hogy a legfrissebb információk legyenek naprakészek, ügyeljen rá, hogy havonta legalább egyszer térjen vissza a cikkre.
 
 ### <a name="external-management-error-codes"></a>Külső felügyeleti hibakódok
 
 |Numerikus kód|Hibakód|Javasolt megoldás|
 |---|---|---|
-|3|Jogosulatlan hozzáférés|A felügyeleti PowerShell-parancsmag futtatását megkísérlő felhasználó vagy nem rendelkezik jogosultsággal ehhez, vagy elgépelte a felhasználónevét.|
-|1000|A bérlő nem található|A megadott bérlői név nem egyezik egyetlen meglévő bérlővel sem. Tekintse át az elírások bérlői nevét, majd próbálkozzon újra.|
-|1006|TenantCannotBeRemovedHasSessionHostPools|A bérlő nem törölhető addig, amíg az objektumokat tartalmaz. Először törölje a munkamenetgazda-készleteket, majd próbálkozzon újra.|
-|2000|HostPoolNem alapítva|A megadott állomáskészlet neve nem egyezik egyetlen meglévő állomáskészletnek sem. Tekintse át az elírások gazdakészletének nevét, majd próbálkozzon újra.|
-|2005|A hostpool nem távolítható elalkalmazáscsoportok|A gazdagépkészlet nem törölhető, amíg objektumokat tartalmaz. Először távolítsa el az összes alkalmazáscsoportot a gazdakészletből.|
-|2004|HostPool nem távolítható elhassessionhosts|A munkamenetgazda-készlet törlése előtt távolítsa el az összes munkamenet-állomást.|
-|5001|SessionHostNem található|Lehet, hogy a lekérdezett munkamenet-gazdagép offline állapotban van. Ellenőrizze a gazdakészlet állapotát.|
-|5008|SessionHostUserSessionsExist |A tervezett felügyeleti tevékenység végrehajtása előtt ki kell jelentkeznie a munkamenet-gazdagépen lévő összes felhasználóból.|
-|6000|AppGroupNem található|A megadott alkalmazáscsoport neve nem egyezik egyetlen meglévő alkalmazáscsoporttal sem. Tekintse át az elírások alkalmazáscsoportjának nevét, majd próbálkozzon újra.|
-|6022|RemoteAppNem található|A megadott RemoteApp-név nem egyezik egyetlen RemoteApps alkalmazással sem. Tekintse át az elírások RemoteApp-nevét, majd próbálkozzon újra.|
-|6010|PublishedItemsExist|A közzétenni kívánt erőforrás neve megegyezik a már létező erőforrás nevével. Módosítsa az erőforrás nevét, majd próbálkozzon újra.|
+|3|UnauthorizedAccess|A rendszergazdai PowerShell-parancsmag futtatására megkísérelt felhasználó nem jogosult erre vagy a Felhasználónév elírására.|
+|1000|TenantNotFound|A megadott bérlő neve nem egyezik a meglévő bérlők nevével. Tekintse át a bérlő nevét az elírásokhoz, és próbálkozzon újra.|
+|1006|TenantCannotBeRemovedHasSessionHostPools|A bérlőt nem lehet törölni, amíg objektumokat tartalmaz. Először törölje a munkamenet-gazdagép készleteit, majd próbálkozzon újra.|
+|2000|HostPoolNotFound|A megadott címkészlet neve nem felel meg a meglévő gazdagép-készleteknek. Tekintse át a gazdagép-készlet nevét az elírásokhoz, és próbálkozzon újra.|
+|2005|HostPoolCannotBeRemovedHasApplicationGroups|A gazdagépek nem törölhetők, amíg objektumokat tartalmaz. Először távolítsa el az összes alkalmazás-csoportot a gazdagép-készletből.|
+|2004|HostPoolCannotBeRemovedHasSessionHosts|Először távolítsa el az összes munkamenet-gazdagépet a munkamenet-gazdagép készletének törlése előtt.|
+|5001|SessionHostNotFound|Előfordulhat, hogy a lekérdezett munkamenet-gazdagép offline állapotban van. Győződjön meg arról, hogy a gazdagép készletének állapota.|
+|5008|SessionHostUserSessionsExist |A kívánt felügyeleti tevékenység végrehajtása előtt ki kell jelentkeznie a munkamenet-gazdagépen lévő összes felhasználóra.|
+|6000|AppGroupNotFound|Az alkalmazáscsoport megadott neve nem felel meg egyetlen meglévő alkalmazás-csoportnak sem. Tekintse át az alkalmazás csoportjának nevét az elírásokhoz, és próbálkozzon újra.|
+|6022|RemoteAppNotFound|A megadott RemoteApp-név nem felel meg a RemoteApp-nak. Tekintse át a RemoteApp nevét az elírásokhoz, és próbálkozzon újra.|
+|6010|PublishedItemsExist|A közzétenni kívánt erőforrás neve megegyezik egy már létező erőforrás nevével. Módosítsa az erőforrás nevét, és próbálkozzon újra.|
 |7002|NameNotValidWhiteSpace|Ne használjon szóközt a névben.|
-|8000|InvalidAuthorizationRoleScope|A megadott szerepkörnév nem egyezik egyetlen meglévő szerepkörnévvel sem. Tekintse át az elírások szerepkörnevét, majd próbálkozzon újra. |
-|8001|A felhasználó nem található |A megadott felhasználónév nem egyezik egyetlen meglévő felhasználónévvel sem. Tekintse át az elírások nevét, majd próbálkozzon újra.|
-|8005|UserNotFoundinaad |A megadott felhasználónév nem egyezik egyetlen meglévő felhasználónévvel sem. Tekintse át az elírások nevét, majd próbálkozzon újra.|
-|8008|Bérlőhozzájárulásszükséges|Kövesse az [itt](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) található utasításokat, hogy beleegyezését adja a bérlőnek.|
+|8000|InvalidAuthorizationRoleScope|A megadott szerepkör neve nem egyezik a meglévő szerepkörök nevével. Tekintse át az elírásokhoz tartozó szerepkör nevét, és próbálkozzon újra. |
+|8001|UserNotFound |A megadott Felhasználónév nem egyezik a meglévő felhasználónevek nevével. Tekintse át az elírások nevét, és próbálkozzon újra.|
+|8005|UserNotFoundInAAD |A megadott Felhasználónév nem egyezik a meglévő felhasználónevek nevével. Tekintse át az elírások nevét, és próbálkozzon újra.|
+|8008|TenantConsentRequired|Kövesse az [itt](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) található utasításokat a bérlői engedély megadásához.|
 
-### <a name="external-connection-error-codes"></a>Külső kapcsolathibakódok
+### <a name="external-connection-error-codes"></a>Külső kapcsolatok hibakódai
 
 |Numerikus kód|Hibakód|Javasolt megoldás|
 |---|---|---|
-|-2147467259|ConnectionFailedAdTrustedRelationshipFailure|A munkamenetgazda nincs megfelelően csatlakoztatva az Active Directoryhoz.|
-|-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|A kapcsolatok nem sikerültek, mert a munkamenetgazda nem érhető el. Ellenőrizze a munkamenet gazdagépének állapotát.|
-|-2146233088|ConnectionFailedClientDisconnect|Ha gyakran jelenik meg ez a hiba, ellenőrizze, hogy a felhasználó számítógépe csatlakozik-e a hálózathoz.|
-|-2146233088|ConnectionFailedNoHealthyRdshElérhető|A munkamenet, amelyhez a gazdagép felhasználója megpróbált csatlakozni, nem kifogástalan. Hibakeresés a virtuális gép.|
-|-2146233088|ConnectionFailedUserNotAuthorized|A felhasználónak nincs engedélye a közzétett alkalmazás vagy asztal elérésére. A hiba akkor jelenhet meg, amikor a rendszergazda eltávolította a közzétett erőforrásokat. Kérje meg a felhasználót, hogy frissítse a hírcsatornát a Távoli asztal alkalmazásban.|
-|2|A fájl nem található|Az alkalmazás, amelyet a felhasználó megpróbált elérni, helytelenül van telepítve, vagy helytelen elérési útra van állítva.|
-|3|Érvénytelen Hitelesítő adatok|A felhasználó által megadott felhasználónév vagy jelszó nem egyezik meg egyetlen meglévő felhasználónévvel vagy jelszóval sem. Tekintse át az elírások hitelesítő adatait, majd próbálkozzon újra.|
-|8|Kapcsolattörlve|Megszakadt a kapcsolat az ügyfél és az átjáró vagy a kiszolgáló között. Nincs szükség cselekvésre, hacsak nem váratlanul történik.|
-|14|VáratlanHálózatleválasztás|Megszakadt a kapcsolat a hálózattal. Kérje meg a felhasználót, hogy csatlakozzon újra.|
-|24|ReverseConnectFailed|A gazdavirtuális gép nek nincs közvetlen látómezeje a Távoli asztali átjáróhoz. Győződjön meg arról, hogy az átjáró IP-címe feloldható.|
+|– 2147467259|ConnectionFailedAdTrustedRelationshipFailure|A munkamenet-gazdagép nem megfelelően van csatlakoztatva a Active Directoryhoz.|
+|– 2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|A kapcsolatok sikertelenek voltak, mert a munkamenet-gazdagép nem érhető el. Keresse meg a munkamenet-gazdagép állapotát.|
+|– 2146233088|ConnectionFailedClientDisconnect|Ha gyakran látja ezt a hibát, győződjön meg arról, hogy a felhasználó számítógépe csatlakozik a hálózathoz.|
+|– 2146233088|ConnectionFailedNoHealthyRdshAvailable|Az a munkamenet, amelyhez a gazdagép felhasználója megpróbált csatlakozni, nem kifogástalan állapotú. A virtuális gép hibakeresése.|
+|– 2146233088|ConnectionFailedUserNotAuthorized|A felhasználónak nincs engedélye a közzétett alkalmazáshoz vagy asztalhoz való hozzáféréshez. A hiba akkor jelenhet meg, ha a rendszergazda eltávolította a közzétett erőforrásokat. Kérje meg a felhasználót, hogy frissítse a hírcsatornát a Távoli asztal alkalmazásban.|
+|2|FileNotFound|A felhasználó által elérni próbált alkalmazás vagy helytelenül van telepítve, vagy helytelen elérési útra van beállítva.|
+|3|InvalidCredentials|A felhasználó által megadott Felhasználónév vagy jelszó nem felel meg a meglévő felhasználóneveknek vagy jelszavaknak. Tekintse át az elírásokhoz tartozó hitelesítő adatokat, és próbálkozzon újra.|
+|8|ConnectionBroken|Az ügyfél és az átjáró vagy a kiszolgáló közötti kapcsolat megszakadt. Nincs szükség beavatkozásra, kivéve, ha váratlanul történik.|
+|14|UnexpectedNetworkDisconnect|A hálózattal létesített kapcsolódás megszakadt. Kérje meg a felhasználót, hogy kapcsolódjon újra.|
+|24|ReverseConnectFailed|A gazdagép virtuális gépe nem rendelkezik közvetlen RD-átjárói vonallal. Győződjön meg arról, hogy az átjáró IP-címe oldható fel.|
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni a Windows virtuális asztalon belüli szerepkörökről, olvassa el a [Windows virtuális asztal környezetcímű témakört.](environment-setup.md)
+A Windows rendszerű virtuális asztali szerepkörökkel kapcsolatos további információkért lásd: [Windows rendszerű virtuális asztali környezet](environment-setup.md).
 
-A Windows Virtual Desktop elérhető PowerShell-parancsmagjainak listáját a [PowerShell-hivatkozás című témakörben láthatja.](/powershell/windows-virtual-desktop/overview)
+A Windowsos virtuális asztalhoz elérhető PowerShell-parancsmagok listájának megtekintéséhez tekintse meg a [PowerShell-referenciát](/powershell/windows-virtual-desktop/overview).

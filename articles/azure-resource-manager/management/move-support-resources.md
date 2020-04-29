@@ -1,228 +1,228 @@
 ---
-title: A művelettámogatás áthelyezése erőforrástípus szerint
-description: Felsorolja az Azure-erőforrás-típusok, amelyek áthelyezhetők egy új erőforráscsoportba vagy előfizetésbe.
+title: Művelet támogatásának áthelyezése erőforrástípus szerint
+description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804792"
 ---
 # <a name="move-operation-support-for-resources"></a>Erőforrás-áthelyezési műveletek támogatása
-Ez a cikk felsorolja, hogy egy Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Az erőforrások áthelyezésekekéna során figyelembe vehetővé kell tenni a különleges feltételekkel kapcsolatos információkat is.
+Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
 
-Ugrás erőforrásszolgáltatói névtérre:
+Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="op_single_selector"]
-> - [Microsoft.AAD](#microsoftaad)
-> - [microsoft.aadiam](#microsoftaadiam)
-> - [Microsoft.Advisor](#microsoftadvisor)
-> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
-> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
-> - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
-> - [Microsoft.AppPlatform](#microsoftappplatform)
-> - [Microsoft.AppService](#microsoftappservice)
+> - [Microsoft. HRE](#microsoftaad)
+> - [Microsoft. aadiam](#microsoftaadiam)
+> - [Microsoft. Advisor](#microsoftadvisor)
+> - [Microsoft. AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft. AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft. ApiManagement](#microsoftapimanagement)
+> - [Microsoft. AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft. AppPlatform](#microsoftappplatform)
+> - [Microsoft. AppService](#microsoftappservice)
 > - [Microsoft.Authorization](#microsoftauthorization)
-> - [Microsoft.Automation](#microsoftautomation)
-> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
-> - [Microsoft.AzureData](#microsoftazuredata)
-> - [Microsoft.AzureStack](#microsoftazurestack)
+> - [Microsoft. Automation](#microsoftautomation)
+> - [Microsoft. AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft. AzureData](#microsoftazuredata)
+> - [Microsoft. AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [Microsoft.BatchAI](#microsoftbatchai)
-> - [Microsoft.Számlázás](#microsoftbilling)
-> - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
-> - [Microsoft.Blockchain](#microsoftblockchain)
-> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
-> - [Microsoft.Blueprint](#microsoftblueprint)
-> - [Microsoft.BotService](#microsoftbotservice)
-> - [Microsoft.Cache](#microsoftcache)
-> - [Microsoft.Cdn](#microsoftcdn)
-> - [Microsoft.Tanúsítványregisztráció](#microsoftcertificateregistration)
+> - [Microsoft. BatchAI](#microsoftbatchai)
+> - [Microsoft. számlázás](#microsoftbilling)
+> - [Microsoft. BingMaps](#microsoftbingmaps)
+> - [Microsoft. BizTalkServices](#microsoftbiztalkservices)
+> - [Microsoft. Blockchain](#microsoftblockchain)
+> - [Microsoft. BlockchainTokens](#microsoftblockchaintokens)
+> - [Microsoft. Blueprint](#microsoftblueprint)
+> - [Microsoft. BotService](#microsoftbotservice)
+> - [Microsoft. cache](#microsoftcache)
+> - [Microsoft. CDN](#microsoftcdn)
+> - [Microsoft. CertificateRegistration](#microsoftcertificateregistration)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
-> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
-> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Microsoft.Megismerés](#microsoftcognition)
-> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Microsoft. ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft. ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft. Cognition](#microsoftcognition)
+> - [Microsoft. CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
-> - [Microsoft.Fogyasztás](#microsoftconsumption)
-> - [Microsoft.Container](#microsoftcontainer)
-> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
-> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
-> - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.ContentModerátor](#microsoftcontentmoderator)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
-> - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
-> - [Microsoft.CustomProviders](#microsoftcustomproviders)
-> - [Microsoft.DataBox](#microsoftdatabox)
-> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
-> - [Microsoft.Databricks](#microsoftdatabricks)
-> - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataConnect](#microsoftdataconnect)
-> - [Microsoft.DataExchange](#microsoftdataexchange)
-> - [Microsoft.DataFactory](#microsoftdatafactory)
-> - [Microsoft.DataLake](#microsoftdatalake)
-> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
-> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
-> - [Microsoft.DataMigration](#microsoftdatamigration)
-> - [Microsoft.DataProtection](#microsoftdataprotection)
-> - [Microsoft.DataShare](#microsoftdatashare)
-> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
-> - [Microsoft.DBforMySQL](#microsoftdbformysql)
-> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
-> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
-> - [Microsoft.DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft.Devices](#microsoftdevices)
-> - [Microsoft.DevOps](#microsoftdevops)
-> - [Microsoft.DevSpaces](#microsoftdevspaces)
-> - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [Microsoft.DigitalTwins](#microsoftdigitaltwins)
-> - [Microsoft.DocumentDB](#microsoftdocumentdb)
-> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
-> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
-> - [Microsoft.EventGrid](#microsofteventgrid)
-> - [Microsoft.EventHub](#microsofteventhub)
-> - [Microsoft.Kísérletezés](#microsoftexperimentation)
-> - [Microsoft.Falcon](#microsoftfalcon)
-> - [Microsoft.Genomics](#microsoftgenomics)
-> - [Microsoft.GuestKonfiguráció](#microsoftguestconfiguration)
-> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
-> - [Microsoft.HDInsight](#microsofthdinsight)
-> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute](#microsofthybridcompute)
-> - [Microsoft.HybridData](#microsofthybriddata)
-> - [Microsoft.Hydra](#microsofthydra)
-> - [Microsoft.ImportExport](#microsoftimportexport)
-> - [microsoft.insights](#microsoftinsights)
-> - [Microsoft.IoTCentral](#microsoftiotcentral)
-> - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Microsoft.Kubernetes](#microsoftkubernetes)
+> - [Microsoft. felhasználás](#microsoftconsumption)
+> - [Microsoft. Container](#microsoftcontainer)
+> - [Microsoft. ContainerInstance](#microsoftcontainerinstance)
+> - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft. Tárolószolgáltatás](#microsoftcontainerservice)
+> - [Microsoft. ContentModerator](#microsoftcontentmoderator)
+> - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Microsoft. CostManagement](#microsoftcostmanagement)
+> - [Microsoft. CustomerInsights](#microsoftcustomerinsights)
+> - [Microsoft. CustomProviders](#microsoftcustomproviders)
+> - [Microsoft. DataBox](#microsoftdatabox)
+> - [Microsoft. DataBoxEdge](#microsoftdataboxedge)
+> - [Microsoft. Databricks](#microsoftdatabricks)
+> - [Microsoft. DataCatalog](#microsoftdatacatalog)
+> - [Microsoft. DataConnect](#microsoftdataconnect)
+> - [Microsoft. DataExchange](#microsoftdataexchange)
+> - [Microsoft. DataFactory](#microsoftdatafactory)
+> - [Microsoft. DataLake](#microsoftdatalake)
+> - [Microsoft. DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft. Data Lake Store](#microsoftdatalakestore)
+> - [Microsoft. DataMigration](#microsoftdatamigration)
+> - [Microsoft. DataProtection](#microsoftdataprotection)
+> - [Microsoft. DataShare](#microsoftdatashare)
+> - [Microsoft. DBforMariaDB](#microsoftdbformariadb)
+> - [Microsoft. DBforMySQL](#microsoftdbformysql)
+> - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization)
+> - [Microsoft. Devices](#microsoftdevices)
+> - [Microsoft. DevOps](#microsoftdevops)
+> - [Microsoft. DevSpaces](#microsoftdevspaces)
+> - [Microsoft. segédösszetevője](#microsoftdevtestlab)
+> - [Microsoft. DigitalTwins](#microsoftdigitaltwins)
+> - [Microsoft. DocumentDB](#microsoftdocumentdb)
+> - [Microsoft. DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft. EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft. EventGrid](#microsofteventgrid)
+> - [Microsoft. EventHub](#microsofteventhub)
+> - [Microsoft. kísérletezés](#microsoftexperimentation)
+> - [Microsoft. Falcon](#microsoftfalcon)
+> - [Microsoft. genomika](#microsoftgenomics)
+> - [Microsoft. GuestConfiguration](#microsoftguestconfiguration)
+> - [Microsoft. HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft. HDInsight](#microsofthdinsight)
+> - [Microsoft. HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft. HybridData](#microsofthybriddata)
+> - [Microsoft. Hydra](#microsofthydra)
+> - [Microsoft. ImportExport](#microsoftimportexport)
+> - [Microsoft. bepillantások](#microsoftinsights)
+> - [Microsoft. IoTCentral](#microsoftiotcentral)
+> - [Microsoft. IoTSpaces](#microsoftiotspaces)
+> - [Microsoft. kulcstartó](#microsoftkeyvault)
+> - [Microsoft. Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
-> - [Microsoft.LabServices](#microsoftlabservices)
-> - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
-> - [Microsoft.LocationServices](#microsoftlocationservices)
-> - [Microsoft.Logic](#microsoftlogic)
-> - [Microsoft.MachineLearning](#microsoftmachinelearning)
-> - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
-> - [Microsoft.MachineLearningKísérletezation](#microsoftmachinelearningexperimentation)
-> - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
-> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
+> - [Microsoft. LabServices](#microsoftlabservices)
+> - [Microsoft. LocationBasedServices](#microsoftlocationbasedservices)
+> - [Microsoft. LocationServices](#microsoftlocationservices)
+> - [Microsoft. Logic](#microsoftlogic)
+> - [Microsoft. MachineLearning](#microsoftmachinelearning)
+> - [Microsoft. MachineLearningCompute](#microsoftmachinelearningcompute)
+> - [Microsoft. MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft. MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
+> - [Microsoft. MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
-> - [Microsoft.Karbantartás](#microsoftmaintenance)
-> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft.ManagedNetwork](#microsoftmanagednetwork)
-> - [Microsoft.ManagedServices](#microsoftmanagedservices)
-> - [Microsoft.Maps](#microsoftmaps)
-> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
-> - [Microsoft.Media](#microsoftmedia)
-> - [Microsoft.Microservices4Tavasz](#microsoftmicroservices4spring)
-> - [Microsoft.Áttelepítés](#microsoftmigrate)
-> - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft. Maintenance](#microsoftmaintenance)
+> - [Microsoft. ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft. ManagedNetwork](#microsoftmanagednetwork)
+> - [Microsoft. ManagedServices](#microsoftmanagedservices)
+> - [Microsoft. Maps](#microsoftmaps)
+> - [Microsoft. MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft. Media](#microsoftmedia)
+> - [Microsoft. Microservices4Spring](#microsoftmicroservices4spring)
+> - [Microsoft. Migrálás](#microsoftmigrate)
+> - [Microsoft. NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
-> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
-> - [Microsoft.ObjectStore](#microsoftobjectstore)
-> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Társviszony-létesítés](#microsoftpeering)
+> - [Microsoft. NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft. ObjectStore](#microsoftobjectstore)
+> - [Microsoft. OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft. peering](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
-> - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PortalSdk](#microsoftportalsdk)
-> - [Microsoft.PowerBI](#microsoftpowerbi)
-> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
-> - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
-> - [Microsoft.ProjectOxford](#microsoftprojectoxford)
-> - [Microsoft.ProviderHub](#microsoftproviderhub)
-> - [Microsoft.Quantum](#microsoftquantum)
-> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
-> - [Microsoft.RedHatOpenShift](#microsoftredhatopenshift)
-> - [Microsoft.Relay](#microsoftrelay)
-> - [Microsoft.ResourceGraph](#microsoftresourcegraph)
-> - [Microsoft.ResourceHealth](#microsoftresourcehealth)
-> - [Microsoft.Resources](#microsoftresources)
-> - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Keresés](#microsoftsearch)
-> - [Microsoft.Security](#microsoftsecurity)
-> - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
-> - [Microsoft.ServerManagement](#microsoftservermanagement)
+> - [Microsoft. Portal](#microsoftportal)
+> - [Microsoft. PortalSdk](#microsoftportalsdk)
+> - [Microsoft. PowerBI](#microsoftpowerbi)
+> - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft. ProjectBabylon](#microsoftprojectbabylon)
+> - [Microsoft. ProjectOxford](#microsoftprojectoxford)
+> - [Microsoft. ProviderHub](#microsoftproviderhub)
+> - [Microsoft. Quantum](#microsoftquantum)
+> - [Microsoft. Recoveryservices szolgáltatónál](#microsoftrecoveryservices)
+> - [Microsoft. RedHatOpenShift](#microsoftredhatopenshift)
+> - [Microsoft. Relay](#microsoftrelay)
+> - [Microsoft. ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft. ResourceHealth](#microsoftresourcehealth)
+> - [Microsoft. Resources](#microsoftresources)
+> - [Microsoft. SaaS](#microsoftsaas)
+> - [Microsoft. Search](#microsoftsearch)
+> - [Microsoft. Security](#microsoftsecurity)
+> - [Microsoft. SecurityInsights](#microsoftsecurityinsights)
+> - [Microsoft. ServerManagement](#microsoftservermanagement)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
-> - [Microsoft.ServiceFabric](#microsoftservicefabric)
-> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
-> - [Microsoft.Services](#microsoftservices)
-> - [Microsoft.SignalRService](#microsoftsignalrservice)
-> - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
-> - [Microsoft.Megoldások](#microsoftsolutions)
+> - [Microsoft. ServiceFabric](#microsoftservicefabric)
+> - [Microsoft. ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Microsoft. Services](#microsoftservices)
+> - [Microsoft. SignalRService](#microsoftsignalrservice)
+> - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
+> - [Microsoft. Solutions](#microsoftsolutions)
 > - [Microsoft.Sql](#microsoftsql)
-> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.SqlVM](#microsoftsqlvm)
+> - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft. SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
-> - [Microsoft.StorageCache](#microsoftstoragecache)
-> - [Microsoft.StorageSync](#microsoftstoragesync)
-> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
-> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
-> - [Microsoft.StorSimple](#microsoftstorsimple)
-> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
-> - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
-> - [Microsoft.Subscription](#microsoftsubscription)
-> - [microsoft.support](#microsoftsupport)
-> - [Microsoft.Synapse](#microsoftsynapse)
-> - [Microsoft.TerraformOSS](#microsoftterraformoss)
-> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft.Token](#microsofttoken)
-> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
-> - [microsoft.visualstudio](#microsoftvisualstudio)
-> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Microsoft.VnfManager](#microsoftvnfmanager)
-> - [Microsoft.VSOnline](#microsoftvsonline)
-> - [Microsoft.Web](#microsoftweb)
-> - [Microsoft.WindowsESU](#microsoftwindowsesu)
-> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
-> - [Microsoft.WorkloadFigyelő](#microsoftworkloadmonitor)
+> - [Microsoft. StorageCache](#microsoftstoragecache)
+> - [Microsoft. StorageSync](#microsoftstoragesync)
+> - [Microsoft. StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft. StorageSyncInt](#microsoftstoragesyncint)
+> - [Microsoft. StorSimple](#microsoftstorsimple)
+> - [Microsoft. StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft. StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
+> - [Microsoft. előfizetés](#microsoftsubscription)
+> - [Microsoft. support](#microsoftsupport)
+> - [Microsoft. szinapszis](#microsoftsynapse)
+> - [Microsoft. TerraformOSS](#microsoftterraformoss)
+> - [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft. token](#microsofttoken)
+> - [Microsoft. VirtualMachineImages](#microsoftvirtualmachineimages)
+> - [Microsoft. VisualStudio](#microsoftvisualstudio)
+> - [Microsoft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft. VnfManager](#microsoftvnfmanager)
+> - [Microsoft. VSOnline](#microsoftvsonline)
+> - [Microsoft. Web](#microsoftweb)
+> - [Microsoft. WindowsESU](#microsoftwindowsesu)
+> - [Microsoft. WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft. WorkloadMonitor](#microsoftworkloadmonitor)
 
-## <a name="microsoftaad"></a>Microsoft.AAD
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | tartományi szolgáltatások | Nem | Nem |
-
-## <a name="microsoftaadiam"></a>microsoft.aadiam
+## <a name="microsoftaad"></a>Microsoft. HRE
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Bérlők | Nem | Nem |
+> | domainservices | Nem | Nem |
 
-## <a name="microsoftadvisor"></a>Microsoft.Advisor
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Konfigurációk | Nem | Nem |
-> | Ajánlások | Nem | Nem |
-> | elnyomások | Nem | Nem |
-
-## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+## <a name="microsoftaadiam"></a>Microsoft. aadiam
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | műveletszabályok | Igen | Igen |
+> | bérlők | Nem | Nem |
+
+## <a name="microsoftadvisor"></a>Microsoft. Advisor
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | konfigurációk | Nem | Nem |
+> | javaslatok | Nem | Nem |
+> | fóliakondenzát | Nem | Nem |
+
+## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | actionrules | Igen | Igen |
 > | riasztások | Nem | Nem |
-> | riasztások összegzése | Nem | Nem |
+> | alertssummary | Nem | Nem |
 > | smartdetectoralertrules | Igen | Igen |
 
-## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
+## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Szerverek | Igen | Igen |
+> | kiszolgálók | Igen | Igen |
 
-## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
+## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -230,188 +230,188 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | szolgáltatás | Igen | Igen |
 
 > [!IMPORTANT]
-> Egy API Management szolgáltatás, amely be van állítva a felhasználás termékváltozat nem lehet áthelyezni.
+> Nem helyezhető át olyan API Management szolgáltatás, amely a felhasználási SKU-ra van beállítva.
 
-## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | konfigurációs üzletek | Igen | Igen |
-
-## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
+## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Tavaszi | Igen | Igen |
+> | configurationstores | Igen | Igen |
 
-## <a name="microsoftappservice"></a>Microsoft.AppService
+## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | Spring | Igen | Igen |
+
+## <a name="microsoftappservice"></a>Microsoft. AppService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | apiapps | Nem | Nem |
-> | alkalmazásazonosítók | Nem | Nem |
-> | Átjárók | Nem | Nem |
+> | appidentities | Nem | Nem |
+> | átjárók | Nem | Nem |
 
 > [!IMPORTANT]
-> Lásd: [App Service move útmutató](./move-limitations/app-service-move-limitations.md).
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checkaccess (hozzáférés) | Nem | Nem |
+> | CheckAccess | Nem | Nem |
 > | denyassignments | Nem | Nem |
-> | findorphanrolehozzárendelések | Nem | Nem |
-> | Zárak | Nem | Nem |
-> | Engedélyek | Nem | Nem |
-> | házirend-hozzárendelések | Nem | Nem |
-> | politikai definíciók | Nem | Nem |
+> | findorphanroleassignments | Nem | Nem |
+> | zárak | Nem | Nem |
+> | engedélyek | Nem | Nem |
+> | policyassignments | Nem | Nem |
+> | policydefinitions | Nem | Nem |
 > | policysetdefinitions | Nem | Nem |
-> | szerepkör-hozzárendelések | Nem | Nem |
+> | RoleAssignments | Nem | Nem |
 > | roleassignmentsusagemetrics | Nem | Nem |
-> | szerepkör-meghatározások | Nem | Nem |
+> | roledefinitions | Nem | Nem |
 
-## <a name="microsoftautomation"></a>Microsoft.Automation
+## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | automationaccounts | Igen | Igen |
-> | automationaccounts / konfigurációk | Igen | Igen |
-> | automationaccounts / runbookok | Igen | Igen |
+> | automationaccounts/konfigurációk | Igen | Igen |
+> | automationaccounts/runbookok | Igen | Igen |
 
 > [!IMPORTANT]
-> A Runbookoknak ugyanabban az erőforráscsoportban kell létezniük, mint az Automation-fióknak.
+> A runbookok ugyanabban az erőforráscsoporthoz kell tartoznia, mint az Automation-fióknak.
 
-## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | b2ckönyvtárak | Igen | Igen |
-
-## <a name="microsoftazuredata"></a>Microsoft.AzureData
+## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | hibridadat-kezelők | Nem | Nem |
-> | postgresinstances (postgresinstances) | Nem | Nem |
+> | b2cdirectories | Igen | Igen |
+
+## <a name="microsoftazuredata"></a>Microsoft. AzureData
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | hybriddatamanagers | Nem | Nem |
+> | postgresinstances | Nem | Nem |
 > | sqlinstances | Nem | Nem |
 > | sqlserverregistrations | Igen | Igen |
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Regisztrációk | Igen | Igen |
+> | regisztrációk | Igen | Igen |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kötegszámlák | Igen | Igen |
+> | batchaccounts | Igen | Igen |
 
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
+## <a name="microsoftbatchai"></a>Microsoft. BatchAI
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Klaszterek | Nem | Nem |
-> | fájlkiszolgálók | Nem | Nem |
-> | Munkahelyek | Nem | Nem |
+> | fürtök | Nem | Nem |
+> | fileservers | Nem | Nem |
+> | feladatok | Nem | Nem |
 > | munkaterületek | Nem | Nem |
 
-## <a name="microsoftbilling"></a>Microsoft.Számlázás
+## <a name="microsoftbilling"></a>Microsoft. számlázás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | számlázási időszakok | Nem | Nem |
-> | számlázási engedélyek | Nem | Nem |
-> | billingrolehozzárendelések | Nem | Nem |
+> | billingperiods | Nem | Nem |
+> | billingpermissions | Nem | Nem |
+> | billingroleassignments | Nem | Nem |
 > | billingroledefinitions | Nem | Nem |
 > | createbillingroleassignment | Nem | Nem |
 
-## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
+## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | mapapis | Nem | Nem |
 
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
+## <a name="microsoftbiztalkservices"></a>Microsoft. BizTalkServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | biztalk | Nem | Nem |
 
-## <a name="microsoftblockchain"></a>Microsoft.Blockchain
+## <a name="microsoftblockchain"></a>Microsoft. Blockchain
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | blockchainmembers | Nem | Nem |
-> | kordonok | Nem | Nem |
+> | cordamembers | Nem | Nem |
 > | Watchers | Nem | Nem |
 
-## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+## <a name="microsoftblockchaintokens"></a>Microsoft. BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tokenszolgáltatások | Nem | Nem |
+> | tokenservices | Nem | Nem |
 
-## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+## <a name="microsoftblueprint"></a>Microsoft. Blueprint
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | blueprintassignments | Nem | Nem |
-> | Tervrajz | Nem | Nem |
+> | tervrajzok | Nem | Nem |
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | botservices (botservices) | Igen | Igen |
-
-## <a name="microsoftcache"></a>Microsoft.Cache
+## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | redis között | Igen | Igen |
+> | botservices | Igen | Igen |
+
+## <a name="microsoftcache"></a>Microsoft. cache
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | Redis | Igen | Igen |
 
 > [!IMPORTANT]
-> Ha az Azure Cache for Redis-példány egy virtuális hálózattal van konfigurálva, a példány nem helyezhető át egy másik előfizetésbe. Lásd: [Hálózati áthelyezési korlátozások](./move-limitations/networking-move-limitations.md).
+> Ha az Azure cache for Redis-példány virtuális hálózattal van konfigurálva, a példány nem helyezhető át egy másik előfizetésbe. Lásd: [hálózati áthelyezési korlátozások](./move-limitations/networking-move-limitations.md).
 
-## <a name="microsoftcdn"></a>Microsoft.Cdn
+## <a name="microsoftcdn"></a>Microsoft. CDN
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | Igen | Igen |
-> | Profilok | Igen | Igen |
-> | profilok / végpontok | Igen | Igen |
+> | profilok | Igen | Igen |
+> | profilok/végpontok | Igen | Igen |
 
-## <a name="microsoftcertificateregistration"></a>Microsoft.Tanúsítványregisztráció
+## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tanúsítványok sorrendjed | Igen | Igen |
+> | tanúsítványrendelések | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [App Service move útmutató](./move-limitations/app-service-move-limitations.md).
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -419,41 +419,41 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tartománynevek | Igen | Nem |
-> | virtuális gépek | Igen | Nem |
+> | virtualmachines | Igen | Nem |
 
 > [!IMPORTANT]
-> Lásd: [Klasszikus üzembe helyezési útmutató.](./move-limitations/classic-model-move-limitations.md) Klasszikus üzembe helyezési erőforrások áthelyezhetők az előfizetések között az adott forgatókönyvre jellemző művelettel.
+> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
 
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | networksecuritygroups | Nem | Nem |
-> | tartalékdipok | Nem | Nem |
-> | virtuális hálózatok | Nem | Nem |
+> | reservedips | Nem | Nem |
+> | virtualnetworks | Nem | Nem |
 
 > [!IMPORTANT]
-> Lásd: [Klasszikus üzembe helyezési útmutató.](./move-limitations/classic-model-move-limitations.md) Klasszikus üzembe helyezési erőforrások áthelyezhetők az előfizetések között az adott forgatókönyvre jellemző művelettel.
+> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
 
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tárolók | Igen | Nem |
+> | storageaccounts | Igen | Nem |
 
 > [!IMPORTANT]
-> Lásd: [Klasszikus üzembe helyezési útmutató.](./move-limitations/classic-model-move-limitations.md) Klasszikus üzembe helyezési erőforrások áthelyezhetők az előfizetések között az adott forgatókönyvre jellemző művelettel.
+> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
 
-## <a name="microsoftcognition"></a>Microsoft.Megismerés
+## <a name="microsoftcognition"></a>Microsoft. Cognition
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | syntheticsaccounts | Nem | Nem |
 
-## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
+## <a name="microsoftcognitiveservices"></a>Microsoft. CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -465,612 +465,612 @@ Ugrás erőforrásszolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | elérhetőségi készletek | Igen | Igen |
-> | lemeztitkosítási készletek | Nem | Nem |
-> | Lemezek | Igen | Igen |
-> | Galériák | Nem | Nem |
-> | galériák / képek | Nem | Nem |
-> | galériák / képek / verziók | Nem | Nem |
-> | gazdacsoportok | Nem | Nem |
-> | gazdacsoportok / állomások | Nem | Nem |
+> | availabilitysets | Igen | Igen |
+> | diskencryptionsets | Nem | Nem |
+> | lemezek | Igen | Igen |
+> | katalógusok | Nem | Nem |
+> | galériák/lemezképek | Nem | Nem |
+> | galériák/lemezképek/verziók | Nem | Nem |
+> | hostgroups | Nem | Nem |
+> | hostgroups/gazdagépek | Nem | Nem |
 > | images | Igen | Igen |
-> | közelségbehelyezési csoportok | Igen | Igen |
-> | restorepointcollections (visszaállítási pontgyűjtemények) | Nem | Nem |
+> | proximityplacementgroups | Igen | Igen |
+> | restorepointcollections | Nem | Nem |
 > | sharedvmextensions | Nem | Nem |
 > | sharedvmimages | Nem | Nem |
-> | sharedvmimages / verziók | Nem | Nem |
+> | sharedvmimages/verziók | Nem | Nem |
 > | pillanatképek | Igen | Igen |
-> | ssh nyilvános kulcsok | Nem | Nem |
-> | virtuális gépek | Igen | Igen |
-> | virtualmachines / kiterjesztések | Igen | Igen |
-> | virtualgép-mérlegek | Igen | Igen |
+> | sshpublickeys | Nem | Nem |
+> | virtualmachines | Igen | Igen |
+> | virtualmachines/bővítmények | Igen | Igen |
+> | virtualmachinescalesets | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [Virtuális gépek áthelyezési útmutató](./move-limitations/virtual-machines-move-limitations.md).
+> Lásd: [Virtual Machines áthelyezési útmutató](./move-limitations/virtual-machines-move-limitations.md).
 
-## <a name="microsoftconsumption"></a>Microsoft.Fogyasztás
+## <a name="microsoftconsumption"></a>Microsoft. felhasználás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | összesített költség | Nem | Nem |
-> | Egyenlegek | Nem | Nem |
-> | Költségvetések | Nem | Nem |
-> | Díjak | Nem | Nem |
-> | költségcímkék | Nem | Nem |
-> | Hitelek | Nem | Nem |
+> | aggregatedcost | Nem | Nem |
+> | elosztja | Nem | Nem |
+> | költségvetése | Nem | Nem |
+> | díjak | Nem | Nem |
+> | costtags | Nem | Nem |
+> | hitelek | Nem | Nem |
 > | események | Nem | Nem |
-> | Előrejelzések | Nem | Nem |
-> | Sok | Nem | Nem |
-> | Piacokon | Nem | Nem |
-> | műveleteredmények | Nem | Nem |
-> | művelet állapota | Nem | Nem |
-> | árlapok | Nem | Nem |
-> | Termékek | Nem | Nem |
-> | foglalásrészletei | Nem | Nem |
-> | foglalási ajánlások | Nem | Nem |
-> | fenntartásokummaries | Nem | Nem |
-> | foglalási tranzakciók | Nem | Nem |
+> | előrejelzések | Nem | Nem |
+> | számos | Nem | Nem |
+> | piacterek | Nem | Nem |
+> | operationresults | Nem | Nem |
+> | operationstatus | Nem | Nem |
+> | pricesheets | Nem | Nem |
+> | termékek | Nem | Nem |
+> | reservationdetails | Nem | Nem |
+> | reservationrecommendations | Nem | Nem |
+> | reservationsummaries | Nem | Nem |
+> | reservationtransactions | Nem | Nem |
 > | címkét | Nem | Nem |
-> | Bérlők | Nem | Nem |
-> | Feltételek | Nem | Nem |
-> | használatrészletei | Nem | Nem |
+> | bérlők | Nem | Nem |
+> | feltételek | Nem | Nem |
+> | UsageDetails | Nem | Nem |
 
-## <a name="microsoftcontainer"></a>Microsoft.Container
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | tárolócsoportok | Nem | Nem |
-
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainer"></a>Microsoft. Container
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tárolócsoportok | Nem | Nem |
+> | containergroups | Nem | Nem |
+
+## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | containergroups | Nem | Nem |
 > | serviceassociationlinks | Nem | Nem |
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Nyilvántartások | Igen | Igen |
-> | nyilvántartások / ügynöki poolok | Nem | Nem |
-> | nyilvántartások / buildfeladatok | Igen | Igen |
-> | nyilvántartások / replikációk | Igen | Igen |
-> | nyilvántartások / feladatfuttatások | Igen | Igen |
-> | nyilvántartások / feladatok | Igen | Igen |
-> | nyilvántartások / webhookok | Igen | Igen |
+> | kibocsátásiegység | Igen | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/agentpools | Nem | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/buildtasks | Igen | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/replikálások | Igen | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/taskruns | Igen | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/feladatok | Igen | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/webhookok | Igen | Igen |
 
-## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
+## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | containerservices (tárolószolgáltatások) | Nem | Nem |
-> | kezelt klaszterek | Nem | Nem |
+> | containerservices | Nem | Nem |
+> | managedclusters | Nem | Nem |
 > | openshiftmanagedclusters | Nem | Nem |
 
-## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerátor
+## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Nem | Nem |
 
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
+## <a name="microsoftcortanaanalytics"></a>Microsoft. CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
-## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
+## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | riasztások | Nem | Nem |
-> | Költségvetések | Nem | Nem |
+> | költségvetése | Nem | Nem |
 > | összekötők | Igen | Igen |
 > | Méretek | Nem | Nem |
-> | Export | Nem | Nem |
-> | külső előfizetések | Nem | Nem |
+> | export | Nem | Nem |
+> | externalsubscriptions | Nem | Nem |
 > | forecast | Nem | Nem |
 > | lekérdezés | Nem | Nem |
-> | jelentési konfigurációk | Nem | Nem |
+> | reportconfigs | Nem | Nem |
 > | jelentések | Nem | Nem |
 > | showbackrules | Nem | Nem |
-> | Kilátás nyílik | Nem | Nem |
+> | kilátással | Nem | Nem |
 
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Csomópontok | Nem | Nem |
-
-## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
+## <a name="microsoftcustomerinsights"></a>Microsoft. CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Egyesületek | Nem | Nem |
-> | erőforrás-szolgáltatók | Igen | Igen |
+> | Hubs | Nem | Nem |
 
-## <a name="microsoftdatabox"></a>Microsoft.DataBox
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Munkahelyek | Nem | Nem |
-
-## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
+## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | databoxedgedevices (databoxedgedevices) | Nem | Nem |
+> | szövetségek | Nem | Nem |
+> | resourceproviders | Igen | Igen |
 
-## <a name="microsoftdatabricks"></a>Microsoft.Databricks
+## <a name="microsoftdatabox"></a>Microsoft. DataBox
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | feladatok | Nem | Nem |
+
+## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | databoxedgedevices | Nem | Nem |
+
+## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | munkaterületek | Nem | Nem |
 
-## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
+## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Katalógusok | Igen | Igen |
-> | adatkatalógusok | Nem | Nem |
+> | katalógusok | Igen | Igen |
+> | datacatalogs | Nem | Nem |
 
-## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | kapcsolatkezelők | Nem | Nem |
-
-## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
+## <a name="microsoftdataconnect"></a>Microsoft. DataConnect
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Csomagok | Nem | Nem |
-> | Tervek | Nem | Nem |
+> | connectionmanagers | Nem | Nem |
 
-## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
+## <a name="microsoftdataexchange"></a>Microsoft. DataExchange
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | adatgyárak | Igen | Igen |
-> | Gyárak | Igen | Igen |
+> | csomagok | Nem | Nem |
+> | tervek | Nem | Nem |
 
-## <a name="microsoftdatalake"></a>Microsoft.DataLake
+## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | datafactories | Igen | Igen |
+> | előállítók | Igen | Igen |
+
+## <a name="microsoftdatalake"></a>Microsoft. DataLake
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | datalakeaccounts | Nem | Nem |
 
-## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
+## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
-## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
+## <a name="microsoftdatalakestore"></a>Microsoft. Data Lake Store
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
-## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
+## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | services | Nem | Nem |
-> | szolgáltatások / projektek | Nem | Nem |
-> | Bővítőhely | Nem | Nem |
+> | szolgáltatások/projektek | Nem | Nem |
+> | bővítőhely | Nem | Nem |
 
-## <a name="microsoftdataprotection"></a>Microsoft.DataProtection
+## <a name="microsoftdataprotection"></a>Microsoft. DataProtection
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | backupvaults | Nem | Nem |
 
-## <a name="microsoftdatashare"></a>Microsoft.DataShare
+## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
-## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Szerverek | Igen | Igen |
+> | kiszolgálók | Igen | Igen |
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Szerverek | Igen | Igen |
-
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kiszolgálócsoportok | Nem | Nem |
-> | Szerverek | Igen | Igen |
-> | kiszolgálókv2 | Igen | Igen |
-> | singleservers (egykiszolgálós) | Igen | Igen |
+> | kiszolgálók | Igen | Igen |
 
-## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | műtermék-források | Igen | Igen |
-> | bevezetés | Igen | Igen |
-> | servicetopológiák | Igen | Igen |
-> | servicetopológiák / szolgáltatások | Igen | Igen |
-> | servicetopológiák / szolgáltatások / serviceunits | Igen | Igen |
+> | servergroups | Nem | Nem |
+> | kiszolgálók | Igen | Igen |
+> | serversv2 | Igen | Igen |
+> | singleservers | Igen | Igen |
+
+## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | artifactsources | Igen | Igen |
+> | kibocsátások | Igen | Igen |
+> | servicetopologies | Igen | Igen |
+> | servicetopologies/szolgáltatások | Igen | Igen |
+> | servicetopologies/szolgáltatások/serviceunits | Igen | Igen |
 > | lépések | Igen | Igen |
 
-## <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopVirtualization
+## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazáscsoportok | Nem | Nem |
+> | applicationgroups | Nem | Nem |
 > | hostpools | Nem | Nem |
 > | munkaterületek | Nem | Nem |
 
-## <a name="microsoftdevices"></a>Microsoft.Devices
+## <a name="microsoftdevices"></a>Microsoft. Devices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | rugalmaskészletek | Nem | Nem |
+> | elasticpools | Nem | Nem |
 > | elasticpools / iothubtenants | Nem | Nem |
 > | iothubs | Igen | Igen |
-> | kiépítési szolgáltatások | Igen | Igen |
+> | provisioningservices | Igen | Igen |
 
-## <a name="microsoftdevops"></a>Microsoft.DevOps
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Csővezetékek | Igen | Igen |
-
-## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
+## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Vezérlők | Igen | Igen |
+> | csővezetékek | Igen | Igen |
 
-## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | laborközpontok | Nem | Nem |
+> | tartományvezérlők | Igen | Igen |
+
+## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | labcenters | Nem | Nem |
 > | Labs | Igen | Nem |
-> | laborok / környezetek | Igen | Igen |
-> | laborok / servicerunners | Igen | Igen |
-> | laborok / virtualmachines | Igen | Nem |
-> | Menetrend | Igen | Igen |
+> | Labs/környezetek | Igen | Igen |
+> | Labor/servicerunners | Igen | Igen |
+> | Labor/virtualmachines | Igen | Nem |
+> | menetrend | Igen | Igen |
 
-## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
+## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | digitaltwinsinstances | Nem | Nem |
 
-## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | adatbázisfiókok | Igen | Igen |
+> | databaseaccounts | Igen | Igen |
 
-## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
+## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Tartományok | Igen | Igen |
+> | tartományok | Igen | Igen |
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | services | Igen | Igen |
 
-## <a name="microsofteventgrid"></a>Microsoft.EventGrid
+## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Tartományok | Igen | Igen |
-> | eventElőfizetések | Nem – nem helyezhető át egymástól függetlenül, de automatikusan áthelyezhető az előfizetett erőforrással. | Nem – nem helyezhető át egymástól függetlenül, de automatikusan áthelyezhető az előfizetett erőforrással. |
-> | eseményre jelentkezőket | Nem – nem helyezhető át egymástól függetlenül, de automatikusan áthelyezhető az előfizetett erőforrással. | Nem – nem helyezhető át egymástól függetlenül, de automatikusan áthelyezhető az előfizetett erőforrással. |
-> | extensiontopics (kiterjesztetttémakörök) | Nem | Nem |
-> | partnernévterek | Igen | Igen |
-> | partnerregisztrációk | Nem | Nem |
-> | partnertémakörök | Igen | Igen |
-> | rendszertémakörök | Igen | Igen |
-> | Témák | Igen | Igen |
+> | tartományok | Igen | Igen |
+> | eventSubscriptions | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. |
+> | eventsubscriptions | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. |
+> | extensiontopics | Nem | Nem |
+> | partnernamespaces | Igen | Igen |
+> | partnerregistrations | Nem | Nem |
+> | partnertopics | Igen | Igen |
+> | systemtopics | Igen | Igen |
+> | témakörök | Igen | Igen |
 
-## <a name="microsofteventhub"></a>Microsoft.EventHub
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Klaszterek | Igen | Igen |
-> | Névterek | Igen | Igen |
-
-## <a name="microsoftexperimentation"></a>Microsoft.Kísérletezés
+## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kísérleti munkaterek | Nem | Nem |
+> | fürtök | Igen | Igen |
+> | névterek | Igen | Igen |
 
-## <a name="microsoftfalcon"></a>Microsoft.Falcon
+## <a name="microsoftexperimentation"></a>Microsoft. kísérletezés
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Névterek | Igen | Igen |
+> | experimentworkspaces | Nem | Nem |
 
-## <a name="microsoftgenomics"></a>Microsoft.Genomics
+## <a name="microsoftfalcon"></a>Microsoft. Falcon
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | névterek | Igen | Igen |
+
+## <a name="microsoftgenomics"></a>Microsoft. genomika
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
-## <a name="microsoftguestconfiguration"></a>Microsoft.GuestKonfiguráció
+## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | automatikus annekt: | Nem | Nem |
-> | automatikusan felügyeltvmkonfigurációs profilok | Nem | Nem |
-> | vendégkonfigurációhozzárendelések | Nem | Nem |
-> | Szoftver | Nem | Nem |
+> | automanagedaccounts | Nem | Nem |
+> | automanagedvmconfigurationprofiles | Nem | Nem |
+> | guestconfigurationassignments | Nem | Nem |
+> | szoftver | Nem | Nem |
 > | softwareupdateprofile | Nem | Nem |
-> | szoftverfrissítések | Nem | Nem |
+> | softwareupdates | Nem | Nem |
 
-## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | hanainstances (hanainstances) | Nem | Nem |
-> | sapmonitorok | Igen | Igen |
-
-## <a name="microsofthdinsight"></a>Microsoft.HDInsight
+## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Klaszterek | Igen | Igen |
+> | hanainstances | Nem | Nem |
+> | sapmonitors | Igen | Igen |
+
+## <a name="microsofthdinsight"></a>Microsoft. HDInsight
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | fürtök | Igen | Igen |
 
 > [!IMPORTANT]
-> A HDInsight-fürtöket áthelyezheti egy új előfizetésbe vagy erőforráscsoportba. Azonban nem helyezheti át az előfizetések között a HDInsight-fürthöz (például a virtuális hálózathoz, a hálózati adapterhez vagy a terheléselosztóhoz) kapcsolódó hálózati erőforrásokat. Emellett nem helyezhet át egy új erőforráscsoportba a fürt virtuális gépéhez csatlakoztatott hálózati adaptert.
+> A HDInsight-fürtöket új előfizetésre vagy erőforráscsoporthoz helyezheti át. Azonban a HDInsight-fürthöz társított hálózati erőforrások (például a virtuális hálózat, a hálózati adapter vagy a terheléselosztó) nem helyezhetők át az előfizetésekben. Emellett a fürthöz tartozó virtuális géphez csatlakoztatott hálózati adapterek nem helyezhetők át egy új erőforráscsoporthoz.
 >
-> Amikor egy HDInsight-fürtöt új előfizetésbe helyez át, először helyezze át az egyéb erőforrásokat (például a tárfiókot). Ezután helyezze át a HDInsight-fürtöt.
+> Amikor új előfizetésre helyez át egy HDInsight-fürtöt, először helyezze át a többi erőforrást (például a Storage-fiókot). Ezután saját maga helyezheti át a HDInsight-fürtöt.
 
-## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
+## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | services | Igen | Igen |
 
-## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Gépek | Igen | Igen |
-> | gépek / kiterjesztések | Nem | Nem |
+> | gépek | Igen | Igen |
+> | gépek/bővítmények | Nem | Nem |
 
-## <a name="microsofthybriddata"></a>Microsoft.HybridData
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | adatkezelők | Igen | Igen |
-
-## <a name="microsofthydra"></a>Microsoft.Hydra
+## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Összetevők | Nem | Nem |
-> | hálózati hatókörök | Nem | Nem |
+> | datamanagers | Igen | Igen |
 
-## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Munkahelyek | Igen | Igen |
-
-## <a name="microsoftinsights"></a>microsoft.insights
+## <a name="microsofthydra"></a>Microsoft. Hydra
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | műveletcsoportok | Igen | Igen |
+> | összetevők | Nem | Nem |
+> | networkscopes | Nem | Nem |
+
+## <a name="microsoftimportexport"></a>Microsoft. ImportExport
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | feladatok | Igen | Igen |
+
+## <a name="microsoftinsights"></a>Microsoft. bepillantások
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | actiongroups | Igen | Igen |
 > | activitylogalerts | Nem | Nem |
-> | riasztási szabályok | Igen | Igen |
-> | automatikus méretezhető beállítások | Igen | Igen |
-> | Alapvonal | Nem | Nem |
-> | kiszámítottakiindulási | Nem | Nem |
-> | Összetevők | Igen | Igen |
-> | adatgyűjteményi szabályok | Nem | Nem |
-> | diagnosztikai beállítások | Nem | Nem |
-> | diagnosztikai beállításokkategóriák | Nem | Nem |
-> | eseménytípusok | Nem | Nem |
-> | kiterjesztett diagnosztikai beállítások | Nem | Nem |
-> | vendégdiagnosztikai beállítások | Nem | Nem |
-> | logdefinitions (logdefinitions) | Nem | Nem |
+> | alertrules | Igen | Igen |
+> | autoscalesettings | Igen | Igen |
+> | alapkonfiguráció | Nem | Nem |
+> | calculatebaseline | Nem | Nem |
+> | összetevők | Igen | Igen |
+> | datacollectionrules | Nem | Nem |
+> | diagnosticsettings | Nem | Nem |
+> | diagnosticsettingscategories | Nem | Nem |
+> | eventtypes | Nem | Nem |
+> | extendeddiagnosticsettings | Nem | Nem |
+> | guestdiagnosticsettings | Nem | Nem |
+> | logdefinitions | Nem | Nem |
 > | naplók | Nem | Nem |
-> | metrikus riasztások | Nem | Nem |
+> | metricalerts | Nem | Nem |
 > | metricbaselines | Nem | Nem |
-> | metrikus definíciók | Nem | Nem |
+> | metricdefinitions | Nem | Nem |
 > | metricnamespaces | Nem | Nem |
 > | metrics | Nem | Nem |
-> | munkakönyvek | Nem | Nem |
-> | értesítési csoportok | Nem | Nem |
+> | myworkbooks | Nem | Nem |
+> | notificationgroups | Nem | Nem |
 > | privatelinkscopes | Igen | Igen |
 > | scheduledqueryrules | Igen | Igen |
 > | topology | Nem | Nem |
 > | transactions | Nem | Nem |
 > | vminsightsonboardingstatuses | Nem | Nem |
-> | webtesztek | Igen | Igen |
+> | webteszteket | Igen | Igen |
 > | munkafüzetek | Igen | Igen |
-> | munkafüzetsablonok | Igen | Igen |
+> | workbooktemplates | Igen | Igen |
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy az új előfizetésre való áttérés nem haladja meg [az előfizetési kvótákat.](azure-subscription-service-limits.md#azure-monitor-limits)
+> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](azure-subscription-service-limits.md#azure-monitor-limits)
 
-## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
+## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | iotapps | Igen | Igen |
 
-## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
+## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | Igen | Igen |
-> | Grafikon | Igen | Igen |
+> | Graph | Igen | Igen |
 
-## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
+## <a name="microsoftkeyvault"></a>Microsoft. kulcstartó
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | hsmpoolok | Nem | Nem |
-> | Boltívek | Igen | Igen |
+> | hsmpools | Nem | Nem |
+> | boltívek | Igen | Igen |
 
 > [!IMPORTANT]
-> A lemeztitkosításhoz használt kulcstárolók nem helyezhetők át egy erőforráscsoportba ugyanabban az előfizetésben vagy előfizetések között.
+> A lemezes titkosításhoz használt kulcstartók nem helyezhetők át ugyanabba az előfizetésbe vagy előfizetésbe tartozó erőforráscsoporthoz.
 
-## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | csatlakoztatott klaszterek | Nem | Nem |
+> | connectedclusters | Nem | Nem |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Klaszterek | Igen | Igen |
+> | fürtök | Igen | Igen |
 
-## <a name="microsoftlabservices"></a>Microsoft.LabServices
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | laborszámlák | Nem | Nem |
-
-## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
+## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Nem | Nem |
+> | labaccounts | Nem | Nem |
 
-## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
+## <a name="microsoftlocationbasedservices"></a>Microsoft. LocationBasedServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlocationservices"></a>Microsoft. LocationServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | üzemeltetési környezetek | Nem | Nem |
-> | integrációs számlák | Igen | Igen |
-> | integrációsszolgáltatási környezetek | Igen | Nem |
-> | integrationserviceenvironments / managedapis | Igen | Nem |
-> | elszigetelt környezetek | Nem | Nem |
-> | Munkafolyamatok | Igen | Igen |
+> | fiókok | Nem | Nem |
 
-## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kötelezettségvállalási tervek | Nem | Nem |
-> | webszolgáltatások | Igen | Nem |
+> | hostingenvironments | Nem | Nem |
+> | integrationaccounts | Igen | Igen |
+> | integrationserviceenvironments | Igen | Nem |
+> | integrationserviceenvironments/król | Igen | Nem |
+> | isolatedenvironments | Nem | Nem |
+> | munkafolyamatok | Igen | Igen |
+
+## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | commitmentplans | Nem | Nem |
+> | WebServices | Igen | Nem |
 > | munkaterületek | Igen | Igen |
 
-## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
+## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | operationalizationklaszterek | Nem | Nem |
+> | operationalizationclusters | Nem | Nem |
 
-## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningKísérletezation
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | fiókok | Nem | Nem |
-> | számlák / munkaterületek | Nem | Nem |
-> | számlák / munkaterületek / projektek | Nem | Nem |
-> | csapatszámlák | Nem | Nem |
-> | teamaccounts / munkaterületek | Nem | Nem |
-> | teamaccounts / munkaterületek / projektek | Nem | Nem |
-
-## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
+> | fiókok/munkaterületek | Nem | Nem |
+> | fiókok/munkaterületek/projektek | Nem | Nem |
+> | teamaccounts | Nem | Nem |
+> | teamaccounts/munkaterületek | Nem | Nem |
+> | teamaccounts/munkaterületek/projektek | Nem | Nem |
 
-## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
+## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft. MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tárhelyszámlák | Nem | Nem |
+> | fiókok | Nem | Nem |
+
+## <a name="microsoftmachinelearningoperationalization"></a>Microsoft. MachineLearningOperationalization
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | hostingaccounts | Nem | Nem |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -1078,86 +1078,86 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | munkaterületek | Nem | Nem |
-> | munkaterületek / számítások | Nem | Nem |
+> | munkaterületek/számítások | Nem | Nem |
 
-## <a name="microsoftmaintenance"></a>Microsoft.Karbantartás
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | frissítések alkalmazása | Nem | Nem |
-> | konfigurációs hozzárendelések | Nem | Nem |
-> | karbantartási konfigurációk | Igen | Igen |
-> | Frissítések | Nem | Nem |
-
-## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
+## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Identitások | Nem | Nem |
+> | applyupdates | Nem | Nem |
+> | configurationassignments | Nem | Nem |
+> | maintenanceconfigurations | Igen | Igen |
+> | frissítések | Nem | Nem |
+
+## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | identitások | Nem | Nem |
 > | userassignedidentities | Nem | Nem |
 
-## <a name="microsoftmanagednetwork"></a>Microsoft.ManagedNetwork
+## <a name="microsoftmanagednetwork"></a>Microsoft. ManagedNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | menedzselt hálózatok | Nem | Nem |
-> | menedzselt hálózatok / menedzselt hálózati csoportok | Nem | Nem |
-> | managednetworks / managednetworkpeering policies | Nem | Nem |
+> | managednetworks | Nem | Nem |
+> | managednetworks / managednetworkgroups | Nem | Nem |
+> | managednetworks / managednetworkpeeringpolicies | Nem | Nem |
 > | értesítés | Nem | Nem |
 
-## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
+## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | regisztrációhozzárendelések | Nem | Nem |
-> | regisztrációs definíciók | Nem | Nem |
+> | registrationassignments | Nem | Nem |
+> | registrationdefinitions | Nem | Nem |
 
-## <a name="microsoftmaps"></a>Microsoft.Maps
+## <a name="microsoftmaps"></a>Microsoft. Maps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
-> | számlák / magánatlaszok | Igen | Igen |
+> | fiókok/privateatlases | Igen | Igen |
 
-## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
+## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | classicdevservices | Nem | Nem |
 
-## <a name="microsoftmedia"></a>Microsoft.Media
+## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | médiaszolgáltatások | Igen | Igen |
-> | mediaservices / élő események | Igen | Igen |
-> | mediaservices / streamingendpoints | Igen | Igen |
+> | Mediaservices | Igen | Igen |
+> | Mediaservices/liveevents | Igen | Igen |
+> | Mediaservices/streamingendpoints | Igen | Igen |
 
-## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Tavasz
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | alkalmazásfürtök | Nem | Nem |
-
-## <a name="microsoftmigrate"></a>Microsoft.Áttelepítés
+## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | értékelési projektek | Igen | Igen |
-> | projektek áttelepítése | Igen | Igen |
-> | movecollections (gyűjtők) | Nem | Nem |
-> | Projektek | Nem | Nem |
+> | appclusters | Nem | Nem |
 
-## <a name="microsoftnetapp"></a>Microsoft.NetApp
+## <a name="microsoftmigrate"></a>Microsoft. Migrálás
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | assessmentprojects | Igen | Igen |
+> | migrateprojects | Igen | Igen |
+> | movecollections | Nem | Nem |
+> | projektek | Nem | Nem |
+
+## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -1165,355 +1165,355 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | netappaccounts | Nem | Nem |
 > | netappaccounts / backuppolicies | Nem | Nem |
 > | netappaccounts / capacitypools | Nem | Nem |
-> | netappaccounts / capacitypools / kötetek | Nem | Nem |
-> | netappaccounts / capacitypools / kötetek / mounttargets | Nem | Nem |
-> | netappaccounts / capacitypools / kötetek / pillanatképek | Nem | Nem |
+> | netappaccounts/capacitypools/kötetek | Nem | Nem |
+> | netappaccounts/capacitypools/kötetek/mounttargets | Nem | Nem |
+> | netappaccounts/capacitypools/kötetek/Pillanatképek | Nem | Nem |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazásátjárók | Nem | Nem |
+> | applicationgateways | Nem | Nem |
 > | applicationgatewaywebapplicationfirewallpolicies | Nem | Nem |
-> | alkalmazásbiztonsági csoportok | Igen | Igen |
-> | azuretűzfalak | Igen | Igen |
-> | bástyaházigazdák | Nem | Nem |
-> | Kapcsolatok | Igen | Igen |
+> | applicationsecuritygroups | Igen | Igen |
+> | azurefirewalls | Igen | Igen |
+> | bastionhosts | Nem | Nem |
+> | kapcsolatok | Igen | Igen |
 > | ddoscustompolicies | Igen | Igen |
-> | ddosprotectionplans (ddosprotectionplans) | Nem | Nem |
-> | dnszones között | Igen | Igen |
-> | expresszroute-áramkörök | Nem | Nem |
-> | expresszroute-átjárók | Nem | Nem |
-> | tűzfalházirendek | Igen | Igen |
-> | elülső ajtók | Nem | Nem |
+> | ddosprotectionplans | Nem | Nem |
+> | dnszones | Igen | Igen |
+> | expressroutecircuits | Nem | Nem |
+> | expressroutegateways | Nem | Nem |
+> | firewallpolicies | Igen | Igen |
+> | frontdoors | Nem | Nem |
 > | frontdoorwebapplicationfirewallpolicies | Nem | Nem |
-> | ipcsoportok | Igen | Igen |
-> | terheléselosztók | Igen - Alapvető Termékváltozat<br>Nem - Szabványos Termékváltozat | Igen - Alapvető Termékváltozat<br>Nem - Szabványos Termékváltozat |
-> | localnetworkgateways (helyihálózati átjárók) | Igen | Igen |
+> | ipgroups | Igen | Igen |
+> | loadbalancers | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
+> | localnetworkgateways | Igen | Igen |
 > | natgateways | Igen | Igen |
-> | hálózati kísérletprofilok | Igen | Igen |
-> | hálózati szándékházirendek | Igen | Igen |
-> | hálózati interfészek | Igen | Igen |
-> | hálózati profilok | Nem | Nem |
+> | networkexperimentprofiles | Igen | Igen |
+> | networkintentpolicies | Igen | Igen |
+> | networkinterfaces | Igen | Igen |
+> | networkprofiles | Nem | Nem |
 > | networksecuritygroups | Igen | Igen |
-> | networkwatchers (hálózati figyelők) | Igen | Nem |
+> | networkwatchers | Igen | Nem |
 > | networkwatchers / connectionmonitors | Igen | Nem |
 > | networkwatchers / flowlogs | Igen | Nem |
 > | networkwatchers / pingmeshes | Igen | Nem |
 > | p2svpngateways | Nem | Nem |
-> | privatednszones (magándnszones) | Igen | Igen |
+> | privatednszones | Igen | Igen |
 > | privatednszones / virtualnetworklinks | Igen | Igen |
-> | privateendpointredirecttérképek | Nem | Nem |
-> | privateendpoints (magánvégpontok) | Igen | Igen |
+> | privateendpointredirectmaps | Nem | Nem |
+> | privateendpoints | Igen | Igen |
 > | privatelinkservices | Nem | Nem |
-> | nyilvános ipcímek | Igen - Alapvető Termékváltozat<br>Nem - Szabványos Termékváltozat | Igen - Alapvető Termékváltozat<br>Nem - Szabványos Termékváltozat |
-> | nyilvános ipprefixek | Igen | Igen |
-> | útvonalszűrők | Nem | Nem |
-> | routetables között | Igen | Igen |
-> | serviceendpointházirendek | Igen | Igen |
-> | trafficmanagerprofiles (trafficmanagerprofiles) | Igen | Igen |
-> | virtualhubok | Nem | Nem |
-> | virtuálishálózatok átjárói | Igen | Igen |
-> | virtuális hálózatok | Igen | Igen |
-> | virtuálishálózatok lehallgatása | Nem | Nem |
-> | virtualrouterek | Igen | Igen |
+> | nyilvános IP | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
+> | publicipprefixes | Igen | Igen |
+> | routefilters | Nem | Nem |
+> | routetables | Igen | Igen |
+> | serviceendpointpolicies | Igen | Igen |
+> | trafficmanagerprofiles | Igen | Igen |
+> | virtualhubs | Nem | Nem |
+> | virtualnetworkgateways | Igen | Igen |
+> | virtualnetworks | Igen | Igen |
+> | virtualnetworktaps | Nem | Nem |
+> | virtualrouters | Igen | Igen |
 > | virtualwans | Nem | Nem |
-> | vpngateways (Virtuális WAN) | Nem | Nem |
-> | vpnserverkonfigurációk | Nem | Nem |
-> | vpnsites (Virtuális WAN) | Nem | Nem |
+> | vpngateways (virtuális WAN) | Nem | Nem |
+> | vpnserverconfigurations | Nem | Nem |
+> | vpnsites (virtuális WAN) | Nem | Nem |
 > | webapplicationfirewallpolicies | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [Hálózati áthelyezési útmutató](./move-limitations/networking-move-limitations.md).
+> Lásd: [hálózati áthelyezési útmutató](./move-limitations/networking-move-limitations.md).
 
-## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
+## <a name="microsoftnotificationhubs"></a>Microsoft. NotificationHubs
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Névterek | Igen | Igen |
-> | névterek / értesítési központok | Igen | Igen |
+> | névterek | Igen | Igen |
+> | névterek/notificationhubs | Igen | Igen |
 
-## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
+## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | osnamespaces | Igen | Igen |
 
-## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
+## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Klaszterek | Nem | Nem |
-> | storageinsightconfigs (tárolóinsightconfigs) | Nem | Nem |
+> | fürtök | Nem | Nem |
+> | storageinsightconfigs | Nem | Nem |
 > | munkaterületek | Igen | Igen |
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy az új előfizetésre való áttérés nem haladja meg [az előfizetési kvótákat.](azure-subscription-service-limits.md#azure-monitor-limits)
+> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](azure-subscription-service-limits.md#azure-monitor-limits)
 
-## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | managementegyesületek | Nem | Nem |
-> | felügyeleti konfigurációk | Igen | Igen |
+> | managementassociations | Nem | Nem |
+> | managementconfigurations | Igen | Igen |
 > | megoldások | Igen | Igen |
-> | Kilátás nyílik | Igen | Igen |
+> | kilátással | Igen | Igen |
 
-## <a name="microsoftpeering"></a>Microsoft.Társviszony-létesítés
+## <a name="microsoftpeering"></a>Microsoft. peering
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | társviszony | Igen | Igen |
-> | társviszony-létesítési szolgáltatások | Nem | Nem |
+> | társviszonyok | Igen | Igen |
+> | peeringservices | Nem | Nem |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | politikai események | Nem | Nem |
-> | politikai állapotok | Nem | Nem |
-> | irányelvkövetett erőforrások | Nem | Nem |
-> | kármentesítések | Nem | Nem |
+> | policyevents | Nem | Nem |
+> | policystates | Nem | Nem |
+> | policytrackedresources | Nem | Nem |
+> | szervizelések | Nem | Nem |
 
-## <a name="microsoftportal"></a>Microsoft.Portal
+## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | irányítópultok | Igen | Igen |
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | rootresources (gyökérforrások) | Nem | Nem |
+> | rootresources | Nem | Nem |
 
-## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | munkaterületi gyűjtemények | Igen | Igen |
-
-## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Kapacitások | Igen | Igen |
+> | workspacecollections | Igen | Igen |
 
-## <a name="microsoftprojectbabylon"></a>Microsoft.ProjectBabylon
+## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Nem | Nem |
+> | kapacitások | Igen | Igen |
 
-## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
+## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
-## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
+## <a name="microsoftprojectoxford"></a>Microsoft. ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | bevezetés | Nem | Nem |
+> | fiókok | Nem | Nem |
 
-## <a name="microsoftquantum"></a>Microsoft.Quantum
+## <a name="microsoftproviderhub"></a>Microsoft. ProviderHub
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | kibocsátások | Nem | Nem |
+
+## <a name="microsoftquantum"></a>Microsoft. Quantum
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | munkaterületek | Nem | Nem |
 
-## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
+## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | backupprotecteditems (biztonsági mentésvédett elemek) | Nem | Nem |
-> | replikációra való jogosultság eredményei | Nem | Nem |
-> | Boltívek | Igen | Igen |
+> | backupprotecteditems | Nem | Nem |
+> | replicationeligibilityresults | Nem | Nem |
+> | boltívek | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [Recovery Services move guidance](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+> Lásd: [Recovery Services áthelyezési útmutató](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
-## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | openshiftklaszterek | Nem | Nem |
-
-## <a name="microsoftrelay"></a>Microsoft.Relay
+## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Névterek | Igen | Igen |
+> | openshiftclusters | Nem | Nem |
 
-## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Lekérdezések | Igen | Igen |
-
-## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
+## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | elérhetőségi állapotok | Nem | Nem |
-> | gyermekelérhetőségek | Nem | Nem |
-> | gyermekerőforrások | Nem | Nem |
+> | névterek | Igen | Igen |
+
+## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | lekérdezések | Igen | Igen |
+
+## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | availabilitystatuses | Nem | Nem |
+> | childavailabilitystatuses | Nem | Nem |
+> | childresources | Nem | Nem |
 > | események | Nem | Nem |
-> | Értesítések | Nem | Nem |
+> | értesítések | Nem | Nem |
 
-## <a name="microsoftresources"></a>Microsoft.Resources
+## <a name="microsoftresources"></a>Microsoft. Resources
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | központi telepítési parancsfájlok | Nem | Nem |
-> | Linkek | Nem | Nem |
+> | deploymentscripts | Nem | Nem |
+> | linkek | Nem | Nem |
 > | címkét | Nem | Nem |
 
-## <a name="microsoftsaas"></a>Microsoft.SaaS
+## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Igen | Nem |
 
-## <a name="microsoftsearch"></a>Microsoft.Keresés
+## <a name="microsoftsearch"></a>Microsoft. Search
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | keresési szolgáltatások | Igen | Igen |
+> | searchservices | Igen | Igen |
 
 > [!IMPORTANT]
-> Egy műveletben nem helyezhet át több keresési erőforrást különböző régiókban. Ehelyett helyezze át őket külön műveletekben.
+> Egy műveletben nem helyezhető át több keresési erőforrás különböző régiókban. Ehelyett külön műveletekben helyezze át őket.
 
-## <a name="microsoftsecurity"></a>Microsoft.Security
+## <a name="microsoftsecurity"></a>Microsoft. Security
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | adaptívhálózat-keményedések | Nem | Nem |
-> | advancedthreatprotectionbeállítások | Nem | Nem |
+> | adaptivenetworkhardenings | Nem | Nem |
+> | advancedthreatprotectionsettings | Nem | Nem |
 > | assessmentmetadata | Nem | Nem |
 > | értékelések | Nem | Nem |
-> | automatizálások | Igen | Igen |
-> | megfelelőségi eredmények | Nem | Nem |
-> | megfelelőségek | Nem | Nem |
-> | adatgyűjtő kataszka | Nem | Nem |
-> | eszközbiztonsági csoportok | Nem | Nem |
-> | információvédelmi politikák | Nem | Nem |
+> | automatizálások szabványának létrehozásában | Igen | Igen |
+> | complianceresults | Nem | Nem |
+> | felelésről | Nem | Nem |
+> | datacollectionagents | Nem | Nem |
+> | devicesecuritygroups | Nem | Nem |
+> | informationprotectionpolicies | Nem | Nem |
 > | iotsecuritysolutions | Igen | Igen |
-> | kiszolgálóbiztonsági értékelés | Nem | Nem |
+> | servervulnerabilityassessments | Nem | Nem |
 
-## <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
+## <a name="microsoftsecurityinsights"></a>Microsoft. SecurityInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Összesítései | Nem | Nem |
-> | riasztási szabályok | Nem | Nem |
-> | alertruletemplates (figyelmeztetési szabálysablonok) | Nem | Nem |
-> | Könyvjelzők | Nem | Nem |
-> | Esetekben | Nem | Nem |
-> | adatcsatlakozók | Nem | Nem |
-> | adatkapcsolat-ellenőrzési követelmények | Nem | Nem |
-> | Entitások | Nem | Nem |
-> | entitáslekérdezések | Nem | Nem |
-> | Események | Nem | Nem |
-> | hivatali beleegyezések | Nem | Nem |
+> | összesítések | Nem | Nem |
+> | alertrules | Nem | Nem |
+> | alertruletemplates | Nem | Nem |
+> | könyvjelzők | Nem | Nem |
+> | esetekben | Nem | Nem |
+> | dataconnectors | Nem | Nem |
+> | dataconnectorscheckrequirements | Nem | Nem |
+> | szervezetek | Nem | Nem |
+> | entityqueries | Nem | Nem |
+> | események | Nem | Nem |
+> | officeconsents | Nem | Nem |
 > | beállítások | Nem | Nem |
 
-## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
+## <a name="microsoftservermanagement"></a>Microsoft. ServerManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Átjárók | Nem | Nem |
-> | Csomópontok | Nem | Nem |
+> | átjárók | Nem | Nem |
+> | csomópontok | Nem | Nem |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Névterek | Igen | Igen |
+> | névterek | Igen | Igen |
 
-## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
+## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Nem | Nem |
-> | Klaszterek | Igen | Igen |
-> | fürtök / alkalmazások | Nem | Nem |
-> | tárolócsoportok | Nem | Nem |
-> | tárolócsoportok készletei | Nem | Nem |
-> | élhalmazok | Nem | Nem |
-> | kezelt klaszterek | Nem | Nem |
-> | Hálózatok | Nem | Nem |
-> | titkos üzletek | Nem | Nem |
+> | fürtök | Igen | Igen |
+> | fürtök/alkalmazások | Nem | Nem |
+> | containergroups | Nem | Nem |
+> | containergroupsets | Nem | Nem |
+> | edgeclusters | Nem | Nem |
+> | managedclusters | Nem | Nem |
+> | hálózatok | Nem | Nem |
+> | secretstores | Nem | Nem |
 > | volumes | Nem | Nem |
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Igen | Igen |
-> | tárolócsoportok | Nem | Nem |
-> | Átjárók | Igen | Igen |
-> | Hálózatok | Igen | Igen |
-> | Titkok | Igen | Igen |
+> | containergroups | Nem | Nem |
+> | átjárók | Igen | Igen |
+> | hálózatok | Igen | Igen |
+> | titkok | Igen | Igen |
 > | volumes | Igen | Igen |
 
-## <a name="microsoftservices"></a>Microsoft.Services
+## <a name="microsoftservices"></a>Microsoft. Services
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | bevezetés | Nem | Nem |
+> | kibocsátások | Nem | Nem |
 
-## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | jelző | Igen | Igen |
-
-## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
+## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | hibridhasználat előnyei | Nem | Nem |
+> | signalr | Igen | Igen |
 
-## <a name="microsoftsolutions"></a>Microsoft.Megoldások
+## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazásdefiníciók | Nem | Nem |
+> | hybridusebenefits | Nem | Nem |
+
+## <a name="microsoftsolutions"></a>Microsoft. Solutions
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | applicationdefinitions | Nem | Nem |
 > | alkalmazások | Nem | Nem |
 > | jitrequests | Nem | Nem |
 
@@ -1522,20 +1522,20 @@ Ugrás erőforrásszolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | példánykészlet | Nem | Nem |
-> | kezelt példányok | Nem | Nem |
-> | managedinstances / adatbázisok | Nem | Nem |
-> | Szerverek | Igen | Igen |
-> | szerverek / adatbázisok | Igen | Igen |
-> | szerverek / elaszator | Igen | Igen |
-> | szerverek / jobaccounts | Igen | Igen |
-> | szerverek / jobagents | Igen | Igen |
-> | virtuális klaszterek | Igen | Igen |
+> | instancepools | Nem | Nem |
+> | managedinstances | Nem | Nem |
+> | managedinstances/adatbázisok | Nem | Nem |
+> | kiszolgálók | Igen | Igen |
+> | kiszolgálók/adatbázisok | Igen | Igen |
+> | kiszolgálók/elasticpools | Igen | Igen |
+> | kiszolgálók/jobaccounts | Igen | Igen |
+> | kiszolgálók/jobagents | Igen | Igen |
+> | virtualclusters | Igen | Igen |
 
 > [!IMPORTANT]
-> Az adatbázisnak és a kiszolgálónak ugyanabban az erőforráscsoportban kell lennie. Sql-kiszolgáló áthelyezésekor az összes adatbázis átkerül. Ez a viselkedés az Azure SQL Database és az Azure SQL Data Warehouse adatbázisokra vonatkozik.
+> Az adatbázisnak és a kiszolgálónak ugyanabban az erőforráscsoporthoz kell tartoznia. Ha egy SQL Servert helyez át, az összes adatbázisa is át lesz helyezve. Ez a viselkedés Azure SQL Database és Azure SQL Data Warehouse adatbázisokra vonatkozik.
 
-## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
+## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -1543,7 +1543,7 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | sqlvirtualmachinegroups | Igen | Igen |
 > | sqlvirtualmachines | Igen | Igen |
 
-## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
+## <a name="microsoftsqlvm"></a>Microsoft. SqlVM
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -1555,44 +1555,44 @@ Ugrás erőforrásszolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tárolók | Igen | Igen |
+> | storageaccounts | Igen | Igen |
 
-## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Elrejt | Nem | Nem |
-
-## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
+## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | storagesyncservices (tárolószinkronizálási szolgáltatások) | Igen | Igen |
+> | gyorsítótárak | Nem | Nem |
 
-## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | storagesyncservices (tárolószinkronizálási szolgáltatások) | Nem | Nem |
-
-## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
+## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | storagesyncservices (tárolószinkronizálási szolgáltatások) | Nem | Nem |
+> | storagesyncservices | Igen | Igen |
 
-## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
+## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Vezetők | Nem | Nem |
+> | storagesyncservices | Nem | Nem |
 
-## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+## <a name="microsoftstoragesyncint"></a>Microsoft. StorageSyncInt
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | storagesyncservices | Nem | Nem |
+
+## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | kezelők | Nem | Nem |
+
+## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -1600,95 +1600,95 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | streamingjobs | Igen | Igen |
 
 > [!IMPORTANT]
-> A Stream Analytics-feladatok nem helyezhetők át futó állapotban.
+> Stream Analytics feladatok futási állapotban nem helyezhetők át.
 
-## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Környezetben | Nem | Nem |
-> | környezetek / eseményforrások | Nem | Nem |
-> | Példányok | Nem | Nem |
-> | példányok / környezetek | Nem | Nem |
-> | példányok / környezetek / eseményforrások | Nem | Nem |
-
-## <a name="microsoftsubscription"></a>Microsoft.Subscription
+## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | létrehozási előfizetés | Nem | Nem |
+> | környezetben | Nem | Nem |
+> | környezetek/eventsources | Nem | Nem |
+> | esetben | Nem | Nem |
+> | példányok/környezetek | Nem | Nem |
+> | példányok/környezetek/eventsources | Nem | Nem |
 
-## <a name="microsoftsupport"></a>microsoft.support
+## <a name="microsoftsubscription"></a>Microsoft. előfizetés
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | supportjegyek | Nem | Nem |
+> | createsubscription | Nem | Nem |
 
-## <a name="microsoftsynapse"></a>Microsoft.Synapse
+## <a name="microsoftsupport"></a>Microsoft. support
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | supporttickets | Nem | Nem |
+
+## <a name="microsoftsynapse"></a>Microsoft. szinapszis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | munkaterületek | Nem | Nem |
-> | munkaterületek / bigdatapoolok | Nem | Nem |
-> | munkaterületek / sqlpoolok | Nem | Nem |
+> | munkaterületek/bigdatapools | Nem | Nem |
+> | munkaterületek/sqlpools | Nem | Nem |
 
-## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
+## <a name="microsoftterraformoss"></a>Microsoft. TerraformOSS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | szolgáltatóregisztrációk | Nem | Nem |
+> | providerregistrations | Nem | Nem |
 > | resources | Nem | Nem |
 
-## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
+## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Környezetben | Igen | Igen |
-> | környezetek / eseményforrások | Igen | Igen |
-> | környezetek / referenciaadatkészletek | Igen | Igen |
+> | környezetben | Igen | Igen |
+> | környezetek/eventsources | Igen | Igen |
+> | környezetek/referencedatasets | Igen | Igen |
 
-## <a name="microsofttoken"></a>Microsoft.Token
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | Üzletek | Igen | Igen |
-
-## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
+## <a name="microsofttoken"></a>Microsoft. token
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | képsablonok | Nem | Nem |
+> | tárolja | Igen | Igen |
 
-## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
+## <a name="microsoftvirtualmachineimages"></a>Microsoft. VirtualMachineImages
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | imagetemplates | Nem | Nem |
+
+## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | account | Nem | Nem |
-> | számla / kiterjesztés | Igen | Igen |
-> | számla / projekt | Igen | Igen |
+> | fiók/bővítmény | Igen | Igen |
+> | fiók/projekt | Igen | Igen |
 
 > [!IMPORTANT]
-> Az Azure DevOps-előfizetés módosításáról a [számlázáshoz használt Azure-előfizetés módosítása](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)című témakörben
+> Az Azure DevOps-előfizetés módosításához tekintse meg [a számlázáshoz használt Azure-előfizetés módosítása](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)című témakört.
 
-## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | dedikált felhőnok | Nem | Nem |
-> | dedikáltfelhőszolgáltatások | Nem | Nem |
-> | virtuális gépek | Nem | Nem |
+> | dedicatedcloudnodes | Nem | Nem |
+> | dedicatedcloudservices | Nem | Nem |
+> | virtualmachines | Nem | Nem |
 
-## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
+## <a name="microsoftvnfmanager"></a>Microsoft. VnfManager
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -1696,63 +1696,63 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | eszközök | Nem | Nem |
 > | vnfs | Nem | Nem |
 
-## <a name="microsoftvsonline"></a>Microsoft.VSOnline
+## <a name="microsoftvsonline"></a>Microsoft. VSOnline
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
-> | Tervek | Igen | Igen |
+> | tervek | Igen | Igen |
 
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tanúsítványok | Nem | Igen |
-> | kapcsolatátjárók | Igen | Igen |
-> | Kapcsolatok | Igen | Igen |
-> | customapis (testreszabás) | Igen | Igen |
-> | üzemeltetési környezetek | Nem | Nem |
-> | kubekörnyezet | Igen | Igen |
+> | connectiongateways | Igen | Igen |
+> | kapcsolatok | Igen | Igen |
+> | customapis | Igen | Igen |
+> | hostingenvironments | Nem | Nem |
+> | kubeenvironments | Igen | Igen |
 > | kiszolgálófarmok | Igen | Igen |
-> | Helyek | Igen | Igen |
-> | oldalak / premieraddons | Igen | Igen |
-> | oldalak / bővítőhely | Igen | Igen |
-> | statikus helyek | Nem | Nem |
+> | helyek | Igen | Igen |
+> | helyek/premieraddons | Igen | Igen |
+> | helyek/bővítőhelyek | Igen | Igen |
+> | staticsites | Nem | Nem |
 
 > [!IMPORTANT]
-> Lásd: [App Service move útmutató](./move-limitations/app-service-move-limitations.md).
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
-## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | multipleactivationkeys (multipleactivationkeys) | Nem | Nem |
-
-## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
+## <a name="microsoftwindowsesu"></a>Microsoft. WindowsESU
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | eszközszolgáltatások | Nem | Nem |
+> | multipleactivationkeys | Nem | Nem |
 
-## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadFigyelő
+## <a name="microsoftwindowsiot"></a>Microsoft. WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Összetevők | Nem | Nem |
+> | deviceservices | Nem | Nem |
+
+## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
+> | ------------- | ----------- | ---------- |
+> | összetevők | Nem | Nem |
 > | monitorinstances | Nem | Nem |
-> | Monitorok | Nem | Nem |
-> | értesítési beállítások | Nem | Nem |
+> | figyeli | Nem | Nem |
+> | notificationsettings | Nem | Nem |
 
-## <a name="third-party-services"></a>Harmadik fél től származó szolgáltatások
+## <a name="third-party-services"></a>Harmadik féltől származó szolgáltatások
 
-A külső szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
+A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
 ## <a name="next-steps"></a>További lépések
-Az erőforrások áthelyezésére vonatkozó parancsokról az [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe (Erőforrások áthelyezése)](move-resource-group-and-subscription.md)témakörben található.
+Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 
-Ha ugyanazokat az adatokat szeretné beszerezni, mint a vesszővel tagolt értékek et, töltse le [a move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)fájlt.
+Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)fájlt.

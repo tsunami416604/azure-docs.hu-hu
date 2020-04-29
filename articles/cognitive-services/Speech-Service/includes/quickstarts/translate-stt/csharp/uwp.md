@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd-szöveg váltás, C# (UWP) – beszédszolgáltatás fordítása'
+title: 'Gyors útmutató: beszéd-szöveg fordítása, C# (UWP) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,59 +11,59 @@ ms.date: 04/04/2020
 ms.author: erhopf
 ms.topic: include
 ms.openlocfilehash: 62993b2e553630edd228228b4faa82de44997063
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671035"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-Most adja hozzá az XAML-kódot, amely meghatározza az alkalmazás felhasználói felületét, és adja hozzá a C# kód-mögötti implementációt.
+Most adja hozzá az alkalmazás felhasználói felületét meghatározó XAML-kódot, és adja hozzá a C#-kódot a megvalósítás mögött.
 
-1. A **Megoldáskezelőben**nyissa meg a programot. `MainPage.xaml`
+1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
 
-1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet `</Grid>`a **Rácscímkébe** (a kettő között `<Grid>` és):
+1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe `<Grid>` ( `</Grid>`és között):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml#StackPanel)]
 
-1. A **Megoldáskezelőben**nyissa meg a `MainPage.xaml.cs`mögötti kód forrásfájlt. (Ez alatt csoportosítva `MainPage.xaml`.)
+1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.)
 
-1. Cserélje le az összes benne lévő kódot a következő kódrészletre:
+1. Cserélje le az összes kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml.cs#code)]
 
-1. A `SpeechTranslationFromMicrophone_ButtonClicked` fájlkezelőben keresse meg `YourSubscriptionKey`a karakterláncot, és cserélje le az előfizetési kulcsra.
+1. A fájl `SpeechTranslationFromMicrophone_ButtonClicked` kezelőjében keresse meg a karakterláncot `YourSubscriptionKey`, és cserélje le az előfizetési kulcsra.
 
-1. A `SpeechTranslationFromMicrophone_ButtonClicked` kezelőben keresse `YourServiceRegion`meg a karakterláncot , és cserélje le az előfizetéshez társított [régióra.](~/articles/cognitive-services/Speech-Service/regions.md) (Például használja `westus` az ingyenes próba-előfizetéshez.)
+1. A `SpeechTranslationFromMicrophone_ButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceRegion`, és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . (Például használja `westus` az ingyenes próbaverziós előfizetést.)
 
-1. A módosítások mentéséhez válassza az > **Összes** **fájlmentése**lehetőséget a menüsorban.
+1. A menüsávban válassza a **fájl** > **Mentés** lehetőséget a módosítások mentéséhez.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Most már készen áll az alkalmazás megépítésére és tesztelésére.
+Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
-1. A menüsorban válassza **buildmegoldás összeállítása** > **az** alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a Build **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Az alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5)** billentyűt. Megjelenik **a helloworld** ablak.
+1. Az alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az F5 billentyűt). **F5** >  Megjelenik a **HelloWorld** ablak.
 
-   ![Minta UWP fordítási alkalmazás C# nyelven - rövid útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-speech-uwp-helloworld-window.png)
+   ![Minta UWP fordítási alkalmazás C#-ban – gyors útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-speech-uwp-helloworld-window.png)
 
-1. Válassza **a Mikrofon engedélyezése**lehetőséget, és amikor megjelenik a hozzáférési engedélykérelem, válassza az **Igen**lehetőséget.
+1. Válassza a **mikrofon engedélyezése**lehetőséget, és ha a hozzáférési engedély kérése megjelenik, válassza az **Igen**lehetőséget.
 
-   ![Mikrofonhozzáférési engedély kérése](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Mikrofon-hozzáférési engedély kérése](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Válassza **a Beszéd fordítása a mikrofonbemenetről**lehetőséget, és beszéljen egy angol kifejezést vagy mondatot az eszköz mikrofonjába. Az alkalmazás továbbítja a beszédet a beszéd szolgáltatás, amely lefordítja a beszéd szöveget egy másik nyelven (ebben az esetben, német). A beszédszolgáltatás elküldi a lefordított szöveget az alkalmazásnak, amely megjeleníti a fordítást az ablakban.
+1. **A mikrofon bemenetén válassza a beszéd fordítása**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. Az alkalmazás továbbítja a beszédet a Speech Service-nek, amely egy másik nyelven (ebben az esetben a német nyelven) szövegre fordítja a beszédet. A beszédfelismerési szolgáltatás visszaküldi a lefordított szöveget az alkalmazásnak, amely megjeleníti a fordítást az ablakban.
 
-   ![Beszédfordítás felhasználói felülete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-csharp-uwp-ui-result.png)
+   ![Beszéd fordítás felhasználói felülete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>További lépések
 

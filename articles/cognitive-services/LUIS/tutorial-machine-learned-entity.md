@@ -1,225 +1,225 @@
 ---
-title: 'Oktatóanyag: strukturált adatok kinyerése gépmegtanult entitással – LUIS'
-description: Strukturált adatok kinyerése egy utterance (kifejezés) a gép által megtanult entitás használatával. A kivonáspontosság növelése érdekében adjon hozzá alösszetevőket leírókkal és megkötésekkel.
+title: 'Oktatóanyag: strukturált adatok kinyerése géppel megtanult entitással – LUIS'
+description: Strukturált adatok kinyerése egy teljes körű használatból a géppel megtanult entitás használatával. A kinyerési pontosság növeléséhez adjon hozzá alösszetevőket és megkötéseket.
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545856"
 ---
-# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Oktatóanyag: Strukturált adatok kinyerése a felhasználói utterance (kifejezés) a gép által megtanult entitások nyelvi megértés (LUIS)
+# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Oktatóanyag: strukturált adatok kinyerése a felhasználóktól a számítógép által megtanult entitásokkal Language Understanding (LUIS)
 
-Ebben az oktatóanyagban a strukturált adatok kinyerése egy utterance (kifejezés) a gép által megtanult entitás használatával.
+Ebben az oktatóanyagban kinyerheti a strukturált adatokból való kinyerését a géppel megtanult entitás használatával.
 
-A gép megtanult entitás támogatja a [modell bomlási koncepció](luis-concept-model.md#v3-authoring-model-decomposition) azáltal, hogy alkomponens entitások azok leírók és korlátozások.
+A géppel megtanult entitás támogatja a [modell dekompozíciós fogalmát](luis-concept-model.md#v3-authoring-model-decomposition) azáltal, hogy alösszetevő entitásokat biztosít a leírókkal és korlátozásokkal.
 
 **Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Példaalkalmazás importálása
-> * Gépben tanult entitás hozzáadása
+> * Alkalmazás importálása – példa
+> * Gépi megtanult entitás hozzáadása
 > * Alösszetevő hozzáadása
 > * Alösszetevő leírójának hozzáadása
-> * Alkomponens megkötésének hozzáadása
+> * Alösszetevő korlátozásának hozzáadása
 > * Alkalmazás betanítása
-> * Teszt alkalmazás
+> * Alkalmazás tesztelése
 > * Alkalmazás közzététele
-> * Entitás-előrejelzés beszereznie a végpontból
+> * Entitások előrejelzésének beolvasása a végpontról
 
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
 
 
-## <a name="why-use-a-machine-learned-entity"></a>Miért érdemes gépileg megtanult entitást használni?
+## <a name="why-use-a-machine-learned-entity"></a>Miért érdemes gépi megtanult entitást használni?
 
-Ez az oktatóanyag egy gép által megtanult entitást ad hozzá egy utterance (kifejezés) adatok kinyerése.
+Ez az oktatóanyag egy géppel megtanult entitást vesz fel az adatok kinyeréséhez.
 
-Az entitás határozza meg az adatokat kinyerni az utterance (kifejezés) belül. Ez magában foglalja, hogy az adatok nevét, típusát (ha lehetséges), az adatok bármilyen felbontását, ha van kétértelműség, és a pontos szöveget, amely az adatokat alkotja.
+Az entitás a kinyerni kívánt adatok meghatározását határozza meg. Ebbe beletartozik az adatok nevének, típusának (ha lehetséges) megadása, az adatok bármilyen felbontása, ha kétértelmű, és az adatok pontos szövege.
 
-Az entitás meghatározásához létre kell hoznia az entitást, majd meg kell címkéznie az entitást képviselő szöveget a példa kimondott szövegben az összes leképezésen belül. Ezek a címkézett példák tanítják meg a LUIS-t, hogy mi az entitás, és hol található egy utterance (kifejezés).
+Az entitás definiálásához létre kell hoznia az entitást, majd fel kell címkéznie az entitást jelképező szöveget az összes szándékon belüli hosszúságú kimondott szöveg. Ezek a címkével ellátott példák megtanítják, hogy LUIS mit tartalmaz az entitás, és hol található a teljes leírás.
 
-## <a name="entity-decomposability-is-important"></a>A szervezet bomlása fontos
+## <a name="entity-decomposability-is-important"></a>Az entitások lebontása fontos
 
-Entitás bomlási fontos mind a szándék előrejelzése és az entitással történő adatkinyerés fontos.
+Az entitások lebontása mind a szándék-előrejelzés, mind az entitással végzett kinyerés szempontjából fontos.
 
-Kezdje egy gép által megtanult entitás, amely a kezdő és legfelső szintű entitás adatkinyerés. Ezután az entitást az ügyfélalkalmazás által szükséges részekre bomlik le.
+Kezdje egy géppel megtanult entitással, amely az kinyerés kezdetét és legfelső szintű entitása. Ezután az entitást az ügyfélalkalmazás által igényelt részekre kell bontani.
 
-Bár előfordulhat, hogy nem tudja, hogy milyen részletesen szeretné az entitást az alkalmazás indításakor, a legjobb gyakorlat az, hogy egy gép által megtanult entitással kezdi, majd az alkalmazás érlelődése során alösszetevőkkel bomlik le.
+Habár előfordulhat, hogy nem tudja, milyen részletesen szeretné kipróbálni az alkalmazást az alkalmazás megkezdése után, az ajánlott eljárás az, hogy egy géppel megtanult entitással induljon el, majd az alkalmazás által lebontott alösszetevőkkel együtt felbomlik.
 
-Ebben hozzon létre egy gép megtanult entitást egy pizzaalkalmazás rendelésének ábrázolásához. A parancsnak rendelkeznie kell minden olyan alkatrészt, ami a rendelés teljes beszivárgásához szükséges. Először is, az entitás kinyeri a rendeléssel kapcsolatos szöveget, kihúzva a méretet és a mennyiséget.
+Ebben az esetben létrehoz egy géppel megtanult entitást, amely egy pizza-alkalmazás rendelését jelöli. A sorrendnek tartalmaznia kell a rendelés fullfil szükséges összes részt. Az entitás elindításához a rendszer kinyeri a sorrendtel kapcsolatos szöveget, kihúzza a méretet és a mennyiséget.
 
-Egy utterance `Please deliver one large cheese pizza to me` (kifejezés) kell kivonat `one large cheese pizza` `1` a `large`sorrendben, majd kivonat és.
+`Please deliver one large cheese pizza to me` A `one large cheese pizza` kinyerés a sorrend szerint, majd a és `1` `large`a kibontása.
 
-Van további bomlás felveheti, mint például a létrehozása alkomponensek öntetek vagy kéreg. Az oktatóanyag után biztosnak kell lennie abban, `Order` hogy ezeket az alösszetevőket hozzáadja a meglévő entitáshoz.
+További bontást is hozzáadhat, például alösszetevőket hozhat létre a feltöltésekhez vagy a kéreghez. Az oktatóanyag után érdemes felvennie ezeket az alösszetevőket a meglévő `Order` entitásba.
 
-## <a name="import-example-json-to-begin-app"></a>Példát importálhat.json alkalmazás kezdéséhez
+## <a name="import-example-json-to-begin-app"></a>Importálja például a. JSON fájlt az alkalmazás megkezdéséhez
 
-1.  Töltse le és mentse az [alkalmazás JSON fájlt](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json).
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="label-text-as-entities-in-example-utterances"></a>Szöveg feliratozása entitásként a példa kimondott szövegekben
+## <a name="label-text-as-entities-in-example-utterances"></a>Szöveg címkéje entitásként például hosszúságú kimondott szöveg
 
-A pizzarendelés részleteinek kinyeréséhez hozzon `Order` létre egy legfelső szintű, gépáltal megtanult entitást.
+A pizza-sorrend részleteinek kinyeréséhez hozzon létre egy legfelső szintű `Order` , géppel megtanult entitást.
 
-1. A **Szándékok** lapon válassza ki az OrderPizza-leképezést. **OrderPizza**
+1. A **leképezések** lapon válassza ki a **OrderPizza** szándékot.
 
-1. A példa utterances listában válassza ki a következő utterance (kifejezés).
+1. A példa hosszúságú kimondott szöveg listán válassza ki a következő megjelölést.
 
-    |Rendelési példa utterance|
+    |Megrendelés – példa Kimondás|
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    Kezdje el a kijelölést közvetlenül a (#1) bal szélső szövege `pickup` előtt, majd lépjen túl a jobb szélső szövegen (#2 `anchovies` - ez befejezi a címkézési folyamatot). Megjelenik egy előugró menü. Az előugró mezőbe írja be az entitás `Order` nevét (#3). Ezután `Order - Create new entity` válasszon a listából (#4).
+    Először válassza a `pickup` (#1) bal szélső szövegét, majd a jobb szélső szövegnél ugorjon `anchovies` (#2 – ezzel véget ér a címkézési folyamat). Megjelenik egy előugró menü. Az előugró ablakban adja meg az entitás nevét `Order` (#3). Ezután válassza `Order - Create new entity` ki a listából (#4).
 
-    ![A teljes rendeléshez szükséges szöveg kezdő és záró felirata](media/tutorial-machine-learned-entity/mark-complete-order.png)
+    ![A szöveg elején és végén lévő felirat a teljes sorrendhez](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
     > [!NOTE]
-    > Egy entitás nem mindig lesz a teljes utterance (kifejezés). Ebben a konkrét `pickup` esetben azt jelzi, hogy a rendelés hogyan érkezik. Fogalmi szempontból `pickup` a rendelés címkézett entitásának részét kell, hogy vegye.
+    > Az entitások nem mindig a teljes Kimondás. Ebben a konkrét esetben a `pickup` rendelés fogadásának módját jelzi. Fogalmi szempontból `pickup` a megrendeléshez a címkével ellátott entitásnak kell tartoznia.
 
-1. Az **Entitástípus kiválasztása** mezőben válassza a **Struktúra hozzáadása** lehetőséget, majd a **Tovább**lehetőséget. A szerkezet szükséges az olyan alösszetevők hozzáadásához, mint a méret és a mennyiség.
+1. Az **entitás típusának kiválasztása** mezőben válassza a **struktúra hozzáadása** lehetőséget, majd válassza a **tovább**lehetőséget. Az alösszetevők, például a méret és a mennyiség hozzáadásához struktúra szükséges.
 
     ![Struktúra hozzáadása az entitáshoz](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. A **Gép tanult entitás létrehozása** párbeszédpanel **Struktúra mezőben** válassza a Hozzáadás `Size` lehetőséget, majd válassza az Enter lehetőséget.
-1. Leíró **descriptor**hozzáadásához jelölje ki `+` a **leírók** területen, majd kattintson **az Új kifejezéslista létrehozása**gombra.
+1. A **megtanult számítógép létrehozása** mezőben a **struktúra** mezőben adja meg a Hozzáadás `Size` elemet, majd válassza az ENTER billentyűt.
+1. **Leíró**hozzáadásához jelölje ki a elemet `+` **a leíró területen,** majd válassza az **új kifejezések listájának létrehozása**lehetőséget.
 
-1. Az **Új kifejezéslista létrehozása** mezőben adja `SizeDescriptor` meg a nevét, `medium`majd `large`írja be a következő értékeket: `small`, és . Amikor a **Javaslatok** mező kitöltődik, válassza a `extra large`és `xl`a lehetőséget. Az új kifejezéslista létrehozásához válassza a **Kész** lehetőséget.
+1. Az **új kifejezés létrehozása lista leíró** mezőjébe írja be a nevet `SizeDescriptor` , majd adja meg a `small`következőket `medium`:, `large`és. A **javaslatok** mező kitöltése után válassza `extra large`a és `xl`a elemet. Az új kifejezések listájának létrehozásához kattintson a **kész** gombra.
 
-    Ez a kifejezéslista-leíró segít az alösszetevőnek a `Size` mérethez kapcsolódó szavak keresésében azáltal, hogy példaszavakat ad. Ennek a listának nem kell minden méretű szót tartalmaznia, de tartalmaznia kell azokat a szavakat, amelyek várhatóan jelzik a méretet.
+    Ez a kifejezés-lista leírója segít az alösszetevőnek a `Size` mérettel kapcsolatos szavak megkeresésében, például szavakkal megadva. A listának nem kell tartalmaznia minden méret szót, de tartalmaznia kell azokat a szavakat, amelyek várhatóan a méretet jelzik.
 
-    ![A méret-alösszetevő leírójának létrehozása](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
+    ![Leíró létrehozása a méret alösszetevőhöz](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
 
-1. A **Gépmegtanult entitás létrehozása** ablakban válassza `Size` a **Létrehozás** lehetőséget az alösszetevő létrehozásának befejezéséhez.
+1. Az alösszetevő létrehozásának `Size` befejezéséhez a **Machine relearned Entity (gép létrehozása** ) ablakban válassza a **Létrehozás** lehetőséget.
 
-    Az `Order` `Size` összetevővel rendelkező entitás jön `Order` létre, de csak az entitás lett alkalmazva az utterance (kifejezés). Meg kell címkézni az `Size` entitás szövegét a példa utterance (kifejezés) felirat.
+    A `Order` rendszer létrehoz egy `Size` összetevővel rendelkező entitást, `Order` de csak az entitást alkalmazta a teljes értékre. Az `Size` entitás szövegét fel kell címkéznie a példában szereplő kifejezésre.
 
-1. Ugyanebben a példában az utterance `large` (kifejezés) felirata a **méret** alösszetevő kiválasztásával a szót, majd kiválasztja a **Méret** entitást a legördülő listából.
+1. Ugyanebben a példában a legördülő listából válassza ki a **kívánt méretet** , és `large` válassza ki a **méret** entitást.
 
-    ![Címkézze fel a szöveg et tartalmazó szöveg méretentitását.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
+    ![A méret entitás szövegként való címkézése.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
-    A sor tömör a szöveg alatt, mert mind a feliratozás, mind az előrejelzés egyezik, mert _a szöveget kifejezetten_ címkézte.
+    A sor a szöveg alatt szilárd, mert a címkézési és az előrejelzési egyezés is, mivel _explicit módon_ címkézte a szöveget.
 
-1. Címkézze `Order` fel az entitást a fennmaradó kimondott szövegben a méret entitással együtt. A szövegben lévő szögletes `Order` zárójelek `Size` a címkézett entitást és a benne lévő entitást jelzik.
+1. Címkézze fel `Order` az entitást a fennmaradó hosszúságú kimondott szöveg és a méret entitással együtt. A szöveg szögletes zárójelei a címkével ellátott `Order` entitást és a `Size` benne lévő entitást jelölik.
 
-    |Rendelési példa kimondott szöveg|
+    |Rendelési példa hosszúságú kimondott szöveg|
     |--|
     |`can i get [a pepperoni pizza and a can of coke] please`|
     |`can i get [a [small] pizza with onions peppers and olives]`|
     |`[delivery for a [small] pepperoni pizza]`|
     |`i need [2 [large] cheese pizzas 6 [large] pepperoni pizzas and 1 [large] supreme pizza]`|
 
-    ![Entitás és alösszetevők az összes fennmaradó példa utterances.](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
+    ![Az entitások és alösszetevők az összes többi példa hosszúságú kimondott szöveg legyenek.](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
 
     > [!CAUTION]
-    > Hogyan kezeli implikált adatok, mint például a levél `a` arra utal, hogy egy pizza? Vagy a `pickup` hiánya, és `delivery` jelzi, ahol a pizza várható? Vagy a méret hiánya jelzi az alapértelmezett mérete kicsi vagy nagy? Fontolja meg a hallgatólagos adatkezelés kezelése az üzleti szabályok részeként az ügyfélalkalmazásban a LUIS helyett vagy mellett.
+    > Hogyan kezelheti az olyan burkolt adategységeket, `a` mint például a levél egyetlen pizzát? Vagy a hiánya `pickup` , `delivery` illetve annak jelzése, hogy hol várható a pizza? Vagy egy méret hiánya, amely az alapértelmezett kis-vagy nagyméretet jelzi? A LUIS használata helyett vegye fontolóra a hallgatólagos adatkezelés kezelését az ügyfélalkalmazás üzleti szabályainak részeként.
 
-1. Az alkalmazás betanításához válassza a **Vonat**lehetőséget. A betanítás a módosításokat, például az új entitásokat és a címkézett utterances az aktív modell.
+1. Az alkalmazás betanításához válassza a **betanítás**lehetőséget. A képzés alkalmazza a módosításokat, például az új entitásokat és a címkével ellátott hosszúságú kimondott szöveg az aktív modellre.
 
-1. A betanítás után adjon hozzá egy új példa utterance (kifejezés) a szándékot, hogy milyen jól LUIS megérti a gép által megtanult entitás.
+1. A képzés után adjon hozzá egy új példát a szándékhoz, hogy megismerje, milyen jól ismeri el az LUIS a géppel megtanult entitást.
 
-    |Rendelési példa utterance|
+    |Megrendelés – példa Kimondás|
     |--|
     |`pickup XL meat lovers pizza`|
 
-    A teljes felső `Order` entitás van `Size` címkézve, és az alösszetevő is feliratozott pontozott vonalak.
+    Az általános felső entitás a `Order` címkével van ellátva `Size` , és az alösszetevő pontozott vonallal is címkézve van.
 
-    ![Új példa az entitással előrejelzett kimondott szöveg](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
+    ![Az entitással megjósolt új példa](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
     A pontozott vonal jelzi az előrejelzést.
 
-1. Ha az előrejelzést címkézett entitássá szeretné módosítani, jelölje ki a sort, majd válassza **az Entitás-előrejelzések megerősítése**lehetőséget.
+1. Ha módosítani szeretné az előrejelzést egy címkézett entitásra, válassza ki a sort, majd válassza az **entitások előrejelzésének megerősítése**lehetőséget.
 
-    ![Az előrejelzés elfogadása az entitás-előrejelzés megerősítése lehetőség kiválasztásával.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
+    ![Az entitások előrejelzésének megerősítése lehetőség választásával fogadja el az előrejelzést.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
 
-    Ezen a ponton a gép megtanult entitás működik, mert egy új példa utterance (kifejezés) az entitás t. Példautterances hozzáadásakor, ha az entitás nem előre jelzett megfelelően, címkézze az entitás és az alösszetevők. Ha az entitás előre jelzett helyesen, győződjön meg arról, hogy erősítse meg az előrejelzéseket.
+    Ezen a ponton a gép által megtanult entitás működik, mert az új példán belül megtalálja az entitást. Ha például hosszúságú kimondott szöveg ad hozzá, ha az entitás nem megfelelően van előre jelezve, címkézze fel az entitást és az alösszetevőket. Ha az entitás előre jelezve van, ügyeljen arra, hogy erősítse meg az előrejelzéseket.
 
-## <a name="add-prebuilt-number-to-help-extract-data"></a>Előre összeállított szám hozzáadása az adatok kinyeréséhez
+## <a name="add-prebuilt-number-to-help-extract-data"></a>Előre elkészített szám hozzáadása az adatok kinyeréséhez
 
-A rendelési adatoknak tartalmazniuk kell azt is, hogy egy cikk hány van a sorrendben, például hány pizza. Ezek az adatok kinyeréséhez egy új, gép `Order` megtanult alösszetevőt kell hozzáadni, és az összetevőnek egy előre összeállított szám megkötésére van szüksége. Ha az entitást egy előre összeállított számra korlátozza, az entitás megfogja `2`találni és `two`kinyeri a számokat, függetlenül attól, hogy a szöveg számjegy, vagy szöveg.
+A rendelési információnak tartalmaznia kell azt is, hogy hány elem van a sorrendben, például hogy hány pizzát tartalmaz. Az adatok kinyeréséhez új, géppel megismert alösszetevőt kell hozzáadni, `Order` és az összetevőnek előre elkészített számra vonatkozó korlátozást kell tartalmaznia. Az entitás egy előre elkészített számra való korlátozásával az entitás megkeresi és Kinyeri a számokat, hogy a szöveg `2`számjegyből, vagy `two`szövegből áll-e.
 
-Kezdje azzal, hogy hozzáadja az előre összeállított számentitást az alkalmazáshoz.
+Először adja hozzá az előre elkészített szám entitást az alkalmazáshoz.
 
-1. Válassza az **Entitások lehetőséget** a bal oldali menüből, majd válassza **az + Előre összeállított entitás hozzáadása**lehetőséget .
+1. Válassza az **entitások** lehetőséget a bal oldali menüben, majd válassza az **+ előre összeépített entitás hozzáadása**elemet.
 
-1. Az **Előre összeállított entitások hozzáadása** mezőben keresse meg és válassza ki a **számot,** majd válassza a **Kész**lehetőséget.
+1. Az **előre létrehozott entitások hozzáadása** mezőben keresse meg és válassza a **szám** lehetőséget, majd válassza a **kész**lehetőséget.
 
-    ![Előre összeállított entitás hozzáadása](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
+    ![Előre összeépített entitás hozzáadása](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
 
-    Az előre összeállított entitás hozzáadódik az alkalmazáshoz, de még nem megkötés.
+    Az előre összeépített entitás hozzá van adva az alkalmazáshoz, de még nem megkötés.
 
-## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Kényszerrel rendelkező alösszetevő létrehozása az adatok kinyeréséhez
+## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Alösszetevő entitás létrehozása korlátozással az adatok kinyerése érdekében
 
-Az `Order` entitásnak `Quantity` rendelkeznie kell egy alösszetevővel annak meghatározásához, hogy egy cikk hány cikk van a sorrendben. A mennyiséget egy számra kell korlátozni, hogy a kinyert adatok azonnal elérhetők legyenek az ügyfélalkalmazás számára név szerint.
+Az `Order` entitásnak rendelkeznie kell `Quantity` egy alösszetevővel annak meghatározásához, hogy hány elem van a sorrendben. A mennyiséget korlátozni kell egy számra, hogy a kinyert mennyiség azonnal elérhető legyen az ügyfélalkalmazás számára.
 
-A megkötés szövegegyezésként kerül alkalmazásra, vagy pontos egyezéssel (például listaentitással), vagy reguláris kifejezéseken (például reguláris kifejezésentitáson vagy előre összeállított entitáson) keresztül.
+A rendszer a megkötést szöveges egyeztetésként alkalmazza, vagy pontos egyezéssel (például lista entitással) vagy reguláris kifejezésekkel (például egy reguláris kifejezéssel vagy egy előre elkészített entitással).
 
-Megkötés használatával csak a megkötésnek megfelelő szöveg lesz kibontva.
+A megkötés használatával csak a megkötésnek megfelelő szöveg lesz kibontva.
 
-1. Válassza **az Entitások lehetőséget,** majd válassza ki az `Order` entitást.
-1. Válassza a **+ Összetevő hozzáadása lehetőséget,** majd írja be a nevet, `Quantity` majd válassza az Enter lehetőséget az új alösszetevő `Order` entitáshoz való hozzáadásához.
-1. A sikerességi értesítés után a **Speciális beállítások**párbeszédpanelen válassza a Kényszer ceruzát.
-1. A legördülő listában válassza ki az előre összeállított számot.
+1. Válassza az **entitások** lehetőséget `Order` , majd válassza ki az entitást.
+1. Válassza az **+ összetevő hozzáadása** lehetőséget, majd `Quantity` adja meg a nevet, majd válassza az ENTER billentyűt `Order` az új alösszetevő az entitáshoz való hozzáadásához.
+1. A sikeres értesítés után a **Speciális beállítások**között válassza ki a megkötési ceruza elemet.
+1. A legördülő listában válassza ki az előre elkészített számot.
 
-    ![Előre összeállított számmal rendelkező mennyiségi entitás létrehozása megszorításként.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
+    ![Előre elkészített számmal rendelkező mennyiségi entitás létrehozása korlátozásként.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
-    Az `Quantity` entitás akkor kerül alkalmazásra, ha a szöveg megegyezik az előre összeállított számentitással.
+    Az `Quantity` entitás akkor lesz alkalmazva, ha a szöveg megegyezik az előre elkészített szám entitással.
 
-    A megkötéssel rendelkező entitás létrejön, de még nem alkalmazva a példa kimondott szövegre.
+    A korlátozással rendelkező entitás létrejött, de még nincs alkalmazva a példában szereplő hosszúságú kimondott szöveg.
 
     > [!NOTE]
-    > Egy alösszetevő legfeljebb 5 szintbe ágyazható be egy alösszetevőbe. Bár ez nem jelenik meg ebben a cikkben, a portálról és az API-ból érhető el.
+    > Egy alösszetevő legfeljebb 5 szintre ágyazható be egy alösszetevőn belül. Habár ez nem jelenik meg ebben a cikkben, a Portálon és az API-ban is elérhető.
 
-## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Címke példa utterance s teach LUIS az entitásról
+## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Az entitással kapcsolatos LUIS tanítása – példa a kifejezésre
 
-1. Válassza **a szándékok** a bal oldali navigációs, majd válassza ki a **OrderPizza** szándékot. A következő kimondott szövegben a három szám van `Order` címkézve, de vizuálisan az entitássor alatt vannak. Ez az alacsonyabb szint azt jelenti, hogy az `Order` entitások megtalálhatók, de nem tekinthetők a gazdálkodó egység részének.
+1. Válassza ki a bal oldali navigációs listából a **szándékot** , majd válassza ki a **OrderPizza** szándékát. A következő hosszúságú kimondott szöveg lévő három szám a címkével van ellátva, de vizuálisan az `Order` Entity (entitás) sorban látható. Ez az alacsonyabb szint azt jelenti, hogy az entitások találhatók, de nem minősülnek az `Order` entitás részének.
 
-    ![Az előre összeállított szám megtalálható, de még nem része a Rendelés entitásnak.](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
+    ![A rendszer előre elkészített számot talált, de még nem veszi figyelembe a megrendelési entitást.](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
 
-1. Címkézze fel `Quantity` a számokat `2` az entitással a `Quantity` példa utterance (kifejezés) kiválasztásával, majd a listából való kiválasztással. Címkézze `6` fel `1` a és az ugyanabban a példában utterance (kifejezés).
+1. Címkézze fel a számokat az `Quantity` entitással úgy, `2` hogy kijelöli a példában a `Quantity` kiválasztás a listából lehetőséget. A `6` és a `1` címkét ugyanazzal a példával kell megjelölni.
 
-    ![Címkézze fel a szöveget mennyiségi entitással.](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
+    ![Szöveg címkéje mennyiségi entitással.](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
 
-## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Az alkalmazás betanítása az entitásmódosítások alkalmazásra való alkalmazásához
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Az alkalmazás betanítása az entitás módosításának alkalmazására
 
-Válassza a **Vonat** az alkalmazás betanításához ezekkel az új kimondott szövegekkel. Edzés után `Quantity` az alkomponens megfelelően előre `Order` jelzett az összetevőben. Ezt a helyes előrejelzést egy folytonos vonal jelzi.
+Válassza a **betanítás** lehetőséget az alkalmazás az új hosszúságú kimondott szöveg való betanításához. A betanítást `Quantity` követően az alösszetevő megfelelően meg van jósolva az `Order` összetevőben. Ez a helyes előrejelzés folytonos vonallal van megjelölve.
 
-![Az alkalmazás betanítása, majd tekintse át a példa utterances.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
+![Végezze el az alkalmazás betanítását, majd tekintse át a példa hosszúságú kimondott szöveg.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
-Ezen a ponton a rendelés tartalmaz néhány részletet, amelyek kinyerhetők (méret, mennyiség és teljes rendelésszöveg). Van további finomítása a `Order` szervezet, mint a pizza öntetek, típusú kéreg, és az oldalsó megrendelések. Ezeket az `Order` entitás alösszetevőiként kell létrehozni.
+Ezen a ponton a sorrendnek van néhány részlete, amely kinyerhető (méret, mennyiség és teljes sorrendű szöveg). Az entitás további finomítása, például `Order` a pizza-fehéráru, a kéreg típusa és a Side Orders. Mindegyiket az `Order` entitás alösszetevőiként kell létrehozni.
 
 ## <a name="test-the-app-to-validate-the-changes"></a>Az alkalmazás tesztelése a módosítások ellenőrzéséhez
 
-Tesztelje az alkalmazást **Test** az interaktív tesztpanelen. Ez a folyamat lehetővé teszi, hogy adjon meg egy új utterance (kifejezés) majd tekintse meg az előrejelzési eredményeket, hogy milyen jól működik az aktív és a betanított alkalmazás. A szándék előrejelzése kell meglehetősen magabiztos (70% felett és az entitás kivonásának `Order` legalább a gazdálkodó egységet fel kell vennie. A rendelési entitás részletei hiányozhatnak, mert 5 kimondott szöveg nem elegendő minden eset kezeléséhez.
+Tesztelje az alkalmazást az interaktív **teszt** panel használatával. Ezzel a folyamattal megadhat egy új kiírást, majd megtekintheti az előrejelzés eredményeit, és megtekintheti, hogy milyen jól működik az aktív és a betanított alkalmazás. A szándék előrejelzésének meglehetősen magabiztosnak kell lennie (70% fölött) a kinyerési entitásnak legalább az `Order` entitást kell felvennie. Lehetséges, hogy a megrendelési entitás adatai hiányoznak, mert az 5 hosszúságú kimondott szöveg nem elegendő az összes eset kezelésére.
 
 1. A felső navigációs ablakban válassza a **Test** (Tesztelés) elemet.
-1. Adja meg `deliver a medium veggie pizza` az utterance (kifejezés) szöveget, és válassza az Enter lehetőséget. Az aktív modell több mint 70%-os megbízhatósággal jósolta meg a helyes szándékot.
+1. Adja meg a teljes `deliver a medium veggie pizza` értéket, és válassza az ENTER billentyűt. Az aktív modell a megfelelő szándékot jelezte, több mint 70%-os megbízhatósággal.
 
-    ![Adjon meg egy új utterance (kifejezés) a szándék teszteléséhez.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
+    ![Adjon meg egy új kiírást a szándék teszteléséhez.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
 
-1. Válassza **a Vizsgálat** lehetőséget az entitás-előrejelzések megtekintéséhez.
+1. Az entitások előrejelzésének megtekintéséhez kattintson a **vizsgálat** elemre.
 
-    ![Tekintse meg az entitás előrejelzések az interaktív teszt panelen.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance-and-entity-predictions.png)
+    ![Tekintse meg az entitások előrejelzéseit az interaktív teszt panelen.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance-and-entity-predictions.png)
 
-    A méretet helyesen azonosították. Ne feledje, hogy a `OrderPizza` szándékban szereplő példautterances nem rendelkezik példát `medium` a `SizeDescriptor` méret, de használja a kifejezéslista, amely közepes.
+    A méret helyesen lett azonosítva. Ne feledje, hogy a példában szereplő `OrderPizza` hosszúságú kimondott szöveg nem rendelkezik például `medium` mérettel, de egy közepes méretű `SizeDescriptor` kifejezési lista leíróját használja.
 
-    A mennyiség nem megfelelően előre jelzett. Ezt az ügyfélalkalmazásban úgy javíthatja ki, hogy a mérete tegy (1) lesz, ha a LUIS-előrejelzésnem ad vissza méretet.
+    A mennyiség nem megfelelően van előre jelezve. Ezt megteheti az ügyfélalkalmazás alapértelmezett méretének (1) értékének megadásával, ha a LUIS előrejelzés nem ad vissza értéket.
 
-## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Az alkalmazás közzététele a HTTP-végpontról való eléréséhez
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Az alkalmazás közzététele a HTTP-végpontról való hozzáféréshez
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>Leképezés és entitás-előrejelzés beszerezni e-http-végpontról
+## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>Cél és entitások előrejelzése HTTP-végpontból
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Lépjen az URL-cím végére a címsorban, és cserélje le _YOUR_QUERY_HERE_ ugyanazzal a lekérdezéssel, mint amelyet az interaktív tesztpanelen írt be.
+1. Lépjen az URL-cím végére a címsorban, és cserélje le a _YOUR_QUERY_HEREt_ ugyanazzal a lekérdezéssel, mint amit az interaktív teszt panelen megadott.
 
     `deliver a medium veggie pizza`
 
-    Az utolsó querystring `query`paraméter a ( utterance ( kifejezés ) **lekérdezés.**
+    Az utolsó querystring paraméter `query`a teljes **lekérdezés**.
 
     ```json
     {
@@ -290,16 +290,16 @@ Tesztelje az alkalmazást **Test** az interaktív tesztpanelen. Ez a folyamat le
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Oktatóanyag - szándékok](luis-quickstart-intents-only.md)
-* [Koncepció - entitások](luis-concept-entity-types.md) koncepcionális tájékoztatása
-* [Koncepció - funkciók](luis-concept-feature.md) fogalmi információk
-* [Hogyan kell a vonat](luis-how-to-train.md)
+* [Oktatóanyag – szándékok](luis-quickstart-intents-only.md)
+* [Concept-entitások](luis-concept-entity-types.md) fogalmi információi
+* [Koncepció – a funkciók](luis-concept-feature.md) fogalmi adatai
+* [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az alkalmazás egy gép által megtanult entitást használ a felhasználó utterance (kifejezés) szándékának megkereséséhez, és az utterance (kifejezés) részleteinek kinyeréséhez. A gép megtanult entitás használatával lehetővé teszi az entitás részleteinek lefektése.
+Ebben az oktatóanyagban az alkalmazás egy géppel megtanult entitás használatával keresi meg a felhasználó teljes részletességét, és Kinyeri a részleteket ebből a részletekből. A géppel megtanult entitás segítségével elvégezheti az entitás részleteit.
 
 > [!div class="nextstepaction"]
 > [Előre összeállított kulcskifejezés-entitás hozzáadása](luis-quickstart-intent-and-key-phrase.md)

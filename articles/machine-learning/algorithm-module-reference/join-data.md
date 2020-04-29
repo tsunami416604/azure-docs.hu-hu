@@ -1,7 +1,7 @@
 ---
-title: 'Illesztési adatok: Modul hivatkozási'
+title: 'Csatlakozás az adatkezeléshez: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a join join data modult az Azure Machine Learningben az adatkészletek egyesítéséhez.
+description: Megtudhatja, hogyan egyesítheti az adatkészleteket az Azure Machine Learning csatlakoztatási csatlakozás adatmoduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,62 +10,62 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477578"
 ---
 # <a name="join-data"></a>Adatok összekapcsolása
 
-Ez a cikk bemutatja, hogyan használhatja a **Join Data** modult az Azure Machine Learning designerben (előzetes verzió) két adatkészlet egyesítéséhez egy adatbázis-stílusú illesztési művelet használatával.  
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) **Csatlakozás** adatmodulja két adatkészlet egyesítéséhez egy adatbázis-stílusú csatlakozási művelettel.  
 
-## <a name="how-to-configure-join-data"></a>Illesztési adatok konfigurálása
+## <a name="how-to-configure-join-data"></a>Csatlakozási adatbevitel konfigurálása
 
-Ha két adatkészleten szeretne illesztést végrehajtani, azokat egy kulcsoszlopnak kell összefüggenie. A több oszlopot használó összetett kulcsok is támogatottak. 
+Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak kell kapcsolódnia. A több oszlopot használó összetett kulcsok is támogatottak. 
 
-1. Adja hozzá az egyesíteni kívánt adatkészleteket, majd húzza az **Illesztési modult** a folyamatba. 
+1. Adja hozzá az egyesíteni kívánt adatkészleteket, majd húzza az **illesztési adat** modult a folyamatba. 
 
-    A modul az **Adatátalakítás** kategóriában, a **Manipuláció**csoportban található.
+    A modult az **Adatátalakítási** kategóriában, a **manipuláció**szakaszban találja.
 
-1. Csatlakoztassa az adatkészleteket az **Illesztési adatok** modulhoz. 
+1. Csatlakoztassa az adatkészleteket az **adategyesítési** modulhoz. 
  
-1. Válassza **az Indítás oszlopválasztó** lehetőséget a kulcsoszlop(ok) kiválasztásához. Ne felejtsen el oszlopokat választani mind a bal, mind a jobb oldali bemenethez.
+1. Válassza az **oszlop indítása lehetőséget** , hogy kiválassza a kulcs oszlop (oka) t. Ne felejtse el kiválasztani a bal és a jobb oldali bemenetek oszlopait.
 
     Egyetlen kulcs esetén:
 
-    Jelöljön ki egy kulcsoszlopot mindkét bemenethez.
+    Válassza ki mindkét bemenet egyetlen kulcs oszlopát.
     
     Összetett kulcs esetén:
 
-    Jelölje ki az összes kulcsoszlopot a bal és a jobb oldali bemenetből ugyanabban a sorrendben. Az **Illesztési adatok** modul akkor csatlakozik a táblákhoz, amikor az összes kulcsoszlop egyezik. Jelölje be az **Ismétlődések engedélyezése és az oszlopsorrend megőrzése jelölőnégyzetet,** ha az oszlopsorrend nem egyezik meg az eredeti táblával. 
+    Válassza ki az összes kulcsfontosságú oszlopot a bal oldali és a jobb oldali bemenetből ugyanabba a sorrendbe. Az **illesztési** adatmodul akkor csatlakozik a táblákhoz, amikor az összes kulcs oszlop egyezik. Ha az oszlop sorrendje nem egyezik meg az eredeti táblával, ellenőrizze, hogy az **Ismétlődések engedélyezése és az oszlopok megőrzése beállítás engedélyezve van-e** . 
 
-    ![oszlopválasztó](media/module/join-data-column-selector.png)
+    ![oszlop – választó](media/module/join-data-column-selector.png)
 
 
-1. Jelölje be a **Kis- és nagybetűk egyeztetése** lehetőséget, ha meg szeretné őrizni a kis- és nagybetűk érzékenységét egy szövegoszlopillesztésen. 
+1. Jelölje be az **egyeztetési eset** beállítást, ha meg szeretné őrizni a kis-és nagybetűk megkülönböztetését egy szöveges oszlophoz való csatlakozáskor. 
    
-1. Az **Illesztés típusa** legördülő lista segítségével megadhatja, hogyan lehessen az adatkészleteket egyesíteni.  
+1. Az **összekapcsolás típusa** legördülő listával adhatja meg, hogy az adatkészletek hogyan legyenek egyesítve.  
   
-    * **Belső illesztés:** A *belső illesztés* a leggyakoribb illesztési művelet. Csak akkor adja vissza az egyesített sorokat, ha a kulcsoszlopok értékei egyeznek.  
+    * **Belső illesztés**: a leggyakoribb csatlakozási művelet a *belső* illesztés. Az egyesített sorokat csak akkor adja vissza, ha a kulcs oszlopainak értékei egyeznek.  
   
-    * **Bal oldali külső illesztés**: A *bal oldali laza illesztés* a bal oldali táblázat összes sorához illesztett sorokat ad vissza. Ha a bal oldali tábla egyik sorában nincsenek megfelelő sorok a jobb oldali táblázatban, a visszaadott sor a jobb oldali táblából származó összes oszlop hiányzó értékeit tartalmazza. A hiányzó értékekhez helyettesítő értéket is megadhat.  
+    * **Bal külső illesztés**: a bal oldali *külső illesztés* a bal oldali tábla összes sorához csatlakoztatott sorokat ad vissza. Ha a bal oldali tábla egyik sora nem rendelkezik egyező sorokkal a jobb oldali táblában, a visszaadott sor a jobb oldali táblából származó összes oszlophoz hiányzó értékeket tartalmaz. A hiányzó értékekhez helyettesítő értéket is megadhat.  
   
-    * **Teljes külső illesztés**: A *teljes laza illesztés* a bal oldali tábla (**table1**) és a jobb oldali tábla (**table2**) összes sorát adja vissza.  
+    * **Teljes külső illesztés**: a *teljes külső illesztés* a bal oldali táblából (**tábla1**) és a jobb oldali táblából (**table2**) származó összes sort adja vissza.  
   
-         Az eredmény a tábla minden olyan sorában, ahol nincsenek egyező sorok, az eredmény egy hiányzó értékeket tartalmazó sort tartalmaz.  
+         A másik tábla minden olyan sorához, amely nem rendelkezik egyező sorokkal, az eredmény tartalmaz egy sort, amely a hiányzó értékeket tartalmazza.  
   
-    * **Bal oldali félillesztés:** A *bal oldali félillesztés* csak a bal oldali tábla értékeit adja vissza, amikor a kulcsoszlopok értékei egyeznek.  
+    * **Bal oldali félig illesztés**: a *bal oldali fél* csak a bal oldali tábla értékeit adja vissza, ha a kulcs oszlopainak értéke megegyezik.  
 
-1. A **jobb oldali kulcsoszlopok megtartása az illesztett táblázatban beállításesetén:**
+1. A **jobb oldali kulcsok oszlopai az összekapcsolt táblában**:
 
     * Ezzel a beállítással mindkét bemeneti táblából megtekintheti a kulcsokat.
-    * Törölje a jelet, ha csak a bal oldali bemenet kulcsoszlopait szeretné visszaadni.
+    * Törölje a jelölést, hogy csak a bal oldali bemenetből származó kulcs oszlopokat adja vissza.
 
-1. Küldje el a folyamatot.
+1. A folyamat elküldése.
 
-1. Az eredmények megtekintéséhez kattintson a jobb gombbal az **Illesztési adatokra,** és válassza a **Megjelenítés parancsot.**
+1. Az eredmények megtekintéséhez kattintson a jobb gombbal a **csatlakozásra** , majd válassza a **Megjelenítés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

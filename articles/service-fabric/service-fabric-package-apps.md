@@ -1,22 +1,22 @@
 ---
-title: Azure Service Fabric-alkalmazás csomagolása
-description: Ismerje meg az Azure Service Fabric-alkalmazások csomagolását, és hogyan készülhet fel a fürtbe való üzembe helyezésre.
+title: Azure Service Fabric-alkalmazás becsomagolása
+description: Ismerje meg az Azure Service Fabric-alkalmazások csomagolását és a fürtre történő telepítés előkészítését ismertető témakört.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258342"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 
-Ez a cikk ismerteti, hogyan csomag egy Service Fabric-alkalmazást, és készen áll a központi telepítésre.
+Ez a cikk azt ismerteti, hogyan lehet becsomagolni egy Service Fabric alkalmazást, és készen áll az üzembe helyezésre.
 
 ## <a name="package-layout"></a>Csomag elrendezése
 
-Az alkalmazásjegyzéket, egy vagy több szolgáltatásjegyzéket és más szükséges csomagfájlokat egy adott elrendezésben kell rendszerezni a Service Fabric-fürtbe való telepítéshez. A jelen cikkben szereplő példa jegyzékfájljait a következő könyvtárstruktúrába kell rendszerezni:
+Az alkalmazás jegyzékfájlját, egy vagy több szolgáltatási jegyzékfájlt és az egyéb szükséges csomagokat egy Service Fabric-fürtbe történő központi telepítéshez egy adott elrendezésben kell megszervezni. A cikkben szereplő példákat a következő címtár-struktúrában kell megszervezni:
 
 ```
 tree /f .\MyApplicationType
@@ -39,34 +39,34 @@ D:\TEMP\MYAPPLICATIONTYPE
             init.dat
 ```
 
-A mappák elnevezése megegyezik az egyes megfelelő elemek **Name** attribútumainak. Ha például a szolgáltatásjegyzék két **Kódkód** és **MyCodeB**nevű kódcsomagot tartalmaz, akkor két azonos nevű mappa tartalmazza az egyes kódcsomagokhoz szükséges bináris fájlokat.
+A mappák neve megegyezik a megfelelő elemek **nevének** attribútumaival. Ha például a szolgáltatás jegyzékfájlja két, **MyCodeA** és **MyCodeB**nevű kódot tartalmaz, akkor két azonos nevű mappa tartalmazni fogja a szükséges bináris fájlokat az egyes kódokhoz.
 
-## <a name="use-setupentrypoint"></a>A SetupEntryPoint használata
+## <a name="use-setupentrypoint"></a>SetupEntryPoint használata
 
-A **SetupEntryPoint** használatának tipikus forgatókönyvei azok, amikor a szolgáltatás indítása előtt futtatnia kell egy végrehajtható fájlt, vagy emelt szintű jogosultságokkal rendelkező műveletet kell végrehajtania. Példa:
+A **SetupEntryPoint** használatára jellemző forgatókönyvek, ha a szolgáltatás elindítása előtt futtatni kell egy végrehajtható fájlt, vagy emelt szintű jogosultságokkal kell végrehajtania egy műveletet. Például:
 
-* A szolgáltatás végrehajtható rendszerének igényeinek megfelelő környezeti változók beállítása és inicializálása. Nem korlátozódik csak a Service Fabric programozási modelleken keresztül írt végrehajtható fájlokra. Az npm.exe például szüksége van néhány olyan környezeti változóra, amely et konfigurált egy node.js alkalmazás telepítéséhez.
+* A szolgáltatás végrehajtható fájlja által igényelt környezeti változók beállítása és inicializálása. Nem korlátozódik kizárólag a Service Fabric programozási modelleken keresztül írt végrehajtható fájlokra. Például a NPM. exe fájlhoz a Node. js-alkalmazások üzembe helyezéséhez konfigurált környezeti változók szükségesek.
 * Hozzáférés-vezérlés beállítása biztonsági tanúsítványok telepítésével.
 
-A **SetupEntryPoint**konfigurálásáról további információt a [Szolgáltatás beállítási belépési pontjához szükséges házirend konfigurálása című](service-fabric-application-runas-security.md) témakörben talál.
+A **SetupEntryPoint**konfigurálásával kapcsolatos további információkért lásd: [a szolgáltatás telepítési belépési pontja házirend konfigurálása](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
 ## <a name="configure"></a>Konfigurálás
 
-### <a name="build-a-package-by-using-visual-studio"></a>Csomag készítése a Visual Studio használatával
+### <a name="build-a-package-by-using-visual-studio"></a>Csomag létrehozása a Visual Studio használatával
 
-Ha a Visual Studio segítségével hozhatja létre az alkalmazást, a *Csomag paranccsal* automatikusan létrehozhat egy, a fent leírt elrendezésnek megfelelő csomagot.
+Ha a Visual Studióval hozza létre az alkalmazást, a *Package* paranccsal automatikusan létrehozhat egy csomagot, amely megfelel a fent ismertetett elrendezésnek.
 
-Csomag létrehozásához kattintson a jobb gombbal az alkalmazásprojektre a *Megoldáskezelőben,* és válassza a **Csomag parancsot:**
+Csomag létrehozásához kattintson a jobb gombbal az alkalmazás projektre *megoldáskezelő* , és válassza a **csomag** parancsot:
 
-![Alkalmazás csomagolása a Visual Studio alkalmazással][vs-package-command]
+![Alkalmazás becsomagolása a Visual Studióval][vs-package-command]
 
-Ha a csomagolás befejeződött, a csomag helyét a **Kimenet** ablakban találja. A csomagolási lépés automatikusan megtörténik, amikor telepíti vagy hibakeresés a Visual Studio.
+A csomagolás befejezésekor a **kimeneti** ablakban található a csomag helye. A csomagolási lépés automatikusan megtörténik az alkalmazás Visual Studióban történő telepítésekor vagy hibakeresése során.
 
 ### <a name="build-a-package-by-command-line"></a>Csomag létrehozása parancssorból
 
-Az is lehetséges, hogy programozott csomagolás `msbuild.exe`az alkalmazás segítségével. A motorháztető alatt a Visual Studio futtatja, így a kimenet ugyanaz.
+Az alkalmazás a használatával `msbuild.exe`programozott módon is becsomagolható. A Visual Studio a motorháztető alatt fut, így a kimenet ugyanaz.
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
@@ -74,9 +74,9 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 
 ## <a name="test-the-package"></a>A csomag tesztelése
 
-A [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) paranccsal ellenőrizheti a csomagszerkezetet helyileg a PowerShellen keresztül.
-Ez a parancs ellenőrzi a jegyzékfájl elemzési problémáit, és ellenőrzi az összes hivatkozást. Ez a parancs csak a csomagban lévő könyvtárak és fájlok szerkezeti helyességét ellenőrzi.
-Nem ellenőrzi a kód vagy az adatcsomag tartalmát azon túl, hogy ellenőrzi, hogy minden szükséges fájl jelen van-e.
+A [ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) parancs használatával helyileg ellenőrizheti a csomag szerkezetét a PowerShell használatával.
+Ez a parancs ellenőrzi a jegyzékfájl-elemzési problémákat, és ellenőrzi az összes hivatkozást. Ez a parancs csak a csomagok könyvtárainak és fájljainak szerkezeti helyességét ellenőrzi.
+A kód vagy az adatcsomag tartalmának ellenőrzése nem ellenőrzi, hogy az összes szükséges fájl megtalálható-e.
 
 ```powershell
 Test-ServiceFabricApplicationPackage .\MyApplicationType
@@ -88,7 +88,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-Ez a hiba azt mutatja, hogy a service **manifest-ben** hivatkozott *MySetup.bat* fájl hiányzik a kódcsomagból. A hiányzó fájl hozzáadása után az alkalmazás ellenőrzése megfelel:
+Ez a hiba azt mutatja, hogy a szolgáltatás jegyzékfájljában hivatkozott *MySetup. bat* fájl hiányzik a **SetupEntryPoint** . A hiányzó fájl hozzáadása után az alkalmazás ellenőrzésének menete:
 
 ```
 tree /f .\MyApplicationType
@@ -120,24 +120,24 @@ Test-ServiceFabricApplicationPackage .\MyApplicationType
 True
 ```
 
-Ha az alkalmazás [alkalmazásparaméterek et](service-fabric-manage-multiple-environment-app-configuration.md) definiált, átadhatja azokat a [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) megfelelő érvényesítéshez.
+Ha az alkalmazáshoz [alkalmazás-paraméterek](service-fabric-manage-multiple-environment-app-configuration.md) vannak meghatározva, a megfelelő ellenőrzés érdekében átadhatja azokat a [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
 
-Ha ismeri azt a fürtöt, amelyben az alkalmazás telepítve `ImageStoreConnectionString` lesz, ajánlott átadni a paramétert. Ebben az esetben a csomag is érvényesítve van az alkalmazás korábbi verzióival, amelyek már futnak a fürtben. Az ellenőrzés például észleli, hogy egy azonos verziójú, de más tartalommal rendelkező csomag már telepítve van-e.  
+Ha ismeri azt a fürtöt, amelyen az alkalmazás telepítve lesz, javasoljuk, hogy adja át a `ImageStoreConnectionString` paramétert. Ebben az esetben a csomag a fürtben már futó alkalmazás korábbi verzióival is érvényesítve lesz. Az ellenőrzés például képes észlelni, hogy egy azonos verziójú, de különböző tartalommal rendelkező csomag már telepítve van-e.  
 
-Miután az alkalmazás megfelelően van csomagolva, és átmegy az ellenőrzésen, fontolja meg a csomag tömörítését a gyorsabb telepítési műveletek érdekében.
+Ha az alkalmazás megfelelően van csomagolva, és átadja az ellenőrzést, érdemes lehet a csomag tömörítését a gyorsabb üzembe helyezési műveletekhez.
 
 ## <a name="compress-a-package"></a>Csomag tömörítése
 
-Ha egy csomag nagy méretű vagy sok fájlt tartalmaz, tömörítheti a gyorsabb telepítés érdekében. A tömörítés csökkenti a fájlok számát és a csomag méretét.
-Tömörített alkalmazáscsomag esetén [az alkalmazáscsomag feltöltése](service-fabric-deploy-remove-applications.md#upload-the-application-package) hosszabb időt vehet igénybe a tömörítetlen csomag feltöltéséhez képest, különösen akkor, ha a tömörítés a másolat részeként történik. A [tömörítés, regisztráció](service-fabric-deploy-remove-applications.md#register-the-application-package) és [un-regisztráció az alkalmazás típusát](service-fabric-deploy-remove-applications.md#unregister-an-application-type) gyorsabb.
+Ha egy csomag nagyméretű vagy sok fájllal rendelkezik, a gyorsabb üzembe helyezéshez tömörítheti azt. A tömörítés csökkenti a fájlok számát és a csomag méretét.
+Tömörített alkalmazáscsomag esetén [az alkalmazáscsomag feltöltése](service-fabric-deploy-remove-applications.md#upload-the-application-package) hosszabb időt vehet igénybe a tömörítetlen csomag feltöltésekor, különösen akkor, ha a tömörítés a másolás részeként történik. A tömörítés, [az alkalmazás típusának](service-fabric-deploy-remove-applications.md#unregister-an-application-type) [regisztrálása](service-fabric-deploy-remove-applications.md#register-the-application-package) és regisztrációja gyorsabb.
 
-A telepítési mechanizmus megegyezik a tömörített és tömörítetlen csomagok. Ha a csomag tömörített, a fürtlemezkép-tárolóban is tárolódik, és az alkalmazás futtatása előtt tömörítetlen lesz a csomóponton.
-A tömörítés lecseréli az érvényes Service Fabric csomagot a tömörített verzióra. A mappának engedélyeznie kell az írási engedélyeket. Ha egy már tömörített csomagon futtatja a tömörítést, az nem eredményez változásokat.
+Az üzembe helyezési mechanizmus a tömörített és a tömörítetlen csomagok esetében azonos. Ha a csomag tömörítve van, azt a rendszer a fürt rendszerkép-tárolójában tárolja, és az alkalmazás futtatása előtt tömöríti a csomóponton.
+A tömörítés lecseréli az érvényes Service Fabric csomagot a tömörített verzióra. A mappának engedélyeznie kell az írási engedélyeket. Egy már tömörített csomag tömörítésének futtatása nem változik.
 
-A csomagok tömörítéséhez futathat a Powershell parancs `CompressPackage` [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) kapcsolóval. A csomag kibontása ugyanazzal a `UncompressPackage` paranccsal, switch használatával.
+A csomagokat tömörítheti úgy, hogy a PowerShell-parancsot a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) `CompressPackage` kapcsolóval futtatja. A kapcsoló használatával `UncompressPackage` kibonthatja a csomagot ugyanazzal a paranccsal.
 
-A következő parancs tömöríti a csomagot anélkül, hogy a lemezképtárolóba másolna. A tömörített csomagot szükség szerint egy vagy több Service Fabric-fürtre másolhatja `SkipCopy` a [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) használatával a jelző nélkül.
-A csomag most már tartalmazza `code` `config`a `data` , és csomagok tömörített fájljait. Az alkalmazásjegyzék és a szolgáltatásjegyzékek nincsenek tömörítve, mert sok belső művelethez szükségesek. Például a csomagmegosztás, az alkalmazás típusneve és a verziókinyerés bizonyos ellenőrzések hez mind szükség van a jegyzékek eléréséhez. A jegyzékek felcipzárazása nem lenne hatékony.
+A következő parancs tömöríti a csomagot anélkül, hogy átmásolja azt a rendszerkép-tárolóba. A tömörített csomagokat szükség szerint egy vagy több Service Fabric-fürtre is másolhatja, a jelző nélkül a `SkipCopy` [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) használatával.
+A csomag mostantól tartalmazza a `code`, `config`a és `data` a csomagok tömörített fájljait. Az alkalmazás jegyzékfájlja és a szolgáltatási jegyzékfájlok nem tömörítettek, mert számos belső művelethez szükségesek. Például a csomagok megosztása, az alkalmazás típusa és a verzió kibontása bizonyos érvényességi igényekhez mindennek hozzá kell férnie a jegyzékekhez. A jegyzékfájlok kijavítása nem teszi hatékonyabbá a műveleteket.
 
 ```
 tree /f .\MyApplicationType
@@ -178,22 +178,22 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-Azt is megteheti, tömöríti és másolja a csomagot [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) egy lépésben.
-Ha a csomag nagy, adjon meg elég nagy időoutot ahhoz, hogy időt biztosítson mind a csomagtömörítés, mind a fürtbe való feltöltés számára.
+Azt is megteheti, hogy egy lépésben tömöríti és átmásolja a csomagot a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) .
+Ha a csomag nagyméretű, elég magas időtúllépést biztosít a csomagok tömörítéséhez és a fürtre való feltöltéshez szükséges idő megadásához.
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
-Belsőleg Service Fabric számítási ellenőrzőösszegeket az alkalmazáscsomagok érvényesítésre. Tömörítés esetén az ellenőrzőösszegeket az egyes csomagok tömörített verziói alapján számítja ki a függvény. Új zip létrehozása ugyanabból az alkalmazáscsomagból különböző ellenőrzőösszegeket hoz létre. Az érvényesítési hibák elkerülése érdekében használja a [diff provisioning (diff provisioning) használatát.](service-fabric-application-upgrade-advanced.md) Ezzel a beállítással ne adja meg a változatlan csomagokat az új verzióban. Ehelyett hivatkozzon rájuk közvetlenül az új szolgáltatásjegyzékből.
+Belsőleg a Service Fabric kiszámítja az alkalmazás-csomagok ellenőrzőösszegét az ellenőrzéshez. Tömörítés használatakor az ellenőrzőösszegeket az egyes csomagok tömörített verzióin számítjuk ki. Ha egy új zip-fájlt hoz létre ugyanabból az alkalmazáscsomag, különböző ellenőrzőösszegeket hoz létre. Az érvényesítési hibák elkerülése érdekében használja a [diff kiépítés](service-fabric-application-upgrade-advanced.md)lehetőséget. Ha ezt a beállítást választja, ne adja meg a változatlan csomagokat az új verzióban. Ehelyett közvetlenül az új szolgáltatás jegyzékfájlján keresztül hivatkozhat rájuk.
 
-Ha a diff-kiépítés nem választható, és meg kell adnia `config`a `data` csomagokat, hozzon létre új verziókat a `code`számára, és a csomagokat, hogy elkerülje az ellenőrzőösszeg eltérését. A változatlan csomagokhoz új verziók létrehozására van szükség, ha tömörített csomagot használ, függetlenül attól, hogy az előző verzió tömörítést használ-e vagy sem.
+Ha a diff kiépítés nem választható, és meg kell adnia a csomagokat, új verziókat kell létrehoznia `config`a, `data` a `code`és a csomagok számára, hogy elkerülje az ellenőrzőösszeg-eltéréseket. A változatlan csomagok új verzióinak létrehozása akkor szükséges, ha tömörített csomagot használ, függetlenül attól, hogy az előző verzió tömörítést használ-e.
 
-A csomag most már megfelelően van csomagolva, érvényesítve és tömörítve (ha szükséges), így készen áll egy vagy több Service Fabric-fürtre [való telepítésre.](service-fabric-deploy-remove-applications.md)
+A csomag megfelelően van csomagolva, érvényesítve és tömörítve (ha szükséges), ezért készen áll az [üzembe helyezésre](service-fabric-deploy-remove-applications.md) egy vagy több Service Fabric-fürtön.
 
-### <a name="compress-packages-when-deploying-using-visual-studio"></a>Csomagok tömörítése a Visual Studio használatával történő telepítés során
+### <a name="compress-packages-when-deploying-using-visual-studio"></a>Csomagok tömörítése a Visual Studióval való üzembe helyezéskor
 
-Utasíthatja a Visual Studio-t, hogy a `CopyPackageParameters` telepítéskor tömörítse a `CompressPackage` csomagokat, ha hozzáadja az elemet a közzétételi profilhoz, és állítsa az attribútumot a beállításra. `true`
+A Visual Studio segítségével tömörítheti a csomagokat az üzembe helyezés során, ha `CopyPackageParameters` hozzáadja az elemet a közzétételi profilhoz, és `CompressPackage` az attribútumot a értékre állítja `true`.
 
 ``` xml
     <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
@@ -203,34 +203,34 @@ Utasíthatja a Visual Studio-t, hogy a `CopyPackageParameters` telepítéskor t�
     </PublishProfile>
 ```
 
-## <a name="create-an-sfpkg"></a>Hozzon létre egy sfpkg
+## <a name="create-an-sfpkg"></a>Sfpkg létrehozása
 
-A 6.1-es verziótól kezdve a Service Fabric lehetővé teszi a külső áruházból történő kiépítést.
-Ezzel a beállítással az alkalmazáscsomagot nem kell másolni a lemezképtárolóba. Ehelyett létrehozhat egy `sfpkg` és feltöltheti egy külső tárolóba, majd a letöltési URI-t a Service Fabric-nek a kiépítéskor. Ugyanaz a csomag több fürthöz is kiépíthető. A külső tárolóból történő kiépítés időt takarít meg a csomag egyes fürtökbe történő másolásához.
+Az 6,1-es verziótól kezdődően Service Fabric lehetővé teszi a kiépítés külső tárolóból.
+Ezzel a beállítással nem kell átmásolni az alkalmazáscsomag a rendszerkép-tárolóba. Helyette létrehozhat egy `sfpkg` külső tárolóba, és feltöltheti azt, majd megadhatja a letöltési URI-t, hogy Service Fabric a kiépítés során. Ugyanaz a csomag több fürthöz is kiépíthető. A külső áruházból való kiépítés elmenti a csomagnak az egyes fürtökre történő másolásához szükséges időt.
 
-A `sfpkg` fájl egy zip, amely tartalmazza a kezdeti alkalmazás csomagot, és a kiterjesztés ".sfpkg".
-A zip belsejében az alkalmazáscsomag tömöríthető vagy tömörítetlen. A tömörítés az alkalmazás csomag belsejében zip történik kód, konfigurációs, és az adatcsomag szintje, mint [korábban említettük](service-fabric-package-apps.md#compress-a-package).
+A `sfpkg` fájl egy olyan zip, amely tartalmazza a kezdeti alkalmazáscsomag, és a ". sfpkg" kiterjesztésű.
+A zip-ben az alkalmazáscsomag tömöríthető vagy tömörítetlen is lehet. A zip-ben lévő alkalmazáscsomag tömörítése a kód, a konfiguráció és az adatcsomag szintjén történik, ahogy azt [korábban említettük](service-fabric-package-apps.md#compress-a-package).
 
-A `sfpkg`létrehozásához kezdje az eredeti alkalmazáscsomagot tartalmazó, tömörített vagy nem tömörített mappával. Ezután használjon olyan segédprogramot, amely a ".sfpkg kiterjesztéssel" lévő mappát zip-eli. Használja például a [ZipFile.CreateFromDirectory fájlt.](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx)
+A létrehozásához `sfpkg`kezdjen el egy olyan mappával, amely tartalmazza az eredeti alkalmazáscsomag tömörített vagy nem. Ezután a ". sfpkg" kiterjesztésű mappa zip-fájljának kitöltéséhez használjon bármilyen segédprogramot. Használja például a [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 ```
 
-A `sfpkg` kell feltölteni a külső áruház sávon kívül, a Service Fabric kívül. A külső tároló bármely olyan tároló lehet, amely egy REST http vagy https végpontot tesz elérhetővé. A kiépítés során a Service Fabric egy `sfpkg` GET-műveletet hajt végre az alkalmazáscsomag letöltéséhez, így az üzletnek lehetővé kell tennie a READ-hozzáférést a csomagszámára.
+A `sfpkg` t a sávon kívüli külső tárolóba kell feltölteni, Service Fabricon kívülről. A külső tároló bármely olyan tároló lehet, amely egy REST http-vagy https-végpontot tesz elérhetővé. A `sfpkg` kiépítés során a Service Fabric VÉGREHAJT egy Get műveletet az alkalmazáscsomag letöltéséhez, így a tárolónak engedélyeznie kell a csomag olvasási hozzáférését.
 
-A csomag kiépítéséhez használjon külső kiépítést, amelyhez a letöltési URI és az alkalmazástípus adatai szükségesek.
+A csomag kiépítéséhez használja a külső kiépítés elemet, amelyhez a letöltési URI és az alkalmazás típusa információ szükséges.
 
 >[!NOTE]
-> A lemezképtár relatív elérési útja alapján `sfpkg` történő kiépítés jelenleg nem támogatja a fájlokat. Ezért a `sfpkg` nem másolható a képtárba.
+> A rendszerkép-tároló relatív elérési útja alapján történő kiépítés jelenleg nem támogatja `sfpkg` a fájlokat. Ezért a `sfpkg` nem másolható a rendszerkép-tárolóba.
 
 ## <a name="next-steps"></a>További lépések
 
-[Alkalmazások telepítése és eltávolítása][10] azt ismerteti, hogy a PowerShell hogyan kezelheti az alkalmazáspéldányokat
+Az [alkalmazások telepítése és eltávolítása című][10] témakör ismerteti, hogyan kezelheti az alkalmazás példányait a PowerShell használatával
 
-[Az alkalmazásparaméterek kezelése több környezetben][11] azt ismerteti, hogyan konfigurálható paraméterek és környezeti változók a különböző alkalmazáspéldányokhoz.
+[Az alkalmazás paramétereinek kezelése több környezet esetében][11] azt ismerteti, hogyan lehet paramétereket és környezeti változókat beállítani a különböző alkalmazás-példányokhoz.
 
-[Az alkalmazás biztonsági házirendjeinek konfigurálása][12] azt ismerteti, hogy miként futtathatók a szolgáltatások a biztonsági házirendek alatt a hozzáférés korlátozása érdekében.
+Az [alkalmazásra vonatkozó biztonsági szabályzatok konfigurálásával][12] megtudhatja, hogyan futtathat szolgáltatásokat a hozzáférés korlátozására szolgáló biztonsági házirendekben.
 
 <!--Image references-->
 [vs-package-command]: ./media/service-fabric-package-apps/vs-package-command.png

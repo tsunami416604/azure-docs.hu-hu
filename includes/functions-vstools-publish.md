@@ -8,43 +8,42 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 0e69a11ab81406f650049e3c7d4d446b6628b29b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 8a4fbb3803f2eed4f961792a29a6bf8a327ea208
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80657549"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-2. A **Közzétételi cél választása párbeszédpanelen**használja az alábbi táblázatban megadott közzétételi beállításokat: 
+2. A **Közzététel célhelyének kiválasztása**területen használja az alábbi táblázatban megadott közzétételi beállításokat: 
 
     | Beállítás      | Leírás                                |
     | ------------ |  -------------------------------------------------- |
-    | **Azure Functions fogyasztási terv** | Hozzon létre egy függvényalkalmazást egy Azure-beli felhőkörnyezetben, amely [egy felhasználási tervben](../articles/azure-functions/functions-scale.md#consumption-plan)fut. Ha egy felhasználási sémát használ, csak a függvények alkalmazás végrehajtásáért kell fizetnie. Más tárhelytervek magasabb költségekkel járnak. Ha nem felhasználási tervben futtat, akkor a [függvényalkalmazás méretezését kell kezelnie.](../articles/azure-functions/functions-scale.md)| 
-    | **Új létrehozása** | Egy új függvényalkalmazás, a kapcsolódó erőforrások, jön létre az Azure-ban. <br/>Ha a Meglévő kijelölése lehetőséget **választja,** az Azure-beli meglévő függvényalkalmazás összes fájlját felülírják a helyi projekt fájljai. Ezt a beállítást csak akkor használja, ha egy meglévő függvényalkalmazás frissítéseit újra közzéteszi. |
-    | **Futtatás csomagfájlból** | A függvényalkalmazás a [Zip Deploy](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) használatával van telepítve, és engedélyezve van [a "Run-From-Package"](../articles/azure-functions/run-functions-from-deployment-package.md) mód. Ez a központi telepítés, amely jobb teljesítményt eredményez, a funkciók futtatásának ajánlott módja. <br/>Ha nem használja ezt a beállítást, győződjön meg arról, hogy állítsa le a függvényalkalmazás-projekt helyileg fut, mielőtt közzéteszi az Azure-ban. |
+    | **Azure-függvényalkalmazás** | Function-alkalmazás létrehozása Azure-beli felhőalapú környezetben. | 
+    | **Új létrehozása** | A kapcsolódó erőforrásokkal rendelkező új Function-alkalmazás az Azure-ban jön létre. <br/>Ha a **meglévő kiválasztása**lehetőséget választja, az Azure-ban meglévő Function alkalmazásban lévő összes fájlt felülírja a helyi projekt fájljai. Ezt a lehetőséget csak akkor használja, ha újra közzéteszi a frissítéseket egy meglévő Function alkalmazásban. |
+    | **Futtatás a csomagfájl alapján** | A Function alkalmazás üzembe helyezése a [zip-telepítéssel](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) , a [csomaghoz való futtatási](../articles/azure-functions/run-functions-from-deployment-package.md) móddal engedélyezve. Ez a központi telepítés, amely jobb teljesítményt eredményez, a függvények futtatásának ajánlott módja. <br/>Ha nem használja ezt a kapcsolót, ügyeljen arra, hogy a Function app-projekt helyileg fusson, mielőtt közzéteszi az Azure-ban. |
 
     ![Közzétételi cél kiválasztása](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
 
-3. Válassza a **Profil létrehozása** lehetőséget. Ha még nem jelentkezett be azure-fiókjába a Visual Studio-ból, válassza **a Bejelentkezés**lehetőséget. Ingyenes Azure-fiókot is létrehozhat.
+3. Kattintson a **Publish** (Közzététel) elemre. Ha még nem jelentkezett be Azure-fiókjába a Visual studióból, válassza a **Bejelentkezés**lehetőséget. Létrehozhat egy ingyenes Azure-fiókot is.
 
-4. Az **App Service-ben: Hozzon létre újat,** használja az alábbi táblázatban megadott értékeket:
+4. **Azure app Service: Create New (új létrehozása**), használja a következő táblázatban megadott értékeket:
 
     | Beállítás      | Érték  | Leírás                                |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Név** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. Fogadja el ezt a nevet, vagy írjon be egy új nevet. Az érvényes `a-z`karakterek `0-9`a `-`következők: , , és . |
-    | **Előfizetés** | Az Ön előfizetése | A használandó előfizetés. Fogadja el ezt az előfizetést, vagy válasszon egy újat a legördülő listából. |
-    | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** | Az erőforráscsoport neve |  Az erőforráscsoport, amelyben a függvényalkalmazást létre szeretné hozni. Jelöljön ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **Új** lehetőséget új erőforráscsoport létrehozásához.|
-    | **[Tárhelyterv](../articles/azure-functions/functions-scale.md)** | A tárhelycsomag neve | A kiszolgáló nélküli csomag konfigurálásához válassza az **Új** lehetőséget. Ügyeljen arra, hogy a **Felhasználás** csoportban válassza a **Felhasználás lehetőséget.** Amikor a projektet egy [felhasználási tervben](../articles/azure-functions/functions-scale.md#consumption-plan)futó függvényalkalmazásban teszi közzé, csak a függvényalkalmazás végrehajtásáért kell fizetnie. Más tárhelytervek magasabb költségekkel járnak. Ha nem **a Felhasználás**tervben futtat, akkor a függvényalkalmazás méretezését kell [kezelnie.](../articles/azure-functions/functions-scale.md)  |
-    | **Helyen** | Az alkalmazásszolgáltatás helye | Válasszon **egy helyet** egy önhöz közeli [régióban,](https://azure.microsoft.com/regions/) vagy más szolgáltatásokat, amelyekhez a funkciók hozzáférhetnek. |
-    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Általános célú tárfiók | A Functions futásidejű Azure Storage-fiók szükséges. Válassza az **Új** lehetőséget az általános célú tárfiók konfigurálásához. Kiválaszthat egy meglévő fiókot is, amely megfelel a [tárfiók követelményeinek.](../articles/azure-functions/functions-scale.md#storage-account-requirements)  |
+    | **Név** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. Fogadja el ezt a nevet, vagy adjon meg egy új nevet. Érvényes karakterek: `a-z`, `0-9`és. `-` |
+    | **Előfizetés** | Az Ön előfizetése | A használandó előfizetés. Fogadja el ezt az előfizetést, vagy válasszon újat a legördülő listából. |
+    | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** | Az erőforráscsoport neve |  Az erőforráscsoport, amelyben létre szeretné hozni a Function alkalmazást. Válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új** lehetőséget egy új erőforráscsoport létrehozásához.|
+    | **[Üzemeltetési csomag](../articles/azure-functions/functions-scale.md)** | A üzemeltetési terv neve | A kiszolgáló nélküli terv konfigurálásához válassza az **új** lehetőséget. Ügyeljen arra, hogy a **méret**területen válassza a **felhasználás** lehetőséget. Ha a projektet egy [felhasználási](../articles/azure-functions/functions-scale.md#consumption-plan)csomagban futó Function alkalmazásban teszi közzé, csak a functions-alkalmazás végrehajtásához kell fizetnie. Más üzemeltetési csomagok magasabb költségekkel járnak. Ha nem a **felhasználást**tervezi, akkor a [Function alkalmazás skálázását](../articles/azure-functions/functions-scale.md)kell kezelnie. Válasszon egy **helyet** a közeli [régióban](https://azure.microsoft.com/regions/) vagy más, a funkciókhoz hozzáférő szolgáltatásokhoz.  |
+    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Általános célú Storage-fiók | A functions futtatókörnyezet megköveteli egy Azure Storage-fiók megírását. Válassza az **új** lehetőséget az általános célú Storage-fiók konfigurálásához. Kiválaszthat egy meglévő fiókot is, amely megfelel a [Storage-fiókra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
 
     ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-5. Válassza **a Létrehozás** lehetőséget, ha ezekkel a beállításokkal létrehozhat egy függvényalkalmazást és a hozzá kapcsolódó erőforrásokat az Azure-ban, és üzembe szeretné helyezni a függvényprojekt-kódot. 
+5. A **Létrehozás** gombra kattintva hozzon létre egy Function alkalmazást és annak kapcsolódó erőforrásait az Azure-ban ezekkel a beállításokkal, és telepítse a függvény projekt kódját. 
 
-6. Válassza a Közzététel lehetőséget, és a központi telepítés befejezése után jegyezze fel a **webhely URL-értékét,** amely a függvényalkalmazás címe az Azure-ban.
+6. Válassza a közzététel lehetőséget, majd az üzembe helyezés befejezése után jegyezze fel a **webhely URL-** címét, amely az Azure-beli Function alkalmazás címe.
 
     ![Sikeres közzétételt jelző üzenet](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)
