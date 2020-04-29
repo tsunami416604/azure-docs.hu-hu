@@ -1,7 +1,7 @@
 ---
-title: Tudástár (előzetes verzió) létrehozása rest használatával
+title: Knowledge Store (előzetes verzió) létrehozása REST használatával
 titleSuffix: Azure Cognitive Search
-description: A REST API-val és postásnal hozzon létre egy Azure Cognitive Search tudástárolót az AI-bővítési folyamatból való további bővítéshez. Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
+description: Az REST API és a Poster használatával hozzon létre egy Azure Cognitive Search Knowledge Store-t, amely egy mesterséges intelligencia-bővítési folyamatból származó dúsítást tart fenn. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,110 +9,110 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
 ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77472315"
 ---
-# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Tudástár létrehozása rest és postás használatával
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
 
 > [!IMPORTANT] 
-> A tudástároló jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verzió funkció szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) A [REST API 2019-05-06-preview verziója](search-api-preview.md) előnézeti funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-A tudástároló egy Azure Cognitive Search dúsítási folyamat kimenetét tartalmazza későbbi elemzésvagy más alsóbb rétegbeli feldolgozás hoz. Az AI-dúsított folyamat elfogadja a képfájlokat vagy a strukturálatlan szövegfájlokat, indexeli őket az Azure Cognitive Search használatával, alkalmazza a Cognitive Services ai-dúsításokat (például a képelemzés és a természetes nyelvi feldolgozás), majd menti az eredményeket egy tudástárolóba az Azure Storage-ban. Az Azure Portalon a Power BI vagy a Storage Explorer eszközeivel megismerheti a tudástárolót.
+A Knowledge Store egy Azure Cognitive Search-bővítési folyamatból származó kimenetet tartalmaz későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozáshoz. A mesterséges intelligenciával rendelkező folyamatok képfájlokat vagy strukturálatlan szövegfájlokat fogadnak el, az Azure Cognitive Search használatával indexelik őket, és a mesterséges intelligenciát Cognitive Services (például a képelemzést és a természetes nyelvi feldolgozást) használják, majd az eredményeket az Azure Storage-ban tárolt tudásbázisba mentik. A Azure Portalban Power BI vagy Storage Explorer eszközökkel is elvégezheti a Tudásbázis megismerését.
 
-Ebben a cikkben a REST API-felület használatával betöltése, indexelése és a ai-dúsítások egy sor szállodai értékelések. A szállodai vélemények importálása az Azure Blob storage-ba történik. Az eredmények et tudástárolóként menti az Azure Table storage.
+Ebben a cikkben a REST API felület használatával végezheti el, indexelheti és alkalmazhatja a mesterséges intelligenciát a szállodai felülvizsgálatok készletén. A szállodai értékelések importálása az Azure Blob Storage-ba történik. Az eredményeket a rendszer az Azure Table Storage szolgáltatásban található Tudásbázisban menti.
 
-A tudástároló létrehozása után megtudhatja, hogyan érheti el a tudástárolót a [Storage Explorer](knowledge-store-view-storage-explorer.md) vagy a [Power BI](knowledge-store-connect-power-bi.md)segítségével.
+Miután létrehozta a tudásbázist, megtudhatja, hogyan érheti el a [Storage Explorer](knowledge-store-view-storage-explorer.md) vagy [Power bi](knowledge-store-connect-power-bi.md)használatával a Knowledge Store-t.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 > [!TIP]
-> A [cikkhez](https://www.getpostman.com/) a Postman asztali alkalmazását javasoljuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tartalmazza az összes kérést tartalmazó Postman-gyűjteményt. 
+> Ehhez a cikkhez a [Poster Desktop alkalmazást](https://www.getpostman.com/) ajánljuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tartalmaz egy Poster-gyűjteményt, amely tartalmazza az összes kérelmet. 
 
-## <a name="create-services-and-load-data"></a>Szolgáltatások létrehozása és adatok betöltése
+## <a name="create-services-and-load-data"></a>Szolgáltatások létrehozása és az adatterhelés
 
-Ez a rövid útmutató az Azure Cognitive Search, az Azure Blob storage és az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) a ai. 
+Ez a rövid útmutató az Azure Cognitive Search, az Azure Blob Storage és az [azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) használatát használja az AI-hoz. 
 
-Mivel a munkaterhelés olyan kicsi, a Cognitive Services a színfalak mögött, hogy ingyenes feldolgozást biztosít legfeljebb 20 tranzakciók naponta. Mivel az adatkészlet olyan kicsi, kihagyhatja a Cognitive Services-erőforrás létrehozását vagy csatolását.
+Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, hogy naponta legfeljebb 20 tranzakció szabad feldolgozását biztosítsa. Mivel az adatkészlet olyan kicsi, hogy kihagy egy Cognitive Services erőforrás létrehozását vagy csatolását.
 
-1. [Letöltés HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Ezek az adatok a CSV fájlban mentett hotel-felülvizsgálati adatok (Kaggle.com származnak), és 19 darab vásárlói visszajelzést tartalmaznak egy szállodáról. 
+1. [Töltse le HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)fájlt. Ezek az adatok egy CSV-fájlban (Kaggle.com-ből származó) tárolt adatok, amelyek egy adott szállodával kapcsolatban 19 darab ügyfél-visszajelzést tartalmaznak. 
 
-1. [Hozzon létre egy Azure-tárfiókot,](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) az aktuális előfizetésében. Az Azure storage-t mind az importálandó nyers tartalomhoz, mind a tudástárolóhoz használni fogja, amely a végeredmény.
+1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. Az Azure Storage-t fogja használni mind az importálandó nyers tartalomhoz, mind a Tudásbázis végeredményéhez.
 
-   Válassza ki a **StorageV2 (általános célú V2)** fiók típusát.
+   Válassza ki a **StorageV2 (általános célú v2)** fiók típusát.
 
-1. Nyissa meg a Blob-szolgáltatások lapjait, és hozzon létre egy *hotel-vélemények nevű tárolót.*
+1. Nyissa meg a blob Services lapjait, és hozzon létre egy " *Hotel-Reviews*" nevű tárolót.
 
 1. Kattintson a **Feltöltés** gombra.
 
-    ![Az adatok feltöltése](media/knowledge-store-create-portal/upload-command-bar.png "Töltse fel a szállodai értékeléseket")
+    ![Adatok feltöltése](media/knowledge-store-create-portal/upload-command-bar.png "A szállodai értékelések feltöltése")
 
-1. Válassza ki az első lépésben letöltött **HotelReviews-Free.csv** fájlt.
+1. Válassza ki az első lépésben letöltött **HotelReviews-Free. csv** fájlt.
 
     ![Az Azure Blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Az Azure Blob-tároló létrehozása")
 
-1. Ezzel az erőforrással már majdnem végzett, de mielőtt kilépne ezekből a lapokból, a bal oldali navigációs ablakban található hivatkozással nyissa meg a **Hozzáférési kulcsok** lapot. Szerezzen be egy kapcsolati karakterláncot az adatok Blob storage-ból történő lekéréséhez. A kapcsolati karakterlánc a következő példához hasonlóan néz ki:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. Ezzel az erőforrással majdnem elkészült, de mielőtt elhagyja ezeket a lapokat, a bal oldali navigációs ablaktáblán található hivatkozást használva nyissa meg a **hozzáférési kulcsok** lapot. A blob Storage-ból származó adatok lekérésére szolgáló kapcsolódási karakterlánc beolvasása. A kapcsolódási karakterlánc az alábbi példához hasonlóan néz ki:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. Még mindig a portálon, váltson az Azure Cognitive Search. [Hozzon létre egy új szolgáltatást,](search-create-service-portal.md) vagy [keressen egy meglévő szolgáltatást.](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Ehhez a gyakorlathoz ingyenes szolgáltatást használhat.
+1. Továbbra is a portálon váltson az Azure Cognitive Searchra. [Hozzon létre egy új szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Ehhez a gyakorlathoz használhatja az ingyenes szolgáltatást.
 
 ## <a name="configure-postman"></a>Postman konfigurálása
 
-Telepítse és állítsa be a Postmant.
+A Poster telepítése és beállítása.
 
-### <a name="download-and-install-postman"></a>A Postman letöltése és telepítése
+### <a name="download-and-install-postman"></a>Poster letöltése és telepítése
 
-1. Töltse le a [Postman gyűjtemény forráskódját.](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)
-1. Válassza a > **Fájlimportálás** lehetőséget a forráskód Postman beimportálásához. **File**
-1. Válassza a **Gyűjtemények** lapot, majd a **...** (három pont) gombot.
+1. Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
+1. A **fájl** > **importálása** lehetőség kiválasztásával importálhatja a forráskódot Poster-ba.
+1. Válassza a **gyűjtemények** fület, majd kattintson a **...** (három pont) gombra.
 1. Válassza a **Szerkesztés** elemet. 
    
-   ![Navigációt megjelenítő Postman alkalmazás](media/knowledge-store-create-rest/postman-edit-menu.png "Ugrás a Postman Szerkesztés menüjére")
-1. A **Szerkesztés** párbeszédpanelen válassza a **Változók** lapot. 
+   ![Navigációt bemutató Poster-alkalmazás](media/knowledge-store-create-rest/postman-edit-menu.png "Ugrás a Poster szerkesztési menüjére")
+1. A **Szerkesztés** párbeszédpanelen válassza a **változók** lapot. 
 
-A **Változók** lapon hozzáadhat olyan értékeket, amelyeket a Postman minden alkalommal felcserél, amikor egy adott változót kettős kapcsos zárójelben találkozik. A Postman például lecseréli a szimbólumot `{{admin-key}}` `admin-key`a beállításhoz beállított aktuális értékre. A postás URL-ekben, fejlécekben, a kérelemtörzsben és így tovább. 
+A **változók** lapon olyan értékeket adhat hozzá a Poster-feladatokhoz, amelyek minden alkalommal felvesznek egy adott változót a kettős zárójelek között. A Poster például a megadott aktuális értékkel helyettesíti a szimbólumot `{{admin-key}}` `admin-key`. A Poster lehetővé teszi a helyettesítést az URL-címek, a fejlécek, a kérés törzse és így tovább. 
 
-A ( A) `admin-key`értékének bekedvéért nyissa meg az `search-service-name` Azure Cognitive Search szolgáltatást, és válassza a **Kulcsok** lapot. [Create services](#create-services-and-load-data) `storage-account-name` A `storage-connection-string` tárfiók **Hozzáférési kulcsok** lapján található érték kel állítható be. A többi érték alapértelmezéseit is meghagyhatja.
+Az érték beszerzéséhez `admin-key`nyissa meg az Azure Cognitive Search szolgáltatást, és válassza a **kulcsok** fület `search-service-name` , `storage-account-name` és módosítsa a [szolgáltatások létrehozása](#create-services-and-load-data)területen kiválasztott értékeket. Állítsa `storage-connection-string` be a Storage-fiók **hozzáférési kulcsainak** lapján található érték használatával. A többi értéknél meghagyhatja az alapértelmezett értékeket.
 
-![Postman alkalmazás változók lap](media/knowledge-store-create-rest/postman-variables-window.png "Postás változóinak ablaka")
+![Poster-alkalmazás változók lapja](media/knowledge-store-create-rest/postman-variables-window.png "A Poster változói ablaka")
 
 
 | Változó    | Honnan szerezhető be? |
 |-------------|-----------------|
-| `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys** oldalán.  |
-| `api-version` | Kilépés **2019-05-06-Preview-ként.** |
-| `datasource-name` | Hagyja, mint **a szálloda-felülvizsgálat-ds**. | 
-| `indexer-name` | Hagyja, mint **hotel-értékelés-ixr**. | 
-| `index-name` | Hagyja, mint **hotel-reviews-ix**. | 
-| `search-service-name` | Az Azure Cognitive Search szolgáltatás neve. Az URL- cím `https://{{search-service-name}}.search.windows.net`. | 
-| `skillset-name` | Hagyja, mint **a szálloda-értékelés-ss**. | 
+| `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys (kulcsok** ) lapján.  |
+| `api-version` | **2019-05-06 – előzetes**verzióként érhető el. |
+| `datasource-name` | Távozás a **Hotel-Reviews-DS**. | 
+| `indexer-name` | Távozás a **Hotel-Reviews-IXR**. | 
+| `index-name` | Hagyja a **Hotel-Reviews-IX**. | 
+| `search-service-name` | Az Azure Cognitive Search szolgáltatás neve. Az URL- `https://{{search-service-name}}.search.windows.net`cím:. | 
+| `skillset-name` | Távozás a **Hotel-Reviews-SS**. | 
 | `storage-account-name` | A tárfiók neve. | 
-| `storage-connection-string` | A tárfiók Hozzáférési **kulcsok** lapján válassza a **key1** > **Kapcsolati karakterlánc lehetőséget.** | 
-| `storage-container-name` | Hagyja el **a szálloda-értékelés**. | 
+| `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1** > **kapcsolati karakterlánc**lehetőséget. | 
+| `storage-container-name` | Távozás a **Hotel-Reviews-** ben. | 
 
-### <a name="review-the-request-collection-in-postman"></a>A kérelemgyűjtemény áttekintése a Postman ben
+### <a name="review-the-request-collection-in-postman"></a>Tekintse át a Poster kérelem-gyűjteményét
 
-Tudástároló létrehozásakor négy HTTP-kérelmet kell kiadnia: 
+A Tudásbázis létrehozásakor négy HTTP-kérelmet kell kiadnia: 
 
-- **PUT-kérelem az index létrehozásához:** Ez az index tartalmazza az Azure Cognitive Search által használt és visszaadott adatokat.
-- **POST-kérelem az adatforrás létrehozásához:** Ez az adatforrás az Azure Cognitive Search viselkedését kapcsolja össze az adat- és tudástároló tárfiókjával. 
-- **PUT-kérelem a skillset létrehozásához:** A skillset határozza meg az adatokra alkalmazott dúsításokat és a tudástároló szerkezetét.
-- **PUT-kérelem az indexelő létrehozásához:** Az indexelő futtatása beolvassa az adatokat, alkalmazza a skillset, és tárolja az eredményeket. Ezt a kérést utoljára kell futtatnia.
+- **Az index létrehozásának kérése**: ez az index az Azure Cognitive Search által használt és visszaadott adatok tárolására szolgál.
+- **Az adatforrás létrehozásához szükséges post kérelem**: ez az adatforrás összekapcsolja az Azure Cognitive Search viselkedését az adat-és Tudásbázis Storage-fiókjával. 
+- **Kérelem létrehozása a készségkészlet létrehozásához**: a készségkészlet meghatározza az adataira alkalmazott dúsításokat és a Tudásbázis struktúráját.
+- **Put-kérelem az indexelő létrehozásához**: az indexelő beolvassa az adatokat, alkalmazza a készségkészlet, és az eredményeket tárolja. Ezt a kérést utoljára kell futtatnia.
 
-A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) egy postás gyűjteményt tartalmaz, amely a négy kérelmet tartalmazza. A kérelmek kiadásához a Postman alkalmazásban válassza ki a kérelem lapját. Ezután `api-key` adjon `Content-Type` hozzá és kérjen fejléceket. Állítsa a `api-key` `{{admin-key}}`értékét. Állítsa az `Content-type` `application/json`értéket . 
+A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) tartalmaz egy Poster-gyűjteményt, amelyben a négy kérelem szerepel. A kérések kiadásához a Poster lapon válassza ki a kérelemhez tartozó fület. Ezután adjon hozzá `api-key` és `Content-Type` kérjen fejléceket. Állítsa be a értékét `api-key` a `{{admin-key}}`következőre:. Állítsa be az `Content-type` értéket `application/json`a következőre:. 
 
-![Képernyőkép a Postman fejlécek felületéről](media/knowledge-store-create-rest/postman-headers-ui.png)
+![A Poster felületének fejléceit bemutató képernyőfelvétel](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> Minden kérésben be kell állítania `api-key` és `Content-type` fejléceket kell beállítania. Ha a Postman felismer egy változót, a `{{admin-key}}` változó narancssárga szövegben jelenik meg, mint az előző képernyőképen. Ha a változó hibásan van beírva, piros szöveggel jelenik meg.
+> Minden kérelemben `api-key` be `Content-type` kell állítania és fejléceket kell beállítania. Ha a Poster egy változót is felismer, a változó narancssárga szövegben `{{admin-key}}` jelenik meg, az előző képernyőképen látható módon. Ha a változó hibásan van írva, vörös szövegben jelenik meg.
 >
 
 ## <a name="create-an-azure-cognitive-search-index"></a>Egy Azure Cognitive Search-index létrehozása
 
-Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adatokat jelöli, amelyek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet put `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`kérés kibocsátásával a számára. A Postman a dupla `{{search-service-name}}`kapcsos zárójelben (például ) `{{index-name}}`és `{{api-version}}`) lévő szimbólumokat a [Postás konfigurálása](#configure-postman)című könyvben beállított értékekre cseréli. Ha egy másik eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját magának kell helyettesítenie.
+Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adattípusokat jelöli, amelyeknek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet egy PUT-kérelemnek a következőre való `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`kiállításával. A Poster lecseréli a kapcsos zárójelek közé foglalt szimbólumokat `{{search-service-name}}`( `{{index-name}}`például, `{{api-version}}`, és [).](#configure-postman) Ha más eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját kezűleg kell helyettesítenie.
 
-Állítsa be az Azure Cognitive Search index szerkezetét a kérelem törzsében. A Postman alkalmazásban a `api-key` `Content-type` fejlécek és a fejlécek beállítása után lépjen a kérelem **Törzs** ablaktáblájára. A következő JSON-t kell látnia. Ha nem, válassza **a Nyers** > **JSON (alkalmazás/json)** lehetőséget, majd a következő kódot illessze be törzsként:
+Állítsa be az Azure Cognitive Search index struktúráját a kérelem törzsében. A Poster-ben a `api-key` és `Content-type` a fejlécek beállítása után lépjen a kérelem **törzs** ablaktáblájába. A következő JSON-t kell látnia. Ha nem, válassza a **nyers** > **JSON (alkalmazás/JSON)** lehetőséget, majd illessze be a következő kódot törzsként:
 
 ```JSON
 {
@@ -147,15 +147,15 @@ Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adatokat jelö
 
 ```
 
-Ez az indexdefiníció olyan adatok kombinációja, amelyeket meg szeretne mutatni a felhasználónak (a szálloda neve, a tartalom áttekintése, a dátum), a keresési metaadatok és a ai-növelési adatok (hangulat, kulcsmondatok és nyelv).
+Az index definíciója olyan adatok kombinációja, amelyeket szeretne bemutatni a felhasználónak (a szálloda neve, a tartalom áttekintése, a dátum), a keresési metaadatok és az AI-javító adatok (hangulat, kifejezés és nyelv).
 
-A PUT-kérelem kiadásához válassza a **Küldés** lehetőséget. Meg kell jelennie az állapotnak. `201 - Created` Ha más állapotot lát, a **Törzs** ablaktáblán keressen egy hibaüzenetet tartalmazó JSON-választ. 
+Válassza a **Küldés** lehetőséget a Put kérelem kiválasztásához. Ekkor meg kell jelennie az `201 - Created`állapotnak. Ha más állapotot lát, a **törzs** ablaktáblán keressen egy olyan JSON-választ, amely egy hibaüzenetet tartalmaz. 
 
 ## <a name="create-the-datasource"></a>Az adatforrás létrehozása
 
-Ezután csatlakoztassa az Azure Cognitive Search-et a Blob storage-ban tárolt szállodai adatokhoz. Az adatforrás létrehozásához küldjön postai kérelmet a rendszernek. `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` Be kell `api-key` állítania a és `Content-Type` a fejléceket a korábban tárgyaltak szerint. 
+Következő lépésként kapcsolja össze az Azure Cognitive Search a blob Storage-ban tárolt a szállodai adatkapcsolattal. Az adatforrás létrehozásához küldjön egy POST-kérelmet a `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`következőnek:. A és `api-key` `Content-Type` a fejléceket a korábban tárgyalt módon kell beállítani. 
 
-A Postman alkalmazásban nyissa meg az **Adatforrás létrehozása** kérelmet, majd a **Törzs** ablaktáblát. Az alábbi kódot kell látnia:
+A Poster területen lépjen az **adatforrás létrehozása** kérelemre, majd a **törzs** ablaktáblára. Az alábbi kódot kell látnia:
 
 ```json
 {
@@ -167,17 +167,17 @@ A Postman alkalmazásban nyissa meg az **Adatforrás létrehozása** kérelmet, 
 }
 ```
 
-A POST-kérelem kiadásához válassza a **Küldés** lehetőséget. 
+Kattintson a **Küldés** gombra a post kérelem kiadásához. 
 
-## <a name="create-the-skillset"></a>A skillset létrehozása 
+## <a name="create-the-skillset"></a>A készségkészlet létrehozása 
 
-A következő lépés a skillset megadása, amely meghatározza mind az alkalmazandó fejlesztéseket, mind az eredmények tárolásának helyében lévő tudástárolót. A Postman csoportban válassza **a Skillset létrehozása** lapot. Ez a kérés `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`put-ot küld a számára. Állítsa `api-key` be `Content-type` a fejléceket, ahogy korábban tette. 
+A következő lépés a készségkészlet megadása, amely meghatározza az alkalmazandó fejlesztéseket és az eredményeket tároló tudásbázist. A Poster területen válassza a **Létrehozás a készségkészlet** lapot. A kérelem elküld egy PUT `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`-t. Állítsa be `api-key` a `Content-type` és a fejléceket a korábbi módon. 
 
-Két nagy legfelső szintű objektum `skills` `knowledgeStore`létezik: és a. Az `skills` objektumon belüli minden objektum egy dúsítási szolgáltatás. Minden dúsító `inputs` `outputs`szolgáltatás rendelkezik és. A `LanguageDetectionSkill` kimenete `targetName` `Language`. Ennek a csomópontnak az értékét a legtöbb más szakértelem használja bemenetként. A forrás `document/Language`. Az egyik csomópont kimenetének egy másik csomópontba való bevitele `ShaperSkill`még nyilvánvalóbb a rendszerben, amely meghatározza, hogy az adatok hogyan jutnak be a tudástároló tábláiba.
+Két nagyméretű legfelső szintű objektum létezik: `skills` és. `knowledgeStore` Az `skills` objektumon belüli összes objektum egy dúsítási szolgáltatás. Minden alkoholtartalom `inputs` -növelési szolgáltatás `outputs`és. A `LanguageDetectionSkill` kimenete `targetName` : `Language`. Ennek a csomópontnak az értékét a más képességek többsége használja bemenetként. A forrás: `document/Language`. Egy csomópont kimenetének egy másikhoz való bemenetének lehetősége még nyilvánvalóbb a-ben `ShaperSkill`, amely meghatározza, hogy az adatok hogyan áramlanak be a Knowledge Store tábláiba.
 
-Az `knowledge_store` objektum a Postman változón keresztül csatlakozik a `{{storage-connection-string}}` tárfiókhoz. `knowledge_store`A továbbfejlesztett dokumentum, valamint a tudástárolóban lévő táblázatok és oszlopok közötti leképezések készletét tartalmazza. 
+Az `knowledge_store` objektum a `{{storage-connection-string}}` Poster változón keresztül kapcsolódik a Storage-fiókhoz. `knowledge_store`a a tudásbázisban található bővített dokumentum és táblák és oszlopok közötti leképezések készletét tartalmazza. 
 
-A skillset létrehozásához válassza a **Küldés** gombot a Postman alkalmazásban a kérés elküldéséhez:
+A készségkészlet létrehozásához kattintson a Poster **Send (Küldés** ) gombjára a kérelem elvégzéséhez:
 
 ```json
 {
@@ -307,11 +307,11 @@ A skillset létrehozásához válassza a **Küldés** gombot a Postman alkalmaz�
 
 ## <a name="create-the-indexer"></a>Az indexelő létrehozása
 
-Az utolsó lépés az indexelő létrehozása. Az indexelő beolvassa az adatokat, és aktiválja a skillset. A Postman, válassza ki az **Indexelő létrehozása** kérelmet, majd tekintse át a törzset. Az indexelő definíciója számos más, már létrehozott erőforrásra utal: az adatforrásra, az indexre és a skillsetre. 
+Az utolsó lépés az indexelő létrehozása. Az indexelő beolvassa az adatokat, és aktiválja a készségkészlet. A Poster területen válassza az **Indexelő kérés létrehozása** lehetőséget, majd tekintse át a törzset. Az indexelő definíciója több, már létrehozott erőforrásra hivatkozik: az adatforrás, az index és a készségkészlet. 
 
-Az `parameters/configuration` objektum azt szabályozza, hogy az indexelő hogyan hogyan hogyan fejti be az adatokat. Ebben az esetben a bemeneti adatok egyetlen dokumentumban vannak, amely fejlécsés vesszővel tagolt értékekkel rendelkezik. A dokumentumkulcs a dokumentum egyedi azonosítója. A kódolás előtt a dokumentumkulcs a forrásdokumentum URL-címe. Végül a skillset kimeneti értékek, például a nyelvi kód, a hangulat és a kulcskifejezések, a dokumentumban lévő helyükre vannak leképezve. Bár a program a `Language`rendszernek egyetlen értéke van a rendszerhez, `Sentiment` a tömb minden elemére alkalmazza a program. `pages` `Keyphrases`egy olyan tömb, amely a `pages` tömb minden elemére is vonatkozik.
+Az `parameters/configuration` objektum azt szabályozza, hogy az indexelő Hogyan nyelje le az adatot. Ebben az esetben a bemeneti adatok egy olyan dokumentumban vannak, amely tartalmaz egy fejlécet és egy vesszővel tagolt értéket. A dokumentum kulcsa a dokumentum egyedi azonosítója. A kódolás előtt a dokumentum kulcsa a forrásdokumentum URL-címe. Végül a készségkészlet kimeneti értékei, például a Nyelvkód, a hangulat és a legfontosabb kifejezések a dokumentumban lévő helyükre vannak leképezve. Bár egyetlen érték van a esetében `Language`, `Sentiment` a rendszer a tömb minden elemére alkalmazza. `pages` `Keyphrases`egy olyan tömb, amely a `pages` tömb egyes elemeire is vonatkozik.
 
-Miután beállította `Content-type` a és a `api-key` fejléceket, és meggyőződött arról, hogy a kérelem törzse hasonló a következő forráskódhoz, válassza a **Küldés** postásnak lehetőséget. A postás put-kérelmet küld a számára. `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` Az Azure Cognitive Search létrehozza és futtatja az indexelőt. 
+Miután beállította a `api-key` és `Content-type` a fejléceket, és ellenőrizze, hogy a kérelem törzse hasonló-e a következő forráskódhoz, válassza a **Küldés** postán lehetőséget. A Poster egy PUT-kérelmet `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`küld a következőnek:. Az Azure Cognitive Search létrehozza és futtatja az indexelő. 
 
 ```json
 {
@@ -344,20 +344,20 @@ Miután beállította `Content-type` a és a `api-key` fejléceket, és meggyőz
 
 ## <a name="run-the-indexer"></a>Az indexelő futtatása 
 
-Az Azure Portalon nyissa meg az Azure Cognitive Search szolgáltatás **áttekintése** lapot. Válassza az **Indexelők** lapot, majd a **hotels-reviews-ixr**lehetőséget. Ha az indexelő még nem futott, válassza a **Futtatás lehetőséget.** Az indexelési feladat a nyelvfelismeréssel kapcsolatos figyelmeztetéseket is felvethet. Az adatok tartalmaznak néhány olyan értékelést, amely olyan nyelveken íródott, amelyeket a kognitív képességek még nem támogatnak. 
+A Azure Portal nyissa meg az Azure Cognitive Search szolgáltatás **Áttekintés** lapját. Válassza ki az **Indexelő** fület, majd válassza a **Hotels-Reviews-IXR**lehetőséget. Ha az indexelő még nem fut, válassza a **Futtatás**lehetőséget. Előfordulhat, hogy az indexelési feladat bizonyos, a nyelvi felismeréssel kapcsolatos figyelmeztetéseket eredményezhet. Az adatelemzés tartalmaz néhány olyan nyelvet, amely a kognitív képességek által még nem támogatott nyelveken íródott. 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a Cognitive Services használatával bővítette az adatokat, és az eredményeket egy tudástárba vetítette, a Storage Explorer vagy a Power BI segítségével megismerheti a bővített adatkészletet.
+Most, hogy a Cognitive Services és az eredmények egy tudásbázisba való kivetítésével bővíti az adatait, a Storage Explorer vagy a Power BI használatával megismerheti a dúsított adatkészletet.
 
-Ha meg szeretné tudni, hogyan fedezheti fel ezt a tudástárolót a Storage Explorer használatával, olvassa el az útmutatót:
+Ha szeretné megtudni, hogyan derítheti fel ezt a tudásbázist Storage Explorer használatával, tekintse meg ezt a bemutatót:
 
 > [!div class="nextstepaction"]
 > [Megtekintés a Storage Explorerrel](knowledge-store-view-storage-explorer.md)
 
-A tudástároló nak a Power BI-hoz való csatlakoztatásáról az útmutatóban olvashat:
+A következő útmutatóból megtudhatja, hogyan csatlakoztatható a Power BI a Knowledge Store-hoz:
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Power BI-jal](knowledge-store-connect-power-bi.md)
 
-Ha meg szeretné ismételni ezt a gyakorlatot, vagy ki próbálhatja egy másik AI-bővítési forgatókönyvet, törölje a **hotel-reviews-idxr** indexelőt. Az indexelő törlése nullára állítja vissza az ingyenes napi tranzakciószámlálót.
+Ha szeretné megismételni ezt a gyakorlatot, vagy próbáljon meg egy másik AI-bővítési bemutatót használni, törölje a **Hotel-Reviews-idxr** indexelő. Az indexelő törlése visszaállítja az ingyenes napi tranzakció számlálóját nullára.

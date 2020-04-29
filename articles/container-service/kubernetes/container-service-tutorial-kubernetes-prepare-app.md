@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Azure Container Service oktatóanyag – Alkalmazás előkészítése
+title: ELAVULT Azure Container Service oktatóanyag – alkalmazás előkészítése
 description: Azure Container Service-oktatóanyag – Az alkalmazás előkészítése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76275426"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(ELAVULT) Az Azure Container Service szolgáltatással használandó tárolórendszerképek létrehozása
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>ELAVULT Azure Container Servicehez használandó tároló-lemezképek létrehozása
 
 > [!TIP]
-> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Alkalmazás előkészítése az Azure Kubernetes-szolgáltatáshoz (AKS)](../../aks/tutorial-kubernetes-prepare-app.md)című témakörben található.
+> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazás előkészítése az Azure Kubernetes Service (ak) szolgáltatáshoz](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -85,7 +85,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Futtassa a [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) parancsot a futó tárolók megtekintéséhez.
+Futtassa a [Docker PS](https://docs.docker.com/engine/reference/commandline/ps/) parancsot a futó tárolók megtekintéséhez.
 
 ```bash
 docker ps

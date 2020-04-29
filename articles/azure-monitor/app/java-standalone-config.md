@@ -1,20 +1,20 @@
 ---
-title: Java-alkalmazások figyelése bárhol – Azure Monitor Application Insights
-description: Kód nélküli alkalmazásteljesítmény-figyelés a Bármilyen környezetben futó Java alkalmazásokhoz az alkalmazás programozása nélkül. Keresse meg a d problémák kiváltó okát az elosztott nyomkövetés és az alkalmazásleképezés segítségével.
+title: Java-alkalmazások bárhol figyelése – Azure Monitor Application Insights
+description: Kód nélküli alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Az elosztott nyomkövetési és az alkalmazás-hozzárendelés használatával megkeresheti a d problémák kiváltó okát.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641887"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509210"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurációs beállítások – Az Azure Monitor Application Insights java önálló ügynöke
+# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurációs lehetőségek – Java önálló ügynök a Azure Monitor Application Insights
 
 
 
-## <a name="connection-string-and-role-name"></a>Kapcsolati karakterlánc és szerepkör neve
+## <a name="connection-string-and-role-name"></a>A kapcsolatok karakterlánca és a szerepkör neve
 
 ```json
 {
@@ -27,34 +27,34 @@ ms.locfileid: "81641887"
 }
 ```
 
-A kapcsolati karakterlánc szükséges, és a szerepkör neve fontos minden alkalommal, amikor adatokat küld a különböző alkalmazások ugyanabba az Application Insights erőforrás.
+A kapcsolódási karakterláncot kötelező megadni, és a szerepkör neve fontos minden alkalommal, amikor különböző alkalmazásokból küld adatokat ugyanarra a Application Insights erőforrásra.
 
-További részleteket és további konfigurációs lehetőségeket alább talál.
+További részleteket és további konfigurációs beállításokat alább talál.
 
 ## <a name="configuration-file-path"></a>Konfigurációs fájl elérési útja
 
-Az Application Insights Java 3.0 Preview alapértelmezés szerint `ApplicationInsights.json`arra számít, hogy a konfigurációs fájl neve a rendszernek a címtárban `applicationinsights-agent-3.0.0-PREVIEW.jar`történik.
+Alapértelmezés szerint a Application Insights Java 3,0 előzetes verziója elvárja, hogy a konfigurációs fájl legyen `ApplicationInsights.json`elnevezve, és hogy ugyanabban a könyvtárban legyen `applicationinsights-agent-3.0.0-PREVIEW.4.jar`, mint a.
 
-Megadhatja a saját konfigurációs fájl elérési útját a
+Megadhatja saját konfigurációs fájljának elérési útját a következők használatával
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`környezeti változó, vagy
-* `applicationinsights.configurationFile`Java rendszer tulajdonsága
+* `applicationinsights.configurationFile`Java rendszertulajdonság
 
-Ha relatív elérési utat ad meg, az `applicationinsights-agent-3.0.0-PREVIEW.jar` a könyvtárhoz viszonyítva feloldódik.
+Ha relatív elérési utat ad meg, a `applicationinsights-agent-3.0.0-PREVIEW.4.jar` rendszer a helyen található könyvtárhoz viszonyítva megoldódik.
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
-Erre szükség van. A kapcsolati karakterláncot az Application Insights-erőforrásban találja meg:
+Erre szükség van. A Application Insights erőforrásban található a kapcsolatok karakterlánca:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights-kapcsolati karakterlánc":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights a kapcsolatok karakterlánca":::
 
-A kapcsolati karakterláncot a környezeti `APPLICATIONINSIGHTS_CONNECTION_STRING`változó használatával is beállíthatja.
+A környezeti változó `APPLICATIONINSIGHTS_CONNECTION_STRING`használatával is beállíthatja a kapcsolatok karakterláncát.
 
 ## <a name="cloud-role-name"></a>Felhőbeli szerepkör neve
 
-A felhőbeli szerepkör neve az összetevő címkézésére szolgál az alkalmazástérképen.
+A Felhőbeli szerepkör neve az alkalmazás térképén található összetevő címkézésére szolgál.
 
-Ha be szeretné állítani a felhőbeli szerepkör nevét:
+Ha be szeretné állítani a Felhőbeli szerepkör nevét:
 
 ```json
 {
@@ -66,15 +66,15 @@ Ha be szeretné állítani a felhőbeli szerepkör nevét:
 }
 ```
 
-Ha a felhőbeli szerepkör neve nincs beállítva, az Application Insights-erőforrás neve lesz használva az összetevő az alkalmazástérképen.
+Ha nincs beállítva a Felhőbeli szerepkör neve, a rendszer a Application Insights erőforrás nevét fogja használni az alkalmazás térképén lévő összetevő címkézéséhez.
 
-A felhőbeli szerepkör nevét a környezeti `APPLICATIONINSIGHTS_ROLE_NAME`változó használatával is beállíthatja.
+A Felhőbeli szerepkör nevét a környezeti változó `APPLICATIONINSIGHTS_ROLE_NAME`használatával is beállíthatja.
 
-## <a name="cloud-role-instance"></a>Felhőalapú szerepkörpéldány
+## <a name="cloud-role-instance"></a>Felhőalapú szerepkör-példány
 
-A felhőbeli szerepkörpéldány alapértelmezés szerint a számítógép nevét adja meg.
+A Felhőbeli szerepkör példánya alapértelmezés szerint a gép nevét adja meg.
 
-Ha a felhőbeli szerepkörpéldányt a gépnév helyett valami másra szeretné beállítani:
+Ha a Felhőbeli szerepkör-példányt a gép neve helyett más értékre szeretné beállítani:
 
 ```json
 {
@@ -86,15 +86,15 @@ Ha a felhőbeli szerepkörpéldányt a gépnév helyett valami másra szeretné 
 }
 ```
 
-A felhőalapú szerepkörpéldányt a környezeti `APPLICATIONINSIGHTS_ROLE_INSTANCE`változó használatával is beállíthatja.
+A Felhőbeli szerepkör-példányt a környezeti változó `APPLICATIONINSIGHTS_ROLE_INSTANCE`használatával is beállíthatja.
 
 ## <a name="application-log-capture"></a>Alkalmazásnapló-rögzítés
 
-Az Application Insights Java 3.0 Preview automatikusan rögzíti az alkalmazásnaplózást a Log4j, a Logback és a java.util.logging segítségével.
+Application Insights Java 3,0 előzetes verzió automatikusan rögzíti az alkalmazások naplózását a Log4j, a Logback és a Java. util. Logging használatával.
 
-Alapértelmezés szerint rögzíti az összes `WARN` olyan naplózást, amelyet szinten vagy annál magasabb szinten végeznek.
+Alapértelmezés szerint a rendszer az összes, `WARN` szinten vagy felül végrehajtott naplózást rögzíti.
 
-Ha módosítani szeretné ezt a küszöbértéket:
+Ha módosítani kívánja ezt a küszöbértéket:
 
 ```json
 {
@@ -110,24 +110,24 @@ Ha módosítani szeretné ezt a küszöbértéket:
 }
 ```
 
-Ezek azok `threshold` az érvényes értékek, `ApplicationInsights.json` amelyeket megadhat a fájlban, és hogyan felelnek meg a különböző naplózási keretek naplózási szintjeinek:
+Ezek az érvényes `threshold` értékek, amelyeket megadhat a fájlban, `ApplicationInsights.json` és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek között:
 
-| `threshold`  | Log4j  | Visszamaradás | JÚL     |
+| `threshold`  | Log4j  | Logback | JÚL     |
 |--------------|--------|---------|---------|
 | KI          | KI    | KI     | KI     |
-| Végzetes        | Végzetes  | HIBA   | Súlyos  |
-| HIBA/SÚLYOS | HIBA  | HIBA   | Súlyos  |
-| FIGYELMEZTETÉS/FIGYELMEZTETÉS | Figyelmeztet   | Figyelmeztet    | FIGYELMEZTETÉS |
-| Info         | Info   | Info    | Info    |
-| Config       | HIBAKERESÉS  | HIBAKERESÉS   | Config  |
-| HIBAKERESÉS/FINOM   | HIBAKERESÉS  | HIBAKERESÉS   | Finom    |
-| Finomabb        | HIBAKERESÉS  | HIBAKERESÉS   | Finomabb   |
-| NYOM/LEGFINOMABB | Nyomkövetési  | Nyomkövetési   | Legjobb  |
+| VÉGZETES        | VÉGZETES  | HIBA   | SÚLYOS  |
+| HIBA/SÚLYOS | HIBA  | HIBA   | SÚLYOS  |
+| FIGYELMEZTETÉS/FIGYELMEZTETÉS | FIGYELMEZTETI   | FIGYELMEZTETI    | FIGYELMEZTETÉS |
+| INFORMÁCIÓ         | INFORMÁCIÓ   | INFORMÁCIÓ    | INFORMÁCIÓ    |
+| CONFIG       | HIBAKERESÉS  | HIBAKERESÉS   | CONFIG  |
+| HIBAKERESÉS/PÉNZBÍRSÁG   | HIBAKERESÉS  | HIBAKERESÉS   | RÉSZLETES    |
+| KIFINOMULTABBAN        | HIBAKERESÉS  | HIBAKERESÉS   | KIFINOMULTABBAN   |
+| NYOMKÖVETÉS/LEGFINOMABB | NYOMKÖVETÉSI  | NYOMKÖVETÉSI   | LEGJOBB  |
 | AZ ÖSSZES          | AZ ÖSSZES    | AZ ÖSSZES     | AZ ÖSSZES     |
 
-## <a name="jmx-metrics"></a>JMX-mutatók
+## <a name="jmx-metrics"></a>JMX metrikák
 
-Ha van néhány JMX mérőszámod, amelyet szeretnél rögzíteni:
+Ha van olyan JMX mérőszáma, amelyet szeretne a rögzítéshez:
 
 ```json
 {
@@ -150,11 +150,13 @@ Ha van néhány JMX mérőszámod, amelyet szeretnél rögzíteni:
 }
 ```
 
-## <a name="micrometer"></a>Mikrométer
+## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikrométer (beleértve a Spring boot indítószerkezet mérőszámait)
 
-Alapértelmezés szerint ha az alkalmazás [használja a Mikrométer](https://micrometer.io), Application Insights 3.0 (kezdve Preview.2) most hozzáteszi magát a Mikrométer globális rendszerleíró adatbázis és rögzíti a mikrométer metrikák.
+Ha az alkalmazás mikrométert [használ,](https://micrometer.io)Application Insights 3,0 (az előzetes verziótól kezdődően), most már rögzíti a Mikrométer globális beállításjegyzékbe eljuttatott metrikákat.
 
-Ha le szeretné tiltani ezt a funkciót:
+Ha az alkalmazás [Spring boot-működtetőt](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)használ, Application Insights 3,0 (az előzetes verziótól kezdődően) most már rögzíti a Spring boot indítószerkezet által konfigurált mérőszámokat (amely a mikrométert használja, de nem használja a Mikrométer globális beállításjegyzékét).
+
+Ha le szeretné tiltani ezeket a funkciókat:
 
 ```json
 {
@@ -172,7 +174,7 @@ Ha le szeretné tiltani ezt a funkciót:
 
 ## <a name="heartbeat"></a>Szívverés
 
-Alapértelmezés szerint az Application Insights Java 3.0 preview 15 percenként egyszer küld szívverés-metrikát. Ha a szívverésmérőt használja a riasztások aktiválásához, növelheti a szívverés gyakoriságát:
+Alapértelmezés szerint a Application Insights Java 3,0 előnézet 15 percenként egyszer elküld egy szívverési metrikát. Ha a szívverés metrikáját használja a riasztások elindításához, növelheti a szívverés gyakoriságát:
 
 ```json
 {
@@ -187,16 +189,16 @@ Alapértelmezés szerint az Application Insights Java 3.0 preview 15 percenként
 ```
 
 > [!NOTE]
-> A szívverés gyakorisága nem csökkenthető, mivel a szívverési adatok az Application Insights használatának nyomon követésére is használatot tartalmaznak.
+> A szívverés gyakorisága nem csökkenthető, mivel a szívverési adatok a Application Insights használatának nyomon követésére is használhatók.
 
 ## <a name="sampling"></a>Mintavételezés
 
-Mintavételi akkor hasznos, ha csökkenteni kell a költségeket.
-A mintavételezés funkcióként történik a műveletazonosítón (más néven nyomkövetési azonosító), így ugyanaz a műveletazonosító mindig ugyanazt a mintavételi döntést eredményezi. Ez biztosítja, hogy nem kap egy elosztott tranzakció egyes részeit, amíg annak más részei is mintavételezik.
+A mintavétel hasznos lehet, ha csökkenteni kell a költségeket.
+A mintavétel függvényként van elvégezve a műveleti AZONOSÍTÓban (más néven nyomkövetési azonosító), így ugyanaz a műveleti azonosító mindig ugyanazt a mintavételi döntést fogja eredményezni. Ez biztosítja, hogy az elosztott tranzakciók részei ne legyenek kiszámítva, míg más részeinek mintavételezése nem történik meg.
 
-Ha például a mintavételezést 10%-ra állítja, akkor csak a tranzakciók 10%-a jelenik meg, de a 10%-os tranzakciók mindegyike teljes körű tranzakciós adatokkal fog rendelkezni.
+Ha például 10%-ra állítja be a mintavételezést, akkor csak a tranzakciók 10%-át fogja látni, de ezek mindegyike a teljes végpontok közötti tranzakció részleteit tartalmazza.
 
-Íme egy példa arra, hogyan állíthatja be a mintavételezést az **összes tranzakció 10%-ára** - kérjük, győződjön meg arról, hogy a használati esetnek megfelelő mintavételi arányt állított be:
+Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést az **összes tranzakció 10%-ában** – ügyeljen arra, hogy a használati esetnek megfelelő mintavételi sebességet adja meg:
 
 ```json
 {
@@ -214,7 +216,7 @@ Ha például a mintavételezést 10%-ra állítja, akkor csak a tranzakciók 10%
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
-Ha az alkalmazás tűzfal mögött van, és nem tud közvetlenül csatlakozni az Application Insightshoz (lásd: [Az Application Insights által használt IP-címeket),](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)beállíthatja, hogy az Application Insights Java 3.0 Preview HTTP-proxyt használjon:
+Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcsolódni a Application Insightshoz (lásd: [Application Insights által használt IP-címek](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), akkor a Java 3,0 előzetes verziójának Application Insights konfigurálásával HTTP-proxyt használhat:
 
 ```json
 {
@@ -231,11 +233,11 @@ Ha az alkalmazás tűzfal mögött van, és nem tud közvetlenül csatlakozni az
 
 ## <a name="self-diagnostics"></a>Öndiagnosztika
 
-Az "öndiagnosztika" az Application Insights Java 3.0 Előzetes verziójából történő belső naplózásra vonatkozik.
+Az "öndiagnosztika" a Application Insights Java 3,0 előzetes verziójának belső naplózására utal.
 
-Ez hasznos lehet az Application Insights problémák észleléséhez és diagnosztizálásához.
+Ez hasznos lehet a Application Insights saját maga által felmerülő problémák felderítésére és diagnosztizálására.
 
-Alapértelmezés szerint a konzolra naplóz, amely a konfigurációnak megfelelő szinttel `warn`van eltasztaként:
+Alapértelmezés szerint a konzolhoz a következő konfigurációnak `warn`megfelelő szintet naplóz:
 
 ```json
 {
@@ -250,9 +252,9 @@ Alapértelmezés szerint a konzolra naplóz, amely a konfigurációnak megfelel�
 }
 ```
 
-Az érvényes `OFF` `ERROR`szintek `WARN` `INFO`a `DEBUG`, `TRACE`, , , , és .
+Az érvényes szintek `OFF`a `ERROR`következők `WARN` `INFO` `DEBUG`:,,, `TRACE`, és.
 
-Ha a konzolra való bejelentkezés helyett egy fájlba szeretne naplózni:
+Ha a konzolra való bejelentkezés helyett egy fájlba szeretne bejelentkezni:
 
 ```json
 {
@@ -269,4 +271,4 @@ Ha a konzolra való bejelentkezés helyett egy fájlba szeretne naplózni:
 }
 ```
 
-A fájlnaplózás használatakor, `maxSizeMB`amint a fájl eléri a fájlt, az átgördül, és az aktuális naplófájl mellett csak a legutóbb befejezett naplófájlt tartja meg.
+A fájlok naplózása, ha a fájl látogatottsága `maxSizeMB`befejeződik, a rendszer az aktuális naplófájl mellett csak a legutóbb befejezett naplófájlt fogja használni.

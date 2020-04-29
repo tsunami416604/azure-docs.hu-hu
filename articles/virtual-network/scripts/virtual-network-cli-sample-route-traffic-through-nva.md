@@ -1,5 +1,5 @@
 ---
-title: Forgalom irányítása hálózati virtuális berendezésen keresztül – Azure CLI-parancsfájlminta
+title: Forgalom irányítása hálózati virtuális készüléken keresztül – Azure CLI parancsfájl minta
 description: Azure CLI-példaszkript – Forgalom irányítása hálózati virtuális készüléken keresztül.
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: d8704c34d59a8f735d060a7c7ca6463034883714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74083820"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Forgalom irányítása hálózati virtuális készüléken keresztül – példaszkript

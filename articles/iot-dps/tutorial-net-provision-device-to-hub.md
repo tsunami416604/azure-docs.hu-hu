@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Eszköz kiépítése az Azure IoT Hub-eszközkiépítési szolgáltatás (.NET) használatával
-description: Ez az oktatóanyag bemutatja, hogyan építheti ki az eszközt egyetlen IoT-központba az Azure IoT Hub-eszközlétesítési szolgáltatás (DPS) használatával a .NET használatával.
+title: Oktatóanyag – eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) használatával
+description: Ez az oktatóanyag bemutatja, hogyan építheti ki az eszközt egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service (DPS) használatával a .NET használatával.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74976774"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Oktatóanyag: Az eszköz regisztrálása egy IoT hubra az Azure IoT Hub-kiépítési szolgáltatás ügyfél (.NET) használatával
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Oktatóanyag: az eszköz regisztrálása egy IoT hubhoz az Azure IoT Hub-létesítési szolgáltatás ügyfelének használatával (.NET)
 
 Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, hogy az a Device Provisioning Service-hez csatlakozzon. Ebben az oktatóanyagban megtudhatja, hogyan építheti ki az eszközt ezzel a szolgáltatással egyetlen IoT Hubra, **_egyéni regisztráció_** és **_regisztrációs csoportok_** használatával. Ez az oktatóanyag a következőket mutatja be:
 
@@ -129,7 +129,7 @@ A következő két módon regisztrálható az eszköz a Device Provisioning Serv
     Console.ReadLine();
     ```
         
-1. A Visual Studio Solution Explorer programban kattintson a jobb gombbal a megoldásra, majd kattintson **az Indítási projektek beállítása...** parancsra. Válassza **az Egy indítási projekt**lehetőséget, majd a legördülő menüben válassza a **DeviceProvisioning** projektet.  
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson az **indítási projektek beállítása.**.. elemre. Válassza az **egyetlen indítási projekt**lehetőséget, majd a legördülő menüben válassza ki a **DeviceProvisioning** projektet.  
 
 1. Futtassa a **DeviceProvisiong** .NET-eszközalkalmazást. Az eszközalkalmazás beállítja az eszköz kiépítését: 
 

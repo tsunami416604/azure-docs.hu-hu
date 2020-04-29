@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Feliratkozás egyéni témakörre | Microsoft Docs
-description: Ez a cikk egy minta Azure CLI-parancsfájlt tartalmaz, amely bemutatja, hogyan iratkozhat fel az Event Grid-eseményekre egy egyéni témakörhöz.
+description: Ez a cikk egy minta Azure CLI-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő Event Grid eseményekre egy egyéni témakörben.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 9d82a5c3d9723c26d5a98bb2f0c92a6739ffee25
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720129"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Feliratkozás egy egyéni témakör eseményeire az Azure CLI-vel

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Útvonal keresése egy helyre | Microsoft Azure Maps'
-description: Ez az oktatóanyag bemutatja, hogyan jelenítheti meg az útvonalat egy térképen (érdekes hely) a Microsoft Azure Maps útválasztási szolgáltatás használatával.
+title: 'Oktatóanyag: útvonal megkeresése egy helyhez | Microsoft Azure térképek'
+description: Ebből az oktatóanyagból megtudhatja, hogyan teheti át az útvonalat egy adott helyre (érdekes hely) a Microsoft Azure Maps útválasztási szolgáltatás használatával.
 author: philmea
 ms.author: philmea
 ms.date: 01/14/2020
@@ -10,13 +10,13 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 98c36176ecd2996e5f735c52017162a076ef4bde
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80333765"
 ---
-# <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Oktatóanyag: Útvonal egy érdekes ponthoz az Azure Maps használatával
+# <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Oktatóanyag: egy hasznos ponthoz való továbbítás Azure Maps használatával
 
 Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Maps-fiókot és a Route Service SDK-t a hasznos helyekre vezető útvonalak megkereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Maps-fiókot és a R
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt folytatna, kövesse a [Fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című útmutató utasításait, és szüksége van egy S1-es tarifacsomaggal rendelkező előfizetésre. Kövesse az [elsődleges kulcs bekésezésének](quick-demo-map-app.md#get-the-primary-key-for-your-account) lépéseit a fiók elsődleges kulcsának lekérni. Az Azure Maps hitelesítéssel kapcsolatos további tudnivalókról az [Azure Maps hitelesítésének kezelése](how-to-manage-authentication.md)című témakörben talál.
+A folytatás előtt kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait S1 díjszabási csomaggal. A fiók elsődleges kulcsának lekéréséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 <a id="getcoordinates"></a>
 
@@ -83,7 +83,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
 
     Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Tekintse meg a laptörzs `onload` eseményét, amely a laptörzs betöltését követően meghívja a `GetMap` függvényt. Ez a függvény tartalmazza az Azure Maps API-k elérésére szolgáló beágyazott JavaScript-kódot. 
 
-3. Adja hozzá az alábbi JavaScript-kódot a `GetMap` függvényhez. Cserélje le `<Your Azure Maps Key>` a karakterláncot a Térkép-fiókból másolt elsődleges kulcsra.
+3. Adja hozzá az alábbi JavaScript-kódot a `GetMap` függvényhez. Cserélje le a `<Your Azure Maps Key>` karakterláncot arra az elsődleges kulcsra, amelyet a Maps-fiókból másolt.
 
     ```JavaScript
    //Instantiate a map object
@@ -106,7 +106,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
 
 Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az útvonal elejét és végét egy-egy szimbólum, az útvonalat pedig egy vonal jelöli.
 
-1. A térkép inicializálása után adja hozzá a következő JavaScript-kódot.
+1. A Térkép inicializálását követően adja hozzá a következő JavaScript-kódot.
 
     ```JavaScript
     //Wait until the map resources are ready.
@@ -139,9 +139,9 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
     });
     ```
     
-    A térképek `ready` eseménykezelőjében egy adatforrás jön létre az útvonalvonal, valamint a kezdő- és végpontok tárolására. A rendszer egy vonalréteget hoz létre, majd csatol az adatforráshoz az útvonal megjelenítési módjának meghatározásához. Az útvonal vonal lesz, mint egy szép árnyalatú kék. Öt képpont széles, lekerekített vonalillesztések és sapkák. A réteg térképhez való hozzáadásakor a rendszer átad egy `'labels'` értékű második paramétert is, amely azt határozza meg, hogy ez a réteg a térképfeliratok alatt jelenjen meg. Ezzel biztosítható, hogy az útvonal ne takarja ki az utakhoz tartozó feliratokat. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg a kezdő- és végpontok renderelésének módját. Ebben az esetben a program kifejezéseket adott hozzá az ikonkép és a szöveges címke adatainak beolvasásához az egyes pontobjektumok tulajdonságaiból. 
+    A Maps `ready` -eseménykezelőben létrejön egy adatforrás, amely az útvonal vonalát, valamint a kezdő és záró pontokat tárolja. A rendszer egy vonalréteget hoz létre, majd csatol az adatforráshoz az útvonal megjelenítési módjának meghatározásához. Az útvonal vonalát a kék szín szép árnyalata jeleníti meg a rendszer. Szélessége öt képpont, lekerekített vonal és Caps. A réteg térképhez való hozzáadásakor a rendszer átad egy `'labels'` értékű második paramétert is, amely azt határozza meg, hogy ez a réteg a térképfeliratok alatt jelenjen meg. Ezzel biztosítható, hogy az útvonal ne takarja ki az utakhoz tartozó feliratokat. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg a kezdő és a záró pontok megjelenítésének módját. Ebben az esetben a kifejezések hozzá lettek adva, hogy beolvassák az ikon képének és a szöveg feliratának adatait az egyes pontok objektumainak tulajdonságaiból. 
     
-2. A jelen oktatóanyag esetében a Microsoftot állítsa be indulási pontnak, célpontnak pedig egy seattle-i benzinkutat. A térképek `ready` eseménykezelő, adja hozzá a következő kódot.
+2. A jelen oktatóanyag esetében a Microsoftot állítsa be indulási pontnak, célpontnak pedig egy seattle-i benzinkutat. A Maps `ready` -eseménykezelőben adja hozzá a következő kódot.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end points of the route.
@@ -164,19 +164,19 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
     });
     ```
 
-    Ez a kód két [GeoJSON-pontobjektumot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre az útvonal kezdő- és végpontjainak ábrázolására, és hozzáadja a pontokat az adatforráshoz. A rendszer minden ponthoz hozzáad egy-egy `title` és `icon` tulajdonságot. Az utolsó blokk a kameranézetet a kezdő- és végpontok szélességi és hosszúsági foka alapján állítja be a Térkép [SetCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával.
+    Ez a kód két [GeoJSON pontot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre, amelyek az útvonal kezdő és záró pontjait jelölik, és hozzáadja a pontokat az adatforráshoz. A rendszer minden ponthoz hozzáad egy-egy `title` és `icon` tulajdonságot. Az utolsó blokk a Térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával állítja be a kamera nézetét a kezdő-és végpontok szélességi és hosszúsági pontjainak használatával.
 
-3. Mentse a **MapRoute.html** fájlt, és frissítse a böngészőt. Most a térkép seattle-i középre van, és láthatja, hogy a kék tű jelöli a kezdőpontot, és a kerek kék tű, amely a célpontot jelöli.
+3. Mentse a **MapRoute.html** fájlt, és frissítse a böngészőt. A Térkép középpontba került a Seattle-ben, és láthatja, hogy a kiindulási pontot és a kerek kék PIN-kódot jelölő kék PIN-kód megjelöli a befejezési pontot.
 
-   ![Útvonalak kezdő- és végpontjának megtekintése a térképen](media/tutorial-route-location/map-pins.png)
+   ![Útvonalak megnézetének kezdete és vége a térképen](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 
 ## <a name="get-directions"></a>Útvonal keresése
 
-Ez a szakasz bemutatja, hogyan használhatja az Azure Maps útvonalszolgáltatás API-t. Az útvonalszolgáltatás API-ja megkeresi az útvonalat egy adott kezdőponttól a végpontig. Ezen a szolgáltatáson belül vannak OLYAN API-k, amelyek két hely közötti *leggyorsabb,* *legrövidebb,* *eco*vagy *izgalmas* útvonalakat terveznek. Ez a szolgáltatás azt is lehetővé teszi a felhasználók számára, hogy tervezzen útvonalakat a jövőben az Azure kiterjedt történelmi forgalmi adatbázis használatával. A felhasználók láthatják az útvonal időtartamának előrejelzését bármely kiválasztott napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Az alábbi funkciókat hozzá kell adni **a térképen kész eventListener** annak érdekében, hogy a betöltésután a térkép erőforrások készen állnak az elérésre.
+Ez a szakasz bemutatja, hogyan használhatja a Azure Maps Route Service API-t. Az útvonal-szolgáltatás API megkeresi az útvonalat egy adott kezdőponttól a végpontig. Ezen a szolgáltatáson belül vannak olyan API-k, amelyekkel megtervezheti a *leggyorsabb*, *legrövidebb*, *Eco*vagy *izgalmas* útvonalakat két helyszín között. Ez a szolgáltatás azt is lehetővé teszi, hogy a felhasználók a jövőben is tervezzenek útvonalakat az Azure kiterjedt történelmi forgalmú adatbázisának használatával. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését bármely kiválasztott napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Az alábbi funkciók mindegyikét hozzá kell adni **a Térkép kész eventListener** , hogy azok bekerüljenek a Térkép erőforrásainak eléréséhez.
 
-1. A GetMap függvényben adja hozzá a következőket a JavaScript-kódhoz.
+1. A GetMap függvényben adja hozzá a következőt a JavaScript-kódhoz.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
@@ -189,9 +189,9 @@ Ez a szakasz bemutatja, hogyan használhatja az Azure Maps útvonalszolgáltatá
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   A `SubscriptionKeyCredential` létrehoz `SubscriptionKeyCredentialPolicy` egy hitelesítési HTTP-kérelmek et az Azure Maps az előfizetési kulcs. A `atlas.service.MapsURL.newPipeline()` házirend `SubscriptionKeyCredential` veszi, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) példányt. Az `routeURL` Azure Maps [Route-műveletek](https://docs.microsoft.com/rest/api/maps/route) URL-címét jelöli.
+   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` -t az előfizetési kulccsal Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` szabályzatot, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) -példányt. A `routeURL` a Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) műveletekhez tartozó URL-címet jelöli.
 
-2. A hitelesítő adatok és az URL beállítása után adja hozzá a következő JavaScript-kódot az útvonal létrehozásához az elejétől a végpontig. Az `routeURL` Azure Maps útvonalszolgáltatás az útvonalútvonal kiszámításához kéri. A válaszgeoJSON szolgáltatásgyűjteményét ezután kinyeri a `geojson.getFeatures()` metódus, és hozzáadja az adatforráshoz.
+2. A hitelesítő adatok és az URL-cím beállítása után adja hozzá a következő JavaScript-kódot az útvonal létrehozásához az elejétől a végéig. A `routeURL` a Azure Maps Route szolgáltatást kéri az útvonal irányának kiszámításához. Ezután a válaszból Kinyer `geojson.getFeatures()` egy GeoJSON-gyűjteményt, és hozzáadja az adatforráshoz.
 
     ```JavaScript
     //Start and end point input to the routeURL

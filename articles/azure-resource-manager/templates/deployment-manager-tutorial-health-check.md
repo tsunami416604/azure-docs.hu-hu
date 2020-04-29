@@ -1,102 +1,102 @@
 ---
-title: Az Azure Deployment Manager állapotfelmérésének használata
-description: Az állapotfelmérés segítségével biztonságosan üzembe helyezheti az Azure-erőforrásokat az Azure Deployment Manager rel.
+title: Az Azure telepítéskezelő állapot-ellenőrzési szolgáltatása
+description: Az állapot-ellenőrzési lehetőséggel biztonságosan telepíthet Azure-erőforrásokat az Azure telepítéskezelő használatával.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 765c73a3ab8d5fa8939abe597d0141b24b59ac52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76152477"
 ---
-# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: Állapot-ellenőrzés használata az Azure Deployment Managerben (nyilvános előzetes verzió)
+# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: állapot-ellenőrzési funkció használata az Azure telepítéskezelő (nyilvános előzetes verzió)
 
-Ismerje meg, hogyan integrálhatja az állapotfelmérést az [Azure Deployment Managerbe.](./deployment-manager-overview.md) Ez az oktatóanyag az [Azure Deployment Manager használata erőforrás-kezelősablonokhoz](./deployment-manager-tutorial.md) oktatóanyagon alapul. Ezt az oktatóanyagot be kell fejeznie, mielőtt ezt folytatná.
+Ismerje meg, hogyan integrálhatja az állapot-ellenőrzését az [Azure telepítéskezelőban](./deployment-manager-overview.md). Ez az oktatóanyag az [Azure Telepítéskezelő és a Resource Manager-sablonok oktatóanyagának használatával foglalkozik](./deployment-manager-tutorial.md) . Mielőtt folytatná, ezt az oktatóanyagot kell végrehajtania.
 
-Az [Azure Deployment Manager erőforrás-kezelősablonokkal](./deployment-manager-tutorial.md)való használata című lapban használt bevezetési sablonban várakozási lépést használt. Ebben az oktatóanyagban a várakozási lépést egy állapot-ellenőrzési lépéssel helyettesítheti.
+Az [Azure Telepítéskezelő Resource Manager-sablonok használatával](./deployment-manager-tutorial.md)használt bevezetési sablonban várakozási lépést használt. Ebben az oktatóanyagban a várakozási lépést egy állapot-ellenőrzési lépéssel cseréli le.
 
 > [!IMPORTANT]
-> Ha az előfizetés meg van jelölve a Canary számára az új Azure-funkciók teszteléséhez, csak az Azure Deployment Manager használatával telepítheti a Kanári-régiókban. 
+> Ha az előfizetése Kanári-re van megjelölve az új Azure-funkciók kipróbálásához, akkor csak az Azure telepítéskezelőt használhatja a Kanári-régiókban való üzembe helyezéshez. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Állapot-ellenőrzési szolgáltatás szimulátor létrehozása
+> * Állapot-ellenőrzési szolgáltatás-szimulátor létrehozása
 > * A bevezetési sablon felülvizsgálata
-> * A topológia telepítése
-> * A bevezetés telepítése nem megfelelő állapottal
-> * A bevezetés telepítésének ellenőrzése
-> * A bevezetés telepítése kifogástalan állapotú
-> * A bevezetés telepítésének ellenőrzése
+> * A topológia üzembe helyezése
+> * A bevezetés telepítése nem kifogástalan állapottal
+> * A bevezetés központi telepítésének ellenőrzése
+> * A bevezetés kifogástalan állapotú üzembe helyezése
+> * A bevezetés központi telepítésének ellenőrzése
 > * Az erőforrások eltávolítása
 
 További források:
 
-* Az [Azure Deployment Manager REST API-hivatkozása](https://docs.microsoft.com/rest/api/deploymentmanager/).
-* [Egy Azure Deployment Manager-minta](https://github.com/Azure-Samples/adm-quickstart).
+* Az [Azure telepítéskezelő REST API referenciája](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Egy Azure Telepítéskezelő minta](https://github.com/Azure-Samples/adm-quickstart).
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Teljes [Azure Deployment Manager használata erőforrás-kezelősablonokkal.](./deployment-manager-tutorial.md)
+* Fejezze be [Az Azure Telepítéskezelő használatát Resource Manager-sablonokkal](./deployment-manager-tutorial.md).
 
 ## <a name="install-the-artifacts"></a>Az összetevők telepítése
 
-Töltse le [a sablonokat és az összetevőket,](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) és csomagolja ki helyileg, ha még nem tette meg. Ezután futtassa a [PowerShell-parancsfájlt,](./deployment-manager-tutorial.md#prepare-the-artifacts)amely a Műtermékek előkészítése kor található. A parancsfájl létrehoz egy erőforráscsoportot, létrehoz egy tárolótárolót, létrehoz egy blobtárolót, feltölti a letöltött fájlokat, majd létrehoz egy SAS-jogkivonatot.
+Töltse le [a sablonokat és az](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) összetevőket, és bontsa ki helyileg, ha még nem tette meg. Ezután futtassa az összetevők [előkészítése](./deployment-manager-tutorial.md#prepare-the-artifacts)című részen található PowerShell-szkriptet. A parancsfájl létrehoz egy erőforráscsoportot, létrehoz egy tárolót, létrehoz egy BLOB-tárolót, feltölti a letöltött fájlokat, majd létrehoz egy SAS-jogkivonatot.
 
-Készítsen másolatot az URL-címRől A SAS-jogkivonat. Az URL-címet a két paraméterfájlban, a topológiaparaméterek és a bevezetési paraméterek fájljában kell bemásolni egy mezőbe.
+Készítsen másolatot az URL-címről SAS-jogkivonattal. Az URL-címet a két paraméterfájlban, a topológiaparaméterek és a bevezetési paraméterek fájljában kell bemásolni egy mezőbe.
 
-Nyissa meg a CreateADMServiceTopology.Parameters.json programot, és frissítse a **projectName** és **artifactSourceSASLocation**értékét.
+Nyissa meg a CreateADMServiceTopology. Parameters. JSON fájlt, és frissítse a **projektnév** és a **artifactSourceSASLocation**értékeit.
 
-Nyissa meg a CreateADMRollout.Parameters.json programot, és frissítse a **projectName** és **artifactSourceSASLocation**értékét.
+Nyissa meg a CreateADMRollout. Parameters. JSON fájlt, és frissítse a **projektnév** és a **artifactSourceSASLocation**értékeit.
 
-## <a name="create-a-health-check-service-simulator"></a>Állapot-ellenőrzési szolgáltatás szimulátor létrehozása
+## <a name="create-a-health-check-service-simulator"></a>Állapot-ellenőrzési szolgáltatás-szimulátor létrehozása
 
-Éles környezetben általában egy vagy több figyelési szolgáltatót használ. Annak érdekében, hogy az állapotintegráció a lehető legegyszerűbb legyen, a Microsoft együttműködik néhány, a szolgáltatás állapotfigyelő vállalataival, hogy egy egyszerű másolási/beillesztési megoldást biztosítson az állapotellenőrzések és a központi telepítések integrálásához. Ezeknek a vállalatoknak a listáját az [Egészségfigyelő szolgáltatók című témakörben található.](./deployment-manager-health-check.md#health-monitoring-providers) Ebben az oktatóanyagban hozzon létre egy [Azure-függvényt](/azure/azure-functions/) egy állapotfigyelő szolgáltatás szimulálására. Ez a függvény állapotkódot vesz fel, és ugyanazt a kódot adja vissza. Az Azure Deployment Manager-sablon az állapotkód segítségével határozza meg, hogyan kell eljárni a központi telepítés.
+Éles környezetben általában egy vagy több figyelő szolgáltatót használ. Ahhoz, hogy a lehető legkönnyebben elérhető legyen az állapot-integráció, a Microsoft a legfelső szintű Service Health monitoring vállalatokkal együttműködve egyszerű másolási/beillesztési megoldást biztosít az állapot-ellenőrzéseknek az üzembe helyezésekkel való integrálásához. A vállalatok listáját itt tekintheti meg: [állapotfigyelő szolgáltatók](./deployment-manager-health-check.md#health-monitoring-providers). Ebben az oktatóanyagban egy [Azure-függvényt](/azure/azure-functions/) hoz létre az állapotfigyelő szolgáltatás szimulálása céljából. Ez a függvény egy állapotkódot használ, és ugyanazt a kódot adja vissza. Az Azure telepítéskezelő-sablon az állapotkód használatával határozza meg, hogyan folytathatja a telepítést.
 
-A következő két fájl az Azure-függvény üzembe helyezéséhez használatos. Nem kell letölteni ezeket a fájlokat, hogy menjen át a tutorial.
+Az Azure-függvény telepítéséhez a következő két fájl használható. Ezeket a fájlokat nem kell letöltenie, hogy átugorjon az oktatóanyagon.
 
-* Erőforrás-kezelő sablon, [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json)amely a helyen található. Ezt a sablont egy Azure-függvény létrehozásához telepíti.
-* Az Azure Függvény forráskódjának [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip)zip-fájlja, . Ezt a zip-et az Erőforrás-kezelő sablon nevezi meg.
+* A következő helyen található Resource Manager [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json)-sablon:. Ezt a sablont üzembe helyezheti egy Azure-függvény létrehozásához.
+* Az Azure Function forráskódjának zip- [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip)fájlja. Ezt a zip nevű fájlt a Resource Manager-sablon hívja meg.
 
-Az Azure-függvény üzembe helyezéséhez válassza a **Próbálja ki** az Azure Cloud rendszerhéj megnyitásához, majd illessze be a következő parancsfájlt a rendszerhéj ablakába.  A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablakára, majd válassza a **Beillesztés parancsot.**
+Az Azure-függvény üzembe helyezéséhez válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához, majd illessze be a következő szkriptet a rendszerhéj ablakába.  A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj-ablakra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
-Az Azure-funkció ellenőrzése és tesztelése:
+Az Azure-függvény ellenőrzése és tesztelése:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. Nyissa meg az erőforráscsoportot.  Az alapértelmezett név a projekt neve **rg** csatolt.
-1. Válassza ki az alkalmazásszolgáltatást az erőforráscsoportból.  Az alkalmazásszolgáltatás alapértelmezett neve a **webapp-hoz** csatolt projektnév.
-1. Bontsa ki **a Functions**csomópontot, majd válassza a **HttpTrigger1 lehetőséget.**
+1. Nyissa meg az erőforráscsoportot.  Az alapértelmezett név a projekt neve **RG** hozzáfűzéssel.
+1. Válassza ki az App Service-t az erőforráscsoporthoz.  Az App Service alapértelmezett neve a projekt neve **WebApp** hozzáfűzéssel.
+1. Bontsa ki a **függvények**csomópontot, majd válassza a **HttpTrigger1**lehetőséget.
 
-    ![Azure Deployment Manager állapotfelmérés Azure-függvény](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
+    ![Azure telepítéskezelő állapot-ellenőrzési Azure-függvény](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. Válassza a ** &lt;/> Get függvény URL-címének bekerülése**lehetőséget.
-1. Válassza a **Másolás** lehetőséget, ha az URL-címet a vágólapra szeretné másolni.  Az URL-cím hasonló a következőkhöz:
+1. Válassza ki ** &lt;/> a függvény URL-címének beolvasása**
+1. A **Másolás** gombra kattintva másolja az URL-címet a vágólapra.  Az URL-cím a következőhöz hasonló:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Cserélje `{healthStatus}` le az URL-címet egy állapotkódra. Ebben az oktatóanyagban használja **a nem megfelelő állapotú** a nem megfelelő állapotú forgatókönyv teszteléséhez, és használja a **kifogástalan** vagy **figyelmeztetésa** a kifogástalan forgatókönyv teszteléséhez. Hozzon létre két URL-t, az egyik a nem megfelelő állapotú, a másik pedig kifogástalan állapotú. Példák:
+    Cserélje `{healthStatus}` le az URL-címet egy állapotkód értékre. Ebben az oktatóanyagban a nem **megfelelő állapotot használja a** nem Kifogástalan állapot teszteléséhez, és az egészséges forgatókönyv teszteléséhez használja az **egészséges** vagy a **figyelmeztetést** . Hozzon létre két URL-címet, egyet a sérült állapottal, a másikat pedig kifogástalan állapottal. Példák:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/healthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Az oktatóanyag befejezéséhez mindkét URL-re szüksége van.
+    Az oktatóanyag elvégzéséhez mindkét URL-cím szükséges.
 
-1. Az állapotfigyelési szimulátor teszteléséhez nyissa meg az utolsó lépésben létrehozott URL-címeket.  Az egészségtelen állapot ra vonatkozó eredményeknek hasonlónak kell lenniük:
+1. Az állapotfigyelő szimulátor teszteléséhez nyissa meg az utolsó lépésben létrehozott URL-címeket.  A nem Kifogástalan állapot eredményének a következőhöz hasonlónak kell lennie:
 
     ```
     Status: unhealthy
@@ -104,10 +104,10 @@ Az Azure-funkció ellenőrzése és tesztelése:
 
 ## <a name="revise-the-rollout-template"></a>A bevezetési sablon felülvizsgálata
 
-A szakasz célja, hogy megmutassa, hogyan vehet fel állapotellenőrzési lépést a bevezetési sablonba.
+Ennek a szakasznak a célja, hogy bemutassa a bevezetési sablon állapot-ellenőrzési lépéseit.
 
-1. Nyissa **meg a CreateADMRollout.json** t, amelyet az [Azure Deployment Manager használata erőforrás-kezelősablonokkal](./deployment-manager-tutorial.md)létrehozott. Ez a JSON fájl a letöltés része.  Lásd: [Előfeltételek](#prerequisites).
-1. Adjon hozzá még két paramétert:
+1. Nyissa meg az [Azure Telepítéskezelő és Resource Manager-sablonok használatával](./deployment-manager-tutorial.md)létrehozott **CreateADMRollout. JSON** fájlt. Ez a JSON-fájl a letöltés részét képezi.  Lásd: [Előfeltételek](#prerequisites).
+1. Adjon hozzá két további paramétert:
 
     ```json
     "healthCheckUrl": {
@@ -124,7 +124,7 @@ A szakasz célja, hogy megmutassa, hogyan vehet fel állapotellenőrzési lépé
     }
     ```
 
-1. Cserélje le a várakozási lépés erőforrás-definícióját egy állapotellenőrzési lépés erőforrás-definíciójára:
+1. Cserélje le a várakozási lépés erőforrás-definícióját egy állapot-ellenőrzési lépés erőforrás-definíciója szerint:
 
     ```json
     {
@@ -173,9 +173,9 @@ A szakasz célja, hogy megmutassa, hogyan vehet fel állapotellenőrzési lépé
     },
     ```
 
-    A definíció alapján a bevezetés akkor folytatódik, ha az állapot *kifogástalan* vagy *figyelmeztetés.*
+    A definíció alapján a bevezetést akkor kell folytatni, ha az állapot állapota *kifogástalan* vagy *Figyelmeztetés*.
 
-1. Frissítse a bevezetési definíció **dependsON** szolgáltatását az újonnan meghatározott állapot-ellenőrzési lépéssel:
+1. Frissítse a bevezetési definíció **dependsON** , hogy tartalmazza az újonnan definiált állapot-ellenőrzési lépést:
 
     ```json
     "dependsOn": [
@@ -184,7 +184,7 @@ A szakasz célja, hogy megmutassa, hogyan vehet fel állapotellenőrzési lépé
     ],
     ```
 
-1. A **stepGroups** frissítése az állapot-ellenőrzési lépéshez. A **healthCheckStep** neve a **stepGroup2** **postDeploymentSteps** című részében történik. **a stepGroup3** és **a stepGroup4** csak akkor van telepítve, ha a kifogástalan állapot *kifogástalan* vagy *figyelmeztetés.*
+1. Frissítse a **stepGroups** , hogy tartalmazza az állapot-ellenőrzési lépést. A **healthCheckStep** hívása a **stepGroup2** **postDeploymentSteps** történik. a **stepGroup3** és a **stepGroup4** csak akkor települnek, ha a kifogástalan állapot állapota *kifogástalan* vagy *Figyelmeztetés*.
 
     ```json
     "stepGroups": [
@@ -222,15 +222,15 @@ A szakasz célja, hogy megmutassa, hogyan vehet fel állapotellenőrzési lépé
     ]
     ```
 
-    Ha összehasonlítja a **stepGroup3** szakasz előtt és után is felülvizsgálták, ez a szakasz most attól **függ, stepGroup2**.  Erre akkor van szükség, ha a **3.**
+    Ha összehasonlítja a **stepGroup3** szakaszt a módosítás előtt és után, ez a szakasz a **stepGroup2**függ.  Erre akkor van szükség, ha a **stepGroup3** és az azt követő csoportok az állapot figyelésének eredményétől függenek.
 
-    Az alábbi képernyőkép bemutatja a módosított területeket és az állapotfelmérési lépés használatának módját:
+    Az alábbi képernyőfelvételen a módosított területek, valamint az állapot-ellenőrzési lépés használata látható:
 
-    ![Az Azure Deployment Manager állapotellenőrző sablonja](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
+    ![Azure telepítéskezelő Health-ellenőrzési sablon](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
 
-## <a name="deploy-the-topology"></a>A topológia telepítése
+## <a name="deploy-the-topology"></a>A topológia üzembe helyezése
 
-Futtassa a következő PowerShell-parancsfájlt a topológia üzembe helyezéséhez. Ugyanazt a **CreateADMServiceTopology.json** és **CreateADMServiceTopology.Parameters.json parancsot** kell használnia, mint amelyet az [Azure Deployment Manager használata erőforrás-kezelősablonokkal](./deployment-manager-tutorial.md)használt.
+Futtassa a következő PowerShell-szkriptet a topológia telepítéséhez. Ugyanaz a **CreateADMServiceTopology. JSON** és **CreateADMServiceTopology. Parameters. JSON** fájlra van szüksége, amelyet az [Azure Telepítéskezelő Resource Manager-sablonokkal való használata](./deployment-manager-tutorial.md)során használt.
 
 ```azurepowershell
 # Create the service topology
@@ -246,9 +246,9 @@ Ellenőrizze, hogy a szolgáltatástopológia és az alapjául szolgáló erőfo
 
 Az erőforrások megjelenítéséhez be kell jelölnie a **Rejtett típusok megjelenítése** jelölőnégyzetet.
 
-## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>A bevezetés telepítése a nem megfelelő állapotú állapottal
+## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>A bevezetést a nem megfelelő állapotba helyezheti
 
-Használja az [Állapotfelmérés szolgáltatás szimulátorának létrehozása](#create-a-health-check-service-simulator)című csoportban létrehozott nem megfelelő állapotú állapot-URL-címet. Szüksége van a módosított **CreateADMServiceTopology.json** és ugyanazt a **CreateADMServiceTopology.Parameters.json,** hogy az [Azure Deployment Manager használata erőforrás-kezelő sablonok](./deployment-manager-tutorial.md).
+Használja a nem megfelelő állapotú URL-címet, amelyet az [állapot-ellenőrzési szolgáltatás létrehozása szimulátorban](#create-a-health-check-service-simulator)hozott létre. Szüksége lesz a felülvizsgált **CreateADMServiceTopology. JSON** fájlra és ugyanarra a **CreateADMServiceTopology. Parameters. JSON** fájlra, amelyet az [Azure Telepítéskezelő Resource Manager-sablonokkal való használatakor](./deployment-manager-tutorial.md)használt.
 
 ```azurepowershell-interactive
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
@@ -265,9 +265,9 @@ New-AzResourceGroupDeployment `
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment`egy aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a telepítés sikeresen megkezdődött. A telepítés ellenőrzéséhez `Get-AZDeploymentManagerRollout`használja a használatát.  Lásd a következő eljárást.
+> `New-AzResourceGroupDeployment`aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez használja `Get-AZDeploymentManagerRollout`a következőt:.  Tekintse meg a következő eljárást.
 
-A bevezetési folyamat ellenőrzése a következő PowerShell-parancsfájl használatával:
+A bevezetési folyamat ellenőrzéséhez használja a következő PowerShell-parancsfájlt:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -281,7 +281,7 @@ Get-AzDeploymentManagerRollout `
     -Verbose
 ```
 
-A következő mintakimenet azt mutatja, hogy a telepítés nem megfelelő állapot miatt sikertelen volt:
+A következő minta kimenet azt mutatja, hogy az üzemelő példány nem Kifogástalan állapot miatt sikertelen:
 
 ```output
 Service: myhc0417ServiceWUSrg
@@ -340,11 +340,11 @@ Id                      : /subscriptions/<Subscription ID>/resourcegroups/myhc04
 Tags                    :
 ```
 
-A bevezetés befejezése után egy további erőforráscsoportot hoz létre az USA nyugati részére.
+A bevezetés befejezése után egy további, az USA nyugati régiója számára létrehozott erőforráscsoport jelenik meg.
 
-## <a name="deploy-the-rollout-with-the-healthy-status"></a>A bevezetés telepítése kifogástalan állapottal
+## <a name="deploy-the-rollout-with-the-healthy-status"></a>A bevezetést Kifogástalan állapotba helyezheti
 
-Ismételje meg ezt a szakaszt a kifogástalan állapot URL-címével történő bevezetés újbóli üzembe helyezéséhez.  A bevezetés befejezése után még egy, az USA keleti részére létrehozott erőforráscsoport jelenik meg.
+Ennek a szakasznak a megismétlésével újra üzembe helyezheti a bevezetést a kifogástalan állapot URL-címével.  A bevezetést követően egy további, az USA keleti régiója számára létrehozott erőforráscsoport fog megjelenni.
 
 ## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
@@ -356,17 +356,17 @@ Ismételje meg ezt a szakaszt a kifogástalan állapot URL-címével történő 
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
-1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
+1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
 2. A **Szűrés név alapján** mezővel szűkítse a keresést az oktatóanyagban létrehozott erőforráscsoportokra. 3–4 erőforrásnak kell lennie:
 
-    * projectName>rg : a Deployment Manager erőforrásait tartalmazza. ** &lt;**
-    * projectName>ServiceWUSrg : a ServiceWUS által meghatározott erőforrásokat tartalmazza. ** &lt;**
-    * projectName>ServiceEUSrg : a ServiceEUS által meghatározott erőforrásokat tartalmazza. ** &lt;**
+    * projektnév>RG: a telepítéskezelő erőforrásait tartalmazza. ** &lt;**
+    * projektnév>ServiceWUSrg: a ServiceWUS által definiált erőforrásokat tartalmazza. ** &lt;**
+    * projektnév>ServiceEUSrg: a ServiceEUS által definiált erőforrásokat tartalmazza. ** &lt;**
     * A felhasználó által meghatározott felügyelt identitás erőforráscsoportja.
 3. Válassza ki az erőforráscsoport nevét.
-4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
+4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 5. Ennek a két lépésnek az ismétlésével törölje az oktatóanyagban létrehozott több erőforráscsoportot is.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja az Azure Deployment Manager állapot-ellenőrzési szolgáltatását. További információért tekintse meg [az Azure Resource Manager dokumentációját](/azure/azure-resource-manager/).
+Ebben az oktatóanyagban megtanulta, hogyan használhatja az Azure telepítéskezelő állapot-ellenőrzési funkcióját. További információért tekintse meg [az Azure Resource Manager dokumentációját](/azure/azure-resource-manager/).

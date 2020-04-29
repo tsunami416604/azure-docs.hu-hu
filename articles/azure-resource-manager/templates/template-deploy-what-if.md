@@ -3,29 +3,27 @@ title: Template deployment mi a teendő (előzetes verzió)
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/28/2020
 ms.author: jgao
-ms.openlocfilehash: b5b19bf9d630230fbdb8cec41cc77718bbbb4585
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192382"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509584"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
 
-Azure Resource Manager (ARM-) sablon üzembe helyezése előtt érdemes megtekinteni a megjelenő módosításokat. A Azure Resource Manager a mi-if művelettel teszi lehetővé, hogy az erőforrások hogyan változnak, ha telepíti a sablont. A mi a teendő, ha a művelet nem módosítja a meglévő erőforrásokat. Ehelyett a megadott sablon központi telepítésekor a módosításokat előre jelezheti.
+Azure Resource Manager (ARM-) sablon üzembe helyezése előtt megtekintheti a megjelenő módosításokat. A Azure Resource Manager a mi-if művelettel teszi lehetővé, hogy az erőforrások hogyan változnak, ha telepíti a sablont. A mi a teendő, ha a művelet nem módosítja a meglévő erőforrásokat. Ehelyett a megadott sablon központi telepítésekor a módosításokat előre jelezheti.
 
 > [!NOTE]
 > A mi-if művelet jelenleg előzetes verzióban érhető el. Előzetes kiadásként előfordulhat, hogy az eredmények azt mutatják, hogy egy erőforrás akkor változik, ha valójában nem történt változás. Dolgozunk ezen problémák csökkentésén, de segítségre van szükségünk. Kérjük, jelentse ezeket a [https://aka.ms/whatifissues](https://aka.ms/whatifissues)problémákat a következő címen:.
 
-A mi legyen a művelet a PowerShell-parancsokkal vagy a REST API műveletekkel.
+Az Azure PowerShell, az Azure CLI vagy a REST API műveletekkel használhatja a mi-if műveletet.
 
 ## <a name="install-powershell-module"></a>PowerShell-modul telepítése
 
-A mi-ha a PowerShellben való használatához a PowerShell Core (6. x vagy 7. x) szükséges. Ha a PowerShell 5. x vagy korábbi verziója van telepítve, [frissítse a PowerShell-verzióját](/powershell/scripting/install/installing-powershell).
-
-Miután megadta a PowerShell megfelelő verzióját, telepítse az az. Resources modul előzetes verzióját a PowerShell-galériából.
+A mi-ha a PowerShellben való használatához telepítenie kell az az. Resources modul előzetes verzióját a PowerShell-galériából. A modul telepítése előtt azonban győződjön meg róla, hogy a PowerShell Core (6. x vagy 7. x). Ha a PowerShell 5. x vagy korábbi verziója van telepítve, [frissítse a PowerShell-verzióját](/powershell/scripting/install/installing-powershell). Az előzetes verziójú modul nem telepíthető a PowerShell 5. x vagy régebbi verziójára.
 
 ### <a name="install-preview-version"></a>Előzetes verzió telepítése
 
@@ -60,9 +58,13 @@ Ha korábban telepítette a mi-if modul alfa-verzióját, távolítsa el a modul
 
 Készen áll a mi-if használatára.
 
+## <a name="install-azure-cli-module"></a>Az Azure CLI-modul telepítése
+
+Ha az Azure CLI-ben szeretné használni, akkor az Azure CLI 2.5.0-t vagy annak újabb verzióját kell használnia. Ha szükséges, [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli).
+
 ## <a name="see-results"></a>Eredmények megtekintése
 
-A PowerShellben a kimenet színkódolt eredményeket tartalmaz, amelyek segítségével megtekintheti a különböző típusú módosításokat.
+Ha a PowerShellben vagy az Azure CLI-ben használ, a kimenet színkódolt eredményeket tartalmaz, amelyek segítségével megtekintheti a különböző típusú módosításokat.
 
 ![Resource Manager-sablonok üzembe helyezése – mi a teendő, ha a művelet fullresourcepayload és a változás típusa](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -97,11 +99,9 @@ Resource changes: 1 to modify.
 
 ## <a name="what-if-commands"></a>Mi – if parancsok
 
-A mi-if művelethez Azure PowerShell vagy Azure REST API is használhatja.
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Ha meg szeretné tekinteni a módosítások előnézetét a sablon telepítése előtt, adja `-Whatif` hozzá a Switch paramétert a telepítési parancshoz.
+A módosítások előnézetéhez a sablon telepítése előtt adja hozzá `-Whatif` a Switch paramétert a telepítési parancshoz.
 
 * `New-AzResourceGroupDeployment -Whatif`erőforráscsoport-telepítések esetén
 * `New-AzSubscriptionDeployment -Whatif`és `New-AzDeployment -Whatif` előfizetési szintű központi telepítések esetén
@@ -115,6 +115,23 @@ Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuáli
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`erőforráscsoport-telepítések esetén
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult`vagy `$results = Get-AzDeploymentWhatIfResult` előfizetési szintű központi telepítések esetén
+
+### <a name="azure-cli"></a>Azure CLI
+
+Ha egy sablon telepítése előtt szeretné megtekinteni a `what-if` módosításokat, használja a parancsot a telepítési paranccsal.
+
+* `az deployment group what-if`erőforráscsoport-telepítések esetén
+* `az deployment sub what-if`előfizetési szintű központi telepítések esetén
+
+Vagy a `--confirm-with-what-if` paraméterrel megtekintheti a módosításokat, és a rendszer kérni fogja, hogy folytassa a telepítést.
+
+* `az deployment group create --confirm-with-what-if`erőforráscsoport-telepítések esetén
+* `az deployment sub create --confirm-with-what-if`előfizetési szintű központi telepítések esetén
+
+Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Egy olyan JSON-objektum beszerzéséhez, amelyet programozott módon vizsgálhat a változásokhoz, használja a következőt:
+
+* `az deployment group what-if --no-pretty-print`erőforráscsoport-telepítések esetén
+* `az deployment sub what-if --no-pretty-print`előfizetési szintű központi telepítések esetén
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -141,10 +158,17 @@ A mi-if művelet hat különböző típusú változást sorol fel:
 
 ## <a name="result-format"></a>Eredmény formátuma
 
-Megadhatja az előre jelzett változásokkal kapcsolatos részletességi szintet. A központi telepítési parancsokban`New-Az*Deployment`() használja a **-WhatIfResultFormat** paramétert. A programozott objektumok parancsaiban (`Get-Az*DeploymentWhatIf`) használja a **ResultFormat** paramétert.
+Szabályozhatja az előre jelzett változásokkal kapcsolatos részletességi szintet. Erre két lehetősége van:
 
-Állítsa a Format paramétert a **FullResourcePayloads** értékre, hogy lekérje a módosítani kívánt erőforrások listáját és a módosítani kívánt tulajdonságok részleteit. Állítsa a Format paramétert a **ResourceIdOnly** értékre, hogy lekérje a módosítani kívánt erőforrások listáját. Az alapértelmezett érték a **FullResourcePayloads**.  
+* **FullResourcePayloads** – a módosult erőforrások listáját adja vissza, és megjeleníti a módosítani kívánt tulajdonságok részleteit is
+* **ResourceIdOnly** – a módosítandó erőforrások listáját adja vissza.
 
+Az alapértelmezett érték a **FullResourcePayloads**.
+
+PowerShell-telepítési parancsok esetén használja a `-WhatIfResultFormat` paramétert. A programozott objektum parancsaiban használja a `ResultFormat` (z) paramétert.
+
+Az Azure CLI esetén használja a `--result-format` paramétert.
+ 
 A következő eredmények a két különböző kimeneti formátumot mutatják be:
 
 - Teljes erőforrás-tartalom
@@ -197,6 +221,8 @@ A következő eredmények a két különböző kimeneti formátumot mutatják be
 
 Ha szeretné megtekinteni, hogyan működik a megoldás, hozzon néhány tesztet. Először telepítsen egy olyan [sablont, amely létrehoz egy virtuális hálózatot](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json). Ezzel a virtuális hálózattal tesztelheti, hogyan történik a módosítások jelentése.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name ExampleGroup `
@@ -206,9 +232,24 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name ExampleGroup \
+  --location "Central US"
+az deployment group create \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+```
+
+---
+
 ### <a name="test-modification"></a>Teszt módosítása
 
-Az üzembe helyezés befejezése után készen áll a mi-if művelet tesztelésére. Ezúttal telepítsen egy [sablont, amely megváltoztatja a virtuális hálózatot](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Hiányzik egy eredeti címke, egy alhálózat el lett távolítva, és megváltoztak a címek előtagja.
+Az üzembe helyezés befejezése után készen áll a mi-if művelet tesztelésére. Ezúttal olyan [sablont telepít, amely megváltoztatja a virtuális hálózatot](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Hiányzik egy eredeti címke, egy alhálózat el lett távolítva, és megváltoztak a címek előtagja.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -216,6 +257,16 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group what-if \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+```
+
+---
 
 A mi, ha a kimenet a következőhöz hasonlóan jelenik meg:
 
@@ -260,6 +311,8 @@ A töröltként felsorolt tulajdonságok némelyike valójában nem változik. A
 
 Most pedig programozott módon kiértékeljük a mi-if eredményeket úgy, hogy a parancsot egy változóra állítja be.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
@@ -275,19 +328,41 @@ foreach ($change in $results.Changes)
 }
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+results=$(az deployment group what-if --resource-group ExampleGroup --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json" --no-pretty-print)
+```
+
+---
+
 ## <a name="confirm-deletion"></a>Törlés megerősítése
 
 A mi-if művelet támogatja a [telepítési mód](deployment-modes.md)használatát. Ha a befejezési módra van állítva, a sablonban nem szereplő erőforrások törlődnek. A következő példa olyan sablont telepít [, amely nem rendelkezik teljes módban definiált erőforrásokkal](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
 A módosítások előnézetéhez a sablon telepítése előtt használja a `-Confirm` switch paramétert a Deployment paranccsal. Ha a módosítások a várt módon történtek, erősítse meg, hogy a központi telepítés befejezésére van szükség.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Confirm `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json" `
-  -Mode Complete
+  -Mode Complete `
+  -Confirm `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group ExampleGroup \
+  --mode Complete \
+  --confirm-with-what-if \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+```
+
+---
 
 Mivel a sablonban nincs megadva erőforrás, és a telepítési mód a Befejezés értékre van állítva, a rendszer törli a virtuális hálózatot.
 
@@ -326,4 +401,5 @@ Megtekintheti a várt módosításokat, és ellenőrizheti, hogy szeretné-e fut
 
 - Ha az előzetes kiadásban helytelen eredményeket észlel, akkor jelentse a hibákat a következő helyen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 - A sablonok Azure PowerShell használatával történő telepítéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).
+- A sablonok Azure CLI-vel történő üzembe helyezéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és az Azure CLI-vel](deploy-cli.md).
 - A sablonok REST-tel történő üzembe helyezéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Resource Manager-Rest APIokkal](deploy-rest.md).

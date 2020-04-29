@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az érzékelőadatok összehívása az időjárás-előrejelzési adatokkal az Azure Notebooks(Python) használatával | Microsoft Azure Maps'
-description: Ez az oktatóanyag bemutatja, hogyan illesztheti össze az érzékelőadatokat a Microsoft Azure Maps időjárás-előrejelzési adataival az Azure Notebooks(Python) használatával.
+title: 'Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával | Microsoft Azure térképek'
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja az érzékelő adatait Microsoft Azure Maps időjárási szolgáltatásból Azure Notebooks (Python) használatával.
 author: philmea
 ms.author: philmea
 ms.date: 01/29/2020
@@ -10,43 +10,43 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: e5292f5166e739264e9cf969480b70f415fcc75a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80333496"
 ---
-# <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: Az érzékelőadatok összekapcsolódása az időjárás-előrejelzési adatokkal az Azure Notebooks (Python) használatával
+# <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
-Szélenergia egyik alternatív energiaforrás a fosszilis tüzelőanyagok elleni küzdelem az éghajlatváltozás. Mivel a szél természeténél fogva nem konzisztens, a szélenergia-üzemeltetőknek gépi tanulási (ML) modelleket kell készíteniük a szélenergia-kapacitás előrejelzéséhez. Ez az előrejelzés a villamosenergia-kereslet kielégítéséhez és a hálózat stabilitásának biztosításához szükséges. Ebben az oktatóanyagban bemutatjuk, hogyan kapcsolódik az Azure Maps időjárás-előrejelzési adatai az időjárási értékek bemutatóadataihoz. Az időjárás-előrejelzési adatokat az Azure Maps Időjárás szolgáltatás ának hívása kéri.
+A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok számára a klímaváltozás elleni küzdelem érdekében. Mivel a szél nem felel meg a természetnek, a szélenergia-kezelőknek gépi tanulási (ML) modelleket kell létrehozniuk a szélenergia kapacitásának előrejelzéséhez. Ez az előrejelzés szükséges a villamosenergia-kereslet kielégítéséhez, valamint a hálózat stabilitásának biztosításához. Ebben az oktatóanyagban bemutatjuk, hogyan történik a Azure Maps időjárási előrejelzési információk összevonása a bemutatóval az időjárási olvasmányok esetében. A Azure Maps időjárási szolgáltatás meghívásával az időjárás-előrejelzési adatkérést kéri a rendszer.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Adatfájlok at [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) a felhőben.
-> * Demóadatok betöltése fájlból.
-> * Hívja meg az Azure Maps REST API-kat a Pythonban.
-> * Helyadatok renderelése a térképen.
-> * Gazdagítsa a bemutató adatokat az Azure Maps [napi előrejelzési](https://aka.ms/AzureMapsWeatherDailyForecast) időjárási adataival.
-> * Előrejelzési adatok nyomtatása grafikonokon.
+> * A felhőben [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) adatfájlokkal dolgozhat.
+> * Betöltheti a bemutató adatait a fájlból.
+> * Azure Maps REST API-k hívása a Pythonban.
+> * Helyadatok leképezése a térképen.
+> * Azure Maps [napi előrejelzési](https://aka.ms/AzureMapsWeatherDailyForecast) időjárási adattal gazdagíthatja a bemutatókat.
+> * Előrejelzési adatdiagramok ábrázolása.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez először a következőket kell elvégeznie:
+Az oktatóanyag elvégzéséhez először a következőket kell tennie:
 
-1. Hozzon létre egy Azure Maps-fiók-előfizetést az S0-díjszabási csomagban a [Fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című útmutató utasításainak követésével.
-2. A fiók elsődleges előfizetési kulcsának beszerezése, kövesse az [elsődleges kulcs bekésezése](quick-demo-map-app.md#get-the-primary-key-for-your-account)című útmutatóutasításait.
+1. Hozzon létre egy Azure Maps fiók-előfizetést a S0 díjszabási szinten a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait követve.
+2. Szerezze be a fiókjához tartozó elsődleges előfizetési kulcsot, kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör utasításait.
 
 
-Az Azure Maps hitelesítéssel kapcsolatos további tudnivalókról az [Azure Maps hitelesítésének kezelése](./how-to-manage-authentication.md)című témakörben talál.
+A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
-Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure-jegyzetfüzet létrehozása](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)című utasításokat.
+Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure notebook létrehozása](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)című témakör utasításait.
 
 > [!Note]
-> A Jupyter notebook fájl ehhez a projekthez letölthető a [Weather Maps Jupyter notebook repository](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
+> A projekthez tartozó Jupyter notebook-fájl az [időjárási térképek Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)tölthető le.
 
-## <a name="load-the-required-modules-and-frameworks"></a>Töltse be a szükséges modulokat és keretrendszereket
+## <a name="load-the-required-modules-and-frameworks"></a>A szükséges modulok és keretrendszerek betöltése
 
 Az összes szükséges modul és keretrendszer betöltéséhez futtassa a következő parancsfájlt:
 
@@ -58,17 +58,17 @@ from IPython.display import Image, display
 import aiohttp
 ```
 
-## <a name="import-weather-data"></a>Időjárási adatok importálása
+## <a name="import-weather-data"></a>Időjárási adatimportálás
 
-A bemutató kedvéért négy különböző szélturbinára telepített érzékelők időjárási adatleolvasásait fogjuk használni. A mintaadatok 30 napos időjárási értékekből állnak. Ezek az értékek az egyes turbina-helyeken található időjárási adatközpontokból kerülnek összegyűjtésre. A demó adatok a hőmérséklet, a szélsebesség és az irány adatleolvasását tartalmazzák. Letöltheti a demo adatokat [innen](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data). Az alábbi parancsfájl importálja a bemutató adatokat az Azure Notebook.
+Ennek az oktatóanyagnak az elvégzése érdekében a négy különböző szélturbinák esetében telepített érzékelőkből származó időjárási adatok beolvasását fogjuk használni. A mintaadatok 30 napos időjárási olvasmányokból állnak. Ezeket az adatokat a rendszer az időjárási adatközpontokból gyűjti össze az egyes turbina-helyek közelében. A bemutatóban szereplő adatolvasások a hőmérséklet, a szélsebesség és a irányában szerepelnek. A bemutató [adatait innen töltheti le.](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data) Az alábbi szkript a bemutatót az Azure jegyzetfüzetbe importálja.
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
 ```
 
-## <a name="request-daily-forecast-data"></a>Napi előrejelzési adatok kérése
+## <a name="request-daily-forecast-data"></a>Napi előrejelzési adatgyűjtés kérése
 
-A mi forgatókönyvünkben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. A következő parancsfájl meghívja az Azure [Maps időjárás-szolgáltatás napi előrejelzési API-ját.](https://aka.ms/AzureMapsWeatherDailyForecast) Ez az API az aktuális dátumtól számított 15 napra vonatkozóan az egyes szélturbinák időjárás-előrejelzését adja vissza.
+Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps időjárási szolgáltatás [napi előrejelzési API](https://aka.ms/AzureMapsWeatherDailyForecast) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
 
 
 ```python
@@ -107,7 +107,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-Az alábbi parancsfájl az Azure Maps Get Map Image szolgáltatás felhívásával jeleníti meg a turbinahelyeket a [térképen.](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+Az alábbi parancsfájl a turbina-helyet a térképen jeleníti meg a Azure Maps [Térkép rendszerkép-szolgáltatásának](https://docs.microsoft.com/rest/api/maps/render/getmapimage)meghívásával.
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -126,10 +126,10 @@ await session.close()
 display(Image(poi_range_map))
 ```
 
-![Turbina helyszínek](./media/weather-service-tutorial/location-map.png)
+![Turbina-helyszínek](./media/weather-service-tutorial/location-map.png)
 
 
-Az előrejelzési adatokat az állomásazonosító alapján csoportosítjuk a bemutató adatokkal. Az állomás azonosítója az időjárási adatközponthoz kell tart. Ez a csoportosítás növeli a bemutató adatokat az előrejelzési adatokkal.
+Az előrejelzési adatgyűjtést az állomás azonosítója alapján csoportosítjuk a bemutatóba. Az állomás azonosítója az időjárási adatközponthoz. Ez a csoportosítás fokozza a bemutatót az előrejelzési adattal.
 
 ```python
 # Group forecasted data for all locations
@@ -144,7 +144,7 @@ combined_weather_data = pd.concat([df,forecast_data])
 grouped_weather_data = combined_weather_data.groupby(['StationID'])
 ```
 
-Az alábbi táblázat az egyik turbinahely összesített előzmény- és előrejelzési adatait jeleníti meg.
+A következő táblázat az egyik turbina-helyszín összesített előzmény-és előrejelzési adatait jeleníti meg.
 
 ```python
 # Display data for first location
@@ -153,11 +153,11 @@ grouped_weather_data.get_group(station_ids[0]).reset_index()
 
 <center>
 
-![Csoportosított adatok](./media/weather-service-tutorial/grouped-data.png)</center>
+![Csoportosított adathalmazok](./media/weather-service-tutorial/grouped-data.png)</center>
 
-## <a name="plot-forecast-data"></a>Előrejelzési adatok nyomtatása
+## <a name="plot-forecast-data"></a>Előrejelzési adatgyűjtés ábrázolása
 
-Az előre jelzett értékeket az előre jelzett napokhoz megyünk. Ez a telek lehetővé teszi számunkra, hogy a sebesség és irányváltozás a szél a következő 15 napban.
+Az előre jelzett értékeket azon napokon fogjuk ábrázolni, amelyeknek az előrejelzését elvégezték. Ez a mintaterület lehetővé teszi, hogy a következő 15 nap során megtekintse a szél sebességét és irányának változásait.
 
 ```python
 # Plot wind speed
@@ -176,24 +176,24 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Az alábbi grafikonok megjelenítik az előrejelzési adatokat. A változás a szél sebessége, lásd a bal oldali grafikonon. A szél irányának megváltoztatásához lásd a megfelelő grafikont. Ezek az adatok az adatok kérésének napjától a következő 15 napra vonatkozó előrejelzést kapnak.
+Az alábbi diagramok megjelenítik az előrejelzési adatértékeket. A szél sebességének változását lásd a bal oldali diagramon. A szél irányának változásához tekintse meg a megfelelő gráfot. Ezek az adatok az adatok kérelmezésének napjától számított 15 napra vonatkozó előrejelzések.
 
 <center>
 
-![Szélsebesség](./media/weather-service-tutorial/speed-date-plot.png) ![telek Szél iránya telek](./media/weather-service-tutorial/direction-date-plot.png)</center>
+![Szél sebességét](./media/weather-service-tutorial/speed-date-plot.png) ![ábrázoló szél irányának ábrázolása](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hívhatja meg az Azure Maps REST API-kat az időjárás-előrejelzési adatok lehívásához. Azt is megtanulta, hogyan jelenítheti meg az adatokat a grafikonokon.
+Ebben az oktatóanyagban megtanulta, hogyan hívhat meg Azure Maps REST API-kat az időjárási előrejelzési adatok beszerzéséhez. Azt is megtanulta, hogyan jelenítheti meg a gráfokban tárolt adatmegjelenítést.
 
-Ha többet szeretne tudni arról, hogyan hívhatja meg az Azure Maps REST API-kat az Azure-jegyzetfüzeteken belül, olvassa el [az Azure Notebookok használatával történő ev-útválasztást.](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing)
+Ha többet szeretne megtudni arról, hogyan hívhat Azure Maps REST API-kat Azure Notebookson belül, tekintse meg az [EV-útválasztást a Azure Notebooks használatával](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
 
-Az ebben az oktatóanyagban használt Azure Maps API-k megismeréséhez lásd:
+Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a következőt:
 
 * [Napi előrejelzés](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [Renderelés – Térképkép bekése](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Render-Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Az Azure Maps REST API-k teljes listáját az [Azure Maps REST API-k ban.](https://docs.microsoft.com/azure/azure-maps/consumption-model)
+Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
 
-Az Azure-jegyzetfüzetekről az [Azure-jegyzetfüzetek](https://docs.microsoft.com/azure/notebooks)ről olvashat bővebben.
+További információ a Azure Notebooksről: [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

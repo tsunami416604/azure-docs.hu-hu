@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: Ütemezett biztonsági mentés létrehozása'
-description: Megtudhatja, hogyan automatizálhatja az Azure PowerShellt az App Service üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan hozhat létre egy ütemezett biztonsági mentést egy alkalmazáshoz.
+title: 'PowerShell: ütemezett biztonsági mentés létrehozása'
+description: Megtudhatja, hogyan használhatja a Azure PowerShell a App Service üzembe helyezésének és kezelésének automatizálására. Ez a példa bemutatja, hogyan hozhat létre ütemezett biztonsági mentést egy alkalmazáshoz.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
@@ -9,17 +9,17 @@ ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 24723d442cdc684e109dee3270cdfbc217fd4f4c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044607"
 ---
-# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Ütemezett biztonsági mentés létrehozása webalkalmazáshoz a PowerShell használatával
+# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Ütemezett biztonsági mentés létrehozása egy webalkalmazáshoz a PowerShell használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd ütemezett biztonsági másolatot készít róla. 
 
-Ha szükséges, telepítse az Azure PowerShell-t az [Azure PowerShell-útmutatóban](/powershell/azure/overview)található utasítás használatával, majd futtassa `Connect-AzAccount` a kapcsolatot az Azure-ral. 
+Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasítással, majd futtassa a parancsot `Connect-AzAccount` az Azure-hoz való kapcsolódáshoz. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -43,13 +43,13 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Létrehoz egy tárfiókot. |
-| [Új-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Létrehoz egy Azure Storage-tárolót. |
+| [Új – AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Létrehoz egy Azure Storage-tárolót. |
 | [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-AzStoragecontainersastoken) | Létrehoz egy SAS-tokent egy Azure Storage-tárolóhoz. |
-| [Új-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [Új-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
-| [Edit-AzWebAppBackupConfiguration](/powershell/module/az.websites/edit-azwebappbackupconfiguration) | Szerkeszti a webalkalmazás biztonsági mentésének konfigurációját. |
+| [Új – AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
+| [Új – AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
+| [Szerkesztés – AzWebAppBackupConfiguration](/powershell/module/az.websites/edit-azwebappbackupconfiguration) | Szerkeszti a webalkalmazás biztonsági mentésének konfigurációját. |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
-| [Get-AzWebAppBackupconfiguration](/powershell/module/az.websites/get-azwebappbackupconfiguration) | Lekéri a webalkalmazás biztonsági mentésének konfigurációját. |
+| [Get-AzWebAppBackupConfiguration](/powershell/module/az.websites/get-azwebappbackupconfiguration) | Lekéri a webalkalmazás biztonsági mentésének konfigurációját. |
 
 ## <a name="next-steps"></a>További lépések
 

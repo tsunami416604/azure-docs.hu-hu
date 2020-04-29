@@ -1,7 +1,7 @@
 ---
-title: Azure CLI-parancsfájlminta – Exportálás az Azure App konfigurációs tárolójából
+title: Azure CLI-parancsfájl mintája – exportálás Azure-alkalmazás konfigurációs tárolójából
 titleSuffix: Azure App Configuration
-description: Konfiguráció exportálása az Azure App Configuration programból az Azure CLI-parancsfájljával
+description: Az Azure CLI-szkript használata a konfiguráció exportálására az Azure-alkalmazások konfigurációjától
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,15 +10,15 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 3e014504fc1e94c3b323a49b408fa992de00d14a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77523620"
 ---
-# <a name="export-from-an-azure-app-configuration-store"></a>Exportálás az Azure App konfigurációs tárolójából
+# <a name="export-from-an-azure-app-configuration-store"></a>Exportálás Azure app Configuration Store-ból
 
-Ez a mintaparancsfájl kulcsértékeket exportál egy Azure App Configuration Store-ból.
+Ez a minta parancsfájl exportálja a kulcs-értékeket egy Azure-alkalmazás konfigurációs tárolójából.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,14 +39,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a parancsfájl a következő parancsokat használja az alkalmazáskonfigurációs tárolóból történő exportáláshoz. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja az alkalmazás-konfigurációs tárolóból való exportáláshoz. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az appconfig kv exportálás](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Exportálás egy alkalmazáskonfigurációs tároló ból származó erőforrásból. |
+| [az appconfig kV export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Exportálás az alkalmazás konfigurációs tárolójának erőforrásaiból. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További alkalmazáskonfigurációs CLI-parancsfájlminták találhatók az [Azure App Konfigurációs CLI-mintáiban.](../cli-samples.md)
+Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure app CONFIGURATION CLI-mintákban](../cli-samples.md)találhatók.

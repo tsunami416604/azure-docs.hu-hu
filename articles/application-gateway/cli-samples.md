@@ -1,6 +1,6 @@
 ---
-title: Példák az Azure CLI-re az Azure Application Gateway alkalmazásátjárójához
-description: Ez a cikk az Azure CLI-példákra mutató hivatkozásokat tartalmaz, így gyorsan telepítheti az Azure Application Gateway-t különböző módokon konfigurálva.
+title: Azure CLI-példák az Azure Application Gateway
+description: Ez a cikk az Azure CLI-példákra mutató hivatkozásokat tartalmaz, amelyek segítségével gyorsan üzembe helyezheti az Azure Application Gateway konfigurálását különböző módokon.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: 57df87f6cc101f4cc097b464d93238d3b868c93b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74129783"
 ---
-# <a name="azure-cli-examples-for-azure-application-gateway"></a>Példák az Azure CLI-re az Azure Application Gateway alkalmazásátjárójához
+# <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure CLI-példák az Azure Application Gateway
 
-Az alábbi táblázat az Azure CLI-parancsfájlpéldákra mutató hivatkozásokat tartalmaz az Azure Application Gateway számára.
+Az alábbi táblázat az Azure CLI parancsfájlokra mutató hivatkozásokat tartalmaz az Azure Application Gateway.
 
 | | |
 |---|---|
-| [Webes forgalom kezelése](./scripts/create-vmss-cli.md) | Létrehoz egy alkalmazásátjárót és az összes kapcsolódó erőforrást. |
-| [Webes forgalom korlátozása](./scripts/create-vmss-waf-cli.md) | Létrehoz egy alkalmazásátjárót, amely korlátozza a forgalmat az OWASP-szabályok használatával.|
+| [Webes forgalom kezelése](./scripts/create-vmss-cli.md) | Létrehoz egy Application Gateway-t és minden kapcsolódó erőforrást. |
+| [Webes forgalom korlátozása](./scripts/create-vmss-waf-cli.md) | Egy olyan Application Gatewayt hoz létre, amely a OWASP-szabályok használatával korlátozza a forgalmat.|
 | | |

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – MEAN-verem létrehozása Linuxos virtuális gépen az Azure-ban
+title: Oktatóanyag – MEAN stack létrehozása Linux rendszerű virtuális gépen az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) vermet Linux rendszerű virtuális gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80154321"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) verem létrehozása Linux rendszerű virtuális gépen az Azure-ban
@@ -34,7 +34,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg MongoDB-, Express-, Angu
 > * Az útvonalak elérése AngularJS segítségével
 > * Az alkalmazás futtatása
 
-Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -220,7 +220,7 @@ Az [Express](https://expressjs.com) egy minimális igényű és rugalmas Node.js
 
 Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinamikus nézetek létrehozásához a webalkalmazáson belül. Ebben az oktatóanyagban az AngularJS használatával csatlakoztatjuk a weboldalt az Express szolgáltatáshoz, és műveleteket hajtunk végre a könyvadatbázison.
 
-1. Módosítsa a könyvtárat a`cd ../..` *Könyvek* ( ) értékre, majd hozzon létre egy nyilvános nevű mappát, és adjon hozzá egy *script.js* nevű fájlt a vezérlő konfigurációjának definiálva. *public*
+1. Módosítsa a könyvtárat a *könyvekbe* (`cd ../..`), majd hozzon létre egy *nyilvános* nevű mappát, és adjon hozzá egy *script. js* nevű fájlt a megadott vezérlő-konfigurációval.
 
     ```javascript
     var app = angular.module('myApp', []);
@@ -317,17 +317,17 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
 
 ##  <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. Módosítsa a könyvtárat a`cd ..` *Könyvek* ( ) értékre, és indítsa el a kiszolgálót a következő parancs futtatásával:
+1. Módosítsa a könyvtárat a *könyvek* (`cd ..`) számára, és indítsa el a kiszolgálót a következő parancs futtatásával:
 
     ```bash
     nodejs server.js
     ```
 
-2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például, *http:\//13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
+2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például *: http:\//13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
 
     ![Könyvrekord](media/tutorial-mean/meanstack-init.png)
 
-3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Példa:
+3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Például:
 
     ![Könyvrekord hozzáadása](media/tutorial-mean/meanstack-add.png)
 
@@ -349,7 +349,7 @@ Ebben az oktatóanyagban létrehozott egy webalkalmazást, amely nyomon követi 
 > * Az útvonalak elérése AngularJS segítségével
 > * Az alkalmazás futtatása
 
-A következő oktatóanyagra lépésként megtudhatja, hogyan biztosíthat webkiszolgálókat TLS-tanúsítványokkal.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan biztonságossá teheti a TLS-tanúsítványokat tartalmazó webkiszolgálókat.
 
 > [!div class="nextstepaction"]
-> [Biztonságos webkiszolgáló a TLS-sel](tutorial-secure-web-server.md)
+> [Biztonságos webkiszolgáló TLS-vel](tutorial-secure-web-server.md)

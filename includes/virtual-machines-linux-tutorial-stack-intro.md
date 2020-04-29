@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 046a4bc9abb936ca6f9fcecd0f660a723edb092b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80116992"
 ---
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
@@ -55,7 +55,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
 
-Alapértelmezés szerint kizárólag SSH-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Linux rendszerű virtuális gépeken. Mivel ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot az internet irányából. Használja az [az vm open-port](/cli/azure/vm) parancsot a kívánt port megnyitásához.  
+Alapértelmezés szerint kizárólag SSH-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Linux rendszerű virtuális gépeken. Mivel ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot az internet irányából. A kívánt port megnyitásához használja az az [VM Open-port](/cli/azure/vm) parancsot.  
  
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

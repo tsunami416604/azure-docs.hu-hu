@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Virtuálisgép hálózati útválasztási problémájának diagnosztizálása – Azure Portal'
+title: 'Oktatóanyag: virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása – Azure Portal'
 titleSuffix: Azure Network Watcher
 description: Ez az oktatóanyag bemutatja, hogyan diagnosztizálhatja egy virtuális gép hálózati útválasztási problémáit az Azure Network Watcher következő ugrás funkciójával.
 services: network-watcher
@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76845209"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Oktatóanyag: Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása az Azure Portal használatával
@@ -36,7 +36,7 @@ A virtuális gép (VM) telepítésekor az Azure számos alapértelmezett útvona
 
 Igény szerint az [Azure CLI](diagnose-vm-network-routing-problem-cli.md) vagy az [Azure PowerShell](diagnose-vm-network-routing-problem-powershell.md) használatával is diagnosztizálhatja egy virtuális gép hálózati útválasztási problémáit.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -46,16 +46,16 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** vagy az **Ubuntu Server 17.10 VM** elemet.
-3. Írja be vagy jelölje ki a következő adatokat, fogadja el a fennmaradó beállítások alapértelmezett beállításait, majd kattintson az **OK gombra:**
+3. Adja meg vagy válassza ki a következő adatokat, fogadja el a többi beállítás alapértelmezett értékeit, majd kattintson az **OK gombra**:
 
     |Beállítás|Érték|
     |---|---|
-    |Név|myVM|
+    |Name (Név)|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| **Usa keleti része**|
+    |Hely| Válassza ki az **USA keleti** régióját|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -89,7 +89,7 @@ Az Azure automatikusan létrehoz útvonalakat az alapértelmezett célokhoz. Egy
     | Virtuális gép         | Válassza a myVm lehetőséget                                            |
     | Hálózati illesztő       | myvm – A hálózati adapter neve eltérő lehet.   |
     | Forrás IP-címe       | 10.0.0.4                                               |
-    | Cél IP-cím  | 13.107.21.200 - Az <www.bing.com> egyik címe. |
+    | Cél IP-cím  | 13.107.21.200 – <www.bing.com> egyik címe. |
 
     ![Következő ugrás](./media/diagnose-vm-network-routing-problem/next-hop.png)
 

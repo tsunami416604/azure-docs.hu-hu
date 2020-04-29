@@ -1,18 +1,18 @@
 ---
-title: 'Kubernetes-fejlesztési terület létrehozása: Visual Studio-kód & .NET Core'
+title: 'Kubernetes fejlesztői terület létrehozása: Visual Studio Code & .NET Core'
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Dev Spaces és a Visual Studio Code használatával a .NET Core alkalmazások hibakeresését és gyors iterálni az Azure Kubernetes-szolgáltatást
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s
+description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy .NET Core-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 ms.openlocfilehash: d4078113f93159ef981a78a9917ed65bd03a304b
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80240554"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Kubernetes-fejlesztési terület létrehozása: Visual Studio-kód és .NET Core az Azure Dev Spaces segítségével
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: Visual Studio Code és .NET Core az Azure dev Spaces használatával
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
@@ -21,7 +21,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
 > [!Note]
-> Ha bármikor **elakad,** olvassa el a [Hibaelhárítás](troubleshooting.md) című részt.
+> **Ha bármikor elakad** , tekintse meg a [Hibaelhárítás](troubleshooting.md) című szakaszt.
 
 ## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 Az Azure Dev Spaces használatához minimális helyi gépbeállítás szükséges. A Dev Spaces-tér konfigurációjának legnagyobb része a felhőben van tárolva, és megosztható más felhasználókkal. Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet.
@@ -43,7 +43,7 @@ Az előfizetéseit a következő futtatásával tekintheti meg:
 az account list --output table
 ```
 
-Keresse meg az *IsDefault* *true* előfizetést.
+Keresse meg azt az előfizetést, amely a *IsDefault*esetében *igaz* .
 Ha nem ezt az előfizetést szeretné használni, módosíthatja az alapértelmezett előfizetést:
 
 ```azurecli
@@ -52,7 +52,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaceshez engedélyezett Kubernetes-fürt létrehozása
 
-A parancssorban hozza létre az erőforráscsoportot egy [olyan régióban, amely támogatja az Azure Dev Spaces.][supported-regions]
+A parancssorban hozza létre az erőforráscsoportot egy olyan régióban, [amely támogatja az Azure dev Spaces platformot][supported-regions].
 
 ```azurecli
 az group create --name MyResourceGroup --location <region>
@@ -75,20 +75,20 @@ A fürt létrehozása néhány percet vesz igénybe.
    ```
    
 > [!IMPORTANT]
-> Az Azure Dev Spaces konfigurációs folyamat eltávolítja a `azds` névteret a fürtben, ha létezik.
+> Ha létezik, az Azure dev Spaces konfigurációs `azds` folyamata eltávolítja a névteret a fürtben.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Kubernetes-hibakeresés VS Code-hoz
 A VS Code-ot használó .NET Core- és Node.js-felhasználók számára számos funkció érhető el, mint például a Kubernetes-hibakeresés.
 
 1. Ha nincs telepítve a [VS Code](https://code.visualstudio.com/Download), telepítse.
-1. Töltse le és telepítse a [VS Azure dev spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) és [c#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) bővítményeket. Minden bővítmény, kattintson a telepítés a bővítmény Marketplace-oldalán, majd újra a VS-kód.
+1. Töltse le és telepítse a [vs Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) és [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) bővítményeket. Az egyes bővítmények esetében kattintson a bővítmény piactér lapján a telepítés elemre, majd a VS Code-ra.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Egy tárolóban futó webalkalmazás létrehozása
 
-Ebben a szakaszban hozzon létre egy ASP.NET Core webalkalmazást, és kubernetes-tárolóban fut.
+Ebben a szakaszban létre fog hozni egy ASP.NET Core webalkalmazást, és egy tárolóban fogja futtatni a Kubernetes-ben.
 
 ### <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
-Klónozza vagy töltse le az [Azure Dev Spaces mintaalkalmazást.](https://github.com/Azure/dev-spaces) Ez a cikk a *minták/dotnetcore/getting-started/webfrontend* könyvtárban lévő kódot használja.
+Az [Azure dev Spaces minta alkalmazás](https://github.com/Azure/dev-spaces)klónozása vagy letöltése. Ez a cikk a *minták/dotnetcore/első lépések/webfrontend* címtárban található kódot használja.
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Kód előkészítése Docker- vagy Kubernetes-fejlesztéshez
 Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan objektumok létrehozásával egy tárolóba fogja helyezni, amelyek meghatározzák az alkalmazás tárolóját, és a Kubernetesben történő üzembe helyezésének módját. Ez a feladat az Azure Dev Spaces segítségével egyszerűen elvégezhető: 
@@ -106,7 +106,7 @@ Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre 
 * A `./charts/webfrontend` alatt található [Helm-diagram](https://docs.helm.sh) ismerteti a konténer Kubernetesben történő üzembe helyezését.
 
 > [!TIP]
-> A [Dockerfile és helm diagram](how-dev-spaces-works-prep.md#prepare-your-code) a projekt azure dev spaces a kód létrehozásához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné, hogyan a projekt épül, és fut.
+> A projekthez tartozó [Docker és Helm diagramot](how-dev-spaces-works-prep.md#prepare-your-code) az Azure dev Spaces használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
 Egyelőre még nem fontos a fájlok teljes tartalmát megérteni. Ugyanakkor azt megjegyeznénk, hogy **használhatja ugyanazokat a Docker és a Kubernetes kóddal való konfigurálási objektumokat a fejlesztéstől kezdve egészen az éles környezetig, így jobb konzisztenciát biztosíthat a különböző környezetekben.**
  
@@ -130,7 +130,7 @@ Figyelje a parancs kimenetét, és számos dolgot megfigyelhet a folyamat közbe
 > Ezek a lépések az `up` első futtatásakor hosszabb időt vesznek igénybe, de a további futtatások már gyorsabbak lesznek.
 
 ### <a name="test-the-web-app"></a>A webalkalmazás tesztelése
-Ellenőrizze a konzol kimenetét az *alkalmazás elindult* `up` üzenet, meggyőződve arról, hogy a parancs befejeződött:
+Ellenőrizze az *alkalmazás elindított* üzenetének konzol kimenetét, amely megerősíti, hogy `up` a parancs befejeződött:
 
 ```
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
@@ -151,20 +151,20 @@ webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
 webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-Azonosítsa a szolgáltatás nyilvános URL-címét a `up` parancs kimenetében. Úgy végződik, hogy `.azds.io`. A fenti példában a `http://webfrontend.1234567890abcdef1234.eus.azds.io/`nyilvános URL- cím .
+Azonosítsa a szolgáltatáshoz tartozó nyilvános URL-címet a `up` parancs kimenetében. A-ben `.azds.io`végződik. A fenti példában a nyilvános URL-cím: `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
 
-A webalkalmazás megtekintéséhez nyissa meg a nyilvános URL-címet egy böngészőben. Emellett a `stdout` `stderr` közlemény és a kimenet is streamelt az *azds nyomkövetési* terminál ablak, ahogy a webalkalmazással való interakció. A HTTP-kérelmek nyomon követési információit is láthatja, amint azok a rendszeren keresztül haladnak. Ez megkönnyíti az összetett többszolgáltatásos hívások nyomon követését a fejlesztés során. A Dev Spaces által hozzáadott instrumentation biztosítja ezt a kéréskövetést.
+A webalkalmazás megjelenítéséhez nyissa meg a nyilvános URL-címet egy böngészőben. A figyelmeztetés `stdout` és `stderr` a kimenet a *azds nyomkövetési* terminál ablakba is áramlik a webalkalmazással való interakció során. A HTTP-kérések nyomkövetési információit is megtekintheti, ahogy azok a rendszeren haladnak át. Így könnyebben nyomon követheti az összetett több szolgáltatásra irányuló hívásokat a fejlesztés során. A dev Spaces által hozzáadott kiépítés biztosítja ezt a kérelmek nyomon követését.
 
-![azds nyomkövetési terminálablak](media/get-started-netcore/azds-trace.png)
+![azds nyomkövetési terminál ablaka](media/get-started-netcore/azds-trace.png)
 
 
 > [!Note]
-> A nyilvános URL-cím mellett használhatja `http://localhost:<portnumber>` a konzol kimenetében megjelenő alternatív URL-címet is. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Azure dev spaces kubernetes *port-forward* funkciót használ a localhost port leképezése az AKS-ben futó tárolóhoz. Ez megkönnyíti a helyi számítógépről érkező szolgáltatással való interakciót.
+> A nyilvános URL-címen kívül használhatja a konzol kimenetében megjelenő alternatív `http://localhost:<portnumber>` URL-címet is. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Azure dev Spaces Kubernetes *-port továbbítási* funkciója használatával képezi le a localhost PORTOT az AK-ban futó tárolóhoz. Ez megkönnyíti a szolgáltatással való interakciót a helyi gépről.
 
 ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
 Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
 
-1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Módosítsa például [a 73. `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) 
+1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Például módosítsa a [73 sort, amely az `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) alábbihoz hasonló adatokat olvas: 
 
     ```html
     <h2>Hello k8s in Azure!</h2>
@@ -217,12 +217,12 @@ Ez hozzáadja az Azure Dev Spaceshez készült hibakeresési konfigurációt a `
 
 
 ### <a name="debug-the-container-in-kubernetes"></a>A tároló hibakeresése a Kubernetesben
-Nyomja meg **az F5-öt,** hogy hibakeresést rontson a kódról a Kubernetes-ben.
+Nyomja meg az **F5 billentyűt** a kód hibakereséséhez a Kubernetes-ben.
 
 Az `up` parancshoz hasonlóan a kód szinkronizálva lesz a Dev Spaces-térbe, továbbá létrejön és települ egy tároló a Kubernetesben. Ezúttal persze a hibakereső a távoli tárolóhoz van csatlakoztatva.
 
 > [!Tip]
-> A VS-kód állapotsornarancssárgára vált, jelezve, hogy a hibakereső csatlakoztatva van. Egy kattintható URL-t is megjelenít, amellyel megnyithatja webhelyét.
+> A VS Code állapotsora a narancssárga értékre vált, ami azt jelzi, hogy a hibakereső csatolva van. Emellett egy kattintható URL-címet is megjelenít, amely a webhely megnyitására használható.
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -241,7 +241,7 @@ public IActionResult About()
 }
 ```
 
-Mentse a fájlt, és a **Hibakeresési műveletek ablaktáblán**kattintson az **Újraindítás** gombra. 
+Mentse a fájlt, és a **hibakeresési Műveletek ablaktáblán**kattintson az **Újraindítás** gombra. 
 
 ![](media/common/debug-action-refresh.png)
 
@@ -254,7 +254,7 @@ Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldal
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a többszolgáltatásos fejlesztésről](multi-service-netcore.md)
+> [További tudnivalók a több szolgáltatás fejlesztéséről](multi-service-netcore.md)
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

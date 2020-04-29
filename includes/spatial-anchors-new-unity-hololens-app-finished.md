@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: pmorgan
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 96439479ebb007507efdd577e963532d9cdf90d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67722942"
 ---
-## <a name="putting-everything-together"></a>Mindent összerakva
+## <a name="putting-everything-together"></a>Az összes együttes üzembe helyezése
 
-Itt van, `AzureSpatialAnchorsScript` hogy a teljes osztály fájlt kell kinéznie, miután az összes különböző elemeket hoztak létre. Használhatja hivatkozásként összehasonlítani a saját fájlt, és a helyszínen, ha esetleg bármilyen különbség maradt.
+A teljes `AzureSpatialAnchorsScript` Class-fájlnak így kell kinéznie, miután az összes különböző elemet összeállította. Használhatja hivatkozásként, hogy összehasonlítsa a saját fájlját, és megtalálhatja, hogy van-e eltérése.
 
 ```csharp
 using Microsoft.Azure.SpatialAnchors;
@@ -396,7 +396,7 @@ public class AzureSpatialAnchorsScript : MonoBehaviour
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban többet is megtudhat arról, hogyan használhatja az Azure Spatial Anchors alkalmazást egy új Unity HoloLens alkalmazásban. Ha többet szeretne megtudni arról, hogyan használhatja az Azure Spatial Anchors egy új Android-alkalmazásban, folytassa a következő oktatóanyaggal.
+Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure térbeli horgonyok egy új Unity HoloLens-alkalmazásban. Ha többet szeretne megtudni arról, hogyan használhatók az Azure térbeli horgonyok egy új Android-alkalmazásban, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Új androidos alkalmazás indítása](/azure/spatial-anchors/tutorials/tutorial-new-android-app)

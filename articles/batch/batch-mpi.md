@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hajthat végre Message Passing Interface (MPI) 
 ms.topic: article
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aad2b649c92716a807d577bb4f112d47d447545e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 39c7aff0618daafc2c02efaea229de3741804c7a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115975"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231696"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Message Passing Interface-(MPI-) alkalmazások futtatása többpéldányos feladatokkal a Batch szolgáltatásban
 
@@ -181,9 +181,7 @@ A Batch szolgáltatás a következő környezeti változókat hozza létre a tö
 Ezen és a többi batch számítási csomópont környezeti változóinak részletes ismertetését, beleértve azok tartalmát és láthatóságát lásd: [számítási csomópont környezeti változói][msdn_env_var].
 
 > [!TIP]
-> A Batch Linux MPI-kód minta példa arra, hogy a környezeti változók közül több is használható. A [koordináció – a cmd bash-][coord_cmd_example] szkript letölti az Azure Storage-ból származó általános alkalmazás-és bemeneti fájlokat, lehetővé teszi a hálózati fájlrendszer (NFS) megosztását a főcsomóponton, és konfigurálja a többpéldányos feladat számára az NFS-ügyfelekként lefoglalt többi csomópontot.
->
->
+> A Batch Linux MPI-kód minta példa arra, hogy a környezeti változók közül több is használható.
 
 ## <a name="resource-files"></a>Erőforrás-fájlok
 A többpéldányos feladatok esetében két erőforrás-fájl található: az *összes* feladat által letöltött **általános erőforrás-fájlok** (elsődleges és alfeladatok), valamint a többpéldányos feladathoz megadott **erőforrás-fájlok** , amelyek *csak az elsődleges* feladat letöltését jelentik.

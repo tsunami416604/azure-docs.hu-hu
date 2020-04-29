@@ -9,26 +9,26 @@ ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 8d8f8021925ac9c9e427dd6571ecaa1a30c85497
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67179741"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
 
-Következő lépésként hozzon létre egy eszközidentitást, és mentse a hozzá tartozó kulcsot későbbi használatra. Ezt az eszközidentitást a szimulált alkalmazás használja az IoT Hubnak való üzenetküldésre. Ez a funkció nem érhető el a PowerShellben, vagy egy Azure Resource Manager-sablon használata esetén. A következő lépések ből megtudhatja, hogyan hozhat létre a szimulált eszközt az [Azure Portal](https://portal.azure.com)használatával.
+Következő lépésként hozzon létre egy eszközidentitást, és mentse a hozzá tartozó kulcsot későbbi használatra. Ezt az eszközidentitást a szimulált alkalmazás használja az IoT Hubnak való üzenetküldésre. Ez a funkció nem érhető el a PowerShellben vagy Azure Resource Manager-sablon használatakor. Az alábbi lépésekből megtudhatja, hogyan hozhatja létre a szimulált eszközt a [Azure Portal](https://portal.azure.com)használatával.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjába.
 
-2. Válassza **az Erőforráscsoportok lehetőséget,** majd válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja.
+2. Válassza az **erőforráscsoportok** lehetőséget, majd válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja.
 
-3. Az erőforrások listájában válassza ki az IoT-központot. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja. Válassza ki az **IoT-eszközök** lehetőséget a Hub panelről.
+3. Az erőforrások listájában válassza ki az IoT hubot. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja. Válassza ki az **IoT-eszközök** lehetőséget a Hub panelről.
 
 4. Válassza a **+ Hozzáadás** lehetőséget. Az Eszköz hozzáadása panelen adja meg az eszköz azonosítóját. Ez az oktatóanyag a **Contoso-Test-Device** eszközt használja. Hagyja üresen a kulcsokat, majd jelölje be a **Kulcsok automatikus létrehozása** jelölőnégyzetet. Ellenőrizze, hogy az **Eszköz csatlakoztatása az IoT Hubhoz** engedélyezve van-e. Kattintson a **Mentés** gombra.
 
    ![Az eszköz hozzáadása képernyő](./media/iot-hub-include-create-simulated-device-portal/add-device.png)
 
-5. Most, hogy létrejött, válassza ki az eszközt a létrehozott kulcsok megtekintéséhez. Válassza a Másolás ikont az Elsődleges kulcson, és mentse el valahol, például a Jegyzettömböt az oktatóanyag tesztelési fázisához.
+5. Most, hogy létrejött, válassza ki az eszközt a generált kulcsok megtekintéséhez. Válassza ki a másolás ikont az elsődleges kulcson, és mentse el valahol, például a Jegyzettömbbe az oktatóanyag tesztelési fázisában.
 
-   ![A készülék adatai, beleértve a gombokat](./media/iot-hub-include-create-simulated-device-portal/device-details.png)
+   ![Az eszköz adatai, beleértve a kulcsokat](./media/iot-hub-include-create-simulated-device-portal/device-details.png)

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: fce60a10818943a9c6d420044d97c0c5b803de32
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133333"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509737"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure szinapszis Analytics kibocsátási megjegyzései
 
@@ -25,9 +25,10 @@ Ez a cikk összefoglalja az új funkciókat és fejlesztéseket a [SZINAPSZIS SQ
 
 ## <a name="check-your-azure-synapse-version"></a>Az Azure szinapszis verziójának megtekintése
 
-Mivel az új funkciók minden régióban elérhetők, tekintse meg a példányra telepített verziót, valamint a szolgáltatás rendelkezésre állásának legújabb kibocsátási megjegyzéseit. A verzió vizsgálatához kapcsolódjon az SQL-készlethez SQL Server Management Studioon (SSMS) keresztül `SELECT @@VERSION;` , és futtassa a parancsot az aktuális verzió visszaadásához.
+Mivel az új funkciók minden régióban elérhetők, tekintse meg a példányra telepített verziót, valamint a szolgáltatás rendelkezésre állásának legújabb kibocsátási megjegyzéseit. A verzió vizsgálatához kapcsolódjon az SQL-készlethez SQL Server Management Studioon (SSMS) keresztül `SELECT @@VERSION;` , és futtassa a parancsot az aktuális verzió visszaadásához. Ezzel a verzióval ellenőrizheti, hogy melyik kiadás lett alkalmazva az SQL-készletre. A kimenetben szereplő dátum azonosítja az SQL-készletre alkalmazott kiadás hónapját. Ez csak a szolgáltatási szintű újításokra vonatkozik. 
 
-Az azonosított verzió segítségével ellenőrizze, hogy az SQL-készleten melyik kiadás lett alkalmazva. A kimenetben szereplő dátum azonosítja az SQL-készletre alkalmazott kiadás hónapját.
+Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási megjegyzésben meg van adva a megfelelő verzió. 
+
 
 > [!NOTE]
 > A SELECT @@VERSION által visszaadott terméknév Microsoft Azure SQL Data Warehouseról az Azure szinapszis analyticsre változik. A módosítás előtt speciális értesítést fogunk küldeni. Ez a változás olyan ügyfelek esetében fontos, akik a terméknév alapján elemzik az alkalmazás@VERSION kódjában a Select @ nevet. Ha el szeretné kerülni az alkalmazás kódjának módosítását a termék újrahasznosítása miatt, a következő parancsokkal lekérdezheti a SERVERPROPERTY az adatbázis-terméknév és-verzió számára: a XX-es verziószámot adja vissza. X. XXXXX. X (Terméknév nélkül) használja ezt a parancsot:
@@ -40,13 +41,20 @@ Az azonosított verzió segítségével ellenőrizze, hogy az SQL-készleten mel
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+
+
 ## <a name="april-2020"></a>2020. április
 
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
 |**Adatbázis-kompatibilitási szint (előzetes verzió)**| Ezzel a kiadással a felhasználók mostantól megadhatják az adatbázis kompatibilitási szintjét, hogy lekérjek a Transact-SQL nyelvét és a lekérdezés-feldolgozási viselkedést a szinapszis SQL-motor egy adott verziójára vonatkozóan. További információ: [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az [adatbázis-hatókörű konfiguráció módosítása](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sp_describe_undeclared_parameters**| Annak engedélyezése, hogy a felhasználók megtekintsék a nem deklarált paraméterek metaadatait egy Transact-SQL-kötegben. További információ: [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-|**[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) – SQL Server Data Tools (SSDT)** | Ez a kiadás a következő javításokat és javításokat tartalmazza a SSDT: </br> </br> -Hiba történt egy olyan probléma megoldásakor, amelyben egy származtatott nézet (MV) által hivatkozott tábla módosításakor a rendszer olyan Alter View utasításokat hoz létre, amelyek nem támogatottak az MVs esetében<br/><br/> – A séma-összehasonlítási művelet végrehajtásának biztosítása, ha a sor szintű biztonsági objektumok szerepelnek az adatbázisban vagy a projektben, nem sikerül végrehajtani a módosításokat. A SSDT jelenleg nem támogatottak a sor szintű biztonsági objektumok.  <br/><br/> – A SQL Server Object Explorer időtúllépési küszöbértéke megnő, hogy elkerülje az időtúllépéseket, amikor nagy számú objektumot listáz az adatbázisban<br/><br/> -Optimalizált módon SQL Server Object Explorer lekéri az adatbázis-objektumok listáját, hogy csökkentse az instabilitást és növelje a teljesítményt az Object Explorer feltöltésekor |
+
+## <a name="march-2020"></a>2020. március
+
+| Az eszközök fejlesztése                                         | Részletek                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) – SQL Server Data Tools (SSDT)** | Ez a kiadás a következő javításokat és javításokat tartalmazza a SSDT: </br> </br> -Hiba történt egy olyan probléma megoldásakor, amelyben egy származtatott nézet (MV) által hivatkozott tábla módosításakor a rendszer olyan Alter View utasításokat hoz létre, amelyek nem támogatottak az MVs esetében<br/><br/> – A séma-összehasonlítási művelet végrehajtásának biztosítása, ha a sor szintű biztonsági objektumok szerepelnek az adatbázisban vagy a projektben, nem sikerül végrehajtani a módosításokat. A SSDT jelenleg nem támogatottak a sor szintű biztonsági objektumok.  <br/><br/> – A SQL Server Object Explorer időtúllépési küszöbértéke megnő, hogy elkerülje az időtúllépéseket, amikor nagy számú objektumot listáz az adatbázisban<br/><br/> -Optimalizált módon SQL Server Object Explorer lekéri az adatbázis-objektumok listáját, hogy csökkentse az instabilitást és növelje a teljesítményt az Object Explorer feltöltésekor |
 
 ## <a name="january-2020"></a>2020. január
 

@@ -9,24 +9,24 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 9a20dca71727e83db98c4c97567949bd127fc7fb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77111198"
 ---
-[Az üzenet-útválasztás](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) lehetővé teszi a telemetriai adatok küldését az IoT-eszközökről a beépített Event Hub-kompatibilis végpontok vagy egyéni végpontok, például a blob storage, a Service Bus-várólisták, a Service Bus-témakörök és az Event Hubs. Az egyéni üzenetútválasztás konfigurálásához [útválasztási lekérdezéseket](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) hozhat létre egy adott feltételnek megfelelő útvonal testreszabásához. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. Ha egy üzenet nem egyezik meg a megadott útválasztási lekérdezések egyikével sem, a rendszer az alapértelmezett végponthoz irányítja.
+Az [üzenet-útválasztás](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) lehetővé teszi az telemetria-adatok küldését a IoT-eszközökről a beépített Event hub-kompatibilis végpontokra vagy egyéni végpontokra, például a blob Storage-ba, a Service Bus várólistákra, a Service Bus témakörökre és a Event Hubs. Az egyéni üzenet-útválasztás konfigurálásához [útválasztási lekérdezéseket](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) kell létrehoznia az adott feltételnek megfelelő útvonal testreszabásához. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. Ha egy üzenet nem egyezik a megadott útválasztási lekérdezések egyikével sem, a rendszer az alapértelmezett végpontra irányítja át.
 
-Ebben a két részes oktatóanyagból megtudhatja, hogyan állíthatja be és használhatja ezeket az egyéni útválasztási lekérdezéseket az IoT Hubhasználatával. Az IoT-eszközről több végpont egyikére irányítüzeneteket, beleértve a blobstorage-ot és a Service Bus-várólistát. A Service Bus-várólistába küldött üzeneteket egy logikai alkalmazás veszi fel, és e-mailben küldi el. A nem egyéni üzenet-útválasztási definiált üzeneteket a rendszer elküldi az alapértelmezett végpontnak, majd az Azure Stream Analytics felveszi, és power bi-vizualizációban tekinti meg.
+Ebben a kétrészes oktatóanyagban megismerheti, hogyan állíthatja be és használhatja ezeket az egyéni útválasztási lekérdezéseket IoT Hub. Az üzeneteket egy IoT-eszközről irányítja át több végpontra, beleértve a blob Storage-t és egy Service Bus-várólistát is. A rendszer a Service Bus üzenetsor felé irányuló üzeneteket egy logikai alkalmazás használja, és e-mailben küldi el. Az egyéni üzenet-útválasztással nem rendelkező üzeneteket a rendszer az alapértelmezett végpontra küldi, majd Azure Stream Analytics és egy Power BI vizualizációban tekinti meg.
 
-Az oktatóanyag 1.
+Az oktatóanyag 1. és 2. részének végrehajtásához hajtsa végre a következő feladatokat:
 
-**I. rész: Erőforrások létrehozása, üzenet-útválasztás beállítása**
+**I. rész: erőforrások létrehozása, üzenetek útválasztásának beállítása**
 > [!div class="checklist"]
-> * Hozza létre az erőforrásokat – egy IoT hubot, egy tárfiókot, egy Service Bus-várólistát és egy szimulált eszközt. Ez az Azure Portal, egy Azure Resource Manager-sablon, az Azure CLI vagy az Azure PowerShell használatával végezhető el.
-> * Konfigurálja a végpontokat és az üzenetútvonalakat az IoT Hubban a tárfiókhoz és a Service Bus-várólistához.
+> * Hozza létre az erőforrásokat – egy IoT hub, egy Storage-fiók, egy Service Bus üzenetsor és egy szimulált eszköz. Ezt a Azure Portal, egy Azure Resource Manager sablon, az Azure CLI vagy a Azure PowerShell használatával teheti meg.
+> * Konfigurálja a végpontokat és az üzenetek útvonalait IoT Hubban a Storage-fiók és a Service Bus üzenetsor számára.
 
-**II. rész: Üzenetek küldése a központba, útválasztásos eredmények megtekintése**
+**II. rész: üzenetek küldése a hubhoz, útválasztásos eredmények megtekintése**
 > [!div class="checklist"]
 > * Egy logikai alkalmazás létrehozása, amely egy üzenet Service Bus-üzenetsorba való érkezésekor indul el és küld e-maileket.
 > * Egy olyan alkalmazás letöltése és futtatása, amely a Hubhoz üzeneteket küldő IoT-eszközt szimulál a különböző útválasztási lehetőségekhez.
@@ -38,14 +38,14 @@ Az oktatóanyag 1.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A bemutató első részéhez:
-  - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+* Az oktatóanyag 1. részében:
+  - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-* A 2. rész a bemutató:
-  - Az oktatóanyag 1.
+* Az oktatóanyag 2. részében:
+  - El kell végeznie az oktatóanyag 1. részét, és az erőforrások továbbra is elérhetők maradnak.
   - A [Visual Studio](https://www.visualstudio.com/) telepítése.
-  - Hozzáféréssel rendelkezik egy Power BI-fiókhoz az alapértelmezett végpont adatfolyam-elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web).)
-  - Az értesítő e-mailek küldéséhez Office 365-fiókkal kell rendelkeznie.
-  - Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. Az oktatóanyagban szereplő minta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
+  - Hozzáférés egy Power BI fiókhoz az alapértelmezett végpont stream Analytics elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web).)
+  - Office 365-fiókkal kell rendelkeznie az értesítő e-mailek küldéséhez.
+  - Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő minta MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

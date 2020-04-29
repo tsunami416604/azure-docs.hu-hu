@@ -1,69 +1,69 @@
 ---
-title: 'Oktatóanyag: Hardver inicializálása – Azure FXT Edge Filer'
-description: Kezdeti jelszó beállítása az Azure FXT Edge Filer csomópontjain
+title: 'Oktatóanyag: hardver inicializálása – Azure FXT Edge Filer'
+description: Kezdeti jelszó beállítása az Azure FXT Edge Filer-csomópontjain
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75550891"
 ---
-# <a name="tutorial-set-hardware-passwords"></a>Oktatóanyag: Hardverjelszavak beállítása
+# <a name="tutorial-set-hardware-passwords"></a>Oktatóanyag: hardveres jelszavak beállítása
 
-Az első alkalommal, amikor bekapcsolja az Azure FXT Edge Filer csomópontot, be kell állítania egy gyökérjelszót. A hardvercsomópontok nem alapértelmezett jelszóval vannak elszállítva. 
+Amikor első alkalommal kapcsol be egy Azure FXT Edge Filer-csomópontot, be kell állítania egy rendszergazdai jelszót. A hardveres csomópontok nem rendelkeznek alapértelmezett jelszóval. 
 
-A hálózati portok le vannak tiltva, amíg a jelszó be nem áll, és a gyökérfelhasználó be nem jelentkezik.
+A hálózati portok mindaddig le vannak tiltva, amíg a jelszót be nem állította, és a root felhasználó bejelentkezik.
 
-Ezt a lépést a csomópont telepítése és kábelezése után, de a fürt létrehozása előtt tegye meg. 
+Ezt a lépést a csomópont telepítése és kábelezése után végezze el, de a fürt létrehozásának megkísérlése előtt. 
 
-Ez az oktatóanyag bemutatja, hogyan csatlakozhat a hardvercsomóponthoz, és hogyan állíthatja be a jelszót. 
+Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a hardver-csomóponthoz, és hogyan állíthatja be a jelszót. 
 
 Az oktatóanyag során a következőket fogja elsajátítani: 
 
 > [!div class="checklist"]
-> * Billentyűzet és monitor csatlakoztatása a csomóponthoz, és bekapcsolása
-> * Az iDRAC-port és a gyökérfelhasználó jelszavainak beállítása ezen a csomóponton
-> * Bejelentkezés gyökérként 
+> * Billentyűzet és figyelő összekapcsolása a csomóponttal és bekapcsolás
+> * A iDRAC-port és a gyökérszintű felhasználó jelszavának beállítása ezen a csomóponton
+> * Bejelentkezés root-ként 
 
-Ismételje meg ezeket a lépéseket a fürtben használni kívánt csomópontokesetében. 
+Ismételje meg ezeket a lépéseket minden olyan csomópont esetében, amelyet a fürtben használni fog. 
 
-Ez az oktatóanyag körülbelül 15 percet vesz igénybe. 
+Az oktatóanyag elvégzése körülbelül 15 percet vesz igénybe. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elindítása előtt hajtsa végre az alábbi lépéseket: 
+Az oktatóanyag megkezdése előtt végezze el a következő lépéseket: 
 
-* [Telepítse](fxt-install.md) az egyes Azure FXT Edge Filer-csomópontokat egy berendezésállványra, és csatlakoztassa a tápkábeleket és a hálózati hozzáférést a [korábbi oktatóanyagban](fxt-network-power.md)leírtak szerint. 
-* Keressen egy USB-csatlakozású billentyűzetet és egy VGA-csatlakozású monitort, amelyet a hardvercsomópontokhoz csatlakoztathat. (A jelszó beállítása előtt a csomópont soros portja inaktív.)
+* [Telepítse](fxt-install.md) az összes Azure FXT Edge Filer-csomópontot egy berendezési állványba, és csatlakoztassa az áramellátási kábeleket és a hálózati hozzáférést a [korábbi oktatóanyagban](fxt-network-power.md)leírtak szerint. 
+* Keressen egy USB-kapcsolattal rendelkező billentyűzetet és egy VGA-csatlakoztatott figyelőt, amelyet csatlakoztathat a hardveres csomópontokhoz. (A csomópont soros portja inaktív a jelszó beállítása előtt.)
 
-## <a name="connect-a-keyboard-and-monitor-to-the-node"></a>Billentyűzet és monitor csatlakoztatása a csomóponthoz
+## <a name="connect-a-keyboard-and-monitor-to-the-node"></a>Billentyűzet és figyelő összekötése a csomóponttal
 
-Fizikailag csatlakoztasson egy monitort és egy billentyűzetet az Azure FXT Edge Filer csomóponthoz. 
+A monitor és a billentyűzet fizikailag csatlakoztatható az Azure FXT Edge Filer-csomóponthoz. 
 
-* Csatlakoztassa a monitort a VGA-porthoz.
-* Csatlakoztassa a billentyűzetet az egyik USB-porthoz. 
+* Kapcsolja össze a figyelőt a VGA-porttal.
+* Kapcsolja össze a billentyűzetet az egyik USB-porttal. 
 
-Ezzel a referenciaábrával megkeresheti a ház hátoldalán található portokat. 
+Ez a hivatkozási diagram a ház hátoldalán található portok megkeresésére használható. 
 
 > [!NOTE]
-> A soros port inaktív, amíg a jelszó be nem áll. 
+> A soros port csak a jelszó beállítása után inaktív. 
 
-![az Azure FXT Edge Filer hátoldalán futó, VGA és USB portokkal ellátott diagram](media/fxt-back-serial-vga-usb.png)
+![Az Azure FXT Edge Filer hátoldalának ábrája, amely soros, VGA és USB portokkal van ellátva](media/fxt-back-serial-vga-usb.png)
 
-KVM-kapcsolót akkor használhat, ha egynél több csomópontot szeretne ugyanazokhoz a perifériákhoz csatlakoztatni. 
+Ha több csomópontot szeretne ugyanahhoz a perifériához csatlakoztatni, a KVM-kapcsolót is használhatja. 
 
-Kapcsolja be a csomópontot az előlapon található bekapcsológomb megnyomásával. 
+Kapcsolja be a csomópontot a főkapcsoló gomb megnyomásával. 
 
-![Az Azure FXT Edge Filer elülső részének diagramja - a kerek bekapcsológomb a jobb felső sarok közelében van címkézve](media/fxt-front-annotated.png)
+![Az Azure FXT Edge Filer-kör előtti Power gombjának ábrája a jobb felső sarokban látható.](media/fxt-front-annotated.png)
 
 ## <a name="set-initial-passwords"></a>Kezdeti jelszavak beállítása 
 
-Az Azure FXT Edge Filer csomópont különböző üzeneteket nyomtat a figyelőbe indítás közben. Néhány pillanat múlva, ez mutat egy kezdő beállít képernyő mint ez:
+Az Azure FXT Edge Filer-csomópontja a rendszerindításkor különböző üzeneteket fog kinyomtatni a figyelőbe. Néhány pillanat múlva a következőhöz hasonló kezdeti beállítási képernyő jelenik meg:
 
 ```
 ------------------------------------------------------
@@ -76,15 +76,15 @@ Minimum password length is 8.
 Enter new password:
 ```
 
-A megadott jelszó két dologban használható: 
+A beírt jelszó két dolgot használ: 
 
-* Ez az Azure FXT Edge Filer csomópont ideiglenes gyökérjelszava. 
+* Ez az Azure FXT Edge Filer-csomópontjának ideiglenes legfelső szintű jelszava. 
 
-  Ez a jelszó megváltozik, amikor fürtöt hoz létre ezzel a csomópontkal, vagy amikor hozzáadja ezt a csomópontot a fürthöz. A fürtkezelési jelszó (a ``admin``felhasználóhoz társítva) egyben a fürt összes csomópontjának gyökérszava is.
+  Ez a jelszó akkor változik, amikor létrehoz egy fürtöt a csomópont használatával, vagy ha hozzáadja ezt a csomópontot a fürthöz. A fürt felügyeleti jelszava (a felhasználóhoz ``admin``társítva) a fürt összes csomópontjának legfelső szintű jelszava is.
 
-* Ez az iDRAC/IPMI hardverkezelő port hosszú távú jelszava.
+* Ez a iDRAC/IPMI hardveres felügyeleti port hosszú távú jelszava.
 
-  Győződjön meg róla, hogy emlékszik a jelszóra, ha később be kell jelentkeznie az IPMI-vel egy hardverprobléma elhárításához.
+  Ügyeljen arra, hogy jegyezze fel a jelszót arra az esetre, ha később be kell jelentkeznie a IPMI a hardveres probléma elhárításához.
 
 Adja meg és erősítse meg a jelszót: 
 
@@ -94,22 +94,22 @@ Re-enter password:**********
 Loading AvereOS......
 ```
 
-A jelszó megadása után a rendszer folytatja a rendszer indítását. Amikor befejezi, ez ad egy ``login:`` gyors. 
+A jelszó megadása után a rendszer folytatja a rendszerindítást. Amikor befejeződik, a rendszer egy ``login:`` kérést ad. 
 
-## <a name="sign-in-as-root"></a>Bejelentkezés gyökérként
+## <a name="sign-in-as-root"></a>Bejelentkezés root-ként
 
-Jelentkezzen be ``root`` az imént beállított jelszóval együtt. 
+``root`` Jelentkezzen be az imént beállított jelszóval. 
 
 ```
 login: root
 Password:**********
 ```
 
-Miután bejelentkezett gyökérként, a hálózati portok aktívak, és kapcsolatba lépnek a DHCP-kiszolgálóval az IP-címekért. 
+Miután bejelentkezett a gyökérként, a hálózati portok aktívak, és az IP-címekhez felveszik a kapcsolatot a DHCP-kiszolgálóval. 
 
 ## <a name="next-steps"></a>További lépések
 
-A csomópont készen áll arra, hogy egy fürt része legyen. Használhatja az Azure FXT Edge Filer fürt létrehozásához, vagy [hozzáadhatja egy meglévő fürthöz.](fxt-add-nodes.md) 
+A csomópont készen áll a fürt egy részének beosztására. Ezzel létrehozhatja az Azure FXT Edge Filer-fürtöt, vagy [hozzáadhatja egy meglévő fürthöz](fxt-add-nodes.md). 
 
 > [!div class="nextstepaction"]
 > [Fürt létrehozása](fxt-cluster-create.md)

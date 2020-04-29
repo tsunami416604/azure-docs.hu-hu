@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell – előfizetés erőforráscsoportra
-description: Ez a cikk egy minta Azure PowerShell-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő egy erőforráscsoport Eseményrács-eseményeire, és hogyan szűrheti ki az erőforrást.
+title: Azure PowerShell – előfizetés erőforráscsoporthoz
+description: Ez a cikk egy minta Azure PowerShell parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő az erőforráscsoport Event Grid eseményeire, és hogyan szűrheti az erőforrást.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 5d41bfec5978d1baf38eaf1608f50375170d9929
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720605"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>Feliratkozás egy erőforráscsoport eseményeire és szűrés erőforrásra a PowerShell-lel
@@ -30,11 +30,11 @@ Ez a szkript létrehoz egy Event Grid-előfizetést egy erőforráscsoport esem�
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events/filter-events.ps1 "Filter events")]
 
-## <a name="sample-script---preview-module"></a>Mintaparancsfájl - előnézeti modul
+## <a name="sample-script---preview-module"></a>Minta parancsfájl – előzetes verziójú modul
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Az előzetes mintaparancsfájlhoz az Event Grid modul szükséges. A telepítéshez futtassa a`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Az előnézeti minta parancsfájlhoz a Event Grid modul szükséges. A telepítéséhez futtassa a következőt`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events-preview/filter-events-preview.ps1 "Filter events")]
 
@@ -44,7 +44,7 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új-AzeventGridElőfizetés](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid-előfizetés létrehozása. |
+| [Új – AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid-előfizetés létrehozása. |
 
 ## <a name="next-steps"></a>További lépések
 

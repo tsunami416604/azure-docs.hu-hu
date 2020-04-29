@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 60c754aeec3157abee02eb136dcf148c440d8da0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477272"
 ---
-A dokumentum `deploymentconfig.json` bejegyzései a [LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)paramétereire vannak leképezve. Az alábbi táblázat a JSON-dokumentumban szereplő entitások és a módszer paraméterei közötti leképezést ismerteti:
+A `deploymentconfig.json` dokumentumtérkép bejegyzései a [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
-| JSON entitás | Metódus paramétere | Leírás |
+| JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
-| `computeType` | NA | A számítási cél. Helyi célok esetén az `local`értéknek . |
-| `port` | `port` | A helyi port, amelyen a szolgáltatás HTTP-végpontját elérhetővé teszi. |
+| `computeType` | NA | A számítási cél. Helyi célok esetén az értéknek a következőnek kell lennie `local`:. |
+| `port` | `port` | A helyi port, amelyen elérhetővé kívánja tenni a szolgáltatás HTTP-végpontját. |
 
-Ez a JSON egy példa a központi telepítési konfiguráció a CLI-vel való használatra:
+Ez a JSON egy példaként szolgáló telepítési konfiguráció a parancssori felülettel való használatra:
 
 ```json
 {

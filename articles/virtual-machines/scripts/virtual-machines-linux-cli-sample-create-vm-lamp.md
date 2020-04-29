@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-parancsfájlminta – A LAMP verem üzembe helyezése terheléselosztásos virtuálisgép-méretezési készletben
+title: Azure CLI-szkript mintája – a LAMP-verem üzembe helyezése elosztott terhelésű virtuálisgép-méretezési csoportokban
 description: Egy egyéni szkriptbővítmény használatával helyezheti üzembe a LAMP-vermet az Azure-on egy elosztott terhelésű virtuálisgép-méretezési csoportban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
 ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74039115"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>A LAMP-verem üzembe helyezése egy elosztott terhelésű virtuálisgép-méretezési csoportban

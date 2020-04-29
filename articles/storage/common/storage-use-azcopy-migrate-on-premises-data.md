@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A helyszíni adatok áttelepítése az Azure Storage-ba az AzCopy modullal| Microsoft dokumentumok'
+title: 'Oktatóanyag: helyszíni adatáttelepítés az Azure Storage-ba a AzCopy használatával | Microsoft Docs'
 description: Ebben az oktatóanyagban az AzCopyval fog adatokat migrálni vagy másolni blob-, tábla- és fájltartalmakból és -tartalmakba. Könnyedén migrálhatja adatait egy helyszíni tárolóból az Azure Storage-ba.
 author: normesta
 ms.service: storage
@@ -9,13 +9,13 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74327517"
 ---
-#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Oktatóanyag: A helyszíni adatok áttelepítése az AzCopy segítségével felhőalapú tárhelyre
+#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Oktatóanyag: helyszíni adatáttelepítés a felhőalapú tárolóba a AzCopy használatával
 
 Az AzCopy egy olyan parancssori eszköz, amely lehetővé teszi, hogy egyszerű parancsokkal másoljon adatokat az Azure Blob Storage-ba, az Azure Files-ba és az Azure Table Storage-ba, illetve ezekből a tárolókból máshová. A parancsok úgy lettek kialakítva, hogy optimális teljesítményt nyújtsanak. Az AzCopyval az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja. Az AzCopyval helyi (helyszíni) adattárolóból tárfiókba másolhat adatokat.
 
@@ -27,11 +27,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az adatok módosítása tesztelési célból.
 > * Ütemezett vagy cron feladat létrehozása az új feltölthető fájlok azonosításához.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez töltse le az AzCopy legújabb verzióját. Lásd: [Az AzCopy – Első lépések](storage-use-azcopy-v10.md).
+Az oktatóanyag elvégzéséhez töltse le a AzCopy legújabb verzióját. Lásd: Ismerkedés [a AzCopy szolgáltatással](storage-use-azcopy-v10.md).
 
 Ha Windows rendszert használ, szüksége lesz a [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) programra, mert az oktatóanyag azt használja a feladatok ütemezéséhez. A Linux-felhasználók e célra a crontab parancsot használják.
 
@@ -50,31 +50,31 @@ Kövesse az alábbi lépéseket a tároló létrehozásához:
  
 A tárolók nevének betűvel vagy számmal kell kezdődnie. A név csak betűkből, számokból és kötőjel (-) karakterből állhat. A blobok és tárolók elnevezésével kapcsolatos szabályok teljes listáját lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
 
-## <a name="download-azcopy"></a>Az AzCopy letöltése
+## <a name="download-azcopy"></a>AzCopy letöltése
 
-Töltse le az AzCopy V10 végrehajtható fájlt.
+Töltse le az AzCopy v10 végrehajtható fájlt.
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (kátrány)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-Helyezze az AzCopy fájlt a számítógép bármely pontjára. Adja hozzá a fájl helyét a rendszer elérési útváltozójához, hogy a számítógépen bármelyik mappából hivatkozhasson erre a végrehajtható fájlra.
+Helyezze a AzCopy-fájlt bárhol a számítógépre. Adja hozzá a fájl helyét a rendszerútvonal-változóhoz, hogy ezt a végrehajtható fájlt a számítógép bármelyik mappájából megtekintheti.
 
 ## <a name="authenticate-with-azure-ad"></a>Hitelesítés az Azure AD-vel
 
-Először rendelje hozzá a [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) szerepkört az identitásához. Lásd: [Hozzáférés megadása az Azure blob- és várólista-adatokhoz az RBAC-mal az Azure Portalon.](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+Először rendelje hozzá a [Storage blob adatközreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) szerepkört az identitásához. Lásd: [hozzáférés engedélyezése az Azure blobhoz és az üzenetsor-kezelés a RBAC a Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
 
-Ezután nyisson meg egy parancssort, írja be a következő parancsot, és nyomja le az ENTER billentyűt.
+Ezután nyisson meg egy parancssort, írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
 
 ```azcopy
 azcopy login
 ```
 
-Ez a parancs egy hitelesítési kódot és egy webhely URL-címét adja vissza. Nyissa meg a webhelyet, adja meg a kódot, majd kattintson a **Tovább** gombra.
+Ez a parancs egy hitelesítő kódot és egy webhely URL-címét adja vissza. Nyissa meg a webhelyet, adja meg a kódot, majd válassza a **tovább** gombot.
 
 ![Tároló létrehozása](media/storage-use-azcopy-v10/azcopy-login.png)
 
-Megjelenik egy bejelentkezési ablak. Ebben az ablakban jelentkezzen be az Azure-fiókjába az Azure-fiók hitelesítő adataival. Miután sikeresen bejelentkezett, bezárhatja a böngészőablakot, és elkezdheti használni az AzCopy programot.
+Ekkor megjelenik egy bejelentkezési ablak. Ebben az ablakban jelentkezzen be az Azure-fiókjába az Azure-fiókja hitelesítő adataival. Miután sikeresen bejelentkezett, lezárhatja a böngészőablakot, és megkezdheti a AzCopy használatát.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Egy mappa tartalmának feltöltése a Blob Storage-ba
 
@@ -84,31 +84,31 @@ Az AzCopyval feltöltheti egy mappa összes fájlját a Blob Storage-ba [Windows
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Cserélje `<local-folder-path>` le a helyőrzőt a fájlokat tartalmazó `C:\myFolder` mappa `/mnt/myFolder`elérési útvonalára (például: vagy ).
+* Cserélje le `<local-folder-path>` a helyőrzőt a fájlokat tartalmazó mappa elérési útjára (például: `C:\myFolder` vagy `/mnt/myFolder`).
 
-* Cserélje `<storage-account-name>` le a helyőrzőt a tárfiók nevére.
+* Cserélje le `<storage-account-name>` a helyőrzőt a Storage-fiók nevére.
 
-* Cserélje `<container-name>` le a helyőrzőt a létrehozott tároló nevére.
+* Cserélje le `<container-name>` a helyőrzőt a létrehozott tároló nevére.
 
-Ha a megadott könyvtár tartalmát rekurzív módon szeretné feltölteni `--recursive` a Blob storage-ba, adja meg a lehetőséget. Ha ezzel a beállítással futtatja az AzCopy programot, a rendszer az összes almappát és azok fájljait is feltölti.
+Ha a megadott könyvtár tartalmát rekurzív módon szeretné feltölteni a blob Storage-ba, adja `--recursive` meg a beállítást. Ha ezzel a kapcsolóval futtatja az AzCopy-t, a rendszer az összes almappát és azok fájljait is feltölti.
 
 ## <a name="upload-modified-files-to-blob-storage"></a>Módosított fájlok feltöltése a Blob Storage-ba
 
 Az AzCopyval a legutóbbi módosításuk ideje alapján is feltölthet fájlokat. 
 
-Ha szeretné kipróbálni ezt a funkciót, tesztelési céllal módosítson vagy hozzon létre fájlokat a forráskönyvtárban. Ezután használja az `sync` AzCopy parancsot.
+Ha szeretné kipróbálni ezt a funkciót, tesztelési céllal módosítson vagy hozzon létre fájlokat a forráskönyvtárban. Ezután használja a AzCopy `sync` parancsot.
 
 ```AzCopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Cserélje `<local-folder-path>` le a helyőrzőt a fájlokat tartalmazó `C:\myFolder` mappa `/mnt/myFolder`elérési parancsára (például: vagy .
+* Cserélje le `<local-folder-path>` a helyőrzőt a fájlokat tartalmazó mappa elérési útjára (például: `C:\myFolder` vagy `/mnt/myFolder`).
 
-* Cserélje `<storage-account-name>` le a helyőrzőt a tárfiók nevére.
+* Cserélje le `<storage-account-name>` a helyőrzőt a Storage-fiók nevére.
 
-* Cserélje `<container-name>` le a helyőrzőt a létrehozott tároló nevére.
+* Cserélje le `<container-name>` a helyőrzőt a létrehozott tároló nevére.
 
-A parancsról `sync` a [Fájlok szinkronizálása című](storage-use-azcopy-blobs.md#synchronize-files)témakörben olvashat bővebben.
+További információ a `sync` parancsról: [fájlok szinkronizálása](storage-use-azcopy-blobs.md#synchronize-files).
 
 ## <a name="create-a-scheduled-task"></a>Ütemezett feladat létrehozása
 
@@ -116,10 +116,10 @@ Létrehozhat olyan ütemezett vagy cron feladatot, amely egy AzCopy parancssori 
 
 Másolja az AzCopy-parancsot egy szövegszerkesztőbe. Frissítse az AzCopy-parancs paraméterértékeit a megfelelő értékekre. Mentse a fájlt `script.sh` (Linux) vagy `script.bat` (Windows) néven az AzCopyhoz. 
 
-Ezek a példák feltételezik, hogy a mappa neve `myFolder`, a tárfiók neve `mystorageaccount` és a tároló `mycontainer`neve.
+Ezek a példák feltételezik `myFolder`, hogy a mappa neve, a Storage `mystorageaccount` -fiók neve, a tároló `mycontainer`neve pedig.
 
 > [!NOTE]
-> A Linux-példa hozzáfűzi a SAS-jogkivonatot. Meg kell adnia egyet a parancsában. Az AzCopy V10 jelenlegi verziója nem támogatja az Azure AD-hitelesítést a cron-feladatokban.
+> A Linux-példa egy SAS-tokent fűz hozzá. Meg kell adnia egyet a parancsban. Az AzCopy v10 jelenlegi verziója nem támogatja az Azure AD-hitelesítést a cron-feladatokban.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -150,7 +150,7 @@ Ha a parancsban megadja az `*/5 * * * *` cron-kifejezést, az azt jelenti, hogy 
 
 Ha ütemezett feladatot szeretne létrehozni Windows rendszeren, írja be a következő parancsot a parancssorba vagy a PowerShellbe:
 
-Ez a példa feltételezi, hogy a parancsfájl a számítógép gyökérmeghajtójában található, de a parancsfájl bárhol lehet, ahol csak akar.
+Ez a példa feltételezi, hogy a parancsfájl a számítógép legfelső szintű meghajtóján található, de a szkript bárhol lehet.
 
 ```cmd
 schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
@@ -172,16 +172,16 @@ Ha ellenőrizni szeretné, hogy az ütemezett/cron feladat megfelelően fut-e, h
 
 A helyszíni adatok Azure Storage-ba, vagy a Storage-adatok helyszíni tárolóba történő áthelyezésével kapcsolatos további információkért kövesse az alábbi hivatkozást:
 
-* [Adatok áthelyezése az Azure Storage-ba és onnan.](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)  
+* [Adatok áthelyezése az Azure Storage-ba és az-ból](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
-Az AzCopy programról további információt az alábbi cikkekben talál:
+A AzCopy kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 
-* [Adatok átvitele az AzCopy és blob tárházával](storage-use-azcopy-blobs.md)
+* [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 
-* [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
+* [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
 
-* [Adatátvitel az AzCopy és az Amazon S3 gyűjtőkkel](storage-use-azcopy-s3.md)
+* [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
  
-* [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
+* [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)

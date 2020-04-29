@@ -1,6 +1,6 @@
 ---
-title: CLI példaaktív georeplikációs egyetlen Azure SQL-adatbázis
-description: Az Azure CLI példaparancsfájlja az aktív georeplikáció beállítása egyetlen adatbázishoz az Azure SQL Database-ben, és feladatátvétel.
+title: CLI-példa – aktív geo-replikáció – egyetlen Azure SQL Database
+description: Az Azure CLI-szkripttel beállíthatja, hogy az aktív geo-replikáció egyetlen adatbázishoz legyen Azure SQL Databaseban, és feladatátvételt hajtson végre.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 3bc6cbe025854286b0a24a34240396eea16292b6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067415"
 ---
-# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>A CLI használatával egyetlen adatbázis aktív georeplikációjának konfigurálása az Azure SQL Database-ben
+# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>A CLI használatával konfigurálhatja az aktív földrajzi replikálást egyetlen adatbázishoz Azure SQL Database
 
-Ez az Azure CLI-parancsfájl-példa egyetlen adatbázis aktív georeplikációját konfigurálja, és átadja azt az adatbázis másodlagos replikájának.
+Ez az Azure CLI parancsfájl-példa az aktív geo-replikálást konfigurálja egyetlen adatbázishoz, és feladatátvételt hajt végre az adatbázis egy másodlagos replikáján.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -42,19 +42,19 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
-| [az sql db replika](/cli/azure/sql/db/replica) | Adatbázis-replikaparancsok. |
+| [az SQL db replika](/cli/azure/sql/db/replica) | Adatbázis-replika parancsai. |
 
 ## <a name="next-steps"></a>További lépések
 

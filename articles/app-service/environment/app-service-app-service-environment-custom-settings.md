@@ -1,6 +1,6 @@
 ---
 title: Egyéni beállítások konfigurálása
-description: Konfigurálja a teljes Azure App Service-környezetre vonatkozó beállításokat. Ismerje meg, hogyan kell csinálni az Azure Resource Manager-sablonokkal.
+description: Konfigurálja a teljes Azure App Service környezetre vonatkozó beállításokat. Megtudhatja, hogyan teheti meg Azure Resource Manager-sablonokkal.
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
@@ -8,21 +8,21 @@ ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80057566"
 ---
-# <a name="custom-configuration-settings-for-app-service-environments"></a>Egyéni konfigurációs beállítások az App Service-környezetekhez
+# <a name="custom-configuration-settings-for-app-service-environments"></a>App Service környezetek egyéni konfigurációs beállításai
 ## <a name="overview"></a>Áttekintés
-Mivel az App Service-környezetek (ASEs) egyetlen ügyfél től vannak elkülönítve, vannak bizonyos konfigurációs beállítások, amelyek kizárólag az App Service-környezetek alkalmazhatók. Ez a cikk az App Service-környezetek számára elérhető különböző testreszabásokat dokumentálja.
+Mivel App Service környezetek (ASE-EK) egyetlen ügyfél számára vannak elkülönítve, bizonyos konfigurációs beállítások csak App Service környezetekre alkalmazhatók. Ez a cikk a App Service környezetekhez elérhető különböző testreszabásokat dokumentálja.
 
-Ha nem rendelkezik App Service-környezettel, olvassa [el az App Service-környezet létrehozása című témakört.](app-service-web-how-to-create-an-app-service-environment.md)
+Ha nem rendelkezik App Service Environmentval, tekintse meg a [app Service Environment létrehozása](app-service-web-how-to-create-an-app-service-environment.md)című témakört.
 
-Az App Service Environment testreszabásait az új **fürtbeállítások** attribútum tömbjének használatával tárolhatja. Ez az attribútum a *hostingEnvironments* Azure Resource Manager entitás "Tulajdonságok" szótárában található.
+App Service Environment testreszabásokat az új **clusterSettings** attribútumban található tömb használatával tárolhatja. Ez az attribútum a *hostingEnvironments* Azure Resource Manager entitás "Properties" szótárában található.
 
-A következő rövidített Erőforrás-kezelő sablonkódrészlet a **fürtBeállítások** attribútumot jeleníti meg:
+A következő rövidített Resource Manager-sablon a **clusterSettings** attribútumot jeleníti meg:
 
     "resources": [
     {
@@ -42,24 +42,24 @@ A következő rövidített Erőforrás-kezelő sablonkódrészlet a **fürtBeál
        }
     }
 
-A **clusterSettings** attribútum szerepelhet egy Erőforrás-kezelő sablonban az App Service-környezet frissítéséhez.
+A **clusterSettings** attribútum egy Resource Manager-sablonban is szerepelhet a app Service Environment frissítéséhez.
 
-## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>App Service-környezet frissítéséhez használja az Azure Resource Explorert
-Azt is megteheti, hogy frissíti az App Service-környezetet az [Azure Resource Explorer](https://resources.azure.com)használatával.  
+## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>App Service Environment frissítése a Azure Erőforrás-kezelő használatával
+Azt is megteheti, hogy a [Azure erőforrás-kezelő](https://resources.azure.com)használatával frissíti a app Service Environment.  
 
-1. Az Erőforrás-kezelőben nyissa meg az App Service-környezet **(előfizetések** > **resourceGroups** > **szolgáltató** > **microsoft.web** > **hostingkörnyezet) csomópontját.** Ezután kattintson a frissíteni kívánt app szolgáltatási környezetre.
-2. A jobb oldali ablaktáblában kattintson a felső eszköztár **Olvasás/írás** gombjára az interaktív szerkesztés engedélyezéséhez az Erőforrás-kezelőben.  
-3. Az Erőforrás-kezelő sablon szerkesztéséhez kattintson a kék **Szerkesztés** gombra.
-4. Görgessen a jobb oldali ablaktábla aljára. A **clusterSettings** attribútum a legalján található, ahol megadhatja vagy frissítheti annak értékét.
-5. Írja be (vagy másolja és illessze be) a fürtbeállítások attribútumban a kívánt **konfigurációs** értékek tömbjét.  
-6. Kattintson a jobb oldali ablaktábla tetején található zöld **PUT** gombra, és véglegesítse a módosítást az App Service-környezetben.
+1. A erőforrás-kezelő területen lépjen a app Service Environment (**előfizetések** > **resourceGroups** > **providers** > **Microsoft. Web** > **hostingEnvironments**) csomópontra. Ezután kattintson a frissíteni kívánt App Service Environmentra.
+2. A jobb oldali ablaktáblán kattintson az **olvasás/írás** lehetőségre a felső eszköztáron a erőforrás-kezelő interaktív szerkesztésének engedélyezéséhez.  
+3. Kattintson a kék **Szerkesztés** gombra, hogy a Resource Manager-sablon szerkeszthető legyen.
+4. Görgessen a jobb oldali ablaktábla aljára. A **clusterSettings** attribútum a legalul található, ahol megadhatja vagy frissítheti az értékét.
+5. Írja be (vagy másolja és illessze be) a kívánt konfigurációs értékek tömbjét a **clusterSettings** attribútumba.  
+6. Kattintson a jobb oldali ablaktábla tetején található zöld **put** gombra, hogy véglegesítse a módosítást a app Service Environment.
 
-Azonban elküldi a módosítást, nagyjából 30 percet vesz igénybe, megszorozva az Alkalmazásszolgáltatás-környezet előtér-végződéseinek számával, hogy a módosítás érvénybe lépjen.
-Ha például egy App Service-környezet négy előtér-végződést, nagyjából két órát vesz igénybe a konfigurációs frissítés befejezéséhez. A konfigurációmódosítása folyamatban van, az App Service-környezetben nem lehet más méretezési vagy konfigurációmódosítási műveleteket végrehajtani.
+A módosítás elküldése azonban körülbelül 30 percet vesz igénybe, és megszorozza a változás életbe léptetéséhez szükséges App Service Environment számával.
+Ha például egy App Service Environment négy előtérrel rendelkezik, a konfigurációs frissítés befejezéséhez körülbelül két órát vesz igénybe. A konfiguráció változása közben a rendszer nem végez más skálázási vagy konfigurációs módosítási műveletet a App Service Environment.
 
 ## <a name="enable-internal-encryption"></a>Belső titkosítás engedélyezése
 
-Az App Service Environment fekete dobozrendszerként működik, ahol nem láthatók a belső összetevők vagy a kommunikáció a rendszeren belül. A nagyobb átviteli cím engedélyezéséhez a belső összetevők között alapértelmezés szerint nincs engedélyezve a titkosítás. A rendszer biztonságos, mivel a forgalom teljesen elérhetetlen a figyelés vagy az elérés szempontjából. Ha azonban rendelkezik olyan megfelelőségi követelménnyel, amely az adatelérési út teljes titkosítását igényli az egésztől a végéig, van egy módja annak, hogy ezt egy fürtbeállítással engedélyezze.  
+A App Service Environment fekete Box-rendszerként működik, ahol a belső összetevők vagy a rendszeren belüli kommunikáció nem látható. A nagyobb átviteli sebesség engedélyezéséhez a titkosítás alapértelmezés szerint nincs engedélyezve a belső összetevők között. A rendszer biztonságban van, mivel a forgalom teljesen elérhetetlenné válik a figyeléshez vagy a hozzáféréshez. Ha a megfelelőségi követelmény azonban az, hogy az adatok elérési útja teljes titkosítást igényel a végponttól a végéig, a clusterSetting lehetővé teszi ezt a lehetőséget.  
 
         "clusterSettings": [
             {
@@ -68,13 +68,13 @@ Az App Service Environment fekete dobozrendszerként működik, ahol nem láthat
             }
         ],
  
-Miután az InternalEncryption clusterSetting engedélyezve van, hatással lehet a rendszer teljesítményére. Ha az InternalEncryption engedélyezéséhez módosítja a módosítást, az ASE instabil állapotban lesz, amíg a módosítás teljes mértékben propagálásra nem kerül. A módosítás teljes körű terjesztése eltarthat néhány órát, attól függően, hogy hány példány van az ASE-ben. Azt javasoljuk, hogy ne engedélyezze ezt az ASE használat közben. Ha engedélyeznie kell ezt egy aktívan használt ASE-n, javasoljuk, hogy a művelet befejezéséig irányítsa át a forgalmat egy biztonsági mentési környezetbe. 
+A InternalEncryption-clusterSetting engedélyezése után hatással lehet a rendszer teljesítményére. Ha a módosítást engedélyezi a InternalEncryption engedélyezéséhez, a beadása instabil állapotban lesz, amíg a változást teljes mértékben nem propagálja. A változtatások teljes propagálása eltarthat néhány óráig, attól függően, hogy hány példányt használ a központilag. Kifejezetten javasoljuk, hogy ezt a szolgáltatást a szolgáltatón kívül ne engedélyezze. Ha ezt egy aktívan használt benyújtó eszközön kell engedélyeznie, javasoljuk, hogy a művelet befejeződése előtt irányítsa át a forgalmat egy biztonsági mentési környezetbe. 
 
-## <a name="disable-tls-10-and-tls-11"></a>A TLS 1.0 és a TLS 1.1 letiltása
+## <a name="disable-tls-10-and-tls-11"></a>A TLS 1,0 és a TLS 1,1 letiltása
 
-Ha a TLS-beállításokat alkalmazásonként szeretné kezelni, akkor használhatja a [TLS-beállítások kényszerítése](../configure-ssl-bindings.md#enforce-tls-versions) dokumentációban található útmutatást. 
+Ha egy alkalmazáson keresztül szeretné kezelni a TLS-beállításokat, akkor használhatja a [TLS-beállítások érvényesítése](../configure-ssl-bindings.md#enforce-tls-versions) dokumentációban ismertetett útmutatást. 
 
-Ha le szeretné tiltani az összes bejövő TLS 1.0-s és TLS 1.1-es forgalmat az ASE összes alkalmazásában, a következő **fürtbeállítások** bejegyzést állíthatja be:
+Ha le szeretné tiltani az összes bejövő TLS 1,0-és TLS 1,1-forgalmat egy kiegészítő csomag összes alkalmazásához, a következő **clusterSettings** -bejegyzést állíthatja be:
 
         "clusterSettings": [
             {
@@ -83,10 +83,10 @@ Ha le szeretné tiltani az összes bejövő TLS 1.0-s és TLS 1.1-es forgalmat a
             }
         ],
 
-A beállítás neve 1.0, de ha be van állítva, letiltja mind a TLS 1.0, mind a TLS 1.1.
+A beállítás neve 1,0, de ha be van állítva, akkor a TLS 1,0 és a TLS 1,1 is letiltja.
 
 ## <a name="change-tls-cipher-suite-order"></a>TLS titkosítási csomag sorrendjének módosítása
-Egy másik kérdés az ügyfelektől, hogy módosíthatják-e a kiszolgálójuk által egyeztetett titkosítási listát, és ez a **fürtbeállítások** módosításával érhető el az alábbiak szerint. A rendelkezésre álló rejtjelcsomagok listája [ebből az MSDN-cikkből](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)olvasható be.
+Egy másik kérdés az ügyfelektől, ha módosíthatják a kiszolgáló által egyeztetett titkosítási algoritmusok listáját, és ez a **clusterSettings** az alább látható módon történő módosításával is megvalósítható. A rendelkezésre álló titkosítási csomagok listáját [ebből az MSDN-cikkből](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)lehet lekérni.
 
         "clusterSettings": [
             {
@@ -96,12 +96,12 @@ Egy másik kérdés az ügyfelektől, hogy módosíthatják-e a kiszolgálójuk 
         ],
 
 > [!WARNING]
-> Ha helytelen értékek vannak beállítva a titkosítási csomaghoz, amelyet az SChannel nem ért, előfordulhat, hogy a kiszolgálóval irányuló összes TLS-kommunikáció leáll. Ebben az esetben el kell távolítania a *FrontEndSSLCipherSuiteOrder* bejegyzést a **fürtbeállításokból,** és el kell küldenie a frissített Erőforrás-kezelő sablont, hogy visszatérjen az alapértelmezett titkosítási csomag beállításaihoz.  Kérjük, körültekintően használja ezt a funkciót.
+> Ha helytelen értékek vannak beállítva az SChannel által nem értelmezhető titkosítási csomaghoz, akkor a kiszolgálóval folytatott összes TLS-kommunikáció leállhat. Ebben az esetben el kell távolítania a *FrontEndSSLCipherSuiteOrder* bejegyzést a **clusterSettings** -ből, és el kell küldenie a frissített Resource Manager-sablont, hogy vissza lehessen térni az alapértelmezett titkosítási csomag beállításaihoz.  Körültekintően használja ezt a funkciót.
 > 
 > 
 
 ## <a name="get-started"></a>Bevezetés
-Az Azure Quickstart Resource Manager sablonwebhely tartalmaz egy sablont az Alapdefinícióval az [App Service-környezet létrehozásához.](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)
+Az Azure rövid útmutató Resource Manager-sablon webhelye tartalmaz egy [app Service Environment létrehozásához](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)szükséges alapdefiníciót tartalmazó sablont.
 
 <!-- LINKS -->
 

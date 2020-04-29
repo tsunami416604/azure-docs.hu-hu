@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Egyéni események küldése hibrid kapcsolatra – Eseményrács'
-description: 'Oktatóanyag: Az Azure Event Grid és az Azure CLI használatával közzétehet egy témakört, és előfizethet az eseményre. Végpontként egy hibrid kapcsolatot használunk.'
+title: 'Oktatóanyag: egyéni események küldése hibrid kapcsolatok számára – Event Grid'
+description: 'Oktatóanyag: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. Végpontként egy hibrid kapcsolatot használunk.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720702"
 ---
-# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Oktatóanyag: Egyéni események irányítsa az Azure Relay hibrid kapcsolatokra az Azure CLI és az Event Grid segítségével
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Oktatóanyag: egyéni események irányítása Azure Relay Hibrid kapcsolatok az Azure CLI-vel és Event Grid
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. A hibrid Azure Relay-kapcsolat az egyik támogatott eseménykezelő. A hibrid kapcsolatok eseménykezelőként való használatára akkor lehet szükség, ha olyan alkalmazásokból kell eseményeket kezelnie, amelyek nem rendelkeznek nyilvános végponttal. A vállalati hálózaton belül is lehetnek ilyen alkalmazások. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az adott témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket hibrid kapcsolatokba küldjük.
 
@@ -27,7 +27,7 @@ Ez a cikk feltételezi, hogy már rendelkezik egy hibrid kapcsolattal és egy fi
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!NOTE]
-> Ha az Azure CLI-t használja a helyi gépen, használja az Azure CLI 2.0.56-os vagy újabb verzióját. Az Azure CLI legújabb verziójának telepítéséről [az Azure CLI telepítése című](/cli/azure/install-azure-cli)témakörben talál.
+> Ha az Azure CLI-t használja a helyi gépen, használja az Azure CLI 2.0.56 vagy újabb verzióját. Az Azure CLI legújabb verziójának telepítésével kapcsolatos utasításokért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -51,7 +51,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="subscribe-to-a-custom-topic"></a>Feliratkozás egyéni témakörre
 
-Előfizet egy eseményrács-témakörre, és megmondja az Event Gridnek, hogy mely eseményeket szeretné nyomon követni. A következő példa előfizet a létrehozott egyéni témakörre, és átadja a hibrid kapcsolat erőforrás-azonosítóját a végponthoz. A hibrid kapcsolat azonosítója a következő formátumot követi:
+Előfizet egy Event Grid-témakörre, hogy elmondja Event Grid mely eseményeket szeretné nyomon követni. A következő példa előfizet a létrehozott egyéni témakörre, és átadja a hibrid kapcsolatok erőforrás-AZONOSÍTÓját a végponthoz. A hibrid kapcsolat azonosítója a következő formátumot követi:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
@@ -80,7 +80,7 @@ Vegye figyelembe, hogy az előfizetéshez [lejárati dátum](concepts.md#event-s
 
 Olyan alkalmazásra van szüksége, amely eseményeket tud lekérni a hibrid kapcsolatból. Ezt a műveletet a [Microsoft Azure Event Grid hibrid kapcsolat C# fogyasztói mintája](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination) hajtja végre. Már befejezte az előfeltételként felsorolt lépéseket.
 
-1. Győződjön meg arról, hogy a Visual Studio 2019-es vagy újabb verzióval rendelkezik.
+1. Győződjön meg arról, hogy rendelkezik a Visual Studio 2019-es vagy újabb verziójával.
 
 1. Klónozza az adattárat a helyi gépre.
 

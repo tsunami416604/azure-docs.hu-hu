@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Kiszolgáló tervezése - Azure CLI - Azure Database for MySQL'
+title: 'Oktatóanyag: kiszolgáló tervezése – Azure CLI – Azure Database for MySQL'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI parancssorból történő használatával.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: 080e4b119048f2c204e6617405c7c053c7f24cea
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80382834"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
@@ -22,7 +22,7 @@ Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft 
 > [!div class="checklist"]
 > * Azure Database for MySQL létrehozása
 > * A kiszolgáló tűzfalának konfigurálása
-> * Adatbázis létrehozása a [mysql parancssori eszközzel](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+> * Adatbázis létrehozása a [MySQL parancssori eszköz](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) használatával
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
@@ -34,7 +34,7 @@ Egy böngészőben az Azure Cloud Shell használatával vagy a számítógépen 
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy telepíti és használja az Azure CLI helyileg, ez a cikk megköveteli, hogy az Azure CLI 2.0-s vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az-account-set) parancs segítségével.
 ```azurecli-interactive
@@ -53,13 +53,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 Hozzon létre egy Azure Database for MySQL-kiszolgálót az az mysql server create paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-A következő példában létrehozunk egy `mydemoserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgálónak van `myadmin`egy rendszergazdai neve. Ez egy általános célú, Gen 5 szerver 2 virtuális maggal. A `<server_admin_password>` helyére írja be saját értékét.
+A következő példában létrehozunk egy `mydemoserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgáló rendelkezik egy nevű `myadmin`rendszergazda felhasználóval. Ez egy általános célú, Gen 5 kiszolgáló 2 virtuális mag. A `<server_admin_password>` helyére írja be saját értékét.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
-+ `--sku-name B_Gen5_2`alapszintű, gen 5 és 2 virtuális magokra.
++ `--sku-name B_Gen5_2`az alapszintű, a Gen 5 és a 2 virtuális mag képezi le.
 + `--sku-name GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
 + `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
 
@@ -201,7 +201,7 @@ Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 > * A kiszolgáló tűzfalának konfigurálása
-> * Adatbázis létrehozása a [mysql parancssori eszközzel](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+> * Adatbázis létrehozása a [MySQL parancssori eszköz](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) használatával
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése

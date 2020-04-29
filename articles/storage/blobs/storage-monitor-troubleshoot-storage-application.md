@@ -9,10 +9,10 @@ ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68844882"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Felhőalapú tárolási alkalmazások monitorozása és hibaelhárítása
@@ -33,7 +33,7 @@ A tárfiókok naplózásának és mérőszámainak engedélyezése az Azure Port
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com)
+Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>A naplózás és a mérőszámok bekapcsolása
 
@@ -41,7 +41,7 @@ A bal oldali menüben válassza az **Erőforráscsoportok**, a **myResourceGroup
 
 A **Diagnosztikai beállítások (klasszikus)** területen állítsa az **Állapot** beállítást **Be** értékre. Győződjön meg arról, hogy a **Blob tulajdonságai** területen lévő összes beállítás engedélyezve van.
 
-Ha elkészült, kattintson a **Mentés gombra.**
+Ha elkészült, kattintson a **Mentés** gombra.
 
 ![Diagnosztika panel](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -89,7 +89,7 @@ Ebben az esetben a [Microsoft Message Analyzer](https://technet.microsoft.com/li
 
 Töltse le és telepítse a [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) alkalmazást.
 
-Indítsa el az alkalmazást, és válassza a **Fájl** > **megnyitása** > **más fájlforrásokból**lehetőséget.
+Indítsa el az alkalmazást, és válassza a **fájl** > **megnyitása** > **más forrásokból**lehetőséget.
 
 A **File Selector** (Fájl kiválasztása) párbeszédablakban válassza a **+ Add Azure Connection** (+ Azure-kapcsolat hozzáadása) lehetőséget. Adja meg a **tárfiók nevét** és a **fiókkulcsot**, majd kattintson az **OK** gombra.
 

@@ -1,5 +1,5 @@
 ---
-title: Terheléselosztási virtuális gépek egy zónán belül - Azure CLI
+title: Virtuális gépek terheléselosztása zónán belül – Azure CLI
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan lehet elosztani a forgalom jelentette terhelést egy adott rendelkezésre állási zónában található virtuális gépek között
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79214540"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Például Az Azure CLI-parancsfájl: Terheléselosztási forgalom a virtuális gépekre egy adott rendelkezésre állási zónán belül
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI parancsfájl-példa: az adott rendelkezésre állási zónán belüli virtuális gépek forgalmának elosztása
 
 A CLI-példaszkript minden összetevőt létrehoz, amelyre szükség van több, magas rendelkezésre állásra és terheléselosztásra konfigurált Ubuntu rendszerű virtuális gép futtatásához egy adott rendelkezésre állási zónán belül. A szkript futtatása után három virtuális géppel rendelkezik majd, amelyek egy régió ugyanazon rendelkezésre állási zónájában találhatók, és egy standard Azure Load Balanceren keresztül érhetők el. 
 

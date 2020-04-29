@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Intelligens mérőműszer-elemző alkalmazás létrehozása az IoT Central segítségével'
-description: 'Oktatóanyag: Ismerje meg, hogyan hozhat létre egy intelligens mérőműszer-figyelő alkalmazást az Azure IoT Central alkalmazássablonjaihasználatával.'
+title: 'Oktatóanyag: Smart Meter Analytics-alkalmazás létrehozása IoT Central'
+description: 'Oktatóanyag: Ismerje meg, hogyan hozhat létre intelligens mérőműszer-figyelő alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.'
 author: op-ravi
 ms.author: omravi
 ms.date: 11/12/2019
@@ -9,96 +9,96 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77016000"
 ---
-# <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Oktatóanyag: Az intelligens fogyasztásmérő felügyeleti alkalmazássablon létrehozása és végigjárása 
+# <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Oktatóanyag: az intelligens fogyasztásmérő monitorozási alkalmazás sablonjának létrehozása és végigvezeti 
 
 
 
-Ez az oktatóanyag végigvezeti az intelligens mérőfigyelő alkalmazás létrehozásának folyamatán, amely szimulált adatokat tartalmazó mintaeszköz-modellt tartalmaz. Ezen oktatóanyag segítségével elsajátíthatja a következőket:
+Ez az oktatóanyag végigvezeti az intelligens mérőműszer-figyelő alkalmazás létrehozásának folyamatán, amely egy szimulált adattal rendelkező minta-eszköz modellt tartalmaz. Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
 > [!div class="checklist"]
-> * Hozza létre a Smart Meter App ingyen
-> * Alkalmazás-átjárás
+> * Hozzon létre ingyenes Smart Meter alkalmazást
+> * Alkalmazás végigvezeti
 > * Az erőforrások eltávolítása
 
 
-Ha nem rendelkezik előfizetéssel, [hozzon létre egy ingyenes próbafiókot](https://azure.microsoft.com/free)
+Ha nincs előfizetése, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Előfeltételek
 - None
-- Az Azure-előfizetés ajánlott, de nem szükséges kipróbálni
+- Az Azure-előfizetés használata ajánlott, de nem szükséges a kipróbáláshoz
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása 
 
 Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
 
-1. Nyissa meg [az Azure IoT Central kezdőlapját,](https://apps.azureiotcentral.com) és új alkalmazás létrehozásához kattintson a **Build gombra.** 
+1. Nyissa meg az [Azure IoT Central kezdőlapját](https://apps.azureiotcentral.com) , és kattintson a **Build** (létrehozás) gombra egy új alkalmazás létrehozásához. 
 
-2. Válassza **az Energia** lapot, és kattintson az Alkalmazás **létrehozása** elemre az Intelligens **mérő figyelési** alkalmazáscsempéje csoportban.
+2. Válassza **az energia** fület, majd kattintson az alkalmazás **létrehozása** elemre az **intelligens fogyasztásmérő figyelése** alkalmazás csempén.
 
     > [!div class="mx-imgBorder"]
-    > ![Alkalmazás létrehozása](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    > ![Alkalmazás összeállítása](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. **A Create app** megnyitja az **Új jelentkezési** lapot. Töltse ki a kért adatokat az alábbi ábra szerint:
-    * **Alkalmazás neve**: Válasszon nevet az IoT Central alkalmazás. 
-    * **URL:** Válasszon egy IoT-központi URL-címet, a platform ellenőrzi annak egyediségét.
-    * **7 napos ingyenes próbaverzió:** Ha már rendelkezik Azure-előfizetéssel, az alapértelmezett beállítás ajánlott. Ha nem rendelkezik Azure-előfizetéssel, kezdje az ingyenes próbaverzióval.
-    * **Számlázási információk**: Maga az alkalmazás ingyenes. A címtár, az Azure-előfizetés és a régió adatait az alkalmazás erőforrásainak kiépítése szükséges.
+3. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a kért adatokat az alábbi ábrán látható módon:
+    * **Alkalmazás neve**: válasszon egy nevet a IoT Central alkalmazás számára. 
+    * **URL**: válasszon egy IoT Central URL-címet, a platform ellenőrzi annak egyediségét.
+    * **7 napos ingyenes próbaverzió**: Ha már rendelkezik Azure-előfizetéssel, az alapértelmezett beállítás ajánlott. Ha nem rendelkezik Azure-előfizetéssel, kezdje az ingyenes próbaverzióval.
+    * **Számlázási információ**: maga az alkalmazás ingyenes. Az alkalmazás erőforrásainak kiépítéséhez a címtár, az Azure-előfizetés és a régió részletei szükségesek.
     * Kattintson a lap alján található **Létrehozás** gombra, és az alkalmazás egy percen belül létrejön.
 
-        ![Új jelentkezési lap](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+        ![Új alkalmazás űrlapja](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
 
-        ![Új alkalmazásűrlap számlázási adatai](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
+        ![Új alkalmazás-űrlap számlázási adatai](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
-### <a name="verify-the-application-and-simulated-data"></a>Az alkalmazás és a szimulált adatok ellenőrzése
+### <a name="verify-the-application-and-simulated-data"></a>Az alkalmazás és a szimulált adatértékek ellenőrzése
 
-Az újonnan létrehozott intelligens mérőalkalmazás az alkalmazás, amelybármikor módosíthatja. Győződjünk meg arról, hogy az alkalmazás telepítése és a várt módon működik, mielőtt módosítaná.
+Az újonnan létrehozott intelligens fogyasztásmérő alkalmazás az alkalmazás, és bármikor módosítható. Győződjön meg arról, hogy az alkalmazás telepítve van, és a módosítás előtt a várt módon működik.
 
-Az alkalmazás létrehozásának és az adatszimulációnak az ellenőrzéséhez nyissa meg az **Irányítópult ot.** Ha látja a csempéket néhány adatot, akkor az alkalmazás telepítése sikeres volt. Az adatszimuláció néhány percet is igénybe vehet az adatok létrehozása, ezért adjon 1-2 percet. 
+Az alkalmazás létrehozásának és adatszimulációjának ellenőrzéséhez nyissa meg az **irányítópultot**. Ha a csempék adatai megtekinthetők, az alkalmazás üzembe helyezése sikeres volt. Az adat-szimuláció eltarthat néhány percig az adat létrehozásakor, így 1-2 percet is igénybe vehet. 
 
-## <a name="application-walk-through"></a>Alkalmazás-átjárás
-Miután sikeresen telepítette az alkalmazássablont, az intelligens mérőeszköz minta, az eszközmodell és egy irányítópult ot is mellékelt. 
+## <a name="application-walk-through"></a>Alkalmazás végigvezeti
+Az alkalmazás sikeres üzembe helyezése után a minta intelligens fogyasztásmérő eszköz, az eszköz modellje és az irányítópult is megtalálható. 
 
-Adatum egy fiktív energetikai vállalat, aki figyeli és kezeli az intelligens mérők. Az intelligens mérőfigyelő irányítópultján intelligens mérőtulajdonságok, adatok és mintaparancsok jelennek meg. Lehetővé teszi az operátorok és a támogató csapatok számára, hogy proaktív módon hajtsák végre a következő tevékenységeket, mielőtt támogatási incidensekké alakulnának: 
-* Tekintse át a legfrissebb mérőadatokat és a térképen telepített tartózkodási helyét
-* Proaktív módon ellenőrizze a mérő hálózat és a kapcsolat állapotát 
-* Monitor Min és Max feszültség mért hálózati egészségügyi 
-* Tekintse át az energia-, teljesítmény- és feszültségirányzatot, hogy elkapjon bármilyen rendellenes mintát 
+A adatum egy kitalált energetikai vállalat, amely figyeli és felügyeli az intelligens fogyasztásmérőket. Az intelligens fogyasztásmérő monitorozási irányítópultján megjelenik az intelligens fogyasztásmérő tulajdonságai, az adathalmazok és a minták parancsai. Lehetővé teszi a kezelők és a támogatási csapatok számára, hogy proaktív módon végezzék el a következő tevékenységeket, mielőtt a támogatási incidensekre váltanak: 
+* Tekintse át a legújabb mérési adatokat és a telepítési helyét a térképen
+* Proaktív módon ellenőrizhető a mérési hálózat és a kapcsolatok állapota 
+* A hálózat állapotának minimális és maximális feszültségének figyelése 
+* Tekintse át az energia, a teljesítmény és a feszültség tendenciáit, hogy bármilyen rendellenes mintázatot kapjon 
 * A teljes energiafogyasztás nyomon követése tervezési és számlázási célokra
-* Parancs- és vezérlési műveletek, például a mérőújracsatlakoztatás és a firmware-verzió frissítése. A sablonban a parancsgombok a lehetséges funkciókat jelenítik meg, és nem küldenek valódi parancsokat. 
+* Parancs-és vezérlési műveletek, például újrakapcsolási mérő és a belső vezérlőprogram frissítése. A sablonban a parancsgombok a lehetséges funkciókat mutatják, és nem küldenek valós parancsokat. 
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens fogyasztásmérő-figyelő műszerfal](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+> ![Intelligens fogyasztásmérő monitorozási irányítópultja](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Eszközök
-Az alkalmazás hoz egy minta intelligens mérő eszköz. Az eszköz adatait az **Eszközök** fülre kattintva láthatja.
+Az alkalmazás egy minta intelligens mérőszám-eszközt tartalmaz. Az eszköz adatait a **Devices (eszközök** ) lapra kattintva tekintheti meg.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens fogyasztásmérő eszközök](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+> ![Intelligens fogyasztásmérő eszközei](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
-Kattintson a mintaeszköz **SM0123456789** linkre az eszköz részleteinek megtekintéséhez. Az eszköz írható tulajdonságait frissítheti a **Tulajdonságok frissítése** lapon, és megjelenítheti a frissített értékeket az irányítópulton.
+Az eszköz részleteinek megtekintéséhez kattintson a minta eszköz **SM0123456789** hivatkozására. Frissítheti az eszköz írható tulajdonságait a **frissítés tulajdonságai** lapon, és megjelenítheti a frissített értékeket az irányítópulton.
 
 > [!div class="mx-imgBorder"]
 > ![Intelligens fogyasztásmérő tulajdonságai](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
-### <a name="device-template"></a>Eszközsablon
-Kattintson az **Eszközsablonok** fülre az intelligens mérőeszköz modelljének megtekintéséhez. A modell előre definiált felülettel rendelkezik az adatokhoz, a tulajdonsághoz, a parancsokhoz és a nézetekhez.
+### <a name="device-template"></a>Eszköz sablonja
+Az intelligenskártya-modell megjelenítéséhez kattintson az **eszköz sablonok** lapfülre. A modell előre definiált felületet tartalmaz az adattípushoz, a tulajdonsághoz, a parancsokhoz és a nézetekhez.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens mérőeszköz-sablonok](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+> ![Smart Meter-eszközök sablonjai](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha úgy dönt, hogy nem használja tovább ezt az alkalmazást, törölje az alkalmazást az alábbi lépésekkel:
+Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alkalmazást a következő lépésekkel:
 
-1. A bal oldali ablaktáblából nyissa meg a Felügyelet lapot
+1. A bal oldali ablaktáblában nyissa meg az adminisztráció lapot.
 2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
 
     > [!div class="mx-imgBorder"]
@@ -106,6 +106,6 @@ Ha úgy dönt, hogy nem használja tovább ezt az alkalmazást, törölje az alk
 
 
 ## <a name="next-steps"></a>További lépések
-* Az intelligens mérőalkalmazás-architektúráról a [koncepciócikkben olvashat.](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
-* Hozzon létre intelligens mérő alkalmazás sablonokat ingyen: [intelligens mérő alkalmazás](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* További információ az IoT Centralról: [IoT Central overview](https://docs.microsoft.com/azure/iot-central/)
+* További információ az App Architecture architektúrával kapcsolatban [.](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
+* Smart Meter-alkalmazás sablonjainak létrehozása ingyen: [intelligens fogyasztásmérő](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring) alkalmazás
+* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)

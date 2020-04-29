@@ -1,6 +1,6 @@
 ---
-title: Nagy mennyiségű véletlenszerű adat feltöltése párhuzamosan az Azure Storage-szolgáltatással
-description: Megtudhatja, hogy az Azure Storage-ügyfélkódtár használatával hogyan tölthet fel nagy mennyiségű véletlenszerű adatot párhuzamosan egy Azure Storage-fiókkal
+title: Nagy mennyiségű véletlenszerű adatok párhuzamos feltöltése az Azure Storage-ba
+description: Ismerje meg, hogyan tölthetők fel nagy mennyiségű véletlenszerű adatok párhuzamosan egy Azure Storage-fiókba az Azure Storage ügyféloldali kódtár használatával
 author: roygara
 ms.service: storage
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75371938"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
@@ -26,9 +26,9 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 > * Az alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése
 
-Az Azure Blob Storage skálázható szolgáltatást biztosít adatainak tárolásához. Ahhoz, hogy az alkalmazás a lehető legjobb teljesítménnyel működhessen, ajánlatos megismerkedni a Blob Storage működésével. Az Azure-blobok korlátainak ismerete fontos, ha többet szeretne megtudni ezekről a korlátokról, látogasson el [a: Méretezhetőségi és teljesítménycélok a Blob storage számára.](../blobs/scalability-targets.md)
+Az Azure Blob Storage skálázható szolgáltatást biztosít adatainak tárolásához. Ahhoz, hogy az alkalmazás a lehető legjobb teljesítménnyel működhessen, ajánlatos megismerkedni a Blob Storage működésével. Az Azure-Blobok korlátainak ismerete fontos, ha többet szeretne megtudni ezekről a korlátokról, látogasson el a [blob Storage méretezhetőségi és teljesítménybeli céljaira](../blobs/scalability-targets.md).
 
-[A partícióelnevezés](../blobs/storage-performance-checklist.md#partitioning) egy másik potenciálisan fontos tényező egy nagy teljesítményű alkalmazás blobok használatával történő tervezésekor. 4 Millió milliónál nagyobb vagy azzal egyenlő blokkméretek esetén [nagy átviteli sebességű blokkblobokat](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) használ a rendszer, és a partíciók elnevezése nem befolyásolja a teljesítményt. A 4 Millió milliónál kisebb blokkméretek esetén az Azure storage tartományalapú particionálási sémát használ a méretezéshez és a terheléselosztáshoz. Ez a konfiguráció azt jelenti, hogy a hasonló elnevezési konvenciókkal vagy előtagokkal rendelkező fájlok ugyanarra a partícióra kerülnek. Ez a logika magában foglalja a tároló nevét, amelybe a fájlokat feltöltik. Ebben az oktatóanyagban olyan fájlokat használ, amelyek nevek helyett GUID-azonosítókkal, valamint véletlenszerűen létrehozott tartalmakkal rendelkeznek. Ezeket azután öt különböző, véletlenszerű nevű tárolóba töltjük fel.
+A [partíció elnevezése](../blobs/storage-performance-checklist.md#partitioning) a nagy teljesítményű alkalmazások Blobokkal történő tervezésekor egy másik fontos tényező. A 4 MiB-nél nagyobb vagy azzal egyenlő blokkos méretek esetén a [nagy átviteli sebességű blokk blobokat](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) használja a rendszer, és a partíciók elnevezése nem befolyásolja a teljesítményt. A 4 MiB-nél kisebb méretű blokkok esetében az Azure Storage egy tartományon alapuló particionálási sémát használ a méretezéshez és a terheléselosztáshoz. Ez a konfiguráció azt jelenti, hogy a hasonló elnevezési konvenciókkal vagy előtagokkal rendelkező fájlok ugyanarra a partícióra kerülnek. Ez a logika magában foglalja a tároló nevét, amelybe a fájlokat feltöltik. Ebben az oktatóanyagban olyan fájlokat használ, amelyek nevek helyett GUID-azonosítókkal, valamint véletlenszerűen létrehozott tartalmakkal rendelkeznek. Ezeket azután öt különböző, véletlenszerű nevű tárolóba töltjük fel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>Kapcsolati sztring konfigurálása
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Jelentkezzen be az előző oktatóanyagban létrehozott virtuális gépbe. Nyissa meg rendszergazdaként a **parancssort** és futtassa a `setx` parancsot a `/m` kapcsolóval. Ez a parancs egy gépbeállításhoz tartozó környezeti változó értékét menti. A környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort**. Cserélje le ** \<\> a storageConnectionString karakterláncot** a következő mintában:
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Jelentkezzen be az előző oktatóanyagban létrehozott virtuális gépbe. Nyissa meg rendszergazdaként a **parancssort** és futtassa a `setx` parancsot a `/m` kapcsolóval. Ez a parancs egy gépbeállításhoz tartozó környezeti változó értékét menti. A környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort**. Cserélje ** \<le\> a storageConnectionString** a következő mintában:
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -68,10 +68,10 @@ A szálkezelési és a kapcsolati korlátozások beállításán felül az [Uplo
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legnagyobb teljesítmény esetén ennek az értéknek nyolcszorosának kell lennie a magok számának. |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legnagyobb teljesítmény érdekében ennek az értéknek a magok számának nyolcszor kell lennie. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| igaz| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| hamis| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
-| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás közel kerül a Blob storage méretezhetőségi célok eléréséhez. További információ: [Méretezhetőségi és teljesítménycélok a Blob storage.](../blobs/scalability-targets.md)  |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás közelebb kerül a blob Storage skálázhatósági céljainak eléréséhez. További információkért lásd [a blob Storage skálázhatósági és teljesítménybeli céljait](../blobs/scalability-targets.md)ismertető témakört.  |
 
 A következő példában az `UploadFilesAsync` feladat látható:
 

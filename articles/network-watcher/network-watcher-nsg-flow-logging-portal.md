@@ -16,16 +16,16 @@ ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76896450"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Virtuális gép bejövő és kimenő hálózati forgalmának naplózása az Azure Portal használatával
 
 > [!div class="op_single_selector"]
-> - [Azure-portál](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
@@ -40,22 +40,22 @@ A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek
 > * Naplózott adatok letöltése
 > * Naplózott adatok megtekintése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
 1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
-2. Válassza **a Számítás**lehetőséget, majd válassza a Windows Server **2016 Datacenter** vagy az Ubuntu **Server**egy verzióját.
-3. Írja be vagy jelölje ki a következő adatokat, fogadja el a fennmaradó beállítások alapértelmezett beállításait, majd kattintson az **OK gombra:**
+2. Válassza a **számítás**lehetőséget, majd válassza a **Windows Server 2016 Datacenter** vagy az **Ubuntu Server**verzióját.
+3. Adja meg vagy válassza ki a következő adatokat, fogadja el a többi beállítás alapértelmezett értékeit, majd kattintson az **OK gombra**:
 
     |Beállítás|Érték|
     |---|---|
-    |Név|myVM|
+    |Name (Név)|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| **Usa keleti része**|
+    |Hely| Válassza ki az **USA keleti** régióját|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -89,15 +89,15 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
 1. A rendszer az NSG-folyamatnapló adatait egy Azure Storage-fiókba fogja írni. Azure Storage-fiók létrehozásához válassza a portál bal felső sarkában található **+ Erőforrás létrehozása** elemet.
 2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
-3. Írja be vagy jelölje ki a következő adatokat, fogadja el a fennmaradó alapértelmezett értékeket, majd válassza a **Létrehozás gombot.**
+3. Adja meg vagy válassza ki a következő adatokat, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás**lehetőséget.
 
     | Beállítás        | Érték                                                        |
     | ---            | ---   |
-    | Név           | A hossza 3–24 karakter lehet, kizárólag kisbetűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure Storage-fiókban.                                                               |
-    | Hely       | **Usa keleti része**                                           |
-    | Erőforráscsoport | Válassza **a Meglévő használata**lehetőséget, majd a **MyResourceGroup** lehetőséget. |
+    | Name (Név)           | A hossza 3–24 karakter lehet, kizárólag kisbetűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure Storage-fiókban.                                                               |
+    | Hely       | Válassza ki az **USA keleti** régióját                                           |
+    | Erőforráscsoport | Válassza a **meglévő használata**lehetőséget, majd a **myResourceGroup** lehetőséget. |
 
-    A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. A tárfióknak minden esetben ugyanabban a régióban kell lennie, mint az NSG-nek.
+    A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. A Storage-fióknak minden esetben ugyanabban a régióban kell lennie, mint a NSG.
 4. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 5. A **NAPLÓK** területen válassza az **NSG-folyamatnaplók** lehetőséget, ahogyan az a következő képen látható:
 
@@ -105,13 +105,13 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
 6. A hálózati biztonsági csoportok közül válassza a **myVm-nsg** nevű csoportot.
 7. A **Folyamatnaplók beállításai** területen válassza a **Be** lehetőséget.
-8. Válassza ki a folyamatnaplózási verziót. A 2-es verzió folyamatmunkamenet-statisztikákat tartalmaz (bájt és csomagok)
+8. Válassza ki a folyamat naplózásának verzióját. A 2. verzió folyamat-munkameneti statisztikát tartalmaz (bájtok és csomagok)
 
-   ![Folyamatnaplók verziójának kiválasztása](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+   ![Flow-naplók verziójának kiválasztása](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. Válassza ki a 3. lépésben létrehozott Storage-fiókot.
    > [!NOTE]
-   > Az NSG-folyamatnaplók nem működnek olyan tárfiókokkal, [amelyekhierarchikus névtérrel](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) rendelkeznek.
+   > A NSG-folyamatok naplói nem működnek olyan Storage-fiókokkal, amelyeken engedélyezve van a [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
 1. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 10. A **Megőrzés (nap)** beállítást állítsa 5 értékre, majd válassza a **Mentés** lehetőséget.
 
@@ -123,8 +123,8 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
    ![Folyamatnaplók letöltése](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Válassza ki az [NSG-folyamatnapló engedélyezése](#enable-nsg-flow-log) szakasz 2. lépésében konfigurált Storage-fiókot.
-4. A **Blob szolgáltatás**csoportban válassza a **Blobok**lehetőséget, majd válassza ki az **insights-logs-networksecuritygroupflowevent** container-t.
-5. A tárolóban keresse meg a mappahierarchiát, amíg meg nem nyit egy PT1H.json fájlt, ahogy az a következő képen látható. A naplófájlok a következő elnevezési konvenciókat követő mappahierarchiába kerülnek: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName }/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+4. A **blob Service**területen válassza a **Blobok**lehetőséget, majd válassza ki az elemzések **-naplók-networksecuritygroupflowevent** tárolót.
+5. A tárolóban navigáljon a mappa-hierarchiába, amíg nem kap egy PT1H. JSON fájlt, ahogy az a következő képen is látható. A naplófájlokat a rendszer a következő elnevezési konvenciót követő mappa-hierarchiába írja: https://{storageAccountName}. blob. Core. Windows. net/elemzések-naplók-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {hónap}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
    ![A folyamat naplója](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
@@ -134,7 +134,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
 Az alábbi json-fájl egy példa arra, mi látható majd a PT1H.json fájlban az egyes folyamatok esetén, amelyekhez adatokat naplóz a rendszer:
 
-### <a name="version-1-flow-log-event"></a>1-es verziójú folyamatnapló-esemény
+### <a name="version-1-flow-log-event"></a>1-es verziójú flow-napló esemény
 ```json
 {
     "time": "2018-05-01T15:00:02.1713710Z",
@@ -160,7 +160,7 @@ Az alábbi json-fájl egy példa arra, mi látható majd a PT1H.json fájlban az
     }
 }
 ```
-### <a name="version-2-flow-log-event"></a>2-es verziójú folyamatnapló-esemény
+### <a name="version-2-flow-log-event"></a>2. verziójú flow napló esemény
 ```json
 {
     "time": "2018-11-13T12:00:35.3899262Z",
@@ -211,16 +211,16 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | 10.0.0.4  | Forrás IP-címe      | A forrás IP-cím, ahonnan a forgalom érkezett. A 10.0.0.4 a [Virtuális gép létrehozása](#create-a-vm) szakaszban létrehozott virtuális gép magánhálózati IP-címe.
 | 13.67.143.118     | Cél IP-cím | A cél IP-cím, ahová a forgalom tartott.                                                                                  |
 | 44931        | Forrásport            | A forrásport, ahonnan a forgalom érkezett.                                           |
-| 443         | Célport       | A célport, ahová a forgalom tartott. Mivel a forgalom a 443-as portra volt szánva, a **naplófájlban a UserRule_default-allow-rdp**nevű szabály feldolgozta a folyamatot.                                                |
+| 443         | Célport       | A célport, ahová a forgalom tartott. Mivel a forgalom a 443-as portra lett szánva, az **UserRule_default-Allow-RDP**nevű szabály a naplófájlban feldolgozta a folyamatot.                                                |
 | T            | Protocol (Protokoll)               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
 | O            | Irány              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
 | A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
-| C#            | Csak a **2- es folyamatállapot-verzió** | Rögzíti a folyamat állapotát. Lehetséges állapotok: **B**: Kezdés, folyamat létrehozásakor. A statisztikák nincsenek megadva. **C**: Folyamatos áramlás folytatása. A statisztikák 5 perces időközönként állnak rendelkezésre. **E**: Vége, ha egy folyamat véget ér. Statisztikai adatok rendelkezésre állnak. |
-| 30 | Elküldött csomagok - Csak a célhoz **forrás 2-es verzió** | A forrásból a célhoz a legutóbbi frissítés óta küldött TCP- vagy UDP-csomagok teljes száma. |
-| 16978 | Küldött bájtok - Csak a célhoz **forrás 2-es verzió** | A forrásból a célhoz a legutóbbi frissítés óta küldött TCP- vagy UDP-csomagbájtok teljes száma. A csomagbájtok tartalmazzák a csomagfejlécet és a hasznos adatot. |
-| 24 | Elküldött csomagok - Csak a **2-es verzió** forrásának célja | A célról a forrásra küldött TCP- vagy UDP-csomagok teljes száma a legutóbbi frissítés óta. |
-| 14008| Küldött bájtok - Csak a **2-es verzió** forrásának célja | A célról a forrásra küldött TCP- és UDP-csomagbájtok teljes száma a legutóbbi frissítés óta. A csomagbájtok tartalmazzák a csomagfejlécet és a hasznos adatot.|
+| C#            | Csak a flow állapota **2. verzió** | Rögzíti a folyamat állapotát. A lehetséges állapotok a **B**: Begin, amikor létrejön egy folyamat. Nincs megadva statisztika. **C**: folyamatos folyamat folytatása. A statisztikák 5 perces időközönként vannak megadva. **E**: Befejezés, ha egy folyamat leáll. Statisztikákat biztosítunk. |
+| 30 | Küldött csomagok – a forrás célhelye **csak a 2. verzióra** | A forrásról a célhelyre küldött TCP-vagy UDP-csomagok teljes száma az utolsó frissítés óta. |
+| 16978 | Küldési sebesség (bájt) – a forrás és a cél **2-es verziója csak** | A forrás és a célhely között a legutóbbi frissítés óta küldött TCP-vagy UDP-csomagok teljes száma. A csomagok bájtjai a csomagok fejlécét és a hasznos adatokat tartalmazzák. |
+| 24 | Küldött csomagok – célhely a forrás **2-es verzióra** | Az utolsó frissítés óta a célhelyről a forrásba küldött TCP-vagy UDP-csomagok teljes száma. |
+| 14008| Eljuttatott bájtok – célhely a forrás **2-es verzióra** | A célhelyről a forrásig a legutóbbi frissítés óta küldött TCP-és UDP-csomagok teljes száma. A csomagok bájtjai tartalmazzák a csomagok fejlécét és a hasznos adatokat.|
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan engedélyezhető az NSG-folyamatnaplózás egy hálózati biztonsági csoport esetében. Azt is megismerhette, hogyan töltheti le és tekintheti meg a fájlokban naplózott adatokat. A json-fájlban található nyers adatok értelmezése kihívást jelenthet. A Folyamatnaplók adatainak megjelenítéséhez használhatja [az Azure Traffic Analytics,](traffic-analytics.md) [a Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)és más eszközöket. Megpróbálhatja az NSG flow naplók, például a [PowerShell,](network-watcher-nsg-flow-logging-powershell.md) [az Azure CLI,](network-watcher-nsg-flow-logging-cli.md) [a REST API](network-watcher-nsg-flow-logging-rest.md) és az [ARM-sablonok engedélyezésének alternatív módszereit.](network-watcher-nsg-flow-logging-azure-resource-manager.md)
+Ez az oktatóanyag bemutatta, hogyan engedélyezhető az NSG-folyamatnaplózás egy hálózati biztonsági csoport esetében. Azt is megismerhette, hogyan töltheti le és tekintheti meg a fájlokban naplózott adatokat. A json-fájlban található nyers adatok értelmezése kihívást jelenthet. A flow-naplók megjelenítéséhez használhatja az [Azure Traffic Analytics](traffic-analytics.md), a [Microsoft Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)és más eszközöket. Alternatív módszereket is kipróbálhat a NSG flow-naplók, például a [PowerShell](network-watcher-nsg-flow-logging-powershell.md), az [Azure CLI](network-watcher-nsg-flow-logging-cli.md), a [REST API](network-watcher-nsg-flow-logging-rest.md) és az [ARM-sablonok](network-watcher-nsg-flow-logging-azure-resource-manager.md)engedélyezéséhez.

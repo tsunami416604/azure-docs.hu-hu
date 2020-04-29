@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használható a fürt automatikus méretezése,
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 732c405cad20aef3485b521fa245cb504a809c40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129063"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509244"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -44,7 +44,7 @@ A horizontális Pod autoskálázás és a fürt autoskálázása is csökkenthet
 
 Ha többet szeretne megtudni arról, hogy a fürt automéretezője miért nem tudja méretezni a méretezést, tekintse meg, hogy [milyen típusú hüvelyek akadályozhatják a fürt autoskálázását a csomópontok eltávolításával?][autoscaler-scaledown]
 
-A fürt automatikus méretezése indítási paramétereket használ olyan dolgokhoz, mint a méretezési események és az erőforrás-küszöbértékek közötti időintervallumok. Ezeket a paramétereket az Azure platform határozza meg, és jelenleg nem lehet módosítani. További információ arról, hogy milyen paramétereket használ a fürt autoskálázása. lásd: [Mi a fürt autoskálázási paraméterei?][autoscaler-parameters].
+A fürt automatikus méretezése indítási paramétereket használ olyan dolgokhoz, mint a méretezési események és az erőforrás-küszöbértékek közötti időintervallumok. További információ arról, hogy milyen paramétereket használ a fürt autoskálázása. lásd: [Mi a fürt autoskálázási paraméterei?][autoscaler-parameters].
 
 A fürt és a horizontális Pod automéretezők együtt is működhetnek, és a fürtben gyakran is üzembe helyezhetők. Kombinálva a horizontális Pod automéretező az alkalmazás igényének kielégítéséhez szükséges hüvelyek számának futtatására koncentrál. A fürt autoskálázása az ütemezett hüvelyek támogatásához szükséges csomópontok számának futtatására fókuszál.
 

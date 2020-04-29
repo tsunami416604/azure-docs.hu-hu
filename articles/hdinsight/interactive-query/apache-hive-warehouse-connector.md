@@ -6,21 +6,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252405"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509533"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark és Apache Hive integrálása a méhkas Warehouse-összekötővel
 
-A Apache Hive Warehouse Connector (ÜZEMELTETHETŐ WEBMAG) egy olyan függvénytár, amely lehetővé teszi, hogy könnyebben működjön együtt Apache Spark és Apache Hive olyan feladatok támogatásával, mint például az adatok áthelyezése a Spark-DataFrames és a kaptár-táblák között, valamint a Spark streaming-adatok struktúrába rendezése. A méhkas Warehouse-összekötő a Spark és a kaptár közötti híddal működik. Támogatja a Scala, a Java és a Python fejlesztését.
+A Apache Hive Warehouse Connector (ÜZEMELTETHETŐ WEBMAG) egy olyan függvénytár, amely megkönnyíti a Apache Spark és a Apache Hive használatát. Megkönnyíti az olyan feladatok támogatását, mint például az adatok áthelyezése a Spark DataFrames és a kaptár táblái között. És a Spark stream-adatátvitelt a kaptár tábláiba. A méhkas Warehouse-összekötő a Spark és a kaptár közötti híddal működik. Támogatja a Scala, a Java és a Python fejlesztését.
 
-A méhkas Warehouse-összekötő lehetővé teszi, hogy kihasználhassa a kaptár és a Spark egyedi funkcióit, és hatékony, nagy adatmennyiségű alkalmazásokat építsen ki. Apache Hive támogatja az atomi, konzisztens, elkülönített és tartós (savas) adatbázis-tranzakciókat. A struktúrával kapcsolatos további információkért lásd: [kaptár-tranzakciók](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). A kaptár az Apache Rangern és az alacsony késésű analitikai feldolgozáson keresztül is biztosít részletes biztonsági ellenőrzéseket Apache Sparkban nem érhető el.
+A méhkas Warehouse-összekötő segítségével kihasználhatja a kaptár és a Spark egyedi funkcióinak előnyeit. Hatékony Big-adatalkalmazások létrehozásához használt funkciók. Apache Hive támogatja az atomi, konzisztens, elkülönített és tartós (savas) adatbázis-tranzakciókat. A struktúrával kapcsolatos további információkért lásd: [kaptár-tranzakciók](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). A kaptár az Apache Rangern és az alacsony késésű analitikai feldolgozáson keresztül is biztosít részletes biztonsági ellenőrzéseket Apache Sparkban nem érhető el.
 
-A Apache Spark olyan strukturált streaming API-val rendelkezik, amely a Apache Hiveban nem elérhető folyamatos átviteli képességeket biztosít. A HDInsight 4,0-es verziójától kezdődően Apache Spark 2.3.1 és Apache Hive 3.1.0 külön metaadattárak rendelkezik, amely megnehezítheti az együttműködési képességet. A méhkas Warehouse-összekötő megkönnyíti a Spark és a struktúra együttes használatát. A ÜZEMELTETHETŐ WEBMAG-könyvtár LLAP-démonokból tölti be az adatait a Spark-végrehajtóknak párhuzamosan, így hatékonyabbá és méretezhetővé válik, mint a Spark és a kaptár közötti szabványos JDBC-kapcsolatok használata.
+A Apache Spark olyan strukturált streaming API-val rendelkezik, amely a Apache Hiveban nem elérhető folyamatos átviteli képességeket biztosít. A HDInsight 4,0-es verziójától kezdve a Apache Spark 2.3.1 és Apache Hive 3.1.0 külön metaadattárak rendelkeznek. Ezek a különálló metaadattárak nehézkessé tehetik az együttműködési képességet. A méhkas Warehouse-összekötő megkönnyíti a Spark és a struktúra együttes használatát. A ÜZEMELTETHETŐ WEBMAG-könyvtár a LLAP (kis késleltetésű analitikai feldolgozási) démonok adatait a Spark-végrehajtóknak párhuzamosan tölti be. Ez a művelet hatékonyabbá és alkalmazkodóképesvé teszi a Spark-ból a kaptárba való normál JDBC-kapcsolat használatát.
 
 ![a méhkas Warehouse-összekötő architektúrája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -72,7 +73,7 @@ A Spark Ambari webes felhasználói felületén navigáljon a **Spark2** > **kon
 
 ![Apache Ambari Spark2-konfiguráció](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-Válassza a **tulajdonság hozzáadása...** lehetőséget a következők hozzáadásához/frissítéséhez:
+Válassza a **tulajdonság hozzáadása...** lehetőséget a következő érték hozzáadásához/frissítéséhez:
 
 | Kulcs | Érték |
 |----|----|
@@ -111,7 +112,7 @@ A Spark-Shell-munkamenet elindításához hajtsa végre a következő lépéseke
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-    Egy üdvözlő üzenet jelenik meg, amely `scala>` a parancsok megadására használható.
+    Ekkor megjelenik egy üdvözlő üzenet és egy `scala>` kérdés, ahol megadhatja a parancsokat.
 
 1. A Spark-Shell elindítása után a rendszer elindíthatja a méhkas Warehouse Connector-példányt az alábbi parancsokkal:
 
@@ -122,13 +123,13 @@ A Spark-Shell-munkamenet elindításához hajtsa végre a következő lépéseke
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Enterprise Security Package-(ESP-) fürtökhöz kapcsolódó lekérdezések csatlakoztatása és futtatása
 
-A Enterprise Security Package (ESP) olyan nagyvállalati szintű képességeket biztosít, mint a Active Directory-alapú hitelesítés, a többfelhasználós támogatás és az Azure HDInsight-beli Apache Hadoop-fürtök szerepköralapú hozzáférés-vezérlése. Az ESP-vel kapcsolatos további információkért lásd: [Enterprise Security Package használata a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md).
+A Enterprise Security Package (ESP) olyan nagyvállalati szintű képességeket biztosít, mint a Active Directory-alapú hitelesítés. A többfelhasználós támogatás és a szerepköralapú hozzáférés-vezérlés Apache Hadoop fürtökhöz az Azure HDInsight-ben. Az ESP-vel kapcsolatos további információkért lásd: [Enterprise Security Package használata a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md).
 
-1. SSH-t a Apache Spark-fürt átjárócsomóponthoz. További információ a fürthöz SSH-val való csatlakozásról: [Csatlakozás HDInsight (Apache Hadoop) SSH használatával](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH-t a Apache Spark-fürt átjárócsomóponthoz.
 
 1. Írja `kinit` be és jelentkezzen be egy tartományi felhasználóval.
 
-1. Indítsa el a Spark-shellt a konfigurációs paraméterek teljes listájával az alább látható módon. A szögletes zárójelek közötti összes értéket meg kell adni a fürt alapján. Ha meg kell találnia az alábbi paraméterek bármelyikének bemeneti értékeit, tekintse meg a következő szakaszt: [kaptár Warehouse Connector beállítása](#hive-warehouse-connector-setup).
+1. Indítsa el a Spark-shellt a konfigurációs paraméterek teljes listájával az alább látható módon. A szögletes zárójelek közötti összes értéket meg kell adni a fürt alapján. Ha meg kell találnia az alábbi paraméterek bármelyikének bemeneti értékeit, tekintse meg a [kaptár-összekötő beállítása](#hive-warehouse-connector-setup)című szakaszt.
 
     ```bash
     spark-shell --master yarn \
@@ -181,7 +182,7 @@ A Spark nem támogatja natív módon az írást a kaptár felügyelt savas tábl
 
 A méhkas Warehouse-összekötő használatával a Spark streaming használatával írhat adatbevitelt a kaptár tábláiba.
 
-Az alábbi lépéseket követve hozzon létre egy méhkas Warehouse-összekötőt, amely az 9999-as localhost porton lévő Spark streamből származó adatok egy kaptár-táblába való betöltését mutatja be.
+Az alábbi lépéseket követve hozzon létre egy méhkas Warehouse-összekötőt. A példa a 9999-as localhost porton lévő Spark streamből származó adatok betöltését egy struktúra-táblázatba.
 
 1. Kövesse a [lekérdezések csatlakoztatása és futtatása](#connecting-and-running-queries)című témakör lépéseit.
 
@@ -193,7 +194,7 @@ Az alábbi lépéseket követve hozzon létre egy méhkas Warehouse-összekötő
 
 1. Hozzon létre adatforrást a létrehozott Spark streamhez a következő lépések végrehajtásával:
     1. Nyisson meg egy második SSH-munkamenetet ugyanazon a Spark-fürtön.
-    1. A parancssorba írja be a `nc -lk 9999`következőt:. Ez a parancs a netcat segédprogramot használja az adatok parancssorból a megadott portra történő küldéséhez.
+    1. A parancssorba írja be a `nc -lk 9999`következőt:. Ez a parancs a `netcat` segédprogram használatával küldi el az adatok a parancssorból a megadott portra.
 
 1. Térjen vissza az első SSH-munkamenethez, és hozzon létre egy új struktúra-táblázatot a folyamatos átviteli adattároláshoz. A Spark-shellben adja meg a következő parancsot:
 
@@ -224,7 +225,7 @@ Az alábbi lépéseket követve hozzon létre egy méhkas Warehouse-összekötő
     hive.table("stream_table").show()
     ```
 
-A **CTRL + C** billentyűkombinációval állítsa le a netcat a második SSH-munkamenetben. Az `:q` első SSH-munkamenetből való kilépéshez használja a Spark-shellt.
+A **CTRL + C** billentyűkombinációval `netcat` állítsa le a második SSH-munkamenetet. Az `:q` első SSH-munkamenetből való kilépéshez használja a Spark-shellt.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Az adatbiztonság biztosítása a Spark ESP-fürtökön
 
@@ -253,7 +254,7 @@ A **CTRL + C** billentyűkombinációval állítsa le a netcat a második SSH-mu
 
         ![kaptár-raktár összekötő Ranger-struktúra szabályzatának listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **alapértelmezett**, kaptár-tábla **: bemutató**, struktúra oszlop **: név**, felhasználó: **Rsadmin2**, hozzáférési típusok: **Select**és **részleges maszk: az elmúlt 4 megjelenítése** a **maszkolási beállítások kiválasztása** menüből. Kattintson a **Hozzáadás** parancsra.
+    a. Adja meg a szabályzat nevét. Adatbázis kiválasztása: **alapértelmezett**, kaptár-tábla **: bemutató**, struktúra oszlop **: név**, felhasználó: **Rsadmin2**, hozzáférési típusok: **Select**és **részleges maszk: az elmúlt 4 megjelenítése** a **maszkolási beállítások kiválasztása** menüből. Kattintson a **Hozzáadás** parancsra.
                 ![házirend létrehozása](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Megtekintheti a tábla tartalmát. A Ranger-szabályzat alkalmazása után csak az oszlop utolsó négy karakterét láthatjuk.
 

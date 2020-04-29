@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79533181"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Oktatóanyag: az Blockchain-Data Manager használata az adatküldés Azure Cosmos DB
@@ -174,7 +174,7 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     | Beállítás | Leírás
     |---------|-------------|
     | Adatbázis-azonosító | Adja meg a **blockchain** nevet az új adatbázis neveként. |
-    | Teljesítmény | Az átviteli sebesség **400** adategység/másodperc (ru/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.|
+    | Átviteli sebesség | Az átviteli sebesség **400** adategység/másodperc (ru/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.|
     | Tároló azonosítója | Adja meg az **üzeneteket** az új tároló neveként. |
     | Partíciókulcs | A **/MessageType** használata partíciós kulcsként. |
 

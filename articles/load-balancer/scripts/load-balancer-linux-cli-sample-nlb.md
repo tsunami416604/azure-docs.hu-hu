@@ -1,5 +1,5 @@
 ---
-title: Terheléselosztási forgalom a virtuális gépekhez HA- Azure CLI - Azure Load Balancer
+title: A virtuális gépek forgalmának elosztása a HA-Azure CLI-Azure Load Balancer
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan lehet terheléselosztást végezni a virtuális gépekre a magas rendelkezésre álláshoz
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
 ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74048913"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-példaszkript: Forgalom terheléselosztása virtuális gépekre magas rendelkezésre álláshoz

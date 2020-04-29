@@ -1,79 +1,77 @@
 ---
-title: Sablonfüggvények - erőforrások
-description: Az Azure Resource Manager-sablonban az erőforrásokkal kapcsolatos értékek lekéréséhez használandó függvények ismertetése.
+title: Sablon functions – erőforrások
+description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/28/2020
+ms.openlocfilehash: 4038d95942805ae26b5e82d5b766a80a92ae11bc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804758"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231305"
 ---
-# <a name="resource-functions-for-arm-templates"></a>Erőforrás-függvények ARM-sablonokhoz
+# <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
-Az Erőforrás-kezelő a következő függvényeket biztosítja az erőforrásértékek beszerzéséhez az Azure Resource Manager (ARM) sablonban:
+A Resource Manager a következő függvényeket biztosítja az erőforrások értékének lekéréséhez a Azure Resource Manager (ARM) sablonban:
 
 * [extensionResourceId](#extensionresourceid)
-* [lista*](#list)
-* [Szolgáltatók](#providers)
-* [Hivatkozás](#reference)
-* [erőforrásCsoport](#resourcegroup)
+* [listáját](#list)
+* [szolgáltatók](#providers)
+* [referencia](#reference)
+* [resourceGroup](#resourcegroup)
 * [resourceId](#resourceid)
-* [Előfizetés](#subscription)
-* [előfizetésResourceId](#subscriptionresourceid)
+* [előfizetés](#subscription)
+* [subscriptionResourceId](#subscriptionresourceid)
 * [tenantResourceId](#tenantresourceid)
 
-A paraméterekből, változókból vagy az aktuális központi telepítésből származó értékek beolvassa a [Telepítési érték függvények című témakört.](template-functions-deployment.md)
+A paraméterek, változók vagy a jelenlegi központi telepítés értékeinek lekéréséhez lásd: a [központi telepítési érték függvényei](template-functions-deployment.md).
 
 ## <a name="extensionresourceid"></a>extensionResourceId
 
-```json
-extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
-```
+`extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
 
-Egy [bővítményerőforrás](../management/extension-resource-types.md)erőforrásazonosítóját adja eredményül, amely egy másik erőforrásra alkalmazott erőforrástípus, amelyet a képességekhez szeretne hozzáadni.
+A [bővítmény erőforrásának](../management/extension-resource-types.md)erőforrás-azonosítóját adja vissza, amely egy másik erőforrásra alkalmazott erőforrástípus, amely a képességeihez való hozzáadásra szolgál.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceId |Igen |sztring |Annak az erőforrásnak az erőforrásazonosítója, amelyre a bővítményerőforrás vonatkozik. |
-| resourceType |Igen |sztring |Erőforrás típusa, beleértve az erőforrás-szolgáltató névterét. |
-| erőforrásnév1 |Igen |sztring |Az erőforrás neve. |
-| erőforrásNév2 |Nem |sztring |Szükség esetén következő erőforrásnév-szegmens. |
+| resourceId |Igen |sztring |Annak az erőforrásnak az erőforrás-azonosítója, amelyre a bővítmény erőforrása vonatkozik. |
+| resourceType |Igen |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
+| resourceName1 |Igen |sztring |Az erőforrás neve. |
+| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
 
-Folytassa az erőforrásnevek paraméterként való hozzáadását, ha az erőforrástípus több szegmenst tartalmaz.
+Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-A függvény által visszaadott erőforrás-azonosító alapvető formátuma:
+A függvény által visszaadott erőforrás-azonosító alapszintű formátuma a következő:
 
 ```json
 {scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-A hatókörszegmens a kiterjesztett erőforrástól függően változik.
+A hatókör szegmense a kibővített erőforrástól függ.
 
-Ha a bővítményerőforrást egy **erőforrásra**alkalmazza, az erőforrás-azonosító a következő formátumban jelenik meg:
+Ha a bővítmény erőforrása egy **erőforrásra**vonatkozik, a rendszer az erőforrás-azonosítót a következő formátumban adja vissza:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Ha a bővítményerőforrást **erőforráscsoportra**alkalmazza, a formátum a következő:
+Ha a bővítmény erőforrását egy **erőforráscsoport**alkalmazza, a formátum a következő:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Amikor a bővítményerőforrást **egy előfizetésre**alkalmazza, a formátum a következő:
+Ha a bővítmény erőforrása egy **előfizetésre**van alkalmazva, a formátum a következő:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Ha a bővítményerőforrást **egy felügyeleti csoportra**alkalmazza, a formátum a következő:
+Ha a bővítmény erőforrását egy **felügyeleti csoportra**alkalmazza, a formátum a következő:
 
 ```json
 /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
@@ -81,7 +79,7 @@ Ha a bővítményerőforrást **egy felügyeleti csoportra**alkalmazza, a formá
 
 ### <a name="extensionresourceid-example"></a>extensionResourceId példa
 
-A következő példa egy erőforráscsoport zárolásának erőforrásazonosítóját adja vissza.
+A következő példa egy erőforráscsoport-zárolás erőforrás-AZONOSÍTÓját adja vissza.
 
 ```json
 {
@@ -106,151 +104,149 @@ A következő példa egy erőforráscsoport zárolásának erőforrásazonosít�
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="list"></a>lista*
+## <a name="list"></a>listáját
 
-```json
-list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
-```
+`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-A függvény szintaxisa a listaműveletek neve szerint változik. Minden implementáció a listaműveletet támogató erőforrástípus értékeit adja vissza. A művelet nevének `list`a- val kell kezdődnie. Néhány gyakori használat `listKeys` `listSecrets`a és a.
+A függvény szintaxisa a lista műveleteinek nevével változik. Minden implementáció a lista műveletét támogató erőforrástípus értékeit adja vissza. A művelet nevének a (z `list`) értékkel kell kezdődnie. Néhány gyakori használat a és `listKeys` `listSecrets`a.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |sztring |Az erőforrás egyedi azonosítója |
-| apiVersion |Igen |sztring |Az erőforrás-futásidejű állapot API-verziója. Jellemzően, a formátum, **yyyy-mm-dd**. |
-| függvényértékek |Nem |objektum | Olyan objektum, amely a függvény értékeit tartalmazja. Csak olyan függvények számára adja meg ezt az objektumot, amelyek támogatják a paraméteres értékekkel rendelkező objektumok fogadását, például **a storage-fióklistAccountSas-értékét.** Ebben a cikkben látható egy példa a függvényértékek átadására. |
+| resourceName vagy resourceIdentifier |Igen |sztring |Az erőforrás egyedi azonosítója. |
+| apiVersion |Igen |sztring |Az erőforrás-futtatókörnyezet állapotának API-verziója. Általában az **éééé-hh-nn**formátumban kell megadni. |
+| functionValues |Nem |objektum | Egy objektum, amely a függvény értékeit tartalmazta. Csak olyan függvényeknek adja meg ezt az objektumot, amelyek támogatják a paraméterek értékeit, például a **listAccountSas** . Ebben a cikkben látható egy példa a függvény értékének átadására. |
 
-### <a name="valid-uses"></a>Érvényes felhasználások
+### <a name="valid-uses"></a>Érvényes használati módok
 
-A listafüggvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha [tulajdonságiterséggel](copy-properties.md)használja, használhatja a `input` listafüggvényeket, mert a kifejezés az erőforrás tulajdonsághoz van rendelve. Nem használhatja őket, `count` mert a számlálót meg kell határozni a listafüggvény feloldása előtt.
+A List függvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a List függvényeket, `input` mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Ezeket nem használhatja, `count` mert a Count függvényt a lista funkció feloldása előtt kell meghatározni.
 
 ### <a name="implementations"></a>Megvalósítások
 
-A lista* lehetséges felhasználási területe az alábbi táblázatban látható.
+A (z) * lista lehetséges felhasználási módjai a következő táblázatban láthatók.
 
 | Erőforrás típusa | Függvény neve |
 | ------------- | ------------- |
-| Microsoft.AnalysisServices/kiszolgálók | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.AppConfiguration/configurationStores | Listabillentyűk |
-| Microsoft.Automation/automationAccounts | [listabillentyűk](/rest/api/automation/keys/listbyautomationaccount) |
-| Microsoft.Batch/batchAccounts | [listabillentyűk](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft.BatchAI/munkaterületek/kísérletek/feladatok | [listoutputfájlok](/rest/api/batchai/jobs/listoutputfiles) |
-| Microsoft.Blockchain/blockchainMembers | [listApiKeys billentyűk](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
-| Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys billentyűk](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| Microsoft.Cache/redis | [listabillentyűk](/rest/api/redis/redis/listkeys) |
-| Microsoft.CognitiveServices/fiókok | [listabillentyűk](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
-| Microsoft.ContainerRegistry/regisztika | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
-| Microsoft.ContainerRegistry/regisztika | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft.ContainerRegistry/regisztika | [listUsages](/rest/api/containerregistry/registries/listusages) |
-| Microsoft.ContainerRegistry/regisztika/webhookok | [listEvents (események)](/rest/api/containerregistry/webhooks/listevents) |
-| Microsoft.ContainerRegistry/regisztika/futtatás | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
-| Microsoft.ContainerRegistry/regisztika/feladatok | [listDetails (List-](/rest/api/containerregistry/tasks/getdetails) |
-| Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
-| Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
-| Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
-| Microsoft.DataBox/jobs | listCredentials |
-| Microsoft.DataFactory/datafactories/gateways | listauthkeys |
-| Microsoft.DataFactory/gyárak/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
-| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft.DataShare/fiókok/megosztások | [listaSzinkronizálások](/rest/api/datashare/shares/listsynchronizations) |
-| Microsoft.DataShare/accounts/shareSubscriptions | [listSourceSharesynchronizationBeállítások](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
-| Microsoft.DataShare/accounts/shareSubscriptions | [listSzinkronizálásrészletek](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
-| Microsoft.DataShare/accounts/shareSubscriptions | [listaSzinkronizálások](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
-| Microsoft.Devices/iotHubs | [listabillentyűk](/rest/api/iothub/iothubresource/listkeys) |
-| Microsoft.Devices/iotHubs/iotHubKeys | [listabillentyűk](/rest/api/iothub/iothubresource/getkeysforkeyname) |
-| Microsoft.Devices/provisioningServices/keys | [listabillentyűk](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
-| Microsoft.Devices/provisioningServices | [listabillentyűk](/rest/api/iot-dps/iotdpsresource/listkeys) |
-| Microsoft.DevTestLab/labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
-| Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
-| Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
-| Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [listabillentyűk](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
-| Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
-| Microsoft.DomainRegistration/topLevelDomains | [listAgreements (Megállapodások)](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/tartományok | [listabillentyűk](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/témakörök | [listabillentyűk](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
-| Microsoft.EventHub/namespaces/authorizationRules | [listabillentyűk](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listabillentyűk](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listabillentyűk](/rest/api/eventhub/eventhubs/listkeys) |
-| Microsoft.ImportExport/feladatok | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
-| Microsoft.Kusto/Clusters/Databases | [ListPrincipals (Listaigazgatók)](/rest/api/azurerekusto/databases/listprincipals) |
-| Microsoft.LabServices/users | [ListEnvironments (Környezetek listázása)](/rest/api/labservices/globalusers/listenvironments) |
-| Microsoft.LabServices/users | [ListLabs (ListLabs)](/rest/api/labservices/globalusers/listlabs) |
-| Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/assemblies | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
-| Microsoft.Logic/integrationAccounts/maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/partners | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/sémák | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
-| Microsoft.Logic/munkafolyamatok | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
-| Microsoft.Logic/munkafolyamatok | [listSwagger között](/rest/api/logic/workflows/listswagger) |
-| Microsoft.Logic/workflows/runs/actions | [listExpressionTraces](/rest/api/logic/workflowrunactions/listexpressiontraces) |
-| Microsoft.Logic/workflows/runs/actions/reszussza | [listExpressionTraces](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
-| Microsoft.Logic/workflows/triggers | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
-| Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
-| Microsoft.MachineLearning/webServices | [listabillentyűk](/rest/api/machinelearning/webservices/listkeys) |
-| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
-| Microsoft.MachineLearningServices/munkaterületek/számítás | [listabillentyűk](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
-| Microsoft.MachineLearningServices/munkaterületek/számítás | [listNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
-| Microsoft.MachineLearningServices/munkaterületek | [listabillentyűk](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
-| Microsoft.Maps/fiókok | [listabillentyűk](/rest/api/maps-management/accounts/listkeys) |
-| Microsoft.Media/mediaservices/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
-| Microsoft.Media/mediaservices/assets | [listStreamingLocators (StreamingLocators)](/rest/api/media/assets/liststreaminglocators) |
-| Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
-| Microsoft.Media/mediaservices/streamingLocators | [listPaths (Görbék)](/rest/api/media/streaminglocators/listpaths) |
-| Microsoft.Network/applicationSecurityGroups | listIpKonfigurációk |
-| Microsoft.NotificationHubs/Namespaces/authorizationRules | [listabillentyűk](/rest/api/notificationhubs/namespaces/listkeys) |
-| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listabillentyűk](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft.OperationalInsights/munkaterületek | [listabillentyűk](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
-| Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
-| Microsoft.Relay/namespaces/authorizationRules | [listabillentyűk](/rest/api/relay/namespaces/listkeys) |
-| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listabillentyűk |
-| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listabillentyűk](/rest/api/relay/hybridconnections/listkeys) |
-| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [listabillentyűk](/rest/api/relay/wcfrelays/listkeys) |
-| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
-| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft.ServiceBus/namespaces/authorizationRules | [listabillentyűk](/rest/api/servicebus/namespaces/listkeys) |
-| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listabillentyűk](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
-| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listabillentyűk](/rest/api/servicebus/queues/listkeys) |
-| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listabillentyűk](/rest/api/servicebus/topics/listkeys) |
-| Microsoft.SignalRService/SignalR | [listabillentyűk](/rest/api/signalr/signalr/listkeys) |
-| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft.Storage/storageAccounts | [listabillentyűk](/rest/api/storagerp/storageaccounts/listkeys) |
-| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
-| Microsoft.StorSimple/managers/devices | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
-| Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
-| Microsoft.StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
-| Microsoft.StorSimple/managers | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
-| Microsoft.Web/connectionGateways | ListStatus (Listaállapota) |
-| microsoft.web/kapcsolatok | listconsentlinks |
-| Microsoft.Web/customApis | listWsdlInterfaces (WsdlInterfaces) |
-| microsoft.web/locations | listwsdlinters |
-| microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
-| microsoft.web/apimanagementaccounts/apis/connections | listsecrets (listatitok) |
-| microsoft.web/sites/backups | [lista](/rest/api/appservice/webapps/listbackups) |
-| Microsoft.Web/sites/config | [lista](/rest/api/appservice/webapps/listconfigurations) |
-| microsoft.web/sites/functions | [listabillentyűk](/rest/api/appservice/webapps/listfunctionkeys)
-| microsoft.web/sites/functions | [listsecrets (listatitok)](/rest/api/appservice/webapps/listfunctionsecrets) |
-| microsoft.web/sites/hybridconnectionnamespaces/relays | [listabillentyűk](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
-| microsoft.web/webhelyek | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
-| microsoft.web/sites/slots/functions | [listsecrets (listatitok)](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| microsoft.web/sites/slots/backups | [lista](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft.Web/sites/slots/config | [lista](/rest/api/appservice/webapps/listconfigurationsslot) |
-| microsoft.web/sites/slots/functions | [listsecrets (listatitok)](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| Microsoft. AnalysisServices/kiszolgálók | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft. AppConfiguration/configurationStores | Listkeys műveletének beolvasása |
+| Microsoft. Automation/automationAccounts | [Listkeys műveletének beolvasása](/rest/api/automation/keys/listbyautomationaccount) |
+| Microsoft. batch/batchAccounts | [listkeys műveletének beolvasása](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft. BatchAI/munkaterületek/kísérletek/feladatok | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft. Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Microsoft. Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Microsoft. cache/Redis | [Listkeys műveletének beolvasása](/rest/api/redis/redis/listkeys) |
+| Microsoft. CognitiveServices/fiókok | [Listkeys műveletének beolvasása](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
+| Microsoft. ContainerRegistry/nyilvántartók | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
+| Microsoft. ContainerRegistry/nyilvántartók | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
+| Microsoft. ContainerRegistry/nyilvántartók | [listUsages](/rest/api/containerregistry/registries/listusages) |
+| Microsoft. ContainerRegistry/nyilvántartók/webhookok | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
+| Microsoft. ContainerRegistry/nyilvántartások/futtatások | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
+| Microsoft. ContainerRegistry/nyilvántartások/feladatok | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
+| Microsoft. Tárolószolgáltatás/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft. Tárolószolgáltatás/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
+| Microsoft. Tárolószolgáltatás/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
+| Microsoft. DataBox/feladatok | listCredentials |
+| Microsoft. DataFactory/datafactories/átjárók | listauthkeys |
+| Microsoft. DataFactory/gyárak/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
+| Microsoft. DataLakeAnalytics/fiókok/storageAccounts/tárolók | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
+| Microsoft. DataShare/fiókok/megosztások | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) |
+| Microsoft. DataShare/fiókok/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
+| Microsoft. DataShare/fiókok/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
+| Microsoft. DataShare/fiókok/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
+| Microsoft. Devices/iotHubs | [listkeys műveletének beolvasása](/rest/api/iothub/iothubresource/listkeys) |
+| Microsoft. Devices/iotHubs/iotHubKeys | [listkeys műveletének beolvasása](/rest/api/iothub/iothubresource/getkeysforkeyname) |
+| Microsoft. Devices/provisioningServices/Keys | [listkeys műveletének beolvasása](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
+| Microsoft. Devices/provisioningServices | [listkeys műveletének beolvasása](/rest/api/iot-dps/iotdpsresource/listkeys) |
+| Microsoft. segédösszetevője/Labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
+| Microsoft. segédösszetevője/Labs/ütemtervek | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
+| Microsoft. segédösszetevője/Labs/felhasználók/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
+| Microsoft. segédösszetevője/Labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
+| Microsoft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft. DocumentDB/databaseAccounts | [Listkeys műveletének beolvasása](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
+| Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
+| Microsoft. EventGrid/tartományok | [Listkeys műveletének beolvasása](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft. EventGrid/témakörök | [Listkeys műveletének beolvasása](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
+| Microsoft. EventHub/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/eventhub/namespaces/listkeys) |
+| Microsoft. EventHub/névterek/disasterRecoveryConfigs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
+| Microsoft. EventHub/névterek/eventhubs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft. ImportExport/feladatok | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
+| Microsoft. Kusto/fürtök/adatbázisok | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
+| Microsoft. LabServices/felhasználók | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
+| Microsoft. LabServices/felhasználók | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
+| Microsoft. Logic/integrationAccounts/szerződések | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
+| Microsoft. Logic/integrationAccounts/szerelvények | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
+| Microsoft. Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
+| Microsoft. Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
+| Microsoft. Logic/integrationAccounts/Maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
+| Microsoft. Logic/integrationAccounts/partnerek | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
+| Microsoft. Logic/integrationAccounts/sémák | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
+| Microsoft. Logic/munkafolyamatok | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
+| Microsoft. Logic/munkafolyamatok | [listSwagger](/rest/api/logic/workflows/listswagger) |
+| Microsoft. Logic/munkafolyamatok/futtatások/műveletek | [listExpressionTraces](/rest/api/logic/workflowrunactions/listexpressiontraces) |
+| Microsoft. Logic/munkafolyamatok/futtatások/műveletek/ismétlődések | [listExpressionTraces](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
+| Microsoft. Logic/munkafolyamatok/triggerek | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
+| Microsoft. Logic/munkafolyamatok/verziók/eseményindítók | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
+| Microsoft. MachineLearning/webszolgáltatások | [listkeys műveletének beolvasása](/rest/api/machinelearning/webservices/listkeys) |
+| Microsoft. MachineLearning/munkaterületek | listworkspacekeys |
+| Microsoft. MachineLearningServices/munkaterületek/számítások | [Listkeys műveletének beolvasása](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
+| Microsoft. MachineLearningServices/munkaterületek/számítások | [listNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
+| Microsoft. MachineLearningServices/munkaterületek | [Listkeys műveletének beolvasása](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
+| Microsoft. Maps/fiókok | [Listkeys műveletének beolvasása](/rest/api/maps-management/accounts/listkeys) |
+| Microsoft. Media/Mediaservices/eszközök | [listContainerSas](/rest/api/media/assets/listcontainersas) |
+| Microsoft. Media/Mediaservices/eszközök | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
+| Microsoft. Media/Mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
+| Microsoft. Media/Mediaservices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
+| Microsoft. Network/applicationSecurityGroups | listIpConfigurations |
+| Microsoft. NotificationHubs/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/namespaces/listkeys) |
+| Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/notificationhubs/listkeys) |
+| Microsoft. OperationalInsights/munkaterületek | [Listkeys műveletének beolvasása](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft. PolicyInsights/szervizelések | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft. Relay/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/relay/namespaces/listkeys) |
+| Microsoft. Relay/névterek/disasterRecoveryConfigs/engedélyezési szabályok | listkeys műveletének beolvasása |
+| Microsoft. Relay/névterek/HybridConnections/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/relay/hybridconnections/listkeys) |
+| Microsoft. Relay/névterek/WcfRelays/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/relay/wcfrelays/listkeys) |
+| Microsoft. Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
+| Microsoft. Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
+| Microsoft. ServiceBus/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/servicebus/namespaces/listkeys) |
+| Microsoft. ServiceBus/névterek/disasterRecoveryConfigs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
+| Microsoft. ServiceBus/névterek/várólisták/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/servicebus/queues/listkeys) |
+| Microsoft. ServiceBus/névterek/témakörök/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/servicebus/topics/listkeys) |
+| Microsoft. SignalRService/szignáló | [listkeys műveletének beolvasása](/rest/api/signalr/signalr/listkeys) |
+| Microsoft. Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft. Storage/storageAccounts | [listkeys műveletének beolvasása](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft. Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft. StorSimple/vezetők/eszközök | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
+| Microsoft. StorSimple/vezetők/eszközök | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
+| Microsoft. StorSimple/vezetők | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
+| Microsoft. StorSimple/vezetők | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft. Web/connectionGateways | ListStatus |
+| Microsoft. Web/kapcsolatok | listconsentlinks |
+| Microsoft. Web/customApis | listWsdlInterfaces |
+| Microsoft. Web/Locations | listwsdlinterfaces |
+| Microsoft. Web/apimanagementaccounts/API-k/kapcsolatok | listconnectionkeys |
+| Microsoft. Web/apimanagementaccounts/API-k/kapcsolatok | listsecrets |
+| Microsoft. Web/Sites/Backups | [lista](/rest/api/appservice/webapps/listbackups) |
+| Microsoft. Web/Sites/config | [lista](/rest/api/appservice/webapps/listconfigurations) |
+| Microsoft. Web/Sites/functions | [listkeys műveletének beolvasása](/rest/api/appservice/webapps/listfunctionkeys)
+| Microsoft. Web/Sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
+| Microsoft. Web/Sites/hybridconnectionnamespaces/Relays | [listkeys műveletének beolvasása](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
+| Microsoft. Web/Sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
+| Microsoft. Web/Sites/Slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| Microsoft. Web/Sites/Slots/Backups | [lista](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft. Web/Sites/Slots/config | [lista](/rest/api/appservice/webapps/listconfigurationsslot) |
+| Microsoft. Web/Sites/Slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
-Annak meghatározásához, hogy mely erőforrástípusok rendelkeznek listaművelettel, a következő lehetőségek közül választhat:
+Annak megállapításához, hogy mely erőforrástípusok rendelkeznek lista-művelettel, a következő lehetőségek közül választhat:
 
-* Tekintse meg egy erőforrás-szolgáltató [REST API-műveleteit,](/rest/api/) és keresse meg a listaműveleteket. A tárfiókok például a [listKeys művelettel](/rest/api/storagerp/storageaccounts)rendelkeznek.
-* Használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) PowerShell parancsmag. A következő példa lekéri a tárfiókok összes listaműveletét:
+* Tekintse meg az erőforrás-szolgáltató [REST API műveleteit](/rest/api/) , és keresse meg a lista műveleteit. A Storage-fiókok például rendelkeznek a [listkeys műveletének beolvasása művelettel](/rest/api/storagerp/storageaccounts).
+* Használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) PowerShell-parancsmagot. A következő példa beolvassa a Storage-fiókok összes műveletét:
 
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* A következő Azure CLI-paranccsal csak a listaműveleteket szűrheti:
+* A következő Azure CLI-parancs használatával csak a lista műveleteit szűrheti:
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
@@ -258,7 +254,7 @@ Annak meghatározásához, hogy mely erőforrástípusok rendelkeznek listaműve
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-A visszaadott objektum a használt listafüggvénytől függ. A tárfiók keys listKeys list keys(kulcsok) listája például a következő formátumot adja vissza:
+A visszaadott objektum a használt lista függvénytől függ. A Storage-fiók Listkeys műveletének beolvasása például a következő formátumot adja vissza:
 
 ```json
 {
@@ -277,19 +273,19 @@ A visszaadott objektum a használt listafüggvénytől függ. A tárfiók keys l
 }
 ```
 
-Más listafüggvények különböző visszatérési formátumúak. A függvény formátumának megtekintéséhez adja meg a kimenetek szakaszban a példasablonban látható módon.
+A többi lista függvények eltérő visszatérési formátummal rendelkeznek. A függvények formátumának megtekintéséhez vegye fel azt a kimenetek szakaszba, ahogyan az a példában szereplő sablonban látható.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Adja meg az erőforrást az erőforrás nevével vagy az [erőforrásazonosító függvénnyel.](#resourceid) Ha listafüggvényt használ ugyanabban a sablonban, amely a hivatkozott erőforrást telepíti, használja az erőforrás nevét.
+Adja meg az erőforrást az erőforrás neve vagy a [resourceId függvény](#resourceid)használatával. Ha egy, a hivatkozott erőforrást telepítő sablonban egy list függvényt használ, használja az erőforrás nevét.
 
-Ha egy **listafüggvényt** használ egy feltételesen üzembe helyezett erőforrásban, a függvény akkor is kiértékelésre kerül, ha az erőforrás nincs telepítve. Hibaüzenet et kap, ha a **listafüggvény** nem létező erőforrásra hivatkozik. Az **if** függvény segítségével győződjön meg arról, hogy a függvény csak az erőforrás üzembe helyezésekor kerül kiértékelésre. Tekintse meg a [ha függvényt](template-functions-logical.md#if) egy mintasablonhoz, amely feltételesen telepített erőforrással használja a ha és a listát.
+Ha feltételesen telepített erőforrásban használ egy **List** függvényt, akkor a függvény akkor is kiértékelésre kerül, ha az erőforrás nincs telepítve. Hibaüzenet jelenik meg, ha a **lista** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse meg a if [függvényt](template-functions-logical.md#if) egy olyan minta sablon esetében, amely a IF és a listát feltételesen telepített erőforrást használja.
 
-### <a name="list-example"></a>Példa lista
+### <a name="list-example"></a>Példa a listára
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) bemutatja, hogyan adja vissza az elsődleges és másodlagos kulcsokat egy tárfiókból a kimenetek szakaszban. Azt is visszaadja a SAS-jogkivonatot a tárfiókhoz.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) azt szemlélteti, hogyan lehet visszaadni az elsődleges és másodlagos kulcsokat egy Storage-fiókból a kimenetek szakaszban. Emellett egy SAS-tokent ad vissza a Storage-fiókhoz.
 
-A SAS-jogkivonat lekéréséhez adja át egy objektumot a lejárati idő. A lejárati időnek a jövőben kell lennie. Ez a példa a listafüggvények használatának bemutatására szolgál. Általában a SAS-jogkivonatot egy erőforrásértékben kell használni, ahelyett, hogy kimeneti értékként adja volna vissza. A kimeneti értékek a központi telepítési előzményekben tárolódnak, és nem biztonságosak.
+Az SAS-jogkivonat lekéréséhez továbbítson egy objektumot a lejárati időpontra. A lejárati időnek a jövőben kell lennie. Ez a példa a List függvények használatát mutatja be. A SAS-tokent általában egy erőforrás-értékben kell használni, nem pedig kimeneti értékként. A kimeneti értékek tárolása a telepítési előzmények között történik, és nem biztonságosak.
 
 ```json
 {
@@ -354,24 +350,22 @@ A SAS-jogkivonat lekéréséhez adja át egy objektumot a lejárati idő. A lej�
 }
 ```
 
-## <a name="providers"></a>Szolgáltatók
+## <a name="providers"></a>szolgáltatók
 
-```json
-providers(providerNamespace, [resourceType])
-```
+`providers(providerNamespace, [resourceType])`
 
-Információt ad vissza egy erőforrás-szolgáltatóról és annak támogatott erőforrástípusairól. Ha nem ad meg erőforrástípust, a függvény az erőforrás-szolgáltató összes támogatott típusát adja vissza.
+Egy erőforrás-szolgáltatóval és annak támogatott erőforrásaival kapcsolatos információkat ad vissza. Ha nem ad meg erőforrástípust, a függvény az erőforrás-szolgáltató összes támogatott típusát adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| providerNamespace között |Igen |sztring |A szolgáltató névtere |
-| resourceType |Nem |sztring |A megadott névtérben lévő erőforrás típusa. |
+| providerNamespace |Igen |sztring |A szolgáltató névtere |
+| resourceType |Nem |sztring |Az erőforrás típusa a megadott névtéren belül. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Minden támogatott típus a következő formátumban jelenik meg:
+Minden támogatott típus a következő formátumban lesz visszaadva:
 
 ```json
 {
@@ -381,11 +375,11 @@ Minden támogatott típus a következő formátumban jelenik meg:
 }
 ```
 
-A visszaadott értékek tömbsorrendje nem garantált.
+A visszaadott értékek tömbbeli sorrendje nem garantált.
 
-### <a name="providers-example"></a>Példa szolgáltatókra
+### <a name="providers-example"></a>Szolgáltatók – példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) bemutatja a szolgáltatói függvény használatát:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) a szolgáltatói függvény használatát mutatja be:
 
 ```json
 {
@@ -409,7 +403,7 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-A **Microsoft.Web** erőforrás-szolgáltató és **webhelyerőforrás-típus** esetében az előző példa a következő formátumú objektumot adja vissza:
+A **Microsoft. Web** erőforrás-szolgáltató és a **helyek** erőforrástípus esetében az előző példa egy objektumot ad vissza a következő formátumban:
 
 ```json
 {
@@ -431,31 +425,29 @@ A **Microsoft.Web** erőforrás-szolgáltató és **webhelyerőforrás-típus** 
 }
 ```
 
-## <a name="reference"></a>Hivatkozás
+## <a name="reference"></a>referencia
 
-```json
-reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
-```
+`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
-Egy erőforrás futásidejű állapotát képviselő objektumot ad vissza.
+Egy erőforrás futásidejű állapotát jelképező objektumot ad vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |sztring |Egy erőforrás neve vagy egyedi azonosítója. Amikor az aktuális sablonban hivatkozik egy erőforrásra, csak az erőforrás nevét adja meg paraméterként. Ha egy korábban üzembe helyezett erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
-| apiVersion |Nem |sztring |A megadott erőforrás API-verziója. **Erre a paraméterre akkor van szükség, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül.** Jellemzően, a formátum, **yyyy-mm-dd**. Az erőforrás érvényes API-verzióiról a [sablon hivatkozása oldalon](/azure/templates/)olvashat. |
-| "Teljes" |Nem |sztring |Érték, amely meghatározza, hogy a teljes erőforrásobjektumot adja-e vissza. Ha nem adja `'Full'`meg, csak az erőforrás tulajdonságobjektumát adja vissza. A teljes objektum olyan értékeket tartalmaz, mint az erőforrás-azonosító és a hely. |
+| resourceName vagy resourceIdentifier |Igen |sztring |Egy erőforrás neve vagy egyedi azonosítója. Ha az aktuális sablonban lévő erőforrásra hivatkozik, csak az erőforrás nevét adja meg paraméterként. Ha egy korábban központilag telepített erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
+| apiVersion |Nem |sztring |A megadott erőforrás API-verziója. **Ezt a paramétert akkor kell megadni, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül.** Általában az **éééé-hh-nn**formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
+| Teljes |Nem |sztring |Az érték, amely megadja, hogy a rendszer visszaadja-e a teljes erőforrás-objektumot. Ha nem adja meg `'Full'`, csak az erőforrás tulajdonságok objektuma lesz visszaadva. A teljes objektum olyan értékeket tartalmaz, mint például az erőforrás-azonosító és a hely. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Minden erőforrástípus különböző tulajdonságokat ad vissza a referenciafüggvényhez. A függvény nem ad vissza egyetlen, előre definiált formátumot. A visszaadott érték az `'Full'` argumentum értékététől függően is eltérő. Egy erőforrástípus tulajdonságainak megtekintéséhez adja vissza az objektumot a kimenetek szakaszban a példában látható módon.
+Minden erőforrástípus a hivatkozási függvény különböző tulajdonságait adja vissza. A függvény nem ad vissza egyetlen, előre definiált formátumot. Továbbá a visszaadott érték az `'Full'` argumentum értéke alapján eltér. Az erőforrástípus tulajdonságainak megtekintéséhez adja vissza az objektumot a kimenetek szakaszban, ahogy az a példában látható.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A referenciafüggvény lekéri egy korábban üzembe helyezett erőforrás vagy az aktuális sablonban telepített erőforrás futásidejű állapotát. Ez a cikk mindkét forgatókönyvre vonatkozó példákat mutat be.
+A Reference függvény egy korábban központilag telepített erőforrás vagy egy, az aktuális sablonban üzembe helyezett erőforrás futásidejű állapotát kérdezi le. Ez a cikk mindkét forgatókönyvhöz mutat példákat.
 
-A **hivatkozási** függvény t általában egy adott értéket ad vissza egy objektumból, például a blob végpont URI-ból vagy a teljesen minősített tartománynévből.
+A **Reference** függvénnyel általában egy adott értéket adhat vissza egy objektumból, például a blob-végpont URI-ját vagy teljes tartománynevét.
 
 ```json
 "outputs": {
@@ -470,7 +462,7 @@ A **hivatkozási** függvény t általában egy adott értéket ad vissza egy ob
 }
 ```
 
-Akkor `'Full'` használja, ha olyan erőforrásértékekre van szüksége, amelyek nem részei a tulajdonságsémának. Például kulcstartó hozzáférési szabályzatok beállításához egy virtuális gép identitástulajdonságainak lekérni.
+Akkor `'Full'` használja, ha olyan erőforrás-értékekre van szüksége, amelyek nem részei a tulajdonságok sémájának. A Key Vault hozzáférési házirendjeinek beállításához például szerezze be a virtuális gép identitásának tulajdonságait.
 
 ```json
 {
@@ -494,55 +486,55 @@ Akkor `'Full'` használja, ha olyan erőforrásértékekre van szüksége, amely
     ...
 ```
 
-### <a name="valid-uses"></a>Érvényes felhasználások
+### <a name="valid-uses"></a>Érvényes használati módok
 
-A referenciafüggvény csak az erőforrás-definíció és a sablon vagy központi telepítés kimeneti szakaszában használható. Ha [tulajdonságiterséggel](copy-properties.md)használja, használhatja a `input` hivatkozási függvényt, mert a kifejezés az erőforrás tulajdonsághoz van rendelve.
+A Reference függvény csak az erőforrás-definíció tulajdonságaiban és egy sablon vagy központi telepítés kimenetek szakaszában használható. Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a Reference függvényt, `input` mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz.
 
-A hivatkozási függvénnyel nem állíthatja `count` be a tulajdonság értékét egy másolási ciklusban. Más tulajdonságokat is beállíthat a ciklusban. A hivatkozás le van tiltva a count tulajdonsághoz, mert ezt a tulajdonságot meg kell határozni a referenciafüggvény feloldása előtt.
+A Reference függvény nem használható másolási hurokban lévő `count` tulajdonság értékének megadásához. A paranccsal más tulajdonságokat is megadhat a hurokban. A Count tulajdonsághoz a hivatkozás le van tiltva, mert a hivatkozási függvény feloldása előtt meg kell határozni a tulajdonságot.
 
-A beágyazott [sablon](linked-templates.md#nested-template) kimeneteiben a hivatkozási függvény nem használható a beágyazott sablonban üzembe helyezett erőforrás visszaadására. Ehelyett használjon [csatolt sablont](linked-templates.md#linked-template).
+A [beágyazott](linked-templates.md#nested-template) sablon kimenetében lévő Reference függvény nem használható a beágyazott sablonban üzembe helyezett erőforrások visszaküldéséhez. Ehelyett használjon [csatolt sablont](linked-templates.md#linked-template).
 
-Ha a **referencia** függvényt egy feltételesen üzembe helyezett erőforrásban használja, a függvény akkor is kiértékelésre kerül, ha az erőforrás nincs telepítve.  Hibaüzenetet kap, ha a **hivatkozási** függvény nem létező erőforrásra hivatkozik. Az **if** függvény segítségével győződjön meg arról, hogy a függvény csak az erőforrás üzembe helyezésekor kerül kiértékelésre. Tekintse meg a [ha függvényt](template-functions-logical.md#if) egy mintasablonhoz, amely feltételesen üzembe helyezett erőforrással használja a ha és a hivatkozás funkciót.
+Ha a **hivatkozási** függvényt egy feltételesen üzembe helyezett erőforrásban használja, akkor a függvény akkor is ki lesz értékelve, ha az erőforrás nincs telepítve.  Hibaüzenet jelenik meg, ha a **hivatkozási** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse meg az IF [függvényt](template-functions-logical.md#if) egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
 
 ### <a name="implicit-dependency"></a>Implicit függőség
 
-A referencia függvény használatával implicit módon deklarálhatja, hogy az egyik erőforrás egy másik erőforrástól függ, ha a hivatkozott erőforrás ugyanabban a sablonban van kiépítve, és az erőforrásra a neve alapján hivatkozik (nem erőforrásazonosító). Nem kell a dependsOn tulajdonságot is használnia. A függvény nem kiértékelve, amíg a hivatkozott erőforrás befejeződött a központi telepítés.
+A Reference függvény használatával implicit módon deklarálhatja, hogy egy erőforrás egy másik erőforrástól függ, ha a hivatkozott erőforrás ugyanabban a sablonban van kiépítve, és az erőforrásra a neve alapján hivatkozik (nem erőforrás-azonosító). Nem kell a dependsOn tulajdonságot is használni. A függvény nem lesz kiértékelve, amíg a hivatkozott erőforrás üzembe helyezése befejeződött.
 
 ### <a name="resource-name-or-identifier"></a>Erőforrás neve vagy azonosítója
 
-Ha ugyanabban a sablonban üzembe helyezett erőforrásra hivatkozik, adja meg az erőforrás nevét.
+Ha egy olyan erőforrásra hivatkozik, amely ugyanabban a sablonban van telepítve, adja meg az erőforrás nevét.
 
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Ha olyan erőforrásra hivatkozik, amely nincs ugyanabban a sablonban `apiVersion`telepítve, adja meg az erőforrás-azonosítót és a.
+Ha olyan erőforrásra hivatkozik, amely nem ugyanabban a sablonban van telepítve, adja meg az erőforrás `apiVersion`-azonosítót és a-t.
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-Annak elkerülése érdekében, hogy ne legyen egyértelmű, hogy melyik erőforrásra hivatkozik, megadhat egy teljesen minősített erőforrás-azonosítót.
+Annak elkerülése érdekében, hogy a rendszer melyik erőforrásra hivatkozik, megadhat egy teljesen minősített erőforrás-azonosítót.
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
-Egy erőforrásra mutató teljesen minősített hivatkozás összeállításakor a szegmensek típusból és névből való egyesítésének sorrendje nem egyszerűen a kettő összefűzése. Ehelyett a névtér után használjon *típus-/névpárok* sorozatát a legkevésbé specifikustól a legkonkrétabbig:
+Egy erőforrásra vonatkozó teljes körű hivatkozás létrehozásakor a szegmensek és a név összevonásának sorrendje nem csupán a kettő összefűzése. Ehelyett a névtér után olyan *típusú/név* párokat használjon, amelyek legalább a legpontosabbak:
 
-**{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
+**{erőforrás-szolgáltató-névtér}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-name}]**
 
 Például:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`helyes, `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` nem helyes
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`helyes `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` , helytelen
 
-Az erőforrás-azonosítók létrehozásának egyszerűsítése érdekében a függvény `concat()` helyett a `resourceId()` jelen dokumentumban leírt függvényeket használja.
+Az erőforrás-AZONOSÍTÓk létrehozásának egyszerűbbé tétele érdekében a `resourceId()` `concat()` függvény helyett használja a jelen dokumentumban ismertetett függvényeket.
 
-### <a name="get-managed-identity"></a>Felügyelt identitás beszereznie
+### <a name="get-managed-identity"></a>Felügyelt identitás beolvasása
 
-[Az Azure-erőforrások felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) [olyan bővítményerőforrás-típusok,](../management/extension-resource-types.md) amelyek implicit módon jönnek létre egyes erőforrásokhoz. Mivel a felügyelt identitás nincs explicit módon definiálva a sablonban, hivatkoznia kell arra az erőforrásra, amelyre az identitás vonatkozik. Az `Full` összes tulajdonság lefoglalásához használható, beleértve az implicit módon létrehozott identitást is.
+[Az Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) az egyes erőforrásokhoz implicit módon létrehozott [bővítmény-erőforrástípusok](../management/extension-resource-types.md) . Mivel a felügyelt identitás nincs explicit módon definiálva a sablonban, hivatkozni kell arra az erőforrásra, amelyre az identitás vonatkozik. A `Full` használatával az összes tulajdonságot beolvashatja, beleértve az implicit módon létrehozott identitást is.
 
-Például a bérlői azonosító lekérni egy felügyelt identitás, amely egy virtuálisgép méretezési csoport, használja:
+Ha például egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
 ```json
 "tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
@@ -550,7 +542,7 @@ Például a bérlői azonosító lekérni egy felügyelt identitás, amely egy v
 
 ### <a name="reference-example"></a>Példa hivatkozásra
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) telepít egy erőforrást, és hivatkozik az erőforrásra.
+Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) egy erőforrást telepít, és hivatkozik erre az erőforrásra.
 
 ```json
 {
@@ -589,7 +581,7 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa a két objektumot adja vissza. A tulajdonságobjektum formátuma a következő:
+Az előző példa a két objektumot adja vissza. A tulajdonságok objektum formátuma a következő:
 
 ```json
 {
@@ -644,7 +636,7 @@ A teljes objektum formátuma a következő:
 }
 ```
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) olyan tárfiókra hivatkozik, amely nincs telepítve ebben a sablonban. A tárfiók már létezik ugyanazon az előfizetésen belül.
+Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) olyan Storage-fiókra hivatkozik, amely nincs telepítve ebben a sablonban. A Storage-fiók már létezik ugyanazon az előfizetésen belül.
 
 ```json
 {
@@ -670,11 +662,9 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-```json
-resourceGroup()
-```
+`resourceGroup()`
 
-Az aktuális erőforráscsoportot reprezentativó objektumot adja vissza.
+Egy olyan objektumot ad vissza, amely az aktuális erőforráscsoportot jelképezi.
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -695,13 +685,13 @@ A visszaadott objektum formátuma a következő:
 }
 ```
 
-A **managedBy** tulajdonság csak olyan erőforráscsoportok hoz vissza, amelyek egy másik szolgáltatás által kezelt erőforrásokat tartalmaznak. Felügyelt alkalmazások, Databricks és AKS esetén a tulajdonság értéke a kezelő erőforrás erőforrásazonosítója.
+A **többé** tulajdonság csak olyan erőforráscsoportok esetében lesz visszaadva, amelyek egy másik szolgáltatás által felügyelt erőforrásokat tartalmaznak. A felügyelt alkalmazások, a Databricks és az AK esetében a tulajdonság értéke a kezelő erőforrás erőforrás-azonosítója.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A `resourceGroup()` függvény nem használható olyan sablonban, amely [az előfizetés szintjén van telepítve.](deploy-to-subscription.md) Csak olyan sablonokban használható, amelyek egy erőforráscsoportra vannak telepítve. A `resourceGroup()` függvényt egy [összekapcsolt vagy beágyazott sablonban (belső hatókörrel)](linked-templates.md) használhatja, amely egy erőforráscsoportot céloz meg, még akkor is, ha a szülősablon telepítve van az előfizetésben. Ebben az esetben a csatolt vagy beágyazott sablon az erőforráscsoport szintjén van telepítve. Az erőforráscsoportok előfizetési szintű telepítésben történő célzásáról az [Azure-erőforrások telepítése több előfizetéshez vagy erőforráscsoporthoz című](cross-resource-group-deployment.md)témakörben talál további információt.
+A `resourceGroup()` függvény nem használható [az előfizetés szintjén üzembe helyezett](deploy-to-subscription.md)sablonban. Csak az erőforráscsoporthoz központilag telepített sablonokban használható. Használhatja a `resourceGroup()` függvényt egy olyan [csatolt vagy beágyazott sablonban (belső hatókörrel)](linked-templates.md) , amely egy erőforráscsoportot céloz meg, még akkor is, ha a fölérendelt sablon telepítve van az előfizetésre. Ebben az esetben a csatolt vagy beágyazott sablon az erőforráscsoport szintjén lesz telepítve. Az erőforráscsoportok előfizetési szintű üzembe helyezésével kapcsolatos további információkért lásd: [Azure-erőforrások telepítése több előfizetéshez vagy erőforráscsoporthoz](cross-resource-group-deployment.md).
 
-Az erőforráscsoport funkció közös használata, ha az erőforráscsoporttal azonos helyen hoz létre erőforrásokat. A következő példa az erőforráscsoport helyét használja egy alapértelmezett paraméterértékhez.
+A resourceGroup függvény gyakori használata az, hogy az erőforrásokat ugyanabban a helyen hozza létre, mint az erőforráscsoportot. Az alábbi példa az erőforráscsoport helyét használja az alapértelmezett paraméterérték értékének megadásához.
 
 ```json
 "parameters": {
@@ -712,13 +702,13 @@ Az erőforráscsoport funkció közös használata, ha az erőforráscsoporttal 
 }
 ```
 
-Az erőforráscsoport függvénnyel címkéket alkalmazhat az erőforráscsoportból egy erőforrásra. További információ: [Címkék alkalmazása erőforráscsoportból](../management/tag-resources.md#apply-tags-from-resource-group).
+A resourceGroup függvény használatával címkéket is alkalmazhat az erőforráscsoporthoz egy erőforráshoz. További információ: [címkék alkalmazása az erőforráscsoporthoz](../management/tag-resources.md#apply-tags-from-resource-group).
 
-Ha beágyazott sablonokat használ több erőforráscsoportra való üzembe helyezéshez, megadhatja az erőforráscsoport függvény kiértékelésének hatókörét. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoportra.](cross-resource-group-deployment.md)
+Ha beágyazott sablonokat használ több erőforráscsoporthoz való üzembe helyezéshez, megadhatja a hatókört a resourceGroup függvény kiértékeléséhez. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](cross-resource-group-deployment.md).
 
-### <a name="resource-group-example"></a>Példa erőforráscsoportra
+### <a name="resource-group-example"></a>Erőforráscsoport – példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) az erőforráscsoport tulajdonságait adja vissza.
+A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) az erőforráscsoport tulajdonságait adja vissza.
 
 ```json
 {
@@ -734,7 +724,7 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa a következő formátumú objektumot adja vissza:
+Az előző példa egy objektumot ad vissza a következő formátumban:
 
 ```json
 {
@@ -750,79 +740,77 @@ Az előző példa a következő formátumú objektumot adja vissza:
 
 ## <a name="resourceid"></a>resourceId
 
-```json
-resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
-```
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
-Egy erőforrás egyedi azonosítóját adja vissza. Ezt a függvényt akkor használja, ha az erőforrás neve nem egyértelmű, vagy nem ugyanabban a sablonban van kiépítve. A visszaadott azonosító formátuma attól függően változik, hogy a központi telepítés egy erőforráscsoport, előfizetés, felügyeleti csoport vagy bérlő hatókörén történik.The format of the returned identifier varies on whether the deployment happens at the scope of a resource group, subscription, management group, or tenant.
+Egy erőforrás egyedi azonosítóját adja vissza. Ezt a függvényt akkor használja, ha az erőforrás neve nem egyértelmű, vagy nem lett kiépítve ugyanazon a sablonon belül. A visszaadott azonosító formátuma attól függően változik, hogy a központi telepítés egy erőforráscsoport, egy előfizetés, egy felügyeleti csoport vagy egy bérlő hatókörébe esik-e.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nem |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Adja meg ezt az értéket, ha egy másik előfizetésben lévő erőforrást kell beolvasnia. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport vagy előfizetés hatókörén üzembe helyezi. |
-| resourceGroupName |Nem |sztring |Az alapértelmezett érték az aktuális erőforráscsoport. Akkor adja meg ezt az értéket, ha egy másik erőforráscsoportban lévő erőforrást kell beolvasnia. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörén telepíti. |
-| resourceType |Igen |sztring |Erőforrás típusa, beleértve az erőforrás-szolgáltató névterét. |
-| erőforrásnév1 |Igen |sztring |Az erőforrás neve. |
-| erőforrásNév2 |Nem |sztring |Szükség esetén következő erőforrásnév-szegmens. |
+| subscriptionId |Nem |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport vagy előfizetés hatókörére telepíti. |
+| resourceGroupName |Nem |sztring |Az alapértelmezett érték az aktuális erőforráscsoport. Akkor adja meg ezt az értéket, ha egy másik erőforráscsoport erőforrását le kell kérnie. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörére telepíti. |
+| resourceType |Igen |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
+| resourceName1 |Igen |sztring |Az erőforrás neve. |
+| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
 
-Folytassa az erőforrásnevek paraméterként való hozzáadását, ha az erőforrástípus több szegmenst tartalmaz.
+Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Amikor a sablon t egy erőforráscsoport hatókörén van telepítve, az erőforrás-azonosító a következő formátumban jelenik meg:
+Ha a sablont egy erőforráscsoport hatókörébe telepíti, a rendszer az erőforrás-azonosítót a következő formátumban adja vissza:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-[Ha előfizetési szintű telepítésben](deploy-to-subscription.md)használja, az erőforrás-azonosító a következő formátumban jelenik meg:
+Ha [előfizetési szintű központi telepítésben](deploy-to-subscription.md)használja, az erőforrás-azonosítót a következő formátumban adja vissza a rendszer:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Ha egy [felügyeleti csoportszintű központi telepítésben](deploy-to-management-group.md) vagy bérlői szintű telepítésben használatos, az erőforrás-azonosító a következő formátumban jelenik meg:
+Ha [felügyeleti csoport szintű](deploy-to-management-group.md) vagy bérlői szintű központi telepítésben használja, az erőforrás-azonosítót a következő formátumban adja vissza a rendszer:
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Az azonosító más formátumban való lekért:
+Az azonosító más formátumokban való lekéréséhez lásd:
 
 * [extensionResourceId](#extensionresourceid)
-* [előfizetésResourceId](#subscriptionresourceid)
+* [subscriptionResourceId](#subscriptionresourceid)
 * [tenantResourceId](#tenantresourceid)
 
 ### <a name="remarks"></a>Megjegyzések
 
-A megadott paraméterek száma attól függően változik, hogy az erőforrás szülő vagy gyermek erőforrás,,-e az erőforrás ugyanabban az előfizetésben vagy erőforráscsoportban.
+Az Ön által megadott paraméterek száma attól függően változik, hogy az erőforrás szülő-vagy gyermek erőforrás-e, és hogy az erőforrás ugyanabban az előfizetésben vagy erőforráscsoporthoz van-e.
 
-Ha ugyanabban az előfizetésben és erőforráscsoportban lévő szülőerőforrás-azonosítót szeretné beszerezni, adja meg az erőforrás típusát és nevét.
+Az azonos előfizetésben és erőforráscsoporthoz tartozó szülő erőforráshoz tartozó erőforrás-azonosító lekéréséhez adja meg az erőforrás típusát és nevét.
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Egy gyermekerőforrás erőforrás-azonosítójának lekérnie, figyeljen az erőforrástípus szegmenseinek számára. Erőforrásnév megadásához az erőforrástípus minden szegmenséhez. A szegmens neve megegyezik a hierarchia adott részéhez létező erőforrással.
+Egy alárendelt erőforrás erőforrás-AZONOSÍTÓjának lekéréséhez figyeljen az erőforrástípus szegmensek számára. Adja meg az erőforrástípus minden szegmensének erőforrás-nevét. A szegmens neve a hierarchia adott részéhez tartozó erőforrásnak felel meg.
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
 ```
 
-Ha ugyanabban az előfizetésben, de eltérő erőforráscsoportban lévő erőforrás erőforrásazonosítóját szeretné lekérni, adja meg az erőforráscsoport nevét.
+Ha egy erőforrás erőforrás-AZONOSÍTÓját szeretné lekérni ugyanabba az előfizetésbe, de más erőforráscsoporthoz, adja meg az erőforráscsoport nevét.
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-Egy másik előfizetésben és erőforráscsoportban lévő erőforrás-azonosító lekérni, adja meg az előfizetés azonosítóját és az erőforráscsoport nevét.
+Egy másik előfizetéshez és erőforráscsoporthoz tartozó erőforrás-azonosító lekéréséhez adja meg az előfizetés AZONOSÍTÓját és az erőforráscsoport nevét.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Gyakran kell használni ezt a funkciót, ha egy tárfiókot vagy virtuális hálózatot használ egy másik erőforráscsoportban. A következő példa bemutatja, hogyan használható egy külső erőforráscsoportból származó erőforrás:
+Gyakran ezt a függvényt kell használnia, ha egy másik erőforráscsoport Storage-fiókját vagy virtuális hálózatát használja. Az alábbi példa azt szemlélteti, hogyan használhatók az erőforrások egy külső erőforráscsoport használatával:
 
 ```json
 {
@@ -866,9 +854,9 @@ Gyakran kell használni ezt a funkciót, ha egy tárfiókot vagy virtuális hál
 }
 ```
 
-### <a name="resource-id-example"></a>Példa erőforrásazonosítóra
+### <a name="resource-id-example"></a>Példa erőforrás-AZONOSÍTÓra
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) az erőforráscsoport egyik tárfiókjának erőforrásazonosítóját adja vissza:
+A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) egy Storage-fiók erőforrás-azonosítóját adja vissza az erőforráscsoport számára:
 
 ```json
 {
@@ -896,26 +884,24 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | sameRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| eltérőRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.StorageAccounts/examplestorage |
-| differentSubOutput | Sztring | /subscriptions/11111111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| beágyazotterőforráskimenet | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| differentRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Sztring | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>előfizetést
 
-```json
-subscription()
-```
+`subscription()`
 
-Az aktuális központi telepítés előfizetésének részleteit adja vissza.
+Az aktuális üzemelő példányra vonatkozó előfizetés részleteit adja vissza.
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-A függvény a következő formátumot adja eredményül:
+A függvény a következő formátumot adja vissza:
 
 ```json
 {
@@ -928,11 +914,11 @@ A függvény a következő formátumot adja eredményül:
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ha beágyazott sablonokat használ több előfizetésre való üzembe helyezéshez, megadhatja az előfizetési függvény kiértékelésének hatókörét. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoportra.](cross-resource-group-deployment.md)
+Ha beágyazott sablonokat használ több előfizetésben való üzembe helyezéshez, megadhatja az előfizetési funkció értékelésének hatókörét. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](cross-resource-group-deployment.md).
 
-### <a name="subscription-example"></a>Példa előfizetésre
+### <a name="subscription-example"></a>Előfizetés – példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) a kimenetek szakaszban hívott előfizetési függvényt mutatja be.
+A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) a kimenetek szakaszban megnevezett előfizetési függvény látható.
 
 ```json
 {
@@ -948,28 +934,26 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-## <a name="subscriptionresourceid"></a>előfizetésResourceId
+## <a name="subscriptionresourceid"></a>subscriptionResourceId
 
-```json
-subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
-```
+`subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
 
-Az előfizetés szintjén üzembe helyezett erőforrás egyedi azonosítóját adja vissza.
+Az előfizetési szinten üzembe helyezett erőforrás egyedi azonosítóját adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nem |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Adja meg ezt az értéket, ha egy másik előfizetésben lévő erőforrást kell beolvasnia. |
-| resourceType |Igen |sztring |Erőforrás típusa, beleértve az erőforrás-szolgáltató névterét. |
-| erőforrásnév1 |Igen |sztring |Az erőforrás neve. |
-| erőforrásNév2 |Nem |sztring |Szükség esetén következő erőforrásnév-szegmens. |
+| subscriptionId |Nem |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. |
+| resourceType |Igen |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
+| resourceName1 |Igen |sztring |Az erőforrás neve. |
+| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
 
-Folytassa az erőforrásnevek paraméterként való hozzáadását, ha az erőforrástípus több szegmenst tartalmaz.
+Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Az azonosító t a következő formátumban adja vissza:
+Az azonosító a következő formátumban lesz visszaadva:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -977,11 +961,11 @@ Az azonosító t a következő formátumban adja vissza:
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ezzel a függvénnyel lekéri az [erőforrás-azonosítót az erőforráscsoport](deploy-to-subscription.md) helyett az előfizetésbe üzembe helyezett erőforrásokhoz. A visszaadott azonosító az [erőforrásazonosító](#resourceid) függvény által visszaadott értéktől tér el, ha nem tartalmazza az erőforráscsoport értékét.
+Ezzel a függvénnyel lekérheti az erőforrás-AZONOSÍTÓt az [előfizetésre az erőforráscsoport helyett központilag telepített](deploy-to-subscription.md) erőforrásokhoz. A visszaadott azonosító eltér a [resourceId](#resourceid) függvény által visszaadott értéktől, mert nem tartalmazza az erőforráscsoport értékét.
 
-### <a name="subscriptionresourceid-example"></a>például subscriptionResourceID
+### <a name="subscriptionresourceid-example"></a>subscriptionResourceID példa
 
-A következő sablon egy beépített szerepkört rendel hozzá. Telepítheti erőforráscsoportba vagy előfizetésbe. Az előfizetésResourceId függvényt használja a beépített szerepkörök erőforrás-azonosítójának lekérni.
+A következő sablon egy beépített szerepkört rendel hozzá. Egy erőforráscsoport vagy előfizetés számára is telepíthető. A subscriptionResourceId függvény használatával beolvassa a beépített szerepkörök erőforrás-AZONOSÍTÓját.
 
 ```json
 {
@@ -1034,9 +1018,7 @@ A következő sablon egy beépített szerepkört rendel hozzá. Telepítheti er�
 
 ## <a name="tenantresourceid"></a>tenantResourceId
 
-```json
-tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
-```
+`tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
 
 A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vissza.
 
@@ -1044,15 +1026,15 @@ A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vis
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceType |Igen |sztring |Erőforrás típusa, beleértve az erőforrás-szolgáltató névterét. |
-| erőforrásnév1 |Igen |sztring |Az erőforrás neve. |
-| erőforrásNév2 |Nem |sztring |Szükség esetén következő erőforrásnév-szegmens. |
+| resourceType |Igen |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
+| resourceName1 |Igen |sztring |Az erőforrás neve. |
+| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
 
-Folytassa az erőforrásnevek paraméterként való hozzáadását, ha az erőforrástípus több szegmenst tartalmaz.
+Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Az azonosító t a következő formátumban adja vissza:
+Az azonosító a következő formátumban lesz visszaadva:
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -1060,12 +1042,12 @@ Az azonosító t a következő formátumban adja vissza:
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ezzel a függvénnyel lekéri a bérlőre üzembe helyezett erőforrás erőforrás-azonosítójának lekérni. A visszaadott azonosító az erőforráscsoport vagy az előfizetési értékek nem tartalmazza az erőforráscsoport vagy az előfizetési értékeket.
+Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforrások erőforrás-AZONOSÍTÓját. A visszaadott azonosító eltér a más erőforrás-azonosító függvények által visszaadott értékektől, ha nem tartalmazza az erőforráscsoport vagy az előfizetés értékét.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Resource Manager-sablon szakaszainak leírását az [Azure Resource Manager-sablonok készítése című témakörben találja.](template-syntax.md)
-* Több sablon egyesítéséhez olvassa el [a Csatolt sablonok használata az Azure Resource Manager rel.](linked-templates.md)
-* Ha egy erőforrástípus létrehozásakor meghatározott számú alkalommal szeretne meghaladni, olvassa [el az Erőforrások több példányának létrehozása az Azure Resource Manager ben című témakört.](copy-resources.md)
-* A létrehozott sablon központi telepítéséről az Alkalmazás üzembe helyezése az [Azure Resource Manager sablonnal című témakörben](deploy-powershell.md)olvashat.
+* Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
+* Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
+* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
+* A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).
 

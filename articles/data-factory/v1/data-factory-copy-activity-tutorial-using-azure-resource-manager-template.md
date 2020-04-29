@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Folyamat létrehozása az Erőforrás-kezelő sablonnal '
+title: 'Oktatóanyag: folyamat létrehozása Resource Manager-sablonnal '
 description: Ebben az oktatóanyagban egy egyszerű Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével. A folyamat adatokat másol az Azure Blob Storage-ból egy Azure SQL-adatbázisba.
 services: data-factory
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: dd559a8dd0bd59b50f4a3fa663f57874d948bf71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75438863"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
-> * [Vizuális stúdió](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Powershell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -36,7 +36,7 @@ ms.locfileid: "75438863"
 
 Az oktatóanyagból megtudhatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
 
-Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A másolási tevékenységről további információt az [Adatmozgatási tevékenységek című témakörben talál.](data-factory-data-movement-activities.md)
+Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
 Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További információ az [egy folyamaton belüli több tevékenységről](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) szóló témakörben található. 
 
@@ -316,7 +316,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
 > 
 
 ## <a name="create-data-factory"></a>Data factory létrehozása
-1. Indítsa el **az Azure PowerShellt,** és futtassa a következő parancsot:
+1. Indítsa el **Azure PowerShell** és futtassa a következő parancsot:
    * Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
    
     ```PowerShell
@@ -383,14 +383,14 @@ Ez az erőforráscsoport-azonosítón alapuló egyedi sztring.
 ### <a name="defining-data-factory-entities"></a>Data Factory-entitások definiálása
 Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva: 
 
-1. [Azure Storage-hoz csatolt szolgáltatás](#azure-storage-linked-service)
+1. [Azure Storage társított szolgáltatás](#azure-storage-linked-service)
 2. [Azure SQL Database társított szolgáltatás](#azure-sql-database-linked-service)
 3. [Azure Blob-adatkészlet](#azure-blob-dataset)
 4. [Azure SQL-adatkészlet](#azure-sql-dataset)
 5. [Másolási tevékenységgel rendelkező adatfolyamat](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
-Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Az előfeltételek részeként létrehozott egy [tárolót,](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)és adatokat töltött fel erre a tárfiókra. Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure Storage társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) című szakaszt. 
+Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Az [Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)részeként létrehozott egy tárolót, és feltöltötte az adattárat ebbe a Storage-fiókba. Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure Storage társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) című szakaszt. 
 
 ```json
 {
@@ -410,7 +410,7 @@ Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előál
 }
 ```
 
-A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció változókat is használ: azureStorageLinkedService és dataFactoryName a sablonban definiálva. 
+A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablonban definiált változókat is használja: azureStorageLinkedService és dataFactoryName. 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database társított szolgáltatás
 Az AzureSqlLinkedService az Azure SQL-adatbázist társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban. Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.  

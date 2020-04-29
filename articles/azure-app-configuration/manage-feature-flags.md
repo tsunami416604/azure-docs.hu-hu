@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Az Azure App Configuration használatával kezelheti a szolgáltatásjelzőket'
+title: 'Oktatóanyag: az Azure-alkalmazások konfigurációjának használata a funkció-jelzők kezelésére'
 titleSuffix: Azure App Configuration
-description: Ebben az oktatóanyagban megtudhatja, hogyan kezelheti a funkciójelzőket az alkalmazástól elkülönítve az Azure App Configuration használatával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti a funkciók jelzőit az alkalmazástól függetlenül az Azure app Configuration használatával.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -16,65 +16,65 @@ ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76899367"
 ---
-# <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Oktatóanyag: Szolgáltatásjelzők kezelése az Azure App konfigurációjában
+# <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Oktatóanyag: funkció-jelzők kezelése az Azure-alkalmazás konfigurációjában
 
-Az Azure App Configuration alkalmazásban az összes funkciójelzőt tárolhatja, és egyetlen helyről felügyelheti őket. Az Alkalmazáskonfiguráció egy **Szolgáltatáskezelő** nevű portálfelhasználói felületet tartalmaz, amelyet kifejezetten a szolgáltatásjelzőkhöz terveztek. Az Alkalmazáskonfiguráció natív módon támogatja a .NET Core szolgáltatásjelző adatsémát is.
+Az összes funkció jelzőjét az Azure-alkalmazások konfigurációjában tárolhatja, és egyetlen helyről felügyelheti őket. Az alkalmazás konfigurációja egy, a Feature **Manager** nevű portál felhasználói felülettel rendelkezik, amelyet kifejezetten a funkció-jelzők számára terveztek. Az alkalmazás konfigurációja is natív módon támogatja a .NET Core Feature-Flag adatsémát.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Szolgáltatásjelzők definiálása és kezelése az alkalmazás konfigurációjában.
-> * Hozzáférés szolgáltatásjelzők az alkalmazásból.
+> * A szolgáltatási jelzők definiálása és kezelése az alkalmazás konfigurációjában.
+> * Hozzáférési funkciók jelzői az alkalmazásból.
 
-## <a name="create-feature-flags"></a>Jellemzőjelzők létrehozása
+## <a name="create-feature-flags"></a>Szolgáltatás-jelzők létrehozása
 
-Az Azure Portal for App Configuration szolgáltatáskezelő szolgáltatáskezelője felhasználói felületet biztosít az alkalmazásokban használt szolgáltatásjelzők létrehozásához és kezeléséhez.
+Az alkalmazás-konfiguráció Azure Portaljában található Feature Manager egy felhasználói felületet biztosít az alkalmazásokban használt szolgáltatás-jelzők létrehozásához és kezeléséhez.
 
-Új szolgáltatásjelző hozzáadása:
+Új szolgáltatás jelző hozzáadása:
 
-1. A **Szolgáltatáskezelő** > **+Hozzáadás** lehetőséget választva hozzáadhat egy szolgáltatásjelzőt.
+1. Válassza a **szolgáltatás-kezelő** > **+ Hozzáadás** elemet a szolgáltatás jelző hozzáadásához.
 
-    ![Szolgáltatásjelzők listája](./media/azure-app-configuration-feature-flags.png)
+    ![Szolgáltatás jelölői listája](./media/azure-app-configuration-feature-flags.png)
 
-1. Adja meg a szolgáltatásjelző egyedi kulcsnevét. Erre a névre szüksége van ahhoz, hogy a kódban szereplő zászlóra hivatkozzon.
+1. Adjon meg egy egyedi kulcsnévt a szolgáltatás jelzője számára. Ezt a nevet kell megadnia a kódban szereplő jelölőre való hivatkozáshoz.
 
-1. Ha szeretné, adjon leírást a funkciójelzőnek.
+1. Ha szeretné, adja meg a szolgáltatás jelölőjét.
 
-1. Állítsa be a szolgáltatásjelző kezdeti állapotát. Ez az állapot általában *Ki* vagy *Be*. Ha szűrőt ad hozzá a szolgáltatásjelzőhöz, a *Be* állapot *feltételesre* változik.
+1. A szolgáltatás jelzője kezdeti állapotának beállítása. Ez az állapot általában ki- *vagy* *bekapcsolva* . A *on* állapot módosul, *Ha szűrőt* ad hozzá a szolgáltatás jelölőhöz.
 
-    ![Jellemzőjelző létrehozása](./media/azure-app-configuration-feature-flag-create.png)
+    ![Szolgáltatás jelölője – létrehozás](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Ha az állapot be van *kapcsolva,* válassza a **+Szűrő hozzáadása** lehetőséget az állapot minősítéséhez szükséges további feltételek megadásához. Adjon meg egy beépített vagy egyéni szűrőkulcsot, majd válassza a **+Add paraméter** lehetőséget egy vagy több paraméter nek a szűrőhöz társításához. A beépített szűrők a következők:
+1. Ha az állapot *be van kapcsolva*, válassza a **+ szűrő hozzáadása** lehetőséget az állapot minősítéséhez szükséges további feltételek megadásához. Adjon meg egy beépített vagy egyéni szűrő kulcsot, majd válassza a **+ paraméter hozzáadása** lehetőséget, ha egy vagy több paramétert szeretne hozzárendelni a szűrőhöz. A beépített szűrők a következők:
 
     | Kulcs | JSON-paraméterek |
     |---|---|
-    | Microsoft.Százalék | {"Érték": 0-100 százalék} |
-    | Microsoft.TimeWindow ablak | {"Start": UTC idő, "Befejezés": UTC idő} |
+    | Microsoft. százalék | {"Érték": 0-100 százalék} |
+    | Microsoft. TimeWindow | {"Start": UTC-idő, "End": UTC-idő} |
 
-    ![Jellemzőjelző szűrője](./media/azure-app-configuration-feature-flag-filter.png)
+    ![Szolgáltatás jelölője szűrő](./media/azure-app-configuration-feature-flag-filter.png)
 
-## <a name="update-feature-flag-states"></a>Szolgáltatásjelző állapotának frissítése
+## <a name="update-feature-flag-states"></a>Szolgáltatás jelző állapotának frissítése
 
-A jellemzőjelző állapotértékének módosítása:
+A szolgáltatás jelölője állapotának módosítása:
 
-1. Válassza **a Szolgáltatáskezelő**lehetőséget.
+1. Válassza a **szolgáltatás-kezelő**elemet.
 
-1. A módosítani kívánt jellemzőjelzőjobb oldalán jelölje ki a három pontot (**...**), majd a **Szerkesztés parancsot.**
+1. A módosítani kívánt szolgáltatási jelzőtől jobbra válassza a három pontot (**..**.), majd válassza a **Szerkesztés**lehetőséget.
 
-1. Állítson be egy új állapotot a szolgáltatásjelzőhez.
+1. Új állapot beállítása a szolgáltatás jelzője számára.
 
-## <a name="access-feature-flags"></a>Az Access szolgáltatásjelzői
+## <a name="access-feature-flags"></a>Hozzáférési funkciók jelzői
 
-A Szolgáltatáskezelő által létrehozott szolgáltatásjelzők tárolása és beolvasása rendszeres kulcsértékként lesz tárolva és beolvasva. Egy speciális névtér előtag `.appconfig.featureflag`alatt vannak. Az alapul szolgáló kulcsértékek megtekintéséhez használja a Configuration Explorer t. Az alkalmazás lekérheti ezeket az értékeket az alkalmazáskonfiguráció-szolgáltatók, SDK-k, parancssori bővítmények és REST API-k használatával.
+A Feature Manager által létrehozott funkció-jelzők tárolása és lekérése normál értékként történik. Ezeket egy speciális névtér-előtagja `.appconfig.featureflag`tárolja. Az alapul szolgáló kulcs értékeit a Configuration Explorer használatával tekintheti meg. Az alkalmazás lekérheti ezeket az értékeket az alkalmazás-konfiguráció konfigurációs szolgáltatói, SDK-k, parancssori bővítmények és REST API-k használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan kezelheti a funkciójelzőket és azok állapotát az Alkalmazáskonfiguráció használatával. Az alkalmazáskonfiguráció és a ASP.NET Core szolgáltatáskezelési támogatásáról az alábbi cikkben olvashat bővebben:
+Ebből az oktatóanyagból megtudhatta, hogyan kezelheti a funkciók jelzőit és állapotát az alkalmazás konfigurációjának használatával. Az alkalmazás-konfiguráció és a ASP.NET Core szolgáltatás-felügyeleti támogatásáról az alábbi cikkben talál további információt:
 
-* [Szolgáltatásjelzők használata ASP.NET Core alkalmazásban](./use-feature-flags-dotnet-core.md)
+* [Szolgáltatás-jelzők használata ASP.NET Core alkalmazásban](./use-feature-flags-dotnet-core.md)

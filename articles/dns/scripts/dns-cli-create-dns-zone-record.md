@@ -1,5 +1,5 @@
 ---
-title: DNS-zóna és rekord létrehozása tartománynévhez - Azure CLI - Azure DNS
+title: DNS-zóna és-rekord létrehozása egy tartománynévhez – Azure CLI-Azure DNS
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan hozhat létre DNS-zónát és -rekordot egy tartománynévhez.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939304"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI-példaszkript: DNS-zóna és -rekord létrehozása

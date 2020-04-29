@@ -1,6 +1,6 @@
 ---
-title: Azure CLI – Virtuális gép leállítása és törlése egy laborban
-description: Ez a cikk egy Azure CLI-parancsfájlt tartalmaz, amely leállítja és törli a virtuális gépet az Azure DevTest Labs laborjában.
+title: Azure CLI – virtuális gép leállítása és törlése tesztkörnyezetben
+description: Ez a cikk egy olyan Azure CLI-parancsfájlt tartalmaz, amely leállítja és törli a virtuális gépet egy Azure DevTest Labs található laborban.
 services: lab-services
 author: spelluru
 manager: ''
@@ -15,10 +15,10 @@ ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: c4f315593da270155998c3c5bba8def2778f0d41
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76760446"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép leállítása és törlése Azure DevTest Labs tesztkörnyezetben az Azure CLI használatával

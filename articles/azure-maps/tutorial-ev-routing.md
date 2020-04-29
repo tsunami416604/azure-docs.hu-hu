@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Elektromos járművek irányítása az Azure Notebooks (Python) használatával | Microsoft Azure Maps'
-description: Elektromos járművek irányítsa a Microsoft Azure Maps útválasztási API-k és az Azure Notebookok használatával.
+title: 'Oktatóanyag: elektromos járművek irányítása Azure Notebooks (Python) használatával | Microsoft Azure térképek'
+description: Az elektromos járművek átirányítása Microsoft Azure Maps útválasztási API-k és Azure Notebooks használatával.
 author: philmea
 ms.author: philmea
 ms.date: 11/12/2019
@@ -10,92 +10,92 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3118ca39ec0efd42c9f7b622c91f857034ef4b03
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80333839"
 ---
-# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: Elektromos járművek irányítása az Azure Notebooks (Python) használatával
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
-Az Azure Maps az Azure-ba natívmódon integrált térinformatikai szolgáltatás API-k portfóliója. Ezek az API-k lehetővé teszik a fejlesztők, a vállalatok és a független szoftverszállítók számára, hogy helyalapú alkalmazásokat, IoT-t, mobilitást, logisztikát és eszközkövetési megoldásokat fejlesszenek ki. 
+Azure Maps a térinformatikai szolgáltatási API-k portfóliója, amelyek natív módon vannak integrálva az Azure-ba. Ezek az API-k lehetővé teszik a fejlesztők, a vállalatok és az ISV-k számára, hogy helymeghatározó alkalmazásokat, IoT, mobilitást, logisztikai és Asset Tracking megoldásokat fejlesszenek. 
 
-Az Azure Maps REST API-k at lehet hívni a nyelvek, például a Python és az R, hogy a térinformatikai adatok elemzése és a gépi tanulási forgatókönyvek. Az Azure Maps az [útválasztási API-k](https://docs.microsoft.com/rest/api/maps/route) robusztus készletét kínálja, amelyek lehetővé teszik a felhasználók számára, hogy több adatpont közötti útvonalakat számítsanak ki. A számítások különböző feltételeken alapulnak, mint például a járműtípus vagy az elérhető terület. 
+A Azure Maps REST API-k olyan nyelvekről hívhatók, mint például a Python és az R a térinformatikai adatok elemzésének és a gépi tanulási forgatókönyvek engedélyezéséhez. Azure Maps az [útválasztási API](https://docs.microsoft.com/rest/api/maps/route) -k robusztus készletét kínálja, amelyek lehetővé teszik a felhasználók számára az útvonalak kiszámítását több adatpont között. A számítások különböző feltételeken, például járműtípuson vagy elérhető területen alapulnak. 
 
-Ebben a bemutatóban, séta segít a vezető, akinek elektromos jármű akkumulátor akkad. A vezetőnek meg kell találnia a lehető legközelebbi töltőállomást a jármű helyéről.
+Ebben az oktatóanyagban egy olyan illesztőprogramot fog segíteni, amelynek az elektromos jármű akkumulátora alacsony. Az illesztőprogramnak meg kell keresnie a lehető legközelebb töltő állomást a jármű helyétől.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Hozzon létre és futtasson egy Jupyter-jegyzetfüzetet a felhőben lévő [Azure-jegyzetfüzetekben.](https://docs.microsoft.com/azure/notebooks)
-> * Hívja meg az Azure Maps REST API-kat a Pythonban.
-> * Keressen egy elérhető tartományt az elektromos jármű fogyasztási modellje alapján.
-> * Keressen elektromos jármű töltőállomásokat az elérhető tartományon belül, vagy isochrone.
-> * Renderelje az elérhető tartományhatárt és a töltőállomásokat a térképen.
-> * Keresse meg és vizualizálja az útvonalat a legközelebbi elektromos jármű töltőállomáshoz a menetidő alapján.
+> * Hozzon létre és futtasson Jupyter notebookot [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) a felhőben.
+> * Azure Maps REST API-k hívása a Pythonban.
+> * Keressen egy elérhető tartományt az elektromos jármű használati modellje alapján.
+> * Keressen az elektromos járművek díjszabási állomásait a rendelkezésre álló tartományon belül, vagy isochrone.
+> * A elérhető tartomány határának és a díjszabási állomások leképezése
+> * Megkeresheti és megjelenítheti az útvonalat a legközelebbi elektromos jármű töltőállomásokon a meghajtó ideje alapján.
 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Az oktatóanyag befejezéséhez először létre kell hoznia egy Azure Maps-fiókot, és be kell szereznie az elsődleges kulcsot (előfizetési kulcs). 
+Az oktatóanyag elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). 
 
-Azure Maps-fiók-előfizetés létrehozásához kövesse a [Fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című útmutató utasításait. Szüksége van egy Azure Maps-fiók-előfizetésre az S1 árcsomaggal. 
+Azure Maps fiók előfizetésének létrehozásához kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait. Az S1 árszintje Azure Maps fiók-előfizetésre van szüksége. 
 
-A fiók elsődleges előfizetési kulcsának lekérni, kövesse az [elsődleges kulcs bekésezése](quick-demo-map-app.md#get-the-primary-key-for-your-account)című útmutató utasításait.
+A fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör utasításait.
 
-Az Azure Maps hitelesítéssel kapcsolatos további tudnivalókról az [Azure Maps hitelesítésének kezelése](./how-to-manage-authentication.md)című témakörben talál.
+A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
-## <a name="create-an-azure-notebook"></a>Azure-jegyzetfüzet létrehozása
+## <a name="create-an-azure-notebook"></a>Azure-beli jegyzetfüzet létrehozása
 
-Az oktatóanyag követéséhez létre kell hoznia egy Azure notebook-projektet, és le kell töltenie és futtatnia kell a Jupyter-jegyzetfüzetfájlt. A jegyzetfüzetfájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Azure-jegyzetfüzet-projekt létrehozásához és a Jupyter-jegyzetfüzet-dokumentum feltöltéséhez tegye a következő lépéseket:
+Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-projektet, és le kell töltenie és futtatnia kell a Jupyter notebook-fájlt. A jegyzetfüzet-fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Hozzon létre egy Azure notebook-projektet, és töltse fel a Jupyter notebook-dokumentumot a következő lépésekkel:
 
-1. Nyissa meg az [Azure-jegyzetfüzeteket,](https://notebooks.azure.com) és jelentkezzen be. További információt a Rövid útmutató: Bejelentkezés és felhasználói azonosító beállítása című [témakörben talál.](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)
-1. A nyilvános profillap tetején válassza a **Saját projektek**lehetőséget.
+1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. A nyilvános profil lap tetején válassza a **saját projektek**lehetőséget.
 
-    ![A Saját projektek gomb](./media/tutorial-ev-routing/myproject.png)
+    ![A saját projektek gomb](./media/tutorial-ev-routing/myproject.png)
 
-1. A **Saját projektek** lapon válassza az **Új projekt**lehetőséget.
+1. A **saját projektek** lapon válassza az **új projekt**lehetőséget.
  
-   ![Az Új projekt gomb](./media/tutorial-ev-routing/create-project.png)
+   ![Az új projekt gomb](./media/tutorial-ev-routing/create-project.png)
 
-1. Az **Új projekt létrehozása** ablaktáblán adja meg a projekt nevét és a projektazonosítót.
+1. Az **új projekt létrehozása** panelen adja meg a projekt nevét és a projekt azonosítóját.
  
-    ![Az Új projekt létrehozása ablaktábla](./media/tutorial-ev-routing/create-project-window.png)
+    ![Az új projekt létrehozása panel](./media/tutorial-ev-routing/create-project-window.png)
 
 1. Kattintson a **Létrehozás** gombra.
 
-1. A projekt létrehozása után töltse le ezt a [Jupyter notebook dokumentumfájlt](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) az [Azure Maps Jupyter jegyzetfüzettárból.](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
+1. A projekt létrehozása után töltse le ezt a [Jupyter notebook-dokumentumot](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) a [Azure Maps Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
-1. A **Projektek** lap Projektek listájában jelölje ki a projektet, majd a **Feltöltés gombra** a Jupyter-jegyzetfüzet dokumentumfájljának feltöltéséhez. 
+1. A **saját projektek** lap projektek listájában válassza ki a projektet, majd válassza a **feltöltés** lehetőséget a Jupyter notebook-dokumentum fájljának feltöltéséhez. 
 
-    ![jegyzetfüzet feltöltése](./media/tutorial-ev-routing/upload-notebook.png)
+    ![Jegyzetfüzet feltöltése](./media/tutorial-ev-routing/upload-notebook.png)
 
-1. Töltse fel a fájlt a számítógépről, majd válassza a **Kész gombot.**
+1. Töltse fel a fájlt a számítógépről, majd válassza a **kész**lehetőséget.
 
-1. A feltöltés sikeres befejezése után a fájl megjelenik a projekt oldalon. Kattintson duplán a fájlra, hogy megnyissa jupyter notebookként.
+1. Miután a feltöltés sikeresen befejeződött, a fájl megjelenik a projekt oldalon. Kattintson duplán a fájlra, hogy megnyissa Jupyter jegyzetfüzetként.
 
-Próbálja meg megérteni a jegyzetfüzetfájlban megvalósított funkciókat. Futtassa a kódot a jegyzetfüzetfájlban, egyszerre egy cellával. A kódot az egyes cellákban futtathatja a jegyzetfüzetalkalmazás tetején található **Futtatás** gombra kattintva.
+Próbálja meg megismerni a jegyzetfüzet-fájlban megvalósított funkciókat. Futtassa a kódot a jegyzetfüzet-fájlban egyszerre egy cellával. A kódot minden cellában futtathatja, ha a **Futtatás** gombra kattint a notebook alkalmazás tetején.
 
   ![A Futtatás gomb](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Projektszintű csomagok telepítése
+## <a name="install-project-level-packages"></a>Projekt szintű csomagok telepítése
 
-A kód jegyzetfüzetben való futtatásához telepítse a csomagokat a projekt szintjén az alábbi lépésekkel:
+A kód a jegyzetfüzetben való futtatásához a következő lépések végrehajtásával telepítse a csomagokat a projekt szintjén:
 
-1. Töltse le a [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt az [Azure Maps Jupyter jegyzetfüzettárból,](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)majd töltse fel a projektbe.
-1. A projekt irányítópultján válassza a **Projektbeállítások lehetőséget.** 
-1. A **Projekt beállításai** ablaktáblán válassza a **Környezet** lapot, majd a **Hozzáadás gombot.**
-1. A **Környezet beállítási lépései csoportban**tegye a következőket:   
-    a. Az első legördülő listában válassza a **Requirements.txt**lehetőséget.  
-    b. A második legördülő listában válassza ki a *requirements.txt* fájlt.  
-    c. A harmadik legördülő listában válassza a **Python 3.6-os verziója** a saját verziója.
+1. Töltse le a [*követelmények. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter jegyzetfüzet-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
+1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget. 
+1. A **projekt beállításai** ablaktáblán válassza a **környezet** lapot, majd kattintson a **Hozzáadás**gombra.
+1. A **környezet beállítása lépésekben**tegye a következőket:   
+    a. Az első legördülő listában válassza a **követelmények. txt**elemet.  
+    b. A második legördülő listában válassza ki a *követelmények. txt* fájlt.  
+    c. A harmadik legördülő listában válassza ki a **Python 3,6** -es verzióját.
 1. Kattintson a **Mentés** gombra.
 
     ![Csomagok telepítése](./media/tutorial-ev-routing/install-packages.png)
 
-## <a name="load-the-required-modules-and-frameworks"></a>Töltse be a szükséges modulokat és keretrendszereket
+## <a name="load-the-required-modules-and-frameworks"></a>A szükséges modulok és keretrendszerek betöltése
 
-Az összes szükséges modul és keretrendszer betöltéséhez futtassa a következő parancsfájlt.
+Az összes szükséges modul és keretrendszer betöltéséhez futtassa az alábbi szkriptet.
 
 ```Python
 import time
@@ -104,13 +104,13 @@ import urllib.parse
 from IPython.display import Image, display
 ```
 
-## <a name="request-the-reachable-range-boundary"></a>Az elérhető tartományhatár kérése
+## <a name="request-the-reachable-range-boundary"></a>Elérhető tartomány határának kérése
 
-Egy csomagszállító cég flottájában van néhány elektromos jármű. A nap folyamán az elektromos járműveket újra kell tölteni anélkül, hogy vissza kellene térniük a raktárba. Minden alkalommal, amikor a fennmaradó töltés kevesebb, mint egy órára csökken, olyan töltőállomásokat keres, amelyek elérhető tartományon belül vannak. Lényegében akkor keres töltőállomást, amikor az akkumulátor töltöttsége alacsony. És megkapja a határinformációkat az adott töltőállomástartományhoz. 
+A Package Delivery Company rendelkezik néhány elektromos járművel a flottájában. A nap folyamán az elektromos járműveket újra kell számlázni anélkül, hogy vissza kellene térnie a tárházba. Minden alkalommal, amikor a fennmaradó díj egy óránál kevesebb időt vesz igénybe, megkeresi azokat a díjszabási állomásokat, amelyek egy elérhető tartományon belül vannak. A díjszabást alapvetően akkor érdemes megkeresni, ha az akkumulátor töltöttsége alacsony. Emellett a díjszabási állomások ezen tartományához tartozó határokra vonatkozó információkat is megkapja. 
 
-Mivel a vállalat előnyben részesíti a gazdaságosság és a sebesség egyensúlyát igénylő útvonalak használatát, a kért routeType *az eco*. A következő parancsfájl meghívja az Azure Maps útválasztási szolgáltatás [útvonaltartomány API-ját.](https://docs.microsoft.com/rest/api/maps/route/getrouterange) A jármű fogyasztási modelljének paramétereit használja. A parancsfájl ezután elemzi a választ, hogy hozzon létre egy sokszög objektum a geojson formátumban, amely az autó maximális elérhető tartományban.
+Mivel a vállalat inkább olyan útvonalakat használ, amelyeknek a gazdaságosság és a sebesség egyensúlyát igénylik, a kért routeType *Eco*. A következő parancsfájl meghívja a Azure Maps útválasztási szolgáltatás [lekérési Route Range API](https://docs.microsoft.com/rest/api/maps/route/getrouterange) -t. Paramétereket használ a jármű felhasználási modelljéhez. A szkript ezután elemzi a választ, hogy létrehoz egy geojson formátumú sokszög objektumot, amely az autó maximálisan elérhető tartományát jelöli.
 
-Az elektromos jármű elérhető hatótávolságának határainak meghatározásához futtassa a szkriptet a következő cellában:
+Az elektromos jármű elérhető tartományának határainak meghatározásához futtassa a szkriptet a következő cellában:
 
 ```python
 subscriptionKey = "Your Azure Maps key"
@@ -152,13 +152,13 @@ boundsData = {
              }
 ```
 
-## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>Elektromos járművek töltőállomásának keresése az elérhető hatótávolságon belül
+## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>Az elektromos járművek díjszabási állomásának keresése a elérhető tartományon belül
 
-Miután meghatározta az elektromos jármű elérhető hatótávolságát (isochrone), megkeresheti a töltőállomásokat az adott tartományon belül. 
+Miután meghatározta az elektromos jármű elérhető tartományát (isochrone), megkeresheti a díjszabási állomásokat az adott tartományon belül. 
 
-A következő parancsfájl meghívja az Azure Maps [Post Search Inside Geometry API-t.](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) Az autó legnagyobb hatósugarának határain belül keresi az elektromos járművek töltőállomásait. Ezután a parancsfájl egy elérhető helyek tömbjének elemzi a választ.
+A következő szkript meghívja a Azure Maps [utáni keresést a geometriai API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)-ban. Megkeresi az elektromos járművek díjszabását az autó maximálisan elérhető tartományának határain belül. Ezt követően a parancsfájl a elérhető helyeinek egy tömbje alapján elemzi a választ.
 
-Ha az elektromos járművek töltőállomásait az elérhető tartományon belül szeretné keresni, futtassa a következő parancsfájlt:
+A rendelkezésre álló tartományon belüli elektromos járművek díjszabásának kereséséhez futtassa a következő parancsfájlt:
 
 ```python
 # Search for electric vehicle stations within reachable range.
@@ -171,11 +171,11 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Töltse fel az elérhető tartományt és a töltőpontokat az Azure Maps adatszolgáltatásba
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>A elérhető tartomány és a töltési pontok feltöltése Azure Maps adatszolgáltatásba
 
-A térképen érdemes megvizelni a töltőállomásokat és az elektromos jármű maximális ható tartományának határát. Ehhez töltse fel a határadatokat és a töltőállomások adatait geojson-objektumként az Azure Maps Data Service szolgáltatásba. Használja az [Adatfeltöltés API-t.](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 
+A térképen a díjszabási állomásokat és a határt szeretné megjeleníteni az elektromos jármű maximálisan elérhető tartománya számára. Ehhez töltse fel a határokat és az állomások adatait geojson objektumként Azure Maps adatszolgáltatásba. Használja az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)-t. 
 
-A határ- és töltésipont-adatok Feltöltéséhez futtassa a következő két cellát:
+A határ és a töltési pont adatok Azure Maps adatszolgáltatásba való feltöltéséhez futtassa a következő két cellát:
 
 ```python
 rangeData = {
@@ -237,9 +237,9 @@ while True:
 poiUdid = getPoiUdid["udid"]
 ```
 
-## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>A töltőállomások és az elérhető hatótávolság renderelése a térképen
+## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>A díjszabási állomások és a rendelkezésre álló tartomány leképezése
 
-Miután feltöltötte az adatokat az adatszolgáltatásba, hívja meg az Azure Maps [Térképkép szolgáltatását.](https://docs.microsoft.com/rest/api/maps/render/getmapimage) Ez a szolgáltatás a töltőpontok és a maximális elérhető határ a statikus térképképen a következő parancsfájl futtatásával:
+Az adatok az adatszolgáltatásba való feltöltése után hívja meg a Azure Maps [Térkép rendszerkép-szolgáltatását](https://docs.microsoft.com/rest/api/maps/render/getmapimage). Ezzel a szolgáltatással a következő parancsfájl futtatásával jelenítheti meg a kitöltési pontokat és a maximálisan elérhető határokat a statikus térképi képen:
 
 ```python
 # Get boundaries for the bounding box.
@@ -276,16 +276,16 @@ poiRangeMap = await staticMapResponse.content.read()
 display(Image(poiRangeMap))
 ```
 
-![A helytartományt megjelenítő térkép](./media/tutorial-ev-routing/location-range.png)
+![A hely tartományát ábrázoló Térkép](./media/tutorial-ev-routing/location-range.png)
 
 
-## <a name="find-the-optimal-charging-station"></a>Találja meg az optimális töltőállomást
+## <a name="find-the-optimal-charging-station"></a>Az optimális töltési állomás megkeresése
 
-Először is meg szeretné határozni az összes lehetséges töltőállomást az elérhető tartományon belül. Ezután szeretné tudni, hogy melyikük érhető el minimális idő alatt. 
+Először is meg szeretné határozni az összes lehetséges díjszabási állomást a rendelkezésre álló tartományon belül. Ezt követően tudni szeretné, hogy melyeket lehet a lehető legkevesebb idő alatt elérni. 
 
-A következő parancsfájl meghívja az Azure Maps [Matrix Routing API-t.](https://docs.microsoft.com/rest/api/maps/route/postroutematrix) Visszaadja a jármű adott helyét, az utazási időt és az egyes töltőállomásoktávolságát. A következő cellában lévő parancsfájl elemzi a választ, hogy megtalálja a legközelebbi elérhető töltőállomást az időhöz képest.
+A következő parancsfájl meghívja a Azure Maps [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)-t. Visszaadja a megadott jármű helyét, az utazási időt, valamint az egyes díjszabási állomások távolságát. A következő cellában lévő parancsfájl elemzi a választ, hogy megkeresse a legközelebbi elérhető díjszabási állomást az idő tekintetében.
 
-A legközelebbi elérhető töltőállomás megkereséséhez a legkevesebb idő alatt érhető el, futtassa a parancsfájlt a következő cellában:
+A lehető legkevesebb idő alatt elérhető, legközelebb álló töltőállomás megtalálásához futtassa a szkriptet a következő cellában:
 
 ```python
 locationData = {
@@ -312,11 +312,11 @@ minDistLoc.extend([reachableLocations[minDistIndex][1], reachableLocations[minDi
 closestChargeLoc = ",".join(str(i) for i in minDistLoc)
 ```
 
-## <a name="calculate-the-route-to-the-closest-charging-station"></a>Számítsa ki a legközelebbi töltőállomáshoz vezető útvonalat
+## <a name="calculate-the-route-to-the-closest-charging-station"></a>Az útvonal kiszámítása a legközelebbi töltési állomásra
 
-Most, hogy megtalálta a legközelebbi töltőállomást, felhívhatja a [Get Route Directions API-t,](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) hogy részletes útvonalat kérjen az elektromos jármű aktuális helyétől a töltőállomásig.
+Most, hogy megtalálta a legközelebbi töltési állomást, meghívhatja a [Get Route Directions API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) -t, hogy a részletes útvonalat kérje az elektromos jármű aktuális helyéről a díjszabási állomásra.
 
-A töltőállomásra vezető útvonal lehívásához és az útvonalat jelölő geojson objektum létrehozására adott válasz elemzéséhez futtassa a parancsfájlt a következő cellában:
+A következő cellában futtassa a parancsfájlt a kitöltési állomáshoz tartozó útvonal beszerzéséhez, valamint az útvonalat jelképező geojson-objektum létrehozási válaszának elemzéséhez:
 
 ```python
 # Get the route from the electric vehicle's current location to the closest charging station. 
@@ -336,9 +336,9 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Az útvonal megjelenítése
 
-Az útvonal megjelenítéséhez először töltse fel az útvonaladatokat geojson objektumként az Azure Maps Data Service szolgáltatásba. Ehhez használja az Azure Maps [Data Upload API-t.](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) Ezután hívja meg a renderelési szolgáltatást, a [Get Map Image API-t,](https://docs.microsoft.com/rest/api/maps/render/getmapimage)hogy megjelenítse az útvonalat a térképen, és vizualizálja azt.
+Az útvonal megjelenítéséhez először fel kell töltenie az geojson objektumként az útvonal-adatok Azure Maps az adatszolgáltatásba. Ehhez használja a Azure Maps [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)-t. Ezt követően hívja meg a renderelési szolgáltatást, töltse le a [Térkép képapi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)-ját, hogy megjelenítse az útvonalat a térképen, és jelenítse meg.
 
-Ha képet szeretne kapni a renderelt útvonalról a térképen, futtassa a következő parancsfájlt:
+A térképen megjelenített útvonalhoz tartozó rendszerkép beszerzéséhez futtassa a következő parancsfájlt:
 
 ```python
 # Upload the route data to Azure Maps Data Service.
@@ -385,21 +385,21 @@ await session.close()
 display(Image(staticMapImage))
 ```
 
-![Az útvonalat megjelenítő térkép](./media/tutorial-ev-routing/route.png)
+![Az útvonalat ábrázoló Térkép](./media/tutorial-ev-routing/route.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hívhatja meg közvetlenül az Azure Maps REST API-kat, és hogyan jelenítheti meg az Azure Maps-adatokat a Python használatával.
+Ebből az oktatóanyagból megtudhatta, hogyan hívhatja közvetlenül a Azure Maps REST API-kat, és hogyan jelenítheti meg Azure Maps-adatok a Python használatával.
 
-Az ebben az oktatóanyagban használt Azure Maps API-k megismeréséhez lásd:
+Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a következőt:
 
-* [Útvonaltartomány beszerezése](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
-* [Keresés a geometrián belül](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
+* [Útvonal tartományának beolvasása](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
+* [Keresés közzététele a geometrián belül](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Adatok feltöltése](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
-* [Renderelés – Térképkép bekése](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Útvonalmátrix feladása](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
-* [Útvonalútvonal-utasítások beszereznie](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Render-Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Útvonal-mátrix küldése](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
+* [Útvonal irányának beolvasása](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Az Azure Maps REST API-k teljes listáját az [Azure Maps REST API-k ban.](https://docs.microsoft.com/azure/azure-maps/consumption-model)
+Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
 
-Az Azure-jegyzetfüzetekről az [Azure-jegyzetfüzetek](https://docs.microsoft.com/azure/notebooks)ről olvashat bővebben.
+További információ a Azure Notebooksről: [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

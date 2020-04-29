@@ -1,325 +1,221 @@
 ---
-title: Változások követése az Azure Automation segítségével
-description: A Változáskövetés megoldás segít azonosítani a környezetében előforduló szoftver- és Windows-szolgáltatás-módosításokat.
+title: A Azure Automation Change Tracking és leltárának áttekintése
+description: A Change Tracking és a leltár segítséget nyújt a környezetében előforduló szoftverek és Microsoft-szolgáltatások változásainak azonosításához.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: d84566c7680081561f60d4825f25a9ce19e02b24
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 1208e08f7b85e893ba754bdbdf71a2da4f68c90a
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682972"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509065"
 ---
-# <a name="track-environment-changes-with-change-tracking"></a>A környezeti változások nyomon követése a változások követésével
+# <a name="overview-of-change-tracking-and-inventory"></a>A Change Tracking és a leltár áttekintése
 
-Ez a cikk segít a változáskövetési megoldás használatával a környezet változásainak egyszerű azonosításához. A megoldás nyomon követi a következő konfigurációs módosításokat, hogy segítsen a működési problémák azonosításában:
+Ez a cikk a Azure Automation Change Tracking és leltározását ismerteti. Ez a szolgáltatás nyomon követi a virtuális gépek és a kiszolgálói infrastruktúra változásait, így segít a terjesztési csomag kezelőjével kezelt szoftverekkel kapcsolatos működési és környezeti problémák azonosításában. A Change Tracking és a leltár által követett elemek a következők: 
 
-- Windows szoftver
-- Linux szoftver (csomagok)
-    >[!NOTE]
-    >A Változáskövetés csak a terjesztési csomagkezelővel kezelt szoftvereket követi nyomon.
+- Windows-szoftver
+- Linuxos szoftverek (csomagok)
+- Windows-és Linux-fájlok
+- Windows-beállításkulcsok
+- Microsoft-szolgáltatások
+- Linux-démonok
 
-- Windows és Linux fájlok
-- Windows rendszerleíró kulcsok
-- Windows-szolgáltatások
-- Linux démonok
-
-A megoldás engedélyezése után megtekintheti a figyelt számítógépek változásainak összegzését, ha az Automation-fiók **Konfigurációkezelés** csoportában kiválasztja a **Változáskövetés** lehetőséget.
+A Change Tracking és a leltár beolvassa az adatait a felhőben lévő Azure Monitor szolgáltatásból. Az Azure a felügyelt kiszolgálókon a telepített szoftverekre, a Microsoft-szolgáltatásokra, a Windows-beállításjegyzékre és-fájlokra, valamint a Linux-démonokra vonatkozó módosításokat küld a Azure Monitor feldolgozásra A felhőalapú szolgáltatás a kapott adatokra alkalmazza a logikát, rögzíti azt, és elérhetővé teszi. 
 
 > [!NOTE]
-> Az Azure Automation változáskövetés nyomon követi a virtuális gépek változásait. Az Azure Resource Manager-szolgáltatás változásainak nyomon követéséhez olvassa el az Azure Resource Graph [módosítási előzményeit.](../governance/resource-graph/how-to/get-resource-changes.md)
+> A Azure Resource Manager tulajdonságok változásainak nyomon követéséhez tekintse meg az Azure Resource Graph [változási előzményeit](../governance/resource-graph/how-to/get-resource-changes.md).
 
-Megtekintheti a számítógép módosításait, majd részletezheti az egyes események részleteit. Legördülő menük a diagram tetején érhetők el, hogy korlátozzák a diagramot és a részletes információkat a változás típusa és az időtartományok alapján. A diagramra kattintva és húzással egyéni időtartományt is kijelölhet. **A módosítás típusa** az alábbi értékek egyike **lesz: Események**, **Démonok**, **Fájlok**, **Rendszerleíró adatbázis**, **Szoftver**, **Windows-szolgáltatások.** A kategória a módosítás típusát jeleníti meg, és **hozzáadható,** **módosítható**vagy **eltávolítható.**
+A Change Tracking és a leltár jelenleg nem támogatja a következő elemeket:
 
-![A Változáskövetés irányítópult képe](./media/change-tracking/change-tracking-dash01.png)
-
-Egy változásra vagy eseményre kattintva részletes információkat talál a változásról. Amint a példából is látható, a szolgáltatás indítási típusa Kézi ról Automatikusra változott.
-
-![Változáskövetési részletek képe](./media/change-tracking/change-tracking-details.png)
-
-A telepített szoftverek, a Windows-szolgáltatások, a Windows-beállításjegyzék és a fájlok, valamint a Linux-démonok módosításait a rendszer elküldi az Azure Monitor szolgáltatásnak a felhőben feldolgozásra. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat. A Változáskövetés irányítópulton található információk használatával könnyen megtekintheti a kiszolgálói infrastruktúrában végrehajtott módosításokat.
-
-## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-
-### <a name="windows-operating-systems"></a>Windows operációs rendszerek
-
-A Windows operációs rendszer következő verziói hivatalosan támogatottak a Windows-ügynök számára:
-
-* Windows Server 2008 R2 vagy újabb
-
-### <a name="linux-operating-systems"></a>Linux operációs rendszerek
-
-A következő Linux disztribúciók hivatalosan támogatottak. A Linux-ügynök azonban más, nem felsorolt disztribúciókon is futtathat. Eltérő rendelkezés hiányában minden kisebb kiadás támogatott minden felsorolt főverzióhoz.
-
-#### <a name="64-bit"></a>64 bites
-
-* CentOS 6 és 7
-* Amazon Linux 2017.09
-* Oracle Linux 6 és 7
-* Red Hat Enterprise Linux Server 6 és 7
-* Debian GNU/Linux 8 és 9
-* Ubuntu Linux 14.04 LTS, 16.04 LTS és 18.04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit"></a>32 bites
-
-* CentOS, 6.
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 és 9
-* Ubuntu Linux 14.04 LTS és 16.04 LTS
-
-## <a name="limitations"></a>Korlátozások
-
-A Változáskövetés megoldás jelenleg nem támogatja a következő elemeket:
-
-* Rekurzió a Windows rendszerleíró adatbázisának nyomon követéséhez
+* Rekurzió a Windows beállításjegyzékének nyomon követéséhez
 * Hálózati fájlrendszerek
 * Különböző telepítési módszerek
-* ***.exe** fájlok Windows-hoz
+* ***. exe** -fájlok a Windows rendszerhez
 
 Egyéb korlátozások:
 
-* A **Maximális fájlméret** oszlop és értékek nincsenek használatban az aktuális implementációban.
-* Ha 30 perces gyűjtési ciklusban több mint 2500 fájlt gyűjt, a megoldás teljesítménye csökkenhet.
-* Ha a hálózati forgalom nagy, a változások rekordjainak megjelenítése akár hat órát is igénybe vehet.
-* Ha a számítógép leállítása közben módosítja a konfigurációt, előfordulhat, hogy a számítógép az előző konfigurációhoz tartozó módosításokat tesz közzé.
+* A **Maximális fájlméret** oszlop és az értékek nem használhatók az aktuális implementációban.
+* Ha egy 30 perces gyűjtési ciklusban több mint 2500 fájlt gyűjt, a megoldás teljesítménye csökkenhet.
+* Ha a hálózati forgalom magas, a rekordok módosítása akár hat órát is igénybe vehet.
+* Ha a számítógép leállítása közben módosítja a konfigurációt, a számítógép az előző konfigurációhoz tartozó módosításokat tehet közzé.
 
-## <a name="known-issues"></a>Ismert problémák
+A Change Tracking és a leltár jelenleg a következő problémákba ütközik:
 
-A Változáskövetés megoldás jelenleg a következő problémákat tapasztalja:
+* A gyorsjavítások frissítései nem lesznek összegyűjtve a Windows Server 2016 Core RS3-gépeken.
+* Előfordulhat, hogy a Linux-démonok módosult állapotot mutatnak, de nem történt változás. Ez a probléma a Azure Monitor [konfigurációváltozás](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -naplóban `SvcRunLevels` található adatrögzítési mód miatt fordul elő.
 
-* A gyorsjavítások frissítései nem gyűjtik a rendszer a Windows Server 2016 Core RS3 rendszerű gépeken.
-* A Linux démonok megmutathatják a megváltozott állapotot, még akkor is, ha nem volt változás. Ez annak köszönhető, `SvcRunLevels` hogy a mező rögzítése.
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
+
+A Change Tracking és a leltár, valamint a Azure Monitor Log Analytics ügynökök a Windows és a Linux operációs rendszereken egyaránt támogatottak.
+
+### <a name="windows-operating-systems"></a>Windows operációs rendszerek
+
+A hivatalosan támogatott Windows operációs rendszer verziója Windows Server 2008 R2 vagy újabb.
+
+### <a name="linux-operating-systems"></a>Linux operációs rendszerek
+
+Az alábbiakban tárgyalt Linux-disztribúciókat a Linux rendszerhez készült Log Analytics-ügynök hivatalosan támogatja. A Linux-ügynök azonban más, nem felsorolt disztribúciókban is futhat. Hacsak másként nincs jelezve, az összes alverzió támogatott a felsorolt főbb verziók esetében.
+
+#### <a name="64-bit-linux-operating-systems"></a>64 bites Linux operációs rendszerek
+
+* CentOS 6 és 7
+* Amazon Linux 2017,09
+* Oracle Linux 6 és 7
+* Red Hat Enterprise Linux 6. és 7. kiszolgáló
+* Debian GNU/Linux 8 és 9
+* Ubuntu Linux 14,04 LTS, 16,04 LTS és 18,04 LTS
+* SUSE Linux Enterprise Server 12
+
+#### <a name="32-bit-linux-operating-systems"></a>32 bites Linux operációs rendszerek
+
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8 és 9
+* Ubuntu Linux 14,04 LTS és 16,04 LTS
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
-A változáskövetéshez kifejezetten a következő címekszükségesek. Az ezekhez a címekhez irányuló kommunikáció a 443-as portot használja.
+A Change Tracking és a leltárnak kifejezetten a következő táblázatban felsorolt hálózati címeket kell megadnia. A címekkel való kommunikáció az 443-es portot használja.
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*. azure-automation.us|
 
-## <a name="wildcard-recursion-and-environment-settings"></a>Helyettesítő karakteres, rekurziós és környezeti beállítások
+## <a name="change-tracking-and-inventory-user-interface"></a>A Change Tracking és a leltár felhasználói felülete
 
-A Rekurzió lehetővé teszi helyettesítő karakterek megadását a könyvtárak közötti nyomon követés egyszerűsítése érdekében, valamint a környezeti változókat, hogy a fájlokat több vagy dinamikus meghajtónévvel rendelkező környezetekben is nyomon követhesse. Az alábbi lista a rekurzió konfigurálásakor ismert gyakori információkat tartalmazza:
+A Azure Portal Change Tracking és leltár használatával megtekintheti a figyelt számítógépek változásainak összefoglalását. A funkció a **change Tracking (változások követése** ) lehetőség kiválasztásával érhető **el az Automation-** fiókban. 
 
-* Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
-* Helyettesítő karakterek, amelyek csak az elérési út utolsó szegmensében használhatók, például c:\folder\\file* vagy /etc/*.conf.
-* Ha egy környezeti változó elérési útja érvénytelen, az érvényesítés sikeres, de ez az elérési út sikertelen lesz a Készlet futtatásakor.
-* Kerülje az általános elérési utakat az elérési út beállításakor, mivel az ilyen típusú beállítás túl sok mappát eredményezhet.
+![Change Tracking irányítópult](./media/change-tracking/change-tracking-dash01.png)
 
-## <a name="change-tracking-data-collection-details"></a>Változáskövetési adatgyűjtés részletei
+A legördülő lista az irányítópult tetején található, hogy korlátozza a Change Tracking diagramot és a részletes információkat a változás típusa és az időtartományok alapján. A diagramra kattintva és húzásával egyéni időtartományt is kijelölhet. 
 
-Az alábbi táblázat a módosítások típusainak adatgyűjtési gyakoriságát mutatja be. Az aktuális állapot adatpillanatképe minden típusesetében legalább 24 óránként frissül:
+A módosításra vagy eseményre kattintva megtekintheti annak részleteit. Az elérhető változási típusok a következők:
 
-| **Típus módosítása** | **Gyakoriság** |
-| --- | --- |
-| Windows rendszerleíró adatbázis | 50 perc |
-| Windows-fájl | 30 perc |
-| Linux fájl | 15 perc |
-| Windows-szolgáltatások | 10 másodperc és 30 perc között</br> Alapértelmezett: 30 perc |
-| Linux démonok | 5 perc |
-| Windows szoftver | 30 perc |
-| Linux szoftver | 5 perc |
+* Események
+* Démonok
+* Fájlok
+* Registry
+* Szoftverek
+* Microsoft-szolgáltatások
 
-Az alábbi táblázat a nyomon követett cikkkorlátokat mutatja be gépenként a változáskövetéshez.
+Lehetőség van az egyes módosítások hozzáadására, módosítására vagy eltávolítására. Az alábbi példában megtekintheti a szolgáltatás indítási típusának módosítását Manuálisról automatikusra.
 
-| **Erőforrás** | **Korlát**| **Megjegyzések** |
-|---|---|---|
-|Fájl|500||
-|Registry|250||
-|Windows szoftver|250|Nem tartalmaz szoftvergyorsjavításokat|
-|Linux csomagok|1250||
-|Szolgáltatások|250||
-|Daemon|250||
+![Change Tracking részletei](./media/change-tracking/change-tracking-details.png)
 
-A Log Analytics átlagos adatforgalma a változáskövetést használó gépekesetében körülbelül 40 MB havonta. Ez az érték csak közelítés, és a környezettől függően változhat. Javasoljuk, hogy figyelje a környezetet, hogy pontosan milyen használattal rendelkezik.
+## <a name="tracking-of-file-changes"></a>A fájlok változásainak követése
 
-### <a name="windows-service-tracking"></a>A Windows szolgáltatás nyomon követése
+A Windows és a Linux rendszerű fájlok változásainak nyomon követéséhez a Change Tracking és a leltár a fájlok MD5 kivonatait használja. A szolgáltatás a kivonatok használatával észleli, hogy történtek-e változások az utolsó leltár óta.
 
-A Windows-szolgáltatások alapértelmezett gyűjtési gyakorisága 30 perc. A gyakoriság konfigurálásához nyissa meg a **Változások követése című.** A **Windows-szolgáltatások** lap **Beállítások szerkesztése** csoportjában van egy csúszka, amely lehetővé teszi a Windows-szolgáltatások gyűjtési gyakoriságának módosítását 10 másodpercről akár 30 percre. Mozgassa a csúszkát a kívánt frekvenciára, és automatikusan menti azt.
+## <a name="tracking-of-file-content-changes"></a>A fájl tartalmának változásai nyomon követése
 
-![A Windows-szolgáltatások csúszkája](./media/change-tracking/windowservices.png)
+A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl tartalmának megtekintését a fájl módosítása előtt és után. Egy fájl minden módosítása esetén a Change Tracking és a leltár egy [Azure Storage-fiókban](../storage/common/storage-create-storage-account.md)tárolja a fájl tartalmát. A fájl nyomon követése után megtekintheti annak tartalmát a módosítás előtt vagy után. A tartalmakat soronként vagy egymás mellett is megtekintheti. 
 
-Az ügynök csak a változásokat követi nyomon, ez optimalizálja az ügynök teljesítményét. Ha a szolgáltatás visszaáll az eredeti állapotába, a magas küszöbérték beállítása elmulaszthatja a módosításokat. Ha a frekvenciát kisebb értékre állítja, akkor olyan módosításokat kaphat, amelyek egyébként kimaradhatnak.
+![Egy fájl változásainak megtekintése](./media/change-tracking/view-file-changes.png)
 
-> [!NOTE]
-> Míg az ügynök nyomon követheti a változásokat egy 10 másodperces időközre, az adatok továbbra is néhány percet vesz igénybe a portálon való megjelenítéshez. A portálon való megjelenítéshez vezető idő alatt végrehajtott módosításokat a rendszer továbbra is nyomon követi és naplózza.
+## <a name="tracking-of-registry-keys"></a>Beállításkulcsok nyomon követése
 
-### <a name="registry-key-change-tracking"></a>Rendszerleíró kulcs változásának nyomon követése
-
-A beállításkulcsok módosításainak figyelése a külső kódok és rosszindulatú programok aktiválását szolgáló bővíthetőségi pontok pontos meghatározásához használható. Az alábbi lista az előre konfigurált beállításkulcsok listáját tartalmazza. Ezek a kulcsok konfigurálva vannak, de nincsenek engedélyezve. A beállításkulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
+A Change Tracking és a leltár lehetővé teszi a beállításkulcsok változásainak figyelését. A figyeléssel megadhatja azokat a bővíthetőségi pontokat, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi táblázat az előre konfigurált (de nem engedélyezett) beállításkulcsokat sorolja fel. A kulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
 > |Beállításjegyzék kulcsa | Cél |
-> |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Azokat a gyakori automatikus indítási bejegyzéseket figyeli, amelyek közvetlenül a Windows Intézőbe csatlakoztatnak, és általában az Explorer.exe programmal futnak.
+> | --- | --- |
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az **Explorer. exe**használatával futtatják a folyamatot.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Figyeli azokat a kulcsokat, amelyek betöltődnek, mielőtt a felhasználó bejelentkezne a Windows-fiókjába. A kulcs 64 bites számítógépeken futó 32 bites programokhoz használatos.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Figyeli az alkalmazásbeállítások változásait.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Azokat a gyakori automatikus indítási bejegyzéseket figyeli, amelyek közvetlenül a Windows Intézőbe csatlakoztatnak, és általában az Explorer.exe programmal futnak.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Azokat a gyakori automatikus indítási bejegyzéseket figyeli, amelyek közvetlenül a Windows Intézőbe csatlakoztatnak, és általában az Explorer.exe programmal futnak.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Az ikonátfedés-kezelő regisztrációjának figyelői.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | A 64 bites számítógépeken futó 32 bites programok ikonátfedés-kezelőjének regisztrációját figyeli.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Az Internet Explorer új böngészősegítő objektumbővítményeit figyeli. Az aktuális oldal DOKUMENTUMobjektum-modelljének (DOM) elérésére és a navigáció vezérlésére szolgál.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Az Internet Explorer új böngészősegítő objektumbővítményeit figyeli. Az aktuális lap dokumentumobjektum-modelljének (DOM) elérésére és a 64 bites számítógépeken futó 32 bites programok navigációjának vezérlésére szolgál.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Az új Internet Explorer-bővítmények, például az egyéni eszközmenük és az egyéni eszköztárgombok figyelése.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Az új Internet Explorer-bővítmények, például az egyéni eszközmenük és a 64 bites számítógépeken futó 32 bites programok egyéni eszköztárgombjainak figyelői.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | A wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és vidc társított 32 bites illesztőprogramokat figyeli. Hasonló a RENDSZER [illesztőprogramok] szakaszához. INI fájlt.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | A wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és vidc 32 bites, 64 bites számítógépeken futó programokhoz kapcsolódó 32 bites illesztőprogramokat figyeli. Hasonló a RENDSZER [illesztőprogramok] szakaszához. INI fájlt.
-> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Az ismert vagy általánosan használt rendszerDL-ek listáját figyeli; ez a rendszer megakadályozza, hogy az emberek kihasználják a gyenge alkalmazás könyvtár engedélyek csepegés trójai faló változatai rendszer DLS.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | A Winlogon, a Windows operációs rendszer interaktív bejelentkezési támogatási modelljétől érkező eseményértesítések fogadására képes csomagok listáját figyeli.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Figyeli azokat a kulcsokat, amelyek betöltődik, mielőtt a felhasználó bejelentkezik a Windows-fiókba. A kulcs a 64 bites számítógépeken futó 32 bites alkalmazásokhoz használatos.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Az Alkalmazásbeállítások változásainak figyelése.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az **Explorer. exe**használatával futtatják a folyamatot.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az **Explorer. exe**használatával futtatják a folyamatot.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Figyelők az ikon átfedését kezelő regisztrációja.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Figyelők a 64 bites számítógépeken futó 32 bites alkalmazásokhoz tartozó ikon átfedési kezelői regisztrációja.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Figyelők az Internet Explorer új böngésző Helper Object beépülő moduljaihoz. Az aktuális oldal Document Object Model (DOM) elérésére és a Navigálás vezérlésére szolgál.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Figyelők az Internet Explorer új böngésző Helper Object beépülő moduljaihoz. Az aktuális oldal Document Object Model (DOM) elérésére, valamint a 64 bites számítógépeken futó 32 bites alkalmazások navigálásának vezérlésére használatos.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Figyelők az új Internet Explorer-bővítményekhez, például az egyéni eszközök menüihez és az egyéni eszköztárak gombjaihoz.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Az új Internet Explorer-bővítmények, például a 64 bites számítógépeken futó 32 bites alkalmazásokhoz készült egyéni eszköztárak és egyéni eszköztárgombok figyelése.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli. Hasonló a **System. ini** fájl [Drivers] szakaszához.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli a 64 bites számítógépeken futó 32 bites alkalmazásokhoz. Hasonló a **System. ini** fájl [Drivers] szakaszához.
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Az ismert vagy leggyakrabban használt rendszerdll-fájlok listáját figyeli. Ez a rendszer megakadályozza, hogy a felhasználók a rendszer DLL-fájljainak ledobásával kihasználják a gyenge alkalmazásspecifikus címtárbeli engedélyeket.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | A Windows rendszerhez készült interaktív bejelentkezési támogatási modellben figyeli azon csomagok listáját, amelyek értesítéseket kaphatnak a **Winlogon. exe**fájlból.
 
-## <a name="enable-change-tracking"></a><a name="onboard"></a>Változáskövetés engedélyezése
+## <a name="support-for-file-integrity-monitoring-in-azure-security-center"></a>A fájlok integritás-figyelésének támogatása Azure Security Center
 
-A változások nyomon követésének megkezdéséhez engedélyeznie kell a Változáskövetési megoldást. A gépek et számos módon lehet berakni a követés módosításához. A megoldás ajánlott és támogatott módjai az alábbiakban találhatók.
+A Change Tracking és a leltár a [Azure Security Center file Integrity monitoring (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)használatát teszi lehetővé. Míg a FIM figyeli a fájlokat és a beállításjegyzékeket, a teljes Change Tracking és a leltár funkció a következőket is tartalmazza:
 
-* [Virtuális gépről](automation-onboard-solutions-from-vm.md)
-* [Több gép böngészéséből](automation-onboard-solutions-from-browse.md)
-* [Az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
-* [Egy Azure Automation runbook](automation-onboard-solutions.md)
+- A szoftver módosításai
+- Microsoft-szolgáltatások
+- Linux-démonok
 
-## <a name="configure-change-tracking"></a>Változáskövetés konfigurálása
+## <a name="recursion-support"></a>Rekurzió támogatása
 
-A számítógépek megoldásba való csatlakoztatásáról a [Bevezetési automatizálási megoldások című](automation-onboard-solutions-from-automation-account.md)témakörben olvashat. Ha már rendelkezik a változáskövetési megoldással rendelkező géppel, beállíthatja az elemek nyomon követését. Ha engedélyezi egy új fájl vagy beállításkulcs nyomon követését, akkor az mindkét változáskövetéshez engedélyezve van.
+A Change Tracking és a leltár támogatja a rekurziót, ami lehetővé teszi helyettesítő karakterek megadását a címtárak közötti nyomkövetés egyszerűsítése érdekében. A rekurzió olyan környezeti változókat is biztosít, amelyek lehetővé teszik a fájlok különböző környezetekben történő nyomon követését több vagy dinamikus meghajtó nevével. A következő lista a rekurzió konfigurálásakor szükséges általános tudnivalókat tartalmazza:
 
-A windowsos és linuxos fájlok változásainak nyomon követéséhez a fájlok MD5-kimondottait használjuk. A tézisek kivéit ezután annak észlelésére használják, hogy történt-e változás az utolsó készlet óta.
+* Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
+* A helyettesítő karakterek csak az elérési út utolsó szegmensében használhatók, például **\\c:\mappa fájl*** vagy **/etc/*. conf**.
+* Ha egy környezeti változónak érvénytelen az elérési útja, az érvényesítés sikeres lesz, de az elérési út meghiúsul.
+* Az elérési út beállításakor Kerülje az általános elérési utak nevét, mivel az ilyen típusú beállítás túl sok mappa átjárását okozhatja.
 
-## <a name="enable-file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritás-figyelés engedélyezése az Azure Security Centerben
+## <a name="change-tracking-and-inventory-data-collection"></a>Change Tracking és leltározási adatgyűjtés
 
-Az Azure Security Center hozzáadta a fájlintegritás figyelését (FIM), amely az Azure change tracking-re épül. Míg a FIM csak a fájlokat és a nyilvántartásokat figyeli, a teljes változáskövetési megoldás a következőket is tartalmazza:
+A következő táblázat a Change Tracking és a leltár által támogatott változások típusának adatgyűjtési gyakoriságát mutatja. Minden típus esetében az aktuális állapot adatpillanatképe legalább 24 óránként frissül.
 
-- Szoftverváltozások
-- Windows-szolgáltatások
-- Linux démonok
+| **Típus módosítása** | **Gyakoriság** |
+| --- | --- |
+| Windows beállításjegyzék | 50 perc |
+| Windows-fájl | 30 perc |
+| Linux-fájl | 15 perc |
+| Microsoft-szolgáltatások | 10 másodperc és 30 perc között</br> Alapértelmezett: 30 perc |
+| Linux-démonok | 5 perc |
+| Windows-szoftver | 30 perc |
+| Linuxos szoftverek | 5 perc |
 
-Ha már engedélyezte a FIM-et, és ki szeretné próbálni a teljes változáskövetési megoldást, akkor a következő lépéseket kell végrehajtania. Ez a folyamat nem távolítja el a beállításokat.
+A következő táblázat a nyomon követett elemek korlátozásait mutatja gépenként a Change Tracking és a leltár esetében.
 
-> [!NOTE]
-> A teljes változáskövetési megoldás engedélyezése további díjakat okozhat, további információkért lásd: [Automatizálási díjszabás](https://azure.microsoft.com/pricing/details/automation/).
+| **Erőforrás** | **Korlát** |
+|---|---|---|
+|Fájl|500|
+|Registry|250|
+|Windows-szoftver (nem tartalmazza a gyorsjavításokat) |250|
+|Linux-csomagok|1250|
+|Szolgáltatások|250|
+|Démonok|250|
 
-1. Távolítsa el a figyelési megoldást úgy, hogy a munkaterületre navigál, és megtalálja a [telepített figyelési megoldások listájában.](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)
-2. Kattintson a megoldás nevére az összefoglaló oldal megnyitásához, majd kattintson a Törlés gombra, amint azt [a Figyelési megoldás eltávolítása című](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)részben részletezi.
-3. Engedélyezze újra a megoldást úgy, hogy az Automation-fiókra navigál, és a Konfigurációkezelés csoportban a **Változáskövetés** lehetőséget **választja.**
-4. Erősítse meg a munkaterület-beállítás részleteit, és kattintson **az Engedélyezés gombra.**
+A Change Tracking és a leltárt használó gépek Log Analytics átlagos adatfelhasználása körülbelül 40 MB/hó. Ez az érték csak közelítés, és a környezettől függően változhat. Javasoljuk, hogy figyelje a környezetét, és tekintse meg a pontos használatot.
 
-## <a name="configure-file-content-change-tracking"></a>Fájltartalom-módosítás-követés konfigurálása
+### <a name="microsoft-service-data"></a>Microsoft-szolgáltatásokra vonatkozó adatkezelés
 
-Megtekintheti a fájlmódosítás előtti és utáni tartalmat a fájltartalom-változások követésével. Ez a funkció Windows és Linux fájlokhoz érhető el. A fájl minden egyes módosítása esetén a fájl tartalma egy tárfiókban tárolódik. A fájl a módosítás előtt és után jelenik meg, szövegközi vagy egymás melletti. További információ: [A nyomon követett fájlok tartalmának megtekintése.](change-tracking-file-contents.md)
+A Microsoft-szolgáltatások alapértelmezett gyűjtési gyakorisága 30 perc. A gyakoriságot a **beállítások szerkesztése**elemre a **Microsoft-szolgáltatások** lapon található csúszka használatával konfigurálhatja. 
 
-![fájl módosításának megtekintése](./media/change-tracking-file-contents/view-file-changes.png)
+![Microsoft-szolgáltatások csúszka](./media/change-tracking/windowservices.png)
 
-## <a name="configure-windows-registry-keys-to-track"></a>A Windows beállításkulcsainak konfigurálása a nyomon követéshez
-
-A rendszerleíró kulcs követésének windowsos számítógépeken történő konfigurálásához kövesse az alábbi lépéseket:
-
-1. Az Automation-fiókban válassza a **Változáskövetés lehetőséget** a **Konfigurációkezelés csoportban.** Kattintson **a Beállítások szerkesztése** (a fogaskerék szimbólum) elemre.
-2. A Változáskövetés lapon válassza a **Windows rendszerleíró adatbázis**lehetőséget, majd kattintson a + **Hozzáadás** gombra a nyomon követő új beállításkulcs hozzáadásához.
-3. A **Windows beállításjegyzékében**adja meg a nyomon követő kulcs adatait, majd kattintson a **Mentés gombra.**
-
-|Tulajdonság  |Leírás  |
-|---------|---------|
-|Engedélyezve     | Azt határozza meg, hogy a beállítás alkalmazva van-e.        |
-|Elem neve     | A nyomon követendő rendszerleíró kulcs rövid neve.        |
-|Csoport     | A beállításkulcsok logikai csoportosításának csoportneve.        |
-|Windows-beállításkulcs   | A beállításkulcs ellenőrzésének elérési útja. Például: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
-
-## <a name="configure-file-tracking-on-windows"></a>Fájlkövetés konfigurálása Windows rendszeren
-
-A fájlkövetés windowsos számítógépeken történő konfigurálásához kövesse az alábbi lépéseket:
-
-1. Az Automation-fiókban válassza a **Változáskövetés lehetőséget** a **Konfigurációkezelés csoportban.** Kattintson **a Beállítások szerkesztése** (a fogaskerék szimbólum) elemre.
-2. A Változáskövetés lapon válassza a **Windows-fájlok**lehetőséget, majd kattintson **a + Hozzáadás** gombra a nyomon követő új fájl hozzáadásához.
-3. A **Windows-fájl hozzáadása a változások követéséhez**mezőbe írja be a nyomon követni és a **Mentés**gombra kattintó fájl adatait.
-
-|Tulajdonság  |Leírás  |
-|---------|---------|
-|Engedélyezve     | Igaz, ha a beállítás van alkalmazva, és hamis egyébként.        |
-|Elem neve     | A követendő fájl rövid neve.        |
-|Csoport     | A fájlok logikai csoportosításának csoportneve.        |
-|Elérési út megadása     | A fájl ellenőrzésének elérési útja, például **c:\temp\\\*.txt**<br>Használhat környezeti változókat is, `%winDir%\System32\\\*.*`például .       |
-|Rekurzió     | Igaz, ha rekurziót használ, amikor a nyomon követendő elemet keresi, és a Hamis egyéb.        |
-|Fájltartalom feltöltése minden beállításhoz| Igaz a fájltartalom feltöltéséhez a nyomon követett módosításokon, és a Hamis egyéb.|
-
-## <a name="configure-file-tracking-on-linux"></a>Fájlkövetés konfigurálása Linuxon
-
-A következő lépésekkel konfigurálhatja a fájlkövetést Linux rendszerű számítógépeken:
-
-1. Az Automation-fiókban válassza a **Változáskövetés lehetőséget** a **Konfigurációkezelés csoportban.** Kattintson **a Beállítások szerkesztése** (a fogaskerék szimbólum) elemre.
-2. A Változáskövetés lapon válassza a **Linux-fájlok**lehetőséget, majd kattintson **a + Hozzáadás** gombra a nyomon követő új fájl hozzáadásához.
-3. A **Linux-fájl hozzáadása a változáskövetéshez**mezőbe írja be a nyomon követni és a **Mentés**gombra kattintó fájl vagy könyvtár adatait.
-
-|Tulajdonság  |Leírás  |
-|---------|---------|
-|Engedélyezve     | Azt határozza meg, hogy a beállítás alkalmazva van-e.        |
-|Elem neve     | A követendő fájl rövid neve.        |
-|Csoport     | A fájlok logikai csoportosításának csoportneve.        |
-|Elérési út megadása     | A fájl ellenőrzésének elérési útja. Például: "/etc/*.conf"       |
-|Elérési út típusa     | A követendő elem típusa, a lehetséges értékek a Fájl és a Könyvtár.        |
-|Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
-|Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
-|Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Figyelmen kívül hagyása** – Figyelmen kívül hagyja a szimbolikus hivatkozásokat, és nem tartalmazza a hivatkozott fájlokat/könyvtárakat.<br>**Follow** - Követi a szimbolikus hivatkozásokat a rekurzió során, és tartalmazza a hivatkozott fájlokat/könyvtárakat is.<br>**Kezelés** - Követi a szimbolikus linkeket, és lehetővé teszi a visszaadott tartalom módosítását.     |
-|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
+A teljesítmény optimalizálása érdekében a Log Analytics ügynök csak a változásokat követi nyomon. Ha a szolgáltatás visszaáll az eredeti állapotába, a magas küszöbérték beállítása nem fog módosulni. Ha a gyakoriságot kisebb értékre állítja, az esetlegesen kihagyott módosításokat is elvégezheti.
 
 > [!NOTE]
-> A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
+> Míg az ügynök 10 másodperces intervallumban nyomon követheti a változásokat, az adat továbbra is néhány percet vesz igénybe, hogy megjelenjen a Azure Portal. A portálon megjelenő időpontokban végrehajtott módosítások továbbra is nyomon követhetők és naplózhatók.
 
-## <a name="search-logs"></a>Keresési naplók
+## <a name="support-for-alerts-on-configuration-state"></a>Riasztások támogatása a konfiguráció állapotában
 
-Különböző kereséseket tehet a naplók alapján a változásrekordokért. Ha a Változáskövetés lapon meg van nyitva, kattintson a **Log Analytics gombra,** ez megnyitja a Naplók lapot. Az alábbi táblázat mintanapló-kereséseket tartalmaz a megoldás által gyűjtött módosítási rekordokra:
+Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid környezet konfigurációs állapotának változásairól riasztást küld. Számos hasznos művelet aktiválható a riasztásokra adott válaszokban, például az Azure functions, az Automation runbookok, a webhookok és a hasonló műveletek esetén. A **C:\Windows\System32\drivers\etc\hosts** -fájl változásainak riasztása egy adott gépen a riasztások helyes alkalmazása Change Tracking és leltározási adatként. Számos további forgatókönyv is létezik a riasztásokhoz, beleértve a következő táblázatban definiált lekérdezési forgatókönyveket is. 
 
 |Lekérdezés  |Leírás  |
 |---------|---------|
-|Konfigurációs adatok<br>&#124; ahol configDataType == "WindowsServices" és SvcStartupType == "Auto"<br>&#124; ahol SvcState == "Megállt"<br>&#124; összegezheti arg_max(TimeGenerated, *) a SoftwareName, Computer         | A Windows-szolgáltatások legutóbbi készletrekordjait jeleníti meg, amelyek automatikusra voltak állítva, de leállítva jelentették őket<br>Az eredmények az adott SoftwareName és Computer legutóbbi rekordjára korlátozódnak.      |
-|ConfigurationChange (Konfigurációmódosítása)<br>&#124; ahol configChangeType == "Szoftver" és ChangeCategory == "Removed"<br>&#124; sorrendet a TimeGenerated desc|Az eltávolított szoftverek módosítási rekordjainak megjelenítése|
-
-## <a name="alert-on-changes"></a>Értesítés a változásokról
-
-A változáskövetés egyik fő képessége a konfigurációs állapot ra és a hibrid környezet konfigurációs állapotának bármilyen módosítására vonatkozó riasztás. A következő példa azt mutatja, hogy a **C:\windows\system32\drivers\etc\hosts** fájl módosult a számítógépen. Ez a fájl azért fontos, mert a Windows az állomásnevek IP-címekre való feloldására használja. Ez a művelet elsőbbséget élvez a DNS-sel szemben, és kapcsolódási problémákat vagy a forgalom rosszindulatú vagy más módon veszélyes webhelyekre való átirányítását eredményezheti.
-
-![A gazdagépfájl módosítását bemutató diagram](./media/change-tracking/changes.png)
-
-A módosítás további elemzéséhez nyissa meg a Naplókeresés a **Log Analytics**elemre kattintva című naplót. A Naplókeresés után keresse meg a Hosts fájl `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`tartalomváltozásait a lekérdezéssel. Ez a lekérdezés olyan módosításokat keres, amelyek a fájltartalom módosítását tartalmazzák azon fájlok esetében, amelyek teljesen minősített elérési útja tartalmazza a "gazdagépek" szót. Egy adott fájlt úgy is kérhet, hogy az elérési út `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`részt teljesen minősített űrlapra (például ) módosítja.
-
-Miután a lekérdezés visszaadja a kívánt eredményt, kattintson az **Új riasztási szabály** a naplókeresésben a riasztás létrehozási lapjának megnyitásához. Ezt a felületet az **Azure Monitoron** keresztül is megnyithatja az Azure Portalon. 
-
-Ellenőrizze újra a lekérdezést, és módosítsa a riasztási logikát. Ebben az esetben azt szeretné, hogy a riasztás aktiválódik, ha a környezetben lévő összes gépen csak egy változás észlelhető.
-
-![A gazdagépfájl módosítási lekérdezését ábrázoló kép](./media/change-tracking/change-query.png)
-
-A feltétellogika beállítása után rendeljen hozzá műveletcsoportokat az aktivált riasztásra adott válaszként végrehajtandó műveletekhez. Ebben az esetben beállítottam az elküldendő e-maileket és egy ITSM jegyet.  Számos más hasznos művelet is eltehető, például egy Azure-függvény, automation runbook, webhook vagy logikai alkalmazás aktiválása.
-
-![Egy műveletcsoportot konfiguráló kép, amely riasztást ad a változásról](./media/change-tracking/action-groups.png)
-
-Miután az összes paraméter és logika be van állítva, alkalmazhatjuk a riasztást a környezetre.
-
-### <a name="alert-suggestions"></a>Riasztási javaslatok
-
-Bár a gazdagépfájl módosításainak riasztása a változáskövetés vagy a készletadatok riasztási vagy készletadatainak megfelelő alkalmazása, sokkal több riasztási forgatókönyv van, beleértve a példalekérdezésekkel együtt definiált eseteket az alábbi szakaszban.
-
-|Lekérdezés  |Leírás  |
-|---------|---------|
-|ConfigurationChange (Konfigurációmódosítása) <br>&#124; ahol a ConfigChangeType == "Files" és\\\\a FileSystemPath tartalmazza a " c: windows system32\\illesztőprogramok\\"|Hasznos a rendszerkritikus fájlok változásainak nyomon követéséhez|
-|ConfigurationChange (Konfigurációmódosítása) <br>&#124; ahol FieldsChanged tartalmaz "FileContentChecksum" és FileSystemPath\\==\\\\"c:\\\\windows system32 illesztőprogramok stb állomások"|Hasznos a kulcsfontosságú konfigurációs fájlok módosításának nyomon követéséhez|
-|ConfigurationChange (Konfigurációmódosítása) <br>&#124; ahol a ConfigChangeType == "WindowsServices" és az SvcName tartalmazza a "w3svc" és az SvcState == "Stopped"|Hasznos a rendszerkritikus szolgáltatások változásainak nyomon követéséhez|
-|ConfigurationChange (Konfigurációmódosítása) <br>&#124; ahol a ConfigChangeType == "Démonok" és az SvcName "ssh" és SvcState != "Running"|Hasznos a rendszerkritikus szolgáltatások változásainak nyomon követéséhez|
-|ConfigurationChange (Konfigurációmódosítása) <br>&#124; ahol configChangeType == "Szoftver" és ChangeCategory == "Added"|Hasznos olyan környezetekben, ahol le kell zárni a szoftverkonfigurációkat|
-|Konfigurációs adatok <br>&#124; ahol a SoftwareName tartalmazza a "Monitoring Agent" és a CurrentVersion != "8.0.11081.0"|Hasznos annak megtekintéséhez, hogy mely gépeken van elavult vagy nem megfelelő szoftververzió. Az utoljára jelentett konfigurációs állapotot jelenti, nem a módosításokat.|
-|ConfigurationChange (Konfigurációmódosítása) <br>&#124; ahol RegistryKey ==\\\\@"HKEY_LOCAL_MACHINE SOFTWARE Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hasznos a kritikus vírusbillentyűk változásainak nyomon követéséhez|
-|ConfigurationChange (Konfigurációmódosítása) <br>&#124;, ahol a RegistryKey\\tartalmazza\\a\\\\@"HKEY_LOCAL_MACHINE\\\\SYSTEM CurrentControlSet Services SharedAccess Parameters FirewallPolicy"| Hasznos a tűzfalbeállításainak változásainak nyomon követéséhez|
+|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "files" és a FileSystemPath a\\"\\c\\:\\Windows system32 drivers" kifejezést tartalmazza|A rendszerkritikus fájlok változásainak nyomon követésére használható.|
+|Konfigurációváltozás <br>&#124;, hogy a FieldsChanged tartalmazza-e a "FileContentChecksum" és a\\FileSystemPath\\=\\=\\"\\c: Windows system32 illesztőprogramok, illetve a gazdagépek"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez.|
+|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "Microsoft Services" és a SvcName a következőt tartalmazza: "W3SVC" és SvcState = = "leállítva"|A rendszerkritikus szolgáltatások változásainak nyomon követésére használható.|
+|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "DAEMONS" és a SvcName tartalmazza az "SSH" és a SvcState! = "Running"|A rendszerkritikus szolgáltatások változásainak nyomon követésére használható.|
+|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "szoftver" és a ChangeCategory = = "hozzáadva"|Olyan környezetekhez hasznos, amelyeknek szükségük van a zárolt szoftveres konfigurációkra.|
+|ConfigurationData <br>&#124;, ahol a SoftwareName tartalmazza a "figyelési ügynököt" és a CurrentVersion! = "8.0.11081.0"|Hasznos, ha azt látja, hogy mely gépeken van telepítve elavult vagy nem megfelelő szoftververzió. Ez a lekérdezés a legutóbbi jelentett konfigurációs állapotot jelenti, de nem jelenti a módosításokat.|
+|Konfigurációváltozás <br>&#124;, ahol a RegistryKey = = @\\"\\HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows CurrentVersion QualityCompat"| Hasznos a kritikus vírusvédelmi kulcsok változásainak nyomon követéséhez.|
+|Konfigurációváltozás <br>&#124;, ahol a RegistryKey a következőt tartalmazza\\:\\@\\"\\HKEY_LOCAL_MACHINE\\System\\CurrentControlSet Services SharedAccess Parameters FirewallPolicy"| Hasznos a tűzfalbeállítások változásainak nyomon követéséhez.|
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el a változáskövetés ről szóló oktatóanyagba, ha többet szeretne megtudni a megoldás használatáról:
-
-> [!div class="nextstepaction"]
-> [A környezet változásainak hibaelhárítása](automation-tutorial-troubleshoot-changes.md)
-
-* Az [Azure Monitor naplóiban végzett naplókeresések](../log-analytics/log-analytics-log-searches.md) használatával részletes változáskövetési adatokat tekinthet meg.
+* A runbookok Change Tracking és Leltározásával kapcsolatban lásd: a [change Tracking és a leltár kezelése](change-tracking-file-contents.md).
+* Change Tracking és leltárral kapcsolatos hibák elhárításához tekintse meg a [change Tracking és a leltár hibaelhárítása](automation-tutorial-troubleshoot-changes.md)című témakört.
+* A [naplóbeli keresések használata Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md) a részletes változások követésére szolgáló információk megtekintéséhez.

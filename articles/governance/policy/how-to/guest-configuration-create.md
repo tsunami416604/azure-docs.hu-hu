@@ -3,12 +3,12 @@ title: Vendég-konfigurációs szabályzatok létrehozása Windows rendszerhez
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a75525b25945dd9548d7c293d5965cc67eb463dc
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024897"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509618"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendég-konfigurációs szabályzatok létrehozása Windows rendszerhez
 
@@ -16,7 +16,7 @@ Az egyéni szabályzatok létrehozása előtt érdemes beolvasni a koncepcionál
  
 A Linux rendszerhez készült vendég-konfigurációs szabályzatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [Linux rendszerhez készült vendég-konfigurációs szabályzatok létrehozása](./guest-configuration-create-linux.md) című oldalt.
 
-A Windows naplózásakor a vendég konfigurációja a [kívánt állapot-konfigurációs](/powershell/scripting/dsc/overview/overview) (DSC) erőforrás-modult és a konfigurációs fájlt használja. A DSC-konfiguráció azt a feltételt határozza meg, amelyet a gépen be kell állítani.
+A Windows naplózásakor a vendég konfigurációja a [kívánt állapot-konfigurációs](/powershell/scripting/dsc/overview/overview) (DSC) erőforrás-modult használja a konfigurációs fájl létrehozásához. A DSC-konfiguráció azt a feltételt határozza meg, amelyet a gépen be kell állítani.
 Ha a konfiguráció kiértékelése meghiúsul, a rendszer elindítja a **auditIfNotExists** , és a gép **nem megfelelőnek**minősül.
 
 [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállítások naplózására használható. A gépeken belüli beállítások szervizelése még nem érhető el.

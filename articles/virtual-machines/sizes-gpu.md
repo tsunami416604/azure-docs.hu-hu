@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7e1e0d488844a94bd0be2b91398678e620295729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73a878d791997169b0823bb949e78bdced77cae6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77913582"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509686"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-ra optimalizált virtuálisgép-méretek
 
@@ -35,11 +35,13 @@ A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépe
 
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
-Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA GPU-illesztőprogramokat.
+Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA vagy az AMD GPU-illesztőprogramokat.
 
 Az [NVIDIA GPU illesztőprogram-bővítmény](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](/azure/virtual-machines/extensions/overview).
 
 Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a következőt: [n-sorozat GPU-illesztőprogram beállítása Windows](/azure/virtual-machines/windows/n-series-driver-setup) vagy [N sorozatú GPU-illesztőhöz Linux](/azure/virtual-machines/linux/n-series-driver-setup) rendszeren támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
+
+Az AMD GPU-illesztőprogramok manuális telepítéséhez lásd: [N-sorozatú AMD GPU illesztőprogram-telepítő a Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) rendszerhez támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 

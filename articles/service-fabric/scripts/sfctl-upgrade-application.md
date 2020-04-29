@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás frissítése fürtön sfctl-ben
+title: Alkalmazás frissítése fürtön a sfctl-ben
 description: Service Fabric parancssori felület példaszkriptje – Alkalmazás frissítése egy új verzióval. Ez a példa egy üzembe helyezett alkalmazást is frissít az új elemekkel.
 services: service-fabric
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614723"
 ---
-# <a name="update-an-application-using-the-service-fabric-cli"></a>Alkalmazás frissítése a Service Fabric CLI használatával
+# <a name="update-an-application-using-the-service-fabric-cli"></a>Alkalmazás frissítése a Service Fabric parancssori felület használatával
 
 Ez a példaszkript egy meglévő alkalmazás új verzióját tölti fel, majd frissíti az üzembe helyezett alkalmazást az új elemekkel.
 

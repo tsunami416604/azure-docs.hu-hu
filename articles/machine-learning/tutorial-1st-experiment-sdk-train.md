@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Az első Azure ML-modell betanítása a Pythonban'
+title: 'Oktatóanyag: az első Azure ML-modell betanítása a Pythonban'
 titleSuffix: Azure Machine Learning
-description: Ebben az oktatóanyagban megismerheti az Azure Machine Learning alapvető tervezési mintáit, és betaníthat egy egyszerű scikit-learn modellt a cukorbetegség adatkészlet e-mail-adatkészlet alapján.
+description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,60 +11,60 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80546027"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
+# <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és egy fejlesztői környezetet választott.](tutorial-1st-experiment-sdk-setup.md) Ebben az oktatóanyagban megismerheti az Azure Machine Learning alapvető tervezési mintáit, és betaníthat egy egyszerű scikit-learn modellt a cukorbetegség adatkészlet e-mail-adatkészlet alapján. Az oktatóanyag befejezése után rendelkezik az SDK gyakorlati tudásával, hogy összetettebb kísérletek és munkafolyamatok kifejlesztésére készüljön.
+Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
 
 Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A munkaterület csatlakoztatása és kísérlet létrehozása
-> * Adatok betöltése és scikit-learn modellek betanítása
-> * Képzési eredmények megtekintése a stúdióban
+> * A munkaterület összekötése és kísérlet létrehozása
+> * Az adatterhelés és a scikit betanítása – modellek
+> * Képzés eredményeinek megtekintése a Studióban
 > * A legjobb modell lekérése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az egyetlen előfeltétel az oktatóanyag, a telepítési környezet és a munkaterület első részének [futtatása.](tutorial-1st-experiment-sdk-setup.md)
+Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)első részének futtatása.
 
-Ebben a részben az oktatóanyag, futtatja a kódot a minta Jupyter notebook *oktatóanyagok/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* megnyílt az első rész végén. Ez a cikk végigvezeti a jegyzetfüzetben található kódot.
+Az oktatóanyag ezen részében futtatja a kódot a minta Jupyter notebook *oktatóanyagok/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* , az első rész végén megnyitva. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
 
 ## <a name="open-the-notebook"></a>A jegyzetfüzet megnyitása
 
-1. Jelentkezzen be az [Azure Machine Learning stúdióba.](https://ml.azure.com/)
+1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 
-1. Nyissa meg a **tutorial-1st-experiment-sdk-train.ipynb** a mappában, ahogy az [első részben](tutorial-1st-experiment-sdk-setup.md#open).
+1. Nyissa meg az **oktatóanyag-1st-Experiment-SDK-Train. ipynb** a mappában az első [részben](tutorial-1st-experiment-sdk-setup.md#open)látható módon.
 
 
 > [!Warning]
-> **Ne** hozzon létre *új* notebook a Jupyter felületen! A notebook *oktatóanyagok/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* tartalmazza az **összes kódot és adatot, amely ehhez** az oktatóanyaghoz szükséges.
+> Ne **hozzon** létre *új* jegyzetfüzetet a Jupyter felületen! A notebook *oktatóanyagok/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* tartalmazza az oktatóanyaghoz **szükséges összes kódot és** adatmennyiséget.
 
-## <a name="connect-workspace-and-create-experiment"></a>Munkaterület csatlakoztatása és kísérlet létrehozása
+## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
 
 > [!Important]
-> A cikk többi része ugyanazt a tartalmat tartalmazza, mint a jegyzetfüzetben.  
+> A cikk többi része ugyanazt a tartalmat tartalmazza, mint amit a jegyzetfüzetben lát.  
 >
-> Váltson most a Jupyter-jegyzetfüzetre, ha a kód futtatásakor szeretne olvasni. 
-> Ha egy jegyzetfüzetben egyetlen kódcellát szeretne futtatni, kattintson a kódcellára, és nyomja meg a **Shift+Enter billentyűkombinációt.** Vagy futtassa a teljes jegyzetfüzetet a Felső eszköztár **Összes futtatása** parancsával.
+> Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni. 
+> Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy az **összes futtatása** lehetőséget választja a felső eszköztáron.
 
-Importálja `Workspace` az osztályt, és töltse `config.json` be `from_config().` az előfizetési adatokat a fájlból az Ez alapértelmezés szerint az aktuális könyvtárJSON-fájlját keresi, de megadhat egy elérési utat is, amely a fájlra mutat a használatával. `from_config(path="your/file/path")` A felhőalapú jegyzetfüzet-kiszolgálókon a fájl automatikusan a gyökérkönyvtárba kerül.
+Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.json` adatokat a fájlból az aktuális könyvtárban található JSON-fájlhoz tartozó függvény `from_config().` használatával, de megadhat egy elérésiút-paramétert is, amellyel a fájlra `from_config(path="your/file/path")`mutathat. A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
 
-Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőbe, és adja meg a hitelesítési jogkivonatot.
+Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Most hozzon létre egy kísérletet a munkaterületen. A kísérlet egy másik alapvető felhőalapú erőforrás, amely a kísérletek (egyéni modellfuttatások) gyűjteményét képviseli. Ebben az oktatóanyagban a kísérlet segítségével futtatja, és nyomon követheti a modell képzés az Azure Machine Learning stúdióban. A paraméterek közé tartozik a munkaterület hivatkozása és a kísérlet karakterláncneve.
+Most hozzon létre egy kísérletet a munkaterületen. A kísérlet egy másik, alapszintű felhőalapú erőforrás, amely a próbaverziók gyűjteményét jelöli (az egyes modellek futtatása). Ebben az oktatóanyagban futtatja a kísérletet a futtatások létrehozásához és a modell képzésének nyomon követéséhez a Azure Machine Learning Studióban. A paraméterek közé tartozik a munkaterület-hivatkozás, valamint a kísérlet karakterlánc-neve.
 
 
 ```python
@@ -72,9 +72,9 @@ from azureml.core import Experiment
 experiment = Experiment(workspace=ws, name="diabetes-experiment")
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Adatok betöltése és felkészülés a betanításra
+## <a name="load-data-and-prepare-for-training"></a>Adatgyűjtés és felkészülés a képzésre
 
-Ebben az oktatóanyagban a cukorbetegség adatkészletet használja, amely olyan funkciókat használ, mint az életkor, a nem és a BMI a cukorbetegség-betegség progressziójának előrejelzéséhez. Töltse be az adatokat az [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) osztályból, és ossza fel betanítási és tesztkészletekre a használatával. `train_test_split()` Ez a függvény elkülöníti az adatokat, így a modell nem látott adatokat használ a betanítást követő teszteléshez.
+Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a diabéteszes megbetegedések előrehaladásának előrejelzéséhez olyan szolgáltatásokat használ, mint az Age, a gender és a BMI. Töltse be az adatokat az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/) osztályból, és ossza ki őket képzési és `train_test_split()`tesztelési készletekkel a használatával. Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
 
 
 ```python
@@ -89,9 +89,9 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Modell betanítása
 
-Egy egyszerű scikit-learn modell betanítása könnyen elvégezhető helyileg a kis léptékű képzéshez, de amikor számos iterációt több tucat különböző funkció-permutációval és hiperparaméter-beállítással tanít, könnyen elveszítheti a nyomon követhetővé, hogy milyen modelleket képzett be, és hogyan képezte ki őket. A következő tervezési minta bemutatja, hogyan használhatja ki az SDK-t, hogy könnyedén nyomon követhesse a betanítást a felhőben.
+Egy egyszerű scikit-modell betanítása könnyen elvégezhető helyileg a kisméretű képzéshez, de ha sok ismétlést tanítanak több tucat különböző funkció-és hiperparaméter-beállítással, egyszerűen elveszítheti a betanított modelleket, és hogyan tanítja azokat. Az alábbi kialakítási minta bemutatja, hogyan használhatja ki az SDK-t a Felhőbeli képzések egyszerű nyomon követéséhez.
 
-Hozzon létre egy parancsfájlt, amely a gerincmodelleket egy ciklusban, különböző hiperparaméteralfa-értékeken keresztül vonatoztatja.
+Hozzon létre egy szkriptet, amely a Ridge-modelleket egy hurokban különböző hiperparaméter alfa-értékekkel hajtja össze.
 
 
 ```python
@@ -120,37 +120,37 @@ for alpha in alphas:
     run.complete()
 ```
 
-A fenti kód a következőket valósítja meg:
+A fenti kód a következőket hajtja végre:
 
-1. A `alphas` tömb minden alfa-hiperparaméter-értékéhez egy új futtatás jön létre a kísérleten belül. Az alfa-értéket a rendszer naplózza, hogy különbséget tegyen az egyes futtatások között.
-1. Minden futtatáskor a Ridge modell példányosított, képzett, és előrejelzések futtatásához használt. A gyökér-közép-négyzet-hiba a tényleges versus előre jelzett értékeket számítja ki, majd bejelentkezik a futtatásra. Ezen a ponton a futtatás metaadatokat csatolt mind az alfa-érték, mind az rmse pontosságához.
-1. Ezután az egyes futtatások modellszerializálódik, és feltölti a futtatásra. Ez lehetővé teszi, hogy töltse le a modell fájlt a futás a stúdióban.
-1. Minden ismétlés végén a futtatás a hívással `run.complete()`fejeződik be.
+1. A `alphas` tömbben lévő összes alfa-hiperparaméter esetében új Futtatás jön létre a kísérleten belül. A rendszer naplózza az alfa-értéket az egyes futtatások megkülönböztetése érdekében.
+1. Az egyes futtatások során a Ridge-modell példánya, betanítása és előrejelzések futtatására szolgál. A rendszer kiszámítja a tényleges és az előre jelzett értékeket, majd naplózza a futtatást. Ezen a ponton a futtatáshoz metaadatok vannak csatolva az Alpha értékhez és a gyökátlagos pontosságához.
+1. Ezután az egyes futtatásokhoz tartozó modell szerializálva lesz, és a futtatásra van feltöltve. Ez lehetővé teszi a modell fájljának letöltését a Studio futtatási funkciójával.
+1. Minden iteráció végén meghívja `run.complete()`a futtatást.
 
-Miután a betanítás `experiment` befejeződött, hívja meg a változót a kísérletre mutató hivatkozás lekéréséhez a stúdióban.
+A képzés befejezését követően hívja meg a `experiment` változót, hogy beolvassa a kísérletre mutató hivatkozást a Studióban.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Név</th><th>Munkaterület</th><th>Jelentés lap</th><th>Dokumentumok lap</th></tr><tr><td>cukorbetegség-kísérlet</td><td>munkaterületi név</td><td>Hivatkozás az Azure Machine Learning stúdióra</td><td>Dokumentációra mutató hivatkozás</td></tr></table>
+<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Azure Machine Learning Studio-ra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
-## <a name="view-training-results-in-studio"></a>Képzési eredmények megtekintése a stúdióban
+## <a name="view-training-results-in-studio"></a>Képzés eredményeinek megtekintése a Studióban
 
-Miután a **Link to Azure Machine Learning studio** viszi a fő kísérlet oldalon. Itt láthatja az összes egyes fut a kísérletben. Az egyéni naplózott`alpha_value` `rmse`értékek ( és ebben az esetben) mezőkké válnak az egyes futtatásokhoz, és a kísérletoldal tetején lévő diagramokhoz és csempékhez is elérhetővé válnak. Ha naplózott mérőszámot szeretne hozzáadni egy diagramhoz vagy csempéhez, mutasson rá, kattintson a szerkesztés gombra, és keresse meg az egyénileg naplózott mérőszámot.
+A **Azure Machine learning studióra mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték (`alpha_value` és `rmse`ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a kísérlet oldal tetején található diagramok és csempék számára is. Egy naplózott metrika diagramhoz vagy csempéhez való hozzáadásához vigye fölé a kurzort, kattintson a Szerkesztés gombra, és keresse meg az egyéni naplózott metrikát.
 
-Ha több száz és ezer különálló futtatáson keresztül nagy méretekben tanít be modelleket, ez az oldal megkönnyíti az összes betanított modell megtekintését, különösen a betanításmódját és az egyedi mérőszámok idővel történő változásának módját.
+Ha több száz vagy több ezer különálló futtatást használ, ezen az oldalon könnyedén megtekintheti a betanított modelleket, és hogy miként változnak az egyedi mérőszámok az idő múlásával.
 
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Fő kísérlet oldal a stúdióban.":::
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="A fő kísérlet oldala a Studióban.":::
 
 
-Jelöljön ki egy `RUN NUMBER` futtatási számhivatkozást az oszlopban az egyes futtatások lapjának megtekintéséhez. Az alapértelmezett **lap Részletek** részletesebb információkat jelenít meg az egyes futtatásokról. Keresse meg a **Kimenetek + naplók** lapot, és megjelenik a `.pkl` modell, amely az egyes betanítási ismétlések során feltöltött modell fájlját látja. Itt letöltheti a modellfájlt, ahelyett, hogy manuálisan kellene újrabetanítania.
+Válasszon egy futtatási szám hivatkozást az `RUN NUMBER` oszlopban az egyes futtatások oldalának megtekintéséhez. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek és naplók** lapra, és megtekintheti `.pkl` azt a modellt, amelyet a Futtatás során töltöttek fel az egyes képzések ismétlése során. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
 
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Futtassa a részleteket tartalmazó lapot a stúdióban.":::
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Futtassa a részletek lapot a Studióban.":::
 
-## <a name="get-the-best-model"></a>Szerezd meg a legjobb modell
+## <a name="get-the-best-model"></a>A legjobb modell beszerzése
 
-Amellett, hogy képes letölteni modell fájlokat a kísérlet a stúdióban, akkor is letölthető őket programozott módon. A következő kód végighalad a kísérlet minden egyes futtatásán, és hozzáfér mind a naplózott futtatási metrikákhoz, mind a futtatás részleteihez (amely a run_id tartalmazza). Ez nyomon követi a legjobb futtatást, ebben az esetben a futtatást a legalacsonyabb root-mean-squared-error-tal.
+Azon kívül, hogy le tudja tölteni a modell fájljait a kísérletből a Studióban, programozott módon is letöltheti őket. A következő kód a kísérletben szereplő minden egyes futtatást megismétli, és a naplózott futtatási metrikákat és a Futtatás részleteit (amely a run_id tartalmazza) is eléri. Ezzel a lépéssel nyomon követheti a legjobb futtatást, ebben az esetben a futtatást a legalacsonyabb, legfelső szintű, négyzetes hibával.
 
 ```python
 minimum_rmse_runid = None
@@ -178,7 +178,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-A legjobb futtatási azonosító használatával az `Run` egyes futtatásokat a konstruktor és a kísérletobjektum használatával szeretné lekérni. Ezután `get_file_names()` hívja meg az összes letölthető fájlt erről a futásról. Ebben az esetben csak egy fájlt töltött fel minden egyes futtatáshoz az edzés során.
+A legjobb futtatási AZONOSÍTÓval lekérheti az egyes futtatásokat a `Run` konstruktorral együtt a kísérlet objektummal. Ezután hívja `get_file_names()` meg az erről a futtatásról letölthető összes fájl megtekintését. Ebben az esetben csak egy fájlt töltött fel minden futtatáshoz a betanítás során.
 
 ```python
 from azureml.core import Run
@@ -188,7 +188,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Hívja `download()` meg a futtatási objektumot, megadva a letöltendő modellfájl nevét. Alapértelmezés szerint ez a függvény az aktuális könyvtárba töltődik le.
+Hívja `download()` meg a Futtatás objektumot, és adja meg a letölteni kívánt modell fájlnevét. Alapértelmezés szerint ez a függvény letölti az aktuális könyvtárat.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
@@ -196,26 +196,26 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ne fejezze be ezt a szakaszt, ha más Azure Machine Learning-oktatóanyagok futtatását tervezi.
+Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
 
 ### <a name="stop-the-compute-instance"></a>A számítási példány leállítása
 
 [!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Mindent töröljön
+### <a name="delete-everything"></a>Mindent törölni
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
+Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 
 > [!div class="checklist"]
-> * A munkaterület csatlakoztatása és kísérlet létrehozása
-> * Betöltött adatok és betanított scikit-learn modellek
-> * Megtekintett képzési eredmények a stúdióban és a lekért modellek
+> * Csatlakoztatta a munkaterületet, és létrehozott egy kísérletet
+> * Betöltött adatfeldolgozási és betanított scikit-modellek
+> * Megtekintett képzések eredményei a Studióban és a beolvasott modellek
 
-[Telepítse a modellt az](tutorial-deploy-models-with-aml.md) Azure Machine Learning használatával.
+[A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) Azure Machine Learningsal.
 Ismerje meg, hogyan fejleszthet [automatizált gépi tanulási](tutorial-auto-train-models.md) kísérleteket.

@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-minták – Event Grid | Microsoft Docs
-description: Ez a cikk egy táblázatot tartalmaz az Azure PowerShell-parancsfájl-minták az Azure Event Grid höz.
+description: Ez a cikk egy olyan táblázatot tartalmaz, amely a Azure Event Grid Azure PowerShell parancsfájl-példákra mutató hivatkozásokat tartalmaz.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: c3dea89b609dadb4cac26537c6669f5c7806f94e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76717529"
 ---
 # <a name="azure-powershell-samples-for-event-grid"></a>Azure PowerShell-minták az Event Gridhez

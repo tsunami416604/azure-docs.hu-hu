@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Feliratkozás erőforráscsoportra | Microsoft Docs
-description: Ez a cikk egy minta Azure CLI-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő egy erőforráscsoport Azure Event Grid-eseményeire.
+description: Ez a cikk egy Azure CLI-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő Azure Event Grid eseményekre az erőforráscsoport számára.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: ff5f317bafd5c59ea4bba8bb6a23b60881cd218f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720796"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Feliratkozás egy erőforráscsoport eseményeire az Azure CLI-vel

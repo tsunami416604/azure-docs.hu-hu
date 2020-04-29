@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Azure Container Service oktatóanyag – Alkalmazás méretezése
+title: ELAVULT Azure Container Service oktatóanyag – alkalmazás méretezése
 description: Azure Container Service-oktatóanyag – Alkalmazás skálázása
 author: dlepow
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273989"
 ---
-# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(ELAVULT) A Kubernetes-podok és a Kubernetes-infrastruktúra méretezése
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>ELAVULT Kubernetes hüvelyek és Kubernetes infrastruktúra méretezése
 
 > [!TIP]
-> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes szolgáltatásban (AKS)](../../aks/tutorial-kubernetes-scale.md)című témakörben található.
+> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazások méretezése az Azure Kubernetes szolgáltatásban (ak)](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -42,7 +42,7 @@ Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, l
 
 Eddig már telepítettük az Azure Vote előtérrendszerét és a Redis-példányokat, mindegyiket egyetlen replikával. Ennek az ellenőrzéséhez futtassa a [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot.
 
-Nyissa [https://shell.azure.com](https://shell.azure.com) meg a Cloud Shell t a böngészőjében.
+[https://shell.azure.com](https://shell.azure.com) Nyissa meg a Cloud shellt a böngészőben.
 
 ```console
 kubectl get pods

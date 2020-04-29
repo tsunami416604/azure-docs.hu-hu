@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja és módosíthatja az alapért
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80292065"
+ms.locfileid: "82232070"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 
@@ -97,6 +97,26 @@ Ha nincs megadva, ezek a tulajdonságok a következő alapértelmezett értékek
 
 Tekintse meg [ezt a szakaszt](how-to-manage-indexing-policy.md#indexing-policy-examples) az indexelési házirend példáinak megjelenítéséhez, beleértve az elérési utakat is.
 
+## <a name="includeexclude-precedence"></a>Belefoglalási/kizárási sorrend
+
+Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a pontosabb elérési út elsőbbséget élvez.
+
+Például:
+
+**Belefoglalt elérési út**:`/food/ingredients/nutrition/*`
+
+**Kizárt elérési út**:`/food/ingredients/*`
+
+Ebben az esetben a belefoglalt elérési út elsőbbséget élvez a kizárt elérési úttal szemben, mert pontosabb. Ezen elérési utak alapján a rendszer az `food/ingredients` elérési útban lévő vagy egymásba ágyazott összes adattal kizárja az indexet. A kivétel a belefoglalt útvonalon belüli adatelérési út: `/food/ingredients/nutrition/*`, amely indexelve lenne.
+
+Íme néhány szabály a befoglalt és a kizárt elérési utak elsőbbségének Azure Cosmos DB:
+
+- A mélyebb elérési utak pontosabbak, mint a keskenyebb útvonalak. például: `/a/b/?` pontosabb, mint `/a/?`a.
+
+- A `/?` pontosabb, mint `/*`a. Például `/a/?` pontosabb, mint `/a/*` `/a/?` az, ami elsőbbséget élvez.
+
+- Az elérési `/*` útnak belefoglalt elérési útnak vagy kizárt elérési útnak kell lennie.
+
 ## <a name="spatial-indexes"></a>Térbeli indexek
 
 Ha a térbeli elérési utat definiálja az indexelési házirendben, meg kell ```type``` határoznia, hogy melyik indexet kell alkalmazni az adott elérési útra. A térbeli indexek lehetséges típusai a következők:
@@ -114,6 +134,8 @@ Alapértelmezés szerint a Azure Cosmos DB nem hoz létre térbeli indexeket. Ha
 ## <a name="composite-indexes"></a>Összetett indexek
 
 A két vagy több `ORDER BY` tulajdonsággal rendelkező záradékkal rendelkező lekérdezések összetett indexet igényelnek. Megadhat egy összetett indexet is, amellyel javítható számos Esélyegyenlőségi és tartományon belüli lekérdezés teljesítménye. Alapértelmezés szerint a rendszer nem definiál összetett indexeket, ezért szükség szerint [összetett indexeket kell hozzáadnia](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+
+A tartalmazott vagy kizárt elérési utakkal ellentétben a `/*` helyettesítő karakterrel nem hozható létre görbe. Minden összetett útvonal implicit módon `/?` szerepel az elérési út végén, amelyet nem kell megadnia. Az összetett elérési utak skaláris értéket eredményeznek, és ez az egyetlen érték, amely az összetett indexben szerepel.
 
 Az összetett index meghatározásakor a következőket kell megadnia:
 

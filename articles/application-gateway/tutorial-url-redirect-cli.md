@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: URL-útvonal-alapú átirányítás a CLI használatával'
+title: 'Oktatóanyag: URL-elérésiút-alapú átirányítás a parancssori felület használatával'
 titleSuffix: Azure Application Gateway
-description: Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy alkalmazásátjáró URL-elérési út alapú átirányított forgalmat az Azure CLI használatával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Application Gateway-t URL-alapú átirányított forgalommal az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -10,10 +10,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 87f6febaf89f82c2c81b397c94d744229b3f4b34
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80239495"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Oktatóanyag: Alkalmazásátjáró létrehozása URL-alapú átirányítással az Azure CLI használatával
@@ -34,7 +34,7 @@ A következő példában a 8080-as és a 8081-es portról egyaránt érkezik web
 
 Igény szerint az oktatóanyag az [Azure PowerShell](tutorial-url-redirect-powershell.md) használatával is elvégezhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -78,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Használja [az hálózati alkalmazás-átjáró létrehozása](/cli/azure/network/application-gateway) az alkalmazás átjáró nevű myAppGateway. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* és *myPublicIPAddress* címhez van rendelve.
+A myAppGateway nevű Application Gateway létrehozásához használja az [az Network Application-Gateway Create](/cli/azure/network/application-gateway) paranccsal. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az Application Gateway hozzá van rendelve a korábban létrehozott *myAGSubnet* és *myPublicIPAddress* .
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -158,7 +158,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>Alapértelmezett URL-útvonaltérkép hozzáadása
 
-URL-elérési út leképezések győződjön meg arról, hogy adott URL-címek irányított adott háttérkészletek. Létrehozhatja az *imagePathRule* és a *videoPathRule* nevű URL-útvonaltérképet az [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) és az [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) paranccsal.
+Az URL-cím elérési útja, hogy az adott URL-címek adott háttér-készletekbe legyenek irányítva. Létrehozhatja az *imagePathRule* és a *videoPathRule* nevű URL-útvonaltérképet az [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) és az [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) paranccsal.
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -284,7 +284,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`, `http://40.121.222.19:8081/images/test.htm`, vagy .
+Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm`,, vagy `http://40.121.222.19:8081/images/test.htm`.
 
 ```azurecli-interactive
 az network public-ip show \
@@ -296,15 +296,15 @@ az network public-ip show \
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-Módosítsa az&lt;URL-címet&gt;http:// ip-címre:8080/images/test.html, &lt;cserélje&gt;le az IP-címét az IP-címre , és a következő példához hasonló példát kell látnia:
+Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/images/test.html értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
 
 ![Tesztképek URL-címe az alkalmazásátjáróban](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-Módosítsa az&lt;URL-címet&gt;http:// ip-címre:8080/video/test.html, &lt;az&gt;IP-cím IP-cím helyett, és a következő példához hasonló példát kell látnia:
+Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/video/test.html értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
 
 ![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Most változtassa meg az&lt;&gt;URL-t http:// ip-cím &lt;:8081/images/test.htm,&gt;az IP-cím ip-cím helyett, és látnia&lt;kell&gt;a forgalmat a képek háttérkészletére http:// ip-cím :8080/images.
+Most változtassa meg az URL-&lt;címet a http://&gt;ip-cím: 8081/images/test.htm értékre, &lt;és cserélje le&gt;az IP-cím IP-címét, és a rendszerképeket a http://&lt;IP-cím&gt;: 8080/images (rendszerképek) című szakaszban láthatja.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

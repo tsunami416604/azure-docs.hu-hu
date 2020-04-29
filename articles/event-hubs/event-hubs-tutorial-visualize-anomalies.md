@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs – Adatanomáliák megjelenítése valós idejű eseményekben
-description: 'Oktatóanyag: A Microsoft Azure Event Hubs-nak küldött valós idejű események adatanomáliáinak megjelenítése'
+title: Azure Event Hubs – adatanomáliák megjelenítése valós idejű eseményekben
+description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft Azureba eljuttatott valós idejű eseményekben Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,17 +10,17 @@ ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
 ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77163177"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
-Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például mi történik, ha az eszközök hitelkártya-tranzakciókat küldenek, és bárhol rögzítenie kell, ahol több tranzakció javan több országban/régióban egy 5 másodperces időintervallumon belül? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
+Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például mi történik, ha az eszközök bankkártyás tranzakciókat küldenek, és bárhol rögzíteni kell, hogy több országban/régióban több tranzakció van-e egy 5 másodperces időintervallumon belül? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
 
-Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután valós időben olvassa el az adatfolyamot az Azure Stream Analytics szolgáltatással, amely elválasztja az érvényes tranzakciókat az érvénytelen tranzakcióktól, majd a Power BI segítségével vizuálisan azonosíthatja az érvénytelenként címkézett tranzakciókat.
+Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután olvassa el az adatstreamet valós időben a Azure Stream Analytics használatával, amely elválasztja az érvénytelen tranzakcióktól származó érvényes tranzakciókat, majd a Power BI segítségével vizuálisan azonosítja az érvénytelenként megjelölt tranzakciókat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -156,13 +156,13 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Alkalmazás futtatása a teszt-eseményadatok létrehozásához
 
-Az Event Hubs [minták a GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) tartalmaznak egy anomáliadetektor alkalmazást, amely tesztadatokat állít elő az Ön számára. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
+A [githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) található Event Hubs minták olyan anomália-detektor alkalmazást tartalmaznak, amely tesztelési célú adatfeldolgozást készít Önnek. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
 
 1. Töltse le az [Azure Event Hubs-mintákat](https://github.com/Azure/azure-event-hubs/archive/master.zip) a GitHubról, majd bontsa ki őket helyben.
-2. Keresse meg az **\azure-event-hubs-master\samples\DotNet\\ ** mappát. 
-3. Váltson át az **Azure.Messaging.EventHubs\AnomalyDetector\\ ** mappára, és kattintson duplán az **AnomalyDetector.sln** fájlra a megoldás Visual Studio-ban való megnyitásához. 
+2. Navigáljon a mappa **\azure-Event-Hubs-master\samples\DotNet\\ ** mappájába. 
+3. Váltson az **Azure. Messaging. EventHubs\AnomalyDetector\\ ** mappára, és kattintson duplán a **AnomalyDetector. SLN** elemre a megoldás a Visual Studióban való megnyitásához. 
 
-    A minta régi verzióját, amely a régi Microsoft.Azure.EventHubs csomagot használja, nyissa meg a megoldást a **Microsoft.Azure.EventHubs\AnomalyDetector** mappából. 
+    A régi Microsoft. Azure. EventHubs csomagot használó minta régi verziójának használatához nyissa meg a megoldást a **Microsoft. Azure. EventHubs\AnomalyDetector** mappából. 
 3. Nyissa meg a Program.cs fájlt, és cserélje le az **Event Hubs kapcsolati sztringjét** a szkript futtatásakor mentett kapcsolati sztringre. 
 4. Cserélje le az **Eseményközpont neve** elemet az eseményközpontja nevére. Az alkalmazás futtatásához nyomja le az F5 billentyűt. Az alkalmazás elkezd eseményeket küldeni az eseményközpontba, és addig folytatja, amíg 1000 eseményt el nem küldött. Néhány esetben az alkalmazásnak futnia kell ahhoz, hogy le lehessen kérni az adatokat. Az alábbi utasítások szükség esetén fel fogják hívni a figyelmet ezekre az esetekre.
 
@@ -186,7 +186,7 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson **a Létrehozás gombra.** 
+    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás**gombra. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -217,7 +217,7 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
    ![Bemeneti stream Stream Analytics-feladathoz való hozzáadását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. Kattintson a **Mentés** gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -239,7 +239,7 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
 4. A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
-5. Kattintson a **Mentés** gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -268,7 +268,7 @@ Ez a lekérdezés a Power BI-vizualizációnak küldött végső adatok lekéré
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kattintson a **Mentés** gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének tesztelése 
 
@@ -306,7 +306,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
    ![Képernyőkép az irányítópult nevének megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Az Irányítópult lapon kattintson a **Csempe hozzáadása**gombra, válassza az **Egyéni adatfolyam-adatok lehetőséget** a VALÓS IDEJŰ **ADATOK** szakaszban, majd kattintson a **Tovább**gombra.
+7. Az irányítópult lapon kattintson a **csempe hozzáadása**elemre, válassza ki az **Egyéni adatfolyam** -adatátvitelt a **valós idejű** adatszakaszban, majd kattintson a **tovább**gombra.
 
    ![Képernyőkép a csempe forrásának megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
@@ -325,7 +325,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
     ![Képernyőkép az irányítópult-csempe címének és alcímének megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
     > [!IMPORTANT]
-    > Amikor futtatja a mintaalkalmazást, és adatokat továbbít az eseményközpontba, a csempe száma gyorsan (másodpercenként) változik. Ez azért van, mert a Stream Analytics lekérdezés ténylegesen frissíti az értéket **minden második**. Frissítse a lekérdezést egy 3 perces bukdácsoló ablakra, hogy az összeg az elmúlt néhány percben jelenjen meg. 
+    > Ha a minta alkalmazást és az adatfolyamot az Event hub-ra futtatja, a csempe száma gyorsan változik (másodpercenként). Ez azért van, mert a Stream Analytics lekérdezés **másodpercenként**frissíti az értéket. Frissítse a lekérdezést egy 3 perces késleltetésű ablakra, hogy az összeg az elmúlt néhány percben megjelenjen. 
 11. Adjon hozzá egy másik vizualizációt. Ismételje meg az első néhány lépést:
 
     * Kattintson a **Csempe hozzáadása** elemre.
@@ -365,7 +365,7 @@ az group delete --name $resourceGroup
 
 ### <a name="clean-up-resources-using-powershell"></a>Az erőforrások eltávolítása a PowerShell használatával
 
-Az erőforráscsoport eltávolításához használja az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot.
+Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -386,4 +386,4 @@ Folytassa a következő cikkel, ha többet szeretne megtudni az Azure Event Hubs
 > [!div class="nextstepaction"]
 > [Üzenetek küldése az Azure Event Hubsba a .NET Standardban – első lépések](get-started-dotnet-standard-send-v2.md)
 
-[hozzon létre egy ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ingyenes fiók létrehozása]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74276946"
 ---
-## <a name="putting-everything-together"></a>Mindent összerakva
+## <a name="putting-everything-together"></a>Az összes együttes üzembe helyezése
 
-Itt van, `MainActivity` hogy a teljes osztály fájlt kell kinéznie, miután az összes különböző elemeket hoztak létre. Használhatja hivatkozásként összehasonlítani a saját fájlt, és a helyszínen, ha esetleg bármilyen különbség maradt.
+A teljes `MainActivity` Class-fájlnak így kell kinéznie, miután az összes különböző elemet összeállította. Használhatja hivatkozásként, hogy összehasonlítsa a saját fájlját, és megtalálhatja, hogy van-e eltérése.
 
 ```java
 package com.example.myfirstapp;
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban már látta, hogyan hozhat létre egy új Android-alkalmazást, amely integrálja az ARCore-funkciókat az Azure Spatial Anchors szolgáltatással. Ha többet szeretne megtudni az Azure Spatial Anchors könyvtárról, folytassa a horgonyok létrehozásáról és megkeresésével kapcsolatos útmutatónkat.
+Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre egy új Android-alkalmazást, amely integrálja az ARCore funkciókat az Azure térbeli Horgonyokkal. Ha többet szeretne megtudni az Azure térbeli horgonyok könyvtáráról, folytassa az útmutatót a horgonyok létrehozásához és megkereséséhez.
 
 > [!div class="nextstepaction"]
-> [Horgonyok létrehozása és megkeresése az Azure Spatial Anchors használatával](/azure/spatial-anchors/create-locate-anchors-overview)
+> [Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával](/azure/spatial-anchors/create-locate-anchors-overview)

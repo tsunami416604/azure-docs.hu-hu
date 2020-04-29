@@ -1,28 +1,28 @@
 ---
-title: Az Azure Automation grafikus runbook SDK használata
-description: Ez a cikk ismerteti, hogyan használhatja az Azure Automation grafikus runbook SDK.
+title: A Azure Automation grafikus runbook SDK használata
+description: Ez a cikk a Azure Automation grafikus runbook SDK használatát ismerteti.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 0058c0a0cedf2ea3f6c32f8f8368cca5b8dc6e3c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682906"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509006"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Az Azure Automation grafikus runbook SDK használata
+# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>A Azure Automation grafikus runbook SDK használata
 
-[A grafikus runbookok](automation-graphical-authoring-intro.md) segítenek az alapul szolgáló Windows PowerShell- vagy PowerShell-munkafolyamat-kód összetettségének kezelésében. A Microsoft Azure Automation grafikus sdk-készítő lehetővé teszi a fejlesztők számára, hogy grafikus runbookokat hozzanak létre és szerkesztsenek az Azure Automation használatával való használatra. Ez a cikk a grafikus runbook kódból történő létrehozásának alapvető lépéseit ismerteti.
+A [grafikus runbookok](automation-graphical-authoring-intro.md) segítségével kezelheti a mögöttes Windows PowerShell-vagy PowerShell munkafolyamat-kód bonyolultságát. A Microsoft Azure Automation grafikus authoring SDK lehetővé teszi, hogy a fejlesztők grafikus runbookok hozzanak létre és szerkesszenek a Azure Automation használatával. Ez a cikk a grafikus runbook kód alapján történő létrehozásának alapvető lépéseit ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Importálja `Microsoft.Azure.Automation.GraphicalRunbook.Model` a csomagot a projektbe.
+Importálja `Microsoft.Azure.Management.Automation.GraphicalRunbook.Model` a csomagot a projektbe.
 
-## <a name="create-a-runbook-object-instance"></a>Runbook-objektumpéldány létrehozása
+## <a name="create-a-runbook-object-instance"></a>Runbook objektum példányának létrehozása
 
-Hivatkozzon `Orchestrator.GraphRunbook.Model` a szerelvényre, `Orchestrator.GraphRunbook.Model.GraphRunbook` és hozzon létre egy példányt az osztályból:
+Hivatkozzon a `Orchestrator.GraphRunbook.Model` szerelvényre, és hozza létre a `Orchestrator.GraphRunbook.Model.GraphRunbook` osztály egy példányát:
 
 ```csharp
 using Orchestrator.GraphRunbook.Model;
@@ -31,9 +31,9 @@ using Orchestrator.GraphRunbook.Model.ExecutableView;
 var runbook = new GraphRunbook();
 ```
 
-## <a name="add-runbook-parameters"></a>Runbook-paraméterek hozzáadása
+## <a name="add-runbook-parameters"></a>Runbook paraméterek hozzáadása
 
-Objektumok at `Orchestrator.GraphRunbook.Model.Parameter` hozlétre, és adja hozzá őket a runbookhoz:
+`Orchestrator.GraphRunbook.Model.Parameter` Objektumok példányainak példánya és hozzáadása a runbook:
 
 ```csharp
 runbook.AddParameter(
@@ -51,7 +51,7 @@ runbook.AddParameter(
 
 ## <a name="add-activities-and-links"></a>Tevékenységek és hivatkozások hozzáadása
 
-A megfelelő típusú tevékenységek et példányosítani kell, és hozzá kell adni a runbookhoz:
+Hozza létre a megfelelő típusú tevékenységeket, és adja hozzá őket a runbook:
 
 ```csharp
 var writeOutputActivityType = new CommandActivityType {
@@ -89,35 +89,35 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-A tevékenységeket a névtérben `Orchestrator.GraphRunbook.Model` a következő osztályok hajtják végre.
+A tevékenységeket a következő osztályok használják a `Orchestrator.GraphRunbook.Model` névtérben:.
 
 |Osztály  |Tevékenység  |
 |---------|---------|
-|CommandActivity     | PowerShell-parancs meghívása (parancsmag, függvény stb.).        |
-|InvokeRunbookActivity     | Meghívja egy másik runbook inline.        |
-|Csomópontaktivitás     | Megvárja, amíg az összes bejövő ág befejeződik.        |
-|WorkflowScriptActivity tevékenység     | PowerShell- vagy PowerShell-munkafolyamat-kód egy blokkját hajtja végre (a runbook típusától függően) a runbook környezetében. Ez egy hatékony eszköz, de ne használja túl: a felhasználói felület szövegként jeleníti meg ezt a szkriptblokkot; a végrehajtási motor a megadott blokkot fekete dobozként kezeli, és nem kísérli meg a tartalmának elemzését, kivéve egy alapvető szintaxis-ellenőrzést. Ha csak egyetlen PowerShell-parancsot kell meghívnia, inkább commandactivity.        |
+|CommandActivity     | Meghívja a PowerShell-parancsot (parancsmag, függvény stb.).        |
+|InvokeRunbookActivity     | Egy másik runbook-sort hív meg.        |
+|JunctionActivity     | Megvárja, amíg az összes bejövő ág befejeződik.        |
+|WorkflowScriptActivity     | Végrehajtja a PowerShell vagy a PowerShell munkafolyamat-kód (a runbook típusától függően) egy blokkját a runbook környezetében. Ez egy hatékony eszköz, de nem túlzott: a felhasználói felület ezt a szkriptet fogja megjeleníteni szövegként. a végrehajtó motor a megadott blokkot fekete dobozként kezeli, és nem próbálja meg elemezni a tartalmát, kivéve az alapszintű szintaxis-ellenőrzések során. Ha csak egyetlen PowerShell-parancsot kell meghívnia, inkább a CommandActivity-t.        |
 
 > [!NOTE]
-> Ne adhatja ki a saját tevékenységeit a megadott osztályokból. Az Azure Automation nem használhatja az egyéni tevékenységtípusokkal rendelkező runbookokat.
+> A megadott osztályokból ne származtatja saját tevékenységeit. Azure Automation nem használhatja az runbookok egyéni tevékenység-típusokkal.
 
-A paramétereket `InvokeRunbookActivity` értékleíróként kell megadnia, `CommandActivity` nem pedig közvetlen értékekként. Az értékleírók határozzák meg a tényleges paraméterértékek előállításának módját. A következő értékleírók jelenleg rendelkezésre állnak:
+Meg kell adnia `CommandActivity` és `InvokeRunbookActivity` paramétereket kell megadni az érték-leíróként, nem közvetlen értékekként. Az értékek leírók határozzák meg, hogyan kell létrehozni a tényleges paramétereket. Jelenleg a következő érték-leírókat kell megadnia:
 
 
 |Leíró  |Meghatározás  |
 |---------|---------|
-|ConstantValueDescriptor     | Kódolt állandó értékre utal.        |
-|RunbookParameterValueDescriptor     | Egy runbook-paraméterre hivatkozik név szerint.        |
-|ActivityOutputValueDescriptor     | Egy upstream tevékenységkimenetre utal, amely lehetővé teszi az egyik tevékenység számára, hogy "feliratkozzon" egy másik tevékenység által előállított adatokra.        |
-|AutomationVariableValueDescriptor     | Egy Automation Variable eszközre hivatkozik név szerint.         |
-|AutomationCredentialValueDescriptor     | Egy automation-tanúsítvány eszköznév szerint hivatkozik.        |
-|AutomationConnectionValueDescriptor     | Egy Automation Connection eszközre hivatkozik név szerint.        |
-|PowerShellExpressionValueDescriptor     | Megadja a szabad formátumú PowerShell-kifejezést, amely et közvetlenül a tevékenység meghívása előtt kiértékeli a rendszer.  <br/>Ez egy hatékony eszköz, de ne használja túl: a felhasználói felület ezt a kifejezést szövegként jeleníti meg; a végrehajtási motor a megadott blokkot fekete dobozként kezeli, és nem kísérli meg a tartalmának elemzését, kivéve egy alapvető szintaxis-ellenőrzést. Ha lehetséges, inkább konkrétabb értékleírók.      |
+|ConstantValueDescriptor     | Egy rögzített konstans értékre hivatkozik.        |
+|RunbookParameterValueDescriptor     | Név alapján egy runbook paraméterre hivatkozik.        |
+|ActivityOutputValueDescriptor     | Egy felsőbb rétegbeli tevékenység kimenetére hivatkozik, amely lehetővé teszi, hogy az egyik tevékenység "fizessen elő" egy másik tevékenység által létrehozott adatokat.        |
+|AutomationVariableValueDescriptor     | Egy Automation változóra hivatkozik név szerint.         |
+|AutomationCredentialValueDescriptor     | Az Automation-tanúsítvány objektumára hivatkozik név szerint.        |
+|AutomationConnectionValueDescriptor     | Egy Automation-kapcsolódási eszközre hivatkozik név szerint.        |
+|PowerShellExpressionValueDescriptor     | Egy szabad formátumú PowerShell-kifejezést ad meg, amely csak a tevékenység meghívása előtt lesz kiértékelve.  <br/>Ez egy hatékony eszköz, de nem túlzott: a felhasználói felület ezt a kifejezést szövegként fogja megjeleníteni. a végrehajtó motor a megadott blokkot fekete dobozként kezeli, és nem próbálja meg elemezni a tartalmát, kivéve az alapszintű szintaxis-ellenőrzések során. Ha lehetséges, inkább pontosabb értéket adjon meg.      |
 
 > [!NOTE]
-> Ne adhatja ki a saját értékleírókat a megadott osztályokból. Az Azure Automation nem használhatja az egyéni értékleíró-típusokkal rendelkező runbookokat.
+> A megadott osztályokból ne származtatja a saját értékeit. Azure Automation nem használhatja a runbookok egyéni értékű leíró típusokkal.
 
-A hivatkozások at a kapcsolatot összekapcsoló tevékenységeket, és adja hozzá őket a runbookhoz:
+A tevékenységek összekapcsolására és a runbook való hozzáadására szolgáló hivatkozások példánya:
 
 ```csharp
 runbook.AddLink(new Link(activityA, activityB, LinkType.Sequence));
@@ -130,15 +130,15 @@ runbook.AddLink(
 
 ## <a name="save-the-runbook-to-a-file"></a>A runbook mentése fájlba
 
-Runbook `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` szerializálására használható karakterlánc:
+`Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` Runbook szerializálása karakterlánccá:
 
 ```csharp
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-Ezt a karakterláncot a **.graphrunbook** kiterjesztésű fájlba mentheti. A megfelelő runbook importálható az Azure Automationbe.
-A szerializált formátum a `Orchestrator.GraphRunbook.Model.dll`program későbbi verzióiban változhat. Ígérjük visszamenőleges kompatibilitás: minden runbook szerializált egy régebbi verzióját `Orchestrator.GraphRunbook.Model.dll` lehet deszerializálható bármely újabb verzió. Az előrekompatibilitás nem garantált: előfordulhat, hogy az újabb verzióval szerializált runbookok nem deszerializálhatók a régebbi verziók ban.
+Ezt a karakterláncot a **. graphrunbook** kiterjesztésű fájlba mentheti. A megfelelő runbook importálhatók a Azure Automationba.
+A szerializált formátum változhat a későbbi verzióiban `Orchestrator.GraphRunbook.Model.dll`. Megígérjük a visszamenőleges kompatibilitást: bármely újabb verzióban deszerializálható bármely, egy régebbi verziójával `Orchestrator.GraphRunbook.Model.dll` szerializált runbook. A továbbítási kompatibilitás nem garantált: egy újabb verzióval szerializált runbook nem lehet a régebbi verziókban deszerializálható.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni az Azure Automation grafikus runbookjairól, olvassa el [a Grafikus szerzői bevezetés című témakört.](automation-graphical-authoring-intro.md)
+Ha többet szeretne megtudni a Azure Automation grafikus runbookok, tekintse meg a [grafikus szerzői műveletek bevezetését](automation-graphical-authoring-intro.md)ismertető témakört.

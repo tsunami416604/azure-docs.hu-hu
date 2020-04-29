@@ -1,6 +1,6 @@
 ---
-title: CLI példa-egyetlen adatbázis hozzáadása a feladatátvételi csoporthoz - Azure SQL Database
-description: Azure CLI példaparancsfájl egy Azure SQL Database egyetlen adatbázis létrehozásához, adja hozzá egy feladatátvételi csoporthoz, és tesztelje a feladatátvételt.
+title: CLI-példa – önálló adatbázis hozzáadása a feladatátvételi csoporthoz – Azure SQL Database
+description: Az Azure CLI példa parancsfájlt Azure SQL Database önálló adatbázis létrehozására, a feladatátvételi csoportba való felvételére és a feladatátvételi tesztre.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: bc238f08021bb9fb16b8c7319e63acebdfec3948
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061903"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>Azure SQL-adatbázis hozzáadása feladatátvételi csoporthoz a CLI használatával
+# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>Azure SQL Database hozzáadása feladatátvételi csoporthoz a CLI használatával
 
-Ez az Azure CLI-parancsfájl-példa egyetlen adatbázist hoz létre, létrehoz egy feladatátvételi csoportot, hozzáadja az adatbázist, és teszteli a feladatátvételt.
+Ez az Azure CLI-parancsfájl egyetlen adatbázist hoz létre, létrehoz egy feladatátvételi csoportot, hozzáadja az adatbázist, és teszteli a feladatátvételt.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
@@ -42,20 +42,20 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
-| [az sql db](/cli/azure/sql/db) | Adatbázis-parancsok. |
-| [az sql feladatátvételi csoport](/cli/azure/sql/failover-group) | Feladatátvételi csoport parancsai. |
+| [az SQL db](/cli/azure/sql/db) | Adatbázis-parancsok. |
+| [az SQL feladatátvétel-csoport](/cli/azure/sql/failover-group) | Feladatátvételi csoport parancsai. |
 
 ## <a name="next-steps"></a>További lépések
 

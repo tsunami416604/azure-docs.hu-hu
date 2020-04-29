@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 05/23/2019
 ms.author: rgarcia
 ms.openlocfilehash: e0038fd5632d512f18d50c4d11577b7f5756baa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67235350"
 ---
-Az Egység ben nyissa `Unity` meg a projektet a mappában. Az Egység kérheti, hogy egy másik Unity verzió tanusítsa a projekt és a számítógépre telepített verzió között. Ez a figyelmeztetés rendben van, mindaddig, amíg a Unity Editor verziója újabb, mint a projekt létrehozása. Ebben az esetben kattintson a **Folytatás gombra.** Ha a Unity Editor verziója régebbi, mint amire a projektnek szüksége van, kattintson a **Kilépés**gombra, és frissítse az Egységszerkesztőt.
+Az egység területen nyissa meg a projektet `Unity` a mappában. Az egység a projekt és a számítógépe között telepített másik Unity-verzióra is rákérdez. Ez a figyelmeztetés rendben van, feltéve, hogy az Unity Editor verziója újabb, mint a projekt létrehozásával. Ebben az esetben kattintson a **Continue (folytatás**) gombra. Ha az Unity Editor verziója régebbi, mint a projekthez szükséges, kattintson a **Kilépés**elemre, és frissítse az Unity Editort.
 
-![Egység ablak](./media/spatial-anchors-unity/unity-window.png)
+![Unity ablak](./media/spatial-anchors-unity/unity-window.png)

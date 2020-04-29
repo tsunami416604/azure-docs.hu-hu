@@ -9,31 +9,31 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3bd9489adaf46e604393fc7059d37443bdd5ec3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73488968"
 ---
-1. Keresse meg a létrehozott virtuális WAN-t. A Virtual WAN (Virtuális WAN) lap **Kapcsolat szakaszában** válassza a **Hubs (Hubs)** lehetőséget.
-2. A Hubs lapon válassza az **+Új központ** lehetőséget a **Virtuális központi központ létrehozása** lap megnyitásához.
+1. Keresse meg a létrehozott virtuális WAN-t. A virtuális WAN lapon a **kapcsolat** szakaszban válassza a **hubok**lehetőséget.
+2. A hubok lapon válassza az **+ új hub** lehetőséget a **virtuális központ létrehozása** lap megnyitásához.
 
     ![Alapvető beállítások](./media/virtual-wan-tutorial-hub-include/basics.png "Alapvető beállítások")
-3. A **Virtuális központ létrehozása** lap **alapjai** lapján töltse ki a következő mezőket:
+3. A **virtuális központ létrehozása** lap **alapjai** lapon végezze el a következő mezőket:
 
     **Projekt részletei**
 
-   * Régió (korábbi nevén Hely)
-   * Név
-   * Hub privát címtér. A minimális címterület /24 hub létrehozásához, ami azt jelenti, hogy a /25 és /32 közötti tartomány hibát okoz a létrehozás során.
-4. Válassza a **Tovább: Helyek közötti hely**lehetőséget.
+   * Régió (korábbi nevén hely)
+   * Name (Név)
+   * Hub magánhálózati címtartomány. A minimális címtartomány/24 a hub létrehozásához, ami azt jelenti, hogy a/25-től/32-ig terjedő minden tartomány hibát eredményez a létrehozás során.
+4. Válassza **a Next (tovább) lehetőséget: helyek közötti**kapcsolat.
 
     ![Helyek közötti kapcsolat](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Helyek közötti kapcsolat")
 
-5. A **Helyek közötti** lapon töltse ki a következő mezőket:
+5. A **helyek közötti** lapon hajtsa végre a következő mezőket:
 
-   * Válassza az **Igen** lehetőséget a helyek közötti VPN létrehozásához.
-   * Az AS-szám mező jelenleg nem szerkeszthető a virtuális központban.
-   * Válassza ki az **Átjáró méretezési egységeinek** értékét a legördülő menüből. A méretezési egység lehetővé teszi a virtuális hubban létrehozott VPN-átjáró összesített átviteli kapcsolatának kiválasztását a helyek csatlakoztatásához. Ha 1 méretezési egység = 500 Mbps értéket választ, az azt jelenti, hogy két redundanciapéldány jön létre, amelyek maximális átviteli sebessége 500 Mbps. Ha például öt ága van, amelyek mindegyike 10 Mbps-t végez az ágon, akkor összesen 50 Mbps-ra lesz szüksége a fejvégén. Az Azure VPN-átjáró összesített kapacitásának megtervezése a hub ágak számának támogatásához szükséges kapacitás felmérése után kell elvégezni.
-6. Az ellenőrzéshez válassza a **Véleményezés + Létrehozás** lehetőséget.
-7. A hub létrehozásához válassza a **Létrehozás** gombot. 30 perc elteltével **frissítse** a hub megtekintéséhez a **Hubs** lapon. Válassza **az Ugrás az erőforráshoz** lehetőséget az erőforrásra való navigáláshoz.
+   * A helyek közötti VPN létrehozásához válassza az **Igen** lehetőséget.
+   * A AS Number mező jelenleg nem szerkeszthető a virtuális központban.
+   * Válassza ki az **átjáró méretezési egységének** értékét a legördülő listából. A skálázási egység lehetővé teszi, hogy kiválassza a virtuális központban létrehozott VPN-átjáró összesített átviteli sebességét, hogy a helyekhez kapcsolódjon. Ha 1 skálázási egység = 500 Mbps-t választ, azt jelenti, hogy a redundancia két példánya jön létre, amelyek mindegyike 500 Mbps maximális átviteli sebességgel rendelkezik. Ha például öt ág van, amelyek mindegyike 10 Mbps-t használ a fiókirodában, akkor a fő végponton 50 Mbps összesített értékre van szükség. Az Azure VPN Gateway összesített kapacitásának megtervezését a hub-ágak számának támogatásához szükséges kapacitás kiértékelése után kell elvégezni.
+6. Válassza a **felülvizsgálat + létrehozás** elemet az ellenőrzéshez.
+7. Válassza a **Létrehozás** lehetőséget a központ létrehozásához. 30 perc elteltével a **frissítés** gombra kattintva megtekintheti a hubot a **hubok** oldalon. Az erőforráshoz való **ugráshoz válassza az erőforrás keresése** lehetőséget.

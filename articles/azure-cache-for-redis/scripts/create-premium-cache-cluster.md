@@ -1,6 +1,6 @@
 ---
-title: Prémium szintű Azure-gyorsítótár létrehozása a Redis számára fürtözéssel - Azure CLI
-description: Ez az Azure CLI-kódminta bemutatja, hogyan hozhat létre egy 6 GB-os prémium szintű Azure-gyorsítótárat a Redis fürtözéshez engedélyezett és két szegmensek.
+title: Prémium szintű Azure cache létrehozása fürtözési Redis – Azure CLI
+description: Ez az Azure CLI-kódrészlet azt mutatja be, hogyan hozható létre egy 6 GB-os prémium szintű Azure cache a Redis-hez, amely lehetővé teszi a fürtözést és a két szegmenst.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: 68203fe2e054f32ce5764fe4f1b07013b0806104
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75411145"
 ---
-# <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Prémium szintű Azure-gyorsítótár létrehozása a Redis számára fürtözéssel
+# <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Prémium szintű Azure cache létrehozása a fürtözést biztosító Redis
 
-Ebben a forgatókönyvben megtudhatja, hogyan hozhat létre egy 6 GB-os prémium szintű Azure-gyorsítótár redis fürtözés engedélyezve van, és két szegmensek.
+Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy 6 GB-os prémium szintű Azure cache-t az Redis-hez és két szegmenshez való fürtözéshez.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -29,16 +29,16 @@ Ebben a forgatókönyvben megtudhatja, hogyan hozhat létre egy 6 GB-os prémium
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a parancsfájl a következő parancsokat használja egy erőforráscsoport és egy prémium szintű Azure-gyorsítótár létrehozása a Fürtözési engedélyezéssel. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport és egy prémium szintű Azure cache létrehozásához a fürtözési engedélyezéssel rendelkező Redis. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az redis létrehozása](https://docs.microsoft.com/cli/azure/redis) | Hozzon létre Azure Cache a Redis-példány. |
+| [az Redis Create](https://docs.microsoft.com/cli/azure/redis) | Azure cache létrehozása a Redis-példányhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További Azure Cache for Redis CLI script minták találhatók az [Azure Cache for Redis dokumentációban.](../cli-samples.md)
+További Azure cache a Redis CLI-szkriptekhez az [Azure cache Redis dokumentációjában](../cli-samples.md)található.

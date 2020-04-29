@@ -1,227 +1,227 @@
 ---
-title: 'Oktatóanyag: Telepítsen egy Azure FXT Edge Filer fizikai eszközt'
-description: A Microsoft Azure FXT Edge Filer hibrid tárolási gyorsítótárának fizikai eszközösszetevőjének kicsomagolása, állványa és kábelezése
+title: 'Oktatóanyag: Azure FXT Edge Filer fizikai eszköz telepítése'
+description: A Microsoft Azure FXT Edge Filer Hybrid Storage cache fizikai eszköz összetevőjének kicsomagolása, rack és kábeles csatlakoztatása
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75551029"
 ---
-# <a name="tutorial-install-azure-fxt-edge-filer"></a>Oktatóanyag: Az Azure FXT Edge Filer telepítése 
+# <a name="tutorial-install-azure-fxt-edge-filer"></a>Oktatóanyag: az Azure FXT Edge Filer telepítése 
 
-Ez az oktatóanyag ismerteti, hogyan telepíthet egy hardvercsomópontot az Azure FXT Edge Filer hibrid tárolási gyorsítótárához. Legalább három hardvercsomópontot kell telepítenie egy Azure FXT Edge Filer-fürt létrehozásához.
+Ez az oktatóanyag azt ismerteti, hogyan telepíthet hardveres csomópontot az Azure FXT Edge Filer Hybrid Storage cache-hez. Az Azure FXT Edge Filer-fürt létrehozásához legalább három hardveres csomópontot kell telepítenie.
 
-A szerelési eljárás magában foglalja a készülék kicsomagolását és állványfelszerelését, valamint a kábelkezelő kar (CMA) és az elülső keret csatlakoztatását. Egy külön oktatóanyag ismerteti a hálózati kábelek csatlakoztatását és a csatlakozó áramot. 
+A telepítési eljárás magában foglalja az eszköz kicsomagolását és állványra történő csatlakoztatását, valamint a kábel-felügyeleti ARM (CMA) és az előlap csatlakoztatását. Egy külön oktatóanyag ismerteti A hálózati kábelek csatlakoztatását és a tápellátást. 
 
-Körülbelül egy órát vesz igénybe egy Azure FXT Edge Filer csomópont telepítése. 
+Egy Azure FXT Edge Filer-csomópont telepítéséhez körülbelül egy óra szükséges. 
 
 Ez az oktatóanyag a következő telepítési lépéseket tartalmazza: 
 
 > [!div class="checklist"]
 > * Az eszköz kicsomagolása
-> * Szerelje fel a készüléket állványra
-> * Az elülső keret beszerelése (opcionális)
+> * Az eszköz csatlakoztatása egy rackben
+> * Az elõlap telepítése (nem kötelező)
 
 ## <a name="installation-prerequisites"></a>Telepítési előfeltételek 
 
-Mielőtt elkezdené, győződjön meg arról, hogy az adatközpont és az állvány a következő funkciókkal rendelkezik:
+Mielőtt elkezdené, győződjön meg arról, hogy az Ön által használt adatközpont és állvány a következő funkciókkal rendelkezik:
 
-* Egy rendelkezésre álló 1U slot az állványon, ahol a készüléket csatlakoztatni kívánja.
-* Az Azure FXT Edge Filer igényeinek megfelelő hálózati és hűtési rendszerek. (Olvassa el [a teljesítmény- és hőspecifikációkat](fxt-specs.md#power-and-thermal-specifications) a telepítés megtervezéséhez és méretezéséhez.)  
+* Egy elérhető 1U-tárolóhely az állványon, amelyhez csatlakoztatni kívánja az eszközt.
+* Az Azure FXT Edge Filer igényeinek megfelelő AC-tápegységek és-hűtési rendszerek. (Olvasási [teljesítmény-és termál-specifikációk](fxt-specs.md#power-and-thermal-specifications) a telepítés megtervezéséhez és méretezéséhez.)  
 
   > [!NOTE] 
-  > A két redundáns tápegység (PSUs) teljes kihasználásához használjon energiaelosztó egységeket két különböző elágazási áramkörön a hálózati tápellátás csatlakoztatásakor. A részletekért olvassa el [A tápkábelek csatlakoztatása](fxt-network-power.md#connect-power-cables) szöveget.  
+  > Ahhoz, hogy teljes mértékben ki tudja használni a két redundáns tápegységet (PSUs), használja a Power Distribution units szolgáltatást két különböző fiókirodában az AC-teljesítmény csatlakoztatásakor. Részletekért olvassa el az [energiaellátási kábelek csatlakoztatása](fxt-network-power.md#connect-power-cables) című leírást.  
 
-## <a name="unpack-the-hardware-node"></a>A hardvercsomópont kicsomagolása 
+## <a name="unpack-the-hardware-node"></a>A hardver csomópontjának kicsomagolása 
 
-Minden Egyes Azure FXT Edge Filer csomópont egyetlen dobozban kerül kiszállításra. Hajtsa végre ezeket a lépéseket az eszköz kicsomagolásához.
+Minden Azure FXT Edge Filer-csomópont egyetlen mezőben van elküldve. Az eszköz kicsomagolásához hajtsa végre az alábbi lépéseket.
 
 1. Helyezze a csomagot egy sima, vízszintes felületre.
 
-2. Vizsgálja meg a dobozt és a térkitöltő anyagot, hogy nincsenek-e rajta ütődés, vágás, nedvesség vagy más egyértelmű sérülés nyomai. Ha a doboz vagy a csomagolás súlyosan megsérült, ne nyissa ki. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával, ahol szakembereink segíthetnek felmérni, hogy az eszköz működőképes állapotban van-e.
+2. Vizsgálja meg a dobozt és a térkitöltő anyagot, hogy nincsenek-e rajta ütődés, vágás, nedvesség vagy más egyértelmű sérülés nyomai. Ha a doboz vagy a csomagolás súlyosan sérült, ne nyissa meg. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával, ahol szakembereink segíthetnek felmérni, hogy az eszköz működőképes állapotban van-e.
 
-3. Bontsa ki a dobozt. Győződjön meg arról, hogy a következő elemeket tartalmazza:
-   * Egyetlen ház FXT eszköz
+3. Bontsa ki a dobozt. Győződjön meg arról, hogy az a következő elemeket tartalmazza:
+   * Egyetlen ház FXT-eszköz
    * Két tápkábel
-   * Egy elülső keret és kulcs
-   * Egy sínkészlet szerelvény
-   * Egy kábelkezelő kar (CMA)
-   * CmA telepítési útmutató füzet
-   * Állvány szerelési útmutató füzet
-   * Biztonsági, környezetvédelmi és szabályozási tájékoztató füzet
+   * Egy előlap és egy kulcs
+   * Egy vasúti készlet szerelvény
+   * Egy kábel-felügyeleti ARM (CMA)
+   * CMA telepítési útmutató füzet
+   * A rack telepítési útmutatóját ismertető füzet
+   * Biztonsági, környezeti és szabályozási tájékoztató füzet
 
-Ha nem kapta meg az összes felsorolt cikket, kérjen támogatást az eszköz forgalmazójához. 
+Ha nem kapta meg az összes felsorolt elemet, forduljon az eszköz gyártójához támogatásért. 
 
-Győződjön meg róla, hogy a készüléknek elegendő ideje volt arra, hogy elérje a helyiséghőmérsékletét, mielőtt beszerelné vagy bekapcsolna. Ha kondenzációt észlel a készülék bármely részén, várjon legalább 24 órát a telepítés előtt.
+Győződjön meg arról, hogy az eszköznek elég ideje volt ahhoz, hogy ugyanazt a hőmérsékletet érje el, mielőtt telepítené vagy bekapcsolja a helyet. Ha a kondenzációt az eszköz bármely részén észleli, várjon legalább 24 órát a telepítés előtt.
 
-A következő lépés az, hogy rack csatlakoztatni a készüléket.
+A következő lépés az eszköz csatlakoztatása.
 
 ## <a name="rack-the-device"></a>Az eszköz állványra szerelése
 
-Az Azure FXT Edge Filer eszközt egy szabványos 19 hüvelykes állványra kell telepíteni. 
+Az Azure FXT Edge Filer eszközt standard 19 hüvelykes állványra kell telepíteni. 
 
-Az Azure FXT Edge Filer hibrid tárolási gyorsítótár három vagy több Azure FXT Edge Filer eszközből áll. Ismételje meg az állványtelepítési lépéseket minden olyan eszköz esetében, amely a rendszer része. 
+Az Azure FXT Edge Filer Hybrid Storage cache három vagy több Azure FXT Edge Filer-eszközből áll. Ismételje meg az állvány telepítési lépéseit a rendszer részét képező minden eszközön. 
 
-### <a name="rack-install-prerequisites"></a>Rack-telepítés előfeltételei
+### <a name="rack-install-prerequisites"></a>A rack telepítési előfeltételei
 
-* Mielőtt elkezdené, olvassa el a biztonsági utasításokat a biztonsági információk és a szabályozási információk című füzetben, amelyet a készülékhez szállított.
+* Mielőtt elkezdené, olvassa el az eszközével szállított biztonsági, környezeti és szabályozási tájékoztató füzet biztonsági utasításait.
 
   > [!NOTE]
-  > Mindig két embert használjon a csomópont felemelésekor, beleértve azt is, ha állványra telepíti, vagy eltávolítja az állványról. 
+  > Mindig használjon két személyt a csomópont feloldásakor, beleértve azt is, hogy mikor telepíti azt egy állványon, vagy távolítsa el a rackből. 
 
-* Azonosítsa a berendezéstartóhoz használt sínberendezés típusát. 
-  * Négyzetes vagy kerek furatbepattintóállványok esetén kövesse a szerszám nélküli sínre vonatkozó utasításokat.
-  * Menetes furattartók esetén kövesse a szerszámos sínutasításokat. 
+* Azonosítsa a berendezések állványához használt vasúti telepítés típusát. 
+  * Szögletes vagy kerek furatos Snap-In állványok esetén kövesse az eszköz nélküli vasúti útmutatást.
+  * Menetes furatok esetén kövesse az eszközre vonatkozó vasúti utasításokat. 
   
-    A szerszámos sínszerelési konfigurációhoz nyolc csavart kell szállítania, 10-32, 12-24, M5 vagy M6 típusú. A csavarok fejátmérőjének 10 mm-nél (0,4")-nél kisebbnek kell lennie.
+    Az eszközre telepített vasúti csatlakoztatási konfigurációhoz nyolc csavart kell megadnia, a 10-32, 12-24, M5 vagy M6 típust. A csavarok fő átmérőjének 10 mm-nél (0,4 ") kisebbnek kell lennie.
 
-### <a name="identify-the-rail-kit-contents"></a>A sínkészlet tartalmának azonosítása
+### <a name="identify-the-rail-kit-contents"></a>A Rail Kit tartalmának azonosítása
 
-Keresse meg a sínkészlet szerelvény felszereléséhez szükséges alkatrészeket:
+Keresse meg a következő összetevőket a Rail Kit szerelvény telepítéséhez:
 
-1. Két A7 Dell ReadyRails II csúszó sínszerelvény (1)
-1. Két horog- és hurokszíj (2)
+1. Két A7-es Dell ReadyRails II csúszó vasúti szerelvény (1)
+1. Két Hook-és loop-pánt (2)
 
-![A sínkészlet tartalmának számozott rajza](media/fxt-install/identify-rail-kit-contents-400.png)
+![A Rail Kit tartalmának számozott rajza](media/fxt-install/identify-rail-kit-contents-400.png)
 
-### <a name="rail-assembly---tool-less-rails-square-hole-or-round-hole-racks"></a>Sínszerelvény - szerszám nélküli sínek (négyzetes furat- vagy kerek furattartók)
+### <a name="rail-assembly---tool-less-rails-square-hole-or-round-hole-racks"></a>Vasúti szerelvény – eszköz nélküli sínek (szögletes furatos vagy kerek furatos állványok)
 
-A pattintós négyzetes vagy kerek furatú állványok esetében kövesse ezt az eljárást a sínek összeszereléséhez és felszereléséhez. 
+A beépülő modult vagy a körkörös furatokat tartalmazó állványok esetében kövesse ezt az eljárást a Rails összeállításához és telepítéséhez. 
 
-1. Helyezze a bal és a jobb sín végdarabokat **front** felirattal befelé. Helyezze el a végdarabokat úgy, hogy az a függőleges rack karimák elülső oldalán lévő lyukakba kerüljön. (1)
+1. Helyezze a bal és a jobb oldali sín **elülső** részét, amely a befelé néző. Helyezze az egyes végpontokat úgy, hogy az a függőlegesen futó karimák elülső oldalán lévő lyukakba kerüljön. 1
 
-2. Igazítsa az állvány alsó és felső lyukait a csatlakoztatni kívánt helyre. (2)
+2. Illessze be az egyes végpontokat a rack alsó és felső lyukakba abban a térben, amelyhez csatlakoztatni kívánja. (2)
 
-3. Kapcsolja be a sín hátsó végét, amíg teljesen a függőleges rack karimára nem ül, és a retesz a helyére nem kattan. Ismételje meg ezeket a lépéseket, hogy helyezze el és ülesse el az elülső végét a függőleges rack karimán. (3)
+3. Folytassa a sín hátsó végét egészen addig, amíg teljes mértékben nem ül a függőleges állvány peremén, és a retesz a helyére kattan. Ismételje meg ezeket a lépéseket úgy, hogy az előtér-darabot a függőleges állvány peremén pozícionálja és helyezze el. 3
 
 > [!TIP]
-> A sínek eltávolításához húzza meg a záródarab felezőpontjának (4) reteszkioldó gombját, és húzza le az egyes síneket.
+> Ha el szeretné távolítani a síneket, húzza a zárolás feloldása gombot a végének középpontban (4), és szüntesse meg az egyes korlátokat.
 
-![A szerszám nélküli sínek telepítésének és eltávolításának diagramja, számozott lépésekkel](media/fxt-install/installing-removing-tool-less-rails-400.png)
+![Eszköz nélküli sínek telepítésének és eltávolításának ábrája, a következő lépésekkel:](media/fxt-install/installing-removing-tool-less-rails-400.png)
 
-### <a name="rail-assembly---tooled-rails-threaded-hole-racks"></a>Sínszerelvény - szerszámozott sínek (Menetes furattartók)
+### <a name="rail-assembly---tooled-rails-threaded-hole-racks"></a>Vasúti szerelvény – eszközön futó sínek (többszálú furatok)
 
-Menetes furatokkal ellátott állványok esetén kövesse ezt az eljárást a sínek összeszereléséhez és felszereléséhez.
+Az összefűzött lyukakkal rendelkező állványok esetében kövesse ezt az eljárást a Rails összeállításához és telepítéséhez.
 
-1. Egy lapos végű csavarhúzóval távolítsa el a csapokat az első és a hátsó rögzítőkonzolról. (1)
-1. Húzza meg és forgassa el a sínreteszrészeket, hogy eltávolítsák őket a szerelőkonzolokról. (2)
-1. Csatlakoztassa a bal és jobb oldali rögzítősíneket az első függőleges rack karimákhoz két pár csavarral. (3)
-1. Csúsztassa előre a bal és jobb hátsó hátsó konzolokat a hátsó függőleges rack karimákhoz, és csatlakoztassa őket két pár csavarral. (4)
+1. Távolítsa el a PIN-kód első és hátsó szerelvényeit egy lapos csavarhúzóval. 1
+1. A sínre reteszelő alszerelvények lekérése és elforgatásával távolítsa el őket a beépítési zárójelből. (2)
+1. Csatolja a bal és a jobb oldali szerelvényt az elülső függőleges rack karimához két pár csavart használva. 3
+1. Csúsztassa a bal és a jobb oldali zárójelet a hátsó függőleges rack karimák felé, és csatolja őket két pár csavar használatával. 4
 
-![A szerszámozott sínek telepítésének és eltávolításának diagramja, számozott lépésekkel](media/fxt-install/installing-removing-tooled-rails-400.png)
+![Az eszközhöz tartozó sínek telepítésének és eltávolításának ábrája, a következő lépésekkel megszámozva](media/fxt-install/installing-removing-tooled-rails-400.png)
 
-### <a name="install-the-system-in-the-rack"></a>Telepítse a rendszert az állványra
+### <a name="install-the-system-in-the-rack"></a>A System telepítése a rackbe
 
-Kövesse az alábbi lépéseket az Azure FXT Edge Filer eszköz állványra való csatlakoztatásához.
+A következő lépésekkel csatlakoztathatja az Azure FXT Edge Filer eszközt a rackben.
 
-1. Húzza ki a belső csúszósíneket az állványból, amíg a helyükre nem rögzülnek. (1)
-1. Keresse meg a hátsó sín patthelyzetet a készülék mindkét oldalán, és engedje le őket a csúszda szerelvények hátsó J-nyílásaiba. (2) 
-1. Forgassa lefelé a készüléket, amíg az összes sínpatthelyzet a J-hornyokban nem található. (3)
-1. Nyomja befelé a készüléket, amíg a rögzítőkarok a helyükre nem kattannak.
-1. Nyomja meg mindkét sín (4) kioldózárgombjait, és csúsztassa a készüléket az állványba.
+1. Húzza ki a belső diát a rackből, amíg a helyükre nem zár. 1
+1. Keresse meg a hátsó vasúti patthelyzetet az eszköz mindkét oldalán, és csökkentse azokat a hátsó, a dia szerelvényeken található nyílásokkal. (2) 
+1. Forgassa el az eszközt lefelé, amíg az összes vasúti patthelyzet be nem illeszkedik a J-slotba. 3
+1. Az eszköz befelé történő leküldése, amíg a zárolási kar be nem kattint a helyére.
+1. Nyomja le mindkét Rails (4) lenyomott zárolási gombját, és csúsztassa az eszközt a rackbe.
 
-![A rendszer telepítése állványdiagramra, számozott lépésekkel](media/fxt-install/installing-system-rack-400.png)
+![A rendszer telepítése rack-diagramon, a következő lépésekkel:](media/fxt-install/installing-system-rack-400.png)
 
-### <a name="remove-the-system-from-the-rack"></a>A rendszer eltávolítása az állványról
+### <a name="remove-the-system-from-the-rack"></a>A rendszer eltávolítása a rackből
 
-Ha el szeretné távolítani az eszközt az állványról, kövesse ezt az eljárást. 
+Az eszköz a rackből való eltávolításához kövesse az alábbi eljárást. 
 
-1. Keresse meg a rögzítőkarokat a belső sínek (1) oldalán.
-2. Oldja fel az egyes karok kioldási helyzetének (2) elforgatásával.
-3. Fogja meg erősen a rendszer oldalait, és húzza előre, amíg a sín patthelyzeta j-hornyok elején van. Emelje fel a rendszert, és távolodjon el az állványtól, és helyezze vízszintes felületre (3).
+1. Keresse meg a rögzítési kart a belső sínek oldalain (1).
+2. Oldja fel az egyes kart a kiadási pozícióra (2) való elforgatásával.
+3. A rendszer szilárdan fogja megfogni a rendszer oldalait, és addig húzza azt addig, amíg a sínre nem állnak a J-slotok. Emelje fel a rendszer felszínét a rackből, és helyezze el egy szinten (3).
 
-![A rendszer állványról való eltávolításának illusztrációja, számozott lépésekkel](media/fxt-install/removing-system-rack-400.png)
+![A rendszer a rackből való eltávolításának ábrája, a következő lépések megszámozásával:](media/fxt-install/removing-system-rack-400.png)
 
-### <a name="engage-the-slam-latch"></a>Kapcsolja be a csapzárat
+### <a name="engage-the-slam-latch"></a>A Slam-zár bevonása
 
-1. Az elülső oldalra nézve keresse meg a csapzárat (1) a rendszer mindkét oldalán.
-2. A reteszek automatikusan bekapcsolódnak, ahogy a rendszer benyomódik az állványba. 
+1. A rendszer mindkét oldalán megkeresi a Slam-zárat (1).
+2. A zárolások automatikusan elvégzik a rendszer beküldését a rackbe. 
 
-A rendszer eltávolításakor húzza fel a reteszt (2).
+A zárolások felszabadításához a számítógép eltávolításakor húzza őket (2).
 
-Opcionális kemény reszerelhető csavarok állnak rendelkezésre, hogy biztosítsa a rendszert a rack szállításra vagy más instabil környezetben. Keresse meg a csavart az egyes reteszek alatt, és húzza meg egy #2 Phillips csavarhúzóval (3).
+A nem kötelezően rögzíthető rögzített csavarok biztosítják, hogy a rendszer az állványra vagy más instabil környezetbe kerüljön. Keresse meg az egyes zárolások alatt található csavart, és húzza őket egy #2 Phillips csavarhúzóval (3).
 
-![A csapzár megszólításának és elengedésének számozott illusztrációja](media/fxt-install/engaging-releasing-slam-latch-400.png)
+![A Slam-zár bevonásának és felszabadításának számozott illusztrációja](media/fxt-install/engaging-releasing-slam-latch-400.png)
 
-### <a name="install-the-cable-management-arm"></a>Telepítse a kábelkezelő kart 
+### <a name="install-the-cable-management-arm"></a>A kábel-felügyeleti ARM telepítése 
 
-Az FXT Edge Filer opcionális kábelkezelő kar (CMA) rendelkezésre áll. A telepítéshez a nyomtatott utasításokat a csomag ban találja. 
+A FXT Edge Filer-mel (CMA) nem kötelező megadni a kábel-felügyeleti ARM-t. A telepítéshez szükséges nyomtatott utasítások a csomagban találhatók. 
 
-1. Csomagolja ki és azonosítsa a kábelkezelő karkészlet alkatrészeit:
-   * CMA tálca (1)
-   * CMA (2) Az
-   * Nylon kábelnyakkendő pakolások (3)
-   * CMA rögzítő konzolok (4)
+1. Csomagolja ki és azonosítsa a Cable Management ARM-készlet összetevőit:
+   * CMA-tálca (1)
+   * CMA (2)
+   * Nylon kábelek összekötése (3)
+   * CMA csatolt zárójelek (4)
    * Állapotjelző kábel (5) 
 
    > [!TIP] 
-   > Ahhoz, hogy biztosítsa a CMA szállítás a rack, hurok a nyakkendő pakolások körül mind a kosarak és a tálca és cinch őket határozottan. A CMA ilyen módon történő biztosítása instabil környezetben is biztosítja a rendszert.
+   > A CMA a rackbe való szállítás biztonságossá tételéhez a döntetlent a kosárba és a tálcára, valamint az RCA-re kell rögzíteni. A CMA ily módon történő biztonságossá tétele instabil környezetekben is biztonságossá teszi a rendszerét.
 
-   ![CMA-alkatrészek illusztrációja](media/fxt-install/cma-kit-400.png)
+   ![CMA-részek illusztrációja](media/fxt-install/cma-kit-400.png)
 
 2. Telepítse a CMA tálcát.
 
-   A CMA tálca támogatást nyújt, és a CMA rögzítőjeként működik. 
+   A CMA-tálca támogatást nyújt, és a CMA megőrzöttként működik. 
 
-   1. Igazítsa és bevonja a tálca mindkét oldalát a sín belső szélein lévő vevőtartó konzolokkal. 
-   1. Tolja előre a tálcát, amíg a helyére nem kattan. (1)
-   1. A tálca eltávolításához nyomja középre a reteszoldó gombokat, és húzza ki a tálcát a vevőtartókonzolokból (2).
+   1. A tálca belső szélein a fogadó zárójelek között illessze be és folytassa az egyes lapokat. 
+   1. Továbbítsa a tálcát addig, amíg a helyére nem kattan. 1
+   1. A tálca eltávolításához nyomja le a zárolási gombokat a középpont felé, és húzza a tálcát a fogadó zárójelek közül (2).
 
-   ![A CMA tálca telepítésének illusztrációja](media/fxt-install/cma-tray-install-400.png)
+   ![A CMA-tálca telepítésének illusztrációja](media/fxt-install/cma-tray-install-400.png)
 
-3. Telepítse a CMA melléklettartókat. 
+3. Telepítse a CMA csatolt zárójeleket. 
 
    > [!NOTE]
    >
-   > * A CMA-t a jobb vagy a bal oldali rögzítősínhez csatolhatja, attól függően, hogy hogyan kívánja a kábeleket a rendszerből irányítani. 
-   > * A kényelem érdekében szerelje fel a CMA-t a tápegységekkel (A. oldal) ellentétes oldalra. Ha a B oldalra van szerelve, a külső tápegység eltávolítása érdekében a CMA-t le kell választani. 
-   > * A tápegységek eltávolítása előtt mindig vegye ki a tálcát. 
+   > * A CMA a jobb vagy a bal oldali csatlakoztatási korláthoz csatolhatja attól függően, hogy hogyan kívánja továbbítani a kábeleket a rendszerből. 
+   > * A kényelem érdekében csatlakoztassa a CMA az áramforráshoz szemközt (a. oldal). Ha a B oldalon van csatlakoztatva, a CMA le kell kapcsolni, hogy el lehessen távolítani a külső tápegységet. 
+   > * A tápegység eltávolítása előtt mindig távolítsa el a tálcát. 
 
-   ![CmA konzol beszerelésének illusztrációja](media/fxt-install/cma-bracket-l-r-install-400.png)
+   ![A CMA zárójeles telepítésének szemléltetése](media/fxt-install/cma-bracket-l-r-install-400.png)
 
-   1. Válassza ki a megfelelő CMA rögzítőkonzolt ahhoz az oldalhoz, ahová a CMA-t fel szeretné szerelni (B. vagy A. oldal).
-   1. Szerelje fel a CMA rögzítőkonzolt a csúszósín hátulján a megfelelő A vagy B oldalsó jelzéssel.
-   1. Igazítsa a konzolon lévő lyukakat a csúszósínen lévő csapokhoz. Nyomja le a konzolt, amíg a helyére nem rögzül. 
+   1. Válassza ki a megfelelő CMA-mellékletet arra az oldalra, amelyhez csatlakoztatni kívánja a CMA (B. oldal vagy oldal).
+   1. Telepítse a CMA csatolt zárójelet az ahhoz tartozó oldalsó vagy oldalsó B jelöléssel a dia-sín hátulján.
+   1. Igazítsa a zárójelben lévő lyukakat a görgetősávon lévő PIN-kódokhoz. A szögletes zárójelet leküldheti, amíg a helyére nem kattan. 
 
-4. Telepítse a CMA-t.
+4. Telepítse a CMA.
 
-   1. A rendszer hátulján szerelje fel a reteszt a CMA elülső végén a tárgylemez legbelső konzoljára, amíg a retesz be nem kapcsol (1). 
-   1. Szerelje fel a másik reteszt a legkülső konzol végére, amíg a retesz be nem kapcsol (2). 
-   1. A CMA eltávolításához oldja ki mindkét reteszt a belső és külső reteszház (3) tetején található CMA kioldógombok megnyomásával.
+   1. A rendszer hátoldalán illessze be a zárolást a CMA elülső végére, amíg a zárolás befejeződik (1). 
+   1. Illessze be a többi zárolást a legkülső zárójel végére, amíg a zárolás befejeződik (2). 
+   1. A CMA eltávolításához szüntesse meg mindkét zárolást úgy, hogy megnyomja a belső és külső kilincsek házainak felső részén található CMA-kiadási gombokat (3).
 
-   ![A CMA fő telepítésének illusztrációja](media/fxt-install/cma-install-400.png)
+   ![A CMA fő telepítésének szemléltetése](media/fxt-install/cma-install-400.png)
 
-   A CMA elforgatható a rendszertől a hozzáférés és a szolgáltatás számára. A csuklós végén emelje le a CMA-t a tálcáról, hogy leüleltse (1). Miután letette a tálcáról, lendítse el a CMA-t a rendszertől (2).
+   A CMA elforgatható a rendszertől a hozzáférés és a szolgáltatás számára. A csuklós végponton szüntesse meg a CMA a tálcáról, hogy megtegye a helyet (1). Miután a tálcáról nem rendelkezik, a CMA a rendszertől (2).
 
-   ![A szervizelt CMA illusztrációja](media/fxt-install/cma-swing-over-tray-400.png)
+   ![A szolgáltatás számára megnyitott CMA illusztrációja](media/fxt-install/cma-swing-over-tray-400.png)
 
-## <a name="install-the-front-bezel-optional"></a>Az elülső keret beszerelése (opcionális)
+## <a name="install-the-front-bezel-optional"></a>Az elõlap telepítése (nem kötelező)
 
-Ez a szakasz bemutatja, hogyan telepítheti és távolíthatja el az Azure FXT Edge Filer hardver első előtétét (előlapot). 
+Ez a szakasz ismerteti, hogyan telepítheti és távolíthatja el az Azure FXT Edge Filer-hardver előlapját (előlapját). 
 
-Az elülső keret felszerelése: 
+Az előlap telepítése: 
 
-1. Keresse meg és távolítsa el a keretkulcsot, amely a keretcsomagban található. 
-1. Igazítsa az előlapot a váz elejéhez, és helyezze be a keret jobb oldalán lévő csapokat a csomópont jobb oldali racktartó peremének furataiba. 
-1. Illessze a keret bal végét az alvázra. Nyomja meg az előlapot, amíg a bal oldali gomb a helyére nem kattan.
-1. Zárd be az előlapot a kulccsal.
+1. Keresse meg és távolítsa el az elõlap-csomagban található elõlapi kulcsot. 
+1. Igazítsa az elõlapot a váz elejéhez, majd szúrja be az elõlap jobb oldalán lévő PIN-kódokat a csomópont jobb oldali rack-csatlakoztatási peremén lévő lyukakba. 
+1. Az elõlap bal oldali végét az alvázra illeszti. Nyomja le az elõlapot, amíg a bal oldali gomb a helyére nem kattint.
+1. Zárolja az elõlapot a kulccsal.
 
-Az elülső keret eltávolítása: 
-1. Oldja fel az előlapot az előlap gombbal.
-1. Nyomja meg a kioldó gombot a bal oldalon, és húzza el a keret bal végét az alváztól.
-1. Akassza ki a jobb végét, és távolítsa el az előlapot.
+Az előlap eltávolítása: 
+1. A keret feloldása a keret kulcsának használatával.
+1. Nyomja le a bal oldalon a kiadás gombot, és húzza le az elõlap bal oldali végét az alvázról.
+1. Bontsa ki a jobb oldali végpontot, és távolítsa el az elõlapot.
    
-   ![A kioldógombot a keret bal oldalán látható, és hogyan távolítható el a bal oldalról kifelé húzva](media/fxt-install/remove-bezel-edited-600.png)
+   ![Az elõlap bal oldalán lévő kiadás gombot, és azt, hogy miként távolítható el a bal oldali kifelé húzva](media/fxt-install/remove-bezel-edited-600.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Miután kicsomagolta és gyakorlelte az eszközt, folytassa a beállítást a hálózati kábelek csatlakoztatásával és a hálózati áramazon az Azure FXT Edge Filer-hez való csatlakoztatásával.
+Az eszköz kicsomagolása és rögzítése után folytassa a telepítést a hálózati kábelek csatlakoztatásával és az Azure FXT Edge Filer csatlakoztatásával.
 
 > [!div class="nextstepaction"]
-> [Kábelezze a hálózati portokat és a tápellátást](fxt-network-power.md)
+> [Hálózati portok csatlakoztatása és áramellátás](fxt-network-power.md)

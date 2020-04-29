@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell – előfizethet a Blob storage-fiókra
-description: Ez a cikk egy minta Azure PowerShell-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő egy Blob Storage-fiók Event Grid-eseményeire.
+title: Azure PowerShell – előfizetés a blob Storage-fiókra
+description: Ez a cikk egy példa Azure PowerShell parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő Event Grid eseményekre egy Blob Storage-fiók esetében.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: a8a0982ca118663cbf0f7e4d72412ce8feda3c4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76721438"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>Feliratkozás egy Blob Storage-fiók eseményeire a PowerShell-lel
@@ -36,7 +36,7 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új-AzeventGridElőfizetés](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid-előfizetés létrehozása. |
+| [Új – AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid-előfizetés létrehozása. |
 
 ## <a name="next-steps"></a>További lépések
 

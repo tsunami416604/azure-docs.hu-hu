@@ -1,6 +1,6 @@
 ---
-title: Horgonyok létrehozása & a C++/WinRT rendszerben
-description: Részletes magyarázat a horgonyok létrehozásáról és megkereséséről az Azure Spatial Anchors használatával c++/WinRT-ben.
+title: Horgonyok létrehozása & C++/WinRT
+description: Részletes útmutató a horgonyok létrehozásához és megkereséséhez az Azure térbeli horgonyok használatával a C++/WinRT.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,36 +9,36 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 084058edca59eda776c47a3e20bb49178de78681
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74790069"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Horgonyok létrehozása és megkeresése az Azure Spatial Anchors használatával C++/WinRT-ben
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával a C++/WinRT
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
-> * [Célkitűzés-C](create-locate-anchors-objc.md)
+> * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Az Azure Spatial Anchors lehetővé teszi, hogy a világ horgonyait különböző eszközök között ossza meg. Számos különböző fejlesztői környezetet támogat. Ebben a cikkben bemutatjuk, hogyan használhatja az Azure Spatial Anchors SDK C++/WinRT-ben található, a következőket:
+Az Azure térbeli horgonyok lehetővé teszik, hogy a különböző eszközök között ossza meg a világbeli horgonyokat. Számos különböző fejlesztési környezetet támogat. Ebben a cikkben bemutatjuk, hogyan használhatja az Azure térbeli horgonyok SDK-t a C++/WinRT:
 
-- Az Azure Spatial Anchors munkamenet ek megfelelő beállítása és kezelése.
-- Helyi horgonyok tulajdonságainak létrehozása és beállítása.
+- Az Azure térbeli horgonyok munkamenetének megfelelő beállítása és kezelése.
+- Hozzon létre és állítson be tulajdonságokat a helyi horgonyokon.
 - Töltse fel őket a felhőbe.
-- Keresse meg és törölje a felhőbeli térbeli horgonyokat.
+- Felhőbeli térbeli horgonyok megkeresése és törlése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató kitöltéséhez győződjön meg arról, hogy:
+Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a következővel:
 
-- Olvassa el az [Azure Spatial Anchors áttekintését.](../overview.md)
-- Az 5 [perces rövid összefoglalók egyike befejeződött.](../index.yml)
-- Alapvető ismeretek a C++ és a <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows futásidejű API-kon.</a>
+- Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../overview.md).
+- Az [5 perces rövid](../index.yml)útmutatók egyikét fejezte be.
+- Alapszintű ismeretek a C++ és a <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows-futtatókörnyezet API</a>-khoz.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
@@ -68,7 +68,7 @@ További információ a [SessionConfiguration](https://docs.microsoft.com/cpp/ap
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-További információ a [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) delegálásról.
+További információ a [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) delegált szolgáltatásról.
 
 ```cpp
     m_accessTokenRequiredToken = m_cloudSession.TokenRequired(winrt::auto_revoke, [](auto&&, auto&& args) {
@@ -117,7 +117,7 @@ További információ a [TokenRequiredDelegate](https://docs.microsoft.com/cpp/a
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-További információ a [Kezdő](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) módszerről.
+További információ az [indítási](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) módszerről.
 
 ```cpp
     m_cloudSession.Start();
@@ -125,7 +125,7 @@ További információ a [Kezdő](https://docs.microsoft.com/cpp/api/spatial-anch
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-További információ a [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) módszerről.
+További információ a [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) metódusról.
 
 ```cpp
     m_cloudSession->ProcessFrame(ar_frame_);
@@ -133,7 +133,7 @@ További információ a [ProcessFrame](https://docs.microsoft.com/cpp/api/spatia
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-További információ a [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) meghatalmazottról.
+További információ a [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) delegált szolgáltatásról.
 
 ```cpp
     m_sessionUpdatedToken = m_cloudSession.SessionUpdated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -193,7 +193,7 @@ További információ a [GetSessionStatusAsync](https://docs.microsoft.com/cpp/a
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-További információ az [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) módszerről.
+További információ a [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) metódusról.
 
 ```cpp
     CloudSpatialAnchor cloudAnchor = CloudSpatialAnchor();
@@ -206,7 +206,7 @@ További információ az [AppProperties](https://docs.microsoft.com/cpp/api/spat
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-További információ az [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) metódusról.
+További információ a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) metódusról.
 
 ```cpp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -239,7 +239,7 @@ További információ a [lejárati](https://docs.microsoft.com/cpp/api/spatial-a
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-További információ a [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) módszerről.
+További információ a [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) metódusról.
 
 ```cpp
     AnchorLocateCriteria criteria = AnchorLocateCriteria();
@@ -249,7 +249,7 @@ További információ a [CreateWatcher](https://docs.microsoft.com/cpp/api/spati
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-További információ az [AnchorLocatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) delegáltról.
+További információ a [AnchorLocatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) delegált szolgáltatásról.
 
 ```cpp
     m_anchorLocatedToken = m_cloudSession.AnchorLocated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -288,7 +288,7 @@ További információ a [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/s
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a [Stop](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) módszerről.
+További információ a [leállítási](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) módszerről.
 
 ```cpp
     m_cloudSession.Stop();
@@ -296,7 +296,7 @@ További információ a [Stop](https://docs.microsoft.com/cpp/api/spatial-anchor
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-További információ az [Alaphelyzetbe állítás](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) módszerről.
+További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) módszerről.
 
 ```cpp
     m_cloudSession.Reset();

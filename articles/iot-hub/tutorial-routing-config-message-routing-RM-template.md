@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub üzenet-útválasztásának konfigurálása Egy Azure Resource Manager-sablon használatával
-description: Az Azure IoT Hub üzenet-útválasztásának konfigurálása Egy Azure Resource Manager-sablon használatával
+title: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
+description: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -10,13 +10,13 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74084395"
 ---
-# <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Az IoT Hub-üzenetútválasztás konfigurálásához használjon Azure Resource Manager-sablont
+# <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Azure Resource Manager-sablon használata IoT Hub üzenet-útválasztás konfigurálásához
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -26,75 +26,75 @@ ms.locfileid: "74084395"
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-## <a name="download-the-template-and-parameters-file"></a>A sablon- és paraméterfájl letöltése
+## <a name="download-the-template-and-parameters-file"></a>A sablon és a paraméterek fájl letöltése
 
-Az oktatóanyag második részében letölt és futtat egy Visual Studio-alkalmazást az IoT Hubnak küldött üzenetek küldéséhez. Van egy mappa a letöltésben, amely tartalmazza az Azure Resource Manager-sablont és paraméterfájlt, valamint az Azure CLI és a PowerShell-parancsfájlokat.
+Az oktatóanyag második részében le kell töltenie és futtatnia kell egy Visual Studio-alkalmazást, amely üzeneteket küld a IoT Hub. A letöltésben egy olyan mappa található, amely tartalmazza a Azure Resource Manager sablont és a paramétereket tartalmazó fájlt, valamint az Azure CLI-t és a PowerShell-parancsfájlokat.
 
-Folytassa az [Azure IoT C# minták](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) letöltésével. Csomagolja ki a master.zip fájlt. A Resource Manager sablon és a paraméterek fájl ja: /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ mint **template_iothub.json** és **template_iothub_parameters.json**.
+Most töltse le az [Azure IoT C#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) . Bontsa ki a Master. zip fájlt. A Resource Manager-sablon és a Parameters fájl a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ban **template_iothub. JSON** és **template_iothub_parameters. JSON**néven szerepel.
 
-## <a name="create-your-resources"></a>Az erőforrások létrehozása
+## <a name="create-your-resources"></a>Erőforrások létrehozása
 
-Az Azure Resource Manager (RM) sablonhasználatával hozza létre az összes erőforrást. Az Azure CLI és a PowerShell-parancsfájlok egyszerre néhány sort futtathatnak. Egy RM-sablon egy lépésben van telepítve. Ez a cikk külön-külön mutatja be a szakaszokat, hogy segítsen megérteni őket. Ezután megmutatja, hogyan telepítheti a sablont, és hozza létre a virtuális eszközt tesztelésre. A sablon telepítése után megtekintheti az üzenetútválasztási konfigurációt a portálon.
+Az összes erőforrás létrehozásához egy Azure Resource Manager (RM) sablont fog használni. Az Azure CLI és a PowerShell-parancsfájlok egyszerre több sort is futtathatnak. Az RM-sablonok egyetlen lépésben települnek. Ebből a cikkből megtudhatja, hogy az egyes részeket hogyan lehet megérteni. Ezután bemutatja, hogyan helyezheti üzembe a sablont, és hogyan hozhatja létre a virtuális eszközt teszteléshez. A sablon üzembe helyezését követően megtekintheti az üzenet-útválasztási konfigurációt a portálon.
 
-Számos erőforrásnév, amely globálisan egyedi, például az IoT Hub nevét és a tárfiók nevét. Az erőforrások elnevezésének megkönnyítése érdekében ezek az erőforrásnevek úgy vannak beállítva, hogy hozzáfűzjenek egy véletlenszerű alfanumerikus értéket, amelyet az aktuális dátumból/időből hoztak létre. 
+Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Az erőforrások könnyebb elnevezéséhez az adott erőforrás neveit úgy állítja be, hogy az aktuális dátum/idő alapján generált véletlenszerű alfanumerikus értéket fűzze hozzá. 
 
-Ha megnézi a sablont, láthatja, hogy hol vannak beállítva változók ezekhez az erőforrásokhoz, amelyek a paramétert átadják, és összefűzik a *randomValue-t* a paraméterrel. 
+Ha megtekinti a sablont, látni fogja, hol vannak beállítva változók azokhoz az erőforrásokhoz, amelyek az átadott paramétert fogadják, és összefűzik a *randomValue* a paraméterrel. 
 
-A következő szakasz ismerteti a használt paramétereket.
+A következő szakasz a használt paramétereket ismerteti.
 
 ### <a name="parameters"></a>Paraméterek
 
-A legtöbb paraméter alapértelmezett értékekkel rendelkezik. A **_in** végződőértékek *randomValue* értékkel vannak összefűzve, hogy globálisan egyedivé tegyék őket. 
+Ezeknek a paramétereknek a többsége alapértelmezett értéket tartalmaz. A **_in** végződésű eszközök a *randomValue* -vel vannak összefűzve, hogy globálisan egyediek legyenek. 
 
-**randomValue**: Ez az érték az aktuális dátumból/időből jön létre a sablon telepítésekor. Ez a mező nem szerepel a paraméterfájlban, mivel magában a sablonban jön létre.
+**randomValue**: ez az érték a sablon központi telepítésekor a jelenlegi dátum/idő alapján jön létre. Ez a mező nem szerepel a Parameters fájlban, mert maga a sablon hozza létre.
 
-**subscriptionId**: Ez a mező arra az előfizetésre van beállítva, amelybe a sablont telepíti. Ez a mező nincs a paraméterfájlban, mivel be van állítva.
+**subscriptionId**: Ez a mező arra az előfizetésre van beállítva, amelybe a sablont telepíti. Ez a mező nem szerepel a Parameters fájlban, mert az be van állítva.
 
-**IoTHubName_in**: Ez a mező az IoT Hub alapneve, amely a randomValue globálisan egyediként összevan fűzve.
+**IoTHubName_in**: Ez a mező az alap IoT hub neve, amely globálisan egyedi randomValue van fűzve.
 
-**hely**: Ez a mező az Az Azure-régió, amelybe telepíti, például a "westus".
+**hely**: Ez a mező az az Azure-régió, amelyben üzembe helyezi, például "westus".
 
-**consumer_group**: Ez a mező a műveletterv végponton keresztül érkező üzenetek fogyasztói csoportja. Az Azure Stream Analytics eredmények szűrésére szolgál. Például ott van a teljes adatfolyam, ahol mindent beszerez, vagy ha a **Contoso consumer_group**beállított adatokkal érkeznek, akkor beállíthat egy Azure Stream Analytics-adatfolyamot (és a Power BI-jelentést), hogy csak ezeket a bejegyzéseket jelenítse meg. Ez a mező az oktatóanyag 2.
+**consumer_group**: Ez a mező az útválasztási végponton keresztül érkező üzenetek fogyasztói csoportját határozza meg. A Azure Stream Analytics eredményeinek szűrésére szolgál. Például van egy teljes stream, ahol mindent megtudhat, vagy ha a consumer_groupt a **contoso**-ra beállított adatokkal, akkor beállíthat egy Azure stream Analytics streamet (és Power bi jelentést), amely csak ezeket a bejegyzéseket jeleníti meg. Ezt a mezőt az oktatóanyag 2. része használja.
 
-**sku_name**: Ez a mező az IoT Hub méretezése. Ennek az értéknek S1 vagy annál magasabb nak kell lennie; egy ingyenes szint nem működik ez a bemutató, mert nem teszi lehetővé több végpontok.
+**sku_name**: Ez a mező a IoT hub skálázása. Ez az érték csak S1 vagy újabb lehet. Ebben az oktatóanyagban az ingyenes szint nem működik, mert több végpontot nem engedélyez.
 
-**sku_units**: Ez a mező a **sku_name,** és a használható IoT Hub-egységek száma.
+**sku_units**: ebben a mezőben a **sku_name**látható, a szám pedig a felhasználható IoT hub egységek számát.
 
-**d2c_partitions**: Ez a mező az eseményfolyamhoz használt partíciók számát.
+**d2c_partitions**: Ez a mező az esemény-adatfolyamhoz használt partíciók száma.
 
-**storageAccountName_in**: Ez a mező a létrehozandó tárfiók neve. Az üzenetek a tárfiókban lévő tárolóba kerülnek. Ez a mező össze van fűzve a randomValue értékkel, hogy globálisan egyedi legyen.
+**storageAccountName_in**: Ez a mező a létrehozandó Storage-fiók neve. Az üzenetek a Storage-fiókban lévő tárolóba vannak irányítva. A mező összefűzése a randomValue, hogy globálisan egyedi legyen.
 
-**storageContainerName**: Ez a mező annak a tárolónak a neve, amelyben a tárfiókba irányított üzeneteket tárolják.
+**storageContainerName**: Ez a mező annak a tárolónak a neve, amelyben a Storage-fiókba továbbított üzenetek tárolódnak.
 
-**storage_endpoint**: Ez a mező az üzenetművelet által használt tárfiók-végpont neve.
+**storage_endpoint**: Ez a mező az üzenet-útválasztás által használt Storage-fiók végpontjának neve.
 
-**service_bus_namespace_in**: Ez a mező a létrehozandó Service Bus névtér neve. Ez az érték összevan fűzve a randomValue értékkel, hogy globálisan egyedi legyen.
+**service_bus_namespace_in**: Ez a mező a létrehozandó Service Bus névtér neve. Ez az érték a randomValue van összefűzve, hogy globálisan egyedi legyen.
 
-**service_bus_queue_in**: Ez a mező az útválasztási üzenetekhez használt Service Bus-várólista neve. Ez az érték összevan fűzve a randomValue értékkel, hogy globálisan egyedi legyen.
+**service_bus_queue_in**: Ez a mező az útválasztási üzenetekhez használt Service Bus üzenetsor neve. Ez az érték a randomValue van összefűzve, hogy globálisan egyedi legyen.
 
-**AuthRules_sb_queue**: Ez a mező a szolgáltatásbusz-várólista engedélyezési szabályai, amelyek a várólista kapcsolati karakterláncának beolvasására szolgálnak.
+**AuthRules_sb_queue**: Ez a mező a Service Bus-várólista engedélyezési szabályai, amely a várólista kapcsolódási karakterláncának lekérésére szolgál.
 
 ### <a name="variables"></a>Változók
 
 Ezek az értékek a sablonban használatosak, és többnyire paraméterekből származnak.
 
-**queueAuthorizationRuleResourceId**: Ez a mező a Service Bus-várólista engedélyezési szabályának ResourceId azonosítója. A ResourceId viszont a várólista kapcsolati karakterláncának beolvasására szolgál.
+**queueAuthorizationRuleResourceId**: Ez a mező a Service Bus üzenetsor engedélyezési szabályának ResourceId. A ResourceId a várólista kapcsolódási karakterláncának beolvasására szolgál.
 
-**iotHubName**: Ez a mező az IoT Hub neve a randomValue összefűzése után. 
+**iotHubName**: Ez a mező a IoT hub neve a randomValue összefűzése után. 
 
-**storageAccountName**: Ez a mező a tárfiók neve a randomValue összefűzése után. 
+**storageAccountName**: Ez a mező a randomValue összefűzése után a Storage-fiók neve. 
 
 **service_bus_namespace**: Ez a mező a névtér a randomValue összefűzése után.
 
-**service_bus_queue**: Ez a mező a Service Bus várólista neve a randomValue összefűzése után.
+**service_bus_queue**: Ez a mező a Service Bus üzenetsor neve, miután összefűzött egy randomValue.
 
-**sbVersion**: A Service Bus API használni a verziót. Ebben az esetben ez a "2017-04-01".
+**sbVersion**: a használni kívánt Service Bus API verziója. Ebben az esetben az "2017-04-01".
 
-### <a name="resources-storage-account-and-container"></a>Erőforrások: Tárfiók és tároló
+### <a name="resources-storage-account-and-container"></a>Erőforrások: Storage-fiók és-tároló
 
-Az első létrehozott erőforrás a tárfiók, valamint a tároló, amelyhez az üzenetek irányítják. A tároló egy erőforrás a tárfiók alatt. Rendelkezik `dependsOn` egy záradékkal a tárfiókhoz, amely megköveteli a tárfiókot a tároló előtt létre kell hozni.
+Az első létrehozott erőforrás a Storage-fiók, valamint azt a tárolót, amelyhez az üzenetek irányítva vannak. A tároló egy erőforrás a Storage-fiókban. Rendelkezik egy `dependsOn` záradékkal a Storage-fiókhoz, amely megköveteli a Storage-fiók létrehozását a tároló előtt.
 
-Így néz ki ez a szakasz:
+A szakasz a következőképpen néz ki:
 
 ```json
 {
@@ -124,9 +124,9 @@ Az első létrehozott erőforrás a tárfiók, valamint a tároló, amelyhez az 
 }
 ```
 
-### <a name="resources-service-bus-namespace-and-queue"></a>Erőforrások: Service Bus névtér és várólista
+### <a name="resources-service-bus-namespace-and-queue"></a>Erőforrások: Service Bus névtér és üzenetsor
 
-A második létrehozott erőforrás a Service Bus névtér, valamint a Service Bus-várólista, amelyhez az üzenetek et továbbítják. A termékváltozat alapfelszereltségre van állítva. Az API-verzió beolvasása a változókból. Azt is be van állítva, hogy aktiválja a Service Bus névtér, amikor telepíti ezt a szakaszt (status:Active). 
+A második erőforrás a Service Bus névtér, valamint az a Service Bus-várólista, amelyhez az üzenetek továbbítása történik. Az SKU a standard értékre van beállítva. Az API-verziót a rendszer beolvassa a változók közül. Azt is beállítja, hogy aktiválja a Service Bus névteret a szakasz telepítésekor (állapot: aktív). 
 
 ```json
 {
@@ -149,7 +149,7 @@ A második létrehozott erőforrás a Service Bus névtér, valamint a Service B
 }
 ```
 
-Ez a szakasz létrehozza a Service Bus várólistát. A parancsfájl ezen része `dependsOn` rendelkezik egy záradékkal, amely biztosítja, hogy a névtér a várólista előtt létrejön.
+Ez a szakasz létrehozza a Service Bus várólistát. A szkript ezen részében van egy `dependsOn` záradék, amely biztosítja, hogy a névtér a várólista előtt legyen létrehozva.
 
 ```json
 {
@@ -165,11 +165,11 @@ Ez a szakasz létrehozza a Service Bus várólistát. A parancsfájl ezen része
 }
 ```
 
-### <a name="resources-iot-hub-and-message-routing"></a>Erőforrások: Iot Hub és üzenetútválasztás
+### <a name="resources-iot-hub-and-message-routing"></a>Erőforrások: IOT hub és üzenet-útválasztás
 
-Most, hogy a tárfiók és a Service Bus-várólista létrejött, hozza létre az IoT Hub, amely üzeneteket irányítja őket. Az RM-sablon záradékokat használ, `dependsOn` így nem próbálja meg létrehozni a hubot a Service Bus-erőforrások és a tárfiók létrehozása előtt. 
+Most, hogy létrejött a Storage-fiók és a Service Bus üzenetsor, létrehozhatja az üzeneteket átirányító IoT Hub. Az RM-sablon `dependsOn` záradékokat használ, ezért nem próbálja meg létrehozni a hubot a Service Bus erőforrásai és a Storage-fiók létrehozása előtt. 
 
-Az IoT Hub szakasz első része. A sablon ezen része beállítja a függőségeket, és a tulajdonságokkal kezdődik.
+Itt látható az IoT Hub szakasz első része. A sablon ezen része beállítja a függőségeket, és elindítja a tulajdonságokat.
 
 ```json
 {
@@ -191,11 +191,11 @@ Az IoT Hub szakasz első része. A sablon ezen része beállítja a függősége
             },
 ```
 
-A következő szakasz az Iot Hub üzenet-útválasztási konfigurációjának szakasza. Az első a végpontok szakasza. A sablon ezen része beállítja a Service Bus-várólista és a tárfiók útválasztási végpontjait, beleértve a kapcsolati karakterláncokat is.
+A következő szakasz az IOT hub üzenet-útválasztási konfigurációjának szakasza. Az első a végpontok szakasza. A sablon ezen része beállítja a Service Bus üzenetsor és a Storage-fiók útválasztási végpontját, beleértve a kapcsolati karakterláncokat is.
 
-A várólista kapcsolati karakterláncának létrehozásához szüksége van a queueAuthorizationRulesResourcedId azonosítóra, amely a szövegközi beolvasást kéri. A tárfiók kapcsolati karakterláncának létrehozásához kérje le az elsődleges tárolókulcsot, és használja azt a kapcsolati karakterlánc formátumában.
+A várólista kapcsolódási karakterláncának létrehozásához szükség van a queueAuthorizationRulesResourcedId, amelyet a rendszer beolvasott. A Storage-fiókhoz tartozó kapcsolódási karakterlánc létrehozásához le kell kérnie az elsődleges tároló kulcsát, majd azt a kapcsolódási karakterlánc formátumában kell használni.
 
-A végpont konfigurációja is, ahol beállíthatja a blob formátumot, hogy `AVRO` vagy. `JSON`
+A végpont konfigurációját is be kell `AVRO` állítani a vagy `JSON`a blob-formátumra.
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -229,9 +229,9 @@ A végpont konfigurációja is, ahol beállíthatja a blob formátumot, hogy `AV
     },
 ```
 
-Ez a következő szakasz a végpontokhoz vezető üzenetútvonalakra szól. Minden végponthoz egy van beállítva, így van egy a Service Bus-várólistához és egy a tárfiók tárolóhoz.
+Ez a következő szakasz a végpontokhoz tartozó üzenet-útvonalakat tartalmazza. Mindegyik végponthoz egy beállítás van beállítva, így a Service Bus üzenetsor és a Storage-fiók tárolója közül egyet is megadhat.
 
-Ne feledje, hogy a tárolóba irányítandó üzenetek lekérdezési feltétele a `level="storage"`, és a `level="critical"`Service Bus várólistába irányított üzenetek lekérdezési feltétele a.
+Ne feledje `level="storage"`, hogy a tárolóba átirányított üzenetek lekérdezési feltétele, valamint az Service Bus várólistára átirányított üzenetek lekérdezési feltétele `level="critical"`.
 
 ```json
 "routes": [
@@ -256,7 +256,7 @@ Ne feledje, hogy a tárolóba irányítandó üzenetek lekérdezési feltétele 
 ],
 ```
 
-Ez a json az IoT Hub szakasz többi részét jeleníti meg, amely az alapértelmezett információkat és a hub termékváltozatát tartalmazza.
+Ez a JSON a IoT Hub további szakaszát mutatja, amely tartalmazza az alapértelmezett adatokat és a hub SKU-át.
 
 ```json
             "fallbackRoute": {
@@ -301,9 +301,9 @@ Ez a json az IoT Hub szakasz többi részét jeleníti meg, amely az alapértelm
 }
 ```
 
-### <a name="resources-service-bus-queue-authorization-rules"></a>Erőforrások: A Service Bus várólista engedélyezési szabályai
+### <a name="resources-service-bus-queue-authorization-rules"></a>Erőforrások: Service Bus üzenetsor-engedélyezési szabályok
 
-A Service Bus várólista engedélyezési szabálya a Service Bus-várólista kapcsolati karakterláncának lekéréséhez használatos. Egy `dependsOn` záradékot használ annak biztosítására, hogy nem jön létre a Service Bus névtér és a Service Bus-várólista előtt.
+A Service Bus várólista-engedélyezési szabály a Service Bus üzenetsor kapcsolódási karakterláncának beolvasására szolgál. Egy `dependsOn` záradékot használ annak biztosítására, hogy a rendszer ne hozza létre a Service Bus névtér és a Service Bus üzenetsor előtt.
 
 ```json
 {
@@ -324,9 +324,9 @@ A Service Bus várólista engedélyezési szabálya a Service Bus-várólista ka
 },
 ```
 
-### <a name="resources-consumer-group"></a>Források: Fogyasztói csoport
+### <a name="resources-consumer-group"></a>Erőforrások: fogyasztói csoport
 
-Ebben a szakaszban hozzon létre egy fogyasztói csoportot az IoT Hub-adatok az Azure Stream Analytics által használandó az oktatóanyag második részében.
+Ebben a szakaszban létrehoz egy fogyasztói csoportot az oktatóanyag második részében a Azure Stream Analytics által használandó IoT Hub-adatmennyiséghez.
 
 ```json
 {
@@ -339,9 +339,9 @@ Ebben a szakaszban hozzon létre egy fogyasztói csoportot az IoT Hub-adatok az 
 }
 ```
 
-### <a name="resources-outputs"></a>Források: Outputok
+### <a name="resources-outputs"></a>Erőforrások: kimenetek
 
-Ha egy értéket szeretne visszaküldeni a központi telepítési parancsfájlnak, használjon kimeneti szakaszt. A sablon ezen része a Service Bus-várólista kapcsolati karakterláncát adja vissza. Egy érték visszaadása nem szükséges, ez példaként szolgál az eredmények visszaadása a hívó parancsfájlba.
+Ha vissza szeretne állítani egy értéket a megjelenítendő üzembehelyezési parancsfájlnak, használja a kimenet szakaszt. A sablon ezen része a Service Bus üzenetsor kapcsolati karakterláncát adja vissza. Egy érték visszaadása nem kötelező, ez például azt mutatja be, hogyan lehet eredményeket visszaadni a hívó parancsfájlnak.
 
 ```json
 "outputs": {
@@ -352,33 +352,33 @@ Ha egy értéket szeretne visszaküldeni a központi telepítési parancsfájlna
   }
 ```
 
-## <a name="deploy-the-rm-template"></a>Az RM-sablon telepítése
+## <a name="deploy-the-rm-template"></a>Az RM-sablon üzembe helyezése
 
-A sablon üzembe helyezéséhez az Azure-ba, töltse fel a sablont és a paraméterek et az Azure Cloud Shell, majd hajtson végre egy parancsfájlt a sablon üzembe helyezéséhez. Nyissa meg az Azure Cloud Shellt, és jelentkezzen be. Ez a példa a PowerShellt használja.
+Ha a sablont az Azure-ba szeretné telepíteni, töltse fel a sablont és a paramétereket tartalmazó fájlt Azure Cloud Shellre, majd hajtson végre egy parancsfájlt a sablon üzembe helyezéséhez. Nyissa meg Azure Cloud Shell és jelentkezzen be. Ez a példa a PowerShellt használja.
 
-A fájlok feltöltéséhez válassza a **Fájlok feltöltése/letöltése** ikont a menüsorban, majd kattintson a Feltöltés gombra.
+A fájlok feltöltéséhez válassza a menüsávon a **fájlok feltöltése/letöltése** ikont, majd válassza a feltöltés lehetőséget.
 
-![Cloud Shell menüsor kiemelt fájlok feltöltésével/letöltésével](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![Cloud Shell menüsáv a Kiemelt fájlok feltöltésével és letöltésével](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
-A felugró Fájlkezelőben keresse meg a helyi lemezen lévő fájlokat, és jelölje ki őket, majd válassza a **Megnyitás**gombot.
+A fájlkezelővel megkeresheti a helyi lemezen található fájlokat, majd kiválaszthatja azokat, majd a **Megnyitás**lehetőséget választva.
 
-A fájlok feltöltése után az eredménypárbeszédpanelen az alábbihoz hasonló kép jelenik meg.
+A fájlok feltöltése után az eredmények párbeszédpanel az alábbi képhez hasonló módon jelenik meg.
 
-![Cloud Shell menüsor kiemelt fájlok feltöltésével/letöltésével](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Cloud Shell menüsáv a Kiemelt fájlok feltöltésével és letöltésével](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
-A fájlok feltöltésre kerülnek a Cloud Shell-példány által használt megosztásra. 
+A rendszer feltölti a fájlokat a Cloud Shell-példány által használt megosztásra. 
 
-Futtassa a parancsfájlt a központi telepítés végrehajtásához. A parancsfájl utolsó sora lekéri a visszaadandó változót - a Service Bus várólista kapcsolati karakterláncát.
+Futtassa a parancsfájlt az üzemelő példány végrehajtásához. A parancsfájl utolsó sora a visszaadott változót kérdezi le, a Service Bus üzenetsor-kapcsolódási karakterláncot.
 
-A parancsfájl beállítja és használja a következő változókat:
+A szkript beállítja és ezeket a változókat használja:
 
-**$RGName** az az erőforráscsoport neve, amelyre a sablont telepíteni szeretné. Ez a mező a sablon telepítése előtt jön létre.
+**$RGName** a sablon üzembe helyezéséhez használt erőforráscsoport-név. Ez a mező a sablon telepítése előtt jön létre.
 
-**$location** a sablonhoz használható Azure-hely, például a "westus".
+**$Location** a sablonhoz használandó Azure-beli hely, például "westus".
 
-**A központi telepítés neve** a központi telepítéshez rendelt név a visszatérő változó értékének beolvasásához.
+a **deploymentname** egy, a központi telepítéshez hozzárendelt név a visszaadott változó értékének lekéréséhez.
 
-Itt a PowerShell-parancsfájl. Másolja a PowerShell-parancsfájlt, és illessze be a Cloud Shell ablakába, majd nyomja meg az Enter billentyűt a futtatásához.
+Itt látható a PowerShell-szkript. Másolja ezt a PowerShell-parancsfájlt, és illessze be a Cloud Shell ablakába, majd futtassa az ENTER billentyűt a futtatásához.
 
 ```powershell
 $RGName="ContosoResources"
@@ -406,7 +406,7 @@ New-AzResourceGroupDeployment `
 (Get-AzResourceGroupDeployment -ResourceGroupName $RGName -Name $deploymentname).Outputs.sbq_connectionString.value
 ```
 
-Ha parancsfájlhibákat észlel, helyileg szerkesztheti a parancsfájlt, újra feltöltheti a Cloud Shellbe, és újra futtathatja a parancsfájlt. Miután a parancsfájl sikeresen befejeződött, folytassa a következő lépéssel.
+Ha parancsfájl-hibák léptek fel, a parancsfájlt helyileg szerkesztheti, újra feltöltheti a Cloud Shellba, majd újra futtathatja a szkriptet. Ha a parancsfájl futtatása sikeresen befejeződött, folytassa a következő lépéssel.
 
 ## <a name="create-simulated-device"></a>Szimulált eszköz létrehozása
 
@@ -418,7 +418,7 @@ Ha parancsfájlhibákat észlel, helyileg szerkesztheti a parancsfájlt, újra f
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az összes erőforrás be van állítva, és az üzenetútvonalak konfigurálva vannak, haladjon tovább a következő oktatóanyagra, és ismerje meg, hogyan dolgozhatja fel és jelenítheti meg az útválasztással kapcsolatos üzenetek adatait.
+Most, hogy rendelkezik az összes beállított erőforrással, és az üzenetek útvonalai konfigurálva vannak, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan dolgozza fel és jelenítse meg az átirányított üzenetekkel kapcsolatos információkat.
 
 > [!div class="nextstepaction"]
-> [2. rész – Az üzenetút-tervezés eredményeinek megtekintése](tutorial-routing-view-message-routing-results.md)
+> [2. rész – az üzenetek útválasztási eredményeinek megtekintése](tutorial-routing-view-message-routing-results.md)

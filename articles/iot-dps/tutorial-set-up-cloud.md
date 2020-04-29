@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Felhő beállítása az Azure IoT Hub-eszközkiépítési szolgáltatáshoz a portálon
-description: Ez az oktatóanyag bemutatja, hogyan állíthatja be a felhőbeli erőforrásokat az [Azure Portalon](https://portal.azure.com) az IoT Hub-eszközkiépítési szolgáltatás (DPS) használatával történő üzembe helyezéshez.
+title: Oktatóanyag – felhő beállítása Azure IoT Hub Device Provisioning Servicehoz a portálon
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a Felhőbeli erőforrásokat a [Azure Portal](https://portal.azure.com) eszköz kiépítés esetén a IOT hub Device PROVISIONING Service (DPS) használatával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74976723"
 ---
-# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Oktatóanyag: Felhőbeli erőforrások konfigurálása az IT Hub-eszközkiépítési szolgáltatással való eszközkiépítéshez
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Oktatóanyag: felhőalapú erőforrások konfigurálása az eszközök kiépítési felállításához a IoT Hub Device Provisioning Service
 
 Ez az oktatóanyag bemutatja, hogyan állíthatja be a felhőt az automatikus eszközkiépítéshez az IoT Hub Device Provisioning Service használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -25,17 +25,17 @@ Ez az oktatóanyag bemutatja, hogyan állíthatja be a felhőt az automatikus es
 > * Az IoT Hub csatolása a Device Provisioning Service-hez
 > * A Device Provisioning Service kiosztási szabályzatának beállítása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Device Provisioning Service-példány létrehozása és az azonosító hatókörének lekérése
 
 Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány létrehozásához.
 
-1. Az Azure Portal bal felső sarkában kattintson az **Erőforrás létrehozása**elemre.
+1. Az Azure Portal bal felső sarkában kattintson az **erőforrás létrehozása**elemre.
 
 2. A keresőmezőbe írja be a **device provisioning** kifejezést. 
 
@@ -48,11 +48,11 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
    | **Név** | Bármely egyedi név | -- | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-   | **Helyen** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |   
+   | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |   
 
    ![Írja be a Device Provisioning Service-szolgáltatás alapvető adatait a portálon](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Kattintson **a Létrehozás gombra.** A rendszer néhány pillanaton belül létrehozza a Device Provisioning Service-példányt, majd megjeleníti az **Áttekintés** lapot.
+5. Kattintson a **Létrehozás**gombra. A rendszer néhány pillanaton belül létrehozza a Device Provisioning Service-példányt, majd megjeleníti az **Áttekintés** lapot.
 
 6. Az új szolgáltatáspéldány **Áttekintés** lapján másolja az **Azonosító hatóköre** értéket későbbi felhasználás céljából. Az érték a regisztrációs azonosítók azonosítására szolgál, továbbá garantálja a regisztrációs azonosító egyediségét.
 
@@ -62,7 +62,7 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT-központ kapcsolati karakterláncának beolvasása
+### <a name="retrieve-connection-string-for-iot-hub"></a>IoT hub-hoz tartozó kapcsolatok karakterláncának beolvasása
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
@@ -76,7 +76,7 @@ A következő lépés a Device Provisioning Service és az IoT-központ összeka
 
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
 
-3. Kattintson a **Hozzáadás** gombra.
+3. Kattintson a **Hozzáadás** parancsra.
 
 4. A **Hivatkozás hozzáadása IoT hubhoz** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés**gombra:
 
@@ -90,7 +90,7 @@ A következő lépés a Device Provisioning Service és az IoT-központ összeka
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>A Device Provisioning Service kiosztási szabályzatának beállítása
 
-A foglalási szabályzat egy IoT Hub-eszközkiépítési szolgáltatás beállítás, amely meghatározza, hogy az eszközök hogyan vannak hozzárendelve egy IoT hubhoz. Három támogatott kiosztási szabályzat létezik: 
+A foglalási szabályzat egy IoT Hub Device Provisioning Service-beállítás, amely meghatározza, hogy az eszközök hogyan legyenek hozzárendelve az IoT hubhoz. Három támogatott kiosztási szabályzat létezik: 
 
 1. **Legkisebb mértékű késleltetés**: Az eszközök abban az IoT-központban lesznek kiépítve, amely a legkisebb mértékű késleltetéssel rendelkezik az adott eszköz irányába.
 

@@ -1,6 +1,6 @@
 ---
-title: Incidensre adott válasz oktatóanyaga – Azure Security Center
-description: Ebben az oktatóanyagban megtudhatja, hogyan triage biztonsági riasztások, határozza meg a kiváltó oka & incidens hatókörét, és a keresési biztonsági adatokat.
+title: Incidens-válasz oktatóanyaga-Azure Security Center
+description: Ebből az oktatóanyagból megtudhatja, hogyan osztályozhatja a biztonsági riasztásokat, meghatározhatja a kiváltó okot & az incidensek hatókörét, és megkeresheti a biztonsági információkat.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
 ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80585770"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
@@ -29,10 +29,10 @@ A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segí
 > * Részletes vizsgálat egy biztonsági incidens gyökerének és kiterjedésének meghatározása céljából
 > * Keresés a biztonsági adatok között a vizsgálat elősegítéséhez
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyagban szereplő funkciók on-át, a Security Center standard tarifacsomagjának kell lennie. Kipróbálhatja a Security Center Standard-ot díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+Az oktatóanyagban szereplő funkciók átlépéséhez Security Center Standard díjszabási szinten kell lennie. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
 
 ## <a name="scenario"></a>Forgatókönyv
 A Contoso vállalat nemrégiben áttelepítette egyes helyszíni erőforrásait az Azure-ba, beleértve egyes virtuális gépeken alapuló üzleti számítási feladatait és SQL-adatbázisait. A Contoso fő számítógépes biztonsági incidensmegoldó csapata, a Core Computer Security Incident Response Team (CSIRT) jelenleg nem tudja kivizsgálni a biztonsági problémákat, mivel a biztonsági intelligencia nem képezi jelenlegi incidensmegoldási eszközparkjuk szerves részét. Az integráció hiánya az észlelési szakasz során (túl sok téves riasztás), valamint a felmérési és a diagnosztikai szakaszok során is problémát jelent. Az áttelepítés részeként úgy döntöttek, hogy a probléma megoldásához igénybe veszik a Security Center segítségét.
@@ -43,12 +43,12 @@ A forgatókönyv szempontjából a Contoso CSIRT csapatának alábbi két tagjá
 
 ![Az incidensmegoldás életciklusa](./media/tutorial-security-incident/security-center-incident-response.png)
 
-Judit biztonsági üzemeltetéssel foglalkozik. Feladataik a következők:
+Judit biztonsági üzemeltetéssel foglalkozik. Feladatai a következők:
 
 * A biztonsági fenyegetések non-stop figyelése és megoldása.
 * A problémák továbbítása szükség szerint a felhőbeli számítási feladat tulajdonosának vagy a biztonsági elemzőnek.
 
-Sam biztonsági elemző, és feladataik a következők:
+A Sam egy biztonsági elemző, és feladatai közé tartoznak a következők:
 
 * A támadások kivizsgálása.
 * A riasztások javítása.
@@ -108,13 +108,13 @@ A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre 
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
-1. Térjen vissza a Biztonsági központ főmenüjéhez, és válassza a **Biztonsági házirend**lehetőséget.
+1. Térjen vissza a Security Center főmenüre, és válassza a **biztonsági szabályzat**elemet.
 2. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést.
 3. Az automatikus kiépítés letiltásához a **Biztonsági szabályzat – Adatgyűjtés** területen válassza a **Ki** lehetőséget az **Előkészítés** elemnél.
 4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
-> Az automatikus kiépítés letiltása nem távolítja el a Log Analytics-ügynököt az Azure virtuális gépekről, ahol az ügynök ki van építve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
+> Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt az Azure-beli virtuális gépekről, ahol az ügynököt kiépítték. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
 ## <a name="next-steps"></a>További lépések

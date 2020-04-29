@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 04/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74169041"
+ms.locfileid: "82232649"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN-címkék – áttekintés
 
@@ -36,6 +36,7 @@ A következő táblázat a jelenleg használható FQDN-címkéket mutatja. A Mic
 |App Service Environment (bemutató)|Lehetővé teszi a kimenő hozzáférést a beadási platform forgalmához. Ez a címke nem fedi le a beszállító által létrehozott ügyfél-specifikus tárterületet és SQL-végpontokat. Ezeket a [szolgáltatás-végpontokon](../virtual-network/tutorial-restrict-network-access-to-resources.md) keresztül kell engedélyezni, vagy manuálisan kell hozzáadni.<br><br>További információ a Azure Firewall beépítéséről a bevonással: [app Service Environment zárolása](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Engedélyezi a kimenő hozzáférést a Azure Backup szolgáltatásokhoz.|
 |Azure HDInsight|Engedélyezi a kimenő hozzáférést a HDInsight-platform forgalmához. Ez a címke nem fedi le az ügyfél-specifikus tárterületet vagy az HDInsight-ből származó SQL-forgalmat. Engedélyezze ezeket a [szolgáltatás-végpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) használatával, vagy manuálisan adja hozzá őket.|
+|WindowsVirtualDesktop (WVD)|Engedélyezi a kimenő Windowsos virtuális asztali platform forgalmát. Ez a címke nem fedi le a WVD által létrehozott központi telepítésre vonatkozó tárolási és Service Bus végpontokat. Emellett a DNS-és a KMS-hálózati szabályok megadása kötelező. A Azure Firewall és a WVD integrálásával kapcsolatos további információkért lásd: a [Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](protect-windows-virtual-desktop.md). 
 
 > [!NOTE]
 > Ha egy alkalmazási szabályban kijelöli a teljes tartománynevet, a port mezőt a **https**értékre kell beállítani.
