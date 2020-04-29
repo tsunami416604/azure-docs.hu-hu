@@ -1,39 +1,39 @@
 ---
-title: A Java-függvény csatlakoztatása az Azure Storage-hoz
-description: Ismerje meg, hogyan csatlakoztathat egy HTTP-aktivált Java-függvényt az Azure Storage-hoz egy várólista-tárolási kimeneti kötés használatával.
+title: A Java-függvény csatlakoztatható az Azure Storage-hoz
+description: Megtudhatja, hogyan csatlakoztatható a HTTP-triggert használó Java-függvények az Azure Storage-hoz egy üzenetsor-tároló kimeneti kötésének használatával.
 author: KarlErickson
 ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673314"
 ---
-# <a name="connect-your-java-function-to-azure-storage"></a>A Java-függvény csatlakoztatása az Azure Storage-hoz
+# <a name="connect-your-java-function-to-azure-storage"></a>A Java-függvény csatlakoztatható az Azure Storage-hoz
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Ez a cikk bemutatja, hogyan integrálhatja az [előző rövid útmutató cikkben](functions-create-first-java-maven.md) létrehozott függvényt egy Azure Storage-várólistával. A függvényhez hozzáadott kimeneti kötés http-kérelemből adatokat ír a várólistában lévő üzenetbe.
+Ez a cikk bemutatja, hogyan integrálhatja az előző rövid útmutató [cikkében](functions-create-first-java-maven.md) létrehozott függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
-A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a Functions a kötött szolgáltatás eléréséhez használ. A kapcsolat megkönnyítése érdekében használja a storage-fiókot, amelya függvényalkalmazással létrehozott. A fiókhoz való kapcsolat már a neve `AzureWebJobsStorage`s. alkalmazásbeállításban van tárolva.  
+A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A kapcsolódás egyszerűbbé tételéhez használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű `AzureWebJobsStorage`alkalmazás-beállításban van tárolva.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk megkezdése előtt hajtsa végre [a Java gyorsútmutató első részének lépéseit.](functions-create-first-java-maven.md)
+A cikk elkezdése előtt végezze el a [Java rövid útmutató 1. részében](functions-create-first-java-maven.md)ismertetett lépéseket.
 
-## <a name="download-the-function-app-settings"></a>A függvényalkalmazás beállításainak letöltése
+## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
 
 [!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Bővítménycsomagok engedélyezése
+## <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-Most már hozzáadhatja a Storage kimenetkötést a projekthez.
+Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
@@ -45,11 +45,11 @@ Most már hozzáadhatja a Storage kimenetkötést a projekthez.
 
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 
-Most már készen áll, hogy helyileg próbálja ki az új kimenetkötést.
+Most már készen áll az új kimeneti kötés helyi kipróbálására.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-A hogy korábban is, a következő paranccsal hozd létre a projektet, és helyileg indítsa el a Functions futásidejűt:
+Ahogy korábban is, használja a következő parancsot a projekt felépítéséhez és a functions Runtime helyi elindításához:
 
 # <a name="maven"></a>[Maven](#tab/maven)
 ```bash
@@ -64,23 +64,23 @@ gradle azureFunctionsRun
 ---
 
 > [!NOTE]  
-> Mivel engedélyezte a bővítménykötegeket a host.json ban, a [Storage kötésbővítményt](functions-bindings-storage-blob.md#add-to-your-functions-app) az indítás során letöltötte és telepítette, a többi Microsoft-kötési bővítménylel együtt.
+> Mivel engedélyezte a bővítmények használatát a Host. JSON fájlban, a [Storage kötési bővítmény](functions-bindings-storage-blob.md#add-to-your-functions-app) le lett töltve és telepítve lett az indításakor, valamint a többi Microsoft-kötési bővítménysel együtt.
 
-Mint korábban, indítsa el a funkciót a parancssorból a cURL használatával egy új terminálablakban:
+Ahogy korábban is, aktiválja a függvényt a parancssorból a cURL használatával egy új terminál ablakban:
 
 ```CMD
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-Ezúttal a kimeneti kötés is `outqueue` létrehoz egy várólistát a storage-fiókban, és hozzáad egy üzenetet ugyanezzel a karakterlánccal.
+Ebben az esetben a kimeneti kötés is létrehoz egy nevű `outqueue` várólistát a Storage-fiókban, és hozzáadja az ugyanezt a karakterláncot tartalmazó üzenetet.
 
-Ezután az Azure CLI használatával megtekintheti az új várólistát, és ellenőrizze, hogy egy üzenet lett-e hozzáadva. A várólistát a Microsoft [Azure Storage Explorer][Azure Storage Explorer] vagy az [Azure Portal](https://portal.azure.com)használatával is megtekintheti.
+Ezután az Azure CLI használatával megtekintheti az új várólistát, és ellenőrizheti, hogy hozzá lett-e adva üzenet. Az üzenetsor a [Microsoft Azure Storage Explorer][Azure Storage Explorer] vagy a [Azure Portal](https://portal.azure.com)használatával is megtekinthető.
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-### <a name="redeploy-the-project"></a>A projekt újratelepítése 
+### <a name="redeploy-the-project"></a>A projekt újbóli üzembe helyezése 
 
 A közzétett alkalmazás frissítéséhez futtassa újra a következő parancsot:  
 
@@ -94,21 +94,21 @@ gradle azureFunctionsDeploy
 ```
 ---
 
-Ismét használhatja a cURL-t az üzembe helyezett függvény teszteléséhez. A hogy korábban `AzureFunctions` is, adja át az értéket a POST-kérelem törzsében az URL-nek, ahogy ebben a példában is:
+Újra használhatja a cURLot az üzembe helyezett függvény teszteléséhez. Ahogy korábban is, adja át `AzureFunctions` a post kérelem törzsében lévő értéket az URL-címre, az alábbi példában látható módon:
 
 ```bash
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-A [Storage-várólista-üzenet](#query-the-storage-queue) ismételt vizsgálatával ellenőrizheti, hogy a kimeneti kötés a várt módon új üzenetet hoz-e létre a várólistában.
+[Megvizsgálhatja a tárolási üzenetsor üzenetét](#query-the-storage-queue) annak ellenőrzéséhez, hogy a kimeneti kötés a várt módon létrehoz egy új üzenetet a várólistában.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Frissítette a HTTP-aktivált függvényt, hogy adatokat írjon egy tárolási várólistába. Ha többet szeretne megtudni az Azure Functions Java-val való fejlesztéséről, olvassa el az [Azure Functions Java fejlesztői útmutatóját](functions-reference-java.md) és az [Azure Functions aktiválási és kötési folyamatait.](functions-triggers-bindings.md) A Java-függvényprojektek reprezentatióját a [Java Functions minták című témakörben](/samples/browse/?products=azure-functions&languages=Java)talál. 
+Frissítette a HTTP-triggert a függvényt, hogy az adatait egy tárolási várólistába írja. Ha többet szeretne megtudni a Java-Azure Functions fejlesztéséről, tekintse meg a [Java fejlesztői útmutató Azure functions](functions-reference-java.md) és [Azure functions eseményindítók és kötések](functions-triggers-bindings.md)című témakört. A Java-funkciók teljes körű funkciós projektjeivel kapcsolatos példákért tekintse meg a [Java functions mintákat](/samples/browse/?products=azure-functions&languages=Java). 
 
-Ezután engedélyeznie kell az Application Insights figyelését a függvényalkalmazáshoz:
+Ezután engedélyezze Application Insights figyelését a Function alkalmazáshoz:
 
 > [!div class="nextstepaction"]
 > [Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)

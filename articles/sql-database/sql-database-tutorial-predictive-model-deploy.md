@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Prediktív modell üzembe helyezése r-ben'
+title: 'Oktatóanyag: prediktív modell üzembe helyezése az R-ben'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: A három részes oktatóanyag harmadik részében egy prediktív modellt telepít az R-ben az Azure SQL Database Machine Learning Services segítségével (előzetes verzió).
+description: A három részből álló oktatóanyag harmadik részében egy prediktív modellt helyez üzembe az R-ben Azure SQL Database Machine Learning Services (előzetes verzió).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,41 +15,41 @@ manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: efcb73866c83dcc03b5db8b7b97f438fb3010511
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452808"
 ---
-# <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Prediktív modell üzembe helyezése az R-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)
+# <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: prediktív modell üzembe helyezése az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
 
-A három részes oktatóanyag harmadik részében egy R-ben kifejlesztett prediktív modellt telepít egy SQL-adatbázisba az Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
+A három részből álló oktatóanyag harmadik részében egy, az R-ben kifejlesztett prediktív modellt helyez üzembe egy Azure SQL Database Machine Learning Services (előzetes verzió) használatával egy SQL-adatbázisba.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-Hozzon létre egy tárolt eljárást egy beágyazott R-parancsfájllal, amely előrejelzéseket készít a modell használatával. Mivel a modell végrehajtása az Azure SQL-adatbázisban, könnyen betanítható az adatbázisban tárolt adatok ellen.
+Létrehoz egy tárolt eljárást egy olyan beágyazott R-parancsfájllal, amely az előrejelzéseket a modell használatával teszi elérhetővé. Mivel a modell végrehajtása az Azure SQL Database-ben történik, könnyen kitanítható az adatbázisban tárolt adataival.
 
-Ebben a cikkben az első és második részben kifejlesztett R-parancsfájlok használatával megtudhatja, hogyan:
+Ebben a cikkben az 1. és a 2. részekben kifejlesztett R-szkripteket használva megismerheti a következőket:
 
 > [!div class="checklist"]
-> * A gépi tanulási modellt létrehozó tárolt eljárás létrehozása
-> * A modell tárolása adatbázistáblában
-> * Olyan tárolt eljárás létrehozása, amely előrejelzéseket készít a modell használatával
-> * A modell végrehajtása új adatokkal
+> * A Machine learning-modellt létrehozó tárolt eljárás létrehozása
+> * A modell tárolása egy adatbázis-táblában
+> * Olyan tárolt eljárás létrehozása, amely az előrejelzéseket a modell használatával teszi lehetővé
+> * A modell végrehajtása új adattal
 
-Az [első részben](sql-database-tutorial-predictive-model-prepare-data.md)megtanulta, hogyan importálhat egy mintaadatbázist, majd előkészíti az adatokat az R prediktív modell betanításához.
+Az első [részben](sql-database-tutorial-predictive-model-prepare-data.md)megtanulta, hogyan importálhat egy minta-adatbázist, majd hogyan készítheti elő a prediktív modell az R-ben való betanításához használni kívánt adatfeldolgozást.
 
-A [második részben](sql-database-tutorial-predictive-model-build-compare.md)megtanulta, hogyan hozhat létre és tanítson be több gépi tanulási modellt az R-ben, majd válassza ki a legpontosabbat.
+A [második részben](sql-database-tutorial-predictive-model-build-compare.md)megtanulta, hogyan hozhat létre és taníthat több gépi tanulási modellt az R-ben, majd kiválaszthatja a legpontosabbat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyag-sorozat harmadik része feltételezi, hogy befejezte [**az első**](sql-database-tutorial-predictive-model-prepare-data.md) és a [**második részt.**](sql-database-tutorial-predictive-model-build-compare.md)
+* Az oktatóanyag-sorozat harmadik része feltételezi, hogy elvégezte az első [**részt**](sql-database-tutorial-predictive-model-prepare-data.md) , és a [**második részt.**](sql-database-tutorial-predictive-model-build-compare.md)
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>A modellt létrehozó tárolt eljárás létrehozása
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Modellt létrehozó tárolt eljárás létrehozása
 
-Az oktatóanyag-sorozat második részében úgy döntött, hogy a döntési fa (dtree) modell a legpontosabb. Most a kifejlesztett R-parancsfájlok használatával hozzon`generate_rental_rx_model`létre egy tárolt eljárást ( ), amely beindítja és létrehozza a dtree modellt a RevoScaleR csomag rxDTree használatával.
+Az oktatóanyag-sorozat második részében úgy döntött, hogy a döntési fa (dtree) modell a legpontosabb. Most, hogy a fejlesztett R-szkripteket használja, hozzon létre`generate_rental_rx_model`egy tárolt eljárást (), amely a dtree modellt a rxDTree használatával a RevoScaleR-csomagból állítja be és hozza létre.
 
-Futtassa a következő parancsokat az Azure Data Stu-ban vagy az SSMS-ben.
+Futtassa az alábbi parancsokat Azure Data Studio vagy SSMS.
 
 ```sql
 -- Stored procedure that trains and generates an R model using the rental_data and a decision tree algorithm
@@ -89,11 +89,11 @@ END;
 GO
 ```
 
-## <a name="store-the-model-in-a-database-table"></a>A modell tárolása adatbázistáblában
+## <a name="store-the-model-in-a-database-table"></a>A modell tárolása egy adatbázis-táblában
 
-Hozzon létre egy táblát a TutorialDB adatbázisban, majd mentse a modellt a táblába.
+Hozzon létre egy táblát a oktatóanyagaiban-adatbázisban, majd mentse a modellt a táblába.
 
-1. Hozzon létre`rental_rx_models`egy táblázatot ( ) a modell tárolására.
+1. Hozzon létre egy`rental_rx_models`táblát () a modell tárolásához.
 
     ```sql
     USE TutorialDB;
@@ -106,7 +106,7 @@ Hozzon létre egy táblát a TutorialDB adatbázisban, majd mentse a modellt a t
     GO
     ```
 
-1. Mentse a modellt a táblába bináris objektumként, az "rxDTree" modellnévvel.
+1. Mentse a modellt a táblázatba bináris objektumként a "rxDTree" nevű modellel.
 
     ```sql
     -- Save model to table
@@ -129,9 +129,9 @@ Hozzon létre egy táblát a TutorialDB adatbázisban, majd mentse a modellt a t
     FROM rental_rx_models;
     ```
 
-## <a name="create-a-stored-procedure-that-makes-predictions"></a>Előrejelzést tartalmazó tárolt eljárás létrehozása
+## <a name="create-a-stored-procedure-that-makes-predictions"></a>Előrejelzéseket tartalmazó tárolt eljárás létrehozása
 
-Hozzon létre egy`predict_rentalcount_new`tárolt eljárás ( ) , amely előrejelzéseket készít a betanított modell és egy sor új adatokat.
+Hozzon létre egy tárolt`predict_rentalcount_new`eljárást (), amely az előrejelzéseket a betanított modell és az új adatkészletek használatával teszi elérhetővé.
 
 ```sql
 -- Stored procedure that takes model name and new data as input parameters and predicts the rental count for the new data
@@ -174,9 +174,9 @@ END;
 GO
 ```
 
-## <a name="execute-the-model-with-new-data"></a>A modell végrehajtása új adatokkal
+## <a name="execute-the-model-with-new-data"></a>A modell végrehajtása új adattal
 
-Most már használhatja a `predict_rentalcount_new` tárolt eljárást, hogy előre jelezhesse a bérleti díjak számát az új adatokból.
+Mostantól a tárolt eljárással `predict_rentalcount_new` előre megjósolhatja az új adatok bérletének darabszámát.
 
 ```sql
 -- Use the predict_rentalcount_new stored procedure with the model name and a set of features to predict the rental count
@@ -198,30 +198,30 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-Sikeresen létrehozott, betanított és üzembe helyezett egy modellt egy Azure SQL-adatbázisban. Ezután ezt a modellt egy tárolt eljárásban használta az új adatokon alapuló értékek előrejelzéséhez.
+Sikeresen létrehozott, betanított és üzembe helyezett egy modellt egy Azure SQL Database-adatbázisban. Ezt a modellt egy tárolt eljárásban használta fel az értékek előrejelzésére az új adatok alapján.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha befejezte a TutorialDB adatbázis használatát, törölje azt az Azure SQL Database-kiszolgálóról.
+Ha befejezte a oktatóanyagaiban-adatbázis használatát, törölje azt a Azure SQL Database-kiszolgálóról.
 
-Az Azure Portalon kövesse az alábbi lépéseket:
+A Azure Portal hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** vagy **SQL-adatbázis lehetőséget.**
-1. A **Szűrés név szerint...** mezőbe írja be a **TutorialDB**mezőt, és válassza ki az előfizetést.
-1. Válassza ki a TutorialDB adatbázist.
+1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** vagy **SQL-adatbázis**lehetőséget.
+1. A **szűrés név szerint...** mezőbe írja be a **oktatóanyagaiban**nevet, és válassza ki az előfizetését.
+1. Válassza ki a oktatóanyagaiban-adatbázist.
 1. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag-sorozat harmadik részében az alábbi lépéseket hajtotta végre:
+Az oktatóanyag-sorozat harmadik része a következő lépéseket végezte el:
 
-* A gépi tanulási modellt létrehozó tárolt eljárás létrehozása
-* A modell tárolása adatbázistáblában
-* Olyan tárolt eljárás létrehozása, amely előrejelzéseket készít a modell használatával
-* A modell végrehajtása új adatokkal
+* A Machine learning-modellt létrehozó tárolt eljárás létrehozása
+* A modell tárolása egy adatbázis-táblában
+* Olyan tárolt eljárás létrehozása, amely az előrejelzéseket a modell használatával teszi lehetővé
+* A modell végrehajtása új adattal
 
-Ha többet szeretne tudni az R azure-beli SQL Database Machine Learning Services használatáról (előzetes verzió), olvassa el a következő témakört:
+Ha többet szeretne megtudni az R Azure SQL Database Machine Learning Services (előzetes verzió) használatáról, tekintse meg a következőt:
 
-* [Speciális R-függvények írása az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)
-* [R- és SQL-adatok kal való kapcsolat az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)
-* [R-csomag hozzáadása az Azure SQL Database Machine Learning Services szolgáltatáshoz (előzetes verzió)](sql-database-machine-learning-services-add-r-packages.md)
+* [Speciális R függvények írása a Azure SQL Database Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)
+* [R-és SQL-adatmennyiség használata Azure SQL Database Machine Learning Servicesban (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)
+* [R-csomag hozzáadása Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-machine-learning-services-add-r-packages.md)

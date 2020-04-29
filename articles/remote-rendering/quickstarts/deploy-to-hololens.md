@@ -1,64 +1,64 @@
 ---
-title: Unity-minta telepítése a HoloLensen
-description: Rövid útmutató, amely bemutatja, hogyan juthat el az Egység minta a HoloLens
+title: Unity-minta üzembe helyezése a HoloLensben
+description: Gyors útmutató, amely bemutatja, hogyan kérhető le az Unity minta a HoloLens
 author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
 ms.openlocfilehash: 75b6629ea924ec17888ec2f981ff85ed917434c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679736"
 ---
-# <a name="quickstart-deploy-unity-sample-to-hololens"></a>Rövid útmutató: Unity-minta telepítése a HoloLensen
+# <a name="quickstart-deploy-unity-sample-to-hololens"></a>Gyors útmutató: Unity-minta üzembe helyezése a HoloLens-ben
 
-Ez a rövid útmutató bemutatja, hogyan telepítheti és futtatható a Unity rövid útmutatóminta alkalmazását a HoloLens 2-n.
+Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe és futtathatja az Unity-hez készült gyors üzembe helyezési minta alkalmazást a 2. HoloLens.
 
-Ebben a rövid útmutatóban megtudhatja, hogyan:
+Ebből a rövid útmutatóból megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 >
->* A HoloLens rövid útmutatómintaalkalmazásának létrehozása
->* A minta telepítése az eszközre
+>* A HoloLens-hez készült gyors üzembe helyezési minta alkalmazás összeállítása
+>* A minta üzembe helyezése az eszközön
 >* A minta futtatása az eszközön
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a rövid útmutatóban a mintaprojektet a [Rövid útmutatóból telepítjük: Egy modell renderelése unityvel.](render-model.md)
+Ebben a rövid útmutatóban a minta projektet a gyors üzembe helyezési pontról fogjuk üzembe helyezni [: modell megjelenítése egységgel](render-model.md).
 
-Győződjön meg arról, hogy a hitelesítő adatok mentése megfelelően a jelenetet, és csatlakozhat a munkamenet az Egység szerkesztő.
+Győződjön meg arról, hogy a hitelesítő adatai megfelelően vannak mentve a jelenettel, és csatlakozhat egy munkamenethez az Unity editoron belülről.
 
-## <a name="build-the-sample-project"></a>A mintaprojekt létrehozása
+## <a name="build-the-sample-project"></a>A minta projekt összeállítása
 
-1. Nyissa *meg a Fájl > a létrehozási beállításokat.*
-1. *Platform* módosítása **univerzális Windows-platformra**
-1. *A céleszköz* beállítása **holoLensre**
-1. *Architektúra* beállítása **ARM64-re**
-1. A *Build Type (Létrehozástípusa)* beállítás **D3D-projektbuild-beállításokra** ![](./media/unity-build-settings.png)
-1. Válaszd **a Platformra váltás lehetőséget.**
-1. A **Build** (vagy "Build And Run") billentyű lenyomásakor a rendszer megkéri, hogy válasszon ki egy mappát, ahol a megoldást tárolni kell
-1. A létrehozott **Quickstart.sln** megnyitása a Visual Studio segítségével
-1. A konfiguráció módosítása **Kiadás** és **ARM64 beállításra**
-1. A hibakereső mód váltása **a Távoli gépmegoldás** ![konfigurációjára](media/unity-deploy-config.png)
-1. Készítsd el a megoldást (F7)
-1. A "Gyorsútmutató" projekthez nyissa meg *a Tulajdonságok > hibakeresés című projektet.*
-    1. Győződjön meg arról, hogy a *konfigurációs kiadás* aktív
-    1. A *Hibakereső indítása* **távoli számítógépre**
-    1. *A gépnév* módosítása a **HoleLens IP-címére**
+1. Nyissa meg a *fájl > a létrehozási beállítások menüpontot*.
+1. *Platform* módosítása **univerzális Windows-platformre**
+1. *Cél eszköz* beállítása **HoloLens**
+1. *Architektúra* beállítása **ARM64**
+1. *Build típusának* beállítása a **D3D-projekt** ![létrehozási beállításaihoz](./media/unity-build-settings.png)
+1. Válassza **a váltás a platformra** lehetőséget
+1. A **Build** (vagy a build és a Run) gomb megnyomásakor a rendszer arra kéri, hogy válasszon ki egy mappát, ahol a megoldást tárolni szeretné
+1. A generált gyors útmutató **SLN** megnyitása a Visual Studióval
+1. Konfiguráció módosítása **kiadásra** és **ARM64**
+1. A hibakereső üzemmód átváltása a **távoli gépi** ![megoldás konfigurációjához](media/unity-deploy-config.png)
+1. Megoldás létrehozása (F7)
+1. A "gyors útmutató" projekt esetében lépjen a *tulajdonságok > hibakeresés* elemre.
+    1. Győződjön meg arról, hogy a konfigurációs *kiadás* aktív
+    1. Hibakereső beállítása a **Távoli gépre** *való indításhoz*
+    1. A *számítógép nevének* módosítása a **HoleLens IP-** címére
 
-## <a name="launch-the-sample-project"></a>A mintaprojekt elindítása
+## <a name="launch-the-sample-project"></a>A minta projekt elindítása
 
-1. Csatlakoztassa a HoloLenst USB-kábellel a számítógéphez.
-1. Indítsa el a hibakeresőt a Visual Studio (F5) alkalmazásban. Automatikusan telepíti az alkalmazást az eszközre.
+1. Csatlakoztassa a HoloLens USB-kábellel a számítógéphez.
+1. Indítsa el a hibakeresőt a Visual Studióban (F5). A rendszer automatikusan telepíti az alkalmazást az eszközre.
 
-A mintaalkalmazásnak el kell indítania, majd új munkamenetet kell indítania. Egy idő után a munkamenet készen áll, és a távolról renderelt modell megjelenik ön előtt.
-Ha később szeretné elindítani a mintát, akkor most a HoloLens start menüjéből is megtalálhatja.
+A minta alkalmazásnak el kell indítania, majd el kell indítania egy új munkamenetet. Egy idő után a munkamenet készen áll, és a távolról renderelt modell fog megjelenni az Ön előtt.
+Ha később szeretné elindítani a mintát, azt a HoloLens Start menüjéből is megtalálhatja.
 
 ## <a name="next-steps"></a>További lépések
 
-A következő rövid útmutatóban egy egyéni modell konvertálását vizsgáljuk.
+A következő rövid útmutatóban egy egyéni modell átalakítását fogjuk megtekinteni.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Modell konvertálása rendereléshez](convert-model.md)
+> [Gyors útmutató: modell átalakítása renderelésre](convert-model.md)

@@ -1,73 +1,73 @@
 ---
-title: Mi az Azure FarmBeats
+title: Mi az Azure FarmBeats?
 description: Áttekintést nyújt az Azure FarmBeats
 author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80667310"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Az Azure FarmBeats áttekintése (előzetes verzió)
 
-Az Azure FarmBeats egy olyan vállalkozáson belüli ajánlat, amely elérhető az Azure Piactéren. Lehetővé teszi a mezőgazdasági adatkészletek szolgáltatók közötti összesítését. Az Azure FarmBeats lehetővé teszi, hogy mesterséges intelligencia (AI) vagy gépi tanulási (ML) modelleket hozzon létre olvasztott adatkészletek alapján. Az Azure FarmBeats használatával a mezőgazdasági vállalkozások az alapvető értéknövelésekre összpontosíthatnak az adattervezés differenciálatlan nehéz emelése helyett.
+Az Azure FarmBeats egy, az Azure Marketplace-en elérhető üzleti célú ajánlat. Lehetővé teszi a mezőgazdasági adathalmazok összesítését a szolgáltatók között. Az Azure FarmBeats lehetővé teszi a mesterséges intelligencia (AI) vagy gépi tanulási (ML) modellek összeolvasztott adatkészleteken alapuló összeállítását. Az Azure FarmBeats használatával a mezőgazdasági vállalkozások a legfontosabb értékekre összpontosítanak, nem pedig az adatkezelés nem differenciált nagy mennyiségű emelését.
 
 > [!NOTE]
-> Az Azure FarmBeats jelenleg nyilvános előzetes verzióban érhető el. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Az Azure FarmBeats szolgáltatásszint-szerződés nélkül biztosított. Támogatáshoz használja az [Azure FarmBeats fórumot.](https://aka.ms/FarmBeatsMSDN )
+> Az Azure FarmBeats jelenleg nyilvános előzetes verzióban érhető el. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az Azure-FarmBeats szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja az [Azure FarmBeats fórumot](https://aka.ms/FarmBeatsMSDN ) .
 
-![Projekt Farm Beats](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![A Project Farm veri](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
-Az Azure FarmBeats előzetes verziójával a következőket teheti:
+Az Azure FarmBeats előzetes verziójában a következőket teheti:
 
-- A mezőgazdasági üzem egészségi állapotának felmérése a vegetációs index és a vízindex alapján műholdas felvételek alapján.
-- Ajánlásokat kaphat arra vonatkozóan, hogy hány talajnedvesség-érzékelőt kell használni, és hová kell elhelyezni őket.
-- Kövesse nyomon a farmok körülményeit a különböző gyártók érzékelői által gyűjtött földi adatok megjelenítésével.
-- Kap a talaj nedvesség térkép alapján a fúziós műholdas és érzékelő adatok.
-- Az AI/ML modellek összesített adatkészletekre való felépítésével használható információkhoz juthat.
-- Építse fel vagy bővítse digitális mezőgazdasági megoldását a mezőgazdasági egészségügyi tanácsadással.
+- A farm állapotának felmérése a vegetációs index és a vízindex használatával, a műholdképek alapján.
+- Javaslatokat kaphat arról, hogy hány nedvesség-érzékelőt használ, és hová helyezheti őket.
+- Nyomon követheti a farm feltételeit, ha a különböző gyártóktól származó érzékelők által gyűjtött alapvető adatokat jeleníti meg.
+- A talaj nedvességtartalmának leképezése a műhold és az érzékelő adategyesítése alapján.
+- Az összesített adathalmazok alapján az AI/ML modellek kiépítése révén hasznosítható elemzéseket nyerhet.
+- A farm Health Advisor szolgáltatásával kiépítheti vagy kiegészítheti a digitális mezőgazdaság megoldását.
 
-## <a name="datahub"></a>Datahub (Adatközpont)
+## <a name="datahub"></a>Datahub
 
-Az Azure FarmBeats Datahub egy API-réteg, amely lehetővé teszi a különböző mezőgazdasági adatkészletek összesítését, normalizálását és környezetnyelvi vétését a szolgáltatók között. Az Azure FarmBeats segítségével a következőket kaphatja:
-- Két érzékelőszolgáltató, [a Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/), [teralitikus](https://teralytic.com/), [Pessl Instruments](https://metos.at/) **érzékelőadatai**
-- **Műholdas képek az** Európai Űrügynökség [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) műholdküldetéséről
-- **Drone képek** három drone képszolgáltatók [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/)
+Az Azure FarmBeats Datahub egy API-réteg, amely lehetővé teszi különböző mezőgazdasági adatkészletek összesítését, normalizálása és contextualization a szolgáltatók között. Az Azure FarmBeats a következőket érheti el:
+- **Érzékelői adatok** két érzékelő szolgáltató [Davis-eszközökről](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [Pessl Instruments-eszközökről](https://metos.at/)
+- **Műhold-rendszerképek** az Európai Űrügynökség [Sentinel-2 műhold-](https://sentinel.esa.int/web/sentinel/home) missziójáról
+- **Drone-képek** három drone-rendszerképekből [a senseFly](https://www.sensefly.com/) , a [SlantRange](https://slantrange.com/) , a [DJI](https://dji.com/)
 
-A Datahub bővíthető API-platformként lett tervezve. Sokkal több szolgáltatóval dolgozunk együtt az Azure FarmBeats szolgáltatással való integráción, így több választási lehetősége van a megoldás létrehozása során.
+A Datahub bővíthető API-platformként lett kialakítva. Több szolgáltatóval dolgozunk együtt az Azure FarmBeats való integrációval, így a megoldás kialakítása során több lehetőség is van.
 
-## <a name="accelerator"></a>Gyorsító
+## <a name="accelerator"></a>Accelerator
 
-Az Azure FarmBeats accelerator egy minta webalkalmazás, amely a Datahub ra épül. A gyorssegéd ugrás-elindítja a felhasználói felület és a modell fejlesztése. Az Azure FarmBeats gyorsító az Azure FarmBeats API-kat használja. A bevitt érzékelőadatokat diagramként és modellkimenetként ábrázolja térképként. A gyorsító val gyorsan létrehozhat egy farmot, és könnyen lekaphat egy vegetációs indextérképet vagy egy érzékelőelhelyezési térképet az adott farmhoz.
+Az Azure FarmBeats Accelerator egy minta webalkalmazás, amely a Datahub-re épül. A Gyorssegéd-ugrás elindítja a felhasználói felületet és a modell fejlesztését. Az Azure FarmBeats Accelerator Azure FarmBeats API-kat használ. Térképként jeleníti meg a betöltött érzékelő adatokat diagramok és modellek kimenetként. A Gyorssegéd használatával például gyorsan létrehozhatja a farmokat, és könnyen elvégezheti a vegetációs index térképét vagy az érzékelő elhelyezési térképét.
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-A rendszergazda hozzáférési szabályokat definiálhat az Azure FarmBeats-hez az előre definiált szerepkörök egyikének használatával. A szerepkörök határozzák meg, hogy a felhasználó milyen területeken férhet hozzá a felhasználóhoz, és milyen műveleteket hajthat végre. Az Azure FarmBeats-ben kétféle szerepkör létezik – a felhasználók és a partnerek számára.
+A rendszergazdák az előre definiált szerepkörök egyikével meghatározhatják az Azure FarmBeats hozzáférési szabályait. A szerepkörök határozzák meg, hogy az alkalmazás mely területeihez férhet hozzá a felhasználók, és milyen műveleteket végezhetnek el. Az Azure FarmBeats kétféle szerepkört biztosít a felhasználók és a partnerek számára.
 
 ### <a name="user-roles"></a>Felhasználói szerepkörök
 
-A [rendszergazda felhasználókat vehet fel és kezelhet,](manage-users-in-azure-farmbeats.md) és hozzáférési szintjüket két felhasználói szerepkör alapján határozhatja meg: rendszergazdaés írásvédett.
+A rendszergazdák két felhasználói szerepkör alapján adhatnak [hozzá és kezelhetnek felhasználókat](manage-users-in-azure-farmbeats.md) , és meghatározhatják hozzáférési szintjeiket: rendszergazda és csak olvasható.
 
 ### <a name="partner-roles"></a>Partneri szerepkörök
 
-A rendszergazda több partnert is hozzáadhat adatszolgáltatóként az Azure FarmBeats-hez. A farmbeats-ben rendelkezésre álló partnerszerepköröket és azok engedélyeit összegezve:
+A rendszergazdák több partnert is hozzáadhatnak adatszolgáltatóként az Azure FarmBeats. A következő összefoglalja a FarmBeats-ben elérhető partneri szerepköröket és azok engedélyeit:
 
 | Partner típusa    |   Műveletek  | Hatókör |
 | ---- | -------- | -------- |
-| Érzékelő partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés | DeviceModel, Eszköz, SensorModel, Érzékelő <br/> <br/> Kiterjesztett típus |
-| Képi partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | Jelenet, Jelenetfájl <br/> <br/> Kiterjesztett típus <br/> <br/> Farm |
-| Időjárás partner* <br/> <br/>  (* Hamarosan) |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | WeatherDataModel, WeatherDataLocation, Feladattípus <br/> <br/> Kiterjesztett típus <br/> <br/> Farm |
+| Érzékelő partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés | DeviceModel, eszköz, SensorModel, érzékelő <br/> <br/> ExtendedType |
+| Képekkel rendelkező partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | Jelenet, SceneFile <br/> <br/> ExtendedType <br/> <br/> Farm |
+| Időjárási partner * <br/> <br/>  (* Hamarosan érkezik) |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Farm |
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
-Az Azure FarmBeats-t díjmentesen kínáljuk, és csak a használt Azure-erőforrásokért kell fizetnie. Az alábbi források segítségével többet tudhat meg az ajánlatról:
+Az Azure FarmBeats díjmentesen vehető igénybe, és csak a használt Azure-erőforrásokért kell fizetnie. Az alábbi források segítségével többet tudhat meg az ajánlatról:
 
-- Tájékozódjon az Azure FarmBeats legfrissebb híreiről az [Azure FarmBeats blogunk](https://aka.ms/farmbeatsblog)felkeresésével.
-- Kérjen segítséget az Azure [FarmBeats támogatási fórumán](https://aka.ms/farmbeatssupport)közzétett kérdésekkel.
-- Visszajelzésküldéset az [Azure FarmBeats visszajelzési fórumunkon](https://aka.ms/farmbeatsfeedback)közzétett vagy megszavazott funkcióötlettel.
+- Tekintse meg a legújabb Azure FarmBeats híreket, ha meglátogatja az [Azure FarmBeats blogját](https://aka.ms/farmbeatsblog).
+- Kérjen segítséget az [Azure FarmBeats támogatási fórumának](https://aka.ms/farmbeatssupport)kérdéseivel.
+- Küldjön visszajelzést az [Azure FarmBeats visszajelzési fórumának](https://aka.ms/farmbeatsfeedback)funkcióinak közzétételével vagy szavazásával.
 
 ## <a name="next-steps"></a>További lépések
 

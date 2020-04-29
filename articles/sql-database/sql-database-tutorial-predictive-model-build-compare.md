@@ -1,7 +1,7 @@
 ---
-title: 'Bemutató: Vonat és hasonlítsa össze a prediktív modellek R'
+title: 'Oktatóanyag: prediktív modellek betanítása és összehasonlítása az R-ben'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: A háromrészes oktatóanyag-sorozat második részében két prediktív modellt hozhat létre az R-ben az Azure SQL Database Machine Learning Services (előzetes verzió) használatával, majd kiválaszthatja a legpontosabb modellt.
+description: A jelen háromrészes oktatóanyag-sorozat második részében két prediktív modellt hoz létre az R-ben Azure SQL Database Machine Learning Services (előzetes verzió), majd kiválasztja a legpontosabb modellt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,36 +15,36 @@ manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0985b37280e3cd363ba1728a5ec33b0012611ab2
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452927"
 ---
-# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Prediktív modell létrehozása az R-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)
+# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: prediktív modell létrehozása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
 
-A háromrészes oktatóanyag-sorozat második részében két prediktív modellt hozhat létre az R-ben, és kiválaszthatja a legpontosabb modellt. A sorozat következő részében ezt a modellt egy SQL-adatbázisban telepíti az Azure SQL Database Machine Learning Services használatával (előzetes verzió).
+A háromrészes oktatóanyag-sorozat második részében két prediktív modellt hoz létre az R-ben, és kiválasztja a legpontosabb modellt. A sorozat következő részében ezt a modellt egy Azure SQL Database Machine Learning Servicest (előzetes verzió) tartalmazó SQL-adatbázisban fogja telepíteni.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-Ebben a cikkben megtudhatja, hogyan:
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * Két gépi tanulási modell betanítása
-> * Előrejelzések et készíthet mindkét modellből
-> * Hasonlítsa össze az eredményeket, hogy kiválassza a legpontosabb modellt
+> * Előrejelzések készítése mindkét modellből
+> * Hasonlítsa össze az eredményeket a legpontosabb modell kiválasztásához
 
-Az [első részben](sql-database-tutorial-predictive-model-prepare-data.md)megtanulta, hogyan importálhat egy mintaadatbázist, majd előkészíti az adatokat az R prediktív modell betanításához.
+Az első [részben](sql-database-tutorial-predictive-model-prepare-data.md)megtanulta, hogyan importálhat egy minta-adatbázist, majd hogyan készítheti elő a prediktív modell az R-ben való betanításához használni kívánt adatfeldolgozást.
 
-A [harmadik részben](sql-database-tutorial-predictive-model-deploy.md)megtudhatja, hogyan tárolhatja a modellt egy adatbázisban, majd hozzon létre tárolt eljárásokat az első és a második részben kifejlesztett R-parancsfájlokból. A tárolt eljárások egy SQL-adatbázisban futnak, hogy új adatok alapján előrejelzéseket készítsenek.
+A [harmadik részből](sql-database-tutorial-predictive-model-deploy.md)megtudhatja, hogyan tárolhatja a modellt egy adatbázisban, majd hogyan hozhat létre tárolt eljárásokat az 1. és a 2. részekben kifejlesztett R-parancsfájlok alapján. A tárolt eljárások egy SQL-adatbázisban futnak, így az előrejelzések az új adatértékek alapján lesznek elérhetők.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyag második része feltételezi, hogy befejezte az [**első részt**](sql-database-tutorial-predictive-model-prepare-data.md) és annak előfeltételeit.
+* Az oktatóanyag második része feltételezi, hogy elvégezte az [**első részt**](sql-database-tutorial-predictive-model-prepare-data.md) , és annak előfeltételeit.
 
 ## <a name="train-two-models"></a>Két modell betanítása
 
-A síbérleti adatok legjobb modelljének megtalálásához hozzon létre két különböző modellt (lineáris regressziós és döntési fa), és nézze meg, melyiket jósolja meg pontosabban. A sorozat első részében létrehozott adatkeretet `rentaldata` fogja használni.
+A Ski Rental-információk legjobb modelljének megkereséséhez hozzon létre két különböző modellt (lineáris regressziós és döntési fát), és nézze meg, melyik a pontosabb előrejelzés. A sorozat első részében létrehozott `rentaldata` adatkeretet fogja használni.
 
 ```r
 #First, split the dataset into two different sets:
@@ -62,9 +62,9 @@ model_linmod <- rxLinMod(RentalCount ~  Month + Day + WeekDay + Snow + Holiday, 
 model_dtree  <- rxDTree(RentalCount ~ Month + Day + WeekDay + Snow + Holiday, data = train_data);
 ```
 
-## <a name="make-predictions-from-both-models"></a>Előrejelzések et készíthet mindkét modellből
+## <a name="make-predictions-from-both-models"></a>Előrejelzések készítése mindkét modellből
 
-A predict funkció segítségével előre jelezheti a bérleti díjak száma az egyes betanított modellek használatával.
+Az egyes betanított modellek használatával előre jelezheti a bérletek számát.
 
 ```r
 #Use both models to make predictions using the test data set.
@@ -96,7 +96,7 @@ head(predict_dtree);
 
 ## <a name="compare-the-results"></a>Az eredmények összehasonlítása
 
-Most szeretné látni, hogy melyik modell adja a legjobb előrejelzéseket. Ennek gyors és egyszerű módja, ha egy alapszintű nyomtatási függvényt használ a betanítási adatok ban szereplő tényleges értékek és az előre jelzett értékek közötti különbség megtekintéséhez.
+Most szeretné megtekinteni, hogy melyik modell a legjobb előrejelzéseket kínálja. Ennek gyors és egyszerű módja egy alapszintű ábrázolási függvény használata a betanítási adatok és az előre jelzett értékek tényleges értékei közötti különbség megtekintéséhez.
 
 ```r
 #Use the plotting functionality in R to visualize the results from the predictions
@@ -107,28 +107,28 @@ plot(predict_dtree$RentalCount_Pred  - predict_dtree$RentalCount,  main = "Diffe
 
 ![A két modell összehasonlítása](./media/sql-database-tutorial-predictive-model-build-compare/compare-models.png)
 
-Úgy néz ki, mint a döntési fa modell a pontosabb a két modell.
+Úgy tűnik, a döntési famodell a két modell pontosabb példája.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja ezt az oktatóanyagot, törölje a TutorialDB adatbázist az Azure SQL Database-kiszolgálóról.
+Ha nem folytatja ezt az oktatóanyagot, törölje a oktatóanyagaiban-adatbázist a Azure SQL Database-kiszolgálóról.
 
-Az Azure Portalon kövesse az alábbi lépéseket:
+A Azure Portal hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** vagy **SQL-adatbázis lehetőséget.**
-1. A **Szűrés név szerint...** mezőbe írja be a **TutorialDB**mezőt, és válassza ki az előfizetést.
-1. Válassza ki a TutorialDB adatbázist.
+1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** vagy **SQL-adatbázis**lehetőséget.
+1. A **szűrés név szerint...** mezőbe írja be a **oktatóanyagaiban**nevet, és válassza ki az előfizetését.
+1. Válassza ki a oktatóanyagaiban-adatbázist.
 1. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag-sorozat második részében az alábbi lépéseket hajtotta végre:
+Az oktatóanyag-sorozat második részében a következő lépéseket végezte el:
 
 * Két gépi tanulási modell betanítása
-* Előrejelzések et készíthet mindkét modellből
-* Hasonlítsa össze az eredményeket, hogy kiválassza a legpontosabb modellt
+* Előrejelzések készítése mindkét modellből
+* Hasonlítsa össze az eredményeket a legpontosabb modell kiválasztásához
 
-A létrehozott gépi tanulási modell üzembe helyezéséhez kövesse az oktatóanyag-sorozat harmadik részét:
+A létrehozott Machine learning-modell üzembe helyezéséhez kövesse az oktatóanyag-sorozat harmadik részét:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Prediktív modell üzembe helyezése az R-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)](sql-database-tutorial-predictive-model-deploy.md)
+> [Oktatóanyag: prediktív modell üzembe helyezése az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-tutorial-predictive-model-deploy.md)

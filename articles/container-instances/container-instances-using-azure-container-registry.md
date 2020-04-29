@@ -1,46 +1,46 @@
 ---
-title: Tárolórendszerkép üzembe helyezése az Azure Container Registry alkalmazásból
-description: Megtudhatja, hogyan helyezheti üzembe a tárolókat az Azure Container Instances-ben az Azure-tároló rendszerpéldányainak leésével.
+title: Tároló lemezképének üzembe helyezése Azure Container Registry
+description: Megtudhatja, hogyan helyezhet üzembe tárolókat a Azure Container Instancesban tároló-lemezképek Azure Container registryből való húzásával.
 services: container-instances
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453523"
 ---
-# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés az Azure Container-példányokba az Azure Container Registry-ből
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés a Azure Container Instances Azure Container Registry
 
-[Az Azure Container Registry](../container-registry/container-registry-intro.md) egy Azure-alapú, felügyelt tároló beállításjegyzék-szolgáltatás, amely a privát Docker-tárolórendszerképek tárolására szolgál. Ez a cikk ismerteti, hogyan lekéréses tárolólemezképek egy Azure container registry az Azure Container-példányok üzembe helyezésekor. A beállításjegyzék-hozzáférés konfigurálásának ajánlott módja az Azure Active Directory egyszerű szolgáltatásés jelszó létrehozása, és a bejelentkezési hitelesítő adatok tárolása egy Azure-kulcstartóban.
+[Azure Container Registry](../container-registry/container-registry-intro.md) egy Azure-alapú, felügyelt tároló beállításjegyzék-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez a cikk azt ismerteti, hogyan hívhat le egy Azure Container registryben tárolt tároló-lemezképet a Azure Container Instances üzembe helyezése során. A beállításjegyzék-hozzáférés konfigurálásának ajánlott módja egy Azure Active Directory egyszerű szolgáltatásnév és jelszó létrehozása, és a bejelentkezési hitelesítő adatok tárolása egy Azure Key vaultban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Azure container registry:** A cikkben leírt lépések végrehajtásához szüksége van egy Azure-tároló beállításjegyzékére – és legalább egy tárolórendszerképre a beállításjegyzékben. Ha szüksége van egy beállításjegyzékre, olvassa el a [Tároló beállításjegyzékének létrehozása az Azure CLI használatával című témakört.](../container-registry/container-registry-get-started-azure-cli.md)
+**Azure Container Registry**: szüksége van egy Azure Container registryre – és legalább egy tároló-rendszerképre a beállításjegyzékben – a cikk lépéseinek végrehajtásához. Ha szüksége van egy beállításjegyzékre, tekintse meg a [tároló-beállításjegyzék létrehozása az Azure CLI használatával](../container-registry/container-registry-get-started-azure-cli.md)című témakört.
 
-**Azure CLI:** A parancssori példák ebben a cikkben az [Azure CLI](/cli/azure/) használatával, és a Bash shell formázott. [Telepítheti az Azure CLI-t](/cli/azure/install-azure-cli) helyileg, vagy használhatja az [Azure Cloud Shellt.][cloud-shell-bash]
+**Azure CLI**: az ebben a cikkben szereplő parancssori példák az [Azure CLI](/cli/azure/) -t használják, és a bash rendszerhéjhoz vannak formázva. [Az Azure CLI](/cli/azure/install-azure-cli) -t helyileg is telepítheti, vagy használhatja a [Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="configure-registry-authentication"></a>Regisztrációs adatbázis hitelesítésének konfigurálása
 
-Egy éles környezetben, ahol hozzáférést biztosít a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, ajánlott a rendszerleíró adatbázis-hozzáférést egyszerű szolgáltatás használatával [konfigurálni.](../container-registry/container-registry-auth-service-principal.md) Egy egyszerű szolgáltatás lehetővé teszi, hogy [szerepköralapú hozzáférés-vezérlést](../container-registry/container-registry-roles.md) biztosítson a tárolórendszerképekhez. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
+Olyan éles környezetben, ahol hozzáférést biztosít a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, javasoljuk, hogy konfigurálja a beállításjegyzék-hozzáférést egy [egyszerű szolgáltatásnév](../container-registry/container-registry-auth-service-principal.md)használatával. Az egyszerű szolgáltatás lehetővé teszi, hogy [szerepköralapú hozzáférés-vezérlést](../container-registry/container-registry-roles.md) biztosítson a tároló lemezképéhez. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
 
-Az Azure Container Registry további [hitelesítési beállításokat](../container-registry/container-registry-authentication.md)biztosít.
+A Azure Container Registry további [hitelesítési lehetőségeket](../container-registry/container-registry-authentication.md)biztosít.
 
 > [!NOTE]
-> Nem hitelesíthető az Azure Container Registry rendszerpéldánya a tárolócsoport üzembe helyezése során az ugyanabban a tárolócsoportban konfigurált [felügyelt identitás](container-instances-managed-identity.md) használatával.
+> Nem végezheti el a hitelesítést úgy, hogy Azure Container Registry a lemezképek lekérését a tároló csoportjának telepítése során egy ugyanazon a tároló csoportban konfigurált [felügyelt identitás](container-instances-managed-identity.md) használatával.
 
-A következő szakaszban hozzon létre egy Azure-kulcstartót és egy egyszerű szolgáltatást, és tárolja az egyszerű szolgáltatás hitelesítő adatait a tárolóban. 
+A következő szakaszban létrehoz egy Azure Key vaultot és egy szolgáltatásnevet, és tárolja az egyszerű szolgáltatásnév hitelesítő adatait a tárolóban. 
 
 ### <a name="create-key-vault"></a>Kulcstároló létrehozása
 
 Ha még nem rendelkezik tárolóval az [Azure Key Vaultban](../key-vault/general/overview.md), hozzon létre egyet az Azure CLI alábbi parancsaival.
 
-Frissítse `RES_GROUP` a változót egy meglévő erőforráscsoport nevével, amelyben `ACR_NAME` a kulcstartót létre szeretné hozni, és a tároló beállításjegyzékének nevével. Röviden, a cikkben szereplő parancsok feltételezik, hogy a rendszerleíró adatbázis, a key vault és a tároló példányok mind ugyanabban az erőforráscsoportban jönnek létre.
+Frissítse a `RES_GROUP` változót egy meglévő erőforráscsoport nevével, amelyben létrehozza a kulcstárolót, valamint `ACR_NAME` a tároló-beállításjegyzék nevét. A rövidség kedvéért a cikkben szereplő parancsok azt feltételezik, hogy a beállításjegyzék, a kulcstartó és a tároló példányok mindegyike ugyanabban az erőforráscsoporthoz lett létrehozva.
 
- Adja meg az új kulcstartó nevét a ban. `AKV_NAME` A tároló nevének egyedinek kell lennie az Azure-on belül, és 3–24 alfanumerikus karakter hosszúságúnak kell lennie, betűvel kell kezdődnie, betűvel vagy számjegyével kell végződnie, és nem tartalmazhat egymást követő kötőjeleket.
+ Adja meg az új kulcstartó nevét a alkalmazásban `AKV_NAME`. A tár nevének egyedinek kell lennie az Azure-on belül, és 3-24 alfanumerikus karakterből kell állnia, betűvel kell kezdődnie, betűvel vagy számmal kell végződnie, és nem tartalmazhat egymást követő kötőjeleket.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -52,9 +52,9 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 ### <a name="create-service-principal-and-store-credentials"></a>Szolgáltatásnév létrehozása és a hitelesítő adatok tárolása
 
-Most hozzon létre egy egyszerű szolgáltatást, és tárolja a hitelesítő adatait a key vaultban.
+Most hozzon létre egy egyszerű szolgáltatásnevet, és tárolja a hitelesítő adatait a kulcstartóban.
 
-A következő parancs az [ad sp create-for-rbac][az-ad-sp-create-for-rbac] segítségével hozza létre a szolgáltatásnév, és az [a keyvault titkos készlet][az-keyvault-secret-set] tárolja a szolgáltatásnév **jelszavát** a tárolóban.
+A következő parancs az [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] használatával hozza létre az egyszerű szolgáltatásnevet, és az az Key [Vault Secret set][az-keyvault-secret-set] paranccsal tárolja a szolgáltatásnév **jelszavát** a tárolóban.
 
 ```azurecli
 # Create service principal, store its password in vault (the registry *password*)
@@ -69,9 +69,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Az `--role` előző parancsargumentum ban található argumentum az *acrpull* szerepkörrel konfigurálja a szolgáltatásnév, amely csak lekéréses hozzáférést biztosít számára a beállításjegyzékhez. A push és pull hozzáférés `--role` engedélyezéséhez módosítsa az argumentumot *acrpush*-ra.
+Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű szolgáltatást a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa az `--role` argumentumot *acrpush*értékre.
 
-Ezután tárolja az egyszerű szolgáltatás *appId-ját* a tárolóban, amely az Azure Container Registry hitelesítéshez megadott **felhasználóneve.**
+Ezután tárolja a szolgáltatásnév *AppID* a tárolóban, amely a hitelesítéshez Azure Container Registry átadni kívánt **Felhasználónév** .
 
 ```azurecli
 # Store service principal ID in vault (the registry *username*)
@@ -90,15 +90,15 @@ Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy a
 
 ## <a name="deploy-container-with-azure-cli"></a>Tároló üzembe helyezése az Azure CLI használatával
 
-Most, hogy a szolgáltatás egyszerű hitelesítő adatok az Azure Key Vault titkos kulcsai, az alkalmazások és szolgáltatások használhatják őket a privát beállításjegyzék eléréséhez.
+Most, hogy az egyszerű szolgáltatás hitelesítő adatai Azure Key Vault titkos kulcsokban vannak tárolva, az alkalmazások és a szolgáltatások használhatják őket a privát beállításjegyzék eléréséhez.
 
-Először az [az acr show][az-acr-show] parancsot használja a rendszerleíró adatbázis bejelentkezési kiszolgálójának nevéhez. A bejelentkezési kiszolgáló neve kisbetűs `myregistry.azurecr.io`és hasonló a hoz.
+Először kérje le a beállításjegyzék bejelentkezési kiszolgálójának nevét az az [ACR show][az-acr-show] parancs használatával. A bejelentkezési kiszolgáló neve minden kisbetűs, és hasonló a `myregistry.azurecr.io`következőhöz:.
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
 ```
 
-A következő [az container create][az-container-create] parancs végrehajtásával helyezzen üzembe egy tárolópéldányt. A parancs az Azure Key Vaultban tárolt egyszerű szolgáltatás hitelesítő adatait használja a tároló beállításjegyzékében való hitelesítéshez, és feltételezi, hogy korábban lelökte az [aci-helloworld](container-instances-quickstart.md) lemezképet a rendszerleíró adatbázisba. Frissítse `--image` az értéket, ha a rendszerleíró adatbázistól eltérő lemezképet szeretne használni.
+A következő [az container create][az-container-create] parancs végrehajtásával helyezzen üzembe egy tárolópéldányt. A parancs a Azure Key Vault tárolt hitelesítő adatokat használja a tároló beállításjegyzékének hitelesítéséhez, és feltételezi, hogy korábban leküldte az [ACI-HelloWorld](container-instances-quickstart.md) rendszerképet a beállításjegyzékbe. Frissítse az `--image` értéket, ha másik rendszerképet szeretne használni a beállításjegyzékből.
 
 ```azurecli
 az container create \
@@ -112,17 +112,17 @@ az container create \
     --query ipAddress.fqdn
 ```
 
-Az `--dns-name-label` értéknek egyedinek kell lennie az Azure-on belül, így az előző parancs egy véletlen számot fűz a tároló DNS-névcímkéjéhez. A parancs kimenete a tároló teljes tartománynevét jeleníti meg, például:
+Az `--dns-name-label` értéknek egyedinek kell lennie az Azure-on belül, így az előző parancs egy véletlenszerű számot fűz a tároló DNS-neve címkéjéhez. A parancs kimenete a tároló teljes tartománynevét jeleníti meg, például:
 
 ```output
 "aci-demo-25007.eastus.azurecontainer.io"
 ```
 
-Miután a tároló sikeresen elindult, a böngészőben a teljes tartománynát a böngészőben navigálva ellenőrizheti, hogy az alkalmazás sikeresen fut-e.
+Miután a tároló sikeresen elindult, megnyithatja a teljes tartománynevet a böngészőben annak ellenőrzéséhez, hogy az alkalmazás sikeresen fut-e.
 
-## <a name="deploy-with-azure-resource-manager-template"></a>Üzembe helyezés az Azure Resource Manager sablonnal
+## <a name="deploy-with-azure-resource-manager-template"></a>Üzembe helyezés Azure Resource Manager sablonnal
 
-Az Azure-tároló beállításjegyzékének tulajdonságait egy Azure Resource Manager-sablonban adhatja meg, ha a `imageRegistryCredentials` tulajdonságot a tárolócsoport-definícióba is beleadja. Megadhatja például közvetlenül a rendszerleíró adatbázis hitelesítő adatait:
+A Azure Resource Manager-sablonban megadhatja az Azure Container Registry tulajdonságait úgy, hogy a `imageRegistryCredentials` tároló csoport definíciójában lévő tulajdonságot is megadja. Megadhatja például a beállításjegyzék hitelesítő adatait közvetlenül:
 
 ```JSON
 [...]
@@ -136,33 +136,33 @@ Az Azure-tároló beállításjegyzékének tulajdonságait egy Azure Resource M
 [...]
 ```
 
-A tárolócsoport teljes beállításait az [Erőforrás-kezelő sablonhivatkozásban találja.](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)    
+A tárolók csoportjának teljes beállításaival kapcsolatban tekintse meg a [Resource Manager-sablonok referenciáját](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups).    
 
-Az Azure Key Vault titkos kulcsainak resource manageri sablonban való hivatkozásáról az [Azure Key Vault használata a telepítés során a biztonságos paraméter értékének átadása című](../azure-resource-manager/templates/key-vault-parameter.md)témakörben olvashat.
+Egy Resource Manager-sablon Azure Key Vault titkaira hivatkozó részletekért lásd: a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)átadására az üzembe helyezés során.
 
-## <a name="deploy-with-azure-portal"></a>Üzembe helyezés az Azure Portalon
+## <a name="deploy-with-azure-portal"></a>Üzembe helyezés Azure Portal
 
-Ha tárolórendszerképeket tart fenn egy Azure-tároló beállításjegyzékében, az Azure-portál használatával egyszerűen létrehozhat egy tárolót az Azure Container Instances-ben. Ha a portált egy tárolópéldány tárolóbeállításjegyzékből történő központi telepítésére használja, engedélyeznie kell a rendszerleíró adatbázis [rendszergazdai fiókját.](../container-registry/container-registry-authentication.md#admin-account) Az admin fiók célja, hogy egyetlen felhasználó hozzáférjen a rendszerleíró adatbázishoz, elsősorban tesztelési célokra. 
+Ha a tároló lemezképeit egy Azure Container registryben tartja karban, egyszerűen létrehozhat egy tárolót Azure Container Instances a Azure Portal használatával. Ha a portál használatával helyez üzembe egy Container-példányt egy tároló-beállításjegyzékből, engedélyeznie kell a beállításjegyzék [rendszergazdai fiókját](../container-registry/container-registry-authentication.md#admin-account). A rendszergazdai fiók úgy van kialakítva, hogy egyetlen felhasználó hozzáférjen a beállításjegyzékhez, főleg tesztelési célokra. 
 
-1. Az Azure Portalon keresse meg a tároló beállításjegyzékben.
+1. A Azure Portal navigáljon a tároló-beállításjegyzékhez.
 
-1. A rendszergazdai fiók engedélyezésének ellenőrzéséhez válassza az **Access-kulcsok**lehetőséget, és a **Rendszergazda felhasználó** csoportban válassza az **Engedélyezés**lehetőséget.
+1. Ha szeretné ellenőrizni, hogy a rendszergazdai fiók engedélyezve van-e, válassza a **hozzáférési kulcsok**lehetőséget, majd a **rendszergazda felhasználó** területen válassza az **Engedélyezés**lehetőséget.
 
-1. Válassza **az Adattárak lehetőséget,** majd jelölje ki azt a tárházat, amelyből telepíteni szeretné, kattintson a jobb gombbal az telepíteni kívánt tárolólemezkép címkéjére, és válassza a **Példány futtatása parancsot.**
+1. Válassza ki a **tárak**elemet, majd válassza ki a telepíteni kívánt tárházat, kattintson a jobb gombbal a telepíteni kívánt tároló lemezkép címkéjére, majd válassza a **példány futtatása**parancsot.
 
-    !["Példány futtatása" az Azure Container Registry szolgáltatásban az Azure Portalon][acr-runinstance-contextmenu]
+    !["Példány futtatása" Azure Container Registry a Azure Portal][acr-runinstance-contextmenu]
 
-1. Adja meg a tároló nevét és az erőforráscsoport nevét. Az alapértelmezett értékeket is módosíthatja, ha szeretné.
+1. Adja meg a tároló nevét és az erőforráscsoport nevét. Igény szerint módosíthatja az alapértelmezett értékeket is.
 
-    ![Létrehozás az Azure Container Instances számára][acr-create-deeplink]
+    ![Azure Container Instances menü létrehozása][acr-create-deeplink]
 
-1. Miután a központi telepítés befejeződött, az értesítések ablaktábláról a tárolócsoportra navigálva megkeresheti az IP-címét és egyéb tulajdonságait.
+1. Miután az üzembe helyezés befejeződött, a tároló csoportra navigálva megkeresheti az IP-címét és egyéb tulajdonságait.
 
-    ![Az Azure Container Instances tárolócsoport részletei][aci-detailsview]
+    ![Azure Container Instances tároló csoport részletes nézete][aci-detailsview]
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Container Registry hitelesítésével kapcsolatos további információkért [lásd: Hitelesítés egy Azure-tároló beállításjegyzékével.](../container-registry/container-registry-authentication.md)
+A Azure Container Registry hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés Azure Container registryvel](../container-registry/container-registry-authentication.md).
 
 <!-- IMAGES -->
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png

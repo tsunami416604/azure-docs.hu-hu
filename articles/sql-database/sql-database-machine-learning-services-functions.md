@@ -1,7 +1,7 @@
 ---
 title: Speciális R-függvények írása
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Ismerje meg, hogyan írhat R-függvényt a fejlett statisztikai számításhoz az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió).
+description: Megtudhatja, hogyan írhat R-függvényt speciális statisztikai számításokhoz a Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,37 +15,37 @@ manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ba78267b1c6dc8f0e1bd25bb8ecdb1d8d344d03e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453114"
 ---
-# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Speciális R-függvények írása az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió)
+# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Speciális R függvények írása a Azure SQL Database Machine Learning Services használatával (előzetes verzió)
 
-Ez a cikk azt ismerteti, hogy miként ágyazható be az R matematikai és segédprogram-függvények sql-tárolt eljárásba. A T-SQL-ben megvalósítandó speciális statisztikai függvények r-ben csak egyetlen kódsorgal hajthatók végre.
+Ez a cikk bemutatja, hogyan ágyazhat be R matematikai és segédprogram-függvényeket egy SQL tárolt eljárásba. A T-SQL használatával bonyolult, összetett statisztikai függvények az R-ben csak egyetlen sor kóddal hajthatók végre.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fiókot](https://azure.microsoft.com/free/) .
 
-- A példakód futtatásához ezekben a gyakorlatokban először az [Azure SQL Database machine learning-szolgáltatásokkal (R)](sql-database-machine-learning-services-overview.md) engedélyezve kell lennie.
+- A példában szereplő programkód futtatásához először Azure SQL Databasenek kell lennie, [Machine learning Services (R)](sql-database-machine-learning-services-overview.md) engedélyezve van.
 
-- Ellenőrizze, hogy telepítette-e a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) rendszert. Az R-parancsfájlokat más adatbázis-kezelő vagy lekérdezési eszközökkel is futtathatja, de ebben a rövid útmutatóban az SSMS-t fogja használni.
+- Győződjön meg arról, hogy telepítette a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Az R-szkripteket más adatbázis-kezelő vagy lekérdezési eszközök használatával is futtathatja, de ebben a rövid útmutatóban a SSMS-t fogja használni.
 
 ## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Tárolt eljárás létrehozása véletlenszerű számok létrehozásához
 
-Az egyszerűség kedvéért használjuk `stats` az R-csomagot, amely alapértelmezés szerint telepítve van és betöltve az Azure SQL Database-lel a Machine Learning Services használatával (előzetes verzió). A csomag több száz funkciót tartalmaz a `rnorm` gyakori statisztikai feladatokhoz, köztük a funkciót. Ez a funkció meghatározott számú véletlen számot hoz létre a normál eloszlás használatával, szórással és értékkel.
+Az egyszerűség kedvéért használja a Machine Learning Services (előzetes `stats` verzió) használatával a Azure SQL Database alapértelmezés szerint telepített és betöltött R-csomagot. A csomag több száz funkciót tartalmaz a közös statisztikai feladatokhoz, köztük `rnorm` a függvényhez. Ez a függvény meghatározott számú véletlenszerű számot hoz létre a normál eloszlással, a szórás és az azt jelenti.
 
-Például a következő R kód 100 számot ad vissza átlagosan 50-en, 3-as szórással.
+Például a következő R-kód a 100-es számot adja vissza a 50-es átlagban, a 3. szórástól függően.
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-Ha ezt az R-vonalat t-SQL-ből szeretné hívni, futtassa `sp_execute_external_script` és adja hozzá az R függvényt az R parancsfájl paraméterhez, a következőkhöz:
+Ha a T-SQL-ből szeretné hívni az R- `sp_execute_external_script` vonalat, futtassa a parancsot, és adja hozzá az r-függvényt az r script paraméterben, például:
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -56,9 +56,9 @@ OutputDataSet <- as.data.frame(rnorm(100, mean = 50, sd =3));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-Mi a teendő, ha szeretné, hogy könnyebb létrehozni egy másik sor véletlenszerű számok?
+Mi a teendő, ha egyszerűbbé szeretné tenni a véletlenszerű számok különböző készletének létrehozását?
 
-Ez egyszerű, ha együtt SQL. Meg kell adnia egy tárolt eljárást, amely leveszi az argumentumokat a felhasználótól, majd ezeket az argumentumokat változóként továbbítja az R parancsfájlba.
+Ez egyszerűen kombinálható SQL-sel. Meghatároz egy tárolt eljárást, amely beolvassa a felhasználó argumentumait, majd átadja ezeket az argumentumokat az R-parancsfájlnak változóként.
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -79,13 +79,13 @@ OutputDataSet <- as.data.frame(rnorm(mynumbers, mymean, mysd));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-- Az első sor határozza meg az sql bemeneti paramétereket, amelyek szükségesek a tárolt eljárás végrehajtásakor.
+- Az első sor határozza meg a tárolt eljárás végrehajtásakor szükséges SQL-bemeneti paramétereket.
 
-- Az R-kód által használt összes változót és a megfelelő SQL-adattípusokat `@params` definiáló sor határozza meg.
+- A kezdetű sor `@params` meghatározza az R-kód által használt összes változót, valamint a megfelelő SQL-adattípusokat.
 
-- Az azonnal követett sorok lerendelik az SQL paraméterneveket a megfelelő R-változónevekhez.
+- Azok a sorok, amelyek azonnal követik az SQL-paraméterek nevét a megfelelő R-változók neveire.
 
-Most, hogy az R függvényt egy tárolt eljárásba csomagolta, egyszerűen meghívhatja a függvényt, és különböző értékekben adhatja át a funkciót, például:
+Most, hogy becsomagolta az R-függvényt egy tárolt eljárásban, könnyedén hívhatja a függvényt, és különböző értékeket adhat át, például a következőt:
 
 ```sql
 EXECUTE MyRNorm @param1 = 100
@@ -93,11 +93,11 @@ EXECUTE MyRNorm @param1 = 100
     , @param3 = 3
 ```
 
-## <a name="use-r-utility-functions-for-troubleshooting"></a>Hibaelhárításhoz használja az R segédprogram-funkciókat
+## <a name="use-r-utility-functions-for-troubleshooting"></a>Az R Utility functions használata a hibaelhárításhoz
 
-Az `utils` alapértelmezés szerint telepített csomag számos közüzemi funkciót biztosít az aktuális R-környezet vizsgálatához. Ezek a függvények akkor lehetnek hasznosak, ha eltéréseket talál az R-kód SQL-ben és külső környezetekben történő teljesítményében. Előfordulhat például, hogy `memory.limit()` az R függvénnyel memóriát kap az aktuális R környezethez.
+Az `utils` alapértelmezés szerint telepített csomag számos segédprogram-függvényt biztosít az aktuális R-környezet kivizsgálása érdekében. Ezek a függvények akkor lehetnek hasznosak, ha eltéréseket talál az R-kód SQL-ben és külső környezetekben történő végrehajtása során. Használhatja például az R `memory.limit()` függvényt az aktuális r-környezet memóriájának lekéréséhez.
 
-Mivel `utils` a csomag telepítve van, de alapértelmezés `library()` szerint nincs betöltve, először a függvényt kell használnia a betöltéséhez.
+Mivel a `utils` csomag telepítve van, de alapértelmezés szerint nincs betöltve, a `library()` függvényt kell használnia az első betöltéséhez.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -111,4 +111,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> Sok felhasználó szeretné használni a rendszer időzítési `system.time` `proc.time`funkcióit az R-ben, például és a , az R folyamatok által használt idő rögzítéséhez és a teljesítményproblémák elemzéséhez.
+> Számos felhasználó szeretné használni az r-folyamatok rendszer-időzítési funkcióit `system.time` , `proc.time`például a és a-t, hogy rögzítse az r-folyamatok által használt időt, és elemezze a teljesítménnyel kapcsolatos problémákat.

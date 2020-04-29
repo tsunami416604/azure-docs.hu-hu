@@ -1,6 +1,6 @@
 ---
-title: A Machine Learning Services legfontosabb különbségei (előzetes verzió)
-description: Ez a témakör az Azure SQL Database Machine Learning Services (R) és az SQL Server Machine Learning Services közötti főbb különbségeket ismerteti.
+title: Machine Learning Services főbb eltérései (előzetes verzió)
+description: Ez a témakör a Azure SQL Database Machine Learning Services (R) és a SQL Server Machine Learning Services közötti fő különbségeket ismerteti.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,55 +14,55 @@ manager: cgronlun
 ms.date: 11/20/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 34ba75b6126024c9cd43d6fe474f7c1b62dd990f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453149"
 ---
-# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Az Azure SQL Database (előzetes verzió) és az SQL Server Machine Learning Services szolgáltatása közötti főbb különbségek
+# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>A Azure SQL Database (előzetes verzió) és a SQL Server Machine Learning Services közötti fő különbségek
 
-Az Azure SQL Database Machine Learning Services (R- rel) funkciója (előzetes verzió) hasonló az [SQL Server Machine Learning Services szolgáltatáshoz.](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) Az alábbiakban néhány kulcsfontosságú különbséget.
+Az (előzetes verzió) Azure SQL Database Machine Learning Services (R) funkciója a következőhöz hasonló: [SQL Server Machine learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Az alábbiakban néhány kulcsfontosságú különbség szerepel.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-Az SQL Server támogatja az R és a Python a [bővíthetőségi keretrendszeren](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework)keresztül. Az SQL Database nem támogatja mindkét nyelvet. A legfontosabb különbségek a következők:
+SQL Server támogatja az R és a Python használatát a [bővíthetőségi keretrendszer](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework)segítségével. A SQL Database mindkét nyelvet nem támogatja. A legfontosabb különbségek a következők:
 
-- Az R az SQL Database egyetlen támogatott nyelve. A Python jelenleg nem támogatott.
-- Az R verzió 3.4.4.
-- Nincs szükség a `external scripts enabled` konfigurálására a . `sp_configure`
+- Az R az egyetlen támogatott nyelv a SQL Databaseban. A Python jelenleg nem támogatott.
+- Az R verziója 3.4.4.
+- Nincs szükség a-on keresztül `external scripts enabled` `sp_configure`történő konfigurálásra.
 
 ## <a name="package-management"></a>Csomagkezelés
 
-Az R csomagkezelés és -telepítés az SQL Database és az SQL Server között eltérő. Ezek a különbségek a következők:
+Az R-csomag kezelése és a telepítés SQL Database és SQL Server között különbözik. Ezek a különbségek a következők:
 
-- Az R csomagok [telepítése sqlmlutils](https://github.com/Microsoft/sqlmlutils) vagy [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql)segítségével kerül telepítésre.
-- A csomagok nem tudnak kimenő hálózati hívásokat végrehajtani. Ez a korlátozás hasonló az SQL Server [Machine Learning Services alapértelmezett tűzfalszabályaihoz,](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) de az SQL Database-ben nem módosítható.
-- Nincs olyan csomagok támogatása, amelyek a külső futásidőktől (például a Java-tól) függenek, vagy a telepítéshez vagy használathoz az operációs rendszer API-khoz való hozzáférésre van szükségük.
+- Az R-csomagok a [sqlmlutils](https://github.com/Microsoft/sqlmlutils) -on keresztül települnek, vagy [külső függvénytárat hoznak létre](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql).
+- A csomagok nem hajthatnak végre kimenő hálózati hívásokat. Ez a korlátozás hasonlít a SQL Server [Machine learning Services alapértelmezett tűzfalszabályok esetében](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) , de nem módosítható SQL Databaseban.
+- A külső futtatókörnyezettől (például Java) függő csomagok nem támogatottak, vagy az operációs rendszer API-jait kell telepíteni a telepítéshez vagy a használathoz.
 
-## <a name="writing-to-a-temporary-table"></a>Írás egy ideiglenes táblába
+## <a name="writing-to-a-temporary-table"></a>Ideiglenes táblába való írás
 
-Ha az Azure SQL Database-ben rodbc-t használ, akkor nem írhat ideiglenes táblába, függetlenül attól, hogy az a `sp_execute_external_script` munkameneten belül vagy kívül jön létre. A megoldás az [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) és [az rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (felülírás=FALSE és append="sorok" használatával) a `sp_execute_external_script` lekérdezés előtt létrehozott globális ideiglenes táblába való íráshoz.
+Ha a RODBC-t használja a Azure SQL Databaseban, akkor nem írhat ideiglenes táblába, függetlenül attól, hogy az a `sp_execute_external_script` munkameneten belül vagy kívül van-e létrehozva. A megkerülő megoldás az [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) és a [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (a felülírás = false és a Hozzáfűzés = "sorok") használata a `sp_execute_external_script` lekérdezés előtt létrehozott globális ideiglenes táblába való íráshoz.
 
 ## <a name="resource-governance"></a>Erőforrások szabályozása
 
-Az R-erőforrások nem korlátozva [erőforrás-delegáltat](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) és külső erőforráskészleteken keresztül.
+Nem lehetséges az R-erőforrások korlátozása [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) és külső erőforráskészlet használatával.
 
-A nyilvános előzetes verzió során az R-erőforrások az SQL Database-erőforrások legfeljebb 20%-ára vannak beállítva, és attól függnek, hogy melyik szolgáltatási szintet választja. További információ: [Azure SQL Database vásárlási modellek.](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)
-### <a name="insufficient-memory-error"></a>Nincs elegendő memóriahiba
+A nyilvános előzetes verzióban az R-erőforrások a SQL Database erőforrások legfeljebb 20%-ában vannak beállítva, és attól függnek, hogy melyik szolgáltatási szintet választja. További információ: [Azure SQL Database vásárlási modellek](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+### <a name="insufficient-memory-error"></a>Nincs elég memória-hiba
 
-Ha nincs elegendő memória az R számára, hibaüzenet jelenik meg. Gyakori hibaüzenetek a következők:
+Ha nincs elegendő szabad memória az R-hez, hibaüzenet jelenik meg. Gyakori hibaüzenetek:
 
-- Nem lehet kommunikálni az "R" parancsfájl futási idejével a kérelemazonosítóhoz: *******. Ellenőrizze az "R" futásidejű
-- A HRESULT 0x80004004 "sp_execute_external_script" végrehajtása során "R" parancsfájlhiba történt. ... külső parancsfájlhiba történt: ".. nem lehetett memóriát (0 Mb) lefoglalni a "R_AllocStringBuffer" c függvényben
-- Külső parancsfájlhiba történt: Hiba: nem lehet lefoglalni a vektort.
+- Nem lehet kommunikálni a futtatókörnyezettel a (z) * * * * * * * kérelem azonosítójának "R" parancsfájljában. Tekintse meg az "R" futtatókörnyezet követelményeit
+- "R" parancsfájl hiba történt a (z) "sp_execute_external_script" végrehajtása során a HRESULT 0x80004004. ... külső parancsfájl hiba történt: ".. nem foglalható le memória (0 MB) a (z) "R_AllocStringBuffer" C függvényben
+- Külső parancsfájl hiba történt: hiba: nem foglalható le a méret vektora.
 
-A memóriahasználat attól függ, hogy mennyit használ az R-parancsfájlokban, és hogy hány párhuzamos lekérdezést hajt végre. Ha a fenti hibákat kapja, az adatbázist magasabb szolgáltatási szintre méretezheti a probléma megoldásához.
+A memóriahasználat attól függ, hogy mennyit használ az R-parancsfájlokban, és hogy hány párhuzamos lekérdezést hajt végre a rendszer. Ha a fenti hibákat kapja, a megoldáshoz méretezheti az adatbázist egy magasabb szolgáltatási szintjére.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg az áttekintést, [az Azure SQL Database Machine Learning Services R (előzetes verzió)](sql-database-machine-learning-services-overview.md).
-- Ha meg szeretné tudni, hogyan lehet az R használatával lekérdezni az Azure SQL Database Machine Learning Services -t (előzetes verzió), olvassa el a [rövid útmutatót.](sql-database-connect-query-r.md)
-- Néhány egyszerű R-parancsfájl létrehozásáról [és futtatásáról az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió) című témakörben található egyszerű R-parancsfájlok létrehozása és futtatása.](sql-database-quickstart-r-create-script.md)
+- Tekintse meg az áttekintést, [Azure SQL Database Machine learning Services az R-vel (előzetes verzió)](sql-database-machine-learning-services-overview.md).
+- Ha szeretné megtudni, hogyan használhatja az R-t a Azure SQL Database Machine Learning Services (előzetes verzió) lekérdezéséhez, tekintse meg a gyors [üzembe helyezési útmutatót](sql-database-connect-query-r.md).
+- Néhány egyszerű R-szkript megkezdéséhez lásd: [egyszerű r-parancsfájlok létrehozása és futtatása Azure SQL Database Machine learning Servicesban (előzetes verzió)](sql-database-quickstart-r-create-script.md).

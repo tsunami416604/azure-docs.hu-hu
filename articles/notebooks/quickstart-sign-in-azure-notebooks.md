@@ -4,10 +4,10 @@ description: Gyorsan bejelentkezhet Azure Notebooks előzetes verzióra, és be�
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75647016"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Gyors útmutató: bejelentkezés és felhasználói azonosító beállítása Azure Notebooks előzetes verzióhoz

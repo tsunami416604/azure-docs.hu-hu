@@ -1,23 +1,23 @@
 ---
-title: Az Azure Functions csatlakoztatása az Azure Storage szolgáltatáshoz parancssori eszközökkel
-description: Ismerje meg, hogyan csatlakoztathatja az Azure Functionst egy Azure Storage-várólistához egy kimeneti kötés hozzáadása a parancssori projekthez.
+title: Azure Functions összekötése az Azure Storage-hoz a parancssori eszközök használatával
+description: Megtudhatja, hogyan csatlakoztathatja a Azure Functionst egy Azure Storage-várólistához egy kimeneti kötés hozzáadásával a parancssori projekthez.
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673323"
 ---
-# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Az Azure Functions csatlakoztatása az Azure Storage szolgáltatáshoz parancssori eszközökkel
+# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Azure Functions összekötése az Azure Storage-hoz a parancssori eszközök használatával
 
-Ebben a cikkben integrálja az Azure Storage-várólistát [az előző rövid útmutatóban](functions-create-first-azure-function-azure-cli.md)létrehozott függvény- és tárfiókkal. Ezt az integrációt egy *kimeneti kötés* használatával érheti el, amely http-kérelemből adatokat ír a várólistában lévő üzenetekbe. A cikk végrehajtása nem jár további költségekkel az előző rövid útmutató néhány USD centje in túl. Ha többet szeretne megtudni a kötésekről, olvassa el az [Azure Functions eseményindítók és kötések fogalmait.](functions-triggers-bindings.md)
+Ebben a cikkben az Azure Storage-üzenetsor integrálását az [előző](functions-create-first-azure-function-azure-cli.md)rövid útmutatóban létrehozott függvény-és Storage-fiókkal végezheti el. Ezt az integrációt olyan *kimeneti kötés* használatával érheti el, amely http-kérésből adatokat ír a várólistában lévő üzenetbe. Ennek a cikknek a végrehajtásával az előző rövid útmutató néhány USD százalékán felül nem jár további költségekkel. További információ a kötésekről: [Azure functions eseményindítók és kötések fogalmai](functions-triggers-bindings.md).
 
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
-Mielőtt elkezdené, ki kell töltenie a [rövid útmutató: Hozzon létre egy Azure Functions projektet a parancssorból](functions-create-first-azure-function-azure-cli.md). Ha már megtisztította az erőforrásokat a cikk végén, ismét hajtsa végre a lépéseket a függvényalkalmazás és a kapcsolódó erőforrások újbóli létrehozásához az Azure-ban.
+Mielőtt elkezdené, be kell fejeznie a cikket, gyors [útmutató: Azure functions projekt létrehozása a parancssorból](functions-create-first-azure-function-azure-cli.md). Ha a cikk végén már megtisztította az erőforrásokat, folytassa újra a Function app és a kapcsolódó erőforrások Azure-ban való újbóli létrehozásához szükséges lépéseket.
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -32,11 +32,11 @@ Mielőtt elkezdené, ki kell töltenie a [rövid útmutató: Hozzon létre egy A
 [!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 ::: zone-end   
 
-A kötések részleteiről az [Azure Functions elindítja és kötéseket indítja el](functions-triggers-bindings.md) és ismerteti a sorok [kimeneti konfigurációját.](functions-bindings-storage-queue-output.md#configuration)
+További információ a kötések részleteiről: [Azure functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md) és [üzenetsor kimenetének konfigurálása](functions-bindings-storage-queue-output.md#configuration).
 
 ## <a name="add-code-to-use-the-output-binding"></a>Kód hozzáadása a kimeneti kötés használatához
 
-A várólista-kötés definiálva most frissítheti `msg` a függvényt, hogy megkapja a kimeneti paramétert, és üzeneteket írjon a várólistába.
+Ha a várólista-kötés definiálva van, most frissítheti a függvényt `msg` , hogy megkapja a kimeneti paramétert, és üzeneteket írjon a várólistába.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -64,22 +64,22 @@ A várólista-kötés definiálva most frissítheti `msg` a függvényt, hogy me
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
-Vegye figyelembe, hogy *nem* kell kódot írnia a hitelesítéshez, a várólista-referenciák beszerzéséhez vagy az adatok írásához. Mindezek az integrációs feladatok kényelmesen kezelik az Azure Functions futásidejű és a várólista kimeneti kötés.
+Figyelje meg, hogy *nem* kell kódot írnia a hitelesítéshez, a várólista-hivatkozás beszerzéséhez vagy az adatíráshoz. Az összes ilyen integrációs feladat kényelmesen kezelhető a Azure Functions futtatókörnyezetben és a várólista kimeneti kötésében.
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
 [!INCLUDE [functions-extension-bundles-info](../../includes/functions-extension-bundles-info.md)]
 
-## <a name="view-the-message-in-the-azure-storage-queue"></a>Az üzenet megtekintése az Azure Storage várólistájában
+## <a name="view-the-message-in-the-azure-storage-queue"></a>Az üzenet megtekintése az Azure Storage-várólistában
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
-## <a name="redeploy-the-project-to-azure"></a>A projekt újratelepítése az Azure-ba
+## <a name="redeploy-the-project-to-azure"></a>A projekt újbóli üzembe helyezése az Azure-ban
 
-Most, hogy helyileg ellenőrizte, hogy a függvény üzenetet írt az Azure Storage-várólistába, újratelepítheti a projektet az Azure-ban futó végpont frissítéséhez.
+Most, hogy ellenőrizte a helyileg, hogy a függvény üzenetet írt az Azure Storage-várólistába, a projekt újbóli üzembe helyezésével frissítheti az Azure-on futó végpontot.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
-A *LocalFunctionsProj* mappában [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) a paranccsal újratelepítheti a projektet, és lecserélheti`<APP_NAME>` az alkalmazás nevét.
+A *LocalFunctionsProj* mappában használja a [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) parancsot a projekt újbóli üzembe helyezéséhez,`<APP_NAME>` az alkalmazás nevével.
 
 ```
 func azure functionapp publish <APP_NAME>
@@ -88,7 +88,7 @@ func azure functionapp publish <APP_NAME>
 
 ::: zone pivot="programming-language-java" 
 
-A helyi projekt mappában a következő Maven paranccsal tegye közzé újra a projektet:
+A helyi projekt mappában a következő Maven-paranccsal tegye közzé újra a projektet:
 ```
 mvn azure-functions:deploy
 ```
@@ -96,27 +96,27 @@ mvn azure-functions:deploy
 
 ## <a name="verify-in-azure"></a>Ellenőrzés az Azure-ban
 
-1. Az előző rövid útmutatóhoz, használja a böngészőt vagy a CURL-t az újratelepített függvény teszteléséhez.
+1. Ahogy az előző rövid útmutatóban is, az újratelepített függvény teszteléséhez használjon böngészőt vagy CURL-t.
 
     # <a name="browser"></a>[Böngésző](#tab/browser)
     
-    Másolja a közzétételi parancs kimenetében látható teljes **Invoke URL-címet** a `&name=Functions`böngésző címsorába, hozzáfűzve a lekérdezési paramétert . A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor a funkciót helyileg futtatta.
+    Másolja a publish (közzététel) parancs kimenetében megjelenő teljes **Meghívási URL-** címet egy böngésző címsorába, és `&name=Functions`illessze be a lekérdezési paramétert. A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor a funkciót helyileg futtatta.
 
-    ![A függvény kimenete az Azure-on fut egy böngészőben](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
+    ![A függvény kimenete az Azure-ban egy böngészőben fut](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
     # <a name="curl"></a>[Curl](#tab/curl)
     
-    Futtassa [`curl`](https://curl.haxx.se/) az **Invoke URL-címmel,** hozzáfűzve a paramétert. `&name=Functions` A parancs kimenetének a "Hello Functions" szövegnek kell lennie.
+    Futtassa [`curl`](https://curl.haxx.se/) a parancsot a **MEGhívási URL**-címmel `&name=Functions`, és illessze be a paramétert. A parancs kimenetének a "Hello functions" szövegnek kell lennie.
     
-    ![A függvény kimenete az Azure-on fut a CURL használatával](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
+    ![A függvény kimenete az Azure-on a CURL használatával fut](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
     --- 
 
-1. Vizsgálja meg újra a tárolási várólistát az előző szakaszban leírtak szerint, és ellenőrizze, hogy az tartalmazza-e a várólistába írt új üzenetet.
+1. Az előző szakaszban leírtak szerint vizsgálja meg újra a tárolási várólistát annak ellenőrzéséhez, hogy az tartalmazza-e a várólistára írt új üzenetet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután befejezte a parancsot, törölje az erőforráscsoportot és annak összes tartalmazott erőforrását, hogy elkerülje a további költségeket.
+Miután végzett, a következő paranccsal törölheti az erőforráscsoportot és az összes benne lévő erőforrást, hogy elkerülje a további költségek felmerülését.
 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
@@ -124,37 +124,37 @@ az group delete --name AzureFunctionsQuickstart-rg
 
 ## <a name="next-steps"></a>További lépések
 
-Frissítette a HTTP-aktivált függvényt, hogy adatokat írjon egy tárolási várólistába. Most már többet is megtudhat a Funkciók fejlesztéséről a parancssorból a Core Tools és az Azure CLI használatával:
+Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények parancssorból való fejlesztéséről a Core Tools és az Azure CLI használatával:
 
-+ [Az Azure Functions alapvető eszközeinek használata](functions-run-local.md)  
++ [Azure Functions Core Tools használata](functions-run-local.md)  
 
 ::: zone pivot="programming-language-csharp"  
-+ [Példák a C# teljes függvényprojektjeire.](/samples/browse/?products=azure-functions&languages=csharp)
++ [Példák a teljes körű függvények projektjeire a C#-ban](/samples/browse/?products=azure-functions&languages=csharp).
 
-+ [Azure Functions C# fejlesztői útmutató](functions-dotnet-class-library.md)  
++ [Azure Functions C# – fejlesztői dokumentáció](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
-+ [Példák a teljes függvényprojektekre JavaScript-ben.](/samples/browse/?products=azure-functions&languages=javascript)
++ [Példák a teljes körű függvények projektjeire a JavaScriptben](/samples/browse/?products=azure-functions&languages=javascript).
 
-+ [Az Azure Functions JavaScript fejlesztői útmutatója](functions-reference-node.md)  
++ [Azure Functions JavaScript fejlesztői útmutató](functions-reference-node.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-+ [Példák a TypeScript teljes függvényprojektjeire.](/samples/browse/?products=azure-functions&languages=typescript)
++ [Példák a teljes körű Function-projektekre az írógéppel](/samples/browse/?products=azure-functions&languages=typescript).
 
-+ [Az Azure Functions TypeScript fejlesztői útmutatója](functions-reference-node.md#typescript)  
++ [Azure Functions írógéppel – fejlesztői útmutató](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-+ [Példák a python-beli teljes függvényprojektekre.](/samples/browse/?products=azure-functions&languages=python)
++ [Példák a Pythonban elérhető teljes körű függvények projektjeire](/samples/browse/?products=azure-functions&languages=python).
 
-+ [Az Azure Functions Python fejlesztői útmutatója](functions-reference-python.md)  
++ [Azure Functions Python fejlesztői útmutató](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-+ [Példák a PowerShell teljes függvényprojektjeire.](/samples/browse/?products=azure-functions&languages=azurepowershell)
++ [Példák a PowerShellben elérhető teljes függvények projektjeire](/samples/browse/?products=azure-functions&languages=azurepowershell).
 
-+ [Az Azure Functions PowerShell fejlesztői útmutatója](functions-reference-powershell.md) 
++ [Azure Functions PowerShell fejlesztői útmutató](functions-reference-powershell.md) 
 ::: zone-end
-+ [Az Azure Functions aktiválódik és kötéseket köt](functions-triggers-bindings.md)
++ [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)
 
-+ [Funkciók árképzési lapja](https://azure.microsoft.com/pricing/details/functions/)
++ [Functions – díjszabási oldal](https://azure.microsoft.com/pricing/details/functions/)
 
-+ [A felhasználási terv költségeinek becslése](functions-consumption-costs.md) 
++ [A fogyasztási terv költségeinek becslése](functions-consumption-costs.md) 

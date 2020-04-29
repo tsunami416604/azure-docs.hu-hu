@@ -1,68 +1,68 @@
 ---
-title: Csapatfejlesztés a Kubernetes-en
+title: Csoportmunka-fejlesztés a Kubernetes-on
 services: azure-dev-spaces
 ms.date: 01/22/2020
 ms.topic: quickstart
-description: Ez a rövid útmutató bemutatja, hogyan lehet a Kubernetes csapatfejlesztését tárolókkal és mikroszolgáltatásokkal az Azure Dev Spaces segítségével elvégezni
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s
+description: Ez a rövid útmutató bemutatja, hogyan végezheti el a Team Kubernetes-fejlesztést tárolókkal és szolgáltatásokkal az Azure dev Spaces használatával
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 0fe177db420913e5d68807dd803df791653c0914
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78244938"
 ---
-# <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Rövid útmutató: Csapatfejlesztés a Kubernetesen – Azure Dev Spaces
+# <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: csoportmunka-fejlesztés a Kubernetes-ben – Azure dev Spaces
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
-- Állítsa be az Azure Dev Spaces egy felügyelt Kubernetes-fürtön az Azure-ban.
-- Üzembe helyezhet egy több mikroszolgáltatásokat tartalmazó nagy alkalmazást egy fejlesztői térbe.
-- Tesztelje egyetlen mikroszolgáltatás egy elszigetelt fejlesztési térben a teljes alkalmazás környezetében.
+- Azure fejlesztői tárhelyek beállítása egy felügyelt Kubernetes-fürtön az Azure-ban.
+- Helyezzen üzembe egy nagyméretű alkalmazást több szolgáltatással egy fejlesztői tárhelyen.
+- Egyetlen, a teljes alkalmazás kontextusában lévő, elkülönített fejlesztési területen tesztelheti a szolgáltatást.
 
-![Az Azure Dev Spaces csapatfejlesztése](media/azure-dev-spaces/collaborate-graphic.gif)
+![Az Azure dev Spaces csapatának fejlesztése](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- [Az Azure CLI telepítve van.](/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Helm 3 telepítve][helm-installed].
+- Az [Azure CLI telepítve van](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- A [Helm 3 telepítve van][helm-installed].
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes-szolgáltatásfürt létrehozása
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
-AKS-fürtöt támogatott régióban kell [létrehoznia.][supported-regions] Az alábbi parancsok létrehoznak egy *SamiresourceGroup* nevű erőforráscsoportot és egy *MyAKS*nevű AKS-fürtöt.
+A [támogatott régiókban][supported-regions]létre kell hoznia egy AK-fürtöt. Az alábbi parancsok létrehoznak egy *MyResourceGroup* nevű erőforráscsoportot és egy *MyAKS*nevű AK-fürtöt.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev spaces engedélyezése az AKS-fürtön
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
-A `use-dev-spaces` paranccsal engedélyezheti a fejlesztői szóközöket az AKS-fürtön, és kövesse az utasításokat. Az alábbi parancs engedélyezi a Fejlesztői szóközöket a *MyResourceGroup* csoport *MyAKS-fürtén,* és létrehoz egy *fejlesztői területet.*
+A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. Az alábbi parancs lehetővé teszi a dev Spaces használatát a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *dev*nevű fejlesztői helyet.
 
 > [!NOTE]
-> A `use-dev-spaces` parancs az Azure Dev Spaces CLI-t is telepíti, ha még nincs telepítve. Az Azure Dev Spaces CLI nem telepíthető az Azure Cloud Shellben.
+> A `use-dev-spaces` parancs az Azure dev SPACEs CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 ```
 
-## <a name="get-sample-application-code"></a>Mintaalkalmazás kódjának beszereznie
+## <a name="get-sample-application-code"></a>Minta alkalmazás kódjának beolvasása
 
-Ebben a cikkben az [Azure Dev Spaces-ek kerékpármegosztásminta-alkalmazást](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) használja az Azure Dev Spaces használatával történő bemutatáshoz.
+Ebben a cikkben az [Azure dev Spaces Bike Sharing Sample Application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) használatával mutatjuk be az Azure dev Spaces szolgáltatást.
 
-Klónozza az alkalmazást a GitHubról, és navigáljon a könyvtárába:
+Az alkalmazás klónozása a GitHubról, majd a címtárba való navigálása:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/
 ```
 
-## <a name="retrieve-the-hostsuffix-for-dev"></a>A gazdagéputótag *beolvasása*
+## <a name="retrieve-the-hostsuffix-for-dev"></a>A *fejlesztői* HostSuffix beolvasása
 
-A `azds show-context` parancs segítségével jelenítse meg a *gazdagép hez*való állomásutótagot.
+A `azds show-context` parancs használatával jelenítse meg a HostSuffix a *fejlesztői*számára.
 
 ```cmd
 $ azds show-context
@@ -72,24 +72,24 @@ Name                ResourceGroup     DevSpace  HostSuffix
 MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 ```
 
-## <a name="update-the-helm-chart-with-your-hostsuffix"></a>A Helm-diagram frissítése az HostSuffix-el
+## <a name="update-the-helm-chart-with-your-hostsuffix"></a>A Helm-diagram frissítése a HostSuffix
 
-Nyissa [meg a diagramokat/values.yaml fájlt,](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) és cserélje le az `<REPLACE_ME_WITH_HOST_SUFFIX>` összes példányt a korábban beolvasott HostSutótag értékre. Mentse a módosításokat, és zárja be a fájlt.
+Nyissa meg a [diagramok/Values. YAML](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) , `<REPLACE_ME_WITH_HOST_SUFFIX>` és cserélje le az összes példányát a korábban lekért HostSuffix értékre. Mentse a módosításokat, és zárjuk be a fájlt.
 
-## <a name="run-the-sample-application-in-kubernetes"></a>A mintaalkalmazás futtatása Kubernetes ben
+## <a name="run-the-sample-application-in-kubernetes"></a>A minta alkalmazás futtatása a Kubernetes-ben
 
-A kubernetes-alapú mintaalkalmazás futtatásához szükséges parancsok egy meglévő folyamat részét képezik, és nem függenek az Azure Dev Spaces eszközelemtől. Ebben az esetben a Helm a mintaalkalmazás futtatásához használt eszköz, de más eszközök kelthetők a teljes alkalmazás futtatásához egy fürt névterén. A Helm parancsok a korábban létrehozott *dev* nevű fejlesztői területet célozzák meg, de ez a fejlesztői terület is Kubernetes-névtér. Ennek eredményeképpen a fejlesztői tereket más eszközök is megcélozhatják, mint más névterek.
+A Kubernetes alkalmazáshoz való futtatására szolgáló parancsok egy meglévő folyamat részét képezik, és nincs függőségük az Azure dev Spaces-eszközökön. Ebben az esetben a Helm a minta alkalmazás futtatásához használt eszköz, de más eszközök is használhatók a teljes alkalmazás futtatására egy fürtön belüli névtérben. A Helm-parancsok célja a korábban létrehozott *dev* -terület, de ez a fejlesztői terület is Kubernetes névtér. Ennek eredményeképpen a dev Spaces más eszközökkel is megcélozható, mint a többi névtér.
 
-Az Azure Dev Spaces segítségével csapatfejlesztés után egy alkalmazás fut a fürtben, függetlenül attól, hogy az üzembe helyezéshez használt.
+Az Azure dev Spaces for Team-fejlesztést akkor használhatja, ha egy alkalmazás egy fürtön fut, függetlenül az üzembe helyezéséhez használt eszköztől.
 
-A `helm install` paranccsal beállíthatja és telepítheti a mintaalkalmazást a fürtön.
+A `helm install` paranccsal állíthatja be és telepítheti a minta alkalmazást a fürtön.
 
 ```cmd
 cd charts/
 helm install bikesharingsampleappsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-A `helm install` parancs több percig is eltarthat. Miután a mintaalkalmazás telepítve van a fürtön, és mivel `azds list-uris` a fejlesztői terek engedélyezve van a fürtön, a paranccsal jelenítse meg a mintaalkalmazás URL-címeit a jelenleg kiválasztott *fejlesztői környezetben.*
+A `helm install` parancs végrehajtása több percet is igénybe vehet. Miután a minta alkalmazást telepítette a fürtön, és mivel a fürtön engedélyezve van a dev Spaces, `azds list-uris` a parancs használatával jelenítse meg a jelenleg kiválasztott *dev* -ben a minta alkalmazás URL-címeit.
 
 ```cmd
 $ azds list-uris
@@ -99,22 +99,22 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Keresse meg a *bikesharingweb* szolgáltatást a `azds list-uris` nyilvános URL megnyitásával a parancsból. A fenti példában a *bikesharingweb* szolgáltatás `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`nyilvános URL-címe . Válassza ki *az Aurelia Briggs (ügyfél)* lehetőséget felhasználóként. Ellenőrizze, hogy látja-e a *Hi Aurelia Briggs szöveget | Jelentkezz ki* a csúcson.
+A `azds list-uris` parancsból nyissa meg a nyilvános URL-címet a *bikesharingweb* szolgáltatáshoz. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a következő: `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget a felhasználóként. Ellenőrizze, hogy megjelenik-e a *Hi Aurelia Briggs szövege | Kijelentkezés* a csúcsra.
 
-![Azure Dev Spaces kerékpármegosztási mintaalkalmazás](media/quickstart-team-development/bikeshare.png)
+![Az Azure dev Spaces Bike Sharing minta alkalmazása](media/quickstart-team-development/bikeshare.png)
 
-## <a name="create-child-dev-spaces"></a>Gyermekfejlesztői terek létrehozása
+## <a name="create-child-dev-spaces"></a>Gyermek fejlesztői szóközök létrehozása
 
-A `azds space select` parancs segítségével két gyermektereket hozhat létre a *fejlesztési területen:*
+A `azds space select` (z) parancs használatával hozzon létre két alárendelt szóközt a *dev*:
 
 ```cmd
 azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-A fenti parancsok két gyermektereket hoznak létre *az azureuser1* és az *azureuser2*nevű *fejlesztői terület* alatt. Ez a két gyermekter külön fejlesztői téraz *azureuser1* és *az azureuser2* a mintaalkalmazás módosításaihoz.
+A fenti parancsok két gyermek szóközt hoznak létre a *azureuser1* és a *azureuser2*nevű *dev* alatt. Ez a két gyermekobjektum különböző fejlesztői helyeket képvisel a fejlesztők *azureuser1* és *azureuser2* , amelyek a minta alkalmazás módosítására használhatók.
 
-A `azds space list` parancs segítségével sorolja fel az összes fejlesztői tereket, és erősítse meg a *fejlesztési/azureuser2* ki van jelölve.
+A `azds space list` parancs használatával jelölje ki az összes fejlesztői tárhelyet, és erősítse meg a *dev/azureuser2* elemet.
 
 ```cmd
 $ azds space list
@@ -126,7 +126,7 @@ $ azds space list
 *  dev/azureuser2  True
 ```
 
-A `azds list-uris` segítségével a mintaalkalmazás URL-címeit jelenítheti meg a jelenleg kijelölt területen, amely *a fejlesztési/azureuser2.*
+A ( `azds list-uris` a) használatával jelenítse meg a minta alkalmazás URL-címeit a jelenleg kijelölt, *dev/azureuser2*helyen.
 
 ```cmd
 $ azds list-uris
@@ -136,13 +136,13 @@ http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Győződjön meg arról, `azds list-uris` hogy a parancs által megjelenített URL-címek rendelkeznek az *azureuser2.s.dev* előtaggal. Ez az előtag megerősíti, hogy a kijelölt aktuális terület az *azureuser2*, amely a *fejlesztési*terület gyermeke.
+Győződjön meg arról, hogy a `azds list-uris` parancs által megjelenített URL-címek rendelkeznek a *azureuser2. s. dev* előtaggal. Ez az előtag megerősíti, hogy a kiválasztott aktuális terület a *azureuser2*, amely a *fejlesztési*gyermek.
 
-Keresse meg a *bikesharingweb* szolgáltatás a *fejlesztési/azureuser2* fejlesztői `azds list-uris` terület megnyitásával a nyilvános URL-t a parancsból. A fenti példában a *bikesharingweb* szolgáltatás `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`nyilvános URL-címe . Válassza ki *az Aurelia Briggs (ügyfél)* lehetőséget felhasználóként. Ellenőrizze, hogy látja-e a *Hi Aurelia Briggs szöveget | Jelentkezz ki* a csúcson.
+Nyissa meg a *bikesharingweb* szolgáltatást a *dev/azureuser2* fejlesztői területhez úgy, hogy a `azds list-uris` parancsból megnyitja a nyilvános URL-címet. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a következő: `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget a felhasználóként. Ellenőrizze, hogy megjelenik-e a *Hi Aurelia Briggs szövege | Kijelentkezés* a csúcsra.
 
 ## <a name="update-code"></a>Kód frissítése
 
-Nyissa meg *a BikeSharingWeb/components/Header.js fájlt* egy szövegszerkesztővel, és módosítsa a [span elem szövegét a `userSignOut` className .](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16)
+Nyissa meg a *BikeSharingWeb/Components/header. js fájlt* egy szövegszerkesztőben, és módosítsa a [span elem `userSignOut` ](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16)szövegét az osztálynév értékkel.
 
 ```html
 <span className="userSignOut">
@@ -150,11 +150,11 @@ Nyissa meg *a BikeSharingWeb/components/Header.js fájlt* egy szövegszerkesztő
 </span>
 ```
 
-Mentse a módosításokat, és zárja be a fájlt.
+Mentse a módosításokat, és zárjuk be a fájlt.
 
-## <a name="build-and-run-the-updated-bikesharingweb-service-in-the-devazureuser2-dev-space"></a>A frissített bikesharingweb szolgáltatás létrehozása és futtatása a *fejlesztési/azureuser2* fejlesztési területen
+## <a name="build-and-run-the-updated-bikesharingweb-service-in-the-devazureuser2-dev-space"></a>A frissített bikesharingweb szolgáltatás létrehozása és futtatása a *dev/azureuser2* fejlesztői térben
 
-Keresse meg a *BikeSharingWeb/* `azds up` könyvtárat, és futtassa a parancsot.
+Navigáljon a *BikeSharingWeb/* könyvtárhoz, és `azds up` futtassa a parancsot.
 
 ```cmd
 $ cd ../BikeSharingWeb/
@@ -168,18 +168,18 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Ez a parancs létrehozza és futtatja a *bikesharingweb* szolgáltatást a *fejlesztési/azureuser2* fejlesztési területen. Ez a szolgáltatás a *fejlesztési területen* futó *bikesharingweb* szolgáltatás mellett fut, és csak az *azureuser2.s* URL-előtaggal rendelkező kérelmekhez használható. A szülő- és gyermekfejlesztési terek közötti útválasztás működéséről további információt az [Azure dev spaces működésének és konfigurálásának című témakörben talál.](how-dev-spaces-works.md)
+Ez a parancs létrehozza és futtatja a *bikesharingweb* szolgáltatást a *dev/azureuser2* fejlesztői térben. Ez a szolgáltatás a *dev* -ben futó *bikesharingweb* szolgáltatás mellett fut, és csak a *azureuser2. s* URL előtaggal rendelkező kérelmek esetében használatos. További információ arról, hogyan működik az Útválasztás a szülő és gyermek fejlesztési területek között: [Hogyan működik az Azure dev Spaces, és hogyan van konfigurálva](how-dev-spaces-works.md).
 
-Keresse meg a *bikesharingweb* szolgáltatás a *fejlesztési/azureuser2* fejlesztési terület megnyitásával `azds up` a nyilvános URL-t jelenik meg a kimeneta a parancs. Válassza ki *az Aurelia Briggs (ügyfél)* lehetőséget felhasználóként. Ellenőrizze, hogy a frissített szöveg a jobb felső sarokban látható-e. Előfordulhat, hogy frissítenie kell az oldalt, vagy törölnie kell a böngésző gyorsítótárát, ha nem látja azonnal ezt a változást.
+Nyissa meg a *fejlesztői/azureuser2* fejlesztői terület `azds up` *bikesharingweb* szolgáltatását a parancs KIMENETében megjelenő nyilvános URL-cím megnyitásával. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget a felhasználóként. Ellenőrizze, hogy a jobb felső sarokban látható-e a frissített szöveg. Előfordulhat, hogy frissítenie kell a lapot, vagy törölnie kell a böngésző gyorsítótárát, ha nem látja azonnal ezt a változást.
 
-![Frissítve az Azure Dev Spaces kerékpármegosztási mintaalkalmazása](media/quickstart-team-development/bikeshare-update.png)
+![Azure dev Spaces Bike-megosztási minta alkalmazás frissítve](media/quickstart-team-development/bikeshare-update.png)
 
 > [!NOTE]
-> Amikor futás `azds up`közben a szolgáltatáshoz navigál, a HTTP-kérelem nyomkövetései is megjelennek a `azds up` parancs kimenetén. Ezek a nyomok segíthetnek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket a futás során `--disable-http-traces` letilthatja. `azds up`
+> Ha a futás közben navigál a szolgáltatáshoz `azds up`, a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a `azds up` parancs kimenetében. Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket letilthatja `--disable-http-traces` a futtatásakor `azds up`.
 
-## <a name="verify-other-dev-spaces-are-unchanged"></a>A többi fejlesztői ter változatlanségének ellenőrzése
+## <a name="verify-other-dev-spaces-are-unchanged"></a>Más fejlesztői területek ellenőrzése nem változik
 
-Ha `azds up` a parancs még fut, nyomja *le a Ctrl+c billentyűkombinációt.*
+Ha a `azds up` parancs még fut, nyomja le a *CTRL + c*billentyűkombinációt.
 
 ```cmd
 $ azds list-uris --all
@@ -193,11 +193,11 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/               Available
 http://dev.gateway.fedcab0987.eus.azds.io/                      Available
 ```
 
-Keresse meg a *bikesharingweb* *fejlesztői* verzióját a böngészőjében, válassza az *Aurelia Briggs (ügyfél)* lehetőséget felhasználóként, és ellenőrizze, hogy az eredeti szöveg a jobb felső sarokban látható-e. Ismételje meg ezeket a lépéseket a *fejlesztési/azureuser1* URL-címhasználatával. Figyelje meg, hogy a módosítások csak a *bikesharingweb* *fejlesztői/azureuser2* verziójára vonatkoznak. A *fejlesztési/azureuser2* módosításainak elkülönítése lehetővé teszi *az azureuser2* számára a módosításokat az *azureuser1*befolyásolása nélkül.
+Keresse meg a *bikesharingweb* *fejlesztői* verzióját a böngészőben, válassza az *Aurelia Briggs (ügyfél)* lehetőséget a felhasználóként, és ellenőrizze, hogy az eredeti szöveg jelenik-e meg a jobb felső sarokban. Ismételje meg ezeket a lépéseket a *dev/azureuser1* URL-címmel. Figyelje meg, hogy a módosítások csak a *bikesharingweb* *dev/azureuser2* verziójára vonatkoznak. A *dev/azureuser2* változásainak elkülönítése lehetővé teszi, hogy a *azureuser2* a *azureuser1*befolyásolása nélkül végezze el a módosításokat.
 
-Ha ezeket a változásokat a *fejlesztési* és *fejlesztési/azureuser1*tükröződéséhez a csapat meglévő munkafolyamatát vagy CI/CD-folyamatát kell követnie. Ez a munkafolyamat például magában foglalhatja a verziókövető rendszer rekedésének véglegesítését és a frissítés ci/CD-folyamat vagy eszközkezelés, például a Helm használatával történő telepítését.
+Ahhoz, hogy ezek a változások megjelenjenek a *fejlesztői* és *fejlesztői/azureuser1*, követnie kell a csapat meglévő munkafolyamat-vagy CI/CD-folyamatát. Előfordulhat például, hogy ez a munkafolyamat magában foglalja a verzió-ellenőrzési rendszer módosításának véglegesítését és a frissítés üzembe helyezését CI/CD-folyamat vagy eszközök, például a Helm használatával.
 
-## <a name="clean-up-your-azure-resources"></a>Az Azure-erőforrások karbantartása
+## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 
 ```azurecli
 az group delete --name MyResourceGroup --yes --no-wait

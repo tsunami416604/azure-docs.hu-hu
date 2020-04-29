@@ -1,95 +1,95 @@
 ---
-title: Az Azure Notebookelőzetes verzió áttekintése
-description: Futtassa a Jupyter-jegyzetfüzeteket a felhőben az ingyenes Azure Notebookelőzetes szolgáltatás használatával, ahol nincs szükség beállításra vagy konfigurációra.
+title: Az Azure Notebooks előzetes verziójának áttekintése
+description: Futtasson Jupyter jegyzetfüzeteket a felhőben az ingyenes Azure Notebooks előzetes verzió szolgáltatásával, ahol nincs szükség beállításra vagy konfigurációra.
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75646330"
 ---
-# <a name="overview-of-azure-notebooks-preview"></a>Az Azure Notebookelőzetes verzió áttekintése
+# <a name="overview-of-azure-notebooks-preview"></a>Az Azure Notebooks előzetes verziójának áttekintése
 
-Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. [Jupyter](https://jupyter.org/) (korábban IPython) egy nyílt forráskódú projekt, amely lehetővé teszi, hogy könnyen kombinálni Markdown szöveg, futtatható kód, állandó adatok, grafikák, és képi megjelenítés rá egy, megosztható vászon, a *notebook* (kép jóvoltából jupyter.org):
+Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A [Jupyter](https://jupyter.org/) (korábbi nevén IPython) egy nyílt forráskódú projekt, amely lehetővé teszi a Markdown-szöveg, a végrehajtható kód, az állandó adatok, a grafikák és a vizualizációk egyszerű egyesítését egyetlen, megosztható vászonra, a *notebookra* (a jupyter.org rendszerkép jóvoltából):
 
-[![Példák jupyter notebookokra](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Példák Jupyter notebookokra](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
-A kód, a grafika és a magyarázó szöveg hatékony kombinációja miatt a Jupyter számos célra népszerűvé vált, beleértve az adatelemzési oktatást, az adattisztítást és -átalakítást, a numerikus szimulációt, a statisztikai modellezést és a gépi tanulási modellek.
+A kód, a grafika és a magyarázó szöveg hatékony kombinációja miatt a Jupyter számos felhasználási célra népszerűvé vált, beleértve az adatelemzési utasításokat, az adattisztítást és-átalakítást, a numerikus szimulációt, a statisztikai modellezést és a gépi tanulási modellek fejlesztését.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="hassle-free-experience"></a>Gondtalan élmény
+## <a name="hassle-free-experience"></a>Problémamentes élmény
 
-Az Azure Notebooks segítségével gyorsan elkezdheti a prototípuskészítést, az adattudományt, az akadémiai kutatást vagy a Python programozását:
+Azure Notebooks segít gyorsan megkezdeni a prototípus-készítést, az adatelemzést, az akadémiai kutatást vagy a Python programba való tanulást:
 
-- Egy adattudós azonnali hozzáféréssel rendelkezik egy teljes Anaconda környezethez telepítés nélkül.
-- A tanárok gondtalan Python-környezetet biztosíthatnak a diákoknak.
-- A műsorvezető adhat egy hasonló beszélgetés vagy webinar megkérdezése nélkül a résztvevők költeni 45 percet szoftver telepítése.
-- A fejlesztő vagy hobbyist használhatja Notebooks, mint egy gyors kód scratchpad.
+- Az adattudós azonnali hozzáférést biztosít egy teljes anaconda-környezethez, telepítés nélkül.
+- Egy tanár egy problémamentes Python-környezetet biztosíthat a tanulók számára.
+- Az előadók olyan előadásokat adhatnak, mint például a Talk vagy a Webinar, és a résztvevőknek nem kell eltölteniük a szoftvert a 45 perc
+- Egy fejlesztő vagy amatőr a jegyzetfüzeteket gyors kódú firkatömb használhatja.
 
-A jegyzetfüzetek még hatékonyabbá válnak, ha az emberek együttműködhetnek rajtuk egy böngészőhöz elérhető felhőszolgáltatáson, például az Azure Notebookokon keresztül (előzetes verzióban). A felhőben a felhasználóknak nem kell helyileg telepíteniük a Jupytert, és nem kell a környezet fenntartásával foglalkozniuk. A felhő is egyszerűvé teszi a jegyzetfüzetek (és a kapcsolódó adatfájlok) megosztását más jogosult felhasználókkal, elkerülve a jegyzetfüzetek külső eszközökkel, például a forrás-ellenőrző adattárakhasználatával történő megosztásának bonyodalmait. Az Azure Notebooks segítségével a felhasználók is másolhatnak (vagy "klónozhatnak") jegyzetfüzeteket a saját fiókjukba módosítás vagy kísérletezés céljából, ami különösen hasznos az utasítási célokra.
+A jegyzetfüzetek még hatékonyabbá válnak, ha a felhasználók egy böngészővel elérhető felhőalapú szolgáltatással, például az Azure Notebooks (előzetes verzióban) tudnak együttműködni rajtuk. A felhőben a felhasználóknak nem kell helyileg telepíteniük a Jupyter, vagy a környezet fenntartásával kellene foglalkoznia. A felhő lehetővé teszi a jegyzetfüzetek (és a kapcsolódó adatfájlok) megosztását is a más jogosultságokkal rendelkező felhasználókkal, elkerülve a jegyzetfüzetek külső módon, például a forrás-ellenőrzési adattárakban való megosztásának szövődményeit. A Azure Notebooks segítségével a felhasználók a saját fiókba másolhatják (vagy "klónozott") jegyzetfüzeteket a módosításra vagy kísérletezésre, ami különösen hasznos az útmutatáshoz.
 
-Mivel az Azure Notebooks egy általános kódszerzői, végrehajtási és megosztási platform, számos különböző forgatókönyvhöz használhatja:
+Mivel a Azure Notebooks egy általános programkód-létrehozási,-végrehajtási és-megosztási platform, számos különböző forgatókönyvhöz használható:
 
-- Új programozási nyelv elsajátítása – próbálja ki az egyik [címlapoktatót](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb)
-- Ismerje meg az adattudományt – próbálja ki [Jake VanderPlas könyvét](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook)
-- Több száz diák nak [tanítegy tanfolyamot](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas)
-- Webinárium online vagy konferencián való adása a telepítéssel töltött idő nélkül 
-- A GitHub-felhasználók közvetlenbetöltésének és futtatásának engedélyezése a [GitHub indítási jelvényének létrehozásával](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge)
-- Adja meg a [PowerPoint, mint a diavetítések,](https://notebooks.azure.com/help/jupyter-notebooks/slides) ahol a kód diák futtatható!
+- Ismerkedjen meg az új programozási nyelvvel – próbálja ki a [FrontPage oktatóanyagok](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb) egyikét
+- Adatelemzés – a [Jake VanderPlas](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook) kipróbálása
+- Több száz diák [képzésének tanítása](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas)
+- Szemináriumok Online vagy konferencián való üzembe helyezése a telepítés ideje nélkül 
+- A GitHub-felhasználók közvetlen betöltését és futtatását teszi lehetővé a [GitHub indítási jelvényének létrehozásával](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge)
+- A [PowerPointhoz hasonló diavetítéseket](https://notebooks.azure.com/help/jupyter-notebooks/slides) adhat meg, ahol a diák kódja végrehajtható!
 
-Röviden, az Azure Notebooks segítségével hatékonyabban végezheti el munkáját, és így többet érhet el.
+Röviden, Azure Notebooks segíti a munkáját hatékonyabban elérni, és így tovább.
 
 > [!Note]
-> További információ a Jupyter magáról megtalálható [jupyter.org](https://jupyter.org/) és a [Jupyter dokumentáció](https://jupyter-notebook.readthedocs.io/en/latest/).
+> A Jupyter-ről a [jupyter.org](https://jupyter.org/) és a [Jupyter dokumentációjában](https://jupyter-notebook.readthedocs.io/en/latest/)találhat további információt.
 
-## <a name="pricing-and-quotas"></a>Árképzés és kvóták
+## <a name="pricing-and-quotas"></a>Díjszabás és kvóták
 
-Az Azure Notebooks egy ingyenes szolgáltatás, de minden projekt 4 GB memóriára és 1 GB-os adatokra korlátozódik a visszaélések megelőzése érdekében. A korlátozásokat túllépő legitim felhasználók egy Captcha-kihívást látnak a jegyzetfüzetek futtatásának folytatásához.
+Azure Notebooks egy ingyenes szolgáltatás, de az egyes projektek 4 GB memóriával és 1 GB-nyi adattal rendelkeznek a visszaélések elkerülése érdekében. A fenti korlátokat meghaladó, megbízható felhasználók a jegyzetfüzetek futtatásának folytatásához egy CAPTCHA-kihívást látnak.
 
-Az összes korlát felszabadításához jelentkezzen be az Azure Notebooks-ba egy Azure Active Directory (például vállalati fiók) használatával. Ha ez a fiók egy Azure-előfizetéshez van társítva, az adott előfizetésen belül bármely Azure Data Science virtuálisgép-példányhoz csatlakozhat. További információ: [Projektek kezelése és konfigurálása – Számítási szint.](configure-manage-azure-notebooks-projects.md#compute-tier)
+Az összes korlát felszabadításához jelentkezzen be Azure Notebooks egy olyan fiókkal, amely Azure Active Directory (például egy vállalati fiók) használatával. Ha ez a fiók Azure-előfizetéshez van társítva, az adott előfizetéshez tartozó Azure Data Science Virtual Machine-példányokhoz is csatlakozhat. További információ: [projektek kezelése és konfigurálása – számítási réteg](configure-manage-azure-notebooks-projects.md#compute-tier).
 
-Notebook szerverek garantáltan létezik legmost 8 óra. A legtöbb esetben a tárolóra nem vonatkozik ez a korlát, és ez az időszak túl is fut, de a hosszú élettartamú munkamenetek időnként leállhatnak a rendszer stabilitása érdekében.
+A notebook-kiszolgálók legfeljebb 8 órán keresztül vannak garantálva. A legtöbb esetben a tároló nem vonatkozik erre a korlátozásra, és továbbra is az idő függvényében fut, de a hosszú élettartamú munkamenetek időnként leállíthatók a rendszer stabilitására.
 
 ## <a name="available-kernels-and-environments"></a>Elérhető kernelek és környezetek
 
-Minden egyes jegyzetfüzethez ki kell választania azt a rendszermagot (azaz a futásidejű környezetet), amely a kódcellák futtatásához használatos. Az Azure Notebooks a következő kerneleket támogatja:
+Minden egyes jegyzetfüzet esetében ki kell választania a kód celláinak futtatásához használt kernelt (azaz a futásidejű környezetet). A Azure Notebooks a következő kerneleket támogatja:
 
-- Python 2.7 + Anaconda2-5.3.0
-- Python 3.6 + Anaconda3-5.3.0
-- Python 3.5 + Anaconda3-4.2.0 (elavult)
+- Python 2,7 + Anaconda2 – 5.3.0
+- Python 3,6 + Anaconda3 – 5.3.0
+- Python 3,5 + Anaconda3 – 4.2.0 (elavulttá válik)
 - R 3.4.1 + Microsoft R Open 3.4.1
-- F#4.1.9
+- F # 4.1.9
 
-Az Azure Notebooks az alapdisztribúciókon túl további csomagokat is tartalmaz. A Python kernelek közé tartoznak például a numpy, pandák, scikit-learn, matplotlib és bokeh könyvtárak.
+A Azure Notebooks az alapszintű disztribúción túli további csomagokat is tartalmaz. A Python-kernelek közé tartoznak például a NumPy, a pandák, a scikit-Learn, a matplotlib és a bokeh-függvénytárak.
 
-A projekt testreszabásával környezetet hozhat létre a projekt összes jegyzetfüzetéhez. További információt a [Rövid útmutató: Projekt létrehozása egyéni környezettel](quickstart-create-jupyter-notebook-project-environment.md)című témakörben talál.
+Emellett testre is szabhatja a projektet, hogy a projektben lévő összes jegyzetfüzethez hozzon létre környezetet. További információ [: gyors útmutató: projekt létrehozása egyéni környezettel](quickstart-create-jupyter-notebook-project-environment.md).
 
-Az alapszintű disztribúciók mellett az Azure Notebooks előre telepített, számos további csomaggal, amelyek hasznosak az adatszakértők számára. Saját csomagokat is telepíthet az egyes nyelvekre jellemző folyamat használatával.
+Az alapszintű disztribúciók mellett Azure Notebooks előre telepítve van számos további csomaggal, amelyek hasznosak az adatszakértők számára. Saját csomagokat is telepíthet az egyes nyelvekhez tartozó szokásos folyamat használatával.
 
 ## <a name="pre-configured-jupyter-extensions"></a>Előre konfigurált Jupyter-bővítmények
 
-Az Azure Notebooks előre konfigurálva van a következő Jupyter-bővítményekkel:
+Azure Notebooks előre konfigurálva van a következő Jupyter-bővítményekkel:
 
-- [RISE](https://github.com/damianavila/RISE): A Jupyter Diavetítés Extension (más néven live_reveal). További információt a [Jegyzetfüzet-diavetítés futtatása](present-jupyter-notebooks-slideshow.md)című témakörben talál.
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): Teljes számítási környezet a Jupyter notebookok hoz.
-- [Altair](https://github.com/ellisonbg/altair): Python deklaratív statisztikai vizualizációs könyvtára.
-- [BQPlot](https://github.com/bloomberg/bqplot): A Jupyter notebookok interaktív nyomtatási keretrendszere.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interaktív HTML kütyü Jupyter Notebooks.
+- [Rise](https://github.com/damianavila/RISE): A Jupyter Slideshow bővítmény (más néven live_reveal). További információ: jegyzetfüzet- [Diavetítés futtatása](present-jupyter-notebooks-slideshow.md).
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): teljes számítási környezet a Jupyter-jegyzetfüzetek használatához.
+- [Altair](https://github.com/ellisonbg/altair): a Python deklaratív statisztikai vizualizációs könyvtára.
+- [BQPlot](https://github.com/bloomberg/bqplot): interaktív ábrázolási keretrendszer a Jupyter-jegyzetfüzetekhez.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): interaktív HTML-widgetek Jupyter-jegyzetfüzetekhez.
 
-## <a name="issues-and-getting-help"></a>Problémák és segítség szerzése
+## <a name="issues-and-getting-help"></a>Problémák és Segítség kérése
 
-Mivel az Azure Notebooks még előzetes verzióban van, a szolgáltatás átmeneti kimaradásokat tapasztalhat, amelyek gyakoribbak vagy tartósabbak lehetnek, mint más Azure-szolgáltatások. Előfordulhat, hogy egyes funkciók hiányosak vagy hibákat tartalmaznak.
+Mivel Azure Notebooks még mindig előzetes verzióban érhető el, a szolgáltatás olyan ideiglenes leállást tapasztalhat, amely gyakoribb vagy tartósabb lehet, mint a többi Azure-szolgáltatás. Előfordulhat, hogy egyes funkciók hiányosak vagy hibákat tartalmaznak.
 
-Jelenleg azt javasoljuk, hogy ne használja az Azure Notebooks Preview üzleti legkritikusabb alkalmazásokhoz, illetve a bizalmas jegyzetfüzetek és adatok használata ellen.
+Javasoljuk, hogy a Azure Notebooks előzetes verzió használata az üzleti szempontból kritikus fontosságú alkalmazásokhoz, illetve a bizalmas jegyzetfüzetekhez és adatokhoz.
 
-Az Azure-jegyzetfüzetekkel kapcsolatos kérdések megvitatásához nyújtson be egy problémát a [GitHub-tárházban.](https://github.com/Microsoft/AzureNotebooks/issues)
+A Azure Notebooksával kapcsolatos kérdéseiről a [GitHub-adattáron](https://github.com/Microsoft/AzureNotebooks/issues)teheti fel a problémát.
 
 ## <a name="next-steps"></a>További lépések  
 
-- [Mintajegyzetfüzetek felfedezése](azure-notebooks-samples.md)
+- [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 
 - Gyorsútmutatók:
 
@@ -103,7 +103,7 @@ Az Azure-jegyzetfüzetekkel kapcsolatos kérdések megvitatásához nyújtson be
 
   - [Notebook létrehozása és futtatása](tutorial-create-run-jupyter-notebook.md  )
 
-- Útmutató cikkek:
+- Útmutató a cikkekhez:
   
   - [Projektek létrehozása és klónozása](create-clone-jupyter-notebooks.md)
   - [Projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)

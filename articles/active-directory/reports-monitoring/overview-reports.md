@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74007929"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Mi az Azure Active Directory-jelentés?
 
-Az Azure Active Directory (Azure AD) jelentései átfogó képet nyújtanak a környezetében végzett tevékenységekről. A megadott adatokkal a következőket teheti:
+A Azure Active Directory-(Azure AD-) jelentések átfogó áttekintést nyújtanak a környezettel kapcsolatos tevékenységekről. A megadott adatokkal a következőket teheti:
 
 - Meghatározhatja, hogy a felhasználók hogyan használják az alkalmazásokat és szolgáltatásokat
 - Észlelheti a környezet állapotát befolyásoló lehetséges kockázatokat
@@ -42,7 +42,7 @@ A jelentéskészítési architektúra két alappillérre támaszkodik:
 
 ## <a name="security-reports"></a>Biztonsági jelentések
 
-A biztonsági jelentések segítenek a szervezet identitásának védelmében. A biztonsági jelentéseknek két típusa van:
+A biztonsági jelentések segítenek a szervezet identitásának védelmében. A biztonsági jelentések két típusa létezik:
 
 - **Kockázatosként megjelölt felhasználók** – A [kockázatosként megjelölt felhasználók biztonsági jelentésben](concept-user-at-risk.md) azon felhasználói fiókok áttekintését találja, amelyek biztonsága esetleg sérült.
 
@@ -50,18 +50,18 @@ A biztonsági jelentések segítenek a szervezet identitásának védelmében. A
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Milyen Azure AD-licencre van szükség a biztonsági jelentések eléréséhez?  
 
-Az Azure AD összes kiadása kockázati és kockázatos bejelentkezési jelentésekhez megjelölt felhasználókat biztosít. A jelentések részletességi szintje azonban különbözik a kiadások között: 
+Az Azure AD minden kiadása biztosítja a kockázatos és kockázatos bejelentkezési jelentésekhez megjelölt felhasználókat. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- Az **Azure Active Directory ingyenes és alapszintű kiadásaiban**a kockázatos bejelentkezések számára megjelölt felhasználók listája jelenik meg. 
+- A **ingyenes Azure Active Directory és az alapszintű kiadásokban**a kockázatok és a kockázatos bejelentkezések számára megjelölt felhasználók listája jelenik meg. 
 
-- Az **Azure Active Directory Premium 1-es** kiadás kiterjeszti ezt a modellt azáltal, hogy lehetővé teszi az egyes jelentéseknél észlelt, mögöttes kockázatészlelések vizsgálatát is. 
+- A **prémium szintű Azure Active Directory 1** kiadás kiterjeszti ezt a modellt azáltal, hogy megvizsgálja az egyes jelentésekhez észlelt mögöttes kockázati észlelések némelyikét is. 
 
-- Az **Azure Active Directory Premium 2-kiadás** a legrészletesebb információkat nyújt az alapul szolgáló kockázatészlelésekről, és lehetővé teszi a biztonsági házirendek konfigurálását is, amelyek automatikusan reagálnak a konfigurált kockázati szintekre.
+- A **prémium szintű Azure Active Directory 2** kiadás a legrészletesebb információkat tartalmazza a mögöttes kockázati észlelésekről, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan reagálnak a konfigurált kockázati szintekre.
 
 
 ## <a name="activity-reports"></a>Tevékenységjelentések
 
-A tevékenységjelentések segítenek megérteni a szervezet felhasználóinak viselkedését. Az Azure AD-ben kétféle tevékenységjelentés létezik:
+A tevékenységgel kapcsolatos jelentések segítenek megérteni a szervezet felhasználói viselkedését. Az Azure AD-ben kétféle tevékenységi jelentés létezik:
 
 - **Naplók** – A [naplók tevékenységjelentés](concept-audit-logs.md) hozzáférést nyújt a bérlőn elvégzett összes feladat előzményeihez.
 
@@ -81,11 +81,11 @@ A [naplók jelentés](concept-audit-logs.md) a rendszertevékenységek rekordjai
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Milyen Azure AD-licencre van szükség a naplójelentéshez való hozzáféréshez?  
 
-A naplójelentés olyan szolgáltatásokhoz érhető el, amelyekhez licenccel rendelkezik. Ha rendelkezik licenccel egy adott szolgáltatáshoz, annak naplóinformációihoz is hozzáfér. További információt az Azure Active Directory szolgáltatásaiés képességei című [témakörben talál.](https://www.microsoft.com/cloud-platform/azure-active-directory-features)   
+A naplójelentés olyan szolgáltatásokhoz érhető el, amelyekhez licenccel rendelkezik. Ha rendelkezik licenccel egy adott szolgáltatáshoz, annak naplóinformációihoz is hozzáfér. További részletek: [Azure Active Directory szolgáltatások és képességek](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
 
-### <a name="sign-ins-report"></a>Bejelentkezési jelentés
+### <a name="sign-ins-report"></a>Bejelentkezések jelentés
 
-A [bejelentkezések jelentés](concept-sign-ins.md) lehetővé teszi, hogy megtalálja a választ a kérdésekre, mint például:
+A [bejelentkezések jelentés](concept-sign-ins.md) lehetővé teszi a következő kérdésekre adott válaszok megkeresését:
 
 - Milyen egy adott felhasználó bejelentkezési mintázata?
 - Hány felhasználó jelentkezett be egy adott héten?
@@ -97,7 +97,7 @@ A bejelentkezési tevékenységjelentés eléréséhez a bérlőnek prémium szi
 
 ## <a name="programmatic-access"></a>Szoftveres hozzáférés
 
-A felhasználói felület mellett az Azure AD is biztosít [programozott hozzáférést](concept-reporting-api.md) biztosít a jelentések adataihoz egy sor REST-alapú API-k. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. 
+A felhasználói felületen kívül az Azure AD [programozott hozzáférést](concept-reporting-api.md) is biztosít a jelentések adatokhoz a REST-alapú API-k segítségével. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. 
 
 ## <a name="next-steps"></a>További lépések
 

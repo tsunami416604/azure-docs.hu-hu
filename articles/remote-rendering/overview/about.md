@@ -1,40 +1,40 @@
 ---
 title: Névjegy
-description: Bevezetés az Azure távoli renderelésébe
+description: Bevezetés az Azure távoli Renderelésbe
 author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
 ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679953"
 ---
-# <a name="about-azure-remote-rendering"></a>Az Azure távoli renderelése
+# <a name="about-azure-remote-rendering"></a>Az Azure Remote Rendering ismertetése
 
 > [!IMPORTANT]
-> **Az Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Az **Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-*Az Azure Remote Rendering* (ARR) egy olyan szolgáltatás, amely lehetővé teszi, hogy kiváló minőségű, interaktív 3D-s tartalmakat jelenítsen meg a felhőben, és valós időben streamelje azokat olyan eszközökre, például a HoloLens 2-re.
+Az *Azure távoli renderelés* (ARR) egy olyan szolgáltatás, amely lehetővé teszi a magas színvonalú, interaktív 3D-tartalmak megjelenítését a felhőben, és valós időben továbbítja azokat az eszközökre, például a 2. HoloLens.
 
-![Mintamodell](../media/arr-engine.png)
+![Minta modell](../media/arr-engine.png)
 
-A nem kötött eszközök korlátozott számítási teljesítménnyel rendelkeznek az összetett modellek rendereléséhez. Sok alkalmazás számára azonban elfogadhatatlan lenne a vizuális hűség bármilyen módon való csökkentése.
+A nem lekötött eszközök korlátozott számítási teljesítménnyel rendelkeznek a komplex modellek rendereléséhez. Számos alkalmazás esetében elfogadhatatlan lenne, azonban a vizualizációs hűség bármilyen módon történő csökkentése.
 
-*A távoli renderelés* úgy oldja meg ezt a problémát, hogy a renderelési számítási feladatokat a felhőben lévő csúcskategóriás GPU-kba helyezi át. A felhőben üzemeltetett grafikus motor megjeleníti a képet, videoadatfolyamként kódolja, és továbbítja azt a céleszközre.
+A *távoli renderelés* megoldja ezt a problémát azáltal, hogy áthelyezi a renderelési munkafolyamatot a felhőben lévő magas szintű GPU-k felé. A felhőben üzemeltetett grafikus motor rendereli a képet, kódolja a videót, és továbbítja azokat a célként megadott eszköznek.
 
 ## <a name="hybrid-rendering"></a>Hibrid renderelés
 
-A legtöbb alkalmazásban nem elegendő csak egy összetett modellt megjeleníteni. A felhasználó működésének biztosításához egyéni felhasználói felületre is szükség van. Az Azure távoli renderelés nem kényszeríti, hogy egy dedikált felhasználói felület keretrendszer, hanem támogatja a *hibrid renderelés.* Ez azt jelenti, hogy az eszközöket az előnyben részesített módszerrel, például az [MRTK-val](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html)jelenítheti meg.
+A legtöbb alkalmazásban nem elegendő egyetlen összetett modell megjelenítésére. Emellett egyéni felhasználói felületre is szüksége lesz a felhasználónak nyújtott funkciók biztosításához. Az Azure távoli renderelés nem kényszeríti a dedikált felhasználói felületi keretrendszer használatát, hanem támogatja a *hibrid renderelést*. Ez azt jelenti, hogy az eszközön elemeket lehet megjeleníteni az előnyben részesített módszer, például a [MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html)használatával.
 
-A keret végén az Azure Remote Rendering, majd automatikusan egyesíti a helyileg megjelenített tartalmat a távoli lemezkép. Még a megfelelő elzáródással is képes erre.
+A keret végén az Azure távoli renderelés automatikusan egyesíti a helyileg renderelt tartalmat a távoli képpel. Azt is megteheti, hogy a megfelelő elzáródással rendelkezik.
 
-## <a name="multi-gpu-rendering"></a>Több GPU-s renderelés
+## <a name="multi-gpu-rendering"></a>Több GPU renderelése
 
-Egyes modellek túl bonyolultak ahhoz, hogy interaktív képkockasebességgel rendereljék, még egy csúcskategóriás GPU esetében is. Különösen az ipari vizualizációban ez gyakori probléma. A korlátok további leküldéses, az Azure Remote Rendering a számítási feladatok több GPU-k között is terjesztheti. Az eredmények egyetlen képpé egyesülnek, így a folyamat teljesen átlátható a felhasználó számára.
+Néhány modell túl összetett ahhoz, hogy interaktív kereteket lehessen megjeleníteni, még egy magas szintű GPU esetében is. Különösen az ipari vizualizációkban ez egy gyakori probléma. A korlátok további leküldéséhez az Azure távoli renderelés több GPU-ra is terjesztheti a munkaterhelést. Az eredményeket egyetlen rendszerképbe egyesítjük, így a folyamat teljes mértékben átlátszóvá válik a felhasználó számára.
 
 ## <a name="high-level-architecture"></a>Magas szintű architektúra
 
@@ -42,22 +42,22 @@ Ez az ábra a távoli renderelési architektúrát szemlélteti:
 
 ![Architektúra](./media/arr-high-level-architecture.png)
 
-A teljes képlétrehozási ciklus a következő lépéseket foglalja magában:
+A képek generálásának teljes ciklusa a következő lépésekből áll:
 
-1. Ügyféloldal: Keret beállítása
-    1. A kód: A felhasználói bevitel feldolgozásra kerül, a jelenetgrafikon frissül
-    1. ARR kód: Jelenet grafikon frissítések és előre jelzett fej jelent kap küldött a szerverre
-1. Kiszolgálóoldali: Távoli renderelés
-    1. A renderelő motor elosztja a renderelést a rendelkezésre álló GPU-k között
-    1. Több GPU kimenete egyetlen képpé válik
-    1. A kép videoadatfolyamként van kódolva, és visszaküldve az ügyfélnek
-1. Ügyféloldali: Véglegesítés
-    1. Az Ön kódja: Az opcionális helyi tartalom (felhasználói felület, jelölők, ...)
-    1. ARR-kód: A "jelen" esetén a helyileg megjelenített tartalom automatikusan egyesül a videoadatfolyammal
+1. Ügyféloldali: keret beállítása
+    1. A kód: felhasználói bevitel feldolgozva, a Scene Graph frissül
+    1. ARR-kód: a Scene Graph frissítései és az előre jelzett Head póz a kiszolgálóra kerül.
+1. Kiszolgálóoldali: távoli renderelés
+    1. A renderelési motor a rendelkezésre álló GPU-k között terjeszti a renderelést
+    1. Több GPU-ból származó kimenet egyetlen rendszerképbe kerül
+    1. A képet Video streamként kódolja a rendszer, és visszaküldi az ügyfélnek
+1. Ügyféloldali: véglegesítés
+    1. A kód: nem kötelező helyi tartalom (UI, jelölők,...) megjelenítése
+    1. ARR-kód: a "jelen", a helyileg megjelenített tartalom automatikusan egyesítve lesz a videó streamtel
 
-A hálózati késés a fő probléma. A kérelem küldése és az eredmény fogadása közötti áthajtási idő általában túl hosszú az interaktív képkockasebességhez. Ezért egynél több keret is repülhet bármikor.
+A hálózati késés a fő probléma. A kérések küldése és az eredmény fogadása között elvárható idő általában túl hosszú az interaktív keret díjszabásához képest. Ezért a több keret is lehet egy időben.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Rendszerkövetelmények](system-requirements.md)
-* [Rövid útmutató: Modell renderelése unityvel](../quickstarts/render-model.md)
+* [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

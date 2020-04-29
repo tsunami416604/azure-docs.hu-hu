@@ -1,33 +1,33 @@
 ---
-title: Modell renderelése unityvel
-description: Rövid útmutató, amely végigvezeti a felhasználót a modell megjelenítésének lépésein
+title: Modell renderelése a Unityvel
+description: Útmutató, amely végigvezeti a felhasználót a modell megjelenítésének lépésein
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
 ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679785"
 ---
-# <a name="quickstart-render-a-model-with-unity"></a>Rövid útmutató: Modell renderelése unityvel
+# <a name="quickstart-render-a-model-with-unity"></a>Gyors útmutató: modell megjelenítése egységgel
 
-Ez a rövid útmutató ismerteti, hogyan futtatja a Unity-minta, amely egy beépített modell távolról, az Azure Remote Rendering (ARR) szolgáltatás használatával.
+Ez a rövid útmutató azt ismerteti, hogyan futtathat egy olyan Unity-mintát, amely távolról, az Azure Remote rendering (ARR) szolgáltatás használatával jeleníti meg a beépített modellt.
 
-Nem fogunk részletekbe bocsátkozni magáról az ARR API-ról vagy egy új Unity projekt beállításáról. Ezeket a témákat a [Tutorial: Setting up a Unity projekt a semmiből](../tutorials/unity/project-setup.md).
+Nem fogjuk részletesen bemutatni az ARR API-t, vagy egy új Unity-projekt beállítását. Ezek a témakörök a következő [oktatóanyagban találhatók: Unity-projekt létrehozása a semmiből](../tutorials/unity/project-setup.md).
 
-Ebben a rövid útmutatóban megtudhatja, hogyan:
+Ebből a rövid útmutatóból megtudhatja, hogyan végezheti el a következőket:
 > [!div class="checklist"]
 >
 >* A helyi fejlesztési környezet beállítása
->* Az ARR rövid útmutató mintaalkalmazásának beszerezni és megépíteni a Unity számára
->* Modell renderelése az ARR rövid útmutató mintaalkalmazásban
+>* Az egységhez készült ARR gyors minta alkalmazás beszerzése és összeállítása
+>* Modell renderelése az ARR Gyorsindítás minta alkalmazásban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure távoli renderelési szolgáltatáshoz való hozzáféréshez először létre kell [hoznia egy fiókot.](../how-tos/create-an-account.md)
+Ahhoz, hogy hozzáférjen az Azure távoli renderelési szolgáltatáshoz, először [létre kell hoznia egy fiókot](../how-tos/create-an-account.md).
 
 A következő szoftvereket kell telepíteni:
 
@@ -35,13 +35,13 @@ A következő szoftvereket kell telepíteni:
 * A Visual Studio 2019 legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * GIT [(letöltés)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(letöltés)](https://unity3d.com/get-unity/download)
-  * Telepítse ezeket a modulokat unity:
-    * **UWP** – Univerzális Windows-platformbuild-támogatás
-    * **IL2CPP** – Windows buildtámogatás (IL2CPP)
+  * Telepítse ezeket a modulokat az Unity-ben:
+    * **UWP** – univerzális Windows-platform-Build támogatása
+    * **IL2CPP** – Windows Build-támogatás (IL2CPP)
 
 ## <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
-Nyisson meg egy `cmd` parancssort (írja be a Windows start menüjét), és váltson olyan könyvtárra, amelyen az ARR mintaprojektet tárolni szeretné.
+Nyisson meg egy parancssort ( `cmd` írja be a Windows Start menüjét), és váltson arra a könyvtárba, ahol az ARR-minta projektet tárolni szeretné.
 
 Futtassa az alábbi parancsot:
 
@@ -51,66 +51,66 @@ cd ARR
 git clone https://github.com/Azure/azure-remote-rendering
 ```
 
-Az utolsó parancs létrehoz egy alkönyvtárat az ARR könyvtárban, amely tartalmazza az Azure távoli rendereléskülönböző mintaprojektjeit.
+Az utolsó parancs létrehoz egy alkönyvtárat az ARR könyvtárban, amely az Azure távoli renderelés különböző mintáit tartalmazza.
 
-A Unity rövid útmutató mintaalkalmazása az *Unity/Quickstart*alkönyvtárban található.
+Az egységhez készült gyors üzembe helyezési minta alkalmazás az alkönyvtári *egység/* gyors útmutatóban található.
 
-## <a name="rendering-a-model-with-the-unity-sample-project"></a>Modell renderelése az Egység mintaprojekttel
+## <a name="rendering-a-model-with-the-unity-sample-project"></a>Modell megjelenítése az Unity Sample projekttel
 
-Nyissa meg a Unity Hubot, és adja hozzá a mintaprojektet, amely az *ARR\azure-remote-rendering\Unity\Quickstart* mappa.
-Nyissa meg a projektet. Ha szükséges, engedélyezze a Unity számára, hogy frissítse a projektet a telepített verzióra.
+Nyissa meg az Unity hubot, és adja hozzá a minta projektet, amely a *ARR\azure-Remote-rendering\Unity\Quickstart* mappa.
+Nyissa meg a projektet. Ha szükséges, engedélyezze az egységnek a projekt frissítését a telepített verzióra.
 
-Az alapértelmezett modell, amelyet renderelünk, egy [beépített mintamodell.](../samples/sample-model.md) Bemutatjuk, hogyan konvertálhatja az egyéni modellt az ARR konverziós szolgáltatás használatával a [következő rövid útmutatóban.](convert-model.md)
+A megjelenített alapértelmezett modell egy [beépített minta modell](../samples/sample-model.md). A [következő](convert-model.md)rövid útmutatóban bemutatjuk, hogyan lehet egyéni modellt ÁTALAKÍTANI az ARR konverziós szolgáltatás használatával.
 
 ### <a name="enter-your-account-info"></a>Adja meg a fiók adatait
 
-1. A Unity eszközböngészőben keresse meg a *Jelenetek mappát,* és nyissa meg a **Rövid útmutató** jelenetet.
-1. A *Hierarchiából*jelölje ki a **RemoteRendering** játékobjektumot.
-1. A *Felügyelő*mezőbe írja be a [fiók hitelesítő adatait.](../how-tos/create-an-account.md)
+1. Az Unity-eszköz böngészőben navigáljon a *jelenetek* mappára, és nyissa meg a gyors üzembe helyezési **jelenetet.**
+1. A *hierarchiában*válassza ki a **RemoteRendering** játék objektumot.
+1. Az *ellenőrben*adja meg a [fiókja hitelesítő adatait](../how-tos/create-an-account.md).
 
 ![ARR-fiók adatai](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Az Azure Portal csak *mixedreality.azure.com*jeleníti meg a fiók tartományát. Ez nem elegendő a sikeres csatlakozáshoz.
-> Állítsa **a AccountDomain (AccountDomain) (Fióktartomány)** beállítását, `<region>.mixedreality.azure.com`ahol `<region>` az Ön [közelében lévő egyik elérhető terület](../reference/regions.md)található.
+> Az Azure Portalon a fiók tartománya csak *mixedreality.Azure.com*-ként jelenik meg. Ez nem elegendő a sikeres csatlakozáshoz.
+> Állítsa **AccountDomain** be a `<region>.mixedreality.azure.com`AccountDomain a `<region>` értékre, ahol az az [elérhető régiók egyike](../reference/regions.md).
 
-Később szeretnénk telepíteni ezt a projektet egy HoloLensre, és csatlakozni a távoli renderelési szolgáltatáshoz az adott eszközről. Mivel nincs egyszerű módja annak, hogy adja meg a hitelesítő adatokat az eszközön, a rövid útmutató minta **menti a hitelesítő adatokat a Unity jelenet**.
+Később telepíteni szeretnénk ezt a projektet egy HoloLens, és az adott eszközről csatlakozunk a távoli renderelési szolgáltatáshoz. Mivel a hitelesítő adatok nem írhatók be az eszközön, a gyors üzembe helyezési minta a **hitelesítő adatokat az egység jelenetében fogja menteni**.
 
 > [!WARNING]
-> Győződjön meg róla, hogy ne ellenőrizze a projektet a mentett hitelesítő adatokat egy adattárba, ahol titkos bejelentkezési adatokat szivárogtatna ki!
+> Győződjön meg arról, hogy nem ellenőrzi a projektet a mentett hitelesítő adatokkal egy olyan adattárba, ahol a titkos bejelentkezési adatok szivárognak ki.
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Munkamenet létrehozása és az alapértelmezett modell megtekintése
 
-A munkamenet elindításához nyomja meg a Unity **Lejátszás** gombját. A *Játék* panelen a nézetablak alján egy állapotszöveget tartalmazó átfedésnek kell látható. A munkamenet egy sor állapotátmeneten megy keresztül. A **kezdő** állapotban a távoli virtuális gép felvan pörgetve, ami több percet vesz igénybe. A siker után átkerül a **Ready** állapotba. Most a munkamenet belép a **csatlakozási** állapotba, ahol megpróbálja elérni a renderelési futásidejű, hogy a virtuális gép. Ha sikeres, a minta átvált a **Csatlakoztatott állapotba.** Ezen a ponton elkezdi letölteni a modellt renderelésre. A modell mérete miatt a letöltés még néhány percet vehet igénybe. Ezután megjelenik a távolról renderelt modell.
+A munkamenet elindításához nyomja meg az egység **Lejátszás** gombját. Meg kell jelennie egy, az állapotjelző szöveggel rendelkező átfedésnek a *játék* paneljén a nézetablak alján. A munkamenet az állapot-váltások sorozatán keresztül fog esni. A **kezdő** állapotban a távoli virtuális gép megpördült, ami több percet vesz igénybe. A művelet sikere esetén a **kész** állapotra vált. A munkamenet most a **Csatlakozás** állapotba kerül, ahol a virtuális gépen lévő renderelési futtatókörnyezetet próbálja elérni. Sikeres művelet esetén a minta a **csatlakoztatott** állapotra vált. Ekkor a rendszer elindítja a modell letöltését a rendereléshez. A modell mérete miatt a letöltés több percet is igénybe vehet. Ekkor megjelenik a távolról renderelt modell.
 
-![A mintából származó kimenet](media/arr-sample-output.png)
+![A minta kimenete](media/arr-sample-output.png)
 
-Gratulálunk! Ön most megtekinti a távolról renderelt modell!
+Gratulálunk! Most megtekint egy távolról renderelt modellt!
 
-## <a name="inspecting-the-scene"></a>A helyszín vizsgálata
+## <a name="inspecting-the-scene"></a>A jelenet vizsgálata
 
-A távoli renderelési kapcsolat futását követően a Felügyelő panel további állapotinformációkat tartalmaz:
+A távoli renderelési kapcsolatok futtatása után a felügyelő panel további állapotinformációkat is frissít:
 
 ![Unity minta lejátszása](./media/arr-sample-configure-session-running.png)
 
-Most már felfedezheti a jelenetgrafikonot az új csomópont kiválasztásával és a **Gyermekek megjelenítése** a felügyelőben elemre kattintva.
+Most már felfedezheti a jelenet gráfot úgy, hogy kijelöli az új csomópontot, és rákattint a **gyermekek megjelenítése** lehetőségre a felügyelőben.
 
-![Egységhierarchia](./media/unity-hierarchy.png)
+![Unity-hierarchia](./media/unity-hierarchy.png)
 
-Van egy [vágás sík](../overview/features/cut-planes.md) tárgy a jelenetben. Próbálja meg engedélyezni a tulajdonságait, és mozgassa azt:
+A jelenetben van egy [kivágott sík](../overview/features/cut-planes.md) objektum. Próbálja meg engedélyezni a tulajdonságait, és helyezze át a következőre:
 
-![A vágási sík megváltoztatása](media/arr-sample-unity-cutplane.png)
+![A kivágási sík módosítása](media/arr-sample-unity-cutplane.png)
 
-Az átalakítások szinkronizálásához kattintson a **Szinkronizálás most** gombra, vagy jelölje be az **Összes képkocka szinkronizálása** jelölőnégyzetet. Az összetevők tulajdonságaihoz elegendő, ha csak módosítja őket.
+Az átalakítások szinkronizálásához kattintson a **szinkronizálás most** lehetőségre, vagy jelölje be a **minden keret szinkronizálása** beállítást. Összetevő-tulajdonságok esetében csak a módosítása elég.
 
 ## <a name="next-steps"></a>További lépések
 
-A következő rövid útmutatóban a mintát egy HoloLensre telepítjük, hogy megtekinthesse a távolról renderelt modellt az eredeti méretében.
+A következő rövid útmutatóban a mintát egy HoloLens fogjuk üzembe helyezni, hogy az eredeti méretben megtekintse a távolról renderelt modellt.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Unity-minta telepítése a HoloLensen](deploy-to-hololens.md)
+> [Gyors útmutató: Unity-minta üzembe helyezése a HoloLens-ben](deploy-to-hololens.md)
 
-Másik lehetőségként a minta asztali számítógépre is telepíthető.
+Azt is megteheti, hogy a minta asztali SZÁMÍTÓGÉPekre is telepíthető.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Unity-minta telepítése az asztalra](deploy-to-desktop.md)
+> [Gyors útmutató: Unity-minta üzembe helyezése az asztalra](deploy-to-desktop.md)

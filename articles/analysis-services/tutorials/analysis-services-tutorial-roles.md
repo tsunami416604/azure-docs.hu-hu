@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Az Azure Analysis Services szerepkörök konfigurálása | Microsoft dokumentumok
-description: Megtudhatja, hogyan konfigurálhatja az Azure Analysis Services rendszergazdai és felhasználói szerepköröket az Azure Portal vagy az SQL Server Management Studio használatával.
+title: Oktatóanyag – Azure Analysis Services szerepkörök konfigurálása | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat Azure Analysis Services rendszergazdai és felhasználói szerepköröket a Azure Portal vagy a SQL Server Management Studio használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81454254"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
@@ -37,7 +37,7 @@ Az Azure Analysis Services felhasználói biztonságáról a [Hitelesítés és 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [portálra.](https://portal.azure.com/)
+Jelentkezzen be a [portálra](https://portal.azure.com/).
 
 ## <a name="get-server-name"></a>Kiszolgálónév lekérése
 Ahhoz, hogy az SSMS-ből csatlakozni tudjon a kiszolgálójához, szüksége lesz a kiszolgáló nevére. A kiszolgálónevet a portálról kérheti le.
@@ -67,7 +67,7 @@ A további feladatokban az SSMS használatával csatlakozhat a kiszolgálóhoz �
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Felhasználói fiók hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz
 
-Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozzáadni a kiszolgáló-rendszergazdai szerepkörhöz. Ha biztonsági csoportot ad `obj:groupid@tenantid`meg, használja a használatát.
+Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozzáadni a kiszolgáló-rendszergazdai szerepkörhöz. Ha biztonsági csoportot ad meg, használja `obj:groupid@tenantid`a t.
 
 1. Az **Object Explorerben** kattintson a jobb gombbal a kiszolgáló nevére, majd a **Tulajdonságok** lehetőségre. 
 2. Az **Analysis Server-tulajdonságok** ablakban kattintson a **Biztonság** > **Hozzáadás** lehetőségre.
@@ -130,13 +130,13 @@ Ebben a feladatban a [Create](https://docs.microsoft.com/analysis-services/tmsl/
 ## <a name="verify-your-changes"></a>Módosítások ellenőrzése
 
 1. Az **Object Explorerben** kattintson a kiszolgálója nevére, majd kattintson a **Frissítés** lehetőségre, vagy nyomja le az **F5** billentyűt.
-2. **Bontsa adatbázisok** > **kalandworks** > **Szerepek**. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
+2. Bontsa ki az **adatbázisok** > **AdventureWorks** > **szerepkörök**elemet. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
 
     ![Ellenőrzés az Object Explorerben](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **Szerepkör tulajdonságai** > **tagsággal** távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal egy szerepkörre, majd kattintson a Törlés **parancsra.**
+Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **szerepkör-tulajdonságok** > **tagság** használatával távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal a szerepkörre, majd kattintson a **Törlés**parancsra.
 
 
 ## <a name="next-steps"></a>További lépések

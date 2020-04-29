@@ -1,6 +1,6 @@
 ---
-title: Hibrid kapcsolat kétszintű alkalmazással | Microsoft dokumentumok
-description: Ismerje meg, hogyan telepíthet virtuális berendezéseket és UDR-t egy többrétegű alkalmazáskörnyezet létrehozásához az Azure-ban
+title: Hibrid kapcsolatok 2 rétegű alkalmazással | Microsoft Docs
+description: Ismerje meg, hogyan helyezhet üzembe virtuális készülékeket és UDR többrétegű alkalmazási környezet létrehozásához az Azure-ban
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,157 +14,157 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81455362"
 ---
 # <a name="virtual-appliance-scenario"></a>Virtuális berendezés forgatókönyve
-A nagyobb Azure-ügyfelek körében gyakori forgatókönyv, hogy egy kétrétegű alkalmazást kell biztosítaniaz internetnek, miközben lehetővé teszi a hozzáférést a hátsó réteghez egy helyszíni adatközpontból. Ez a dokumentum végigvezeti a felhasználó által definiált útvonalak (UDR), a VPN-átjáró és a hálózati virtuális berendezések használatával a következő követelményeknek megfelelő kétrétegű környezet üzembe helyezéséhez:
+A nagyobb Azure-ügyfelek körében gyakran előfordul, hogy egy kétrétegű alkalmazást kell megadnia az internethez, miközben a helyszíni adatközpontból elérhetővé válik a háttérrendszer-hozzáférés. Ez a dokumentum végigvezeti a felhasználói útvonalakat (UDR), a VPN Gatewayt és a hálózati virtuális berendezéseket használó forgatókönyveken egy kétrétegű környezet üzembe helyezéséhez, amely megfelel az alábbi követelményeknek:
 
-* A webalkalmazáscsak a nyilvános internetről érhető el.
-* Az alkalmazást tároló webkiszolgálónak képesnek kell lennie a háttéralkalmazás-kiszolgáló elérésére.
-* Az internetről a webalkalmazásba irányuló összes forgalomnak tűzfalvirtuális berendezésen keresztül kell mennie. Ez a virtuális készülék csak internetes forgalomra használható.
-* Az alkalmazáskiszolgálóra irányuló összes forgalomnak egy tűzfal virtuális berendezésén keresztül kell mennie. Ez a virtuális berendezés a háttérrendszer-kiszolgáló elérésére, valamint a helyszíni hálózatról vpn-átjárón keresztül érkező hozzáférésre lesz használva.
-* A rendszergazdáknak képesnek kell lenniük a tűzfal virtuális készülékeinek helyszíni számítógépükről történő kezelésére, egy harmadik, kizárólag felügyeleti célokra használt tűzfal-virtuális berendezés használatával.
+* A webalkalmazásnak csak a nyilvános internetről kell elérhetőnek lennie.
+* Az alkalmazást futtató webkiszolgálónak képesnek kell lennie a háttérbeli alkalmazáskiszolgáló elérésére.
+* Az internetről a webalkalmazásba irányuló összes forgalomnak a tűzfal virtuális készülékén kell haladnia. Ezt a virtuális készüléket csak internetes forgalomhoz fogja használni a rendszer.
+* Az alkalmazáskiszolgáló felé irányuló összes forgalomnak egy tűzfalon áthaladó virtuális berendezésen kell átesnie. Ezt a virtuális készüléket a rendszer a háttérrendszer-kiszolgálóhoz való hozzáférésre fogja használni, és egy VPN Gateway keresztül éri el a helyszíni hálózatról érkező hozzáférést.
+* A rendszergazdáknak képesnek kell lenniük a tűzfal virtuális berendezéseknek a helyszíni számítógépekről való felügyeletére egy, a kizárólag felügyeleti célokra használt, harmadik tűzfallal rendelkező virtuális berendezés használatával.
 
-Ez egy szabványos peremhálózati (más néven DMZ) forgatókönyv, amely dmz-t és védett hálózatot biztosít. Az ilyen forgatókönyv az Azure-ban nsg-k, tűzfal virtuális készülékek használatával, vagy a kettő kombinációjával hozhatlétre. Az alábbi táblázat az NSG-k és a tűzfal virtuális készülékei közötti előnyöket és hátrányokat mutatja be.
+Ez egy szabványos peremhálózati hálózat (más néven DMZ) forgatókönyv egy DMZ-sel és egy védett hálózattal. Az ilyen forgatókönyvek az Azure-ban az NSG, a tűzfal virtuális berendezésekkel vagy a kettő kombinációjával hozhatók létre. Az alábbi táblázat a NSG és a tűzfal virtuális készülékek közötti előnyeit és hátrányait mutatja be.
 
 |  | Előnyök | Hátrányok |
 | --- | --- | --- |
-| NSG |Nincs költség. <br/>Integrálva az Azure RBAC-ba. <br/>Szabályok hozhatók létre az Azure Resource Manager-sablonokban. |A komplexitás nagyobb környezetekben változhat. |
-| Tűzfal |Teljes hozzáférés az adatsíkhoz. <br/>Központi felügyelet tűzfalkonzolon keresztül. |Tűzfalkészülék költsége. <br/>Nincs integrálva az Azure RBAC-kal. |
+| NSG |Díjmentes. <br/>Integrálva van az Azure-RBAC. <br/>Azure Resource Manager-sablonokban létrehozhatók szabályok. |Az összetettség nagyobb környezetekben változhat. |
+| Tűzfal |Az adatsík teljes körű vezérlése. <br/>Központi felügyelet a tűzfal konzolján keresztül. |A tűzfal berendezésének díja. <br/>Nincs integrálva az Azure RBAC. |
 
-Az alábbi megoldás a tűzfal virtuális berendezéseit használja a peremhálózat (DMZ)/védett hálózati forgatókönyv megvalósításához.
+Az alábbi megoldás a tűzfal virtuális készülékeit használja a peremhálózat (DMZ)/Protected hálózati forgatókönyv megvalósításához.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-A fent ismertetett környezetet az Azure-ban a ma elérhető különböző funkciók használatával telepítheti, az alábbiak szerint.
+A fentiekben ismertetett környezet a jelenleg elérhető különböző funkciókkal is telepíthető az Azure-ban, az alábbiak szerint.
 
-* **Virtuális hálózat (VNet)**. Az Azure virtuális hálózat a helyszíni hálózathoz hasonlóan működik, és egy vagy több alhálózatra bontható a forgalom elkülönítése és az aggodalmak elkülönítése érdekében.
-* **Virtuális készülék**. Számos partner biztosít virtuális berendezéseket az Azure Marketplace-en, amelyek a fent leírt három tűzfalhoz használhatók. 
-* **Felhasználó által definiált útvonalak (UDR)**. Az útvonaltáblák tartalmazhatnak Az Azure-hálózat által használt UD-okat a virtuális hálózaton belüli csomagok áramlásának szabályozásához. Ezek az útvonaltáblák alhálózatokra alkalmazhatók. Az Azure egyik legújabb funkciója az a képesség, hogy egy útvonaltábla a GatewaySubnet, lehetővé teszi, hogy továbbítsa az Azure virtuális hálózatba érkező összes forgalmat egy hibrid kapcsolat egy virtuális berendezés.
-* **IP-továbbítás**. Alapértelmezés szerint az Azure hálózati motor továbbítja a csomagokat a virtuális hálózati csatoló kártyák (NIC) csak akkor, ha a csomag cél IP-címe megegyezik a hálózati adapter IP-címét. Ezért ha egy UDR határozza meg, hogy egy csomagot kell küldeni egy adott virtuális berendezés, az Azure hálózati motor eldobja a csomagot. Annak érdekében, hogy a csomag egy virtuális gépre (ebben az esetben egy virtuális készülékre) kerüljön, amely nem a csomag tényleges célja, engedélyeznie kell az IP-továbbítást a virtuális készülék számára.
-* **hálózati biztonsági csoportok (NSG-k)** számára. Az alábbi példa nem használja az NSG-ket, de ebben a megoldásban használhatja az alhálózatokra és/vagy hálózati adapterekre alkalmazott NSG-ket az alhálózatok és hálózati adapterek forgalom további szűréséhez.
+* **Virtuális hálózat (VNet)** . Az Azure-VNet hasonló módon működnek egy helyszíni hálózatban, és egy vagy több alhálózatba sorolhatók, így biztosítva a forgalom elkülönítését, és elkülönítik a problémákat.
+* **Virtuális készülék**. Számos partner biztosít olyan virtuális berendezéseket az Azure piactéren, amelyek a fent ismertetett három tűzfalhoz is használhatók. 
+* **Felhasználó által megadott útvonalak (UDR)**. Az útválasztási táblázatok tartalmazhatják az Azure Networking által a VNet belüli csomagok áramlását vezérlő UDR. Ezek az útválasztási táblák az alhálózatokra is alkalmazhatók. Az Azure egyik legújabb funkciója az útválasztási táblázat GatewaySubnet való alkalmazása, amely lehetővé teszi az Azure VNet érkező összes forgalom továbbítását a virtuális készülékre irányuló hibrid kapcsolatok révén.
+* **IP-továbbítás**. Alapértelmezés szerint az Azure hálózatkezelési motorja csak akkor továbbítja a csomagokat a virtuális hálózati adapterekhez (NIC), ha a csomag cél IP-címe megegyezik a hálózati adapter IP-címével. Ezért ha egy UDR azt határozza meg, hogy egy csomagot el kell küldeni egy adott virtuális készüléknek, akkor az Azure hálózati motor el fogja dobni a csomagot. Annak biztosítása érdekében, hogy a csomag olyan virtuális GÉPHEZ legyen továbbítva (ebben az esetben egy virtuális berendezés), amely nem a csomag tényleges célja, engedélyeznie kell az IP-továbbítást a virtuális berendezés számára.
+* **Hálózati biztonsági csoportok (NSG)**. Az alábbi példa nem használja az NSG-t, de a megoldás alhálózatokon és/vagy hálózati adaptereken alkalmazott NSG használatával tovább szűrheti az alhálózatok és hálózati adapterek forgalmát.
 
 ![IPv6-kapcsolat](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
 Ebben a példában van egy előfizetés, amely a következőket tartalmazza:
 
-* 2 erőforráscsoport, nem jelenik meg a diagramon. 
+* 2 az ábrán nem látható erőforráscsoportok. 
   * **ONPREMRG**. A helyszíni hálózat szimulálásához szükséges összes erőforrást tartalmazza.
-  * **AZURERG**. Az Azure virtuális hálózati környezetéhez szükséges összes erőforrást tartalmazza. 
-* Az **onpremvnet** nevű virtuális hálózat az alább felsoroltak szerint szegmentált helyszíni adatközpontot utánoz.
-  * **onpremsn1**. Az Ubuntut futtató virtuális gépet (VM) tartalmazó alhálózat, amely egy helyszíni kiszolgálót utánoz.
-  * **onpremsn2**. Az Ubuntut futtató virtuális gép egy rendszergazda által használt helyszíni számítógépet utánzó alhálózatot tartalmaz.
-* Van egy **opfw** nevű tűzfal virtuális készülék **onpremvnet** karbantartására használt alagút **azurevnet.**
-* Az **azurevnet** nevű virtuális hálózat az alábbiak szerint szegmentált.
-  * **azsn1**. Külső tűzfal alhálózat, amely kizárólag a külső tűzfalhoz használatos. Az összes internetes forgalom ezen az alhálózaton keresztül érkezik. Ez az alhálózat csak a külső tűzfalhoz kapcsolt hálózati adaptert tartalmaz.
-  * **azsn2**. Az internetről elérhető webkiszolgálóként futó virtuális gép előtér-alhálózata.
-  * **azsn3**. Háttér-alhálózat, amely egy háttéralkalmazás-kiszolgálót futtató virtuális rendszert üzemeltet, amelyet az előtér-webkiszolgáló fog elérni.
-  * **azsn4**. A felügyeleti alhálózat kizárólag az összes tűzfal virtuális készülékéhez biztosít felügyeleti hozzáférést. Ez az alhálózat csak a megoldásban használt minden egyes tűzfal virtuális készülékhez tartalmaz hálózati adaptert.
-  * **GatewaySubnet**. Az ExpressRoute és a VPN-átjáró számára szükséges Azure-hibrid kapcsolatalhálózat az Azure virtuális hálózatok és más hálózatok közötti kapcsolat biztosításához szükséges. 
-* Az **azurevnet-hálózatban** 3 tűzfal virtuális készülék található. 
-  * **AZF1**. Külső tűzfal a nyilvános interneten egy nyilvános IP-cím erőforrás használatával az Azure-ban. Győződjön meg arról, hogy rendelkezik egy sablont a Marketplace-en, vagy közvetlenül a készülék szállítójától, amely rendelkezik egy 3-NIC virtuális berendezés.
-  * **AZF2**. Az **azsn2 és az azsn3** közötti forgalom szabályozására használt belső tűzfal . **azsn3** Ez is egy 3-NIC virtuális készülék.
-  * **AZF3**. A helyszíni adatközpont rendszergazdái számára elérhető felügyeleti tűzfal, amely az összes tűzfalberendezés kezelésére használt felügyeleti alhálózathoz csatlakozik. A 2-NIC virtuális berendezés sablonokat a Piactéren talál, vagy közvetlenül a készülék gyártójától kérhet egyet.
+  * **AZURERG**. Az Azure-beli virtuális hálózati környezethez szükséges összes erőforrást tartalmazza. 
+* Egy **onpremvnet** nevű VNet, amely egy, az alább felsorolt módon szegmentált helyszíni adatközpont utánzására szolgál.
+  * **onpremsn1**. Egy, az Ubuntut futtató virtuális gépet (VM) tartalmazó alhálózat, amely egy helyszíni kiszolgálót utánoz.
+  * **onpremsn2**. Egy Ubuntut futtató virtuális gépet tartalmazó alhálózat, amely egy rendszergazda által használt helyszíni számítógépet utánoz.
+* Létezik egy **OPFW** nevű tűzfal virtuális készülék a **onpremvnet** , amely a **azurevnet**-alagút fenntartására szolgál.
+* A **azurevnet** nevű VNet az alább látható módon szegmentált.
+  * **azsn1**. Külső tűzfal alhálózata, amely kizárólag a külső tűzfalhoz használatos. Az összes internetes forgalom ezen az alhálózaton keresztül fog érkezni. Ez az alhálózat csak a külső tűzfalhoz csatolt hálózati adaptert tartalmaz.
+  * **azsn2**. Előtér-alhálózat, amely az internetről elérhető webkiszolgálóként futó virtuális gépet üzemeltet.
+  * **azsn3**. Háttérbeli alhálózat, amely az előtér-webkiszolgáló által elérhető háttér-alkalmazáskiszolgáló futtatására szolgáló virtuális gépet üzemeltet.
+  * **azsn4**. Felügyeleti alhálózat, amely kizárólag az összes tűzfal virtuális készülékhez való felügyeleti hozzáférés biztosítására szolgál. Ez az alhálózat csak a megoldásban használt egyes tűzfal virtuális készülékek hálózati adapterét tartalmazza.
+  * **GatewaySubnet**. Az Azure virtuális hálózatok és más hálózatok közötti kapcsolat biztosításához a ExpressRoute és a VPN Gateway Azure Hybrid kapcsolati alhálózata szükséges. 
+* A **azurevnet** -hálózatban 3 tűzfal virtuális készülék található. 
+  * **AZF1**. Nyilvános IP-cím-erőforrást használó külső tűzfal az Azure-ban. Győződjön meg arról, hogy rendelkezik egy, a piactéren vagy közvetlenül a készülék gyártójától származó sablonnal, amely egy 3 hálózati adapterből álló virtuális készüléket foglal magában.
+  * **AZF2**. A **azsn2** és a **azsn3**közötti forgalom szabályozására szolgáló belső tűzfal. Ez egy 3 hálózati adapterből álló virtuális készülék is.
+  * **AZF3**. A felügyeleti tűzfal elérhető a rendszergazdák számára a helyszíni adatközpontból, és csatlakoztatva van egy olyan felügyeleti alhálózathoz, amely az összes tűzfalat kezeli. A piactéren 2 virtuális hálózati adaptert is megtalálhat, vagy közvetlenül a készülék gyártójától kérhet le egyet.
 
-## <a name="user-defined-routing-udr"></a>Felhasználó által definiált útválasztás (UDR)
-Az Azure minden egyes alhálózata összekapcsolható egy UDR-táblával, amely meghatározza, hogy az adott alhálózatban kezdeményezett forgalom hogyan kerül átirányítva. Ha nincs megadva udrs, az Azure alapértelmezett útvonalakat használ, hogy a forgalom egyik alhálózatból a másikba folyjon. Az UDR-ek jobb megértéséhez látogasson el [a Mik azok a felhasználó által definiált útvonalak és az IP-továbbítás.](virtual-networks-udr-overview.md)
+## <a name="user-defined-routing-udr"></a>Felhasználó által megadott útválasztás (UDR)
+Az Azure minden alhálózata csatolható egy UDR-táblához, amely az adott alhálózaton kezdeményezett forgalom irányításának meghatározására szolgál. Ha nincs definiálva UDR, az Azure az alapértelmezett útvonalakat használja, hogy engedélyezi a forgalmat az egyik alhálózatról a másikra. A UDR jobb megismeréséhez látogasson el [a felhasználók által megadott útvonalakra és az IP-továbbításra](virtual-networks-udr-overview.md).
 
-Annak érdekében, hogy a kommunikáció a megfelelő tűzfalberendezésen keresztül történik, a fenti utolsó követelmény alapján létre kell hoznia a következő útvonaltáblát, amely az **azurevnet-ben**tartalmazza az UD-okat.
+Annak biztosítása érdekében, hogy a kommunikáció a megfelelő tűzfal-berendezésen keresztül történjen, a fenti legutolsó követelmény alapján létre kell hoznia a következő útválasztási táblázatot, amely tartalmazza a UDR a **azurevnet**-ben.
 
 ### <a name="azgwudr"></a>azgwudr
-Ebben a forgatókönyvben a helyszíni és az Azure-ba irányuló egyetlen forgalom az **AZF3-hoz**való csatlakozással kezeli a tűzfalakat, és hogy a forgalomnak a belső tűzfalon, az **AZF2-en**keresztül kell mennie. Ezért csak egy útvonalra van szükség a **GatewaySubnet-ben** az alábbiak szerint.
+Ebben az esetben az egyetlen, a helyszínről az Azure-ba irányuló forgalom lesz használva a tűzfalak kezeléséhez a **AZF3**való csatlakozással, és a forgalomnak a belső tűzfalon ( **AZF2**) keresztül kell haladnia. Ezért csak egy útvonal szükséges a **GatewaySubnet** az alább látható módon.
 
 | Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
-| 10.0.4.0/24 |10.0.3.11 |Lehetővé teszi a helyszíni forgalom számára az **AZF3** felügyeleti tűzfal elérését |
+| 10.0.4.0/24 |10.0.3.11 |Lehetővé teszi a helyszíni forgalom számára a felügyeleti tűzfal **AZF3** elérését |
 
 ### <a name="azsn2udr"></a>azsn2udr
 | Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
-| 10.0.3.0/24 |10.0.2.11 |Lehetővé teszi az alkalmazáskiszolgálót az **AZF2-en** keresztül üzemeltető háttér-alhálózatba irányuló forgalmat |
-| 0.0.0.0/0 |10.0.2.10 |Lehetővé teszi az összes többi forgalom átirányításának **az AZF1-en** keresztül |
+| 10.0.3.0/24 |10.0.2.11 |Engedélyezi a forgalmat az alkalmazáskiszolgáló futtatására szolgáló háttér-alhálózaton a **AZF2** használatával. |
+| 0.0.0.0/0 |10.0.2.10 |Lehetővé teszi az összes többi forgalom átirányítását a **AZF1** -on keresztül |
 
 ### <a name="azsn3udr"></a>azsn3udr
 | Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
-| 10.0.2.0/24 |10.0.3.10 |Lehetővé teszi az **azsn2-be** irányuló forgalom áramlását az alkalmazáskiszolgálóról a webkiszolgálóra az **AZF2-n** keresztül |
+| 10.0.2.0/24 |10.0.3.10 |Lehetővé teszi, hogy a **azsn2** az App Serverről a webkiszolgálóról a **AZF2** keresztül áramlson át |
 
-Az **onpremvnet** alhálózataihoz is létre kell hoznia útvonaltáblákat a helyszíni adatközpont utánzatához.
+A helyszíni adatközpontot a **onpremvnet** alhálózatai számára is létre kell hoznia.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
 | Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
-| 192.168.2.0/24 |192.168.1.4 |Lehetővé teszi a forgalmat **onpremsn2** keresztül **OPFW** |
+| 192.168.2.0/24 |192.168.1.4 |Engedélyezi a **onpremsn2** a **OPFW** keresztül |
 
 ### <a name="onpremsn2udr"></a>onpremsn2udr
 | Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
-| 10.0.3.0/24 |192.168.2.4 |Lehetővé teszi a forgalmat a háttérben lévő alhálózataz Azure-ban **keresztül OPFW** |
-| 192.168.1.0/24 |192.168.2.4 |Lehetővé teszi a forgalmat **onpremsn1** keresztül **OPFW** |
+| 10.0.3.0/24 |192.168.2.4 |Engedélyezi a forgalmat az Azure-beli **OPFW** keresztül |
+| 192.168.1.0/24 |192.168.2.4 |Engedélyezi a **onpremsn1** a **OPFW** keresztül |
 
 ## <a name="ip-forwarding"></a>IP-továbbítás
-Az UDR és az IP-továbbítás olyan funkciók, amelyek együttesen lehetővé teszik a virtuális készülékek használatát az Azure virtuális hálózat forgalmának szabályozására.  A virtuális készülék nem más, mint egy virtuális gép, amelyen egy olyan alkalmazás fut, ami a hálózati forgalmat kezeli valamilyen módon, például tűzfallal vagy NAT-eszközzel.
+A UDR és az IP-továbbítás olyan funkciók, amelyeket kombinálva lehetővé teheti a virtuális készülékek számára a forgalom vezérlését egy Azure-VNet.  A virtuális készülék nem más, mint egy virtuális gép, amelyen egy olyan alkalmazás fut, ami a hálózati forgalmat kezeli valamilyen módon, például tűzfallal vagy NAT-eszközzel.
 
-A virtuális készüléknek képesnek kell lennie fogadni a nem neki címzett bejövő forgalmat. Ahhoz, hogy egy virtuális gép számára engedélyezze a más célhelyre irányított forgalom fogadását, először engedélyeznie kell a virtuális gép számára az IP-továbbítást. Ez egy Azure beállítás, nem a vendég operációs rendszer beállítása. A virtuális készülék továbbra is futtatnia kell valamilyen alkalmazást a bejövő forgalom kezeléséhez, és megfelelő en irányítani.
+A virtuális készüléknek képesnek kell lennie fogadni a nem neki címzett bejövő forgalmat. Ahhoz, hogy egy virtuális gép számára engedélyezze a más célhelyre irányított forgalom fogadását, először engedélyeznie kell a virtuális gép számára az IP-továbbítást. Ez egy Azure beállítás, nem a vendég operációs rendszer beállítása. A virtuális berendezésnek továbbra is futtatnia kell valamilyen típusú alkalmazást a bejövő forgalom kezeléséhez, és megfelelően kell átirányítani.
 
-Ha többet szeretne megtudni az IP-továbbításról, látogasson el a [Mik azok a felhasználó által definiált útvonalak és ip-továbbítás.](virtual-networks-udr-overview.md)
+Ha többet szeretne megtudni az IP-továbbításról, tekintse meg a [Mi a felhasználó által megadott útvonalakat és az IP-továbbítást](virtual-networks-udr-overview.md).
 
-Tegyük fel például, hogy a következő beállítással rendelkezik egy Azure-beli virtuális hálózatban:
+Tegyük fel például, hogy a következő beállítással rendelkezik egy Azure-vnet:
 
-* Az **alhálózat onpremsn1** egy **onpremvm1**nevű virtuális gépet tartalmaz.
-* Az **onpremsn2** alhálózat egy **onpremvm2**nevű virtuális gépet tartalmaz.
-* Az **OPFW** nevű virtuális készülék az **onpremsn1** és **az onpremsn2**készülékhez csatlakozik.
-* Az **onpremsn1-hez** kapcsolódó, felhasználó által definiált útvonal azt adja meg, hogy **az onpremsn2-re** irányuló összes forgalmat el kell küldeni az **OPFW-nek.**
+* Az alhálózat **onpremsn1** tartalmaz egy **onpremvm1**nevű virtuális gépet.
+* Az alhálózat **onpremsn2** tartalmaz egy **onpremvm2**nevű virtuális gépet.
+* Egy **OPFW** nevű virtuális készülék csatlakozik a **onpremsn1** és a **onpremsn2**.
+* A **onpremsn1** kapcsolt felhasználó által megadott útvonal azt adja meg, hogy a **onpremsn2** -ra irányuló összes forgalmat el kell-e juttatni a **OPFW**.
 
-Ezen a ponton, ha **onpremvm1** megpróbál kapcsolatot **onpremvm2,** az UDR lesz használva, és a forgalom lesz elküldve **OPFW,** mint a következő ugrás. Ne feledje, hogy a tényleges csomag cél nem változik, még mindig azt mondja **onpremvm2** a cél. 
+Ezen a ponton, ha a **onpremvm1** megpróbál kapcsolatot létesíteni a **onpremvm2**-mel, a rendszer a UDR fogja használni, és a rendszer a forgalmat a következő ugrásként fogja elküldeni a **OPFW** . Ne feledje, hogy a tényleges csomag célhelye nem módosul, ezért a **onpremvm2** is a cél. 
 
-Az **OPFW**IP-továbbítás engedélyezésével az Azure virtuális hálózati logikája eldobja a csomagokat, mivel csak akkor engedélyezi a csomagok virtuális gépnek történő küldését, ha a virtuális gép IP-címe a csomag célja.
+Ha az IP-továbbítás nincs engedélyezve a **OPFW**, az Azure-beli virtuális hálózati logika elveszi a csomagokat, mivel ez csak akkor engedélyezi a csomagok küldését egy virtuális gépre, ha a virtuális gép IP-címe a csomag célhelye.
 
-Az IP-továbbítás sal az Azure virtuális hálózati logikája továbbítja a csomagokat az OPFW-nek anélkül, hogy módosítaná az eredeti célcímét. **Az OPFW-nek** kezelnie kell a csomagokat, és meg kell határoznia, hogy mi legyen velük.
+Az IP-továbbítással az Azure virtuális hálózati logikája továbbítja a csomagokat a OPFW, az eredeti célcím módosítása nélkül. A **OPFW** kezelnie kell a csomagokat, és meg kell határoznia, hogy mi történjen velük.
 
-Ahhoz, hogy a fenti forgatókönyv működjön, engedélyeznie kell az IP-továbbítást az **OPFW,** **AZF1**, **AZF2**és **AZF3** hálózati adaptereken, amelyek et útválasztásra használnak (az összes hálózati adapter, kivéve a felügyeleti alhálózathoz kapcsolódóhálózati adaptereket). 
+Ahhoz, hogy a fenti forgatókönyv működjön, engedélyeznie kell az IP-továbbítást a hálózati adaptereken az útválasztáshoz használt **OPFW**, **AZF1**, **AZF2**és **AZF3** számára (az összes hálózati adaptert, kivéve a felügyeleti alhálózathoz kapcsolódókat). 
 
 ## <a name="firewall-rules"></a>Tűzfalszabályok
-A fent leírtak szerint az IP-továbbítás csak azt biztosítja, hogy a csomagok a virtuális készülékekre kerülnek. A készüléknek még el kell döntenie, hogy mi hezióznia kell ezekkel a csomagokkal. A fenti forgatókönyvben a következő szabályokat kell létrehoznia a készülékekben:
+A fentiekben leírtak szerint az IP-továbbítás csak a virtuális készülékeknek küldött csomagokat biztosítja. A készüléknek még el kell döntenie, hogy mi történjen a csomagokkal. A fenti forgatókönyvben a következő szabályokat kell létrehoznia a készülékeken:
 
-### <a name="opfw"></a>OPFW között
-Az OPFW a következő szabályokat tartalmazó helyszíni eszközt jelöli:
+### <a name="opfw"></a>OPFW
+A OPFW a következő szabályokat tartalmazó helyszíni eszközt jelöli:
 
-* **Útvonal**: A 10.0.0.0/16 **(azurevnet)** összes forgalmat **az ONPREMAZURE**alagúton keresztül kell elküldeni.
-* **Házirend**: A **port2** és **az ONPREMAZURE**közötti kétirányú forgalom engedélyezése.
+* **Route**: az 10.0.0.0/16 (**azurevnet**) összes forgalmát továbbítani kell az alagút **ONPREMAZURE**keresztül.
+* **Házirend**: az összes kétirányú forgalom engedélyezése a **Port2** és a **ONPREMAZURE**között.
 
 ### <a name="azf1"></a>AZF1
-Az AZF1 egy Azure virtuális berendezést jelöl, amely a következő szabályokat tartalmazza:
+A AZF1 egy Azure-beli virtuális készüléket jelöl, amely a következő szabályokat tartalmazza:
 
-* **Házirend**: Az 1. és a **2.** **port** közötti kétirányú forgalom engedélyezése .
+* **Házirend**: az összes kétirányú forgalom engedélyezése a **port1** és a **port2**között.
 
 ### <a name="azf2"></a>AZF2
-Az AZF2 egy Azure virtuális berendezést jelöl, amely a következő szabályokat tartalmazza:
+A AZF2 egy Azure-beli virtuális készüléket jelöl, amely a következő szabályokat tartalmazza:
 
-* **Útvonal**: A 10.0.0.0/16 **(onpremvnet)** összes forgalmat az Azure átjáró IP-címére (azaz 10.0.0.1) kell küldeni a **portonkeresztül1**.
-* **Házirend**: Az 1. és a **2.** **port** közötti kétirányú forgalom engedélyezése .
+* **Route**: minden 10.0.0.0/16 (**onpremvnet**) adatforgalmat el kell juttatni az Azure Gateway IP-címére (azaz 10.0.0.1) a **port1**-on keresztül.
+* **Házirend**: az összes kétirányú forgalom engedélyezése a **port1** és a **port2**között.
 
-## <a name="network-security-groups-nsgs"></a>Hálózati biztonsági csoportok (NSG-k)
-Ebben a forgatókönyvben az NSG-k nincsenek használatban. Azonban az egyes alhálózatokra nsg-ket alkalmazhat a bejövő és kimenő forgalom korlátozásához. Például a következő NSG-szabályokat alkalmazhatja a külső FW alhálózatra.
+## <a name="network-security-groups-nsgs"></a>Hálózati biztonsági csoportok (NSG)
+Ebben a forgatókönyvben a NSG nincsenek használatban. A bejövő és a kimenő forgalom korlátozása érdekében azonban NSG is alkalmazhat az egyes alhálózatokra. Például a következő NSG szabályokat alkalmazhatja a külső FW-alhálózatra.
 
 **Bejövő**
 
-* Az összes TCP-forgalom engedélyezése az internetről a 80-as portra az alhálózat bármely virtuális gépén.
-* Minden más forgalom megtagadása az internetről.
+* Az internetről a 80-es portra irányuló összes TCP-forgalom engedélyezése az alhálózat bármely virtuális gépén.
+* Az internetről érkező összes egyéb forgalom letiltása.
 
 **Kimenő**
 
-* Az internetminden forgalmának megtagadása.
+* Az internetre irányuló összes forgalom megtagadása.
 
 ## <a name="high-level-steps"></a>Magas szintű lépések
 A forgatókönyv üzembe helyezéséhez kövesse az alábbi magas szintű lépéseket.
 
-1. Jelentkezzen be Azure-előfizetésbe.
-2. Ha a helyszíni hálózatot utánzó virtuális hálózatot szeretne telepíteni, az **ONPREMRG**részét tartalmazó erőforrásokat létesítsen.
-3. Az **AZURERG**részét használó erőforrások kiépítése .
-4. Az alagút kiépítése **az onpremvnet-ről** az **azurevnet-re.**
-5. Az összes erőforrás kiépítése után jelentkezzen be **az onpremvm2-be** és a ping 10.0.3.101-be az **onpremsn2** és **az azsn3**közötti kapcsolat teszteléséhez.
+1. Jelentkezzen be az Azure-előfizetésbe.
+2. Ha a helyszíni hálózatot VNet szeretné telepíteni, a **ONPREMRG**részét képező erőforrásokat kell kiépíteni.
+3. A **AZURERG**részét képező erőforrások kiépítése.
+4. Az alagút kiépítése a **onpremvnet** -ből a **azurevnet**-be.
+5. Az összes erőforrás kiépítés után jelentkezzen be a **onpremvm2** -be, és Pingelje a 10.0.3.101 a **onpremsn2** és a **azsn3**közötti kapcsolat teszteléséhez.
 

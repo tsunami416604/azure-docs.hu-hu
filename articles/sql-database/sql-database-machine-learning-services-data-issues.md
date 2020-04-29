@@ -1,7 +1,7 @@
 ---
-title: R- és SQL-adattípusok és -objektumok használata
+title: R-és SQL-adattípusok és-objektumok használata
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Ismerje meg, hogyan dolgozhat az Adattípusokkal és adatobjektumokkal az R-ben az Azure SQL Database használatával a Machine Learning Services használatával (előzetes verzió), beleértve az esetleg felmerülő gyakori problémákat is.
+description: Megtudhatja, hogyan dolgozhat az R-ben található adattípusokkal és-objektumokkal Azure SQL Database Machine Learning Services (előzetes verzió) használatával, beleértve az esetlegesen felmerülő gyakori problémákat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,40 +15,40 @@ manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: e81cca3e20d5b6c050489e80b91d013d5e934cce
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453199"
 ---
-# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>R- és SQL-adatok kal való kapcsolat az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió)
+# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>R-és SQL-adatmennyiség használata Azure SQL Database Machine Learning Servicesban (előzetes verzió)
 
-Ez a cikk néhány olyan gyakori problémát ismerteti, amelyekkel az Adatok áthelyezése során az R és az SQL Database a [Machine Learning Services (R)](sql-database-machine-learning-services-overview.md)az Azure SQL Database. A tapasztalat, amit kap ez a gyakorlat biztosítja az alapvető háttér, ha dolgozik az adatokat a saját script.
+Ez a cikk néhány olyan gyakori problémát ismertet, amely akkor fordulhat elő, amikor az R és a SQL Database közötti adatátvitelt végez az Azure SQL Database-ben [Machine learning Services (r)](sql-database-machine-learning-services-overview.md)értékkel. Az ebben a gyakorlatban szerzett tapasztalatok alapvető hátteret biztosítanak a saját parancsfájlban található adatkezeléshez.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-A gyakori problémák a következők:
+Az esetlegesen felmerülő gyakori problémák a következők:
 
 - Az adattípusok néha nem egyeznek
-- Implicit konverziók történhetnek
-- Néha szükség van leadott és konvertáló műveletekre
+- Implicit konverziók is megtörténhetnek
+- Időnként szükség van a leadott és az átalakítási műveletekre
 - Az R és az SQL különböző adatobjektumokat használ
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fiókot](https://azure.microsoft.com/free/) .
 
-- A példakód futtatásához ezekben a gyakorlatokban először az [Azure SQL Database machine learning-szolgáltatásokkal (R)](sql-database-machine-learning-services-overview.md) engedélyezve kell lennie.
+- A példában szereplő programkód futtatásához először Azure SQL Databasenek kell lennie, [Machine learning Services (R)](sql-database-machine-learning-services-overview.md) engedélyezve van.
 
-- Ellenőrizze, hogy telepítette-e a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) rendszert. Az R-parancsfájlokat más adatbázis-kezelő vagy lekérdezési eszközökkel is futtathatja, de ebben a rövid útmutatóban az SSMS-t fogja használni.
+- Győződjön meg arról, hogy telepítette a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Az R-szkripteket más adatbázis-kezelő vagy lekérdezési eszközök használatával is futtathatja, de ebben a rövid útmutatóban a SSMS-t fogja használni.
 
-## <a name="working-with-a-data-frame"></a>Adatkeret munka
+## <a name="working-with-a-data-frame"></a>Adatkeret használata
 
-Amikor a parancsfájl eredményeket ad vissza az R sql, vissza kell adnia az adatokat, mint a **data.frame**. A parancsfájlban létrehozott bármely más típusú objektumot – legyen az lista, tényező, vektor vagy bináris adat – adatkeretté kell konvertálni, ha azt a tárolt eljárás eredményének részeként szeretné kiadni. Szerencsére több R függvény is támogatja a többi objektum adatkeretre való módosítását. Akár egy bináris modellt is szerializálhat, és adatkeretben adhat vissza, amelyet a cikk későbbi részében fog megtenni.
+Ha a parancsfájl az R és az SQL eredményét adja vissza, az adatoknak **adatok. keretként**kell visszaadnia. Bármely más, a parancsfájlban létrehozott objektum – legyen szó lista, faktor, vektor vagy bináris adattípushoz – adatkeretbe kell alakítani, ha a tárolt eljárás eredményeinek részeként szeretné kiadni. Szerencsére több R függvény van, amely támogatja a más objektumok adatkeretre való módosítását. Akár egy bináris modellt is szerializálhat, és visszaküldheti azt egy adatkeretbe, amelyet később ebben a cikkben fog elvégezni.
 
-Először kísérletezzünk néhány alapvető R-objektummal – vektorokkal, mátrixokkal és listákkal –, és nézzük meg, hogyan változtatja meg az adatkeretté konvertálás az SQL-nek átadott kimenetet.
+Először is kísérletezzen néhány alapszintű R-objektummal – vektorokkal, mátrixokkal és listával –, és tekintse meg, hogy az adatkeretre való átalakítás hogyan módosítja az SQL-nek átadott kimenetet.
 
-Hasonlítsa össze ezt a két "Hello World" szkriptek R. A parancsfájlok majdnem azonosak, de az első három értékű egyetlen oszlopot ad vissza, míg a második három oszlopot ad vissza egyetlen értékkel.
+Hasonlítsa össze ezt a két ""Helló világ!"alkalmazás" szkriptet az R-ben. A szkriptek majdnem azonosak, de az első egy három értékből álló egyoszlopos értéket ad vissza, míg a második három oszlopot ad vissza, amelyek mindegyike egyetlen értékkel rendelkezik.
 
 **1. példa**
 
@@ -68,13 +68,13 @@ EXECUTE sp_execute_external_script @language = N'R'
     , @input_data_1 = N'';
 ```
 
-Miért olyan különbözőek az eredmények?
+Miért más az eredmények?
 
-A válasz általában az R `str()` paranccsal érhető el. Adja hozzá `str(object_name)` a függvényt bárhol az R-parancsfájlban, hogy a megadott R-objektum adatsémáját tájékoztató üzenetként adja vissza. Az üzeneteket az SSMS **Üzenetek** lapján tekintheti meg.
+A válasz általában az R `str()` parancs használatával érhető el. Adja hozzá a `str(object_name)` függvényt az r-szkriptben bárhol, hogy a megadott R objektum adatsémája tájékoztató üzenetként legyen visszaadva. Az üzenetek a SSMS **üzenetek** lapján tekinthetők meg.
 
-Annak kiderítéséhez, `str(OutputDataSet)` `@script` hogy az 1.
+Annak megállapításához, hogy az 1. és a `str(OutputDataSet)` `@script` 2. példa milyen eredményeket tartalmaz, szúrja be a sort a változó definíciójának végén minden utasításban, a következőhöz hasonlóan:
 
-**1. példa hozzáadtával**
+**1. példa az Str függvény hozzáadásával**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -86,7 +86,7 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-**2. példa hozzáadtával**
+**2. példa az Str függvény hozzáadásával**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -97,9 +97,9 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-Most tekintse át a szöveget az **Üzenetekben,** hogy lássa, miért más a kimenet.
+Most tekintse át az **üzenetek** szövegét, és nézze meg, miért különbözik a kimenet.
 
-**Eredmények - 1. példa**
+**Eredmények – 1. példa**
 
 ```text
 STDOUT message(s) from external script:
@@ -107,7 +107,7 @@ STDOUT message(s) from external script:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
-**Eredmények - 2. példa**
+**Eredmények – 2. példa**
 
 ```text
 STDOUT message(s) from external script:
@@ -117,20 +117,20 @@ $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-Mint látható, egy kis változás az R szintaxis volt nagy hatással a séma az eredmények. Az R adattípusok közötti különbségeket [hadley Wickham "Advanced R"](http://adv-r.had.co.nz) *című adatszerkezete* című részében magyarázzák részletesen.
+Amint láthatja, az R-szintaxis enyhe módosítása nagy hatással volt az eredmények sémájára. Az összes adat esetében az R-adattípusok különbségeit a ["speciális R"](http://adv-r.had.co.nz) *adatszerkezetek* szakaszában, a Hadley Wickham című témakör ismerteti.
 
-Egyelőre csak vegye figyelembe, hogy ellenőriznie kell a várt eredményeket, amikor az R-objektumokat adatkeretekbe kényszeríti.
+Egyelőre ne feledje, hogy a várt eredményeket ellenőriznie kell, amikor az R-objektumokat az adatkeretbe kényszeríti.
 
 > [!TIP]
-> Az R identitásfüggvények , `is.matrix`például `is.vector`a , használatával információt adhat vissza a belső adatszerkezetről.
+> Az R Identity functions `is.matrix` `is.vector`(például) is használható a belső adatszerkezettel kapcsolatos információk visszaküldéséhez.
 
-## <a name="implicit-conversion-of-data-objects"></a>Adatobjektumok implicit átalakítása
+## <a name="implicit-conversion-of-data-objects"></a>Az adatobjektumok implicit átalakítása
 
-Minden R adatobjektumnak saját szabályai vannak arra vonatkozóan, hogy az értékekhogyan legyenek kezelve más adatobjektumokkal kombinálva, ha a két adatobjektum mérete megegyezik a méretekkel, vagy ha bármely adatobjektum heterogén adattípusokat tartalmaz.
+Mindegyik R-adatobjektum rendelkezik saját szabályokkal, amelyekkel az értékek kezelése más adatobjektumokkal együtt történik, ha a két adatobjektum azonos számú dimenzióval rendelkezik, vagy ha bármilyen adatobjektum heterogén adattípusokat tartalmaz.
 
-Tegyük fel például, hogy mátrixszorzást szeretne végrehajtani az R használatával. Meg szeretne szorozni egy egyoszlopos mátrixot a három értékkel egy négy értéket tartalmazó tömbbel, és ennek eredményeképpen 4x3-as mátrixra számít.
+Tegyük fel például, hogy az R használatával szeretné elvégezni a mátrixok szorzását. A három értékkel rendelkező egyoszlopos mátrixot egy négy értékkel rendelkező tömbben szeretné megszorozni, és ennek eredményeképpen egy 4x3 mátrixot vár.
 
-Először hozzon létre egy kis táblázatot a vizsgálati adatokból.
+Először hozzon létre egy kisméretű táblázatot a tesztelési adatról.
 
 ```sql
 CREATE TABLE RTestData (col1 INT NOT NULL)
@@ -146,7 +146,7 @@ VALUES (100);
 GO
 ```
 
-Most futtassa a következő parancsfájlt.
+Most futtassa az alábbi szkriptet.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -164,17 +164,17 @@ WITH RESULT SETS((
             ));
 ```
 
-A borítók alatt a három érték oszlopa egyoszlopos mátrixmá alakul át. Mivel a mátrix csak egy színhely különleges esete `y` az R-ben, a tömb implicit módon egy egyoszlopos mátrixra kényszeríti a két argumentum megfelelővé teszi.
+A borítók alatt a három érték oszlopát egy egyoszlopos mátrixba alakítja át a rendszer. Mivel a mátrix az R-tömbben csak egy speciális eset, a tömb `y` implicit módon egy egyoszlopos mátrixra van kényszerítve, hogy a két argumentum megfeleljen.
 
 **Results (Eredmények)**
 
-|Col1|Col2|Oszlop3|4. oszlop|
+|Col1|Col2|Col3|Col4|
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
 |1200|1300|1400|1500|
 
-Azonban vegye figyelembe, hogy mi történik, `y`ha módosítja a tömb méretét.
+Vegye figyelembe azonban, hogy mi történik a tömb `y`méretének módosításakor.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -187,7 +187,7 @@ OutputDataSet <- as.data.frame(y %*% x);
 WITH RESULT SETS(([Col1] INT));
 ```
 
-Most R egyetlen értéket ad eredményül.
+Az R most egyetlen értéket ad vissza eredményként.
 
 **Results (Eredmények)**
     
@@ -195,13 +195,13 @@ Most R egyetlen értéket ad eredményül.
 |---|
 |1542|
 
-Hogy miért? Ebben az esetben, mivel a két argumentum azonos hosszúságú vektorként kezelhető, az R a belső terméket adja vissza mátrixként.  Ez a várt viselkedés a lineáris algebra szabályai szerint. Azonban problémákat okozhat, ha az alsóbb rétegbeli alkalmazás azt várja, hogy a kimeneti séma soha nem változik!
+Hogy miért? Ebben az esetben, mivel a két argumentum ugyanolyan hosszúságú vektorként kezelhető, az R a belső terméket mátrixként adja vissza.  A lineáris algebra szabályainak megfelelően ez a várt viselkedés. Azonban problémákat okozhat, ha az alsóbb rétegbeli alkalmazás a kimeneti sémát soha nem változtatja meg!
 
-## <a name="merge-or-multiply-columns-of-different-length"></a>Különböző hosszúságú oszlopok egyesítése vagy szorzása
+## <a name="merge-or-multiply-columns-of-different-length"></a>Eltérő hosszúságú oszlopok egyesítése vagy szorzása
 
-Az R nagy rugalmasságot biztosít a különböző méretű vektorok számára, valamint ezen oszlopszerű szerkezetek adatkeretekké történő kombinálásához. A vektorok listája úgy nézhet ki, mint egy tábla, de nem követik az adatbázistáblákat szabályozó összes szabályt.
+Az R nagy rugalmasságot biztosít a különböző méretű vektorok használatához, valamint az oszlopok hasonló struktúráinak adatkeretbe való összekapcsolásához. A vektorok listája úgy néz ki, mint egy tábla, de nem követik az adatbázis-táblákat szabályozó összes szabályt.
 
-A következő parancsfájl például egy 6-os hosszúságú numerikus tömböt határoz meg, és az R változóban `df1`tárolja. A numerikus tömbezután kombinálva az RTestData tábla (fent létrehozott) egész számai, amely három `df2`(3) értéket tartalmaz, új adatkeret létrehozásához .
+Az alábbi szkript például egy 6. hosszúságú numerikus tömböt határoz meg, és az R változóban `df1`tárolja. A numerikus tömböt ezután a RTestData tábla (fent létrehozott) egész számával kombináljuk, amely három (3) értéket tartalmaz, hogy új adatkeretet hozzon `df2`létre.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -217,11 +217,11 @@ WITH RESULT SETS((
             ));
 ```
 
-Az adatkeret kitöltéséhez R annyiszor ismétli meg az RTestData-ból beolvasott elemeket, `df1`ahányszor csak szükséges, hogy megfeleljen a tömb elemeinek számának.
+Az adatkeret kitöltéséhez az R a tömbben `df1`lévő elemek számának megfelelően többször megismétli a RTestData lekért elemeket.
 
 **Results (Eredmények)**
     
-|*Col2*|*Oszlop3*|
+|*Col2*|*Col3*|
 |----|----|
 |1|1|
 |10|2|
@@ -230,18 +230,18 @@ Az adatkeret kitöltéséhez R annyiszor ismétli meg az RTestData-ból beolvaso
 |10|5|
 |100|6|
 
-Ne feledje, hogy az adatkeret csak úgy néz ki, mint egy táblázat, de valójában a vektorok listája.
+Ne feledje, hogy az adatkeretek csak a táblákra hasonlítanak, de valójában a vektorok listája.
 
-## <a name="cast-or-convert-sql-data"></a>SQL-adatok leadása vagy konvertálása
+## <a name="cast-or-convert-sql-data"></a>SQL-adatfeldolgozás vagy-átalakítás
 
-Az R és az SQL nem ugyanazokat az adattípusokat használja, így amikor sql-ben futtat egy lekérdezést az adatok lehívásához, majd átadja az R-futásidejűnek, általában valamilyen implicit konverzió történik. Egy másik konverziókészlet akkor történik, amikor adatokat ad vissza az R-ről az SQL-re.
+Az r és az SQL nem használja ugyanazt az adattípust, így amikor SQL-lekérdezést futtat az adatkéréshez, majd továbbítja azt az R futtatókörnyezetnek, bizonyos típusú implicit konverziók általában megtörténik. A konverziók másik készlete akkor kerül sor, amikor az R-ből az SQL-be küldi az adatforrást.
 
-- Az SQL lekérdezi az adatokat a lekérdezésből az R-folyamatba, és belső ábrázolásba konvertálja a nagyobb hatékonyság érdekében.
-- Az R futásidejű betölti az adatokat egy data.frame változó, és végrehajtja a saját műveleteket az adatokon.
-- Az adatbázis-motor biztonságos belső kapcsolathasználatával adja vissza az adatokat az SQL-nek, és az SQL-adattípusok tekintetében mutatja be az adatokat.
-- Az adatokat úgy szerezheti be, hogy olyan ügyfél- vagy hálózati kódtár használatával csatlakozik az SQL-hez, amely SQL-lekérdezéseket adhat ki, és képes kezelni a táblázatos adatkészleteket. Ez az ügyfélalkalmazás más módon is befolyásolhatja az adatokat.
+- Az SQL leküldi az adatait a lekérdezésből az R-folyamatba, és egy belső ábrázolásra konvertálja a nagyobb hatékonyság érdekében.
+- Az R Runtime betölti az adatok egy adat. frame változóba, és elvégzi a saját műveleteit az adatokon.
+- Az adatbázismotor a biztonságos belső kapcsolatok használatával visszaadja az SQL-adatoknak az SQL-t, és az SQL-adattípusok alapján jeleníti meg az adatok mennyiségét.
+- Az adatokat úgy érheti el, ha olyan ügyfél vagy hálózati könyvtár használatával csatlakozik az SQL-hez, amely SQL-lekérdezéseket tud kiadni és táblázatos adatkészleteket kezel. Ez az ügyfélalkalmazás más módon is befolyásolhatja az adatvesztést.
 
-Ha meg szeretné tekinteni, hogyan működik ez, futtasson egy lekérdezést, például ezt az [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) adatraktárban. Ez a nézet az előrejelzések létrehozásához használt értékesítési adatokat adja vissza.
+A működésének megtekintéséhez futtasson egy lekérdezést, például a [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) -adattárházban. Ez a nézet az előrejelzések létrehozásakor használt értékesítési adatok visszaadása.
 
 ```sql
 USE AdventureWorksDW
@@ -256,9 +256,9 @@ ORDER BY ReportingDate ASC
 ```
 
 > [!NOTE]
-> Az AdventureWorks bármely verzióját használhatja, vagy létrehozhat egy másik lekérdezést saját adatbázishasználatával. A lényeg, hogy próbáljon kezelni néhány adatot, amely szöveget, datetime és numerikus értékeket tartalmaz.
+> Használhatja a AdventureWorks bármely verzióját, vagy létrehozhat egy másik lekérdezést egy saját adatbázis használatával. A pont a szöveg, a DateTime és a numerikus értékeket tartalmazó adatok kezelésének kísérlete.
 
-Most próbálja meg ezt a lekérdezést a tárolt eljárás bemeneteként használni.
+Most próbálkozzon a lekérdezéssel a tárolt eljárás bemenetének használatával.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -276,9 +276,9 @@ OutputDataSet <- InputDataSet;
 WITH RESULT SETS undefined;
 ```
 
-Ha hibaüzenetet kap, valószínűleg módosításokat kell eszközolnie a lekérdezés szövegén. A WHERE záradékban szereplő karakterlánc-predikátumot például két aposztróf-készlettel kell elfoglalni.
+Ha hibaüzenetet kap, valószínűleg módosítania kell a lekérdezés szövegét. A WHERE záradékban szereplő karakterlánc-predikátumot például két szimpla idézőjelből álló készletbe kell foglalni.
 
-Miután a lekérdezés működik, tekintse `str` át a függvény eredményeit, és tekintse meg, hogyan kezeli r a bemeneti adatokat.
+A lekérdezés működésének megkezdése után tekintse át a `str` függvény eredményét, és nézze meg, hogyan kezeli az R a bemeneti adatokat.
 
 **Results (Eredmények)**
 
@@ -289,16 +289,16 @@ STDOUT message(s) from external script: $ ProductSeries: Factor w/ 1 levels "M20
 STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 16950 16950
 ```
 
-- A datetime oszlop feldolgozása a POSIXct R adattípussal lett **feldolgozva.**
-- A "ProductSeries" **szövegoszlopot tényezőként**azonosították, ami kategorikus változót jelent. A karakterlánc-értékek alapértelmezés szerint tényezőkként vannak kezelve. Ha átad egy karakterláncot az R-nek, a program belső használatra egész számmá alakítja, majd visszarendeli a kimeneti karakterlánchoz.
+- A DateTime oszlop az R adattípussal, a **POSIXct**lett feldolgozva.
+- A "ProductSeries" szöveges oszlop a következő **tényezőként**lett azonosítva: kategorikus változó. A karakterlánc-értékek alapértelmezés szerint tényezőként vannak kezelve. Ha az R karakterláncot adja át, a rendszer a belső használatra egész számra konvertálja, majd visszaképezi a kimenetre a karakterláncot.
 
 ## <a name="summary"></a>Összefoglalás
 
-Még ezekből a rövid példákból is láthatja, hogy ellenőrizni kell az adatkonverzió hatásait, amikor SQL-lekérdezéseket ad át bemenetként. Mivel az R nem támogat bizonyos SQL-adattípusokat, fontolja meg a hibák elkerülésének módjait:
+Akár ezekből a rövid példákból is láthatja, hogy az SQL-lekérdezések bemenetként való átadásakor szükség van az adatkonverzió hatásának vizsgálatára. Mivel az R egyes SQL-adattípusokat nem támogat, vegye figyelembe a hibák elkerülésének módját:
 
-- Tesztelje előre az adatokat, és ellenőrizze a séma azon oszlopait vagy értékeit, amelyek problémát jelenthetnek az R-kódnak való átadáskor.
-- A `SELECT *`használata helyett egyenként adja meg a bemeneti adatforrás oszlopait, és ismerje meg, hogyan lesznek kezelve az egyes oszlopok.
-- Végezze el explicit öntet szükség szerint előkészítése során a bemeneti adatok, hogy elkerüljék a meglepetéseket.
-- Kerülje a hibákat okozó és modellezéshez nem hasznos adatoszlopok (például GUIDS vagy rowguids) átadását.
+- Előzetesen tesztelje az adatait, és ellenőrizze, hogy a séma oszlopai vagy értékei okozhatnak-e problémát az R-kód átadásakor.
+- Adja meg a bemeneti adatforrás oszlopait a használata `SELECT *`helyett, és Ismerje meg, hogy az egyes oszlopok hogyan lesznek kezelve.
+- A bevitt adatok előkészítésekor szükség esetén explicit módon végezze el a szükséges műveleteket a meglepetések elkerülése érdekében.
+- Kerülje az adatoszlopok (például GUID-ok vagy ROWGUIDS) átadását, ami hibákat okoz, és nem használható modellezéshez.
 
-A támogatott és nem támogatott R-adattípusokról az [R-tárak és adattípusok](/sql/advanced-analytics/r/r-libraries-and-data-types)című témakörben talál további információt.
+További információ a támogatott és nem támogatott R-adattípusokról: [r-tárak és adattípusok](/sql/advanced-analytics/r/r-libraries-and-data-types).

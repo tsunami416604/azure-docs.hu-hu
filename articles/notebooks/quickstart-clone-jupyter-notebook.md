@@ -1,22 +1,22 @@
 ---
-title: Jupyter-jegyzetfüzet klónozása a GitHubról az Azure Notebook előzetes verzióval
-description: Gyorsan klónozhat egy Jupyter-jegyzetfüzetet egy GitHub-tárházból, és futtathatja az Azure Notebook-fiókjában.
+title: Jupyter-jegyzetfüzet klónozása a GitHubról Azure Notebooks előzetes verzióval
+description: Gyorsan klónozott Jupyter notebookot egy GitHub-adattárból, és futtathatja a Azure Notebooks-fiókjában.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77064597"
 ---
-# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Rövid útmutató: Jegyzetfüzet klónozása az Azure Notebookelőzetes verzióban
+# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Gyors útmutató: jegyzetfüzet klónozása Azure Notebooks előzetes verzióban
 
-Ebben a rövid útmutatóban a GitHubon tárolt Jupyter-jegyzetfüzetet egy Azure Notebooks-fiókba másolja. 
+Ebben a rövid útmutatóban a GitHubban tárolt Jupyter-jegyzetfüzetet egy Azure Notebooks fiókba másolja. 
 
-A GitHub-adattárak tárolási és verzióvezérlést biztosítanak a Jupyter-jegyzetfüzetekhez. A közreműködők karbantartják az adattárak helyi példányait, és ezekből a másolatokból futtatják a jegyzetfüzeteket. Jupyter-jegyzetfüzetek klónozása a GitHubról az Azure Notebooks-fiókba a jegyzetfüzet független másolatát hozza létre. A módosítások csak az Azure Notebook-fiókban tárolódnak, és nincsenek hatással az eredeti GitHub-tárházra. 
+A GitHub-adattárak tároló-és verziókövetés biztosítanak a Jupyter-jegyzetfüzetekhez. A közreműködők megőrzik a Tárházak helyi példányait, és ezekből a másolatokból futtatják a jegyzetfüzeteket. A Jupyter-jegyzetfüzetnek a GitHubról a Azure Notebooks fiókba való klónozásával létrejön a jegyzetfüzet egy független másolata. A módosításokat csak a Azure Notebooks fiókjában tárolja a rendszer, és nincs hatással az eredeti GitHub-tárházra. 
 
-Mivel az Azure Notebooks klóna a felhőben van, megoszthatja azt a közreműködőkkel, akiknek nem kell helyi másolatokat készíteniük, vagy a Jupyter telepítve van a számítógépükre. Előfordulhat, hogy a jegyzetfüzetet egyszerűen egy saját projekt kiindulópontjaként klónozhatja, vagy adatfájlokat szerezhet be. 
+Mivel a Azure Notebooks klón a felhőben van, megoszthatja azokat közreműködők használatával, akiknek nem kell helyi másolatot készíteniük vagy Jupyter telepíteniük a számítógépükre. Azt is megteheti, hogy egy jegyzetfüzetet egyszerűen egy saját projekt kiindulási pontjaként vagy adatfájlok beszerzéséhez használ. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Nincs.
@@ -25,51 +25,51 @@ Nincs.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-1. Nyissa meg az [Azure-jegyzetfüzeteket,](https://notebooks.azure.com) és jelentkezzen be. További részletek: [Gyorsútmutató – Bejelentkezés az Azure Notebooks ba.](quickstart-sign-in-azure-notebooks.md)
+1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksra](quickstart-sign-in-azure-notebooks.md).
 
-1. A nyilvános profil lapon válassza a **Saját projektek** lehetőséget a lap tetején:
+1. A nyilvános profil oldalon válassza a **saját projektek** lehetőséget az oldal tetején:
 
-    ![A Saját projektek hivatkozás a böngészőablak tetején](media/quickstarts/my-projects-link.png)
+    ![Saját projektek hivatkozás a böngészőablak tetején](media/quickstarts/my-projects-link.png)
 
-1. A **Saját projektek** lapon jelölje ki a felfelé mutató nyílgombot (billentyűparancs: U; a gomb **GitHub-tárház feltöltéseként** jelenik meg, ha a böngészőablak elég széles):
+1. A **saját projektek** lapon kattintson a felfelé mutató nyíl gombra (billentyűparancs: U; a gomb a GitHub-tárház **feltöltésekor** jelenik meg, ha a böngészőablak elég széles):
 
-    ![A GitHub-tárcsatorna feltöltése parancs a Saját projektek lapon](media/quickstarts/upload-github-repo-command.png)
+    ![GitHub-tárház-parancs feltöltése a saját projektek oldalon](media/quickstarts/upload-github-repo-command.png)
 
-1. A megjelenő **GitHub-tárházban** adja meg vagy állítsa be a következő részleteket, majd válassza az **Importálás**lehetőséget:
+1. A megjelenő **GitHub-tárház feltöltése** lapon adja meg vagy állítsa be a következő adatokat, majd válassza az **Importálás**lehetőséget:
 
-   - **GitHub-tárház**: Microsoft/cognitive-services-notebookok (ez a név klónozza a Jupyter notebookok az Azure Cognitive Services-on). [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)
-   - **Klónozás rekurzívan:**(törölve)
-   - **Projekt neve**: Cognitive Services Clone
-   - **Projektazonosító**: kognitív-szolgáltatások-klón
+   - **GitHub-adattár**: Microsoft/kognitív-szolgáltatások – jegyzetfüzetek (ez a név a Jupyter notebookokat az Azure Cognitive Services- [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)on).
+   - **Rekurzív klónozás**: (törölve)
+   - **Projekt neve**: Cognitive Services klón
+   - **Projekt azonosítója**: kognitív – szolgáltatások – klón
    - **Nyilvános**: (törölve)
 
-     ![A GitHub Repo felugró ablakának feltöltése a repo adatok gyűjtéséhez](media/quickstarts/upload-github-repo-popup.png)
+     ![A GitHub-tárház felugró ablakának feltöltése a tárház adatainak összegyűjtéséhez](media/quickstarts/upload-github-repo-popup.png)
 
-1. Legyen türelmes, amíg a folyamat befejeződik; a tárház klónozása eltarthat néhány percig.
+1. Legyen türelmes, amíg a folyamat befejeződik; a tárház klónozása néhány percet is igénybe vehet.
 
-1. Miután a klónozás befejeződött, az Azure Notebooks az új projekthez vezeti, ahol megtekintheti az összes fájl másolatát.
+1. A klónozás befejezése után Azure Notebooks viszi az új projektbe, ahol megtekintheti az összes fájl másolatát.
 
     [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
 
 ## <a name="share-a-notebook"></a>Jegyzetfüzet megosztása
 
-1. A klónozott projekt példányának megosztásához használja a **Megosztás** vezérlőt, szerezzen be egy hivatkozást, szerezze be a hivatkozást tartalmazó HTML- vagy Markdown-kódot, vagy hozzon létre egy e-mailt a hivatkozással:
+1. A klónozott projekt másolatának megosztásához használja a **megosztás** vezérlőelemet, vagy szerezzen be egy hivatkozást, szerezze be a HIVATKOZÁST tartalmazó HTML-vagy Markdown-kódot, vagy hozzon létre egy e-mail-üzenetet a következő hivatkozással:
 
-    ![Projektmegosztás parancs](media/quickstarts/share-project-command.png)
+    ![Projekt megosztási parancsa](media/quickstarts/share-project-command.png)
 
-1. Mivel a projekt klónozása kor törölte a **Nyilvános** lehetőséget, a klón magánjellegű. A másolat nyilvánossá választásához válassza a **Projektbeállítások**lehetőséget, adja meg a **Nyilvános projekt** beállítást az előugró ablakban, majd kattintson a **Mentés gombra.**
+1. Mivel a projekt klónozásakor a **nyilvános** lehetőséget törölte, a klón privát. A másolás nyilvános létrehozásához válassza a **projekt beállításai**lehetőséget, állítsa be a **nyilvános projekt** beállítást a felugró ablakban, majd válassza a **Mentés**lehetőséget.
 
-1. Jelöljön ki egy jegyzetfüzetet a projektben a futtatásához. Az Azure Cognitive Services-tárházban található jegyzetfüzetek például saját önálló rövid útmutató. Az alábbi képen a BingImageSearchAPI-jegyzetfüzet használatának eredményét mutatja be, miután hozzáadták a Cognitive Services API-előfizetési kulcsát, és a "kölykök" keresőkifejezést "nyuszikra" változtatták:
+1. A futtatásához válasszon ki egy jegyzetfüzetet a projektben. Az Azure Cognitive Services adattárában található minden jegyzetfüzet, például a saját önálló gyors útmutatója. Az alábbi képen a BingImageSearchAPI notebook használatának eredménye látható, miután hozzáadtak egy Cognitive Services API-előfizetési kulcsot, és megváltoztatták a "kölykök" keresési kifejezést a "nyuszik" kifejezésre:
 
-    ![A GitHubról klónozott Jupyter-jegyzetfüzet futtatása](media/quickstarts/clone-notebook-result.png)
+    ![A GitHubról klónozott Jupyter notebook futtatása](media/quickstarts/clone-notebook-result.png)
 
-1. Ha végzett a jegyzetfüzet futtatásával, válassza a > **Fájlbezárás és leállítás** lehetőséget a jegyzetfüzet és a böngészőablak bezárásához. **File**
+1. Ha végzett a jegyzetfüzet futtatásával **, válassza a** > **Bezárás és a leállítása** lehetőséget a jegyzetfüzet és a böngészőablak bezárásához.
 
-1. Ha egy adott jegyzetfüzetet szeretne megosztani a projektben, kattintson a jobb gombbal a jegyzetfüzetre, és válassza a **Hivatkozás másolása parancsot** (billentyűparancs: y):
+1. Ha egy egyéni jegyzetfüzetet szeretne megosztani a projektben, kattintson a jobb gombbal a jegyzetfüzetre, és válassza a **hivatkozás másolása** lehetőséget (billentyűparancs: y):
 
-    ![Helyi menü parancs az egyes jegyzetfüzetre mutató hivatkozás másolásához](media/quickstarts/copy-link-to-individual-notebook.png)
+    ![Helyi menü parancs egy különálló jegyzetfüzetre mutató hivatkozás másolásához](media/quickstarts/copy-link-to-individual-notebook.png)
 
-1. A jegyzetfüzetektől eltérő fájlok szerkesztéséhez kattintson a jobb gombbal a projektben lévő fájlra, és válassza a **Fájl szerkesztése parancsot** (billentyűparancs: i). Az alapértelmezett művelet, a **Futtatás** (billentyűparancs: r) csak a fájl tartalmát jeleníti meg, és nem engedélyezi a szerkesztést.
+1. A jegyzetfüzetek kivételével a fájlok szerkesztéséhez kattintson a jobb gombbal a fájlra a projektben, és válassza a **fájl szerkesztése** (billentyűparancs: i) elemet. Az alapértelmezett művelet, **Futtatás** (billentyűparancs: r), csak a fájl tartalmát jeleníti meg, és nem teszi lehetővé a szerkesztést.
 
 ## <a name="next-steps"></a>További lépések
 
