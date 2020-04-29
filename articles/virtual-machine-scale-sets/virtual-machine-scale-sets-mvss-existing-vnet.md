@@ -1,6 +1,6 @@
 ---
-title: Meglévő virtuális hálózat hivatkozása Egy Azure-méretezési csoport sablonjában
-description: Megtudhatja, hogyan adhat hozzá virtuális hálózatot egy meglévő Azure Virtuálisgép-méretezési készletsablonhoz
+title: Meglévő virtuális hálózat referenciája egy Azure Scale set-sablonban
+description: Megtudhatja, hogyan adhat hozzá virtuális hálózatot egy meglévő Azure virtuálisgép-méretezési csoport sablonhoz
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimckitt
 ms.openlocfilehash: 83328a31dad8009c28e146c81b24d6d9244f88a8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273664"
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Hivatkozás hozzáadása meglévő virtuális hálózathoz egy Azure-méretezési csoport sablonjában
+# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Hivatkozás hozzáadása egy meglévő virtuális hálózathoz egy Azure méretezési csoport sablonjában
 
-Ez a cikk bemutatja, hogyan módosíthatja az [alapméretezési csoport sablonüzembe](virtual-machine-scale-sets-mvss-start.md) helyezése egy meglévő virtuális hálózat létrehozása helyett egy újat.
+Ebből a cikkből megtudhatja, hogyan módosíthatja az [alapszintű méretezési csoport sablonját](virtual-machine-scale-sets-mvss-start.md) egy meglévő virtuális hálózatra való központi telepítéshez egy új létrehozása helyett.
 
-## <a name="change-the-template-definition"></a>A sablondefiníció módosítása
+## <a name="change-the-template-definition"></a>A sablon definíciójának módosítása
 
-Egy [korábbi cikkben](virtual-machine-scale-sets-mvss-start.md) létrehoztunk egy egyszerű méretezési csoport sablont. Most antól ezt a korábbi sablont használjuk, és módosítjuk azt, hogy hozzon létre egy sablont, amely egy méretezési csoportot telepít egy meglévő virtuális hálózatba. 
+Egy [korábbi cikkben](virtual-machine-scale-sets-mvss-start.md) egy alapszintű méretezési csoport sablont hoztunk létre. Most ezt a korábbi sablont fogjuk használni, és úgy módosítjuk, hogy olyan sablont hozzon létre, amely egy méretezési csoport központi telepítését végzi egy meglévő virtuális hálózatban. 
 
-Először adjon `subnetId` hozzá egy paramétert. Ez a karakterlánc a méretezési csoport konfigurációjába kerül, így a méretezési csoport azonosítja az előre létrehozott alhálózatot a virtuális gépek üzembe helyezéséhez. Ennek a karakterláncnak a következő formátumúnak kell lennie:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+Először adjon hozzá egy `subnetId` paramétert. A rendszer átadja ezt a karakterláncot a méretezési csoport konfigurációjához, így a méretezési csoport azonosítja az előre létrehozott alhálózatot a virtuális gépek üzembe helyezéséhez. A karakterláncnak a következő formátumúnak kell lennie:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
-Ha például a méretezési csoportot egy meglévő `myvnet`virtuális `mysubnet`hálózatba `myrg`szeretné telepíteni `00000000-0000-0000-0000-000000000000`névvel , alhálózattal `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`, erőforráscsoporttal és előfizetéssel, az alhálózatazonosító a következő lenne: .
+Ha például a `myvnet`méretezési csoportot egy meglévő, névvel, alhálózattal `mysubnet`, erőforráscsoporthoz `myrg`és előfizetéssel `00000000-0000-0000-0000-000000000000`rendelkező virtuális hálózatra szeretné telepíteni, a következő lesz: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -38,7 +38,7 @@ Ha például a méretezési csoportot egy meglévő `myvnet`virtuális `mysubnet
    },
 ```
 
-Ezután törölje a virtuális `resources` hálózati erőforrást a tömbből, mivel egy meglévő virtuális hálózatot használ, és nem kell újat telepítenie.
+Ezután törölje a virtuális hálózati erőforrást a `resources` tömbből, mivel meglévő virtuális hálózatot használ, és nem kell újat telepítenie.
 
 ```diff
    "variables": {},
@@ -66,7 +66,7 @@ Ezután törölje a virtuális `resources` hálózati erőforrást a tömbből, 
 -    },
 ```
 
-A virtuális hálózat már létezik a sablon telepítése előtt, így nincs szükség a méretezési csoport ból a virtuális hálózatra vonatkozó dependsOn záradék megadására. Törölje a következő sorokat:
+A virtuális hálózat már létezik a sablon üzembe helyezése előtt, így nem kell dependsOn záradékot megadnia a méretezési csoportból a virtuális hálózatra. Törölje a következő sorokat:
 
 ```diff
      {
@@ -82,7 +82,7 @@ A virtuális hálózat már létezik a sablon telepítése előtt, így nincs sz
          "capacity": 2
 ```
 
-Végül adja át `subnetId` a felhasználó által beállított `resourceId` paramétert (ahelyett, hogy egy virtuális hálózat azonosítóját szeretné leadni ugyanabban a központi telepítésben, ami az alapvető életképes méretezési csoport sablonja.
+Végül adja meg a felhasználó `subnetId` által beállított paramétert (a használata `resourceId` helyett egy vnet azonosítójának lekérése ugyanazon az üzemelő példányon, amely az alapszintű, életképes méretezési csoport sablonja).
 
 ```diff
                        "name": "myIpConfig",

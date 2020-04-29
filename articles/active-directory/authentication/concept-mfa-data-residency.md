@@ -1,6 +1,6 @@
 ---
-title: Az Azure többtényezős hitelesítési adatok rezidenssége
-description: Ismerje meg, milyen személyes és szervezeti adatokat tárol az Azure többtényezős hitelesítése Önről és a felhasználókról, és milyen adatok maradnak a származási országon belül.
+title: Azure Multi-Factor Authentication-beli adattárolás
+description: Ismerje meg, hogy milyen személyes és szervezeti adatai vannak az Azure Multi-Factor Authentication az Ön és a felhasználók adatait, valamint azt, hogy mely információk a származási országon belül maradnak.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,99 +12,99 @@ manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 29ce7631c0ce8ab83edc7b9cd31dfe0db3be5d7e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309802"
 ---
-# <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Adatok tárolási és ügyféladatok az Azure többtényezős hitelesítéséhez
+# <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Adattárolási és ügyféladatok az Azure Multi-Factor Authentication
 
-Az ügyféladatokat az Azure AD földrajzi helyen tárolja a szervezet által megadott cím alapján, amikor egy Microsoft Online-szolgáltatásra, például az Office 365-re és az Azure-ra iratkozik fel. Az ügyféladatok tárolási helyéről a Microsoft Adatvédelmi központ Hol találhatók az [adatok?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
+A vásárlói adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft online szolgáltatásokra, például az Office 365-re és az Azure-ra való feliratkozáskor. További információ a vásárlói adatok tárolásáról: a Microsoft adatvédelmi központjának hol található az [adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
 
-A felhőalapú Azure többtényezős hitelesítés és az Azure többtényezős hitelesítési kiszolgálója bizonyos mennyiségű személyes adatot és szervezeti adatot tárol. Ez a cikk ismerteti, hogy mit és hol tárolnak az adatok.
+A felhőalapú Azure Multi-Factor Authentication és az Azure Multi-Factor Authentication-kiszolgáló dolgozza fel és tárolja a személyes és a szervezeti adatmennyiséget. Ez a cikk azt ismerteti, hogy mit és hol tárolja a rendszer az adattárolást.
 
-A következő többtényezős hitelesítési tevékenységek jelenleg az USA adatközpontjaiból származnak, kivéve, ha az a megjegyzés:
+A következő Multi-Factor Authentication tevékenységek jelenleg az Egyesült államokbeli adatközpontokból származnak, kivéve a következőket:
 
-* A telefonhívások vagy SMS-sel történő kétfaktoros hitelesítés általában amerikai adatközpontokból származik, és globális szolgáltatók irányítják őket.
-    * Általános célú felhasználói hitelesítési kérelmek más régiókból, például Európából vagy Ausztráliából jelenleg az adott régióadatközpontjai dolgozzák fel. Más események, például az önkiszolgáló jelszó-visszaállítás, az Azure B2C-események vagy a hálózati házirend-kiszolgáló bővítmény vagy az AD FS-adapter használatával hibrid forgatókönyvek, jelenleg az amerikai adatközpontok által feldolgozott.
-* A Microsoft Authenticator alkalmazással érkező leküldéses értesítések amerikai adatközpontokból származnak. Ezenkívül az eszközgyártó-specifikus szolgáltatások is szerepet játszhatnak a különböző régiókból.
-* Az OATH-kódokat általában jelenleg az Egyesült Államokban érvényesítik.
-    * Ismét általános célú felhasználói hitelesítési események, amelyek más régiókból, például Európából vagy Ausztráliából származnak, az adott régió adatközpontjai dolgozzák fel. További események jelenleg az amerikai adatközpontok által feldolgozott.
+* A kétfaktoros hitelesítés telefonhívásokkal vagy SMS-sel általában az Egyesült államokbeli adatközpontokból származik, és a globális szolgáltatók irányítják.
+    * A más régiókból, például Európából vagy Ausztráliából származó általános célú felhasználói hitelesítési kérelmeket jelenleg az adott régióban lévő adatközpontok dolgozzák fel. Az Egyesült államokbeli adatközpontok jelenleg minden olyan eseményt feldolgoznak, mint például az önkiszolgáló jelszavak alaphelyzetbe állítása, az Azure B2C-események vagy az NPS-bővítményt vagy AD FS adaptert használó hibrid forgatókönyvek.
+* Az Microsoft Authenticator alkalmazást használó leküldéses értesítések az Egyesült államokbeli adatközpontokból származnak. Emellett az eszköz gyártó-specifikus szolgáltatásai is különböző régiókban is előfordulhatnak.
+* Az eskü kódok általában jelenleg az Egyesült Államokban vannak érvényesítve
+    * A más régiókban (például Európa vagy Ausztrália) származó általános célú felhasználói hitelesítési eseményeket az adott régióban lévő adatközpontok dolgozzák fel. Az Egyesült államokbeli adatközpontok jelenleg további eseményeket dolgoznak fel.
 
-## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Az Azure többtényezős hitelesítése által tárolt személyes adatok
+## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication által tárolt személyes adattárolás
 
 A személyes adatok egy adott személyhez kapcsolódó felhasználói szintű információk. A következő adattárak személyes adatokat tartalmaznak:
 
 * Letiltott felhasználók
-* Megkerült felhasználók
-* Microsoft Hitelesítő eszköztoken-módosítási kérelmei
-* Többtényezős hitelesítési tevékenységjelentések
-* Microsoft Hitelesítő aktiválása
+* Megkerülő felhasználók
+* Microsoft Authenticator eszköz jogkivonat-módosítási kérelmek
+* Multi-Factor Authentication tevékenységgel kapcsolatos jelentések
+* Microsoft Authenticator aktiválása
 
-Ezeket az információkat 90 napig őrizzük meg.
+Ezeket az információkat 90 napig őrzi meg a rendszer.
 
-Az Azure többtényezős hitelesítés nem naplózza a személyes adatokat, például a felhasználónevet, a telefonszámot vagy az IP-címet, de van egy *UserObjectId,* amely azonosítja a többtényezős hitelesítési kísérleteket a felhasználók számára. A naplóadatok tárolása 30 napig tart.
+Az Azure Multi-Factor Authentication nem naplózza a személyes adatait, például a felhasználónevet, a telefonszámot vagy az IP-címet, de van egy *UserObjectId* , amely azonosítja a felhasználók multi-Factor Authentication kísérleteit. A naplófájlok tárolása 30 napig történik.
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-Az Azure nyilvános felhőihez, kivéve az Azure B2C-hitelesítést, a hálózati címkiszolgáló-bővítményt és a Windows Server 2016-os vagy 2019-es AD FS-adaptert, a következő személyes adatokat tároljuk:
+Az Azure nyilvános felhők esetében, az Azure B2C hitelesítés, az NPS-bővítmény és a Windows Server 2016 vagy a 2019 AD FS adapter kivételével a következő személyes adattárolók tárolódnak:
 
 | Eseménytípus                           | Adattár típusa |
 |--------------------------------------|-----------------|
-| OATH token                           | Többtényezős hitelesítési naplókban     |
-| Egyirányú SMS                          | Többtényezős hitelesítési naplókban     |
-| Hanghívás                           | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára<br />Letiltott felhasználók, ha csalást jelentettek |
-| A Microsoft hitelesítő értesítése | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára<br />Letiltott felhasználók, ha csalást jelentettek<br />Kérelmek módosítása a Microsoft Authenticator eszköztokenének módosításakor |
+| ESKÜ token                           | Multi-Factor Authentication naplókban     |
+| Egyirányú SMS                          | Multi-Factor Authentication naplókban     |
+| Hanghívás                           | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár<br />Letiltott felhasználók, ha csalás jelentett |
+| Értesítés Microsoft Authenticator | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár<br />Letiltott felhasználók, ha csalás jelentett<br />Módosítási kérelmek Microsoft Authenticator eszköz-jogkivonat módosításakor |
 
 > [!NOTE]
-> A többtényezős hitelesítési tevékenység jelentés adattár tárolja az Egyesült Államokban az összes felhők, függetlenül attól, hogy a régió, amely feldolgozza a hitelesítési kérelmet. A Microsoft Azure Germany, a 21Vianet által üzemeltetett Microsoft Azure és a Microsoft Government Cloud saját, a nyilvános felhőrégióbeli adattáraktól elkülönülő, független adattárakkal rendelkeznek, azonban ezeket az adatokat mindig az Egyesült Államokban tárolják.
+> A Multi-Factor Authentication tevékenység jelentés adattárat az összes felhők Egyesült Államok tárolja, a hitelesítési kérést feldolgozó régiótól függetlenül. Microsoft Azure Germany, a 21Vianet által üzemeltetett Microsoft Azure és a Microsoft Government Cloud saját független adattárakat használ a nyilvános Felhőbeli adattáraktól, azonban ezeket az adatok mindig a Egyesült Államok tárolják.
 
-A Microsoft Azure Government, a Microsoft Azure Germany, a 21Vianet által üzemeltetett Microsoft Azure, az Azure B2C-hitelesítés, a hálózati címtakarékos hálózati kiszolgálóbővítmény és a Windows Server 2016-os vagy 2019-es AD FS-adapter esetében a következő személyes adatokat tároljuk:
+Microsoft Azure Government, Microsoft Azure Germany, Microsoft Azure 21Vianet, Azure B2C hitelesítés, NPS-bővítmény és Windows Server 2016 vagy 2019 AD FS adapter esetében a következő személyes adattárolók tárolódnak:
 
 | Eseménytípus                           | Adattár típusa |
 |--------------------------------------|-----------------|
-| OATH token                           | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára |
-| Egyirányú SMS                          | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára |
-| Hanghívás                           | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára<br />Letiltott felhasználók, ha csalást jelentettek |
-| A Microsoft hitelesítő értesítése | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára<br />Letiltott felhasználók, ha csalást jelentettek<br />Kérelmek módosítása a Microsoft Authenticator eszköztokenének módosításakor |
+| ESKÜ token                           | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár |
+| Egyirányú SMS                          | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár |
+| Hanghívás                           | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár<br />Letiltott felhasználók, ha csalás jelentett |
+| Értesítés Microsoft Authenticator | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár<br />Letiltott felhasználók, ha csalás jelentett<br />Módosítási kérelmek Microsoft Authenticator eszköz-jogkivonat módosításakor |
 
 ### <a name="multi-factor-authentication-server"></a>Multi-Factor Authentication-kiszolgáló
 
-Ha telepíti és futtatja az Azure multi-factor authentication server kiszolgálót, a rendszer a következő személyes adatokat tárolja:
+Ha az Azure Multi-Factor Authentication-kiszolgáló telepítését és futtatását végzi, a rendszer a következő személyes adattárolást tárolja:
 
 > [!IMPORTANT]
-> 2019. július 1-jéig a Microsoft a továbbiakban nem kínál többtényezős hitelesítési kiszolgálót az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták a többtényezős hitelesítési kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
+> 2019. július 1-től a Microsoft nem nyújt Multi-Factor Authentication-kiszolgáló az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. A (z) július 1. előtti Multi-Factor Authentication-kiszolgáló rendelkező meglévő ügyfelek letöltik a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
 
 | Eseménytípus                           | Adattár típusa |
 |--------------------------------------|-----------------|
-| OATH token                           | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára |
-| Egyirányú SMS                          | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára |
-| Hanghívás                           | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára<br />Letiltott felhasználók, ha csalást jelentettek |
-| A Microsoft hitelesítő értesítése | Többtényezős hitelesítési naplókban<br />Többtényezős hitelesítési tevékenység jelentésadattára<br />Letiltott felhasználók, ha csalást jelentettek<br />Kérelmek módosítása a Microsoft Authenticator eszköztokenének módosításakor |
+| ESKÜ token                           | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár |
+| Egyirányú SMS                          | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár |
+| Hanghívás                           | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár<br />Letiltott felhasználók, ha csalás jelentett |
+| Értesítés Microsoft Authenticator | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár<br />Letiltott felhasználók, ha csalás jelentett<br />Módosítási kérelmek Microsoft Authenticator eszköz-jogkivonat módosításakor |
 
-## <a name="organizational-data-stored-by-azure-multi-factor-authentication"></a>Az Azure többtényezős hitelesítése által tárolt szervezeti adatok
+## <a name="organizational-data-stored-by-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication által tárolt szervezeti adatszolgáltatások
 
-A szervezeti adatok olyan bérlői szintű információk, amelyek felfedhetik a konfigurációt vagy a környezet beállítását. A következő Azure portal on többtényezős hitelesítési lapok bérlői beállításai tárolhatják a szervezeti adatokat, például a zárolási küszöbértékeket vagy a hívóazonosító adatait a bejövő telefonhitelesítési kérelmekhez:
+A szervezeti adatok olyan bérlői szintű információk, amelyek lehetővé tehetik a konfiguráció vagy a környezet beállítását. A bérlői beállítások a következő Azure Portal Multi-Factor Authentication lapok olyan szervezeti adatokat tárolhatnak, mint például a zárolási küszöbértékek vagy a hívó azonosító adatai a bejövő telefonos hitelesítési kérésekhez:
 
-* Fiók zárolása
+* Fiókzárolási
 * Csalási riasztás
 * Értesítések
 * Telefonhívás beállításai
 
-Az Azure többtényezős hitelesítési kiszolgálója esetében pedig az alábbi Azure portallapok tartalmazhatnak szervezeti adatokat:
+Az Azure Multi-Factor Authentication-kiszolgáló esetében az alábbi Azure Portal-lapok szervezeti adatkezelést is tartalmazhatnak:
 
 * Kiszolgáló beállításai
-* Egyszeri bypass
+* Egyszeri Mellőzés
 * Gyorsítótárazási szabályok
-* Többtényezős hitelesítési kiszolgáló állapota
+* Multi-Factor Authentication-kiszolgáló állapota
 
-## <a name="log-data-location"></a>Adatok helyének naplózása
+## <a name="log-data-location"></a>Az adatnapló helye
 
-A naplóadatok tárolásának helye attól függ, hogy melyik régióban dolgozzák fel őket. A legtöbb földrajzi hely natív Azure többtényezős hitelesítési képességekkel rendelkezik, így a naplóadatok ugyanabban a régióban tárolódnak, amely feldolgozza a többtényezős hitelesítési kérelmet. A natív Azure többtényezős hitelesítés támogatása nélküli földrajzi területeken az Egyesült Államok vagy Európa földrajzi adottságai szolgálják ki őket, és a naplóadatok ugyanabban a régióban vannak tárolva, amely a többtényezős hitelesítési kérelmet dolgozza fel.
+A naplófájlok tárolási helyétől függ, hogy a rendszer melyik régióból dolgozza fel az adatokat. A legtöbb földrajzi hely natív Azure Multi-Factor Authentication képességekkel rendelkezik, ezért a naplózási adattárolást ugyanabban a régióban tárolja a rendszer, amely feldolgozza a Multi-Factor Authentication kérelmet. A natív Azure Multi-Factor Authentication-támogatás nélküli földrajzi területeken a Egyesült Államok-vagy Európa-régiók és a naplózási adathalmazok szolgáltatásait az Multi-Factor Authentication kérelmet feldolgozó régió tárolja.
 
-Néhány alapvető hitelesítési naplóadat csak az Egyesült Államokban tárolódik. A Microsoft Azure Germany és a 21Vianet által üzemeltetett Microsoft Azure mindig a megfelelő felhőben tárolódik. A Microsoft Government Cloud naplóadatait mindig az Egyesült Államokban tároljuk.
+Néhány alapszintű hitelesítési naplót csak a Egyesült Államok tárol. A 21Vianet által üzemeltetett Microsoft Azure Germany és Microsoft Azure mindig a saját felhőben tárolódnak. A Microsoft Government Cloud log-adatkészleteket a rendszer mindig a Egyesült Államok tárolja.
 
 ## <a name="next-steps"></a>További lépések
 
-A felhőalapú Azure többtényezős hitelesítés és az Azure többtényezős hitelesítési kiszolgáló által gyűjtött felhasználói adatokról az [Azure többtényezős hitelesítésfelhasználói adatgyűjtése](howto-mfa-reporting-datacollection.md)című témakörben talál további információt.
+További információ arról, hogy a felhőalapú Azure-Multi-Factor Authentication és az Azure-Multi-Factor Authentication-kiszolgáló milyen felhasználói adatokat gyűjtenek be: [azure multi-Factor Authentication felhasználói adatok gyűjtése](howto-mfa-reporting-datacollection.md).

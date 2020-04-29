@@ -1,7 +1,7 @@
 ---
-title: Az automatikus nyelvfelismerés használata beszéd-szövegként
+title: A beszédfelismerés automatikus nyelvfelismerés használata szövegre
 titleSuffix: Azure Cognitive Services
-description: A beszédsdk támogatja az automatikus nyelvfelismerést a beszéd-szöveg hez. A szolgáltatás használatakor a rendszer összehasonlítja a megadott hanganyagokat a megadott nyelvek listájával, és a legvalószínűbb egyezést határozza meg. A visszaadott érték segítségével kiválaszthatja a beszéd-szöveg nyelvmodellt.
+description: A Speech SDK támogatja a beszédfelismerés automatikus nyelvi észlelését a szöveghez. A szolgáltatás használatakor a rendszer összehasonlítja a megadott hangot a nyelvek egy adott listájával, és a legvalószínűbb egyezést határozza meg. A visszaadott érték Ezután kiválaszthatja a szövegre való beszédfelismeréshez használt nyelvi modellt.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,29 +12,29 @@ ms.date: 03/16/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402206"
 ---
-# <a name="automatic-language-detection-for-speech-to-text"></a>Automatikus nyelvfelismerés a beszéd-szöveg hez
+# <a name="automatic-language-detection-for-speech-to-text"></a>Beszédfelismerés automatikus nyelvfelismerés a szöveghez
 
-Az automatikus nyelvfelismerés segítségével határozható meg a beszédfelismerési SDK-nak átadott hang legvalószínűbb egyezése a megadott nyelvek listájával összehasonlítva. Az automatikus nyelvfelismerés által visszaadott érték ezután a beszéd-szöveg nyelvmodelljének kiválasztására szolgál, pontosabb átírást biztosítva. Az elérhető nyelvek megtekintéséről a Nyelvi támogatás ( Nyelvi támogatás ) [(Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás](language-support.md)
+Az automatikus nyelvfelismerés segítségével megállapítható, hogy a beszédfelismerési SDK milyen nagy valószínűséggel egyezik meg a megadott nyelvek listájának összehasonlításával. Ekkor a rendszer az automatikus nyelvfelismerés által visszaadott értéket használja a beszédfelismeréshez használt nyelvi modell kiválasztásához, amely pontosabb átírást biztosít. Ha szeretné megtekinteni, hogy mely nyelvek érhetők el, tekintse meg a [nyelvi támogatást](language-support.md).
 
-Ebben a cikkben megtudhatja, `AutoDetectSourceLanguageConfig` hogyan hozhat `SpeechRecognizer` létre egy objektumot, és hogyan kérheti be az észlelt nyelvet.
+Ebből a cikkből megtudhatja, hogyan hozhat `AutoDetectSourceLanguageConfig` létre egy `SpeechRecognizer` objektumot, és hogyan kérheti le az észlelt nyelvet.
 
 > [!IMPORTANT]
-> Ez a funkció csak a Beszéd sDK C#, C++, Java és Python esetén érhető el.
+> Ez a funkció csak a C#, a C++, a Java és a Python Speech SDK-hoz érhető el.
 
-## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatikus nyelvfelismerés a beszédfelismerési SDK-val
+## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatikus nyelvfelismerés a Speech SDK-val
 
-Az automatikus nyelvfelismerés jelenleg észlelésenként két nyelvre van korlátozva. Tartsa szem előtt ezt `AudoDetectSourceLanguageConfig` a korlátozást, amikor az objektum építése. Az alábbi mintákban hozzon `AutoDetectSourceLanguageConfig`létre egy t, `SpeechRecognizer`majd készítse el azt.
+Az automatikus nyelvfelismerés jelenleg csak két nyelvet tartalmaz. Tartsa szem előtt ezt a korlátozást az `AudoDetectSourceLanguageConfig` objektum építésekor. Az alábbi mintákban létre fog hozni egy `AutoDetectSourceLanguageConfig`-t, majd felhasználhatja azt `SpeechRecognizer`a létrehozásához.
 
 > [!TIP]
-> Megadhat egy egyéni modellt is, amelyet a beszéd-szöveg végrehajtásakor kell használni. További információ: [Egyéni modell használata automatikus nyelvfelismeréshez.](#use-a-custom-model-for-automatic-language-detection)
+> Megadhat egy egyéni modellt is, amelyet a beszéd szövegre való elvégzéséhez használhat. További információ: [Egyéni modell használata automatikus nyelvfelismerés esetén](#use-a-custom-model-for-automatic-language-detection).
 
-Az alábbi kódrészletek bemutatják, hogyan használhatja az automatikus nyelvfelismerést az alkalmazásokban:
+Az alábbi kódrészletek azt szemléltetik, hogyan használható az automatikus nyelvfelismerés az alkalmazásokban:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -118,11 +118,11 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
-## <a name="use-a-custom-model-for-automatic-language-detection"></a>Egyéni modell használata az automatikus nyelvfelismeréshez
+## <a name="use-a-custom-model-for-automatic-language-detection"></a>Egyéni modell használata az automatikus nyelvfelismerés
 
-A beszédfelismerési szolgáltatások modelljeinek használatával történő nyelvfelismerés mellett egyéni modellt is megadhat a fokozott felismeréshez. Ha egy egyéni modell nem biztosított, a szolgáltatás az alapértelmezett nyelvi modellt fogja használni.
+A Speech Service-modelleket használó nyelvfelismerés mellett egyéni modellt is megadhat a továbbfejlesztett felismeréshez. Ha nincs megadva egyéni modell, a szolgáltatás az alapértelmezett nyelvi modellt fogja használni.
 
-Az alábbi kódrészletek bemutatják, hogyan adhat meg egyéni modellt a beszédfelismerési szolgáltatás hívásában. Ha az észlelt `en-US`nyelv a , akkor az alapértelmezett modell t használja. Ha az észlelt `fr-FR`nyelv a , majd az egyéni modell végpontja használatos:
+Az alábbi kódrészletek azt szemléltetik, hogyan lehet egyéni modellt megadni a beszédfelismerési szolgáltatás hívását. Ha az észlelt nyelv `en-US`, akkor a rendszer az alapértelmezett modellt használja. Ha az észlelt nyelv `fr-FR`az, akkor a rendszer az egyéni modell végpontját használja:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -184,4 +184,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
 
 ## <a name="next-steps"></a>További lépések
 
-- [BeszédSDK referenciadokumentáció](speech-sdk.md)
+- [A Speech SDK dokumentációja](speech-sdk.md)

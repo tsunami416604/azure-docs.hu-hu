@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: 2aec3cc96e123da57166f1c304254d520a96e156
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400512"
 ---
-Az alapértelmezett hangátviteli formátum wav (16 kHz vagy 8kHz, 16 bites és monó PCM). Kívül WAV / PCM, a tömörített bemeneti formátumok alább felsorolt is támogatottak. Az alább felsorolt formátumok engedélyezéséhez [további konfigurációra](../how-to-use-codec-compressed-audio-input-streams.md) van szükség.
+Az alapértelmezett hang-adatfolyam formátuma a WAV (16kHz vagy 8kHz, 16 bites és monó PCM). A WAV/PCM-en kívül az alább felsorolt tömörített bemeneti formátumok is támogatottak. Az alább felsorolt formátumok engedélyezéséhez [további beállításokra](../how-to-use-codec-compressed-audio-input-streams.md) van szükség.
 
-- Mp3
+- MP3
 - OPUS/OGG
 - FLAC
-- ALAW wav konténerben
-- MULAW wav konténerben
+- ATÖRVÉNY a WAV-tárolóban
+- MULAW a WAV-tárolóban

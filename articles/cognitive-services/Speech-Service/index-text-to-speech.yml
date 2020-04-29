@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: A Szövegfelolvasás dokumentációja
-summary: A beszédfelismerési szolgáltatás szövegfelolvasása lehetővé teszi, hogy alkalmazásai, eszközei vagy eszközei a szöveget emberszerű szintetizált beszédmé alakítsák.
+summary: A beszédfelismerési szolgáltatás szöveg-beszéd formátuma lehetővé teszi, hogy az alkalmazások, az eszközök vagy az eszközök szöveget alakítsanak át az emberi – például a szintetizált beszédbe.
 metadata:
-  title: Text-to-speech dokumentáció - Oktatóanyagok, API referencia - Azure Cognitive Services | Microsoft dokumentumok
+  title: Szöveg – beszéd dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 83bf5f9e623d1d777834e5efdd26fa4cdbc42819
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401452"
 landingContent:
-- title: Szövegfelolvasás –
+- title: A szöveg és a beszéd közötti kommunikáció
   linkLists:
   - linkListType: overview
     links:
@@ -34,7 +34,7 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: Beszédszintézis hosszú formátumú hangokkal
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: Fejlesztés szövegfelolvasással
+- title: Fejlesztés szöveg-beszédtel
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -62,5 +62,5 @@ landingContent:
       url: language-support.md#neural-voices
     - text: SSML fonetikus készletek
       url: speech-ssml-phonetic-sets.md
-    - text: Szövegfelolvasó díjszabása
+    - text: Szöveg – beszéd díjszabás
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

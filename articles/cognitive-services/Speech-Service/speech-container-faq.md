@@ -1,7 +1,7 @@
 ---
-title: A beszédszolgáltatások tárolói gyakran feltett kérdések (GYIK)
+title: Speech Service-tárolók – gyakori kérdések (GYIK)
 titleSuffix: Azure Cognitive Services
-description: Beszédtárolók telepítése és futtatása. a beszéd-szöveg üzenet valós időben átírja a hangadatfolyamokat olyan szöveggé, amelyet az alkalmazások, eszközök vagy eszközök használhatnak vagy jeleníthetnek meg. A szövegfelolvasás a bemeneti szöveget emberszerű szintetizált beszédmé alakítja.
+description: Beszédfelismerési tárolók telepítése és futtatása. a beszéd-szöveg szöveggé átmásolja a hangadatfolyamokat valós időben a szöveggé, hogy alkalmazásai, eszközei vagy eszközei képesek legyenek a felhasználásra vagy a megjelenítésre. A szöveg és a beszéd szöveggé alakítja át a bemeneti szöveget az emberi, például a szintetizált beszédbe.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: aahi
 ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81383087"
 ---
-# <a name="speech-service-containers-frequently-asked-questions-faq"></a>A beszédszolgáltatások tárolói gyakran feltett kérdések (GYIK)
+# <a name="speech-service-containers-frequently-asked-questions-faq"></a>Speech Service-tárolók – gyakori kérdések (GYIK)
 
-Ha a beszédfelismerési szolgáltatást tárolókkal használja, a gyakran ismételt kérdések gyűjteményére támaszkodhat, mielőtt a támogatáshoz hozzátelne. Ez a cikk rögzíti a kérdéseket különböző mértékben, az általános technikai. A válasz kibontásához kattintson a kérdésre.
+Ha a beszédfelismerési szolgáltatást tárolókkal használja, a támogatás megkezdése előtt támaszkodjon a gyakori kérdések gyűjteményére. Ez a cikk az általánostól a műszaki feladatoktól eltérő mértékben rögzíti a kérdéseket. A válasz kibontásához kattintson a kérdésre.
 
 ## <a name="general-questions"></a>Általános kérdések
 
 <details>
 <summary>
-<b>Hogyan működnek a beszédtárolók, és hogyan állíthatom be őket?</b>
+<b>Hogyan működnek a beszédfelismerési tárolók, és hogyan állíthatom be őket?</b>
 </summary>
 
-**Válasz:** A termelési fürt beállításakor több dolgot is figyelembe kell venni. Először is, egyetlen nyelv beállítása, több tárolók, ugyanazon a gépen, nem lehet nagy probléma. Ha problémákat tapasztal, akkor lehet, hogy hardverrel kapcsolatos probléma - ezért először megnézzük az erőforrásokat, azaz; CPU és a memória specifikációk.
+**Válasz:** Az éles fürt beállításakor több szempontot is figyelembe kell venni. Először is, ha egyetlen nyelvet, több tárolót állítanak be ugyanazon a gépen, nem lehet nagy probléma. Ha problémákat tapasztal, lehet, hogy hardverrel kapcsolatos probléma van – ezért először tekintse meg az erőforrást, azaz a következőt:. CPU-és memória-specifikációk.
 
-Fontolja meg egy `ja-JP` pillanatra, a konténer és a legújabb modell. Az akusztikai modell a legigényesebb darab CPU-bölcs, míg a nyelvi modell követeli a legtöbb memóriát. Amikor összehasonlítottuk a használatot, körülbelül 0,6 CPU-mag kell ahhoz, hogy egyetlen beszéd-szöveg kérést dolgozzunk fel, amikor a hang valós időben áramlik be (például a mikrofonból). Ha a hangot gyorsabban táplálja, mint a valós idejű (például egy fájlból), akkor a használat megduplázódhat (1,2x magok). Eközben az alább felsorolt memória a beszéd dekódolásához szükséges memória. *Nem* veszi figyelembe a nyelvi modell tényleges teljes méretét, amely a fájlgyorsítótárban fog elraktáradni. Mert `ja-JP` ez egy további 2 GB; (6-7 `en-US`GB).
+Vegyünk egy pillanatra, a `ja-JP` tárolót és a legújabb modellt. Az akusztikus modell a legigényesebb CPU-Wise, míg a nyelvi modell a legtöbb memóriát igényli. A használat mérése után a 0,6 CPU-magok használatával egyetlen beszéd-szöveges kérést dolgoz fel, amikor a hang valós időben áramlik be (például a mikrofonból). Ha a valós idejű (például egy fájlból származó) hanganyagot, a használat kétszeres (1,2 x mag) lehet. Eközben az alább felsorolt memória a dekódoláshoz használt memória. *Nem* veszi figyelembe a nyelvi modell tényleges teljes méretét, amely a fájl-gyorsítótárban fog megjelenni. Ehhez `ja-JP` további 2 GB; a `en-US`esetében előfordulhat, hogy több (6-7 GB).
 
-Ha olyan gépe van, ahol kevés a memória, és több nyelvet próbál telepíteni rá, lehetséges, hogy a fájlgyorsítótár megtelt, és az operációs rendszer kénytelen a modelleket be- és kiítani. Egy futó átírás, hogy katasztrofális lehet, és vezethet lassulások és egyéb teljesítmény következményei.
+Ha olyan géppel rendelkezik, ahol kevés a memória, és több nyelvet próbál telepíteni rajta, lehetséges, hogy a fájl-gyorsítótár megtelt, és az operációs rendszer a modellek be-és kikapcsolására kényszerül. Egy futó átíráshoz, amely katasztrofális lehet, és a teljesítménnyel kapcsolatos egyéb következményekkel járhat.
 
-Továbbá előre becsomagoljuk a végrehajtható fájlokat a [speciális vektorkiterjesztésű (AVX2)](speech-container-howto.md#advanced-vector-extension-support) utasításkészlettel rendelkező gépekhez. Az AVX512 utasításkészlettel rendelkező gépekkódgenerálást igényelnek az adott célhoz, és 10 10-es tároló 10-es indításához ideiglenesen kimerítheti a CPU-t. Egy ilyen üzenet jelenik meg a docker-naplókban:
+Emellett a [speciális vektoros kiterjesztésű (AVX2)](speech-container-howto.md#advanced-vector-extension-support) utasításkészlet esetén a gépek előzetes csomagjait is megadhatja. Ahhoz, hogy a AVX512-utasításhoz beállított gép megkövetelje a kód generálását, a 10 nyelvhez tartozó 10 tároló indítása pedig átmenetileg kimerítheti a CPU-t. Az ehhez hasonló üzenet a Docker naplóiban jelenik meg:
 
 ```console
 2020-01-16 16:46:54.981118943 
@@ -42,60 +42,60 @@ Továbbá előre becsomagoljuk a végrehajtható fájlokat a [speciális vektork
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Végül beállíthatja, hogy hány dekódert szeretne egyetlen `DECODER MAX_COUNT` tárolóban *egy* változó használatával. Tehát alapvetően a Termékváltozattal (CPU / memória) kell kezdenünk, és javasolhatjuk, hogyan hozhatjuk ki belőle a legjobbat. Egy nagyszerű kiindulási pont az ajánlott gazdagép erőforrás-specifikációira utal.
+Végezetül megadhatja, hogy hány dekódert szeretne egy *adott* tárolóban a változó használatával `DECODER MAX_COUNT` . Tehát alapvetően az SKU-t kell kezdenie (CPU/memória), és javaslatot teszünk arra, hogyan érheti el a legjobbat. A jó kiindulási pont a gazdagépek ajánlott erőforrás-specifikációit jelöli.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Tudna segíteni a kapacitástervezésés a költségbecslés a prem beszéd tárolók?</b>
+<b>Segíthet a kapacitás megtervezésében és a helyszíni beszédfelismerési tárolók költséghatékonyságában?</b>
 </summary>
 
-**Válasz:** A tárolókapacitás kötegelt feldolgozási módban, minden dekóder képes kezelni 2-3x valós időben, két CPU-magok, egyetlen felismerés. Nem javasoljuk, hogy tárolópéldányonként kettőnél több egyidejű felismerést tartson, de javasoljuk, hogy a tárolók további példányait futtassa megbízhatósági/rendelkezésre állási okokból, egy terheléselosztó mögött.
+**Válasz:** Ha a tároló kapacitása kötegelt feldolgozási módban van, az egyes dekóderek valós időben 2 – 3x-ot tudnak kezelni, két CPU-maggal egyetlen felismeréshez. A Container-példányok esetében a kettőnél több párhuzamos felismerést nem javasoljuk, de a tárolók több példányának futtatását javasoljuk a megbízhatósági és rendelkezésre állási okokból, a terheléselosztó mögött.
 
-Bár lehet, hogy minden tárolópéldány több dekóderrel fut. Például előfordulhat, hogy 7 dekódert állíthatunk be egy tárolópéldányonként egy nyolcmagos gépen (egyenként több mint 2x sebességgel), ami 15x átviteli hatással jár. Van egy param, `DECODER_MAX_COUNT` hogy tudatában legyünk. A szélsőséges esetben megbízhatósági és késési problémák merülnek fel, az átviteli képesség jelentősen megnőtt. Egy mikrofon, ez lesz a 1x valós időben. Az általános használat nak körülbelül egy magból kell lennie az egyetlen felismeréshez.
+Bár az egyes tárolók példányai több dekóderrel is futhatnak. Előfordulhat például, hogy egy 8 magos gépen (a kettőnél több, mint 2x) a 15x átviteli sebességet adja meg. A következő paramétert `DECODER_MAX_COUNT` kell figyelembe venni:. Szélsőséges esetben a megbízhatósági és a késési problémák merülnek fel, az átviteli sebesség pedig jelentősen megnő. Mikrofon esetén a szolgáltatás 1x valós időben fog futni. Az általános használatnak körülbelül egy mag kell lennie egyetlen felismeréshez.
 
-A forgatókönyv feldolgozása 1 K óra/nap kötegelt feldolgozási módban, szélsőséges esetben, 3 virtuális gépek is kezelni 24 órán belül, de nem garantált. A csúcsnapok, a feladatátvétel, a frissítés és a minimális biztonsági mentés/BCP biztosításához fürtenként 3 helyett 4–5 gépet ajánlunk, és 2+ fürttel.
+Az 1 K/nap kötegelt feldolgozási módban való feldolgozásának forgatókönyve extrém esetben 3 virtuális gép, amely 24 órán belül, de nem garantált módon kezelhető. A nyárs napok, a feladatátvétel, a frissítés és a minimális biztonsági mentés/BCP biztosításához a 4-5-es gépeket ajánlott 3/fürt helyett 2 + fürttel.
 
-A hardverek esetében a `DS13_v2` szabványos Azure Virtuális gép referenciaként szolgál (minden magnak 2,6 GHz-es vagy annál jobbnak kell lennie, ha az AVX2 utasításkészlet engedélyezve van).
+A hardver esetében a standard szintű Azure- `DS13_v2` beli virtuális gépeket használjuk referenciáként (minden mag 2,6 GHz-es vagy jobb, a AVX2 utasításkészlet engedélyezve van).
 
-| Példány  | vCPU(k) | RAM    | Temp tárolás | Felosztó-ki-you-go az AHB | 1 éves tartalék az AHB-val (% Megtakarítás) | 3 év fenntartva az AHB-val (% Megtakarítás) |
+| Példány  | vCPU (ok) | RAM    | Ideiglenes tároló | Utólagos elszámolás a AHB | 1 éves tartalék AHB (%-os megtakarítás) | 3 éves foglalás AHB (%-os megtakarítás) |
 |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
-| `DS13 v2` | 8       | 56 GiB | 112 GiB      | $0.598/óra            | $0.3528/óra (~41%)                 | $0.2333/óra (~61%)                  |
+| `DS13 v2` | 8       | 56 GiB | 112 GiB      | $0.598/óra            | $0.3528/óra (~ 41%)                 | $0.2333/óra (~ 61%)                  |
 
-A tervezési referencia (két 5 virtuális gépből álló fürt 1 K óra/nap audioköteg-feldolgozás kezelésére) alapján az 1 éves hardverköltség a következő lesz:
+A kialakítási hivatkozás alapján (két, 5 virtuális gép 1 – 7 óra/nap hangkötegelt feldolgozás kezelésére) az 1 éves hardveres díj a következő lesz:
 
-> 2 (fürtök) * 5 (virtuális gépek fürtenként) * $0.3528/óra * 365 (nap) * 24 (óra) = $31K / év
+> 2 (fürtök) * 5 (virtuális gépek/fürt) * $0.3528/óra * 365 (nap) * 24 (óra) = $31K/év
 
-Fizikai gépre való leképezéskor az általános becslés 1 vCPU = 1 fizikai CPU-mag. A valóságban az 1vCPU erősebb, mint egy mag.
+Fizikai géphez való leképezéskor az általános becslés 1 vCPU = 1 fizikai CPU-mag. A valóságban a 1vCPU erősebb, mint egyetlen mag.
 
-Az on-prem esetében ezek a további tényezők is szerepet játszanak:
+A helyszíni használatra ezen további tényezők az alábbiak:
 
-- Milyen típusú a fizikai CPU, és hány magok rajta
-- Hány processzor fut együtt ugyanazon a dobozon/gépen
+- Milyen típusú fizikai CPU-t és hány magot
+- Hány CPU fut egyszerre ugyanazon a dobozon/gépen
 - A virtuális gépek beállítása
-- Hogyan hiper-threading / többszálas használják
-- A memória megosztásának
-- Az operációs rendszer, stb.
+- A Hyper-Threading/többszálú használat használata
+- A memória megosztása
+- Az operációs rendszer stb.
 
-Általában nincs olyan jól hangolva, mint az Azure a környezetben. Figyelembe véve az egyéb terhelési, azt mondanám, egy biztonságos becslés 10 fizikai CPU magok = 8 Azure vCPU. Bár a népszerű CPU-k nak csak nyolc magja van. A helyszíni üzembe helyezés esetén a költségek magasabbak lesznek, mint az Azure virtuális gépek használata. Vegye figyelembe az értékcsökkenési rátát is.
+Általában nem az Azure-környezetnek megfelelően van beállítva. Más terhek esetén azt mondanám, hogy a biztonságos becslés 10 fizikai CPU-mag = 8 Azure-vCPU. Bár a népszerű processzorok csak nyolc maggal rendelkeznek. A helyszíni üzemelő példányok esetében a Cost magasabb lesz, mint az Azure-beli virtuális gépek használata. Vegye figyelembe az értékcsökkenési arányt is.
 
-A szolgáltatás költsége megegyezik az online szolgáltatás: $ 1 /óra a beszéd-szöveg. A beszédszolgáltatás költsége:
+A szolgáltatás díja megegyezik az online szolgáltatással: $1/óra a beszéd és a szöveg között. A beszédfelismerési szolgáltatás díja:
 
 > $1 * 1000 * 365 = $365K
 
-A Microsoftnak fizetett karbantartási költség a szolgáltatás szintjétől és tartalmától függ. Ez különböző -ból $29.99/month részére alap szint -hoz száz -ból ezer ha helyszíni szolgáltatás burkolt. A durva szám $300/óra a szolgáltatás/karbantartás esetén. Az emberek ára nem tartozik ide. Az egyéb infrastrukturális költségek (például a tárolás, a hálózatok és a terheléselosztók) nem tartoznak ide.
+A Microsoft részére fizetett karbantartási díj a szolgáltatás szintjétől és tartalmától függ. Ez több, mint $29.99/hó alapszintű, akár több százezer, ha helyszíni szolgáltatás. A durva szám $300/óra a szolgáltatáshoz/karbantartáshoz. A felhasználók nem tartalmazzák a költségeket. Az infrastruktúra egyéb költségei (például a tárolás, a hálózatok és a terheléselosztó) nem tartoznak ide.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Miért hiányzik az írásjelek az átiratból?</b>
+<b>Miért hiányzik a központozás az átiratból?</b>
 </summary>
 
-**Válasz:** A `speech_recognition_language=<YOUR_LANGUAGE>` explicit módon kell konfigurálni a kérelemben, ha azok a Carbon-ügyfél.
+**Válasz:** Az `speech_recognition_language=<YOUR_LANGUAGE>` explicit módon be kell állítani a kérést, ha a szén-ügyfelet használják.
 
 Például:
 
@@ -127,19 +127,19 @@ RECOGNIZED: SpeechRecognitionResult(
 
 <details>
 <summary>
-<b>Használhatok egyéni akusztikai modellt és nyelvi modellt a beszédtárolóval?</b>
+<b>Használhatok egyéni akusztikus modellt és nyelvi modellt a Speech Container használatával?</b>
 </summary>
 
-Jelenleg csak egy modellazonosítót tudunk átadni, akár egyéni nyelvi modellt, akár egyéni akusztikai modellt.
+Jelenleg csak egy modell-azonosítót lehet átadni, vagy egyéni nyelvi modellt vagy egyéni akusztikus modellt.
 
-**Válasz:** Az a döntés született, hogy *nem* támogatják egyszerre az akusztikai és nyelvi modelleket. Ez mindaddig érvényben marad, amíg létre nem jön egy egységes azonosító az API-törések csökkentésére. Szóval, sajnos ez nem támogatott most.
+**Válasz:** Az akusztikai és nyelvi modelleket *nem* támogató döntés párhuzamosan történt. Ez továbbra is érvényben marad, amíg létre nem jön egy egységes azonosító az API-szünetek csökkentése érdekében. Így sajnos ez jelenleg nem támogatott.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Meg tudná magyarázni ezeket a hibákat az egyéni beszéd-szöveg tárolóból?</b>
+<b>Meg tudná magyarázni ezeket a hibákat az egyéni beszéd – szöveg típusú tárolóból?</b>
 </summary>
 
 **1. hiba:**
@@ -152,11 +152,11 @@ Failed to fetch manifest: Status: 400 Bad Request Body:
 }
 ```
 
-**1. válasz:** Ha a legújabb egyéni modellel edzel, ezt jelenleg nem támogatjuk. Ha a vonat egy régebbi verzió, lehetővé kell tenni, hogy használja. Még mindig dolgozunk a legújabb verziók támogatásán.
+**1. Válasz:** Ha a legújabb egyéni modellel dolgozik, jelenleg nem támogatott. Ha egy régebbi verzióval rendelkezik, a használata is lehetséges. Továbbra is dolgozunk a legújabb verziók támogatásán.
 
-Lényegében az egyéni tárolók nem támogatják a halogén vagy az ONNX-alapú akusztikai modelleket (ami az alapértelmezett az egyéni betanítási portálon). Ez annak köszönhető, hogy az egyéni modellek nem titkosítottak, és nem akarjuk, hogy az ONNX modelleket elérhetővé tegyünk; nyelvi modellek rendben vannak. Az ügyfélnek explicit módon ki kell választania egy régebbi, nem ONNX-modellt az egyéni betanításhoz. A pontosságot ez nem befolyásolja. A modell mérete nagyobb lehet (100 MB-tal).
+Az egyéni tárolók alapvetően nem támogatják a halogén vagy ONNX-alapú akusztikus modelleket (ez az alapértelmezett az egyéni képzési portálon). Ennek oka az, hogy az egyéni modellek nincsenek titkosítva, és nem szeretnénk kitenni a ONNX-modelleket, azonban a nyelvi modellek rendben vannak. Az ügyfélnek explicit módon ki kell választania egy régebbi, nem ONNX modellt az egyéni képzéshez. A pontosságot nem érinti a rendszer. A modell mérete nagyobb lehet (100 MB).
 
-> Támogatási modell > 20190220 (v4.5 Unified)
+> Támogatási modell > 20190220 (v 4.5 Unified)
 
 **2. hiba:**
 
@@ -168,7 +168,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**2. válasz:** Meg kell adnia a megfelelő hangnevet a kérelemben, amely a kis- és nagybetűk megkülönböztetése. Tekintse meg a teljes szolgáltatásnév-hozzárendelést. A programot `en-US-JessaRUS`a `en-US-JessaNeural` programot kell használnia, mivel a szövegfelolvasás tárolós verziójában jelenleg nem érhető el.
+**2. Válasz:** Meg kell adnia a megfelelő hangnevet a kérelemben, amely megkülönbözteti a kis-és nagybetűket. Tekintse át a teljes szolgáltatásnév leképezését. A-t kell `en-US-JessaRUS`használnia `en-US-JessaNeural` , mivel jelenleg nem érhető el a szöveges – beszéd tároló verziójában.
 
 **3. hiba:**
 
@@ -179,7 +179,7 @@ Details: Voice does not match.
 }
 ```
 
-**3. válasz:** A feladatfelismerési erőforrás, nem pedig a Cognitive Services-erőforrás létrehozásához hozzon létre.
+**3. Válasz:** A rendszer nem Cognitive Services erőforrást hoz létre a beszédfelismerési erőforrás létrehozásához.
 
 
 <br>
@@ -187,37 +187,37 @@ Details: Voice does not match.
 
 <details>
 <summary>
-<b>Milyen API-protokollok támogatottak, REST vagy WS?</b>
+<b>Milyen API-protokollok támogatottak, a REST vagy a WS?</b>
 </summary>
 
-**Válasz:** A beszéd-szöveg és az egyéni beszéd-szöveg tárolók esetében jelenleg csak a websocket alapú protokollt támogatjuk. Az SDK csak a WS-ben támogatja a hívást, de a REST-ben nem. Van egy terv rest támogatás hozzáadására, de jelenleg nem az ETA.There's a plan to add REST support, but not ETA. Mindig olvassa el a hivatalos dokumentációt, [lásd: lekérdezés-előrejelzési végpontok](speech-container-howto.md#query-the-containers-prediction-endpoint).
+**Válasz:** A beszéd-szöveg és az egyéni beszéd-szöveg tárolók esetében jelenleg csak a WebSocket-alapú protokollt támogatjuk. Az SDK csak a WS-ben, de nem REST-ben történő hívást támogatja. A REST-támogatás hozzáadására van lehetőség, de jelenleg nem az ETA. Mindig tekintse meg a hivatalos dokumentációt, lásd: [lekérdezés-előrejelzési végpontok](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Támogatja a CentOS a beszédtárolókat?</b>
+<b>A CentOS támogatja a Speech containers szolgáltatást?</b>
 </summary>
 
-**Válasz:** A CentOS 7-et még nem támogatja a Python SDK, az Ubuntu 19.04 sem támogatott.
+**Válasz:** A Python SDK még nem támogatja a CentOS 7 használatát, de az Ubuntu 19,04 is nem támogatott.
 
-A Python Speech SDK-csomag a következő operációs rendszerekhez érhető el:
-- **Windows** - x64 és x86
-- **Mac** – macOS X 10.12-es vagy újabb verzió
-- **Linux** - Ubuntu 16.04, Ubuntu 18.04, Debian 9 x64-én
+A Python Speech SDK csomag elérhető a következő operációs rendszerekhez:
+- **Windows** -x64 és x86
+- **Mac** – macOS X 10,12 vagy újabb verzió
+- **Linux** -Ubuntu 16,04, Ubuntu 18,04, Debian 9 x64 rendszeren
 
-A környezet beállításáról további információt a [Python platform beállításáról](quickstarts/setup-platform.md?pivots=programming-language-python)talál. Most az Ubuntu 18.04 az ajánlott verzió.
+A környezet beállításával kapcsolatos további információkért lásd a [Python-platform beállítása](quickstarts/setup-platform.md?pivots=programming-language-python)című témakört. Jelenleg az Ubuntu 18,04 az ajánlott verzió.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Miért kapok hibákat, amikor megpróbálja meghívni a LUIS előrejelzési végpontjait?</b>
+<b>Miért kapok hibaüzeneteket a LUIS előrejelzési végpontok meghívására tett kísérlet során?</b>
 </summary>
 
-A LUIS-tárolót egy IoT Edge-telepítésben használom, és megpróbálom meghívni a LUIS előrejelzési végpontját egy másik tárolóból. A LUIS-tároló figyeli az 5001-es portot, és az általam használt URL a következő:
+A LUIS-tárolót egy IoT Edge üzemelő példányban használom, és megpróbálom meghívni a LUIS előrejelzési végpontot egy másik tárolóból. A LUIS-tároló figyeli a 5001-es portot, és a használt URL-cím a következő:
 
 ```csharp
 var luisEndpoint =
@@ -225,35 +225,35 @@ var luisEndpoint =
 var config = SpeechConfig.FromEndpoint(new Uri(luisEndpoint));
 ```
 
-A hiba kapok:
+A következő hibaüzenetet kapok:
 
 ```cmd
 WebSocket Upgrade failed with HTTP status code: 404 SessionId: 3cfe2509ef4e49919e594abf639ccfeb
 ```
 
-A kérelem megjelenik a LUIS-tároló naplókban, és az üzenet a következőket mondja:
+A kérelem a LUIS Container logs-ben jelenik meg, és az üzenet a következőt mondja:
 
 ```cmd
 The request path /luis//predict" does not match a supported file type.
 ```
 
-Ez mit jelent? Miről maradtam le? Én követtem a példát a beszéd SDK, [innen](https://github.com/Azure-Samples/cognitive-services-speech-sdk). A forgatókönyv az, hogy észleli a hangot közvetlenül a PC mikrofon, és megpróbálja meghatározni a szándékot, a LUIS alkalmazás általunk betanított. A példa, amit kapcsolódik nem pontosan ezt. És jól működik a LUIS felhőalapú szolgáltatás. A beszédsdk használatával úgy tűnt, hogy mentse nt minket attól, hogy egy külön explicit hívást a beszéd-szöveg API-t, majd egy második hívás a LUIS.
+Ez mit jelent? Mi hiányzik? A Speech SDK példáját követem [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk). A forgatókönyv az, hogy a hang közvetlenül a PC-mikrofonból van érzékelve, és a szándék alapján határozható meg a betanított LUIS-alkalmazás alapján. A hivatkozott példa pontosan ezt teszi. És jól működik a LUIS felhőalapú szolgáltatásával. Úgy tűnt, hogy a Speech SDK használatával külön explicit módon meghívja a beszéd-szöveg API-t, majd másodszor meghívja a LUIS-t.
 
-Így mindössze annyit próbálok tenni, hogy váltson a luis a felhőben a LUIS használatával a LUIS-tároló használatával. Nem tudom elképzelni, ha a beszéd SDK működik az egyik, ez nem fog működni a másik.
+Tehát minden, amit megpróbálok végrehajtani, váltson a LUIS Felhőbeli használatával a LUIS-tároló használatára. Nem tudom elképzelni, hogy a Speech SDK működik-e az egyikre, de nem fog működni.
 
-**Válasz:** A beszédstabk nem használható LUIS-tárolóellen. A LUIS-tároló használata esetén a LUIS SDK vagy LUIS REST API-t kell használni. A beszédstak-tárolóellen kell használni.
+**Válasz:** A Speech SDK nem használható LUIS-tárolón. A LUIS-tároló használatához a LUIS SDK-t vagy LUIS REST APIt kell használni. A Speech SDK-t egy beszédfelismerési tárolón kell használni.
 
-A felhő más, mint egy tároló. A felhő több összesített tárolóból (más néven mikroszolgáltatásokból) állhat. Tehát van egy LUIS-tároló, és van egy beszédtároló - két külön tároló. A beszédtároló csak beszédfelismerést végez. A LUIS-tároló csak a LUIS.The LUIS container only does LUIS. A felhőben, mivel mindkét tároló ismert, hogy telepítve van, és ez rossz teljesítmény egy távoli ügyfél megy a felhőbe, nem beszéd, gyere vissza, majd menj a felhőbe, és nem LUIS, biztosítunk egy olyan funkciót, amely lehetővé teszi az ügyfél számára, hogy a beszéd, maradjon a felhőben, menjen a LUIS, majd gyere vissza az ügyfélhez. Így még ebben a forgatókönyvben a speech SDK hanggal a Speech cloud container, majd a Speech cloud container beszél a LUIS felhőtároló szöveggel. A LUIS-tároló fogalma nincs a hang fogadása (nem lenne értelme a LUIS-tároló, hogy fogadja el a folyamatos hang - LUIS egy szöveges szolgáltatás). A prem, nincs bizonyosságunk, hogy az ügyfelünk mindkét tárolót telepítette, nem feltételezzük, hogy az ügyfeleink telephelyén lévő tárolók között vezénylésre kerül, és ha mindkét tároló telepítve van a prem-en, mivel azok helyibbek az ügyfél számára, nem teher az SR-t először visszavinni az ügyfélhez, és az ügyfélnek ezt a szöveget kell vennie, és a LUIS-hoz kell mennie.
+A felhő különbözik a tárolótól. A felhő több összesített tárolóból is állhat (más néven Micro Services). Tehát van egy LUIS-tároló, és van egy beszédfelismerési tároló – két különálló tároló. A beszédfelismerési tároló csak a beszédet végzi. A LUIS-tároló csak a LUIS-t támogatja. A felhőben, mivel mindkét tárolót központilag üzembe kell helyezni, és ez rossz teljesítmény egy távoli ügyfél számára a felhőbe való ugráshoz, a beszéd, a visszatérés, majd a felhőbe való újbóli elvégzése, valamint a LUIS, biztosítunk egy funkciót, amely lehetővé teszi az ügyfél számára, hogy a beszéd, a felhőben maradjon, és térjen vissza az ügyfélhez Így még ebben az esetben is a Speech SDK a hangfelvételt folytató Felhőbeli tárolóba kerül, majd a beszédfelismerési Felhőbeli tároló beszélget a szöveggel ellátott LUIS Cloud-tárolóval. A LUIS-tároló nem rendelkezik hangvételi koncepcióval (nem lenne értelme a LUIS-tárolónak, hogy fogadja a streaming audio-LUIS egy szöveges alapú szolgáltatást). Helyszíni, nem vagyunk biztosak abban, hogy az ügyfelenk mindkét tárolót üzembe helyezte, nem feltételezjük, hogy az ügyfél telephelyén található tárolók között nem vagyunk felkészítve, és ha mindkét tároló üzembe helyezése a helyszíni környezetben történik, mivel azok jobban megtalálhatók az ügyfél számára, akkor nem jelent terhet az SR első, az ügyfél felé irányuló, és az ügyfél elvégzésére, és
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Miért kapunk hibákat a macOS, a Beszédtároló és a Python SDK használatával?</b>
+<b>Miért kapok hibákat a macOS, a Speech Container és a Python SDK használatával?</b>
 </summary>
 
-Amikor egy *.wav* fájlt küldünk átírásra, az eredmény a következő:
+Ha egy *. wav* fájlt küldünk, az eredmény a következővel jön vissza:
 
 ```cmd
 recognition is running....
@@ -272,11 +272,11 @@ WebSocket
 }
 ```
 
-Tudjuk, hogy a websocket megfelelően van beállítva.
+Tudjuk, hogy a WebSocket helyesen van beállítva.
 
-**Válasz:** Ha ez a helyzet, akkor lásd [ezt a GitHub-problémát.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310) Van egy work-around, [javasolt itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722).
+**Válasz:** Ha ez a helyzet, akkor tekintse meg [ezt a GitHub-problémát](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310). [Itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722)is találunk munkát.
 
-Carbon rögzített ez a változat 1.8.
+A szén a 1,8-es verzióban rögzítette.
 
 
 <br>
@@ -284,34 +284,34 @@ Carbon rögzített ez a változat 1.8.
 
 <details>
 <summary>
-<b>Miak a különbségek a beszédtároló végpontjaiban?</b>
+<b>Mi a különbség a beszédfelismerési tároló végpontjai között?</b>
 </summary>
 
-Tudna segíteni töltse ki a következő teszt metrikák, beleértve a milyen funkciókat kell tesztelni, és hogyan kell tesztelni az SDK és a REST API-k? Különösen az "interaktív" és a "beszélgetés" különbségei, amelyeket nem láttam a meglévő doc /mintából.
+Segíthet az alábbi tesztelési mérőszámok kitöltésében, beleértve a tesztelni kívánt funkciókat, valamint az SDK és a REST API-k tesztelését? Különösen az "interaktív" és a "beszélgetés" közötti különbségek, amelyeket nem látok a meglévő doc/Sample-ből.
 
-| Végpont                                                | Funkcionális vizsgálat                                                   | SDK | REST API |
+| Végpont                                                | Funkcionális teszt                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Szöveg szintetizálása (szövegfelolvasás)                                  |     | Igen      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services on-prem diktálás v1 websocket végpont        | Igen | Nem       |
-| `/speech/recognition/interactive/cognitiveservices/v1`  | A Cognitive Services on-prem interaktív v1 websocket végpont  |     |          |
-| `/speech/recognition/conversation/cognitiveservices/v1` | A kognitív szolgáltatások on-prem beszélgetés v1 websocket végpont |     |          |
+| `/speech/synthesize/cognitiveservices/v1`               | Szintetizáló szöveg (szöveg – beszéd)                                  |     | Igen      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services on-Prem diktálás v1 WebSocket-végpont        | Igen | Nem       |
+| `/speech/recognition/interactive/cognitiveservices/v1`  | A Cognitive Services on-Prem Interactive v1 WebSocket-végpont  |     |          |
+| `/speech/recognition/conversation/cognitiveservices/v1` | A kognitív szolgáltatások on-Prem beszélgetés v1 WebSocket-végpont |     |          |
 
-**Válasz:** Ez a fúzió:
-- Emberek kipróbálás a diktálás végpont részére konténer, ( Im' nem persze hogyan ők kapott amit URL)
-- Az<sup>első</sup> fél végpontja a tárolóban lévő.
-- Az első<sup>fél</sup> végpontja, amely a speech.fragment üzeneteket adja vissza a `speech.hypothesis` 3<sup>rd</sup> rd part végpontok helyett a diktálási végponthoz.
-- A Carbon rövid `RecognizeOnce` útmutatók minden használat (interaktív mód)
-- Carbon, amelynek `speech.fragment` azt állítják, hogy az üzenetek igénylő nem tér vissza interaktív módban.
-- Szén, amelynek azt állítja, tűz kiadás épít (megölve a folyamatot).
+**Válasz:** Ez a következő fúzió:
+- A tárolók diktálási végpontját kipróbáló személyek (nem tudom, hogyan kapták meg ezt az URL-címet)
+- Az 1<sup>St</sup> -fél végpont egy tárolóban található.
+- Az 1<sup>St</sup> féltől származó végpont a Speech. fragment üzenetet adja vissza `speech.hypothesis` az üzenetek helyett, a diktálási végponthoz tartozó 3<sup>Távoli asztali</sup> rész végpontja.
+- A teljes széndioxid-használat `RecognizeOnce` (interaktív mód)
+- A szén-dioxid azt állítja `speech.fragment` be, hogy az olyan üzenetek esetében, amelyekhez nem ad vissza interaktív módban.
+- A kibocsátás a kiállítók által kiváltott kiadásokat (a folyamat leölését) állítja be.
 
-A megoldás vagy a kód folyamatos felismerésének használatára való áttérés, vagy (gyorsabb) csatlakozás a tároló interaktív vagy folyamatos végpontjaihoz.
-A kód, állítsa be a végpontot <host:port>/speech/recognition/interactive/cognitiveservices/v1
+A megkerülő megoldás vagy váltás a kód folyamatos felismerésének használatára, vagy (gyorsabb) kapcsolódás a tárolóban lévő interaktív vagy folyamatos végpontokhoz.
+A kód beállításnál állítsa a végpontot <gazdagépre: Port>/Speech/Recognition/Interactive/cognitiveservices/v1
 
-A különböző módokat lásd: Beszédmódok – lásd alább:
+A különböző módokon lásd a beszédfelismerési módokat – lásd alább:
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
-A megfelelő javítás jön sdk 1.8, amely on-prem támogatás (felveszi a megfelelő végpontot, így nem lesz rosszabb, mint az online szolgáltatás). Addig is, van egy minta a folyamatos felismeréshez, miért nem mutatunk rá?
+A megfelelő javítás az SDK 1,8-as verziójában érhető el, amely helyszíni támogatással rendelkezik (a megfelelő végpontot fogja kiválasztani, így nem lesz rosszabb, mint az online szolgáltatás). Addig is van egy példa a folyamatos felismerésre, miért nem erre mutatunk?
 
 https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d9e95c9137fe129bc5d81e35f6309/samples/python/console/speech_sample.py#L196
 
@@ -320,40 +320,27 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 <details>
 <summary>
-<b>Melyik módot használjam a különböző hangfájlokhoz?</b>
+<b>Milyen módot érdemes használni a különböző hangfájlokhoz?</b>
 </summary>
 
-**Válasz:** Az [alábbiakban rövid útmutatót olvashat a Python használatával.](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python) A többi hivatkozott nyelvet a dokumentumoldalon találja.
+**Válasz:** Íme egy rövid útmutató a [Python használatával](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python). A docs webhelyhez csatolt más nyelveket is megtalálhatja.
 
-Csak hogy tisztázza az interaktív, beszélgetés, és diktálás; ez egy fejlett módja annak, hogy meghatározza a konkrét módon, ahogy a szolgáltatás kezeli a beszéd kérelmet. Sajnos az on-prem tárolók ban meg kell adni a teljes URI-t (mivel tartalmazza a helyi gépet), így ez az információ kiszivárgott az absztrakcióból. Együttműködünk az SDK csapatával, hogy ezt a jövőben még használhatóbbá tegyük.
+Csak hogy tisztázza az interaktív, a beszélgetést és a diktálást; Ez egy speciális módszer, amely meghatározza, hogy a szolgáltatás milyen módon fogja kezelni a beszédfelismerési kérést. Sajnos a helyszíni tárolók esetében meg kell adni a teljes URI-t (mivel ez tartalmazza a helyi gépet is), így a rendszer ezt az információt kiszivárgott az absztrakcióból. Az SDK-csapattal dolgozunk, hogy ezt a jövőben is használhatóvá tegye.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Hogyan tudjuk viszonyítási alap egy durva intézkedés tranzakciók / második / mag?</b>
+<b>Hogyan lehet a tranzakció/másodperc/mag durva mértékét felmérni?</b>
 </summary>
 
-**Válasz:** Íme néhány durva számok számíthatnak a meglévő modell (meg fog változni a jobb az egyik fogunk hajó GA):
+**Válasz:** Íme néhány a meglévő modellből várható durva számok közül (az a legjobb, ha az egyiket a GA-ban fogjuk szállítani):
 
-- A fájlok, a szabályozás lesz a beszéd SDK, a 2x. Az első öt másodpercben a hang nem szabályozott. Dekóder képes megtenni körülbelül 3x valós időben. Ehhez a teljes CPU-használat közel 2 mag lesz egyetlen felismeréshez.
-- A mikrofon, ez lesz a 1x valós időben. A teljes használat nak körülbelül 1 maggal kell lennie egyetlen felismeréshez.
+- A fájlok esetében a szabályozás a Speech SDK-ban lesz, 2x-ben. Az audió első öt másodperce nincs szabályozva. A dekóder képes a 3x valós idejű végrehajtására. Ebben az esetben a teljes CPU-használat két magot mutat be egyetlen felismeréshez.
+- A MIC esetében a szolgáltatás 1x valós időben fog megjelenni. Az általános használatnak körülbelül 1 mag kell lennie egyetlen felismeréshez.
 
-Ez mind ellenőrizhető a docker-naplókból. Mi valójában dump a sort a munkamenet és a kifejezés / utterance statisztika, és amely magában foglalja az RTF számokat.
-
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Gyakori, hogy a hangfájlokat tokmányokra osztja a beszédtároló használata érdekében?</b>
-</summary>
-
-A jelenlegi tervem az, hogy egy meglévő hangfájlt szétosztok 10 másodperces darabokra, és elküldöm azokat a konténeren keresztül. Ez elfogadható forgatókönyv?  Van jobb módja a nagyobb hangfájlok feldolgozásának a tárolóval?
-
-**Válasz:** Csak használja a beszéd SDK és adja meg a fájlt, akkor nem a helyes dolgot. Miért kell megdarabolni a fájlt?
+Ez a Docker-naplókból is ellenőrizhető. Tulajdonképpen a munkamenetet és a kifejezési/kiírási statisztikát tartalmazó sort, valamint az RTF-számokat is tartalmazza.
 
 
 <br>
@@ -361,10 +348,23 @@ A jelenlegi tervem az, hogy egy meglévő hangfájlt szétosztok 10 másodperces
 
 <details>
 <summary>
-<b>Hogyan lehet több tárolót futtatni ugyanazon a gazdagépen?</b>
+<b>Gyakori a hangfájlok felosztása a hangtárolók általi használatra?</b>
 </summary>
 
-A doki azt mondja, hogy tegye ki egy másik port, amit én, de a LUIS konténer még mindig hallgat port 5000?
+A jelenlegi tervem egy meglévő hangfájl elkészítése, és 10 másodperces darabokra osztása és a tárolón keresztüli elküldése. Elfogadható a forgatókönyv?  Van jobb módszer a tárolóban lévő nagyobb hangfájlok feldolgozására?
+
+**Válasz:** Csak használja a Speech SDK-t, és adja meg a fájlt, és tegye meg a megfelelő dolgot. Miért van szükség a fájl kidarabolására?
+
+
+<br>
+</details>
+
+<details>
+<summary>
+<b>Hogyan hogy több tároló fusson ugyanazon a gazdagépen?</b>
+</summary>
+
+A doki egy másik portot tesz elérhetővé, amelyet mégis, de a LUIS-tároló továbbra is figyeli a 5000-es portot?
 
 **Válasz:** Próbálja `-p <outside_unique_port>:5000`ki. Például: `-p 5001:5000`.
 
@@ -376,10 +376,10 @@ A doki azt mondja, hogy tegye ki egy másik port, amit én, de a LUIS konténer 
 
 <details>
 <summary>
-<b>Hogyan kaphatok nem kötegelt API-kat a 15 másodperces hang &lt;kezelésére?</b>
+<b>Hogyan szerezhetek be nem batch API-kat a 15 &lt;másodperces hang kezelésére?</b>
 </summary>
 
-**Válasz:** `RecognizeOnce()` interaktív módban csak legfeljebb 15 másodperces hangot dolgoz fel, mivel a mód beszédvezérlésre szolgál, ahol az utterances várhatóan rövid lesz. Ha diktálásra vagy beszélgetésre használja, `StartContinuousRecognition()` nincs 15 másodperces korlát.
+**Válasz:** `RecognizeOnce()` az interaktív módban csak a legfeljebb 15 másodperces hangot dolgozza fel, mivel a mód olyan beszédfelismerési parancsokhoz használható, ahol a hosszúságú kimondott szöveg várhatóan rövidnek kell lennie. Ha diktálást `StartContinuousRecognition()` vagy beszélgetést használ, nincs 15 másodperces korlát.
 
 
 <br>
@@ -387,12 +387,12 @@ A doki azt mondja, hogy tegye ki egy másik port, amit én, de a LUIS konténer 
 
 <details>
 <summary>
-<b>Melyek az ajánlott erőforrások, CPU és RAM; 50 egyidejű kérelemesetén?</b>
+<b>Mik az ajánlott erőforrások, a processzor és a RAM; 50 egyidejű kérelem esetén?</b>
 </summary>
 
-Hány egyidejű kérés lesz egy 4 magos, 4 GB RAM kezelni? Ha például 50 egyidejű kérést kell kiszolgálnunk, hány Core és RAM ajánlott?
+Hány egyidejű kérelem fog egy 4 magos, 4 GB RAM-ot kezelni? Ha például az 50 egyidejű kéréseket, hány mag és RAM ajánlott?
 
-**Válasz:** Valós időben, 8 a `en-US`legújabb , ezért javasoljuk, hogy több docker-tárolók túl 6 egyidejű kérelmek. 16 magnál nagyobb lesz, és nem egységes memória-hozzáférési (NUMA) csomópontérzékenylesz. Az alábbi táblázat az egyes beszédtárolók erőforrásainak minimális és ajánlott lefoglalását ismerteti.
+**Válasz:** Valós időben, 8 a legújabb `en-US`, ezért javasoljuk, hogy több Docker-tárolót használjon 6 egyidejű kérésen túl. A 16 magot meghaladó, a nem egységes memória-hozzáférési (NUMA-) csomópontra vált. Az alábbi táblázat az egyes beszédfelismerési tárolók minimális és ajánlott erőforrás-elosztását ismerteti.
 
 # <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
@@ -400,11 +400,11 @@ Hány egyidejű kérés lesz egy 4 magos, 4 GB RAM kezelni? Ha például 50 egyi
 |----------------|---------------------|---------------------|
 | Diktálás | 2 mag, 2 GB memória | 4 mag, 4 GB memória |
 
-# <a name="custom-speech-to-text"></a>[Egyéni beszédfelismerési szöveg](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech – szöveg](#tab/cstt)
 
 | Tároló             | Minimális             | Ajánlott         |
 |-----------------------|---------------------|---------------------|
-| Egyéni beszédfelismerési szöveg | 2 mag, 2 GB memória | 4 mag, 4 GB memória |
+| Custom Speech – szöveg | 2 mag, 2 GB memória | 4 mag, 4 GB memória |
 
 # <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
 
@@ -412,34 +412,34 @@ Hány egyidejű kérés lesz egy 4 magos, 4 GB RAM kezelni? Ha például 50 egyi
 |----------------|---------------------|---------------------|
 | Szövegfelolvasás | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
 
-# <a name="custom-text-to-speech"></a>[Egyéni szövegfelolvasás](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Egyéni szöveg – beszéd](#tab/ctts)
 
 | Tároló             | Minimális             | Ajánlott         |
 |-----------------------|---------------------|---------------------|
-| Egyéni szövegfelolvasás | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
+| Egyéni szöveg – beszéd | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
 
 ***
 
-- Minden magnak legalább 2,6 GHz-nek vagy gyorsabbnak kell lennie.
-- A fájlok esetében a szabályozás a beszédbeszéd SDK-ban lesz, 2x (a hang első 5 másodperce nincs szabályozva).
-- A dekóder képes körülbelül 2-3x valós időben. Ehhez a teljes CPU-használat közel lesz két maghoz egyetlen felismeréshez. Ezért nem javasoljuk, hogy tárolópéldányonként kettőnél több aktív kapcsolatot tartson meg. A szélsőséges oldalon az lenne, hogy körülbelül 10 dekóderek 2x `DS13_V2`valós időben egy nyolc maggép, mint . A konténer 1.3-as és újabb verzió, van egy `DECODER_MAX_COUNT=20`param megpróbálhatja beállítás .
-- A mikrofon, ez lesz a 1x valós időben. Az általános használat nak körülbelül egy magból kell lennie az egyetlen felismeréshez.
+- Minden mag legalább 2,6 GHz-es vagy gyorsabb lehet.
+- A fájlok esetében a szabályozás a Speech SDK-ban lesz, 2x-ben (az első 5 másodperc nem szabályozható).
+- A dekóder 2 – 3x valós idejű működésre képes. Ebben az esetben a teljes CPU-használat két magot mutat be egyetlen felismeréshez. Ezért nem ajánlott több mint két aktív kapcsolatot tartani a tároló-példányok esetében. A szélsőséges oldal az, hogy egy nyolc Magos gépen (például `DS13_V2`:) körülbelül 10 dekódert helyezzen el körülbelül 2x valós időben. A Container 1,3-es és újabb verzióiban van egy paraméter, amelyből megpróbálkozhat a beállítással `DECODER_MAX_COUNT=20`.
+- A mikrofon esetében a szolgáltatás 1x valós időben fog futni. Az általános használatnak körülbelül egy mag kell lennie egyetlen felismeréshez.
 
-Vegye figyelembe, hogy hány órányi hanggal rendelkezik. Ha a szám nagy, a megbízhatóság/rendelkezésre állás javítása érdekében azt javasoljuk, hogy több példányt futjon a tárolók, akár egy doboz, vagy több doboz mögött terheléselosztó. Vezénylési lehet tenni kubernetes (K8S) és helm, vagy a Docker komponál.
+Vegye figyelembe, hogy hány órányi hangra van szüksége. Ha a szám nagy, a megbízhatóság és a rendelkezésre állás javítása érdekében javasoljuk, hogy a tárolók több példányát futtassuk, akár egyetlen, akár több mezőben, a terheléselosztó mögött. A koordinálás a Kubernetes (K8S) és a Helm, illetve a Docker-összeállítás használatával végezhető el.
 
-Például 1000 óra/24 óra kezeléséhez megpróbáltuk 3-4 virtuális gép beállítását, virtuális gépenként 10 példány/dekóderek segítségével.
+A 1000 óra/24 óra kezeléséhez például megpróbálta beállítani a 3-4 virtuális gépeket, és virtuális gépenként 10 példányt/dekódert.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>A beszédtároló támogatja az írásjeleket?</b>
+<b>Támogatja a beszédfelismerési tároló a központozást?</b>
 </summary>
 
-**Válasz:** A nagybetűs séma (ITN) elérhető az on-prem tárolóban. Az írásjelek nyelvfüggőek, és egyes nyelveken, például a kínai és a japán nyelveken nem támogatottak.
+**Válasz:** A helyszíni tárolóban elérhető a nagybetűs (ITN). A központozás nyelvtől függ, és egyes nyelvek esetében nem támogatott, beleértve a kínai és a japán nyelvet is.
 
-Van *do* implicit és alapvető írásjelek támogatása a meglévő tárolók, de `off` alapértelmezés szerint. Ez azt jelenti, hogy `.` a példádban a `。` karaktert kaphatod meg, de a karaktert nem. Az implicit logika engedélyezéséhez az alábbiakban egy példa arra, hogyan kell ezt megtenni a Pythonban a Speech SDK használatával (más nyelveken is hasonló lenne):
+A meglévő tárolók esetében implicit és alapszintű központozási *támogatást biztosítunk* , de `off` alapértelmezés szerint ez a beállítás. Ez azt jelenti, hogy a `.` karaktert lekérheti a példában, nem pedig a `。` karaktert. Ennek az implicit logikának az engedélyezéséhez példát mutatunk arra, hogyan teheti ezt meg a Pythonban a Speech SDK használatával (más nyelveken is hasonló lenne):
 
 ```python
 speech_config.set_service_property(
@@ -454,10 +454,10 @@ speech_config.set_service_property(
 
 <details>
 <summary>
-<b>Miért kapok 404-es hibákat, amikor beszéd-szöveg tárolóba próbálok adatokat közzétenni?</b>
+<b>Miért kapok 404-es hibaüzenetet, amikor a rendszer megkísérelt adatpostát küldeni a szöveges tárolóba?</b>
 </summary>
 
-Íme egy példa HTTP POST:
+Példa HTTP POST:
 
 ```http
 POST /speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -477,14 +477,14 @@ Server: Kestrel
 Content-Length: 0
 ```
 
-**Válasz:** Egyik beszéd-szöveg tárolóban sem támogatjuk a REST API-t, csak a WebSocketeket támogatjuk a Speech SDK-n keresztül. Mindig olvassa el a hivatalos dokumentációt, [lásd: lekérdezés-előrejelzési végpontok](speech-container-howto.md#query-the-containers-prediction-endpoint).
+**Válasz:** Nem támogatjuk a REST APIt a beszéd-szöveg tárolóban, csak a Speech SDK-n keresztül támogatjuk a websocketeket. Mindig tekintse meg a hivatalos dokumentációt, lásd: [lekérdezés-előrejelzési végpontok](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>A beszéd-szöveg szolgáltatás használatakor miért jelenik meg ez a hibaüzenet?</b>
+<b>A beszédfelismerési szolgáltatás használatakor Miért kapok hibaüzenetet?</b>
 </summary>
 
 ```cmd
@@ -495,17 +495,17 @@ Error in STT call for file 9136835610040002161_413008000252496:
 }
 ```
 
-**Válasz:** Ez általában akkor fordul elő, ha a hangot gyorsabban táplálja, mint ahogy azt a beszédfelismerési tároló el tudja helyezni. Az ügyfélpufferek megtelnek, és a törlés aktiválódik. Ellenőriznie kell az egyidejűséget és az RTF-et, amelyre a hangot elküldi.
+**Válasz:** Ez általában akkor fordul elő, ha a hangfelismerő tárolónál gyorsabban táplálja a hangot. Megtörténik az ügyfél-pufferek kitöltése, a megszakítás pedig aktiválódik. Meg kell határoznia a párhuzamosságot és az RTF-t, amelyen elküldi a hangot.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Meg tudná magyarázni ezeket a szövegfelolvasó tároló hibákat a C++ példákból?</b>
+<b>Meg tudná magyarázni ezeket a szöveg-beszéd tárolói hibákat a C++ példákból?</b>
 </summary>
 
-**Válasz:** Ha a tároló verzió régebbi, mint 1.3, akkor ezt a kódot kell használni:
+**Válasz:** Ha a tároló verziója 1,3-nál régebbi, akkor ezt a kódot kell használni:
 
 ```cpp
 const auto endpoint = "http://localhost:5000/speech/synthesize/cognitiveservices/v1";
@@ -514,7 +514,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-A régebbi tárolók nem rendelkeznek a carbon `FromHost` api-val való kapcsolathoz szükséges végponttal. Ha az 1.3-as verzióhoz használt tárolóedényeket kell használni, akkor ezt a kódot kell használni:
+A régebbi tárolók nem rendelkeznek az `FromHost` API-val való együttműködéshez szükséges végponttal. Ha az 1,3-es verzióhoz használt tárolók, akkor ezt a kódot kell használni:
 
 ```cpp
 const auto host = "http://localhost:5000";
@@ -525,7 +525,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-Az alábbiakban egy `FromEndpoint` példa az API használatára:
+Az alábbi példa az `FromEndpoint` API használatát mutatja be:
 
 ```cpp
 const auto endpoint = "http://localhost:5000/cognitiveservices/v1";
@@ -536,30 +536,30 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
- A `SetSpeechSynthesisVoiceName` függvény neve, mert a frissített szövegfelolvasó motorral rendelkező tárolókhoz szükség van a hangnévre.
+ A `SetSpeechSynthesisVoiceName` függvény hívása, mert a frissített szöveg-beszéd motorral rendelkező tárolók megkövetelik a hang nevét.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Hogyan használhatom a beszédsdka 1.7-es részét egy beszédtárolóval?</b>
+<b>Hogyan használhatom a Speech SDK v 1.7-es verzióját egy beszédfelismerési tárolóval?</b>
 </summary>
 
-**Válasz:** A beszédfelismerési tárolóban három végpont van a különböző használatokhoz, amelyek beszédmódokként vannak definiálva – lásd alább:
+**Válasz:** A beszédfelismerési tároló három végpontot használ a különböző használatokhoz, ezek a beszédfelismerési módokként vannak meghatározva – lásd alább:
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
-Ezek különböző célokra, és használják másképp.
+Különböző célokra szolgálnak, és eltérő módon használatosak.
 
-Python [minták](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py):
-- Egyéni végponttal (azaz: egyfelismeréses (interaktív mód) `SpeechConfig` végpontparaméterrel), lásd: `speech_recognize_once_from_file_with_custom_endpoint_parameters()`.
-- A folyamatos felismeréshez (beszélgetési mód), és csak módosítsa, `speech_recognize_continuous_from_file()`hogy egy egyéni végpontot használjon a fentiek szerint, lásd: .
-- Ha engedélyezni szeretné a diktálást a fentihez hasonló mintákban `speech_config`(csak `speech_config.enable_dictation()`akkor, ha valóban szüksége van rá), közvetlenül a létrehozása után adja hozzá a kódot.
+Python- [minták](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py):
+- Egyetlen felismeréshez (interaktív mód) egyéni végponttal (azaz; `SpeechConfig` végponti paraméterrel) lásd: `speech_recognize_once_from_file_with_custom_endpoint_parameters()`.
+- A folyamatos felismeréshez (beszélgetési mód), és csak módosítsa úgy, hogy egyéni végpontot használjon `speech_recognize_continuous_from_file()`a fentiek szerint:.
+- Ha szeretné engedélyezni a diktálást a fenti mintákban (csak ha valóban szüksége van rá), közvetlenül a `speech_config`létrehozás után adja `speech_config.enable_dictation()`hozzá a kódot.
 
-A C# a diktálás engedélyezéséhez hívja meg a `SpeechConfig.EnableDictation()` függvényt.
+A C#-ban a diktálás engedélyezéséhez hívja `SpeechConfig.EnableDictation()` meg a függvényt.
 
-### <a name="fromendpoint-apis"></a>`FromEndpoint`Api
+### <a name="fromendpoint-apis"></a>`FromEndpoint`API
 | Nyelv | API-részletek |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -567,19 +567,19 @@ A C# a diktálás engedélyezéséhez hívja meg a `SpeechConfig.EnableDictation
 | Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-java-stable" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Jelenleg nem támogatott, és nem is tervezik. |
+| JavaScript | Jelenleg nem támogatott, és nem is tervezett. |
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Hogyan használhatom a beszédsdka 1.8-as részét egy beszédtárolóval?</b>
+<b>Hogyan használhatom a Speech SDK v 1.8-as verzióját egy Speech Container használatával?</b>
 </summary>
 
-**Válasz:** Van egy új `FromHost` API. Ez nem helyettesíti és nem módosítja a meglévő API-kat. Ez csak összead egy vagylagos út -hoz teremt egy beszéd config használ egy szokás házigazda.
+**Válasz:** Új `FromHost` API van. Ez nem helyettesíti vagy nem módosítja a meglévő API-kat. Ez csak egy alternatív módszert tesz lehetővé egy beszédfelismerési konfiguráció egyéni gazdagép használatával történő létrehozásához.
 
-### <a name="fromhost-apis"></a>`FromHost`Api
+### <a name="fromhost-apis"></a>`FromHost`API
 
 | Nyelv | API-részletek |
 |--|:-|
@@ -590,17 +590,17 @@ A C# a diktálás engedélyezéséhez hívja meg a `SpeechConfig.EnableDictation
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | Egyelőre nem támogatott |
 
-> Paraméterek: állomás (kötelező), előfizetési kulcs (nem kötelező, ha használhatja a szolgáltatást nélküle).
+> Paraméterek: állomás (kötelező), előfizetési kulcs (nem kötelező, ha a szolgáltatást nélkül is használhatja).
 
-Az állomás `protocol://hostname:port` formátuma nem `:port` kötelező (lásd alább):
-- Ha a tároló helyileg fut, `localhost`a állomásnév a .
-- Ha a tároló távoli kiszolgálón fut, használja a kiszolgáló állomásnevét vagy IPv4-címét.
+A gazdagép `protocol://hostname:port` `:port` formátuma nem kötelező (lásd alább):
+- Ha a tároló helyileg fut, az állomásnév `localhost`.
+- Ha a tároló távoli kiszolgálón fut, használja az adott kiszolgáló állomásnevét vagy IPv4-címeit.
 
-Állomásparaméter-példák a szöveggé való beszédhez:
-- `ws://localhost:5000`- nem biztonságos csatlakozás helyi tárolóhoz az 5000-es port használatával
-- `ws://some.host.com:5000`- nem biztonságos kapcsolat egy távoli kiszolgálón futó tárolóval
+Host paraméter példák a beszédfelismerési szövegre:
+- `ws://localhost:5000`-nem biztonságos csatlakozás egy helyi tárolóhoz a 5000-es port használatával
+- `ws://some.host.com:5000`-nem biztonságos kapcsolódás távoli kiszolgálón futó tárolóhoz
 
-Python minták felülről, `host` de `endpoint`használja paraméter helyett:
+Python-minták a fentiek közül, `host` de a paraméter `endpoint`helyett használja a következőt:
 
 ```python
 speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
@@ -612,4 +612,4 @@ speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Cognitive Services-tárolók](speech-container-howto.md)
+> [Cognitive Services tárolók](speech-container-howto.md)

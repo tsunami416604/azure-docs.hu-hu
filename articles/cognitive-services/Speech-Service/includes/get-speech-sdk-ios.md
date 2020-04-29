@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 7ce193c2c2f5e10a27550da68a4c2d2fdcd1db7f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399909"
 ---
 :::row:::
     :::column span="3":::
-        Az iOS-re való fejlesztés során két beszédbeszéd-SDK érhető el. Az Objective-C Speech SDK natívan elérhető iOS CocoaPod csomagként. Másik lehetőségként a .NET Speech SDK használható a Xamarin.iOS-szel a .NET Standard 2.0 megvalósítása ként.
+        Az iOS rendszerre való fejlesztéskor két beszédfelismerési SDK érhető el. A Objective-C Speech SDK natív módon iOS CocoaPod-csomagként érhető el. Azt is megteheti, hogy a .NET Speech SDK-t a Xamarin. iOS használatával is használhatja, mivel az a .NET Standard 2,0-es implementációja.
     :::column-end:::
     :::column:::
         <br>
@@ -24,18 +24,18 @@ ms.locfileid: "81399909"
 :::row-end:::
 
 > [!TIP]
-> Az Objective-C Speech SDK with Swift használatával kapcsolatos részletekért <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">lásd: C célkitűzés importálása a <span class="docon docon-navigate-external x-hidden-focus"> </span>Swiftbe. </a>
+> A Swift Objective-C Speech SDK használatával kapcsolatos részletekért lásd: az <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Objective-c importálása Swift <span class="docon docon-navigate-external x-hidden-focus"> </span>-be </a>.
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
 
-- MacOS 10.3-as vagy újabb verziója
-- Az iOS 9.3-as vagy újabb verzióinak megcélzása
+- MacOS 10,3-es vagy újabb verzió
+- Cél iOS 9,3 vagy újabb
 
 # <a name="xcode"></a>[Xcode](#tab/ios-xcode)
 
 :::row:::
     :::column span="3":::
-        Az iOS CocoaPod csomag letölthető és használható az <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (vagy újabb) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> integrált fejlesztői környezettel (IDE). Először is, <a href="https://aka.ms/csspeech/iosbinary" target="_blank">töltse <span class="docon docon-navigate-external x-hidden-focus"> </span>le a bináris CocoaPod </a>. Bontsa ki a pod ugyanabban a könyvtárban a `pod` tervezett `target`használatra, hozzon létre egy *Podfile* és sorolja fel a .
+        Az iOS CocoaPod csomag letölthető és használható a <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (vagy újabb) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> integrált fejlesztési környezettel (ide). Először <a href="https://aka.ms/csspeech/iosbinary" target="_blank">töltse le a bináris CocoaPod <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Bontsa ki a pod-t ugyanabban a címtárban a kívánt használatra *Podfile* , hozzon létre `pod` egy cocoapods `target`, és sorolja fel a következőt:.
     :::column-end:::
     :::column:::
         <br>
@@ -58,7 +58,7 @@ end
 
 :::row:::
     :::column span="3":::
-        A Xamarin.iOS a teljes iOS SDK-t teszi elérhetővé . A Visual Studio teljes mértékben natív iOS-alkalmazásait C# vagy F# használatával hozhat létre. További információ: <a href="https://docs.microsoft.com/xamarin/ios/" target="_blank">Xamarin.iOS <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+        A Xamarin. iOS a .NET-fejlesztők számára készült iOS SDK-t teszi elérhetővé. Teljes natív iOS-alkalmazások készítése C# vagy F # használatával a Visual Studióban. További információ: <a href="https://docs.microsoft.com/xamarin/ios/" target="_blank">Xamarin. iOS <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -73,7 +73,7 @@ end
 
 ---
 
-#### <a name="additional-resources"></a>További források
+#### <a name="additional-resources"></a>További háttéranyagok
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios" target="_blank">iOS Speech SDK rövid útmutató Objective-C forráskód<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios" target="_blank">iOS Speech SDK gyorsindítás swift forráskód<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios" target="_blank">iOS Speech SDK gyors üzembe helyezési célkitűzés – C forráskód<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios" target="_blank">iOS Speech SDK gyors útmutató Swift-forráskódja<span class="docon docon-navigate-external x-hidden-focus"></span></a>

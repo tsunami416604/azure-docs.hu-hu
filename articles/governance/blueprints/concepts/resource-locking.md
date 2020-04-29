@@ -1,55 +1,55 @@
 ---
-title: Az erőforrások zárolásának ismertetése
-description: Ismerje meg az Azure Blueprints zárolási lehetőségeit az erőforrások védelme érdekében a tervezet hozzárendelésekén.
+title: Az erőforrás-zárolás megismerése
+description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383593"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure Blueprints-ben
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
-A konzisztens környezetek létrehozása csak akkor igazán értékes, ha van egy mechanizmus, amely fenntartja ezt a konzisztenciát. Ez a cikk bemutatja, hogyan működik az erőforrás-zárolás az Azure Blueprints. Az erőforrás-zárolás és a _megtagadási hozzárendelések_alkalmazása példáját az [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyag című témakörben láthatja.
+A konzisztens környezetek nagy méretekben történő létrehozása csak abban az esetben hasznos, ha van olyan mechanizmus, amely a konzisztencia fenntartására szolgál. Ez a cikk azt ismerteti, hogyan működik az erőforrás-zárolás az Azure-tervekben. Az erőforrás-zárolásra és a _megtagadási hozzárendelések_alkalmazására vonatkozó példa az [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyagban található.
 
 > [!NOTE]
-> Az Azure Blueprints által üzembe helyezett erőforrás-zárolások csak a blueprint-hozzárendelés által üzembe helyezett erőforrásokra vonatkoznak. A meglévő erőforrások, például a már létező erőforráscsoportokban lévő erőforrásokhoz nem tartozik zárolások hozzá.
+> Az Azure-tervrajzok által üzembe helyezett erőforrás-zárolások csak a terv-hozzárendelés által üzembe helyezett erőforrásokra vonatkoznak. A meglévő erőforrások, például a már létező erőforráscsoportok, nincsenek hozzájuk adva zárolások.
 
 ## <a name="locking-modes-and-states"></a>Zárolási módok és állapotok
 
-A zárolási mód a tervezethozzárendelésre vonatkozik, és három lehetőség közül választhat: **Ne zároljon,** **csak olvasható**vagy ne törölje a **programot.** A zárolási mód a műtermék üzembe helyezése során van konfigurálva egy tervrajz-hozzárendelés során. A tervezethozzárendelés frissítésével egy másik zárolási mód állítható be.
-A zárolási módok azonban nem módosíthatók az Azure Blueprints-en kívül.
+A zárolási mód a tervrajz-hozzárendelésre vonatkozik, és három lehetőség közül választhat: **ne zárolja**, **csak olvasható**vagy ne **törölje**. A zárolási módot a rendszer a terv hozzárendelése során konfigurálja az összetevő üzembe helyezése során. A terv hozzárendelésének frissítésével egy másik zárolási mód is beállítható.
+A zárolási módokat azonban nem lehet az Azure-tervezeteken kívül módosítani.
 
-A tervezethozzárendelésben összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **Nincs zárolva,** **írásvédett**, **nem szerkeszthető / törölhető,** vagy nem **törölhető.** Minden műterméktípus lehet **nem zárolt** állapotban. Az alábbi táblázat az erőforrások állapotának meghatározására használható:
+A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **nincs zárolva**, **csak olvasható**, **nem szerkeszthető/** nem törölhető, vagy **nem törölhető**. Az egyes összetevők típusa **nem zárolt** állapotban lehet. Az alábbi táblázat egy erőforrás állapotának meghatározására használható:
 
-|Mód|Műtermék erőforrástípusa|Állapot|Leírás|
+|Mód|Összetevő típusú erőforrástípus|Állapot|Leírás|
 |-|-|-|-|
-|Ne zárd be|*|Nincs zárolva|Az erőforrásokat az Azure Blueprints nem védi. Ez az állapot **írásvédett** vagy ne **törölje** az erőforráscsoport-összetevőt egy tervezet-hozzárendelésen kívülről hozzáadott erőforrásokhoz is.|
-|Csak olvasási engedély|Erőforráscsoport|Nem lehet edinni / törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. **A nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoportból.|
-|Csak olvasási engedély|Nem erőforráscsoport|Csak olvasási engedély|Az erőforrás semmilyen módon nem módosítható – nincs enek, és nem törölhetők.|
-|Nincs törlés|*|Nem lehet törölni|Az erőforrások módosíthatók, de nem törölhetők. **A nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoportból.|
+|Ne legyen zárolás|*|Nincs zárolva|Az Azure-tervrajzok nem védik az erőforrásokat. Ezt az állapotot az **írásvédett** erőforráshoz hozzáadott erőforrások, vagy az erőforráscsoport-összetevő **nem törölhető** a terv-hozzárendelésen kívül is használják.|
+|Csak olvasási engedély|Erőforráscsoport|Nem lehet szerkeszteni/törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
+|Csak olvasási engedély|Nem erőforráscsoport|Csak olvasási engedély|Az erőforrás semmilyen módon nem módosítható – nem módosítható, és nem törölhető.|
+|Törlés mellőzése|*|Nem lehet törölni|Az erőforrások módosíthatók, de nem törölhetők. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
 
-## <a name="overriding-locking-states"></a>A zárolási állapotok felülbírálása
+## <a name="overriding-locking-states"></a>Zárolási állapotok felülbírálása
 
-Általában lehetséges, hogy az előfizetésben megfelelő [szerepköralapú hozzáférés-vezérléssel](../../../role-based-access-control/overview.md) (RBAC) rendelkező személy, például a "Tulajdonos" szerepkör, bármely erőforrás tanuskodhat, hogy módosítson vagy töröljön bármely erőforrást. Ez a hozzáférés nem így van, ha az Azure Blueprints egy üzembe helyezett hozzárendelés részeként zárolást alkalmaz. Ha a hozzárendelés az **Írásvédett vagy** a **Ne törlése** beállítással lett beállítva, még az előfizetés tulajdonosa sem tudja végrehajtani a letiltott műveletet a védett erőforráson.
+Általában előfordulhat, hogy valaki megfelelő [szerepköralapú hozzáférés-vezérléssel](../../../role-based-access-control/overview.md) (RBAC) rendelkezik az előfizetésben, például a "tulajdonos" szerepkört, amely lehetővé teszi az erőforrások módosítását vagy törlését. Ez a hozzáférés nem vonatkozik arra az esetre, amikor az Azure-tervrajzok egy üzembe helyezett hozzárendelés részeként zárolják a zárolást. Ha a hozzárendelés **csak olvasási** vagy nem **törlési** beállítással lett beállítva, akkor még az előfizetés tulajdonosa is elvégezheti a letiltott műveletet a védett erőforráson.
 
-Ez a biztonsági intézkedés védi a megadott tervterv konzisztenciáját és azt a környezetet, amelyet a véletlen vagy programozott törlésvagy módosítás létrehozásához terveztek.
+Ez a biztonsági mérték védi a definiált terv és az olyan környezet egységességét, amelyet véletlen vagy programozott törlés vagy módosítás alapján hoztak létre.
 
-### <a name="assign-at-management-group"></a>Hozzárendelés a felügyeleti csoportban
+### <a name="assign-at-management-group"></a>Hozzárendelés felügyeleti csoportban
 
-Egy további lehetőség, hogy megakadályozzák előfizetés-tulajdonosok eltávolítása egy tervezet-hozzárendelés, hogy rendelje hozzá a tervezetet egy felügyeleti csoporthoz. Ebben a forgatókönyvben csak a felügyeleti csoport **tulajdonosai** rendelkeznek a tervezet hozzárendelés eltávolításához szükséges engedélyekkel.
+Egy további lehetőség, amely megakadályozza, hogy az előfizetések tulajdonosai a terv hozzárendelésének eltávolítását egy felügyeleti csoportba rendelje. Ebben az esetben csak a felügyeleti csoport **tulajdonosai** rendelkeznek a terv-hozzárendelés eltávolításához szükséges engedélyekkel.
 
-Ha a tervezetet egy felügyeleti csoporthoz szeretné hozzárendelni egy előfizetés helyett, a REST API-hívás a következőkhöz fog kinézni:
+Ha a tervet egy előfizetés helyett egy felügyeleti csoporthoz szeretné rendelni, a REST API a következőképpen fog megjelenni:
 
 ```http
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-A felügyeleti csoport `{assignmentMG}` által meghatározott kell lennie, vagy a felügyeleti csoport hierarchiájában, vagy ugyanaz a felügyeleti csoport, ahol a tervezet definíciója menti.
+A által `{assignmentMG}` definiált felügyeleti csoportnak a felügyeleti csoport hierarchiájában kell lennie, vagy ugyanabba a felügyeleti csoportba kell tartoznia, ahol a terv definícióját menti.
 
-A tervezet-hozzárendelés kérelemtörzse így néz ki:
+A terv-hozzárendelés kérelem törzse a következőképpen néz ki:
 
 ```json
 {
@@ -85,39 +85,39 @@ A tervezet-hozzárendelés kérelemtörzse így néz ki:
 }
 ```
 
-A legfontosabb különbség ebben a kérelem törzsében, és `properties.scope` egy előfizetéshez rendelt a tulajdonság. Ezt a szükséges tulajdonságot be kell állítani arra az előfizetésre, amelyre a tervezet-hozzárendelés vonatkozik. Az előfizetésnek a felügyeleticsoport-hozzárendelés tárolására található felügyeleticsoport-hierarchia közvetlen gyermekének kell lennie.
+A kérelem törzsében és egy előfizetéshez rendelt fő különbség a `properties.scope` tulajdonság. Ezt a kötelező tulajdonságot arra az előfizetésre kell beállítani, amelyre a terv-hozzárendelés vonatkozik. Az előfizetésnek a felügyeleti csoport hierarchiájának közvetlen gyermekének kell lennie, ahol a terv-hozzárendelést tárolja.
 
 > [!NOTE]
-> A felügyeleti csoport hatóköréhez rendelt tervezet továbbra is előfizetési szintű tervezet-hozzárendelésként működik. Az egyetlen különbség az, ahol a tervezet hozzárendelés tárolja, hogy megakadályozza az előfizetés-tulajdonosok eltávolítása a hozzárendelés és a kapcsolódó zárak.
+> A felügyeleti csoport hatóköréhez hozzárendelt terv továbbra is előfizetési szintű terv-hozzárendelésként működik. Az egyetlen különbség, hogy a terv-hozzárendelést a rendszer tárolja, hogy megakadályozza az előfizetés-tulajdonosok számára a hozzárendelés és a társított zárolások eltávolítását.
 
 ## <a name="removing-locking-states"></a>Zárolási állapotok eltávolítása
 
-Ha szükségessé válik egy hozzárendelés által védett erőforrás módosítása vagy törlése, ezt kétféleképpen teheti meg.
+Ha szükség lesz egy hozzárendelés által védett erőforrás módosítására vagy törlésére, kétféleképpen teheti meg.
 
-- A tervrajz-hozzárendelés frissítése a **Nincs zárolás** zárolása üzemmódba
-- A tervhozzárendelés törlése
+- A terv-hozzárendelés frissítése a **nem zárolt** zárolási módba
+- A terv hozzárendelésének törlése
 
-A hozzárendelés eltávolításakor az Azure Blueprints által létrehozott zárolások törlődnek. Az erőforrás azonban hátramarad, és normál módon törölni kell.
+A hozzárendelés eltávolításakor az Azure-tervrajzok által létrehozott zárolások törlődnek. Az erőforrás azonban marad, és a szokásos módon törölni kell.
 
-## <a name="how-blueprint-locks-work"></a>A tervrajzok zárolásának munkálatai
+## <a name="how-blueprint-locks-work"></a>A terv zárolásának működése
 
-Az RBAC [megtagadási hozzárendelések megtagadási](../../../role-based-access-control/deny-assignments.md) művelete a műtermék-erőforrásokra vonatkozik a tervtervezet hozzárendelése során, ha a hozzárendelés az **Írásvédett vagy** a **Ne törölje** beállítást választotta. A megtagadási művelet et a blueprint-hozzárendelés felügyelt identitása adja hozzá, és csak ugyanazzal a felügyelt identitással távolítható el a műtermék-erőforrásokból. Ez a biztonsági intézkedés kényszeríti a zárolási mechanizmust, és megakadályozza a tervezet zárolásának eltávolítását az Azure Blueprints-en kívül.
+Egy RBAC [megtagadási hozzárendelések](../../../role-based-access-control/deny-assignments.md) megtagadási művelete a terv hozzárendelése során az összetevő-erőforrásokra vonatkozik, ha a hozzárendelés a **csak olvasható** vagy a **nem törlés** lehetőséget választotta. A megtagadási műveletet a terv-hozzárendelés felügyelt identitása adja hozzá, és csak azonos felügyelt identitással lehet eltávolítani az összetevő-erőforrásokból. Ez a biztonsági mérték kikényszeríti a zárolási mechanizmust, és megakadályozza az Azure-tervezeteken kívüli terv zárolásának eltávolítását.
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Blueprint megtagadása hozzárendelés erőforráscsoport" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Az erőforráscsoport hozzárendelésének megtagadása" border="false":::
 
-Az egyes üzemmódok [megtagadási hozzárendelési tulajdonságai](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) a következők:
+Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) a következők:
 
-|Mód |Engedélyek.Műveletek |Permissions.Notactions |Igazgatók[i]. Típus |ExcludePrincipals[i]. Id | DoNotApplyToChildScopes |
+|Mód |Engedélyek. műveletek |Engedélyek. Tapintatok |Rendszerbiztonsági tag [i]. Típusa |ExcludePrincipals [i]. ID | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Csak olvasási engedély |**\*** |**\*/olvasás** |SystemDefined (Mindenki) |tervezet hozzárendelés és a felhasználó által meghatározott **kizártMegbízók** |Erőforráscsoport - _igaz_; Erőforrás - _hamis_ |
-|Nincs törlés |**\*/törlés** | |SystemDefined (Mindenki) |tervezet hozzárendelés és a felhasználó által meghatározott **kizártMegbízók** |Erőforráscsoport - _igaz_; Erőforrás - _hamis_ |
+|Csak olvasási engedély |**\*** |**\*/read** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
+|Törlés mellőzése |**\*/delete** | |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
 
 > [!IMPORTANT]
-> Az Azure Resource Manager legfeljebb 30 percig gyorsítótárazza a szerepkör-hozzárendelés részleteit. Ennek eredményeképpen a megtagadási hozzárendelések megtagadják a tervezet erőforrásokon végrehajtott műveleteket, nem feltétlenül lesznek azonnal teljes mértékben érvényben. Ebben az időszakban előfordulhat, hogy törölheti a tervrajzzárolásokkal védett erőforrást.
+> A Azure Resource Manager legfeljebb 30 percig gyorsítótárazza a szerepkör-hozzárendelés részleteit. Ennek eredményeképpen a hozzárendelések megtagadására vonatkozó művelet megtagadása a terv erőforrásaiban nem lehet azonnal teljes mértékben érvényben. Ebben az időszakban lehetséges lehet egy olyan erőforrás törlése, amely a terv zárolásával védhető.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Megbízó kizárása megtagadási hozzárendelésből
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Tag kizárása egy megtagadási hozzárendelésből
 
-Bizonyos tervezési vagy biztonsági forgatókönyvekben szükség lehet egy megbízó kizárására a tervezethozzárendelés által létrehozott [megtagadási hozzárendelésből.](../../../role-based-access-control/deny-assignments.md) Ez a lépés a REST API-ban úgy történik, hogy a hozzárendelés létrehozásakor legfeljebb öt értéket ad hozzá a **zárolási** tulajdonság **kizártPrincipals** [tömbjéhez.](/rest/api/blueprints/assignments/createorupdate) A következő hozzárendelés-definíció egy példa egy kérelemtörzsre, amely magában foglalja **a kizárt felhasználókat:**
+Bizonyos tervezési vagy biztonsági helyzetekben szükség lehet egy rendszerbiztonsági tag kizárására a terv-hozzárendelés által létrehozott [megtagadási hozzárendelésből](../../../role-based-access-control/deny-assignments.md) . Ez a lépés REST API történik, ha a [hozzárendelés létrehozásakor](/rest/api/blueprints/assignments/createorupdate)a **zárolások** tulajdonságban legfeljebb öt értéket ad hozzá a **excludedPrincipals** tömbhöz. A következő hozzárendelési definíció egy példa a **excludedPrincipals**tartalmazó kérelem törzsére:
 
 ```json
 {
@@ -159,9 +159,9 @@ Bizonyos tervezési vagy biztonsági forgatókönyvekben szükség lehet egy meg
 }
 ```
 
-## <a name="exclude-an-action-from-a-deny-assignment"></a>Művelet kizárása megtagadási hozzárendelésből
+## <a name="exclude-an-action-from-a-deny-assignment"></a>Művelet kizárása egy megtagadási hozzárendelésből
 
-A [tervezet-hozzárendelés ben](../../../role-based-access-control/deny-assignments.md) a megtagadási hozzárendelés [főtag kizárásához](#exclude-a-principal-from-a-deny-assignment) hasonlóan kizárhat bizonyos [RBAC-műveleteket.](../../../role-based-access-control/resource-provider-operations.md) A **properties.locks** blokkon belül, ugyanazon a helyen, ahol **kizártPrincipals** van, egy **kizártMűveletek** adhatók hozzá:
+Hasonlóan ahhoz, hogy kizárja a [rendszerbiztonsági tag](#exclude-a-principal-from-a-deny-assignment) egy [megtagadási hozzárendelését](../../../role-based-access-control/deny-assignments.md) egy terv-hozzárendelésben, kizárhatja az adott [RBAC műveleteket](../../../role-based-access-control/resource-provider-operations.md). A **Properties. Locks** blokkon belül, ugyanazon a helyen, ahol a **ExcludedPrincipals** , egy **excludedActions** is hozzáadhatók:
 
 ```json
 "locks": {
@@ -177,13 +177,13 @@ A [tervezet-hozzárendelés ben](../../../role-based-access-control/deny-assignm
 },
 ```
 
-Míg **a kizárt felhasználók explicitnek** kell lenniük, a **kizártműveletek** bejegyzések az RBAC-műveletek helyettesítő karakteres egyeztetését is használhatják. `*`
+Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** - `*` bejegyzések a RBAC műveletek helyettesítő karaktereit is használhatják.
 
 ## <a name="next-steps"></a>További lépések
 
-- Kövesse az [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyagot.
-- További információ a [tervterv életciklusáról.](lifecycle.md)
-- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](parameters.md)használni.
-- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](sequencing-order.md)
-- További információ a [meglévő hozzárendelések frissítéséhez.](../how-to/update-existing-assignments.md)
-- Az [általános hibaelhárítással](../troubleshoot/general.md)kapcsolatos tervtervezet ekhozzárendelése során fellépő problémák megoldása.
+- Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
+- Tudnivalók a [tervek életciklusáról](lifecycle.md).
+- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

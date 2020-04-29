@@ -1,5 +1,5 @@
 ---
-title: Több-bérlős háttérrendszerek
+title: Több-bérlős háttér vége
 titleSuffix: Azure Application Gateway
 description: Ez az oldal áttekintést nyújt az Application Gateway több-bérlős háttérrendszerekhez elérhető támogatásáról.
 services: application-gateway
@@ -9,58 +9,58 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312321"
 ---
-# <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Az Application Gateway támogatása több-bérlős háttérrendszerek, például az App Service
+# <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway támogatja a több-bérlős háttérrendszer, például az App Service használatát
 
-A webkiszolgálók több-bérlős architekturális terveiben több webhely fut ugyanazon a webkiszolgáló-példányon. Az állomásnevek a különböző üzemeltetett alkalmazások megkülönböztetésére szolgálnak. Alapértelmezés szerint az Application Gateway nem módosítja az ügyféltől származó bejövő HTTP-állomásfejlécet, és így küldi tovább a háttérrendszernek. Ez jól működik a háttérkészlet-tagok, például hálózati adapterek, virtuálisgép-méretezési készletek, nyilvános IP-címek, belső IP-címek és FQDN esetén, mivel ezek nem támaszkodnak egy adott gazdagépfejlécre vagy SNI-bővítményre a megfelelő végpont feloldásához. Azonban számos olyan szolgáltatás létezik, például az Azure App service webalkalmazások és az Azure API-kezelés, amelyek több-bérlős jellegű, és támaszkodnak egy adott gazdagép fejléc vagy SNI-bővítmény a megfelelő végpont feloldásához. Általában az alkalmazás DNS-neve, amely viszont az alkalmazásátjáróhoz társított DNS-név, eltér a háttérszolgáltatás tartománynevétől. Ezért az alkalmazásátjáró által fogadott eredeti kérelem állomásfejléce nem egyezik meg a háttérszolgáltatás állomásnevével. Emiatt, kivéve, ha az alkalmazás átjáróból a háttérrendszerbe küldött kérelem gazdagépfejléce a háttérszolgáltatás gazdagépnevére változik, a több-bérlős háttérrendszerek nem tudják a kérést a megfelelő végpontra feloldani. 
+A webkiszolgálók több-bérlős architektúrájának kialakításában több webhely fut ugyanazon a webkiszolgáló-példányon. Az állomásnevek a különböző üzemeltetett alkalmazások megkülönböztetésére szolgálnak. Alapértelmezés szerint az Application Gateway nem módosítja az ügyféltől származó bejövő HTTP-állomásfejlécet, és így küldi tovább a háttérrendszernek. Ez jól működik a háttér-készletek tagjai, például a hálózati adapterek, a virtuálisgép-méretezési csoportok, a nyilvános IP-címek, a belső IP-címek és a teljes tartománynevek esetében, mivel ezek nem függnek egy adott állomásfejléc-vagy SNI-bővítménnyel a megfelelő végpontra Számos olyan szolgáltatás, mint például az Azure app Service Web Apps és az Azure API Management, amelyek több-bérlős jellegűek, és egy adott állomásfejléc-vagy SNI-bővítményt használnak a megfelelő végpontra való feloldáshoz. Általában az alkalmazás DNS-neve, amely viszont az Application gatewayhez társított DNS-név, eltér a háttér-szolgáltatás tartománynevétől. Ezért az Application Gateway által fogadott eredeti kérelemben szereplő állomásfejléc nem egyezik meg a háttér-szolgáltatás állomásneve nevével. Emiatt, ha az Application Gateway-ből a háttérbe irányuló kérelemben szereplő állomásfejléc nem változik a háttérrendszer állomásneve, a több-bérlős háttérrendszer nem tudja feloldani a kérést a megfelelő végpontra. 
 
 Az Application Gatewayben elérhető egy olyan funkció, amely lehetővé teszi a felhasználóknak a HTTP-kiszolgálófejléc felülbírálását a kérelmekben a háttérrendszer gazdaneve alapján. Ez biztosítja a több-bérlős háttérrendszerek, mint az Azure App Service Web Apps és az API Management támogatását. A funkció a v1 és v2 standard, valamint a WAF termékváltozat esetében is elérhető. 
 
-![állomás felülbírálása](./media/application-gateway-web-app-overview/host-override.png)
+![gazdagép felülbírálása](./media/application-gateway-web-app-overview/host-override.png)
 
 > [!NOTE]
-> Ez nem alkalmazható az Azure App service-környezet (ASE) számára, mivel az ASE egy dedikált erőforrás, ellentétben az Azure App szolgáltatással, amely egy több-bérlős erőforrás.
+> Ez nem alkalmazható az Azure app Service Environment (bemutató) szolgáltatásra, mivel a szolgáltató egy dedikált erőforrás az Azure app Service-től, amely több-bérlős erőforrás.
 
-## <a name="override-host-header-in-the-request"></a>Állomásfejléc felülbírálása a kérelemben
+## <a name="override-host-header-in-the-request"></a>A kérelemben szereplő állomásfejléc felülbírálása
 
-Az állomásfelülbírálás megadása a [HTTP-beállításokban](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) van definiálva, és a szabály létrehozása során bármely háttérkészletre alkalmazható. A következő két módszer támogatja az állomásfejléc és az SNI-bővítmény több-bérlős háttérrendszerek esetén történő felülbírálását:
+A gazdagép felülbírálásának megadásának lehetősége a http- [beállításokban](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) van meghatározva, és a szabályok létrehozása során bármely háttér-készletre alkalmazható. A több-bérlős háttérrel rendelkező állomásfejléc-és SNI-bővítmények felülbírálása a következő két módon támogatott:
 
-- Az állomásnév beállítása a HTTP-beállításokban kifejezetten megadott rögzített értékre. Ez a képesség biztosítja, hogy az állomásfejléc felüllegyen ezzel az értékkel a háttérkészletminden olyan forgalmában, ahol az adott HTTP-beállítások at alkalmazzák. A végpontok végéig TLS használataesetén ez a felülbírált állomásnév az SNI-bővítményben használatos. Ez a funkció olyan eseteket tesz lehetővé, amelyekben a háttérkészlet-farm a bejövő ügyfélállomás-fejléctől eltérő gazdagépfejlécet vár.
+- Az állomásnév beállítása a HTTP-beállításokban explicit módon megadott rögzített értékre. Ez a funkció biztosítja, hogy a gazdagép fejléce felülbírálva legyen az értékre az adott HTTP-beállításokat alkalmazó háttér-készletre irányuló összes forgalom esetében. A végpontok közötti TLS használatakor ez a felülbírált állomásnév a SNI-bővítményben van használatban. Ez a funkció olyan forgatókönyveket tesz lehetővé, amelyekben a háttérbeli készlet farmja olyan állomásfejléc-t vár, amely eltér a bejövő ügyfél-állomásfejléc-fejléctől.
 
-- Az állomásnév származtatása a háttérkészlet-tagok IP-címéből vagy teljes tartománynevéből. A HTTP-beállítások azt is lehetővé teszik, hogy dinamikusan válassza ki az állomásnevet egy háttérkészlet-tag teljes tartománynevéből, ha úgy van beállítva, hogy az állomásnevet egy adott háttérkészlet-tagból származtathassa. Végpontok között a TLS használatakor ez az állomásnév az FQDN-ből származik, és az SNI-bővítményben használatos. Ez a képesség lehetővé teszi, hogy egy háttérkészlet két vagy több több-bérlős PaaS-szolgáltatással, például az Azure-webalkalmazásokkal rendelkezzen, és a kérelem gazdagépfejléce az egyes tagoknak tartalmazza a teljes tartománynévből származtatott állomásnevet. Ebben a forgatókönyvben egy kapcsolót használunk a HTTP-beállítások nevű [Pick állomásnév a háttércímből,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) amely dinamikusan felülbírálja a gazdagép fejlécét az eredeti kérelemben, hogy a háttérkészletben említett.  Ha például a háttérkészlet teljes tartományneve "contoso11.azurewebsites.net" és "contoso22.azurewebsites.net" azonosítót tartalmaz, az eredeti kérelem állomásfejlécét, amely contoso.com, a rendszer felülbírálja, hogy contoso11.azurewebsites.net vagy contoso22.azurewebsites.net, amikor a kérést elküldi a megfelelő háttérkiszolgálónak. 
+- A gazdagép nevének származtatása a háttérbeli készlet tagjainak IP-címéről vagy teljes tartománynevéről. A HTTP-beállítások azt is lehetővé teszik, hogy a rendszer dinamikusan kiválassza az állomásnevet a háttérbeli készlet tagjainak teljes tartománynevéről, ha úgy van konfigurálva, hogy az adott háttérbeli készletből származó állomásnév származtatása beállítást használja. A végpontok közötti TLS használatakor ez az állomásnév a teljes tartománynévből származik, és a SNI-bővítményben van használatban. Ez a funkció lehetővé teszi olyan forgatókönyvek használatát, amelyekben egy háttér-készlet két vagy több több-bérlős, például Azure Web Apps-szolgáltatással rendelkezhet, és a kérelem állomásneve az egyes tagok számára a teljes tartománynévből származtatott állomásnevet tartalmazza. Ennek a forgatókönyvnek a megvalósításához a [pick hostname](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) nevű http-beállításokat használjuk a háttér-címről, amely dinamikusan felülbírálja az eredeti kérelemben szereplő állomásfejléc-fejlécet a háttér-készletben említettek szerint.  Ha például a háttérbeli készlet teljes tartományneve a "contoso11.azurewebsites.net" és a "contoso22.azurewebsites.net" értéket tartalmazza, akkor az eredeti kérelem állomásneve, amely a contoso.com lesz felülbírálva a contoso11.azurewebsites.net vagy a contoso22.azurewebsites.net, ha a kérést a megfelelő háttér-kiszolgálónak küldik. 
 
   ![webalkalmazás-forgatókönyv](./media/application-gateway-web-app-overview/scenario.png)
 
-Ezzel a képességgel az ügyfelek megadhatják a HTTP-beállítások és az egyéni mintavételek beállítási lehetőségeit a megfelelő konfigurációhoz. Ez a beállítás ezután egy figyelőhöz és egy háttérkészlethez van kötve egy szabály használatával.
+Ezzel a képességgel az ügyfelek megadhatják a HTTP-beállítások és az egyéni mintavételek beállítási lehetőségeit a megfelelő konfigurációhoz. Ez a beállítás egy figyelőhöz és egy háttér-készlethez van kötve egy szabály használatával.
 
 ## <a name="special-considerations"></a>Különleges szempontok
 
-### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS-megszüntetés és a tls vége több-bérlős szolgáltatásokkal
+### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS-lezárás és végpontok közötti TLS több-bérlős szolgáltatásokkal
 
-A több-bérlős szolgáltatások a TLS-végződtetést és a végpontok közötti TLS-titkosítást is támogatják. A TLS-végződés az alkalmazás átjárón, TLS-tanúsítvány továbbra is hozzá kell adni az alkalmazás átjáró figyelője. Azonban a végpontok közötti TLS esetén a megbízható Azure-szolgáltatások, például az Azure App-szolgáltatás webalkalmazásai nem igénylik a háttérrendszerek engedélyezési listázását az alkalmazásátjáróban. Ezért nincs szükség hitelesítési tanúsítványok hozzáadására. 
+A TLS-lezárás és a végpontok közötti TLS-titkosítás a több-bérlős szolgáltatások esetében is támogatott. Az Application Gateway TLS-lezárása esetén a TLS-tanúsítvány továbbra is szükséges az Application Gateway-figyelőhöz való hozzáadáshoz. A végpontok közötti TLS esetében azonban a megbízható Azure-szolgáltatások, például az Azure app Service Web Apps nem igénylik a háttérrendszer engedélyezését az Application gatewayben. Ezért nincs szükség hitelesítési tanúsítványok hozzáadására. 
 
-![végponttól végpontig TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
+![végpontok közötti TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
-Figyelje meg, hogy a fenti képen nincs követelmény hitelesítési tanúsítványok hozzáadása, ha az App Service háttérrendszerként van kiválasztva.
+Figyelje meg, hogy a fenti képen nincs szükség hitelesítési tanúsítványok hozzáadására, ha az App Service-t háttérként választja.
 
 ### <a name="health-probe"></a>Állapotadat-mintavétel
 
-A **HTTP-beállításokban** az állomásfejléc felülbírálása csak a kérelemre és annak útválasztására van hatással. ez nem befolyásolja az állapotminta viselkedését. A végpontok közötti funkciók működéséhez a mintavételi és a HTTP-beállításokat is úgy kell módosítani, hogy azok a megfelelő konfigurációt tükrözzék. Amellett, hogy lehetővé teszik egy állomásfejléc megadását a mintavételi konfigurációban, az egyéni mintavételek is támogatják az állomásfejléc levezetésének lehetőségét az aktuálisan konfigurált HTTP-beállításokból. Ezt a konfigurációt a mintavételi konfigurációban a `PickHostNameFromBackendHttpSettings` paraméterrel is megadhatjuk.
+A gazdagép fejlécének felülbírálása a **http-beállításokban** csak a kérést és annak útválasztását érinti. nem befolyásolja az állapot mintavételi viselkedését. A végpontok közötti funkciók működéséhez a mintavételi és a HTTP-beállításokat is úgy kell módosítani, hogy azok a megfelelő konfigurációt tükrözzék. Amellett, hogy lehetővé teszi a gazdagép fejlécének megadását a mintavételi konfigurációban, az egyéni mintavételek is támogatják a gazdagép fejlécének a jelenleg konfigurált HTTP-beállításokból való származtatása lehetőségét. Ezt a konfigurációt a mintavételi konfigurációban a `PickHostNameFromBackendHttpSettings` paraméterrel is megadhatjuk.
 
-### <a name="redirection-to-app-services-url-scenario"></a>Átirányítás az App Service URL-címére
+### <a name="redirection-to-app-services-url-scenario"></a>Átirányítás App Service URL-címére
 
-Előfordulhatnak olyan esetek, amikor az App service válaszában lévő állomásnév a végfelhasználói böngészőt az Application Gateway-hez társított tartomány helyett a *.azurewebsites.net állomásnévre irányíthatja. Ez a probléma akkor fordulhat elő, ha:
+Előfordulhatnak olyan forgatókönyvek, amelyekben az App Service-válaszban szereplő állomásnév a Application Gatewayhoz társított tartomány helyett a *. azurewebsites.net állomásnévre irányíthatja a végfelhasználói böngészőt. Ez a probléma a következő esetekben fordulhat elő:
 
-- Az átirányítás konfigurálva van az App Service-ben. Az átirányítás lehet olyan egyszerű, mint egy záró perjel hozzáadása a kérelemhez.
-- Az Azure AD-hitelesítés, amely az átirányítást okozza.
+- Az átirányítás konfigurálva van a App Serviceon. Az átirányítás olyan egyszerű lehet, mint egy záró perjel hozzáadása a kéréshez.
+- Rendelkezik Azure AD-hitelesítéssel, amely az átirányítás okát okozza.
 
-Az ilyen esetek megoldásához [olvassa el Az Alkalmazásszolgáltatás URL-címére való átirányítás elhárítása című témakört.](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)
+Az ilyen esetek megoldásához lásd: [az App Service URL-címére irányuló átirányítás hibaelhárítása](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url).
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogy miként állíthat be alkalmazásátjárót egy több-bérlős alkalmazással, például az Azure App Service webalkalmazással háttérkészlet-tagként, ha ellátogat [az App Service webalkalmazásainak konfigurálása az Application Gateway alkalmazásátjáróval című webhelyre.](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)
+Megtudhatja, hogyan állíthat be egy olyan Application Gateway-t egy több-bérlős alkalmazással, mint például az Azure app Service web app a háttérbeli készlet tagjaként, ha meglátogatja [app Service webalkalmazások konfigurálását Application Gateway](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)

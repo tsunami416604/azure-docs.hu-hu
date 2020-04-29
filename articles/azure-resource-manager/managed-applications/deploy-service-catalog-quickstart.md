@@ -1,67 +1,67 @@
 ---
-title: A szolgáltatáskatalógus-alkalmazás üzembe helyezése az Azure Portal használatával
-description: Megmutatja a felügyelt alkalmazások fogyasztóinak, hogyan telepíthetik a szolgáltatáskatalógus-alkalmazást az Azure Portalon keresztül.
+title: A Azure Portal használata a Service Catalog alkalmazás üzembe helyezéséhez
+description: Megjeleníti a felügyelt alkalmazások felhasználóit, hogyan helyezhet üzembe egy Service Catalog-alkalmazást a Azure Portalon keresztül.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391713"
 ---
-# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Rövid útmutató: Szolgáltatáskatalógus-alkalmazás üzembe helyezése az Azure Portalon keresztül
+# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Gyors útmutató: Service Catalog-alkalmazás üzembe helyezése Azure Portal
 
-Az [előző rövid útmutatóban](publish-service-catalog-app.md)felügyelt alkalmazásdefiníciót tett közzé. Ebben a rövid útmutatóban hozzon létre egy szolgáltatáskatalógus-alkalmazást ebből a definícióból.
+Az [előző](publish-service-catalog-app.md)rövid útmutatóban közzétett egy felügyelt alkalmazás definícióját. Ebben a rövid útmutatóban létrehoz egy Service Catalog-alkalmazást az adott definícióból.
 
-## <a name="create-service-catalog-app"></a>Szolgáltatáskatalógus-alkalmazás létrehozása
+## <a name="create-service-catalog-app"></a>Service Catalog-alkalmazás létrehozása
 
-Az Azure Portalon kövesse az alábbi lépéseket:
+A Azure Portal hajtsa végre a következő lépéseket:
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 
    ![Erőforrás létrehozása](./media/deploy-service-catalog-quickstart/create-new.png)
 
-1. Keresse meg a **Szolgáltatáskatalógus felügyelt alkalmazását,** és válassza ki a rendelkezésre álló lehetőségek közül.
+1. Keressen rá a **Service Catalog által felügyelt alkalmazásra** , és válassza ki az elérhető lehetőségek közül.
 
-   ![Szolgáltatáskatalógus-alkalmazás keresése](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
+   ![Service Catalog-alkalmazás keresése](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. A felügyelt alkalmazás szolgáltatás leírása látható. Kattintson a **Létrehozás** gombra.
+1. Ekkor megjelenik a felügyelt alkalmazás szolgáltatás leírása. Kattintson a **Létrehozás** gombra.
 
    ![Kattintás a Létrehozás gombra](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. A portál megjeleníti a felügyelt alkalmazásdefiníciókat, amelyekhez hozzáféréssel rendelkezik. A rendelkezésre álló definíciók közül válassza ki a telepíteni kívánt definíciót. Ebben a rövid útmutatóban használja az előző rövid útmutatóban létrehozott **felügyelt tárfiók-definíciót.** Kattintson a **Létrehozás** gombra.
+1. A portálon a felügyelt alkalmazás-definíciók láthatók, amelyekhez hozzáférése van. Az elérhető definíciók közül válassza ki azt, amelyet telepíteni kíván. Ebben a rövid útmutatóban az előző rövid útmutatóban létrehozott **felügyelt Storage-fiók** definícióját használja. Kattintson a **Létrehozás** gombra.
 
-   ![Az üzembe helyezve kívánt definíció kiválasztása](./media/deploy-service-catalog-quickstart/select-definition.png)
+   ![Telepítendő definíció kiválasztása](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. Adja meg az **alapszintű** lapot. Hozzon létre egy **új erőforráscsoportot applicationGroup**néven. Válassza ki az alkalmazás helyét. Ha végzett, válassza **az OK gombot.**
+1. Adja meg az **alapok** lap értékeit. Válassza ki azt az Azure-előfizetést, amelybe telepíteni szeretné a Service Catalog alkalmazást a alkalmazásban. Hozzon létre egy **alkalmazáscsoport**nevű új erőforráscsoportot. Válassza ki az alkalmazás helyét. Ha elkészült, kattintson **az OK gombra**.
 
-   ![Értékek megadásáaz alapszintű alapanyaghoz](./media/deploy-service-catalog-quickstart/provide-basics.png)
+   ![Alapszintű értékek megadása](./media/deploy-service-catalog-quickstart/provide-basics.png)
 
-1. Adjon meg egy előtagot a tárfiók nevéhez. Válassza ki a létrehozandó tárfiók típusát. Ha végzett, válassza **az OK gombot.**
+1. Adja meg a Storage-fiók nevének előtagját. Válassza ki a létrehozandó Storage-fiók típusát. Ha elkészült, kattintson **az OK gombra**.
 
-   ![A tárolás értékeinek megadása](./media/deploy-service-catalog-quickstart/provide-storage.png)
+   ![Értékek megadása a tároláshoz](./media/deploy-service-catalog-quickstart/provide-storage.png)
 
-1. Tekintse át az összegzést. Az ellenőrzés sikeres befejezése után a telepítés megkezdéséhez válassza az **OK gombot.**
+1. Tekintse át az összegzést. Az érvényesítés sikeres befejezését követően kattintson **az OK gombra** az üzembe helyezés megkezdéséhez.
 
-   ![Összegzés megtekintése](./media/deploy-service-catalog-quickstart/view-summary.png)
+   ![Összefoglalás megtekintése](./media/deploy-service-catalog-quickstart/view-summary.png)
 
 ## <a name="view-results"></a>Eredmények megtekintése
 
-A szolgáltatáskatalógus-alkalmazás üzembe helyezése után két új erőforráscsoporttal rendelkezik. Egy erőforráscsoport rendelkezik a szolgáltatáskatalógus-alkalmazással. A másik erőforráscsoport rendelkezik a szolgáltatáskatalógus-alkalmazás erőforrásaival.
+A Service Catalog alkalmazás üzembe helyezését követően két új erőforráscsoport van. Egy erőforráscsoport tartalmazza a Service Catalog alkalmazást. A másik erőforráscsoport tárolja a Service Catalog alkalmazás erőforrásait.
 
-1. Tekintse meg az **applicationGroup** nevű erőforráscsoportot a szolgáltatáskatalógus-alkalmazás megtekintéséhez.
+1. Tekintse meg a **alkalmazáscsoport** nevű erőforráscsoportot a Service Catalog alkalmazás megtekintéséhez.
 
    ![Alkalmazás megtekintése](./media/deploy-service-catalog-quickstart/view-managed-application.png)
 
-1. Tekintse meg az **applicationGroup{hash-characters}** nevű erőforráscsoportot a szolgáltatáskatalógus-alkalmazás erőforrásainak megtekintéséhez.
+1. Tekintse meg a **alkalmazáscsoport {hash-characters}** nevű erőforráscsoportot a Service Catalog alkalmazás erőforrásainak megtekintéséhez.
 
    ![Erőforrások megtekintése](./media/deploy-service-catalog-quickstart/view-resources.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* A felügyelt alkalmazások definíciós fájljainak létrehozásáról a [Felügyelt alkalmazásdefiníció létrehozása és közzététele](publish-service-catalog-app.md)című témakörben olvashat.
-* Az Azure CLI-ről a [Szolgáltatáskatalógus-alkalmazás üzembe helyezése az Azure CLI-vel.](./scripts/managed-application-cli-sample-create-application.md)
-* A PowerShell esetében [olvassa el a Szolgáltatáskatalógus-alkalmazás központi telepítése a PowerShell használatával.](./scripts/managed-application-poweshell-sample-create-application.md)
+* A felügyelt alkalmazások definíciós fájljainak létrehozásával kapcsolatos további információkért lásd: [felügyelt alkalmazás definíciójának létrehozása és közzététele](publish-service-catalog-app.md).
+* Az Azure CLI esetében lásd: [a Service Catalog alkalmazás üzembe helyezése az Azure CLI-vel](./scripts/managed-application-cli-sample-create-application.md).
+* A PowerShell esetében lásd: [a Service Catalog alkalmazás üzembe helyezése a PowerShell](./scripts/managed-application-poweshell-sample-create-application.md)-lel.

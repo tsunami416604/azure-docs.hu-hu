@@ -1,6 +1,6 @@
 ---
 title: Gyanús eszköz vizsgálata
-description: Ez az útmutató bemutatja, hogyan használhatja az Azure Security Center for IoT egy gyanús IoT-eszköz kivizsgálása a Log Analytics használatával.
+description: Ez az útmutató ismerteti, hogyan használható a Azure Security Center for IoT egy gyanús IoT-eszköz vizsgálatához Log Analytics használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,48 +16,48 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311036"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Gyanús IoT-eszköz vizsgálata
 
-Az Azure Security Center for IoT szolgáltatás riasztások egyértelmű jelzéseket, ha az IoT-eszközök gyanúja a gyanús tevékenységekben való részvétel, vagy ha azt jelzi, hogy egy eszköz sérül.
+A IoT szolgáltatással kapcsolatos riasztások Azure Security Center egyértelmű jelzéseket biztosítanak, ha a IoT-eszközök gyanús tevékenységekben való részvétel gyanúja esetén jelentkeznek, vagy ha olyan jelzések vannak, amelyeket az eszköz veszélyeztet.
 
-Ebben az útmutatóban a rendelkezésre álló vizsgálati javaslatok segítségével meghatározhatja a szervezetre nézve lehetséges kockázatokat, eldöntheti, hogyan orvosolja, és fedezze fel a hasonló támadások jövőbeni megelőzésének legjobb módjait.
+Ebben az útmutatóban a szervezete lehetséges kockázatának meghatározásához, a probléma megoldásához, valamint a hasonló támadásoknak a jövőben való elkerüléséhez szükséges legjobb módszerek megállapításához használja a vizsgálati javaslatokat.
 
 > [!div class="checklist"]
-> * Az eszközadatok megkeresése
-> * Kql-lekérdezések használatának vizsgálata
+> * Az eszköz adatai megkeresése
+> * Vizsgálat kql-lekérdezések használatával
 
-## <a name="how-can-i-access-my-data"></a>Hogyan érhetem el az adataimat?
+## <a name="how-can-i-access-my-data"></a>Hogyan érhetik el az adataim?
 
-Alapértelmezés szerint az Azure Security Center for IoT tárolja a biztonsági riasztásokat és javaslatokat a Log Analytics-munkaterületen. A nyers biztonsági adatok tárolását is választhatja.
+Alapértelmezés szerint a IoT Azure Security Center a biztonsági riasztásokat és javaslatokat a Log Analytics munkaterületen tárolja. Azt is megteheti, hogy a nyers biztonsági adatait tárolja.
 
-A Log Analytics-munkaterület megkeresése az adattároláshoz:
+Az adattároláshoz Log Analytics munkaterület megkeresése:
 
-1. Nyissa meg az IoT-központot,
-1. A **Biztonság**csoportban kattintson **az Áttekintés gombra,** majd válassza a Beállítások **lehetőséget.**
-1. Módosítsa a Log Analytics munkaterület konfigurációs adatait.
+1. Nyissa meg az IoT hubot,
+1. A **Biztonság**területen kattintson az **Áttekintés**, majd a **Beállítások**elemre.
+1. Módosítsa Log Analytics munkaterület konfigurációjának részleteit.
 1. Kattintson a **Save** (Mentés) gombra.
 
-A következő konfigurációt követően a Log Analytics-munkaterületen tárolt adatok eléréséhez tegye a következőket:
+A következő beállításokkal érheti el a Log Analytics munkaterületen tárolt adatait:
 
-1. Válassza ki, és kattintson egy Azure Security Center for IoT-riasztás az IoT Hub.
-1. Kattintson **a További vizsgálat gombra.**
-1. Jelölje **be, ha meg szeretné tekinteni, hogy mely eszközökön van ez a riasztás, kattintson ide, és tekintse meg a DeviceId oszlopot.**
+1. Jelölje ki, majd kattintson Azure Security Center a IoT-riasztáshoz a IoT Hub.
+1. Kattintson a **további vizsgálat**gombra.
+1. Jelölje be **, ha szeretné látni, hogy mely eszközöknél van ilyen riasztás, kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
-## <a name="investigation-steps-for-suspicious-iot-devices"></a>A gyanús IoT-eszközök vizsgálati lépései
+## <a name="investigation-steps-for-suspicious-iot-devices"></a>A gyanús IoT-eszközök vizsgálatának lépései
 
-Az IoT-eszközökelemzési és nyers adatok megtekintéséhez nyissa meg a Log Analytics-munkaterületét [az adatok eléréséhez.](#how-can-i-access-my-data)
+A IoT-eszközökre vonatkozó elemzések és nyers információk megtekintéséhez lépjen a Log Analytics munkaterületre az [adatai eléréséhez](#how-can-i-access-my-data).
 
-Tekintse meg az alábbi kql-lekérdezéseket, hogy megismerkedjen az eszközön található riasztások és tevékenységek vizsgálatával.
+Tekintse meg az alábbi kql-lekérdezéseket a riasztások és a tevékenységek eszközön való kivizsgálásának megkezdéséhez.
 
 ### <a name="related-alerts"></a>Kapcsolódó riasztások
 
-Ha meg szeretné tudni, hogy más riasztások is körülbelül egy időben aktiválódtak-e, használja a következő kql lekérdezést:
+Annak megállapítása, hogy a riasztások egy időben lettek-e aktiválva a következő kql-lekérdezés használatával:
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -69,7 +69,7 @@ Ha meg szeretné tudni, hogy más riasztások is körülbelül egy időben aktiv
 
 ### <a name="users-with-access"></a>Hozzáféréssel rendelkező felhasználók
 
-Ha meg szeretné tudni, hogy mely felhasználók férhetnek hozzá ehhez az eszközhöz, használja a következő kql lekérdezést:
+Annak megállapításához, hogy mely felhasználók férhetnek hozzá az eszközhöz, használja a következő kql-lekérdezést:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -84,14 +84,14 @@ Ha meg szeretné tudni, hogy mely felhasználók férhetnek hozzá ehhez az eszk
      UserName=extractjson("$.UserName", EventDetails, typeof(string))
   | summarize FirstObserved=min(TimestampLocal) by GroupNames, UserName
  ```
-Ezeket az adatokat a következők felderítéséhez használhatja:
+Az alábbi adatfelderítési szolgáltatással derítheti fel:
 
 - Mely felhasználók férhetnek hozzá az eszközhöz?
-- A hozzáféréssel rendelkező felhasználók rendelkeznek a várt jogosultsági szintekkel?
+- A hozzáféréssel rendelkező felhasználók rendelkeznek a várt jogosultsági szinttel?
 
 ### <a name="open-ports"></a>Portok megnyitása
 
-Ha meg szeretné tudni, hogy az eszköz mely portjai vannak használatban vagy vannak használatban, használja a következő kql lekérdezést:
+A következő kql-lekérdezéssel megállapíthatja, hogy az eszköz mely portjai jelenleg használatban vannak vagy használták őket:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -111,15 +111,15 @@ Ha meg szeretné tudni, hogy az eszköz mely portjai vannak használatban vagy v
   | summarize MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), AllowedRemoteIPAddress=makeset(RemoteAddress), AllowedRemotePort=makeset(RemotePort) by Protocol, LocalPort
  ```
 
-Ezeket az adatokat a következők felderítéséhez használhatja:
+Az alábbi adatfelderítési szolgáltatással derítheti fel:
 
-- Mely figyelőszoftver-csatlakozók vannak aktívak az eszközön?
-- Engedélyezendők az éppen aktív figyelőszoftvercsatornák?
-- Vannak gyanús távoli címek az eszközhöz csatlakoztatva?
+- Mely figyelő szoftvercsatornák aktívak az eszközön?
+- A jelenleg aktív figyelő szoftvercsatornák engedélyezettek?
+- Van-e gyanús távoli cím csatlakoztatva az eszközhöz?
 
 ### <a name="user-logins"></a>Felhasználói bejelentkezések
 
-Az eszközre bejelentkezett felhasználók megkereséséhez használja a következő kql lekérdezést:
+Az eszközre bejelentkezett felhasználók megkereséséhez használja a következő kql-lekérdezést:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -143,15 +143,15 @@ Az eszközre bejelentkezett felhasználók megkereséséhez használja a követk
   | summarize CntLoginAttempts=count(), MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), CntIPAddress=dcount(RemoteAddress), IPAddress=makeset(RemoteAddress) by UserName, Result, LoginHandler
  ```
 
-A lekérdezés eredményeinek használatával a következőket fedezheti fel:
+A lekérdezés eredményeinek felderítése:
 
-- Mely felhasználók jelentkeztek be az eszközre?
-- A bejelentkezett felhasználóknak be kell jelentkezniük?
-- A bejelentkezett felhasználók a várt vagy nem várt IP-címekről csatlakoztak?
+- Mely felhasználók jelentkezett be az eszközre?
+- Be vannak jelentkezve a felhasználók, akik be kellene jelentkezniük?
+- A bejelentkezett felhasználók a várt vagy váratlan IP-címekről csatlakoznak?
 
-### <a name="process-list"></a>Folyamatlista
+### <a name="process-list"></a>Folyamatok listája
 
-Ha meg szeretné tudni, hogy a folyamatlista a várt módon van-e, használja a következő kql lekérdezést:
+Ha szeretné megtudni, hogy a folyamatok listája a várt módon történik-e, használja a következő kql-lekérdezést:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -180,12 +180,12 @@ Ha meg szeretné tudni, hogy a folyamatlista a várt módon van-e, használja a 
   | summarize CntExecutions=count(), MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), ExecutingUsers=makeset(UserIdName), ExecutionCommandLines=makeset(CommandLine) by Executable
 ```
 
-A lekérdezés eredményeinek használatával a következőket fedezheti fel:
+A lekérdezés eredményeinek felderítése:
 
-- Voltak gyanús folyamatok az eszközön?
-- A folyamatokat megfelelő felhasználók hajtották végre?
-- Tartalmaztak parancssori végrehajtások a helyes és várt argumentumokat?
+- Voltak olyan gyanús folyamatok, amelyek az eszközön futnak?
+- A megfelelő felhasználók hajtották végre a folyamatokat?
+- A parancssori végrehajtások tartalmazzák a megfelelő és várt argumentumokat?
 
 ## <a name="next-steps"></a>További lépések
 
-Miután megvizsgált egy eszközt, és jobban megismerkedhet a kockázatokkal, érdemes [megfontolnia az egyéni riasztások konfigurálását](quickstart-create-custom-alerts.md) az IoT-megoldás biztonsági állapotának javítása érdekében. Ha még nem rendelkezik eszközügynökkel, fontolja meg [egy biztonsági ügynök üzembe helyezését](how-to-deploy-agent.md) vagy egy meglévő [eszközügynök konfigurációjának módosítását](how-to-agent-configuration.md) az eredmények javítása érdekében.
+Az eszköz kivizsgálása és a kockázatok jobb megismerése érdekében érdemes lehet [Egyéni riasztásokat beállítani](quickstart-create-custom-alerts.md) a IoT-megoldás biztonsági helyzetének javítására. Ha még nem rendelkezik ügynökkel, érdemes lehet [biztonsági ügynököt telepíteni](how-to-deploy-agent.md) , vagy [egy meglévő ügynök konfigurációját módosítani](how-to-agent-configuration.md) az eredmények javítása érdekében.

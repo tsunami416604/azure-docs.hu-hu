@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszédfelismerés hangfájlból – Beszédszolgáltatás'
+title: 'Rövid útmutató: beszéd felismerése hangfájlból – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: trevorbye
@@ -10,16 +10,16 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: trbye
 ms.openlocfilehash: a7c91775411f100a92dfcb0a7199dd4b25f6eca4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400545"
 ---
-Ebben a rövid útmutatóban a [Beszéd SDK-t](~/articles/cognitive-services/speech-service/speech-sdk.md) fogja használni a hangfájlból érkező beszéd felismerésére. Néhány előfeltétel teljesítése után a fájlból származó beszéd felismerése csak néhány lépést tesz leve:
+Ebben a rövid útmutatóban a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) használatával ismeri fel a hangfájlok beszédét. Néhány előfeltétel kielégítése után a beszédek felismerése csak néhány lépést vesz igénybe:
 > [!div class="checklist"]
-> * Hozzon `SpeechConfig` létre egy objektumot az előfizetési kulcsból és a régióból.
-> * Hozzon `AudioConfig` létre egy objektumot, amely megadja a . WAV fájlnév.
-> * Hozzon `SpeechRecognizer` létre `SpeechConfig` egy `AudioConfig` objektumot a felülről és az objektumoksegítségével.
-> * Az `SpeechRecognizer` objektum használatával indítsa el a felismerési folyamat egyetlen utterance (kifejezés).
-> * Vizsgálja `SpeechRecognitionResult` meg a visszaküldötteket.
+> * Hozzon `SpeechConfig` létre egy objektumot az előfizetési kulcs és a régió alapján.
+> * Hozzon `AudioConfig` létre egy objektumot, amely megadja a t. WAV-fájlnév.
+> * Hozzon `SpeechRecognizer` létre egy objektumot `SpeechConfig` a `AudioConfig` fenti és objektumok használatával.
+> * Az `SpeechRecognizer` objektum használatával egyetlen lemondás esetén indíthatja el az elismerési folyamatot.
+> * Vizsgálja meg `SpeechRecognitionResult` a visszaadott értéket.

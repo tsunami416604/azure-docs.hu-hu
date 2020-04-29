@@ -1,6 +1,6 @@
 ---
 title: Biztonsági javaslatok
-description: Ismerje meg a biztonsági javaslatok koncepcióját és használatuk módját az Azure Security Center for IoT-ben.
+description: Ismerje meg a biztonsági javaslatok fogalmát, valamint azt, hogyan használják őket a IoT Azure Security Center.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,56 +16,56 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311546"
 ---
 # <a name="security-recommendations"></a>Biztonsági javaslatok
 
-Az Azure Security Center for IoT megvizsgálja az Azure-erőforrásokat és az IoT-eszközöket, és biztonsági javaslatokat nyújt a támadási felület csökkentésére.
-A biztonsági ajánlások végrehajthatók, és arra irányulnak, hogy segítsék az ügyfeleket a legjobb biztonsági eljárások betartásában.
+Azure Security Center a IoT megvizsgálja az Azure-erőforrásokat és IoT eszközöket, és biztonsági javaslatokat tesz a támadási felület csökkentése érdekében.
+A biztonsági javaslatok működésre készek, és célja, hogy az ügyfelek számára segítséget nyújtsanak az ajánlott biztonsági eljárásoknak való megfelelésben.
 
-Ebben a cikkben az IoT Hub és/vagy az IoT-eszközök által aktiválható javaslatok listáját találja.
+Ebben a cikkben a IoT Hub és/vagy IoT-eszközökön aktiválható javaslatok listáját találhatja meg.
 
-## <a name="recommendations-for-iot-devices"></a>Javaslatok az IoT-eszközökhöz
+## <a name="recommendations-for-iot-devices"></a>Javaslatok a IoT-eszközökhöz
 
-Az eszközjavaslatok elemzéseket és javaslatokat nyújtanak az eszköz biztonsági állapotának javításához.
+Az eszközökre vonatkozó javaslatok betekintést és javaslatokat nyújtanak az eszközök biztonsági helyzetének javítására.
 
-| Severity | Név                                                      | Adatforrás | Leírás                                                                                                                                                                                           |
+| Severity | Name (Név)                                                      | Adatforrás | Leírás                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Közepes   | Portok megnyitása az eszközön                                      | Ügynök       | A készüléken figyelővégpont található.                                                                                                                                                        |
-| Közepes   | Az egyik láncban található engedékeny tűzfalházirend. | Ügynök       | A tűzfalházirend engedélyezett (INPUT/OUTPUT). A tűzfalházirendnek alapértelmezés szerint meg kell tagadnia az összes forgalmat, és olyan szabályokat kell definiálnia, amelyek lehetővé teszik az eszközhöz/eszközről történő szükséges kommunikációt.                               |
-| Közepes   | A bemeneti láncban egy megengedő tűzfalszabály található     | Ügynök       | A tűzfalban olyan szabály található, amely az IP-címek és portok széles körének megengedő mintáját tartalmazza.                                                                                    |
-| Közepes   | A kimeneti láncban megengedő tűzfalszabály található    | Ügynök       | A tűzfalban olyan szabály található, amely az IP-címek és portok széles körének megengedő mintáját tartalmazza.                                                                                   |
-| Közepes   | Az üzemi rendszer alapkonfigurációjának érvényesítése sikertelen           | Ügynök       | Az eszköz nem felel meg a [CIS Linux-referenciaértékeknek.](https://www.cisecurity.org/cis-benchmarks/)                                                                                                        |
+| Közepes   | Portok megnyitása az eszközön                                      | Ügynök       | Figyelő végpont található az eszközön.                                                                                                                                                        |
+| Közepes   | Az egyik láncban megtalálhatók a megengedhető tűzfal-szabályzatok. | Ügynök       | Engedélyezett tűzfal-házirend található (bemenet/kimenet). A tűzfal házirendjének alapértelmezés szerint el kell utasítania az összes forgalmat, és meg kell határoznia azokat a szabályokat, amelyek lehetővé teszik a szükséges kommunikációt az eszközön                               |
+| Közepes   | A bemeneti láncban található engedékeny tűzfalszabályok találhatók     | Ügynök       | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz.                                                                                    |
+| Közepes   | A rendszer a kimeneti láncban található engedékeny tűzfalszabály    | Ügynök       | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz.                                                                                   |
+| Közepes   | Az operációs rendszerek alapkonfigurációjának ellenőrzése nem sikerült           | Ügynök       | Az eszköz nem felel meg a [CIS Linux-referenciaértékeknek](https://www.cisecurity.org/cis-benchmarks/).                                                                                                        |
 
-### <a name="operational-recommendations-for-iot-devices"></a>Működési javaslatok Az IoT-eszközök
+### <a name="operational-recommendations-for-iot-devices"></a>Működési javaslatok a IoT-eszközökhöz
 
-A működési javaslatok elemzéseket és javaslatokat nyújtanak a biztonsági ügynök konfigurációjának javításához.
+A működési javaslatok betekintést és javaslatokat nyújtanak a biztonsági ügynökök konfigurációjának javítására.
 
-| Severity | Név                                    | Adatforrás | Leírás                                                                       |
+| Severity | Name (Név)                                    | Adatforrás | Leírás                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
-| Alacsony      | Az ügynök nem hasznosuló üzeneteket küld          | Ügynök       | A biztonsági üzenetek 10%-a vagy több, mint 4 KB volt az elmúlt 24 órában.  |
-| Alacsony      | A biztonsági ikerkonfiguráció nem optimális | Ügynök       | A biztonsági ikerkonfiguráció nem optimális.                                        |
-| Alacsony      | Biztonsági iker konfigurációs ütközés    | Ügynök       | Ütközések a biztonsági ikerkonfigurációban voltak azonosítva. |                          |
+| Alacsony      | Az ügynök nem használt üzeneteket küld          | Ügynök       | az elmúlt 24 órában 10% vagy több biztonsági üzenet kisebb volt, mint 4 KB.  |
+| Alacsony      | A biztonsági Twin konfiguráció nem optimális | Ügynök       | A biztonsági Twin konfiguráció nem optimális.                                        |
+| Alacsony      | Biztonsági kettős konfiguráció ütközése    | Ügynök       | Ütközések voltak azonosítva a biztonsági Twin konfigurációban. |                          |
 |
 
-## <a name="recommendations-for-iot-hub"></a>Javaslatok az IoT Hub
+## <a name="recommendations-for-iot-hub"></a>Javaslatok a IoT Hub
 
-Az ajánlási riasztások betekintést és javaslatokat nyújtanak a környezet biztonsági helyzetének javítására irányuló műveletekhez.
+Az ajánlási riasztások betekintést és javaslatokat nyújtanak a környezet biztonsági helyzetének javítására szolgáló műveletekhez.
 
-| Severity | Név                                                     | Adatforrás | Leírás                                                                                                                                                                                                             |
+| Severity | Name (Név)                                                     | Adatforrás | Leírás                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Magasság     | Több eszköz által használt azonos hitelesítési hitelesítő adatok | IoT Hub     | Az IoT Hub hitelesítési hitelesítő adatait több eszköz használja. Ez arra utalhat, hogy egy törvénytelen eszköz megszemélyesít egy törvényes eszközt. A hitelesítő adatok duplikáltságának használata növeli a rosszindulatú szereplő általi eszközmegszemélyesítés kockázatát. |
-| Közepes   | Az alapértelmezett IP-szűrőházirendet meg kell tagadni                  | IoT Hub     | Az IP-szűrő konfigurációjának rendelkeznie kell az engedélyezett forgalomra vonatkozó szabályokkal, és alapértelmezés szerint alapértelmezés szerint meg kell tagadnia az összes többi forgalmat.                                                                                                     |
-| Közepes   | Az IP-szűrőszabály nagy IP-tartományt tartalmaz                   | IoT Hub     | Az IP-szűrő szabályforrásÁNAK IP-tartománya túl nagy. A túlzottan megengedő szabályok rosszindulatú szereplők nek tehetik ki az IoT-központot.                                                                                       |
-| Alacsony      | Diagnosztikai naplók engedélyezése az IoT Hubban                       | IoT Hub     | Engedélyezze a naplókat, és őrizze meg őket legfeljebb egy évig. A naplók megőrzése lehetővé teszi, hogy újra létrehozza a tevékenységnyomvonalakat vizsgálati célokra, ha biztonsági incidens történik, vagy ha a hálózat biztonsága sérül.                                       |
+| Magasság     | Több eszköz által használt azonos hitelesítési hitelesítő adatok | IoT Hub     | IoT Hub hitelesítési hitelesítő adatokat több eszköz is használja. Ez arra utalhat, hogy egy törvénytelen eszköz megszemélyesít egy legitim eszközt. Az ismétlődő hitelesítő adatok használata növeli az eszköz megszemélyesítésének kockázatát egy rosszindulatú színész által. |
+| Közepes   | Az alapértelmezett IP-szűrési házirendet meg kell tagadni                  | IoT Hub     | Az IP-szűrési konfigurációnak meg kell határoznia az engedélyezett forgalomra vonatkozó szabályokat, és alapértelmezés szerint meg kell tagadnia az összes többi forgalmat.                                                                                                     |
+| Közepes   | Az IP-szűrési szabály nagyméretű IP-címtartományt tartalmaz                   | IoT Hub     | Az IP-szűrési szabály forrás IP-tartományának engedélyezése túl nagy. A túlzottan megengedhető szabályok az IoT-hubot kártékony szereplőkkel tehetik ki.                                                                                       |
+| Alacsony      | Diagnosztikai naplók engedélyezése IoT Hub                       | IoT Hub     | Engedélyezheti a naplókat, és akár egy évig is megtarthatja őket. A naplók megőrzése lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidensek bekövetkezésekor vagy a hálózat biztonsága szempontjából.                                       |
 |
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure Security Center for IoT szolgáltatás [– áttekintés](overview.md)
-- További információ [a biztonsági adatok eléréséről](how-to-security-data-access.md)
-- További információ az [eszköz vizsgálatáról](how-to-investigate-device.md)
+- Azure Security Center a IoT szolgáltatás [áttekintéséhez](overview.md)
+- [A biztonsági adatai elérésének](how-to-security-data-access.md) megismerése
+- További információ az [eszközök kivizsgálása](how-to-investigate-device.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Nyomtatott szöveg kinyerése- REST, JavaScript'
+title: 'Gyors útmutató: nyomtatott szöveg kinyerése – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API JavaScripttel való használatával.
 services: cognitive-services
@@ -12,35 +12,35 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 2eac3f50dc6a973e496f8907534d5ab140355d89
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404719"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Rövid útmutató: Nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a JavaScript használatával
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a JavaScript használatával
 
 > [!NOTE]
-> Ha angol nyelvű szöveget szeretne kinyerni, fontolja meg az új [Olvasás művelet használatát.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) [JavaScript-gyorsútmutató](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/javascript-hand-text) érhető el.
+> Angol nyelvű szöveg kinyerése esetén érdemes lehet az új [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)használni. [JavaScript](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/javascript-hand-text) -útmutató érhető el.
 
-Ebben a rövid útmutatóban optikai karakterfelismeréssel (OCR) rendelkező nyomtatott szöveget nyerhet ki egy képből a Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) módszerrel észlelheti a kép nyomtatott szövegét, és kinyerheti a felismert karaktereket egy gép által használható karakterfolyamba.
+Ebben a rövid útmutatóban az optikai karakterfelismerés (OCR) segítségével Kinyeri a nyomtatott szöveget az Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) módszer használatával felderítheti a képeken található nyomtatott szöveget, és kinyerheti a felismert karaktereket egy gépi használatú adatfolyamba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot. Mentse az előfizetési kulcsot és a végpont URL-címét egy ideiglenes helyre.
+Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Mentse az előfizetési kulcsot és a végpont URL-címét egy ideiglenes helyre.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Hozzon létre egy _get-printed-text.html_nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja a következő kódot.
+1. Hozzon létre egy _Get-Printed-Text. html_nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja a következő kódot.
 1. Igény szerint cserélje le az `inputImage` vezérlő `value` attribútumának értékét egy másik elemzendő kép URL-címére.
 1. Nyisson meg egy böngészőablakot.
 1. A böngészőben húzza a fájlt a böngészőablakba.
-1. Amikor a weblap megjelenik a böngészőben, illessze be az előfizetési kulcsot és a végpont URL-címét a megfelelő beviteli mezőkbe.
-1. Válassza a **Kép olvasása** gombot.
+1. Ha a weblap megjelenik a böngészőben, illessze be az előfizetési kulcsot és a végponti URL-címet a megfelelő beviteli mezőkbe.
+1. Válassza a **rendszerkép olvasása** gombot.
 
 ```html
 <!DOCTYPE html>
@@ -244,7 +244,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután fedezze fel a JavaScript-alkalmazást, amely a Computer Vision segítségével optikai karakterfelismerést (OCR) hajt végre; intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit. 
+Ezután Ismerkedjen meg egy JavaScript-alkalmazással, amely a Computer Visiont használja az optikai karakterfelismerés (OCR) végrehajtásához; intelligens vágású miniatűrök létrehozása; a képek vizuális funkcióinak felismerése, kategorizálása, címkézése és leírása. 
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)

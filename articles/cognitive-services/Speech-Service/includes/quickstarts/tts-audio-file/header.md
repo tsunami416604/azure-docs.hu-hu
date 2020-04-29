@@ -6,16 +6,16 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: trbye
 ms.openlocfilehash: 870dce55e79bf0169f19d31dfec6689c65fce9cd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400360"
 ---
-Ebben a rövid útmutatóban a [Beszéd SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) segítségével konvertálhatja a szöveget hangfájlban lévő szintetizált beszédté. A szövegfelolvasó szolgáltatás számos lehetőséget kínál a szintetizált hangokszámára a [szövegfelolvasó nyelvi támogatás](../../../language-support.md#text-to-speech)alatt. Néhány előfeltétel teljesítése után a beszéd fájllá történő szintetizálása csak öt lépést tesz:
+Ebben a rövid útmutatóban a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) használatával konvertálja a szöveget egy hangfájlba a szintetizált beszédbe. A Text-to-speech szolgáltatás számos lehetőséget kínál a szintetizált hangok számára a [szöveg-beszéd nyelvi támogatás](../../../language-support.md#text-to-speech)alatt. Néhány előfeltétel kielégítése után a beszédfelismerés egy fájlba csak öt lépést vesz igénybe:
 > [!div class="checklist"]
-> * Hozzon `SpeechConfig` létre egy objektumot az előfizetési kulcsból és a régióból.
-> * Hozzon létre egy hangkonfigurációs objektumot, amely megadja a. WAV fájlnév.
-> * Objektum `SpeechSynthesizer` létrehozása felülről származó konfigurációs objektumokkal.
-> * Az `SpeechSynthesizer` objektum használatával konvertálja a szöveget szintetizált beszédté, és mentse a megadott hangfájlba.
-> * Vizsgálja `SpeechSynthesizer` meg a visszaadott hibákat.
+> * Hozzon `SpeechConfig` létre egy objektumot az előfizetési kulcs és a régió alapján.
+> * Hozzon létre egy hangkonfigurációs objektumot, amely meghatározza a t. WAV-fájlnév.
+> * Hozzon `SpeechSynthesizer` létre egy objektumot a fenti konfigurációs objektumok használatával.
+> * Az `SpeechSynthesizer` objektum használatával alakítsa át a szöveget a szintetizált beszédbe, és mentse a megadott hangfájlba.
+> * Ellenőrizze a `SpeechSynthesizer` visszaadott hibákat.

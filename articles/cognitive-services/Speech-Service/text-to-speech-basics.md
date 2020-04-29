@@ -1,7 +1,7 @@
 ---
-title: A beszédszintézis alapjai – Beszédszolgáltatás
+title: Speech szintézis alapjai – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan konvertálhatja a beszédfelismerési SDK-t a szövegfelolvasáshoz. Ebben a cikkben megismerheti az objektumépítést, a támogatott hangkimeneti formátumokat és a beszédszintézis egyéni konfigurációs beállításait.
+description: Megtudhatja, hogyan alakíthat át szöveg-beszéd átalakítást a Speech SDK használatával. Ebben a cikkben megismerheti az objektumok kialakításával, a támogatott hangkimeneti formátumokkal és a beszédfelismerés egyéni konfigurációs lehetőségeivel kapcsolatos tudnivalókat.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,23 +12,23 @@ ms.date: 04/14/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-sixteen
 ms.openlocfilehash: 74f762dd0004bf72b703d0f611a16762b1ff028d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399564"
 ---
-# <a name="learn-the-basics-of-speech-synthesis"></a>Ismerje meg a beszédszintézis alapjait
+# <a name="learn-the-basics-of-speech-synthesis"></a>Ismerkedjen meg a beszédfelismerés alapjaival
 
-Ebben a cikkben a beszédfelismerési SDK használatával a szövegfelolvasó szintézis gyakori tervezési mintáit ismerheti meg. Először az alapvető konfigurációt és szintetizálást végzi el, majd lépjen tovább az egyéni alkalmazások fejlesztésére vonatkozó speciális példákra, beleértve a következőket:
+Ebből a cikkből megtudhatja, hogyan végezheti el a szövegek és a beszédek szintézisét a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
-* Válaszok beszerzése memórián belüli adatfolyamként
-* A kimeneti mintasebesség és átviteli sebesség testreszabása
-* Szintéziskérelmek küldése SSML-sel (beszédszintézis-jelölőnyelv)
+* Válaszok a memóriában tárolt adatfolyamok beolvasására
+* A kimeneti mintavételezési arány és a bitsűrűség testreszabása
+* Összegző kérelmek elküldése a SSML használatával (Speech szintézis Markup Language)
 * Neurális hangok használata
 
 > [!TIP]
-> Ha még nem volt alkalma befejezni az egyik rövid útmutatónkat, javasoljuk, hogy rúgja ki a gumikat, és próbálja meg a beszédfelismerést.
+> Ha még nem volt lehetősége az egyik rövid útmutató elvégzésére, javasoljuk, hogy indítson el egy abroncsot, és próbálja ki saját maga is a beszédfelismerést.
 > * [Beszéd felismerése mikrofonból](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"

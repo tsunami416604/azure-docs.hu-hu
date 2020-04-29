@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A követ konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Ismerje meg, hogyan lehet automatikusan kiépíteni és kiépíteni a felhasználói fiókokat az Azure AD-ről az Envoy szolgáltatásba.
+title: 'Oktatóanyag: a megbízottat konfigurálása a felhasználók automatikus üzembe helyezéséhez Azure Active Directory | Microsoft Docs'
+description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a megbízottat.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,166 +16,166 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: 68e17ba1dd5981e565e56d6c8137f77d33ad755b
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393494"
 ---
-# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Oktatóanyag: A követ konfigurálása az automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Oktatóanyag: a megbízottat konfigurálása automatikus felhasználó-kiépítési folyamathoz
 
-Ez az oktatóanyag ismerteti az okat a lépéseket, amelyeket az Envoy és az Azure Active Directoryban (Azure AD) kell végrehajtani az automatikus felhasználói kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan rendelkezik, és de-rendelkezések a felhasználók és csoportok [a megbízott](https://envoy.com/pricing/) az Azure AD-kiépítési szolgáltatás használatával. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../manage-apps/user-provisioning.md) 
+Ez az oktatóanyag leírja, milyen lépéseket kell elvégeznie a megbízottat és a Azure Active Directory (Azure AD) az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési [szolgáltatás használatával.](https://envoy.com/pricing/) A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
-> * Felhasználók létrehozása a Követben
-> * Felhasználók eltávolítása a Követben, ha már nincs szükségük hozzáférésre
-> * Felhasználói attribútumok szinkronizálása az Azure AD és az Envoy között
-> * Csoportok és csoporttagságok kiépítése a követben
-> * [Egyszeri bejelentkezés a](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-tutorial) követhez (ajánlott)
+> * Felhasználók létrehozása a megbízottat
+> * Felhasználók eltávolítása a megbízottat, ha már nincs szükség hozzáférésre
+> * Felhasználói attribútumok szinkronizálása az Azure AD és a megbízott között
+> * Csoportok és csoporttagságok kiépítése a megbízottat
+> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-tutorial) a megbízottat (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Az Azure AD-ben a kiépítés konfigurálására [vonatkozó engedéllyel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) rendelkező felhasználói fiók (pl. alkalmazásrendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
-* [Egy követ bérlője.](https://envoy.com/pricing/)
-* Felügyeleti engedélyekkel rendelkező felhasználói fiók az Envoy-ban.
+* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* [Egy megbízottat bérlő](https://envoy.com/pricing/).
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési telepítés megtervezése
-1. További információ [a kiépítési szolgáltatás működéséről.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
-2. Határozza meg, hogy ki lesz a [kiépítés hatóköre.](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)
-3. Határozza meg, hogy milyen adatokat szeretne leképezni az [Azure AD és a Követ között.](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
+1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
+2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg, hogy az [Azure ad és a megbízottat milyen adatleképezést szeretne leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>2. lépés Az AD-vel való kiépítés támogatásának konfigurálása
+## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>2. lépés A megbízottat konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-1. Jelentkezzen be a [megbízott ikiszolgálói konzoljára.](https://dashboard.envoy.com/login) Kattintson az **Integrációk gombra.**
+1. Jelentkezzen be a [megbízott felügyeleti konzolra](https://dashboard.envoy.com/login). Kattintson az **integrációk**elemre.
 
-    ![Követ integrációk](media/envoy-provisioning-tutorial/envoy01.png)
+    ![A megbízottat integrációk](media/envoy-provisioning-tutorial/envoy01.png)
 
-2. Kattintson a **Telepítés gombra** a **Microsoft Azure SCIM-integrációhoz.**
+2. Kattintson a **telepítés** gombra a **Microsoft Azure scim-integrációhoz**.
 
-    ![Követ telepítése](media/envoy-provisioning-tutorial/envoy02.png)
+    ![Megbízott telepítése](media/envoy-provisioning-tutorial/envoy02.png)
 
-3. Kattintson a **Mentés** **szinkronizálásra az összes felhasználó .** 
+3. Kattintson a **Mentés** gombra az **összes felhasználó szinkronizálásához**. 
 
-    ![Követ mentése](media/envoy-provisioning-tutorial/envoy03.png)
+    ![Megbízott mentése](media/envoy-provisioning-tutorial/envoy03.png)
 
-4. Másolja az **OAUTH BEARER TOKEN -t.** Ezt az értéket a **titkos jogkivonat** mezőben adja meg a megbízott alkalmazás azure-portálon létesítési lapján.
+4. Másolja a **OAUTH tulajdonosi JOGkivonatát**. Ez az érték a Azure Portalban szereplő megbízott alkalmazás kiépítés lapjának **titkos jogkivonat** mezőjében lesz megadva.
     
-    ![OAUTH követ](media/envoy-provisioning-tutorial/envoy04.png)
+    ![Megbízott OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
 
-## <a name="step-3-add-envoy-from-the-azure-ad-application-gallery"></a>3. lépés Követ hozzáadása az Azure AD alkalmazásgyűjteményből
+## <a name="step-3-add-envoy-from-the-azure-ad-application-gallery"></a>3. lépés Adja hozzá a megbízottat az Azure AD Application Galleryből
 
-Adja hozzá az Azure AD alkalmazáskatalógusból az akta, hogy megkezdje a kiépítést az Envoy számára. Ha korábban már bevan állítva az SSO-hoz, használhatja ugyanazt az alkalmazást. Azonban ajánlott, hogy hozzon létre egy külön alkalmazást, amikor az integráció tesztelése kezdetben. További információ az alkalmazások hozzáadásáról a galériából [itt.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
+Vegyen fel egy megbízottat az Azure AD-alkalmazás-katalógusból a megbízott kiépítés kezelésének megkezdéséhez. Ha korábban már beállította az SSO-t, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-Az Azure AD-létesítési szolgáltatás lehetővé teszi, hogy a hatókör, aki ki lesz építve az alkalmazáshoz való hozzárendelés és vagy a felhasználó /csoport attribútumai alapján. Ha úgy dönt, hogy hatókör, aki ki lesz építve az alkalmazás hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) felhasználókat és csoportokat rendelhet az alkalmazáshoz. Ha úgy dönt, hogy a hatókört, aki kilesz építve alapján kizárólag attribútumok a felhasználó vagy csoport, akkor egy hatókörszűrő az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint . 
+Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
 
-* Amikor felhasználókat és csoportokat rendel a Követhez, az Alapértelmezett hozzáférés szolgáltatástól eltérő szerepkört kell **kijelölnie.** Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből, és a kiépítési naplókban nem megfelelőként lesznek megjelölve. Ha az alkalmazáson elérhető egyetlen szerepkör az alapértelmezett hozzáférési szerepkör, [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) további szerepkörök hozzáadásához. 
+* Felhasználók és csoportok megbízottat való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-* Kezdjük kicsiben. Tesztelje a felhasználók és csoportok egy kis csoportját, mielőtt mindenki számára kivezetne. Ha a kiépítési hatókör hozzárendelt felhasználókra és csoportokra van beállítva, ezt szabályozhatja egy vagy két felhasználó vagy csoport hozzárendelésével az alkalmazáshoz. Ha a hatókör az összes felhasználóra és csoportra van beállítva, megadhat egy [attribútumalapú hatókörszűrőt.](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) 
+* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-envoy"></a>5. lépés Automatikus felhasználói kiépítés konfigurálása az Envoy számára 
+## <a name="step-5-configure-automatic-user-provisioning-to-envoy"></a>5. lépés Az automatikus felhasználó-kiépítés beállítása a megbízottnak 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a TestApp-ben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
-### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Az automatikus felhasználói kiépítés konfigurálása az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása az Azure AD-beli megbízottat:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Követ lehetőséget.**
+2. Az alkalmazások listában válassza a **megbízottat**.
 
-    ![A Követ hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![A megbízottat mutató hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **Rendszergazdai hitelesítő** adatok `https://app.envoy.com/scim/v2` csoportban adja meg a **bérlői URL-címet.** Adja meg az **OAUTH BEARER TOKEN** értéket, amelyet korábban a **Titkos jogkivonatban**olvas fel. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud az Envoy-hoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a megbízottfiókja rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://app.envoy.com/scim/v2` meg a **bérlői URL-címet**. Adja meg a **OAUTH tulajdonosi jogkivonat** értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a megbízotthoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a megbízott fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-   ![Kiépítés](./media/envoy-tutorial/provisioning.png)
+   ![kiépítési](./media/envoy-tutorial/provisioning.png)
 
-6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be az **E-mail értesítés küldése hiba esetén jelölőnégyzetet.**
+6. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Értesítési e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása követhez**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a megbízottat**lehetőséget.
 
-9. Tekintse át az Azure AD-ről az **Attribútum-leképezés** szakaszban szinkronizált felhasználói attribútumokat. Az **Egyező** tulajdonságokként kijelölt attribútumok az Envoy felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. Ha úgy dönt, hogy módosítja az [egyező célattribútumot,](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)gondoskodnia kell arról, hogy az Envoy API támogatja-e a felhasználók szűrését az adott attribútum alapján. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a megbízott felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a megbízott API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
    |Attribútum|Típus|
    |---|---|
    |userName (Felhasználónév)|Sztring|
-   |külső azonosító|Sztring|
+   |externalId|Sztring|
    |displayName|Sztring|
    |cím|Sztring|
-   |e-mailek[típus eq "work"].value|Sztring|
-   |preferredLanguage (elsődleges nyelv)|Sztring|
+   |e-mailek [type EQ "work"]. Value|Sztring|
+   |preferredLanguage|Sztring|
    |Részleg|Sztring|
-   |addresses[type eq "work"].country|Sztring|
-   |addresses[type eq "work"].locality|Sztring|
-   |addresses[type eq "work"].region|Sztring|
-   |addresses[type eq "work"].postalCode|Sztring|
-   |addresses[type eq "work"].formatált|Sztring|
-   |addresses[type eq "work"].streetAddress|Sztring|
-   |name.givenName|Sztring|
-   |name.familyName|Sztring|
-   |name.formatált|Sztring|
-   |phoneNumbers[type eq "mobile"].value|Sztring|
-   |phoneNumbers[type eq "work"].value|Sztring|
+   |címek [type EQ "work"]. Country|Sztring|
+   |címek [típus EQ "work"]. helység|Sztring|
+   |címek [típus EQ "work"]. régió|Sztring|
+   |címek [type EQ "work"]. irányítószám|Sztring|
+   |címek [type EQ "work"]. formázott|Sztring|
+   |címek [type EQ "work"]. streetAddress|Sztring|
+   |név. givenName|Sztring|
+   |név. familyName|Sztring|
+   |név. formázott|Sztring|
+   |phoneNumbers [type EQ "Mobile"]. Value|Sztring|
+   |phoneNumbers [type EQ "work"]. Value|Sztring|
    |locale|Sztring|
 
-10. A **Leképezések** csoportban válassza **az Azure Active Directory-csoportok szinkronizálása a követnek**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a megbízottat**lehetőséget.
 
-11. Tekintse át az Azure AD-ről az **Attribútum-leképezés** szakaszban szinkronizált csoportattribútumokat. Az **Egyező** tulajdonságokként kijelölt attribútumok a csoportokkal egyeztethetők meg a Követben a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+11. Tekintse át az Azure AD-ből szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a megbízott csoportoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
       |Attribútum|Típus|
       |---|---|
       |displayName|Sztring|
-      |külső azonosító|Sztring|
+      |externalId|Sztring|
       |tagok|Referencia|
 
-12. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Az Azure AD-létesítési szolgáltatás engedélyezése a megbízott számára, módosítsa a **kiépítési állapot** **a** **Beállítások** szakaszban.
+13. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a megbízottat, módosítsa a **kiépítési állapotot** a **következőre** a **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni a követnek a **beállítások** szakasz **hatókörében** a kívánt értékek kiválasztásával.
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára a megbízottat szeretné kiépíteni. Ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a Beállítások szakasz **Hatókör szakaszában** definiált összes felhasználó és csoport kezdeti szinkronizálási **ciklusát.** A kezdeti ciklus végrehajtása hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. 
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
 
 ## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
-Miután konfigurálta a kiépítést, a következő erőforrásoksegítségével figyelheti a központi telepítést:
+Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
 
-* A [létesítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen vagy sikertelenül kiépítve
-* Ellenőrizze a [folyamatjelzőt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) a kiépítési ciklus állapotának és a befejezéshez szükséges közelségnek a megtekintéséhez.
-* Ha a létesítési konfiguráció úgy tűnik, hogy sérült állapotban van, az alkalmazás karanténba kerül. A karanténállapotokról itt olvashat [bővebben.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+* A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
+* Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+* Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

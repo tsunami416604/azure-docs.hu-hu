@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: d694d3f9b76c1ded912bbd584cdc2aaac076ae15
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400419"
 ---
-## <a name="additional-language-and-platform-support"></a>További nyelvi és platformtámogatás
+## <a name="additional-language-and-platform-support"></a>További nyelvi és platform-támogatás
 
-Ha erre a lapra kattintott, valószínűleg nem látott rövid útmutatót a kedvenc programozási nyelvén. Ne aggódjon, további rövid útmutató anyagokat és kódmintákat is elérhetők a GitHubon. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
+Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutató a kedvenc programozási nyelvén. Ne aggódjon, a GitHubon további gyors üzembe helyezési anyagok és mintakód-minták is elérhetők. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
 
 | Nyelv | További rövid útmutatók | Kódminták |
 |--|--|--|
-| C# | [Hangfájlhoz][1-file] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++ | [Hangfájlhoz][2-file] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [Hangfájlhoz][3-file] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Node.js fájlba][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [iOS-hangszóró ,][obj-iOS-qck] [macOS-hangszóró][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [Hangfájlhoz][4-file] | [Windows, Linux, macOS][python] |
-| Swift | [iOS-hangszóró ,][swift-iOS-qck] [macOS-hangszóró][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Hangfájlba][1-file] | [.NET-keretrendszer][dotnet], [.net Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Hangfájlba][2-file] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
+| Java | [Hangfájlba][3-file] | [Android][java-android], [JRE][java-jre] |
+| JavaScript | [Node. js-fájl egy hangfájl számára][js-node] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [iOS – beszélő][obj-iOS-qck], [MacOS – beszélő][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
+| Python | [Hangfájlba][4-file] | [Windows, Linux, macOS][python] |
+| Swift | [iOS – beszélő][swift-iOS-qck], [MacOS – beszélő][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |
 
 [1-file]: ../../../../quickstarts/text-to-speech-audio-file.md?pivots=programming-language-csharp
 

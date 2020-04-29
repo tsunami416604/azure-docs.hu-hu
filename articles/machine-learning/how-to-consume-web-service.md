@@ -1,7 +1,7 @@
 ---
-title: Webszolgáltatásként telepített modell hez ügyfél létrehozása
+title: Ügyfél létrehozása webszolgáltatásként üzembe helyezett modellhez
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan hívhatja meg a webszolgáltatás-végpontot, amely akkor jött létre, amikor egy modellt telepített ek az Azure Machine Learningből. A végpont elérhetővé teszi a REST API-t, amely et a modellel való következtetés végrehajtásához hívhat meg. Hozzon létre ügyfeleket ehhez az API-hoz az Ön által választott programozási nyelv használatával.
+description: Megtudhatja, hogyan hívhat meg egy webszolgáltatási végpontot, amely akkor jött létre, amikor a modell telepítése Azure Machine Learningról történik. A végpont egy REST API tesz elérhetővé, amely a modellel való következtetés elvégzésére hívható. Hozzon létre ügyfeleket ehhez az API-hoz az Ön által választott programozási nyelv használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,43 +12,43 @@ ms.reviewer: larryfr
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383396"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Az Azure Machine Learning-modell webszolgáltatásként való üzembe helyezése egy REST API-végpontot hoz létre. Adatokat küldhet erre a végpontra, és fogadhatja a modell által visszaadott előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a Go, a Java és a Python használatával.
+Azure Machine Learning modell webszolgáltatásként való üzembe helyezése REST API végpontot hoz létre. Az erre a végpontra irányuló adatküldés és a modell által visszaadott előrejelzések fogadása. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a go, a Java és a Python használatával.
 
-Hozzon létre egy webszolgáltatást, amikor egy modellt telepít a helyi környezetben, az Azure Container Instances, az Azure Kubernetes-szolgáltatás vagy a mező-programozható kaputömbök (FPGA). A webszolgáltatás eléréséhez használt URI-t az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)használatával szerezheti be. Ha a hitelesítés engedélyezve van, az SDK-t is használhatja a hitelesítési kulcsok vagy tokenek lekéréséhez.
+Webszolgáltatást akkor hozhat létre, ha a helyi környezetbe, Azure Container Instancesba, Azure Kubernetes szolgáltatásba vagy mezőre programozható Gate tömbökbe (FPGA) helyezi üzembe a modellt. A webszolgáltatáshoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val kéri le. Ha a hitelesítés engedélyezve van, az SDK használatával is beolvashatja a hitelesítési kulcsokat vagy jogkivonatokat.
 
-A gépi tanulási webszolgáltatást használó ügyfél létrehozásának általános munkafolyamata a következő:
+A Machine learning-webszolgáltatást használó ügyfelek létrehozásának általános munkafolyamata a következő:
 
-1. Az SDK segítségével lejuthat a kapcsolatadatairól.
-1. Határozza meg a modell által használt kérelemadatok típusát.
+1. A kapcsolódási adatok beszerzéséhez használja az SDK-t.
+1. Határozza meg a modell által használt kérelem-adattípust.
 1. Hozzon létre egy alkalmazást, amely meghívja a webszolgáltatást.
 
 > [!TIP]
-> A jelen dokumentumban szereplő példák manuálisan jönnek létre az OpenAPI (Swagger) specifikációk használata nélkül. Ha engedélyezte az OpenAPI-specifikációt a központi telepítéshez, használhat olyan eszközöket, mint például [a swagger-codegen](https://github.com/swagger-api/swagger-codegen) a szolgáltatás ügyfélkódtárak létrehozásához.
+> A dokumentumban szereplő példákat manuálisan hozza létre a OpenAPI (hencegés) specifikációk használata nélkül. Ha engedélyezte a OpenAPI-specifikációt a központi telepítéshez, olyan eszközöket használhat, mint például a [hencegés-CODEGEN](https://github.com/swagger-api/swagger-codegen) a szolgáltatáshoz tartozó ügyféloldali kódtárak létrehozásához.
 
-## <a name="connection-information"></a>Kapcsolatadatai
+## <a name="connection-information"></a>Kapcsolatok adatai
 
 > [!NOTE]
-> Az Azure Machine Learning SDK segítségével a webszolgáltatás adatait. Ez egy Python SDK. Bármilyen nyelven létrehozhat egy ügyfelet a szolgáltatáshoz.
+> A webszolgáltatási információk beszerzéséhez használja a Azure Machine Learning SDK-t. Ez egy Python SDK. A szolgáltatáshoz bármilyen nyelven létrehozhat egy ügyfelet.
 
-Az [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály biztosítja az ügyfél létrehozásához szükséges információkat. Az `Webservice` ügyfélalkalmazások létrehozásához a következő tulajdonságok hasznosak:
+A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály a-ügyfél létrehozásához szükséges információkat tartalmazza. Az ügyfélalkalmazások `Webservice` létrehozásához a következő tulajdonságok hasznosak:
 
-* `auth_enabled`- Ha a kulcshitelesítés engedélyezve van, `True`; ellenkező `False`esetben .
-* `token_auth_enabled`- Ha a token `True`hitelesítés engedélyezve van, ; ellenkező `False`esetben .
-* `scoring_uri`- A REST API címe.
-* `swagger_uri`- Az OpenAPI specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus sémagenerálást. További információ: Modellek telepítése az Azure Machine Learning használatával című [témakörben.](how-to-deploy-and-where.md)
+* `auth_enabled`– Ha a kulcsos hitelesítés engedélyezve `True`van,; Ellenkező esetben `False`.
+* `token_auth_enabled`-Ha a jogkivonat-hitelesítés engedélyezve `True`van,; Ellenkező esetben `False`.
+* `scoring_uri`– A REST API címe.
+* `swagger_uri`– A OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
-Ezt az információt háromféleképpen kérheti le a telepített webszolgáltatásokhoz:
+Az alábbi három módon kérheti le ezeket az információkat az üzembe helyezett webszolgáltatások számára:
 
-* Amikor telepít egy modellt, a rendszer a szolgáltatással kapcsolatos információkat ad vissza egy `Webservice` objektumnak:
+* Modell telepítésekor a rendszer egy `Webservice` objektumot ad vissza a szolgáltatással kapcsolatos információkkal:
 
     ```python
     service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
@@ -57,7 +57,7 @@ Ezt az információt háromféleképpen kérheti le a telepített webszolgáltat
     print(service.swagger_uri)
     ```
 
-* Segítségével `Webservice.list` lekérheti a munkaterületi modellek üzembe helyezett webszolgáltatásainak listáját. Szűrők hozzáadásával szűkítheti a visszaküldött információk listáját. A szűrésről a [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) dokumentációjában olvashat bővebben.
+* A paranccsal `Webservice.list` lekérheti az üzembe helyezett webszolgáltatások listáját a munkaterületen. Szűrőket adhat hozzá a visszaadott információk listájának szűkítéséhez. További információ arról, hogy mit lehet szűrni [. a webszolgáltatások listáját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) ismertető dokumentációban talál további információt.
 
     ```python
     services = Webservice.list(ws)
@@ -65,7 +65,7 @@ Ezt az információt háromféleképpen kérheti le a telepített webszolgáltat
     print(services[0].swagger_uri)
     ```
 
-* Ha ismeri a telepített szolgáltatás nevét, létrehozhat egy új `Webservice`példányt a ból, és paraméterként megadhatja a munkaterület és a szolgáltatás nevét. Az új objektum az üzembe helyezett szolgáltatással kapcsolatos információkat tartalmaz.
+* Ha ismeri a telepített szolgáltatás nevét, létrehozhat egy új példányt `Webservice`, és paraméterként megadhatja a munkaterület és a szolgáltatás nevét. Az új objektum a központilag telepített szolgáltatással kapcsolatos információkat tartalmaz.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -75,34 +75,34 @@ Ezt az információt háromféleképpen kérheti le a telepített webszolgáltat
 
 ### <a name="secured-web-service"></a>Biztonságos webszolgáltatás
 
-Ha az üzembe helyezett webszolgáltatást TLS/SSL-tanúsítvánnyal biztosította, [https használatával](https://en.wikipedia.org/wiki/HTTPS) csatlakozhat a szolgáltatáshoz a pontozási vagy swagger URI használatával. A HTTPS a kettő közötti kommunikáció titkosításával segíti az ügyfél és a webszolgáltatás közötti kommunikáció biztonságát. A titkosítás [a Transport Layer Security (TLS) (Transport Layer Security) (Transport Layer Security) (Transport Layer Security) (Transport Layer Security) (TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) A TLS-t néha még mindig Secure Sockets Layer (SSL) néven is *emlegetik,* amely a TLS elődje volt.
+Ha a telepített webszolgáltatást TLS/SSL-tanúsítvánnyal védi, [https](https://en.wikipedia.org/wiki/HTTPS) használatával kapcsolódhat a szolgáltatáshoz a pontozási vagy a hencegő URI használatával. A HTTPS segíti a kommunikációt az ügyfél és a webszolgáltatás között a kettő közötti kommunikáció titkosításával. A titkosítás [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)protokollt használ. A TLS-t néha *SSL* (SSL) néven is emlegetik, amely a TLS elődje volt.
 
 > [!IMPORTANT]
-> Az Azure Machine Learning által telepített webszolgáltatások csak a TLS 1.2-es verzióját támogatják. Ügyfélalkalmazás létrehozásakor győződjön meg arról, hogy támogatja ezt a verziót.
+> A Azure Machine Learning által központilag telepített webszolgáltatások támogatják a TLS 1,2-es verzióját. Ügyfélalkalmazás létrehozásakor győződjön meg arról, hogy az támogatja ezt a verziót.
 
-További információ: [A TLS használata webszolgáltatás védelméhez az Azure Machine Learningen keresztül.](how-to-secure-web-service.md)
+További információkért lásd: [webszolgáltatások biztonságossá tétele a TLS használatával Azure Machine Learningon keresztül](how-to-secure-web-service.md).
 
 ### <a name="authentication-for-services"></a>Szolgáltatások hitelesítése
 
-Az Azure Machine Learning kétféleképpen szabályozhatja a webes szolgáltatásokhoz való hozzáférést.
+A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való hozzáférés vezérlésére.
 
-|Hitelesítési módszer|Aci|AKS|
+|Hitelesítési módszer|ACI|AKS|
 |---|---|---|
 |Kulcs|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett|
 |Jogkivonat| Nem érhető el| Alapértelmezés szerint letiltva |
 
-Amikor egy kulccsal vagy jogkivonattal védett szolgáltatásnak küld egy kérést, az __engedélyezési__ fejléc használatával adja át a kulcsot vagy a jogkivonatot. A kulcsot vagy jogkivonatot `Bearer <key-or-token>`a `<key-or-token>` , where is a kulcs vagy a token értéke formátumban kell formázni.
+Egy kulccsal vagy jogkivonattal védett szolgáltatásnak küldött kérelem küldésekor az __engedélyezési__ fejléc használatával adja át a kulcsot vagy a jogkivonatot. A kulcsot vagy jogkivonatot úgy kell `Bearer <key-or-token>`formázni, `<key-or-token>` hogy hol található a kulcs vagy a jogkivonat értéke.
 
 #### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
 
-Ha engedélyezi a hitelesítést egy központi telepítéshez, automatikusan létrehozza a hitelesítési kulcsokat.
+Ha engedélyezi a hitelesítést a központi telepítéshez, automatikusan létrehozza a hitelesítési kulcsokat.
 
-* A hitelesítés alapértelmezés szerint engedélyezve van, amikor az Azure Kubernetes szolgáltatásra telepíti.
-* A hitelesítés alapértelmezés szerint le van tiltva, amikor az Azure Container Instances-ra telepíti.
+* A hitelesítés alapértelmezés szerint engedélyezve van az Azure Kubernetes Service-ben való üzembe helyezéskor.
+* A hitelesítés alapértelmezés szerint le van tiltva, amikor Azure Container Instances telepíti.
 
-A hitelesítés vezérléséhez `auth_enabled` használja a paramétert központi telepítés létrehozásakor vagy frissítésekor.
+A hitelesítés vezérléséhez használja a `auth_enabled` paramétert a központi telepítés létrehozásakor vagy frissítésekor.
 
-Ha a hitelesítés engedélyezve `get_keys` van, a módszer segítségével lekérheti az elsődleges és másodlagos hitelesítési kulcsot:
+Ha engedélyezve van a hitelesítés, a `get_keys` metódus használatával kérhet le elsődleges és másodlagos hitelesítési kulcsot:
 
 ```python
 primary, secondary = service.get_keys()
@@ -110,18 +110,18 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Ha újra kell generálnia egy [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)kulcsot, használja a használatát.
+> Ha újra kell létrehoznia egy kulcsot, használja [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)a következőt:.
 
 #### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
 
-Ha engedélyezi a token hitelesítésegy webszolgáltatás, a felhasználónak biztosítania kell egy Azure Machine Learning JWT-jogkivonatot a webszolgáltatás eléréséhez. 
+Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználónak meg kell adnia egy Azure Machine Learning JWT tokent a webszolgáltatásnak az eléréséhez. 
 
-* A jogkivonat-hitelesítés alapértelmezés szerint le van tiltva, amikor az Azure Kubernetes szolgáltatásra telepít.
-* A tokenhitelesítés nem támogatott, ha az Azure Container Instances üzembe helyezésekor.
+* Alapértelmezés szerint a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
+* A jogkivonat-hitelesítés nem támogatott a Azure Container Instances való telepítésekor.
 
-A tokenhitelesítés vezérléséhez `token_auth_enabled` használja a paramétert központi telepítés létrehozásakor vagy frissítésekor.
+A jogkivonat-hitelesítés vezérléséhez használja `token_auth_enabled` a paramétert a központi telepítés létrehozásakor vagy frissítésekor.
 
-Ha a tokenhitelesítés engedélyezve `get_token` van, a metódus segítségével lekérheti a tulajdonosi jogkivonatot, és amely a jogkivonatok lejárati idejét:
+Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódussal kérheti le a tulajdonosi jogkivonatot és a jogkivonatok lejárati idejét:
 
 ```python
 token, refresh_by = service.get_token()
@@ -129,11 +129,11 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> A jogkivonat ideje után új jogkivonatot kell kérnie. `refresh_by` 
+> A jogkivonat `refresh_by` időpontját követően új jogkivonatot kell kérnie. 
 
-## <a name="request-data"></a>Adatok kérése
+## <a name="request-data"></a>Adatkérés
 
-A REST API a kérelem törzsét json-dokumentumnak számítja, amely a következő struktúrával van eltakarva:
+A REST API azt várja, hogy a kérelem törzse JSON-dokumentum legyen a következő szerkezettel:
 
 ```json
 {
@@ -145,9 +145,9 @@ A REST API a kérelem törzsét json-dokumentumnak számítja, amely a következ
 ```
 
 > [!IMPORTANT]
-> Az adatok szerkezetének meg kell egyeznie azzal, amit a pontozási parancsfájl és a modell a szolgáltatásban elvár. A pontozási parancsfájl módosíthatja az adatokat, mielőtt átadná a modellnek.
+> Az adatok struktúrájának meg kell egyeznie a szolgáltatás által várt pontozási szkripttel és modellel. Előfordulhat, hogy a pontozási parancsfájl módosítja az adattípust, mielőtt átadná azt a modellnek.
 
-Például a modell a [vonat a jegyzetfüzeten belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példa 10 számtömböt vár. A példához a pontozási parancsfájl létrehoz egy Numpy tömböt a kérelemből, és átadja azt a modellnek. A következő példa a szolgáltatás által elvárt adatokat mutatja be:
+A példában szereplő modell a [jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példaként egy 10 számból álló tömböt vár. A példában szereplő pontozási szkript létrehoz egy NumPy tömböt a kérelemből, és átadja a modellnek. A következő példában a szolgáltatás által várt adatok láthatók:
 
 ```json
 {
@@ -169,14 +169,14 @@ Például a modell a [vonat a jegyzetfüzeten belül](https://github.com/Azure/M
 }
 ```
 
-A webszolgáltatás egy kérelemben több adathalmazt is elfogadhat. Egy választömböt tartalmazó JSON-dokumentumot ad vissza.
+A webszolgáltatás több adatkészletet is elfogadhat egyetlen kérelemben. Egy olyan JSON-dokumentumot ad vissza, amely a válaszok tömbjét tartalmazza.
 
 ### <a name="binary-data"></a>Bináris adatok
 
-A bináris adatok szolgáltatásban való támogatásának engedélyezéséről a [Bináris adatok](how-to-deploy-and-where.md#binary)című témakörben talál további információt.
+További információ a szolgáltatásban található bináris adatok támogatásának engedélyezéséről: [bináris adatok](how-to-deploy-and-where.md#binary).
 
 > [!TIP]
-> A bináris adatok támogatásának engedélyezése az üzembe helyezett modell által használt score.py fájlban történik. Az ügyféltől használja a programozási nyelv HTTP-funkcióját. A következő kódrészlet például egy JPG-fájl tartalmát küldi el egy webszolgáltatásnak:
+> A bináris adattípusok támogatásának engedélyezése a telepített modell által használt score.py fájlban történik. Az ügyfélen használja a programozási nyelv HTTP-funkcióit. Az alábbi kódrészlet például egy JPG-fájl tartalmát küldi el egy webszolgáltatásnak:
 >
 > ```python
 > import requests
@@ -186,13 +186,13 @@ A bináris adatok szolgáltatásban való támogatásának engedélyezéséről 
 > res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
 > ```
 
-### <a name="cross-origin-resource-sharing-cors"></a>Több forrásból származó erőforrás-megosztás (CORS)
+### <a name="cross-origin-resource-sharing-cors"></a>Több eredetű erőforrás-megosztás (CORS)
 
-A CORS-támogatás szolgáltatásban való engedélyezéséről a [Több forrásból származó erőforrások megosztásáról](how-to-deploy-and-where.md#cors)talál.
+Az CORS-támogatás szolgáltatásban való engedélyezésével kapcsolatos információkért lásd: a [több eredetű erőforrás-megosztás](how-to-deploy-and-where.md#cors).
 
-## <a name="call-the-service-c"></a>Hívja a szolgáltatást (C#)
+## <a name="call-the-service-c"></a>A szolgáltatás meghívása (C#)
 
-Ez a példa bemutatja, hogyan használhatja a C# használatával a vonatból létrehozott webszolgáltatás hívására a [jegyzetfüzeten belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) például:
+Ez a példa azt mutatja be, hogy a C# használatával hogyan hívhatja meg a vonattal létrehozott webszolgáltatást a [notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) . példa:
 
 ```csharp
 using System;
@@ -273,15 +273,15 @@ namespace MLWebServiceClient
 }
 ```
 
-A visszaadott eredmények hasonlóak a következő JSON-dokumentumhoz:
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ```json
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="call-the-service-go"></a>Hívja a szolgáltatást (Go)
+## <a name="call-the-service-go"></a>A szolgáltatás meghívása (go)
 
-Ez a példa bemutatja, hogyan használhatja az Ugrás t a Vonat ból létrehozott webszolgáltatás hívására a [jegyzetfüzeten belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) például:
+Ez a példa azt szemlélteti, hogyan használhatja a Go-t a [vonattal a jegyzetfüzetből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
 
 ```go
 package main
@@ -365,15 +365,15 @@ func main() {
 }
 ```
 
-A visszaadott eredmények hasonlóak a következő JSON-dokumentumhoz:
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ```json
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="call-the-service-java"></a>Hívja a szolgáltatást (Java)
+## <a name="call-the-service-java"></a>A szolgáltatás meghívása (Java)
 
-Ez a példa bemutatja, hogyan használhatja a Java-t a Train-ből létrehozott webszolgáltatás hívására a [jegyzetfüzeten belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) például:
+Ebből a példából megtudhatja, hogyan használhatja a Java-t a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívására:
 
 ```java
 import java.io.IOException;
@@ -445,15 +445,15 @@ public class App {
 }
 ```
 
-A visszaadott eredmények hasonlóak a következő JSON-dokumentumhoz:
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ```json
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="call-the-service-python"></a>Hívja a szolgáltatást (Python)
+## <a name="call-the-service-python"></a>Szolgáltatás meghívása (Python)
 
-Ez a példa bemutatja, hogyan használhatja a Python t a [jegyzetfüzeten belüli trainből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás hívására:
+Ez a példa bemutatja, hogyan használhatja a Pythont a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
 
 ```python
 import requests
@@ -505,7 +505,7 @@ resp = requests.post(scoring_uri, input_data, headers=headers)
 print(resp.text)
 ```
 
-A visszaadott eredmények hasonlóak a következő JSON-dokumentumhoz:
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ```JSON
 [217.67978776218715, 224.78937091757172]
@@ -513,12 +513,12 @@ A visszaadott eredmények hasonlóak a következő JSON-dokumentumhoz:
 
 ## <a name="consume-the-service-from-power-bi"></a>Szolgáltatás felhasználása a Power BI-ból
 
-A Power BI támogatja az Azure Machine Learning webes szolgáltatásainak felhasználását, hogy a Power BI-ban lévő adatokat előrejelzésekkel gazdagítsa. 
+A Power BI támogatja a Azure Machine Learning webszolgáltatások felhasználását, hogy az előrejelzésekkel gazdagítsa Power BI az adatmennyiséget. 
 
-A Power BI-ban való használatra támogatott webszolgáltatás létrehozásához a sémának támogatnia kell a Power BI által igényelt formátumot. [Megtudhatja, hogy miként hozhat létre Power BI által támogatott sémát.](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script)
+Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való használathoz támogat, a sémának támogatnia kell a Power BI számára szükséges formátumot. [Megtudhatja, hogyan hozhat létre Power bi által támogatott sémát](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script).
 
-A webszolgáltatás üzembe helyezése után a Power BI-adatfolyamokból fogyókúrák. [Megtudhatja, hogyan használhatja fel az Azure Machine Learning webszolgáltatását a Power BI-ból.](https://docs.microsoft.com/power-bi/service-machine-learning-integration)
+A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 ## <a name="next-steps"></a>További lépések
 
-A Python és a deep learning modellek valós idejű pontozásához hivatkozási architektúrát szeretne megtekinteni, látogasson el az [Azure architektúraközpontba.](/azure/architecture/reference-architectures/ai/realtime-scoring-python)
+A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

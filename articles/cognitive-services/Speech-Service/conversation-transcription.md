@@ -1,7 +1,7 @@
 ---
-title: Beszélgetés átírása (Előzetes verzió) – Beszédszolgáltatás
+title: Beszélgetés átírása (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A beszélgetésátírás olyan megoldás az értekezletekhez, amely egyesíti az elismerést, a hangszóró-azonosítót és a diarizációt, hogy minden beszélgetés átírását biztosítsa.
+description: A beszélgetés átírása egy olyan megoldás, amely összefoglalja az elismerést, a hangszórók AZONOSÍTÓját és a diarization, és lehetővé teszi bármely beszélgetés átírását.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402512"
 ---
-# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Mi az értekezleteken a beszélgetésátírás (előzetes verzió)?
+# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Mi a beszélgetési átirat az értekezletekben (előzetes verzió)?
 
-A Beszélgetésátírás egy [beszéd-szöveg](speech-to-text.md) megoldás, amely egyesíti a beszédfelismerést, a hangszóró azonosítását és az egyes előadók (más néven _diarization)_ mondathozzárendelését, hogy valós idejű és/vagy aszinkron átírást biztosítson bármely beszélgetéshez. A Beszélgetésátírás megkülönbözteti a beszélgetések hangszóróit, hogy meghatározza, ki mit és mikor mondott, és megkönnyíti a fejlesztők számára, hogy beszédről szövegre írják a többhangszórós diarizálást végző alkalmazásaikat.
+A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes hangszórók (más néven _diarization_) számára, hogy valós idejű és/vagy aszinkron átírást nyújtson a beszélgetésekhez. A beszélgetés átirata megkülönbözteti a beszélőket a beszélgetésekben, hogy kiderítse, ki mit és mikor, és hogyan könnyíti meg a fejlesztők számára, hogy beszéd-szövegeket adjanak a több hangszórót használó diarization.
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
-- **Időbélyegek** – minden egyes szódakiszöveg rendelkezik időbélyeggel, így könnyen megtalálhatja, amikor egy kifejezést mondott.
-- **Olvasható átiratok** - az átiratok formázását és írásjeleket tartalmaznak, hogy a szöveg szorosan egyezik az elhangzottakkal.
-- **Felhasználói profilok** – a felhasználói profilok felhasználói hangminták gyűjtésével és aláírásgenerálásra való elküldésével jönnek létre.
-- **Hangszóró-azonosítás** – a hangszórókat felhasználói profilok segítségével azonosítják, és mindegyikhez _hangszóró-azonosítót_ rendelnek.
-- **Többhangszórós diarizáció** - határozza meg, hogy ki mit mondott, az egyes hangszóró-azonosítókkal szintetizálva szintetizálja a hangfolyamot.
-- **Valós idejű átírás** – élő átiratokat ad arról, hogy ki mit és mikor mond.
-- **aszinkron transzkripció** – többcsatornás hangfolyam használatával nagyobb pontosságú átiratokat biztosíthat.
+- **Időbélyegek** – az egyes hangszórók teljes időbélyegzővel rendelkeznek, így könnyen megtalálhatja a kifejezést.
+- **Olvasható átiratok** – a átiratok formátuma és az írásjelek automatikusan hozzáadódnak, hogy a szöveg pontosan illeszkedjen a megjelenő szöveghez.
+- **Felhasználói profilok** – a felhasználói profilokat a felhasználói hangminták összegyűjtésével és az aláírás-generálásba való küldéssel hozza létre a rendszer.
+- **Beszélő azonosítása** – a hangszórók felhasználói profilokkal vannak azonosítva, és mindegyikhez hozzá van rendelve egy _hangszóró-azonosító_ .
+- **Több hangszórós diarization** – határozza meg, hogy ki mondta, hogy mi az, amit a hangadatfolyam előállításával látnak el az egyes beszélő azonosítókkal.
+- **Valós idejű átírás** – élő átiratokat biztosít arról, hogy kik és mikor zajlik a beszélgetés.
+- **aszinkron átírás** – nagyobb pontosságú átiratokat biztosít többcsatornás hangadatfolyam használatával.
 
 > [!NOTE]
-> Bár a beszélgetés átírása nem korlátozza a beszélők számát a szobában, munkamenetenként 2-10 hangszóróra van optimalizálva.
+> Bár a beszélgetés átirata nem korlátozza a beszélők számát a helyiségben, a 2-10 Beszélők száma munkamenetre van optimalizálva.
 
 ## <a name="use-cases"></a>Használati esetek
 
-### <a name="inclusive-meetings"></a>Befogadó találkozók
+### <a name="inclusive-meetings"></a>Befogadó értekezletek
 
-Ahhoz, hogy a találkozók mindenki számára befogadóak legyenek, például a siketek és nagyothallók számára, fontos, hogy az átírás valós időben legyen. A beszélgetésátírás valós idejű módban az értekezlet hangfelvételét veszi igénybe, és meghatározza, hogy ki mit mond, lehetővé téve az értekezlet minden résztvevőjének, hogy késedelem nélkül kövessék az átiratot, és részt vegyenek az értekezleten.
+Ahhoz, hogy a találkozók mindenki számára elérhetők legyenek, például a siketek és nagyothallók számára, fontos, hogy valós időben átírást készítsenek. A valós idejű mód beszélgetési átírása a hangfelvételt végzi, és meghatározza, hogy ki a mi, ami lehetővé teszi, hogy az összes értekezlet résztvevője elkövesse az átiratot, és késedelem nélkül részt vehessen az értekezleten.
 
-### <a name="improved-efficiency"></a>Nagyobb hatékonyság
+### <a name="improved-efficiency"></a>Hatékonyabb hatékonyság
 
-Az értekezlet résztvevői az értekezletre összpontosíthatnak, és a beszélgetési átírásra hagyhatják a jegyzetelést. A résztvevők aktívan részt vehetnek az értekezleten, és gyorsan nyomon követhetik a következő lépéseket, az átirat használatával, ahelyett, hogy jegyzeteket vennének, és esetleg kihagynának valamit az értekezlet során.
+Az értekezlet résztvevői az értekezletre összpontosítanak, és nem veszik figyelembe a beszélgetés átírását. A résztvevők aktívan részt vehetnek az értekezleten, és gyorsan követhetik nyomon a következő lépéseket, és nem a jegyzeteket, hanem a találkozó során esetlegesen hiányzókat is felhasználhatják.
 
 ## <a name="how-it-works"></a>Működés
 
-Ez egy magas szintű áttekintést, hogyan beszélgetés átírás működik.
+Ez magas szintű áttekintést nyújt a beszélgetések átírásának működéséről.
 
-![Beszélgetésátírási diagram importálása](media/scenarios/conversation-transcription-service.png)
+![Az importálási beszélgetés átiratának diagramja](media/scenarios/conversation-transcription-service.png)
 
-## <a name="expected-inputs"></a>Várható bemenetek
+## <a name="expected-inputs"></a>Várt bemenetek
 
-- **Többcsatornás hangfolyam** – A specifikációval és a tervezéssel kapcsolatos részletekről a [Microsoft Speech Device SDK mikrofonja látható.](https://aka.ms/cts/microphone) Ha többet szeretne megtudni, vagy fejlesztői készletet szeretne vásárolni, olvassa el [a Microsoft Speech Device SDK beolvasása](https://aka.ms/cts/getsdk).
-- **Felhasználói hangminták** – Beszélgetés átírás szükséges felhasználói profilok előtt a beszélgetést. Minden felhasználótól össze kell gyűjtenie a hangfelvételeket, majd el kell küldenie a felvételeket az [Aláírás-generálási szolgáltatásnak](https://aka.ms/cts/signaturegenservice) a hang ellenőrzéséhez és a felhasználói profilok létrehozásához.
+- **Többcsatornás hangstream** – a specifikáció és a kialakítás részleteiért lásd: [Microsoft Speech Device SDK mikrofon](https://aka.ms/cts/microphone). További információért vagy a fejlesztői csomag megvásárlásához lásd: [Microsoft Speech Device SDK](https://aka.ms/cts/getsdk)beszerzése.
+- **Felhasználói hangminták** – a beszélgetés átirata felhasználói profilokat igényel a beszélgetés előtt. Az egyes felhasználóktól származó hangfelvételeket kell összegyűjtenie, majd a hangfelvételeket az aláírás-létrehozási [szolgáltatásba](https://aka.ms/cts/signaturegenservice) kell küldenie, hogy érvényesítse a hangot, és létrehozza a felhasználói profilokat.
 
 ## <a name="real-time-vs-asynchronous"></a>Valós idejű és aszinkron
 
-Beszélgetés átírás kínál három átírási mód:
+A beszélgetés átirata háromféle átírási módot kínál:
 
 ### <a name="real-time"></a>Valós idejű
 
-A hangadatokfeldolgozása élőben történik, hogy visszatérjen a hangszóró azonosítója + átirata. Akkor válassza ezt a módot, ha az átírási megoldás követelménye az, hogy a beszélgetés résztvevői nek élő átirati nézetet biztosítson a folyamatban lévő beszélgetésükről. Például egy olyan alkalmazás létrehozása, amely az értekezleteket hozzáférhetőbbé teszi a siketek és nagyothallók számára, ideális használati eset a valós idejű átíráshoz.
+A rendszer a hangadatokat élő formában dolgozza fel a beszélő azonosítójának és átiratának visszaadásához. Akkor válassza ezt a módot, ha az átírási megoldás követelménye, hogy a beszélgetés résztvevőinek élő átirattal lássa el a folyamatos beszélgetést. Például egy olyan alkalmazás létrehozása, amely lehetővé teszi, hogy az értekezletek könnyebben elérhetők legyenek a siketek és nagyothallók számára, ideális esetben a valós idejű átíráshoz.
 
 ### <a name="asynchronous"></a>Aszinkron
 
-A hangadatok kötegelt feldolgozása a hangszóró-azonosító és az átirat visszaadása érdekében történik. Válassza ki ezt a módot, ha az átírási megoldás követelménye, hogy nagyobb pontosságot biztosítson élő átiratnézet nélkül. Ha például olyan alkalmazást szeretne létrehozni, amely lehetővé teszi az értekezlet résztvevői számára, hogy könnyen felzárkózzanak a kihagyott értekezletekhez, használja az aszinkron átírási módot a nagy pontosságú átírási eredmények eléréséhez.
+A hangadatok kötegelt feldolgozása a hangszórók azonosítójának és átiratának visszaküldésére szolgál. Válassza ezt a módot, ha az átírási megoldás követelménye, hogy nagyobb pontosságot biztosítson az élő átirat nézet nélkül. Ha például olyan alkalmazást szeretne létrehozni, amely lehetővé teszi a résztvevők számára a kihagyott értekezletek egyszerű feladatának elvégzését, akkor az aszinkron átírási módot használja a nagy pontosságú transzkripciós eredmények eléréséhez.
 
 ### <a name="real-time-plus-asynchronous"></a>Valós idejű és aszinkron
 
-A hangadatokfeldolgozása élőben történik, hogy visszatérjen a hangszóró azonosítója + átirata, és ezen felül egy kérés jön létre, hogy az aszinkron feldolgozás révén is nagy pontosságú átiratot kapjon. Akkor válassza ezt a módot, ha az alkalmazásnak valós idejű átírásra van szüksége, de nagyobb pontossági átiratra is van szükség a beszélgetés vagy értekezlet után való használatra.
+A rendszer a hangadatokat élő módon dolgozza fel az előadói azonosító és a átiratok visszaadására, továbbá egy kérést is létrehoz, hogy az aszinkron feldolgozás során is nagy pontosságú átiratot kapjon. Akkor válassza ezt a módot, ha az alkalmazásnak valós idejű átírásra van szüksége, de a beszélgetés vagy az értekezlet utáni használathoz is szükség van egy magasabb pontosságú átiratra.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-Jelenleg a Beszélgetés átírása támogatja az "en-US" és a "zh-CN" a következő régiókban: *centralus* és *eastasia*. Ha további területi támogatásra van szüksége, forduljon a [Beszélgetésátírás szolgáltatás stábjához.](mailto:CTSFeatureCrew@microsoft.com)
+Jelenleg a beszélgetés átirata a következő régiókban támogatja az "en-US" és a "zh-CN" használatát: *CentralUS* és *eastasia*. Ha további területi támogatásra van szüksége, lépjen kapcsolatba a [beszélgetés átirata szolgáltatás legénységével](mailto:CTSFeatureCrew@microsoft.com).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A beszélgetések valós idejű átírása](how-to-use-conversation-transcription-service.md)
+> [Beszélgetések valós idejű átírása](how-to-use-conversation-transcription-service.md)

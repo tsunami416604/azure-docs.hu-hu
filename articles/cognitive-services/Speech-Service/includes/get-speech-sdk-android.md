@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 3d9718d7c1b3182d1f7bc16cd81b38635c051a85
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399891"
 ---
 :::row:::
     :::column span="3":::
-        Az Android-alapú fejlesztés során két beszédbeszéd-SDK érhető el. A Java Speech SDK natív módon androidos csomagként érhető el, vagy a .NET Speech SDK használható a **Xamarin.Android** alkalmazásával a .NET Standard 2.0 megvalósítása kor.
+        Az Android rendszerre való fejlesztéskor két beszédfelismerési SDK érhető el. A Java Speech SDK natív módon Android-csomagként érhető el, vagy a .NET Speech SDK-t a **Xamarin. Android** használatával is használhatja, mivel a .net Standard 2,0-es verziójának megvalósítására szolgál.
     :::column-end:::
     :::column:::
         <br>
@@ -31,7 +31,7 @@ ms.locfileid: "81399891"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android kiteszi a teljes Android SDK a .NET fejlesztők számára. A Visual Studio teljesen natív Android-alkalmazásait C# vagy F# használatával hozhat létre. További információ: <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+        A Xamarin. Android elérhetővé teszi a .NET-fejlesztők számára készült teljes Android SDK-t. Teljes natív Android-alkalmazásokat készíthet C# vagy F # használatával a Visual Studióban. További információ: <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin. Android <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
     :::column-end:::
     :::column:::
         <br>

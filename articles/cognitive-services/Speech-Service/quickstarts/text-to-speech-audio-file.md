@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Beszéd szintezése hangfájlba – Beszédszolgáltatás'
+title: 'Gyors útmutató: beszédfelismerés a hangfájlba – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Beszéd SDK-val konvertálhatja a szöveget hangfájlban lévő szintetizált beszédté.
+description: Ebben a rövid útmutatóban a Speech SDK használatával szöveggé alakítja a szöveget egy hangfájlban.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: b02b43b0f10e1a120ac7e2e3e763aa1e918075b1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400281"
 ---
-# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Rövid útmutató: Beszéd szintezése hangfájlba
+# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Gyors útmutató: beszédfelismerés hangfájlba való szintézise
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts-audio-file/header.md)]

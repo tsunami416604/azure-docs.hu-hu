@@ -1,91 +1,91 @@
 ---
-title: Pod-forgalom biztonságossá tétele hálózati házirenddel
+title: Biztonságos Pod-forgalom hálózati házirenddel
 titleSuffix: Azure Kubernetes Service
-description: Ismerje meg, hogyan biztosíthat a podokba be- és kiáramló forgalmat a Kubernetes hálózati szabályzatainak használatával az Azure Kubernetes-szolgáltatásban (AKS)
+description: Megtudhatja, hogyan védheti meg és ki a hüvelyeken kívülre áramló forgalmat az Azure Kubernetes Service (ak) Kubernetes hálózati házirendjeinek használatával
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392614"
 ---
-# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a podok között az Azure Kubernetes-szolgáltatás (AKS) hálózati szabályzatai használatával
+# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a hüvelyek között hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)
 
-Amikor modern, mikroszolgáltatásokon alapuló alkalmazásokat futtat a Kubernetes-ben, gyakran szeretné szabályozni, hogy mely összetevők kommunikálhatnak egymással. A minimális jogosultság elvet kell alkalmazni, hogy a forgalom az Azure Kubernetes-fürt (AKS) fürtpodok között. Tegyük fel, hogy valószínűleg közvetlenül a háttéralkalmazásokba szeretné blokkolni a forgalmat. A Kubernetes *hálózati házirend* szolgáltatása lehetővé teszi a fürtpodok közötti bejövő és kimenő forgalom szabályait.
+Ha modern, Kubernetes-alapú alkalmazásokat futtat a-ben, gyakran szeretné szabályozni, hogy mely összetevők kommunikáljanak egymással. A legalacsonyabb jogosultsági szint elvét arra kell alkalmazni, hogy a forgalom hogyan válthat a hüvelyek között egy Azure Kubernetes-szolgáltatásbeli (ak-beli) fürtben. Tegyük fel, hogy valószínűleg le szeretné tiltani a forgalmat közvetlenül a háttérbeli alkalmazásokhoz. A Kubernetes *hálózati házirend* funkciója lehetővé teszi szabályok definiálását a fürtben található hüvelyek közötti bejövő és kimenő forgalomhoz.
 
-Ez a cikk bemutatja, hogyan telepítheti a hálózati házirend-motort, és kubernetes hálózati házirendek létrehozása a podok közötti forgalom az AKS-ben. A hálózati házirendet csak Linux-alapú csomópontokhoz és podok az AKS-ben kell használni.
+Ez a cikk bemutatja, hogyan telepítheti a hálózati házirend-motort, és hogyan hozhat létre Kubernetes hálózati házirendeket a hüvelyek közötti adatforgalom vezérléséhez az AK-ban. A hálózati házirendet csak a Linux-alapú csomópontok és a hüvelyek esetében kell használni az AK-ban.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure CLI 2.0.61-es vagy újabb verziójára van szükség telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 > [!TIP]
-> Ha az előzetes verzióban használta a hálózati házirend-szolgáltatást, javasoljuk, hogy [hozzon létre egy új fürtöt.](#create-an-aks-cluster-and-enable-network-policy)
+> Ha az előzetes verzióban használta a hálózati házirend szolgáltatást, azt javasoljuk, hogy [hozzon létre egy új fürtöt](#create-an-aks-cluster-and-enable-network-policy).
 > 
-> Ha továbbra is szeretné használni a meglévő tesztfürtöket, amelyek az előzetes verzió során hálózati házirendet használtak, frissítse a fürtöt egy új Kubernetes-verzióra a legújabb GA-kiadáshoz, majd telepítse a következő YAML-jegyzéket az összeomló metrikakiszolgáló és a Kubernetes-irányítópult javításához. Ez a javítás csak a Calico hálózati házirendmotort használó fürtök esetében szükséges.
+> Ha továbbra is használni szeretné a hálózati házirendet használó meglévő tesztelési fürtöket az előzetes verzióban, frissítse a fürtöt a legújabb GA-kiadás új Kubernetes-verziójára, majd telepítse a következő YAML-jegyzéket az összeomlási metrika-kiszolgáló és a Kubernetes-irányítópult kijavításához. Ez a javítás csak a tarka hálózati házirend-motort használó fürtök esetében szükséges.
 >
-> Biztonsági ajánlott eljárásként [tekintse át a YAML-jegyzékfájl tartalmát,][calico-aks-cleanup] hogy megértse, mi van telepítve az AKS-fürtben.
+> Ajánlott biztonsági eljárásként [tekintse át ennek a YAML-jegyzéknek a tartalmát][calico-aks-cleanup] annak megismeréséhez, hogy mi történik az AK-fürtön való üzembe helyezéssel.
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
-## <a name="overview-of-network-policy"></a>A hálózati házirend áttekintése
+## <a name="overview-of-network-policy"></a>Hálózati házirend áttekintése
 
-Az AKS-fürtösszes podja alapértelmezés szerint korlátozás nélkül küldhet és fogadhat forgalmat. A biztonság növelése érdekében olyan szabályokat határozhat meg, amelyek szabályozzák a forgalom áramlását. A háttéralkalmazások gyakran csak a szükséges előtér-szolgáltatásoknak vannak kitéve. Vagy az adatbázis-összetevők csak a hozzájuk kapcsolódó alkalmazásszintek számára érhetők el.
+Az AK-fürtök összes hüvelye korlátozás nélkül képes továbbítani és fogadni a forgalmat, alapértelmezés szerint. A biztonság növelése érdekében megadhat olyan szabályokat, amelyek vezérlik a forgalom áramlását. A háttérbeli alkalmazások gyakran csak a szükséges előtér-szolgáltatásokra vannak kitéve, például:. Vagy az adatbázis-összetevők csak a hozzájuk kapcsolódó alkalmazási rétegek számára érhetők el.
 
-A hálózati házirend egy Kubernetes-specifikáció, amely meghatározza a podok közötti kommunikáció hozzáférési szabályzatait. A hálózati házirendek használatával megkell határoznia egy rendezett szabálykészletet a forgalom küldéséhez és fogadásához, és alkalmazhatja őket egy vagy több címkeválasztónak megfelelő podok gyűjteményére.
+A hálózati házirend egy Kubernetes-specifikáció, amely a hüvelyek közötti kommunikáció hozzáférési szabályzatait határozza meg. A hálózati házirendek segítségével megadhatja a megrendelt szabályokat a forgalom küldéséhez és fogadásához, és alkalmazhatja azokat olyan hüvelyek gyűjteményére, amelyek egy vagy több címke-választónak felelnek meg.
 
-Ezek a hálózati házirend-szabályok YAML-jegyzékfájlként vannak definiálva. A hálózati házirendek egy szélesebb jegyzékfájl részeként is szerepelhetnek, amely központi telepítést vagy szolgáltatást is létrehoz.
+Ezek a hálózati házirend-szabályok YAML-jegyzékként vannak meghatározva. A hálózati házirendeket egy szélesebb körű jegyzékfájl részeként lehet felvenni, amely egy központi telepítést vagy szolgáltatást is létrehoz.
 
-### <a name="network-policy-options-in-aks"></a>Hálózati házirend-beállítások az AKS-ben
+### <a name="network-policy-options-in-aks"></a>Hálózati házirend-beállítások az AK-ban
 
-Az Azure kétféleképpen valósítható meg a hálózati szabályzatok megvalósításához. AKS-fürt létrehozásakor hálózati házirend-beállítást választ. A házirend-beállítás nem módosítható a fürt létrehozása után:
+Az Azure két módszert biztosít a hálózati házirend megvalósítására. Ha AK-fürtöt hoz létre, válasszon hálózati házirend-beállítást. A fürt létrehozása után a házirend-beállítás nem módosítható:
 
-* Az Azure saját implementációja, az *Azure hálózati szabályzatai.*
-* *Calico Network Policies*, egy nyílt forráskódú hálózati és hálózati biztonsági megoldás által alapított [Tigera][tigera].
+* Az Azure saját implementációja, az *Azure hálózati szabályzatok*.
+* *Tarka hálózati házirendek*, a [tigera][tigera]által alapított nyílt forráskódú hálózati és hálózati biztonsági megoldás.
 
-Mindkét implementáció Linux *IPTables* használatával kényszeríti ki a megadott házirendeket. A házirendek engedélyezett és nem engedélyezett IP-párok készleteivé lesznek lefordítva. Ezek a párok ezután programozott IPTable szűrő szabályokat.
+Mindkét implementáció Linux *iptables* -t használ a megadott házirendek betartatására. A szabályzatok az engedélyezett és a nem engedélyezett IP-párok készletében vannak lefordítva. Ezeket a párokat ezután az iptables-szűrési szabályokként kell programozni.
 
-### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Az Azure és a Calico szabályzatai és képességeik közötti különbségek
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Az Azure-és a tarka-szabályzatok és azok képességei közötti különbségek
 
 | Képesség                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Támogatott platformok                      | Linux                      | Linux                       |
-| Támogatott hálózati beállítások             | Azure CNI                  | Azure CNI és kubenet       |
-| A Kubernetes specifikációnak való megfelelés | Minden támogatott házirendtípus |  Minden támogatott házirendtípus |
-| További funkciók                      | None                       | Kiterjesztett házirendmodell, amely globális hálózati házirendből, globális hálózati készletből és állomásvégpontból áll. A CLI-nek `calicoctl` a kiterjesztett szolgáltatások kezeléséhez való használatáról a [calicoctl felhasználói kézikönyvben talál][calicoctl]további információt. |
-| Támogatás                                  | Az Azure támogatási és mérnöki csapata támogatja | Calico közösségi támogatás. A további fizetett támogatásról a [Project Calico támogatási lehetőségei][calico-support]című témakörben talál további információt. |
-| Naplózás                                  | Az IP-táblázatokban hozzáadott / törölt szabályok a */var/log/azure-npm.log* fájl ban minden állomásra bejelentkeznek. | További információ: [Calico komponensnaplók][calico-logs] |
+| Támogatott hálózati beállítások             | Azure-CNI                  | Azure CNI és kubenet       |
+| Megfelelőség a Kubernetes-specifikációval | Minden támogatott házirend-típus |  Minden támogatott házirend-típus |
+| További funkciók                      | None                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. További információ a `calicoctl` parancssori felület ezen Kiterjesztett funkciók kezeléséhez való használatáról: [calicoctl felhasználói referenciája][calicoctl]. |
+| Támogatás                                  | Az Azure-támogatás és a mérnöki csapat támogatja | A tarka közösségi támogatás. A további fizetős támogatással kapcsolatos további információkért lásd a [Project tarka támogatási lehetőségeit][calico-support]. |
+| Naplózás                                  | Az iptables-ben hozzáadott vagy törölt szabályok minden gazdagépen bejelentkezve vannak a */var/log/Azure-NPM.log* alá | További információ: a [tarka összetevő naplói][calico-logs] |
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS-fürt létrehozása és hálózati házirend engedélyezése
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AK-fürt létrehozása és hálózati házirend engedélyezése
 
-A hálózati házirendek működés közbeni megtekintéséhez hozzunk létre, majd bontsunk ki egy forgalmat meghatározó házirendet:
+Ha működés közben szeretné megtekinteni a hálózati házirendeket, hozzon létre, majd terjesszen ki egy olyan szabályzatot, amely meghatározza a forgalmi folyamatot:
 
-* Minden forgalmat megtagadnak a pod-hoz.
-* Pod-címkéken alapuló forgalom engedélyezése.
-* A forgalom engedélyezése névtér alapján.
+* A pod-ra irányuló összes forgalom megtagadása.
+* Adatforgalom engedélyezése a pod-címkék alapján.
+* Adatforgalom engedélyezése a névtér alapján.
 
-Először hozzon létre egy AKS-fürtöt, amely támogatja a hálózati házirendet. 
+Először hozzon létre egy AK-fürtöt, amely támogatja a hálózati házirendet. 
 
 > [!IMPORTANT]
 >
-> A hálózati házirend-szolgáltatás csak a fürt létrehozásakor engedélyezhető. Meglévő AKS-fürtön nem engedélyezhető a hálózati házirend.
+> A hálózati házirend szolgáltatás csak akkor engedélyezhető, ha a fürt létrejött. A hálózati házirend nem engedélyezhető egy meglévő AK-fürtön.
 
-Az Azure Network Policy használatához az [Azure CNI beépülő modult][azure-cni] kell használnia, és meg kell határoznia a saját virtuális hálózatát és alhálózatait. A szükséges alhálózati tartományok megtervezéséről a Speciális [hálózatkonfigurálás című][use-advanced-networking]témakörben talál további információt. A Calico hálózati szabályzata ugyanezzel az Azure CNI beépülő modullal vagy a Kubenet CNI beépülő modullal használható.
+Az Azure hálózati házirendjének használatához az [Azure CNI beépülő modult][azure-cni] kell használnia, és meg kell határoznia a saját virtuális hálózatát és alhálózatait. A szükséges alhálózati tartományok megtervezésével kapcsolatos részletes információkért lásd: [speciális hálózatkezelés konfigurálása][use-advanced-networking]. A tarka hálózati házirend ugyanazzal az Azure CNI beépülő modullal vagy a Kubenet CNI beépülő modullal is használható.
 
-A következő példaparancsfájl:
+A következő példa szkriptet:
 
 * Egy virtuális hálózatot és alhálózatot hoz létre.
-* Létrehoz egy Azure Active Directory (Azure AD) egyszerű szolgáltatás az AKS-fürthöz.
-* *Közreműködői* engedélyek hozzárendelése az AKS fürtegyszerűszolgáltatás egyszerű szolgáltatásához a virtuális hálózaton.
-* Létrehoz egy AKS-fürtöt a definiált virtuális hálózatban, és engedélyezi a hálózati házirendet.
-    * Az *azure* hálózati házirend beállítás használatos. Ha a Calico-t szeretné hálózati `--network-policy calico` házirend-beállításként használni, használja a paramétert. Megjegyzés: A Calico használható `--network-plugin azure` `--network-plugin kubenet`a vagy a.
+* Létrehoz egy Azure Active Directory (Azure AD) szolgáltatásnevet az AK-fürthöz való használatra.
+* *Közreműködői* engedélyeket rendel a virtuális hálózaton található AK-fürtszolgáltatási egyszerű szolgáltatáshoz.
+* Létrehoz egy AK-fürtöt a megadott virtuális hálózatban, és engedélyezi a hálózati házirendet.
+    * Az *Azure* hálózati házirend-beállítás használatos. Ha ehelyett hálózati házirendként szeretné használni a Tarkat, használja `--network-policy calico` a paramétert. Megjegyzés: a tarka a `--network-plugin azure` vagy `--network-plugin kubenet`a használatával használható.
 
-Vegye figyelembe, hogy egyszerű szolgáltatás használata helyett felügyelt identitást használhat az engedélyekhez. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
+Vegye figyelembe, hogy az egyszerű szolgáltatás használata helyett felügyelt identitást használhat az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 
-Adja meg saját biztonságos *SP_PASSWORD.* A *RESOURCE_GROUP_NAME* és *CLUSTER_NAME* változókat lecserélheti:
+Saját biztonságos *SP_PASSWORD*megadása. A *RESOURCE_GROUP_NAME* és az *CLUSTER_NAME* változót is lecserélheti:
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup-NP
@@ -138,42 +138,42 @@ az aks create \
     --network-policy azure
 ```
 
-A fürt létrehozása néhány percet vesz igénybe. Amikor a fürt készen `kubectl` áll, konfigurálja a Kubernetes-fürthöz való csatlakozást az [az aks get-credentials][az-aks-get-credentials] paranccsal. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t azok használatára:
+A fürt létrehozása néhány percet vesz igénybe. Ha a fürt elkészült, konfigurálja `kubectl` úgy a Kubernetes-fürthöz való csatlakozást, hogy az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot használja. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
 ```
 
-## <a name="deny-all-inbound-traffic-to-a-pod"></a>Pod ba irányuló összes bejövő forgalom megtagadása
+## <a name="deny-all-inbound-traffic-to-a-pod"></a>Minden bejövő forgalom elutasítása egy Pod-ra
 
-Mielőtt szabályokat definiálna az adott hálózati forgalom engedélyezéséhez, először hozzon létre egy hálózati házirendet az összes forgalom megtagadásához. Ez a házirend ad egy kiindulási pontot, hogy megkezdje a whitelist csak a kívánt forgalmat. Azt is tisztán láthatja, hogy a rendszer a hálózati házirend alkalmazásakor elesik.
+Mielőtt meghatározott hálózati forgalmat engedélyező szabályokat definiál, először hozzon létre egy hálózati házirendet az összes forgalom elutasításához. Ez a házirend egy kiindulási pontot biztosít, amellyel megkezdheti a csak a kívánt forgalom engedélyezési listáját. Azt is láthatja, hogy a hálózati házirend alkalmazása esetén a rendszer eldobta a forgalmat.
 
-A mintaalkalmazás-környezet és a forgalmi szabályok, először hozzon létre egy névteret nevű *fejlesztés* a példa podok futtatásához:
+A minta alkalmazási környezet és a forgalmi szabályok esetében először hozzon létre egy *fejlesztés* nevű névteret a példa hüvelyek futtatásához:
 
 ```console
 kubectl create namespace development
 kubectl label namespace/development purpose=development
 ```
 
-Hozzon létre egy példát az NGINX-et futtató háttérpodra. Ez a háttérpod egy minta háttéralapú webalapú alkalmazás szimulálására használható. Hozza létre ezt a podot a *fejlesztési* névtérben, és nyissa meg a *80-as* portot a webes forgalom kiszolgálásához. Címkézze fel a podot *app=webapp,role=backend* segítségével, hogy a következő szakaszban egy hálózati házirenddel célozhassuk meg:
+Hozzon létre egy példát az NGINX-t futtató háttér-Pod-ra. Ez a háttér-pod egy minta háttérbeli webes alkalmazás szimulálására használható. Hozza létre ezt a pod-t a *fejlesztői* névtérben, és nyissa meg a *80* -es portot a webes forgalom kiszolgálásához. Az *app = WebApp, role = backend* címkével megcímkézheti a pod-t, hogy a következő szakaszban egy hálózati házirenddel lehessen megcélozni:
 
 ```console
 kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
 ```
 
-Hozzon létre egy másik podot, és csatoljon egy terminálmunkamenetet annak teszteléséhez, hogy sikeresen elérhesse az alapértelmezett NGINX weblapot:
+Hozzon létre egy másik hüvelyt, és csatoljon egy terminál-munkamenetet annak teszteléséhez, hogy sikeresen elérheti az alapértelmezett NGINX-weblapot:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában ellenőrizze, `wget` hogy elérhető-e az alapértelmezett NGINX weblap:
+A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
 
 ```console
 wget -qO- http://backend
 ```
 
-A következő mintakimenet azt mutatja, hogy az alapértelmezett NGINX weblap visszatért:
+A következő minta kimenet azt mutatja, hogy az alapértelmezett NGINX-weblap visszaadott:
 
 ```output
 <!DOCTYPE html>
@@ -183,7 +183,7 @@ A következő mintakimenet azt mutatja, hogy az alapértelmezett NGINX weblap vi
 [...]
 ```
 
-Kilépés a csatlakoztatott terminálmunkamenetből. A tesztegység automatikusan törlődik.
+Kilépés a csatlakoztatott terminál-munkamenetből. A teszt Pod automatikusan törlődik.
 
 ```console
 exit
@@ -191,7 +191,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Hálózati házirend létrehozása és alkalmazása
 
-Most, hogy megerősítette, használhatja az alapvető NGINX weblapa a minta háttérpod, hozzon létre egy hálózati házirendet, hogy megtagadja az összes forgalmat. Hozzon létre `backend-policy.yaml` egy nevű fájlt, és illessze be a következő YAML-jegyzékfájlt. Ez a jegyzékfájl egy *podSelector* csatolja a szabályzatot a podok, amelyek az *app:webapp,role:backend* címke, például a minta NGINX pod. Nincsenek szabályok a *bejövő forgalom*alatt, így a podba irányuló összes bejövő forgalom megtagadva:
+Most, hogy megerősítettük, használhatja az alapszintű NGINX-weblapot a minta háttér Pod-on, hozzon létre egy hálózati házirendet az összes forgalom elutasításához. Hozzon létre egy `backend-policy.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a jegyzékfájl egy *podSelector* használatával csatolja a szabályzatot a következő alkalmazással rendelkező hüvelyekhez *: WebApp, szerepkör: háttér* felirat, például a minta NGINX Pod. Nincsenek szabályok meghatározva a *bejövő forgalomban, így*a pod-ra irányuló bejövő forgalom megtagadva:
 
 ```yaml
 kind: NetworkPolicy
@@ -207,9 +207,9 @@ spec:
   ingress: []
 ```
 
-Nyissa [https://shell.azure.com](https://shell.azure.com) meg az Azure Cloud Shellt a böngészőjében.
+[https://shell.azure.com](https://shell.azure.com) Nyissa meg a Azure Cloud shellt a böngészőben.
 
-Alkalmazza a hálózati házirendet a [kubectl apply][kubectl-apply] paranccsal, és adja meg a YAML-jegyzékfájl nevét:
+Alkalmazza a hálózati házirendet az [kubectl Apply][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét:
 
 ```console
 kubectl apply -f backend-policy.yaml
@@ -217,13 +217,13 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-network-policy"></a>A hálózati házirend tesztelése
 
-Lássuk, hogy használhatja-e újra az NGINX weboldalt a háttérpodon. Hozzon létre egy másik tesztegységet, és csatoljon egy terminálmunkamenetet:
+Nézzük meg, hogy újra használhatja-e az NGINX-weblapot a háttérben futó Pod-on. Hozzon létre egy másik teszt Pod és csatoljon egy terminál-munkamenetet:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-A parancsértelmező `wget` parancssorában ellenőrizheti, hogy elérhető-e az alapértelmezett NGINX-weblap. Ez alkalommal állítsa az időtúlértéket *2* másodpercre. A hálózati házirend most blokkolja az összes bejövő forgalmat, így a lap nem tölthető be, ahogy az a következő példában látható:
+A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. Ezúttal az időtúllépési értéket állítsa *2* másodpercre. A hálózati házirend mostantól blokkolja az összes bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
 
 ```console
 wget -qO- --timeout=2 http://backend
@@ -233,17 +233,17 @@ wget -qO- --timeout=2 http://backend
 wget: download timed out
 ```
 
-Kilépés a csatlakoztatott terminálmunkamenetből. A tesztegység automatikusan törlődik.
+Kilépés a csatlakoztatott terminál-munkamenetből. A teszt Pod automatikusan törlődik.
 
 ```console
 exit
 ```
 
-## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Bejövő forgalom engedélyezése podcímke alapján
+## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Bejövő forgalom engedélyezése Pod-címke alapján
 
-Az előző szakaszban egy háttér-NGINX pod volt ütemezve, és egy hálózati házirend jött létre, hogy megtagadja az összes forgalmat. Hozzon létre egy előtér-pod, és frissítse a hálózati házirendet, hogy az előtér-podok forgalmat.
+Az előző szakaszban egy háttérbeli NGINX Pod volt ütemezve, és egy hálózati házirend lett létrehozva, hogy megtagadja az összes forgalmat. Hozzon létre egy előtér-hüvelyt, és frissítse a hálózati házirendet, hogy engedélyezze az előtér-hüvelyek forgalmát.
 
-Frissítse a hálózati házirendet, hogy engedélyezze a podok ból érkező forgalmat az *app:webapp, role:frontend* és bármely névtérben. Az előző *háttérrendszer-policy.yaml fájl szerkesztése,* és add *matchLabels* ingress szabályokat, hogy a jegyzékfájl a következő példához hasonlóan néz ki:
+Frissítse a hálózati házirendet, hogy engedélyezzék a hüvelyek forgalmát a következő címkékkel *: WebApp, szerepkör: frontend* és bármely névtérben. Szerkessze az előző *háttér-Policy. YAML* fájlt, és adja hozzá a *matchLabels* bejövő szabályokhoz, hogy a jegyzékfájl a következő példához hasonlóan néz ki:
 
 ```yaml
 kind: NetworkPolicy
@@ -266,27 +266,27 @@ spec:
 ```
 
 > [!NOTE]
-> Ez a hálózati házirend *egy namespaceselectort* és egy *podSelector* elemet használ a be- és tárhelyszabályhoz. A YAML szintaxis fontos a be- éshozamszabályok additív. Ebben a példában mindkét elemnek meg kell egyeznie a bejövő beviteli szabály alkalmazásához. Előfordulhat, hogy a Kubernetes *1.12* előtti verziói nem megfelelően értelmezik ezeket az elemeket, és nem korlátozzák a hálózati forgalmat a várt módon. Erről a viselkedésről a [Választók viselkedése és kiválasztóinak viselkedése.][policy-rules]
+> Ez a hálózati házirend egy *namespaceSelector* és egy *podSelector* elemet használ a bejövő szabályokhoz. A YAML szintaxisa fontos, hogy a bejövő szabályok adalékanyagnak legyenek. Ebben a példában mindkét elemnek egyeznie kell az alkalmazni kívánt bejövő szabályokkal. Előfordulhat, hogy a *1,12* előtti Kubernetes-verziók nem értelmezik megfelelően ezeket az elemeket, és a várt módon korlátozzák a hálózati forgalmat. További információ erről a viselkedésről: a [és a választóinak viselkedése][policy-rules].
 
-Alkalmazza a frissített hálózati házirendet a [kubectl apply][kubectl-apply] paranccsal, és adja meg a YAML-jegyzékfájl nevét:
+Alkalmazza a frissített hálózati házirendet az [kubectl Apply][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét:
 
 ```console
 kubectl apply -f backend-policy.yaml
 ```
 
-Ütemezzen egy podot, amely *app=webapp,role=előtérként* van megcímkézve, és csatoljon egy terminálmunkamenetet:
+Egy *app = WebApp, role = frontend* címkével ellátott Pod-t ütemezhet, és csatlakoztathat egy terminál-munkamenetet:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-A parancsértelmező `wget` parancssorában ellenőrizheti, hogy elérhető-e az alapértelmezett NGINX-weblap:
+A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
 
 ```console
 wget -qO- http://backend
 ```
 
-Mivel a be- és a be- és áttétszabály lehetővé teszi a forgalmat a címkék *alkalmazás: webapp, szerepkör: előtér,* az előtér-pod forgalma engedélyezett. A következő példa kimenetaz alapértelmezett NGINX-weblapot mutatja:
+Mivel a beáramlási szabály engedélyezi a forgalmat a címkék alkalmazást használó hüvelyek esetében *: WebApp, szerepkör: frontend*, az előtér-hüvelyből érkező forgalom engedélyezett. A következő példa kimenete a visszaadott alapértelmezett NGINX-weblapot mutatja:
 
 ```output
 <!DOCTYPE html>
@@ -296,21 +296,21 @@ Mivel a be- és a be- és áttétszabály lehetővé teszi a forgalmat a címké
 [...]
 ```
 
-Kilépés a csatlakoztatott terminálmunkamenetből. A pod automatikusan törlődik.
+Kilépés a csatlakoztatott terminál-munkamenetből. A pod automatikusan törlődik.
 
 ```console
 exit
 ```
 
-### <a name="test-a-pod-without-a-matching-label"></a>Pod tesztelése megfelelő címke nélkül
+### <a name="test-a-pod-without-a-matching-label"></a>A pod tesztelése a megfelelő címke nélkül
 
-A hálózati házirend lehetővé teszi a podok címkével ellátott *alkalmazás: webapp, szerepkör: előtér,* de meg kell tagadnia az összes többi forgalmat. Teszteljük, hogy egy másik pod nélkül ezeket a címkéket férhetnek hozzá a háttér-end NGINX pod. Hozzon létre egy másik tesztegységet, és csatoljon egy terminálmunkamenetet:
+A hálózati házirend lehetővé teszi, hogy a hüvelyek által címkézett *alkalmazás: WebApp, szerepkör: frontend*, de minden más forgalmat megtagadjon. Vizsgáljuk meg, hogy a címkék nélkül egy másik Pod hozzáfér-e a háttér NGINX Pod-hoz. Hozzon létre egy másik teszt Pod és csatoljon egy terminál-munkamenetet:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-A parancsértelmező `wget` parancssorában ellenőrizheti, hogy elérhető-e az alapértelmezett NGINX-weblap. A hálózati házirend blokkolja a bejövő forgalmat, így a lap nem tölthető be, ahogy az a következő példában látható:
+A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. A hálózati házirend blokkolja a bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
 
 ```console
 wget -qO- --timeout=2 http://backend
@@ -320,36 +320,36 @@ wget -qO- --timeout=2 http://backend
 wget: download timed out
 ```
 
-Kilépés a csatlakoztatott terminálmunkamenetből. A tesztegység automatikusan törlődik.
+Kilépés a csatlakoztatott terminál-munkamenetből. A teszt Pod automatikusan törlődik.
 
 ```console
 exit
 ```
 
-## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Csak egy meghatározott névtérből engedélyezi a forgalmat
+## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Csak meghatározott névtéren belüli forgalom engedélyezése
 
-Az előző példákban létrehozott egy hálózati házirendet, amely megtagadta az összes forgalmat, majd frissítette a házirendet, hogy engedélyezze a podok egy adott címkével rendelkező forgalmat. Egy másik gyakori igény, hogy korlátozza a forgalmat csak egy adott névtérben. Ha az előző példák egy *fejlesztési* névtér forgalmára voltak, hozzon létre egy hálózati házirendet, amely megakadályozza, hogy egy másik névtérből, például *éles területről*érkező forgalom elérje a podokat.
+Az előző példákban létrehozott egy hálózati házirendet, amely megtagadta az összes forgalmat, majd frissítette a szabályzatot, hogy engedélyezzék a hüvelyek forgalmát egy adott címkével. Egy másik gyakori igény, hogy csak egy adott névtéren belül korlátozza a forgalmat. Ha az előző példák egy *fejlesztési* névtér forgalmára irányulnak, hozzon létre egy hálózati házirendet, amely megakadályozza, hogy egy másik névtérből, például a *termelésből*érkező forgalom a hüvelyek eljussanak.
 
-Először hozzon létre egy új névteret a termelési névtér szimulálására:
+Először hozzon létre egy új névteret egy éles névtér szimulálásához:
 
 ```console
 kubectl create namespace production
 kubectl label namespace/production purpose=production
 ```
 
-Ütemezzen egy tesztpodot az *éles* névtérben, amely *app=webapp,role=frontend*címkével van ellátva. Terminálmunkamenet csatolása:
+Egy teszt Pod-t az *app = WebApp, role = frontend*néven jelölt *üzemi* névtérben ütemezhet. Terminál-munkamenet csatolása:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában ellenőrizze, `wget` hogy elérhető-e az alapértelmezett NGINX weblap:
+A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
 
 ```console
 wget -qO- http://backend.development
 ```
 
-Mivel a pod címkéi megfelelnek a hálózati házirendben jelenleg engedélyezett címkéknek, a forgalom engedélyezett. A hálózati házirend nem a névterek, csak a pod címkéket. A következő példa kimenetaz alapértelmezett NGINX-weblapot mutatja:
+Mivel a pod címkéi megegyeznek a hálózati házirendben jelenleg engedélyezett értékekkel, a forgalom engedélyezett. A hálózati házirend nem tekinti meg a névtereket, csak a pod-címkéket. A következő példa kimenete a visszaadott alapértelmezett NGINX-weblapot mutatja:
 
 ```output
 <!DOCTYPE html>
@@ -359,7 +359,7 @@ Mivel a pod címkéi megfelelnek a hálózati házirendben jelenleg engedélyeze
 [...]
 ```
 
-Kilépés a csatlakoztatott terminálmunkamenetből. A tesztegység automatikusan törlődik.
+Kilépés a csatlakoztatott terminál-munkamenetből. A teszt Pod automatikusan törlődik.
 
 ```console
 exit
@@ -367,7 +367,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>A hálózati házirend frissítése
 
-Frissítsük a be- éselőszolgáltatási *szabály névtérválasztó* szakaszát, hogy csak a fejlesztési névtérből származó forgalmat *engedélyezze.* A *háttérrendszer-policy.yaml* jegyzékfájl szerkesztése a következő példában látható módon:
+Frissítse a bejövő szabályok *namespaceSelector* szakaszát, hogy csak a *fejlesztési* névtéren belülről engedélyezze a forgalmat. Szerkessze a *háttér-Policy. YAML* jegyzékfájlt az alábbi példában látható módon:
 
 ```yaml
 kind: NetworkPolicy
@@ -391,9 +391,9 @@ spec:
           role: frontend
 ```
 
-Összetettebb példákban több bejövő házirendet is definiálhat, például egy *namespaceselectort,* majd egy *podSelectort.*
+Összetettebb példákban több bejövő szabályt is meghatározhat, például egy *namespaceSelector* , majd egy *podSelector*.
 
-Alkalmazza a frissített hálózati házirendet a [kubectl apply][kubectl-apply] paranccsal, és adja meg a YAML-jegyzékfájl nevét:
+Alkalmazza a frissített hálózati házirendet az [kubectl Apply][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét:
 
 ```console
 kubectl apply -f backend-policy.yaml
@@ -401,13 +401,13 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-updated-network-policy"></a>A frissített hálózati házirend tesztelése
 
-Ütemezzen egy másik podot az *éles* névtérben, és csatoljon egy terminálmunkamenetet:
+Egy másik Pod-t ütemezhet az *üzemi* névtérben, és csatlakoztathat egy terminál-munkamenetet:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorába használja `wget` annak megtekintését, hogy a hálózati házirend mostantól megtagadja a forgalmat:
+A rendszerhéj parancssorában a használatával `wget` láthatja, hogy a hálózati házirend most megtagadja a forgalmat:
 
 ```console
 wget -qO- --timeout=2 http://backend.development
@@ -417,25 +417,25 @@ wget -qO- --timeout=2 http://backend.development
 wget: download timed out
 ```
 
-Kilépés a tesztegységből:
+Kilépés a test podből:
 
 ```console
 exit
 ```
 
-Ha a forgalom nem szerepel az *éles* névtérből, ütemezzen vissza egy tesztegységet a *fejlesztési* névtérbe, és csatoljon egy terminálmunkamenetet:
+Az *üzemi* névtértől megtagadott forgalom esetén a rendszer visszairányítja a tesztelési Pod-t a *fejlesztési* névtérbe, és csatolja a terminál-munkamenetet:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorban annak megtekintéséhez használja, `wget` hogy a hálózati házirend engedélyezi-e a forgalmat:
+A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy a hálózati házirend engedélyezi-e a forgalmat:
 
 ```console
 wget -qO- http://backend
 ```
 
-A forgalom engedélyezett, mert a pod van ütemezve a névtérben, amely megfelel a hálózati házirendben engedélyezett. A következő mintakimenet az alapértelmezett NGINX-weblapot mutatja:
+A forgalom engedélyezett, mert a pod olyan névtérben van ütemezve, amely megfelel a hálózati házirendben engedélyezett értéknek. A következő minta kimenet a visszaadott alapértelmezett NGINX-weblapot mutatja:
 
 ```output
 <!DOCTYPE html>
@@ -445,7 +445,7 @@ A forgalom engedélyezett, mert a pod van ütemezve a névtérben, amely megfele
 [...]
 ```
 
-Kilépés a csatlakoztatott terminálmunkamenetből. A tesztegység automatikusan törlődik.
+Kilépés a csatlakoztatott terminál-munkamenetből. A teszt Pod automatikusan törlődik.
 
 ```console
 exit
@@ -453,7 +453,7 @@ exit
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ebben a cikkben két névteret hoztunk létre, és hálózati házirendet alkalmaztunk. Az erőforrások karbantartásához használja a [kubectl delete parancsot,][kubectl-delete] és adja meg az erőforrásneveket:
+Ebben a cikkben két névteret hoztunk létre, és alkalmazunk egy hálózati házirendet. Az erőforrások [törléséhez használja a kubectl delete][kubectl-delete] parancsot, és határozza meg az erőforrások nevét:
 
 ```console
 kubectl delete namespace production
@@ -462,9 +462,9 @@ kubectl delete namespace development
 
 ## <a name="next-steps"></a>További lépések
 
-A hálózati erőforrásokról további információkért lásd: [Hálózati fogalmak alkalmazások hoz az Azure Kubernetes Service (AKS)][concepts-network].
+További információ a hálózati erőforrásokról: az [Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai][concepts-network].
 
-A házirendekről a [Kubernetes hálózati házirendjei][kubernetes-network-policies]ben olvashat bővebben.
+A szabályzatokkal kapcsolatos további információkért lásd: [Kubernetes hálózati házirendek][kubernetes-network-policies].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

@@ -5,95 +5,95 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: 3ca50a9bad36e0174dc4ee0059c9d01fcc18a5f1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400896"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
-## <a name="download-and-install-the-api-client-library"></a>Az API-ügyfélkódtár letöltése és telepítése
+## <a name="download-and-install-the-api-client-library"></a>Az API ügyféloldali kódtár letöltése és telepítése
 
-A minta végrehajtásához létre kell hoznia a Python-függvénytárat a [Swagger](https://swagger.io)által generált REST API-hoz.
+A minta végrehajtásához létre kell hoznia a Python-függvénytárat a [hencegő](https://swagger.io)használatával generált Rest APIhoz.
 
-A telepítéshez kövesse az alábbi lépéseket:
+Kövesse az alábbi lépéseket a telepítéshez:
 
 1. Nyissa meg a következőt: https://editor.swagger.io.
-1. Kattintson **a Fájl**menü **URL-importálása parancsára.**
-1. Adja meg a Swagger URL-címét, `https://<your-region>.cris.ai/docs/v2.0/swagger`beleértve a beszédfelismerési szolgáltatás-előfizetés régióját is: .
-1. Kattintson **az Ügyfél létrehozása gombra,** és válassza a **Python**lehetőséget.
-1. Mentse az ügyfélkönyvtárat.
-1. A letöltött python-client-generated.zip kibontása valahol a fájlrendszerben.
-1. Telepítse a kivont python-kliens modult a Python környezetben a pip használatával: `pip install path/to/package/python-client`.
-1. A telepített csomag `swagger_client`neve . Ellenőrizheti, hogy a telepítés `python -c "import swagger_client"`működött-e a paranccsal.
+1. Kattintson a **fájl**, majd az **URL importálása**elemre.
+1. Adja meg a felvágási URL-címet, beleértve a Speech `https://<your-region>.cris.ai/docs/v2.0/swagger`Service-előfizetés régióját:.
+1. Kattintson az **ügyfél előállítása** és a **Python**elemre.
+1. Mentse az ügyféloldali kódtárat.
+1. Bontsa ki a letöltött Python-Client-Generated. zip fájlt a fájlrendszerben.
+1. Telepítse a kinyert Python-Client modult a Python-környezetben `pip install path/to/package/python-client`a pip használatával:.
+1. A telepített csomag neve `swagger_client`. A paranccsal megtekintheti, hogy a telepítés a `python -c "import swagger_client"`parancs használatával működött-e.
 
 > [!NOTE]
-> A [Swagger automatikus generálásának ismert hibája](https://github.com/swagger-api/swagger-codegen/issues/7541)miatt előfordulhat, `swagger_client` hogy hibákat észlel a csomag importálásakor.
-> Ezek javíthatók a sor törlésével a
+> A [hencegő autogeneráció ismert hibája](https://github.com/swagger-api/swagger-codegen/issues/7541)miatt előfordulhat, hogy a `swagger_client` csomag importálásakor hibák léptek fel.
+> Ezeket úgy lehet megjavítani, ha törli a sort a tartalommal.
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```
-> a fájlból `swagger_client/models/model.py` és a sor a tartalom
+> a fájlból `swagger_client/models/model.py` és a tartalommal rendelkező sorból
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> a telepített `swagger_client/models/inner_error.py` csomagon belüli fájlból. A hibaüzenet ből megtudom, hogy ezek a fájlok hol találhatók a telepítéshez.
+> a fájlból `swagger_client/models/inner_error.py` a telepített csomagon belül. A hibaüzenetből megtudhatja, hol találhatók ezek a fájlok a telepítéshez.
 
 ## <a name="install-other-dependencies"></a>Egyéb függőségek telepítése
 
-A minta `requests` a könyvtárat használja. Telepítheti azt a parancsot
+A minta a `requests` könyvtárat használja. A parancs használatával telepítheti.
 
 ```bash
 pip install requests
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>Kezdje néhány sablonkóddal.
+## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
-Adjunk hozzá néhány kódot, ami csontvázként működik a projektünkhöz.
+Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
-Az első dolog, amire szükségünk lesz egy Http Client, amely a megfelelő alap URL-t és hitelesítési készlet.
-A kód `transcribe` beszúrása a következőbe:[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
+Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
+A kód beszúrása a `transcribe` következőbe:[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
-Ezután létrehozunk egy átírási kérelmet. A kód `transcribe` hozzáadása a következőhöz:[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
+Ezután létrehozjuk az átírási kérelmet. Kód hozzáadása a `transcribe` következőhöz[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
 
-## <a name="send-the-request-and-check-its-status"></a>Küldje el a kérelmet, és ellenőrizze annak állapotát
-Most közzétesszük a kérést a beszédszolgáltatásnak, és ellenőrizzük a kezdeti válaszkódot. Ez a válaszkód egyszerűen jelzi, hogy a szolgáltatás megkapta-e a kérést. A szolgáltatás egy URL-címet ad vissza a válaszfejlécekben, amely az a hely, ahol az átírásállapotát tárolja.
+## <a name="send-the-request-and-check-its-status"></a>Küldje el a kérést, és keresse meg az állapotát
+Most közzétesszük a kérést a beszédfelismerési szolgáltatásba, és megvizsgáljuk a kezdeti válasz kódját. A válasz kódja egyszerűen azt jelzi, hogy a szolgáltatás megkapta-e a kérelmet. A szolgáltatás egy URL-címet ad vissza a válasz fejlécekben, amely az a hely, ahol az átírási állapotot tárolni fogja.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=65-73)]
 
 ## <a name="wait-for-the-transcription-to-complete"></a>Várja meg, amíg az átírás befejeződik
-Mivel a szolgáltatás aszinkron módon dolgozza fel az átírást, minden alkalommal le kell közvéleményítenünk az állapotát. 5 másodpercenként ellenőrizzük.
+Mivel a szolgáltatás aszinkron módon dolgozza fel az átírást, minden olyan esetben le kell kérdezni annak állapotát. 5 másodpercenként megvizsgáljuk.
 
-Felsoroljuk az összes átiratot, amelyet ez a beszédszolgáltatás-erőforrás feldolgoz, és megkeressük azt, amit létrehoztunk.
+Felszámoljuk a Speech Service-erőforrás által feldolgozott összes átírást, és megkeresjük az általunk létrehozott szöveget.
 
-Itt van a lekérdezési kódot állapot kijelző mindent, kivéve a sikeres befejezését, akkor ezt a következő.
+A sikeres befejezést követően az állapotot megjelenítő lekérdezési kód a következő lesz.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=75-94,99-112)]
 
-## <a name="display-the-transcription-results"></a>Az átírási eredmények megjelenítése
-Miután a szolgáltatás sikeresen befejezte az átírást, az eredmények egy másik URL-ben tárolódnak, amelyet az állapotválaszból kaphatunk.
+## <a name="display-the-transcription-results"></a>Az átírás eredményeinek megjelenítése
+Ha a szolgáltatás sikeresen befejezte az átírást, a rendszer egy másik URL-címen tárolja az eredményeket, amelyet az állapot válasza alapján kaphat.
 
-Itt megkapjuk ezt az eredményt JSON és megjeleníti azt.
+Itt bemutatjuk, hogy az eredmény JSON, és megjeleníti azt.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=95-98)]
 
-## <a name="check-your-code"></a>A kód ellenőrzése
-Ezen a ponton, a kódot kell kinéznie: (Már hozzá néhány megjegyzést, hogy ez a verzió)[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
+## <a name="check-your-code"></a>A kód megkeresése
+Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzést ehhez a verzióhoz)[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-Most már készen áll arra, hogy létrehozza az alkalmazást, és tesztelje a beszédfelismerést a Beszédszolgáltatás használatával.
+Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
 ## <a name="next-steps"></a>További lépések
 

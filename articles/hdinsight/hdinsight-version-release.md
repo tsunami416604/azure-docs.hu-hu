@@ -1,5 +1,5 @@
 ---
-title: A HDInsight 4.0 áttekintése – Azure
+title: HDInsight 4,0 – Áttekintés – Azure
 description: A HDInsight 3.6 és a HDInsight 4.0 funkcióinak, korlátainak és frissítési ajánlásainak összehasonlítása.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,37 +8,37 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383028"
 ---
-# <a name="azure-hdinsight-40-overview"></a>Az Azure HDInsight 4.0 áttekintése
+# <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
-Az Azure HDInsight az Apache Hadoop és az Apache Spark nagyvállalati ügyfelei nek egyik legnépszerűbb szolgáltatása. A HDInsight 4.0 az Apache Hadoop-összetevők felhőalapú disztribúciója. Ez a cikk az Azure HDInsight legújabb kiadásával és a frissítés menetével kapcsolatban nyújt információkat.
+Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében Apache Hadoop és Apache Spark. A HDInsight 4,0 Apache Hadoop összetevők Felhőbeli eloszlása. Ez a cikk az Azure HDInsight legújabb kiadásával és a frissítés menetével kapcsolatban nyújt információkat.
 
-## <a name="whats-new-in-hdinsight-40"></a>A HDInsight 4.0 újdonságai
+## <a name="whats-new-in-hdinsight-40"></a>Az HDInsight 4,0 újdonságai
 
-### <a name="apache-hive-30-and-low-latency-analytical-processing"></a>Apache Hive 3.0 és alacsony késleltetésű analitikai feldolgozás
+### <a name="apache-hive-30-and-low-latency-analytical-processing"></a>Apache Hive 3,0 és kis késleltetésű analitikai feldolgozás
 
-Az Apache Hive alacsony késleltetésű analitikus feldolgozás (LLAP) állandó lekérdezési kiszolgálókat és memórián belüli gyorsítótárazást használ. Ez a folyamat gyors SQL-lekérdezési eredményeket biztosít a távoli felhőbeli tárolóban lévő adatokon. Hive LLAP egy sor állandó démonok, amelyek a Hive-lekérdezések töredékei. A lekérdezések végrehajtása az LLAP-vel nagyon hasonló az LLAP nélküli Hive-hoz, csak a feldolgozó feladatok a tárolók helyett LLAP-démonokban futnak.
+Apache Hive kis késleltetésű analitikus feldolgozás (LLAP) állandó lekérdezési kiszolgálókat és memóriabeli gyorsítótárazást használ. Ez a folyamat gyors SQL-lekérdezési eredményeket biztosít a távoli Felhőbeli tárolásban tárolt adatmennyiségek esetében. A kaptár LLAP olyan állandó démonok készletét használja, amelyek a kaptár-lekérdezések töredékeit hajtják végre. A lekérdezések végrehajtása az LLAP-vel nagyon hasonló az LLAP nélküli Hive-hoz, csak a feldolgozó feladatok a tárolók helyett LLAP-démonokban futnak.
 
 A Hive LLAP előnyei:
 
-* Képes mély SQL-elemzésre a teljesítmény és az alkalmazkodóképesség feláldozása nélkül. Például összetett illesztések, segédlekérdezések, ablakos függvények, rendezés, felhasználó által definiált függvények és összetett összesítések.
+* Mély SQL-elemzések lehetősége a teljesítmény és az alkalmazkodóképesség feláldozása nélkül. Összetett illesztések, allekérdezések, ablakos függvények, rendezés, felhasználó által definiált függvények és összetett összesítések.
 
 * Interaktív lekérdezések futtatása az adatok előkészítéséhez használt tárolón belül, így az adatokat nem szükséges egy másik alrendszerbe átmozgatni az elemzések feldolgozásához.
 
-* A lekérdezés eredményének gyorsítótárazása lehetővé teszi a korábban kiszámított lekérdezési eredmények újbóli felhasználtvá t. Ez a gyorsítótár időt és erőforrásokat takarít meg a lekérdezéshez szükséges fürtfeladatok futtatásával.
+* A gyorsítótárazási lekérdezés eredményei lehetővé teszik a korábban számított lekérdezési eredmények újbóli felhasználását. Ez a gyorsítótár a lekérdezéshez szükséges fürtözött feladatok futtatásával időt és erőforrásokat takarít meg.
 
 ### <a name="hive-dynamic-materialized-views"></a>A Hive dinamikus, tényleges táblán alapuló nézetei
 
-Hive most antól támogatja a dinamikus materializált nézetek, vagy a megfelelő összefoglalók előre számítása. A nézetek felgyorsítják a lekérdezésfeldolgozást az adatraktárakban. A tényleges táblán alapuló nézetek natív módon tárolhatók a Hive-ban, és zökkenőmentesen használhatják az LLAP-gyorsítást.
+A kaptár mostantól támogatja a dinamikus, kiszervezett nézeteket, vagy előre kiszámítja a vonatkozó összefoglalókat. A nézetek felgyorsítják a lekérdezések feldolgozását az adattárházban. A tényleges táblán alapuló nézetek natív módon tárolhatók a Hive-ban, és zökkenőmentesen használhatják az LLAP-gyorsítást.
 
 ### <a name="hive-transactional-tables"></a>A Hive tranzakciós táblái
 
-A HDI 4.0 tartalmazza az Apache Hive 3-at. A Hive 3 atomi, konzisztencia, elkülönítés és tartóssági megfelelőségszükséges a Hive-raktárban élő tranzakciós táblákhoz. Az ACID-kompatibilis táblákat és táblaadatokat a Hive használja és felügyeli. A létrehozási, beolvasási, frissítési és törlési (CRUD) táblákban lévő adatoknak optimalizált soroszlop (ORC) fájlformátumban kell lenniük. A csak beszúrási táblázatok minden fájlformátumot támogatnak.
+A HDI 4,0 Apache Hive 3 tartalmaz. A 3. struktúra megköveteli a kaptárban élő tranzakciós táblázatok atomi, konzisztencia-, elkülönítési és tartóssági megfelelőségét. Az ACID-kompatibilis táblákat és táblaadatokat a Hive használja és felügyeli. A létrehozási, lekérési, frissítési és törlési (szifilisz) táblákban lévő adatoknak optimalizált sor oszlop (ORK) formátumúnak kell lenniük. A csak INSERT-táblázatok támogatják az összes fájlformátumot.
 
 * Az ACID 2-es verziójában a tárolási formátummal és a végrehajtómotorral kapcsolatos teljesítmény is javult.
 
@@ -56,7 +56,7 @@ További információk az [Apache Hive 3-ról](https://docs.hortonworks.com/HDPD
 
 ### <a name="apache-spark"></a>Apache Spark
 
-Az Apache Spark a Hive Warehouse-összekötővel frissíthető táblákhoz és ACID-tranzakciókhoz fér hozzá. A Hive Warehouse-összekötővel a Hive tranzakciós táblák külső táblákként regisztrálhatók a Sparkban a teljes tranzakciós funkcionalitás használatához. A korábbi verziók csak a táblapartíciók kezelését támogatták. Hive Warehouse Connector is támogatja a streamelési dataframes.  Ez a folyamat streameli az olvasást, és a Spark tól származó hive-táblák tranzakciós és streamelési.
+Az Apache Spark a Hive Warehouse-összekötővel frissíthető táblákhoz és ACID-tranzakciókhoz fér hozzá. A Hive Warehouse-összekötővel a Hive tranzakciós táblák külső táblákként regisztrálhatók a Sparkban a teljes tranzakciós funkcionalitás használatához. A korábbi verziók csak a táblapartíciók kezelését támogatták. A méhkas Warehouse-összekötő támogatja a streaming DataFrames is.  Ezzel a folyamattal a Spark tranzakciós és folyamatos adatátviteli táblái olvasása és írása végezhető el.
 
 A Spark végrehajtói közvetlenül kapcsolódhatnak a Hive LLAP-démonokhoz az adatok tranzakciós lekéréséhez és frissítéséhez, így továbbra is a Hive vezérli az adatokat.
 
@@ -67,11 +67,11 @@ Az Apache Spark on HDInsight 4.0 az alábbi forgatókönyveket támogatja:
 * Spark streamelési feladatok futtatása a streamelési Hive-táblák változáscsatornáin.
 * ORC-fájlok létrehozása közvetlenül a Spark strukturált stream feladataiból.
 
-Többé már nem kell aggódnia, hogy véletlenül megpróbál hozzáférni a Hive tranzakciós táblák közvetlenül a Sparkból. Inkonzisztens eredményeket, duplikált adatokat vagy adatsérülést eredményez. A HDInsight 4.0-s, Spark-táblák és Hive-táblák külön metaáruházakban vannak tárolva. A Hive Data Warehouse-összekötő használatával a tranzakciós Hive-táblákat kifejezetten Spark külső táblákként regisztrálhatja.
+Többé nem kell aggódnia amiatt, hogy véletlenül megpróbál hozzáférni a kaptár tranzakciós tábláihoz közvetlenül a Sparkból. Inkonzisztens eredményeket, duplikált adatmennyiséget vagy adatsérülést eredményezett. A HDInsight 4,0-ben a Spark Tables és a kaptár táblák külön Metaadattárak vannak tárolva. A Hive Data Warehouse-összekötő használatával a tranzakciós Hive-táblákat kifejezetten Spark külső táblákként regisztrálhatja.
 
 További tudnivalók az [Apache Sparkról](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
-### <a name="apache-oozie"></a>Apacs Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
 Az Apache Oozie 4.3.1 a HDI 4.0 részét képezi az alábbi módosításokkal:
 
@@ -81,22 +81,22 @@ Az Apache Oozie 4.3.1 a HDI 4.0 részét képezi az alábbi módosításokkal:
 
 További tudnivalók az [Apache Oozie-ról](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/patch_oozie.html).
 
-## <a name="how-to-upgrade-to-hdinsight-40"></a>Frissítés a HDInsight 4.0-s csomagra
+## <a name="how-to-upgrade-to-hdinsight-40"></a>Frissítés a HDInsight 4,0-re
 
-Alaposan tesztelje az összetevőket, mielőtt a legújabb verziót éles környezetben megvalósítana. A HDInsight 4.0 elérhető a frissítési folyamat megkezdéséhez. A HDInsight 3.6 az alapértelmezett lehetőség a véletlen balesetek megelőzésére.
+Alaposan tesztelje az összetevőket, mielőtt éles környezetben implementálja a legújabb verziót. A HDInsight 4,0 elérhető a frissítési folyamat megkezdéséhez. A HDInsight 3,6 az alapértelmezett lehetőség a véletlen balesetek megelőzésére.
 
-A HDInsight korábbi verzióitól a HDInsight 4.0-s verziójára nem támogatott frissítési útvonal. Mivel a Metastore és a blob adatformátuma megváltozott, a 4.0 nem kompatibilis a korábbi verziókkal. Fontos, hogy az új HDInsight 4.0-s környezetet elkülönítse a jelenlegi éles környezettől. Ha a HDInsight 4.0-t a jelenlegi környezetében telepíti, a Metastore véglegesen frissül.  
+Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDInsight 4,0-re. Mivel a Metaadattár és a blob adatformátumai megváltoztak, a 4,0 nem kompatibilis az előző verziókkal. Fontos, hogy az új HDInsight 4,0-környezet az aktuális éles környezettől elkülönítve maradjon. Ha a HDInsight 4,0-et az aktuális környezetbe telepíti, a Metaadattár véglegesen frissülni fog.  
 
 ## <a name="limitations"></a>Korlátozások
 
-* A HDInsight 4.0 nem támogatja a MapReduce-t az Apache Hive számára. Használja inkább az Apache Tez-t. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
-* A HDInsight 4.0 nem támogatja az Apache Stormot.
-* A Hive-nézet már nem érhető el a HDInsight 4.0-s verzióban.
-* Az Apache Zeppelin shell-értelmezője nem támogatott a Spark és az Interaktív lekérdezési fürtökben.
-* Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. Az LLAP csak kikapcsolható.
-* Az Azure Data Lake Storage Gen2 nem tudja menteni a Jupyter-jegyzetfüzeteket egy Spark-fürtben.
+* A HDInsight 4,0 nem támogatja a Apache Hive MapReduce. Használja helyette az Apache TEZ. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
+* A HDInsight 4,0 nem támogatja a Apache Storm.
+* A kaptár nézet már nem érhető el a HDInsight 4,0-ben.
+* Az Apache Zeppelin rendszerhéj-értelmező nem támogatott a Spark és az interaktív lekérdezési fürtökben.
+* Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. A LLAP csak ki lehet kapcsolni.
+* A Azure Data Lake Storage Gen2 nem tudja menteni a Jupyter-jegyzetfüzeteket egy Spark-fürtben.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure HDInsight dokumentáció](index.yml)
+* [Az Azure HDInsight dokumentációja](index.yml)
 * [Kibocsátási megjegyzések](hdinsight-release-notes.md)

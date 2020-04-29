@@ -1,6 +1,6 @@
 ---
-title: Azure Security Control – készlet- és eszközkezelés
-description: Az Azure security control leltár- és eszközkezelés
+title: Azure Security Control – leltár-és eszközkezelés
+description: Az Azure Security Control leltározása és az eszközök kezelése
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,171 +8,171 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408361"
 ---
-# <a name="security-control-inventory-and-asset-management"></a>Biztonságellenőrzés: Készlet- és eszközkezelés
+# <a name="security-control-inventory-and-asset-management"></a>Biztonság-ellenőrzés: leltár-és eszközkezelés
 
-A készlet- és eszközkezelési javaslatok az összes Azure-erőforrás aktív kezelésével (leltározással, nyomon követéssel és javítással) kapcsolatos problémák kezelésére összpontosítanak, hogy csak az engedélyezett erőforrások kaphassanak hozzáférést, és a nem engedélyezett és nem felügyelt erőforrásokat azonosítsák és eltávolítsák.
+A leltár-és vagyonkezelési javaslatok az összes Azure-erőforrás aktív kezelésével (leltár, nyomon követés és helyes) kapcsolatos problémák kezelésére összpontosítanak, így csak a jogosult erőforrások férhetnek hozzá, és a jogosulatlan és nem felügyelt erőforrások azonosíthatók és eltávolíthatók.
 
-## <a name="61-use-automated-asset-discovery-solution"></a>6.1: Automatizált eszközfelderítési megoldás használata
+## <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.1 | 1.1, 1.2, 1.3, 1.4, 9.1, 12.1 | Ügyfél |
+| 6.1 | 1,1, 1,2, 1,3, 1,4, 9,1, 12,1 | Ügyfél |
 
-Az Azure Resource Graph használatával lekérdezheti/felderítheti az összes erőforrást (például a számítási, tárolási, hálózati, portokat és protokollokat stb.) az előfizetés(ek)en belül).  Biztosítsa a megfelelő (olvasási) engedélyeket a bérlőben, és számba vesse az összes Azure-előfizetést, valamint az előfizetéseken belüli erőforrásokat.
+Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az összes erőforrást (például a számítási, tárolási, hálózati, portokat és protokollokat stb.) az előfizetése (ke) n belül.  Győződjön meg arról, hogy a bérlőben a megfelelő (olvasási) engedélyek szerepelnek, valamint az összes Azure-előfizetés, valamint az előfizetésekben lévő erőforrások számbavétele.
 
-Bár a klasszikus Azure-erőforrások fedezhetők fel a Resource Graph, erősen ajánlott az Azure Resource Manager erőforrásainak létrehozása és használata a jövőben.
+Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott a Azure Resource Manager erőforrások létrehozása és használata.
 
-- [Lekérdezések létrehozása az Azure Resource Graph segítségével](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Lekérdezések létrehozása az Azure Resource Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-- [Az Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Az Azure RBAC megismerése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-## <a name="62-maintain-asset-metadata"></a>6.2: Az eszközök metaadatainak karbantartása
+## <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
 | 6.2 | 1.5 | Ügyfél |
 
-Címkék alkalmazása az Azure-erőforrásokra, amelyek metaadatokat adnak logikailag rendszertani rendszerbe rendszerezésükhöz.
+Címkéket alkalmazhat az Azure-erőforrásokhoz, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
 - [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="63-delete-unauthorized-azure-resources"></a>6.3: Jogosulatlan Azure-erőforrások törlése
+## <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
 | 6.3 | 1.6 | Ügyfél |
 
-Adott esetben címkézéssel, felügyeleti csoportokkal és külön előfizetésekkel rendszerezheti és nyomon követheti az eszközöket. A készlet rendszeres egyeztetése és a jogosulatlan erőforrások időben történő törlése az előfizetésből.
+A címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
 - [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
-- [Felügyeleti csoportok létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
 
 - [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: A jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
+## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
 | 6.4 | 2.1 | Ügyfél |
 
-Hozzon létre egy leltárt a jóváhagyott Azure-erőforrásokról és jóváhagyott szoftverekről a számítási erőforrásokhoz a szervezeti igényeinknek megfelelően.
+A szervezeti igényeknek megfelelően hozzon létre egy leltárt a jóváhagyott Azure-erőforrásokról és a számítási erőforrásokhoz jóváhagyott szoftverekről.
 
-## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: A nem jóváhagyott Azure-erőforrások figyelése
+## <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.5 | 2.3, 2.4 | Ügyfél |
+| 6.5 | 2,3, 2,4 | Ügyfél |
 
-Az Azure Policy használatával korlátozhatja az előfizetés(ek)ben létrehozható erőforrások típusát.
+A Azure Policy használatával korlátozásokat állíthat be az előfizetése (i) ban létrehozható erőforrások típusára.
 
-Az Azure Resource Graph használatával erőforrásokat kérdezhet le/fedezhet fel az előfizetéseikben.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóváhagyásra kerül.
+Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-- [Az Azure-szabályzat konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-- [Lekérdezések létrehozása az Azure Graph segítségével](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: A nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
+## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.6 | 2.3, 2.4 | Ügyfél |
+| 6.6 | 2,3, 2,4 | Ügyfél |
 
-Az Azure virtuálisgép-készlet használatával automatizálhatja a virtuális gépeken lévő összes szoftverre vonatkozó információgyűjtést. A szoftvernév, a verzió, a publisher és a frissítés iódje elérhető az Azure Portalon. A telepítési dátum és egyéb információk eléréséhez engedélyezze a vendégszintű diagnosztikát, és vigye a Windows eseménynaplókat a Log Analytics-munkaterületre.
+Az Azure-beli virtuális gépek Leltározásával automatizálhatja a Virtual Machines összes szoftverével kapcsolatos információk gyűjtését. A szoftver neve, verziója, közzétevője és frissítési ideje elérhető a Azure Portal. A telepítés dátumának és egyéb információinak eléréséhez engedélyezze a vendég szintű diagnosztikát, és a Windows-eseménynaplókat egy Log Analytics-munkaterületre vigye.
 
-- [Az Azure virtuálisgép-leltár engedélyezése](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Az Azure-beli virtuális gépek leltározásának engedélyezése](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
-## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: A nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
+## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
 | 6.7 | 2.5 | Ügyfél |
 
-Használja az Azure Security Center fájlintegritás-figyelése (Change Tracking) és a virtuális gép leltár t a virtuális gépeken telepített összes szoftver azonosításához. Saját eljárást valósíthat meg a jogosulatlan szoftverek eltávolítására. A nem jóváhagyott szoftverek azonosítására külső gyártótól származó megoldást is használhat.
+A Virtual Machines-ra telepített összes szoftver azonosításához használja a Azure Security Center fájl integritásának figyelése (Change Tracking) és a virtuális gépek leltárát. A jogosulatlan szoftverek eltávolításához saját eljárást is alkalmazhat. Harmadik féltől származó megoldást is használhat a nem jóváhagyott szoftverek azonosítására.
 
-- [A fájlintegritás figyelésének használata](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
+- [A fájl integritás-figyelésének használata](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
 
-- [Az Azure változáskövetésének megismerése](https://docs.microsoft.com/azure/automation/change-tracking)
+- [Az Azure Change Tracking ismertetése](https://docs.microsoft.com/azure/automation/change-tracking)
 
-- [Az Azure virtuálisgépek készletének engedélyezése](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Az Azure-beli virtuális gépek leltározásának engedélyezése](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
-## <a name="68-use-only-approved-applications"></a>6.8: Csak jóváhagyott alkalmazásokat használjon
+## <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
 | 6.8 | 2,6 | Ügyfél |
 
-Az Azure Security Center Adaptive Application Controls használatával biztosíthatja, hogy csak az engedélyezett szoftverek hajtsanak végre, és az összes jogosulatlan szoftver le van tiltva az Azure virtuális gépeken.
+Azure Security Center Adaptive Application Controls használatával biztosíthatja, hogy csak a hitelesített szoftverek legyenek végrehajtva, és az összes jogosulatlan szoftver le legyen tiltva az Azure Virtual Machines-on való végrehajtás során.
 
-- [Az Azure Security Center Adaptive Application Controls használata](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptív alkalmazás-vezérlők használata](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="69-use-only-approved-azure-services"></a>6.9: Csak jóváhagyott Azure-szolgáltatások használata
+## <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
 | 6.9 | 2,6 | Ügyfél |
 
-Az Azure-szabályzat használatával korlátozhatja, hogy milyen szolgáltatásokat tud kiépíteni a környezetében.
+A Azure Policy használatával korlátozhatja, hogy mely szolgáltatásokat lehet kiépíteni a környezetben.
 
-- [Az Azure-szabályzat konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-- [Adott erőforrástípus megtagadása az Azure-szabályzattal](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
 
-## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: A jóváhagyott szoftvercímek leltárának karbantartása
+## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: a jóváhagyott szoftverek leltárának fenntartása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.10 | 2.7 | Ügyfél |
+| 6,10 | 2.7 | Ügyfél |
 
-Az Azure Security Center Adaptive Application Controls használatával megadhatja, hogy a szabály mely fájltípusokra vonatkozzon, illetve melyekre.
+Azure Security Center adaptív alkalmazás-vezérlőelemekkel megadhatja, hogy mely fájltípusok esetében lehet egy szabály, vagy nem alkalmazható.
 
-Harmadik féltől származó megoldás megvalósítása, ha ez nem felel meg a követelménynek.
+Harmadik féltől származó megoldás implementálása, ha ez nem felel meg a követelménynek.
 
-- [Az Azure Security Center Adaptive Application Controls használata](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptív alkalmazás-vezérlők használata](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Korlátozza a felhasználók azure-erőforrás-kezelővel való interakcióját
+## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: korlátozza a felhasználók képességét a Azure Resource Manager való interakcióra
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.11 | 2.9 | Ügyfél |
+| 6,11 | 2.9 | Ügyfél |
 
-Az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók azOn képességét, hogy az Azure Resources Managerrel kommunikáljanak a "Microsoft Azure Management" alkalmazás "Hozzáférés blokkolása" beállításával.
+Az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek az Azure erőforrás-kezelővel való interakcióra, ha a "Microsoft Azure felügyelet" alkalmazáshoz konfigurálja a "hozzáférés tiltása" lehetőséget.
 
-- [A feltételes hozzáférés beállítása az Azure Resources Manager elérésének letiltásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Feltételes hozzáférés konfigurálása az Azure Resources Manager elérésének blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
-## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Korlátozza a felhasználók azon képességét, hogy parancsfájlokat hajtsanak végre a számítási erőforrásokon belül
+## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.12 | 2.9 | Ügyfél |
+| 6,12 | 2.9 | Ügyfél |
 
-A parancsfájlok típusától függően használhatja az operációs rendszer-specifikus konfigurációkat vagy a külső erőforrásokat, hogy korlátozza a felhasználók azon képességét, hogy parancsfájlokat hajtsanak végre az Azure számítási erőforrásain belül.  Az Azure Security Center Adaptive Application Controls segítségével biztosíthatja, hogy csak az engedélyezett szoftverek hajtsanak végre, és az összes jogosulatlan szoftver nem hajtható végre az Azure virtuális gépeken.
+A parancsfájlok típusától függően használhat operációs rendszer-specifikus konfigurációkat vagy harmadik féltől származó erőforrásokat, hogy korlátozza a felhasználók számára az Azure számítási erőforrásokon belüli parancsfájlok futtatását.  Emellett kihasználhatja Azure Security Center adaptív alkalmazás vezérlőelemeit is, hogy csak a hitelesített szoftverek fussanak, és az összes jogosulatlan szoftver le legyen tiltva az Azure Virtual Machines.
 
 - [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-- [Az Azure Security Center Adaptive Application Controls használata](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptív alkalmazás-vezérlők használata](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fizikailag vagy logikailag elkülönítve a magas kockázatú alkalmazásokat
+## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.13 | 2.9 | Ügyfél |
+| 6,13 | 2.9 | Ügyfél |
 
-Az üzleti műveletekhez szükséges, de a szervezet számára nagyobb kockázatot merülő szoftvert el kell különíteni a saját virtuális gépén és/vagy virtuális hálózatán belül, és megfelelően kell biztosítani az Azure tűzfal vagy a hálózati biztonsági csoport használatával.
+Az üzleti műveletekhez szükséges szoftverek, de nagyobb kockázatot jelenthetnek a szervezet számára, el kell különíteni a saját virtuális gépén és/vagy virtuális hálózatán belül, és megfelelően biztonságossá kell tennie egy Azure Firewall vagy hálózati biztonsági csoporttal.
 
-- [Hogyan hozzunk létre egy virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [Hogyan hozzunk létre egy NSG egy biztonsági config](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a következő biztonsági vezérlőt: [Biztonságos konfiguráció](security-control-secure-configuration.md)
+- Tekintse meg a következő biztonsági vezérlőt: [biztonságos konfiguráció](security-control-secure-configuration.md)

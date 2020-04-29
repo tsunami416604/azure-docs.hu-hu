@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399953"
 ---
 :::row:::
     :::column span="3":::
-        A Speech SDK csak az **Ubuntu 16.04/18.04**, **a Debian 9**, a Red Hat Enterprise Linux **(RHEL) 7/8**és a **CentOS 7/8** rendszereket támogatja a következő célarchitektúrákon, ha Linux-szal használják:
+        A Speech SDK csak az **Ubuntu 16.04/18.04**, a **Debian 9**, a **Red Hat Enterprise Linux (RHEL) 7/8**és a **CentOS 7/8** használatát támogatja a következő, a Linux rendszeren használt architektúrák esetén:
         - x64
     :::column-end:::
     :::column:::
@@ -25,18 +25,18 @@ ms.locfileid: "81399953"
 :::row-end:::
 
 > [!IMPORTANT]
-> Linux ARM64 célzásakor és C# használatakor a .NET Core 3.x (dotnet-sdk-3.x csomag) szükséges. Ha arm32-t vagy ARM64-et céloz meg, a Python nem támogatott.
+> A Linux ARM64 megcélzása és a C# használatával – a .NET Core 3. x (DotNet-SDK-3. x csomag) szükséges. Ha a ARM32 vagy a ARM64 célozza meg, a Python nem támogatott.
 
 > [!NOTE]
-> Az Ubuntu 16.04, ubuntu 18.04 és Debian 9 x86-os architektúrái csak a C++ fejlesztést támogatják a Speech SDK-val.
+> Az Ubuntu 16,04, Ubuntu 18,04 és a Debian 9 x86-architektúrái csak a C++ fejlesztést támogatják a Speech SDK-val.
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
 
-Natív alkalmazás esetén a beszédfelismerési `libMicrosoft.CognitiveServices.Speech.core.so`SDK a . Győződjön meg arról, hogy a célarchitektúra (x86, x64) megegyezik az alkalmazás. A Linux-verziótól függően további függőségek re lehet szükség.
+Natív alkalmazások esetén a Speech SDK a következőre támaszkodik `libMicrosoft.CognitiveServices.Speech.core.so`:. Győződjön meg arról, hogy a célként megadott architektúra (x86, x64) megfelel az alkalmazásnak. A Linux-verziótól függően további függőségekre lehet szükség.
 
-- A GNU C könyvtár megosztott könyvtárai (beleértve a `libpthreads`POSIX szálak programozási könyvtárát, )
-- Az OpenSSL`libssl.so.1.0.0` könyvtár `libssl.so.1.0.2`( vagy )
-- Az ALSA alkalmazások megosztott`libasound.so.2`könyvtára ( )
+- A GNU C könyvtár megosztott kódtárai (beleértve a POSIX- `libpthreads`szálak programozási könyvtárát)
+- Az OpenSSL-könyvtár`libssl.so.1.0.0` ( `libssl.so.1.0.2`vagy)
+- Az ALSA-alkalmazások megosztott könyvtára (`libasound.so.2`)
 
 # <a name="ubuntu-16041804"></a>[Ubuntu 16.04/18.04](#tab/ubuntu)
 
@@ -60,10 +60,10 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> Kövesse az [RHEL/CentOS 7 beszédfelismerési SDK-ra való beállítására](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)vonatkozó utasításokat.
+> Kövesse a [RHEL/CentOS 7 for SPEECH SDK konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)utasításait.
 
 > [!TIP]
-> Az RHEL/CentOS 8 rendszeren kövesse az [OpenSSL linuxos beállítására](../how-to-configure-openssl-linux.md)vonatkozó utasításokat.
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](../how-to-configure-openssl-linux.md)utasításait.
 
 ---
 

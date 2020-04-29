@@ -1,6 +1,6 @@
 ---
-title: Azure Container Registry eseményrács-forrásként
-description: Az Azure Event Grid tárolóbeállítási eseményeihez megadott tulajdonságok ismertetése
+title: Azure Container Registry Event Grid forrásként
+description: A Container Registry eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393366"
 ---
-# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry eseményrács-forrásként
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry Event Grid forrásként
 
-Ez a cikk a tárolóbeállítási események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
+Ez a cikk a Container Registry eseményeinek tulajdonságait és sémáját ismerteti.Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+## <a name="event-grid-event-schema"></a>Event Grid-eseményséma
 
-### <a name="available-event-types"></a>Elérhető eseménytípusok
+### <a name="available-event-types"></a>Elérhető események típusai
 
-Az Azure Container Registry a következő eseménytípusokat bocsátja ki:
+Azure Container Registry a következő típusú eseményeket bocsátja ki:
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.ContainerRegistry.ImagePushed | Kép leküldésekor. |
-| Microsoft.ContainerRegistry.ImageTörölve | Kép törlésekor előáll. |
-| Microsoft.ContainerRegistry.ChartPushed | A Helm-diagram megnyomásakor emelkedik. |
-| Microsoft.ContainerRegistry.ChartDeleted | Helm-diagram törlésekor előáll. |
+| Microsoft. ContainerRegistry. ImagePushed | Egy rendszerkép leküldésekor következik be. |
+| Microsoft. ContainerRegistry. ImageDeleted | Rendszerkép törlésekor következik be. |
+| Microsoft. ContainerRegistry. ChartPushed | Egy Helm-diagram leküldésekor következik be. |
+| Microsoft. ContainerRegistry. ChartDeleted | Egy Helm-diagram törlésekor következik be. |
 
-### <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa eseményre
 
-A következő példa egy leadott rendszersémáját mutatja be: 
+Az alábbi példa egy leküldhető esemény sémáját mutatja be: 
 
 ```json
 [{
@@ -97,7 +97,7 @@ A rendszerkép törölt eseményének sémája hasonló:
 }]
 ```
 
-A séma egy diagram leküldött esemény hasonló a séma egy leküldött leküldött esemény, de nem tartalmaz kérésobjektumot:
+A diagram leküldve eseményének sémája hasonlít a rendszerképbe beküldött események sémájához, de nem tartalmaz kérelem objektumot:
 
 ```json
 [{
@@ -125,7 +125,7 @@ A séma egy diagram leküldött esemény hasonló a séma egy leküldött lekül
 }]
 ```
 
-A diagram törölt eseményének sémája hasonló a rendszerképekáltal törölt esemény sémájához, de nem tartalmaz kérésobjektumot:
+A diagram törölt eseményének sémája hasonlít a rendszerképben törölt esemény sémájához, de nem tartalmaz kérelem objektumot:
 
 ```json
 [{
@@ -155,16 +155,16 @@ A diagram törölt eseményének sémája hasonló a rendszerképekáltal törö
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény legfelső szintű adatokat rendelkezik:
+Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
-| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
-| id | sztring | Az esemény egyedi azonosítója |
-| data | objektum | Blob tárolási esemény adatai. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| data | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -175,39 +175,39 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | id | sztring | Az eseményazonosító. |
 | időbélyeg | sztring | Az az időpont, amikor az esemény bekövetkezett. |
 | action | sztring | A megadott eseményt magában foglaló művelet. |
-| Cél | objektum | Az esemény célpontja. |
-| Kérés | objektum | Az eseményt létrehozó kérelem. |
+| cél | objektum | Az esemény célja. |
+| kérelem | objektum | Az eseményt létrehozó kérelem. |
 
 A célobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| mediaType típus | sztring | A hivatkozott objektum MIME-típusa. |
-| size | egész szám | A tartalom bájtjainak száma. Megegyezik a Hossz mezővel. |
-| digest | sztring | A tartalom kivonatolása a Rendszerleíróadatbázis V2 HTTP API specifikációja szerint. |
-| hossz | egész szám | A tartalom bájtjainak száma. Megegyezik a Méret mezővel. |
-| Tárház | sztring | A tárház neve. |
+| mediaType | sztring | A hivatkozott objektum MIME-típusa. |
+| size | egész szám | A tartalom bájtjainak száma. Ugyanaz, mint a Length mező. |
+| digest | sztring | A tartalom kivonata, amelyet a Registry v2 HTTP API-specifikáció határoz meg. |
+| hossz | egész szám | A tartalom bájtjainak száma. Ugyanaz, mint a size mező. |
+| tárház | sztring | A tárház neve. |
 | címke | sztring | A címke neve. |
 | név | sztring | A diagram neve. |
 | version | sztring | A diagram verziója. |
 
-A kérelemobjektum a következő tulajdonságokkal rendelkezik:
+A kérelem objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | id | sztring | Az eseményt kezdeményező kérelem azonosítója. |
-| addr | sztring | Az eseményt kezdeményező ügyfélkapcsolat IP- vagy állomásneve és esetleg portja. Ez az érték a standard http-kérelem RemoteAddr értéke. |
-| gazda | sztring | A beállításjegyzék-példány külsőleg elérhető állomásneve, ahogy azt a http állomásfejléc a bejövő kérelmeknél meghatározta. |
-| method | sztring | Az eseményt létrehozó kérelemmetódus. |
-| Useragent | sztring | A kérelem felhasználói ügynökfejléce. |
+| addr | sztring | Az eseményt kezdeményező ügyfél-kapcsolat IP-címe vagy állomásneve, illetve esetleg portja. Ez az érték a szabványos HTTP-kérelem RemoteAddr. |
+| gazda | sztring | A beállításjegyzék-példány külsőleg elérhető állomásneve, amelyet a HTTP-állomásfejléc a bejövő kérelmekben megadott. |
+| method | sztring | Az eseményt létrehozó kérelem metódusa. |
+| UserAgent | sztring | A kérelem felhasználói ügynökének fejléce. |
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 |Cím |Leírás  |
 |---------|---------|
-| [Rövid útmutató: tárolóbeállítási események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan azure CLI container registry események küldéséhez. |
+| [Gyors útmutató: tárolói beállításjegyzékbeli események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan küldhet Container Registry eseményeket az Azure CLI használatával. |
 
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
-* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.
+* A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

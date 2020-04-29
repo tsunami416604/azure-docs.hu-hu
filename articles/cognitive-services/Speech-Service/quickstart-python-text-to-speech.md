@@ -1,7 +1,7 @@
 ---
-title: Szövegfelolvasás, Python – Beszédszolgáltatás konvertálása
+title: Szöveg-beszéd átalakítás, Python-Speech szolgáltatás konvertálása
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, hogyan konvertálhatja a szövegfelolvasást a Python és a Text-to-Speech REST API használatával. Az útmutatóban szereplő mintaszöveg beszédszintetizáló nyelvi (SSML) formában van felépítve. Ez lehetővé teszi a beszédválasz hangjának és nyelvének kiválasztását.
+description: Ebből a cikkből megtudhatja, hogyan alakíthatja át a szöveg – beszéd szöveget a Python és a szöveg-beszéd REST API használatával. Az útmutatóban foglalt mintaszöveg a Speech szintézis Markup Language (SSML) nyelvre van strukturálva. Ez lehetővé teszi a beszédfelismerési válasz hangjának és nyelvének kiválasztását.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400832"
 ---
-# <a name="convert-text-to-speech-using-python"></a>Szövegfelolvasás konvertálása Pythonnal
+# <a name="convert-text-to-speech-using-python"></a>Szöveg-beszéd átalakítás a Python használatával
 
-Ebből a cikkből megtudhatja, hogyan konvertálhatja a szövegfelolvasást a Python és a text-to-speech REST API használatával. Az útmutatóban szereplő kérelemtörzs [beszédszintetizáló nyelvi (SSML)](speech-synthesis-markup.md)néven jelenik meg, amely lehetővé teszi a válasz hangjának és nyelvének kiválasztását.
+Ebből a cikkből megtudhatja, hogyan alakíthatja át a szöveg – beszéd szöveget a Python és a szöveg-beszéd REST API használatával. Az útmutatóban szereplő kérelem törzse a [Speech szintézis Markup Language (SSML) nyelvre](speech-synthesis-markup.md)van strukturálva, amely lehetővé teszi a válasz hangjának és nyelvének kiválasztását.
 
-Ez a cikk egy [Azure Cognitive Services-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) igényel egy beszédszolgáltatás-erőforrással. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
+Ehhez a cikkhez egy Speech Service-erőforrással rendelkező [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Python 2.7.x vagy 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual <span class="docon docon-navigate-external x-hidden-focus"> </span>Studio </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>vagy kedvenc szövegszerkesztő
-* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>vagy a kedvenc szövegszerkesztője
+* A beszédfelismerési szolgáltatáshoz tartozó Azure-előfizetési kulcs
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
@@ -43,11 +43,11 @@ from xml.etree import ElementTree
 > [!NOTE]
 > Ha még nem használta ezeket a modulokat, a program futtatása előtt telepítenie kell őket. A csomagok telepítéséhez futtassa a következő parancsot: `pip install requests`.
 
-Ezek a modulok egy időbélyeggel rendelkező fájl beszédválaszának írására, a HTTP-kérelem létrehozásához és a szövegfelolvasó API-hívásához használatosak.
+Ezek a modulok a beszédre adott időbélyegzővel rendelkező fájlokra, a HTTP-kérések összeállítására és a szöveg – beszéd API meghívására szolgálnak.
 
-## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Az előfizetési kulcs beállítása és a TTS kérdésének létrehozása
+## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Adja meg az előfizetési kulcsot, és hozzon létre egy promptot a TTS számára
 
-A következő néhány szakaszban az engedélyezés kezelésére, a szövegfelolvasó API-hívására és a válasz érvényesítésére szolgáló módszereket hoz létre. Kezdjük azzal, hogy hozzáad néhány kódot, amely biztosítja, hogy ez a minta működni fog a Python 2.7.x és a 3.x.
+A következő néhány szakaszban létrehozhat metódusokat az engedélyezés kezeléséhez, a szöveg-beszéd API meghívásához és a válasz érvényesítéséhez. Kezdjük egy olyan kód hozzáadásával, amely gondoskodik arról, hogy ez a minta a Python 2.7. x és 3. x verzióban működjön.
 
 ```python
 try:
@@ -56,7 +56,7 @@ except NameError:
     pass
 ```
 
-Ezután hozzunk létre egy osztályt. Itt fogjuk helyezni a tokencsere és a szöveg-beszéd API hívásának módszereit.
+Ezután hozzon létre egy osztályt. Itt tesszük a metódusokat a token Exchange-hez, és meghívjuk a szöveg-beszéd API-t.
 
 ```python
 class TextToSpeech(object):
@@ -67,15 +67,15 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-Az `subscription_key` az Ön egyedi kulcsa az Azure Portalról. `tts`kéri a felhasználót, hogy írja be a beszédmé konvertálandó szöveget. Ez a bevitel egy karakterlánc-konstans, így a karaktereket nem kell megkerülni. Végül `timestr` megkapja az aktuális időt, amelyet a fájl elnevezésére használunk.
+Az `subscription_key` a Azure Portal egyedi kulcsa. `tts`megkéri a felhasználót, hogy adjon meg szöveget, amelyet a rendszer beszédre konvertál. Ez a bemeneti karakterlánc, ezért nem kell megszöknie a karaktereket. `timestr` Végül lekérdezi az aktuális időt, amelyet a fájl neveként fogunk használni.
 
 ## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-A szöveg-beszéd REST API hitelesítéshez hozzáférési jogkivonatot igényel. A hozzáférési jogkivonat beszerezéséhez cserére van szükség. Ez a minta a beszédfelismerési szolgáltatás `issueToken` előfizetési kulcsát cseréli ki egy hozzáférési jogkivonathoz a végpont használatával.
+A szöveg-beszéd REST APIhoz hozzáférési jogkivonat szükséges a hitelesítéshez. Hozzáférési jogkivonat lekéréséhez Exchange szükséges. Ez a példa a `issueToken` beszédfelismerési szolgáltatás előfizetési kulcsát a végpont használatával cseréli egy hozzáférési jogkivonatra.
 
-Ez a minta feltételezi, hogy a beszédfelismerési szolgáltatás előfizetése az USA nyugati régiójában található. Ha másik régiót használ, frissítse a `fetch_token_url`értékét. A teljes listát a [Régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Ez a példa azt feltételezi, hogy a Speech Service-előfizetés az USA nyugati régiójában található. Ha más régiót használ, frissítse a értékét `fetch_token_url`. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
-Másolja a kódot `TextToSpeech` az osztályba:
+Másolja ezt a kódot a `TextToSpeech` osztályba:
 
 ```python
 def get_token(self):
@@ -88,23 +88,23 @@ def get_token(self):
 ```
 
 > [!NOTE]
-> A hitelesítéssel kapcsolatos további információkért lásd: [Hitelesítés hozzáférési jogkivonattal](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> A hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés hozzáférési jogkivonattal](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-## <a name="make-a-request-and-save-the-response"></a>Kérés kérése és mentése
+## <a name="make-a-request-and-save-the-response"></a>Kérelem elkészítése és a válasz mentése
 
-Itt fogja építeni a kérelmet, és mentse a beszéd választ. Először be kell `base_url` állítania a és `path`a . Ez a minta feltételezi, hogy a nyugat-amerikai végpontot használja. Ha az erőforrás egy másik régióban van `base_url`regisztrálva, győződjön meg arról, hogy frissíti a . További információt a [Beszédszolgáltatási területek című témakörben talál.](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)
+Itt fogja felépíteni a kérést, és menteni a beszédfelismerési választ. Először be kell állítania a és `base_url` `path`a. Ez a példa feltételezi, hogy az USA nyugati végpontját használja. Ha az erőforrás egy másik régióban van regisztrálva, győződjön meg róla, hogy `base_url`frissíti a-t. További információ: [Speech Service Regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Ezután hozzá kell adnia a szükséges fejléceket a kérelemhez. Győződjön meg `User-Agent` arról, hogy frissíti az erőforrás nevét (az Azure Portalon található), és állítsa be `X-Microsoft-OutputFormat` a kívánt hangkimenetre. A kimeneti formátumok teljes listáját a [Hangkimenetek](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Ezután hozzá kell adnia a kéréshez szükséges fejléceket. Győződjön meg arról, hogy `User-Agent` az erőforrás nevét (a Azure Portalban található) frissíti, és állítsa `X-Microsoft-OutputFormat` az előnyben részesített hang kimenetére. A kimeneti formátumok teljes listáját itt tekintheti meg: [hang kimenetek](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-Ezután készítse el a kérelem törzsét a beszédszintetizáló nyelvi (SSML) használatával. Ez a minta határozza meg `tts` a szerkezetet, és a korábban létrehozott bemenetet használja.
+Ezután hozza létre a kérelem törzsét a Speech szintézis Markup Language (SSML) használatával. Ez a minta határozza meg a struktúrát, `tts` és a korábban létrehozott bemenetet használja.
 
 >[!NOTE]
-> Ez a `Guy24kRUS` minta a hangbetűtípust használja. A Microsoft által biztosított hangok/nyelvek teljes listáját a Nyelvi támogatás című témakörben [tetszése idáig című](language-support.md)témakörben található.
-> Ha egyedi, felismerhető hangot szeretne létrehozni a márkához, olvassa el [az Egyéni hangbetűtípusok létrehozása](how-to-customize-voice-font.md).
+> Ez a példa a `Guy24kRUS` hangbetűkészletet használja. A Microsoft által biztosított hangok és nyelvek teljes listájáért lásd a [nyelvi támogatást](language-support.md)ismertető témakört.
+> Ha szeretne létrehozni egy egyedi, felismerhető hangot a márka számára, tekintse meg az [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)című témakört.
 
-Végül, akkor, hogy egy kérelmet a szolgáltatás. Ha a kérelem sikeres, és egy 200-as állapotkódot ad vissza, a beszédválasz egy időbélyeggel ellátott fájlba kerül.
+Végül egy kérést küld a szolgáltatásnak. Ha a kérelem sikeres, és a rendszer egy 200 állapotkódot ad vissza, a beszédfelismerési válasz egy időbélyeg-fájlba íródik.
 
-Másolja a kódot `TextToSpeech` az osztályba:
+Másolja ezt a kódot a `TextToSpeech` osztályba:
 
 ```python
 def save_audio(self):
@@ -139,7 +139,7 @@ def save_audio(self):
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Már majdnem kész. Az utolsó lépés az, hogy példányosítani az osztály, és hívja a funkciókat.
+Már majdnem kész. Utolsó lépésként hozza létre az osztályt, és hívja meg a függvényeket.
 
 ```python
 if __name__ == "__main__":
@@ -151,26 +151,26 @@ if __name__ == "__main__":
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
-Ez az, készen áll a szövegfelolvasó mintaalkalmazás futtatására. A parancssorból (vagy terminálmunkamenetből) keresse meg a projektkönyvtárat, és futtassa a következőket:
+Ekkor készen áll a szöveg-beszéd minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
 
 ```console
 python tts.py
 ```
 
-Amikor a rendszer kéri, írja be, amit szövegből beszédbe szeretne konvertálni. Ha sikeres, a beszédfájl a projekt mappájában található. Játssza le kedvenc médialejátszójával.
+Ha a rendszer kéri, írja be a szöveget, amit szeretne szöveggé konvertálni. Ha a művelet sikeres, a beszédfelismerési fájl a Project mappában található. Játssza le kedvenc médialejátszó használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Győződjön meg arról, hogy eltávolít minden bizalmas információt a mintaalkalmazás forráskódjából, például az előfizetési kulcsokból.
+Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Python-minták felfedezése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
+> [Python-minták megismerése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
 ## <a name="see-also"></a>Lásd még
 
-* [Szövegfelolvasó API-hivatkozások](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [A Python és a Speech SDK használata szövegfelolvasáshoz](quickstarts/speech-to-text-from-microphone.md)
-* [Egyéni hangbetűtípusok létrehozása](how-to-customize-voice-font.md)
+* [Szöveg – beszéd API-hivatkozás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [A Python és a Speech SDK használata szöveg-beszéd átalakításra](quickstarts/speech-to-text-from-microphone.md)
+* [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)
 * [Hangminták rögzítése egyéni hang létrehozásához](record-custom-voice-samples.md)

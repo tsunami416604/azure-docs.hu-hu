@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 08686e7b5330dcd734a6ebdc911aa480e6706aef
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400655"
 ---
-## <a name="additional-language-and-platform-support"></a>További nyelvi és platformtámogatás
+## <a name="additional-language-and-platform-support"></a>További nyelvi és platform-támogatás
 
-Ha erre a lapra kattintott, valószínűleg nem látott rövid útmutatót a kedvenc programozási nyelvén. Ne aggódjon, további rövid útmutató anyagokat és kódmintákat is elérhetők a GitHubon. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
+Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutató a kedvenc programozási nyelvén. Ne aggódjon, a GitHubon további gyors üzembe helyezési anyagok és mintakód-minták is elérhetők. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
 
 | Nyelv | További rövid útmutatók | Kódminták |
 |--|--|--|
-| C# | [Fájlból][1-file], [Blobból][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++ | [Fájlból][2-file], [Blobból][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [Fájlból][3-file], [Blobból][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Böngésző a mikrofonból][js-browser], [Node.js fájlból][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [iOS][obj-iOS-qck], [macOS][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [Fájlból][4-file], [Blobból][4-blob] | [Windows, Linux, macOS][python] |
-| Swift | [iOS][swift-iOS-qck], [macOS][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Fájlból][1-file], [a blobból][1-blob] | [.NET-keretrendszer][dotnet], [.net Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Fájlból][2-file], [a blobból][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
+| Java | [Fájlból][3-file], [a blobból][3-blob] | [Android][java-android], [JRE][java-jre] |
+| JavaScript | [Böngésző a MIC-ből][js-browser], [a Node. js fájlból][js-node] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [iOS][obj-iOS-qck], [MacOS][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
+| Python | [Fájlból][4-file], [a blobból][4-blob] | [Windows, Linux, macOS][python] |
+| Swift | [iOS][swift-iOS-qck], [MacOS][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |
 
 [1-file]: ../../../../quickstarts/speech-to-text-from-file.md?pivots=programming-language-csharp
 [1-blob]: ../../../../quickstarts/from-blob.md?pivots=programming-language-csharp

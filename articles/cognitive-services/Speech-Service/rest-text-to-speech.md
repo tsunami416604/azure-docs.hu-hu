@@ -1,7 +1,7 @@
 ---
-title: Szövegfelolvasó API-hivatkozás (REST) – Beszédszolgáltatás
+title: Szöveg – beszéd API-referenciák (REST) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használhatja a szöveg-beszéd REST API-t. Ebben a cikkben megtudhatja, engedélyezési beállítások, lekérdezési beállítások, hogyan strukturálhatja a kérelmet, és választ kap.
+description: Megtudhatja, hogyan használhatja a szöveg – beszéd REST API. Ebben a cikkben megismerheti az engedélyezési lehetőségeket, a lekérdezési lehetőségeket, a kérések strukturálása és a válasz fogadását.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400169"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
-A beszédfelismerési szolgáltatás lehetővé teszi a [szöveg szintetizált beszédté alakítását,](#convert-text-to-speech) és egy régió [támogatott hanglistájának leolvasását](#get-a-list-of-voices) a REST API-k készlete használatával. Minden elérhető végpont egy régióhoz van társítva. A használni kívánt végponthoz/régióhoz előfizetési kulcs szükséges.
+A beszédfelismerési szolgáltatás lehetővé teszi, hogy [szövegeket Konvertáljon a szintetizált beszédbe](#convert-text-to-speech) , és [lekérje a támogatott hangok LISTÁJÁT](#get-a-list-of-voices) egy régió REST API-k használatával. Minden elérhető végpont egy régióhoz van társítva. A használni kívánt végpont/régió előfizetési kulcsának megadása kötelező.
 
-A szövegfelolvasó REST API támogatja a neurális és a szabványos szöveg-beszéd hangokat, amelyek mindegyike támogat egy adott nyelvet és dialektust, amelyet a területi beállítások azonosítanak.
+A szöveg-beszéd REST API támogatja a neurális és a szabványos szöveg-beszéd hangokat, amelyek mindegyike egy adott nyelvet és dialektust támogat, területi beállítással azonosítva.
 
-* A hangok teljes listáját a [nyelvi támogatás .](language-support.md#text-to-speech)
-* A területi elérhetőségről a régiók című [témakörben talál](regions.md#text-to-speech)további információt.
+* A hangok teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
+* További információ a regionális elérhetőségről: [régiók](regions.md#text-to-speech).
 
 > [!IMPORTANT]
-> A költségek eltérőek a szabványos, egyéni és neurális hangok esetében. További információ: [Pricing](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> A költségek a standard, az egyéni és a neurális hangok esetében eltérőek. További információ: [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-Az API használata előtt a következőket értse meg:
+Az API használata előtt Ismerje meg a következőket:
 
-* A szövegfelolvasó REST API-hoz engedélyezési fejléc szükséges. Ez azt jelenti, hogy a szolgáltatás eléréséhez végre kell töltenie egy jogkivonat-cserét. További információért lásd: [Hitelesítés](#authentication).
+* A szöveg-beszéd REST API engedélyezési fejlécet igényel. Ez azt jelenti, hogy a szolgáltatás eléréséhez ki kell fejeznie egy jogkivonat-Exchange-t. További információért lásd: [Hitelesítés](#authentication).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="get-a-list-of-voices"></a>A hangok listájának beszereznie
+## <a name="get-a-list-of-voices"></a>Hangok listájának beolvasása
 
-A `voices/list` végpont lehetővé teszi, hogy egy adott régió/végpont hangok teljes listáját.
+A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végponthoz tartozó hangokat teljes listát kapjon.
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
@@ -65,19 +65,19 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régió/végpont hango
 
 ### <a name="request-headers"></a>Kérésfejlécek
 
-Ez a táblázat a szövegfelolvasásra vonatkozó kérelmekhez szükséges és választható fejléceket sorolja fel.
+Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-| Fejléc | Leírás | Kötelező / Nem kötelező |
+| Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Authorization` | Engedélyezési jogkivonat, amelyet `Bearer`a szó előz meg. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Authorization` | A szó `Bearer`előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 
 ### <a name="request-body"></a>A kérés törzse
 
-A végpontra vonatkozó `GET` kérelmekhez nem szükséges törzs.
+A végpontra `GET` irányuló kérésekhez nincs szükség törzsre.
 
-### <a name="sample-request"></a>Mintakérelem
+### <a name="sample-request"></a>Példa a kérelemre
 
-Ez a kérelem csak egy engedélyezési fejlécet igényel.
+Ehhez a kérelemhez csak engedélyezési fejléc szükséges.
 
 ```http
 GET /cognitiveservices/voices/list HTTP/1.1
@@ -88,10 +88,10 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="sample-response"></a>Mintaválasz
 
-Ez a válasz csonkolva van, hogy bemutassa a válasz szerkezetét.
+Ez a válasz a válasz szerkezetének szemléltetésére lett csonkítva.
 
 > [!NOTE]
-> A hang elérhetősége régiónként/végpontonként változik.
+> A hangalapú rendelkezésre állás régiónként vagy végpont szerint változik.
 
 ```json
 [
@@ -142,41 +142,41 @@ Ez a válasz csonkolva van, hogy bemutassa a válasz szerkezetét.
 
 ### <a name="http-status-codes"></a>HTTP-állapotkódok
 
-Az egyes válaszok HTTP-állapotkódja sikeres vagy gyakori hibákat jelez.
+Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
 | HTTP-állapotkód | Leírás | Lehetséges ok |
 |------------------|-------------|-----------------|
-| 200 | OK | A kérés sikeres volt. |
-| 400 | Hibás kérés | Hiányzik, üres vagy null értékű egy szükséges paraméter. Vagy a kötelező vagy választható paraméternek átadott érték érvénytelen. Gyakori probléma a túl hosszú fejléc. |
-| 401 | Nem engedélyezett | A kérés nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs vagy jogkivonat érvényes-e a megfelelő régióban. |
-| 429 | Túl sok kérelem | Túllépte az előfizetéséhez engedélyezett kérelmek kvótáját vagy díját. |
+| 200 | OK | A kérelem sikeres volt. |
+| 400 | Hibás kérés | Egy kötelező paraméter hiányzik, üres vagy NULL értékű. Vagy a kötelező vagy választható paraméternek átadott érték érvénytelen. Gyakori probléma egy túl hosszú fejléc. |
+| 401 | Nem engedélyezett | A kérés nincs engedélyezve. Győződjön meg arról, hogy az előfizetési kulcs vagy token érvényes, és a megfelelő régióban található. |
+| 429 | Túl sok kérelem | Túllépte az előfizetéshez engedélyezett kvótát vagy kérelmek arányát. |
 | 502 | Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejléceket is jelezhet. |
 
 
 ## <a name="convert-text-to-speech"></a>Szöveg átalakítása beszéddé
 
-A `v1` végpont lehetővé teszi a szövegfelolvasás konvertálását [a beszédszintetizáló nyelvi (SSML)](speech-synthesis-markup.md)használatával.
+A `v1` végpont lehetővé teszi szöveg-beszéd átalakítását a [Speech szintézis MARKUP Language (SSML)](speech-synthesis-markup.md)használatával.
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-Ezek a régiók a REST API használatával támogatottak a szövegfelolvasáshoz. Győződjön meg arról, hogy válassza ki a végpontot, amely megfelel az előfizetési régió.
+Ezek a régiók a REST API használatával történő szöveg-beszéd kommunikációhoz támogatottak. Győződjön meg arról, hogy az előfizetési régiójának megfelelő végpontot választotta.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ### <a name="request-headers"></a>Kérésfejlécek
 
-Ez a táblázat a szövegfelolvasásra vonatkozó kérelmekhez szükséges és választható fejléceket sorolja fel.
+Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-| Fejléc | Leírás | Kötelező / Nem kötelező |
+| Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Authorization` | Engedélyezési jogkivonat, amelyet `Bearer`a szó előz meg. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Authorization` | A szó `Bearer`előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 | `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml`. | Kötelező |
-| `X-Microsoft-OutputFormat` | A hangkimeneti formátumot adja meg. Az elfogadott értékek teljes listáját a [hangkimenetek ben láthatja.](#audio-outputs) | Kötelező |
-| `User-Agent` | Az alkalmazás neve. A megadott értéknek 255 karakternél kisebbnek kell lennie. | Kötelező |
+| `X-Microsoft-OutputFormat` | Megadja az audió kimeneti formátumot. Az elfogadott értékek teljes listájáért lásd: [hang kimenetek](#audio-outputs). | Kötelező |
+| `User-Agent` | Az alkalmazás neve. A megadott értéknek 255 karakternél rövidebbnek kell lennie. | Kötelező |
 
 ### <a name="audio-outputs"></a>Hangkimenetek
 
-Ez a lista a támogatott hangformátumok, amelyek küldött `X-Microsoft-OutputFormat` minden kérelmet, mint a fejléc. Mindegyik tartalmaz egy bitráta és kódolási típus. A Beszédszolgáltatás támogatja a 24 kHz-es, 16 kHz-es és 8 kHz-es hangkimeneteket.
+Az egyes kérésekben a `X-Microsoft-OutputFormat` fejlécként elküldhető támogatott hangformátumok listája. Mindegyik tartalmaz egy bitrátát és egy kódolási típust. A Speech Service 24 kHz, 16 kHz és 8 kHz audió kimenetet támogat.
 
 |||
 |-|-|
@@ -189,18 +189,18 @@ Ez a lista a támogatott hangformátumok, amelyek küldött `X-Microsoft-OutputF
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> Ha a kiválasztott hang- és kimeneti formátum eltérő átviteli sebességgel rendelkezik, a hang szükség szerint újramintavételezésre kerül. A 24 kHz-es `audio-16khz-16kbps-mono-siren` hangok `riff-16khz-16kbps-mono-siren` azonban nem támogatják a kimeneti formátumokat.
+> Ha a kiválasztott hang-és kimeneti formátum eltérő átviteli sebességű, akkor a rendszer szükség szerint újratervezi a hangot. Azonban a 24 kHz-es hangok nem `audio-16khz-16kbps-mono-siren` támogatják `riff-16khz-16kbps-mono-siren` a és a kimeneti formátumokat.
 
 ### <a name="request-body"></a>A kérés törzse
 
-Az egyes `POST` kérelmek törzse [beszédszintetizáló nyelvi (SSML)](speech-synthesis-markup.md)néven kerül elküldésre. Az SSML lehetővé teszi a szövegfelolvasó szolgáltatás által visszaadott szintetizált beszéd hangjának és nyelvének kiválasztását. A támogatott hangok teljes listáját a nyelvi támogatás című témakörben [tési területen láthatja.](language-support.md#text-to-speech)
+Az egyes `POST` kérések törzse a [Speech szintézis MARKUP Language (SSML) nyelven](speech-synthesis-markup.md)lesz elküldve. A SSML lehetővé teszi a szöveg-beszéd szolgáltatás által visszaadott szintetizált beszéd hangjának és nyelvének kiválasztását. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg.
 
 > [!NOTE]
-> Ha egyéni hangot használ, a kérelem törzse egyszerű szövegként elküldhető (ASCII vagy UTF-8).
+> Egyéni hang használata esetén a kérelem törzse egyszerű szövegként (ASCII vagy UTF-8) is elküldhető.
 
-### <a name="sample-request"></a>Mintakérelem
+### <a name="sample-request"></a>Példa a kérelemre
 
-Ez a HTTP-kérelem SSML-t használ a hang és a nyelv megadásához. Ha a test hossza hosszú, és az eredményül kapott hang meghaladja a 10 percet - akkor 10 percre csonkolja. Más szóval a hanghossz nem haladhatja meg a 10 percet.
+Ez a HTTP-kérelem SSML használ a hang és a nyelv megadásához. Ha a törzs hossza hosszú, és az eredményül kapott hang meghaladja a 10 percet, a rendszer 10 percre csonkolja. Más szóval az audió hossza nem haladhatja meg a 10 percet.
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -217,30 +217,30 @@ Authorization: Bearer [Base64 access_token]
 </voice></speak>
 ```
 
-Tekintse meg rövid útmutatóinkat a nyelvspecifikus példákért:
+Tekintse meg a nyelvspecifikus példákat:
 
-* [.NET mag, C #](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
+* [.NET Core, C #](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
 * [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
 * [Node.js](quickstart-nodejs-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP-állapotkódok
 
-Az egyes válaszok HTTP-állapotkódja sikeres vagy gyakori hibákat jelez.
+Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
 | HTTP-állapotkód | Leírás | Lehetséges ok |
 |------------------|-------------|-----------------|
-| 200 | OK | A kérés sikeres volt; a választörzs egy hangfájl. |
-| 400 | Hibás kérés | Hiányzik, üres vagy null értékű egy szükséges paraméter. Vagy a kötelező vagy választható paraméternek átadott érték érvénytelen. Gyakori probléma a túl hosszú fejléc. |
-| 401 | Nem engedélyezett | A kérés nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs vagy jogkivonat érvényes-e a megfelelő régióban. |
-| 413 | A kérelem entitása túl nagy | Az SSML-bemenet 1024 karakternél hosszabb. |
-| 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy a `Content-Type` rossz volt biztosított. `Content-Type`a beállítását `application/ssml+xml`a beállításra kell állítani. |
-| 429 | Túl sok kérelem | Túllépte az előfizetéséhez engedélyezett kérelmek kvótáját vagy díját. |
+| 200 | OK | A kérelem sikeres volt; a válasz törzse egy hangfájl. |
+| 400 | Hibás kérés | Egy kötelező paraméter hiányzik, üres vagy NULL értékű. Vagy a kötelező vagy választható paraméternek átadott érték érvénytelen. Gyakori probléma egy túl hosszú fejléc. |
+| 401 | Nem engedélyezett | A kérés nincs engedélyezve. Győződjön meg arról, hogy az előfizetési kulcs vagy token érvényes, és a megfelelő régióban található. |
+| 413 | A kérelem entitása túl nagy | A SSML bemenete hosszabb 1024 karakternél. |
+| 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy a helytelen `Content-Type` volt megadva. `Content-Type`értékre kell állítani `application/ssml+xml`. |
+| 429 | Túl sok kérelem | Túllépte az előfizetéshez engedélyezett kvótát vagy kérelmek arányát. |
 | 502 | Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejléceket is jelezhet. |
 
-Ha a HTTP-állapot a `200 OK`, a válasz törzse a kért formátumban lévő hangfájlt tartalmaz. Ez a fájl átvihető, pufferbe menthető vagy fájlba menthető.
+Ha a HTTP-állapot `200 OK`értéke, a válasz törzse egy hangfájlt tartalmaz a kért formátumban. Ezt a fájlt áthelyezték, pufferbe mentve vagy fájlba mentve lehet lejátszani.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services)
-- [Aszinkron szintézis a hosszú formátumú hang](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Aszinkron szintézis a hosszú formátumú hangokhoz](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [Bevezetés a Custom Voice szolgáltatásba](how-to-custom-voice.md)

@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: c35f30e1f403baf5fa01d450f77b77120a5b28cf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400676"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene járni:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrás létrehozása<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=macos&pivots=programming-language-cpp)
-> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=macos&pivots=programming-language-cpp)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 ## <a name="source-code"></a>Forráskód
 
-Hozzon létre egy *helloworld.cpp*nevű C++ forrásfájlt, és illessze be a következő kódot.
+Hozzon létre egy *HelloWorld. cpp*nevű C++ forrásfájlt, és illessze be a következő kódot a fájlba.
 
 [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/macos/from-microphone/helloworld.cpp#code)]
 
@@ -37,7 +37,7 @@ Hozzon létre egy *helloworld.cpp*nevű C++ forrásfájlt, és illessze be a kö
 > [!NOTE]
 > Ügyeljen arra, hogy a lenti parancsokat _egyetlen parancssorként_ írja be. Ennek a legegyszerűbb módja, ha az egyes parancsok mellett található **Másolás** gombbal kimásolja a parancsot, majd beilleszti a felületi parancssorba.
 
-* Futtassa a következő parancsot az alkalmazás létrehozásához.
+* Futtassa az alábbi parancsot az alkalmazás létrehozásához.
 
   ```sh
   g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech

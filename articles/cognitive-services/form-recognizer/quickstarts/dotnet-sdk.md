@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Űrlapfelismerő ügyféltár a .NET-hez'
-description: Első lépések a .NET űrlapfelismerő ügyféltárával a program strukturált adatkimenet betanításához, kibontásához, elemzéséhez és lekérnie kell ezt a rövid útmutatót.
+title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez'
+description: Ismerkedjen meg a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval, hogy betanítsa, kinyerje, elemezze és strukturált adatkimenetet kapjon ehhez a rövid útmutatóhoz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,55 +10,55 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 8d05f5ad07f9b3affba9442d6caa6e63162b813c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399424"
 ---
-# <a name="quickstart-form-recognizer-client-library-for-net"></a>Rövid útmutató: Űrlapfelismerő ügyféltár a .NET-hez
+# <a name="quickstart-form-recognizer-client-library-for-net"></a>Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez
 
-Első lépések a .NET Űrlapfelismerő ügyféltárral. A Formafelismerő egy kognitív szolgáltatás, amely gépi tanulási technológiát használ a kulcs-/értékpárok és a táblaadatok azonosítására és kinyerésére űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Az alábbi lépésekkel telepítheti az SDK-csomagot, és kipróbálhatja az alapvető feladatok példakódját.
+Ismerkedés a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval. Az űrlap-felismerő egy olyan kognitív szolgáltatás, amely gépi tanulási technológiával azonosítja és Kinyeri a kulcs/érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Az alábbi lépéseket követve telepítheti az SDK-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
-A .NET űrlapfelismerő ügyféltár segítségével:
+Használja a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a következőhöz:
 
-* [Egyéni űrlapfelismerő modell betanítása](#train-a-custom-model)
-* [Kibontott kulcsok listájának beszereznie](#get-a-list-of-extracted-keys)
+* [Egyéni űrlap-felismerő modell betanítása](#train-a-custom-model)
+* [Kinyert kulcsok listájának beolvasása](#get-a-list-of-extracted-keys)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
-* [Egyéni modellek listájának beszereznie](#get-a-list-of-custom-models)
+* [Egyéni modellek listájának beolvasása](#get-a-list-of-custom-models)
 * [Egyéni modell törlése](#delete-a-custom-model)
 
-[Referenciadokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [könyvtár forráskódcsomagja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/FormRecognizer) | [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Dokumentációs](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/FormRecognizer) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/)
-* Egy Azure Storage blob, amely betanítási adatokat tartalmaz. Lásd: [Betanítási adatkészlet létrehozása egyéni modellhez](../build-training-data-set.md) tippeket és lehetőségeket a betanítási adatok összeállításához. Ehhez a rövid útmutatóhoz használhatja a [mintaadatkészlet](https://go.microsoft.com/fwlink/?linkid=2090451) **Betanítás** mappája alatti fájlokat.
-* A [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója .
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
+* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **vonattal** mappában található fájlokat.
+* A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
 
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
-### <a name="create-a-form-recognizer-azure-resource"></a>Űrlapfelismerő Azure-erőforrás létrehozása
+### <a name="create-a-form-recognizer-azure-resource"></a>Űrlap-felismerő Azure-erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Miután lekért egy kulcsot és egy végpontot, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcshoz és a végponthoz, amelyet elnevezett `FORM_RECOGNIZER_KEY` és `FORM_RECOGNIZER_ENDPOINT`.
+A kulcs és a végpont beszerzése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcshoz `FORM_RECOGNIZER_KEY` és `FORM_RECOGNIZER_ENDPOINT`a végponthoz, a nevet és a-t.
 
-### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
+### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-Egy konzolablakban (például cmd, PowerShell vagy `dotnet new` Bash) a paranccsal `formrecognizer-quickstart`hozhat létre egy új konzolalkalmazást a .. Ez a parancs egy egyszerű "Hello World" C# projektet hoz létre egyetlen forrásfájllal: _Program.cs_. 
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű `formrecognizer-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: _program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappára. Ezután készítse el az alkalmazást a következőkkel:
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Ezután hozza létre az alkalmazást az alábbiakkal:
 
 ```console
 dotnet build
 ```
 
-A build kimenetnem tartalmazhat figyelmeztetéseket vagy hibákat. 
+A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát. 
 
 ```console
 ...
@@ -68,106 +68,106 @@ Build succeeded.
 ...
 ```
 
-A projekt könyvtárából nyissa meg a _Program.cs_ fájlt a kívánt szerkesztőben vagy IDE-ben. Adja hozzá a következő `using`-utasításokat:
+A projekt könyvtárában nyissa meg a _program.cs_ fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using`-utasításokat:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
-Ezután adja hozzá a következő kódot az alkalmazás **fő** metódusában. Ezt az aszinkron feladatot később fogja definiálni.
+Ezután adja hozzá a következő kódot az alkalmazás **fő** metódusához. Ezt az aszinkron feladatot később is megadhatja.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_main)]
 
-### <a name="install-the-client-library"></a>Az ügyféltár telepítése
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Az alkalmazáskönyvtáron belül telepítse a .NET Űrlapfelismerő ügyféltárat a következő paranccsal:
+Az alkalmazás könyvtárában telepítse a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a következő paranccsal:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.8.0-preview
 ```
 
-Ha a Visual Studio IDE-t használja, az ügyfélkönyvtár letölthető NuGet csomagként érhető el.
+Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok kezelik a Form Recognizer SDK fő funkcióit.
+A következő osztályok az űrlap-felismerő SDK fő funkcióit kezelik.
 
 |Name (Név)|Leírás|
 |---|---|
-|[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Ez az osztály szükséges az összes Űrlapfelismerő funkcióhoz. Az előfizetési adatokkal azonnal létrehozhatja azt, és más osztályok példányainak létrehozásához használhatja őket.|
-|[TrainRequest (TrainRequest)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Ezzel az osztállyal egyéni űrlapfelismerő modellt taníthatja be a saját betanítási bemeneti adataival. |
-|[TrainResult vonateredménye](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainresult?view=azure-dotnet-preview)| Ez az osztály egy egyéni modell Train művelet eredményeit adja meg, beleértve a modellazonosítót is, amelyet ezután űrlapok elemzésére használhat. |
-|[AnalyzeResult (Elemzési eredmény)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview)| Ez az osztály egy egyéni modell elemzési műveletének eredményeit szolgáltatja. Tartalmazza a **Kibontottoldal** példányok listáját. |
-|[Kibontott oldal](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| Ez az osztály az egyetlen űrlapdokumentumból kinyert összes adatot jelöli.|
+|[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Ez az osztály minden űrlap-felismerő funkció esetében szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
+|[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Ezt az osztályt használja az egyéni űrlap-felismerő modell betanítására saját betanítási adatok használatával. |
+|[TrainResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainresult?view=azure-dotnet-preview)| Ez az osztály egy egyéni modell-betanítási művelet eredményeit tartalmazza, beleértve a modell AZONOSÍTÓját is, amelyet aztán az űrlapok elemzésére használhat. |
+|[AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview)| Ez az osztály az egyéni modell elemzési műveletének eredményeit jeleníti meg. Tartalmazza az **ExtractedPage** -példányok listáját. |
+|[ExtractedPage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| Ez az osztály az egyetlen dokumentumból kinyert összes adathalmazt jelképezi.|
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek bemutatják, hogyan kell elvégezni a következő feladatokat a .NET Űrlapfelismerő ügyféltárban:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a .NET-hez készült űrlap-felismerő ügyféloldali kódtára használatával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Egyéni űrlapfelismerő modell betanítása](#train-a-custom-model)
-* [Kibontott kulcsok listájának beszereznie](#get-a-list-of-extracted-keys)
+* [Egyéni űrlap-felismerő modell betanítása](#train-a-custom-model)
+* [Kinyert kulcsok listájának beolvasása](#get-a-list-of-extracted-keys)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
-* [Egyéni modellek listájának beszereznie](#get-a-list-of-custom-models)
+* [Egyéni modellek listájának beolvasása](#get-a-list-of-custom-models)
 * [Egyéni modell törlése](#delete-a-custom-model)
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Mielőtt bármilyen módszert definiálna, adja hozzá a következő változódefiníciókat a **Program** osztály tetejére. Önnek kell kitölteni néhány változó magát. 
+A módszerek meghatározása előtt adja hozzá a következő változó definíciókat a **program** osztályának elejéhez. A változók némelyikét saját kezűleg kell kitöltenie. 
 
-* A betanítási adatok SAS-URL-címének beolvasásához nyissa meg a Microsoft Azure Storage Exploreralkalmazást, kattintson a jobb gombbal a tárolóra, és válassza **a Megosztott hozzáférésű aláírás beolvasása parancsot.** Ellenőrizze, hogy az **Olvasás** és **a Lista** engedélyek be vannak-e jelölve, majd kattintson a **Létrehozás gombra.** Ezután másolja az **URL-cím** szakasz értékét. Meg kell a `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`forma: .
-* Ha elemzésre van szüksége mintaűrlapra, használhatja a mintaadatkészlet **Teszt** mappájában található fájlok [egyikét.](https://go.microsoft.com/fwlink/?linkid=2090451) Ez az útmutató csak PDF-űrlapokat használ.
+* A betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza a **közös hozzáférési aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
+* Ha az elemzéshez minta űrlapra van szüksége, használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található egyik fájlt. Ez az útmutató csak PDF-űrlapokat használ.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-A `Main` módszer alatt adja meg a `Main`alkalmazásban hivatkozott feladatot. Itt hitelesíti az ügyfélobjektumot a fent meghatározott előfizetési változók használatával. A többi módszert később határozza meg.
+A `Main` metódus alatt adja meg a hivatkozott feladatot `Main`. Itt a fentiekben megadott előfizetési változók használatával hitelesítheti az ügyféloldali objektumot. A többi módszert később is megadhatja.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
-A következő módszer a Form Recognizer ügyfélobjektum ot használja egy új felismerési modell betanításához az Azure blob tárolójában tárolt dokumentumokon. Egy segítő módszert használ az újonnan betanított modell [(egy ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) objektum által képviselt) adatainak megjelenítéséhez, és a modellazonosítót adja vissza.
+A következő módszer az űrlap-felismerő ügyfél objektumát használja az Azure Blob-tárolóban tárolt dokumentumokra vonatkozó új felismerési modell betanításához. Egy segítő módszer segítségével jeleníti meg az újonnan betanított modell ( [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) -objektum által jelölt) adatait, és visszaadja a modell azonosítóját.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_train)]
 
-A következő segítő módszer az űrlapfelismerő modell adatait jeleníti meg.
+A következő segítő módszer az űrlap-felismerő modellel kapcsolatos információkat jeleníti meg.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-## <a name="get-a-list-of-extracted-keys"></a>Kibontott kulcsok listájának beszereznie
+## <a name="get-a-list-of-extracted-keys"></a>Kinyert kulcsok listájának beolvasása
 
-A betanítás befejezése után az egyéni modell megőrzi a betanítási dokumentumokból kinyert kulcsok listáját. Arra számít, hogy a jövőbeli űrlapdokumentumok tartalmazzák ezeket a kulcsokat, és kinyeri a megfelelő értékeket az Elemzés műveletben. A kibontott kulcsok listájának beolvasásához és a konzolra való nyomtatásához használja az alábbi módszert. Ez egy jó módja annak, hogy ellenőrizze, hogy a képzési folyamat hatékony volt.
+A betanítás befejezése után az egyéni modell megőrzi a kinyert kulcsok listáját a betanítási dokumentumokból. A jövőben a következő formátumú dokumentumokat fogja tartalmazni, amelyek tartalmazzák a kulcsokat, és Kinyeri a megfelelő értékeket az elemzési műveletben. A következő módszer használatával kérheti le a kinyert kulcsok listáját, és kinyomtathatja azt a-konzolra. Ez jó módszer a betanítási folyamat hatékonyságának ellenőrzésére.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Űrlapok elemzése egyéni modellel
 
-Ez a módszer az Űrlapfelismerő ügyfélprogramot és egy modellazonosítót használ a PDF-űrlapdokumentum elemzéséhez és a kulcs-/értékadatok kinyeréséhez. Egy segítő módszert használ az eredmények megjelenítéséhez [(amelyet](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) egy AnalyzeResult objektum képvisel).
+Ez a módszer az űrlap-felismerő ügyfelet és a modell AZONOSÍTÓját használja egy PDF-űrlap dokumentumának elemzéséhez és a kulcs/érték adatok kinyeréséhez. Egy segítő metódus használatával jeleníti meg az eredményeket (amelyet egy [AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) objektum képvisel).
 
 > [!NOTE]
-> A következő módszer egy PDF-űrlapot elemez. A JPEG- és PNG-űrlapokat elemző hasonló módszereket a GitHub teljes mintakódjában [láthatja.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)
+> A következő módszer egy PDF-űrlapot elemez. A JPEG-és PNG-űrlapokat elemző hasonló módszerekhez tekintse meg a teljes mintakód a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
-A következő segítő módszer az Elemzés műveletadatait jeleníti meg.
+A következő segítő módszer az elemzési művelettel kapcsolatos információkat jeleníti meg.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-## <a name="get-a-list-of-custom-models"></a>Egyéni modellek listájának beszereznie
+## <a name="get-a-list-of-custom-models"></a>Egyéni modellek listájának beolvasása
 
-Visszaküldheti a fiókjához tartozó összes betanított modell listáját, és lekérheti a létrehozásuk időpontjára vonatkozó információkat. A modellek listáját egy [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) objektum képviseli.
+Visszaállíthatja a fiókjához tartozó összes betanított modell listáját, és lekérheti a létrehozásuk időpontját. A modellek listáját egy [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) objektum képviseli.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
 
 ## <a name="delete-a-custom-model"></a>Egyéni modell törlése
 
-Ha törölni szeretné az egyéni modellt a fiókjából, használja az alábbi módszert:
+Ha törölni szeretné az egyéni modellt a fiókjából, használja a következő metódust:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az `dotnet run` alkalmazást úgy, hogy meghívja a parancsot az alkalmazáskönyvtárból.
+Futtassa az alkalmazást úgy, hogy `dotnet run` meghívja a parancsot az alkalmazás könyvtárából.
 
 ```console
 dotnet run
@@ -175,19 +175,19 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt szeretné, hogy tisztítsák meg, és távolítsa el a Cognitive Services-előfizetés, törölheti az erőforrás vagy erőforráscsoport. Az erőforráscsoport törlése a hozzá társított egyéb erőforrásokat is törli.
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Ha betanított egy egyéni modellt, amelyet törölni szeretne a fiókjából, futtassa a [metódust](#delete-a-custom-model)az Egyéni modell törlése mezőben.
+Ha a fiókból törölni kívánt egyéni modellt is betanított, futtassa a metódust az [Egyéni modell törlése](#delete-a-custom-model)lehetőséggel.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban az Űrlapfelismerő .NET ügyfélkódtár segítségével betanításra és űrlapok elemzésére használt. Ezután ismerje meg a tippeket, hogy hozzon létre egy jobb betanítási adatkészletet, és pontosabb modelleket készítsen.
+Ebben a rövid útmutatóban az űrlap felismerő .NET ügyféloldali függvénytárát használta az egyéni modell és az elemzési űrlapok betanításához. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 
 > [!div class="nextstepaction"]
 > [Betanítási adathalmaz létrehozása](../build-training-data-set.md)
 
 * [Mi a Form Recognizer?](../overview.md)
-* A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)
+* A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)található.

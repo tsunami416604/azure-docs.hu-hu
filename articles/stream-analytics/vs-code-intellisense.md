@@ -1,77 +1,77 @@
 ---
-title: IntelliSense az Azure Stream Analytics eszközei a Visual Studio-kódhoz
-description: Ez a cikk az IntelliSense-funkciók használatát ismerteti az Azure Stream Analytics-eszközök vizuális stúdiókódhoz.
+title: IntelliSense Azure Stream Analytics Visual Studio Code-eszközökön
+description: Ez a cikk azt ismerteti, hogyan használható az IntelliSense funkció a Azure Stream Analytics Tools for Visual Studio Code-ban.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81394396"
 ---
-# <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense az Azure Stream Analytics eszközei a Visual Studio-kódhoz
+# <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense Azure Stream Analytics Visual Studio Code-eszközökön
 
-Az IntelliSense a [Stream Analytics lekérdezési nyelvéhez](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstream-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json) érhető el az [Azure Stream Analytics-eszközök vs code eszközében.](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview) Az IntelliSense egy kódkiegészítési segédeszköz, amely számos funkciót tartalmaz: Listatagok, Paraméteradatok, Gyors információ és Teljes Word. Az IntelliSense funkcióit néha más nevek is nevezik, például "kódkiegészítés", "tartalomsegéd" és "kódcélzás".
+Az IntelliSense [stream Analytics lekérdezési nyelvhez](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstream-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json) érhető el a [vs Code Azure stream Analytics eszközökben](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview). Az IntelliSense egy kód-kiegészítési támogatás, amely számos funkciót tartalmaz: tagok listázása, a paraméterek adatai, a gyors információ és a teljes szó. Az IntelliSense szolgáltatásait más nevek is meghívják, például a "kód befejezése", a "Content Assist" és a "Code Hinting".
 
-![IntelliSense bemutató](./media/vs-code-intellisense/intellisense.gif)
+![IntelliSense-bemutató](./media/vs-code-intellisense/intellisense.gif)
 
-## <a name="intellisense-features"></a>Az IntelliSense szolgáltatásai
+## <a name="intellisense-features"></a>IntelliSense-funkciók
 
-A VS Code Stream Analytics eszközeinek IntelliSense-funkcióit nyelvi szolgáltatás működteti. A nyelvi szolgáltatás elemzi a forráskódot, és nyelvi szemantika alapján intelligens kódkiegészítéseket biztosít. Ha egy nyelvi szolgáltatás ismeri a lehetséges kiegészítéseket, az IntelliSense javaslatok gépelés közben jelennek meg. Ha folytatja a gépelést, a program a tagok listáját , például a változókat és a metódusokat szűri, hogy csak a beírt karaktereket tartalmazó tagokat tartalmazza. Amikor megnyomja `Tab` `Enter` a vagy a billentyűket, az IntelliSense beszúrja a kijelölt tagot.
+A VS Code Stream Analytics eszközeinek IntelliSense-funkcióit egy nyelvi szolgáltatás látja el. A nyelvi szolgáltatás elemzi a forráskódot, és intelligens kódokat biztosít a nyelvi szemantika alapján. Ha egy nyelvi szolgáltatás képes a lehetséges befejezésre, az IntelliSense-javaslatok beírásakor. Ha folytatja a beírást, a rendszer szűri a tagok, például a változók és a metódusok listáját úgy, hogy csak olyan tagokat tartalmazzon, amelyek tartalmazzák a beírt karaktereket. Ha megnyomja `Tab` a `Enter` vagy a billentyűt, az IntelliSense beszúrja a kiválasztott tagot.
 
-Az IntelliSense bármely szerkesztőablakban elindítható egy eseményindító karakter, `.`például a dot karakter beírásával.
+Az IntelliSense bármely szerkesztő ablakban aktiválható egy trigger karakter, például a pont karakter `.`beírásával.
 
-![intellisense autocompletion](./media/vs-code-intellisense/auto-completion.gif)
+![IntelliSense-Újratöltés](./media/vs-code-intellisense/auto-completion.gif)
 
 > [!TIP]
-> A javaslatok widget támogatja CamelCase szűrés. A javaslatok korlátozásához írja be a nagybetűs betűket a metódus nevében. Például a "cra" gyorsan megjelenik a "createApplication" .For example, "cra" will quickly bring up "createApplication".
+> A javaslatok widget támogatja a CamelCase szűrést. Megadhatja, hogy a rendszer milyen betűket írjon be a metódusok nevében a javaslatok korlátozása érdekében. A "CRA" például gyorsan felveszi a "létrehozás".
 
-### <a name="types-of-completions"></a>A kiegészítések típusai
+### <a name="types-of-completions"></a>A Befejezés típusai
 
-A VS Code IntelliSense Stream Analytics eszközei különböző típusú kiegészítéseket kínálnak, beleértve a nyelvi kiszolgálójavaslatokat, a kódrészleteket és az egyszerű szóalapú szöveges kiegészítéseket.
+A VS Code IntelliSense Stream Analytics eszközei különböző típusú kiegészítéseket biztosítanak, beleértve a nyelvi kiszolgáló javaslatait, a kódrészleteket és az egyszerű, Word-alapú szöveges kiegészítéseket.
 
 |       |         |       |
 | ----- | ------- | ----- |
 | Kulcsszavak | `keyword`
 | Functions | `build-in function`, `user defined function`  |
-| Adatkészlet neve| `input`, `output`, `intermediate result set`|
-| Adatkészlet oszlopának neve|`input`, `intermediate result set`|
+| Adathalmaz neve| `input`, `output`, `intermediate result set`|
+| Adathalmaz oszlopának neve|`input`, `intermediate result set`|
 |
 
-#### <a name="name-completion"></a>Név kiegészítése
+#### <a name="name-completion"></a>Név befejezése
 
-A kulcsszó automatikus kiegészítése mellett a VS Code Stream Analytics-eszközei beolvassa a feladatbemeneti és kimeneti nevek listáját, valamint az adatforrások oszlopainak nevét, amikor konfigurálva vannak. A bővítmény megjegyzi ezeket az információkat, hogy olyan névkiegészítési lehetőségeket biztosítson, amelyek hasznosak a néhány billentyűleütéssel rendelkező utasítások beviteléhez:
+A kulcsszó automatikus kiegészítése mellett a VS Code-hoz készült Stream Analytics Tools beolvassa a feladatok bemeneti és kimeneti neveinek listáját, valamint az adatforrásokban lévő oszlopok nevét, amikor azok konfigurálva vannak. A bővítmény ezeket az információkat olyan név-kiegészítési képességek biztosítására írja elő, amelyek néhány billentyűleütéssel rendelkező utasítások megadásához hasznosak:
 
-Kódolás közben nem kell elhagynia a szerkesztőt, hogy keresést hajtson végre a feladatbemeneti neveken, a kimeneti neveken és az oszlopneveken. Megtarthatja a környezetet, megtalálhatja a szükséges információkat, elemeket szúrhat be közvetlenül a kódjába, és az IntelliSense befejezheti a gépelést.
+A kódolás során nem kell elhagynia a szerkesztőt, hogy végezzen keresést a feladatok bemeneti nevein, a kimeneti névben és az oszlopnevek. Megtarthatja a környezetét, megkeresheti a szükséges információkat, elemeket szúrhat be közvetlenül a kódjába, és az IntelliSense befejezi a gépelést.
 
-Ne feledje, hogy a névkiegészítés használatához be kell állítania a helyi vagy az élő bemenetet, és mentenie kell a konfigurációs fájlt.
+Vegye figyelembe, hogy helyi bevitelt vagy élő bemenetet kell konfigurálnia, és mentenie kell a konfigurációs fájlt, hogy használni tudja a név befejezését.
 
-![név kiegészítése](./media/vs-code-intellisense/name-completion.gif)
+![név befejezése](./media/vs-code-intellisense/name-completion.gif)
 
-### <a name="parameter-info"></a>Paraméter információ
+### <a name="parameter-info"></a>Paraméter adatai
 
-Az IntelliSense **paraméterinformáció** beállítás megnyit egy paraméterlistát, amely a függvények által igényelt paraméterek számáról, nevéről és típusáról nyújt információt. A félkövérrel szedett paraméter a következő paramétert jelzi, amely a függvény beírásakor szükséges.
+Az IntelliSense- **paraméter adatai** lehetőség megnyit egy paraméter-listát, amely információkat biztosít a függvények által igényelt paraméterek számáról, nevéről és típusairól. A félkövérrel szedett paraméter a függvény beírásakor szükséges következő paramétert jelzi.
 
-A beágyazott függvények paraméterlistája is megjelenik. Ha egy függvényt paraméterként ír be egy másik függvényhez, a paraméterlista megjeleníti a belső függvény paramétereit. Ezután, amikor a belső függvényparaméter-lista befejeződött, a paraméterlista visszaáll a külső függvényparaméterek megjelenítésére.
+A beágyazott függvények esetében a paraméterek listája is megjelenik. Ha a függvényt paraméterként adja meg egy másik függvénynek, a paraméterek listája a belső függvény paramétereit jeleníti meg. Ezután, amikor a belső függvény paraméterének listája elkészült, a paraméterek listája visszaállítja a külső függvény paramétereinek megjelenítéséhez.
 
-![paraméter információ](./media/vs-code-intellisense/parameter-info.gif)
+![paraméter adatai](./media/vs-code-intellisense/parameter-info.gif)
 
 ### <a name="quick-info"></a>Gyors információ
 
-A nyelvi szolgáltatás által biztosított módon a kódban minden egyes azonosítóhoz gyors **információ** látható. Az azonosítók közé tartoznak például a bemenet, a kimenet, a köztes eredményhalmaz vagy a függvény. Amikor az egérmutatót egy azonosító fölé viszi, annak deklarációja egy előugró ablakban jelenik meg. A bemenetek tulajdonságai és adatsémák, ha konfigurálva vannak, és köztes adatkészlet jelennek meg.
+A nyelvi szolgáltatás által biztosítottak szerint az egyes azonosítók **gyors információi** láthatók a kódban. Néhány példa az azonosítók bemenetre, kimenetre, köztes eredményhalmaz vagy függvényre. Amikor az egérmutatót egy azonosító fölé helyezi, a deklaráció megjelenik egy előugró ablakban. A bemenetek tulajdonságai és adatsémái, ha be van állítva, és a köztes adatkészlet látható.
 
 ![gyors információ](./media/vs-code-intellisense/quick-info.gif)
 
-## <a name="troubleshoot-intellisense"></a>Az IntelliSense hibáinak elhárítása
+## <a name="troubleshoot-intellisense"></a>IntelliSense-hibák
 
-Ezt a problémát az okozza, hogy hiányzik az adatokat kibocsátó bemeneti konfiguráció. Ellenőrizheti, hogy a [helyi bemenet](visual-studio-code-local-run.md#define-a-local-input) vagy az [élő bemenet](visual-studio-code-local-run-live-input.md#define-a-live-stream-input) megfelelően van-e konfigurálva.
+Ezt a problémát a hiányzó bemeneti konfiguráció okozta, amely adatokat biztosít. Megtekintheti, hogy a [helyi bemenet](visual-studio-code-local-run.md#define-a-local-input) vagy az [élő bemenet](visual-studio-code-local-run-live-input.md#define-a-live-stream-input) megfelelően van-e konfigurálva.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Hozzon létre egy Azure Stream Analytics-feladatot a Visual Studio-kódban](quick-create-vs-code.md)
-* [A Test Stream Analytics helyi lekérdezéseket lekérdezése imént a Visual Studio-kód használatával](visual-studio-code-local-run.md)
-* [A Test Stream Analytics helyi legfelhasználhatósági lekérdezéseket használ a Visual Studio-kód használatával](visual-studio-code-local-run-live-input.md)
+* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md)
+* [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)
+* [A Visual Studio Code használatával helyileg tesztelheti Stream Analytics lekérdezéseket élő stream-bevitelsel](visual-studio-code-local-run-live-input.md)

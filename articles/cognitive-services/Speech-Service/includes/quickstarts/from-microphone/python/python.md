@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: 3613d190ef079d0e477d42b426a224d8e4dda7e6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400721"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene járni:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrás létrehozása<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 ## <a name="source-code"></a>Forráskód
 
-Hozzon létre egy quickstart.py nevű *fájlt,* és illessze be a következő Python-kódot.
+Hozzon létre egy *Quickstart.py* nevű fájlt, és illessze be a következő Python-kódot.
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/from-microphone/quickstart.py#code)]
 
@@ -34,13 +34,13 @@ Hozzon létre egy quickstart.py nevű *fájlt,* és illessze be a következő Py
 
 ## <a name="build-and-run-app"></a>Alkalmazás létrehozása és futtatása
 
-Most már készen áll az alkalmazás tesztelésére, és a beszédfelismerési funkció ellenőrzésére a Beszédszolgáltatás használatával.
+Most már készen áll az alkalmazás tesztelésére és a beszédfelismerési funkció a beszédfelismerési szolgáltatással történő ellenőrzésére.
 
-1. **Az alkalmazás indítása** – A parancssorból írja be a következőt:
+1. **Indítsa el az alkalmazást** – a parancssorból írja be a következőt:
     ```bash
     python quickstart.py
     ```
-2. **Start elismerés** - Ez arra kéri, hogy beszéljen egy mondatot angolul. A rendszer elküldi a beszédfelismerési szolgáltatást, szövegként átírja, és megjeleníti a konzolon.
+2. **Felismerés elindítása** – a rendszer felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
 ## <a name="next-steps"></a>További lépések
 

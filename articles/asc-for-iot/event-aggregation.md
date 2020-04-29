@@ -1,6 +1,6 @@
 ---
 title: Eseményösszesítés
-description: Ismerje meg az Azure Security Center for IoT-eseményösszesítést.
+description: További információ a IoT-események összesítésének Azure Security Center.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,89 +16,89 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f72ef8cc5161bd6f885249e7d39344a57fa2368e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311417"
 ---
-# <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center az IoT-események összesítéséhez
+# <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center a IoT esemény összesítéséhez
 
-Az Azure Security Center for IoT biztonsági ügynökök adatokat és rendszereseményeket gyűjt a helyi eszközről, és elküldi ezeket az adatokat az Azure-felhőbe feldolgozásra és elemzésre. A biztonsági ügynök számos eszközeseményt gyűjt, beleértve az új folyamatot és az új kapcsolati eseményeket. Mind az új folyamat, mind az új kapcsolatesemények egy másodpercen belül gyakran előfordulhatnak egy eszközön, és bár fontos a robusztus és átfogó biztonság szempontjából, a biztonsági ügynökök által küldött üzenetek száma gyorsan elérheti vagy meghaladhatja az IoT Hub kvótáját és a költségkorlátokat. Ezek az események azonban rendkívül értékes biztonsági információkat tartalmaznak, amelyek létfontosságúak az eszköz védelme szempontjából.
+A IoT biztonsági ügynök Azure Security Center adatokat és rendszereseményeket gyűjt a helyi eszközről, és ezeket az adatokat az Azure-felhőbe küldi feldolgozásra és elemzésre. A biztonsági ügynök számos típusú eseményt gyűjt, beleértve az új folyamatot és az új kapcsolatok eseményeit. Az új folyamat és az új kapcsolódási események is jogszerűen előfordulhatnak egy adott eszközön egy másodpercen belül, és noha fontos a robusztus és teljes biztonság szempontjából, az üzenetek biztonsági ügynökei számára a küldésre kényszerített mennyiség gyorsan elérheti vagy meghaladhatja a IoT Hub kvótát és a költségeket. Ezek az események azonban rendkívül értékes biztonsági információkat tartalmaznak, amelyek elengedhetetlenek az eszköz védelméhez.
 
-A további kvóta és költségek csökkentése érdekében az eszközök védelme érdekében az Azure Security Center for IoT-ügynökök az ilyen típusú eseményeket összesítik.
+Ha csökkenteni szeretné a további kvótákat és költségeket az eszközök védelmének fenntartása mellett, Azure Security Center IoT-ügynökök összesítik az ilyen típusú eseményeket.
 
-Az eseményösszesítés alapértelmezés szerint be van **kapcsolva,** és bár nem ajánlott, bármikor **manuálisan kikapcsolható.**
+Az esemény összesítése alapértelmezés szerint **be** van kapcsolva, és bár nem ajánlott, a manuálisan **kikapcsolható** .
 
-Az összesítés jelenleg a következő típusú eseményekhez érhető el:
+Az Összesítés jelenleg a következő típusú eseményekhez érhető el:
 
 * ProcessCreate
-* Kapcsolatlétrehozása
+* ConnectionCreate
 * ProcessTerminate (csak Windows)
 
-## <a name="how-does-event-aggregation-work"></a>Hogyan működik az eseményösszesítés?
+## <a name="how-does-event-aggregation-work"></a>Hogyan működik az események összesítése?
 
-Ha az eseményösszesítés **bekapcsolva**marad, az Azure Security Center az IoT-ügynökök összesített események az intervallum időszak vagy idő ablak.
-Miután az intervallum időköz lejárt, az ügynök elküldi az összesített eseményeket az Azure-felhőtovábbi elemzéscéljából.
-Az összesített események a memóriában vannak tárolva, amíg el nem küldik az Azure-felhőbe.
+Ha az esemény összesítése **továbbra**is fennáll, Azure Security Center a IoT-ügynökök összesített eseményei az intervallum vagy az idő ablakban.
+Az intervallum lejárta után az ügynök további elemzés céljából elküldi az összesített eseményeket az Azure-felhőbe.
+Az összesített eseményeket a rendszer a memóriában tárolja, amíg el nem érkezik az Azure-felhőbe.
 
-Az ügynök memórialábnyomának csökkentése érdekében, amikor az ügynök egy azonos eseményt gyűjt, amely már a memóriában van, az ügynök növeli az adott esemény találati számát. Amikor az összesítési időablak áthalad, az ügynök elküldi a találati számot az egyes eseménytípusok, amelyek előfordultak. Az eseményösszesítés egyszerűen az egyes összegyűjtött eseménytípusok találati számainak összesítése.
+Az ügynök memória-lábnyomának csökkentése érdekében, ha az ügynök egy olyan eseményt gyűjt, amely már a memóriában van, akkor az ügynök növeli az adott esemény találati számát. Az összesítési idő ablakának átadásakor az ügynök elküldi a találatok számát minden egyes eseménynél. Az események összesítése egyszerűen az egyes összegyűjtött események találati számának összesítése.
 
-Az események csak akkor tekinthetők azonosnak, ha a következő feltételek teljesülnek:
+Az események csak akkor tekinthetők azonosnak, ha teljesülnek a következő feltételek:
 
-* ProcessCreate events - when **commandLine**, **executable**, **username**, and **userid** are azonos
-* ConnectionCreate events - ha **a parancssor,** **a userId**, **az irány**, a helyi **cím**, a **távoli cím**, a **protokoll és a **célport** azonosak
-* ProcessTerminate események - ha **a végrehajtható** és **a kilépési állapot** azonos
+* ProcessCreate-események – ha a **parancssor**, a **végrehajtható fájl**, a **Felhasználónév**és a **userid** megegyezik
+* ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a * * protokollt és a **célport** azonos
+* ProcessTerminate események – ha a **végrehajtható fájl** és a **kilépési állapot** megegyezik
 
-### <a name="working-with-aggregated-events"></a>Összesített események kelése
+### <a name="working-with-aggregated-events"></a>Összesített események használata
 
-Az összesítés során a nem összesített eseménytulajdonságok at elveti a rendszer, és 0-s értékkel jelennek meg a naplóelemzésben.
+Az összesítés során a rendszer elveti a nem összesített esemény-tulajdonságokat, és a log Analyticsben 0 értékkel jelenik meg.
 
-* ProcessCreate events - **processId**, és parentProcessId (ProcessCreate események létrehozása - és **a parentProcessId** beállítása 0
-* ConnectionCreate events - **processId**, és **a forrásport** 0-ra van állítva
+* ProcessCreate-események – a **folyamatazonosító**és a **parentProcessId** értéke 0
+* ConnectionCreate-események – a **folyamatazonosító**és a **forrásport** értéke 0
 
-## <a name="event-aggregation-based-alerts"></a>Eseményösszesítésalapú riasztások
+## <a name="event-aggregation-based-alerts"></a>Esemény-összesítési alapú riasztások
 
-Az elemzés után az Azure Security Center for IoT biztonsági riasztásokat hoz létre a gyanús összesített eseményekhez. Az összesített eseményekből létrehozott riasztások minden összesített eseménynél csak egyszer jelennek meg.
+Az elemzést követően a IoT Azure Security Center biztonsági riasztásokat hoz létre a gyanús összesített eseményekhez. Az összesített eseményekből létrehozott riasztások csak egyszer jelennek meg minden összesített eseménynél.
 
-Az összesítés kezdési időpontja, befejezési időpontja és a lehívási számláló minden esemény naplózza az esemény **ExtraDetails** mező ben Log Analytics a vizsgálatok során használható.
+Az egyes események összesítésének kezdési és befejezési időpontja, valamint az egyes eseményekhez tartozó találatok száma a vizsgálatok során való használat érdekében a Log Analytics **ExtraDetails** mezőjében lesz naplózva.
 
-Minden összesített esemény az összegyűjtött riasztások 24 órás időszakát jelöli. Az egyes események bal felső részén található eseménybeállítások menüben minden egyes összesített eseményt **elvethet.**
+Minden összesített esemény a begyűjtött riasztások 24 órás időszakát jelöli. Az egyes események bal felső sarkában az Event Options (esemény beállításai) menü használatával **elvetheti** az egyes összesített eseményeket.
 
-## <a name="event-aggregation-twin-configuration"></a>Esemény összesítése ikerkonfiguráció
+## <a name="event-aggregation-twin-configuration"></a>Esemény-összesítési kettős konfiguráció
 
-Módosítsa az Azure Security Center ioT-eseményösszesítésének konfigurációját az **azureiotsecurity** modul modul ikeridentitásának [ügynökkonfigurációs objektumán](how-to-agent-configuration.md) belül.
+Módosítsa Azure Security Center konfigurációját az IoT esemény összesítéséhez az **azureiotsecurity** modul modul- [konfigurációs objektumán](how-to-agent-configuration.md) belül.
 
 | Konfiguráció neve | Lehetséges értékek | Részletek | Megjegyzések |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | logikai | Eseményösszesítés engedélyezése/letiltása folyamatlétrehozási eseményekhez |
-| aggregationIntervalProcessCreate | ISO8601 Timespan karakterlánc | A folyamatlétrehozási események összesítési időköze |
-| aggregationEnabledConnectionCreate | logikai| Eseményösszesítés engedélyezése/letiltása kapcsolatlétrehozási eseményekhez |
-| aggregationIntervalConnectionCreate | ISO8601 Timespan karakterlánc | A kapcsolat létrehozási eseményeinek összesítési időköze |
-| aggregationEnabledProcessTerminate | logikai | Eseményösszesítés engedélyezése/letiltása folyamatmegszakítási eseményekesetén | Csak Windowson|
-| aggregationIntervalProcessTerminate | ISO8601 Timespan karakterlánc | A folyamatmegszakítási események összesítési időköze | Csak Windowson|
+| aggregationEnabledProcessCreate | logikai | Események összesítésének engedélyezése/letiltása folyamat-létrehozási eseményekhez |
+| aggregationIntervalProcessCreate | ISO8601 TimeSpan karakterlánca | A folyamat-létrehozási események összesítési időköze |
+| aggregationEnabledConnectionCreate | logikai| Esemény-összesítés engedélyezése/letiltása a kapcsolat létrehozási eseményeihez |
+| aggregationIntervalConnectionCreate | ISO8601 TimeSpan karakterlánca | Kapcsolódási időköz a kapcsolatok létrehozási eseményeihez |
+| aggregationEnabledProcessTerminate | logikai | Események összesítésének engedélyezése/letiltása a folyamatok megszakításához | Csak Windowson|
+| aggregationIntervalProcessTerminate | ISO8601 TimeSpan karakterlánca | Az összesítési időköz a folyamat megszakításához | Csak Windowson|
 |
 
-## <a name="default-configurations-settings"></a>Alapértelmezett konfigurációs beállítások
+## <a name="default-configurations-settings"></a>Alapértelmezett konfigurációk beállításai
 
 | Konfiguráció neve | Alapértelmezett értékek |
 |:-----------|:---------------|
 | aggregationEnabledProcessCreate | igaz |
-| aggregationIntervalProcessCreate | "PT1H"|
+| aggregationIntervalProcessCreate | PT1H|
 | aggregationEnabledConnectionCreate | igaz |
-| aggregationIntervalConnectionCreate | "PT1H"|
+| aggregationIntervalConnectionCreate | PT1H|
 | aggregationEnabledProcessTerminate | igaz |
-| aggregationIntervalProcessTerminate | "PT1H"|
+| aggregationIntervalProcessTerminate | PT1H|
 |
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben az Azure Security Center for IoT biztonsági ügynök összesítéséről, valamint a rendelkezésre álló eseménykonfigurációs beállításokról szerzett tudomást.
+Ebből a cikkből megtudhatta, hogyan Azure Security Center a IoT biztonsági ügynök összesítése és az elérhető esemény-konfigurációs beállítások.
 
-Az Azure Security Center iot-telepítéshez való használatának megkezdéséhez használja az alábbi cikkeket:
+A IoT-telepítés Azure Security Centerának folytatásához használja a következő cikkeket:
 
-- A [biztonsági ügynökök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) ismertetése
-- [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és üzembe helyezése
-- Tekintse át az Azure Security Centert az [IoT-szolgáltatások előfeltételeihez](service-prerequisites.md)
-- Megtudhatja, hogyan engedélyezheti az [Azure Security Center for IoT-szolgáltatást az IoT Hubban](quickstart-onboard-iot-hub.md)
-- További információ a szolgáltatásról az [Azure Security Center for IoT –GYIK-ből](resources-frequently-asked-questions.md)
+- A [biztonsági ügynök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) megismerése
+- [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és központi telepítése
+- A IoT [szolgáltatás előfeltételeinek](service-prerequisites.md) áttekintése Azure Security Center
+- Megtudhatja, hogyan [engedélyezheti Azure Security Center a IoT szolgáltatáshoz a IoT hub](quickstart-onboard-iot-hub.md)
+- További információ a szolgáltatásról a [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)

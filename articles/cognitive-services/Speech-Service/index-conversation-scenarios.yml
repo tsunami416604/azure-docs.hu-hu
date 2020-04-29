@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: A Beszélgetési forgatókönyvek dokumentációja
-summary: Fedezze fel a különböző beszélgetési forgatókönyveket. Ismerje meg a beszélgetésátírás vagy a többeszközes beszélgetés használatát értekezleti forgatókönyvekben, valamint az átírást a Hívásközpont-forgatókönyvekben.
+summary: Ismerkedjen meg a különböző beszélgetési forgatókönyvekkel. Megtudhatja, hogyan használhatja a beszélgetési átiratokat vagy a többeszközes beszélgetéseket értekezlet-forgatókönyvekben, valamint átírást a Call Center alkalmazásban.
 metadata:
-  title: Beszélgetési forgatókönyvek dokumentációja – Oktatóanyagok, API-referencia - Azure Cognitive Services | Microsoft dokumentumok
+  title: A társalgási forgatókönyvek dokumentációja – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,35 +12,35 @@ metadata:
   ms.date: 03/16/2020
   ms.author: trbye
   ms.openlocfilehash: 1766174d053b480674da26ef3e915bcf3fdf280a
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401451"
 landingContent:
-- title: Beszélgetésátírás – (értekezlet-forgatókönyv)
+- title: A beszélgetés átírása (értekezleti forgatókönyv)
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az értekezleteken a beszélgetésátírás?
+    - text: Mi a beszélgetési átirat az értekezleteken?
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Valós idejű beszélgetésátírás
+    - text: Valós idejű beszélgetés átirata
       url: how-to-use-conversation-transcription.md
     - text: Aszinkron beszédátírás
       url: how-to-async-conversation-transcription.md
-- title: Többeszközes beszélgetés – (értekezleti forgatókönyv)
+- title: A többeszközes beszélgetések ismertetése (értekezlet forgatókönyve)
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az a többeszközes beszélgetés?
+    - text: Mi az a multi-Device beszélgetés?
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: Beszélgetések indítása és az azokhoz való csatlakozás
       url: quickstarts/multi-device-conversation.md
-- title: Hívásközpont-átírás (egyéni/ügynöki forgatókönyv)
+- title: Call Center transzkripció (egyéni/ügynök forgatókönyv)
   linkLists:
   - linkListType: overview
     links:
@@ -50,9 +50,9 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Beszélgetés átírása nyelvi támogatás
+    - text: Beszélgetési átirat nyelvi támogatása
       url: conversation-transcription.md#language-support
-    - text: Többeszközes beszélgetésnyelv támogatása
+    - text: A multi-Device beszélgetés nyelvi támogatása
       url: multi-device-conversation.md#language-support
-    - text: Beszédátírás irása
+    - text: Beszéd átiratának díjszabása
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

@@ -1,6 +1,6 @@
 ---
-title: Biztonsági ügynökök kijelölése és telepítése
-description: Ismerje meg, hogyan választhatja ki és telepítheti az Azure Security Center t IoT-biztonsági ügynökökhöz IoT-eszközökön.
+title: Biztonsági ügynökök kiválasztása és telepítése
+description: Ismerje meg, hogyan válassza ki és telepítse Azure Security Center IoT biztonsági ügynökök számára a IoT-eszközökön.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,79 +16,79 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311217"
 ---
-# <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése az IoT-eszközön
+# <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése a IoT-eszközön
 
-Az Azure Security Center for IoT referenciaarchitektúrákat biztosít az IoT-eszközökről adatokat figyelő és adatokat gyűjtő biztonsági ügynökök számára.
-További információ: [Security agent reference architecture](security-agent-architecture.md).
+A IoT Azure Security Center a IoT-eszközökről származó adatokat figyelő és gyűjtő biztonsági ügynökök számára biztosít hivatkozási architektúrákat.
+További információt a [biztonsági ügynök hivatkozási architektúrája](security-agent-architecture.md)című témakörben talál.
 
-Ügynökök fejlesztik a nyílt forráskódú projektek, és rendelkezésre állnak két ízben: <br> [C](https://aka.ms/iot-security-github-c)és [C#](https://aka.ms/iot-security-github-cs).
+Az ügynökök nyílt forráskódú projektekként lettek kifejlesztve, és két változatban érhetők el: <br> [C](https://aka.ms/iot-security-github-c)és [C#](https://aka.ms/iot-security-github-cs).
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Biztonsági ügynökök ízének összehasonlítása
-> * Támogatott ügynökplatformok felfedezése
-> * Válassza ki a megfelelő ügynök ízt a megoldáshoz
+> * Biztonsági ügynöki ízek összehasonlítása
+> * Támogatott ügynökök platformjának felderítése
+> * Válassza ki a megoldás megfelelő ügynökének ízét
 
-## <a name="understand-security-agent-options"></a>A biztonsági ügynökök beállításainak ismertetése
+## <a name="understand-security-agent-options"></a>A biztonsági ügynök beállításainak ismertetése
 
-Minden Azure Security Center for IoT biztonsági ügynök íz ugyanazokat a funkciókat kínálja, és támogatja a hasonló konfigurációs lehetőségeket.
+A IoT biztonsági ügynök íz minden Azure Security Center ugyanazokat a funkciókat kínálja, és támogatja a hasonló konfigurációs beállításokat.
 
-A C-alapú biztonsági ügynök alacsonyabb memóriaigényű, és az ideális választás a kevesebb rendelkezésre álló erőforrásokkal rendelkező eszközök számára.
+A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és ideális választás a kevesebb rendelkezésre álló erőforrásokkal rendelkező eszközök számára.
 
 |     | C-alapú biztonsági ügynök | C#-alapú biztonsági ügynök |
 | --- | ----------- | --------- |
-| Nyílt forráskódú | Mit [licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [GitHubon](https://aka.ms/iot-security-github-cs) | Mit [licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [GitHubon](https://aka.ms/iot-security-github-c) |
+| Nyílt forráskódú | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-cs) | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-c) |
 | Fejlesztési nyelv    | C# | C# |
 | Támogatott Windows-platformok? | Nem | Igen |
-| A Windows előfeltételei | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| Támogatott Linux platformok? | Igen, x64 és x86 | Igen, csak x64 |
-| A Linux előfeltételei | libunwind8, libcurl3, uuid-runtime, auditált, audispd-plugins | libunwind8, libcurl3, uuid-runtime, auditált, audispd-plugins, sudo, netstat, iptables |
-| Lemez alapigénye | 10,5 MB | 90 MB |
-| Memórialábnyom (átlagosan) | 5,5 MB | 33 MB |
-| [Hitelesítés](concept-security-agent-authentication-methods.md) az IoT Hubnak | Igen | Igen |
-| Biztonsági [adatgyűjtés](how-to-agent-configuration.md#supported-security-events) | Igen | Igen |
+| Windows előfeltételek | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| Támogatott linuxos platformok? | Igen, x64 és x86 | Igen, csak x64 |
+| A Linux előfeltételei | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins, sudo, netstat, iptables |
+| Lemez lábnyoma | 10,5 MB | 90 MB |
+| Memória lábnyoma (átlagos) | 5,5 MB | 33 MB |
+| [Hitelesítés](concept-security-agent-authentication-methods.md) IoT hub | Igen | Igen |
+| Biztonsági adatgyűjtés [collection](how-to-agent-configuration.md#supported-security-events) | Igen | Igen |
 | Eseményösszesítés | Igen | Igen |
-| Távoli konfiguráció a [biztonsági modul ikermodulján keresztül](concept-security-module.md) | Igen | Igen |
+| Távoli konfiguráció a [biztonsági modul Twin](concept-security-module.md) szolgáltatásán keresztül | Igen | Igen |
 |
 
-## <a name="security-agent-installation-guidelines"></a>A biztonsági ügynökök telepítésére vonatkozó irányelvek
+## <a name="security-agent-installation-guidelines"></a>Biztonsági ügynök telepítési útmutatója
 
-**Windows**esetén: A SecurityAgent.ps1 telepítése parancsfájlt rendszergazdai PowerShell-ablakból kell végrehajtani.
+**Windows**esetén: a SecurityAgent. ps1 telepítési parancsfájlt rendszergazdai PowerShell-ablakból kell végrehajtani.
 
-**Linux esetén:** A InstallSecurityAgent.sh rendszergazdaként kell futtatni. Javasoljuk, hogy a telepítési parancsot a "sudo" segítségével rögzítse.
+**Linux**esetén: a InstallSecurityAgent.sh rendszergazdaként kell futnia. A telepítési parancs "sudo" előtaggal való előjavítását javasoljuk.
 
-## <a name="choose-an-agent-flavor"></a>Válasszon egy ügynök íz
+## <a name="choose-an-agent-flavor"></a>Ügynök íz kiválasztása
 
-Válaszoljon a következő kérdésekre az IoT-eszközökkel kapcsolatban a megfelelő ügynök kiválasztásához:
+Válaszoljon a IoT-eszközökkel kapcsolatos alábbi kérdésekre a megfelelő ügynök kiválasztásához:
 
-- _Windows Server_ vagy _Windows IoT Core rendszert_használ?
+- A _Windows Servert_ vagy a _Windows IoT Core_-t használja?
 
-    [C#-alapú biztonsági ügynök telepítése Windows rendszerhez](how-to-deploy-windows-cs.md).
+    [C#-alapú biztonsági ügynök telepítése Windows rendszerre](how-to-deploy-windows-cs.md).
 
-- X86 architektúrával rendelkező Linux disztribúciót használ?
+- Linux-disztribúciót használ x86 architektúrával?
 
-    [Telepítsen egy C-alapú biztonsági ügynököt Linuxra.](how-to-deploy-linux-c.md)
+    [A Linux rendszerhez készült C-alapú biztonsági ügynök üzembe helyezése](how-to-deploy-linux-c.md).
 
-- X64 architektúrával rendelkező Linux disztribúciót használ?
+- Linux-disztribúciót használ x64 architektúrával?
 
-    Mindkét ügynök ízek lehet használni. <br>
-    [Telepítsen egy C-alapú biztonsági ügynököt Linuxra](how-to-deploy-linux-c.md) és/vagy [telepítsen egy C#-alapú biztonsági ügynököt Linuxra.](how-to-deploy-linux-cs.md)
+    Mindkét ügynök-aroma használható. <br>
+    [Helyezzen üzembe egy C-alapú biztonsági ügynököt Linuxra](how-to-deploy-linux-c.md) és/vagy [helyezzen üzembe egy C#-alapú biztonsági ügynököt Linuxra](how-to-deploy-linux-cs.md).
 
-Mindkét ügynök ízek kínálnak ugyanazokat a funkciókat, és támogatja a hasonló konfigurációs lehetőségeket.
-További információ: [Biztonsági ügynök összehasonlítása.](how-to-deploy-agent.md#understand-security-agent-options)
+Mindkét ügynök-íz ugyanazokat a funkciókat kínálja, és támogatja a hasonló konfigurációs beállításokat.
+További információért lásd a [biztonsági ügynök összehasonlítását](how-to-deploy-agent.md#understand-security-agent-options) ismertető témakört.
 
 ## <a name="supported-platforms"></a>Támogatott platformok
 
 Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 
-|Azure Security Center ioT-ügynökhöz |Operációs rendszer |Architektúra |
+|Azure Security Center a IoT-ügynökhöz |Operációs rendszer |Architektúra |
 |--------------|------------|--------------|
 |C#|Ubuntu 16.04 |    x64|
 |C#|Ubuntu 18.04 |    x64, ARMv7|
@@ -97,11 +97,11 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Windows 10 IoT Core, build 17763    |x64|
+|C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a konfigurációs beállításokról, folytassa az útmutatóval az ügynök konfigurációjához.
+A konfigurációs beállításokkal kapcsolatos további tudnivalókért folytassa az ügynök konfigurációjának útmutatója című témakört.
 > [!div class="nextstepaction"]
-> [Az ügynök konfigurációja útmutató](./how-to-agent-configuration.md)
+> [Útmutató az ügynök konfigurálásához](./how-to-agent-configuration.md)

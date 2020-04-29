@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight virtuális hálózati architektúra
-description: Ismerje meg a rendelkezésre álló erőforrásokat, amikor egy Azure virtuális hálózatban hdinsight-fürtöt hoz létre.
+description: Ismerje meg a HDInsight-fürt Azure-Virtual Network való létrehozásakor elérhető erőforrásokat.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,80 +8,80 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81390208"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight virtuális hálózati architektúra
 
-Ez a cikk ismerteti az erőforrásokat, amelyek egy HDInsight-fürt telepítésekor egy egyéni Azure virtuális hálózatra üzembe helyezésekor vannak jelen. Ez az információ segít a helyszíni erőforrások csatlakoztatásában az Azure-beli HDInsight-fürthöz. Az Azure virtuális hálózatokról a [Mi az Azure virtuális hálózat?](../virtual-network/virtual-networks-overview.md)
+Ez a cikk ismerteti azokat az erőforrásokat, amelyek akkor jelennek meg, amikor egy HDInsight-fürtöt telepít egy egyéni Azure-Virtual Networkba. Ezek az információk segítséget nyújtanak a helyszíni erőforrások a HDInsight-fürthöz való összekapcsolásában az Azure-ban. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért lásd: [Mi az az azure Virtual Network?](../virtual-network/virtual-networks-overview.md)
 
 ## <a name="resource-types-in-azure-hdinsight-clusters"></a>Erőforrástípusok az Azure HDInsight-fürtökben
 
-Az Azure HDInsight-fürtök különböző típusú virtuális gépekkel vagy csomópontokkal rendelkeznek. Minden csomóponttípus szerepet játszik a rendszer működésében. Az alábbi táblázat ezeket a csomóponttípusokat és a fürtben betöltött szerepüket foglalja össze.
+Az Azure HDInsight-fürtök különböző típusú virtuális gépekkel vagy csomópontokkal rendelkeznek. Minden csomópont-típus a rendszer működésében játszik szerepet. A következő táblázat összefoglalja ezeket a csomópont-típusokat és azok szerepköreit a fürtben.
 
 | Típus | Leírás |
 | --- | --- |
-| Átjárócsomópont |  Az Apache Storm kivételével minden fürttípus esetében a fő csomópontok üzemeltetik az elosztott alkalmazás végrehajtását kezelő folyamatokat. A fő csomópont egyben az a csomópont is, amelybe SSH-t belehet vezetni, és futtathat olyan alkalmazásokat, amelyek et afürt-erőforrások on-át futtatnak. A főcsomópontok száma az összes fürttípusesetében kettőben van rögzítve. |
-| ZooKeeper csomópont | Zookeeper koordinálja a feladatokat a csomópontok között, amelyek az adatfeldolgozás. A főcsomópont vezető választását is végzi, és nyomon követi, hogy melyik főcsomópont fut egy adott főszolgáltatásban. A ZooKeeper csomópontok száma három. |
-| Dolgozói csomópont | Az adatfeldolgozási funkciókat támogató csomópontokat jelöli. A számítási képességek méretezése és a költségek kezelése érdekében munkavégző csomópontok adhatók hozzá vagy távolíthatók el a fürtből. |
-| R-kiszolgáló peremhálózati csomópontja | Az R-kiszolgáló peremhálózati csomópontja azt a csomópontot jelöli, amelybe SSH-t belehet vezetni, és olyan alkalmazásokat futtathat, amelyek et afürt-erőforrások on keresztül futtatnak. A peremhálózati csomópont nem vesz részt a fürtön belüli adatelemzésben. Ez a csomópont az R Studio Server kiszolgálót is üzemelteti, lehetővé téve az R alkalmazás böngészővel történő futtatását. |
-| Régió csomópontja | A HBase fürttípus esetében a régiócsomópont (más néven adatcsomópont) a régiókiszolgálót futtatja. A régiókiszolgálók a HBase által kezelt adatok egy részét szolgálják és kezelik. A régiócsomópontok hozzáadhatók vagy eltávolíthatók a fürtből a számítási képességek méretezése és a költségek kezelése érdekében.|
-| Nimbus csomópont | A Storm-fürt típusához a Nimbus csomópont a Head csomóponthoz hasonló funkciókat biztosít. A Nimbus csomópont a storm-topológiák futtatását koordináló Zookeeper en keresztül rendeli hozzá a feladatokat a fürt más csomópontjaihoz. |
-| Felügyeleti csomópont | A Storm-fürt típusához a felügyeleti csomópont végrehajtja a Nimbus csomópont által a feldolgozáshoz megadott utasításokat. |
+| Átjárócsomópont |  Az Apache Storm kivételével az összes fürtjénél a fő csomópontok futtatják az elosztott alkalmazás végrehajtását kezelő folyamatokat. A fő csomópont egyben a csomópont is, amelyből SSH-ba helyezheti és végrehajthatja azokat az alkalmazásokat, amelyek a fürt erőforrásai között futnak. A fő csomópontok száma a fürt összes típusa esetében kettőnél van rögzítve. |
+| ZooKeeper csomópont | A Zookeeper az adatfeldolgozást végző csomópontok között koordinálja a feladatokat. Emellett a fő csomópontot is vezeti, és nyomon követi, hogy melyik főcsomóponton fut egy adott főkiszolgáló. A ZooKeeper-csomópontok száma három helyen van rögzítve. |
+| Munkavégző csomópont | Azokat a csomópontokat jelöli, amelyek támogatják az adatfeldolgozási funkciókat. A munkavégző csomópontok hozzáadhatók vagy eltávolíthatók a fürtből a számítási kapacitás méretezéséhez és a költségek kezeléséhez. |
+| R Server peremhálózati csomópont | Az R Server Edge csomópont azt a csomópontot jelöli, amelyről SSH-ba, és végrehajthat olyan alkalmazásokat, amelyek a fürt erőforrásai között futnak. Az Edge-csomópontok nem vesznek részt a fürtön belüli adatelemzésben. Ez a csomópont R Studio Servert is üzemeltet, amely lehetővé teszi az R-alkalmazások futtatását böngésző használatával. |
+| Régió csomópontja | A HBase-fürt típusához a régió csomópont (más néven adatcsomópont) futtatja a régió-kiszolgálót. A régió-kiszolgálók a HBase által felügyelt adat egy részét szolgálják és kezelik. A régió csomópontjai hozzáadhatók vagy eltávolíthatók a fürtből a számítási kapacitás méretezéséhez és a költségek kezeléséhez.|
+| Nimbus csomópont | A Storm-fürt típusához a Nimbus csomópont a fő csomóponthoz hasonló funkciókat biztosít. A Nimbus-csomópont feladatokat rendel a fürt más csomópontjaihoz a Zookeeper használatával, amely a Storm-topológiák futtatását koordinálja. |
+| Felügyeleti csomópont | A Storm-fürt típusához a felügyelő csomópont hajtja végre a Nimbus csomópont által megadott utasításokat a feldolgozás elvégzéséhez. |
 
 ## <a name="resource-naming-conventions"></a>Erőforrás-elnevezési konvenciók
 
-A fürt csomópontjainak címzésekén használja a teljesen minősített tartományneveket. Az [Ambari API használatával](hdinsight-hadoop-manage-ambari-rest-api.md)beszerezheti a fürt különböző csomóponttípusainak teljes tartományn-tartományszámait.
+Használjon teljes tartományneveket (FQDN) a fürt csomópontjainak kezelésekor. A fürt különböző csomópontjaihoz tartozó teljes tartománynevek a [AMBARI API](hdinsight-hadoop-manage-ambari-rest-api.md)használatával szerezhetők be.
 
-Ezek a teljes tartományonok lesznek a forma `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`.
+Ezek a teljes tartománynevek az űrlapból `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`lesznek.
 
-A `<node-type-prefix>` lesz *hn* a headnodes, *wn* a dolgozó csomópontok és *zn* az állattartó csomópontok.
+A `<node-type-prefix>` lesz *HN* a átjárócsomópontokkal, a feldolgozói csomópontok és a *Zn* Zookeeper-csomópontok *számára.*
 
 Ha csak az állomásnévre van szüksége, csak a teljes tartománynév első részét használja:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
-## <a name="basic-virtual-network-resources"></a>Alapvető virtuális hálózati erőforrások
+## <a name="basic-virtual-network-resources"></a>Alapszintű virtuális hálózati erőforrások
 
-Az alábbi ábrán a HDInsight-csomópontok és a hálózati erőforrások elhelyezése látható az Azure-ban.
+A következő ábra a HDInsight-csomópontok és hálózati erőforrások elhelyezését mutatja be az Azure-ban.
 
-![Az Azure egyéni virtuális hálózatában létrehozott HDInsight-entitások diagramja](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+![Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-Az Azure virtuális hálózat alapértelmezett erőforrásai közé tartoznak az előző táblázatban említett fürtcsomópont-típusok. És a hálózati eszközök, amelyek támogatják a virtuális hálózat és a külső hálózatok közötti kommunikációt.
+Az Azure-Virtual Network alapértelmezett erőforrásai tartalmazzák az előző táblázatban említett fürtcsomópontok típusait. A virtuális hálózat és a külső hálózatok közötti kommunikációt támogató hálózati eszközök.
 
-Az alábbi táblázat összefoglalja a HDInsight egyéni Azure virtuális hálózatba való üzembe helyezésekor létrehozott kilenc fürtcsomópontot.
+A következő táblázat összefoglalja azokat a kilenc fürtcsomópont-csomópontot, amelyek akkor jönnek létre, amikor a HDInsight-t egy egyéni Azure-Virtual Network telepítik.
 
-| Erőforrás típusa | Jelen lévő szám | Részletek |
+| Erőforrás típusa | Szám jelen | Részletek |
 | --- | --- | --- |
 |Átjárócsomópont | kettő |    |
-|Zookeeper-csomópont | Három | |
-|Dolgozói csomópont | kettő | Ez a szám a fürt konfigurációjától és méretezésétől függően változhat. Az Apache Kafka legalább három munkavégző csomópontra van szükség.  |
-|Átjárócsomópont | kettő | Az átjárócsomópontok olyan Azure-alapú virtuális gépek, amelyeket az Azure-ban hoznak létre, de nem láthatók az előfizetésében. Lépjen kapcsolatba az ügyfélszolgálattal, ha újra kell indítania ezeket a csomópontokat. |
+|Zookeeper-csomópont | három | |
+|Munkavégző csomópont | kettő | Ez a szám a fürtkonfiguráció és a skálázás alapján változhat. Apache Kafkahez legalább három munkavégző csomópontra van szükség.  |
+|Átjárócsomópont | kettő | Az átjáró-csomópontok olyan Azure-beli virtuális gépek, amelyek az Azure-ban jönnek létre, de nem láthatók az előfizetésében. Ha újra kell indítania ezeket a csomópontokat, forduljon az ügyfélszolgálathoz. |
 
-A következő hálózati erőforrások automatikusan létrejönnek a HDInsight által használt virtuális hálózaton belül:
+A következő hálózati erőforrások automatikusan létrejönnek a HDInsight használt virtuális hálózaton belül:
 
-| Hálózati erőforrás | Jelen lévő szám | Részletek |
+| Hálózati erőforrás | Szám jelen | Részletek |
 | --- | --- | --- |
-|Terheléselosztó | Három | |
-|Hálózati illesztők | Kilenc | Ez az érték egy normál fürtön alapul, ahol minden csomópont saját hálózati adapterrel rendelkezik. A kilenc csomópont: két főcsomópont, három zookeeper csomópont, két feldolgozó csomópont és két átjárócsomópont, amelyek az előző táblázatban szerepelnek. |
+|Terheléselosztó | három | |
+|Hálózati illesztők | kilenc | Ez az érték egy normál fürtön alapul, ahol minden egyes csomópont saját hálózati adapterrel rendelkezik. A kilenc csatoló a következő: két fő csomópont, három Zookeeper-csomópont, két feldolgozó csomópont és két, az előző táblázatban említett átjáró-csomópont. |
 |Nyilvános IP-címek | kettő |    |
 
-## <a name="endpoints-for-connecting-to-hdinsight"></a>Végpontok a HDInsighthoz való csatlakozáshoz
+## <a name="endpoints-for-connecting-to-hdinsight"></a>Végpontok a HDInsight való csatlakozáshoz
 
-A HDInsight-fürtöt háromféleképpen érheti el:
+A HDInsight-fürtöt háromféle módon érheti el:
 
-- HTTPS-végpont a virtuális hálózaton `CLUSTERNAME.azurehdinsight.net`kívül a helyen.
-- SSH-végpont a fejcsomóponthoz való közvetlen `CLUSTERNAME-ssh.azurehdinsight.net`csatlakoztatáshoz a .
-- HTTPS-végpont a virtuális `CLUSTERNAME-int.azurehdinsight.net`hálózaton belül. Figyelje`-int`meg a " " kifejezést ebben az URL-ben. Ez a végpont a virtuális hálózat privát IP-címére oldódik fel, és nem érhető el a nyilvános internetről.
+- Egy HTTPS-végpont a virtuális hálózaton kívül a `CLUSTERNAME.azurehdinsight.net`következő helyen:.
+- Egy SSH-végpont, amely közvetlenül csatlakozik a átjárócsomóponthoz `CLUSTERNAME-ssh.azurehdinsight.net`a következő helyen:.
+- Egy HTTPS-végpont a virtuális hálózaton `CLUSTERNAME-int.azurehdinsight.net`belül. Figyelje meg a`-int`"" kifejezést ebben az URL-ben. Ez a végpont a virtuális hálózatban lévő magánhálózati IP-címekre lesz feloldva, és nem érhető el a nyilvános internetről.
 
-Ez a három végpont mindegyikhez egy-egy terheléselosztó van rendelve.
+Ez a három végpont mindegyike hozzá van rendelve egy terheléselosztó.
 
-Nyilvános IP-címek is biztosított a két végpont, amely lehetővé teszi a kapcsolatot a virtuális hálózaton kívülről.
+A rendszer a nyilvános IP-címeket is megadja a két végpont számára, amelyek engedélyezik a kapcsolódást a virtuális hálózaton kívülről.
 
-1. A teljesen minősített tartománynév (FQDN) terheléselosztójához egy nyilvános IP-cím van rendelve, `CLUSTERNAME.azurehdinsight.net`amelyet a fürthöz való csatlakozáskor az internetről használhat.
-1. A második nyilvános IP-cím csak az `CLUSTERNAME-ssh.azurehdinsight.net`SSH tartománynévhez használatos.
+1. Egy nyilvános IP-cím van hozzárendelve a terheléselosztó számára a teljes tartománynév (FQDN) számára, amelyet az internetről `CLUSTERNAME.azurehdinsight.net`a fürthöz való csatlakozáskor kell használni.
+1. A második nyilvános IP-cím csak az SSH-tartománynévhez használatos `CLUSTERNAME-ssh.azurehdinsight.net`.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bejövő forgalom biztonságossá tétele a HDInsight-fürtök befelé irányuló, privát végpontot rendelkező virtuális hálózatban](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+- [Biztonságos bejövő forgalom HDInsight-fürtökhöz privát végponttal rendelkező virtuális hálózaton](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Blink konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Megtudhatja, hogyan állíthatja be az Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiállítsa a felhasználói fiókokat a Blinkbe.
+title: 'Oktatóanyag: a Blink konfigurálása automatikus felhasználó-kiépítés Azure Active Directorysal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,137 +16,137 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381025"
 ---
-# <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Oktatóanyag: A Blink konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Oktatóanyag: a Blink konfigurálása automatikus felhasználó-kiépítés esetén
 
-Ez az oktatóanyag célja, hogy bemutassa a Blink és az Azure Active Directoryban (Azure AD) végrehajtandó lépéseket az Azure AD konfigurálásához, hogy automatikusan üzembe helyezze és dekonalizálják a felhasználókat a Blinkbe.
+Ennek az oktatóanyagnak a célja, hogy bemutassa a Blink és Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához, hogy automatikusan kiépítse és kiépítse a felhasználókat a Villogáshoz.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Egy Azure AD-bérlő
-* [A Blink bérlő](https://joinblink.com/pricing)
-* A Blink rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
+* Azure AD-bérlő
+* [Egy Blink-bérlő](https://joinblink.com/pricing)
+* Egy felhasználói fiók a Blink-ben rendszergazdai engedélyekkel.
 
-## <a name="assigning-users-to-blink"></a>Felhasználók hozzárendelése a Blinkhez
+## <a name="assigning-users-to-blink"></a>Felhasználók kiosztása a Blink-hoz
 
-Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoporttagok szinkronizálódnak.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak azok a felhasználók és/vagy csoporttagok szinkronizálhatók, akik az Azure AD-alkalmazáshoz vannak rendelve.
 
-Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoporttagjainak kell hozzáférniük a Blinkhez. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a Blinkhez rendelheti az alábbi utasításokat követve:
-* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználók és/vagy csoporttagok hogyan férhetnek hozzá a Blink szolgáltatáshoz. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat és/vagy csoportokat a Villogáshoz:
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-blink"></a>Fontos tippek a felhasználók Blink-hez való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-blink"></a>Fontos Tippek a felhasználók a Villogáshoz való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Blink az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen a Blink elemhez rendelve az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználót a Blinkhez rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
+* Ha a felhasználó a Villogáshoz van rendelve, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="setup-blink-for-provisioning"></a>A Blink beállítása a kiépítéshez
+## <a name="setup-blink-for-provisioning"></a>A telepítő villog a kiépítés során
 
-1. Jelentkezzen be egy támogatási eset support@joinblink.com [vagy](https://support.joinblink.com) e-mail Blink **támogatást** kér egy SCIM token. .
+1. A SCIM-token igényléséhez jelentkezzen be support@joinblink.com a [támogatási esetre](https://support.joinblink.com) vagy az e-mailek **Blink-támogatására** . .
 
-2.  Másolja az **SCIM hitelesítési tokenre**. Ezt az értéket a Titkos jogkivonat mezőben adja meg a Blink-alkalmazás kiépítés lapján az Azure Portalon.
+2.  Másolja a **scim hitelesítési tokent**. Ez az érték a Azure Portalban a Blink-alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében lesz megadva.
 
-## <a name="add-blink-from-the-gallery"></a>Blink hozzáadása a galériából
+## <a name="add-blink-from-the-gallery"></a>Blink hozzáadása a katalógusból
 
-A Blink konfigurálása az Azure AD automatikus felhasználói kiépítéséhez, hozzá kell adnia a Blinket az Azure AD alkalmazásgyűjteményéből a felügyelt SaaS-alkalmazások listájához.
+Mielőtt a Blink-t konfigurálja az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, fel kell vennie a Blink-et az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájára.
 
-**A Blink hozzáadása az Azure AD alkalmazásgyűjteményből, hajtsa végre a következő lépéseket:**
+**A következő lépésekkel adhatja hozzá a Blink-et az Azure AD-alkalmazás-katalógusból:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Blink**kifejezést, válassza a **Villogó** gombot az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Blink**kifejezést, válassza az eredmények panelen a **Pislogás** elemet, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Villogás az eredménylistában](common/search-new-app.png)
+    ![Pislogás az eredmények listájában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-blink"></a>Automatikus felhasználói kiépítés beállítása a Blink beépítésre 
+## <a name="configuring-automatic-user-provisioning-to-blink"></a>Automatikus felhasználó-kiépítés beállítása a Blink-ra 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoport-hozzárendelések alapján hozzanak létre, frissítsenek és tiltsanak le felhasználókat a Blinkben az Azure AD-ben.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozza létre, frissítse és tiltsa le a felhasználók villogását.
 
 > [!TIP]
-> Azt is választhatja, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Blink számára, a [Blink Single bejelentkezési oktatóanyag](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)utasításait követve. Az egyszeri bejelentkezés az automatikus felhasználói kiépítéstől függetlenül konfigurálható, bár ez a két funkció kiegészíti egymást
+> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a Blink-hez, a [Blink egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
 
-### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>A Blink automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>A felhasználók automatikus üzembe helyezésének beállítása a Blink-hez az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Blink**lehetőséget.
+2. Az alkalmazások listában válassza a **Pislogás**elemet.
 
-    ![A Blink hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![A Blink hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **Rendszergazdai hitelesítő** adatok `https://api.joinblink.com/scim` csoportban adja meg a **bérlői URL-címet.** Adja meg a **titkos jogkivonat**korábbi, beolvasott **SCIM hitelesítési token** értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Blinkhez. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a Blink-fiók rendszergazdai jogosultságokkal rendelkezik, majd próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://api.joinblink.com/scim` meg a **bérlői URL-címet**. Adja meg a **scim-hitelesítési jogkivonat** értékét a **titkos tokenben**. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen a Blink-hez kapcsolódni. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Blink-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítési e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a blinkhez**lehetőséget.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók Pislogás**lehetőséget.
 
-    ![Villogó felhasználói leképezések](media/blink-provisioning-tutorial/User_mappings.png)
+    ![Blink felhasználói leképezések](media/blink-provisioning-tutorial/User_mappings.png)
 
-9. Tekintse át az Azure AD-ről blinkre szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a Blink felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+9. Tekintse át az Azure AD-ból szinkronizált felhasználói attribútumokat az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az Update műveletekhez a Blink-ben használt felhasználói fiókokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Villogó felhasználói attribútumok](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Blink felhasználói attribútumok](media/blink-provisioning-tutorial/user-attributes.png)
 
-10. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
+10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Az Azure AD-létesítési szolgáltatás engedélyezéséhez a Blink, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
+11. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Villogáshoz, módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg azokat a felhasználókat, akiket ki szeretne építeni a Blinkbe, ha a **Beállítások** szakasz **hatókörében** kiválasztja a kívánt értékeket.
+12. Adja meg azokat a felhasználókat, akik számára a villogást szeretné kiépíteni, majd válassza ki a kívánt értékeket a **hatókör** területen a **Beállítások** szakaszban.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a Blinken végrehajtott összes műveletet.
+Ez a művelet elindítja a **Beállítások** szakaszban a **hatókörben** definiált összes felhasználó kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti az üzembe helyezési tevékenység jelentésre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Blink-ben végrehajtott összes műveletet ismertetik.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

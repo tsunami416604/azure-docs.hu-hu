@@ -1,7 +1,7 @@
 ---
-title: Kifejezéslisták – Beszédszolgáltatás
+title: Kifejezések listája – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogy miként biztosíthat a `PhraseListGrammar` beszédfelismerési szolgáltatást kifejezéslistával az objektum használatával a beszéd-szöveg felismerés imázsának javítása érdekében.
+description: Megtudhatja, hogyan biztosíthatja a beszédfelismerési szolgáltatást egy kifejezési listával az objektum használatával a `PhraseListGrammar` beszédfelismerési eredmények szövegének növeléséhez.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,26 +12,26 @@ ms.date: 02/04/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 5a21358edae4c61f35993770c22634da9ac83633
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81401970"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>Kifejezéslisták a szöveggé bírjaként
+# <a name="phrase-lists-for-speech-to-text"></a>A beszédfelismerés szövegéhez tartozó kifejezések listája
 
-Ha a beszédfelismerési szolgáltatást a kifejezések listájával együtt adja meg, javíthatja a beszédfelismerés pontosságát. A Kifejezéslisták kifejezéssel azonosítják a hangadatokban szereplő ismert kifejezéseket, például egy személy nevét vagy egy adott helyet.
+Ha a beszédfelismerési szolgáltatást kifejezésekkel látja el, akkor javíthatja a beszédfelismerés pontosságát. A kifejezések listája a hangadatokban található ismert kifejezések azonosítására szolgál, például egy személy nevéhez vagy egy adott helyhez.
 
-Például, ha van egy parancs "Move to", és egy lehetséges cél a "Ward", hogy lehet beszélni, akkor adjunk hozzá egy bejegyzést a "Move to Ward". Egy kifejezés hozzáadása növeli annak valószínűségét, hogy amikor a hang felismeri, hogy a "Move to Ward" lesz felismerhető helyett "Move towards".
+Ha például a "Move to" parancs és a "Ward" lehetséges célpontja látható, akkor hozzáadhat egy "Áthelyezés a kórterembe" bejegyzést. Egy kifejezés hozzáadásával nő a valószínűsége annak, hogy ha a Hangfelismerés felismerte, hogy az "Áthelyezés a kórterembe" lehetőség fel lesz Ismerve az "áthelyezés felé" helyett.
 
-A kifejezéslistához egyetlen szó vagy teljes kifejezés adható. Az elismerés során a kifejezéslista egy bejegyzését használja, ha a teljes kifejezés pontos egyezése külön kifejezésként szerepel a hangban. Ha nem talál pontos egyezést a kifejezéssel, az elismerés nem segít.
+Az egyes szavak vagy teljes kifejezések hozzáadhatók egy kifejezési listához. Az elismerés során a rendszer egy kifejezési listán szereplő bejegyzést használ, ha a teljes kifejezés pontos egyezése szerepel a hangban, külön kifejezésként. Ha a kifejezés pontos egyezése nem található, az elismerés nem támogatott.
 
 >[!Note]
-> A Kifejezéslisták kifejezéslisták jelenleg csak az angol nyelvet támogatja a szöveggé való beszédfelismeréshez.
+> A kifejezések listája jelenleg csak az angol nyelvet támogatja a beszédfelismerés és a szöveg között.
 
-## <a name="how-to-use-phrase-lists"></a>A kifejezéslisták használata
+## <a name="how-to-use-phrase-lists"></a>Kifejezések Listájainak használata
 
-Az alábbi minták bemutatják, hogyan `PhraseListGrammar` lehet egy kifejezéslistát készíteni az objektum használatával.
+Az alábbi példák bemutatják, hogyan hozhat létre egy kifejezés- `PhraseListGrammar` listát az objektum használatával.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,9 +89,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ::: zone-end
 
 >[!Note]
-> A beszédfelismerési szolgáltatás által a beszédfelismeréshez használt kifejezéslisták maximális száma 1024 kifejezés.
+> A beszédfelismerési szolgáltatás által az 1024 mondatok egyeztetéséhez használt kifejezések maximális száma.
 
-A kifejezéshez társított kifejezéseket `PhraseListGrammar` a clear() hívással is törölheti.
+A `PhraseListGrammar` Clear () metódus meghívásával törölheti is a hozzájuk társított kifejezéseket.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,8 +134,8 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> Az `PhraseListGrammar` objektum módosításai a következő felismeréskor vagy a beszédfelismerési szolgáltatáshoz való újracsatlakozást követően lépnek érvénybe.
+> Az `PhraseListGrammar` objektum módosításai érvénybe lépnek a következő felismeréskor, vagy a beszédfelismerési szolgáltatáshoz való Újrakapcsolódás után.
 
 ## <a name="next-steps"></a>További lépések
 
-* [BeszédSDK referenciadokumentáció](speech-sdk.md)
+* [A Speech SDK dokumentációja](speech-sdk.md)

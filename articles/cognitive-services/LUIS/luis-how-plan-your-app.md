@@ -1,56 +1,56 @@
 ---
-title: Az alkalmazás megtervezése - LUIS
-description: Vázolja a releváns alkalmazásleképezéseket és entitásokat, majd hozza létre az alkalmazásterveket az intelligens szolgáltatások (LANGUAGE Understanding Intelligent Services, LUIS) szolgáltatásban.
+title: Az alkalmazás megtervezése – LUIS
+description: Körvonalazza a releváns alkalmazás-leképezéseket és entitásokat, majd hozza létre az alkalmazási terveket Language Understanding intelligens szolgáltatásokban (LUIS).
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382309"
 ---
-# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazásséma megtervezése a tulajdonostartományés az adatok kinyerése segítségével
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazás sémájának megtervezése a tulajdonos tartomány és az adatkiemelés alapján
 
-A LUIS alkalmazásséma a [tulajdonostartományhoz](luis-glossary.md#domain)tartozó [leképezéseket](luis-glossary.md#intent) és [entitásokat](luis-glossary.md#entity) tartalmaz. A szándékok osztályozzák a felhasználói [utterances,](luis-glossary.md#utterance)és az entitások kinyerése adatokat a felhasználói utterances.
+A LUIS-alkalmazás sémája a tárgy [tartományához](luis-glossary.md#domain)kapcsolódó [leképezéseket](luis-glossary.md#intent) és [entitásokat](luis-glossary.md#entity) tartalmaz. A cél a felhasználói [hosszúságú kimondott szöveg](luis-glossary.md#utterance)besorolása, az entitások pedig kinyerik az adatait a felhasználói hosszúságú kimondott szöveg.
 
 ## <a name="identify-your-domain"></a>A tartomány azonosítása
 
-A LUIS-alkalmazás egy tulajdonostartomány köré épül. Előfordulhat például, hogy rendelkezik egy utazási alkalmazással, amely kezeli a jegyek, járatok, szállodák és bérelt autók foglalását. Egy másik alkalmazás az edzéssel, az erőnléti erőfeszítések nyomon követésével és a célok kitűzésével kapcsolatos tartalmakat biztosíthat. A tartomány azonosítása segít megtalálni a tartományszempontjából releváns szavakat vagy kifejezéseket.
+A LUIS-alkalmazások a tárgy tartomány körül vannak központosítva. Előfordulhat például, hogy rendelkezik egy utazási alkalmazással, amely a jegyek, a járatok, a szállodák és a bérelt autók foglalását kezeli. Egy másik alkalmazás a gyakorlásával, a fitness-erőfeszítések nyomon követésével és a célok beállításával kapcsolatos tartalmakat is biztosít. A tartomány azonosításával könnyebben megtalálhatja a tartományhoz kapcsolódó szavakat vagy kifejezéseket.
 
 > [!TIP]
-> A LUIS [előre összeállított tartományokat](luis-how-to-use-prebuilt-domains.md) kínál számos gyakori forgatókönyvhöz. Ellenőrizze, hogy használhat-e előre összeállított tartományt az alkalmazás kiindulópontjaként.
+> A LUIS [előre elkészített tartományokat](luis-how-to-use-prebuilt-domains.md) kínál számos gyakori forgatókönyvhöz. Ellenőrizze, hogy használható-e előre összeépített tartomány az alkalmazás kiindulási pontjaként.
 
 ## <a name="identify-your-intents"></a>A szándékok azonosítása
 
-Gondolja át az alkalmazás feladatához fontos [szándékokat.](luis-concept-intent.md)
+Gondoljon az alkalmazás feladatához fontos [szándékokra](luis-concept-intent.md) .
 
-Vegyük például egy utazási alkalmazás, a funkciók at foglaljon egy járatot, és ellenőrizze az időjárás a felhasználó rendeltetési helyére. Megadhatja a `BookFlight` `GetWeather` műveletek és leképezések.
+Tegyük fel például, hogy egy utazási alkalmazás példája egy repülés lefoglalására és az időjárási adatok ellenőrzésére a felhasználó célhelyén. Megadhatja a `BookFlight` műveletek `GetWeather` és a leképezéseket.
 
-Egy összetettebb alkalmazás több függvényt, több szándékot, és meg kell határozniőket gondosan, hogy a szándékok nem túl specifikus. Például, `BookFlight` `BookHotel` és lehet, hogy külön `BookInternationalFlight` szándékok, de `BookDomesticFlight` lehet, hogy túl hasonló.
+A további funkciókat tartalmazó összetettebb alkalmazásokban több szándék áll rendelkezésére, és körültekintően kell meghatároznia azokat, hogy a szándékok ne legyenek túl konkrétak. Előfordulhat például, `BookFlight` hogy külön leképezéseket kell létrehoznia, de `BookInternationalFlight` `BookDomesticFlight` túl hasonló lehet. `BookHotel`
 
 > [!NOTE]
-> Ajánlott eljárás, hogy csak annyi leképezést használjon, amennyi az alkalmazás funkcióinak végrehajtásához szükséges. Ha túl sok leképezést határoz meg, a LUIS nehezebbé teszi az utterances megfelelő besorolását. Ha túl keveset határoz meg, akkor lehet, hogy olyan általánosak, hogy átfedik egymást.
+> Az ajánlott eljárás az, hogy csak annyi szándékot használjon, amennyire az alkalmazás funkcióinak elvégzéséhez szükség van. Ha túl sok leképezést határoz meg, akkor a LUIS a hosszúságú kimondott szöveg helyes besorolása érdekében nehezebbé válik. Ha túl kevést ad meg, előfordulhat, hogy az általános átfedésben van.
 
-Ha nem kell azonosítania az általános felhasználói szándékot, adja hozzá `None` az összes példa felhasználói utterances a szándékhoz. Ha az alkalmazás egyre több leképezésre van szüksége, később létrehozhatja őket.
+Ha nincs szüksége az általános felhasználói szándék azonosítására, vegye fel az összes példa felhasználói hosszúságú kimondott szöveg a `None` szándékba. Ha az alkalmazás egyre nagyobb szándékot igényel, később is létrehozhatja őket.
 
-## <a name="create-example-utterances-for-each-intent"></a>Példakimondottszövegek létrehozása az egyes leképezésekhez
+## <a name="create-example-utterances-for-each-intent"></a>Példa hosszúságú kimondott szöveg létrehozása az egyes szándékokhoz
 
-Először is, ne hozzon létre túl sok kimondott szöveget az egyes szándékok. Miután megállapította a szándékok, hozzon létre 15–30 példa utterances egy szándékot. Minden utterance (kifejezés) különböznie kell a korábban megadott utterances. A kimondott szövegek jó változatossága az általános szószám, a szóválasztás, az igei idő és [az írásjelek](luis-reference-application-settings.md#punctuation-normalization)közé tartozik.
+A kezdéshez ne hozzon létre túl sok hosszúságú kimondott szöveg az egyes szándékokhoz. A szándékok meghatározása után hozzon létre 15 – 30 példa hosszúságú kimondott szöveg-t. Minden Kimondás nem lehet azonos a korábban megadott hosszúságú kimondott szöveg. A hosszúságú kimondott szöveg jó választéka magában foglalja a szavak teljes darabszámát, a szavak megválasztását, a művelet időpontját és a [központozást](luis-reference-application-settings.md#punctuation-normalization).
 
-További információkért tekintse meg [a LUIS-alkalmazások helyes kimondott szövegének megértését.](luis-concept-utterance.md)
+További információ: [a Luis-alkalmazások jó hosszúságú kimondott szöveg megismerése](luis-concept-utterance.md).
 
-## <a name="identify-your-entities"></a>Az entitások azonosítása
+## <a name="identify-your-entities"></a>Entitások azonosítása
 
-A példa utterances, azonosítsa a kivonni kívánt entitásokat. A járat foglalásához olyan információkra van szüksége, mint a célállomás, a dátum, a légitársaság, a jegykategória és az utazási osztály. Hozzon létre entitásokat ezekhez az adattípusokhoz, majd jelölje meg az [entitásokat](luis-concept-entity-types.md) a példa kimondott szövegekben. Az entitások fontosak a szándék megvalósításához.
+A példában hosszúságú kimondott szöveg azonosítsa a kibontani kívánt entitásokat. Egy járat lefoglalásához olyan információra van szüksége, mint a cél, a dátum, a légitársaság, a jegy kategóriája és az utazási osztály. Hozzon létre entitásokat ezekhez az adattípusokhoz, majd jelölje meg az [entitásokat](luis-concept-entity-types.md) a példában hosszúságú kimondott szöveg. Az entitások fontosak a szándék teljesítéséhez.
 
-Az alkalmazásban használandó entitások meghatározásakor ne feledje, hogy az objektumtípusok közötti kapcsolatok rögzítésére különböző típusú entitások tartoznak. [A LUIS-ban lévő entitások](luis-concept-entity-types.md) részletesebben ismertetik a különböző típusokat.
+Az alkalmazásban használni kívánt entitások meghatározásakor vegye figyelembe, hogy az Objektumtípusok közötti kapcsolatok rögzítéséhez különböző típusú entitások tartoznak. A [Luis-entitások](luis-concept-entity-types.md) részletesebben ismertetik a különböző típusokat.
 
 > [!TIP]
-> A LUIS [előre összeállított entitásokat](luis-prebuilt-entities.md) kínál a gyakori, társalgási felhasználói forgatókönyvekhez. Fontolja meg az előre összeállított entitások használatát az alkalmazásfejlesztés kiindulópontjaként.
+> A LUIS [előre összeépített entitásokat](luis-prebuilt-entities.md) kínál a gyakori, társalgási felhasználói forgatókönyvekhez. Érdemes lehet előre elkészített entitásokat használni az alkalmazásfejlesztés kiindulási pontként.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A LUIS fejlesztési életképességének megismerése](luis-concept-app-iteration.md)
+> [A LUIS fejlesztői lifecylce megismerése](luis-concept-app-iteration.md)
 

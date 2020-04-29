@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: trbye
 ms.openlocfilehash: e475a58c56a16e984d15f2cc8d06f73268868852
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399540"
 ---
-## <a name="additional-language-and-platform-support"></a>További nyelvi és platformtámogatás
+## <a name="additional-language-and-platform-support"></a>További nyelvi és platform-támogatás
 
-Ha erre a lapra kattintott, valószínűleg nem látta az alapokról szóló cikket a kedvenc programozási nyelvén. Ne aggódjon, további kódminták érhetők el a GitHubon. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
+Ha erre a lapra kattintott, valószínűleg nem jelenik meg az alapismeretekkel kapcsolatos cikk a kedvenc programozási nyelvén. Ne aggódjon, a GitHubon további mintakód-mintákat is elérhetővé teszünk. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
 
 | Nyelv    | Kódminták                                                                                                                            |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| C#          | [.NET Framework][csharp-netframework], [.NET Core][csharp-netcore], [UWP][csharp-uwp], [Unity][csharp-unity], [Xamarin][csharp-xamarin] |
-| C++         | [Rövid útmutatók][cpp-quickstarts], [minták][cpp-samples]                                                                                  |
+| C#          | [.NET-keretrendszer][csharp-netframework], [.net Core][csharp-netcore], [UWP][csharp-uwp], [Unity][csharp-unity], [Xamarin][csharp-xamarin] |
+| C++         | [Quickstarts][cpp-quickstarts]Rövid útmutatók, [minták][cpp-samples]                                                                                  |
 | Java        | [Android][java-android], [JRE][java-jre]                                                                                                |
 | JavaScript  | [Böngésző][js-browser]                                                                                                                   |
 | Node.js     | [Windows, Linux, macOS][node-js]                                                                                                        |
-| Objective-C | [iOS][objective-c-ios], [macOS][objective-c-macos]                                                                                      |
+| Objective-C | [iOS][objective-c-ios], [MacOS][objective-c-macos]                                                                                      |
 | Python      | [Windows, Linux, macOS][python]                                                                                                         |
-| Swift       | [iOS][swift-ios], [macOS][swift-macos]                                                                                                  |
+| Swift       | [iOS][swift-ios], [MacOS][swift-macos]                                                                                                  |
 
 <!-- Links -->
 [cpp-quickstarts]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp

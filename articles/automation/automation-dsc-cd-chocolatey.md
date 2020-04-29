@@ -1,106 +1,106 @@
 ---
-title: Az Azure Automation állapotkonfiguráció folyamatos üzembe helyezése a Chocolatey-val
-description: A DevOps folyamatos üzembe helyezését az Azure Automation állapotkonfigurációjával a Chocolatey csomagkezelővel ismerteti. Tartalmaz egy példát a teljes JSON Resource Manager sablon és a PowerShell-forrás.
+title: Azure Automation állapot-konfiguráció folyamatos üzembe helyezése csokoládéval
+description: A DevOps folyamatos üzembe helyezését ismerteti Azure Automation állapot-konfigurációval a chocolatey csomagkezelő használatával. A tartalmaz egy példát a teljes JSON Resource Manager-sablonnal és a PowerShell-forrással.
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392120"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Folyamatos üzembe helyezés a virtuális gépeken az Automation State Configuration és a Chocolatey használatával
+# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>A virtuális gépek folyamatos üzembe helyezésének biztosítása az Automation State Configuration és a chocolatey használatával
 
-A DevOps-világban számos olyan eszköz van, amely segítséget nyújt a folyamatos integrációs folyamat különböző pontjainak. Az Azure Automation [State Configuration](automation-dsc-overview.md) egy üdvözlendő új kiegészítése a lehetőségeket, amelyeket devops csapatok alkalmazhatnak. 
+A DevOps világában számos eszköz segíti a folyamatos integrációs folyamat különböző pontjainak támogatását. Azure Automation az [állapot-konfiguráció](automation-dsc-overview.md) a DevOps csapatok által alkalmazható lehetőségek örvendetes új kiegészítése. 
 
-Az Azure Automation a Microsoft Azure felügyelt szolgáltatása, amely lehetővé teszi a különböző feladatok automatizálását runbookok, csomópontok és megosztott erőforrások, például hitelesítő adatok, ütemezések és globális változók használatával. Az Azure Automation State Configuration kiterjeszti ezt az automatizálási képességet a PowerShell kívánt állapotkonfigurációs (DSC) eszközeire. Itt egy nagy [áttekintést](automation-dsc-overview.md).
+A Azure Automation Microsoft Azure felügyelt szolgáltatása, amely lehetővé teszi különböző feladatok automatizálását a runbookok, a csomópontok és a megosztott erőforrások, például a hitelesítő adatok, az ütemtervek és a globális változók használatával. Azure Automation állapot-konfiguráció kiterjeszti ezt az automatizálási képességet, hogy tartalmazza a PowerShell desired State Configuration (DSC) eszközeit. Íme egy nagyszerű [Áttekintés](automation-dsc-overview.md).
 
-Ez a cikk bemutatja, hogyan állítható be a folyamatos telepítés (CD) Windows rendszerű számítógépekhez. Könnyedén kiterjesztheti a technikát, hogy annyi Windows-számítógépet vegyen fel a szerepkörbe, amennyi szükséges, például egy webhelyet, és onnan további szerepkörökre léphet.
+Ez a cikk bemutatja, hogyan állítható be a folyamatos üzembe helyezés (CD) a Windows rendszerű számítógépekre. Egyszerűen kiterjesztheti a technikát úgy, hogy a szerepkörbe, például egy webhelyre, és onnan további szerepkörökre is szükség legyen a Windows rendszerű számítógépek számára.
 
-![Folyamatos üzembe helyezés iaaS virtuális gépekhez](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
+![IaaS virtuális gépek folyamatos üzembe helyezése](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="at-a-high-level"></a>Magas szinten
 
-Van egy kicsit folyik itt, de szerencsére lehet bontani két fő folyamatok:
+Itt is van egy kicsit, de szerencsére két fő folyamatra bontható:
 
-- Kód írása és tesztelése, majd telepítési csomagok létrehozása és közzététele a rendszer fő- és alverzióihoz.
-- A csomagokban a kódot telepítő és végrehajtó virtuális gépek létrehozása és kezelése.  
+- Kód írása és tesztelése, majd telepítési csomagok létrehozása és közzététele a rendszer fő és másodlagos verzióihoz.
+- Virtuális gépek létrehozása és kezelése, amelyek a csomagokat telepítik és hajtják végre.  
 
-Miután mindkét alapvető folyamat a helyén van, könnyen frissítheti a csomagot a virtuális gépeken, mivel az új verziók jönnek létre és települnek.
+Ha mindkét alapvető folyamat teljesült, egyszerűen automatikusan frissítheti a csomagot a virtuális gépeken új verziók létrehozásakor és üzembe helyezésekor.
 
-## <a name="component-overview"></a>Összetevő – áttekintés
+## <a name="component-overview"></a>Az összetevők áttekintése
 
-Az olyan csomagkezelők, mint az [apt-get,](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) jól ismertek a Linux világában, de nem annyira a Windows világában.
-[Chocolatey](https://chocolatey.org/) egy ilyen dolog, és Scott Hanselman [blogja](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) a témában egy nagy bevezetés. Dióhéjban, Chocolatey lehetővé teszi, hogy használja a parancssort telepíteni csomagokat egy központi adattár-ra egy Windows operációs rendszer. Létrehozhat és kezelhet saját tárházat, és a Chocolatey tetszőleges számú adattárakból telepíthet csomagokat.
+A Package managerek, például az [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) jól ismertek a Linux világában, de nem annyira a Windows világában.
+A [chocolatey](https://chocolatey.org/) egy ilyen dolog, és Scott Jancsi [blogja](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) a témakörben nagyszerű bevezetést tartalmaz. Dióhéjban a chocolatey lehetővé teszi, hogy a parancssor használatával telepítse a csomagokat egy központi tárházból egy Windows operációs rendszerre. Saját tárházat hozhat létre és kezelhet, a chocolatey pedig tetszőleges számú tárházból telepíthet csomagokat.
 
-[A PowerShell DSC](/powershell/scripting/dsc/overview/overview) egy PowerShell-eszköz, amely lehetővé teszi a kívánt konfiguráció deklarálását a géphez. Ha például azt szeretné, hogy a Chocolatey telepítve legyen, az IIS telepítve legyen, a 80-as port meglegyen nyitva, és a webhely 1.0.0-s verziója legyen telepítve, a DSC Local Configuration Manager (LCM) megvalósítja ezt a konfigurációt. A DSC lekéréses kiszolgáló a gépek konfigurációinak tárházát tartalmazza. Az LCM minden gépen rendszeresen ellenőrzi, hogy a konfiguráció megfelel-e a tárolt konfigurációnak. Jelentheti az állapotot, vagy megpróbálhatja a gépet újra a tárolt konfigurációhoz igazodni. A lekéréses kiszolgálón tárolt konfiguráció tetszésszerint egy gép vagy gépkészlet igazodni fog a megváltozott konfigurációhoz.
+A [POWERSHELL DSC](/powershell/scripting/dsc/overview/overview) egy PowerShell-eszköz, amely lehetővé teszi, hogy deklarálja a gép kívánt konfigurációját. Ha például azt szeretné, hogy a chocolatey telepítve legyen, telepítette az IIS-t, a 80-es portot, valamint a webhelyhez tartozó 1.0.0-verziót, a DSC helyi Configuration Manager (LCD) implementálja ezt a konfigurációt. A DSC lekérési kiszolgáló a gépek konfigurációinak tárházát tárolja. Az egyes gépeken lévő LCD ChipOnGlas rendszeresen ellenőrzi, hogy a konfigurációja megfelel-e a tárolt konfigurációnak. Vagy jelenthet állapotot, vagy megkísérli a gép visszahelyezését a tárolt konfigurációval való összehangolásra. A lekéréses kiszolgáló tárolt konfigurációjának szerkesztésével megadhatja, hogy a gép vagy a gépek készlete igazodjon a módosított konfigurációhoz.
 
-A DSC-erőforrás olyan kódmodul, amely speciális képességekkel rendelkezik, például a hálózatkezelés, az Active Directory vagy az SQL Server kezelésével. A Chocolatey DSC Erőforrás többek között tudja, hogyan érheti el a NuGet Kiszolgálót( csomagokat, telepítheti a csomagokat és így tovább. Sok más DSC-erőforrás van a [PowerShell-galériában.](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title) Ezeket a modulokat az Azure Automation-állapotkonfigurációs lekéréses kiszolgálóra telepíti a konfigurációk számára.
+A DSC-erőforrás olyan programkód modulja, amely adott képességekkel rendelkezik, például hálózatkezelés, Active Directory vagy SQL Server kezelésére. A chocolatey DSC-erőforrás tudja, hogyan férhet hozzá egy NuGet-kiszolgálóhoz (többek között), csomagokat tölthet le, csomagokat telepíthet stb. A [PowerShell-Galéria](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)számos más DSC-erőforrással rendelkezik. Ezeket a modulokat az Azure Automation állapot-konfiguráció lekérési kiszolgálójára telepíti a konfigurációk általi használatra.
 
-Az Erőforrás-kezelő sablonjai deklaratív módon biztosítják az infrastruktúra generálását, például hálózatokat, alhálózatokat, hálózati biztonságot és útválasztást, terheléselosztókat, hálózati adaptereket, virtuális gépeket és így tovább. Az alábbiakban egy [cikket,](../azure-resource-manager/management/deployment-models.md) amely összehasonlítja a Resource Manager telepítési modell (deklaratív) az Azure Service Management (ASM vagy klasszikus) telepítési modell (elengedhetetlen). Ez a cikk ismerteti az alapvető erőforrás-szolgáltatók: számítási, tárolási és hálózati.
+A Resource Manager-sablonok deklaratív módszert biztosítanak az infrastruktúra (például hálózatok, alhálózatok, hálózati biztonság és útválasztás, terheléselosztó, hálózati adapterek, virtuális gépek stb.) létrehozásához. Íme egy [cikk](../azure-resource-manager/management/deployment-models.md) , amely összehasonlítja a Resource Manager-alapú üzemi modellt (deklaratív) az Azure Service Management (ASM vagy klasszikus) üzembe helyezési modellel (kötelező). Ez a cikk az alapvető erőforrás-szolgáltatókkal kapcsolatos vitát tartalmazza: számítás, tárolás és hálózat.
 
-Az Erőforrás-kezelő sablon egyik legfontosabb jellemzője, hogy képes telepíteni egy virtuális gép bővítményt a virtuális gép, ahogy ki van építve. A virtuálisgép-bővítmények speciális képességekkel rendelkeznek, például egyéni parancsfájl futtatásával, víruskereső szoftverek telepítésével és DSC-konfigurációs parancsfájl futtatásával. Sok más típusú virtuálisgép-bővítmények.
+A Resource Manager-sablonok egyik kulcsfontosságú funkciója, hogy a virtuálisgép-bővítményt az üzembe helyezett virtuális gépre telepítse. A virtuálisgép-bővítmény speciális képességekkel rendelkezik, mint például az egyéni parancsfájlok futtatása, a víruskereső szoftver telepítése és a DSC konfigurációs parancsfájl futtatása. Számos más típusú virtuálisgép-bővítmény van.
 
 ## <a name="quick-trip-around-the-diagram"></a>Gyors utazás a diagram körül
 
-A lap tetejétől kezdve megírja a kódot, létrehozza, teszteli, majd létrehoz egy telepítőcsomagot. Chocolatey képes kezelni a különböző típusú telepítő csomagok, mint például az MSI, MSU, ZIP. És a PowerShell teljes erejét, hogy a tényleges telepítés, ha Chocolatey natív képességek nem fel rajta. Helyezze a csomagot olyan helyre, amely elérhető – egy csomagtárba. Ez a használati példa egy nyilvános mappát használ egy Azure blob storage-fiókban, de bárhol lehet. A Chocolatey natívan működik a NuGet kiszolgálókkal és néhány másikkal a csomag metaadatainak kezeléséhez. [Ez a cikk](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) ismerteti a lehetőségeket. A használati példa a NuGet-et használja. A Nuspec a csomagok metaadatai. A Nuspec adatokat nupkg-ba állítják össze, és nuget szerveren tárolják. Amikor a konfiguráció név szerint kér egy csomagot, és egy NuGet-kiszolgálóra hivatkozik, a virtuális gép Csokoládés DSC-erőforrása megragadja a csomagot, és telepíti azt. A csomag egy adott verzióját is kérheti.
+A lap elejétől kezdve megírhatja a kódot, felépítheti, tesztelheti, majd létrehozhatja a telepítőcsomagot. A chocolatey különféle típusú telepítési csomagokat képes kezelni, például MSI, MSU vagy ZIP. A PowerShell a tényleges telepítést is lehetővé teszi, ha a csokis natív képességei nem naprakészek. Helyezze a csomagot egy olyan helyre, amely elérhető – egy csomag tárháza. Ez a használati példa egy nyilvános mappát használ egy Azure Blob Storage-fiókban, de bárhol lehet. A chocolatey natív módon működik a NuGet-kiszolgálókkal, és néhány más, a csomagok metaadatainak kezeléséhez. [Ez a cikk](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) a beállításokat ismerteti. A használati példa a NuGet-t használja. A Nuspec a csomagjaival kapcsolatos metaadatok. A Nuspec adatai egy NuPkg vannak lefordítva, és egy NuGet-kiszolgálón tárolódnak. Ha a konfiguráció név alapján kéri a csomagokat, és egy NuGet-kiszolgálóra hivatkozik, a virtuális gépen található chocolatey DSC-erőforrás megragadja a csomagot, és telepíti azt. A csomagok egy adott verzióját is kérheti.
 
-A kép bal alsó sarkában van egy Azure Resource Manager sablon. Ebben a használati példában a virtuálisgép-bővítmény regisztrálja a virtuális gépet az Azure Automation-állapotkonfigurációs lekéréses kiszolgálóval csomópontként. A konfiguráció tárolják a lekéréses szerver kétszer: egyszer egyszerű szövegként, és egyszer lefordítani, mint egy MOF fájlt. Az Azure Portalon a MOF egy csomópont konfigurációját jelöli, szemben egy egyszerű konfigurációval. Ez a összetevő, amely egy csomóponthoz kapcsolódik, így a csomópont tudni fogja a konfigurációját. Az alábbi részletek azt mutatják be, hogyan rendelheti hozzá a csomópont konfigurációját a csomóponthoz.
+A kép bal alsó részén van egy Azure Resource Manager sablon. Ebben a használati példában a virtuálisgép-bővítmény regisztrálja a virtuális gépet a Azure Automation állapot-konfiguráció lekérési kiszolgáló csomópontként. A konfigurációt kétszer tárolja a lekérési kiszolgáló: egyszer egyszerű szövegként, valamint egy MOF-fájlként lefordított módon. A Azure Portal a MOF a csomópont-konfigurációt jelképezi, és nem egy egyszerű konfigurációt. Ez a csomóponthoz társított összetevő, így a csomópont fogja tudni a konfigurációját. Az alábbi részletek azt mutatják be, hogyan rendelhető hozzá a csomópont-konfiguráció a csomóponthoz.
 
-A Nuspec létrehozása, összeállítása és tárolása egy NuGet szerveren egy kis dolog. És már kezeli a virtuális gépeket. 
+A Nuspec létrehozása, fordítása és tárolása egy NuGet-kiszolgálón kis dolog. A virtuális gépek már felügyelet alatt állnak. 
 
-A következő lépés a folyamatos üzembe helyezés szükséges üzembe helyezése a lekéréses kiszolgáló egyszer, regisztrálja a csomópontok at vele egyszer, és létrehozza és tárolja a kezdeti konfiguráció a kiszolgálón. A csomagok frissítése és üzembe helyezése a tárházban, csak frissítenie kell a konfigurációs és csomópont-konfiguráció a lekéréses kiszolgálón, ha szükséges.
+A folyamatos üzembe helyezés következő lépéseként egyszerre kell beállítani a lekérési kiszolgálót, regisztrálnia kell a csomópontjait, és a kezdeti konfigurációt a kiszolgálón kell létrehoznia és tárolnia. A csomagok frissítésekor és üzembe helyezése a tárházban csak szükség szerint kell frissítenie a konfigurációt és a csomópont-konfigurációt a lekérési kiszolgálón.
 
-Ha nem egy Erőforrás-kezelő sablonnal kezdi, az rendben van. Vannak PowerShell-parancsok, amelyek segítségével regisztrálhatja a virtuális gépeket a lekéréses kiszolgálón. További információ: [Bevezetési gépek az Azure Automation állapotkonfigurációja általi kezeléshez.](automation-dsc-onboarding.md)
+Ha nem a Resource Manager-sablonnal kezdődik, ez rendben van. A virtuális gépek a lekérési kiszolgálóval való regisztrálásához PowerShell-parancsok használhatók. További információ: [bevezetési gépek felügyeletre Azure Automation állapot-konfiguráció alapján](automation-dsc-onboarding.md).
 
-## <a name="about-the-usage-example"></a>A használati példa
+## <a name="about-the-usage-example"></a>Tudnivalók a használati példáról
 
-A használati példa ebben a cikkben kezdődik egy virtuális gép egy általános Windows Server 2012 R2 lemezkép az Azure-katalógusból. Tudod elkezd-ból akármi raktározott kép aztán csípés onnan -val a DSC alakzat.
-Azonban a lemezképbe sült konfiguráció módosítása sokkal nehezebb, mint a konfiguráció dinamikus frissítése a DSC használatával.
+A cikkben szereplő használati példa egy általános Windows Server 2012 R2 rendszerképet tartalmazó virtuális géppel kezdődik az Azure-katalógusból. Bármely tárolt rendszerképből elindíthatja, majd a DSC-konfigurációval is megkezdheti a csípését.
+Azonban a rendszerképbe besütött konfiguráció módosítása sokkal nehezebb, mint a DSC-t használó konfiguráció dinamikus frissítése.
 
-Nem kell használnia a Resource Manager-sablont és a virtuális gép bővítményt, hogy ezt a technikát használja a virtuális gépekhez. És a virtuális gépek nem kell az Azure-ban, hogy a CD-felügyelet alatt. Minden, ami szükséges, hogy Chocolatey kell telepíteni, és az LCM konfigurálva a virtuális gép, így tudja, hol van a lekéréses kiszolgáló.
+A virtuális gépekhez nem szükséges Resource Manager-sablont és a virtuálisgép-bővítményt használni. A virtuális gépeknek nem kell az Azure-ban lenniük a CD-felügyelet alatt. Mindez szükséges ahhoz, hogy a chocolatey telepítve legyen, és a virtuális merevlemezen legyen konfigurálva, hogy a lekéréses kiszolgáló hol található.
 
-Amikor éles környezetben lévő virtuális gépen frissít egy csomagot, a frissítés telepítése közben ki kell vennie a virtuális gép rotációját. Hogyan csinálod ezt széles körben változik. Például egy virtuális gép mögött egy Azure Load Balancer, egyéni mintavétel tadhat hozzá. A virtuális gép frissítése közben a mintavételi végpont 400-at ad vissza. A csípés szükséges okoz ez a változás lehet belül a konfiguráció, mint acsípés, hogy kapcsolja vissza a visszatérő 200, ha a frissítés befejeződött.
+Ha éles virtuális gépen frissít egy csomagot, a frissítés telepítése közben el kell végeznie a virtuális gép elforgatását. Ez a művelet igen változó. Ha például egy virtuális gép egy Azure Load Balancer mögött található, egyéni mintavételt is hozzáadhat. A virtuális gép frissítésekor a mintavételi végpont 400-as értéket ad vissza. A módosítást okozó csípés lehet a konfiguráción belül, ahogy a csípés visszaválthat a 200-re, ha a frissítés befejeződött.
 
-A használati példa teljes forrása ebben a GitHubon [található Visual Studio-projektben](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) található.
+A használati példa teljes forrása ebben a [Visual Studio-projektben](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) a githubon.
 
-## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>1. lépés: A lekéréses kiszolgáló és az Automation-fiók beállítása
+## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>1. lépés: a lekérési kiszolgáló és az Automation-fiók beállítása
 
-Hitelesített (`Connect-AzAccount`) PowerShell parancssorból: (eltarthat néhány percig, amíg a lekéréses kiszolgáló be van állítva)
+Hitelesített (`Connect-AzAccount`) PowerShell parancssorban: (eltarthat néhány percig, amíg a lekérési kiszolgáló be van állítva)
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
 New-AzAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
 ```
 
-Automation-fiókját a következő régiók (más néven helyszínek) valamelyikébe helyezheti: USA keleti régiója 2, USA déli középső régiója, USGov Virginia, Nyugat-Európa, Délkelet-Ázsia, Kelet-Japán, Közép-India és Ausztrália délkeleti része, Kanada Közép-, Észak-Európa.
+Az Automation-fiókját a következő régiókba helyezheti el (más néven helyként): USA 2. keleti régiója, USA déli középső régiója, US Gov Virginia, Nyugat-Európa, Délkelet-Ázsia, Kelet-Japán, Közép-India és Délkelet-Ausztrália, Közép-Kanada, Észak-Európa.
 
-## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>2. lépés: A Virtuálisgép-bővítmény tweaks módosítása az Erőforrás-kezelő sablonhoz
+## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>2. lépés: a virtuálisgép-bővítmény csípésének tétele a Resource Manager-sablonban
 
-Az [Azure gyorsútmutató-sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)biztosított virtuális gépregisztráció részletei (a PowerShell DSC virtuálisgép-bővítmény használatával).
-Ez a lépés regisztrálja az új virtuális gépet a lekéréses kiszolgálóval az állapotkonfigurációs csomópontok listájában. A regisztráció egy része a csomópontra alkalmazandó csomópontkonfigurációt adja meg. Ez a csomópont konfiguráció nem kell még léteznie a lekéréses kiszolgálón, így rendben van, hogy a 4 lépés, ahol ez történik az első alkalommal. De itt a 2. Ebben a használati példában a csomópont "isvbox", a konfiguráció pedig "ISVBoxConfig". Így a csomópont konfigurációs neve (a DeploymentTemplate.json fájlban adható meg) az "ISVBoxConfig.isvbox".
+A virtuális gépek regisztrálásának részletei (a PowerShell DSC virtuálisgép-bővítmény használatával), amely ebben az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)-útmutatóban van megadva.
+Ez a lépés regisztrálja az új virtuális gépet a lekérési kiszolgálóval az állapot konfigurációs csomópontjainak listájában. A regisztráció részeként meg kell adni a csomópontra alkalmazni kívánt csomópont-konfigurációt. Ennek a csomópont-konfigurációnak még nem kell megtörténnie a lekérési kiszolgálón, ezért a 4. lépés az első alkalommal történik. A 2. lépésben azonban meg kell határoznia a csomópont nevét és a konfiguráció nevét. Ebben a használati példában a csomópont "isvbox", a konfiguráció pedig "ISVBoxConfig". Így a csomópont-konfiguráció neve (a DeploymentTemplate. JSON fájlban adható meg) a következő: "ISVBoxConfig. isvbox".
 
-## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>3. lépés: A szükséges DSC-erőforrások hozzáadása a lekéréses kiszolgálóhoz
+## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>3. lépés: a szükséges DSC-erőforrások hozzáadása a lekérési kiszolgálóhoz
 
-A PowerShell-galériát úgy kell felszerelni, hogy DSC-erőforrásokat telepítsen az Azure Automation-fiókba.
-Keresse meg a kívánt erőforrást, és kattintson a "Üzembe helyezés az Azure Automationbe" gombra.
+A PowerShell-galéria a DSC-erőforrások Azure Automation-fiókba való telepítéséhez lett kialakítva.
+Navigáljon a kívánt erőforráshoz, és kattintson a "központi telepítés Azure Automation" gombra.
 
-![Példa a PowerShell-galériára](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
+![PowerShell-galéria példa](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
 
-Egy másik, az Azure Portalhoz nemrég hozzáadott módszer lehetővé teszi, hogy új modulokat kér, vagy frissítse a meglévő modulokat. Kattintson az Automation-fiók erőforrás, az Eszközök csempe, és végül a modulok csempe. A Galéria tallózása ikon lehetővé teszi a modulok listájának megtekintését a katalógusban, a részletek részletezését és végső soron az Automation-fiókba való importálást. Ez egy nagyszerű módja annak, hogy a modulok at up to date időről időre. És az importálási funkció ellenőrzi a függőségeket más modulokkal, hogy megbizonyosodjon arról, semmi sem kerül ki a szinkronból.
+A Azure Portal nemrégiben hozzáadott újabb módszer lehetővé teszi az új modulok lekérését vagy a meglévő modulok frissítését. Kattintson az Automation-fiók erőforrására, az eszközök csempére, végül pedig a modulok csempére. A tallózási katalógus ikon segítségével megtekintheti a katalógusban található modulok listáját, részletezheti a részleteket, és végül importálhatja az Automation-fiókjába. Ez nagyszerű módja annak, hogy a modulok naprakészek legyenek időről időre. Az importálási funkció pedig más modulokkal is ellenőrzi a függőségeket, így biztosítva, hogy semmi sincs szinkronban.
 
-Van egy manuális megközelítés is, amelyet csak egyszer használnak erőforrásonként, hacsak nem szeretné később frissíteni. A PowerShell-integrációs modulok szerzőiről az [Azure Automation integrációs modulok készítése](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)című témakörben talál további információt.
+A manuális megközelítés is csak egyszer használható erőforrásként, kivéve, ha később szeretné frissíteni. A PowerShell-integrációs modulok létrehozásával kapcsolatos további információkért lásd: [integrációs modulok készítése a Azure Automationhoz](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/).
 
 >[!NOTE]
->A Windows-rendszerű számítógépekHez készült PowerShell-integrációs modul mappastruktúrája egy kicsit eltér az Azure Automation által elvárt mappastruktúrától. 
+>A Windows rendszerű számítógépek PowerShell-integrációs moduljának mappastruktúrát kissé eltér a Azure Automation által várt mappastruktúrát. 
 
-1. Telepítse a [Windows Management Framework v5-öt](https://aka.ms/wmf5latest) (nem szükséges a Windows 10-hez).
+1. Telepítse a [Windows Management Framework V5](https://aka.ms/wmf5latest) -et (a Windows 10 rendszerhez nem szükséges).
 
 2. Telepítse az integrációs modult.
 
@@ -108,13 +108,13 @@ Van egy manuális megközelítés is, amelyet csak egyszer használnak erőforr�
     Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
     ```
 
-3. Másolja a modulmappát **a c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME** mappából egy ideiglenes mappába.
+3. Másolja a Module mappát a **C:\Program Files\WindowsPowerShell\Modules\MODULE-Name** egy ideiglenes mappába.
 
-4. Minták és dokumentáció törlése a főmappából.
+4. Törölje a mintákat és a dokumentációt a fő mappából.
 
-5. Zip a fő mappát, elnevezése a ZIP fájlt a nevét a mappát.
+5. Zip a fő mappa, a ZIP-fájl elnevezése a mappa nevével.
 
-6. Helyezze a ZIP-fájlt egy elérhető HTTP-helyre, például egy Azure Storage-fiók blob storage-jába.
+6. Helyezze a ZIP-fájlt egy elérhető HTTP-helyre, például egy Azure Storage-fiók blob Storage-fiókjába.
 
 7. Futtassa a következő parancsot.
 
@@ -124,11 +124,11 @@ Van egy manuális megközelítés is, amelyet csak egyszer használnak erőforr�
       -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
-A mellékelt példa megvalósítja ezeket a lépéseket a cChoco és xNetworking. 
+A példában szereplő példa a cChoco és a xNetworking vonatkozó lépéseket hajtja végre. 
 
-## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>4. lépés: A csomópontkonfiguráció hozzáadása a lekéréses kiszolgálóhoz
+## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>4. lépés: a csomópont-konfiguráció hozzáadása a lekérési kiszolgálóhoz
 
-Nincs semmi különös abban, amikor először importálja a konfigurációt a lekéréses kiszolgálóra és lefordítja. Az összes későbbi importálás vagy összeállítás ugyanannak a konfigurációnak pontosan ugyanúgy néz ki. Minden alkalommal, amikor frissíti a csomagot, és ki kell tolnia éles környezetben, akkor ezt a lépést a konfigurációs fájl helyességedje után teszi meg – beleértve a csomag új verzióját is. Itt a konfigurációs fájl **ISVBoxConfig.ps1:**
+A konfigurációnak a lekéréses kiszolgálóra való első importálásakor és a fordításakor semmi nem különleges. Ugyanaz a konfiguráció minden későbbi importálása vagy összeállítása pontosan ugyanaz lesz. Minden alkalommal, amikor frissíti a csomagot, és le kell küldenie az éles környezetbe, ezt a lépést a konfigurációs fájl helyességének biztosítása után hajtja végre – beleértve a csomag új verzióját is. Itt látható a **ISVBoxConfig. ps1**konfigurációs fájl:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -173,7 +173,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-Itt van a **New-ConfigurationScript.ps1** parancsfájl (az Az modul használatára módosítva):
+Itt látható a **New-ConfigurationScript. ps1** parancsfájl (amely az az modul használatára lett módosítva):
 
 ```powershell
 Import-AzAutomationDscConfiguration `
@@ -192,30 +192,30 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Ezek a lépések azt eredményezik, hogy egy **isvboxconfig.isvbox** nevű új csomópontkonfiguráció kerül a lekéréses kiszolgálóra. A csomópont konfigurációjának `configurationName.nodeName`neve a .
+Ezek a lépések egy új, **ISVBoxConfig. isvbox** nevű csomópont-konfigurációt eredményeznek a lekérési kiszolgálón. A csomópont-konfiguráció neve a következőképpen `configurationName.nodeName`van felépítve:.
 
-## <a name="step-5-create-and-maintain-package-metadata"></a>5. lépés: Csomag metaadatainak létrehozása és karbantartása
+## <a name="step-5-create-and-maintain-package-metadata"></a>5. lépés: csomag metaadatainak létrehozása és karbantartása
 
-A csomagtárba helyezett minden egyes csomaghoz szüksége van egy Nuspec-re, amely leírja azt. Le kell fordítani és tárolni kell a NuGet szerveren. Ezt a folyamatot [itt](https://docs.nuget.org/create/creating-and-publishing-a-package)ismerteti . 
+A Package repositoryba helyezett minden csomaghoz szüksége van egy Nuspec, amely leírja azt. A NuGet-kiszolgálón kell összeállítani és tárolni. Ez a folyamat [itt](https://docs.nuget.org/create/creating-and-publishing-a-package)olvasható. 
 
-A **MyGet.org** nuget kiszolgálóként is használhatja. Lehet kapni ezt a szolgáltatást, de te egy ingyenes kezdő Termékváltozat. A [NuGet-nél](https://www.nuget.org/)útmutatást találsz a saját NuGet szervered privát csomagjaidhoz való telepítéséhez.
+A **MyGet.org** NuGet-kiszolgálóként is használható. Megvásárolhatja ezt a szolgáltatást, de neked egy ingyenes kezdő SKU-t is használhat. A [NuGet](https://www.nuget.org/)-on a saját NuGet-kiszolgáló telepítésére vonatkozó útmutatást talál a privát csomagokhoz.
 
-## <a name="step-6-tie-it-all-together"></a>6. lépés: Tie az egészet együtt
+## <a name="step-6-tie-it-all-together"></a>6. lépés: az összes összevonása
 
-Minden alkalommal, amikor egy verzió sikeres en megy, és jóváhagyásra van jóváhagyva a telepítéshez, a csomag létrejön, és a nuspec és a nupkg frissül, és a NuGet kiszolgálóra kerül. A konfigurációt (4. lépés) is frissíteni kell, hogy egyetértsen az új verziószámmal. Ezután el kell küldeni a lekéréses kiszolgálóra, és le kell fordítani.
+Minden alkalommal, amikor egy verzió megfelel a QA-nek, és jóváhagyja az üzembe helyezést, a rendszer létrehozza a csomagot, és a nuspec és nupkg frissíti és telepíti a NuGet-kiszolgálóra. A konfigurációt (4. lépés) is frissíteni kell, hogy elfogadja az új verziószámot. Ezt követően el kell juttatni a lekérési kiszolgálónak, és le kell fordítani.
 
-Ettől a ponttól kezdve a virtuális gépek, amelyek attól függ, hogy a konfiguráció lekéri a frissítést, és telepítse azt. Ezek a frissítések egyszerűek - csak egy-két sor a PowerShell. Az Azure DevOps esetében ezek közül néhány olyan buildfeladatokba van beágyazva, amelyek egy buildben összeláncolhatók. Ez [a cikk](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) további részleteket tartalmaz. Ez a [GitHub-tár-tárlaton](https://github.com/Microsoft/vso-agent-tasks) a rendelkezésre álló buildfeladatok részleteit.
+Ettől kezdve a konfigurációtól függ, hogy a virtuális gépek a frissítés lekéréséhez és telepítéséhez szükségesek-e. Ezek a frissítések egyszerűek – csak egy sor vagy két PowerShell. Az Azure DevOps esetében ezek némelyike olyan felépítési feladatokbe van ágyazva, amelyek összekapcsolhatók egy összeállításban. Ez a [cikk](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) további részleteket tartalmaz. Ez a [GitHub](https://github.com/Microsoft/vso-agent-tasks) -tárház a rendelkezésre álló Build-feladatokat részletezi.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Az Azure Automation DSC áttekintése](automation-dsc-overview.md)
-* [Bevezetési gépek az Azure Automation DSC általi kezeléshez](automation-dsc-onboarding.md)
+* [Azure Automation DSC – áttekintés](automation-dsc-overview.md)
+* [Bevezetési gépek a Azure Automation DSC általi felügyelethez](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- Áttekintést az [Azure Automation állapotkonfigurációja című témakörben talál.](automation-dsc-overview.md)
-- Első lépések: [Az Azure Automation állapotkonfigurációjának első lépései.](automation-dsc-getting-started.md)
-- A DSC-konfigurációk összeállításáról a célcsomópontokhoz való hozzárendelésről a [Konfigurációk összeállítása az Azure Automation állapotkonfigurációjában](automation-dsc-compile.md)témakörben olvashat.
-- A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+- Az áttekintést lásd: [Azure Automation állapot konfigurálása](automation-dsc-overview.md).
+- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
+- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
+- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
-- Díjszabási információkért lásd: [Azure Automation state configuration fortaring.](https://azure.microsoft.com/pricing/details/automation/)
-- Az Azure Automation state configuration használatával kapcsolatos példa folyamatos üzembe helyezési folyamatban: [Folyamatos üzembe helyezés az Azure Automation állapotkonfiguráció és a Csokoládé használata című témakörben.](automation-dsc-cd-chocolatey.md)
+- A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
+- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfigurációval és a csokoládéval](automation-dsc-cd-chocolatey.md).

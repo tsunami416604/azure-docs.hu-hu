@@ -5,31 +5,31 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400692"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene járni:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrás létrehozása<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
-> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
 
-Az első lépés annak biztosítása, hogy a projekt meg legyen nyitva a Visual Studióban.
+Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visual Studióban.
 
-1. Indítsa el **a Visual Studio 2019 alkalmazást.**
-2. Töltse be a projektet, és nyissa meg *a Program.cs.*
+1. Indítsa el a **Visual Studio 2019**-es kiadását.
+2. Töltse be a projektet, és nyissa meg a *program.cs*.
 
 ## <a name="source-code"></a>Forráskód
 
-Cserélje le a *Program.cs* fájl tartalmát a következő C# kódra.
+Cserélje le a *program.cs* fájl tartalmát a következő C#-kódra.
 
 ```csharp
 using System;
@@ -91,11 +91,11 @@ namespace Speech.Recognition
 
 ## <a name="build-and-run-app"></a>Alkalmazás létrehozása és futtatása
 
-Most már készen áll az alkalmazás újraépítésére és a beszédfelismerési funkció tesztelésére a Beszédszolgáltatás használatával.
+Most már készen áll az alkalmazás újraépítésére és a beszédfelismerési funkció tesztelésére a Speech Service használatával.
 
-1. **A kód fordítása** - A Visual Studio menüsorából válassza a Build Solution **(Build** > Solution )**lehetőséget.**
-2. **Az alkalmazás indítása** – A menüsorban válassza a Debug Start Debugging **(Hibakeresés** > **indítása)** lehetőséget, vagy nyomja le az <kbd>F5 billentyűt</kbd>.
-3. **Start elismerés** - Ez arra kéri, hogy beszéljen egy mondatot angolul. A rendszer elküldi a beszédfelismerési szolgáltatást, szövegként átírja, és megjeleníti a konzolon.
+1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **megoldás**létrehozása lehetőséget.
+2. **Indítsa** el az alkalmazást – a menüsávban **válassza** > a hibakeresés**indítása** vagy az <kbd>F5</kbd>billentyűt.
+3. **Felismerés elindítása** – a rendszer felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
 ## <a name="next-steps"></a>További lépések
 

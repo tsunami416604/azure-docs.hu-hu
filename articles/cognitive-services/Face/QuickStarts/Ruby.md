@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a Ruby használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban észleli az arcokat egy képből a Face REST API Ruby használatával.
+description: Ebben a rövid útmutatóban a Ruby használatával a Face REST API segítségével azonosíthatja a képekkel kapcsolatos arcokat.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 3ec6eb60a7325eb87ca637541c5f4222eab98053
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403181"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Ruby használatával
 
-Ebben a rövid útmutatóban az Azure Face REST API ruby használatával észlelheti az emberi arcokat egy lemezképben.
+Ebben a rövid útmutatóban az Azure Face REST API a Ruby használatával ismeri fel az emberi arcokat egy képben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Face-előfizetési kulcs. Ingyenes próba-előfizetési kulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=face-api)szerezhetbe. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Face szolgáltatásra, és levegye a kulcsot.
-- Kódszerkesztő, például [Visual Studio-kód](https://code.visualstudio.com/download)
+- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
+- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="write-the-script"></a>Írja meg a forgatókönyvet
+## <a name="write-the-script"></a>A parancsfájl írása
 
-Hozzon létre egy új fájlt, _faceDetection.rb_, és adja hozzá a következő kódot. Ez a kód meghívja a Face API-t egy adott kép URL-címéhez.
+Hozzon létre egy új, _faceDetection. RB_fájlt, és adja hozzá a következő kódot. Ez a kód meghívja a Face API egy adott rendszerkép URL-címére.
 
 ```ruby
 require 'net/http'
@@ -60,11 +60,11 @@ end
 puts response.body
 ```
 
-Frissítenie kell az `request['Ocp-Apim-Subscription-Key']` értéket az előfizetési kulccsal, és módosítania kell a `uri` karakterláncot úgy, hogy az a megfelelő végpontot tartalmazza.
+Frissítenie kell az `request['Ocp-Apim-Subscription-Key']` értéket az előfizetési kulccsal, és módosítania kell `uri` a karakterláncot úgy, hogy az tartalmazza a megfelelő végpontot.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Azt is megteheti, `imageUri` hogy a mezőt úgy szeretné módosítani, hogy a saját bemeneti lemezképére mutasson. Azt is érdemes módosítani `returnFaceAttributes` a mezőt, amely meghatározza, hogy mely arcattribútumokat kell beolvasni.
+Azt is megteheti, hogy `imageUri` módosítani szeretné a mezőt úgy, hogy a saját bemeneti képére mutasson. Érdemes lehet módosítani a mezőt is, `returnFaceAttributes` amely megadja a lekérdezni kívánt Arcfelismerés-attribútumokat.
 
 ## <a name="run-the-script"></a>A szkript futtatása
 
@@ -74,7 +74,7 @@ Futtassa a Ruby parancsfájlt a következő paranccsal:
 ruby faceDetection.rb
 ```
 
-A konzolra nyomtatott JSON-karakterláncnak kell lennie. A következő szöveg egy példa a sikeres JSON-válaszra.
+Meg kell jelennie a konzolon kinyomtatott, észlelt arc típusú információk JSON-karakterláncának. A következő szöveg egy sikeres JSON-válasz példáját szemlélteti.
 
 ```json
 [
@@ -257,7 +257,7 @@ A konzolra nyomtatott JSON-karakterláncnak kell lennie. A következő szöveg e
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban írt egy Ruby-parancsfájlt, amely meghívja az Azure Face szolgáltatást a rendszerképek arcok észleléséhez és az attribútumok visszaadásához. Ezután további információért tekintse meg a Face API referenciadokumentációját.
+Ebben a rövid útmutatóban egy Ruby-szkriptet írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaadja az attribútumait További információért olvassa el a Face API dokumentációját.
 
 > [!div class="nextstepaction"]
-> [Arcfelismerési API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

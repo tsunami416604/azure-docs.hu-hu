@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Az üzemeltetés dokumentációja
-summary: A beszédfelismerési szolgáltatás tárolói beszédfelismerési és szövegfelolvasó forgatókönyvekhez is elérhetők, amelyek szabványos vagy testreszabott modelleket foglalnak magukban.
+summary: A Speech Service-tárolók mind a beszéd-szöveg, mind a szöveg-beszéd forgatókönyvek számára elérhetők, amely magában foglalja a standard vagy a testreszabott modelleket.
 metadata:
-  title: Üzemeltetési dokumentáció - Oktatóanyagok, API-referencia - Azure Cognitive Services | Microsoft dokumentumok
+  title: Üzemeltetési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/23/2020
   ms.author: trbye
   ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401515"
 landingContent:
-- title: A tárhelyről
+- title: Az üzemeltetésről
   linkLists:
   - linkListType: concept
     links:

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: A Szándékfelismerés dokumentációja
-summary: Szándékfelismerés a beszéd- és nyelvtudás (LUIS) szolgáltatásokkal lehetővé teszi a hangadatfolyamok valós idejű átírását a szövegbe, miközben azonosítja a szándékot és az entitásokat.
+summary: A Speech és Language Understanding (LUIS) szolgáltatásokkal való felismerés lehetővé teszi a hangadatfolyamok valós idejű átírását szöveggé, a szándékok és az entitások azonosításával.
 metadata:
-  title: Szándékfelismerési dokumentáció – Oktatóanyagok, API-referencia – Azure Cognitive Services | Microsoft dokumentumok
+  title: Szándék-felismerési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,19 +12,19 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 65b3f2322c4683eedef8cdfbc328664d4597df58
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401489"
 landingContent:
-- title: A szándékfelismerés – ismertette
+- title: A szándék felismerése
   linkLists:
   - linkListType: quickstart
     links:
     - text: Beszéd, szándékok és entitások felismerése
       url: quickstarts/intent-recognition.md
-- title: Fejlesztés szándékfelismeréssel
+- title: Fejlesztés a szándék-felismeréssel
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -40,5 +40,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: Nyelvi támogatás
       url: ../luis/luis-language-support.md#languages-supported
-    - text: Szándékfelismerési árképzés
+    - text: A szándék felismerésének díjszabása
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

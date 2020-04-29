@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: trbye
 ms.openlocfilehash: 36243fd5db76a4706318f41b3e2cb3f557c17189
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400814"
 ---
-Ebben a rövid útmutatóban a [beszédfelismerési SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) segítségével interaktívan felismerheti a mikrofonbemenetből érkező beszédeket, és leszeretné szerezni a rögzített hang szövegátírását. Ezt a funkciót egyszerűen integrálhatja alkalmazásaiba vagy eszközeibe a gyakori felismerési feladatokhoz, például a beszélgetések átírásához. Összetettebb integrációkhoz is használható, például a Robot keretrendszer és a beszédsdk használatával hangasszisztensek létrehozásához.
+Ebben a rövid útmutatóban a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) használatával interaktív módon ismeri fel a mikrofon bemenetét, és beolvassa a szöveges átírást a rögzített hangból. Egyszerűen integrálhatja ezt a funkciót az alkalmazásaiba vagy eszközeibe az általános felismerési feladatokhoz, például a beszélgetések átírásához. Emellett összetettebb integrációk is használhatók, például a bot Framework és a Speech SDK együttes használata a hangsegédek létrehozásához.
 
-Néhány előfeltétel teljesítése után a mikrofonból érkező beszéd felismerése csak négy lépést tesz:
+Néhány előfeltétel kielégítése után a mikrofonból való beszéd felismerése csak négy lépést vesz igénybe:
 
 > [!div class="checklist"]
-> * Hozzon `SpeechConfig` létre egy objektumot az előfizetési kulcsból és a régióból.
-> * Objektum `SpeechRecognizer` létrehozása felülről az `SpeechConfig` objektum használatával.
-> * Az `SpeechRecognizer` objektum használatával indítsa el a felismerési folyamat egyetlen utterance (kifejezés).
-> * Vizsgálja `SpeechRecognitionResult` meg a visszaküldötteket.
+> * Hozzon `SpeechConfig` létre egy objektumot az előfizetési kulcs és a régió alapján.
+> * Hozzon `SpeechRecognizer` létre egy objektumot `SpeechConfig` a fenti objektum használatával.
+> * Az `SpeechRecognizer` objektum használatával egyetlen lemondás esetén indíthatja el az elismerési folyamatot.
+> * Vizsgálja meg `SpeechRecognitionResult` a visszaadott értéket.

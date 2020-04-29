@@ -6,34 +6,34 @@ ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81392698"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
-A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az AKS segítségével gyorsan létrehozhat egy termelésre kész Kubernetes-fürtöt. Ebben az oktatóanyagban, amely egy hétrészes sorozat harmadik része, egy Kubernetes-fürtöt helyezünk üzembe az AKS-ben. Az alábbiak végrehajtásának módját ismerheti meg:
+A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az AK használatával gyorsan létrehozhat egy éles használatra kész Kubernetes-fürtöt. Ebben az oktatóanyagban, amely egy hétrészes sorozat harmadik része, egy Kubernetes-fürtöt helyezünk üzembe az AKS-ben. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Kubernetes AKS-fürt telepítése, amely hitelesíthető egy Azure-tároló beállításjegyzékében
+> * Az Azure Container registryben hitelesítésre képes Kubernetes AK-fürt üzembe helyezése
 > * A Kubernetes parancssori felület (kubectl) telepítése
 > * A kubectl konfigurálása az AKS-fürthöz való csatlakozásra
 
-További oktatóanyagok, az Azure Vote alkalmazás telepítve van a fürt, méretezett és frissített.
+A további oktatóanyagokban az Azure vote-alkalmazás üzembe helyezése a fürtön történik, méretezhető és frissítve.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha még nem végezte el ezeket a lépéseket, és szeretné követni a mentén, kezdje [az 1.][aks-tutorial-prepare-app]
+Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha még nem tette meg ezeket a lépéseket, és szeretné követni, kezdje az [1. oktatóanyag – tároló lemezképek létrehozása][aks-tutorial-prepare-app]című témakörben.
 
-Ez az oktatóanyag megköveteli, hogy az Azure CLI 2.0.53-as vagy újabb verzióját futtassa. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Az AKS-fürtök képesek a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatára. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek akkor lesznek kombinálva, ha egy felhasználóhoz több szerepkör van rendelve, és az engedélyek egyetlen névtérre vagy a teljes fürtre is hatókörözhetők. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi az RBAC-t az AKS-fürtök létrehozásakor.
+Az AKS-fürtök képesek a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatára. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek kombinálva vannak, ha egy felhasználó több szerepkörhöz van rendelve, és az engedélyek hatóköre egyetlen névtérre vagy a teljes fürtre is kiterjed. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi az RBAC-t az AKS-fürtök létrehozásakor.
 
-AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ezt az erőforráscsoportot [az előző oktatóanyagban][aks-tutorial-prepare-acr] hoztuk létre. Annak érdekében, hogy egy AKS-fürt más Azure-erőforrásokkal kommunikáljon, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mivel nem adott meg egyet. Itt ez a szolgáltatásegyszerű [jogosult lekérése lemezképek][container-registry-integration] az Azure Container Registry (ACR) az előző oktatóanyagban létrehozott példányból. Vegye figyelembe, hogy a szolgáltatásnév helyett [felügyelt identitást](use-managed-identity.md) is használhat a könnyebb kezelés érdekében.
+AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ezt az erőforráscsoportot [az előző oktatóanyagban][aks-tutorial-prepare-acr] hoztuk létre. Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mert nem adott meg ilyet. Ebben az egyszerű szolgáltatásban [megkapta a jogot arra, hogy][container-registry-integration] az előző oktatóanyagban létrehozott Azure Container Registry (ACR) példányból lekérje a lemezképeket. Vegye figyelembe, hogy egy egyszerű szolgáltatásnév helyett [felügyelt identitást](use-managed-identity.md) használhat a könnyebb kezelés érdekében.
 
 ```azurecli
 az aks create \
@@ -44,12 +44,12 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-Manuálisan is konfigurálhat egy egyszerű szolgáltatást az ACR-ből a lemezképek lekérése érdekében. További információ: [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy [Hitelesítés a Kubernetes-ből lekéréses titkos adatokkal.](../container-registry/container-registry-auth-kubernetes.md)
+Manuálisan is konfigurálhat egy egyszerű szolgáltatást a képek ACR-ből való lekéréséhez. További információkért tekintse meg az [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy a [Kubernetes egy lekéréses titokkal történő hitelesítését](../container-registry/container-registry-auth-kubernetes.md)ismertető témakört.
 
-Néhány perc múlva a központi telepítés befejeződik, és json-formázott információkat ad vissza az AKS-telepítésről.
+Néhány perc elteltével az üzembe helyezés befejeződik, és visszaadja a JSON-formátumú adatokat az AK-beli telepítésről.
 
 > [!NOTE]
-> Annak érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia.
+> Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia.
 
 ## <a name="install-the-kubernetes-cli"></a>A Kubernetes parancssori felület telepítése
 
@@ -63,13 +63,13 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>Csatlakozás fürthöz a kubectl használatával
 
-Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *myResourceGroup*ban *myResourceGroup* nevű AKS-fürt hitelesítő adatait kapja meg:
+Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A fürthöz való csatlakozás ellenőrzéséhez futtassa a [kubectl get nodes parancsot][kubectl-get] a fürtcsomópontok listájának visszaadására:
+A fürthöz való kapcsolódás ellenőrzéséhez futtassa a [kubectl Get Nodes][kubectl-get] parancsot a fürtcsomópontok listájának visszaküldéséhez:
 
 ```
 $ kubectl get nodes
@@ -83,7 +83,7 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 Ebben az oktatóanyagban egy Kubernetes-fürtöt helyezett üzembe az AKS-ben, és úgy konfigurálta a `kubectl` elemet, hogy a fürthöz csatlakozzon. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Kubernetes AKS-fürt telepítése, amely hitelesíthető egy Azure-tároló beállításjegyzékében
+> * Az Azure Container registryben hitelesítésre képes Kubernetes AK-fürt üzembe helyezése
 > * A Kubernetes parancssori felület (kubectl) telepítése
 > * A kubectl konfigurálása az AKS-fürthöz való csatlakozásra
 

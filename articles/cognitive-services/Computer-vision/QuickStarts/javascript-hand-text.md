@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Computer Vision 2.0 és 2.1 - Nyomtatott és kézzel írt szöveg kinyerése - REST, JavaScript'
+title: 'Gyors útmutató: Computer Vision 2,0 és 2,1 – nyomtatott és kézzel írott szöveg kinyerése – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban kibonthatja a nyomtatott és kézzel írt szöveget egy képből a Computer Vision API JavaScript használatával.
+description: Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a Computer Vision API és a JavaScript használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,42 +12,42 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 35988f10703967bd5986015ccb0fb480679b94e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404750"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Rövid útmutató: Nyomtatott és kézzel írt szöveg kinyerése a Computer Vision REST API és a JavaScript használatával
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision REST API és a JavaScript használatával
 
-Ebben a rövid útmutatóban a Computer Vision REST API használatával kinyerheti a nyomtatott és/vagy kézzel írt szöveget egy képből. A [Kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszerekkel észlelheti a kép szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakterfolyamba. Az API határozza meg, hogy melyik felismerési modellt használja az egyes szövegsorokhoz, így támogatja a nyomtatott és kézzel írt szöveggel rendelkező képeket.
+Ebben a rövid útmutatóban Kinyeri a nyomtatott és/vagy kézzel írott szöveget a Computer Vision REST API használatával. A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási műveletének eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszereivel a képeken lévő szövegeket azonosíthatja, és kinyerheti a felismert karaktereket egy géppel olvasható karakteres adatfolyamba. Az API meghatározza, hogy melyik felismerési modellt kell használni az egyes szövegekhez, így a nyomtatott és a kézírásos szöveggel is támogatja a lemezképeket.
 
-Ez a funkció egy v2.1 API-ban és egy v3.0-s nyilvános előzetes verzióban is elérhető. A 2.1-es játékhoz képest a 3.0 API a következőket:
+Ez a funkció a v 2.1 API-ban és a v 3.0 nyilvános előzetes verziójú API-ban is elérhető. A 2.1-es verzióhoz képest a 3,0 API a következő:
 
-* Jobb pontosság
+* Javított pontosság
 * A szavak megbízhatósági pontszámai
-* Spanyol és angol támogatás a `language` kiegészítő paraméterrel
-* Más kimeneti formátum
+* A spanyol és az angol nyelv támogatása a további `language` paraméterrel
+* Egy másik kimeneti formátum
 
-Válassza ki az alábbi lapot a használt verzióhoz.
+Válassza ki az alábbi lapot az Ön által használt verzióhoz.
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
 > [!IMPORTANT]
-> A [Kötegelt olvasás](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Kötegelt olvasás metódus egy `Operation-Location` URI-t ad vissza a válaszfejléc mező értékében. Ezután meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t jelöli, hogy ellenőrizze az állapotát, és visszaadja a Batch Read metódus hívásának eredményeit.
+> A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódusa aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` válasz fejléc mezőjének értékeként. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t jelöli, és a kötegelt olvasási metódus hívásának eredményeit is visszaadja.
 
 #### <a name="version-3-public-preview"></a>[3. verzió (nyilvános előzetes verzió)](#tab/version-3)
 
 > [!IMPORTANT]
-> A [Kötegelt olvasás](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Kötegelt olvasás metódus egy `Operation-Location` URI-t ad vissza a válaszfejléc mező értékében. Ezután meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API-t jelöli, hogy ellenőrizze az állapotát, és visszaadja a Batch Read metódus hívásának eredményeit.
+> A [Batch olvasási](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) metódusa aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` válasz fejléc mezőjének értékeként. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API-t jelöli, és a kötegelt olvasási metódus hívásának eredményeit is visszaadja.
 
 ---
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) .
 
-Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot. Mentse az előfizetési kulcsot és a végpont URL-címét egy ideiglenes helyre.
+Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Mentse az előfizetési kulcsot és a végpont URL-címét egy ideiglenes helyre.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -55,12 +55,12 @@ Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbak
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Hozzon létre egy _get-text.html_nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja a következő kódot.
-1. Szükség esetén cserélje le `value` a `inputImage` vezérlő attribútumának értékét egy másik kép URL-címére, amelyből szöveget szeretne kinyerni.
+1. Hozzon létre egy _Get-Text. html_nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja a következő kódot.
+1. Szükség esetén cserélje le a `value` `inputImage` vezérlő attribútumának értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
 1. Nyisson meg egy böngészőablakot.
 1. A böngészőben húzza a fájlt a böngészőablakba.
-1. Amikor a weblap megjelenik a böngészőben, illessze be az előfizetési kulcsot és a végpont URL-címét a megfelelő beviteli mezőkbe.
-1. Válassza a **Kép olvasása** gombot.
+1. Ha a weblap megjelenik a böngészőben, illessze be az előfizetési kulcsot és a végponti URL-címet a megfelelő beviteli mezőkbe.
+1. Válassza a **rendszerkép olvasása** gombot.
 
 ```html
 <!DOCTYPE html>
@@ -206,10 +206,10 @@ Image to read:
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Szükség esetén cserélje le `value` a `inputImage` vezérlő attribútumának értékét egy másik kép URL-címére, amelyből szöveget szeretne kinyerni.
+1. Szükség esetén cserélje le a `value` `inputImage` vezérlő attribútumának értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
 1. Mentse a kódot egy `.html` kiterjesztésű fájlként. Például: `get-text.html`.
 1. Nyisson meg egy böngészőablakot.
-1. Amikor a weblap megjelenik a böngészőben, töltse ki a szükséges paramétereket, és válassza a **Kép olvasása** gombot.
+1. Ha a weblap megjelenik a böngészőben, töltse ki a szükséges paramétereket, és válassza a **rendszerkép olvasása** gombot.
 
 ```html
 <!DOCTYPE html>
@@ -786,7 +786,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel a JavaScript alkalmazás, amely a Computer Vision elvégzésére optikai karakterfelismerés (OCR); intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit. 
+Az optikai karakterfelismerés (OCR) elvégzéséhez Computer Visiont használó JavaScript-alkalmazás megismerése intelligens vágású miniatűrök létrehozása; a képek vizuális funkcióinak felismerése, kategorizálása, címkézése és leírása. 
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)

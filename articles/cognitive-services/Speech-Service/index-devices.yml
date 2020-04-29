@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: A Speech Devices dokumentációja
-summary: A beszédfelismerési eszközök SDK egy előre hangolt könyvtár, amely párosítva van a célra épített, mikrofontömb fejlesztői készletek.
+summary: A Speech Devices SDK egy előre beállított könyvtár, amely a célzott, a mikrofonos tömb fejlesztői csomagjaival párosítva van.
 metadata:
-  title: Beszédeszközök dokumentációja – Oktatóanyagok, API-referencia – Azure Cognitive Services | Microsoft dokumentumok
+  title: Beszédfelismerési eszközök dokumentációja – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 76bb63654778a08244e2207839e12812b7227dff
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401387"
 landingContent:
-- title: A beszédfelismerési eszközök SDK-
+- title: Tudnivalók a Speech Devices SDK-ról
   linkLists:
   - linkListType: overview
     links:
@@ -26,19 +26,19 @@ landingContent:
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: Beszédfelismerési eszközök használata SDK (Windows)
+    - text: A Speech Devices SDK (Windows) használata
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: Beszédfelismerési eszközök használata SDK (Linux)
+    - text: A Speech Devices SDK (Linux) használata
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Beszédfelismerési eszközök használata SDK (Android)
+    - text: A Speech Devices SDK (Android) használata
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Fejlesztés beszédeszközökkel SDK
+- title: Fejlesztés a Speech Device SDK-val
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Mikrofontömb tervezése
+    - text: Mikrofon tömb kialakítása
       url: speech-devices-sdk-microphone.md
-    - text: A Roobo v1 kit beállítása
+    - text: A Roobo v1 csomag beállítása
       url: speech-devices-sdk-roobo-v1.md
 - title: Referencia
   linkLists:

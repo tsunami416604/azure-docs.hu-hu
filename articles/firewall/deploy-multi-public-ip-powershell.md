@@ -1,6 +1,6 @@
 ---
-title: Az Azure Tűzfal telepítése több nyilvános IP-címmel a PowerShell használatával
-description: Ebben a cikkben megtudhatja, hogyan telepíthet egy Azure Tűzfalat több nyilvános IP-címmel az Azure PowerShell használatával.
+title: Azure Firewall üzembe helyezése több nyilvános IP-címmel a PowerShell használatával
+description: Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy Azure Firewall több nyilvános IP-címmel a Azure PowerShell használatával.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: 21f645e64c9944ed102f538710ea6facc26c7e83
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314033"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Azure Firewall üzembe helyezése több nyilvános IP-címmel az Azure PowerShell használatával
 
-Ez a szolgáltatás a következő eseteket teszi lehetővé:
+Ez a szolgáltatás a következő forgatókönyveket teszi lehetővé:
 
-- **DNST** – Több szabványos portpéldányt is lefordíthat a háttérkiszolgálókra. Ha például két nyilvános IP-címmel rendelkezik, a 3389-es TCP-portot (RDP) mindkét IP-címhez lefordíthatja.
-- **SNAT** - További portok állnak rendelkezésre a kimenő SNAT-kapcsolatokhoz, csökkentve az SNAT-port okának kimerülését. Ebben az időben az Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címet használni a kapcsolatot. Ha a hálózaton van-e alsóbb rétegbeli szűrés, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet.
+- **DNAT** – a háttér-kiszolgálókra több szabványos port-példányt is lefordíthat. Ha például két nyilvános IP-címmel rendelkezik, akkor mindkét IP-cím esetében lefordíthatja a 3389-es TCP-portot.
+- **SNAT** – további portok érhetők el a kimenő SNAT-kapcsolatokhoz, ami csökkenti a SNAT-portok kimerülésének lehetséges lehetőségét. Ekkor Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címét, amelyet a rendszer a kapcsolódáshoz használ. Ha a hálózaton bármilyen alsóbb rétegbeli szűrés van, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet.
  
-A több nyilvános IP-címmel rendelkező Azure Firewall az Azure Portalon, az Azure PowerShellen, az Azure CLI-n, a REST-en és a sablonokon keresztül érhető el. Legfeljebb 100 nyilvános IP-címmel rendelkező Azure tűzfalat helyezhet üzembe.
+A több nyilvános IP-címmel rendelkező Azure Firewall a Azure Portal, a Azure PowerShell, az Azure CLI, a REST és a sablonok használatával érhető el. Akár 100 nyilvános IP-címmel rendelkező Azure Firewall is üzembe helyezhet.
 
-A következő Azure PowerShell-példák bemutatják, hogyan konfigurálhatja, adhat hozzá és távolíthatja el az Azure Firewall nyilvános IP-címeit.
+Az alábbi Azure PowerShell példák bemutatják, hogyan konfigurálhatja, adhatja hozzá és távolíthatja el a Azure Firewall nyilvános IP-címeit.
 
 > [!NOTE]
-> Az első ipConfiguration az Azure Firewall nyilvános IP-cím konfigurációs lapjáról nem távolítható el. Ha módosítani szeretné az IP-címet, használhatja az Azure PowerShellt.
+> Az első ipConfiguration nem távolítható el a Azure Firewall nyilvános IP-cím konfigurációjának oldaláról. Ha módosítani kívánja az IP-címet, használhatja a Azure PowerShell.
 
-## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>Tűzfal létrehozása két vagy több nyilvános IP-címmel
+## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>Hozzon létre két vagy több nyilvános IP-címmel rendelkező tűzfalat
 
-Ebben a példában két nyilvános IP-címmel rendelkező virtuális hálózati *virtuális hálózathoz* csatlakoztatott tűzfalat hoz létre.
+Ez a példa két nyilvános IP-címmel rendelkező virtuális hálózati *vnet* csatolt tűzfalat hoz létre.
 
 ```azurepowershell
 $rgName = "resourceGroupName"
@@ -63,7 +63,7 @@ New-AzFirewall `
 
 ## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Nyilvános IP-cím hozzáadása meglévő tűzfalhoz
 
-Ebben a példában az *azFwPublicIp1* nyilvános IP-cím csatlakozik a tűzfalhoz.
+Ebben a példában a nyilvános IP- *azFwPublicIp1* a tűzfalhoz van csatlakoztatva.
 
 ```azurepowershell
 $pip = New-AzPublicIpAddress `
@@ -82,9 +82,9 @@ $azFw.AddPublicIpAddress($pip)
 $azFw | Set-AzFirewall
 ```
 
-## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Nyilvános IP-cím eltávolítása meglévő tűzfalról
+## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Nyilvános IP-cím eltávolítása meglévő tűzfallal
 
-Ebben a példában az *azFwPublicIp1* nyilvános IP-cím levan választva a tűzfalról.
+Ebben a példában a nyilvános IP-cím *azFwPublicIp1* le van választva a tűzfalból.
 
 ```azurepowershell
 $pip = Get-AzPublicIpAddress `
@@ -102,4 +102,4 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Hozzon létre egy Azure-tűzfalat több nyilvános IP-címmel – Erőforrás-kezelő sablon](quick-create-multiple-ip-template.md)
+* [Gyors útmutató: Azure Firewall létrehozása több nyilvános IP-címmel – Resource Manager-sablon](quick-create-multiple-ip-template.md)

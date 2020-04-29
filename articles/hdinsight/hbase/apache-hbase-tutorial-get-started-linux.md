@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Az Apache HBase használata az Azure HDInsightban
-description: Kövesse ezt az Apache HBase oktatóanyagot a hadoop HDInsight-on való használatának megkezdéséhez. Táblákat hozhat létre a HBase rendszehéjból, és lekérdezheti azokat a Hive eszközzel.
+title: Oktatóanyag – az Apache HBase használata az Azure HDInsight
+description: Kövesse ezt az Apache HBase-oktatóanyagot a Hadoop on HDInsight használatának megkezdéséhez. Táblákat hozhat létre a HBase rendszehéjból, és lekérdezheti azokat a Hive eszközzel.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,36 +9,36 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
 ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81390263"
 ---
-# <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: Az Apache HBase használata az Azure HDInsightban
+# <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre Apache HBase-fürtöt az Azure HDInsightban, hogyan hozhat létre HBase-táblákat és lekérdezési táblákat az Apache Hive használatával.  A HBase-re vonatkozó általános információért lásd: [HDInsight HBase overview](./apache-hbase-overview.md) (A HDInsight HBase áttekintése).
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Apache HBase-fürtöt az Azure HDInsight, hogyan hozhat létre HBase-táblákat és lekérdezési táblákat Apache Hive használatával.  A HBase-re vonatkozó általános információért lásd: [HDInsight HBase overview](./apache-hbase-overview.md) (A HDInsight HBase áttekintése).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Apache HBase fürt létrehozása
-> * HBase táblák létrehozása és adatok beszúrása
-> * Apache Hive használata az Apache HBase lekérdezéséhez
+> * Apache HBase-fürt létrehozása
+> * HBase táblák létrehozása és az adatbeszúrás
+> * Az Apache HBase lekérdezése Apache Hive használatával
 > * HBase REST API-k használata Curl használatával
 > * A fürt állapotának ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Bash. A példák ebben a cikkben használja a Bash shell a Windows 10 a curl parancsokat. A windows [10-es Windows-alrendszer telepítési útmutatójában](https://docs.microsoft.com/windows/wsl/install-win10) a windows 10-es operációs rendszer telepítési útmutatójában talál.  Más [Unix héjak](https://www.gnu.org/software/bash/) is működni fog.  A curl példák, néhány kisebb módosításokkal, működhet a Windows parancssorban.  Vagy használhatja a Windows PowerShell parancsmag [invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod).
+* Bash. A cikkben szereplő példák a Windows 10-es bash rendszerhéját használják a curl-parancsokhoz. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.  A curl-példák néhány kisebb módosítással is működhetnek Windows-parancssorban.  Vagy használhatja a [Meghívási-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)Windows PowerShell-parancsmagot is.
 
-## <a name="create-apache-hbase-cluster"></a>Apache HBase fürt létrehozása
+## <a name="create-apache-hbase-cluster"></a>Apache HBase-fürt létrehozása
 
-Az alábbi eljárás egy Azure Resource Manager-sablont használ egy HBase-fürt létrehozásához. A sablon is létrehozza a függő alapértelmezett Azure Storage-fiók. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban).
+Az alábbi eljárás egy Azure Resource Manager sablont használ egy HBase-fürt létrehozásához. A sablon emellett létrehozza a függő alapértelmezett Azure Storage-fiókot is. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban).
 
-1. Válassza ki az alábbi képet a sablon megnyitásához az Azure Portalon. A sablon az [Azure rövid útmutató sablonjaiban](https://azure.microsoft.com/resources/templates/)található.
+1. Válassza ki az alábbi képet a sablon megnyitásához a Azure Portal. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/)található.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
@@ -47,59 +47,59 @@ Az alábbi eljárás egy Azure Resource Manager-sablont használ egy HBase-fürt
     |Tulajdonság |Leírás |
     |---|---|
     |Előfizetés|Válassza ki a fürt létrehozásához használt Azure-előfizetést.|
-    |Erőforráscsoport|Hozzon létre egy Azure Erőforrás-kezelési csoportot, vagy használjon egy meglévőt.|
-    |Hely|Adja meg az erőforráscsoport helyét. |
+    |Erőforráscsoport|Hozzon létre egy Azure Resource Management-csoportot, vagy használjon egy meglévőt.|
+    |Hely|Határozza meg az erőforráscsoport helyét. |
     |ClusterName|Adja meg a HBase-fürt nevét.|
     |A fürt bejelentkezési neve és jelszava|Az alapértelmezett bejelentkezési név az **admin**.|
     |SSH-felhasználónév és jelszó|Az alapértelmezett felhasználónév az **sshuser**.|
 
     Más paraméterek opcionálisak.  
 
-    Minden egyes fürt az Azure Storage-fióktól függ. A fürt törlése után az adatok a tárfiókban maradnak. A fürt alapértelmezett tárfiókneve a fürt neve a „store” kifejezéssel kiegészítve. Ez kódolva a sablon változók részben.
+    Minden egyes fürt az Azure Storage-fióktól függ. A fürt törlése után az adattárolási fiókban maradnak. A fürt alapértelmezett tárfiókneve a fürt neve a „store” kifejezéssel kiegészítve. A sablon változói szakaszban található hardcoded.
 
-3. Válassza **az Elfogadom a fent meghatározott feltételeket,** majd a **Vásárlás**lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**, majd válassza a **vásárlás**lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
 A HBase-fürtök törlése után egy másik HBase-fürtöt hozhat létre ugyanazon alapértelmezett blobtárolóval. Az új fürt felveszi az eredeti fürtben létrehozott HBase-táblákat. Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
 
 ## <a name="create-tables-and-insert-data"></a>Táblák létrehozása és adatok beszúrása
 
-Az SSH segítségével csatlakozhat a HBase-fürtökhöz, majd [az Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) segítségével HBase táblákat hozhat létre, adatokat szúrhat be és lekérdezési adatokat.
+Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](https://hbase.apache.org/0.94/book/shell.html) használatával HBase-táblákat hozhat létre, és adatbeszúrási és Adatlekérdezési adatként is létrehozhat.
 
 A legtöbbek számára az adatok táblázatos formátumban jelennek meg:
 
-![HDInsight Apache HBase táblázatos adatok](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase táblázatos adatokat](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
 
-A HBase (végrehajtása [Cloud BigTable](https://cloud.google.com/bigtable/)), ugyanazokaz adatok néz ki:
+A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja) ugyanazokat az adatmennyiségeket keresi:
 
-![HDInsight Apache HBase BigTable adatok](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase BigTable-adatbázis](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
 
 **A Hbase-rendszerhéj használata**
 
-1. A `ssh` Parancs segítségével csatlakozzon a HBase fürthöz. Az alábbi parancs szerkesztése a fürt nevének cseréjével, `CLUSTERNAME` majd írja be a parancsot:
+1. Használja `ssh` a parancsot a HBase-fürthöz való kapcsolódáshoz. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. A `hbase shell` HBase interaktív rendszerhéj indításához használja a parancsot. Írja be a következő parancsot az SSH-kapcsolatba:
+1. A `hbase shell` parancs használatával indítsa el a HBase interaktív rendszerhéját. Adja meg az alábbi parancsot az SSH-kapcsolatban:
 
     ```bash
     hbase shell
     ```
 
-1. A `create` parancs segítségével hozzon létre egy HBase táblát kétoszlopos családokkal. A tábla- és oszlopnevekben a kis- és nagybetűket nem lehet figyelembe. Írja be a következő parancsot:
+1. A `create` parancs használatával hozzon létre egy kétoszlopos családokat tartalmazó HBase-táblázatot. A tábla és az oszlop neve megkülönbözteti a kis-és nagybetűket. Írja be a következő parancsot:
 
     ```hbaseshell
     create 'Contacts', 'Personal', 'Office'
     ```
 
-1. A `list` parancs segítségével a HBase összes tábláját listázhassa. Írja be a következő parancsot:
+1. Használja `list` a parancsot a HBase összes táblájának listázásához. Írja be a következő parancsot:
 
     ```hbase
     list
     ```
 
-1. A `put` parancs segítségével értékeket szúrhat be egy adott tábla megadott sorának megadott oszlopába. Írja be a következő parancsokat:
+1. A `put` parancs használatával szúrhat be értékeket egy adott oszlop megadott sorában egy adott táblába. Adja meg a következő parancsokat:
 
     ```hbaseshell
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -108,25 +108,25 @@ A HBase (végrehajtása [Cloud BigTable](https://cloud.google.com/bigtable/)), u
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-1. A `scan` parancs segítségével beszkandelheti és visszaadhatja a `Contacts` táblaadatait. Írja be a következő parancsot:
+1. A `scan` tábla adatvizsgálatához és visszaküldéséhez használja a `Contacts` parancsot. Írja be a következő parancsot:
 
     ```hbase
     scan 'Contacts'
     ```
 
-    ![HDInsight Apache Hadoop HBase rendszerhéj](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    ![HDInsight Apache Hadoop HBase-rendszerhéj](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
-1. A `get` parancs segítségével lekéri egy sor tartalmát. Írja be a következő parancsot:
+1. Egy `get` sor tartalmának lekéréséhez használja a parancsot. Írja be a következő parancsot:
 
     ```hbaseshell
     get 'Contacts', '1000'
     ```
 
-    Hasonló eredményeket láthat, `scan` mint a parancs használata, mert csak egy sor van.
+    A `scan` parancs használatával hasonló eredmények jelennek meg, mert csak egy sor van.
 
-    A HBase táblasémáról további információt az [Apache HBase sématervezés – bevezetés című témakörben talál.](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf) További Hbase-parancsokért lásd: [Apache HBase reference guide](https://hbase.apache.org/book.html#quickstart) (Apache HBase referencia-útmutató).
+    A HBase táblázatos sémával kapcsolatos további információkért lásd: [Bevezetés az Apache HBase Schema design](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf)használatába. További Hbase-parancsokért lásd: [Apache HBase reference guide](https://hbase.apache.org/book.html#quickstart) (Apache HBase referencia-útmutató).
 
-1. A `exit` Parancs segítségével állítsa le a HBase interaktív rendszerhéjat. Írja be a következő parancsot:
+1. A `exit` HBase interaktív rendszerhéj leállításához használja a parancsot. Írja be a következő parancsot:
 
     ```hbaseshell
     exit
@@ -149,29 +149,29 @@ Egy minta adatfájl található a következő nyilvános blobtárolóban találh
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-Igény szerint létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjába. Az utasításokat az [Apache Hadoop-feladatok adatainak feltöltése a HDInsightban című témakörben találja.](../hdinsight-upload-data.md)
+Igény szerint létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjába. Az utasításokért lásd: [adatok feltöltése Apache Hadoop feladatokhoz a HDInsight-ben](../hdinsight-upload-data.md).
 
-Ez az `Contacts` eljárás az utolsó eljárásban létrehozott HBase táblát használja.
+Ez az eljárás az `Contacts` utolsó eljárás során létrehozott HBase táblát használja.
 
-1. A nyitott ssh kapcsolaton futtassa a következő parancsot az adatfájl StoreFiles `Dimporttsv.bulk.output`fájllá alakításához, és tárolja a.
+1. Az Open SSH-kapcsolatban futtassa a következő parancsot az adatfájl adatfájlt storefiles való átalakításához, és tárolja a által `Dimporttsv.bulk.output`megadott relatív elérési utat.
 
     ```bash
     hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
     ```
 
-2. Futtassa a következő parancsot az adatok feltöltéséhez a HBase táblába: `/example/data/storeDataFileOutput`
+2. Futtassa az alábbi parancsot az adatok `/example/data/storeDataFileOutput` a HBase táblába való feltöltéséhez:
 
     ```bash
     hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
     ```
 
-3. Megnyithatja a HBase rendszerhéjat, és a `scan` paranccsal felsorolhatja a táblázat tartalmát.
+3. Megnyithatja a HBase-rendszerhéjt, és `scan` a parancs használatával listázhatja a tábla tartalmát.
 
-## <a name="use-apache-hive-to-query-apache-hbase"></a>Apache Hive használata az Apache HBase lekérdezéséhez
+## <a name="use-apache-hive-to-query-apache-hbase"></a>Az Apache HBase lekérdezése Apache Hive használatával
 
-A HBase-táblákban az [Apache Hive](https://hive.apache.org/)használatával lekérdezheti az adatokat. Ebben a szakaszban egy, a HBase-táblára leképezést biztosító Hive-táblát hoz létre, amellyel lekérdezheti a HBase-táblában lévő adatokat.
+A HBase-táblákban lévő adatlekérdezéseket [Apache Hive](https://hive.apache.org/)használatával lehet lekérdezni. Ebben a szakaszban egy, a HBase-táblára leképezést biztosító Hive-táblát hoz létre, amellyel lekérdezheti a HBase-táblában lévő adatokat.
 
-1. A nyitott ssh kapcsolatból a következő paranccsal indítsa el a Beeline-t:
+1. Az Open SSH-kapcsolatban a következő paranccsal indíthatja el a Beeline-t:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
@@ -179,7 +179,7 @@ A HBase-táblákban az [Apache Hive](https://hive.apache.org/)használatával le
 
     A Beeline-nal kapcsolatos további információkért lásd [a Hive és a Hadoop együttes, a Beeline-nal történő használatát a HDInsightban](../hadoop/apache-hadoop-use-hive-beeline.md) ismertető cikket.
 
-1. Futtassa a következő [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlt egy Hive-tábla létrehozásához, amely leképezi a HBase-táblát. Győződjön meg arról, hogy a jelen cikkben korábban hivatkozott mintatáblát hozta létre a HBase rendszerhéj használatával, mielőtt futtatja ezt a kimutatást.
+1. Futtassa a következő [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) -szkriptet egy struktúra-tábla létrehozásához, amely leképezi a HBase táblát. A jelen utasítás futtatása előtt győződjön meg arról, hogy létrehozta a cikk korábbi részében hivatkozott minta táblát a HBase-rendszerhéj használatával.
 
     ```hiveql
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -194,15 +194,15 @@ A HBase-táblákban az [Apache Hive](https://hive.apache.org/)használatával le
     SELECT count(rowkey) AS rk_count FROM hbasecontacts;
     ```
 
-1. A Beeline-ból `!exit`való kilépéshez használja a használatát.
+1. A Beeline kilépéséhez `!exit`használja a következőt:.
 
-1. Az ssh kapcsolatból `exit`való kilépéshez használja a használatát.
+1. Az SSH-kapcsolatok kilépéséhez `exit`használja a következőt:.
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>HBase REST API-k használata Curl használatával
 
 A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgálónak.
 
-1. Állítsa be a környezeti változót a könnyű használat érdekében. Az alábbi parancsokat `MYPASSWORD` a fürt bejelentkezési jelszavával szerkeszthetjük. Cserélje `MYCLUSTERNAME` le a HBase-fürt nevére. Ezután adja meg a parancsokat.
+1. Az egyszerű használat érdekében állítsa be a környezeti változót. Szerkessze az alábbi parancsokat úgy `MYPASSWORD` , hogy lecseréli a fürt bejelentkezési jelszavát. Cserélje `MYCLUSTERNAME` le a nevet a HBase-fürt nevére. Ezután adja meg a parancsokat.
 
     ```bash
     export password='MYPASSWORD'
@@ -239,10 +239,10 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
     -v
     ```
 
-    Base64 kódolja a -d kapcsolóban megadott értékeket. A példában:
+    Base64 kódolással adja meg a-d kapcsolóban megadott értékeket. A példában:
 
    * MTAwMA==: 1000
-   * UGVyc29uYWw6TmFtZQ==: Személyes: Név
+   * UGVyc29uYWw6TmFtZQ = =: Personal: név
    * Sm9obiBEb2xl: John Dole
 
      A [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) lehetővé teszi több (kötegelt) érték beszúrását.
@@ -277,13 +277,13 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 **A HBase mesterfelületének elérése**
 
-1. Jelentkezzen be az Ambari `https://CLUSTERNAME.azurehdinsight.net` web `CLUSTERNAME` felhasználói felületére, ahol a HBase-fürt neve található.
+1. Jelentkezzen be a Ambari webes felhasználói `https://CLUSTERNAME.azurehdinsight.net` felületére, ahol `CLUSTERNAME` a a HBase-fürt neve.
 
-1. Válassza a Bal oldali menü **HBase** parancsát.
+1. A bal oldali menüben válassza a **HBase** lehetőséget.
 
-1. Válassza a **gyorshivatkozások** lehetőséget a lap tetején, mutasson az aktív Zookeeper csomópontra, és válassza a **HBase főfelhasználói felületét.**  A felület egy új böngészőlapon nyílik meg:
+1. Válassza a **gyors hivatkozások** lehetőséget az oldal tetején, mutasson az aktív Zookeeper csomópontra, majd válassza ki **HBase Master felhasználói felületet**.  A felület egy új böngészőlapon nyílik meg:
 
-   ![HDInsight Apache HBase HMaster felhasználói felület](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HDInsight Apache HBase HMaster felhasználói felülete](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
    A HBase-mesterfelület az alábbi részeket tartalmazza:
 
@@ -295,17 +295,17 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat. Használhatja a HBase `disable 'Contacts'`parancsot . Ha nem fogja tovább használni ezt az alkalmazást, törölje a következő lépésekkel létrehozott HBase-fürtöt:
+Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat. Használhatja a HBase parancsot `disable 'Contacts'`. Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-fürtöt a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. A felső **keresőmezőbe** írja be a **HDInsight kifejezést.**
-1. Válassza a **HDInsight-fürtök et a** **Szolgáltatások csoportban.**
-1. A megjelenő HDInsight-fürtök listájában kattintson az oktatóanyaghoz létrehozott fürt melletti **...** elemre.
-1. Kattintson a **Törlés** gombra. Kattintson **az Igen gombra.**
+1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
+1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett.
+1. Kattintson a **Törlés** gombra. Kattintson az **Igen**gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Apache HBase-fürtöt. És hogyan hozhat létre táblákat, és tekintse meg az adatokat ezekben a táblákban a HBase shell. Azt is megtanulta, hogyan használhatja a Hive-lekérdezést a HBase-táblák ban lévő adatokon. És hogyan használhatja a HBase C# REST API-k at egy HBase-tábla létrehozásához és a táblából származó adatok lekéréséhez. További tudnivalókért lásd:
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Apache HBase-fürtöt. És hogyan hozhat létre táblákat, és hogyan tekintheti meg a táblák adatait a HBase-rendszerhéjból. Azt is megtanulta, hogyan használható struktúra-lekérdezés a HBase-táblákban található információkhoz. És hogyan használható a HBase C# REST API-k egy HBase tábla létrehozásához és adatok lekérdezéséhez a táblából. További tudnivalókért lásd:
 
 > [!div class="nextstepaction"]
 > [A HDInsight HBase áttekintése](./apache-hbase-overview.md)

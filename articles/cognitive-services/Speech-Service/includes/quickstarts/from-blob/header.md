@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: A blobstorageban tárolt beszédfelismerés – Beszédszolgáltatás'
+title: 'Gyors útmutató: a blob Storage szolgáltatásban tárolt beszéd felismerése'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -12,14 +12,14 @@ ms.date: 03/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 514d1197c5e6d0f4c0f38faf24c6c2522d489820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400920"
 ---
-Ebben a rövid útmutatóban egy REST API-t fog használni a kötegelt folyamat fájljaiból származó beszédfelismeréshez. A kötegelt folyamat felhasználói beavatkozás nélkül hajtja végre a beszédátírást. Ez ad egy egyszerű programozási modell, anélkül, hogy kezelni egyidejűség, egyéni beszéd modellek, vagy egyéb részleteket. Ez speciális vezérlési lehetőségeket foglal magában, miközben hatékonyan használja az Azure beszédszolgáltatási erőforrásait.
+Ebben a rövid útmutatóban egy REST API fogja felismerni a Batch-folyamatokban lévő fájlok beszédét. A Batch-folyamatok felhasználói interakció nélkül hajtják végre a beszéd átírását. Egyszerű programozási modellt biztosít, anélkül, hogy a párhuzamosságot, az egyéni beszédfelismerési modelleket vagy egyéb részleteket kellene kezelnie. Speciális vezérlési lehetőségeket is magában foglal, miközben az Azure Speech Service-erőforrások hatékony használatát teszi elérhetővé.
 
-A rendelkezésre álló lehetőségekről és a konfigurációs részletekről további információt a [kötegelt átírás című](../../../batch-transcription.md)témakörben talál.
+További információ az elérhető beállításokról és a konfiguráció részleteiről: [Batch átírása](../../../batch-transcription.md).
 
-A következő rövid útmutató végigvezeti a használati minta.
+A következő rövid útmutató végigvezeti a használati példákon.

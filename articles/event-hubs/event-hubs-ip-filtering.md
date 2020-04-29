@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs tűzfalszabályok | Microsoft dokumentumok
-description: A tűzfalszabályok használatával engedélyezheti a kapcsolatokat adott IP-címekről az Azure Event Hubs-hoz.
+title: Azure Event Hubs tűzfalszabályok | Microsoft Docs
+description: A tűzfalszabályok használatával engedélyezheti az adott IP-címekről az Azure Event Hubs való kapcsolódást.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -12,69 +12,69 @@ ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 18212726f0ab921a05a3b640a32754c62958d047
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393144"
 ---
-# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>IP-tűzfalszabályok konfigurálása Egy Azure Event Hubs névtérhez
-Alapértelmezés szerint az Event Hubs névterek elérhetők az internetről, amíg a kérelem érvényes hitelesítéssel és engedélyezéssel érkezik. Az IP-tűzfal lal tovább korlátozhatja a [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölésben lévő IPv4-címek vagy IPv4-címtartományok készletére.
+# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>IP-tűzfalszabályok konfigurálása Azure Event Hubs-névtérhez
+Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
 
-Ez a funkció olyan esetekben hasznos, amelyekben az Azure Event Hubs csak bizonyos jól ismert helyekről érhető el. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekről származó forgalom fogadására. Ha például az Event Hubs szolgáltatást az [Azure Express Route-szal][express-route]használja, létrehozhat egy **tűzfalszabályt,** amely csak a helyszíni infrastruktúra IP-címeiből engedélyezi a forgalmat. 
+Ez a funkció olyan helyzetekben hasznos, amikor az Azure Event Hubs csak bizonyos jól ismert helyekről elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route][express-route]Event Hubst használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről érkező forgalmat engedélyezze. 
 
 >[!WARNING]
-> Az IP-szűrés engedélyezése megakadályozhatja, hogy más Azure-szolgáltatások együttműködjenek az Event Hubs szolgáltatással.
+> Az IP-szűrés engedélyezésével megakadályozhatja, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
 >
-> A megbízható Microsoft-szolgáltatások nem támogatottak a virtuális hálózatok megvalósításakor.
+> A megbízható Microsoft-szolgáltatások nem támogatottak, ha a virtuális hálózatok implementálva vannak.
 >
-> A virtuális hálózatokkal nem működik gyakori Azure-forgatókönyvek (vegye figyelembe, hogy a lista **nem** teljes) -
+> Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
 > - Azure Monitor (diagnosztikai beállítás)
 > - Azure Stream Analytics
-> - Integráció az Azure Event Griddel
-> - Az Azure IoT Hub-útvonalak
-> - Azure IoT eszközkezelő
+> - Integráció a Azure Event Grid
+> - Azure IoT Hub útvonalak
+> - Azure IoT Device Explorer
 >
-> A következő Microsoft-szolgáltatásoknak virtuális hálózaton kell lenniük
+> A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
 > - Azure Web Apps
 > - Azure Functions
 
 
-## <a name="ip-firewall-rules"></a>IP tűzfalszabályai
-Az IP-tűzfal szabályok az Event Hubs névtér szintjén kerülnek alkalmazásra. Ezért a szabályok a támogatott protokollt használó ügyfelek összes kapcsolatára vonatkoznak. Az Eseményközpontok névterében engedélyezett IP-szabálynak nem megfelelő IP-címről érkező csatlakozási kísérlet jogosulatlanként elutasításra kerül. A válasz nem említi az IP-szabályt. Az IP-szűrőszabályok sorrendben kerülnek alkalmazásra, és az IP-címnek megfelelő első szabály határozza meg az elfogadási vagy elutasítási műveletet.
+## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
+Az IP-tűzfalszabályok a Event Hubs névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Event Hubs névtérben lévő engedélyezett IP-szabálynak, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
-Ez a szakasz bemutatja, hogyan használhatja az Azure Portalon az Event Hubs névtér IP-tűzfalszabályainak létrehozásához. 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre IP-tűzfalszabályok Event Hubs névtérhez a Azure Portal használatával. 
 
-1. Nyissa meg az **Event Hubs névterét** az [Azure Portalon.](https://portal.azure.com)
-2. A bal oldali menüben válassza a **Hálózat lehetőséget.** Ha a **Minden hálózat** lehetőséget választja, az eseményközpont bármely IP-címről fogadja a kapcsolatokat. Ez a beállítás megegyezik a 0.0.0.0/0 IP-címtartományt elfogadó szabállyal. 
+1. Navigáljon a **Event Hubs névtérhez** a [Azure Portal](https://portal.azure.com).
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget. Ha a **minden hálózat** lehetőséget választja, az Event hub bármely IP-címről fogad kapcsolatokat. Ez a beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
 
-    ![Tűzfal – Minden hálózat beállítás kiválasztva](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Ha korlátozni szeretné a hozzáférést bizonyos hálózatokhoz és IP-címekhez, jelölje be a **Kiválasztott hálózatok jelölőnégyzetet.** A **Tűzfal** szakaszban hajtsa végre az alábbi lépéseket:
-    1. Válassza **az Ügyfél IP-címének hozzáadása** lehetőséget, ha az aktuális ügyfél IP-címét szeretné elérni a névtérhez. 
-    2. A **címtartományhoz**adjon meg egy adott IPv4-címet vagy egy IPv4-címet CIDR-jelöléssel. 
-    3. Adja meg, hogy engedélyezi-e a **megbízható Microsoft-szolgáltatásoknak a tűzfal megkerülését.** 
+    ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. Ha korlátozni szeretné a hozzáférést bizonyos hálózatokra és IP-címekre, válassza a **kiválasztott hálózatok** lehetőséget. A **tűzfal** szakaszban kövesse az alábbi lépéseket:
+    1. Válassza az **ügyfél IP-címének hozzáadása** lehetőséget, hogy a jelenlegi ügyfél IP-címe hozzáférjen a névtérhez. 
+    2. A **címtartomány**mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 
+    3. Itt adhatja meg, hogy szeretné- **e engedélyezni a megbízható Microsoft-szolgáltatások számára a tűzfal megkerülését**. 
 
-        ![Tűzfal – Minden hálózat beállítás kiválasztva](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
-3. A beállítások mentéséhez válassza a **Mentés** gombot az eszköztáron. Várjon néhány percet, amíg a visszaigazolás megjelenik a portálértesítésein.
+        ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
+3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, hogy a megerősítés megjelenjen a portál értesítésein.
 
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
 
 > [!IMPORTANT]
-> A tűzfalszabályokat az Event Hubs **szabványos** és **dedikált** szintjei támogatják. Az alapszintű alapszintű nem támogatott.
+> A tűzfalszabályok a **standard** és a **dedikált** Event Hubs szinten támogatottak. Alapszintű csomag esetén nem támogatott.
 
-A következő Erőforrás-kezelő sablon lehetővé teszi, hogy ip-szűrőszabályt adjon egy meglévő Eseményközpont-névtérhez.
+A következő Resource Manager-sablon lehetővé teszi az IP-szűrési szabály hozzáadását egy meglévő Event Hubs névtérhez.
 
 Sablon paraméterei:
 
-- **Az ipMask** egyetlen IPv4-cím vagy IP-címek blokkja CIDR jelöléssel. A CIDR 70.37.104.0/24 jelölésében például a 256 IPv4-cím 70.37.104.0 és 70.37.104.255 között, 24 pedig a tartomány jelentős előtagbiteinek számát jelzi.
+- a **ipMask** egy IPv4-cím vagy IP-cím CIDR-jelölésű blokkja. A CIDR 70.37.104.0/24 jelölése például 256 a 70.37.104.0 és a 70.37.104.255 közötti IPv4-címeket jelöli, és 24 a tartomány jelentős előtagjának számát jelzi.
 
 > [!NOTE]
-> Bár nincsenek megtagadási szabályok lehetséges, az Azure Resource Manager-sablon az alapértelmezett művelet beállítása **"Engedélyezés",** amely nem korlátozza a kapcsolatokat.
-> A virtuális hálózat vagy a tűzfalak szabályainak megalkotásakor meg kell változtatnunk a ***"defaultAction"***
+> Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
+> Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a ***"defaultAction"***
 > 
-> honnan
+> a
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -150,9 +150,9 @@ A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]
 
 ## <a name="next-steps"></a>További lépések
 
-Az Event Hubs azure-beli virtuális hálózatokhoz való hozzáférés korlátozását az alábbi hivatkozásban veheti el:
+Az Azure-beli virtuális hálózatokhoz való Event Hubs hozzáférésének korlátozásához tekintse meg a következő hivatkozást:
 
-- [Virtuális hálózati szolgáltatás végpontjai az eseményközpontokhoz][lnk-vnet]
+- [Event Hubs Virtual Network szolgáltatási végpontok][lnk-vnet]
 
 <!-- Links -->
 

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399960"
 ---
 :::row:::
     :::column span="3":::
-        A C++ speech SDK Windows, Linux és macOS rendszeren érhető el. További információt a <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech című témakörben talál. <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>
+        A C++ Speech SDK Windows, Linux és macOS rendszeren érhető el. További információ: <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. CognitiveServices. Speech <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -23,28 +23,28 @@ ms.locfileid: "81399960"
     :::column-end:::
 :::row-end:::
 
-#### <a name="c-nuget-package"></a>C++ NuGet csomag
+#### <a name="c-nuget-package"></a>C++ NuGet-csomag
 
-A C++ speech SDK a **csomagkezelőből** `Install-Package` a következő paranccsal telepíthető.
+A C++ Speech SDK a következő `Install-Package` paranccsal telepíthető a **Package managerből** .
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
 ```
 
-#### <a name="c-binaries-and-header-files"></a>C++ bináris fájlok és fejlécfájlok
+#### <a name="c-binaries-and-header-files"></a>C++ bináris fájlok és fejlécek
 
-Másik lehetőségként a C++ speech SDK bináris fájlokból is telepíthető. Töltse le az <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">SDK-t .tar csomagként, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> és csomagolja ki a fájlokat egy ön által választott könyvtárba. A csomag tartalma (amely mind az x86-os, mind az x64-es célarchitektúrák fejlécfájljait tartalmazza) a következőképpen épül fel:
+Másik lehetőségként a C++ Speech SDK telepíthető bináris fájlokból is. Töltse le az SDK-t <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">. tar <span class="docon docon-navigate-external x-hidden-focus"></span> -csomagként</a> , és csomagolja ki a fájlokat egy tetszőleges könyvtárba. A csomag tartalma (amely tartalmazza az x86-és x64-es megcélzott architektúrák fejléc-fájljait is) a következőképpen strukturált:
 
   | Útvonal                   | Leírás                                          |
   |------------------------|------------------------------------------------------|
   | `license.md`           | Licenc                                              |
   | `ThirdPartyNotices.md` | Harmadik felekkel kapcsolatos közlemények                                  |
-  | `include`              | C++ fejlécfájljai                                 |
-  | `lib/x64`              | Natív x64-es könyvtár az alkalmazással való összekapcsoláshoz |
-  | `lib/x86`              | Natív x86-os könyvtár az alkalmazással való összekapcsoláshoz |
+  | `include`              | A C++ fejléc fájljai                                 |
+  | `lib/x64`              | Natív x64-es függvénytár az alkalmazással való összekapcsoláshoz |
+  | `lib/x86`              | Natív x86-függvénytár az alkalmazással való összekapcsoláshoz |
 
-  Alkalmazás létrehozásához másolja vagy helyezze át a szükséges bináris fájlokat (és könyvtárakat) a fejlesztői környezetbe. Szükség szerint adja meg őket a létrehozási folyamatba.
+  Alkalmazás létrehozásához másolja vagy helyezze át a szükséges bináris fájlokat (és könyvtárakat) a fejlesztői környezetbe. A létrehozási folyamat során szükség szerint vegye fel őket.
 
-#### <a name="additional-resources"></a>További források
+#### <a name="additional-resources"></a>További háttéranyagok
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp" target="_blank">Windows, Linux és macOS gyorsindítás C++ forráskód<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp" target="_blank">Windows, Linux és macOS gyors C++ forráskód<span class="docon docon-navigate-external x-hidden-focus"></span></a>

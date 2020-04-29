@@ -1,7 +1,7 @@
 ---
-title: Audiotartalom-létrehozás – beszédszolgáltatás
+title: Hangtartalom létrehozása – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Az audiotartalom-létrehozás egy online eszköz, amely lehetővé teszi a Microsoft szövegfelolvasó kimenetének testreszabását és finomhangolására az alkalmazások és termékek számára.
+description: A hangtartalom létrehozása egy online eszköz, amely lehetővé teszi a Microsoft szöveg-beszéd kimenetének testreszabását és finomhangolását az alkalmazásokhoz és termékekhez.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,73 +11,73 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
 ms.openlocfilehash: a263e7e17cda64a8519bab215f97fdf26e88d9d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402245"
 ---
-# <a name="improve-synthesis-with-audio-content-creation"></a>A szintézis javítása a hangtartalom létrehozásával
+# <a name="improve-synthesis-with-audio-content-creation"></a>Hanganyag-létrehozással javíthatja a szintézist
 
-[Az audiotartalom-létrehozás](https://aka.ms/audiocontentcreation) egy online eszköz, amely lehetővé teszi a Microsoft szövegfelolvasó kimenetének testreszabását és finomhangolására az alkalmazások és termékek számára. Ezzel az eszközzel finomhangolhatja a nyilvános és egyéni hangokat a pontosabb természetes kifejezések érdekében, és kezelheti a kimenetet a felhőben.
+A [hangtartalom létrehozása](https://aka.ms/audiocontentcreation) egy online eszköz, amely lehetővé teszi a Microsoft szöveg-beszéd kimenetének testreszabását és finomhangolását az alkalmazásokhoz és termékekhez. Ezzel az eszközzel pontosabban hangolhatja a nyilvános és az egyéni hangokat, és kezelheti a felhőben a kimenetet.
 
-A Hangtartalom-létrehozás eszköz a [beszédszintetizáló nyelvi (SSML)](speech-synthesis-markup.md)nyelven alapul. A testreszabás és a hangolás egyszerűsítése érdekében az audiotartalom-létrehozás lehetővé teszi, hogy vizuálisan, valós időben ellenőrizze a szövegfelolvasó kimeneteket.
+A hangtartalom-létrehozási eszköz a [Speech szintézis Markup Language (SSML) nyelvén](speech-synthesis-markup.md)alapul. A Testreszabás és a finomhangolás egyszerűsítése érdekében a hangtartalom létrehozása lehetővé teszi, hogy valós időben vizuálisan vizsgálja meg a szöveg és a beszéd eredményét.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
-Ez az ábra a testreszabott beszéd-szöveg kimenetek finomhangolásához és exportálásához szükséges lépéseket mutatja be. Az alábbi hivatkozásokra kattintva többet is megtudhat az egyes lépésekről.
+Ez az ábra a testreszabott beszéd-szöveg kimenetek finomhangolásához és exportálásához szükséges lépéseket mutatja be. Az alábbi hivatkozásokat követve további információkat tudhat meg az egyes lépésekről.
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. Az első lépés [egy Azure-fiók létrehozása, egy beszédfelismerési erőforrás regisztrálása és előfizetési kulcs beolvasása.](#create-a-speech-resource) Miután rendelkezik előfizetési kulccsal, a beszédfelismerési szolgáltatás hívására és a [Hangtartalom-létrehozás](https://aka.ms/audiocontentcreation)elérésére is használható.
-2. [Hanghangolási fájl létrehozása](#create-an-audio-tuning-file) egyszerű szöveg gel vagy SSML-el.
-3. Válassza ki a hang és a nyelvet, hogy szeretné behangolni. Az audiotartalom-létrehozás magában foglalja a [Microsoft összes szövegfelolvasó hangját](language-support.md#text-to-speech). Használhatja a standard, neurális, vagy a saját egyéni hang.
+1. Első lépésként létre kell [hoznia egy Azure-fiókot, regisztrálnia kell egy beszédfelismerési erőforrást, és be kell szereznie egy előfizetési kulcsot](#create-a-speech-resource). Ha rendelkezik előfizetési kulccsal, használhatja a beszédfelismerési szolgáltatás meghívására, valamint a [hangtartalom létrehozásához](https://aka.ms/audiocontentcreation).
+2. [Hozzon létre egy hang-hangolási fájlt](#create-an-audio-tuning-file) egyszerű SZÖVEGES vagy SSML használatával.
+3. Válassza ki a felvenni kívánt hangot és nyelvet. A hangtartalom létrehozása magában foglalja az összes [Microsoft szöveg-beszéd hangokat](language-support.md#text-to-speech). Használhatja a standard, a neurális vagy a saját egyéni hangját is.
    >[!NOTE]
-   > A custom neural voices számára zárt hozzáférés érhető el, amely lehetővé teszi a természetes hangzású beszédhez hasonló nagy felbontású hangok létrehozását. További részleteket a [Gating-folyamat ban](https://aka.ms/ignite2019/speech/ethics)talál.
+   > Az egyéni neurális hangok számára elérhető a vezérelt hozzáférés, amely lehetővé teszi, hogy a természetes hangú beszédhez hasonló, nagy felbontású hangokat hozzon létre. További részletekért lásd: [kapuzás folyamat](https://aka.ms/ignite2019/speech/ethics).
 
-4. Tekintse át az alapértelmezett eredményt. Ezután a hangoló eszközzel módosíthatja a kiejtést, a hangmagasságot, a sebességet, az intonációt, a hangstílust és egyebeket. A beállítások teljes listáját a [Beszédszintetizáló jelölőnyelv ben található.](speech-synthesis-markup.md)
-5. Mentse és [exportálja a hangolt hangot.](#export-tuned-audio) Amikor menti a hangolási sávot a rendszerben, folytathatja a munkát, és itefedheti a kimenetet. Ha elégedett a kimenettel, az exportálási funkcióval hanglétrehozási feladatot hozhat létre. Megfigyelheti az exportálási feladat állapotát, és letöltheti a kimenetet az alkalmazásokkal és termékekkel való használatra.
-6. Az utolsó lépés az, hogy az egyéni hangolt hang az alkalmazások és termékek.
+4. Tekintse át az alapértelmezett eredményt. Ezután a hangolás eszközzel állíthatja be a kiejtés, a szurok, a sebesség, a hanglejtés, a hangstílus és egyebek beállítását. A beállítások teljes listájáért lásd: [Speech szintézis Markup Language](speech-synthesis-markup.md).
+5. [A beállított hang](#export-tuned-audio)mentése és exportálása. Ha menti a hangolási sávot a rendszeren, folytathatja a munkát, és megismételheti a kimenetet. Ha elégedett a kimenettel, létrehozhat egy hang-létrehozási feladatot az exportálási funkcióval. Megfigyelheti az exportálási feladat állapotát, és letöltheti a kimenetet az alkalmazásaival és termékeivel való használatra.
+6. Az utolsó lépés az egyéni hangolt hang használata az alkalmazásokban és a termékekben.
 
 ## <a name="create-a-speech-resource"></a>Beszédfelismerési erőforrás létrehozása
 
-Kövesse az alábbi lépéseket egy beszédfelismerési erőforrás létrehozásához és a Beszédstúdióhoz való csatlakoztatásához.
+Kövesse az alábbi lépéseket egy beszédfelismerési erőforrás létrehozásához és a Speech studióhoz való kapcsolódáshoz.
 
-1. Kövesse ezeket az utasításokat az [Azure-fiókregisztráláshoz](get-started.md#new-resource) és [hozzon létre egy beszédfelismerési erőforrást.](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource) Győződjön meg arról, hogy a tarifacsomag **S0-re**van állítva. Ha az egyik neurális hangok, győződjön meg arról, hogy hozza létre az erőforrást egy [támogatott régióban.](regions.md#standard-and-neural-voices)
-2. Jelentkezzen be [a hangtartalom-létrehozásba.](https://aka.ms/audiocontentcreation)
-3. Jelöljön ki egy meglévő projektet, vagy kattintson **az Új létrehozása gombra.**
-4. Előfizetését bármikor módosíthatja a felső navigációs rendszerben található **Beállítások** lehetőséggel.
+1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](get-started.md#new-resource) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
+2. Jelentkezzen be a [hangtartalom létrehozásához](https://aka.ms/audiocontentcreation).
+3. Válasszon ki egy meglévő projektet, vagy kattintson az **új létrehozása**lehetőségre.
+4. Az előfizetést bármikor módosíthatja a **Beállítások** lehetőséggel, amely a felső NAV-ban található.
 
-## <a name="create-an-audio-tuning-file"></a>Hanghangolási fájl létrehozása
+## <a name="create-an-audio-tuning-file"></a>Hang-hangolási fájl létrehozása
 
-A tartalom kétféleképpen juthat be a Hangtartalom-készítő eszközbe.
+A tartalmat kétféleképpen lehet beolvasni a hangtartalom-létrehozási eszközbe.
 
 **1. lehetőség:**
 
-1. Miután bejelentkezett [a hangtartalom-létrehozásba,](https://aka.ms/audiocontentcreation)kattintson **a Hangolás gombra** egy új hanghangolási fájl létrehozásához.
-2. Amikor megjelenik a szerkesztőablak, legfeljebb 10 000 karaktert adhat meg.
-3. Ne felejts el spórolni.
+1. Miután bejelentkezett a [hangtartalom-létrehozásba](https://aka.ms/audiocontentcreation), kattintson a **hanghangolás** lehetőségre egy új hang-hangolási fájl létrehozásához.
+2. Amikor megjelenik a szerkesztési ablak, akár 10 000 karaktert is megadhat.
+3. Ne felejtse el menteni.
 
 **2. lehetőség:**
 
-1. Miután bejelentkezett a [Hangtartalom-létrehozás](https://aka.ms/audiocontentcreation)ba, kattintson a **Feltöltés gombra** egy vagy több szövegfájl importálásához. Az egyszerű szöveg és az SSML egyaránt támogatott.
-2. A szövegfájlok feltöltésekén ellenőrizze, hogy a tartalom megfelel-e ezeknek a követelményeknek.
+1. Miután bejelentkezett a [hangtartalom-létrehozásba](https://aka.ms/audiocontentcreation), kattintson a **feltöltés** gombra egy vagy több szövegfájl importálásához. Az egyszerű szöveg-és SSML egyaránt támogatottak.
+2. A szövegfájlok feltöltésekor ellenőrizze, hogy a tartalom megfelel-e a követelményeknek.
 
-   | Tulajdonság | Érték / Megjegyzések |
+   | Tulajdonság | Érték/megjegyzések |
    |----------|---------------|
-   | Fájlformátum | Egyszerű szöveg (.txt)<br/> SSML-szöveg (.txt)<br/> A zip-fájlok nem támogatottak |
+   | Fájlformátum | Egyszerű szöveg (. txt)<br/> SSML szövege (. txt)<br/> A zip-fájlok nem támogatottak |
    | Kódolási formátum | UTF-8 |
    | Fájlnév | Minden fájlnak egyedi névvel kell rendelkeznie. Az ismétlődések nem támogatottak. |
    | Szöveg hossza | A szövegfájlok nem haladhatják meg a 10 000 karaktert. |
-   | SSML-korlátozások | Minden SSML-fájl csak egyetlen Darab SSML-t tartalmazhat. |
+   | SSML-korlátozások | Minden SSML-fájl csak egyetlen SSML tartalmazhat. |
 
-### <a name="plain-text-example"></a>Példa egyszerű szövegre
+### <a name="plain-text-example"></a>Egyszerű szöveges példa
 
 ```txt
 Welcome to use Audio Content Creation to customize audio output for your products.
 ```
 
-### <a name="ssml-text-example"></a>Példa SSML-szövegre
+### <a name="ssml-text-example"></a>SSML – példa
 
 ```xml
 <speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="en-US">
@@ -91,24 +91,24 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beállítással, exportálhatja a hangot.
 
-1. A [Hangtartalom-létrehozás](https://aka.ms/audiocontentcreation) **eszközben** kattintson az Exportálás gombra egy hangkészítő feladat létrehozásához.
-2. Válassza ki a hanganyag kimeneti formátumát. A támogatott formátumok és a mintavételi arányok listája az alábbiakban érhető el.
-3. A feladat állapotát a Tevékenység **exportálása** lapon tekintheti meg. Ha a feladat sikertelen, tekintse meg a részletes információs oldalt a teljes jelentésért.
-4. Ha a feladat befejeződött, a hang letölthető a **Hangkönyvtár** lapon.
-5. Kattintson **a Letöltés gombra.** Most már használhatja az egyénileg hangolt hangot az alkalmazásokban vagy a termékekben.
+1. A [hangtartalom-létrehozási](https://aka.ms/audiocontentcreation) eszközben kattintson az **Exportálás** elemre a hanglétrehozási feladat létrehozásához.
+2. Válassza ki a beállított hang kimeneti formátumát. A támogatott formátumok és mintavételi díjak listája alább található.
+3. A feladat állapotát az **Exportálás feladat** lapon tekintheti meg. Ha a feladat meghiúsul, tekintse meg a teljes jelentés részletes információit tartalmazó oldalt.
+4. Ha a feladat befejeződött, a hang letölthető a **hangkönyvtár** lapon.
+5. Kattintson a **Letöltés**gombra. Most már készen áll az egyéni hangolt hang használatára alkalmazásaiban vagy termékeiben.
 
 ### <a name="supported-audio-formats"></a>Támogatott hangformátumok
 
-| Formátum | 16 kHz-es mintavételi sebesség | 24 kHz-es mintavételi sebesség |
+| Formátum | 16 kHz-es mintavételi arány | 24 kHz-es mintavételi arány |
 |--------|--------------------|--------------------|
-| Wav | riff-16khz-16bit-mono-pcm | riff-24khz-16bit-mono-pcm |
-| Mp3 | audio-16khz-128kbitrate-mono-mp3 | audio-24khz-160kbitrate-mono-mp3 |
+| WAV | riff-16khz-16bit-mono-PCM | riff-24khz-16bit-mono-PCM |
+| MP3 | hang-16khz-128kbitrate-mono-MP3 | hang-24khz-160kbitrate-mono-MP3 |
 
 ## <a name="see-also"></a>Lásd még
 
-* [Hosszú audio API](https://aka.ms/long-audio-api)
+* [Hosszú hang API](https://aka.ms/long-audio-api)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Beszéd Stúdió](https://speech.microsoft.com)
+> [Speech Studio](https://speech.microsoft.com)

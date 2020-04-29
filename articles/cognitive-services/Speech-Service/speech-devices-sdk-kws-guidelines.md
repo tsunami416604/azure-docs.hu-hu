@@ -1,7 +1,7 @@
 ---
-title: Kulcsszóelnevezési irányelvek – Beszédszolgáltatás
+title: Kulcsszavas elnevezési irányelvek – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Hatékony kulcsszó létrehozása elengedhetetlen annak biztosításához, hogy a készülék következetesen és pontosan reagáljon.
+description: Hatékony kulcsszó létrehozása elengedhetetlen ahhoz, hogy az eszköz következetesen és pontosan válaszoljon.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: c00d27e5e7b7a8d614ce94ea4024b6093669757c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399847"
 ---
-# <a name="guidelines-for-creating-an-effective-keyword"></a>A hatékony kulcsszó létrehozásának irányelvei
+# <a name="guidelines-for-creating-an-effective-keyword"></a>Útmutató egy hatékony kulcsszó létrehozásához
 
-Hatékony kulcsszó létrehozása elengedhetetlen annak biztosításához, hogy a készülék következetesen és pontosan reagáljon. A kulcsszó testreszabása hatékony módja annak, hogy megkülönböztesse az eszközt és erősítse a márkajelzést. Ebben a cikkben megtanulhat néhány vezérelvet a hatékony kulcsszó létrehozásához.
+Hatékony kulcsszó létrehozása elengedhetetlen ahhoz, hogy az eszköz következetesen és pontosan válaszoljon. A kulcsszó személyre szabása hatékony módszert tesz lehetővé az eszköz megkülönböztetésére és a saját arculatának megerősítésére. Ebből a cikkből megtudhatja, hogyan hozhat létre egy hatékony kulcsszót.
 
-## <a name="choose-an-effective-keyword"></a>Hatékony kulcsszó kiválasztása
+## <a name="choose-an-effective-keyword"></a>Érvényes kulcsszó kiválasztása
 
-Kulcsszó kiválasztásakor vegye figyelembe az alábbi irányelveket:
+A kulcsszó kiválasztásakor vegye figyelembe a következő irányelveket:
 
 > [!div class="checklist"]
 > * A kulcsszónak angol szónak vagy kifejezésnek kell lennie.
-> * Nem tarthat tovább két másodpercnél.
-> * A 4-7 szótagjas szavak működnek a legjobban. Például a "Hey, Computer" egy jó kulcsszó. Csak a "Hé" egy szegény.
-> * A kulcsszavaknak az angol nyelvre vonatkozó általános szabályokat kell követniük.
-> * A gyakori angol kiejtési szabályokat követő egyedi vagy akár kitalált szó csökkentheti a hamis pozitív értékeket. Például a "computerama" jó kulcsszó lehet.
-> * Ne válasszon egy közös szót. Például az "enni" és a "menj" olyan szavak, amelyeket az emberek gyakran mondanak a hétköznapi beszélgetésekben. Lehet, hogy hamis eseményindítók az eszköz.
-> * Ne használjon olyan kulcsszót, amelynek esetleg van alternatív kiejtése. A felhasználóknak ismerniük kell a "helyes" kiejtést, hogy az eszközük reagáljon. Az "509" szövege lehet például "öt nulla kilenc", "öt ó kilenc" vagy "ötszázkilenc". "R.E.I." lehet ejteni "r-e-i" vagy "ray.". Az "élő" kiejthető "/līv/" vagy "/liv/".
-> * Ne használjon speciális karaktereket, szimbólumokat vagy számjegyeket. Például a "Go#" és a "20 + cats" problémás kulcsszavak lehetnek. Bármennyire, " megy éles" vagy " húsz plusz macskák" erő dolgozik. Továbbra is használhatja a szimbólumokat a márkajelzésben, és marketing és dokumentáció segítségével megerősítheti a megfelelő kiejtést.
+> * Nem lehet hosszabb két másodpercnél.
+> * A 4 – 7 szótag szavai a legjobban működnek. Például a "Hé, számítógép" egy jó kulcsszó. Csak a "Hey" egy rossz.
+> * A kulcsszavaknak a gyakori angol kiejtési szabályokat kell követniük.
+> * Egy egyedi vagy akár egy, a közös angol Kiejtési szabályt követő szó is csökkentheti a téves pozitív értéket. Előfordulhat például, hogy a "computerama" kulcsszó jó.
+> * Ne válasszon közös szót. Például az "Eat" és a "Go" kifejezés olyan szavakat mutat be, amelyekben gyakran előfordul a hétköznapi beszélgetés. Lehet, hogy az eszköz hamis eseményindítókat tartalmaz.
+> * Ne használjon olyan kulcsszót, amely alternatív kiejtésekkel rendelkezhet. A felhasználóknak ismerniük kell a "jobb" kiejtést, hogy az eszközük válaszoljon. Például: "509" lehet "5 0 9", "5 0 9" vagy "509". "R.E.I." "r-e-i" vagy "Ray" lehet. Az "élő" kifejezés "/līv/" vagy "/Liv/" lehet.
+> * Ne használjon speciális karaktereket, szimbólumokat vagy számokat. Például a "Go #" és a "20 + Cats" lehet problematikus kulcsszó. Azonban a "Go Sharp" vagy a "húsz Plus Cats" is működhet. Továbbra is használhatja a branding szimbólumokat, és a marketing és a dokumentáció használatával megerősítheti a megfelelő kiejtést.
 
 > [!NOTE]
-> Ha egy védjeggyel ellátott szót választ kulcsszóként, győződjön meg arról, hogy ön a védjegy tulajdonosa, vagy hogy a védjegy tulajdonosának engedélye van a szó használatára. A Microsoft nem vállal felelősséget az Ön által választott kulcsszóválasztásból eredő jogi problémákért.
+> Ha kulcsszóként választ egy védjeggyel ellátott szót, akkor győződjön meg arról, hogy a védjegy tulajdonosa, vagy hogy a védjegy tulajdonosának van-e engedélye a szó használatára. A Microsoft nem vállal felelősséget az Ön által választott kulcsszótól esetlegesen felmerülő jogi problémákért.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [hozhat létre egyéni kulcsszót a Speech Studio használatával.](speech-devices-sdk-create-kws.md)
+Ismerje meg, hogyan [hozhat létre egyéni kulcsszavakat a Speech Studióval](speech-devices-sdk-create-kws.md).

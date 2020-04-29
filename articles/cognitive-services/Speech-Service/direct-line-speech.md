@@ -1,7 +1,7 @@
 ---
-title: Direct Line Speech - Beszédszolgáltatás
+title: Közvetlen vonalas beszéd – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Közvetlen vonalbeszéddel és a Beszédszoftver-fejlesztő készlettel (SDK) használó hangalapú beszédfelismerést használó hangasszisztensek funkcióinak, képességeinek és korlátozásainak áttekintése.
+description: A hangsegédek funkcióinak, képességeinek és korlátozásainak áttekintése a Speech szoftverfejlesztői készlettel (SDK) közvetlen vonalas beszédfelismerés használatával.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402394"
 ---
 # <a name="what-is-direct-line-speech"></a>Mi az a Direct Line Speech?
 
-**A Direct Line Speech** egy robusztus, végpontok között működő megoldás a rugalmas, bővíthető hangasszisztens létrehozásához. Ez hajtja a Bot Framework és a Direct Line Speech csatorna, hogy van optimalizálva voice-in, voice-out interakció botok.
+A **Direct line Speech** egy robusztus, teljes körű megoldás egy rugalmas, bővíthető hangsegéd létrehozásához. A robot-keretrendszer és a közvetlen vonalas beszéd csatornája, amely hangvételre van optimalizálva, a botokkal való kommunikációhoz.
 
-[A hangasszisztensek figyelik](voice-assistants.md) a felhasználókat, és válaszul cselekszenek, gyakran visszabeszélve. [Beszédről szövegre](speech-to-text.md) történő írást használnak a felhasználó beszédének átírásához, majd lépéseket tesznek a szöveg természetes nyelvi megértésére. Ez a művelet gyakran tartalmazza a [szövegfelolvasással](text-to-speech.md)létrehozott asszisztens szóbeli kimenetét.
+A [hangvezérelt asszisztensek](voice-assistants.md) meghallgatják a felhasználókat, és válaszként reagálnak, gyakran beszélnek vissza. A felhasználók beszédének [szövegét](speech-to-text.md) használják a felhasználó beszédének átírására, majd a szöveg természetes nyelvének megismerésére. Ez a művelet gyakran tartalmazza a [szöveg-beszéd](text-to-speech.md)kapcsolattal generált segédből származó beszédes kimenetet.
 
-A Direct Line Speech a legmagasabb szintű testreszabást és kifinomultságot kínálja a hangasszisztensek számára. Olyan társalgási forgatókönyvekhez készült, amelyek nyílt végűek, természetesek vagy hibridek a kettő között, feladatteljesítéssel vagy parancs-vezérlési használattal. Ez a nagyfokú rugalmasság nagyobb összetettséggel jár, és a jól definiált feladatokra természetes nyelvi bevitelt használó forgatókönyvek érdemes lehet figyelembe venni [az egyéni parancsokat (előzetes verziót)](custom-commands.md) az egyszerűsített megoldásélmény érdekében.
+A közvetlen vonalas beszédfelismerés a lehető legmagasabb szintű testreszabást és kifinomultságot kínálja a hangsegédek számára. A szolgáltatás a két nyílt végű, természetes vagy hibrid, a feladatok befejezését, illetve a parancs-és vezérlési használatot használó beszélgetési forgatókönyvekhez készült. Ez a nagyfokú rugalmasság nagyobb bonyolultságot jelent, és a természetes nyelvi bevitelt használó, jól definiált feladatokra vonatkozó forgatókönyvek esetében előfordulhat, hogy az [egyéni parancsokat (előzetes verzió)](custom-commands.md) érdemes megfontolni a zökkenőmentes megoldáshoz.
 
-## <a name="getting-started-with-direct-line-speech"></a>Első lépések a direct line beszédfelismeréssel
+## <a name="getting-started-with-direct-line-speech"></a>Első lépések a közvetlen vonalas Beszédtel
 
-A közvetlen vonalbeszéddel létrehozott hangsegéd első lépései [a beszéd-előfizetési kulcs leolvasása,](get-started.md)az előfizetéshez társított új robot létrehozása, és a robot csatlakoztatása a Közvetlen vonal beszédcsatornához.
+A közvetlen vonalas beszédfelismerést használó hangsegédek létrehozásának első lépései [egy beszédfelismerési előfizetési kulcs beszerzése](get-started.md), az előfizetéshez társított új robot létrehozása, valamint a robot csatlakoztatása a közvetlen vonalas hangcsatornához.
 
-   ![A Direct Line Speech vezénylési szolgáltatásfolyamatának fogalmi diagramja](media/voice-assistants/overview-directlinespeech.png "A beszédcsatorna áramlása")
+   ![A közvetlen vonalas beszédfelismerési szolgáltatás folyamatának fogalmi diagramja](media/voice-assistants/overview-directlinespeech.png "A beszédfelismerési csatorna folyamata")
 
-A Direct Line Speech használatával egy egyszerű hangasszisztens létrehozásához készült teljes, lépésről lépésre szóló útmutatót a [beszédskak és a Közvetlen vonal beszédcsatornájával történő beszédlehetővé tévő üzenetbemutatójában](tutorial-voice-enable-your-bot-speech-sdk.md)talál.
+Az egyszerű hangsegédek közvetlen vonalas Beszédtel való létrehozásával kapcsolatos részletes útmutatóért tekintse meg [a beszédfelismerésre vonatkozó oktatóanyagot, amely lehetővé teszi, hogy a robot a SPEECH SDK-val és a közvetlen vonalas beszédfelismerési csatornával legyen ellátva](tutorial-voice-enable-your-bot-speech-sdk.md).
 
-Rövid útmutatókat is kínálunk, amelyek célja a kód futtatása és az API-k gyors tanulása. Ez a táblázat a hangasszisztens-rövid útmutatók listáját tartalmazza, nyelv és platform szerint rendezve.
+Emellett olyan gyors útmutatókat is kínálunk, amelyekkel a kód futtatásával és az API-kkal való ismerkedéssel gyorsan elsajátítható. Ez a táblázat a hangsegédek nyelvén és platformon szervezett rövid útmutatóit sorolja fel.
 
 | Első lépések | Platform | API-referencia |
 |------------|----------|---------------|
@@ -43,28 +43,28 @@ Rövid útmutatókat is kínálunk, amelyek célja a kód futtatása és az API-
 
 ## <a name="sample-code"></a>Mintakód
 
-A hangsegéd létrehozásához a GitHubon érhető el mintakód. Ezek a minták az ügyfélalkalmazást fedik le, amely több népszerű programozási nyelven csatlakozik az asszisztenshez.
+Hangsegéd létrehozásához használható mintakód a GitHubon érhető el. Ezek a minták lefedik az ügyfélalkalmazás számára a Segédhez való csatlakozást számos népszerű programozási nyelven.
 
-* [Hangasszisztens-minták (SDK)](https://aka.ms/csspeech/samples)
-* [Oktatóanyag: A hang funkcióval engedélyezheti asszisztensét a Beszéd SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Hangsegéd-minták (SDK)](https://aka.ms/csspeech/samples)
+* [Oktatóanyag: hang engedélyezése a Segéd számára a Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Testreszabás
 
-A Beszédszolgáltatás sal készült hangasszisztensek a [beszédfelismerési](speech-to-text.md), a [szövegfelolvasó](text-to-speech.md)és [az egyéni kulcsszóválasztásra](speech-devices-sdk-create-kws.md)rendelkezésre álló testreszabási lehetőségek teljes skáláját használhatják .
+A beszédfelismerési szolgáltatással készített hangsegédek teljes körű testreszabási lehetőségeket használhatnak a [beszéd-szöveg](speech-to-text.md), a [szöveg-beszéd](text-to-speech.md)és az [Egyéni kulcsszavak kiválasztásához](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
-> A testreszabási lehetőségek nyelvtől/területi beállítástól függően változnak [(lásd: Támogatott nyelvek](supported-languages.md)).
+> A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).
 
-A Direct Line Speech és a hangasszisztensek kapcsolódó funkciói ideális kiegészítői a virtuális asszisztens megoldásnak és a [vállalati sablonnak.](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) Bár a közvetlen vonalbeszéd bármely kompatibilis robottal használható, ezek az erőforrások újrafelhasználható alapkonfigurációt biztosítanak a kiváló minőségű társalgási élményekhez, valamint közös támogató készségeket és modelleket a gyors kezdéshez.
+A közvetlen vonalas beszéd és a hozzá tartozó funkciók a hangsegédek számára ideális kiegészítőek a [virtuális asszisztensi megoldáshoz és a vállalati sablonhoz](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Habár a közvetlen vonalas beszéd bármilyen kompatibilis robottal működhet, ezek az erőforrások újrafelhasználható alapkonfigurációt biztosítanak a kiváló minőségű beszélgetési élményekhez, valamint a gyors kezdéshez szükséges általános támogatási képességeket és modelleket.
 
-## <a name="reference-docs"></a>Referenciadokumentumok
+## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
 * [Beszéd SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ingyenes beszédfelismerési szolgáltatás-előfizetési kulcs beszerezni](get-started.md)
-* [A beszédfelismerési SDK beolvasása](speech-sdk.md)
+* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+* [A Speech SDK beszerzése](speech-sdk.md)
 * [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [A virtuális asszisztens megoldásának és vállalati sablonjának beszereznie](https://github.com/Microsoft/AI)
+* [A virtuális asszisztens megoldás és a vállalati sablon beszerzése](https://github.com/Microsoft/AI)

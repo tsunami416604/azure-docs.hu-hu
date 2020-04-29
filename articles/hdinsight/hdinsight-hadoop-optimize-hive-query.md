@@ -1,6 +1,6 @@
 ---
-title: Hive-lekérdezések optimalizálása az Azure HDInsightban
-description: Ez a cikk ismerteti, hogyan optimalizálhatja az Apache Hive-lekérdezések Hadoop a HDInsight.
+title: Kaptár-lekérdezések optimalizálása az Azure HDInsight
+description: Ez a cikk azt ismerteti, hogyan optimalizálhatja Apache Hive Hadoop-lekérdezéseit a HDInsight-ben.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,71 +9,71 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81390297"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-lekérdezések optimalizálása az Azure HDInsightban
 
-Az Azure HDInsightban számos fürttípus és -technológia futtatható Apache Hive-lekérdezések. Válassza ki a megfelelő fürttípust a számítási feladatok igényeinek megfelelő teljesítmény optimalizálásához.
+Az Azure HDInsight számos különböző típusú fürttel és technológiával rendelkezhet Apache Hive lekérdezések futtatásával. A számítási feladatok teljesítményének optimalizálása érdekében válassza ki a megfelelő fürtöt.
 
-Válassza például **az Interaktív lekérdezés** `ad hoc`fürttípusát az optimalizáláshoz az interaktív lekérdezésekre. Válassza az Apache **Hadoop** fürttípusát a kötegelt folyamatként használt Hive-lekérdezésekhez való optimalizáláshoz. **A Spark** és **a HBase** fürttípusok is futtathatnak Hive-lekérdezéseket. A Hive-lekérdezések különböző HDInsight-fürttípusokon való futtatásáról a [Mi az Apache Hive és a HiveQL az Azure HDInsight-on című témakörben.](hadoop/hdinsight-use-hive.md)
+Válassza például az **interaktív lekérdezési** fürt típusa lehetőséget az interaktív `ad hoc`lekérdezések optimalizálásához. Válassza az Apache **Hadoop** -fürt típusa lehetőséget a Batch-folyamatként használt kaptár-lekérdezések optimalizálásához. A **Spark** -és **HBase** -fürtök a kaptár-lekérdezéseket is futtathatják. A különböző HDInsight-fürtökön futó kaptár-lekérdezések futtatásával kapcsolatos további információkért lásd: [Mi az a Apache Hive és a HiveQL az Azure HDInsight?](hadoop/hdinsight-use-hive.md)című témakörben.
 
-A Hadoop-fürttípusú HDInsight-fürtök alapértelmezés szerint nincsenek teljesítményre optimalizálva. Ez a cikk a Hive teljesítményoptimalizálási módszereit ismerteti, amelyeket a lekérdezésekre alkalmazhat.
+A Hadoop-HDInsight-fürtök nem alapértelmezett teljesítményre vannak optimalizálva. Ez a cikk a kaptárak leggyakoribb teljesítmény-optimalizálási módszereit ismerteti, amelyeket a lekérdezésekre alkalmazhat.
 
-## <a name="scale-out-worker-nodes"></a>Munkavégző csomópontok horizontális felskálázása
+## <a name="scale-out-worker-nodes"></a>Munkavégző csomópontok vertikális felskálázása
 
-A HDInsight-fürt munkavégző csomópontjaiszámának növelése lehetővé teszi, hogy a munka több leképezőt és szűkítőt használjon párhuzamosan. A HDInsight ban kétféleképpen növelheti a horizontális felskálázást:
+A munkavégző csomópontok számának növelése egy HDInsight-fürtben lehetővé teszi, hogy a munka több leképezést és szűkítőt használjon párhuzamosan. A HDInsight kétféleképpen növelheti a méretezési lehetőségeket:
 
-* Fürt létrehozásakor megadhatja a feldolgozócsomópontok számát az Azure Portalon, az Azure PowerShellben vagy a parancssori felületen.  További információ: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md). Az alábbi képernyőképen látható a munkavégző csomópont konfigurációja az Azure Portalon:
+* Fürt létrehozásakor megadhatja a munkavégző csomópontok számát a Azure Portal, a Azure PowerShell vagy a parancssori felület használatával.  További információ: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md). Az alábbi képernyőfelvételen a Azure Portal munkavégző csomópontjának konfigurációja látható:
   
-    ![Az Azure Portal fürtméret-csomópontjai](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
+    ![Azure Portal fürt méretének csomópontjai](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
-* A létrehozás után módosíthatja a feldolgozócsomópontok számát is, hogy tovább skálázhassa a fürtöt anélkül, hogy újra létrehozna egyet:
+* A létrehozást követően szerkesztheti a munkavégző csomópontok számát úgy, hogy az újbóli létrehozása nélkül is kibővítse a fürtöt:
 
-    ![Az Azure Portal méretezése fürtméret](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
+    ![Azure Portal méretezési fürt mérete](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
-A HDInsight méretezéséről a [HDInsight-fürtök méretezése című](hdinsight-scaling-best-practices.md) témakörben talál további információt.
+További információ a HDInsight skálázásáról: HDInsight- [fürtök méretezése](hdinsight-scaling-best-practices.md)
 
-## <a name="use-apache-tez-instead-of-map-reduce"></a>Az Apache Tez használata a Térképcsökkentés helyett
+## <a name="use-apache-tez-instead-of-map-reduce"></a>Az Apache TEZ használata a Térkép csökkentése helyett
 
-[Az Apache Tez](https://tez.apache.org/) a MapReduce motor alternatív végrehajtási motorja. Linux-alapú HDInsight-fürtök tez alapértelmezés szerint engedélyezve van.
+Az [Apache TEZ](https://tez.apache.org/) egy alternatív végrehajtási motor a MapReduce motorhoz. A Linux-alapú HDInsight-fürtök alapértelmezés szerint engedélyezve vannak a TEZ.
 
-![HDInsight Apache Tez – áttekintés diagram](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+![HDInsight Apache TEZ – áttekintési diagram](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
-Tez gyorsabb, mert:
+A TEZ az alábbiak miatt gyorsabb:
 
-* **Irányított aciklikus gráf (DAG) végrehajtása egyetlen feladatként a MapReduce motorban.** A DAG megköveteli, hogy minden egyes leképezőkészletet egy szűkítőkészlet kövessen. Ez a követelmény hatására több MapReduce feladatok ki vannak kapcsolva minden Hive-lekérdezés. Tez nem rendelkezik ilyen korlátozás, és képes feldolgozni összetett DAG, mint egy feladat minimalizálja a feladat indítási terhelést.
-* **Elkerüli a felesleges írásokat**. Több feladat ugyanazt a Hive-lekérdezést a MapReduce motorban dolgozza fel. Az egyes MapReduce-feladat kimenete a hdfs-be íródik a köztes adatokhoz. Mivel a Tez minimálisra csökkenti az egyes Hive-lekérdezések feladatainak számát, képes elkerülni a szükségtelen írásokat.
-* **Minimálisra csökkenti az indítási késleltetést.** A Tez jobban tudja minimalizálni az indítási késleltetést azáltal, hogy csökkenti a kezdéshez szükséges leképezők számát, és javítja az optimalizálást.
-* **Újrafelhasználása konténerek**. Amikor csak lehetséges, a Tez újra felhasználja a tárolókat annak érdekében, hogy a tárolók indításának késése csökkenjen.
-* **Folyamatos optimalizálási technikák**. Hagyományosan optimalizálás történt fordítási fázisban. Azonban további információ áll rendelkezésre a bemenetek, amelyek lehetővé teszik a jobb optimalizálás futásidőben. A Tez folyamatos optimalizálási technikákat használ, amelyek lehetővé teszik a terv további optimalizálását a futásidejű fázisban.
+* **Irányított aciklikus gráf (Dag) végrehajtása egyetlen feladatokként a MapReduce motorban**. A DAG megköveteli, hogy az egyes Mapper-készleteket egy szűkítő-készlet követi. Ez a követelmény több MapReduce-feladat kikapcsolását okozza az egyes struktúra-lekérdezésekhez. A TEZ nem rendelkezik ilyen korlátozással, és feldolgozhatja a komplex DAG-t, mivel egy feladat minimalizálja a feladat indítási terhelését.
+* **Elkerüli a szükségtelen írásokat**. Több feladat is feldolgozza ugyanazt a kaptár-lekérdezést a MapReduce motorban. Az egyes MapReduce-feladatok kimenete a köztes adatok HDFS van írva. Mivel a TEZ lekicsinyíti a feladatok számát az egyes struktúra-lekérdezésekhez, el tudja kerülni a szükségtelen írásokat.
+* Az **indítási késések csökkentése**. A TEZ jobban képes az indítási késleltetés minimalizálására azáltal, hogy csökkenti az elindításához szükséges leképezések számát, és a teljes optimalizálást is javítja.
+* **Tárolók újrafelhasználása**. Amikor lehetséges, a TEZ újra fogja használni a tárolókat, hogy a rendszer csökkenti a tárolók indításának késleltetését.
+* **Folyamatos optimalizálási technikák**. A fordítási fázisban hagyományosan optimalizálás történt. A bemenetekkel kapcsolatban azonban további információk érhetők el, amelyek lehetővé teszik a jobb optimalizálást a futtatókörnyezet során. A TEZ folyamatos optimalizálási technikákat használ, amelyek lehetővé teszik, hogy a csomagot a futásidejű fázisba optimalizálja.
 
-Ezekről a fogalmakról további információt az [Apache TEZ .](https://tez.apache.org/)
+További információ ezekről a fogalmakról: [Apache TEZ](https://tez.apache.org/).
 
-Bármely Hive-lekérdezést engedélyezhet, ha a lekérdezést a következő set paranccsal előzi meg:
+A kaptár lekérdezési TEZ a következő SET paranccsal engedélyezheti a lekérdezés előjavításával:
 
 ```hive
 set hive.execution.engine=tez;
 ```
 
-## <a name="hive-partitioning"></a>Hive particionálás
+## <a name="hive-partitioning"></a>Struktúra particionálás
 
-I/O-műveletek a fő teljesítmény szűk keresztmetszetet a Hive-lekérdezések futtatásához. A teljesítmény javítható, ha az olvasandó adatok mennyisége csökkenthető. Alapértelmezés szerint a Hive lekérdezések teljes Hive-táblák at késnek. Azonban a lekérdezések, amelyek csak kis mennyiségű adatot kell bevizsgálni (például a lekérdezések szűréssel), ez a viselkedés szükségtelen többletterhelést okoz. Hive particionálás lehetővé teszi, hogy a Hive-lekérdezések csak a szükséges mennyiségű adat hoz való hozzáférés a Hive-táblák.
+Az I/O műveletek a kaptár-lekérdezések futtatásának legnagyobb teljesítménybeli szűk keresztmetszetét jelentik. A teljesítmény javítható, ha az olvasni kívánt adat mennyisége csökkenthető. Alapértelmezés szerint a kaptár lekérdezi a teljes kaptár-táblákat. Az olyan lekérdezéseknél azonban, amelyeknek csak kis mennyiségű adat vizsgálatára van szükségük (például szűréses lekérdezések), ez a viselkedés szükségtelen terhelést okoz. A kaptár particionálása lehetővé teszi, hogy a kaptár-lekérdezések csak a szükséges mennyiségű adattal férhessenek hozzá a kaptárak tábláiban.
 
-Hive particionálás valósítja meg a nyers adatok átrendezése az új könyvtárakat. Minden partíció saját fájlkönyvtárral rendelkezik. A particionálást a felhasználó határozza meg. Az alábbi ábra egy Hive-tábla év oszlop on-át történő particionálását mutatja *be.* Minden évben új könyvtár jön létre.
+A struktúra particionálását úgy valósítja meg, hogy átrendezi a nyers adattárakat új címtárakba. Minden partíció saját könyvtárral rendelkezik. A particionálást a felhasználó határozza meg. Az alábbi ábrán egy struktúra-táblázat particionálását mutatjuk be az oszlop *év*szerint. A rendszer minden évben létrehoz egy új könyvtárat.
 
 ![HDInsight Apache Hive particionálás](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 Néhány particionálási szempont:
 
-* **Ne partíció alatt** – A csak néhány értékkel rendelkező oszlopok particionálása néhány partíciót okozhat. Például a nemek particionálása csak két létrehozandó partíciót hoz létre (férfi és női), így a késés legfeljebb a felére csökken.
-* **Ne a partíción keresztül** – A másik véglet, egy partíció létrehozása egy oszlopban egy egyedi érték (például userid) okoz több partíciót. Partíción keresztül okoz sok stresszt a fürt namenode, mivel kezelnie kell a nagy számú könyvtárak.
-* **Elkerülése adatdöntés** - Válassza ki a particionálási kulcsot bölcsen, hogy az összes partíció egyenletes méretű legyen. Például az *Állapot* oszlop particionálása torzíthatja az adatok eloszlását. Mivel Kalifornia állam lakossága majdnem 30-szor, hogy a Vermont, a partíció mérete potenciálisan ferde és a teljesítmény változhat rettenetesen.
+* A **partíciók particionálásának mellőzése** a csak néhány értékkel rendelkező oszlopokban kevés partíciót eredményezhet. Például a nemek szerinti particionálás csak két partíciót hoz létre (hím és nőstény), ezért csökkentse a késést legfeljebb fele.
+* **Ne adja át a partíciót** a másik végletnél – a partíció létrehozása egyedi értékkel (például felhasználóazonosító) rendelkező oszlopokban több partíciót eredményez. A több mint partíció a fürt namenode nagy terhelést okoz, mivel a nagy számú könyvtárat kell kezelnie.
+* Az **adatdöntés elkerülése** – a particionálási kulcs kiválasztása bölcs módon, hogy az összes partíció mérete is legyen. Előfordulhat például, hogy az *állapot* oszlop particionálásakor az adateloszlás elferdíthető. Mivel Kalifornia állam csaknem 30x a Vermontban, a partíció mérete potenciálisan elferdíthető, és a teljesítmény rendkívül eltérő lehet.
 
-Partíciós tábla létrehozásához használja a *Partitioned By záradékot:*
+Partíciós tábla létrehozásához használja a *particionált by* záradékot:
 
 ```sql
 CREATE TABLE lineitem_part
@@ -87,9 +87,9 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 STORED AS TEXTFILE;
 ```
 
-A particionált tábla létrehozása után statikus particionálást vagy dinamikus particionálást hozhat létre.
+A particionált tábla létrehozása után létrehozhat statikus particionálást vagy dinamikus particionálást.
 
-* **Statikus particionálás** azt jelenti, hogy már szilánkos adatokat a megfelelő könyvtárakban. Statikus partíciók hozzáadása hive partíciók manuálisan a címtár helye alapján. A következő kódrészlet egy példa.
+* A **statikus particionálás** azt jelenti, hogy a megfelelő címtárakban már vannak a szilánkokra osztott adathalmazok. A statikus partíciók esetében manuálisan adja hozzá a kaptár-partíciókat a címtár helye alapján. A következő kódrészlet egy példa.
   
    ```sql
    INSERT OVERWRITE TABLE lineitem_part
@@ -101,7 +101,7 @@ A particionált tábla létrehozása után statikus particionálást vagy dinami
    LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
-* **A dinamikus particionálás** azt jelenti, hogy azt szeretné, hogy a Hive automatikusan hozzon létre partíciókat. Mivel már létrehozta a particionálási táblát az átmeneti táblából, mindössze annyit kell tennie, hogy adatokat szúr be a particionált táblába:
+* A **dinamikus particionálás** azt jelenti, hogy azt szeretné, hogy a kaptár automatikusan hozzon létre partíciókat. Mivel már létrehozta a particionálási táblázatot az előkészítési táblából, mindössze annyit kell tennie, hogy az adatok beillesztése a particionált táblába:
   
    ```hive
    SET hive.exec.dynamic.partition = true;
@@ -118,24 +118,24 @@ A particionált tábla létrehozása után statikus particionálást vagy dinami
        L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
    ```
 
-További információt a [Particionált táblák című témakörben talál.](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables)
+További információ: [particionált táblák](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
-## <a name="use-the-orcfile-format"></a>Az ORCFile formátum használata
+## <a name="use-the-orcfile-format"></a>ORCFile formátum használata
 
-A Hive különböző fájlformátumokat támogat. Például:
+A struktúra a különböző fájlformátumokat támogatja. Például:
 
-* **Szöveg**: az alapértelmezett fájlformátum, és a legtöbb forgatókönyvvel működik.
-* **Avro**: jól működik az együttműködési forgatókönyvek.
-* **ORC/Parketta:** a legjobban alkalmas a teljesítményre.
+* **Text (szöveg**): az alapértelmezett fájlformátum, és a legtöbb esetben működik.
+* **Avro**: az együttműködési helyzetekben jól működik.
+* **Ork/parketta**: a legmegfelelőbb a teljesítményhez.
 
-Orc (Optimalizált sor oszlopos) formátum egy rendkívül hatékony módja a Hive-adatok tárolására. Más formátumokkal összehasonlítva az ORC-nek a következő előnyei vannak:
+Az ork (optimalizált sor oszlopos) formátuma igen hatékony módszer a struktúra-adatok tárolására. Más formátumokhoz képest az ork a következő előnyökkel jár:
 
-* komplex típusok támogatása, beleértve a DateTime-ot és az összetett és félig strukturált típusokat.
-* akár 70%-os tömörítésig.
-* 10 000 soronként indexel, ami lehetővé teszi a sorok kihagyását.
+* összetett típusok támogatása, beleértve a DateTime és az összetett és a félig strukturált típusokat.
+* akár 70%-os tömörítés.
+* minden 10 000 sort indexel, amely lehetővé teszi a sorok kihagyását.
 * a futásidejű végrehajtás jelentős csökkenése.
 
-Az ORC formátum engedélyezéséhez először hozzon létre egy táblázatot az *ORC-ként tárolt*záradékkal:
+Az ork formátum engedélyezéséhez először létre kell hoznia egy táblázatot az *ork-ként tárolt*záradékkal:
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Ezután az előkészítési táblából szúrhat be adatokat az ORC táblába. Például:
+Ezután szúrja be az adatait az ork táblába az előkészítési táblából. Például:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -171,32 +171,32 @@ SELECT L_ORDERKEY as L_ORDERKEY,
 FROM lineitem;
 ```
 
-Az ORC formátumról az [Apache Hive Language kézikönyvben olvashat bővebben.](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)
+További információ az ork formátumról a [Apache Hive nyelvi kézikönyvben](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)olvasható.
 
-## <a name="vectorization"></a>Vektorizálás
+## <a name="vectorization"></a>Vektorizációt
 
-Vektorizálás lehetővé teszi, hogy a Hive feldolgozni egy köteg 1024 sorok együtt feldolgozása helyett egy sorban egy időben. Ez azt jelenti, hogy az egyszerű műveletek gyorsabban elvégezhetők, mert kevesebb belső kódot kell futtatni.
+A vektorizációt lehetővé teszi, hogy a kaptár egyszerre több sorba dolgozza fel az 1024-es sorok feldolgozását. Ez azt jelenti, hogy az egyszerű műveletek végrehajtása gyorsabban történik, mert kevesebb belső kód futtatására van szükség.
 
-A Hive-lekérdezés vektorizálási előtagának engedélyezése a következő beállítással:
+A vektorizációt-előtag a következő beállítással engedélyezhető a kaptár-lekérdezésben:
 
 ```hive
 set hive.vectorized.execution.enabled = true;
 ```
 
-További információt a [Vektorizált lekérdezések végrehajtása című témakörben talál.](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution)
+További információ: a [vektoros lekérdezés végrehajtása](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
 
 ## <a name="other-optimization-methods"></a>Egyéb optimalizálási módszerek
 
-Több optimalizálási módszert is figyelembe vehet, például:
+Több optimalizálási módszer is megvizsgálható, például:
 
-* **Hive-gyűjtő:** olyan technika, amely lehetővé teszi a fürt vagy szegmentálás a lekérdezési teljesítmény optimalizálása nagy adathalmazok.
-* **Csatlakozás optimalizálása:** optimalizálása Hive lekérdezés-végrehajtási tervezés hatékonyságának növelése az illesztések és csökkenti a felhasználói tippeket. További információ: [Csatlakozás optimalizálás](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
+* **Struktúra-gyűjtő:** olyan technika, amely lehetővé teszi, hogy a lekérdezési teljesítmény optimalizálása érdekében a nagy mennyiségű adat fürtbe vagy szegmentálásba kerüljön.
+* **Csatlakozás optimalizálása:** a kaptár lekérdezés-végrehajtásának optimalizálása az összekapcsolások hatékonyságának növelése és a felhasználói célzások szükségességének csökkentése érdekében. További információ: [JOIN Optimization (csatlakozás optimalizálása](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)).
 * **Növelje a szűkítőket**.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben számos gyakori Hive-lekérdezésoptimalizálási módszert ismertettél meg. További információ: a következő cikkek:
+Ebben a cikkben több általános kaptár-lekérdezés optimalizálási módszerét is megtanulta. További információt a következő cikkekben talál:
 
-* [Az Apache Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
-* [A járatkésési adatok elemzése a HDInsight interaktív lekérdezése segítségével](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [Twitter-adatok elemzése az Apache Hive használatával a HDInsightban](hdinsight-analyze-twitter-data-linux.md)
+* [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Repülési késleltetési adatelemzések elemzése a HDInsight interaktív lekérdezés használatával](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Twitter-adataik elemzése a HDInsight Apache Hive használatával](hdinsight-analyze-twitter-data-linux.md)

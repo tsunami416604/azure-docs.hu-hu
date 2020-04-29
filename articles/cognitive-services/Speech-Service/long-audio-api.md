@@ -1,7 +1,7 @@
 ---
-title: Hosszú hang API (előzetes verzió) – beszédfelismerési szolgáltatás
+title: Long audio API (előzetes verzió) – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan készült a Long Audio API a hosszú formátumú szöveg-beszéd aszinkron szintéziséhez.
+description: Ismerje meg, hogy a hosszú hangalapú API hogyan lett kialakítva a hosszú formátumú szöveg és a beszéd közötti aszinkron szintézishez.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,78 +11,78 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
 ms.openlocfilehash: b7cca314ec59e46cf17751b1aec28b5c3ea029ed
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81401063"
 ---
-# <a name="long-audio-api-preview"></a>Hosszú audio API (előzetes verzió)
+# <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
 
-A Long Audio API-t a hosszú formátumú szöveg-beszéd aszinkron szintézisére tervezték (például: hangoskönyvek). Ez az API nem ad vissza szintetizált hangot valós időben, hanem az elvárás az, hogy a válasz(ok)at lefogja kérni, és felhasználja a kimenet(eke)t, ahogy azok elérhetővé váltak a szolgáltatásból. A beszédfelismerési SDK által használt szöveg-beszéd API-val ellentétben a Hosszú hang API 10 percnél hosszabb szintetizált hangot hozhat létre, így ideális a kiadók és az audiotartalom-platformok számára.
+A hosszú hangalapú API a hosszú formátumú szöveg és a beszéd közötti aszinkron szintézishez lett tervezve (például: hangkönyvek). Ez az API nem adja vissza a szintetizált hangot valós időben, ezért a várt érték az, hogy a válasz (ok) ra fog szavazni, és a kimenet (eke) t a szolgáltatás által elérhetővé tettnek megfelelően használja fel. A Speech SDK által használt szöveg-beszéd API-val ellentétben a hosszú hang-API 10 percnél hosszabb szintetizált hangot is létrehozhat, így a kiadók és a hangtartalom-platformok ideálisak.
 
-A Long Audio API további előnyei:
+A hosszú hang API további előnyei:
 
-* A szolgáltatás által visszaadott szintetizált beszéd neurális hangokat használ, ami biztosítja a hi-fi hangkimeneteket.
-* Mivel a valós idejű válaszok nem támogatottak, nincs szükség egy hangvégpont üzembe helyezésére.
+* A szolgáltatás által visszaadott szintetizált beszéd neurális hangokat használ, ami biztosítja a magas megbízhatóságú hangkimeneteket.
+* Mivel a valós idejű válaszok nem támogatottak, nincs szükség hang-végpont üzembe helyezésére.
 
 > [!NOTE]
-> A Hosszú hang API mostantól csak az [egyéni neurális hangot](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)támogatja.
+> A hosszú hang API mostantól csak az [Egyéni neurális hang](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)használatát támogatja.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A Hosszú hang API használatakor általában egy szövegfájlt vagy szintetizandó fájlokat kell beküldenie, meg kell adnia az állapotot, majd ha az állapot sikeres, letöltheti a hangkimenetet.
+A hosszú hangalapú API használatakor a rendszer a szintetizált szövegfájlt vagy fájlokat küldi el, lekérdezi az állapotot, majd ha az állapot sikeres, letöltheti az audió kimenetet.
 
-Ez az ábra magas szintű áttekintést nyújt a munkafolyamatról.
+Ez az ábra a munkafolyamat magas szintű áttekintését tartalmazza.
 
 ![Hosszú hang-API munkafolyamat-diagram](media/long-audio-api/long-audio-api-workflow.png)
 
 ## <a name="prepare-content-for-synthesis"></a>Tartalom előkészítése a szintézishez
 
-A szövegfájl előkészítésekor győződjön meg arról, hogy:
+A szövegfájl előkészítésekor győződjön meg róla, hogy:
 
-* Egyszerű szöveges (.txt) vagy SSML-szöveg (.txt)
-* UTF-8-ként van kódolva [bájtrendelés-jellel (AJ)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)
+* Egyszerű szöveges (. txt) vagy SSML szöveg (. txt)
+* Kódolása [UTF-8, byte Order Mark (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) értékkel
 * Egyetlen fájl, nem zip
-* Több mint 400 karaktert tartalmaz egyszerű szöveghez vagy 400 [számlázható karaktert](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) SSML-szöveghez, és kevesebb mint 10 000 bekezdést
-  * Egyszerű szöveg esetén minden bekezdést elválaszt az **Enter/Return** billentyűleütés – [Egyszerű szövegbeviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) megtekintése
-  * Az SSML-szöveg esetében minden SSML-darab bekezdésnek minősül. Az SSML-darabokat különböző bekezdések választják el egymástól – [SSML szövegbeviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megtekintése
+* Több mint 400 karaktert [tartalmaz az egyszerű szöveges vagy a 400](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) -es SSML-szövegekhez, és kisebb, mint 10 000 bekezdés
+  * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
+  * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – a [SSML szövegének](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megjelenítése – példa
 > [!NOTE]
-> A kínai (kontinentális), kínai (hongkongi), kínai (tajvani), japán és koreai nyelv esetében egy szó két karakternek számít. 
+> Kínai (anyaországi), Kínai (Hongkong), Kínai (Tajvan), Japán és koreai nyelveken az egyik szó két karakterből áll. 
 
-## <a name="submit-synthesis-requests"></a>Szintéziskérelmek küldése
+## <a name="submit-synthesis-requests"></a>Szintézisi kérelmek elküldése
 
-A bemeneti tartalom előkészítése után kövesse a [hosszú formátumú hangszintézis rövid útmutatóját](https://aka.ms/long-audio-python) a kérelem elküldéséhez. Ha egynél több bemeneti fájllal rendelkezik, több kérelmet kell benyújtania. Vannak bizonyos korlátozások, amelyeket figyelembe kell venni: 
-* Az ügyfél másodpercenként legfeljebb 5 kérést küldhet a kiszolgálónak minden Egyes Azure-előfizetési fiókhoz. Ha túllépi a korlátozást, az ügyfél 429-es hibakódot kap (túl sok kérés). Kérjük, csökkentse a kérelem összegét másodpercenként
-* A kiszolgáló minden Egyes Azure-előfizetési fiókhoz legfeljebb 120 kérelmet futtathat és várólistára vehet. Ha túllépi a korlátozást, a kiszolgáló 429-es hibakódot ad vissza (túl sok kérés). Várjon, és ne nyújtson be új kérelmet, amíg egyes kérelmek et nem teljesít.
-* A kiszolgáló minden Egyes Azure-előfizetési fiókhoz legfeljebb 20 000 kérelmet fog tartani. Ha túllépi a korlátozást, kérjük, töröljön néhány kérelmet, mielőtt újakat küldene be
+A bemeneti tartalom előkészítése után a kérelem elküldéséhez kövesse a [hosszú formátumú hangszintézis rövid](https://aka.ms/long-audio-python) útmutatóját. Ha egynél több bemeneti fájllal rendelkezik, több kérést is el kell küldenie. Néhány korlátozást figyelembe kell venni: 
+* Az ügyfél legfeljebb 5 kérést küldhet a kiszolgálónak másodpercenként az egyes Azure-előfizetési fiókokhoz. Ha meghaladja a korlátozást, akkor az ügyfél 429 hibakódot kap (túl sok kérés). Csökkentse a kérelmek mennyiségét másodpercenként
+* A kiszolgáló az egyes Azure-előfizetésekhez tartozó fiókokhoz legfeljebb 120 kérelmet futtathat, és a várólistára helyezhető. Ha meghaladja a korlátozást, a kiszolgáló 429 hibakódot ad vissza (túl sok kérés). Várjon, és ne küldje el az új kérést, amíg néhány kérelem be nem fejeződik
+* A kiszolgáló minden egyes Azure-előfizetési fiók esetében 20 000-kérelmeket tart fenn. Ha túllépi a korlátozást, töröljön néhány kérelmet az új adatbázisok elküldése előtt
 
 ## <a name="audio-output-formats"></a>Hangkimeneti formátumok
 
-Támogatjuk a rugalmas hangkimeneti formátumokat. A "concatenateResult" paraméter beállításával bekezdésenként hangkimeneteket hozhat létre, vagy a hangokat egyetlen kimenetbe fűzheti össze. A Long Audio API a következő hangkimeneti formátumokat támogatja:
+A rugalmas hangkimeneti formátumokat támogatjuk. A "concatenateResult" paraméter beállításával egy adott kimenetet adhat meg egy bekezdésben, vagy összefűzheti a hanganyagokat egy kimenetben. A hosszú hang API a következő hangkimeneti formátumokat támogatja:
 
 > [!NOTE]
-> Az alapértelmezett hangformátum riff-16khz-16bit-mono-pcm.
+> Az alapértelmezett hang formátuma a riff-16khz-16bit-mono-PCM.
 
-* riff-8khz-16bit-mono-pcm
-* riff-16khz-16bit-mono-pcm
-* riff-24khz-16bit-mono-pcm
-* riff-48khz-16bit-mono-pcm
-* audio-16khz-32kbitrate-mono-mp3
-* audio-16khz-64kbitrate-mono-mp3
-* audio-16khz-128kbitrate-mono-mp3
-* audio-24khz-48kbitrate-mono-mp3
-* audio-24khz-96kbitrate-mono-mp3
-* audio-24khz-160kbitrate-mono-mp3
+* riff-8khz-16bit-mono-PCM
+* riff-16khz-16bit-mono-PCM
+* riff-24khz-16bit-mono-PCM
+* riff-48kHz-16bit-mono-PCM
+* hang-16khz-32kbitrate-mono-MP3
+* hang-16khz-64kbitrate-mono-MP3
+* hang-16khz-128kbitrate-mono-MP3
+* hang-24khz-48kbitrate-mono-MP3
+* hang-24khz-96kbitrate-mono-MP3
+* hang-24khz-160kbitrate-mono-MP3
 
 ## <a name="quickstarts"></a>Rövid útmutatók
 
-A Long Audio API sikeres futtatását segítő rövid útmutatókat kínálunk. Ez a táblázat a Hosszú hang API-rövid útmutatók listáját tartalmazza, nyelv szerint rendezve.
+A hosszú hangalapú API sikeres futtatását segítő gyors útmutatókat kínálunk. Ez a táblázat a hosszú hangalapú API-gyors útmutatók listáját tartalmazza, nyelv szerint rendezve.
 
-* [Rövid útmutató: Python](https://aka.ms/long-audio-python)
+* [Gyors útmutató: Python](https://aka.ms/long-audio-python)
 
 ## <a name="sample-code"></a>Mintakód
-A Hosszú audio API mintakódja elérhető a GitHubon.
+A hosszú hang API-mintakód elérhető a GitHubon.
 
 * [Mintakód: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
 * [Mintakód: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)

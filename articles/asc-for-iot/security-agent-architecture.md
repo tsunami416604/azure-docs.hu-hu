@@ -1,6 +1,6 @@
 ---
 title: Biztonsági ügynök architektúrája
-description: Ismerje meg az Azure Security Center for IoT szolgáltatásban használt ügynökök biztonsági ügynökarchitektúráját.
+description: Ismerje meg a biztonsági ügynök architektúráját a IoT szolgáltatás Azure Security Center használt ügynökök számára.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310691"
 ---
-# <a name="security-agent-reference-architecture"></a>Biztonsági ügynök referenciaarchitektúrája
+# <a name="security-agent-reference-architecture"></a>Biztonsági ügynök hivatkozási architektúrája
 
-Az Azure Security Center for IoT referenciaarchitektúrát biztosít az IoT Hubon keresztül naplózó, feldolgozó, összesítő és küldő biztonsági ügynökök számára.
+A IoT Azure Security Center olyan biztonsági ügynökök számára biztosít hivatkozási architektúrát, amelyek a biztonsági adatokat naplózzák, feldolgozzák, összesítik és elküldik a IoT Hub használatával.
 
-A biztonsági ügynökök úgy vannak kialakítva, hogy korlátozott IoT-környezetben működjenek, és nagymértékben testreszabhatók az általuk biztosított értékek tekintetében az általuk felhasznált erőforrásokhoz képest.
+A biztonsági ügynökök úgy vannak kialakítva, hogy korlátozott IoT-környezetben működjenek, és az általuk használt erőforrásokhoz képest igen testreszabhatók.
 
 A biztonsági ügynökök a következő szolgáltatásokat támogatják:
 
-- Gyűjtse össze a nyers biztonsági eseményeket az alapul szolgáló operációs rendszerből (Linux, Windows). Ha többet szeretne megtudni az elérhető biztonsági adatgyűjtőkről, olvassa el [az Azure Security Center for IoT ügynök konfigurációját.](how-to-agent-configuration.md)
+- Nyers biztonsági események gyűjtése a mögöttes operációs rendszerből (Linux, Windows). További információ a rendelkezésre álló biztonsági adatgyűjtőről: [Azure Security Center a IoT-ügynök konfigurációjában](how-to-agent-configuration.md).
 
-- Nyers biztonsági események összesítése az IoT Hubon keresztül küldött üzenetekben.
+- A nyers biztonsági események összesítése IoT Hubon keresztül küldött üzenetekben.
 
-- Hitelesítse a hitelesítést meglévő eszközidentitással vagy dedikált modulidentitással. További információ: [Biztonsági ügynök hitelesítési módszerei.](concept-security-agent-authentication-methods.md)
+- Hitelesítés meglévő eszköz-identitással vagy dedikált modul-identitással. További információért lásd: [biztonsági ügynök hitelesítési módszerei](concept-security-agent-authentication-methods.md) .
 
-- Konfigurálja távolról az **azureiotsecurity** modul iker használatával. További információ: [Azure Security Center for IoT agent](how-to-agent-configuration.md).
+- Konfigurálja távolról a **azureiotsecurity** modul Twin használatával. További információ: [Azure Security Center konfigurálása a IoT-ügynökhöz](how-to-agent-configuration.md).
 
-Az Azure Security Center for IoT Security agents nyílt forráskódú projektekként lett kifejlesztve, és a GitHubról érhetők el:
+A IoT biztonsági ügynökök Azure Security Center nyílt forráskódú projektként vannak kifejlesztve, és elérhetők a GitHubról:
 
 - [Azure Security Center IoT C-alapú ügynökhöz](https://github.com/Azure/Azure-IoT-Security-Agent-C)
-- [Azure Security Center iot C#-alapú ügynökhöz](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
+- [Azure Security Center IoT C#-alapú ügynökhöz](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>Ügynök által támogatott platformok
 
-Az Azure Security Center for IoT különböző telepítőügynököket kínál 32 bites és 64 bites Windows hoz, és ugyanezt a 32 bites és 64 bites Linux hoz. Győződjön meg arról, hogy az egyes eszközökhöz a megfelelő ügynöktelepítővel rendelkezik az alábbi táblázat szerint:
+A IoT-hez készült Azure Security Center a 32 bites és a 64 bites Windows rendszerhez különböző telepítő ügynököket kínál, és a 32 bites és a 64 bites Linux rendszerhez Győződjön meg arról, hogy rendelkezik a megfelelő ügynök-telepítővel az egyes eszközökhöz az alábbi táblázat szerint:
 
 | Architektúra | Linux | Windows |    Részletek|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32 bites  | C#  | C#  ||
-| 64 bites  | C# vagy C           | C#      | Azt javasoljuk, hogy a C ügynök eszközök több korlátozott vagy minimális eszköz erőforrásokat.|
+| bitesként  | C#  | C#  ||
+| 64bit  | C# vagy C           | C#      | Azt javasoljuk, hogy a C ügynököt olyan eszközökön használja, amelyeken korlátozottabb vagy minimális erőforrású eszköz van.|
 |
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben az Azure Security Center for IoT biztonsági ügynök architektúrájáról és a rendelkezésre álló telepítőkről szerzett tudomást.
+Ebből a cikkből megtudhatta, hogyan Azure Security Center a IoT biztonsági ügynök architektúrája és az elérhető telepítők.
 
-Az Azure Security Center iot-telepítéshez való használatának megkezdéséhez használja az alábbi cikkeket:
+A IoT-telepítés Azure Security Centerának folytatásához használja a következő cikkeket:
 
-- A [biztonsági ügynökök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) ismertetése
-- [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és üzembe helyezése
-- Tekintse át az Azure Security Center t [ioT-szolgáltatás előfeltételeihez](service-prerequisites.md)
-- Megtudhatja, hogyan engedélyezheti az [Azure Security Center for IoT-szolgáltatást az IoT Hubban](quickstart-onboard-iot-hub.md)
-- További információ a szolgáltatásról az [Azure Security Center for IoT –GYIK-ből](resources-frequently-asked-questions.md)
+- A [biztonsági ügynök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) megismerése
+- [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és központi telepítése
+- A IoT [szolgáltatás előfeltételeinek](service-prerequisites.md) áttekintése Azure Security Center
+- Megtudhatja, hogyan [engedélyezheti Azure Security Center a IoT szolgáltatáshoz a IoT hub](quickstart-onboard-iot-hub.md)
+- További információ a szolgáltatásról a [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)

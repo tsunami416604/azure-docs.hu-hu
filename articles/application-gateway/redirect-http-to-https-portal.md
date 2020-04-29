@@ -1,6 +1,6 @@
 ---
-title: HTTP-ről HTTPS-re történő átirányítás a portálon – Azure Application Gateway
-description: Megtudhatja, hogyan hozhat létre egy alkalmazásátjáró átirányított forgalmat HTTP-https az Azure Portalon keresztül.
+title: HTTP – HTTPS-átirányítás a portálon – Azure Application Gateway
+description: Megtudhatja, hogyan hozhat létre olyan Application Gateway-t, amely átirányított forgalmat használ a HTTP-ről a HTTPS-re a Azure Portal használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312093"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Alkalmazásátjáró létrehozása HTTP-HTTPS átirányítással az Azure Portal használatával
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure Portal használatával
 
-Az Azure Portal segítségével létrehozhat egy [alkalmazásátjárót](overview.md) a TLS-megszüntetési tanúsítvánnyal. Az útválasztási szabály segítségével átirányítják a HTTP-forgalmat az alkalmazásátjáró HTTPS-portjára. Ebben a példában egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is létrehozhat az alkalmazásátjáró háttérkészletéhez, amely két virtuálisgép-példányt tartalmaz.
+A Azure Portal használatával létrehozhat egy [Application Gateway](overview.md) -tanúsítványt a TLS-leállításhoz. Az útválasztási szabályok a HTTP-forgalom átirányítására szolgálnak az Application Gateway HTTPS-portjára. Ebben a példában létrehozunk egy virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is az Application Gateway két virtuálisgép-példányát tartalmazó, a backend-készlethez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -27,15 +27,15 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Figyelő és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ez az oktatóanyag az Azure PowerShell-modul 1.0.0-s vagy újabb verzióját igényli egy tanúsítvány létrehozásához és az IIS telepítéséhez. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az oktatóanyag parancsainak futtatásához is `Login-AzAccount` futtatnia kell az Azure-ral való kapcsolat létrehozásához.
+Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-as vagy újabb verziójára van szükség a tanúsítvány létrehozásához és az IIS telepítéséhez. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az oktatóanyagban szereplő parancsok futtatásához futtatnia `Login-AzAccount` kell a parancsot az Azure-beli kapcsolatok létrehozásához is.
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Éles használatra egy megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia. Ebben az oktatóanyagban egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaggal. Az [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
+Éles használatra a megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia. Ebben az oktatóanyagban egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaggal. Az [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -78,7 +78,7 @@ A létrehozott erőforrások közötti kommunikációhoz virtuális hálózatra 
      ![Új alkalmazásátjáró létrehozása](./media/create-url-route-portal/application-gateway-create.png)
 
 5. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
-6. Kattintson **a Virtuális hálózat kiválasztása**gombra, kattintson az Új **létrehozása**gombra, majd adja meg ezeket az értékeket a virtuális hálózathoz:
+6. Kattintson **a virtuális hálózat kiválasztása**elemre, kattintson az **új létrehozása**elemre, majd adja meg a virtuális hálózat következő értékeit:
 
    - A virtuális hálózat neve *myVNet*.
    - A virtuális hálózat címtere *10.0.0.0/16*.
@@ -88,100 +88,100 @@ A létrehozott erőforrások közötti kommunikációhoz virtuális hálózatra 
      ![Virtuális hálózat létrehozása](./media/create-url-route-portal/application-gateway-vnet.png)
 
 7. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
-8. Az **Előtér IP-konfigurációja**csoportban győződjön meg arról, hogy az **IP-cím típusa** **Nyilvános,** és az **Új létrehozása** lehetőség van kiválasztva. Adja meg a nevet a *myAGPublicIPAddress címcím* megadásához. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
-9. A **Figyelő konfigurációja**csoportban válassza a **HTTPS**lehetőséget, majd válassza a Fájl **kiválasztása lehetőséget,** és keresse meg a *c:\appgwcert.pfx* fájlt, és válassza a **Megnyitás**lehetőséget.
-10. Írja be a *tanúsítvány* nevét és az *Azure123456-ot!* jelszót.
-11. Hagyja letiltva a webalkalmazás tűzfalát, majd kattintson **az OK gombra.**
-12. Tekintse át az összesítő lap beállításait, majd kattintson az **OK gombra** a hálózati erőforrások és az alkalmazásátjáró létrehozásához. Az alkalmazásátjáró létrehozása több percig is eltarthat, várjon, amíg a központi telepítés sikeresen befejeződik, mielőtt továbblépne a következő szakaszra.
+8. Az előtérbeli **IP-konfiguráció**területen győződjön meg arról, hogy az **IP-cím típusa** **nyilvános**, és az **új létrehozása** elem ki van választva. Adja meg a *myAGPublicIPAddress* nevet. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
+9. A **figyelő konfigurációja**területen válassza a **https**lehetőséget, majd válassza ki **a kívánt fájlt** , és keresse meg a *c:\appgwcert.pfx* fájlt, és válassza a **Megnyitás**lehetőséget.
+10. Írja be a *appgwcert* nevet a tanúsítvány neveként és a *Azure123456!* jelszót.
+11. Hagyja letiltani a webalkalmazási tűzfalat, majd kattintson **az OK gombra**.
+12. Tekintse át a beállításokat az összefoglalás lapon, majd kattintson az **OK** gombra a hálózati erőforrások és az Application Gateway létrehozásához. Az Application Gateway létrehozása több percet is igénybe vehet, várjon, amíg a telepítés sikeresen befejeződik, mielőtt továbblép a következő szakaszra.
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-1. Válassza a bal oldali menü **Minden erőforrás elemét,** majd válassza a **myVNet** elemet az erőforráslistából.
-2. Válassza **az Alhálózatok**lehetőséget, majd kattintson **az Alhálózat gombra.**
+1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd az erőforrások listából válassza a **myVNet** lehetőséget.
+2. Válassza az **alhálózatok**lehetőséget, majd kattintson az **alhálózat**elemre.
 
     ![Alhálózat létrehozása](./media/create-url-route-portal/application-gateway-subnet.png)
 
-3. Írja be a *myBackendSubnet* nevet az alhálózat nevéhez.
-4. Írja be a *10.0.2.0/24* parancsot a címtartományhoz, majd kattintson az **OK gombra.**
+3. Az alhálózat neveként írja be a *myBackendSubnet* nevet.
+4. Írja be a *10.0.2.0/24* értéket a címtartomány mezőbe, majd kattintson **az OK gombra**.
 
 ## <a name="add-a-listener-and-redirection-rule"></a>Figyelő és átirányítási szabály hozzáadása
 
 ### <a name="add-the-listener"></a>A figyelő hozzáadása
 
-Először adja hozzá a *myListener* nevű hallgatót a 80-as porthoz.
+Először adja hozzá a *myListener* nevű figyelőt a 80-es porthoz.
 
 1. Nyissa meg a **myResourceGroupAG** erőforráscsoportot, és válassza a **myAppGateway**lehetőséget.
-2. Válassza **a Figyelők,** majd **a + Alap .**
-3. Írja be a *MyListener* nevet a névhez.
-4. Írja be a *httpPort* nevet az új előtérport nevéhez és *80-at* a porthoz.
-5. Győződjön meg arról, hogy a protokoll **HTTP-re**van állítva, majd kattintson **az OK gombra.**
+2. Válassza a **figyelők** lehetőséget, majd válassza az **+ alapszintű**lehetőséget.
+3. A név mezőbe írja be a *MyListener* nevet.
+4. Írja be a *httpPort* nevet az új előtér-port neveként és a *80* -es portot a porthoz.
+5. Győződjön meg arról, hogy a protokoll a **http**értékre van állítva, majd kattintson **az OK gombra**.
 
-### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Átirányítási konfigurációval rendelkező útválasztási szabály hozzáadása
+### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Útválasztási szabály hozzáadása átirányítási konfigurációval
 
-1. A **myAppGateway -n**válassza a **Szabályok** lehetőséget, majd a **+Routing szabály kérése lehetőséget.**
-2. A **szabály nevéhez**írja be *a 2.*
-3. Győződjön meg arról, hogy a **MyListener** ki van jelölve a figyelőszámára.
-4. Kattintson a **Háttérrendszer célok** fülre, és válassza a **Céltípus lehetőséget** *átirányításként.*
-5. Az **Átirányítás típushoz**válassza **az Állandó**lehetőséget.
-6. Az **Átirányítási cél**kiválasztásához válassza **a Figyelő**lehetőséget.
-7. Győződjön meg arról, hogy a **Célfigyelő** **appGatewayHttpListener**értékre van állítva.
-8. A **Lekérdezési karakterlánckal együtt** és az **elérési úttal együtt** válassza az *Igen*lehetőséget.
+1. A **myAppGateway**területen válassza a **szabályok** , majd a **+ kérelem útválasztási szabály**lehetőséget.
+2. A **szabály neve**mezőbe írja be a következőt: *Rule2*.
+3. Győződjön meg arról, hogy a figyelő **MyListener** van kiválasztva.
+4. Kattintson a **háttérbeli célok** lapra, és válassza a **cél típusa** *átirányítás*lehetőséget.
+5. Az **átirányítás típusa**beállításnál válassza az **állandó**lehetőséget.
+6. **Átirányítási cél**esetén válassza a **figyelő**lehetőséget.
+7. Győződjön meg arról, hogy a **cél figyelő** **appGatewayHttpListener**van beállítva.
+8. A **belefoglalási lekérdezési karakterlánc** és az **elérési út** beállításnál válassza az *Igen*lehetőséget.
 9. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
 Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, amely kiszolgálókat biztosít a háttérkészlet számára az alkalmazásátjáróban.
 
-1. A portál bal felső sarkában válassza az **"Erőforrás létrehozása**" lehetőséget.
+1. A portál bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
 2. Válassza ki **Számítás** (Compute) lehetőséget.
-3. A keresőmezőbe írja be a *méretezési készletet,* és nyomja le az Enter billentyűt.
-4. Válassza **a Virtuálisgép-méretezéskészlet**lehetőséget, majd a **Létrehozás**lehetőséget.
-5. A **Virtuálisgép méretezési csoport nevéhez**írja be *a myvmss (Myvmss ) mezőbe.*
-6. Az Operációs rendszer lemezlemez-lemezlemez-lemezlemez-lemezképéhez** győződjön meg arról, hogy a **Windows Server 2016 Datacenter** ki van jelölve.
-7. Az **Erőforráscsoport csoportban**válassza a **myResourceGroupAG lehetőséget.**
-8. A **Felhasználónév mezőbe**írja be az *azureuser (azureuser*) mezőbe.
-9. **Jelszó mezőbe**írja be az *Azure123456!* és erősítse meg a jelszót.
-10. A **példányok száma**esetén győződjön meg arról, hogy az érték **2**.
-11. A **Példány mérete**esetén válassza a **D2s_v3**lehetőséget.
-12. A **Hálózat csoportban**győződjön meg arról, hogy **a Terheléselosztás beállításainak megadása** az Application **Gateway**beállításra van állítva.
-13. Győződjön meg arról, hogy az **alkalmazásátjáró** **a myAppGateway-re**van állítva.
-14. Győződjön meg arról, hogy az **alhálózat** **beállítása myBackendSubnet**.
+3. A keresőmezőbe írja be a *méretezési csoport* kifejezést, majd nyomja le az ENTER billentyűt.
+4. Válassza ki a **virtuálisgép-méretezési csoport**elemet, majd kattintson a **Létrehozás**gombra.
+5. A **virtuálisgép-méretezési csoport neve**mezőbe írja be a következőt: *myvmss*.
+6. Operációs rendszer lemezképe esetén * * ellenőrizze, hogy a **Windows Server 2016 Datacenter** van-e kiválasztva.
+7. Az **erőforráscsoport**területen válassza a **myResourceGroupAG**lehetőséget.
+8. A **Felhasználónév**mezőbe írja be a következőt: *azureuser*.
+9. A **jelszó**mezőbe írja be a következőt: *Azure123456!* és erősítse meg a jelszót.
+10. A **Példányszám**mezőben ellenőrizze, hogy az érték **2**-e.
+11. A **példány mérete**beállításnál válassza a **D2s_v3**lehetőséget.
+12. A **hálózatkezelés**területen győződjön meg arról, hogy a terheléselosztási **beállítások** beállítás értéke **Application Gateway**.
+13. Győződjön meg arról, hogy az **Application Gateway** **myAppGateway**van beállítva.
+14. Győződjön meg arról, hogy az **alhálózat** **myBackendSubnet**értékre van beállítva.
 15. Kattintson a **Létrehozás** gombra.
 
-### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>A méretezési készlet társítása a megfelelő háttérkészlettel
+### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>A méretezési csoport hozzárendelése a megfelelő háttér-készlethez
 
-A virtuálisgép-méretezési csoport portál felhasználói felülete új háttérkészletet hoz létre a méretezési csoporthoz, de szeretné társítani a meglévő appGatewayBackendPool-hoz.
+A virtuálisgép-méretezési csoport portál felhasználói felülete létrehoz egy új háttér-készletet a méretezési csoport számára, de hozzá kívánja rendelni a meglévő appGatewayBackendPool.
 
 1. Nyissa meg a **myResourceGroupAg** erőforráscsoportot.
 2. Válassza a **myAppGateway**lehetőséget.
-3. Válassza **a háttérkészletek lehetőséget**.
-4. Válassza a **myAppGatewaymyvmss lehetőséget.**
-5. Válassza **az Összes cél eltávolítása a háttérkészletből**lehetőséget.
+3. Válassza ki a **háttérbeli készletek**elemet.
+4. Válassza a **myAppGatewaymyvmss**lehetőséget.
+5. Válassza **a minden cél eltávolítása a háttér-készletből**lehetőséget.
 6. Kattintson a **Mentés** gombra.
-7. Miután ez a folyamat befejeződött, válassza ki a **myAppGatewaymyvmss** háttérkészletét, majd válassza a **Törlés,** majd **az OK gombot** a megerősítéshez.
-8. Válassza **az appGatewayBackendPool lehetőséget.**
-9. A **Célok csoportban**válassza a **VMSS lehetőséget.**
-10. A **VMSS**csoportban válassza **a myvmss lehetőséget.**
-11. A **Hálózati adapter konfigurációja csoportban**válassza **a myvmssNic**lehetőséget.
+7. A folyamat befejezése után válassza ki a **myAppGatewaymyvmss** háttér-készletet, válassza a **Törlés** lehetőséget, majd kattintson az **OK gombra** a megerősítéshez.
+8. Válassza a **appGatewayBackendPool**lehetőséget.
+9. A **célok**területen válassza a **VMSS**lehetőséget.
+10. A **VMSS**területen válassza a **myvmss**elemet.
+11. A **hálózati adapter konfigurációja**területen válassza a **myvmssNic**lehetőséget.
 12. Kattintson a **Mentés** gombra.
 
-### <a name="upgrade-the-scale-set"></a>A méretezési készlet frissítése
+### <a name="upgrade-the-scale-set"></a>A méretezési csoport frissítése
 
-Végül ezekkel a módosításokkal frissítenie kell a méretezési készletet.
+Végül frissítenie kell a méretezési csoport ezeket a módosításokat.
 
-1. Válassza ki a **myvmss méretezési** készletet.
+1. Válassza ki a **myvmss** méretezési csoportját.
 2. A **Beállítások** alatt válassza a **Példányok** lehetőséget.
-3. Jelölje ki mindkét példányt, majd kattintson **a Frissítés gombra.**
+3. Jelölje ki mindkét példányt, majd válassza a **frissítés**lehetőséget.
 4. Válassza az **Igen** lehetőséget a megerősítéshez.
-5. Miután ez befejeződött, lépjen vissza a **myAppGateway-hez,** és válassza **a Háttérkészletek lehetőséget.** Most látnia kell, hogy az **appGatewayBackendPool** két cél, és **myAppGatewaymyvmss** nulla célokat.
-6. Válassza a **myAppGatewaymyvms**s lehetőséget, majd a **Törlés**lehetőséget.
+5. Ezt követően térjen vissza a **myAppGateway** , és válassza a **háttérbeli készletek**elemet. Ekkor látnia kell, hogy a **appGatewayBackendPool** két célponttal rendelkezik, és a **myAppGatewaymyvmss** nulla célponttal rendelkezik.
+6. Válassza a **myAppGatewaymyvmss**lehetőséget, majd válassza a **Törlés**lehetőséget.
 7. Válassza az **OK** lehetőséget a megerősítéshez.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
-Az IIS méretezési készletre történő telepítésének egyszerű módja a PowerShell használata. A portálon kattintson a Cloud Shell ikonra, és győződjön meg arról, hogy a **PowerShell** ki van jelölve.
+Az IIS a méretezési csoportba való telepítésének egyszerű módja a PowerShell használata. A portálon kattintson a Cloud Shell ikonra, és ellenőrizze, hogy a **PowerShell** van-e kiválasztva.
 
-Illessze be a következő kódot a PowerShell ablakba, és nyomja le az Enter billentyűt.
+Illessze be a következő kódot a PowerShell-ablakba, majd nyomja le az ENTER billentyűt.
 
 ```azurepowershell
 $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
@@ -199,21 +199,21 @@ Update-AzVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-### <a name="upgrade-the-scale-set"></a>A méretezési készlet frissítése
+### <a name="upgrade-the-scale-set"></a>A méretezési csoport frissítése
 
-Miután módosította a példányokat az IIS rendszerrel, ezzel a módosítással újra frissítenie kell a méretezési készletet.
+Miután módosította a példányokat az IIS-sel, újra kell frissítenie a méretezési készletet ezzel a módosítással.
 
-1. Válassza ki a **myvmss méretezési** készletet.
+1. Válassza ki a **myvmss** méretezési csoportját.
 2. A **Beállítások** alatt válassza a **Példányok** lehetőséget.
-3. Jelölje ki mindkét példányt, majd kattintson **a Frissítés gombra.**
+3. Jelölje ki mindkét példányt, majd válassza a **frissítés**lehetőséget.
 4. Válassza az **Igen** lehetőséget a megerősítéshez.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az alkalmazás nyilvános IP-címét az alkalmazásátjáró áttekintése lapról szerezheti be.
+Az alkalmazás nyilvános IP-címét az Application Gateway – áttekintés oldalon érheti el.
 
 1. Válassza a **myAppGateway**lehetőséget.
-2. Az **Áttekintés** lapon jegyezze fel az IP-címet a **Frontend nyilvános IP-címe**alatt.
+2. Az **Áttekintés** lapon jegyezze fel az IP-címet az előtér **nyilvános IP-címe**területen.
 
 3. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: http://52.170.203.149
 
@@ -225,4 +225,4 @@ Az alkalmazás nyilvános IP-címét az alkalmazásátjáró áttekintése lapr�
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [hozhat létre alkalmazásátjárót belső átirányítással.](redirect-internal-site-powershell.md)
+Megtudhatja, hogyan [hozhat létre egy belső átirányítással rendelkező Application Gateway-átjárót](redirect-internal-site-powershell.md).

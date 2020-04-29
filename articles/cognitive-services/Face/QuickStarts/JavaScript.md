@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 3cb583502f1ccf3d88cf8307bb62ab5ed261ce03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403381"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a JavaScript használatával
 
-Ebben a rövid útmutatóban az Azure Face REST API JavaScript használatával észlelheti az emberi arcokat egy lemezképben.
+Ebben a rövid útmutatóban az Azure Face REST APIt fogja használni a JavaScripttel az emberi arcok észleléséhez a képen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Face-előfizetési kulcs. Ingyenes próba-előfizetési kulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=face-api)szerezhetbe. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Face szolgáltatásra, és levegye a kulcsot.
-- Kódszerkesztő, például [Visual Studio-kód](https://code.visualstudio.com/download)
+- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
+- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
 
-Hozzon létre egy új HTML-fájlt, *detectFaces.html*, és adja hozzá a következő kódot.
+Hozzon létre egy új HTML-fájlt, a *detectFaces. html*fájlt, és adja hozzá a következő kódot.
 
 ```html
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ Hozzon létre egy új HTML-fájlt, *detectFaces.html*, és adja hozzá a követk
 </html>
 ```
 
-Ezután adja hozzá `body` a következő kódot a dokumentum elemébe. Ez a kód egy egyszerű felhasználói felületet állít be URL-mezővel, egy **Arcelemzés** gombbal, egy válaszablaktáblával és egy képmegjelenítő ablaktáblával.
+Ezután adja hozzá a következő kódot a `body` dokumentum eleméhez. Ez a kód egy alapszintű felhasználói felületet állít be egy URL-mezővel, egy **elemező arc** gomb, egy válasz ablaktáblával és egy képmegjelenítő ablaktáblával.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -63,9 +63,9 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 </div>
 ```
 
-## <a name="write-the-javascript-script"></a>Írja meg a JavaScript-parancsfájlt
+## <a name="write-the-javascript-script"></a>JavaScript-parancsfájl írása
 
-Adja hozzá a következő `h1` kódot közvetlenül a dokumentum eleméhez. Ez a kód beállítja a Face API-t megíró JavaScript-kódot.
+Adja hozzá a következő kódot közvetlenül a `h1` dokumentum eleme fölé. Ez a kód beállítja a JavaScript-kódot, amely meghívja a Face API.
 
 ```html
 <script type="text/javascript">
@@ -124,17 +124,17 @@ Adja hozzá a következő `h1` kódot közvetlenül a dokumentum eleméhez. Ez a
 </script>
 ```
 
-Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és `uriBase` módosítania kell a karakterláncot, hogy az a megfelelő végponti karakterláncot tartalmazzon. A `returnFaceAttributes` mező határozza meg, hogy mely arcattribútumokat kell beolvasni; a kívánt használattól függően módosíthatja ezt a karakterláncot.
+Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; Előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>A szkript futtatása
 
-Nyissa *meg a detectFaces.html fájlt* a böngészőben. Amikor az **Arc elemzése** gombra kattint, az alkalmazásnak meg kell jelenítenie a képet az adott URL-címről, és ki kell nyomtatnia egy JSON-karakterláncot.
+Nyissa meg a *detectFaces. html fájlt* a böngészőben. Ha az **elemzés arc** gombra kattint, az alkalmazásnak a megadott URL-címről kell megjelenítenie a képet, és ki kell nyomtatnia egy JSON-karakterláncot.
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-A következő szöveg egy példa a sikeres JSON-válaszra.
+A következő szöveg egy sikeres JSON-válasz példáját szemlélteti.
 
 ```json
 [
@@ -230,7 +230,7 @@ A következő szöveg egy példa a sikeres JSON-válaszra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban írt egy JavaScript-parancsfájlt, amely meghívja az Azure Face szolgáltatást a rendszerkép arcok észleléséhez és az attribútumok visszaadásához. Ezután további információért tekintse meg a Face API referenciadokumentációját.
+Ebben a rövid útmutatóban egy JavaScript-parancsfájlt írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaadja az attribútumait További információért olvassa el a Face API dokumentációját.
 
 > [!div class="nextstepaction"]
-> [Arcfelismerési API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

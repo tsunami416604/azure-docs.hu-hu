@@ -10,38 +10,38 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
 ms.openlocfilehash: 50dd7ddb636658ec6d29c2669d02320c73167fde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399690"
 ---
-## <a name="reference-docs"></a>Referenciadokumentumok
+## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-A beszédszolgáltatás két SDK-t biztosít. Az első SDK az elsődleges [beszédsdk,](../speech-sdk.md) és biztosítja a beszédfelismerési szolgáltatás kezeléséhez szükséges legtöbb funkciót. A második SDK az eszközökre jellemző, megfelelően elnevezett [beszédeszközök SDK.](../speech-devices-sdk.md) Mindkét SDK számos nyelven elérhető.
+A beszédfelismerési szolgáltatás két SDK-t biztosít. Az első SDK az elsődleges [SPEECH SDK](../speech-sdk.md) , amely a beszédfelismerési szolgáltatással való interakcióhoz szükséges funkciók nagy részét biztosítja. A második SDK az eszközökre vonatkozik, amelyeknek megfelelően elnevezték a [Speech Devices SDK](../speech-devices-sdk.md)-t. Mindkét SDK több nyelven is elérhető.
 
-### <a name="speech-sdk-reference-docs"></a>BeszédSDK referencia-dokumentumok
+### <a name="speech-sdk-reference-docs"></a>A Speech SDK dokumentációs dokumentációja
 
-Az alábbi lista segítségével megtalálhatja a megfelelő beszédfelismerési SDK-referenciadokumentumokat:
+Az alábbi lista segítségével megkeresheti a megfelelő Speech SDK-dokumentációt:
 
 - <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Célkitűzés-C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objective-C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 > [!TIP]
-> A beszédszolgáltatás SDK aktívan karbantartott és frissített. A változások, frissítések és szolgáltatáskiegészítések nyomon követéséhez olvassa el a [Beszéd SDK kiadási megjegyzéseket.](../releasenotes.md)
+> A Speech Service SDK-t aktívan karbantartják és frissítik. A változások nyomon követéséhez a frissítések és szolgáltatások kiegészítései a [SPEECH SDK kibocsátási megjegyzéseit](../releasenotes.md)is megtekintik.
 
-### <a name="speech-devices-sdk-reference-docs"></a>Beszédeszközök SDK referencia-dokumentumai
+### <a name="speech-devices-sdk-reference-docs"></a>Beszédfelismerési eszközök – dokumentációs dokumentumok
 
-A [beszédfelismerési eszközök SDK](../speech-devices-sdk.md) a beszédsdk egy szuperhalmaza, amely bizonyos eszközök kiterjesztett funkcióival rendelkezik. A beszédfelismerési eszközök SDK letöltéséhez először ki kell [választania egy fejlesztői készletet](../get-speech-devices-sdk.md#choose-a-development-kit).
+A [Speech Devices SDK](../speech-devices-sdk.md) a Speech SDK egy kibővített funkciója, amely adott eszközökhöz nyújt kiterjesztett funkciókat. A Speech Devices SDK letöltéséhez először ki kell [választania egy fejlesztői készletet](../get-speech-devices-sdk.md#choose-a-development-kit).
 
-### <a name="rest-api-references"></a>REST API-hivatkozások
+### <a name="rest-api-references"></a>REST API referenciák
 
-A REST API-k beszédszolgáltatásának különböző API-jaira vonatkozó hivatkozásokat az alábbi listában talál:
+A különböző beszédfelismerési szolgáltatás REST API-jai hivatkozásait az alábbi lista tartalmazza:
 
-- [REST API: Beszéd-szöveg](../rest-speech-to-text.md)
-- [REST API: Szövegfelolvasás](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: Kötegátírás és testreszabás<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- [REST API: beszéd – szöveg](../rest-speech-to-text.md)
+- [REST API: szövegről beszédre](../rest-text-to-speech.md)
+- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: kötegelt átírás és testreszabás<span class="docon docon-navigate-external x-hidden-focus"></span></a>

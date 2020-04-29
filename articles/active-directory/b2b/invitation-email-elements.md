@@ -1,6 +1,6 @@
 ---
-title: A B2B meghívó e-mail elemei - Azure Active Directory | Microsoft dokumentumok
-description: Az Azure Active Directory B2B együttműködési meghívó e-mail sablonja
+title: A B2B meghívó e-mail-Azure Active Directory elemei | Microsoft Docs
+description: Azure Active Directory B2B Collaboration meghívó e-mail sablon
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,86 +13,86 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407220"
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködési meghívó e-mail elemei – Azure Active Directory
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei
 
-Meghívó e-mailek kritikus eleme, hogy a partnerek a fedélzeten, mint B2B együttműködési felhasználók az Azure AD-ben. Bár nem [szükséges e-mailt küldeni e-mailt, hogy meghívjon valakit a B2B együttműködés használatával,](add-user-without-invite.md)ezzel a felhasználónak minden szükséges információt megad a felhasználónak ahhoz, hogy döntést hozzon arról, hogy elfogadja-e a meghívást. Ez is ad nekik egy linket, hogy mindig hivatkozhat a jövőben, amikor vissza kell térniük a forrásokat.
+A meghívó e-mail-címe kritikus fontosságú összetevő, amely VÁLLALATKÖZI együttműködési felhasználókként szolgál az Azure AD-ben. Habár [nem szükséges, hogy e-mailt küldjön a B2B-együttműködéssel való meghívás meghívására](add-user-without-invite.md), így a felhasználónak minden szükséges információt meg kell hoznia arról, hogy elfogadják-e a meghívót. Egy hivatkozást is biztosít nekik, hogy a jövőben mindig hivatkozhatnak arra, amikor vissza kell térniük az erőforrásokhoz.
 
-![Képernyőkép a B2B meghívó e-mailcímről](media/invitation-email-elements/invitation-email.png)
+![A B2B meghívót tartalmazó e-mailt bemutató képernyőfelvétel](media/invitation-email-elements/invitation-email.png)
 
 > [!NOTE]
-> Ez az új e-mail sablon még mindig az összes bérlő számára elérhető, így egyes bérlők továbbra is egy régebbi design. 2020. május végéig az összes bérlő től érkező meghívók ezt a sablont fogják használni.
+> Ez az új e-mail-sablon továbbra is minden bérlő számára elérhető, így egyes bérlők továbbra is régebbi kialakítást használnak. A 2020. május végére az összes bérlő meghívója ezt a sablont fogja használni.
 
-## <a name="explaining-the-email"></a>Az e-mail magyarázata
+## <a name="explaining-the-email"></a>Az e-mail ismertetése
 
-Nézzünk meg néhány elemet az e-mail, így tudja, hogyan lehet a legjobban használni a képességeiket.
+Tekintsük át az e-mailek néhány elemét, hogy tudja, hogyan használják legjobban a képességeiket.
 
 ### <a name="subject"></a>Tárgy
 
-Az e-mail tárgya ezt a mintát követi:
+Az e-mail tárgya a következő mintát követi:
 
-&lt;felhasználónév&gt; arra kérte, hogy hozzáférjen a szervezeten belüli alkalmazásokhoz.
+&lt;a&gt; Felhasználónév meghívja Önt a szervezeten belüli alkalmazások elérésére.
 
-### <a name="from-address"></a>Cím
+### <a name="from-address"></a>Feladó címe
 
-LinkedIn-szerű mintát használunk a From címhez. Ez a minta egyértelművé kell invites@microsoft.comtennie, hogy bár az e-mail származik, a meghívás egy másik szervezet. A formátum a következő: Microsoft <invites@microsoft.com> Invitations &lt;vagy&gt; <invites@microsoft.com>Microsoft invitations a tenantname nevében. 
+A feladó címe esetében a LinkedIn-hez hasonló mintát használjuk. Ennek a mintának egyértelművé kell tennie, hogy bár az invites@microsoft.come-mail származik, a meghívás egy másik szervezettől származik. A formátum a következő: Microsoft <invites@microsoft.com> meghívások vagy Microsoft meghívások&gt; <invites@microsoft.com>a &lt;tenantname nevében. 
 
-### <a name="reply-to"></a>Válasz
+### <a name="reply-to"></a>Válasz címzettje
 
-A válasz-e-mail a meghívó e-mailcímére van beállítva, ha elérhető, így az e-mailre adott válasz e-mailt küld a meghívónak.
+Ha elérhető, a Válaszcím e-mail-címére van beállítva, hogy az e-mailben küldött e-mailt küldjön vissza a meghívónak.
 
-### <a name="phishing-warning"></a>Adathalászatra vonatkozó figyelmeztetés
+### <a name="phishing-warning"></a>Adatlopási figyelmeztetés
 
-Az e-mail egy rövid figyelmeztetéssel kezdődik a felhasználó számára az adathalászatról, és figyelmezteti őket, hogy csak a várt meghívókat fogadják el. Ez jó gyakorlat, hogy megbizonyosodjon arról, hogy a partnerek meghívja nem lesz meglepve a meghívást megemlíti, hogy nekik előre.
+Az e-mail rövid figyelmeztetést küld a felhasználónak az adathalászatról, figyelmezteti őket, hogy csak a várt meghívókat fogadják el. Célszerű meggyőződni arról, hogy a meghívott partnereknek nem kell megemlíteniük a meghívót, ha előre megemlíti őket.
 
-![Az adathalászatra vonatkozó figyelmeztetés képe az e-mailben](media/invitation-email-elements/phishing-warning.png)
+![Az e-mailben szereplő adathalászati figyelmeztetés képe](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>A meghívó adatai
+### <a name="inviters-information"></a>Meghívó adatai
 
-Az e-mail információkat tartalmaz a meghívóról és arról a szervezetről, amelytől a meghívót küldik. Ez magában foglalja a feladó nevét és e-mail címét, valamint a szervezethez társított nevet és elsődleges tartományt. Mindezek az információk segítik a meghívottat abban, hogy megalapozott döntést hozzanak a meghívás elfogadásáról.
+Az e-mail tartalmazza a meghívót és a meghívót küldő szervezet adatait. Ide tartozik a küldő neve és e-mail-címe, valamint a szervezethez társított név és elsődleges tartomány. Az összes információnak segítenie kell a meghívást, hogy tájékozott döntést hozzon a meghívó elfogadásáról.
 
 ![A meghívó információinak képe az e-mailben](media/invitation-email-elements/inviters-information.png)
 
 ### <a name="invitation-message"></a>Meghívó üzenet
 
-Ha a meghívó a meghívó részeként tartalmaz üzenetet, amikor [vendégfelhasználót hív meg a címtárba, csoportba vagy alkalmazásba,](add-users-administrator.md) vagy amikor [a meghívó API-t használja,](customize-invitation-api.md)az üzenet az e-mail fő részében lesz kiemelve. A meghívó neve és profilképe is benne van, ha beállított egyet. Maga az üzenet egy szövegterület, ezért biztonsági okokból nem dolgozza fel a HTML-címkéket.
+Ha a meghívó tartalmaz egy üzenetet a meghívásuk részeként, amikor [vendég felhasználót nyit meg a címtárban, a csoportban vagy az alkalmazásban](add-users-administrator.md) , vagy amikor a meghívó API-t [használják](customize-invitation-api.md), az üzenet kiemelve jelenik meg az e-mail fő részében. Emellett a meghívó neve és a profil képe is szerepel, ha már be lettek állítva. Az üzenet maga egy szöveges felület, ezért biztonsági okokból nem dolgozza fel a HTML-címkéket.
 
-![A meghívóüzenet képe az e-mailben](media/invitation-email-elements/invitation-message.png)
+![A meghívót tartalmazó üzenet képe az e-mailben](media/invitation-email-elements/invitation-message.png)
 
-### <a name="accept-button-and-redirect-url"></a>Az Elfogadás gomb és az URL átirányítása
+### <a name="accept-button-and-redirect-url"></a>Elfogadás gomb és átirányítási URL-cím
 
-Az e-mail következő része információkat tartalmaz arról, hogy a meghívott hol kerül sor a meghívás elfogadása után, valamint egy gombot.  A jövőben a meghívott mindig használhatja ezt a hivatkozást, hogy visszatérjen az erőforrásokhoz közvetlenül.
+Az e-mail következő szakasza információt tartalmaz arról, hogy a meghívást Mikor fogadja el a meghívót, valamint egy gombot.  A jövőben a meghívás mindig használhatja ezt a hivatkozást, hogy közvetlenül visszatérjen az erőforrásaihoz.
 
-![Az elfogadás gomb képe és az URL átirányítása az e-mailben](media/invitation-email-elements/accept-button.png)
+![Az elfogadás gomb és az átirányítási URL-cím ábrázolása az e-mailben](media/invitation-email-elements/accept-button.png)
 
 ### <a name="footer-section"></a>Lábléc szakasz
 
-A lábléc további információt tartalmaz az elküldött meghívóról. Mindig van egy lehetőség a meghívott, hogy blokkolja a jövőbeli meghívókat. Ha a szervezet [adatvédelmi nyilatkozatot állított be,](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)a nyilatkozatra mutató hivatkozás itt jelenik meg.  Ellenkező esetben a megjegyzés azt jelzi, hogy a szervezet nem állított be adatvédelmi nyilatkozatot.
+A lábléc további információkat tartalmaz az elküldött meghívóról. Mindig lehetőség van a meghívásra, hogy letiltsa a jövőbeli meghívókat. Ha a szervezet [adatvédelmi nyilatkozatot állított be](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), itt jelennek meg az utasításra mutató hivatkozás.  Ellenkező esetben egy megjegyzés azt jelzi, hogy a szervezet nem állított be adatvédelmi nyilatkozatot.
 
-![Az e-mail láblécszakaszának képe](media/invitation-email-elements/footer-section.png)
+![Az e-mail lábléc szakaszának képe](media/invitation-email-elements/footer-section.png)
  
-## <a name="how-the-language-is-determined"></a>Hogyan határozzák meg a nyelvet?
+## <a name="how-the-language-is-determined"></a>A nyelv meghatározása
 
-A meghívó e-mailben a vendégfelhasználó számára bemutatott nyelvet a következő beállítások határozzák meg. Ezek a beállítások a lista sorrendben jelennek meg. Ha egy beállítás nincs konfigurálva, a lista következő beállítása határozza meg a nyelvet.
+A meghívó e-mailben a vendég felhasználó számára megadott nyelvet a következő beállítások határozzák meg. Ezek a Beállítások elsőbbségi sorrendben vannak felsorolva. Ha a beállítás nincs konfigurálva, a listában a következő beállítás határozza meg a nyelvet.
 
-- A [meghívottUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) objektum **messageLanguage** tulajdonsága, ha a Meghívás létrehozása API-t használja
+- A [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) objektum **messageLanguage** tulajdonsága, ha a Create meghívás API használatban van
 -   A vendég [felhasználói objektumában](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) megadott **preferredLanguage** tulajdonság
--   Az **értesítési nyelv** a vendégfelhasználó otthoni bérlőjének tulajdonságaiban van beállítva (csak Az Azure AD-bérlők számára)
--   Az **értesítési nyelv** az erőforrás-bérlő tulajdonságaiban
+-   A vendég felhasználó otthoni bérlője (csak az Azure AD-bérlők) tulajdonságaiban beállított **értesítési nyelv**
+-   Az erőforrás-bérlő tulajdonságaiban beállított **értesítési nyelv**
 
-Ha egyik beállítás sincs konfigurálva, a nyelv alapértelmezés szerint az angol (US) lesz.
+Ha a beállítások egyike sincs konfigurálva, a nyelv alapértelmezett értéke az angol (US).
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az alábbi cikkeket az Azure AD B2B együttműködés:
+Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 
-- [Mi az Azure AD B2B együttműködés](what-is-b2b.md)
-- [Hogyan adhatnak hozzá Az Azure Active Directory rendszergazdái B2B együttműködési felhasználókat?](add-users-administrator.md)
-- [Hogyan adják hozzá az informatikai dolgozók a B2B együttműködési felhasználókat?](add-users-information-worker.md)
-- [B2B együttműködési meghívás visszaváltás](redemption-experience.md)
-- [B2B együttműködési felhasználók hozzáadása meghívás nélkül](add-user-without-invite.md)
+- [Mi az Azure AD B2B együttműködés?](what-is-b2b.md)
+- [Hogyan vehetik Azure Active Directory a rendszergazdák a B2B együttműködési felhasználókat?](add-users-administrator.md)
+- [Hogyan vehetik fel az Information Worker a B2B együttműködési felhasználókat?](add-users-information-worker.md)
+- [VÁLLALATKÖZI együttműködés meghívásának beváltása](redemption-experience.md)
+- [B2B Collaboration-felhasználók hozzáadása meghívás nélkül](add-user-without-invite.md)

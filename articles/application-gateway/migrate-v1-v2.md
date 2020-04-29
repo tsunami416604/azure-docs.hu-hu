@@ -1,6 +1,6 @@
 ---
-title: Áttelepítés a v1-ről a v2-re – Azure Application Gateway
-description: Ez a cikk bemutatja, hogyan telepítheti át az Azure Application Gateway és a Web Application Firewall alkalmazást a v1-ről a v2-re
+title: Migrálás v1-ről v2-re – Azure Application Gateway
+description: Ez a cikk bemutatja, hogyan telepítheti át az Azure Application Gateway és a webalkalmazási tűzfalat v1-ről v2-re
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,74 +8,74 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
 ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312049"
 ---
-# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazás tűzfalának áttelepítése a v1-ről a v2-re
+# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazási tűzfal migrálása v1-ről v2-re
 
-[Az Azure Application Gateway és a Web Application Firewall (WAF) v2](application-gateway-autoscaling-zone-redundant.md) már elérhető, amely további funkciókat kínál, például az automatikus skálázásés a rendelkezésre állási zóna redundanciája. A meglévő 1-es verziójú átjárók frissítése a 2-es verzióra azonban nem történik meg automatikusan. Ha a v1-ről a v2-re szeretne áttérni, kövesse a cikkben ismertetett lépéseket.
+Az [Azure Application Gateway és a webalkalmazási tűzfal (WAF) v2](application-gateway-autoscaling-zone-redundant.md) mostantól elérhető, és további funkciókat kínál, mint például az automatikus skálázás és a rendelkezésre állási zóna redundancia. A meglévő 1-es verziójú átjárók frissítése a 2-es verzióra azonban nem történik meg automatikusan. Ha v1-ről v2-re szeretne áttérni, kövesse a jelen cikkben ismertetett lépéseket.
 
-Az áttelepítésnek két szakasza van:
+Az áttelepítés két szakaszból áll:
 
-1. A konfiguráció áttelepítése
-2. Az ügyfélforgalom áttelepítése
+1. A konfiguráció áttelepíteni
+2. Az ügyfél forgalmának migrálása
 
-Ez a cikk a konfiguráció áttelepítésével foglalkozik. Az ügyfélforgalom áttelepítése az adott környezettől függően változik. Ugyanakkor néhány magas szintű, általános ajánlások [is rendelkezésre állnak.](#migrate-client-traffic)
+Ez a cikk a konfiguráció áttelepítését ismerteti. Az ügyfél-forgalom áttelepítése az adott környezettől függően változhat. Bizonyos magas szintű általános javaslatok azonban [megtalálhatók](#migrate-client-traffic).
 
-## <a name="migration-overview"></a>Áttelepítés – áttekintés
+## <a name="migration-overview"></a>Migrálás áttekintése
 
-Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
+Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteket végzi el:
 
-* Új Standard_v2 vagy WAF_v2 átjárót hoz létre a megadott virtuális hálózati alhálózatban.
-* Zökkenőmentesen másolja a v1 Standard vagy WAF átjáróhoz társított konfigurációt az újonnan létrehozott Standard_V2 vagy WAF_V2 átjáróra.
+* Létrehoz egy új Standard_v2 vagy WAF_v2 átjárót egy megadott virtuális hálózati alhálózatban.
+* Zökkenőmentesen másolja a v1 standard vagy WAF átjáróhoz társított konfigurációt az újonnan létrehozott Standard_V2 vagy WAF_V2 átjáróhoz.
 
-### <a name="caveatslimitations"></a>Kikötések\Korlátozások
+### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Az új v2 átjáró új nyilvános és privát IP-címekkel rendelkezik. Nem lehet áthelyezni a meglévő v1 átjáróhoz társított IP-címeket zökkenőmentesen a v2-be. Azonban egy meglévő (fel nem osztott) nyilvános vagy privát IP-címet is lefoglalhat az új v2 átjáróhoz.
-* Meg kell adnia egy IP-címterületet egy másik alhálózat számára a virtuális hálózaton belül, ahol a v1 átjáró található. A parancsfájl nem hozhat létre a v2 átjáró t olyan meglévő alhálózatokban, amelyek már rendelkeznek v1-es átjáróval. Azonban ha a meglévő alhálózat már rendelkezik egy v2-átjáróval, amely továbbra is működhet, feltéve, hogy elegendő IP-címterület áll rendelkezésre.
-* TLS/SSL-konfiguráció áttelepítéséhez meg kell adnia a v1 átjáróban használt összes TLS/SSL tanúsítványt.
-* Ha a V1-átjáró fips-módban engedélyezve van, akkor nem lesz áttelepítve az új v2 átjáróra. A FIPS-mód nem támogatott a v2-ben.
-* A v2 nem támogatja az IPv6 protokollt, ezért az IPv6-kompatibilis v1-es átjárók áttelepítése nem történik meg. Ha futtatja a parancsfájlt, előfordulhat, hogy nem fejeződik be.
-* Ha a v1-es átjáró csak egy privát IP-címmel rendelkezik, a parancsfájl létrehoz egy nyilvános IP-címet és egy privát IP-címet az új v2 átjáróhoz. a v2 átjárók jelenleg nem csak a privát IP-címeket támogatják.
-* A betűkön, számjegyeken, kötőjeleken és aláhúzásokon kívül más neveket tartalmazó fejlécek nem kerülnek át az alkalmazásba. Ez csak a fejlécnevekre vonatkozik, a fejlécértékekre nem. Ez egy törés változás v1.
+* Az új v2-átjáró új nyilvános és magánhálózati IP-címmel rendelkezik. A meglévő v1-átjáróhoz társított IP-címek nem helyezhetők át zökkenőmentesen v2-re. Meglévő (nem lefoglalt) nyilvános vagy magánhálózati IP-címet azonban lefoglalhat az új v2-átjáróra.
+* Meg kell adnia egy IP-címtartományt egy másik alhálózat számára a virtuális hálózaton belül, ahol a v1-átjáró található. A parancsfájl nem tudja létrehozni a v2-átjárót minden olyan meglévő alhálózatban, amely már rendelkezik v1-átjáróval. Ha azonban a meglévő alhálózatnak már van v2-átjárója, az továbbra is működik, ha elegendő IP-címtartomány van megadva.
+* A TLS/SSL-konfiguráció átadásához meg kell adnia a v1-átjáróban használt összes TLS/SSL-tanúsítványt.
+* Ha a v1-átjáró esetében engedélyezve van a FIPS mód, a rendszer nem telepíti át az új v2-átjáróra. Az FIPS mód nem támogatott a v2-ben.
+* a v2 nem támogatja az IPv6 protokollt, így az IPv6-kompatibilis v1-átjárók nem települnek át. Ha futtatja a szkriptet, előfordulhat, hogy nem fejeződött be.
+* Ha a v1-átjáró csak magánhálózati IP-címmel rendelkezik, a parancsfájl létrehoz egy nyilvános IP-címet és egy magánhálózati IP-címet az új v2-átjáró számára. a v2-átjárók jelenleg csak privát IP-címeket támogatnak.
+* A betűket, számokat, kötőjeleket és aláhúzásokat nem tartalmazó fejlécek nem jutnak el az alkalmazáshoz. Ez csak a fejlécek nevére vonatkozik, nem pedig a fejléc értékeire. Ez a v1-ről feltört változás.
 
-## <a name="download-the-script"></a>A szkript letöltése
+## <a name="download-the-script"></a>A parancsfájl letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-galériából.](https://www.powershellgallery.com/packages/AzureAppGWMigration)
+Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureAppGWMigration).
 
 ## <a name="use-the-script"></a>A szkript használata
 
-A helyi PowerShell-környezet beállításától és beállításaitól függően két lehetőség közül választhat:
+A helyi PowerShell-környezet beállításaitól és beállításaitól függően két lehetőség közül választhat:
 
-* Ha nincs telepítve az Azure Az-modulok, vagy nem bánja az Azure Az-modulok eltávolítását, a `Install-Script` legjobb megoldás a parancsfájl futtatásához.
-* Ha meg kell tartania az Azure Az modulokat, a legjobb, ha letölti a parancsfájlt, és közvetlenül futtatja.
+* Ha nem rendelkezik az Azure az modulok telepítésével, vagy ne feledje eltávolítani az Azure-t, akkor a legjobb lehetőség a szkript futtatására szolgáló `Install-Script` lehetőség használata.
+* Ha meg kell őriznie az Azure az modulokat, a legjobb megoldás, ha letölti a szkriptet, és közvetlenül futtatja.
 
-Annak megállapításához, hogy telepítve vannak-e `Get-InstalledModule -Name az`az Azure Az modulok, futtassa a futtassa a futtassa a futtassa a programot. Ha nem látja a telepített Az modulokat, akkor `Install-Script` használhatja a módszert.
+Annak megállapításához, hogy telepítve van-e az Azure az `Get-InstalledModule -Name az`modulok, futtassa a parancsot. Ha a telepített modulok nem láthatók, akkor használhatja a `Install-Script` metódust.
 
-### <a name="install-using-the-install-script-method"></a>Telepítés a Install-Script metódussal
+### <a name="install-using-the-install-script-method"></a>Telepítés az install-script metódus használatával
 
-A beállítás használatához nem kell az Azure Az modulok telepítve a számítógépre. Ha telepítve vannak, a következő parancs hibát jelenít meg. Eltávolíthatja az Azure Az modulokat, vagy a másik lehetőséggel manuálisan letöltheti a parancsfájlt, és futtathatja azt.
+Ha ezt a beállítást szeretné használni, az Azure az modulokat nem kell telepítenie a számítógépre. Ha telepítve vannak, a következő parancs hibát jelez. Távolítsa el az Azure az modulokat, vagy használja a másik lehetőséget a szkript manuális letöltéséhez és futtatásához.
   
-Futtassa a parancsfájlt a következő paranccsal:
+Futtassa a szkriptet a következő paranccsal:
 
 `Install-Script -Name AzureAppGWMigration`
 
-Ez a parancs a szükséges Az modulokat is telepíti.  
+Ez a parancs telepíti a szükséges az modulokat is.  
 
-### <a name="install-using-the-script-directly"></a>Telepítés közvetlenül a parancsfájl használatával
+### <a name="install-using-the-script-directly"></a>Telepítés közvetlenül a szkript használatával
 
-Ha néhány Azure Az-modul telepítve van, és nem tudja eltávolítani őket (vagy nem szeretné eltávolítani őket), manuálisan letöltheti a parancsfájlt a parancsfájl **letöltési hivatkozásának Kézi letöltés** elapjával. A szkript letölthető, mint egy nyers nupkg fájlt. Ha erről a nupkg fájlból szeretné telepíteni a parancsfájlt, olvassa el a Kézi csomag letöltése című [témakört.](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)
+Ha van néhány Azure az modulok telepítve, és nem távolítható el (vagy nem szeretné eltávolítani őket), manuálisan letöltheti a szkriptet a parancsfájl letöltése hivatkozás **manuális Letöltés** lapján. A parancsfájl nyers nupkg-fájlként van letöltve. Ha a parancsfájlt erről a nupkg-fájlról szeretné telepíteni, olvassa el a [manuális csomagok letöltése](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)című témakört.
 
 A szkript futtatása:
 
-1. Az `Connect-AzAccount` Azure-hoz való csatlakozáshoz használható.
+1. Az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz használható.
 
-1. Az `Import-Module Az` Az modulok importálására használható.
+1. A `Import-Module Az` használatával importálhatja az az modulokat.
 
-1. Futtassa `Get-Help AzureAppGWMigration.ps1` a szükséges paraméterek vizsgálatához:
+1. Futtassa `Get-Help AzureAppGWMigration.ps1` a parancsot a szükséges paraméterek vizsgálatához:
 
    ```
    AzureAppGwMigration.ps1
@@ -90,20 +90,20 @@ A szkript futtatása:
    ```
 
    A parancsfájl paraméterei:
-   * **resourceId: [String]: Kötelező** – Ez a meglévő Standard v1 vagy WAF v1 átjáró Azure-erőforrás-azonosítója. A karakterlánc-érték megkereséséhez keresse meg az Azure Portalon, válassza ki az alkalmazásátjárót vagy a WAF-erőforrást, és kattintson az átjáró **Tulajdonságok** hivatkozására. Az erőforrás-azonosító az adott lapon található.
+   * **resourceId: [string]: kötelező** – ez a meglévő standard v1-vagy WAF v1-átjáró Azure-erőforrás-azonosítója. A karakterlánc értékének megkereséséhez navigáljon a Azure Portal, válassza ki az Application Gateway-vagy WAF-erőforrást, majd kattintson az átjáró **Tulajdonságok** hivatkozására. Az erőforrás-azonosító az adott oldalon található.
 
-     Az erőforrás-azonosító lekérte a következő Azure PowerShell-parancsokat is:
+     Az erőforrás-azonosító lekéréséhez a következő Azure PowerShell parancsokat is futtathatja:
 
      ```azurepowershell
      $appgw = Get-AzApplicationGateway -Name <v1 gateway name> -ResourceGroupName <resource group Name> 
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]: Kötelező** – Ez az az IP-címterület, amelyet az új v2 átjárót tartalmazó új alhálózathoz lefoglalt (vagy lefoglalni szeretne). Ezt a CIDR jelölésben kell megadni. Például: 10.0.0.0/24. Nem kell előre létrehoznia ezt az alhálózatot. A szkript létrehozza az Ön számára, ha nem létezik.
-   * **appgwName: [String]: Nem kötelező**. Ezt a karakterláncot az új Standard_v2 vagy WAF_v2 átjáró neveként kell használni. Ha ez a paraméter nincs megadva, a meglévő v1 átjáró nevét fogja használni az utótag *_v2* hozzáfűzve.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Nem kötelező**.  A v1 átjáróT/SSL-tanúsítványokat jelképező PSApplicationGatewaySslCertificate objektumok vesszővel tagolt listáját fel kell tölteni az új v2 átjáróra. A Standard v1 vagy WAF v1 átjáróhoz konfigurált tls/SSL-tanúsítványok mindegyikéhez létrehozhat egy új PSApplicationGatewaySslCertificate objektumot az `New-AzApplicationGatewaySslCertificate` itt látható parancs segítségével. Szüksége van a TLS/SSL cert fájl elérési útvonalára és a jelszóra.
+   * **subnetAddressRange: [string]: kötelező** – ez az az IP-címtartomány, amelyet az új v2-átjárót tartalmazó új alhálózat számára lefoglalt (vagy le szeretne foglalni). Ezt a CIDR-jelölésben kell megadni. Például: 10.0.0.0/24. Nem kell előre létrehoznia ezt az alhálózatot. A szkript létrehozza, ha nem létezik.
+   * **appgwName: [string]: nem kötelező**. Ezt a karakterláncot adja meg, amelyet az új Standard_v2 vagy WAF_v2 átjáró neveként használhat. Ha ez a paraméter nincs megadva, a rendszer a meglévő v1-átjáró nevét fogja használni a hozzáfűzni *_v2* utótaggal együtt.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: nem kötelező**.  A v1-átjáró TLS/SSL-tanúsítványait képviselő PSApplicationGatewaySslCertificate-objektumok vesszővel tagolt listáját az új v2-átjáróra kell feltölteni. A standard v1-vagy WAF v1-átjáróhoz konfigurált TLS-/SSL-tanúsítványok mindegyikéhez létrehozhat egy új PSApplicationGatewaySslCertificate objektumot az `New-AzApplicationGatewaySslCertificate` itt látható parancs használatával. Szüksége lesz a TLS/SSL-tanúsítvány fájljának elérési útjára és a jelszóra.
 
-     Ez a paraméter csak akkor választható, ha nincs HTTPS-figyelők konfigurálva a v1 átjáró vagy a WAF. Ha legalább egy HTTPS-figyelő beállítással rendelkezik, meg kell adnia ezt a paramétert.
+     Ez a paraméter csak akkor választható, ha nem rendelkezik a v1-átjáróhoz vagy-WAF konfigurált HTTPS-figyelőkkel. Ha legalább egy HTTPS-figyelőt telepít, ezt a paramétert kell megadnia.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -115,23 +115,23 @@ A szkript futtatása:
         -Password $password
       ```
 
-     Az előző `$mySslCert1, $mySslCert2` példában a paraméter értékeként a d.
-   * **trustedRootCertificates: [PSApplicationApplicationTrustedRootCertificate]: Nem kötelező.** A PSApplicationGatewayTrustedRootCertificate objektumok vesszővel tagolt listája, amelyet a háttérpéldányok v2 átjáróból történő hitelesítéséhez a megbízható legfelső szintű tanúsítványok at ábrázoló [megbízható legfelső szintű tanúsítványokat](ssl-overview.md) hoz létre.
+     Az előző példában szereplő `$mySslCert1, $mySslCert2` (vesszővel tagolt) értékeket a parancsfájlban szereplő paraméterek értékeiként adhatja át.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: nem kötelező**. Az Ön által létrehozott PSApplicationGatewayTrustedRootCertificate-objektumok vesszővel tagolt listája, hogy azok a [megbízható legfelső szintű tanúsítványok](ssl-overview.md) a v2-átjáróról származó háttér-példányok hitelesítésére legyenek kialakítva.
    
       ```azurepowershell
       $certFilePath = ".\rootCA.cer"
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      A PSApplicationApplicationTrustedRootCertificate objektumok listájának létrehozásáról a [New-AzApplicationGatewayTrustedRootCertificate című témakörben található.](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)
-   * **privateIpAddress: [String]: Nem kötelező**. Egy adott privát IP-címet, amely et szeretne társítani az új v2 átjáró.  Ennek ugyanabból a virtuális hálózatból kell származnia, amelyet az új v2-átjáróhoz foglal le. Ha ez nincs megadva, a parancsfájl lefoglalja a v2 átjáró privát IP-címét.
-   * **publicIpResourceId: [Karakterlánc]: Nem kötelező.** Az erőforrás-azonosító a meglévő nyilvános IP-cím (standard Termékváltozat) erőforrás az előfizetésben, amely le szeretné foglalni az új v2-átjáró. Ha ez nincs megadva, a parancsfájl új nyilvános IP-címet foglal le ugyanabban az erőforráscsoportban. A név a v2 átjáró neve *-IP* hozzáfűzve.
-   * **validateMigration: [switch]: Nem kötelező**. Akkor használja ezt a paramétert, ha azt szeretné, hogy a parancsfájl a v2 átjáró létrehozása és a konfigurációs másolat létrehozása után néhány alapvető konfigurációs összehasonlítási ellenőrzést végezzen. Alapértelmezés szerint nem történik érvényesítés.
-   * **enableAutoScale: [switch]: Nem kötelező**. Ezt a paramétert akkor használja, ha azt szeretné, hogy a parancsfájl engedélyezze az automatikus skálázást az új v2 átjárón a létrehozása után. Alapértelmezés szerint az automatikus skálázás le van tiltva. Az újonnan létrehozott v2-átjárón később bármikor manuálisan engedélyezheti.
+      PSApplicationGatewayTrustedRootCertificate-objektumok listájának létrehozásához lásd: [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+   * **privateipaddress tulajdonságot: [string]: nem kötelező**. Egy adott magánhálózati IP-címet, amelyet hozzá szeretne rendelni az új v2-átjáróhoz.  Ennek az új v2-átjáróhoz hozzárendelt VNet kell származnia. Ha ez nincs megadva, a parancsfájl egy magánhálózati IP-címet foglal le a v2-átjáróhoz.
+   * **publicIpResourceId: [string]: nem kötelező**. A meglévő nyilvános IP-cím (standard SKU) erőforrás resourceId az előfizetésben, amelyet le szeretne foglalni az új v2-átjáróra. Ha ez nincs megadva, a parancsfájl egy új nyilvános IP-címet foglal le ugyanabban az erőforráscsoporthoz. A név a v2-átjáró neve, amely *-IP-* címmel van hozzáfűzve.
+   * **validateMigration: [kapcsoló]: nem kötelező**. Akkor használja ezt a paramétert, ha azt szeretné, hogy a parancsfájl a v2-átjáró létrehozása és a konfigurációs másolat után elvégezze az alapszintű konfigurációs összehasonlítások érvényességét. Alapértelmezés szerint a rendszer nem végez érvényesítést.
+   * **enableAutoScale: [kapcsoló]: nem kötelező**. Akkor használja ezt a paramétert, ha azt szeretné, hogy a parancsfájl a létrehozása után engedélyezze az automatikus skálázást az új v2-átjárón. Alapértelmezés szerint az automatikus skálázás le van tiltva. A későbbiekben manuálisan is engedélyezheti később az újonnan létrehozott v2-átjárón.
 
-1. Futtassa a parancsfájlt a megfelelő paraméterek kel. 5-7 percig is eltarthat.
+1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
 
-    **Példa**
+    **Például**
 
    ```azurepowershell
    AzureAppGWMigration.ps1 `
@@ -145,59 +145,59 @@ A szkript futtatása:
       -validateMigration -enableAutoScale
    ```
 
-## <a name="migrate-client-traffic"></a>Ügyfélforgalom áttelepítése
+## <a name="migrate-client-traffic"></a>Ügyfél-forgalom migrálása
 
-Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új v2-átjárót a v1-es átjáróról áttelepített konfigurációval. Ezt az Azure Portalon ellenőrizheti.
+Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új v2-átjárót a v1-átjáróról áttelepített pontos konfigurációval. Ezt a Azure Portal ellenőrizheti.
 
-Emellett manuális tesztként küldjön egy kis forgalmat a v2-átjárón keresztül.
+Emellett a v2-átjárón keresztül is küldhet kis mennyiségű forgalmat kézi tesztként.
   
-Íme néhány forgatókönyv, ahol az aktuális alkalmazásátjáró (Standard) ügyfélforgalmat kaphat, és az egyes javaslatok:
+Íme néhány forgatókönyv, ahol az aktuális Application Gateway (standard) megkapja az ügyfelek forgalmát, valamint a javaslataikat a következőkhöz:
 
-* **Egyéni DNS-zóna (például contoso.com), amely a standard v1 vagy WAF v1 átjáróhoz társított előtér-IP-címre mutat (A rekord használatával).**
+* **Egy egyéni DNS-zóna (például contoso.com), amely a standard v1 vagy WAF v1-átjáróhoz társított előtéri IP-címére mutat (egy rekord használatával)**.
 
-    A DNS-rekord frissítésével a Standard_v2 alkalmazásátjáróhoz társított előtér-IP- vagy DNS-címkére mutathat. A DNS-rekordon konfigurált TTL-től függően eltarthat egy ideig, amíg az összes ügyfélforgalom áttelepül az új v2 átjáróra.
-* **Egyéni DNS-zóna (például contoso.com), amely a v1 átjáróhoz társított DNS-címkére mutat (például: *myappgw.eastus.cloudapp.azure.com* CNAME rekord használatával).**
+    A DNS-rekordot frissítheti úgy, hogy az Standard_v2 Application gatewayhez társított előtér-IP-vagy DNS-címkére mutasson. A DNS-rekordon beállított TTL-től függően előfordulhat, hogy az összes ügyfél-forgalom az új v2-átjáróra kerül át.
+* **Egy egyéni DNS-zóna (például contoso.com), amely a DNS-címkére mutat (például: *MYAPPGW.EASTUS.CLOUDAPP.Azure.com* egy CNAME-rekord használatával), amely a v1-átjáróhoz van társítva**.
 
-   Két választásod van:
+   Két lehetőség közül választhat:
 
-  * Ha nyilvános IP-címeket használ az alkalmazásátjárón, a Traffic Manager-profil használatával ellenőrzött, részletes áttelepítést tehet le a forgalom (súlyozott forgalomútozási módszer) növekményes irányítására az új v2-átjáróhoz.
+  * Ha a nyilvános IP-címeket használja az Application gatewayen, a Traffic Manager profil használatával felügyelt, részletes áttelepítést végezhet a forgalom fokozatos átirányításához (súlyozott forgalom-útválasztási módszer) az új v2-átjáróra.
 
-    Ezt úgy teheti meg, `www.contoso.com`hogy a v1 és v2 alkalmazásátjárók DNS-címkéit hozzáadja a Traffic [Manager-profilhoz](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), és az egyéni DNS-rekordot (például ) a Traffic Manager tartományhoz (például contoso.trafficmanager.net) adja hozzá.
-  * Vagy frissítheti az egyéni tartomány DNS-rekordját úgy, hogy az új v2 alkalmazásátjáró DNS-címkéje jelenjen meg. A DNS-rekordon konfigurált TTL-től függően eltarthat egy ideig, amíg az összes ügyfélforgalom áttelepül az új v2 átjáróra.
-* **Az ügyfelek az alkalmazásátjáró előtér-IP-címéhez csatlakoznak.**
+    Ezt úgy teheti meg, hogy a v1 és v2 Application Gateway DNS-címkéit is hozzáadja a [Traffic Manager profiljához](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), és az egyéni DNS-rekordot (például `www.contoso.com`) a Traffic Manager tartományhoz (például contoso.trafficmanager.net) adja.
+  * Másik lehetőségként frissítheti az egyéni tartomány DNS-rekordját, hogy az az új v2 Application Gateway DNS-címkéjére mutasson. A DNS-rekordon beállított TTL-től függően előfordulhat, hogy az összes ügyfél-forgalom az új v2-átjáróra kerül át.
+* Az **ügyfelek az Application Gateway előtérbeli IP-címéhez csatlakoznak**.
 
-   Frissítse az ügyfeleket az újonnan létrehozott v2 alkalmazásátjáróhoz társított IP-cím(ek) használatához. Azt javasoljuk, hogy ne használjon közvetlenül IP-címeket. Fontolja meg az alkalmazásátjáróhoz társított DNS-névcímke használatát (például yourgateway.eastus.cloudapp.azure.com), amelyet a CNAME a saját egyéni DNS-zónájához (például contoso.com) használhat.
+   Frissítse az ügyfeleket az újonnan létrehozott v2 Application gatewayhez társított IP-cím (ek) használatára. Javasoljuk, hogy ne használjon közvetlenül IP-címeket. Érdemes lehet használni az Application gatewayhez társított DNS-név címkét (például yourgateway.eastus.cloudapp.azure.com), amelyet a saját egyéni DNS-zónájához (például contoso.com) is használhat.
 
 ## <a name="common-questions"></a>Gyakori kérdések
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Vannak-e korlátozások az Azure PowerShell-parancsfájl áttelepítése a konfiguráció v1 v2?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Vannak korlátozások a Azure PowerShell szkripttel a konfiguráció a v1-ről a v2-re való áttelepíteni?
 
-Igen. Lásd [a kifogásokat/korlátozásokat.](#caveatslimitations)
+Igen. Lásd a [figyelmeztetéseket és korlátozásokat](#caveatslimitations).
 
-### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Ez a cikk és az Azure PowerShell-parancsfájl is alkalmazható az Application Gateway WAF-termékre? 
+### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>A cikk és a Azure PowerShell Application Gateway WAF termékre vonatkozó parancsfájl is? 
 
 Igen.
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Az Azure PowerShell-parancsfájl is átvált a forgalmat a v1-es átjáróaz újonnan létrehozott v2 átjáró?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>A Azure PowerShell szkript a saját v1-átjáróról az újonnan létrehozott v2-átjáróra is átváltott forgalmat?
 
-Nem. Az Azure PowerShell-parancsfájl csak a konfiguráció áttelepítése. A tényleges forgalom migráció az Ön felelőssége, és az Ön ellenőrzése.
+Nem. A Azure PowerShell szkript csak a konfigurációt telepíti át. A tényleges forgalom áttelepítése az Ön felelőssége és a vezérlése.
 
-### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Az új v2-átjáró az Azure PowerShell-parancsfájl mérete megfelelően kezeli a v1-es átjáróm által jelenleg kiszolgált összes forgalmat?
+### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>A Azure PowerShell szkript által létrehozott új v2-átjáró megfelelően van-e elkészítve a saját v1-átjáró által jelenleg kiszolgált forgalom kezeléséhez?
 
-Az Azure PowerShell-parancsfájl létrehoz egy új v2-átjáró t a megfelelő méretű a meglévő v1-átjáró forgalma kezelésére. Az automatikus skálázás alapértelmezés szerint le van tiltva, de a parancsfájl futtatásakor engedélyezheti az automatikus skálázást.
+A Azure PowerShell szkript létrehoz egy új v2-átjárót, amely a meglévő v1-átjáró forgalmának kezeléséhez megfelelő méretű. Az automatikus skálázás alapértelmezés szerint le van tiltva, de a parancsfájl futtatásakor engedélyezheti az automatikus skálázást.
 
-### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Úgy állítottam be a v1-es átjárómat, hogy naplókat küldjön az Azure storage-ba. A parancsfájl replikálja ezt a konfigurációt a v2-hez is?
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Úgy konfiguráltam a v1-átjárót, hogy naplókat küldjön az Azure Storage-nak. A szkript replikálja ezt a konfigurációt a v2-ben is?
 
-Nem. A parancsfájl nem replikálja ezt a konfigurációt a v2.The script doesn't replicate this configuration for v2. A naplókonfigurációt külön kell hozzáadnia az áttelepített v2 átjáróhoz.
+Nem. A parancsfájl nem replikálja ezt a konfigurációt v2-re. A naplózási konfigurációt külön kell hozzáadnia az áttelepített v2-átjáróhoz.
 
-### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Támogatja ez a parancsfájl az Azure KeyVaultba feltöltött tanúsítványokat?
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Támogatja ez a szkript az Azure kulcstartóba feltöltött tanúsítványokat?
 
-Nem. A parancsfájl jelenleg nem támogatja a KeyVault tanúsítványait. Ez azonban egy későbbi verzió esetében is fontolóra veszi.
+Nem. Jelenleg a parancsfájl nem támogatja a kulcstartóban lévő tanúsítványokat. Ezt azonban egy későbbi verzióra is figyelembe kell venni.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Belefutottam néhány probléma segítségével ezt a forgatókönyvet. Hogyan kaphatok segítséget?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Néhány probléma merült fel a szkript használatával. Hogyan Kérhetek segítséget?
   
-E-mailt küldhet appgwmigrationsup@microsoft.coma, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt megteheti.
+E-mailt küldhet a appgwmigrationsup@microsoft.comszolgáltatásnak, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt.
 
 ## <a name="next-steps"></a>További lépések
 
-[Tudnivalók az Application Gateway v2-ről](application-gateway-autoscaling-zone-redundant.md)
+[Tudnivalók a Application Gateway v2-ről](application-gateway-autoscaling-zone-redundant.md)

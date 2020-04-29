@@ -1,6 +1,6 @@
 ---
-title: Azure webalkalmazás-tűzfal – gyakori kérdések
-description: Ez a cikk választ ad az Azure Bejárati ajtaján található webalkalmazás-tűzfallal kapcsolatos gyakori kérdésekre
+title: Azure webalkalmazási tűzfal – gyakori kérdések
+description: Ez a cikk válaszokat ad az Azure-beli webalkalmazási tűzfallal kapcsolatos gyakori kérdésekre.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,72 +9,72 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: victorh
 ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314322"
 ---
-# <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Gyakori kérdések az Azure Web Application Firewall szolgáltatással kapcsolatban az Azure Bejárati ajtó szolgáltatáson
+# <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Gyakori kérdések az Azure-webalkalmazási tűzfalról az Azure bejárati szolgáltatásában
 
-Ez a cikk az Azure webalkalmazás-tűzfal (WAF) szolgáltatásaival és funkcióival kapcsolatos gyakori kérdésekre ad választ. 
+Ez a cikk az Azure webalkalmazási tűzfal (WAF) funkcióit és funkcióit érintő gyakori kérdésekre ad választ. 
 
 ## <a name="what-is-azure-waf"></a>Mi az Azure WAF?
 
-Az Azure WAF egy webes alkalmazás tűzfal, amely segít megvédeni a webes alkalmazásokat a gyakori fenyegetések, például az SQL-injektálás, a webhelyek közötti parancsfájlok és egyéb webes biztonsági rések. A webalkalmazásokhoz való hozzáférés szabályozásához egyéni és felügyelt szabályok kombinációjából álló WAF-házirendet határozhat meg.
+Az Azure WAF egy webalkalmazási tűzfal, amely segít megvédeni webalkalmazásait az olyan gyakori fenyegetésektől, mint az SQL-injektálás, a helyek közötti parancsfájlkezelés és más webszolgáltatások használata. A webalkalmazásokhoz való hozzáférés szabályozásához egyéni és felügyelt szabályok kombinációjából álló WAF-szabályzatot is meghatározhat.
 
-Az Azure WAF-szabályzat alkalmazható az Application Gateway vagy az Azure Front Doors üzemeltetett webalkalmazásokra.
+Az Azure-WAF szabályzatok alkalmazhatók Application Gateway vagy Azure-beli előtérben futó webalkalmazásokra is.
 
 ## <a name="what-is-waf-on-azure-front-door"></a>Mi a WAF az Azure bejárati ajtaján? 
 
-Az Azure Front Door egy jól méretezhető, globálisan terjeszthető alkalmazás- és tartalomkézbesítési hálózat. Az Azure WAF, a Bejárati ajtóval integrálva leállítja a szolgáltatásmegtagadást és a célzott alkalmazástámadásokat az Azure-hálózat peremén, közel a támadási forrásokhoz, mielőtt belépnének a virtuális hálózatba, védelmet nyújt a teljesítmény feláldozása nélkül.
+Az Azure bejárati ajtó egy rugalmasan méretezhető, globálisan elosztott alkalmazás-és Content Delivery Network. Az Azure WAF a bejárati ajtóval integráltan leállítja az Azure-hálózat peremén a szolgáltatásmegtagadási és a megcélzó alkalmazások támadásait, és a virtuális hálózat megkezdése előtt a támadási forrásokhoz közeledik, és a teljesítmény feláldozása nélkül nyújt védelmet.
 
-## <a name="does-azure-waf-support-https"></a>Támogatja az Azure WAF a HTTPS protokollt?
+## <a name="does-azure-waf-support-https"></a>Támogatja az Azure WAF a HTTPS-t?
 
-Bejárati ajtó kínál TLS kiszervezés. A WAF natívmódon integrálva van a Bejárati ajtóval, és a visszafejtés után megvizsgálhatja a kérelmeket.
+A bejárati ajtó TLS-kiszervezést biztosít. A WAF natív módon integrálva van a bejárati ajtóval, és a visszafejtés után megvizsgálhatja a kérést.
 
-## <a name="does-azure-waf-support-ipv6"></a>Támogatja az Azure WAF az IPv6 protokollt?
+## <a name="does-azure-waf-support-ipv6"></a>Támogatja az Azure WAF az IPv6-ot?
 
-Igen. Az IPv4 és az IPv6 ip-korlátozását beállíthatja.
+Igen. Az IPv4-és IPv6-alapú IP-korlátozást is konfigurálhatja.
 
-## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Mennyire naprakészek a kezelt szabálykészletek?
+## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Hogyan lehet naprakész a felügyelt szabálykészlet?
 
-Mindent megteszünk, hogy lépést tartsunk a változó fenyegetési környezettel. Új szabály frissítése után az új verziószámmal hozzáadódik az alapértelmezett szabálykészlethez.
+Mi a legjobb megoldás a fenyegetés tájképének megváltoztatására. Új szabály frissítésekor a rendszer hozzáadja az alapértelmezett szabálykészlet új verziószámmal.
 
-## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>Mi a terjedési idő, ha módosítja a WAF-házirendet?
+## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>Mi a terjesztési idő, ha módosítást végezek a WAF-szabályzatban?
 
-A WAF-házirend globális telepítése általában körülbelül 5 percet vesz igénybe, és gyakran hamarabb fejeződik be.
+A WAF-szabályzatok globális üzembe helyezése általában körülbelül 5 percet vesz igénybe, és gyakran hamarabb elvégezhető.
 
-## <a name="can-waf-policies-be-different-for-different-regions"></a>A WAF-házirendek eltérőek lehetnek a különböző régiókban?
+## <a name="can-waf-policies-be-different-for-different-regions"></a>Eltérőek lehetnek a különböző régiók WAF házirendjei?
 
-A Bejárati ajtóval integrálva a WAF globális erőforrás. Ugyanaz a konfiguráció vonatkozik az összes bejárati ajtó helyekre.
+A bejárati ajtóval integrált WAF globális erőforrás. Ugyanaz a konfiguráció az összes bejárati hely esetében érvényes.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Hogyan korlátozhatom a hozzáférést a háttérprogramomhoz, hogy csak a Bejárati ajtótól legyen?
+## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Hogyan a háttérbeli hozzáférés korlátozása csak a bejárati ajtóról?
 
-Az IP-hozzáférés-vezérlési listát a háttérben úgy konfigurálhatja, hogy csak a bejárati ajtó kimenő IP-címtartományai engedélyezze, és megtagadja a közvetlen hozzáférést az internetről. A szolgáltatáscímkék használata a virtuális hálózaton támogatott. Ezenkívül ellenőrizheti, hogy az X-Forwarded-Host HTTP fejlécmező érvényes-e a webalkalmazásra.
+A háttérbeli IP-Access Control listát úgy is konfigurálhatja, hogy csak a kimenő IP-címtartományok számára engedélyezze a közvetlen hozzáférést az internetről. A szolgáltatás címkéi a virtuális hálózaton való használatra támogatottak. Emellett ellenőrizheti, hogy az X által továbbított-Host HTTP-fejléc mező érvényes-e a webalkalmazáshoz.
 
-## <a name="which-azure-waf-options-should-i-choose"></a>Milyen Azure WAF-beállításokat válasszak?
+## <a name="which-azure-waf-options-should-i-choose"></a>Mely Azure WAF-beállításokat válasszam?
 
-Két lehetőség van a WAF-szabályzatok azure-beli alkalmazásakor. A WAF és az Azure Front Door egy globálisan elosztott, peremhálózati biztonsági megoldás. A WAF alkalmazásátjáróval egy regionális, dedikált megoldás. Javasoljuk, hogy az általános teljesítmény és a biztonsági követelmények alapján válasszon megoldást. További információ: [Terheléselosztás az Azure alkalmazáskézbesítési csomagjával.](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)
+A WAF-szabályzatok az Azure-ban való alkalmazása két lehetőséget kínál. A WAF az Azure bejárati ajtó egy globálisan elosztott, peremhálózati biztonsági megoldás. A Application Gateway WAF egy regionális, dedikált megoldás. Javasoljuk, hogy válasszon egy megoldást a teljes teljesítmény-és biztonsági követelmények alapján. További információ: terheléselosztás [Az Azure Application Delivery Suite](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)szolgáltatással.
 
 
-## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Támogatja ugyanazokat a WAF funkciókat minden integrált platformon?
+## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Minden integrált platformon ugyanazokat az WAF funkciókat támogatja?
 
-Jelenleg a ModSec CRS 2.2.9, CRS 3.0 és CRS 3.1 szabályok csak az Application Gateway WAF-jével támogatottak. A sebességkorlátozás, a földrajzi szűrés és az Azure által felügyelt alapértelmezett szabálykészlet-szabályok csak az Azure Bejárati ajtaján lévő WAF-szabályok támogatottak.
+Jelenleg a ModSec CRS 2.2.9, a CRS 3,0 és a CRS 3,1 szabályok csak a WAF Application Gateway-on támogatottak. A díjszabás korlátozása, a Geo-szűrés és az Azure által felügyelt alapértelmezett szabálykészlet-szabályok csak az Azure-beli WAF támogatottak.
 
-## <a name="is-ddos-protection-integrated-with-front-door"></a>A DDoS védelem integrálva van a Bejárati ajtóval? 
+## <a name="is-ddos-protection-integrated-with-front-door"></a>A DDoS Protection integrálva van a bejárati ajtóval? 
 
-Az Azure Front Door globálisan elosztott, az Azure Front Door képes elnyelni és földrajzilag elkülöníteni a nagy mennyiségű támadásokat. Egyéni WAF-házirendet hozhat létre, amely automatikusan blokkolja és korlátozza az ismert aláírásokkal rendelkező http(ek)es támadásokat. További, engedélyezheti a DDoS Protection Standard a virtuális hálózaton, ahol a háttér-rendszerek üzembe helyezése. Az Azure DDoS Protection Standard ügyfelei további előnyöket kapnak, beleértve a költségvédelmet, az SLA-garanciát és a DDoS gyorsreagálású csapat szakértőinek hozzáférését a támadás során.
+Az Azure-beli hálózati éleken globálisan elosztott Azure bejárati ajtó képes felvenni és földrajzilag elkülöníteni a nagy mennyiségű támadásokat. Létrehozhat egyéni WAF szabályzatot, amellyel automatikusan blokkolhatja és korlátozhatja az ismert aláírásokkal rendelkező http (s) támadásokat. További részletekként engedélyezheti DDoS Protection szabványt azon a VNet, amelyen a háttérrendszer üzembe lett helyezve. Azure DDoS Protection standard ügyfeleink további kedvezményeket kapnak, például a költséghatékonyságot, az SLA-garanciát és a DDoS gyors reagálású csapat szakembereinek hozzáférését a támadás során felmerülő azonnali segítségért.
 
-## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Miért kerül át a díjkorlát-szabályhoz beállított küszöbérték feletti további kérések a háttérkiszolgálóra?
+## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Miért van szükség további kérelmekre a díjszabási korlátozási szabályhoz konfigurált küszöbérték felett a háttérrendszer-kiszolgáló felé?
 
-A sebességkorlátozási szabály korlátozhatja bármely ügyfél IP-címéből származó rendellenesen nagy forgalmat. Az ügyfél IP-címéről egy vagy öt perces időtartam alatt engedélyezett webes kérelmek számát küszöbértéket konfigurálhat. A részletes sebességszabályozáshoz a sebességkorlátozás kombinálható további egyezési feltételekkel, például a HTTP(S) paraméteregyeztetéssel. 
+A díjszabási szabály korlátozza a rendellenesen nagy forgalmat bármely ügyfél IP-címről. Az ügyfél IP-címe által engedélyezett webes kérelmek számát egy-egy vagy öt perces időtartam alatt konfigurálhatja. A részletes díjszabás szabályozása érdekében a mérték korlátozása további egyeztetési feltételekkel kombinálható, például a HTTP (S) paraméterekkel egyező. 
 
-Az azonos ügyféltől érkező kérések gyakran ugyanarra a bejárati ajtókiszolgálóra érkeznek. Ebben az esetben a küszöbérték feletti további kérelmek azonnal letiltásra kerülnek. 
+Az azonos ügyféltől érkező kérések gyakran ugyanahhoz az előtérben lévő kiszolgálóhoz érkeznek. Ebben az esetben a küszöbérték feletti további kérelmeket azonnal le kell tiltani. 
 
-Előfordulhat azonban, hogy az ugyanattól az ügyféltől érkező kérések egy másik bejárati ajtókiszolgálóra érkeznek, amely még nem frissítette a sebességkorlát-számlálót. Például az ügyfél megnyithat egy új kapcsolatot minden egyes kérelemhez, és a küszöbérték alacsony. Ebben az esetben az új bejárati ajtó kiszolgálóra irányuló első kérés megfelelne a sebességkorlát-ellenőrzésnek. A sebességkorlát küszöbértéke általában magas, hogy megvédje a szolgáltatásmegtagadási támadások bármely ügyfél IP-cím. Egy nagyon alacsony küszöbértéket, előfordulhat, hogy további kérelmek et a küszöbérték felett átjutni.
+Azonban előfordulhat, hogy az azonos ügyféltől érkező kérések egy másik, a számlálóra vonatkozó korlátot nem frissítő bejárati kiszolgálótól érkeznek. Előfordulhat például, hogy az ügyfél új kapcsolatokat nyit meg az egyes kérésekhez, és a küszöbérték alacsony. Ebben az esetben az új bejárati kiszolgálóra irányuló első kérésnek meg kell felelnie a határérték-ellenőrzési értéknek. A díjszabási küszöbérték általában magas értékre van állítva, hogy az ügyfél IP-címéről érkező szolgáltatásmegtagadási támadások elleni védekezést végezzen. Nagyon alacsony küszöbérték esetén előfordulhat, hogy a küszöbérték feletti további kérelmeket is láthat.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure webalkalmazás-tűzfalról](../overview.md).
-- További információ az [Azure Bejárati Ajtajáról.](../../frontdoor/front-door-overview.md)
+- Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
+- További információ az [Azure bejáratáról](../../frontdoor/front-door-overview.md).

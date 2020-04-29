@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400052"
 ---
 :::row:::
     :::column span="3":::
-        A Beszéd SDK támogatja a Windows 10 és a Windows Server 2016 vagy újabb verziókat. A korábbi verziók hivatalosan **nem** támogatottak. A beszédbeszéd SDK egyes részei a Windows korábbi verzióival használhatók, bár ez nem ajánlott.
+        A Speech SDK a Windows 10 és a Windows Server 2016-es vagy újabb verzióit támogatja. A korábbi verziók **nem** támogatottak hivatalosan. A Speech SDK egyes részeit a Windows korábbi verzióival is használhatja, bár ez nem ajánlott.
     :::column-end:::
     :::column:::
         <br>
@@ -25,30 +25,30 @@ ms.locfileid: "81400052"
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
 
-A Windows beszédfelismerési SDK használatához a <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ <span class="docon docon-navigate-external x-hidden-focus"></span> újraterjeszthető a Visual Studio 2019-hez</a> a rendszeren.
+A Windowson futó Speech SDK használatához a <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ újraterjeszthető változata szükséges a Visual <span class="docon docon-navigate-external x-hidden-focus"></span> Studio 2019-hez</a> a rendszeren.
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Telepítés x86-hoz<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Telepítés x64-hez<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Telepítés az ARMx64-hez<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Telepítés x86-ra<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Telepítés x64-re<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Telepítés a ARMx64<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ### <a name="c"></a>C#
 
 [!INCLUDE [Get .NET Speech SDK](get-speech-sdk-dotnet.md)]
 
-Mikrofonbevitel esetén telepíteni kell a Media Foundation tárakat. Ezek a tárak a Windows 10 és a Windows Server 2016 részét képezik. A beszédfelismerési SDK-t e könyvtárak nélkül is használhatja, feltéve, hogy a mikrofont nem használják hangbemeneti eszközként.
+A mikrofonos bevitelhez telepíteni kell a Multimédia alaprendszer kódtárakat. Ezek a kódtárak a Windows 10 és a Windows Server 2016 rendszer részét képezik. Ezen könyvtárak nélkül is használhatja a Speech SDK-t, ha a mikrofon nem hangbemeneti eszközként van használatban.
 
-A szükséges beszédsdka-fájlok az alkalmazással azonos könyvtárban telepíthetők. Így az alkalmazás közvetlenül hozzáférhet a könyvtárakhoz. Győződjön meg arról, hogy az alkalmazásnak megfelelő verziót (x86/x64) válassza ki.
+A szükséges Speech SDK-fájlokat az alkalmazással megegyező könyvtárba lehet telepíteni. Így az alkalmazás közvetlenül hozzáférhet a könyvtárakhoz. Ügyeljen arra, hogy a megfelelő verziót (x86/x64) válassza, amely megfelel az alkalmazásnak.
 
 | Name (Név)                                            | Függvény                                             |
 |-------------------------------------------------|------------------------------------------------------|
-| `Microsoft.CognitiveServices.Speech.core.dll`   | Core SDK, a natív és felügyelt telepítéshez szükséges |
-| `Microsoft.CognitiveServices.Speech.csharp.dll` | Felügyelt telepítéshez szükséges                      |
+| `Microsoft.CognitiveServices.Speech.core.dll`   | A natív és felügyelt központi telepítéshez szükséges Core SDK |
+| `Microsoft.CognitiveServices.Speech.csharp.dll` | Felügyelt központi telepítéshez szükséges                      |
 
 > [!NOTE]
-> Az 1.3.0-s kiadástól kezdve a fájlra `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (a korábbi kiadásokban szállítva) már nincs szükség. The functionality is now integrated in the core SDK.
+> A (korábbi kiadásokban szállított) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` fájl kiadási 1.3.0 kezdve többé nem szükséges. A funkció most már integrálva van az alap SDK-val.
 
 > [!IMPORTANT]
-> A Windows Forms app (.NET Framework) C# projekt esetében győződjön meg arról, hogy a könyvtárak szerepelnek a projekt telepítési beállításaiközött. Akkor ellenőrizze ezt `Properties -> Publish Section`a . Kattintson `Application Files` a gombra, és keresse meg a megfelelő könyvtárakat a lefelé görgetési listából. Ellenőrizze, hogy az `Included`érték értéke . A Visual Studio a projekt közzétételekor/telepítésekor tartalmazza a fájlt.
+> A Windows Forms-alkalmazás (.NET-keretrendszer) C# projekt esetében ellenőrizze, hogy a kódtárak szerepelnek-e a projekt központi telepítési beállításaiban. Ezt a következő szakaszban `Properties -> Publish Section`tekintheti meg:. Kattintson a `Application Files` gombra, és keresse meg a megfelelő könyvtárakat a legördülő listából. Győződjön meg arról, hogy `Included`a érték a következőre van beállítva:. A Visual Studio tartalmazni fogja a fájlt a projekt közzétételekor vagy telepítésekor.
 
 ### <a name="c"></a>C++
 

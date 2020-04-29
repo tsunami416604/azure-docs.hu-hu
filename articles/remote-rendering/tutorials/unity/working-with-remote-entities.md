@@ -1,43 +1,43 @@
 ---
 title: Távoli entitások használata a Unityben
-description: Oktatóanyag, amely bemutatja, hogyan kell dolgozni aRR entitások.
+description: Ez az oktatóanyag bemutatja, hogyan használható az ARR-entitások használata.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
 ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310213"
 ---
-# <a name="tutorial-working-with-remote-entities-in-unity"></a>Oktatóanyag: Távoli entitások együttműködése unityben
+# <a name="tutorial-working-with-remote-entities-in-unity"></a>Oktatóanyag: távoli entitások használata az egységben
 
-[Oktatóanyag: A teljesen új Unity-projekt beállítása megmutatta,](project-setup.md) hogyan konfigurálhat egy új Unity-projektet az Azure remote rendering-vel való együttműködésre. Ebben az oktatóanyagban megnézzük a leggyakoribb funkciókat, amelyeket minden ARR felhasználónak szüksége van.
+[Oktatóanyag: egy Unity-projekt létrehozása a semmiből](project-setup.md) megmutatta, hogyan konfigurálható egy új Unity-projekt az Azure távoli rendereléssel való együttműködéshez. Ebben az oktatóanyagban megtekintjük a leggyakoribb funkciókat, amelyeket minden ARR-felhasználó igényel.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
-> * Válasszon tárgyakat sugáröntvények használatával.
-> * Az objektumállapotok felülbírálása, például színárnyalat, kijelölési állapot és láthatóság.
+> * Objektumok kiválasztása a Ray casts használatával.
+> * Felülbírálja az objektumokat, például az árnyalat színét, a kiválasztási állapotot és a láthatóságot.
 > * Távoli entitások törlése.
-> * Távoli entitások mozgatása.
-> * Használja vágott síkok belülre nézni tárgyakat.
+> * Helyezze át a távoli entitásokat a köré.
+> * A kivágott síkok használatával megvizsgálhatja az objektumokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ez az oktatóanyag a bemutató tetejére [épül: Unity-projekt beállítása a semmiből](project-setup.md).
+* Ez az oktatóanyag az [oktatóanyagra épül: egy Unity-projekt létrehozása a semmiből](project-setup.md).
 
 > [!TIP]
-> Az [ARR mintatár](https://github.com/Azure/azure-remote-rendering) tartalmazza előkészített Unity projektek minden oktató a *Unity* mappában, hogy használhatja a referenciaként.
+> Az [ARR-minták tárháza](https://github.com/Azure/azure-remote-rendering) előkészített Unity-projekteket tartalmaz az *Unity* mappában található összes oktatóanyaghoz, amelyet hivatkozásként használhat.
 
-## <a name="pick-objects"></a>Objektumok kivétele
+## <a name="pick-objects"></a>Objektumok kiválasztása
 
-Azt akarjuk, hogy kölcsönhatásba lépnek a tárgyakat, így az első dolog, amire szükségünk van, a szedés tárgyak az egér kurzor.
+Szeretnénk az objektumokkal együttműködni, ezért az első szükséges, hogy az egérmutató alatt kiválasszon objektumokat.
 
-Hozzon létre egy [új szkriptet](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) nevű **RemoteRaycaster** és cserélje ki a teljes tartalmát az alábbi kódot:
+Hozzon létre egy **RemoteRaycaster** nevű [új parancsfájlt](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) , és cserélje le a teljes tartalmat az alábbi kódra:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -109,20 +109,20 @@ public class RemoteRaycaster : MonoBehaviour
 }
 ```
 
-Adja hozzá ezt az összetevőt a jelenet *RemoteRendering* objektumához.
+Adja hozzá ezt az összetevőt a *RemoteRendering* objektumhoz a jelenetben.
 
 > [!WARNING]
 >
-> A *RemoteRaycaster* összetevőhöz ugyanahhoz az objektumhoz *aRRServiceUnity* összetevőt kell csatolni. *Az ARRServiceUnity* egy segítő osztály, amely könnyebben hozzáfér néhány ARR funkcióhoz. Ennek az összetevőnek azonban csak egyetlen példánya lehet a jelenetben. Ezért ügyeljen arra, hogy az *ARRServiceUnity-t* igénylő összes összetevőt hozzáadja ugyanahhoz a GameObject objektumhoz.
-> Ha több játékobjektumból szeretné elérni az ARR funkciót, adja hozzá az *ARRServiceUnity* összetevőt csak az egyikhez, és hivatkozzon a többi parancsfájlra, vagy közvetlenül érje el az ARR funkciót.
+> A *RemoteRaycaster* összetevőhöz hozzá kell rendelni egy *ARRServiceUnity* -összetevőt ugyanahhoz az objektumhoz. A *ARRServiceUnity* egy segítő osztály, amely megkönnyíti néhány ARR funkció elérését. Ebben az összetevőben azonban csak egyetlen példány lehet a jelenetben. Ezért ügyeljen arra, hogy minden olyan összetevőt felvegyen, amely *ARRServiceUnity* igényel ugyanahhoz a GameObject.
+> Ha több játékból álló objektumból szeretné elérni az ARR-funkciókat, adja hozzá a *ARRServiceUnity* összetevőt csak az egyikhez, és hivatkozzon a többi parancsfájlra, vagy közvetlenül az ARR funkció eléréséhez.
 
-Nyomja meg a lejátszás gombot, csatlakozzon egy munkamenethez, és töltsön be egy modellt. Most pont tárgyak a jelenetet, és nézni a konzol kimenetét. Ki kell nyomtatnia az egérmutatót mutató minden egyes rész objektumnevét.
+Nyomja le a play gombot, kapcsolódjon egy munkamenethez, és töltsön be egy modellt. Most mutasson a jelenet objektumaira, és tekintse meg a konzol kimenetét. A rendszernek ki kell nyomtatnia a fölé viszi az egyes részek objektumának nevét.
 
 ## <a name="highlight-objects"></a>Objektumok kiemelése
 
-Következő lépésként vizuális visszajelzést szeretnénk adni, hogy a felhasználó a modell mely részeire mutat. Ennek elérése érdekében egy [hierarchikusStateOverrideComponent-et](../../overview/features/override-hierarchical-state.md) csatolunk a kiválasztott entitáshoz. Ez az összetevő az objektum különböző szolgáltatásainak engedélyezésére vagy letiltására használható. Itt használjuk, hogy állítsa be a színárnyalat színe, és lehetővé teszi [vázlat renderelés](../../overview/features/outlines.md).
+A következő lépésként vizuális visszajelzést szeretnénk adni, amely a felhasználó által megjelenített modell részét képezi. Ennek eléréséhez csatolunk egy [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) a kiválasztott entitáshoz. Ezzel az összetevővel engedélyezheti vagy letilthatja az objektumok különböző funkcióit. Itt használjuk a színárnyalat színének megadására és a [vázlatos megjelenítés](../../overview/features/outlines.md)engedélyezésére.
 
-Hozzon létre egy másik **parancsfájlt, a RemoteModelEntity** nevű fájlt, és cserélje le annak tartalmát a következő kódra:
+Hozzon létre egy **RemoteModelEntity** nevű másik parancsfájlt, és cserélje le a tartalmát a következő kódra:
 
 ```csharp
 using System.Collections;
@@ -192,11 +192,11 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> Ne rendelje hozzá ezt a szkriptet semmilyen játékobjektumhoz, mivel az alábbi kód programozott módon lesz hozzárendelve.
+> Ne rendelje hozzá ezt a szkriptet bármely game objektumhoz, mivel az alábbi kód által programozott módon lesz hozzárendelve.
 
-Következő, meg kell bővíteni a *RemoteRaycaster* hozzá a *RemoteModelEntity* összetevő t, amit csak felvette.
+Ezután ki kell bővíteni a *RemoteRaycaster* , hogy hozzáadja a *RemoteModelEntity* összetevőt az imént kiválasztott objektumhoz.
 
-Adja hozzá a következő kódot a **RemoteRaycaster** implementációhoz, és távolítsa el az ismétlődő függvényeket:
+Adja hozzá a következő kódot a **RemoteRaycaster** megvalósításához, és távolítsa el az ismétlődő függvényeket:
 
 ```csharp
     private RemoteModelEntity focusedModel = null;
@@ -242,11 +242,11 @@ Adja hozzá a következő kódot a **RemoteRaycaster** implementációhoz, és t
     }
 ```
 
-Futtassa a projektet, és mutasson egy modellre, látnia kell, hogy piros színés egy fehér kijelölési körvonal jelenik meg.
+Futtasson egy modellt, és mutasson a modellre, és tekintse meg a piros árnyalatot és a fehér kiválasztási vázlatot.
 
 ## <a name="isolate-the-selected-object"></a>A kijelölt objektum elkülönítése
 
-A [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) egy másik használata a láthatóság felülbírálása. Ez lehetővé teszi a kijelölt objektum elkülönítését a modell többi részétől. Nyissa meg a **RemoteModelEntity** parancsfájlt, adja hozzá a következő kódot, és távolítsa el az ismétlődő függvényeket:
+A [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) egy másik használata a láthatóság felülbírálásának lehetősége. Ez lehetővé teszi, hogy elkülönítse a kiválasztott objektumot a modell többi részétől. Nyissa meg a **RemoteModelEntity** parancsfájlt, adja hozzá a következő kódot, és távolítsa el az ismétlődő függvényeket:
 
 ```csharp
     private bool isolated = false;
@@ -304,9 +304,9 @@ A [HierarchicalStateOverrideComponent](../../overview/features/override-hierarch
     }
 ```
 
-Ez a kód a hierarchia legfelső objektumában lévő állapotfelülírási összetevőn alapul, amely minden objektumot láthatatlanná tesz. Ezután felülírja a láthatóságot a kijelölt objektumnál, hogy láthatóvá tegye az objektumot. Ezért létre kell hoznunk egy állapotfelülírási összetevőt a gyökérobjektumnál.
+Ez a kód arra támaszkodik, hogy a hierarchia legfelső szintjén lévő állapot-felülbírálási összetevőt használja, amely az összes objektumot láthatatlanná teszi. Ezután felülbírálja a kijelölt objektum láthatóságát, hogy az egy objektum látható legyen. Ezért létre kell hozni egy állapot-felülbírálási összetevőt a gyökérszintű objektumon.
 
-Nyissa meg a **RemoteRendering** parancsfájlt, és szúrja be az alábbi kódot a *LoadModel* függvény tetejére:
+Nyissa meg a **RemoteRendering** parancsfájlt, és szúrja be az alábbi kódot az *LoadModel* függvény elejére:
 
 ```csharp
     public async void LoadModel()
@@ -319,7 +319,7 @@ Nyissa meg a **RemoteRendering** parancsfájlt, és szúrja be az alábbi kódot
     }
 ```
 
-Végül szükségünk van egy módja annak, hogy váltani láthatóság. Nyissa meg a **RemoteRaycaster** parancsfájlt, és cserélje le a *Frissítés* funkciót:
+Végül meg kell váltani a láthatóságot. Nyissa meg a **RemoteRaycaster** parancsfájlt, és cserélje le a *Update* függvényt:
 
 ```csharp
     private void Update()
@@ -340,15 +340,15 @@ Végül szükségünk van egy módja annak, hogy váltani láthatóság. Nyissa 
     }
 ```
 
-Futtassa a kódot, és jobb klikk egy részét a modell. A modell többi része eltűnik, és csak a kiemelt darab marad látható.
+Futtassa a kódot, és kattintson a jobb gombbal a modell egy részére. A modell többi része eltűnik, és csak a kijelölt darab marad látható.
 
 ## <a name="remove-gameobject-instances-of-remote-entities"></a>Távoli entitások GameObject-példányainak eltávolítása
 
-Lehet, hogy észrevette, hogy a kód folyamatosan objektumokat hoz létre, de soha nem tisztítja meg őket. Ez az objektumhierarchia panelen is látható. Amikor a szimuláció során kibontja a távoli objektumhierarchiát, egyre több objektum jelenik meg minden alkalommal, amikor a modell egy új része fölé viszi az egérmutatót.
+Előfordulhat, hogy észrevette, hogy a kód megtartja az objektumok létrehozását, de soha nem törli őket. Ez az objektum-hierarchia panelen is látható. Amikor a szimuláció során kibontja a távoli objektum-hierarchiát, több és több objektum jelenik meg, amikor a modell új részére viszi a kurzort.
 
-Ha egy jelenetben sok objektum van, az negatívan befolyásolja a teljesítményt. Mindig tisztítsa meg azokat az objektumokat, amelyekre már nincs szükség.
+A jelenetekben sok objektum negatív hatással van a teljesítményre. Mindig törölje azokat az objektumokat, amelyek többé nem szükségesek.
 
-Helyezze be az alábbi kódot a **RemoteRaycaster parancsfájlba,** és távolítsa el az ismétlődő függvényeket:
+Szúrja be az alábbi kódot a **RemoteRaycaster** -parancsfájlba, és távolítsa el az ismétlődő függvényeket:
 
 ```csharp
     private void ClearFocus()
@@ -372,7 +372,7 @@ Helyezze be az alábbi kódot a **RemoteRaycaster parancsfájlba,** és távolí
 
 ## <a name="move-objects"></a>Objektumok áthelyezése
 
-Következő lépésként egy kijelölt objektumot szeretnénk áthelyezni. A **RemoteRaycaster** parancsfájlba szúrja be ezt a kódot, és távolítsa el az ismétlődő függvényt:
+A következő lépésként egy kiválasztott objektumot szeretnénk áthelyezni a körül. A **RemoteRaycaster** parancsfájlban szúrja be ezt a kódot, és távolítsa el az ismétlődő függvényt:
 
 ```csharp
     private Vector3 lastPosition = Vector3.zero;
@@ -412,9 +412,9 @@ Következő lépésként egy kijelölt objektumot szeretnénk áthelyezni. A **R
 ```
 
 > [!IMPORTANT]
-> Ha futtatja ezt a kódot, észre fogja venni, hogy semmi sem történik. Ennek az az oka, hogy egy objektum átalakításának módosítása teljesítménybeli okokból nem szinkronizálja automatikusan az állapotváltozást a kiszolgálóval. Ehelyett vagy manuálisan kell leadnia ezt az állapotmódosítást a kiszolgálóra, vagy engedélyeznie kell a **SyncEveryFrame** programot a *RemoteEntitySyncObject* összetevőben.
+> Ha ezt a kódot futtatja, megfigyelheti, hogy semmi nem történik. Ennek az az oka, hogy az objektumok átalakításának módosítása a teljesítmény szempontjából nem szinkronizálja automatikusan az állapotot a-kiszolgálóra. Ehelyett manuálisan kell leküldeni ezt az állapotot a kiszolgálóra, vagy engedélyeznie kell a **SyncEveryFrame** a *RemoteEntitySyncObject* összetevőn.
 
-Nyissa meg a **RemoteModelEntity** parancsfájlt, és adja hozzá ezt a sort:
+Nyissa meg a **RemoteModelEntity** parancsfájlt, és adja hozzá a következő sort:
 
 ```csharp
     public void OnEnable()
@@ -425,15 +425,15 @@ Nyissa meg a **RemoteModelEntity** parancsfájlt, és adja hozzá ezt a sort:
     }
 ```
 
-Ha újra futtatja a kódot, bal ról balra kell kattintania egy objektumra, és körbe kell húznia.
+A kód futtatásához kattintson a bal gombbal egy objektumra, és húzza körül.
 
-## <a name="add-a-cut-plane"></a>Vágott sík hozzáadása
+## <a name="add-a-cut-plane"></a>Kivágási sík hozzáadása
 
-Az utolsó funkció azt akarjuk, hogy próbálja ki a bemutató, használ [vágott síkok](../../overview/features/cut-planes.md). A vágott sík elvágja a renderelt tárgyak részeit, így belenézhet.
+Ebben az oktatóanyagban az utolsó funkciót szeretnénk kipróbálni, a [kivágott síkokat](../../overview/features/cut-planes.md)használunk. A kivágott sík elvágja a megjelenített objektumok részeit, így megtekintheti őket.
 
-Hozzon létre egy új GameObject a **jelenetCutPlane**. Hozzon létre egy új szkriptet, és hívja **RemoteCutPlane**. Adja hozzá az összetevőt az új GameObject objektumhoz.
+Hozzon létre egy új GameObject a jelenet **CutPlane**. Hozzon létre egy új parancsfájlt, és hívja meg a **RemoteCutPlane**. Adja hozzá az összetevőt az új GameObject.
 
-Nyissa meg a parancsfájlt, és cserélje le annak tartalmát a következő kódra:
+Nyissa meg a parancsfájlt, és cserélje le a tartalmát a következő kódra:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -487,11 +487,11 @@ public class RemoteCutPlane : MonoBehaviour
 }
 ```
 
-Amikor most futtatja a kódot, látnia kell, hogyan vágja fel a modellt a gép. Kijelölheti a *CutPlane* objektumot, és áthelyezheti és elforgathatja a *Jelenet* ablakban. A vágott síkbe be- és kikapcsolhatja a vágósík objektum letiltásával.
+Ha most futtatja a kódot, látnia kell, hogy a gép Hogyan vágja ki a modellt. Kiválaszthatja a *CutPlane* objektumot, és áthelyezheti és elforgathatja a *jelenet* ablakban. A kivágási sík ki-és bekapcsolható a kivágási sík objektum letiltásával.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már tudja, hogy a legfontosabb funkciók kölcsönhatásban áll a távoli tárgyakat. A következő bemutatóban megnézzük a jelenet megjelenésének testreszabását.
+Most már ismeri a legfontosabb funkciókat a távoli objektumokkal való interakcióhoz. A következő oktatóanyagban bemutatjuk, hogyan szabhatja testre a jelenet megjelenését.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A környezet és az anyagok megváltoztatása](changing-environment-and-materials.md)
+> [Oktatóanyag: a környezet és az anyagok módosítása](changing-environment-and-materials.md)

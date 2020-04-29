@@ -1,6 +1,6 @@
 ---
-title: Nem megfelelő Azure Automation-állapotkonfigurációs kiszolgálók kiújítása
-description: A konfigurációk újraalkalmazása igény szerint olyan kiszolgálókra, amelyeken a konfigurációs állapot elsodródott?
+title: Nem megfelelő Azure Automation állapot-konfigurációs kiszolgálók szervizelése
+description: Igény szerinti konfigurációk újraalkalmazása olyan kiszolgálókra, amelyeken a konfiguráció állapota sodródik
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,41 +9,40 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81406086"
 ---
-# <a name="remediate-noncompliant-dsc-servers"></a>Nem megfelelő DSC-kiszolgálók kiújítása
+# <a name="remediate-noncompliant-dsc-servers"></a>Nem megfelelő DSC-kiszolgálók szervizelése
 
-Amikor a kiszolgálók regisztrálva vannak az Azure `ApplyOnly`Automation `ApplyandMonitor`állapotkonfigurációjában, a konfigurációs mód a , vagy `ApplyAndAutoCorrect`a. Ha a mód nincs `ApplyAndAutoCorrect`beállítva, a megfelelő állapotból bármilyen okból elsodródó kiszolgálók nem megfelelőek maradnak, amíg manuálisan nem javítják őket.
+Ha a kiszolgálók Azure Automation állapot-konfigurációval vannak regisztrálva, a konfigurációs mód `ApplyOnly`a `ApplyandMonitor`következőre `ApplyAndAutoCorrect`van beállítva:, vagy. Ha a mód nem értékre `ApplyAndAutoCorrect`van állítva, akkor a megfelelő állapotú kiszolgálók bármilyen okból nem megfelelők maradnak, amíg azokat manuálisan nem javították.
 
-Az Azure compute egy Run Command nevű szolgáltatást kínál, amely lehetővé teszi az ügyfelek számára, hogy parancsfájlokat futtassanak a virtuális gépeken belül.
-Ez a dokumentum a konfigurációs eltolódás manuális javításakor példaparancsfájlokat tartalmaz ehhez a szolgáltatáshoz.
+Az Azure-beli számítási funkció a Run parancs nevű funkciót kínálja, amely lehetővé teszi az ügyfeleknek a parancsfájlok futtatását a virtuális gépeken belül.
+Ez a dokumentum példákat tartalmaz a szolgáltatáshoz, amikor manuálisan kijavította a konfiguráció eltolódását.
 
-## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>A Windows virtuális gépek helyes eltolódása a PowerShell használatával
+## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Windows rendszerű virtuális gépek helyes elsodródása a PowerShell használatával
 
-A Windows virtuális gépeken a Parancs futtatása szolgáltatással kapcsolatos részletes útmutatásért tekintse meg a [PowerShell-parancsfájlok futtatása](/azure/virtual-machines/windows/run-command)a Windows virtuális gép ben a Parancs futtatásával című dokumentációs lapon.
+A Windows rendszerű virtuális gépeken futtatott parancs futtatásával kapcsolatos részletes utasításokért tekintse meg a következő témakört: a dokumentációs lapon futtassa a [PowerShell-parancsfájlokat a Windows rendszerű](/azure/virtual-machines/windows/run-command)virtuális gépen a Run paranccsal.
 
-Ha egy Azure Automation-állapot konfigurációs csomópontot a legújabb konfiguráció letöltésére és alkalmazására kényszeríthet, használja az [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) parancsmagát.
+Egy Azure Automation állapot-konfigurációs csomópont kényszerítéséhez a legújabb konfiguráció letöltéséhez és alkalmazásához használja az [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) parancsmagot.
 
 ```powershell
 Update-DscConfiguration -Wait -Verbose
 ```
 
-## <a name="correct-drift-of-linux-virtual-machines"></a>A Linux virtuális gépek helyes eltolódása
+## <a name="correct-drift-of-linux-virtual-machines"></a>A Linux rendszerű virtuális gépek helyes elsodródása
 
-Hasonló funkciók jelenleg nem érhetők el linuxos kiszolgálókon.
+Hasonló funkciók jelenleg nem érhetők el Linux-kiszolgálókon.
 Az egyetlen lehetőség a regisztrációs folyamat megismétlése.
-
-Az Azure-csomópontok, javíthatja a drift az Azure Portalon, vagy az Az modul parancsmagok használatával. A folyamat részleteit az [Azure Automation állapotkonfigurációja által felügyelt bevezetési gépek dokumentálják.](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal)
-A hibrid csomópontok, a mellékelt Python-parancsfájlok segítségével javíthatja a drift.
-Lásd: [PowerShell DSC linuxos tárház.](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer)
+Az Azure-csomópontok esetében kiválaszthatja a Azure Portal vagy az az Module parancsmagok használatával történő eltolódást. A folyamat részleteit dokumentálja a [bevezetési gépeken, Azure Automation állapot konfigurációjának](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal)megfelelően.
+A hibrid csomópontok esetében a mellékelt Python-szkriptek használatával is kiválaszthatja a driftt.
+Lásd: [POWERSHELL DSC Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer)-tárházhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-- A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
-- Az Azure Automation state configuration használatával kapcsolatos példa folyamatos üzembe helyezési folyamatban: [Folyamatos üzembe helyezés az Azure Automation állapotkonfiguráció és a Csokoládé használata című témakörben.](automation-dsc-cd-chocolatey.md)
+- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfigurációval és a csokoládéval](automation-dsc-cd-chocolatey.md).

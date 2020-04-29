@@ -1,7 +1,7 @@
 ---
-title: Beszédfelismerési mód kiválasztása a BeszédSDK-val
+title: Beszédfelismerési mód kiválasztása a Speech SDK-val
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan választhatja ki a legjobb felismerési módot a beszédfelismerési SDK használatakor.
+description: Megtudhatja, hogyan választhatja ki a legjobb felismerési módot a Speech SDK használatakor.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 5fdca371e9188ef69068ddbcaa416cbb2b44054c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402154"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Beszédfelismerési mód kiválasztása
 
-A beszéd-szöveg felismerési műveletek mérlegelésekor a [beszédfelismerési SDK](speech-sdk.md) több módot is biztosít a beszédfelismerés feldolgozásához. Fogalmilag, néha a *felismerési mód*. Ez a cikk összehasonlítja a különböző felismerési módokat.
+A beszéd-szöveg felismerési műveletekre való tekintettel a [SPEECH SDK](speech-sdk.md) több módot biztosít a beszéd feldolgozására. Elméletileg, más néven *felismerési mód*. Ez a cikk a különböző felismerési módokat hasonlítja össze.
 
-## <a name="recognize-once"></a>Felismerés egyszer
+## <a name="recognize-once"></a>Egyszeri felismerés
 
-Ha azt szeretné, hogy minden utterance (mondat) egy időben, használja a "recognize once" függvényt. Ez a módszer észleli a felismert utterance (kifejezés) a bemeneti kezdve az észlelt beszéd a következő szünetig. Általában a szünet egy mondat vagy gondolatsor végét jelzi.
+Ha egyszerre egy "mondatot" szeretne feldolgozni, használja a "felismerés egyszer" függvényt. Ez a metódus az észlelt beszéd elejétől kezdődően észlelt, a következő szüneteltetésig elvégezhető felismerést észleli. A Szüneteltetés általában egy mondat végét jelöli, vagy a gondolatot.
 
-Egy felismert utterance (kifejezés) végén a szolgáltatás leállítja a kérelemből származó hang feldolgozását. Az elismerés maximális határa 20 másodperces mondat.
+Az egyik felismertség végén a szolgáltatás leállítja a hang feldolgozását a kérelemből. Az elismerésre vonatkozó maximális korlát 20 másodperces időtartam.
 
 ::: zone pivot="programming-language-csharp"
 
-A függvény használatáról `RecognizeOnceAsync` további információt a [.](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)
+További információ a `RecognizeOnceAsync` függvény használatáról: [.net Speech SDK docs](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync).
 
 ```csharp
 var result = await recognizer.RecognizeOnceAsync();
@@ -39,7 +39,7 @@ var result = await recognizer.RecognizeOnceAsync();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-A függvény használatáról `RecognizeOnceAsync` további információt a [C++ beszédfelismerési SDK-dokumentumokban](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)talál.
+A `RecognizeOnceAsync` függvény használatáról további információt a [C++ Speech SDK dokumentációjában](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)talál.
 
 ```cpp
 auto result = recognize->RecognizeOnceAsync().get();
@@ -48,7 +48,7 @@ auto result = recognize->RecognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-A függvény használatáról `recognizeOnceAsync` további információt a [Java Speech SDK-dokumentumokban](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)talál.
+További információ a `recognizeOnceAsync` függvény használatáról: [Java Speech SDK docs](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable).
 
 ```java
 SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
@@ -57,7 +57,7 @@ SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-A függvény használatáról `recognize_once` további információt a [Python Speech SDK-dokumentumokban](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)talál.
+A `recognize_once` függvény használatáról további információt a [Python Speech SDK dokumentációjában](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)talál.
 
 ```python
 result = speech_recognizer.recognize_once()
@@ -66,13 +66,13 @@ result = speech_recognizer.recognize_once()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-További nyelveket a [BeszédsDK referenciadokumentumai ban láthat.](speech-to-text.md#speech-sdk-reference-docs)
+További nyelvek: [beszédfelismerési SDK-dokumentáció](speech-to-text.md#speech-sdk-reference-docs).
 
 ::: zone-end
 
 ## <a name="continuous"></a>Folyamatos
 
-Ha hosszú ideig tartó felismerésre van szüksége, használja a start és a megfelelő leállítási függvényeket a folyamatos felismeréshez. A start függvény elindul, és folytatja az összes utterances feldolgozását, amíg meg nem hívja a stop függvényt, vagy amíg túl sok csendben eltelt idő. A folyamatos üzemmód használatakor győződjön meg róla, hogy regisztráljon a különböző eseményekre, amelyek az esemény bekövetkeztekor indulnak el. A "felismert" esemény például a beszédfelismerés bekövetkeztekor következik be. A felismerés kezeléséhez egy eseménykezelőre van szükség.
+Ha hosszú ideig futó felismerésre van szüksége, használja a Start és a megfelelő leállítás függvényt a folyamatos felismeréshez. A Start függvény elindítja és folytatja az összes hosszúságú kimondott szöveg feldolgozását, amíg meg nem hívja a leállítási függvényt, vagy amíg a csendben túl sok idő el nem telik. A folyamatos mód használatakor ügyeljen arra, hogy regisztrálja azokat a különböző eseményeket, amelyek az előforduláskor tüzet fognak. Például a "felismert" esemény akkor következik be, amikor beszédfelismerés történik. Az elismerés kezeléséhez egy eseménykezelőre van szükség.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -154,17 +154,17 @@ speech_recognizer.stop_continuous_recognition()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-További nyelveket a [BeszédsDK referenciadokumentumai ban láthat.](speech-to-text.md#speech-sdk-reference-docs)
+További nyelvek: [beszédfelismerési SDK-dokumentáció](speech-to-text.md#speech-sdk-reference-docs).
 
 ::: zone-end
 
 ## <a name="dictation"></a>Diktálás
 
-Folyamatos felismerés használataesetén engedélyezheti a diktálás feldolgozását a megfelelő "Diktálás engedélyezése" funkcióval. Ezzel a móddal a beszédfelismerési konfigurációs példány értelmezi a mondatstruktúrák, például az írásjelek szóleírását. Például a "A városban él" kimondott szöveget a "A városban él?" szövegként értelmezi.
+Folyamatos felismerés használatakor engedélyezheti a diktálás feldolgozását a megfelelő "diktálás engedélyezése" funkció használatával. Ez a mód azt eredményezi, hogy a beszédfelismerési konfigurációs példány értelmezi a mondatok (például a központozás) szövegének leírását. A "Do You Live in Town kérdőjel" kifejezés például "a városban él?" szöveget fogja értelmezni.
 
 ::: zone pivot="programming-language-csharp"
 
-A függvény használatáról `EnableDictation` további információt a [.](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)
+További információ a `EnableDictation` függvény használatáról: [.net Speech SDK docs](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation).
 
 ```csharp
 // Enable diction
@@ -174,7 +174,7 @@ SpeechConfig.EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-A függvény használatáról `EnableDictation` további információt a [C++ beszédfelismerési SDK-dokumentumokban](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)talál.
+A `EnableDictation` függvény használatáról további információt a [C++ Speech SDK dokumentációjában](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)talál.
 
 ```cpp
 // Enable diction
@@ -184,7 +184,7 @@ SpeechConfig->EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-A függvény használatáról `enableDictation` további információt a [Java Speech SDK-dokumentumokban](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)talál.
+További információ a `enableDictation` függvény használatáról: [Java Speech SDK docs](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable).
 
 ```java
 // Enable diction
@@ -194,7 +194,7 @@ SpeechConfig.enableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-A függvény használatáról `enable_dictation` további információt a [Python Speech SDK-dokumentumokban](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)talál.
+A `enable_dictation` függvény használatáról további információt a [Python Speech SDK dokumentációjában](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)talál.
 
 ```python
 # Enable diction
@@ -204,11 +204,11 @@ SpeechConfig.enable_dictation()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-További nyelveket a [BeszédsDK referenciadokumentumai ban láthat.](speech-to-text.md#speech-sdk-reference-docs)
+További nyelvek: [beszédfelismerési SDK-dokumentáció](speech-to-text.md#speech-sdk-reference-docs).
 
 ::: zone-end
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További beszédbeszédSDk-minták felfedezése a GitHubon](https://aka.ms/csspeech/samples)
+> [További beszédfelismerési SDK-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

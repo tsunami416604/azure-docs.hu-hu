@@ -1,82 +1,82 @@
 ---
-title: Magas rendelkezésre állás a Hadoop számára - Azure HDInsight
-description: Ismerje meg, hogy a HDInsight-fürtök hogyan növelik a megbízhatóságot és a rendelkezésre állást egy további főcsomópont használatával. Ismerje meg, hogy ez hogyan befolyásolja a Hadoop-szolgáltatásokat, például az Ambari-t és a Hive-t, valamint hogyan csatlakozhat egyénileg az egyes főcsomópontokhoz az SSH használatával.
+title: Magas rendelkezésre állás a Hadoop – Azure HDInsight
+description: Ismerje meg, hogy a HDInsight-fürtök hogyan javítják a megbízhatóságot és a rendelkezésre állást egy további fő csomópont használatával. Ismerje meg, hogy ez milyen hatással van a Hadoop-szolgáltatásokra, például a Ambari és a kaptárra, valamint az egyes fő csomópontok SSH-val való összekapcsolásának módjára.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-keywords: hadoop magas rendelkezésre állás
+keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381395"
 ---
-# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Az Apache Hadoop-fürtök elérhetősége és megbízhatósága a HDInsightban
+# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
-A HDInsight-fürtök két fő csomópontot biztosítanak az Apache Hadoop-szolgáltatások és futó feladatok rendelkezésre állásának és megbízhatóságának növelése érdekében.
+A HDInsight-fürtök két fő csomópontot biztosítanak a Apache Hadoop szolgáltatások és a rendszert futtató feladatok rendelkezésre állásának és megbízhatóságának növeléséhez.
 
-A Hadoop magas rendelkezésre állást és megbízhatóságot ér el a szolgáltatások és az adatok replikálásával a fürt több csomópontján. A Hadoop standard disztribúciói azonban általában csak egyetlen főcsomódval rendelkeznek. Az egyfej-csomópont bármilyen kimaradása a fürt leállását okozhatja. A HDInsight két headnode-t biztosít a Hadoop rendelkezésre állásának és megbízhatóságának javítása érdekében.
+A Hadoop magas rendelkezésre állást és megbízhatóságot biztosít a szolgáltatások és az adatszolgáltatások fürtön belüli több csomóponton történő replikálásával. A Hadoop standard eloszlása azonban általában csak egyetlen fő csomóponttal rendelkezik. Az egyetlen fő csomópont meghibásodása miatt a fürt leállhat. A HDInsight két átjárócsomópontokkal biztosít a Hadoop rendelkezésre állásának és megbízhatóságának javítása érdekében.
 
 ## <a name="availability-and-reliability-of-nodes"></a>A csomópontok rendelkezésre állása és megbízhatósága
 
-A HDInsight-fürt csomópontjai az Azure virtuális gépei használatával vannak megvalósítva. A következő szakaszok a HDInsight ban használt egyes csomóponttípusokat ismertetik.
+A HDInsight-fürtök csomópontjai az Azure Virtual Machines használatával valósíthatók meg. A következő fejezetek a HDInsight-mel használt egyes csomópont-típusokat tárgyalják.
 
 > [!NOTE]  
-> Nem minden csomóponttípus van használva egy fürttípushoz. Egy Hadoop-fürttípuspéldául nem rendelkezik Nimbus-csomókkal. A HDInsight-fürttípusok által használt csomópontokról további információt a [Linux-alapú Hadoop-fürtök létrehozása a HDInsight-dokumentumban](hdinsight-hadoop-provision-linux-clusters.md#cluster-type) található Fürttípusok című szakaszban talál.
+> Nem minden csomópont-típust használ a fürt típusához. Például egy Hadoop-fürt típusa nem rendelkezik Nimbus-csomópontokkal. A HDInsight-fürtök által használt csomópontokkal kapcsolatos további információkért tekintse meg a [Linux-alapú Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type) dokumentumban című szakaszt.
 
 ### <a name="head-nodes"></a>Fő csomópontok
 
-A Hadoop-szolgáltatások magas rendelkezésre állásának biztosítása érdekében a HDInsight két főcsomópontot biztosít. Mindkét főcsomópont aktív és fut a HDInsight-fürtön belül egyszerre. Egyes szolgáltatások, például az Apache HDFS vagy az Apache Hadoop YARN, egy adott időpontban csak egy főcsomóponton "aktívak". Más szolgáltatások, például a HiveServer2 vagy a Hive MetaStore egyszerre mindkét főcsomóponton aktívak.
+A Hadoop-szolgáltatások magas rendelkezésre állásának biztosítása érdekében a HDInsight két fő csomópontot biztosít. Mindkét fő csomópont aktív, és egyidejűleg fut a HDInsight-fürtön belül. Egyes szolgáltatások, például az Apache HDFS vagy a Apache Hadoop FONALak, csak az egyik főcsomóponton aktívak az adott időpontban. Más szolgáltatások, például a HiveServer2 vagy a kaptár Metaadattár egyszerre aktívak mindkét fő csomóponton.
 
-A fürt különböző csomóponttípusainak állomásneveinek beszerzéséhez használja az [Ambari REST API-t.](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)
+A fürt különböző csomópontjaihoz tartozó állomásnevek beszerzéséhez használja a [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
-> Ne társítsa a numerikus értéket ahhoz, hogy egy csomópont elsődleges vagy másodlagos. A numerikus érték csak akkor van jelen, hogy egyedi nevet adjon az egyes csomópontoknak.
+> Ne társítsa a numerikus értéket azzal, hogy a csomópont elsődleges vagy másodlagos. A numerikus érték csak az egyes csomópontok egyedi nevének megadását mutatja be.
 
-### <a name="nimbus-nodes"></a>Nimbus csomópontok
+### <a name="nimbus-nodes"></a>Nimbus-csomópontok
 
-A Nimbus-csomópontok Apache Storm-fürtökkel érhetők el. A Nimbus-csomópontok a Hadoop JobTracker-hez hasonló funkciókat biztosítanak a feldolgozócsomópontok közötti feldolgozás elosztásával és figyelésével. A HDInsight két Nimbus-csomópontot biztosít storm-fürtökhöz
+A Nimbus-csomópontok Apache Storm fürtökkel érhetők el. A Nimbus-csomópontok hasonló funkciókat biztosítanak a Hadoop-JobTracker a munkavégző csomópontok feldolgozásának elosztásával és figyelésével. A HDInsight két Nimbus-csomópontot biztosít a Storm-fürtökhöz
 
-### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper csomópontok
+### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper-csomópontok
 
-[ZooKeeper](https://zookeeper.apache.org/) csomópontok használják vezető választás a fő szolgáltatások vezető csomópontok. Ők is használják annak biztosításához, hogy a szolgáltatások, adatok (dolgozó) csomópontok és átjárók tudják, hogy melyik fő csomópont on a fő szolgáltatás aktív. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontot biztosít.
+A [ZooKeeper](https://zookeeper.apache.org/) -csomópontok a fő szolgáltatások vezető megválasztására szolgálnak a fő csomópontokon. Azt is használják, hogy biztosítják, hogy a szolgáltatások, az adatok (feldolgozó) csomópontjai és az átjárók tudják, melyik fő szolgáltatás aktív a főkiszolgálón. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontot biztosít.
 
-### <a name="worker-nodes"></a>Dolgozó csomópontok
+### <a name="worker-nodes"></a>Munkavégző csomópontok
 
-A munkavégző csomópontok a tényleges adatelemzést akkor hajtják végre, amikor egy feladatot elküldanek a fürtnek. Ha egy munkavégző csomópont meghibásodik, a feladat, amelyet elvégzett, egy másik munkavégző csomópontnak lesz elküldve. Alapértelmezés szerint a HDInsight négy munkavégző csomópontot hoz létre. Ezt a számot módosíthatja úgy, hogy megfeleljen az igényeinek a fürt létrehozása során és után is.
+A feldolgozó csomópontok végrehajtják a tényleges adatelemzést, ha a feladatot elküldik a fürtnek. Ha egy feldolgozó csomópont meghibásodik, az általa végrehajtott feladat egy másik munkavégző csomópontnak lesz elküldve. Alapértelmezés szerint a HDInsight négy munkavégző csomópontot hoz létre. Ezt a számot módosíthatja úgy, hogy az igényeinek megfelelően és a fürt létrehozása után is megfeleljen.
 
-### <a name="edge-node"></a>peremcsomópont
+### <a name="edge-node"></a>peremhálózati csomópont
 
-A peremhálózati csomópont nem vesz aktívan részt a fürtön belüli adatelemzésben. A Hadoop-al való munka során fejlesztők vagy adatszakértők használják. A peremhálózati csomópont ugyanabban az Azure virtuális hálózatban él, mint a fürt többi csomópontja, és közvetlenül hozzáférhet az összes többi csomóponthoz. A peremhálózati csomópont anélkül használható, hogy erőforrásokat nem venné el a kritikus Hadoop-szolgáltatásoktól vagy elemzési feladatoktól.
+Az Edge-csomópontok nem vesznek aktívan részt a fürtön belüli adatelemzésben. A fejlesztők és az adatszakértők a Hadoop használatakor használják. A peremhálózati csomópont ugyanabban az Azure-Virtual Networkban él, mint a fürt többi csomópontja, és közvetlenül hozzáférhet az összes többi csomóponthoz is. A peremhálózati csomópont a kritikus Hadoop-szolgáltatások és az elemzési feladatok erőforrásainak elhagyása nélkül is használható.
 
-Jelenleg a HDInsight ML-szolgáltatásai az egyetlen olyan fürttípus, amely alapértelmezés szerint peremcsomópontot biztosít. A HDInsight ML-szolgáltatások esetében a peremhálózati csomópontot helyileg használják az R-kód a csomóponton, mielőtt elosztott feldolgozásra elküldené a fürtnek.
+A HDInsight-ben jelenleg a ML-szolgáltatások az egyetlen olyan fürt típusa, amely alapértelmezés szerint egy peremhálózati csomópontot biztosít. A HDInsight ML-szolgáltatásai esetében a peremhálózati csomópont a csomóponton helyileg teszteli az R-kódot, mielőtt elküldi azt a fürtbe elosztott feldolgozás céljából.
 
-A peremhálózati csomópontok más fürttípusokkal való használatáról a [PEREMhálózati csomópontok használata a HDInsight-dokumentumban című témakörben talál.](hdinsight-apps-use-edge-node.md)
+Az Edge-csomópontok más típusú fürtökkel való használatáról további információért lásd: [Edge-csomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md) dokumentumban.
 
 ## <a name="accessing-the-nodes"></a>A csomópontok elérése
 
-A fürthöz való hozzáférés az interneten keresztül nyilvános átjárón keresztül történik. A hozzáférés a főcsomópontokhoz való csatlakozásra korlátozódik, és ha van ilyen, a peremcsomópontra. A vezető csomópontokon futó szolgáltatásokhoz való hozzáférést nem érinti a több főcsomópont. A nyilvános átjáró a kéréseket a kért szolgáltatást kiszolgáló főcsomóponthoz irányítja. Ha például az Apache Ambari jelenleg a másodlagos főcsomóponton található, az átjáró az Ambari bejövő kérelmeit az adott csomóponthoz irányítja.
+A fürt interneten keresztüli elérését nyilvános átjárón keresztül biztosítjuk. A hozzáférés csak a fő csomópontokhoz való csatlakozásra korlátozódik, és ha van ilyen, a peremhálózati csomópont. A fő csomópontokon futó szolgáltatásokhoz való hozzáférést nem érinti több fő csomópont. A nyilvános átjáró átirányítja a kérelmeket a kért szolgáltatást üzemeltető fő csomópontra. Ha például az Apache Ambari jelenleg a másodlagos főcsomóponton fut, az átjáró a Ambari bejövő kéréseit a csomópontra irányítja.
 
-A nyilvános átjárón keresztüli hozzáférés a 443-as (HTTPS), 22-es és 23-as portokra korlátozódik.
+A nyilvános átjárón keresztüli hozzáférés a 443 (HTTPS), a 22 és a 23 portra korlátozódik.
 
 |Port |Leírás |
 |---|---|
-|443|A fő csomópontokon üzemeltetett Ambari és más webes felhasználói felület i vagy REST API-k eléréséhez használható.|
-|22|Az elsődleges főcsomópont vagy az SSH-val rendelkező peremcsomópont elérésére szolgál.|
-|23|A másodlagos főcsomópont SSH-val való eléréséhez használható. Például `ssh username@mycluster-ssh.azurehdinsight.net` csatlakozik a fürt elsődleges főcsomópontjához, a **mycluster-hez.**|
+|443|A fő csomópontokon üzemeltetett Ambari és egyéb webes felhasználói felület vagy REST API-k elérésére szolgál.|
+|22|Az elsődleges fej csomópontjának vagy peremhálózati csomópontjának az SSH-val való elérésére szolgál.|
+|23|A másodlagos fej csomópontjának SSH-val való elérésére szolgál. Például `ssh username@mycluster-ssh.azurehdinsight.net` csatlakozik a **mycluster**nevű fürt elsődleges fő csomópontjára.|
 
-Az SSH használatáról az [SSH használata a HDInsight-dokumentumban](hdinsight-hadoop-linux-use-ssh-unix.md) talál további információt.
+Az SSH használatával kapcsolatos további információkért tekintse meg az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) -mel című dokumentumot.
 
-### <a name="internal-fully-qualified-domain-names-fqdn"></a>Belső, teljesen minősített tartománynevek (FQDN)
+### <a name="internal-fully-qualified-domain-names-fqdn"></a>Belső teljesen minősített tartománynevek (FQDN)
 
-A HDInsight-fürt csomópontjai belső IP-címmel és teljes tartománynévvel rendelkeznek, amely csak a fürtből érhető el. Ha a fürt szolgáltatásait a belső teljes tartománynhálózat vagy IP-cím használatával éri el, az Ambari használatával ellenőrizze az IP-címet vagy a teljes tartománynnt a szolgáltatás elérésekor használandó.
+A HDInsight-fürtök csomópontjai belső IP-címmel és teljes tartománynévvel rendelkeznek, amely csak a fürtből érhető el. Ha a belső FQDN vagy IP-cím használatával fér hozzá a fürtben lévő szolgáltatásokhoz, a Ambari használatával ellenőrizze a szolgáltatáshoz való hozzáféréskor használandó IP-címet vagy teljes tartománynevet.
 
-Például az Apache Oozie szolgáltatás csak egy főcsomóponton `oozie` futtatható, és egy SSH-munkamenet ből származó parancs használatához szükség van a szolgáltatás URL-címére. Ez az URL-cím az Ambari-ból a következő paranccsal olvasható be:
+Az Apache Oozie szolgáltatás például csak egy fő csomóponton futhat, és az `oozie` SSH-munkamenet parancsának használatával a szolgáltatás URL-címét kell használnia. Ez az URL-cím a Ambari-ből kérhető le a következő parancs használatával:
 
 ```bash
 export password='PASSWORD'
@@ -85,112 +85,112 @@ export clusterName="CLUSTERNAME"
 curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 ```
 
-Ez a parancs a következőhöz hasonló értéket ad vissza, amely a `oozie` paranccsal használandó belső URL-címet tartalmazza:
+A parancs a következőhöz hasonló értéket ad vissza, amely tartalmazza a `oozie` parancshoz használandó belső URL-címet:
 
 ```output
 "oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
-Az Ambari REST API-val való munkáról további információt a [HDInsight figyelése és kezelése az Apache Ambari REST API használatával című témakörben talál.](hdinsight-hadoop-manage-ambari-rest-api.md)
+További információ a Ambari REST API használatáról: a [HDInsight figyelése és kezelése az Apache Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-### <a name="accessing-other-node-types"></a>Egyéb csomóponttípusok elérése
+### <a name="accessing-other-node-types"></a>Más csomópont-típusok elérése
 
-Az alábbi módszerekkel csatlakozhat olyan csomópontokhoz, amelyek nem érhetők el közvetlenül az interneten keresztül:
+A következő módszerekkel csatlakozhat olyan csomópontokhoz, amelyek nem érhetők el közvetlenül az interneten keresztül:
 
 |Módszer |Leírás |
 |---|---|
-|SSH|Miután ssh-t használó főcsomóponthoz csatlakozott, a főcsomóponts SSH segítségével csatlakozhat a fürt más csomópontjaihoz. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).|
-|SSH alagút|Ha az internetnek nem elérhető csomópontok egyikén üzemeltetett webszolgáltatásra van szüksége, sSH-alagutat kell használnia. További információ: [SSH-alagút használata HDInsight-dokumentummal.](hdinsight-linux-ambari-ssh-tunnel.md)|
-|Azure Virtual Network|Ha a HDInsight-fürt egy Azure virtuális hálózat része, az ugyanazon a virtuális hálózaton lévő bármely erőforrás közvetlenül hozzáférhet a fürt összes csomópontjához. További információt a [HDInsight-hálózat megtervezése](hdinsight-plan-virtual-network-deployment.md) című dokumentumban talál.|
+|SSH|Miután az SSH-val csatlakozott egy Head csomóponthoz, a fő csomóponton található SSH használatával csatlakozhat a fürt más csomópontjaihoz. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).|
+|SSH-alagút|Ha az egyik olyan csomóponton üzemeltetett webszolgáltatáshoz kell hozzáférni, amely nem érhető el az interneten, SSH-alagutat kell használnia. További információ: [SSH-alagút használata HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) -dokumentummal.|
+|Azure Virtual Network|Ha a HDInsight-fürt egy Azure-Virtual Network része, akkor az ugyanazon Virtual Network található összes erőforrás közvetlenül hozzáférhet a fürtben lévő összes csomóponthoz. További információkért lásd a [virtuális hálózat megtervezése a HDInsight](hdinsight-plan-virtual-network-deployment.md) dokumentumhoz című témakört.|
 
-## <a name="how-to-check-on-a-service-status"></a>Szolgáltatásállapot ának ellenőrzése
+## <a name="how-to-check-on-a-service-status"></a>A szolgáltatás állapotának beadása
 
-A fő csomópontokon futó szolgáltatások állapotának ellenőrzéséhez használja az Ambari web felhasználói felületét vagy az Ambari REST API-t.
+A fő csomópontokon futó szolgáltatások állapotának megtekintéséhez használja a Ambari webes felhasználói felületét vagy a Ambari REST API.
 
 ### <a name="ambari-web-ui"></a>Ambari webes felhasználói felület
 
-Az Ambari Web felhasználói felülete a. `https://CLUSTERNAME.azurehdinsight.net` Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a fürt HTTP-felhasználói hitelesítő adatait. Az alapértelmezett HTTP-felhasználónév **a rendszergazda,** a jelszó pedig a fürt létrehozásakor megadott jelszó.
+A Ambari webes felhasználói felülete a `https://CLUSTERNAME.azurehdinsight.net`következő címen tekinthető meg:. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a fürt HTTP-felhasználói hitelesítő adatait. Az alapértelmezett HTTP-Felhasználónév a **rendszergazda** , a jelszó pedig a fürt létrehozásakor megadott jelszó.
 
-Amikor megérkezik az Ambari oldalra, a telepített szolgáltatások a lap bal oldalán jelennek meg.
+Amikor megérkezik a Ambari lapra, a telepített szolgáltatások megjelennek a lap bal oldalán.
 
 ![Apache Ambari telepített szolgáltatások](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
-Egy szolgáltatás mellett ikonok sora jelenhet meg az állapot jelzésére. A szolgáltatással kapcsolatos riasztások az oldal tetején található Riasztások hivatkozással **tekinthetők** meg.  Az Ambari számos előre definiált riasztást kínál.
+Az állapot jelzéséhez számos ikon jelenhet meg a szolgáltatás mellett. A szolgáltatással kapcsolatos riasztások az oldal tetején található **riasztások** hivatkozás használatával tekinthetők meg.  A Ambari számos előre meghatározott riasztást biztosít.
 
-A következő riasztások segítenek a fürt rendelkezésre állásának figyelésében:
+A következő riasztások segítik a fürt rendelkezésre állásának figyelését:
 
 | Riasztás neve                               | Leírás                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Metrikus figyelő állapota                    | Ez a riasztás a Metrikák figyelési folyamat állapotát jelzi a figyelő állapotparancsfájlja szerint.                                                                                   |
-| Ambari ügynök Szívverés                   | Ez a riasztás akkor aktiválódik, ha a kiszolgáló elvesztette a kapcsolatot egy ügynökkel.                                                                                                                        |
-| ZooKeeper kiszolgáló folyamata                 | Ez az állomásszintű riasztás akkor aktiválódik, ha a ZooKeeper kiszolgáló folyamat nem állapítható meg, hogy a hálózaton, és figyel.                                                               |
-| IoCache metaadat-kiszolgáló állapota           | Ez az állomásszintű riasztás akkor aktiválódik, ha az IOCache metaadat-kiszolgálója nem állapítható meg, hogy felvan-e, és válaszol az ügyfélkérésekre                                                            |
-| JournalNode webes felhasználói felület                       | Ez az állomásszintű riasztás akkor aktiválódik, ha a JournalNode web felhasználói felülete nem érhető el.                                                                                                                 |
-| Spark2 takarékossági kiszolgáló                     | Ez az állomásszintű riasztás akkor aktiválódik, ha a Spark2 thrift kiszolgáló nem állapítható meg, hogy fel.                                                                                                |
-| Előzménykiszolgálófolyamat                   | Ez az állomásszintű riasztás akkor aktiválódik, ha az Előzménykiszolgáló folyamat nem állapítható meg, hogy a hálózaton legyen, és figyelje.                                                                |
-| Előzménykiszolgáló webfelhasználói felülete                    | Ez az állomásszintű riasztás akkor aktiválódik, ha az Előzménykiszolgáló webes felhasználói felülete nem érhető el.                                                                                                              |
-| `ResourceManager`Webes felhasználói felület                   | Ez az állomásszintű riasztás akkor `ResourceManager` aktiválódik, ha a webes felhasználói felület nem érhető el.                                                                                                             |
-| NodeManager állapotösszefoglalója               | Ez a szolgáltatásszintű riasztás akkor aktiválódik, ha nem megfelelő a nodemanagerek                                                                                                                    |
-| Az Alkalmazás idővonalának webes felhasználói felülete                      | Ez az állomásszintű riasztás akkor aktiválódik, ha az Alkalmazásidővonal-kiszolgáló webes felhasználói felülete nem érhető el.                                                                                                         |
-| DataNode állapot összefoglalása                  | Ez a szolgáltatásszintű riasztás akkor aktiválódik, ha nem megfelelő datanodes                                                                                                                       |
-| NameNode webes felhasználói felület                          | Ez az állomásszintű riasztás akkor aktiválódik, ha a NameNode web felhasználói felülete nem érhető el.                                                                                                                    |
-| ZooKeeper feladatátvevő vezérlő folyamata    | Ez az állomásszintű riasztás akkor aktiválódik, ha a ZooKeeper feladatátvevő vezérlő folyamat nem lehet megerősíteni, hogy a hálózaton, és figyel.                                                   |
-| Oozie kiszolgáló webes felhasználói felülete                      | Ez az állomásszintű riasztás akkor aktiválódik, ha az Oozie-kiszolgáló webes felhasználói felülete nem érhető el.                                                                                                                |
-| Oozie kiszolgáló állapota                      | Ez a gazdagépszintű riasztás akkor aktiválódik, ha az Oozie-kiszolgáló nem állapítható meg, hogy fel, és válaszol az ügyfél kérésekre.                                                                      |
-| Hive metastore folyamat                   | Ez a gazdagépszintű riasztás akkor aktiválódik, ha a Hive Metastore folyamat nem állapítható meg, hogy a hálózaton, és figyel.                                                                 |
-| HiveServer2 folyamat                      | Ez az állomásszintű riasztás akkor aktiválódik, ha a HiveServer nem állapítható meg, hogy fel, és válaszol az ügyfél kérésekre.                                                                        |
-| WebHCat kiszolgáló állapota                    | Ez az állomásszintű riasztás akkor `templeton` aktiválódik, ha a kiszolgáló állapota nem kifogástalan.                                                                                                            |
-| Elérhető ZooKeeper-kiszolgálók százalékos százaléka      | Ez a riasztás akkor aktiválódik, ha a fürtben lévő ZooKeeper-kiszolgálók száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a ZooKeeper folyamatellenőrzések eredményeit.     |
-| Spark2 Livy kiszolgáló                       | Ez az állomásszintű riasztás akkor aktiválódik, ha a Livy2 server nem állapítható meg, hogy fel.                                                                                                        |
-| Spark2 előzménykiszolgálója                    | Ez az állomásszintű riasztás akkor aktiválódik, ha a Spark2 előzménykiszolgáló nem állapítható meg, hogy fel.                                                                                               |
-| Metrikák gyűjtői folyamata                | Ez a riasztás akkor aktiválódik, ha a metrikagyűjtő nem lehet megerősíteni, hogy a beállított porton a küszöbértéknek megfelelő számú másodpercben.                                 |
-| Metrikák gyűjtője - HBase fő folyamat | Ez a riasztás akkor aktiválódik, ha a metrikagyűjtő HBase fő folyamatok nem lehet megerősíteni, hogy a rendszer a hálózaton a beállított kritikus küszöbértéket, másodpercben megadott. |
-| Elérhető százalékmérők figyelői       | Ez a riasztás akkor aktiválódik, ha a Metrikák figyelési folyamatainak egy százaléka nem, és figyeli a hálózaton a beállított figyelmeztetési és kritikus küszöbértékeket.                             |
-| Elérhető nodemanagerek százalékos száma           | Ez a riasztás akkor aktiválódik, ha a fürtben lévő NodeManagers lefelé lévő kezelők száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a NodeManager folyamatellenőrzések eredményeit.        |
-| NodeManager állapota                       | Ez az állomásszintű riasztás ellenőrzi a NodeManager összetevőből elérhető csomópont-állapottulajdonságot.                                                                                              |
-| NodeManager webes felhasználói felület                       | Ez az állomásszintű riasztás akkor aktiválódik, ha a NodeManager webfelhasználói felület nem érhető el.                                                                                                                 |
-| NameNode magas rendelkezésre állási állapot        | Ez a szolgáltatásszintű riasztás akkor aktiválódik, ha az Aktív nameNode vagy a Készenléti névcsomópont nem fut.                                                                                     |
-| DataNode folyamat                         | Ez az állomásszintű riasztás akkor aktiválódik, ha az egyes DataNode folyamatok nem lehet létrehozni, hogy a hálózaton, és figyel.                                                         |
-| DataNode webes felhasználói felülete                          | Ez az állomásszintű riasztás akkor aktiválódik, ha a DataNode web felhasználói felülete nem érhető el.                                                                                                                    |
-| Rendelkezésre álló százaléknaplónodes           | Ez a riasztás akkor aktiválódik, ha a journalnodes a fürtben nagyobb, mint a beállított kritikus küszöbértéket. Összesíti a JournalNode folyamatellenőrzések eredményeit.        |
-| Rendelkezésre álló adatcsomópontok százalékos száma              | Ez a riasztás akkor aktiválódik, ha a fürtben lévő datanodes-ok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a DataNode folyamatellenőrzések eredményeit.              |
-| Zeppelin kiszolgáló állapota                   | Ez az állomásszintű riasztás akkor aktiválódik, ha a Zeppelin-kiszolgáló nem állapítható meg, hogy fel, és válaszol az ügyfél kérésekre.                                                                   |
-| HiveServer2 interaktív folyamat          | Ez az állomásszintű riasztás akkor aktiválódik, ha a HiveServerInteractive nem állapítható meg, hogy fel, és válaszol az ügyfél-kérelmekre.                                                             |
-| LLAP alkalmazás                         | Ez a riasztás akkor aktiválódik, ha az LLAP alkalmazás nem állapítható meg, hogy fel, és válaszol a kérelmekre.                                                                                    |
+| Metrikus figyelő állapota                    | Ez a riasztás a mérőszámok figyelő folyamatának állapotát jelzi a figyelő állapotának parancsfájlja alapján.                                                                                   |
+| Ambari-ügynök szívverése                   | Ez a riasztás akkor aktiválódik, ha a kiszolgáló elvesztette a kapcsolatot egy ügynökkel.                                                                                                                        |
+| ZooKeeper-kiszolgáló folyamata                 | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a ZooKeeper-kiszolgáló folyamata nem határozható meg a hálózaton való működéshez és figyeléshez.                                                               |
+| IOCache metaadat-kiszolgálójának állapota           | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a IOCache metaadat-kiszolgáló nem állapítható meg, és nem válaszol az ügyfelek kéréseire                                                            |
+| JournalNode webes felhasználói felület                       | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a JournalNode webes felhasználói felülete nem érhető el.                                                                                                                 |
+| Spark2 takarékosság-kiszolgáló                     | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a Spark2 takarékossági kiszolgáló nem határozható meg.                                                                                                |
+| Előzmények kiszolgálói folyamat                   | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az előzmények kiszolgálói folyamat nem hozható létre és nem figyelhető a hálózaton.                                                                |
+| Előzmények kiszolgáló webes felhasználói felülete                    | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az előzményeket kiszolgáló webes FELÜLETe nem érhető el.                                                                                                              |
+| `ResourceManager`Webes felhasználói felület                   | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a `ResourceManager` webes felhasználói felület nem érhető el.                                                                                                             |
+| NodeManager állapotának összegzése               | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Csomópontkezelők van                                                                                                                    |
+| Alkalmazás idővonalának webes felhasználói felülete                      | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az alkalmazás idővonal-kiszolgáló webes felhasználói felülete nem érhető el.                                                                                                         |
+| DataNode állapotának összegzése                  | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Adatcsomópontok van                                                                                                                       |
+| NameNode webes felhasználói felület                          | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a NameNode webes felhasználói felülete nem érhető el.                                                                                                                    |
+| ZooKeeper feladatátvételi vezérlő folyamata    | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a ZooKeeper feladatátvételi vezérlő folyamatát nem lehet megerősíteni a hálózatban való működéshez és figyeléshez.                                                   |
+| Oozie-kiszolgáló webes felhasználói felülete                      | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a Oozie-kiszolgáló webes FELÜLETe nem érhető el.                                                                                                                |
+| Oozie-kiszolgáló állapota                      | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a Oozie-kiszolgáló nem határozható meg, és nem válaszol az ügyfelek kéréseire.                                                                      |
+| Struktúra Metaadattár folyamata                   | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a struktúra Metaadattár folyamata nem határozható meg a hálózaton való működéshez és figyeléshez.                                                                 |
+| HiveServer2 folyamat                      | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a HiveServer nem lehet meghatározni, és nem válaszol az ügyfelek kéréseire.                                                                        |
+| Webhcaten-kiszolgáló állapota                    | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a `templeton` kiszolgáló állapota nem kifogástalan.                                                                                                            |
+| Rendelkezésre álló ZooKeeper-kiszolgálók százalékos aránya      | Ez a riasztás akkor aktiválódik, ha a fürtön lefelé ZooKeeper kiszolgálók száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a ZooKeeper folyamat-ellenőrzésének eredményeit.     |
+| Spark2 Livy-kiszolgáló                       | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a Livy2-kiszolgáló nem határozható meg.                                                                                                        |
+| Spark2-előzmények kiszolgálója                    | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a Spark2-előzmények kiszolgálója nem határozható meg.                                                                                               |
+| Metrikák gyűjtői folyamata                | Ez a riasztás akkor aktiválódik, ha a metrikák gyűjtőjét nem lehet megerősíteni, hogy a beállított porton a küszöbértéket meghaladó másodpercek száma legyen.                                 |
+| Metrikák gyűjtője – HBase Master folyamat | Ez a riasztás akkor aktiválódik, ha a metrikák gyűjtője HBase fő folyamatai nem állíthatók be és nem figyelhető a hálózatban a beállított kritikus küszöbérték esetében (másodpercben megadva). |
+| Rendelkezésre álló százalékos metrikai figyelők       | Ez a riasztás akkor aktiválódik, ha a metrikák figyelési folyamatainak százalékos aránya nem működik, és a beállított figyelmeztetési és kritikus küszöbértékeket a hálózat figyeli.                             |
+| Rendelkezésre álló Csomópontkezelők százalékos aránya           | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Csomópontkezelők száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a NodeManager folyamat-ellenőrzésének eredményeit.        |
+| NodeManager állapota                       | Ez a gazdagép szintű riasztás ellenőrzi a NodeManager összetevőben elérhető Node Health tulajdonságot.                                                                                              |
+| NodeManager webes felhasználói felület                       | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a NodeManager webes felhasználói felülete nem érhető el.                                                                                                                 |
+| NameNode magas rendelkezésre állási állapota        | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha az aktív NameNode vagy a készenléti NameNode nem fut.                                                                                     |
+| DataNode folyamat                         | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az egyes DataNode folyamatok nem hozhatók létre és nem lesznek figyelve a hálózaton.                                                         |
+| DataNode webes felhasználói felület                          | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a DataNode webes felhasználói felülete nem érhető el.                                                                                                                    |
+| Rendelkezésre álló Naplócsomópontok százalékos aránya           | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Naplócsomópontok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a JournalNode folyamat-ellenőrzésének eredményeit.        |
+| Rendelkezésre álló Adatcsomópontok százalékos aránya              | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Adatcsomópontok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a DataNode folyamat-ellenőrzésének eredményeit.              |
+| Zeppelin-kiszolgáló állapota                   | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a Zeppelin-kiszolgáló nem határozható meg, és nem válaszol az ügyfelek kéréseire.                                                                   |
+| HiveServer2 interaktív folyamat          | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a HiveServerInteractive nem lehet meghatározni, és nem válaszol az ügyfelek kéréseire.                                                             |
+| LLAP-alkalmazás                         | Ez a riasztás akkor aktiválódik, ha a LLAP alkalmazás nem határozható meg, és nem válaszol a kérelmekre.                                                                                    |
 
-Kiválaszthatja az egyes szolgáltatások megtekintéséhez további információkat is.
+Az egyes szolgáltatások lehetőség kiválasztásával további információkat tekinthet meg.
 
-Bár a szolgáltatáslap az egyes szolgáltatások állapotáról és konfigurációjával kapcsolatos információkat tartalmaz, nem ad információt arról, hogy a szolgáltatás melyik főcsomóponton fut. Az információk megtekintéséhez használja a lap tetején található **Hosts** hivatkozást. Ez a lap a fürtön belüli állomásokat jeleníti meg, beleértve a főcsomópontokat is.
+Míg a szolgáltatás oldala információt nyújt az egyes szolgáltatások állapotáról és konfigurációjáról, nem nyújt olyan információt, amelyen a szolgáltatás fut. Ezen információk megtekintéséhez használja a **gazdagépek** hivatkozást az oldal tetején. Ezen a lapon láthatók a fürtön belüli gazdagépek, beleértve a fő csomópontokat is.
 
-![Apache Ambari headnode hosts list](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![Apache Ambari átjárócsomóponthoz-gazdagépek listája](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
-Az egyik főcsomópont hivatkozásának kiválasztása az adott csomóponton futó szolgáltatásokat és összetevőket jeleníti meg.
+Az egyik fő csomóponthoz tartozó hivatkozás kiválasztásával megjeleníti az adott csomóponton futó szolgáltatásokat és összetevőket.
 
-![Apache Ambari összetevő állapota](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![Apache Ambari-összetevő állapota](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
-Az Ambari használatáról további információt [a HDInsight figyelése és kezelése az Apache Ambari Web felhasználói felületén című témakörben talál.](hdinsight-hadoop-manage-ambari.md)
+A Ambari használatával kapcsolatos további információkért lásd: [HDInsight figyelése és kezelése az Apache Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md).
 
 ### <a name="ambari-rest-api"></a>Ambari REST API
 
-Az Ambari REST API az interneten keresztül érhető el. A HDInsight nyilvános átjáró kezeli az útválasztási kérelmeket a fő csomópont, amely jelenleg a REST API-t.
+A Ambari REST API elérhető az interneten keresztül. A HDInsight nyilvános átjáró átirányítja az útválasztási kérelmeket a REST API jelenleg üzemeltető fő csomópontra.
 
-A következő paranccsal ellenőrizheti egy szolgáltatás állapotát az Ambari REST API-n keresztül:
+A következő paranccsal ellenőrizhető a szolgáltatás állapota a Ambari REST API használatával:
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 ```
 
-* Cserélje le a **PASSWORD-t** a HTTP-felhasználói (rendszergazdai) fiók jelszavára.
+* Cserélje le a **jelszót** a http-felhasználó (admin) fiók jelszavára.
 * Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
-* Cserélje le a **SERVICENAME** nevet annak a szolgáltatásnak a nevére, amelynek állapotát ellenőrizni szeretné.
+* Cserélje le a **szolgáltatásnév** nevet annak a szolgáltatásnak a nevére, amelynek az állapotát ellenőriznie szeretné.
 
-Ha például egy **mycluster**nevű fürtön szeretné ellenőrizni a **HDFS-szolgáltatás** állapotát **jelszójelszóval,** a következő parancsot kell használnia:
+Ha például a **HDFS** szolgáltatás állapotát egy **mycluster**nevű fürtön szeretné megtekinteni, **a jelszó jelszavával, használja**a következő parancsot:
 
 ```bash
 curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 ```
 
-A válasz hasonló a következő JSON-hoz:
+A válasz a következő JSON-hoz hasonló:
 
 ```json
 {
@@ -203,85 +203,85 @@ A válasz hasonló a következő JSON-hoz:
 }
 ```
 
-Az URL azt mondja, hogy a szolgáltatás jelenleg fut a fej csomópont nevű **mycluster.wutj3h4ic1zejluqhxxvckxq0g**.
+Az URL-cím azt jelzi, hogy a szolgáltatás jelenleg egy **mycluster. wutj3h4ic1zejluqhxzvckxq0g**nevű Head csomóponton fut.
 
-Az állapot azt mondja, hogy a szolgáltatás jelenleg fut, vagy **STARTED**.
+Az állapot azt jelzi, hogy a szolgáltatás jelenleg fut vagy **elindult**.
 
-Ha nem tudja, hogy milyen szolgáltatások vannak telepítve a fürtre, a következő paranccsal lekérheti a listát:
+Ha nem tudja, hogy mely szolgáltatások vannak telepítve a fürtön, a következő paranccsal kérhet le egy listát:
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 ```
 
-Az Ambari REST API-val való munkáról további információt a [HDInsight figyelése és kezelése az Apache Ambari REST API használatával című témakörben talál.](hdinsight-hadoop-manage-ambari-rest-api.md)
+További információ a Ambari REST API használatáról: a [HDInsight figyelése és kezelése az Apache Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 #### <a name="service-components"></a>Szolgáltatás-összetevők
 
-A szolgáltatások tartalmazhatnak olyan összetevőket, amelyek állapotát egyenként szeretné ellenőrizni. A HDFS például tartalmazza a NameNode összetevőt. Az összetevőre vonatkozó információk megtekintéséhez a parancs a következő:
+A szolgáltatások olyan összetevőket tartalmazhatnak, amelyekben egyenként szeretné megtekinteni az állapotot. Például a HDFS tartalmazza a NameNode összetevőt. Egy összetevő információinak megtekintéséhez a parancs a következő lesz:
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 ```
 
-Ha nem tudja, hogy egy szolgáltatás milyen összetevőket biztosít, a következő paranccsal lekérheti a listát:
+Ha nem tudja, milyen összetevőket biztosít a szolgáltatás, a következő paranccsal kérhet le egy listát:
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 ```
 
-## <a name="how-to-access-log-files-on-the-head-nodes"></a>A naplófájlok elérése a főcsomópontokon
+## <a name="how-to-access-log-files-on-the-head-nodes"></a>A naplófájlok elérése a fő csomópontokon
 
 ### <a name="ssh"></a>SSH
 
-Miközben egy sSH-on keresztül idén keresztül egy főcsomóponthoz csatlakozik, a naplófájlok a **/var/log**könyvtár ban találhatók. Például a **/var/log/hadoop-yarn/yarn** a YARN-hoz tartalmaz rönköket.
+Amikor SSH-n keresztül csatlakozik egy fő csomóponthoz, a naplófájlok a **/var/log**alatt találhatók. Például a **/var/log/Hadoop-yarn/yarn** a fonalat tartalmazó naplókat tartalmaz.
 
-Minden főcsomópont rendelkezhet egyedi naplóbejegyzésekkel, ezért mindkettőn ellenőrizze a naplókat.
+Minden egyes főcsomópont egyedi naplóbejegyzést tartalmazhat, ezért mindkét oldalon ellenőriznie kell a naplókat.
 
 ### <a name="sftp"></a>SFTP
 
-A főcsomóponthoz az SSH Fájlátviteli protokoll vagy a Secure File Transfer Protocol (SFTP) protokoll segítségével is csatlakozhat, és közvetlenül letöltheti a naplófájlokat.
+Az SSH File Transfer Protocol vagy a Secure File Transfer Protocol (SFTP) használatával is csatlakozhat a fő csomóponthoz, és közvetlenül is letöltheti a naplófájlokat.
 
-Az SSH-ügyfél hez hasonlóan a fürthöz való csatlakozáskor meg kell adnia az SSH felhasználói fiók nevét és a fürt SSH-címét. Például: `sftp username@mycluster-ssh.azurehdinsight.net`. Amikor a rendszer kéri, adja meg a fiók `-i` jelszavát, vagy adjon meg egy nyilvános kulcsot a paraméter használatával.
+Az SSH-ügyfelekhez hasonlóan a fürthöz való csatlakozáskor meg kell adnia a fürt SSH-felhasználói fiókjának nevét és SSH-címeit. Például: `sftp username@mycluster-ssh.azurehdinsight.net`. Ha a rendszer kéri, adja meg a fiók jelszavát, vagy adjon meg egy nyilvános `-i` kulcsot a paraméter használatával.
 
-A csatlakozás után egy `sftp>` üzenet jelenik meg. Ebből a kérdésből módosíthatja a könyvtárakat, feltölthet és letöltheti a fájlokat. A következő parancsok például a **könyvtárakat a /var/log/hadoop/hdfs** könyvtárra módosítják, majd letöltik a könyvtárösszes fájlját.
+A csatlakozás után megjelenik egy `sftp>` üzenet. Ebből a kérésből megváltoztathatja a címtárakat, a feltöltési és a letöltési fájlokat. Az alábbi parancsok például megváltoztatják a címtárakat a **/var/log/Hadoop/hdfs** könyvtárba, majd az összes fájlt letöltik a címtárból.
 
     cd /var/log/hadoop/hdfs
     get *
 
-Az elérhető parancsok listájának `help` megadásához írja be a `sftp>` parancssorba.
+Az elérhető parancsok listáját a `help` `sftp>` parancssorba írja be.
 
 > [!NOTE]  
-> Vannak olyan grafikus felületek is, amelyek lehetővé teszik a fájlrendszer megjelenítését, ha SFTP-vel csatlakozik. A [MobaXTerm](https://mobaxterm.mobatek.net/) például lehetővé teszi a fájlrendszer böngészését a Windows Intézőhöz hasonló felülethasználatával.
+> Vannak olyan grafikus felületek is, amelyek lehetővé teszik a fájlrendszer megjelenítését az SFTP használatával való csatlakozáskor. Például a [MobaXTerm](https://mobaxterm.mobatek.net/) lehetővé teszi a fájlrendszer tallózását a Windows Intézőhöz hasonló felület használatával.
 
 ### <a name="ambari"></a>Ambari
 
 > [!NOTE]  
-> A naplófájlok ambari használatával való eléréséhez SSH-alagutat kell használnia. Az egyes szolgáltatások webes felületei nem nyilvánosan elérhetők az interneten. Az SSH-alagutak használatáról az [SSH bújtatás használata](hdinsight-linux-ambari-ssh-tunnel.md) című dokumentumban talál további információt.
+> Ha a naplófájlokat a Ambari használatával szeretné elérni, SSH-alagutat kell használnia. Az egyes szolgáltatások webes felülete nem nyilvánosan elérhető az interneten. Az SSH-alagutak használatával kapcsolatos információkért tekintse meg az [SSH-alagút használata](hdinsight-linux-ambari-ssh-tunnel.md) című dokumentumot.
 
-Az Ambari Web felhasználói felületén válassza ki azt a szolgáltatást, amelynek naplóit meg szeretné tekinteni (például YARN). Ezután a **Gyorshivatkozások segítségével** válassza ki, hogy melyik főcsomóponthoz szeretné megtekinteni a naplókat.
+A Ambari webes felhasználói felületén válassza ki azt a szolgáltatást, amelyre vonatkozóan meg szeretné tekinteni a naplókat (például a FONALat). Ezután a **gyors hivatkozások** használatával kiválaszthatja, hogy melyik főcsomóponton szeretné megtekinteni a naplókat.
 
-![Gyorshivatkozások használata a naplók megtekintéséhez](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
+![Gyors hivatkozások használata a naplók megtekintéséhez](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>A csomópont méretének konfigurálása
 
-A csomópont mérete csak a fürt létrehozása során választható ki. A [HDInsight díjszabási lapján](https://azure.microsoft.com/pricing/details/hdinsight/)megtalálhatja a HDInsight számára elérhető különböző virtuálisgép-méretek listáját.
+A csomópontok mérete csak a fürt létrehozásakor választható ki. A HDInsight elérhető különböző virtuálisgép-méretek listáját a [HDInsight díjszabása lapon](https://azure.microsoft.com/pricing/details/hdinsight/)találja.
 
-Fürt létrehozásakor megadhatja a csomópontok méretét. Az alábbi információk útmutatást adnak a méret megadásához az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell-modul Az](/powershell/azureps-cmdlets-docs)és az Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával:
+Fürt létrehozásakor megadhatja a csomópontok méretét. A következő információk útmutatást nyújtanak a méret megadásához az [Azure Portal](https://portal.azure.com/), [Azure PowerShell modul](/powershell/azureps-cmdlets-docs)az és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával:
 
-* **Azure Portal:** Fürt létrehozásakor beállíthatja a fürt által használt csomópontok méretét:
+* **Azure Portal**: fürt létrehozásakor beállíthatja a fürt által használt csomópontok méretét:
 
-    ![A fürtlétrehozó varázsló képe csomópontméret-kijelöléssel](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
+    ![A fürt létrehozási varázslójának képe a csomópontok méretének kiválasztásával](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure CLI:** A [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) parancs használatakor beállíthatja a fej, a feldolgozó és a `--headnode-size`ZooKeeper csomópontok méretét a , `--workernode-size`és `--zookeepernode-size` a paraméterek használatával.
+* **Azure CLI**: a [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) parancs használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper-csomópontok méretét a `--headnode-size`, `--workernode-size`, és `--zookeepernode-size` paraméterek használatával.
 
-* **Azure PowerShell:** A [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag használatakor beállíthatja a fej, a feldolgozó és a `-HeadNodeSize`ZooKeeper csomópontok méretét a , `-WorkerNodeSize`és `-ZookeeperNodeSize` a paraméterek használatával.
+* **Azure PowerShell**: a [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper csomópont méretét a `-HeadNodeSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paraméterek használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-A cikkben tárgyalt elemekről az:
+Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 
-* [Apache Ambari REST referencia](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+* [Apache Ambari – REST-dokumentáció](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Az Azure CLI telepítése és konfigurálása](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Az Azure PowerShell-modul telepítése és konfigurálása](/powershell/azure/overview)
-* [HdInsight kezelése az Apache Ambari használatával](hdinsight-hadoop-manage-ambari.md)
-* [Linux alapú HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)
+* [Azure PowerShell modul telepítése és konfigurálása az](/powershell/azure/overview)
+* [HDInsight-kezelés az Apache Ambari használatával](hdinsight-hadoop-manage-ambari.md)
+* [Linux-alapú HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)

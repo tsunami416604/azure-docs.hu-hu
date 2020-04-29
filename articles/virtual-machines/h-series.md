@@ -1,6 +1,6 @@
 ---
-title: H sorozat – Azure virtuális gépek
-description: A H sorozatú virtuális gépek specifikációi.
+title: H-sorozat – Azure Virtual Machines
+description: A H-sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,52 +8,52 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: lahugh
 ms.openlocfilehash: 6e0257f8a32d05f49dd67195f22d387319358ef2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314132"
 ---
 # <a name="h-series"></a>H-sorozat
 
-A H sorozatú virtuális gépek a magas CPU-frekvenciák vagy az alapvető követelményekszerint nagy memória által vezérelt alkalmazásokhoz vannak optimalizálva. A H sorozatú virtuális gépek 8 vagy 16 Intel Xeon E5 2667 v3 processzormagot tartalmaznak, cpumagonként akár 14 GB RAM-ot is tartalmaznak, és nincs hyperthreading. A H sorozat 56 Gb/sec Mellanox FDR InfiniBand-et tartalmaz, amely nem blokkolja a zsírfa konfigurációt az egyenletes RDMA teljesítmény érdekében. A H sorozatú virtuális gépek támogatják az Intel MPI 5.x és MS-MPI-t.
+A H-sorozatú virtuális gépeket nagy CPU-gyakorisággal vagy nagy memóriával rendelkező, alapvető követelményekkel rendelkező alkalmazások számára optimalizáltuk. A H-sorozatú virtuális gépek 8 vagy 16 Intel Xeon E5 2667 v3 processzorral rendelkeznek, CPU Core-onként akár 14 GB RAM-mal, és nem feleznie. A H-sorozat 56 GB/s Mellanox FDR InfiniBand a konzisztens RDMA teljesítményének nem blokkoló FAT-konfigurációjában. A H-sorozatú virtuális gépek támogatják az Intel MPI 5. x és az MS-MPI használatát.
 
 ACU: 290–300
 
-Prémium szintű tárhely: Nem támogatott
+Premium Storage: nem támogatott
 
-Prémium szintű tárolási gyorsítótárazás: Nem támogatott
+Premium Storage gyorsítótárazás: nem támogatott
 
-Élő áttelepítés: Nem támogatott
+Élő áttelepítés: nem támogatott
 
-Memóriamegőrzési frissítések: Nem támogatott
+Memória-megőrzési frissítések: nem támogatott
 
-| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alap CPU-frekvencia (GHz) | All-cores frekvencia (GHz, csúcs) | Egymagos frekvencia (GHz, csúcs) | RDMA teljesítmény (Gb/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Lemezek max. teljesítménye: IOPS | Maximális Ethernet hálózati adapterek |
+| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Lemezek max. teljesítménye: IOPS | Ethernet hálózati adapterek maximális száma |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 32x500 | 2 |
-| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 64x500 | 4 |
-| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 32x500 | 2 |
-| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 64x500 | 4 |
-| Standard_H16r <sup>1.</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 64x500 | 4 |
-| Standard_H16mr <sup>1.</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 64x500 | 4 |
+| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 1000 | 32 | 32x500 | 2 |
+| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 2000 | 64 | 64x500 | 4 |
+| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 1000 | 32 | 32x500 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 2000 | 64 | 64x500 | 4 |
+| Standard_H16r <sup>1</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3,6 | 56 | Intel 5. x, MS-MPI | 2000 | 64 | 64x500 | 4 |
+| Standard_H16mr <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3,6 | 56 | Intel 5. x, MS-MPI | 2000 | 64 | 64x500 | 4 |
 
-<sup>1</sup> MpI alkalmazások esetén a dedikált RDMA háttérhálózatot az FDR InfiniBand hálózat engedélyezi.
+<sup>1</sup> az MPI-alkalmazások esetében a dedikált RDMA háttérrendszer-hálózatot a FDR InfiniBand hálózata engedélyezte.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
 ## <a name="supported-os-images-linux"></a>Támogatott operációsrendszer-lemezképek (Linux)
  
-Az Azure Piactér számos Linux-disztribúcióval rendelkezik, amelyek támogatják az RDMA-kapcsolatot:
+Az Azure Marketplace számos Linux-disztribúcióval rendelkezik, amelyek támogatják a RDMA-kapcsolatot:
   
-* **CentOS-alapú HPC** - A nem SR-IOV-kompatibilis virtuális gépek, CentOS-alapú változat 6.5 HPC vagy újabb verzió, akár 7,5 alkalmasak. A H sorozatú virtuális gépek esetében a 7.1–7.5 verziók ajánlottak. RdMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális gépre.
-  Az SR-IOV virtuális gépek hez a CentOS-HPC 7.6 optimalizált és előre telepített az RDMA illesztőprogramokkal és a telepített különböző MPI-csomagokkal.
-  Más RHEL/CentOS virtuálisgép-lemezképek esetén adja hozzá az InfiniBand Linux bővítményt az InfiniBand engedélyezéséhez. Ez a Linux virtuális gép bővítmény telepíti a Mellanox OFED illesztőprogramokat (SR-IOV virtuális gépeken) az RDMA-kapcsolathoz. A következő PowerShell-parancsmag az InfiniBandDriverLinux bővítmény legújabb verzióját (1.0-s verzióját) telepíti egy meglévő RDMA-kompatibilis virtuális gépre. Az RDMA-kompatibilis virtuális gép neve *myVM,* és az USA nyugati *régiójában* a *myResourceGroup* nevű erőforráscsoportban van telepítve az alábbiak szerint:
+* **CentOS-alapú HPC** – nem SR-IOV-kompatibilis virtuális gépek, CentOS-alapú 6,5 HPC vagy újabb verzió, amely legfeljebb 7,5-ig használható. A H-sorozatú virtuális gépek esetében a 7,1 – 7,5 verzió ajánlott. A RDMA-illesztőprogramok és az Intel MPI 5,1 telepítve vannak a virtuális gépen.
+  Az SR-IOV virtuális gépek esetében a CentOS-HPC 7,6 optimalizált és előre be van töltve a RDMA-illesztőprogramokkal és a különböző MPI-csomagokkal.
+  Más RHEL/CentOS virtuálisgép-lemezképek esetén adja hozzá a InfiniBandLinux-bővítményt a InfiniBand engedélyezéséhez. Ez a linuxos virtuálisgép-bővítmény telepíti a Mellanox OFED-illesztőprogramokat (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz. A következő PowerShell-parancsmag telepíti a InfiniBandDriverLinux-bővítmény legújabb verzióját (1,0-es verzió) egy meglévő RDMA-kompatibilis virtuális gépen. A RDMA-kompatibilis virtuális gép neve *myVM* , és az *USA nyugati* régiójában, a *myResourceGroup* nevű erőforráscsoporthoz van telepítve, a következőképpen:
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
   ```
-  Másik lehetőségként a virtuálisgép-bővítmények is szerepelhetnek az Azure Resource Manager-sablonokban a következő JSON-elemmel való egyszerű üzembe helyezés érdekében:
+  Alternatív megoldásként a virtuálisgép-bővítmények Azure Resource Manager sablonokban is elérhetők, így egyszerűen üzembe helyezhetők a következő JSON-elemmel:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -62,7 +62,7 @@ Az Azure Piactér számos Linux-disztribúcióval rendelkezik, amelyek támogatj
   } 
   ```
   
-  A következő parancs a legújabb 1.0-s verziójú InfiniBandDriverLinux kiterjesztést telepíti az összes RDMA-kompatibilis virtuális gépre egy *myVMSS* nevű, a *myResourceGroup*nevű erőforráscsoportban telepített meglévő virtuálisgép-méretezési csoportban:
+  A következő parancs telepíti a legújabb 1,0 InfiniBandDriverLinux-bővítményt az összes RDMA-kompatibilis virtuális gépen egy *myVMSS* nevű meglévő virtuálisgép-méretezési csoportba, amelyet a *myResourceGroup*nevű erőforráscsoport telepít:
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
   Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
@@ -71,21 +71,21 @@ Az Azure Piactér számos Linux-disztribúcióval rendelkezik, amelyek támogatj
   ```
   
   > [!NOTE]
-  > A CentOS-alapú HPC-lemezképeken a kernelfrissítések le vannak tiltva a **yum** konfigurációs fájlban. Ennek az az oka, hogy a Linux RDMA-illesztőprogramok RPM-csomagként kerülnek terjesztésre, és előfordulhat, hogy az illesztőprogram-frissítések nem működnek, ha a rendszermag frissül.
+  > A CentOS-alapú HPC-lemezképeken a kernel frissítései le vannak tiltva a **yum** konfigurációs fájlban. Ennek az az oka, hogy a Linux RDMA-illesztőprogramok RPM-csomagként vannak elosztva, és előfordulhat, hogy az illesztőprogram frissítései nem működnek, ha a kernel frissül.
   >
   
 
-* **SUSE Linux Enterprise Server** - SLES 12 SP3 HPC-hez, SLES 12 SP3 HPC-hez (Premium), SLES 12 SP1 HPC-hez, SLES 12 SP1 HPC-hez (Premium), SLES 12 SP4 és SLES 15. RdMA-illesztőprogramok vannak telepítve, és az Intel MPI csomagok a virtuális gépen vannak elosztva. Telepítse az MPI-t a következő parancs futtatásával:
+* **SUSE Linux Enterprise Server** -SLES 12 SP3 HPC, SLES 12 SP3 for HPC (prémium), SLES 12 SP1 for HPC, SLES 12 SP1 for HPC (prémium), SLES 12 SP4 és SLES 15. A RDMA-illesztőprogramok telepítve vannak, és az Intel MPI-csomagok el vannak osztva a virtuális gépen. Telepítse az MPI-t a következő parancs futtatásával:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
   
-* **Ubuntu** - Ubuntu Server 16.04 LTS, 18.04 LTS. Konfigurálja az RDMA-illesztőprogramokat a virtuális gépen, és regisztráljon az Intel MPI letöltéséhez:
+* **Ubuntu** -ubuntu Server 16,04 lts, 18,04 LTS. Konfigurálja a RDMA-illesztőprogramokat a virtuális gépen, és regisztrálja az Intel-t az Intel MPI letöltéséhez:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  Az InfiniBand engedélyezéséről, az MPI beállításáról az [InfiniBand engedélyezése témakörben talál](./workloads/hpc/enable-infiniband.md)további részleteket.
+  A InfiniBand engedélyezéséről, az MPI beállításáról további információt a [InfiniBand engedélyezése](./workloads/hpc/enable-infiniband.md)című témakörben talál.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -98,4 +98,4 @@ Az Azure Piactér számos Linux-disztribúcióval rendelkezik, amelyek támogatj
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

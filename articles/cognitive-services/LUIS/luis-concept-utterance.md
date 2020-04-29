@@ -1,88 +1,88 @@
 ---
-title: Jó példa kimondott szöveg - LUIS
-description: A beszédelem az a felhasználói bemenet, amelyet az alkalmazásnak értelmeznie kell. Gyűjtse össze azokat a kifejezéseket, amelyeket a felhasználók beírnak. Tartalmazza kimondott szöveg, amely ugyanazt jelenti, de a szavak hossza és a szavak elhelyezése eltérően épülnek fel.
+title: Jó példa hosszúságú kimondott szöveg – LUIS
+description: A beszédelem az a felhasználói bemenet, amelyet az alkalmazásnak értelmeznie kell. Gyűjtse be azokat a kifejezéseket, amelyeket a felhasználók meg fognak adni. Olyan hosszúságú kimondott szöveg adjon meg, amelyek ugyanazt a dolgot jelentik, de a szó hosszában és a Word elhelyezésekor máshogy vannak kiépítve.
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382289"
 ---
-# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, milyen jó kimondott szöveg a LUIS-alkalmazáshoz
+# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
-**Utterances bemeneta** a felhasználótól, hogy az alkalmazás kell értelmezni. Luis betanításához leképezések és entitások kinyerése tőlük, fontos, hogy rögzítse a különböző példa utterances az egyes szándékok. Aktív tanulás, vagy a folyamat továbbra is a betanításúj utterances, elengedhetetlen a gépi tanult intelligencia, amely a LUIS nyújt.
+A **hosszúságú kimondott szöveg** olyan adatokat kapnak a felhasználótól, akiket az alkalmazásnak kell értelmezni. A LUIS betanításához, hogy kinyerje a szándékait és az entitásokat, fontos, hogy az egyes szándékok különböző példáit hosszúságú kimondott szöveg. Az aktív tanulás, illetve az új hosszúságú kimondott szöveg való folyamatos betanítás folyamata elengedhetetlen a géppel megszerzett intelligenciához, amelyet a LUIS biztosít.
 
-Gyűjtse össze a kimondott szövegeket, amelyekről úgy gondolja, hogy a felhasználók bekerülnek. Utterances, ami ugyanazt jelenti, de épített különböző különböző módokon:
+Gyűjtse össze azokat a hosszúságú kimondott szöveg, amelyeket a felhasználók meg fognak adni. Vegyen fel hosszúságú kimondott szöveg, ami ugyanazt jelenti, de különböző módokon vannak kiépítve:
 
-* Kimondott szöveg hossza - rövid, közepes és hosszú az ügyfél-alkalmazás
+* Teljes hossz – rövid, közepes és hosszú az ügyfél-alkalmazáshoz
 * Szó és kifejezés hossza
-* Szóelhelyezés – entitás az utterance (kifejezés) elején, közepén és végén
+* Szó elhelyezése – entitás elején, közepén és végén
 * Nyelvtan
-* Pluralizáció
-* Eredet
-* Főnév és igeválasztás
-* [Írásjelek](luis-reference-application-settings.md#punctuation-normalization) - egy jó fajta segítségével helyes, helytelen, és nem nyelvtan
+* Pluralization
+* Eredő
+* Főnév és ige választása
+* [Írásjelek](luis-reference-application-settings.md#punctuation-normalization) – a helyes, helytelen és nem nyelvtant használó számos fajta
 
-## <a name="how-to-choose-varied-utterances"></a>Hogyan válasszuk ki a különböző kimondott szövegeket?
+## <a name="how-to-choose-varied-utterances"></a>Változatos hosszúságú kimondott szöveg kiválasztása
 
-Amikor először kezdi el [a luis-modellhez adott példakimondott szövegeket,](luis-how-to-add-example-utterances.md) az alábbiakban néhány olyan alapelvet kell szem előtt tartania, amelyeket szem előtt kell tartania.
+Első lépésként vegyen fel [például hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) a Luis-modellbe, és tekintse meg az alábbi alapelveket.
 
-### <a name="utterances-arent-always-well-formed"></a>A kimondott szöveg nem mindig jól alakul ki
+### <a name="utterances-arent-always-well-formed"></a>A hosszúságú kimondott szöveg nem mindig megfelelően formázott
 
-Lehet egy mondat, mint a "Foglaljon jegyet Párizsba nekem", vagy egy mondat töredéke, mint a "Foglalás" vagy a "Párizsi járat".  A felhasználók gyakran helyesírási hibákat követnek el. Az alkalmazás tervezésekor fontolja meg, hogy a [Bing helyesírás-ellenőrzés](luis-tutorial-bing-spellcheck.md) segítségével javítsa ki a felhasználói bevitelt, mielőtt átadná azt a LUIS-nak.
+Ez lehet egy mondat, például: "jegy befoglalása Párizsba", vagy egy mondat töredéke, például "foglalás" vagy "Párizs Flight".  A felhasználók gyakran végeznek helyesírási hibákat. Az alkalmazás megtervezése során érdemes megfontolni, hogy az [Bing Spell Check](luis-tutorial-bing-spellcheck.md) használatával javítsa ki a felhasználói adatokat, mielőtt elkezdené a Luis-nek.
 
-Ha nem helyesírás-ellenőrzés felhasználói utterances, be kell képeznie a LUIS kimondott szöveg, amely elírásokat és elírásokat tartalmaz.
+Ha nem jelöli be a felhasználó hosszúságú kimondott szöveg, akkor a LUIS-t a hosszúságú kimondott szöveg kell betanítania, amely tartalmazza az elírásokat és a hibákat.
 
 ### <a name="use-the-representative-language-of-the-user"></a>A felhasználó reprezentatív nyelvének használata
 
-Utterances kiválasztásakor vegye figyelembe, hogy mit gondol egy közös kifejezés vagy kifejezés nem lehet helyes az ügyfélalkalmazás tipikus felhasználója számára. Lehet, hogy nincs tartományi tapasztalatuk. Legyen óvatos, amikor olyan kifejezéseket vagy kifejezéseket használ, amelyeket a felhasználó csak akkor mondana, ha szakértő lenne.
+A hosszúságú kimondott szöveg kiválasztásakor vegye figyelembe, hogy a leggyakoribb kifejezés vagy kifejezés nem megfelelő az ügyfélalkalmazás jellemző felhasználója számára. Előfordulhat, hogy nem rendelkeznek tartományi tapasztalattal. Legyen körültekintő, ha olyan kifejezéseket vagy kifejezéseket használ, amelyeket a felhasználó csak szakértőnek mond.
 
-### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Válasszon változatos terminológiát, valamint kifejezéseket
+### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Válassza a különböző terminológiát és a beszédmód
 
-Meg fogja találni, hogy még akkor is, ha erőfeszítéseket tesz, hogy hozzon létre változatos mondat minták, akkor is ismételje meg néhány szókincs.
+Azt tapasztalhatja, hogy még akkor is, ha a különböző mondatok létrehozásához tett erőfeszítéseket, továbbra is meg kell ismételnie néhány szókincset.
 
-Vegyük ezt a példát utterances:
+Végezze el az alábbi példát a hosszúságú kimondott szöveg:
 
 |Példák kimondott szövegekre|
 |--|
-|hogyan juthatok be a számítógép?|
-|Honnan szerezhetek számítógépet?|
-|Azt akarom, hogy a számítógép, hogyan megy ez?|
-|Mikor lehet számítógépem?|
+|Hogyan szerezhetek be számítógépet?|
+|Hol szerezhetek be számítógépet?|
+|Szeretnék beolvasni egy számítógépet, hogyan tudok?|
+|Mikor lehet a számítógépem?|
 
-A fő kifejezés itt, "számítógép", nem változatos. Használjon olyan alternatívákat, mint az asztali számítógép, laptop, munkaállomás, vagy akár csak gép. A LUIS intelligensen következtetheti a szinonimákat a környezetből, de amikor kimondott szövegeket hoz létre a betanításhoz, mindig jobb, ha változik.
+A "számítógép" alapvető kifejezés nem változtatható meg. Használjon olyan alternatívákat, mint az asztali számítógép, a laptop, a munkaállomás vagy akár a gép. A LUIS intelligens módon kikövetkeztetheti a szinonimákat a kontextusból, de ha hosszúságú kimondott szöveg hoz létre a betanításhoz, mindig érdemes megváltoznia.
 
-## <a name="example-utterances-in-each-intent"></a>Példa kimondott szövegre az egyes szándékokban
+## <a name="example-utterances-in-each-intent"></a>Példa hosszúságú kimondott szöveg az egyes leképezésekben
 
-Minden szándéknak legalább 15 példa utterances kell rendelkeznie. Ha van egy szándék, amely nem rendelkezik példa utterances, nem lesz képes betanítása LUIS. Ha egy vagy nagyon kevés példa utterances szándékkal rendelkezik, a LUIS nem pontosan előre a szándékot.
+Minden leképezésnek legalább 15 hosszúságú kimondott szöveg kell lennie. Ha olyan szándékkal rendelkezik, amely nem rendelkezik például hosszúságú kimondott szöveg, nem fogja tudni betanítani a LUIS-t. Ha a hosszúságú kimondott szöveg egy vagy nagyon kevés példával rendelkezik, akkor a LUIS nem tudja pontosan megjósolni a szándékot.
 
-## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>15 utterances-ből álló kis csoportok hozzáadása minden egyes szerzői ismétléshez
+## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>15 hosszúságú kimondott szöveg kisebb csoportjainak hozzáadása minden szerzői iterációhoz
 
-A modell minden egyes iterációjában ne adjon hozzá nagy mennyiségű utterances. 15-ös mennyiségben adja hozzá a kimondott szöveget. [Betanítás,](luis-how-to-train.md) [közzététel](luis-how-to-publish-app.md)és [tesztelés](luis-interactive-test.md) újra.
+A modell minden egyes iterációjában ne adjon hozzá nagy mennyiségű hosszúságú kimondott szöveg. Adja hozzá a hosszúságú kimondott szöveg a 15. számú mennyiséghez. A [betanítás](luis-how-to-train.md), [Közzététel](luis-how-to-publish-app.md)és [tesztelés](luis-interactive-test.md) .
 
-A LUIS hatékony modelleket hoz létre a LUIS-modell szerzője által gondosan kiválasztott kimondott szövegekkel. Túl sok kimondott szöveg hozzáadása nem értékes, mert zavart okoz.
+LUIS olyan hatékony modelleket épít be a hosszúságú kimondott szöveg, amelyeket a LUIS Model szerzője körültekintően választ ki. Túl sok hosszúságú kimondott szöveg hozzáadása nem értékes, mert zavart okoz.
 
-Jobb, ha néhány utterances, majd tekintse át a [végpont kimondott szöveghelyes](luis-how-to-review-endpoint-utterances.md) szándék előrejelzési és entitás kinyerése.
+Érdemes kezdeni néhány hosszúságú kimondott szöveg, majd [tekintse át a végpontok hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) a megfelelő szándék-előrejelzés és az entitások kinyerése érdekében.
 
-## <a name="utterance-normalization"></a>Kimondott szöveg normalizálása
+## <a name="utterance-normalization"></a>Kimondás normalizálása
 
-Utterance normalizálása az a folyamat, figyelmen kívül hagyja a hatását írásjelek és mellékjelek a betanítás és előrejelzés során. Az [alkalmazásbeállítások](luis-reference-application-settings.md) segítségével szabályozhatja, hogy az utterance (kifejezés normalizálása) hogyan befolyásolja az utterance (kifejezés) előrejelzések.
+A kizáró normalizálás az a folyamat, amelynek során figyelmen kívül hagyja a központozás és a Mellékjelek hatásait a képzés és az előrejelzés során. Az [Alkalmazásbeállítások](luis-reference-application-settings.md) segítségével szabályozhatja, hogy a kihasználatlan normalizálás milyen hatással legyen a teljes következtetésekre.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Az írásjelek és az írásjelek kimondott szövegnormalizálása
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Mellékjelek és írásjelek teljes normalizálása
 
-Az utterance normalizálás a rendszer az alkalmazás létrehozásakor vagy importálásakor van definiálva, mert az az alkalmazás JSON-fájljában található. Az utterance (kifejezés normalizálási) beállításai alapértelmezés szerint ki vannak kapcsolva.
+A teljes normalizálás az alkalmazás létrehozásakor vagy importálásakor van meghatározva, mert az alkalmazás JSON-fájljának beállítása. Alapértelmezés szerint a teljes normalizálás beállításai ki vannak kapcsolva.
 
-A mellékjelek a szövegben lévő jelek vagy jelek, például:
+A Mellékjelek a szövegben lévő jelek vagy jelek, például:
 
 ```
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Ha az alkalmazás bekapcsolja a normalizálást, a **Teszt** ablaktáblában lévő pontszámok, a kötegtesztek és a végpontlekérdezések minden mellékjelet vagy írásjelet használó kimondott szövegre változnak.
+Ha az alkalmazás bekapcsolja a normalizálás bekapcsolását, a pontszámok a **teszt** ablaktáblában, a Batch-tesztek és a végpont-lekérdezések minden hosszúságú kimondott szöveg a mellékjeleket vagy írásjeleket használva változnak.
 
-Kapcsolja be az utterance (kifejezés normalizálása mellékjelek vagy írásjelek) a LUIS JSON alkalmazásfájl a `settings` paraméterben.
+A `settings` (z) paraméterben bekapcsolhatja a Mellékjelek vagy írásjelek teljes normalizálása beállítást a Luis JSON-alkalmazás fájljába.
 
 ```JSON
 "settings": [
@@ -91,57 +91,57 @@ Kapcsolja be az utterance (kifejezés normalizálása mellékjelek vagy írásje
 ]
 ```
 
-Az **írásjelek normalizálása** azt jelenti, hogy mielőtt a modellek betanítása és a végpontlekérdezések előre jelzett, írásjelek törlődnek a kimondott szövegeket.
+A **központozás** normalizálása azt jelenti, hogy a modellek betanítása előtt és a végponti lekérdezések megkezdése előtt az írásjelek el lesznek távolítva a hosszúságú kimondott szöveg.
 
-A **mellékjelek normalizálása** a karaktereket a kimondott szövegekben a mellékjelekre helyettesíti a normál karakterekre. Például: `Je parle français` `Je parle francais`lesz .
+A **mellékjelek** normalizálása a hosszúságú kimondott szöveg lévő mellékjeleket normál karakterekkel helyettesíti. Például: `Je parle français` lesz `Je parle francais`.
 
-Normalizálás nem jelenti azt, hogy nem fogja látni írásjelek és mellékjelek a példa utterances vagy előrejelzési válaszok, csak, hogy figyelmen kívül hagyja a képzés és az előrejelzés során.
+A normalizálás nem azt jelenti, hogy a hosszúságú kimondott szöveg vagy az előrejelzési válaszokat nem fogja látni a központozás és a Mellékjelek, csupán azt, hogy a képzés és az előrejelzés során figyelmen kívül lesz hagyva.
 
-### <a name="punctuation-marks"></a>Írásjelek
+### <a name="punctuation-marks"></a>Központozás jelei
 
-Az írásjelek egy külön token a LUIS-ban. Egy utterance (kifejezés) amely egy időszak végén, szemben egy utterance (kifejezés, amely nem tartalmaz egy időszak végén a végén két külön utterances, és két különböző előrejelzéseket kap.
+A központozás egy különálló jogkivonat a LUIS-ben. Egy teljes időszakot, amely a végén található pontot és egy teljes időszakot tartalmaz, és nem tartalmaz két különálló hosszúságú kimondott szöveg, és két különböző előrejelzést kaphat.
 
-Ha az írásjelek nem normalizálódnak, a LUIS alapértelmezés szerint nem hagyja figyelmen kívül az írásjeleket, mert egyes ügyfélalkalmazások jelentőséget helyezhetnek ezeken a jeleken. Győződjön meg arról, hogy a példa utterances használata írásjelek és nem írásjelek annak érdekében, hogy mindkét stílus vissza ugyanazt a relatív pontszámokat.
+Ha a központozás nem normalizált, akkor a LUIS alapértelmezés szerint nem hagyja figyelmen kívül a központozás jelét, mert egyes ügyfélalkalmazások fontosnak helyezhetik el ezeket a jeleket. Győződjön meg arról, hogy a példa hosszúságú kimondott szöveg mindkét írásjelet használja, és nincs írásjel, hogy mindkét stílus ugyanazt a relatív pontszámot adja vissza.
 
-Győződjön meg arról, hogy a modell kezeli az írásjeleket a példa kimondott szövegekben (írásjellel és írásjellel nem), vagy azokban a [mintákban,](luis-concept-patterns.md) ahol könnyebb figyelmen kívül hagyni az írásjeleket a speciális szintaxissal:`I am applying for the {Job} position[.]`
+Győződjön meg arról, hogy a modell kezeli a központozást a példában szereplő hosszúságú kimondott szöveg (és nem rendelkezik írásjelekkel), vagy azokban a [mintázatokban](luis-concept-patterns.md) , amelyekben a speciális szintaxissal egyszerűbb a központozás figyelmen kívül hagyása:`I am applying for the {Job} position[.]`
 
-Ha az írásjeleknek nincs konkrét jelentése az ügyfélalkalmazásban, fontolja meg az [írásjelek figyelmen kívül hagyását](#utterance-normalization) az írásjelek normalizálásával.
+Ha a központozás nem rendelkezik konkrét jelentéssel az ügyfélalkalmazás számára, akkor az írásjelek normalizálása révén érdemes [figyelmen kívül hagyni](#utterance-normalization) a központozást.
 
 ### <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
 
-Ha figyelmen kívül szeretne hagyni bizonyos szavakat vagy írásjeleket a mintákban, `[]`használjon [szögletes](luis-concept-patterns.md#pattern-syntax) zárójelek _szintaxisát._
+Ha nem szeretné figyelmen kívül hagyni a konkrét szavakat vagy írásjeleket a mintázatokban, használjon [mintázatot](luis-concept-patterns.md#pattern-syntax) a szögletes zárójelek szintaxisának `[]` _figyelmen kívül_ hagyásával.
 
-## <a name="training-utterances"></a>Betanítási kimondott szöveg
+## <a name="training-utterances"></a>Hosszúságú kimondott szöveg betanítása
 
-A betanítás általában nem determinisztikus: az utterance (kifejezéselőrejelzés előrejelzés) verziónként vagy alkalmazásonként kissé eltérhet.
-Eltávolíthatja a nem determinisztikus betanításfrissítésével `UseAllTrainingData` a [verzióbeállítások](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API a név/érték pár az összes betanítási adatok használata.
+A képzés általában nem determinisztikus: a Kimondás előrejelzése némileg változhat a verziók és az alkalmazások között.
+A nem determinisztikus-képzések eltávolításához frissítse a [Version Settings](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API- `UseAllTrainingData` t a név/érték párokkal, és használja az összes betanítási adatforrást.
 
-## <a name="testing-utterances"></a>Kimondott szöveg tesztelése
+## <a name="testing-utterances"></a>Hosszúságú kimondott szöveg tesztelése
 
-A fejlesztőknek meg kell kezdeniük a LUIS-alkalmazás valós forgalommal való tesztelését az [előrejelzési végpont](luis-how-to-azure-subscription.md) URL-címére való kimondott szöveg elküldésével. Ezeket az utterances használják a szándékok és entitások teljesítményének javítására [a felülvizsgálati utterances.](luis-how-to-review-endpoint-utterances.md) A LUIS webhelytesztelési ablaktáblán keresztül elküldött teszteket a rendszer nem küldi el a végponton keresztül, és így nem járulnak hozzá az aktív tanuláshoz.
+A fejlesztőknek meg kell kezdeniük a LUIS-alkalmazás valós forgalmú tesztelését, ha hosszúságú kimondott szöveg küldenek az [előrejelzési végpont](luis-how-to-azure-subscription.md) URL-címére. Ezek a hosszúságú kimondott szöveg a leképezések és entitások teljesítményének növelésére szolgálnak a [felülvizsgálati hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md). A LUIS webhely tesztelési paneljén elküldött tesztek nem jutnak el a végponton keresztül, így nem járulnak hozzá az aktív tanuláshoz.
 
-## <a name="review-utterances"></a>Kimondott szöveg áttekintése
+## <a name="review-utterances"></a>Hosszúságú kimondott szöveg áttekintése
 
-Miután a modell bevan tanítva, közzétett és [végponti](luis-glossary.md#endpoint) lekérdezéseket kap, tekintse át a LUIS által javasolt [kimondott szövegeket.](luis-how-to-review-endpoint-utterances.md) A LUIS olyan végpontkimondott szövegeket választ ki, amelyek a szándékhoz vagy az entitáshoz alacsony pontszámokat tartalmazó akta.
+A modell kiképzése, közzététele és a [végponti](luis-glossary.md#endpoint) lekérdezések fogadása után [tekintse át a](luis-how-to-review-endpoint-utterances.md) Luis által javasolt hosszúságú kimondott szöveg. LUIS kijelöli a végpontok hosszúságú kimondott szöveg, amelyekben a szándék vagy az entitás számára alacsony pontszám van.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Tekintse át [az ajánlott eljárásokat,](luis-concept-best-practices.md) és alkalmazza azokat a szokásos szerzői ciklus részeként.
+Tekintse át az [ajánlott eljárásokat](luis-concept-best-practices.md) , és alkalmazza őket a szokásos szerzői ciklus részeként.
 
-## <a name="label-for-word-meaning"></a>Szójelentés-címke
+## <a name="label-for-word-meaning"></a>Felirat a szó jelentéséhez
 
-Ha a szóválasztás vagy a szóelrendezés megegyezik, de nem ugyanazt jelenti, ne címkézze fel az entitással.
+Ha a Word Choice vagy a Word megállapodás megegyezik, de nem ugyanazt a dolgot jelenti, ne címkézze fel az entitással.
 
-A következő kimondott szöveg, a szó `fair` egy homográfia. Ugyanazt írják, de más jelentése van:
+A következő hosszúságú kimondott szöveg a szó `fair` egy homográfia. A helyesírása ugyanaz, de a jelentése eltérő:
 
 |Kimondott szöveg|
 |--|
 |Milyen megyei vásárok történnek a Seattle területén ezen a nyáron?|
-|A jelenlegi értékelés a Seattle felülvizsgálat tisztességes?|
+|A Seattle felülvizsgálati vásár jelenlegi minősítése?|
 
-Ha azt szeretné, hogy egy eseményentitás megtalálja `fair` az összes eseményadatot, címkézze fel a szót az első utterance (kifejezés), de nem a második.
+Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse `fair` , címkézze meg a szót az első szövegben, de ne a másodikban.
 
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [Példa utterances](luis-how-to-add-example-utterances.md) a LUIS-alkalmazás betanításával kapcsolatos információkért a felhasználói utterances.
+A felhasználói hosszúságú kimondott szöveg megismeréséhez lásd: [példa hosszúságú kimondott szöveg hozzáadása](luis-how-to-add-example-utterances.md) a Luis-alkalmazások betanításához.
 

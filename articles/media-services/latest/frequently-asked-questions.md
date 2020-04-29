@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services v3-as rendszergyakran feltett kérdései| Microsoft dokumentumok
-description: Ez a cikk választ ad az Azure Media Services v3-as ával kapcsolatos gyakori kérdésekre.
+title: Azure Media Services v3 – gyakori kérdések | Microsoft Docs
+description: Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,192 +12,192 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
 ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309191"
 ---
-# <a name="media-services-v3-frequently-asked-questions"></a>A Media Services v3-as kérdése
+# <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
-Ez a cikk választ ad az Azure Media Services v3-as ával kapcsolatos gyakori kérdésekre.
+Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök hajthatnak végre műveleteket az Azure Media Services-erőforrásokon? 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök végezhetnek műveleteket Azure Media Services erőforrásokon? 
 
-Lásd: [Szerepköralapú hozzáférés-vezérlés (RBAC) a Media Services-fiókokhoz.](rbac-overview.md)
+Lásd: [szerepköralapú hozzáférés-vezérlés (RBAC) Media Services fiókokhoz](rbac-overview.md).
 
-### <a name="how-do-i-stream-to-apple-ios-devices"></a>Hogyan streamelhetek Apple iOS-eszközökre?
+### <a name="how-do-i-stream-to-apple-ios-devices"></a>Hogyan streamet az Apple iOS-eszközökre?
 
-Győződjön meg arról, hogy **van (format=m3u8-aapl)** az elérési út végén (az URL **/manifest** része után), hogy a streamelési forráskiszolgáló http-élő streamelési (HLS) tartalmat adjon vissza az Apple iOS natív eszközökön való felhasználásra. További információt a [Tartalom kézbesítése (Kézbesítés) (Tartalom kézbesítése) (Tartalom kézbesítése) (Tartalom kézbesít](dynamic-packaging-overview.md)
+Győződjön meg arról, hogy az elérési út végén található ( **Format = m3u8-AAPL)** (az URL-cím **/manifest** szakasza után), hogy az adatfolyam-küldő kiszolgáló visszaadja-e a http Live Streaming (HLS) tartalmat az Apple iOS Native-eszközökön való felhasználáshoz. Részletekért lásd: [tartalom továbbítása](dynamic-packaging-overview.md).
 
-### <a name="how-do-i-configure-media-reserved-units"></a>Hogyan konfigurálhatom a Media által lefoglalt egységeket?
+### <a name="how-do-i-configure-media-reserved-units"></a>Hogyan a Media szolgáltatás számára fenntartott egységek konfigurálása?
 
-A Media Services v3 vagy Video Indexer által indított hangelemzési és videoelemzési feladatok esetében azt javasoljuk, hogy 10 S3 media szolgáltatás számára fenntartott egységgel (MRUs) építse ki fiókját. Ha 10-nél több S3 MRUs-ra van szüksége, nyisson meg egy támogatási jegyet az [Azure Portalon](https://portal.azure.com/)keresztül.
+A Media Services v3 vagy Video Indexer által aktivált hangelemzési és videó-elemzési feladatok esetében javasoljuk, hogy a fiókját 10 S3 Media szolgáltatás számára fenntartott egységgel (MRUs) adja meg. Ha több mint 10 S3 MRUs van szüksége, nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com/)használatával.
 
-További információt az [Adathordozó-feldolgozás méretezése](media-reserved-units-cli-how-to.md).
+Részletekért lásd: a [médiafájlok feldolgozásának skálázása](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Mi az ajánlott módszer a videók feldolgozására?
 
-[Az Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) segítségével konfigurálhatja a videók kódolására vagy elemzésére vonatkozó gyakori feladatokat. Minden átalakítás egy receptet vagy a video- vagy hangfájlok feldolgozására szolgáló feladatok munkafolyamatát írja le. A [feladat](https://docs.microsoft.com/rest/api/media/jobs) az a tényleges kérés a Media Services-hez, hogy az Átalakítás tanusító videóra vagy hangtartalomra alkalmazza az átalakítást. Az átalakítás létrehozása után a feladatokat a Media Services API-k vagy a közzétett SDK-k bármelyikének használatával küldheti el. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
+Az [átalakítások](https://docs.microsoft.com/rest/api/media/transforms) használatával konfigurálhatja a videók kódolására vagy elemzésére szolgáló gyakori feladatokat. Mindegyik transzformáció egy receptet vagy egy munkafolyamatot ír le, amely a videó-vagy hangfájlok feldolgozására használható. A [feladatnak](https://docs.microsoft.com/rest/api/media/jobs) az a tényleges kérése, hogy az átalakítást egy bemeneti videóra vagy hangtartalomra alkalmazza Media Services. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
 
-### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Feltöltöttem, kódoltam és közzétettem egy videót. Miért nem játszható le a videó, amikor megpróbálom streamelni?
+### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Feltöltöttem, kódoltam és közzétettem egy videót. Miért nem játssza le a videót, amikor megpróbálok adatfolyamot továbbítani?
 
-Az egyik leggyakoribb oka az, hogy nem rendelkezik a streamelési végpont, ahonnan próbál lejátszani a futó állapotban.
+Az egyik leggyakoribb ok az, hogy nem rendelkezik a folyamatos átviteli végponttal, amelyről a futó állapotot próbálja lejátszani.
 
 ### <a name="how-does-pagination-work"></a>Hogyan működik a tördelés?
 
-A tördelés használatakor mindig a következő hivatkozást használja a gyűjtemény számbavételéhez, és ne függjön egy adott oldalmérettől. További részletek és példák: [Szűrés, rendezés, lapozás.](entities-overview.md)
+Ha oldalszámozást használ, mindig a következő hivatkozásra kell használnia a gyűjtemény számbavételéhez, és nem függ egy adott oldalméret méretétől. A részleteket és példákat lásd: [szűrés, rendezés, lapozás](entities-overview.md).
 
-### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhetők el az Azure Media Services v3-as verzióban?
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhetők el a Azure Media Services v3 verzióban?
 
-További információt a [Funkcióhiányosságok a v2 API-kkal kapcsolatban című témakörben talál.](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)
+Részletekért lásd: a [szolgáltatás hiányosságainak a v2 API-k tekintetében](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
-### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Mi a Media Services-fiók előfizetések közötti áthelyezésének folyamata?  
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Milyen folyamattal kell áthelyezni Media Services fiókot az előfizetések között?  
 
-További információt a [Media Services-fiók áthelyezése előfizetések között](media-services-account-concept.md).
+Részletekért lásd: [Media Services fiók áthelyezése az előfizetések között](media-services-account-concept.md).
 
 ## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
 
-### <a name="how-do-i-stop-the-live-stream-after-the-broadcast-is-done"></a>Hogyan állíthatom le az élő közvetítést az adás befejezése után?
+### <a name="how-do-i-stop-the-live-stream-after-the-broadcast-is-done"></a>Hogyan leállítani az élő streamet a közvetítés befejezése után?
 
-Az ügyfél- vagy a kiszolgálóoldalról is megközelítheti.
+Az ügyfél oldaláról vagy a kiszolgáló oldaláról is megközelítheti.
 
-#### <a name="client-side"></a>Ügyféloldal
+#### <a name="client-side"></a>Ügyféloldali
 
-A webalkalmazásnak meg kell kérnie a felhasználót, ha be szeretné zárni az adást, miközben bezárja a böngészőt. Ez egy olyan böngészőesemény, amelyet a webalkalmazás kezelni tud.
+A webalkalmazásnak meg kell kérnie a felhasználót, ha a böngésző bezárásakor szeretné lezárni a szórást. Ez egy böngészőbeli esemény, amelyet a webalkalmazás képes kezelni.
 
-#### <a name="server-side"></a>Szerver oldal
+#### <a name="server-side"></a>Kiszolgálóoldali
 
-Az Azure Event Grid-eseményekre való feliratkozással figyelheti az élő eseményeket. További információt az [EventGrid eseménysémájában](media-services-event-schemas.md#live-event-types)talál.
+Az élő eseményeket a Azure Event Grid eseményekre való feliratkozással figyelheti. További információ: [EventGrid esemény sémája](media-services-event-schemas.md#live-event-types).
 
 A következő lehetőségek közül választhat:
 
-* [Iratkozzon fel](reacting-to-media-services-events.md) a stream-szintű [Microsoft.Media.LiveEventEncoderLeed eseményekre,](media-services-event-schemas.md#liveeventencoderdisconnected) és figyelje, hogy egy ideig nem jönnek létre újracsatlakozások az élő esemény leállításához és törléséhez.
-* [Iratkozzon fel](reacting-to-media-services-events.md) a pályaszintű [szívveréses](media-services-event-schemas.md#liveeventingestheartbeat) eseményekre. Ha az összes szám bejövő bitráta 0-ra csökken, vagy az utolsó időbélyegző már nem növekszik, biztonságosan leállíthatja az élő eseményt. A szívveréses események minden 20 másodpercben érkeznek minden számhoz, így lehet, hogy egy kicsit részletes.
+* [Fizessen elő](reacting-to-media-services-events.md) a [Microsoft. Media. LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) eseményeire, és figyelje meg, hogy az élő esemény leállításához és törléséhez nem érkezik Újrakapcsolódás.
+* [Fizessen elő](reacting-to-media-services-events.md) a követési szintű [szívverési](media-services-event-schemas.md#liveeventingestheartbeat) eseményekre. Ha az összes pályán van egy bejövő bitráta 0 vagy az utolsó időbélyeg már nem növekszik, nyugodtan leállíthatja az élő eseményt. A szívverési események minden egyes pályán 20 másodpercenként érkeznek, így lehet, hogy ez egy kicsit részletes.
 
-###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>Hogyan szúrhatok be szüneteket/videókat és képeket élő közvetítés közben?
+###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>Hogyan helyezzen el szüneteket/videókat és képbeszúrásokat egy élő adatfolyamban?
 
-A Media Services v3 élő kódolása még nem támogatja a video- vagy képlapképek beillesztését az élő közvetítés során. 
+Media Services v3 élő kódolás még nem támogatja a videó vagy a képek beszúrását az élő adatfolyamban. 
 
-A forrásvideó közötti váltáshoz használhatja a [helyszíni kódolót.](recommended-on-premises-live-encoders.md) Számos alkalmazás biztosítja a források közötti váltást, beleértve a Telestream Wirecast, a Switcher Studio (iOS rendszeren) és az OBS Studio (ingyenes alkalmazás).
+A forrás videó átváltásához használhat egy [élő helyszíni kódolót](recommended-on-premises-live-encoders.md) . Számos alkalmazás biztosítja a források váltását, beleértve a Wirecast, a Switching Studio (iOS) és a OBS Studio (ingyenes alkalmazás) lehetőséget.
 
 ## <a name="content-protection"></a>Tartalomvédelem
 
-### <a name="should-i-use-aes-128-clear-key-encryption-or-a-drm-system"></a>Használjam az AES-128 titkosítása nélkül történik, vagy drm-rendszert használjak?
+### <a name="should-i-use-aes-128-clear-key-encryption-or-a-drm-system"></a>Az AES-128 titkosítatlan kulcsú titkosítást vagy DRM-rendszereket használok?
 
-Az ügyfelek gyakran csodálkoznak, hogy AES titkosítást vagy DRM-rendszert kell-e használniuk. A fő különbség a két rendszer között az, hogy az AES titkosítással a tartalomkulcs továbbításra kerül az ügyfélnek TLS-en keresztül, így a kulcs átvitel közben titkosítva van, de további titkosítás nélkül ("a tiszta"). Ennek eredményeképpen a tartalom visszafejtéséhez használt kulcs elérhető az ügyféllejátszó számára, és az ügyfél hálózati nyomkövetésében egyszerű szövegként tekinthető meg. Az AES-128 egyértelmű kulcstitkosítás olyan esetekben használható, amikor a megtekintő megbízható fél (például a vállalaton belül terjesztett vállalati videók titkosítása, amelyeket az alkalmazottak megtekintenek).
+Az ügyfelek gyakran kíváncsiak arra, hogy az AES-titkosítást vagy a DRM-rendszereket használják-e. A két rendszer közötti fő különbség az, hogy az AES-titkosítás, a tartalmi kulcs továbbítása az ügyfélnek a TLS protokollon keresztül történik, így a kulcs továbbítása átvitel alatt áll, de további titkosítás nélkül ("tiszta"). Ennek eredményeképpen a tartalom visszafejtéséhez használt kulcs elérhető az ügyfél-lejátszó számára, és az ügyfélen lévő hálózati nyomkövetésben is megtekinthető egyszerű szövegként. AES-128 – a titkosítatlan kulcsos titkosítás olyan használati esetekben használható, ahol a megjelenítő egy megbízható fél (például a vállalaton belül az alkalmazottak által megtekintett vállalati videók titkosítása).
 
-A DRM-rendszerek, például a PlayReady, a Widevine és a FairPlay egyaránt további titkosítási szintet biztosítanak a tartalom visszafejtéséhez használt kulcson, szemben az AES-128 egyértelmű kulcsokkal. A tartalomkulcs a DrM-futásidejű által védett kulcsra van titkosítva a TLS által biztosított átviteli szintű titkosítás mellett. Emellett a visszafejtést biztonságos környezetben kezelik az operációs rendszer szintjén, ahol a rosszindulatú felhasználók nehezebben támadnak. A DRM-et olyan használati esetekhez javasoljuk, ahol a megjelenítő esetleg nem megbízható fél, és a legmagasabb szintű biztonságra van szüksége.
+A (z) PlayReady, Widevine és FairPlay DRM-rendszerek mindegyike további titkosítási szintet biztosít a tartalom visszafejtéséhez használt kulcshoz képest, egy AES-128 tiszta kulccsal szemben. A tartalmi kulcs titkosítása a DRM-futtatókörnyezet által védett kulcsra történik, a TLS által biztosított átviteli szintű titkosítás mellett. Emellett az operációs rendszer szintjén egy biztonságos környezetben kezeli a visszafejtést, ahol a rosszindulatú felhasználók támadása nehezebbé válik. Javasoljuk, hogy a DRM olyan használati eseteket használjon, amelyekben előfordulhat, hogy a megjelenítő nem megbízható fél, és a legmagasabb szintű biztonságra van szüksége.
 
-### <a name="how-do-i-show-a-video-to-only-users-who-have-a-specific-permission-without-using-azure-ad"></a>Hogyan jeleníthetek meg egy videót csak azoknak a felhasználóknak, akik rendelkeznek egy adott engedéllyel, az Azure AD használata nélkül?
+### <a name="how-do-i-show-a-video-to-only-users-who-have-a-specific-permission-without-using-azure-ad"></a>Hogyan csak bizonyos engedélyekkel rendelkező felhasználók számára jelenít meg videót az Azure AD használata nélkül?
 
-Nem kell használni a konkrét jogkivonat-szolgáltató, például az Azure Active Directory (Azure AD). Létrehozhat saját [JWT-szolgáltatót](https://jwt.io/) (úgynevezett Secure Token Service-t vagy STS-t) aszimmetrikus kulcstitkosítás használatával. Az egyéni STS-ben az üzleti logika alapján adhat hozzá jogcímeket.
+Nem kell semmilyen speciális jogkivonat-szolgáltatót használnia, például Azure Active Directory (Azure AD). Az aszimmetrikus kulcsú titkosítás használatával saját [JWT](https://jwt.io/) -szolgáltatót (úgynevezett biztonságos jogkivonat-szolgáltatást vagy STS-t) is létrehozhat. Az egyéni STS-ben az üzleti logikája alapján adhat hozzá jogcímeket.
 
-Győződjön meg arról, hogy a kibocsátó, a közönség és a követelések `ContentKeyPolicyRestriction` pontosan `ContentKeyPolicy`megegyeznek a JWT-ben lévő és a alkalmazásban használt érték között.
+Győződjön meg arról, hogy a kibocsátó, a célközönség és a jogcímek pontosan egyeznek a JWT és a `ContentKeyPolicyRestriction` által `ContentKeyPolicy`használt érték között.
 
-További információt [a Tartalom védelme a Media Services dinamikus titkosításával című témakörben](content-protection-overview.md)talál.
+További információ: [a tartalom Media Services dinamikus titkosítással való védelemmel](content-protection-overview.md)való ellátása.
 
-### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Hogyan és hol kaptam egy JWT token használata előtt, hogy kérjen engedélyt vagy kulcsot?
+### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Hogyan és hol kapok JWT tokent, mielőtt felhasználom egy licenc vagy kulcs igénylésére?
 
-Éles környezetben, rendelkeznie kell secure token service (azaz egy webszolgáltatás), amely egy JWT-jogkivonatot ad ki egy HTTPS-kérelem esetén. A teszteléshez használhatja a `GetTokenAsync` [Program.cs.](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)
+Éles környezetben a biztonságos jogkivonat-szolgáltatást (azaz egy webszolgáltatást) kell használnia, amely JWT-jogkivonatot ad ki egy HTTPS-kérelem alapján. A teszthez használhatja a `GetTokenAsync` [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)-ben definiált metódusban megjelenő kódot.
 
-A játékos a felhasználó hitelesítése után kéri az STS-t egy ilyen tokenért, és hozzárendeli a token értékeként. Használhatja az [Azure Media Player API-t.](https://amp.azure.net/libs/amp/latest/docs/)
+A lejátszó kérést küld egy felhasználó hitelesítése után az STS számára egy ilyen jogkivonat számára, és hozzárendeli azt a jogkivonat értékeként. Használhatja a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)-t.
 
-Az STS szimmetrikus kulccsal vagy aszimmetrikus kulccsal való futtatására vonatkozó példát a [JWT eszköz](https://aka.ms/jwt)ben láthatja. Egy példa egy ilyen JWT-jogkivonatot használó Azure Media Player-lejátszóra, tekintse meg az [Azure media test tool](https://aka.ms/amtest). (Bontsa ki a **player_settings** hivatkozást a tokenbemenet megtekintéséhez.)
+Az STS szimmetrikus kulccsal vagy aszimmetrikus kulccsal való futtatására példát a [JWT eszközben](https://aka.ms/jwt)talál. Az JWT-tokent használó Azure Media Player-alapú játékosok esetében tekintse meg az [Azure Media test Tool eszközt](https://aka.ms/amtest). (A jogkivonat bemenetének megtekintéséhez bontsa ki a **player_settings** hivatkozást.)
 
-### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hogyan engedélyezhetem az AES titkosítással rendelkező videók streamelésére vonatkozó kérelmeket?
+### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hogyan engedélyezi a videók AES-titkosítással való továbbítását?
 
-A helyes megközelítés a Secure Token Service használata. Az STS-ben a felhasználói profiltól függően különböző jogcímeket adhat hozzá (például "Prémium felhasználó", "Alapfelhasználó", "Ingyenes próbafelhasználó"). A JWT különböző jogcímekkel a felhasználó különböző tartalmakat láthat. A különböző tartalmak `ContentKeyPolicyRestriction` vagy eszközök `RequiredClaims` esetében a megfelelő értékkel rendelkezik.
+A helyes módszer a biztonságos jogkivonat-szolgáltatás használata. Az STS-ben a felhasználói profiltól függően adjon hozzá különböző jogcímeket (például "prémium szintű felhasználó", "alapszintű felhasználó", ingyenes próbaverziós felhasználó). A JWT eltérő jogcímek esetén a felhasználó különböző tartalmakat láthat. A különböző tartalmakhoz és eszközökhöz a megfelelő `ContentKeyPolicyRestriction` `RequiredClaims` érték lesz.
 
-Az Azure Media Services API-k használatával konfigurálhatja a licenc-/kulcskézbesítést és titkosíthatja az eszközöket (amint az ebben a [példában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)látható).
+Azure Media Services API-k használatával konfigurálhatja a licencek/kulcsok küldését és titkosíthatja az adategységeket (ahogy az [ebben a mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)is látható).
 
 További információkért lásd:
 
 - [Tartalomvédelem – áttekintés](content-protection-overview.md)
 - [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
 
-### <a name="should-i-use-http-or-https"></a>Http-t vagy HTTPS-t használjak?
-A ASP.NET MVC lejátszó alkalmazásnak a következőket kell támogatnia:
+### <a name="should-i-use-http-or-https"></a>HTTP vagy HTTPS protokollt használok?
+A ASP.NET MVC Player alkalmazásnak a következőket kell támogatnia:
 
-* Felhasználói hitelesítés az Azure AD-n keresztül, amely HTTPS alatt van.
-* JWT csere az ügyfél és az Azure AD, amely HTTPS alatt.
-* DRM-licencbeszerzés az ügyfél által, amelynek HTTPS alatt kell lennie, ha a Media Services biztosítja a licenckézbesítést. A PlayReady termékcsomag nem írja elő a HTTPS-t a licenc kézbesítéséhez. Ha a PlayReady licenckiszolgálója a Media Services szolgáltatáson kívül található, http vagy HTTPS protokollt is használhat.
+* Felhasználói hitelesítés az Azure AD-n keresztül, amely a HTTPS alatt található.
+* JWT az ügyfél és az Azure AD között, amely HTTPS-alapú.
+* Az ügyfél által megvásárolt DRM-licenc, amelynek a HTTPS alatt kell lennie, ha a Media Services biztosít a licencek kézbesítését. A PlayReady termék csomagja nem kötelezi a HTTPS protokoll megadását a licencek kézbesítéséhez. Ha a PlayReady-licenckiszolgáló kívül esik Media Serviceson, HTTP vagy HTTPS protokollt is használhat.
 
-A ASP.NET lejátszó alkalmazás https protokollt használ a legjobb gyakorlatként, így a Media Player https alatt található. A http-t azonban előnyben részesítik a streameléshez, ezért figyelembe kell vennie ezeket a problémákat a vegyes tartalommal:
+A ASP.NET Player alkalmazás a HTTPS protokollt használja ajánlott eljárásként, így Media Player a HTTPS alatt található oldalon. A HTTP azonban a streaming számára ajánlott, ezért ezeket a problémákat vegyes tartalommal kell figyelembe vennie:
 
-* A böngésző nem engedélyezi a vegyes tartalmat. De plug-inek, mint a Silverlight és az OSMF plug-in a Smooth és a DASH nem teszik lehetővé. A vegyes tartalom biztonsági szempont, mivel fennáll a veszélye a rosszindulatú JavaScript-írás befecskendezésének, ami veszélybe sodorhatja az ügyféladatokat. A böngészők alapértelmezés szerint blokkolják ezt a funkciót. Az egyetlen módja annak, hogy a munka körül van a szerver (forrás) oldalon, amely lehetővé teszi az összes domain (függetlenül a TTÓL, HOGY HTTPS vagy HTTP). Ez valószínűleg nem is jó ötlet.
-* Kerülje a vegyes tartalmat. Mind a lejátszóalkalmazásnak, mind a Media Playernek HTTP-t vagy HTTPS-t kell használnia. Vegyes tartalom lejátszásakor a SilverlightSS technológiának törölnie kell a vegyes tartalomra vonatkozó figyelmeztetést. A FlashSS tech kezeli a vegyes tartalom nélkül vegyes tartalom figyelmeztetés.
-* Ha a streamelési végpont 2014 augusztusa előtt jött létre, nem támogatja a HTTPS-t. Ebben az esetben hozzon létre és használjon egy új streamelési végpontot https.In this case, create and use a new stream endpoint for HTTPS.
+* A böngésző nem engedélyezi a kevert tartalmat. A beépülő modulok (például a Silverlight és a OSMF beépülő modul) a zökkenőmentes és a kötőjel esetében is lehetővé teszik. A vegyes tartalom biztonsági problémát jelent, mivel a kártékony JavaScript beadásának lehetősége veszélyezteti a vásárlói adatokat. A böngészők alapértelmezés szerint blokkolja ezt a funkciót. Az egyetlen módja annak, hogy megkerülje a kiszolgálót (forrás) az összes tartomány (a HTTPS vagy HTTP protokolltól függetlenül) engedélyezésével. Ez valószínűleg nem jó ötlet.
+* Kerülje a kevert tartalmat. A Player alkalmazásnak és a Media Playernek egyaránt HTTP vagy HTTPS protokollt kell használnia. Ha vegyes tartalmat játszik, a Silverlight technológiához vegyes tartalmú figyelmeztetést kell törölni. A Flashs Tech vegyes tartalmú figyelmeztetés nélkül kezeli a kevert tartalmakat.
+* Ha a folyamatos átviteli végpontot 2014 augusztusa előtt hozták létre, nem támogatja a HTTPS protokollt. Ebben az esetben hozzon létre és használjon egy új streaming-végpontot a HTTPS-hez.
 
-### <a name="what-about-live-streaming"></a>Mi a helyzet az élő közvetítés?
+### <a name="what-about-live-streaming"></a>Mi a helyzet az élő közvetítéssel?
 
-Pontosan ugyanazt a kialakítást és megvalósítást használhatja az élő streamelés védelmére a Media Services szolgáltatásban, ha a programhoz társított eszközt VOD-eszközként kezeli. Az élő tartalom több DRM-védelemének biztosításához alkalmazza ugyanazt a beállítást/feldolgozást az eszközre, mintha VOD-eszköz lenne, mielőtt az eszközt az élő kimenethez társítana.
+Pontosan ugyanazt a kialakítást és megvalósítást használhatja a Media Services élő közvetítésének védelméhez azáltal, hogy a programhoz a VOD-eszközként társított eszközt kezeli. Az élő tartalom több DRM elleni védelmének biztosításához alkalmazza ugyanazt a telepítést/feldolgozást az eszközre, mintha egy VOD-eszköz lenne, mielőtt az eszközt az élő kimenethez társítja.
 
-### <a name="what-about-license-servers-outside-media-services"></a>Mi a helyzet a Media Servicesen kívüli licenckiszolgálókkal?
+### <a name="what-about-license-servers-outside-media-services"></a>Mi a teendő a Media Serviceson kívüli licenckiszolgálóra?
 
-Az ügyfelek gyakran fektettek be egy licenckiszolgáló-farmba a saját adatközpontjukban vagy a DRM-szolgáltatók által üzemeltetett szolgáltatóban. A Media Services tartalomvédelemmel hibrid módban is működhet. A media services szolgáltatásban a tartalom üzemeltethető és dinamikusan védhető, míg a DRM-licenceket a Media Services szolgáltatáson kívüli kiszolgálók szállítják. Ebben az esetben vegye figyelembe a következő módosításokat:
+Az ügyfelek gyakran a saját adatközpontjában vagy a DRM-szolgáltatók által üzemeltetett licencelési kiszolgálófarm egyik farmján fektettek be. A Media Services Content Protection használatával hibrid módban is működhet. A tartalom üzemeltethető és dinamikusan védhető Media Servicesban, míg a DRM-licenceket a Media Serviceson kívüli kiszolgálók is továbbítják. Ebben az esetben vegye figyelembe a következő változásokat:
 
-* Az STS-nek elfogadható és a licenckiszolgáló-farm által ellenőrizhető jogkivonatokat kell kiadnia. Például az Axinom által biztosított Widevine licenckiszolgálókhoz egy jogosultsági üzenetet tartalmazó adott JWT szükséges. Be kell, hogy egy STS kiadni egy ilyen JWT. 
-* A továbbiakban nem kell konfigurálnia a licenckézbesítési szolgáltatást a Media Services szolgáltatásban. A licencbeszerzési URL-címeket (PlayReady, Widevine és FairPlay `ContentKeyPolicy`esetén) kell megadnia a konfiguráláskor.
+* Az STS-nek olyan jogkivonatokat kell kiállítania, amelyek elfogadhatók, és a licenckiszolgáló-Farm ellenőrizheti őket. A Axinom által biztosított Widevine-licenckiszolgálók például egy adott JWT igényelnek, amely jogosultsági üzenetet tartalmaz. Egy ilyen JWT kibocsátásához STS szükséges. 
+* Már nem kell konfigurálnia a Media Services licenc kézbesítési szolgáltatását. A konfiguráláskor `ContentKeyPolicy`meg kell adnia a licenc-beszerzési URL-címeket (a PlayReady, a Widevine és a Fairplay).
 
 > [!NOTE]
-> A Widevine a Google által nyújtott szolgáltatás, amelyre a Google szolgáltatási feltételei és adatvédelmi irányelvei vonatkoznak.
+> A Widevine a Google által biztosított szolgáltatás, amely a Google használati feltételeinek és adatvédelmi szabályzatának hatálya alá tartozik.
 
-## <a name="media-services-v2-vs-v3"></a>Media Services v2 vs. v3 
+## <a name="media-services-v2-vs-v3"></a>Media Services v2 és v3 
 
-### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Használhatom az Azure Portalon a v3-as erőforrások kezeléséhez?
+### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Használhatom a Azure Portal a v3-erőforrások kezeléséhez?
 
-Jelenleg használhatja az [Azure Portalon:](https://portal.azure.com/)
+Jelenleg a [Azure Portal](https://portal.azure.com/) a következőket használhatja:
 
-* [Élő események](live-events-outputs-concept.md) kezelése a Media Services 3-as verzióját. 
-* Tekintse meg (nem kezeli) a [v3-as eszközöket.](assets-concept.md) 
-* [Az API-k elérésével kapcsolatos információk.](access-api-portal.md) 
+* [Élő események](live-events-outputs-concept.md) kezelése Media Services v3-ban. 
+* V3- [eszközök](assets-concept.md)megtekintése (nem felügyelt). 
+* [Az API-k elérésére vonatkozó információk beolvasása](access-api-portal.md). 
 
-Az összes többi felügyeleti feladathoz (például [átalakítások és feladatok](transforms-jobs-concept.md) és [tartalomvédelem)](content-protection-overview.md)használja a [REST API-t,](https://docs.microsoft.com/rest/api/media/)az [Azure CLI-t](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK-k egyikét.](media-services-apis-overview.md#sdks)
+Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://docs.microsoft.com/rest/api/media/), az [Azure CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
-### <a name="is-there-an-assetfile-concept-in-v3"></a>Van AssetFile koncepció a v3-ban?
+### <a name="is-there-an-assetfile-concept-in-v3"></a>Létezik AssetFile-koncepció a v3-as verzióban?
 
-A `AssetFile` koncepció t lett távolítva a Media Services API-ból a Media Services és a Storage SDK-függőség elkülönítéséhez. Most az Azure Storage, nem a Media Services, a storage SDK-hoz tartozó információkat tartja. 
+A `AssetFile` koncepció el lett távolítva a Media Services API-ból, hogy elkülönítse Media Services a Storage SDK-függőségtől. Az Azure Storage már nem Media Services, a Storage SDK-ban található információkat is megőrzi. 
 
-További információt az [Áttelepítés a Media Services 3-as v3-as című témakörben](media-services-v2-vs-v3.md)talál.
+További információ: [migrálás Media Services v3](media-services-v2-vs-v3.md)-ra.
 
-### <a name="where-did-client-side-storage-encryption-go"></a>Hová került az ügyféloldali tárolótitkosítás?
+### <a name="where-did-client-side-storage-encryption-go"></a>Hol található az ügyféloldali tároló-titkosítás?
 
-Most azt javasoljuk, hogy kiszolgálóoldali tárolótitkosítást használjon (amely alapértelmezés szerint be van kapcsolva). További információ: [Azure Storage Service Encryption for data on in.](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+Javasoljuk, hogy kiszolgálóoldali tároló-titkosítást használjon (amely alapértelmezés szerint be van kapcsolva). További információ: [Azure Storage Service encryption for](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)inaktív adatok.
 
 ## <a name="offline-streaming"></a>Offline adatfolyam
 
 ### <a name="fairplay-streaming-for-ios"></a>FairPlay streaming iOS-hez
 
-Az alábbi gyakori kérdések segítséget nyújtanak az offline FairPlay streamelési hibaelhárításhoz iOS rendszeren.
+A következő gyakori kérdések segítséget nyújtanak az iOS-hez készült offline FairPlay streaming hibaelhárításához.
 
-#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Miért csak a hang játszható le, de a videó offline módban nem?
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Miért csak a hang lejátszása, de a videó nem érhető el offline módban?
 
-Ez a viselkedés úgy tűnik, hogy a mintaalkalmazás kialakítása. Ha offline módban egy másik hangsáv is jelen van (ez a HLS esetében is előfordul), akkor az iOS 10 és az iOS 11 alapértelmezés szerint az alternatív hangsávra van. Az FPS offline mód dalának kompenzálása érdekében távolítsa el az alternatív hangsávot az adatfolyamból. Ehhez a Media Services, adja hozzá a dinamikus jegyzékfájl **szűrő csak audio=false**. Más szóval a HLS URL-címe **.ism/manifest(format=m3u8-aapl,audio-only=false)** végződik. 
+Ez a viselkedés úgy tűnik, hogy a minta alkalmazás megtervezése. Ha egy másodlagos hangsáv van jelen (amely a HLS esetében) az offline módban, az iOS 10 és az iOS 11 alapértelmezett értéke a másodlagos hangsávoknak. Ha kompenzálni szeretné ezt a viselkedést az FPS kapcsolat nélküli módban, távolítsa el a másodlagos hangsávot az adatfolyamból. Ha ezt Media Services szeretné elvégezni, adja hozzá a dinamikus jegyzékfájl szűrője **csak hang = hamis értéket**. Más szóval a HLS URL-címe a **következővel végződik:. ISM/manifest (Format = m3u8-AAPL, csak hang = hamis)**. 
 
-#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Miért csak videó nélkül játssza le a hangot offline módban, miután hozzáadtam a csak hang=hamis hangot?
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>A csak hang hozzáadása után miért is csak a videó lejátszása offline módban
 
-A tartalomkézbesítési hálózat gyorsítótárkulcs-kialakításától függően előfordulhat, hogy a tartalom gyorsítótárba kerül. A gyorsítótár kiürítése.
+A Content Delivery Network gyorsítótár-kulcsának kialakítástól függően előfordulhat, hogy a tartalom gyorsítótárazva van. A gyorsítótár kiürítése.
 
-#### <a name="is-fps-offline-mode-supported-on-ios-11-in-addition-to-ios-10"></a>Az IOS 10 mellett az iOS 11-en is támogatott az FPS offline mód?
+#### <a name="is-fps-offline-mode-supported-on-ios-11-in-addition-to-ios-10"></a>Támogatott-e az FPS-kapcsolat nélküli mód az iOS 11 rendszeren az iOS 10 mellett?
 
-Igen. Az FPS offline mód támogatott az iOS 10 és az iOS 11 rendszerben.
+Igen. Az FPS kapcsolat nélküli üzemmód az iOS 10 és az iOS 11 esetében támogatott.
 
-#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Miért nem találom az "Offline lejátszás FairPlay streameléssel és HTTP Live Streaming tel" dokumentumot az FPS Server SDK-ban?
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Miért nem találom a "kapcsolat nélküli lejátszás az FairPlay Streamingtel és a HTTP Live Streaming" dokumentumot az FPS Server SDK-ban?
 
-Az FPS Server SDK 4-es verziója óta ez a dokumentum beolvadt a "FairPlay Streaming Programming Guide"-ba.
+Az FPS Server SDK 4-es verziója óta ez a dokumentum a "FairPlay streaming programozási útmutatójában" lett egyesítve.
 
-#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Mi a letöltött/offline fájlstruktúra az iOS-eszközökön?
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Mi a letöltött/offline fájl szerkezete iOS-eszközökön?
 
-Az iOS-eszközön letöltött fájlstruktúra a következő képernyőképhez hasonlóan néz ki. A `_keys` mappa tárolja a letöltött FPS-licenceket, minden licencszolgáltatás-állomáshoz egy tárolófájltartozik. A `.movpkg` mappa hang- és videotartalmat tárol. 
+Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött fps-licenceket egy áruházbeli fájllal tárolja az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa tárolja a hang-és video-tartalmakat. 
 
-Az első olyan mappa, amelynek neve kötőjellel végződik, majd egy szám, videotartalmat tartalmaz. A numerikus érték a videointerpretációk maximális sávszélessége. A második mappa, amelynek neve kötőjellel végződik, majd 0-val, hangtartalmat tartalmaz. A harmadik `Data` nevű mappa tartalmazza az FPS-tartalom fő lejátszási listáját. Végül a boot.xml fájl teljes `.movpkg` körű leírást ad a mappa tartalmáról. 
+Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy szám, amely a videó tartalmát tartalmazza. A numerikus érték a videó-kiadatások maximális sávszélessége. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. A nevű `Data` harmadik mappa tartalmazza az fps-tartalom fő lejátszási listáját. Végül a boot. XML a `.movpkg` mappa tartalmának teljes leírását tartalmazza. 
 
-![Kapcsolat nélküli fájlstruktúra a FairPlay iOS mintaalkalmazáshoz](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+![Offline FairPlay iOS-minta alkalmazáshoz](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
 
-Íme egy boot.xml mintafájl:
+Íme egy minta rendszerindító. xml fájl:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -227,40 +227,40 @@ Az első olyan mappa, amelynek neve kötőjellel végződik, majd egy szám, vid
 </HLSMoviePackage>
 ```
 
-### <a name="widevine-streaming-for-android"></a>Widevine streaming Androidra
+### <a name="widevine-streaming-for-android"></a>Widevine streaming Android rendszerhez
 
-#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>Hogyan szállíthatok állandó licenceket (offline engedélyezve) egyes ügyfelek/felhasználók és nem állandó licencek (offline letiltva) mások számára? Meg kell kettőznem a tartalmat, és külön tartalomkulcsokat kell használnom?
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>Hogyan biztosíthatok állandó licenceket (offline) az egyes ügyfelek/felhasználók és a nem állandó licencek (offline letiltva) számára mások számára? Duplikálni kell a tartalmat, és külön tartalmi kulcsokat kell használniuk?
 
-Mivel a Media Services v3 `StreamingLocator` lehetővé teszi, hogy egy eszköz több példányt, akkor a következők:
+Mivel a Media Services v3 lehetővé teszi, hogy egy `StreamingLocator` eszköz több példányban is legyen, a következőket teheti:
 
-* Egy `ContentKeyPolicy` `license_type = "persistent"`például `ContentKeyPolicyRestriction` a `"persistent"`, a `StreamingLocator`követeléssel és a.
-* Egy `ContentKeyPolicy` másik `license_type="nonpersistent"` `ContentKeyPolicyRestriction` esetben a `"nonpersistent`, a `StreamingLocator`követelés ", és annak .
-* Két `StreamingLocator` példány, amelyek `ContentKey` különböző értékeket tartalmaznak.
+* Egy `ContentKeyPolicy` példány, `license_type = "persistent"`a `ContentKeyPolicyRestriction` következővel: `"persistent"`, jogcím: `StreamingLocator`,.
+* Egy `ContentKeyPolicy` másik példány `license_type="nonpersistent"` `ContentKeyPolicyRestriction` , amely a ( `"nonpersistent`z `StreamingLocator`) és a (z) jogcímevel rendelkezik.
+* Két `StreamingLocator` példány, amelyek eltérő `ContentKey` értékekkel rendelkeznek.
 
-Az egyéni STS üzleti logikájától függően a JWT-jogkivonat ban különböző jogcímek kerülnek kiadásra. A jogkivonattal csak a megfelelő licenc szerezhető be, és csak a megfelelő URL-cím játszható le.
+Az egyéni STS üzleti logikától függően a rendszer különböző jogcímeket ad ki a JWT-jogkivonatban. A jogkivonattal csak a megfelelő licenc szerezhető be, és csak a megfelelő URL-cím játszható le.
 
-#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Mi a Widevine és a Media Services DRM biztonsági szintjei közötti leképezés?
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Mi a Widevine és a Media Services DRM biztonsági szintek közötti leképezés?
 
-A Google "Widevine DRM Architecture Overview" című szolgáltatása három biztonsági szintet határoz meg. A [Widevine licencsablonazure Media Services-dokumentációja](widevine-license-template-overview.md) azonban öt biztonsági szintet vázol fel (a lejátszáshoz szükséges ügyfélrobusztussági követelmények). Ez a szakasz bemutatja, hogyan térképezik le a biztonsági szinteket.
+A Google "Widevine DRM-architektúra áttekintése" három biztonsági szintet határoz meg. A Widevine- [licenc sablonjának Azure Media Services dokumentációja](widevine-license-template-overview.md) azonban öt biztonsági szintet vázol fel (a lejátszási ügyfél megbízhatósági követelményei). Ez a szakasz a biztonsági szintek leképezését ismerteti.
 
-A biztonsági szintek mindkét csoportját a Google Widevine határozza meg. A különbség a használati szint: architektúra vagy API. Az öt biztonsági szint a Widevine API-ban használatos. Az `content_key_specs` objektum, `security_level`amely tartalmazza , deszerializált, és átadta a Widevine globális kézbesítési szolgáltatás az Azure Media Services Widevine licencszolgáltatás. Az alábbi táblázat a két biztonsági szint csoport közötti leképezést mutatja be.
+A Google Widevine a biztonsági szintek mindkét készletét definiálja. A különbség a használati szint: architektúra vagy API. Az öt biztonsági szint a Widevine API-ban használatos. A `content_key_specs` -t tartalmazó `security_level`objektumot a rendszer deszerializálja, és átadja a Widevine globális kézbesítési szolgáltatásnak a Azure Media Services Widevine License Service. A következő táblázat a két biztonsági szint közötti leképezést mutatja be.
 
-| **A Widevine architektúrában meghatározott biztonsági szintek** |**A Widevine API-ban használt biztonsági szintek**|
+| **A Widevine architektúrában definiált biztonsági szintek** |**A Widevine API-ban használt biztonsági szintek**|
 |---|---| 
-| **1. biztonsági szint:** Minden tartalomfeldolgozás, kriptográfia és vezérlés a megbízható végrehajtási környezetben (TEE) történik. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipekben hajtható végre.|**security_level=5**: Az adathordozók titkosítását, dekódolását és minden kezelését (tömörített és tömörítetlen) hardveres pólón belül kell kezelni.<br/><br/>**security_level=4**: A tartalom titkosítását és dekódolását hardveres en-alapú TEE-n belül kell elvégezni.|
-**2. biztonsági szint:** A titkosítás (de nem videófeldolgozás) a TEE-n belül történik. A visszafejtett pufferek visszakerülnek az alkalmazástartományba, és külön videohardveren vagy szoftveren keresztül kerülnek feldolgozásra. A 2.| **security_level=3**: A kulcsanyag- és titkosítási műveleteket hardveres pólón belül kell végrehajtani. |
-| **3-as biztonsági szint:** Nincs TEE a készüléken. Megfelelő intézkedéseket lehet tenni a gazdaoperációs rendszeren található kriptográfiai információk és visszafejtett tartalom védelmére. A 3- as szintű implementáció tartalmazhat egy hardveres kriptográfiai motort is, de ez csak a teljesítményt növeli, a biztonságot nem. | **security_level=2**: Szoftveres kriptográfia és egy elbúzított dekóder szükséges.<br/><br/>**security_level=1**: Szoftveralapú fehérdobozos titkosítás szükséges.|
+| **1. biztonsági szint**: a rendszer az összes tartalom feldolgozását, titkosítását és ellenőrzését a megbízható végrehajtási környezetben (Tee) hajtja végre. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipeken végezhető el.|**security_level = 5**: a titkosítást, a dekódolást és az adathordozó összes kezelését (tömörített és tömörítetlen) egy HARDVERes pólón belül kell kezelni.<br/><br/>**security_level = 4**: a tartalom titkosítását és dekódolását HARDVERes pólón belül kell végrehajtani.|
+**2. biztonsági szint**: a titkosítás (de nem a videó feldolgozása) a pólón belül történik. A visszafejtett pufferek visszakerülnek az alkalmazás-tartományba, és külön videó hardveren vagy szoftveren keresztül dolgozzák fel azokat. A 2. szinten azonban a titkosítási adatok feldolgozása még csak a PÓLÓn belül történik.| **security_level = 3**: a kulcsfontosságú anyagokat és titkosítási műveleteket egy HARDVERes pólón belül kell végrehajtani. |
+| **3. biztonsági szint**: nincs póló az eszközön. A titkosítási információk és a visszafejtett tartalmak a gazdagép operációs rendszerén való ellátásához megfelelő mértékeket kell végrehajtani. A 3. szintű implementációk hardveres titkosítási motort is tartalmazhatnak, de ez csak a teljesítményt javítja, nem pedig a biztonságot. | **security_level = 2**: a szoftveres titkosítás és a megzavarodott dekóder szükséges.<br/><br/>**security_level = 1**: a szoftveres, fehér mezős titkosítás szükséges.|
 
 #### <a name="why-does-content-download-take-so-long"></a>Miért tart ilyen sokáig a tartalom letöltése?
 
-A letöltési sebesség kétféleképpen javítható:
+A letöltési sebesség javítása kétféleképpen lehetséges:
 
-* Engedélyezze a tartalomkézbesítési hálózatot, hogy a felhasználók nagyobb valószínűséggel érjék el azt a tartalomletöltési végpont helyett az eredeti/streamelési végpontot. Ha egy felhasználó egy streamelési végpontot ér el, minden HLS-szegmens vagy DASH-töredék dinamikusan van csomagolva és titkosítva. Annak ellenére, hogy ez a késés ezredmásodpercben van minden szegmensben vagy töredékben, ha egy órás videóval rendelkezik, a felhalmozott késés nagy lehet, és hosszabb letöltést okozhat.
-* Adja meg a felhasználóknak a lehetőséget, hogy szelektíven töltse le a videó minőségű rétegek és hangsávok helyett minden tartalmát. Offline módban nincs értelme letölteni az összes minőségi réteget. Ezt kétféleképpen lehet elérni:
+* Engedélyezheti a Content Delivery networkt, hogy a felhasználók nagyobb valószínűséggel elérjenek, hogy a tartalom letöltéséhez a forrás/streaming végpont helyett. Ha a felhasználó egy folyamatos átviteli végpontot talál, az egyes HLS-szegmensek és-GONDOLATJELek töredékei dinamikusan vannak csomagolva és titkosítva. Bár ez a késés az egyes szegmensekhez vagy töredékekhez tartozó ezredmásodperces skálán van, ha egy órás videóval rendelkezik, a halmozott késés nagy lehet, és hosszabb letöltést eredményezhet.
+* Lehetővé teszi a felhasználóknak a minőségi rétegek és hangsávok szelektív letöltését az összes tartalom helyett. Kapcsolat nélküli módban az összes minőségi réteget nem lehet letölteni. A következő két módon valósítható meg:
 
-  * Ügyfél által vezérelt: A lejátszó alkalmazás automatikusan kiválasztja, vagy a felhasználó kiválasztja a videó minőségi réteget és a letöltandó hangsávokat.
-  * Szolgáltatás vezérelte: Az Azure Media Services dinamikus jegyzékfájl szolgáltatásával létrehozhat egy (globális) szűrőt, amely a HLS-lejátszási listát vagy a DASH MPD-t egyetlen videominőségi rétegre és a kiválasztott hangsávokra korlátozza. Ezután a felhasználók számára bemutatott letöltési URL-cím tartalmazza ezt a szűrőt.
+  * Ügyfél által vezérelt: a lejátszó alkalmazás automatikusan kiválasztja, vagy a felhasználó kiválasztja a videó minőségi réteget és a letöltendő hangsávokat.
+  * Felügyelt szolgáltatás: a Azure Media Services dinamikus jegyzékfájl funkciójának használatával létrehozhat egy (globális) szűrőt, amely korlátozza a HLS lejátszási lista vagy kötőjel MPD használatát egyetlen videó minőségi rétegre és kiválasztott hangsávokra. Ezután a felhasználók számára megjelenített letöltési URL-cím tartalmazza ezt a szűrőt.
 
 ## <a name="next-steps"></a>További lépések
 
-[A Media Services 3-as v3-as ügyének áttekintése](media-services-overview.md)
+[Media Services v3 – áttekintés](media-services-overview.md)

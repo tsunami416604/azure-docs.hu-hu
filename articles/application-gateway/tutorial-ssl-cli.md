@@ -1,6 +1,6 @@
 ---
-title: TLS-megszüntetés a CLI használatával – Azure Application Gateway
-description: Ismerje meg, hogyan hozhat létre egy alkalmazásátjárót, és hogyan adhat hozzá tanúsítványt a TLS-megszüntetéshez az Azure CLI használatával.
+title: TLS-lezárás a parancssori felület használatával – Azure Application Gateway
+description: Ismerje meg, hogyan hozhat létre Application Gateway-tanúsítványt, és hogyan adhat hozzá tanúsítványokat a TLS-lezáráshoz az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311978"
 ---
-# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása TLS-végződtetéssel az Azure CLI használatával
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Application Gateway létrehozása TLS-megszakítással az Azure CLI használatával
 
-Az Azure CLI segítségével létrehozhat egy [alkalmazásátjárót](overview.md) a [TLS-megszüntetési](ssl-overview.md)tanúsítvánnyal. Háttérkiszolgálók esetén [használhat virtuálisgép-méretezési készletet.](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
+Az Azure CLI-vel létrehozhat egy, a [TLS](ssl-overview.md)-leállításhoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. A háttér-kiszolgálók esetében használhat virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -27,17 +27,17 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha szeretné, ezt az eljárást az Azure PowerShell használatával is [elvégezheti.](tutorial-ssl-powershell.md)
+Ha szeretné, az eljárást [Azure PowerShell](tutorial-ssl-powershell.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a cikk megköveteli az Azure CLI 2.0.4-es vagy újabb verziójának futtatását. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben a cikkben önaláírt tanúsítványt és pfx fájlt hozhat létre az openssl paranccsal.
+Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben a cikkben létrehoz egy önaláírt tanúsítványt és pfx-fájlt az OpenSSL parancs használatával.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Ebben a példában az **https://52.170.203.149**URL-cím a következő: .
+Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Ebben a példában az URL-cím a **https://52.170.203.149**következő:.
 
 ![Biztonsági figyelmeztetés](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

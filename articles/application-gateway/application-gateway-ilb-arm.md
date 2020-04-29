@@ -1,5 +1,5 @@
 ---
-title: Belső terheléselosztóval való használat - Azure Application Gateway
+title: Használat belső Load Balancerokkal – Azure Application Gateway
 description: Ez az oldal utasításokat tartalmaz egy belső terheléselosztóval (ILB) rendelkező Azure Application Gateway létrehozásához, konfigurálásához, indításához és törléséhez az Azure Resource Manager számára
 services: application-gateway
 author: vhorne
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312424"
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Alkalmazásátjáró létrehozása belső terheléselosztóval (ILB)
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Application Gateway létrehozása belső terheléselosztó (ILB) használatával
 
-Az Azure Application Gateway konfigurálható egy internetre irányuló virtuális IP-címhez vagy egy internettel nem érintkező belső végponthoz, más néven egy belső terheléselosztó (ILB) végponthoz. Az átjáró ILB-vel történő konfigurálása a belső üzletági alkalmazásoknál hasznos, amelyek nem érintkeznek az internettel. Ez olyan többrétegű alkalmazásokon belüli szolgáltatások és rétegek esetében is hasznos, amelyek olyan biztonsági határon helyezkednek el, amely nincs kitéve az internetnek, de továbbra is ciklikus multiplexeléses terheléselosztást, munkamenet-ragacsosságot vagy Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL) végződést igényelnek.
+Az Azure Application Gateway konfigurálható egy internetre irányuló virtuális IP-címhez vagy egy internettel nem érintkező belső végponthoz, más néven egy belső terheléselosztó (ILB) végponthoz. Az átjáró ILB-vel történő konfigurálása a belső üzletági alkalmazásoknál hasznos, amelyek nem érintkeznek az internettel. A többrétegű alkalmazásokban olyan szolgáltatásokhoz és szintekhez is hasznos, amelyek olyan biztonsági határt foglalnak, amely nem érhető el az interneten, de továbbra is szükség van a ciklikus multiplexelés, a munkamenetek és a Transport Layer Security (TLS), korábbi nevén SSL (SSL) megszakítására.
 
 Ez a cikk részletesen ismerteti egy Application Gateway ILB-hez történő konfigurálásának lépéseit.
 
@@ -24,15 +24,15 @@ Ez a cikk részletesen ismerteti egy Application Gateway ILB-hez történő konf
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Telepítse az Azure PowerShell-modul legújabb verzióját a [telepítési utasításokat](/powershell/azure/install-az-ps)követve.
+1. Telepítse a Azure PowerShell modul legújabb verzióját a [telepítési utasításokat](/powershell/azure/install-az-ps)követve.
 2. Létre kell hozni egy virtuális hálózatot és alhálózatot az Application Gateway számára. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
 3. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Mire van szükség egy Application Gateway létrehozásához?
 
 * **Háttér-kiszolgálókészlet:** A háttérkiszolgálók IP-címeinek listája. A lenti listán szereplő IP-címeknek a virtuális hálózathoz kell tartozniuk, egy Application Gateway számára fenntartott másik alhálózatban, vagy nyilvános/virtuális IP-címnek kell lenniük.
-* **Háttérkiszolgáló-készlet beállításai:** Minden készlet rendelkezik olyan beállításokkal, mint a port, a protokoll és a cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
-* **Előtér-port:** Ez a port az alkalmazásátjárón megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
+* **Háttérbeli kiszolgáló készletének beállításai:** Minden készlet rendelkezik olyan beállításokkal, mint a port, a protokoll és a cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
+* **Előtér-port:** Ez a port az Application gatewayen megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
 * **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, kis- és a nagybetűk megkülönböztetésével) és az SSL tanúsítványnévvel rendelkezik.
 * **Szabály:** A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, hogy mely háttérkiszolgáló-készletre legyen átirányítva a forgalom, ha elér egy adott figyelőt. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
 
@@ -86,7 +86,7 @@ New-AzResourceGroup -Name appgw-rg -location "West US"
 
 Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
 
-Az előző példában létrehoztunk egy "appgw-rg" nevű erőforráscsoportot és "USA nyugati telephelye" nevű erőforráscsoportot.
+Az előző példában létrehoztunk egy "appgw-RG" nevű erőforráscsoportot és a "West US" helyet.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Virtuális hálózat és alhálózat létrehozása az Application Gateway számára
 
@@ -98,7 +98,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy virtuális hálózatot a R
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
-Ez a lépés a 10.0.0.0/24 címtartományt egy virtuális hálózat létrehozásához használt alhálózati változóhoz rendeli.
+Ez a lépés a 10.0.0.0/24 címtartományt rendeli hozzá a virtuális hálózat létrehozásához használt alhálózati változóhoz.
 
 ### <a name="step-2"></a>2. lépés
 
@@ -106,7 +106,7 @@ Ez a lépés a 10.0.0.0/24 címtartományt egy virtuális hálózat létrehozás
 $vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
-Ez a lépés létrehoz egy "appgwvnet" nevű virtuális hálózatot az "appgw-rg" erőforráscsoportban az USA nyugati régiójában a 10.0.0.0/16 előtag 10.0.0.0/24 alhálózattal.
+Ez a lépés létrehoz egy "appgwvnet" nevű virtuális hálózatot az "appgw-RG" erőforráscsoporthoz az USA nyugati régiójában, a 10.0.0.0/16 előtagot használva a 10.0.0.0/24 alhálózattal.
 
 ### <a name="step-3"></a>3. lépés
 
@@ -114,7 +114,7 @@ Ez a lépés létrehoz egy "appgwvnet" nevű virtuális hálózatot az "appgw-rg
 $subnet = $vnet.subnets[0]
 ```
 
-Ez a lépés az alhálózati objektumot a változóhoz rendeli $subnet a következő lépésekhez.
+Ez a lépés az alhálózati objektumot a következő lépésekhez rendeli $subnet változóhoz.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Hozzon létre egy Application Gateway konfigurációs objektumot
 
@@ -124,7 +124,7 @@ Ez a lépés az alhálózati objektumot a változóhoz rendeli $subnet a követk
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 ```
 
-Ez a lépés létrehoz egy "gatewayIP01" nevű alkalmazásátjáró IP-konfigurációját. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
+Ez a lépés létrehoz egy "gatewayIP01" nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
 ### <a name="step-2"></a>2. lépés
 
@@ -132,7 +132,7 @@ Ez a lépés létrehoz egy "gatewayIP01" nevű alkalmazásátjáró IP-konfigur�
 $pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-Ez a lépés a "pool01" nevű háttér-IP-címkészletet "10.1.1.8, 10.1.1.9, 10.1.1.10" IP-címmel konfigurálja. Ezek az IP-címek fogadják az előtérbeli IP-végpontból érkező hálózati forgalmat. Az előző IP-címeket lecseréli a saját alkalmazása IP-címvégpontjaira.
+Ez a lépés a "pool01" nevű háttérbeli IP-címkészletet konfigurálja a következő IP-címekkel: "10.1.1.8, 10.1.1.9, 10.1.1.10". Ezek az IP-címek fogadják az előtérbeli IP-végpontból érkező hálózati forgalmat. Az előző IP-címeket lecseréli a saját alkalmazása IP-címvégpontjaira.
 
 ### <a name="step-3"></a>3. lépés
 
@@ -140,7 +140,7 @@ Ez a lépés a "pool01" nevű háttér-IP-címkészletet "10.1.1.8, 10.1.1.9, 10
 $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Ez a lépés az alkalmazásátjáró "poolsetting01" beállítását konfigurálja a háttérkészlet terheléselosztásos hálózati forgalmára.
+Ez a lépés a "poolsetting01" Application Gateway-beállítást konfigurálja a háttérbeli készlet terheléselosztási hálózati forgalmához.
 
 ### <a name="step-4"></a>4. lépés
 
@@ -148,7 +148,7 @@ Ez a lépés az alkalmazásátjáró "poolsetting01" beállítását konfigurál
 $fp = New-AzApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
-Ez a lépés az ILB "frontendport01" nevű előtér-IP-portját konfigurálja.
+Ez a lépés a "frontendport01" nevű előtér-IP-portot konfigurálja a ILB.
 
 ### <a name="step-5"></a>5. lépés
 
@@ -156,7 +156,7 @@ Ez a lépés az ILB "frontendport01" nevű előtér-IP-portját konfigurálja.
 $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
-Ez a lépés létrehozza a "fipconfig01" nevű előtér-IP-konfigurációt, és az aktuális virtuális hálózati alhálózat privát IP-címéhez társítja azt.
+Ez a lépés létrehozza az "fipconfig01" nevű előtérbeli IP-konfigurációt, és társítja azt egy magánhálózati IP-címmel az aktuális virtuális hálózat alhálózatáról.
 
 ### <a name="step-6"></a>6. lépés
 
@@ -164,7 +164,7 @@ Ez a lépés létrehozza a "fipconfig01" nevű előtér-IP-konfigurációt, és 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
-Ez a lépés létrehozza a figyelő úgynevezett "figyelő01", és társítja az előtér-port az előtér-IP-konfiguráció.
+Ez a lépés létrehozza a "listener01" nevű figyelőt, és társítja az előtér-portot az előtérbeli IP-konfigurációhoz.
 
 ### <a name="step-7"></a>7. lépés
 
@@ -172,7 +172,7 @@ Ez a lépés létrehozza a figyelő úgynevezett "figyelő01", és társítja az
 $rule = New-AzApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
-Ez a lépés létrehozza a "rule01" nevű terheléselosztó útválasztási szabályt, amely konfigurálja a terheléselosztó viselkedését.
+Ez a lépés létrehozza a "rule01" nevű terheléselosztó-útválasztási szabályt, amely a terheléselosztó viselkedését konfigurálja.
 
 ### <a name="step-8"></a>8. lépés
 
@@ -180,24 +180,24 @@ Ez a lépés létrehozza a "rule01" nevű terheléselosztó útválasztási szab
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
-Ez a lépés az alkalmazásátjáró példányméretét konfigurálja.
+Ez a lépés az Application Gateway példányának méretét konfigurálja.
 
 > [!NOTE]
-> A kapacitás alapértelmezett értéke 2. A Sku-név hez Standard_Small, Standard_Medium és Standard_Large között választhat.
+> A kapacitás alapértelmezett értéke 2. Az SKU neve beállításnál választhat Standard_Small, Standard_Medium és Standard_Large közül.
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Application Gateway létrehozása a New-AzureApplicationGateway használatával
 
-Létrehoz egy alkalmazásátjárót az előző lépések összes konfigurációs elemével. Ebben a példában az Application Gateway neve „appgwtest”.
+Létrehoz egy Application Gateway-t az előző lépések összes konfigurációs elemével. Ebben a példában az Application Gateway neve „appgwtest”.
 
 ```powershell
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-Ez a lépés létrehoz egy alkalmazásátjárót az előző lépések összes konfigurációs elemével. Ebben a példában az Application Gateway neve „appgwtest”.
+Ez a lépés létrehoz egy Application Gateway-t az előző lépések összes konfigurációs elemével. Ebben a példában az Application Gateway neve „appgwtest”.
 
 ## <a name="delete-an-application-gateway"></a>Application Gateway törlése
 
-Alkalmazásátjáró törléséhez a következő lépéseket kell tennie a következő sorrendben:
+Egy Application Gateway törléséhez a következő lépéseket kell elvégeznie a sorrendben:
 
 1. Állítsa le az átjárót a `Stop-AzApplicationGateway` parancsmaggal.
 2. Távolítsa el az átjárót a `Remove-AzApplicationGateway` parancsmaggal.
@@ -213,7 +213,7 @@ $getgw =  Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ### <a name="step-2"></a>2. lépés
 
-Állítsa le az Application Gatewayt a `Stop-AzApplicationGateway` parancsmaggal. Ez a `Stop-AzApplicationGateway` minta az első sorban lévő parancsmaletet mutatja, majd a kimenetet.
+Állítsa le az Application Gatewayt a `Stop-AzApplicationGateway` parancsmaggal. Ez a példa az `Stop-AzApplicationGateway` első sorban lévő parancsmagot mutatja, amelyet a kimenet követ.
 
 ```powershell
 Stop-AzApplicationGateway -ApplicationGateway $getgw  
@@ -263,5 +263,5 @@ Ha SSL-alapú kiszervezést szeretne konfigurálni: [Application Gateway konfigu
 Ha további általános információra van szüksége a terheléselosztás beállításaival kapcsolatban:
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+* [Azure-Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 

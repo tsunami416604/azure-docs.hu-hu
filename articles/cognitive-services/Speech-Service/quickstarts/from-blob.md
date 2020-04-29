@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A blobstorageban tárolt beszédfelismerés'
+title: 'Gyors útmutató: a blob Storage-ban tárolt beszéd felismerése'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Batch Transcription REST API-t fogja használni a SAS blobban tárolt beszéd aszinkron felismeréséhez.
+description: Ebben a rövid útmutatóban a Batch átíró REST API használatával aszinkron módon ismeri fel a SAS-blobokban tárolt beszédet.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: b302180257ec6624ebd6144a7680755a2856899e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400903"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Rövid útmutató: A blobstorageban tárolt beszédfelismerés
+# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Gyors útmutató: a blob Storage-ban tárolt beszéd felismerése
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

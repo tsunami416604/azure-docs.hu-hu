@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések az Azure tűzfalról
-description: Gyakori kérdések az Azure tűzfalhoz. Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely védi az Azure virtuális hálózati erőforrásait.
+title: Azure Firewall GYIK
+description: Azure Firewall kapcsolatos gyakori kérdések. Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,85 +8,85 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
 ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383073"
 ---
-# <a name="azure-firewall-faq"></a>Gyakori kérdések az Azure tűzfalról
+# <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
 ## <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
-Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Ez egy teljesen állapotalapú tűzfal-as-a-szolgáltatás beépített magas rendelkezésre állás és korlátlan felhő méretezhetőség. Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan.
+Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Ez egy teljes körűen kiépíthető, magas rendelkezésre állású és korlátlan Felhőbeli skálázhatósági szolgáltatás. Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan.
 
-## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Milyen képességeket támogat az Azure Firewall?
+## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Milyen képességeket támogat a Azure Firewall?
 
-* Állapotalapú tűzfal szolgáltatásként
-* Beépített, magas rendelkezésre állás korlátlan felhőméretezhetőséggel
+* Állapot-nyilvántartó tűzfal szolgáltatásként
+* Beépített magas rendelkezésre állás a korlátlan felhő méretezhetőségével
 * FQDN-szűrés
 * FQDN-címkék
 * Hálózati forgalomra vonatkozó szűrési szabályok
 * Kimenő SNAT-támogatás
 * Bejövő DNAT-támogatás
-* Alkalmazás- és hálózati kapcsolatszabályzatok központi létrehozása, kényszerítése és naplózása az Azure-előfizetések és virtuális hálózatok között
-* Teljes mértékben integrálva az Azure Monitorba a naplózáshoz és elemzéshez
+* Alkalmazás-és hálózati csatlakozási szabályzatok központi létrehozása, betartatása és naplózása az Azure-előfizetések és a virtuális hálózatok között
+* Teljes mértékben integrált Azure Monitor a naplózáshoz és az elemzéshez
 
-## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi az Azure Firewall tipikus telepítési modellje?
+## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi a Azure Firewall általános telepítési modellje?
 
-Az Azure Firewall bármely virtuális hálózaton üzembe helyezhető, de az ügyfelek általában központi virtuális hálózaton telepítheti, és más virtuális hálózatokat létesítenek egy küllős modellben. Ezután beállíthatja, hogy a társviszony-létesített virtuális hálózatok alapértelmezett útvonala erre a központi tűzfalvirtuális hálózatra mutasson. Globális virtuális kapcsolatlétesítés támogatott, de nem ajánlott, mert a potenciális teljesítmény és a késés problémák régiók között. A legjobb teljesítmény érdekében régiónként egy tűzfalat telepítsen.
+A Azure Firewall bármely virtuális hálózaton üzembe helyezhető, de az ügyfelek jellemzően központi virtuális hálózaton telepítik, és más virtuális hálózatokon keresztül, egy sugaras modellben. Ezután megadhatja az alapértelmezett útvonalat a virtuális hálózatok között, hogy erre a központi tűzfal virtuális hálózatra mutasson. A globális VNet-társítás támogatott, de a lehetséges teljesítmény-és késési problémák miatt nem ajánlott a régiók között. A legjobb teljesítmény érdekében régiónként helyezzen üzembe egy tűzfalat.
 
-Ennek a modellnek az az előnye, hogy központilag több küllős VNET-t irányít különböző előfizetések között. Költségmegtakarítás is történt, mivel nem kell külön-külön telepítenie a tűzfalat az egyes virtuális hálózatokban. A költségmegtakarítást a társtárs-társviszony-létesítési költségekhez képest kell mérni az ügyfél forgalmi mintái alapján.
+Ennek a modellnek az előnye, hogy a különböző előfizetésekben található több küllős virtuális hálózatok esetében központilag szabályozható a szabályozás. A költségmegtakarításhoz nem kell külön tűzfalat telepítenie az egyes VNet. A költségmegtakarítást az ügyfél-forgalmi szokások alapján kell mérni, és a társítási társítás költségeit is meg kell határozni.
 
-## <a name="how-can-i-install-the-azure-firewall"></a>Hogyan telepíthetem az Azure tűzfalat?
+## <a name="how-can-i-install-the-azure-firewall"></a>Hogyan telepíthetem a Azure Firewall?
 
-Az Azure Firewall az Azure Portalon, a PowerShell, a REST API-n vagy a sablonok használatával állítható be. Tekintse meg [az oktatóanyagot: Az Azure Firewall telepítése és konfigurálása az Azure](tutorial-firewall-deploy-portal.md) Portal használatával lépésről lépésre című témakört.
+Azure Firewall a Azure Portal, a PowerShell, a REST API vagy a sablonok használatával állítható be. Lásd [az oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása](tutorial-firewall-deploy-portal.md) című témakört, amely részletes útmutatást nyújt a Azure Portal.
 
-## <a name="what-are-some-azure-firewall-concepts"></a>Mik az Azure Firewall-fogalmak?
+## <a name="what-are-some-azure-firewall-concepts"></a>Mik azok a Azure Firewall fogalmak?
 
-Az Azure Firewall támogatja a szabályokat és a szabálygyűjteményeket. A szabálygyűjtemény olyan szabályok készlete, amelyek azonos sorrenddel és prioritással rendelkeznek. A szabálybeszedések végrehajtása a prioritásuk sorrendjében történik. A hálózati szabálygyűjtemények magasabb prioritásúak, mint az alkalmazásszabály-gyűjtemények, és minden szabály megszűnik.
+Azure Firewall támogatja a szabályokat és a szabályok gyűjteményeit. A szabálygyűjtemény olyan szabályok halmaza, amelyek ugyanazt a sorrendet és prioritást használják. A szabályok gyűjteményei prioritásuk sorrendjében hajthatók végre. A hálózati szabályok gyűjteményei magasabb prioritással rendelkeznek, mint az alkalmazási szabályok gyűjteményei, és minden szabály leáll.
 
-A szabálygyűjtemények három típusa van:
+Háromféle típusú szabálygyűjtemény létezik:
 
-* *Alkalmazásszabályok*: Konfigurálja az alhálózatról elérhető, teljesen minősített tartományneveket (FQDN).Configure fully qualified domain names (FQDNs that can be accessd from a subnet.
-* *Hálózati szabályok*: Konfigurálja a forráscímeket, protokollokat, célportokat és célcímeket tartalmazó szabályokat.
-* *NAT-szabályok*: A DNST-szabályok konfigurálása a bejövő internetkapcsolatok engedélyezéséhez.
+* *Alkalmazási szabályok*: olyan teljes tartománynevek (FQDN-EK) konfigurálása, amelyek egy alhálózatból érhetők el.
+* *Hálózati szabályok*: a forrás-, protokoll-, célport-és célcím-szabályokat tartalmazó szabályok konfigurálása.
+* *NAT-szabályok*: KONFIGURÁLJA a DNAT szabályokat a bejövő internetkapcsolatok engedélyezéséhez.
 
-## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Támogatja az Azure Firewall a bejövő forgalom szűrését?
+## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Támogatja Azure Firewall a bejövő forgalom szűrését?
 
-Az Azure Firewall támogatja a bejövő és kimenő szűrést. A bejövő védelem általában nem HTTP/S protokollokhoz használatos. Például RDP, SSH és FTP protokollok. A legjobb bejövő HTTP/S védelem, használjon egy webalkalmazás tűzfal, például [az Azure Web Application Firewall (WAF)](../web-application-firewall/overview.md).
+Azure Firewall támogatja a bejövő és a kimenő szűrést. A bejövő védelem általában nem HTTP/S protokollokhoz használatos. Például RDP, SSH és FTP protokoll. A legjobb bejövő HTTP/S-védelem érdekében használjon egy webalkalmazási tűzfalat, például az [Azure webalkalmazási tűzfalat (WAF)](../web-application-firewall/overview.md).
 
-## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Mely naplózási és elemzési szolgáltatásokat támogatja az Azure tűzfal?
+## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Mely naplózási és elemzési szolgáltatásokat támogatja a Azure Firewall?
 
-Az Azure Firewall integrálva van az Azure Monitorlal a tűzfalnaplók megtekintéséhez és elemzéséhez. A naplók elküldhetők a Log Analytics, az Azure Storage vagy az Event Hubs. Elemezhetők a Log Analytics szolgáltatásban vagy különböző eszközökkel, például az Excellel és a Power BI-val. További információ: [Oktatóanyag: Az Azure tűzfal naplóinak figyelése.](tutorial-diagnostics.md)
+Azure Firewall integrálva van Azure Monitor a tűzfalak megtekintésére és elemzésére. Naplók küldhetők Log Analyticsba, Azure Storage-ba vagy Event Hubsba. Ezek Log Analytics vagy különböző eszközök, például az Excel és a Power BI segítségével elemezhetők. További információ: [oktatóanyag Azure Firewall-naplók figyelése](tutorial-diagnostics.md).
 
-## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hogyan működik az Azure Firewall másképpen, mint a meglévő szolgáltatások, például a piactéren nva-k?
+## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hogyan működik a Azure Firewall eltérően a meglévő szolgáltatások, például a NVA a piactéren?
 
-Az Azure Firewall egy alapvető tűzfalszolgáltatás, amely képes kezelni bizonyos ügyfél-forgatókönyvek. Várható, hogy lesz egy mix a külső nva-k és az Azure Tűzfal. A jobb együttműködés alapvető prioritás.
+A Azure Firewall egy alapszintű tűzfal-szolgáltatás, amely bizonyos felhasználói forgatókönyvek kezelésére képes. A rendszer azt várta, hogy a külső gyártótól származó NVA és Azure Firewall kombinációja. A jobb együttműködés a legfontosabb prioritás.
 
-## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Mi a különbség az Application Gateway WAF és az Azure Firewall között?
+## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Mi a különbség a Application Gateway WAF és a Azure Firewall között?
 
-A webalkalmazás-tűzfal (WAF) az Application Gateway egyik szolgáltatása, amely központosított bejövő védelmet nyújt a webalkalmazásoknak a gyakori biztonsági rések és biztonsági rések elleni védelemmel szemben. Az Azure Firewall bejövő védelmet biztosít a nem HTTP/S protokollok (például RDP, SSH, FTP), kimenő hálózati szintű védelem az összes port és protokoll, és alkalmazásszintű védelem kimenő HTTP/S.
+A webalkalmazási tűzfal (WAF) a Application Gateway szolgáltatása, amely a webalkalmazások központosított védelmét nyújtja a gyakori biztonsági rések és sebezhetőségek ellen. A Azure Firewall bejövő védelmet biztosít a nem HTTP/S protokollokhoz (például RDP, SSH, FTP), a kimenő hálózati szintű védelmet minden porthoz és protokollhoz, valamint az alkalmazás szintű védelmet a kimenő HTTP/S-n.
 
-## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Mi a különbség a hálózati biztonsági csoportok (NSG-k) és az Azure Firewall között?
+## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Mi a különbség a hálózati biztonsági csoportok (NSG) és a Azure Firewall között?
 
-Az Azure Firewall szolgáltatás kiegészíti a hálózati biztonsági csoport funkcióit. Együtt jobb "mélyreható védelmi" hálózati biztonságot nyújtanak. A hálózati biztonsági csoportok elosztott hálózati rétegforgalom-szűrést biztosítanak, hogy az egyes előfizetésekben a virtuális hálózatokon belüli erőforrásokra irányuló forgalom korlátozása. Az Azure Firewall egy teljesen állapotalapú, központi hálózati tűzfal szolgáltatásként, amely hálózati és alkalmazásszintű védelmet biztosít a különböző előfizetések és virtuális hálózatok között.
+A Azure Firewall szolgáltatás kiegészíti a hálózati biztonsági csoport funkcióit. Együttesen jobb "védelmi mélyreható" hálózati biztonságot nyújtanak. A hálózati biztonsági csoportok elosztott hálózati rétegbeli forgalmi szűrést biztosítanak az egyes előfizetésekben található virtuális hálózatokon belüli erőforrások forgalmának korlátozására. A Azure Firewall egy teljes körűen kiszolgált, központosított hálózati tűzfal, amely hálózati és alkalmazás-szintű védelmet biztosít a különböző előfizetések és virtuális hálózatok között.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>A hálózati biztonsági csoportok (NSG-k) támogatottak az AzureFirewallSubnet?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Támogatottak-e a hálózati biztonsági csoportok (NSG) a AzureFirewallSubnet?
 
-Az Azure Firewall egy felügyelt szolgáltatás több védelmi réteget, beleértve a platformvédelem hálózati hálózati szintű NSG-k (nem látható).  Alhálózati szintű NSG-k nem szükségesek az AzureFirewallSubnet, és le vannak tiltva, hogy ne szakadjon meg a szolgáltatás megszakítása.
+Azure Firewall felügyelt szolgáltatás több védelmi réteggel, beleértve a platform védelmét NIC szintű NSG (nem megtekinthető).  Az alhálózati szintű NSG nem szükségesek a AzureFirewallSubnet, és le vannak tiltva a szolgáltatás megszakításának biztosítása érdekében.
 
-## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hogyan állíthatom be az Azure Firewall szolgáltatást a szolgáltatásvégpontokkal?
+## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hogyan beállítani Azure Firewall a saját szolgáltatás-végpontokkal?
 
-A PaaS-szolgáltatásokhoz való biztonságos hozzáférés érdekében a szolgáltatásvégpontok használatát javasoljuk. Választhat, hogy engedélyezi a szolgáltatásvégpontok az Azure Firewall alhálózatban, és tiltsa le őket a csatlakoztatott küllővirtuális hálózatokon. Így mindkét szolgáltatás előnyeit élvezheti: a szolgáltatásvégpont-biztonság és a központi naplózás az összes forgalomhoz.
+A Pásti-szolgáltatásokhoz való biztonságos hozzáféréshez szolgáltatási végpontokat ajánlunk. Engedélyezheti a szolgáltatási végpontokat az Azure Firewall alhálózatban, és letilthatja őket a csatlakoztatott küllős virtuális hálózatokon. Így mindkét funkció előnyeit élvezheti: a szolgáltatás végpontjának biztonsága és a központi naplózás minden forgalom esetében.
 
-## <a name="what-is-the-pricing-for-azure-firewall"></a>Mi az Azure Firewall díjszabása?
+## <a name="what-is-the-pricing-for-azure-firewall"></a>Mi a Azure Firewall díjszabása?
 
-Lásd: [Azure firewall díjszabása](https://azure.microsoft.com/pricing/details/azure-firewall/).
+Lásd: [Azure Firewall díjszabása](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
-## <a name="how-can-i-stop-and-start-azure-firewall"></a>Hogyan állíthatom le és indíthatom el az Azure Firewall-t?
+## <a name="how-can-i-stop-and-start-azure-firewall"></a>Hogyan állíthatom le és indíthatja el Azure Firewall?
 
-Használhatja az Azure PowerShell *deallocate* és *lefoglalási* módszerek.
+Használhatja Azure PowerShell felszabadítási *deallocate* és *lefoglalási* metódusokat.
 
 Például:
 
@@ -109,82 +109,82 @@ Set-AzFirewall -AzureFirewall $azfw
 ```
 
 > [!NOTE]
-> Újra ki kell osztania a tűzfalat és a nyilvános IP-címet az eredeti erőforráscsoporthoz és előfizetéshez.
+> A tűzfalat és a nyilvános IP-címet újra hozzá kell rendelnie az eredeti erőforráscsoporthoz és előfizetéshez.
 
-## <a name="what-are-the-known-service-limits"></a>Melyek az ismert szolgáltatási korlátok?
+## <a name="what-are-the-known-service-limits"></a>Milyen korlátozások vonatkoznak az ismert szolgáltatásokra?
 
-Az Azure Firewall szolgáltatáskorlátairól az [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások.](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
+Azure Firewall szolgáltatási korlátokat az [Azure-előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)című témakörben talál.
 
-## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Az Azure Firewall egy központi virtuális hálózat előre, és szűri a hálózati forgalmat két küllős virtuális hálózatok?
+## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Egy hub-alapú virtuális hálózatban Azure Firewall a hálózati forgalmat két küllős virtuális hálózat között?
 
-Igen, az Azure Firewall segítségével egy központi virtuális hálózat útvonal-és-szűrési forgalom két küllővirtuális hálózat közötti forgalmat. A küllővirtuális hálózatok minden egyes küllővirtuális hálózatának rendelkeznie kell egy UDR-rel, amely az Azure tűzfalra mutat alapértelmezett átjáróként ehhez a forgatókönyvhöz a megfelelő működéshez.
+Igen, a hub virtuális hálózat Azure Firewall használatával irányíthatja és szűrheti a forgalmat két küllős virtuális hálózat között. Az egyes küllős virtuális hálózatok alhálózatai számára egy UDR kell mutatnia, amely a forgatókönyv megfelelő működéséhez az Azure Firewallre mutat.
 
-## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Továbbíthatja és szűrheti az Azure Firewall a hálózati forgalmat az ugyanazon virtuális hálózatvagy társviszonyt létesített virtuális hálózatok alhálózatai között?
+## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Firewall az alhálózatok közötti hálózati adatforgalmat ugyanabban a virtuális hálózatban vagy összekapcsolt virtuális hálózatban?
 
-Igen. Azonban az UdRs konfigurálása az ugyanazon virtuális hálózat alhálózatai közötti forgalom átirányításához további figyelmet igényel. A virtuális hálózat címtartományának használata az UDR célelőtagjaként elegendő, ez is irányítja az összes forgalmat egy gépről egy másik gépre ugyanabban az alhálózaton keresztül az Azure Firewall-példányon keresztül. Ennek elkerülése érdekében adjon meg egy útvonalat az alhálózathoz az UDR-ben a következő ugrástípusú **virtuális hálózattal.** Ezeknek az útvonalaknak a kezelése nehézkes lehet, és hibákra hajlamos lehet. A belső hálózati szegmentálás ajánlott módszere a hálózati biztonsági csoportok használata, amelyekhez nincs szükség udrs-re.
+Igen. Ha azonban a UDR úgy konfigurálja, hogy átirányítsa az alhálózatok közötti forgalmat az azonos VNET, további figyelmet igényel. Ha a VNET-címtartomány a UDR célként megadott előtagjaként van használatban, az egy adott alhálózaton lévő összes forgalmat a Azure Firewall-példányon keresztül is átirányítja egy másik gépre. Ennek elkerüléséhez adjon meg egy útvonalat az alhálózathoz a UDR egy következő ugrás típusú **VNET**. Előfordulhat, hogy az ilyen útvonalak kezelése nehézkes, és a hiba miatt fennáll. A belső hálózati szegmentálás ajánlott módszere olyan hálózati biztonsági csoportok használata, amelyek nem igényelnek UDR.
 
-## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Az Azure Firewall kimenő SNAT a magánhálózatok között?
+## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall kimenő SNAT a magánhálózati hálózatok között?
 
-Az Azure Firewall nem snat, ha a cél IP-cím egy privát IP-tartomány [iANA RFC 1918.](https://tools.ietf.org/html/rfc1918) Ha a szervezet nyilvános IP-címtartományt használ a magánhálózatokhoz, az Azure Firewall SNAT-ok forgalmat bonyolítanak le az AzureFirewallSubnet tűzfal egyik privát IP-címére. Beállíthatja, hogy az Azure Firewall **ne** snat a nyilvános IP-címtartományban. További információ: [Azure Firewall SNAT private IP address ranges](snat-private-range.md).
+A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány. Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére. A Azure Firewall konfigurálhatja úgy, hogy **ne** SNAT a nyilvános IP-címtartományt. További információ: [Azure Firewall SNAT magánhálózati IP-címtartományok](snat-private-range.md).
 
-## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Támogatott a kényszerített bújtatás/láncolás egy hálózati virtuális berendezéshez?
+## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>A hálózati virtuális berendezésre kényszerített bújtatás/láncolás?
 
 A kényszerített bújtatás támogatott. További információ: [Azure Firewall kényszerített bújtatás (előzetes verzió)](forced-tunneling.md). 
 
-Az Azure tűzfalnak közvetlen internetkapcsolattal kell rendelkeznie. Ha az AzureFirewallSubnet megtanulja az alapértelmezett útvonalat a helyszíni hálózatra a BGP-n keresztül, felül kell bírnia ezt egy 0.0.0.0/0 UDR-rel, amelyen a **NextHopType** érték **internetként** van beállítva a közvetlen internetkapcsolat fenntartásához.
+Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 
-Ha a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózatra, és meghatározhatja az internetes célhelyek cél IP-előtagait, konfigurálhatja ezeket a tartományokat a helyszíni hálózattal a következő ugrásként az AzureFirewallSubnet felhasználó által definiált útvonalon keresztül. Vagy használhatja a BGP-t ezeknek az útvonalaknak a definiálására.
+Ha a konfigurációhoz kényszerített bújtatás szükséges egy helyszíni hálózathoz, és meghatározhatja a célként megadott IP-előtagokat az internetes célhelyekhez, akkor ezeket a tartományokat a helyszíni hálózattal is konfigurálhatja a következő ugrásként a AzureFirewallSubnet felhasználó által megadott útvonalán keresztül. Vagy a BGP használatával is meghatározhatja ezeket az útvonalakat.
 
-## <a name="are-there-any-firewall-resource-group-restrictions"></a>Vannak tűzfalerőforrás-csoport korlátozások?
+## <a name="are-there-any-firewall-resource-group-restrictions"></a>Vannak olyan tűzfal-erőforráscsoport korlátozásai?
 
-Igen. A tűzfalnak, a virtuális hálózatnak és a nyilvános IP-címnek ugyanabban az erőforráscsoportban kell lennie.
+Igen. A tűzfalnak, a VNet és a nyilvános IP-címnek ugyanabban az erőforráscsoporthoz kell tartoznia.
 
-## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Amikor a DNST-t a bejövő internetes hálózati forgalomhoz konfigurálja, konfigurálnom kell egy megfelelő hálózati szabályt is a forgalom engedélyezéséhez?
+## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>A bejövő internetes hálózati forgalom DNAT konfigurálásakor szükség van egy megfelelő hálózati szabály konfigurálására is a forgalom engedélyezéséhez?
 
 Nem. A NAT-szabályok implicit módon hozzáadnak egy megfelelő hálózati szabályt a lefordított forgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
 
-## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hogyan működnek a helyettesítő karakterek egy alkalmazásszabályban a teljes tartománynna?
+## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hogyan működnek a helyettesítő karakterek egy alkalmazás-szabályban célként megadott FQDN-ben?
 
-Ha a ***.contoso.com**kapcsolót konfigurálja, akkor *az anyvalue*.contoso.com értéket engedélyezi, de a contoso.com (a tartomány csúcsa). Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon kell konfigurálnia azt célteljes tartománynévként.
+Ha a ***. contoso.com**konfigurálja, akkor a *anyvalue*. contoso.com, de nem contoso.com (a tartomány csúcspontja) használatát teszi lehetővé. Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon konfigurálnia kell célként megadott FQDN-ként.
 
-## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent *a kiépítés állapota: Sikertelen* jelent?
+## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent a *kiépítési állapot: nem sikerült* ?
 
-Konfigurációs módosítás alkalmazásakor az Azure Firewall megpróbálja frissíteni az összes mögöttes háttérpéldányok. Ritka esetekben előfordulhat, hogy az ilyen háttérpéldányok egyike nem frissül az új konfigurációval, és a frissítési folyamat sikertelen kiépítési állapottal leáll. Az Azure tűzfal továbbra is működőképes, de az alkalmazott konfiguráció lehet inkonzisztens állapotban, ahol egyes példányok rendelkeznek az előző konfiguráció, ahol mások a frissített szabálykészlettel rendelkezik. Ha ez történik, próbálja meg frissíteni a konfigurációt még egyszer, amíg a művelet sikeres, és a tűzfal *sikeres* kiépítési állapotban van.
+Ha egy konfigurációs változást alkalmaz, Azure Firewall megkísérli frissíteni az összes mögöttes háttér-példányt. Ritka esetekben előfordulhat, hogy az egyik ilyen háttérbeli példány nem tud frissíteni az új konfigurációval, és a frissítési folyamat leáll sikertelen kiépítési állapottal. A Azure Firewall továbbra is működőképes, de az alkalmazott konfiguráció inkonzisztens állapotba kerülhet, ahol egyes példányok esetében az előző konfiguráció szerepel, ahol mások rendelkeznek a frissített szabálykészlet megadásával. Ha ez történik, próbálja meg még egyszer frissíteni a konfigurációt, amíg a művelet nem sikerül, és a tűzfal *sikeres* kiépítési állapotban van.
 
-## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Hogyan kezeli az Azure Firewall a tervezett karbantartást és a nem tervezett hibákat?
-Az Azure Firewall több háttércsomópontból áll egy aktív-aktív konfigurációban.  Minden tervezett karbantartás esetén kapcsolatkiürítési logikával rendelkezünk a csomópontok szabályos frissítéséhez.  A frissítéseket az Azure-régiók minden egyes régiójában munkaidőn kívüli órákban tervezik, hogy tovább csökkentsék a fennakadáskockázatát.  Nem tervezett problémák esetén egy új csomópontot hozunk végre a meghibásodott csomópont lecserélésére.  Az új csomóponthoz való kapcsolódás általában a hiba időpontjától számított 10 másodpercen belül helyreáll.
+## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Hogyan kezeli a Azure Firewall a tervezett karbantartást és a nem tervezett hibákat?
+A Azure Firewall egy aktív-aktív konfigurációban számos háttér-csomópontból áll.  A tervezett karbantartáshoz a csomópontok zökkenőmentes frissítéséhez a kapcsolatok kiürítése szükséges.  A frissítések az egyes Azure-régiók esetében nem munkaidőn kívüli időpontokban vannak megtervezve, így tovább korlátozható a megszakadás kockázata.  A nem tervezett problémák esetén egy új csomópontot hozunk létre a meghibásodott csomópont cseréjéhez.  Az új csomóponthoz való csatlakozás általában a hiba időpontjától számított 10 másodpercen belül újra létrejön.
 
-## <a name="how-does-connection-draining-work"></a>Hogyan működik a kapcsolat kiürítése?
+## <a name="how-does-connection-draining-work"></a>Hogyan működik a kapcsolatok kiürítése?
 
-Minden tervezett karbantartás esetén a kapcsolat kiürítése logika ikent frissíti háttércsomópontok. Az Azure Firewall 90 másodpercet vár a meglévő kapcsolatok bezárására. Szükség esetén az ügyfelek automatikusan újra létrehozhatják a kapcsolatot egy másik háttércsomóponttal.
+Bármilyen tervezett karbantartás esetén a kapcsolatok kiürítési logikája szabályosan frissíti a háttérbeli csomópontokat. A Azure Firewall 90 másodpercet vár a meglévő kapcsolatok bezárásához. Ha szükséges, az ügyfelek automatikusan újra létrehozhatnak kapcsolatot egy másik háttér-csomóponttal.
 
-## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Van karakterkorlát a tűzfalnevéhez?
+## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Létezik a tűzfal neve?
 
-Igen. A tűzfalnév50 karakteres korlátot jelent.
+Igen. A tűzfal neveként 50 karakteres korlát van.
 
-## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Miért kell az Azure Tűzfalnak /26 alhálózati méretet használnia?
+## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Miért van Azure Firewall a/26 alhálózat méretét?
 
-Az Azure Firewall-nek több virtuálisgép-példányt kell kiépítenie a méretezés során. A /26 címterület biztosítja, hogy a tűzfal elegendő IP-címmel rendelkezzen a méretezéshez.
+A Azure Firewallnak több virtuálisgép-példányt kell kiépítenie. A/26 címtartomány biztosítja, hogy a tűzfalon elegendő IP-cím álljon rendelkezésre a skálázáshoz.
 
-## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>A szolgáltatás méretezésekor módosítani kell a tűzfal alhálózatának méretét?
+## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Meg kell változtatni a tűzfal alhálózatának méretét a szolgáltatás léptékének megfelelően?
 
-Nem. Az Azure Firewall nem kell egy alhálózat nagyobb, mint /26.
+Nem. Azure Firewall a/26-nál nagyobb alhálózatra nincs szükség.
 
-## <a name="how-can-i-increase-my-firewall-throughput"></a>Hogyan növelhetem a tűzfal átviteli átmenő számát?
+## <a name="how-can-i-increase-my-firewall-throughput"></a>Hogyan javíthatom a tűzfal átviteli sebességét?
 
-Az Azure Firewall kezdeti átviteli kapacitása 2,5–3 Gb/s, és 30 Gb/s-ra skálázódik. Automatikusan skálázódik a PROCESSZOR-használat és az átviteli hatás alapján.
+Azure Firewall kezdeti átviteli kapacitása 2,5 – 3 GB/s, amely 30 GB/s-ig méretezhető. A CPU-használat és az átviteli sebesség alapján automatikusan méretezhető.
 
-## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Mennyi ideig tart az Azure Firewall horizontális felskálázása?
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Mennyi időt vesz igénybe a Azure Firewall felskálázása?
 
-Az Azure Firewall fokozatosan méretezhető, ha az átlagos átviteli vagy cpu-fogyasztás 60%. A kiskálázás 5-7 percet vesz igénybe. A teljesítménytesztelés során győződjön meg arról, hogy legalább 10–15 percig teszteli a tesztet, és új kapcsolatokat kezdeményezaz újonnan létrehozott tűzfalcsomópontok előnyeinek kihasználásához.
+A Azure Firewall fokozatosan méretezhető, ha az átlagos átviteli sebesség vagy a CPU-felhasználás 60%-on. A vertikális felskálázás öt – hét percet vesz igénybe. A teljesítmény tesztelésekor győződjön meg arról, hogy legalább 10 – 15 percig teszteli a tesztet, és új kapcsolatokat indít el, hogy kihasználhassa az újonnan létrehozott tűzfal-csomópontok előnyeit.
 
-## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lehetővé teszi az Azure tűzfal alapértelmezés szerint engedélyezi az Active Directory elérését?
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Alapértelmezés szerint a Azure Firewall engedélyezi a Active Directory hozzáférését?
 
-Nem. Az Azure Firewall alapértelmezés szerint blokkolja az Active Directory-hozzáférést. A hozzáférés engedélyezéséhez konfigurálja az AzureActiveDirectory szolgáltatáscímkét. További információ: [Azure Firewall service tags](service-tags.md).
+Nem. A Azure Firewall alapértelmezés szerint blokkolja Active Directory hozzáférését. A hozzáférés engedélyezéséhez konfigurálja a AzureActiveDirectory szolgáltatás címkéjét. További információ: [Azure Firewall szolgáltatás címkéi](service-tags.md).
 
-## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>Kizárhatok egy teljes tartománynt vagy egy IP-címet az Azure Firewall Threat Intelligence alapú szűrésből?
+## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>Ki lehet zárni egy teljes tartománynevet vagy egy IP-címet Azure Firewall fenyegetések felderítésére alapuló szűrés alapján?
 
-Igen, az Azure PowerShell segítségével teheti meg:
+Igen, a Azure PowerShell használatával elvégezheti a következőket:
 
 ```azurepowershell
 # Add a Threat Intelligence Whitelist to an Existing Azure Firewall
@@ -204,10 +204,10 @@ $fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
 Set-AzFirewall -AzureFirewall $fw
 ```
 
-## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Miért tud egy TCP ping és hasonló eszközök sikeresen csatlakozni a cél fqdn akkor is, ha nincs szabály az Azure Firewall lehetővé teszi, hogy a forgalom?
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>A TCP ping és hasonló eszközök miért tudnak sikeresen csatlakozni a célként megadott FQDN-hez, még akkor is, ha nincs Azure Firewall szabály, amely engedélyezi ezt a forgalmat?
 
-A TCP-ping valójában nem csatlakozik a cél teljes tartománynnn.A TCP ping isn't connecting to the target FQDN. Ez azért történik, mert az Azure Firewall transzparens proxy figyeli a 80/443-as porton a kimenő forgalom. A TCP ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ennek a viselkedésnek nincs biztonsági hatása. Azonban, hogy elkerüljék a zavart vagyunk vizsgálja lehetséges változások ezt a viselkedést.
+A TCP-pingelés valójában nem csatlakozik a célként megadott FQDN-hez. Ez azért történik, mert Azure Firewall transzparens proxyja az 80/443-as porton figyeli a kimenő forgalmat. A TCP-ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ez a viselkedés nem befolyásolja a biztonságot. A félreértések elkerülése érdekében azonban vizsgáljuk a viselkedés lehetséges változásait.
 
-## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Korlátozva vannak az IP-csoportok által támogatott IP-címek számára vonatkozóan?
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Az IP-csoportok által támogatott IP-címek száma korlátozott?
 
-Igen. További információ: [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
+Igen. További információ: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)

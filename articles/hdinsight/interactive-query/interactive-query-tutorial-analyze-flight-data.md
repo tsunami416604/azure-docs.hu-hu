@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: ETL-műveletek interaktív lekérdezéssel – Azure HDInsight'
-description: Oktatóanyag – Ismerje meg, hogyan nyerhetki ki adatokat egy nyers CSV-adatkészletből. Alakítsa át a HDInsight interaktív lekérdezésével. Ezután töltse be az átalakított adatokat az Azure SQL-adatbázisba az Apache Sqoop használatával.
+description: Oktatóanyag – megtudhatja, hogyan nyerheti ki az adatokat nyers CSV-adatkészletből. Alakítsa át az interaktív lekérdezés használatával a HDInsight. Ezután az Apache Sqoop használatával töltse be az átalakított adatkészleteket az Azure SQL Database-be.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,40 +9,40 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
 ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81313739"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezésével
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával
 
-Ebben az oktatóanyagban a nyilvánosan elérhető repülési adatok nyers CSV-adatfájlját tölti le. Importálja a HDInsight fürttárolóba, majd alakítsa át az adatokat az Azure HDInsight interaktív lekérdezése segítségével. Az adatok átalakítása után az adatokat az Apache [Sqoop](https://sqoop.apache.org/)használatával töltheti be egy Azure SQL-adatbázisba.
+Ebben az oktatóanyagban egy nyers CSV-adatfájlt tölt le nyilvánosan elérhető repülési adatfájlból. Importálja a HDInsight-fürt tárterületére, majd az Azure HDInsight interaktív lekérdezésével alakítsa át az adataikat. Az adatátalakítást követően a rendszer az [Apache Sqoop](https://sqoop.apache.org/)használatával tölti be ezeket az Azure SQL Database-adatbázisba.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * A repülőjárat-mintaadatok letöltése
 > * Az adatok feltöltése egy HDInsight-fürtre
-> * Az adatok átalakítása az Interaktív lekérdezés sel
-> * Tábla létrehozása Azure SQL-adatbázisban
-> * Adatok exportálása Azure SQL-adatbázisba a Sqoop használatával
+> * Az adatátalakítás interaktív lekérdezés használatával
+> * Tábla létrehozása az Azure SQL Database-ben
+> * Az Sqoop használata az Azure SQL Database-adatbázisba való exportáláshoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Interaktív lekérdezési fürt a HDInsighton. Lásd: [Apache Hadoop-fürtök létrehozása az Azure Portalon,](../hdinsight-hadoop-create-linux-clusters-portal.md) és válassza az **Interaktív lekérdezés** **fürttípushoz lehetőséget.**
+* Egy interaktív lekérdezési fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza az **interaktív lekérdezés** a **fürt típusához**lehetőséget.
 
-* Egy Azure SQL-adatbázis. Egy Azure SQL-adatbázist használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](/azure/sql-database/sql-database-single-database-get-started) ismertető cikket.
+* Egy Azure SQL Database. Egy Azure SQL-adatbázist használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](/azure/sql-database/sql-database-single-database-get-started) ismertető cikket.
 
-* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
 1. Nyissa meg a [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time) (Kutatási és Innovációs Műszaki Felügyelőség, Közlekedési Statisztikai Hivatal) oldalt.
 
-2. A lapon törölje az összes mezőt, majd jelölje ki a következő értékeket:
+2. A lapon törölje az összes mezőt, majd válassza ki a következő értékeket:
 
-   | Név | Érték |
+   | Name (Név) | Érték |
    | --- | --- |
    | Filter Year (Szűrési év) |2019 |
    | Filter Period (Szűrési időszak) |January |
@@ -54,21 +54,21 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tartozó tárolóra. Ebben a szakaszban az `scp` segítségével fogja feltölteni az adatokat. Az adatok feltöltésének egyéb módjaival kapcsolatban lásd: [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md).
 
-1. Töltse fel a .zip fájlt a HDInsight-fürt főcsomópontjára. Az alábbi parancs szerkesztésével cserélje le `FILENAME` a .zip `CLUSTERNAME` fájl nevét és a HDInsight-fürt nevét. Ezután nyisson meg egy parancssort, állítsa a munkakönyvtárat a fájl helyére, majd írja be a parancsot.
+1. Töltse fel a. zip fájlt a HDInsight-fürt fő csomópontjára. Szerkessze az alábbi parancsot úgy `FILENAME` , hogy a. zip-fájl nevét és a `CLUSTERNAME` HDInsight-fürt nevét helyettesíti. Ezután nyisson meg egy parancssort, állítsa be a munkakönyvtárat a fájl helyére, majd írja be a parancsot.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Írja be az igen vagy a nem értéket a folytatáshoz, ha a rendszer kéri. A szöveg gépelés közben nem látható az ablakban.
+    Ha a rendszer kéri, adja meg az igen vagy a nem értéket a folytatáshoz. A beírt szöveg nem látható az ablakban.
 
-2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. Az alábbi parancs szerkesztése a HDInsight-fürt nevének cseréjével. `CLUSTERNAME` Ezután írja be a következő parancsot:
+2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a nevet a HDInsight-fürt nevére. Ezután írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. SSH-kapcsolat létrehozása után állítsa be a környezeti változót. Cserélje `FILE_NAME` `SQL_SERVERNAME`ki `SQL_DATABASE` `SQL_USER`a `SQL_PASWORD` , , , , és a megfelelő értékeket. Ezután írja be a parancsot:
+3. Környezeti változó beállítása az SSH-kapcsolatok létrehozása után. `SQL_SERVERNAME`Cserélje `FILE_NAME`le a `SQL_DATABASE`, `SQL_USER`,, `SQL_PASWORD` , és értéket a megfelelő értékekre. Ezután írja be a parancsot:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -78,13 +78,13 @@ Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tarto
     export SQLPASWORD='SQL_PASWORD'
     ```
 
-4. Csomagolja ki a .zip fájlt az alábbi parancs megadásával:
+4. Bontsa ki a. zip fájlt az alábbi parancs beírásával:
 
     ```bash
     unzip $FILENAME.zip
     ```
 
-5. Hozzon létre egy könyvtárat a HDInsight-tárolón, majd másolja a .csv fájlt a könyvtárba az alábbi parancs megadásával:
+5. Hozzon létre egy könyvtárat a HDInsight-tárolóban, majd másolja a. csv fájlt a könyvtárba az alábbi parancs beírásával:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -93,11 +93,11 @@ Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tarto
 
 ## <a name="transform-data-using-a-hive-query"></a>Adatok átalakítása egy Hive-lekérdezéssel
 
-Számos módon futtathat Hive-feladatokat egy HDInsight-fürtön. Ebben a szakaszban a [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) használatával futtathat egy Hive-feladatot. A Hive-feladat futtatásának egyéb módszereiről az [Apache Hive használata a HDInsight-on című témakörben talál](../hadoop/hdinsight-use-hive.md)további információt.
+Számos módon futtathat Hive-feladatokat egy HDInsight-fürtön. Ebben a szakaszban a [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) használatával futtat egy kaptár-feladatot. A kaptár-feladatok futtatásának egyéb módjaival kapcsolatos információkért lásd: [Apache Hive használata a HDInsight-on](../hadoop/hdinsight-use-hive.md).
 
 A Hive-feladat keretében importálja az adatokat a .csv fájlból egy **Delays** (Késések) nevű Hive-táblába.
 
-1. A HDInsight-fürthöz már meglévő SSH-parancsból a következő paranccsal hozhat létre és szerkesztheti a **flightdelays.hql**nevű új fájlt:
+1. A HDInsight-fürthöz már megjelenő SSH-parancssorból használja az alábbi parancsot a **flightdelays. HQL**nevű új fájl létrehozásához és szerkesztéséhez:
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +165,7 @@ A Hive-feladat keretében importálja az adatokat a .csv fájlból egy **Delays*
     FROM delays_raw;
     ```
 
-3. A fájl mentéséhez nyomja le a **Ctrl + X**billentyűkombinációt, majd az **y**billentyűt, majd írja be a gombot.
+3. A fájl mentéséhez nyomja le a **CTRL + X**billentyűkombinációt, majd az **y**billentyűt, majd írja be a következőt:.
 
 4. Indítsa el a Hive-ot, és futtassa a **flightdelays.hql** fájlt az alábbi paranccsal:
 
@@ -199,7 +199,7 @@ A Hive-feladat keretében importálja az adatokat a .csv fájlból egy **Delays*
 
 Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát. A következő lépések során a [FreeTDS](http://www.freetds.org/) eszközt használjuk a HDInsight-fürtről.
 
-1. A FreeTDS telepítéséhez használja a következő parancsot a nyílt SSH-kapcsolatból a fürthöz:
+1. A FreeTDS telepítéséhez használja a következő parancsot az Open SSH-kapcsolatban a fürthöz:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
@@ -232,7 +232,7 @@ Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát
     GO
     ```
 
-    A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat. Ez az utasítás egy **delays**nevű táblát hoz létre fürtözött indexszel.
+    A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat. Ez az utasítás egy **késések**nevű táblát hoz létre fürtözött indexszel.
 
     Az alábbi lekérdezéssel ellenőrizheti, hogy a tábla létrejött-e:
 
@@ -250,27 +250,27 @@ Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát
 
 4. A tsql eszközből való kilépéshez írja be az `exit` kifejezést az `1>` parancssorba.
 
-## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Adatok exportálása SQL-adatbázisba az Apache Sqoop használatával
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Az SQL Database-be való exportálás az Apache Sqoop használatával
 
 Az előző szakaszok során átmásolta az átalakított adatokat a következő helyre: `/tutorials/flightdelays/output`. Ebben a szakaszban a Sqoop segítségével fogja exportálni az adatokat az `/tutorials/flightdelays/output` helyről az Azure SQL-adatbázisban létrehozott táblába.
 
-1. Ellenőrizze, hogy a Sqoop láthatja-e az SQL-adatbázist az alábbi parancs megadásával:
+1. Az alábbi parancs beírásával ellenőrizze, hogy a Sqoop látható-e az SQL Database-ben:
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Ez a parancs az adatbázisok listáját adja vissza, `delays` beleértve azt az adatbázist is, amelyben a táblát korábban létrehozta.
+    Ez a parancs az adatbázisok listáját adja vissza, beleértve azt az adatbázist, amelyben korábban `delays` létrehozta a táblát.
 
-2. Exportálja `/tutorials/flightdelays/output` az `delays` adatokat a táblázatba az alábbi parancs megadásával:
+2. Exportálja az `/tutorials/flightdelays/output` adatokat a `delays` táblázatba az alábbi parancs beírásával:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    A Sqoop csatlakozik a `delays` táblát tartalmazó adatbázishoz, `/tutorials/flightdelays/output` és `delays` adatokat exportál a könyvtárból a táblába.
+    A Sqoop a `delays` táblázatot tartalmazó adatbázishoz csatlakozik, és a `/tutorials/flightdelays/output` címtárból exportálja az adatait a `delays` táblába.
 
-3. Miután a sqoop parancs befejeződik, a tsql segédprogrammal csatlakozzon az adatbázishoz az alábbi parancs megadásával:
+3. A sqoop parancs befejeződése után a TSQL segédprogrammal csatlakozhat az adatbázishoz az alábbi parancs beírásával:
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -289,13 +289,13 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight segítségével az adatok az Azure Storage-ban tárolódnak, így biztonságosan törölheti a fürtöt, ha nincs használatban. A HDInsight-fürtért is díjat kell fizetnie, még akkor is, ha nincs használatban. Mivel a fürt díjai sokszor több, mint a tárolási díjak, célszerű törölni a fürtöket, ha nincsenek használatban.
+Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
-Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával című](../hdinsight-delete-cluster.md)témakörben jelenik meg.
+Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy nyers CSV-adatfájlt vett, importálta egy HDInsight-fürttárolóba, majd átalakította az adatokat az Azure HDInsight interaktív lekérdezése használatával.  Továbbkell lépnie a következő oktatóanyaghoz, és ismerje meg az Apache Hive-raktárösszekötőt.
+Ebben az oktatóanyagban egy nyers CSV-adatfájlt vett fel, egy HDInsight-fürtbe importálta, majd az Azure HDInsight interaktív lekérdezés használatával alakította át az adatelemzést.  Folytassa a következő oktatóanyaggal, amely a Apache Hive Warehouse-összekötő megismerését ismerteti.
 
 > [!div class="nextstepaction"]
-> [Integrálja az Apache Sparkot és az Apache Hive-t a Hive Raktár összekötővel](./apache-hive-warehouse-connector.md)
+> [Apache Spark és Apache Hive integrálása a méhkas Warehouse-összekötővel](./apache-hive-warehouse-connector.md)

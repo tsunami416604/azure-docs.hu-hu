@@ -1,55 +1,55 @@
 ---
-title: A ServiceNow szinkronizálási problémáinak manuális javítása
-description: Állítsa alaphelyzetbe a kapcsolatot a ServiceNow szolgáltatással, így a Microsoft Azure-ban a riasztások újra meghívhatják a ServiceNow-t
+title: ServiceNow-szinkronizálási problémák manuális javítása
+description: Állítsa vissza a ServiceNow való kapcsolódást, hogy a riasztások Microsoft Azure újra meghívja a ServiceNow
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
 ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313669"
 ---
-# <a name="how-to-manually-fix-servicenow-sync-problems"></a>A ServiceNow szinkronizálási problémáinak manuális javítása
+# <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow-szinkronizálási problémák manuális javítása
 
-Az Azure Monitor külső informatikai szolgáltatáskezelő (ITSM) szolgáltatókhoz tud csatlakozni. ServiceNow egyike azoknak a szolgáltatóknak.
+Azure Monitor csatlakozhat a harmadik féltől származó IT-szolgáltatói (ITSM-) szolgáltatóhoz. A ServiceNow az egyik ilyen szolgáltató.
 
-Biztonsági okokból előfordulhat, hogy frissítenie kell a ServiceNow-kapcsolathoz használt hitelesítési jogkivonatot.
-A következő szinkronizálási folyamat segítségével aktiválja újra a kapcsolatot, és frissítse a jogkivonatot:
+Biztonsági okokból előfordulhat, hogy frissítenie kell a ServiceNow-mel való kapcsolathoz használt hitelesítési tokent.
+A következő szinkronizálási folyamat használatával aktiválja újra a kapcsolódást, és frissítse a jogkivonatot:
 
 
-1. Keresse meg a megoldást a felső keresési szalagcímben, majd válassza ki a megfelelő megoldásokat
+1. Keresse meg a megoldást a legnépszerűbb keresési szalagcímben, majd válassza ki a megfelelő megoldásokat.
 
     ![Új kapcsolat](media/itsmc-resync-servicenow/solution-search-8bit.png)
 
-1. A megoldás képernyőn válassza az "Összes kiválasztása" lehetőséget az előfizetésszűrőben, majd szűrje a "ServiceDesk" parancsot.
+1. A megoldás képernyőn válassza az összes kijelölése lehetőséget az előfizetés szűrőben, majd a szűrés "ügyfélszolgálati" értékre.
 
     ![Új kapcsolat](media/itsmc-resync-servicenow/solutions-list-8bit.png)
 
-1. Válassza ki az ITSM-kapcsolat megoldását.
-1. Válassza az ITSM-kapcsolatot a bal oldali szalagcímben.
+1. Válassza ki a ITSM-kapcsolatok megoldását.
+1. Válassza a ITSM-kapcsolatok elemet a bal oldali szalagcímben.
 
     ![Új kapcsolat](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
 
-1. Jelölje ki az egyes összekötőket a listából. 
-    1. A konfiguráláshoz kattintson az összekötő nevére
-    1. A már használaton lévő összekötők törlése
+1. Válassza ki az egyes összekötőket a listából. 
+    1. A konfigurálásához kattintson az összekötő nevére
+    1. A már nem használt összekötők törlése
 
-    1. A mezők frissítése [a definíciók](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections) szerint a partnertípus alapján
+    1. A mezők frissítése a partner típusa alapján a [következő definíciók](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections) szerint
 
-    1. Kattintson a szinkronizálásra
+    1. Kattintson a szinkronizálás elemre
 
        ![Új kapcsolat](media/itsmc-resync-servicenow/resync-8bit2.png)
 
-    1. Kattintson a mentésre
+    1. Kattintson a Mentés gombra
 
         ![Új kapcsolat](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    Tekintse át az értesítéseket, és nézze meg, hogy a folyamat sikeresen befejeződött-e 
+f.    Tekintse át az értesítéseket, és ellenőrizze, hogy a folyamat sikeresen befejeződött-e 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ [az INFORMATIKAI szolgáltatáskezelési kapcsolatokról](itsmc-connections.md)
+További információ az [IT Service Management-kapcsolatokról](itsmc-connections.md)

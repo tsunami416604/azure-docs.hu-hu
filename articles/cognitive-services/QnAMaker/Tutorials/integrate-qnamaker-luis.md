@@ -1,7 +1,7 @@
 ---
-title: LUIS és QnAMaker - bot integráció
+title: LUIS és QnAMaker – bot-integráció
 titleSuffix: Azure Cognitive Services
-description: Ahogy a QnA Maker tudásbázisa egyre nagyobblesz, nehéz lesz egyetlen monolitikus készletként fenntartani. A tudásbázis felosztása kisebb, logikai adattömbökre.
+description: Mivel a QnA Maker Tudásbázis egyre nagyobb, nehéz lesz egyetlen monolitikus-készletként fenntartani. A Tudásbázis felosztása kisebb, logikai adattömbökbe.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,57 +12,57 @@ ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: b0d28c77966668f919cdf1265f8cc63b4931d5fd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402723"
 ---
-# <a name="use-a-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A QnA Maker és a LUIS robothasználata a tudásbázis terjesztéséhez
-Ahogy a QnA Maker tudásbázisa egyre nagyobblesz, nehéz lesz egyetlen monolitikus készletként fenntartani. A tudásbázis felosztása kisebb, logikai adattömbökre.
+# <a name="use-a-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A Tudásbázis kiosztása QnA Maker és LUIS használatával
+Mivel a QnA Maker Tudásbázis egyre nagyobb, nehéz lesz egyetlen monolitikus-készletként fenntartani. A Tudásbázis felosztása kisebb, logikai adattömbökbe.
 
-Bár a QnA Maker ben egyszerű több tudásbázist létrehozni, a bejövő kérdés megfelelő tudásbázisba való továbbításához valamilyen logikára van szükség. Ezt a LUIS használatával teheti meg.
+Habár egyértelmű, hogy több tudásbázist is létre kell hozni a QnA Makerban, némi logikára van szükség a beérkező kérdés megfelelő tudásbázisba való átirányításához. Ezt a LUIS használatával teheti meg.
 
-Ez a cikk a Bot Framework v3 SDK-t használja. Ha érdekli a Bot Framework v4 SDK verziója ezt az információt, [lásd: Több LUIS és QnA modellek használata.](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp)
+Ez a cikk a robot Framework v3 SDK-t használja. Ha érdekli a bot Framework v4 SDK-verziója ezen információkkal kapcsolatban, tekintse meg a [több Luis-és QnA-modell használatát](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp)ismertető témakört.
 
 ## <a name="architecture"></a>Architektúra
 
-![A QnA Maker nyelvi megértéssel rendelkező architektúráját megjelenítő grafikus](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![A QnA Maker architektúráját bemutató ábra Language Understanding](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
-Az előző ábra azt mutatja, hogy a QnA Maker először a bejövő kérdés szándékát kapja egy LUIS-modellből. Ezután a QnA Maker ezt a szándékot használja a kérdés megfelelő QnA Maker tudásbázishoz való továbbítására.
+Az előző ábrán látható, hogy QnA Maker először a LUIS-modellből beérkező kérdés szándékát kapja meg. Ezután QnA Maker ezt a szándékot használja arra, hogy a kérdést a megfelelő QnA Maker tudásbázisba irányítsa.
 
 ## <a name="create-a-luis-app"></a>LUIS-alkalmazás létrehozása
 
-1. Jelentkezzen be [LUIS](https://www.luis.ai/) a LUIS-portálra.
+1. Jelentkezzen be a [Luis](https://www.luis.ai/) portálra.
 1. [Hozzon létre egy alkalmazást](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
-1. Minden QnA Maker tudásbázishoz [adjon hozzá egy szándékot.](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) A példa utterances meg kell felelnie a qna maker tudásbázisok kérdéseinek.
-1. [A LUIS alkalmazás betanítása](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és [a LUIS alkalmazás közzététele.](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp)
-1. A **Kezelés** szakaszban jegyezze fel a LUIS-alkalmazásazonosítót, a LUIS-végpontkulcsot és [az egyéni tartománynevet.](../../cognitive-services-custom-subdomains.md) Ezekre az értékekre később szüksége lesz.
+1. [Adjon hozzá egy szándékot](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) minden QnA Maker tudásbázishoz. A példa hosszúságú kimondott szöveg meg kell felelnie a QnA Maker Tudásbázisban feltett kérdésekre.
+1. [A Luis-alkalmazás betanítása](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és [a Luis-alkalmazás közzététele](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp).
+1. A **kezelés** szakaszban jegyezze fel a Luis-alkalmazás azonosítóját, a Luis-végpont kulcsát és az [Egyéni tartománynevet](../../cognitive-services-custom-subdomains.md). Ezekre az értékekre később szüksége lesz.
 
 ## <a name="create-qna-maker-knowledge-bases"></a>QnA Maker tudásbázisok létrehozása
 
-1. Jelentkezzen be a [QnA Maker be.](https://qnamaker.ai)
-1. [Hozzon létre](https://www.qnamaker.ai/Create) egy tudásbázist a LUIS-alkalmazásban minden egyes leképezéshez.
-1. Tesztelje és tegye közzé a tudásbázisokat. Az egyes adatok közzétételekor jegyezze fel az azonosítót, az erőforrás nevét (a _.azurewebsites.net/qnamaker_előtti egyéni altartományt) és az engedélyezési végpontkulcsot. Ezekre az értékekre később szüksége lesz.
+1. Jelentkezzen be [QnA Makerba](https://qnamaker.ai).
+1. [Hozzon létre](https://www.qnamaker.ai/Create) egy tudásbázist a Luis-alkalmazás minden szándékához.
+1. A tudásbázisok tesztelése és közzététele. Amikor közzéteszi mindegyiket, jegyezze fel az azonosítót, az erőforrás nevét (az egyéni altartomány előtt _. azurewebsites.net/qnamaker_), valamint az engedélyezési végpont kulcsát. Ezekre az értékekre később szüksége lesz.
 
-    Ez a cikk feltételezi, hogy a tudásbázisok ugyanabban az Azure QnA Maker-előfizetésben jönnek létre.
+    Ez a cikk azt feltételezi, hogy a tudásbázisok mind ugyanabban az Azure QnA Maker-előfizetésben jönnek létre.
 
-    ![Képernyőkép a QnA Maker HTTP-kéréséről](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
+    ![QnA Maker HTTP-kérelem képernyőképe](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
 
 ## <a name="web-app-bot"></a>Webalkalmazás-robot
 
-1. [Hozzon létre egy "Basic" robotot az Azure Bot Service szolgáltatással,](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)amely automatikusan tartalmaz egy LUIS-alkalmazást. Válassza ki a C# programozási nyelvet.
+1. [Hozzon létre egy "alapszintű" robotot Azure bot Serviceval](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0), amely automatikusan egy Luis-alkalmazást tartalmaz. Válassza ki a C# programozási nyelvet.
 
-1. Miután létrehozta a webalkalmazás-robotot, az Azure Portalon válassza ki a webalkalmazás-robotot.
-1. A webalkalmazás-robotszolgáltatás navigációs sávján válassza az **Alkalmazásbeállítások**lehetőséget. Ezután görgessen le az elérhető beállítások **Alkalmazásbeállítások** szakaszához.
-1. Módosítsa a **LuisAppId** az előző szakaszban létrehozott LUIS-alkalmazás értékére. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A webalkalmazás-robot létrehozása után a Azure Portal válassza ki a webalkalmazás-robotot.
+1. A Web App bot Service navigáció területén válassza az **Alkalmazásbeállítások**lehetőséget. Ezután görgessen le az elérhető beállítások **Alkalmazásbeállítások** szakaszára.
+1. Módosítsa a **LuisAppId** az előző szakaszban létrehozott Luis-alkalmazás értékére. Ezután válassza a **Save** (Mentés) lehetőséget.
 
 
-## <a name="change-the-code-in-the-basicluisdialogcs-file"></a>A BasicLuisDialog.cs fájlkódjának módosítása
-1. Az Azure Portalon a webalkalmazás robotnavigációjának **Robotkezelése** szakaszában válassza a **Build lehetőséget.**
-2. Válassza **az Online kódszerkesztő megnyitása**lehetőséget. Megnyílik egy új böngészőlap az online szerkesztési környezettel.
-3. A **WWWROOT** szakaszban jelölje ki a **Párbeszédek könyvtárat,** majd nyissa meg **BasicLuisDialog.cs**.
-4. Függőségek hozzáadása a **BasicLuisDialog.cs** fájl tetejéhez:
+## <a name="change-the-code-in-the-basicluisdialogcs-file"></a>A kód módosítása a BasicLuisDialog.cs fájlban
+1. A Azure Portal a webalkalmazás robot-navigációjának **robot-kezelés** szakaszában válassza a **Létrehozás**lehetőséget.
+2. Válassza az **online Kódszerkesztő megnyitása**lehetőséget. Megnyílik egy új böngésző lap az online szerkesztési környezettel.
+3. A **WWWROOT** szakaszban válassza a **párbeszédablakok** könyvtárat, majd nyissa meg a **BasicLuisDialog.cs**.
+4. Függőségek hozzáadása a **BasicLuisDialog.cs** fájl elejéhez:
 
     ```csharp
     using System;
@@ -103,7 +103,7 @@ Az előző ábra azt mutatja, hogy a QnA Maker először a bejövő kérdés sz�
     ```
 
 
-6. Adja hozzá a következő osztályt, hogy http-kérelmet küldjön a QnA Maker szolgáltatáshoz. Figyelje meg, hogy az **Engedélyezés** fejléc értéke tartalmazza a szót, `EndpointKey`és a szót követő szóközökkel. A JSON-eredmény deszerializálódik az előző osztályokba, és az első választ adja vissza.
+6. Adja hozzá a következő osztályt egy HTTP-kérelem elvégzéséhez a QnA Maker szolgáltatáshoz. Figyelje meg, hogy az **engedélyezési** fejléc értéke tartalmazza a szót `EndpointKey`, a szót követő szóközzel. A JSON-eredmény deszerializálása az előző osztályokba történik, és az első választ adja vissza.
 
     ```csharp
     [Serializable]
@@ -155,7 +155,7 @@ Az előző ábra azt mutatja, hogy a QnA Maker először a bejövő kérdés sz�
     ```
 
 
-7. Módosítsa `BasicLuisDialog` az osztályt. Minden LUIS-szándéknak rendelkeznie kell egy **LuisIntent**metódussal. A dekoráció paramétere a tényleges LUIS-leképezés neve. A metódus neve, amely díszített _kell_ lennie a LUIS-leképezés neve olvashatóság és karbantarthatóság, de nem kell ugyanaz a tervezési vagy futásidejű.
+7. Módosítsa az `BasicLuisDialog` osztályt. Minden LUIS-szándéknak rendelkeznie kell egy **LuisIntent**-vel díszített módszerrel. A díszítés paramétere a tényleges LUIS-cél neve. A dekorált metódus nevének az olvashatóság és a karbantartás érdekében a LUIS-cél _névnek kell_ lennie, de nem feltétlenül kell megegyeznie a tervezéssel vagy a futtatókörnyezettel.
 
     ```csharp
     [Serializable]
@@ -223,21 +223,21 @@ Az előző ábra azt mutatja, hogy a QnA Maker először a bejövő kérdés sz�
     ```
 
 
-## <a name="build-the-bot"></a>Építeni a bot
-1. A kódszerkesztőben kattintson a jobb gombbal **a build.cmd**elemre, és válassza **a Futtatás a konzolról parancsot.**
+## <a name="build-the-bot"></a>A robot létrehozása
+1. A Kódszerkesztő alkalmazásban kattintson a jobb gombbal a **Build. cmd**fájlra, majd válassza a **Futtatás a konzolról**lehetőséget.
 
-    ![Képernyőkép: Futtatás a konzolról beállítása a kódszerkesztőben](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
+    ![Képernyőkép a Futtatás konzolról beállításról a kódszerkesztő programban](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
-2. A kódnézetet egy terminálablak váltja fel, amely a létrehozás előrehaladását és eredményeit mutatja.
+2. A kód nézet helyére egy olyan Terminálablak kerül, amely a Build folyamatának állapotát és eredményét jeleníti meg.
 
-    ![Képernyőkép a konzol buildjéről](../media/qnamaker-tutorials-qna-luis/console-build.png)
+    ![Képernyőkép a konzol létrehozásáról](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
-## <a name="test-the-bot"></a>Tesztelje a bot
-Az Azure Portalon válassza a **Tesztelés a webes csevegésben** lehetőséget a robot teszteléséhez. Írja be a különböző szándékú üzeneteket, hogy a válasz a megfelelő tudásbázisból kapjon.
+## <a name="test-the-bot"></a>A robot tesztelése
+A Azure Portal a robot teszteléséhez válassza a **tesztelés a webes csevegésben** lehetőséget. Írja be a különböző szándékokból származó üzeneteket a megfelelő Tudásbázis válaszának beolvasásához.
 
-![Képernyőkép a webes csevegés tesztjéről](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
+![Képernyőfelvétel a Web Chat tesztről](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Integrálja tudásbázisát egy ügynökkel a virtuális energiaügynökökben](integrate-with-power-virtual-assistant-fallback-topic.md)
+> [Tudásbázis integrálása egy ügynökkel a Power Virtual Agents szolgáltatásban](integrate-with-power-virtual-assistant-fallback-topic.md)

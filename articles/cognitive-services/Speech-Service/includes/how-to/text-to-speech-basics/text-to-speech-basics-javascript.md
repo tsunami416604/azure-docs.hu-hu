@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.openlocfilehash: d91082ae3c0ae5e501675a06b02e2f55f20ce236
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399558"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy rendelkezik egy Azure-fiók és a Speech szolgáltatás-előfizetés. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyen a Beszédszolgáltatást.](../../../get-started.md)
+Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](../../../get-started.md).
 
-## <a name="install-the-speech-sdk"></a>A beszédfelismerési SDK telepítése
+## <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
-Mielőtt bármit megtehetne, telepítenie kell a <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript Speech <span class="docon docon-navigate-external x-hidden-focus"> </span>SDK-t. </a> A platformtól függően kövesse az alábbi utasításokat:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js<span 
+Mielőtt bármit elvégezhet, telepítenie kell a <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript SPEECH SDK <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>-t. A platformtól függően kövesse az alábbi utasításokat:
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node. js<span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webböngésző<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
-Ezenkívül a célkörnyezettől függően használja az alábbiak egyikét:
+Emellett a cél környezettől függően a következők egyikét használja:
 
-# <a name="import"></a>[Importálása](#tab/import)
+# <a name="import"></a>[importálása](#tab/import)
 
 ```javascript
 import { readFileSync } from "fs";
@@ -36,46 +36,46 @@ import {
 } from "microsoft-cognitiveservices-speech-sdk";
 ```
 
-További információ: `import` <a href="https://javascript.info/import-export" target="_blank">export and <span class="docon docon-navigate-external x-hidden-focus"> </span>import </a>.
+További információ `import`: <a href="https://javascript.info/import-export" target="_blank">Exportálás és importálás <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
-# <a name="require"></a>[Igényel](#tab/require)
+# <a name="require"></a>[igényel](#tab/require)
 
 ```javascript
 const readFileSync = require("fs").readFileSync;
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-További információ: `require` <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ `require`: <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">Mi szükséges? <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 
 # <a name="script"></a>[szkriptet.](#tab/script)
 
-Töltse le és bontsa ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* fájlt, és helyezze el a HTML-fájl számára elérhető mappában.
+Töltse le és csomagolja ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *Microsoft. cognitiveservices. Speech. SDK. Bundle. js* fájlt, és helyezze el a HTML-fájl számára elérhető mappába.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
 ```
 
 > [!TIP]
-> Ha webböngészőt céloz meg, és `<script>` a címkét használja; az `sdk` előtag nem szükséges. Az `sdk` előtag a `require` modul elnevezésére használt alias.
+> Ha webböngészőt céloz meg, és használja a `<script>` címkét; az `sdk` előtag nem szükséges. Az `sdk` előtag a `require` modul elnevezésére szolgáló alias.
 
 ---
 
-## <a name="create-a-speech-configuration"></a>Beszédkonfiguráció létrehozása
+## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás hívásához létre kell hoznia [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)egy . Ez az osztály az előfizetéssel kapcsolatos információkat is tartalmaz, például a kulcsot és a kapcsolódó régiót, végpontot, állomást vagy engedélyezési jogkivonatot.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest). Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
 
 > [!NOTE]
-> Függetlenül attól, hogy beszédfelismerést, beszédszintetizálást, fordítást vagy szándékfelismerést végez, mindig létrehoz egy konfigurációt.
+> Függetlenül attól, hogy elvégezte-e a beszédfelismerést, a beszédfelismerést, a fordítást vagy a szándék felismerését, mindig hozzon létre egy konfigurációt.
 
-Többféleképpen is inicializálhatja a következőket: [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)
+Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest):
 
-* Előfizetéssel: adja át a kulcsot és a társított régióban.
-* Végpont: adja át a beszédszolgáltatás végpont. A kulcs vagy engedélyezési jogkivonat nem kötelező.
-* Állomással: adja át az állomáscímet. A kulcs vagy engedélyezési jogkivonat nem kötelező.
-* Egy engedélyezési jogkivonattal: adja át egy engedélyezési jogkivonatot és a társított régiót.
+* Előfizetéssel: adjon egy kulcsot és a hozzá tartozó régiót.
+* Egy végponttal: pass a Speech Service-végponton. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
+* Gazdagép esetén: adjon meg egy gazdagép-címeket. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
+* Engedélyezési jogkivonattal: adjon meg egy engedélyezési jogkivonatot és a hozzá tartozó régiót.
 
-Ebben a példában [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) egy előfizetési kulcs és régió használatával hoz létre. A [régióazonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) megkereséséhez tekintse meg a régiótámogatási lapot. A cikk többi részéhez is létrehozhat néhány alapvető sablonkódot, amelyet a különböző testreszabásokhoz módosíthat.
+Ebben a példában egy előfizetési kulcsot [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) és egy régiót hoz létre. A régió azonosítójának megkereséséhez tekintse meg a [régiók támogatása](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) lapot. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
 
 ```javascript
 function synthesizeSpeech() {
@@ -83,11 +83,11 @@ function synthesizeSpeech() {
 }
 ```
 
-## <a name="synthesize-speech-to-a-file"></a>Beszéd fájllá való egészizálása
+## <a name="synthesize-speech-to-a-file"></a>Beszéd készítése fájlba
 
-Ezután hozzon [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) létre egy objektumot, amely szövegfelolvasásos átalakításokat és kimeneteket hajt végre hangszórókon, fájlokon vagy más kimeneti adatfolyamokon. Az [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) elfogadja az előző [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) lépésben létrehozott objektum params params- ét, és egy [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) olyan objektumot, amely meghatározza a kimeneti eredmények kezelésének módját.
+Ezután létrehoz egy [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) objektumot, amely szöveg-beszéd átalakításokat és kimeneteket hajt végre a hangszórók, fájlok vagy más kimeneti adatfolyamok számára. Az [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) elfogadva paraméterként az [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) előző lépésben létrehozott objektumot, valamint egy [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) objektumot, amely meghatározza a kimeneti eredmények kezelését.
 
-A kezdéshez `AudioConfig` hozzon létre egy `.wav` olyan fájlt `fromAudioFileOutput()` automatikusan írni egy fájlba a statikus függvény használatával.
+Az indításhoz hozzon `AudioConfig` létre egy fájlt, amely automatikusan a `.wav` kimenetet egy `fromAudioFileOutput()` fájlba írja a statikus függvény használatával.
 
 ```javascript
 function synthesizeSpeech() {
@@ -96,7 +96,7 @@ function synthesizeSpeech() {
 }
 ```
 
-Ezután példányosítsa `SpeechSynthesizer` `speechConfig` meg az `audioConfig` objektum ot és az objektumot params-ként. Ezután a beszédszintézis végrehajtása és a fájlba `speakTextAsync()` írás olyan egyszerű, mint egy szövegsorozattal futni. Az eredmény visszahívás egy nagyszerű `synthesizer.close()`hely, hogy hívja , sőt - ez a hívás szükséges ahhoz, hogy szintézis megfelelően működik.
+Ezután hozza létre `SpeechSynthesizer` az `speechConfig` objektumot és az `audioConfig` objektumot paraméterként. Ezután a beszédfelismerés végrehajtása és a fájlba való írás olyan egyszerű, mintha egy szöveges `speakTextAsync()` karakterláncot futtasson. Az eredmény visszahívása nagyszerű hely a híváshoz `synthesizer.close()`, valójában ez a hívás szükséges ahhoz, hogy a szintézis megfelelően működjön.
 
 ```javascript
 function synthesizeSpeech() {
@@ -120,11 +120,11 @@ function synthesizeSpeech() {
 }
 ```
 
-Futtassa a programot, `.wav` és a program a megadott helyre ír egy szintetizált fájlt. Ez egy jó példa a legalapvetőbb használat, de a következő, ha megnézi a kimenet testreszabása és a kimeneti válasz kezelése, mint egy memórián belüli stream egyéni forgatókönyvek.
+Futtassa a programot, és a rendszer a `.wav` megadott helyre írja a szintetizált fájlt. Ez jó példa a legalapvetőbb használatra, de a következő lépés a kimenet testreszabása és a kimeneti válasz kezelése memóriában tárolt adatfolyamként az egyéni forgatókönyvek használata esetén.
 
-## <a name="synthesize-to-speaker-output"></a>Szintetizálás a hangszóró kimenetére
+## <a name="synthesize-to-speaker-output"></a>Szintetizálás a hangszórók kimenetére
 
-Bizonyos esetekben előfordulhat, hogy közvetlenül a szintetizált beszédeket közvetlenül a hangszóróhoz szeretné kiadni. Ehhez példányosítsa meg `AudioConfig` a `fromDefaultSpeakerOutput()` statikus függvény t. Ez az aktuális aktív kimeneti eszközre vált.
+Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez hozza létre a `AudioConfig` `fromDefaultSpeakerOutput()` statikus függvény használatával. Ez a kimenet az aktuális aktív kimeneti eszközre mutat.
 
 ```javascript
 function synthesizeSpeech() {
@@ -147,20 +147,20 @@ function synthesizeSpeech() {
 }
 ```
 
-## <a name="get-result-as-an-in-memory-stream"></a>Eredmény beszerezése memórián belüli adatfolyamként
+## <a name="get-result-as-an-in-memory-stream"></a>Eredmény beolvasása memóriabeli adatfolyamként
 
-A beszédalkalmazások fejlesztésének számos forgatókönyve esetén valószínűleg az eredményül kapott hangadatokra memóriafolyamként van szükség, nem pedig közvetlenül egy fájlba. Ez lehetővé teszi, hogy egyéni viselkedést hozzon létre, beleértve a következőket:
+A beszédfelismerés számos forgatókönyve esetében valószínű, hogy az eredményül kapott hangadatokat memórián belüli adatfolyamként kell megadnia, nem pedig közvetlenül egy fájlba írni. Ez lehetővé teszi, hogy egyéni viselkedést hozzon létre, beleértve a következőket:
 
-* Absztrakt az eredményül kapott bájttömböt az egyéni alsóbb rétegbeli szolgáltatások kereshető adatfolyamaként.
-* Integrálja az eredményt más API-kkal vagy szolgáltatásokkal.
-* Módosítsa a hangadatokat, írjon egyéni `.wav` fejléceket stb.
+* Az eredményül kapott bájtos tömböt az egyéni alsóbb rétegbeli szolgáltatásokhoz tartozó, keresési lehetőségként szolgáló adatfolyamként elvonta
+* Az eredmény integrálása más API-k vagy szolgáltatások használatával.
+* A hangadatok módosítása, egyéni `.wav` fejlécek írása stb.
 
-Ez a változás egyszerű az előző példához képest. Először távolítsa `AudioConfig` el a blokkot, mivel ettől a ponttól kezdve manuálisan fogja kezelni a kimeneti viselkedést a fokozott vezérlés érdekében. Ezután `undefined` adja `AudioConfig` át `SpeechSynthesizer` a konstruktora. 
+Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el `AudioConfig` a blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja `undefined` át a `AudioConfig` -t `SpeechSynthesizer` a konstruktorban. 
 
 > [!NOTE]
-> A `undefined` `AudioConfig`, ahelyett, hogy kihagyna, mint a fenti hangszóró kimeneti példában, alapértelmezés szerint nem játssza le a hangot az aktuális aktív kimeneti eszközön.
+> A `undefined` `AudioConfig`(z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
 
-Ezúttal az eredményt egy [`SpeechSynthesisResult`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult?view=azure-node-latest) változóba menti. A `SpeechSynthesisResult.audioData` tulajdonság `ArrayBuffer` a kimeneti adatokat adja vissza. Ezt `ArrayBuffer` manuálisan is használhatja.
+Ezúttal egy [`SpeechSynthesisResult`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult?view=azure-node-latest) változóba menti az eredményt. A `SpeechSynthesisResult.audioData` tulajdonság a kimeneti `ArrayBuffer` adatokat adja vissza. Ezt `ArrayBuffer` manuálisan is használhatja.
 
 ```javascript
 function synthesizeSpeech() {
@@ -183,21 +183,21 @@ function synthesizeSpeech() {
 }
 ```
 
-Itt bármilyen egyéni viselkedést megvalósíthat `ArrayBuffer` az eredményül kapott objektum használatával.
+Innen bármilyen egyéni viselkedést alkalmazhat az eredményül kapott `ArrayBuffer` objektum használatával.
 
 ## <a name="customize-audio-format"></a>Hangformátum testreszabása
 
-A következő szakasz bemutatja, hogyan szabhatja testre a hangkimeneti attribútumokat, többek között:
+A következő szakasz bemutatja, hogyan szabhatja testre a hangkimeneti attribútumokat, beleértve a következőket:
 
 * Hangfájl típusa
-* Minta-arány
-* Bitmélység
+* Mintavételezési arány
+* Kis mélység
 
-A hangformátum módosításához használja `speechSynthesisOutputFormat` az `SpeechConfig` objektum tulajdonságát. Ez a tulajdonság `enum` egy [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest)olyan típusra számít, amelyet a kimeneti formátum kiválasztásához használ. Az elérhető [hangformátumok listáját](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest) a referenciadokumentumokban található.
+A hangformátum módosításához használja az `speechSynthesisOutputFormat` `SpeechConfig` objektum tulajdonságát. Ez a tulajdonság egy `enum` típust [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest)vár, amelyet a kimeneti formátum kiválasztásához használ. A rendelkezésre álló [hangformátumok listáját](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest) az útmutató dokumentációjában tekintheti meg.
 
-A követelményektől függően különböző fájltípusokra különböző lehetőségek vonatkoznak. Ne feledje, hogy definíció `Raw24Khz16BitMonoPcm` szerint a nyers formátumok, mint például nem tartalmaznak hangfejléceket. Csak akkor használjon nyers formátumokat, ha tudja, hogy az alsóbb rétegbeli megvalósítás dekódolhat egy nyers bitfolyamot, vagy ha manuálisan tervez fejléceket a bitmélység, a mintavételi sebesség, a csatornák száma stb.
+A követelményektől függően különböző fájltípusok választhatók. Vegye figyelembe, hogy definíció szerint a nyers `Raw24Khz16BitMonoPcm` formátumok, például a nem tartalmaznak hangfejléceket. A nyers formátumok csak akkor használhatók, ha tudja, hogy az alsóbb rétegbeli implementáció dekódolást végez a nyers Bitstream, vagy ha manuálisan kívánja felépíteni a fejléceket a kis mélység, a mintavételezési arány, a csatornák száma stb. alapján.
 
-Ebben a példában az `Riff24Khz16BitMonoPcm` `speechSynthesisOutputFormat` `SpeechConfig` objektumon lévő beállítással magas minőségű RIFF formátumot adhat meg. Az előző szakaszban található példához `ArrayBuffer` hasonlóan lekell szereznie a hangadatokat, és kölcsönhatásba kell lépnie velük.
+Ebben a példában egy magas hűségű RIFF formátumot `Riff24Khz16BitMonoPcm` kell megadnia az `speechSynthesisOutputFormat` `SpeechConfig` objektumra vonatkozó beállítással. Az előző szakaszban szereplő példához hasonlóan a `ArrayBuffer` hangadatok beolvasása és a velük folytatott kommunikáció.
 
 ```javascript
 function synthesizeSpeech() {
@@ -223,14 +223,14 @@ function synthesizeSpeech() {
 }
 ```
 
-Ha ismét futtatja `.wav` a programot, a program a megadott elérési útra ír.
+A program ismételt futtatásakor a rendszer `.wav` egy fájlt ír a megadott elérési útra.
 
-## <a name="use-ssml-to-customize-speech-characteristics"></a>Beszédfelismerési jellemzők testreszabása ssml-rel
+## <a name="use-ssml-to-customize-speech-characteristics"></a>A SSML használata a beszédfelismerési jellemzők testreszabásához
 
-A beszédszintetizáló nyelv (SSML) lehetővé teszi a szövegírás-olvasási hangmagasság, kiejtés, beszédarány, hangerő és egyebek nagyobb részének finomhangolását egy XML-sémából érkező kérelmek elküldésével. Ez a szakasz néhány gyakorlati használati példát mutat be, de részletesebb útmutatót az [SSML útmutatójában talál.](../../../speech-synthesis-markup.md)
+A Speech szintézis Markup Language (SSML) lehetővé teszi, hogy a kérések XML-sémából való elküldésével részletesen beállítsa a szöveg-beszéd kimenetet, a kiejtést, a beszéd sebességét, a kötetet és a többit. Ez a szakasz néhány hasznos példát mutat be, de részletesebb útmutatásért tekintse meg a [SSML ismertető cikket](../../../speech-synthesis-markup.md).
 
-Az SSML testreszabási használatának megkezdéséhez egy egyszerű módosítást kell elindítania, amely átkapcsolja a hangot.
-Először hozzon létre egy új XML-fájlt az SSML konfigurációhoz a gyökérprojekt könyvtárában ebben a példában. `ssml.xml` A gyökérelem `<speak>`mindig , és a `<voice>` szöveg tördelése egy `name` elemben lehetővé teszi a hang megváltoztatását a param használatával. Ez a példa megváltoztatja a hangját egy férfi angol (UK) hangra. Vegye figyelembe, hogy ez a hang egy **szabványos** hang, amely különböző árképzéssel és rendelkezésre állással rendelkezik, mint **a neurális** hangok. Tekintse meg a támogatott **szabványos** hangok [teljes listáját.](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices)
+A SSML testreszabáshoz való használatának megkezdéséhez egy egyszerű módosítást hajt végre, amely átváltja a hangot.
+Először hozzon létre egy új XML-fájlt a SSML config-hoz a legfelső szintű Project- `ssml.xml`címtárban, ebben a példában. A gyökérelem mindig `<speak>`, és egy `<voice>` elem szövegének körbefuttatása lehetővé teszi a hang módosítását a `name` param használatával. Ez a példa egy férfi angol (Egyesült Királysági) hangra vált. Vegye figyelembe, hogy ez a hang egy **szabványos** hang, amely különböző díjszabással és rendelkezésre állással rendelkezik, mint a **neurális** hangok. Tekintse meg a támogatott **standard** hangok [teljes listáját](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) .
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -240,7 +240,7 @@ Először hozzon létre egy új XML-fájlt az SSML konfigurációhoz a gyökérp
 </speak>
 ```
 
-Ezután módosítania kell a beszédszintézisi kérelmet, hogy hivatkozzon az XML-fájlra. A kérelem többnyire ugyanaz, de `speakTextAsync()` a függvény `speakSsmlAsync()`használata helyett a . Ez a függvény XML-karakterláncot vár, ezért először hozzon létre egy függvényt az XML-fájl betöltéséhez és karakterláncként való visszaküldéséhez.
+Ezután módosítania kell a beszédfelismerési kérést az XML-fájlra való hivatkozáshoz. A kérelem többnyire azonos, de a `speakTextAsync()` függvény használata helyett használja `speakSsmlAsync()`a parancsot. Ez a függvény egy XML-karakterláncot vár, ezért először létre kell hoznia egy függvényt egy XML-fájl betöltéséhez, és karakterláncként kell visszaadnia.
 
 ```javascript
 function xmlToString(filePath) {
@@ -249,7 +249,7 @@ function xmlToString(filePath) {
 }
 ```
 
-További információ `readFileSync`a : <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js<span class="docon docon-navigate-external x-hidden-focus"></span>fájlrendszer</a>. Innen az eredményobjektum pontosan megegyezik az előző példákkal.
+További információ: `readFileSync` <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node. js-fájlrendszer<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Innen az eredmény objektum pontosan megegyezik az előző példákkal.
 
 ```javascript
 function synthesizeSpeech() {
@@ -275,7 +275,7 @@ function synthesizeSpeech() {
 }
 ```
 
-A kimenet működik, de van néhány egyszerű további változtatást lehet tenni, hogy segítsen hangzik természetesebb. Az általános beszédsebesség egy kicsit túl gyors, `<prosody>` ezért hozzáadunk egy címkét, és csökkentjük a sebességet az alapértelmezett sebesség **90% -ára.** Továbbá, a szünet után a vessző a mondatban egy kicsit túl rövid és természetellenes hangzású. A probléma megoldásához `<break>` adjon hozzá egy címkét a beszéd késleltetéséhez, és állítsa a param időt **200 ms-ra.** Futtassa újra a szintézist, és nézze meg, hogyan befolyásolták ezek a testreszabások a kimenetet.
+A kimenet működik, de van néhány egyszerű további módosítás is, amely segít a természetesebb hangzásban. A teljes beszélő sebesség egy kicsit túl gyors, ezért felvesszük a `<prosody>` címkét, és az alapértelmezett sebesség **90%-ában** csökkentik a sebességet. Emellett a mondatban található vessző utáni szünet egy kicsit túl rövid és természetellenes hang. A probléma megoldásához vegyen fel `<break>` egy címkét a beszéd késleltetéséhez, és állítsa be az időparamétert a **200ms**értékre. Futtassa újra a szintézist, hogy megtekintse, hogy a testreszabások hogyan érintik a kimenetet.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -289,12 +289,12 @@ A kimenet működik, de van néhány egyszerű további változtatást lehet ten
 
 ## <a name="neural-voices"></a>Neurális hangok
 
-A neurális hangok beszédszintézisi algoritmusok, amelyeket mély neurális hálózatok működtetnek. Neurális hang használata esetén a szintetizált beszéd szinte megkülönböztethetetlen az emberi felvételektől. Az emberszerű természetes prosody és világos artikuláció a szavak, neurális hangok jelentősen csökkenti a hallgatás fáradtság, amikor a felhasználók kölcsönhatásba AI rendszerek.
+A neurális hangok a mély neurális hálózatok által működtetett hangszintézisi algoritmusok. Neurális hang használatakor a szintetizált beszéd szinte nem különbözteti meg az emberi felvételeket. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelési fáradtságot, amikor a felhasználók interakcióba lépnek az AI-rendszerekkel.
 
-Ha neurális hangra `name` szeretne váltani, módosítsa az egyik [neurális hangbeállítást](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Ezután vegyen fel egy `mstts`XML-névteret a `<mstts:express-as>` alkalmazáshoz, és tördelje a szöveget a címkében. A `style` param segítségével testreszabhatja a beszédstílust. Ez a `cheerful`példa a , `customerservice` `chat` de próbálja meg beadni, vagy látni a különbséget a beszédstílus.
+Ha egy neurális hangra szeretne váltani, módosítsa `name` a beállítást az egyik [neurális hanglehetőségre](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Ezután adjon hozzá egy XML-névteret a `mstts`elemhez, és szúrja be a szöveget a `<mstts:express-as>` címkébe. A `style` paraméter használatával testreszabhatja a beszéd stílusát. Ez a példa `cheerful`a következőt használja, de `customerservice` megpróbáljuk beállítani a vagy `chat` a értékre, hogy megtekintse a beszéd stílusának különbségét.
 
 > [!IMPORTANT]
-> Neurális hangok **csak** az *USA keleti régiójában,* *Délkelet-Ázsiában*és *Nyugat-európai* régiókban létrehozott beszédfelismerési erőforrások esetében támogatottak.
+> A neurális hangokat **csak** az *USA keleti*régiójában, *Dél-Kelet-Ázsia*és *Nyugat-Európában* létrehozott beszédfelismerési erőforrások támogatják.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"

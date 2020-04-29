@@ -1,6 +1,6 @@
 ---
 title: Biztonsági modul és eszköz ikrek
-description: Ismerje meg a biztonsági modul ikrek koncepcióját, és hogy hogyan használják őket az Azure Security Center for IoT-ben.
+description: Ismerje meg az ikrek biztonsági moduljának fogalmát, valamint azt, hogy azok hogyan használhatók a IoT Azure Security Center.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,34 +16,34 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: d598d291612c6e4f58caf77e1b213b2bc3f42820
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311447"
 ---
 # <a name="security-module"></a>Biztonsági modul
 
-Ez a cikk bemutatja, hogyan használja az Azure Security Center for IoT eszközök twins és modulok.
+Ez a cikk azt ismerteti, hogy a IoT Azure Security Center hogyan használja az eszközökhöz készült ikreket és modulokat.
 
 ## <a name="device-twins"></a>Eszköz ikrek
 
-Az Azure-ban készült IoT-megoldások esetében az ikereszközök kulcsfontosságú szerepet játszanak mind az eszközkezelésben, mind a folyamatautomatizálásban.
+Az Azure-ban beépített IoT-megoldások esetében az eszközök az ikrek kulcsszerepet játszanak az eszközkezelés és a folyamatok automatizálása terén is.
 
-Az Azure Security Center for IoT teljes integrációt kínál a meglévő IoT-eszközfelügyeleti platformmal, lehetővé téve az eszköz biztonsági állapotának kezelését, valamint a meglévő eszközvezérlési képességek kihasználását. Az integráció az IoT Hub ikermechanizmusának használatával érhető el.
+Azure Security Center for IoT teljes körű integrációt biztosít a meglévő IoT-eszközkezelés platformmal, így kezelheti az eszköz biztonsági állapotát, és használhatja a meglévő eszköz-vezérlési képességeket. Az integráció a IoT Hub Twin mechanizmus használatával érhető el.
 
-További információ az [eszközök ikeriklításának](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) koncepciójáról az Azure IoT Hubban.
+Tudjon meg többet az Azure IoT Hub [eszközön található ikrek](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) koncepciójának megismeréséről.
 
 ## <a name="security-module-twins"></a>Biztonsági modul ikrek
 
-Az Azure Security Center for IoT egy ikerbiztonsági modult tart fenn a szolgáltatás minden egyes eszközéhez.
-A biztonsági modul iker tartalmazza az összes fontos információt az eszköz biztonságát minden egyes eszköz a megoldásban.
-Az eszközbiztonsági tulajdonságok egy dedikált ikerbiztonsági modulban maradnak meg a biztonságosabb kommunikáció, valamint a kevesebb erőforrást igénylő frissítések és karbantartás engedélyezése érdekében.
+A IoT Azure Security Center a szolgáltatás minden eszközéhez külön biztonsági modult tart fenn.
+A biztonsági modul Twin tartalmazza az eszköz biztonságával kapcsolatos összes információt a megoldás minden egyes eszközén.
+Az eszköz biztonsági tulajdonságait egy külön biztonsági modulban, a biztonságosabb kommunikációhoz, valamint a kevesebb erőforrást igénylő frissítések és karbantartás engedélyezéséhez kell megőrizni.
 
-Lásd: [Biztonsági modul létrehozása iker](quickstart-create-security-twin.md) és konfigurálja a biztonsági [ügynökök,](how-to-agent-configuration.md) hogy megtanulják, hogyan lehet létrehozni, testre, és konfigurálja a két. [Tekintse meg a modul twins további](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) megismerése a modul ikrek az IoT Hubban.
+Lásd: a [biztonsági modul létrehozása](quickstart-create-security-twin.md) és a [biztonsági ügynökök konfigurálása](how-to-agent-configuration.md) , amelyekből megtudhatja, hogyan hozhatja létre, testreszabhatja és konfigurálhatja a Twin-et. Tekintse meg az ikrek [modul ismertetése](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) című témakört, amely részletesebben ismerteti a IoT hub-ben az ikrek koncepcióját.
 
 ## <a name="see-also"></a>Lásd még
 
-- [Az Azure Security Center for IoT – áttekintés](overview.md)
+- [A IoT Azure Security Center áttekintése](overview.md)
 - [Biztonsági ügynökök üzembe helyezése](how-to-deploy-agent.md)
 - [Biztonsági ügynök hitelesítési módszerei](concept-security-agent-authentication-methods.md)

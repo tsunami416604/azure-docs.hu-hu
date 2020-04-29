@@ -1,6 +1,6 @@
 ---
-title: Azure Security Control – Incidensre adott válasz
-description: Az Azure security control incidensre adott válasza
+title: Azure Security Control – incidens válasza
+description: Az Azure Security Control incidensre adott válasz
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,87 +8,87 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 993793d21e6253188dfc199d8701cbe117503517
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408421"
 ---
-# <a name="security-control-incident-response"></a>Biztonsági ellenőrzés: Incidensre adott válasz
+# <a name="security-control-incident-response"></a>Biztonsági ellenőrzés: incidens válasza
 
-A szervezet információinak és hírnevének védelme az incidenselhárítási infrastruktúra (pl. tervek, meghatározott szerepek, képzés, kommunikáció, felügyeleti felügyelet) kifejlesztésével és megvalósításával a támadások gyors felfedezéséhez, majd a károk hatékony megfékezéséhez, a támadó jelenlétének felszámolásához, valamint a hálózat és a rendszerek integritásának helyreállításához.
+A szervezet információinak és hírnevének védelme az incidensek megoldási infrastruktúrájának (például a tervek, a meghatározott szerepkörök, a képzés, a kommunikáció, a felügyelet felügyelete) fejlesztésével és megvalósításával a támadás gyors feltárásához, majd a sérülés hatékony, a támadó jelenlétének megszüntetéséhez, valamint a hálózat és a rendszerek integritásának helyreállításához.
 
-## <a name="101-create-an-incident-response-guide"></a>10.1: Incidenselhárítási útmutató létrehozása
+## <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 10.1 | 19.1, 19.2, 19.3 | Ügyfél |
+| 10.1 | 19,1, 19,2, 19,3 | Ügyfél |
 
-Hozzon létre egy incidens-elhárítási útmutatót a szervezet számára. Győződjön meg arról, hogy vannak olyan írásos eseményreagálási tervek, amelyek meghatározzák a személyzet összes szerepkörét, valamint az incidenskezelés/-kezelés fázisait az észleléstől az incidens utáni felülvizsgálatig.  
+Hozzon létre egy incidensre vonatkozó választ a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.  
 
-- [Útmutató a saját biztonsági incidensek reválaszolási folyamatának felépítéséhez](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-- [A Microsoft Security Response Center egy incidens anatómia](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
+- [Microsoft Security Response Center – incidens anatómiája](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-- [Használja ki a NIST számítógépes biztonsági incidenskezelési útmutatóját, hogy segítse saját eseményreagálási tervének létrehozását](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [A NIST számítógépes biztonsági incidensek kezelésének útmutatója a saját incidensekre vonatkozó válaszadási terv létrehozásához nyújtott támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-## <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Incidenspontozási és rangsorolási eljárás létrehozása
+## <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 10.2 | 19.8 | Ügyfél |
+| 10.2 | 19,8 | Ügyfél |
 
-A Security Center minden riasztáshoz súlyossági szintet rendel, hogy segítsen rangsorolni, mely riasztásokat kell először kivizsgálni. A súlyosság attól függ, hogy a Security Center mennyire magabiztos a keresésben, vagy a riasztás kiadásához használt analitikus, valamint a riasztáshoz vezető tevékenység mögött rosszindulatú szándék megbízhatósági szintje. 
+A Security Center az egyes riasztásokhoz súlyosságot rendel, így rangsorolhatja, hogy a rendszer mely riasztásokat vizsgálja meg először. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt. 
 
-Ezenkívül egyértelműen jelölje meg az előfizetéseket (pl. termelés, nem prod) címkék használatával, és hozzon létre egy elnevezési rendszer egyértelműen azonosítani és kategorizálni az Azure-erőforrások, különösen a bizalmas adatok feldolgozása.  Az Ön felelőssége, hogy rangsorolja a riasztások szervizelése alapján az Azure-erőforrások és a környezet, ahol az esemény történt.
+Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához.  Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
 - [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
 - [Címkék használata az Azure-erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="103-test-security-response-procedures"></a>10.3: A tesztelési biztonsági reagálási eljárások
+## <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 10.3 | 19 | Ügyfél |
+| 10,3 | 19 | Ügyfél |
 
-Végezzen gyakorlatokat a rendszerek incidenselhárítási képességeinek rendszeres ütemben való teszteléséhez az Azure-erőforrások védelme érdekében. Azonosítsa a gyenge pontokat és hiányosságokat, és szükség szerint vizsgálja felül a tervet.
+Az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
 
-- [A NIST kiadványa - Útmutató az informatikai tervek és képességek teszteléséhez, képzéséhez és edzéséhez](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+- [A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és alkalmazásához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Adja meg a biztonsági incidensek elérhetőségét, és állítsa be a biztonsági incidensek riasztási értesítéseit
+## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 10.4 | 19.5 | Ügyfél |
+| 10,4 | 19,5 | Ügyfél |
 
-A Biztonsági incidensek kapcsolattartási adatait a Microsoft arra használja, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy az Ön adataihoz jogosulatlan vagy jogosulatlan fél fért hozzá. Tekintse át az incidenseket a problémák megoldásának biztosítása érdekében.
+A Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-- [Az Azure Security Center biztonsági kapcsolattartójának beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 
-## <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Biztonsági riasztások beépítése az incidenselhárítási rendszerbe
+## <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 10,5 | 19.6 | Ügyfél |
+| 10,5 | 19,6 | Ügyfél |
 
-Exportálja az Azure Security Center-riasztásokat és javaslatokat a Folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosításához. A Folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális exportálását, vagy folyamatos, folyamatos módon. Használhatja az Azure Security Center adatösszekötőt a riasztások streameléséhez az Azure Sentinel.
+Az Azure Security Center-riasztások és-javaslatok exportálásával a folyamatos exportálás funkcióval azonosíthatja az Azure-erőforrásokkal kapcsolatos kockázatokat. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-- [A folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
 
-- [Értesítések streamelése az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
 
-## <a name="106-automate-the-response-to-security-alerts"></a>10.6: A biztonsági riasztásokra adott válasz automatizálása
+## <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 10.6 | 19 | Ügyfél |
+| 10,6 | 19 | Ügyfél |
 
-Az Azure Security Center Munkafolyamat-automatizálási szolgáltatásával automatikusan elindíthatja a "Logic Apps" szolgáltatáson keresztül a biztonsági riasztásokra és az Azure-erőforrások védelmére vonatkozó javaslatokra adott válaszokat.
+A Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat az "Logic Apps" használatával a biztonsági riasztások és az Azure-erőforrások védelme érdekében javasolt javaslatok alapján.
 
-- [Munkafolyamat-automatizálás és logikai alkalmazások konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd a következő biztonsági ellenőrzés: [Penetrációs tesztek és a Vörös Csapat gyakorlatok](security-control-penetration-tests-red-team-exercises.md)
+- Tekintse meg a következő biztonsági vezérlőt: [behatolási tesztek és Red Team Exercises](security-control-penetration-tests-red-team-exercises.md)

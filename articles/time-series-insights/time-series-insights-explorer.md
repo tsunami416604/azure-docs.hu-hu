@@ -1,6 +1,6 @@
 ---
-title: Adatok feltárása az explorer használatával - Azure Time Series Insights | Microsoft dokumentumok
-description: Ismerje meg, hogyan használhatja az Azure Time Series Insights explorer t az IoT-adatok megtekintéséhez.
+title: Az adatelemzés az Explorer-Azure Time Series Insights használatával | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti meg a IoT adatait a Azure Time Series Insights Explorer használatával.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -13,118 +13,118 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382785"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Az Azure Time Series Insights kezelője
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
-Ez a cikk az Azure Time Series Insights [explorer webalkalmazás](https://insights.timeseries.azure.com/)általános elérhetőségi funkcióit és beállításait ismerteti. A Time Series Insights-felfedező bemutatja a szolgáltatás által biztosított hatékony adatvizualizációs képességeket, és a saját környezetében is elérhető.
+Ez a cikk a Azure Time Series Insights [Explorer webalkalmazás](https://insights.timeseries.azure.com/)általánosan elérhető funkcióit és lehetőségeit ismerteti. A Time Series Insights Explorer bemutatja a szolgáltatás által biztosított hatékony adatvizualizációs képességeket, és a saját környezetében érhető el.
 
-Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Globális képet ad az adatokról, így gyorsan ellenőrizheti az IoT-megoldást, és elkerülheti a kritikus fontosságú eszközök költséges állásidejét. Felfedezheti a rejtett trendeket, észlelheti az anomáliákat, és közel valós időben végezhet kiváltó okokat. A Time Series Insights explorer jelenleg nyilvános előzetes verzióban érhető el.
+Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Globális áttekintést nyújt az adatairól, így gyorsan ellenőrizheti IoT-megoldását, és elkerülheti az üzleti szempontból kritikus fontosságú eszközök költséges leállását. Közel valós időben derítheti fel a rejtett trendeket, észlelheti a rendellenességeket, és elvégezheti a kiváltó okok elemzését. A Time Series Insights Explorer jelenleg nyilvános előzetes verzióban érhető el.
 
 > [!TIP]
-> A bemutató környezetben vezetett bemutató környezetben az [Azure Time Series Insights rövid útmutatóját](time-series-quickstart.md)olvassa el.
+> A demonstrációs környezettel kapcsolatos interaktív bemutatóért olvassa el a [Azure Time Series Insights](time-series-quickstart.md)rövid útmutatót.
 
 ## <a name="video"></a>Videó
 
-### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Ismerje meg az adatok lekérdezését a Time Series Insights felfedező használatával. </br>
+### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Tudnivalók az adatlekérdezésekről a Time Series Insights Explorer használatával. </br>
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->Az előző <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">videó "A Time Series Insights használatának megkezdése egy Azure IoT-megoldásgyorsító használatával" című videóval.</a>
+>Az előző <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"első lépések a Time Series Insights Azure IoT Solution Accelerator használatával</a> " című videó lejátszása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Time Series Insights-kezelő használata előtt a következőket kell tennie:
+A Time Series Insights Explorer használata előtt a következőket kell tennie:
 
-- Hozzon létre egy Time Series Insights-környezetet. További információ: [Útmutató a Time Series Insights működéséhez.](./time-series-insights-get-started.md)
-- [Hozzáférést biztosít](time-series-insights-data-access.md) a fiókjához a környezetben.
-- Adjon hozzá egy [IoT hub](time-series-insights-how-to-add-an-event-source-iothub.md) vagy [eseményközpont](time-series-insights-how-to-add-an-event-source-eventhub.md) eseményforrást.
+- Hozzon létre egy Time Series Insights környezetet. További információért olvassa el a [Time Series Insights első lépéseit](./time-series-insights-get-started.md)ismertető témakört.
+- [Hozzáférés biztosítása](time-series-insights-data-access.md) a fiókhoz a környezetben.
+- Adjon hozzá egy [IoT hub](time-series-insights-how-to-add-an-event-source-iothub.md) -vagy [Event hub](time-series-insights-how-to-add-an-event-source-eventhub.md) -esemény forrását.
 
-## <a name="explore-and-query-data"></a>Adatok feltárása és lekérdezése
+## <a name="explore-and-query-data"></a>Adatgyűjtés és adatlekérdezés
 
-Az eseményforrás nak a Time Series Insights-környezethez való csatlakoztatását követő perceken belül feltárhatja és lekérdezheti az idősorozat-adatokat.
+Az eseményforrás a Time Series Insights-környezethez való csatlakoztatását perceken belül megtekintheti és lekérdezheti az idősorozat-adatait.
 
-1. A kezdéshez nyissa meg a [Time Series Insights explorert](https://insights.timeseries.azure.com/) a webböngészőben. Az ablak bal oldalán jelöljön ki egy környezetet. Minden olyan környezet, amelyhez hozzáférése van, betűrendben van felsorolva.
+1. A kezdéshez nyissa meg a [Time Series Insights Explorert](https://insights.timeseries.azure.com/) a böngészőben. Az ablak bal oldalán válasszon ki egy környezetet. Minden olyan környezet, amelyhez hozzáférése van, betűrendben jelenik meg.
 
-1. Miután kijelölt egy környezetet, használja a felső helyen a **Be és** **a To** konfigurációt, vagy jelölje ki és húzza át a kívánt időtartamot. Jelölje ki a jobb felső sarokban lévő nagyítót, vagy kattintson a jobb gombbal a kiválasztott időtartományra, és válassza a **Keresés parancsot.**
+1. Miután kiválasztott egy környezetet, vagy használja a **from** és **a** konfigurációt a felső részen, vagy válassza ki és húzza át a kívánt TimeSpan. Válassza ki a Nagyítót a jobb felső sarokban, vagy kattintson a jobb gombbal a kiválasztott TimeSpan, és válassza a **Keresés**lehetőséget.
 
-1. Az **Automatikus bekapcsolás** gombra kattintva percenként automatikusan frissítheti az elérhetőséget. Az **Automatikus bekapcsolás** gomb csak a rendelkezésre állási diagramra vonatkozik, a fő vizualizáció tartalmára nem.
+1. A rendelkezésre állást automatikusan is frissítheti percenként, ha az **Automatikus bekapcsolás** gombra kattint. Az **Automatikus bekapcsolás** gomb csak a rendelkezésre állási diagramra vonatkozik, nem a fő vizualizáció tartalmára.
 
-1. Az Azure felhőikon az Azure Portalon a környezetéhez vezeti.
+1. Az Azure Cloud ikon a Azure Portalban található környezetére viszi.
 
-   [![A Time Series Insights környezet kiválasztása](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
+   [![Time Series Insights környezet kiválasztása](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
-1. Ezután megjelenik egy diagram, amely a kiválasztott időtartam alatt az összes esemény számát jeleníti meg. Itt számos vezérlőt tud meg:
+1. Ezután egy diagram jelenik meg, amely megjeleníti a kiválasztott TimeSpan összes eseményének számát. Itt számos vezérlőelem van:
 
-    - **Kifejezések szerkesztő panel**: A kifejezés szó, ahol lekérdezi a környezetben. A képernyő bal oldalán található:
-      - **INTÉZKEDÉS**: Ez a legördülő lista az összes numerikus oszlopot (**páros**) tartalmazza.
-      - **FELOSZTÁS:** Ez a legördülő lista kategorikus oszlopokat (**karakterláncokat )** jelenít meg.
-      - Engedélyezheti a lépésinterpolációt, megjelenítheti a minimális és maximális értéket, és beállíthatja az y tengelyt a **vezérlőpultról**a MÉRTÉK elem mellett. Azt is beállíthatja, hogy a megjelenített adatok az adatok száma, átlaga vagy összege legyenek.You can also adjust whether data shown is a count, average, or sum of the data.
-      - Legfeljebb öt kifejezést adhat hozzá, hogy ugyanabban az x tengelyen jelenjen meg. Válassza **a Hozzáadás** lehetőséget, ha új kifejezést szeretne hozzáadni, vagy a **Klónozás ez a kifejezés** gombbal hozzáadhat egy másolatot egy meglévő kifejezésről.
+    - **Feltételek szerkesztő panel**: az a terület, ahol lekérdezheti a környezetét. A képernyő bal oldalán található:
+      - **Mérték**: Ez a legördülő lista az összes numerikus oszlopot (**Double**) jeleníti meg.
+      - **Felosztás**: Ez a legördülő lista kategorikus oszlopokat (**karakterláncokat**) jelenít meg.
+      - Engedélyezheti a lépésenkénti interpolációt, megtekintheti a minimális és a maximális értéket, és módosíthatja az y tengelyt a vezérlő paneljén a **mérték**elem mellett. Azt is beállíthatja, hogy a megjelenített adatmennyiség darabszám, átlag vagy összeg-e.
+      - Akár öt kifejezést is hozzáadhat ugyanazon az x tengelyen. Válassza a **Hozzáadás** lehetőséget egy új kifejezés hozzáadásához, vagy a **jelen kifejezés klónozása** gomb használatával vegye fel egy meglévő kifejezés másolatát.
 
-        [![Kifejezések kiválasztása, szűrése és lekérdezéspanelje](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
+        [![Feltételek kiválasztása, szűrése és lekérdezési panel](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
 
-      - **Predikátum:** Használja az állítmányt, hogy gyorsan szűrje az eseményeket az alábbi táblázatban felsorolt operandusok készletével. Ha a keresést kijelöléssel vagy kattintással végzi, az állítmány automatikusan frissül a keresés alapján. A támogatott operandstípusok a következők:
+      - **Predikátum**: a predikátum használatával gyorsan szűrheti az eseményeket az alábbi táblázatban felsorolt operandusok használatával. Ha a keresést úgy végzi, hogy kiválasztja vagy rákattint a gombra, a rendszer a keresés alapján automatikusan frissíti a predikátumot. A támogatott operandusok típusai a következők:
 
          |Művelet  |Támogatott típusok  |Megjegyzések  |
          |---------|---------|---------|
-         |**<**, **>**, **<=**, **>=**    |  **Dupla**, **DateTime**, **TimeSpan**       |         |
-         |**=**, **!=**,**<>**     | **String**, **Bool**, **Double**, **DateTime**, **TimeSpan**, **NULL**        |         |
-         |**IN**     | **String**, **Bool**, **Double**, **DateTime**, **TimeSpan**, **NULL**        |  Minden operandusnak azonos típusúnak vagy **NULL** állandónak kell lennie.        |
-         |**Hsa**     | **Sztring**        |  A jobb oldalon csak állandó karakterlánc-konstansok engedélyezettek. Üres karakterlánc és **NULL** nem engedélyezett.       |
+         |**<**, **>**, **<=**, **>=**    |  **Double**, **datetime**, **TimeSpan**       |         |
+         |**=**, **!=**,**<>**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |         |
+         |**IN**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |  Az összes operandusnak azonos típusúnak vagy **Null** konstansnak kell lennie.        |
+         |**RENDELKEZIK**     | **Sztring**        |  A jobb oldalon csak konstans karakterlánc-literálok engedélyezettek. Üres karakterlánc és **Null érték** nem engedélyezett.       |
 
-      - **Példa lekérdezésekre**
+      - **Példák lekérdezésekre**
 
          [![Példa GA-lekérdezésekre](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
-1. Az **Intervallumméret** csúszka eszközzel az intervallumokat nagyíthatja és kicsinyítheti ugyanabban az időtartamban. A csúszka pontosabban szabályozza a nagy időszeletek közötti mozgást, amely sima trendeket mutat le a milliszekundumos méretű szeletekig, ami lehetővé teszi az adatok részletes, nagy felbontású vágásainak megjelenítését és elemzését. A csúszka alapértelmezett kezdőpontja a kijelölésadatainak legoptimálisabb nézeteként van beállítva a felbontás, a lekérdezési sebesség és a részletesség egyensúlyához.
+1. Az **intervallum mérete** csúszka eszköz használatával nagyíthatja és kicsinyítheti az intervallumokat ugyanazon a TimeSpan. A csúszka precízebb vezérlést biztosít a nagy szeletek közötti mozgáshoz, amely az ezredmásodpercben lévő, kis méretű szeletekre mutat, amelyek lehetővé teszik a részletes, nagy felbontású adatmennyiségek megjelenítését és elemzését. A csúszka alapértelmezett kiindulási pontja úgy van beállítva, hogy a kiválasztásból származó adatok legalkalmasabb nézete legyen a felbontás, a lekérdezés sebessége és a részletesség.
 
-1. Az **Időecset** eszköz megkönnyíti a navigálást az egyik időtartományból a másikba.
+1. Az **időecset** eszköz megkönnyíti az egyik TimeSpan a másikba való átjárását.
 
-1. A **Mentés** ikonra választva mentheti az aktuális lekérdezést, és megoszthatja azt a környezet többi felhasználójával. Ha a Megnyitás ikont **választja,** megtekintheti az összes mentett lekérdezést és a többi felhasználó megosztott lekérdezéseit olyan környezetekben, amelyekhez hozzáférése van.
+1. A **Mentés** ikonra kattintva mentheti az aktuális lekérdezést, és megoszthatja azt a környezet más felhasználóival. Az **Open (Megnyitás** ) ikon kiválasztásával áttekintheti az összes mentett lekérdezést és a más felhasználók megosztott lekérdezéseit olyan környezetekben, amelyekhez hozzáfér.
 
    [![Lekérdezések](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 
-1. A **Perspektíva nézet** eszközzel egyszerre legfeljebb négy egyedi lekérdezést tekinthet meg. A **Perspektíva nézet** gomb a diagram jobb felső sarkában található.
+1. A **perspektíva nézet** eszközzel akár négy egyedi lekérdezés egyidejű nézetét is használhatja. A **perspektíva nézet** gomb a diagram jobb felső sarkában található.
 
-   [![A perspektivikus ablaktáblához hozzáadni kívánt lekérdezések kiválasztása](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png)](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png#lightbox)
+   [![A perspektíva ablaktáblához hozzáadandó lekérdezések kiválasztása](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png)](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png#lightbox)
 
-1. Diagram megtekintése az adatok vizuális feltárásához, valamint a **Diagram** eszközök használatához:
+1. Megtekintheti a diagramot, hogy vizuálisan vizsgálja meg az adatait, és használja a **diagram** -eszközöket:
 
-    - **Jelöljön ki** vagy **kattintson** egy adott időtartományra vagy egyetlen adatsorra.
-    - Az időtartomány-kijelölésen belül nagyíthatja vagy felfedezheti az eseményeket.
-    - Az adatsorokon belül feloszthatja az adatsorokat egy másik oszlopra, új kifejezésként hozzáadhatja az adatsort, csak a kijelölt adatsorokat jelenítheti meg, kizárhatja a kijelölt adatsorokat, pingelheti az adatsort, vagy felfedezheti a kiválasztott adatsor eseményeit.
-    - A diagramtól balra lévő szűrőterületen áttekintheti az összes megjelenített adatsort, és átrendezheti az értéket vagy a nevet. Megtekintheti az összes adatsort vagy bármely rögzített vagy nem rögzített adatsort is. Kijelölhet egy adatsort, és feloszthatja az adatsort egy másik oszlopra, új kifejezésként hozzáadhatja az adatsort, csak a kijelölt adatsorokat jelenítheti meg, kizárhatja a kijelölt adatsorokat, rögzítheti az adatsort, vagy felfedezheti a kiválasztott adatsor eseményeit.
-    - Ha egyszerre több kifejezést is megtekint, halmozhatja, feloldhatja az adatsorokra vonatkozó további adatokat, és ugyanazt az y tengelyt használhatja az összes kifejezésközött. Használja a diagram jobb felső sarkában található gombokat.
+    - **Válasszon ki** vagy **kattintson** egy adott TimeSpan vagy egyetlen adatsorozatra.
+    - A TimeSpan kiválasztásán belül kinagyíthatja vagy megtekintheti az eseményeket.
+    - Egy adatsorozaton belül feloszthatja a sorozatot egy másik oszlop alapján, hozzáadhatja a sorozatot új kifejezésként, csak a kiválasztott adatsorozatot, kizárhatja a kiválasztott adatsorozatot, pingelheti az adatsorozatot, vagy megtekintheti az eseményeket a kiválasztott sorozatból.
+    - A diagram bal oldalán található szűrő területen áttekintheti az összes megjelenített adatsorozatot és-sorrendet érték vagy név szerint. Az összes adatsorozatot vagy bármely rögzített vagy nem rögzített adatsorozatot is megtekintheti. Kiválaszthat egy adatsorozatot, és feloszthatja az adatsorozatot egy másik oszlop alapján, hozzáadhatja a sorozatot új kifejezésként, csak a kiválasztott adatsorozatot, kizárhatja a kiválasztott adatsorozatot, rögzítheti a sorozatot, vagy megtekintheti az eseményeket a kiválasztott adatsorozatból.
+    - Ha egyszerre több kifejezést tekint meg, a verem, a leválasztás és az adatsorozatok további adatai is megtekinthetők, és ugyanazt az y tengelyt használják az összes kifejezésben. Használja a diagram jobb felső sarkában lévő gombokat.
 
-    [![A Diagram eszköz a jobb sarok jobb felső sarkában beállításbeállításai](media/time-series-insights-explorer/tsi-ga-example-chart-options.png)](media/time-series-insights-explorer/tsi-ga-example-chart-options.png#lightbox)
+    [![Diagram eszköz jobb felső sarkában beállítási beállítások](media/time-series-insights-explorer/tsi-ga-example-chart-options.png)](media/time-series-insights-explorer/tsi-ga-example-chart-options.png#lightbox)
 
-1. A **hőtérkép** segítségével gyorsan észlelheti az egyedi vagy rendellenes adatsorokat egy adott lekérdezésben. Csak egy keresési kifejezés jeleníthető meg hőtérképként.
+1. A **hő** segítségével gyorsan kipróbálhatja az egyedi vagy rendellenes adatsorozatokat egy adott lekérdezésben. Hő csak egy keresési kifejezés látható.
 
-    [![GA explorer heatmap charting](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![GA Explorer hő-diagramok](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. Ha az eseményeket a kijelöléssel vagy a jobb gombbal kattintva vizsgálja, az **ESEMÉNYEK** panel elérhetővé válik. Itt megtekintheti az összes nyers eseményt, és exportálhatja az eseményeket JSON- vagy CSV-fájlként. A Time Series Insights az összes nyers adatot tárolja.
+1. Ha az eseményeket a jobb gombbal kattintva tárja fel, az **események** panel elérhetővé válik. Itt áttekintheti az összes nyers eseményt, és az eseményeket JSON-vagy CSV-fájlként is exportálhatja. Time Series Insights az összes nyers adathalmazt tárolja.
 
     [![Események](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
-1. A **minták** és az oszlopstatisztikák feltárása után válassza a STATISZTIKA lapot.
+1. Válassza a **stats (statisztika** ) lapot, miután megvizsgálta az eseményeket a minták és az oszlopok statisztikáinak megjelenítéséhez.
 
-    - **Minták**: Ez a funkció proaktív módon a kiválasztott adatterület statisztikailag legjelentősebb mintáit jelenik meg. Nem kell több ezer eseményt nézned ahhoz, hogy megértsd, milyen minták igényelnek a legtöbb időt és energiát. A Time Series Insights segítségével közvetlenül ezekbe a statisztikailag szignifikáns mintákba ugorhat az elemzés folytatásához. Ez a funkció a korábbi adatok post mortem kivizsgálásához is hasznos.
-    - **Oszlopstatisztika**: Az oszlopstatisztikák olyan diagramokat és táblázatokat biztosítanak, amelyek a kiválasztott adatsorok egyes oszlopainak adatait bontják le a kiválasztott időtartam alatt.
+    - **Mintázatok**: Ez a funkció proaktív módon felfedi a legtöbb statisztikailag jelentős mintát egy kiválasztott adatterületen. Nem kell több ezer eseményt megvizsgálnia, hogy megértsük, milyen mintázatok szükségesek a legtöbb időt és energiát. A Time Series Insights segítségével közvetlenül a statisztikailag jelentős mintákba ugorhat, így folytathatja az elemzést. Ez a funkció hasznos lehet a múltbeli adatfeldolgozást követő vizsgálatok során is.
+    - **Oszlop statisztikái**: az oszlop statisztikái olyan diagramokat és táblákat biztosítanak, amelyek a kijelölt adatsorozat egyes oszlopaiból származó adatokkal bontják le a kiválasztott TimeSpan.
 
-      [![STATS oszlopdiagram és beállítások](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
+      [![STATISZTIKÁK oszlopának diagramja és beállításai](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-Most már értesült a Time Series Insights explorer webalkalmazásban elérhető legfontosabb funkciókról, konfigurációs beállításokról és megjelenítési beállításokról.
+Most, hogy megismerte az Time Series Insights Explorer webalkalmazásban elérhető főbb funkciókat, konfigurációs beállításokat és megjelenítési beállításokat.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [diagnosztizálhatja és oldhatja meg](time-series-insights-diagnose-and-solve-problems.md) a problémákat a Time Series Insights környezetben.
+- Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a Time Series Insights-környezetben felmerülő problémákat](time-series-insights-diagnose-and-solve-problems.md) .
 
-- Az [Azure Time Series Insights](time-series-quickstart.md) rövid útmutatóbemutatója.
+- Végezze el az interaktív [Azure Time Series Insights](time-series-quickstart.md) gyors bemutatóját.

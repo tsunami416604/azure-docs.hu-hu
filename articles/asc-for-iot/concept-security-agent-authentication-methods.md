@@ -1,6 +1,6 @@
 ---
 title: Biztonsági ügynök hitelesítési módszerei
-description: Ismerje meg a különböző hitelesítési módszerek elérhető az Azure Security Center for IoT szolgáltatás használatakor.
+description: Ismerje meg a IoT szolgáltatás Azure Security Centerjának használatakor elérhető különböző hitelesítési módszereket.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,68 +16,68 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311516"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerei
 
-Ez a cikk ismerteti a különböző hitelesítési módszereket az AzureIoTSecurity ügynökkel az IoT Hubhitelesítéshez használható.
+Ez a cikk ismerteti a különböző hitelesítési módszereket, amelyekkel a AzureIoTSecurity-ügynökkel végezheti el a hitelesítést a IoT Hub.
 
-Az IoT-központban az Azure Security Center for IoT-be bedeszkázott minden egyes eszközhöz szükség van egy biztonsági modulra. Az eszköz hitelesítéséhez az Azure Security Center for IoT két módszer egyikét használhatja. Válassza ki azt a módszert, amely a legjobban megfelel a meglévő IoT-megoldásnak.
+A IoT Hub IoT Azure Security Centerbe bekészített minden eszközhöz biztonsági modulra van szükség. Az eszköz hitelesítéséhez Azure Security Center a IoT két módszer egyikét használhatja. Válassza ki a meglévő IoT-megoldáshoz legjobban illő módszert.
 
 > [!div class="checklist"]
 > * SecurityModule beállítás
-> * Eszközbeállítás
+> * Eszköz beállítás
 
 ## <a name="authentication-methods"></a>Hitelesítési módszerek
 
-Az AzureIoTSecurity ügynök két módszere a hitelesítés végrehajtására:
+A AzureIoTSecurity-ügynök két módszere a hitelesítés elvégzésére:
 
 - **SecurityModule** hitelesítési mód<br>
-Az ügynök hitelesítése a biztonsági modul identitása az eszköz identitásátől függetlenül.
+Az ügynököt a biztonsági modul identitása alapján hitelesíti a rendszer az eszköz identitástól függetlenül.
 Akkor használja ezt a hitelesítési típust, ha azt szeretné, hogy a biztonsági ügynök egy dedikált hitelesítési módszert használjon a biztonsági modulon keresztül (csak szimmetrikus kulcs).
 
-- **Eszközhitelesítési** mód<br>
-Ebben a módszerben a biztonsági ügynök először hitelesíti magát az eszköz identitásával. A kezdeti hitelesítés után az Azure Security Center for IoT-ügynök **rest-hívást** hajt végre az IoT Huba a REST API használatával az eszköz hitelesítési adataival. Az Azure Security Center for IoT-ügynök majd kéri a biztonsági modul hitelesítési módszer és az adatok az IoT Hub. Az utolsó lépésben az Azure Security Center for IoT-ügynök hitelesítést hajt végre az Azure Security Center for IoT modul.
+- **Eszköz** hitelesítési módja<br>
+Ebben a metódusban a biztonsági ügynök először hitelesíti magát az eszköz identitásával. A kezdeti hitelesítés után a IoT-ügynök Azure Security Center **Rest** -hívást hajt végre a IoT hub az eszköz hitelesítési adataival REST API használatával. A IoT-ügynök Azure Security Center ezt követően a biztonsági modul hitelesítési módszerét és adatait kéri le a IoT Hub. Az utolsó lépésben a IoT-ügynök Azure Security Centerja a IoT modul Azure Security Center a hitelesítését végzi.
 
-Akkor használja ezt a hitelesítési típust, ha azt szeretné, hogy a biztonsági ügynök újra felhasználjon egy meglévő eszközhitelesítési módszert (önaláírt tanúsítványt vagy szimmetrikus kulcsot).
+Akkor használja ezt a hitelesítési típust, ha azt szeretné, hogy a biztonsági ügynök felhasználja a meglévő eszköz-hitelesítési módszert (önaláírt tanúsítvány vagy szimmetrikus kulcs).
 
-A konfigurálásról a [Biztonsági ügynök telepítési paraméterei](#security-agent-installation-parameters) című témakörben olvashat.
+A konfigurálásának megismeréséhez tekintse meg a [biztonsági ügynök telepítési paramétereit](#security-agent-installation-parameters) .
 
-## <a name="authentication-methods-known-limitations"></a>Ismert hitelesítési módszerek korlátai
+## <a name="authentication-methods-known-limitations"></a>Ismert hitelesítési módszerek
 
-- **A SecurityModule** hitelesítési mód csak a szimmetrikus kulcshitelesítést támogatja.
-- A hitelesítésszolgáltató által aláírt tanúsítványt **az eszközhitelesítési** mód nem támogatja.
+- A **SecurityModule** hitelesítési mód csak a szimmetrikus kulcsos hitelesítést támogatja.
+- Az **eszköz** hitelesítési módja nem támogatja a hitelesítésszolgáltató által aláírt tanúsítványt.
 
 ## <a name="security-agent-installation-parameters"></a>Biztonsági ügynök telepítési paraméterei
 
-[Biztonsági ügynök telepítésekor](how-to-deploy-agent.md)a hitelesítési adatokat argumentumként kell megadni.
-Ezeket az argumentumokat az alábbi táblázat dokumentálja.
+[Biztonsági ügynök telepítésekor a](how-to-deploy-agent.md)hitelesítési adatokat argumentumként kell megadni.
+Ezek az argumentumok a következő táblázatban vannak dokumentálva.
 
-|Linux paraméter neve | Windows-paraméter neve | Gyorsírás i. paramétere |Leírás|Beállítások|
+|Linux-paraméter neve | Windows-paraméter neve | Gyorsírás paraméter |Leírás|Beállítások|
 |---------------------|---------------|---------|---------------|---------------|
-|hitelesítés-identitás|AuthenticationIdentity (Hitelesítési identitás)|aui|Hitelesítési identitás| **SecurityModule** vagy **eszköz**|
-|hitelesítési módszer|AuthenticationMethod (Hitelesítési módszer)|Aum|Hitelesítési módszer|**SymmetricKey** vagy **SelfSignedCertificate**|
-|fájlelérési út|FilePath (Fájlelérési út)|nő|A tanúsítványt vagy a szimmetrikus kulcsot tartalmazó fájl teljes elérési útja| |
-|állomásnév|HostName|Hn|Az IoT-központ teljes tartományszáma|Példa: ContosoIotHub.azure-devices.net|
-|eszköz-azonosító|DeviceId|Di|Eszközazonosító|Példa: MyDevice1|
-|tanúsítvány helye-fajta|CertificateLocationKind|Cl|Tanúsítvány tárolási helye|**LocalFile** vagy **Áruház**|
+|hitelesítés – identitás|AuthenticationIdentity|AUI|Hitelesítési identitás| **SecurityModule** vagy- **eszköz**|
+|hitelesítés – metódus|AuthenticationMethod|Aum|Hitelesítési módszer|**SymmetricKey** vagy **SelfSignedCertificate**|
+|fájl elérési útja|FilePath|nő|A tanúsítványt vagy a szimmetrikus kulcsot tartalmazó fájl teljes elérési útja| |
+|gazdagép neve|HostName|HN|A IoT Hub teljes tartományneve|Példa: ContosoIotHub.azure-devices.net|
+|eszköz azonosítója|DeviceId|bú|Eszközazonosító|Példa: MyDevice1|
+|tanúsítvány – hely típusú|CertificateLocationKind|CL|Tanúsítvány tárolási helye|**LocalFile** vagy- **tároló**|
 |
 
-A telepítési biztonsági ügynök parancsfájl használatakor a következő konfiguráció automatikusan végrehajtásra kerül. A biztonsági ügynök hitelesítésének manuális szerkesztéséhez szerkessze a konfigurációs fájlt.
+A biztonsági ügynök telepítése parancsfájl használatakor a rendszer automatikusan elvégzi a következő konfigurációt. A biztonsági ügynök hitelesítésének manuális szerkesztéséhez szerkessze a konfigurációs fájlt.
 
-## <a name="change-authentication-method-after-deployment"></a>Hitelesítési módszer módosítása telepítés után
+## <a name="change-authentication-method-after-deployment"></a>Hitelesítési módszer módosítása az üzembe helyezés után
 
-Ha egy biztonsági ügynököt telepítési parancsfájllal telepít, a rendszer automatikusan létrehoz egy konfigurációs fájlt.
+Amikor telepítési parancsfájllal telepít biztonsági ügynököt, a rendszer automatikusan létrehoz egy konfigurációs fájlt.
 
-A hitelesítési módszerek központi telepítés utáni módosításához a konfigurációs fájl manuális szerkesztése szükséges.
+Az üzembe helyezést követően a hitelesítési módszerek módosításához szükség van a konfigurációs fájl manuális szerkesztésére.
 
 ### <a name="c-based-security-agent"></a>C#-alapú biztonsági ügynök
 
-A _Authentication.config_ fájl szerkesztése a következő paraméterekkel:
+Szerkessze a _Authentication. config_ fájlt a következő paraméterekkel:
 
 ```xml
 <Authentication>
@@ -92,7 +92,7 @@ A _Authentication.config_ fájl szerkesztése a következő paraméterekkel:
 
 ### <a name="c-based-security-agent"></a>C-alapú biztonsági ügynök
 
-A _LocalConfiguration.json szerkesztése_ a következő paraméterekkel:
+Szerkessze a _LocalConfiguration. JSON_ fájlt a következő paraméterekkel:
 
 ```json
 "Authentication" : {
@@ -106,6 +106,6 @@ A _LocalConfiguration.json szerkesztése_ a következő paraméterekkel:
 
 ## <a name="see-also"></a>Lásd még
 
-- [Biztonsági ügynökök – áttekintés](security-agent-architecture.md)
+- [Biztonsági ügynökök áttekintése](security-agent-architecture.md)
 - [Biztonsági ügynök telepítése](how-to-deploy-agent.md)
 - [Hozzáférés a nyers biztonsági adatokhoz](how-to-security-data-access.md)

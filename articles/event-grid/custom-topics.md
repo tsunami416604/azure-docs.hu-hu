@@ -1,6 +1,6 @@
 ---
-title: Egyéni témakörök az Azure Event Gridben
-description: Az Azure Event Grid egyéni témaköreit ismerteti.
+title: Egyéni témakörök a Azure Event Grid
+description: A Azure Event Grid egyéni témaköreinek ismertetése.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 166a48d74d32c8b0a3a59310e693ea96ada29116
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81394357"
 ---
-# <a name="custom-topics-in-azure-event-grid"></a>Egyéni témakörök az Azure Event Gridben
-Az eseményrács témaköre egy végpontot biztosít, ahol a forrás eseményeket küld. A közzétevő létrehozza az eseményrács témakörét, és eldönti, hogy egy eseményforrásnak szüksége van-e egy vagy több témakörre. A témakör kapcsolódó események gyűjteményéhez használatos. Bizonyos típusú eseményekre való reagáláshoz az előfizetők eldöntik, hogy mely témákra iratkozzanak fel.
+# <a name="custom-topics-in-azure-event-grid"></a>Egyéni témakörök a Azure Event Grid
+Az Event Grid-témakör olyan végpontot biztosít, amelyben a forrás eseményeket küld. A közzétevő létrehozza az Event Grid-témakört, és eldönti, hogy egy adott eseményforrás egy vagy több témakörre van-e szüksége. A témakörök a kapcsolódó események gyűjteményéhez használatosak. Bizonyos típusú események megválaszolásához az előfizetők eldönthetik, hogy mely témakörökre kell előfizetni.
 
-**Az egyéni témakörök** alkalmazás- és harmadik féltől származó témakörök. Amikor létrehoz vagy hozzáférést kap egy egyéni témakörhöz, akkor az megjelenik a saját előfizetésében. 
+Az **Egyéni témakörök** az alkalmazások és a harmadik féltől származó témakörök. Amikor létrehoz vagy hozzáférést kap egy egyéni témakörhöz, akkor az megjelenik a saját előfizetésében. 
 
-Az alkalmazás tervezésekor rugalmasan dönti el, hogy hány témakört szeretne létrehozni. Nagy megoldások esetén hozzon létre **egyéni témakört** **a kapcsolódó események minden kategóriájához.** Tekintsünk például egy olyan alkalmazást, amelyik a felhasználói fiókok módosításához és a megrendelések feldolgozásához kapcsolódóan küld eseményeket. Nem valószínű, hogy valamely eseménykezelőnek mind a két esemény kategória kellene. Hozzon létre két külön témakört, és az eseménykezelők hadd iratkozzanak fel arra, amelyik érdekli őket. Kis megoldások esetén előfordulhat, hogy az összes eseményt egyetlen témakörbe szeretné küldeni. Az esemény-előfizetők szűrhetik a kívánt eseménytípusokat.
+Az alkalmazás tervezésekor rugalmasságot biztosít, amikor eldönti, hány témakört kell létrehoznia. Nagyméretű megoldások esetében hozzon létre egy **Egyéni témakört** a **kapcsolódó események egyes kategóriáira**. Tekintsünk például egy olyan alkalmazást, amelyik a felhasználói fiókok módosításához és a megrendelések feldolgozásához kapcsolódóan küld eseményeket. Nem valószínű, hogy valamely eseménykezelőnek mind a két esemény kategória kellene. Hozzon létre két külön témakört, és az eseménykezelők hadd iratkozzanak fel arra, amelyik érdekli őket. Kis megoldások esetében érdemes lehet az összes eseményt egyetlen témakörbe elküldeni. Az esemény-előfizetők szűrhetik a kívánt típusú eseményeket.
 
 ## <a name="event-schema"></a>Eseményséma
-Az eseményséma részletes áttekintését az [Azure Event Grid eseménysémájában](event-schema.md)találja. Egyéni témakörök esetén az esemény **data** közzétevője határozza meg az adatobjektumot. A legfelső szintű adatoknak ugyanazoknak a mezőknek kell rendelkezniük, mint a szabványos erőforrás-definiált eseményeknek.
+Az Event Schema részletes áttekintését itt tekintheti meg: [Azure Event Grid Event Schema](event-schema.md). Az egyéni témakörök esetében az esemény-közzétevő határozza meg az **adatobjektumot** . A legfelső szintű adatnak ugyanazokkal a mezőkkel kell rendelkeznie, mint a szabványos erőforrás-definíciós események.
 
 ```json
 [
@@ -41,39 +41,39 @@ Az eseményséma részletes áttekintését az [Azure Event Grid eseménysémáj
 ]
 ```
 
-Az alábbi szakaszok az Azure Portal, a CLI, a PowerShell és az Azure Resource Manager (ARM) sablonjainak használatával egyéni témakörök létrehozására mutató témakörökre mutató hivatkozásokat tartalmaznak. 
+A következő szakaszok a Azure Portal, a CLI, a PowerShell és a Azure Resource Manager (ARM) sablonok használatával egyéni témakörök létrehozására szolgáló oktatóanyagokra mutató hivatkozásokat tartalmaznak. 
 
 
-## <a name="azure-portal-tutorials"></a>Az Azure Portal oktatóanyagai
+## <a name="azure-portal-tutorials"></a>Oktatóanyagok Azure Portal
 |Cím  |Leírás  |
 |---------|---------|
-| [Rövid útmutató: egyéni események létrehozása és irányítása az Azure Portalon](custom-event-quickstart-portal.md) | Bemutatja, hogyan lehet a portál használatával egyéni eseményeket küldeni. |
-| [Rövid útmutató: egyéni események irányítása az Azure Queue storage-ba](custom-event-to-queue-storage.md) | Ez a témakör azt ismerteti, hogy miként küldhet egyéni eseményeket várólista-tárolóba. |
-| [Hogyan: tegye az egyéni téma](post-to-custom-topic.md) | Bemutatja, hogyan lehet eseményt közzétenni egy egyéni témakörben. |
+| [Gyors útmutató: egyéni események létrehozása és irányítása a Azure Portal](custom-event-quickstart-portal.md) | Bemutatja, hogyan küldhet egyéni eseményeket a portál használatával. |
+| [Gyors útmutató: egyéni események irányítása az Azure üzenetsor-tárolóba](custom-event-to-queue-storage.md) | Útmutató egyéni események üzenetsor-tárolóba való küldéséhez. |
+| [Útmutató: közzététel egyéni témakörbe](post-to-custom-topic.md) | Bemutatja, hogyan lehet elküldeni egy eseményt egy egyéni témakörbe. |
 
 
-## <a name="azure-cli-tutorials"></a>Az Azure CLI oktatóanyagai
+## <a name="azure-cli-tutorials"></a>Azure CLI-oktatóanyagok
 |Cím  |Leírás  |
 |---------|---------|
-| [Rövid útmutató: egyéni események létrehozása és irányítása az Azure CLI-vel](custom-event-quickstart.md) | Bemutatja, hogyan használhatja az Azure CLI-t egyéni események küldésére. |
-| [Azure CLI: egyéni témakör létrehozása az Event Grid ben](./scripts/event-grid-cli-create-custom-topic.md)|Mintaparancsfájl, amely egyéni témakört hoz létre. A parancsfájl beolvassa a végpontot és egy kulcsot.|
-| [Azure CLI: előfizetni eseményekre egy egyéni témakörhöz](./scripts/event-grid-cli-subscribe-custom-topic.md)|Mintaparancsfájl, amely előfizetést hoz létre egy egyéni témakörhöz. Eseményeket küld egy WebHook.It sends events to a WebHook.|
+| [Gyors útmutató: egyéni események létrehozása és irányítása az Azure CLI-vel](custom-event-quickstart.md) | Bemutatja, hogyan küldhet egyéni eseményeket az Azure CLI használatával. |
+| [Azure CLI: Event Grid egyéni témakör létrehozása](./scripts/event-grid-cli-create-custom-topic.md)|Egyéni témakört létrehozó minta parancsfájl. A parancsfájl lekéri a végpontot és a kulcsot.|
+| [Azure CLI: előfizetés egyéni témakör eseményeire](./scripts/event-grid-cli-subscribe-custom-topic.md)|Egy egyéni témakör előfizetését létrehozó parancsfájl. Eseményeket küld egy webhooknak.|
 
-## <a name="azure-powershell-tutorials"></a>Azure PowerShell-oktatóanyagok
+## <a name="azure-powershell-tutorials"></a>Oktatóanyagok Azure PowerShell
 |Cím  |Leírás  |
 |---------|---------|
-| [Rövid útmutató: egyéni események létrehozása és irányítása az Azure PowerShell használatával](custom-event-quickstart-powershell.md) | Bemutatja, hogyan használhatja az Azure PowerShellt egyéni események küldésére. |
-| [PowerShell: event grid egyéni témakör létrehozása](./scripts/event-grid-powershell-create-custom-topic.md)|Mintaparancsfájl, amely egyéni témakört hoz létre. A parancsfájl beolvassa a végpontot és egy kulcsot.|
-| [PowerShell: feliratkozás egyéni témakör eseményeire](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Mintaparancsfájl, amely előfizetést hoz létre egy egyéni témakörhöz. Eseményeket küld egy WebHook.It sends events to a WebHook.|
+| [Gyors útmutató: egyéni események létrehozása és irányítása Azure PowerShell](custom-event-quickstart-powershell.md) | Bemutatja, hogyan lehet a Azure PowerShell használatával egyéni eseményeket küldeni. |
+| [PowerShell: Event Grid egyéni témakör létrehozása](./scripts/event-grid-powershell-create-custom-topic.md)|Egyéni témakört létrehozó minta parancsfájl. A parancsfájl lekéri a végpontot és a kulcsot.|
+| [PowerShell: előfizetés egy egyéni témakör eseményeire](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Egy egyéni témakör előfizetését létrehozó parancsfájl. Eseményeket küld egy webhooknak.|
 
-## <a name="arm-template-tutorials"></a>ARM sablon oktatóanyagok
+## <a name="arm-template-tutorials"></a>ARM-sablon oktatóanyagok
 |Cím  |Leírás  |
 |---------|---------|
-| [Resource Manager-sablon: egyéni témakör és WebHook-végpont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Erőforrás-kezelő sablon, amely egyéni témakört és előfizetést hoz létre az adott egyéni témakörhöz. Eseményeket küld egy WebHook.It sends events to a WebHook. |
-| [Erőforrás-kezelő sablon: egyéni témakör és Eseményközpontok végpontja](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Erőforrás-kezelő sablon, amely előfizetést hoz létre egy egyéni témakörhöz. Eseményeket küld egy Azure Event Hubs. |
+| [Resource Manager-sablon: egyéni témakör és webhook-végpont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Egy Resource Manager-sablon, amely egyéni témakört és előfizetést hoz létre az adott egyéni témakörhöz. Eseményeket küld egy webhooknak. |
+| [Resource Manager-sablon: egyéni témakör és Event Hubs végpont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Resource Manager-sablon, amely létrehoz egy egyéni témakörhöz tartozó előfizetést. Eseményeket küld egy Azure-Event Hubs. |
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket: 
 
-- [Rendszerrel kapcsolatos témakörök](system-topics.md)
+- [Rendszertémakörök](system-topics.md)
 - [Tartományok](event-domains.md)

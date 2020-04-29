@@ -5,41 +5,41 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: 8c63c979300af4c180751b3824def0cb974ee186
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400917"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
 
-Az első lépés annak biztosítása, hogy a projekt meg legyen nyitva a Visual Studióban.
+Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visual Studióban.
 
-1. Indítsa el a Visual Studio 2019-et.
-2. Töltse be a `Program.cs`projektet, és nyissa meg a programot.
+1. Indítsa el a Visual Studio 2019-es kiadását.
+2. Töltse be a projektet, `Program.cs`és nyissa meg.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Hivatkozás hozzáadása a Newtonsoft.Json-ra
+## <a name="add-a-reference-to-newtonsoftjson"></a>Hivatkozás hozzáadása a Newtonsoft. JSON fájlhoz
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **helloworld** projektre, majd válassza a **NuGet csomagok kezelése parancsot** a NuGet csomagkezelő megjelenítéséhez.
-1. A jobb felső sarokban keresse meg a **Csomagforrás** legördülő **`nuget.org`** lista, és győződjön meg arról, hogy ki van jelölve.
-1. A bal felső sarokban válassza a **Tallózás gombot.**
-1. A keresőmezőbe írja be a *newtonsoft.json parancsot,* és válassza az **Enter**lehetőséget.
-1. A keresési eredmények közül válassza ki a [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) csomagot, majd a **Telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
-1. A telepítés elindításához fogadja el az összes megállapodást és licencet.
-   A csomag telepítése után egy megerősítés jelenik meg a **Csomagkezelő konzol** ablakában.
+1. A Megoldáskezelő kattintson a jobb gombbal a **HelloWorld** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget a NuGet csomagkezelő megjelenítéséhez.
+1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy be van- **`nuget.org`** e jelölve.
+1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
+1. A keresőmezőbe írja be a *newtonsoft. JSON* kifejezést, és válassza az **ENTER billentyűt**.
+1. A keresési eredmények közül válassza ki a [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) csomagot, majd válassza a **telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
+1. A telepítés elindításához fogadja el az összes szerződést és licencet.
+   A csomag telepítése után a rendszer megerősítő üzenetet jelenít meg a **Package Manager konzol** ablakban.
 
-## <a name="start-with-some-boilerplate-code"></a>Kezdje néhány sablonkóddal.
+## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
-Adjunk hozzá néhány kódot, ami csontvázként működik a projektünkhöz.
+Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 ```csharp
 class Program
@@ -79,12 +79,12 @@ class Program
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>JSON csomagolóanyagok
+## <a name="json-wrappers"></a>JSON-burkolók
 
-Mivel a REST API json formátumban fogad el kéréseket, és a JSON-ban is visszaadja az eredményeket, csak karakterláncok használatával kommunikálhatunk velük, de ez nem ajánlott.
-Annak érdekében, hogy a kérelmek és válaszok könnyebben kezelhető, akkor állapítsa meg néhány osztályt használni szerializálása / deszerializálása a JSON.
+Mivel a REST API JSON formátumban fogadja a kérelmeket, és a JSON eredményeit is visszaküldi, csak karakterláncok használatával kezelhetjük őket, de ez nem ajánlott.
+Annak érdekében, hogy a kérések és válaszok könnyebben kezelhetők legyenek, deklaráljuk néhány osztályt a JSON szerializálásához/deszerializálásához.
 
-Gyerünk, és tegye `TranscribeAsync`a nyilatkozatok után .
+Ezt követően a deklarációkat a következő után `TranscribeAsync`helyezheti el.
 
 ```csharp
 public class ModelIdentity
@@ -186,8 +186,8 @@ public class TranscriptionDefinition
 ```
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
-Az első dolog, amire szükségünk lesz egy Http Client, amely a megfelelő alap URL-t és hitelesítési készlet.
-Szúrja be `TranscribeAsync`ezt a kódot a be.
+Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
+Szúrja be ezt `TranscribeAsync`a kódot a alkalmazásba.
 
 ```csharp
 var client = new HttpClient
@@ -202,7 +202,7 @@ var client = new HttpClient
 ```
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
-Ezután létrehozunk egy átírási kérelmet. Adja hozzá `TranscribeAsync`ezt a kódot a hoz.
+Ezután létrehozjuk az átírási kérelmet. Adja hozzá ezt a `TranscribeAsync`kódot a következőhöz:.
 
 ```csharp
 var transcriptionDefinition =
@@ -217,8 +217,8 @@ var sc = new StringContent(res);
 sc.Headers.ContentType = JsonMediaTypeFormatter.DefaultMediaType;
 ```
 
-## <a name="send-the-request-and-check-its-status"></a>Küldje el a kérelmet, és ellenőrizze annak állapotát
-Most közzétesszük a kérést a beszédszolgáltatásnak, és ellenőrizzük a kezdeti válaszkódot. Ez a válaszkód egyszerűen jelzi, hogy a szolgáltatás megkapta-e a kérést. A szolgáltatás egy URL-címet ad vissza a válaszfejlécekben, amely az a hely, ahol az átírásállapotát tárolja.
+## <a name="send-the-request-and-check-its-status"></a>Küldje el a kérést, és keresse meg az állapotát
+Most közzétesszük a kérést a beszédfelismerési szolgáltatásba, és megvizsgáljuk a kezdeti válasz kódját. A válasz kódja egyszerűen azt jelzi, hogy a szolgáltatás megkapta-e a kérelmet. A szolgáltatás egy URL-címet ad vissza a válasz fejlécekben, amely az a hely, ahol az átírási állapotot tárolni fogja.
 
 ```csharp
 Uri transcriptionLocation = null;
@@ -235,11 +235,11 @@ using (var response = await client.PostAsync($"{SpeechToTextBasePath}Transcripti
 ```
 
 ## <a name="wait-for-the-transcription-to-complete"></a>Várja meg, amíg az átírás befejeződik
-Mivel a szolgáltatás aszinkron módon dolgozza fel az átírást, minden alkalommal le kell közvéleményítenünk az állapotát. 5 másodpercenként ellenőrizzük.
+Mivel a szolgáltatás aszinkron módon dolgozza fel az átírást, minden olyan esetben le kell kérdezni annak állapotát. 5 másodpercenként megvizsgáljuk.
 
-Az állapotot úgy ellenőrizhetjük, hogy lehívhatjuk a tartalmat az URL-en, amelyet a kérés kiírásakor kaptunk. Amikor visszakapjuk a tartalmat, deszerializáljuk az egyik segítő osztályunkba, hogy megkönnyítsük a kommunikációt.
+Az állapotot úgy is megtekintheti, hogy beolvassa a tartalmat a kérelem elküldésekor kapott URL-címen. Ha visszavesszük a tartalmat, deszerializáljuk az egyik segítő osztályba, hogy könnyebb legyen az együttműködés.
 
-Itt van a lekérdezési kódot állapot kijelző mindent, kivéve a sikeres befejezését, akkor ezt a következő.
+A sikeres befejezést követően az állapotot megjelenítő lekérdezési kód a következő lesz.
 
 ```csharp
 Console.WriteLine($"Created transcription at location {transcriptionLocation}.");
@@ -292,9 +292,9 @@ Console.WriteLine("Press any key...");
 Console.ReadKey();
 ```
 
-## <a name="display-the-transcription-results"></a>Az átírási eredmények megjelenítése
-Miután a szolgáltatás sikeresen befejezte az átírást, az eredmények egy másik URL-ben tárolódnak, amelyet az állapotválaszból kaphatunk. Itt kérést nyújtunk be, hogy töltse le ezeket az eredményeket egy ideiglenes fájlba, mielőtt elolvasná és deszerializálná őket.
-Miután az eredmények betöltése tudjuk nyomtatni őket a konzolra. Adja hozzá a `case "Succeeded":` következő kódot a címkéhez.
+## <a name="display-the-transcription-results"></a>Az átírás eredményeinek megjelenítése
+Ha a szolgáltatás sikeresen befejezte az átírást, a rendszer egy másik URL-címen tárolja az eredményeket, amelyet az állapot válasza alapján kaphat. Itt az eredmények egy ideiglenes fájlba való letöltésére vonatkozó kérést teszünk, mielőtt beolvassák és deszerializáljuk őket.
+Az eredmények betöltése után kinyomtathatjuk azokat a konzolon. Adja hozzá a következő kódot a `case "Succeeded":` címkéhez.
 
 ```csharp
 completed = true;
@@ -306,8 +306,8 @@ Console.WriteLine($"Transcription succeeded. Results: {Environment.NewLine}{resu
 File.Delete(filename);
 ```
 
-## <a name="check-your-code"></a>A kód ellenőrzése
-Ezen a ponton, a kódot kell kinéznie: (Már hozzá néhány megjegyzést, hogy ez a verzió)
+## <a name="check-your-code"></a>A kód megkeresése
+Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzést ehhez a verzióhoz)
 
 ```csharp
 using Newtonsoft.Json;
@@ -549,11 +549,11 @@ namespace BatchClient
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-Most már készen áll arra, hogy létrehozza az alkalmazást, és tesztelje a beszédfelismerést a Beszédszolgáltatás használatával.
+Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-1. **A kód fordítása** - A Visual Studio menüsorából válassza a Build Solution **(Build** > Solution )**lehetőséget.**
-2. **Az alkalmazás indítása** – A menüsorban válassza a Debug Start Debugging **(Hibakeresés** > **indítása)** lehetőséget, vagy nyomja le az **F5 billentyűt**.
-3. **Start felismerés** - Ez kérni fogja, hogy beszéljen egy mondatot angolul. A rendszer elküldi a beszédfelismerési szolgáltatást, szövegként átírja, és megjeleníti a konzolon.
+1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **megoldás**létrehozása lehetőséget.
+2. **Indítsa** el az alkalmazást – a menüsávban **válassza** > a hibakeresés**indítása** vagy az **F5**billentyűt.
+3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
 ## <a name="next-steps"></a>További lépések
 

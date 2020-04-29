@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Fejlesztői platform beállítása'
+title: 'Gyors útmutató: fejlesztői platform beállítása'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megtudhatja, hogyan telepítheti a beszédfelismerési SDK-t a kívánt platformhoz és a programozási nyelvi kombinációhoz.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan telepítheti a Speech SDK-t az előnyben részesített platformra és a programozási nyelv kombinációjára.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,17 +12,17 @@ ms.date: 04/04/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-three
 ms.openlocfilehash: 67ade64cdb3b2da6f78f77beb4d0cdc993715c9a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400854"
 ---
-# <a name="quickstart-setup-development-environment"></a>Rövid útmutató: Beállítási fejlesztési környezet
+# <a name="quickstart-setup-development-environment"></a>Gyors útmutató: telepítési fejlesztési környezet
 
 ::: zone pivot="programming-language-csharp"
 
-**Válassza ki a célkörnyezetet**
+**Válassza ki a kívánt környezetet**
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -49,7 +49,7 @@ ms.locfileid: "81400854"
 
 ::: zone pivot="programming-language-cpp"
 
-**Válassza ki a célkörnyezetet**
+**Válassza ki a kívánt környezetet**
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -68,9 +68,9 @@ ms.locfileid: "81400854"
 
 ::: zone pivot="programming-language-java"
 
-**Válassza ki a célkörnyezetet**
+**Válassza ki a kívánt környezetet**
 
-# <a name="java-runtime"></a>[Java futásidejű](#tab/jre)
+# <a name="java-runtime"></a>[Java-futtatókörnyezet](#tab/jre)
 
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 
