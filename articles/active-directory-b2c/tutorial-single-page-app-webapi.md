@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: A Node.js webes API védelme az Azure AD B2C használatával, és hozzáférés megadása egy egyoldalas alkalmazáshoz (SPA)'
+title: 'Oktatóanyag: Node. js webes API-k biztosítása Azure AD B2C használatával és hozzáférés engedélyezése egyoldalas alkalmazáshoz (SPA)'
 titleSuffix: Azure AD B2C
-description: Ebben az oktatóanyagban megtudhatja, hogyan védheti meg a Node.js webes API-t az Active Directory B2C használatával, és hogyan hívhatja meg egyegyoldalas alkalmazásból.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Active Directory B2Ct a Node. js webes API-k elleni védelemhez, és hogyan hívhat meg egy egyoldalas alkalmazásból.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,32 +12,32 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 50524159186987b7a30015c878fa3fac949afc79
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875679"
 ---
-# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: A Node.js webes API védelme és hozzáférés megadása egy egyoldalas alkalmazásból az Azure AD B2C-vel
+# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: Node. js webes API-hoz való hozzáférés biztosítása egy egyoldalas alkalmazásból Azure AD B2C
 
-Ez az oktatóanyag bemutatja, hogyan hívhat meg egy Azure Active Directory B2C (Azure AD B2C) védett Node.js webes API-t egy egyoldalas alkalmazásból.
+Ez az oktatóanyag bemutatja, hogyan hívhat meg egy Azure Active Directory B2C (Azure AD B2C) által védett Node. js webes API-t egy egyoldalas alkalmazásból.
 
 Ebben az oktatóanyagban a második egy kétrészes sorozatban:
 
 > [!div class="checklist"]
-> * Webes API-alkalmazásregisztráció létrehozása az Azure AD B2C-bérlőben
-> * A webes API hatókörének konfigurálása
-> * Engedélyek megadása a webes API-hoz
-> * Webes API-kódminta módosítása a bérlővel való együttműködésre
+> * Webes API-alkalmazás regisztrációjának létrehozása a Azure AD B2C-bérlőben
+> * Hatókörök konfigurálása a webes API-hoz
+> * Engedélyek megadása a webes API számára
+> * Webes API-kód minta módosítása a Bérlővel való együttműködéshez
 
-A sorozat [első oktatóanyagában](tutorial-single-page-app.md) letöltötte a kódmintát, és módosította, hogy az Azure AD B2C-bérlőben felhasználói folyamattal rendelkező felhasználók jelentkezzen be.
+A sorozat [első oktatóanyagában](tutorial-single-page-app.md) letöltötte a kód mintát, és módosította a felhasználókat felhasználói folyamattal való bejelentkezésre a Azure ad B2C bérlőben.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyag lépéseinek és előfeltételeinek [végrehajtásához: Hitelesítés engedélyezése egyoldalas alkalmazásban az Azure AD B2C-vel](tutorial-single-page-app.md)
-* [Visual Studio-kód](https://code.visualstudio.com/) vagy más kódszerkesztő
+* Hajtsa végre a következő lépéseket és előfeltételeket az [oktatóanyagban: hitelesítés engedélyezése egyoldalas alkalmazásban Azure ad B2C](tutorial-single-page-app.md)
+* [Visual Studio Code](https://code.visualstudio.com/) vagy más Kódszerkesztő
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="add-a-web-api-application"></a>Webes API-alkalmazás hozzáadása
@@ -46,27 +46,27 @@ A sorozat [első oktatóanyagában](tutorial-single-page-app.md) letöltötte a 
 
 ## <a name="configure-scopes"></a>Hatókörök konfigurálása
 
-A hatókörök lehetőséget nyújtanak a védett erőforrásokhoz való hozzáférés szabályozására. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. Egyes felhasználók például rendelkezhetnek olvasási és írási hozzáféréssel is, míg más felhasználóknak csak olvasási engedélye lehet. Ebben az oktatóanyagban határozza meg a webes API olvasási és írási engedélyeit is.
+A hatókörök lehetőséget nyújtanak a védett erőforrásokhoz való hozzáférés szabályozására. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. Egyes felhasználók például rendelkezhetnek olvasási és írási hozzáféréssel is, míg más felhasználóknak csak olvasási engedélye lehet. Ebben az oktatóanyagban a webes API olvasási és írási engedélyeit is meghatározza.
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Rögzítse az értéket a `demo.read` **Hatókör öklében** a hatókör höz, amelyet egy későbbi lépésben kell használni az egyoldalas alkalmazás konfigurálásakor. A teljes hatókör értéke `https://contosob2c.onmicrosoft.com/api/demo.read`hasonló a hoz.
+Az egyoldalas alkalmazás konfigurálásakor `demo.read` a **hatókör hatókörében** lévő értéket jegyezze fel egy későbbi lépésben való használatra. A hatókör teljes értéke hasonló a `https://contosob2c.onmicrosoft.com/api/demo.read`következőhöz:.
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
-Egy védett webes API-t egy másik alkalmazásból való hívásához meg kell adnia az alkalmazásnak a webes API-nak.
+Ha egy védett webes API-t szeretne meghívni egy másik alkalmazásból, meg kell adnia a webes API-nak az alkalmazáshoz szükséges engedélyeket.
 
-Az előfeltételként szolgáló oktatóanyagban létrehozott egy *webapp1*nevű webalkalmazást. Ebben az oktatóanyagban úgy konfigurálja az alkalmazást, hogy meghívja az előző szakaszban létrehozott *web API-t, a webapi1-et.*
+Az előfeltételként szolgáló oktatóanyagban létrehozott egy *webapp1*nevű webalkalmazást. Ebben az oktatóanyagban úgy konfigurálja az alkalmazást, hogy hívja meg az előző szakaszban létrehozott webes API-t ( *webapi1*).
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Az egyoldalas webalkalmazás most már engedélyt kapott a védett webes API-hoz a megadott hatókörökhöz. A felhasználó hitelesíti magát az Azure AD B2C az egyoldalas alkalmazás használatához. Az egyoldalas alkalmazás az engedélyezési engedélyezési folyamat használatával éri el a védett webes API-t az Azure AD B2C által visszaadott hozzáférési jogkivonattal.
+Az egyoldalas webalkalmazás mostantól engedélyt kapott a védett webes API-ra a megadott hatókörökhöz. A felhasználók a Azure AD B2C használatával hitelesítik egyoldalas alkalmazást. Az egyoldalas alkalmazás az engedélyezési folyamat használatával fér hozzá a védett webes API-hoz a Azure AD B2C által visszaadott hozzáférési jogkivonattal.
 
 ## <a name="configure-the-sample"></a>A minta konfigurálása
 
-Most, hogy a webes API regisztrálva van, és már definiálta a hatóköröket, konfigurálja a webes API-kódot az Azure AD B2C-bérlővel való együttműködésre. Ebben az oktatóanyagban konfigurálja a GitHubról letöltött Node.js webes API-t.
+Most, hogy regisztrálta a webes API-t, és definiálta a hatóköröket, konfigurálja a webes API-kódot a Azure AD B2C Bérlővel való együttműködéshez. Ebben az oktatóanyagban egy példa Node. js webes API-t konfigurál, amelyet a GitHubról letöltött.
 
-[Töltsön \*le egy .zip archívumot,](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) vagy klónozza a mintawebes API-projektet a GitHubról. Közvetlenül is böngészhet az [Azure-Samples/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) projektben a GitHubon.
+[Töltse le \*a. zip-archívumot](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) , vagy klónozott webes API-projektet a githubról. Közvetlenül is böngészhet az [Azure-Samples/Active-Directory-B2C-JavaScript-NodeJS-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) projektben a githubon.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
@@ -74,8 +74,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
 
-1. Nyissa meg a *config.js* fájlt a kódszerkesztőben.
-1. Módosítsa a változóértékeket úgy, hogy azok tükrözzék a korábban létrehozott alkalmazásregisztráció értékeit. Frissítse az `policyName` előfeltételek részeként létrehozott felhasználói folyamattal is. Például *B2C_1_signupsignin1*.
+1. Nyissa meg a *config. js* fájlt a Kódszerkesztőben.
+1. Módosítsa a változó értékeit úgy, hogy azok megfeleljenek a korábban létrehozott alkalmazás-regisztrációnak. Frissítse a `policyName` -t az előfeltételek részeként létrehozott felhasználói folyamattal is. Például *B2C_1_signupsignin1*.
 
     ```javascript
     const clientID = "<your-webapi-application-ID>"; // Application (client) ID
@@ -86,9 +86,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 #### <a name="enable-cors"></a>CORS engedélyezése
 
-Ahhoz, hogy az egyoldalas alkalmazás hívja meg a Node.js webes API-t, engedélyeznie kell a [CORS-t](https://expressjs.com/en/resources/middleware/cors.html) a webes API-ban. Egy éles alkalmazás ban óvatosnak kell lennie azzal kapcsolatban, hogy melyik tartomány teszi a kérelmet, de ebben az oktatóanyagban bármely tartományból érkező kérelmek engedélyezése.
+Annak engedélyezéséhez, hogy egy egyoldalas alkalmazás meghívja a Node. js webes API-t, engedélyeznie kell a [CORS](https://expressjs.com/en/resources/middleware/cors.html) a webes API-ban. Éles alkalmazásban körültekintően kell megjelennie, hogy melyik tartományhoz készül a kérelem, de ebben az oktatóanyagban bármely tartományból engedélyezheti a kérelmeket.
 
-A CORS engedélyezéséhez használja a következő köztes szoftvert. A Node.js webes API-kód minta ebben az oktatóanyagban, már hozzá lett adva az *index.js* fájlhoz.
+A CORS engedélyezéséhez használja a következő middleware-t. Ebben az oktatóanyagban a Node. js webes API-kód mintájában már hozzá lett adva az *index. js* fájlhoz.
 
 ```javascript
 app.use((req, res, next) => {
@@ -98,22 +98,22 @@ app.use((req, res, next) => {
 });
 ```
 
-### <a name="configure-the-single-page-application"></a>Az egyoldalas alkalmazás konfigurálása
+### <a name="configure-the-single-page-application"></a>Egyoldalas alkalmazás konfigurálása
 
-Az egyoldalas alkalmazás (SPA) az [előző oktatóanyag](tutorial-single-page-app.md) a sorozatban az Azure AD B2C a felhasználói regisztráció és a bejelentkezés, és alapértelmezés szerint meghívja a Node.js webes API a *fabrikamb2c* demo bérlő által védett.
+A sorozat [előző oktatóanyagának](tutorial-single-page-app.md) egyoldalas alkalmazása (SPA) Azure ad B2C használ a felhasználói regisztrációhoz és bejelentkezéshez, és alapértelmezés szerint meghívja a *fabrikamb2c* demo bérlő által védett Node. js webes API-t.
 
-Ebben a szakaszban frissíti az egyoldalas webalkalmazást, hogy meghívja a Node.js web API-t *az* Azure AD B2C bérlő (és amely a helyi gépen fut).
+Ebben a szakaszban az egyoldalas webalkalmazást frissíti, hogy meghívja a Azure AD B2C bérlő által védett Node. js webes API-t (és azt, *amelyet a helyi* gépen futtat).
 
-A spa beállításainak módosítása:
+A SPA beállításainak módosítása:
 
-1. Az előző oktatóanyagban letöltött vagy klónozott [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] projektben nyissa meg az *apiConfig.js* fájlt a *JavaScriptSPA* mappában.
-1. Konfigurálja a mintát a korábban létrehozott *demo.read* hatókör URI-jával és a webes API URL-címével.
-    1. A `apiConfig` definícióban cserélje `b2cScopes` le az értéket a *demo.read* hatókör (a korábban rögzített **Hatókör** érték) teljes URI-jára.
-    1. Módosítsa a tartományt az `webApi` értékben a web API-alkalmazás egy korábbi lépésben történő regisztrálásakor hozzáadott átirányítási URI-ra.
+1. Az előző oktatóanyagban letöltött vagy klónozott [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] projektben nyissa meg a *apiConfig. js* fájlt a *JavaScriptSPA* mappában.
+1. Konfigurálja a mintát a bemutató URI azonosítójának használatával *. olvassa el* a korábban létrehozott hatókört, valamint a webes API URL-címét.
+    1. A `apiConfig` definícióban cserélje le az `b2cScopes` értéket a bemutató teljes URI-azonosítójához *. olvasási* hatókör (a korábban feljegyzett **hatókör** -érték).
+    1. Módosítsa az `webApi` érték tartományát az ÁTirányítási URI-ra, amelyet akkor adott meg, amikor regisztrálta a webes API-alkalmazást egy korábbi lépésben.
 
-    Mivel az API elérhető `/hello` a végponton, hagyja *a /hello* az URI-ban.
+    Mivel az API elérhető a `/hello` végponton, hagyja a */Hello* az URI-ban.
 
-    A `apiConfig` definíciónak a következő kódblokkhoz hasonlóan kell kinéznie, de a `<your-tenant-name>`B2C bérlő neve a következő helyen:
+    A `apiConfig` definíciónak az alábbi kódrészlethez hasonlóan kell kinéznie, de a B2C-bérlő neve a következő helyen `<your-tenant-name>`található:
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -123,15 +123,15 @@ A spa beállításainak módosítása:
     };
     ```
 
-## <a name="run-the-spa-and-web-api"></a>Az SPA és a webes API futtatása
+## <a name="run-the-spa-and-web-api"></a>A SPA és a webes API futtatása
 
-Most már készen áll az egyoldalas alkalmazás hatókörrel rendelkező API-hozzáférésének tesztelésére. Futtassa a Node.js webes API-t és a minta JavaScript egyoldalas alkalmazást a helyi gépen. Ezután jelentkezzen be az egyoldalas alkalmazásba, és válassza az **API hívása** gombot a védett API-ra vonatkozó kérelem kezdeményezéséhez.
+Most már készen áll az egyoldalas alkalmazás hatókörön belüli hozzáférésének tesztelésére az API-hoz. Futtassa mind a Node. js webes API-t, mind a minta JavaScript egyoldalas alkalmazást a helyi gépen. Ezután jelentkezzen be az egyoldalas alkalmazásba, és válassza a **hívás API** gombot a védett API-ra irányuló kérelem elindításához.
 
-Bár mindkét alkalmazás helyileg fut, ha követi ezt az oktatóanyagot, konfigurálta őket, hogy az Azure AD B2C biztonságos regisztráció/bejelentkezés, és hozzáférést biztosít a védett webes API-t.
+Bár mindkét alkalmazás helyileg fut, amikor ezt az oktatóanyagot követi, úgy konfigurálta, hogy a biztonságos bejelentkezési és bejelentkezési Azure AD B2C használatára konfigurálja őket, és hozzáférést biztosít a védett webes API-hoz.
 
-### <a name="run-the-nodejs-web-api"></a>A Node.js webes API futtatása
+### <a name="run-the-nodejs-web-api"></a>A Node. js webes API futtatása
 
-1. Nyisson meg egy konzolablakot, és váltson a Node.js webes API-mintát tartalmazó könyvtárra. Például:
+1. Nyisson meg egy konzolablak ablakát, és váltson a Node. js webes API-mintát tartalmazó könyvtárra. Például:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -144,15 +144,15 @@ Bár mindkét alkalmazás helyileg fut, ha követi ezt az oktatóanyagot, konfig
     node index.js
     ```
 
-    A konzolablak ban megjelenik az alkalmazás azon portszáma, ahol az alkalmazás található.
+    A konzol ablaka az alkalmazás által üzemeltetett portszámot jeleníti meg.
 
     ```console
     Listening on port 5000...
     ```
 
-### <a name="run-the-single-page-app"></a>Az egyoldalas alkalmazás futtatása
+### <a name="run-the-single-page-app"></a>Egy egyoldalas alkalmazás futtatása
 
-1. Nyisson meg egy másik konzolablakot, és váltson a JavaScript SPA mintát tartalmazó könyvtárra. Például:
+1. Nyisson meg egy másik konzolablak ablakát, és váltson át a JavaScript SPA-mintát tartalmazó könyvtárba. Például:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -165,35 +165,35 @@ Bár mindkét alkalmazás helyileg fut, ha követi ezt az oktatóanyagot, konfig
     npm start
     ```
 
-    A konzolablak az alkalmazás azon portszámát jeleníti meg.
+    A konzolablak megjeleníti a portszámot, ahol az alkalmazás üzemeltetve van.
 
     ```console
     Listening on port 6420...
     ```
 
-1. Keresse `http://localhost:6420` meg a böngészőben az alkalmazás megtekintéséhez.
+1. `http://localhost:6420` Az alkalmazás megtekintéséhez navigáljon a böngészőben.
 
-    ![Egyoldalas alkalmazásminta alkalmazás a böngészőben](./media/tutorial-single-page-app-webapi/tutorial-01-sample-app-browser.png)
+    ![Egy egyoldalas alkalmazás mintája a böngészőben megjelenítve](./media/tutorial-single-page-app-webapi/tutorial-01-sample-app-browser.png)
 
-1. Jelentkezzen be az [előző oktatóanyagban](tutorial-single-page-app.md)használt e-mail címmel és jelszóval. Sikeres bejelentkezéskor látnia kell `User 'Your Username' logged-in` az üzenetet.
-1. Válassza az **API hívása** gombot. Az SPA engedélyezési engedélyt kap az Azure AD B2C-től, majd hozzáfér a védett webes API-hoz a bejelentkezett felhasználó nevének megjelenítéséhez:
+1. Jelentkezzen be az [előző oktatóanyagban](tutorial-single-page-app.md)használt e-mail-cím és jelszó használatával. A sikeres bejelentkezés után megjelenik az `User 'Your Username' logged-in` üzenet.
+1. Válassza az **API hívása** gombot. A fürdő Azure AD B2Ctól kapott engedélyezési engedélyt, majd hozzáfér a védett webes API-hoz a bejelentkezett felhasználó nevének megjelenítéséhez:
 
-    ![Egyoldalas alkalmazás a böngészőben, amely az API által visszaadott JSON-eredményt jeleníti meg](./media/tutorial-single-page-app-webapi/tutorial-02-call-api.png)
+    ![Egyoldalas alkalmazás a böngészőben, amely az API által visszaadott Felhasználónév JSON-eredményt jeleníti meg](./media/tutorial-single-page-app-webapi/tutorial-02-call-api.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Létrehozott egy webes API-alkalmazás regisztrációt az Azure AD B2C-bérlőben
+> * Webes API-alkalmazás regisztrációjának létrehozása a Azure AD B2C-bérlőben
 > * A webes API konfigurált hatókörei
-> * A webes API-hoz megadott engedélyek
-> * Webes API-kódminta módosítása a bérlővel való együttműködésre
+> * Engedélyek megadása a webes API-nak
+> * Webes API-kód mintájának módosítása a Bérlővel való együttműködéshez
 
-Most, hogy látta, hogy egy SPA egy erőforrást kér egy védett webes API-ból, mélyebben megismerheti, hogy ezek az alkalmazástípusok hogyan kommunikálnak egymással és az Azure AD B2C-vel.
+Most, hogy már látott egy SPA-kérést egy védett webes API-ból származó erőforrással, mélyebben megértette, hogy ezek az alkalmazások hogyan hatnak egymással és a Azure AD B2C.
 
 > [!div class="nextstepaction"]
-> [Az Active Directory B2C >használható alkalmazástípusok](application-types.md)
+> [Active Directory B2C >használható alkalmazások típusai](application-types.md)
 
 <!-- Links - EXTERNAL -->
 [github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp

@@ -13,17 +13,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
 ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80883813"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Rövid útmutató: Bérlő beállítása
+# <a name="quickstart-set-up-a-tenant"></a>Gyors útmutató: bérlő beállítása
 
-A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. A Microsoft identity platform használatának első lépésekéhez hozzá kell férnie egy környezethez, más néven Egy Azure AD-bérlőhöz, amely regisztrálhatja és kezelheti az alkalmazásokat, hozzáférhet a Microsoft 365-adatokhoz, és egyéni feltételes hozzáférésre és bérlői korlátozásokra van szüksége.
+A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. A Microsoft Identity platform használatának megkezdéséhez hozzá kell férnie egy olyan környezethez (más néven Azure AD-bérlőhöz), amely képes regisztrálni és kezelni az alkalmazásokat, hozzáférni Microsoft 365 adatokhoz, és üzembe helyezi az egyéni feltételes hozzáférési és bérlői korlátozásokat.
 
-A bérlő egy szervezet reprezentációja. Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra.
+A bérlő egy szervezet képviselete. Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra.
 
 Mindegyik Azure AD-bérlő önálló, elkülönül a többi Azure AD-bérlőtől, és a munkahelyi, iskolai és ügyfélidentitások (ha Azure AD B2C-bérlőről van szó) saját leképezésével, valamint saját alkalmazásregisztrációkkal rendelkeznek. A bérlőn belül található alkalmazásregisztrációkkal megadható, hogy a hitelesítés csak a saját bérlőben vagy az összes bérlőben található fiókokból legyen-e lehetséges.
 
@@ -56,14 +56,14 @@ Ha nincs társítva meglévő bérlő a fiókkal, egy GUID-t lát a fiók neve a
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Új Azure AD-bérlő létrehozása
 
-Ha még nem rendelkezik Azure AD-bérlővel, vagy újat szeretne létrehozni a fejlesztéshez, tekintse meg a [rövid útmutatót,](../fundamentals/active-directory-access-create-new-tenant.md) vagy egyszerűen kövesse a [címtár-létrehozási élményt.](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) Az új bérlő létrehozásához az alábbi adatokat kell megadnia:
+Ha még nem rendelkezik Azure AD-Bérlővel, vagy létre szeretne hozni egy újat a fejlesztéshez, tekintse meg a rövid útmutatót [, vagy egyszerűen](../fundamentals/active-directory-access-create-new-tenant.md) kövesse a [címtár-létrehozási élményt](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Az új bérlő létrehozásához az alábbi adatokat kell megadnia:
 
 - **Szervezet neve**
 - **Kezdeti tartomány** – a *.onmicrosoft.com része lesz. A tartományt később testreszabhatja.
 - **Ország vagy régió**
 
 > [!NOTE]
-> A bérlő elnevezésekénél használjon alfanumerikus karaktereket. Különleges karakterek nem engedélyezettek. A név nem lehet hosszabb 256 karakternél.
+> A bérlő elnevezése esetén alfanumerikus karaktereket használjon. A speciális karakterek használata nem engedélyezett. A név nem lehet hosszabb 256 karakternél.
 
 ## <a name="social-and-local-accounts"></a>Közösségi és helyi fiókok
 
@@ -71,6 +71,6 @@ A közösségi és helyi fiók bejelentkeztetésére szolgáló alkalmazások l�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Regisztráljon egy alkalmazást,](quickstart-register-app.md) és integrálja a Microsoft identitásplatformját. 
-* Ismerje meg a [hitelesítés alapjait.](authentication-scenarios.md)
-* [Tekintse meg, hogy az Azure-előfizetések hogyan vannak társítva](../fundamentals/active-directory-how-subscriptions-associated-directory.md) az Azure Active Directoryhoz az előfizetések és az Azure AD-bérlők közötti kapcsolat részleteiért.
+* [Alkalmazás regisztrálása](quickstart-register-app.md) és integrálása a Microsoft Identity platformmal. 
+* Ismerje meg a [hitelesítés alapjait](authentication-scenarios.md).
+* Az előfizetések és az Azure AD-bérlő közötti kapcsolat részleteiért tekintse meg [, hogy az Azure-előfizetések hogyan vannak társítva Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

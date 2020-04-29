@@ -1,5 +1,5 @@
 ---
-title: Az RDP-felhasználónév és -jelszó frissítése a PowerShellben
+title: RDP-Felhasználónév és-jelszó frissítése a PowerShellben
 description: Azure PowerShell-példaszkript – Az RPD-felhasználónév és -jelszó frissítése az egy konkrét csomóponttípusba tartozó összes Service Fabric-fürtcsomópont esetében.
 services: service-fabric
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80984929"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Az egy fürtbe tartozó virtuális gépek rendszergazdai felhasználónevének és jelszavának frissítése
@@ -41,11 +41,11 @@ A szkript a következő parancsokat használja: A táblázatban lévő összes p
 |---|---|
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Lekéri egy fürtcsomóponttípus (egy virtuálisgép-méretezési csoport) tulajdonságait.   |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Hozzáad egy bővítményt a virtuálisgép-méretezési csoporthoz.|
-| [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Frissíti a virtuálisgép-méretezési csoport állapotát a helyi VMSS-objektum állapotával megegyezőre.|
+| [Frissítés – AzVmss](/powershell/module/az.compute/update-azvmss)|Frissíti a virtuálisgép-méretezési csoport állapotát a helyi VMSS-objektum állapotával megegyezőre.|
 
 ## <a name="duration"></a>Időtartam
 
-Egy öt csomópontos sal rendelkező egyetlen csomóponttípus például 45–60 perces időtartammal rendelkezik a felhasználónév vagy jelszó módosításához. 
+A Felhasználónév vagy a jelszó megváltoztatásához egyetlen, öt csomóponttal rendelkező csomópont-típusnak kell lennie, például 45 és 60 perc közötti időtartammal. 
 
 ## <a name="next-steps"></a>További lépések
 

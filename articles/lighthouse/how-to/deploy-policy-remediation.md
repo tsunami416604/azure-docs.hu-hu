@@ -1,28 +1,28 @@
 ---
 title: Javítható szabályzat telepítése
-description: Ismerje meg, hogyan lehet egy ügyfél az Azure delegált erőforrás-kezelés, amely lehetővé teszi, hogy az erőforrások elérése és kezelése a saját bérlőn keresztül.
+description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azure-beli delegált erőforrás-kezelési szolgáltatásba, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők.
 ms.date: 10/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985167"
 ---
-# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Delegált előfizetésen belül kiújítható házirend üzembe helyezése
+# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>A delegált előfizetésen belüli szervizelésre alkalmas szabályzat telepítése
 
-[Az Azure Lighthouse](../overview.md) lehetővé teszi a szolgáltatók számára, hogy szabályzatdefiníciókat hozzanak létre és szerkessenek egy delegált előfizetésen belül. Azonban a [szervizelési feladatot](../../governance/policy/how-to/remediate-resources.md) használó házirendek (azaz a [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) vagy [a módosító](../../governance/policy/concepts/effects.md#modify) hatással rendelkező házirendek) üzembe helyezéséhez [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md) kell létrehoznia az ügyfél-bérlőben. Ezt a felügyelt identitást az Azure Policy használhatja a sablon központi telepítéséhez a szabályzaton belül. A forgatókönyv engedélyezéséhez lépéseket kell tenni, mind az Azure delegált erőforrás-kezeléséhez az ügyfél, mind pedig a szabályzat üzembe helyezésekor.
+Az [Azure Lighthouse](../overview.md) lehetővé teszi a szolgáltatók számára, hogy szabályzat-definíciókat hozzanak létre és szerkesszenek egy delegált előfizetésen belül. Ahhoz azonban, hogy olyan házirendeket helyezzen üzembe, amelyek [szervizelési feladatot](../../governance/policy/how-to/remediate-resources.md) használnak (azaz a [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) vagy a [módosítás](../../governance/policy/concepts/effects.md#modify) hatása), létre kell hoznia egy [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md) az ügyfél bérlője számára. Ezt a felügyelt identitást Azure Policy használhatja a sablon üzembe helyezéséhez a szabályzaton belül. Ennek a forgatókönyvnek az engedélyezéséhez szükség van, ha az ügyfelet az Azure-beli delegált erőforrás-kezeléshez használja, és a házirendet maga telepíti.
 
-## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Olyan felhasználó létrehozása, aki szerepköröket rendelhet egy felügyelt identitáshoz az ügyfél-bérlőben
+## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Hozzon létre egy felhasználót, aki szerepköröket rendelhet egy felügyelt identitáshoz az ügyfél bérlője számára
 
-Amikor egy ügyfél az Azure delegált erőforrás-kezelése, egy [Azure Resource Manager sablont,](onboard-customer.md#create-an-azure-resource-manager-template) valamint egy paraméterfájlt, amely meghatározza a felhasználók, felhasználói csoportok és a szolgáltatásnévak a felügyeleti bérlő, amely képes lesz elérni a delegált erőforrások az ügyfél-bérlő. A paraméterfájlban ezek a felhasználók **(rendszerazonosító)** egy [beépített szerepkörrel](../../role-based-access-control/built-in-roles.md) **(roleDefinitionId)** vannak rendelve, amely meghatározza a hozzáférés szintjét.
+Ha az Azure-beli delegált erőforrás-kezeléshez rendel ügyfelet, egy [Azure Resource Manager sablont](onboard-customer.md#create-an-azure-resource-manager-template) , valamint egy olyan paramétereket tartalmazó fájlt fog használni, amely meghatározza a felügyeleti bérlőben lévő felhasználókat, felhasználói csoportokat és egyszerű szolgáltatásokat, amelyek képesek lesznek hozzáférni a delegált erőforrásokhoz az ügyfél bérlője számára. A parameters (paraméterek) fájlban ezek a felhasználók (**principalId**-EK) egy [beépített szerepkört](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**) kapnak, amely meghatározza a hozzáférési szintet.
 
-Ahhoz, hogy egy **rendszerazonosító** felügyelt identitást hozzon létre az ügyfél-bérlőben, a **szerepkördefinition-azonosítóját** **felhasználói hozzáférés-rendszergazdára kell állítania.** Bár ez a szerepkör általában nem támogatott, ebben a konkrét esetben használható, lehetővé téve az ezzel az engedéllyel rendelkező felhasználók számára, hogy egy vagy több speciális beépített szerepkört rendeljenek hozzá a felügyelt identitásokhoz. Ezek a szerepkörök a **delegáltRoleDefinitionIds** tulajdonságban vannak definiálva. A felhasználói hozzáférés rendszergazdája vagy a tulajdonos kivételével bármilyen beépített szerepkört felvehet ide.
+Ahhoz, hogy egy **principalId** felügyelt identitást hozzon létre az ügyfél bérlője számára, be kell állítania a **RoleDefinitionId** a **felhasználói hozzáférési rendszergazdának**. Habár ez a szerepkör nem támogatott általánosan, ez az adott forgatókönyvben használható, így a felhasználók ezzel az engedéllyel rendelkezhetnek egy vagy több speciális beépített szerepkör hozzárendeléséhez a felügyelt identitásokhoz. Ezeket a szerepköröket a **delegatedRoleDefinitionIds** tulajdonság határozza meg. Ide belefoglalhatja a beépített szerepkört, kivéve a felhasználói hozzáférés rendszergazdáját vagy a tulajdonost.
 
-Miután az ügyfél be van táblázva, az ebben az engedélyezésben létrehozott **rendszerbiztonsági azonosító** képes lesz hozzárendelni ezeket a beépített szerepköröket az ügyfél-bérlő felügyelt identitásaihoz. A Felhasználói hozzáférés rendszergazdája szerepkörhöz azonban nem lesz más engedélyük.
+Az ügyfél bevezetését követően az ebben az engedélyezésben létrehozott **principalId** ezeket a beépített szerepköröket hozzárendelheti a felügyelt identitásokhoz az ügyfél bérlője számára. Azonban nem rendelkeznek a felhasználói hozzáférés rendszergazdai szerepkörhöz tartozó egyéb engedélyekkel.
 
-Az alábbi példa egy **olyan rendszerbiztonsági tagazonosítót** mutat be, aki a Felhasználói hozzáférés rendszergazdája szerepkörrel fog rendelkezni. Ez a felhasználó két beépített szerepkört rendelhet hozzá az ügyfél-bérlő felügyelt identitásaihoz: közreműködőt és Log Analytics-közreműködőt.
+Az alábbi példa egy olyan **principalId** mutat be, amely a felhasználói hozzáférés rendszergazdai szerepkört fogja tartalmazni. Ez a felhasználó két beépített szerepkört tud hozzárendelni a felügyelt identitásokhoz az ügyfél bérlője: közreműködő és Log Analytics közreműködő.
 
 ```json
 {
@@ -36,15 +36,15 @@ Az alábbi példa egy **olyan rendszerbiztonsági tagazonosítót** mutat be, ak
 }
 ```
 
-## <a name="deploy-policies-that-can-be-remediated"></a>Helyreállítható házirendek üzembe helyezése
+## <a name="deploy-policies-that-can-be-remediated"></a>Szervizelhető házirendek üzembe helyezése
 
-Miután létrehozta a felhasználót a fent leírt szükséges engedélyekkel, a felhasználó üzembe helyezheti a szervizelési feladatokat használó házirendeket az ügyfél-bérlőben.
+Miután létrehozta a felhasználót a fent ismertetett szükséges engedélyekkel, a felhasználó telepíthet szabályzatokat az ügyfél-bérlőben, amely szervizelési feladatokat használ.
 
-Tegyük fel például, hogy engedélyezni kívánta a diagnosztikát az Azure Key Vault-erőforrásokon az ügyfél-bérlőben, amint azt ez a [minta is szemlélteti.](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring) A megfelelő engedélyekkel rendelkező(fent leírt) a felügyeleti bérlő egyik felhasználója üzembe helyezne egy [Azure Resource Manager-sablont](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) ennek a forgatókönyvnek a engedélyezéséhez.
+Tegyük fel például, hogy engedélyezni szeretné a diagnosztika engedélyezését az ügyfél bérlőn lévő Azure Key Vault erőforrásokon, ahogy azt ebben a [példában](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)is látható. A bérlő a megfelelő engedélyekkel rendelkező felhasználója egy [Azure Resource Manager sablon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) üzembe helyezésével engedélyezi ezt a forgatókönyvet.
 
-Vegye figyelembe, hogy a házirend-hozzárendelés létrehozása egy delegált előfizetéssel való használatra jelenleg API-kon keresztül kell elvégezni, nem az Azure Portalon. Ha így tesz, az **apiVersion** kell állítani **2019-04-01-preview**, amely tartalmazza az új **delegáltManagedIdentityResourceId** tulajdonság. Ez a tulajdonság lehetővé teszi, hogy egy felügyelt identitást, amely az ügyfél-bérlő (egy előfizetés vagy erőforráscsoport, amely az Azure delegált erőforrás-kezelés.
+Vegye figyelembe, hogy a delegált előfizetéssel használandó szabályzat-hozzárendelés létrehozása jelenleg API-kon keresztül történik, nem pedig a Azure Portal. Ha így tesz, a **apiVersion** a **2019-04-01-Preview**értékre kell állítani, amely tartalmazza az új **delegatedManagedIdentityResourceId** tulajdonságot. Ez a tulajdonság lehetővé teszi, hogy olyan felügyelt identitást tartalmazzon, amely az ügyfél bérlőben található (egy előfizetésben vagy erőforráscsoporthoz, amely az Azure-beli delegált erőforrás-kezelés alá került).
 
-A következő példa egy **delegáltManagedIdentityResourceId**szerepkör-hozzárendelést mutat be.
+Az alábbi példa egy **delegatedManagedIdentityResourceId**rendelkező szerepkör-hozzárendelést mutat be.
 
 ```json
 "type": "Microsoft.Authorization/roleAssignments",
@@ -62,9 +62,9 @@ A következő példa egy **delegáltManagedIdentityResourceId**szerepkör-hozzá
 ```
 
 > [!TIP]
-> [Hasonló minta](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) áll rendelkezésre annak bemutatására, hogyan telepíthet egy olyan házirendet, amely címkét ad hozzá vagy távolít el (a módosítási effektushasználatával) egy delegált előfizetéshez.
+> A rendszer egy [hasonló mintát](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) mutat be, amely bemutatja, hogyan helyezhet üzembe egy olyan szabályzatot, amely egy (a módosítás hatásával) címkét hozzáad vagy eltávolít egy delegált előfizetéshez.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure-szabályzatról.](../../governance/policy/index.yml)
-- További információ [az Azure-erőforrások felügyelt identitásairól.](../../active-directory/managed-identities-azure-resources/overview.md)
+- A [Azure Policy](../../governance/policy/index.yml)megismerése.
+- Ismerje meg [Az Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md).

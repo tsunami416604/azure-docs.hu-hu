@@ -1,51 +1,51 @@
 ---
 title: TLS kölcsönös hitelesítés beállítása
-description: További információ a TLS-en hitelesített ügyféltanúsítványok hitelesítéséhez. Az Azure App Service az ügyféltanúsítványt elérhetővé teheti az alkalmazáskód számára ellenőrzés céljából.
+description: Ismerje meg, hogyan hitelesítheti az Ügyféltanúsítványok tanúsítványait a TLS-ben. A Azure App Service az ügyféltanúsítvány számára elérhetővé teheti az ügyféltanúsítványt az ellenőrzéshez.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811725"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>TLS kölcsönös hitelesítés konfigurálása az Azure App Service-hez
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>A TLS kölcsönös hitelesítés konfigurálása Azure App Servicehoz
 
-Korlátozhatja az Azure App Service-alkalmazáshoz való hozzáférést, ha különböző típusú hitelesítést engedélyez hozzá. Ennek egyik módja, ha ügyféltanúsítványt kér, ha az ügyfélkérelem túllépi a TLS/SSL-t, és érvényesíti a tanúsítványt. Ezt a mechanizmust TLS kölcsönös hitelesítésnek vagy ügyféltanúsítvány-hitelesítésnek nevezik. Ez a cikk bemutatja, hogyan állíthatja be az alkalmazást az ügyféltanúsítvány-hitelesítés használatára.
+A Azure App Service-alkalmazáshoz való hozzáférést a különböző típusú hitelesítés engedélyezésével korlátozhatja. Az egyik módszer az, ha az ügyfél kérelmét a TLS/SSL protokollon keresztül kéri le, és érvényesíti a tanúsítványt. Ezt a mechanizmust TLS kölcsönös hitelesítés vagy ügyféltanúsítvány-alapú hitelesítésnek nevezzük. Ez a cikk bemutatja, hogyan állíthatja be az alkalmazást az ügyféltanúsítvány-alapú hitelesítés használatára.
 
 > [!NOTE]
-> Ha a webhelyet HTTP-n keresztül, nem pedig HTTPS-kapcsolaton keresztül éri el, nem kap ügyféltanúsítványt. Ha tehát az alkalmazás ügyféltanúsítványokat igényel, ne engedélyezze a HTTP-n keresztüli alkalmazásra vonatkozó kérelmeket.
+> Ha HTTP-n keresztül fér hozzá a webhelyhez, és nem HTTPS-kapcsolaton keresztül, akkor nem fog ügyféltanúsítványt kapni. Tehát ha az alkalmazáshoz Ügyféltanúsítványok szükségesek, akkor a HTTP-n keresztül nem engedélyezheti a kérelmeket az alkalmazásnak.
 >
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 ## <a name="enable-client-certificates"></a>Ügyféltanúsítványok engedélyezése
 
-Ha úgy szeretné beállítani az alkalmazást, hogy `clientCertEnabled` ügyféltanúsítványokat igényeljen, be kell állítania az alkalmazás beállítását a beállításra. `true` A beállítás beállításához futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com)ben.
+Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, be kell állítania az `clientCertEnabled` alkalmazás beállítását a következőre: `true`. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
-## <a name="exclude-paths-from-requiring-authentication"></a>Görbék kizárása a hitelesítést igénylő
+## <a name="exclude-paths-from-requiring-authentication"></a>Elérési utak kizárása a hitelesítés megkövetelése
 
-Ha engedélyezi a kölcsönös hitelesítést az alkalmazáshoz, az alkalmazás gyökere alatti összes elérési úthoz ügyféltanúsítvány szükséges a hozzáféréshez. Ha azt szeretné, hogy bizonyos elérési utak névtelen hozzáférés esetén nyitva maradjanak, az alkalmazáskonfiguráció részeként kizárási útvonalakat definiálhat.
+Ha engedélyezi a kölcsönös hitelesítést az alkalmazáshoz, az alkalmazás gyökerében lévő összes elérési útnak szüksége lesz az ügyféltanúsítvány elérésére. Annak engedélyezéséhez, hogy bizonyos elérési utak nyitva maradjanak a névtelen hozzáféréshez, a kizárási útvonalakat az alkalmazás konfigurációjának részeként is meghatározhatja.
 
-A kizárási útvonalak konfigurálhatók a **Konfigurációs** > **általános beállítások** kiválasztásával és egy kizárási útvonal meghatározásával. Ebben a példában `/public` az alkalmazás elérési útja alatt lévő akármi nem kér ügyféltanúsítványt.
+A kizárási útvonalakat úgy konfigurálhatja, hogy kiválasztja a **konfiguráció** > **általános beállításai** lehetőséget, és meghatározza a kizárási útvonalat. Ebben a példában az alkalmazás `/public` elérési útja nem kér ügyféltanúsítványt.
 
-![Tanúsítványkizárási útvonalak][exclusion-paths]
+![Tanúsítvány kizárási elérési útjai][exclusion-paths]
 
 
-## <a name="access-client-certificate"></a>Ügyféltanúsítvány elérése
+## <a name="access-client-certificate"></a>Hozzáférési ügyféltanúsítvány
 
-Az App Service-ben a kérelem TLS-végződése a frontend load balancer.In App Service, TLS termination of the request happens at the frontend load balancer. Amikor a kérelmet az alkalmazáskódra továbbítja, ha `X-ARR-ClientCert` az [ügyféltanúsítványok engedélyezve vannak,](#enable-client-certificates)az App Service egy kérelemfejlécet ad meg az ügyféltanúsítvánnyal. Az App Service nem csinál semmit ezzel az ügyféltanúsítvánnyal, csak továbbítja azt az alkalmazásnak. Az alkalmazáskód felelős az ügyféltanúsítvány érvényesítéséért.
+App Service a kérelem TLS-megszakítása a frontend Load balancerben történik. Ha [engedélyezve van az Ügyféltanúsítványok](#enable-client-certificates)számára az alkalmazás kódjára való továbbítás, app Service beinjektál egy `X-ARR-ClientCert` kérelem fejlécét az ügyféltanúsítvány használatával. A App Service nem végez semmit ezzel az ügyféltanúsítvány-val, mint az alkalmazásra való továbbítása. Az alkalmazás kódjának feladata az ügyféltanúsítvány ellenőrzése.
 
-Az ASP.NET esetén az ügyféltanúsítvány a **HttpRequest.ClientCertificate** tulajdonságon keresztül érhető el.
+A ASP.NET esetében az ügyféltanúsítvány a **HttpRequest. ClientCertificate** tulajdonságon keresztül érhető el.
 
-Más alkalmazásverem (Node.js, PHP, stb), az ügyfél tanúsítvány érhető el az alkalmazásban egy base64 kódolt érték a `X-ARR-ClientCert` kérelem fejlécében.
+Más alkalmazások (node. js, PHP stb.) esetén az ügyfél-tanúsítvány az alkalmazásban a `X-ARR-ClientCert` kérelem fejlécében Base64 kódolású értékkel érhető el.
 
 ## <a name="aspnet-sample"></a>ASP.NET minta
 
@@ -171,9 +171,9 @@ Más alkalmazásverem (Node.js, PHP, stb), az ügyfél tanúsítvány érhető e
     }
 ```
 
-## <a name="nodejs-sample"></a>Node.js minta
+## <a name="nodejs-sample"></a>Node. js-minta
 
-A következő Node.js mintakód leváltja a `X-ARR-ClientCert` fejlécet, és a base64 kódolású PEM-karakterlánctanúsítvány-objektummá történő átalakítására és érvényesítésére [csomópont-kovácsolással](https://github.com/digitalbazaar/forge) konvertálja azt tanúsítványobjektummá:
+A következő Node. js-mintakód beolvassa a `X-ARR-ClientCert` fejlécet, és a [Node-Forge](https://github.com/digitalbazaar/forge) használatával átalakítja a Base64 kódolású PEM-karakterláncot egy tanúsítvány objektummá, és érvényesíti azt:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -216,9 +216,9 @@ export class AuthorizationHandler {
 }
 ```
 
-## <a name="java-sample"></a>Java minta
+## <a name="java-sample"></a>Java-minta
 
-A következő Java osztály kódolja `X509Certificate` a tanúsítványt egy példányra. `X-ARR-ClientCert` `certificateIsValid()`ellenőrzi, hogy a tanúsítvány ujjlenyomata megegyezik-e a konstruktorban megadottujjlenyomattal, és hogy a tanúsítvány még nem járt le.
+A következő Java- `X-ARR-ClientCert` osztály kódolja a tanúsítványt egy `X509Certificate` példányba. `certificateIsValid()`ellenőrzi, hogy a Tanúsítvány ujjlenyomata megegyezik-e a konstruktorban megadott névvel, és hogy a tanúsítvány nem járt-e le.
 
 
 ```java

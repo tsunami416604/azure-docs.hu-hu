@@ -1,7 +1,7 @@
 ---
-title: Példák a hangulatelemzési tároló docker-példáira
+title: Hangulatelemzés Container Docker-példák
 titleSuffix: Azure Cognitive Services
-description: Példák a hangulatelemzési tároló docker-példáira
+description: Hangulatelemzés Container Docker-példák
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e1d80f2ee869b2d71a536e499f900c7e8d6e425d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878668"
 ---
-### <a name="sentiment-analysis-container-docker-examples"></a>Példák a hangulatelemzési tároló docker-példáira
+### <a name="sentiment-analysis-container-docker-examples"></a>Hangulatelemzés Container Docker-példák
 
-Az alábbi docker-példák a hangulatelemzési tárolóra szolgálnak.
+A következő Docker-példák a Hangulatelemzés tárolóra vonatkoznak.
 
 #### <a name="basic-example"></a>Alapszintű példa 
 

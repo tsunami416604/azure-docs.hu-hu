@@ -1,7 +1,7 @@
 ---
-title: Konténer korlátozások - LUIS
+title: Tárolók korlátai – LUIS
 titleSuffix: Azure Cognitive Services
-description: A LUIS-tároló támogatott nyelvei.
+description: A LUIS-tároló nyelvei támogatottak.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879241"
 ---
-# <a name="language-understanding-luis-container-limitations"></a>Nyelvi ismertetési (LUIS) tároló konkretináta
+# <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) tároló korlátozásai
 
-A LUIS-tárolók néhány jelentős korlátozásokkal rendelkezik. A nem támogatott függőségektől a támogatott nyelvek egy részhalmazától ez a cikk részletezi ezeket a korlátozásokat.
+A LUIS-tárolók néhány jelentős korlátozással rendelkeznek. A nem támogatott függőségek közül a jelen cikk ezeket a korlátozásokat részletezi.
 
-## <a name="supported-dependencies-for-latest-container"></a>Támogatott függőségek `latest` a tárolóhoz
+## <a name="supported-dependencies-for-latest-container"></a>A `latest` tároló által támogatott függőségek
 
-A legújabb LUIS-tároló, amely [a //build/ 2019-ben](https://news.microsoft.com/build2019/)jelent meg, támogatja a következőket:
+A [//build/2019](https://news.microsoft.com/build2019/)-es verzióban kiadott legújabb Luis-tároló a következőket támogatja:
 
-* [Új előre összeállított tartományok:](luis-reference-prebuilt-domains.md)ezek a vállalati központú tartományok entitásokat, például kimondott szöveget és mintákat tartalmaznak. Bővítse ki ezeket a tartományokat saját használatra.
+* [Új előre összeépített tartományok](luis-reference-prebuilt-domains.md): ezek a nagyvállalati szintű tartományok többek között entitásokat, például hosszúságú kimondott szöveg és mintákat tartalmaznak. Kiterjesztheti ezeket a tartományokat saját használatra.
 
-## <a name="unsupported-dependencies-for-latest-container"></a>Nem támogatott függőségek a tárolóhoz `latest`
+## <a name="unsupported-dependencies-for-latest-container"></a>A tárolóhoz tartozó `latest` függőségek nem támogatottak
 
-A [tároló exportálásához](luis-container-howto.md#export-packaged-app-from-luis)el kell távolítania a nem támogatott függőségeket a LUIS alkalmazásból. Amikor megpróbálja exportálni a tárolót, a LUIS-portál jelenti az eltávolítandó nem támogatott szolgáltatásokat.
+A [tárolóba való exportáláshoz](luis-container-howto.md#export-packaged-app-from-luis)el kell távolítania a nem támogatott függőségeket a Luis-alkalmazásból. Ha tárolóra próbál exportálni, a LUIS-portál ezeket a nem támogatott szolgáltatásokat jelenti, amelyeket el kell távolítania.
 
-Használhatja a LUIS-alkalmazást, ha **nem tartalmazza** az alábbi függőségek egyikét sem:
+LUIS-alkalmazást használhat, ha az **nem tartalmazza** a következő függőségek egyikét sem:
 
-Nem támogatott alkalmazáskonfigurációk|Részletek|
+Nem támogatott alkalmazások konfigurációi|Részletek|
 |--|--|
-|Nem támogatott tárolókultúrák| Holland`nl-NL`( )<br>Japán`ja-JP`( )<br>Német csak akkor támogatott a [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions).|
-|Nem támogatott entitások minden kultúrához|[KeyPhrase](luis-reference-prebuilt-keyphrase.md) előre elkészített entitás minden kultúrához|
-|Nem támogatott entitások`en-US`az angol ( ) kultúrához|[GeographyV2](luis-reference-prebuilt-geographyV2.md) előre összeállított entitások|
-|Beszéd alapozása|A külső függőségek nem támogatottak a tárolóban.|
-|Hangulatelemzés|A külső függőségek nem támogatottak a tárolóban.|
-|Bing helyesírás-ellenőrzés|A külső függőségek nem támogatottak a tárolóban.|
+|A tároló kulturális környezetei nem támogatottak| Holland (`nl-NL`)<br>Japán (`ja-JP`)<br>A német nyelv csak a [1.0.2-tokenizer](luis-language-support.md#custom-tokenizer-versions)támogatott.|
+|Nem támogatott entitások minden kultúrához|[KeyPhrase](luis-reference-prebuilt-keyphrase.md) előre összeépített entitás minden kultúrához|
+|Nem támogatott entitások az angol (`en-US`) kulturális környezethez|[GeographyV2](luis-reference-prebuilt-geographyV2.md) előre elkészített entitások|
+|Beszéd alapozó|A tárolóban a külső függőségek nem támogatottak.|
+|Hangulatelemzés|A tárolóban a külső függőségek nem támogatottak.|
+|Bing – helyesírás-ellenőrzés|A tárolóban a külső függőségek nem támogatottak.|
 
 ## <a name="languages-supported"></a>Támogatott nyelvek
 
-A LUIS-tárolók a LUIS által [támogatott nyelvek](luis-language-support.md#languages-supported) egy részét támogatják. A LUIS-tárolók a következő nyelveken képesek megérteni a kimondott szövegeket:
+A LUIS-tárolók támogatják a LUIS megfelelő által [támogatott nyelvek](luis-language-support.md#languages-supported) egy részhalmazát. A LUIS-tárolók képesek megismerni a hosszúságú kimondott szöveg a következő nyelveken:
 
-| Nyelv | Területi beállítás | Előre összeállított tartomány | Előre összeállított entitás | Kifejezéslista-javaslatok | **[Szövegelemzés](../text-analytics/language-support.md)<br>(Hangulat és<br>Kulcsszavak)|
+| Nyelv | Területi beállítás | Előre elkészített tartomány | Előre elkészített entitás | Kifejezések listája – javaslatok | **[Szöveges elemzés](../text-analytics/language-support.md)<br>(Hangulat és<br>Kulcsszavak|
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikai angol | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
@@ -55,11 +55,11 @@ A LUIS-tárolók a LUIS által [támogatott nyelvek](luis-language-support.md#la
 | Német |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Olasz |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| Koreai |`ko-KR` | ✔️ | ❌ | ❌ | *Csak a kulcsmondat* |
-| Portugál (Brazília) |`pt-BR` | ✔️ | ✔️ | ✔️ | nem minden szubkultúra |
+| Koreai |`ko-KR` | ✔️ | ❌ | ❌ | Csak a *kulcs kifejezése* |
+| Portugál (Brazília) |`pt-BR` | ✔️ | ✔️ | ✔️ | nem minden alkultúra |
 | Spanyol (Spanyolország) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Spanyol (Mexikó)|`es-MX` | ❌ | ❌ |✔️|✔️|
-| Török | `tr-TR` |✔️| ❌ | ❌ | *Csak hangulat* |
+| Török | `tr-TR` |✔️| ❌ | ❌ | Csak *hangulat* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

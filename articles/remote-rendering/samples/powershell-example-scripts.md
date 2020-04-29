@@ -1,52 +1,52 @@
 ---
 title: PowerShell-példaszkriptek
-description: Példák, amelyek bemutatják, hogyan kell használni az előtér-alapú PowerShell-parancsfájlokon keresztül
+description: Példák, amelyek bemutatják, hogyan használható az előtér a PowerShell-parancsfájlok segítségével
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80891492"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
-Az Azure remote rendering a következő két REST API-t biztosítja:
+Az Azure távoli renderelés a következő két REST API-t biztosítja:
 
-- [Konvertálás REST API](../how-tos/conversion/conversion-rest-api.md)
-- [Munkamenet-többi API](../how-tos/session-rest-api.md)
+- [Átalakítási REST API](../how-tos/conversion/conversion-rest-api.md)
+- [Munkamenet-REST API](../how-tos/session-rest-api.md)
 
-Az [ARR-mintatár](https://github.com/Azure/azure-remote-rendering) a *Parancsfájlok* mappában található mintaparancsfájlokat tartalmaz a szolgáltatás REST API-ival való interakcióhoz. Ez a cikk ismerteti a használat.
+Az [ARR Samples adattár](https://github.com/Azure/azure-remote-rendering) a *parancsfájlokat* tartalmazó mappában található minta parancsfájlokat tartalmaz a szolgáltatás REST API-kkal való interakcióhoz. Ez a cikk a használatuk leírását ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A mintaparancsfájlok végrehajtásához az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)funkcionális beállítására van szükség.
+A minta szkriptek végrehajtásához a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)funkcionális beállítása szükséges.
 
 1. Az Azure PowerShell telepítése:
     1. Rendszergazdai jogosultságokkal rendelkező PowerShell megnyitása
-    1. Fuss:`Install-Module -Name Az -AllowClobber`
+    1. Futtassa`Install-Module -Name Az -AllowClobber`
 
-1. Ha hibákat kap a parancsfájlok futtatásával kapcsolatban, győződjön meg arról, hogy a [végrehajtási házirend](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) megfelelően van beállítva:
+1. Ha hibát tapasztal a parancsfájlok futtatásával kapcsolatban, győződjön meg arról, hogy a [végrehajtási házirend](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) megfelelően van beállítva:
     1. Rendszergazdai jogosultságokkal rendelkező PowerShell megnyitása
-    1. Fuss:`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
+    1. Futtassa`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [Azure Storage-fiók előkészítése](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
-1. Jelentkezzen be az Azure távoli leképezési fiókját tartalmazó előfizetésbe:
+1. Jelentkezzen be az Azure Remote rendering-fiókját tartalmazó előfizetésbe:
     1. PowerShell megnyitása
-    1. Futtatás: `Connect-AzAccount` és kövesse a képernyőn megjelenő utasításokat.
+    1. Futtatás: `Connect-AzAccount` , és kövesse a képernyőn megjelenő utasításokat.
 
 > [!NOTE]
-> Abban az esetben, ha a szervezet egynél több előfizetéssel rendelkezik, előfordulhat, hogy meg kell adnia az Előfizetési és bérlői argumentumokat. Részletek a [Connect-AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
+> Ha a szervezet egynél több előfizetéssel rendelkezik, lehet, hogy meg kell adnia a SubscriptionId és a bérlői argumentumokat. A részletek a [AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
 
-1. Töltse le a *Scripts* mappát az [Azure Remote Rendering GithHub tárházból.](https://github.com/Azure/azure-remote-rendering)
+1. Töltse le a *Scripts* mappát az [Azure távoli renderelési GithHub adattárból](https://github.com/Azure/azure-remote-rendering).
 
 ## <a name="configuration-file"></a>Konfigurációs fájl
 
-A `.ps1` fájlok mellett van `arrconfig.json` egy, amit ki kell töltenie:
+A fájlok `arrconfig.json` mellett `.ps1` ki kell töltenie a következőt:
 
 ```json
 {
@@ -74,42 +74,42 @@ A `.ps1` fájlok mellett van `arrconfig.json` egy, amit ki kell töltenie:
 ```
 
 > [!CAUTION]
-> Győződjön meg arról, hogy megfelelően elkerüli a fordított perjeleket a LocalAssetDirectoryPath elérési útban dupla fordított perjelhasználatával: "\\\\" és perjelek "/" használata az összes többi elérési úton, például a inputFolderPath és a inputAssetPath.
+> Ügyeljen arra, hogy a LocalAssetDirectoryPath útvonalon a két fordított\\\\perjelet ("") használja, és minden más elérési úton, például a inputFolderPath és a inputAssetPath használjon perjelet.
 
-### <a name="accountsettings"></a>fiókbeállítások
+### <a name="accountsettings"></a>accountSettings
 
-A `arrAccountId` `arrAccountKey`és a, [lásd: Hozzon létre egy Azure Remote rendering fiók](../how-tos/create-an-account.md).
-Lásd `region` az [elérhető régiók listáját.](../reference/regions.md)
+`arrAccountId` És `arrAccountKey`esetében lásd: [Azure távoli renderelési fiók létrehozása](../how-tos/create-an-account.md).
+Az `region` [elérhető régiók listájának](../reference/regions.md)megtekintéséhez.
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Ezt a struktúrát ki kell tölteni, ha futtatni szeretné **a RenderingSession.ps1 .**
+Ezt a struktúrát ki kell tölteni, ha a **RenderingSession. ps1**parancsot szeretné futtatni.
 
-- **vmMéret:** A virtuális gép méretének kiválasztása. Válassza ki *a standard* vagy *prémium*. Állítsa le a renderelési munkameneteket, ha már nincs rájuk szüksége.
-- **maxLeaseTime:** Az időtartam, amelynek a virtuális gép lízingelése. A bérlet lejártakor leáll. A bérleti idő később meghosszabbítható (lásd alább).
+- **vmSize:** Kiválasztja a virtuális gép méretét. Válassza a *standard* vagy a *prémium*lehetőséget. Ha már nincs szüksége rájuk, állítsa le a renderelési munkameneteket.
+- **maxLeaseTime:** Az az időtartam, ameddig a virtuális gépet bérbe szeretné venni. Ha a bérlet lejár, a rendszer leállítja. A bérleti idő később bővíthető (lásd alább).
 
-### <a name="assetconversionsettings"></a>assetConversionSettings (eszközkonverziós beállítások)
+### <a name="assetconversionsettings"></a>assetConversionSettings
 
-Ezt a struktúrát ki kell tölteni, ha futtatni szeretné a **Conversion.ps1**.
+Ezt a struktúrát ki kell tölteni, ha a **Conversion. ps1**parancsot szeretné futtatni.
 
-További információt az [Azure Storage-fiók előkészítése.](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
+Részletekért lásd: [Azure Storage-fiók előkészítése](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
-## <a name="script-renderingsessionps1"></a>Parancsfájl: RenderingSession.ps1
+## <a name="script-renderingsessionps1"></a>Parancsfájl: RenderingSession. ps1
 
-Ez a parancsfájl munkamenetek létrehozására, lekérdezésére és leállítására szolgál.
+Ez a szkript a renderelési munkamenetek létrehozására, lekérdezésére és leállítására szolgál.
 
 > [!IMPORTANT]
-> Győződjön meg róla, hogy kitöltötte a *accountSettings* és *renderingSessionSettings* szakaszok arrconfig.json.
+> Győződjön meg arról, hogy kitöltötte a *accountSettings* és a *renderingSessionSettings* szakaszt a arrconfig. JSON fájlban.
 
 ### <a name="create-a-rendering-session"></a>Renderelési munkamenet létrehozása
 
-Normál használat egy teljesen kitöltött arrconfig.json:
+Normál használat teljes kitöltött arrconfig. JSON használatával:
 
 ```PowerShell
 .\RenderingSession.ps1
 ```
 
-A parancsfájl meghívja a [munkamenet-kezelés REST](../how-tos/session-rest-api.md) API-t, hogy a renderelési virtuális gép a megadott beállításokkal. A siker, akkor letölteni a *sessionId*. Ezután lefolytatja a munkamenet tulajdonságait, amíg a munkamenet készen nem áll, vagy hiba történt.
+A parancsfájl meghívja a [munkamenet-felügyeleti REST API](../how-tos/session-rest-api.md) , hogy a megadott beállításokkal indítson el egy RENDERELÉSI virtuális gépet. A művelet során a rendszer lekéri a *munkamenet*-azonosítókat. Ezután lekérdezi a munkamenet tulajdonságait, amíg a munkamenet nem áll készen, vagy hiba történt.
 
 **Alternatív konfigurációs** fájl használata:
 
@@ -117,29 +117,29 @@ A parancsfájl meghívja a [munkamenet-kezelés REST](../how-tos/session-rest-ap
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-A konfigurációs fájl **egyes beállításait felülbírálhatja:**
+Az **egyes beállításokat felülbírálhatja** a konfigurációs fájlból:
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-Ha csak lekérdezés nélküli munkamenetet szeretne **elindítani,** a következőket használhatja:
+Ha csak **lekérdezés nélkül szeretné elindítani a munkamenetet**, használhatja a következőt:
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
 ```
 
-A parancsfájl által leolvasott *munkamenet-azonosítót* át kell adni a legtöbb munkamenet-parancsnak.
+A parancsfájl által lekért *munkamenet* -azonosítónak át kell adni a legtöbb más munkamenet-parancsnak.
 
-### <a name="retrieve-session-properties"></a>Munkamenet tulajdonságainak beolvasása
+### <a name="retrieve-session-properties"></a>Munkamenet-tulajdonságok beolvasása
 
-A munkamenet tulajdonságainak lefelvételéhez futtassa a következőket:
+A munkamenet tulajdonságainak beszerzéséhez futtassa a következő parancsot:
 
 ```PowerShell
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-Ezzel `-Poll` megvárható, amíg a munkamenet *elkészül,* vagy hiba történik.
+A `-Poll` használatával megvárhatja, amíg a munkamenet *kész* vagy hiba történt.
 
 ### <a name="list-active-sessions"></a>Aktív munkamenetek listázása
 
@@ -155,57 +155,57 @@ Ezzel `-Poll` megvárható, amíg a munkamenet *elkészül,* vagy hiba történi
 
 ### <a name="change-session-properties"></a>Munkamenet tulajdonságainak módosítása
 
-Jelenleg csak a munkamenet maxLeaseTime értékének módosítását támogatjuk.
+Jelenleg csak a munkamenet maxLeaseTime módosítását támogatjuk.
 
 > [!NOTE]
-> A címbérlet ideje mindig számít attól az időponttól kezdve, amikor a munkamenet virtuális gép eredetileg jött létre. Így a munkamenet-bérlet további órával történő meghosszabbítása érdekében növelje *a maxLeaseTime* értéket egy órával.
+> A címbérleti idő mindig a munkamenet virtuális gépe első létrehozásakor számít. Így a munkamenet bérletének meghosszabbítása egy órával a *maxLeaseTime* növelésével.
 
 ```PowerShell
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
 ```
 
-## <a name="script-conversionps1"></a>Parancsfájl: Conversion.ps1
+## <a name="script-conversionps1"></a>Parancsfájl: Conversion. ps1
 
-Ez a parancsfájl a bemeneti modellek konvertálása az Azure Remote Rendering adott futásidejű formátumban.
+Ez a szkript a bemeneti modellek az Azure Remote rendering-specifikus futtatókörnyezet-formátumba való átalakítására szolgál.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy kitöltötte a *accountSettings* és *assetConversionSettings* szakaszok at arrconfig.json.
+> Győződjön meg arról, hogy kitöltötte a *accountSettings* és a *assetConversionSettings* szakaszt a arrconfig. JSON fájlban.
 
-A parancsfájl bemutatja a tárfiókok használatának két lehetőségeit a szolgáltatással:
+A parancsfájl a következő két lehetőséget mutatja be a Storage-fiókok használatára a szolgáltatásban:
 
-- Azure távoli leadási fiókhoz kapcsolt tárfiók
-- Hozzáférés biztosítása a tárhelyhez megosztott hozzáférésű aláírások (SAS) segítségével
+- Azure távoli renderelési fiókkal összekapcsolt Storage-fiók
+- Hozzáférés biztosítása a tárterülethez közös hozzáférésű aláírások (SAS) használatával
 
-### <a name="linked-storage-account"></a>Csatolt tárfiók
+### <a name="linked-storage-account"></a>Társított Storage-fiók
 
-Miután teljesen kitöltötte az arrconfig.json t, és csatolt egy tárfiókot, használhatja a következő parancsot. A tárfiók összekapcsolása a [Fiók létrehozása](../how-tos/create-an-account.md#link-storage-accounts)című oldalon található.
+Miután teljes mértékben kitöltötte a arrconfig. JSON fájlt, és csatolt egy Storage-fiókot, a következő parancsot használhatja. A Storage-fiók összekapcsolása a [fiók létrehozása](../how-tos/create-an-account.md#link-storage-accounts)című témakörben található.
 
-A konverziós szolgáltatás használatának előnyben részesített módja a csatolt tárfiók használata, mivel nincs szükség megosztott hozzáférésű aláírások létrehozására.
+A társított Storage-fiók használata az előnyben részesített módszer a konverziós szolgáltatás használatára, mivel nem kell közös hozzáférési aláírásokat létrehoznia.
 
 ```PowerShell
 .\Conversion.ps1
 ```
 
-1. Töltse fel az `assetConversionSettings.modelLocation` összes fájlt, amely a bemeneti blob tároló alatt az adott`inputFolderPath`
-1. A [modellkonvertálási REST API](../how-tos/conversion/conversion-rest-api.md) hívása a [modellkonvertálás indításához](../how-tos/conversion/model-conversion.md)
-1. A konverzió állapotának lekérdezése addig, amíg az átalakítás sikeres vagy sikertelen nem sikerült
-1. A konvertált fájl helyének kimeneti adatai (tárfiók, kimeneti tároló, fájlelérési út a tárolóban)
+1. Töltse fel a fájlban található összes `assetConversionSettings.modelLocation` fájlt a bemeneti blob-tárolóba az adott`inputFolderPath`
+1. A modell átalakításának meghívása [REST API](../how-tos/conversion/conversion-rest-api.md) a [modell átalakításának](../how-tos/conversion/model-conversion.md) elindításához
+1. A konverzió állapotának lekérdezése, amíg az átalakítás sikeres vagy sikertelen volt
+1. A konvertált fájl helyének kimeneti adatai (Storage-fiók, kimeneti tároló, a tárolóban lévő fájl elérési útja)
 
-### <a name="access-to-storage-via-shared-access-signatures"></a>Hozzáférés a tároláshoz megosztott hozzáférésű aláírásokon keresztül
+### <a name="access-to-storage-via-shared-access-signatures"></a>Hozzáférés a tárolóhoz megosztott hozzáférési aláírások használatával
 
 ```PowerShell
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Ez:
+Ez a következő lesz:
 
-1. Töltse fel a `assetConversionSettings.localAssetDirectoryPath` helyi fájlt a bemeneti blobtárolóba
-1. SAS-URI létrehozása a bemeneti tárolóhoz
-1. SAS-URI létrehozása a kimeneti tárolóhoz
-1. A [modellkonvertálási REST API](../how-tos/conversion/conversion-rest-api.md) hívása a [modellkonvertálás indításához](../how-tos/conversion/model-conversion.md)
-1. A konverzió állapotának lekérdezése addig, amíg az átalakítás sikeres vagy sikertelen nem sikerült
-1. A konvertált fájl helyének kimeneti adatai (tárfiók, kimeneti tároló, fájlelérési út a tárolóban)
-1. SAS-URI kimenete a konvertált modellbe a kimeneti blobtárolóban
+1. Töltse fel a helyi fájlt a `assetConversionSettings.localAssetDirectoryPath` fájlból a bemeneti blob-tárolóba.
+1. SAS URI létrehozása a bemeneti tárolóhoz
+1. SAS URI létrehozása a kimeneti tárolóhoz
+1. A modell átalakításának meghívása [REST API](../how-tos/conversion/conversion-rest-api.md) a [modell átalakításának](../how-tos/conversion/model-conversion.md) elindításához
+1. A konverzió állapotának lekérdezése, amíg az átalakítás sikeres vagy sikertelen volt
+1. A konvertált fájl helyének kimeneti adatai (Storage-fiók, kimeneti tároló, a tárolóban lévő fájl elérési útja)
+1. SAS URI kimenetének kiírása a konvertált modellbe a kimeneti blob-tárolóban
 
 ### <a name="additional-command-line-options"></a>További parancssori kapcsolók
 
@@ -215,59 +215,59 @@ Ez:
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Ha csak **lekérdezés nélkül szeretné elindítani a modellkonverziót,** a következőket használhatja:
+Ha csak **lekérdezés nélkül szeretné elindítani a modell-konverziót**, használhatja a következőt:
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-A konfigurációs fájl **egyes beállításait** a következő parancssori kapcsolókkal bírálhatja felül:
+Az **egyes beállításokat felülbírálhatja** a konfigurációs fájlból az alábbi parancssori kapcsolók használatával:
 
-* **Azonosító:** A GetConversionStatus-mal használt ConversionId azonosító
-* **ArrAccountId:** aaccountAccountId of accountSettings
-* **ArrAccountKey:** felülbírálása arrAccountKey of accountSettings
-* **Régió:** felülbírálás a fiókbeállítások régiójához
-* **ResourceGroup:** az assetConversionSettings erőforráscsoport felülbírálása
-* **StorageAccountName:** az assetConversionSettings storageAccountName of assetConversion
-* **BlobInputContainerName:** az assetConversionSettings blobInputContainer-jének felülbírálása
-* **LocalAssetDirectoryPath:** az assetConversionSettings localAssetDirectoryPath felülbírálása
-* **InputAssetPath:** az assetConversionSettings inputAssetPath felülbírálása
-* **BlobOutputContainerName:** az assetConversionSettings blobOutputContainerName felülbírálása
-* **OutputFolderPath:** az assetConversionSettings outputFolderPath felülbírálása
-* **OutputAssetFileName:** az assetConversionSettings outputAssetFileName -jének felülírása
+* **Azonosító:** A GetConversionStatus használt ConversionId
+* **ArrAccountId:** ArrAccountId accountSettings
+* **ArrAccountKey:** felülbírálás a accountSettings ArrAccountKey
+* **Régió:** felülbírálás a accountSettings régiójában
+* **ResourceGroup:** felülbírálás a assetConversionSettings ResourceGroup
+* **StorageAccountName:** felülbírálás a assetConversionSettings StorageAccountName
+* **BlobInputContainerName:** felülbírálás a assetConversionSettings blobInputContainer
+* **LocalAssetDirectoryPath:** felülbírálás a assetConversionSettings LocalAssetDirectoryPath
+* **InputAssetPath:** felülbírálás a assetConversionSettings InputAssetPath
+* **BlobOutputContainerName:** felülbírálás a assetConversionSettings BlobOutputContainerName
+* **OutputFolderPath:** felülbírálás a assetConversionSettings OutputFolderPath
+* **OutputAssetFileName:** felülbírálás a assetConversionSettings OutputAssetFileName
 
-Például a megadott lehetőségek közül többis kombinálható, mint például:
+Például a következőhöz hasonló lehetőségek közül választhat:
 
 ```PowerShell
 .\Conversion.ps1 -LocalAssetDirectoryPath "C:\\models\\box" -InputAssetPath box.fbx -OutputFolderPath another/converted/box -OutputAssetFileName newConversionBox.arrAsset
 ```
 
-### <a name="run-the-individual-conversion-stages"></a>Az egyes konverziós szakaszok futtatása
+### <a name="run-the-individual-conversion-stages"></a>Az egyes átalakítási szakaszok futtatása
 
-Ha a folyamat egyes lépéseit szeretné futtatni, a következőket használhatja:
+Ha a folyamat egyes lépéseit szeretné futtatni, a következőt használhatja:
 
-Csak adatok at töltsön fel az adott LocalAssetDirectoryPath-ból
+Csak az adott LocalAssetDirectoryPath származó adatok feltöltése
 
 ```PowerShell
 .\Conversion.ps1 -Upload
 ```
 
-Csak a blobstorage-ba már feltöltött modell átalakítási folyamatát indítsa el (ne futtassa a Feltöltés t, ne töltse le a konverziós állapotot) A parancsfájl *konverzióazonosítót*ad vissza.
+Csak a blob Storage-ba feltöltött modell átalakítási folyamatának elindítása (ne futtassa a feltöltést, ne kérdezze le a konverziós állapotot) a szkript egy *conversionId*ad vissza.
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-A konverzió konverziós állapotát pedig a következő konkra kérhető:
+A konverzió állapotát a következő paranccsal kérheti le:
 
 ```PowerShell
 .\Conversion.ps1 -GetConversionStatus -Id <conversionId> [-Poll]
 ```
 
-Ezzel `-Poll` megvárható, amíg a konvertálás befejeződik, vagy hiba történik.
+A `-Poll` paranccsal megvárhatja, amíg a konverzió megtörténik, vagy hiba történt.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató: Modell renderelése unityvel](../quickstarts/render-model.md)
-- [Rövid útmutató: Modell konvertálása rendereléshez](../quickstarts/convert-model.md)
+- [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
+- [Gyors útmutató: modell átalakítása renderelésre](../quickstarts/convert-model.md)
 - [Modell átalakítása](../how-tos/conversion/model-conversion.md)

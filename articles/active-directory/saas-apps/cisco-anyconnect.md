@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Cisco AnyConnect-tel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Cisco AnyConnect között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Cisco AnyConnect | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Cisco AnyConnect között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,127 +16,127 @@ ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80891662"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Cisco AnyConnect-tel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Cisco AnyConnect
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Cisco AnyConnectet az Azure Active Directoryval (Azure AD). Ha integrálja a Cisco AnyConnect-et az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Cisco AnyConnect Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Cisco AnyConnect-t, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, hogy ki férhet hozzá a Cisco AnyConnect-hez.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezve a Cisco AnyConnect az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A Cisco AnyConnect hozzáférését biztosító Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Cisco AnyConnect az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * Cisco AnyConnect egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Cisco AnyConnect támogatja az **IDP** által kezdeményezett SSO-t
-* A Cisco AnyConnect konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből terjed. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* A Cisco AnyConnect támogatja a **identitásszolgáltató** által KEZDEMÉNYEZett SSO-t
+* A Cisco AnyConnect konfigurálása után kényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak kiszűrése és beszivárgását valós időben teszi elérhetővé. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-cisco-anyconnect-from-the-gallery"></a>Cisco AnyConnect hozzáadása a galériából
+## <a name="adding-cisco-anyconnect-from-the-gallery"></a>Cisco-AnyConnect hozzáadása a katalógusból
 
-A Cisco AnyConnect Azure AD-be való integrációjának konfigurálásához hozzá kell adnia a Cisco AnyConnect-et a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Cisco AnyConnect Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Cisco AnyConnect a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **Katalógus hozzáadás szakaszábaírja a** **Cisco AnyConnect** kifejezést a keresőmezőbe.
-1. Válassza a **Cisco AnyConnect** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Cisco AnyConnect** kifejezést a keresőmezőbe.
+1. Válassza ki a **Cisco AnyConnect** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-anyconnect"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése a Cisco AnyConnect hez
+## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-anyconnect"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Cisco AnyConnect
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Cisco AnyConnect segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó a Cisco AnyConnect.
+Konfigurálja és tesztelje az Azure AD SSO-t a Cisco AnyConnect egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Cisco AnyConnect.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Cisco AnyConnect segítségével hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a Cisco AnyConnect konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a Cisco AnyConnect SSO-t](#configure-cisco-anyconnect-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    1. **[Hozzon létre Cisco AnyConnect tesztfelhasználót](#create-cisco-anyconnect-test-user)** – hogy b.Simon megfelelője legyen a Cisco AnyConnectben, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[Cisco ANYCONNECT SSO konfigurálása](#configure-cisco-anyconnect-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Cisco AnyConnect-teszt felhasználó létrehozása](#create-cisco-anyconnect-test-user)** – ha a Cisco AnyConnect található B. Simon partnere, amely a felhasználó Azure ad-képviseletéhez van társítva.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Cisco AnyConnect** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/)a **Cisco AnyConnect** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon adja meg a következő mezők értékeit:
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`< YOUR CISCO ANYCONNECT VPN VALUE >`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`< YOUR CISCO ANYCONNECT VPN VALUE >`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`< YOUR CISCO ANYCONNECT VPN VALUE >`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`< YOUR CISCO ANYCONNECT VPN VALUE >`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba a [Cisco AnyConnect ügyféltámogatási csapatával,](https://www.cisco.com/c/en/us/support/index.html) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez forduljon a [Cisco AnyConnect ügyfél-támogatási csapatához](https://www.cisco.com/c/en/us/support/index.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítványfájl letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd válassza a **Letöltés** lehetőséget a tanúsítványfájl letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **Cisco AnyConnect beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **Cisco AnyConnect beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Ha szeretne a fedélzeten több TGTs a szerver, akkor meg kell hozzá több példánya a Cisco AnyConnect alkalmazás a galériában. Is választhat, hogy töltse fel a saját tanúsítványt az Azure AD-ben az összes ilyen alkalmazáspéldányok. Így azonos tanúsítvánnyal rendelkezhet az alkalmazásokhoz, de minden alkalmazáshoz különböző azonosító- és válaszURL-címet állíthat be.
+> Ha a kiszolgáló több TGT szeretne felvenni, akkor hozzá kell adnia a Cisco AnyConnect alkalmazás több példányát a katalógusból. Emellett a saját tanúsítványát is feltöltheti az Azure AD-ben az összes ilyen alkalmazás-példányra. Így ugyanazzal a tanúsítvánnyal rendelkezhet az alkalmazásokhoz, de minden alkalmazáshoz külön azonosító és válasz URL-címet is beállíthat.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a Cisco AnyConnect hozzáférést biztosítva.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Cisco AnyConnect.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **Cisco AnyConnect**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Cisco AnyConnect**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-cisco-anyconnect-sso"></a>Cisco AnyConnect SSO konfigurálása
 
-1. Fogsz ezt a CLI első, akkor gyere vissza, és csinál egy ASDM walk-through egy másik időpontban.
+1. Ezt először a CLI-n hajtja végre, és a ASDM egy másik időpontban is elérhetővé vált.
 
-1. Csatlakozzon a VPN-készülékhez, egy 9.8-as kódvonatot futtató ASA-t fog használni, és a VPN-ügyfelek 4.6+ lesznek.
+1. Kapcsolódjon a VPN-berendezéshez, és 9,8-as kódú ASA-t fog használni, a VPN-ügyfelek pedig 4.6 + lesz.
 
-1. Először létrehoz egy Trustpoint-ot, és importálja saml tanúsítványunkat.
+1. Először létre kell hoznia egy Trustpoint, és importálnia kell az SAML-tanúsítványt.
 
    ```
     config t
@@ -155,7 +155,7 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a Cisco 
     quit
    ```
 
-1. A következő parancsok kiépítik az SAML IdP-t.
+1. A következő parancsok kiépítik az SAML-identitásszolgáltató.
 
    ```
     webvpn
@@ -169,7 +169,7 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a Cisco 
     base-url https://my.asa.com
     ```
 
-1. Most már saml-hitelesítést alkalmazhat a VPN-alagút konfigurációjára.
+1. Most már alkalmazhat SAML-hitelesítést a VPN-alagút konfigurációján.
 
     ```
     tunnel-group AC-SAML webvpn-attributes
@@ -181,29 +181,29 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a Cisco 
     ```
 
     > [!NOTE]
-    > Van egy szolgáltatás az SAML IdP konfigurációval – Ha módosítja az IdP-konfigurációt, el kell távolítania a saml identitásszolgáltató konfigurációját a tunnelcsoportból, és újra alkalmaznia kell, hogy a módosítások érvénybe lépjenek.
+    > Az SAML identitásszolgáltató-konfigurációval rendelkezik. Ha módosítja a identitásszolgáltató konfigurációt, el kell távolítania a SAML Identity-Provider konfigurációját az alagút csoportjából, és újra alkalmaznia kell a módosítások érvénybe léptetéséhez.
 
-### <a name="create-cisco-anyconnect-test-user"></a>Cisco AnyConnect tesztfelhasználó létrehozása
+### <a name="create-cisco-anyconnect-test-user"></a>Cisco AnyConnect-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Cisco AnyConnect alkalmazásban. Együttműködve [a Cisco AnyConnect támogatási csapatával](https://www.cisco.com/c/en/us/support/index.html) a Cisco AnyConnect platform felhasználóinak hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Cisco AnyConnect-ben. Működjön együtt a [Cisco AnyConnect támogatási csapatával](https://www.cisco.com/c/en/us/support/index.html) , hogy hozzáadja a felhasználókat a Cisco AnyConnect platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a Cisco AnyConnect csempére kattint, automatikusan be kell jelentkeznie a Cisco AnyConnect-be, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a Cisco AnyConnect csempére kattint, automatikusan be kell jelentkeznie arra a Cisco-AnyConnect, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a Cisco AnyConnect-et az Azure AD-vel](https://aad.portal.azure.com/)
+- [A Cisco AnyConnect kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [A Cisco AnyConnect védelme fejlett láthatósággal és vezérléssel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Cisco AnyConnect elleni védelem speciális láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

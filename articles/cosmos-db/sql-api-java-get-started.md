@@ -1,5 +1,5 @@
 ---
-title: 'NoSQL oktatóanyag: SQL API az Azure Cosmos DB Java SDK-hoz'
+title: 'NoSQL-oktatóanyag: SQL API Azure Cosmos DB Java SDK-hoz'
 description: NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy Java-konzolalkalmazást az Azure Cosmos DB SQL API használatával. Az Azure SQL egy NoSQL-alapú adatbázis a JSON formátumhoz.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: 9f4757bca79476a1e59f5f18a94753c1ea06cf9c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985218"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: SQL API Java-konzolalkalmazás létrehozása
@@ -51,7 +51,7 @@ Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * [Git](https://git-scm.com/downloads).
 * [Java fejlesztői készlet (JDK) 7+](/java/azure/jdk/?view=azure-java-stable).
-* [Maven, ez az.](https://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi).
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
 Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A GitHub-projekt klónozása](#GitClone) című lépéssel. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor beállításához, majd ugorjon [A GitHub-projekt klónozása](#GitClone) című lépésre.
@@ -74,9 +74,9 @@ A könyvtár tartalmazza a projekt `pom.xml` fájlját és egy `src` mappát, am
     </dependency>
 
 ## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>3. lépés: Csatlakozás egy Azure Cosmos DB-fiókhoz
-Ezután az [Azure Portalon](https://portal.azure.com) lekérheti a végpontot és az elsődleges főkulcsot. Az Azure Cosmos DB végpont és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban.
+Ezután térjen vissza a [Azure Portal](https://portal.azure.com) a végpont és az elsődleges főkulcs lekéréséhez. Az Azure Cosmos DB végpont és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban.
 
-Az Azure Portalon keresse meg az Azure Cosmos DB-fiókját, és kattintson a **Kulcsok gombra.** Másolja ki az URI-t a portálról, és illessze be a Program.java fájl `https://FILLME.documents.azure.com` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `FILLME` elembe.
+A Azure Portal navigáljon a Azure Cosmos DB-fiókjához, majd kattintson a **kulcsok**elemre. Másolja ki az URI-t a portálról, és illessze be a Program.java fájl `https://FILLME.documents.azure.com` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `FILLME` elembe.
 
     this.client = new DocumentClient(
         "https://FILLME.documents.azure.com",
@@ -84,7 +84,7 @@ Az Azure Portalon keresse meg az Azure Cosmos DB-fiókját, és kattintson a **K
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Képernyőkép a NoSQL oktatóanyag által használt Azure portalról egy Java konzolalkalmazás létrehozásához. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az ACTIVE központ, az Azure Cosmos DB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve][keys]
+![Képernyőkép a NoSQL-oktatóanyag által a Java-konzol alkalmazás létrehozásához használt Azure Portalról. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az ACTIVE központ, az Azure Cosmos DB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve][keys]
 
 ## <a name="step-4-create-a-database"></a>4. lépés: Adatbázis létrehozása
 Az Azure Cosmos [DB-adatbázis](databases-containers-items.md#azure-cosmos-databases) a **DocumentClient** osztály [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
@@ -113,7 +113,7 @@ Egy gyűjtemény a **DocumentClient** osztály [createCollection](/java/api/com.
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a name="step-6-create-json-documents"></a><a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
-A dokumentum a **DocumentClient** osztály [CreateDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) metódusával hozható létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, az Azure Cosmos DB [adatmigrálási eszközével](import-data.md) adatokat importálhat az adatbázisba.
+A **DocumentClient** osztály [createDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) metódusának használatával létrehozhat egy dokumentumot. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, az Azure Cosmos DB [adatmigrálási eszközével](import-data.md) adatokat importálhat az adatbázisba.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -182,7 +182,7 @@ Gratulálunk! Elvégezte a NoSQL-oktatóanyagot, és egy működőképes Java ko
 
 ## <a name="next-steps"></a>További lépések
 * Szüksége van egy Java-webalkalmazás létrehozására vonatkozó oktatóanyagra? Tekintse meg a [Java-webalkalmazás létrehozása az Azure Cosmos DB használatával](sql-api-java-application.md) című cikket.
-* Ismerje meg, hogyan figyelheti az [Azure Cosmos DB-fiókját.](monitor-accounts.md)
+* Megtudhatja, hogyan [figyelheti Azure Cosmos db fiókját](monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.
 
 [keys]: media/sql-api-get-started/nosql-tutorial-keys.png

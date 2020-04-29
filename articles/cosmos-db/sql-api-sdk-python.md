@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Python API, SDK & erőforrások'
-description: Tudjon meg mindent az SQL Python API-ról és az SDK-ról, beleértve a kiadási dátumokat, a megszüntetési dátumokat és az Azure Cosmos DB Python SDK egyes verziói között végrehajtott módosításokat.
+title: 'Azure Cosmos DB: SQL Python API, SDK &-erőforrások'
+description: Ismerkedjen meg az SQL Python API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és a Azure Cosmos DB Python SDK egyes verzióiban végrehajtott módosításokat.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,16 +9,16 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
 ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982905"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK SQL API-hoz: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -27,169 +27,169 @@ ms.locfileid: "80982905"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Tömeges végrehajtó - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-dokumentáció**|[Python API referenciadokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
-|**SDK telepítési utasítások**|[Python SDK telepítési utasítások](https://github.com/Azure/azure-cosmos-python)|
-|**Hozzájárulás az SDK-hoz**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**Bevezetés**|[A Python SDK – első lépések](sql-api-python-application.md)|
-|**Jelenlegi támogatott platform**|[Python 2.7](https://www.python.org/downloads/) és [Python 3.5](https://www.python.org/downloads/)|
+|**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-cosmos-python)|
+|**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**Bevezetés**|[Ismerkedés a Python SDK-val](sql-api-python-application.md)|
+|**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) és [Python 3,5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="302"></a><a name="3.0.2"/>3.0.2
-* A MultiPolygon adattípus támogatása hozzáadva
-* Hibajavítás a munkamenet olvasási újraházirendjében
-* Hibajavítás a helytelen kitöltési problémákmiatt, miközben 64 karakterláncot dekódolnak
+* Többsokszögű adattípus támogatása
+* Hibajavítás a munkamenetben – olvasási újrapróbálkozási házirend
+* Hiba elhárítása helytelen kitöltési problémák esetén a Base 64 sztring dekódolásakor
 
 ### <a name="301"></a><a name="3.0.1"/>3.0.1
-* Hibajavítás a LocationCache-ben
-* Hibajavítás végpont újrapróbálkozási logikája
+* Hibajavítás a LocationCache
+* Hibajavítási végpont újrapróbálkozási logikája
 * Rögzített dokumentáció
 
 ### <a name="300"></a><a name="3.0.0"/>3.0.0
-* Többrégiós írások támogatása.
-* A Névtér azure.cosmos névtérre változott.
-* Tárolóra és elemre document_client átnevezett gyűjtési és dokumentumfogalmak cosmos_client névre. 
+* A többrégiós írások támogatása.
+* A névtér az Azure. Cosmos-re változott.
+* A tárolóra és elemre átnevezett gyűjtemény-és dokumentum-fogalmak document_client átnevezve cosmos_clientre. 
 
 ### <a name="233"></a><a name="2.3.3"/>2.3.3
-* Hozzáadott támogatása proxy
-* További támogatás a változáshír csatorna olvasásához
-* A gyűjteménykvóta-fejlécek támogatása hozzáadva
-* Hibajavítás a nagy munkamenet-tokenek esetén
+* Proxy-támogatás hozzáadva
+* A módosítási hírcsatorna olvasásának támogatása
+* A gyűjteményi kvóta fejlécének támogatása
+* Hibajavítás nagyméretű munkamenet-tokenek esetén – probléma
 * Hibajavítás a ReadMedia API-hoz
-* Hibajavítás a partíciókulcs-tartomány gyorsítótárában
+* Hibajavítás a partíciós kulcs tartományának gyorsítótárában
 
 ### <a name="232"></a><a name="2.3.2"/>2.3.2
-* A csatlakozási problémák alapértelmezett újrapróbálkozásai támogatással bővültek.
+* Az alapértelmezett újrapróbálkozások támogatása a kapcsolódási problémák esetén.
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
-* Frissített dokumentáció az Azure Cosmos DB-re való hivatkozáshoz az Azure DocumentDB helyett.
+* Az Azure DocumentDB helyett a Azure Cosmos DB referenciára szolgáló dokumentáció frissítve.
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Ehhez az SDK-verzióhoz az [Azure Cosmos DB Emulátor](https://aka.ms/cosmosdb-emulator)legújabb verziója szükséges.
+* Az SDK-verzióhoz a [Azure Cosmos db Emulator](https://aka.ms/cosmosdb-emulator)legújabb verziójára van szükség.
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
 * Hibajavítás az összesített szótárhoz.
-* Hibajavítás az erőforrás-kapcsolatban a vágások vágásához.
-* Unicode kódolási tesztek hozzáadva.
+* Hibajavítás az erőforrás-hivatkozás vágási perjeléhez.
+* További tesztek a Unicode kódoláshoz.
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
-* A Konzisztens előtag nevű új konzisztenciaszint támogatása hozzáadva.
+* Egy új, ConsistentPrefix nevű konzisztencia-szint támogatása.
 
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
-* Az összesítési lekérdezések támogatása hozzáadva (DARAB, MIN, MAX, SZUM és AVG).
-* Hozzáadott egy lehetőséget a TLS-ellenőrzés letiltására, amikor cosmos DB emulátor ellen fut.
-* Eltávolította a korlátozás függő kérelmek modul pontosan 2.10.0.
-* A particionált gyűjtemények minimális átviteli hatása 10 100 RU/s-ról 2500 RU/s-ra csökkent.
-* A parancsfájlnaplózás engedélyezésének támogatása a tárolt eljárás végrehajtása során.
-* Rest API-verzió a következő kiadással "2017-01-19" lesz.
+* Összesítő lekérdezések támogatása (DARABSZÁM, MIN., MAX., SUM és AVG).
+* Új lehetőség a TLS-ellenőrzés letiltásához a Cosmos DB emulátoron való futtatáskor.
+* A függő kérelmek moduljának letiltásával pontosan 2.10.0 kell lennie.
+* A 10 100 RU/s és 2500 RU/s közötti particionált gyűjtemények minimális átviteli sebességének csökkentése.
+* A parancsfájl-naplózás engedélyezésének támogatása a tárolt eljárás végrehajtása során.
+* Ezzel a kiadással a REST API verziója az "2017-01-19" értékre ütközött.
 
 ### <a name="201"></a><a name="2.0.1"/>2.0.1
-* Szerkesztői módosításokat végzett a dokumentációs megjegyzéseken.
+* Szerkesztési módosításokat készített a dokumentációs megjegyzésekben.
 
 ### <a name="200"></a><a name="2.0.0"/>2.0.0
-* A Python 3.5 támogatása hozzáadva.
-* A kérelmek modul használatával támogatja a kapcsolatkészletezést.
+* Python 3,5-támogatás hozzáadva.
+* A kapcsolatok készletezésének támogatása a kérelmek modul használatával.
 * A munkamenet konzisztenciájának támogatása hozzáadva.
-* A particionált gyűjtemények TOP/ORDERBY lekérdezéseinek támogatása hozzáadva.
+* A rendszer hozzáadta a particionált gyűjtemények leggyakoribb/ORDERBY-lekérdezésének támogatását.
 
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
-* Újrapróbálkozási szabályzat támogatása a szabályozott kérelmekhez hozzáadva. (A szabályozott kérelmek túl nagy kivételt kapnak, hibakód: 429.) Alapértelmezés szerint az Azure Cosmos DB újrapróbálkozik kilenc alkalommal minden kérelmet, ha hibakód 429-es hibakód merül fel, tiszteletben tartva az újrapróbálkozási idő után a válasz fejlécében. A rögzített újrapróbálkozási időmost már beállítható a ConnectionPolicy objektum Újrapróbálkozási tulajdonságának részeként, ha figyelmen kívül szeretné hagyni a kiszolgáló által az újrapróbálkozások között visszaadott újrapróbálkozási időt. Az Azure Cosmos DB most antól legfeljebb 30 másodpercet vár minden egyes szabályozás alatt álló kérelemre (az újrapróbálkozások számától függetlenül), és a 429-es hibakóddal adja vissza a választ. Ez az idő a ConnectionPolicy objektum ÚjrapróbálkozásI beállítások tulajdonságában is felülbírálható.
-* A Cosmos DB most antól x-ms-throttle-retry-count és x-ms-throttle-retry-wait-time-ms a válaszfejlécek minden kérelemben a szabályozás újrapróbálkozások számát és a kérelem által az újrapróbálkozások között várakozó összesített időt adja vissza.
-* Eltávolította a RetryPolicy osztályt és a document_client osztályban elérhetőnek megfelelő tulajdonságot (retry_policy), és ehelyett bevezetett egy RetryOptions osztályt, amely a ConnectionPolicy osztály RetryOptions tulajdonságát teszi ki, amely az alapértelmezett újrapróbálkozási beállítások egy részének felülbírálására használható.
+* Ismételt újrapróbálkozási szabályzat támogatása a szabályozott kérelmekhez. (A szabályozott kérelmek túl nagy kivételt kapnak, hibakód: 429.) Azure Cosmos DB alapértelmezés szerint a 429-es hibakód miatt a rendszer az egyes kérések esetében kilenc alkalommal újrapróbálkozik, a válasz fejlécében a retryAfter idő tiszteletben tartásával. A ConnectionPolicy objektum RetryOptions tulajdonságának részeként megadható a rögzített újrapróbálkozási időköz, ha figyelmen kívül hagyja az újrapróbálkozások között a kiszolgáló által visszaadott retryAfter időt. Azure Cosmos DB most legfeljebb 30 másodpercig vár minden szabályozott kérelem esetében (az újrapróbálkozások számától függetlenül), és visszaadja a 429-es hibakódú választ. Ez az idő felülbírálható a ConnectionPolicy objektum RetryOptions tulajdonságában is.
+* Cosmos DB most visszaadja az x-MS-szabályozás-újrapróbálkozások száma és az x-MS-szabályozás-újrapróbálkozás-WAIT-Time-MS értéket az összes kérelemben, hogy az újrapróbálkozások számának és a kérésnek az újrapróbálkozások között megvárt kumulatív időpontját jelöli.
+* Eltávolította a RetryPolicy osztályt és a document_client osztályban elérhető megfelelő tulajdonságot (retry_policy), és ehelyett egy RetryOptions osztályt vezetett be, amely a ConnectionPolicy osztály RetryOptions tulajdonságát használja, amely az alapértelmezett újrapróbálkozások egyes beállításainak felülbírálására használható.
 
 ### <a name="180"></a><a name="1.8.0"/>1.8.0
-* Hozzáadva a többrégiós adatbázisfiókok támogatása.
+* A többrégiós adatbázis-fiókok támogatása hozzáadva.
 
 ### <a name="170"></a><a name="1.7.0"/>1.7.0
-* Hozzáadva a Time To Live(TTL) funkció támogatása a dokumentumokhoz.
+* Az élettartam (TTL) szolgáltatás támogatása a dokumentumok számára.
 
 ### <a name="161"></a><a name="1.6.1"/>1.6.1
-* Hibajavítások kapcsolatos szerver oldali particionálás, hogy különleges karaktereket partíció kulcs elérési útját.
+* A kiszolgálóoldali particionálással kapcsolatos hibajavítások speciális karakterek a partíciós kulcs elérési útjában való engedélyezéséhez.
 
 ### <a name="160"></a><a name="1.6.0"/>1.6.0
-* [Particionált gyűjtemények](partition-data.md) és [a felhasználó által definiált teljesítményszintek.](performance-levels.md) 
+* A [particionált gyűjtemények](partition-data.md) és a [felhasználó által definiált teljesítményszint](performance-levels.md)implementálva. 
 
 ### <a name="150"></a><a name="1.5.0"/>1.5.0
-* Kivonatoló & tartomány partíciófeloldók, hogy segítse az alkalmazások több partíción átnyúló skálázás.
+* Adja hozzá a kivonatoló &-tartomány partíciójának feloldóit, hogy segítséget nyújtson a több partíción lévő alkalmazások horizontális felskálázásában.
 
 ### <a name="142"></a><a name="1.4.2"/>1.4.2
-* Valósítsa meg upsert. Új UpsertXXX módszerek hozzá, hogy támogassa Upsert funkció.
-* Azonosítóalapú útválasztás megvalósítása. Nincs nyilvános API-módosítás, minden belső módosítás.
+* Upsert implementálása. Új UpsertXXX-metódusok lettek hozzáadva a Upsert szolgáltatás támogatásához.
+* Az azonosító alapú útválasztás implementálása. Nincs nyilvános API-változás, az összes változás belső.
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
-* Támogatja a térinformatikai indexet.
-* Az összes erőforrás azonosítótulajdonságának ellenőrzése. Az erőforrások azonosítói nem tartalmazhatnak ?, /, #, karaktereket, \, és szóközökkel végződhetnek.
-* Új fejléc "index átalakítási folyamat" a ResourceResponse.
+* A térinformatikai index támogatása.
+* Érvényesíti az összes erőforrás azonosító tulajdonságát. Az erőforrások azonosítói nem tartalmazhatnak szóközt,/, \, #, karakter vagy véget.
+* Hozzáadja az új "index átalakítási folyamat" fejlécet a ResourceResponse.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
-* V2 indexelési házirendet valósít meg.
+* A v2 indexelési házirendet implementálja.
 
 ### <a name="101"></a><a name="1.0.1"/>1.0.1
-* Támogatja a proxykapcsolatot.
+* Támogatja a proxy-kapcsolatokat.
 
 ### <a name="100"></a><a name="1.0.0"/>1.0.0
 * GA SDK.
 
-## <a name="release--retirement-dates"></a>A megszüntetési & kiadása
-A Microsoft legalább **12 hónappal** az SDK kicsomagolása előtt értesítést küld az újabb/támogatott verzióra való áttérés zökkenőmentessé.
+## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Az új funkciók és funkciók és optimalizálások csak az aktuális SDK-hoz kerülnek hozzáadásra, ezért javasoljuk, hogy mindig a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
+Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-A Cosmos DB-nek a rendszer egy kivisszavonult SDK-t használó kérését a szolgáltatás elutasítja.
+A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
 
 > [!WARNING]
-> **2016. február 29-én**a Python SDK **1.0.0-s** verzió előtt az SQL API-hoz készült összes verziója kivisszavonult. 
+> Az SQL API- **hoz készült PYTHON** SDK minden verziójának a **2016. február 29-** én kivonult. 
 > 
 > 
 
 > [!WARNING]
-> **2020. augusztus 30-án**a Python SDK for SQL API 1.x és 2.x összes verziója megszűnik. 
+> Az SQL API-hoz készült Python SDK 1. x és 2. x verziója a **2020-es augusztus 30-** án megszűnik. 
 > 
 > 
 
 <br/>
 
-| Verzió | Megjelenési dátum | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
-| [3.0.2](#3.0.2) |2018. november 15. |--- |
-| [3.0.1](#3.0.1) |2018. október 04. |--- |
-| [2.3.3](#2.3.3) |2018. szeptember 08. |2020. augusztus 30. |
-| [2.3.2](#2.3.2) |2018. május 08.May 08, 2018 |2020. augusztus 30. |
-| [2.3.1](#2.3.1) |2017. december 21., 2017 |2020. augusztus 30. |
-| [2.3.0](#2.3.0) |2017. november 10., 2017. |2020. augusztus 30. |
-| [2.2.1](#2.2.1) |2017. szeptember 29. |2020. augusztus 30. |
-| [2.2.0](#2.2.0) |2017. május 10. |2020. augusztus 30. |
-| [2.1.0](#2.1.0) |2017. május 01.May 01, 2017 |2020. augusztus 30. |
-| [2.0.1](#2.0.1) |2016. október 30. |2020. augusztus 30. |
-| [2.0.0](#2.0.0) |2016. szeptember 29. |2020. augusztus 30. |
-| [1.9.0](#1.9.0) |2016. július 07. |2020. augusztus 30. |
-| [1.8.0](#1.8.0) |2016. június 14. |2020. augusztus 30. |
-| [1.7.0](#1.7.0) |2016. április 26. |2020. augusztus 30. |
-| [1.6.1](#1.6.1) |2016. április 08. |2020. augusztus 30. |
-| [1.6.0](#1.6.0) |2016. március 29. |2020. augusztus 30. |
-| [1.5.0](#1.5.0) |2016. január 03. |2020. augusztus 30. |
-| [1.4.2](#1.4.2) |2015. augusztus 26. |2020. augusztus 30. |
-| 1.4.1 |2015. augusztus 26. |2020. augusztus 30. |
-| [1.2.0](#1.2.0) |2015. augusztus 06. |2020. augusztus 30. |
-| [1.1.0](#1.1.0) |2015. július 09. |2020. augusztus 30. |
-| [1.0.1](#1.0.1) |2015. május 25. |2020. augusztus 30. |
-| [1.0.0](#1.0.0) |2015. augusztus 25. |2020. augusztus 30. |
-| 0.9.4-prelease |2015. augusztus 25. |2016. február 29. |
-| 0.9.3-prelease |2014. december 09. |2016. február 29. |
-| 0.9.2-prelease |2014. augusztus 25. |2016. február 29. |
-| 0.9.1-prelease |2014. szeptember 23. |2016. február 29. |
-| 0.9.0-prelease |2014. augusztus 21. |2016. február 29. |
+| [3.0.2](#3.0.2) |November 15., 2018 |--- |
+| [3.0.1](#3.0.1) |Oct 04, 2018 |--- |
+| [2.3.3](#2.3.3) |Szeptember 08., 2018 |2020. augusztus 30-ig |
+| [2.3.2](#2.3.2) |08. május 2018 |2020. augusztus 30-ig |
+| [2.3.1](#2.3.1) |December 21., 2017 |2020. augusztus 30-ig |
+| [2.3.0](#2.3.0) |November 10., 2017 |2020. augusztus 30-ig |
+| [2.2.1](#2.2.1) |Szeptember 29., 2017 |2020. augusztus 30-ig |
+| [2.2.0](#2.2.0) |2017. május 10. |2020. augusztus 30-ig |
+| [2.1.0](#2.1.0) |Május 01., 2017 |2020. augusztus 30-ig |
+| [2.0.1](#2.0.1) |Október 30-ig 2016 |2020. augusztus 30-ig |
+| [2.0.0](#2.0.0) |Szeptember 29., 2016 |2020. augusztus 30-ig |
+| [1.9.0](#1.9.0) |2016. július 7. |2020. augusztus 30-ig |
+| [1.8.0](#1.8.0) |Június 14., 2016 |2020. augusztus 30-ig |
+| [1.7.0](#1.7.0) |2016. április 26. |2020. augusztus 30-ig |
+| [1.6.1](#1.6.1) |2016. április 08. |2020. augusztus 30-ig |
+| [1.6.0](#1.6.0) |Március 29., 2016 |2020. augusztus 30-ig |
+| [1.5.0](#1.5.0) |2016. január 03. |2020. augusztus 30-ig |
+| [1.4.2](#1.4.2) |Október 06.2015 |2020. augusztus 30-ig |
+| 1.4.1 |Október 06.2015 |2020. augusztus 30-ig |
+| [1.2.0](#1.2.0) |Augusztus 06, 2015 |2020. augusztus 30-ig |
+| [1.1.0](#1.1.0) |Július 9., 2015 |2020. augusztus 30-ig |
+| [1.0.1](#1.0.1) |2015. május 25. |2020. augusztus 30-ig |
+| [1.0.0](#1.0.0) |2015. április 7. |2020. augusztus 30-ig |
+| 0.9.4 – előbérlet |Január 14., 2015 |Február 29., 2016 |
+| 0.9.3 – előbérlet |December 9., 2014 |Február 29., 2016 |
+| 0.9.2 – előbérlet |November 25., 2014 |Február 29., 2016 |
+| 0.9.1 – előbérlet |Szeptember 23., 2014 |Február 29., 2016 |
+| 0.9.0 – előbérlet |2014. augusztus 21. |Február 29., 2016 |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-A Cosmos DB szolgáltatásról a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatáslapján olvashat bővebben. 
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
 

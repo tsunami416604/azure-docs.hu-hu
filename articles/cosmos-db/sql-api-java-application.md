@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Java-alkalmazásfejlesztési oktatóanyag az Azure Cosmos DB használatával'
-description: 'Oktatóanyag: Ez a Java webalkalmazás-oktatóanyag bemutatja, hogyan használhatja az Azure Cosmos DB-t és az SQL API-t az Azure-webhelyeken üzemeltetett Java-alkalmazások adatainak tárolására és elérésére.'
+title: 'Oktatóanyag: Java-alkalmazásfejlesztés oktatóanyag a Azure Cosmos DB használatával'
+description: 'Oktatóanyag: Ez a Java-webalkalmazás-oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure websites szolgáltatásban tárolt Java-alkalmazás adatait a Azure Cosmos DB és az SQL API használatával.'
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: ramkris
 ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985269"
 ---
-# <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java webalkalmazás létrehozása az Azure Cosmos DB és az SQL API használatával
+# <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -42,7 +42,7 @@ Ez a Java-alkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan hozhat létr
 ## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>A jelen Java-alkalmazásokra vonatkozó oktatóanyag előfeltételei
 Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. 
+* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -62,7 +62,7 @@ Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókka
 ## <a name="step-2-create-the-java-jsp-application"></a><a id="CreateJSP"></a>2. lépés: Új Java JSP-alkalmazás létrehozása
 JSP-alkalmazás létrehozása:
 
-1. Először is, kezdjük el egy Java projekt létrehozásával. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha a Dinamikus **webes projekt** nem szerepel elérhető projektként, tegye a következőket: kattintson a **Fájl**menü **Új**parancsára, kattintson a **Project**..., a **Web**kibontása, a Dinamikus **webes projekt**elemre, majd a **Tovább**gombra.
+1. Először egy Java-projekt létrehozásával kezdjük. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **dinamikus webes projekt** elérhető projektként való felsorolása, tegye a következőket: kattintson a **fájl**menü **új**elemére, majd a **projekt**..., a **web**elemre, végül a **dinamikus webes projekt**elemre, és kattintson a **tovább**gombra.
    
     ![JSP Java-alkalmazások fejlesztése](./media/sql-api-java-application/image10.png)
 2. Adja meg a projekt nevét a **Project name** (Projekt neve) mezőben, majd a **Target Runtime** (Tervezett futásidő) legördülő menüben válasszon ki egy értéket (pl. Apache Tomcat v7.0) (nem kötelező), és kattintson a **Finish** (Befejezés) gombra. A tervezett futásidő megadása lehetővé teszi, hogy helyileg, az Eclipse-ben is futtathassa projektjét.
@@ -87,14 +87,14 @@ Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Mave
 Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések végrehajtásával:
 
 1. Kattintson a jobb gombbal a projektre a Project Explorer (Projektböngésző) nézetben, kattintson a **Configure** (Konfigurálás), majd a **Convert to Maven Project** (Konvertálás Maven-projekté) lehetőségre.
-2. Az **Új POM létrehozása** ablakban fogadja el az alapértelmezett értékeket, és kattintson a **Befejezés gombra.**
+2. Az **új Pom létrehozása** ablakban fogadja el az alapértelmezett értékeket, majd kattintson a **Befejezés**gombra.
 3. A **Project Explorer** (Projektböngésző) nézetben nyissa meg a pom.xml fájlt.
 4. A **Dependencies** (Függőségek) lap **Dependencies** (Függőségek) paneljén kattintson az **Add** (Hozzáadás) lehetőségre.
 5. A **Select Dependency** (Függőség kiválasztása) ablakban tegye a következőket:
    
    * A **Group Id** (Csoportazonosító) mezőben adja meg a következőt: com.microsoft.azure.
-   * A **Műtermék azonosító** mezőjébe írja be az azure-documentdb értéket.
-   * A **Verzió** mezőbe írja be az 1.5.1 értéket.
+   * Az összetevő- **azonosító** mezőben adja meg az Azure-documentdb értéket.
+   * A **verzió** mezőben adja meg a 1.5.1 értéket.
      
    ![Az SQL Java Application SDK telepítése](./media/sql-api-java-application/image13.png)
      
@@ -250,7 +250,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. Az Azure Cosmos-adatbázisokhoz és -gyűjteményekhez hasonlóan a dokumentumokra is hivatkoznak az önhivatkozások. A következő segédfüggvény lehetővé teszi a dokumentumok az önhivatkozástól eltérő attribútum (pl. „id”) alapján történő lekérését:
+5. Az Azure Cosmos-adatbázisokhoz és-gyűjteményekhez hasonlóan a dokumentumokat is a saját hivatkozások is hivatkoznak. A következő segédfüggvény lehetővé teszi a dokumentumok az önhivatkozástól eltérő attribútum (pl. „id”) alapján történő lekérését:
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -742,7 +742,7 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 8. A **Local Destination** (Helyi cél) képernyőn kattintson a **Browse** (Tallózás) lehetőségre, válassza ki a mappát, ahova a tárházat másolni szeretné, majd kattintson a **Next** (Tovább) gombra.
 9. A **Select a wizard to use for importing projects** (Varázsló kiválasztása a projektek importálásához) képernyőn győződjön meg arról, hogy az **Import existing projects** (Létező projektek importálása) lehetőség van kiválasztva, majd kattintson a **Next** (Tovább) gombra.
 10. Az **Import Projects** (Projektek importálása) képernyőn törölje a **DocumentDB** projekt jelölését, majd kattintson a **Finish** (Befejezés) gombra. A DocumentDB-projekt tartalmazza az Azure Cosmos DB Java SDK-t, amelyet inkább függőségként adunk hozzá.
-11. A **Project Explorer** (Projektböngésző) nézetben lépjen a következő helyre: azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java. Itt cserélje le a HOST és a MASTER_KEY értékét az Azure Cosmos DB-fiókjának URI és PRIMARY KEY értékeire, majd mentse a fájlt. További információ: [1. lépés. Hozzon létre egy Azure Cosmos-adatbázisfiókot.](#CreateDB)
+11. A **Project Explorer** (Projektböngésző) nézetben lépjen a következő helyre: azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java. Itt cserélje le a HOST és a MASTER_KEY értékét az Azure Cosmos DB-fiókjának URI és PRIMARY KEY értékeire, majd mentse a fájlt. További információ: [1. lépés. Hozzon létre egy Azure Cosmos-adatbázis-fiókot](#CreateDB).
 12. A **Project Explorer** (Projektböngésző) nézetben kattintson a jobb gombbal az **azure-documentdb-java-sample** elemre, majd kattintson a **Build Path** (Verzió elérési útja), és végül a **Configure Build Path** (Verzió elérési útjának konfigurálása) lehetőségre.
 13. A **Java Build Path** (Java-verzió elérési útja) képernyő jobb oldalsó paneljén válassza ki a **Libraries** (Könyvtárak) lapot, majd kattintson az **Add External JARs** (Külső JAR-fájlok hozzáadása) lehetőségre. Navigáljon a lombok.jar fájl helyére, kattintson az **Open** (Megnyitás), majd az **OK** gombra.
 14. A 12. lépésben leírtak segítségével nyissa meg ismét a **Properties** (Tulajdonságok) ablakot, majd a bal oldali ablaktáblán kattintson a **Targeted Runtimes** (Tervezett futásidők) elemre.
@@ -753,5 +753,5 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 19. Az **Add and Remove** (Hozzáadás és eltávolítás) ablakban helyezze át az **azure-documentdb-java-sample** kiszolgálót a **Configured** (Konfigurált) mezőbe, majd kattintson a **Finish** (Befejezés) gombra.
 20. A **Servers** (Kiszolgálók) lapon kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost) elemre, majd kattintson a **Restart** (Újraindítás) lehetőségre.
 21. Egy böngészőből lépjen a `http://localhost:8080/azure-documentdb-java-sample/` címre, és kezdje el hozzáadni a feladatait a listához. Ügyeljen arra, hogy ha módosította a portok alapértelmezett értékét, akkor a 8080 értéket módosítsa a választott értékre.
-22. A projekt üzembe helyezéséhez egy Azure-webhelyen, [lásd: 6. Telepítse alkalmazását az Azure-webhelyekre](#Deploy).
+22. A projekt Azure-webhelyre történő üzembe helyezéséhez lásd: [6. lépés. Az alkalmazás üzembe helyezése az Azure webhelyek szolgáltatásban](#Deploy).
 

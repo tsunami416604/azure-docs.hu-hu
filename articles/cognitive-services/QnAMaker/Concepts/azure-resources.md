@@ -1,191 +1,191 @@
 ---
 title: Azure-erőforrások – QnA Maker
-description: A QnA Maker több Azure-forrást használ, amelyek mindegyike más célt szolgál. Ha tisztában van azzal, hogyan használják őket külön-külön, megtervezheti és kiválaszthatja a megfelelő tarifacsomagot, vagy megtudhatja, hogy mikor kell módosítania a tarifacsomagot. Ha tisztában van azzal, hogyan használják őket együttesen, megtalálhatja és kijavíthatja a problémákat, amikor azok előfordulnak.
+description: QnA Maker számos Azure-forrást használ, amelyek mindegyike más célra szolgál. A használatuk módjának megismerése lehetővé teszi, hogy megtervezze és kiválassza a megfelelő árképzési szintet, vagy tudja, mikor kell módosítania az árképzési szintet. Annak megismerése, hogy a rendszer hogyan használja a kombinációkat, így megkeresheti és elháríthatja a problémákat, amikor azok bekövetkeznek.
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80873905"
 ---
-# <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Maker számára
+# <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
-A QnA Maker több Azure-forrást használ, amelyek mindegyike más célt szolgál. Ha tisztában van azzal, hogyan használják őket külön-külön, megtervezheti és kiválaszthatja a megfelelő tarifacsomagot, vagy megtudhatja, hogy mikor kell módosítania a tarifacsomagot. Ha tisztában van azzal, hogyan használják őket _együttesen,_ megtalálhatja és kijavíthatja a problémákat, amikor azok előfordulnak.
+QnA Maker számos Azure-forrást használ, amelyek mindegyike más célra szolgál. A használatuk módjának megismerése lehetővé teszi, hogy megtervezze és kiválassza a megfelelő árképzési szintet, vagy tudja, mikor kell módosítania az árképzési szintet. Annak megismerése, hogy a rendszer hogyan használja _a kombinációkat_ , így megkeresheti és elháríthatja a problémákat, amikor azok bekövetkeznek.
 
 ## <a name="resource-planning"></a>Erőforrás-tervezés
 
-Amikor először fejleszt egy QnA Maker tudásbázist, a prototípus fázisban gyakori, hogy egyetlen QnA Maker erőforrással rendelkezik mind a teszteléshez, mind az éles környezethez.
+Amikor először fejleszt egy QnA Maker tudásbázist, a prototípus fázisban gyakori, hogy egyetlen QnA Maker erőforrással rendelkezzen mind a teszteléshez, mind a gyártáshoz.
 
-Amikor a projekt fejlesztési szakaszába lép, érdemes a következőket figyelembe venni:
+A projekt fejlesztési szakaszába való áttéréskor érdemes megfontolnia a következőket:
 
-* hány nyelvet fog tartani a tudásbázisrendszer
-* hány régióra van szüksége ahhoz, hogy tudásbázisa elérhető legyen a
-* hány dokumentumot tart a rendszer az egyes tartományokban
+* a Tudásbázis-rendszer által megtartott nyelvek számának száma
+* hány régióban kell elérhetőnek lennie a Tudásbázisban/-ban
+* a rendszer által megtartott összes tartomány dokumentumai
 
-Tervezze meg, hogy egyetlen QnA Maker erőforrás rendelkezik az összes olyan tudásbázissal, amelynek ugyanaz a nyelve, ugyanaz a régiója és ugyanaz a tulajdonostartomány-kombinációja.
+Tervezze meg, hogy egyetlen QnA Maker erőforrással rendelkezzen minden olyan tudásbázissal, amelynek a nyelve, ugyanazon a régiója és a tárgy tartományának kombinációja.
 
-## <a name="pricing-tier-considerations"></a>A tarifacsomagra vonatkozó szempontok
+## <a name="pricing-tier-considerations"></a>Árképzési szintek szempontjai
 
 Általában három paramétert kell figyelembe vennie:
 
-* **A szolgáltatásból szükséges átviteli igény:**
-    * Válassza ki a megfelelő [alkalmazáscsomagot](https://azure.microsoft.com/pricing/details/app-service/plans/) az alkalmazásszolgáltatásigényeinek megfelelően. Az alkalmazás fel- vagy [leskálázható.](https://docs.microsoft.com/azure/app-service/manage-scale-up)
-    * Ez az Azure **Cognitive Search** termékváltozatának kiválasztását is befolyásolhatja, itt további [részleteket](https://docs.microsoft.com/azure/search/search-sku-tier)talál. Emellett szükség lehet a cognitive Search [kapacitás](../../../search/search-capacity-planning.md) replikák beállítására.
+* **A szolgáltatás által igényelt átviteli sebesség**:
+    * Az igényeinek megfelelően válassza ki az App Service-hez megfelelő alkalmazáscsomag- [csomagot](https://azure.microsoft.com/pricing/details/app-service/plans/) . Az alkalmazás vertikális fel-és [leskálázásra](https://docs.microsoft.com/azure/app-service/manage-scale-up) is használható.
+    * Ez az Azure **Cognitive Search** SKU kiválasztását is befolyásolhatja, további részletek [itt](https://docs.microsoft.com/azure/search/search-sku-tier)találhatók. Emellett előfordulhat, hogy módosítania kell a Cognitive Search [kapacitást](../../../search/search-capacity-planning.md) a replikákkal.
 
-* **A tudásbázisok mérete és száma:** Válassza ki a forgatókönyvhöz megfelelő [Azure keresési termékváltozatot.](https://azure.microsoft.com/pricing/details/search/) Általában a szükséges tudásbázisok számát a különböző tárgyú tartományok száma alapján kell eldöntenie. Egyszer tárgy tartomány (egy nyelv) kell egy tudásbázis.
+* A **Tudásbázis mérete és száma**: válassza ki a megfelelő [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) -t a forgatókönyvhöz. Általában a különböző tulajdonosi tartományok száma alapján döntheti el, hogy hány tudásbázisra van szüksége. Ha a tárgy tartománya (egyetlen nyelv esetében) egy Tudásbázisban kell lennie.
 
-    Az N-1 tudásbázisok egy adott rétegben tehetik közzé, ahol N a rétegben engedélyezett maximális indexek. Ellenőrizze a maximális méretet és a rétegenként engedélyezett dokumentumok számát is.
+    Az N-1 tudásbázist egy adott rétegben teheti közzé, ahol N a rétegben engedélyezett maximális indexek. Tekintse meg a maximális méretet és a másodpercenként engedélyezett dokumentumok számát is.
 
-    Ha például a réteg 15 engedélyezett indexszel rendelkezik, 14 tudásbázist tehet közzé (közzétett tudásbázisonként 1 indexet). A tizenötödik index a szerzői és tesztelési tudásbázisok összes éhezése.
+    Ha például a réteg 15 engedélyezett indextel rendelkezik, a közzétett Tudásbázisban 14 tudásbázist (1 indexet) tehet közzé. A tizenötödik index a szerzői műveletek és a tesztelés összes tudásbázisához használatos.
 
-* **Dokumentumok száma forrásként:** A QnA Maker felügyeleti szolgáltatás ingyenes termékváltozata a portálon és az API-kon keresztül kezelhető dokumentumok számát 3-ra korlátozza (egyenként 1 MB mérettel). A szabványos termékváltozat nem korlátozza a kezelhető dokumentumok számát. További részletek [itt](https://aka.ms/qnamaker-pricing).
+* **Dokumentumok száma forrásként**: a QnA Maker felügyeleti szolgáltatás ingyenes SKU-jának a Portálon és az API-kon keresztül kezelhető dokumentumok számát korlátozza (egyenként 1 MB méretűre). A standard SKU nem korlátozza a felügyelhető dokumentumok számát. További részletek [itt](https://aka.ms/qnamaker-pricing)találhatók.
 
-Az alábbi táblázat néhány magas szintű útmutatást ad.
+A következő táblázat néhány magas szintű útmutatást nyújt.
 
-|                        | QnA Maker kezelése | App Service | Azure Cognitive Search | Korlátozások                      |
+|                        | QnA Maker-kezelés | App Service | Azure Cognitive Search | Korlátozások                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Kísérletezés        | Ingyenes Termékváltozat             | Ingyenes szint   | Ingyenes szint    | Legfeljebb 2 KB-k közzététele, 50 MB méret  |
-| Fejlesztői/tesztelési környezet   | Standard termékváltozat         | Megosztott      | Basic        | Legfeljebb 14 Gb-os közzététel, 2 GB méret    |
-| Termelési környezet | Standard termékváltozat         | Basic       | Standard     | Közzététel Legfeljebb 49 KB-ig, 25 GB-os méret |
+| Kísérletezés        | Ingyenes SKU             | Ingyenes szintű   | Ingyenes szintű    | Legfeljebb 2 Tudásbázis közzététele, 50 MB méretű  |
+| Fejlesztési/tesztelési környezet   | Standard termékváltozat         | Megosztott      | Basic        | Legfeljebb 14 Tudásbázis közzététele, 2 GB méretű méret    |
+| Éles környezet | Standard termékváltozat         | Basic       | Standard     | Közzététel akár 49 Tudásbázis, 25 GB méretű |
 
 ## <a name="recommended-settings"></a>Ajánlott beállítások
 
-|QPS cél | App Service | Azure Cognitive Search |
+|Cél QPS | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
 | 3             | S1, 1 példány   | S1, 1 példány    |
 | 50         | S3, 10 példány       | S1, 12 példány         |
 | 80         | S3, 10 példány      |  S3, 12 példány  |
 | 100         | P3V2, 10 példány  | S3, 12 példány, 3 partíció   |
-| 200 hogy 250         | P3V2, 20 példány | S3, 12 példány, 3 partíció    |
+| 200 – 250         | P3V2, 20 példány | S3, 12 példány, 3 partíció    |
 
-## <a name="when-to-change-a-pricing-tier"></a>Mikor kell módosítani egy tarifacsomagot?
+## <a name="when-to-change-a-pricing-tier"></a>Mikor kell módosítani a díjszabási szintet
 
 |Frissítés|Ok|
 |--|--|
-|[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker felügyeleti termékváltozat|Több QnA-párt vagy dokumentumforrást szeretne a tudásbázisában.|
-|[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service Termékváltozat és ellenőrizze a Cognitive Search réteget, és [hozzon létre kognitív keresési replikákat](../../../search/search-capacity-planning.md)|A tudásbázisnak több kérést kell kiszolgálnia az ügyfélalkalmazásból, például egy csevegőrobotot.|
-|[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Cognitive Search szolgáltatás|Azt tervezi, hogy sok tudásbázist.|
+|[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker felügyeleti SKU|Szeretné, hogy a Tudásbázisban több QnA-párt vagy dokumentum-forrás legyen.|
+|[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU-t, és Cognitive Searchi szintet, és [hozzon létre Cognitive Search replikákat](../../../search/search-capacity-planning.md)|A Tudásbázisnak több kérést kell kiszolgálnia az ügyfélalkalmazástól, például egy csevegési robottól.|
+|[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Cognitive Search szolgáltatás|Számos tudásbázist tervez.|
 
-Az [App Service azure-portálon való frissítésével](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)értesülhet a legújabb futásidejű frissítésekről.
+Szerezze be a legújabb futtatókörnyezeti frissítéseket a [app Service frissítésével a Azure Portal](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
 
-## <a name="resource-naming-considerations"></a>Erőforrás-elnevezési szempontok
+## <a name="resource-naming-considerations"></a>Erőforrás-elnevezési megfontolások
 
-A QnA Maker erőforrás neve, `qna-westus-f0-b`például a , a többi erőforrás elnevezésére is használható.
+A QnA Maker erőforrás `qna-westus-f0-b`neve (például) a többi erőforrás elnevezésére is használatos.
 
-Az Azure Portal létrehozása ablak lehetővé teszi, hogy hozzon létre egy QnA Maker erőforrást, és válassza ki a tarifacsomagok a többi erőforráshoz.
-
-> [!div class="mx-imgBorder"]
-> ![Képernyőkép az Azure Portalról a QnA Maker erőforrás-létrehozása](../media/concept-azure-resource/create-blade.png)
-
-Az erőforrások létrehozása után ugyanaz a nevük, kivéve a választható Application Insights erőforrást, amely a karaktereket a névre postzi.
+A Azure Portal létrehozási ablakban létrehozhat egy QnA Maker-erőforrást, és kiválaszthatja a többi erőforrás díjszabási szintjeit.
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép az Azure Portal erőforráslistájáról](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
+> ![Azure Portal képernyőképe QnA Maker erőforrás-létrehozásról](../media/concept-azure-resource/create-blade.png)
+
+Az erőforrások létrehozása után ugyanaz a neve, kivéve a nem kötelező Application Insights erőforrást, amely a postpends karaktert adja meg.
+
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép Azure Portal erőforrás-lista](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
 
 > [!TIP]
-> Új erőforráscsoport létrehozása QnA Maker erőforrás létrehozásakor. Ez lehetővé teszi a QnA Maker erőforráshoz társított összes erőforrás megtekintését erőforráscsoport onként.
+> Hozzon létre egy új erőforráscsoportot QnA Maker erőforrás létrehozásakor. Ez lehetővé teszi a QnA Maker erőforráshoz társított összes erőforrás megtekintését az erőforráscsoport keresésekor.
 
 > [!TIP]
-> Az erőforrás vagy az erőforráscsoport nevén belüli tarifacsomagok megjelöléséhez használjon elnevezési konvenciót. Ha hibaüzenetet kap egy új tudásbázis létrehozásából vagy új dokumentumok hozzáadásából, a Cognitive Search tarifacsomag-korlát ja a leggyakoribb probléma.
+> Az erőforrás vagy az erőforráscsoport neve alapján megadhatja az árképzési szinteket a névadási konvenció alapján. Ha új Tudásbázis létrehozásával vagy új dokumentumok hozzáadásával kapcsolatos hibákat kap, akkor a Cognitive Search díjszabási szint korlátja gyakori probléma.
 
-## <a name="resource-purposes"></a>Erőforrás céljai
+## <a name="resource-purposes"></a>Erőforrás-felhasználási célok
 
-A QnA Makerrel létrehozott minden Egyes Azure-erőforrásnak meghatározott célja van:
+A QnA Makerrel létrehozott minden egyes Azure-erőforrásnak konkrét célja van:
 
-* QnA Maker erőforrás
-* Kognitív keresés erőforrás
+* Erőforrás QnA Maker
+* Erőforrás Cognitive Search
 * App Service
-* Alkalmazáscsomag-szolgáltatás
+* App Plan szolgáltatás
 * Application Insights szolgáltatás
 
 
-### <a name="cognitive-search-resource"></a>Kognitív keresés erőforrás
+### <a name="cognitive-search-resource"></a>Erőforrás Cognitive Search
 
-A [Cognitive Search](../../../search/index.yml) erőforrás a következőkre szolgál:
+A [Cognitive Search](../../../search/index.yml) erőforrás a következőket használja:
 
 * A QnA párok tárolása
-* Adja meg a QnA párok kezdeti rangsorát (#1) futásidőben
+* A QnA párok kezdeti rangsorának (ranker #1) megadása futásidőben
 
-#### <a name="index-usage"></a>Index használat
+#### <a name="index-usage"></a>Indexelés használata
 
-Az erőforrás egy indexet tart meg, hogy tesztindexként működjön, és a fennmaradó indexek egy-egy közzétett tudásbázissal korrelálnak.
+Az erőforrás megtartja az egyik indexet, hogy tesztelje az indexet, és a fennmaradó indexek egy közzétett tudásbázishoz tartozzanak.
 
-Egy 15 index tárolására szolgáló erőforrás 14 közzétett tudásbázist fog tárolni, és egy indexet használ az összes tudásbázis teszteléséhez. Ezt a tesztindexet a tudásbázis particionálja, így az interaktív tesztablakon keresztül végzett lekérdezés a tesztindexet fogja használni, de csak az adott tudásbázishoz társított partícióról adja vissza az eredményeket.
+A 15 indexek tárolására szolgáló erőforrás 14 közzétett tudásbázist tart fenn, és az összes Tudásbázis teszteléséhez egy indexet kell használni. Ezt a tesztelési indexet a Tudásbázis particionálja, így az interaktív tesztelési panelt használó lekérdezések a tesztelési indexet fogják használni, de csak az adott tudásbázishoz társított partíció eredményeit adják vissza.
 
-#### <a name="language-usage"></a>Nyelvhasználat
+#### <a name="language-usage"></a>Nyelvi használat
 
-A QnA Maker erőforrásban létrehozott első tudásbázis a Cognitive Search erőforrás és az összes indexe _egyetlen_ nyelvkészletének meghatározására szolgál. A QnA Maker szolgáltatáshoz csak _egy nyelv állítható be._
+A QnA Maker erőforrásban létrehozott első Tudásbázis a Cognitive Search erőforráshoz és annak összes indexéhez beállított _egységes_ nyelv meghatározására szolgál. Egy QnA Maker szolgáltatáshoz csak _egy nyelvi beállítás_ tartozhat.
 
-### <a name="qna-maker-resource"></a>QnA Maker erőforrás
+### <a name="qna-maker-resource"></a>Erőforrás QnA Maker
 
-A QnA Maker erőforrás hozzáférést biztosít a szerzői és közzétételi API-khoz, valamint a QnA-párok természetes nyelvi feldolgozási (NLP) alapú második rangsorolási rétegéhez (ranker #2) futásidőben.
+A QnA Maker erőforrás hozzáférést biztosít a szerzői és közzétételi API-khoz, valamint a természetes nyelvi feldolgozó (NLP) alapú második rangsorolási réteghez (ranker #2) a QnA-párokhoz futásidőben.
 
-A második rangsorolás intelligens szűrőket alkalmaz, amelyek metaadatokat és nyomon követési utasításokat tartalmazhatnak.
+A második rangsor olyan intelligens szűrőket alkalmaz, amelyek metaadatokat és követő utasításokat is tartalmazhatnak.
 
-#### <a name="qna-maker-resource-configuration-settings"></a>A QnA Maker erőforrás-konfigurációs beállításai
+#### <a name="qna-maker-resource-configuration-settings"></a>Erőforrás-konfigurációs beállítások QnA Maker
 
-Amikor új tudásbázist hoz létre a [QnA Maker portálon,](https://qnamaker.ai)a **Nyelvi** beállítás az egyetlen olyan beállítás, amely erőforrásszinten van alkalmazva. Az erőforrás első tudásalapjának létrehozásakor válassza ki a nyelvet.
+Amikor új tudásbázist hoz létre a QnA Maker- [portálon](https://qnamaker.ai), a **nyelvi** beállítás az egyetlen beállítás, amely az erőforrás szintjén lesz alkalmazva. Az erőforrás első tudásbázisának létrehozásakor ki kell választania a nyelvet.
 
-### <a name="app-service-and-app-service-plan"></a>App-szolgáltatás és alkalmazásszolgáltatási csomag
+### <a name="app-service-and-app-service-plan"></a>App Service-és app Service-csomag
 
-Az [alkalmazásszolgáltatást](../../../app-service/index.yml) az ügyfélalkalmazás használja a közzétett tudásbázisok eléréséhez a futásidejű végponton keresztül.
+Az [ügyfélalkalmazás a közzétett](../../../app-service/index.yml) tudásbázisokat a futásidejű végponton keresztül éri el.
 
-A közzétett tudásbázis lekérdezéséhez az összes közzétett tudásbázis ugyanazt az URL-végpontot használja, de adja meg a **tudásbázis-azonosítót** az útvonalon belül.
+A közzétett Tudásbázis lekérdezéséhez az összes közzétett Tudásbázis ugyanazt az URL-végpontot használja, de az útvonalon belül adja meg a **TUDÁSBÁZIS azonosítóját** .
 
 `{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
 
 ### <a name="application-insights"></a>Application Insights
 
-[Az Application Insights](../../../azure-monitor/app/app-insights-overview.md) csevegési naplók és telemetriai adatok gyűjtésére szolgál. Tekintse át a szolgáltatással kapcsolatos információkat a gyakori [Kusto-lekérdezésekből.](../how-to/get-analytics-knowledge-base.md)
+A [Application Insights](../../../azure-monitor/app/app-insights-overview.md) a csevegési naplók és a telemetria összegyűjtésére szolgál. Tekintse át a szolgáltatással kapcsolatos általános [Kusto-lekérdezéseket](../how-to/get-analytics-knowledge-base.md) .
 
-## <a name="share-services-with-qna-maker"></a>Szolgáltatások megosztása a QnA Makerrel
+## <a name="share-services-with-qna-maker"></a>Szolgáltatások megosztása QnA Maker
 
-A QnA Maker számos Azure-erőforrást hoz létre. A felügyelet csökkentése és a költségmegosztás előnyeinek kihasználása érdekében az alábbi táblázat segítségével ismerje meg, mit oszthat meg és mit nem:
+QnA Maker több Azure-erőforrást hoz létre. A felügyelet és a költségmegosztás előnyeinek csökkentése érdekében az alábbi táblázat segítségével megismerheti, hogy mit tehet és nem oszthat meg:
 
 |Szolgáltatás|Megosztás|Ok|
 |--|--|--|
-|Cognitive Services|X|Nem lehetséges a tervezés|
-|App Service-csomag|✔|Rögzített lemezterület egy App Service-csomag számára. Ha más alkalmazások, amelyek ugyanazt az App Service-csomagot használják, jelentős lemezterületet használnak, a QnAMaker App Service-példány problémákba ütközik.|
-|App Service|X|Nem lehetséges a tervezés|
+|Cognitive Services|X|Nem lehetséges a kialakítás|
+|App Service-csomag|✔|App Service csomag számára lefoglalt rögzített lemezterület. Ha az azonos App Service-csomaggal rendelkező más alkalmazások jelentős lemezterületet használnak, akkor a QnAMaker App Service példánya problémákba ütközik.|
+|App Service|X|Nem lehetséges a kialakítás|
 |Application Insights|✔|Megosztható|
-|Keresési szolgáltatás|✔|1. `testkb` a QnAMaker szolgáltatás fenntartott neve; mások nem használhatják.<br>2. A Név `synonym-map` szerint a Szinonimatérkép a QnAMaker szolgáltatás számára van fenntartva.<br>3. A közzétett tudásbázisok számát a Keresési szolgáltatásszint korlátozza. Ha vannak ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják őket.|
+|Keresési szolgáltatás|✔|1. `testkb` a QnAMaker szolgáltatás számára fenntartott név; mások nem használhatják.<br>2. az QnAMaker szolgáltatás számára fenntartott szinonimák hozzárendelése a név `synonym-map` alapján történik.<br>3. a közzétett tudásbázisok számát a Search szolgáltatási szintje korlátozza. Ha ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják őket.|
 
 ### <a name="using-a-single-cognitive-search-service"></a>Egyetlen Cognitive Search szolgáltatás használata
 
-Ha létrehoz egy QnA szolgáltatást és annak függőségeit (például a keresést) a portálon keresztül, akkor létrejön egy keresési szolgáltatás, amely a QnA Maker szolgáltatáshoz kapcsolódik. Ezen erőforrások létrehozása után frissítheti az App Service-beállítást egy korábban meglévő keresési szolgáltatás használatához, és eltávolíthatja az imént létrehozottat.
+Ha létrehoz egy QnA szolgáltatást és annak függőségeit (például a keresést) a portálon keresztül, akkor létrejön egy keresési szolgáltatás, amely a QnA Maker szolgáltatáshoz van csatolva. Az erőforrások létrehozása után frissítheti az App Service beállítást egy korábban meglévő keresési szolgáltatás használatára, és eltávolíthatja az imént létrehozott szolgáltatást.
 
-Ismerje [meg, hogyan konfigurálhatja a](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA Maker-t egy másik Cognitive Service-erőforrás használatára, mint a QnA Maker erőforrás-létrehozási folyamat részeként létrehozott erőforrás.
+Megtudhatja, [hogyan konfigurálhatja](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) a QnA Makert úgy, hogy az QnA Maker erőforrás-létrehozási folyamat részeként létrehozott egy másik kognitív szolgáltatási erőforrást használjon.
 
 ## <a name="management-service-region"></a>Felügyeleti szolgáltatási régió
 
-A QnA Maker felügyeleti szolgáltatása csak a QnA Maker portálhoz és a kezdeti adatfeldolgozáshoz használatos. Ez a szolgáltatás csak az **USA nyugati régiójában** érhető el. Ebben az USA nyugati közép-amerikai szolgáltatásában nem tárolunk ügyféladatokat.
+QnA Maker felügyeleti szolgáltatása csak a QnA Maker portál és a kezdeti adatfeldolgozás esetében használatos. Ez a szolgáltatás csak az **USA nyugati** régiójában érhető el. Ebben a Nyugat-amerikai szolgáltatásban nem tárolunk ügyféladatokat.
 
-## <a name="keys-in-qna-maker"></a>Kulcsok a QnA Makerben
+## <a name="keys-in-qna-maker"></a>Kulcsok a QnA Makerban
 
-A QnA Maker szolgáltatás kétféle kulcs: **szerzői kulcsok** és **lekérdezési végpont kulcsok** az app szolgáltatásban üzemeltetett futásidejű használt.
+A QnA Maker szolgáltatás két típusú kulccsal foglalkozik: az App Service-ben üzemeltetett futtatókörnyezettel használt kulcsok és **lekérdezési végponti kulcsok** **létrehozásával** .
 
-Ha az **előfizetési kulcsot**keresi, [a terminológia megváltozott.](#subscription-keys)
+Ha az **előfizetési kulcsot**keresi, [a terminológia módosult](#subscription-keys).
 
-Használja ezeket a kulcsokat, ha api-kon keresztül kér a szolgáltatáshoz.
+Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgáltatást a szolgáltatásnak.
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Név|Hely|Cél|
+|Name (Név)|Hely|Cél|
 |--|--|--|
-|Szerzői kulcs|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker felügyeleti szolgáltatás API-inak](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a kérdések és válaszok szerkesztését a tudásbázisban, és közzéteheti tudásbázisát. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **Cognitive Services** erőforrás a **Kulcsok** lapon.|
-|Végpont lekérdezési kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezek a kulcsok a közzétett tudásbázis-végpont lekérdezésére szolgálnak, hogy választ kapjanak egy felhasználói kérdésre. Ezt a lekérdezési végpontot általában a csevegőrobotban vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás-kódban használja. Ezek a kulcsok a QnA Maker tudásbázisának közzétételekor jönnek létre.<br><br>Keresse meg ezeket a kulcsokat a **Szolgáltatás beállításai** lapon. Keresse meg ezt az oldalt a felhasználó menüjéből a legördülő menü jobb felső részén.|
+|Szerzői kulcs|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
+|Lekérdezési végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezekkel a kulcsokkal lekérdezheti a közzétett Tudásbázis-végpontot, hogy választ kapjon a felhasználó kérdéseire. Ezt a lekérdezési végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
 
 ### <a name="subscription-keys"></a>Előfizetői azonosítók
 
-A szerzői és lekérdezési végpontkulcs kifejezések helyesbítő kifejezések. Az előző időszak **az előfizetési kulcs**volt. Ha az előfizetési kulcsokra vonatkozó egyéb dokumentációt lát, ezek egyenértékűek a (futásidőben használt) végpontkulcsok szerzői és lekérdezésével.
+A létrehozási és a lekérdezési végpont kulcsa a helyes feltételek. Az előző kifejezés az **előfizetés kulcsa**. Ha az előfizetési kulcsokra hivatkozó egyéb dokumentáció jelenik meg, ezek egyenértékűek a létrehozási és lekérdezési végponti kulcsokkal (a futtatókörnyezetben használt).
 
-Tudnia kell, hogy mi a kulcs elérése, tudásbázis-kezelés vagy tudásbázis lekérdezése, tudnia kell, hogy melyik kulcsot kell megtalálnia.
+Ismernie kell a kulcs elérését, a Tudásbázis felügyeletét vagy a Tudásbázis lekérdezését, hogy megtudja, melyik kulcsot kell megkeresnie.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg a QnA Maker [tudásbázisát](knowledge-base.md)
-* A [tudásbázis életciklusának megismerése](development-lifecycle-knowledge-base.md)
-* A szolgáltatás- és tudásbázis [korlátainak áttekintése](../limits.md)
+* Tudnivalók a QnA Maker [Tudásbázisról](knowledge-base.md)
+* A [Tudásbázis életciklusának](development-lifecycle-knowledge-base.md) megismerése
+* A szolgáltatás és az Tudásbázis [korlátainak](../limits.md) áttekintése
 

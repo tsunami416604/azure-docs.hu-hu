@@ -1,6 +1,6 @@
 ---
-title: ADAL ügyfélalkalmazás hibakezelési gyakorlati tanácsok | Azure
-description: Hibakezelési útmutatást és gyakorlati tanácsokat tartalmaz az ADAL-ügyfélalkalmazásokhoz.
+title: ADAL-ügyfélalkalmazások hibáinak kezelésével kapcsolatos ajánlott eljárások | Azure
+description: A ADAL-ügyfélalkalmazások hibáinak kezelésére vonatkozó útmutatást és ajánlott eljárásokat biztosít.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,59 +13,59 @@ ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80981069"
 ---
-# <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Az Azure Active Directory hitelesítési kódtárbeli (ADAL) ügyfelekkel kapcsolatos gyakorlati tanácsok kezelése
+# <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Hiba történt a Azure Active Directory Authentication Library-(ADAL-) ügyfelekkel kapcsolatos ajánlott eljárások kezelésében
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Ez a cikk útmutatást nyújt a fejlesztők által a felhasználók hitelesítéséhez az ADAL használatasorán előforduló hibák típusa tekintetében. Az ADAL használatakor számos olyan eset lehet, amikor a fejlesztőnek be kell lépnie és kezelnie kell a hibákat. A megfelelő hibakezelés nagyszerű végfelhasználói élményt biztosít, és korlátozza, hogy a végfelhasználónak hányszor kell bejelentkeznie.
+Ez a cikk útmutatást nyújt a fejlesztők által észlelt hibák típusáról, amikor a ADAL használatával hitelesíti a felhasználókat. A ADAL használatakor számos esetben előfordulhat, hogy a fejlesztőnek be kell lépnie és kezelnie kell a hibákat. A megfelelő hibakezelés nagy végfelhasználói élményt biztosít, és korlátozza a végfelhasználók számára a bejelentkezéshez szükséges időt.
 
-Ebben a cikkben az ADAL által támogatott egyes platformok konkrét eseteit vizsgáljuk, és azt, hogy az alkalmazás hogyan tudja megfelelően kezelni az egyes eseteket. A hibaútmutató két szélesebb kategóriába van osztva az ADAL API-k által biztosított tokenbeszerzési minták alapján:
+Ebben a cikkben a ADAL által támogatott egyes platformokra vonatkozó konkrét eseteket vizsgáljuk meg, valamint azt, hogy az alkalmazás hogyan kezelje az egyes eseteket. A hiba útmutatója két szélesebb kategóriára oszlik, a ADAL API-k által biztosított jogkivonat-beszerzési minták alapján:
 
-- **AcquireTokenSilent**: Az ügyfél megkísérli a jogkivonat csendes beszerzését (nincs felhasználói felület), és sikertelen lehet, ha az ADAL sikertelen. 
-- **AcquireToken**: Az ügyfél megkísérelheti a csendes akvizíciót, de olyan interaktív kéréseket is végrehajthat, amelyek bejelentkezést igényelnek.
+- **AcquireTokenSilent**: az ügyfél csendesen kísérli meg a token lekérését (nincs felhasználói felület), és sikertelen lehet, ha a ADAL sikertelen. 
+- **AcquireToken**: az ügyfél megkísérelheti a csendes beszerzést, de a bejelentkezést igénylő interaktív kérelmeket is elvégezhet.
 
 > [!TIP]
-> Érdemes naplózni az összes hibát és kivételt az ADAL és az Azure AD használatakor. A naplók nem csak az alkalmazás általános állapotának megértéséhez hasznosak, hanem szélesebb körű problémák hibakeresésekor is fontosak. Bár az alkalmazás helyreállhat bizonyos hibákból, nagyobb tervezési problémákra utalhatnak, amelyek megoldásához kódmódosításokat igényelnek. 
+> Érdemes naplózni az összes hibát és kivételt a ADAL és az Azure AD használatakor. A naplók nem csupán hasznosak az alkalmazás általános állapotának megértéséhez, de fontosak a szélesebb körű problémák hibakeresése során is. Habár előfordulhat, hogy az alkalmazás bizonyos hibákból helyreállítható, szélesebb körű tervezési problémákra is utalhat, amelyekkel a megoldás a kód módosítását igényli. 
 > 
-> A jelen dokumentumban szereplő hibafeltételek megvalósításakor naplózza a hibakódot és a leírást a korábban tárgyalt okok miatt. A naplózási kódra vonatkozó példákat a [Hiba és naplózási hivatkozás című témakörben](#error-and-logging-reference) talál. 
+> A jelen dokumentumban ismertetett hiba feltételeinek megvalósításakor a korábban tárgyalt okok miatt naplózni kell a hibakódot és a leírást. A naplózási kódokra vonatkozó példákat lásd a [hibák és naplózási referenciák](#error-and-logging-reference) című részben. 
 >
 
 ## <a name="acquiretokensilent"></a>AcquireTokenSilent
 
-AcquireTokenSilent megkísérli a jogkivonat beszerzése a garancia, hogy a végfelhasználó nem látja a felhasználói felület (UI). Számos olyan eset van, amikor a csendes akvizíció sikertelen lehet, és interaktív kérelmekvagy alapértelmezett kezelő által kell kezelni. Az alábbi szakaszokban belemerülünk annak sajátosságaiba, hogy mikor és hogyan alkalmazzuk az egyes eseteket.
+A AcquireTokenSilent kísérletet tesz a jogkivonat beszerzésére azzal a garanciával, hogy a végfelhasználó nem lát felhasználói felületet (UI). Számos esetben előfordulhat, hogy a csendes beszerzés meghiúsul, és az interaktív kérelmek vagy egy alapértelmezett kezelő használatával kell kezelni. A következő szakaszokban ismertetjük, hogy mikor és hogyan kell alkalmazni az egyes eseteket.
 
-Az operációs rendszer által generált hibák készlete miatt előfordulhat, hogy az alkalmazásra jellemző hibakezelést igényel. További információt az "Operációs rendszer" hibák című szakaszában, a [Hiba- és naplózási hivatkozás](#error-and-logging-reference)című témakörben talál. 
+Az operációs rendszer által generált hibák halmaza, ami az alkalmazásra vonatkozó hibakezelés megkövetelését okozhatja. További információ: "operációs rendszer" hibái szakasz, [hiba és naplózási hivatkozás](#error-and-logging-reference). 
 
 ### <a name="application-scenarios"></a>Alkalmazáshasználati helyzetek
 
-- [Natív ügyfélalkalmazások](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#native-client) (iOS, Android, .NET Desktop vagy Xamarin)
-- [Erőforrást](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#resource-server) hívó [webügyfél-alkalmazások](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#web-client) (.NET)
+- [Natív ügyfélalkalmazások](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#native-client) (iOS, Android, .net Desktop vagy Xamarin)
+- [Erőforrást](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#resource-server) hívó [webes ügyfélalkalmazások](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#web-client) (.net)
 
-### <a name="error-cases-and-actionable-steps"></a>Hibaesetek és végrehajtható lépések
+### <a name="error-cases-and-actionable-steps"></a>Hibák és műveletek végrehajtható lépései
 
-Alapvetően két esetben a AcquireTokenSilent hibák:
+Alapvetően a AcquireTokenSilent két előfordulása van:
 
 | Case (Eset) | Leírás |
 |------|-------------|
-| **1. eset**: A hiba feloldható egy interaktív bejelentkezéssel | Az érvényes jogkivonatok hiánya által okozott hibák esetén interaktív kérelemre van szükség. Pontosabban a gyorsítótár-keresés és egy érvénytelen/lejárt frissítési jogkivonat egy AcquireToken hívást igényel a feloldáshoz.<br><br>Ezekben az esetekben a végfelhasználót kell kérni, hogy jelentkezzen be. Az alkalmazás választhat, hogy nem egy interaktív kérelmet azonnal, miután a végfelhasználói beavatkozás (például megnyomja a bejelentkezési gombot), vagy később. A választás az alkalmazás kívánt viselkedésétől függ.<br><br>Tekintse meg a kódot a következő szakaszban ebben a konkrét esetben, és a hibákat, amelyek diagnosztizálják azt.|
-| **2. eset:** A hiba nem oldható fel interaktív bejelentkezéssel | Hálózati és átmeneti/ideiglenes hibák vagy egyéb hibák esetén az interaktív AcquireToken kérés végrehajtása nem oldja meg a problémát. A szükségtelen interaktív bejelentkezési utasítások a végfelhasználókat is meghiúsíthatják. Az ADAL automatikusan megkísérli a legtöbb hiba egyetlen újrapróbálkozását acquiretokensilent hibák.<br><br>Az ügyfélalkalmazás egy későbbi időpontban is megkísérelheti az újrapróbálkozást, de hogy mikor és hogyan függ az alkalmazás viselkedésétől és a kívánt végfelhasználói élménytől. Például az alkalmazás néhány perc múlva vagy néhány végfelhasználói műveletre válaszul elvégezheti a AcquireTokenSilent újrapróbálkozást. Az azonnali újrapróbálkozás az alkalmazás szabályozását eredményezi, és nem kísérelhető meg.<br><br>Egy későbbi, ugyanazzal a hibával rendelkező újrapróbálkozás nem jelenti azt, hogy az ügyfélnek interaktív kérést kell tennie a AcquireToken használatával, mivel nem oldja meg a hibát.<br><br>Tekintse meg a kódot a következő szakaszban ebben a konkrét esetben, és a hibákat, amelyek diagnosztizálják azt. |
+| **1. eset**: a hiba feloldható egy interaktív bejelentkezéssel | Az érvényes tokenek hiánya miatti hibák esetén interaktív kérelemre van szükség. Pontosabban, a gyorsítótár-keresés és az érvénytelen/lejárt frissítési jogkivonat megköveteli egy AcquireToken-hívás feloldását.<br><br>Ezekben az esetekben a végfelhasználónak meg kell adnia a bejelentkezést. Az alkalmazás azonnal dönthet úgy, hogy a végfelhasználói interakciót követően (például a bejelentkezési gomb elütése) vagy egy későbbi időpontban interaktív kérést végez. A választás az alkalmazás kívánt viselkedését határozza meg.<br><br>Tekintse meg a következő szakaszban található kódot az adott esethez és a diagnosztizált hibákhoz.|
+| **2. eset**: a hiba nem oldható fel interaktív bejelentkezéssel | A hálózati és átmeneti/ideiglenes hibák vagy más hibák esetén az interaktív AcquireToken-kérések nem oldják meg a problémát. A szükségtelen interaktív bejelentkezési kérések is meghiúsítják a végfelhasználókat. A ADAL automatikusan próbálkozik egyetlen Újrapróbálkozással a legtöbb hiba esetén a AcquireTokenSilent meghibásodásakor.<br><br>Az ügyfélalkalmazás egy későbbi időpontban is megkísérelheti az újrapróbálkozást, de az alkalmazás viselkedése és a kívánt végfelhasználói élmény függ. Az alkalmazás például elvégezheti a AcquireTokenSilent néhány perc múlva, vagy bizonyos végfelhasználói műveletekre adott válaszként. Az azonnali újrapróbálkozás azt eredményezi, hogy az alkalmazás szabályozva lesz, és nem kell megkísérelni.<br><br>Ha egy későbbi újrapróbálkozás meghiúsul ugyanazzal a hibával, nem jelenti azt, hogy az ügyfélnek interaktív kérelmet kell tennie a AcquireToken használatával, mivel nem oldja meg a hibát.<br><br>Tekintse meg a következő szakaszban található kódot az adott esethez és a diagnosztizált hibákhoz. |
 
 ### <a name="net"></a>.NET
 
-Az alábbi útmutató példákat mutat be az ADAL-módszerekkel kapcsolatos hibakezelésre: 
+A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
 - acquireTokenSilentAsync(...)
 - acquireTokenSilentSync(...) 
-- [elavult] acquireTokenSilent(...)
-- [elavult] acquireTokenByRefreshToken(...) 
+- [elavult] acquireTokenSilent (...)
+- [elavult] acquireTokenByRefreshToken (...) 
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```csharp
 try{
@@ -102,13 +102,13 @@ catch (AdalException e) {
 
 ### <a name="android"></a>Android
 
-Az alábbi útmutató példákat mutat be az ADAL-módszerekkel kapcsolatos hibakezelésre: 
+A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
 - acquireTokenSilentSync(...)
 - acquireTokenSilentAsync(...)
-- [elavult] acquireTokenSilent(...)
+- [elavult] acquireTokenSilent (...)
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```java
 // *Inside callback*
@@ -138,11 +138,11 @@ public void onError(Exception e) {
 
 ### <a name="ios"></a>iOS
 
-Az alábbi útmutató példákat mutat be az ADAL-módszerekkel kapcsolatos hibakezelésre: 
+A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
 - acquireTokenSilentWithResource(...)
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```objc
 [context acquireTokenSilentWithResource:[ARGS], completionBlock:^(ADAuthenticationResult *result) {
@@ -172,50 +172,50 @@ A kód a következőképpen valósulna meg:
 
 ## <a name="acquiretoken"></a>AcquireToken
 
-AcquireToken az alapértelmezett ADAL módszer, amely a tokenek lekéréséhez használt. Azokban az esetekben, ahol a felhasználói identitás szükséges, AcquireToken megpróbálja beszerezni a jogkivonatot csendben először, majd megjeleníti a felhasználói felület, ha szükséges (kivéve, ha PromptBehavior.Never át). Azokban az esetekben, ahol az alkalmazás identitása szükséges, AcquireToken megkísérli a jogkivonat ot, de nem jelenik meg a felhasználói felület, mivel nincs végfelhasználó. 
+A AcquireToken a jogkivonatok lekérésére használt alapértelmezett ADAL metódus. Ha szükség van a felhasználói identitásra, a AcquireToken megkísérli a token lekérését a háttérben, majd szükség esetén megjeleníti a felhasználói felületet (kivéve, ha a PromptBehavior. soha nem lett átadva). Abban az esetben, ha az alkalmazás identitása kötelező, a AcquireToken kísérletet tesz a token beszerzésére, de nem jeleníti meg a felhasználói felületet, mert nincs végfelhasználó. 
 
-AcquireToken hibák kezelése során a hibakezelés függ a platform és a forgatókönyv az alkalmazás próbál elérni. 
+A AcquireToken hibák kezelésekor a hibakezelés a platformtól függ, és az alkalmazás által elérni próbált forgatókönyvnek kell lennie. 
 
-Az operációs rendszer hibákat is generálhat, amelyek az adott alkalmazástól függő hibakezelést igényelnek. További információt az "Operációs rendszer hibái" című témakörben talál a [Hiba és naplózási hivatkozás című témakörben.](#error-and-logging-reference) 
+Az operációs rendszer hibákat is létrehozhat, amelyek az adott alkalmazástól függő hibakezelést igényelnek. További információ: "operációs rendszer hibái" a [hiba-és naplózási referenciában](#error-and-logging-reference). 
 
 ### <a name="application-scenarios"></a>Alkalmazáshasználati helyzetek
 
 - Natív ügyfélalkalmazások (iOS, Android, .NET Desktop vagy Xamarin)
-- Erőforrás API-t meghívó webalkalmazások (.NET)
+- Erőforrás-API-t (.NET) meghívó webalkalmazások
 - Egyoldalas alkalmazások (JavaScript)
-- Szolgáltatás-szolgáltatás alkalmazások (.NET, Java)
-  - Minden forgatókönyv, beleértve a
-  - Konkrét forgatókönyvek nevében
+- Szolgáltatások közötti alkalmazások (.NET, Java)
+  - Minden forgatókönyv, beleértve a következőt:
+  - Bizonyos forgatókönyvek esetén
 
-### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Hibaesetek és végrehajtható lépések: Natív ügyfélalkalmazások
+### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Hibákkal és műveletekkel kapcsolatos lépések: natív ügyfélalkalmazások
 
-Ha natív ügyfélalkalmazást hoz létre, néhány hibakezelési esetet figyelembe kell vennie, amelyek a hálózati problémákhoz, az átmeneti hibákhoz és más platformspecifikus hibákhoz kapcsolódnak. A legtöbb esetben az alkalmazás nem hajtsa végre az azonnali újrapróbálkozásokat, hanem inkább várjon a végfelhasználói beavatkozásra, amely bejelentkezést kér. 
+Ha natív ügyfélalkalmazás épül fel, néhány hibakezelő esetet kell figyelembe vennie, amely a hálózati problémákkal, átmeneti hibákkal és egyéb platform-specifikus hibákkal kapcsolatos. A legtöbb esetben az alkalmazásnak nem kell azonnali újrapróbálkozásokat végrehajtania, hanem várnia kell a végfelhasználói interakcióra, amely a bejelentkezést kéri. 
 
-Van néhány speciális eset, amikor egyetlen újrapróbálkozás megoldhatja a problémát. Például ha egy felhasználónak engedélyeznie kell az adatokat egy eszközön, vagy befejezte az Azure AD-közvetítő letöltését a kezdeti hiba után. 
+Vannak olyan különleges esetek, amikor egyetlen újrapróbálkozás megoldhatja a problémát. Ha például egy felhasználónak engedélyeznie kell az eszközt az eszközön, vagy a kezdeti hiba után az Azure AD Broker letöltését kell végrehajtania. 
 
-Hiba esetén az alkalmazás felhasználói felületet jeleníthet meg, hogy a végfelhasználó végrehajthassa az újrapróbálkozást lehetővé tenni. Ha például az eszköz nem sikerült kapcsolat nélküli módban, a "Próbáljon meg újra bejelentkezni" gomb, amely az AcquireToken újrapróbálkozását kéri, és nem azonnal próbálja meg újra a hibát. 
+Meghibásodás esetén előfordulhat, hogy egy alkalmazás felhasználói felülete lehetővé teszi, hogy a végfelhasználó bizonyos interakciókat hajtson végre, amely újrapróbálkozást kér. Ha például az eszköz offline hiba miatt nem sikerült, a "próbáljon újra bejelentkezni" gombra kattintva egy AcquireToken újrapróbálkozást kér, ahelyett, hogy azonnal újrapróbálkozik. 
 
-A natív alkalmazásokban a hibakezelést két eset határozhatja meg:
+A natív alkalmazásokban a hibák két esetben határozhatók meg:
 
 |  |  |
 |------|-------------|
-| **1. eset:**<br>Nem újrapróbálható hiba (a legtöbb esetben) | 1. Ne próbálkozzon azonnal. Mutassa be a végfelhasználói felhasználói felületet az újrapróbálkozást megmeghívó konkrét hiba alapján (például "Próbálja meg újra bejelentkezni" vagy "Azure AD broker alkalmazás letöltése"). |
-| **2. eset**:<br>Újrapróbálható hiba | 1. Hajtson végre egy újrapróbálkozást, mivel előfordulhat, hogy a végfelhasználó olyan állapotba lépett, amely sikeres.<br><br>2. Ha az újrapróbálkozás sikertelen, mutassa be a végfelhasználói felhasználói felületet az újrapróbálkozást megmeghívó konkrét hiba alapján ("Próbálja meg újra bejelentkezni", "Töltse le az Azure AD broker alkalmazást", stb.). |
+| **1. eset**:<br>Nem újrapróbálkozást lehetővé tevő hiba (a legtöbb esetben) | 1. Ne próbálkozzon azonnali próbálkozással. A végfelhasználó felhasználói felületének bemutatása az újrapróbálkozást meghívó adott hiba alapján (például "próbálja meg újra bejelentkezni" vagy "az Azure AD Broker alkalmazás letöltése"). |
+| **2. eset**:<br>Újrapróbálkozást lehetővé tevő hiba | 1. egyetlen újrapróbálkozást hajthat végre, mert a végfelhasználó olyan állapotba lépett, amely sikert eredményezett.<br><br>2. Ha az újrapróbálkozás sikertelen, a végfelhasználói felhasználói felületet az újrapróbálkozást meghívó adott hiba alapján ("próbálja meg újra bejelentkezni", "az Azure AD Broker alkalmazás letöltése" stb.) mutatja. |
 
 > [!IMPORTANT]
-> Ha egy felhasználói fiók csendes hívás esetén kerül átadásra az ADAL-nak, és sikertelen, a későbbi interaktív kérés lehetővé teszi a végfelhasználó számára, hogy egy másik fiókkal jelentkezzen be. Miután egy sikeres AcquireToken egy felhasználói fiókot használ, az alkalmazásnak ellenőriznie kell, hogy a bejelentkezett felhasználó megfelel az alkalmazások helyi felhasználói objektum. Az eltérés nem hoz létre kivételt (kivéve a C célkitűzést), de figyelembe kell venni azokban az esetekben, amikor a felhasználó a hitelesítési kérelmek előtt helyileg ismert (például sikertelen néma hívás).
+> Ha egy felhasználói fiókot a ADAL egy csendes hívásban ad át, és a művelet meghiúsul, a következő interaktív kérelem lehetővé teszi, hogy a végfelhasználó egy másik fiókkal jelentkezzen be. Miután sikeresen AcquireToken egy felhasználói fiókot, az alkalmazásnak ellenőriznie kell, hogy a bejelentkezett felhasználó megfelel-e az alkalmazás helyi felhasználói objektumának. Az eltérés nem eredményez kivételt (kivéve az Objective C-t), de olyan esetekben kell figyelembe venni, amikor egy felhasználó a hitelesítési kérések előtt helyileg ismert (például sikertelen csendes hívás esetén).
 >
 
 #### <a name="net"></a>.NET
 
-Az alábbi útmutató példákat tartalmaz a hibakezelésért az összes nem csendes AcquireToken(...) ADAL módszerek, *kivéve:* 
+Az alábbi útmutató példákat tartalmaz a hibák kezelésére az összes nem csendes AcquireToken (...) együtt. ADAL metódusok, a következők *kivételével*: 
 
 - AcquireTokenAsync(..., IClientAssertionCertification, ...)
 - AcquireTokenAsync(..., ClientCredential, ...)
-- AcquireTokenAsync(..., Ügyfélállítás, ...)
-- AcquireTokenAsync(...; UserAssertion,...)   
+- AcquireTokenAsync(..., ClientAssertion, ...)
+- AcquireTokenAsync (..., UserAssertion,...)   
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```csharp
 try {
@@ -249,14 +249,14 @@ catch (AdalException e) {
 ```
 
 > [!NOTE]
-> Az ADAL .NET egy további szempontot is figyelembe vett, mivel támogatja a PromptBehavior.Never-t, amelynek viselkedése például AcquireTokenSilent.
+> A ADAL .NET-nek további szempontja van, mivel támogatja a PromptBehavior. Never, amely a AcquireTokenSilent hasonló viselkedést tartalmaz.
 >
 
-Az alábbi útmutató példákat mutat be az ADAL-módszerekkel kapcsolatos hibakezelésre: 
+A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- acquireToken(..., PromptBehavior.Never)
+- acquireToken (..., PromptBehavior. Never)
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```csharp
     try {acquireToken(…, PromptBehavior.Never);
@@ -286,9 +286,9 @@ catch(AdalServiceException e) {
 
 #### <a name="android"></a>Android
 
-Az alábbi útmutató példákat tartalmaz a hibakezelésért az összes nem csendes AcquireToken(...) ADAL módszerek. 
+Az alábbi útmutató példákat tartalmaz a hibák kezelésére az összes nem csendes AcquireToken (...) együtt. ADAL metódusok. 
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```java
 AcquireTokenAsync(…);
@@ -315,9 +315,9 @@ public void onError(Exception e) {
 
 #### <a name="ios"></a>iOS
 
-Az alábbi útmutató példákat tartalmaz a hibakezelésért az összes nem csendes AcquireToken(...) ADAL módszerek. 
+Az alábbi útmutató példákat tartalmaz a hibák kezelésére az összes nem csendes AcquireToken (...) együtt. ADAL metódusok. 
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```objc
 [context acquireTokenWithResource:[ARGS], completionBlock:^(ADAuthenticationResult *result) {
@@ -340,15 +340,15 @@ A kód a következőképpen valósulna meg:
 }]
 ```
 
-### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Hibaesetek és végrehajtható lépések: Erőforrás-API-t (.NET) hívó webalkalmazások
+### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Hibákkal és műveletekkel kapcsolatos lépések: az erőforrás-API-t (.NET) meghívó webalkalmazások
 
-Ha egy .NET webalkalmazást hoz fel, amely egy erőforrás engedélyezési kódját használva jogkivonatot kap, az egyetlen szükséges kód az általános eset alapértelmezett kezelője. 
+Ha olyan .NET-webalkalmazást hoz létre, amely egy adott erőforráshoz tartozó engedélyezési kóddal hívja meg a tokent, az egyetlen szükséges kód az általános eset alapértelmezett kezelője. 
 
-Az alábbi útmutató példákat mutat be az ADAL-módszerekkel kapcsolatos hibakezelésre: 
+A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
 - AcquireTokenByAuthorizationCodeAsync(...)
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```csharp
 try {
@@ -365,19 +365,19 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Hibaesetek és végrehajtható lépések: Egyoldalas alkalmazások (adal.js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Hibák és a gyakorlatban alkalmazható lépések: egylapos alkalmazások (adal. js)
 
-Ha egy egyoldalas alkalmazást hoz fel az adal.js és acquiretoken használatával, a hibakezelési kód hasonló egy tipikus csendes híváshoz. Az adal.js-ben az AcquireToken soha nem jelenít meg felhasználói felületet. 
+Ha egy egyoldalas alkalmazást hoz létre a adal. js és a AcquireToken használatával, a hiba-kezelési kód hasonló egy tipikus csendes híváshoz. Kifejezetten a adal. js fájlban a AcquireToken soha nem jeleníti meg a felhasználói felületet. 
 
-A sikertelen AcquireToken a következő esetekkel rendelkezik:
+A sikertelen AcquireToken a következő esetekben szerepelnek:
 
 |  |  |
 |------|-------------|
-| **1. eset:**<br>Feloldható interaktív kéréssel | 1. Ha a login() sikertelen, ne hajtson végre azonnali újrapróbálkozást. Csak akkor próbálkozzon újra, amikor a felhasználói művelet újrapróbálkozik.|
-| **2. eset**:<br>Interaktív kéréssel nem oldható fel. A hiba újrapróbálkozásra képes. | 1. Hajtson végre egy újrapróbálkozást, mivel a végfelhasználói fő olyan állapotba lépett, amely sikeres.<br><br>2. Ha az újrapróbálkozás sikertelen, mutasson be a végfelhasználónak egy műveletet az adott hibán alapuló művelettel, amely meghívhat egy újrapróbálkozást ("Próbáljon meg újra bejelentkezni"). |
-| **3. eset:**<br>Interaktív kéréssel nem oldható fel. A hiba nem próbálható meg újra. | 1. Ne próbálkozzon azonnal. Mutasson be a végfelhasználónak egy műveletet az adott hiba alapján, amely meghívhat egy újrapróbálkozást ("Próbáljon meg újra bejelentkezni"). |
+| **1. eset**:<br>Feloldható interaktív kérelemmel | 1. Ha a login () nem sikerül, ne végezzen azonnali újrapróbálkozást. Csak akkor próbálkozzon újra, ha a felhasználói művelet megkérdezi az újrapróbálkozást.|
+| **2. eset**:<br>Nem oldható fel egy interaktív kérelem. A hiba újrapróbálható. | 1. hajtson végre egyetlen újrapróbálkozást, mivel a végfelhasználó főkiszolgálója olyan állapotba lépett, amely sikert eredményez.<br><br>2. Ha az újrapróbálkozás sikertelen, a végfelhasználót egy, az újrapróbálkozást meghívó adott hiba alapján jeleníti meg ("próbáljon újra bejelentkezni"). |
+| **3. eset**:<br>Nem oldható fel egy interaktív kérelem. A hiba nem újrapróbálható. | 1. Ne próbálkozzon azonnali próbálkozással. A végfelhasználót az újrapróbálkozást meghívó adott hiba alapján jeleníti meg ("próbáljon újra bejelentkezni"). |
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```javascript
 AuthContext.acquireToken(…, function(error, errorDesc, token) {
@@ -402,25 +402,25 @@ AuthContext.acquireToken(…, function(error, errorDesc, token) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-service-to-service-applications-net-only"></a>Hibaesetek és végrehajtható lépések: szolgáltatás-szolgáltatás alkalmazások (csak.NET)
+### <a name="error-cases-and-actionable-steps-service-to-service-applications-net-only"></a>Hibákra és műveletekre vonatkozó lépések: szolgáltatások közötti alkalmazások (csak .NET esetén)
 
-Ha egy AcquireToken szolgáltatást használó szolgáltatást nyújtó alkalmazást hoz fel, a kódnak néhány kulcsfontosságú hibát kell kezelnie. A hiba egyetlen célja, hogy visszaadja a hibát a hívó alkalmazásnak (az esetek nevében), vagy alkalmazza az újrapróbálkozási stratégiát. 
+Ha AcquireToken-t használó szolgáltatás-szolgáltatás alkalmazást hoz létre, néhány kulcsfontosságú hiba miatt a kódnak kezelnie kell. Az egyetlen hiba, ha a hibát visszaküldi a hívó alkalmazásnak (az egyes esetekben), vagy újrapróbálkozási stratégiát alkalmaz. 
 
 #### <a name="all-scenarios"></a>Az összes forgatókönyv
 
-*Minden* szolgáltatás-szolgáltatás alkalmazás forgatókönyvesetén, beleértve a nevükben történő:
+Az *összes* szolgáltatás-szolgáltatás alkalmazási forgatókönyvhöz, beleértve a következőket:
 
-- Ne próbálkozzon azonnali újrapróbálkozásra. Az ADAL bizonyos sikertelen kérelmek esetén egyetlen újrapróbálkozást kísérel meg. 
-- Csak akkor folytassa az újrapróbálkozást, ha egy felhasználó vagy alkalmazás művelet eretni történik. Például egy démon alkalmazás, amely működik néhány beállított időköz meg kell várni, amíg a következő időközt, hogy újra.
+- Ne próbálkozzon azonnali próbálkozással. A ADAL egyetlen újrapróbálkozás kísérletet tesz lehetővé bizonyos sikertelen kérelmek esetén. 
+- Csak a felhasználó vagy az alkalmazás művelete után próbálkozzon újra az Újrapróbálkozással. Egy bizonyos meghatározott intervallumban dolgozó Daemon-alkalmazásnak például várnia kell, amíg a következő intervallum újra próbálkozik.
 
-Az alábbi útmutató példákat mutat be az ADAL-módszerekkel kapcsolatos hibakezelésre: 
+A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
 - AcquireTokenAsync(..., IClientAssertionCertification, ...)
 - AcquireTokenAsync(...,ClientCredential, ...)
-- AcquireTokenAsync(...,Ügyfélállítás, ...)
+- AcquireTokenAsync(...,ClientAssertion, ...)
 - AcquireTokenAsync(...,UserAssertion, ...)
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```csharp
 try {
@@ -437,15 +437,15 @@ catch (AdalException e) {
 }  
 ```
 
-#### <a name="on-behalf-of-scenarios"></a>A forgatókönyvek nevében
+#### <a name="on-behalf-of-scenarios"></a>Alkalmazási helyzetek
 
-A szolgáltatás-szolgáltatás alkalmazás forgatókönyvek *a szolgáltatás-szolgáltatás* alkalmazás forgatókönyvek.
+*A* szolgáltatással való használatra vonatkozó alkalmazási forgatókönyvek esetén.
 
-Az alábbi útmutató példákat mutat be az ADAL-módszerekkel kapcsolatos hibakezelésre: 
+A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
 - AcquireTokenAsync(..., UserAssertion, ...)
 
-A kód a következőképpen valósulna meg:
+A kód a következőképpen valósítható meg:
 
 ```csharp
 try {
@@ -477,36 +477,36 @@ catch (AdalException e) {
 }
 ```
 
-Összeállítottunk egy [teljes mintát,](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) amely bemutatja ezt a forgatókönyvet.
+Egy [teljes mintát](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) készítettünk, amely bemutatja ezt a forgatókönyvet.
 
-## <a name="error-and-logging-reference"></a>Hiba- és naplózási hivatkozás
+## <a name="error-and-logging-reference"></a>Hiba-és naplózási hivatkozás
 
-### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Személyes azonosításra alkalmas adatok naplózása & szervezeti azonosítható adatok 
-Alapértelmezés szerint az ADAL naplózása nem rögzíti és nem naplózza a személyes azonosításra alkalmas adatokat vagy a szervezeti azonosítható adatokat. A könyvtár lehetővé teszi az alkalmazásfejlesztők számára, hogy ezt a Logger osztály ban lévő szettelőn keresztül kapcsolják be. A személyes azonosításra alkalmas adatok vagy a szervezeti azonosítható adatok naplózásával az alkalmazás felelősséget vállal a rendkívül érzékeny adatok biztonságos kezeléséért és a szabályozási követelmények nek való megfelelésért.
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Személyes azonosításra alkalmas adatok naplózása & Szervezetian azonosítható információk 
+Alapértelmezés szerint a ADAL naplózása nem rögzíti vagy nem naplózza a személyes azonosításra alkalmas adatokat vagy a szervezeti azonosításra alkalmas adatokat. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői a naplózó osztályon keresztül kapcsolják be ezt a beállítást. A személyes azonosításra alkalmas adatok vagy a szervezeti azonosításra alkalmas információk naplózásával az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények teljesítéséhez.
 
 ### <a name="net"></a>.NET
 
 #### <a name="adal-library-errors"></a>ADAL-függvénytár hibái
 
-Adott ADAL-hibák feltárása érdekében az [azure-activedirectory-library-for-dotnet tárban](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/8f6d560fbede2247ec0e217a21f6929d4375dcaa/src/ADAL.PCL/Utilities/Constants.cs#L58) található forráskód a legjobb hibahivatkozás.
+Az adott ADAL kapcsolatos hibák feltárásához az [Azure-ActiveDirectory-Library-for-DotNet adattár](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/8f6d560fbede2247ec0e217a21f6929d4375dcaa/src/ADAL.PCL/Utilities/Constants.cs#L58) forráskódja a legjobb hiba-hivatkozás.
 
-#### <a name="guidance-for-error-logging-code"></a>Útmutató a hibanaplózási kódhoz
+#### <a name="guidance-for-error-logging-code"></a>A hiba naplózási kódjának útmutatója
 
-Az ADAL .NET naplózás a vizsgált platformtól függően változik. A [naplózási wikiben](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) tájékodhat a naplózás engedélyezésének engedélyezéséről.
+A ADAL .NET-naplózás a használt platformtól függően változik. A naplózás engedélyezéséhez tekintse meg a [naplózási wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) kódot.
 
 ### <a name="android"></a>Android
 
 #### <a name="adal-library-errors"></a>ADAL-függvénytár hibái
 
-Adott ADAL-hibák feltárása érdekében az [azure-activedirectory-library-for-android tárban](https://github.com/AzureAD/azure-activedirectory-library-for-android/blob/dev/adal/src/main/java/com/microsoft/aad/adal/ADALError.java#L33) található forráskód a legjobb hibahivatkozás.
+Az adott ADAL kapcsolatos hibák feltárásához az [Azure-ActiveDirectory-Library-for-Android adattár](https://github.com/AzureAD/azure-activedirectory-library-for-android/blob/dev/adal/src/main/java/com/microsoft/aad/adal/ADALError.java#L33) forráskódja a legjobb hiba-hivatkozás.
 
-#### <a name="operating-system-errors"></a>Az operációs rendszer hibái
+#### <a name="operating-system-errors"></a>Operációs rendszer hibái
 
-Az Android operációs rendszer hibái az ADAL AuthenticationException-en keresztül jelennek meg, "SERVER_INVALID_REQUEST" néven azonosíthatók, és a hibaleírásokon keresztül részletesebbek lehetnek. 
+Az androidos operációsrendszer-hibák a ADAL hitelesítési kivétel keresztül érhetők el, és a "SERVER_INVALID_REQUEST" azonosíthatók, és a hibák leírásával további részletességgel is rendelkezhetnek. 
 
-A gyakori hibák teljes listáját és azt, hogy milyen lépéseket kell tenni, amikor az alkalmazás vagy a végfelhasználók találkoznak velük, olvassa el az ADAL Android Wiki című [webhelyet.](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki) 
+A gyakori hibák teljes listáját, valamint azt, hogy milyen lépéseket kell elvégeznie az alkalmazás vagy a végfelhasználók számára, tekintse meg a [ADAL Android wikit](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki). 
 
-#### <a name="guidance-for-error-logging-code"></a>Útmutató a hibanaplózási kódhoz
+#### <a name="guidance-for-error-logging-code"></a>A hiba naplózási kódjának útmutatója
 
 ```java
 // 1. Configure Logger
@@ -539,17 +539,17 @@ adb logcat > "C:\logmsg\logfile.txt";
 
 #### <a name="adal-library-errors"></a>ADAL-függvénytár hibái
 
-Adott ADAL-hibák feltárása érdekében az [azure-activedirectory-library-for-objc tárban](https://github.com/AzureAD/azure-activedirectory-library-for-objc/blob/dev/ADAL/src/ADAuthenticationError.m#L295) található forráskód a legjobb hibahivatkozás.
+Az adott ADAL kapcsolatos hibák feltárásához az [Azure-ActiveDirectory-Library-for-ObjC adattár](https://github.com/AzureAD/azure-activedirectory-library-for-objc/blob/dev/ADAL/src/ADAuthenticationError.m#L295) forráskódja a legjobb hiba-hivatkozás.
 
-#### <a name="operating-system-errors"></a>Az operációs rendszer hibái
+#### <a name="operating-system-errors"></a>Operációs rendszer hibái
 
-iOS-hibák merülhetnek fel a bejelentkezés során, amikor a felhasználók webes nézeteket használnak, és a hitelesítés jellege. Ezt olyan körülmények okozhatják, mint a TLS-hibák, időkiírások vagy hálózati hibák:
+iOS-hibák jelentkezhetnek a bejelentkezés során, amikor a felhasználók webes nézeteket használnak, valamint a hitelesítés természetét. Ezt olyan feltételek okozhatják, mint például a TLS-hibák, az időtúllépések vagy a hálózati hibák:
 
-- A jogosultságmegosztás esetében a bejelentkezések nem állandóak, és a gyorsítótár üresen jelenik meg. A problémamegoldásához adja hozzá a következő kódsort a kulcskarikához:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
-- Az NsUrlDomain hibakészlete esetén a művelet az alkalmazás logikájának függően változik. Az [NSURLErrorDomain referenciadokumentációjában](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) található a kezelhető példányok.
-- Az ADAL Objective-C csapat által fenntartott gyakori hibák listáját lásd: [ADAL Obj-C Common Issues.](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror)
+- A jogosultságok megosztásához a bejelentkezések nem állandóak, és a gyorsítótár üresen jelenik meg. A következő kódrészlet a kulcstartóba való felvételével oldható fel:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- A hibák NsUrlDomain a művelet az alkalmazás logikája alapján változik. Tekintse meg a [NSURLErrorDomain dokumentációját](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) a kezelni kívánt példányok számára.
+- Lásd: [ADAL-c általános problémák](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) a ADAL Objective-c csapat által fenntartott gyakori hibák listájához.
 
-#### <a name="guidance-for-error-logging-code"></a>Útmutató a hibanaplózási kódhoz
+#### <a name="guidance-for-error-logging-code"></a>A hiba naplózási kódjának útmutatója
 
 ```objc
 // 1. Enable NSLogging
@@ -565,7 +565,7 @@ iOS-hibák merülhetnek fel a bejelentkezés során, amikor a felhasználók web
 }];
 ```
 
-### <a name="guidance-for-error-logging-code---javascript"></a>Útmutató a hibanaplózási kódhoz - JavaScript 
+### <a name="guidance-for-error-logging-code---javascript"></a>Útmutató a hiba-naplózási kódokhoz – JavaScript 
 
 ```javascript
 0: Error1: Warning2: Info3: Verbose
@@ -579,13 +579,13 @@ window.Logging = {
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-* [Azure AD hitelesítési kódtárak][AAD-Auth-Libraries]
-* [Azure AD-hitelesítési forgatókönyvek][AAD-Auth-Scenarios]
-* [Alkalmazások integrálása az Azure Active Directoryval][AAD-Integrating-Apps]
+* [Azure AD-hitelesítési kódtárak][AAD-Auth-Libraries]
+* [Az Azure AD hitelesítési forgatókönyvei][AAD-Auth-Scenarios]
+* [Alkalmazások integrálása a Azure Active Directory][AAD-Integrating-Apps]
 
-Használja az alábbi megjegyzések részt, hogy visszajelzést adjon, és segítsen nekünk a tartalom finomításában és alakításában.
+A következő megjegyzések szakasz segítségével visszajelzést adhat, és segítheti a tartalom pontosítását és kialakítását.
 
-[![A "Bejelentkezés a Microsofttal" gomb][AAD-Sign-In]][AAD-Sign-In]
+[![A "Bejelentkezés Microsoft-fiókkal" gomb megjelenítése][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

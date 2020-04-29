@@ -1,55 +1,55 @@
 ---
-title: Az eszközkonverziós REST API
-description: Ez a témakör azt ismerteti, hogy miként konvertálható egy eszköz a REST API-n keresztül
+title: Az eszköz konverziós REST API
+description: Ismerteti, hogyan lehet átalakítani egy eszközt a REST API használatával
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887044"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>A modellátalakító REST API használata
 
-A [modellkonverziós](model-conversion.md) szolgáltatás egy [REST API-n](https://en.wikipedia.org/wiki/Representational_state_transfer)keresztül történik. Ez a cikk ismerteti a konverziós szolgáltatás API-részleteit.
+A [modell-átalakítási](model-conversion.md) szolgáltatást egy [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)vezérli. Ez a cikk a konverziós szolgáltatás API részleteit ismerteti.
 
 ## <a name="regions"></a>Régiók
 
-Tekintse meg az [elérhető régiók listáját](../../reference/regions.md) az alap URL-címek a kérelmek et küldeni.
+Tekintse meg az [elérhető régiók listáját](../../reference/regions.md) az alapurl-címek számára, hogy elküldje a kérelmeket.
 
 ## <a name="common-headers"></a>Gyakori fejlécek
 
-### <a name="common-request-headers"></a>Gyakori kérelemfejlécek
+### <a name="common-request-headers"></a>Gyakori kérelmek fejlécei
 
-Ezeket a fejléceket minden kérelemhez meg kell adni:
+Az összes kérelemhez meg kell adni ezeket a fejléceket:
 
-- Az **engedélyezési** fejlécnek "Tulajdonos [*TOKEN*]" értékkel kell rendelkeznie, ahol a [*TOKEN*] [szolgáltatás-hozzáférési jogkivonat](../tokens.md).
+- Az **engedélyezési** fejlécben szerepelnie kell a "tulajdonos [*token*]" értéknek, ahol a [*token*] egy [szolgáltatás-hozzáférési jogkivonat](../tokens.md).
 
-### <a name="common-response-headers"></a>Gyakori válaszfejlécek
+### <a name="common-response-headers"></a>Gyakori válaszok fejlécei
 
-Minden válasz a következő fejléceket tartalmazza:
+Az összes válasz tartalmazza ezeket a fejléceket:
 
-- Az **MS-CV** fejléc egy egyedi karakterláncot tartalmaz, amely a szolgáltatáson belüli hívás nyomon követésére használható.
+- Az **MS-CV** fejléc egy egyedi karakterláncot tartalmaz, amely a szolgáltatáson belüli hívás nyomkövetésére használható.
 
 ## <a name="endpoints"></a>Végpontok
 
-A konverziós szolgáltatás három REST API-végpontot biztosít:
+Az átalakítási szolgáltatás három REST API végpontot biztosít a következőhöz:
 
-- indítsa el a modellkonverziót az Azure remote rendering fiókjához kapcsolódó tárfiók használatával. 
-- indítsa el a modellátalakítást a megadott *megosztott hozzáférési aláírások (SAS)* használatával.
-- lekérdezés az átalakítás állapotáról
+- Indítsa el a modell átalakítását az Azure távoli renderelési fiókjával társított Storage-fiók használatával. 
+- a modell átalakításának elindítása a megadott *megosztott hozzáférési aláírások (SAS)* használatával.
+- az átalakítás állapotának lekérdezése
 
-### <a name="start-conversion-using-a-linked-storage-account"></a>Átalakítás indítása csatolt tárfiókhasználatával
-Az Azure távoli leadási fióknak hozzá kell férnie a megadott tárfiókhoz a [tárfiókok összekapcsolása](../create-an-account.md#link-storage-accounts)lépéseinek követésével.
+### <a name="start-conversion-using-a-linked-storage-account"></a>Konverzió indítása társított Storage-fiók használatával
+Az Azure-beli távoli renderelési fióknak hozzáféréssel kell rendelkeznie a megadott Storage-fiókhoz a Storage- [fiókok összekapcsolásának](../create-an-account.md#link-storage-accounts)lépésein követve.
 
 | Végpont | Módszer |
 |-----------|:-----------|
-| /v1/számlák/**fiókazonosító**/konverziók/létrehozás | POST |
+| /v1/accounts/**accountID**/Conversions/Create | POST |
 
-A folyamatban lévő átalakítás json-dokumentumba csomagolt azonosítóját adja eredményül. A mező neve "conversionId".
+Egy JSON-dokumentumba csomagolt, folyamatban lévő konverzió AZONOSÍTÓját adja vissza. A mező neve "conversionId".
 
 #### <a name="request-body"></a>A kérés törzse
 
@@ -72,21 +72,21 @@ A folyamatban lévő átalakítás json-dokumentumba csomagolt azonosítóját a
     }
 }
 ```
-### <a name="start-conversion-using-provided-shared-access-signatures"></a>Átalakítás megkezdése a megadott megosztott hozzáférésű aláírások használatával
-Ha az ARR-fiók nincs összekapcsolva a tárfiókkal, ez a REST-felület lehetővé teszi a hozzáférést *a megosztott hozzáférésű aláírások (SAS)* használatával.
+### <a name="start-conversion-using-provided-shared-access-signatures"></a>Konverzió indítása a megadott megosztott hozzáférési aláírásokkal
+Ha az ARR-fiók nincs csatolva a Storage-fiókhoz, ez a REST-felület lehetővé teszi, hogy *megosztott hozzáférési aláírásokkal (SAS)* biztosítson hozzáférést.
 
 | Végpont | Módszer |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
+| /v1/accounts/**accountID**/Conversions/createWithSharedAccessSignature | POST |
 
-A folyamatban lévő átalakítás json-dokumentumba csomagolt azonosítóját adja eredményül. A mező neve "conversionId".
+Egy JSON-dokumentumba csomagolt, folyamatban lévő konverzió AZONOSÍTÓját adja vissza. A mező neve "conversionId".
 
 #### <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse megegyezik a fenti REST-hívás létrehozása kor, de a bemeneti és kimeneti bemeneti és *kimeneti bemeneti és kimeneti adatok megosztott hozzáférésű aláírások (SAS) jogkivonatokat tartalmaznak.* Ezek a jogkivonatok hozzáférést biztosítanak a tárfiókhoz a bemenet olvasásához és a konverziós eredmény írásához.
+A kérés törzse megegyezik a fenti REST-hívás létrehozásakor, de a bemenet és a kimenet *közös hozzáférésű aláírási (SAS) jogkivonatokat*tartalmaz. Ezek a tokenek hozzáférést biztosítanak a Storage-fiókhoz a bemenet olvasásához és az átalakítás eredményének megírásához.
 
 > [!NOTE]
-> Ezek a SAS URI-jogkivonatok a lekérdezési karakterláncok, és nem a teljes URI. 
+> Ezek az SAS URI-tokenek a lekérdezési karakterláncok, nem pedig a teljes URI-azonosítók. 
 
 
 ```json
@@ -110,21 +110,21 @@ A kérelem törzse megegyezik a fenti REST-hívás létrehozása kor, de a bemen
 }
 ```
 
-### <a name="poll-conversion-status"></a>Szavazás konverziós állapota
-A fenti REST-hívások egyikével indított folyamatos átalakítás állapota a következő felületen kérdezhető le:
+### <a name="poll-conversion-status"></a>Lekérdezés konverziójának állapota
+A fenti REST-hívások egyikével megkezdett folyamatos konverzió állapota a következő felületen kérdezhető le:
 
 
 | Végpont | Módszer |
 |-----------|:-----------|
-| /v1/számlák/**számlaazonosító**/konverziók/**konverzióAzonosító** | GET |
+| /v1/accounts/**accountID**/Conversions/**conversionId** | GET |
 
-Olyan JSON-dokumentumot ad eredményül, amelynek "állapot" mezője a következő értékeket tartalmazhatja:
+Egy "status" mezőt tartalmazó JSON-dokumentumot ad vissza, amely a következő értékekkel rendelkezhet:
 
-- "Futás"
-- "Siker"
-- "Hiba"
+- Fut
+- Sikeres
+- Hiba
 
-Ha az állapot "Hiba", akkor egy további "hiba" mező lesz, amely egy "üzenet" almezőt tartalmaz, amely hibainformációkat tartalmaz. További naplók lesznek feltöltve a kimeneti tárolóba.
+Ha az állapot "hiba", akkor egy további "hiba" mező jelenik meg, amely tartalmaz egy "üzenet" almezőt, amely tartalmazza a hiba adatait. A kimeneti tárolóba további naplók lesznek feltöltve.
 
 ## <a name="next-steps"></a>További lépések
 

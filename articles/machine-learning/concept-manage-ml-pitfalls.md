@@ -1,7 +1,7 @@
 ---
-title: A & kiegyensúlyozatlan adatok automatikus ml-rel való túlméretezésének elkerülése
+title: Kerülje a & kiegyensúlyozatlan adathalmazok AutoML való túlillesztését
 titleSuffix: Azure Machine Learning
-description: Azonosítsa és kezelje az ML-modellek gyakori buktatóit az Azure Machine Learning automatizált gépi tanulási megoldásaival.
+description: A Azure Machine Learning gépi tanulási megoldásaival azonosíthatja és kezelheti a ML-modellek gyakori buktatóit.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,106 +11,106 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80874857"
 ---
-# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megelőzheti az adatok túlszerelését és kiegyensúlyozatlanságát
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megakadályozhatja a túlilleszkedő és a kiegyensúlyozatlan adatkezelést
 
-A túlillesztett és kiegyensúlyozatlan adatok gyakori buktatókat gépi tanulási modellek létrehozásakor. Alapértelmezés szerint az Azure Machine Learning automatizált gépi tanulás a diagramok és metrikák segítségével azonosítani ezeket a kockázatokat, és megvalósítja az ajánlott eljárásokat, hogy segítsen enyhíteni őket. 
+A túlságosan illeszkedő és kiegyensúlyozatlan adat a gépi tanulási modellek készítésekor előforduló gyakori buktatók. A Azure Machine Learning automatikus gépi tanulása alapértelmezés szerint diagramokat és mérőszámokat tartalmaz, amelyek segítenek a kockázatok azonosításában, és az ajánlott eljárások megvalósításában nyújtanak segítséget. 
 
-## <a name="identify-over-fitting"></a>A túlillesztés azonosítása
+## <a name="identify-over-fitting"></a>Túlillesztés azonosítása
 
-A gépi tanulás túlzott beszerelése akkor következik be, ha egy modell túl jól illeszkedik a betanítási adatokhoz, és ennek eredményeképpen nem tudja pontosan megjósolni a láthatatlan tesztadatokon. Más szóval a modell egyszerűen memorizálta a betanítási adatok ban adott mintákat és zajt, de nem elég rugalmas ahhoz, hogy valós adatokra vonatkozó előrejelzéseket készítsen.
+A gépi tanulás túlterhelése akkor fordul elő, ha egy modell túl jól illeszkedik a betanítási adathoz, ezért nem lehet pontosan előre jelezni a láthatatlan tesztelési eredményeket. Más szóval a modell egyszerűen megjegyezte a betanítási adatmintákat és a zajt, de nem elég rugalmas ahhoz, hogy valós adatelemzéseket készítsen.
 
-Vegye figyelembe a következő betanított modelleket, valamint a hozzájuk tartozó vonat- és vizsgálati pontosságot.
+Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolódó betanítási és tesztelési pontosság.
 
-| Modell | A vonat pontossága | A vizsgálat pontossága |
+| Modell | Vonat pontossága | Teszt pontossága |
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
 | C# | 99.9% | 45% |
 
-Figyelembe véve az **A**modellt, általános tévhit, hogy ha a nem látott adatokon a teszt pontossága alacsonyabb, mint a betanításpontosság, a modell túl van szerelve. Azonban a teszt pontosságának mindig kisebbnek kell lennie, mint az edzés pontossága, és a túlilleszkedés és a megfelelő illeszkedés különbsége *sokkal* kevésbé pontos. 
+Az **a**modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
 
-Az **A** és **B**modellek összehasonlításakor az **A** modell jobb modell, mivel nagyobb vizsgálati pontossággal rendelkezik, és bár a vizsgálati pontosság valamivel alacsonyabb, 95%, nem jelent jelentős különbséget, ami arra utal, hogy a túlillesztés jelen van. Nem csak azért választanád a **B** modellt, mert a vonat és a teszt pontossága közelebb van egymáshoz.
+Az **a** és **B**modellek összehasonlításakor a Model **a** jobb modell, mert a teszt pontossága nagyobb, és bár a tesztelési pontosság valamivel alacsonyabb, mint 95%, nem jelent jelentős különbséget, amely a túlzottan illeszkedő megoldásra utal. Nem választhatja a **B** modellt egyszerűen azért, mert a vonat és a teszt pontosság egymáshoz közelednek.
 
-A **C.** minta a túlillesztés egyértelmű esetét jelenti; a képzés pontossága nagyon magas, de a teszt pontossága közel sem olyan magas. Ez a különbségtétel szubjektív, de a probléma és az adatok ismeretéből, valamint a hiba nagyságrendjéből származik.
+A **C** modell a túlzott illesztések egyértelmű esetét jelöli. a betanítás pontossága nagyon magas, de a teszt pontossága nem a magashoz közel van. Ez a különbségtétel szubjektív, de a probléma és az adatok ismerete, valamint a hibák számának elfogadható.
 
-## <a name="prevent-over-fitting"></a>A túlszerelés megakadályozása
+## <a name="prevent-over-fitting"></a>Túlterhelések megakadályozása
 
-A legkirívóbb esetekben a túlfelszerelt modell azt feltételezi, hogy a betanítás során látható jellemzőérték-kombinációk mindig pontosan ugyanazt a kimenetet eredményezik a célhoz.
+A legtöbbször is felmerülő esetekben a túlterhelt modell azt feltételezi, hogy a betanítás során a funkció értékének kombinációja mindig ugyanazt a kimenetet eredményezi a célhoz.
 
-A legjobb módja annak, hogy megakadályozzák a túlzott felszerelés, hogy kövesse a vk legjobb gyakorlatok, beleértve:
+A túlzott méretezés elkerülésének legjobb módja, ha a következő módszerekkel kapcsolatos ajánlott eljárásokat követi:
 
-* Több betanítási adat használata és a statisztikai elfogultság kiküszöbölése
-* A célszivárgás megelőzése
+* Több betanítási információ használata és a statisztikai torzulások kiküszöbölése
+* Cél szivárgásának megelőzése
 * Kevesebb funkció használata
-* **Szabályosítás és hiperparaméter-optimalizálás**
-* **A modell összetettségének korlátai**
+* **Regularizációs és hiperparaméter optimalizálás**
+* **A modell összetettségi korlátai**
 * **Keresztellenőrzés**
 
-Az automatizált pénzmosási rendszer összefüggésében a fenti első három elem a **bevált gyakorlatok, amelyeket ön valósít meg.** Az utolsó három félkövér elem a **legjobb gyakorlat az automatikus ml-implements** alapértelmezés szerint a túlillesztés elleni védelem érdekében. Az automatizált ml-től eltérő beállításokban mind a hat bevált gyakorlatot érdemes követni a modellek túlszerelésének elkerülése érdekében.
+Az automatikus ML-ben a fenti első három elem az Ön által **megvalósított legjobb gyakorlat**. Az utolsó három félkövérrel szedett elem az ajánlott eljárás, amely az automatizált, a túlterhelések elleni védelem érdekében alapértelmezés szerint **megvalósítható** . Az automatizált ML-től eltérő beállításokban mind a hat ajánlott eljárás a következő lehet, hogy elkerülje a túlzottan illeszkedő modelleket.
 
-### <a name="best-practices-you-implement"></a>Az Ön által megvalósított gyakorlati tanácsok
+### <a name="best-practices-you-implement"></a>Az Ön által megvalósított ajánlott eljárások
 
-**Több adat** használata a legegyszerűbb és a lehető legjobb módja annak, hogy megakadályozzák a túlilleszkedést, és a hozzáadott bónusz általában növeli a pontosságot. Ha több adatot használ, a modell nehezebben megjegyzi a pontos mintákat, és olyan megoldásokat kell elérnie, amelyek rugalmasabbak a több feltétel hez. Fontos felismerni a **statisztikai elfogultságot**is, hogy a betanítási adatok ne tartalmazzanak olyan elkülönített mintákat, amelyek nem jelennek meg az élő előrejelzési adatokban. Ezt a forgatókönyvet nehéz lehet megoldani, mert lehet, hogy nem lehet túlilleszkedni a vonat és a tesztkészletek között, de az élő vizsgálati adatokhoz képest előfordulhat, hogy túlilleszkedik.
+A **több adat** használata a legegyszerűbb és a lehető legjobb módszer a túlzott méretezés megelőzésére, és a hozzáadott bónusz általában növeli a pontosságot. Ha több adathalmazt használ, a modell nehezebbé válik a pontos mintázatok memorizálása érdekében, és olyan megoldások elérésére kényszerül, amelyek rugalmasabbak a további feltételek kielégítéséhez. Fontos továbbá a **statisztikai torzulások**felismerése is, hogy a betanítási adatai ne tartalmazzanak olyan elszigetelt mintákat, amelyek nem léteznek az élő előrejelzési adataiban. Ez a forgatókönyv nehezen oldható meg, mert előfordulhat, hogy nem lehet túlságosan összekapcsolni a vonat-és a tesztelési készletek között, de az élő tesztelési adathoz képest előfordulhat, hogy túl is illik.
 
-A célszivárgás hasonló probléma, ahol előfordulhat, hogy nem látja a vonat/tesztkészletek közötti túlillesztést, hanem előrejelzési időpontban jelenik meg. Cél szivárgás akkor jelentkezik, amikor a modell "csal" a betanítás során az adatokhoz való hozzáférés, hogy általában nem kell előrejelzési időben. Ha például a probléma az, hogy hétfőn megjósolja, hogy pénteken milyen nyersanyagár lesz, de az egyik funkció véletlenül csütörtökről származó adatokat tartalmazott, akkor az olyan adatok lennének, amelyekkel a modell előrejelzési időben nem lesz, mivel nem lát a jövőbe. Cél szivárgás egy egyszerű hiba, hogy hiányzik, de gyakran jellemzi rendellenesen nagy pontossággal a problémát. Ha megpróbálja megjósolni a készlet árát, és 95%-os pontossággal betanított egy modellt, akkor valószínűleg célszivárgás van valahol a funkciókban.
+A célzott szivárgás egy hasonló probléma, ahol előfordulhat, hogy nem jelenik meg a betanítási és a tesztelési készletek közötti túlterhelés, hanem az előrejelzési időpontban jelenik meg. A cél szivárgás akkor fordul elő, ha a "Cheats" modell a betanítás során olyan információhoz fér hozzá, amelyeknek általában nem kell előrejelzési időpontban lennie. Ha például a probléma a hétfő alapján várhatóan megjósolható, hogy Mennyibe kerül az áru díja, de az egyik funkció, amely véletlenül a csütörtöki adatokból származik, a modellnek nem lesz előrejelzési ideje, mert nem látja a jövőben. A cél szivárgás egyszerű tévedés, de gyakran a probléma szokatlanul nagy pontossága jellemzi. Ha a készlet árának előrejelzését és a modell 95%-os pontosságú betanítását kísérli meg, akkor valószínű, hogy valahol a funkciók között kell elszivárogni.
 
-A funkciók eltávolítása segíthet a túlillesztésben is, mivel megakadályozza, hogy a modell túl sok mezőt használjon az adott minták memorizálásához, így rugalmasabbá teheti azt. Nehéz lehet mennyiségileg mérni, de ha el tudja távolítani a funkciókat, és megtartja ugyanazt a pontosságot, akkor valószínűleg rugalmasabbá tette a modellt, és csökkentette a túlszerelés kockázatát.
+A funkciók eltávolítása a túlzottan illeszkedő megoldásokkal is segíthet, mivel megakadályozza, hogy a modell túl sok mezőt használjon a konkrét minták memorizálása érdekében, ami rugalmasabb lehet. A mennyiségi mérés nehéz lehet, de ha eltávolíthatja a funkciókat, és megtarthatja ugyanazt a pontosságot, valószínűleg rugalmasabban tette a modellt, és csökkentette a túlzott méretezés kockázatát.
 
-### <a name="best-practices-automated-ml-implements"></a>Gyakorlati tanácsok automatizált pénzmosási valósítók
+### <a name="best-practices-automated-ml-implements"></a>Ajánlott eljárások automatizált ML-eszközökhöz
 
-A legalizálás az a folyamat, amelynek során minimalizáljuk a költségfunkciót, hogy szankcionálják az összetett és túlfelszerelt modelleket. A regiszterizálási függvényeknek különböző típusai vannak, de általában mindegyik bünteti a modell együtthatójának méretét, varianciáját és összetettségét. Az automatikus ml az L1 (Lasso), L2 (Ridge) és elasticNet (L1 és L2 egyidejű) különböző kombinációkban, különböző modell hiperparaméter-beállításokkal, amelyek szabályozzák a túlillesztést, l1 (gerinc) és ElasticNet (L1 és L2 egyidejű) különböző kombinációkban használja. Egyszerűen fogalmazva, automatizált ML változik, hogy mennyi a modell szabályozott, és válassza ki a legjobb eredményt.
+A regularizációs egy költséghatékony funkció minimalizálása a komplex és a túlzottan felszerelt modellek szankcionálására. A regularizációs függvények különböző típusai vannak, de általánosságban mind a modellnek, valamint az eltérésnek és a bonyolultságnak a büntetése. Az automatikus ML az L1 (lasszó), az L2 (Ridge) és a ElasticNet (L1 és L2) kombinációt használja különböző kombinációkban különböző modell-hiperparaméter beállításokkal, amelyek szabályozzák a terhelést. Egyszerű feltételek esetén az automatikus ML változó a modell szabályozása és a legjobb eredmény kiválasztásával változhat.
 
-Az automatikus ml explicit modellösszetettségi korlátozásokat is alkalmaz a túlillesztés megakadályozása érdekében. A legtöbb esetben ez a megvalósítás kifejezetten a döntési fa vagy erdő algoritmusok, ahol az egyes fa max-mélység korlátozott, és az összes használt fák erdő vagy együttes technikák korlátozottak.
+Az automatikus ML emellett explicit módon meggátolja a modell bonyolultságának korlátozását, hogy megakadályozza a túlzott méretezést. A legtöbb esetben ez a megvalósítás kifejezetten a döntési fa-vagy erdő-algoritmusokhoz tartozik, ahol az egyes faszerkezetek maximális mélysége korlátozott, és az erdőben vagy az Ensemble-technikákban felhasznált fák teljes száma korlátozott.
 
-Keresztérvényesítés (CV) az a folyamat, amelynek során a teljes betanítási adatok számos részhalmazát, és a modell betanítása minden egyes részhalmaza. Az ötlet az, hogy egy modell is kap "szerencsés", és nagy pontosságú egy részhalmaza, de segítségével sok részhalmazok a modell nem fogja elérni ezt a nagy pontosságminden alkalommal. Cv-vel egy érvényesítési várakoztatási adatkészletet kell megadnia, megadhatja az önéletrajz-redők (részhalmazok száma) és az automatikus ml betanítja a modellt, és behangolja a hiperparamétereket az érvényesítési készlet ben lévő hibák minimalizálása érdekében. Egy CV-hajtás lehet túlilleszkedés, de sok közülük használatával csökkenti annak valószínűségét, hogy a végső modell túlilleszkedik. A kompromisszum az, hogy az önéletrajz hosszabb képzési időt és így nagyobb költséget eredményez, mivel a modell egyszeri betanítása helyett egyszer edzheti azt minden *n* CV részhalmazhoz. 
+A többszörös ellenőrzés (CV) a teljes betanítási adat több részhalmazának betanítása, valamint az egyes alkészleteken található modellek képzésének folyamata. Az elképzelés az, hogy egy modell "szerencsés" lehet, és nagy pontossággal rendelkezik egy részhalmazsal, de a modell számos részhalmazának használatával nem éri el ezt a nagy pontosságot minden alkalommal. Az önéletrajz használatakor meg kell adnia egy érvényesítési Holdout adatkészletet, meg kell adnia az önéletrajz betöltését (az alkészletek számát) és az automatikus ML-t, majd a modell betanításával és a hiperparaméterek beállítása finomhangolásával csökkentheti az ellenőrzési csoport hibáját Az egyik CV-dobás túl nagy méretű lehet, de a sok közül többen is csökkenti annak a valószínűségét, hogy a végső modellje túlterhelt. A kompromisszum az, hogy az önéletrajz hosszabb időt és így nagyobb költségeket eredményez, mivel a modell betanítása helyett egyszer betanítjuk az egyes *n* CV-alkészletekre. 
 
 > [!NOTE]
-> A keresztérvényesítés alapértelmezés szerint nincs engedélyezve; automatikus gépelési beállításokban kell konfigurálni. A keresztérvényesítés konfigurálása és az érvényesítési adatkészlet megadása után azonban a folyamat automatikus lesz. Lásd: 
+> Alapértelmezés szerint nincs engedélyezve a kereszt-ellenőrzés. az automatikus ML-beállításokban kell konfigurálni. A többszörös ellenőrzés konfigurálása és az érvényesítési adatkészletek megadása után azonban a folyamat automatizálható. Lásd: 
 
 <a name="imbalance"></a>
 
-## <a name="identify-models-with-imbalanced-data"></a>Kiegyensúlyozatlan adatokkal rendelkező modellek azonosítása
+## <a name="identify-models-with-imbalanced-data"></a>A kiegyensúlyozatlan adattal rendelkező modellek azonosítása
 
-A kiegyensúlyozatlan adatok általában a gépi tanulási besorolási forgatókönyvek adataiban találhatók, és olyan adatokra hivatkoznak, amelyek az egyes osztályokban a megfigyelések aránytalan arányát tartalmazzák. Ez az egyensúlyhiány a modell pontosságának tévesen érzékelt pozitív hatásához vezethet, mivel a bemeneti adatok elfogultságot mutatnak egy osztály felé, ami azt eredményezi, hogy a betanított modell utánozza ezt az elfogultságot. 
+A rendszer a gépi tanulási besorolási forgatókönyvek esetében általában az adatokon alapuló, nem kiegyensúlyozott adatokra hivatkozik, és olyan adatokra utal, amelyek az egyes osztályokba tartozó megfigyelések aránytalan arányát tartalmazzák. Ez az egyensúlyhiány a modell pontosságának hamisan érzékelt pozitív hatását eredményezheti, mivel a bemeneti adatok az egyik osztályhoz képest elfogultak, ami azt eredményezi, hogy a betanított modell a torzítást utánozza. 
 
-Mivel a besorolási algoritmusokat általában pontosság alapján értékelik ki, a modell pontossági pontszámának ellenőrzése jó módszer annak azonosítására, hogy a kiegyensúlyozatlan adatok hatással volt-e rá. Vajon tényleg nagy pontosságú vagy nagyon alacsony pontosságú bizonyos osztályok?
+Mivel a besorolási algoritmusokat általában pontossággal értékelik ki, a modell pontossági pontszámának ellenőrzése jó módszer annak azonosítására, hogy az érintett adatok nem egyensúlyban vannak-e. Valóban nagy pontossággal vagy nagyon alacsony pontossággal rendelkezett bizonyos osztályok esetében?
 
-Emellett az automatizált ML-futtatások automatikusan generálják a következő diagramokat, amelyek segítségével megismerheti a modell besorolásainak helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
+Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
 
 Diagram| Leírás
 ---|---
-[Zavartmátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen osztályozott címkéket az adatok tényleges címkéivel szemben. 
-[Precíziós visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes címkék arányát az adatok talált címkepéldányainak arányával 
-[ROC-görbék](how-to-understand-automated-ml.md#roc)| Kiértékeli a helyes címkék arányát a hamis pozitív címkék arányával szemben.
+[Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
+[Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 
+[ROC-görbék](how-to-understand-automated-ml.md#roc)| Kiértékeli a helyes feliratok arányát a hamis pozitív feliratok arányával.
 
-## <a name="handle-imbalanced-data"></a>Kiegyensúlyozatlan adatok kezelése 
+## <a name="handle-imbalanced-data"></a>Kiegyensúlyozatlan adatmennyiség kezelése 
 
-A gépi tanulási munkafolyamat egyszerűsítésére irányuló célja részeként az automatizált ml olyan képességeket épített be, amelyek segítenek a kiegyensúlyozatlan adatok kezelésében, 
+A Machine learning-munkafolyamatok egyszerűsítésének céljaként az automatikus ML beépített képességekkel rendelkezik, amelyek segítenek a kiegyensúlyozatlan adatmennyiségek, például a 
 
-- **Súlyoszlop:** az automatizált ml egy súlyozott oszlopot támogat bemenetként, így az adatok sorait fel- vagy lekell súlyozni, ami többé-kevésbé "fontossá" teheti az osztályt.
+- Egy **súlyozási oszlop**: az automatikus ml a súlyozott oszlopot bemenetként támogatja, ami az adatokban lévő sorok súlyozását eredményezi, ami akár több vagy kevesebb "fontos" osztályt is tehet.
 
-- Az automatikus ml által használt algoritmusok akár 20:1-ig is megfelelően tudják kezelni az egyensúlyhiányt, ami azt jelenti, hogy a leggyakoribb osztály nak 20-szor több sora lehet az adatokban, mint a legkevésbé általános osztálynak.
+- Az automatikus ML által használt algoritmusok megfelelően kezelhetik az akár 20:1-es egyensúlyhiányt, ami azt jelenti, hogy a leggyakoribb osztály 20 alkalommal több sort tartalmaz az adatmennyiségnél, mint a legkisebb közös osztály.
 
-A következő technikák további lehetőségek a kiegyensúlyozatlan adatok kezelésére az automatizált ml-en kívül. 
+Az alábbi módszerek további lehetőségeket biztosítanak az automatikus ML-n kívüli, kiegyensúlyozatlan adatmennyiség kezelésére. 
 
-- Újraszámítás még az osztály egyensúlyhiánya, akár up-mintavétel a kisebb osztályok vagy lefelé mintavétel ez a nagyobb osztályok. Ezek a módszerek szakértelmet igényelnek a feldolgozáshoz és elemzéshez.
+- Újramintavételezés még az osztályra is, akár a kisebb osztályok mintavételezésével vagy a nagyobb osztályok mintavételezésével. Ezek a módszerek szaktudást igényelnek a feldolgozáshoz és az elemzéshez.
 
-- Használjon olyan teljesítménymérőt, amely jobban kezeli a kiegyensúlyozatlan adatokat. Például az F1 pontszám a pontosság és a visszahívás súlyozott átlaga. A pontosság méri az osztályozó pontosságát- az alacsony pontosság nagy számú hamis pozitív atlétát jelez--, míg a visszahívás az osztályozó teljességét méri- az alacsony visszahívás nagy számú hamis negatívot jelez. 
+- Használjon olyan teljesítmény-mérőszámot, amely jobban bánik a kiegyensúlyozatlan adatokkal. Az F1 pontszám például a precizitás és a visszahívás súlyozott átlaga. A pontosság mértéke az osztályozó pontossága – az alacsony pontosság azt jelzi, hogy a téves pozitív érték nagy számú hamis pozitív--,, míg a visszahívási mérték egy osztályozó teljessége – az alacsony visszahívás nagy számú hamis negatív értéket jelez. 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a példákat, és ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulással:
+Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
 
-+ Kövesse az [oktatóanyagot: Regressziós modell automatikus betanítása az Azure Machine Learning segítségével](tutorial-auto-train-models.md)
++ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning](tutorial-auto-train-models.md)
 
-+ Az automatikus betanítási kísérlet beállításainak konfigurálása:
-  + Az Azure Machine Learning stúdióban [kövesse ezeket a lépéseket.](how-to-use-automated-ml-for-ml-models.md)
-  + A Python SDK-val [kövesse ezeket a lépéseket.](how-to-configure-auto-train.md)
++ Konfigurálja az automatikus betanítási kísérlet beállításait:
+  + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-use-automated-ml-for-ml-models.md).
+  + A Python SDK használatával hajtsa [végre az alábbi lépéseket](how-to-configure-auto-train.md).
 
 

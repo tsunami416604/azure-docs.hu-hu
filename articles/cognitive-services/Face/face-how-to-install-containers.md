@@ -1,7 +1,7 @@
 ---
-title: Konténerek telepítése és futtatása - Face
+title: Tárolók telepítése és futtatása – Face
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan tölthetle le, telepíthet és futtathat a Face tárolóit ebben a forgatókönyv-oktatóanyagban.
+description: Ebből a cikkből megtudhatja, hogyan töltheti le, telepítheti és futtathatja a tárolókat az útmutatóhoz az oktatóanyagban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,31 +12,31 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 74465bddb57c14af4d02c1d3bfdc46f3ac25bef3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878544"
 ---
-# <a name="install-and-run-face-containers-preview"></a>Face-tárolók telepítése és futtatása (előzetes verzió)
+# <a name="install-and-run-face-containers-preview"></a>Face containers telepítése és futtatása (előzetes verzió)
 
-Az Azure Cognitive Services Face egy szabványosított Linux-tárolót biztosít a Docker számára, amely észleli az emberi arcokat a képeken. Azt is azonosítja attribútumok, amelyek magukban foglalják arc tereptárgyak, mint az orr és a szem, nem, kor, és egyéb gép-előre jelzett arcvonások. Az észlelés mellett a Face ellenőrizheti, hogy ugyanazon a képen vagy különböző képeken lévő két arc azonos-e megbízhatósági pontszám használatával. Face is lehet összehasonlítani arcok egy adatbázis, hogy ha egy hasonló kinézetű vagy azonos arc már létezik. A hasonló arcokat csoportokba is rendezheti a megosztott vizuális tulajdonságok használatával.
+Az Azure Cognitive Services Face szabványos Linux-tárolót biztosít a Docker számára, amely észleli az emberi arcokat a képeken. Emellett azonosítja azokat az attribútumokat is, amelyek olyan arc-tereptárgyak, mint például az orr és a szemek, a nemek, az életkor és más, géppel előre jelzett arc-funkciók. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc van-e ugyanazon a képen, vagy a különböző képek azonosak-e a megbízhatósági pontszám használatával. Az arc emellett összehasonlíthatja az arcokat egy adatbázissal, hogy megtudja, van-e már hasonló vagy azonos arc. A hasonló arcok csoportokba rendezése közös vizualizációs tulajdonságok használatával is elvégezhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Face szolgáltatástárolók használata előtt meg kell felelnie az alábbi előfeltételeknek.
+Az arc Service-tárolók használata előtt meg kell felelnie a következő előfeltételeknek.
 
 |Kötelező|Cél|
 |--|--|
-|Docker-motor| A Docker-motort [gazdaszámítógépre](#the-host-computer)kell telepíteni. A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy a tárolók csatlakozhassanak az Azure-hoz, és számlázási adatokat küldjenek az Azure-ba. <br><br> Windows rendszeren a Dockert is be kell állítani linuxos tárolók támogatására.<br><br>|
-|A Docker ismerete | A Docker-fogalmak, például a nyilvántartások, az adattárak, a tárolók és a tárolórendszerképek alapvető ismeretekre van szüksége. Az alapvető `docker` parancsok ismeretére is szükség van.| 
-|Face erőforrás |A tároló használatához a következőkre van szüksége:<br><br>Egy Azure **Face-erőforrás** és a társított API-kulcs és a végpont URI.An Azure Face resource and the associated API key and the endpoint URI. Mindkét érték elérhető az **erőforrás Áttekintés és** **Kulcsok** lapján. El kell indítaniuk a konténert.<br><br>**{API_KEY}**: A **Kulcsok** lapon elérhető két erőforráskulcs egyike<br><br>**{ENDPOINT_URI}**: Az **Áttekintés** lapon megadott végpont
+|Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> Windows rendszeren a Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
+|A Docker ismerete | Alapvető ismeretekre van szüksége a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről. Emellett az alapszintű `docker` parancsok ismeretére is szükség van.| 
+|Face erőforrás |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Face** -erőforrást és a hozzá tartozó API-kulcsot és a végpont URI-ját. Mindkét érték elérhető az erőforrás **Áttekintés** és **kulcsok** oldalain. Szükségük van a tároló elindítására.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Hozzáférés kérése a privát tároló beállításjegyzékéhez
+## <a name="request-access-to-the-private-container-registry"></a>Hozzáférés kérése a Private Container registryhez
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -44,22 +44,22 @@ A Face szolgáltatástárolók használata előtt meg kell felelnie az alábbi e
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>A tárolóra vonatkozó követelmények és ajánlások
+### <a name="container-requirements-and-recommendations"></a>A tárolóra vonatkozó követelmények és javaslatok
 
-Az alábbi táblázat ismerteti a minimális és ajánlott CPU-magok és a memória lefoglalni az egyes Face szolgáltatás tárolók.
+A következő táblázat az egyes Face Service-tárolók számára lefoglalható minimális és ajánlott CPU-magokat és memóriát ismerteti.
 
-| Tároló | Minimális | Ajánlott | Tranzakciók másodpercenként<br>(Minimum, maximum)|
+| Tároló | Minimális | Ajánlott | Tranzakció/másodperc<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
 |Arcfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |10, 20|
 
-* Minden magnak legalább 2,6 GHz-nek vagy gyorsabbnak kell lennie.
-* Tranzakciók másodpercenként (TPS).
+* Minden mag legalább 2,6 GHz-es vagy gyorsabb lehet.
+* Másodpercenkénti tranzakciók (TPS).
 
-A mag és `--cpus` a `--memory` memória megfelel nek a `docker run` és a beállításoknak, amelyek a parancs részeként használatosak.
+Az alap és a memória a `--cpus` `docker run` parancs `--memory` részeként használt és beállításoknak felel meg.
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép bekérése docker-lekéréses sel
+## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a Docker-lekéréssel
 
-A Face szolgáltatás tárolórendszerképei elérhetők. 
+Elérhetők a Face szolgáltatáshoz tartozó tároló lemezképek. 
 
 | Tároló | Adattár |
 |-----------|------------|
@@ -67,7 +67,7 @@ A Face szolgáltatás tárolórendszerképei elérhetők.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-face-container"></a>Docker-lekérése a Face tárolóhoz
+### <a name="docker-pull-for-the-face-container"></a>Docker-lekérés a Face tárolóhoz
 
 ```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
@@ -75,16 +75,16 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 ## <a name="use-the-container"></a>A tároló használata
 
-Miután a tároló a [gazdaszámítógépen](#the-host-computer)van, a következő eljárással dolgozzon a tárolóval.
+Miután a tároló a [gazdagépen](#the-host-computer)található, a következő folyamat használatával dolgozhat a tárolóval.
 
-1. [Futtassa a tárolót](#run-the-container-with-docker-run) a szükséges számlázási beállításokkal. További [példák](./face-resource-container-config.md#example-docker-run-commands) a `docker run` parancs állnak rendelkezésre. 
-1. [Kérdezze meg a tároló előrejelzési végpontját.](#query-the-containers-prediction-endpoint) 
+1. [Futtassa a tárolót](#run-the-container-with-docker-run) a szükséges számlázási beállításokkal. További [példák](./face-resource-container-config.md#example-docker-run-commands) a `docker run` parancsra. 
+1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint). 
 
-## <a name="run-the-container-with-docker-run"></a>Futtassa a tárolót docker-futtatással
+## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a Docker futtatásával
 
-Használja a [docker run](https://docs.docker.com/engine/reference/commandline/run/) parancsot a tároló futtatásához. Tekintse meg [a szükséges paraméterek összegyűjtését](#gathering-required-parameters) `{API_KEY}` a be- és értékek `{ENDPOINT_URI}` begyűjtésének részleteiről.
+A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A `{ENDPOINT_URI}` és `{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
 
-[Példák](face-resource-container-config.md#example-docker-run-commands) `docker run` a parancs állnak rendelkezésre.
+[Examples](face-resource-container-config.md#example-docker-run-commands) A `docker run` parancs például elérhető.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -96,15 +96,15 @@ ApiKey={API_KEY}
 
 A parancs a következőket hajtja végre:
 
-* Egy arctárolót futtat a tárolólemezképből.
-* Egy processzormag és 4 GB memória lefoglalása.
-* Az 5000-es TCP-portot teszi elérhetővé, és egy pszeudo TTY-t rendel a tárolóhoz.
-* A tároló automatikus eltávolítása kilépés után. A tárolórendszerkép továbbra is elérhető a gazdaszámítógépen. 
+* Egy Face tárolót futtat a tároló rendszerképből.
+* Egy CPU-mag és 4 GB memóriát foglal le.
+* Elérhetővé teszi a 5000-es TCP-portot, és kioszt egy pszeudo TTY-t a tárolóhoz.
+* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen. 
 
-További [példák](./face-resource-container-config.md#example-docker-run-commands) a `docker run` parancs állnak rendelkezésre. 
+További [példák](./face-resource-container-config.md#example-docker-run-commands) a `docker run` parancsra. 
 
 > [!IMPORTANT]
-> A `Eula` `Billing`, `ApiKey` és a beállításokat meg kell adni a tároló futtatásához, különben a tároló nem indul el. További információ: [Billing](#billing).
+> A `Eula`, `Billing`a és `ApiKey` a beállításokat meg kell adni a tároló futtatásához, vagy a tároló nem indul el. További információ: [számlázás](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -113,7 +113,7 @@ További [példák](./face-resource-container-config.md#example-docker-run-comma
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít. 
 
-Használja az `http://localhost:5000`állomás, , tároló API-k.
+A tároló API `http://localhost:5000`-k esetében használja a gazdagépet.
 
 
 <!--  ## Validate container is running -->
@@ -126,17 +126,17 @@ Használja az `http://localhost:5000`állomás, , tároló API-k.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a tárolót kimeneti [csatlakoztatással](./face-resource-container-config.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló naplófájlokat hoz létre, amelyek hasznosak a tároló indításavagy futtatása során felmerülő problémák elhárításához.
+Ha a tárolót kimeneti [csatlakoztatással](./face-resource-container-config.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak lehetnek a tároló indításakor vagy futtatásakor előforduló problémák elhárításához.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Számlázás
 
-A Face szolgáltatástárolók számlázási adatokat küldenek az Azure-ba egy Face-erőforrás használatával az Azure-fiókjában. 
+Az arc Service-tárolók számlázási adatokat küldenek az Azure-nak az Azure-fiókjában lévő Face-erőforrás használatával. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Ezekről a beállításokról a [Tárolók konfigurálása](./face-resource-container-config.md)című témakörben talál további információt.
+További információ ezekről a beállításokról: [tárolók konfigurálása](./face-resource-container-config.md).
 
 <!--blogs/samples/video coures -->
 
@@ -144,19 +144,19 @@ Ezekről a beállításokról a [Tárolók konfigurálása](./face-resource-cont
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben ismertetheti a Face szolgáltatástárolók letöltésével, telepítésével és futtatásával kapcsolatos fogalmakat és munkafolyamatokat. Összegezve:
+Ebből a cikkből megtudhatta, hogyan töltheti le, telepítheti és futtathatja a Face Service-tárolókat. Összegezve:
 
-* A tárolórendszerképek az Azure Container Registry szolgáltatásból töltődnek le.
-* A tárolórendszerképek a Dockerben futnak.
-* A REST API vagy az SDK használatával a Face szolgáltatástárolókban műveleteket hívhat meg a tároló gazdaURI-jának megadásával.
-* A tároló példányosításakor meg kell adnia a számlázási adatokat.
+* A rendszer letölti a tároló lemezképeit a Azure Container Registryról.
+* A tároló lemezképei a Docker-ben futnak.
+* Az REST API vagy az SDK használatával hívhat meg műveleteket a Face Service-tárolókban a tároló gazda URI-ja megadásával.
+* A tárolók példányainak létrehozásakor számlázási adatokat kell megadnia.
 
 > [!IMPORTANT]
-> A Cognitive Services-tárolók nem rendelkeznek licenccel anélkül, hogy az Azure-hoz csatlakoznának a méréshez. Az ügyfeleknek lehetővé kell tenniük, hogy a tárolók mindig kommunikálják a számlázási adatokat a mérési szolgáltatással. A Cognitive Services-tárolók nem küldenek ügyféladatokat, például az elemzett képet vagy szöveget a Microsoftnak.
+> Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyezniük kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett képet vagy szöveget a Microsoftnak.
 
 ## <a name="next-steps"></a>További lépések
 
-* A konfigurációs beállításokról a [Tárolók konfigurálása](face-resource-container-config.md)című témakörben olvashat.
-* Ha többet szeretne tudni az arcok észleléséről és azonosításáról, olvassa el az [Arc áttekintése című témakört.](Overview.md)
-* A tároló által támogatott módszerekről a [Face API című témakörben](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)talál további információt.
-* További Cognitive Services-tárolók használatához lásd: [Cognitive Services-tárolók.](../cognitive-services-container-support.md)
+* A konfigurációs beállításokkal kapcsolatban lásd: [tárolók konfigurálása](face-resource-container-config.md).
+* Az arcok észlelésével és azonosításával kapcsolatos további tudnivalókért tekintse meg a [Face Overview](Overview.md)című témakört.
+* További információ a tároló által támogatott módszerekről: [Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+* További Cognitive Services tárolók használatához lásd: [Cognitive Services tárolók](../cognitive-services-container-support.md).

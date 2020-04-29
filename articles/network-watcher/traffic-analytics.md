@@ -1,6 +1,6 @@
 ---
-title: Azure forgalomelemzés | Microsoft dokumentumok
-description: Ismerje meg, hogyan elemezheti az Azure hálózati biztonsági csoport folyamatnaplóit a forgalomelemzéssel.
+title: Azure Traffic Analytics | Microsoft Docs
+description: Ismerje meg, hogyan elemezheti az Azure hálózati biztonsági csoportok flow-naplóit a Traffic Analytics használatával.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,51 +13,51 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80981545"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
-A Traffic Analytics egy felhőalapú megoldás, amely betekintést nyújt a felhőhálózatok felhasználói és alkalmazási tevékenységébe. A Traffic Analytics elemzi a Network Watcher hálózati biztonsági csoport (NSG) folyamatnaplóit, hogy betekintést nyújtson az Azure-felhőben a forgalom áramlásába. A forgalomelemzéssel a következőkre tehet ki:
+Traffic Analytics egy felhőalapú megoldás, amely láthatóságot biztosít a felhasználói és alkalmazási tevékenységeknek a felhőalapú hálózatokban. A Traffic Analytics Network Watcher hálózati biztonsági csoport (NSG) folyamatábráit elemzi, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. A Traffic Analytics segítségével a következőket teheti:
 
-- Vizualizálja a hálózati tevékenységet az Azure-előfizetései között, és azonosítsa a forró pontokat.
-- Azonosítsa a hálózatot fenyegető biztonsági fenyegetéseket, és biztosítsa a hálózatot olyan információkkal, mint a nyílt portok, az internet-hozzáférést megkísérelő alkalmazások és a tisztességtelen hálózatokhoz csatlakozó virtuális gépek.Identify security threats, and secure your network, with information such as open-ports, applications attempting internet access, and virtual machines (VM) connect ing to rogue networks.
-- Ismerje meg az Azure-régiók és az internet közötti forgalomáramlási mintákat, hogy optimalizálja a hálózati telepítést a teljesítmény és a kapacitás érdekében.
-- A hálózat helytelen konfigurációinak pontos anameddig, ami a hálózat sikertelen kapcsolataihoz vezet.
+- Megjelenítheti a hálózati tevékenységeket az Azure-előfizetések között, és azonosíthatja a gyors helyeket.
+- Azonosítsa a biztonsági fenyegetéseket, és gondoskodjon a hálózat biztonságáról, olyan információkkal, mint a nyílt portok, az internet-hozzáférést megkísérlő alkalmazások és a virtuális gépek (VM) a támadó hálózatokhoz való csatlakozáskor.
+- Ismerje meg az Azure-régiók és az Internet forgalmi forgalmának mintáit a hálózati üzembe helyezés teljesítményének és kapacitásának optimalizálása érdekében.
+- A hálózat hibás kapcsolataihoz vezető hálózati helytelen konfigurációkat.
 
 > [!NOTE]
-> A Traffic Analytics mostantól támogatja az NSG flow naplók adatainak nagyobb gyakorisággal, 10 mins-ben történő gyűjtését
+> A Traffic Analytics mostantól támogatja a NSG adatfolyam-naplók adatok gyűjtését 10 percnél nagyobb gyakorisággal
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="why-traffic-analytics"></a>Miért a forgalomelemzés?
+## <a name="why-traffic-analytics"></a>Miért érdemes a Traffic Analytics?
 
-A kompromisszumok nélküli biztonság, megfelelőség és teljesítmény érdekében elengedhetetlen a saját hálózatának figyelése, kezelése és megismerése. Ismerve a saját környezet rendkívül fontos, hogy megvédje és optimalizálja azt. Gyakran ismernie kell a hálózat aktuális állapotát, a csatlakozást, a csatlakozást, az internetre nyitva álló portokat, a várható hálózati viselkedést, a szabálytalan hálózati viselkedést és a forgalom hirtelen emelkedését.
+A biztonság, a megfelelőség és a teljesítmény érdekében elengedhetetlen a saját hálózat figyelése, kezelése és megismerése. A saját környezetének ismerete rendkívül fontos a védelemhez és az optimalizáláshoz. Gyakran ismernie kell a hálózat aktuális állapotát, amely összeköti a csatlakozást, és hogy mely portok állnak nyitva az interneten, a várt hálózati működés, a szabálytalan hálózati viselkedés és a forgalom hirtelen emelkedése.
 
-A felhőhálózatok eltérnek a helyszíni vállalati hálózatoktól, ahol netflow vagy azzal egyenértékű protokollképes útválasztók és kapcsolók vannak, amelyek lehetővé teszik az IP-hálózati forgalom gyűjtését, amikor belép vagy kilép a hálózati adapterből. A forgalomáramlási adatok elemzésével elemezheti a hálózati forgalom áramlását és mennyiségét.
+A felhőalapú hálózatok különböznek a helyszíni vállalati hálózatoktól, ahol netflow vagy egyenértékű protokoll-kompatibilis útválasztók és kapcsolók találhatók, amelyek lehetővé teszik az IP-hálózati forgalom gyűjtését, amikor belépnek vagy kilépnek egy hálózati adapterből. A forgalmi adatok elemzésével a hálózati forgalom és a kötet elemzését is létrehozhatja.
 
-Az Azure virtuális hálózatok NSG-folyamatnaplókkal rendelkeznek, amelyek az egyes hálózati adapterekhez, virtuális gépekhez vagy alhálózatokhoz társított hálózati biztonsági csoporton keresztül biztosítinformációt a be- és kimenő IP-forgalomról. A nyers NSG-folyamatnaplók elemzésével, valamint a biztonság, a topológia és a földrajzi ismeretek intelligenciájának beszúrásával a forgalomelemzés betekintést nyújthat a környezet forgalomáramlásába. A Traffic Analytics olyan információkat nyújt, mint a legtöbb kommunikáló állomás, a legtöbb kommunikáló alkalmazásprotokoll, a legtöbb beszélgető állomáspár, az engedélyezett/blokkolt forgalom, a bejövő/kimenő forgalom, a nyitott internetes portok, a legtöbb blokkoló szabály, az Azure-adatközpontonkénti forgalomelosztás, a virtuális hálózat, az alhálózatok vagy az engedélyezetlen hálózatok.
+Az Azure-beli virtuális hálózatok NSG rendelkeznek, amelyek az egyes hálózati adapterekhez, virtuális gépekhez vagy alhálózatokhoz társított hálózati biztonsági csoportokon keresztül információt biztosítanak a bejövő és kimenő IP-forgalomról. A Traffic Analytics a nyers NSG-naplók elemzésével, valamint a biztonság, a topológia és a földrajz intelligenciának behelyezésével betekintést nyújt az adatforgalom forgalmára a környezetében. Traffic Analytics olyan információkat biztosít, mint például a legtöbb kommunikációs gazdagép, a legtöbb kommunikációs alkalmazási protokoll, a legtöbb kommunikációt biztosító fogadó pár, az engedélyezett/letiltott forgalom, a bejövő/kimenő forgalom, az internetes portok megnyitása, a legtöbb blokkolási szabály, az Azure-adatközpont, a virtuális hálózat, az alhálózatok vagy a szélhámos hálózatok forgalma.
 
 ## <a name="key-components"></a>A legfontosabb összetevők
 
-- **Hálózati biztonsági csoport (NSG)**: Az Azure virtuális hálózathoz csatlakoztatott erőforrások hálózati forgalmát engedélyező vagy megtagadó biztonsági szabályok listáját tartalmazza. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információt a [Hálózati biztonsági csoport – áttekintés című témakörben talál.](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
-- **Hálózati biztonsági csoport (NSG) folyamatnaplói:** Lehetővé teszi a hálózati biztonsági csoporton keresztül a be- és kimenő IP-forgalommal kapcsolatos információk megtekintését. Az NSG-folyamatnaplók json formátumban vannak megírva, és szabályonként mutatják a kimenő és bejövő folyamatokat, a folyamatáltal alkalmazott hálózati adaptert, a folyamatöthangú információkat (forrás/cél IP-cím, forrás/cél port és protokoll), valamint azt, hogy a forgalmat engedélyezték vagy megtagadták-e. Az NSG-folyamatnaplókról további információt az [NSG-folyamatnaplók című témakörben talál.](network-watcher-nsg-flow-logging-overview.md)
-- **Log Analytics:** Egy Azure-szolgáltatás, amely adatokfigyelési adatokat gyűjt, és tárolja az adatokat egy központi tárházban. Ezek az adatok eseményeket, teljesítményadatokat vagy az Azure API-n keresztül biztosított egyéni adatokat tartalmazhatnak. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Az olyan alkalmazások figyelése, mint a hálózati teljesítményfigyelő és a forgalomelemzés az Azure Monitor naplói alapján épülnek fel. További információ: [Azure Monitor logs](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics-munkaterület:** Az Azure Monitor-naplók egy példánya, ahol az Azure-fiókra vonatkozó adatok tárolódnak. A Log Analytics-munkaterületekről további információt a [Log Analytics-munkaterület létrehozása című témakörben talál.](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
-- **Network Watcher**: Olyan regionális szolgáltatás, amely lehetővé teszi a feltételek figyelése és diagnosztizálása hálózati forgatókönyv szintjén az Azure-ban. Az NSG-folyamatnaplókat a Network Watcher segítségével kapcsolhatja be és ki. További információ: [Network Watcher](network-watcher-monitoring-overview.md).
+- **Hálózati biztonsági csoport (NSG)**: olyan biztonsági szabályok listáját tartalmazza, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure Virtual Networkhoz csatlakoztatott erőforrásokhoz. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információ: [hálózati biztonsági csoport áttekintése](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Hálózati biztonsági csoport (NSG) folyamatábrái**: lehetővé teszi, hogy egy hálózati biztonsági csoporton keresztül megtekintse a bejövő és kimenő IP-forgalomra vonatkozó információkat. A NSG JSON formátumban vannak beírva, és a kimenő és a bejövő folyamatok megjelenítése egy szabály alapján történik, a folyamat a hálózati adapterre vonatkozik, öt rekordos információ a folyamatról (forrás/cél IP-cím, forrás/cél port és protokoll), és ha a forgalom engedélyezett vagy megtagadva. További információ a NSG: [NSG flow-naplók](network-watcher-nsg-flow-logging-overview.md).
+- **Log Analytics**: olyan Azure-szolgáltatás, amely figyeli az adatokat, és egy központi tárházban tárolja az adatokat. Ezek az információk lehetnek az Azure API-n keresztül biztosított események, teljesítményadatok vagy egyéni adat. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Az alkalmazások figyelése, például a Network Performance monitor és a Traffic Analytics, Azure Monitor naplók használatával épül fel. További információ: [Azure monitor naplók](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics munkaterület**: Azure monitor naplók egy példánya, ahol az Azure-fiókhoz tartozó adatmennyiséget tárolja a rendszer. Log Analytics munkaterületekről további információt a [log Analytics munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)című témakörben talál.
+- **Network Watcher**: egy regionális szolgáltatás, amely lehetővé teszi a feltételek figyelését és diagnosztizálását az Azure-beli hálózati forgatókönyvek szintjén. A NSG flow-naplókat be-és kikapcsolhatja Network Watcher segítségével. További információ: [Network Watcher](network-watcher-monitoring-overview.md).
 
-## <a name="how-traffic-analytics-works"></a>A forgalomelemzés működése
+## <a name="how-traffic-analytics-works"></a>A Traffic Analytics működése
 
-A traffic analytics megvizsgálja a nyers NSG-folyamatnaplókat, és rögzíti a csökkentett naplókat az azonos forrás IP-cím, a cél IP-cím, a cél-port és a protokoll közötti közös folyamatok összesítésével. Például az 1. A csökkentett napló nak egy bejegyzése van, hogy a Host 1 & Host 2 1óra alatt 100 alkalommal kommunikált a *80-as* port és a *HTTP*protokoll használatával, ahelyett, hogy 100 bejegyzéssel rendelkezne. A csökkentett naplók földrajzi, biztonsági és topológiai információkkal vannak kijavítva, majd egy Log Analytics-munkaterületen tárolódnak. Az alábbi képen az adatfolyam látható:
+A Traffic Analytics megvizsgálja a nyers NSG-naplókat, és rögzíti a csökkentett naplókat az azonos forrás IP-cím, cél IP-cím, célport és protokoll közötti közös folyamatok összesítésével. Tegyük fel például, hogy az 1. állomás (IP-cím: 10.10.10.10) a 2-es gazdagépre (IP-cím: 10.10.20.10), 100-re, a port (például 80) és a protokoll (például a http) használatával kommunikál. A csökkentett napló egyetlen bejegyzést tartalmaz, amely az 1. & gazdagép 2. állomása 1 órán keresztül 100 alkalommal kommunikált a *80* -es és a *http*-protokollon keresztül, a 100-bejegyzések helyett. A csökkentett naplók a földrajz, a biztonság és a topológia adataival bővülnek, majd egy Log Analytics munkaterületen tárolódnak. Az alábbi ábrán az adatfolyam látható:
 
-![Adatfolyam az NSG-folyamatnaplók feldolgozásához](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
+![Adatáramlás a NSG-folyamat naplói feldolgozásához](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
 ## <a name="supported-regions-nsg"></a>Támogatott régiók: NSG 
 
-Az NSG-k forgalomelemzését az alábbi támogatott régiók bármelyikében használhatja:
+A NSG Traffic Analytics a következő támogatott régiókban használható:
 
 * Közép-Kanada
 * USA nyugati középső régiója
@@ -84,11 +84,11 @@ Az NSG-k forgalomelemzését az alábbi támogatott régiók bármelyikében has
 * Kelet-Japán 
 * Nyugat-Japán
 * USA-beli államigazgatás – Virginia
-* Kína Keleti 2
+* Kelet-Kína 2
 
-## <a name="supported-regions-log-analytics-workspaces"></a>Támogatott régiók: Log Analytics-munkaterületek
+## <a name="supported-regions-log-analytics-workspaces"></a>Támogatott régiók: Log Analytics munkaterületek
 
-A Log Analytics-munkaterületnek a következő régiókban kell léteznie:
+A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 * Közép-Kanada
 * USA nyugati középső régiója
 * USA keleti régiója
@@ -113,13 +113,13 @@ A Log Analytics-munkaterületnek a következő régiókban kell léteznie:
 * Közép-India
 * Kelet-Japán
 * USA-beli államigazgatás – Virginia
-* Kína Keleti 2
+* Kelet-Kína 2
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="user-access-requirements"></a>Felhasználói hozzáférési követelmények
 
-A fióknak az alábbi [Azure-szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)egyikének kell lennie:
+A fiókjának a következő Azure [beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)egyikének kell lennie:
 
 |Üzemi modell   | Szerepkör                   |
 |---------          |---------               |
@@ -128,47 +128,47 @@ A fióknak az alábbi [Azure-szerepkörök](../role-based-access-control/built-i
 |                   | Olvasó                 |
 |                   | Hálózati közreműködő    |
 
-Ha a fiók nincs hozzárendelve a beépített szerepkörök egyikéhez, akkor az előfizetés szintjén a következő műveletekhez rendelt [egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kell hozzárendelni:
+Ha a fiókja nincs hozzárendelve az egyik beépített szerepkörhöz, azt hozzá kell rendelni egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , amely a következő műveletekhez van hozzárendelve az előfizetési szinten:
 
-- "Microsoft.Network/applicationGateways/read"
-- "Microsoft.Network/connections/read"
-- "Microsoft.Network/loadBalancers/read"
-- "Microsoft.Network/localNetworkGateways/read"
-- "Microsoft.Network/networkInterfaces/read"
-- "Microsoft.Network/networkSecurityGroups/read"
-- "Microsoft.Network/publicIPAddresses/read"
-- "Microsoft.Network/routeTables/read"
-- "Microsoft.Network/virtualNetworkGateways/read"
-- "Microsoft.Network/virtualNetworks/read"
-- "Microsoft.Network/expressRouteCircuits/read"
+- "Microsoft. Network/applicationGateways/Read"
+- "Microsoft. Network/Connections/Read"
+- "Microsoft. Network/loadBalancers/Read"
+- "Microsoft. Network/localNetworkGateways/Read"
+- "Microsoft. Network/networkInterfaces/Read"
+- "Microsoft. Network/networkSecurityGroups/Read"
+- "Microsoft. Network/nyilvános IP/Read"
+- "Microsoft. Network/routeTables/Read"
+- "Microsoft. Network/virtualNetworkGateways/Read"
+- "Microsoft. Network/virtualNetworks/Read"
+- "Microsoft. Network/expressRouteCircuits/Read"
 
-A felhasználói hozzáférési engedélyek ellenőrzéséről a Forgalomelemzés – [gyakori kérdések című témakörben talál további információt.](traffic-analytics-faq.md)
+A felhasználói hozzáférési engedélyek vizsgálatával kapcsolatos információkért lásd: [Traffic Analytics – gyakori kérdések](traffic-analytics-faq.md).
 
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-A forgalom elemzéséhez rendelkeznie kell egy meglévő hálózati figyelővel, vagy engedélyeznie kell [egy hálózati figyelőt](network-watcher-create.md) minden olyan régióban, ahol nsg-k vannak, amelyek esetében elemezni szeretné a forgalmat. A forgalomelemzés engedélyezhető a támogatott régiók bármelyikében üzemeltetett [NSG-k esetében.](#supported-regions-nsg)
+A forgalom elemzéséhez rendelkeznie kell egy meglévő hálózati figyelővel, vagy [engedélyeznie kell egy hálózati figyelőt](network-watcher-create.md) minden olyan régióban, amelyhez NSG szeretné elemezni a forgalmat. A Traffic Analytics a [támogatott régiókban](#supported-regions-nsg)üzemeltetett NSG is engedélyezhető.
 
-### <a name="select-a-network-security-group"></a>Hálózati biztonsági csoport kijelölése
+### <a name="select-a-network-security-group"></a>Hálózati biztonsági csoport kiválasztása
 
-Az NSG-folyamatnaplózás engedélyezése előtt rendelkeznie kell egy hálózati biztonsági csoporttal a folyamatok naplózásához. Ha nem rendelkezik hálózati biztonsági csoporttal, olvassa el a [Hálózati biztonsági csoport létrehozása](../virtual-network/manage-network-security-group.md#create-a-network-security-group) létrehozása című témakört.
+A NSG folyamat naplózásának engedélyezése előtt hálózati biztonsági csoporttal kell rendelkeznie a folyamatok naplózásához. Ha nem rendelkezik hálózati biztonsági csoporttal, a létrehozásához tekintse meg [a hálózati biztonsági csoport létrehozása](../virtual-network/manage-network-security-group.md#create-a-network-security-group) című témakört.
 
-Az Azure Portalon nyissa meg **a Hálózati figyelő**t, és válassza az **NSG-folyamatnaplók lehetőséget.** Válassza ki azt a hálózati biztonsági csoportot, amelyhez nsg-folyamatnaplót szeretne engedélyezni, ahogy az az alábbi képen látható:
+A Azure Portal területen lépjen a **Network Watcher**elemre, majd válassza a **NSG flow-naplók**lehetőséget. Válassza ki azt a hálózati biztonsági csoportot, amely számára engedélyezni kívánja a NSG flow-naplóját a következő képen látható módon:
 
-![Az NSG-k kiválasztása, amelyek az NSG-folyamatnapló engedélyezését igénylik](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
+![A NSG flow naplójának engedélyezését igénylő NSG kiválasztása](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-Ha a [támogatott régióktól](#supported-regions-nsg)eltérő régióban üzemeltetett NSG-k forgalomelemzését próbálja engedélyezni, "Nem található" hibaüzenet jelenik meg.
+Ha olyan NSG próbálja meg a Traffic Analytics szolgáltatást, amely a [támogatott régión](#supported-regions-nsg)kívül más régióban található, "nem található" hibaüzenet jelenik meg.
 
-## <a name="enable-flow-log-settings"></a>Folyamatnapló-beállítások engedélyezése
+## <a name="enable-flow-log-settings"></a>Folyamat naplójának beállításainak engedélyezése
 
-A folyamatnapló beállításainak engedélyezése előtt a következő feladatokat kell elvégeznie:
+A folyamat naplójának beállításainak engedélyezése előtt el kell végeznie a következő feladatokat:
 
-Regisztrálja az Azure Insights-szolgáltatót, ha még nincs regisztrálva az előfizetéséhez:
+Regisztrálja az Azure-beli bepillantást nyújtó szolgáltatót, ha még nincs regisztrálva az előfizetésében:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-Ha még nem rendelkezik egy Azure Storage-fiók tárolására NSG-folyamat naplók, létre kell hoznia egy tárfiókot. Létrehozhat egy tárfiókot a következő paranccsal. A parancs futtatása `<replace-with-your-unique-storage-account-name>` előtt cserélje le egy olyan névre, amely az összes Azure-helyen egyedi, 3–24 karakter hosszúságú, csak számokat és kisbetűket használva. Szükség esetén módosíthatja az erőforráscsoport nevét is.
+Ha még nem rendelkezik Azure Storage-fiókkal a NSG-flow-naplók tárolásához a alkalmazásban, létre kell hoznia egy Storage-fiókot. Hozzon létre egy Storage-fiókot az alábbi parancs használatával. A parancs futtatása előtt cserélje le `<replace-with-your-unique-storage-account-name>` a karaktert az összes Azure-helyen található egyedi névre, amely 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ. Szükség esetén módosíthatja az erőforráscsoport nevét is.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -179,210 +179,210 @@ New-AzStorageAccount `
   -Kind StorageV2
 ```
 
-A képen látható módon adja meg a következő beállításokat:
+Válassza ki a következő beállításokat a képen látható módon:
 
-1. *Be* jelölés **az Állapothoz**
-2. Válassza *a 2-es verzió* lehetőséget a Flow **Logs verzióhoz.** A 2-es verzió folyamatmunkamenet-statisztikákat tartalmaz (bájt és csomagok)
-3. Válasszon ki egy meglévő tárfiókot a folyamatnaplók tárolásához. Győződjön meg arról, hogy a tároló nem rendelkezik a "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" érték igaz.
-4. Állítsa be az **adatmegőrzést** az adatok tárolásához kívánt napok számára. Ha az adatokat örökre tárolni szeretné, állítsa az értéket *0*értékre. A tárfiókért Azure Storage-díjat kell fizetnie. 
-5. *Válassza a Be* lehetőséget a **Forgalomelemzési állapot hoz.**
-6. Adja meg a feldolgozási időközt. A választás alapján a folyamatnaplókat a tárfiókból gyűjtjük, és a Traffic Analytics feldolgozza. Választhat feldolgozási időköz minden 1 óra vagy 10 perc alatt. 
-7. Jelöljön ki egy meglévő Log Analytics (OMS) munkaterületet, vagy új munkaterület **létrehozásához** válassza az Új munkaterület létrehozása lehetőséget. A Traffic Analytics a Log Analytics-munkaterületet az összesített és indexelt adatok tárolására használja, amelyeket aztán az elemzés létrehozásához használnak. Ha egy meglévő munkaterületet választ, annak a [támogatott régiók](#supported-regions-log-analytics-workspaces) egyikében kell léteznie, és az új lekérdezési nyelvre frissítve kell lennie. Ha nem kíván frissíteni egy meglévő munkaterületet, vagy nem rendelkezik munkaterülettel egy támogatott régióban, hozzon létre egy újat. A lekérdezési nyelvekről az [Azure Log Analytics új naplókeresésre való frissítés című](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)témakörben talál további információt.
+1. **Állapot** *kiválasztása*
+2. Válassza a *2. verziót* a flow- **naplók verziójának**kiválasztásához. A 2. verzió folyamat-munkameneti statisztikát tartalmaz (bájtok és csomagok)
+3. Válasszon ki egy meglévő Storage-fiókot a folyamat naplófájljainak tárolásához a alkalmazásban. Győződjön meg arról, hogy a tároló nem rendelkezik "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" beállítás értéke TRUE (igaz).
+4. Állítsa be a **megőrzési** időt arra, hogy hány napig szeretné tárolni az adatok tárolását. Ha örökre szeretné tárolni az adattárolást, állítsa az értéket *0-ra*. A Storage-fiókhoz Azure Storage-díjakat kell fizetnie. 
+5. **Traffic Analytics állapothoz**válassza *a* be lehetőséget.
+6. Válassza ki a feldolgozási időközt. Az Ön választása alapján a rendszer begyűjti a flow-naplókat a Storage-fiókból, és Traffic Analytics dolgozza fel. 1 óránként vagy 10 percenként is kiválaszthatja a feldolgozási időközt. 
+7. Válasszon ki egy meglévő Log Analytics (OMS) munkaterületet, vagy válassza az **Új munkaterület létrehozása** lehetőséget egy új létrehozásához. A Traffic Analytics a Log Analytics munkaterületet használja az elemzés létrehozásához használt összesített és indexelt adatokat tárolására. Ha egy meglévő munkaterületet választ ki, akkor azt a [támogatott régiók](#supported-regions-log-analytics-workspaces) egyikében kell megadnia, és az új lekérdezési nyelvre kell frissíteni. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy támogatott régióbeli munkaterülettel, hozzon létre egy újat. További információ a lekérdezési nyelvekről: az [Azure log Analytics frissítése az új naplók keresésére](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 > [!NOTE]
->A forgalomelemzési megoldást és az NSG-ket üzemeltető naplóelemzési munkaterületnek nem kell ugyanabban a régióban lennie. Előfordulhat például, hogy a nyugat-európai régió egyik munkaterületén van forgalomelemzés, míg az USA keleti és nyugati régiójában nsg-k lehetnek. Több NSG konfigurálható ugyanabban a munkaterületen.
+>A Traffic Analytics-megoldást üzemeltető log Analytics-munkaterületnek és a NSG nem kell ugyanabban a régióban lennie. Előfordulhat például, hogy a Traffic Analytics egy olyan munkaterületen található a Nyugat-európai régióban, amely NSG az USA keleti régiójában és az USA nyugati régiójában. Több NSG is konfigurálható ugyanabban a munkaterületen.
 
 8. Kattintson a **Mentés** gombra.
 
-    ![Tárfiók, Log Analytics-munkaterület és Traffic Analytics-engedélyezés kiválasztása](./media/traffic-analytics/ta-customprocessinginterval.png)
+    ![A Storage-fiók kiválasztása, a Log Analytics munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Ismételje meg az előző lépéseket minden más NSG-k, amelyek engedélyezni szeretné a forgalom elemzését. A folyamatnaplókból származó adatok at a munkaterületre küldi a rendszer, ezért győződjön meg arról, hogy az ország helyi törvényei és előírásai lehetővé teszik az adattárolást abban a régióban, ahol a munkaterület található. Ha különböző feldolgozási intervallumokat állított be a különböző NSG-khez, az adatokat különböző időközönként gyűjtjük. Például: Engedélyezheti a kritikus virtuális nevek 10 perces feldolgozási időközét, a nem kritikus virtuális nevek esetében pedig 1 órát.
+Ismételje meg az előző lépéseket minden olyan NSG, amelyhez engedélyezni szeretné a Traffic Analytics szolgáltatást. A rendszer elküldi a munkaterületnek a flow-naplókból származó adatok adatait, ezért gondoskodjon arról, hogy a helyi törvények és rendeletek engedélyezze az adattárolást abban a régióban, ahol a munkaterület létezik. Ha eltérő feldolgozási intervallumokat állított be különböző NSG, az adatok gyűjtése különböző időközönként történik. Például: engedélyezheti a 10 perces feldolgozási időközt a kritikus virtuális hálózatok esetében, és 1 órát a nem kritikus virtuális hálózatok.
 
-A forgalomelemzést a [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell-parancsmag használatával is konfigurálhatja az Azure PowerShellben. Futtassa `Get-Module -ListAvailable Az` a telepített verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+A Traffic Analytics szolgáltatást a Azure PowerShell [set-AzNetworkWatcherConfigFlowLog PowerShell-](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) parancsmagjának használatával is konfigurálhatja. Futtassa `Get-Module -ListAvailable Az` a parancsot a telepített verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
-## <a name="view-traffic-analytics"></a>Forgalomelemzés megtekintése
+## <a name="view-traffic-analytics"></a>Traffic Analytics megtekintése
 
-A Traffic Analytics megtekintéséhez keresse meg a **Network Watcher kifejezést** a portál keresősávjában. Miután bejutott a Network Watcher befutójába, a forgalomelemzés és annak képességeinek felfedezéséhez válassza a **Traffic Analytics** lehetőséget a bal oldali menüből. 
+Traffic Analytics megtekintéséhez keresse meg a **Network Watchert** a portál keresési sávján. Network Watcher belül, a Traffic Analytics és annak képességeinek megismeréséhez válassza a bal oldali menüben a **Traffic Analytics** lehetőséget. 
 
-![A Traffic Analytics irányítópultjának elérése](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
+![A Traffic Analytics irányítópult elérése](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 
-Az irányítópult első megjelenése akár 30 percet is igénybe vehet, mert a Traffic Analytics-nek először elegendő adatot kell összesítenie ahhoz, hogy érdemi elemzéseket lehessen létrehozni, mielőtt bármilyen jelentést létrehozhatna.
+Az irányítópult az első alkalommal akár 30 percet is igénybe vehet, mert Traffic Analytics először elegendő adatokat kell összeállítania ahhoz, hogy értelmes elemzéseket lehessen bevezetni, mielőtt bármilyen jelentést hozna létre.
 
 ## <a name="usage-scenarios"></a>Használati forgatókönyvek
 
-A Traffic Analytics teljes konfigurálása után érdemes lehet megszerezni az elemzéseket, a következők:
+A Traffic Analytics teljes konfigurálása után érdemes megtekinteni az alábbi elemzéseket:
 
-### <a name="find-traffic-hotspots"></a>Közlekedési hotspotok keresése
+### <a name="find-traffic-hotspots"></a>Forgalmi pontok keresése
 
 **keresni**
 
-- Mely állomások, alhálózatok és virtuális hálózatok küldik vagy fogadják a legnagyobb forgalmat, a maximális kártékony forgalmat átjárva és jelentős folyamatok blokkolásával?
-    - Ellenőrizze az állomás, az alhálózat és a virtuális hálózat összehasonlító diagramját. Annak megértése, hogy mely állomások, alhálózatok és virtuális hálózatok küldik vagy fogadják a legnagyobb forgalmat, segíthet azonosítani a legnagyobb forgalmat feldolgozó állomásokat, és azt, hogy a forgalom elosztása megfelelően történik-e.
-    - Kiértékelheti, hogy a forgalom mennyisége megfelelő-e egy gazdagép számára. A forgalom mennyisége normális viselkedés, vagy nem érdemel további vizsgálatot?
+- Mely gazdagépek, alhálózatok és virtuális hálózatok küldik vagy fogadják a legtöbb forgalmat, áthaladva a maximális kártékony forgalmat, és blokkolja a jelentős folyamatokat?
+    - A gazdagép, az alhálózat és a virtuális hálózat összehasonlító diagramjának megtekintése. Annak megértése, hogy mely gazdagépek, alhálózatok és virtuális hálózatok küldik vagy fogadják a legtöbb forgalmat, segíthetnek azonosítani azokat a gazdagépeket, amelyek a legnagyobb forgalmat dolgozzák fel, és hogy a forgalom eloszlása megfelelően történik-e.
+    - Kiértékelheti, hogy a forgalom mennyisége megfelelő-e a gazdagép számára. A forgalom normális viselkedésű, vagy további vizsgálatot érdemel?
 - Mennyi bejövő/kimenő forgalom van?
-    -   Várhatóan az állomás több bejövő forgalmat kap, mint a kimenő, vagy fordítva?
-- A blokkolt forgalom statisztikája.
-    - Miért blokkolja a gazdagép a jóindulatú forgalom jelentős mennyiségét? Ez a viselkedés további vizsgálatot igényel, és valószínűleg optimalizálása konfiguráció
-- A rosszindulatú engedélyezett/blokkolt forgalom statisztikái
-  - Miért kap egy gazdagép rosszindulatú forgalmat, és miért engedélyezett a rosszindulatú forrásból érkező folyamatok? Ez a viselkedés további vizsgálatot igényel, és valószínűleg a konfiguráció optimalizálását.
+    -   A gazdagép várhatóan több bejövő forgalmat fogad, mint a kimenő, vagy fordítva?
+- A letiltott forgalom statisztikája.
+    - Miért blokkolja a gazdagép a jóindulatú forgalom jelentős mennyiségét? Ennek a viselkedésnek további vizsgálatra és valószínűleg a konfiguráció optimalizálására van szüksége
+- A kártékony engedélyezett/letiltott forgalom statisztikája
+  - Miért van olyan gazdagép, amely rosszindulatú forgalmat fogad, és miért van engedélyezve a rosszindulatú forrásból származó forgalom? Ennek a viselkedésnek további vizsgálatra és valószínűleg a konfiguráció optimalizálására van szüksége.
 
-    Válassza **az Összes megtekintése**lehetőséget a **Host**csoportban az alábbi képen látható módon:
+    Válassza az **összes**megjelenítése lehetőséget a **gazdagép**területen az alábbi ábrán látható módon:
 
-    ![Irányítópult, amely a legtöbb forgalmi részletet tartalmazza](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
+    ![Az irányítópulton a legtöbb forgalmi adattal rendelkező gazdagép bemutatása](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
-- Az alábbi képen az első öt beszélő állomás időfelkapott, valamint az áramlással kapcsolatos részletek (engedélyezett – bejövő/kimenő és megtagadott – bejövő/kimenő folyamatok) láthatók az állomás esetében:
+- Az alábbi képen az első öt beszélő gazdagép és a flow-val kapcsolatos részletek (engedélyezett – bejövő/kimenő és megtagadott bejövő/kimenő folyamatok) időtrendjét láthatja a gazdagép számára:
 
-    ![Top öt legtöbbet beszélő fogadó trend](media/traffic-analytics/top-five-most-talking-host-trend.png)
-
-**keresni**
-
-- Melyek a leginkább beszélgető fogadó párok?
-    - Várt viselkedés, például előtér- vagy háttérkommunikáció vagy szabálytalan viselkedés, például háttérhálózati internetes forgalom.
-- Az engedélyezett/blokkolt forgalom statisztikái
-    - Miért engedélyezi vagy blokkolja a gazdagép a jelentős forgalmat?
-- Leggyakrabban használt alkalmazásprotokoll a legtöbb beszélgető gazdagéppár között:
-    - Engedélyezettek ezek az alkalmazások ezen a hálózaton?
-    - Megfelelően vannak konfigurálva az alkalmazások? A megfelelő protokollt használják a kommunikációhoz? Válassza a **Gyakori beszélgetés csoport** **Mind megtekintése** lehetőséget az alábbi képen látható módon:
-
-        ![A leggyakoribb beszélgetést bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
-
-- Az alábbi képen látható az első öt beszélgetés időfelkapott ideje, valamint a folyamattal kapcsolatos részletek, például az engedélyezett és a megtagadott bejövő és kimenő folyamatok egy beszélgetéspárhoz:
-
-    ![Top öt beszédes beszélgetés részleteit és a trend](./media/traffic-analytics/top-five-chatty-conversation-details-and-trend.png)
+    ![Az első öt leginkább beszélő gazda-trend](media/traffic-analytics/top-five-most-talking-host-trend.png)
 
 **keresni**
 
-- Melyik alkalmazásprotokollt használják a leggyakrabban a környezetében, és melyik beszélgető állomáspár használja a legjobban az alkalmazásprotokollt?
-    - Engedélyezettek ezek az alkalmazások ezen a hálózaton?
-    - Megfelelően vannak konfigurálva az alkalmazások? A megfelelő protokollt használják a kommunikációhoz? A várt viselkedés olyan gyakori portok, mint a 80 és a 443. A szabványos kommunikációhoz, ha szokatlan portok jelennek meg, szükség lehet a konfiguráció módosítására. Az alábbi képen válassza az **Alkalmazásport** megtekintése lehetőséget: **Application port**
+- Melyek a leginkább megbeszélő gazda párok?
+    - A várt viselkedés, például az előtér-vagy háttér-kommunikáció vagy a szabálytalan viselkedés, például a háttérbeli internetes forgalom.
+- Az engedélyezett/letiltott forgalom statisztikája
+    - Miért engedélyezi vagy blokkolja a gazdagép a jelentős adatforgalom mennyiségét
+- Leggyakrabban használt alkalmazási protokoll a legtöbb megbeszélő fogadó pár közül:
+    - Engedélyezve vannak ezek az alkalmazások ezen a hálózaton?
+    - Megfelelően vannak konfigurálva az alkalmazások? A megfelelő protokollt használják a kommunikációhoz? Válassza az **összes megtekintése** a **gyakori beszélgetés**alatt lehetőséget, ahogy az a következő képen látható:
 
-        ![A legfelső alkalmazásprotokollokat bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
+        ![A leggyakoribb beszélgetéseket bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
 
-- A következő képek az első öt L7 protokoll időtrendét és az áramlással kapcsolatos részleteket (például engedélyezett és megtagadott folyamatokat) mutatják egy L7 protokollesetében:
+- Az alábbi ábrán az első öt beszélgetés és a folyamattal kapcsolatos részletek, például az engedélyezett és a megtagadott bejövő és kimenő folyamatok időbeli alakulása látható:
 
-    ![Top öt réteg 7 protokollok részletek és trend](./media/traffic-analytics/top-five-layer-seven-protocols-details-and-trend.png)
-
-    ![Az alkalmazásprotokoll folyamatrészletei a naplókeresésben](./media/traffic-analytics/flow-details-for-application-protocol-in-log-search.png)
-
-**keresni**
-
-- A VPN-átjáró kapacitáskihasználtsági tendenciái a környezetben.
-    - Minden VPN termékváltozat bizonyos sávszélességet engedélyez. A VPN-átjárók kihasználatlanok?
-    - Az átjárók elérik a kapacitást? Érdemes frissíteni a következő magasabb termékváltozatra?
-- Melyek a leginkább beszélgető állomások, melyik VPN-átjárón keresztül, melyik porton keresztül?
-    - Ez a minta normális? Válassza **az Összes megtekintése** a **VPN-átjáró**alatt lehetőséget, ahogy az az alábbi képen látható:
-
-        ![A legfelső aktív VPN-kapcsolatokat bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
-
-- Az alábbi képen látható az Azure VPN-átjáró kapacitáskihasználtságának felkapott ideje és a folyamattal kapcsolatos részletek (például az engedélyezett folyamatok és portok):
-
-    ![A VPN-átjáró kihasználtságának trendje és a folyamat részletei](./media/traffic-analytics/vpn-gateway-utilization-trend-and-flow-details.png)
-
-### <a name="visualize-traffic-distribution-by-geography"></a>A forgalom eloszlásának megjelenítése földrajzi hely szerint
+    ![Az első öt csevegő beszélgetés részletei és trend](./media/traffic-analytics/top-five-chatty-conversation-details-and-trend.png)
 
 **keresni**
 
-- Adatközpontonkénti forgalomelosztás, például az adatközpontba irányuló forgalom fő forrásai, az adatközponttal beszélgető első osztályú hálózatok és a legfelső beszélgető alkalmazásprotokollok.
-  - Ha nagyobb terhelést észlel egy adatközpontban, megtervezheti a forgalom hatékony elosztását.
-  - Ha az engedélyezetlen hálózatok beszélgetnek az adatközpontban, akkor javítsa ki az NSG-szabályokat, hogy blokkolja őket.
+- Melyik alkalmazási protokollt használják leginkább a környezetben, és hogy a fogadó párok hogyan használják a legjobban az alkalmazási protokollt?
+    - Engedélyezve vannak ezek az alkalmazások ezen a hálózaton?
+    - Megfelelően vannak konfigurálva az alkalmazások? A megfelelő protokollt használják a kommunikációhoz? A várt viselkedés gyakori portok, például 80 és 443. Ha bármilyen szokatlan port jelenik meg, a normál kommunikációhoz szükség lehet a konfiguráció módosítására. Válassza az **összes** megjelenítése az **alkalmazás portja**területen az alábbi képen láthatót:
 
-    Válassza a **Térkép megtekintése** lehetőséget a **Környezet csoportban,** ahogy az az alábbi képen látható:
+        ![Az irányítópultot bemutató legfontosabb alkalmazási protokollok](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
 
-    ![Forgalomeloszlást bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
+- Az alábbi képek az első öt L7 protokollok és a flow-val kapcsolatos részletek (például az engedélyezett és a megtagadott folyamatok) időtrendjét mutatják egy L7 protokoll esetében:
 
-- A földrajzi térkép a felső menüszalagon látható az olyan paraméterek kiválasztásához, mint például az adatközpontok (Üzembe helyezett/nincs üzembe helyezés/aktív/inaktív/forgalomelemzés engedélyezve/Forgalomelemzés engedélyezve) és a jóindulatú/rosszindulatú forgalmat az aktív telepítéshez hozzájáruló országok/régiók:
+    ![A legfontosabb öt réteg 7 protokoll részletei és trend](./media/traffic-analytics/top-five-layer-seven-protocols-details-and-trend.png)
 
-    ![Aktív telepítést bemutató földrajzi térképnézet](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
-
-- A földrajzi térkép a vele kommunikáló országokból/régiókból és kontinensekről származó adatközpontba irányuló forgalom eloszlását jeleníti meg kék (jóindulatú forgalom) és piros (rosszindulatú forgalom) színű vonalakon:
-
-    ![Földrajzi térkép nézet, amely bemutatja a forgalom eloszlását országok/régiók és kontinensek között](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
-
-    ![A forgalom eloszlásának folyamatrészletei a naplókeresésben](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
-
-### <a name="visualize-traffic-distribution-by-virtual-networks"></a>A forgalom virtuális hálózatok általi terjesztésének megjelenítése
+    ![A naplóbeli keresésben használt Application Protocol folyamat részletei](./media/traffic-analytics/flow-details-for-application-protocol-in-log-search.png)
 
 **keresni**
 
-- A virtuális hálózatonkénti forgalomelosztás, a topológia, a virtuális hálózat ba irányuló forgalom felső forrásai, a virtuális hálózattal beszélgető első osztályú hálózatok és a felső beszélgető alkalmazásprotokollok.
-  - Annak ismerete, hogy melyik virtuális hálózat melyik virtuális hálózathoz beszél. Ha a beszélgetés nem várható, akkor kijavítható.
-  - Ha az engedélyezetlen hálózatok egy virtuális hálózattal beszélgetnek, kijavíthatja az NSG-szabályokat, hogy blokkolja a csaló hálózatokat.
+- A VPN-átjáró kapacitás-kihasználtsági trendjei a környezetben.
+    - Minden egyes VPN-SKU bizonyos mennyiségű sávszélességet tesz lehetővé. A VPN-átjárók nincsenek kihasználva?
+    - Elérik-e az átjárók a kapacitást? A következő magasabb SKU-ra kell frissíteni?
+- Melyek a leginkább megbeszélő gazdagépek, amelyeken keresztül a VPN-átjárón keresztül melyik portot?
+    - Ez a minta normális? Válassza az **összes** megjelenítése a **VPN-átjáró**alatt lehetőséget, ahogyan az a következő képen látható:
+
+        ![A legfelső szintű aktív VPN-kapcsolatokat bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
+
+- Az alábbi ábrán egy Azure-VPN Gateway kapacitásának kihasználtsága és a folyamattal kapcsolatos részletek (például az engedélyezett folyamatok és portok) használatának időbeli alakulása látható:
+
+    ![A VPN Gateway kihasználtságának trendje és a folyamat részletei](./media/traffic-analytics/vpn-gateway-utilization-trend-and-flow-details.png)
+
+### <a name="visualize-traffic-distribution-by-geography"></a>Forgalom eloszlásának megjelenítése földrajz szerint
+
+**keresni**
+
+- Az adatközpontok forgalmának eloszlása, például egy adatközpontba irányuló adatforgalom fő forrásai, az adatközponttal beszélgető leggyakoribb gazember hálózatok és az alkalmazási protokollok legfelső szintű védelme.
+  - Ha további terhelést figyel egy adatközpontban, megtervezheti a forgalom hatékony eloszlását.
+  - Ha a támadó hálózatok beszélgetnek az adatközpontban, akkor a NSG-szabályok kiírásával letilthatják azokat.
+
+    Az alábbi ábrán látható módon válassza ki a **Térkép megtekintése** **a környezetben**:
+
+    ![A forgalom terjesztését bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
+
+- A Geo-Térkép a felső menüszalagot jeleníti meg az olyan paraméterek kiválasztásához, mint például az adatközpontok (központilag telepített/nem telepíthető/aktív/inaktív/Traffic Analytics engedélyezve/Traffic Analytics nincs engedélyezve), valamint az olyan országok/régiók, amelyek hozzájárulnak a jóindulatú/rosszindulatú adatforgalomhoz az aktív
+
+    ![Az aktív üzembe helyezést bemutató földrajzi Térkép nézet](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
+
+- A Geo-Térkép az adatközpontok forgalmának eloszlását mutatja országok/régiók és kontinensek között, amelyek a kék (jóindulatú) és a vörös (rosszindulatú) színes vonalakon kommunikálnak.
+
+    ![Földrajzi Térkép nézet, amely az országok/régiók és földrészek forgalmának terjesztését jeleníti meg](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+
+    ![A forgalom eloszlásának folyamatábrája a naplóbeli keresésben](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
+
+### <a name="visualize-traffic-distribution-by-virtual-networks"></a>A forgalom terjesztésének megjelenítése virtuális hálózatok alapján
+
+**keresni**
+
+- Forgalom eloszlása virtuális hálózat, topológia, a virtuális hálózat felé irányuló forgalom fő forrásai, a virtuális hálózattal megbeszélő leggyakoribb szabálysértő hálózatok és az alkalmazási protokollok legfelső szintű megbeszélgetése.
+  - Annak ismerete, hogy melyik virtuális hálózat beszélget a virtuális hálózattal. Ha a beszélgetés nem várható, akkor kijavítható.
+  - Ha a támadó hálózatok egy virtuális hálózattal beszélgetnek, a NSG-szabályok megadhatók a szabálysértő hálózatok blokkolásához.
  
-    Válassza **a Virtuálishálózatok megtekintése** lehetőséget a **Környezet**csoportban, ahogy az az alábbi képen látható:
+    Válassza a **virtuális hálózatok megtekintése** lehetőséget a **környezetében**, az alábbi ábrán látható módon:
 
-    ![Virtuális hálózati terjesztést bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
+    ![A virtuális hálózatok terjesztését bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
-- A virtuális hálózati topológia a virtuális hálózat (virtuális hálózatok közötti kapcsolatok/aktív/inaktív), a külső kapcsolatok, az aktív folyamatok és a rosszindulatú folyamatok közötti paraméterek kiválasztásának felső menüszalagját jeleníti meg.
-- A virtuális hálózati topológia előfizetések, munkaterületek, erőforráscsoportok és időintervallum alapján szűrhető. A folyamat megértését segítő további szűrők: Flow Type (InterVNet, IntraVNET, és így tovább), Flow Direction (Bejövő, Kimenő), Folyamat állapota (Engedélyezett, Blokkolva), VNET-ek (célzott és csatlakoztatott), Kapcsolat típusa (Társviszony-létesítés vagy átjáró - P2S és S2S) és NSG. Ezekkel a szűrőkkel a részletesen megvizsgálni kívánt virtuális hálózatokra összpontosíthat.
-- A virtuális hálózati topológia megjeleníti a forgalom eloszlását egy virtuális hálózatra a folyamatok (Engedélyezett/Blokkolt/Bejövő/Kimenő/Jóindulatú/Rosszindulatú), az alkalmazásprotokoll és a hálózati biztonsági csoportok tekintetében, például:
+- A Virtual Network topológia a felső menüszalagot jeleníti meg olyan paraméterek kiválasztásához, mint a virtuális hálózatok (többek között virtuális hálózati kapcsolatok/aktív/inaktív), külső kapcsolatok, aktív folyamatok és a virtuális hálózat rosszindulatú folyamatai.
+- Az Virtual Network topológiát előfizetések, munkaterületek, erőforráscsoportok és időintervallum alapján szűrheti. A folyamat megértését segítő további szűrők: folyamat típusa (virtuális hálózatok közötti, IntraVNET stb.), folyamat iránya (bejövő, kimenő), folyamat állapota (engedélyezett, letiltott), virtuális hálózatok (megcélozva és csatlakoztatva), kapcsolattípus (peering vagy Gateway-P2S és S2S) és NSG. Ezekkel a szűrőkkel a részletesen vizsgálni kívánt virtuális hálózatok koncentrálhat.
+- Az Virtual Network topológia a virtuális hálózat forgalmának eloszlását mutatja a folyamatok (engedélyezett/letiltott/bejövő/kimenő/jóindulatú/rosszindulatú), az Application Protocol és a hálózati biztonsági csoportok tekintetében, például:
 
-    ![Virtuális hálózati topológia, amely bemutatja a forgalom eloszlásának és áramlásának részleteit](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
+    ![A forgalom terjesztését és a folyamat részleteit bemutató virtuális hálózati topológia](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
     
-    ![Virtuális hálózati topológia, amely legfelső szintű és több szűrőt mutat be](./media/traffic-analytics/virtual-network-filters.png)
+    ![A legfelső szintű és több szűrőt bemutató virtuális hálózati topológia](./media/traffic-analytics/virtual-network-filters.png)
 
-    ![A virtuális hálózati forgalom elosztásának folyamatrészletei a naplókeresésben](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
-
-**keresni**
-
-- Az alhálózatonkénti forgalomelosztás, a topológia, az alhálózatba irányuló forgalom felső forrásai, az alhálózattal beszélgető első osztályú hálózatok és a legfelső beszélgető alkalmazásprotokollok.
-    - Annak ismerete, hogy melyik alhálózat melyik alhálózathoz beszél. Ha nem várt beszélgetéseket lát, javíthatja a konfigurációt.
-    - Ha az engedélyezetlen hálózatok egy alhálózattal beszélgetnek, kijavíthatja azt az NSG-szabályok konfigurálásával, hogy blokkolja az engedélyezetlen hálózatokat.
-- Az Alhálózatok topológia az alhálózat felső menüszalagját jeleníti meg olyan paraméterek kiválasztásához, mint az aktív/inaktív alhálózat, a külső kapcsolatok, az aktív folyamatok és az alhálózat rosszindulatú folyamatai.
-- Az alhálózati topológia megjeleníti a forgalom eloszlását egy virtuális hálózatra a folyamatok (Engedélyezett/Blokkolt/Bejövő/Kimenő/Jóindulatú/Rosszindulatú), alkalmazásprotokoll és NSG-k tekintetében, például:
-
-    ![A forgalomeloszlást bemutató alhálózati topológia a folyamatok tekintetében egy virtuális hálózati alhálózatot mutat be](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-virtual-subnet-with-regards-to-flows.png)
+    ![A virtuális hálózati forgalom eloszlásának folyamatábrája a naplóbeli keresésben](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
 
 **keresni**
 
-Az alkalmazásátjárónkénti forgalomelosztás & terheléselosztót, a topforgalmi erőforrásokat, az alkalmazásátjáróval & terheléselosztóval beszélgető elsődleges engedélyezetlen hálózatokat, valamint a legfelső beszélgető alkalmazásprotokollokat. 
+- Adatforgalom eloszlása alhálózat, topológia, az alhálózatra irányuló adatforgalom elsődleges forrásai, az alhálózattal beszélgető leggyakoribb gazember hálózatok és az alkalmazási protokollok legfelső szintű megbeszélgetése.
+    - Annak ismerete, hogy mely alhálózatok beszélgetnek az alhálózattal. Ha váratlan beszélgetések láthatók, javítsa ki a konfigurációt.
+    - Ha a támadó hálózatok egy alhálózattal beszélgetnek, a NSG szabályok konfigurálásával is kijavítani tudja a szélhámos hálózatok blokkolását.
+- Az alhálózati topológia a felső menüszalagot jeleníti meg az olyan paraméterek kiválasztásához, mint az aktív/inaktív alhálózat, a külső kapcsolatok, az aktív folyamatok és az alhálózat rosszindulatú folyamatai.
+- Az alhálózati topológia a virtuális hálózat forgalmának eloszlását mutatja a folyamatok tekintetében (engedélyezett/letiltott/bejövő/kimenő/jóindulatú/rosszindulatú), az Application Protocol és a NSG, például:
+
+    ![Hálózati topológia, amely a forgalom elosztását bemutató virtuális hálózati alhálózatot mutat be.](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-virtual-subnet-with-regards-to-flows.png)
+
+**keresni**
+
+Az Application Gateway adatforgalmának eloszlása & Load Balancer, topológia, a forgalom legfelső szintű forgalma, az Application Gateway & Load Balancer és a legtöbbet beszélgető alkalmazás-protokollok között megjelenő leggyakoribb gazember hálózatok. 
     
- - Annak ismerete, hogy melyik alhálózat melyik alkalmazásátjáróval vagy terheléselosztóval beszélget. Ha váratlan beszélgetéseket észlel, kijavíthatja a konfigurációt.
- - Ha az engedélyezetlen hálózatok egy alkalmazásátjáróval vagy terheléselosztóval beszélgetnek, javíthatja azt az NSG-szabályok konfigurálásával az engedélyezetlen hálózatok blokkolására. 
+ - Annak ismerete, hogy mely alhálózatok beszélgetnek az Application Gateway vagy a Load Balancer. Ha váratlan beszélgetéseket figyel, javítsa ki a konfigurációt.
+ - Ha a támadó hálózatok egy Application Gateway vagy Load Balancer használatával beszélgetnek, a NSG szabályok konfigurálásával is kijavítani tudja a szélhámos hálózatok blokkolását. 
 
-    ![alhálózat-topológia-bemutató-forgalom-elosztás-egy alkalmazás-átjáró-alhálózat-a-tekintetében-a-áramlások](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![alhálózat – topológia – bemutató – Traffic-Distribution-to-a-Application-Gateway-subnet-with-about-to-flow](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
-### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Az internetről forgalmat fogadó portok és virtuális gépek megtekintése
-
-**keresni**
-
-- Mely nyitott portok beszélgetnek az interneten keresztül?
-  - Ha nem várt portok találhatók nyitva, a konfigurációt javíthatja:
-
-    ![Az internetforgalmat fogadó és küldő portokat bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
-
-    ![Az Azure célportjainak és -állomásainak részletei](./media/traffic-analytics/details-of-azure-destination-ports-and-hosts.png)
+### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Az internetről érkező forgalmat fogadó portok és virtuális gépek megtekintése
 
 **keresni**
 
-Rosszindulatú forgalom van a környezetében? Honnan származik? Hova rendeltetett?
+- Mely nyitott portok találhatók az interneten?
+  - Ha a rendszer váratlan portokat talál, javítsa ki a konfigurációt:
 
-![A kártékony forgalom részletei a naplókeresésben](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
+    ![Irányítópult, amely az internetre irányuló forgalom fogadását és küldését bemutató portokat mutat be](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
 
-
-### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>Az NSG/NSG szabályok találatai tendenciáinak megjelenítése
+    ![Az Azure célport és a gazdagépek részletei](./media/traffic-analytics/details-of-azure-destination-ports-and-hosts.png)
 
 **keresni**
 
-- Mely NSG/NSG-szabályok rendelkeznek a legtöbb találattal az összehasonlító diagramon a folyamatok eloszlásával?
-- Melyek a legfontosabb forrás- és célbeszélgetés-párok NSG/NSG-szabályok szerint?
+Rosszindulatú forgalmat észlelt a környezetében? Honnan származnak? Hol van a rendeltetése?
 
-    ![Az NSG-találatok statisztikáit bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-nsg-hits-statistics.png)
+![A rosszindulatú adatforgalom részletei a naplóbeli keresés során](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
 
-- Az alábbi képek en az NSG-szabályok lekéréseinek és a hálózati biztonsági csoport forrás-cél folyamatának részleteinek felkapott idejét mutatják:
 
-  - Gyorsan észlelheti, hogy mely NSG-k és NSG-szabályok haladnak át rosszindulatú folyamatokon, és melyek a felhőalapú környezethez hozzáférő rosszindulatú IP-címek.
-  - Annak meghatározása, hogy mely NSG/NSG-szabályok engedélyezik/blokkolják a jelentős hálózati forgalmat
-  - Válassza ki a legjobb szűrőket az NSG- vagy NSG-szabályok részletes vizsgálatához
+### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>Trendek megjelenítése a NSG/NSG-szabályok találatai között
 
-    ![Az NSG-szabálytalálatok és a legnépszerűbb NSG-szabályok felkapott idejének bemutatása](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
+**keresni**
 
-    ![Top NSG szabályok statisztika részleteit naplókeresés](./media/traffic-analytics/top-nsg-rules-statistics-details-in-log-search.png)
+- Mely NSG/NSG szabályok rendelkeznek a legtöbb találattal az összehasonlító diagramon a folyamatok eloszlásával?
+- Melyek a NSG/NSG szabályok legfontosabb forrás-és cél-beszélgetési párok?
+
+    ![A NSG találati statisztikáit bemutató irányítópult](./media/traffic-analytics/dashboard-showcasing-nsg-hits-statistics.png)
+
+- A következő képek a NSG-szabályok és a forrás-cél folyamat részleteinek időbeli alakulását mutatják be egy hálózati biztonsági csoport esetében:
+
+  - Gyorsan megállapíthatja, hogy mely NSG és NSG szabályok haladnak át rosszindulatú folyamatokat, és melyek a Felhőbeli környezethez hozzáférő leggyakoribb kártékony IP-címek
+  - Annak meghatározása, hogy mely NSG/NSG szabályok engedélyezik vagy blokkolja a jelentős hálózati forgalmat
+  - NSG vagy NSG szabályok részletes ellenőrzéséhez válassza ki a legfelső szintű szűrőket
+
+    ![A NSG-szabályok látogatottsági idejének és a legfelső NSG szabályainak bemutatása](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
+
+    ![A legfontosabb NSG-szabályok statisztikájának részletei a naplóbeli keresésben](./media/traffic-analytics/top-nsg-rules-statistics-details-in-log-search.png)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-A gyakori kérdésekre adott válaszokért olvassa el [a Forgalomelemzés – gyakori kérdések ( Gyakori kérdések) témakört.](traffic-analytics-faq.md)
+Ha választ szeretne kapni a gyakori kérdésekre, tekintse meg a [Traffic Analytics – gyakori](traffic-analytics-faq.md)kérdések című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-- A folyamatnaplók engedélyezéséről az [NSG-folyamatnaplózás engedélyezése](network-watcher-nsg-flow-logging-portal.md)című témakörben olvashat.
-- A Traffic Analytics séma- és feldolgozási részleteinek megértéséhez olvassa el [a Forgalomelemzési séma című témakört.](traffic-analytics-schema.md)
+- A flow-naplók engedélyezésével kapcsolatos további információkért lásd: a [NSG folyamat naplózásának engedélyezése](network-watcher-nsg-flow-logging-portal.md).
+- A Traffic Analytics sémájának és feldolgozási adatainak megismeréséhez tekintse meg a [Traffic Analytics-séma](traffic-analytics-schema.md)című témakört.

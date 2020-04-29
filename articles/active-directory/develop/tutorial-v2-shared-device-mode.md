@@ -1,6 +1,6 @@
 ---
-title: A megosztott eszköz mód használata az MSAL Android segítségével | Azure
-description: Ismerje meg, hogyan készítheti elő az Android-eszközöket a megosztott módban való futtatásra és az első vonalbeli munkavégző alkalmazás futtatására.
+title: Megosztott eszköz mód használata a MSAL Android használatával | Azure
+description: Megtudhatja, hogyan készítse elő az Android-eszközök megosztott módban történő futtatását, és futtasson egy firstline Worker alkalmazást.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,30 +13,30 @@ ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886432"
 ---
-# <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Oktatóanyag: Megosztott eszköz mód használata az Android-alkalmazásban
+# <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Oktatóanyag: megosztott eszköz üzemmód használata Android-alkalmazásokban
 
 > [!NOTE]
 > Ez a funkció nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="developer-guide"></a>Fejlesztői útmutató
 
-Ez az útmutató fejlesztői útmutatást nyújt a megosztott eszköz mód androidos alkalmazásokban való megvalósításához a Microsoft hitelesítési könyvtár (MSAL) használatával. Tekintse meg az [MSAL Android oktatóanyagát,](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) amelyből megtudhatja, hogyan integrálhatja az MSAL-t az Android-alkalmazással, hogyan jelentkezik be egy felhasználó, hívhatja a Microsoft graphot, és hogyan jelentkeztetheti ki a felhasználót.
+Ez az útmutató fejlesztői útmutatást nyújt a megosztott eszköz üzemmódjának megvalósításához egy Android-alkalmazásban a Microsoft Authentication Library (MSAL) használatával. Tekintse meg a [MSAL Android-oktatóanyagot](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) , amelyből megtudhatja, hogyan integrálhatja a MSAL az Android-alkalmazással, hogyan jelentkezhet be egy felhasználó, meghívhatja a Microsoft Graphot, és kijelentkezhet
 
 ### <a name="download-the-sample"></a>A minta letöltése
 
-Klónozza a [mintaalkalmazást](https://github.com/Azure-Samples/ms-identity-android-java/) a GitHubról. A minta képes [egy- vagy többfiókos módban](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)dolgozni.
+A [minta alkalmazás](https://github.com/Azure-Samples/ms-identity-android-java/) klónozása a githubról. A minta [egy vagy több fiókos módban](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)is működhet.
 
-### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>Az MSAL SDK hozzáadása a helyi Maven-tárházhoz
+### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>A MSAL SDK hozzáadása a helyi Maven-tárházhoz
 
-Ha nem használja a mintaalkalmazást, adja hozzá az MSAL-könyvtárat függőségként a build.gradle fájlhoz, így:
+Ha nem használja a minta alkalmazást, adja hozzá a MSAL-függvénytárat a Build. gradle fájl függőségéhez, például:
 
 ```gradle
 dependencies{
@@ -44,15 +44,15 @@ dependencies{
 }
 ```
 
-### <a name="configure-your-app-to-use-shared-device-mode"></a>Az alkalmazás konfigurálása megosztott eszköz mód használatára
+### <a name="configure-your-app-to-use-shared-device-mode"></a>Az alkalmazás konfigurálása megosztott eszköz üzemmód használatára
 
-A konfigurációs fájl beállításával kapcsolatos további információkért tekintse meg a [konfigurációs](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) dokumentációt.
+A konfigurációs fájl beállításával kapcsolatos további információkért tekintse meg a [konfigurációs dokumentációt](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) .
 
-Az `"shared_device_mode_supported"` `true` MSAL konfigurációs fájlban van beállítva.
+`true` Állítsa be a beállítást `"shared_device_mode_supported"` a MSAL konfigurációs fájljába.
 
-Lehet, hogy nem tervezi a többfiókos mód támogatását. Ez akkor lehet, ha nem használ megosztott eszközt, és a felhasználó egyszerre több fiókkal is bejelentkezhet az alkalmazásba. Ha igen, `"account_mode"` `"SINGLE"`állítsa a beállítását. Ez garantálja, hogy az `ISingleAccountPublicClientApplication`alkalmazás mindig megkapja , és jelentősen leegyszerűsíti az MSAL-integrációt. Az alapértelmezett `"account_mode"` érték `"MULTIPLE"`a , ezért a mód használata `"single account"` esetén fontos, hogy ezt az értéket módosítsa a konfigurációs fájlban.
+Előfordulhat, hogy nem tervezi több fiókos üzemmód használatát. Ez akkor lehet lehetséges, ha nem megosztott eszközt használ, és a felhasználó egyszerre több fiókkal is bejelentkezhet az alkalmazásba. Ha igen, állítsa `"account_mode"` a `"SINGLE"`következőre:. Ez garantálja, hogy az alkalmazás mindig megkapja `ISingleAccountPublicClientApplication`az alkalmazást, és jelentősen leegyszerűsíti a MSAL-integrációt. Az alapértelmezett értéke `"account_mode"` `"MULTIPLE"`, ezért fontos, hogy módosítsa ezt az értéket a konfigurációs fájlban, ha a módot használja `"single account"` .
 
-Íme egy példa a auth_config.json fájlra, amely a mintaalkalmazás **fő**>**main**>**res**>**nyers** könyvtárában található:
+Íme egy példa arra a auth_config. JSON fájlra, amely szerepel **app**>a minta alkalmazás**fő**>**res**>**RAW** könyvtárában:
 
 ```json
 {
@@ -74,13 +74,13 @@ Lehet, hogy nem tervezi a többfiókos mód támogatását. Ez akkor lehet, ha n
 }
 ```
 
-### <a name="detect-shared-device-mode"></a>Megosztott eszköz mód észlelése
+### <a name="detect-shared-device-mode"></a>Megosztott eszköz üzemmódjának észlelése
 
-A megosztott eszköz mód lehetővé teszi, hogy az Android-eszközöket több alkalmazott is megoszthassa, miközben a Microsoft Identity által támogatott eszközfelügyeletet biztosít. Az alkalmazottak bejelentkezhetnek az eszközeikre, és gyorsan hozzáférhetnek az ügyfelek adataihoz. Amikor befejezték a műszakot vagy a feladatot, egyetlen kattintással kijelentkezhetnek a megosztott eszközön lévő összes alkalmazásból, és az eszköz azonnal készen áll a következő alkalmazott használatára.
+A megosztott eszköz mód lehetővé teszi, hogy az Android-eszközöket több alkalmazott számára is meg lehessen osztani, miközben biztosítja az eszköz Microsoft Identity-alapú felügyeletét. Az alkalmazottak bejelentkezhetnek az eszközökre, és gyorsan hozzáférhetnek az ügyfelek adataihoz. Ha végzett a váltással vagy a feladattal, egyetlen kattintással kijelentkezhetnek a megosztott eszközön lévő összes alkalmazásból, és az eszköz azonnal készen áll a következő alkalmazott használatára.
 
-Ezzel `isSharedDevice()` meghatározhatja, hogy egy alkalmazás megosztott eszköz módban lévő eszközön fut-e. Az alkalmazás ezzel a jelzővel határozhatja meg, hogy ennek megfelelően módosítsa-e a felhasználói felületet.
+Ezzel `isSharedDevice()` a paranccsal megállapíthatja, hogy egy alkalmazás egy megosztott eszköz módban lévő eszközön fut-e. Az alkalmazás ennek a jelzőnek a használatával állapíthatja meg, hogy ennek megfelelően kell-e módosítania az UX-t.
 
-Itt van egy kódrészlet, amely bemutatja, hogyan használhatja a . `isSharedDevice()`  A mintaalkalmazás `SingleAccountModeFragment` osztályából származik:
+Az alábbi kódrészletből megtudhatja, hogyan használhatja `isSharedDevice()`.  Ez a minta alkalmazás `SingleAccountModeFragment` osztálya:
 
 ```Java
 deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
@@ -88,7 +88,7 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 
 ### <a name="initialize-the-publicclientapplication-object"></a>A PublicClientApplication objektum inicializálása
 
-Ha az `"account_mode":"SINGLE"` MSAL konfigurációs fájlban van beállítva, biztonságosan `ISingleAccountPublicCLientApplication`eljátszhatja a visszaadott alkalmazásobjektumot .
+Ha a MSAL `"account_mode":"SINGLE"` konfigurációs fájlban be van állítva, akkor a visszaadott alkalmazás objektumát biztonságosan elvégezheti `ISingleAccountPublicCLientApplication`.
 
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -109,11 +109,11 @@ PublicClientApplication.create(this.getApplicationCOntext(),
 });
 ```
 
-### <a name="detect-single-vs-multiple-account-mode"></a>Egy és több fiók mód észlelése
+### <a name="detect-single-vs-multiple-account-mode"></a>Egyetlen vagy több fiók üzemmódjának észlelése
 
-Ha olyan alkalmazást ír, amelyet csak az első vonalbeli dolgozók számára használ egy megosztott eszközön, javasoljuk, hogy úgy írja meg az alkalmazást, hogy csak az egyfiókos módot támogassa. Ez magában foglalja a legtöbb olyan alkalmazást, amely feladatközpontú, például az orvosi feljegyzésekre, a számlaalkalmazásokra és a legtöbb üzletági alkalmazásra. Ez egyszerűsíti a fejlesztést, mivel az SDK számos funkciójának nem kell elhelyeznie.
+Ha olyan alkalmazást ír, amely csak egy megosztott eszközön lévő firstline-feldolgozók számára lesz felhasználva, javasoljuk, hogy az alkalmazás csak az egyfiókos üzemmódot támogassa. Ez magában foglalja a legtöbb olyan alkalmazást, amely a feladathoz tartozik, például a Medical Records-alkalmazások, a számlafogadó-alkalmazások és a legtöbb üzletági alkalmazás. Ez leegyszerűsíti a fejlesztést, mivel az SDK számos funkcióját nem kell elfogadnia.
 
-Ha az alkalmazás több fiókot és megosztott eszköz módot is támogat, el kell végeznie egy típusellenőrzést, és a megfelelő felületre kell vetnie az alábbi módon.
+Ha az alkalmazás több fiókot is támogat, és a megosztott eszköz módot is használja, akkor az alább látható módon be kell jelölnie a megfelelő felületet.
 
 ```java
 private IPublicClientApplication mApplication;
@@ -127,9 +127,9 @@ private IPublicClientApplication mApplication;
         }
 ```
 
-### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>A bejelentkezett felhasználó beszereznie, és annak megállapítása, hogy a felhasználó megváltozott-e az eszközön
+### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>A bejelentkezett felhasználó beolvasása, és annak megállapítása, hogy a felhasználó módosult-e az eszközön
 
-A `loadAccount` metódus beolvassa a bejelentkezett felhasználó fiókját. A `onAccountChanged` módszer azt határozza meg, hogy a bejelentkezett felhasználó megváltozott-e, és ha igen, törölje a következőket:
+A `loadAccount` metódus lekéri a bejelentkezett felhasználó fiókját. A `onAccountChanged` metódus meghatározza, hogy a bejelentkezett felhasználó módosult-e, és ha igen, törölje a következőt:
 
 ```java
 private void loadAccount()
@@ -162,9 +162,9 @@ private void loadAccount()
 }
 ```
 
-### <a name="globally-sign-in-a-user"></a>Globális bejelentkezés egy felhasználóba
+### <a name="globally-sign-in-a-user"></a>Globális bejelentkezés felhasználóként
 
-A következő jelek a felhasználó az eszközön keresztül más alkalmazások, amelyek az MSAL a Hitelesítő app:
+Az alábbi jelek az eszközön lévő felhasználókon keresztül más, a hitelesítő alkalmazással MSAL használó alkalmazásokhoz használhatók:
 
 ```java
 private void onSignInClicked()
@@ -175,7 +175,7 @@ private void onSignInClicked()
 
 ### <a name="globally-sign-out-a-user"></a>Felhasználó globális kijelentkezése
 
-A következőkben eltávolítja a bejelentkezett fiókot, és törli a gyorsítótárazott jogkivonatokat nemcsak az alkalmazásból, hanem a megosztott eszköz módban lévő eszközről is:
+A következő eltávolítja a bejelentkezett fiókot, és törli a gyorsítótárazott jogkivonatokat nem csak az alkalmazásból, hanem a megosztott eszköz módban lévő eszközről is:
 
 ```java
 private void onSignOutClicked()
@@ -198,69 +198,69 @@ private void onSignOutClicked()
 
 ## <a name="administrator-guide"></a>Rendszergazdai útmutató
 
-A következő lépések ismertetik az alkalmazás beállítása az Azure Portalon, és az eszköz elhelyezése a megosztott eszköz módban.
+A következő lépések leírják, hogyan állíthatja be az alkalmazást a Azure Portalban, és hogyan helyezheti üzembe az eszközt a megosztott eszközökön.
 
-### <a name="register-your-application-in-azure-active-directory"></a>Az alkalmazás regisztrálása az Azure Active Directoryban
+### <a name="register-your-application-in-azure-active-directory"></a>Az alkalmazás regisztrálása a Azure Active Directoryban
 
-Először regisztrálja az alkalmazást a szervezeti bérlőn belül. Ezután adja meg ezeket az értékeket az auth_config.json ban, hogy az alkalmazás megfelelően fusson.
+Először regisztráljon az alkalmazást a szervezeti bérlőn belül. Ezután adja meg ezeket az értékeket a auth_config. JSON fájlban, hogy az alkalmazás megfelelően fusson.
 
-Ennek módjáról a [Jelentkezés regisztrálása](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application)című lapban talál további információt.
+Ennek módjáról az [alkalmazás regisztrálása](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application)című témakörben olvashat bővebben.
 
 > [!NOTE]
-> Amikor regisztrálja az alkalmazást, használja a bal oldali rövid útmutatót, majd válassza az **Android**lehetőséget. Ez egy olyan oldalra vezet, ahol meg kell adnia az alkalmazás **csomagnevét** és **aláíráskivonatát.** Ezek nagyon fontosak annak érdekében, hogy az alkalmazás konfigurációja működni fog. Ezután kap egy konfigurációs objektumot, amelyet az alkalmazáshoz használhat, amelyet kivág és beilleszt a auth_config.json fájlba.
+> Az alkalmazás regisztrálása után a bal oldalon a gyors üzembe helyezési útmutatóban válassza az **Android**lehetőséget. Ez egy olyan oldalra mutat, amelyben meg kell adnia az alkalmazáshoz tartozó **csomag nevét** és **aláírási kivonatát** . Ezek nagyon fontosak annak biztosításához, hogy az alkalmazás konfigurációja működni fog. Ekkor megjelenik egy olyan konfigurációs objektum, amelyet az alkalmazáshoz használhat, amelyet a auth_config. JSON fájlba kivágja és beilleszt.
 
-![Alkalmazásregisztrációs](media/tutorial-v2-shared-device-mode/register-app.png) képernyő Válassza **ezt a módosítást nekem,** és majd adja meg az értékeket a gyorsindítás kéri az Azure Portalon. Ha ez megtörtént, létrehozunk minden szükséges konfigurációs fájlt.
+![Az alkalmazás regisztrációs](media/tutorial-v2-shared-device-mode/register-app.png) képernyőjén válassza a **módosítás elvégzése nekem** lehetőséget, majd adja meg, hogy a rövid útmutató milyen értékeket kér a Azure Portal. Ha elkészült, a rendszer létrehozza az összes szükséges konfigurációs fájlt.
 
-![Alkalmazáskonfigurációs információs képernyő](media/tutorial-v2-shared-device-mode/config-info.png)
+![Az alkalmazás konfigurációs adatai képernyő](media/tutorial-v2-shared-device-mode/config-info.png)
 
 ## <a name="set-up-a-tenant"></a>Bérlő beállítása
 
-Tesztelési célokra állítsa be a következőket a bérlőben: legalább két alkalmazott, egy felhőeszköz-rendszergazda és egy globális rendszergazda. Az Azure Portalon állítsa be a felhőbeli eszközrendszergazdát a szervezeti szerepkörök módosításával. Az Azure Portalon az **Azure Active Directory szerepkörök** > és**rendszergazdák** > **felhőalapú eszközfelügyelő**jének kiválasztásával érheti el a szervezeti szerepköröket. Adja hozzá azeszközöket megosztott módba helyezhető felhasználókat.
+Tesztelési célból állítsa be a következőt a bérlőben: legalább két alkalmazott, egy felhőalapú eszköz rendszergazdája és egy globális rendszergazda. A Azure Portalban állítsa be a felhőalapú eszköz rendszergazdáját a szervezeti szerepkörök módosításával. A Azure Portal a szervezeti szerepköröket a **Azure Active Directory** > **szerepkörök és rendszergazdák** > **Felhőbeli eszköz rendszergazdája**lehetőség kiválasztásával érheti el. Adja hozzá azokat a felhasználókat, akik számára az eszköz megosztott módba helyezhető.
 
 ## <a name="set-up-an-android-device-in-shared-mode"></a>Android-eszköz beállítása megosztott módban
 
-### <a name="download-the-authenticator-app"></a>A Hitelesítő alkalmazás letöltése
+### <a name="download-the-authenticator-app"></a>A hitelesítő alkalmazás letöltése
 
-Töltse le a Microsoft Authenticator alkalmazást a Google Play áruházból. Ha már letöltötte az alkalmazást, győződjön meg arról, hogy az a legújabb verzió.
+Töltse le a Microsoft Authenticator alkalmazást a Google Play áruházból. Ha már letöltötte az alkalmazást, győződjön meg arról, hogy a legújabb verzió.
 
-### <a name="authenticator-app-settings--registering-the-device-in-the-cloud"></a>A hitelesítő alkalmazás beállításai & az eszköz felhőben történő regisztrálása
+### <a name="authenticator-app-settings--registering-the-device-in-the-cloud"></a>Hitelesítő alkalmazás beállításai & a felhőben regisztrálja az eszközt
 
-Indítsa el a Hitelesítő alkalmazást, és keresse meg a főfiók oldalát. Miután megjelenik a **Fiók hozzáadása** lap, készen áll arra, hogy az eszközt megossza.
+Indítsa el a hitelesítő alkalmazást, és navigáljon a főfiók lapra. Ha megjelenik a **fiók hozzáadása** lap, készen áll az eszköz megosztására.
 
 ![Hitelesítő fiók hozzáadása képernyő](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
- Nyissa meg a **Beállítások** ablaktáblát a jobb oldali menüsor használatával. Válassza az **Eszközregisztráció** lehetőséget **a Munkahelyi & Iskolai fiókok csoportban.**
+ Nyissa meg a **Beállítások** ablaktáblát a jobb oldali menüsor használatával. Válassza az **eszköz regisztrálása** **munkahelyi & iskolai fiókok**alatt lehetőséget.
 
  ![Hitelesítő fiók hozzáadása képernyő](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
- Ha erre a gombra kattint, a rendszer megkéri, hogy engedélyezze az eszköznévjegyekhez való hozzáférést. Ez annak köszönhető, hogy az Android fiókintegrációja az eszközön. Válassza az **Allow lehetőséget.**
+ Ha erre a gombra kattint, a rendszer arra kéri, hogy engedélyezze az eszköz névjegyeinek elérését. Ennek oka az, hogy az Android-fiók integrálva van az eszközön. Válassza az **Engedélyezés**lehetőséget.
 
  ![Hitelesítő fiók hozzáadása képernyő](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
 
-A felhőeszköz-rendszergazdának meg kell adnia a szervezeti e-mail-címét a **Vagy regisztráljon megosztott eszközként**területen. Ezután kattintson a **regiszter megosztott eszközként** gombra, és adja meg a hitelesítő adatait.
+A Felhőbeli eszköz rendszergazdájának meg kell adnia a szervezeti e-mail-címét **, vagy regisztrálnia kell megosztott eszközként**. Ezután kattintson a **regisztrálás megosztott eszközként** gombra, és adja meg a hitelesítő adataikat.
 
-![regisztráló készülék képernyője](media/tutorial-v2-shared-device-mode/register-device.png)
+![eszköz regisztrálása képernyő](media/tutorial-v2-shared-device-mode/register-device.png)
 
 ![sign-in](media/tutorial-v2-shared-device-mode/sign-in.png)
 
-Az eszköz most megosztott módban van.
+Az eszköz már megosztott módban van.
 
-![regisztráló készülék képernyője](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+![eszköz regisztrálása képernyő](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
 
- Az eszközön lévő bejelentkezések és kijelentkezések globálisak lesznek, ami azt jelenti, hogy az eszközön az MSAL-szal és a Microsoft Authenticator-ral integrált összes alkalmazásra vonatkoznak. Most már telepítheti az alkalmazásokat az eszközre, amelyek megosztott eszköz módú funkciókat használnak.
+ Az eszközön a bejelentkezések és a kijelentkezések globálisak lesznek, ami azt jelenti, hogy minden olyan alkalmazásra érvényesek, amely integrálva van a MSAL és a Microsoft Authenticator az eszközön. Mostantól telepítheti az alkalmazásokat az eszközre, amely megosztott eszköz üzemmódú szolgáltatásokat használ.
 
-## <a name="view-the-shared-device-in-the-azure-portal"></a>A megosztott eszköz megtekintése az Azure Portalon
+## <a name="view-the-shared-device-in-the-azure-portal"></a>A Azure Portal megosztott eszközének megtekintése
 
-Miután megosztott módban helyezte el az eszközt, ismertté válik a szervezet számára, és a szervezeti bérlő nyomon követi. A megosztott eszközöket az Azure-portál Azure Active Directory paneljén található **Join Type** megtekintésével tekintheti meg.
+Az eszköz megosztott módban való üzembe helyezése után a rendszer a szervezete számára ismertté válik, és nyomon követheti a szervezeti bérlőn. A megosztott eszközök megtekintéséhez tekintse meg a Azure Portal Azure Active Directory paneljén található **JOIN (illesztés) típust** .
 
-![Az Azure Portal összes eszközpanelje](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+![A Azure Portal minden eszköz panelje](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
 
-## <a name="running-the-sample-app"></a>A mintaalkalmazás futtatása
+## <a name="running-the-sample-app"></a>A minta alkalmazás futtatása
 
-A mintaalkalmazás egy egyszerű alkalmazás, amely meghívja a szervezet Graph API-ját. Az első futtatáskor a rendszer kérni fogja a beleegyezést, mivel az alkalmazás új az alkalmazotti fiókjában.
+A minta alkalmazás egy egyszerű alkalmazás, amely meghívja a szervezet Graph APIét. Az első futtatáskor a rendszer megkéri, hogy az alkalmazás új legyen az alkalmazott fiókjában.
 
-![Alkalmazáskonfigurációs információs képernyő](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+![Az alkalmazás konfigurációs adatai képernyő](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a megosztott módról az [Android-eszközök megosztott eszköz módban](msal-android-shared-devices.md)
+További információ a megosztott üzemmódról az [Android-eszközök megosztott eszközének módjáról](msal-android-shared-devices.md)

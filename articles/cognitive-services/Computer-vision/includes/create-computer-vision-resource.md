@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2647c604bebc2885f5c8516eb997792b65751e88
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876084"
 ---
-## <a name="create-an-computer-vision-resource"></a>Számítógép-látomás-erőforrás létrehozása
+## <a name="create-an-computer-vision-resource"></a>Computer Vision erőforrás létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Kattintson [a **Számítógép-látomás** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) létrehozása erőforrás elemre.
+1. Kattintson [a **Computer Vision** erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) elemre.
 1. Adja meg az összes szükséges beállítást:
 
     |Beállítás|Érték|
     |--|--|
-    |Név|Kívánt név (2-64 karakter)|
+    |Name (Név)|Kívánt név (2-64 karakter)|
     |Előfizetés|Válassza ki a megfelelő előfizetést|
-    |Hely|Válassza ki a közeli és elérhető helyeket|
-    |Tarifacsomag|`F0`- a minimális tarifaszint|
-    |Erőforráscsoport|Elérhető erőforráscsoport kiválasztása|
+    |Hely|Válasszon ki egy közeli és elérhető helyet|
+    |Tarifacsomag|`F0`– a minimális díjszabási réteg|
+    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot|
 
-1. Kattintson a **Létrehozás gombra,** és várja meg az erőforrás létrehozását. Létrehozása után keresse meg az erőforráslapot.
-1. Gyűjtse `{ENDPOINT_URI}` össze `{API_KEY}`a konfigurált és a , lásd [a szükséges paraméterek összegyűjtése](../computer-vision-how-to-install-containers.md#gathering-required-parameters) a részletekért.
+1. Kattintson a **Létrehozás** gombra, és várja meg az erőforrás létrehozását. A létrehozást követően navigáljon az erőforrás lapra.
+1. A begyűjtés `{ENDPOINT_URI}` és `{API_KEY}`a további részletekért lásd a [szükséges paraméterek összegyűjtése](../computer-vision-how-to-install-containers.md#gathering-required-parameters) című témakört.

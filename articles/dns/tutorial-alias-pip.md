@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy Azure DNS-aliasrekordot, amely egy nyilvános Azure-címre hivatkozik'
+title: 'Oktatóanyag: Azure DNS alias-rekord létrehozása egy Azure nyilvános IP-címre való hivatkozáshoz'
 description: Ez az oktatóanyag bemutatja, hogyan konfigurálhat egy Azure DNS-aliasrekordot egy nyilvános Azure IP-címre való hivatkozáshoz.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985439"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Oktatóanyag: Aliasrekord konfigurálása egy nyilvános Azure IP-címre való hivatkozáshoz 
@@ -20,12 +20,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hálózati infrastruktúra létrehozása.
-> * Hozzon létre egy webszerver virtuális gép nyilvános IP.Create a web server virtual machine with a public IP.
-> * Hozzon létre egy aliasrekordot, amely a nyilvános IP-címre mutat.
+> * Hozzon létre egy webkiszolgáló virtuális gépet egy nyilvános IP-címmel.
+> * Hozzon létre egy olyan alias-rekordot, amely a nyilvános IP-címre mutat.
 > * Az aliasrekord tesztelése.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
@@ -36,25 +36,25 @@ Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön
 
 ## <a name="create-the-network-infrastructure"></a>A hálózati infrastruktúra létrehozása
 Először hozzon létre egy virtuális hálózatot és egy alhálózatot a webkiszolgálók elhelyezéséhez.
-1. Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza a portál bal felső sarkában az **Erőforrás létrehozása** lehetőséget. Írja be a keresőmezőbe az *erőforráscsoport* kifejezést, és hozzon létre egy **RG-DNS-Alias-pip** nevű erőforráscsoportot.
-3. Válassza az > **Erőforrás-hálózati** > **virtuális hálózat** **létrehozása**lehetőséget.
+3. Válassza **az erőforrás** > **létrehozása hálózatkezelés** > **virtuális hálózat**lehetőséget.
 4. Hozzon létre egy **VNet-Server** nevű virtuális hálózatot. Helyezze az **RG-DNS-Alias-pip** erőforráscsoportba, és adja az **SN-Web** nevet az alhálózatnak.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Webkiszolgálót futtató virtuális gép létrehozása
-1. Válassza **az Erőforrás** > létrehozása**Windows Server 2016 VM**lehetőséget.
+1. Válassza **az erőforrás** > létrehozása**Windows Server 2016 virtuális gép**lehetőséget.
 2. Adja meg a **Web-01** nevet, és helyezze el a virtuális gépet az **RG-DNS-Alias-TM** erőforráscsoportban. Adjon meg egy felhasználónevet és egy jelszót, és válassza az **OK** lehetőséget.
 3. A **Méret** mezőben válasszon ki egy 8 GB RAM-mal rendelkező SKU-t.
-4. A **Beállítások** területen válassza a **VNet-Servers** virtuális hálózatot és az **SN-Web** alhálózatot. Nyilvános bejövő portok esetén válassza a **HTTP** > **HTTPS** > **RDP (3389)** lehetőséget, majd az **OK**gombot.
+4. A **Beállítások** területen válassza a **VNet-Servers** virtuális hálózatot és az **SN-Web** alhálózatot. Nyilvános bejövő portok esetében válassza a **http** > **https** > **RDP (3389)** lehetőséget, majd kattintson **az OK gombra**.
 5. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget.
 
-Ez az eljárás néhány percet vehet igénybe. A virtuális gép lesz egy csatlakoztatott hálózati adapter, amely egy alapvető dinamikus nyilvános IP nevű Web-01-ip. A nyilvános IP-cím a virtuális gép újraindításakor megváltozik.
+Ez az eljárás néhány percet vehet igénybe. A virtuális gépnek van egy csatlakoztatott hálózati adaptere, amely egy web-01-IP nevű alapszintű dinamikus nyilvános IP-címmel fog rendelkezni. A nyilvános IP-cím minden alkalommal megváltozik, amikor a virtuális gép újraindul.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
 Telepítse az IIS-t a **Web-01** hálózatra.
 
-1. Csatlakozzon a **Web-01**-hez , és jelentkezzen be.
+1. Kapcsolódjon a **web-01-** hez, és jelentkezzen be.
 2. A **Kiszolgálókezelő** irányítópulton válassza a **Szerepkörök és szolgáltatások hozzáadása** elemet.
 3. Kattintson háromszor a **Tovább** gombra. A **Kiszolgálói szerepkörök** lapon válassza a **Webkiszolgáló (IIS)** elemet.
 4. Válassza a **Szolgáltatások hozzáadása**, majd a **Tovább** elemet.

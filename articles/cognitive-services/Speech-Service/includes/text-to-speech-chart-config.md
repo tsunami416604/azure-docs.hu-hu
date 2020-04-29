@@ -1,7 +1,7 @@
 ---
-title: Beszédtárolók telepítése
+title: Beszédfelismerési tárolók telepítése
 titleSuffix: Azure Cognitive Services
-description: Részletek a szöveg-beszéd helm diagram konfigurációs lehetőségeket.
+description: A szöveg-beszéd Helm diagram konfigurációs beállításainak részletei.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 22168974ab8b285413b4fa6e947c05f65a73ae12
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80874344"
 ---
-### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Szövegfelolvasás (aldiagram: diagramok/szövegBeszédszó)
+### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Szöveg-beszéd (Aldiagram: diagramok/textToSpeech)
 
-Az "esernyő" diagram felülbírálásához adja `textToSpeech.` hozzá az előtagot bármely paraméterhez, hogy pontosabb legyen. Például felülbírálja a megfelelő paramétert, `textToSpeech.numberOfConcurrentRequest` például felülbírálja a . `numberOfConcurrentRequest`
+Az "esernyő" diagram felülbírálásához adja hozzá az előtagot `textToSpeech.` bármelyik paraméterhez, hogy pontosabb legyen. Például felülbírálja a megfelelő paramétert például `textToSpeech.numberOfConcurrentRequest` : felülbírálások. `numberOfConcurrentRequest`
 
 |Paraméter|Leírás|Alapértelmezett|
 | -- | -- | -- |
-| `enabled` | Azt jelzi, hogy engedélyezve **van-e a szövegfelolvasó** szolgáltatás. | `false` |
-| `numberOfConcurrentRequest` | A **szövegfelolvasó** szolgáltatás egyidejű kéréseinek száma. Ez a diagram automatikusan kiszámítja a PROCESSZOR- és memóriaerőforrásokat ezen érték alapján. | `2` |
-| `optimizeForTurboMode`| Azt jelzi, hogy a szolgáltatásnak optimalizálnia kell-e a szövegbevitelt szövegfájlokon keresztül. Ha `true`a diagram több CPU-erőforrást rendel a szolgáltatáshoz. | `false` |
-| `image.registry`| A **szövegfelolvasó** docker rendszerkép-beállításjegyzék. | `containerpreview.azurecr.io` |
-| `image.repository` | A **szövegfelolvasó** docker-rendszertár. | `microsoft/cognitive-services-text-to-speech` |
-| `image.tag` | A **szövegfelolvasó** docker-képcímke. | `latest` |
-| `image.pullSecrets` | A **szövegfelolvasó docker-lemezkép** lehúzásának titkai. | |
-| `image.pullByHash`| Azt jelzi, hogy a docker-lemezképet kivonat oltja-e le. Ha `true` `image.hash` szükséges, hogy a. | `false` |
-| `image.hash`| A **szövegfelolvasó docker-kép** kivonata. Csak akkor `image.pullByHash: true`használható, ha .  | |
-| `image.args.eula`(kötelező) | Azt jelzi, hogy elfogadta a licencet. Az egyetlen érvényes érték`accept` | |
-| `image.args.billing`(kötelező) | A számlázási végpont URI-értéke elérhető az Azure Portal beszédfelismerési áttekintése lapon. | |
-| `image.args.apikey`(kötelező) | Számlázási adatok nyomon követésére szolgál. ||
-| `service.type` | A **szövegfelolvasó** szolgáltatás Kubernetes szolgáltatástípusa. További részletekért tekintse meg a [Kubernetes-szolgáltatástípusokra vonatkozó utasításokat,](https://kubernetes.io/docs/concepts/services-networking/service/) és ellenőrizze a felhőszolgáltató támogatását. | `LoadBalancer` |
-| `service.port`|  A **szövegfelolvasó** szolgáltatás portja. | `80` |
-| `service.annotations` | A **text-to-speech** szolgáltatás metaadatainak szövegfelolvasó-valancításai. A jegyzetek kulcsértékpárok. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
-| `service.autoScaler.enabled` | Azt jelzi, hogy a [vízszintes pod automatikus skálázó](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) engedélyezve van-e. Ha `true`a `text-to-speech-autoscaler` lesz telepítve a Kubernetes-fürtben. | `true` |
-| `service.podDisruption.enabled` | Azt jelzi, hogy a [pod megszakítási költségvetés](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) engedélyezve van-e. Ha `true`a `text-to-speech-poddisruptionbudget` lesz telepítve a Kubernetes-fürtben. | `true` |
+| `enabled` | Azt jelzi, hogy engedélyezve van-e a **szöveg-beszéd** szolgáltatás. | `false` |
+| `numberOfConcurrentRequest` | A **szöveg-beszéd** típusú szolgáltatás egyidejű kérelmeinek száma. Ez a diagram automatikusan kiszámítja a processzor-és memória-erőforrásokat ezen érték alapján. | `2` |
+| `optimizeForTurboMode`| Azt határozza meg, hogy a szolgáltatásnak szöveges fájlok használatával kell-e optimalizálnia a szövegbevitelt. Ha `true`ez a diagram több CPU-erőforrást fog kiosztani a szolgáltatás számára. | `false` |
+| `image.registry`| A **szöveg-beszéd** Docker-rendszerkép beállításjegyzéke. | `containerpreview.azurecr.io` |
+| `image.repository` | A **szöveg-beszéd** Docker-rendszerkép tárháza. | `microsoft/cognitive-services-text-to-speech` |
+| `image.tag` | A **szöveg és a beszéd** Docker-rendszerkép címkéje. | `latest` |
+| `image.pullSecrets` | A **szöveg-beszéd** Docker-rendszerkép kihúzásának képtitka. | |
+| `image.pullByHash`| Azt jelzi, hogy a Docker-rendszerképet kivonattal húzta-e. `image.hash` Ha `true`kötelező megadni. | `false` |
+| `image.hash`| A **szöveg-beszéd** Docker-rendszerkép kivonata. Csak akkor használatos, ha `image.pullByHash: true`.  | |
+| `image.args.eula`szükséges | Azt jelzi, hogy elfogadta a licencet. Az egyetlen érvényes érték a`accept` | |
+| `image.args.billing`szükséges | A számlázási végpont URI-ja a Azure Portal beszédének áttekintése oldalon érhető el. | |
+| `image.args.apikey`szükséges | A számlázási információk nyomon követésére szolgál. ||
+| `service.type` | A **szöveg-beszéd** típusú szolgáltatás Kubernetes. További részletekért tekintse meg a [Kubernetes-szolgáltatások típusaival kapcsolatos útmutatót](https://kubernetes.io/docs/concepts/services-networking/service/) , és ellenőrizze a felhőalapú szolgáltatók támogatását. | `LoadBalancer` |
+| `service.port`|  A **szöveg-beszéd** típusú szolgáltatás portja. | `80` |
+| `service.annotations` | A szolgáltatás metaadatainak **szöveg-beszéd** típusú megjegyzései A jegyzetek a kulcs érték párok. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
+| `service.autoScaler.enabled` | Azt jelzi, hogy engedélyezve van-e a [horizontális Pod automéretező](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) . Ha `true`a, `text-to-speech-autoscaler` a a Kubernetes-fürtben lesz telepítve. | `true` |
+| `service.podDisruption.enabled` | Azt jelzi, hogy engedélyezve van-e a [Pod-megszakadási költségvetés](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Ha `true`a, `text-to-speech-poddisruptionbudget` a a Kubernetes-fürtben lesz telepítve. | `true` |

@@ -1,7 +1,7 @@
 ---
 title: Tárolótámogatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre egy Azure container instance erőforrást az Azure CLI-ből.
+description: Ismerje meg, hogyan hozhat létre Azure Container instance-erőforrást az Azure CLI-vel.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e3542b976921aa45794d62cad9517984c8348ce3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80875120"
 ---
-## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Hozzon létre egy Azure Container Instance erőforrást az Azure CLI-ből
+## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure Container instance-erőforrás létrehozása az Azure CLI-ből
 
-Az alábbi YAML határozza meg az Azure Container Instance erőforrást. Másolja és illessze be a `my-aci.yaml` tartalmat egy új fájlba, amelyet elnevez, és a megjegyzésekkel ellátott értékeket a sajátjára cserélje le. Az érvényes YAML [sablonformátumban][template-format] tájékformulmát. Tekintse meg a [tároló tárolók és a rendszerképek][repositories-and-images] a rendelkezésre álló rendszerképek nevét és a hozzájuk tartozó tárház. A tárolópéldányok YAML-hivatkozásáról további információt a [YAML-hivatkozás: Azure Container Instances című témakörben talál.][aci-yaml-ref]
+Az alábbi YAML határozza meg az Azure Container instance-erőforrást. Másolja és illessze be a tartalmat egy új fájlba, és `my-aci.yaml` a megnevezett értékeket cserélje le a saját megjegyzésére. Tekintse meg a [sablon formátumát][template-format] az érvényes YAML. Tekintse meg a [tároló adattárait és lemezképeit][repositories-and-images] a rendelkezésre álló képnevekhez és a hozzájuk tartozó adattárhoz. A Container instances YAML-hivatkozásával kapcsolatos további információkért lásd [: YAML-hivatkozás: Azure Container instances][aci-yaml-ref].
 
 ```YAML
 apiVersion: 2018-10-01
@@ -64,18 +64,18 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> Nem minden hely rendelkezik azonos processzor- és memória-rendelkezésre állással. Tekintse meg a [hely és az erőforrások][location-to-resource] tábla a rendelkezésre álló erőforrások listázása a tárolók helyenként és operációs rendszer.
+> Nem minden helyen ugyanaz a processzor és a memória rendelkezésre állása. A tárolók és az operációs rendszerek számára elérhető erőforrások listázásához tekintse meg a [hely és erőforrások][location-to-resource] táblát.
 
-A [`az container create`][azure-container-create] parancshoz létrehozott YAML fájlra támaszkodunk. Az Azure CLI,hajtsa végre a `az container create` parancsot helyett a `<resource-group>` saját. Ezenkívül a YAML-telepítésen belüli értékek védelméhez tekintse meg a [biztonságos értékeket.][secure-values]
+A [`az container create`][azure-container-create] parancshoz létrehozott YAML-fájlra támaszkodunk. Az Azure CLI-ből futtassa a `az container create` parancsot, `<resource-group>` és cserélje le a alkalmazást sajátra. Emellett a YAML-telepítésben lévő értékek biztonságossá tételéhez tekintse meg a [biztonságos értékeket][secure-values].
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-A parancs kimenete, `Running...` ha érvényes, miután valamikor a kimenet az újonnan létrehozott ACI-erőforrást képviselő JSON-karakterláncra változik. A tárolórendszerkép több mint valószínű, hogy egy ideig nem érhető el, de az erőforrás már telepítve van.
+A parancs kimenete `Running...` ha érvényes, egy kis ideig a kimenet egy JSON-karakterláncra változik, amely az újonnan létrehozott ACI-erőforrást jelképezi. A tároló képe több, mint valószínű, hogy egy ideig nem érhető el, de az erőforrás már telepítve van.
 
 > [!TIP]
-> Fordítson különös figyelmet a nyilvános előzetes verziójú Azure Cognitive Service-ajánlatok helyére, mivel a YAML-t ennek megfelelően módosítani kell, hogy megfeleljen a helynek.
+> Ügyeljen arra, hogy a nyilvános előzetes verziójú Azure kognitív szolgáltatás ajánlatait is figyelemmel kísérje, mivel a YAML ennek megfelelően kell módosítani, hogy az megfeleljen a helynek.
 
 [azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format

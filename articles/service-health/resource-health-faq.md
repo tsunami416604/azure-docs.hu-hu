@@ -1,91 +1,91 @@
 ---
-title: Az Azure-erőforrások állapotáról – gyakori kérdések
-description: Az Azure-erőforrások állapotának áttekintése
+title: Azure Resource Health GYIK
+description: A Azure Resource Health áttekintése
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985031"
 ---
-# <a name="azure-resource-health-faq"></a>Az Azure-erőforrások állapotáról – gyakori kérdések
-Ismerje meg az Azure Resource Health szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat.
+# <a name="azure-resource-health-faq"></a>Azure Resource Health GYIK
+Ismerkedjen meg a Azure Resource Healthekkel kapcsolatos gyakori kérdésekre adott válaszokkal.
 
 ## <a name="what-is-azure-resource-health"></a>Mi az Azure Resource Health?
 A Resource Health segítséget nyújt a diagnosztizálásban és a támogatás igénylésében, ha egy Azure-ral kapcsolatos probléma hatással van az erőforrásaira. Tájékoztatja az erőforrásai aktuális és korábbi állapotáról, és segít a problémák kezelésében. A Resource Health műszaki támogatást nyújt, ha segítségre van szüksége az Azure szolgáltatásait érintő problémákkal kapcsolatban.  
 
-## <a name="what-is-the-resource-health-intended-for"></a>Mire szolgál az erőforrás-állapot?
-Ha egy erőforrással kapcsolatos problémát észlelt, az Erőforrás állapota segíthet a kiváltó ok diagnosztizálásában. Segítséget nyújt a probléma és a technikai támogatás csökkentéséhez, ha további segítségre van szüksége az Azure-szolgáltatásokkal kapcsolatos problémákkal kapcsolatban.
+## <a name="what-is-the-resource-health-intended-for"></a>Mi a célja a Resource Health?
+Ha észlelt egy erőforrással kapcsolatos problémát, Resource Health segíthet a kiváltó ok diagnosztizálásában. Segítséget nyújt a probléma megoldásához és a technikai támogatáshoz, ha további segítségre van szüksége az Azure-szolgáltatásokkal kapcsolatos problémák megoldásához.
 
-## <a name="what-health-checks-are-performed-by-resource-health"></a>Milyen állapot-ellenőrzéseket végez az Erőforrás állapota?
-Az erőforrás állapota különböző ellenőrzéseket végez az [erőforrás típusának](resource-health-checks-resource-types.md)alapján. Ezek az ellenőrzések három féle probléma végrehajtására szolgálnak: 
-- Nem tervezett események, például váratlan állomás újraindítása
-- Tervezett események, például ütemezett gazdaoperációs rendszer frissítései
-- Felhasználói műveletek által kiváltott események, például egy felhasználó újraindítása egy virtuális gépet
+## <a name="what-health-checks-are-performed-by-resource-health"></a>Milyen állapot-ellenőrzéseket végez a Resource Health?
+A Resource Health különböző ellenőrzéseket végez az [erőforrástípus](resource-health-checks-resource-types.md)alapján. Ezek az ellenőrzések háromféle típusú probléma megvalósítására lettek kialakítva: 
+- Nem tervezett események, például váratlan gazdagép újraindítása
+- Tervezett események, például a gazdagép operációs rendszerének ütemezett frissítései
+- Felhasználói műveletek által aktivált események, például egy virtuális gépet újraindító felhasználó
 
-## <a name="what-does-each-of-the-health-status-mean"></a>Mit jelentenek az egyes egészségi állapotok?
-Három különböző egészségi állapot létezik:
-- Elérhető: Nincs olyan ismert probléma az Azure platformon, amely hatással lehet erre az erőforrásra
-- Nem érhető el: Az erőforrás állapota olyan problémákat észlelt, amelyek hatással vannak az erőforrásra
-- Ismeretlen: Az erőforrások állapota nem tudja meghatározni egy erőforrás állapotát, mert nem kapott információt róla. 
+## <a name="what-does-each-of-the-health-status-mean"></a>Mit jelent az egyes állapotadatok?
+Három különböző állapot van:
+- Elérhető: nincs olyan ismert probléma az Azure platformon, amely hatással lehet erre az erőforrásra
+- Nem érhető el: az erőforrás állapota olyan problémákat észlelt, amelyek hatással vannak az erőforrásra
+- Ismeretlen: az erőforrás állapota nem tudja meghatározni az erőforrás állapotát, mert leállt az adatok fogadása. 
 
-## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Mit jelent az ismeretlen állapot? Valami baj van az erőforrásommal?
-Az állapot ismeretlen, ha az Erőforrás állapota leállítja egy adott erőforrásadatainak fogadását. Bár ez az állapot nem végleges jelzi az erőforrás állapotát, azokban az esetekben, ahol problémákat tapasztal, azt jelezheti, hogy azure-probléma van.
+## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Mit jelent az ismeretlen állapot? Helytelen az erőforrásom?
+Az állapot értéke ismeretlen, ha Resource Health leállítja egy adott erőforrásra vonatkozó információk fogadását. Habár ez az állapot nem az erőforrás állapotának végleges jele, ha problémát tapasztal, előfordulhat, hogy van egy Azure-probléma.
 
-## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Hogyan kaphatok segítséget egy nem elérhető erőforráshoz?
-Támogatási kérelmet küldhet a Resource Health panelről. Nincs szükség támogatási szerződésre a Microsofttal ahhoz, hogy megnyisson egy kérelmet, ha az erőforrás platformesemények miatt nem érhető el.
+## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Hogyan Kérhetek segítséget egy olyan erőforráshoz, amely nem érhető el?
+Egy támogatási kérést a Resource Health panelről küldhet be. Nem kell támogatási szerződést kötnie a Microsofttal egy kérelem megnyitásához, ha az erőforrás nem érhető el, mert a platform eseményei vannak.
 
-## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Az erőforrás-állapot különbséget tesz a platformproblémák által okozott elérhetetlenség és az általam okozott problémák között?
-Igen, ha egy erőforrás nem érhető el, az Erőforrás állapota az alábbi kategóriák egyikén azonosítja a kiváltó okot: 
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Resource Health különbséget tenni a platformmal kapcsolatos problémák által okozott hiányok között, és amit tettem?
+Igen, ha egy erőforrás nem érhető el, Resource Health a következő kategóriák egyikén belül azonosítja a kiváltó okot: 
 -   Felhasználó által kezdeményezett művelet
 -   Tervezett esemény 
 -   Nem tervezett esemény
 
-A portálon a felhasználó által kezdeményezett műveletek egy kék értesítési ikonnal jelennek meg, míg a tervezett és nem tervezett események piros figyelmeztető ikonnal jelennek meg. További részletek az [Erőforrás állapotának áttekintése](Resource-health-overview.md)című témakörben találhatók.  
+A portálon a felhasználó által kezdeményezett műveletek kék értesítési ikonnal jelennek meg, míg a tervezett és nem tervezett események vörös figyelmeztető ikon használatával jelennek meg. További részletek a [Resource Health áttekintése című témakörben](Resource-health-overview.md)találhatók.  
 
-## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Integrálhatom az Erőforrás-állapot ot a figyelési eszközeimmel?
-Az erőforrás-állapot [előzetes verziójú támogatást](resource-health-alert-arm-template-guide.md) nyújt a tevékenységnapló-alapú riasztásokhoz. A tevékenységnapló-riasztások [műveletcsoportok](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) használatával értesítik a felhasználókat arról, hogy riasztás történt. A műveletcsoportok számos értesítési csatornát támogatnak, például az e-mail, az SMS, a webhook és az ITSM-műveleteket.
+## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Integrálható a Resource Health a monitorozási eszközökkel?
+A Resource Health [előzetes verziója támogatja](resource-health-alert-arm-template-guide.md) a tevékenység napló alapú riasztásait. A műveletnapló riasztások használatával értesítheti a felhasználókat arról, hogy riasztást [váltott ki.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) A műveleti csoportok különböző értesítési csatornákat támogatnak, például e-maileket, SMS-t, webhookot és ITSM műveleteket.
 
-## <a name="where-do-i-find-resource-health"></a>Hol találom az Erőforrás-állapotot?
-Miután bejelentkezett az Azure Portalra, többféleképpen is elérheti az Erőforrás-állapotot:
-- Keresse meg az erőforrást. A bal oldali navigációs ban válassza **az Erőforrás állapota lehetőséget.**
-- Nyissa meg az Azure Service Health panelt.  A bal oldali navigációsban válassza az **Erőforrás állapota**lehetőséget.
-- Nyissa meg a **Súgó + Támogatás** panelt úgy, hogy a portál jobb felső sarkában lévő kérdőjelet, majd a Súgó + Támogatás lehetőséget **választja.** A panel megnyitása után válassza **az Erőforrás állapota** lehetőséget
+## <a name="where-do-i-find-resource-health"></a>Hol találom a Resource Health?
+Miután bejelentkezett a Azure Portalba, több módon is elérheti Resource Health:
+- Navigáljon az erőforráshoz. A bal oldali navigációs sávon válassza az **erőforrás állapota** lehetőséget.
+- Lépjen a Azure Service Health panelre.  A bal oldali navigációs sávon válassza az **erőforrás állapota**lehetőséget.
+- Nyissa meg a **Súgó + támogatás** panelt a portál jobb felső sarkában látható kérdőjel kiválasztásával, majd válassza a **Súgó és támogatás**lehetőséget. A panel megnyitása után válassza az **erőforrás állapota** lehetőséget.
 
-A Resource Health API-t is használhatja az erőforrások állapotával kapcsolatos információk megszerzéséhez.
+A Resource Health API-val is felhasználhatja az erőforrások állapotával kapcsolatos információkat.
 
-## <a name="is-resource-health-available-for-all-resource-types"></a>Az erőforrás-állapot minden erőforrástípushoz elérhető?
-Az Erőforrás állapota által támogatott állapotellenőrzések és erőforrástípusok listája [itt](resource-health-checks-resource-types.md)található.
+## <a name="is-resource-health-available-for-all-resource-types"></a>Minden erőforrástípus elérhető Resource Health?
+Az Resource Health által támogatott állapot-ellenőrzéseket és erőforrástípusok listáját [itt](resource-health-checks-resource-types.md)találja.
 
-## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Mi a teendő, ha az erőforrásom elérhető, de úgy gondolom, hogy nem?"
-Egy erőforrás állapotának ellenőrzésekor közvetlenül az állapot alatt a Helytelen állapot jelentése gombra kattintva kattintson a **Jelentés gombra.** A jelentés elküldése előtt további részleteket is megad arról, hogy miért gondolja úgy, hogy az aktuális egészségi állapot helytelen.
+## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Mi a teendő, ha az erőforrásom elérhető, de úgy vélem, hogy nem?
+Egy erőforrás állapotának ellenőrzésekor közvetlenül az állapot állapota területen kattintson a **helytelen állapot állapotának jelentése**lehetőségre. A jelentés elküldése előtt lehetősége van további részletek megadására arról, hogy miért nem megfelelő az aktuális állapot.
 
-## <a name="is-resource-health-available-for-all-azure-regions"></a>Az Erőforrás-állapot minden Azure-régióban elérhető? 
-Az erőforrások állapota minden Azure-földrajzi területen elérhető.
+## <a name="is-resource-health-available-for-all-azure-regions"></a>Resource Health érhető el az összes Azure-régióhoz? 
+Az erőforrás állapota az összes Azure-térségek elérhető.
 
-## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Miben különbözik az Erőforrás-állapot az Azure-állapottól vagy a Service Health irányítópultjától?
-A Resource Health által megadott információk pontosabbak, mint amit az Azure-állapot vagy a Service Health irányítópult biztosít.
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Miben különbözik az Resource Health az Azure status vagy az Service Health irányítópulttól?
+A Resource Health által megadott információk az Azure status vagy az Service Health irányítópult által biztosítottnál konkrétabbak.
 
-Mivel az [Azure állapota](https://status.azure.com) és a Service Health irányítópult tájékoztatja Önt az ügyfelek széles körét (például egy Azure-régiót) érintő szolgáltatási problémákról, a Resource Health részletesebb eseményeket jelenít meg, amelyek csak az adott erőforrás szempontjából relevánsak. Ha például egy gazdagép váratlanul újraindul, a Resource Health csak azokat az ügyfeleket riasztja, akiknek a virtuális gépei az adott gazdagépen futottak.
+Míg az [Azure status](https://status.azure.com) és a Service Health irányítópult tájékoztat arról, hogy az ügyfelek széles körét befolyásoló szolgáltatási problémák (például egy Azure-régió) Resource Health az adott erőforráshoz kapcsolódó részletesebb eseményeket tesznek elérhetővé. Ha például egy gazdagép váratlanul újraindul, Resource Health csak azokat az ügyfeleket értesíti, akiknek virtuális gépei futnak a gazdagépen.
 
-Fontos figyelembe venni, hogy az erőforrásokat befolyásoló események teljes láthatóságának biztosítása érdekében a Resource Health a Service Health irányítópulton közzétett eseményeket is megjelen.
+Fontos megjegyezni, hogy az erőforrásait érintő események teljes láthatóságának biztosítása érdekében Resource Health a Service Health irányítópulton közzétett surfaces eseményeket is.
 
-## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Minden erőforráshoz aktiválnom kell az Erőforrás-állapot ot?
-Nem, az állapotra vonatkozó információk az Erőforrás-állapot on keresztül elérhető összes erőforrástípushoz elérhetők. 
+## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Aktiválni kell Resource Health minden erőforráshoz?
+Nem, a Resource Healthon keresztül elérhető összes erőforrástípus számára elérhető az állapot információja. 
 
-## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Szükség van a szervezet erőforrás-állapot engedélyezésére?
-Nem.  Az Azure Resource Health az Azure Portalon belül, beállítási követelmények nélkül érhető el.
+## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Engedélyezni kell a Resource Health a saját szervezetem számára?
+Nem.  A Azure Resource Health a Azure Portaln belül elérhető a telepítési követelmények nélkül.
 
-## <a name="is-resource-health-available-free-of-charge"></a>A Resource Health ingyenesen elérhető?
-Igen.  Az Azure Resource Health ingyenes.
+## <a name="is-resource-health-available-free-of-charge"></a>Ingyenesen elérhető Resource Health?
+Igen.  Azure Resource Health díjmentes.
 
-## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Milyen javaslatokat tesz az Erőforrás-állapot?
-Az állapot alapján a Resource Health javaslatokat nyújt a hibaelhárítással töltött idő csökkentésére. A rendelkezésre álló erőforrások esetében az ajánlások arra összpontosítanak, hogyan oldható meg az ügyfelek által tapasztalt leggyakoribb problémák. Ha az erőforrás nem érhető el egy Nem tervezett Azure-esemény miatt, a hangsúly a helyreállítási folyamat alatt és után történő segítségnyújtáson lesz. 
+## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Mik a Resource Health által biztosított javaslatok?
+Az állapotadatok alapján a Resource Health javaslatokat tesz a hibaelhárításhoz használt idő csökkentésének céljával. A rendelkezésre álló erőforrások esetében a javaslatok az ügyfelek által tapasztalt leggyakoribb problémák megoldására összpontosítanak. Ha az erőforrás nem érhető el az Azure-ban nem tervezett események miatt, a hangsúly a helyreállítási folyamat során és után segítséget nyújt. 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az erőforrás-állapotról:
--  [Az Azure Resource Health áttekintése](Resource-health-overview.md)
+További információ a Resource Healthról:
+-  [Azure Resource Health áttekintése](Resource-health-overview.md)
 -  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapotellenőrzések](resource-health-checks-resource-types.md)

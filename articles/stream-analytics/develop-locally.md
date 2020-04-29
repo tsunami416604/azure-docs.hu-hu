@@ -1,37 +1,37 @@
 ---
-title: Az Azure Stream Analytics-feladatok helyi fejlesztése és hibakeresése
-description: Ismerje meg, hogyan fejlesztheti és tesztelheti az Azure Stream Analytics-feladatokat a helyi számítógépen, mielőtt futtatna őket az Azure Portalon.
+title: Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése
+description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Stream Analytics feladatait a helyi számítógépen, mielőtt azokat a Azure Portalban futtatná.
 ms.author: mamccrea
 author: mamccrea
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879842"
 ---
-# <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Az Azure Stream Analytics-feladatok helyi fejlesztése és hibakeresése
+# <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése
 
-Miközben azure Stream Analytics-feladatokat hozhat létre és tesztelhet az Azure Portalon, sok fejlesztő a helyi fejlesztési élményt részesíti előnyben. A Stream Analytics segítségével egyszerűen használhatja kedvenc kódszerkesztőjét és fejlesztői eszközeit, hogy az Azure Event Hubról, az IoT Hubról és a Blob Storageból származó élő eseménystreamekkel hozzon létre és teszteljen feladatokat egy teljesen működőképes egycsomópontos helyi futásidejű használatával. A feladatokat közvetlenül a helyi fejlesztési környezetből is elküldheti az Azure-ba.
+Noha Azure Stream Analytics feladatok létrehozására és tesztelésére is lehetősége van a Azure Portalban, számos fejlesztő inkább a helyi fejlesztési élményt részesíti előnyben. A Stream Analytics megkönnyíti kedvenc Kódszerkesztő és fejlesztői eszközeinek létrehozását és tesztelését az Azure Event hub, a IoT Hub és a Blob Storage élő esemény-adatfolyamokból származó feladatok létrehozásához és teszteléséhez egy teljes mértékben működő, egyetlen csomópontot futtató helyi futtatókörnyezet használatával. A feladatokat közvetlenül a helyi fejlesztési környezetből is beküldheti az Azure-ba.
 
 ## <a name="local-development-environments"></a>Helyi fejlesztési környezetek
 
-A Stream Analytics-feladatok helyi számítógépen történő fejlesztésének módja az eszközbeállításoktól és a funkciók elérhetőségétől függ. Tekintse meg [az Azure Stream Analytics-funkciók összehasonlítását,](feature-comparison.md) és tekintse meg, hogy az egyes fejlesztési környezetekben mely funkciók támogatottak.
+A Stream Analytics feladatok helyi számítógépen való fejlesztésének módja az eszköz beállításaitól és a szolgáltatás rendelkezésre állásának függvénye. Az egyes fejlesztői környezetek által támogatott funkciók megtekintéséhez tekintse meg [Azure stream Analytics szolgáltatások összehasonlítását](feature-comparison.md) .
 
-Az alábbi táblázatban található környezetek támogatják a helyi fejlesztést:
+A következő táblázat környezetei támogatják a helyi fejlesztést:
 
 |Környezet                              |Leírás    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Az [Azure Stream Analytics Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) a Visual Studio-kódhoz lehetővé teszi, hogy a Stream analytics-feladatát helyileg és a felhőben is megmunkálja, kezelje és tesztelje gazdag IntelliSense és natív forrásvezérlés segítségével. Támogatja a fejlesztést Linux, MacOS és Windows rendszeren. További információ: [Azure Stream Analytics-feladat létrehozása a Visual Studio-kódban](quick-create-vs-code.md)című témakörben olvashat.|
-|[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |A Stream Analytics Tools az Azure fejlesztési és adattárolási és -feldolgozási számítási feladatainak része a Visual Studióban. A Visual Studio segítségével egyéni C# felhasználó által definiált függvényeket és deszerializálókat írhat. További információ: [Azure Stream Analytics-feladat létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)című témakörben olvashat.|
-|[Parancssor vagy terminál](stream-analytics-tools-for-visual-studio-cicd.md)|Az Azure Stream Analytics CI/CD NuGet csomag eszközöket biztosít a Visual Studio projektbuildekhez, helyi teszteléshez egy tetszőleges gépen. Az Azure Stream Analytics CI/CD npm csomag eszközöket biztosít a Visual Studio Code projektbuildekhez (amely egy Azure Resource Manager-sablont hoz létre) egy tetszőleges gépen.|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| A Visual Studio Code-hoz készült [Azure stream Analytics Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) lehetővé teszi a stream Analytics-feladatok helyben és a felhőben való létrehozását, kezelését és tesztelését, valamint a sokoldalú IntelliSense és a natív verziókövetés használatát. Támogatja a fejlesztést Linux, MacOS és Windows rendszeren. További információ: [Azure stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md).|
+|[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |A Stream Analytics-eszközök az Azure fejlesztési és adattárolási és-feldolgozási számítási feladatainak részét képezik a Visual Studióban. A Visual Studióval egyéni C# felhasználó által definiált függvények és deszerializálók írhatók. További információ: Azure Stream Analytics- [feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md).|
+|[Parancssor vagy terminál](stream-analytics-tools-for-visual-studio-cicd.md)|A Azure Stream Analytics CI/CD NuGet-csomag eszközöket biztosít a Visual Studio Project buildhez, a helyi teszteléshez egy tetszőleges gépen. A Azure Stream Analytics CI/CD NPM-csomag eszközöket biztosít a Visual Studio Code Project buildek számára (amely létrehoz egy Azure Resource Manager sablont) egy tetszőleges gépen.|
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Test Stream Analytics helyi lekérdezéseket lekérdezése imént a Visual Studio-kód használatával](visual-studio-code-local-run.md)
-* [A Test Stream Analytics helyi legfelhasználhatósági lekérdezéseket használ a Visual Studio-kód használatával](visual-studio-code-local-run-live-input.md)
-* [A Test Stream Analytics lekérdezései helyileg a Visual Studióval](stream-analytics-vs-tools-local-run.md)
-* [Élő adatok helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel](stream-analytics-live-data-local-testing.md)
+* [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)
+* [A Visual Studio Code használatával helyileg tesztelheti Stream Analytics lekérdezéseket élő stream-bevitelsel](visual-studio-code-local-run-live-input.md)
+* [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)
+* [Élő adatellenőrzés helyi tesztelése a Visual studióhoz készült Azure Stream Analytics Tools használatával](stream-analytics-live-data-local-testing.md)

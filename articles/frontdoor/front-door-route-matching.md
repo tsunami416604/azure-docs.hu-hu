@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtó – Útválasztási szabály egyeztetése figyelés | Microsoft dokumentumok
-description: Ez a cikk segít megérteni, hogy az Azure Front Door hogyan egyezteti a bejövő kérelmekhez használandó útválasztási szabályt
+title: Azure bejárati ajtó – útválasztási szabály egyeztetése a figyeléssel | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogy az Azure-beli bejárati ajtó hogyan illeszkedik a bejövő kérelmekhez használt útválasztási szabályokhoz
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,118 +12,118 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878595"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hogyan egyezteti a Bejárati ajtó az útválasztási szabályra vonatkozó kérelmeket?
+# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>A bejárati ajtó megfelel a kérelmeknek egy útválasztási szabálynak
 
-A kapcsolat létrehozása és a TLS-kézfogás elvégzése után, amikor egy kérés egy bejárati ajtajához tartozó környezetben landol, az egyik első dolog, amelyet a Bejárati ajtó végez, az összes konfigurációból meghatároz, amely adott útválasztási szabály megfelel a kérésnek, majd a meghatározott művelet et. A következő dokumentum bemutatja, hogyan bejárati ajtó határozza meg, hogy melyik útvonal konfigurációt kell használni a HTTP-kérelmek feldolgozásakor.
+A kapcsolat létesítése és a TLS-kézfogás végrehajtása után, amikor egy kérelem egy bejárati ajtón lévő környezetbe kerül, az egyik első lépés az összes konfigurációból származik, amely az adott útválasztási szabálynak megfelel a kérésnek, majd a megadott művelettel. Az alábbi dokumentum ismerteti, hogyan határozza meg, hogy a bejárati ajtó melyik útválasztási konfigurációt használja a HTTP-kérések feldolgozásához.
 
-## <a name="structure-of-a-front-door-route-configuration"></a>A bejárati ajtó útvonalkonfigurációjának szerkezete
-A bejárati ajtó útválasztási szabálykonfigurációja két fő részből áll: egy "bal oldali" és egy "jobb oldali". A bejövő kérést az útvonal bal oldalához igazítjuk, míg a jobb oldal határozza meg, hogyan dolgozzuk fel a kérést.
+## <a name="structure-of-a-front-door-route-configuration"></a>Az előtérben lévő útvonal konfigurációjának szerkezete
+A bevezető ajtó útválasztási szabályának konfigurálása két fő részből áll: egy "bal oldali" és "jobb oldal". A bejövő kérelem az útvonal bal oldalán található, míg a jobb oldalon a kérés feldolgozásának módját határozzák meg.
 
-### <a name="incoming-match-left-hand-side"></a>Bejövő mérkőzés (bal oldali)
-A következő tulajdonságok határozzák meg, hogy a bejövő kérelem megegyezik-e az útválasztási szabállyal (vagy a bal oldalival):
+### <a name="incoming-match-left-hand-side"></a>Bejövő egyezés (bal oldali)
+A következő tulajdonságok határozzák meg, hogy a bejövő kérelem megfelel-e az útválasztási szabálynak (vagy bal oldali):
 
-* **HTTP protokollok** (HTTP/HTTPS)
-* **Gazdagépek** (például\.www \*foo.com, .bar.com)
-* **Elérési utak** (például\*/ ,\*/users/ , /file.gif)
+* **Http-protokollok** (HTTP/HTTPS)
+* **Gazdagépek** (például www\.foo.com, \*. bar.com)
+* **Elérési utak** (például:\*/,\*/Users/,/file.gif)
 
-Ezek a tulajdonságok belsőleg ki vannak bontva, így a Protokoll/állomás/elérési út minden kombinációja egy lehetséges egyezési halmaz.
+Ezek a tulajdonságok belsőleg vannak kibontva, így a protokoll/gazdagép/elérési út minden kombinációja egy lehetséges egyezési készlet.
 
-### <a name="route-data-right-hand-side"></a>Útvonaladatok (jobb oldal)
-A kérelem feldolgozásának döntése attól függ, hogy engedélyezve van-e a gyorsítótárazás az adott útvonalhoz. Így ha nem rendelkezik a gyorsítótárazott válasz a kérelemre, továbbítjuk a kérelmet a megfelelő háttérrendszer a konfigurált háttérkészletben.
+### <a name="route-data-right-hand-side"></a>Route-adat (jobb oldalon)
+A kérelem feldolgozásának döntése attól függ, hogy engedélyezve van-e a gyorsítótárazás, vagy sem az adott útvonalon. Ha tehát nincs gyorsítótárazott válasz a kéréshez, a rendszer továbbítja a kérést a megfelelő háttérbe a konfigurált háttérrendszer-készletben.
 
-## <a name="route-matching"></a>Útvonalegyeztetés
-Ez a szakasz arra összpontosít, hogy hogyan egyezünk meg egy adott bejárati ajtó útválasztási szabályával. Az alapkoncepció az, hogy mindig a **legspecifikusabb mérkőzéshez** igazodunk, amely először csak a "bal oldalt" nézi.  Először http protokoll, majd frontend gazdagép, majd az elérési út alapján egyeztetjük.
+## <a name="route-matching"></a>Útvonal egyeztetése
+Ez a szakasz az adott bejárati ajtó útválasztási szabályának megfelelő módon fog foglalkozni. Az alapszintű koncepció az, hogy mindig a legpontosabb **egyezésnek** felelnek meg, amelyet először csak a "bal oldali" oldalon tekintünk.  Először a HTTP protokoll, majd a előtér-gazdagép, majd az elérési út alapján egyeztetünk.
 
-### <a name="frontend-host-matching"></a>Előtér-állomás egyeztetése
-Az előtér-állomások egyeztetésekor az alábbi logikát használjuk:
+### <a name="frontend-host-matching"></a>Előtér-gazdagép egyeztetése
+A frontend-gazdagépek egyeztetése során a következő logikát használjuk:
 
-1. Keressen olyan útvonalat, amely pontosan egyezik a gazdagépen.
-2. Ha nincs pontos előtér-állomásegyező, utasítsa el a kérelmet, és küldjön egy 400 hibás kérelem hibát.
+1. Keresse meg a gazdagép pontos egyezését tartalmazó útválasztást.
+2. Ha nincs pontosan megfelelő előtér-gazdagép, utasítsa el a kérést, és küldjön egy 400 hibás kérési hibát.
 
-Ennek a folyamatnak a további magyarázatához nézzünk meg egy példa konfigurációt a Bejárati ajtó útvonalairól (csak a bal oldalon):
+A folyamat további ismertetéséhez tekintse meg az első ajtós útvonalak konfigurációját (csak bal oldalon):
 
-| Útválasztási szabály | Előtér-állomások | Útvonal |
+| Útválasztási szabály | Előtér-gazdagépek | Útvonal |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
-| B | foo.contoso.com | /users/\* |
-| C# | www\.fabrikam.com, foo.adventure-works.com  | /\*, /images/\* |
+| B | foo.contoso.com | /Users/\* |
+| C# | www\.fabrikam.com, foo.Adventure-Works.com  | /\*, /images/\* |
 
-Ha a következő bejövő kérelmeket küldték a Bejárati ajtónak, azok felülről a következő útválasztási szabályokkal egyeznek meg:
+Ha a következő bejövő kérések a bejárati ajtóhoz lettek küldve, akkor a fenti útválasztási szabályoknak megfelelőek lesznek a következők:
 
-| Bejövő előtér-állomás | Egyező útválasztási szabály(ok) |
+| Bejövő előtér-gazdagép | Egyeztetett útválasztási szabály (ok) |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
-| www\.fabrikam.com | C# |
-| images.fabrikam.com | 400-as hiba: Hibás kérés |
+| www\.-fabrikam.com | C# |
+| images.fabrikam.com | 400-es hiba: hibás kérelem |
 | foo.adventure-works.com | C# |
-| contoso.com | 400-as hiba: Hibás kérés |
-| www\.adventure-works.com | 400-as hiba: Hibás kérés |
-| www\.northwindtraders.com | 400-as hiba: Hibás kérés |
+| contoso.com | 400-es hiba: hibás kérelem |
+| www\.-Adventure-Works.com | 400-es hiba: hibás kérelem |
+| www\.-northwindtraders.com | 400-es hiba: hibás kérelem |
 
-### <a name="path-matching"></a>Elérési út egyeztetése
-Az adott előtér-állomás meghatározása és a lehetséges útválasztási szabályok szűrése csak az adott előtér-állomással rendelkező útvonalakra, a Bejárati ablak szűri az útválasztási szabályokat a kérelem elérési útja alapján. Hasonló logikát használunk, mint az előtér-gazdagépek:
+### <a name="path-matching"></a>Elérési út megfeleltetése
+Miután meghatározta az adott előtér-gazdagépet, és a lehetséges útválasztási szabályok szűrését csak az adott előtér-gazdagéphez tartozó útvonalakra szűri, a bejárati ajtó ezután a kérés útvonalán alapuló útválasztási szabályokat szűri. A frontend-gazdagépekhez hasonló logikát használunk:
 
-1. Keresse meg a pontos egyezésű útválasztási szabályt az elérési úton
-2. Ha nincs pontos egyezési elérési utak, keressen útválasztási szabályokat egy helyettesítő elérési úttal, amely megfelel
-3. Ha nem található útválasztási szabály egy megfelelő elérési úttal, majd utasítsa el a kérelmet, és adjon vissza egy 400: Hibás kérelem hiba HTTP-válasz.
+1. Keresse meg az útvonal pontos egyezését tartalmazó útválasztási szabályt
+2. Ha nincs pontos egyezési útvonal, keressen olyan útválasztási szabályokat, amelyek megfelelnek a következő helyettesítő karaktereknek:
+3. Ha nem található egyező elérési úttal rendelkező útválasztási szabály, akkor utasítsa el a kérelmet, és adja vissza a 400-es hibát: hibás kérelem HTTP-válasza.
 
 >[!NOTE]
-> A helyettesítő karakter nélküli görbék pontos egyezésű görbéknek minősülnek. Még akkor is, ha az elérési út perjellel végződik, akkor is pontos egyezésnek tekinthető.
+> A helyettesítő karakterek nélküli elérési utak pontos egyezési elérési utaknak tekintendők. Még akkor is, ha az elérési út perjelben ér véget, a pontos egyezésnek számít.
 
-További magyarázatként nézzünk meg egy másik példát:
+További részletekért tekintse meg a következő példát:
 
 | Útválasztási szabály | Előtér-gazdagép    | Útvonal     |
 |-------|---------|----------|
-| A     | www\.contoso.com | /        |
-| B     | www\.contoso.com | /\*      |
-| C#     | www\.contoso.com | /ab      |
-| D     | www\.contoso.com | /abc     |
-| E     | www\.contoso.com | /abc/    |
-| F     | www\.contoso.com | /abc/\*  |
-| G     | www\.contoso.com | /abc/def |
-| H     | www\.contoso.com | /path/   |
+| A     | www\.-contoso.com | /        |
+| B     | www\.-contoso.com | /\*      |
+| C#     | www\.-contoso.com | /ab      |
+| D     | www\.-contoso.com | /abc     |
+| E     | www\.-contoso.com | ABC    |
+| F     | www\.-contoso.com | ABC\*  |
+| G     | www\.-contoso.com | /abc/def |
+| H     | www\.-contoso.com | /Path   |
 
-Tekintettel erre a konfigurációra, a következő példamegfelelő tábla eredménye:
+A konfigurációtól függően a következő példában szereplő táblázat eredménye:
 
-| Bejövő kérelem    | Egyező útvonal |
+| Bejövő kérelem    | Egyeztetett útvonal |
 |---------------------|---------------|
-| www\.contoso.com/            | A             |
-| www\.contoso.com/a           | B             |
-| www\.contoso.com/ab          | C#             |
-| www\.contoso.com/abc         | D             |
-| www\.contoso.com/abzzz       | B             |
-| contoso.com/abc/\.        | E             |
-| www\.contoso.com/abc/d       | F             |
-| www\.contoso.com/abc/def     | G             |
-| www\.contoso.com/abc/defzzz  | F             |
-| www\.contoso.com/abc/def/ghi | F             |
-| www\.contoso.com/path        | B             |
-| www\.contoso.com/path/       | H             |
-| www\.contoso.com/path/zzz    | B             |
+| www\.-contoso.com/            | A             |
+| www\.-contoso.com/a           | B             |
+| www\.-contoso.com/AB          | C#             |
+| www\.-contoso.com/ABC         | D             |
+| www\.-contoso.com/abzzz       | B             |
+| www\.-contoso.com/ABC/        | E             |
+| www\.-contoso.com/ABC/d       | F             |
+| www\.-contoso.com/ABC/def     | G             |
+| www\.-contoso.com/ABC/defzzz  | F             |
+| www\.-contoso.com/ABC/def/GHI | F             |
+| www\.-contoso.com/Path        | B             |
+| www\.-contoso.com/Path/       | H             |
+| www\.-contoso.com/Path/ZZZ    | B             |
 
 >[!WARNING]
-> </br> Ha nincsenek útválasztási szabályok egy pontos egyezéses előtér-állomáshoz egy catch-all útvonalelérési úttal (`/*`), akkor nem lesz egyezés egyetlen útválasztási szabállyal sem.
+> </br> Ha a pontos egyezést biztosító előtér-gazdagéphez nem tartoznak útválasztási szabályok, az összes útvonal útvonala (`/*`), akkor nem lesz egyezés egyetlen útválasztási szabályhoz sem.
 >
 > Példa konfiguráció:
 >
 > | Útválasztás | Gazdagép             | Útvonal    |
 > |-------|------------------|---------|
-> | A     | profile.contoso.com | /api/\* |
+> | A     | profile.contoso.com | /API\* |
 >
 > Egyező tábla:
 >
-> | Bejövő kérelem       | Egyező útvonal |
+> | Bejövő kérelem       | Egyeztetett útvonal |
 > |------------------------|---------------|
-> | profile.domain.com/other | Nincs. 400-as hiba: Hibás kérés |
+> | profile.domain.com/other | Nincs. 400-es hiba: hibás kérelem |
 
 ### <a name="routing-decision"></a>Útválasztási döntés
-Miután kiegyenlített egyetlen bejárati ajtó útválasztási szabály, majd meg kell választani, hogyan kell feldolgozni a kérelmet. Ha az egyező útválasztási szabály, bejárati ajtajának van egy gyorsítótárazott válasz áll rendelkezésre, majd ugyanez lesz kiszolgálva vissza az ügyfélnek. Ellenkező esetben a következő dolog, amely kiértékeli, hogy [konfigurálta-e az URL-újraírást (egyéni továbbítási útvonalat)](front-door-url-rewrite.md) az egyező útválasztási szabályhoz, vagy sem. Ha nincs megadva egyéni továbbítási elérési út, majd a kérelem a megfelelő háttérrendszerbe lesz továbbítva a konfigurált háttérkészletben, ahogy van. Különben a kérelem elérési útja frissül az [egyéni továbbítási elérési út](front-door-url-rewrite.md) nak megfelelően, majd továbbítva a háttérrendszerhez.
+Miután egyeztetett egy bejárati ajtó útválasztási szabályával, ki kell választania, hogyan kell feldolgozni a kérést. Ha az egyeztetett útválasztási szabályhoz a bejárati ajtón van egy gyorsítótárazott válasz, akkor ugyanazt a rendszer visszaküldi az ügyfélnek. Ellenkező esetben a következő dolog lesz kiértékelve, hogy beállította-e az [URL-újraírást (egyéni továbbítási útvonalat)](front-door-url-rewrite.md) a megfeleltetett útválasztási szabályhoz. Ha nincs definiálva egyéni továbbítási útvonal, akkor a kérés a megfelelő háttérbe kerül a konfigurált háttérrendszer-készletben. Más esetben a kérés elérési útja a megadott [Egyéni továbbítási útvonalon](front-door-url-rewrite.md) , majd a háttér felé továbbítva lesz frissítve.
 
 ## <a name="next-steps"></a>További lépések
 

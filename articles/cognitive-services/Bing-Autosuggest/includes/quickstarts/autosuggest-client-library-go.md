@@ -1,5 +1,5 @@
 ---
-title: Bing Autosuggest Go ügyféltár – rövid útmutató
+title: Bing Autosuggest go ügyféloldali kódtár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,43 +9,43 @@ ms.topic: include
 ms.date: 04/06/2020
 ms.author: aahi
 ms.openlocfilehash: b352e785673d7c4ed3a9b346758ef0d1fa68b36d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887542"
 ---
-Ismerkedés a Bing Autosuggest ügyféltár go. Az alábbi lépésekkel telepítheti a műsortárat, és kipróbálhatja az alapvető feladatokra vonatkozó példáinkat. 
+Ismerkedjen meg az Bing Autosuggest ügyféloldali kódtáraval a Go-ban. Az alábbi lépéseket követve telepítheti a könyvtárat, és kipróbálhatja a példákat az alapszintű feladatokhoz. 
 
-A Bing Autosuggest ügyfélkódtár az ugráshoz részleges lekérdezési karakterláncok alapján keresési javaslatokat kaphat.
+Használja az Bing Autosuggest ügyféloldali függvénytárát a Go-hoz a keresési javaslatok lekérdezéséhez részleges lekérdezési karakterláncok alapján.
 
-[Referenciadokumentációtár](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest) | [forráskódja](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [Mintakód](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/BingAutoSuggest/BingAutoSuggestQuickstart.go)
+[Útmutató a dokumentációs](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest) | [könyvtár forráskódjának](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [kódjához](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/BingAutoSuggest/BingAutoSuggestQuickstart.go)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * A [Go](https://golang.org/dl/) legújabb verziója
 
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása 
 
-Kezdje el használni a Bing Autosuggest ügyfélkönyvtárat egy Azure-erőforrás létrehozásával. Válassza ki az Ön számára megfelelő erőforrástípust:
+Kezdje el használni az Bing Autosuggest ügyféloldali függvénytárat egy Azure-erőforrás létrehozásával. Válassza ki a megfelelő erőforrás-típust az Ön számára:
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ### <a name="create-an-environment-variable"></a>Környezeti változó létrehozása
 
 >[!NOTE]
-> július 1-je után létrehozott nem próbaerőforrások végpontjai az alábbi egyéni altartomány-formátumot használják. További információt és a regionális végpontok teljes listáját a [Cognitive Services egyéni altartománynevei című témakörben talál.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) 
+> Az 2019. július 1. után létrehozott, nem próbaverziós erőforrásokhoz használt végpontok az alább látható egyéni altartomány-formátumot használják. További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
 
-A létrehozott erőforrás kulcsának és végpontjának használatával hozzon létre két környezeti változót a hitelesítéshez:
+Ha a kulcsot és a végpontot a létrehozott erőforrás alapján hozza létre, hozzon létre két környezeti változót a hitelesítéshez:
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY`- A kérések hitelesítéséhez.
-* `AUTOSUGGEST_ENDPOINT`- Az erőforrás-végpont API-kérések küldéséhez. Így fog kinézni: 
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`– A kérések hitelesítéséhez szükséges erőforrás-kulcs.
+* `AUTOSUGGEST_ENDPOINT`– Az erőforrás-végpont API-kérelmek küldéséhez. A következőképpen fog kinézni: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
-Használja az operációs rendszerre vonatkozó utasításokat.
+Használja az operációs rendszerének utasításait.
 <!-- replace the below endpoint and key examples -->
 #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -54,7 +54,7 @@ setx BING_AUTOSUGGEST_SUBSCRIPTION_KEY <replace-with-your-autosuggest-api-key>
 setx BING_AUTOSUGGEST_ENDPOINT <replace-with-your-autosuggest-api-endpoint>
 ```
 
-A környezeti változó hozzáadása után indítsa újra a konzolablakot.
+A környezeti változó hozzáadása után indítsa újra a konzolablak ablakát.
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
@@ -67,7 +67,7 @@ A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` 
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-A program `.bash_profile`szerkesztése és a környezeti változó hozzáadása:
+Szerkessze `.bash_profile`a t, és adja hozzá a környezeti változót:
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -77,48 +77,48 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
 ***
 
-### <a name="create-a-new-go-project"></a>Új Go-projekt létrehozása
+### <a name="create-a-new-go-project"></a>Új go-projekt létrehozása
 
-Egy konzolablakban (cmd, PowerShell, Terminál, Bash) hozzon létre egy új munkaterületet a Go-projekthez, és keresse meg azt. A munkaterület három mappát tartalmaz: 
+A konzol ablakban (cmd, PowerShell, Terminal, bash) hozzon létre egy új munkaterületet a go-projekt számára, és navigáljon hozzá. A munkaterület három mappát fog tartalmazni: 
 
-* **src** - Ez a könyvtár forráskódot és csomagokat tartalmaz. A `go get` paranccsal telepített csomagok itt fognak elhelyeződni.
-* **pkg** - Ez a könyvtár tartalmazza a lefordított Go csomag objektumokat. Ezek a fájlok `.a` mind rendelkeznek kiterjesztéssel.
-* **bin** - Ez a könyvtár a futtatáskor `go install`létrehozott bináris végrehajtható fájlokat tartalmazza.
+* **src** – ez a könyvtár forráskódot és csomagokat tartalmaz. A `go get` paranccsal telepített csomagok itt fognak megjelenni.
+* **pkg** – ez a könyvtár tartalmazza a lefordított go csomag objektumait. Ezek a fájlok mindegyike `.a` rendelkezik bővítménnyel.
+* **bin** – ez a könyvtár tartalmazza a futtatásakor `go install`létrehozott bináris végrehajtható fájlokat.
 
 > [!TIP]
-> További információ a [Go-munkaterület](https://golang.org/doc/code.html#Workspaces)szerkezetéről. Ez az útmutató `$GOPATH` a `$GOROOT`beállítással és a beállításával kapcsolatos információkat tartalmazza.
+> További információ a [Go-munkaterület](https://golang.org/doc/code.html#Workspaces)struktúrájáról. Ez az útmutató a és `$GOPATH` `$GOROOT`a beállításával kapcsolatos információkat tartalmaz.
 
-Hozzunk létre egy munkaterületet, amelynek `my-app` neve `src` `pkg`és `bin`a szükséges alkönyvtárak a és a:
+`my-app` Hozzon létre egy nevű munkaterületet és a szükséges alkönyvtárakat a, `src` `pkg`a és `bin`a következőhöz:
 
 ```
 $ mkdir -p my-app/{src, bin, pkg}  
 $ cd my-app
 ```
 
-### <a name="install-the-client-library-for-go"></a>Az ügyféltár telepítése az Ugráshoz
+### <a name="install-the-client-library-for-go"></a>Az ügyféloldali kódtár telepítése a Go-hoz
 
-Most telepítsük az ügyfélkönyvtárat a Go alkalmazáshoz: 
+Most telepítse az ügyféloldali kódtárat a Go-hoz: 
 
 ```bash
 $ go get -u <library-location-or-url>
 ```
 
-vagy ha dep-t használ, a társzalag-futtatáson belül:
+vagy ha a DEP-t használja a tárházon belül, futtassa a következőket:
 
 ```bash
 $ dep ensure -add <library-location-or-url>
 ```
 
-### <a name="create-your-go-application"></a>A Go alkalmazás létrehozása
+### <a name="create-your-go-application"></a>Go-alkalmazás létrehozása
 
-Ezután hozzunk létre egy `src/sample-app.go`nevű fájlt:
+Ezután hozzon létre egy nevű `src/sample-app.go`fájlt:
 
 ```bash
 $ cd src
 $ touch sample-app.go
 ```
 
-Nyissa `sample-app.go` meg és adja hozzá a csomag nevét, és importálja a következő tárakat:
+Nyissa meg `sample-app.go` és adja hozzá a csomag nevét, és importálja a következő könyvtárakat:
 
 ```Go
 package main
@@ -133,7 +133,7 @@ import (
 )
 ```
 
-Hozzon létre `main`egy nevű függvényt. Ezután hozzon létre környezeti változókat a Bing Autosuggest kulcshoz és végponthoz.
+Hozzon létre egy `main`nevű függvényt. Ezután hozzon létre környezeti változókat a Bing Autosuggest kulcshoz és végponthoz.
 
 ```go
 func main() {
@@ -152,7 +152,7 @@ func main() {
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódminták bemutatják, hogyan végezhetel el alapvető feladatokat a Bing Autosuggest alkalmazáskódtár gohoz használatával:
+Ezek a kódrészletek bemutatják, hogyan hajthat végre alapszintű feladatokat az Bing Autosuggest ügyféloldali kódtár használatával a Go-hoz:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [API-kérelem küldése](#send-an-api-request)
@@ -160,9 +160,9 @@ Ezek a kódminták bemutatják, hogyan végezhetel el alapvető feladatokat a Bi
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE] 
-> Ez a rövid útmutató feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a Bing autosuggest kulcsához, amelynek neve `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`, és egy a végponthoz. `BING_AUTOSUGGEST_ENDPOINT`
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a Bing autojavaslati kulcshoz, a `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`named `BING_AUTOSUGGEST_ENDPOINT`nevű és egy a nevű végponthoz.
 
-A `main()` függvényben példányosítson meg egy ügyfelet a végponttal és a kulccsal. 
+A `main()` függvényben hozza létre az ügyfelet a végponttal és a kulccsal. 
 
 ```go
 // Get the context, which is required by the SDK methods.
@@ -176,7 +176,7 @@ client.Endpoint = endpoint
 
 ## <a name="send-an-api-request"></a>API-kérelem küldése
 
-Ugyanebben a módszerben használja az ügyfél [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) metódusát lekérdezés küldéséhez a Bingnek. Ezután iterate át a javaslatok választ, és [nyomtassa](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) ki az első javaslatot.
+Ugyanebben a metódusban az ügyfél [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) metódusával küldhet lekérdezést a bingnek. Ezután ismételje meg a [javaslatok](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) válaszát, és nyomtassa ki az első javaslatot.
 
 ```Go
 // This should return the query suggestion "xbox."
@@ -204,7 +204,7 @@ if len(groups) > 0 {
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa a `go run [arguments]` Go alkalmazást az alkalmazáskönyvtárból származó paranccsal.
+Futtassa a go alkalmazást a paranccsal `go run [arguments]` az alkalmazás könyvtárából.
 
 ```Go
 go run sample-app.go
@@ -212,7 +212,7 @@ go run sample-app.go
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt szeretné, hogy tisztítsák meg, és távolítsa el a Cognitive Services-előfizetés, törölheti az erőforrás vagy erőforráscsoport. Az erőforráscsoport törlése a hozzá társított egyéb erőforrásokat is törli.
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)

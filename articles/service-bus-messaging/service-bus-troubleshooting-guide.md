@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítási útmutató az Azure Service Bus szolgáltatáshoz | Microsoft dokumentumok
-description: Ez a cikk az Azure Service Bus üzenetkezelési kivételeinek listáját és a kivétel bekövetkezésekor végrehajtandó javasolt műveleteket tartalmazza.
+title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
+description: Ez a cikk felsorolja az Azure Service Bus üzenetkezelési kivételeket és a kivétel bekövetkezésekor végrehajtandó javasolt műveleteket.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 04/07/2020
 ms.author: aschhab
 ms.openlocfilehash: 63bf035d4e19cc1d64998a6ad533812e71ee71b8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887774"
 ---
-# <a name="troubleshooting-guide-for-azure-service-bus"></a>Hibaelhárítási útmutató az Azure Service Bus szolgáltatáshoz
-Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz néhány olyan problémával kapcsolatban, amelyek az Azure Service Bus használatakor jelenhetnek meg. 
+# <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
+Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>Kapcsolódási, tanúsítvány- vagy idő-meghosszabbítási problémák
-A következő lépések segíthetnek a kapcsolódási/tanúsítvány-/idő-kikapcsolási problémák elhárításában a *.servicebus.windows.net alatt található összes szolgáltatás esetében. 
+## <a name="connectivity-certificate-or-timeout-issues"></a>Kapcsolati, tanúsítvány-vagy időtúllépési problémák
+A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/időtúllépési problémák hibaelhárításához a *. servicebus.windows.net alatti összes szolgáltatáshoz. 
 
-- Tallózás vagy [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`. Segít annak ellenőrzésében, hogy van-e IP-szűrés vagy virtuális hálózati vagy tanúsítványlánc problémák (a leggyakoribb java SDK használataesetén).
+- Tallózással keresse meg a következőt: vagy a [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`. Segít ellenőrizni, hogy rendelkezik-e IP-szűréssel, illetve virtuális hálózati vagy tanúsítványlánc-problémákkal (a Java SDK használatakor leggyakrabban).
 
     Példa a sikeres üzenetre:
     
@@ -35,7 +35,7 @@ A következő lépések segíthetnek a kapcsolódási/tanúsítvány-/idő-kikap
     <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
     ```
     
-    Példa hibaüzenet a hibaüzenetre:
+    Egy példa a hiba hibaüzenetére:
 
     ```json
     <Error>
@@ -45,49 +45,49 @@ A következő lépések segíthetnek a kapcsolódási/tanúsítvány-/idő-kikap
         </Detail>
     </Error>
     ```
-- Futtassa a következő parancsot annak ellenőrzéséhez, hogy a tűzfal on-e blokkolva van-e a port. A használt portok: 443 (HTTPS), 5671 (AMQP) és 9354 (Net Messaging/SBMP). A használt könyvtártól függően más portok is használatosak. Itt van a minta parancs, amely ellenőrzi, hogy az 5671 port blokkolva van-e. 
+- A következő parancs futtatásával ellenőrizze, hogy a tűzfal blokkolja-e a portokat. A használt portok a következők: 443 (HTTPS), 5671 (AMQP) és 9354 (net Messaging/SBMP). A használt könyvtártól függően más portok is használatban vannak. Itt látható a minta parancs, amely azt vizsgálja, hogy a 5671-es port blokkolva van-e. 
 
     ```powershell
     tnc <yournamespacename>.servicebus.windows.net -port 5671
     ```
 
-    Linuxalatt:
+    Linux rendszeren:
 
     ```shell
     telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- Ha időszakos kapcsolódási problémák merülnek fel, futtassa a következő parancsot, és ellenőrizze, hogy vannak-e eldobott csomagok. Ez a parancs 1 másodpercenként 25 különböző TCP-kapcsolatot próbál létesíteni a szolgáltatással. Ezután ellenőrizheti, hogy közülük hánysikerült/sikertelen, és megtekintheti a TCP-kapcsolat késését is. Letöltheti az `psping` eszközt [innen](/sysinternals/downloads/psping).
+- Időnkénti kapcsolódási problémák esetén futtassa az alábbi parancsot, és ellenőrizze, hogy vannak-e eldobott csomagok. Ezzel a paranccsal a szolgáltatással 1 másodpercenként 25 különböző TCP-kapcsolatot kell létrehozni. Ezt követően megtekintheti, hogy a sikeres és sikertelen volt-e a TCP-kapcsolatok késése. Az `psping` eszközt [innen](/sysinternals/downloads/psping)töltheti le.
 
     ```shell
     .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
     ```
-    Egyenértékű parancsokat használhat, ha más eszközöket `tnc`használ, például a , `ping`és így tovább. 
-- Szerezzen be egy hálózati nyomkövetést, ha az előző lépések nem segítenek, és elemezze azt olyan eszközökkel, mint a [Wireshark](https://www.wireshark.org/). Szükség esetén forduljon [a Microsoft támogatási szolgálatához.](https://support.microsoft.com/) 
+    Ha más eszközöket (például `tnc`, `ping`stb.) használ, használhatja az egyenértékű parancsokat. 
+- Szerezze be a hálózati nyomkövetést, ha az előző lépések nem segítenek és nem elemzik olyan eszközökkel, mint például a [Wireshark](https://www.wireshark.org/). Ha szükséges, forduljon a [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . 
 
-## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>A szolgáltatás frissítésekkel/újraindításokkal kapcsolatos problémák
-A háttérszolgáltatás-frissítések és -újraindítások a következő hatást gyakorolhatják az alkalmazásokra:
+## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>A szolgáltatás verziófrissítése/újraindítása esetén felmerülő problémák
+A háttérbeli szolgáltatás verziófrissítése és újraindítása a következő hatással lehet az alkalmazásokra:
 
-- A kérelmek egy pillanatra meglesznek fojtva.
-- Előfordulhat, hogy csökken a bejövő üzenetek/kérések.
+- Előfordulhat, hogy a kérelmek egy pillanatra szabályozva vannak.
+- Lehet, hogy elvesznek a bejövő üzenetek/kérelmek.
 - A naplófájl hibaüzeneteket tartalmazhat.
-- Az alkalmazások néhány másodpercre leválaszthatók a szolgáltatásról.
+- Előfordulhat, hogy az alkalmazások néhány másodpercig le lesznek választva a szolgáltatástól.
 
-Ha az alkalmazáskód SDK-t használ, az újrapróbálkozási szabályzat már be van építve és aktív. Az alkalmazás újra csatlakozik anélkül, hogy jelentős hatással lenne az alkalmazásra/munkafolyamatra.
+Ha az alkalmazás kódja az SDK-t használja, az újrapróbálkozási házirend már be van építve és aktív. Az alkalmazás az alkalmazás/munkafolyamat jelentős hatása nélkül újra csatlakozik.
 
-## <a name="unauthorized-access-send-claims-are-required"></a>Jogosulatlan hozzáférés: Jogcímek küldése szükséges
-Ez a hibaüzenet akkor jelenhet meg, amikor a Visual Studio szolgáltatásból próbál hozzáférni egy service bus-témakörhöz egy helyszíni számítógépen, egy felhasználó által hozzárendelt felügyelt identitással, küldési engedélyekkel.
+## <a name="unauthorized-access-send-claims-are-required"></a>Jogosulatlan hozzáférés: a jogcímek küldése kötelező
+Ez a hiba akkor fordulhat elő, amikor a Visual studióból egy, a felhasználó által hozzárendelt, a küldési engedélyekkel rendelkező felügyelt identitás használatával próbál hozzáférni egy Service Bus témakörhöz.
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
-A hiba megoldásához telepítse a [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) könyvtárat.  További információ: [Local development authentication](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
+A hiba elhárításához telepítse a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) könyvtárat.  További információ: [helyi fejlesztési hitelesítés](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
 
-Ha tudni szeretné, hogyan rendelhet engedélyeket a szerepkörökhöz, olvassa el a Felügyelt identitás hitelesítése az [Azure Active Directoryval az Azure Service Bus-erőforrások eléréséhez című témakört.](service-bus-managed-service-identity.md)
+Ha meg szeretné tudni, hogyan rendelhet hozzá engedélyeket a szerepkörökhöz, tekintse meg [a felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások elérését](service-bus-managed-service-identity.md)ismertető témakört.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket: 
 
-- [Az Azure Resource Manager kivételei](service-bus-resource-manager-exceptions.md). Felsorolja az Azure Service Bus azure-erőforrás-kezelővel (sablonok vagy közvetlen hívások) használatával történő interakció során létrehozott kivételeket.
-- [Üzenetküldési kivételek](service-bus-messaging-exceptions.md). A . 
+- [Azure Resource Manager kivételek](service-bus-resource-manager-exceptions.md). A Azure Service Bus a Azure Resource Manager használatával (sablonok vagy közvetlen hívások segítségével) való interakció során keletkező kivételeket sorolja fel.
+- [Üzenetküldési kivételek](service-bus-messaging-exceptions.md). A .NET-keretrendszer által Azure Service Bus által generált kivételek listáját tartalmazza. 
 

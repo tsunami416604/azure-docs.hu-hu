@@ -1,7 +1,7 @@
 ---
-title: Tárolók konfigurálása - Computer Vision
+title: Tárolók konfigurálása – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan konfigurálható a számítógép-látásban a Szövegfelismerés tárolók szükséges és választható beállításai.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a Computer Vision szövegfelismerés tárolók kötelező és választható beállításait.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,54 +12,54 @@ ms.date: 04/01/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879309"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>A Computer Vision Docker-tárolók konfigurálása
+# <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-tárolók konfigurálása
 
-A Computer Vision tároló futásidejű környezetét `docker run` a parancsargumentumok használatával konfigurálhatja. Ez a tároló számos szükséges beállítással rendelkezik, valamint néhány választható beállítással. A parancsra több [példa](#example-docker-run-commands) is elérhető. A tároló-specifikus beállítások a számlázási beállításokat. 
+A Computer Vision tároló futásidejű környezetét a `docker run` parancs argumentumai segítségével állíthatja be. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. A parancshoz több [példa](#example-docker-run-commands) is rendelkezésre áll. A tárolóra jellemző beállítások a számlázási beállítások. 
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> A [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) és a beállítások együtt vannak használva, és mindháromhoz érvényes értékeket kell megadnia; ellenkező esetben a tartály nem indul el. A tároló konstiniformatika érdekében ezeknek a konfigurációs beállításoknak a használatával kapcsolatos további [tudnivalókért olvassa el a Számlázás című témakört.](computer-vision-how-to-install-containers.md)
+> A [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a és [`Eula`](#eula-setting) a beállításokat együtt használják, és mindhárom esetben érvényes értékeket kell megadnia. Ellenkező esetben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](computer-vision-how-to-install-containers.md).
 
-## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítása
+## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 
-A `ApiKey` beállítás megadja `Cognitive Services` az Azure erőforráskulcs a tároló számlázási adatainak nyomon követéséhez. Meg kell adnia egy értéket az ApiKey és az érték érvényes kulcsnak [`Billing`](#billing-configuration-setting) kell lennie a konfigurációs beállításhoz megadott Cognitive Services-erőforráshoz. _Cognitive Services_
+A `ApiKey` beállítás megadja a tároló `Cognitive Services` számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie _Cognitive Services_ a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott Cognitive Services erőforráshoz.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyen érhető el:
 
-* Azure portal: **Cognitive Services** Erőforrás-kezelés, **a Kulcsok** csoportban
+* Azure Portal: **Cognitive Services** erőforrás-kezelés a **kulcsok** területen
 
-## <a name="applicationinsights-setting"></a>ApplicationInsights beállítás
+## <a name="applicationinsights-setting"></a>ApplicationInsights-beállítás
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Számlázási konfiguráció beállítása
+## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` beállítás adja meg a végpont URI a _Cognitive Services-erőforrás_ az Azure-ban a tároló számlázási adatainak mérésére használt. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végpontURI-nak kell lennie az _Azure-beli Cognitive_ Services-erőforráshoz. A tároló 10–15 percenként jelenti a használatot.
+A `Billing` beállítás határozza meg az Azure-beli _Cognitive Services_ erőforrás végpontjának URI-ját, amely a tároló számlázási adatainak mérésére szolgál. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végponti URI-nek kell lennie az Azure-beli _Cognitive Services_ erőforráshoz. A tároló 10 – 15 percen belül jelentést készít a használatról.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyen érhető el:
 
-* Azure portal: **Kognitív szolgáltatások** áttekintése, címkével`Endpoint`
+* Azure Portal: **Cognitive Services** áttekintés, címkézett`Endpoint`
 
-Ne felejtse `vision/v1.0` el hozzáadni az útválasztást a végpont URI-jához az alábbi táblázatban látható módon. 
+Ne felejtse el `vision/v1.0` hozzáadni az útválasztást a végpont URI-hoz az alábbi táblázatban látható módon. 
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja<br><br>Példa:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
-## <a name="eula-setting"></a>Eula beállítás
+## <a name="eula-setting"></a>Végfelhasználói licencszerződés beállítása
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Gördülékeny beállítások
+## <a name="fluentd-settings"></a>Fluent beállítások
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -73,40 +73,40 @@ Ne felejtse `vision/v1.0` el hozzáadni az útválasztást a végpont URI-jához
 
 ## <a name="mount-settings"></a>Csatlakoztatási beállítások
 
-A kötéscsatlakoztatások segítségével adatokat olvashat és írhat a tárolóba és a tárolóból. Megadhatja a bemeneti csatlakoztatás vagy `--mount` kimeneti csatlakoztatás a beállítás megadásával a [docker futtatási](https://docs.docker.com/engine/reference/commandline/run/) parancs.
+A tárolóban lévő és onnan érkező adatok olvasására és írására a kötési csatlakoztatások használhatók. Adja meg a bemeneti csatlakoztatást vagy a kimeneti csatlakoztatást a `--mount` [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsban található beállítás megadásával.
 
-A Computer Vision tárolók nem használnak bemeneti vagy kimeneti csatlakoztatásokat a betanítási vagy szolgáltatási adatok tárolására. 
+A Computer Vision tárolók nem használnak bemeneti vagy kimeneti csatlakoztatásokat a képzési és a szolgáltatási adatok tárolásához. 
 
-A gazdagép csatlakoztatási helyének pontos szintaxisa a gazdaoperációs rendszertől függően változik. Emellett előfordulhat, hogy a [gazdaszámítógép](computer-vision-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el a Docker-szolgáltatásfiók által használt engedélyek és a gazdagép csatlakoztatási helyének engedélyei közötti ütközés miatt. 
+A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](computer-vision-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Optional| Név | Adattípus | Leírás |
+|Optional| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Nem engedélyezett| `Input` | Sztring | A Computer Vision tárolók nem használják ezt.|
-|Optional| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a rönkök helye. Ez magában foglalja a tárolónaplókat is. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nem engedélyezett| `Input` | Sztring | Computer Vision tárolók nem használják ezt.|
+|Optional| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Példa a docker-futtatási parancsokra
+## <a name="example-docker-run-commands"></a>Példa Docker-futtatási parancsokra
 
-Az alábbi példák a konfigurációs beállításoksegítségével `docker run` szemléltetik a parancsok írását és használatát.  Futás után a tároló addig fut, amíg le nem [állítja.](computer-vision-how-to-install-containers.md#stop-the-container)
+Az alábbi példák a konfigurációs beállítások segítségével szemléltetik a parancsok írását és használatát `docker run` .  A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](computer-vision-how-to-install-containers.md#stop-the-container) .
 
-* **Sor-folytatás karakter**: A Docker-parancsok a következő `\`szakaszokban a fordított perjelet használják, vonalfolytatási karakterként. Cserélje le vagy távolítsa el ezt a gazdaoperációs rendszer követelményei nek megfelelően. 
-* **Argumentum sorrendje**: Ne módosítsa az argumentumok sorrendjét, hacsak nem nagyon ismeri a Docker-tárolókat.
+* **Vonal-folytatási karakter**: a következő részben lévő Docker-parancsok a háttér perjelet `\`használják, mint a sor folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. 
+* **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
-Cserélje le {_argument_name_} -t a saját értékeire:
+Cserélje le a {_argument_name_} értéket a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-| **{API_KEY}** | Az erőforrás végpontkulcsa az `Computer Vision` `Computer Vision` Azure Keys lapon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető `Computer Vision` az Azure Áttekintés oldalon.| Lásd: [a szükséges paraméterek összegyűjtése](computer-vision-how-to-install-containers.md#gathering-required-parameters) explicit példákat. |
+| **{API_KEY}** | Az `Computer Vision` erőforrás Endpoint kulcsa az Azure `Computer Vision` Keys oldalon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `Computer Vision` Áttekintés oldalán.| Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](computer-vision-how-to-install-containers.md#gathering-required-parameters) ismertető témakört. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> A `Eula` `Billing`, `ApiKey` a lehetőséget és a beállításokat meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információ: [Billing](computer-vision-how-to-install-containers.md#billing).
-> Az ApiKey érték **Key** a kulcs `Cognitive Services` az Azure Resource keys lapról.
+> A `Eula`tároló `Billing`futtatásához `ApiKey` meg kell adni a, a és a beállításokat. Ellenkező esetben a tároló nem indul el.  További információ: [számlázás](computer-vision-how-to-install-containers.md#billing).
+> A ApiKey értéke az Azure **Key** `Cognitive Services` Resource Keys oldal kulcsa.
 
-## <a name="container-docker-examples"></a>A Tároló Docker-példái
+## <a name="container-docker-examples"></a>Tárolók Docker-példák
 
-Az alábbi Docker-példák a read tároló.
+A következő Docker-példák az olvasási tárolóra vonatkoznak.
 
 ### <a name="basic-example"></a>Alapszintű példa
 
@@ -131,4 +131,4 @@ Az alábbi Docker-példák a read tároló.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át [a tárolók telepítésének és futtatásának áttekintését.](computer-vision-how-to-install-containers.md)
+* [A tárolók telepítésének és futtatásának](computer-vision-how-to-install-containers.md)áttekintése.

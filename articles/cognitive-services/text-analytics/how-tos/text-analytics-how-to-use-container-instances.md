@@ -1,7 +1,7 @@
 ---
-title: Azure Container-példányok futtatása – Szövegelemzés
+title: Azure Container Instances-Text Analytics futtatása
 titleSuffix: Azure Cognitive Services
-description: Telepítse a szövegelemzési tárolókat az Azure Container Instance-ba, és tesztelje azt egy webböngészőben.
+description: Telepítse a Text Analytics-tárolókat az Azure Container Instanceba, és tesztelje egy böngészőben.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e4b61c6fe2f62745d0f5268221cbb5c84803eb10
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876425"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics-tároló üzembe helyezése az Azure Container-példányokba
+# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics tároló üzembe helyezése Azure Container Instances
 
-Ismerje meg, hogyan telepítheti a Cognitive Services [szövegelemzési][install-and-run-containers] tárolóját az Azure [Container Instances szolgáltatásba.][container-instances] Ez az eljárás példázza egy Text Analytics-erőforrás létrehozását, a kapcsolódó hangulatelemzési rendszer létrehozását és a kettő böngészőből történő vezénylésének gyakorlását. A tárolók használatával a fejlesztők figyelmét elterelheti az infrastruktúra kezeléséről az alkalmazásfejlesztésre való összpontosításra.
+Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [text Analytics][install-and-run-containers] tárolót az Azure [Container Instancesban][container-instances]. Ez az eljárás egy Text Analytics erőforrás létrehozását, egy kapcsolódó Hangulatelemzés-rendszerkép létrehozását, valamint a két böngészőből való e felállításának lehetőségét példázza. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -45,8 +45,8 @@ Ismerje meg, hogyan telepítheti a Cognitive Services [szövegelemzési][install
 
 ## <a name="next-steps"></a>További lépések 
 
-* További [Cognitive Services-tárolók használata](../../cognitive-services-container-support.md)
-* A [Text Analytics csatlakoztatott szolgáltatás használata](../vs-text-connected-service.md)
+* További [Cognitive Services tárolók](../../cognitive-services-container-support.md) használata
+* A [text Analytics csatlakoztatott szolgáltatás](../vs-text-connected-service.md) használata
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

@@ -1,7 +1,7 @@
 ---
-title: Azure container-példányok futtatása – beszédszolgáltatás
+title: Azure Container Instances-Speech szolgáltatás futtatása
 titleSuffix: Azure Cognitive Services
-description: Telepítse a beszédszolgáltatás-tárolót egy Azure Container-példányra, és tesztelje azt egy webböngészőben.
+description: Üzembe helyezheti a Speech Service-tárolót egy Azure Container-példányon, és tesztelheti egy böngészőben.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 610d5ce095097a31ee92c67f0112d1657424858e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878748"
 ---
-# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>A beszédfelismerési szolgáltatás tárolójának üzembe helyezése az Azure Container Instances szolgáltatásba
+# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>A Speech Service-tároló üzembe helyezése Azure Container Instances
 
-Ismerje meg, hogyan telepítheti a Cognitive Services [beszédszolgáltatás-tárolóját](speech-container-howto.md) az Azure [Container Instances szolgáltatásba.](https://docs.microsoft.com/azure/container-instances/) Ez az eljárás bemutatja egy Azure Speech szolgáltatás-erőforrás létrehozását. Ezután megbeszéljük a kapcsolódó tárolókép húzását. Végül kiemeljük a két vezénylési lehetőségének gyakorlását egy böngészőből. A tárolók használatával a fejlesztők figyelmét elterelheti az infrastruktúra kezeléséről az alkalmazásfejlesztésre való összpontosításra.
+Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Speech Service](speech-container-howto.md) -tárolót az Azure [Container Instancesban](https://docs.microsoft.com/azure/container-instances/). Ez az eljárás az Azure Speech Service-erőforrások létrehozását mutatja be. Ezután megbeszéljük a társított tároló-rendszerkép kihúzását. Végezetül kiemeljük a két böngészőből való összehangolás lehetőségét. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
-Először ki kell töltenie és el kell küldenie a [Cognitive Services beszédtárolók kérelem űrlap](https://aka.ms/speechcontainerspreview/) hozzáférést kell kérnie a tárolóhoz. 
+Először be kell fejeznie és el kell küldenie a [Cognitive Services Speech containers kérelem űrlapját](https://aka.ms/speechcontainerspreview/) , hogy hozzáférést Kérjen a tárolóhoz. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

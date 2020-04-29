@@ -1,7 +1,7 @@
 ---
 title: Tárolótámogatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan juthat a Docker-tárolók közelebb az adatokhoz.
+description: Ismerje meg, hogyan érheti el Cognitive Services a Docker-tárolókat az adataihoz.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876825"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Tárolótámogatás az Azure Cognitive Servicesben
+# <a name="container-support-in-azure-cognitive-services"></a>Tárolók támogatása az Azure Cognitive Services
 
-Az Azure Cognitive Services tárolótámogatása lehetővé teszi a fejlesztők számára, hogy ugyanazokat a gazdag API-kat használják, amelyek az Azure-ban érhetők el, és rugalmasságot biztosít a [Docker-tárolókhoz](https://www.docker.com/what-container)kapcsolódó szolgáltatások üzembe helyezésében és üzemeltetésében. A tárolótámogatás jelenleg az Azure Cognitive Services egy részhalmazához érhető el, beleértve a következők et is:
+A tárolók támogatása az Azure Cognitive Services lehetővé teszi a fejlesztők számára, hogy az Azure-ban elérhető, azonos API-kat használják, és lehetővé teszi a rugalmasságot a [Docker-tárolókkal](https://www.docker.com/what-container)rendelkező szolgáltatások üzembe helyezése és üzemeltetése során. A tárolók támogatása jelenleg az Azure Cognitive Services egy részhalmazához érhető el, beleértve a következő részeit:
 
 > [!div class="checklist"]
 > * [Anomaly Detector][ad-containers]
@@ -32,76 +32,76 @@ Az Azure Cognitive Services tárolótámogatása lehetővé teszi a fejlesztők 
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
-A tárolók szolgáltatása a szoftverterjesztés olyan megközelítése, amelyben egy alkalmazás vagy szolgáltatás, beleértve a függőségeit & konfigurációját, tárolórendszerképként van csomagolva. Kis vagy semmilyen módosítással egy tárolórendszerkép telepíthető egy tárológazdagépen. A tárolók egymástól és az alapul szolgáló operációs rendszertől vannak elkülönítve, kisebb helyigényűek, mint egy virtuális gép. A tárolók példányosíthatók a tárolórendszerképekből a rövid távú feladatokhoz, és eltávolíthatók, ha már nincs rá szükség.
+A tárolókra bontás olyan szoftverterjesztési módszer, amelyben egy alkalmazás vagy szolgáltatás, beleértve annak függőségeit & konfigurációját, a rendszer egy tároló képként együtt csomagolja. Kevés vagy nem módosítható, ha egy tároló-lemezképet telepítenek egy tároló gazdagépre. A tárolók el vannak különítve egymástól és a mögöttes operációs rendszertől, kisebb helyigénysel, mint a virtuális gépek. A tárolók lemezképeit rövid távú feladatokhoz is készíthetik, és ha már nincs szükség rájuk, el lesznek távolítva.
 
-A Cognitive Services-erőforrások a [Microsoft Azure-ban](https://azure.microsoft.com)érhetők el. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com/) és hozza létre és fedezze fel a szolgáltatások Azure-erőforrásait.
+Cognitive Services erőforrások elérhetők [Microsoft Azureon](https://azure.microsoft.com). Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a szolgáltatások Azure-erőforrásainak létrehozásához és megismeréséhez.
 
-## <a name="features-and-benefits"></a>Jellemzők és előnyök
+## <a name="features-and-benefits"></a>Funkciók és előnyök
 
-- **Módosítható infrastruktúra:** Engedélyezze a DevOps-csapatok számára, hogy az ismert rendszerparaméterek konzisztens és megbízható készletét használják ki, miközben alkalmazkodhatnak a változásokhoz. A tárolók rugalmasságot biztosítanak a kiszámítható ökoszisztémán belüli elforduláshoz és a konfigurációeltolódás elkerüléséhez.
-- **Az adatok vezérlése:** Lehetővé teheti az ügyfelek számára, hogy kiválasszák, hol dolgozzák fel ezeket a Cognitive Services-adatokat. Ez alapvető fontosságú olyan ügyfelek számára, akik nem tudnak adatokat küldeni a felhőbe, de hozzáférésre van szükségük a Cognitive Services technológiához. Támogatja a konzisztenciát a hibrid környezetekben – az adatok, a felügyelet, az identitás és a biztonság között.
-- **A modellfrissítések szabályozása:** Rugalmasságot biztosíthat az ügyfeleknek a megoldásaikban üzembe helyezett modellek verziószámozásában és frissítésében.
-- **Hordozható architektúra:** Engedélyezze egy hordozható alkalmazásarchitektúra létrehozását, amely telepíthető az Azure-ban, a helyszíni és a peremhálózaton. A tárolók közvetlenül az [Azure Kubernetes-szolgáltatásra](../aks/index.yml), az Azure Container Instances-re vagy az [Azure Stackbe](/azure-stack/operator)telepített [Kubernetes-fürtre](https://kubernetes.io/) [telepíthetők.](../container-instances/index.yml) További információ: [Kubernetes telepítése az Azure Stackbe.](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-- **Nagy átviteli/ alacsony késésű:** Lehetővé teszi az ügyfelek számára a nagy átviteli és alacsony késési követelmények méretezését azáltal, hogy lehetővé teszi a Cognitive Services számára, hogy fizikailag közel fussanak az alkalmazáslogikájukhoz és az adataikhoz. A tárolók nem korlátozzák a tranzakciók másodpercenkénti korlátját (TPS), és a szükséges hardvererőforrások biztosítása esetén fel- és kiskálázhatók az igények kielégítésére.
-- **Méretezhetőség:** A konténerezés és a tároló vezénylési szoftverek, például a Kubernetes egyre növekvő népszerűségével; a technológiai fejlődés élvonalában van. A skálázható fürtalapzatra építve az alkalmazásfejlesztés magas rendelkezésre állást biztosít.
+- Nem módosítható **infrastruktúra**: a DevOps csapatok lehetővé teszik az ismert rendszerparaméterek egységes és megbízható készletének kihasználása, miközben a változáshoz alkalmazkodni tudnak. A tárolók rugalmasságot biztosítanak a kiszámítható ökoszisztémán belül, és elkerülheti a konfigurációs eltolódást.
+- **Vezérlés az adat felett**: lehetővé teszi, hogy az ügyfelek kiválasszák, hol dolgozzák fel a Cognitive Services az adatfeldolgozást. Ez elengedhetetlen olyan ügyfelek számára, akik nem tudnak adatküldeni a felhőbe, de hozzá kell férniük Cognitive Services technológiához. A hibrid környezetek – az adatok, a felügyelet, az identitás és a biztonság – közötti konzisztencia támogatása.
+- A **modell frissítéseinek vezérlése**: az ügyfelek számára rugalmasságot biztosítanak a megoldásokban üzembe helyezett modellek verziószámozása és frissítése során.
+- **Hordozható architektúra**: lehetővé teszi egy olyan hordozható alkalmazás-architektúra létrehozását, amely az Azure-on, a helyszínen és a peremhálózati üzembe helyezhető. A tárolók üzembe helyezhetők közvetlenül az [Azure Kubernetes szolgáltatásban](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml)vagy egy [Azure stack](/azure-stack/operator)üzembe helyezett [Kubernetes](https://kubernetes.io/) -fürtön. További információ: [a Kubernetes telepítése Azure stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+- **Magas átviteli sebesség/kis késés**: az ügyfelek számára lehetővé teszi a nagy átviteli sebesség és az alacsony késési követelmények méretezését azáltal, hogy a Cognitive Services fizikailag közel van az alkalmazás-logikához és az adatokhoz. A tárolók másodpercenként nem kaphatnak tranzakciót (TPS), és az igény szerint méretezhetők, ha megadja a szükséges hardveres erőforrásokat.
+- **Méretezhetőség**: a tárolókra bontás és a tároló-összehangoló szoftverek egyre növekvő népszerűsége, például a Kubernetes; a skálázhatóság a technológiai fejlesztések élvonalában van. A skálázható fürt alapjainak kiépítésekor az alkalmazások fejlesztése magas rendelkezésre állást biztosít.
 
-## <a name="containers-in-azure-cognitive-services"></a>Tárolók az Azure Cognitive Servicesben
+## <a name="containers-in-azure-cognitive-services"></a>Tárolók az Azure-ban Cognitive Services
 
-Az Azure Cognitive Services-tárolók a következő Docker-tárolókat biztosítják, amelyek mindegyike az Azure Cognitive Services szolgáltatásainak egy részét tartalmazza:
+Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosítják, amelyek mindegyike az Azure-beli szolgáltatások funkcióinak egy részhalmazát tartalmazza Cognitive Services:
 
-| Szolgáltatás | Támogatott tarifacsomag | Tároló | Leírás |
+| Szolgáltatás | Támogatott árképzési szintek | Tároló | Leírás |
 |---------|----------|----------|-------------|
-|[Anomáliadetektor][ad-containers] |F0, Sz0|**Anomália-detektor** |Az Anomáliadetektor API lehetővé teszi az idősorozat-adatok rendellenességeinek figyelését és észlelését gépi tanulással.<br>[Hozzáférés kérése](https://aka.ms/adcontainer)|
-|[Számítógépes látástechnológia][cv-containers] |F0, S1|**Olvasás** |Kinyeri a nyomtatott szöveget különböző, különböző felületű és háttérrel rendelkező objektumok , például nyugták, poszterek és névjegykártyák képeiből. Az Olvasás tároló a *képeken lévő kézzel írt szöveget* is észleli, és PDF/TIFF/többoldalas támogatást biztosít.<br/><br/>**Fontos:** A Read tároló jelenleg csak angol nyelven működik.|
-|[Arcfelismerés][fa-containers] |F0, Sz0|**Arcfelismerés** |Felismeri az emberi arcokat a képeken, és azonosítja az attribútumokat, beleértve az arctájéktárgyakat (például az orrokat és a szemeket), a nemet, az életkort és más, a gép által előre jelzett arcvonásokat. Az észlelés mellett az Arc ellenőrizheti, hogy ugyanazon a képen vagy különböző képekben lévő két arc azonos-e megbízhatósági pontszám használatával, vagy összehasonlíthatja az arcokat egy adatbázissal, hogy lássa, létezik-e már hasonló kinézetű vagy azonos arc. A hasonló arcokat csoportokba is rendezheti, megosztott vizuális tulajdonságok használatával.<br>[Hozzáférés kérése](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
-|[Űrlapfelismerő][fr-containers] |F0, Sz0|**Form Recognizer** |Az űrlapmegértés gépi tanulási technológiát alkalmaz a kulcs-érték párok és táblák azonosítására és kinyerésére az űrlapokból.<br>[Hozzáférés kérése](https://aka.ms/FormRecognizerContainerRequestAccess)|
-|[LUIS][lu-containers] |F0, Sz0|**LUIS** ([kép](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Betölt egy betanított vagy közzétett language understanding modell, más néven egy LUIS-alkalmazás, egy docker-tárolóba, és hozzáférést biztosít a lekérdezés-előrejelzések a tároló API-végpontok. Lekérdezési naplók gyűjtése a tárolóból, és töltse fel ezeket vissza a [LUIS-portálra](https://www.luis.ai) az alkalmazás előrejelzési pontosságának javítása érdekében.|
-|[Speech Service API][sp-containers-stt] |F0, Sz0|**Diktálás** |Folyamatos, valós idejű beszédet szöveggé alakít.|
-|[Speech Service API][sp-containers-cstt] |F0, Sz0|**Egyéni beszédfelismerési szöveg** |A folyamatos valós idejű beszéd szöveggé történő átírása egyéni modell használatával.|
-|[Speech Service API][sp-containers-tts] |F0, Sz0|**Szövegfelolvasás** |Az írott szöveget természetesnek hangzó beszéddé alakítja.|
-|[Speech Service API][sp-containers-ctts] |F0, Sz0|**Egyéni szövegfelolvasás** |A szöveget természetes hangzású beszédté alakítja egyéni modell használatával.|
-|[Szövegelemzés][ta-containers-keyphrase] |F0, S|**Kulcskifejezés kivonása** ([kép](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Kibontja a kulcsfontosságú kifejezéseket a főpontok azonosításához. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |
-|[Szövegelemzés][ta-containers-language]|F0, S|**Nyelvfelismerés** ([kép](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |Legfeljebb 120 nyelven észleli, hogy a bemeneti szöveg melyik nyelven van megírva, és a kérelemre küldött minden dokumentumhoz egyetlen nyelvi kódot jelent. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. |
-|[Szövegelemzés][ta-containers-sentiment]|F0, S|**Hangulatelemzés** ([kép](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Nyers szöveget elemez a pozitív vagy negatív érzésekkel kapcsolatos nyomokért. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám. Az elemzési modellek előre kivannak képezve a Microsoft számos szöveg- és természetes nyelvi technológiájának használatával. [Bizonyos nyelvek](./text-analytics/language-support.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak. |
+|[Anomália detektor][ad-containers] |F0, S0|**Anomália – detektor** |A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése](https://aka.ms/adcontainer)|
+|[Számítógépes látástechnológia][cv-containers] |F0, S1|**Olvasás** |Különböző felületek és hátterek, például a nyugták, a plakátok és a névjegykártyák különböző objektumainak képeiből származó nyomtatott szöveg kibontása. Az olvasási tároló a képek *kézírásos szövegét* is észleli, és PDF/TIFF/többoldalas támogatást biztosít.<br/><br/>**Fontos:** Az olvasási tároló jelenleg csak angol nyelven működik.|
+|[Arcfelismerés][fa-containers] |F0, S0|**Arcfelismerés** |Észleli az emberi arcokat a képekben, és azonosítja az attribútumokat, beleértve az arc-tereptárgyak (például az orr és a szemek), a nemek, az életkor és más, a géppel előre jelzett arc-funkciókat. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc vagy különböző kép azonos-e a megbízhatósági pontszám használatával, vagy összehasonlítja az arcokat egy adatbázissal, hogy megtudja, hasonló vagy azonos arc létezik-e. A hasonló arcok csoportokba rendezésére is képes, közös vizualizációs jellemzőkkel.<br>[Hozzáférés kérése](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[Űrlap-felismerő][fr-containers] |F0, S0|**Form Recognizer** |Az űrlap ismerete a gépi tanulási technológiákat alkalmazza a kulcs-érték párok és táblák űrlapokból való azonosításához és kinyeréséhez.<br>[Hozzáférés kérése](https://aka.ms/FormRecognizerContainerRequestAccess)|
+|[LUIS][lu-containers] |F0, S0|**Luis** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Betölti a betanított vagy közzétett Language Understanding modellt, más néven LUIS alkalmazást egy Docker-tárolóba, és hozzáférést biztosít a tároló API-végpontjai lekérdezési előrejelzéséhez. Lekérdezési naplókat gyűjthet a tárolóból, és feltöltheti ezeket a [Luis-portálra](https://www.luis.ai) az alkalmazás előrejelzési pontosságának javítása érdekében.|
+|[Speech Service API][sp-containers-stt] |F0, S0|**Diktálás** |Folyamatos, valós idejű beszédet szöveggé alakít.|
+|[Speech Service API][sp-containers-cstt] |F0, S0|**Custom Speech – szöveg** |A folyamatos valós idejű beszédet szövegbe helyezi egy egyéni modell használatával.|
+|[Speech Service API][sp-containers-tts] |F0, S0|**Szövegfelolvasás** |Az írott szöveget természetesnek hangzó beszéddé alakítja.|
+|[Speech Service API][sp-containers-ctts] |F0, S0|**Egyéni szöveg – beszéd** |Átalakítja a szöveget természetes hangú beszédre egyéni modell használatával.|
+|[Szövegelemzés][ta-containers-keyphrase] |F0, S|**Kulcsszókeresés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |A fő pontok azonosítására szolgáló legfontosabb kifejezések kibontása. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |
+|[Szövegelemzés][ta-containers-language]|F0, S|**Nyelvfelismerés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |A legfeljebb 120 nyelv esetében azt észleli, hogy a bemeneti szöveg milyen nyelven íródott, és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. |
+|[Szövegelemzés][ta-containers-sentiment]|F0, S|**Hangulatelemzés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |A nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám. Az elemzési modellek a Microsoft széles körű szöveg-és természetes nyelvi technológiáit használó előre betanítva vannak. [Bizonyos nyelvek](./text-analytics/language-support.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
 -->
 
-Emellett egyes tárolók támogatja a Cognitive Services [**all-in-one kínál**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforráskulcsokat. Egyetlen Cognitive Services all-in-one erőforrást hozhat létre, és ugyanazt a számlázási kulcsot használhatja a támogatott szolgáltatások között a következő szolgáltatásokhoz:
+Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánlati**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforrás-kulcsokat. Egyetlen Cognitive Services is létrehozhat egy teljes körű erőforrást, és ugyanazt a számlázási kulcsot használhatja a támogatott szolgáltatások között a következő szolgáltatásokhoz:
 
 * Számítógépes látástechnológia
 * Arcfelismerés
 * LUIS
 * Szövegelemzés
 
-## <a name="container-availability-in-azure-cognitive-services"></a>A tároló elérhetősége az Azure Cognitive Servicesben
+## <a name="container-availability-in-azure-cognitive-services"></a>Tároló rendelkezésre állása az Azure-ban Cognitive Services
 
-Az Azure Cognitive Services-tárolók nyilvánosan elérhetők az Azure-előfizetésen keresztül, és a Docker-tárolórendszerképek lehívhatók a Microsoft Container Registry vagy a Docker Hub rendszeréből. A [docker lekéréseparanccsal](https://docs.docker.com/engine/reference/commandline/pull/) letöltheti a tárolórendszerképet a megfelelő beállításjegyzékből.
+Az Azure Cognitive Services tárolók nyilvánosan elérhetők az Azure-előfizetésen keresztül, a Docker-tárolók rendszerképei pedig a Microsoft Container Registry vagy a Docker hub-ból tölthetők le. A [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal a megfelelő beállításjegyzékből töltheti le a tárolók rendszerképét.
 
 > [!IMPORTANT]
-> Jelenleg ki kell töltenie egy regisztrációs folyamatot a következő tárolók eléréséhez, amelyben kitölthet i és egy kérdőívet, amely kérdéseket tartalmaz Önről, a vállalatáról és a használati esetről, amelyhez a tárolókat végre kívánja hajtani. Miután megkapta a hozzáférést, és megadta a hitelesítő adatokat, majd lehívhatja a tárolórendszerképeket egy privát tároló beállításjegyzék az Azure Container Registry által üzemeltetett.
-> * [Anomáliadetektor](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
+> Jelenleg a következő tárolók eléréséhez el kell végeznie egy regisztrációs folyamatot, amelyben ki kell töltenie és el kell küldenie egy kérdőívet az Ön, a vállalata és a használati eset alapján, amelynek a tárolóit szeretné megvalósítani. Miután megadta a hozzáférést és a megadott hitelesítő adatokat, lekérheti a tároló lemezképeit a Azure Container Registry által üzemeltetett privát tároló-beállításjegyzékből.
+> * [Anomália detektor](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Arcfelismerés](Face/face-how-to-install-containers.md)
 > * [Form Recognizer](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
 > * [Olvasás](computer-vision/computer-vision-how-to-install-containers.md)
-> * [Beszéd-szöveg és szövegfelolvasás](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
+> * [Beszéd – szöveg és szöveg – beszéd](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Cognitive Services-tárolók használata előtt meg kell felelnie az alábbi előfeltételeknek:
+Az Azure Cognitive Services-tárolók használata előtt meg kell felelnie a következő előfeltételeknek:
 
-**Docker Engine:** A Docker Engine-t helyileg kell telepítenie. A Docker olyan csomagokat biztosít, amelyek a Docker-környezetet [macOS,](https://docs.docker.com/docker-for-mac/) [Linux](https://docs.docker.com/engine/installation/#supported-platforms)és [Windows](https://docs.docker.com/docker-for-windows/)rendszeren konfigurálják. Windows rendszeren a Docker-t linuxos tárolók támogatására kell konfigurálni. A Docker-tárolók közvetlenül az [Azure Kubernetes-szolgáltatásra](../aks/index.yml) vagy [az Azure Container Instances-re is telepíthetők.](../container-instances/index.yml)
+**Docker-motor**: a Docker-motort helyileg kell telepíteni. A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms)és [Windows](https://docs.docker.com/docker-for-windows/)rendszeren. Windows rendszeren a Docker-t úgy kell konfigurálni, hogy támogassa a Linux-tárolókat. A Docker-tárolók közvetlenül az [Azure Kubernetes szolgáltatásba](../aks/index.yml) vagy [Azure Container Instancesba](../container-instances/index.yml)is telepíthetők.
 
-A Docker-t úgy kell konfigurálni, hogy a tárolók csatlakozhassanak az Azure-hoz, és számlázási adatokat küldjenek az Azure-ba.
+A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését.
 
-A Microsoft Container Registry és a **Docker ismertsége:** Alapvető ismeretekkel kell rendelkeznie a Microsoft Container Registry és a Docker fogalmairól, például a kibocsátásiegység-forgalmi jegyzékekről, adattárakról, tárolókról és tárolórendszerképekről, valamint az alapvető `docker` parancsok ismeretéről.
+A **microsoft Container Registry és a Docker ismerete**: alapvető ismeretekkel kell rendelkeznie a Microsoft Container Registry és a Docker-fogalmak, például a nyilvántartók, a Tárházak, a tárolók és a tárolók rendszerképeiről, valamint az alapszintű `docker` parancsok megismeréséről.
 
 A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).
 
-Az egyes tárolóknak saját követelményeik is lehetnek, beleértve a kiszolgáló- és memóriafoglalási követelményeket is.
+Az egyes tárolók saját követelményeiket is magukban foglalhatják, beleértve a kiszolgáló és a memória foglalási követelményeit is.
 
 [!INCLUDE [Cognitive Services container security](containers/includes/cognitive-services-container-security.md)]
 
@@ -109,17 +109,17 @@ Az egyes tárolóknak saját követelményeik is lehetnek, beleértve a kiszolg�
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Kognitív szolgáltatásokkal használható [tárolórecepteket.](containers/container-reuse-recipe.md)
+A Cognitive Services használható [tároló-receptek](containers/container-reuse-recipe.md) megismerése.
 
-Telepítse és fedezze fel a tárolók által az Azure Cognitive Servicesben nyújtott funkciókat:
+Telepítse és vizsgálja meg a tárolók által biztosított funkciókat az Azure Cognitive Servicesban:
 
-* [Anomáliadetektor-tárolók][ad-containers]
+* [Anomáliák detektor tárolói][ad-containers]
 * [Computer Vision tárolók][cv-containers]
-* [Arctárolók][fa-containers]
-* [Űrlapfelismerő tárolók][fr-containers]
-* [Nyelvi ismertetési (LUIS) tárolók][lu-containers]
-* [Beszédszolgáltatás API-tárolói][sp-containers]
-* [Szövegelemzési tárolók][ta-containers]
+* [Face-tárolók][fa-containers]
+* [Űrlap-felismerő tárolók][fr-containers]
+* [Language Understanding (LUIS) tárolók][lu-containers]
+* [Speech Service API-tárolók][sp-containers]
+* [Text Analytics tárolók][ta-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 -->

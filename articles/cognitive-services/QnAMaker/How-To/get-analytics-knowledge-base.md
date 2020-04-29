@@ -1,7 +1,7 @@
 ---
-title: Tudásbázis elemzése - QnA Maker
+title: Elemzés a Tudásbázisban – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: A QnA Maker tárolja az összes csevegőnaplót és egyéb telemetriai adatokat, ha a QnA Maker szolgáltatás létrehozása során engedélyezte az App Insights szolgáltatást. Futtassa a mintalekérdezéseket, hogy levegye a csevegési naplókat az App Insightsból.
+description: QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az QnA Maker szolgáltatás létrehozása során engedélyezte az alkalmazás elemzését. Futtassa a lekérdezéseket, hogy beolvassa a csevegési naplókat az App ininsights szolgáltatásból.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: d247c55112bc1c3cd921c0eda8e4ddadd6b5aed9
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878068"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Tudásbázis elemzésének lekérése
 
-A QnA Maker tárolja az összes csevegőnaplót és egyéb telemetriai adatokat, ha a [QnA Maker szolgáltatás létrehozása](./set-up-qnamaker-service-azure.md)során engedélyezte az App Insights szolgáltatást. Futtassa a mintalekérdezéseket, hogy levegye a csevegési naplókat az App Insightsból.
+QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az [QnA Maker szolgáltatás létrehozása](./set-up-qnamaker-service-azure.md)során engedélyezte az alkalmazás elemzését. Futtassa a lekérdezéseket, hogy beolvassa a csevegési naplókat az App ininsights szolgáltatásból.
 
-1. Nyissa meg az App Insights-erőforrást.
+1. Nyissa meg az alkalmazás-keresési erőforrást.
 
-    ![Az alkalmazáselemzési erőforrás kiválasztása](../media/qnamaker-how-to-analytics-kb/resources-created.png)
+    ![Válassza ki az Application ininsight-erőforrást](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Válassza **a Log (Analytics) lehetőséget.** Megnyílik egy új ablak, ahol lekérdezheti a QnA Maker telemetriáját.
+2. Válassza a **napló (elemzés)** lehetőséget. Megnyílik egy új ablak, ahol lekérdezheti QnA Maker telemetria.
 
-3. Illessze be a következő lekérdezést, és futtassa azt.
+3. Illessze be a következő lekérdezést, és futtassa.
 
     ```kusto
     requests
@@ -46,11 +46,11 @@ A QnA Maker tárolja az összes csevegőnaplót és egyéb telemetriai adatokat,
 
     A lekérdezés futtatásához válassza a **Futtatás** lehetőséget.
 
-    [![Lekérdezés futtatása a felhasználók kérdéseinek, válaszainak és pontszámának meghatározásához](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
+    [![Lekérdezés futtatása a kérdések, válaszok és pontozás meghatározásához a felhasználóktól](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Lekérdezések futtatása más elemzésekhez a QnA Maker tudásbázisán
+## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Lekérdezések futtatása a QnA Maker Tudásbázis egyéb elemzési adataihoz
 
-### <a name="total-90-day-traffic"></a>Összesen 90 napos forgalom
+### <a name="total-90-day-traffic"></a>90-napi forgalom összesen
 
 ```kusto
 //Total Traffic
@@ -60,7 +60,7 @@ requests
 | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
-### <a name="total-question-traffic-in-a-given-time-period"></a>Kérdésforgalom teljes száma egy adott időszakban
+### <a name="total-question-traffic-in-a-given-time-period"></a>A kérdéses forgalom teljes száma adott időszakban
 
 ```kusto
 //Total Question Traffic in a given time period
@@ -88,7 +88,7 @@ traces | extend id = operation_ParentId
 | summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
 ```
 
-### <a name="latency-distribution-of-questions"></a>A kérdések késése
+### <a name="latency-distribution-of-questions"></a>Kérdések késésének eloszlása
 
 ```kusto
 //Latency distribution of questions

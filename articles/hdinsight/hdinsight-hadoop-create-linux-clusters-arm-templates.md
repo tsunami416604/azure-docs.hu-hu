@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop-fürtök létrehozása sablonok használatával – Azure HDInsight
-description: Megtudhatja, hogy miként hozhat létre fürtöket a HDInsight számára az Erőforrás-kezelő sablonok használatával
+description: Ismerje meg, hogyan hozhat létre fürtöket a HDInsight Resource Manager-sablonok használatával
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,63 +9,63 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/07/2020
 ms.openlocfilehash: 67d5481b82b7469c5ae55704768ce494dbc9dca5
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879139"
 ---
-# <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop-fürtök létrehozása a HDInsightban erőforrás-kezelősablonok használatával
+# <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Ebben a cikkben az [Azure Resource Manager-sablonok](../azure-resource-manager/templates/deploy-powershell.md)használatával számos módon hozhat létre Azure HDInsight-fürtöket. Ha többet szeretne megtudni a fürtlétrehozási eszközökről és szolgáltatásokról, kattintson a lap tetején található fülválasztóra. Lásd még: [Fürtlétrehozási módszerek](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
+Ebből a cikkből megtudhatja, hogyan hozhat létre Azure HDInsight-fürtöket [Azure Resource Manager-sablonok](../azure-resource-manager/templates/deploy-powershell.md)használatával. A fürt többi létrehozási eszközének és szolgáltatásának megismeréséhez kattintson az oldal tetején található Tab választóra. Lásd még: [fürt létrehozási módszerei](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-Az Erőforrás-kezelő sablonokkal egyszerűen hozhat létre a következő erőforrásokat az alkalmazáshoz egyetlen, összehangolt műveletben:
+A Resource Manager-sablonok segítségével egyszerűen létrehozható az alkalmazáshoz tartozó alábbi erőforrások egyetlen, koordinált műveletben:
 
-* HDInsight-fürtök és azok függő erőforrásait (például az alapértelmezett tárfiókot).
-* Egyéb erőforrások (például az Apache [Sqoop](https://sqoop.apache.org/)használatához szükséges Azure SQL Database).
+* HDInsight-fürtök és azok függő erőforrásai (például az alapértelmezett Storage-fiók).
+* Egyéb erőforrások (például Azure SQL Database az [Apache Sqoop](https://sqoop.apache.org/)használatához).
 
-A sablonban megadhatja az alkalmazáshoz szükséges erőforrásokat. A különböző környezetekben megadott telepítési paramétereket is megadhatja. A sablon JSON-ból és kifejezésekből áll, amelyek segítségével értékeket hozhat létre a központi telepítéshez.
+A sablonban megadhatja az alkalmazáshoz szükséges erőforrásokat. A különböző környezetek bemeneti értékeihez is megadhat központi telepítési paramétereket. A sablon JSON-ből és kifejezésekből áll, amelyek használatával értékeket hozhat létre a telepítéshez.
 
-A HDInsight-sablonmintákat az [Azure gyorsindítási sablonjaiban találhatja](https://azure.microsoft.com/resources/templates/?term=hdinsight)meg. Az [Erőforrás-kezelő kiterjesztéssel](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) rendelkező [platformfüggetlen Visual Studio-kód](https://code.visualstudio.com/#alt-downloads) dal vagy szövegszerkesztővel mentheti a sablont egy munkaállomáson lévő fájlba.
+Az [Azure Gyorsindítás sablonjain](https://azure.microsoft.com/resources/templates/?term=hdinsight)HDInsight-mintákat talál. A platformfüggetlen [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) -ot használhatja a [Resource Manager bővítménnyel](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) vagy egy szövegszerkesztővel, hogy a sablont egy fájlba mentse a munkaállomáson.
 
-Az Erőforrás-kezelő sablonjairól az alábbi cikkekben és példákban talál további információt:
+A Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő cikkeket és példákat:
 
-* [Az Azure Resource Manager sablonjainak szerzője](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager sablonok szerzője](../azure-resource-manager/templates/template-syntax.md)
 * [Alkalmazás üzembe helyezése Azure Resource Manager-sablonokkal](../azure-resource-manager/templates/deploy-powershell.md)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) sablon – referencia
-* [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
+* [Microsoft. HDInsight/fürtök](/azure/templates/microsoft.hdinsight/allversions) sablonjának referenciája
+* [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
-## <a name="generate-templates"></a>Sablonok létrehozása
+## <a name="generate-templates"></a>Sablonok előállítása
 
-Az Erőforrás-kezelő lehetővé teszi, hogy különböző eszközökkel exportáljon egy Erőforrás-kezelő sablont az előfizetés meglévő erőforrásaiból. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését. További információt a Sablonok exportálása című [témakörben talál.](../azure-resource-manager/templates/export-template-portal.md)
+A Resource Manager lehetővé teszi, hogy különböző eszközök használatával exportáljon egy Resource Manager-sablont az előfizetése meglévő erőforrásaiból. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését. További információ: [sablonok exportálása](../azure-resource-manager/templates/export-template-portal.md).
 
 ## <a name="deploy-using-the-portal"></a>Üzembe helyezés a portál használatával
 
-A Resource Manager-sablon az Azure Portalon keresztül telepítheti. További információt az [Erőforrások telepítése egyéni sablonból című](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)témakörben talál.
+A Azure Portal használatával Resource Manager-sablonokat is üzembe helyezhet. További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="deploy-using-powershell"></a>Üzembe helyezés a PowerShell használatával
 
-A Resource Manager-sablon t az Azure PowerShell használatával telepítheti. További információ: [Erőforrások üzembe helyezése Erőforrás-kezelő sablonokkal és Az Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) és [a Private Resource Manager-sablon SAS-jogkivonattal és Az Azure PowerShell használatával](../azure-resource-manager/resource-manager-powershell-sas-token.md)című témakörben olvashat.
+Azure PowerShell használatával üzembe helyezhet egy Resource Manager-sablont. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) , valamint [saját Resource Manager-sablon üzembe helyezése sas-jogkivonat és Azure PowerShell segítségével](../azure-resource-manager/resource-manager-powershell-sas-token.md).
 
 ## <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
-A Resource Manager-sablon üzembe helyezhető az Azure CLI használatával. További információ: [Erőforrások üzembe helyezése Erőforrás-kezelő sablonokkal és Az Azure CLI](../azure-resource-manager/templates/deploy-cli.md) és [a Private Resource Manager sablon telepítése SAS-jogkivonattal és Az Azure CLI szolgáltatással](../azure-resource-manager/resource-manager-cli-sas-token.md)című témakörben olvashat.
+Resource Manager-sablont az Azure CLI használatával helyezhet üzembe. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../azure-resource-manager/templates/deploy-cli.md) -vel, valamint [saját Resource Manager-sablon üzembe helyezése sas-JOGKIVONAT és Azure CLI használatával](../azure-resource-manager/resource-manager-cli-sas-token.md).
 
-## <a name="deploy-using-the-rest-api"></a>Telepítés a REST API használatával
+## <a name="deploy-using-the-rest-api"></a>Üzembe helyezés a REST API használatával
 
-A REST API használatával telepíthet egy Erőforrás-kezelő sablont. További információ: [Erőforrások telepítése erőforrás-kezelői sablonokkal és Erőforrás-kezelő REST API-val](../azure-resource-manager/templates/deploy-rest.md)című témakörben talál.
+REST API használatával üzembe helyezhet egy Resource Manager-sablont. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 
 ## <a name="deploy-with-visual-studio"></a>Üzembe helyezés a Visual Studióval
 
- A Visual Studio segítségével hozzon létre egy erőforráscsoport-projektet, és telepítse azt az Azure-ba a felhasználói felületen keresztül. Kiválaszthatja, hogy milyen típusú erőforrásokat vegyen fel a projektbe. Ezek az erőforrások automatikusan hozzáadódnak az Erőforrás-kezelő sablonhoz. A projekt egy PowerShell-parancsfájlt is biztosít a sablon üzembe helyezéséhez.
+ A Visual Studióval hozzon létre egy erőforráscsoport-projektet, és telepítse azt az Azure-ba a felhasználói felületen keresztül. Kiválaszthatja, hogy milyen típusú erőforrásokat kíván felvenni a projektbe. Ezeket az erőforrásokat a rendszer automatikusan hozzáadja a Resource Manager-sablonhoz. A projekt egy PowerShell-szkriptet is biztosít a sablon üzembe helyezéséhez.
 
-A Visual Studio erőforráscsoportokkal való használatának bemutatása Az [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióban című](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)témakörben található.
+A Visual Studio és az erőforráscsoportok együttes használatának bemutatása: Azure- [erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -73,11 +73,11 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a HDInsight-fürt létrehozásának számos módját ismerteelheti. További információ: a következő cikkek:
+Ebben a cikkben megtanulta, hogyan hozhat létre HDInsight-fürtöt. További információt a következő cikkekben talál:
 
-* További HDInsight-kapcsolódó sablonokról az [Azure gyorsindítási sablonjai ban](https://azure.microsoft.com/resources/templates/?term=hdinsight)olvashat.
-* Az erőforrások .NET ügyféltáron keresztül történő központi telepítéséről az [Erőforrások telepítése .NET tárak és egy sablon használatával](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakörben olvashat.
-* Egy alkalmazás üzembe helyezésének részletes példáját [lásd: A mikroszolgáltatások kiszámíthatóan az Azure-ban.](../app-service/deploy-complex-application-predictably.md)
+* További HDInsight kapcsolódó sablonok: [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/?term=hdinsight).
+* Az erőforrások .NET-ügyfél-függvénytáron keresztüli üzembe helyezésére példa: [erőforrások telepítése .net-kódtárak és sablon használatával](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Az alkalmazások üzembe helyezésének részletes ismertetését lásd: az Azure- [ban előre definiált és üzembe helyezett szolgáltatások üzembe helyezése](../app-service/deploy-complex-application-predictably.md).
 * Útmutató a megoldások különböző környezetekben történő telepítéséhez: [Fejlesztési és tesztelési környezetek a Microsoft Azure eszközben](../solution-dev-test-environments.md).
-* Az Azure Resource Manager-sablon szakaszairól a [Sablonok készítése](../azure-resource-manager/templates/template-syntax.md)című témakörben olvashat.
-* Az Azure Resource Manager-sablonban használható függvények listáját a [Sablonfüggvények című témakörben olvashatja.](../azure-resource-manager/templates/template-functions.md)
+* A Azure Resource Manager sablon fejezeteiről a [sablonok készítése](../azure-resource-manager/templates/template-syntax.md)című témakörben olvashat bővebben.
+* A Azure Resource Manager sablonban használható függvények listáját a [sablon függvények](../azure-resource-manager/templates/template-functions.md)című részben tekintheti meg.

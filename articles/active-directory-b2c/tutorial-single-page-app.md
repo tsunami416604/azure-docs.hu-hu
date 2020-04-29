@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Hitelesítés engedélyezése egyoldalas alkalmazásban'
+title: 'Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásokban'
 titleSuffix: Azure AD B2C
-description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Active Directory B2C használatával a javascript-alapú egyoldalas alkalmazások (SPA) felhasználói bejelentkezését.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Active Directory B2Ct egy JavaScript-alapú egyoldalas alkalmazás (SPA) felhasználói bejelentkezésének biztosítására.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,73 +12,73 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: d7cd437f597fc34fe83904715fc2e459dfe4550f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875559"
 ---
-# <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: Hitelesítés engedélyezése egy egyoldalas alkalmazásban az Azure AD B2C-vel
+# <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
-Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Active Directory B2C (Azure AD B2C) segítségével a felhasználók regisztrálása és bejelentkezése egy egyoldalas alkalmazásban (SPA).
+Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Active Directory B2C (Azure AD B2C) egy egyoldalas alkalmazásban (SPA) való regisztrációra és bejelentkezésre.
 
 Ebben az oktatóanyagban az első egy kétrészes sorozatban:
 
 > [!div class="checklist"]
-> * Válasz URL-cím hozzáadása az Azure AD B2C-bérlőben regisztrált alkalmazáshoz
-> * Kódminta letöltése a GitHubról
-> * A mintaalkalmazás kódjának módosítása a bérlővel való együttműködésre
-> * Regisztráció a feliratkozási/bejelentkezési felhasználói folyamattal
+> * Válasz URL-címének hozzáadása a Azure AD B2C-bérlőben regisztrált alkalmazáshoz
+> * Mintakód letöltése a GitHubról
+> * A minta alkalmazás kódjának módosítása a Bérlővel való együttműködéshez
+> * Regisztráció a regisztrációs/bejelentkezési felhasználói folyamat használatával
 
-A [sorozat következő oktatóanyaga](tutorial-single-page-app-webapi.md) engedélyezi a kódminta webes API-részét.
+A sorozat [következő oktatóanyaga](tutorial-single-page-app-webapi.md) a kód mintájának webes API részét teszi lehetővé.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag lépései folytatása előtt a következő Azure AD B2C-erőforrásokra van szükség:
+Az oktatóanyag lépéseinek folytatása előtt a következő Azure AD B2C erőforrásokra van szükség:
 
-* [Azure AD B2C-bérlő](tutorial-create-tenant.md)
-* [A](tutorial-register-applications.md) bérlőben regisztrált alkalmazás
-* [A](tutorial-create-user-flows.md) bérlőben létrehozott felhasználói folyamatok
+* [Azure AD B2C bérlő](tutorial-create-tenant.md)
+* Az [alkalmazás regisztrálva](tutorial-register-applications.md) van a bérlőben
+* A bérlőn [létrehozott felhasználói folyamatok](tutorial-create-user-flows.md)
 
-Ezenkívül a helyi fejlesztési környezetben a következőkre van szükség:
+Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
 
-* [Visual Studio-kód](https://code.visualstudio.com/) vagy más kódszerkesztő
+* [Visual Studio Code](https://code.visualstudio.com/) vagy más Kódszerkesztő
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
-A második oktatóanyag, amely az előfeltételek részeként befejeződött, regisztrált egy webalkalmazást az Azure AD B2C-ben. Ha engedélyezni szeretné a kommunikációt az oktatóanyagban lévő kódmintával, adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrációhoz.
+Az előfeltételek részeként elvégzett második oktatóanyagban egy webalkalmazást regisztrált Azure AD B2Cban. Ebben az oktatóanyagban a kód mintával való kommunikáció engedélyezéséhez adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrálásához.
 
-Használhatja az aktuális **alkalmazások** tapasztalat, vagy az új, egységes **alkalmazás regisztrációk (Előzetes verzió)** az alkalmazás frissítéséhez. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja a bérlőt tartalmazó könyvtárat.
-1. Válassza az **Összes szolgáltatás lehetőséget** az Azure Portal bal felső sarkában, majd keresse meg és válassza az Azure **AD B2C**lehetőséget.
-1. Válassza **az Alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
-1. A **Válasz URL-cím csoportban**adja hozzá a t. `http://localhost:6420`
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
+1. A **Válasz URL-cím**területen adja hozzá `http://localhost:6420`a címet.
 1. Kattintson a **Mentés** gombra.
-1. A tulajdonságok lapon rögzítse az **alkalmazásazonosítót**. Az alkalmazásazonosítót egy későbbi lépésben használhatja, amikor frissíti a kódot az egyoldalas webalkalmazásban.
+1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját**. Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 #### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
-1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
-1. Válassza **az Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, válassza a **Saját alkalmazások** lapot, majd a *webapp1* alkalmazást.
-1. Válassza **a Hitelesítés**lehetőséget, majd válassza az Új felület **kipróbálása** lehetőséget (ha látható).
-1. A **Web**csoportban jelölje be `http://localhost:6420`az URI **hozzáadása** hivatkozást, írja be a beadási parancsot, majd kattintson a Mentés **gombra.**
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, válassza a **tulajdonában lévő alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
+1. Válassza a **hitelesítés**lehetőséget, majd válassza **az új felület kipróbálása** (ha látható) lehetőséget.
+1. A **web**területen válassza az **URI hozzáadása** hivatkozást, írja `http://localhost:6420`be a nevet, majd kattintson a **Mentés**gombra.
 1. Válassza az **Áttekintés** lehetőséget.
-1. Rögzítse az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben, amikor frissíti a kódot az egyoldalas webalkalmazásban.
+1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 * * *
 
 ## <a name="get-the-sample-code"></a>A mintakód letöltése
 
-Ebben az oktatóanyagban konfigurálja a GitHubról a B2C-bérlővel való együttműködésre letöltött kódmintát. A minta bemutatja, hogy egy egyoldalas alkalmazás használhatja az Azure AD B2C a felhasználói regisztráció és a bejelentkezés, és hívja meg a védett webes API-t (engedélyezi a webes API-t a következő oktatóanyag a sorozatban).
+Ebben az oktatóanyagban egy, a GitHubról letöltött mintakód-mintát konfigurál a B2C-Bérlővel való együttműködéshez. A minta azt mutatja be, hogy egy egyoldalas alkalmazás hogyan használhatja a Azure AD B2C felhasználói regisztrációhoz és bejelentkezéshez, valamint egy védett webes API meghívásához (a sorozat következő oktatóanyagában engedélyezheti a webes API-t).
 
 [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip), vagy a klónozza a GitHubon található mintát.
 
@@ -88,12 +88,12 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ## <a name="update-the-sample"></a>A minta frissítése
 
-Most, hogy megszerezte a mintát, frissítse a kódot az Azure AD B2C bérlői nevével és az alkalmazásazonosítóval, amelyet egy korábbi lépésben rögzített.
+Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nevével és egy korábbi lépésben rögzített alkalmazás-AZONOSÍTÓval.
 
-1. Nyissa meg az *authConfig.js* fájlt a *JavaScriptSPA* mappában.
-1. Az `msalConfig` objektumban frissítse:
-    * `clientId`egy korábbi lépésben rögzített **alkalmazásazonosítóval (ügyfélazonosítóval)**
-    * `authority`URI az Azure AD B2C bérlő nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1)*
+1. Nyissa meg a *authConfig. js* fájlt a *JavaScriptSPA* mappában.
+1. Az objektumban frissítse a `msalConfig` következőket:
+    * `clientId`egy korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóval** rendelkező értékkel
+    * `authority`URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1*)
 
     ```javascript
     const msalConfig = {
@@ -111,7 +111,7 @@ Most, hogy megszerezte a mintát, frissítse a kódot az Azure AD B2C bérlői n
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. Nyisson meg egy konzolablakot, és váltson a mintát tartalmazó könyvtárra. Például:
+1. Nyisson meg egy konzolablak ablakát, és váltson a mintát tartalmazó könyvtárra. Például:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -123,54 +123,54 @@ Most, hogy megszerezte a mintát, frissítse a kódot az Azure AD B2C bérlői n
     npm start
     ```
 
-    A konzolablak a helyileg futó Node.js kiszolgáló portszámát jeleníti meg:
+    A konzol ablakban a helyileg futó Node. js-kiszolgáló portszáma látható:
 
     ```console
     Listening on port 6420...
     ```
-1. Tallózással tekintse `http://localhost:6420` meg a helyi számítógépen futó webalkalmazást.
+1. `http://localhost:6420` A gombra kattintva megtekintheti a helyi gépen futó webalkalmazást.
 
-    :::image type="content" source="media/tutorial-single-page-app/web-app-spa-01-not-logged-in.png" alt-text="A helyileg futó egyoldalas alkalmazást megjelenítő webböngésző":::
+    :::image type="content" source="media/tutorial-single-page-app/web-app-spa-01-not-logged-in.png" alt-text="A helyileg futó egylapos alkalmazást megjelenítő webböngésző":::
 
 ### <a name="sign-up-using-an-email-address"></a>Regisztrálás e-mail-címmel
 
-Ez a mintaalkalmazás támogatja a regisztrációt, a bejelentkezést és a jelszó alaphelyzetbe állítását. Ebben az oktatóanyagban e-mail-cím használatával regisztrál.
+Ez a minta alkalmazás támogatja a regisztrációt, a bejelentkezést és a jelszó-visszaállítást. Ebben az oktatóanyagban egy e-mail-cím használatával regisztrálhat.
 
-1. Válassza **a Bejelentkezés** lehetőséget a *B2C_1_signupsignin1* egy korábbi lépésben megadott felhasználói folyamat elindításához.
-1. Az Azure AD B2C egy bejelentkezési lapot jelenít meg, amely egy regisztrációs hivatkozást tartalmaz. Mivel még nincs fiókja, válassza a **Regisztráció most** hivatkozást.
-1. A regisztrációs munkafolyamat egy oldalt jelenít meg a felhasználó személyazonosságának e-mail-cím használatával történő összegyűjtéséhez és ellenőrzéséhez. A regisztrációs munkafolyamat a felhasználó jelszavát és a felhasználói folyamatban definiált kért attribútumokat is gyűjti.
+1. Válassza a **Bejelentkezés** lehetőséget a korábbi lépésben megadott *B2C_1_signupsignin1* felhasználói folyamat elindításához.
+1. A Azure AD B2C egy regisztrációs hivatkozást tartalmazó bejelentkezési oldalt jelenít meg. Mivel még nem rendelkezik fiókkal, válassza a **regisztráció most** hivatkozást.
+1. A regisztrációs munkafolyamat egy olyan oldalt jelenít meg, amely az e-mail-cím használatával gyűjti és ellenőrzi a felhasználó identitását. A regisztrációs munkafolyamat a felhasználó jelszavát és a felhasználói folyamatban definiált kért attribútumokat is gyűjti.
 
     Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Az Azure AD B2C felhasználói folyamatáltal megjelenített regisztrációs oldal":::
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C felhasználói folyamat által megjelenített regisztrációs oldal":::
 
-1. Válassza **a Create lehetőséget,** ha helyi fiókot szeretne létrehozni az Azure AD B2C címtárban.
+1. A **Létrehozás** gombra kattintva helyi fiókot hozhat létre a Azure ad B2C könyvtárban.
 
-Ha a Létrehozás lehetőséget **választja,** az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
+A **Létrehozás**gombra kattintva az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
 
-:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Egyoldalas alkalmazást megjelenítő webböngésző bejelentkezett felhasználóval":::
+:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Webböngésző, amely egy egyoldalas alkalmazást mutat be a bejelentkezett felhasználóval":::
 
-Ha tesztelni szeretné a bejelentkezést, válassza a **Kijelentkezés** gombot, majd válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be a regisztrációkor megadott e-mail címmel és jelszóval.
+Ha tesztelni szeretné a bejelentkezést, kattintson a **kijelentkezés** gombra, majd válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be a regisztráció során megadott e-mail-címmel és jelszóval.
 
-### <a name="what-about-calling-the-api"></a>Mi a helyzet az API hívásával?
+### <a name="what-about-calling-the-api"></a>Mi a helyzet az API meghívásával?
 
-Ha a bejelentkezés után a **Hívás API-gomb,** megjelenik a regisztrációs/bejelentkezési felhasználói folyamat lap az API-hívás eredményei helyett. Ez várható, mert még nem konfigurálta az alkalmazás API-részét az *Azure* AD B2C-bérlőben regisztrált webAPI-alkalmazással való kommunikációra.
+Ha a bejelentkezést követően az **API meghívása** gombot választja, a rendszer az API-hívás eredményei helyett a regisztrációs és bejelentkezési felhasználói folyamat lapot jeleníti meg. Ez azért várható, mert még nem konfigurálta az alkalmazás API-részét úgy, hogy kommunikáljon *a Azure ad B2C* bérlőben regisztrált webes API-alkalmazással.
 
-Ezen a ponton az alkalmazás továbbra is próbál kommunikálni a demo bérlőben regisztrált API-val (fabrikamb2c.onmicrosoft.com), és mivel nincs hitelesítve a bérlővel, a regisztrációs/bejelentkezési lap jelenik meg.
+Ezen a ponton az alkalmazás továbbra is megpróbál kommunikálni a bemutató bérlőben (fabrikamb2c.onmicrosoft.com) regisztrált API-val, és mivel Ön nem hitelesíti a bérlőt, megjelenik a regisztrációs/bejelentkezési oldal.
 
-Lépjen tovább a sorozat következő oktatóanyagára a védett API engedélyezéséhez (lásd a [Következő lépések szakaszt).](#next-steps)
+A védett API engedélyezéséhez lépjen a sorozat következő oktatóanyagára (lásd a [következő lépések](#next-steps) szakaszt).
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy egyoldalas alkalmazást konfigurált, hogy az Azure AD B2C-bérlőben egy felhasználói folyamattal működjön együtt, hogy regisztrációt és bejelentkezési képességet biztosítson. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban egy egyoldalas alkalmazást konfigurált a Azure AD B2C-bérlő felhasználói folyamatával való együttműködéshez a regisztrálási és bejelentkezési képesség biztosításához. A következő lépéseket végezte el:
 
 > [!div class="checklist"]
-> * Válasz URL-címe az Azure AD B2C-bérlőben regisztrált alkalmazáshoz
-> * Kódminta letöltése a GitHubról
-> * Módosította a mintaalkalmazás kódját, hogy működjön együtt a bérlővel
-> * Regisztráció a feliratkozási/bejelentkezési felhasználói folyamattal
+> * A Azure AD B2C-bérlőben regisztrált alkalmazáshoz tartozó válasz URL-cím hozzáadva
+> * Mintakód letöltése a GitHubról
+> * Módosította a minta alkalmazás kódját a Bérlővel való együttműködéshez
+> * Regisztráció a regisztrációs/bejelentkezési felhasználói folyamat használatával
 
-Most lépni a következő bemutató a sorozatban, hogy hozzáférést biztosítson a védett webes API-t a SPA:
+Most lépjen a sorozat következő oktatóanyagára, hogy hozzáférést biztosítson egy védett webes API-hoz a FÜRDŐből:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A webes API védelme és hozzáférés megadása egyoldalas alkalmazásból >](tutorial-single-page-app-webapi.md)
+> [Oktatóanyag: a webes API-hoz való hozzáférés biztosítása egy egyoldalas alkalmazásból >](tutorial-single-page-app-webapi.md)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878245"
 ---
 ```json
@@ -21,13 +21,13 @@ ms.locfileid: "80878245"
 }
 ```
 
-A következő tulajdonságok `extensionBundle`érhetők el:
+A következő tulajdonságok érhetők el a `extensionBundle`ben:
 
 | Tulajdonság | Leírás |
 | -------- | ----------- |
-| id | A Microsoft Azure Functions bővítmény csomagjainak névtere. |
-| version | A telepítandó csomag verziója. A Functions futásidejű mindig a verziótartomány vagy intervallum által meghatározott maximális anamát választja. A fenti verzióérték lehetővé teszi az összes csomag verziót 1.0.0-tól a 2.0.0-ig. További információt a [verziótartományok megadásának időköze- jelölésben](/nuget/reference/package-versioning#version-ranges)talál. |
+| id | Microsoft Azure functions bővítmények névterei. |
+| version | A telepítendő csomag verziószáma. A functions Runtime mindig kiválasztja a verziószám vagy az intervallum által meghatározott maximálisan megengedett verziót. A fenti verzió értéke lehetővé teszi, hogy az összes köteg verziója a 1.0.0-ból, de nem tartalmazza a 2.0.0. További információ: a [verziók tartományának megadására szolgáló intervallum jelölése](/nuget/reference/package-versioning#version-ranges). |
 
-Bundle verziók növekmény csomagok a csomag változás. A főverzió akkor változik, ha a kötegben lévő csomagok egy főverzióval növekszik. A csomag főverzióinak módosításai általában egybeesnek a Functions futásidejű főverziójának változásával.  
+A csomag verziójának növekménye csomagokként a köteg változása. A főverzió módosításai akkor fordulnak elő, ha a csomagban lévő csomagok nagyobb verziójúak. A köteg főverziójának változásai általában egybeesnek a functions futtatókörnyezet főverziójának változásával.  
 
-Az alapértelmezett csomag által telepített bővítések aktuális készlete ebben a [extensions.json fájlban](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)van felsorolva.
+Az alapértelmezett csomag által telepített bővítmények jelenleg a [Extensions. JSON fájlban](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)vannak felsorolva.

@@ -1,84 +1,84 @@
 ---
 title: Azure Automation-adatok kezelése
-description: Ez a cikk több témakört tartalmaz egy Azure Automation-környezet kezeléséhez.  Jelenleg tartalmazza az azure-automatizálási vész-helyreállítási rendszer adatmegőrzési és biztonsági mentését az Azure Automationben.
+description: Ez a cikk több témakört tartalmaz egy Azure Automation környezet kezeléséhez.  Jelenleg az adatok megőrzését és a Azure Automation Azure Automation vész-helyreállítás biztonsági mentését foglalja magában.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984657"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
 
-Ez a cikk több témakört tartalmaz az Azure Automation-környezetben az adatok kezeléséhez.
+Ez a cikk több témakört tartalmaz az Azure Automation-környezetekben tárolt adatkezeléshez.
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
-Amikor töröl egy erőforrást az Azure Automationben, az a végleges eltávolítás előtt több napig megmarad naplózási célokra. Ez idő alatt nem láthatja és nem használhatja az erőforrást. Ez a házirend a törölt Automation-fiókhoz tartozó erőforrásokra is vonatkozik.
+Amikor töröl egy erőforrást a Azure Automationban, a rendszer a végleges eltávolítás előtt több napra megőrzi a naplózási célokat. Ebben az időszakban nem tekintheti meg és nem használhatja az erőforrást. Ez a szabályzat a törölt Automation-fiókhoz tartozó erőforrásokra is vonatkozik.
 
-Az alábbi táblázat a különböző erőforrások adatmegőrzési szabályát foglalja össze.
+A következő táblázat összefoglalja a különböző erőforrások adatmegőrzési szabályzatát.
 
 | Adatok | Szabályzat |
 |:--- |:--- |
-| Fiókok |A fiók véglegesen eltávolításra kerül 30 nappal azután, hogy a felhasználó törölte azt. |
-| Objektumok |Az eszköz véglegesen eltávolításra kerül 30 nappal azután, hogy a felhasználó törölte, vagy 30 nappal azt követően, hogy a felhasználó törli az eszközt tartalmazó fiókot. |
-| DSC-csomópontok |A DSC-csomópont véglegesen törlődik 30 nappal azután, hogy nem regisztrált egy Automation-fiók az Azure Portalon vagy a [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) parancsmag a Windows PowerShellben. A csomópont is véglegesen törlődik 30 nappal azután, hogy a felhasználó törli a csomópontot tartó fiókot. |
-| Feladatok |Egy feladat törlődik, és véglegesen eltávolítja 30 nappal a módosítás után, például a feladat befejezése után, leáll, vagy felfüggesztették. |
-| Modulok |A modul véglegesen törlődik 30 nappal azután, hogy a felhasználó törli azt, vagy 30 nappal azt követően, hogy a felhasználó törli a modult tartalmazó fiókot. |
-| Csomópontkonfigurációk/MOF-fájlok |Egy régi csomópontkonfiguráció véglegesen eltávolításra kerül 30 nappal az új csomópontkonfiguráció létrehozása után. |
-| Csomópontjelentések |A csomópontjelentést a rendszer 90 nappal az adott csomóponthoz létrehozott új jelentés létrehozása után véglegesen eltávolítja. |
-| Runbookok |A runbook véglegesen törlődik 30 nappal azután, hogy a felhasználó törli az erőforrást, vagy 30 nappal azt követően, hogy a felhasználó törli az erőforrást tartalmazó fiókot. |
+| Fiókok |Egy fiók a felhasználó törlése után 30 nappal véglegesen el lesz távolítva. |
+| Eszközök |Egy eszköz a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy egy felhasználó töröl egy olyan fiókot, amely tartalmazza az adategységet. |
+| DSC-csomópontok |A DSC-csomópontok véglegesen el lettek távolítva egy Automation-fiókból a Windows PowerShellben Azure Portal vagy a [Regisztráció törlése-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) parancsmag használatával. Egy csomópontot is véglegesen eltávolít 30 nappal azután, hogy a felhasználó törli a csomópontot tároló fiókot. |
+| Feladatok |A rendszer töröl egy feladatot, és véglegesen eltávolítja azt a módosítás után 30 nappal, például a feladatok befejeződése után, leáll vagy felfüggesztve. |
+| Modulok |Egy modul a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy a felhasználó törli a modult tartalmazó fiókot. |
+| Csomópont-konfigurációk/MOF-fájlok |Egy régi csomópont-konfiguráció véglegesen el lesz távolítva egy új csomópont-konfiguráció generálása után 30 nappal. |
+| Csomópont-jelentések |Az adott csomópontra vonatkozó új jelentés létrehozása után a Node-jelentés 90 nappal véglegesen törlődik. |
+| Runbookok |Egy runbook véglegesen el lett távolítva 30 nappal azután, hogy egy felhasználó törli az erőforrást, vagy 30 nappal azután, hogy egy felhasználó törli az erőforrást tároló fiókot. |
 
-Az adatmegőrzési szabály minden felhasználóra vonatkozik, és jelenleg nem szabható testre. Ha azonban hosszabb ideig kell megőriznie az adatokat, [továbbíthatja az Azure Automation-feladatadatait az Azure Monitor naplóiba.](automation-manage-send-joblogs-log-analytics.md)
+Az adatmegőrzési szabályzat minden felhasználóra érvényes, és jelenleg nem szabható testre. Ha azonban hosszabb ideig kell megtartania az adatokra vonatkozó adatmegőrzést, [Azure Automation feladataikat Azure monitor naplókhoz továbbíthatja](automation-manage-send-joblogs-log-analytics.md).
 
-## <a name="data-backup"></a>Adatok biztonsági mentése
+## <a name="data-backup"></a>Az adatbiztonsági mentés
 
-Ha töröl egy Automation-fiókot az Azure-ban, a fiók összes objektuma törlődik. Az objektumok közé runbookok, modulok, konfigurációk, beállítások, feladatok és eszközök. A fiók törlése után nem lehet visszaőket visszavonni. Az alábbi információk segítségével biztonsági másolatot lehet fésülni az Automation-fiók tartalmáról a törlés előtt.
+Ha töröl egy Automation-fiókot az Azure-ban, a fiókban lévő összes objektum törlődik. Az objektumok közé tartoznak a runbookok, a modulok, a konfigurációk, a beállítások, a feladatok és az eszközök. A fiók törlése után nem állíthatók helyre. A következő információk segítségével biztonsági másolatot készíthet az Automation-fiók tartalmáról a törlés előtt.
 
 ### <a name="runbooks"></a>Runbookok
 
-A runbookok parancsfájlokba exportálhatók az Azure Portalon vagy a [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) parancsmagban a Windows PowerShellben. Ezeket a parancsfájlokat importálhatja egy másik Automation-fiókba, ahogy azt az [Azure Automation runbookok kezelése](manage-runbooks.md)ismerteti.
+A runbookok a Windows PowerShell Azure Portal vagy a [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) parancsmagjának használatával exportálhatja parancsfájl-fájlokba. Ezeket a parancsfájlokat egy másik Automation-fiókba importálhatja, ahogy azt a [Azure Automation Runbookok kezelése](manage-runbooks.md)című szakaszban tárgyaljuk.
 
 ### <a name="integration-modules"></a>Integrációs modulok
 
-Az Azure Automation integrációs moduljai nem exportálhatók. Az Automation-fiókon kívül is elérhetővé kell tennie őket.
+Azure Automationból nem exportálhatja az integrációs modulokat. Ezeket az Automation-fiókon kívül is elérhetővé kell tenni.
 
-### <a name="assets"></a>Objektumok
+### <a name="assets"></a>Eszközök
 
-Az Azure Automation-eszközök nem exportálhatók: tanúsítványok, kapcsolatok, hitelesítő adatok, ütemezések és változók. Ehelyett használhatja az Azure Portalon és az Azure-parancsmagok megjegyzése ezen eszközök részleteit. Ezután használja ezeket az adatokat, hogy hozzon létre olyan eszközöket, amelyek által használt runbookok, amelyek importálják egy másik Automation-fiókba.
+Azure Automation-eszközök nem exportálhatók: tanúsítványok, kapcsolatok, hitelesítő adatok, ütemtervek és változók. Ehelyett a Azure Portal és az Azure-parancsmagokkal is megjegyezheti az eszközök részleteit. Ezután ezekkel az adatokkal létrehozhat olyan eszközöket, amelyeket egy másik Automation-fiókba importált runbookok használ.
 
-A titkosított változók vagy a hitelesítő adatok jelszómezői nem olvashatók be parancsmagokkal. Ha nem ismeri ezeket az értékeket, bekérheti őket egy runbookban. A változóértékek beolvasása az [Azure Automation változóeszközeicímű témakörben](shared-resources/variables.md)található. A hitelesítő adatok értékeinek beolvasásáról az [Azure Automation hitelesítő adatokról](shared-resources/credentials.md)szóló témakörben talál további információ.
+A titkosított változók vagy a hitelesítő adatok jelszava mezők a parancsmagok használatával nem olvashatók be. Ha nem ismeri ezeket az értékeket, lekérheti őket egy runbook. A változók értékeinek lekéréséhez lásd: [változó eszközök Azure Automationban](shared-resources/variables.md). A hitelesítő adatok értékének beolvasásával kapcsolatos további tudnivalókért tekintse meg a [hitelesítő adatok a Azure Automationban](shared-resources/credentials.md)című témakört.
 
  ### <a name="dsc-configurations"></a>DSC-konfigurációk
 
-A DSC-konfigurációk parancsfájlfájlokba exportálhatók az Azure Portalon vagy a Windows PowerShell [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) parancsmagjában. Ezeket a konfigurációkat importálhatja és használhatja egy másik Automation-fiókban.
+A DSC-konfigurációkat a Windows PowerShell Azure Portal vagy [export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
+) parancsmagjának használatával is exportálhatja a parancsfájlok fájljaiba. Ezeket a konfigurációkat egy másik Automation-fiókban is importálhatja és használhatja.
 
-## <a name="geo-replication-in-azure-automation"></a>Georeplikáció az Azure Automationben
+## <a name="geo-replication-in-azure-automation"></a>Geo-replikálás Azure Automation
 
-A georeplikáció az Azure Automation-fiókokban szokásos. A fiók beállításakor elsődleges régiót választ. A belső automation georeplikációs szolgáltatás automatikusan másodlagos régiót rendel a fiókhoz. A szolgáltatás ezután folyamatosan biztonsági másolatot ad a fiókadatokról az elsődleges régióból a másodlagos régióba. Az elsődleges és másodlagos régiók teljes listája megtalálható [az Üzletmenet folytonossága és a vészhelyreállítás (BCDR): Azure Paired Regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+A Geo-replikáció a Azure Automation fiókokban szabványos. A fiók beállításakor ki kell választania egy elsődleges régiót. A belső Automation geo-Replication szolgáltatás automatikusan hozzárendel egy másodlagos régiót a fiókhoz. A szolgáltatás ezután folyamatosan biztonsági mentést készít az elsődleges régióból a másodlagos régióba. Az elsődleges és másodlagos régiók teljes listája megtalálható az [üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)között. 
 
-Az Automation georeplikációs szolgáltatás által létrehozott biztonsági másolat az Automation-eszközök, konfigurációk és hasonlók teljes másolata. Ez a biztonsági mentés akkor használható, ha az elsődleges régió leáll, és elveszíti az adatokat. Abban a valószínűtlen esetben, ha egy elsődleges régió adatai elvesznek, a Microsoft megpróbálja helyreállítani azokat. Ha a vállalat nem tudja helyreállítani az elsődleges adatokat, automatikus feladatátvételt használ, és az Azure-előfizetésen keresztül tájékoztatja a helyzetről. 
+Az Automation geo-Replication szolgáltatás által létrehozott biztonsági másolat az Automation-eszközök, konfigurációk és hasonlók teljes másolata. Ez a biztonsági másolat akkor használható, ha az elsődleges régió leáll, és elveszíti az adatvesztést. Abban az esetben, ha az elsődleges régió adatainak elvesztése nem valószínű, a Microsoft megkísérli a helyreállítást. Ha a vállalat nem tudja helyreállítani az elsődleges adatokat, automatikus feladatátvételt használ, és az Azure-előfizetésén keresztül tájékoztatja Önt a helyzetről. 
 
-Az Automation georeplikációs szolgáltatás nem érhető el közvetlenül a külső ügyfelek számára, ha regionális hiba van. Ha regionális hibák esetén meg szeretné őrizni az Automation-konfigurációt és a runbookokat:
+Az Automation geo-Replication szolgáltatás nem érhető el közvetlenül a külső ügyfelek számára, ha van regionális hiba. Ha az Automation-konfigurációt és a runbookok a regionális hibák során szeretné fenntartani:
 
-1. Válasszon ki egy másodlagos régiót az elsődleges Automation-fiók földrajzi régiójával párosítva.
+1. Válasszon ki egy másodlagos régiót, amely párosítva van az elsődleges Automation-fiók földrajzi régiójával.
 
 2. Hozzon létre egy Automation-fiókot a másodlagos régióban.
 
-3. Az elsődleges fiókban exportálja a runbookokat parancsfájlfájlként.
+3. Az elsődleges fiókban a runbookok fájlba exportálja.
 
-4. Importálja a runbookokat az Automation-fiókba a másodlagos régióban.
+4. Importálja a runbookok az Automation-fiókjába a másodlagos régióban.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni a biztonságos eszközökről az Azure Automationben, olvassa [el a Biztonságos eszközök titkosítása az Azure Automationben című témakört.](automation-secure-asset-encryption.md)
+* Ha többet szeretne megtudni a Azure Automation található biztonságos eszközökről, tekintse meg [a biztonságos eszközök titkosítása a Azure Automationban](automation-secure-asset-encryption.md)című témakört.
 
-* A georeplikációról az Aktív [georeplikáció létrehozása és használata](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)című témakörben talál további tudnivalót.
+* További információ a Geo-replikációról: [Active geo-replikáció létrehozása és használata](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).

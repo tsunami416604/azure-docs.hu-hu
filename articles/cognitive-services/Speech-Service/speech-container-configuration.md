@@ -1,7 +1,7 @@
 ---
-title: Beszédtárolók konfigurálása
+title: Beszédfelismerési tárolók konfigurálása
 titleSuffix: Azure Cognitive Services
-description: A beszédszolgáltatás minden tárolószámára egy közös konfigurációs keretrendszert biztosít, így könnyen konfigurálhatja és kezelheti a tárolók tárolási, naplózási és telemetriai adatait, valamint a tárolók biztonsági beállításait.
+description: A Speech Service minden tárolót közös konfigurációs keretrendszerrel biztosít, így egyszerűen konfigurálhatja és kezelheti a tárolók tárolási, naplózási és telemetria és biztonsági beállításait.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,54 +11,54 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5c74aa48b18661236eb55278d1e5a05215b2432c
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877575"
 ---
-# <a name="configure-speech-service-containers"></a>Beszédfelismerési szolgáltatástárolók konfigurálása
+# <a name="configure-speech-service-containers"></a>Beszédfelismerési szolgáltatás tárolóinak konfigurálása
 
-A beszédtárolók lehetővé teszik az ügyfelek számára, hogy egy beszédfelismerési alkalmazásarchitektúrát építsenek, amely a robusztus felhőképességek és a peremhálózati helykihasználás előnyeinek kihasználására van optimalizálva. A négy beszédtároló, amelyet most támogatunk, a **szöveggé,** **az egyéni beszéd-szöveg,** **a szövegfelolvasás**és **az egyéni szövegfelolvasó**.
+A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek egy olyan beszédfelismerési alkalmazás-architektúrát építsenek ki, amely a robusztus Felhőbeli képességek és a peremhálózat környékének kihasználására optimalizált. Az általunk támogatott négy beszédes tároló, a **beszéd-szöveg**, az **Egyéni beszéd-** szöveg, a **szöveg és a beszéd**, valamint az **egyéni szöveg-beszéd**.
 
-A **beszédtároló** futásidejű környezete `docker run` a parancsargumentumok használatával van konfigurálva. Ez a tároló számos szükséges beállítással rendelkezik, valamint néhány választható beállítással. A parancsra több [példa](#example-docker-run-commands) is elérhető. A tároló-specifikus beállítások a számlázási beállításokat.
+A **beszédfelismerési** tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. A parancshoz több [példa](#example-docker-run-commands) is rendelkezésre áll. A tárolóra jellemző beállítások a számlázási beállítások.
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> A [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) és a beállítások együtt vannak használva, és mindháromhoz érvényes értékeket kell megadnia; ellenkező esetben a tartály nem indul el. A tároló konstiniformatika érdekében ezeknek a konfigurációs beállításoknak a használatával kapcsolatos további [tudnivalókért olvassa el a Számlázás című témakört.](speech-container-howto.md#billing)
+> A [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a és [`Eula`](#eula-setting) a beállításokat együtt használják, és mindhárom esetben érvényes értékeket kell megadnia. Ellenkező esetben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](speech-container-howto.md#billing).
 
-## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítása
+## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 
-A `ApiKey` beállítás megadja az Azure erőforráskulcs a tároló számlázási adatainak nyomon követéséhez. Meg kell adnia egy értéket az ApiKey-hez, és az értéknek [`Billing`](#billing-configuration-setting) érvényes kulcsnak kell lennie a konfigurációs beállításhoz megadott _beszédfelismerési_ erőforráshoz.
+A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott _beszédfelismerési_ erőforráshoz.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyen érhető el:
 
-- Azure portal: **A beszéd** erőforrás-kezelése a **Kulcsok** csoportban
+- Azure Portal: a **beszédfelismerés** erőforrás-kezelése a **kulcsok** területen
 
-## <a name="applicationinsights-setting"></a>ApplicationInsights beállítás
+## <a name="applicationinsights-setting"></a>ApplicationInsights-beállítás
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Számlázási konfiguráció beállítása
+## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` beállítás határozza meg a végpont URI-t a _beszédfelismerési_ erőforrás az Azure-ban a tároló számlázási adatainak mérésére használt. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végpontURI-nak kell lennie egy _beszédfelismerési_ erőforráshoz az Azure-ban. A tároló 10–15 percenként jelenti a használatot.
+A `Billing` beállítás megadja az Azure-beli _beszédfelismerési_ erőforrás végponti URI-ját a tároló számlázási adatainak méréséhez. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végponti URI-nak kell lennie az Azure-beli _beszédfelismerési_ erőforráshoz. A tároló 10 – 15 percen belül jelentést készít a használatról.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyen érhető el:
 
-- Azure Portal: **Beszéd áttekintése,** címkével`Endpoint`
+- Azure Portal: **beszédfelismerés** áttekintése, címkézett`Endpoint`
 
-| Kötelező | Név | Adattípus | Leírás |
+| Kötelező | Name (Név) | Adattípus | Leírás |
 | -------- | ---- | --------- | ----------- |
-| Igen | `Billing` | Sztring | Számlázási végpont URI. A számlázási URI beszerzésével kapcsolatos további információkért [lásd: A szükséges paraméterek összegyűjtése.](speech-container-howto.md#gathering-required-parameters) További információt és a regionális végpontok teljes listáját a [Cognitive Services egyéni altartománynevei című témakörben talál.](../cognitive-services-custom-subdomains.md) |
+| Igen | `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](speech-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Eula beállítás
+## <a name="eula-setting"></a>Végfelhasználói licencszerződés beállítása
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Gördülékeny beállítások
+## <a name="fluentd-settings"></a>Fluent beállítások
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -72,67 +72,67 @@ Ez a beállítás a következő helyen található:
 
 ## <a name="mount-settings"></a>Csatlakoztatási beállítások
 
-A kötéscsatlakoztatások segítségével adatokat olvashat és írhat a tárolóba és a tárolóból. Megadhatja a bemeneti csatlakoztatás vagy `--mount` kimeneti csatlakoztatás a beállítás megadásával a [docker futtatási](https://docs.docker.com/engine/reference/commandline/run/) parancs.
+A tárolóban lévő és onnan érkező adatok olvasására és írására a kötési csatlakoztatások használhatók. Adja meg a bemeneti csatlakoztatást vagy a kimeneti csatlakoztatást a `--mount` [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsban található beállítás megadásával.
 
-A standard beszédtárolók nem használnak bemeneti vagy kimeneti csatlakoztatásokat a betanítási vagy szolgáltatásadatok tárolására. Az egyéni beszédtárolók azonban kötetcsatolókra támaszkodnak.
+A normál beszédfelismerési tárolók nem használnak bemeneti vagy kimeneti csatlakoztatásokat a képzési és a szolgáltatási adatok tárolására. Az egyéni beszédfelismerési tárolók azonban a kötetek csatlakoztatására támaszkodnak.
 
-A gazdagép csatlakoztatási helyének pontos szintaxisa a gazdaoperációs rendszertől függően változik. Emellett előfordulhat, hogy a [gazdaszámítógép](speech-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el a docker-szolgáltatásfiók által használt engedélyek és a gazdagép csatlakoztatási helyének engedélyei közötti ütközés miatt.
+A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](speech-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek.
 
-| Optional | Név | Adattípus | Leírás |
+| Optional | Name (Név) | Adattípus | Leírás |
 | -------- | ---- | --------- | ----------- |
-| Nem engedélyezett | `Input` | Sztring | A normál beszédtárolók nem használják ezt. Az egyéni beszédtárolók [kötetcsatlakoztatásokat](#volume-mount-settings)használnak.                                                                                    |
-| Optional | `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a rönkök helye. Ez magában foglalja a tárolónaplókat is. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output` |
+| Nem engedélyezett | `Input` | Sztring | A normál beszédfelismerési tárolók nem használják ezt. Az egyéni beszédfelismerési tárolók a [mennyiségi csatlakoztatásokat](#volume-mount-settings)használják.                                                                                    |
+| Optional | `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output` |
 
-## <a name="volume-mount-settings"></a>Kötetcsatlakoztatási beállítások
+## <a name="volume-mount-settings"></a>Kötet csatlakoztatási beállításai
 
-Az egyéni beszédtárolók [kötetcsatolók](https://docs.docker.com/storage/volumes/) használatával egyéni modellek megőrzése. A kötetcsatlakoztatás megadásához `-v` adja `--volume`hozzá a (vagy ) opciót a [docker futtatási](https://docs.docker.com/engine/reference/commandline/run/) parancshoz.
+Az egyéni beszédfelismerési tárolók a [mennyiségi csatlakoztatásokat](https://docs.docker.com/storage/volumes/) használják az egyéni modellek megtartására. Megadhat egy kötet csatlakoztatását úgy, hogy `-v` hozzáadja a `--volume`(vagy) lehetőséget a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancshoz.
 
-Egyéni modellek letöltődnek az első alkalommal, amikor egy új modell az egyéni beszédtároló docker futtatási parancs részeként kerül letöltésre. Az egyéni beszédtárolók azonos `ModelId` szekvenciális futtatásai a korábban letöltött modellt fogják használni. Ha a kötetcsatlakoztatás nincs megadva, az egyéni modellek nem maradhatnak meg.
+Az egyéni modelleket a rendszer az első alkalommal tölti le, amikor új modellt töltenek be az egyéni Speech Container Docker Run parancs részeként. Az `ModelId` egyéni beszédfelismerési tárolók szekvenciális futtatása a korábban letöltött modellt fogja használni. Ha nincs megadva a kötet csatlakoztatása, az egyéni modellek nem maradhatnak meg.
 
-A kötetcsatlakoztatás beállítása három `:` színtől elválasztott mezőből áll:
+A kötet csatlakoztatási beállítása három színes `:` mezőből áll:
 
-1. Az első mező a gazdagép kötetének neve, például _C:\input_.
-2. A második mező a tárolókönyvtár, például _a /usr/local/models_.
-3. A harmadik mező (nem kötelező) a lehetőségek vesszővel tagolt listája, további információért [lásd: Use volumes](https://docs.docker.com/storage/volumes/).
+1. Az első mező a számítógép kötetének neve, például _C:\input_.
+2. A második mező a tároló könyvtára, például _/usr/local/models_.
+3. A harmadik mező (opcionális) a beállítások vesszővel tagolt listája, további információ: [kötetek használata](https://docs.docker.com/storage/volumes/).
 
-### <a name="volume-mount-example"></a>Példa kötetcsatlakoztatásra
+### <a name="volume-mount-example"></a>Kötet csatlakoztatása – példa
 
 ```bash
 -v C:\input:/usr/local/models
 ```
 
-Ez a parancs a _C:\bemeneti_ könyvtárat a _/usr/local/models_ könyvtárhoz csatlakoztatja.
+Ez a parancs a gazdagépek _C:\input_ könyvtárat csatlakoztatja a tárolók _/usr/local/models_ könyvtárához.
 
 > [!IMPORTANT]
-> A kötetcsatlakoztatási beállítások csak **az egyéni beszédfelismerési és** az egyéni **szövegfelolvasó** tárolókra vonatkoznak. A szabványos **beszéd-szöveg** és **a szövegfelolvasó** tárolók nem használnak kötettartókat.
+> A mennyiségi csatlakoztatási beállítások csak a **Custom Speech szövegre** és az **egyéni szöveg-beszéd** tárolóra vonatkoznak. A normál **beszéd – szöveg** és szöveg – **beszéd** tárolók nem használnak mennyiségi csatlakoztatást.
 
-## <a name="example-docker-run-commands"></a>Példa a docker-futtatási parancsokra
+## <a name="example-docker-run-commands"></a>Példa Docker-futtatási parancsokra
 
-Az alábbi példák a konfigurációs beállításoksegítségével `docker run` szemléltetik a parancsok írását és használatát. Futás után a tároló addig fut, amíg le nem [állítja.](speech-container-howto.md#stop-the-container)
+Az alábbi példák a konfigurációs beállítások segítségével szemléltetik a parancsok írását és használatát `docker run` . A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](speech-container-howto.md#stop-the-container) .
 
-- **Sor-folytatás karakter**: A Docker-parancsok a következő `\`szakaszokban a fordított perjelet használják, vonalfolytatási karakterként. Cserélje le vagy távolítsa el ezt a gazdaoperációs rendszer követelményei nek megfelelően.
-- **Argumentum sorrendje**: Ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
+- **Vonal-folytatási karakter**: a következő részben lévő Docker-parancsok a háttér perjelet `\`használják, mint a sor folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján.
+- **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
-Cserélje le {_argument_name_} -t a saját értékeire:
+Cserélje le a {_argument_name_} értéket a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 | ----------- | ----- | ----------------- |
-| **{API_KEY}** | Az erőforrás végpontkulcsa az `Speech` `Speech` Azure Keys lapon.   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
-| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető `Speech` az Azure Áttekintés oldalon. | Lásd: [a szükséges paraméterek összegyűjtése](speech-container-howto.md#gathering-required-parameters) explicit példákat. |
+| **{API_KEY}** | Az `Speech` erőforrás Endpoint kulcsa az Azure `Speech` Keys oldalon.   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
+| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `Speech` Áttekintés oldalán. | Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](speech-container-howto.md#gathering-required-parameters) ismertető témakört. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> A `Eula` `Billing`, `ApiKey` a lehetőséget és a beállításokat meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el. További információ: [Billing](#billing-configuration-setting).
-> Az ApiKey érték a **kulcs** az Azure beszédfelismerési erőforrás-kulcsok lapról.
+> A `Eula`tároló `Billing`futtatásához `ApiKey` meg kell adni a, a és a beállításokat. Ellenkező esetben a tároló nem indul el. További információ: [számlázás](#billing-configuration-setting).
+> A ApiKey értéke az Azure Speech Resource Keys oldalának **kulcsa** .
 
-## <a name="speech-container-docker-examples"></a>Példa a Docker-tárolóra
+## <a name="speech-container-docker-examples"></a>Beszédfelismerési tároló – példák
 
-Az alábbi Docker-példák a beszédtároló.
+A következő Docker-példák a beszédfelismerési tárolóra vonatkoznak.
 
 ## <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
-### <a name="basic-example-for-speech-to-text"></a>Alapvető példa a beszédfelismerési szöveghez
+### <a name="basic-example-for-speech-to-text"></a>Alapszintű példa a beszédfelismerési szövegre
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -142,7 +142,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-speech-to-text"></a>Példa a beszédfelismerési szövegre
+### <a name="logging-example-for-speech-to-text"></a>Naplózási példa a beszédfelismerési szövegre
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -153,9 +153,9 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-text"></a>[Egyéni beszédfelismerési szöveg](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[Custom Speech – szöveg](#tab/cstt)
 
-### <a name="basic-example-for-custom-speech-to-text"></a>Egyszerű példa az egyéni beszédfelismerési szövegképhez
+### <a name="basic-example-for-custom-speech-to-text"></a>Alapszintű példa Custom Speech-szövegre
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -167,7 +167,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-custom-speech-to-text"></a>Példa egyéni beszédfelismerési szövegre
+### <a name="logging-example-for-custom-speech-to-text"></a>Naplózási példa Custom Speech-szövegre
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -182,7 +182,7 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tss)
 
-### <a name="basic-example-for-text-to-speech"></a>Alapvető példa a szövegfelolvasásra
+### <a name="basic-example-for-text-to-speech"></a>Alapszintű példa szövegről beszédre
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -192,7 +192,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-text-to-speech"></a>Példa a szövegfelolvasás naplózására
+### <a name="logging-example-for-text-to-speech"></a>Naplózási példa szöveg – beszéd
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -203,9 +203,9 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speech"></a>[Egyéni szövegfelolvasás](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[Egyéni szöveg – beszéd](#tab/ctts)
 
-### <a name="basic-example-for-custom-text-to-speech"></a>Egyszerű példa az egyéni szövegfelolvasásra
+### <a name="basic-example-for-custom-text-to-speech"></a>Alapszintű példa egyéni szöveg-beszéd átalakításra
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -217,7 +217,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-custom-text-to-speech"></a>Példa egyéni szövegfelolvasásnaplózására
+### <a name="logging-example-for-custom-text-to-speech"></a>Példa naplózásra egyéni szöveg – beszéd
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -234,4 +234,4 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át [a tárolók telepítésének és futtatásának áttekintését](speech-container-howto.md)
+- [A tárolók telepítésének és futtatásának](speech-container-howto.md) áttekintése

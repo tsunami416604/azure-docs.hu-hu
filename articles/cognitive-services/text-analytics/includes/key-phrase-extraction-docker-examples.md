@@ -1,7 +1,7 @@
 ---
-title: Kulcskifejezés-kinyerési tároló docker-példák
+title: Kulcsszókeresés Container Docker-példák
 titleSuffix: Azure Cognitive Services
-description: Kulcskifejezés-kinyerési tároló docker-példák
+description: Kulcsszókeresés Container Docker-példák
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 1c079df3171d89da4ef40e5008aaeb08b6504e66
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878669"
 ---
-### <a name="key-phrase-extraction-container-docker-examples"></a>Kulcskifejezés-kinyerési tároló docker-példák
+### <a name="key-phrase-extraction-container-docker-examples"></a>Kulcsszókeresés Container Docker-példák
 
-Az alábbi docker-példák a key phrase extraction tároló.
+A következő Docker-példák a Kulcsszókeresés tárolóra vonatkoznak.
 
 #### <a name="basic-example"></a>Alapszintű példa 
 

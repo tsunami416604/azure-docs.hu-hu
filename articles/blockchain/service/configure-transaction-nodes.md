@@ -5,133 +5,133 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80876929"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 
-A tranzakciócsomópontok segítségével blockchain-tranzakciókat küldhet az Azure Blockchain Service-nek egy nyilvános végponton keresztül. Az alapértelmezett tranzakciócsomópont a blokkláncon regisztrált Ethereum-fiók titkos kulcsát tartalmazza, ezért nem törölhető.
+A tranzakciós csomópontok egy nyilvános végponton keresztül blockchain-tranzakciók küldésére szolgálnak az Azure Blockchain szolgáltatásba. Az alapértelmezett tranzakciós csomópont tartalmazza a blockchain regisztrált Ethereum-fiók titkos kulcsát, és nem törölhető.
 
-Az alapértelmezett tranzakciócsomópont részleteinek megtekintése:
+Az alapértelmezett tranzakciós csomópont részleteinek megtekintése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg az Azure Blockchain szolgáltatás tagját. Válassza **a Tranzakciócsomópontok lehetőséget.**
+1. Navigáljon az Azure Blockchain-szolgáltatás tagjához. Válassza a **tranzakciós csomópontok**lehetőséget.
 
-    ![Alapértelmezett tranzakciócsomópont kiválasztása](./media/configure-transaction-nodes/nodes.png)
+    ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/configure-transaction-nodes/nodes.png)
 
-    Az áttekintő részletek közé tartoznak a nyilvános végpontcímek és a nyilvános kulcs.
+    Az Áttekintés részletei közé tartozik a nyilvános végpont címei és a nyilvános kulcs.
 
-## <a name="create-transaction-node"></a>Tranzakciócsomópont létrehozása
+## <a name="create-transaction-node"></a>Tranzakciós csomópont létrehozása
 
-Legfeljebb kilenc további tranzakciócsomópontot adhat hozzá a blokklánc-taghoz, összesen 10 tranzakciócsomóponthoz. Tranzakciócsomópontok hozzáadásával növelheti a méretezhetőséget, vagy terjesztheti a terhelést. Például lehet egy tranzakciós csomópont végpontja a különböző ügyfélalkalmazásokhoz.
+Legfeljebb kilenc további tranzakciós csomópontot adhat hozzá a blockchain-taghoz, összesen 10 tranzakciós csomópontra. A tranzakciós csomópontok hozzáadásával növelheti a méretezhetőséget vagy terjesztheti a terhelést. Rendelkezhet például egy tranzakciós csomópont végponttal különböző ügyfélalkalmazások számára.
 
-Tranzakciócsomópont hozzáadása:
+Tranzakciós csomópont hozzáadása:
 
-1. Az Azure Portalon keresse meg az Azure Blockchain szolgáltatás tagját, és válassza **a Tranzakciócsomópontok lehetőséget > hozzáadás.**
-1. Töltse ki az új tranzakciócsomópont beállításait.
+1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > Hozzáadás**lehetőséget.
+1. Fejezze be az új tranzakciós csomópont beállításait.
 
-    ![Tranzakciócsomópont hozzáadása](./media/configure-transaction-nodes/add-node.png)
+    ![Tranzakciós csomópont hozzáadása](./media/configure-transaction-nodes/add-node.png)
 
     | Beállítás | Leírás |
     |---------|-------------|
-    | Név | Tranzakciócsomópont neve. A név a tranzakciócsomópont végpontjának DNS-címének létrehozásához használható. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
-    | Jelszó | Állítson be erős jelszót. A jelszó segítségével érheti el a tranzakciócsomópont-végpontot alapfokú hitelesítéssel.
+    | Name (Név) | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
+    | Jelszó | Állítson be egy erős jelszót. Használja a jelszót a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való eléréséhez.
 
 1. Kattintson a **Létrehozás** gombra.
 
-    Egy új tranzakciócsomópont kiépítése körülbelül 10 percet vesz igénybe. További tranzakciócsomópontok költsége. A költségekről további információt az [Azure díjszabása](https://aka.ms/ABSPricing)című témakörben talál.
+    Az új tranzakciós csomópont kiépítés körülbelül 10 percet vesz igénybe. A további tranzakciós csomópontok költségekkel járnak. A költségekkel kapcsolatos további információkért lásd: az [Azure díjszabása](https://aka.ms/ABSPricing).
 
 ## <a name="endpoints"></a>Végpontok
 
-A tranzakciócsomópontok egyedi DNS-névvel és nyilvános végponttal rendelkeznek.
+A tranzakciós csomópontok egyedi DNS-névvel és nyilvános végpontokkal rendelkeznek.
 
-A tranzakciócsomópont végpontjának részleteinek megtekintése:
+A tranzakciós csomópont végpontjának részleteinek megtekintése:
 
-1. Az Azure Portalon keresse meg az Azure Blockchain szolgáltatás egyik tagtranzakció-csomópontját, és válassza **az Áttekintés lehetőséget.**
+1. A Azure Portal navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomópontjára, és válassza az **Áttekintés**lehetőséget.
 
     ![Végpontok](./media/configure-transaction-nodes/endpoints.png)
 
-A tranzakciós csomópont végpontjai biztonságosak és hitelesítést igényelnek. Csatlakozhat egy tranzakcióvégponthoz az Azure AD-hitelesítés, https-alapfokú hitelesítés, és egy hozzáférési kulcs https-en vagy Websocket TLS-en keresztül használatával.
+A tranzakciós csomópont végpontok biztonságosak és hitelesítés szükségesek. A tranzakciós végponthoz Azure AD-hitelesítéssel, HTTPS alapszintű hitelesítéssel és HTTPS-kapcsolaton keresztüli hozzáférési kulccsal vagy a TLS protokollon keresztül érheti el a csatlakozást.
 
-### <a name="azure-active-directory-access-control"></a>Az Azure Active Directory hozzáférés-vezérlése
+### <a name="azure-active-directory-access-control"></a>Azure Active Directory hozzáférés-vezérlés
 
-Az Azure Blockchain Service tranzakciós végpontjai támogatják az Azure Active Directory (Azure AD) hitelesítését. Az Azure AD-felhasználó, -csoport és egyszerű szolgáltatás hozzáférést biztosíthat a végponthoz.
+Az Azure Blockchain szolgáltatás tranzakciós csomópontjának végpontok támogatják Azure Active Directory (Azure AD) hitelesítést. Megadhatja az Azure AD-beli felhasználói, csoport-és szolgáltatásnév hozzáférését a végponthoz.
 
-Az Azure AD hozzáférés-vezérlési szolgáltatásának megadása a végponthoz:
+Az Azure AD hozzáférés-vezérlésének engedélyezése a végpontnak:
 
-1. Az Azure Portalon keresse meg az Azure Blockchain szolgáltatás tagját, és válassza **a Tranzakciócsomópontok > hozzáférés-vezérlési (IAM) lehetőséget, > adja hozzá > szerepkör-hozzárendelés hozzáadása**lehetőséget.
-1. Hozzon létre egy új szerepkör-hozzárendelést egy felhasználóhoz, csoporthoz vagy egyszerű szolgáltatáshoz (alkalmazásszerepkörökhöz).
+1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > hozzáférés-vezérlés (iam) > hozzáadás > szerepkör-hozzárendelés hozzáadása**elemet.
+1. Új szerepkör-hozzárendelés létrehozása egy felhasználóhoz, csoporthoz vagy egyszerű szolgáltatáshoz (alkalmazás szerepkörei).
 
-    ![IAM-szerepkör hozzáadása](./media/configure-transaction-nodes/add-role.png)
+    ![IAM szerepkör hozzáadása](./media/configure-transaction-nodes/add-role.png)
 
     | Beállítás | Műveletek |
     |---------|-------------|
-    | Szerepkör | Válassza **a Tulajdonos,** **a Közreműködő**vagy **az Olvasó**lehetőséget.
-    | Hozzáférés hozzárendelése ehhez | Válassza az **Azure AD felhasználó, csoport vagy egyszerű szolgáltatás lehetőséget.**
-    | Válassza ezt: | Keresse meg a hozzáadni kívánt felhasználót, csoportot vagy egyszerű szolgáltatást.
+    | Szerepkör | Válassza a **tulajdonos**, **közreműködő**vagy **olvasó**lehetőséget.
+    | Hozzáférés hozzárendelése ehhez | Válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget.
+    | Válassza ezt: | Keresse meg azt a felhasználót, csoportot vagy szolgáltatásnevet, amelyet hozzá szeretne adni.
 
-1. A **szerepkör-hozzárendelés** hozzáadásához válassza a Mentés lehetőséget.
+1. A szerepkör-hozzárendelés hozzáadásához válassza a **Mentés** lehetőséget.
 
-Az Azure AD hozzáférés-vezérléssel kapcsolatos további információkért olvassa [el az Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával című témakört.](../../role-based-access-control/role-assignments-portal.md)
+Az Azure AD hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 
-Az Azure AD-hitelesítés használatával való csatlakozásról az [AAD-hitelesítéshasználatával a csomóponthoz való csatlakozás című](configure-aad.md)témakörben talál.
+További információ az Azure AD-hitelesítés használatával történő kapcsolódásról: [Kapcsolódás a csomóponthoz a HRE-hitelesítés használatával](configure-aad.md).
 
 ### <a name="basic-authentication"></a>Alapszintű hitelesítés
 
-A HTTPS-alapfokú hitelesítéshez a felhasználónév és a jelszó hitelesítő adatai a kérelem HTTPS-fejlécében kerülnek átadásra a végpontnak.
+A HTTPS alapszintű hitelesítés esetében a Felhasználónév és jelszó hitelesítő adatait a rendszer a kérelem HTTPS-fejlécében adja át a végpontnak.
 
-Megtekintheti a tranzakciócsomópontok alapszintű hitelesítési végpontjának részleteit az Azure Portalon. Keresse meg az Azure Blockchain szolgáltatás egyik tagtranzakció-csomópontját, és válassza **az Alapfokú hitelesítés** lehetőséget a beállításokban.
+A tranzakciós csomópontok alapszintű hitelesítési végpontjának részleteit a Azure Portal tekintheti meg. Navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza az **alapszintű hitelesítés** lehetőséget a beállításokban.
 
 ![Alapszintű hitelesítés](./media/configure-transaction-nodes/basic.png)
 
-A felhasználónév a csomópont neve, és nem módosítható.
+A Felhasználónév a csomópont neve, és nem módosítható.
 
-Az URL-cím \<használatához\> cserélje le a jelszót a csomópont kiépítésekor beállított jelszóval. A jelszó frissítéséhez válassza **a Jelszó alaphelyzetbe állítása**lehetőséget.
+Az URL-cím használatához a \<jelszót\> a csomópont kiosztásakor beállított jelszóval cserélje le. A jelszót a **jelszó alaphelyzetbe állítása**lehetőség kiválasztásával frissítheti.
 
 ### <a name="access-keys"></a>Elérési kulcs
 
-A hozzáférési kulcs hitelesítése esetén a hozzáférési kulcs szerepel a végpont URL-címében. A tranzakciós csomópont kiépítésekor két hozzáférési kulcs jön létre. Mindkét hozzáférési kulcs használható a hitelesítéshez. A két billentyű lehetővé teszi a billentyűk módosítását és elforgatását.
+A hozzáférési kulcs hitelesítéséhez a hozzáférési kulcs szerepel a végpont URL-címében. A tranzakciós csomópont kiosztásakor két hozzáférési kulcs jön létre. A hitelesítéshez hozzáférési kulcs is használható. A két kulcs lehetővé teszi a kulcsok módosítását és elforgatását.
 
-Megtekintheti a tranzakciócsomópont hozzáférési kulcsának részleteit, és átmásolhatja a hozzáférési kulcsokat tartalmazó végpontcímeket. Keresse meg az Azure Blockchain szolgáltatás egyik tagtranzakció-csomópontját, és válassza **a Hozzáférési kulcsok** lehetőséget a beállításokban.
+Megtekintheti a tranzakciós csomópont hozzáférési kulcsának részleteit, és a hozzáférési kulcsokat tartalmazó végponti címeket is átmásolhatja. Navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza a **hozzáférési kulcsok** lehetőséget a beállítások területen.
 
 ### <a name="firewall-rules"></a>Tűzfalszabályok
 
-A tűzfalszabályok lehetővé teszik, hogy korlátozza azokat az IP-címeket, amelyek megpróbálhatják hitelesíteni magukat a tranzakciós csomóponton.  Ha nincs tűzfalszabály konfigurálva a tranzakciócsomóponthoz, akkor azt egyik fél sem érheti el.  
+A tűzfalszabályok lehetővé teszik a tranzakciós csomóponton hitelesíteni kívánt IP-címek korlátozását.  Ha nincs tűzfalszabályok konfigurálva a tranzakciós csomóponthoz, akkor bármely fél nem fér hozzá.  
 
-Egy tranzakciócsomópont tűzfalszabályainak megtekintéséhez keresse meg az Azure Blockchain szolgáltatás egyik tagtranzakció-csomópontját, és válassza **a tűzfalszabályokat** a beállításokban.
+A tranzakciós csomópont tűzfalszabályok megtekintéséhez navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza a **Tűzfalszabályok** lehetőséget a beállítások területen.
 
-Tűzfalszabályokat úgy adhat hozzá, hogy megad egy szabálynevet, elindítja az IP-címet és egy végződő IP-címet a **tűzfalszabályok** rácsában.
+Tűzfalszabályok hozzáadásához írja be a szabály nevét, a kezdő IP-címet és egy záró IP-címet a **Tűzfalszabályok** rácsba.
 
 ![Tűzfalszabályok](./media/configure-transaction-nodes/firewall-rules.png)
 
-Az engedélyezéshez:
+Engedélyezés:
 
-* **Egyetlen IP-cím:** Adja meg ugyanazt az IP-címet a kezdő és záró IP-címekhez.
-* **IP-címtartomány:** Konfigurálja a kezdő és záró IP-címtartományt. Ha például egy 10.221.34.0-tól 10.221.34.255-ig kezdődő és 10.221.34.255-tel kezdődő tartomány lehetővé teszi a teljes 10.221.34.xxx alhálózatot.
-* **Az összes IP-cím engedélyezése:** Állítsa be a kezdő IP-címet 0.0.0.0-ra és a záró IP-címet 255.255.255.255-re.
+* **Egyetlen IP-cím:** Adja meg ugyanazt az IP-címet a kezdő és a záró IP-címekhez.
+* **IP-címtartomány:** Adja meg a kezdő és a záró IP-címtartományt. Például a 10.221.34.0 és a 10.221.34.255 végződésű tartomány a teljes 10.221.34.xxx-alhálózatot engedélyezheti.
+* **Összes IP-cím engedélyezése:** Konfigurálja a kezdő IP-címet a 0.0.0.0 értékre és a záró IP-címet a 255.255.255.255.
 
 ## <a name="connection-strings"></a>Kapcsolati sztringek
 
-A tranzakciós csomópont csatlakozási karakterláncszint-szintaxisa egyszerű hitelesítéshez vagy hozzáférési kulcsok hoz. A kapcsolati karakterláncok, beleértve a HTTPS-en és websocketeken keresztüli hozzáférési kulcsokat is, rendelkezésre állnak.
+A tranzakciós csomóponthoz tartozó kapcsolati karakterlánc szintaxisa az alapszintű hitelesítéshez vagy a hozzáférési kulcsok használatával van megadva. Kapcsolati karakterláncok, beleértve a hozzáférési kulcsokat a HTTPS-en és a websocketeken keresztül.
 
-Megtekintheti a tranzakciócsomópont kapcsolati karakterláncait, és átmásolhatja a végpontcímeket. Keresse meg az Azure Blockchain szolgáltatás egyik tagtranzakció-csomópontját, és válassza **a Kapcsolati karakterláncok** lehetőséget a beállításokban.
+Megtekintheti a tranzakciós csomópontok kapcsolatainak karakterláncait és másolja a végponti címeket. Navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza a beállítások között a **kapcsolódási karakterláncok** lehetőséget.
 
 ![Kapcsolati sztringek](./media/configure-transaction-nodes/connection-strings.png)
 
 ## <a name="sample-code"></a>Mintakód
 
-Mintakód áll rendelkezésre, hogy gyorsan lehetővé tegye a tranzakciós csomóponthoz való csatlakozást a Web3, a Nethereum, a Web3js és a Szarvasgomba segítségével.
+A Web3, a Nethereum, a Web3js és a szarvasgomba használatával gyorsan engedélyezheti a tranzakciós csomóponthoz való csatlakozást.
 
-Megtekintheti a tranzakciócsomópontok mintakapcsolati kódját, és átmásolhatja a népszerű fejlesztői eszközökkel való használatra. Nyissa meg az Azure Blockchain szolgáltatás egyik tagtranzakció-csomópontját, és válassza **a Mintakód lehetőséget** a beállításokban.
+Megtekintheti a tranzakciós csomópont minta-kapcsolódási kódját, és átmásolhatja a népszerű fejlesztői eszközökkel való használatra. Nyissa meg az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomópontját, és válassza a **mintakód** lehetőséget a beállítások területen.
 
-A használni kívánt kódminta megtekintéséhez válassza a Web3, nethereum, szarvasgomba vagy Web3j lapot.
+Válassza a Web3, a Nethereum, a szarvasgomba vagy a Web3j fület a használni kívánt mintakód megtekintéséhez.
 
 ![Mintakód](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tranzakciócsomópontok konfigurálása az Azure CLI használatával](manage-cli.md)
+> [Tranzakciós csomópontok konfigurálása az Azure CLI-vel](manage-cli.md)

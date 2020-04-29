@@ -1,7 +1,7 @@
 ---
-title: Tároló futtatási példa a docker-futtatás iparancsra
+title: Tároló futtatása példa a Docker Run parancsra
 titleSuffix: Azure Cognitive Services
-description: Docker futtatása parancs a kulcskifejezés-kivonási tárolóhoz
+description: Docker-futtatási parancs Kulcsszókeresés tárolóhoz
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 8ed42d5b0461b6273c2f8d84a267b65461d160ef
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877111"
 ---
-A *kulcskifejezés-kivonási* tároló `docker run` futtatásához hajtsa végre a következő parancsot.
+A *kulcsszókeresés* tároló futtatásához hajtsa végre a `docker run` következő parancsot.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -28,7 +28,7 @@ ApiKey={API_KEY}
 
 A parancs a következőket hajtja végre:
 
-* *Kulcskifejezés-kivonási* tárolót futtat a tárolórendszerképből
-* Egy PROCESSZORmag és 4 gigabájt (GB) memória lefoglalása
-* Kiteszi az 5000-es TCP-portot, és pszeudo-TTY-t rendel a tárolóhoz
-* A tároló automatikus eltávolítása kilépés után. A tárolórendszerkép továbbra is elérhető a gazdaszámítógépen.
+* *Kulcsszókeresés* tárolót futtat a tároló rendszerképből
+* Egy CPU mag és 4 gigabájt (GB) memóriát foglal le
+* Elérhetővé teszi a 5000-es TCP-portot, és kiosztja a tárolóhoz tartozó pszeudo-TTY-t
+* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
