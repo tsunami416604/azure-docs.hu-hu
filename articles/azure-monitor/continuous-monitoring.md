@@ -1,89 +1,89 @@
 ---
-title: Folyamatos figyelés az Azure Monitorsegítségével | Microsoft dokumentumok
-description: Az Azure Monitor használatával a folyamatos figyelés engedélyezésének konkrét lépéseit ismerteti a munkafolyamatokban.
+title: Folyamatos figyelés a Azure Monitorsal | Microsoft Docs
+description: Az Azure Monitor használatának konkrét lépéseit ismerteti a teljes munkafolyamatok folyamatos figyelésének engedélyezéséhez.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667193"
 ---
-# <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitorral
+# <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
-A folyamatos figyelés a DevOps és az IT-műveletek életciklusának minden fázisába a figyelés beépítéséhez szükséges folyamatra és technológiára vonatkozik. Segít folyamatosan biztosítani az alkalmazás és az infrastruktúra állapotát, teljesítményét és megbízhatóságát, ahogy a fejlesztésről a termelésre kerül. A folyamatos felügyelet a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) koncepcióira épül, amelyek segítségével gyorsabban és megbízhatóbban fejleszthet és szállíthat szoftvereket, hogy folyamatos értéket biztosítson a felhasználók számára.
+A folyamatos monitorozás arra a folyamatra és technológiára utal, amely a DevOps és az IT-üzemeltetési életciklusok minden fázisában való monitorozáshoz szükséges. Segít az alkalmazás és az infrastruktúra állapotának, teljesítményének és megbízhatóságának folyamatos biztosításában, ahogy az a fejlesztéstől a Termelésig mozdul. A folyamatos monitorozás a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) fogalmait mutatja be, amelyek segítségével gyorsabban és megbízhatóbban fejlesztheti és szolgáltathatja a szoftvereket a felhasználók számára.
 
-[Az Azure Monitor](overview.md) az Azure egységes ített figyelési megoldása, amely teljes körű megfigyelhetőséget biztosít a felhőben és a helyszínen található alkalmazások és infrastruktúra között. Zökkenőmentesen működik a Visual Studio és a Visual Studio code fejlesztése és tesztelése [során,](https://visualstudio.microsoft.com/) és integrálható [az Azure DevOps-szal](/azure/devops/user-guide/index) a kiadáskezeléshez és a munkaelemek kezeléséhez az üzembe helyezés és a műveletek során. Még az Ön által választott ITSM és SIEM eszközökbe is integrálható, hogy segítsen nyomon követni a problémákat és incidenseket a meglévő informatikai folyamatokon belül.
+A [Azure monitor](overview.md) az Azure-ban egyesített figyelési megoldás, amely teljes körű megfigyelést biztosít a felhőben és a helyszínen található alkalmazások és infrastruktúrák között. Zökkenőmentesen működik együtt a [Visual Studióval és a Visual Studio Code](https://visualstudio.microsoft.com/) -val a fejlesztés és a tesztelés során, és integrálható az [Azure DevOps](/azure/devops/user-guide/index) a kiadási felügyelethez és a munkaelemek felügyeletéhez a telepítés és a műveletek A ITSM és a SIEM-eszközök között is integrálható, hogy segítsen nyomon követni a problémákat és az incidenseket a meglévő IT-folyamatokon belül.
 
-Ez a cikk az Azure Monitor használatával a folyamatos figyelés engedélyezésére szolgáló konkrét lépéseket ismerteti a munkafolyamatokban. Ez magában foglalja a hivatkozásokat más dokumentációt, amely részletesen ismerteti a végrehajtási különböző funkciókat.
-
-
-## <a name="enable-monitoring-for-all-your-applications"></a>A figyelés engedélyezése az összes alkalmazásban
-Annak érdekében, hogy a teljes környezetben megfigyelhetőséget nyerjen, engedélyeznie kell az összes webes alkalmazás és szolgáltatás figyelését. Ez lehetővé teszi, hogy könnyen láthatóvá teljes körű tranzakciók és kapcsolatok az összes összetevő.
-
-- [Az Azure DevOps-projektek](../devops-project/overview.md) egyszerűsített élményt nyújtanak a meglévő kóddal és gittárral, vagy választhatnak a mintaalkalmazások közül a folyamatos integrációs (CI) és a folyamatos kézbesítési (CD) folyamat létrehozásához az Azure-ba.
-- [Folyamatos figyelés a DevOps kiadási folyamat](../azure-monitor/app/continuous-monitoring.md) lehetővé teszi, hogy a figyelési adatok alapján a központi telepítés gate vagy visszaállítása.
-- [Az Állapotfigyelő](../azure-monitor/app/monitor-performance-live-website-now.md) lehetővé teszi, hogy az Azure Application Insights segítségével egy élő .NET alkalmazást eszközítsen windowsos rendszeren anélkül, hogy módosítania vagy újra telepítenie kellene a kódot.
-- Ha rendelkezik hozzáféréssel az alkalmazás kódjához, engedélyezze a teljes figyelést az [Application Insights](../azure-monitor/app/app-insights-overview.md) segítségével az Azure Monitor Application Insights SDK [.NET,](../azure-monitor/learn/quick-monitor-portal.md) [Java,](../azure-monitor/app/java-get-started.md) [Node.js](../azure-monitor/learn/nodejs-quick-start.md)vagy [bármely más programozási nyelv](../azure-monitor/app/platforms.md)telepítésével. Ez lehetővé teszi, hogy egyéni eseményeket, mutatókat vagy oldalnézeteket adjon meg, amelyek relevánsak az alkalmazás és a vállalkozás szempontjából.
+Ez a cikk az Azure Monitor használatának konkrét lépéseit ismerteti a teljes munkafolyamatok folyamatos figyelésének engedélyezéséhez. Más dokumentációra mutató hivatkozásokat tartalmaz, amelyek részletesen ismertetik a különböző funkciók megvalósításának részleteit.
 
 
+## <a name="enable-monitoring-for-all-your-applications"></a>Az összes alkalmazás figyelésének engedélyezése
+Annak érdekében, hogy a teljes környezeten belül betekintést nyerjen, engedélyeznie kell a figyelést az összes webalkalmazáson és szolgáltatáson. Ez lehetővé teszi a végpontok közötti tranzakciók és kapcsolatok egyszerű megjelenítését az összes összetevőn.
 
-## <a name="enable-monitoring-for-your-entire-infrastructure"></a>A figyelés engedélyezése a teljes infrastruktúrára
-Az alkalmazások csak olyan megbízhatóak, mint az alapul szolgáló infrastruktúrák. Miután a figyelés engedélyezve van a teljes infrastruktúrában segít elérni a teljes megfigyelhetőséget, és megkönnyíti a potenciális kiváltó ok felfedezését, ha valami nem sikerül. Az Azure Monitor segítségével nyomon követheti a teljes hibrid infrastruktúra állapotát és teljesítményét, beleértve az erőforrásokat, például a virtuális gépeket, a tárolókat, a tárolókat és a hálózatot.
-
-- Automatikusan megkapja [a platformmetrikákat, a tevékenységnaplókat és a diagnosztikai naplókat](platform/data-sources.md) az Azure-erőforrások többségéből konfiguráció nélkül.
-- A virtuális gépek mélyebb figyelésének engedélyezése [az Azure Monitor szolgáltatással.](insights/vminsights-overview.md)
--  Az [Azure Monitor tárolókhoz](insights/container-insights-overview.md)való használatával engedélyezheti az AKS-fürtök mélyebb figyelését.
-- [Figyelési megoldások hozzáadása](insights/solutions-inventory.md) a környezetkülönböző alkalmazásaihoz és szolgáltatásaihoz.
-
-
-[Infrastruktúra kódként](/azure/devops/learn/what-is-infrastructure-as-code) az infrastruktúra kezelése egy leíró modell, ugyanazt a verziószámozást használva, mint devops csapatok a forráskódhoz használt. Megbízhatóságot és méretezhetőséget biztosít a környezethez, és lehetővé teszi az alkalmazások kezeléséhez használt hasonló folyamatok kihasználását.
-
--  [Az Erőforrás-kezelő sablonjaisegítségével](platform/template-workspace-configuration.md) engedélyezheti a figyelést, és riasztásokat konfigurálhat az erőforrások nagy készletén.
-- Az [Azure-szabályzat használatával](../governance/policy/overview.md) különböző szabályokat alkalmazhat az erőforrásokra. Ez biztosítja, hogy ezek az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatásiszint-szerződéseknek. 
+- [Azure DevOps projects](../devops-project/overview.md) a meglévő kód-és git-tárház egyszerűsített élményét nyújtja, vagy választhat az egyik példa közül, hogy egy folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamatot hozzon létre az Azure-ba.
+- A [DevOps kiadási folyamat folyamatos figyelése](../azure-monitor/app/continuous-monitoring.md) lehetővé teszi, hogy a figyelési adatain alapuló üzembe helyezést vagy visszaállítást.
+- [Állapotmonitor](../azure-monitor/app/monitor-performance-live-website-now.md) lehetővé teszi egy élő .NET-alkalmazás üzembe helyezését a Windowsban az Azure Application Insights használatával anélkül, hogy módosítania vagy újra kellene telepítenie a kódot.
+- Ha rendelkezik hozzáféréssel az alkalmazás kódjához, akkor a teljes figyelést [Application Insights](../azure-monitor/app/app-insights-overview.md) a [.net](../azure-monitor/learn/quick-monitor-portal.md), a [Java](../azure-monitor/app/java-get-started.md), a [Node. js](../azure-monitor/learn/nodejs-quick-start.md)vagy [más programozási nyelvek](../azure-monitor/app/platforms.md)Azure monitor Application Insights SDK telepítésével engedélyezheti. Ez lehetővé teszi az alkalmazáshoz és a vállalathoz tartozó egyéni események, metrikák vagy oldalletöltések megadását.
 
 
-##  <a name="combine-resources-in-azure-resource-groups"></a>Erőforrások kombinálása az Azure erőforráscsoportokban
-Egy tipikus alkalmazás az Azure-ban ma több erőforrást is tartalmaz, például virtuális gépeket és appszolgáltatásokat, vagy a Felhőszolgáltatásokon, az AKS-fürtökön vagy a Service Fabric-en üzemeltetett mikroszolgáltatásokat. Ezek az alkalmazások gyakran használják a függőségeket, például az Event Hubs, a Storage, az SQL és a Service Bus.
 
-- Az Azure Resource Groups erőforrásainak kombinálásával teljes körű láthatóságot kaphat a különböző alkalmazásokat összeget felhasználó összes erőforrásában. [Az Azure Monitor erőforráscsoportokhoz](../azure-monitor/insights/resource-group-insights.md) egyszerű módja a teljes veremben futó teljes körű alkalmazás állapotának és teljesítményének nyomon követésére, és lehetővé teszi a megfelelő összetevők lebontását a vizsgálatokhoz vagy a hibakereséshez.
+## <a name="enable-monitoring-for-your-entire-infrastructure"></a>A teljes infrastruktúra figyelésének engedélyezése
+Az alkalmazások csak a mögöttes infrastruktúrájuk megbízhatóak. Ha a figyelést a teljes infrastruktúrán keresztül engedélyezte, a teljes körű monitorozást tesz lehetővé, és megkönnyíti a lehetséges kiváltó ok felderítését, ha valami meghiúsul. Azure Monitor segítségével nyomon követheti a teljes hibrid infrastruktúra állapotát és teljesítményét, beleértve a virtuális gépeket, a tárolókat, a tárolást és a hálózatot.
 
-## <a name="ensure-quality-through-continuous-deployment"></a>A minőség biztosítása folyamatos telepítéssel
-Folyamatos integráció / folyamatos üzembe helyezés lehetővé teszi, hogy automatikusan integrálja és telepítse a kódváltozásokat az alkalmazás eredményei alapján az automatizált tesztelés. Egyszerűsíti a telepítési folyamatot, és biztosítja a módosítások minőségét, mielőtt azok éles környezetbe lépnének.
+- A [platform metrikáit, a tevékenységek naplóit és a diagnosztikai naplókat](platform/data-sources.md) a konfiguráció nélkül, a legtöbb Azure-erőforrásból automatikusan beolvashatja.
+- A [Azure monitor for VMsrel](insights/vminsights-overview.md)rendelkező virtuális gépek mélyebb monitorozásának engedélyezése.
+-  A [Azure monitor for containers esetében](insights/container-insights-overview.md)lehetővé teszi az AK-fürtök mélyebb figyelését.
+- [Figyelési megoldások](insights/solutions-inventory.md) hozzáadása a környezet különböző alkalmazásaihoz és szolgáltatásaihoz.
 
 
-- Az [Azure Pipelines](/azure/devops/pipelines) használatával folyamatos üzembe helyezést valósíthat meg, és automatizálhatja a teljes folyamatot a kódvéglegesítéstől az éles környezetig a CI/CD-tesztek alapján.
-- [A Minőségi kapukkal](/azure/devops/pipelines/release/approvals/gates) integrálhatja a figyelést az előtelepítés vagy a telepítés utáni üzembe helyezés beépülésébe. Ez biztosítja, hogy megfelel a legfontosabb állapot-és teljesítménymutatóknak (KPI-k), ahogy az alkalmazások a fejlesztési területről az éles környezetre térnek át, és az infrastruktúra-környezet vagy a méretezés közötti különbségek nem befolyásolják hátrányosan a Fő teljesítménymutatókat.
-- [Külön figyelési példányok karbantartása](../azure-monitor/app/separate-resources.md) a különböző központi telepítési környezetek között, például a fejlesztési, tesztelési, kanári- és prod. Ez biztosítja, hogy az összegyűjtött adatok relevánsak legyenek a kapcsolódó alkalmazások és infrastruktúra számára. Ha az adatokat a környezetek között kell korrelálnia, [többerőforrásos diagramokat használhat a Metrics Explorerben,](../azure-monitor/platform/metrics-charts.md) vagy [létrehozhat több erőforrást tartalmazó lekérdezéseket az Azure Monitorban.](log-query/cross-workspace-query.md)
+Az [infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-code) az infrastruktúra kezelése egy leíró modellben, amely ugyanazt a verziószámozást használja, mint a DevOps Teams a forráskódot. Megbízhatóságot és méretezhetőséget biztosít a környezet számára, és lehetővé teszi az alkalmazások kezeléséhez használt hasonló folyamatok kihasználása.
+
+-  A [Resource Manager-sablonok](platform/template-workspace-configuration.md) használatával engedélyezheti a figyelést, és konfigurálhatja a riasztásokat egy nagy erőforrás-készleten keresztül.
+- A [Azure Policy](../governance/policy/overview.md) használatával különböző szabályokat alkalmazhat az erőforrásokra. Ez biztosítja, hogy ezek az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek. 
+
+
+##  <a name="combine-resources-in-azure-resource-groups"></a>Erőforrások egyesítése Azure-erőforráscsoportok
+Az Azure-ban egy tipikus alkalmazás több olyan erőforrást tartalmaz, mint például a virtuális gépek és a App Services Cloud Services, AK-alapú fürtökön vagy Service Fabricokon üzemeltetett szolgáltatások. Ezek az alkalmazások gyakran használják a függőségeket, például a Event Hubs, a Storage, az SQL és a Service Bus.
+
+- Az Azure-erőforráscsoportok erőforrásainak egyesítésével teljes mértékben megtekintheti a különböző alkalmazásokat alkotó összes erőforrást. Az [erőforráscsoportok Azure monitor](../azure-monitor/insights/resource-group-insights.md) egyszerű módszert biztosít a teljes teljes verembeli alkalmazás állapotának és teljesítményének nyomon követésére, és lehetővé teszi, hogy bármilyen vizsgálat vagy hibakeresés céljából lebontsa a megfelelő összetevőket.
+
+## <a name="ensure-quality-through-continuous-deployment"></a>A minőség biztosítása folyamatos üzembe helyezéssel
+A folyamatos integráció/folyamatos üzembe helyezés lehetővé teszi, hogy automatikusan integrálja és telepítse a kód módosításait az alkalmazásba az automatizált tesztelés eredményei alapján. Egyszerűsíti az üzembe helyezés folyamatát, és gondoskodik arról, hogy az éles környezetbe való áttérés előtt a változások minősége is megtörténjen.
+
+
+- Az [Azure](/azure/devops/pipelines) -folyamatok segítségével folyamatos üzembe helyezést valósíthat meg, és automatizálhatja a teljes folyamatot a kód véglegesítve a CI/CD-tesztek alapján.
+- A [minőségi kapuk](/azure/devops/pipelines/release/approvals/gates) használatával integrálhatja a figyelést az üzembe helyezés előtti vagy utáni üzembe helyezésbe. Ez biztosítja, hogy a kulcsfontosságú állapot-/teljesítmény-metrikák (KPI-k) megfelelnek az alkalmazásoknak, mivel az alkalmazások a fejlesztéstől a Termelésig mozognak, és az infrastruktúra környezetében vagy a skálázásban mutatkozó különbségek nem negatív hatással vannak a KPI-re.
+- A különböző üzembe helyezési környezetek, például a dev, a test, a Canary és a Prod közötti [különálló figyelési példányok karbantartása](../azure-monitor/app/separate-resources.md) . Ez biztosítja, hogy az összegyűjtött adatok relevánsak legyenek a kapcsolódó alkalmazásokban és infrastruktúrában. Ha különböző környezetekben szeretné összekapcsolni az adatforrásokat, használhat [több erőforrást tartalmazó diagramokat a Metrikaböngészőban](../azure-monitor/platform/metrics-charts.md) , vagy létrehozhat [több erőforrásból álló lekérdezéseket Azure monitorokban](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Végrehajtható riasztások létrehozása műveletekkel
-A figyelés kritikus szempontja, hogy proaktív módon értesítse a rendszergazdákat az aktuális és előre jelzett problémákról. 
+A figyelés kritikus aspektusa proaktív módon értesíti a rendszergazdákat az aktuális és az előre jelzett problémákról. 
 
-- [Riasztások létrehozása az Azure Monitorban](../azure-monitor/platform/alerts-overview.md) naplók és metrikák alapján a kiszámítható hibaállapotok azonosításához. A cél az, hogy minden riasztás perelhető, ami azt jelenti, hogy azok a tényleges kritikus feltételeket, és igyekeznek csökkenteni a hamis pozitív. [A dinamikus küszöbértékek](platform/alerts-dynamic-thresholds.md) használatával automatikusan kiszámíthatja az alapterveket a metrikaadatokon ahelyett, hogy saját statikus küszöbértékeket határozna meg. 
-- Határozza meg a riasztások hoz a leghatékonyabb módon a rendszergazdák értesítésére szolgáló műveleteket. [Az értesítésekhez](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) rendelkezésre álló műveletek az SMS-ek, az e-mailek, a leküldéses értesítések vagy a hanghívások.
-- A speciálisabb műveletekkel [webhookokon](platform/activity-log-alerts-webhook.md)keresztül [csatlakozhat az ITSM eszközhöz](platform/itsmc-overview.md) vagy más riasztáskezelő rendszerekhez.
-- A riasztásokban azonosított helyzetek, valamint az [Azure Automation runbookok](../automation/automation-webhooks.md) vagy [logikai alkalmazások,](/connectors/custom-connectors/create-webhook-trigger) amelyek webhookok használatával indítható riasztást. 
-- [Az automatikus skálázás](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) segítségével dinamikusan növelheti és csökkentheti a számítási erőforrásokat az összegyűjtött metrikák alapján.
+- [Riasztásokat](../azure-monitor/platform/alerts-overview.md) hozhat létre Azure monitor naplók és metrikák alapján a kiszámítható meghibásodási állapotok azonosításához. Az összes riasztást úgy kell kipróbálni, hogy a tényleges kritikus feltételeknek megfelelőek legyenek, és hogy csökkentsék a téves pozitív állapotot. A [dinamikus](platform/alerts-dynamic-thresholds.md) küszöbértékek használatával automatikusan kiszámíthatja a metrikus adatok alapterveit, és nem határozhatja meg a saját statikus küszöbértékeit. 
+- A riasztásokra vonatkozó műveletek definiálása a leghatékonyabb módon a rendszergazdák értesítéséhez. [Az értesítésekhez elérhető műveletek az](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) SMS, az e-mailek, a leküldéses értesítések vagy a hanghívások.
+- További speciális műveletekkel [csatlakozhat a ITSM eszközhöz](platform/itsmc-overview.md) vagy más riasztási felügyeleti rendszerekhez [webhookok](platform/activity-log-alerts-webhook.md)használatával.
+- A riasztásokban azonosított helyzetek javítása, valamint [Azure Automation runbookok](../automation/automation-webhooks.md) vagy [Logic apps](/connectors/custom-connectors/create-webhook-trigger) , amely webhookok használatával indítható riasztásból. 
+- Az automatikus [skálázás](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) használatával dinamikusan növelheti és csökkentheti a számítási erőforrásokat az összegyűjtött mérőszámok alapján.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Irányítópultok és munkafüzetek előkészítése
-Annak biztosítása, hogy a fejlesztés és a műveletek ugyanazokhoz a telemetriai adatokhoz és eszközökhöz férhessenek hozzá, és lehetővé teszi számukra, hogy a mintákat a teljes környezetben megtekintsék, és minimalizálják az észlelési idő (MTTD) és a visszaállítási idő (MTTR) átlagidejét.
+Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos telemetria és eszközökhöz férjenek hozzá, lehetővé teszi, hogy a teljes környezetben megtekintsék a mintákat, és a lehető legkevesebb időt mutassanak a (MTTD) és a visszaállítási idő (MTTR) számára.
 
-- Egyéni [irányítópultok](../azure-monitor/learn/tutorial-app-dashboards.md) előkészítése közös metrikák és naplók alapján a szervezet különböző szerepköreihez. Az irányítópultok az összes Azure-erőforrás ból származó adatokat egyesíthetik.
-- [Munkafüzetek készítése a](../azure-monitor/app/usage-workbooks.md) fejlesztés és a műveletek közötti tudásmegosztás biztosítására. Ezek készíthetők dinamikus jelentések metrikus diagramokkal és naplólekérdezésekkel, vagy akár hibaelhárítási útmutatókként, amelyeket a fejlesztők készítenek, és segítik az ügyfélszolgálatot vagy a műveleteket az alapvető problémák kezelésében.
+- Készítse elő az [Egyéni irányítópultokat](../azure-monitor/learn/tutorial-app-dashboards.md) a szervezet különböző szerepköreihez tartozó gyakori mérőszámok és naplók alapján. Az irányítópultok az összes Azure-erőforrásból is kombinálhatók.
+- Készítse elő a [munkafüzetek](../azure-monitor/app/usage-workbooks.md) előkészítését a fejlesztés és a műveletek közötti tudásmegosztás biztosításához. Ezek a mérőszám-diagramok és a naplók lekérdezésével, vagy akár a fejlesztők által készített hibaelhárítási útmutatókkal is készíthetők, amelyek segítségével az ügyfelek támogatását vagy műveleteit az alapvető problémák kezelésére lehet használni.
 
-## <a name="continuously-optimize"></a>Folyamatosan optimalizálja
- A figyelés a népszerű Build-Measure-Learn filozófia egyik alapvető aspektusa, amely azt javasolja, hogy folyamatosan kövesse nyomon a KPI-ket és a felhasználói viselkedési mutatókat, majd törekedjen azok optimalizálására az ismétlések tervezésével. Az Azure Monitor segítségével összegyűjtheti a vállalkozásának megfelelő metrikákat és naplókat, és szükség szerint új adatpontokat adhat hozzá a következő üzembe helyezéshez.
+## <a name="continuously-optimize"></a>Folyamatos optimalizálás
+ A monitorozás a népszerű Build-mérték – Learn filozófia egyik alapvető aspektusa, amely a KPI-k és a felhasználói viselkedési mérőszámok folyamatos nyomon követését javasolja, majd a tervezési iterációk segítségével optimalizálja őket. A Azure Monitor segítséget nyújt a vállalata számára releváns mérőszámok és naplók összegyűjtésében, valamint új adatpontok hozzáadásában a szükséges módon.
 
-- Az Application Insights eszközeivel nyomon követheti a [végfelhasználó viselkedését és elköteleződését.](../azure-monitor/learn/tutorial-users.md)
-- [Az Impact Analysis segítségével](../azure-monitor/app/usage-impact.md) rangsorolhatja, hogy mely területekre összpontosítson a fontos fő értékpi-k hez való vezetéshez.
+- A Application Insights eszközeit használva [nyomon követheti a végfelhasználói viselkedést és a részvételt](../azure-monitor/learn/tutorial-users.md).
+- Az [Impact Analysis](../azure-monitor/app/usage-impact.md) segítségével rangsorolhatja, hogy mely területek összpontosítanak a fontos KPI-k elérésére.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg az [Azure Monitor](overview.md)eltérő összetevőit.
-- [Folyamatos figyelés hozzáadása](../azure-monitor/app/continuous-monitoring.md) a kiadási folyamathoz.
+- További információ a [Azure monitor](overview.md)különbségi összetevőiről.
+- [Vegyen fel folyamatos figyelést](../azure-monitor/app/continuous-monitoring.md) a kiadási folyamatba.

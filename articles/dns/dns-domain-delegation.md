@@ -1,5 +1,5 @@
 ---
-title: Az Azure DNS-delegálás – áttekintés
+title: Azure DNS delegálás áttekintése
 description: Ismerje meg, hogyan módosíthatja a tartományok delegálását és használhatja tartományszolgáltatóként az Azure DNS-névkiszolgálóit.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76939054"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>DNS-zónák delegálása az Azure DNS-sel
@@ -28,7 +28,7 @@ A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia els�
 
 **Tartományregisztráló** – A tartományregisztráló egy olyan cég, amely internetes tartományneveket biztosít. Ezek a cégek ellenőrzik, hogy a használni kívánt internetes tartomány elérhető-e, és ők engedélyezik azok megvásárlását. A tartománynév regisztrálása után Ön annak a jogos tulajdonosa. Ha már van internetes tartománya, az aktuális tartományregisztrálóval delegálhat az Azure DNS-be.
 
-Az akkreditált tartományregisztrátorokról az [ICANN által akkreditált regisztrátorok](https://www.icann.org/registrar-reports/accredited-list.html)című témakörben talál további információt.
+További információ az akkreditált tartományi regisztrátorokról: [ICANN-akkreditált regisztrátorok](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ### <a name="resolution-and-delegation"></a>Feloldás és delegálás
 
@@ -54,13 +54,13 @@ Az alábbi képen egy példa DNS-lekérdezés látható. A contoso.net és a par
 1. Az ügyfél lekéri a `www.partners.contoso.net` címet a helyi DNS-kiszolgálóról.
 2. A helyi DNS-kiszolgálón nem található meg a rekord, így lekéri azt a gyökér-névkiszolgálótól.
 3. A gyökér-névkiszolgálón sem található meg a rekord, azonban ismeri a `.net`-névkiszolgáló címét, és megadja azt a DNS-kiszolgálónak.
-4. A helyi DNS-kiszolgáló elküldi `.net` a kérelmet a névkiszolgálónak.
-5. A `.net` névkiszolgáló nem rendelkezik rekordtal, de `contoso.net` ismeri a névkiszolgáló címét. Ebben az esetben az Azure DNS-ben üzemeltetett DNS-zóna névkiszolgálójának címével válaszol.
-6. A helyi DNS-kiszolgáló elküldi a kérelmet az Azure DNS-ben üzemeltetett `contoso.net` zóna névkiszolgálójának.
-7. A `contoso.net` zónában nincs bejegyzés, de ismeri `partners.contoso.net` a névkiszolgálót, és a címmel válaszol. Ebben az esetben ez egy DNS-zóna az Azure DNS-ben üzemeltetett.
-8. A helyi DNS-kiszolgáló elküldi a kérelmet a `partners.contoso.net` zóna névkiszolgálójának.
-9. A `partners.contoso.net` zóna rendelkezik az A rekorddal, és az IP-címmel válaszol.
-10. A helyi DNS-kiszolgáló biztosítja az ÜGYFÉL IP-címét
+4. A helyi DNS-kiszolgáló elküldi a kérést `.net` a névkiszolgáló számára.
+5. A `.net` névkiszolgáló nem rendelkezik a rekordtal, de ismeri a `contoso.net` névkiszolgáló címeit. Ebben az esetben a Azure DNSban üzemeltetett DNS-zóna névkiszolgáló-címeként válaszol.
+6. A helyi DNS-kiszolgáló elküldi a kérést a Azure DNS-ben `contoso.net` üzemeltetett zóna névkiszolgálói kiszolgálójára.
+7. A zónában `contoso.net` nem szerepel a rekord, de ismeri a kiszolgálónevet, `partners.contoso.net` és válaszol a címnek. Ebben az esetben ez egy Azure DNS-ban üzemeltetett DNS-zóna.
+8. A helyi DNS-kiszolgáló elküldi a kérést a `partners.contoso.net` zónához tartozó névkiszolgálói kiszolgálónak.
+9. A `partners.contoso.net` zónában a rekord szerepel, és az IP-címmel válaszol.
+10. A helyi DNS-kiszolgáló biztosítja az IP-címet az ügyfél számára
 11. Az ügyfél csatlakozik a `www.partners.contoso.net` webhelyhez.
 
 A delegálások a névkiszolgálói rekordok két példányával rendelkeznek: egy a gyermekzónára mutató szülőzónában, egy pedig magában a gyermekzónában található. A „contoso.net” zóna a „net” névkiszolgálói rekordjai mellett a „contoso.net” névkiszolgálói rekordjait is tartalmazza. Ezek a rekordok az úgynevezett mérvadó névkiszolgálói rekordok, és a gyermekzóna tetején találhatók.

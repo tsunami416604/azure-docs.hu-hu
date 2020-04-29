@@ -1,26 +1,26 @@
 ---
-title: Hozzon ki többet az Azure Application Insightsból | Microsoft dokumentumok
-description: Az Application Insights első lépései után az alábbiakban összefoglalhatja a feltárható funkciókat.
+title: Ismerje meg az Azure-Application Insightst | Microsoft Docs
+description: A Application Insights megkezdése után itt találja a felderíthető funkciók összegzését.
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.openlocfilehash: 3c4a9a736f34d4f7dbfeb004d0837f1f2efa55dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77666024"
 ---
-# <a name="more-telemetry-from-application-insights"></a>További telemetriai adatok az Application Insightsból
-Miután [hozzáadta az Application Insightsot a ASP.NET kódhoz,](../../azure-monitor/app/asp-net.md)néhány dolgot tehet, hogy még több telemetriai adatokat kapjon. 
+# <a name="more-telemetry-from-application-insights"></a>Application Insights további telemetria
+Miután [hozzáadta Application Insightst a ASP.net-kódhoz](../../azure-monitor/app/asp-net.md), néhány dolog elvégezhető, hogy még több telemetria kapjon. 
 
 | Műveletek | Amihez jut|
 |---|---|
-|(IIS-kiszolgálók) [Telepítse az Állapotfigyelőt](https://go.microsoft.com/fwlink/?LinkId=506648) minden kiszolgálószámítógépre.<br/>(Azure-webalkalmazások) A webalkalmazás Azure vezérlőpultján nyissa meg az Application Insights panelt.| [**Teljesítményszámlálók**](../../azure-monitor/app/performance-counters.md)<br/>[**Kivételek**](asp-net-exceptions.md) - részletes veremnyomkövetések<br/>[**Függőségek**](../../azure-monitor/app/asp-net-dependencies.md)|
-|[A JavaScript-kódrészlet hozzáadása a weblapokhoz](../../azure-monitor/app/javascript.md)|[Oldal teljesítménye](../../azure-monitor/app/usage-overview.md), böngésző kivételek, AJAX teljesítmény. Egyéni ügyféloldali telemetriai adatok.|
-|[Rendelkezésre állási webes tesztek létrehozása](../../azure-monitor/app/monitor-web-app-availability.md)|Értesítések et kaphat, ha webhelye elérhetetlenné válik|
-|[Győződjön meg róla, hogy a buildinfo.config-ot](https://msdn.microsoft.com/library/dn449058.aspx) az MSBuild hozza létre|[Jegyzetek készítése metrikadiagramokban](https://docs.microsoft.com/azure/azure-monitor/app/annotations)
-|[Egyéni események és mutatók írása](../../azure-monitor/app/api-custom-events-metrics.md)|Megszámlálja az üzleti eseményeket és mutatókat, nyomon követheti a részletes használatot stb.|
-|[Az élő webhely profilozása](https://aka.ms/AIProfilerPreview)|Részletes funkcióidőzítések az élő webalkalmazásból|
+|(IIS-kiszolgálók) [Telepítse a Állapotmonitort](https://go.microsoft.com/fwlink/?LinkId=506648) az egyes kiszolgálókon.<br/>(Azure Web Apps) A webalkalmazáshoz tartozó Azure-vezérlőpulton nyissa meg a Application Insights panelt.| [**Teljesítményszámlálók**](../../azure-monitor/app/performance-counters.md)<br/>[**Kivételek**](asp-net-exceptions.md) – részletes verem-nyomkövetés<br/>[**Függőségek**](../../azure-monitor/app/asp-net-dependencies.md)|
+|[A JavaScript-kódrészlet hozzáadása a weblapokhoz](../../azure-monitor/app/javascript.md)|[Oldal teljesítmény](../../azure-monitor/app/usage-overview.md), böngészőbeli kivételek, Ajax-teljesítmény. Egyéni ügyféloldali telemetria.|
+|[Rendelkezésre állási webes tesztek létrehozása](../../azure-monitor/app/monitor-web-app-availability.md)|Riasztások kérése, ha a webhely elérhetetlenné válik|
+|Győződjön meg arról, hogy az MSBuild létrehozta a [buildinfo. config fájlt.](https://msdn.microsoft.com/library/dn449058.aspx)|[Jegyzetek létrehozása metrikus diagramokban](https://docs.microsoft.com/azure/azure-monitor/app/annotations)
+|[Egyéni események és metrikák írása](../../azure-monitor/app/api-custom-events-metrics.md)|Megszámolhatja az üzleti eseményeket és mérőszámokat, nyomon követheti a részletes használatot és egyebeket.|
+|[Az élő webhely profilja](https://aka.ms/AIProfilerPreview)|Részletes függvények időzítése az élő webalkalmazásból|
 
 
 

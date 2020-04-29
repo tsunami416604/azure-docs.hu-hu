@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Samanage konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a felhasználói fiókok samanage-i automatikus kiépítésére és megszüntetésére.
+title: 'Oktatóanyag: a Samanage konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a Samanage felhasználói fiókjait.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -17,153 +17,153 @@ ms.date: 03/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 988efc2087b3b30e6073bd7f6e2cf08f91fd397c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77060490"
 ---
-# <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: A Samanage konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Samanage konfigurálása
 
-Ez az oktatóanyag bemutatja a Samanage és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához a felhasználók és csoportok Samanage-ba történő automatikus kiépítéséhez és a samanage-i szolgáltatások hozadékának kiépítéséhez és megszüntetéséhez.
+Ez az oktatóanyag bemutatja, hogyan kell végrehajtani a Samanage és a Azure Active Directory (Azure AD) az Azure AD konfigurálását a felhasználók és csoportok automatikus kiépítéséhez és kiépítéséhez a Samanage.
 
 > [!NOTE]
-> Ez az oktatóanyag egy összekötőt, amely az Azure AD felhasználói kiépítési szolgáltatásra épül. A szolgáltatás működéséről, működéséről és a gyakori kérdésekről a [Felhasználói kiépítés automatizálása és a szoftverszolgáltatásként (SaaS) alkalmazások létesítésének automatizálása az Azure Active Directoryval című](../app-provisioning/user-provisioning.md)témakörben talál.
+> Ez az oktatóanyag egy, az Azure AD-felhasználó kiépítési szolgáltatására épülő összekötőt ismertet. További információ a szolgáltatás működéséről, működéséről és gyakori kérdéseiről: a felhasználók kiépítésének [automatizálása és a szolgáltatott szoftveres (SaaS) alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy a következőket ismerteel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy rendelkezik a következővel:
 
 * Egy Azure AD-bérlő.
-* Egy [Samanage-bérlő](https://www.samanage.com/pricing/) a Professional csomaggal.
-* A Samanage rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
+* Egy [Samanage-bérlő](https://www.samanage.com/pricing/) a professzionális csomaggal.
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Samanage-ben.
 
 > [!NOTE]
-> Az Azure AD-kiépítési integráció a [Samanage Rest API-t](https://www.samanage.com/api/)támogatja. Ez az API a Samanage-fejlesztők számára érhető el a Professional csomaggal rendelkező fiókok hoz.
+> Az Azure AD kiépítési integrációja a [Samanage REST API](https://www.samanage.com/api/)-ra támaszkodik. Ez az API Samanage-fejlesztők számára érhető el a professzionális csomaggal rendelkező fiókok számára.
 
-## <a name="add-samanage-from-the-azure-marketplace"></a>Samanage hozzáadása az Azure Piactérről
+## <a name="add-samanage-from-the-azure-marketplace"></a>Samanage hozzáadása az Azure Marketplace-ről
 
-Mielőtt konfigurálja a Samanage-t az Azure AD-vel való automatikus felhasználói kiépítéshez, adja hozzá a Samanage-t az Azure Piactérről a felügyelt SaaS-alkalmazások listájához.
+Mielőtt konfigurálja a Samanage-t az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, adja hozzá a Samanage-t az Azure piactéren a felügyelt SaaS-alkalmazások listájához.
 
-Samanage hozzáadása a Piactérről, kövesse az alábbi lépéseket.
+Ha Samanage szeretne hozzáadni a piactéren, kövesse az alábbi lépéseket.
 
-1. Az [Azure Portalon](https://portal.azure.com)a bal oldali navigációs ablakban válassza az **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory ikonja](common/select-azuread.png)
+    ![A Azure Active Directory ikon](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza az **Új alkalmazás** lehetőséget a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához válassza a párbeszédpanel tetején található **új alkalmazás** lehetőséget.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Samanage parancsot,** és válassza a **Samanage** lehetőséget az eredménypanelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás**lehetőséget.
+4. A keresőmezőbe írja be a **Samanage** kifejezést, és válassza az **Samanage** elemet az eredmény panelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás**lehetőséget.
 
-    ![Samanage az eredménylistában](common/search-new-app.png)
+    ![Samanage az eredmények listájában](common/search-new-app.png)
 
-## <a name="assign-users-to-samanage"></a>Felhasználók hozzárendelése a Samanage-hoz
+## <a name="assign-users-to-samanage"></a>Felhasználók Samanage rendelése
 
-Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók vagy csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók vagy csoportok lesznek szinkronizálva.
 
-Az automatikus felhasználói üzembe építés konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak vagy csoportjainak kell hozzáférniük a Samanage-hoz. Ha ezeket a felhasználókat vagy csoportokat hozzá szeretné rendelni a Samanage-hoz, kövesse a [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)című útmutató utasításait.
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználói vagy csoportjai férhetnek hozzá a Samanage. A felhasználók vagy csoportok Samanage való hozzárendeléséhez kövesse a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)című témakör utasításait.
 
-### <a name="important-tips-for-assigning-users-to-samanage"></a>Fontos tippek a felhasználók Samanage-hoz való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-samanage"></a>Fontos Tippek a felhasználók Samanage való hozzárendeléséhez
 
-*    Ma a Samanage-szerepkörök automatikusan és dinamikusan töltődnek fel az Azure Portal felhasználói felületén. Mielőtt Samanage szerepköröket rendelne a felhasználókhoz, győződjön meg arról, hogy a Samanage-vel való kezdeti szinkronizálás befejeződött a Samanage-bérlő legújabb szerepkörei beolvasásához.
+*    Napjainkban a Samanage szerepkörei automatikusan és dinamikusan fel lesznek töltve a Azure Portal felhasználói felületén. Mielőtt Samanage-szerepköröket rendel a felhasználókhoz, győződjön meg arról, hogy a Samanage-bérlő legújabb szerepköreinek beolvasásához a Samanage a kezdeti szinkronizálást hajtja végre.
 
-*    Azt javasoljuk, hogy rendeljen hozzá egy Azure AD-felhasználó Samanage a kezdeti automatikus felhasználói kiépítési konfiguráció teszteléséhez. A tesztek sikeresse után később további felhasználókat és csoportokat rendelhet hozzá.
+*    Azt javasoljuk, hogy egyetlen Azure AD-felhasználót rendeljen a Samanage-hez a kezdeti automatikus felhasználó-kiépítési konfiguráció teszteléséhez. A tesztek sikerességét követően később további felhasználókat és csoportokat is hozzárendelhet.
 
-*    Amikor egy felhasználót hozzárendel a Samanage-hoz, a hozzárendelés párbeszédpanelen jelöljön ki egy érvényes alkalmazásspecifikus szerepkört, ha rendelkezésre áll. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
+*    Amikor Samanage rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen válassza ki a megfelelő alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configure-automatic-user-provisioning-to-samanage"></a>Automatikus felhasználói kiépítés konfigurálása a Samanage szolgáltatásba
+## <a name="configure-automatic-user-provisioning-to-samanage"></a>Automatikus felhasználó-kiépítés beállítása a Samanage
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépéseit. Segítségével hozhat létre, frissíthet és letilthatja a felhasználókat vagy csoportokat a Samanage-ben az Azure AD felhasználói vagy csoport-hozzárendelései alapján.
+Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálásának lépésein. Ezzel a beállítással felhasználókat vagy csoportokat hozhat létre, frissíthet és letilthat a Samanage-ben az Azure AD-ben felhasználói vagy csoport-hozzárendelések alapján.
 
 > [!TIP]
-> Saml-alapú egyszeri bejelentkezést is engedélyezhet a Samanage számára. Kövesse a [Samanage egyszeri bejelentkezési oktatóanyag](samanage-tutorial.md)utasításait. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
+> A Samanage SAML-alapú egyszeri bejelentkezés is engedélyezhető. Kövesse az [Samanage egyszeri bejelentkezési oktatóanyag](samanage-tutorial.md)utasításait. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
 
-### <a name="configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>A Samanage automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben
+### <a name="configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása a Samanage az Azure AD-ben
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások** > minden alkalmazás**Samanage****All applications** > lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások** > **minden alkalmazás** > **Samanage**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Samanage lehetőséget.**
+2. Az alkalmazások listában válassza a **Samanage**lehetőséget.
 
-    ![A Samanage hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![Az Samanage hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Samanage kiépítés](./media/samanage-provisioning-tutorial/ProvisioningTab.png)
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **Rendszergazdai hitelesítő adatok** szakaszban adja meg a Samanage-bérlői **URL-címet** és **a titkos jogkivonatot.** Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Samanage-hez. Ha a kapcsolat sikertelen, győződjön meg arról, hogy a Samanage-fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Samanage **bérlői URL-címét** és a **titkos jogkivonatot**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Samanage. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Samanage-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Samanage tesztkapcsolat](./media/samanage-provisioning-tutorial/provisioning.png)
+    ![Samanage-tesztelési kapcsolatok](./media/samanage-provisioning-tutorial/provisioning.png)
 
-6. Az **Értesítési e-mail mezőbe** írja be a személy vagy csoport e-mail címét a kiépítési hibaértesítések fogadásához. Jelölje be az **E-mail értesítés küldése hiba esetén jelölőnégyzetet.**
+6. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, aki a kiépítési hibákra vonatkozó értesítéseket szeretné kapni. Jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Samanage értesítési e-mail](./media/samanage-provisioning-tutorial/EmailNotification.png)
+    ![Samanage értesítő E-mail](./media/samanage-provisioning-tutorial/EmailNotification.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a Samanage szolgáltatásba**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Samanage**lehetőséget.
 
-    ![A felhasználók szinkronizálásának samenkezelése](./media/samanage-provisioning-tutorial/UserMappings.png)
+    ![Samanage-felhasználó szinkronizálása](./media/samanage-provisioning-tutorial/UserMappings.png)
 
-9. Tekintse át az Azure AD-ből az **Attribútumleképezések** szakaszban szinkronizált felhasználói attribútumokat. Az **egyező** tulajdonságokként kijelölt attribútumok a Samanage felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások mentéséhez válassza a **Mentés gombot.**
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelések** szakasz Samanage. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Samanage felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
 
     ![Samanage egyező felhasználói attribútumok](./media/samanage-provisioning-tutorial/UserAttributeMapping.png)
 
-10. A csoportleképezések engedélyezéséhez a **Leképezések** szakaszban válassza **az Azure Active Directory-csoportok szinkronizálása a Samanage szolgáltatással**lehetőséget.
+10. A csoportok leképezésének engedélyezéséhez a **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Samanage**lehetőséget.
 
     ![Samanage csoport szinkronizálása](./media/samanage-provisioning-tutorial/GroupMappings.png)
 
-11. A csoportok szinkronizálásához állítsa **az Engedélyezve** **értéket Igen** értékre. Tekintse át az Azure AD-ből az **Attribútumleképezések** szakaszban szinkronizált csoportattribútumokat. Az **egyező** tulajdonságokként kijelölt attribútumok a Samanage felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások mentéséhez válassza a **Mentés gombot.**
+11. A csoportok szinkronizálásához **engedélyezze** az **Igen** beállítást. Tekintse át az Azure AD-ből szinkronizált Samanage az attribútumok **leképezései** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Samanage felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
 
-    ![Samanage egyező csoportattribútumok](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
+    ![Samanage egyező csoport attribútumai](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
 
-13. A hatókörszűrők konfigurálásához kövesse a [hatókörszűrő oktatóanyagának utasításait.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+13. A hatóköri szűrők konfigurálásához kövesse a hatókör- [szűrő oktatóanyagának](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
-13. Az Azure AD-létesítési szolgáltatás Samanage engedélyezéséhez a **Beállítások** szakaszban módosítsa a **Kiépítés állapotát** **Be**állapotra.
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Samanage számára, a **Beállítások** szakaszban módosítsa a **kiépítési állapot** beállítást **a**következőre:.
 
-    ![Samanage kiépítés állapota](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
+    ![Samanage kiépítési állapota](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-14. Határozza meg azokat a felhasználókat vagy csoportokat, amelyeket ki szeretne építeni a Samanage-ba. A **Beállítások csoportban** jelölje ki a kívánt értékeket a **Hatókör területen.** Ha az **Összes felhasználó és csoport szinkronizálása lehetőséget választja,** vegye figyelembe a korlátozásokat a következő szakaszban ismertetett "Összekötő korlátozások" című szakaszban leírtak szerint.
+14. Adja meg a Samanage kiépíteni kívánt felhasználókat vagy csoportokat. A **Beállítások** szakaszban válassza ki a **hatókörben**használni kívánt értékeket. Ha bejelöli a **minden felhasználó és csoport szinkronizálása** lehetőséget, vegye figyelembe a korlátozásokat az "összekötő-korlátozások" című szakaszban leírtak szerint.
 
-    ![Samanage hatókör](./media/samanage-provisioning-tutorial/ScopeSync.png)
+    ![Samanage hatóköre](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
-15. Ha készen áll a kiépítésre, válassza a **Mentés gombot.**
+15. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
 
-    ![Samanage Mentés](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
+    ![Samanage mentése](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
 
 
-Ez a művelet elindítja a Beállítások szakasz Hatókör **szakaszában** definiált összes felhasználó vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. Ezek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. 
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. Körülbelül 40 percenként történnek, amíg az Azure AD-kiépítési szolgáltatás fut. 
 
-A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és követheti a kiépítési tevékenység jelentésre mutató hivatkozásokat. A jelentés ismerteti az Azure AD-létesítési szolgáltatás samanage-n végrehajtott összes műveletet.
+A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésének hivatkozásait. A jelentés az Azure AD-kiépítési szolgáltatás által a Samanage-on végrehajtott összes műveletet ismerteti.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő korlátai
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-Ha bejelöli az **Összes felhasználó és csoport szinkronizálása** beállítást, és beállít egy értéket a Samanage **szerepkörök** attribútumhoz, az Alapértelmezett érték alatt, **ha null (nem kötelező)** mező ben a következő formátumban kell megadni:
+Ha a **minden felhasználó és csoport szinkronizálása** lehetőséget választja, és beállítja a Samanage **roles** attribútum értékét, akkor az alapértelmezett érték alatti érték, **Ha a null (nem kötelező)** mezőt a következő formátumban kell megadni:
 
-- {"displayName":"role"}, ahol a szerepkör a kívánt alapértelmezett érték.
+- {"displayName": "role"}, ahol a szerepkör a kívánt alapértelmezett érték.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/samanage-provisioning-tutorial/tutorial_general_01.png

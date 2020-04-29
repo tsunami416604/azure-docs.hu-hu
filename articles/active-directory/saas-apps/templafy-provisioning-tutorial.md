@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Templafy konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a Templafy felhasználói fiókjainak automatikus kiépítésére és kiépítésének kiirtására.
+title: 'Oktatóanyag: a Templafy konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Templafy.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,154 +16,154 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: e03bfc1d3ce6490528f795d4ae5a83a59f044b67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064213"
 ---
-# <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>Oktatóanyag: A Templafy konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Templafy konfigurálása
 
-Ez az oktatóanyag célja, hogy bemutassa a Templafy és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához a felhasználók és/vagy csoportok Templafy-ba történő automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Templafy és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Templafy.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [Egy Templafy bérlő.](https://www.templafy.com/pricing/)
-* A Templafy felügyeleti engedélyekkel rendelkező felhasználói fiókja.
+* [Egy Templafy-bérlő](https://www.templafy.com/pricing/).
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Templafy-ben.
 
-## <a name="assigning-users-to-templafy"></a>Felhasználók hozzárendelése a Templafy-hoz
+## <a name="assigning-users-to-templafy"></a>Felhasználók kiosztása a Templafy
 
-Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a Templafy-hoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a Templafy-hoz rendelheti az alábbi utasításokat követve:
-* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Templafy való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Templafy az alábbi utasításokat követve:
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-templafy"></a>Fontos tippek a felhasználók Templafy-hoz való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-templafy"></a>Fontos Tippek a felhasználók Templafy való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve templafy az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Templafy-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználót a Templafy-hoz rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
+* Amikor Templafy rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="setup-templafy-for-provisioning"></a>Templafy beállítása a kiépítéshez
+## <a name="setup-templafy-for-provisioning"></a>Templafy beállítása a kiépítés számára
 
-Mielőtt konfigurálná a Templafy-t az Azure AD-vel való automatikus felhasználói kiépítéshez, engedélyeznie kell az SCIM-kiépítést a Templafy-n.
+Az Azure AD-vel való automatikus Templafy konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Templafy-on.
 
-1. Jelentkezzen be a Templafy Felügyeleti konzolba. Kattintson a **Közigazgatás gombra.**
+1. Jelentkezzen be a Templafy felügyeleti konzolra. Kattintson a **felügyelet**elemre.
 
     ![Templafy felügyeleti konzol](media/templafy-provisioning-tutorial/image00.png)
 
-2. Kattintson a **hitelesítési módra**.
+2. Kattintson a **hitelesítési módszerre**.
 
-    ![Templafy Hozzáadása SCIM](media/templafy-provisioning-tutorial/image01.png)
+    ![Templafy-SCIM hozzáadása](media/templafy-provisioning-tutorial/image01.png)
 
-3. Másolja a **SCIM Api-kulcs** értékére. Ezt az értéket a Templafy-alkalmazás kiépítés lapján az Azure Portalon a **Titkos jogkivonat** mezőben adja meg.
+3. Másolja a **scim API-kulcs** értékét. Ez az érték a Templafy alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal.
 
-    ![Templafy Hozzáadása SCIM](media/templafy-provisioning-tutorial/image02.png)
+    ![Templafy-SCIM hozzáadása](media/templafy-provisioning-tutorial/image02.png)
 
-## <a name="add-templafy-from-the-gallery"></a>Templafy hozzáadása a galériából
+## <a name="add-templafy-from-the-gallery"></a>Templafy hozzáadása a gyűjteményből
 
-A Templafy konfigurálásához az Azure AD automatikus felhasználói kiépítéséhez hozzá kell adnia a Templafy-t az Azure AD alkalmazásgyűjteményéből a felügyelt SaaS-alkalmazások listájához.
+Az Azure AD-vel való automatikus Templafy konfigurálásához hozzá kell adnia a Templafy az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-**Templafy hozzáadása az Azure AD alkalmazáskatalógusból, hajtsa végre a következő lépéseket:**
+**Ha Templafy szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Templafy**, válassza **a Templafy** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Templafy**kifejezést, válassza az **Templafy** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Templafy az eredménylistában](common/search-new-app.png)
+    ![Templafy az eredmények listájában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-templafy"></a>Automatikus felhasználói kiépítés konfigurálása a Templafy rendszerbe 
+## <a name="configuring-automatic-user-provisioning-to-templafy"></a>Automatikus felhasználó-kiépítés beállítása a Templafy 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a Templafy-ban az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Templafy alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Dönthet úgy is, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Templafy számára, a [Templafy Single sign-on oktatóanyag](templafy-tutorial.md)utasításait követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Templafy számára, az [Templafy egyszeri bejelentkezés oktatóanyagában](templafy-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-templafy-in-azure-ad"></a>A Templafy automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-templafy-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Templafy az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Templafy**lehetőséget.
+2. Az alkalmazások listában válassza a **Templafy**lehetőséget.
 
-    ![A Templafy hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![Az Templafy hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **Rendszergazdai hitelesítő** adatok `https://scim.templafy.com/scim` csoportban adja meg a **bérlői URL-címet.** Adja meg a **titkos jogkivonat**korábbi, **scim API-kulcsának** értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Templafy-hoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy templafy-fiókja rendelkezik rendszergazdai engedélyekkel, majd próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://scim.templafy.com/scim` meg a **bérlői URL-címet**. Adja meg a **scim API-kulcs** értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Templafy. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Templafy-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítési e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Kattintson a **Save** (Mentés) gombra.
 
-8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a Templafy szolgáltatásba**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Templafy**lehetőséget.
 
     ![Templafy felhasználói leképezések](media/templafy-provisioning-tutorial/usermapping.png)
 
-9. Tekintse át az Azure AD-ről a Templafy-ra szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a Templafy felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Templafy. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Templafy felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Templafy felhasználói attribútumok](media/templafy-provisioning-tutorial/userattribute.png)
+    ![Templafy felhasználói attribútumai](media/templafy-provisioning-tutorial/userattribute.png)
 
-10. A **Leképezések** szakaszban válassza **az Azure Active Directory-csoportok szinkronizálása a Templafy szolgáltatásba**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Templafy**lehetőséget.
 
-    ![Templafy csoport leképezései](media/templafy-provisioning-tutorial/groupmapping.png)
+    ![Templafy csoport-hozzárendelések](media/templafy-provisioning-tutorial/groupmapping.png)
 
-11. Tekintse át az Azure AD-ről a Templafy-ra szinkronizált csoportattribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a Templafy csoportjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+11. Tekintse át az Azure AD-ből szinkronizált Templafy az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Templafy tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![Templafy csoport attribútumai](media/templafy-provisioning-tutorial/groupattribute.png)
 
-12. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Az Azure AD-kiépítési szolgáltatás engedélyezéséhez templafy, módosítsa a **kiépítés állapota** **be a** **Beállítások** szakaszban.
+13. Az Azure AD-kiépítési szolgáltatás Templafy való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a Templafy-ba szeretne kiépíteni, ha a **Beállítások** szakasz **hatókörében** kiválasztja a kívánt értékeket.
+14. Adja meg a Templafy kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-    Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a Templafy-n végrehajtott összes műveletet.
+    Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Templafy-on végrehajtott összes műveletet ismertetik.
 
-    Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésének jelentéskészítése című témakörben](../app-provisioning/check-status-user-account-provisioning.md) olvashat bővebben.
+    Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md) helyezésével kapcsolatban.
     
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

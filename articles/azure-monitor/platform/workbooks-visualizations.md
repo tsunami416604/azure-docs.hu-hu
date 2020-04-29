@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor munkafüzet-vizualizációi
-description: Ismerje meg az Azure Monitor munkafüzet-vizualizációk összetevőit, beleértve a szöveget, a diagramokat, a rácsokat, a fákat és a grafikonokat.
+title: Azure Monitor munkafüzetek vizualizációi
+description: Tudjon meg többet a Azure Monitor munkafüzet vizualizációs összetevőiről, beleértve a szöveget, a diagramokat, a rácsokat, a fákat és a diagramokat.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,157 +10,157 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658030"
 ---
-# <a name="azure-monitor-workbook-visualizations"></a>Az Azure Monitor munkafüzet-vizualizációi
+# <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor munkafüzetek vizualizációi
 
-Az Azure Monitor-munkafüzetek számos különböző megjelenítési stílust támogatnak a jelentéskészítési igényeknek megfelelően. Ez a cikk példákat mutat be az egyes vizualizációs típusokra.
+Azure Monitor munkafüzetek számos különböző vizualizációs stílust támogatnak a jelentéskészítési igények kielégítéséhez. Ez a cikk példákat tartalmaz az egyes vizualizációk típusára.
 
 ## <a name="text"></a>Szöveg
 
-A munkafüzetek lehetővé teszik a szerzők számára, hogy szövegblokkokat foglaljanak bele a munkafüzeteikbe. A szöveg lehet a telemetria emberi elemzése, az adatok értelmezését segítő információk, szakaszfejlécek stb.
+A munkafüzetek lehetővé teszik a szerzők számára, hogy szöveges blokkokat foglaljanak bele a munkafüzetekbe. A szöveg lehet a telemetria emberi elemzése, amely segítséget nyújt a felhasználóknak az adatok értelmezésében, a szakaszok fejlécében stb.
 
-![Képernyőkép: Apdex szövegtábla](./media/workbooks-visualizations/apdex.png)
+![Képernyőkép a Apdex](./media/workbooks-visualizations/apdex.png)
 
-A szöveg a Markdown vezérlőn keresztül kerül hozzáadásra, amely teljes formázási vezérlést biztosít.
+A szöveg egy Markdown-vezérlőn keresztül lett hozzáadva, amely teljes formázási vezérlést biztosít.
 
-![Képernyőkép a renderelt táblát építő nyers jelölésről](./media/workbooks-visualizations/markdown.png)
+![Képernyőkép a megjelenített táblázatot felépítő nyers Markdown](./media/workbooks-visualizations/markdown.png)
 
-### <a name="add-a-text-control"></a>Szövegvezérlő hozzáadása
+### <a name="add-a-text-control"></a>Szövegbeviteli vezérlőelem hozzáadása
 
-1. Az eszköztárelemre kattintva átváltson **Edit** a munkafüzetet szerkesztési módra.
-2. A **Szöveg hozzáadása** hivatkozással szövegvezérlőt adhat a munkafüzethez.
-3. Markdown hozzáadása a vezérlőhöz.
-4. A **formázott** szöveg megtekintéséhez kattintson a Kész szerkesztés gombra.
+1. Az eszköztár **szerkesztése** elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+2. A **text (szöveg hozzáadása** ) hivatkozás használatával adjon hozzá egy szövegbeviteli vezérlőt a munkafüzethez.
+3. Adja hozzá a Markdown a vezérlőhöz.
+4. A formázott szöveg megjelenítéséhez kattintson a **kész szerkesztés** gombra.
 
 > [!TIP]
-> Használja ezt [a Markdown cheat sheet,](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) hogy megtudjuk, a különböző formázási lehetőségeket.
+> Ez a [Markdown-Cheat-adatlap](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) a különböző formázási beállítások megismerésére használható.
 
 ## <a name="charts"></a>Diagramok
 
-A munkafüzetek lehetővé teszik a figyelési adatok diagramként való bemutatását. A támogatott diagramtípusok közé tartoznak a vonal, a sáv, a sáv kategorikus, a terület, a pontdiagramok, a kör és az idő. A szerzők testre szabhatják a diagram magasságát, szélességét, színpalettáját, jelmagyarázatát, címeit, adatmentes üzenetét stb.
+A munkafüzetek lehetővé teszik, hogy a figyelési adatgyűjtés diagramként legyen megjelenítve. A támogatott diagramtípusok közé tartozik a vonal, a sáv, a kategorikus, a terület, a pontdiagram, a torta és az idő. A szerzők dönthetnek úgy, hogy testre szabják a diagram magasságát, szélességét, színpalettáját, jelmagyarázatát, címeit, nem adatüzeneteit stb.
 
-A munkafüzetek mind a naplók, mind a metrikaadatforrások diagramjait támogatják. 
+A munkafüzetek a naplók és a metrikus adatforrások diagramjait támogatják. 
 
-### <a name="adding-a-log-chart"></a>Naplódiagram hozzáadása
+### <a name="adding-a-log-chart"></a>Naplózási diagram hozzáadása
 
-1. Az eszköztárelemre kattintva átváltson **Edit** a munkafüzetet szerkesztési módra.
-2. A **Lekérdezés hozzáadása** hivatkozással naplólekérdezés-vezérlőt adhat a munkafüzethez.
-3. Válassza ki a lekérdezés típusát **naplóként,** erőforrástípusként (például Application Insights) és a megcélozandó erőforrásokként.
-4. A Lekérdezés szerkesztővel megadhatja a [KQL-t](https://docs.microsoft.com/azure/kusto/query/) elemzésre (például a kérések trendje).
-5. Állítsa a képi megjelenítést a következők egyikére: **Terület**, **Sáv**, **Sáv (kategorikus)**, **vonal,** **kör,** **scatter**vagy **idő**.
-6. Szükség esetén állítson be más paramétereket is – például időtartományt, megjelenítést, méretet, színpalettát és jelmagyarázatot.
+1. Az eszköztár **szerkesztése** elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+2. A **lekérdezés hozzáadása** hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez.
+3. Válassza ki a lekérdezés típusát **naplóként**, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
+4. A lekérdezéstervező segítségével adja meg az elemzés [KQL](https://docs.microsoft.com/azure/kusto/query/) (például a kérelmek trendje).
+5. Állítsa a vizualizációt a következőre **: terület**, **sáv**, **sáv (kategorikus)**, **vonal**, torta **,** pont vagy **idő**. **Pie**
+6. Szükség esetén más paramétereket is beállíthat, például a vizualizációt, a méretet, a színpalettát és a jelmagyarázatot.
 
-![A naplódiagram képernyőképe szerkesztési módban](./media/workbooks-visualizations/log-chart.png)
+![Képernyőfelvétel a diagram szerkesztési módjáról](./media/workbooks-visualizations/log-chart.png)
 
-#### <a name="log-chart-parameters"></a>Naplódiagram paraméterei
+#### <a name="log-chart-parameters"></a>A naplózási diagram paraméterei
 
 | Paraméter | Magyarázat | Példa |
 | ------------- |:-------------|:-------------|
-| `Query Type` | A használandó lekérdezés típusa | Napló, Azure Resource Graph, stb. |
-| `Resource Type` | A megcélozandó erőforrástípus | Application Insights, Log Analytics vagy Azure-first |
-| `Resources` | A metrikák értékének leértékeléséhez szükséges erőforrások | Samiapp1 |
-| `Time Range` | A naplódiagram megtekintéséhez vezető időablak | Az elmúlt óra, az utolsó 24 óra, stb. |
-| `Visualization` | A használandó vizualizáció | Terület, Bár, Vonal, Pite, Scatter, Idő, bár kategorikus |
+| `Query Type` | A használandó lekérdezés típusa | Napló, Azure Resource Graph stb. |
+| `Resource Type` | A célként használandó erőforrás típusa | Application Insights, Log Analytics vagy Azure – első |
+| `Resources` | Erőforrások készlete, amelyből beolvashatók a mérőszámok értéke | MyApp1 |
+| `Time Range` | A naplózási diagram megtekintésének időablaka | Az elmúlt óra, az elmúlt 24 óra stb. |
+| `Visualization` | A használni kívánt vizualizáció | Körzet, sáv, vonal, torta, Scatter, idő, Bar kategorikus |
 | `Size` | A vezérlő függőleges mérete | Kicsi, közepes, nagy vagy teljes |
-| `Color palette` | A diagramon használandó színpaletta. Figyelmen kívül hagyva több metrikus vagy szegmentált módban. | Kék, zöld, piros stb. |
-| `Legend` | A jelmagyarázathoz használandó összesítési függvény | Értékek összege vagy átlaga vagy Max, Min, First, Utolsó érték |
-| `Query` | Bármely KQL-lekérdezés, amely a diagram vizualizációja által várt formátumban ad vissza adatokat | _kérelmek \| make-series kérések = count() default = 0 az időbélyegen a ezelőtt(1d) és a now() 1h._ |
+| `Color palette` | A diagramban használandó színpaletta Több metrikus vagy szegmentált módban figyelmen kívül hagyva. | Kék, zöld, piros stb. |
+| `Legend` | A jelmagyarázathoz használandó aggregációs függvény | Értékek vagy maximum, minimum, első, utolsó érték összege vagy átlaga |
+| `Query` | Bármely olyan KQL-lekérdezés, amely a diagram vizualizációja által várt formátumban adja vissza az adatok értékét | _a \| kérelmek sorozatos kérelmeket igényelnek = count () default = 0 az időbélyegzőn (1d) – most (), 1 – 5. lépés_ |
 
-### <a name="adding-a-metric-chart"></a>Mérőszámdiagram hozzáadása
+### <a name="adding-a-metric-chart"></a>Metrikus diagram hozzáadása
 
-1. Az eszköztárelemre kattintva átváltson **Edit** a munkafüzetet szerkesztési módra.
-2. A **Metrika hozzáadása** hivatkozással metrikavezérlőt adhat a munkafüzethez.
-3. Válasszon ki egy erőforrástípust (például tárfiók), a megcélozandó erőforrásokat, a metrika névtaterét és nevét, valamint a használandó összesítést.
-4. Szükség esetén állítson be más paramétereket is – például időtartományt, felosztást, megjelenítést, méretet és színpalettát.
+1. Az eszköztár **szerkesztése** elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+2. A **metrika hozzáadása** hivatkozásra kattintva hozzáadhat egy mérőszám vezérlőelemet a munkafüzethez.
+3. Válasszon ki egy erőforrástípust (például Storage-fiók), a célként megadott erőforrásokat, a metrika névterét és nevét, valamint a használandó összesítést.
+4. Szükség esetén más paramétereket is beállíthat, például időtartományt, felosztást, vizualizációt, méretet és színpalettát.
 
-![Képmutató a metrikus diagramról szerkesztési módban](./media/workbooks-visualizations/metric-chart.png)
+![A metrikus diagram képernyőképe szerkesztési módban](./media/workbooks-visualizations/metric-chart.png)
 
-#### <a name="metric-chart-parameters"></a>Metrikadiagram paraméterei
+#### <a name="metric-chart-parameters"></a>Metrikai diagram paraméterei
 
 | Paraméter | Magyarázat | Példa |
 | ------------- |:-------------|:-------------|
-| `Resource Type` | A megcélozandó erőforrástípus | Tároló vagy virtuális gép. |
-| `Resources` | A metrikák értékének leértékeléséhez szükséges erőforrások | MyStorage1 |
-| `Namespace` | A metrikával rendelkező névtér | Tárolási > Blob |
-| `Metric` | A vizualizáláshoz | Blob >-tranzakciók tárolási > |
-| `Aggregation` | A mérőszámra alkalmazandó összesítési függvény | Összeg, darabszám, átlag stb. |
-| `Time Range` | A metrika megtekintéséhez a | Az elmúlt óra, az utolsó 24 óra, stb. |
-| `Visualization` | A használandó vizualizáció | Terület, Bár, Vonal, Szóró, Rács |
-| `Split By` | A metrika felosztása dimenzióra | Tranzakciók földrajzi típus szerint |
-| `Size` | A vezérlő függőleges mérete | Kicsi, közepes vagy nagy |
-| `Color palette` | A diagramon használandó színpaletta. A paraméter `Split by` használata esetén figyelmen kívül hagyva | Kék, zöld, piros stb. |
+| `Resource Type` | A célként használandó erőforrás típusa | Tároló vagy virtuális gép. |
+| `Resources` | Erőforrások készlete, amelyből beolvashatók a mérőszámok értéke | MyStorage1 |
+| `Namespace` | A metrikával rendelkező névtér | Storage > blob |
+| `Metric` | A megjeleníteni kívánt metrika | Storage > blob > tranzakció |
+| `Aggregation` | A metrikára alkalmazandó aggregációs függvény | Összeg, Darabszám, átlag stb. |
+| `Time Range` | Az időablak, amely a metrikát jeleníti meg | Az elmúlt óra, az elmúlt 24 óra stb. |
+| `Visualization` | A használni kívánt vizualizáció | Terület, sáv, vonal, Scatter, rács |
+| `Split By` | A mérőszám kiosztása egy dimenzión | Tranzakciók földrajzi típus szerint |
+| `Size` | A vezérlő függőleges mérete | Kis, közepes vagy nagy |
+| `Color palette` | A diagramban használandó színpaletta Figyelmen kívül hagyva `Split by` , ha a paraméter használatban van | Kék, zöld, piros stb. |
 
 ## <a name="grids"></a>Rácsok
 
-A rácsok vagy táblák gyakori módjai az adatok felhasználóknak való bemutatásának. A munkafüzetek lehetővé teszik a felhasználók számára, hogy egyénileg stilírezzék a rács oszlopait, hogy gazdag felhasználói felületet biztosítsanak a jelentésekhez.
+A rácsok vagy táblázatok a felhasználók számára történő adatmegjelenítés közös módja. A munkafüzetek lehetővé teszik a felhasználók számára a rács oszlopainak egyéni stílusát, hogy a jelentésekben gazdag felhasználói felületet nyújtsanak.
 
-Az alábbi példa egy rácsot mutat be, amely ikonokat, hőtérképeket és szikrasávokat egyesít az összetett információk bemutatásához. A munkafüzet rendezést, keresőmezőt és egy "go-to-analytics" gombot is biztosít.
+Az alábbi példa egy olyan rácsot mutat be, amely kombinálja az ikonokat, a intenzitástérképei és a Spark-sávokat a komplex információk megjelenítéséhez. A munkafüzet a rendezést, a keresőmezőt és a "to-Analytics" gombot is tartalmazza.
 
-![Naplóalapú rács képernyőképe](./media/workbooks-visualizations/grid.png)
+![A log-alapú rács képernyőképe](./media/workbooks-visualizations/grid.png)
 
-### <a name="adding-a-log-based-grid"></a>Naplóalapú rács hozzáadása
+### <a name="adding-a-log-based-grid"></a>Log-alapú rács hozzáadása
 
-1. Az eszköztárelemre kattintva átváltson **Edit** a munkafüzetet szerkesztési módra.
-2. A **Lekérdezés hozzáadása** hivatkozással naplólekérdezés-vezérlőt adhat a munkafüzethez.
-3. Válassza ki a lekérdezés típusát **naplóként,** erőforrástípusként (például Application Insights) és a megcélozandó erőforrásokként.
-4. A Lekérdezés szerkesztővel adja meg a KQL-t elemzésre (például küszöbérték alatti memóriával rendelkező virtuális gépek)
-5. A képi megjelenítés beállítása **Rácsra**
-6. Szükség esetén állítson be más paramétereket is – például az időtartományt, a méretet, a színpalettát és a jelmagyarázatot.
+1. Az eszköztár **szerkesztése** elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+2. A **lekérdezés hozzáadása** hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez.
+3. Válassza ki a lekérdezés típusát **naplóként**, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
+4. A lekérdezéstervező segítségével megadhatja az elemzés KQL (például egy küszöbérték alatti virtuális gépeket)
+5. Vizualizáció beállítása **rácsra**
+6. Szükség esetén más paramétereket is beállíthat – például időtartomány, méret, színpaletta és jelmagyarázat.
 
-![Képernyőkép a naplóalapú rácsos lekérdezésről](./media/workbooks-visualizations/grid-query.png)
+![A log-alapú rács lekérdezésének képernyőképe](./media/workbooks-visualizations/grid-query.png)
 
 ## <a name="tiles"></a>Csempék
 
-A csempék nagyon hasznos lehetőséget jelentenek a munkafüzetek összesítő adatainak megjelenítésére. Az alábbi képen a csempék gyakori használati esete látható - alkalmazásszintű összegzés egy részletes rács tetején.
+A csempék nagyon hasznosak a munkafüzetek összegző adatainak bemutatására. Az alábbi képen látható a csempék általános használati esete – az alkalmazás szintű összefoglalás a részletes rácson felül.
 
-![Képernyőkép a csempe összegzési nézetéről](./media/workbooks-visualizations/tiles-summary.png)
+![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/tiles-summary.png)
 
-A munkafüzetcsempék támogatják a cím, a felirat, a nagy szöveg, az ikonok, a metrikus alapú színátmenetek, a szikravonal/sávok, az élőláb stb.
+A munkafüzet csempék támogatják a címet, a feliratot, a nagyméretű szöveget, az ikonokat, a metrikai átmeneteket, a Spark-vonalakat, a sávokat, a láblécet stb.
 
 ### <a name="adding-a-tile"></a>Csempe hozzáadása
 
-1. Az eszköztárelemre kattintva átváltson _Edit_ a munkafüzetet szerkesztési módra.
-2. A **Lekérdezés hozzáadása** hivatkozással naplólekérdezés-vezérlőt adhat a munkafüzethez. 
-3. Válassza ki a lekérdezés típusát **naplóként,** erőforrástípusként (például Application Insights) és a megcélozandó erőforrásokként.
-4. A Lekérdezés szerkesztő vel adja meg a KQL-t elemzésre
+1. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+2. A **lekérdezés hozzáadása** hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez. 
+3. Válassza ki a lekérdezés típusát **naplóként**, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
+4. Az elemzéshez használandó KQL megadásához használja a lekérdezés-szerkesztőt
     ```kusto
     requests
     | summarize Requests = count() by appName, name
     | top 7 by Requests desc
     ```
-5. A méret beállítása **teljesre**
-6. A képi megjelenítés beállítása **Mozaikok beállításra**
-7. A Beállítások ablaktábla megnyitásához kattintson a **Mozaikbeállítások** gombra
-8. A **Mozaikmezők mezőben**állítsa be a következőt:
-    * Cím:`name`
-    * Balra: `Requests`, Renderer: `Big Number`, `Green to Red`Színpaletta: , Min érték:`0`
-    * Alsó:`appName`
-9. Kattintson a **Mentés és bezárás** gombra az ablaktábla alján.
+5. **Teljes** méret beállítása
+6. Vizualizáció beállítása **csempék** számára
+7. Kattintson a **csempe beállításai** gombra a beállítások ablaktábla megnyitásához.
+8. A **csempe mezőiben**állítsa be a következőket:
+    * Cím`name`
+    * Bal: `Requests`, megjelenítő: `Big Number`, színpaletta: `Green to Red`, minimális érték:`0`
+    * Alján`appName`
+9. Kattintson a **Mentés és bezárás** gombra a panel alján.
 
-![Képernyőkép a csempe összegzési nézetéről](./media/workbooks-visualizations/tile-settings.png)
+![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/tile-settings.png)
 
-Így fognak kinézni a csempék olvasási módban:
+A csempék olvasási módban fognak megjelenni:
 
-![Képernyőkép a csempe összegzési nézetéről](./media/workbooks-visualizations/tiles-read-mode.png)
+![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/tiles-read-mode.png)
 
 ## <a name="trees"></a>Fák
 
-A munkafüzetek farácsokon keresztül támogatják a hierarchikus nézeteket. A fák lehetővé teszik, hogy egyes sorok a következő szintre bővíthetők legyenek a részletezési élmény érdekében.
+A munkafüzetek farácson keresztül támogatják a hierarchikus nézeteket. A fák lehetővé teszik, hogy egyes sorok kiterjeszthetők legyenek a következő szintre a részletezési élmény érdekében.
 
-Az alábbi példa a tároló állapotának metrikákat (munkakészlet méretét) mutatja, amelyeket farácsként jelenítmeg. A legfelső szintű csomópontok itt az Azure Kubernetes-szolgáltatás (AKS) csomópontok, a következő szint a podok és a végső szint tárolók. Figyelje meg, hogy továbbra is formázhatja az oszlopokat, mint egy rácsban (hőtérkép, ikonok, hivatkozás). Az alapul szolgáló adatforrás ebben az esetben egy Log Analytics munkaterület AKS-naplók.
+Az alábbi példában a tároló állapot metrikái (Munkakészlet mérete) láthatók farácsként. A legfelső szintű csomópontok itt az Azure Kubernetes Service (ak) csomópontjai, a következő szint a hüvelyek, a végső szint pedig tároló. Figyelje meg, hogy továbbra is formázhatja az oszlopokat, például egy rácsban (hő, ikonok, hivatkozás). Ebben az esetben az alapul szolgáló adatforrás egy Log Analytics munkaterület, AK-naplókkal.
 
-![Képernyőkép a csempe összegzési nézetéről](./media/workbooks-visualizations/trees.png)
+![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/trees.png)
 
-### <a name="adding-a-tree-grid"></a>Farács hozzáadása
-1. Az eszköztárelemre kattintva átváltson _Edit_ a munkafüzetet szerkesztési módra.
-2. A **Lekérdezés hozzáadása** hivatkozással naplólekérdezés-vezérlőt adhat a munkafüzethez. 
-3. Válassza ki a lekérdezés típusát **naplóként,** erőforrástípusként (például Application Insights) és a megcélozandó erőforrásokként.
-4. A Lekérdezés szerkesztő vel adja meg a KQL-t elemzésre
+### <a name="adding-a-tree-grid"></a>Fa rács hozzáadása
+1. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+2. A **lekérdezés hozzáadása** hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez. 
+3. Válassza ki a lekérdezés típusát **naplóként**, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
+4. Az elemzéshez használandó KQL megadásához használja a lekérdezés-szerkesztőt
     ```kusto
     requests
     | summarize Requests = count() by ParentId = appName, Id = name
@@ -171,21 +171,21 @@ Az alábbi példa a tároló állapotának metrikákat (munkakészlet méretét)
     | project Name, Kind, Requests, Id, ParentId
     | order by Requests desc
     ```
-5. A képi megjelenítés beállítása **Rácsra**
-6. Kattintson az **Oszlopbeállítások** gombra a Beállítások ablaktábla megnyitásához
-7. Az alsó **fa/csoportosítás beállításai** szakaszban állítsa be a következőt:
+5. Vizualizáció beállítása **rácsra**
+6. Kattintson az **oszlop beállításai** gombra a beállítások ablaktábla megnyitásához.
+7. Az alul található **Tree/Group By Settings** szakaszban állítsa be a következőt:
     * Fa típusa:`Parent/Child`
     * Azonosító mező:`Id`
-    * Szülőazonosító mező:`ParentId`
-    * A kibontó megjelenítése:`Name`
-    * Bontsa ki a fa legfelső szintjét:`checked`
-8. A felső _Oszlopok_ szakaszban állítsa be a következőt:
-    * _Id_ - Oszlopmegjelenítő:`Hidden`
-    * _Szülőazonosító_ – Oszlopmegjelenítő:`Hidden`
-    * _Kérések_ - Oszlopmegjelenítő: `Bar` `Blue`, Szín: , Minimális érték:`0`
-9. Kattintson a _Mentés és bezárás_ gombra az ablaktábla alján.    
+    * Szülő-azonosító mező:`ParentId`
+    * A Expander megjelenítése:`Name`
+    * A fa legfelső szintjének kibontása:`checked`
+8. Az _oszlopok_ szakaszban, a felső részen állítsa be a következőt:
+    * _Azonosító_ – oszlop megjelenítő:`Hidden`
+    * _Szülő-azonosító_ – oszlop megjelenítő:`Hidden`
+    * _Kérelmek_ – oszlop megjelenítő: `Bar`, szín: `Blue`, minimális érték:`0`
+9. Kattintson a _Mentés és bezárás_ gombra a panel alján.    
 
-![Képernyőkép a csempe összegzési nézetéről](./media/workbooks-visualizations/tree-settings.png)
+![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/tree-settings.png)
 
 ### <a name="tree-settings"></a>Fa beállításai
 
@@ -193,22 +193,22 @@ Az alábbi példa a tároló állapotának metrikákat (munkakészlet méretét)
 |:------------- |:-------------|
 | `Id Field` | A rács minden sorának egyedi azonosítója |
 | `Parent Id Field` | Az aktuális sor szülőjének azonosítója |
-| `Show the expander on` | Az az oszlop, amelyen a fabővítő megjelenik. Gyakori, hogy a farácsok elrejtik az azonosítóés a szülőazonosító mezőt, mert nem olvashatók. Ehelyett a bővítő egy olvashatóbb értékkel rendelkező mezőn jelenik meg - például az entitás neve |
-| `Expand the top level of the tree` | Ha be van jelölve, a farács a legfelső szinten lesz kibontva. Akkor hasznos, ha alapértelmezés szerint további információkat szeretne megjeleníteni |
+| `Show the expander on` | Az az oszlop, amelyen be kell mutatni a fa kiexpanderét. A farácsok esetében gyakori, hogy elrejtsék az azonosítót és a szülő azonosító mezőt, mert nem nagyon olvashatók. Ehelyett a Expander egy olvashatóbb értéket tartalmazó mezőben jelenik meg, mint az entitás neve. |
+| `Expand the top level of the tree` | Ha be van jelölve, a farács a legfelső szinten lesz kibontva. Hasznos, ha további információkat szeretne megjeleníteni alapértelmezetten |
 
 ## <a name="graphs"></a>Grafikonok
 
-A munkafüzetek támogatják tetszőleges grafikonok megjelenítését a naplókból származó adatok alapján, hogy megmutassák a figyelési entitások közötti kapcsolatokat.
+A munkafüzetek lehetővé támogatják a naplókból származó adatok alapján tetszőleges gráfok megjelenítését a figyelési entitások közötti kapcsolatok megjelenítéséhez.
 
-Az alábbi grafikon a számítógép be- és kiáramlását mutatja különböző porton keresztül a külső számítógépekre/számítógépekről. Típus szerint színeződik (számítógép és port vs. külső IP), és a peremméretek a köztes adatok mennyiségének felelnek meg. Az alapul szolgáló adatok a Virtuálisgép-kapcsolatokat célzó KQL-lekérdezésből származnak.
+Az alábbi ábrán egy számítógépnek a külső számítógépekre irányuló és kívüli különböző portokon keresztül áramló adatok láthatók. Színes típus szerint (számítógép vagy port vagy külső IP-cím), a peremhálózat mérete pedig a közti adatforgalom mennyiségének felel meg. A mögöttes adatok a virtuálisgép-kapcsolatokra irányuló KQL-lekérdezésekből származnak.
 
-![Képernyőkép a csempe összegzési nézetéről](./media/workbooks-visualizations/graph.png)
+![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/graph.png)
 
-### <a name="adding-a-graph"></a>Diagram hozzáadása
-1. Az eszköztárelemre kattintva átváltson _Edit_ a munkafüzetet szerkesztési módra.
-2. A **Lekérdezés hozzáadása** hivatkozással naplólekérdezés-vezérlőt adhat a munkafüzethez. 
-3. Válassza ki a lekérdezés típusát **naplóként,** erőforrástípusként (például Application Insights) és a megcélozandó erőforrásokként.
-4. A Lekérdezés szerkesztő vel adja meg a KQL-t elemzésre
+### <a name="adding-a-graph"></a>Gráf hozzáadása
+1. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+2. A **lekérdezés hozzáadása** hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez. 
+3. Válassza ki a lekérdezés típusát **naplóként**, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
+4. Az elemzéshez használandó KQL megadásához használja a lekérdezés-szerkesztőt
     ```kusto
     let data = dependencies
     | summarize Calls = count() by App = appName, Request = operation_Name, Dependency = name
@@ -230,9 +230,9 @@ Az alábbi grafikon a számítógép be- és kiáramlását mutatja különböz�
     nodes
     | union (links)
     ```
-7. A képi megjelenítés beállítása **grafikonra**
-8. Kattintson a **Diagrambeállítások** gombra a Beállítások ablaktábla megnyitásához
-9. Az _Elrendezési mezők_ alján állítsa be a következőt:
+7. Vizualizáció beállítása **gráfra**
+8. A beállítások ablaktábla megnyitásához kattintson a **Graph-beállítások** gombra.
+9. A lenti _elrendezés mezőkben_ állítsa be a következőt:
     * `Node Id`: `Id`
     * `Source Id`: `SourceId`
     * `Target Id`: `TargetId`
@@ -242,15 +242,15 @@ Az alábbi grafikon a számítógép be- és kiáramlását mutatja különböz�
     * `Coloring Type`: `Categorical`
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
-10. A felső _csomópontformátum-beállítások_ mezőben állítsa be a következőt:
-    * _Felső tartalom_- `Name`Oszlop használata: , Oszlopmegjelenítő:`Text`
-    * _Tartalom középre igazítása_– Oszlop használata: `Calls`, Oszlopmegjelenítő: `Big Number`, Színpaletta:`None`
-    * _Alsó tartalom_- `Kind`Oszlop használata: , Oszlopmegjelenítő:`Text`
-10. Kattintson a _Mentés és bezárás_ gombra az ablaktábla alján.
+10. A felső _csomópont-formátum beállításainál_ állítsa be a következőt:
+    * _Top Content_-use oszlop: `Name`, oszlop megjelenítő:`Text`
+    * _Center Content_-use oszlop: `Calls`, oszlop megjelenítő: `Big Number`, színpaletta:`None`
+    * _Alsó Content_-use oszlop: `Kind`, oszlop megjelenítő:`Text`
+10. Kattintson a _Mentés és bezárás_ gombra a panel alján.
 
-![Képernyőkép a csempe összegzési nézetéről](./media/workbooks-visualizations/graph-settings.png)
+![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/graph-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Resource Manager rel [telepítheti](workbooks-automate.md) a munkafüzeteket.
-* [Szabályozhatja](workbooks-access-control.md) és megoszthatja a munkafüzet erőforrásaihoz való hozzáférést.
+* Munkafüzetek [üzembe helyezése](workbooks-automate.md) Azure Resource Managersal.
+* A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

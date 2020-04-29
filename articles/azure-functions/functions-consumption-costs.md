@@ -1,115 +1,115 @@
 ---
-title: A felhasználási terv költségeinek becslése az Azure Functionsben
-description: Ismerje meg, hogyan becsülheti meg jobban azazure-csomag azure-beli felhasználási csomagban a függvényalkalmazás futtatásakor felmerülő költségeket.
+title: A fogyasztási terv költségeinek becslése Azure Functions
+description: Megtudhatja, hogyan becsülheti meg jobban a Function alkalmazás Azure-beli használati tervben való futtatásakor felmerülő költségeket.
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76963988"
 ---
-# <a name="estimating-consumption-plan-costs"></a>A felhasználási terv költségeinek becslése
+# <a name="estimating-consumption-plan-costs"></a>A fogyasztási terv költségeinek becslése
 
-Jelenleg háromféle üzemeltetési csomag létezik egy azure Functions ben futó alkalmazáshoz, és mindegyik csomag saját díjszabási modellel rendelkezik: 
+A Azure Functionsban futó alkalmazások esetében jelenleg háromféle üzemeltetési csomag létezik, és mindegyik csomag saját díjszabási modellel rendelkezik: 
 
 | Felkészülés | Leírás |
 | ---- | ----------- |
-| [**Használat**](functions-scale.md#consumption-plan) | Csak a függvényalkalmazás futási idejéért kell fizetnie. Ez a csomag előfizetésenként tartalmaz egy [ingyenes támogatási][díjszabási oldalt.]|
-| [**Prémium**](functions-scale.md#premium-plan) | Ugyanazokat a funkciókat és méretezési mechanizmust biztosítja, mint a felhasználási terv, de a jobb teljesítmény és a virtuális hálózat eléréséhez. A költség a kiválasztott tarifacsomagon alapul. További információ: [Azure Functions Premium csomag.](functions-premium-plan.md) |
-| [**Dedikált (App Service)**](functions-scale.md#app-service-plan) <br/>(alapszint vagy magasabb) | Ha dedikált virtuális gépeken vagy elszigetelten kell futtatnia, használjon egyéni rendszerképeket, vagy szeretné használni a felesleges App Service-csomag kapacitását. [Rendszeres Alkalmazásszolgáltatási csomag számlázást](https://azure.microsoft.com/pricing/details/app-service/)használ. A költség a kiválasztott tarifacsomagon alapul.|
+| [**Fogyasztás**](functions-scale.md#consumption-plan) | Csak a Function app által futtatott idő után kell fizetnie. Ez a csomag egy [ingyenes engedélyezési][díjszabási oldalt] tartalmaz előfizetés alapján.|
+| [**Prémium szintű**](functions-scale.md#premium-plan) | Ugyanazokat a szolgáltatásokat és skálázási mechanizmust biztosítja, mint a használati terv, de a teljesítmény-és VNET-hozzáférés is elérhető. A díjak a választott díjszabási szinten alapulnak. További információ: [Azure functions Premium csomag](functions-premium-plan.md). |
+| [**Dedikált (App Service)**](functions-scale.md#app-service-plan) <br/>(alapszintű vagy magasabb) | Ha dedikált virtuális gépeken vagy elszigetelten kell futnia, használjon egyéni rendszerképeket, vagy szeretné használni a felesleges App Service csomag kapacitását. A [normál app Service csomag számlázását](https://azure.microsoft.com/pricing/details/app-service/)használja. A díjak a választott díjszabási szinten alapulnak.|
 
-Azt a csomagot választotta, amely a legjobban támogatja a függvény teljesítményét és költségkövetelményeit. További információ: [Azure Functions scale and hosting](functions-scale.md).
+Úgy döntött, hogy a legjobban támogatja a függvény teljesítményére és a költséghatékonyságra vonatkozó követelményeket. További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md).
 
-Ez a cikk csak a Felhasználási tervvel foglalkozik, mivel ez a terv változó költségeket eredményez. Ez a cikk felülírja a [felhasználási terv költség számlázási GYIK](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) cikket.
+Ez a cikk csak a fogyasztási tervvel foglalkozik, mivel ez a csomag változó költségeket eredményez. Ez a cikk felülbírálja a használati [terv költségszámításával kapcsolatos gyakori kérdések](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) című cikket.
 
-A tartós függvények a felhasználási tervben is futtathatók. Ha többet szeretne tudni a tartós függvények használatakor a költségszempontokról, olvassa el a [Tartós függvények számlázása című témakört.](./durable/durable-functions-billing.md)
+A Durable Functions egy felhasználási csomagban is futtatható. Ha többet szeretne megtudni a Durable Functions használatakor felmerülő díjszabásról, tekintse meg a [Durable functions számlázást](./durable/durable-functions-billing.md)ismertető témakört.
 
 ## <a name="consumption-plan-costs"></a>Használatalapú csomag költségei
 
-Az egyetlen függvény végrehajtásának végrehajtási *költsége* *GB-másodpercben*van mérhető. A végrehajtási költség kiszámítása a memóriahasználat és a végrehajtási idő kombinálásával történik. A hosszabb ideig futó függvény többe kerül, csakúgy, mint egy olyan függvény, amely több memóriát fogyaszt. 
+Egy függvény végrehajtásának végrehajtási *költségeit* *GB-másodpercben*mérjük. A végrehajtási költségeket a memóriahasználat és a végrehajtási idő kombinálásával kell kiszámítani. Egy függvény, amely több költséget futtat, akárcsak egy függvény, amely több memóriát használ fel. 
 
-Vegyünk egy olyan esetet, amikor a függvény által használt memória mennyisége állandó marad. Ebben az esetben a költség kiszámítása egyszerű szorzás. Tegyük fel például, hogy a függvény 3 másodpercig 0,5 GB-ot fogyasztott. Akkor a végrehajtási `0.5GB * 3s = 1.5 GB-seconds`költség . 
+Vegyünk egy esetet, amikor a függvény által használt memória mennyisége állandó marad. Ebben az esetben a költségeket egyszerű szorzással számítjuk ki. Tegyük fel például, hogy a függvény 3 másodpercig 0,5 GB-ot használt. Ezután a végrehajtás költsége `0.5GB * 3s = 1.5 GB-seconds`. 
 
-Mivel a memóriahasználat idővel változik, a számítás lényegében a memóriahasználat szerves része az idő múlásával.  A rendszer ezt a számítást úgy végzi el, hogy rendszeres időközönként mintavételezi a folyamat memóriahasználatát (a gyermekfolyamatokkal együtt). Ahogy az az [árképzési oldalon]is szerepel, a memóriahasználat a legközelebbi 128 MB-os gyűjtőre kerül. Ha a folyamat 160 MB-ot használ, 256 MB-ot számítunk fel. A számítás figyelembe veszi az egyidejűséget, amely több egyidejű függvény végrehajtásugyanabban a folyamatban.
+Mivel az idő múlásával megváltozik a memóriahasználat, a számítás lényegében a memóriahasználat szerves része az idő múlásával.  A System ezt a számítást úgy végzi el, hogy a folyamat (az alárendelt folyamatokkal együtt) memória-használatát rendszeres időközönként mintavétel útján végzi. A [díjszabási oldalon]említettek szerint a memóriahasználat a legközelebbi 128 MB-os gyűjtőre lesz kerekítve. Ha a folyamat 160 MB-ot használ, a rendszer 256 MB-ot számít fel. A számítás figyelembe veszi a párhuzamosságot, amely egyszerre több egyidejű függvény végrehajtása ugyanabban a folyamatban.
 
 > [!NOTE]
-> Míg a CPU-használat nem közvetlenül figyelembe kell venni a végrehajtási költség, hatással lehet a költség, ha befolyásolja a függvény végrehajtási idejét.
+> Habár a CPU-használat nem veszi figyelembe közvetlenül a végrehajtási költségeket, hatással lehet a bekerülési időszakra, ha az hatással van a függvény végrehajtási idejére.
 
 ## <a name="other-related-costs"></a>Egyéb kapcsolódó költségek
 
-A függvények bármely csomagban való futtatásának teljes költségének becslésénél ne feledje, hogy a Functions futtatótime számos más Azure-szolgáltatást használ, amelyek mindegyike külön-külön kerül számlázásra. A függvényalkalmazások díjszabásának kiszámításakor a más Azure-szolgáltatásokkal integrálható eseményindítók és kötések megkövetelik a további szolgáltatások létrehozását és kifizetését. 
+A függvények bármely csomagban való futtatásának teljes díja miatt ne feledje, hogy a functions Runtime számos más Azure-szolgáltatást használ, amelyek mindegyike külön számlázható. A Function apps díjszabásának kiszámításakor a többi Azure-szolgáltatással integrálható eseményindítók és kötések a további szolgáltatások létrehozásához és fizetéséhez szükségesek. 
 
-A felhasználási tervben futó függvények esetében a teljes költség a függvények végrehajtási költsége, valamint a sávszélesség és a további szolgáltatások költsége. 
+A használati tervben futó függvények esetében a teljes díj a függvények végrehajtási költsége, valamint a sávszélesség és a további szolgáltatások költsége. 
 
-A függvényalkalmazás és a kapcsolódó szolgáltatások teljes költségének becslésénél használja az [Azure díjkalkulátorát.](https://azure.microsoft.com/pricing/calculator/?service=functions) 
+A Function app és a kapcsolódó szolgáltatások általános költségeinek kiszámításához használja az [Azure díjszabási számológépét](https://azure.microsoft.com/pricing/calculator/?service=functions). 
 
-| Kapcsolódó költség | Leírás |
+| Kapcsolódó díj | Leírás |
 | ------------ | ----------- |
-| **Tárfiók** | Minden függvényalkalmazáshoz hozzá kell férnie egy általános célú [Azure Storage-fiókhoz,](../storage/common/storage-introduction.md#types-of-storage-accounts)amelyet [külön számlázunk ki.](https://azure.microsoft.com/pricing/details/storage/) Ezt a fiókot a Functions futásidejű belsőhasználatra használja, de storage-eseményindítókhoz és kötésekhez is használhatja. Ha nem rendelkezik tárfiókkal, a függvényalkalmazás létrehozásakor létrejön egy. További információ: [Tárfiók követelményei.](storage-considerations.md#storage-account-requirements)|
-| **Application Insights** | A függvények az [Application Insights](../azure-monitor/app/app-insights-overview.md) szolgáltatásra támaszkodnak, hogy nagy teljesítményű figyelési élményt nyújtsanak a függvényalkalmazásokhoz. Bár nem szükséges, engedélyeznie kell [az Application Insights-integrációt.](functions-monitoring.md#enable-application-insights-integration) A telemetriai adatok ingyenes megadása minden hónapban szerepel. További információ: [az Azure Monitor díjszabási lapja.](https://azure.microsoft.com/pricing/details/monitor/) |
-| **Hálózati sávszélesség** | Nem kell fizetnie az Azure-szolgáltatások közötti adatátvitelért ugyanabban a régióban. Azonban költségek merülhetnek fel a kimenő adatátvitel egy másik régióba vagy az Azure-on kívülre. További információt a [Sávszélesség-díjszabás részletei ben talál.](https://azure.microsoft.com/pricing/details/bandwidth/) |
+| **Tárfiók** | Az egyes functions-alkalmazásokhoz hozzá kell rendelni egy általános célú [Azure Storage-fiókot](../storage/common/storage-introduction.md#types-of-storage-accounts), amely [külön számlázható](https://azure.microsoft.com/pricing/details/storage/). Ezt a fiókot a functions futtatókörnyezet belsőleg használja, de a tároló-eseményindítók és-kötések esetében is használható. Ha nincs Storage-fiókja, akkor a rendszer létrehoz egyet a Function alkalmazás létrehozásakor. További információ: a [Storage-fiókra vonatkozó követelmények](storage-considerations.md#storage-account-requirements).|
+| **Application Insights** | A függvények a [Application Insightson](../azure-monitor/app/app-insights-overview.md) támaszkodnak, hogy nagy teljesítményű figyelési élményt nyújtsanak a Function alkalmazásai számára. Habár nem kötelező, engedélyeznie kell [Application Insights integrációt](functions-monitoring.md#enable-application-insights-integration). Minden hónapban ingyenes telemetria-adatmennyiség szerepel. További információkért tekintse meg [a Azure monitor díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/monitor/). |
+| **Hálózati sávszélesség** | Az azonos régióban található Azure-szolgáltatások közötti adatátvitelért nem kell fizetnie. Egy másik régióba vagy az Azure-on kívül is felmerülhetnek a kimenő adatátvitelek költségei. További tudnivalókért tekintse meg a [sávszélesség-díjszabás részleteit](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
-## <a name="behaviors-affecting-execution-time"></a>A végrehajtási időt befolyásoló viselkedések
+## <a name="behaviors-affecting-execution-time"></a>Végrehajtási időt érintő viselkedésmódok
 
-A függvények alábbi viselkedése hatással lehet a végrehajtási időre:
+A függvények következő viselkedései befolyásolhatják a végrehajtási időt:
 
-+ **Eseményindítók és kötések:** A [függvénykötések](functions-triggers-bindings.md) bemeneti és írási kimenetének olvasásához szükséges idő végrehajtási időnek számít. Ha például a függvény egy kimeneti kötést használ egy üzenet írásához egy Azure storage-várólistába, a végrehajtási idő tartalmazza az üzenet üzenet írásához szükséges időt a várólistába, amely szerepel a függvény költségének kiszámításában. 
++ **Eseményindítók és kötések**: a [függvény kötéseinek](functions-triggers-bindings.md) beolvasásához és kimenetből való írásához szükséges idő végrehajtási időnek számít. Ha például a függvény egy kimeneti kötés használatával ír egy üzenetet egy Azure Storage-várólistába, a végrehajtási idő magában foglalja az üzenetnek a várólistába való írásához szükséges időt, amelyet a függvény költsége számít. 
 
-+ **Aszinkron végrehajtás:** Az az idő, amikor a függvény megvárja az`await` aszinkron kérelmek (C#) eredményeit, végrehajtási időnek számít. A GB-másodperc számítás a függvény kezdő és záró időpontján, valamint az adott időszakban használt memóriahasználaton alapul. Mi történik ez idő alatt szempontjából CPU tevékenység nem veszik figyelembe a számítást. Az aszinkron műveletek során a [Tartós funkciók](durable/durable-functions-overview.md)használatával csökkentheti a költségeket. Nem kell fizetnie az orchestrator függvényekben a várakozással töltött időért.
++ **Aszinkron végrehajtás**: az az idő, ameddig a függvény megvárja az aszinkron kérelmek eredményét (`await` C#) a végrehajtási időpontnak számít. A GB-Second számítás a függvény kezdési és befejezési időpontjára, valamint az adott időszakon belüli memóriahasználat függ. A folyamat során a rendszer nem számítja fel a számítást a CPU-tevékenység szempontjából. Előfordulhat, hogy a [Durable functions](durable/durable-functions-overview.md)használatával csökkentheti a költségeket az aszinkron műveletek során. Nem számítunk fel díjat a Orchestrator functions szolgáltatásban várja.
 
-## <a name="view-execution-data"></a>Végrehajtási adatok megtekintése
+## <a name="view-execution-data"></a>Végrehajtási adatbázis megtekintése
 
-A [számlán](/azure/billing/billing-download-azure-invoice)megtekintheti az összes végrehajtás **- függvények** és végrehajtási idő **- függvények**költséggel kapcsolatos adatait, valamint a tényleges számlázott költségeket. Ezek a számlaadatok azonban egy korábbi számlaidőszak havi összesítései. 
+A [számlán](/azure/billing/billing-download-azure-invoice)megtekintheti az **összes végrehajtás – functions** és **végrehajtási idő – functions**költséggel kapcsolatos adatait, valamint a ténylegesen számlázott költségeket is. Azonban ez a számlázási érték egy korábbi számlázási időszak havi összesítése. 
 
-A függvények költséghatásának jobb megértéséhez az Azure Monitor segítségével megtekintheti a függvényalkalmazások által jelenleg létrehozott, költségalapú metrikákat. Az Azure [Monitor metrikák explorer](../azure-monitor/platform/metrics-getting-started.md) az [Azure Portalon] vagy a REST API-k az adatok bekésezéséhez használhatja.
+A függvények költséghatékonyságának jobb megismeréséhez Azure Monitor használatával megtekintheti a Function apps által jelenleg létrehozott költséggel kapcsolatos metrikákat. Az adatok lekéréséhez használhatja a [Azure Portal] vagy a REST API-k [Azure monitor metrikák kezelőjét](../azure-monitor/platform/metrics-getting-started.md) is.
 
-### <a name="monitor-metrics-explorer"></a>Mérőszámok figyelése kezelő
+### <a name="monitor-metrics-explorer"></a>Metrikák figyelése Explorer
 
-Az [Azure Monitor metrikakezelője](../azure-monitor/platform/metrics-getting-started.md) segítségével grafikus formátumban tekintheti meg a fogyasztási csomag függvényalkalmazásaiköltséggel kapcsolatos adatait. 
+A [Azure monitor mérőszámok Explorerrel](../azure-monitor/platform/metrics-getting-started.md) grafikus formában tekintheti meg a használati tervben szereplő, költséghatékony adatokat. 
 
-1. Az [Azure Portal] tetején a **Keresési szolgáltatások, erőforrások és dokumentumok** keresés `monitor` és válassza **monitor** a **Szolgáltatások**csoportban.
+1. A **keresési szolgáltatások, erőforrások és dokumentumok** keresése `monitor` [Azure Portal] tetején, majd a **szolgáltatások**területen válassza a **figyelés** elemet.
 
-1. A bal oldalon válassza **ki a Metrikák** > **Válasszon ki egy erőforrást,** majd a kép alatti beállításokkal válassza ki a függvényalkalmazást.
+1. A bal oldalon válassza ki a **mérőszámok** > **elemet**, majd a rendszerkép alatti beállítások használatával válassza ki a Function alkalmazást.
 
-    ![A függvényalkalmazás-erőforrás kiválasztása](media/functions-consumption-costing/select-a-resource.png)
+    ![Válassza ki a Function app-erőforrást](media/functions-consumption-costing/select-a-resource.png)
 
       
     |Beállítás  |Ajánlott érték  |Leírás  |
     |---------|---------|---------|
-    | Előfizetés    |  Az Ön előfizetése  | Az előfizetés a függvényalkalmazással.  |
-    | Erőforráscsoport     | Az erőforráscsoport  | A függvényalkalmazást tartalmazó erőforráscsoport.   |
-    | Erőforrás típusa     |  App Services | A függvényalkalmazások App Services-példányként jelennek meg a Figyelőben. |
-    | Erőforrás     |  A függvényalkalmazás  | A figyelni figyelt függvényalkalmazás.        |
+    | Előfizetés    |  Az Ön előfizetése  | Az előfizetés a Function alkalmazással.  |
+    | Erőforráscsoport     | Az erőforráscsoport  | A Function alkalmazást tartalmazó erőforráscsoport.   |
+    | Erőforrás típusa     |  App Services | A Function apps App Services példányként jelenik meg a figyelőben. |
+    | Erőforrás     |  A Function alkalmazás  | A figyelni kívánt Function alkalmazás.        |
 
-1. Válassza az **Alkalmaz** lehetőséget, ha a függvényalkalmazást szeretné figyelni erőforrásként kiválasztani.
+1. Válassza az **alkalmaz** lehetőséget, hogy kiválassza a Function alkalmazást a figyelni kívánt erőforrásként.
 
-1. A **Metrikus területen**válassza **a Függvényvégrehajtási szám** és az **Összesítés** **összegzése** lehetőséget. Ezzel hozzáadja a kiválasztott időszakban a végrehajtási számok összegét a diagramhoz.
+1. A **metrika**területen válassza a **függvény végrehajtásának száma** és az **összesítési** **összeg** elemet. Ezzel hozzáadja a végrehajtások összegét a kiválasztott időszakban a diagramhoz.
 
-    ![A diagramhoz hozzáadni a függvényalkalmazás mérőszámának meghatározása](media/functions-consumption-costing/monitor-metrics-add-metric.png)
+    ![A diagramhoz hozzáadandó functions-alkalmazás mérőszámának megadása](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. Válassza **a Metrika hozzáadása** **Function Execution Units** és a 2-4. 
+1. Válassza a **metrika hozzáadása** lehetőséget, és ismételje meg a 2-4 lépéseket a **függvény-végrehajtási egységek** a diagramhoz való hozzáadásához. 
 
-Az eredményül kapott diagram tartalmazza a kiválasztott időtartomány mindkét végrehajtási mutatójának összesítéseit, ami ebben az esetben két óra.
+Az eredményül kapott diagram a kiválasztott időtartományban lévő végrehajtási mérőszámok összegeit tartalmazza, ami ebben az esetben két óra.
 
-![A függvényvégrehajtási késések és végrehajtási egységek grafikonja](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
+![Függvény-végrehajtási számok és végrehajtási egységek gráfja](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
 
-Mivel a végrehajtási egységek száma sokkal nagyobb, mint a végrehajtási számláló, a diagram csak a végrehajtási egységeket mutatja.
+Mivel a végrehajtási egységek száma sokkal nagyobb a végrehajtások számánál, a diagram csak a végrehajtási egységeket mutatja.
 
-Ez a diagram összesen 1,11 milliárd `Function Execution Units` felhasznált két órás időszakban, MB-ezredmásodpercben mérve. Gb-másodpercre való konvertáláshoz ossza el 1024000-el. Ebben a példában a `1110000000 / 1024000 = 1083.98` függvényalkalmazás GB-másodperceket fogyasztott. Ezt az értéket a [Funkciók árképzési oldal][árképzési lapján,]amely megadja ennek a két órának a költségét, ezt az értéket megszorozhatja a Végrehajtási idő aktuális árával, feltéve, hogy már felhasználta a végrehajtási idő ingyenes juttatásait. 
+Ez a diagram a kétórás időszakban `Function Execution Units` felhasznált összesen 1 110 000 000-as összeget mutatja, MB-ezredmásodpercben kifejezve. Ha GB-másodpercre szeretné váltani, ossza meg a 1024000-as értéket. Ebben a példában a Function alkalmazás GB- `1110000000 / 1024000 = 1083.98` másodpercet használ. Ezt az értéket elvégezheti, és a [functions díjszabási]oldal[díjszabása lapon]megadhatja a végrehajtási idő aktuális árát, ami azt feltételezi, hogy már felhasználta a végrehajtási idő ingyenes támogatását. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az [Azure CLI](/cli/azure/) a metrikák lekéréséhez kiadott parancsokkal rendelkezik. A CLI-t helyi parancskörnyezetből vagy közvetlenül a portálról használhatja az [Azure Cloud Shell](../cloud-shell/overview.md)használatával. Például a következő [az monitor metrikák lista](/cli/azure/monitor/metrics#az-monitor-metrics-list) parancs akorábban használt azonos időszakóránkénti adatokat adja vissza.
+Az [Azure CLI](/cli/azure/) a metrikák beolvasására szolgáló parancsokat tartalmaz. A CLI-t egy helyi parancssori környezetből vagy közvetlenül a portálról [Azure Cloud Shell](../cloud-shell/overview.md)használatával is használhatja. A következő az [monitor Metrics List](/cli/azure/monitor/metrics#az-monitor-metrics-list) parancs például az óránkénti adatokat adja vissza a korábban használt időszakra vonatkozóan.
 
-Győződjön meg `<AZURE_SUBSCRIPTON_ID>` arról, hogy cserélje ki a parancsot futtató Azure-előfizetés-azonosítóját.
+Győződjön meg arról, `<AZURE_SUBSCRIPTON_ID>` hogy az a parancsot futtató Azure-ELŐfizetési azonosítóra cseréli.
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
 ```
 
-Ez a parancs a következő példához hasonló JSON-hasznos adatértéket ad vissza:
+Ez a parancs egy JSON-adattartalmat ad vissza, amely a következő példához hasonlóan néz ki:
 
 ```json
 {
@@ -188,15 +188,15 @@ Ez a parancs a következő példához hasonló JSON-hasznos adatértéket ad vis
   ]
 }
 ```
-Ez a válasz `2019-09-11T21:46` azt `2019-09-11T23:18`mutatja, hogy a , az alkalmazás fogyasztott 1110000000 MB-ezredmásodperc (1083,98 GB-másodperc).
+Ez az adott válasz azt mutatja `2019-09-11T21:46` , `2019-09-11T23:18`hogy a verziótól KEZDVE az alkalmazás 1110000000 MB-ezredmásodpercet használ (1083,98 GB-másodperc).
 
 ## <a name="determine-memory-usage"></a>Memóriahasználat meghatározása
 
-A függvényvégrehajtási egységek a végrehajtási idő és a memóriahasználat kombinációja, ami megnehezíti a memóriahasználat megértését. A memóriaadatok nem az Azure Monitoron keresztül jelenleg elérhető mérőszám. Ha azonban optimalizálni szeretné az alkalmazás memóriahasználatát, használhatja az Application Insights által gyűjtött teljesítményszámláló-adatokat.  
+A függvények végrehajtási egységei a végrehajtási idő és a memóriahasználat kombinációja, ami nehéz mérőszámot biztosít a memóriahasználat megértéséhez. A memória adatai nem a Azure Monitoron keresztül jelenleg elérhető metrikák. Ha azonban optimalizálni szeretné az alkalmazás memóriahasználat használatát, használhatja a Application Insights által összegyűjtött teljesítményszámláló-adatokat.  
 
-Ha még nem tette meg, [engedélyezze az Application Insights funkciót a függvényalkalmazásban.](functions-monitoring.md#enable-application-insights-integration) Ha ez az integráció engedélyezve van, [lekérdezheti ezt a telemetriai adatot a portálon.](functions-monitoring.md#query-telemetry-data)  
+Ha még nem tette meg, [engedélyezze a Application Insightst a Function alkalmazásban](functions-monitoring.md#enable-application-insights-integration). Ha ez az integráció engedélyezve van, ezt [a telemetria-adatlekérdezést a portálon kérdezheti](functions-monitoring.md#query-telemetry-data)le.  
 
-A **Figyelés**csoportban válassza **a Naplók (Analytics)** lehetőséget, majd másolja a következő telemetriai lekérdezést, majd illessze be a lekérdezési ablakba, és válassza a Futtatás **lehetőséget.** Ez a lekérdezés a teljes memóriahasználatot adja vissza minden mintavételezett időpontban.
+A **figyelés**területen válassza a **naplók (Analitika)** lehetőséget, majd másolja a következő telemetria-lekérdezést, és illessze be a lekérdezési ablakba, majd válassza a **Futtatás**lehetőséget. Ez a lekérdezés a teljes memóriahasználat értékét adja vissza az egyes mintavételi időpontokban.
 
 ```
 performanceCounters
@@ -204,20 +204,20 @@ performanceCounters
 | project timestamp, name, value
 ```
 
-Az eredmények a következő példához hasonlóan néznek ki:
+Az eredmények a következő példához hasonlóan jelennek meg:
 
 | időbélyeg \[UTC\]          | név          | érték       |
 |----------------------------|---------------|-------------|
-| 2019.12.9., 1:05:14\.947 AM | Privát bájtok | 209,932,288 |
-| 2019.12.9., 1:06:14\.994 AM | Privát bájtok | 212,189,184 |
-| 2019.12.9., 1:06:30\.010 AM | Privát bájtok | 231,714,816 |
-| 2019.12.9., 1:07:15\.040 AM | Privát bájtok | 210,591,744 |
-| 2019.09.12., 1:12:16\.285 AM | Privát bájtok | 216,285,184 |
-| 2019.09.12., 1:12:31\.376 AM | Privát bájtok | 235,806,720 |
+| 9/12/2019, 1:05:14\.947 am | Saját bájtok | 209 932 288 |
+| 9/12/2019, 1:06:14\.994 am | Saját bájtok | 212 189 184 |
+| 9/12/2019, 1:06:30\.010 am | Saját bájtok | 231 714 816 |
+| 9/12/2019, 1:07:15\.040 am | Saját bájtok | 210 591 744 |
+| 9/12/2019, 1:12:16\.285 am | Saját bájtok | 216 285 184 |
+| 9/12/2019, 1:12:31\.376 am | Saját bájtok | 235 806 720 |
 
-## <a name="function-level-metrics"></a>Funkciószintű mérőszámok
+## <a name="function-level-metrics"></a>Függvény szintű mérőszámok
 
-Az Azure Monitor nyomon követi a metrikák at az erőforrás szintjén, amely a Functions a függvényalkalmazás. Az Application Insights-integráció függvényenként i metrikákat bocsát ki. Íme egy példa elemzési lekérdezés egy függvény átlagos időtartamának lehívásához:
+Azure Monitor nyomon követi a metrikákat az erőforrás szintjén, amely a functions alkalmazás. Application Insights integrációja a metrikákat a függvények alapján bocsátja ki. Íme egy példa az elemzési lekérdezésre egy függvény átlagos időtartamának lekéréséhez:
 
 ```
 customMetrics
@@ -226,16 +226,16 @@ customMetrics
 | summarize averageDurationMilliseconds=avg(averageDuration) by name
 ```
 
-| név                       | átlagos IdőtartamEzseundum |
+| név                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
 | QueueTrigger AvgDurationMs | 16\.087                     |
 | QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationM | 8\.522                      |
+| QueueTrigger MinDurationMs | 8\.522                      |
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a Figyelési funkcióalkalmazásokról](functions-monitoring.md)
+> [További információ a monitoring Function-alkalmazásokról](functions-monitoring.md)
 
-[árképzési oldal]:https://azure.microsoft.com/pricing/details/functions/
-[Azure-portál]: https://portal.azure.com
+[díjszabási oldal]:https://azure.microsoft.com/pricing/details/functions/
+[Azure Portal]: https://portal.azure.com

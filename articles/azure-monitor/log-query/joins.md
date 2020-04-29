@@ -1,26 +1,26 @@
 ---
-title: Csatlakozik az Azure Monitor naplólekérdezéseihez | Microsoft dokumentumok
-description: Ez a cikk egy leckét tartalmaz az Azure Monitor naplólekérdezései ben csatlakozik használatával kapcsolatos leckét.
+title: Illesztések Azure Monitor log lekérdezésekben | Microsoft Docs
+description: Ez a cikk az illesztések Azure Monitor napló lekérdezésekben való használatával kapcsolatos leckét tartalmaz.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670202"
 ---
-# <a name="joins-in-azure-monitor-log-queries"></a>Csatlakozik az Azure Figyelő naplólekérdezéseihez
+# <a name="joins-in-azure-monitor-log-queries"></a>Illesztések Azure Monitor log lekérdezésekben
 
 > [!NOTE]
-> A lecke befejezése előtt el kell [végeznie az Azure Monitor naplóanalytics](get-started-portal.md) és [az Azure Monitor naplólekérdezéseinek első lépéseit.](get-started-queries.md)
+> A lecke elvégzése előtt végezze el [a Azure Monitor log Analytics](get-started-portal.md) és [Azure monitor a naplók lekérdezését](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Az illesztések lehetővé teszik több tábla adatainak elemzését ugyanabban a lekérdezésben. Két adatkészlet sorait egyesítik a megadott oszlopok egyező értékeivel.
+Az illesztések lehetővé teszik több táblázat adatainak elemzését ugyanabban a lekérdezésben. A két adathalmaz sorait a megadott oszlopok megfelelő értékeivel egyesítik.
 
 
 ```Kusto
@@ -37,23 +37,23 @@ SecurityEvent
 | top 10 by Duration desc
 ```
 
-Ebben a példában az első adatkészlet szűri az összes bejelentkezési eseményt. Ez egy második adatkészlettel van összekapcsolva, amely az összes kijelentkezési eseményre szűri. A kivetített oszlopok a _következők: Számítógép_, _Fiók_, _TargetLogonId_és _TimeGenerated_. Az adatkészleteket egy _TargetLogonId_megosztott oszlop korrelál. A kimenet korrelációnként egyetlen rekord, amely a bejelentkezési és a kijelentkezési időt is rendelkezik.
+Ebben a példában az első adatkészlet szűri az összes bejelentkezési eseményt. Ez egy második adatkészlettel van csatlakoztatva, amely az összes kijelentkezési eseményt szűri. A tervezett oszlopok a _számítógép_, a _fiók_, a _TargetLogonId_és a _TimeGenerated_. Az adatkészleteket egy megosztott oszlop ( _TargetLogonId_) korrelálja. A kimenet egy korreláción belüli egyetlen rekord, amely a bejelentkezési és a kijelentkezési időt is tartalmazhatja.
 
-Ha mindkét adatkészlet azonos nevű oszlopokkal rendelkezik, a jobb oldali adatkészlet oszlopai indexszámot kapnak, így ebben a példában az eredmények a Bal oldali tábla értékeit tartalmazó _TargetLogonId értéket,_ a jobb oldali tábla értékeit pedig a _TargetLogonId1_ értéket jelenítik meg. Ebben az esetben a második _TargetLogonId1_ oszlopot az `project-away` operátor használatával távolították el.
+Ha mindkét adatkészlet azonos nevű oszlopokkal rendelkezik, akkor a jobb oldali adatkészlet oszlopai egy indexet kapnak, így ebben a példában az eredmények a bal oldali táblából származó értékekkel _és a_ jobb oldali tábla értékeit tartalmazó _TargetLogonId_ jelennek meg. Ebben az esetben a második _TargetLogonId1_ oszlop el lett távolítva az `project-away` operátor használatával.
 
 > [!NOTE]
-> A teljesítmény javítása érdekében az `project` operátor használatával csak az egyesített adatkészletek megfelelő oszlopait őrizte meg.
+> A teljesítmény javítása érdekében a `project` kezelő használatával csak a csatlakoztatott adatkészletek megfelelő oszlopait tartsa meg.
 
 
-Két adatkészlet összekapcsolása az alábbi szintaxissal, és az összekapcsolt kulcs neve eltér a két tábla között:
+A következő szintaxissal csatlakozhat két adatkészlethez, az összevont kulcs pedig eltérő névvel rendelkezik a két tábla között:
 ```
 Table1
 | join ( Table2 ) 
 on $left.key1 == $right.key2
 ```
 
-## <a name="lookup-tables"></a>Keressünk táblázatokat
-Az illesztések gyakori használata az értékek `datatable` statikus leképezésének használata, amely segíthet az eredmények szalonképesebb módon történő átalakításában. Például a biztonsági esemény adatok gazdagítása az egyes eseményazonosítók eseménynevével.
+## <a name="lookup-tables"></a>Keresési táblák
+Az összekapcsolások gyakori használata az értékek statikus leképezését használja `datatable` , amely segíthet az eredmények több belátható módon történő átalakításában. Például a biztonsági események adatértékének az esemény nevével való dúsításához az egyes események AZONOSÍTÓi esetében.
 
 ```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
@@ -74,31 +74,31 @@ SecurityEvent
 | summarize count() by eventName
 ```
 
-![Összekapcsolódás adattáblával](media/joins/dim-table.png)
+![Csatlakozás DataTable](media/joins/dim-table.png)
 
-## <a name="join-kinds"></a>Illesztési fajták
-Adja meg a _kedves_ argumentumillesztés típusát. Minden típus az alábbi táblázatban leírtak szerint más egyezést hajt végre az adott táblák rekordjai között.
+## <a name="join-kinds"></a>Összekapcsolási típus
+Adja meg a _Kind_ argumentummal való illesztés típusát. Mindegyik típus a következő táblázatban leírtak szerint eltérő egyezést hajt végre az adott táblák rekordjai között.
 
 | Illesztés típusa | Leírás |
 |:---|:---|
-| innerunique | Ez az alapértelmezett illesztési mód. Először a bal oldali táblában található egyező oszlop értékei találhatók, és a duplikált értékek törlődnek.  Ezután az egyedi értékek készlete a megfelelő táblához igazodik. |
-| Belső | Az eredmények csak a két tábla egyező rekordjai szerepelnek. |
-| bal oldali | A bal oldali tábla összes rekordja és a jobb oldali tábla egyező rekordjai szerepelnek az eredményekközött. A nem egyező kimeneti tulajdonságok null értékeket tartalmaznak.  |
-| leftanti között | A bal oldali rekordok, amelyek nem rendelkeznek jobb oldali egyezések szerepelnek az eredmények között. Az eredménytábla csak a bal oldali táblázat oszlopait tartalmazja. |
-| balfél | A bal oldali, jobbról egyező rekordok szerepelnek az eredményekközött. Az eredménytábla csak a bal oldali táblázat oszlopait tartalmazja. |
+| innerunique | Ez az alapértelmezett csatlakozási mód. Először a bal oldali tábla egyező oszlopának értékei találhatók, és az ismétlődő értékek törlődnek.  Ezután az egyedi értékek halmaza illeszkedik a jobb oldali táblához. |
+| belső | A rendszer csak a mindkét táblában lévő rekordokat tartalmazza az eredmények között. |
+| leftouter | A bal oldali tábla összes rekordja, valamint a jobb oldali tábla megfelelő rekordjai az eredmények között szerepelnek. A nem egyező kimeneti tulajdonságok null értéket tartalmaznak.  |
+| leftanti | Az eredmények között szerepelnek a bal oldalon lévő, a jobb oldali egyezéseket nem tartalmazó rekordok. Az eredmények táblában csak a bal oldali tábla oszlopai láthatók. |
+| leftsemi | A jobb oldali egyezések közül a bal oldalon lévő rekordok beletartoznak az eredményekbe. Az eredmények táblában csak a bal oldali tábla oszlopai láthatók. |
 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az optimális teljesítmény érdekében vegye figyelembe a következő pontokat:
+Az optimális teljesítmény érdekében vegye figyelembe a következő szempontokat:
 
-- Az egyes táblákon használjon időszűrőt az illesztéshez kiértékelendő rekordok csökkentéséhez.
-- `where` Használja, `project` és csökkentse a sorok és oszlopok számát a beviteli táblázatokban az illesztés előtt.
-- Ha az egyik tábla mindig kisebb, mint a másik, használja az illesztés bal oldalaként.
+- Használjon időszűrőt az egyes táblákon, hogy csökkentse azokat a rekordokat, amelyeket ki kell értékelni az illesztéshez.
+- A `where` és `project` a használatával csökkentheti a bemeneti táblák sorainak és oszlopainak számát az illesztés előtt.
+- Ha egy tábla mindig kisebb, mint a többi, használja az illesztés bal oldalán.
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg az Azure Monitor naplólekérdezéseinek egyéb leckéit:
+Tekintse meg az Azure Monitor log-lekérdezések használatának egyéb tanulságait:
 
 - [Sztringműveletek](string-operations.md)
 - [Aggregátumfüggvények](aggregations.md)

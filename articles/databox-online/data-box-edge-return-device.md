@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Box Edge eszköz visszaküldése vagy cseréje | Microsoft dokumentumok
-description: Bemutatja, hogyan adja vissza vagy cserélje le az Azure Data Box Edge-eszközt.
+title: Azure Data Box Edge eszköz visszaküldése vagy cseréje | Microsoft Docs
+description: Leírja, hogyan lehet visszaadni vagy lecserélni az Azure Data Box Edge eszközt.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,116 +9,116 @@ ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
 ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77651100"
 ---
-# <a name="return-or-replace-your-azure-data-box-edge-device"></a>Az Azure Data Box Edge-eszköz visszaküldése vagy cseréje
+# <a name="return-or-replace-your-azure-data-box-edge-device"></a>Azure Data Box Edge eszköz visszaküldése vagy cseréje
 
-Ez a cikk ismerteti, hogyan törölheti az adatokat, és majd adja vissza az Azure Data Box Edge-eszközt. Miután visszaküldte az eszközt, törölheti az eszközhöz társított erőforrást, vagy megrendelhet egy csereeszközt.
+Ez a cikk az adatok törlését és a Azure Data Box Edge eszköz visszaküldését ismerteti. Az eszköz visszaadása után törölheti az eszközhöz társított erőforrást, vagy megrendelheti a helyettesítő eszközt.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Az adatok törlése az eszközön lévő adatlemezekről
-> * Nyisson meg egy támogatási jegyet az eszköz visszaküldéséhez
-> * Csomagolja össze a készüléket, és ütemezze be a felvételt
-> * Az erőforrás törlése az Azure Portalon
-> * Csereeszköz beszereznie
+> * Adatok törlése az eszközön lévő adatlemezekről
+> * Támogatási jegy megnyitása az eszköz visszaküldéséhez
+> * Az eszköz becsomagolása és a pickup beosztása
+> * Az erőforrás törlése Azure Portal
+> * Helyettesítő eszköz beszerzése
 
-## <a name="erase-data-from-the-device"></a>Adatok törlése a készülékről
+## <a name="erase-data-from-the-device"></a>Adatok törlése az eszközről
 
-Az adatok nak az eszköz adatlemezeiről való törléséhez alaphelyzetbe kell állítania az eszközt. Alaphelyzetbe állíthatja az eszközt a helyi webes felhasználói felület vagy a PowerShell-felület használatával.
+Az eszközön lévő adatlemezek adatainak törléséhez alaphelyzetbe kell állítania az eszközt. Az eszközt a helyi webes felületen vagy a PowerShell-felületen keresztül állíthatja alaphelyzetbe.
 
-Az alaphelyzetbe állítás előtt szükség esetén hozzon létre egy másolatot a helyi adatokról az eszközön. Az adatokat az eszközről egy Azure Storage-tárolóba másolhatja.
+Az Alaphelyzetbe állítás előtt hozzon létre egy másolatot a helyi adatmennyiségről az eszközön, ha szükséges. Az adatok az eszközről egy Azure Storage-tárolóba másolhatók.
 
-Ha alaphelyzetbe szeretné állítani az eszközt a helyi webes felhasználói felület használatával, kövesse az alábbi lépéseket.
+Ha az eszközt a helyi webes felületen szeretné visszaállítani, hajtsa végre az alábbi lépéseket.
 
-1. A helyi webes felhasználói felületen nyissa meg **a Karbantartás > eszköz alaphelyzetbe állítását.**
-2. Válassza **az Eszköz visszaállítása**lehetőséget .
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > eszköz alaphelyzetbe állítása**elemre.
+2. Válassza az **eszköz alaphelyzetbe állítása**lehetőséget.
 
     ![Eszköz alaphelyzetbe állítása](media/data-box-edge-return-device/device-reset-1.png)
 
-3. Amikor megerősítést kér, tekintse át a figyelmeztetést, és a folytatáshoz válassza az **Igen** lehetőséget.
+3. Ha a rendszer megerősítést kér, tekintse át a figyelmeztetést, és kattintson az **Igen** gombra a folytatáshoz.
 
     ![Alaphelyzetbe állítás megerősítése](media/data-box-edge-return-device/device-reset-2.png)  
 
-Az alaphelyzetbe állítás törli az adatokat az eszköz adatlemezeiről. Az eszközön lévő adatok mennyiségétől függően ez a folyamat körülbelül 30-40 percet vesz igénybe.
+Az Alaphelyzetbe állítás törli az adat-adatlemezekről. Az eszközön tárolt adatmennyiségtől függően ez a folyamat körülbelül 30-40 percet vesz igénybe.
 
-Másik lehetőségként csatlakozzon az eszköz PowerShell-felületéhez, és a `Reset-HcsAppliance` parancsmag segítségével törölje az adatokat az adatlemezekről. További információt [az Eszköz alaphelyzetbe állítása](data-box-edge-connect-powershell-interface.md#reset-your-device)című témakörben talál.
+Másik lehetőségként kapcsolódjon az eszköz PowerShell-felületéhez, és `Reset-HcsAppliance` használja a parancsmagot az adatok adatlemezekről való törléséhez. További információ: [az eszköz alaphelyzetbe állítása](data-box-edge-connect-powershell-interface.md#reset-your-device).
 
 > [!NOTE]
-> - Ha új eszközt cserél vagy frissít, azt javasoljuk, hogy csak az új eszköz érkezése után állítsa alaphelyzetbe az eszközt.
-> - Az eszköz alaphelyzetbe állítása csak az összes helyi adatot törli az eszközről. A felhőben lévő adatok nem törlődnek, és [díjakat](https://azure.microsoft.com/pricing/details/storage/)gyűjt. Ezeket az adatokat külön kell törölni egy felhőalapú tárolókezelő eszközzel, például az [Azure Storage Explorer rel.](https://azure.microsoft.com/features/storage-explorer/)
+> - Ha új eszközre cserél vagy frissít, javasoljuk, hogy csak az új eszköz megérkezése után állítsa alaphelyzetbe az eszközt.
+> - Az eszköz alaphelyzetbe állítása csak az eszközön lévő összes helyi adatmezőt törli. A felhőben tárolt adatok nem törlődnek, és gyűjti a [díjakat](https://azure.microsoft.com/pricing/details/storage/). Ezeket az eszközöket külön törölni kell egy felhőalapú tároló-felügyeleti eszköz (például [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)) használatával.
 
 ## <a name="open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-A visszaküldési folyamat megkezdéséhez tegye a következő lépéseket.
+A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
-1. Nyisson meg egy támogatási jegyet a Microsoft támogatási szolgálatával, jelezve, hogy vissza kívánja küldeni az eszközt. Válassza ki a probléma típusát **Data Box Edge Hardware néven.**
+1. Nyisson meg egy támogatási jegyet Microsoft ügyfélszolgálata jelezve, hogy vissza kívánja adni az eszközt. Válassza ki a probléma típusát **Data Box Edge hardverként**.
 
     ![Támogatási jegy megnyitása](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
-2. A Microsoft támogatási szakembere felveszi Önnel a kapcsolatot. Adja meg a szállítási adatokat.
-3. Ha szüksége van egy vissza szállítási doboz, akkor kérheti azt. Válasz **Igen** a kérdésre **Szükség van egy üres doboz tért vissza**.
+2. Egy Microsoft ügyfélszolgálata mérnök felveszi Önnel A kapcsolatot. Adja meg a szállítási adatokat.
+3. Ha visszatérési szállítási mezőbe van szüksége, kérheti. Az **Igen** kérdésre adandó válaszhoz **üres mezőt kell visszaadnia**.
 
 
-## <a name="schedule-a-pickup"></a>Felvétel ütemezése
+## <a name="schedule-a-pickup"></a>Pickup beosztása
 
-1. Állítsa le az eszközt. A helyi webes felhasználói felületen nyissa meg **a Karbantartás > energiagazdálkodási beállítások lehetőséget.**
-2. Válassza **a Leállítás**lehetőséget. A folytatáshoz kattintson a megerősítés kérésekor az **Igen** gombra. További információt a [Teljesítmény kezelése című](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)témakörben talál.
-3. Húzza ki a hálózati kábeleket, és távolítsa el az összes hálózati kábelt a készülékből.
-4. Készítse elő a szállítmánycsomagot a saját vagy az Azure-tól kapott üres doboz használatával. Helyezze a készüléket és a készülékhez mellékelt tápkábeleket a dobozba.
-5. Rögzítse az Azure-tól kapott szállítási címkét a csomagon.
-6. Egyeztessen egy csomagfelvételi időpontot helyi szolgáltatójával. Ha az eszközt az Egyesült Államokban adja vissza, a szolgáltatója lehet ups vagy FedEx. Felvétel ütemezése a UPS-szel:
+1. Állítsa le az eszközt. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > energiagazdálkodási beállítások**elemre.
+2. Válassza a **Leállítás**lehetőséget. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra a folytatáshoz. További információ: [Manage Power](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
+3. Húzza ki az energiaellátási kábeleket, és távolítsa el az összes hálózati kábelt az eszközről.
+4. Készítse elő a szállítólevél-csomagot saját vagy az Azure-ból kapott üres mező használatával. Helyezze el az eszközt a dobozba, és az eszközzel szállított tápkábeleket.
+5. Helyezze az Azure-ból kapott szállítási címkét a csomagba.
+6. Egyeztessen egy csomagfelvételi időpontot helyi szolgáltatójával. Ha visszaadja az eszközt az USA-ban, akkor a fuvarozó a UPS vagy a FedEx lehet. Felvétel beosztása a UPS-sel:
 
-    1. Hívja a helyi UPS-t (országspecifikus ingyenesen hívható szám).
-    2. A hívásban adja meg a fordított szállítmánykövetési számot a nyomtatott címkén látható módon.
-    3. Ha a fuvarlevélszámot nem adják meg, a UPS megköveteli, hogy a felvétel során további díjat fizessen.
+    1. Hívja meg a helyi UPS-t (országspecifikus díjmentes szám).
+    2. A hívásban adja meg a fordított szállítólevél nyomon követésének számát a nyomtatott címkén látható módon.
+    3. Ha a nyomkövetési szám nincs feltüntetve, a UPS-nek további díjat kell fizetnie a felvétel során.
 
-    A felvétel ütemezése helyett a Data Box Edge-et is leadhatja a legközelebbi leadási helyen.
+    A pickup ütemezése helyett a Data Box Edge a legközelebbi legördülő helyen is elvégezheti.
 
-## <a name="delete-the-resource"></a>Az erőforrás törlése
+## <a name="delete-the-resource"></a>Erőforrás törlése
 
-Miután az eszköz megkapta az Azure adatközpontba, az eszköz ellenőrzi a károkat vagy a jogosulatlan beavatkozás jeleit.
+Miután az eszközt megkapta az Azure-adatközpontban, a rendszer megkeresi az eszközt a károsodás vagy az illetéktelen módosítás jeleinek ellenőrzéséhez.
 
-- Ha az eszköz sértetlenül és jó állapotban érkezik, a számlázási mérő leáll az adott erőforráshoz. A Microsoft támogatási szolgálata felveszi Önnel a kapcsolatot, és meggyőződik arról, hogy az eszközt visszaküldték. Ezután törölheti az eszközhöz társított erőforrást az Azure Portalon.
-- Ha a készülék jelentősen sérült, pénzbírság keletkezhet. A részleteket az elveszett vagy sérült eszközről és a [termékszolgáltatási feltételekről](https://www.microsoft.com/licensing/product-licensing/products)szóló [GYIK-ben](https://azure.microsoft.com/pricing/details/databox/edge/) találja.  
-
-
-Törölheti az eszközt az Azure Portalon:
--   Miután letette a megrendelést, és mielőtt a Microsoft elkészíti az eszközt.
--   Miután visszaküldte az eszközt a Microsoftnak, átmegy a fizikai ellenőrzésen az Azure-adatközpontban, és a Microsoft támogatási szolgálata meghívja az eszköz visszaadásának megerősítését.
-
-Ha egy másik előfizetéssel vagy helymeghatározással aktiválta az eszközt, a Microsoft egy munkanapon belül áthelyezi a rendelést az új előfizetésbe vagy helyre. A rendelés áthelyezése után törölheti ezt az erőforrást.
+- Ha az eszköz érintetlenül és jó formában érkezik, az adott erőforrás számlázási mérőszáma leáll. Microsoft ügyfélszolgálata felveszi Önnel a kapcsolatot, hogy erősítse meg az eszköz visszatérését. Ezután törölheti az eszközhöz társított erőforrást a Azure Portal.
+- Ha az eszköz jelentősen megsérült, a bírságok vonatkozhatnak. További részletekért tekintse [meg az elveszett vagy sérült eszköz](https://azure.microsoft.com/pricing/details/databox/edge/) és a [termék használati feltételeivel](https://www.microsoft.com/licensing/product-licensing/products)kapcsolatos gyakori kérdéseket.  
 
 
-Az alábbi lépésekkel törölje az eszközt és az erőforrást az Azure Portalon.
+Az eszközt törölheti a Azure Portalban:
+-   Miután elvégezte a rendelést, és az eszközt a Microsoft előkészítette.
+-   Miután visszaadta az eszközt a Microsoftnak, átadja a fizikai ellenőrzést az Azure-adatközpontban, és Microsoft ügyfélszolgálata hívásokat annak megerősítéséhez, hogy az eszköz vissza lett-e küldve.
 
-1. Az Azure Portalon nyissa meg az erőforrást, majd **az Áttekintés ..** A parancssávon válassza a **Törlés gombot.**
+Ha aktiválta az eszközt egy másik előfizetéshez vagy helyhez, a Microsoft egy munkanapon belül áthelyezi a rendelését az új előfizetésre vagy helyre. A megrendelés áthelyezése után törölheti ezt az erőforrást.
 
-    ![Törlés kijelölése](media/data-box-edge-return-device/delete-resource-1.png)
 
-2. Az **Eszköz törlése** panelen írja be a törölni kívánt eszköz nevét, és válassza a **Törlés**lehetőséget.
+A következő lépésekkel törölheti az eszközt és az erőforrást Azure Portalban.
+
+1. A Azure Portal lépjen az erőforráshoz, majd az **Áttekintés**elemre. A parancssorban válassza a **Törlés**lehetőséget.
+
+    ![Törlés kiválasztása](media/data-box-edge-return-device/delete-resource-1.png)
+
+2. Az **eszköz törlése** panelen írja be a törölni kívánt eszköz nevét, és válassza a **Törlés**lehetőséget.
 
     ![Törlés megerősítése](media/data-box-edge-return-device/delete-resource-2.png)
 
-Értesítést kap, miután az eszköz és a társított erőforrás sikeresen törlődött.
+Az eszköz és a hozzá tartozó erőforrás sikeres törlése után értesítést kap.
 
-## <a name="get-a-replacement-device"></a>Csereeszköz beszereznie
+## <a name="get-a-replacement-device"></a>Helyettesítő eszköz beszerzése
 
-Csereeszközre akkor van szükség, ha a meglévő eszköz hardverhibával rendelkezik, vagy frissítést igényel. Az alábbi lépések végrehajtásával, ha az eszköz hardverhiba miatt van:
+Szükség van egy helyettesítő eszközre, ha a meglévő eszköz hardveres hibával rendelkezik, vagy frissítésre van szüksége. Az eszköz hardveres hibája esetén hajtsa végre a következő lépéseket:
 
-1. [Nyisson meg egy támogatási jegyet a hardverprobléma esetén.](#open-a-support-ticket) A Microsoft támogatási szolgálata megállapítja, hogy a mezőcsereegység (FRU) nem érhető el ehhez a példányhoz, vagy az eszközhardver-frissítésre szorul. Mindkét esetben a Support megrendel egy csereeszközt.
-2. [Hozzon létre egy új erőforrást](data-box-edge-deploy-prep.md#create-a-new-resource) a csereeszközhöz. Ügyeljen arra, hogy jelölje be a Data Box Edge eszköz elleni **jelölőnégyzetet.** 
-3. Miután megkapta a csereeszközt, [telepítse](data-box-edge-deploy-install.md) és [aktiválja](data-box-edge-deploy-connect-setup-activate.md) a csereeszközt az új erőforrással szemben.
-4. Az eredeti eszköz visszaadásához kövesse az összes lépést:
+1. [Nyisson meg egy támogatási jegyet a hardveres probléma megoldásához](#open-a-support-ticket). Microsoft ügyfélszolgálata megállapítja, hogy ehhez a példányhoz nem érhető el egy mező típusú helyettesítő egység, vagy az eszköznek hardveres frissítésre van szüksége. Mindkét esetben a támogatás egy helyettesítő eszközt fog rendelni.
+2. [Hozzon létre egy új erőforrást](data-box-edge-deploy-prep.md#create-a-new-resource) a helyettesítő eszközhöz. Ügyeljen arra, hogy jelölje be a jelölőnégyzetet a **Data Box Edge eszközön**. 
+3. Miután megkapta a helyettesítő eszközt, [telepítse](data-box-edge-deploy-install.md) és [aktiválja](data-box-edge-deploy-connect-setup-activate.md) a helyettesítő eszközt az új erőforráson.
+4. Az eredeti eszköz visszaküldéséhez kövesse az összes lépést:
     1. Nyisson meg egy másik jegyet az eredeti eszköz visszaküldéséhez.
-    2. [Törölje az adatokat a készüléken](#erase-data-from-the-device).
-    3. [Felvétel ütemezése](#schedule-a-pickup).
-    5. [Törölje a](#delete-the-resource) visszaadott eszközhöz társított erőforrást.
+    2. [Az eszközön lévő adat törlése](#erase-data-from-the-device).
+    3. [Pickup beosztása](#schedule-a-pickup).
+    5. [Törölje a](#delete-the-resource) visszaadott eszközhöz hozzárendelt erőforrást.
 
 
 

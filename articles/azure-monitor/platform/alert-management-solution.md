@@ -1,43 +1,43 @@
 ---
-title: Riasztáskezelési megoldás az Azure Log Analytics szolgáltatásban | Microsoft dokumentumok
-description: A Log Analytics riasztáskezelési megoldása segít a környezetösszes riasztás elemzésében.  A Log Analytics szolgáltatásban létrehozott riasztások konszolidálása mellett a csatlakoztatott System Center Operations Manager felügyeleti csoportokból származó riasztásokat is importálja a Log Analytics szolgáltatásba.
+title: Alert Management megoldás az Azure Log Analyticsban | Microsoft Docs
+description: A Log Analytics Alert Management megoldása segít elemezni az összes riasztást a környezetben.  A Log Analyticson belül létrehozott riasztások összevonása mellett a a csatlakoztatott System Center Operations Manager-felügyeleti csoportokból származó riasztásokat Log Analyticsba importálja.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77668383"
 ---
-# <a name="alert-management-solution-in-azure-log-analytics"></a>Riasztáskezelési megoldás az Azure Log Analytics szolgáltatásban
+# <a name="alert-management-solution-in-azure-log-analytics"></a>Alert Management megoldás az Azure-ban Log Analytics
 
-![A Riasztáskezelés ikonja](media/alert-management-solution/icon.png)
+![Alert Management ikon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Az Azure Monitor mostantól támogatja [a riasztások nagy méretekben való kezelésére](https://aka.ms/azure-alerts-overview)szolgáló továbbfejlesztett képességeket, beleértve azolyan [figyelési eszközök, mint a System Center Operations Manager, a Zabbix vagy a Nagios által létrehozott funkciókat.](https://aka.ms/managing-alerts-other-monitoring-services)
+>  A Azure Monitor mostantól támogatja a [riasztások nagy léptékű kezelésére](https://aka.ms/azure-alerts-overview)szolgáló továbbfejlesztett képességeket, beleértve az olyan [figyelési eszközök által generált eszközöket is, mint a System Center Operations Manager, a Zabbix vagy a Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
 >  
 
 
-A riasztáskezelési megoldás segít a Log Analytics-tárházban lévő összes riasztás elemzésében.  Ezek a riasztások különböző forrásokból származhatnak, beleértve a [Log Analytics által létrehozott](../../azure-monitor/platform/alerts-overview.md) vagy a [Nagios vagy Zabbix-ból importált](../../azure-monitor/learn/quick-collect-linux-computer.md)forrásokat is. A megoldás a csatlakoztatott System Center Operations Manager felügyeleti csoportokriasztásait is [importálja.](../../azure-monitor/platform/om-agents.md)
+A Alert Management megoldás segítségével elemezheti a Log Analytics adattár összes riasztását.  Ezek a riasztások különböző forrásokból származnak, beleértve a [log Analytics által létrehozott](../../azure-monitor/platform/alerts-overview.md) vagy [a Nagios-ból vagy Zabbix importált](../../azure-monitor/learn/quick-collect-linux-computer.md)forrásokból származó forrásokat is. A megoldás a [csatlakoztatott System Center Operations Manager felügyeleti csoportok](../../azure-monitor/platform/om-agents.md)riasztásait is importálja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A megoldás a Log Analytics-tárházban lévő bármely **Alert**rekorddal együttműködik egy riasztástípussal, ezért a rekordok összegyűjtéséhez bármilyen konfigurációt el kell végeznie.
+A megoldás a Log Analytics-tárházban található összes rekordtal működik, és a **riasztások**típusával a rekordok összegyűjtéséhez bármilyen konfigurációt kell végrehajtania.
 
-- A Log Analytics-riasztások esetén [hozzon létre riasztási szabályokat,](../../azure-monitor/platform/alerts-overview.md) hogy közvetlenül a tárházban hozzon létre riasztási rekordokat.
-- Nagios és Zabbix riasztások esetén [konfigurálja ezeket a kiszolgálókat](../../azure-monitor/learn/quick-collect-linux-computer.md) úgy, hogy riasztásokat küldjenek a Log Analytics szolgáltatásnak.
-- A System Center Operations Manager riasztásai esetén [csatlakoztassa az Operations Manager felügyeleti csoportját a Log Analytics-munkaterülethez.](../../azure-monitor/platform/om-agents.md)  A System Center Operations Manager alkalmazásban létrehozott riasztások importálása a Log Analytics programba történik.  
+- Log Analytics riasztások esetén [hozzon létre riasztási szabályokat](../../azure-monitor/platform/alerts-overview.md) a riasztási rekordok közvetlen létrehozásához a tárházban.
+- A Nagios-és Zabbix-riasztások esetében [konfigurálja ezeket a kiszolgálókat](../../azure-monitor/learn/quick-collect-linux-computer.md) a riasztások log Analyticsba küldéséhez.
+- System Center Operations Manager riasztások esetén a [Operations Manager felügyeleti csoportot a log Analytics munkaterülethez kell kötni](../../azure-monitor/platform/om-agents.md).  A rendszer a System Center Operations Managerban létrehozott összes riasztást Log Analyticsba importálja.  
 
-## <a name="configuration"></a>Konfiguráció
-Adja hozzá a Riasztáskezelési megoldást a Log Analytics-munkaterülethez a [Megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című részben ismertetett folyamat tal. Nincs szükség további konfigurációra.
+## <a name="configuration"></a>Configuration
+Adja hozzá a Alert Management megoldást a Log Analytics munkaterülethez a [megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárással. Nincs szükség további konfigurációra.
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
-Ha a System Center Operations Manager felügyeleti csoport csatlakozik a Log Analytics-munkaterülethez, akkor a következő felügyeleti csomagok települnek a System Center Operations Manager-be, amikor hozzáadja ezt a megoldást.  A felügyeleti csomagok nem konfigurálva vagy karbantartásra van szükség.
+Ha a System Center Operations Manager felügyeleti csoport csatlakozik a Log Analytics-munkaterülethez, a megoldás hozzáadásakor a következő felügyeleti csomagok lesznek telepítve System Center Operations Manager.  Nincs szükség a felügyeleti csomagok konfigurálására és karbantartására.
 
-* Microsoft System Center Advisor riasztáskezelés (Microsoft.IntelligencePacks.AlertManagement)
+* Microsoft System Center Advisor Alert Management (Microsoft. IntelligencePacks. AlertManagement)
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../../azure-monitor/platform/om-agents.md).
 
@@ -47,74 +47,74 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 | Összekapcsolt forrás | Támogatás | Leírás |
 |:--- |:--- |:--- |
-| [Windows-ügynökök](agent-windows.md) | Nem |A közvetlen Windows-ügynökök nem hoznak létre riasztásokat.  A Log Analytics-riasztások a Windows-ügynököktől gyűjtött eseményekből és teljesítményadatokból hozhatók létre. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem |A közvetlen Linux-ügynökök nem hoznak létre riasztásokat.  A Log Analytics-riasztások a Linux-ügynököktől gyűjtött eseményekből és teljesítményadatokból hozhatók létre.  A Nagios és zabbix riasztásokat azoktól a szerverektől gyűjtik, amelyek a Linux-ügynököt igénylik. |
-| [System Center Operations Manage felügyeleti csoport](../../azure-monitor/platform/om-agents.md) |Igen |Az Operations Manager-ügynökök által létrehozott riasztások at a felügyeleti csoportba továbbítja, majd továbbítja a Log Analytics szolgáltatásba.<br><br>Az Operations Manager-ügynökök és a Log Analytics közvetlen kapcsolata nem szükséges. A riasztási adatok továbbítása a felügyeleti csoportból a Log Analytics-tárházba. |
+| [Windows-ügynökök](agent-windows.md) | Nem |A közvetlen Windows-ügynökök nem állítanak elő riasztásokat.  Log Analytics riasztások hozhatók létre a Windows-ügynökökből gyűjtött eseményekből és teljesítményadatokat. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem |A közvetlen Linux-ügynökök nem hoznak fel riasztásokat.  Log Analytics riasztások hozhatók létre a Linux-ügynökökből gyűjtött eseményekből és teljesítményadatokat.  A Nagios és a Zabbix riasztások gyűjtése a Linux-ügynököt igénylő kiszolgálókról történik. |
+| [System Center Operations Manage felügyeleti csoport](../../azure-monitor/platform/om-agents.md) |Igen |Operations Manager ügynökön létrehozott riasztásokat a rendszer a felügyeleti csoportba küldi, majd továbbítja Log Analyticsnak.<br><br>Nem szükséges közvetlen kapcsolódás Operations Manager ügynököktől Log Analytics. A riasztási adatok továbbítása a felügyeleti csoportból a Log Analytics adattárba történik. |
 
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
-- Riasztási rekordok érhetők el a megoldás, amint azok a tárházban tárolják.
-- A riasztási adatokat az Operations Manager felügyeleti csoport hárompercenként elküldi a Log Analytics szolgáltatásnak.  
+- A riasztási rekordok azonnal elérhetők a megoldásban, amint a tárházban tárolódnak.
+- A riasztási adatok küldése a Operations Manager felügyeleti csoportból három percenként Log Analytics.  
 
 ## <a name="using-the-solution"></a>A megoldás használata
-Amikor hozzáadja a Riasztáskezelési megoldást a Log Analytics-munkaterülethez, a **Riasztáskezelés** csempe hozzáadódik az irányítópulthoz.  Ez a csempe az elmúlt 24 órában létrehozott aktív riasztások számát és grafikus megjelenítését jeleníti meg.  Ezt az időtartományt nem módosíthatja.
+Amikor hozzáadja a Alert Management megoldást a Log Analytics munkaterülethez, a **Alert Management** csempe hozzá lesz adva az irányítópulthoz.  Ez a csempe az elmúlt 24 órában generált jelenleg aktív riasztások számát és grafikus ábrázolását jeleníti meg.  Ez az időtartomány nem módosítható.
 
-![Riasztáskezelés csempe](media/alert-management-solution/tile.png)
+![Alert Management csempe](media/alert-management-solution/tile.png)
 
-Kattintson a **Riasztáskezelés** csempére a **Riasztáskezelés** irányítópult megnyitásához.  Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak.  Minden oszlop a 10 legfontosabb riasztást sorolja fel az adott oszlop adott hatókörre és időtartományra vonatkozó feltételeinek megfelelő szám szerint.  A teljes listát tartalmazó naplókeresést úgy futtathatja, hogy az oszlop alján található **Összes** megtekintése gombra vagy az oszlopfejlécre kattint.
+A **Alert Management** csempére kattintva nyissa meg a **Alert Management** irányítópultot.  Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak.  Minden oszlop felsorolja az első 10 riasztást az oszlopnak a megadott hatókörhöz és időtartományhoz tartozó feltételeinek megfelelő számokkal.  Futtathat egy naplóbeli keresést, amely a teljes listát az oszlop alján **található az összes** megjelenítése elemre kattintva vagy az oszlop fejlécére kattintva jeleníti meg.
 
 | Oszlop | Leírás |
 |:--- |:--- |
-| Kritikus riasztások |Minden riasztás, amelynek súlyossága kritikus riasztás neve szerint csoportosítva.  Kattintson egy riasztás nevére a riasztás összes rekordját visszaadó naplókeresés futtatásához. |
-| Figyelmeztető jelzések |Minden figyelmeztetés súlyosságú figyelmeztetés riasztás neve szerint csoportosítva.  Kattintson egy riasztás nevére a riasztás összes rekordját visszaadó naplókeresés futtatásához. |
-| Active System Center Operations Manager-riasztások |Az Operations Manager által a *riasztást* létrehozó forrás szerint csoportosított, zárt tól eltérő állapottal kapott összes riasztást. |
-| Minden aktív értesítés |Minden riasztás bármilyen súlyosságú riasztás neve szerint csoportosítva. Csak a *Lezárt*állapottól eltérő állapotú Operations Manager-riasztásokat tartalmazza. |
+| Kritikus riasztások |A kritikus súlyosságú riasztások a riasztás neve szerint vannak csoportosítva.  Kattintson a riasztás nevére a riasztásra vonatkozó összes rekord visszaadására szolgáló napló kereséséhez. |
+| Figyelmeztető riasztások |A figyelmeztetés súlyosságával rendelkező összes riasztást a riasztás neve szerint csoportosítva.  Kattintson a riasztás nevére a riasztásra vonatkozó összes rekord visszaadására szolgáló napló kereséséhez. |
+| Aktív System Center Operations Manager riasztások |A Operations Managerból gyűjtött összes riasztás a riasztást generáló forrástól *eltérő* állapotú. |
+| Minden aktív riasztás |Minden olyan riasztás, amelynek súlyossága a riasztás neve szerint van csoportosítva. Csak a *lezárt*állapotú Operations Manager riasztásokat tartalmazza. |
 
-Ha jobbra görget, az irányítópult több gyakori lekérdezést sorol fel, amelyekre kattintva [naplókeresést](../../azure-monitor/log-query/log-query-overview.md) végezhet a riasztási adatokra.
+Ha a jobb oldali görgetésre kattint, az irányítópulton számos gyakori lekérdezés látható, melyre kattintva elvégezheti a riasztási adatok [naplóbeli keresését](../../azure-monitor/log-query/log-query-overview.md) .
 
-![Riasztáskezelés irányítópult](media/alert-management-solution/dashboard.png)
+![Alert Management irányítópult](media/alert-management-solution/dashboard.png)
 
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
-A Riasztáskezelés megoldás minden olyan rekordot elemez, amely egy riasztástípussal **van elhelyezve.**  A Log Analytics által létrehozott vagy a Nagios vagy zabbix által gyűjtött riasztásokat a megoldás nem gyűjti közvetlenül.
+A Alert Management megoldás bármilyen típusú **riasztással**rendelkező rekordot elemez.  A Log Analytics által létrehozott vagy a Nagios vagy Zabbix által gyűjtött riasztásokat a megoldás nem gyűjti közvetlenül.
 
-A megoldás importálási riasztások system center Operations Manager és létrehoz egy megfelelő rekordot minden egy-egy típusú **riasztás** és a SourceSystem of **OpsManager.**  Ezek a rekordok a következő táblázatban található tulajdonságokkal rendelkeznek:  
+A megoldás nem importálja a riasztásokat a System Center Operations Managerból, és létrehoz egy megfelelő rekordot a **riasztási** típussal és a **OpsManager**SourceSystem.  Ezek a rekordok a következő táblázatban szereplő tulajdonságokkal rendelkeznek:  
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | `Type` |*Riasztás* |
 | `SourceSystem` |*OpsManager* |
-| `AlertContext` |Annak az adatelemnek a részletei, amely a riasztást XML formátumban hozta létre. |
+| `AlertContext` |A riasztás XML-formátumban való generálását okozó adatelem részletei. |
 | `AlertDescription` |A riasztás részletes leírása. |
 | `AlertId` |A riasztás GUID azonosítója. |
 | `AlertName` |A riasztás neve. |
 | `AlertPriority` |A riasztás prioritási szintje. |
 | `AlertSeverity` |A riasztás súlyossági szintje. |
-| `AlertState` |A riasztás legutóbbi megoldási állapota. |
-| `LastModifiedBy` |A riasztást utoljára módosító felhasználó neve. |
-| `ManagementGroupName` |Annak a felügyeleti csoportnak a neve, ahol a riasztás létrejött. |
-| `RepeatCount` |Azon alkalmak száma, amikor ugyanaz a riasztás jött létre ugyanahhoz a figyelt objektumhoz a feloldás óta. |
-| `ResolvedBy` |A riasztást feloldó felhasználó neve. Üres, ha a riasztás még nem oldódott meg. |
-| `SourceDisplayName` |A riasztást létrehozó figyelési objektum megjelenítendő neve. |
+| `AlertState` |A riasztás legutóbbi feloldási állapota. |
+| `LastModifiedBy` |Annak a felhasználónak a neve, aki utoljára módosította a riasztást. |
+| `ManagementGroupName` |Annak a felügyeleti csoportnak a neve, amelyben a riasztás létrejött. |
+| `RepeatCount` |Az egyazon figyelt objektumra vonatkozóan a megoldás óta létrejött azonos riasztások száma. |
+| `ResolvedBy` |A riasztást feloldott felhasználó neve. Üres, ha a riasztás még nincs megoldva. |
+| `SourceDisplayName` |A riasztást létrehozó figyelési objektum megjelenített neve. |
 | `SourceFullName` |A riasztást létrehozó figyelési objektum teljes neve. |
-| `TicketId` |A riasztás jegyazonosítója, ha a System Center Operations Manager környezet integrálva van a riasztásokjegy-hozzárendelési folyamatával.  Nincs jegyazonosítója. |
+| `TicketId` |A riasztáshoz tartozó jegy azonosítója, ha a System Center Operations Manager-környezet integrálva van egy olyan folyamattal, amellyel jegyek rendelhetők a riasztásokhoz.  Nincs megadva a jegy AZONOSÍTÓjának üres értéke. |
 | `TimeGenerated` |A riasztás létrehozásának dátuma és időpontja. |
-| `TimeLastModified` |A riasztás utolsó módosításának dátuma és időpontja |
+| `TimeLastModified` |A riasztás utolsó módosításának dátuma és időpontja. |
 | `TimeRaised` |A riasztás létrehozásának dátuma és időpontja. |
-| `TimeResolved` |A riasztás feloldásának dátuma és időpontja. Üres, ha a riasztás még nem oldódott meg. |
+| `TimeResolved` |A riasztás feloldásának dátuma és időpontja. Üres, ha a riasztás még nincs megoldva. |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
-Az alábbi táblázat mintanapló-kereséseket tartalmaz a megoldás által gyűjtött riasztási rekordokra: 
+A következő táblázat a megoldás által gyűjtött riasztási rekordokra vonatkozó példákat tartalmaz: 
 
 | Lekérdezés | Leírás |
 |:---|:---|
-| Riasztási &#124; ahol a SourceSystem == "OpsManager" és az AlertSeverity == "error" és a TimeRaised > ezelőtt(24h) |Az elmúlt 24 órában fellépő kritikus riasztások |
-| Riasztási &#124; ahol AlertSeverity == "figyelmeztetés" és timeRaised > ezelőtt(24h) |Az elmúlt 24 órában figyelmeztető jelzések |
-| Riasztási &#124; ahol a SourceSystem == "OpsManager" és a AlertState != "Closed" és a TimeRaised > ezelőtt(24h &#124;) a Count = count() összegzése a SourceDisplayName függvényben |Az elmúlt 24 órában bevezetett aktív riasztásokkal rendelkező források |
-| Riasztási &#124; ahol a SourceSystem == "OpsManager" és az AlertSeverity == "error" és a TimeRaised > ezelőtt(24h) és alertstate != "Closed" |Az elmúlt 24 órában kapott kritikus riasztások, amelyek még aktívak |
-| Riasztási &#124; ahol a SourceSystem == "OpsManager" és a TimeRaised > ezelőtt(24h) és alertstate == "Zárt" |Az elmúlt 24 órában már lezárt riasztások |
-| Riasztási &#124; ahol a SourceSystem == "OpsManager" és a TimeRaised > ezelőtt(1d) &#124; összegezze a Count = count() függvényt AlertSeverity szerint |Az elmúlt 1 nap során feladott riasztások súlyosságuk szerint csoportosítva |
-| Riasztási &#124; ahol a SourceSystem == "OpsManager" és a TimeRaised > ezelőtt(1d) &#124; repeatcount desc szerint rendez |Az elmúlt 1 nap során az ismétlési számlálási értékük szerint rendezve keltő riasztások |
+| Riasztási &#124;, ahol a SourceSystem = = "OpsManager" és a AlertSeverity = = "Error" és a TimeRaised > ago (24 óra) |Az elmúlt 24 órában kiváltott kritikus riasztások |
+| Riasztási &#124;, ahol a AlertSeverity = = "figyelmeztetés" és a TimeRaised > ago (24 óra) |Az elmúlt 24 órában kiváltott figyelmeztető riasztások |
+| Riasztási &#124;, ahol a SourceSystem = = "OpsManager" és a AlertState! = "Closed" és a TimeRaised > ago (24h) &#124; összegzések száma = count () by SourceDisplayName |Az elmúlt 24 órában kiváltott aktív riasztásokkal rendelkező források |
+| Riasztási &#124;, ahol a SourceSystem = = "OpsManager" és a AlertSeverity = = "Error" és a TimeRaised > ago (24h) és a AlertState! = "lezárva" |Az elmúlt 24 órában kiváltott kritikus riasztások, amelyek még aktívak |
+| Riasztási &#124;, ahol a SourceSystem = = "OpsManager" és a TimeRaised > ago (24h) és a AlertState = = "Closed" |Az elmúlt 24 órában kiváltott riasztások mostantól lezárultak |
+| Riasztási &#124;, ahol a SourceSystem = = "OpsManager" és TimeRaised > ago (1d) &#124; összegzések száma = count () by AlertSeverity |Az elmúlt 1 nap során kiváltott riasztások súlyosságuk szerint csoportosítva |
+| Riasztási &#124;, ahol a SourceSystem = = "OpsManager" és a TimeRaised > ago (1d) &#124; rendezés RepeatCount desc alapján |Az elmúlt 1 nap során kiváltott riasztások az ismétlések száma érték szerint rendezve |
 
 
 

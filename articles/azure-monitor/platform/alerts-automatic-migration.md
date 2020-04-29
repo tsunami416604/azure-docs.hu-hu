@@ -1,58 +1,58 @@
 ---
-title: Ismerje meg, hogyan működik az Azure Monitor klasszikus riasztásai automatikus áttelepítési folyamata
+title: Ismerje meg, hogyan működik a Azure Monitor klasszikus riasztások automatikus áttelepítési folyamata
 description: Ismerje meg, hogyan működik az automatikus áttelepítési folyamat.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8df83439d6754440648688ac1cc36ff66556a4e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77668247"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>A klasszikus riasztási szabályok automatikus áttelepítési folyamatának megismerése
 
-Ahogy [azt korábban bejelentették](monitoring-classic-retirement.md), az Azure Monitor klasszikus riasztásai 2019 szeptemberében (eredetileg 2019 júliusa) megszűnnek. A kivonási folyamat részeként [egy áttelepítési eszköz](alerts-using-migration-tool.md) érhető el az Azure Portalon az ügyfelek számára, hogy saját maguk is elindíthassanak az áttelepítést. Ha 2019. augusztus 31-ig nem használta az áttelepítési eszközt, az Azure Monitor 2019.
-Ez a cikk végigvezeti az automatikus áttelepítési folyamaton, és segít az esetlegesen felmerülő problémák megoldásában.
+Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai 2019 szeptemberében megszűnnek (eredetileg 2019. július). A nyugdíjazási folyamat részeként [egy áttelepítési eszköz](alerts-using-migration-tool.md) is elérhető a Azure Portal az ügyfelek számára az áttelepítés elindításához. Ha még nem használta az áttelepítési eszközt a 2019-es augusztus 31-ig, Azure Monitor elindítja a klasszikus riasztások automatikus áttelepítésének folyamatát, amely az 2019. szeptember 1-től kezdődik.
+Ez a cikk végigvezeti az automatikus áttelepítési folyamaton, és segít megoldani az esetlegesen futtatott problémákat.
 
   > [!NOTE]
-  > Ez a cikk csak az Azure nyilvános felhőre vonatkozik. Az Azure Monitor klasszikus riasztásainak kivonási folyamata az Azure Government felhőben és az Azure China 21Vianet jövőbeli időpontban kerül bejelentésre.
+  > Ez a cikk csak az Azure nyilvános felhőre vonatkozik. A Azure Government Cloud és az Azure China 21Vianet Azure Monitor klasszikus riasztások kivonási folyamata jövőbeli időpontban lesz bejelentve.
 
-## <a name="what-will-happen-during-the-automatic-migration-process"></a>Mi történik az automatikus áttelepítési folyamat során?
+## <a name="what-will-happen-during-the-automatic-migration-process"></a>Mi fog történni az automatikus áttelepítési folyamat során?
 
-- **2019. szeptember 1-től**az ügyfelek bizonyos mutatókon kívül nem hozhatnak létre új klasszikus [riasztási szabályokat.](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated)
-  - A kivételek, az ügyfél továbbra is létrehozhat új klasszikus riasztási szabályokat, és használja a klasszikus riasztások júniusig 2020.
-- **2019. szeptember 1-től**a klasszikus riasztások áttelepítése kötegekben aktiválódik minden olyan ügyfél számára, amely klasszikus riasztást kap.
-- Az önkéntes áttelepítési eszközhöz úgy, hogy bizonyos klasszikus riasztási szabályok, amelyek nem vándorolnak, ugyanúgy maradnak, ahogy vannak. Ezek a klasszikus riasztási szabályok 2020 júniusáig továbbra is támogatottak. Azonban az érvénytelen klasszikus riasztási szabályok törlődnek, mivel azok nem működnek.
-Minden klasszikus riasztási szabályok, amelyek figyelik a törölt célerőforrások vagy [metrikák, amelyek már nem támogatott](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) a már nem támogatott érvénytelennek minősülnek.
-- Az előfizetés áttelepítésének megkezdése után, hacsak nincsenek problémák, az áttelepítésnek egy órán belül be kell fejeződnie. Az ügyfelek figyelhetik az áttelepítés állapotát [az Azure Monitor áttelepítési paneljén.](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)
-- Az előfizetés-tulajdonosok e-mailt kapnak az áttelepítés sikeres befejezéséről.
-- Ha az áttelepítés során bármilyen probléma merül fel, az előfizetés-tulajdonosok e-mailt is kapnak, amelyben tájékoztatják őket arról, hogy azok róluk. Az ügyfelek az áttelepítési panelsegítségével megtekinthetik a probléma teljes részleteit.
-- Abban az esetben, ha az ügyféltől olyan műveletre van szükség, mint például egy erőforrászárolás ideiglenes letiltása vagy egy házirend-hozzárendelés módosítása, az ügyfeleknek 2019. Ha a problémák at nem oldja meg addig, a klasszikus riasztások sikeres áttelepítése nem garantálható.
-
-    > [!NOTE]
-    > Ha nem szeretné megvárni az automatikus áttelepítési folyamat elindítását, az áttelepítési eszköz használatával továbbra is elindíthatja az áttelepítést.
-
-## <a name="important-things-to-note"></a>Fontos megjegyezni
-
-Az áttelepítési folyamat a klasszikus riasztási szabályokat új, egyenértékű riasztási szabályokká alakítja, és műveletcsoportokat hoz létre. Az előkészítés során vegye figyelembe a következő pontokat:
-
-- Az új riasztási szabályok értesítési hasznos adatformátumai eltérnek a klasszikus riasztási szabályoktól, mivel több funkciót támogatnak. Ha rendelkezik logikai alkalmazásokkal, runbookokkal vagy webhookokkal, amelyeket a klasszikus riasztási szabály vált ki, előfordulhat, hogy az áttelepítés befejezése után leállnak az értesítési hasznos terhelések közötti különbségek miatt. [További információ az áttelepítésre való felkészülésről.](alerts-prepare-migration.md)
-
-- Néhány klasszikus riasztási szabályok nem telepíthető kontami által az eszköz használatával. [Megtudhatja, hogy mely szabályok nem telepíthetők át, és mi a teendő velük.](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated)
+- **2019. szeptember 1-től**az ügyfelek nem tudnak új klasszikus riasztási szabályokat létrehozni, kivéve [bizonyos mérőszámokat](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
+  - A kivételek miatt az ügyfél továbbra is új klasszikus riasztási szabályokat hozhat létre, és a klasszikus riasztásokat 2020-ig használhatja.
+- **2019. szeptember 1-től**kezdődően a klasszikus riasztások áttelepítése a klasszikus riasztásokkal rendelkező ügyfelek kötegében aktiválódik.
+- Hasonlóan az önkéntes áttelepítési eszközhöz, bizonyos klasszikus riasztási szabályok, amelyek nem telepíthetők át, maradnak. A klasszikus riasztási szabályokat a 2020-ig továbbra is támogatja a rendszer. Azonban minden érvénytelen klasszikus riasztási szabály törlődik, mivel azok nem működőképesek.
+A törölt cél erőforrásokat vagy a [már nem támogatott metrikákat](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) figyelő klasszikus riasztási szabályok érvénytelennek tekintendők.
+- Ha az előfizetés áttelepítése megkezdődik, hacsak nincs probléma, az áttelepítés egy órán belül befejeződik. Az áttelepítés állapotát a [Azure monitor áttelepítési](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)paneljén is figyelheti.
+- Az előfizetés tulajdonosai e-mailt kapnak az áttelepítés sikeres befejezéséről.
+- Ha az áttelepítés során problémák merülnek fel, az előfizetések tulajdonosai is kapnak egy e-mailt, amely arról tájékoztatja őket. Az ügyfelek az áttelepítési panelen tekinthetik meg a probléma részletes adatait.
+- Ha az ügyfélnek olyan beavatkozásra van szüksége, mint például egy erőforrás zárolásának ideiglenes letiltása vagy egy szabályzat-hozzárendelés módosítása, az ügyfeleknek az 2019. október 31-ig kell megszüntetniük az esetleges problémákat. Ha a problémákat nem oldja meg, a klasszikus riasztások sikeres áttelepítése nem garantálható.
 
     > [!NOTE]
-    > Az áttelepítési folyamat nem befolyásolja a klasszikus riasztási szabályok kiértékelését. Továbbra is futni fognak, és riasztásokat küldenek, amíg át nem telepítik őket, és az új riasztási szabályok érvénybe nem lépnek.
+    > Ha nem szeretné, hogy az automatikus áttelepítési folyamat elinduljon, továbbra is aktiválhatja az áttelepítést az áttelepítési eszköz használatával.
 
-## <a name="what-if-the-automatic-migration-fails"></a>Mi történik, ha az automatikus áttelepítés sikertelen?
+## <a name="important-things-to-note"></a>Fontos Tudnivaló
 
-Ha az automatikus áttelepítési folyamat sikertelen, az előfizetés-tulajdonosok e-mailt kapnak, amelyben értesítik őket a problémáról. Használhatja a migrálási panel az Azure Monitor a probléma részleteinek megtekintéséhez.
+Az áttelepítési folyamat a klasszikus riasztási szabályokat új, egyenértékű riasztási szabályokra konvertálja, és műveleti csoportokat hoz létre. Az előkészítés során vegye figyelembe a következő szempontokat:
 
-Az áttelepítés során felmerülő problémákkal kapcsolatos segítségért tekintse meg a [hibaelhárítási útmutatót.](alerts-understand-migration.md#common-problems-and-remedies)
+- Az új riasztási szabályokhoz tartozó értesítési hasznos formátumok eltérnek a klasszikus riasztási szabályoktól, mert több funkciót támogatnak. Ha olyan logikai alkalmazásokkal, runbookok vagy webhookokkal rendelkezik, amelyeket klasszikus riasztási szabály indít el, akkor előfordulhat, hogy az áttelepítést követően az áttelepítés befejeződése után leáll a várt működés. [Ismerje meg, hogyan készítheti elő az áttelepítést](alerts-prepare-migration.md).
+
+- Néhány klasszikus riasztási szabályt nem lehet áttelepíteni az eszköz használatával. [Megtudhatja, hogy mely szabályok nem telepíthetők át, és mire használhatók](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
+
+    > [!NOTE]
+    > Az áttelepítési folyamat nem befolyásolja a klasszikus riasztási szabályok kiértékelését. A rendszer továbbra is futtatja és riasztásokat küld, amíg át nem telepíti őket, és az új riasztási szabályok érvénybe lépnek.
+
+## <a name="what-if-the-automatic-migration-fails"></a>Mi a teendő, ha az automatikus áttelepítés meghiúsul?
+
+Ha az automatikus áttelepítési folyamat meghiúsul, az előfizetés tulajdonosai e-mailben értesítik a problémát. A probléma részletes ismertetését az Azure Monitor áttelepítési paneljén végezheti el.
+
+Az áttelepítés során esetlegesen felmerülő problémákkal kapcsolatos segítségért tekintse meg a [hibaelhárítási útmutatót](alerts-understand-migration.md#common-problems-and-remedies) .
 
   > [!NOTE]
-  > Abban az esetben, ha az ügyféltől olyan műveletre van szükség, mint például egy erőforrászárolás ideiglenes letiltása vagy egy házirend-hozzárendelés módosítása, az ügyfeleknek 2019. Ha a problémák at nem oldja meg addig, a klasszikus riasztások sikeres áttelepítése nem garantálható.
+  > Ha az ügyfélnek olyan beavatkozásra van szüksége, mint például egy erőforrás zárolásának ideiglenes letiltása vagy egy szabályzat-hozzárendelés módosítása, az ügyfeleknek az 2019. október 31-ig kell megszüntetniük az esetleges problémákat. Ha a problémákat nem oldja meg, a klasszikus riasztások sikeres áttelepítése nem garantálható.
 
 ## <a name="next-steps"></a>További lépések
 

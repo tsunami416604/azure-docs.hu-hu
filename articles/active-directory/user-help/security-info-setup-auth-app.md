@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként – Azure AD
-description: A Biztonsági adatok (előzetes verzió) lap beállítása személyazonosságának igazolására a Microsoft Authenticator alkalmazással, mint ellenőrzési módszerrel.
+title: Az Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként – Azure AD
+description: A biztonsági adatok (előzetes verzió) lapon beállíthatja, hogy az Ön identitását a Microsoft Authenticator alkalmazással ellenőrizze ellenőrzési módszerként.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,26 +12,26 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062421"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>A Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként
 
-Az alábbi lépésekkel hozzáadhatja a kétfaktoros ellenőrzési és jelszó-visszaállítási módszereket. Miután első alkalommal beállította ezt, visszatérhet a **Biztonsági adatok** lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
+A kétfaktoros ellenőrzési és jelszó-visszaállítási módszerek hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
 
-Ha a rendszer a munkahelyi vagy iskolai fiókba való bejelentkezés után azonnal kéri, hogy állítsa be ezt, tekintse meg a [biztonsági adatok beállítása a bejelentkezési lap kérdésében](security-info-setup-signin.md) című témakör részletes lépéseit.
+Ha a rendszer a munkahelyi vagy iskolai fiókjába való bejelentkezés után azonnal beállítja ezt a beállítását, tekintse meg a [biztonsági adatok beállítása a bejelentkezési oldalról](security-info-setup-signin.md) című cikk részletes lépéseit.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
-> Ha nem látja a hitelesítő alkalmazás lehetőséget, lehetséges, hogy a szervezet nem engedélyezi, hogy ezt a beállítást ellenőrzésre használja. Ebben az esetben más módszert kell választania, vagy további segítségért forduljon a szervezet ügyfélszolgálatához.
+> Ha nem látja a hitelesítő alkalmazás lehetőségét, lehetséges, hogy a szervezet nem engedélyezi, hogy ezt a lehetőséget használja az ellenőrzéshez. Ebben az esetben egy másik módszert kell választania, vagy további segítségért forduljon a szervezet ügyfélszolgálatához.
 
 ## <a name="security-vs-password-reset-verification"></a>Biztonság vs jelszó-visszaállítás ellenőrzése
 
-A biztonsági adatok módszerei a kétfaktoros biztonsági ellenőrzéshez és a jelszó alaphelyzetbe állításához is használatosak. Azonban nem minden módszer használható mindkettőre.
+A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzéshez és a jelszó-visszaállításhoz is használja a rendszer. Azonban nem minden metódus használható egyszerre mindkettőhöz.
 
 | Módszer | Alkalmazási cél |
 | ------ | -------- |
@@ -42,124 +42,124 @@ A biztonsági adatok módszerei a kétfaktoros biztonsági ellenőrzéshez és a
 | E-mail fiók | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
 | Biztonsági kérdések | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
 
-## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>A Microsoft Authenticator alkalmazás beállítása a Biztonsági adatok lapon
+## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>A Microsoft Authenticator alkalmazás beállítása a biztonsági adatok lapról
 
-A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési alkalmazást használhat a biztonsági adatok egyik módszereként. Nem kell használnia a Microsoft Authenticator alkalmazást, és a beállítási folyamat során másik alkalmazást is választhat. Ez a cikk azonban a Microsoft Authenticator alkalmazást használja.
+A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési alkalmazást is használhat a biztonsági adatok egyik módszere. Nem kell a Microsoft Authenticator alkalmazást használnia, és a beállítás során másik alkalmazást is választhat. Ez a cikk azonban az Microsoft Authenticator alkalmazást használja.
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás beállítása
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjába, https://myprofile.microsoft.com/ és lépjen az oldalra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-    ![Saját profil lap, kiemelt biztonsági adatok hivatkozásai](media/security-info/securityinfo-myprofile-page.png)
+    ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
-2. Válassza a **Biztonsági adatok lehetőséget** a bal oldali navigációs ablakban vagy a Biztonsági **adatok** blokkban található hivatkozáson, majd válassza a Metódus **hozzáadása** lehetőséget a **Biztonsági adatok** lapon.
+2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
 
-    ![Biztonsági adatok lap kiemelt Hozzáadási módszer beállítással](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **Metódus hozzáadása** lapon válassza a **Hitelesítő alkalmazás** elemet a legördülő listából, majd a **Hozzáadás gombot.**
+3. A **metódus hozzáadása** lapon válassza a **hitelesítő alkalmazás** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
 
-    ![Metódus hozzáadása mező, kijelölt Hitelesítő alkalmazással](media/security-info/securityinfo-myprofile-addauthapp.png)
+    ![A Method Box hozzáadása a hitelesítő alkalmazás kiválasztásával](media/security-info/securityinfo-myprofile-addauthapp.png)
 
-4. A **Kezdőképernyőn válassza az alkalmazás letöltése** lehetőséget a **Letöltés gombra** a Microsoft Authenticator alkalmazás letöltéséhez és telepítéséhez mobileszközére, majd kattintson a **Tovább**gombra.
+4. Az **alkalmazás beszerzése** lapon válassza a **Letöltés most** lehetőséget, hogy letöltse és telepítse a Microsoft Authenticator alkalmazást a mobileszközön, majd válassza a **tovább**lehetőséget.
 
-    Az alkalmazás letöltéséről és telepítéséről a [Microsoft Authenticator alkalmazás letöltése és telepítése című](user-help-auth-app-download-install.md)témakörben talál további információt.
+    További információ az alkalmazás letöltéséről és telepítéséről: [a Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md).
 
-    ![Első a beszerzésaz alkalmazás oldal](media/security-info/securityinfo-myprofile-getauthapp.png)
+    ![Első lépésként az alkalmazás oldalának beszerzése](media/security-info/securityinfo-myprofile-getauthapp.png)
 
    > [!Note]
-   > Ha a Microsoft Authenticator alkalmazástól eltérő hitelesítő alkalmazást szeretne használni, válassza a **Másik hitelesítő alkalmazás** hivatkozását.
+   > Ha a Microsoft Authenticator alkalmazástól eltérő hitelesítő alkalmazást szeretne használni, válassza a **másik hitelesítő alkalmazás használata** hivatkozást.
    >
-   > Ha a szervezet lehetővé teszi, hogy válasszon egy másik módszer mellett a hitelesítő app, akkor válassza ki a **Szeretnék létrehozni egy másik módszer linket**.
+   > Ha a szervezete lehetővé teszi, hogy egy másik módszert válasszon a hitelesítő alkalmazás mellett, akkor válassza a **másik módszer csatolása**lehetőséget.
 
-5. Maradjon a **Fiók beállítása** lapon, amíg beállítja a Microsoft Authenticator alkalmazást a mobileszközén.
+5. Maradjon a **fiók beállítása** oldalon, miközben beállítja a Microsoft Authenticator alkalmazást a mobileszközön.
 
-    ![A hitelesítő alkalmazásoldal beállítása](media/security-info/securityinfo-myprofile-setupauthapp.png)
+    ![A hitelesítő alkalmazás oldalának beállítása](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
-6. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be az értesítések engedélyezéséhez (ha a rendszer kéri), válassza a **Fiók hozzáadása** lehetőséget a jobb felső **sarokban** lévő Testreszabás és vezérlés ikonon, majd válassza a **Munkahelyi vagy iskolai fiók lehetőséget**.
+6. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be az értesítések engedélyezését (ha a rendszer kéri), válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók**lehetőséget.
 
     >[!Note]
-    >Ha ez az első alkalom, hogy beállítja a Microsoft Authenticator alkalmazást, előfordulhat, hogy egy kérdés jelenik meg arról, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készíthessen és videót (Android) rögzíthessen. Az **Engedélyezés** lehetőséget kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet ad a QR-kódról. Ha nem engedélyezi a kamerát, továbbra is beállíthatja a hitelesítő alkalmazást, de manuálisan kell megadnia a kódadatokat. A kód manuális hozzáadásáról a [Fiók hozzáadása az alkalmazáshoz című témakörben](user-help-auth-app-add-account-manual.md)talál további információt.
+    >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
-7. Térjen vissza a **Fiók beállítása** lapra a számítógépen, és válassza a **Tovább**gombot.
+7. Térjen vissza a **fiók beállítása** lapra a számítógépen, majd válassza a **tovább**lehetőséget.
 
-    Megjelenik **a QR-kódlap beszkaf.**
+    Megjelenik a **QR-kód vizsgálata** lap.
 
-    ![A QR-kód beszkéselése a Hitelesítő alkalmazással](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
+    ![A QR-kód vizsgálata a hitelesítő alkalmazás használatával](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
 
-8. A megadott kód beolvasása a Microsoft Authenticator alkalmazás QR-kódolvasójával, amely a 6.
+8. A 6. lépésben a munkahelyi vagy iskolai fiók létrehozása után ellenőrizze a megadott kódot a mobil eszközön megjelenő Microsoft Authenticator-alkalmazás QR-kódjának olvasójában.
 
-    A hitelesítő alkalmazásnak sikeresen hozzá kell adnia a munkahelyi vagy iskolai fiókját anélkül, hogy további adatokat kellene megadnia Öntől. Ha azonban a QR-kódolvasó nem tudja olvasni a kódot, kiválaszthatja a **Nem olvasható QR-kód hivatkozást,** és manuálisan beírhatja a kódot és az URL-t a Microsoft Authenticator alkalmazásba. A kód manuális hozzáadásáról a [Fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md)című témakörben talál további információt.
+    A hitelesítő alkalmazásnak sikeresen hozzá kell adnia a munkahelyi vagy iskolai fiókját anélkül, hogy további adatokat kellene megadnia. Ha azonban a QR-kód olvasója nem tudja beolvasni a kódot, akkor a **nem tudja beolvasni a QR-kód hivatkozást** , és manuálisan adja meg a kódot és az URL-címet a Microsoft Authenticator alkalmazásban. A kódok manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
-9. Válassza a **Tovább** gombot a számítógép **QR-kódlapján.**
+9. Kattintson a **Tovább gombra** a **QR-kód vizsgálata** lapon a számítógépen.
 
-    A rendszer értesítést küld a Microsoft Authenticator alkalmazásnak a mobileszközén, hogy tesztelje a fiókját.
+    A rendszer értesítést küld a mobileszközön lévő Microsoft Authenticator alkalmazásnak, hogy tesztelje a fiókját.
 
     ![A fiók tesztelése a hitelesítő alkalmazással](media/security-info/securityinfo-myprofile-tryitauthapp.png)
 
-10. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, majd válassza a **Tovább gombot.**
+10. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, majd kattintson a **tovább**gombra.
 
-     ![Sikeres értesítés az alkalmazás és a fiók összekapcsolása](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![Sikeres értesítés, az alkalmazás és a fiók csatlakoztatása](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-     A biztonsági adatok úgy frissülnek, hogy a Microsoft Authenticator alkalmazás alapértelmezés szerint a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása során ellenőrizze személyazonosságát.
+     A biztonsági adatokat a rendszer úgy frissíti, hogy a Microsoft Authenticator alkalmazás alapértelmezés szerint a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása során ellenőrizze az identitást.
 
-## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>A hitelesítő alkalmazás törlése a biztonsági adatok kalkapcsolatos módszereiből
+## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>A hitelesítő alkalmazás törlése a biztonsági adatok módszereiből
 
-Ha a továbbiakban nem szeretné a hitelesítő alkalmazást biztonsági adatként használni, eltávolíthatja azt a **Biztonsági adatok** lapról. Ez minden hitelesítő alkalmazásesetében működik, nem csak a Microsoft Authenticator alkalmazásban. Az alkalmazás törlése után meg kell lépned a mobileszközödhitelesítő alkalmazásba, és törölni kell a fiókot.
+Ha már nem szeretné használni a hitelesítő alkalmazást biztonsági információs módszerként, akkor a **biztonsági adatok** lapról távolíthatja el. Ez minden hitelesítő alkalmazás esetében működik, nem csak a Microsoft Authenticator alkalmazás. Az alkalmazás törlése után be kell lépnie a mobileszközön a hitelesítő alkalmazásba, és törölnie kell a fiókot.
 
 >[!Important]
->Ha véletlenül törli a hitelesítő alkalmazást, nem lehet visszavonni. A cikk [hitelesítő alkalmazás ának beállítása](#set-up-the-microsoft-authenticator-app-from-the-security-info-page) című szakaszában leírt lépéseket követve újra hozzá kell adnia a hitelesítő alkalmazást.
+>Ha tévedésből törli a hitelesítő alkalmazást, a visszavonás nem vonható vissza. A hitelesítő alkalmazás [beállítása](#set-up-the-microsoft-authenticator-app-from-the-security-info-page) című szakaszban ismertetett lépéseket követve újra hozzá kell adnia a hitelesítő alkalmazást.
 
 ### <a name="to-delete-the-authenticator-app"></a>A hitelesítő alkalmazás törlése
 
-1. A **Biztonsági adatok** lapon válassza a **Delete** hivatkozást a Hitelesítő alkalmazás mellett.
+1. A **biztonsági adatok** lapon válassza a **Törlés** hivatkozást a hitelesítő alkalmazás mellett.
 
-    ![Hivatkozás a hitelesítő alkalmazás biztonsági adatokból való törléséhez](media/security-info/securityinfo-myprofile-deleteauthapp.png)
+    ![A hitelesítő alkalmazás biztonsági adatokból való törlésére szolgáló hivatkozás](media/security-info/securityinfo-myprofile-deleteauthapp.png)
 
-2. A hitelesítő alkalmazás törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A hitelesítő alkalmazás törlése után törlődik a biztonsági adatokból, és eltűnik a **Biztonsági adatok** lapról. Ha a hitelesítő alkalmazás az alapértelmezett módszer, az alapértelmezett mód egy másik elérhető módszerre változik.
+2. A hitelesítő alkalmazás törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A hitelesítő alkalmazás törlése után a rendszer eltávolítja a biztonsági adatokat, és eltűnik a **biztonsági adatok** lapról. Ha a hitelesítő alkalmazás az alapértelmezett módszer, akkor az alapértelmezett érték egy másik elérhető metódusra változik.
 
-3. Nyissa meg a hitelesítő alkalmazást mobileszközén, válassza **a Fiókok szerkesztése**lehetőséget, majd törölje a munkahelyi vagy iskolai fiókját a hitelesítő alkalmazásból.
+3. Nyissa meg a hitelesítő alkalmazást a mobileszközön, válassza a **fiókok szerkesztése**lehetőséget, majd törölje munkahelyi vagy iskolai fiókját a hitelesítő alkalmazásból.
 
-    Fiókját teljesen eltávolítjuk a hitelesítő alkalmazásból a kétfaktoros ellenőrzési és jelszó-visszaállítási kérelmek hez.
+    A fiókja teljesen el lett távolítva a hitelesítő alkalmazásból a kétfaktoros ellenőrzés és a jelszó-visszaállítási kérelmek esetében.
 
 ## <a name="change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatok módszerének módosítása
 
-Ha azt szeretné, hogy a hitelesítő alkalmazás legyen az alapértelmezett módszer, amelyet akkor használ, amikor kétfaktoros ellenőrzéssel vagy jelszó-visszaállítási kérelmekkel jelentkezik be a munkahelyi vagy iskolai fiókjába, beállíthatja azt a Biztonsági **adatok** lapon.
+Ha azt szeretné, hogy a hitelesítő alkalmazás az alapértelmezett módszer legyen, amikor a kétfaktoros ellenőrzés vagy a jelszó-visszaállítási kérelmek használatával bejelentkezik a munkahelyi vagy iskolai fiókjába, a biztonsági **adatok** lapról állíthatja be.
 
 ### <a name="to-change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatok módszerének módosítása
 
-1. A **Biztonsági adatok** lapon válassza a **Módosítás** hivatkozást az **Alapértelmezett bejelentkezési módszer** adatai mellett.
+1. A **biztonsági adatok** lapon válassza az **alapértelmezett bejelentkezési módszer** adatainak melletti **módosítás** hivatkozást.
 
     ![Az alapértelmezett bejelentkezési módszer hivatkozásának módosítása](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
 
-2. Válassza a **Microsoft Authenticator – értesítés lehetőséget** az elérhető módszerek legördülő listájából. Ha nem a Microsoft Authenticator alkalmazást használja, válassza a Hitelesítő alkalmazás vagy a **hardvertoken** lehetőséget.
+2. Válassza az **Microsoft Authenticator – értesítés** lehetőséget az elérhető módszerek legördülő listájából. Ha nem használja a Microsoft Authenticator alkalmazást, válassza a **hitelesítő alkalmazás vagy a hardver token** lehetőséget.
 
-    ![Az alapértelmezett bejelentkezés módjának kiválasztása](media/security-info/securityinfo-myprofile-defaultauthapp.png)
+    ![Válassza ki a metódust az alapértelmezett bejelentkezéshez](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
-3. Válassza a **Megerősítés**lehetőséget.
+3. Válassza a **Confirm (megerősítés**) lehetőséget.
 
     A Microsoft Authenticator alkalmazás bejelentkezési módosításaihoz használt alapértelmezett módszer.
 
 ## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
-További lehetőségek et is választhat arra vonatkozóan, hogy a szervezet hogyan veszi fel Önhez a személyazonosságának igazolását, attól függően, hogy mit próbál tenni. A lehetőségek a következők:
+További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a személyazonosságának ellenőrzéséhez a you're alapján. A lehetőségek a következők:
 
-- **Mobileszköz szövege.** Adja meg mobileszköz-számát, és kapjon egy kódot, amelyet a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához használ. A személyazonosság szöveges üzenettel (SMS) történő ellenőrzéséről a [Biztonsági adatok beállítása szöveges üzenetküldés (SMS) használatához](security-info-setup-text-msg.md)című témakörben talál.
+- **Mobileszköz szövege.** Adja meg a mobileszköz számát, és szerezzen be egy, a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz használni kívánt kódot. Az identitás szöveges üzenettel (SMS) való ellenőrzésével kapcsolatos részletes utasításokért lásd: [biztonsági információk beállítása szöveges üzenetküldés (SMS) használatára](security-info-setup-text-msg.md).
 
-- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg mobileszköz-számát, és kapjon telefonhívást a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. A személyazonosság telefonszámmal történő igazolásával kapcsolatos részletes útmutatást a [Biztonsági adatok beállítása telefonhívások használatához](security-info-setup-phone-number.md).
+- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszköz számát, és telefonhívást kap a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Az identitás telefonszámmal történő ellenőrzésével kapcsolatos részletes útmutatásért lásd: [biztonsági információk beállítása telefonhívások használatához](security-info-setup-phone-number.md).
 
-- **Biztonsági kulcs.** Regisztrálja a Microsofttal kompatibilis biztonsági kulcsot, és használja azt pin-kóddal együtt a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. A személyazonosság biztonsági kulccsal történő ellenőrzéséről a [Biztonsági adatok beállítása biztonsági kulcs használatához](security-info-setup-security-key.md)lépésenként.
+- **Biztonsági kulcs.** Regisztrálja Microsoft-kompatibilis biztonsági kulcsát, és használja PIN-kóddal a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Ha részletes útmutatást szeretne arról, hogyan ellenőrizheti személyazonosságát egy biztonsági kulccsal, tekintse meg a biztonsági [adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)című témakört.
 
-- **E-mail cím.** Adja meg munkahelyi vagy iskolai e-mail címét, hogy e-mailt kapjon a jelszó-visszaállításhoz. Ez a beállítás nem érhető el a kétlépéses ellenőrzéshez. A levelezés beállításával kapcsolatos részletes útmutatást a [Biztonsági adatok beállítása a levelezés használatához.](security-info-setup-email.md)
+- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címét, hogy e-mailt kapjon a jelszó alaphelyzetbe állításához. Ez a beállítás kétlépéses ellenőrzés esetén nem érhető el. Az e-mailek beállításával kapcsolatos részletes útmutatásért lásd: [biztonsági adatok beállítása e-mailek használatára](security-info-setup-email.md).
 
-- **Biztonsági kérdések.** Válaszoljon a rendszergazda által a szervezet számára létrehozott néhány biztonsági kérdésre. Ez a beállítás csak jelszó-visszaállításesetén érhető el, a kétlépéses ellenőrzésnél nem. A biztonsági kérdések beállításával kapcsolatos részletes útmutatást a [Biztonsági adatok beállítása a biztonsági kérdések használatához](security-info-setup-questions.md) című cikkben találja.
+- **Biztonsági kérdések.** Válaszoljon a szervezete rendszergazdája által létrehozott biztonsági kérdésekre. Ez a beállítás csak a jelszó-visszaállításhoz érhető el, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállításával kapcsolatos részletes utasításokért tekintse meg a biztonsági [kérdések beállítása a biztonsági kérdésekre](security-info-setup-questions.md) című cikket.
 
     >[!Note]
-    >Ha ezek közül a lehetőségek közül néhány hiányzik, akkor valószínűleg azért, mert a szervezet nem engedélyezi ezeket a módszereket. Ebben az esetben ki kell választania egy elérhető módszert, vagy további segítségért forduljon a rendszergazdához.
+    >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
 ## <a name="next-steps"></a>További lépések
 
-- Jelentkezzen be a Microsoft Authenticator alkalmazással, a Bejelentkezés a [kétlépéses ellenőrzés vagy](security-info-setup-signin.md) a biztonsági adatokról szóló cikk ben leírt lépéseket követve.
+- Jelentkezzen be a Microsoft Authenticator alkalmazással, a [Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával](security-info-setup-signin.md) című szakaszának lépéseit követve.
 
-- Állítsa alaphelyzetbe a jelszavát, ha elvesztette vagy elfelejtette azt a [Jelszó-visszaállítás portálról,](https://passwordreset.microsoftonline.com/) vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 
-- Hibaelhárítási tippeket és segítséget kaphat a Bejelentkezési problémákról a [Nem lehet bejelentkezni a Microsoft-fiókkal](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) kapcsolatos cikkben.
+- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

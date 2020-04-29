@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple-től – az Azure AD használata identitásforrásként a magánfelhőben
-description: Ez a témakör azt ismerteti, hogy miként veheti fel az Azure AD-t identitásszolgáltatóként a CloudSimple magánfelhőjéhez, hogy hitelesítse a CloudSimple-t az Azure-ból elérőket elérő felhasználókat
+title: Azure VMware-megoldás CloudSimple használatával – az Azure AD-t használhatja a saját Felhőbeli identitás forrásaként
+description: Ismerteti, hogyan lehet az Azure AD-t identitás-szolgáltatóként hozzáadni a saját CloudSimple-felhőben az Azure-CloudSimple hozzáférő felhasználók hitelesítéséhez
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,100 +9,100 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564584"
 ---
-# <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Az Azure AD használata identitásszolgáltatóként a vCenterhez a CloudSimple private cloud szolgáltatásban
+# <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Az Azure AD használata identitás-szolgáltatóként a vCenter a CloudSimple Private Cloud szolgáltatásban
 
-Beállíthatja a CloudSimple Private Cloud vCenter hitelesítésére az Azure Active Directory (Azure AD) a VMware rendszergazdák számára a vCenter eléréséhez. Az egyszeri bejelentkezési identitásforrás beállítása után a **felhőtulajdonos** felhasználó hozzáadhat felhasználókat az identitásforrásból a vCenterhez.  
+A CloudSimple saját Felhőbeli vCenter a VMware-rendszergazdák számára a vCenter eléréséhez a Azure Active Directory (Azure AD) használatával végezheti el a hitelesítést. Az egyszeri bejelentkezési Identity forrás beállítása után a **cloudowner** -felhasználó hozzáadhat felhasználókat az Identity forrásból a vCenter.  
 
-Az Active Directory tartományt és a tartományvezérlőket az alábbi módokon állíthatja be:
+A Active Directory tartománya és tartományvezérlői a következő módokon állíthatók be:
 
-* A helyszínen futó Active Directory-tartomány és tartományvezérlők
-* Az Azure-on virtuális gépként futó Active Directory-tartomány- és tartományvezérlők az Azure-előfizetésben
-* A CloudSimple magánfelhőben futó új Active Directory-tartomány- és tartományvezérlők
+* A helyszínen futó tartomány-és tartományvezérlők Active Directory
+* Az Azure-ban virtuális gépekként működő tartomány-és tartományvezérlők Active Directory Azure-előfizetésében
+* Új Active Directory tartomány-és tartományvezérlők a CloudSimple-ben futó saját felhőben
 * Azure Active Directory szolgáltatás
 
-Ez az útmutató ismerteti az Azure AD identitásforrásként való beállításához szükséges feladatokat.  A helyszíni Active Directory vagy az Azure-ban futó Active Directory használatával kapcsolatos további tudnivalókért tekintse meg a [vCenter-identitásforrások beállítása az Active Directory használatához](set-vcenter-identity.md) című részletes útmutatást az identitásforrás beállításához.
+Ez az útmutató ismerteti az Azure AD identitás-forrásként való beállításához szükséges feladatokat.  Az Azure-ban futó helyszíni Active Directory vagy Active Directory használatával kapcsolatos információkért tekintse meg a [vCenter-identitások beállítása az Active Directory használatához](set-vcenter-identity.md) című témakört az Identity forrás beállítása című témakörben.
 
 ## <a name="about-azure-ad"></a>Az Azure AD ismertetése
 
-Az Azure AD a Microsoft több-bérlős, felhőalapú címtár- és identitáskezelési szolgáltatása.  Az Azure AD méretezhető, konzisztens és megbízható hitelesítési mechanizmust biztosít a felhasználók számára az Azure különböző szolgáltatásainak hitelesítéséhez és eléréséhez.  Emellett biztonságos LDAP-szolgáltatásokat is biztosít bármely külső szolgáltatások számára az Azure AD hitelesítési/identitásforrásként való használatához.  Az Azure AD egyesíti az alapvető címtárszolgáltatásokat, a fejlett identitás-szabályozást és az alkalmazáshozzáférés-kezelést, amely a magánfelhőhöz való hozzáférés megadására használható a magánfelhőt felügyelő felhasználók számára.
+Az Azure AD a Microsoft több-bérlős, felhőalapú címtár-és Identitáskezelés-kezelő szolgáltatása.  Az Azure AD méretezhető, konzisztens és megbízható hitelesítési mechanizmust biztosít a felhasználók számára az Azure különböző szolgáltatásainak hitelesítéséhez és eléréséhez.  Emellett biztonságos LDAP-szolgáltatásokat biztosít bármely harmadik féltől származó szolgáltatás számára az Azure AD hitelesítés/identitás forrásaként való használatához.  Az Azure AD ötvözi az alapszintű címtárszolgáltatások, a speciális identitások szabályozását és az alkalmazás-hozzáférés kezelését, amellyel hozzáférést biztosíthat a privát felhőhöz a privát felhőt felügyelő felhasználók számára.
 
-Az Azure AD identitásforrásként való használatához be kell állítania az Azure AD és az Azure AD tartományi szolgáltatásait. Kövesse az alábbi utasításokat:
+Ha az Azure AD-t identitás-forrásként szeretné használni a vCenter-ben, be kell állítania az Azure AD-t és az Azure AD tartományi szolgáltatásokat. Kövesse az alábbi utasításokat:
 
-1. [Az Azure AD és az Azure AD tartományi szolgáltatásainak beállítása](#set-up-azure-ad-and-azure-ad-domain-services)
-2. [Identitásforrás beállítása a Private Cloud vCenter szolgáltatásban](#set-up-an-identity-source-on-your-private-cloud-vcenter)
+1. [Az Azure AD és az Azure AD tartományi szolgáltatások beállítása](#set-up-azure-ad-and-azure-ad-domain-services)
+2. [Személyazonossági forrás beállítása a saját felhőalapú vCenter](#set-up-an-identity-source-on-your-private-cloud-vcenter)
 
-## <a name="set-up-azure-ad-and-azure-ad-domain-services"></a>Az Azure AD és az Azure AD tartományi szolgáltatásainak beállítása
+## <a name="set-up-azure-ad-and-azure-ad-domain-services"></a>Az Azure AD és az Azure AD tartományi szolgáltatások beállítása
 
-Mielőtt elkezdene, globális rendszergazdai jogosultságokkal kell hozzáférnie az Azure-előfizetéséhez.  A következő lépések általános irányelveket adnak. A részleteket az Azure dokumentációja tartalmazza.
+Az első lépések előtt globális rendszergazdai jogosultságokkal kell rendelkeznie az Azure-előfizetéséhez.  Az alábbi lépések általános útmutatást nyújtanak. A részleteket az Azure dokumentációja tartalmazza.
 
 ### <a name="azure-ad"></a>Azure AD
 
 > [!NOTE]
-> Ha már rendelkezik az Azure AD-vel, kihagyhatja ezt a szakaszt.
+> Ha már rendelkezik Azure AD-val, kihagyhatja ezt a szakaszt.
 
-1. Állítsa be az Azure AD-t az előfizetésén az [Azure AD dokumentációjában](../active-directory/fundamentals/get-started-azure-ad.md)leírtak szerint.
-2. Engedélyezze az Azure Active Directory Premium szolgáltatást az előfizetésén a [Regisztráció az Azure Active Directory prémium verzióra](../active-directory/fundamentals/active-directory-get-started-premium.md)című dokumentumban leírtak szerint.
-3. Állítson be egy egyéni tartománynevet, és ellenőrizze az egyéni tartománynevet az [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/add-custom-domain.md)című részben leírtak szerint.
-    1. Állítson be egy DNS-rekordot a tartományregisztrálón az Azure-ban megadott adatokkal.
-    2. Állítsa be, hogy az egyéni tartománynév legyen az elsődleges tartomány.
+1. Állítsa be az Azure AD-t az előfizetéséhez az [Azure ad dokumentációjában](../active-directory/fundamentals/get-started-azure-ad.md)leírtak szerint.
+2. Engedélyezze az előfizetéshez prémium szintű Azure Active Directory a [regisztráció a prémium szintű Azure Active Directoryra](../active-directory/fundamentals/active-directory-get-started-premium.md)című témakörben leírtak szerint.
+3. Állítson be egy egyéni tartománynevet, és ellenőrizze az egyéni tartománynevet az [Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../active-directory/fundamentals/add-custom-domain.md)című témakörben leírtak szerint.
+    1. Hozzon létre egy DNS-rekordot a tartományregisztrálónál az Azure-ban megadott információval.
+    2. Állítsa be az egyéni tartománynevet elsődleges tartományként.
 
-Igény szerint konfigurálhat más Azure AD-funkciókat is.  Ezek nem szükségesek a vCenter-hitelesítés engedélyezéséhez az Azure AD-vel.
+Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükségesek az Azure AD-vel történő vCenter-hitelesítés engedélyezéséhez.
 
 ### <a name="azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások
 
 > [!NOTE]
-> Ez egy fontos lépés az Azure AD a vCenter identitásforrásaként való engedélyezéséhez.  A problémák elkerülése érdekében győződjön meg arról, hogy minden lépést helyesen hajtott végre.
+> Ez egy fontos lépés az Azure AD-nek a vCenter identitási forrásaként való engedélyezéséhez.  A problémák elkerülése érdekében győződjön meg arról, hogy az összes lépést helyesen hajtja végre.
 
-1. Engedélyezze az Azure AD tartományi szolgáltatásait az [Azure Active Directory tartományi szolgáltatásainak engedélyezése az Azure Portalon.](../active-directory-domain-services/active-directory-ds-getting-started.md)
-2. Állítsa be azt a hálózatot, amelyet az Azure AD tartományi szolgáltatásai az [Azure Active Directory tartományi szolgáltatások engedélyezése az Azure Portalon keresztül című](../active-directory-domain-services/active-directory-ds-getting-started-network.md)részben leírtak szerint fognak használni.
-3. Konfigurálja a rendszergazdai csoportot az Azure AD tartományi szolgáltatások kezeléséhez [az Azure Active Directory tartományi szolgáltatások engedélyezése az Azure Portalon című](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)dokumentumban leírtak szerint.
-4. Frissítse az Azure AD tartományi szolgáltatások DNS-beállításait az [Azure Active Directory tartományi szolgáltatások engedélyezése](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)című részben leírtak szerint.  Ha az interneten keresztül szeretne csatlakozni az AD-hez, állítsa be az Azure AD tartományi szolgáltatások nyilvános IP-címének DNS-rekordját a tartománynévhez.
-5. A jelszókivonat-szinkronizálás engedélyezése a felhasználók számára.  Ez a lépés lehetővé teszi az NT LAN-kezelőhöz (NTLM) és az Azure AD tartományi szolgáltatásokkerberos-hitelesítéséhez szükséges jelszókivétek szinkronizálását. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba. Lásd: [Jelszókivonat-szinkronizálás engedélyezése az Azure Active Directory tartományi szolgáltatásokkal.](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
-    1. Ha csak felhőalapú felhasználók vannak jelen, módosítaniuk kell a jelszavukat az <a href="http://myapps.microsoft.com/" target="_blank">Azure AD hozzáférési panelen,</a> hogy a jelszókivét az NTLM vagy a Kerberos által megkövetelt formátumban tárolják.  Kövesse a [Jelszókivonat-szinkronizálás engedélyezése a felügyelt tartománnyal a csak felhőalapú felhasználói fiókok esetén](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)című útmutatóutasításait.  Ezt a lépést az egyes felhasználók és minden olyan új felhasználó esetében kell elvégezni, aki az Azure Portalon vagy az Azure AD PowerShell-parancsmagok használatával jön létre az Azure AD-címtárban. Azoknak a felhasználóknak, akiknek hozzáférésre van szükségük az Azure AD tartományi szolgáltatásokhoz, az <a href="http://myapps.microsoft.com/" target="_blank">Azure AD hozzáférési panelt</a> kell használniuk, és a jelszó módosításához hozzá kell férniük a profiljukhoz.
+1. Engedélyezze az Azure AD tartományi szolgáltatásokat [a Azure Active Directory tartományi szolgáltatások engedélyezése a Azure Portal használatával](../active-directory-domain-services/active-directory-ds-getting-started.md)című témakörben leírtak szerint.
+2. Állítsa be azt a hálózatot, amelyet az Azure AD tartományi szolgáltatások használni fognak a [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../active-directory-domain-services/active-directory-ds-getting-started-network.md)című témakörben leírtak szerint.
+3. Konfigurálja a felügyeleti csoportot a Azure AD Domain Services kezeléséhez az [Azure Portal használatával Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)című témakörben leírtak szerint.
+4. Frissítse a Azure AD Domain Services DNS-beállításait a [Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)című témakörben leírtak szerint.  Ha az interneten keresztül szeretne csatlakozni az AD-hez, állítsa be az Azure AD tartományi szolgáltatások nyilvános IP-címéhez tartozó DNS-rekordot a tartománynévre.
+5. Jelszó-kivonatolási szinkronizálás engedélyezése a felhasználók számára.  Ez a lépés lehetővé teszi az NT LAN Manager (NTLM) és a Kerberos-hitelesítéshez szükséges jelszó-kivonatok szinkronizálását Azure AD Domain Services. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba. Lásd: [jelszó-kivonatolási szinkronizálás engedélyezése Azure Active Directory Domain Servicesra](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+    1. Ha csak felhőalapú felhasználók jelennek meg, akkor az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> meg kell változtatniuk a jelszavukat, hogy a jelszó-kivonatok az NTLM vagy a Kerberos által megkövetelt formátumban legyenek tárolva.  A [csak felhőalapú felhasználói fiókok esetében kövesse a jelszó-kivonat szinkronizálásának engedélyezése a felügyelt tartományhoz](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)című témakör utasításait.  Ezt a lépést az egyéni felhasználók és az Azure AD-címtárban létrehozott új felhasználók, az Azure Portal vagy az Azure AD PowerShell-parancsmagok használatával kell elvégezni. Az Azure AD tartományi szolgáltatásokhoz hozzáférést igénylő felhasználóknak az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> kell megadniuk a profilt a jelszó módosításához.
 
         > [!NOTE]
         > Ha a szervezet rendelkezik csak felhőalapú felhasználói fiókokkal, az Active Directory Domain Servicest használó összes felhasználónak módosítania kell a jelszavát. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Az ilyen felhasználói fiókok nem a helyszíni címtárból szinkronizálódnak.
 
-    2. Ha a jelszavakat a helyszíni Active directoryból szinkronizálja, kövesse az [Active Directory dokumentációjában](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)leírt lépéseket.
+    2. Ha a helyszíni Active Directoryból szinkronizálja a jelszavakat, kövesse az [Active Directory dokumentációjának](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)lépéseit.
 
-6.  Konfigurálja a biztonságos LDAP-t az Azure Active Directory tartományi szolgáltatásokon az [Azure AD tartományi szolgáltatások által felügyelt tartomány biztonságos ldap-jának konfigurálása című](../active-directory-domain-services/tutorial-configure-ldaps.md)részben leírtak szerint.
-    1. Töltsön fel egy tanúsítványt a biztonságos LDAP általi használatra az Azure-témakörben leírtak [szerint, hogy szerezzen be egy tanúsítványt a biztonságos LDAP-hoz.](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)  A CloudSimple azt javasolja, hogy egy hitelesítésszolgáltató által kiállított aláírt tanúsítványt használjon annak biztosítására, hogy a vCenter megbízik a tanúsítványban.
-    2. Biztonságos LDAP engedélyezése a leírtaknak [megfelelően: Biztonságos LDAP (LDAPS) engedélyezése egy Azure AD tartományi szolgáltatások által kezelt tartományban.](../active-directory-domain-services/tutorial-configure-ldaps.md)
-    3. Mentse a tanúsítvány nyilvános részét (a személyes kulcs nélkül) .cer formátumban a vCenter rel való használatra az identitásforrás konfigurálása közben.
-    4. Ha internet-hozzáférésre van szükség az Azure AD tartományi szolgáltatásokhoz, engedélyezze a "Biztonságos hozzáférés engedélyezése az LDAP-hoz az interneten keresztül" beállítást.
-    5. Adja hozzá a bejövő biztonsági szabályt az Azure AD tartományi szolgáltatások NSG a TCP-port 636.
+6.  Konfigurálja a biztonságos LDAP-t a Azure Active Directory Domain Services a [biztonságos LDAP (LDAPS) konfigurálása Azure ad Domain Services felügyelt tartományhoz](../active-directory-domain-services/tutorial-configure-ldaps.md)című témakörben leírtak szerint.
+    1. Töltse fel az Azure-témakörben leírtak szerint a biztonságos LDAP-hez készült tanúsítványt a Secure LDAP használatára vonatkozó tanúsítvány [beszerzése](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)érdekében.  A CloudSimple azt javasolja, hogy a hitelesítésszolgáltató által kiadott aláírt tanúsítványt használja, hogy a vCenter megbízható legyen a tanúsítványban.
+    2. A biztonságos LDAP engedélyezése a [Azure ad Domain Services felügyelt tartomány biztonságos LDAP (LDAPS) engedélyezése](../active-directory-domain-services/tutorial-configure-ldaps.md)című részében leírtak szerint.
+    3. Mentse a tanúsítvány nyilvános részét (a titkos kulcs nélkül). cer formátumban a vCenter való használathoz az Identity forrás konfigurálásakor.
+    4. Ha az Azure AD tartományi szolgáltatásokhoz való internet-hozzáférésre van szükség, engedélyezze a biztonságos hozzáférés engedélyezése az interneten keresztül lehetőséget.
+    5. Adja hozzá a bejövő biztonsági szabályt az Azure AD tartományi szolgáltatások NSG a 636-as TCP-porthoz.
 
-## <a name="set-up-an-identity-source-on-your-private-cloud-vcenter"></a>Identitásforrás beállítása a Private Cloud vCenter en
+## <a name="set-up-an-identity-source-on-your-private-cloud-vcenter"></a>Személyazonossági forrás beállítása a saját felhőalapú vCenter
 
-1. A privát felhőbeli vCenter [jogosultságai eszkalálódnak.](escalate-private-cloud-privileges.md)
-2. Gyűjtse össze az identitásforrás beállításához szükséges konfigurációs paramétereket.
+1. Megadhatja a saját felhőalapú vCenter vonatkozó [jogosultságokat](escalate-private-cloud-privileges.md) .
+2. Gyűjtsön a személyazonossági forrás beállításához szükséges konfigurációs paramétereket.
 
     | **Beállítás** | **Leírás** |
     |------------|-----------------|
-    | **Név** | Az identitásforrás neve. |
-    | **Alap DN felhasználók számára** | A felhasználók megkülönböztető neve.  Az Azure AD `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` esetében `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`használja a következőt: Példa: .|
-    | **Tartománynév** | A tartomány teljes tartományszáma, például example.com. Ebben a szövegmezőben ne adjon meg IP-címet. |
-    | **Tartomány aliasa** | *(nem kötelező)* A tartomány NetBIOS-neve. SSPI-hitelesítések használata esetén adja hozzá az Active Directory tartomány NetBIOS-nevét az identitásforrás aliasaként. |
-    | **Csoportok alap DN-jén** | A csoportok alap megkülönböztető neve. Az Azure AD,use: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` Példa:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Elsődleges kiszolgáló URL-címe** | Elsődleges tartományvezérlő LDAP-kiszolgálója a tartományhoz.<br><br>A formátum `ldaps://hostname:port`használata . A port általában 636 LDAPS-kapcsolatok esetén. <br><br>Az elsődleges vagy másodlagos LDAP-URL-címhez való használathoz olyan `ldaps://` tanúsítvány szükséges, amely megbízhatóságot hoz létre az Active Directory-kiszolgáló LDAPS-végpontja számára. |
-    | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlő LDAP-kiszolgálójának címe. |
-    | **Tanúsítvány kiválasztása** | Ha az LDAPS-t az Active Directory LDAP-kiszolgálóval vagy az OpenLDAP-kiszolgáló `ldaps://` identitásforrásával szeretné használni, az URL-szövegmezőbe történő beírás után megjelenik a Tanúsítvány kiválasztása gomb. Másodlagos URL-cím nem szükséges. |
-    | **Felhasználónév** | A tartomány azon felhasználójának azonosítója, aki legalább írásvédett hozzáféréssel rendelkezik a felhasználók és csoportok alap dn-jéhez. |
+    | **Név** | Az Identity forrás neve. |
+    | **A felhasználók alapszintű megkülönböztető neve** | A felhasználók alapszintű megkülönböztető neve.  Az Azure AD esetében használja a `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` következőt `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`: példa:.|
+    | **Tartománynév** | A tartomány teljes tartományneve, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
+    | **Tartomány aliasa** | *(nem kötelező)* A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
+    | **A csoportok alapszintű megkülönböztető neve** | A csoportok alapszintű megkülönböztető neve. Az Azure AD esetében használja a `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` következőt: példa:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>Használja a formátumot `ldaps://hostname:port`. A port általában a 636 LDAP-kapcsolatokhoz. <br><br>Az elsődleges vagy másodlagos LDAP URL-cím használata `ldaps://` esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
+    | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
+    | **Tanúsítvány kiválasztása** | Ha LDAPS-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor az URL-cím `ldaps://` szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
+    | **Username** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
     | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
-3. Jelentkezzen be a privát felhőbeli vCenterbe, miután a jogosultságok eszkalálódnak.
-4. Kövesse az utasításokat [egy identitásforrás hozzáadása a vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) az előző lépés ben az Azure Active Directory identitásforrásként való beállításához.
-5. Felhasználók/csoportok hozzáadása az Azure AD-ből a vCenter-csoportokhoz a VMware témakörben leírtak [szerint: Tagok hozzáadása egy vCenter single sign-on csoporthoz.](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)
+3. A jogosultságok kiterjesztését követően jelentkezzen be a saját Felhőbeli vCenter.
+4. A Azure Active Directory identitás forrásaként való beállításához kövesse az [Identity forrás hozzáadása a vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) az előző lépésekben szereplő értékek alapján című témakör utasításait.
+5. Felhasználók/csoportok hozzáadása az Azure AD-ből vCenter-csoportokhoz a VMware-témakörben leírtak szerint a [Tagok hozzáadása egy vCenter egyszeri bejelentkezési csoporthoz](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 > [!CAUTION]
-> Új felhasználókat csak a *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* vagy *cloud-global-vm-admin-group csoporthoz*kell hozzáadni.  A *Rendszergazdák* csoportba hozzáadott felhasználók automatikusan törlődnek.  Csak szolgáltatásfiókokat kell hozzáadni a *Rendszergazdák* csoporthoz.
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  Csak a *rendszergazdák* csoporthoz kell tartoznia a szolgáltatásfiókok hozzáadásához.
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a magánfelhő engedélymodelljéről](learn-private-cloud-permissions.md)
+* [További információ a Private Cloud Permission modelről](learn-private-cloud-permissions.md)

@@ -1,21 +1,21 @@
 ---
-title: Az Azure Monitor szolgáltatási korlátai | Microsoft dokumentumok
-description: Az Azure Monitor különböző területein lévő korlátozásokat sorolja fel.
+title: Azure Monitor szolgáltatási korlátok | Microsoft Docs
+description: A Azure Monitor különböző területein lévő korlátozásokat listázza.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
 ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657911"
 ---
-# <a name="azure-monitor-service-limits"></a>Az Azure Monitor szolgáltatási korlátai
+# <a name="azure-monitor-service-limits"></a>Azure Monitor szolgáltatási korlátok
 
-Ez a cikk az Azure Monitor különböző területein lévő korlátokat sorolja fel.
+Ez a cikk a Azure Monitor különböző területein lévő korlátozásokat sorolja fel.
 
 ## <a name="alerts"></a>Riasztások
 
@@ -25,7 +25,7 @@ Ez a cikk az Azure Monitor különböző területein lévő korlátokat sorolja 
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
 
-## <a name="log-queries-and-language"></a>Naplózási lekérdezések és nyelv
+## <a name="log-queries-and-language"></a>Lekérdezések és nyelv naplózása
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
 
@@ -39,6 +39,6 @@ Ez a cikk az Azure Monitor különböző területein lévő korlátokat sorolja 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/)
-- [Használat figyelése és becsült költségek az Azure Monitorban](platform/usage-estimated-costs.md)
+- [Díjszabás Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
+- [A használat és a becsült költségek figyelése Azure Monitor](platform/usage-estimated-costs.md)
 - [Használat és költségek kezelése az Application Insights szolgáltatásban](app/pricing.md)

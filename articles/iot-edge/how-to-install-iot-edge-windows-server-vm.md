@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Edge futtatása Windows Server virtuális gépeken | Microsoft dokumentumok
-description: Az Azure IoT Edge beállítási utasításai a Windows Server Piactér virtuális gépeken
+title: Azure IoT Edge futtatása a Windows Server Virtual Machineson | Microsoft Docs
+description: Azure IoT Edge telepítési utasítások a Windows Server piactéren Virtual Machines
 author: gregman-msft
 manager: arjmands
 ms.reviewer: kgremban
@@ -10,48 +10,48 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
 ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77045900"
 ---
-# <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Az Azure IoT Edge futtatása Windows Server virtuális gépeken
+# <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Azure IoT Edge futtatása Windows Serveren Virtual Machines
 
-Az Azure IoT Edge-futásidejű, mi bekapcsolja az eszközt egy IoT Edge-eszköz. A futásidejű olyan kicsi eszközökre is telepíthető, mint a Raspberry Pi vagy az ipari kiszolgáló. Miután egy eszköz konfigurálva van az IoT Edge-futásidejű, megkezdheti az üzleti logika üzembe helyezését a felhőből.
+Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Ha egy eszköz konfigurálva van a IoT Edge futtatókörnyezettel, megkezdheti az üzleti logika telepítését a felhőből.
 
-Ha többet szeretne megtudni az IoT Edge futásidejű működéséről és a benne lévő összetevőkről, [olvassa el az Azure IoT Edge futásidejű és architektúrájának megismerése című témakört.](iot-edge-runtime.md)
+Ha többet szeretne megtudni arról, hogyan működik a IoT Edge futtatókörnyezet és milyen összetevőket tartalmaz, tekintse meg [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md)című témakört.
 
-Ez a cikk az Azure IoT Edge futásidejű windows Server 2019 virtuális gépen a [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace-ajánlat használatával történő futtatásának lépéseit sorolja fel. Kövesse az [Azure IoT Edge futásidejű Windows-alapú telepítése](how-to-install-iot-edge-windows.md) című témakörutasításait más verziókkal való használatra.
+Ez a cikk azokat a lépéseket sorolja fel, amelyekkel [a Windows Server Azure](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) piactéren elérhető windows Server 2019 virtuális gépen futtathatja a Azure IoT Edge Runtime szolgáltatást. Kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge-windows.md) Windows rendszeren más verziókkal való használatra című témakör utasításait.
 
-## <a name="deploy-from-the-azure-marketplace"></a>Üzembe helyezés az Azure Piactérről
+## <a name="deploy-from-the-azure-marketplace"></a>Üzembe helyezés az Azure piactéren
 
-1. Keresse meg a [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Piactér ajánlatát, vagy keressen a "Windows Server" kifejezésre az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/)
-2. Válassza **a BESZEREZNI MOST lehetőséget**
-3. A **Szoftverterv**ben keresse meg a "Windows Server 2019 Datacenter Server Core tárolókkal" lehetőséget, majd válassza a **Folytatás** a következő párbeszédpanelen lehetőséget.
-    * Ezeket az utasításokat a Windows Server tárolóval rendelkező más verzióihoz is használhatja
-4. Miután az Azure Portalon, válassza **a Létrehozása** és kövesse a varázslót a virtuális gép üzembe helyezéséhez.
-    * Ha ez az első alkalom, hogy kipróbál egy virtuális gép, a legegyszerűbb, hogy egy jelszót, és engedélyezni rdp és SSH a nyilvános bejövő port menüben.
-    * Ha erőforrás-igényes számítási feladattal rendelkezik, további processzorok és/vagy memória hozzáadásával frissítenie kell a virtuális gép méretét.
-5. A virtuális gép üzembe helyezése után konfigurálja úgy, hogy csatlakozzon az IoT Hubhoz:
-    1. Másolja az eszköz kapcsolati karakterláncát az IoT Hubban létrehozott IoT Edge-eszközről. Lásd az eljárást [A kapcsolati karakterlánc lekérése az Azure Portalon.](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)
-    1. Válassza ki az újonnan létrehozott virtuálisgép-erőforrást az Azure Portalon, és nyissa meg a **futtatási parancs** lehetőséget
-    1. Válassza a **RunPowerShellScript** beállítást
-    1. Másolja ezt a parancsfájlt a parancsablakba az eszköz kapcsolati karakterláncával:
+1. Navigáljon a [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace ajánlathoz, vagy keressen rá a "Windows Server" kifejezésre az [Azure piactéren](https://azuremarketplace.microsoft.com/)
+2. Válassza a **Letöltés most** lehetőséget.
+3. A **szoftvercsomag**területen keresse meg a "Windows Server 2019 Datacenter Server Core with containers" kifejezést, majd válassza a **tovább** gombot a következő párbeszédpanelen.
+    * Ezeket az utasításokat a Windows Server más verzióihoz is használhatja tárolókkal
+4. A Azure Portalban kattintson a **Létrehozás** gombra, és kövesse a varázslót a virtuális gép üzembe helyezéséhez.
+    * Ha először próbálkozik egy virtuális géppel, a legegyszerűbb, ha jelszót használ, és engedélyezi az RDP-t és az SSH-t a nyilvános bejövő port menüjében.
+    * Ha erőforrás-igényes számítási feladattal rendelkezik, a virtuális gép méretét további processzorok és/vagy memória hozzáadásával kell frissítenie.
+5. A virtuális gép üzembe helyezését követően konfigurálja úgy, hogy az IoT Hubhoz kapcsolódjon:
+    1. Másolja a IoT Edge eszközön a IoT Hub létrehozott eszköz-csatlakoztatási karakterláncot. Tekintse meg az eljárást a [Azure Portal a kapcsolatok karakterláncának beolvasásához](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
+    1. Válassza ki az újonnan létrehozott virtuálisgép-erőforrást a Azure Portal, és nyissa meg a **parancs futtatása** lehetőséget.
+    1. Válassza a **RunPowerShellScript** lehetőséget.
+    1. Másolja ezt a szkriptet a parancssorablakba az eszközhöz tartozó kapcsolási karakterlánccal:
 
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
 
-    1. A parancsfájl végrehajtása az IoT Edge futásidejének telepítéséhez és a kapcsolati karakterlánc beállításához a **Futtatás**
-    1. Egy-két perc múlva meg kell jelennie egy üzenetet, hogy az Edge futásidejű telepítése és kiépítése sikeresen.
+    1. Futtassa a parancsfájlt az IoT Edge futtatókörnyezet telepítéséhez, és állítsa be a kapcsolódási karakterláncot a **Futtatás** lehetőség kiválasztásával.
+    1. Egy-két perc múlva megjelenik egy üzenet arról, hogy a peremhálózati futtatókörnyezet telepítése és üzembe helyezése sikeres volt.
 
-## <a name="deploy-from-the-azure-portal"></a>Üzembe helyezés az Azure Portalról
+## <a name="deploy-from-the-azure-portal"></a>Üzembe helyezés a Azure Portal
 
-1. Az Azure Portalon keressen rá a "Windows Server" kifejezésre, és válassza a **Windows Server 2019 Datacenter lehetőséget** a virtuális gép létrehozási munkafolyamatának megkezdéséhez.
-2. Válasszon **válasszon egy szoftvercsomagot** a "Windows Server 2019 Datacenter Server Core with Containers" (Windows Server Server Core tárolókkal) lehetőség közül, majd válassza a **Létrehozás lehetőséget.**
-3. Az 5.
+1. A Azure Portalban keressen rá a "Windows Server" kifejezésre, és válassza a **Windows server 2019 Datacenter** lehetőséget a virtuális gép létrehozási munkafolyamatának megkezdéséhez.
+2. Válassza ki **a kívánt szoftvercsomagot** : "Windows Server 2019 Datacenter Server Core with containers", majd válassza a **Létrehozás** lehetőséget.
+3. Fejezze be az 5. lépést az "üzembe helyezés az Azure Marketplace-en" című részben ismertetett utasítások alapján.
 
 ## <a name="deploy-from-azure-cli"></a>Üzembe helyezés az Azure CLI-ből
 
@@ -61,21 +61,21 @@ Ez a cikk az Azure IoT Edge futásidejű windows Server 2019 virtuális gépen a
    az login
    ```
 
-1. Ha több előfizetése van, válassza ki a használni kívánt előfizetést:
+1. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyet használni szeretne:
    1. Listázza az előfizetéseit:
 
       ```azurecli-interactive
       az account list --output table
       ```
 
-   1. A használni kívánt előfizetési azonosító mező másolása
-   1. Futtassa ezt a parancsot a másolt azonosítóval:
+   1. A használni kívánt előfizetés SubscriptionID mezőjének másolása
+   1. Futtassa ezt a parancsot a másolt AZONOSÍTÓval:
 
       ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 
-1. Hozzon létre egy új erőforráscsoportot (vagy adjon meg egy meglévőt a következő lépésekben):
+1. Hozzon létre egy új erőforráscsoportot (vagy határozzon meg egy meglévőt a következő lépésekben):
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -87,10 +87,10 @@ Ez a cikk az Azure IoT Edge futásidejű windows Server 2019 virtuális gépen a
    az vm create -g IoTEdgeResources -n EdgeVM --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-with-Containers:latest  --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
-   * Ez a parancs jelszót kér, de hozzáadhatja `--admin-password` a lehetőséget, hogy könnyebben beállítsa egy parancsfájlban
-   * A Windows Server Core lemezkép parancssori támogatása csak a távoli asztallal `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` rendelkezik, így ha a teljes asztali élményt szeretné, adja meg a lemezképként
+   * Ez a parancs felszólítja a jelszó megadására, de a parancsfájlban `--admin-password` megadhatja, hogy könnyebb legyen a beállítás.
+   * A Windows Server Core rendszerkép csak a távoli asztal szolgáltatással támogatja a parancssori támogatást, így ha a teljes asztali élményre van szüksége `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` , akkor a képet kell megadni
 
-1. Állítsa be az eszköz kapcsolati karakterláncát (A [kapcsolatlekérés az Azure CLI-eljárással,](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) ha nem ismeri ezt a folyamatot):
+1. Adja meg az eszköz csatlakoztatási karakterláncát (ha nem ismeri ezt a folyamatot, kövesse a következőt: a [kapcsolatok karakterláncának lekérése az Azure CLI](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) eljárással):
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunPowerShellScript --script ". {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'"
@@ -98,12 +98,12 @@ Ez a cikk az Azure IoT Edge futásidejű windows Server 2019 virtuális gépen a
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy egy IoT Edge-eszközt létesített a futásidejű telepítve, telepítheti az [IoT Edge-modulokat.](how-to-deploy-modules-portal.md)
+Most, hogy már telepített egy IoT Edge eszközt a futtatott futtatókörnyezettel, telepítheti [IoT Edge modulokat](how-to-deploy-modules-portal.md).
 
-Ha problémái vannak az Edge futásidejű megfelelő telepítésével, tekintse meg a [hibaelhárítási](troubleshoot.md) lapot.
+Ha problémákat tapasztal a peremhálózati futtatókörnyezet megfelelő telepítésekor, tekintse meg a [hibaelhárítási](troubleshoot.md) oldalt.
 
-Ha egy meglévő telepítést az IoT Edge legújabb verziójára szeretne frissíteni, olvassa [el az IoT Edge biztonsági démonának és futásidejű](how-to-update-iot-edge.md)verziójának frissítése című témakört.
+Ha egy meglévő telepítést szeretne frissíteni a IoT Edge legújabb verziójára, tekintse meg [a IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakört.
 
-A Windows virtuális gépek használatáról a [Windows virtuális gépek dokumentációjában](https://docs.microsoft.com/azure/virtual-machines/windows/)talál további információval.
+További információ a Windows rendszerű virtuális gépek használatáról a [Windows Virtual Machines dokumentációjában](https://docs.microsoft.com/azure/virtual-machines/windows/).
 
-Ha azt szeretné, hogy SSH ebbe a virtuális gép a telepítés után, kövesse a [telepítés OpenSSH for Windows Server](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse#installing-openssh-with-powershell) útmutató segítségével távoli asztali vagy távoli powershell.
+Ha a telepítés után SSH-t szeretne telepíteni a virtuális gépre, kövesse az OpenSSH-t a [Windows Server](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse#installing-openssh-with-powershell) -útmutatóhoz a távoli asztal vagy a távoli PowerShell használatával.

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: rohink
 ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76939139"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
@@ -40,7 +40,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
     4. A **Célerőforrásnál** kattintson a **Kiválasztás...** választóra az **Erőforrások panelen** azonos előfizetéshez tartozó erőforrások felsorolásához. A megjelenő **Erőforrás** panelen válassza ki az első végpontként hozzáadni kívánt szolgáltatást.
     5. A **Prioritásnál** válassza az **1-es** értéket. Ennek eredményeképpen a teljes forgalom erre a végpontra irányul, ha ez nem befolyásolja a rendszer megfelelő működését.
     6. A **Beállítás letiltottként** jelölőnégyzetet ne jelölje ki.
-    7. Kattintson **az OK gombra**
+    7. Kattintson **az OK** gombra
 6.  A 4–5. lépés megismétlésével adja hozzá a következő Azure-végpontot. Ennek a **Prioritása** mindenképpen **2-es** legyen.
 7.  Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
@@ -71,7 +71,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
 4. Kattintson a törölni kívánt végpontra.
-5. A **Végpont** panelen kattintson a **Törlés gombra.**
+5. A **végpont** panelen kattintson a **Törlés** elemre.
 
 
 ## <a name="next-steps"></a>További lépések

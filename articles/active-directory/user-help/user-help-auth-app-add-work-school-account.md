@@ -1,6 +1,6 @@
 ---
-title: Munkahelyi vagy iskolai fiók hozzáadása a Microsoft Authenticator alkalmazáshoz – Azure AD
-description: Adja hozzá munkahelyi vagy iskolai fiókját a Microsoft Authenticator alkalmazáshoz, hogy ellenőrizze személyazonosságát a kétfaktoros ellenőrzés során.
+title: Munkahelyi vagy iskolai fiók felvétele a Microsoft Authenticator alkalmazásba – Azure AD
+description: Vegye fel a munkahelyi vagy iskolai fiókját a Microsoft Authenticator alkalmazásba, és ellenőrizze az identitását a kétfaktoros ellenőrzés használata során.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,48 +12,48 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: f0cc14a53f7ead7f0a496728d477d7d30857a0fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063917"
 ---
-# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Munkahelyi vagy iskolai fiók felvétele a Microsoft Authenticator alkalmazásba
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Munkahelyi vagy iskolai fiók hozzáadása a Microsoft Authenticator alkalmazáshoz
 
-Ha a szervezet kétfaktoros ellenőrzést használ, beállíthatja, hogy a munkahelyi vagy iskolai fiók a Microsoft Authenticator alkalmazást használja az ellenőrzési módszerek egyikeként.
+Ha a szervezet kétfaktoros ellenőrzést használ, beállíthatja a munkahelyi vagy iskolai fiókját, hogy az Microsoft Authenticator alkalmazást az egyik ellenőrzési módszerként használja.
 
 >[!Important]
->A fiók hozzáadása előtt le kell töltenie és telepítenie kell a Microsoft Authenticator alkalmazást. Ha még nem tette meg, kövesse az [alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikkben leírt lépéseket.
+>A fiók hozzáadása előtt le kell töltenie és telepítenie kell a Microsoft Authenticator alkalmazást. Ha még nem tette meg, kövesse az [alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikk lépéseit.
 
 ## <a name="add-your-work-or-school-account"></a>Munkahelyi vagy iskolai fiók hozzáadása
 
-1. A számítógépen nyissa meg a [További biztonsági ellenőrzés](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) lapot.
+1. A számítógépen lépjen a [további biztonsági ellenőrzés](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) lapra.
 
     >[!Note]
-    >Ha nem látja a **További biztonsági ellenőrzés** lapot, lehetséges, hogy a rendszergazda bekapcsolta a biztonsági adatok (előzetes verzió) felületét. Ebben az esetben kövesse a Biztonsági adatok [beállítása](security-info-setup-auth-app.md) a hitelesítő alkalmazás használatához című szakasz utasításait. Ha nem ez a helyzet, segítségért forduljon a szervezet ügyfélszolgálatához. A biztonsági adatokról a [Biztonsági adatok (előzetes verzió) című témakörben olvashat bővebben.](user-help-security-info-overview.md)
+    >Ha nem látja a **további biztonsági ellenőrzés** oldalt, lehetséges, hogy a rendszergazda bekapcsolta a biztonsági adatok (előzetes verzió) szolgáltatást. Ha ez a helyzet, kövesse a [biztonsági adatok beállítása a hitelesítő alkalmazás használatára](security-info-setup-auth-app.md) című szakasz utasításait. Ha ez nem így van, segítségért forduljon a szervezet ügyfélszolgálatához. További információ a biztonsági adatokról: [biztonsági adatok (előzetes verzió) – áttekintés](user-help-security-info-overview.md).
 
-2. Jelölje be a Hitelesítő alkalmazás melletti **jelölőnégyzetet,** majd kattintson a **Konfigurálás gombra.**
+2. Jelölje be a **hitelesítő alkalmazás**melletti jelölőnégyzetet, majd válassza a **Konfigurálás**lehetőséget.
 
-    Megjelenik **a Mobilalkalmazás konfigurálása** lap.
+    Megjelenik a **Mobile App konfigurálása** oldal.
 
-    ![A QR-kódot tartalmazó képernyő](./media/user-help-auth-app-download-install/auth-app-barcode.png)
+    ![A QR-kódot biztosító képernyő](./media/user-help-auth-app-download-install/auth-app-barcode.png)
 
-3. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a Fiók **hozzáadása** elemet a jobb felső sarokban a **Testreszabás és vezérlés** ikonon, majd válassza a Munkahelyi vagy iskolai fiók **lehetőséget.**
-
-    >[!Note]
-    >Ha ez az első alkalom, hogy beállítja a Microsoft Authenticator alkalmazást, előfordulhat, hogy egy kérdés jelenik meg arról, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készíthessen és videót (Android) rögzíthessen. Az **Engedélyezés** lehetőséget kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet ad a QR-kódról. Ha nem engedélyezi a kamerát, továbbra is beállíthatja a hitelesítő alkalmazást, de manuálisan kell megadnia a kódadatokat. A kód manuális hozzáadásáról a [Fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md)című témakörben talál további információt.
-
-4. A készülék kamerájával beszkacezheti a QR-kódot a **mobilalkalmazás konfigurálása** képernyőről a számítógépen, majd válassza a **Kész gombot.**
+3. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók**lehetőséget.
 
     >[!Note]
-    >Ha a kamera nem tudja rögzíteni a QR-kódot, manuálisan is hozzáadhatja a fiókadatait a Microsoft Authenticator alkalmazáshoz a kétfaktoros ellenőrzéshez. További információt és annak módjáról a [Fiók manuális hozzáadása](user-help-auth-app-add-account-manual.md)című témakörben talál.
+    >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
-5. Tekintse át az eszközön lévő alkalmazás **Fiókok** képernyőjét, és győződjön meg arról, hogy a fiókja helyes, és hogy van-e társított hatjegyű ellenőrző kód. A nagyobb biztonság érdekében az ellenőrző kód 30 másodpercenként változik, megakadályozva, hogy valaki többször is használja a kódot.
+4. Az eszköz kamerájának használatával beszkennelheti a QR-kódot a **mobil alkalmazás konfigurálása** képernyőn a számítógépen, majd válassza a **kész**lehetőséget.
+
+    >[!Note]
+    >Ha a kamera nem tudja rögzíteni a QR-kódot, manuálisan is felveheti a fiók adatait a Microsoft Authenticator alkalmazásba kétfaktoros ellenőrzéshez. További információt és útmutatást a [fiók manuális hozzáadása](user-help-auth-app-add-account-manual.md)című témakörben talál.
+
+5. Tekintse át az alkalmazás **fiókok** képernyőjét az eszközön, és győződjön meg róla, hogy a fiókja megfelelő, és hogy van-e hat számjegyű ellenőrző kód. A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
 
     ![Fiókok képernyő](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Miután hozzáadja fiókjait az alkalmazáshoz, bejelentkezhet az eszközön lévő Authenticator alkalmazással. További információt a [Bejelentkezés az alkalmazás használatával című témakörben](user-help-auth-app-sign-in.md)talál.
+- Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 
-- Az iOS rendszert futtató eszközökön a fiók hitelesítő adatairól és a kapcsolódó alkalmazásbeállításokról, például a fiókok sorrendjéről is biztonsági másolatot tarthat a felhőbe. További információt a [Biztonsági másolat és helyreállítás a Microsoft Authenticator alkalmazással című témakörben talál.](user-help-auth-app-backup-recovery.md)
+- Az iOS rendszerű eszközökön biztonsági mentést készíthet a fiók hitelesítő adatairól és a kapcsolódó Alkalmazásbeállítások, például a fiókok sorrendjéről a felhőhöz. További információ: [biztonsági mentés és helyreállítás Microsoft Authenticator alkalmazással](user-help-auth-app-backup-recovery.md).

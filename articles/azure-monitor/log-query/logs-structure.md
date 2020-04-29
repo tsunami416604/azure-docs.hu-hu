@@ -1,40 +1,40 @@
 ---
-title: Az Azure figyelőnaplók szerkezete | Microsoft dokumentumok
-description: Naplólekérdezésre van szükség a naplóadatok Azure Monitorból való lekéréséhez.  Ez a cikk ismerteti, hogyan használják az új naplólekérdezéseket az Azure Monitorban, és olyan fogalmakat tartalmaz, amelyeket meg kell értenie, mielőtt létrehozna egyet.
+title: Azure Monitor naplók szerkezete | Microsoft Docs
+description: A naplózási adatok Azure Monitorból való lekéréséhez naplózási lekérdezés szükséges.  Ez a cikk azt ismerteti, hogyan használhatók az új naplók a Azure Monitorban, és olyan fogalmakat tartalmaz, amelyeket meg kell értenie, mielőtt újat hozna létre.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
 ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662076"
 ---
-# <a name="structure-of-azure-monitor-logs"></a>Az Azure Figyelő naplók struktúrája
-Az Azure Monitor hatékony funkciója az adatok gyors betekintésének lehetősége [naplólekérdezéssel.](log-query-overview.md) Hatékony és hasznos lekérdezések létrehozásához érdemes megérteni néhány alapvető fogalmat, például azt, hogy hol találhatók a kívánt adatok, és hogyan épülnek fel. Ez a cikk az első lépésekhez szükséges alapfogalmakat tartalmazza.
+# <a name="structure-of-azure-monitor-logs"></a>Azure Monitor naplók szerkezete
+A Azure Monitor hatékony funkciója, hogy gyorsan betekintést nyerjen az adataiba a [log lekérdezés](log-query-overview.md) használatával. Hatékony és hasznos lekérdezések létrehozásához ismernie kell néhány olyan alapfogalmakat, mint például a keresett adatok, valamint a strukturált adatok. Ez a cikk az első lépésekhez szükséges alapvető fogalmakat ismerteti.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Monitor naplókban lévő adatok at egy Log Analytics-munkaterület vagy egy Application Insights-alkalmazás tárolja. Mindkettő az [Azure Data Explorer](/azure/data-explorer/) által működik, ami azt jelenti, hogy kihasználják a hatékony adatmotort és a lekérdezési nyelvet.
+Azure Monitor naplókban lévő adatLog Analytics-munkaterületen vagy egy Application Insights alkalmazásban van tárolva. Mindkettő az [Azure adatkezelő](/azure/data-explorer/) , ami azt jelenti, hogy hatékony adatmotort és lekérdezési nyelvet használ.
 
-A munkaterületek és az alkalmazások adatai táblákba vannak rendezve, amelyek mindegyike különböző típusú adatokat tárol, és saját egyedi tulajdonságokkal rendelkezik. A legtöbb [adatforrás](../platform/data-sources.md) a saját tábláiba fog írni egy Log Analytics-munkaterületen, míg az Application Insights egy Application Insights-alkalmazás előre meghatározott táblákészletére ír. A naplólekérdezések nagyon rugalmasak, így egyszerűen kombinálhatja a több táblából származó adatokat, és akár erőforrásközi lekérdezést is használhat több munkaterületen lévő táblák adatainak kombinálásához, illetve munkaterület- és alkalmazásadatokat egyesítő lekérdezések írásához.
+A munkaterületeken és alkalmazásokban található adatkészletek táblázatokba vannak rendezve, amelyek mindegyike különböző típusú adattípusokat tárol, és saját tulajdonságokkal rendelkezik. A legtöbb [adatforrás](../platform/data-sources.md) egy log Analytics munkaterületen fogja írni a saját tábláiba, míg a Application Insights egy Application Insights alkalmazásban előre meghatározott táblákba ír. A naplók nagy rugalmasságot biztosítanak, így egyszerűen egyesítheti a több táblázat adatait, és akár egy erőforrás-lekérdezést is használhat több munkaterület tábláiból származó adatok összevonásához, illetve a munkaterület és az alkalmazásadatok összekapcsolására szolgáló lekérdezések írásához.
 
-Az alábbi képen példák at adatforrások, amelyek írásban a különböző táblák, amelyek a minta lekérdezések.
+Az alábbi képen a példák olyan adatforrásokra mutatnak, amelyek különböző, a lekérdezésekben használt táblákba írnak.
 
 ![Táblák](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
-Az Azure Monitor Naplók által gyűjtött összes adatot, kivéve az Application Insights-ot, egy [Log Analytics-munkaterület tárolja.](../platform/manage-access.md) Egy vagy több munkaterületet az adott követelményektől függően hozhat létre. [Adatforrások,](../platform/data-sources.md) például a tevékenységnaplók és az erőforrás-naplók az Azure-erőforrások, ügynökök a virtuális gépeken, és az adatok elemzési és figyelési megoldások adatokat írni egy vagy több munkaterületet, amely a bevezetés részeként konfigurált. Más szolgáltatások, például [az Azure Security Center](/azure/security-center/) és az Azure [Sentinel](/azure/sentinel/) is használja a Log Analytics munkaterületet az adataik tárolására, így naplólekérdezések használatával elemezhetők, valamint más forrásokból származó adatok figyelése.
+A Azure Monitor naplók által összegyűjtött összes adatokat, kivéve a Application Insights [log Analytics munkaterületen](../platform/manage-access.md)vannak tárolva. Az adott követelményektől függően egy vagy több munkaterületet is létrehozhat. Az [adatforrások](../platform/data-sources.md) , például az Azure-erőforrások, a virtuális gépeken lévő ügynökök és az adatelemzési és figyelési megoldások által készített adatnaplók és erőforrások naplófájljai a bevezetésük részeként konfigurált munkaterületekre fognak írni. Más szolgáltatások, mint például a [Azure Security Center](/azure/security-center/) és az [Azure Sentinel](/azure/sentinel/) is egy log Analytics munkaterületet használ az adatok tárolására, így a naplózási lekérdezésekkel együtt, más forrásokból származó figyelési adatokkal is elemezhetők.
 
-A munkaterület különböző tábláikülönböző táblákban tárolnak különböző típusú adatokat, és minden tábla egyedi tulajdonságokkal rendelkezik. A szabványos táblák létrehozásakor a munkaterületre kerülnek, és új táblákat adnak hozzá a különböző adatforrásokhoz, megoldásokhoz és szolgáltatásokhoz, ahogy bevannak rakva. Egyéni táblákat is létrehozhat az [Adatgyűjtő API használatával.](../platform/data-collector-api.md)
+A különböző típusú adattípusok a munkaterület különböző tábláiban vannak tárolva, és mindegyik tábla egyedi tulajdonságokkal rendelkezik. A rendszer a létrehozott munkaterületekhez egy szabványos készletet ad hozzá, és új táblákat ad hozzá a különböző adatforrásokhoz, megoldásokhoz és szolgáltatásokhoz, mint a bevezetésük. Az [adatgyűjtő API](../platform/data-collector-api.md)használatával egyéni táblákat is létrehozhat.
 
-A munkaterület tábláiban és sémájában a **Schema** munkaterület Naplóanalytics lapján tallózhat.
+A munkaterületen található táblákat és azok sémáját a munkaterület Log Analytics **séma** lapján böngészheti.
 
-![Munkaterületi séma](media/scope/workspace-schema.png)
+![Munkaterület sémája](media/scope/workspace-schema.png)
 
-A következő lekérdezéssel sorolja fel a munkaterület tábláit és az előző nap során az egyes rekordokba gyűjtött rekordok számát. 
+A következő lekérdezéssel listázhatja a munkaterületen lévő táblákat és az előző nap folyamán gyűjtött rekordok számát. 
 
 ```Kusto
 union withsource = table * 
@@ -42,44 +42,44 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-Az egyes adatforrások dokumentációjában az általuk létrehozott táblák részleteiről olvashat. Ilyenek például az [ügynökadatforrásokhoz](../platform/agent-data-sources.md), [az erőforrásnaplókhoz](../platform/diagnostic-logs-schema.md)és a [figyelési megoldásokhoz](../insights/solutions-inventory.md)készült cikkek .
+A létrehozott táblák részleteit az egyes adatforrások dokumentációja tartalmazza. Ilyenek például az [ügynök adatforrásaira](../platform/agent-data-sources.md), az [erőforrás-naplókra](../platform/diagnostic-logs-schema.md)és a [figyelési megoldásokra](../insights/solutions-inventory.md)vonatkozó cikkek.
 
-### <a name="workspace-permissions"></a>Munkaterületi engedélyek
-[Az Azure Monitor-naplók központi telepítésének tervezése](../platform/design-logs-deployment.md) című témakörben a hozzáférés-vezérlési stratégia és a munkaterületen lévő adatokhoz való hozzáférésre vonatkozó javaslatok megismerése című témakörben található. A mellett, hogy hozzáférést biztosít a munkaterülethez, korlátozhatja a hozzáférést az egyes táblákhoz a [Table Level RBAC](../platform/manage-access.md#table-level-rbac)használatával.
+### <a name="workspace-permissions"></a>Munkaterület engedélyei
+Tekintse meg a munkaterületen lévő információk elérését biztosító hozzáférés-vezérlési stratégiát és javaslatokat a [Azure monitor naplók üzembe helyezésének megtervezése](../platform/design-logs-deployment.md) című témakörben. A munkaterülethez való hozzáférés biztosítása mellett a [tábla szintű RBAC](../platform/manage-access.md#table-level-rbac)használatával korlátozhatja az egyes táblákhoz való hozzáférést.
 
-## <a name="application-insights-application"></a>Application Insights-alkalmazás
-Amikor létrehoz egy alkalmazást az Application Insightsban, a megfelelő alkalmazás automatikusan létrejön az Azure Monitor naplók. Nincs szükség konfigurációra az adatok gyűjtéséhez, és az alkalmazás automatikusan megírja a figyelési adatokat, például az oldalnézeteket, a kéréseket és a kivételeket.
+## <a name="application-insights-application"></a>Application Insights alkalmazás
+Amikor Application Insightsban hoz létre alkalmazást, a rendszer automatikusan létrehoz egy megfelelő alkalmazást Azure Monitor-naplókból. Az adatok gyűjtéséhez nincs szükség konfigurációra, és az alkalmazás automatikusan írási adatokat (például oldalletöltések, kérések és kivételek) fog írni.
 
-A Log Analytics-munkaterülettől eltérően az Application Insights-alkalmazások rögzített táblákkal rendelkeznek. Más adatforrások nem konfigurálhatók úgy, hogy az alkalmazásba írjanak, így nem hozhatók létre további táblák. 
+A Log Analytics munkaterülettől eltérően egy Application Insights alkalmazásnak van egy rögzített készlete. Más adatforrások nem konfigurálhatók az alkalmazásba való íráshoz, így további táblák nem hozhatók létre. 
 
 | Tábla | Leírás | 
 |:---|:---|
-| availabilityResults | A rendelkezésre állási tesztek ből származó összefoglaló adatok. |
-| browserIdőzítések      | Az ügyfél teljesítményére vonatkozó adatok, például a bejövő adatok feldolgozásához szükséges idő. |
-| Customevents        | Az alkalmazás által létrehozott egyéni események. |
+| availabilityResults | A rendelkezésre állási tesztek összesített adatai. |
+| browserTimings      | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő. |
+| customEvents        | Az alkalmazás által létrehozott egyéni események. |
 | customMetrics       | Az alkalmazás által létrehozott egyéni metrikák. |
-| Függőségek        | Az alkalmazás ból külső összetevőkre irányuló hívások. |
-| Kivételek          | Az alkalmazás futásidejű által okozott kivételek. |
-| Oldalmegtekintések           | Az egyes webhelynézetek adatai a böngésző adataival. |
-| performanceCounters | Az alkalmazást támogató számítási erőforrások teljesítménymérései. |
-| Kérelmek            | Az egyes jelentkezési kérelmek részletei.  |
-| Nyomok              | Elosztott nyomkövetés eredménye. |
+| függőségek        | Az alkalmazásból külső összetevőkre irányuló hívások. |
+| kivételek          | Az alkalmazás futtatókörnyezete által kiváltott kivételek. |
+| Oldalmegtekintések           | Adatok az egyes webhelyekről a böngésző információi között. |
+| performanceCounters | Az alkalmazást támogató számítási erőforrások teljesítményének mérése. |
+| kérelmek            | Az egyes alkalmazásokra vonatkozó kérelmek részletei.  |
+| nyomok              | Az elosztott nyomkövetés eredményei. |
 
-Megtekintheti a séma az egyes tábla a **Séma** lapon az alkalmazás Naplóanalytics.
+Az alkalmazáshoz tartozó Log Analytics **séma** lapján megtekintheti az egyes táblák sémáját.
 
-![Alkalmazásséma](media/scope/application-schema.png)
+![Alkalmazás sémája](media/scope/application-schema.png)
 
 ## <a name="standard-properties"></a>Szokásos tulajdonságok
-Bár az Azure Monitor naplók minden egyes táblája saját sémával rendelkezik, az összes tábla által megosztott szabványos tulajdonságok vannak. Tekintse [meg a Standard tulajdonságok az Azure Monitor naplók](../platform/log-standard-properties.md) az egyes részletekért.
+Míg Azure Monitor naplók minden táblája saját sémával rendelkezik, az összes tábla közös tulajdonságokat tartalmaz. További részletekért tekintse [meg a Azure monitor naplóinak szabványos tulajdonságait](../platform/log-standard-properties.md) .
 
-| Log Analytics-munkaterület | Application Insights-alkalmazás | Leírás |
+| Log Analytics-munkaterület | Application Insights alkalmazás | Leírás |
 |:---|:---|:---|
 | TimeGenerated | időbélyeg  | A rekord létrehozásának dátuma és időpontja. |
-| Típus          | Itemtype   | Annak a táblának a neve, amelyből a rekordot beolvasták. |
-| _ResourceId   |            | Annak az erőforrásnak az egyedi azonosítója, amelyhez a rekord társítva van. |
-| _IsBillable   |            | Itt adható meg, hogy a bevitt adatok számlázhatók-e. |
-| _BilledSize   |            | A számlázandó adatok bájtjainak méretét adja meg. |
+| Típus          | itemType   | Annak a táblának a neve, amelyből a rekordot beolvasták. |
+| _ResourceId   |            | Azon erőforrás egyedi azonosítója, amelyhez a rekord társítva van. |
+| _IsBillable   |            | Meghatározza, hogy a betöltött adatmennyiség számlázható-e. |
+| _BilledSize   |            | Meghatározza a számlázandó adatmennyiség bájtban kifejezett méretét. |
 
 ## <a name="next-steps"></a>További lépések
-- További információ a loganalytics használatáról [a naplókeresések létrehozásához és szerkesztéséhez.](../log-query/portals.md)
-- Tekintse meg az új lekérdezési nyelvet használó [lekérdezések írásával kapcsolatos oktatóanyagot.](../log-query/get-started-queries.md)
+- Tudnivalók a [naplók keresésének létrehozásához és szerkesztéséhez log Analytics](../log-query/portals.md)használatáról.
+- Az új lekérdezési nyelv használatával tekintse [meg a lekérdezések írásához szóló oktatóanyagot](../log-query/get-started-queries.md) .

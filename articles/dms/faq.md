@@ -1,6 +1,6 @@
 ---
-title: GYAKORI KÉRDÉSEK – Azure adatbázis-áttelepítési szolgáltatás
-description: Gyakori kérdések az Azure Database Migration Service használatával kapcsolatban az adatbázis-áttelepítések végrehajtásához.
+title: Gyakori kérdések – Azure Database Migration Service
+description: Gyakori kérdések a Azure Database Migration Service használatáról az adatbázis-áttelepítések végrehajtásához.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,62 +12,62 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77650981"
 ---
-# <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések az Azure Database Migration Service használatával kapcsolatban
+# <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések a Azure Database Migration Service használatáról
 
-Ez a cikk az Azure Database Migration Service használatával kapcsolatos gyakori kérdéseket, valamint a kapcsolódó válaszokat sorolja fel.
+Ez a cikk a Azure Database Migration Service és a kapcsolódó válaszok együttes használatával kapcsolatos gyakori kérdéseket sorolja fel.
 
 ## <a name="overview"></a>Áttekintés
 
-**K. Mi az Azure database migration service?**
-Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes áttelepítést több adatbázisforrásból az Azure Data-platformokra minimális állásidővel. A szolgáltatás jelenleg általános anamszer, a folyamatos fejlesztési erőfeszítések középpontjában:
+**K. Mi az Azure Database Migration Service?**
+A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy a zökkenőmentes áttelepítések több adatbázisból az Azure-beli adatplatformokra minimális állásidővel. A szolgáltatás jelenleg általánosan elérhető, és a folyamatos fejlesztési erőfeszítések az alábbiakra összpontosítanak:
 
 * Megbízhatóság és teljesítmény.
-* Forrás-cél párok iteratív hozzáadása.
-* A súrlódásmentes migrációba történő folyamatos beruházás.
+* A forrás-cél párok iterációs hozzáadása.
+* Folyamatos beruházás a súrlódások közötti áttelepítéshez.
 
-**K. Jelenleg milyen forrás-/célpárokat támogat jelenleg az Azure Database Migration Service?**
-A szolgáltatás jelenleg támogatja a különböző forrás/cél párok, vagy az áttelepítési forgatókönyvek. Az egyes elérhető áttelepítési forgatókönyvek állapotának teljes listáját az [Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota](https://docs.microsoft.com/azure/dms/resource-scenario-status)című témakörben olvashat.
+**K. milyen forrás/cél párokat Azure Database Migration Service jelenleg a támogatás?**
+A szolgáltatás jelenleg számos különböző forrás-, cél-vagy áttelepítési forgatókönyvet támogat. Az egyes elérhető áttelepítési forgatókönyvek állapotának teljes listáját lásd a [Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotáról szóló](https://docs.microsoft.com/azure/dms/resource-scenario-status)cikkben.
 
-Más áttelepítési forgatókönyvek előzetes verzióban vannak, és a DMS preview webhelyen keresztül kell benyújtani a jelölést. Az előzetes verzióban elérhető forgatókönyvek teljes listáját és az ilyen ajánlatok valamelyikében való részvételre való feliratkozást a [DMS preview webhelyen](https://aka.ms/dms-preview/)tekintheti meg.
+Más áttelepítési forgatókönyvek előzetes verzióban érhetők el, és a DMS előzetes verziójának használatával kell benyújtani a jelölést. Az előzetes verzióban elérhető forgatókönyvek teljes listáját és az egyik ajánlatban való részvételre való regisztrációt a [DMS előzetes](https://aka.ms/dms-preview/)verziójának webhelyén tekintheti meg.
 
-**K. Az SQL Server mely verzióit támogatja forrásként az Azure Database Migration Service?**
-Az SQL Server kiszolgálóról való áttelepítéskor az Azure Database Migration Service támogatott forrásai az SQL Server 2005 és az SQL Server 2019.
+**K. a SQL Server mely verziói Azure Database Migration Service támogatják a forrást?**
+SQL Server rendszerből való áttelepítéskor a Azure Database Migration Service támogatott forrásai SQL Server 2005 SQL Server 2019.
 
-**K: Az Azure Database Migration Service használatakor mi a különbség az offline és az online áttelepítés között?**
-Az Azure Database Migration Service segítségével offline és online áttelepítéseket hajthat végre. Kapcsolat *nélküli* áttelepítés esetén az alkalmazás állásideje az áttelepítés kezdetekor kezdődik. Az *online* áttelepítés sel az állásidő a migráció végén leépítésre rendelkezésre álló időre korlátozódik. Azt javasoljuk, hogy próbálja ki az offline migrálást, és határozza meg, hogy elfogadható-e az állásidő; ha nem, végezzen online migrálást.
+**K: Azure Database Migration Service használata esetén mi a különbség az offline és az online áttelepítés között?**
+A Azure Database Migration Service használatával offline és online áttelepítést végezhet el. *Offline* áttelepítés esetén az alkalmazás leállása az áttelepítés megkezdése után kezdődik. Az *online* áttelepítéssel az állásidő az áttelepítés végén eltelt időre korlátozódik. Azt javasoljuk, hogy próbálja ki az offline migrálást, és határozza meg, hogy elfogadható-e az állásidő; ha nem, végezzen online migrálást.
 
 > [!NOTE]
-> Az Azure Database Migration Service online áttelepítés végrehajtásához létre kell adnia egy példányt a prémium díjszabási szint alapján. További információkért tekintse meg az Azure Database Migration Service [díjszabási](https://azure.microsoft.com/pricing/details/database-migration/) lap.
+> A Azure Database Migration Service használata az online áttelepítés végrehajtásához a prémium szintű díjszabás alapján kell létrehoznia egy példányt. További információkért tekintse meg a Azure Database Migration Service [díjszabását](https://azure.microsoft.com/pricing/details/database-migration/) ismertető oldalt.
 
-**K. Hogyan viszonyul az Azure Adatbázis-áttelepítési szolgáltatás más Microsoft adatbázis-áttelepítési eszközökhöz, például az adatbázis-áttelepítési segédhez (DMA) vagy az SQL Server Áttelepítési segédhez (SSMA)?**
-Az Azure Database Migration Service az elsődleges módszer az adatbázis-áttelepítés a Microsoft Azure-ba nagy méretekben. Ha többet szeretne tudni arról, hogy az Azure Database Migration Service hogyan viszonyul a Microsoft adatbázis-áttelepítési eszközeihez, és hogy miként szeretné használni a szolgáltatást különböző esetekben, olvassa el a [Microsoft adatbázis-áttelepítési eszközeinek és szolgáltatásainak differenciáló blogjában.](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)
+**K. Hogyan hasonlítható össze Azure Database Migration Service a Microsoft Database áttelepítési eszközökhöz, például az adatbázis-Migration Assistant (DMA) vagy a SQL Server Migration Assistanthoz (SSMA)?**
+A Azure Database Migration Service az adatbázis áttelepítésének előnyben részesített módszere a Microsoft Azure méretekben. További információ arról, hogy Azure Database Migration Service hogyan hasonlítható össze a Microsoft adatbázis-áttelepítési eszközeivel, illetve a szolgáltatás különböző forgatókönyvekhez való használatával kapcsolatos javaslatokért tekintse meg a [Microsoft adatbázis-áttelepítési eszközeit és szolgáltatásait megkülönböztető](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)blogbejegyzéseket.
 
-**K. Hogyan viszonyul az Azure Database Migration Service az Azure Áttelepítési ajánlathoz?**
-Az Azure Migrate segíti a helyszíni virtuális gépek azure IaaS-be való migrálását. A szolgáltatás felméri az áttelepítés alkalmasságát és a teljesítményalapú méretezést, és költségbecsléseket biztosít a helyszíni virtuális gépek Azure-beli futtatásához. Az Azure Migrate hasznos a helyszíni virtuálisgép-alapú számítási feladatok az Azure IaaS virtuális gépekre történő lift-and-shift áttelepítéséhez. Az Azure Database Migration Service-től eltérően azonban az Azure Migrate nem egy speciális adatbázis-áttelepítési szolgáltatás, amely az Azure PaaS relációs adatbázis-platformokhoz, például az Azure SQL Database-hez vagy az Azure SQL Database Felügyelt példányhoz készült.
+**K. milyen Azure Database Migration Service összehasonlítani a Azure Migrate ajánlattal?**
+Azure Migrate segíti a helyszíni virtuális gépek Azure IaaS való áttelepítését. A szolgáltatás felméri az áttelepítési alkalmasságot és a teljesítmény-alapú méretezést, és a helyszíni virtuális gépek Azure-ban való futtatásának becsült költségeit is tartalmazza. Azure Migrate hasznos a helyszíni virtuálisgép-alapú számítási feladatok Azure IaaS virtuális gépekre történő áttelepítésének és átváltásának elvégzéséhez. A Azure Database Migration Servicetól eltérően azonban Azure Migrate nem egy speciális adatbázis-áttelepítési szolgáltatás, amely az Azure-beli Azure SQL Database, vagy a Azure SQL Database felügyelt példányokhoz hasonló, az Azure-beli,
 
 ## <a name="setup"></a>Telepítés
 
-**K. Melyek az Azure Database Migration Service használatának előfeltételei?**
-Számos előfeltétele van annak biztosításához, hogy az Azure Database Migration Service zökkenőmentesen futjon az adatbázis-áttelepítések végrehajtásakor. Az előfeltételek egy része a szolgáltatás által támogatott összes forgatókönyvre (forrás-cél párokra) vonatkozik, míg más előfeltételek egyediek egy adott forgatókönyvhöz.
+**K. Mik a Azure Database Migration Service használatának előfeltételei?**
+Több előfeltétel szükséges annak biztosításához, hogy Azure Database Migration Service zökkenőmentesen fusson az adatbázis-áttelepítés végrehajtásakor. Néhány előfeltétel a szolgáltatás által támogatott összes forgatókönyv (forrás-cél párok) esetében érvényes, míg más előfeltételek egyediek egy adott forgatókönyv esetében.
 
-Az Azure Database Migration Service előfeltételei, amelyek az összes támogatott áttelepítési forgatókönyvben gyakoriak, a következőket foglalják magukban:
+Azure Database Migration Service az összes támogatott áttelepítési forgatókönyv esetében gyakori előfeltételek közé tartozik a következők szükségesek:
 
-* Hozzon létre egy Microsoft Azure virtuális hálózatot az Azure adatbázis-áttelepítési szolgáltatáshoz az Azure Resource Manager telepítési modelljével, amely az [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával biztosít helyek közötti kapcsolatot a helyszíni forráskiszolgálókhoz.
-* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem blokkolják a következő 443, 53, 9354, 445, 12000 kommunikációs portokat. A virtuális hálózati NSG-forgalom szűrésével kapcsolatos további részleteket a [Hálózati forgalom szűrése hálózati biztonsági csoportokkal című témakörben olvashat.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)
-* Ha a forrásadatbázis(ok) előtt tűzfalberendezést használ, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia ahhoz, hogy az Azure Database Migration Service hozzáférhessen a forrásadatbázis(ok)hoz az áttelepítéshez.
+* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával.
+* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
+* Ha a forrásadatbázis (ok) előtt tűzfal-berendezést használ, előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára a forrás-adatbázis (ok) elérését az áttelepítéshez.
 
-Az Azure Database Migration Service használatával az Azure Database Migration Service használatával adott áttelepítési forgatókönyvek versenyéhez szükséges előfeltételek listáját az Azure Database Migration Service [dokumentációjában,](https://docs.microsoft.com/azure/dms/dms-overview) a docs.microsoft.com kapcsolatos oktatóanyagokban találja.
+Az egyes áttelepítési forgatókönyvek Azure Database Migration Service használatával való versenyéhez szükséges előfeltételek listáját a docs.microsoft.com-ben található Azure Database Migration Service [dokumentációban](https://docs.microsoft.com/azure/dms/dms-overview) találhatja meg a kapcsolódó oktatóanyagokat.
 
-**K. Hogyan találhatom meg az Azure Database Migration Service IP-címét, hogy létrehozhassak egy engedélyezési listát az áttelepítéshez használt tűzfalszabályokhoz?**
-Előfordulhat, hogy olyan tűzfalszabályokat kell hozzáadnia, amelyek lehetővé teszik az Azure Database Migration Service számára a forrásadatbázishoz való hozzáférést az áttelepítéshez. A szolgáltatás IP-címe dinamikus, de ha ExpressRoute-ot használ, ezt a címet a vállalati hálózat magánszemélyként rendeli hozzá. A megfelelő IP-cím azonosításának legegyszerűbb módja, ha ugyanabban az erőforráscsoportban keres, mint a kiépített Azure Database Migration Service erőforrás a társított hálózati illesztő megkereséséhez. A hálózati adapter erőforrás neve általában a hálózati adapter előtaggal kezdődik, amelyet egy egyedi karakter és számsorozat követ, például NIC-jj6tnztnmarpsskr82rbndyp. A hálózati csatoló erőforrás kiválasztásával láthatja az IP-címet, amelyet meg kell adni az erőforrás-áttekintés Azure Portal lap engedélyezési listájában.
+**K. Hogyan megkeresni a Azure Database Migration Service IP-címét, hogy Létrehozhatok egy engedélyezési listát a forrásadatbázis áttelepítéshez való hozzáféréséhez használt tűzfalszabályok számára?**
+Előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára, hogy hozzáférjenek a forrás-adatbázishoz az áttelepítés során. A szolgáltatás IP-címe dinamikus, de ha a ExpressRoute-t használja, ezt a címet a vállalati hálózat is saját maga rendeli hozzá. A megfelelő IP-cím azonosításának legegyszerűbb módja, ha ugyanazt az erőforráscsoportot tekinti meg, mint a kiépített Azure Database Migration Service erőforrás a társított hálózati adapter megtalálásához. Általában a hálózati adapter erőforrásának neve a NIC előtaggal kezdődik, majd egy egyedi karakter-és számsorozattal, például a NIC-jj6tnztnmarpsskr82rbndyp. A hálózati adapter erőforrásának kiválasztásával megtekintheti azt az IP-címet, amelyet az erőforrás-áttekintés Azure Portal lapon szerepeltetni kell az engedélyezési listán.
 
-Előfordulhat, hogy az SQL Server által figyelt portforrást is meg kell adnia az engedélyezési listához. Alapértelmezés szerint az 1433-as port, de a forrás SQL Server lehet beállítani, hogy figyelje a többi porton is. Ebben az esetben ezeket a portokat is fel kell tüntetnie az engedélyezési listán. Dinamikus felügyeleti nézet lekérdezéssel határozhatja meg azt a portot, amelyet az SQL Server figyel:
+Előfordulhat, hogy meg kell adnia azt a forrásport-forrást is, amelyet a SQL Server figyel az engedélyezési listán. Alapértelmezés szerint az 1433-es port, a forrás SQL Server azonban más portok figyelésére is konfigurálható. Ebben az esetben ezeket a portokat is fel kell venni az engedélyezési listára. Megadhatja azt a portot, amelyet a SQL Server figyel a dinamikus felügyeleti nézet lekérdezése segítségével:
 
 ```sql
     SELECT DISTINCT
@@ -76,7 +76,7 @@ Előfordulhat, hogy az SQL Server által figyelt portforrást is meg kell adnia 
     WHERE local_tcp_port IS NOT NULL
 ```
 
-Az SQL Server hibanaplójának lekérdezésével is meghatározhatja az SQL Server által figyelt portot:
+Azt is megadhatja, hogy a SQL Server milyen portot figyel, ha lekérdezi a SQL Server hibanapló:
 
 ```sql
     USE master
@@ -85,38 +85,38 @@ Az SQL Server hibanaplójának lekérdezésével is meghatározhatja az SQL Serv
     GO
 ```
 
-**K. Hogyan állíthatok be Microsoft Azure virtuális hálózatot?**
-Bár több Microsoft oktatóanyag, amely végigvezeti a virtuális hálózat létrehozásának folyamatán, a hivatalos dokumentáció az [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)című cikkben jelenik meg.
+**K. Hogyan beállítja a Microsoft Azure Virtual Networkt?**
+Noha több Microsoft-oktatóanyag is van, amely végigvezeti a virtuális hálózat beállításának folyamatán, a hivatalos dokumentáció az [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)cikkben jelenik meg.
 
 ## <a name="usage"></a>Használat
 
-**K. Mi az Azure Database Migration Service adatbázis-áttelepítéshez szükséges lépések összegzése?**
-Egy tipikus, egyszerű adatbázis-áttelepítés során a következőket kell:
+**K. milyen összefoglalja a szükséges lépéseket az adatbázisok áttelepítésének elvégzéséhez Azure Database Migration Service használatához?**
+Egy tipikus, egyszerű adatbázis-áttelepítés során a következőket végezheti el:
 
-1. Hozzon létre egy céladatbázis(oka)t.
-2. A forrásadatbázis(ok) felmérése.
-    * Homogén áttelepítések esetén értékelje a meglévő adatbázis(oka)t a [DMA](https://www.microsoft.com/download/details.aspx?id=53595)használatával.
-    * Heterogén áttelepítések esetén (versenyforrásokból) értékelje a meglévő adatbázis(oka)t az [SSMA-val.](https://aka.ms/get-ssma) Az SSMA segítségével adatbázis-objektumokat is konvertálhat, és áttelepítheti a sémát a célplatformra.
+1. Hozzon létre egy céladatbázis (eke) t.
+2. Mérje fel a forrás-adatbázis (oka) t.
+    * A homogén áttelepítések esetében a meglévő adatbázis (oka) t a [DMA](https://www.microsoft.com/download/details.aspx?id=53595)használatával értékelheti ki.
+    * Heterogén áttelepítések esetén (a versengő forrásokból) mérje fel a meglévő adatbázis (oka) t a [SSMA](https://aka.ms/get-ssma). A SSMA használatával is konvertálhatja az adatbázis-objektumokat, és áttelepítheti a sémát a célként megadott platformra.
 3. Hozzon létre egy Azure Database Migration Service-példányt.
-4. Hozzon létre egy áttelepítési projektet, amely megadja a forrásadatbázis(oka)t, a céladatbázis(oka)t és az áttelepítendő táblákat.
-5. Indítsd el a teljes terhelést.
-6. Válassza ki a későbbi érvényesítést.
-7. Az éles környezet manuális átkapcsolása az új felhőalapú adatbázisra.
+4. Hozzon létre egy áttelepítési projektet, amely meghatározza a forrásadatbázis (oka) t, a célként megadott adatbázist és az áttelepítendő táblákat.
+5. Indítsa el a teljes betöltést.
+6. Válassza ki a következő érvényesítést.
+7. Végezze el az éles környezet manuális áttelepítését az új felhőalapú adatbázisra.
 
 ## <a name="troubleshooting-and-optimization"></a>Hibaelhárítás és optimalizálás
 
-**K. Áttelepítési projektet állítok fel a DMS-ben, és nehezen tudok csatlakozni a forrásadatbázishoz. Mit kell tennem?**
-Ha az áttelepítés során nem sikerül csatlakoznia a forrásadatbázis-rendszerhez, hozzon létre egy virtuális gépet abban a virtuális hálózatban, amellyel beállította a DMS-példányt. A virtuális gép, képesnek kell lennie arra, hogy futtasson egy csatlakozási teszt, például egy UDL-fájl segítségével, hogy teszteljék a kapcsolatot az SQL Server vagy a robot 3T letöltése teszt MongoDB kapcsolatok. Ha a kapcsolatteszt sikeres, nem lehet probléma a forrásadatbázishoz való csatlakozással kapcsolatban. Ha a csatlakozási teszt nem sikerül, forduljon a hálózati rendszergazdához.
+**K. létrehozok egy áttelepítési projektet a DMS-ben, és nehezen tudok csatlakozni a forrás-adatbázishoz. Mit tegyek?**
+Ha nem sikerül csatlakoznia a forrás-adatbázis rendszeréhez az áttelepítés során, hozzon létre egy virtuális gépet a virtuális hálózaton, amellyel beállíthatja a DMS-példányt. A virtuális gépen képesnek kell lennie egy csatlakozási teszt futtatására, például egy UDL-fájl használatával SQL Server vagy a Robo 3T letöltésére a MongoDB-kapcsolatok teszteléséhez. Ha a kapcsolat tesztelése sikeres, a forrás-adatbázishoz való csatlakozás nem jelent problémát. Ha a kapcsolat tesztelése nem sikerül, forduljon a hálózati rendszergazdához.
 
-**K. Miért nem érhető el vagy nem érhető el az Azure-adatbázis-áttelepítési szolgáltatásom?**
-Ha a felhasználó explicit módon leállítja az Azure Database Migration Service (DMS) szolgáltatást, vagy ha a szolgáltatás 24 órán keresztül inaktív, a szolgáltatás leállított vagy automatikusan szüneteltetésre kerül. A szolgáltatás minden esetben nem lesz elérhető, és leállított állapotban lesz.  Az aktív áttelepítések folytatásához indítsa újra a szolgáltatást.
+**K. Miért nem érhető el vagy leáll a Azure Database Migration Service?**
+Ha a felhasználó explicit módon leállítja Azure Database Migration Service (DMS) szolgáltatást, vagy ha a szolgáltatás 24 órán keresztül inaktív, a szolgáltatás leállított vagy automatikusan szüneteltetve állapotba kerül. A szolgáltatás minden esetben elérhetetlenné válik, és leállított állapotban van.  Az aktív Migrálás folytatásához indítsa újra a szolgáltatást.
 
-**K. Vannak-e javaslatok az Azure Database Migration Service teljesítményének optimalizálására?**
-Néhány dolog, hogy gyorsítsa fel az adatbázis-áttelepítés a szolgáltatás használatával:
+**K. vannak javaslatok a Azure Database Migration Service teljesítményének optimalizálására?**
+A szolgáltatás használatával felgyorsíthatja az adatbázis áttelepítését:
 
-* Használja a több processzor általános célú díjszabási szint, amikor létrehozza a szolgáltatáspéldány, hogy a szolgáltatás kihasználhatja a több vCPU-k a párhuzamosítás és a gyorsabb adatátvitel.
-* Az azure-i SQL Database-célpéldány tág ítására ideiglenesen skálázhatja az adatáttelepítési művelet során a prémium szintű termékváltozatra, hogy minimalizálja az Azure SQL Database szabályozását, amely hatással lehet az adatátviteli tevékenységekre alacsonyabb szintű termékváltozatok használatakor.
+* Használja a többprocesszoros általános célú díjszabását a szolgáltatási példány létrehozásakor, hogy a szolgáltatás kihasználja a párhuzamos és gyorsabb adatátvitelt biztosító több vCPU előnyeit.
+* Az adatáttelepítési művelet során átmenetileg felskálázás a Azure SQL Database Target-példányról a prémium szintű SKU-ra, hogy csökkentse Azure SQL Database szabályozást, amely hatással lehet az adatátviteli tevékenységekre, amikor alacsonyabb szintű SKU-ket használ.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Database Migration Service és a regionális elérhetőség áttekintését a [Mi az Azure-adatbázis-áttelepítési szolgáltatás](dms-overview.md)című cikkben találja.
+A Azure Database Migration Service és a regionális elérhetőség áttekintését lásd: [Mi a Azure Database Migration Service](dms-overview.md).

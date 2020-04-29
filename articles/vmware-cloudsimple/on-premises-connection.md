@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple által – Helyszíni kapcsolat az ExpressRoute használatával
-description: Ez a témakör azt ismerteti, hogy miként lehet helyszíni kapcsolatot kérni az ExpressRoute használatával a CloudSimple régióhálózatból
+title: Azure VMware-megoldás a ExpressRoute-t használó helyszíni CloudSimple
+description: Ismerteti, hogyan lehet helyszíni internetkapcsolatot igényelni a ExpressRoute használatával a CloudSimple region Networkből
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,73 +9,73 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77019621"
 ---
-# <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Csatlakozás a helyszíni és a CloudSimple szolgáltatáshoz az ExpressRoute használatával
+# <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával
 
-Ha már rendelkezik egy Azure ExpressRoute-kapcsolategy külső helyről (például a helyszíni) az Azure-ba, csatlakoztathatja azt a CloudSimple környezethez. Ezt egy Azure-szolgáltatáson keresztül teheti meg, amely lehetővé teszi, hogy két ExpressRoute-kapcsolatcsatlakozzon egymáshoz. Ez a módszer biztonságos, privát, nagy sávszélességű, alacsony késleltetésű kapcsolatot hoz létre a két környezet között.
+Ha már rendelkezik Azure ExpressRoute-kapcsolattal egy külső helyről (például a helyszínen) az Azure-ba, akkor csatlakoztathatja azt a CloudSimple-környezethez. Ezt egy olyan Azure-szolgáltatáson keresztül teheti meg, amely lehetővé teszi, hogy két ExpressRoute áramkör kapcsolódjon egymáshoz. Ez a módszer biztonságos, privát, nagy sávszélességű, kis késleltetésű kapcsolatot létesít a két környezet között.
 
-[![Helyszíni ExpressRoute-kapcsolat – Globális elérés](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
+[![Helyszíni ExpressRoute-kapcsolatok – Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A helyszíni globális elérési kapcsolat létrehozásához **/29** hálózati címblokk szükséges.  A /29 címterületet az ExpressRoute-áramkörök közötti tranzithálózat használja.  Az átviteli hálózat nem lehet átfedésben az Azure virtuális hálózataival, a helyszíni hálózatokkal vagy a CloudSimple magánfelhő-hálózatokkal.
+A helyszíni környezetből Global Reach-kapcsolatok létrehozásához a **/29** hálózati címterület szükséges.  A/29 címterület a ExpressRoute-áramkörök közötti átviteli hálózaton van használatban.  Az átviteli hálózatnak nem szabad átfedésben lennie az Azure-beli virtuális hálózatokkal, a helyszíni hálózatokkal vagy a CloudSimple.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure ExpressRoute-kapcsolat szükséges, mielőtt létrehozna a kapcsolatot a kapcsolat a kapcsolat a kapcsolat a circuit és a CloudSimple private cloud hálózatok között.
-* A felhasználónak jogosultságokkal kell létrehoznia az engedélyezési kulcsokat egy ExpressRoute-kapcsolaton.
+* Az áramkör és a CloudSimple privát felhőalapú hálózata közötti kapcsolat létrehozása előtt egy Azure ExpressRoute-áramkörre van szükség.
+* A ExpressRoute-áramkör engedélyezési kulcsainak létrehozásához jogosultsággal rendelkező felhasználónak kell lennie.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-A helyszíni hálózat nak a magánfelhő-hálózathoz való csatlakoztatása lehetővé teszi a magánfelhő különböző módokon történő használatát, beleértve a következő eseteket is:
+A helyszíni hálózat és a saját felhőalapú hálózat összekapcsolása lehetővé teszi a privát felhő különböző módokon történő használatát, többek között a következő esetekben:
 
-* A helyek közötti VPN-kapcsolat létrehozása nélkül érheti el a magánfelhő-hálózatot.
-* Használja a helyszíni Active Directoryt identitásforrásként a magánfelhőben.
-* A helyszíni futó virtuális gépek áttelepítése a magánfelhőbe.
-* Használja a privát felhő részeként egy vész-helyreállítási megoldás.
-* A helyszíni erőforrásokat a privát felhőbeli számítási feladatok virtuális gépein használja fel.
+* A saját felhőalapú hálózatát helyek közötti VPN-kapcsolat létrehozása nélkül érheti el.
+* A helyszíni Active Directory identitás forrásaként használhatja a saját felhőben.
+* Telepítse át a helyszínen futó virtuális gépeket a saját felhőbe.
+* A saját Felhőjét a vész-helyreállítási megoldás részeként használhatja.
+* Helyszíni erőforrásokat használhat a saját Felhőbeli számítási feladatokhoz tartozó virtuális gépeken.
 
 ## <a name="connecting-expressroute-circuits"></a>ExpressRoute-áramkörök csatlakoztatása
 
-Az ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt az ExpressRoute-kapcsolaton, és meg kell adnia az engedélyezési adatokat a CloudSimple számára.
+A ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt a ExpressRoute-áramkörön, és meg kell adnia az engedélyezési adatokat a CloudSimple.
 
 
-### <a name="create-expressroute-authorization"></a>ExpressRoute-engedélyezés létrehozása
+### <a name="create-expressroute-authorization"></a>ExpressRoute-hitelesítés létrehozása
 
 1. Jelentkezzen be az Azure portálra.
 
-2. A felső keresősávon keresse meg az **ExpressRoute-áramkört,** és kattintson az **ExpressRoute-áramkörök** elemre a **Szolgáltatások csoportban.**
+2. A felső keresési sávban keresse meg a **ExpressRoute áramkört** , és kattintson a **szolgáltatások**területen található **ExpressRoute-áramkörök** elemre.
     [![ExpressRoute-áramkörök](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)
 
-3. Válassza ki azt az ExpressRoute-áramkört, amelyhez csatlakozni kíván a CloudSimple-hálózathoz.
+3. Válassza ki azt a ExpressRoute-áramkört, amelyhez csatlakozni kíván a CloudSimple-hálózathoz.
 
-4. Az ExpressRoute lapon kattintson az **Engedélyezés gombra,** adja meg az engedélyezés nevét, majd kattintson a **Mentés gombra.**
-    [![ExpressRoute-kapcsolat engedélyezése](media/azure-expressroute-transit-authorizations.png)](media/azure-expressroute-transit-authorizations.png)
+4. A ExpressRoute lapon kattintson az **engedélyek**elemre, adja meg az engedély nevét, majd kattintson a **Mentés**gombra.
+    [![ExpressRoute-áramkör engedélyezése](media/azure-expressroute-transit-authorizations.png)](media/azure-expressroute-transit-authorizations.png)
 
-5. Másolja az erőforrás-azonosítót és az engedélyezési kulcsot a másolásikonra kattintva. Illessze be az azonosítót és a kulcsot egy szövegfájlba.
-    [![ExpressRoute-kapcsolat engedélyezési másolása](media/azure-expressroute-transit-authorization-copy.png)](media/azure-expressroute-transit-authorization-copy.png)
-
-    > [!IMPORTANT]
-    > **Az erőforrás-azonosítót** a felhasználói felületről kell másolni, és a támogatás megadásához a formátumnak ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` kell lennie.
-
-6. A létrehozandó <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">kapcsolathoz</a> nyújtson be egy jegyet a Támogatás szolgáltatással.
-    * Probléma típusa: **Műszaki**
-    * Előfizetés: **Előfizetés, ahol a CloudSimple szolgáltatás telepítve van**
-    * Szolgáltatás: **VMware megoldás a CloudSimple-től**
-    * Probléma típusa: **Szolgáltatáskérés**
-    * Probléma altípusa: **ExpressRoute-kapcsolat létrehozása a helyszíni**
-    * Adja meg a részleteket tartalmazó ablaktáblán másolt és mentett erőforrás-azonosítót és engedélyezési kulcsot.
-    * /29 hálózati címterület biztosítása a tranzithálózat számára.
-    * Alapértelmezett útvonalat küld az ExpressRoute-on keresztül?
-    * A magánfelhő-forgalom nak az ExpressRoute-on keresztül küldött alapértelmezett útvonalat kell használnia?
+5. Másolja az erőforrás-azonosítót és az engedélyezési kulcsot a másolás ikonra kattintva. Illessze be az azonosítót és a kulcsot egy szövegfájlba.
+    [![ExpressRoute áramkör engedélyezési másolata](media/azure-expressroute-transit-authorization-copy.png)](media/azure-expressroute-transit-authorization-copy.png)
 
     > [!IMPORTANT]
-    > Az alapértelmezett útvonal küldése lehetővé teszi, hogy az összes internetes forgalmat a magánfelhőből a helyszíni internetkapcsolaton keresztül küldje el.  A magánfelhőben konfigurált alapértelmezett útvonal letiltásához és a helyszíni kapcsolat alapértelmezett útvonalának használatához adja meg a támogatási jegy ben található részleteket.
+    > Az **erőforrás-azonosítót** át kell másolni a felhasználói felületről, és a ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` formátumot kell megadni a támogatáshoz.
+
+6. Hozzon létre egy jegyet a létrehozandó kapcsolatok <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatásával</a> .
+    * Probléma típusa: **technikai**
+    * Előfizetés: **előfizetés, ahol a CloudSimple szolgáltatás telepítve van**
+    * Szolgáltatás: **VMware-megoldás CloudSimple szerint**
+    * Probléma típusa: **szolgáltatás kérése**
+    * Probléma altípusa: **ExpressRoute-kapcsolatok létrehozása a** helyszíni környezethez
+    * Adja meg a részleteket tartalmazó ablaktáblán a vágólapra másolt és mentett erőforrás-azonosítót és engedélyezési kulcsot.
+    * Adjon meg egy/29 hálózati címtartományt az átviteli hálózat számára.
+    * Elküldi az alapértelmezett útvonalat a ExpressRoute-on keresztül?
+    * A privát felhő forgalma a ExpressRoute-on keresztül továbbított alapértelmezett útvonalat használja?
+
+    > [!IMPORTANT]
+    > Az alapértelmezett útvonal küldése lehetővé teszi, hogy az összes internetes forgalmat a saját helyszíni internetkapcsolatával küldje el a privát felhőből.  Ha le szeretné tiltani a privát felhőben konfigurált alapértelmezett útvonalat, és a helyszíni kapcsolat alapértelmezett útvonalát szeretné használni, adja meg a támogatási jegy részleteit.
 
 ## <a name="next-steps"></a>További lépések
 

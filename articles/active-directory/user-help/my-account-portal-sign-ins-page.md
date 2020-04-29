@@ -1,6 +1,6 @@
 ---
-title: A legutóbbi bejelentkezési tevékenység megtekintése és keresése a Bejelentkezés (előzetes verzió) lapon – Azure Active Directory | Microsoft dokumentumok
-description: A legutóbbi bejelentkezési tevékenység megtekintésének és keresésének részletei a Saját fiók portál Saját bejelentkezések lapján.
+title: A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezés (előzetes verzió) lapról – Azure Active Directory | Microsoft Docs
+description: Részletes információ arról, hogyan tekintheti meg és keresheti meg a legutóbbi bejelentkezési tevékenységeit a fiókom portál saját bejelentkezések lapján.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064019"
 ---
-# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a Bejelentkezések (előzetes verzió) lapon
+# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezések (előzetes verzió) lapról
 
-Megtekintheti az összes legutóbbi munkahelyi vagy iskolai fiókbejelentkezési tevékenységét a **Saját fiók** portál **Bejelentkezések** lapján. A bejelentkezési előzmények áttekintése segít a szokatlan tevékenységek ellenőrzésében azáltal, hogy segít a következők megtekintésében:
+A legutóbbi munkahelyi vagy iskolai fiók bejelentkezési tevékenységeit a **saját fiók** portál **saját bejelentkezések** lapján tekintheti meg. A bejelentkezési előzmények áttekintésével a következő módon tekintheti meg a szokatlan tevékenységeket:
 
 - Ha valaki megpróbálja kitalálni a jelszavát.
 
-- Ha a támadó sikeresen bejelentkezett a fiókjába, és milyen helyről.
+- Ha egy támadó sikeresen bejelentkezett a fiókjába, és az adott helyről.
 
-- Milyen alkalmazásokat próbált a támadó elérni.
+- Milyen alkalmazások próbáltak hozzáférni a támadóhoz.
 
 ## <a name="view-your-recent-sign-in-activity"></a>A legutóbbi bejelentkezési tevékenység megtekintése
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjába, https://myprofile.microsoft.com/ és lépjen az oldalra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-2. Válassza a **Bejelentkezések (előzetes verzió)** lehetőséget a bal oldali navigációs ablakban, vagy válassza a **Legutóbbi tevékenységek áttekintése** hivatkozást a **Bejelentkezések (előzetes verzió)** blokkból.
+2. A bal oldali navigációs ablaktáblán válassza a **saját bejelentkezések (előzetes verzió)** lehetőséget, vagy a **saját bejelentkezések (előzetes verzió)** blokkból válassza a **Legutóbbi tevékenység áttekintése** hivatkozást.
 
-    ![Saját fiók lap, kiemelve a Legutóbbi tevékenység hivatkozásai](media/my-account-portal/my-account-portal-sign-ins.png)
+    ![Fiókom oldal, amely a legutóbbi tevékenységek Kiemelt hivatkozásait mutatja](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. Bontsa ki és tekintse át a bejelentkezési elemeket, és győződjön meg arról, hogy felismeri az egyes elemeket. Ha olyan bejelentkezési elemet talál, amely nem tűnik ismerősnek, javasoljuk, hogy változtassa meg jelszavát, hogy megvédje fiókját, ha az feltört.
+3. Bontsa ki és tekintse át az egyes bejelentkezési elemeket, és ügyeljen rá, hogy mindegyiket felismerje. Ha olyan bejelentkezési tételt talál, amely nem ismerősnek tűnik, javasoljuk, hogy változtassa meg a jelszavát, hogy megvédje a fiókját, ha az biztonsága sérült.
 
-    ![Legutóbbi tevékenység lap a bővített bejelentkezés részleteivel](media/my-account-portal/my-account-portal-sign-ins-page.png)
+    ![Legutóbbi tevékenység lap bővített bejelentkezési adataival](media/my-account-portal/my-account-portal-sign-ins-page.png)
 
 ### <a name="if-you-see-a-successful-sign-in"></a>Ha sikeres bejelentkezést lát
 
-Fel kell ismerned, hogy a saját tevékenységed normális. Ha azonban egy sikeres bejelentkezést észlel furcsa helyről, böngészőből vagy operációs rendszerről, az azt jelentheti, hogy a támadó hozzáfért a fiókjához. Ebben az esetben javasoljuk, hogy azonnal változtassa meg jelszavát, majd a biztonsági beállítások frissítéséhez lépjen a [Biztonsági adatok](https://mysignins.microsoft.com/security-info) lapra.
+A szokásos módon fel kell ismernie a saját tevékenységeit. Ha azonban a furcsa helyről, böngészőből vagy operációs rendszerből sikeres bejelentkezést észlel, az azt jelentheti, hogy egy támadó hozzáfért a fiókjához. Ebben az esetben javasoljuk, hogy azonnal módosítsa a jelszavát, majd lépjen a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapra a biztonsági beállítások frissítéséhez.
 
-Mielőtt megállapítja, hogy valami helytelen, győződjön meg róla, hogy nem lát hamis pozitív eredményt (ahol az elem megkérdőjelezhetőnek tűnik, de rendben van). Például az ÖN IP-címe alapján határozzuk meg az Ön hozzávetőleges tartózkodási helyét és térképét. A mobilhálózatokat különösen nehéz pontosan meghatározni, mivel néha távoli helyeken keresztül irányítják a forgalmat. Ha tehát Washington államban, a mobileszközével jelentkezett be, előfordulhat, hogy a hely a Kaliforniából érkező bejelentkezést mutatja. Emiatt javasoljuk, hogy ellenőrizze a további részleteket, túl csak a helyét. Azt is meg kell győződnie arról, hogy az operációs rendszernek, a böngészőnek és az alkalmazásnak is van értelme.
+A probléma meghatározása előtt győződjön meg arról, hogy nem jelenik meg hamis pozitív (ahol az elem megkérdőjelezhető, de rendben van). Meghatározhatja például az IP-címe alapján a hozzávetőleges helyet és a leképezést. A mobileszközök különösen nehezen azonosíthatók, mivel időnként távoli telephelyeken keresztül irányítják a forgalmat. Ha tehát Washington államban jelentkezett be a mobileszköz használatával, a hely a California-ból érkező bejelentkezést is megjeleníti. Ezért erősen javasoljuk, hogy a hely helyett további részleteket is keressen. Gondoskodjon arról is, hogy az operációs rendszer, a böngésző és az alkalmazás is legyen értelme.
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Ha sikertelen bejelentkezést lát
 
-A sikertelen bejelentkezés munkamenet-tevékenység nélkül azt jelenti, hogy az elsődleges ellenőrzési módszer (felhasználónév/jelszó) sikertelen volt. Ez azt jelentheti, hogy elgépelte a felhasználónevét vagy a jelszavát, de azt is jelentheti, hogy a támadó megpróbálta kitalálni a jelszavát. Ha úgy gondolja, hogy a támadó sikertelenül próbálta kitalálni a jelszavát, nem kell módosítania a jelszavát, de javasoljuk, hogy regisztráljon az Azure többtényezős hitelesítésre (MFA). Az MFA-val, még akkor is, ha a hacker végül kitalálja a jelszavát, nem lesz elég a fiókjához való hozzáféréshez.
+Sikertelen bejelentkezés – a munkamenet-tevékenység nélkül – az elsődleges ellenőrzési módszer (username/Password) nem sikerült. Ez azt jelentheti, hogy helytelenül adta meg a felhasználónevet vagy a jelszót, de azt is jelentheti, hogy egy támadó megpróbálta kitalálni a jelszavát. Ha úgy gondolja, hogy a támadó sikeresen próbálta kitalálni a jelszavát, nem kell módosítania a jelszavát, de határozottan javasoljuk, hogy regisztrálja az Azure Multi-Factor Authentication (MFA). Az MFA-val még akkor is, ha a hacker végül kitalálta a jelszavát, nem lesz elég a fiókjához való hozzáféréshez.
 
-Ha sikertelen bejelentkezést lát, és a Munkamenet-tevékenység csoportban a következő megjegyzés jelenik meg: **A további ellenőrzés sikertelen, érvénytelen kód**, ez azt jelenti, hogy az elsődleges hitelesítés (felhasználónév/jelszó) sikeres volt, de az MFA nem sikerült. Ha ez egy támadó volt, helyesen kitalálták a jelszavát, de továbbra sem tudtak átmenni az MFA-kihíváson. Ebben az esetben azt javasoljuk, hogy módosítsa a jelszavát, mivel a támadó helyesen kapta meg a részt, majd lépjen a [Biztonsági adatok](https://mysignins.microsoft.com/security-info) lapra a biztonsági beállítások frissítéséhez.
+Ha nem sikerül bejelentkeznie, és a munkamenet-tevékenység alatt megjegyzés jelenik meg, a **további ellenőrzés meghiúsult, a kód érvénytelen**, az azt jelenti, hogy az elsődleges hitelesítés (felhasználónév/jelszó) sikeres volt, de az MFA nem sikerült. Ha ez egy támadó, akkor helyesen kitalálta a jelszavát, de még nem tudta átadni az MFA-feladatot. Ebben az esetben javasoljuk, hogy változtassa meg a jelszavát, mert a támadó megkapta ezt a részt, majd lépjen a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapra a biztonsági beállítások frissítéséhez.
 
 ## <a name="search-for-specific-sign-in-activity"></a>Adott bejelentkezési tevékenység keresése
 
-A legutóbbi bejelentkezési tevékenységben a rendelkezésre álló információk bármelyike alapján kereshet. Rákereshet például a legutóbbi bejelentkezési tevékenységére az operációs rendszer, a hely, az alkalmazás és így tovább.
+A legutóbbi bejelentkezési tevékenységeit bármely elérhető információ alapján keresheti meg. Megkeresheti például a legutóbbi bejelentkezési tevékenységeit operációs rendszer, hely, alkalmazás stb. alapján.
 
-1. A **Legutóbbi tevékenységek áttekintése** lapon írja be a keresett adatokat a **keresősávba.** Írja be `My Account` például a Saját fiók alkalmazás által gyűjtött összes tevékenység keresését.
+1. A **Legutóbbi tevékenység áttekintése** lapon adja **meg a keresési sávon keresendő** adatokat. Írja be `My Account` például a következőt: a fiókom alkalmazás által összegyűjtött összes tevékenység keresése.
 
-2. A keresés megkezdéséhez kattintson a **Keresés** gombra.
+2. Kattintson a **Keresés** gombra a keresés megkezdéséhez.
 
-    ![Legutóbbi tevékenységek lap, kiemelt keresősáv, keresőgomb és találatok megjelenítése](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
+    ![Közelmúltbeli tevékenység lap, a Kiemelt keresősáv, a Keresés gomb és az eredmények megjelenítése](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
 
 ## <a name="next-steps"></a>További lépések
 
 A legutóbbi bejelentkezési tevékenység megtekintése után a következőket teheti:
 
-- A biztonsági [adatok](user-help-security-info-overview.md)megtekintése vagy kezelése.
+- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
 
 - A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
 
-- A [szervezetek](my-account-portal-organizations-page.md)megtekintése vagy kezelése.
+- A [szervezetek](my-account-portal-organizations-page.md)megtekintése és kezelése.
 
-- Megtekintheti, hogy szervezete hogyan [használja fel az adatvédelemmel kapcsolatos adatokat.](my-account-portal-privacy-page.md)
+- Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).

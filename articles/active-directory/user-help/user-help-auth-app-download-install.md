@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Authenticator alkalmazás letöltése és telepítése – Azure AD
-description: Töltse le és telepítse a Microsoft Authenticator alkalmazást, hogy ellenőrizze személyazonosságát a kétfaktoros ellenőrzés használata közben.
+title: Töltse le és telepítse a Microsoft Authenticator alkalmazást – Azure AD
+description: Töltse le és telepítse a Microsoft Authenticator alkalmazást, hogy ellenőrizze az identitását a kétfaktoros ellenőrzés használata során.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,58 +13,58 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 9d8ea02c91dc6aec41a1b548eff148e85111fc32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063900"
 ---
-# <a name="download-and-install-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás letöltése és telepítése
+# <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazást
 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
-A Microsoft Authenticator alkalmazás segít a fiókokba való bejelentkezésben, ha kétfaktoros ellenőrzést használ. A kétfaktoros ellenőrzés segítségével biztonságosabban férhet hozzá fiókjaihoz, különösen a bizalmas adatok megtekintése közben. Mivel a jelszavak elfelejthetők, ellophatók vagy feltörhetők, a kétfaktoros ellenőrzés egy további biztonsági lépés, amely segít megvédeni fiókját azáltal, hogy megnehezíti mások számára a betörést.
+A Microsoft Authenticator alkalmazás segít bejelentkezni a fiókjába, ha kétfaktoros ellenőrzést használ. A kétfaktoros ellenőrzés segítségével biztonságosabban férhet hozzá a fiókokhoz, különösen a bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejthető, ellopott vagy sérült, a kétfaktoros ellenőrzés egy további biztonsági lépés, amely segít a fiók védelmében azáltal, hogy nehezebbé teszi a más személyek számára a betörést.
 
 A Microsoft Authenticator alkalmazást többféleképpen is használhatja, többek között:
 
-- **Kétfaktoros ellenőrzés.** A szabványos ellenőrzési módszer, ahol az egyik tényező a jelszó. Miután felhasználónévvel és jelszóval jelentkezett be, jóváhagyhat egy értesítést, vagy megadhat egy megadott ellenőrző kódot.
+- **Kétfaktoros ellenőrzés.** A standard ellenőrzési módszer, amelyben az egyik tényező a jelszava. Miután bejelentkezett felhasználónevével és jelszavával, jóváhagyhat egy értesítést, vagy megadhat egy megadott ellenőrző kódot.
 
-- **Telefonos bejelentkezés.** A kétfaktoros ellenőrzés olyan verziója, amely lehetővé teszi, hogy jelszó nélkül jelentkezzen be, a felhasználónevével és mobileszközével ujjlenyomattal, arccal vagy PIN-kóddal.
+- **Telefonos bejelentkezés.** A kétfaktoros ellenőrzés olyan verziója, amely jelszó kérése nélkül, a felhasználónévvel és a mobileszköz ujjlenyomattal, képpel vagy PIN-kódjával való bejelentkezését teszi lehetővé.
 
-- **Kódgenerálás.** Kódgenerátorként minden más, hitelesítő alkalmazásokat támogató fiókhoz.
+- **Kód létrehozása.** A hitelesítő alkalmazásokat támogató egyéb fiókok számára.
 
 > [!Important]
-> A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely kétfaktoros ellenőrzést használ, és támogatja az időalapú egyszeri jelszó (TOTP) szabványokat.
+> A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely kétfaktoros ellenőrzést használ, és támogatja az idő-alapú egyszeri jelszó (TOTP) szabványait.
 >
-> Előfordulhat, hogy a szervezet nek hitelesítő alkalmazást kell használnia a bejelentkezéshez és a szervezeti adatok és dokumentumok eléréséhez. Bár a felhasználónév megjelenhet az alkalmazásban, a fiók valójában nincs beállítva ellenőrzési módszerként, amíg be nem fejezi a regisztrációs folyamatot. További információt a [Munkahelyi vagy iskolai fiók hozzáadása című témakörben talál.](user-help-auth-app-add-work-school-account.md)
+> Előfordulhat, hogy a szervezete hitelesítő alkalmazást használ a bejelentkezéshez, és hozzáfér a szervezeti adataihoz és dokumentumaihoz. Bár a Felhasználónév megjelenhet az alkalmazásban, a fiók valójában nem úgy van beállítva, hogy ellenőrzési módszerként működjön, amíg el nem végzi a regisztrációs folyamatot. További információkért lásd: [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md).
 > 
 > [!NOTE]
-> Ha problémái vannak a fiókjába való bejelentkezéssel, olvassa el [a Ha nem tud bejelentkezni a Microsoft-fiókjába,](https://support.microsoft.com/help/12429) és olvassa el a Segítségért a Ha nem tud bejelentkezni a Microsoft-fiókjába.  További információ arról, hogy mi a teendő, ha a Microsoft-fiókjába való bejelentkezéskor a ["Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg.
+> Ha problémába ütközik a fiókjába való bejelentkezéssel, akkor a következő témakörben talál segítséget: [Ha nem tud bejelentkezni a Microsoft-fiókba](https://support.microsoft.com/help/12429) .  További információ arról, hogy mi a teendő, ha ["a Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg, amikor megpróbál bejelentkezni a Microsoft-fiókba.
 
 ## <a name="download-and-install-the-app"></a>Az alkalmazás letöltése és telepítése
 
-Telepítse a Microsoft Authenticator alkalmazás operációs rendszerének legújabb verzióját:
+Telepítse a Microsoft Authenticator alkalmazás legújabb verzióját az operációs rendszere alapján:
 
-- **Google Android.** Android-eszközén nyissa meg a Google Play webhelyet [a Microsoft Authenticator alkalmazás letöltéséhez és telepítéséhez.](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator)
+- **Google Android.** Az Android-eszközön nyissa meg a Google Play eszközt [a Microsoft Authenticator alkalmazás letöltéséhez és telepítéséhez](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator).
 
-- **Apple iOS.** Apple iOS-készülékén nyissa meg az App Store-t [a Microsoft Authenticator alkalmazás letöltéséhez és telepítéséhez.](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)
+- **Apple iOS.** Az Apple iOS-eszközön nyissa meg az App Store-t a [Microsoft Authenticator alkalmazás letöltéséhez és telepítéséhez](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 >[!Important]
->Ha jelenleg nem a mobileszközén tartózkodik, a Microsoft Authenticator alkalmazás továbbra is beszerezhető, ha küld egy letöltési hivatkozást a [Microsoft Hitelesítő lapról.](https://www.microsoft.com/en-us/account/authenticator)
+>Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/en-us/account/authenticator).
 
 ## <a name="next-steps"></a>További lépések
 
-Az alkalmazás letöltése és telepítése után hozzá kell adnia a különböző fiókokat. További információkért lásd:
+Miután letöltötte és telepítette az alkalmazást, hozzá kell adnia a különböző fiókokat. További információkért lásd:
 
-- **Hitelesítő alkalmazás.** Töltse le és használja a hitelesítő alkalmazást, hogy jóváhagyási értesítést vagy véletlenszerűen generált jóváhagyási kódot kapjon a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes útmutatást a [Biztonsági adatok beállítása a hitelesítő alkalmazás használatához](security-info-setup-auth-app.md)című témakörben találja.
+- **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
 
-- **Mobileszköz szövege.** Adja meg mobileszköz-számát, és kapjon egy kódot, amelyet a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához használ. A személyazonosság szöveges üzenettel (SMS) történő ellenőrzéséről a [Biztonsági adatok beállítása szöveges üzenetküldés (SMS) használatához](security-info-setup-text-msg.md)című témakörben talál.
+- **Mobileszköz szövege.** Adja meg a mobileszköz számát, és szerezzen be egy, a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz használni kívánt kódot. Az identitás szöveges üzenettel (SMS) való ellenőrzésével kapcsolatos részletes utasításokért lásd: [biztonsági információk beállítása szöveges üzenetküldés (SMS) használatára](security-info-setup-text-msg.md).
 
-- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg mobileszköz-számát, és kapjon telefonhívást a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. A személyazonosság telefonszámmal történő igazolásával kapcsolatos részletes útmutatást a [Biztonsági adatok beállítása telefonhívások használatához](security-info-setup-phone-number.md).
+- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszköz számát, és telefonhívást kap a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Az identitás telefonszámmal történő ellenőrzésével kapcsolatos részletes útmutatásért lásd: [biztonsági információk beállítása telefonhívások használatához](security-info-setup-phone-number.md).
 
-- **Biztonsági kulcs.** Regisztrálja a Microsofttal kompatibilis biztonsági kulcsot, és használja azt pin-kóddal együtt a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. A személyazonosság biztonsági kulccsal történő ellenőrzéséről a [Biztonsági adatok beállítása biztonsági kulcs használatához](security-info-setup-security-key.md)lépésenként.
+- **Biztonsági kulcs.** Regisztrálja Microsoft-kompatibilis biztonsági kulcsát, és használja PIN-kóddal a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Ha részletes útmutatást szeretne arról, hogyan ellenőrizheti személyazonosságát egy biztonsági kulccsal, tekintse meg a biztonsági [adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)című témakört.
 
-- **E-mail cím.** Adja meg munkahelyi vagy iskolai e-mail címét, hogy e-mailt kapjon a jelszó-visszaállításhoz. Ez a beállítás nem érhető el a kétlépéses ellenőrzéshez. A levelezés beállításával kapcsolatos részletes útmutatást a [Biztonsági adatok beállítása a levelezés használatához.](security-info-setup-email.md)
+- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címét, hogy e-mailt kapjon a jelszó alaphelyzetbe állításához. Ez a beállítás kétlépéses ellenőrzés esetén nem érhető el. Az e-mailek beállításával kapcsolatos részletes útmutatásért lásd: [biztonsági adatok beállítása e-mailek használatára](security-info-setup-email.md).
 
-- **Biztonsági kérdések.** Válaszoljon a rendszergazda által a szervezet számára létrehozott néhány biztonsági kérdésre. Ez a beállítás csak jelszó-visszaállításesetén érhető el, a kétlépéses ellenőrzésnél nem. A biztonsági kérdések beállításával kapcsolatos részletes útmutatást a [Biztonsági adatok beállítása a biztonsági kérdések használatához](security-info-setup-questions.md) című cikkben találja.
+- **Biztonsági kérdések.** Válaszoljon a szervezete rendszergazdája által létrehozott biztonsági kérdésekre. Ez a beállítás csak a jelszó-visszaállításhoz érhető el, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállításával kapcsolatos részletes utasításokért tekintse meg a biztonsági [kérdések beállítása a biztonsági kérdésekre](security-info-setup-questions.md) című cikket.

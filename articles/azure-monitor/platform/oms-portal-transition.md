@@ -1,62 +1,62 @@
 ---
-title: Az OMS portál az Azure-ba való áttérés | Microsoft dokumentumok
-description: Az OMS-portál napnyugta alatt áll, és az összes funkció az Azure Portalra kerül. Ez a cikk az átmenet részleteit tartalmazza.
+title: OMS-portál áthelyezése az Azure-ba | Microsoft Docs
+description: A OMS-portál a Azure Portalra áthelyezett összes funkcióval elérhetővé vált. Ez a cikk az áttérés részleteit ismerteti.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
 ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77659254"
 ---
-# <a name="oms-portal-moving-to-azure"></a>Az OMS-portál az Azure-ba költözik
+# <a name="oms-portal-moving-to-azure"></a>OMS-portál áthelyezése az Azure-ba
 
 > [!NOTE]
-> Ez a cikk az Azure nyilvános felhőre és a kormányzati felhőre egyaránt vonatkozik, kivéve, ha másként van feltüntetve.
+> Ez a cikk az Azure-beli nyilvános felhőre és a kormányzati felhőre is érvényes, kivéve, ha ez másképpen szerepel.
 
-**Az OmS-portál az Azure nyilvános felhő hivatalosan kivonva. 2019. május 15-én hivatalosan is megszüntették az Azure US Government-felhőhöz készült OMS-portált.** Izgatottan várjuk, hogy az Azure Portalra költözhetünk, és elvárjuk, hogy az átállás egyszerű legyen. De megértjük, hogy a változások nehézek és zavaróak lehetnek. A cikk további részében áttér a legfontosabb forgatókönyvekre és az átmenet ütemtervére.
+**Az Azure nyilvános felhőhöz készült OMS-portált hivatalosan kivonták. Az Azure US government Cloud OMS-portált hivatalosan 2019. május 15-én visszavonták.** Izgatottan várjuk a Azure Portalre való áttérést, és az átállás egyszerűvé vált. De tisztában vagyunk vele, hogy a változások nehézek, és zavaró lehet. A cikk további részében a főbb forgatókönyvek és az áttérés ütemterve is meghalad.
 
-Az Azure Portal az összes Azure-szolgáltatás központja, és gazdag felügyeleti élményt nyújt olyan képességekkel, mint például az erőforrások rögzítésére szolgáló irányítópultok, az erőforrások keresésére szolgáló intelligens keresés és az erőforrás-kezelés címkézése. A figyelési és felügyeleti munkafolyamat konszolidálása és egyszerűsítése érdekében elkezdtük hozzáadni az OMS-portál képességeit az Azure Portalhoz. Az OMS-portál összes szolgáltatása már az Azure Portal része. Valójában néhány új funkciók, például a Traffic Analytics csak az Azure Portalon érhetők el. Az Azure Portal segítségével mindent elérhet, amit az OMS-portálon végzett. Ha még nem tette meg, még ma kezdje el használni az Azure Portalt!
+A Azure Portal az összes Azure-szolgáltatás központja, és gazdag felügyeleti élményt nyújt olyan funkciókkal, mint az irányítópultok az erőforrások kitűzéséhez, az intelligens keresés az erőforrások kereséséhez és a címkézés az erőforrás-kezeléshez. A monitorozási és felügyeleti munkafolyamatok megszilárdítása és egyszerűsítése érdekében a OMS-portál képességeinek a Azure Portalba való felvételét kezdtük el. A OMS-portál összes funkciója mostantól a Azure Portal része. Valójában az új szolgáltatások, például a Traffic Analytics csak a Azure Portal érhetők el. A OMS-portálon mindent megtesz, ami a Azure Portal és egyebek mellett is elvégezhető. Ha még nem tette meg, kezdje el használni a Azure Portal még ma!
 
 ## <a name="what-is-changing"></a>Mi változik? 
-Az OMS-portál e-edeprecációjával a következő módosításokat jelentik be. A módosítások mindegyikét az alábbi szakaszok részletesebben ismertetik.
+Az alábbi módosítások a OMS-portál elavult változatával lesznek bejelentve. A módosításokat az alábbi szakaszokban részletesebben ismertetjük.
 
-- Csak az Azure Portalon hozhat létre új [munkaterületeket.](#new-workspaces)
-- Az új riasztáskezelési felület [felváltja a riasztáskezelési megoldást.](#changes-to-alerts)
-- [A felhasználói hozzáférés kezelése](#user-access-and-role-migration) most már az Azure-portálon történik az Azure szerepköralapú hozzáférés-vezérlés használatával.
-- Az [Application Insights-összekötő már nincs szükség,](#application-insights-connector-and-solution) mivel ugyanazt a funkciót a munkaterületközi lekérdezések en keresztül engedélyezve van.
-- Az [OMS mobilalkalmazás](#oms-mobile-app) elavult. 
-- Az [NSG-megoldást a](#azure-network-security-group-analytics) Traffic Analytics-megoldáson keresztül elérhető továbbfejlesztett funkciókkal helyettesítik.
-- A System Center Operations Manager és a Log Analytics új [kapcsolataihoz frissített felügyeleti csomagokra](#system-center-operations-manager)van szükség.
-- Az [OMS-frissítési telepítések áttelepítése az Azure-ba](../../automation/migrate-oms-update-deployments.md) a [frissítéskezelés](../../automation/automation-update-management.md)változásairól további információt tartalmaz.
+- Új [munkaterületeket csak](#new-workspaces) a Azure Portal hozhat létre.
+- Az új riasztások kezelése [a Alert Management megoldást váltja](#changes-to-alerts)fel.
+- A [felhasználói hozzáférés kezelése](#user-access-and-role-migration) a Azure Portal az Azure szerepköralapú hozzáférés-vezérlés használatával történik.
+- A [Application Insights Connectorra már nincs szükség,](#application-insights-connector-and-solution) mert ugyanaz a funkció több munkaterület-lekérdezésen keresztül is engedélyezve van.
+- A [OMS Mobile alkalmazás](#oms-mobile-app) elavult. 
+- Az [NSG-megoldás cseréje](#azure-network-security-group-analytics) Traffic Analytics megoldáson keresztül elérhető továbbfejlesztett funkciókkal történik.
+- A System Center Operations Manager új kapcsolatainak Log Analytics a [frissített felügyeleti csomagokat](#system-center-operations-manager)kell megkövetelniük.
+- A [Update Management](../../automation/automation-update-management.md)változásairól további információt a [OMS-frissítés telepítése az Azure-](../../automation/migrate-oms-update-deployments.md) ban című témakörben talál.
 
 
-## <a name="what-should-i-do-now"></a>Most mit csináljak?
-Bár a legtöbb szolgáltatás továbbra is működni fog az áttelepítés végrehajtása nélkül, a következő feladatokat kell végrehajtania:
+## <a name="what-should-i-do-now"></a>Mit tegyek most?
+Habár a legtöbb funkció az áttelepítés végrehajtása nélkül is működni fog, a következő feladatokat kell végrehajtania:
 
-- Át kell [telepítenie a felhasználói engedélyeket](#user-access-and-role-migration) az Azure Portalra.
-- Az UPDATE Management megoldás áttérésével kapcsolatos részletekért tekintse meg az [OMS-frissítési központi telepítések áttelepítése az Azure-ba](../../automation/migrate-oms-update-deployments.md) című témakört.
+- A [felhasználói engedélyeket át kell telepítenie](#user-access-and-role-migration) a Azure Portalra.
+- A Update Management megoldás áttelepítésének részleteiért tekintse meg a [OMS-frissítés telepítése az Azure-ba](../../automation/migrate-oms-update-deployments.md) című témakört.
 
-Az Azure Portalra való áttéréssel kapcsolatos információkért tekintse meg az [OMS-portálról az Azure-portálra való áttéréssel](oms-portal-faq.md) kapcsolatos gyakori kérdéseket. 
+Tekintse át a [OMS Portálról való áttérés gyakori kérdéseit, hogy log Analytics felhasználók számára Azure Portal](oms-portal-faq.md) a Azure Portalre való áttéréssel kapcsolatos tudnivalókat. 
 
-## <a name="user-access-and-role-migration"></a>Felhasználói hozzáférés és szerepkör-áttelepítés
-Az Azure Portal hozzáférés-kezelése gazdagabb és hatékonyabb, mint az OMS-portál hozzáférés-kezelése. [Az Azure Monitor naplók munkaterület tervezése a](design-logs-deployment.md) Log Analytics hozzáférés-kezelés részleteiért olvassa el.
+## <a name="user-access-and-role-migration"></a>Felhasználói hozzáférés és szerepkör áttelepítése
+A Azure Portal hozzáférés-vezérlés gazdagabb és hatékonyabb, mint a OMS-portálon a hozzáférés-kezelés. A Log Analytics hozzáférés-kezelésének részleteiért lásd: [a Azure monitor naplók munkaterületének megtervezése](design-logs-deployment.md) .
 
 > [!NOTE]
-> A cikk korábbi verziói azt állították, hogy az engedélyek automatikusan konvertálódnak az OMS-portálról az Azure Portalra. Ez az automatikus átalakítás már nem tervezett, és a konverziót saját kezűleg kell elvégeznie.
+> A cikk korábbi verziói azt nyilatkozták, hogy az engedélyek automatikusan át lesznek alakítva a OMS Portálról a Azure Portalra. Ez az automatikus átalakítás már nem tervezett, és magát a konverziót kell végrehajtania.
 
-Előfordulhat, hogy már rendelkezik megfelelő hozzáféréssel az Azure Portalon, amely esetben nem kell módosításokat végrehajtania. Van néhány olyan eset, amikor előfordulhat, hogy nem rendelkezik megfelelő hozzáféréssel, amely esetben a rendszergazdának engedélyeket kell rendelnie Önhöz.
+Lehetséges, hogy már rendelkezik megfelelő hozzáféréssel a Azure Portalban, amely esetben nem szükséges módosítania. Vannak olyan esetek, amikor Ön nem rendelkezik megfelelő hozzáféréssel, ebben az esetben a rendszergazdának Önnek kell engedélyeket rendelnie.
 
-- Olvasási felhasználói engedélyekkel rendelkezik az OMS-portálon, de az Azure Portalon nincs engedélye. 
-- Közreműködői engedélyekkel rendelkezik az OMS-portálon, de csak az Azure Portalon lévő Reader-hozzáférés.
+- ReadOnly felhasználói engedélyekkel rendelkezik a OMS-portálon, de a Azure Portal nem rendelkezik engedélyekkel. 
+- Közreműködői engedélyekkel rendelkezik a OMS-portálon, de csak az olvasó fér hozzá a Azure Portal.
  
-Mindkét esetben a rendszergazdának manuálisan kell hozzárendelnie a megfelelő szerepkört az alábbi táblázatból. Azt javasoljuk, hogy ezt a szerepkört erőforráscsoport vagy előfizetési szinten rendelje hozzá.  Mindkét esetben hamarosan több előíró jellegű iránymutatást adnak.
+Mindkét esetben a rendszergazdának manuálisan kell hozzárendelnie a megfelelő szerepkört a következő táblázatból. Azt javasoljuk, hogy ezt a szerepkört az erőforráscsoport vagy az előfizetés szintjén rendelje hozzá.  Ezekben az esetekben a rendszer hamarosan részletesebb útmutatást nyújt.
 
-| OMS portál engedély | Azure-szerepkör |
+| OMS-portál engedélye | Azure-szerepkör |
 |:---|:---|
 | ReadOnly | Log Analytics olvasó |
 | Közreműködő | Log Analytics közreműködő |
@@ -64,45 +64,45 @@ Mindkét esetben a rendszergazdának manuálisan kell hozzárendelnie a megfelel
  
 
 ## <a name="new-workspaces"></a>Új munkaterületek
-Az OMS-portálhasználatával már nem hozhat létre új munkaterületeket. Kövesse a [Log Analytics-munkaterület létrehozása az Azure Portalon](../learn/quick-create-workspace.md) egy új munkaterületet az Azure Portalon című útmutatójában.
+Már nem tud új munkaterületeket létrehozni a OMS-portál használatával. A Azure Portal új munkaterületének létrehozásához kövesse az [log Analytics munkaterületének létrehozása a Azure Portalban](../learn/quick-create-workspace.md) című témakör útmutatását.
 
-## <a name="changes-to-alerts"></a>A riasztások módosításai
+## <a name="changes-to-alerts"></a>Riasztások módosításai
 
-### <a name="alert-extension"></a>Riasztásbővítmény  
+### <a name="alert-extension"></a>Riasztási bővítmény  
 
-Riasztások [bővültek az Azure Portalon](alerts-extend.md) meglévő riasztások továbbra is megjelennek az OMS-portálon, de csak az Azure Portalon kezelheti őket. Ha a riasztásokat programozott módon éri el a Log Analytics Riasztási REST API vagy a Log Analytics riasztási erőforrássablon használatával, az API-hívásokban, az Azure Resource Manager-sablonokban és a PowerShell-parancsokban műveletek helyett műveletcsoportokat kell használnia.
+A riasztások [kiterjeszthetők a Azure Portal](alerts-extend.md) meglévő riasztásokra továbbra is MEGJELENNEK a OMS-portálon, de csak Azure Portal kezelhetik. Ha programozott módon fér hozzá a riasztásokhoz a Log Analytics riasztási REST API vagy Log Analytics a riasztási erőforrás-sablon használatával, az API-hívások, a Azure Resource Manager sablonok és a PowerShell-parancsok műveletei helyett műveleti csoportokat kell használnia.
 
-### <a name="alert-management-solution"></a>Riasztáskezelési megoldás
-Egy korábbi közleményhez képest a [riasztáskezelési megoldás](alert-management-solution.md) továbbra is elérhető és teljes mértékben támogatott lesz az Azure Portalon. Folytathatja a megoldás telepítését az Azure Marketplace-ről.
+### <a name="alert-management-solution"></a>Riasztások kezelése megoldás
+Egy korábbi bejelentés változása esetén a [riasztások kezelésére szolgáló megoldás](alert-management-solution.md) továbbra is elérhető lesz, és a Azure Portal teljes mértékben támogatja. Továbbra is telepítheti a megoldást az Azure Marketplace-ről.
 
-Bár a riasztáskezelési megoldás továbbra is elérhető, javasoljuk, hogy az [Azure Monitor egységes riasztási felületét](alerts-overview.md) használja az Azure-ban az összes riasztás megjelenítéséhez és kezeléséhez. Ez az új felület natívmódon összesíti az Azure-on belül több forrásból származó riasztásokat, beleértve a Log Analytics naplóriasztásait is. Ha az Azure Monitor egységes ített riasztási felületét használja, akkor a riasztáskezelési megoldás csak a System Center Operation Manager től az Azure-ba érkező riasztások integrálásához szükséges. Az Azure Monitor egységes riasztási felületén láthatja a riasztások disztribúcióit, kihasználhatja a kapcsolódó riasztások intelligens csoportokon keresztüli automatikus csoportosítását, és több előfizetésben is megtekintheti a riasztásokat, miközben gazdag szűrőket alkalmaz. A riasztáskezelés jövőbeli fejlesztései elsősorban ebből az új felületből lesznek elérhetők. 
+Habár a riasztások kezelésére szolgáló megoldás továbbra is elérhető, javasoljuk, hogy [Azure monitor egyesített riasztási felületét](alerts-overview.md) használja az összes Azure-beli riasztás megjelenítéséhez és kezeléséhez. Ez az új élmény natív módon összesíti a több forrásból származó riasztásokat az Azure-ban, beleértve a Log Analytics érkező riasztásokat. Ha Azure Monitor egyesített riasztási felületét használja, a riasztások kezelésére szolgáló megoldás csak a riasztások a System Center Operation Managerből az Azure-ba való integrálásának engedélyezéséhez szükséges. Azure Monitor egyesített riasztási felületén láthatja a riasztások eloszlását, kihasználhatja a kapcsolódó riasztások automatizált csoportosítását intelligens csoportok használatával, és több előfizetésben is megtekintheti a riasztásokat, miközben gazdag szűrőket alkalmaz. A riasztások kezelésének jövőbeli fejlődése elsődlegesen az új felhasználói felületről lesz elérhető. 
 
-A riasztáskezelési megoldás (riasztási típusú rekordok) által gyűjtött adatok továbbra is a Log Analytics,amíg a megoldás telepítve van a munkaterületre. 
+A riasztás-felügyeleti megoldás által gyűjtött adatok (a riasztási típussal rendelkező rekordok) továbbra is Log Analytics, amíg a megoldás telepítve van a munkaterületre. 
 
-## <a name="oms-mobile-app"></a>OMS mobilalkalmazás
-Az OMS mobilalkalmazás az OMS portállal együtt napnyugta lesz. Az OMS mobilalkalmazás helyett az informatikai infrastruktúrával, irányítópultokkal és mentett lekérdezésekkel kapcsolatos információk eléréséhez az Azure Portalt közvetlenül a mobileszköz böngészőjéből érheti el. A riasztások lehívásához be kell állítania az [Azure műveletcsoportokat,](action-groups.md) hogy SMS vagy hanghívás formájában értesítéseket kapjanak
+## <a name="oms-mobile-app"></a>OMS Mobile-alkalmazás
+A OMS Mobile alkalmazás a OMS-portálral együtt lesz kivezetve. A OMS Mobile App helyett az informatikai infrastruktúrával, az irányítópultokkal és a mentett lekérdezésekkel kapcsolatos információkhoz férhet hozzá a Azure Portal közvetlenül a mobileszközön lévő böngészőjéből. Riasztások beszerzéséhez konfigurálnia kell az [Azure-műveleti csoportokat](action-groups.md) , hogy SMS vagy hanghívás formájában fogadják az értesítéseket
 
-## <a name="application-insights-connector-and-solution"></a>Application Insights-összekötő és megoldás
-[Az Application Insights-összekötő](app-insights-connector.md) lehetővé teszi az Application Insights-adatok befoglalását a Log Analytics-munkaterületbe. Erre az adatmásolásra azért volt szükség, hogy lehetővé váljon az infrastruktúra és az alkalmazásadatok láthatósága. Az Application Insights 2019 márciusában nyújtott kiterjesztett adatmegőrzési támogatással, valamint az erőforrások közötti lekérdezések végrehajtásával, valamint több Azure Monitor Application [Insights-erőforrás](../log-query/cross-workspace-query.md) [megtekintésének](../log-query/unify-app-resource-data.md)képességével nincs szükség az Application Insights-erőforrásokból származó adatok duplikálására és a Log Analytics-nek való elküldésre. Továbbá az összekötő elküldi az alkalmazások tulajdonságainak egy részét a Log Analytics, míg az erőforrások közötti lekérdezések nagyobb rugalmasságot biztosít.  
+## <a name="application-insights-connector-and-solution"></a>Application Insights Connector és megoldás
+A [Application Insights Connector](app-insights-connector.md) lehetővé teszi Application Insights-adatLog Analytics munkaterületre való felvételét. Ez az adatismétlődés az infrastruktúra és az alkalmazásadatok láthatóságának engedélyezéséhez szükséges. A 2019 márciusában kibővített adatmegőrzési támogatással és az [erőforrások több Azure Monitor Application Insights erőforrással](../log-query/unify-app-resource-data.md) [való ellátásának](../log-query/cross-workspace-query.md) lehetősége mellett nem szükséges duplikálni az Application Insights-erőforrások adatait, és nem kell elküldeni a log Analyticsba. Application Insights Emellett az összekötő az alkalmazások tulajdonságainak egy részhalmazát is elküldi Log Analyticsra, a több erőforrásra kiterjedő lekérdezések pedig fokozott rugalmasságot biztosítanak.  
 
-2019. március 30-án az Application Insights-összekötő elavult, és az OMS-portál e-hetetlenségével együtt elavult, és eltávolították az Azure Marketplace-ről. A meglévő kapcsolatok 2019. június 30-ig működnek. Az OMS-portál eprecációjával nincs mód a meglévő kapcsolatok konfigurálására és eltávolítására a portálról. Ezt a REST API-val fogjuk támogatni, amely 2019 januárjában lesz elérhető, és értesítést küldünk az [Azure-frissítésekre.](https://azure.microsoft.com/updates/) 
+Ennek megfelelően a Application Insights Connector elavult, és az Azure Marketplace-en lett eltávolítva, valamint a OMS-portál elavult a 2019. március 30-án. A meglévő kapcsolatok 2019 június 30-ig továbbra is működni fognak. A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. Ez a 2019 januárban elérhetővé válik, és REST API az [Azure Updates](https://azure.microsoft.com/updates/)szolgáltatásban értesítést fog kapni. 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure Network Security Group Analytics
-Az [Azure Network Security Group Analytics megoldás](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) helyébe a nemrég indított Traffic [Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) lép, amely betekintést nyújt a felhőhálózatokon végzett felhasználói és alkalmazástevékenységekbe. A Traffic Analytics segítségével ellenőrizheti a szervezet hálózati tevékenységét, biztonságossá teszi az alkalmazásokat és az adatokat, optimalizálhatja a számítási feladatok teljesítményét, és megfelelőséget biztosít. 
+A [Azure Network Security Group Analytics megoldást](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) a nemrég elindított [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) váltja fel, amely betekintést nyújt a felhasználói és alkalmazási tevékenységekre a felhőalapú hálózatokon. Traffic Analytics segítségével naplózhatja a szervezet hálózati tevékenységeit, biztonságossá teheti az alkalmazásokat és az adatok védelmét, optimalizálhatja a számítási feladatok teljesítményét és megfelelő marad. 
 
-Ez a megoldás elemzi az NSG flow naplókat, és betekintést nyújt a következőkbe.
+Ez a megoldás elemzi a NSG, és betekintést nyújt a következőkbe.
 
-- A forgalom az Azure és az internet, a nyilvános felhőrégiók, a vnetek és az alhálózatok között áramlik.
-- Alkalmazások és protokollok a hálózaton, anélkül, hogy a szippantás vagy dedikált flow collection készülékek.
-- Top talkers, beszédes alkalmazások, VM beszélgetések a felhőben, a közlekedési hotspotok.
-- A VNET-k közötti forgalom forrásai és célállomásai, a kritikus üzleti szolgáltatások és alkalmazások közötti kapcsolatok.
-- Biztonság, beleértve a rosszindulatú forgalmat, az internetre nyitott portokat, az internet-hozzáférést megkísérelő alkalmazásokat vagy virtuális gépeket.
-- Kapacitáskihasználtság, amely segít kiküszöbölni a túlkiépítés vagy az alulkihasználtság problémáit.
+- A forgalom az Azure és az Internet, a nyilvános felhő régiói, a virtuális hálózatok és az alhálózatok között zajlik.
+- A hálózaton lévő alkalmazások és protokollok anélkül, hogy a szippantás vagy a dedikált flow gyűjtemény berendezésekre van szükség.
+- A legfontosabb beszélők, a csevegő alkalmazások, a felhőben futó virtuális gépek, a forgalmi pontok.
+- A virtuális hálózatok közötti forgalom forrásai és célhelyei, a kritikus fontosságú üzleti szolgáltatások és alkalmazások közötti kapcsolatok közötti kapcsolat.
+- Biztonság, beleértve a rosszindulatú adatforgalmat, az internetre nyitott portokat, az alkalmazásokat vagy a virtuális gépeket, amelyek internetes hozzáférést próbálnak meg.
+- Kapacitás kihasználtsága, amely segít a kiépítési vagy kihasználatlan problémák elhárításában.
 
-Továbbra is támaszkodhat a diagnosztikai beállításokra, hogy NSG-naplókat küldjön a Log Analytics szolgáltatásba, így a meglévő mentett keresések, riasztások és irányítópultok továbbra is működni fognak. Azok az ügyfelek, akik már telepítették a megoldást, további értesítésig továbbra is használhatják azt. Szeptember 5-től a Network Security Group Analytics megoldás törlődik a piactérről, és a közösségen keresztül elérhetővé válik [Azure QuickStart sablonként.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)
+Továbbra is használhatja a diagnosztikai beállításokat, hogy NSG-naplókat küldjön, hogy Log Analytics, így a meglévő mentett keresések, riasztások, irányítópultok továbbra is működni fognak. Azok a felhasználók, akik már telepítették a megoldást, továbbra is használhatják a további értesítésig. Szeptember 5-ig a hálózati biztonsági csoport elemzési megoldását a rendszer eltávolítja a piactérről, és a Közösségen keresztül elérhetővé teszi az Azure-beli [Gyorsindítás sablonként](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Ha [összekapcsolta az Operations Manager felügyeleti csoportját a Log Analytics szolgáltatással,](om-agents.md)akkor továbbra is módosítások nélkül fog működni. Új kapcsolatok esetén azonban az Operations Management Suite konfigurálásához kövesse a [Microsoft System Center Operations Manager Felügyeleti csomag utasításait.](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)
+Ha [log Analyticshoz csatlakoztatta a Operations Manager felügyeleti csoportot](om-agents.md), akkor továbbra is a módosítások nélkül fog működni. Az új kapcsolatok esetében azonban az [Operations Management Suite konfigurálásához követnie kell a Microsoft System Center Operations Manager felügyeleti csomag](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)útmutatását.
 
 ## <a name="next-steps"></a>További lépések
-- [Az OMS-portálról az Azure-portálra a Log Analytics-felhasználók számára való áttéréssel kapcsolatos gyakori kérdések](oms-portal-faq.md) című témakörben útmutatást talál az OMS-portálról az Azure Portalra való áttéréshez.
+- Tekintse át a [OMS Portálról való áttérés gyakori kérdéseit, hogy Azure Portal log Analytics felhasználók](oms-portal-faq.md) számára a OMS Portálról a Azure Portalre való áthelyezéshez.

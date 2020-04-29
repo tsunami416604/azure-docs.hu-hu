@@ -1,5 +1,5 @@
 ---
-title: Az Azure Monitor nézet tervezője a munkafüzetek csempekonverzióihoz
+title: Azure Monitor a Designer és a munkafüzetek mozaik konverziójának megtekintése
 description: ''
 author: austonli
 ms.author: aul
@@ -7,29 +7,29 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658626"
 ---
-# <a name="azure-monitor-view-designer-tile-conversions"></a>Az Azure Monitor nézet tervezői csempekonverziói
-[A View designer](view-designer.md) az Azure Monitor egyik szolgáltatása, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti az adatokat a Log Analytics-munkaterületen, diagramokkal, listákkal és ütemtervekkel. Ezeket fokozatosan megszüntetik, és olyan munkafüzetekre cserélik, amelyek további funkciókat biztosítanak. Ez a cikk a különböző csempék munkafüzetté alakításának részleteit tartalmazza.
+# <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor View Designer csempe konverziók
+A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk a különböző csempék munkafüzetekbe konvertálásának részleteit ismerteti.
 
-## <a name="donut--list-tile"></a>& fánklista csempéje
+## <a name="donut--list-tile"></a>Fánk & lista csempe
 
-![Fánk lista](media/view-designer-conversion-tiles/donut-list.png)
+![Fánk-lista](media/view-designer-conversion-tiles/donut-list.png)
 
-A fánk & listacsempének újbóli létrehozása a munkafüzetekben két külön vizualizációt foglal magában. A fánk rész két lehetőség van.
-Mindkét kezdetnél válassza **a Lekérdezés hozzáadása** lehetőséget, és illessze be az eredeti lekérdezést a nézettervezőből a cellába.
+A fánk & listájának a munkafüzetekbe való újbóli létrehozása két különálló vizualizációt is magában foglal. A fánk résznél két lehetőség közül választhat.
+Mindkét kezdéshez válassza a **lekérdezés hozzáadása** lehetőséget, majd illessze be az eredeti lekérdezést a tervezőből a cellába.
 
-**1. lehetőség:** Válassza a **Kördiagram** lehetőséget a ![ **Képi megjelenítése konvizializációs** menüből](media/view-designer-conversion-tiles/pie-chart.png)
+**1. lehetőség:** **Kördiagram** kiválasztása a **vizualizáció** legördülő menüből: ![tortadiagram vizualizációs menüjéből](media/view-designer-conversion-tiles/pie-chart.png)
 
-**2. lehetőség:** Válassza a **Megjelenítés** legördülő menü Lekérdezés `| render piechart` **beállítása lehetőséget,** és adja hozzá a lekérdezéshez:
+**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő `| render piechart` menüből, és adja hozzá a lekérdezéshez:
 
- ![Képi megjelenítés menü](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Vizualizáció menü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Példa**
+**Például**
 
 Eredeti lekérdezés
 ```KQL
@@ -46,16 +46,16 @@ search *
 | render piechart
 ```
 
-A lista létrehozásáról és az értékgörbék engedélyezéséről a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikkben olvashat.
+A lista létrehozásához és az értékgörbék engedélyezéséhez tekintse meg a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikket.
 
-Az alábbi példa bemutatja, hogyan értelmezhető újra a fánk & listacsempét a munkafüzetekben:
+A következő példa azt szemlélteti, hogy a fánk & a lista csempe hogyan értelmezhető újra a munkafüzetekben:
 
-![Fánklista munkafüzetek](media/view-designer-conversion-tiles/donut-workbooks.png)
+![Fánk-lista-munkafüzetek](media/view-designer-conversion-tiles/donut-workbooks.png)
 
-## <a name="line-chart--list-tile"></a>Vonaldiagram & listacsempével
-![Vonaldiagram-lista](media/view-designer-conversion-tiles/line-list.png) 
+## <a name="line-chart--list-tile"></a>Vonal diagram & lista csempe
+![Vonalas diagram listája](media/view-designer-conversion-tiles/line-list.png) 
 
-A vonaldiagram rész újbóli létrehozásához frissítse a lekérdezést az alábbiak szerint:
+Ha újra létre szeretné hozni a vonalas diagramot, frissítse a lekérdezést a következőképpen:
 
 Eredeti lekérdezés
 ```KQL
@@ -69,17 +69,17 @@ search *
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type
 ```
 
-A vonaldiagram megjelenítésének két lehetősége van
+A vonalas diagram megjelenítéséhez két lehetőség közül választhat.
 
-**1. lehetőség:** Válassza a **Vonaldiagram lehetőséget** a **Vizualizációs** legördülő listából:
+**1. lehetőség:** Válassza ki a **vonal diagramot** a **vizualizáció** legördülő menüből:
  
- ![Vonaldiagram menü](media/view-designer-conversion-tiles/line-visualization.png)
+ ![Vonalas diagram menü](media/view-designer-conversion-tiles/line-visualization.png)
 
-**2. lehetőség:** Válassza a **Megjelenítés** legördülő menü Lekérdezés `| render linechart` **beállítása lehetőséget,** és adja hozzá a lekérdezéshez:
+**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő `| render linechart` menüből, és adja hozzá a lekérdezéshez:
 
- ![Képi megjelenítés menü](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Vizualizáció menü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Példa**
+**Például**
 
 ```KQL
 search * 
@@ -87,17 +87,17 @@ search *
 | render linechart_
 ```
 
-A lista létrehozásáról és az értékgörbék engedélyezéséről a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikkben olvashat.
+A lista létrehozásához és az értékgörbék engedélyezéséhez tekintse meg a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikket.
 
-Az alábbi példa bemutatja, hogyan értelmezhető újra a sordiagram & a listacsempén:
+A következő példa azt szemlélteti, hogyan lehet újraértelmezni a vonalas diagram & a munkafüzetekben:
 
-![Sordiagramlista-munkafüzetek](media/view-designer-conversion-tiles/line-workbooks.png)
+![Diagramok listája – munkafüzetek](media/view-designer-conversion-tiles/line-workbooks.png)
 
-## <a name="number--list-tile"></a>Szám & lista csempéje
+## <a name="number--list-tile"></a>Szám & lista csempe
 
- ![Mozaiklista](media/view-designer-conversion-tiles/tile-list-example.png)
+ ![Csempe listája](media/view-designer-conversion-tiles/tile-list-example.png)
 
-A számcsempe esetében frissítse a lekérdezést a következőképpen:
+A number (szám) csempén a következőképpen frissítheti a lekérdezést:
 
 Eredeti lekérdezés
 ```KQL
@@ -112,25 +112,25 @@ search *
 | summarize Count = count()
 ```
 
-Módosítsa a Képi megjelenítése legördülő menüt **Mozaikra,** majd válassza **a Mozaikbeállítások lehetőséget.**
- ![Mozaikképi megjelenítés](media/view-designer-conversion-tiles/tile-visualization.png)
+Módosítsa a vizualizáció legördülő menüt **csempére** , majd válassza a **csempe beállításai**lehetőséget.
+ ![Csempe vizualizációja](media/view-designer-conversion-tiles/tile-visualization.png)
 
-Hagyja üresen a **Cím** szakaszt, és válassza **a Balra**lehetőséget. Módosítsa a **Felhasználás oszlop értékét:** **megszámlálás**, **oszlopmegjelenítő** **pedig Nagy szám**értékre:
+Hagyja üresen a **cím** szakaszt, és válassza a **bal oldali**lehetőséget. Módosítsa a **használat oszlop értékét:** a **darabszámra**és az **oszlopok megjelenítéséhez** a **Big Number**értékre:
 
 ![Csempe beállításai](media/view-designer-conversion-tiles/tile-settings.png)
 
  
-A lista létrehozásáról és az értékgörbék engedélyezéséről a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikkben olvashat.
+A lista létrehozásához és az értékgörbék engedélyezéséhez tekintse meg a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikket.
 
-Az alábbi példa bemutatja, hogyan értelmezhető újra a lista& a munkafüzetekben:
+A következő példa azt mutatja be, hogy a rendszer hogyan értelmezi a listát tartalmazó csempe & számát a munkafüzetekben:
 
-![Számlista munkafüzetek](media/view-designer-conversion-tiles/number-workbooks.png)
+![Számok listája – munkafüzetek](media/view-designer-conversion-tiles/number-workbooks.png)
 
 ## <a name="timeline--list"></a>Ütemterv és lista
 
- ![Idősor lista](media/view-designer-conversion-tiles/time-list.png)
+ ![Idősor-lista](media/view-designer-conversion-tiles/time-list.png)
 
-Az ütemtervhez frissítse a lekérdezést az alábbiak szerint:
+Az idősoron a következőképpen frissítheti a lekérdezést:
 
 Eredeti lekérdezés
 ```KQL
@@ -144,21 +144,21 @@ search *
 | summarize Count = count() by Computer, bin(TimeGenerated,{TimeRange:grain})
 ```
 
-A lekérdezéssávdiagramként való megjelenítésének két lehetősége van:
+A lekérdezés sávdiagramként való megjelenítésének két lehetősége van:
 
-**1. lehetőség:** **A Sávdiagram** kiválasztása a **Képi megjelenítése** legördülő menüből: ![Sávdiagram-megjelenítés](media/view-designer-conversion-tiles/bar-visualization.png)
+**1. lehetőség:** **Sávdiagram** kiválasztása a **vizualizáció** legördülő menüjéből ![: Barchart vizualizáció](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**2. lehetőség:** Válassza a **Megjelenítés** legördülő menü Lekérdezés `| render barchart` **beállítása lehetőséget,** és adja hozzá a lekérdezéshez:
+**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő `| render barchart` menüből, és adja hozzá a lekérdezéshez:
 
- ![Képi megjelenítés menü](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Vizualizáció menü](media/view-designer-conversion-tiles/set-by-query.png)
 
  
-A lista létrehozásáról és az értékgörbék engedélyezéséről a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikkben olvashat.
+A lista létrehozásához és az értékgörbék engedélyezéséhez tekintse meg a [gyakori feladatokról](view-designer-conversion-tasks.md)szóló cikket.
 
-Az alábbi példa bemutatja, hogyan értelmezhető újra az idővonal & a listacsempét a munkafüzetekben:
+Az alábbi példa azt szemlélteti, hogyan lehet újraértelmezni a munkafüzetekben az idősor & lista csempéjét:
 
-![Ütemtervlista-munkafüzetek](media/view-designer-conversion-tiles/time-workbooks.png)
+![Idősor-lista-munkafüzetek](media/view-designer-conversion-tiles/time-workbooks.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [A nézettervező és a munkafüzetek áttűnésének áttekintése](view-designer-conversion-overview.md)
+- [A Tervező nézetének áttekintése a munkafüzetek átváltásához](view-designer-conversion-overview.md)

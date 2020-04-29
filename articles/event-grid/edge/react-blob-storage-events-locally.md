@@ -1,6 +1,6 @@
 ---
-title: Reagálás a Blob Storage modul eseményeire – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Reagálás a Blob Storage modul eseményeire
+title: Reagálás Blob Storage modul eseményeire – Azure Event Grid IoT Edge | Microsoft Docs
+description: Reagálás Blob Storage modul eseményeire
 author: arduppal
 manager: brymat
 ms.author: arduppal
@@ -10,54 +10,54 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77086603"
 ---
-# <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: Reagálás a Blob Storage-eseményekre az IoT Edge-en (előzetes verzió)
-Ez a cikk bemutatja, hogyan telepítheti az Azure Blob Storage-t az IoT-modulon, amely eseményrács-közzétevőként működne a Blob létrehozása és a Blob-törlés eseményrácsra történő küldéséhez.  
+# <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az Azure Blob Storaget a IoT modulban, amely Event Grid közzétevőként fog működni a Blobok létrehozásával és a Blobok törlésével kapcsolatos események Event Grid.  
 
-Az Azure Blob Storage IoT Edge-en című témakörben olvashat az [IoT Edge-en](../../iot-edge/how-to-store-data-blob.md) és annak funkcióiról.
+A IoT Edge Azure Blob Storageának áttekintését lásd: [azure blob Storage on IoT Edge](../../iot-edge/how-to-store-data-blob.md) és annak szolgáltatásai.
 
 > [!WARNING]
-> Az Azure Blob Storage az IoT Edge-en az Event Griddel való integráció előzetes verzióban érhető el
+> Az Azure Blob Storage on IoT Edge Integration with Event Grid előzetes verzióban érhető el
 
-Az oktatóanyag befejezéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* **Azure-előfizetés** – Hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) ha még nem rendelkezik ilyen. 
-* **Azure IoT Hub és IoT Edge-eszköz** – Kövesse a [linuxos](../../iot-edge/quickstart-linux.md) vagy [Windows-eszközökhöz](../../iot-edge/quickstart.md) való rövid útmutató lépéseit, ha még nem rendelkezik ilyentel.
+* **Azure-előfizetés** – hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) , ha még nem rendelkezik ilyennel. 
+* **Azure IoT hub és IoT Edge eszköz** – kövesse a [Linux](../../iot-edge/quickstart-linux.md) vagy [Windows rendszerű eszközök](../../iot-edge/quickstart.md) gyors üzembe helyezésének lépéseit, ha még nem rendelkezik ilyennel.
 
-## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul telepítése
+## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul üzembe helyezése
 
-A modulok at ioT Edge-eszközökre többféleképpen is üzembe helyezheti, és mindegyik az Azure Event Grid ben működik az IoT Edge-en. Ez a cikk ismerteti az Event Grid az Azure Portalon az IoT Edge üzembe helyezésének lépéseit.
+A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindegyik a IoT Edge Azure Event Grid. Ez a cikk azokat a lépéseket ismerteti, amelyekkel telepítheti a Event Gridt a Azure Portal IoT Edge.
 
 >[!NOTE]
-> Ebben az oktatóanyagban az Event Grid modult adatmegőrzés nélkül telepíti. Ez azt jelenti, hogy az ebben az oktatóanyagban létrehozott témakörök és előfizetések törlődnek a modul újratelepítésekor. Az adatmegőrzés beállításáról a következő cikkekben talál további információt: [Állapot megőrzése Linux alatt](persist-state-linux.md) vagy [Perzisztencia állapot a Windows rendszerben.](persist-state-windows.md) Éles számítási feladatok esetén azt javasoljuk, hogy az Event Grid modult adatmegőrzéssel telepítse.
+> Ebben az oktatóanyagban a Event Grid-modult az adatmegőrzés nélkül fogja telepíteni. Ez azt jelenti, hogy a jelen oktatóanyagban létrehozott összes témakört és előfizetést a modul újbóli üzembe helyezésekor törli a rendszer. Az adatmegőrzés beállításával kapcsolatos további információkért tekintse meg a következő cikkeket: állapot megtartása [Linuxon](persist-state-linux.md) vagy [az állapot megőrzése a Windowsban](persist-state-windows.md). Éles számítási feladatokhoz javasoljuk, hogy az Event Grid modult az adatmegőrzéssel telepítse.
 
 
-### <a name="select-your-iot-edge-device"></a>Válassza ki az IoT Edge-eszközt
+### <a name="select-your-iot-edge-device"></a>IoT Edge eszköz kiválasztása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com)
-1. Keresse meg az IoT Hubot.
-1. Válassza az **IoT Edge elemet** az **Automatikus eszközkezelés** szakasz menüjéből. 
-1. Kattintson a céleszköz azonosítójára az eszközök listájából
-1. Válassza **a Modulok beállítása**lehetőséget. Tartsa nyitva az oldalt. A következő szakaszban ismertetett lépésekkel folytatja.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Navigáljon a IoT Hub.
+1. Válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** szakasz menüjében. 
+1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról
+1. Válassza a **modulok beállítása**lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
 
-### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzékfájl konfigurálása
+### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
-A központi telepítési jegyzékfájl egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan adatfolyamok a modulok között, és a modul twins kívánt tulajdonságait. Az Azure Portalon van egy varázsló, amely végigvezeti a központi telepítési jegyzékfájl létrehozásán, ahelyett, hogy a JSON-dokumentum manuálislétrehozása.  Három lépésből áll: **Modulok hozzáadása**, **Útvonalak megadása**és A **telepítés áttekintése**.
+Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. A **Központi telepítési modulok csoportban** válassza **a Hozzáadás**
-1. A legördülő listában szereplő modulok típusai közül válassza az **IoT Edge Module**
-1. Adja meg a tároló nevét, lemezképét és tárolójának létrehozási beállításait:
+1. A **telepítési modulok** szakaszban válassza a **Hozzáadás** lehetőséget.
+1. A legördülő listában válassza ki a modulok típusait **IoT Edge modult**
+1. Adja meg a tároló nevét, képét, tároló-létrehozási beállításait:
 
    * **Név**: eventgridmodule
-   * **Kép URI**-`mcr.microsoft.com/azure-event-grid/iotedge:latest`
-   * **Tároló létrehozási beállításai:**
+   * **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Tároló-létrehozási beállítások**:
 
     ```json
         {
@@ -77,42 +77,42 @@ A központi telepítési jegyzékfájl egy JSON-dokumentum, amely leírja, hogy 
         }
     ```    
 
- 1. Kattintson a **Mentés gombra**
- 1. Folytassa a következő szakaszt az Azure Event Grid-előfizetői modul hozzáadásához, mielőtt együtt üzembe helyezne őket.
+ 1. Kattintson a **Mentés** gombra
+ 1. Folytassa a következő szakasszal, és vegye fel a Azure Event Grid előfizető modult, mielőtt együtt telepítené őket.
 
     >[!IMPORTANT]
-    > Ebben az oktatóanyagban megtudhatja, hogy az Event Grid modul mindkét HTTP/HTTPs-kérelem engedélyezéséhez engedélyezze az ügyfélhitelesítésletiltva. Éles számítási feladatok esetén azt javasoljuk, hogy csak https-kérelmeket és az ügyfelek hitelesítése engedélyezve rendelkező előfizetők engedélyezése. Az Event Grid modul biztonságos konfigurálásáról a [Biztonság és hitelesítés](security-authentication.md)című témakörben talál további információt.
+    > Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe a Event Grid modult a HTTP/HTTPs-kérések engedélyezéséhez, az ügyfél-hitelesítés le van tiltva. Éles számítási feladatokhoz javasoljuk, hogy csak HTTPs-kérelmeket és-előfizetőket engedélyezzen engedélyezett ügyfél-hitelesítéssel. A Event Grid modul biztonságos konfigurálásával kapcsolatos további információkért lásd: [Biztonság és hitelesítés](security-authentication.md).
     
 
-## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid-előfizető IoT Edge moduljának telepítése
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid előfizető IoT Edge modul üzembe helyezése
 
-Ez a szakasz bemutatja, hogyan telepíthet egy másik IoT-modult, amely eseménykezelőként működne, amelyhez események et lehet szállítani.
+Ebből a szakaszból megtudhatja, hogyan helyezhet üzembe egy másik IoT modult, amely az események kézbesítéséhez használható eseménykezelőként fog működni.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. A **Telepítési modulok csoportban** válassza a **Hozzáadás** újra lehetőséget. 
-1. A legördülő listában szereplő modulok típusai közül válassza az **IoT Edge Module**
-1. Adja meg a tároló nevét, lemezképét és tárolójának létrehozási beállításait:
+1. A **telepítési modulok** szakaszban válassza a **Hozzáadás** újra lehetőséget. 
+1. A legördülő listában válassza ki a modulok típusait **IoT Edge modult**
+1. Adja meg a tároló nevét, képét és tároló-létrehozási beállításait:
 
    * **Név**: előfizető
-   * **Kép URI**-`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
-   * **Tároló létrehozási beállításai:** Nincs
-1. Kattintson a **Mentés gombra**
-1. Folytassa a következő szakaszsal az Azure Blob Storage modul hozzáadásához
+   * **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Tároló-létrehozási beállítások**: nincs
+1. Kattintson a **Mentés** gombra
+1. Folytassa a következő szakasszal az Azure Blob Storage modul hozzáadásához
 
-## <a name="deploy-azure-blob-storage-module"></a>Az Azure Blob Storage modul telepítése
+## <a name="deploy-azure-blob-storage-module"></a>Az Azure Blob Storage modul üzembe helyezése
 
-Ez a szakasz bemutatja, hogyan telepítheti az Azure Blob Storage modult, amely egy Event Grid-közzétevőként működik, és közzétesz blobot, és törölt eseményeket.
+Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe az Azure Blob Storage modult, amely Event Grid közzétevőként és törölt eseményként fog működni.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. A **Központi telepítési modulok csoportban** válassza **a Hozzáadás**
-2. A legördülő listában szereplő modulok típusai közül válassza az **IoT Edge Module**
-3. Adja meg a tároló nevét, lemezképét és tárolójának létrehozási beállításait:
+1. A **telepítési modulok** szakaszban válassza a **Hozzáadás** lehetőséget.
+2. A legördülő listában válassza ki a modulok típusait **IoT Edge modult**
+3. Adja meg a tároló nevét, képét és tároló-létrehozási beállításait:
 
    * **Név**: azureblobstorageoniotedge
-   * **Kép URI**: mcr.microsoft.com/azure-blob-storage:latest
-   * **Tároló létrehozási beállításai:**
+   * **Rendszerkép URI-ja**: MCR.microsoft.com/Azure-Blob-Storage:Latest
+   * **Tároló-létrehozási beállítások**:
 
    ```json
        {
@@ -133,47 +133,47 @@ Ez a szakasz bemutatja, hogyan telepítheti az Azure Blob Storage modult, amely 
    ```
 
    > [!IMPORTANT]
-   > - A Blob Storage modul https és HTTP használatával is közzétehet eseményeket. 
-   > - Ha engedélyezte az EventGrid ügyfélalapú hitelesítését, frissítse a EVENTGRID_ENDPOINT értékét a https `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`engedélyezéséhez, például: .
-   > - Is adjon hozzá `AllowUnknownCertificateAuthority=true` egy másik környezeti változóak a fenti Json. Ha HTTPS-kapcsolaton keresztül beszél az EventGriddel, az **AllowUnknownCertificateAuthority** lehetővé teszi, hogy a tárolómodul megbízzon az önaláírt EventGrid-kiszolgálói tanúsítványokban.
+   > - Blob Storage modul a HTTPS és a HTTP protokoll használatával is közzétehet eseményeket. 
+   > - Ha engedélyezte a EventGrid-hez készült ügyfél-alapú hitelesítést, frissítse a EVENTGRID_ENDPOINT értékét a https engedélyezéséhez, például: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`.
+   > - Egy másik környezeti változót `AllowUnknownCertificateAuthority=true` is hozzáadhat a fenti JSON-hoz. Ha HTTPS-kapcsolaton keresztül beszél a EventGrid, a **AllowUnknownCertificateAuthority** lehetővé teszi, hogy a Storage modul megbízzon az önaláírt EventGrid-kiszolgálói tanúsítványokban.
 
-4. Frissítse a másolt JSON-t a következő információkkal:
+4. Frissítse a vágólapra másolt JSON-t a következő információkkal:
 
-   - Cserélje `<your storage account name>` le egy nevet, hogy emlékszel. A fióknevek nek 3 és 24 karakter között kell lenniük, kisbetűkkel és számokkal. Nincsenek szóközök.
+   - Cserélje `<your storage account name>` le a nevet, és jegyezze fel. A fiókok nevének 3 – 24 karakter hosszúnak kell lennie, kisbetűkkel és számokkal. Nincsenek szóközök.
 
-   - Cserélje `<your storage account key>` le egy 64 bájtos alap64 kulcsra. Hozhat létre egy kulcsot eszközökkel, mint [generateplus](https://generate.plus/en/base64?gp_base64_base[length]=64). Ezeket a hitelesítő adatokat fogja használni a blobstorage eléréséhez más modulokból.
+   - Cserélje `<your storage account key>` le egy 64 bájtos Base64-kulccsal. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
 
-   - Cserélje `<event grid module name>` le az Event Grid modul nevére.
-   - Cserélje `<storage mount>` ki a tároló operációs rendszerének megfelelően.
-     - Linux-tárolók esetén a **my-volume:/blobroot**
-     - Windows-tárolók esetén saját**kötet:C:/BlobRoot**
+   - Cserélje `<event grid module name>` le a nevet a Event Grid modul nevére.
+   - Cserélje `<storage mount>` le at a tároló operációs rendszerének megfelelően.
+     - Linux-tárolók esetén **a saját kötet:/blobroot**
+     - Windows-tárolók esetén**a saját kötet: C:/BlobRoot**
 
-5. Kattintson a **Mentés gombra**
-6. Kattintson a **Tovább** gombra az útvonalak szakasz folytatásához
+5. Kattintson a **Mentés** gombra
+6. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
     > [!NOTE]
-    > Ha egy Azure virtuális gép a peremhálózati eszköz, adjon hozzá egy bejövő port szabály, amely lehetővé teszi a bejövő forgalmat a gazdagép portok az ebben az oktatóanyagban használt: 4438, 5888, 8080 és 11002. A szabály hozzáadásáról a [Portok megnyitása virtuális géphez](../../virtual-machines/windows/nsg-quickstart-portal.md)című témakörben talál útmutatást.
+    > Ha Azure-beli virtuális gépet használ peremhálózati eszközként, vegyen fel egy bejövő portszabály, amely engedélyezi a bejövő forgalmat az oktatóanyagban használt gazdagép-portokon: 4438, 5888, 8080 és 11002. A szabály hozzáadásával kapcsolatos útmutatásért lásd: [portok megnyitása virtuális géphez](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
-### <a name="setup-routes"></a>Útvonalak beállítása
+### <a name="setup-routes"></a>Telepítési útvonalak
 
-Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményezési szakasz folytatásához válassza a **Tovább** gombot.
+Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
 
-### <a name="review-deployment"></a>Telepítés áttekintése
+### <a name="review-deployment"></a>Központi telepítés áttekintése
 
-1. A véleményezési szakasz a JSON telepítési jegyzékfájlját jeleníti meg, amely az előző szakaszban megadott beállítások alapján jött létre. Győződjön meg arról, hogy a következő négy modul jelenik meg: **$edgeAgent**, **$edgeHub**, **eventgridmodule**, **előfizető** és **azureblobstorageoniotedge,** hogy minden üzembe helyezett.
-2. Tekintse át a központi telepítési adatokat, majd válassza a **Küldés lehetőséget.**
+1. A felülvizsgálati szakasz megjeleníti a JSON-telepítési jegyzékfájlt, amelyet az előző szakaszban megadott beállítások alapján hoztak létre. Győződjön meg arról, hogy a következő négy modul jelenik meg: **$edgeAgent**, **$edgeHub**, **eventgridmodule**, **előfizető** és **azureblobstorageoniotedge** , amelyet az összes üzembe helyezett.
+2. Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés**lehetőséget.
 
-## <a name="verify-your-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-your-deployment"></a>Az üzemelő példány ellenőrzése
 
-1. Miután elküldte a központi telepítést, visszatér az IoT-központ IoT Peremhálózati lapjára.
-2. Válassza ki az **IoT Edge-eszközt,** amelyet a központi telepítéssel célzott meg a részletek megnyitásához.
-3. Az eszköz részleteiben ellenőrizze, hogy az eventgridmodule, az előfizető és az azureblobstorageoniotedge modulok a **központi telepítésben megadott** és **az eszköz által jelentett**ként vannak-e felsorolva.
+1. Miután elküldte az üzembe helyezést, térjen vissza az IoT hub IoT Edge lapjára.
+2. Válassza ki azt a **IoT Edge eszközt** , amelyet a központi telepítéshez céloz, hogy megnyissa a részleteit.
+3. Az eszköz részletei között ellenőrizze, hogy a eventgridmodule, az előfizetői és a azureblobstorageoniotedge modulok szerepelnek-e a **telepítésben** és az **eszköz által jelentett**módon.
 
-   Eltarthat néhány percig, amíg a modul elindul az eszközön, és majd jelenteni kell az IoT Hubnak. Frissítse a lapot a frissített állapot megtekintéséhez.
+   Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 
-## <a name="publish-blobcreated-and-blobdeleted-events"></a>BlobCreated és BlobDeleted események közzététele
+## <a name="publish-blobcreated-and-blobdeleted-events"></a>BlobCreated-és BlobDeleted-események közzététele
 
-1. Ez a modul automatikusan létrehozza a **témakör MicrosoftStorage**. Annak ellenőrzése, hogy létezik-e
+1. Ez a modul automatikusan létrehozza a témakör **MicrosoftStorage**. Annak ellenőrzése, hogy létezik-e
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview
     ```
@@ -195,11 +195,11 @@ Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményez
     ```
 
     > [!IMPORTANT]
-    > - A HTTPS-folyamat, ha az ügyfél-hitelesítés sas-kulccsal keresztül engedélyezve van, majd a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a göndör kérés lesz:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
-    > - A HTTPS-folyamat esetében, ha az ügyfélhitelesítés tanúsítványon keresztül engedélyezve van, a curl kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
-2. Az előfizetők regisztrálhatnak a témában közzétett eseményekre. Ahhoz, hogy bármilyen eseményt megkapjon, létre **MicrosoftStorage** kell hoznia egy Event Grid-előfizetést a MicrosoftStorage-témakörhöz.
-    1. Hozzon létre blobsubscription.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [AZ API dokumentációját](api.md)
+2. Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, létre kell hoznia egy Event Grid-előfizetést a **MicrosoftStorage** témakörben.
+    1. Hozza létre a blobsubscription. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
 
        ```json
         {
@@ -215,19 +215,19 @@ Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményez
        ```
 
        >[!NOTE]
-       > Az **endpointType** tulajdonság azt adja meg, hogy az előfizető **Webhook**.  A **endpointUrl** megadja azt az URL-címet, amelyen az előfizető figyeli az eseményeket. Ez az URL-cím a korábban üzembe helyezett Azure-függvénymintának felel meg.
+       > A **endpointType** tulajdonság azt adja meg, hogy az előfizető egy **webhook**.  A **endpointUrl** meghatározza azt az URL-címet, amelyen az előfizető eseményeket figyel. Ez az URL-cím megfelel a korábban üzembe helyezett Azure Function-mintának.
 
-    2. Futtassa a következő parancsot a témakör előfizetésének létrehozásához. Ellenőrizze, hogy látja-e, `200 OK`hogy a HTTP-állapotkód a.
+    2. A következő parancs futtatásával hozzon létre egy előfizetést a témakörhöz. Ellenőrizze, hogy megjelenik-e a HTTP- `200 OK`állapotkód.
 
        ```sh
        curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
        ```
 
        > [!IMPORTANT]
-       > - A HTTPS-folyamat, ha az ügyfél-hitelesítés sas-kulccsal keresztül engedélyezve van, majd a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a göndör kérés lesz:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
-       > - A HTTPS-folyamat esetében, ha az ügyfélhitelesítés tanúsítványon keresztül engedélyezve van, a curl kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
-    3. Futtassa a következő parancsot az előfizetés sikeres létrehozásának ellenőrzéséhez. A 200 OK HTTP-állapotkódot vissza kell adni.
+    3. A következő parancs futtatásával ellenőrizheti, hogy az előfizetés sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
 
        ```sh
        curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
@@ -253,19 +253,19 @@ Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményez
        ```
 
        > [!IMPORTANT]
-       > - A HTTPS-folyamat, ha az ügyfél-hitelesítés sas-kulccsal keresztül engedélyezve van, majd a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a göndör kérés lesz:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-       > - A HTTPS-folyamat esetében, ha az ügyfélhitelesítés tanúsítványon keresztül engedélyezve van, a curl kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
-3. Töltse le [az Azure Storage Explorert,](https://azure.microsoft.com/features/storage-explorer/) és [csatlakoztassa a helyi tárhelyhez](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
+3. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) letöltése és [a helyi tárolóhoz való kapcsolódása](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
-## <a name="verify-event-delivery"></a>Az esemény kézbesítésének ellenőrzése
+## <a name="verify-event-delivery"></a>Esemény-kézbesítés ellenőrzése
 
-### <a name="verify-blobcreated-event-delivery"></a>BlobCreated eseménykézbesítés ének ellenőrzése
+### <a name="verify-blobcreated-event-delivery"></a>BlobCreated-esemény kézbesítésének ellenőrzése
 
-1. Fájlok feltöltése blokkblobként az Azure Storage Explorer helyi tárolóba, és a modul automatikusan közzéteszi a létrehozási eseményeket. 
-2. Tekintse meg az előfizetői naplók at hozzon létre esemény. Kövesse az [esemény megjelenítésének ellenőrzéséhez szükséges lépéseket.](pub-sub-events-webhook-local.md#verify-event-delivery)
+1. Fájlokat tölthet fel a helyi tárhelyre a Azure Storage Explorer-ból, és a modul automatikusan közzéteszi a Create Events-t. 
+2. Tekintse meg a létrehozási esemény előfizetői naplóit. Az [események kézbesítésének ellenőrzéséhez](pub-sub-events-webhook-local.md#verify-event-delivery) kövesse az alábbi lépéseket
 
-    Minta kimenete:
+    Példa a kimenetre:
 
     ```json
             Received Event:
@@ -292,10 +292,10 @@ Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményez
 
 ### <a name="verify-blobdeleted-event-delivery"></a>BlobDeleted-esemény kézbesítésének ellenőrzése
 
-1. Blobok törlése a helyi tárolóból az Azure Storage Explorer használatával, és a modul automatikusan közzéteszi a törlési eseményeket. 
-2. Nézze meg az előfizetői naplók at delete esemény. Kövesse az [esemény megjelenítésének ellenőrzéséhez szükséges lépéseket.](pub-sub-events-webhook-local.md#verify-event-delivery)
+1. Törölje a blobokat a helyi tárolóból Azure Storage Explorer használatával, és a modul automatikusan közzéteszi a törlési eseményeket. 
+2. Tekintse meg az előfizetői naplókat a DELETE eseményhez. Az [események kézbesítésének ellenőrzéséhez](pub-sub-events-webhook-local.md#verify-event-delivery) kövesse az alábbi lépéseket
 
-    Minta kimenete:
+    Példa a kimenetre:
     
     ```json
             Received Event:
@@ -320,20 +320,20 @@ Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményez
             }
     ```
 
-Gratulálunk! Befejezte az oktatóanyagot. A következő szakaszok az esemény tulajdonságainak részleteit ismertetik.
+Gratulálunk! Elvégezte az oktatóanyagot. A következő szakaszokban részletes információkat talál az esemény tulajdonságairól.
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
 
-Az alábbiakban a támogatott eseménytulajdonságok listáját, valamint azok típusát és leírását tartalmazza. 
+Az alábbi lista tartalmazza a támogatott események tulajdonságait, valamint azok típusait és leírásait. 
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
-| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
-| id | sztring | Az esemény egyedi azonosítója |
-| data | objektum | Blob tárolási esemény adatai. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| data | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -341,24 +341,24 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| api-t | sztring | Az eseményt kiváltó művelet. Ez az alábbi értékek egyike lehet: <ul><li>BlobCreated - engedélyezett `PutBlob` értékek: és`PutBlockList`</li><li>BlobDeleted - engedélyezett `DeleteBlob` `DeleteAfterUpload` értékek `AutoDelete`a , és . <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a blob automatikusan törlődik, mert deleteAfterUpload kívánt tulajdonság értéke igaz. </p><p>`AutoDelete`esemény jön létre, ha blob automatikusan törlődik, mert deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
-| clientRequestId | sztring | a storage API-művelet hez egy ügyfél által biztosított kérelemazonosító. Ez az azonosító használható az Azure Storage diagnosztikai naplók kal való korrelációhoz a naplók "ügyfél-kérelem-azonosító" mezőjének használatával, és az "x-ms-client-request-id" fejléc használatával biztosítható az ügyfélkérelmekben. További információt a [Formátum naplózása (Log Format) (Formátum naplója) témakörben talál.](/rest/api/storageservices/storage-analytics-log-format) |
-| Kérelemazonosító | sztring | Szolgáltatás által létrehozott kérelem azonosítója a tárolási API-művelethez. Az Azure Storage diagnosztikai naplóival korrelálhat a naplók "request-id-header" mezőjével, és az "x-ms-request-id" fejlécben api-hívás kezdeményezéséből származik. Lásd: [Naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| Etag | sztring | A műveletek feltételes végrehajtásához használható érték. |
-| contentType típusú | sztring | A blobhoz megadott tartalomtípus. |
-| contentLength (contentLength) | egész szám | A blob mérete bájtban. |
-| blobType típusú | sztring | A blob típusa. Az érvényes értékek a "BlockBlob" vagy a "PageBlob". |
-| url | sztring | A blob elérési útja. <br>Ha az ügyfél Blob REST API-t használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<storage-account-name\>\<.blob.core.windows.net/ tárolónév\>/\<fájlnév\>*. <br>Ha az ügyfél Data Lake Storage REST API-t használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<\>storage-account-name\<.dfs.core.windows.net/ fájlrendszer-név\>/\<fájlnév\>*. |
+| api-t | sztring | Az eseményt kiváltó művelet. A következő értékek egyike lehet: <ul><li>BlobCreated – az engedélyezett értékek a `PutBlob` következők: és`PutBlockList`</li><li>BlobDeleted – engedélyezett értékek `DeleteBlob`: `DeleteAfterUpload` és. `AutoDelete` <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterUpload kívánt tulajdonság értéke TRUE (igaz). </p><p>`AutoDelete`az esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
+| ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Részletekért lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |
+| Kérelemazonosító | sztring | A szolgáltatás által generált kérelem azonosítója a tárolási API-művelethez. Felhasználható az Azure Storage diagnosztikai naplóinak a naplók "Request-ID-header" mezővel való összekapcsolására, és a rendszer az "x-MS-Request-id" fejlécben az API-hívás kezdeményezését adja vissza. Lásd: [naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| eTag | sztring | Az az érték, amelyet a műveletek feltételes végrehajtásához használhat. |
+| contentType | sztring | A blobhoz megadott tartalomtípus. |
+| contentLength | egész szám | A blob mérete bájtban megadva. |
+| blobType | sztring | A blob típusa. Az érvényes értékek: "BlockBlob" vagy "PageBlob". |
+| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<Storage\>-Account\<-Name.\>/\<blob.Core.Windows.net/Container-\>Name fájlnév*. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<Storage\>-Account\<-Name. DFS.Core.Windows.net/fájl\>/\<-rendszer-\>név fájl neve*. |
 
 
 ## <a name="next-steps"></a>További lépések
 
 Tekintse meg az alábbi cikkeket a Blob Storage dokumentációjában:
 
-- [Blob Storage-események szűrése](../../storage/blobs/storage-blob-event-overview.md#filtering-events)
-- [A Blob Storage-események fogyasztásának ajánlott módszerei](../../storage/blobs/storage-blob-event-overview.md#practices-for-consuming-events)
+- [Blob Storage események szűrése](../../storage/blobs/storage-blob-event-overview.md#filtering-events)
+- [Ajánlott eljárások Blob Storage események fogyasztásához](../../storage/blobs/storage-blob-event-overview.md#practices-for-consuming-events)
 
-Ebben az oktatóanyagban közzétett események használatával blobok egy Azure Blob Storage létrehozása vagy törlése. Tekintse meg a többi oktatóanyagot, amelyből megtudhatja, hogyan továbbíthat eseményeket a felhőbe (Azure Event Hub vagy az Azure IoT Hub): 
+Ebben az oktatóanyagban a Blobok Azure Blob Storageban történő létrehozásával vagy törlésével közzétette az eseményeket. Tekintse meg a többi oktatóanyagot, amelyből megtudhatja, hogyan továbbíthatja az eseményeket a felhőbe (Azure Event hub vagy Azure IoT Hub): 
 
 - [Események továbbítása az Azure Event Gridbe](forward-events-event-grid-cloud.md)
 - [Események továbbítása az Azure IoT Hubba](forward-events-iothub.md)

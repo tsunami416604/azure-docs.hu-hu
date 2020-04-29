@@ -1,21 +1,21 @@
 ---
-title: app() kifejezés az Azure Monitor naplólekérdezésében | Microsoft dokumentumok
-description: Az alkalmazáskifejezés egy Azure Monitor naplólekérdezésben használatos egy adott Application Insights-alkalmazásból ugyanabban az erőforráscsoportban, egy másik erőforráscsoportban vagy egy másik előfizetésben.
+title: alkalmazás () kifejezés Azure Monitor log lekérdezésekben | Microsoft Docs
+description: Az alkalmazás kifejezése egy Azure Monitor naplózási lekérdezésben szerepel, hogy egy adott Application Insights alkalmazásból egy adott erőforráscsoport, egy másik erőforráscsoport vagy egy másik előfizetés adatait olvassa be.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
 ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670256"
 ---
-# <a name="app-expression-in-azure-monitor-query"></a>app() kifejezés az Azure Monitor lekérdezésben
+# <a name="app-expression-in-azure-monitor-query"></a>alkalmazás () kifejezés Azure Monitor lekérdezésben
 
-A `app` kifejezés egy Azure Monitor-lekérdezésben használatával adatokat kérhet le egy adott Application Insights-alkalmazásból ugyanabban az erőforráscsoportban, egy másik erőforráscsoportban vagy egy másik előfizetésben. Ez akkor hasznos, ha az alkalmazásadatokat egy Azure Monitor naplólekérdezésben tartalmazza, és az Application Insights-lekérdezésben több alkalmazás adatait is lekérdezi.
+A `app` kifejezés egy Azure monitor lekérdezésben van használatban, amely egy adott Application Insights alkalmazásból kér le egy adott erőforráscsoport, egy másik erőforráscsoport vagy egy másik előfizetés adatait. Ez hasznos lehet az alkalmazásadatok Azure Monitor naplózási lekérdezésbe való felvételéhez, valamint az adatlekérdezés több alkalmazás között egy Application Insights lekérdezésben.
 
 
 
@@ -26,22 +26,22 @@ A `app` kifejezés egy Azure Monitor-lekérdezésben használatával adatokat k�
 
 ## <a name="arguments"></a>Argumentumok
 
-- *Azonosító*: Az alkalmazást az alábbi táblázatban szereplő formátumok egyikével azonosítja.
+- *Azonosító*: az alábbi táblázatban szereplő formátumok egyikének használatával azonosítja az alkalmazást.
 
 | Azonosító | Leírás | Példa
 |:---|:---|:---|
-| Erőforrás neve | Az alkalmazás olvasható neve (más néven "összetevő neve") | app("fabrikamapp") |
-| Minősített név | Az alkalmazás teljes neve az űrlapon: "subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
-| ID (Azonosító) | Az alkalmazás GUID azonosítója | alkalmazás("988ba129-363e-4415-8fe7-8cbab5447518") |
-| Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| Erőforrás neve | Az alkalmazás olvasható neve (más néven "összetevő neve") | alkalmazás ("fabrikamapp") |
+| Minősített név | Az alkalmazás teljes neve a következő formában: "subscriptionName/resourceGroup/componentName" | alkalmazás (AI-Prototype/Fabrikam/fabrikamapp) |
+| ID (Azonosító) | Az alkalmazás GUID azonosítója | alkalmazás ("988ba129-363e-4415-8fe7-8cbab5447518") |
+| Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója |alkalmazás ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Megjegyzések
 
 * Olvasási hozzáféréssel kell rendelkeznie az alkalmazáshoz.
-* Egy alkalmazás név alapján történő azonosítása feltételezi, hogy az összes elérhető előfizetésben egyedi. Ha több alkalmazás a megadott nevet, a lekérdezés sikertelen lesz, mert a kétértelműség. Ebben az esetben a többi azonosító egyikét kell használnia.
-* A kapcsolódó kifejezés [munkaterület](workspace-expression.md) használatával lekérdezés a Log Analytics-munkaterületeken.
-* Az app() kifejezés jelenleg nem támogatott a keresési lekérdezésben, ha az Azure Portal on hozzon létre egy [egyéni napló keresési riasztási szabályt,](../platform/alerts-log.md)kivéve, ha egy Application Insights-alkalmazás a riasztási szabály erőforrásaként.
+* Ha az alkalmazás neve alapján azonosítja az alkalmazást, azt feltételezi, hogy az összes elérhető előfizetésen belül egyedi. Ha több alkalmazás is van a megadott névvel, a lekérdezés nem fog sikerülni a kétértelműség miatt. Ebben az esetben a többi azonosító egyikét kell használnia.
+* A kapcsolódó kifejezés [munkaterülete](workspace-expression.md) log Analytics munkaterületek lekérdezésére használható.
+* Az app () kifejezés jelenleg nem támogatott a keresési lekérdezésben, ha a Azure Portal használatával hoz létre [Egyéni napló-keresési riasztási szabályt](../platform/alerts-log.md), kivéve, ha egy Application Insights alkalmazást használ a riasztási szabályhoz tartozó erőforrásként.
 
 ## <a name="examples"></a>Példák
 
@@ -71,6 +71,6 @@ union
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a [munkaterület-kifejezést,](workspace-expression.md) amely a Log Analytics-munkaterületre hivatkozik.
-- További információ az [Azure Monitor adatainak](../../azure-monitor/log-query/log-query-overview.md) tárolásáról.
-- A [Kusto lekérdezési nyelvének](/azure/kusto/query/)teljes dokumentációjának elérése.
+- Tekintse meg a [munkaterület kifejezését](workspace-expression.md) log Analytics munkaterületre való hivatkozáshoz.
+- További információ a [Azure monitor adatainak](../../azure-monitor/log-query/log-query-overview.md) tárolásáról.
+- A [Kusto lekérdezési nyelv](/azure/kusto/query/)teljes dokumentációjának elérése.

@@ -1,6 +1,6 @@
 ---
-title: 'Figyelés: Apache Ambari & Azure Monitor-naplók – Azure HDInsight'
-description: Ismerje meg, hogyan használhatja az Ambari és az Azure Monitor naplók a fürt állapotának és elérhetőségének figyeléséhez.
+title: 'Figyelés: Apache Ambari & Azure Monitor naplók – Azure HDInsight'
+description: Megtudhatja, hogyan használhatja a Ambari és a Azure Monitor naplókat a fürt állapotának és rendelkezésre állásának figyeléséhez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,186 +9,186 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/06/2020
 ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77060174"
 ---
-# <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>Fürtelérhetőség figyelése az Apache Ambari és az Azure Monitor naplóival
+# <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>A fürt rendelkezésre állásának figyelése az Apache Ambari és a Azure Monitor naplók használatával
 
-A HDInsight-fürtök tartalmazzák az Apache Ambari-t, amely egy pillantással és előre definiált riasztásokkal biztosítja az állapotinformációkat, valamint az Azure Monitor naplóinak integrációját, amely lekérdezhető metrikákat és naplókat, valamint konfigurálható riasztásokat biztosít.
+A HDInsight-fürtök az Apache Ambari is tartalmazzák, amely egy pillantásra és előre meghatározott riasztásokra vonatkozó információkat biztosít, valamint Azure Monitor naplózza az integrációt, amely lekérdezhető mérőszámokat és naplókat, valamint konfigurálható riasztásokat biztosít.
 
-Ez a dokumentum bemutatja, hogyan használhatja ezeket az eszközöket a fürt figyelésére, és néhány példát mutat be az Ambari-riasztások konfigurálására, a csomópontok rendelkezésre állási arányának figyelésére és az Azure Monitor riasztásának létrehozására, amely akkor aktiválódik, ha egy vagy több csomópont szívverése nem érkezett meg. Öt óra múlva.
+Ebből a dokumentumból megtudhatja, hogyan használhatja ezeket az eszközöket a fürt figyelésére, valamint néhány példát a Ambari-riasztás konfigurálására, a csomópontok rendelkezésre állási arányának figyelésére, valamint egy olyan Azure Monitor riasztás létrehozására, amely akkor következik be, amikor egy vagy több csomópontból nem érkezett szívverés egy adott öt órán belül
 
 ## <a name="ambari"></a>Ambari
 
 ### <a name="dashboard"></a>Irányítópult
 
-Az Ambari irányítópultja az **Ambari otthoni** hivatkozásának kiválasztásával érhető el az Azure Portal HDInsight-áttekintése **fürtirányítópultok** szakaszában az alábbiak szerint. Másik lehetőségként úgy érhető el, `https://CLUSTERNAME.azurehdinsight.net` hogy egy olyan böngészőben navigál, ahol a CLUSTERNAME a fürt neve.
+A Ambari irányítópultja a következő Azure Portal a HDInsight áttekintésének **fürt irányítópultok** szakaszában a **Ambari Kezdőlap** hivatkozásra kattintva érhető el. Azt is megteheti, hogy egy böngészőben navigál `https://CLUSTERNAME.azurehdinsight.net` , ahol a CLUSTERNAME a fürt neve.
 
-![HDInsight erőforrásportál nézet](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
+![HDInsight erőforrás-portál nézet](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
-Ezután a rendszer kérni fogja a fürt bejelentkezési felhasználónevét és jelszavát. Adja meg a fürt létrehozásakor kiválasztott hitelesítő adatokat.
+Ezután meg kell adnia egy fürt bejelentkezési felhasználónevét és jelszavát. Adja meg a fürt létrehozásakor kiválasztott hitelesítő adatokat.
 
-Ezután az Ambari irányítópultra kerül, amely néhány mérőszámot megjelenítő widgeteket tartalmaz, amelyek gyors áttekintést nyújtanak a HDInsight-fürt állapotáról. Ezek a widgetek olyan mérőszámokat mutatnak, mint például az élő DataNodes (feldolgozócsomópontok) és a JournalNodes (zookeeper csomópont), a NameNodes (head csomópontok) üzemidő, valamint az egyes fürttípusokra jellemző metrikák száma, például a YarN ResourceManager spark- és Hadoop-fürtök üzemideje.
+Ezután a Ambari-irányítópultra kerül, amely a HDInsight-fürt állapotának gyors áttekintését bemutató widgeteket tartalmaz. Ezek a minialkalmazások olyan metrikákat mutatnak, mint például az élő Adatcsomópontok (feldolgozó csomópontok) és a Naplócsomópontok (Zookeeper csomópont), a NameNodes (csomópontok), valamint bizonyos típusú fürtökhöz tartozó mérőszámok, például a Spark-és a erőforráskezelő-fürtök esetében a fonal Hadoop.
 
-![Az Apache Ambari műszerfal-kijelzőt használ](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
+![Az Apache Ambari irányítópult-megjelenítést használhat](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
 
-### <a name="hosts--view-individual-node-status"></a>Hosts – egyéni csomópontállapot megtekintése
+### <a name="hosts--view-individual-node-status"></a>Gazdagépek – az egyes csomópontok állapotának megtekintése
 
-Megtekintheti az egyes csomópontok állapotadatait is. A **Hosts** fülre választva megtekintheti a fürt összes csomópontjának listáját, és megtekintheti az egyes csomópontokra vonatkozó alapvető információkat. Az egyes csomópontnevektől balra lévő zöld pipa azt jelzi, hogy az összes összetevő a csomóponton van. Ha egy összetevő nem érhető el egy csomóponton, a zöld pipa helyett egy piros figyelmeztető háromszög jelenik meg.
+Az egyes csomópontokra vonatkozó állapotinformációkat is megtekintheti. A **gazdagépek** lapon megtekintheti a fürt összes csomópontjának listáját, és megtekintheti az egyes csomópontok alapszintű információit. Az egyes csomópontok neve mezőtől balra található zöld pipa jelzi, hogy az összes összetevő fel van-e állítva a csomóponton. Ha egy összetevő le van kapcsolva egy csomóponton, a zöld pipa helyett piros riasztási háromszög jelenik meg.
 
-![HDInsight Apache Ambari hosts nézet](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
+![HDInsight Apache Ambari-gazdagépek nézet](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
-Ezután egy csomópont **nevében** kiválaszthat egy csomópont nevét az adott csomópont részletesebb gazdametrikák megtekintéséhez. Ez a nézet az egyes összetevők állapotát/rendelkezésre állását mutatja.
+Ezután kiválaszthatja a csomópont **nevét** az adott csomópont részletesebb gazdagép-metrikáinak megtekintéséhez. Ez a nézet az egyes összetevők állapotát és rendelkezésre állását jeleníti meg.
 
-![Az Apache Ambari egyetlen csomópontnézetnek ad otthont](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
+![Az Apache Ambari egyetlen csomópontos nézetet üzemeltet](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
-### <a name="ambari-alerts"></a>Ambari riasztások
+### <a name="ambari-alerts"></a>Ambari-riasztások
 
-Ambari is kínál több konfigurálható riasztások, amelyek értesítést bizonyos események. Amikor riasztások aktiválódnak, az Ambari bal felső sarkában jelennek meg egy piros jelvényben, amely a riasztások számát tartalmazza. A jelvény kiválasztásakor megjelenik az aktuális riasztások listája.
+A Ambari számos konfigurálható riasztást is kínál, amelyek bizonyos események bejelentését teszik lehetővé. A riasztások aktiválásakor a rendszer a Ambari bal felső sarkában jeleníti meg a riasztások számát tartalmazó piros jelvényt. A jelvény kiválasztásával megjeleníti az aktuális riasztások listáját.
 
-![Az Apache Ambari aktuális riasztásai száma](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
+![Apache Ambari – aktuális riasztások száma](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
-A riasztásdefiníciók és állapotuk listájának megtekintéséhez válassza a **Riasztások** lapot, az alábbiak szerint.
+A riasztási definíciók és állapotuk megjelenítéséhez válassza a **riasztások** fület az alább látható módon.
 
-![Ambari riasztásdefiníciók nézet](media/hdinsight-cluster-availability/ambari-alerts-definitions.png)
+![Ambari-riasztások definíciói nézete](media/hdinsight-cluster-availability/ambari-alerts-definitions.png)
 
-Az Ambari számos előre meghatározott riasztást kínál a rendelkezésre állással kapcsolatban, többek között:
+A Ambari számos előre meghatározott riasztást kínál a rendelkezésre állással kapcsolatban, beleértve a következőket:
 
 | Riasztás neve                        | Leírás   |
 |---|---|
-| DataNode állapot összefoglalása           | Ez a szolgáltatásszintű riasztás akkor aktiválódik, ha nem megfelelő datanodes|
-| NameNode magas rendelkezésre állási állapot | Ez a szolgáltatásszintű riasztás akkor aktiválódik, ha az Aktív NameNode vagy a Standby NameNode nem fut.|
-| Rendelkezésre álló százaléknaplónodes    | Ez a riasztás akkor aktiválódik, ha a journalnodes a fürtben nagyobb, mint a beállított kritikus küszöbértéket. Összesíti a JournalNode folyamatellenőrzések eredményeit. |
-| Rendelkezésre álló adatcsomópontok százalékos száma       | Ez a riasztás akkor aktiválódik, ha a fürtben lévő datanodes-ok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a DataNode folyamatellenőrzések eredményeit.|
+| DataNode állapotának összegzése           | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Adatcsomópontok van|
+| NameNode magas rendelkezésre állási állapota | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha az aktív NameNode vagy a készenléti NameNode nem fut.|
+| Rendelkezésre álló Naplócsomópontok százalékos aránya    | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Naplócsomópontok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a JournalNode folyamat-ellenőrzésének eredményeit. |
+| Rendelkezésre álló Adatcsomópontok százalékos aránya       | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Adatcsomópontok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a DataNode folyamat-ellenőrzésének eredményeit.|
 
-A teljes listát ambari riasztások, amelyek segítenek nyomon követni a rendelkezésre álló klaszter [megtalálható itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui),
+A Ambari-riasztások teljes listája [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui)található, amelyek segítenek a fürt rendelkezésre állásának figyelésében.
 
-A riasztás részleteinek megtekintéséhez vagy a feltételek módosításához válassza ki a riasztás **nevét.** Vegyük például **a DataNode Health Summary-ot.** Láthatja a riasztás leírását, valamint azokat a konkrét feltételeket, amelyek "figyelmeztetési" vagy "kritikus" riasztást váltanak ki, valamint a feltételek ellenőrzési időközét. A konfiguráció szerkesztéséhez kattintson **a** Szerkesztés gombra a Konfiguráció párbeszédpanel jobb felső sarkában.
+A riasztások részleteinek megtekintéséhez vagy a feltételek módosításához válassza ki a riasztás **nevét** . A **DataNode állapotának összegzése** példaként. Megtekintheti a riasztás leírását, valamint a "figyelmeztetés" vagy "kritikus" riasztást kiváltó konkrét feltételeket, valamint a feltételek ellenőrzési intervallumát is. A konfiguráció szerkesztéséhez kattintson a konfigurációs mező jobb felső sarkában található **Szerkesztés** gombra.
 
-![Apache Ambari riasztási konfiguráció](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
+![Apache Ambari-riasztás konfigurálása](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
-Itt szerkesztheti a leírást, és ami még fontosabb, az ellenőrzési időközt és a figyelmeztetési vagy kritikus riasztások küszöbértékeit.
+Itt szerkesztheti a leírást, és – ami még fontosabb – a figyelmeztetési vagy kritikus riasztások ellenőrzési időközét és küszöbértékeit.
 
-![Ambari riasztási konfigurációk szerkesztése nézet](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
+![Ambari-riasztási konfigurációk szerkesztési nézete](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
 
-Ebben a példában 2 nem megfelelő datanodes kiváltó kritikus riasztást, és 1 nem megfelelő datanode csak egy figyelmeztetést. Ha végzett a szerkesztéssel, válassza a **Mentés** lehetőséget.
+Ebben a példában két nem kifogástalan állapotú Adatcsomópontok aktiválhat kritikus riasztást, és 1 nem kifogástalan állapotú DataNode csak figyelmeztetést indíthat. A Szerkesztés befejezése után válassza a **Mentés** lehetőséget.
 
 ### <a name="email-notifications"></a>E-mail-értesítések
 
-Az Ambari-riasztásokhoz e-mail értesítéseket is konfigurálhat. Ehhez a **Riasztások** lapon kattintson a bal felső sarokban lévő **Műveletek** gombra, majd az **Értesítések kezelése parancsra.**
+A Ambari-riasztásokhoz e-mail-értesítéseket is konfigurálhat. Ehhez a **riasztások** lapon kattintson a bal felső sarokban található **műveletek** gombra, majd az **értesítések kezelése** lehetőségre.
 
-![Ambari értesítéskezelési művelet](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
+![Ambari – értesítések kezelése művelet](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Megnyílik a riasztási értesítések kezelésére szolgáló párbeszédpanel. Válassza **+** ki a párbeszéd alján lévő mezőt, és töltse ki a szükséges mezőket, hogy az Ambari tartalmazza az e-mail kiszolgáló adatait, ahonnan e-maileket küldhet.
+Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszédpanel. **+** Kattintson a párbeszédpanel alján található elemre, és töltse ki a kötelező mezőket az e-mail-kiszolgáló Ambari biztosításához, amelyről e-maileket szeretne küldeni.
 
 > [!TIP]
-> Az Ambari e-mail értesítések beállítása jó módja lehet a riasztások fogadásának egy helyen, ha sok HDInsight-fürtöt kezel.
+> A Ambari e-mail-értesítéseinek beállítása jó módszer lehet a riasztások egy helyen való fogadására sok HDInsight-fürt kezelésekor.
 
-## <a name="azure-monitor-logs-integration"></a>Az Azure Monitor naplóinak integrációja
+## <a name="azure-monitor-logs-integration"></a>Azure Monitor naplók integrációja
 
-Az Azure Monitor naplói lehetővé teszik, hogy a több erőforrás, például a HDInsight-fürtök által generált adatok egy helyen legyenek összegyűjtve és összesítve az egységes figyelési élmény elérése érdekében.
+Azure Monitor naplók lehetővé teszik több erőforrás, például a HDInsight-fürtök által generált adatok gyűjtését és összesítését egy helyen egy egységes figyelési élmény eléréséhez.
 
-Előfeltételként az összegyűjtött adatok tárolásához szüksége lesz egy Log Analytics-munkaterületre. Ha még nem hozott létre egyet, kövesse az alábbi utasításokat: [Log Analytics-munkaterület létrehozása](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Előfeltételként szükség lesz egy Log Analytics munkaterületre az összegyűjtött adatok tárolásához. Ha még nem hozott létre ilyet, kövesse az alábbi utasításokat: [log Analytics munkaterület létrehozása](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HdInsight Azure Figyelő naplóinak integrációjának engedélyezése
+### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight-Azure Monitor naplók integrációjának engedélyezése
 
-A portál HDInsight-fürterőforrás-lapján válassza az **Azure Monitor**lehetőséget. Ezután válassza **az engedélyezés t,** és válassza ki a Log Analytics munkaterületet a legördülő menüből.
+A portál HDInsight-fürterőforrás lapján válassza a **Azure monitor**lehetőséget. Ezután válassza az **Engedélyezés** lehetőséget, majd válassza ki a log Analytics munkaterületet a legördülő menüből.
 
-![HDInsight operations management csomag](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
+![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
-### <a name="query-metrics-and-logs-tables"></a>Lekérdezési mutatók és naplótáblák
+### <a name="query-metrics-and-logs-tables"></a>Mérőszámok és naplók táblázatának lekérdezése
 
-Ha az Azure Monitor naplóintegrációja engedélyezve van (ez eltarthat néhány percig), keresse meg a **Log Analytics-munkaterületi** erőforrást, és válassza **a Naplók**lehetőséget.
+Azure Monitor naplózási integráció engedélyezése után (ez eltarthat néhány percig), navigáljon a **log Analytics munkaterület** -erőforráshoz, és válassza a **naplók**lehetőséget.
 
-![Log Analytics-munkaterületi naplók](media/hdinsight-cluster-availability/hdinsight-portal-logs.png)
+![Log Analytics munkaterület naplófájljai](media/hdinsight-cluster-availability/hdinsight-portal-logs.png)
 
-A naplók számos mintalekérdezést sorolnak fel, például:
+A naplók számos példa típusú lekérdezést listáznak, például:
 
 | Lekérdezés neve                      | Leírás                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
-| Számítógépek elérhetősége ma    | A naplókat küldő számítógépek számának diagramja óránként                     |
-| Szívverések listázása                 | Az összes számítógép-szívverés listázása az elmúlt órából                           |
-| Az egyes számítógépek utolsó szívverése | Az egyes számítógépek által küldött utolsó szívverés megjelenítése                             |
-| Nem elérhető számítógépek           | Az összes olyan ismert számítógép listázása, amely az elmúlt 5 órában nem küldött szívverést |
-| Rendelkezésre állási arány               | Az egyes csatlakoztatott számítógépek elérhetőségi sebességének kiszámítása                |
+| A számítógépek rendelkezésre állása ma    | A naplókat küldő számítógépek számának diagramja óránként                     |
+| Szívverések listázása                 | Az összes számítógép szívverésének listázása az elmúlt órában                           |
+| Az egyes számítógépek utolsó szívverése | Az egyes számítógépek által eljuttatott utolsó szívverés megjelenítése                             |
+| Nem elérhető számítógépek           | Az összes olyan ismert számítógép listázása, amely nem küldött szívverést az elmúlt 5 órában |
+| Rendelkezésre állási arány               | Az egyes csatlakoztatott számítógépek rendelkezésre állási arányának kiszámítása                |
 
-Például futtassa a **rendelkezésre állási arány** minta lekérdezést a **Futtatás** az adott lekérdezésen lehetőség kiválasztásával, ahogy az a fenti képernyőképen látható. Ez a fürt egyes csomópontainak rendelkezésre állási arányát jeleníti meg százalékban. Ha engedélyezte több HDInsight-fürt számára, hogy metrikákat küldjenek ugyanarra a Log Analytics-munkaterületre, akkor a fürtösszes csomópontjának rendelkezésre állási aránya jelenik meg.
+Futtassa például a **rendelkezésre állási arány** mintájának lekérdezését a lekérdezés **futtatásának** kiválasztásával, ahogy az a fenti képernyőképen is látható. Ez a fürt egyes csomópontjainak rendelkezésre állási arányát fogja megjeleníteni százalékban. Ha több HDInsight-fürtön is engedélyezte a metrikák küldését ugyanarra a Log Analytics munkaterületre, megjelenik a fürt összes csomópontjának rendelkezésre állási sebessége.
 
-![A Log Analytics munkaterületnaplója naplózza a "rendelkezésre állási arány" mintalekérdezést](media/hdinsight-cluster-availability/portal-availability-rate.png)
+![Log Analytics munkaterület "rendelkezésre állási arány" mintájának lekérdezése](media/hdinsight-cluster-availability/portal-availability-rate.png)
 
 > [!NOTE]  
-> A rendelkezésre állási arány t 24 órás időszakban mérik, így a fürtnek legalább 24 órán át futnia kell, mielőtt pontos rendelkezésre állási díjakat látna.
+> A rendelkezésre állási sebességet 24 órás időszakra mérjük, így a fürtnek legalább 24 órán át futnia kell, mielőtt a pontos rendelkezésre állási díjakat látni fogja.
 
-Ezt a táblázatot a jobb felső sarokban lévő **Pin** gombra kattintva rögzítheti egy megosztott irányítópulton. Ha nem rendelkezik írható megosztott irányítópultokkal, itt láthatja, hogyan hozhat létre egyet: [Irányítópultok létrehozása és megosztása az Azure Portalon.](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard)
+Ezt a táblázatot a jobb felső sarokban található **rögzítés** gombra kattintva rögzítheti egy megosztott irányítópulton. Ha nem rendelkezik írható megosztott irányítópultokkal, megtekintheti, hogyan hozhat létre egyet itt: [irányítópultok létrehozása és megosztása a Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
-### <a name="azure-monitor-alerts"></a>Az Azure Monitor riasztásai
+### <a name="azure-monitor-alerts"></a>Riasztások Azure Monitor
 
-Azure Monitor riasztásokat is beállíthat, amelyek akkor aktiválódnak, ha egy metrika értéke vagy egy lekérdezés eredményei megfelelnek bizonyos feltételeknek. Például hozzon létre egy riasztást, hogy küldjön egy e-mailt, ha egy vagy több csomópont nem küldött szívverést 5 órán belül (azaz feltételezhető, hogy nem érhető el).
+Beállíthat Azure Monitor riasztásokat is, amelyek akkor aktiválódnak, ha egy metrika értéke vagy egy lekérdezés eredményei megfelelnek bizonyos feltételeknek. Például hozzon létre egy riasztást, amely e-mailt küld, ha egy vagy több csomópont 5 órán belül nem küldött szívverést (azaz nem érhető el).
 
-A **Naplók lapon futtassa**a **Nem elérhető számítógépek** mintalekérdezést a **Futtatás** az adott lekérdezésen lehetőséget választva, az alábbiak szerint.
+A **naplókból**futtassa a nem **elérhető számítógépek** minta lekérdezést úgy, hogy a lekérdezés **Futtatás** parancsát választja, az alább látható módon.
 
-![A Log Analytics munkaterületnaplója naplózza az "nem elérhető számítógépek" mintáját](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
+![Log Analytics munkaterület "nem elérhető számítógépek" mintát naplóz](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
-Ha az összes csomópont elérhető, ez a lekérdezés egyelőre nulla eredményt ad vissza. Kattintson **az Új riasztási szabály** gombra a lekérdezés riasztásának konfigurálásához.
+Ha az összes csomópont elérhető, a lekérdezésnek most nulla eredményt kell visszaadnia. Kattintson az **új riasztási szabály** elemre a lekérdezéshez tartozó riasztás konfigurálásának megkezdéséhez.
 
-![Log Analytics munkaterület új riasztási szabály](media/hdinsight-cluster-availability/portal-logs-new-alert-rule.png)
+![Log Analytics munkaterület új riasztási szabálya](media/hdinsight-cluster-availability/portal-logs-new-alert-rule.png)
 
-A riasztásnak három összetevője van: az az *erőforrás,* amelyhez létre kell hoznia a szabályt (ebben az esetben a Log Analytics-munkaterület), a riasztás aktiválásának *feltétele,* és a *műveletcsoportok,* amelyek meghatározzák, hogy mi fog történni a riasztás aktiválásakor.
-Kattintson a **feltétel címére**, az alábbiak szerint a jellogika beállításának befejezéséhez.
+A riasztásnak három összetevője van: az *erőforrás* , amelyhez létre kell hozni a szabályt (ebben az esetben a log Analytics munkaterület), a riasztás aktiválásának *feltételét* , valamint azokat a *műveleti csoportokat* , amelyek meghatározzák, hogy mi fog történni a riasztás indításakor.
+Az alább látható **feltétel címére**kattintva fejezze be a jel logikájának konfigurálását.
 
-![Portálriasztás létrehozási szabályfeltétele](media/hdinsight-cluster-availability/portal-condition-title.png)
+![Portál riasztás létrehozása szabály feltétele](media/hdinsight-cluster-availability/portal-condition-title.png)
 
-Ekkor megnyílik **A jellogika konfigurálása**.
+Ekkor megnyílik a **jel logikájának konfigurálása**.
 
-Állítsa be a **Riasztáslogika** szakaszt az alábbiak szerint:
+A **riasztási logika** szakasz a következőképpen állítható be:
 
-*A következők alapján: Eredmények száma, Feltétel: Nagyobb, mint, Küszöbérték: 0.*
+*A következő alapján: eredmények száma, feltétel: nagyobb, mint, küszöbérték: 0.*
 
-Mivel ez a lekérdezés csak nem érhető el csomópontok eredményként, ha az eredmények száma valaha is nagyobb, mint 0, a riasztást kell a tűz.
+Mivel ez a lekérdezés csak a nem elérhető csomópontokat adja vissza eredményként, ha az eredmények száma egyre nagyobb nullánál, a riasztásnak tüzet kell mutatnia.
 
-A **Kiértékelés szakaszban** állítsa be az **időszakot** és a **gyakoriságot** annak alapján, hogy milyen gyakran szeretné ellenőrizni a nem elérhető csomópontokat.
+A **kiértékelt szakasz alapján** állítsa be az **időszakot** és a **gyakoriságot** attól függően, hogy milyen gyakran kívánja a nem elérhető csomópontok keresését.
 
-A riasztás céljából győződjön meg arról, **period=gyakoriság.** Az időszakról, a gyakoriságról és más riasztási paraméterekről [itt](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types)olvashat bővebben.
+Ennek a riasztásnak a kihasználása érdekében meg kell győződnie arról, hogy az **időtartam = Frequency.** Az időtartammal, gyakorisággal és egyéb riasztási paraméterekkel kapcsolatos további információkat [itt](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types)talál.
 
-Válassza a **Kész** lehetőséget, ha befejezte a jellogika konfigurálását.
+Ha befejezte a jel logikájának konfigurálását, válassza a **kész** lehetőséget.
 
-![A riasztási szabály konfigurálja a jellogikát](media/hdinsight-cluster-availability/portal-configure-signal-logic.png)
+![Riasztási szabály konfigurálja a jel logikáját](media/hdinsight-cluster-availability/portal-configure-signal-logic.png)
 
-Ha még nem rendelkezik meglévő műveletcsoporttal, kattintson az **Új létrehozása gombra** a **Műveletcsoportok** szakaszban.
+Ha még nem rendelkezik meglévő műveleti csoporttal, kattintson az **új létrehozása** elemre a **műveleti csoportok** szakaszban.
 
-![A riasztási szabály új műveletcsoportot hoz létre](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
+![Riasztási szabály új műveleti csoportot hoz létre](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
-Ekkor megnyílik **a Művelethozzáadása csoport**. Válasszon **egy műveletcsoport nevét,** **rövid nevet**, **előfizetést**és **erőforráscsoportot.** A **Műveletek csoportban** válasszon egy **műveletnevet,** és válassza **az E-mail/SMS/Push/Voice** lehetőséget **művelettípusként.**
+Ekkor megnyílik a **Hozzáadás műveleti csoport**. Válassza ki a **műveleti csoport nevét**, a **rövid nevet**, az **előfizetést**és az **erőforráscsoportot.** A **műveletek** szakaszban válassza ki a **művelet nevét** , és válassza az **E-mail/SMS/leküldés/hang** lehetőséget a **művelet típusaként.**
 
 > [!NOTE]
-> Számos más műveletek egy riasztást is aktiválhat mellett egy e-mail/SMS/Push/Voice, például egy Azure-függvény, LogicApp, Webhook, ITSM és Automation Runbook. [tudj meg többet.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
+> Több más művelet is elindítható egy e-mail/SMS/push/hang mellett, például egy Azure-függvény, a LogicApp, a webhook, a ITSM és az Automation Runbook mellett. [tudj meg többet.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
 
-Ez megnyitja **e-mail / SMS / Push / Voice**. Válassza ki a címzett **nevét,** **jelölje be** az **E-mail jelölőnégyzetet,** és írja be azt az e-mail címet, amelyre a riasztást el szeretné küldeni. Válassza az **OK gombot** **az E-mailben/SMS/Push/Voice-ban,** majd a **Művelethozzáadása csoportban** a műveletcsoport konfigurálásának befejezéséhez.
+Ekkor megnyílik az **e-mail/SMS/leküldés/hang**. Válassza ki a címzett **nevét** , **jelölje be** az **e-mail** szövegmezőt, és írjon be egy e-mail-címet, amelyre a riasztást el szeretné juttatni. Válassza az **OK gombot** **e-mailben, SMS-ben/leküldés/hangban**, majd a **műveleti csoport hozzáadása** elemnél a műveleti csoport konfigurálásának befejezéséhez.
 
-![A riasztási szabály hozzáadási műveletcsoportot hoz létre](media/hdinsight-cluster-availability/portal-add-action-group.png)
+![Riasztási szabály – hozzáadási műveleti csoport létrehozása](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
-Miután ezek a panelek bezárultak, a műveletcsoportnak a Műveletcsoportok szakaszban kell **szerepelnie.** Végül töltse ki a **Riasztás részletei** szakaszt a **riasztási szabály nevének** és **leírásának** beírásával, valamint a **súlyosság kiválasztásával.** A befejezéshez kattintson a **Figyelmeztetési szabály létrehozása gombra.**
+Miután ezek a pengék bezárultak, a műveleti **csoportok** szakaszban szereplő műveleti csoportnak kell megjelennie. Végül fejezze be a **riasztás részletei** szakaszt a **riasztási szabály nevének** és **leírásának** beírásával és a **Súlyosság**kiválasztásával. A befejezéshez kattintson a **riasztási szabály létrehozása** elemre.
 
-![A portál riasztási szabály befejezést hoz létre](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
+![A portál riasztási szabályt hoz létre Befejezés](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
 
 > [!TIP]
-> A **súlyosság i. súlyossági szint** megadása hatékony eszköz, amely több riasztás létrehozásakor használható. Létrehozhat például egy riasztást egy figyelmeztetés (Sev 1) kiemeléséhez, ha egy fejcsomópont leáll, és egy másik riasztást, amely kritikus (Sev 0) riasztást ad ki abban a valószínűtlen esetben, ha mindkét főcsomópont leáll.
+> A **Súlyosság** meghatározásának lehetősége egy hatékony eszköz, amely több riasztás létrehozásakor is használható. Létrehozhat például egy riasztást egy figyelmeztetés (1. pont) létrehozásához, ha egy fő csomópont leáll, és egy másik riasztás, amely kritikus (a 0. szint) állapotot eredményez abban a valószínűtlen eseményben, amelyet a főcsomópontok leállnak.
 
-Ha a riasztás feltétele teljesül, a riasztás kigyullad, és e-mailt kap a riasztás részleteivel, mint ez:
+Ha a riasztás feltétele teljesül, a riasztás tüzet fog kapni, és e-mailben megkapja a riasztás részleteit, például a következőt:
 
-![Példa az Azure Monitor riasztási e-mailre](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
+![Azure Monitor riasztási e-mail példa](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
 
-A **naplóelemzési munkaterületen**a **Riasztások** elemre bontva is megtekintheti az összes riasztást, súlyosság szerint csoportosítva.
+Megtekintheti az összes kilőtt riasztást, súlyosság szerint csoportosítva, a **log Analytics munkaterületen**lévő **riasztások** megadásával.
 
-![Log Analytics-munkaterületi riasztások](media/hdinsight-cluster-availability/hdi-portal-oms-alerts.png)
+![Log Analytics munkaterület riasztásai](media/hdinsight-cluster-availability/hdi-portal-oms-alerts.png)
 
-A súlyossági csoportosítás (azaz a fent kiemelt **Sev 1)** kiválasztása az adott súlyosságú riasztások rekordjait jeleníti meg, amelyek az alábbihoz hasonlóan aktiválódtak:
+A súlyossági csoportosítás (például az **1.,** a fenti Kiemelt) kiválasztásakor az adott súlyosságú riasztásokra vonatkozó rekordok jelennek meg, amelyek az alábbihoz hasonlóak:
 
-![A Log Analytics munkaterülete egy riasztást küld](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
+![Log Analytics munkaterület – egyetlen riasztás](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Apache Hadoop-fürtök elérhetősége és megbízhatósága a HDInsightban](hdinsight-high-availability-linux.md)
+- [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: Ismert problémák/áttelepítési korlátozások a hibrid mód használatával
-description: Ismerje meg az Azure Database Migration Service hibrid módban való használatával kapcsolatos ismert problémákat/áttelepítési korlátozásokat.
+title: Ismert problémák/áttelepítési korlátozások hibrid mód használatával
+description: Ismerkedjen meg az ismert problémákkal/áttelepítési korlátozásokkal Azure Database Migration Service hibrid módban való használatával.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,91 +12,91 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77649602"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Ismert problémák/áttelepítési korlátozások hibrid mód használatával
 
-Az Azure Database Migration Service hibrid módban való használatával kapcsolatos ismert problémákat és korlátozásokat az alábbi szakaszok ismertetik.
+Az Azure Database Migration Service hibrid módban való használatával kapcsolatos ismert problémákat és korlátozásokat a következő szakaszokban ismertetjük.
 
-## <a name="installer-fails-to-authenticate"></a>A telepítő hitelesítése sikertelen
+## <a name="installer-fails-to-authenticate"></a>A telepítő nem tud hitelesíteni
 
-A tanúsítvány AdApp-ba való feltöltése után akár néhány perc késéssel is hitelesítheti magát az Azure-ral. A telepítő megpróbálja újra próbálkozni némi késsel, de lehetséges, hogy a propagálási késleltetés hosszabb lesz, mint az újrapróbálkozás, és megjelenik egy **FailedToGetAccessTokenException** üzenet. Ha a tanúsítványt a megfelelő AdApp-ba töltötték fel, és a megfelelő AppId-ot a dmsSettings.json fájlban adta meg, próbálja meg újra futtatni a telepítési parancsot.
+A tanúsítványnak a AdApp való feltöltése után néhány perc késéssel elvégezhető a hitelesítés az Azure-ban. A telepítő megkísérli az újrapróbálkozást némi késéssel, de lehetséges, hogy a terjesztési késleltetés hosszabb az újrapróbálkozásnál, és egy **FailedToGetAccessTokenException** üzenetet fog látni. Ha a tanúsítvány a megfelelő AdApp lett feltöltve, és a megfelelő AppId lett megadva a dmsSettings. JSON fájlban, próbálja meg újból futtatni a install parancsot.
 
-## <a name="service-offline-after-successful-installation"></a>Szolgáltatás "offline" sikeres telepítés után
+## <a name="service-offline-after-successful-installation"></a>"Offline" szolgáltatás a sikeres telepítés után
 
-Ha a szolgáltatás a telepítési folyamat sikeres befejezése után offline állapotban jelenik meg, próbálkozzon a következő lépésekkel.
+Ha a szolgáltatás offline állapotba kerül, miután a telepítési folyamat sikeresen befejeződött, próbálkozzon az alábbi lépésekkel.
 
-1. Az Azure Portalon az Azure Database Migration Service példányában keresse meg a **hibrid** beállítások lapot, majd ellenőrizze, hogy a dolgozó regisztrálva van-e a regisztrált dolgozók rácsának ellenőrzésével.
+1. A Azure Portal Azure Database Migration Service-példányában navigáljon a **hibrid** beállítások lapra, majd ellenőrizze, hogy a feldolgozó regisztrálva van-e a regisztrált feldolgozók rácsának ellenőrzésével.
 
-    A dolgozó állapotának **online**állapotúnak kell lennie, de probléma esetén **offline állapotúnak** tűnhet.
+    Ennek a feldolgozónak **online**állapotban kell lennie, de probléma esetén **Offline** állapotba kerülhet.
 
-2. A feldolgozó számítógépen ellenőrizze a szolgáltatás állapotát a következő PowerShell-parancs futtatásával:
+2. A munkavégző számítógépen a következő PowerShell-parancs futtatásával vizsgálja meg a szolgáltatás állapotát:
 
     ```
     Get-Service Scenario*
     ```
 
-    Ez a parancs a dolgozót futtató Windows-szolgáltatás állapotát adja meg. Csak egyetlen eredmény nek kell lennie. Ha a dolgozó le van állítva, megpróbálhatja újraindítani a következő PowerShell paranccsal:
+    Ez a parancs a feldolgozót futtató Windows-szolgáltatás állapotát adja meg. Ebben az esetben csak egyetlen eredménynek kell szerepelnie. Ha a feldolgozó leáll, a következő PowerShell-paranccsal próbálja meg újraindítani:
 
     ```
     Start-Service Scenario*
     ```
 
-    A szolgáltatást a Windows Services felhasználói felületén is ellenőrizheti.
+    A szolgáltatást a Windows-szolgáltatások felhasználói felületén is megtekintheti.
 
-3. Ha a Windows szolgáltatás a Futás és a Leállított között ciklusok között fut, akkor a dolgozó indítási problémákba ütközik. A probléma meghatározásához ellenőrizze az Azure Database Migration Service hibrid feldolgozói naplóit.
+3. Ha a Windows-szolgáltatás futása és leállítása között fut, akkor a feldolgozó problémákba ütközött. A probléma meghatározásához tekintse meg a Azure Database Migration Service hibrid munkavégző naplókat.
 
-    - A telepítési folyamat naplói abban a mappában tárolódnak, amelyből a telepítő végrehajtható fájlja a "naplók" mappában található.
-    - Az Azure Database Migration Service hibrid munkavégző naplói a **WorkerLogs** mappában tárolódnak abban a mappában, amelyben a feldolgozó telepítve van. A hibrid munkavégző naplófájlok alapértelmezett helye a **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**.
+    - A telepítési folyamat naplófájljai a "naplók" mappában találhatók abban a mappában, amelyből a telepítő végrehajtható fájlját futtatták.
+    - Azure Database Migration Service hibrid feldolgozói naplók a **WorkerLogs** mappában találhatók, abban a mappában, amelyben a Worker telepítve van. A hibrid munkavégző naplófájlok alapértelmezett helye a **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**.
 
 ## <a name="using-your-own-signed-certificate"></a>Saját aláírt tanúsítvány használata
 
-A GenerateCert művelet által létrehozott tanúsítvány egy önaláírt tanúsítvány, amely a belső biztonsági házirendek alapján nem elfogadható. A tanúsítvány használata helyett saját tanúsítványt adhat meg, és a dmsSettings.json helyen is megadhat ujjlenyomatot. Ezt a tanúsítványt fel kell tölteni az AdApp-ba, és telepíteni kell arra a számítógépre, amelyre az Azure Database Migration Service hibrid feldolgozóját telepíti. Ezután telepítse ezt a tanúsítványt a személyes kulccsal a Helyi számítógép tanúsítványtárolójába.
+A művelet GenerateCert által létrehozott tanúsítvány egy önaláírt tanúsítvány, amely nem fogadható el a belső biztonsági házirendek alapján. A tanúsítvány használata helyett megadhatja saját tanúsítványát, és megadhatja az ujjlenyomatot a dmsSettings. JSON fájlban. Ezt a tanúsítványt fel kell tölteni a AdApp, és telepítve kell lennie azon a számítógépen, amelyre a Azure Database Migration Service hibrid feldolgozót telepíti. Ezt követően telepítse a tanúsítványt a titkos kulccsal a helyi számítógép tanúsítványtárolóba.
 
-## <a name="running-the-worker-service-as-a-low-privilege-account"></a>A dolgozói szolgáltatás futtatása alacsony jogosultságú fiókként
+## <a name="running-the-worker-service-as-a-low-privilege-account"></a>A Worker szolgáltatás futtatása alacsony jogosultsági szintű fiókként
 
-Alapértelmezés szerint az Azure Database Migration Service hibrid feldolgozó szolgáltatás helyi rendszerfiókként fut. A szolgáltatáshoz használt fiókot mindaddig módosíthatja, amíg a használt fiók rendelkezik hálózati engedélyekkel. A szolgáltatás "futtatásmásként" fiókjának módosításához használja a következő eljárást.
+Alapértelmezés szerint a Azure Database Migration Service Hybrid Worker szolgáltatás helyi rendszerfiókként fut. Módosíthatja a szolgáltatáshoz használt fiókot, ha a használt fiók rendelkezik hálózati engedélyekkel. A szolgáltatás "futtató" fiókjának módosításához használja az alábbi eljárást.
 
-1. Állítsa le a szolgáltatást, akár a Windows Services szolgáltatáson keresztül, akár a PowerShell Stop-Service parancsával.
+1. Állítsa le a szolgáltatást a Windows-szolgáltatások vagy a PowerShell stop-Service parancsának használatával.
 
-2. Frissítse a szolgáltatást, hogy egy másik bejelentkezési fiókot használjon.
+2. Frissítse a szolgáltatást egy másik bejelentkezési fiók használatára.
 
-3. A helyi számítógép-tanúsítványok tanúsítványában adjon személyes kulcsengedélyeket a **DMS hibrid alkalmazáskulcs** és a **DMS-forgatókönyv motorkulcs-pár** tanúsítványainak új fiókjához.
+3. A helyi számítógép-tanúsítványok certmgr adjon titkos kulcsot az új fióknak a **DMS Hybrid app Key** és a DMS- **forgatókönyvhöz tartozó fő** kulcspár-tanúsítványok számára.
 
-    a. Nyissa meg a certmgr megnyitását a következő kulcsok megtekintéséhez:
+    a. Nyissa meg a certmgr a következő kulcsok megtekintéséhez:
 
-    - DMS hibrid alkalmazáskulcs
-    - DMS hibrid feldolgozó beállítási kulcsa
-    - DMS-forgatókönyv motorkulcs-párja
+    - DMS – hibrid alkalmazás kulcsa
+    - DMS Hybrid Worker telepítési kulcsa
+    - DMS-forgatókönyv – motor kulcspár
 
-    b. Kattintson a jobb gombbal a **DMS hibrid alkalmazáskulcs** bejegyzésre, mutasson a **Minden feladat**pontra, és válassza **a Személyes kulcsok kezelése parancsot.**
+    b. Kattintson a jobb gombbal a **DMS Hybrid app Key** bejegyzésre, mutasson a **minden feladat**elemre, majd válassza a **titkos kulcsok kezelése**lehetőséget.
 
-    c. A **Biztonság** lapon válassza a **Hozzáadás**lehetőséget, majd írja be a fiók nevét.
+    c. A **Biztonság** lapon válassza a **Hozzáadás**lehetőséget, majd adja meg a fiók nevét.
 
-    d. Ugyanezekkel a lépésekkel adhat személyes kulcsot az új fiókhoz a **DMS-forgatókönyv motorkulcs-pár tanúsítványához.**
+    d. Ugyanazokkal a lépésekkel engedélyezheti a titkos kulcs engedélyét az új fiókhoz a **DMS-forgatókönyvhöz tartozó motor kulcspár** -tanúsítványához.
 
-## <a name="unregistering-the-worker-manually"></a>A dolgozó manuális regisztrációjának megszüntetése
+## <a name="unregistering-the-worker-manually"></a>A feldolgozó manuális regisztrációjának törlése
 
-Ha már nem rendelkezik hozzáféréssel a feldolgozószámítógéphez, a következő lépések végrehajtásával törölje a dolgozó regisztrációját, és újra felhasználja az Azure Database Migration Service-példányt:
+Ha már nincs hozzáférése a munkavégző számítógéphez, a következő lépések végrehajtásával törölheti a feldolgozót, és újból felhasználhatja Azure Database Migration Service példányát:
 
-1. Az Azure Portalon az Azure Database Migration Service-példányt, majd keresse meg a **hibrid** beállítások lapot.
+1. A Azure Portal a Azure Database Migration Service példányra, majd navigáljon a **hibrid** beállítások lapra.
 
-   A dolgozóbejegyzés megjelenik a listában, és az állapot **offline állapotú.**
+   A feldolgozói bejegyzés a listában jelenik meg, az állapot pedig **kapcsolat nélküli üzemmódban**jelenik meg.
 
-2. A munkavégző bejegyzéslista jobb szélén jelölje ki a három pontot, majd kattintson a **Regisztráció visszavonása parancsra.**
+2. A feldolgozói bejegyzés listájának jobb szélén kattintson a három pontra, majd válassza a **Regisztráció törlése**lehetőséget.
 
-## <a name="addressing-issues-for-specific-migration-scenarios"></a>Az egyes áttelepítési forgatókönyvekkel kapcsolatos problémák megoldása
+## <a name="addressing-issues-for-specific-migration-scenarios"></a>Adott áttelepítési forgatókönyvek problémáinak kezelése
 
-Az alábbi szakaszok az Azure Database Migration Service hibrid mód használatával kapcsolatos forgatókönyv-specifikus problémákat ismertetik az online áttelepítés végrehajtásához.
+Az alábbi szakaszok a Azure Database Migration Service hibrid mód használatával történő online áttelepítés elvégzéséhez kapcsolódó forgatókönyv-specifikus problémákat írják le.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Online áttelepítések az Azure SQL Database felügyelt példányába
+### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Online áttelepítés Azure SQL Database felügyelt példányhoz
 
 **Magas processzorhasználat**
 
-**Probléma**: Az SQL Database felügyelt példányába való online áttelepítések esetén a hibrid feldolgozót futtató számítógép magas processzorhasználattal találkozik, ha túl sok biztonsági mentés van, vagy ha a biztonsági mentések túl nagyok.
+**Probléma**: a SQL Database felügyelt példányának online áttelepítése esetén a hibrid feldolgozót futtató számítógép magas CPU-használatot fog tapasztalni, ha túl sok biztonsági mentés van, vagy ha a biztonsági másolatok túl nagyok.
 
-**A**probléma enyhítése érdekében használjon tömörített biztonsági másolatokat, ossza fel az áttelepítést úgy, hogy az több megosztást használjon, vagy méretezhesse fel a hibrid feldolgozót futtató számítógépet.
+Megoldás **: a probléma enyhítése**érdekében használjon tömörített biztonsági mentéseket, Ossza szét az áttelepítést, hogy az több megosztást használjon, vagy a hibrid feldolgozót futtató számítógépet.

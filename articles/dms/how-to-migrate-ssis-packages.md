@@ -1,7 +1,7 @@
 ---
-title: SSIS-csomagok újratelepítése sql egyetlen adatbázisba
+title: SSIS-csomagok újbóli üzembe helyezése az SQL Single Database-ben
 titleSuffix: Azure Database Migration Service
-description: Megtudhatja, hogyan telepítheti át vagy helyezheti át újra az SQL Server Integration Services-csomagokat és -projekteket az Azure SQL Database egyetlen adatbázisába az Azure Database Migration Service és az Adatáttelepítési segéd használatával.
+description: Megtudhatja, hogyan telepíthet át vagy telepíthet át SQL Server Integration Services csomagokat és projekteket úgy, hogy az Azure Database Migration Service és Data Migration Assistant használatával egyetlen adatbázist Azure SQL Database.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,106 +13,106 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77648529"
 ---
-# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-csomagok újratelepítése az Azure Database Migration Service szolgáltatással az Azure SQL Database szolgáltatásra
+# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-csomagok újbóli üzembe helyezése Azure SQL Databasere Azure Database Migration Service
 
-Ha SQL Server Integration Services (SSIS) szolgáltatást használ, és át szeretné telepíteni az SSIS-projekteket/-csomagokat az SQL Server által üzemeltetett ForrásSISDB-ből az Azure SQL Database által üzemeltetett cél SSISDB-be, újratelepítheti őket az Integrációs szolgáltatások központi telepítése varázslóval. A varázslót az SQL Server Management Studio (SSMS) épületéből indíthatja el.
+Ha SQL Server Integration Servicest (SSIS) használ, és a SQL Server által a Azure SQL Database által üzemeltetett forrás-SSISDB szeretné áttelepíteni a SSIS-projekteket/csomagokat, akkor az Integration Services Deployment Wizard használatával újra üzembe helyezheti azokat. A varázslót SQL Server Management Studioon (SSMS) belül is elindíthatja.
 
-Ha az SSIS által használt verzió korábbi, mint 2012, mielőtt az SSIS-projekteket/csomagokat áthelyezi a projekt telepítési modelljébe, először konvertálnia kell őket az Integrációs szolgáltatások projektkonverzióvarázslójával, amely az SSMS-ből is indítható. További információt a [Projektek konvertálása a projekt telepítési modelljéhez](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)című témakörben talál.
+Ha a használt SSIS-verzió korábbi, mint 2012, a SSIS-projektek/csomagok projekt-telepítési modellbe való újbóli üzembe helyezése előtt először konvertálnia kell őket az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
 
 > [!NOTE]
-> Az Azure Database Migration Service (DMS) jelenleg nem támogatja a forrás SSISDB egy Azure SQL Database-kiszolgálóra való áttelepítését, de az SSIS-projekteket/csomagokat a következő folyamat használatával újratelepítheti.
+> A Azure Database Migration Service (DMS) jelenleg nem támogatja a forrás-SSISDB áttelepítését egy Azure SQL Database-kiszolgálóra, de a következő eljárással újra üzembe helyezheti a SSIS-projekteket/csomagokat.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 >
-> * Forrás SSIS-projektek/csomagok felmérése.
-> * Telepítse át az SSIS-projekteket/csomagokat az Azure-ba.
+> * A forrás-SSIS projektjeinek/csomagjainak értékelése.
+> * SSIS-projektek/csomagok migrálása az Azure-ba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lépések végrehajtásához a következőkre van szükség:
+A lépések elvégzéséhez a következőkre lesz szüksége:
 
-* SSMS 17.2-es vagy újabb verziója.
-* Az SSISDB üzemeltetésére a céladatbázis-kiszolgáló példánya. Ha még nem rendelkezik ilyen, hozzon létre egy Azure SQL Database-kiszolgálót (adatbázis nélkül) az Azure Portalon az SQL Server (csak logikai kiszolgáló) [űrlapra](https://ms.portal.azure.com/#create/Microsoft.SQLServer)navigálva.
-* Az SSIS-t az Azure-SSIS-integrációs futásidejű (IR) tartalmazó Azure Data Factoryban (ADF) kell kiépíteni az Azure-SSIS-integrációs runtime-ot (IR) az Azure SQL Database-kiszolgáló példánya által üzemeltetett cél SSISDB-vel (az [Azure-SSIS-integrációs futásidő kiépítése az Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)című cikkben leírtak szerint).
+* A SSMS 17,2-es vagy újabb verziója.
+* A célként megadott adatbázis-kiszolgáló egy példánya a SSISDB üzemeltetéséhez. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure SQL Database kiszolgálót (adatbázis nélkül) a Azure Portal használatával a SQL Server (csak logikai kiszolgáló) [űrlapra](https://ms.portal.azure.com/#create/Microsoft.SQLServer)való navigálással.
+* A SSIS-et Azure Data Factory (ADF)-ben kell kiépíteni, amely tartalmazza a Azure-SSIS Integration Runtime (IR) és a Azure SQL Database kiszolgáló példánya által üzemeltetett célként megadott SSISDB (a [Azure-SSIS Integration Runtime kiépítése Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)) című cikkben leírtak szerint.
 
-## <a name="assess-source-ssis-projectspackages"></a>Forrás SSIS-projektek/csomagok értékelése
+## <a name="assess-source-ssis-projectspackages"></a>Forrás SSIS projektek/csomagok értékelése
 
-Bár a forrás SSISDB értékelése még nincs integrálva az adatbázis-áttelepítési segédbe (DMA) vagy az Azure Database Migration Service (DMS) szolgáltatásba, az SSIS-projektek/-csomagok értékelése/érvényesítése az Azure SQL Database-kiszolgálón üzemeltetett cél SSISDB-re való újratelepítése kor lesz.
+Bár a forrás-SSISDB értékelése még nincs integrálva az adatbázis Migration Assistant (DMA) vagy a Azure Database Migration Service (DMS) szolgáltatásba, a SSIS-projekteket/csomagokat a rendszer értékeli/érvényesíti, mivel azokat újra üzembe helyezi a Azure SQL Database-kiszolgálón üzemeltetett cél SSISDB.
 
-## <a name="migrate-ssis-projectspackages"></a>SSIS-projektek/csomagok áttelepítése
+## <a name="migrate-ssis-projectspackages"></a>SSIS-projektek/csomagok migrálása
 
-SSIS-projektek/csomagok Azure SQL Database-kiszolgálóra való áttelepítéséhez hajtsa végre a következő lépéseket.
+A SSIS-projektek/csomagok Azure SQL Database kiszolgálóra történő áttelepítéséhez hajtsa végre a következő lépéseket.
 
-1. Nyissa meg a SSMS-t, majd a **Beállítások** lehetőséget a **Csatlakozás kiszolgálóhoz** párbeszédpanel megjelenítéséhez.
+1. Nyissa meg a SSMS, majd válassza a **Beállítások lehetőséget** a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel megjelenítéséhez.
 
-2. A **Bejelentkezés** lapon adja meg az Azure SQL Database-kiszolgálóhoz való csatlakozáshoz szükséges információkat, amely a cél SSISDB-t fogja üzemeltetni.
+2. A **login (bejelentkezés** ) lapon határozza meg a cél SSISDB futtató Azure SQL Database kiszolgálóhoz való kapcsolódáshoz szükséges adatokat.
 
     ![SSIS bejelentkezés lap](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
-3. A **Kapcsolat tulajdonságai** lap **Csatlakozás adatbázishoz** mezőjében jelölje be vagy írja be az **SSISDB**elemet, majd kattintson a **Csatlakozás gombra.**
+3. A **kapcsolat tulajdonságai** lap **Kapcsolódás az adatbázishoz** szövegmezőben válassza ki vagy írja be a **SSISDB**, majd válassza a **Kapcsolódás**lehetőséget.
 
-    ![Az SSIS-kapcsolat tulajdonságai lap](media/how-to-migrate-ssis-packages/dms-ssis-conncetion-properties-tab.png)
+    ![SSIS-kapcsolatok tulajdonságai lap](media/how-to-migrate-ssis-packages/dms-ssis-conncetion-properties-tab.png)
 
-4. Az SSMS Object Explorerben bontsa ki az **Integrációs szolgáltatások katalógusai csomópontot, bontsa** ki az **SSISDB**csomópontot, és ha nincsenek meglévő mappák, kattintson a jobb gombbal az **SSISDB** elemre, és hozzon létre egy új mappát.
+4. A SSMS Object Explorer bontsa ki az **Integration Services-katalógusok** csomópontot, bontsa ki a **SSISDB**elemet, és ha nincsenek meglévő mappák, kattintson a jobb gombbal a **SSISDB** elemre, és hozzon létre egy új mappát.
 
-5. Az **SSISDB**csoportban bontsa ki bármelyik mappát, kattintson a jobb gombbal **a Projektek**elemre, és válassza a Project telepítése **parancsot.**
+5. A **SSISDB**alatt bontsa ki bármelyik mappát, kattintson a jobb gombbal a **projektek**elemre, majd válassza a **projekt üzembe helyezése**elemet.
 
-    ![SSIS SSISDB csomópont kibontva](media/how-to-migrate-ssis-packages/dms-ssis-ssisdb-node-expanded.png)
+    ![SSIS SSISDB csomópontja kibontva](media/how-to-migrate-ssis-packages/dms-ssis-ssisdb-node-expanded.png)
 
-6. Az Integrációs szolgáltatások telepítése varázsló **Bevezetés** lapján tekintse át az információkat, majd kattintson a **Tovább**gombra.
+6. Az integrációs szolgáltatások telepítése varázslóban a **Bevezetés** lapon tekintse át az adatokat, majd kattintson a **tovább**gombra.
 
     ![Központi telepítési varázsló – Bevezetés lap](media/how-to-migrate-ssis-packages/dms-deployment-wizard-introduction-page.png)
 
-7. A **Forrás kiválasztása** lapon adja meg a telepíteni kívánt meglévő SSIS-projektet.
+7. A **forrás kiválasztása** lapon adja meg a telepíteni kívánt meglévő SSIS-projektet.
 
-    Ha az SSMS a forrás SSISDB-t üzemeltető SQL Server kiszolgálóhoz is csatlakozik, válassza az **Integrációs szolgáltatások katalógusát,** majd írja be a kiszolgáló nevét és a projekt elérési útját a katalógusba a projekt közvetlen telepítéséhez.
+    Ha a SSMS a forrás SSISDB futtató SQL Server is csatlakozik, válassza az **Integration Services Catalog**lehetőséget, majd adja meg a kiszolgáló nevét és a projekt elérési útját a katalógusban a projekt közvetlen üzembe helyezéséhez.
 
-    Másik lehetőségként válassza a **Project telepítési fájlját,** majd adja meg egy meglévő projekttelepítési fájl (.ispac) elérési útját a projekt telepítéséhez.
+    Másik lehetőségként válassza a **projekt központi telepítési fájlja**lehetőséget, majd adja meg egy meglévő projekt központi telepítési fájljának elérési útját (. ispac) a projekt telepítéséhez.
 
-    ![Központi telepítési varázsló Forrás kiválasztása lapja](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
+    ![Központi telepítés varázsló forrás kiválasztása lap](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. Válassza a **Tovább lehetőséget.**
-9. A **Cél kiválasztása** lapon adja meg a projekt célját.
+8. Kattintson a **Tovább** gombra.
+9. A **cél kiválasztása** lapon adja meg a projekt célját.
 
-    a. A Kiszolgáló neve mezőbe írja be a teljesen minősített Azure SQL Database-kiszolgáló nevét (<server_name>.database.windows.net).
+    a. A kiszolgálónév szövegmezőbe írja be a teljes Azure SQL Database kiszolgáló nevét (<server_name>. database.windows.net).
 
-    b. Adja meg a hitelesítési adatokat, majd válassza a **Csatlakozás lehetőséget.**
+    b. Adja meg a hitelesítési adatokat, majd válassza a **kapcsolat**lehetőséget.
 
-    ![Központi telepítési varázsló Cél kiválasztása lapja](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
+    ![Központi telepítés varázsló célhely kiválasztása oldal](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
 
-    c. A **Tallózás gombra** a célmappa SSISDB-ben való megadásához válassza a **Tovább**gombot.
-
-    > [!NOTE]
-    > A **Tovább** gomb csak a **Csatlakozás**lehetőséget követően engedélyezett.
-
-10. Az **Érvényesítés** lapon tekintse meg a hibákat/figyelmeztetéseket, majd szükség esetén módosítsa a csomagokat ennek megfelelően.
-
-    ![A Központi telepítési varázsló ellenőrzése lapja](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
-
-11. Válassza a **Tovább lehetőséget.**
-
-12. A **Véleményezés** lapon tekintse át a telepítési beállításokat.
+    c. Válassza a **Tallózás** lehetőséget a SSISDB megadásához, majd kattintson a **tovább**gombra.
 
     > [!NOTE]
-    > A beállításokat az **Előző** lehetőséget választva módosíthatja, vagy a bal oldali ablaktáblában lévő bármelyik lépéshivatkozást kijelölheti.
+    > A **tovább** gomb csak a **kapcsolat**kiválasztása után van engedélyezve.
 
-13. A **központi telepítési** folyamat elindításához válassza a Telepítés lehetőséget.
+10. Az **Érvényesítés** lapon tekintse meg az esetleges hibákat és figyelmeztetéseket, majd szükség esetén módosítsa a csomagokat ennek megfelelően.
 
-14. A központi telepítési folyamat befejezése után megtekintheti az Eredmények lapot, amely az egyes telepítési műveletek sikeresvagy sikertelenségét jeleníti meg.
-    a. Ha valamelyik művelet sikertelen volt, az **Eredmény** oszlopban válassza a **Sikertelen lehetőséget** a hiba magyarázatának megjelenítéséhez.
-    b. Ha az eredményeket XML-fájlba szeretné menteni, válassza a **Jelentés mentése** lehetőséget.
+    ![Központi telepítési varázsló – ellenőrzés lap](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-15. Válassza a **Bezárás** lehetőséget az Integrációs szolgáltatások központi telepítését segítő varázslóból való kilépéshez.
+11. Kattintson a **Tovább** gombra.
 
-Ha a projekt telepítése sikertelen, kiválaszthatja az Azure-SSIS IR-en futtatandó csomagokat.
+12. Az **Áttekintés** lapon tekintse át a telepítési beállításokat.
+
+    > [!NOTE]
+    > A beállításokat a **Previous (előző** ) vagy a bal oldali ablaktábla bármelyik lépés hivatkozásának kiválasztásával módosíthatja.
+
+13. Az üzembe helyezési folyamat elindításához válassza a **telepítés** lehetőséget.
+
+14. Az üzembe helyezési folyamat befejeződése után megtekintheti az eredmények lapot, amely megjeleníti az egyes központi telepítési műveletek sikerességét vagy sikertelenségét.
+    a. Ha bármilyen művelet meghiúsult, az **eredmény** oszlopban válassza a **nem sikerült** lehetőséget a hiba magyarázatának megjelenítéséhez.
+    b. Ha szeretné, válassza a **jelentés mentése** lehetőséget, hogy az eredményeket XML-fájlba mentse.
+
+15. A **Bezárás** gombra kattintva lépjen ki az integrációs szolgáltatások központi telepítése varázslóból.
+
+Ha a projekt telepítése nem sikerül, akkor kiválaszthatja a Azure-SSIS IRon való futtatáshoz szükséges csomagokat.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át az áttelepítési útmutatót a Microsoft [adatbázis-áttelepítési útmutatójában.](https://datamigration.microsoft.com/)
+* Tekintse át az áttelepítési útmutatót a Microsoft [Database áttelepítési útmutatójában](https://datamigration.microsoft.com/).

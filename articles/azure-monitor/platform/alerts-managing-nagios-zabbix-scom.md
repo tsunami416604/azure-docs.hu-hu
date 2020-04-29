@@ -1,31 +1,31 @@
 ---
-title: A System Center Operations Manager, a Zabbix és a Nagios riasztásainak kezelése az Azure Monitorban
-description: A System Center Operations Manager, a Zabbix és a Nagios riasztásainak kezelése az Azure Monitorban
+title: System Center Operations Manager-, Zabbix-és Nagios-riasztások kezelése Azure Monitor
+description: System Center Operations Manager-, Zabbix-és Nagios-riasztások kezelése Azure Monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: alerts
 ms.openlocfilehash: 5ef03f522fb91302bfdec985f1e3c5cf8138ae97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667448"
 ---
-# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>A System Center Operations Manager, a Zabbix és a Nagios riasztásainak kezelése az Azure Monitorban
+# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>System Center Operations Manager-, Zabbix-és Nagios-riasztások kezelése Azure Monitor
 
-Most már megtekintheti a nagiosi, zabbixi és system center-műveleti kezelőből érkező riasztásokat az [Azure Monitorban.](https://aka.ms/azure-alerts-overview) Ezek a riasztások a Nagios/Zabbix kiszolgálókkal vagy a System Center Operations Manager rel a Log Analytics szolgáltatásba való integrációból származnak. 
+Most már megtekintheti a riasztásokat a Nagios, a Zabbix és a System Center Operations Manager [Azure monitorban](https://aka.ms/azure-alerts-overview). Ezek a riasztások a Nagios/Zabbix-kiszolgálókkal való integrációk vagy a Log Analyticsba System Center Operations Manager. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Log Analytics-tárházban egy riasztástípussal rendelkező rekordok importálása az Azure Monitorba, így el kell végeznie a rekordok gyűjtéséhez szükséges konfigurációt.
-1. **Nagios** és **Zabbix** riasztások esetén [konfigurálja ezeket a kiszolgálókat](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) úgy, hogy [riasztásokat küldjenek](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json) a Log Analytics szolgáltatásnak.
-1. A **System Center Operations Manager** riasztásai esetén csatlakoztassa az [Operations Manager felügyeleti csoportját a Log Analytics-munkaterülethez.](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents) Ezt követően telepítse a [riasztáskezelési](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution) megoldást az Azure-megoldások piactérről. Miután elkészült, a System Center Operations Manager ben létrehozott riasztások importálása a Log Analytics.
+A Log Analytics-tárházban lévő minden olyan rekord, amely egy riasztást tartalmaz, a rendszer importálja Azure Monitorba, így a rekordok összegyűjtéséhez szükséges konfigurációt kell végrehajtania.
+1. A **Nagios** -és **Zabbix** -riasztások esetében [konfigurálja ezeket a kiszolgálókat](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) a [riasztások log Analyticsba küldéséhez](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json) .
+1. **System Center Operations Manager** riasztások esetén a [Operations Manager felügyeleti csoportot a log Analytics munkaterülethez kell kötni](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). Ezt követően telepítse a [Alert Management](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution) megoldást az Azure Solutions Piactérről. Ha elkészült, a rendszer a System Center Operations Managerban létrehozott összes riasztást a Log Analyticsba importálja.
 
-## <a name="view-your-alert-instances"></a>A riasztási példányok megtekintése
-Miután konfigurálta az importálást a Log Analytics szolgáltatásba, megkezdheti a riasztási példányok megtekintését ezekből a figyelési szolgáltatásokból az [Azure Monitorban.](https://aka.ms/azure-alerts-overview) Miután megvannak jelen az Azure Monitorban, [kezelheti a riasztási példányokat,](https://aka.ms/managing-alert-instances) [kezelheti az ezeken a riasztásokon létrehozott intelligens csoportokat,](https://aka.ms/managing-smart-groups) és [módosíthatja a riasztások és az intelligens csoportok állapotát.](https://aka.ms/managing-alert-smart-group-states)
+## <a name="view-your-alert-instances"></a>Riasztási példányok megtekintése
+Miután konfigurálta az importálást a Log Analyticsba, megtekintheti a riasztási példányok megtekintését a figyelési szolgáltatásokból [Azure monitorokban](https://aka.ms/azure-alerts-overview). Ha már szerepelnek a Azure Monitorban, [kezelheti a riasztási példányokat](https://aka.ms/managing-alert-instances), [kezelheti a riasztások alapján létrehozott intelligens csoportokat](https://aka.ms/managing-smart-groups) , és [módosíthatja a riasztások és az intelligens csoportok állapotát](https://aka.ms/managing-alert-smart-group-states).
 
 > [!NOTE]
->  1. Ez a megoldás csak lehetővé teszi a System Center Operations Manager/Zabbix/Nagios által indított riasztási példányok megtekintését az Azure Monitorban. A riasztási szabályok konfigurációja csak a megfelelő figyelési eszközökben tekinthető meg/szerkeszthető. 
->  1. Az összes tüzelésű riasztási példány elérhető lesz az Azure Monitorban és az Azure Log Analytics-ben is. Jelenleg nincs mód a kettő közötti választás, vagy csak a konkrét tüzelésű riasztások betöltése.
->  1. A System Center Operations Manager, a Zabbix és a Nagios összes riasztása "Ismeretlen" jeltípussal rendelkezik, mivel az alapul szolgáló telemetriai típus nem érhető el.
->  1. A Nagios-riasztások nem állapotalapúak – például egy riasztás [figyelőállapota](https://aka.ms/azure-alerts-overview) nem "Tüzelt" és "Megoldott" lesz. Ehelyett mind a "Fired" és a "Resolved" külön riasztási példányként jelenik meg. 
+>  1. Ez a megoldás csak a System Center Operations Manager/Zabbix/Nagios fired riasztási példányok megtekintését teszi lehetővé Azure Monitorokban. A riasztási szabály konfigurációját csak a megfelelő figyelési eszközökben lehet megtekinteni vagy szerkeszteni. 
+>  1. Minden elindított riasztási példány elérhető lesz a Azure Monitor és az Azure Log Analyticsban is. Jelenleg nem választhat a kettő közül, vagy csak bizonyos kilőtt riasztásokat.
+>  1. A System Center Operations Manager, a Zabbix és a Nagios összes riasztása "Unknown" típusú jelet tartalmaz, mivel a mögöttes telemetria-típus nem érhető el.
+>  1. A Nagios-riasztások nem megfelelőek – például a riasztások [figyelési feltétele](https://aka.ms/azure-alerts-overview) nem a "kilőtt" értékről "feloldott" állapotba kerül. Ehelyett a "fired" és a "megoldott" is külön riasztási példányként jelenik meg. 
 

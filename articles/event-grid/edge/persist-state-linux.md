@@ -1,6 +1,6 @@
 ---
-title: Megmaradó állapot Linuxon – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Metaadatok megőrzése Linux alatt
+title: Állapot megőrzése Linux rendszeren – Azure Event Grid IoT Edge | Microsoft Docs
+description: Metaadatok megőrzése Linuxon
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77086648"
 ---
-# <a name="persist-state-in-linux"></a>Állapot megőrzése linuxos állapotban
+# <a name="persist-state-in-linux"></a>Állapot megőrzése Linuxon
 
-Az Event Grid modulban létrehozott témakörök és előfizetések alapértelmezés szerint a tárolófájlrendszerben tárolófájlrendszerben tárolóba kerülnek. Megőrzés nélkül, ha a modul újratelepítése, az összes létrehozott metaadatok elveszne. Az adatok megőrzése a központi telepítések és újraindítások között, meg kell őriznie az adatokat a tároló fájlrendszeren kívül.
+A Event Grid modulban létrehozott témaköröket és előfizetéseket a rendszer alapértelmezés szerint a tároló fájlrendszerében tárolja. Az adatmegőrzés nélkül, ha a modul újratelepítése megtörténik, az összes létrehozott metaadat elvész. A központi telepítések és újraindítások közötti adatmegőrzéshez a tároló fájlrendszerén kívül kell megőriznie az adattárolást.
 
-Alapértelmezés szerint csak a metaadatok maradnak meg, és az események továbbra is a memóriában tárolódnak a jobb teljesítmény érdekében. Kövesse az események megőrzése szakaszt az eseménymegőrzés engedélyezéséhez is.
+Alapértelmezés szerint a rendszer csak a metaadatokat őrzi meg, az eseményeket pedig a memóriában tárolja a jobb teljesítmény érdekében. Az esemény-megőrzés engedélyezéséhez kövesse az események megőrzése szakaszt is.
 
-Ez a cikk az Event Grid modul linuxos központi telepítéseiben való megőrzési alkalmazással történő üzembe helyezésének lépéseit tartalmazza.
+Ez a cikk azokat a lépéseket ismerteti, amelyekkel üzembe helyezheti a Event Grid modult a Linux rendszerű üzemelő példányokban.
 
 > [!NOTE]
->Az Event Grid modul alacsony jogosultsági szintű felhasználóként fut UID `2000` azonosítóval és névvel. `eventgriduser`
+>Az Event Grid modul alacsony jogosultsági szintű felhasználóként fut UID `2000` és Name néven. `eventgriduser`
 
-## <a name="persistence-via-volume-mount"></a>Perzisztencia a kötetcsatlakoztatással
+## <a name="persistence-via-volume-mount"></a>Adatmegőrzés a Volume Mount használatával
 
- [Docker-kötetek](https://docs.docker.com/storage/volumes/) az adatok megőrzésére a központi telepítések között. A docker automatikusan létrehozhat egy elnevezett kötetet az Event Grid modul üzembe helyezése részeként. Ez az opció a legegyszerűbb lehetőség. A **kötések** szakaszban a következőképpen adhatja meg a létrehozandó kötet nevét:
+ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) a központi telepítések közötti adatmegőrzésre szolgálnak. Lehetővé teheti, hogy a Docker automatikusan hozzon létre egy nevesített kötetet a Event Grid modul üzembe helyezésének részeként. Ez a legegyszerűbb lehetőség. A **kötések** szakaszban megadhatja a kötet nevét, amelyet a következőképpen hozhat létre:
 
 ```json
   {
@@ -42,9 +42,9 @@ Ez a cikk az Event Grid modul linuxos központi telepítéseiben való megőrzé
 ```
 
 >[!IMPORTANT]
->Ne módosítsa a kötési érték második részét. A modulon belül egy adott helyre mutat. A Linuxon lévő Event Grid modulhoz **a /app/metadataDb**-nek kell lennie.
+>Ne módosítsa a kötési érték második részét. Egy adott helyre mutat a modulon belül. A Linux Event Grid moduljának **/app/metadataDb**kell lennie.
 
-Például a következő konfiguráció eredményeképpen létre kell venni az **egmetadataDbVol** kötetet, ahol a metaadatok megmaradnak.
+A következő konfiguráció például azt eredményezi, hogy a kötet **egmetadataDbVol** hozza létre, ahol a metaadatok megmaradnak.
 
 ```json
  {
@@ -77,18 +77,18 @@ Például a következő konfiguráció eredményeképpen létre kell venni az **
 }
 ```
 
-Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdarendszeren, és csatlakoztathatja a könyvtárat.
+Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és csatlakoztathatja a könyvtárat.
 
-## <a name="persistence-via-host-directory-mount"></a>Perzisztencia a gazdatár-csatlakoztatással
+## <a name="persistence-via-host-directory-mount"></a>Adatmegőrzés a gazdagép könyvtárának csatlakoztatása révén
 
-Docker-kötet helyett is lehetősége van egy gazdamappa csatlakoztatására.
+A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatására is.
 
-1. Először hozzon létre egy **felhasználót eventgriduser** névvel és **2000** azonosítójú felhasználóval a gazdagépen a következő parancs futtatásával:
+1. Először hozzon létre egy **eventgriduser** és ID **2000** nevű felhasználót a gazdagépen a következő parancs futtatásával:
 
     ```sh
     sudo useradd -u 2000 eventgriduser
     ```
-1. Hozzon létre egy könyvtárat a gazdafájlrendszeren a következő parancs futtatásával.
+1. A következő parancs futtatásával hozzon létre egy könyvtárat a gazdagép fájlrendszerén.
 
    ```sh
    md <your-directory-name-here>
@@ -99,7 +99,7 @@ Docker-kötet helyett is lehetősége van egy gazdamappa csatlakoztatására.
     ```sh
     md /myhostdir
     ```
-1. Ezután tegye **az eventgriduser** tulajdonosát a mappához a következő parancs futtatásával.
+1. Ezután a következő parancs futtatásával tegye **eventgriduser** a mappa tulajdonosát.
 
    ```sh
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
@@ -110,7 +110,7 @@ Docker-kötet helyett is lehetősége van egy gazdamappa csatlakoztatására.
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
     ```
-1. **A Binds** használatával csatlakoztatja a címtárat, és újratelepítheti az Event Grid modult az Azure Portalról.
+1. A **kötések** használatával csatlakoztassa a könyvtárat, és telepítse újra a Event Grid modult Azure Portal.
 
     ```json
     {
@@ -157,20 +157,20 @@ Docker-kötet helyett is lehetősége van egy gazdamappa csatlakoztatására.
     ```
 
     >[!IMPORTANT]
-    >Ne módosítsa a kötési érték második részét. A modulon belül egy adott helyre mutat. A linuxos Event Grid modulhoz **a /app/metadataDb** és **a /app/eventsDb** kapcsolónak kell lennie.
+    >Ne módosítsa a kötési érték második részét. Egy adott helyre mutat a modulon belül. A Linux Event Grid moduljának **/app/metadataDb** és **/app/eventsDb** kell lennie
 
 
 ## <a name="persist-events"></a>Események megőrzése
 
-Az eseménymegőrzés engedélyezéséhez először engedélyeznie kell a metaadat-megőrzést a kötetcsatlakoztatás vagy a gazdakönyvtár csatlakoztatása segítségével a fenti szakaszok használatával.
+Az események megőrzésének engedélyezéséhez előbb engedélyeznie kell a metaadatok megőrzését a Volume Mount vagy a Host Directory Mount használatával a fenti fejezetek segítségével.
 
-Fontos tudnivalók a tartós eseményekről:
+Fontos tudnivalók a megőrzött eseményekről:
 
-* A tartós események esemény-előfizetésenként engedélyezve vannak, és a kötet vagy könyvtár csatlakoztatása után engedélyezve vannak.
-* Az eseménymegőrzés a létrehozás időpontjában egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az eseménymegőrzésváltáshoz törölnie kell, majd újra létre kell hoznia az Esemény-előfizetést.
-* A tartós események szinte mindig lassabbak, mint a memóriaműveletekben, azonban a sebességkülönbség nagymértékben függ a meghajtó jellemzőitől. A sebesség és a megbízhatóság közötti kompromisszum minden üzenetküldő rendszer velejárója, de általában csak nagy léptékben válik észrevehetővé.
+* Az események megtartása esemény-előfizetések alapján engedélyezett, és a kötet vagy a könyvtár csatlakoztatása után is engedélyezve van.
+* Az esemény-megőrzés a létrehozáskor egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az események megőrzésének váltásához törölnie kell, majd újra létre kell hoznia az esemény-előfizetést.
+* A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum minden üzenetkezelő rendszerhez alkalmazkodik, de általában nagy léptékben észlelhető.
 
-Az esemény-előfizetés eseménymegőrzésének engedélyezéséhez `true`állítsa a következőt: `persistencePolicy`
+Ha engedélyezni szeretné az események megőrzését egy esemény- `persistencePolicy` előfizetésben, állítsa a `true`következőre:
 
  ```json
         {

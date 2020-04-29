@@ -1,6 +1,6 @@
 ---
-title: A szervezetek kezelése a Saját fiók portálról – Azure AD
-description: A Munkahelyi vagy iskolai fiókhoz kapcsolódó szervezetek megtekintése és a munkahelyi vagy iskolai fiókhoz kapcsolódó szervezetek megtekinthetők és a Saját fiók portál Szervezetek lapján.
+title: Szervezetek kezelése a saját fiók portálról – Azure AD
+description: A saját fiók portál szervezetek lapján megtekintheti és elhagyhatja a munkahelyi vagy iskolai fiókjához kapcsolódó szervezeteket.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062472"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>A csatlakoztatott szervezetek kezelése a Szervezetek lapon
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>A csatlakoztatott szervezetek kezelése a szervezetek lapról
 
-A **Saját fiók** portál **Szervezetek** lapja segít a munkahelyi vagy iskolai fiókhoz kapcsolódó szervezetek (általában a szervezet neve) kezelésében. A **Szervezetek** lapon kétféle szervezet látható:
+A **saját fiók** portál **szervezetek** lapján kezelheti a munkahelyi vagy iskolai fiókhoz kapcsolódó szervezeteket (általában a szervezet nevét). A **szervezetek lapon két típusú szervezet látható** :
 
-- **Otthoni szervezet.** Az otthoni szervezet az a szervezet, amely a munkahelyi vagy iskolai fiók tulajdonosa. Nem hagyhatja el az otthoni szervezetét.
+- **Otthoni szervezet.** Otthoni szervezete a munkahelyi vagy iskolai fiókját birtokló szervezet. Nem hagyhatja a saját szervezetét.
 
     >[!NOTE]
-    > Ha nem rendelkezik hozzárendelt otthoni szervezettel, akkor csak egy címsort fog látni, amely a Szervezetek a társított szervezetek listáját tartalmazza.
+    > Ha nem rendelkezik hozzárendelt otthoni szervezettel, csak egyetlen fejléc jelenik meg, amely szerint a szervezetek a társított szervezetek listájával rendelkeznek.
 
-- **Más szervezetek.** A többi szervezet olyan csoport, amelybe korábban a munkahelyi vagy iskolai fiókjával jelentkezett be. Ezek közül bármelyik szervezet bármikor elhagyható.
+- **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
 
 >[!Important]
->Ez a cikk azoknak a felhasználóknak szól, akik egy munkahelyi vagy iskolai fiókhoz kapcsolódó szervezeti adatokat próbálnak frissíteni. Ha Ön rendszergazdaként tájékozódhat az alkalmazottak és más célokra szolgáló csoport- és felhasználókezelésről, olvassa el a [Vállalati felhasználókezelési dokumentációt.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index)
+>Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott szervezeti adatokat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
 
 ## <a name="view-your-organizations"></a>A szervezetek megtekintése
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjába, majd lépjenhttps://myprofile.microsoft.com/) a Saját **fiók** (lapra).
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a **saját fiók** (https://myprofile.microsoft.com/) oldal) lapot.
 
-2. Válassza a **Szervezetek** elemet a bal oldali navigációs ablakban, vagy válassza a **Szervezetek kezelése hivatkozást** a **Szervezetek** blokkból.
+2. A bal oldali navigációs ablaktáblán válassza a **szervezetek** lehetőséget, **vagy a szervezetek blokkban** válassza a **szervezetek kezelése** hivatkozást.
 
-    ![Saját fiók lap, kiemelt szervezetek hivatkozásainak megjelenítése](media/my-account-portal/my-account-portal-organizations.png)
+    ![Saját fiók lap, amely a Kiemelt szervezetek hivatkozásait mutatja](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Tekintse át az **otthoni szervezet**adatait.
+3. Tekintse át a saját **szervezete**adatait.
 
     ![Szervezetek lap](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Tekintse át a többi társított szervezetet, és győződjön meg arról, hogy felismeri a fiókjához kapcsolódó összes szervezetet.
+4. Tekintse át a többi társított szervezetet, és győződjön meg arról, hogy ismeri fel a fiókhoz csatlakozó összes szervezetet.
 
 ## <a name="leave-an-organization"></a>Szervezet elhagyása
 
-Bármely szervezetből kiléphet, amely nem az Ön kezdőlapja.
+Minden olyan szervezetet meghagyhat, amely nem a saját szervezete.
 
 >[!Important]
->Ha véletlenül elhagy egy szervezetet, nem lehet visszavonni. Meg kell várnia, amíg a szervezet rendszergazdája újra meghívja Önt.
+>Ha a szervezetet tévedésből hagyja, a visszavonás nem vonható vissza. Várnia kell, amíg az adott szervezet rendszergazdája újra meghívja Önt.
 
-- Válassza a Kilépés a **szervezetből** lehetőséget a kilépni kívánt szervezet mellett, majd a **Kilépés** lehetőséget a kilépés megerősítéséhez.
+- Válassza a **szervezet elhagyása** lehetőséget a meghagyni kívánt szervezet mellett, majd válassza a **Kilépés** lehetőséget, és erősítse meg, hogy el kívánja hagyni.
 
-    ![Szervezetek lap kiemelt kilépési szervezeti hivatkozással](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Szervezetek lap Kiemelt Kilépés a szervezeti hivatkozással](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>További lépések
 
 A szervezetek megtekintése után a következőket teheti:
 
-- A biztonsági [adatok](user-help-security-info-overview.md)megtekintése vagy kezelése.
+- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
 
 - A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
 
-- Tekintse meg [a bejelentkezési tevékenységet.](my-account-portal-sign-ins-page.md)
+- A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
 
-- Megtekintheti, hogy szervezete hogyan [használja fel az adatvédelemmel kapcsolatos adatokat.](my-account-portal-privacy-page.md)
+- Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Salesforce sandbox konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez| Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Salesforce sandbox között.
+title: 'Oktatóanyag: a Salesforce-munkafolyamatok konfigurálása automatikus felhasználó-kiépítés Azure Active Directorysal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Salesforce között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,102 +16,102 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48df954f680c6774b0aa189453615156f4f0b4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063271"
 ---
-# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Oktatóanyag: A Salesforce sandbox konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Oktatóanyag: a Salesforce-homokozó konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
-Ez az oktatóanyag célja, hogy megmutassa a Salesforce sandbox és az Azure AD által végrehajtandó lépéseket a felhasználói fiókok automatikus kiépítéséhez és az Azure AD-ről a Salesforce sandboxra való automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a Salesforce homokozóban és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Salesforce-alapú homokozóba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
 *   Egy Azure Active Directory-bérlő.
-*   Érvényes bérlő a Salesforce Sandbox for Work vagy a Salesforce Sandbox for Education számára. Bármelyik szolgáltatáshoz használhat ingyenes próbafiókot.
-*   A Salesforce sandbox ban lévő felhasználói fiók csapatadminisztrátori engedélyekkel.
+*   Érvényes bérlő a Salesforce-homokozóban munkahelyi vagy Salesforce-homokozóban az oktatáshoz. Bármelyik szolgáltatáshoz használhatja az ingyenes próbaverziós fiókot is.
+*   Felhasználói fiók a Salesforce-munkaterületen a csoport rendszergazdai engedélyeivel.
 
-## <a name="assigning-users-to-salesforce-sandbox"></a>Felhasználók hozzárendelése a Salesforce sandboxhoz
+## <a name="assigning-users-to-salesforce-sandbox"></a>Felhasználók Salesforce-beli Sandboxhoz rendelése
 
-Az Azure Active Directory a "hozzárendelések" nevű koncepciót használja annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói fiók kiépítése, csak a felhasználók és csoportok, amelyek "hozzárendelt" egy alkalmazás az Azure AD-ben szinkronizálva vannak.
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak vagy csoportjainak kell hozzáférniük a Salesforce sandbox alkalmazáshoz. Miután meghozta ezt a döntést, ezeket a felhasználókat hozzárendelheti a Salesforce Sandbox alkalmazáshoz a [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) című útmutató utasításainak megfelelően.
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra vagy csoportokra van szükség az Azure AD-ben a Salesforce homokozó alkalmazáshoz. A döntés elvégzése után ezeket a felhasználókat hozzárendelheti a Salesforce sandbox-alkalmazáshoz a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) című részben leírtak szerint.
 
-### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Fontos tippek a felhasználók Salesforce sandboxhoz rendeléséhez
+### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Fontos Tippek a felhasználók Salesforce-beli Sandboxhoz való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Salesforce sandbox a létesítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Salesforce-munkaterülethez a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználót a Salesforce sandboxhoz rendel, érvényes felhasználói szerepkört kell választania. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítés.
+* Amikor felhasználót rendel a Salesforce a Sandboxhoz, ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során.
 
 > [!NOTE]
-> Ez az alkalmazás a kiépítési folyamat részeként importálja az egyéni szerepköröket a Salesforce sandboxból, amelyet az ügyfél a felhasználók hozzárendelésekor szeretne kiválasztani.
+> Ez az alkalmazás a kiépítési folyamat részeként importálja az egyéni szerepköröket a Salesforce-munkaterületről, amelyet az ügyfél a felhasználók kiosztásakor érdemes kiválasztani.
 
-## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználói kiépítés engedélyezése
+## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználó-kiépítés engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD-nek a Salesforce Sandbox felhasználói fiók létesítési API-jával való összekapcsolásával, valamint a kiépítési szolgáltatás konfigurálásával a hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához a Salesforce sandboxban a felhasználó és a csoport alapján hozzárendelést az Azure AD-ben.
+Ez a szakasz végigvezeti az Azure AD-nek a homokozó felhasználói fiókok üzembe helyezési API-Salesforce való csatlakoztatásán, valamint a kiépítési szolgáltatásnak az Azure AD-ben a felhasználók és csoportok hozzárendelése alapján történő létrehozásához, frissítéséhez és letiltásához a Salesforce-homokozóban.
 
 >[!Tip]
->Az [Azure Portalon](https://portal.azure.com)található utasításokat követve engedélyezheti az SAML-alapú egyszeri bejelentkezést a Salesforce sandboxhoz. Egyszeri bejelentkezés konfigurálható az automatikus kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
+>Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Salesforce homokozóban, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus kiépítésének konfigurálása
+### <a name="configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása
 
-Ez a szakasz azt ismerteti, hogy miként engedélyezheti az Active Directory felhasználói fiókok szolgáltatását a Salesforce sandboxba.
+Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active Directory felhasználói fiókok felhasználói fiókjainak Salesforce a homokozóban.
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg az **Azure Active Directory > Vállalati alkalmazások > az összes alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
 
-1. Ha már konfigurálta a Salesforce sandboxot egyszeri bejelentkezéshez, keresse meg a Salesforce Sandbox példányát a keresőmező használatával. Ellenkező esetben válassza a **Salesforce sandbox** **hozzáadása** és keresése lehetőséget az alkalmazásgyűjteményben. Válassza ki a Salesforce sandboxot a keresési eredmények között, és vegye fel az alkalmazások listájára.
+1. Ha már konfigurálta a Salesforce-alapú munkaterületet az egyszeri bejelentkezéshez, keresse meg a Salesforce-homokozó példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **Salesforce** -munkaterületet az alkalmazás-galériában. Válassza ki a Salesforce-munkaterületet a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-1. Válassza ki a Salesforce sandbox példányát, majd válassza a **Kiépítés** lapot.
+1. Válassza ki a Salesforce-homokozó példányát, majd válassza ki a **kiépítés** lapot.
 
-1. Állítsa a **létesítési módot** **Automatikus**ra.
+1. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![kiépítési](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
-1. A **Rendszergazdai hitelesítő adatok csoportban** adja meg a következő konfigurációs beállításokat:
+1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
    
-    a. A **Rendszergazdai felhasználónév** mezőbe írjon be egy Salesforce sandbox-fióknevet, amelyhez a **rendszergazdai** profil van rendelve Salesforce.com.
+    a. A **rendszergazda felhasználóneve** szövegmezőbe írja be a Salesforce.com hozzárendelt **rendszergazdai** profillal rendelkező Salesforce.
    
-    b. A **Rendszergazdai jelszó** mezőbe írja be a fiók jelszavát.
+    b. A **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
 
-1. A Salesforce sandbox biztonsági jogkivonatának beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanabba a Salesforce sandbox felügyeleti fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások parancsra.**
+1. A Salesforce-beli sandbox biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce sandbox-beli rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások**elemre.
 
-     ![Automatikus felhasználói kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználói kiépítés engedélyezése")
+     ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-1. A bal oldali navigációs ablakban kattintson a **Személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a Saját **biztonsági jogkivonat visszaállítása parancsra.**
+1. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása**elemre.
   
-    ![Automatikus felhasználói kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználói kiépítés engedélyezése")
+    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-1. A **Biztonsági jogkivonat visszaállítása** lapon kattintson a **Biztonsági jogkivonat visszaállítása** gombra.
+1. A **biztonsági jogkivonat alaphelyzetbe** állítása lapon kattintson a **biztonsági jogkivonat alaphelyzetbe állítása** gombra.
 
-    ![Automatikus felhasználói kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználói kiépítés engedélyezése")
+    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-1. Ellenőrizze az ehhez a rendszergazdai fiókhoz társított e-mail postafiókot. Keressen egy e-mailt a Salesforce Sandbox.com, amely tartalmazza az új biztonsági jogkivonatot.
+1. Keresse meg a rendszergazdai fiókhoz társított e-mailek mappáját. Keressen egy e-mailt a Salesforce Sandbox.com, amely az új biztonsági jogkivonatot tartalmazza.
 
-1. Másolja a jogkivonatot, nyissa meg az Azure AD-ablakot, és illessze be a **titkos jogkivonat** mezőbe.
+1. Másolja ki a tokent, nyissa meg az Azure AD-ablakot, és illessze be a **titkos jogkivonat** mezőbe.
 
-1. Az Azure Portalon kattintson a **Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Salesforce sandbox alkalmazáshoz.
+1. A Azure Portalban kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a Salesforce homokozó-alkalmazáshoz.
 
-1. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek kiépítési hibaértesítéseket kell kapnia, és jelölje be a jelölőnégyzetet.
+1. Az **értesítő e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek a kiépítési hibákra vonatkozó értesítéseket kell kapnia, majd jelölje be a jelölőnégyzetet.
 
 1. Kattintson a **Mentés gombra.**  
     
-1.  A Leképezések szakaszban válassza **az Azure Active Directory felhasználóinak szinkronizálása a Salesforce sandbox.**
+1.  A leképezések szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók Salesforce a homokozóban lehetőséget.**
 
-1. Az **Attribútum-leképezések** szakaszban tekintse át az Azure AD és a Salesforce sandbox szinkronizált felhasználói attribútumokat. Az **Egyező** tulajdonságokként kijelölt attribútumok a Salesforce sandbox felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások véglegesítéséhez kattintson a Mentés gombra.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat a Salesforce homokozóban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Salesforce-homokozóban lévő felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
 
-1. Az Azure AD-s létesítési szolgáltatás engedélyezéséhez a Salesforce sandbox, módosítsa a **kiépítés állapota** **be a** Beállítások szakaszban
+1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Salesforce homokozóban, módosítsa a **kiépítési állapotot** **a következőre** a beállítások szakaszban:
 
 1. Kattintson a **Mentés gombra.**
 
-Elindítja a Salesforce sandboxhoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását a Felhasználók és csoportok szakaszban. A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg a szolgáltatás fut. A Szinkronizálás **részletei** szakaszban figyelheti a folyamatot, és követheti a kiépítési tevékenységnaplókra mutató hivatkozásokat, amelyek a Salesforce sandbox alkalmazás létesítési szolgáltatása által végrehajtott összes műveletet ismertetik.
+Elindítja a felhasználók és csoportok szakaszban a Salesforce-Sandboxhoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Salesforce homokozó alkalmazásban végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)

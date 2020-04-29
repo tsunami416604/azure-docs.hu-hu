@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Az ExpressRoute Direct konfigurálása'
-description: Ez a lap segít az ExpressRoute Direct konfigurálása.
+title: 'Azure ExpressRoute: a ExpressRoute közvetlen konfigurálása'
+description: Ez az oldal segítséget nyújt a közvetlen ExpressRoute konfigurálásához.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
 ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77031612"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>Az ExpressRoute Direct konfigurálása
+# <a name="how-to-configure-expressroute-direct"></a>A ExpressRoute Direct konfigurálása
 
-Az ExpressRoute Direct lehetővé teszi, hogy közvetlenül csatlakozzon a Microsoft globális hálózatához a világszerte stratégiailag elosztott társviszony-létesítési helyeken. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
+A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft globális hálózatához a világ bármely pontján elérhető, stratégiai módon elosztott helyen. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Az erőforrás létrehozása
 
-1. Jelentkezzen be az Azure-ba, és válassza ki az előfizetést. Az ExpressRoute Direct erőforrás és expressroute-áramkörök ugyanabban az előfizetésben kell lenniük.
+1. Jelentkezzen be az Azure-ba, és válassza ki az előfizetést. A ExpressRoute Direct erőforrás-és ExpressRoute-áramköröknek ugyanahhoz az előfizetéshez kell tartoznia.
 
    ```powershell
    Connect-AzAccount 
@@ -28,12 +28,12 @@ Az ExpressRoute Direct lehetővé teszi, hogy közvetlenül csatlakozzon a Micro
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
    
-2. Regisztrálja újra a Microsoft.Network előfizetését az expressrouteportslocation és az expressrouteport API-k eléréséhez.
+2. Regisztrálja újra az előfizetést a Microsoft. Network-be a expressrouteportslocation és a expressrouteport API-k eléréséhez.
 
    ```powershell
    Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
    ```   
-3. Sorolja fel azokat a helyeket, ahol az ExpressRoute Direct támogatott.
+3. Az összes olyan hely listázása, ahol a ExpressRoute Direct támogatott.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -66,7 +66,7 @@ Az ExpressRoute Direct lehetővé teszi, hogy közvetlenül csatlakozzon a Micro
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-4. Annak megállapítása, hogy a fent felsorolt hely rendelkezik-e rendelkezésre álló sávszélességgel
+4. Annak megállapítása, hogy a fent felsorolt hely rendelkezik-e elérhető sávszélességgel
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -88,14 +88,14 @@ Az ExpressRoute Direct lehetővé teszi, hogy közvetlenül csatlakozzon a Micro
                           }
                         ]
    ```
-5. ExpressRoute Direct erőforrás létrehozása a fent kiválasztott hely alapján
+5. ExpressRoute közvetlen erőforrás létrehozása a fent kiválasztott hely alapján
 
-   Az ExpressRoute Direct támogatja a QinQ és a Dot1Q beágyazást is. Ha a QinQ van kiválasztva, minden ExpressRoute-kapcsolatcsoport dinamikusan lesz hozzárendelve egy S-tag, és egyedi lesz az ExpressRoute Direct erőforrásban. Az áramkör minden C-címkének egyedinek kell lennie az áramkörön, de nem az ExpressRoute Direct en keresztül.  
+   A ExpressRoute Direct a QinQ és a Dot1Q beágyazást is támogatja. Ha a QinQ van kiválasztva, az egyes ExpressRoute-körök dinamikusan hozzá lesznek rendelve egy S-címkéhez, és egyediek lesznek a ExpressRoute közvetlen erőforrásaiban. Az áramkörön minden C-címkének egyedinek kell lennie az áramkörön, a közvetlen ExpressRoute azonban nem.  
 
-   Ha a Dot1Q beágyazás van kiválasztva, a C-tag (VLAN) egyediségét a teljes ExpressRoute Direct erőforrásban kell kezelnie.  
+   Ha a Dot1Q beágyazás van kiválasztva, akkor a C-tag (VLAN) egyediségét kell kezelnie a teljes ExpressRoute közvetlen erőforrásban.  
 
    > [!IMPORTANT]
-   > Az ExpressRoute Direct csak egy beágyazási típus lehet. A beágyazás nem módosítható az ExpressRoute Direct létrehozása után.
+   > A ExpressRoute Direct csak egy beágyazási típus lehet. A beágyazás nem módosítható a közvetlen ExpressRoute létrehozása után.
    > 
  
    ```powershell 
@@ -103,7 +103,7 @@ Az ExpressRoute Direct lehetővé teszi, hogy közvetlenül csatlakozzon a Micro
    ```
 
    > [!NOTE]
-   > A Encapsulation attribútum is állítható Dot1Q. 
+   > A beágyazási attribútum a Dot1Q értékre is állítható. 
    >
 
    **Példa a kimenetre:**
@@ -155,17 +155,17 @@ Az ExpressRoute Direct lehetővé teszi, hogy közvetlenül csatlakozzon a Micro
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>Hivatkozások felügyeleti állapotának módosítása
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Hivatkozások rendszergazdai állapotának módosítása
 
-  Ezt a folyamatot kell használni, hogy végezzen egy Layer 1 teszt, biztosítva, hogy minden kereszt-kapcsolat megfelelően folt minden router elsődleges és másodlagos.
-1. Az ExpressRoute Direct részleteinek beszereznie.
+  Ezt a folyamatot kell használni az 1. rétegbeli tesztek elvégzéséhez, hogy az egyes kapcsolatok megfelelően legyenek kijavítani az egyes útválasztók számára az elsődleges és a másodlagos számára.
+1. ExpressRoute közvetlen részletek beolvasása.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
    ```
-2. Állítsa be a Hivatkozás beállítását engedélyezve. Ismételje meg ezt a lépést, ha az egyes hivatkozásokat engedélyezni szeretné.
+2. Állítsa be a hivatkozást engedélyezve értékre. Ismételje meg ezt a lépést az egyes hivatkozások engedélyezésre való beállításához.
 
-   A Links[0] az elsődleges port, a Links[1] pedig a másodlagos port.
+   A hivatkozások [0] az elsődleges port és a hivatkozások [1] a másodlagos port.
 
    ```powershell
    $ERDirect.Links[0].AdminState = "Enabled"
@@ -223,25 +223,25 @@ Az ExpressRoute Direct lehetővé teszi, hogy közvetlenül csatlakozzon a Micro
    Circuits                   : []
    ```
 
-   A portok `AdminState = "Disabled"` kikapcsolására használja ugyanezt az eljárást.
+   A portok kikapcsolásához `AdminState = "Disabled"` használja ugyanezt az eljárást.
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Kapcsolatcsoport létrehozása
 
-Alapértelmezés szerint 10 áramkört hozhat létre az előfizetésben, ahol az ExpressRoute Direct erőforrás található. Ez támogatással növelhető. Ön felelős a kiépített és a használt sávszélesség nyomon követéséért. A kiépített sávszélesség az ExpressRoute Direct erőforrás összes áramkörének sávszélessége, a felhasznált sávszélesség pedig az alapul szolgáló fizikai összeköttetések fizikai használata.
+Alapértelmezés szerint 10 áramkört hozhat létre az előfizetésben, ahol a ExpressRoute Direct erőforrás. Ezt a támogatás növelheti. A kiosztott és a felhasznált sávszélesség nyomon követése felelős. A kiépített sávszélesség a ExpressRoute közvetlen erőforrásban található összes áramkör sávszélességének összege, a felhasznált sávszélesség pedig az alapul szolgáló fizikai felületek fizikai használata.
 
-Vannak további áramköri sávszélességek, amelyek csak a fent vázolt forgatókönyvek támogatásához használhatók az ExpressRoute Directen. Ezek a következők: 40 Gbps és 100Gbps.
+A fentiekben ismertetett forgatókönyvek támogatásához további áramköri sávszélességek is használhatók, amelyek csak a ExpressRoute közvetlen használatával használhatók. Ezek a következők: 40Gbps és 100Gbps.
 
-**A SkuTier** lehet helyi, standard vagy prémium.
+A **SkuTier** lehet helyi, standard vagy prémium.
 
-**A SkuFamily** csak MeteredData csak akkor legyen MeteredData, mivel az ExpressRoute Direct nem támogatja a korlátlan t.
+A **SkuFamily** csak MeteredData lehet, mert a ExpressRoute Direct nem támogatja.
 
-Hozzon létre egy áramkört az ExpressRoute Direct erőforráson.
+Hozzon létre egy áramkört a ExpressRoute Direct erőforráson.
 
   ```powershell
   New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Egyéb sávszélességek: 5.0, 10.0 és 40.0
+  Egyéb sávszélességek: 5,0, 10,0 és 40,0
 
   **Példa a kimenetre:**
 
@@ -277,4 +277,4 @@ Hozzon létre egy áramkört az ExpressRoute Direct erőforráson.
 
 ## <a name="next-steps"></a>További lépések
 
-Az ExpressRoute Directről további információt az [Áttekintés című témakörben talál.](expressroute-erdirect-about.md)
+A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

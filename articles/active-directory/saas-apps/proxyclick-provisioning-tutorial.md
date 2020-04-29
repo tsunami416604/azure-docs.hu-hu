@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Proxyclick konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a Proxyclick felhasználói fiókok automatikus kiépítésére és kiépítésének kiépítésével.
+title: 'Oktatóanyag: a Proxyclick konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Proxyclick.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,165 +16,165 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063356"
 ---
-# <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Oktatóanyag: Proxyclick konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Proxyclick konfigurálása
 
-Ez az oktatóanyag célja, hogy bemutassa a Proxyclick és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához a felhasználók és/vagy csoportok proxykattintási automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Proxyclick és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Proxyclick.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Egy Azure AD-bérlő
+* Azure AD-bérlő
 * [Proxyclick-bérlő](https://www.proxyclick.com/pricing)
-* A Proxyclick rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Proxyclick-ben.
 
 ## <a name="add-proxyclick-from-the-gallery"></a>Proxyclick hozzáadása a gyűjteményből
 
-A Proxyclick konfigurálása az Azure AD automatikus felhasználói kiépítéséhez, hozzá kell adnia a Proxyclicket az Azure AD-alkalmazásgyűjteményből a felügyelt SaaS-alkalmazások listájához.
+Az Azure AD-vel való automatikus Proxyclick konfigurálása előtt hozzá kell adnia a Proxyclick az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-**Ha az Azure AD alkalmazásgyűjteményből szeretne proxykattintást hozzáadni, hajtsa végre a következő lépéseket:**
+**Ha Proxyclick szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Proxyclick ( Proxyclick**) kifejezést, válassza a **Proxyclick** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Proxyclick**kifejezést, válassza az **Proxyclick** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Proxyclick az eredménylistában](common/search-new-app.png)
+    ![Proxyclick az eredmények listájában](common/search-new-app.png)
 
-## <a name="assigning-users-to-proxyclick"></a>Felhasználók hozzárendelése a Proxyclickhez
+## <a name="assigning-users-to-proxyclick"></a>Felhasználók kiosztása a Proxyclick
 
-Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a Proxyclickhez. Miután úgy döntött, akkor hozzá ezeket a felhasználókat és / vagy csoportokat Proxyclick az alábbi utasításokat itt:
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Proxyclick való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Proxyclick az alábbi utasításokat követve:
 
-* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-proxyclick"></a>Fontos tippek a felhasználók Proxyclickhez való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-proxyclick"></a>Fontos Tippek a felhasználók Proxyclick való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve proxyclick az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Proxyclick-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználót proxykattintáshoz rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
+* Amikor Proxyclick rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-proxyclick"></a>Automatikus felhasználói kiépítés konfigurálása a Proxyclick alkalmazásba 
+## <a name="configuring-automatic-user-provisioning-to-proxyclick"></a>Automatikus felhasználó-kiépítés beállítása a Proxyclick 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a Proxyclickben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Proxyclick alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Dönthet úgy is, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Proxyclick számára, a [Proxyclick egyszeri bejelentkezési oktatóanyagutasításait](proxyclick-tutorial.md)követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Proxyclick számára, az [Proxyclick egyszeri bejelentkezés oktatóanyagában](proxyclick-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>A Proxyclick automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Proxyclick az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Proxyclick lehetőséget.**
+2. Az alkalmazások listában válassza a **Proxyclick**lehetőséget.
 
-    ![A Proxyclick hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![Az Proxyclick hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **Proxyclick-fiók bérlői URL-címének** és **titkos jogkivonatának** lekéréséhez kövesse a 6.
+5. A Proxyclick **-fiók bérlői URL-címének** és **titkos jogkivonatának** lekéréséhez kövesse az útmutatót a 6. lépésben leírtak szerint.
 
-6. Jelentkezzen be a [Proxyclick Felügyeleti konzolra.](https://app.proxyclick.com/login//?destination=%2Fdefault) Keresse meg a **Beállítások** > **integrációk** > **Tallózás piactéren**.
+6. Jelentkezzen be a [Proxyclick felügyeleti konzolra](https://app.proxyclick.com/login//?destination=%2Fdefault). Navigáljon a **Beállítások** > **integrációk** > **böngészés piactéren**.
 
-    ![Proxykattintási beállítások](media/proxyclick-provisioning-tutorial/proxyclick09.png)
+    ![Proxyclick-beállítások](media/proxyclick-provisioning-tutorial/proxyclick09.png)
 
-    ![Proxykattintási integrációk](media/proxyclick-provisioning-tutorial/proxyclick01.png)
+    ![Proxyclick-integrációk](media/proxyclick-provisioning-tutorial/proxyclick01.png)
 
     ![Proxyclick piactér](media/proxyclick-provisioning-tutorial/proxyclick02.png)
 
-    Válassza az **Azure AD**lehetőséget. Kattintson a **Telepítés gombra.**
+    Válassza az **Azure ad**lehetőséget. Kattintson a **Telepítés most**lehetőségre.
 
-    ![Proxyclick Azure AD](media/proxyclick-provisioning-tutorial/proxyclick03.png)
+    ![Proxyclick az Azure AD-ben](media/proxyclick-provisioning-tutorial/proxyclick03.png)
 
     ![Proxyclick telepítése](media/proxyclick-provisioning-tutorial/proxyclick04.png)
 
-    Válassza a **Felhasználói kiépítés lehetőséget,** és kattintson **az Integráció indítása gombra.** 
+    Válassza a **felhasználó kiépítése** lehetőséget, majd kattintson az **integráció elindítása**elemre. 
 
-    ![Proxyclick felhasználói kiépítés](media/proxyclick-provisioning-tutorial/proxyclick05.png)
+    ![Proxyclick-felhasználó kiépítés](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    A megfelelő beállításkonfigurációs felhasználói felületnek most meg kell jelennie a **Beállítások** > **integrációk**területen. Válassza a **Beállítások lehetőséget** az **Azure AD (Felhasználói kiépítés)** területen.
+    A megfelelő beállítások konfigurációs felhasználói felületének most megjelenik a **Beállítások** > **integrációja**területen. Válassza a **Beállítások** lehetőséget az **Azure ad (felhasználó kiépítés)** területen.
 
     ![Proxyclick létrehozása](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
-    A **bérlői URL-cím** és a **titkos jogkivonat** itt található.
+    Itt megtalálhatja a **bérlői URL-címet** és a **titkos jogkivonatot** .
 
-    ![Proxyclick Token létrehozása](media/proxyclick-provisioning-tutorial/proxyclick07.png)
+    ![Proxyclick-létrehozási jogkivonat](media/proxyclick-provisioning-tutorial/proxyclick07.png)
 
-7. Az 5. **Test Connection** Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a Proxyclick-fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
+7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a Proxyclick. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Proxyclick-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítési e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Kattintson a **Save** (Mentés) gombra.
 
-10. A **Leképezések** csoportban válassza az **Azure Active Directory felhasználóinak szinkronizálása proxykattintással**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Proxyclick**lehetőséget.
 
     ![Proxyclick felhasználói leképezések](media/proxyclick-provisioning-tutorial/Proxyclick-user-mappings.png)
 
-11. Tekintse át az Azure AD-ből az **Attribútumleképezés** szakaszproxykattintásához szinkronizált felhasználói attribútumokat. Az **Egyező** tulajdonságokként kijelölt attribútumok a Proxyclick felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Proxyclick. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Proxyclick felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![Proxyclick felhasználói attribútumai](media/proxyclick-provisioning-tutorial/Proxyclick-user-attribute.png)
 
-13. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
+13. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Az Azure AD-létesítési szolgáltatás proxykattintás engedélyezéséhez módosítsa a **Kiépítés állapotát** **be a** **Beállítások** szakaszban.
+14. Az Azure AD-kiépítési szolgáltatás Proxyclick való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-15. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket a Proxyclick be szeretne építeni, ha a **Beállítások** szakasz **hatókörében** kiválasztja a kívánt értékeket.
+15. Adja meg a Proxyclick kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-16. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
+16. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a Proxyclick en végrehajtott összes műveletet.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Proxyclick-on végrehajtott összes műveletet ismertetik.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő korlátai
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A Proxyclick használatához **az e-mailek** és a **felhasználónév** azonos forrásértékkel rendelkeznek. Bármelyik attribútum frissítése módosítja a másik értéket.
-* A Proxyclick nem támogatja a csoportok kiépítését.
+* A Proxyclick használatához az **e-mailek** és a **felhasználónevek** értékének azonosnak kell lennie. Bármelyik attribútum frissítései módosítják a másik értéket.
+* A Proxyclick nem támogatja a csoportok üzembe helyezését.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

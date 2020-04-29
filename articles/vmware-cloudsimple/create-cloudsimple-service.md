@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-megoldás a CloudSimple által – CloudSimple szolgáltatás létrehozása
-description: A CloudSimple szolgáltatás létrehozása az Azure Portalon
+description: Útmutató a CloudSimple szolgáltatás létrehozásához a Azure Portal
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -9,44 +9,44 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024823"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Az Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
 
-A CloudSimple Azure VMware-megoldásának első lépéséhez hozza létre az Azure VMware-megoldást a CloudSimple szolgáltatással az Azure Portalon.
+Az Azure VMware-megoldás CloudSimple való megkezdéséhez hozza létre az Azure VMware-megoldást a CloudSimple szolgáltatással a Azure Portal.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-/28 CIDR blokk lefoglalása az átjáró alhálózatához. Az átjáró-alhálózat szükséges a CloudSimple szolgáltatás, és egyedi a régióban, amelyben létrehozták. Az átjáró alhálózat élhálózati szolgáltatásokhoz használatos, és /28 CIDR blokkot igényel. Az átjáró alhálózati címterének egyedinek kell lennie. Nem fedheti át a CloudSimple környezettel kommunikáló hálózatot. A CloudSimple-lel kommunikáló hálózatok közé tartoznak a helyszíni hálózatok és az Azure virtuális hálózatok.
+Foglaljon le egy/28 CIDR-blokkot az átjáró-alhálózathoz. Az átjáró-alhálózatok CloudSimple szolgáltatáshoz szükségesek, és egyediek ahhoz a régióhoz, amelyben létrehozták. Az átjáró-alhálózat az Edge hálózati szolgáltatások esetében használatos, és egy/28 CIDR blokkot igényel. Az átjáró alhálózatának címtartomány egyedinek kell lennie. Nem lehet átfedésben a CloudSimple-környezettel kommunikáló hálózattal. A CloudSimple kommunikáló hálózatok a helyszíni hálózatokat és az Azure-beli virtuális hálózatokat is tartalmazzák.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>A szolgáltatás létrehozása
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keresse meg a **CloudSimple szolgáltatásokat.**
-    ![Keresés CloudSimple szolgáltatás](media/create-cloudsimple-service-search.png)
-3. Válassza a **CloudSimple Services lehetőséget.**
+2. Keressen rá a **CloudSimple Services**kifejezésre.
+    ![CloudSimple szolgáltatás keresése](media/create-cloudsimple-service-search.png)
+3. Válassza a **CloudSimple Services**elemet.
 4. Új szolgáltatás létrehozásához kattintson a **Hozzáadás** gombra.
     ![CloudSimple szolgáltatás hozzáadása](media/create-cloudsimple-service-add.png)
-5. Válassza ki azt az előfizetést, amelyhez létre szeretné hozni a CloudSimple szolgáltatást.
-6. Válassza ki a szolgáltatás erőforráscsoportját. Új erőforráscsoport hozzáadásához kattintson az **Új létrehozása gombra.**
+5. Válassza ki azt az előfizetést, amelyben létre szeretné hozni a CloudSimple szolgáltatást.
+6. Válassza ki a szolgáltatáshoz tartozó erőforráscsoportot. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása**lehetőségre.
 7. A szolgáltatás azonosításához adja meg a nevet.
-8. Adja meg a szolgáltatásátjáró CIDR-ét. Adjon meg egy /28 alhálózatot, amely nem fedi át a helyszíni alhálózatokat, az Azure-alhálózatokat vagy a tervezett CloudSimple alhálózatokat. A cidr a szolgáltatás létrehozása után nem módosítható.
+8. Adja meg a CIDR a Service Gateway számára. Olyan/28 alhálózatot ad meg, amely nem fedi át a helyszíni alhálózatok, az Azure-alhálózatok vagy a tervezett CloudSimple alhálózatok egyikét sem. A CIDR nem módosítható a szolgáltatás létrehozása után.
 
     ![A CloudSimple szolgáltatás létrehozása](media/create-cloudsimple-service.png)
 9. Kattintson az **OK** gombra.
 
-A szolgáltatás létrejön, és hozzáadódik a szolgáltatások listájához.
+Létrejön a szolgáltatás, és hozzá lesz adva a szolgáltatások listájához.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [csomópontok kiépítéséről](create-nodes.md)
-* További információ a [magánfelhő létrehozásáról](create-private-cloud.md)
-* További információ [a magánfelhő-környezet konfigurálásáról](quickstart-create-private-cloud.md)
+* További információ a [csomópontok](create-nodes.md) kiépítéséről
+* Megtudhatja, hogyan [hozhat létre saját felhőt](create-private-cloud.md)
+* Ismerje meg, hogyan [konfigurálhatja a saját felhőalapú környezetét](quickstart-create-private-cloud.md)

@@ -1,6 +1,6 @@
 ---
-title: Telepítési architektúra - Azure dedikált HSM | Microsoft dokumentumok
-description: Alapvető tervezési szempontok az Azure dedikált HSM alkalmazásarchitektúra részeként történő használatakor
+title: Üzembe helyezési architektúra – Azure dedikált HSM | Microsoft Docs
+description: Alapszintű kialakítási szempontok az Azure dedikált HSM egy alkalmazás-architektúra részeként való használatakor
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77048554"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Az Azure Dedicated HSM üzembe helyezési architektúrája
 
-Az Azure dedikált HSM kriptográfiai kulcstárolást biztosít az Azure-ban. Megfelel a szigorú biztonsági követelményeknek. Az ügyfelek számára előnyös az Azure Dedikált HSM használata, ha:
+Az Azure dedikált HSM kriptográfiai kulcsot biztosít az Azure-ban. Megfelel a szigorú biztonsági követelményeknek. Az ügyfelek az Azure dedikált HSM használatát fogják kihasználni, ha:
 
-* Meg kell felelnie a FIPS 140-2 Level 3 minősítésnek
-* Megkövetelik, hogy kizárólagos hozzáféréssel rendelkezhessenek a HSM-hez
-* teljes ellenőrzéssel kell rendelkezniük az eszközeik felett
+* Meg kell felelnie a 3. szintű FIPS 140-2-minősítésnek
+* Megkövetelik, hogy kizárólagos hozzáféréssel rendelkezzenek a HSM-hez
+* az eszközök teljes körű vezérlését kell biztosítania
 
-A HSM-ek a Microsoft adatközpontjaiközött vannak elosztva, és könnyen kiépíthetők eszközpárként egy magas rendelkezésre állású megoldás alapjaként. Emellett a régiók között is üzembe helyezhetők egy katasztrófa-rugalmas megoldás. A jelenleg rendelkezésre álló dedikált HSM-mel rendelkező régiók a következők:
+A HSM a Microsoft adatközpontjai között oszlanak el, és egyszerűen üzembe helyezhetők egy olyan eszközként, amely egy magasan elérhető megoldás alapja. A katasztrófa-elhárítási megoldáshoz az egyes régiókban is üzembe helyezhetők. A dedikált HSM-mel rendelkező régiók jelenleg a következők:
 
 * USA keleti régiója
 * USA 2. keleti régiója
@@ -48,29 +48,29 @@ A HSM-ek a Microsoft adatközpontjaiközött vannak elosztva, és könnyen kiép
 * Kelet-Ausztrália
 * Délkelet-Ausztrália
 
-Ezek a régiók mindegyike hsm állványok üzembe helyezett vagy két független adatközpontok, vagy legalább két független rendelkezésre állási zónák. Délkelet-Ázsiában három rendelkezésre állási zóna, az USA keleti része 2 pedig kettő. Európa, Ázsia és az USA összesen nyolc régiója kínálja a dedikált HSM szolgáltatást. Az Azure-régiókról az [Azure-régiókkal kapcsolatos](https://azure.microsoft.com/global-infrastructure/regions/)hivatalos információkban talál.
-Bármely dedikált HSM-alapú megoldás tervezési tényezői a hely/késés, a magas rendelkezésre állás és más elosztott alkalmazások támogatása.
+Mindkét régióban található HSM-állványok két független adatközpontban vagy legalább két független rendelkezésre állási zónában vannak üzembe helyezve. A Dél-Kelet-Ázsia három rendelkezésre állási zónával rendelkezik, az USA 2. keleti régiója pedig kettő. Összesen nyolc régió érhető el Európa, Ázsia és az Egyesült Államok területén, amely a dedikált HSM szolgáltatást kínálja. Az Azure-régiókkal kapcsolatos további információkért tekintse meg a hivatalos [Azure-régiók információit](https://azure.microsoft.com/global-infrastructure/regions/).
+A dedikált HSM-alapú megoldás egyes tervezési tényezői a hely/késés, a magas rendelkezésre állás és más elosztott alkalmazások támogatása.
 
 ## <a name="device-location"></a>Eszközhely
 
-Az optimális HSM-eszközhely a kriptográfiai műveleteket végző alkalmazások közelében van. A régión belüla késés várhatóan egyszámjegyű ezredmásodperc. A régióközi késés ennél 5–10-szer magasabb lehet.
+Az optimális HSM-eszköz helye a titkosítási műveleteket végző alkalmazások legközelebbi közelsége. A régión belüli késés várhatóan egy számjegyből álló ezredmásodperc. A régiók közötti késés akár 5 – 10-szor is lehet ennél nagyobb.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-A magas rendelkezésre állás elérése érdekében az ügyfélnek két HSM-eszközt kell használnia egy olyan régióban, amely a Gemalto szoftvert használja magas rendelkezésre állású párként. Az ilyen típusú központi telepítés biztosítja a kulcsok rendelkezésre állását, ha egyetlen eszköz nél kondició megakadályozza a kulcsműveletek feldolgozását. Jelentősen csökkenti a kockázatot a törés/javítás karbantartása, például a tápegység cseréje során. Fontos, hogy a formatervezési minta figyelembe vegye a regionális szintű hibák minden fajtáját. Regionális szintű hibák akkor fordulhatnak elő, ha természeti katasztrófák, például hurrikánok, árvizek vagy földrengések vannak. Az ilyen típusú eseményeket csökkenteni kell a HSM-eszközök kiépítésével egy másik régióban. Egy másik régióban telepített eszközök párosíthatók a Gemalto szoftverkonfiguráción keresztül. Ez azt jelenti, hogy a magas rendelkezésre állású és katasztrófa-elhárítási megoldás minimális üzembe helyezése négy HSM-eszköz két régióban. A régiók közötti helyi redundancia és redundancia kiindulási alapként használható további HSM-eszköztelepítések hozzáadásához a késés, a kapacitás vagy más alkalmazásspecifikus követelmények teljesítéséhez.
+A magas rendelkezésre állás eléréséhez az ügyfélnek két HSM-eszközt kell használnia egy olyan régióban, amely magas rendelkezésre állású pár Gemalto szoftverrel van konfigurálva. Ez a típusú központi telepítés biztosítja a kulcsok rendelkezésre állását, ha egyetlen eszköz problémát tapasztal, amely megakadályozza a kulcsfontosságú műveletek feldolgozását. Emellett jelentős mértékben csökkenti a kockázatokat a kitörési/javítási feladatok, például a tápegység cseréje során. Fontos, hogy a tervezést bármilyen regionális szintű meghibásodás esetén figyelembe lehessen venni. A regionális szintű hibák akkor fordulnak elő, ha természeti katasztrófák, például hurrikánok, árvizek vagy földrengések állnak fenn. Az ilyen típusú eseményeket a HSM-eszközök egy másik régióban való kiépítési felállításával kell enyhíteni. A másik régióban üzembe helyezett eszközök összekapcsolhatók a Gemalto szoftveres konfigurációján keresztül. Ez azt jelenti, hogy a magasan elérhető és a katasztrófa-elhárítási megoldás minimális üzembe helyezése négy HSM-eszköz két régióban. A helyi redundancia és a redundancia a régiók között alapkonfigurációként használható, amely további HSM-eszközök üzembe helyezését is lehetővé tenné a késés, a kapacitás vagy más, az alkalmazásspecifikus követelmények teljesítése érdekében.
 
-## <a name="distributed-application-support"></a>Elosztott alkalmazás támogatása
+## <a name="distributed-application-support"></a>Elosztott alkalmazások támogatása
 
-A dedikált HSM-eszközök általában olyan alkalmazások támogatására vannak telepítve, amelyeknek kulcstárolási és kulcslekéréses műveleteket kell végrehajtaniuk. A dedikált HSM-eszközök 10 partícióval rendelkeznek a független alkalmazástámogatáshoz. Az eszköz helyének a szolgáltatás használatához szükséges összes alkalmazás holisztikus nézetén kell alapulnia.
+A dedikált HSM-eszközök jellemzően olyan alkalmazások támogatásához vannak telepítve, amelyeknek a fő tárterületet és a kulcsfontosságú lekérési műveleteket kell végrehajtaniuk. A dedikált HSM-eszközök 10 partíciót biztosítanak a független alkalmazások támogatásához. Az eszköz helyének a szolgáltatást használó összes alkalmazás átfogó nézetén kell alapulnia.
 
 ## <a name="next-steps"></a>További lépések
 
-A telepítési architektúra meghatározása után a legtöbb konfigurációs tevékenységet az architektúra megvalósításához a Gemalto biztosítja. Ez magában foglalja az eszköz konfigurációját, valamint az alkalmazásintegrációs forgatókönyveket. További információkért használja a [Gemalto ügyfélszolgálati](https://supportportal.gemalto.com/csm/) portálját, és töltse le a felügyeleti és konfigurációs útmutatókat. A Microsoft partnerwebhelye számos integrációs útmutatóval rendelkezik.
-Javasoljuk, hogy a szolgáltatás minden kulcsfontosságú fogalma, például a magas rendelkezésre állás és a biztonság, például, jól érthető, mielőtt az eszköz kiépítése vagy az alkalmazás tervezése és üzembe helyezése.
-További koncepciószintű témák:
+Az üzembe helyezési architektúra meghatározása után az architektúra megvalósításához szükséges legtöbb konfigurációs tevékenységet a Gemalto fogja biztosítani. Ez magában foglalja az eszközök konfigurálását, valamint az alkalmazás-integrációs forgatókönyveket is. További információkért használja a [Gemalto ügyfélszolgálati](https://supportportal.gemalto.com/csm/) portálját, és töltse le az adminisztrációs és konfigurációs útmutatókat. A Microsoft partner webhelyének számos integrációs útmutatója van.
+Javasoljuk, hogy a szolgáltatás alapvető fogalmait, például a magas rendelkezésre állást és a biztonságot, az eszköz kiépítése vagy az alkalmazások tervezése és üzembe helyezése előtt jól megértse.
+További fogalmi szintű témakörök:
 
 * [Magas rendelkezésre állás](high-availability.md)
 * [Fizikai biztonság](physical-security.md)
 * [Hálózat](networking.md)
 * [Támogatási lehetőségek](supportability.md)
-* [Megfigyelő](monitoring.md)
+* [Figyelés](monitoring.md)

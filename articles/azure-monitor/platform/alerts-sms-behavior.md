@@ -1,6 +1,6 @@
 ---
-title: SMS-riasztások viselkedése a műveletcsoportokban
-description: SMS-üzenet formátumban, és válaszol az SMS-üzenetekleiratkozáshoz, újrairatkozáshoz vagy segítségkéréshez.
+title: SMS-riasztás viselkedése a műveleti csoportokban
+description: SMS-üzenet formátuma és válaszadás az SMS-üzenetek lemondására, előfizetésére vagy a segítség kérésére.
 author: dkamstra
 ms.author: dukek
 services: monitoring
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665306"
 ---
-# <a name="sms-alert-behavior-in-action-groups"></a>SMS-riasztások viselkedése műveletcsoportokban
+# <a name="sms-alert-behavior-in-action-groups"></a>SMS-riasztás viselkedése a műveleti csoportokban
 
 ## <a name="overview"></a>Áttekintés 
-A műveletcsoportok lehetővé teszik a műveletek listájának konfigurálását. Ezek a csoportok a riasztások meghatározásakor használatosak; annak biztosítása, hogy egy adott műveletcsoportot értesítsenek a riasztás aktiválásáról. Az egyik támogatott művelet az SMS; Az SMS-értesítések támogatják a kétirányú kommunikációt. A felhasználó sms-ben válaszolhat:
+A műveleti csoportok lehetővé teszik a műveletek listájának konfigurálását. Ezek a csoportok a riasztások definiálásakor használatosak; annak biztosítása, hogy egy adott műveleti csoport értesítést kapjon a riasztás indításakor. Az egyik támogatott művelet az SMS; Az SMS-értesítések támogatják a kétirányú kommunikációt. Egy felhasználó válaszolhat az SMS-re a következőre:
 
-- **Leiratkozás a riasztásokról:** A felhasználó leiratkozhat az összes műveletcsoportra vonatkozó összes SMS-értesítésről, vagy egyetlen műveletcsoportról.
-- **Feliratkozás a riasztásokra:** A felhasználó újra feliratkozhat az összes műveletcsoport összes SMS-riasztására, vagy egyetlen műveletcsoportra.  
-- **Kérjen segítséget:** A felhasználó további információt kérhet az SMS-ről. A cikkre átlesznek irányítva.
+- **Leiratkozás a riasztásokból:** Egy felhasználó lemondhatja az összes olyan SMS-riasztást, amely az összes műveleti csoportra vonatkozóan vagy egyetlen műveleti csoportba kerül.
+- **Újrajelentkezés a riasztásokra:** A felhasználók visszafizethetnek minden SMS-riasztásra az összes műveleti csoportra vagy egyetlen műveleti csoportra vonatkozóan.  
+- **Segítség kérése:** A felhasználók további információkat kérhetnek az SMS-ről. Ezek átirányítva erre a cikkre.
 
-Ez a cikk az SMS-riasztások viselkedését és a felhasználó által a felhasználó területi beállításának alapján végrehajtható válaszműveleteket ismerteti:
+Ez a cikk az SMS-riasztások viselkedését és a felhasználó által a felhasználó területi beállítása alapján elvégezhető reagálási műveleteket ismerteti.
 
-## <a name="receiving-an-sms-alert"></a>SMS-értesítés fogadása
-A műveletcsoport részeként konfigurált SMS-fogadó sms-t kap, amikor egy riasztás aktiválódik. Az SMS a következő információkat tartalmazza:
-* Annak a műveletcsoportnak a rövid neve, amelynek a riasztást küldték
-* A figyelmeztető jelzés címe
+## <a name="receiving-an-sms-alert"></a>SMS-riasztás fogadása
+Egy műveleti csoport részeként konfigurált SMS-fogadó SMS-t kap, ha riasztást vált ki. Az SMS a következő információkat tartalmazza:
+* A gazdagépbejegyzés, amelyre a riasztást elküldték
+* A riasztás címe
 
 | VÁLASZ | Leírás |
 | ----- | ----------- |
-| Megbénít`<Action Group Short name>` | Letiltja a további SMS-t a műveletcsoportból |
-| Engedélyezi`<Action Group Short name>` | Az SMS újbóli engedélyezése a műveletcsoporttól |
-| állj | Letiltja a további SMS-t az összes műveletcsoportból |
-| Elkezd | Sms újbóli engedélyezése az ÖSSZES műveletcsoportból |
-| SÚGÓ | A rendszer választ küld a felhasználónak a cikkre mutató hivatkozással. |
+| Megbénít`<Action Group Short name>` | Letiltja a további SMS-ket a műveleti csoportból |
+| ENGEDÉLYEZÉSE`<Action Group Short name>` | Az SMS újbóli engedélyezése a műveleti csoportból |
+| állj | Letiltja a további SMS-ket minden műveleti csoportból |
+| START | Az SMS újbóli engedélyezése az összes műveleti csoportból |
+| SÚGÓ | A rendszer egy erre a cikkre mutató hivatkozást tartalmazó választ kap a felhasználónak. |
 
 >[!NOTE]
->Ha egy felhasználó leiratkozott az SMS-értesítésekről, de ezután hozzáadódik egy új műveletcsoporthoz; sms-értesítéseket kapnak az adott új akciócsoportról, de az összes korábbi akciócsoportból leiratkoztak.
+>Ha egy felhasználó leiratkozott az SMS-riasztásokból, de ezt követően új műveleti csoportba kerül. SMS-riasztásokat kapnak az új műveleti csoporthoz, de az összes korábbi műveleti csoportból leiratkozott maradnak.
 
 ## <a name="next-steps"></a>Következő lépések
-Áttekintés [a tevékenységnapló-riasztásokról,](alerts-overview.md) és megtudhatja, hogyan kaphat értesítést  
-További információ az [SMS-sebesség korlátozásáról](alerts-rate-limiting.md)  
-További információ a [műveletcsoportokról](../../azure-monitor/platform/action-groups.md)
+[Tekintse át a tevékenységek naplójának riasztásait](alerts-overview.md) , és Ismerje meg, hogyan kaphat riasztást  
+További információ az [SMS-díjak korlátozásáról](alerts-rate-limiting.md)  
+További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md)
 

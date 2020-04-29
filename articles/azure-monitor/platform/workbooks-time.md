@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor munkafüzeteinek időparaméterei
-description: Az összetett jelentések egyszerűsítése előre összeállított és egyéni paraméterezett munkafüzetekkel
+title: Azure Monitor munkafüzetek időbeli paraméterei
+description: Összetett jelentéskészítés egyszerűsítése előre elkészített és egyéni paraméterekkel rendelkező munkafüzetekből
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,69 +10,69 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658013"
 ---
-# <a name="workbook-time-parameters"></a>Munkafüzet időparaméterei
+# <a name="workbook-time-parameters"></a>Munkafüzet-idő paraméterei
 
-Az időparaméterek lehetővé teszik a felhasználók számára az elemzés időkörnyezetének beállítását, és szinte az összes jelentés használja őket. Viszonylag egyszerű beállítani és használni - lehetővé téve a szerzők számára, hogy meghatározzák a legördülő legördülő időtartományokat, beleértve az egyéni időtartományok lehetőségét is. 
+Az időparaméterek lehetővé teszik a felhasználók számára az elemzés időkörnyezetének beállítását, és szinte minden jelentés használja őket. Viszonylag egyszerű beállítás és használat – lehetővé teszi a szerzők számára, hogy megadják a legördülő menüben megjelenítendő időtartományokat, beleértve az egyéni időtartományok beállítását is. 
 
-## <a name="creating-a-time-parameter"></a>Időparaméter létrehozása
-1. Kezdje üres munkafüzettel szerkesztési módban.
-2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben lévő hivatkozásokból.
-3. Kattintson a kék _Add Parameter_ gombra.
-4. Az új paraméter ablaktáblán, amely megjelenik adja meg a következőt:
+## <a name="creating-a-time-parameter"></a>Time paraméter létrehozása
+1. Kezdés egy üres munkafüzettel szerkesztési módban.
+2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
+3. Kattintson a kék _paraméter hozzáadása_ gombra.
+4. A felugró új paraméter panelen írja be a következőket:
     1. Paraméter neve:`TimeRange`
     2. Paraméter típusa:`Time range picker`
-    3. Szükséges:`checked`
-    4. Elérhető időtartományok: Utolsó óra, Utolsó 12 óra, Utolsó 24 óra, Utolsó 48 óra, Utolsó 3 nap, Utolsó 7 nap és Egyéni időtartomány-kijelölés engedélyezése
-5. A paraméter létrehozásához válassza a "Mentés" lehetőséget az eszköztáron.
+    3. Szükséges`checked`
+    4. Rendelkezésre álló időtartományok: elmúlt óra, utolsó 12 óra, utolsó 24 óra, utolsó 48 óra, elmúlt 3 nap, utolsó 7 nap, és egyéni időtartomány-kijelölés engedélyezése
+5. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 
-    ![Időtartomány-paraméter létrehozásáról kép](./media/workbooks-time/time-settings.png)
+    ![A Time Range paraméter létrehozását bemutató kép](./media/workbooks-time/time-settings.png)
 
-Így fog kinézni a munkafüzet olvasási módban.
+A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 
-![Időtartomány-paramétert ábrázoló kép olvasási módban](./media/workbooks-time/parameters-time.png)
+![Az időtartomány-paramétert olvasási módban ábrázoló kép](./media/workbooks-time/parameters-time.png)
 
-## <a name="referencing-a-time-parameter"></a>Hivatkozás időparaméterre
-### <a name="via-bindings"></a>Keresztül kötések
-1. Vegyen fel egy lekérdezésvezérlőt a munkafüzetbe, és jelöljön ki egy Application Insights-erőforrást.
-2. A legtöbb munkafüzetvezérlő támogatja _az Időtartomány_ hatókör-választót. Nyissa meg az _Időtartomány_ legördülő menüt, és válassza ki az `{TimeRange}` időcsengetési paraméterek csoportját az alján.
-3. Ez köti az időtartomány paraméterét a diagram időtartományához. A mintalekérdezés időhatóköre most már 24 óra.
+## <a name="referencing-a-time-parameter"></a>Egy Time paraméterre hivatkozik
+### <a name="via-bindings"></a>Kötések útján
+1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
+2. A legtöbb munkafüzet-vezérlő támogatja az _időtartomány_ hatókör-választóját. Nyissa meg az _időtartomány_ legördülő listát, `{TimeRange}` és válassza ki az időkorlát-paraméterek csoportot alul.
+3. Ezzel a beállítással az időtartomány paraméter a diagram időtartományához köthető. A minta lekérdezés időbeli hatóköre mostantól az elmúlt 24 órában érhető el.
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
-    ![Kötéseken keresztül hivatkozott időtartomány-paramétert ábrázoló kép](./media/workbooks-time/time-binding.png)
+    ![A kötéseken keresztül hivatkozott időtartomány-paramétert ábrázoló kép](./media/workbooks-time/time-binding.png)
 
-### <a name="in-kql"></a>A kql-ban
-1. Vegyen fel egy lekérdezésvezérlőt a munkafüzetbe, és jelöljön ki egy Application Insights-erőforrást.
-2. A KQL-ben adjon meg egy időhatókör-szűrőt a következő paraméter használatával:`| where timestamp {TimeRange}`
-3. Ez kibővíti a `| where timestamp > ago(1d)`lekérdezés kiértékelési idejét , amely a paraméter időtartományának értéke.
+### <a name="in-kql"></a>A KQL
+1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
+2. A KQL adja meg az időtartomány szűrőt a (z) paraméter használatával:`| where timestamp {TimeRange}`
+3. Ez kibővíti a lekérdezés értékelésének `| where timestamp > ago(1d)`idejét a értékre, amely a paraméter időtartományának értéke.
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
-    ![KQL-ben hivatkozott időtartományt ábrázoló kép](./media/workbooks-time/time-in-code.png)
+    ![A KQL-ben hivatkozott időtartományt ábrázoló kép](./media/workbooks-time/time-in-code.png)
 
 ### <a name="in-text"></a>Szövegben 
-1. Szövegvezérlő hozzáadása a munkafüzethez.
-2. A jelölés lefelé mezőbe írja be a`The chosen time range is {TimeRange:label}`
-3. Válassza a _Kész szerkesztés lehetőséget_
-4. A szövegvezérlő szöveget jelenít meg: _A kiválasztott időtartomány az elmúlt 24 óra_
+1. Adjon hozzá egy szövegbeviteli vezérlőt a munkafüzethez.
+2. A Markdown írja be a`The chosen time range is {TimeRange:label}`
+3. Válassza a _Szerkesztés kész_ lehetőséget
+4. A szöveg vezérlőelem szövege a következő lesz: _a kiválasztott időtartomány az elmúlt 24 óra_
 
-## <a name="time-parameter-options"></a>Időparaméter-beállítások
+## <a name="time-parameter-options"></a>Az idő paraméter beállításai
 | Paraméter | Magyarázat | Példa |
 | ------------- |:-------------|:-------------|
-| `{TimeRange}` | Időtartomány-címke | Elmúlt 24 óra |
-| `{TimeRange:label}` | Időtartomány-címke | Elmúlt 24 óra |
-| `{TimeRange:value}` | Időtartomány értéke | > ezelőtt (1d) |
-| `{TimeRange:query}` | Időtartomány-lekérdezés | > ezelőtt (1d) |
-| `{TimeRange:start}` | Időtartomány kezdési időpontja | 2019.03.20. |
-| `{TimeRange:end}` | Időtartomány befejezési ideje | 2019.03.21. |
-| `{TimeRange:grain}` | Időtartomány-szemcséme | 30 m |
+| `{TimeRange}` | Időtartomány felirata | Az elmúlt 24 óra |
+| `{TimeRange:label}` | Időtartomány felirata | Az elmúlt 24 óra |
+| `{TimeRange:value}` | Időtartomány értéke | > ago (1d) |
+| `{TimeRange:query}` | Időtartomány-lekérdezés | > ago (1d) |
+| `{TimeRange:start}` | Időtartomány kezdési időpontja | 3/20/2019 4:18 PM |
+| `{TimeRange:end}` | Időbeli tartomány befejezési időpontja | 3/21/2019 4:18 PM |
+| `{TimeRange:grain}` | Időtartomány-gabona | 30 m |
 
 
-### <a name="using-parameter-options-in-a-query"></a>Paraméterbeállítások használata lekérdezésben
+### <a name="using-parameter-options-in-a-query"></a>Paraméter-beállítások használata lekérdezésekben
 ```kusto
 requests
 | make-series Requests = count() default = 0 on timestamp from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain}
@@ -80,5 +80,5 @@ requests
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerkedés a](workbooks-visualizations.md) munkafüzetekkel, számos gazdag vizualizációs lehetőséggel.
-* [Szabályozhatja](workbooks-access-control.md) és megoszthatja a munkafüzet erőforrásaihoz való hozzáférést.
+* [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
+* A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.
