@@ -1,103 +1,103 @@
 ---
 title: Azure HPC-gyorsítótár csatlakoztatása
-description: Ügyfelek csatlakoztatása Azure HPC cache szolgáltatáshoz
+description: Ügyfelek összekötése az Azure HPC cache szolgáltatással
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: v-erkel
 ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458369"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC-gyorsítótár csatlakoztatása
 
-A gyorsítótár létrehozása után az NFS-ügyfelek `mount` egy egyszerű paranccsal érhetik el azt. A parancs egy adott tárolási célelérési utat az Azure HPC-gyorsítótáregy helyi könyvtárhoz az ügyfélgépen.
+A gyorsítótár létrehozása után az NFS-ügyfelek egy egyszerű `mount` parancs használatával férhetnek hozzá. A parancs egy adott tárolási cél elérési utat csatlakoztat az Azure HPC-gyorsítótárból egy helyi könyvtárba az ügyfélszámítógépen.
 
-A csatlakoztatási parancs a következő elemekből áll:
+A csatlakoztatási parancs az alábbi elemekből áll:
 
-* A gyorsítótár egyik csatlakoztatási címe (a gyorsítótár áttekintő oldalán található)
-* A tárolócél létrehozásakor beállított virtuális névtérelérési út
+* A gyorsítótár csatlakoztatási címeinek egyike (a gyorsítótár áttekintése oldalon látható)
+* A tárolási cél létrehozásakor beállított virtuális névtér elérési útja
 * Az ügyfélen használandó helyi elérési út
-* Parancsparaméterek, amelyek optimalizálják az ilyen típusú NFS-csatlakoztatás sikerét
+* Az ilyen típusú NFS-csatlakoztatások sikerességét optimalizáló parancs paraméterei
 
-A gyorsítótár **csatlakoztatási utasítások** lapja összegyűjti az információkat és az ajánlott beállításokat, és létrehoz egy prototípus csatlakoztatási parancsot, amelyet másolhat. Olvassa [el A szerelési útmutató segédprogram használata](#use-the-mount-instructions-utility) a részletekért.
+A gyorsítótár **csatlakoztatási utasítások** lapja összegyűjti az adatokat és az ajánlott beállításokat, és létrehoz egy másolásra szolgáló prototípus-csatlakoztatási parancsot. A részletekért olvassa el [a csatlakoztatási utasítások segédprogramot](#use-the-mount-instructions-utility) .
 
 ## <a name="prepare-clients"></a>Ügyfelek előkészítése
 
-Győződjön meg arról, hogy az ügyfelek képesek csatlakoztatni az Azure HPC-gyorsítótár at az ebben a szakaszban szereplő irányelvek betartásával.
+Az ebben a szakaszban található irányelvek alapján győződjön meg arról, hogy az ügyfelek csatlakoztatni tudják az Azure HPC-gyorsítótárat.
 
 ### <a name="provide-network-access"></a>Hálózati hozzáférés biztosítása
 
-Az ügyfélgépeknek hálózati hozzáféréssel kell rendelkezniük a gyorsítótár virtuális hálózatához és magánalhálózatához.
+Az ügyfélgépeknek hálózati hozzáféréssel kell rendelkezniük a gyorsítótár virtuális hálózatához és a magánhálózati alhálózathoz.
 
-Hozzon létre például ügyfélvirtuális gépeket ugyanazon a virtuális hálózaton belül, vagy használjon végpontot, átjárót vagy más megoldást a virtuális hálózatban a külső hozzáféréshez. (Ne feledje, hogy magának a gyorsítótárnak csak a gyorsítótárnak kell a gyorsítótár alhálózatán belül lennie.)
+Hozzon létre például egy virtuális hálózaton belül az ügyfél virtuális gépeket, vagy használjon végpontot, átjárót vagy más megoldást a virtuális hálózaton kívülről való hozzáféréshez. (Ne feledje, hogy a gyorsítótár alhálózatán belül semmi más nem, mint maga a gyorsítótár.)
 
 ### <a name="install-utilities"></a>Segédprogramok telepítése
 
-Telepítse a megfelelő Linux segédprogramot, hogy támogassa az NFS csatlakoztatási parancsot:
+Telepítse a megfelelő Linux-segédprogramot az NFS-csatlakoztatási parancs támogatásához:
 
 * Red Hat Enterprise Linux vagy SuSE esetén:`sudo yum install -y nfs-utils`
 * Ubuntu vagy Debian esetén:`sudo apt-get install nfs-common`
 
 ### <a name="create-a-local-path"></a>Helyi elérési út létrehozása
 
-Hozzon létre egy helyi könyvtárelérési utat minden ügyfélen a gyorsítótárhoz való csatlakozáshoz. Hozzon létre egy elérési utat a csatlakoztatni kívánt névtérelérési utakhoz.
+Hozzon létre egy helyi könyvtár elérési utat az egyes ügyfeleken a gyorsítótárhoz való kapcsolódáshoz. Hozza létre a csatlakoztatni kívánt névtér elérési útját.
 
 Például: `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
-Az Azure [Portalon](#use-the-mount-instructions-utility) található Mount utasítások lap tartalmaz egy prototípus parancsot, amelyet másolhat.
+A Azure Portal [csatlakoztatási utasítások](#use-the-mount-instructions-utility) lapja egy olyan prototípus-parancsot tartalmaz, amelyet másolhat.
 
-Amikor csatlakoztatja az ügyfélgépet a gyorsítótárhoz, ezt az elérési utat egy virtuális névtérelérési úthoz társítja, amely egy tárolási cél exportálását jelöli. Könyvtárak létrehozása az ügyfél által használt virtuális névtérelérési utakhoz.
+Amikor az ügyfélszámítógépet a gyorsítótárhoz kapcsolja, társítja ezt az elérési utat egy olyan virtuális névtér elérési útjával, amely a tárolási cél exportálását jelöli. Hozzon létre címtárakat minden olyan virtuális névtér elérési útjához, amelyet az ügyfél használni fog.
 
-## <a name="use-the-mount-instructions-utility"></a>A csatlakoztatási útmutató segédprogram használata
+## <a name="use-the-mount-instructions-utility"></a>A csatlakoztatási utasítások segédprogram használata
 
-Az Azure **Portalon** a Mount utasítások lapon egy másolható csatlakoztatási parancs létrehozásához. Nyissa meg a lapot a portál gyorsítótárnézetének **Konfigurálás** szakaszában.
+Másolható csatlakoztatási parancs létrehozásához a Azure Portal **csatlakoztatási utasítások** lapja használható. A portálon nyissa meg a lap gyorsítótár nézetének **configure (Konfigurálás** ) szakaszát.
 
-Mielőtt egy ügyfélen használná a parancsot, győződjön meg arról, hogy az `mount` ügyfél megfelel az előfeltételeknek, és rendelkezik az NFS parancs használatához szükséges szoftverrel, ahogy azt az Ügyfelek előkészítése című részben [leírtak szerint leírtuk.](#prepare-clients)
+A parancsnak az ügyfélen való használata előtt győződjön meg arról, hogy az ügyfél megfelel az előfeltételeknek, és a szoftver `mount` szükséges az NFS-parancs használatához az [ügyfelek előkészítése](#prepare-clients)című cikkben leírtak szerint.
 
-![képernyőkép egy Azure HPC-gyorsítótár-példányról a portálon, > csatlakoztatási utasítások konfigurálása lap](media/mount-instructions.png)
+![képernyőkép egy Azure HPC cache-példányról a portálon, a configure > Mount utasítások lapon betöltve](media/mount-instructions.png)
 
 A csatlakoztatási parancs létrehozásához kövesse az alábbi eljárást.
 
-1. Az **Ügyfél elérési útja** mező testreszabása. Ez a mező egy példaparancsot ad, amelynek segítségével helyi elérési utat hozhat létre az ügyfélen. Az ügyfél az Azure HPC-gyorsítótárból éri el a tartalmat ebben a címtárban.
+1. Szabja testre az **ügyfél elérési útja** mezőt. Ez a mező egy példaként szolgáló parancsot biztosít, amellyel helyi elérési utat hozhat létre az ügyfélen. Az ügyfél ezen a címtáron helyileg fér hozzá a tartalomhoz az Azure HPC-gyorsítótárból.
 
-   Kattintson a mezőre, és a kívánt könyvtárnevet tartalmazó parancs szerkesztése. A név a karakterlánc végén jelenik meg, miután`sudo mkdir -p`
+   Kattintson a mezőre, és szerkessze a parancsot, hogy tartalmazza a kívánt könyvtárnév nevét. A név a karakterlánc végén jelenik meg, a következő után:`sudo mkdir -p`
 
-   ![képernyőkép az ügyfél elérési út mezőjéről, a végén elhelyezett kurzorral](media/mount-edit-client.png)
+   ![képernyőfelvétel: az ügyfél elérési útja mező a végén található kurzorral](media/mount-edit-client.png)
 
-   A mező szerkesztésének befejezése után a lap alján található csatlakoztatási parancs az új ügyfélelérési úttal frissül.
+   Miután befejezte a mező szerkesztését, az oldal alján lévő mount parancs az új ügyfél elérési úttal frissül.
 
-1. Válassza ki a **gyorsítótár-csatlakoztatás címét** a listából. Ez a menü a gyorsítótár összes [ügyfélcsatlakozási pontját](#find-mount-command-components)sorolja fel.
+1. Válassza ki a **gyorsítótár-csatlakoztatási címeket** a listából. Ez a menü felsorolja a gyorsítótár összes [ügyfél-csatlakoztatási pontját](#find-mount-command-components).
 
-   A gyorsítótár jobb teljesítménye érdekében egyensúlyba hozza az ügyfélterhelést az összes rendelkezésre álló csatlakoztatási cím között.
+   Az ügyfelek terhelésének elosztása az összes rendelkezésre álló csatlakoztatási cím között a gyorsítótár jobb teljesítményének növelése érdekében.
 
-   ![képernyőkép a gyorsítótár-csatlakoztatási címmezőről, a választóval három IP-cím közül választhat](media/mount-select-ip.png)
+   ![képernyőfelvétel a gyorsítótár-csatlakoztatási cím mezőről, amelyben a választó három IP-címet jelenít meg](media/mount-select-ip.png)
 
-1. Válassza ki az ügyfél számára használni kívánt **virtuális névtér elérési útját.** Ezek az elérési utak a háttértároló rendszer exportálásához kapcsolódnak.
+1. Válassza ki az ügyfélhez használni kívánt **virtuális névtér elérési útját** . Ezek az elérési utak a háttér-tárolási rendszeren lévő exportálásokra mutató hivatkozással rendelkeznek.
 
-   ![képernyőkép a névtér elérési útjaimezőről, megnyitott választóval](media/mount-select-target.png)
+   ![a névtér elérési útjai mező képernyőképe, a választóval megnyitva](media/mount-select-target.png)
 
-   A virtuális névtér elérési útjait a Storage targets portal lapon tekintheti meg és módosíthatja. Olvassa [el a Tárolási célok hozzáadása című témakört.](hpc-cache-add-storage.md)
+   A virtuális névterek elérési útjai a tárolási célok portálon tekinthetők meg és módosíthatók. Olvassa el a [tárolási célok hozzáadása](hpc-cache-add-storage.md) című témakört.
 
-   Ha többet szeretne megtudni az Azure HPC Cache összesített névtér funkciójáról, olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md)című olvasni.
+   Ha többet szeretne megtudni az Azure HPC cache összesített névtér-szolgáltatásáról, olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md)című témakört.
 
-1. A harmadik lépés **Mount parancsmezője** automatikusan feltölti a testreszabott csatlakoztatási parancsot, amely az előző mezőkben beállított csatlakoztatási címet, virtuális névtér-útvonalat és ügyfélútvonalat használja.
+1. A 3. lépésben szereplő **Mount Command** mező automatikusan feltölti a testreszabott csatlakoztatási paranccsal, amely a csatlakoztatási, a virtuális névtér elérési útját és az előző mezőkben beállított ügyfél elérési útját használja.
 
-   Kattintson a mező jobb oldalán található másolásszimbólumra, hogy automatikusan átmásolja a vágólapra.
+   A vágólapra történő automatikus másoláshoz kattintson a mező jobb oldalán található másolási szimbólumra.
 
-   ![képernyőkép a névtér elérési útjaimezőről, megnyitott választóval](media/mount-command-copy.png)
+   ![a névtér elérési útjai mező képernyőképe, a választóval megnyitva](media/mount-command-copy.png)
 
-1. Használja a másolt csatlakoztatási parancsot az ügyfélgépen az Azure HPC-gyorsítótárhoz való csatlakoztatásához. A parancsot közvetlenül az ügyfél parancssorából is kiadhatja, vagy a csatlakoztatási parancsot beillesztheti egy ügyféltelepítő parancsfájlba vagy sablonba.
+1. A csatlakoztatott mount parancs használatával csatlakoztassa az ügyfélszámítógépet az Azure HPC-gyorsítótárhoz. A parancsot közvetlenül az ügyfél parancssorából is kiállíthatja, vagy belefoglalhatja a csatlakoztatás parancsot egy ügyfél-telepítési parancsfájlba vagy sablonba.
 
 ## <a name="understand-mount-command-syntax"></a>A csatlakoztatási parancs szintaxisának ismertetése
 
-A csatlakoztatási parancs a következő formában jelenik meg:
+A csatlakoztatási parancs formátuma a következő:
 
-> sudo mount {*options*} *cache_mount_address*:/*namespace_path* *local_path*
+> sudo Mount {*Options*} *cache_mount_address*:/*namespace_path* *local_path*
 
 Példa:
 
@@ -107,34 +107,34 @@ root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0
 root@test-client:/tmp#
 ```
 
-Miután ez a parancs sikeres, a tároló exportálásának tartalma látható lesz az ``hpccache`` ügyfél könyvtárában.
+A parancs sikeres végrehajtása után a tároló exportálásának tartalma látható lesz az ügyfél ``hpccache`` címtárában.
 
 ### <a name="mount-command-options"></a>Csatlakoztatási parancs beállításai
 
-Robusztus ügyfélcsatlakoztatás esetén adja át ezeket a beállításokat és argumentumokat a csatlakoztatási parancsban:
+Robusztus ügyfél csatlakoztatása esetén adja át ezeket a beállításokat és argumentumokat a csatlakoztatási parancsban:
 
-> mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}
+> Mount-o Hard, proto = TCP, mountproto = TCP, újrapróbálkozás = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| Ajánlott csatlakoztatási parancs beállításai | |
+| Javasolt csatlakoztatási parancs beállításai | |
 --- | ---
-``hard`` | Az Azure HPC-gyorsítótárhoz való ideiglenes csatlakoztatások alkalmazáshibákkal és esetleges adatvesztéssel vannak társítva.
-``proto=tcp`` | Ez a beállítás támogatja az NFS hálózati hibák megfelelő kezelését.
+``hard`` | Az Azure HPC cache-hez való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel jár.
+``proto=tcp`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
 ``mountproto=tcp`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
-``retry=<value>`` | Állítsa ``retry=30`` be, hogy elkerülje az átmeneti csatlakoztatási hibákat. (Az előtér-tartókban más érték ajánlott.)
+``retry=<value>`` | Állítsa ``retry=30`` be az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-### <a name="find-mount-command-components"></a>Csatlakoztatási parancsösszetevőinek keresése
+### <a name="find-mount-command-components"></a>Csatlakoztatási parancs összetevőinek keresése
 
-Ha a csatlakoztatási parancs csatlakoztatása parancs használata nélkül szeretne létrehozni a **Csatlakoztatási utasítások** lapot, megtalálhatja a csatlakoztatási címeket a gyorsítótár **áttekintése** lapon és a virtuális névtér elérési útjait a **Storage céllapon.**
+Ha a csatlakoztatási **utasítások** lap használata nélkül szeretné létrehozni a csatlakoztatási parancsot, megkeresheti a csatlakoztatási címeket a gyorsítótár **áttekintése** lapon és a virtuális névtér elérési útjain a **tárolási cél** lapon.
 
-![képernyőkép az Azure HPC Cache-példány áttekintése lapjáról, a jobb alsó sarokban lévő csatlakoztatási címek listája körül egy kiemelési mezővel](media/hpc-cache-mount-addresses.png)
+![képernyőkép az Azure HPC cache-példány áttekintő oldaláról, amely a jobb alsó sarokban lévő csatlakoztatási címek listája körüli kiemelési lista](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
-> A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Egy erőforráscsoportban ezek a hálózati adapterek egy `-cluster-nic-` számés szám mal végződő nevekkel vannak felsorolva. Ne módosítsa vagy törölje ezeket az összeköttetéseket, mert a gyorsítótár elérhetetlenné válik.
+> A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Egy erőforráscsoport esetében ezek a hálózati adapterek a (z) `-cluster-nic-` és egy szám végződésű névvel vannak felsorolva. Ne módosítsa vagy törölje ezeket a csatolókat, vagy a gyorsítótár elérhetetlenné válik.
 
-A virtuális névtér elérési útjai az egyes tárolók részletei lapon jelennek meg. Kattintson egy adott tároló célnevére a részletek megtekintéséhez, beleértve a hozzá társított összesített névtérelérési utakat is.
+A virtuális névtér elérési útjai az egyes tárolási cél részletek lapján jelennek meg. Kattintson egy egyedi tárolási cél nevére a részletek megjelenítéséhez, beleértve a hozzájuk társított összesített névtér-elérési utakat is.
 
-![a tárolócél részletes oldalának képernyőképe ("Tárhelycél frissítése" fejléc). A tábla Virtuális névtér elérési útjának egyik bejegyzése körül van egy kiemelési mező.](media/hpc-cache-view-namespace-paths.png)
+![a tárolási cél részletes oldalának képernyőképe (fejléc "frissítési tárolási cél"). A tábla virtuális névtér elérési útja oszlopában található egy kiemelési mező](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha adatokat szeretne áthelyezni a gyorsítótár tárolási céljaira, olvassa el [az új Azure Blob-tárterület feltöltése](hpc-cache-ingest.md)című részt.
+* Ha adatokat szeretne áthelyezni a gyorsítótár tárolási céljaira, olvassa el az [új Azure Blob Storage feltöltése](hpc-cache-ingest.md)című cikkét.

@@ -1,47 +1,47 @@
 ---
-title: Ügyfél által kezelt kulcsok beállítása az ise-kben lévő adatok titkosításához
-description: Saját titkosítási kulcsok létrehozása és kezelése az inaktív adatok védelméhez az Azure Logic Apps integrációs szolgáltatási környezetekben (ISEs)
+title: Ügyfél által felügyelt kulcsok beállítása az inaktív adatok titkosításához a ISEs-ben
+description: Saját titkosítási kulcsok létrehozása és kezelése az integrációs szolgáltatási környezetek (ISEs) Azure Logic Appsban való biztonságossá tételéhez
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458437"
 ---
-# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az inaktív adatok titkosításához az Integrációs szolgáltatás környezeteihez (ISEs) az Azure Logic Apps-ben
+# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
-Az Azure Logic Apps az Azure Storage-ra támaszkodik [az inaktív adatok tárolásához](../storage/common/storage-service-encryption.md)és automatikus titkosításához. Ez a titkosítás védi az adatokat, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Alapértelmezés szerint az Azure Storage microsoft által felügyelt kulcsokat használ az adatok titkosításához. Az Azure Storage titkosításának működéséről az [Azure Storage titkosítása az inaktív adatokés az](../storage/common/storage-service-encryption.md) Azure Data [Encryption-at-In](../security/fundamentals/encryption-atrest.md)című témakörben talál további információt.
+Azure Logic Apps az Azure Storage-ra támaszkodik az adatok tárolására és automatikus [titkosítására](../storage/common/storage-service-encryption.md). Ez a titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Alapértelmezés szerint az Azure Storage a Microsoft által felügyelt kulcsokat használja az adatai titkosítására. További információ az Azure Storage-titkosítás működéséről: [Az Azure Storage titkosítása a REST](../storage/common/storage-service-encryption.md) -alapú adatok és az Azure-beli [adattitkosítás – nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban.
 
-Amikor létrehoz egy [integrációs szolgáltatási környezetet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a logikai alkalmazások üzemeltetéséhez, és szeretné, hogy jobban szabályozhassa az Azure Storage által használt titkosítási kulcsokat, beállíthatja, használhatja és kezelheti saját kulcsát az [Azure Key Vault](../key-vault/general/overview.md)használatával. Ezt a lehetőséget "Hozd saját kulcsodhoz" (BYOK) is ismerünk, és a kulcsot "ügyfél által kezelt kulcsnak" nevezzük.
+Ha [integrációs szolgáltatási környezetet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) hoz létre a logikai alkalmazások üzemeltetéséhez, és az Azure Storage által használt titkosítási kulcsok hatékonyabb vezérlését szeretné végezni, akkor a [Azure Key Vault](../key-vault/general/overview.md)használatával beállíthatja, használhatja és kezelheti a saját kulcsát. Ezt a képességet "Bring Your Own Key" (BYOK) néven is nevezik, és a kulcs neve "ügyfél által felügyelt kulcs".
 
-Ez a témakör bemutatja, hogyan állíthatja be és adhatja meg a saját titkosítási kulcsot, amelyet az ISE létrehozásakor a Logic Apps REST API használatával használhat. Az ISE Logic Apps REST API-n keresztüli létrehozásának általános lépéseit az [Integrációs szolgáltatás környezetének (ISE) létrehozása a Logic Apps REST API használatával című témakörben](../logic-apps/create-integration-service-environment-rest-api.md)tartalmazza.
+Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg saját titkosítási kulcsát, amelyet az ISE a Logic Apps REST API használatával történő létrehozásakor használ. Az ISE Logic Apps REST API használatával történő létrehozásának általános lépéseiért tekintse meg az [integrációs szolgáltatási környezet (ISE) létrehozása az Logic Apps REST API segítségével](../logic-apps/create-integration-service-environment-rest-api.md)című témakört.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-* Az ISE ügyfél által felügyelt kulcstámogatása jelenleg csak ezekben az Azure-régiókban érhető el: USA nyugati régiója 2, USA keleti régiója és USA déli középső régiója.
+* Ebben az esetben az ISE ügyfél által felügyelt kulcsának támogatása csak ezekben az Azure-régiókban érhető el: USA 2. nyugati régiója, USA keleti régiója és az USA déli középső régiója
 
-* Az ügyfél által felügyelt kulcsot csak az *ISE létrehozásakor*adhatja meg, ezt követően nem. Az ISE létrehozása után ez a kulcs nem tiltható le. Jelenleg nem áll rendelkezésre támogatás az ISE ügyfél által felügyelt kulcsának elforgatásához.
+* Az ügyfél által felügyelt kulcs csak akkor adható meg, *Ha létrehozza az ISE*-t, nem pedig később. Az ISE létrehozása után ezt a kulcsot nem lehet letiltani. Jelenleg nem létezik támogatás egy ügyfél által felügyelt kulcs elforgatásához egy ISE esetében.
 
-* Az ügyfél által felügyelt kulcsok támogatásához az ISE megköveteli, hogy a [rendszer által hozzárendelt felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) engedélyezve legyen. Ez az identitás lehetővé teszi, hogy az ISE hitelesítse az erőforrásokhoz való hozzáférést más Azure Active Directory (Azure AD) bérlők, így nem kell bejelentkezni a hitelesítő adatokkal.
+* Az ügyfél által felügyelt kulcsok támogatásához az ISE megköveteli, hogy a [rendszer által hozzárendelt felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) engedélyezve legyen. Ez az identitás lehetővé teszi, hogy az ISE hitelesítse a más Azure Active Directory (Azure AD) bérlők erőforrásaihoz való hozzáférést, így nem kell bejelentkeznie a hitelesítő adataival.
 
-* Jelenleg egy OLYAN ISE létrehozásához, amely támogatja az ügyfél által felügyelt kulcsokat, és a rendszer által hozzárendelt identitás engedélyezve van, meg kell hívnia a Logic Apps REST API-t https put kérelem használatával.
+* Jelenleg olyan ISE létrehozásához, amely támogatja az ügyfél által felügyelt kulcsokat, és engedélyezve van a rendszer által hozzárendelt identitása, a Logic Apps REST API HTTPS PUT-kérelem használatával kell meghívnia.
 
-* Az ISE-t létrehozó HTTPS PUT-kérelem elküldése után *30 percen* belül hozzáférést kell [biztosítania a kulcstartószámára az ISE rendszerhez rendelt identitásához.](#identity-access-to-key-vault) Ellenkező esetben az ISE létrehozása sikertelen, és engedélyhibát okoz.
+* Az ISE-t létrehozó HTTPS PUT-kérelem elküldése után *30 percen* belül meg kell [adnia a Key Vault-hozzáférést az ISE rendszerhez rendelt identitásához](#identity-access-to-key-vault). Ellenkező esetben az ISE létrehozása meghiúsul, és az engedélyek hibát jelez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ugyanazok [az előfeltételek](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) és [követelmények az ISE-hez való hozzáférés engedélyezéséhez,](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) mint amikor ise-t hoz létre az Azure Portalon
+* Ugyanazok az [Előfeltételek](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) és [követelmények, amelyek lehetővé teszik az ISE hozzáférését](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) , mint amikor egy ISE-t hoz létre a Azure Portal
 
-* Olyan Azure-kulcstartó, amelyen engedélyezve van a **helyreállítható törlés** és a **Ne ürítés** tulajdonságok
+* Egy olyan Azure Key Vault, amely rendelkezik a helyreállítható **törléssel** , és **nem** törölheti az engedélyezett tulajdonságokat
 
-  A tulajdonságok engedélyezéséről az [Azure Key Vault helyreállító törlési áttekintése](../key-vault/general/overview-soft-delete.md) és Az ügyfelek által felügyelt kulcsok [konfigurálása az Azure Key Vault szolgáltatással című](../storage/common/storage-encryption-keys-portal.md)témakörben olvashat bővebben. Ha most ismerkedik az Azure Key Vault szolgáltatással, ismerje meg, [hogyan hozhat létre kulcstrezort](../key-vault/secrets/quick-create-portal.md#create-a-vault) az Azure Portalon vagy az Azure PowerShell [new-azkeyvault-i](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)parancshasználatával.
+  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/overview-soft-delete.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
 
-* A kulcstartóban az alábbi tulajdonságértékekkel létrehozott kulcs:
+* A Key vaultban a következő tulajdonság-értékekkel létrehozott kulcs:
 
   | Tulajdonság | Érték |
   |----------|-------|
@@ -52,48 +52,48 @@ Ez a témakör bemutatja, hogyan állíthatja be és adhatja meg a saját titkos
 
   ![Az ügyfél által felügyelt titkosítási kulcs létrehozása](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  További információ: [Ügyfél által felügyelt kulcsok konfigurálása](../storage/common/storage-encryption-keys-portal.md) az Azure Key Vault szolgáltatással vagy az Azure PowerShell [add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey)paranccsal.
+  További információ: az [ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) vagy a Azure PowerShell paranccsal, [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey).
 
-* Az ise létrehozásához használható eszköz a Logic Apps REST API https PUT-kérelemmel történő hívásával. Használhatja például [a Postman](https://www.getpostman.com/downloads/)alkalmazást, vagy létrehozhat egy logikai alkalmazást, amely végrehajtja ezt a feladatot.
+* Egy eszköz, amellyel létrehozhatja az ISE-t úgy, hogy meghívja a Logic Apps REST API egy HTTPS PUT-kéréssel. Használhatja például a [Poster](https://www.getpostman.com/downloads/)-t, vagy létrehozhat egy logikai alkalmazást, amely elvégzi ezt a feladatot.
 
 <a name="enable-support-key-system-identity"></a>
 
-## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>Ise létrehozása kulcstartóval és felügyelt identitástámogatással
+## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>ISE létrehozása a Key vaulttal és a felügyelt identitások támogatásával
 
-Az ISE létrehozásához hívja meg a Logic Apps REST API-t, tegye meg ezt a HTTPS PUT-kérelmet:
+Az ISE létrehozásához a Logic Apps REST API meghívásával végezze el ezt a HTTPS PUT-kérelmet:
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> A Logic Apps REST API 2019-05-01 verzió megköveteli, hogy saját HTTP PUT-kérelmet ISE-összekötők.
+> A Logic Apps REST API 2019-05-01-es verziójának a saját HTTP PUT-kérelmét kell használnia az ISE-összekötők számára.
 
-A telepítés általában két órán belül befejeződik. Esetenként a telepítés akár négy órát is igénybe vehet. A központi telepítés állapotának ellenőrzéséhez az [Azure Portalon](https://portal.azure.com)az Azure eszköztáron válassza ki az értesítések ikonját, amely megnyitja az értesítések ablaktábláját.
+Az üzembe helyezés általában két órán belül befejeződik. Alkalmanként az üzembe helyezés akár négy órát is igénybe vehet. A központi telepítés állapotának megtekintéséhez a [Azure Portal](https://portal.azure.com)az Azure eszköztárán válassza az értesítések ikont, amely megnyitja az értesítések panelt.
 
 > [!NOTE]
-> Ha az üzembe helyezés sikertelen, vagy törli az ISE-t, az Azure-nak akár egy órába is telhet, mielőtt felszabadítja az alhálózatokat. Ez a késleltetés azt jelenti, hogy előfordulhat, hogy várnia kell, mielőtt újra felhasználná ezeket az alhálózatokat egy másik ISE-ben.
+> Ha az üzembe helyezés sikertelen, vagy törli az ISE-t, az Azure akár egy órát is igénybe vehet az alhálózatok felszabadítása előtt. Ez azt jelenti, hogy előfordulhat, hogy várnia kell, mielőtt újra felhasználja ezeket az alhálózatokat egy másik ISE-ben.
 >
-> Ha törli a virtuális hálózatot, az Azure általában akár két órát is igénybe vehet az alhálózatok felszabadítása előtt, de ez a művelet hosszabb időt vehet igénybe. 
-> Virtuális hálózatok törlésekor győződjön meg arról, hogy nincs enek erőforrások csatlakoztatva. 
-> Lásd: [Virtuális hálózat törlése](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
+> Ha törli a virtuális hálózatot, az Azure általában akár két órával az alhálózatok felszabadítása előtt is eltarthat, de ez a művelet hosszabb időt is igénybe vehet. 
+> A virtuális hálózatok törlésekor győződjön meg arról, hogy egyetlen erőforrás sincs még csatlakoztatva. 
+> Lásd: [virtuális hálózat törlése](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>Kérelem fejléce
 
 A kérelem fejlécében adja meg a következő tulajdonságokat:
 
-* `Content-type`: Állítsa ezt `application/json`a tulajdonságot a értékre.
+* `Content-type`: Állítsa ezt a tulajdonságot `application/json`értékre.
 
-* `Authorization`: Állítsa be ezt a tulajdonságértékét a tulajdonosi jogkivonatra a használni kívánt Azure-előfizetéshez vagy erőforráscsoporthoz hozzáféréssel rendelkező ügyfél számára.
+* `Authorization`: Állítsa ezt a tulajdonságot annak az ügyfélnek a tulajdonosi jogkivonatára, aki hozzáfér a használni kívánt Azure-előfizetéshez vagy erőforráscsoporthoz.
 
 ### <a name="request-body"></a>A kérés törzse
 
-A kérelem törzsében engedélyezze a további elemek támogatását az ISE-definícióban megadott adatok megadásával:
+A kérelem törzsében engedélyezze a további elemek támogatását az ISE-definícióban található információk megadásával:
 
 * A rendszer által hozzárendelt felügyelt identitás, amelyet az ISE a kulcstartó eléréséhez használ
-* A kulcstartó és a használni kívánt ügyfél által felügyelt kulcs
+* A Key Vault és a használni kívánt ügyfél által felügyelt kulcs
 
 #### <a name="request-body-syntax"></a>Kérelem törzsének szintaxisa
 
-Az ISE létrehozásakor használandó tulajdonságokat az alábbi hivatkozási alapként ismerteti:
+Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehozásakor használandó tulajdonságokat:
 
 ```json
 {
@@ -142,9 +142,9 @@ Az ISE létrehozásakor használandó tulajdonságokat az alábbi hivatkozási a
 }
 ```
 
-#### <a name="request-body-example"></a>Törzs igénylése példa
+#### <a name="request-body-example"></a>Példa a kérelem szövegtörzsére
 
-Ez a példa kérelem törzse a mintaértékeket mutatja:
+A példaként szolgáló kérelem törzse a következő minta értékeket jeleníti meg:
 
 ```json
 {
@@ -195,38 +195,38 @@ Ez a példa kérelem törzse a mintaértékeket mutatja:
 
 <a name="identity-access-to-key-vault"></a>
 
-## <a name="grant-access-to-your-key-vault"></a>Hozzáférés a kulcstartóhoz
+## <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
 
-*30 percen* belül, miután elküldte a HTTP PUT-kérelmet az ISE létrehozásához, hozzá kell adnia egy hozzáférési szabályzatot a key vaulthoz az ISE rendszerhez rendelt identitásához. Ellenkező esetben az ISE létrehozása sikertelen, és engedélyhiba jelenik meg. 
+*30 percen* belül, miután elküldte a http Put-kérést az ISE létrehozásához, hozzá kell adnia egy hozzáférési szabályzatot a kulcstartóhoz az ISE rendszerhez rendelt identitásához. Ellenkező esetben az ISE létrehozása meghiúsul, és az engedélyek hibaüzenetet kapnak. 
 
-Ehhez a feladathoz használhatja az Azure PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsot, vagy az alábbi lépéseket az Azure Portalon:
+Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsot, vagy a következő lépésekkel követheti el a Azure Portal:
 
-1. Az [Azure Portalon](https://portal.azure.com)nyissa meg az Azure-kulcstartót.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg az Azure Key vaultot.
 
-1. A key vault menüjében válassza az **Access-házirendek** > **hozzáférési házirend hozzáadása lehetőséget,** például:
+1. A Key Vault menüjében válassza a **hozzáférési szabályzatok** > **hozzáférési házirend hozzáadása**lehetőséget, például:
 
-   ![Hozzáférési házirend hozzáadása a rendszer által hozzárendelt felügyelt identitáshoz](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
+   ![Hozzáférési szabályzat hozzáadása a rendszerhez rendelt felügyelt identitáshoz](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
-1. A **Hozzáférési házirend hozzáadása** ablaktábla megnyitása után hajtsa végre az alábbi lépéseket:
+1. A **hozzáférési szabályzat hozzáadása** panel megnyitása után kövesse az alábbi lépéseket:
 
-   1. Adja meg a következő beállításokat:
+   1. Válassza ki ezeket a beállításokat:
 
       | Beállítás | Értékek |
       |---------|--------|
-      | **Konfigurálás sablonból (nem kötelező)** | Kulcskezelés |
-      | **Kulcsengedélyek** | - **Kulcskezelési műveletek:** Get, List <p><p>- **Kriptográfiai műveletek:** Kulcs kicsomagolása, wrap kulcs |
+      | **Konfigurálás sablonból (nem kötelező) lista** | Kulcskezelő |
+      | **Kulcs engedélyei** | - **Kulcskezelő műveletek**: lekérés, Listázás <p><p>- **Titkosítási műveletek**: kicsomagolási kulcs, betakarás kulcsa |
       |||
 
-      ![Válassza ki a "Kulcskezelés" > a "Kulcsengedélyek" lehetőséget.](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
+      ![Válassza a "kulcskezelő" > "kulcs engedélyei" elemet.](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. A **Tag kijelölése**csoportban válassza **a Nincs lehetőséget.** A **Fő** ablaktábla megnyitása után a keresőmezőben keresse meg és jelölje ki az ISE-t. Ha elkészült, válassza **a Hozzáadás kiválasztása lehetőséget.** > **Add**
+   1. Válassza a **tag kiválasztása**lehetőséget, majd a **nincs kiválasztva**lehetőséget. A **résztvevő** ablaktábla megnyitása után keresse meg és válassza ki az ISE elemet a keresőmezőbe. Ha elkészült, válassza a Hozzáadás **lehetőséget** > **Add**.
 
-      ![Válassza ki az ISE-t, amelyet főfelhasználóként szeretne használni](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
+      ![Válassza ki a rendszerbiztonsági tagként használni kívánt ISE-t](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
-   1. Ha végzett az **Access-házirendek** ablaktáblával, válassza a **Mentés lehetőséget.**
+   1. Ha elkészült a **hozzáférési szabályzatok** ablaktáblával, válassza a **Mentés**lehetőséget.
 
-További információ: [Key Vault-hitelesítés biztosítása felügyelt identitással.](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)
+További információ: [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [Azure Key Vaultról](../key-vault/general/overview.md)
+* További információ a [Azure Key Vault](../key-vault/general/overview.md)

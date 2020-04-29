@@ -1,6 +1,6 @@
 ---
-title: Lekérdezési mappák és több CSV-fájl az SQL igény szerinti használatával (előzetes verzió)
-description: Az SQL igény szerinti (előzetes verzió) támogatja több fájl/mappa olvasását helyettesítő karakterek használatával, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez.
+title: Mappák és több CSV-fájl lekérdezése az SQL igény szerinti használatával (előzetes verzió)
+description: Az SQL on-demand (előzetes verzió) támogatja több fájl/mappa olvasását helyettesítő karakterekkel, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,46 +10,46 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457365"
 ---
 # <a name="query-folders-and-multiple-csv-files"></a>Mappák és több CSV-fájl lekérdezése  
 
-Ebben a cikkben megtudhatja, hogyan írhat lekérdezést az SQL igény szerinti (előzetes verzió) használatával az Azure Synapse Analytics szolgáltatásban.
+Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban.
 
-Az SQL igény szerinti használata több fájl/mappa olvasását támogatja helyettesítő karakterek használatával, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez. Azonban nagyobb rugalmasság van jelen, mivel több helyettesítő karakter is megengedett.
+Az SQL on-demand támogatja több fájl/mappa olvasását helyettesítő karakterek használatával, amelyek a Windows operációs rendszerben használt helyettesítő karakterekhez hasonlóak. Ez azonban nagyobb rugalmasságot jelent, mivel több helyettesítő karakter is engedélyezett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elolvasná a cikk többi részét, győződjön meg róla, hogy áttekinti az alább felsorolt cikkeket:
+A cikk további részének olvasása előtt mindenképpen tekintse át az alábbi cikkeket:
 
 - [Első beállítás](query-data-storage.md#first-time-setup)
 - [Előfeltételek](query-data-storage.md#prerequisites)
 
 ## <a name="read-multiple-files-in-folder"></a>Több fájl olvasása a mappában
 
-A *csv/taxi* mappát fogja használni a mintalekérdezések követésére. A NYC Taxi - Yellow Taxi Trip Records adatokat tartalmaz 2016 júliusa és 2018 júniusa között.
+A minta lekérdezések követéséhez a *CSV/taxi* mappát kell használnia. A New York-i, a sárga taxis utazás a következő adatokat tartalmazza: július 2016 és június 2018.
 
-A *csv/taxi* fájljai az év és a hónap után vannak elnevezve:
+A *CSV/taxiban* található fájlokat az év és hónap után nevezték el:
 
-- yellow_tripdata_2016-07.csv
-- yellow_tripdata_2016-08.csv
-- yellow_tripdata_2016-09.csv
+- yellow_tripdata_2016 -07. csv
+- yellow_tripdata_2016 -08. csv
+- yellow_tripdata_2016 -09. csv
 - ...
-- yellow_tripdata_2018-04.csv
-- yellow_tripdata_2018-05.csv
-- yellow_tripdata_2018-06.csv
+- yellow_tripdata_2018 -04. csv
+- yellow_tripdata_2018 -05. csv
+- yellow_tripdata_2018 -06. csv
 
-Minden fájl a következő struktúrával rendelkezik:
+Minden fájl a következő szerkezettel rendelkezik:
         
     [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
 
-## <a name="read-all-files-in-folder"></a>A mappában lévő összes fájl olvasása
+## <a name="read-all-files-in-folder"></a>A mappában található összes fájl olvasása
     
-Az alábbi példa beolvassa az összes NYC Yellow Taxi adatfájlt a *csv/taxi* mappából, és visszaadja az utasok és a túrák éves számát. Azt is mutatja, használata összesített függvények.
+Az alábbi példa az összes NYC Yellow taxi-adatfájlt beolvassa a *CSV/taxi* mappából, és az utasok és a túrák számát adja vissza évente. Emellett az összesítő függvények használatát is megjeleníti.
 
 ```sql
 SELECT 
@@ -87,11 +87,11 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Az egyetlen OPENROWSET-sel elért összes fájlnak azonos szerkezetűnek kell lennie (azaz az oszlopok számával és adattípusaival).
+> Az egyetlen OPENROWSET elért összes fájlnak ugyanazzal a struktúrával kell rendelkeznie (például oszlopok és adattípusok száma).
 
-### <a name="read-subset-of-files-in-folder"></a>A mappában lévő fájlok részhalmazának olvasása
+### <a name="read-subset-of-files-in-folder"></a>Fájlok részhalmazának olvasása a mappában
 
-Az alábbi példa beolvassa a 2017-es NYC Yellow Taxi adatfájlokat a *csv/taxi* mappából egy helyettesítő karakter használatával, és visszaadja a teljes viteldíj összegét fizetési típusonként.
+Az alábbi példa beolvassa az 2017 NYC Yellow taxi adatfájljait a *CSV/taxi* mappából a helyettesítő karakter használatával, és a teljes viteldíj összegét adja vissza a fizetési típusok száma szerint.
 
 ```sql
 SELECT 
@@ -126,20 +126,20 @@ ORDER BY payment_type;
 ```
 
 > [!NOTE]
-> Az egyetlen OPENROWSET-sel elért összes fájlnak azonos szerkezetűnek kell lennie (azaz az oszlopok számával és adattípusaival).
+> Az egyetlen OPENROWSET elért összes fájlnak ugyanazzal a struktúrával kell rendelkeznie (például oszlopok és adattípusok száma).
 
 ## <a name="read-folders"></a>Mappák olvasása
 
-Az OPENROWSET elérési útja egy mappa elérési útja is lehet. A következő szakaszok ezeket a lekérdezéstípusokat tartalmazzák.
+A OPENROWSET számára megadott elérési út lehet egy mappa elérési útja is. A következő fejezetek tartalmazzák ezeket a lekérdezési típusokat.
 
 ### <a name="read-all-files-from-specific-folder"></a>Az összes fájl olvasása adott mappából
 
-A mappában lévő összes fájlt elolvashatja a fájlszintű helyettesítő karakter használatával, ahogy az a [mappában lévő összes fájl olvasása](#read-all-files-in-folder)című részben látható. De van egy módja annak, hogy lekérdezni egy mappát, és felhasználja az összes fájlt a mappában.
+A mappában lévő összes fájlt elolvashatja a fájl szintű helyettesítő karakterrel, ahogy az az [összes fájl olvasása a mappában](#read-all-files-in-folder)lehetőség látható. Azonban lehetőség van egy mappa lekérdezésére és az abban a mappában található összes fájl felhasználására.
 
-Ha az OPENROWSET-ben megadott elérési út egy mappára mutat, a rendszer a mappában lévő összes fájlt a lekérdezés forrásaként fogja használni. A következő lekérdezés a *csv/taxi* mappában lévő összes fájlt beolvassa.
+Ha a OPENROWSET-ben megadott elérési út egy mappára mutat, a rendszer a mappában lévő összes fájlt a lekérdezés forrásaként fogja használni. A következő lekérdezés a *CSV/taxi* mappában található összes fájlt beolvassa.
 
 > [!NOTE]
-> Megjegyzés: létezik a / végén az elérési út a lekérdezés alatt. Egy mappát jelöl. Ha a / nincs megadva, a lekérdezés egy *taxi* nevű fájlt céloz meg.
+> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a *taxi* nevű fájlt célozza meg helyette.
 
 ```sql
 SELECT
@@ -177,14 +177,14 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Az egyetlen OPENROWSET-sel elért összes fájlnak azonos szerkezetűnek kell lennie (azaz az oszlopok számával és adattípusaival).
+> Az egyetlen OPENROWSET elért összes fájlnak ugyanazzal a struktúrával kell rendelkeznie (például oszlopok és adattípusok száma).
 
-### <a name="read-all-files-from-multiple-folders"></a>Az összes fájl olvasása több mappából
+### <a name="read-all-files-from-multiple-folders"></a>Több mappából származó összes fájl olvasása
 
-Egy helyettesítő karakter segítségével több mappából is lehet fájlokat olvasni. A következő lekérdezés beolvassa az összes fájlt az összes mappát található a *csv* mappát, amelyek nevét kezdve *t* és végződő *i*.
+A fájlok több mappából is olvashatók a helyettesítő karakterek használatával. A következő lekérdezés beolvassa az összes olyan fájlt, amely a *CSV* mappában található összes mappából a *t* és a t végződéssel kezdődő neveket *tartalmaz.*
 
 > [!NOTE]
-> Megjegyzés: létezik a / végén az elérési út a lekérdezés alatt. Egy mappát jelöl. Ha a / nincs megadva, a lekérdezés célzott fájlokat nevű *t&ast;i* helyett.
+> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t&ast;* " nevű fájlokat fogja megcélozni.
 
 ```sql
 SELECT
@@ -222,17 +222,17 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Az egyetlen OPENROWSET-sel elért összes fájlnak azonos szerkezetűnek kell lennie (azaz az oszlopok számával és adattípusaival).
+> Az egyetlen OPENROWSET elért összes fájlnak ugyanazzal a struktúrával kell rendelkeznie (például oszlopok és adattípusok száma).
 
-Mivel csak egy olyan mappája van, amely megfelel a feltételeknek, a lekérdezés eredménye megegyezik a [mappában lévő összes fájl olvasásával.](#read-all-files-in-folder)
+Mivel csak egy olyan mappa van, amely megfelel a feltételeknek, a lekérdezés eredménye megegyezik a [mappában található összes fájl olvasásával](#read-all-files-in-folder).
 
 ## <a name="multiple-wildcards"></a>Több helyettesítő karakter
 
-Különböző elérési utakon több helyettesítő karaktert is használhat. Például gazdagíthatja az előző lekérdezést, hogy csak a 2017-es adatokkal rendelkező fájlokat olvasson, az összes olyan mappából, amely a nevek *t-vel* kezdődnek és *az i-vel*végződnek.
+Több helyettesítő karaktert is használhat a különböző elérési utak szintjén. Például a korábbi lekérdezések gazdagabbá tehetők csak a 2017 adatokkal rendelkező fájlok olvasására, az összes olyan mappából, amelynél a nevek a *t* értékkel kezdődnek, és az *i*-vel végződik.
 
 > [!NOTE]
-> Megjegyzés: létezik a / végén az elérési út a lekérdezés alatt. Egy mappát jelöl. Ha a / nincs megadva, a lekérdezés célzott fájlokat nevű *t&ast;i* helyett.
-> Lekérdezésenként legfeljebb 10 helyettesítő karakter lehet.
+> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t&ast;* " nevű fájlokat fogja megcélozni.
+> Lekérdezés legfeljebb 10 helyettesítő karakterből áll.
 
 ```sql
 SELECT
@@ -270,10 +270,10 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Az egyetlen OPENROWSET-sel elért összes fájlnak azonos szerkezetűnek kell lennie (azaz az oszlopok számával és adattípusaival).
+> Az egyetlen OPENROWSET elért összes fájlnak ugyanazzal a struktúrával kell rendelkeznie (például oszlopok és adattípusok száma).
 
-Mivel csak egy olyan mappája van, amely megfelel a feltételeknek, a lekérdezés eredménye megegyezik a [mappában lévő fájlok olvasása](#read-subset-of-files-in-folder) és [az összes fájl olvasása adott mappából](#read-all-files-from-specific-folder). A [lekérdezési parkettafájlok](query-parquet-files.md)összetettebb helyettesítő karakteres használati forgatókönyveket is lefednek.
+Mivel csak egy olyan mappája van, amely megfelel a feltételeknek, a lekérdezés eredménye ugyanaz, mint a [mappában található fájlok olvasási részhalmaza](#read-subset-of-files-in-folder) , és az [összes fájl beolvasása az adott mappából](#read-all-files-from-specific-folder). Összetettebb helyettesítő karakteres használati forgatókönyvek találhatók a [lekérdezési parketta fájljaiban](query-parquet-files.md).
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Query [adott fájlok](query-specific-files.md) ról szóló cikkben található.
+További információt a [lekérdezés-specifikus fájlok](query-specific-files.md) című cikkben talál.

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linuxos virtuális gépek létrehozása és kezelése az Azure CLI-vel
+title: Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
 description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI-t Linux rendszerű Azure-beli virtuális gépek létrehozásához és kezeléséhez
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 8e559be82fc7c3d6b25b99319785d49e30f56287
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460001"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
@@ -32,7 +32,7 @@ Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és ruga
 > * Virtuális gép átméretezése
 > * Virtuális gép állapotának áttekintése és értelmezése
 
-Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -156,9 +156,9 @@ Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.
 | Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
-| [Számításra optimalizált](sizes-compute.md)   | Fsv2 között          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
+| [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
 | [Memóriaoptimalizált](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
-| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, Ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
+| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
 | [Nagy teljesítmény](sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
 
@@ -261,7 +261,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 | Felszabadítva | Azt jelzi, hogy a virtuális gép el lett távolítva a hipervizorról, a vezérlősíkon azonban továbbra is elérhető. A felszabadított állapotban lévő virtuális gépekért nem kell díjat fizetni. |
 | - | Azt jelzi, hogy a virtuális gép energiaállapota ismeretlen. |
 
-### <a name="find-the-power-state"></a>Az energiaállapot megkeresése
+### <a name="find-the-power-state"></a>Energiaellátás állapotának megállapítása
 
 Egy adott virtuális gép állapotát az [az vm get-instance-view](/cli/azure/vm) paranccsal kérheti le. Ügyeljen arra, hogy egy érvényes nevet adjon meg a virtuális géphez és az erőforráscsoporthoz. 
 
@@ -326,4 +326,4 @@ Ebben az oktatóanyagban a virtuális gépek létrehozásának és kezelésének
 Folytassa a következő oktatóanyaggal, amely a virtuálisgép-lemezeket ismerteti.  
 
 > [!div class="nextstepaction"]
-> [Virtuálisgép-lemezek létrehozása és kezelése](./tutorial-manage-disks.md)
+> [VM-lemezek létrehozása és kezelése](./tutorial-manage-disks.md)

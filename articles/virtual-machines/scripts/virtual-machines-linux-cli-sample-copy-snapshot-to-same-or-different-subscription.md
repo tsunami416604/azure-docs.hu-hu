@@ -1,6 +1,6 @@
 ---
-title: Felügyelt lemez pillanatképének másolása előfizetésbe – CLI-minta
-description: Azure CLI scriptminta – felügyelt lemez pillanatképének másolása (vagy áthelyezése) ugyanarra vagy másik előfizetésre a CLI-vel
+title: Felügyelt lemez pillanatképének másolása előfizetés-CLI-mintára
+description: Azure CLI parancsfájl minta – felügyelt lemez pillanatképének másolása (vagy áthelyezése) a CLI-vel megegyező vagy eltérő előfizetésre
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,19 +16,19 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 707fc2f805e19487f93affd2c58943090233967f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459967"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Felügyelt lemez pillanatképének másolása előfizetésen belül vagy előfizetések között a CLI használatával
 
-Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. Ezt a parancsfájlt a következő esetekben használhatja:
+Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. Használja ezt a parancsfájlt a következő esetekben:
 
-1. A költségek csökkentése érdekében áttelepítheti a pillanatképet a prémium szintű storage (Premium_LRS) szolgáltatásban a standard szintű tárterületre (Standard_LRS vagy Standard_ZRS).
-1. A zrs-tároló nagyobb megbízhatóságának kihasználása érdekében a helyileg redundáns tárolásról (Premium_LRS, Standard_LRS) a zónaredundáns tárolásra (Standard_ZRS) áttelepítheti a pillanatképet.
-1. Helyezzen át egy pillanatképet ugyanabban a régióban egy másik előfizetésbe hosszabb megőrzési érdekében.
+1. A prémium szintű Storage-ban (Premium_LRS) lévő pillanatkép áttelepíthető a standard Storage-ba (Standard_LRS vagy Standard_ZRS) a díjak csökkentése érdekében.
+1. A ZRS-tároló nagyobb megbízhatóságának kihasználása érdekében áttelepíthet egy pillanatképet a helyileg redundáns tárterületről (Premium_LRS, Standard_LRS) a zónák redundáns tárolására (Standard_ZRS).
+1. Áthelyezheti a pillanatképet más előfizetésbe ugyanabban a régióban a hosszú megőrzés érdekében.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

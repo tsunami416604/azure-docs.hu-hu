@@ -1,6 +1,6 @@
 ---
 title: Az Azure Disk Encryption engedélyezése Linux rendszerű virtuális gépekhez
-description: Ez a cikk a Microsoft Azure lemeztitkosítás linuxos virtuális gépekhez való engedélyezésével kapcsolatos utasításokat tartalmaz.
+description: Ez a cikk a Linux rendszerű virtuális gépek Microsoft Azure lemezes titkosításának engedélyezéséhez nyújt útmutatást.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,129 +9,129 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459780"
 ---
-# <a name="azure-disk-encryption-for-linux-vms"></a>Azure lemeztitkosítás Linuxos virtuális gépekhez 
+# <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
-Az Azure Disk Encryption segít az adatok biztonságos megőrzésében a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. A Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatását használja az Azure virtuális gépek operációs rendszerének és adatlemezeinek kötettitkosításához és adatlemezeinek biztosításához, és az [Azure Key Vaultmal](../../key-vault/index.yml) integrálva van a lemeztitkosítási kulcsok és titkos kulcsok vezérléséhez és kezeléséhez. 
+Az Azure Disk Encryption segít az adatok biztonságos megőrzésében a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. A Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával biztosítja a kötetek titkosítását az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára, és integrálva van [Azure Key Vault](../../key-vault/index.yml) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. 
 
-Ha [az Azure Security Center,](../../security-center/index.yml)a rendszer figyelmezteti, ha a virtuális gépek, amelyek nem titkosított. A riasztások nagy súlyosságú, és a javaslat a virtuális gépek titkosítása.
+Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer riasztást küld, ha nem titkosított virtuális gépek vannak. A riasztások magas súlyosságot mutatnak, és a javasolt a virtuális gépek titkosítása.
 
-![Az Azure Security Center lemeztitkosítási riasztása](media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Azure Security Center lemez titkosítási riasztása](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
-> - Ha korábban már használta az Azure Lemeztitkosítás t az Azure AD-vel a virtuális gép titkosításához, továbbra is ezt a lehetőséget kell használnia a virtuális gép titkosításához. A részletekért tekintse meg [az Azure Disk Encryption with Azure AD (előző kiadás)](disk-encryption-overview-aad.md) című témakört. 
-> - Bizonyos javaslatok növelhetik az adatok, a hálózat vagy a számítási erőforrás-használat, ami további licenc vagy előfizetési költségeket. Érvényes aktív Azure-előfizetéssel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az Azure-ban a támogatott régiókban.
-> - A 2. További információt [a 2. generációs virtuális gépek támogatása az Azure-ban.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)
+> - Ha korábban már használta Azure Disk Encryption az Azure AD-vel egy virtuális gép titkosításához, továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Részletekért lásd: [Azure Disk Encryption az Azure ad-vel (előző kiadás)](disk-encryption-overview-aad.md) . 
+> - Bizonyos javaslatok növelhetik az adatok, a hálózat vagy a számítási erőforrások használatát, ami további licenc-vagy előfizetési költségeket eredményezhet. Érvényes aktív Azure-előfizetéssel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az Azure-ban a támogatott régiókban.
+> - Jelenleg a 2. generációs virtuális gépek nem támogatják a Azure Disk Encryption. További részleteket a [2. generációs virtuális gépek támogatása az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) -ban című témakörben talál.
 
-Az Azure Disk Encryption for Linux alapjait néhány perc alatt megismerheti az [Azure CLI gyorsindítással, illetve](disk-encryption-cli-quickstart.md) a [Linux os virtuális gép létrehozása és titkosítása az Azure Powershell gyorsindítással.](disk-encryption-powershell-quickstart.md)
+A Linux-alapú [virtuális gépek létrehozása és](disk-encryption-cli-quickstart.md) titkosítása az Azure CLI gyors üzembe helyezésével, valamint a Linux rendszerű [virtuális gép létrehozása és titkosítása az Azure PowerShell](disk-encryption-powershell-quickstart.md)gyors üzembe helyezésével – néhány percen belül megismerheti a linuxos Azure Disk Encryption alapjait.
 
 ## <a name="supported-vms-and-operating-systems"></a>Támogatott virtuális gépek és operációs rendszerek
 
 ### <a name="supported-vms"></a>Támogatott virtuális gépek
 
-A Linux virtuális gépek [számos méretben](sizes.md)kaphatók. Az Azure Disk Encryption nem érhető el [alapszintű, A-sorozatú virtuális gépeken](https://azure.microsoft.com/pricing/details/virtual-machines/series/)vagy olyan virtuális gépeken, amelyek nem felelnek meg ezeknek a minimális memóriakövetelményeknek:
+A Linux rendszerű virtuális gépek [számos méretben](sizes.md)érhetők el. Azure Disk Encryption nem érhető el az [alapszintű, a-sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/)virtuális gépeken, illetve a minimális memória követelményeinek nem megfelelő virtuális gépeken:
 
-| Virtuális gép | Minimális memóriakövetelmény |
+| Virtuális gép | Minimális memória követelménye |
 |--|--|
-| Linux virtuális gépek, ha csak az adatkötetek titkosítása| 2 GB |
-| Linux virtuális gépek az adat- és operációsrendszer-kötetek titkosításakor, és ahol a gyökér (/) fájlrendszer használata 4 GB vagy kevesebb | 8 GB |
-| Linux virtuális gépek az adat- és operációsrendszer-kötetek titkosításakor, és ahol a gyökér (/) fájlrendszer-használat nagyobb, mint 4 GB | A gyökér fájlrendszer használata * 2. Például egy 16 GB-os gyökérfájlrendszer-használathoz legalább 32 GB RAM-ra van szükség |
+| Linux rendszerű virtuális gépek, ha csak az adatkötetek titkosítását| 2 GB |
+| Linux rendszerű virtuális gépek az adatok és az operációsrendszer-kötetek titkosításakor, valamint a gyökér (/) fájlrendszer használatának helye 4 GB vagy kevesebb | 8 GB |
+| Linux rendszerű virtuális gépek az adatok és az operációsrendszer-kötetek titkosítása esetén, valamint a gyökér (/) fájlrendszer használatának helye meghaladja a 4GB-ot | A rendszerindító fájlrendszer használata * 2. Például egy 16 GB-os rendszerszintű fájlrendszer-használat legalább 32GB RAM memóriát igényel |
 
-Miután az operációs rendszer lemeztitkosítási folyamat a Linux virtuális gépeken befejeződött, a virtuális gép beállítható, hogy kevesebb memóriával fusson. 
+Miután az operációsrendszer-lemez titkosítási folyamata befejeződött a Linux rendszerű virtuális gépeken, a virtuális gép beállítható úgy, hogy kevesebb memóriával fusson. 
 
-Az Azure Disk Encryption prémium szintű tárhellyel rendelkező virtuális gépekhez is elérhető.
+A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azure Disk Encryption is elérhető.
 
-Az Azure Disk Encryption nem érhető el [Lsv2-series VMs](../lsv2-series.md)a [2.](generation-2.md#generation-1-vs-generation-2-capabilities) További kivételek: [Azure Disk Encryption: Nem támogatott forgatókönyvek.](disk-encryption-linux.md#unsupported-scenarios)
+Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](generation-2.md#generation-1-vs-generation-2-capabilities)) és a [Lsv2 sorozatú virtuális gépeken](../lsv2-series.md). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-linux.md#unsupported-scenarios)című témakörben talál.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-Az Azure Disk Encryption az [Azure által jóváhagyott Linux-disztribúciók](endorsed-distros.md)egy részhalmaza támogatja, amely maga is az összes lehetséges Linux-kiszolgáló-disztribúció egy részhalmaza.
+A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endorsed-distros.md)egy részhalmazán támogatott, amely az összes Linux-kiszolgáló lehetséges disztribúciójának részhalmaza.
 
-![Az Azure lemeztitkosítást támogató Linux-kiszolgálói disztribúciók Venn-diagramja](./media/disk-encryption/ade-supported-distros.png)
+![A Azure Disk Encryptiont támogató Linux Server-disztribúciók Venn ábrája](./media/disk-encryption/ade-supported-distros.png)
 
-Az Azure által nem jóváhagyott Linux-kiszolgáló-disztribúciók nem támogatják az Azure lemeztitkosítást; a jóváhagyottverziók közül csak a következő disztribúciók és verziók támogatják az Azure Disk Encryption szolgáltatást:
+Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a Azure Disk Encryption; a támogatottak közül csak a következő disztribúciók és verziók támogatják a Azure Disk Encryption:
 
-| Linux disztribúció | Verzió | Titkosításhoz támogatott kötettípus|
+| Linux-disztribúció | Verzió | Titkosításhoz támogatott kötet típusa|
 | --- | --- |--- |
-| Ubuntu | 18.04| Operációs rendszer és adatlemez |
-| Ubuntu | 16.04| Operációs rendszer és adatlemez |
-| Ubuntu | 14.04.5</br>[4.15-re vagy újabb verzióra frissített Azure-kernellel](disk-encryption-troubleshooting.md) | Operációs rendszer és adatlemez |
-| RHEL | 7.7 | Operációs rendszer és adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.6 | Operációs rendszer és adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7,5 | Operációs rendszer és adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.4 | Operációs rendszer és adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.3 | Operációs rendszer és adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.2 | Operációs rendszer és adatlemez (lásd az alábbi megjegyzést) |
+| Ubuntu | 18,04| Operációs rendszer és az adatlemez |
+| Ubuntu | 16,04| Operációs rendszer és az adatlemez |
+| Ubuntu | 14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | Operációs rendszer és az adatlemez |
+| RHEL | 7.7 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7.6 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7,5 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7.4 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7.3 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7.2 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.8 | Adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.7 | Adatlemez (lásd az alábbi megjegyzést) |
-| CentOS | 7.7 | Operációs rendszer és adatlemez |
-| CentOS | 7.6 | Operációs rendszer és adatlemez |
-| CentOS | 7,5 | Operációs rendszer és adatlemez |
-| CentOS | 7.4 | Operációs rendszer és adatlemez |
-| CentOS | 7.3 | Operációs rendszer és adatlemez |
-| CentOS | 7.2n. | Operációs rendszer és adatlemez |
+| CentOS | 7.7 | Operációs rendszer és az adatlemez |
+| CentOS | 7.6 | Operációs rendszer és az adatlemez |
+| CentOS | 7,5 | Operációs rendszer és az adatlemez |
+| CentOS | 7.4 | Operációs rendszer és az adatlemez |
+| CentOS | 7.3 | Operációs rendszer és az adatlemez |
+| CentOS | 7.2 n | Operációs rendszer és az adatlemez |
 | CentOS | 6.8 | Adatlemez |
-| openSUSE | 42.3 | Adatlemez |
-| SLES | 12-SP4 | Adatlemez |
-| SLES | 12-SP3 | Adatlemez |
+| openSUSE | 42,3 | Adatlemez |
+| SLES | 12 – SP4 | Adatlemez |
+| SLES | 12 – SP3 | Adatlemez |
 
 > [!NOTE]
-> Az új Azure Disk Encryption implementáció támogatja rhel operációs rendszer és az adatlemez RHEL7 pay-as-you-go rendszerképek.  
+> Az új Azure Disk Encryption implementációja RHEL operációs rendszer és adatlemez esetén támogatott a RHEL7 utólagos elszámolású lemezképekhez.  
 >
-> Az ADE az RHEL Bring-Your-Own-Subscription Gold Images esetében is támogatott, de csak az előfizetés regisztrálása **után.** További információ: [Red Hat Enterprise Linux Bring-Your-Own-Subscription Gold Images az Azure-ban](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
+> Az ADE-t a saját előfizetéssel rendelkező RHEL is támogatja, de csak az előfizetés regisztrálása **után** . További információkért lásd: az [Azure-beli saját előfizetéssel rendelkező Gold-lemezképek Red Hat Enterprise Linux](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
-## <a name="additional-vm-requirements"></a>További virtuális gépre vonatkozó követelmények
+## <a name="additional-vm-requirements"></a>További virtuális gépekre vonatkozó követelmények
 
-Az Azure Disk Encryption megköveteli, hogy a dm-crypt és a vfat modulok jelen legyenek a rendszeren. A vfat eltávolítása vagy letiltása az alapértelmezett lemezképről megakadályozza, hogy a rendszer elolvassa a kulcskötetet, és beszerezze a lemezek feloldásához szükséges kulcsot a későbbi újraindítások során. A rendszermegerősítési lépések, amelyek eltávolítják a vfat modult a rendszerből, nem kompatibilisek az Azure Disk Encryption szolgáltatással. 
+Azure Disk Encryption megköveteli, hogy a dm-crypt és a VFAT modulok jelen legyenek a rendszeren. A VFAT eltávolítása vagy letiltása az alapértelmezett rendszerképből megakadályozza, hogy a rendszer beolvassa a kulcs kötetét, és beszerezze a lemezek zárolásának feloldásához szükséges kulcsot a későbbi újraindítások során. A VFAT modul rendszerből való eltávolítására szolgáló rendszer-megerősítési lépések nem kompatibilisek a Azure Disk Encryptionokkal. 
 
-A titkosítás engedélyezése előtt az adatlemezeknek megfelelően szerepelniük kell az /etc/fstab könyvtárban. Ehhez a bejegyzéshez használjon állandó blokkeszköz-nevet, mivel a "/dev/sdX" formátumú eszköznevek nem hivatkozhatnak arra, hogy ugyanahhoz a lemezhez legyenek társítva az újraindítások során, különösen a titkosítás alkalmazása után. A viselkedéssel kapcsolatos további részletekért lásd: [Linux virtuális gép eszköznevének módosításának elhárítása](troubleshoot-device-names-problems.md)
+A titkosítás engedélyezése előtt a titkosítani kívánt adatlemezeknek megfelelően szerepelniük kell a/etc/fstab. Használjon állandó blokkbeli eszköznév ehhez a bejegyzéshez, mert a "/dev/sdX" formátumban található eszköznév nem lehet arra támaszkodni, hogy ugyanahhoz a lemezhez legyen társítva az újraindítások között, különösen a titkosítás alkalmazása után. További információ erről a viselkedésről: Linux rendszerű [virtuális gép eszköz nevének módosítása](troubleshoot-device-names-problems.md)
 
-Győződjön meg arról, hogy az /etc/fstab beállítások megfelelően vannak konfigurálva a csatlakoztatáshoz. A beállítások konfigurálásához futtassa a mount -a parancsot, vagy indítsa újra a virtuális gépet, és indítsa el így az újracsatlakoztatást. Ha ez befejeződött, ellenőrizze az lsblk parancs kimenetét, és ellenőrizze, hogy a meghajtó még csatlakoztatva van-e. 
-- Ha az /etc/fstab fájl nem csatlakoztatja megfelelően a meghajtót a titkosítás engedélyezése előtt, az Azure Disk Encryption nem tudja megfelelően csatlakoztatni.
-- Az Azure Disk Encryption folyamat áthelyezi a csatlakoztatási adatokat az /etc/fstab és a saját konfigurációs fájl a titkosítási folyamat részeként. Ne ijedjen meg, ha az adatmeghajtó titkosításának befejezése után hiányzik az /etc/fstab bejegyzés.
-- A titkosítás megkezdése előtt állítsa le az összes olyan szolgáltatást és folyamatot, amely a csatlakoztatott adatlemezekre írhat, és tiltsa le őket, hogy újraindítás után ne induljanak újra automatikusan. Ezek a partíciók nyitva tarthatják a fájlokat ezeken a partíciókon, megakadályozva a titkosítási eljárást, ami a titkosítás hibáját okozza. 
-- Újraindítás után időbe telik az Azure disk encryption folyamat az újonnan titkosított lemezek csatlakoztatása. Az újraindítás után nem lesznek azonnal elérhetők. A folyamatnak időre van szüksége a titkosított meghajtók elindításához, feloldásához és csatlakoztatásához, mielőtt más folyamatok számára elérhetővé vésné. Ez a folyamat a rendszer jellemzőitől függően az újraindítás után több mint egy percet is igénybe vehet.
+Győződjön meg arról, hogy az/etc/fstab-beállítások megfelelően vannak konfigurálva a csatlakoztatáshoz. Ezen beállítások konfigurálásához futtassa a Mount-a parancsot, vagy indítsa újra a virtuális gépet, és aktiválja az újracsatlakoztatást. Ha a művelet befejeződött, ellenőrizze a lsblk parancs kimenetét annak ellenőrzéséhez, hogy a meghajtó továbbra is csatlakoztatva van-e. 
+- Ha az/etc/fstab fájl nem csatlakoztatja megfelelően a meghajtót a titkosítás engedélyezése előtt, Azure Disk Encryption nem fogja tudni megfelelően csatlakoztatni.
+- A Azure Disk Encryption folyamat a csatlakoztatási adatokat az/etc/fstab és a saját konfigurációs fájljába helyezi át a titkosítási folyamat részeként. Ne felébressze, hogy az adatmeghajtó titkosításának befejeződése után nem kell megtekinteni az/etc/fstabből hiányzó bejegyzést.
+- A titkosítás megkezdése előtt mindenképpen állítsa le az összes olyan szolgáltatást és folyamatot, amely a csatlakoztatott adatlemezekre írhat, és tiltsa le őket, hogy újraindítás után ne induljon el automatikusan. Ezek megtarthatják a fájlok megnyitását ezeken a partíciókon, így megakadályozva a titkosítási eljárás újracsatlakoztatását, ami hibát okoz a titkosításban. 
+- Az újraindítás után időt vesz igénybe a Azure Disk Encryption folyamat az újonnan titkosított lemezek csatlakoztatására. Újraindítás után nem lesznek azonnal elérhetők. A folyamatnak időre van szüksége az indításhoz, a zárolás feloldásához és a titkosított meghajtók csatlakoztatásához, mielőtt más folyamatok számára elérhetővé válik. Ez a folyamat a rendszerjellemzőktől függően több mint egy percet is igénybe vehet a rendszerindítás után.
 
-Egy példa az adatlemezek csatlakoztatására és a szükséges /etc/fstab bejegyzések létrehozására használható parancsokra az [Azure Disk Encryption prerequisites CLI parancsfájlban](https://github.com/ejarvi/ade-cli-getting-started) (244-248. sor) és az [Azure Disk Encryption előfeltételei ben található A PowerShell-parancsfájl.](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts) 
+Az adatlemezek csatlakoztatásához és a szükséges/etc/fstab bejegyzések létrehozásához használható parancsok például a [Azure Disk Encryption előfeltételek CLI-szkriptben](https://github.com/ejarvi/ade-cli-getting-started) (244-248-es sorok) és a [Azure Disk Encryption előfeltételek PowerShell-szkriptben](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)találhatók. 
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
-Az Azure lemeztitkosítási szolgáltatás engedélyezéséhez a Linux-virtuális gépeknek meg kell felelniük a következő hálózati végpontkonfigurációs követelményeknek:
-  - A kulcstárolóhoz való csatlakozáshoz a Linux virtuális gépnek képesnek kell lennie egy \[\]Azure Active Directory-végponthoz, login.microsoftonline.com.
-  - A titkosítási kulcsok at a key vault, a Linux virtuális gép képesnek kell lennie arra, hogy csatlakozzon a key vault végponthoz.
-  - A Linux virtuális gépnek képesnek kell lennie egy Azure-tárolóvégponthoz csatlakozni, amely az Azure-bővítménytárházat és a Virtuális merevlemez-fájlokat tároló Azure-tárfiókot üzemelteti.
-  -  Ha a biztonsági szabályzat korlátozza a hozzáférést az Azure virtuális gépek az internetre, feloldhatja az előző URI-t, és konfigurálhat egy adott szabályt, hogy lehetővé tegye a kimenő kapcsolatot az IP-k. További információ: [Azure Key Vault tűzfal mögött.](../../key-vault/general/access-behind-firewall.md)  
+A Azure Disk Encryption funkció engedélyezéséhez a Linux rendszerű virtuális gépeknek meg kell felelniük a hálózati végpont következő konfigurációs követelményeinek:
+  - Ahhoz, hogy jogkivonatot kapjon a kulcstartóhoz való kapcsolódáshoz, a linuxos virtuális gépnek képesnek kell lennie csatlakozni \[egy\]Azure Active Directory végponthoz, a login.microsoftonline.com.
+  - A titkosítási kulcsok a kulcstartóba való írásához a linuxos virtuális gépnek csatlakoznia kell a Key Vault-végponthoz.
+  - A linuxos virtuális gépnek képesnek kell lennie csatlakozni egy Azure Storage-végponthoz, amely az Azure-bővítmény adattárát és a VHD-fájlokat tároló Azure Storage-fiókot üzemelteti.
+  -  Ha a biztonsági házirend korlátozza az Azure-beli virtuális gépekről az internetre való hozzáférést, az előző URI-t megoldhatja, és konfigurálhat egy adott szabályt, hogy engedélyezze a kimenő kapcsolatot az IP-címekkel. További információ: [Azure Key Vault tűzfal mögött](../../key-vault/general/access-behind-firewall.md).  
 
 ## <a name="encryption-key-storage-requirements"></a>Titkosítási kulcs tárolási követelményei  
 
-Az Azure Disk Encryption használatához egy Azure Key Vault szükséges a lemeztitkosítási kulcsok és titkos kulcsok vezérléséhez és kezeléséhez. A key vault és a virtuális gépek ugyanabban az Azure-régióban és előfizetésben kell lennie.
+Azure Disk Encryption a lemez titkosítási kulcsainak és titkainak szabályozásához és kezeléséhez Azure Key Vault szükséges. A Key vaultnak és a virtuális gépeknek ugyanabban az Azure-régióban és-előfizetésben kell lenniük.
 
-További információt az [Azure Disk Encryption kulcstartójának létrehozása és konfigurálása című témakörben talál.](disk-encryption-key-vault.md)
+További információ: [Key Vault létrehozása és konfigurálása Azure Disk Encryptionhoz](disk-encryption-key-vault.md).
 
 ## <a name="terminology"></a>Terminológia
-Az alábbi táblázat az Azure lemeztitkosítási dokumentációjában használt néhány általános kifejezést határozza meg:
+Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt általános kifejezéseket ismerteti:
 
 | Terminológia | Meghatározás |
 | --- | --- |
-| Azure Key Vault | A Key Vault egy kriptográfiai, kulcskezelő szolgáltatás, amely a Federal Information Processing Standards (FIPS) által ellenőrzött hardveres biztonsági modulokon alapul. Ezek a szabványok segítenek a kriptográfiai kulcsok és a bizalmas titkok védelmében. További információt az [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) [dokumentációjában, valamint az Azure Disk Encryption kulcstárolójának létrehozása és konfigurálása](disk-encryption-key-vault.md)című témakörben talál. |
+| Azure Key Vault | Key Vault egy kriptográfiai, kulcskezelő szolgáltatás, amely a szövetségi Information Processing Standards (FIPS) ellenőrzött hardveres biztonsági modulokon alapul. Ezek a szabványok segítenek megvédeni a titkosítási kulcsokat és a bizalmas titkokat. További információkért tekintse meg a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját, és [hozzon létre és konfiguráljon egy Key vaultot a Azure Disk Encryptionhoz](disk-encryption-key-vault.md). |
 | Azure CLI | [Az Azure CLI](/cli/azure/install-azure-cli) az Azure-erőforrások parancssorból történő kezelésére és felügyeletére van optimalizálva.|
-| DM-kripta |[A DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) a Linux-alapú, átlátható lemeztitkosítási alrendszer, amely a linuxos virtuális gépek lemeztitkosításának engedélyezésére szolgál. |
-| Kulcstitkosítási kulcs (KEK) | Az aszimmetrikus kulcs (RSA 2048), amely a titkos kulcs védelmére vagy burkolására használható. Hardveres biztonsági modul (HSM) által védett kulcsot vagy szoftverrel védett kulcsot is biztosíthat. További információt az [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) [dokumentációjában, valamint az Azure Disk Encryption kulcstárolójának létrehozása és konfigurálása](disk-encryption-key-vault.md)című témakörben talál. |
-| PowerShell-parancsmagok | További információ: [Azure PowerShell-parancsmagok.](/powershell/azure/overview) |
+| DM – Crypt |A [dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) a Linux-alapú, transzparens lemezes titkosítási alrendszer, amely lehetővé teszi a lemezes titkosítás használatát a Linux rendszerű virtuális gépeken. |
+| Kulcs titkosítási kulcsa (KEK) | Az aszimmetrikus kulcs (RSA 2048), amellyel védetté teheti vagy becsomagolhatja a titkos kulcsot. Megadhatja a hardveres biztonsági modul (HSM) által védett kulcsot vagy szoftveresen védett kulcsot. További információkért tekintse meg a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját, és [hozzon létre és konfiguráljon egy Key vaultot a Azure Disk Encryptionhoz](disk-encryption-key-vault.md). |
+| PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/overview). |
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató – Linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel](disk-encryption-cli-quickstart.md)
-- [Rövid útmutató – Linuxos virtuális gép létrehozása és titkosítása az Azure Powershell használatával](disk-encryption-powershell-quickstart.md)
+- [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel](disk-encryption-cli-quickstart.md)
+- [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez](disk-encryption-linux.md)
-- [Az Azure Disk Encryptions CLI-parancsfájl előfeltételei](https://github.com/ejarvi/ade-cli-getting-started)
-- [Az Azure disk encryptions powershell-parancsfájl előfeltételei](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure Disk Encryption előfeltételek PowerShell-parancsfájl](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Key Vault létrehozása és konfigurálása az Azure Disk Encryptionhöz](disk-encryption-key-vault.md)
 
 

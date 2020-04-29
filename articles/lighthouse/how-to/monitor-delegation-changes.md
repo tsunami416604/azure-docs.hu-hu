@@ -1,53 +1,53 @@
 ---
-title: Delegálási változások figyelése a kezelő bérlőben
-description: Ismerje meg, hogyan figyelheti a delegálási tevékenységet az ügyfél-bérlőktől a kezelő bérlőig.
+title: Delegálási változások figyelése a kezelési bérlőben
+description: Megtudhatja, hogyan figyelheti a delegálási tevékenységeket az ügyfelek bérlői számára a felügyeleti bérlőbe.
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458811"
 ---
-# <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelő bérlőben
+# <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelési bérlőben
 
-Szolgáltatóként érdemes lehet tudni, ha az ügyfél-előfizetések vagy erőforráscsoportok delegált a bérlő az [Azure delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md), vagy ha a korábban delegált erőforrások eltávolítása.
+Szolgáltatóként érdemes lehet tájékoztatni, ha az ügyfél-előfizetések vagy erőforráscsoportok delegálása az Azure-beli [delegált erőforrás-kezelésen](../concepts/azure-delegated-resource-management.md)keresztül történik, vagy ha a korábban delegált erőforrások törlődnek.
 
-A kezelő bérlőben az [Azure-tevékenységnapló](../../azure-monitor/platform/platform-logs-overview.md) a bérlői szinten követi nyomon a delegálási tevékenységet. Ez a naplózott tevékenység tartalmazza az összes ügyfél-bérlőhozzáadott vagy eltávolított delegálásait.
+A bérlő kezelése során az [Azure-tevékenység naplója](../../azure-monitor/platform/platform-logs-overview.md) a bérlői szinten nyomon követi a delegálási tevékenységet. Ez a naplózott tevékenység magában foglalja az összes ügyfél-bérlő hozzáadott vagy eltávolított delegálását.
 
-Ez a témakör ismerteti a bérlői (az összes ügyfél) delegálási tevékenység figyeléséhez szükséges engedélyeket, valamint az ehhez ajánlott eljárásokat. Egy mintaparancsfájlt is tartalmaz, amely az adatok lekérdezésének és jelentésének egyik módját jeleníti meg.
-
-> [!IMPORTANT]
-> Ezeket a lépéseket kell végrehajtani a kezelő bérlő, nem pedig bármely ügyfél-bérlők.
-
-## <a name="enable-access-to-tenant-level-data"></a>Bérlőszintű adatokhoz való hozzáférés engedélyezése
-
-A bérlői szintű tevékenységnapló adatainak eléréséhez egy fiókhoz hozzá kell rendelni a [Figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) beépített szerepkörét a gyökérhatókörhöz (/). Ezt a hozzárendelést olyan felhasználónak kell elvégeznie, aki további emelt szintű hozzáféréssel rendelkező globális rendszergazdai szerepkörrel rendelkezik.
-
-### <a name="elevate-access-for-a-global-administrator-account"></a>Globális rendszergazdai fiók elérésének magasabb szintű ítése
-
-Ha szerepkört szeretne hozzárendelni a gyökérhatókörhöz (/), emelt szintű hozzáféréssel kell rendelkeznie a globális rendszergazdai szerepkörrel. Ezt az emelt szintű hozzáférést csak akkor kell hozzáadni, ha el kell végeznie a szerepkör-hozzárendelést, majd el kell távolítania, amikor végzett.
-
-A szintszintemelés hozzáadásáról és eltávolításáról az Access elemelése az [összes Azure-előfizetés és felügyeleti csoport kezeléséhez](../../role-based-access-control/elevate-access-global-admin.md)című témakörben talál részletes útmutatást.
-
-Miután magasabb szintre emeli a hozzáférést, a fiók a felhasználói hozzáférés-rendszergazdaszerepkört kapja az Azure-ban a gyökérhatókörben. Ez a szerepkör-hozzárendelés lehetővé teszi az összes erőforrás megtekintését és a hozzáférést a címtár bármely előfizetési vagy felügyeleti csoportjában, valamint szerepkör-hozzárendeléseket a gyökérhatókörben. 
-
-### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Új egyszerű szolgáltatásfiók létrehozása a bérlői szintű adatok eléréséhez
-
-Miután emelt a hozzáférés, hozzárendelheti a megfelelő engedélyeket egy fiókhoz, hogy lekérdezheti a bérlői szintű tevékenységnapló adatait. Ennek a fióknak rendelkeznie kell a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) beépített szerepkörrel a kezelő bérlő gyökérhatóköréhez rendelve.
+Ez a témakör ismerteti azokat az engedélyeket, amelyek szükségesek a delegálási tevékenységek figyeléséhez a bérlőre (az összes ügyfél között) és az ajánlott eljárásokkal. Egy olyan minta parancsfájlt is tartalmaz, amely az adott adatlekérdezésre és jelentéskészítésre szolgáló egyik metódust jeleníti meg.
 
 > [!IMPORTANT]
-> Szerepkör-hozzárendelés megadása a legfelső hatókörben azt jelenti, hogy ugyanazok az engedélyek vonatkoznak a bérlő minden erőforrására.
+> Az összes fenti lépést a kezelő bérlőn kell végrehajtani, nem pedig az ügyfél bérlői.
 
-Mivel ez a hozzáférés széles szintje, azt javasoljuk, hogy ezt a szerepkört egy egyszerű szolgáltatásfiókhoz rendelje hozzá, ne pedig egy adott felhasználóhoz vagy egy csoporthoz. Ezenkívül a következő ajánlott eljárásokat javasoljuk:
+## <a name="enable-access-to-tenant-level-data"></a>Bérlői szintű adatelérés engedélyezése
 
-- [Hozzon létre egy új egyszerű szolgáltatásfiókot,](../../active-directory/develop/howto-create-service-principal-portal.md) amely csak ehhez a függvényhez használható, ahelyett, hogy ezt a szerepkört egy más automatizáláshoz használt meglévő egyszerű szolgáltatáshoz rendelné.
-- Győződjön meg arról, hogy ez a szolgáltatásnév nem fér hozzá delegált ügyfél-erőforrásokhoz.
-- [Tanúsítvány használatával hitelesítheti](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) és [biztonságosan tárolhatja az Azure Key Vaultban.](../../key-vault/general/best-practices.md)
-- Korlátozza azon felhasználókat, akik hozzáférhetnek a szolgáltatásnév nevében való cselekvéshez.
+A bérlői szintű tevékenység naplózási adatának eléréséhez a fióknak hozzá kell rendelnie a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) beépített szerepkörét a gyökérszintű hatókörben (/). Ezt a hozzárendelést egy globális rendszergazdai szerepkörrel rendelkező felhasználónak kell végrehajtania, amely további emelt szintű hozzáféréssel rendelkezik.
 
-A gyökérhatókör-hozzárendelések az alábbi módszerek egyikével.
+### <a name="elevate-access-for-a-global-administrator-account"></a>Globális rendszergazdai fiók hozzáférésének megemelése
+
+Ahhoz, hogy szerepkört rendeljen a root (/) hatókörhöz, a globális rendszergazdai szerepkört emelt szintű hozzáféréssel kell rendelkeznie. Ezt a emelt szintű hozzáférést csak akkor kell hozzáadni, ha a szerepkör-hozzárendelést el kell végeznie, majd el kell távolítani, ha elkészült.
+
+A Jogosultságszint-emelés hozzáadásával és eltávolításával kapcsolatos részletes utasításokért lásd: [jogosultságszint-emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez](../../role-based-access-control/elevate-access-global-admin.md).
+
+Miután megemelte a hozzáférést, a fiókja felhasználói hozzáférés rendszergazdai szerepkörrel fog rendelkezni az Azure-ban a gyökérszintű hatókörben. Ez a szerepkör-hozzárendelés lehetővé teszi az összes erőforrás megtekintését és a hozzáférés hozzárendelését a címtárban található bármely előfizetésben vagy felügyeleti csoportban, valamint a szerepkör-hozzárendeléseket a gyökérszintű hatókörben. 
+
+### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Új egyszerű szolgáltatás fiók létrehozása a bérlői szintű adateléréshez
+
+Miután megemelte a hozzáférést, hozzárendelheti a megfelelő engedélyeket egy fiókhoz, hogy lekérdezze a bérlői szintű tevékenység naplójának adatait. Ennek a fióknak rendelkeznie kell a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) beépített szerepkörrel, amely a felügyeleti bérlő legfelső szintű hatókörében van hozzárendelve.
+
+> [!IMPORTANT]
+> A szerepkör-hozzárendelés gyökérszintű hatókörben való megadása azt jelenti, hogy ugyanazok az engedélyek lesznek érvényesek a bérlő minden erőforrására.
+
+Mivel ez egy széles körű hozzáférés, javasoljuk, hogy ezt a szerepkört egy egyszerű szolgáltatáshoz, nem pedig egy adott felhasználóhoz vagy egy csoporthoz rendelje hozzá. Emellett a következő ajánlott eljárásokat javasoljuk:
+
+- [Hozzon létre egy új egyszerű szolgáltatásnevet](../../active-directory/develop/howto-create-service-principal-portal.md) , amelyet csak ehhez a függvényhez kell használni, ahelyett, hogy ezt a szerepkört egy másik automatizáláshoz használt meglévő egyszerű szolgáltatáshoz rendeli.
+- Győződjön meg arról, hogy ez az egyszerű szolgáltatás nem rendelkezik hozzáféréssel a delegált ügyfelek erőforrásaihoz.
+- [Tanúsítvány használata](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) az Azure Key Vault biztonságos hitelesítéséhez és [tárolásához](../../key-vault/general/best-practices.md).
+- Korlátozza azokat a felhasználókat, akik hozzáféréssel rendelkeznek az egyszerű szolgáltatásnév nevében.
+
+Az alábbi módszerek egyikével hajthatja végre a gyökérszintű hatókör-hozzárendeléseket.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -65,28 +65,28 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
 
-### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Emelt szintű hozzáférés eltávolítása a globális rendszergazdai fiókhoz
+### <a name="remove-elevated-access-for-the-global-administrator-account"></a>A globális rendszergazdai fiók emelt szintű hozzáférésének eltávolítása
 
-Miután létrehozta az egyszerű szolgáltatásfiókot, és hozzárendelte a figyelési olvasó szerepkört a gyökérhatókörhöz, győződjön meg arról, hogy távolítsa el a globális rendszergazdai fiók [emelt szintű hozzáférést,](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) mivel erre a hozzáférési szintre már nincs szükség.
+Miután létrehozta a szolgáltatás egyszerű fiókját, és hozzárendelte a figyelési olvasó szerepkört a gyökérszintű hatókörben, mindenképpen [távolítsa el a globális rendszergazdai fiók emelt szintű hozzáférését](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) , mert ez a hozzáférési szint többé nem lesz szükséges.
 
-## <a name="query-the-activity-log"></a>A tevékenységnapló lekérdezése
+## <a name="query-the-activity-log"></a>A tevékenység naplójának lekérdezése
 
-Miután létrehozott egy új egyszerű szolgáltatásfiókot a Monitoring Reader hozzáférés a kezelő bérlő gyökérhatóköréhez, használhatja a lekérdezésés és a jelentés a delegálási tevékenység a bérlőben. 
+Miután létrehozott egy új egyszerű szolgáltatásnevet, amely figyeli az olvasó hozzáférését a felügyeleti bérlő legfelső szintű hatóköréhez, használhatja a delegálási tevékenység lekérdezésére és jelentésére a bérlőben. 
 
-[Ez az Azure PowerShell-parancsfájl](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) segítségével lekérdezheti az elmúlt 1 nap tevékenység és jelentések bármely hozzáadott vagy eltávolított delegálások (vagy kísérletek, amelyek nem voltak sikeresek). Lekérdezi a [bérlői tevékenységnapló](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) adatait, majd a következő értékeket készíti a hozzáadott vagy eltávolított delegálások jelentéséhez:
+[Ezzel a Azure PowerShell parancsfájllal](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) lekérdezheti a tevékenységek és jelentések elmúlt 1 napját a hozzáadott vagy eltávolított delegálásokra vonatkozóan (vagy sikertelen próbálkozások esetén). Lekérdezi a [bérlői tevékenység naplójának](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) adatait, majd létrehozza a következő értékeket a hozzáadott vagy eltávolított delegálások jelentéséhez:
 
-- **DedededResourceId**: A delegált előfizetés vagy erőforráscsoport azonosítója
-- **CustomerTenantId**: Az ügyfél bérlői azonosítója
-- **CustomerSubscriptionId**: Dedededereált vagy delegált erőforráscsoportot tartalmazó előfizetés-azonosító
-- **CustomerDelegationStatus**: A delegált erőforrás állapotváltozása (sikeres vagy sikertelen)
-- **EventTimeStamp**: Az a dátum és időpont, amikor a delegálási módosítás naplózva lett
+- **DelegatedResourceId**: a delegált előfizetés vagy erőforráscsoport azonosítója
+- **CustomerTenantId**: az ügyfél BÉRLŐi azonosítója
+- **CustomerSubscriptionId**: a delegált vagy a delegált erőforráscsoportot tartalmazó előfizetés azonosítója
+- **CustomerDelegationStatus**: a delegált erőforrás állapotának változása (sikeres vagy sikertelen)
+- **EventTimeStamp**: a delegálás módosításának dátuma és időpontja
 
-Az adatok lekérdezésekekénél tartsa szem előtt a következőket:
+Az adatlekérdezés során vegye figyelembe a következőket:
 
-- Ha egyetlen központi telepítésben több erőforráscsoportot delegál, minden erőforráscsoporthoz külön bejegyzéseket ad vissza a rendszer.
-- A korábbi delegáláson végrehajtott módosítások (például az engedélystruktúra frissítése) hozzáadott delegálásként kerülnek naplózásra.
-- Mint fentebb már említettük, egy fióknak rendelkeznie kell a figyelési olvasó beépített szerepkörroot hatókör (/) a bérlői szintű adatok eléréséhez.
-- Ezeket az adatokat saját munkafolyamataiban és jelentéseiben is használhatja. A [HTTP-adatgyűjtő API-t (nyilvános előzetes verzió)](../../azure-monitor/platform/data-collector-api.md) például használhatja az Azure Monitorba egy REST API-ügyfélről történő naplózáshoz, majd [műveletcsoportok](../../azure-monitor/platform/action-groups.md) használatával értesítéseket vagy riasztásokat hozhat létre.
+- Ha több erőforráscsoport van delegálva egyetlen központi telepítésben, minden erőforráscsoport külön bejegyzést ad vissza.
+- Az előző delegáláson végrehajtott módosítások (például az engedélyezési struktúra frissítése) bekerülnek egy hozzáadott delegálásba.
+- A fentiekben leírtaknak megfelelően a fióknak a figyelési olvasó beépített szerepkörrel kell rendelkeznie a root (/) hatókörben a bérlői szintű adat eléréséhez.
+- Ezeket az adatait saját munkafolyamataiban és jelentéseiben is használhatja. Használhatja például a http-adatgyűjtő API-t [(nyilvános előzetes verzió)](../../azure-monitor/platform/data-collector-api.md) az adatok REST API-ügyfélből Azure monitor való naplózásához, majd a [műveleti csoportok](../../azure-monitor/platform/action-groups.md) használatával értesítéseket vagy riasztásokat hozhat létre.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -158,5 +158,5 @@ else
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan lehet az ügyfeleket az [Azure delegált erőforrás-kezelésére.](../concepts/azure-delegated-resource-management.md)
-- További információ az [Azure Monitorról](../../azure-monitor/index.yml) és az [Azure-tevékenységnaplóról.](../../azure-monitor/platform/platform-logs-overview.md)
+- Ismerje meg, hogyan hozhatja be az ügyfeleket az Azure-beli [meghatalmazott erőforrás-felügyeletbe](../concepts/azure-delegated-resource-management.md).
+- Ismerje meg a [Azure monitor](../../azure-monitor/index.yml) és az [Azure-tevékenység naplóját](../../azure-monitor/platform/platform-logs-overview.md).

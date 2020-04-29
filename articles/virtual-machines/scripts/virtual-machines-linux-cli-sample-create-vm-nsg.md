@@ -1,6 +1,6 @@
 ---
-title: 'CLI-minta: Hozzon létre két virtuális gépet belső és külső NSG-vel'
-description: Hozzon létre két virtuális gépet belső és külső NSG-vel a hálózati forgalom biztonságossá tétele érdekében az Azure CLI használatával.
+title: 'CLI-minta: hozzon létre két virtuális gépet belső és külső NSG'
+description: Hozzon létre két virtuális gépet belső és külső NSG az Azure CLI használatával a hálózati forgalom biztonságossá tételéhez.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b4339ab2c512a96614158f673cb07b60184f5f71
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459950"
 ---
-# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Virtuális gépek közötti hálózati forgalom biztonságossá tétele NSG használatával
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Biztonságos hálózati forgalom a virtuális gépek között NSG használatával
 
 Ez a szkript két virtuális gépet hoz létre, és biztonságossá teszi a rájuk irányuló forgalmat. Az egyik virtuális gép az interneten érhető el, és egy olyan hálózati biztonsági csoporttal (NSG) rendelkezik, amelynek konfigurációja a 22-es és a 80-as porton engedélyezi a forgalmat. A második virtuális gép nem érhető el az interneten, és egy olyan NSG-vel rendelkezik, amelynek konfigurációja csak az első virtuális gépről érkező forgalmat engedélyezi.
 

@@ -1,163 +1,163 @@
 ---
-title: Megtudhatja, hogyan lehet az Azure Automation frissítéskezelési, változáskövetési és készletkezelési megoldásait bedolgozni
-description: Ismerje meg, hogyan lehet az Azure Automation részét használó frissítéskezelési, változáskövetési és készletmegoldásokkal rendelkező Azure-virtuális gépeket beszállni
+title: Ismerje meg, hogyan készíthet Update Management-, Change Tracking-és leltározási megoldásokat a Azure Automation
+description: Ismerje meg, hogyan készíthet Azure-beli virtuális gépeket a Azure Automation részét képező Update Management-, Change Tracking-és leltározási megoldásokkal.
 services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457654"
 ---
-# <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Beépített frissítéskezelés, változáskövetés és készletmegoldások
+# <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management-, Change Tracking-és leltározási megoldások
 
-Az Azure Automation megoldásokat kínál az operációs rendszer biztonsági frissítéseinek kezelésére, a változások nyomon követésére és a számítógépekre telepített állapotok leltározására. Számos módja van a gépek fedélzetére, akkor a fedélzeten a megoldás [egy virtuális gép,](automation-onboard-solutions-from-vm.md) [a böngészés több gép,](automation-onboard-solutions-from-browse.md)az Automation-fiók, vagy [a runbook](automation-onboard-solutions.md). Ez a cikk ismerteti ezeket a megoldásokat az Automation-fiókból.
+Azure Automation megoldásokat kínál az operációs rendszer biztonsági frissítéseinek kezelésére, a változások nyomon követésére és a számítógépekre telepített termékek leltározására. A gépek bevezetésének számos módja van, a megoldás bevezetését [egy virtuális gépről](automation-onboard-solutions-from-vm.md), [több](automation-onboard-solutions-from-browse.md)gépről, az Automation-fiókjából vagy a [runbook](automation-onboard-solutions.md)-ból végezheti el. Ez a cikk ismerteti ezeket a megoldásokat az Automation-fiókjából.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az https://portal.azure.comAzure-ba a segítségével.
+Jelentkezzen be az Azure https://portal.azure.com-ba.
 
 ## <a name="enable-solutions"></a>Megoldások engedélyezése
 
-Nyissa meg az Automation-fiókot, és válassza a **Készlet** vagy **a Változáskövetés lehetőséget** a **Konfigurációkezelés csoportban.**
+Navigáljon az Automation-fiókjához, és válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció**felügyelete alatt.
 
-Válassza a Log Analytics munkaterület és automation-fiók, és kattintson az **Engedélyezés** a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** gombra a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
-![Fedélzeti készletmegoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+![Előkészítési leltározási megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
 > [!NOTE]
 > A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
 >
-> A támogatott leképezési párok listáját az [Automation-fiók és a Log Analytics munkaterület területleképezése című témakörben tájékírja.](how-to/region-mappings.md)
+> A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
 
 A Change Tracking és az Inventory megoldással [változáskövetési](automation-vm-change-tracking.md) és [leltárkészítési](automation-vm-inventory.md) képességeket biztosíthat a virtuális gépek számára. Ebben a lépésben engedélyezzük a megoldást egy virtuális gépen.
 
-Amikor befejeződött a változáskövetési és készletmegoldás-bevezetési értesítés, válassza a Frissítéskezelés csoport **frissítéskezelés választógombot.** **Update management**
+Ha a Change Tracking és a Inventory megoldás bevezetési értesítése befejeződik, válassza az **Update Management (** **frissítés kezelése) lehetőséget.**
 
-Az Update Management megoldás lehetővé teszi az Azure és a hibrid virtuális gépek frissítéseinek és javításainak kezelését. Felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a központi telepítés eredményeit, hogy ellenőrizze, hogy a frissítések sikeresen alkalmazva voltak-e.
+Az Update Management megoldás lehetővé teszi az Azure-és hibrid virtuális gépek frissítéseinek és javításának kezelését. Értékelheti az elérhető frissítések állapotát, beütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések alkalmazása.
 
-A megoldás engedélyezése lapon a log analytics munkaterület kiválasztott ugyanaz a munkaterület, amelyet az előző lépésben használt. Kattintson az **Engedélyezés** gombra a Frissítéskezelés megoldás alaplapjának hozásához. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+A megoldás engedélyezése lapon a kiválasztott Log Analytics munkaterület megegyezik az előző lépésben használt munkaterülettel. Kattintson az **Engedélyezés** gombra a Update Management megoldás bevezetéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
-![Beépített frissítési megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
+![Előkészítési frissítési megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
-## <a name="scope-configuration"></a>Hatókör konfigurációja
+## <a name="scope-configuration"></a>Hatókör-konfiguráció
 
-Minden megoldás hatókörkonfigurációt használ a munkaterületen belül a megoldást kapó számítógépek megcélzásához. A Hatókör konfigurációja egy vagy több mentett keresés csoportja, amely a megoldás hatókörének adott számítógépekre való korlátozására szolgál. A Hatókör-konfigurációk eléréséhez az Automation-fiók **Kapcsolódó erőforrások**csoportban válassza **a Munkaterület**lehetőséget. Ezután a **Munkaterület adatforrásai**csoportban válassza a **Hatókörkonfigurációk**lehetőséget.
+Mindegyik megoldás egy hatókör-konfigurációt használ a munkaterületen a megoldást futtató számítógépek célzásához. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a megoldás hatókörének meghatározott számítógépekre való korlátozására szolgál. A hatókör-konfigurációk eléréséhez az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **munkaterület**lehetőséget. Ezután a munkaterület- **adatforrások**területen válassza a **hatókör-konfigurációk**elemet.
 
-Ha a kijelölt munkaterület még nem rendelkezik frissítéskezelés vagy változáskövetési megoldásokkal, a következő hatókörkonfigurációk jönnek létre:
+Ha a kiválasztott munkaterület még nem rendelkezik Update Management vagy Change Tracking megoldással, a következő hatókör-konfigurációk jönnek létre:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig – változáskövetési**
 
-* **MicrosoftDefaultScopeConfig-frissítések**
+* **MicrosoftDefaultScopeConfig – frissítések**
 
-Ha a kiválasztott munkaterület már rendelkezik a megoldással, a megoldás nem lesz újratelepítve, és a hatókör konfigurációja nem kerül hozzáadásra.
+Ha a kiválasztott munkaterület már rendelkezik a megoldással, a rendszer nem telepíti újra a megoldást, és a hatókör-konfiguráció nincs hozzáadva.
 
 ## <a name="saved-searches"></a>Mentett keresések
 
-Amikor hozzáad egy számítógépet a frissítéskezeléshez vagy a változáskövetés és leltározási megoldásokhoz, azok a munkaterület két mentett keresésének egyikéhez kerülnek. Ezek a mentett keresések olyan lekérdezések, amelyek a megoldásokhoz megcélzott számítógépeket tartalmazzák.
+Ha hozzáad egy számítógépet a Update Managementhoz vagy a Change Trackinghoz és a leltári megoldásokhoz, a rendszer a munkaterületen két mentett keresés egyikére adja hozzá őket. Ezek a mentett keresések azok a lekérdezések, amelyek tartalmazzák azokat a számítógépeket, amelyek ezekre a megoldásokra vannak rendelve.
 
-Nyissa meg a Log Analytics-munkaterületet, és válassza a **Mentett keresések** lehetőséget az **Általános**területen. Az ezen megoldások által használt két mentett keresés az alábbi táblázatban látható:
+Navigáljon a Log Analytics munkaterületre, és válassza a **mentett keresések** **általános**lehetőséget. A megoldások által használt két mentett keresés a következő táblázatban látható:
 
 |Name (Név)     |Kategória  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Változáskövetése       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Változáskövetési       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
 
-Jelölje be bármelyik mentett keresés lehetőséget a csoport feltöltéséhez használt lekérdezés megtekintéséhez. Az alábbi képen a lekérdezés és annak eredményei láthatók:
+Válassza a mentett keresés lehetőséget a csoport feltöltéséhez használt lekérdezés megtekintéséhez. Az alábbi ábrán a lekérdezés és annak eredményei láthatók:
 
 ![Mentett keresések](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
-## <a name="onboard-azure-vms"></a>Beépített Azure-beli virtuális gépek
+## <a name="onboard-azure-vms"></a>Azure-beli virtuális gépek előkészítése
 
-Az Automation-fiókban válassza a **Készlet** vagy **a Változáskövetés lehetőséget** a **Konfigurációkezelés**csoportban, vagy **a Frissítéskezelés csoportban** a **Frissítéskezelés**lehetőséget.
+Az Automation-fiókban válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció**felügyelete alatt, vagy az Update **Management**alatt kattintson a **frissítés kezelése** lehetőségre.
 
-Kattintson **a + Add Azure virtuális gépek**, válasszon ki egy vagy több virtuális gépet a listából. Az engedélyezhető virtuális gépek szürkén jelennek meg, és nem választhatók ki. Az Azure virtuális gépek létezhetnek bármely régióban, függetlenül az Automation-fiók helyétől. A **Frissítéskezelés engedélyezése** lapon kattintson az **Engedélyezés gombra.** Ez a művelet hozzáadja a kijelölt virtuális gépeket a megoldás mentett számítógépcsoporthoz.
+Kattintson az **+ Azure-beli virtuális gépek hozzáadása**lehetőségre, válasszon ki egy vagy több virtuális gépet a listából. A nem engedélyezhető virtuális gépek szürkén jelennek meg, és nem választhatók ki. Az Azure-beli virtuális gépek bármely régióban létezhetnek, függetlenül az Automation-fiókja helyétől. A **Update Management engedélyezése** lapon kattintson az **Engedélyezés**gombra. Ez a művelet hozzáadja a kiválasztott virtuális gépeket a számítógép csoport mentett kereséséhez a megoldáshoz.
 
-![Az Azure virtuális gépei engedélyezése](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
+![Azure-beli virtuális gépek engedélyezése](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
 ## <a name="onboard-a-non-azure-machine"></a>Nem Azure-beli gép előkészítése
 
-Az Azure-ban nem található gépeket manuálisan kell hozzáadni. Az Automation-fiókban válassza a **Készlet** vagy **a Változáskövetés lehetőséget** a **Konfigurációkezelés**csoportban, vagy **a Frissítéskezelés csoportban** a **Frissítéskezelés**lehetőséget.
+Az Azure-ban nem szereplő gépeket manuálisan kell hozzáadni. Az Automation-fiókban válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció**felügyelete alatt, vagy az Update **Management**alatt kattintson a **frissítés kezelése** lehetőségre.
 
-Kattintson **a Nem Azure-gép hozzáadása gombra.** Ez a művelet megnyit egy új [böngészőablakot a Windows Log Analytics-ügynök telepítésére és konfigurálására vonatkozó utasításokkal,](../azure-monitor/platform/log-analytics-agent.md) hogy a gép megkezdhesse a megoldásnak való jelentéstételt. Ha olyan gépet ad ki, amelyet jelenleg a System Center Operations Manager kezel, nincs szükség új ügynökre, és a munkaterületi adatok bekerülnek a meglévő ügynökbe.
+Kattintson a **nem Azure-beli gép hozzáadása**lehetőségre. Ez a művelet egy új böngészőablakot nyit meg, amely [útmutatást nyújt a Windows log Analytics ügynökének telepítésére és konfigurálására](../azure-monitor/platform/log-analytics-agent.md) , hogy a gép megkezdhesse a megoldás jelentését. Ha System Center Operations Manager által felügyelt gépet helyez üzembe, nincs szükség új ügynökre, és a munkaterület adatai bekerülnek a meglévő ügynökbe.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Fedélzeti gépek a munkaterületen
 
-A megoldás engedélyezéséhez a manuálisan telepített gépeket vagy a munkaterületre már jelentést tevő gépeket hozzá kell adni az Azure Automationhez. Az Automation-fiókban válassza a **Készlet** vagy **a Változáskövetés lehetőséget** a **Konfigurációkezelés**csoportban, vagy **a Frissítéskezelés csoportban** a **Frissítéskezelés**lehetőséget.
+Manuálisan telepített gépeket vagy számítógépeket, amelyeket a munkaterülethez már jelentettek, a megoldás engedélyezéséhez hozzá kell adni a Azure Automationhoz. Az Automation-fiókban válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció**felügyelete alatt, vagy az Update **Management**alatt kattintson a **frissítés kezelése** lehetőségre.
 
-Válassza **a Gépek kezelése**lehetőséget. Ez a művelet megnyitja a **Gépek kezelése** lapot. Ez az oldal lehetővé teszi, hogy a megoldás egy kiválasztott készlet gépek, az összes rendelkezésre álló gépek, vagy lehetővé teszi a megoldást az összes aktuális gépek, és lehetővé teszi az összes jövőbeli gépeken. A **Gépek kezelése** gomb szürkén jelenhet meg, ha korábban az Engedélyezés lehetőséget választotta az összes elérhető és jövőbeli **gépen.**
+Válassza a **számítógépek kezelése**lehetőséget. Ez a művelet megnyitja a **gépek kezelése** lapot. Ezen a lapon engedélyezheti a megoldást a gépek kiválasztására, az összes rendelkezésre álló gépre, illetve a megoldás engedélyezésére minden jelenlegi gépen, és engedélyezheti az összes jövőbeli gépen. Előfordulhat, hogy a **gépek kezelése** gomb szürkén jelenik meg, ha korábban az Engedélyezés lehetőséget választotta az **összes rendelkezésre álló és jövőbeli gépen**.
 
 ![Mentett keresések](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
-### <a name="all-available-machines"></a>Minden rendelkezésre álló gép
+### <a name="all-available-machines"></a>Az összes elérhető gép
 
-Ha engedélyezni szeretné a megoldást az összes elérhető géphez, válassza **az Engedélyezés az összes elérhető gépen**lehetőséget. Ez a művelet letiltja a vezérlőt a gépek egyenkénti hozzáadásához. Ez a feladat hozzáadja a munkaterületre jelentést tevő gépek összes nevét a számítógépcsoport által mentett keresési lekérdezéshez. Ha be van jelölve, ez a művelet letiltja a **Gépek kezelése** gombot.
+Ha engedélyezni szeretné a megoldást az összes rendelkezésre álló gépen, válassza az Engedélyezés lehetőséget az **összes elérhető gépen**. Ez a művelet letiltja a vezérlőt a számítógépek egyenkénti hozzáadásához. Ez a feladat hozzáadja a munkaterületnek jelentett számítógépek összes nevét a számítógépcsoport mentett keresési lekérdezéséhez. Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** gombot.
 
-### <a name="all-available-and-future-machines"></a>Minden rendelkezésre álló és jövőbeli gép
+### <a name="all-available-and-future-machines"></a>Az összes elérhető és jövőbeli gép
 
-Ha engedélyezni szeretné a megoldást az összes elérhető és jövőbeli géphez, válassza **az Engedélyezés lehetőséget az összes elérhető és jövőbeli gépen.** Ez a beállítás törli a mentett kereséseket és a Hatókör-konfigurációkat a munkaterületről. Ez a művelet megnyitja a megoldást az összes Azure-beli és nem Azure-beli gépszámára, amelyek a munkaterületre jelentést tesznek. Ha be van jelölve, ez a művelet véglegesen letiltja a **Gépek kezelése** gombot, mivel nem maradt hatókörkonfiguráció.
+Az összes rendelkezésre álló és jövőbeli gépen a megoldás engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a lehetőség törli a mentett kereséseket és a hatókör-konfigurációkat a munkaterületről. Ez a művelet megnyitja a megoldást az összes olyan Azure-beli és nem Azure-beli gépre, amely a munkaterületre jelentett. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** gombot, mivel nincs bal oldali hatókör-konfiguráció.
 
-A hatókörkonfigurációkat a kezdeti mentett keresések visszaadásával újra hozzáadhatja. További információt a [Mentett keresések című témakörben talál.](#saved-searches)
+A hatókör-konfigurációkat vissza is veheti a kezdeti mentett keresések visszaadásával. További információ: [mentett keresések](#saved-searches).
 
-### <a name="selected-machines"></a>Kiválasztott gépek
+### <a name="selected-machines"></a>Kijelölt gépek
 
-Ha engedélyezni szeretné a megoldást egy vagy több géphez, válassza **az Engedélyezés a kiválasztott gépeken** lehetőséget, és kattintson a **Hozzáadás** gombra a megoldáshoz hozzáadni kívánt gépek mellett. Ez a feladat hozzáadja a kijelölt számítógépneveket a megoldás számítógépcsoport által mentett keresési lekérdezéséhez.
+A megoldás egy vagy több gépen való engedélyezéséhez válassza az **Engedélyezés a kiválasztott gépeken** lehetőséget, majd kattintson a **Hozzáadás** elemre minden olyan gép mellett, amelyet hozzá szeretne adni a megoldáshoz. Ez a feladat hozzáadja a kiválasztott számítógépnévket a számítógép csoport mentett keresési lekérdezéséhez a megoldáshoz.
 
 ## <a name="unlink-workspace"></a>Munkaterület leválasztása
 
-A következő megoldások a Log Analytics-munkaterülettől függenek:
+A következő megoldások Log Analytics munkaterülettől függenek:
 
 * [Frissítéskezelés](automation-update-management.md)
 * [Változások követése](automation-change-tracking.md)
-* [Virtuális gépek indítása/leállítása munkaidőn kívül](automation-solution-vm-management.md)
+* [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
 
-Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics-munkaterülettel, leválaszthatja fiókját közvetlenül az Azure Portalról.  A folytatás előtt először el kell távolítania a korábban említett megoldásokat, különben ez a folyamat nem folytatódik. Tekintse át a cikket az adott megoldás, amelyet importált, hogy megértsék a szükséges lépéseket, hogy távolítsa el.
+Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics munkaterülettel, közvetlenül a Azure Portalból is leválaszthatja a fiókját.  Mielőtt továbblépne, először el kell távolítania a korábban említett megoldásokat, ellenkező esetben a folyamat nem fog folytatódni. Tekintse át az importált konkrét megoldásról szóló cikket az eltávolításához szükséges lépések megismeréséhez.
 
-Miután eltávolította ezeket a megoldásokat, az automation-fiók leválasztásához az alábbi lépéseket hajthatja végre.
+A megoldások eltávolítása után az alábbi lépések végrehajtásával leválaszthatja az Automation-fiókját.
 
 > [!NOTE]
-> Egyes megoldások, beleértve az Azure SQL figyelési megoldás korábbi verzióit, előfordulhat, hogy automatizálási eszközöket hoztak létre, és előfordulhat, hogy a munkaterület leválasztása előtt el kell távolítani őket.
+> Előfordulhat, hogy néhány megoldás, például az Azure SQL-figyelési megoldás korábbi verziói automatizálási eszközöket hoztak létre, és a munkaterület leválasztása előtt is el kell távolítani őket.
 
-1. Az Azure Portalon nyissa meg az Automation-fiókot, és az Automation-fiók lapon válassza a **Csatolt munkaterület** lehetőséget a bal oldalon **a Kapcsolódó erőforrások** feliratú szakaszban.
+1. A Azure Portal nyissa meg az Automation-fiókját, és az Automation-fiók lapon válassza a **csatolt munkaterület** lehetőséget a bal oldalon található **kapcsolódó erőforrások** szakaszban.
 
-2. A munkaterület leválasztása lapon kattintson a **Munkaterület leválasztása gombra.**
+2. A munkaterület leválasztása lapon kattintson a **munkaterület leválasztása**elemre.
 
-   ![Munkaterületi lap leválasztása](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+   ![Munkaterület leválasztása lap](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
 
-   A folytatást kérő gyors üzenet jelenik meg.
+   A folytatáshoz meg kell kapnia egy figyelmeztetést.
 
-3. Miközben az Azure Automation megpróbálja leválasztani a fiókot a Log Analytics-munkaterületről, nyomon követheti a folyamatot a menü **értesítések** csoportban.
+3. Míg Azure Automation megpróbálja leválasztani a fiókot a Log Analytics munkaterületen, nyomon követheti a menü **értesítések** részén látható előrehaladást.
 
-Ha az Update Management megoldást használta, szükség esetén a megoldás eltávolítása után a következő elemeket is eltávolíthatja.
+Ha a Update Management megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
 
-* Ütemezések frissítése – Mindegyiknek olyan neve lesz, amely megfelel a létrehozott frissítési központi telepítéseknek.
+* Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési példányoknak.
 
-* A megoldáshoz létrehozott hibrid munkavégző csoportok – Mindegyik neve a machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8) hasonlóan lesz elnevezve.
+* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
-Ha a virtuális gépek indítása és leállítása munkaidőn kívüli megoldás során, szükség esetén érdemes eltávolítani a következő elemeket, amelyek már nincs szükség a megoldás eltávolítása után.
+Ha az indítási és leállítási virtuális gépeket a munkaidőn kívüli megoldás során használta, szükség esetén előfordulhat, hogy el kívánja távolítani a következő elemeket, amelyek már nem szükségesek a megoldás eltávolítása után.
 
-* Virtuálisgép-runbook-ütemezések indítása és leállítása
-* Virtuálisgép-runbookok indítása és leállítása
+* VM runbook-ütemtervek elindítása és leállítása
+* VM-runbookok elindítása és leállítása
 * Változók
 
-Azt is megteheti, hogy leválassza a munkaterületet az Automation-fiókról a Log Analytics-munkaterületről. A munkaterületen válassza az **Automatizálási fiók** lehetőséget a **Kapcsolódó erőforrások csoportban.** Az Automatizálási fiók lapon válassza a **Fiók leválasztása**lehetőséget.
+Azt is megteheti, hogy kikapcsolja a munkaterületet az Automation-fiókjából a Log Analytics munkaterületről. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Virtuális gép eltávolítása az Update Management szolgáltatásból:
+Virtuális gép eltávolítása Update Managementról:
 
-* A Log Analytics-munkaterületen távolítsa el a virtuális gép `MicrosoftDefaultScopeConfig-Updates`a mentett keresés a Hatókör konfigurációja. A mentett keresések a munkaterület **Általános** területén találhatók.
-* Távolítsa el a [Windows Log Analytics-ügynökét](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Linuxos Log Analytics-ügynököt.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
+* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
+* Távolítsa el a [Windows log Analytics Agent ügynököt](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a Linux rendszerhez készült [log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa az oktatóanyagokat a megoldásokról, hogy megtudja, hogyan kell használni őket.
+Folytassa a megoldások oktatóanyagait, hogy megtudja, hogyan használhatja őket.
 
-* [Oktatóanyag – Frissítések kezelése a virtuális géphez](automation-tutorial-update-management.md)
+* [Oktatóanyag – a virtuális gép frissítéseinek kezelése](automation-tutorial-update-management.md)
 
-* [Oktatóanyag – Szoftver azonosítása virtuális gépen](automation-tutorial-installed-software.md)
+* [Oktatóanyag – szoftverek azonosítása virtuális gépen](automation-tutorial-installed-software.md)
 
-* [Oktatóanyag – A virtuális gépek módosítási hibáinak elhárítása](automation-tutorial-troubleshoot-changes.md)
+* [Oktatóanyag – virtuális gépek változásainak megoldása](automation-tutorial-troubleshoot-changes.md)

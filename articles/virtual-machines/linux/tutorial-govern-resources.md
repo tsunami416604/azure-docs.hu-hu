@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag - Virtuális gépek kezelése a CLI-vel
-description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure CLI-t az Azure virtuális gépek kezelésére RBAC, a rendőrség, a zárolások és a címkék alkalmazásával.
+title: Oktatóanyag – virtuális gépek kezelése a parancssori felülettel
+description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-beli virtuális gépeket az Azure CLI használatával a RBAC, a házirendek, a zárolások és a címkék alkalmazásával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,13 +13,13 @@ ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: 883bc209c343784e07bb5e03dc9f721c19b2f635
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460086"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: Ismerje meg a Linux virtuálisgép-kezelést az Azure CLI-vel
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: a linuxos virtuális gépek felügyeletének megismerése az Azure CLI-vel
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -63,7 +63,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Ha olyan hibaüzenetet kap, amely szerint **a> \<nem létezik a címtárban,** az új csoport nem propagált az Azure Active Directoryban. Próbálja meg ismét futtatni a parancsot.
+Ha olyan hibaüzenetet kap, amely ** \<> nem létezik a címtárban**, akkor az új csoport nem lett propagálva a Azure Active Directory során. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
@@ -171,7 +171,7 @@ Megjelenik egy hibaüzenet, amely szerint a törlési művelet nem hajtható vé
 
 ## <a name="tag-resources"></a>Erőforrások címkézése
 
-[Címkéket](../../azure-resource-manager/management/tag-resources.md) alkalmazhat az Azure-erőforrásoklogikusan rendszerezheti őket kategóriák szerint. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
+[Címkéket](../../azure-resource-manager/management/tag-resources.md) alkalmazhat az Azure-erőforrásokra, hogy logikusan szervezze őket kategóriák szerint. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
@@ -218,7 +218,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Ha már nincs szükség, az [az csoport törlése](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gép és az összes kapcsolódó erőforrást. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
+Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -235,7 +235,7 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 > * Kritikus erőforrások védelme zárolásokkal
 > * Erőforrások címkézése számlázáshoz és felügyelethez
 
-A következő oktatóanyagra lépve megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagfrissítéseket egy virtuális gépen.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit egy virtuális gépen.
 
 > [!div class="nextstepaction"]
 > [Virtuális gépek kezelése](tutorial-config-management.md)

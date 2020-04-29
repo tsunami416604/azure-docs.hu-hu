@@ -1,38 +1,38 @@
 ---
 title: Azure Service Fabric-fürt létrehozása
-description: Ismerje meg, hogyan állíthat be egy biztonságos Service Fabric-fürtöt az Azure-ban az Azure Resource Manager használatával.  Fürtöt alapértelmezett sablon vagy saját fürtsablon használatával hozhat létre.
+description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürtöt az Azure-ban Azure Resource Manager használatával.  Létrehozhat egy fürtöt egy alapértelmezett sablonnal, vagy használhatja a saját fürtözött sablonját.
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458300"
 ---
-# <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása az Azure Resource Manager használatával 
+# <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 > * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
-Az [Azure Service Fabric-fürt](service-fabric-deploy-anywhere.md) olyan virtuális gépek hálózathoz csatlakoztatott készlete, amelybe a mikroszolgáltatásokat üzembe helyeziésés kezeli.  Az Azure-ban futó Service Fabric-fürt egy Azure-erőforrás, és az Azure Resource Manager használatával van telepítve. Ez a cikk ismerteti, hogyan telepíthet egy biztonságos Service Fabric-fürt az Azure-ban az Erőforrás-kezelő használatával. Használhat alapértelmezett fürtsablont vagy egyéni sablont.  Ha még nem rendelkezik egyéni sablonnal, [megtudhatja, hogyan hozhat létre egyet.](service-fabric-cluster-creation-create-template.md)
+Az [Azure Service Fabric-fürt](service-fabric-deploy-anywhere.md) olyan virtuális gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait.  Az Azure-ban futó Service Fabric fürtök egy Azure-erőforrás, és a Azure Resource Manager használatával települnek. Ez a cikk azt ismerteti, hogyan helyezhet üzembe biztonságos Service Fabric-fürtöt az Azure-ban a Resource Manager használatával. Használhat alapértelmezett fürtöt vagy egyéni sablont is.  Ha még nem rendelkezik egyéni sablonnal, [megtudhatja, hogyan hozhat létre egyet](service-fabric-cluster-creation-create-template.md).
 
-A fürt védelmére kiválasztott biztonsági típust (azaz Windows-identitás, X509 stb.) meg kell adni a fürt kezdeti létrehozásához, és azt követően nem módosítható. Fürt beállítása előtt olvassa el a [Service Fabric-fürt biztonsági forgatókönyveit.][service-fabric-cluster-security] Az Azure-ban a Service Fabric x509-es tanúsítványt használ a fürt és a végpontok védelmére, az ügyfelek hitelesítésére és az adatok titkosítására. Az Azure Active Directory is ajánlott a felügyeleti végpontokhoz való biztonságos hozzáférés. További információért olvassa el [az Azure AD beállítása az ügyfelek hitelesítéséhez](service-fabric-cluster-creation-setup-aad.md)című olvassa el.
+Meg kell adni a fürt védelmére kiválasztott biztonsági típust (pl.: Windows Identity, X509 stb.) a fürt kezdeti létrehozásához, és ezt követően nem módosítható. Fürt beállítása előtt olvassa el [Service Fabric fürt biztonsági forgatókönyveit][service-fabric-cluster-security]. Az Azure-ban a Service Fabric x509-tanúsítvánnyal védi a fürtöt és a végpontokat, hitelesíti az ügyfeleket és titkosítja az adatait. Azure Active Directory ajánlott a felügyeleti végpontokhoz való hozzáférés biztonságossá tétele is. További információért olvassa el az [Azure ad beállítása az ügyfelek hitelesítéséhez](service-fabric-cluster-creation-setup-aad.md)című témakört.
 
-Ha éles erőforrások futtatásához éles fürtöt hoz létre, javasoljuk, hogy először olvassa el az [éles készenléti ellenőrzőlistát.](service-fabric-production-readiness-checklist.md)
+Ha éles munkaterhelést futtató üzemi fürtöt hoz létre, javasoljuk, hogy először olvassa el az [üzemi készültségi ellenőrzőlistát](service-fabric-production-readiness-checklist.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Ebben a cikkben használja a Service Fabric RM powershell vagy az Azure CLI-modulok fürt üzembe helyezéséhez:
+Ebben a cikkben a fürt üzembe helyezéséhez használja a Service Fabric RM PowerShell vagy az Azure CLI-modult:
 
-* [Azure PowerShell 4.1-es és újabb][azure-powershell]
-* [Az Azure CLI 2.0-s és újabb verziója][azure-CLI]
+* [Azure PowerShell 4,1 és újabb verziók][azure-powershell]
+* [Az Azure CLI 2,0-es vagy újabb verziója][azure-CLI]
 
-A Service Fabric-modulok referenciadokumentációját itt találja:
+A Service Fabric modulok dokumentációját itt találja:
 * [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLI modul](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
@@ -50,24 +50,24 @@ az login
 az account set --subscription $subscriptionId
 ```
 
-## <a name="create-a-new-cluster-using-a-system-generated-self-signed-certificate"></a>Új fürt létrehozása rendszer által létrehozott önaláírt tanúsítvánnyal
+## <a name="create-a-new-cluster-using-a-system-generated-self-signed-certificate"></a>Új fürt létrehozása rendszer által generált önaláírt tanúsítvány használatával
 
-A következő parancsokkal hozzon létre egy fürtet, amely et önaláírt tanúsítvánnyal védett. Ez a parancs beállít egy elsődleges fürttanúsítványt, amely a fürt biztonsága és a rendszergazdai hozzáférés beállítása a felügyeleti műveletek végrehajtására a tanúsítvány használatával.  Az önaláírt tanúsítványok a tesztfürtök biztonságossá tétele érdekében hasznosak.  A termelési fürtöket egy hitelesítésszolgáltatótól (CA) származó tanúsítvánnyal kell biztosítani.
+A következő parancsokkal hozhat létre egy, a rendszer által létrehozott, önaláírt tanúsítványt használó fürtöt. Ez a parancs egy elsődleges fürtöt állít be, amely a fürt biztonságához használatos, és rendszergazdai hozzáférést állít be a tanúsítvány használatával végzett felügyeleti műveletekhez.  Az önaláírt tanúsítványok a tesztelési fürtök biztonságossá tételéhez hasznosak.  Az üzemi fürtöket egy hitelesítésszolgáltatótól (CA) származó tanúsítvánnyal kell védeni.
 
-### <a name="use-the-default-cluster-template-that-ships-in-the-module"></a>A modulban lévő alapértelmezett fürtsablon használata
+### <a name="use-the-default-cluster-template-that-ships-in-the-module"></a>A modulban lévő alapértelmezett fürtözött sablon használata
 
-A következő paranccsal gyorsan hozhat létre fürtöt minimális paraméterek megadásával az alapértelmezett sablon használatával.
+A következő paranccsal gyorsan hozhat létre fürtöt a minimális paraméterek megadásával az alapértelmezett sablon használatával.
 
-A használt sablon elérhető az [Azure Service Fabric sablonminták : windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és Ubuntu [sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+A használt sablon elérhető az [Azure Service Fabric sablonban minták: Windows-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és Ubuntu- [sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-A következő parancs windowsos vagy Linux-fürtöket hozhat létre, ennek megfelelően meg kell adnia az operációs rendszert. A PowerShell/CLI parancsok a tanúsítványt a megadott *CertificateOutputFolder mappában*is kivezetik; ellenőrizze azonban, hogy a tanúsítványmappa már létrejött-e. A parancs más paramétereket is figyelembe vesz, például a virtuális gép termékváltozatát is.
+A következő parancs Windows-vagy Linux-fürtöket is létrehozhat, ennek megfelelően meg kell adnia az operációs rendszert. A PowerShell/CLI-parancsok a megadott *CertificateOutputFolder*is kimutatják a tanúsítványt. Azonban győződjön meg arról, hogy a tanúsítvány mappája már létre van hozva. A parancs más paramétereket is igénybe vesz, például a VM SKU-t.
 
 > [!NOTE]
-> A következő PowerShell-parancs csak az `Az` Azure PowerShell-modullal működik. Az Azure Resource Manager PowerShell-verzió aktuális verziójának ellenőrzéséhez futtassa a következő PowerShell-parancsot: "Get-Module Az". Ezen [a hivatkozáson](/powershell/azure/install-Az-ps) keresztül frissítheti az Azure Resource Manager PowerShell-verzióját. 
+> A következő PowerShell-parancs csak a Azure PowerShell `Az` modullal működik. Azure Resource Manager PowerShell-verzió aktuális verziójának vizsgálatához futtassa a következő PowerShell-parancsot: "Get-Module az". A Azure Resource Manager PowerShell verziójának frissítéséhez kövesse [ezt a hivatkozást](/powershell/azure/install-Az-ps) . 
 >
 >
 
-Telepítse a fürtöt a PowerShell használatával:
+A fürt üzembe helyezése a PowerShell használatával:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -84,7 +84,7 @@ $certOutputFolder="c:\certificates"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
 ```
 
-Telepítse a fürtöt az Azure CLI használatával:
+A fürt üzembe helyezése az Azure CLI használatával:
 
 ```azurecli
 declare resourceGroupLocation="westus"
@@ -107,9 +107,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-your-own-custom-template"></a>Saját egyéni sablon használata
 
-Ha az igényeinek megfelelően egyéni sablont kell készítette, erősen ajánlott az [Azure Service Fabric-sablonmintákban](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)elérhető sablonok egyikével kezdeni. További információ [a fürtsablon testreszabásáról.][customize-your-cluster-template]
+Ha egyéni sablont kell létrehoznia az igényeinek megfelelően, javasoljuk, hogy az [Azure Service Fabric sablonjának mintáján](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)elérhető sablonok egyikével kezdjen. Megtudhatja, hogyan [szabhatja testre a fürt sablonját][customize-your-cluster-template].
 
-Ha már rendelkezik egyéni sablonnal, ellenőrizze, hogy a sablonban és a paraméterfájlban szereplő mindhárom tanúsítványhoz kapcsolódó paraméter a következőképpen van-e elnevezve, és az értékek a következők:
+Ha már rendelkezik egyéni sablonnal, ellenőrizze, hogy a sablon mindhárom tanúsítványhoz kapcsolódó paramétere és a paraméter fájl neve a következő, az értékek értéke pedig null a következő módon:
 
 ```json
    "certificateThumbprint": {
@@ -123,7 +123,7 @@ Ha már rendelkezik egyéni sablonnal, ellenőrizze, hogy a sablonban és a para
     },
 ```
 
-Telepítse a fürtöt a PowerShell használatával:
+A fürt üzembe helyezése a PowerShell használatával:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -138,7 +138,7 @@ $templateFilePath="c:\mytemplates\mytemplate.json"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
-Telepítse a fürtöt az Azure CLI használatával:
+A fürt üzembe helyezése az Azure CLI használatával:
 
 ```azurecli
 declare certPassword=""
@@ -155,16 +155,16 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parametersFilePath
 ```
 
-## <a name="create-a-new-cluster-using-your-own-x509-certificate"></a>Új fürt létrehozása saját X.509-es tanúsítvánnyal
+## <a name="create-a-new-cluster-using-your-own-x509-certificate"></a>Hozzon létre egy új fürtöt saját X. 509 tanúsítvány használatával
 
-A következő paranccsal hozzon létre fürtöt, ha rendelkezik olyan tanúsítvánnyal, amelyet a fürt védelmére szeretne használni.
+A következő parancs használatával hozzon létre fürtöt, ha rendelkezik olyan tanúsítvánnyal, amelyet a fürt biztonságossá tételéhez szeretne használni.
 
-Ha ez egy hitelesítésszolgáltató által aláírt tanúsítvány, amelyet más célokra is használni fog, akkor ajánlott külön erőforráscsoportot biztosítani kifejezetten a key vaultszámára. Azt javasoljuk, hogy a key vault saját erőforráscsoportba. Ez a művelet lehetővé teszi, hogy távolítsa el a számítási és tárolási erőforráscsoportok, beleértve a Service Fabric-fürtöt tartalmazó erőforráscsoport, a kulcsok és a titkos kulcsok elvesztése nélkül. **A key vaultot tartalmazó *erőforráscsoportnak ugyanabban a régióban kell lennie,* mint az azt használó fürtnek.**
+Ha ez egy HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány, amelyet más célra szeretne használni, akkor azt javasoljuk, hogy adjon meg egy külön erőforráscsoportot, amely kifejezetten a kulcstartóhoz szükséges. Javasoljuk, hogy a Key vaultot a saját erőforráscsoporthoz helyezze. Ez a művelet lehetővé teszi a számítási és tárolási erőforráscsoportok eltávolítását, beleértve a Service Fabric fürtöt tartalmazó erőforráscsoportot is, a kulcsok és a titkos kódok elvesztése nélkül. **A kulcstárolót tartalmazó erőforráscsoportot az azt használó fürttel *azonos régióban kell lennie* .**
 
-### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Használja az alapértelmezett öt csomópont, egy csomópont típusú sablont, amely a modulban van
-A használt sablon elérhető az [Azure-mintákon : Windows-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Használja az alapértelmezett öt csomópontot, amely egy, a modulban szállított csomópont típusú sablon
+A használt sablon az [Azure-mintákon érhető el: Windows-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-Telepítse a fürtöt a PowerShell használatával:
+A fürt üzembe helyezése a PowerShell használatával:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -179,7 +179,7 @@ $os="WindowsServer2016DatacenterwithContainers"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 ```
 
-Telepítse a fürtöt az Azure CLI használatával:
+A fürt üzembe helyezése az Azure CLI használatával:
 
 ```azurecli
 declare vmPassword="Password!1"
@@ -199,10 +199,10 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --vm-password $vmPassword --vm-user-name $vmUser
 ```
 
-### <a name="use-your-own-custom-cluster-template"></a>Saját egyéni fürtsablon használata
-Ha az igényeinek megfelelően egyéni sablont kell készítette, erősen ajánlott az [Azure Service Fabric-sablonmintákban](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)elérhető sablonok egyikével kezdeni. További információ [a fürtsablon testreszabásáról.][customize-your-cluster-template]
+### <a name="use-your-own-custom-cluster-template"></a>Saját egyéni fürt sablonjának használata
+Ha egyéni sablont kell létrehoznia az igényeinek megfelelően, javasoljuk, hogy az [Azure Service Fabric sablonjának mintáján](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)elérhető sablonok egyikével kezdjen. Megtudhatja, hogyan [szabhatja testre a fürt sablonját][customize-your-cluster-template].
 
-Ha már rendelkezik egyéni sablonnal, ellenőrizze, hogy a sablonban és a paraméterfájlban lévő mindhárom tanúsítványhoz kapcsolódó paraméter a következőképpen van-e elnevezve, és az értékek az alábbiak szerint nullértékűek.If you already have a custom template, then make sure to double check that all the all the the certificate related parameters in the template and the parameter file are named s, and values are null as follows.
+Ha már rendelkezik egyéni sablonnal, akkor győződjön meg arról, hogy a sablon mindhárom tanúsítványhoz kapcsolódó paramétere és a paraméter fájljának neve a következő, az értékek pedig null értékűek.
 
 ```json
    "certificateThumbprint": {
@@ -216,7 +216,7 @@ Ha már rendelkezik egyéni sablonnal, ellenőrizze, hogy a sablonban és a para
     },
 ```
 
-Telepítse a fürtöt a PowerShell használatával:
+A fürt üzembe helyezése a PowerShell használatával:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -232,7 +232,7 @@ $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 ```
 
-Telepítse a fürtöt az Azure CLI használatával:
+A fürt üzembe helyezése az Azure CLI használatával:
 
 ```azurecli
 declare certPassword="Password!1"
@@ -249,11 +249,11 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parametersFilePath 
 ```
 
-### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>A key vaultba feltöltött titkos kulcsra mutató mutató használata
+### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>A Key vaultba feltöltött titkos kulcs mutatójának használata
 
-Meglévő kulcstartó használatához engedélyezni kell a key vaultot a [telepítéshez,](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) hogy a számítási erőforrás-szolgáltató tanúsítványokat kapjon belőle, és telepítse fürtcsomópontokra.
+Meglévő kulcstartó használatához engedélyezni kell a kulcstárolót a [központi telepítéshez](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) , hogy a számítási erőforrás-szolgáltató tanúsítványokat kapjon tőle, és telepítse azt a fürtcsomópontokon.
 
-Telepítse a fürtöt a PowerShell használatával:
+A fürt üzembe helyezése a PowerShell használatával:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
@@ -265,7 +265,7 @@ $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc6
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
-Telepítse a fürtöt az Azure CLI használatával:
+A fürt üzembe helyezése az Azure CLI használatával:
 
 ```azurecli
 declare $resourceGroupName = "testRG"
@@ -279,9 +279,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ezen a ponton egy biztonságos fürt az Azure-ban fut. Ezután [csatlakozzon a fürthöz,](service-fabric-connect-to-secure-cluster.md) és ismerje meg, hogyan [kezelheti az alkalmazástitok.](service-fabric-application-secret-management.md)
+Ezen a ponton egy biztonságos fürt fut az Azure-ban. Ezután [kapcsolódjon a fürthöz](service-fabric-connect-to-secure-cluster.md) , és Ismerje meg, hogyan [kezelheti az alkalmazási titkokat](service-fabric-application-secret-management.md).
 
-A JSON szintaxisát és tulajdonságait sablon használatára vonatkozóan olvassa el a [Microsoft.ServiceFabric/clusters sablon hivatkozása](/azure/templates/microsoft.servicefabric/clusters).
+A JSON-szintaxis és a tulajdonságok sablon használatára a következő témakörben talál további információt: [Microsoft. ServiceFabric/fürtök sablonjának leírása](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps

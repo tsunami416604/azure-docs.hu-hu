@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linuxos virtuális gépek biztonsági és biztonsági másolatot készítése az Azure Portalon
+title: Oktatóanyag – Linux rendszerű virtuális gépek biztonsági mentése a Azure Portal
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan védheti a Linux rendszerű virtuális gépeket az Azure Portal használatával az Azure Backup szolgáltatással.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460070"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
@@ -45,12 +45,12 @@ Hozzon létre ütemezett napi biztonsági másolatot egy Recovery Services-táro
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
 3. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni.
-4. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik **a Biztonsági másolat engedélyezése** panel.
+4. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik a **biztonsági mentés engedélyezése** panel.
 5. A **Recovery Services-tárolóban** kattintson az **Új létrehozása** elemre, és adja meg az új tároló nevét. Az új tároló ugyanabban az Erőforráscsoportban és ugyanazon a helyen jön létre, ahol a virtuális gép is van.
 6. Kattintson a **Biztonsági mentési szabályzat** lehetőségre. Ehhez a példához hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 7. A **Biztonsági mentés engedélyezése** panelen kattintson a **Biztonsági mentés engedélyezése** elemre. Ez létrehoz egy napi biztonsági mentést az alapértelmezett ütemezés alapján.
 10. Az első helyreállítási pont létrehozásához a **Biztonsági mentés** panelen kattintson a **Biztonsági mentés most** elemre.
-11. A **Biztonsági másolat most** panelen kattintson a naptár ikonra, a naptár vezérlővel jelölje ki a helyreállítási pont utolsó megőrzésének utolsó napját, majd kattintson a **Biztonsági másolat**gombra.
+11. A **biztonsági mentés** panelen kattintson a naptár ikonra, a Calendar (naptár) vezérlőelem használatával válassza ki a helyreállítási pont utolsó napját, majd kattintson a **biztonsági mentés**elemre.
 12. A virtuális géphez tartozó **Biztonsági másolat** panelen látni fogja a kész helyreállítási pontok számát.
 
     ![Helyreállítási pontok](./media/tutorial-backup-vms/backup-complete.png)

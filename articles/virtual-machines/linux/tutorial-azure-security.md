@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Az Azure Security Center for Linux virtuális gépek használata az Azure-ban
+title: Oktatóanyag – Azure Security Center használata Linux rendszerű virtuális gépekhez az Azure-ban
 description: Ebben az oktatóanyagban megismerkedhet az Azure Security Center szolgáltatásaival, amelyekkel megvédheti és biztonságossá teheti Linux rendszerű virtuális gépeit az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460103"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
@@ -63,7 +63,7 @@ Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
 1. A Security Center irányítópultján válassza a **Biztonsági szabályzat** lehetőséget, és válassza ki az előfizetését.
 2. A **Biztonsági szabályzat** panelen válassza a **Biztonsági szabályzat** elemet. 
-3. A **Biztonsági házirend – Biztonsági házirend** panelen kapcsolja be vagy kapcsolja ki az előfizetésre alkalmazni kívánt házirendelemeket.
+3. A **biztonsági házirend – biztonsági szabályzat** panelen kapcsolja be vagy kapcsolja ki azokat a szabályzatokat, amelyeket alkalmazni kíván az előfizetésre.
 4. Ha végzett a beállítások megadásával, kattintson a panel tetején lévő **Mentés** elemre. 
 
 ![Egyedi szabályzat](./media/tutorial-azure-security/unique-policy.png)
@@ -102,9 +102,9 @@ Ha a rendszer elvégzi a javaslatokhoz tartozó javításokat, megoldottként je
 
 ## <a name="view-detected-threats"></a>Észlelt fenyegetések megtekintése
 
-Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. A Security Center fenyegetésészlelési képességeiről a [Hogyan észleli a Security Center a fenyegetéseket.](../../security-center/security-center-alerts-overview.md#detect-threats)
+Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. Security Center veszélyforrások észlelési képességeivel kapcsolatos részletes információkért lásd: [Hogyan észleli a fenyegetéseket az Security Center?](../../security-center/security-center-alerts-overview.md#detect-threats)
 
-A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről**Standardra* kell emelni. Az **ingyenes próbaverzió** akkor érhető el, ha erre a magasabb tarifacsomagra lép. 
+A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről**Standardra* kell emelni. Erre a magasabb szintű díjszabásra való áttéréskor **ingyenes próbaverzió** érhető el. 
 
 A tarifacsomag módosítása:  
 

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-parancsfájlminta – Hozzon létre két virtuális gépet belső és külső NSG-vel
+title: Azure CLI-szkript mintája – két virtuális gép létrehozása belső és külső NSG
 description: Azure CLI-példaszkript – Két virtuális gép létrehozása belső és külső NSG-vel
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
 ms.openlocfilehash: 2cf571d0c965e308ef18cdc1be1eb9fc5797e782
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459491"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>A virtuális gépek közötti hálózati adatforgalom védelme

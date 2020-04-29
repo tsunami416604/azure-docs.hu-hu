@@ -1,6 +1,6 @@
 ---
-title: Felügyelt lemezek másolása tárfiókba – CLI-minta
-description: Azure CLI-minta – Felügyelt lemezek exportálása vagy másolása egy s torage-fiókba.
+title: Felügyelt lemezek másolása Storage-fiókba – CLI minta
+description: Azure CLI-minta – felügyelt lemezek exportálása vagy másolása egy ároláshoz-fiókba.
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -16,13 +16,13 @@ ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 64db152c6ebd2e8be4dc8034222eb5f1610946ae
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459610"
 ---
-# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Felügyelt lemez exportálása/másolása tárfiókba az Azure CLI használatával
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Felügyelt lemez exportálása/másolása egy Storage-fiókba az Azure CLI használatával
 
 Ez a szkript egy felügyelt lemez mögöttes VHD-fájlját exportálja egy tárfiókba, amely ugyanabban a régióban vagy egy másikban található. Először létrehozza a felügyelt lemez SAS URI-azonosítóját, majd annak használatával átmásolja a VHD-fájlt egy tárfiókba. A szkript használatával másolatot készíthet felügyelt lemezeiről regionális terjeszkedéshez.
 
@@ -49,4 +49,4 @@ A szkript a következő parancsokat használja egy felügyelt lemez SAS URI-azon
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép és felügyelt lemezek CLI parancsfájl minták találhatók az [Azure Windows VM dokumentációban.](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+További virtuális gépek és felügyelt lemezek a CLI-parancsfájlok az [Azure Windows VM dokumentációjában](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)találhatók.

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Egyéni virtuálisgép-lemezképek létrehozása az Azure CLI-vel
+title: Oktatóanyag – egyéni virtuálisgép-rendszerképek létrehozása az Azure CLI-vel
 description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI-t egyéni virtuálisgép-rendszerképek az Azure-ban történő létrehozásához
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460052"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI használatával
@@ -32,7 +32,7 @@ Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek
 > * Az előfizetésben lévő összes rendszerkép listázása
 > * Rendszerkép törlése
 
-Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -40,7 +40,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Az alábbi lépések ismertetik, hogyan alakíthat egy meglévő virtuális gépet újrahasznosítható egyéni rendszerképpé, amellyel új virtuálisgép-példányokat hozhat létre.
 
-Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Szükség esetén ez a [parancsfájlminta](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) létrehozhat egyet az Ön számára. Az oktatóanyag elvégzése során cserélje le az erőforráscsoportok és a virtuális gépek neveit, ahol szükséges.
+Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Ha szükséges, a [parancsfájl-minta](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) létrehozhat egyet. Az oktatóanyag elvégzése során cserélje le az erőforráscsoportok és a virtuális gépek neveit, ahol szükséges.
 
 ## <a name="create-a-custom-image"></a>Egyéni lemezkép létrehozása
 
@@ -51,7 +51,7 @@ Egy virtuális gépről készült rendszerkép létrehozásához először elő 
 A megszüntetés a gépspecifikus információk eltávolításával általánosítja a virtuális gépet. Ez az általánosítás teszi lehetővé, hogy több virtuális gépet helyezzen üzembe egyetlen rendszerképből. A megszüntetés során a gazdanév visszaáll a *localhost.localdomain* értékre. A rendszer törli az SSH-gazdakulcsokat, a névkiszolgáló-konfigurációkat, a rendszergazdai szintű jelszót és a gyorsítótárazott DHCP-bérleteket is.
 
 > [!WARNING]
-> A virtuális gép általánossá tétele és általánosítva ként való megjelölése használhatatlantá teszi a forrásvirtuális gép, és nem indítható újra. 
+> A virtuális gép általánosított kiépítése és megjelölése a forrásként szolgáló virtuális gép használhatatlanná válik, és nem indítható újra. 
 
 A virtuális gép megszüntetéséhez használja az azure-os virtuálisgép-ügynököt (waagent). Az azure-os virtuálisgép-ügynök telepítve van a virtuális gépen, és felügyeli a kiépítést, valamint az Azure Fabric Controllerrel való kommunikációt. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
 
@@ -110,7 +110,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Azt javasoljuk, hogy korlátozza az egyidejű központi telepítések számát 20 virtuális gépre egyetlen lemezképből. Ha azt tervezi, hogy több mint 20 virtuális gép több mint 20 virtuális gép ugyanazon egyéni lemezképből, használjon [megosztott képtár](shared-image-galleries.md) több lemezkép replikák. 
+Azt javasoljuk, hogy egyetlen rendszerképből korlátozza az egyidejű központi telepítések számát 20 virtuális gépre. Ha több mint 20 virtuális gép nagy léptékű, egyidejű üzembe helyezését tervezi ugyanazon egyéni rendszerképből, több rendszerkép-replikával rendelkező [megosztott képtárat](shared-image-galleries.md) kell használnia. 
 
 ## <a name="image-management"></a>Rendszerkép kezelése 
 
@@ -145,5 +145,5 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 A következő oktatóanyagban a magas rendelkezésre állású virtuális gépeket ismerheti meg.
 
 > [!div class="nextstepaction"]
-> [Magas rendelkezésre állású virtuális gépek létrehozása.](tutorial-availability-sets.md)
+> [Hozzon létre magasan elérhető virtuális gépeket](tutorial-availability-sets.md).
 

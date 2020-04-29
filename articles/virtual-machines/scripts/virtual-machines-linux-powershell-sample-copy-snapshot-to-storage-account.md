@@ -1,6 +1,6 @@
 ---
-title: PowerShell-minta – Pillanatkép exportálása/másolása virtuális merevlemezként egy különböző régióbeli tárfiókba
-description: Azure PowerShell-parancsfájlminta – Pillanatkép exportálása/másolása virtuális merevlemezként egy különböző régióbeli tárfiókba
+title: PowerShell-minta – Pillanatkép exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba
+description: Azure PowerShell parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként ugyanazon a különböző régióban lévő Storage-fiókba
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -14,13 +14,13 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 540ad6e820a909f86b43d1957d8abb407a0606d8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460336"
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Felügyelt pillanatképek exportálása/másolása virtuális merevlemezként egy különböző régióbeli tárfiókba a PowerShell segítségével
+# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával
 
 Ez a szkript egy felügyelt pillanatképet exportál egy másik régió tárfiókjába. Először létrehozza a pillanatkép SAS URI-azonosítóját, majd annak használatával átmásolja a pillanatképet egy másik régióban lévő tárfiókba. A szkript használatával vészhelyreállítási célokból eltérő régiókban készíthet biztonsági másolatokat a felügyelt lemezeiről.  
 
@@ -41,7 +41,7 @@ A szkript a következő parancsokat használja egy felügyelt pillanatkép SAS U
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Grant-AzsnapshotAccess hozzáférés](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | SAS-URI-t hoz létre egy pillanatképhez, amely egy tárfiókba másolhatja. |
+| [Engedélyezés – AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | SAS URI-t hoz létre egy olyan pillanatképhez, amely egy Storage-fiókba való másoláshoz használatos. |
 | [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Létrehozza egy tárfiókkörnyezetet a fióknév és -kulcs használatával. Ennek a környezetnek a használatával olvasási/írási műveletek hajthatók végre a tárfiókon. |
 | [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Másolatot készít egy pillanatkép mögöttes VHD-fájljáról egy tárfiókba |
 

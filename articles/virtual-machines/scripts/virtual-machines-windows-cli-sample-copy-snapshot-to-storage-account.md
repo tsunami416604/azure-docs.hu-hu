@@ -1,6 +1,6 @@
 ---
-title: Pillanatkép másolása egy másik régióbeli tárfiókba – CLI-minta
-description: Azure CLI script minta – exportálása/másolása pillanatkép virtuális merevlemezként egy tárfiók ugyanabban vagy ugyanabban a régióban.
+title: Pillanatkép másolása egy másik régióban lévő Storage-fiókba – CLI-minta
+description: Azure CLI-parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként ugyanazon vagy eltérő régióban lévő Storage-fiókba.
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -16,13 +16,13 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: d470c20718b007b05360ad539973cbc2a9d7ad98
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459576"
 ---
-# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Pillanatkép exportálása/másolása különböző régióbeli tárfiókba a CLI-vel
+# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Pillanatkép exportálása/másolása egy másik régióban lévő Storage-fiókba a CLI használatával
 
 Ez a szkript egy felügyelt pillanatképet exportál egy másik régió tárfiókjába. Először létrehozza a pillanatkép SAS URI-azonosítóját, majd annak használatával átmásolja a pillanatképet egy másik régióban lévő tárfiókba. A szkript használatával vészhelyreállítási célokból eltérő régiókban készíthet biztonsági másolatokat a felügyelt lemezeiről.
 
@@ -49,4 +49,4 @@ A szkript a következő parancsokat használja egy felügyelt pillanatkép SAS U
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép és felügyelt lemezek CLI parancsfájl minták találhatók az [Azure Windows VM dokumentációban.](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+További virtuális gépek és felügyelt lemezek a CLI-parancsfájlok az [Azure Windows VM dokumentációjában](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)találhatók.

@@ -1,5 +1,5 @@
 ---
-title: Felügyelt lemez létrehozása virtuális merevlemez-fájlból ugyanabban az előfizetésben lévő tárfiókban – CLI-minta
+title: Felügyelt lemez létrehozása VHD-fájlból ugyanazon előfizetés-CLI-mintában lévő Storage-fiókban
 description: Azure CLI-példaszkript – Felügyelt lemez létrehozása VHD-fájlból az előfizetés egy másik tárfiókjában
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,10 +16,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: b0ce935e03a6202ac444987cbecf853ee6717d3b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459520"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>Azure CLI-példaszkript – Felügyelt lemez létrehozása VHD-fájlból a parancssori felülettel az előfizetés egy másik tárfiókjában
@@ -46,4 +46,4 @@ A szkript a következő parancsokat használja egy felügyelt lemez egy VHD-ból
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép és felügyelt lemezek CLI parancsfájl minták találhatók az [Azure Windows VM dokumentációban.](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+További virtuális gépek és felügyelt lemezek a CLI-parancsfájlok az [Azure Windows VM dokumentációjában](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)találhatók.

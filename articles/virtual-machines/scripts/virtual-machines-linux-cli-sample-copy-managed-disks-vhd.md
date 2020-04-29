@@ -1,6 +1,6 @@
 ---
-title: Felügyelt lemezek másolása tárfiókba – CLI-minta
-description: Azure CLI-minta – Felügyelt lemezek exportálása vagy másolása tárfiókba.
+title: Felügyelt lemezek másolása Storage-fiókba – CLI minta
+description: Azure CLI-minta – felügyelt lemezek exportálása vagy másolása egy Storage-fiókba.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,15 +16,15 @@ ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: d841519aeedb4b85fb897b45fa09be6c62b1fa2a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459984"
 ---
-# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Felügyelt lemez exportálása/másolása tárfiókba az Azure CLI használatával
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Felügyelt lemez exportálása/másolása egy Storage-fiókba az Azure CLI használatával
 
-Ez a szkript egy felügyelt lemez mögöttes VHD-fájlját exportálja egy tárfiókba, amely ugyanabban a régióban vagy egy másikban található. Először létrehozza a felügyelt lemez SAS URI-azonosítóját, majd annak használatával átmásolja a VHD-fájlt egy tárfiókba. A szkript használatával másolatot készíthet felügyelt lemezeiről egy másik régióba a regionális terjeszkedéshez. Ha közzé szeretné tenni egy felügyelt lemez virtuális merevlemez-fájlját az Azure Marketplace-en, ezzel a parancsfájllal másolhatja a virtuális merevlemez-fájlt egy tárfiókba, majd létrehozhat egy SAS URI-t a másolt virtuális merevlemezből, hogy közzétegye azt a Marketplace-en.   
+Ez a szkript egy felügyelt lemez mögöttes VHD-fájlját exportálja egy tárfiókba, amely ugyanabban a régióban vagy egy másikban található. Először létrehozza a felügyelt lemez SAS URI-azonosítóját, majd annak használatával átmásolja a VHD-fájlt egy tárfiókba. A szkript használatával másolatot készíthet felügyelt lemezeiről egy másik régióba a regionális terjeszkedéshez. Ha egy felügyelt lemez VHD-fájlját közzé szeretné tenni az Azure Marketplace-en, ezzel a parancsfájllal másolhatja a VHD-fájlt egy Storage-fiókba, majd létrehozhatja a másolt virtuális merevlemez SAS URI-JÁT a piactéren való közzétételhez.   
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

@@ -1,5 +1,5 @@
 ---
-title: Felügyelt lemez létrehozása pillanatképből – CLI-minta
+title: Felügyelt lemez létrehozása pillanatkép-CLI-minta alapján
 description: Azure CLI-példaszkript – Felügyelt lemez létrehozása pillanatképből
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,10 +16,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: c0c009573393a65d901634fca8de3cf03df6b874
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460409"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Felügyelt lemez létrehozása pillanatképből a CLI-vel

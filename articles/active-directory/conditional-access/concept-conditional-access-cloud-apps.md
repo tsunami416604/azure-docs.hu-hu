@@ -1,6 +1,6 @@
 ---
-title: Felhőalapú alkalmazások és műveletek a feltételes hozzáférési szabályzatban – Azure Active Directory
-description: Mik azok a felhőalapú alkalmazások vagy műveletek az Azure AD feltételes hozzáférési szabályzatában?
+title: Felhőalapú alkalmazások vagy műveletek a feltételes hozzáférési házirendben – Azure Active Directory
+description: Mi a felhőalapú alkalmazások vagy műveletek egy Azure AD feltételes hozzáférési szabályzatban
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,46 +12,46 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457297"
 ---
-# <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: Felhőalapú alkalmazások és műveletek
+# <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
-A felhőalapú alkalmazások vagy műveletek kulcsfontosságú jelzést jelentenek a feltételes hozzáférési szabályzatban. A feltételes hozzáférés házirendjei lehetővé teszik a rendszergazdák számára, hogy vezérlőket rendeljenek adott alkalmazásokhoz vagy műveletekhez.
+A felhőalapú alkalmazások vagy műveletek a feltételes hozzáférési szabályzatok kulcsfontosságú jelei. A feltételes hozzáférési házirendek lehetővé teszik a rendszergazdák számára, hogy bizonyos alkalmazásokhoz vagy műveletekhez rendeljenek vezérlőket.
 
-- A rendszergazdák választhatnak az alkalmazások listájából, amelyek beépített Microsoft-alkalmazásokat és az [Azure AD-vel integrált alkalmazásokat](../manage-apps/what-is-application-management.md) tartalmaznak, beleértve a galériát, a nem galériát és az [alkalmazásproxyn](../manage-apps/what-is-application-proxy.md)keresztül közzétett alkalmazásokat.
-- A rendszergazdák dönthetnek úgy, hogy nem egy felhőalapú alkalmazás, hanem egy felhasználói művelet alapján határozzák meg a házirendet. Az egyetlen támogatott művelet a Biztonsági adatok regisztrálása (előzetes verzió), amely lehetővé teszi a feltételes hozzáférés számára a [kombinált biztonsági adatok regisztrációs felületének](../authentication/howto-registration-mfa-sspr-combined.md)ellenőrzését.
+- A rendszergazdák választhatnak a beépített Microsoft-alkalmazásokat és bármely [Azure ad integrált alkalmazást](../manage-apps/what-is-application-management.md) , beleértve a katalógust, a nem katalógust és az [Application proxyn](../manage-apps/what-is-application-proxy.md)keresztül közzétett alkalmazásokat is.
+- A rendszergazdák dönthetnek úgy, hogy nem felhőalapú alkalmazáson, hanem felhasználói műveleten alapuló szabályzatot határoznak meg. Az egyetlen támogatott művelet a biztonsági adatok (előzetes verzió) regisztrálása, amely lehetővé teszi, hogy a feltételes hozzáférés a [kombinált biztonsági információk regisztrációs felülete](../authentication/howto-registration-mfa-sspr-combined.md)körüli ellenőrzéseket kényszerítse ki.
 
 ![Feltételes hozzáférési szabályzat definiálása és felhőalapú alkalmazások megadása](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
-## <a name="microsoft-cloud-applications"></a>Microsoft felhőalapú alkalmazások
+## <a name="microsoft-cloud-applications"></a>Microsoft Cloud-alkalmazások
 
-A microsoftos felhőalkalmazások közül sok szerepel a választható alkalmazások listájában. 
+Számos meglévő Microsoft Cloud-alkalmazás szerepel azon alkalmazások listáján, amelyek közül választhat. 
 
-A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Microsoft következő felhőalapú alkalmazásaihoz. Egyes alkalmazások, például az Office 365 (előzetes verzió) és a Microsoft Azure Management több kapcsolódó gyermekalkalmazást vagy -szolgáltatást is tartalmaznak. Az alábbi lista nem teljes, és változhat.
+A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Microsoft következő felhőalapú alkalmazásaihoz. Egyes alkalmazások, például az Office 365 (előzetes verzió) és a Microsoft Azure felügyelet több kapcsolódó alárendelt alkalmazást vagy szolgáltatást tartalmaznak. A következő lista nem teljes, és változhat.
 
 - [Office 365 (előzetes verzió)](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database és Data Warehouse](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
-- Microsoft Application Insights Analytics
-- [Microsoft Azure információvédelem](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
-- [Microsoft Azure Management](#microsoft-azure-management)
-- Microsoft Azure előfizetés-kezelés
+- Microsoft Application Insights Analitika
+- [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- [Microsoft Azure-kezelés](#microsoft-azure-management)
+- Előfizetés-kezelés Microsoft Azure
 - Microsoft Cloud App Security
-- Microsoft Commerce Tools hozzáférés-vezérlési portál
-- A Microsoft Commerce Tools hitelesítési szolgáltatása
+- Microsoft Commerce Tools Access Control portál
+- Microsoft Commerce Tools hitelesítési szolgáltatás
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- [Microsoft Intune-regisztráció](/intune/enrollment/multi-factor-authentication)
+- [Microsoft Intune regisztráció](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
 - Microsoft PowerApps
-- Microsoft Keresés a Bingben
+- Microsoft Search a Bingben
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -59,7 +59,7 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 - Office 365 SharePoint Online
 - Office 365 Yammer
 - Office Delve
-- Irodai sway
+- Office-Sway
 - Outlook Groups
 - A Power BI szolgáltatás
 - Project Online
@@ -69,13 +69,13 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 
 ### <a name="office-365-preview"></a>Office 365 (előzetes verzió)
 
-Az Office 365 felhőalapú hatékonyságnövelő és együttműködési szolgáltatásokat nyújt, például az Exchange, a SharePoint és a Microsoft Teams szolgáltatást. Az Office 365 felhőszolgáltatásai mélyen integráltak a zökkenőmentes és együttműködő élmény biztosítása érdekében. Ez az integráció zavart okozhat a házirendek létrehozásakor, mivel egyes alkalmazások, például a Microsoft Teams függőséget okoznak másoktól, például a SharePointtól vagy az Exchange-től.
+Az Office 365 olyan felhőalapú hatékonyságnövelő és együttműködési szolgáltatásokat nyújt, mint például az Exchange, a SharePoint és a Microsoft teams. Az Office 365 Cloud Services szorosan integrált a zökkenőmentes és együttműködő élmény biztosítása érdekében. Ez az integráció zavart okozhat a házirendek létrehozásakor, mivel egyes alkalmazások, például a Microsoft-csapatok függőségekkel rendelkeznek másokkal, például a SharePoint vagy az Exchange használatával.
 
-Az Office 365 (előzetes verzió) alkalmazás lehetővé teszi, hogy ezeket a szolgáltatásokat egyszerre célozza meg. Azt javasoljuk, hogy az új Office 365 (előzetes verzió) alkalmazást használja az egyes felhőalkalmazások célzása helyett. Az alkalmazások ezen csoportjának megcélzásával elkerülhetők az inkonzisztens házirendek és függőségek miatt esetlegesen felmerülő problémák.
+Az Office 365 (előzetes verzió) alkalmazás lehetővé teszi, hogy egyszerre lehessen megcélozni ezeket a szolgáltatásokat. Javasoljuk, hogy az új Office 365 (előzetes verzió) alkalmazást az egyes felhőalapú alkalmazások célzása helyett használja. Az alkalmazások csoportjának megcélzása segít elkerülni a nem konzisztens házirendek és függőségek miatt felmerülő problémákat.
 
-A rendszergazdák úgy is dönthetnek, hogy bizonyos alkalmazásokat kizárnak a szabályzatból, ha szeretnék, ha az Office 365 (előzetes verzió) alkalmazást is beírják, és kizárják az általuk választott alkalmazásokat a szabályzatban.
+A rendszergazdák dönthetnek úgy, hogy kizárják az adott alkalmazásokat a szabályzatból, ha azokat az Office 365 (előzetes verzió) alkalmazással kívánják kizárni, és kizárják a házirendben választott alkalmazásokat.
 
-Az Office 365 (előzetes verzió) ügyfélalkalmazásában található legfontosabb alkalmazások:
+Az Office 365 (előzetes verzió) ügyfélalkalmazás részét képező legfontosabb alkalmazások:
 
    - Microsoft Flow
    - Microsoft Forms
@@ -84,7 +84,7 @@ Az Office 365 (előzetes verzió) ügyfélalkalmazásában található legfontos
    - Microsoft Teams
    - Office 365 Exchange Online
    - Office 365 SharePoint Online
-   - Office 365 keresési szolgáltatás
+   - Office 365 Search Service
    - Office 365 Yammer
    - Office Delve
    - Office Online
@@ -94,37 +94,37 @@ Az Office 365 (előzetes verzió) ügyfélalkalmazásában található legfontos
    - Skype Vállalati online verzió
    - Sway
 
-### <a name="microsoft-azure-management"></a>Microsoft Azure Management
+### <a name="microsoft-azure-management"></a>Microsoft Azure-kezelés
 
-A Microsoft Azure Management alkalmazás több mögöttes szolgáltatást is tartalmaz. 
+A Microsoft Azure felügyeleti alkalmazás több mögöttes szolgáltatást is tartalmaz. 
 
    - Azure Portal
-   - Azure Resource Manager-szolgáltató
+   - Azure Resource Manager szolgáltató
    - Klasszikus üzembe helyezési modell API-k
    - Azure PowerShell
-   - Visual Studio-előfizetések rendszergazdai portálja
+   - Visual Studio-előfizetések felügyeleti portál
    - Azure DevOps
-   - Az Azure Data Factory portálja
+   - Azure Data Factory portál
 
 > [!NOTE]
-> A Microsoft Azure Management alkalmazás az Azure PowerShellre vonatkozik, amely meghívja az Azure Resource Manager API-t. Nem vonatkozik az Azure AD PowerShell, amely felhívja a Microsoft Graph.
+> A Microsoft Azure felügyeleti alkalmazás a Azure PowerShellra vonatkozik, amely meghívja a Azure Resource Manager API-t. Ez nem vonatkozik az Azure AD PowerShellre, amely meghívja a Microsoft Graph.
 
 ## <a name="other-applications"></a>Egyéb alkalmazások
 
-A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD regisztrált alkalmazást hozzáadhatnak a feltételes hozzáférés-szabályzatokhoz. Ezek az alkalmazások a következőklehetnek: 
+A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli regisztrált alkalmazást hozzáadhatnak a feltételes hozzáférési házirendekhez. Ezek az alkalmazások a következőket tartalmazhatják: 
 
-- [Az Azure AD alkalmazásproxyn](../manage-apps/what-is-application-proxy.md) keresztül közzétett alkalmazások
-- [A galériából hozzáadott alkalmazások](../manage-apps/add-application-portal.md)
-- [A katalógusban nem található egyéni alkalmazások](../manage-apps/add-non-gallery-app.md)
-- [Az alkalmazáskézbesítési vezérlőkön és hálózatokon közzétett örökölt alkalmazások](../manage-apps/secure-hybrid-access.md)
+- Az [Azure ad Application proxy](../manage-apps/what-is-application-proxy.md) használatával közzétett alkalmazások
+- [A gyűjteményből hozzáadott alkalmazások](../manage-apps/add-application-portal.md)
+- [A katalógusban nem szereplő egyéni alkalmazások](../manage-apps/add-non-gallery-app.md)
+- [Az App Delivery Controllers és Networks szolgáltatáson keresztül közzétett örökölt alkalmazások](../manage-apps/secure-hybrid-access.md)
 
 ## <a name="user-actions"></a>Felhasználói műveletek
 
-A felhasználói műveletek olyan feladatok, amelyeket a felhasználó elvégezhet. Az egyetlen jelenleg támogatott művelet a **Biztonsági adatok regisztrálása**, amely lehetővé teszi a feltételes hozzáférési házirend kényszerítése, ha a kombinált regisztrációra engedélyezett felhasználók megpróbálják regisztrálni biztonsági adataikat. További információ a [Kombinált biztonsági adatok regisztrálása](../authentication/concept-registration-mfa-sspr-combined.md)című cikkben található.
+A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégezhetnek. Az egyetlen jelenleg támogatott művelet a **biztonsági információk regisztrálása**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzat kikényszerítse azokat a felhasználókat, akik a kombinált regisztrációhoz engedélyezve vannak a biztonsági információik regisztrálásához. További információt a következő cikkben talál: [kombinált biztonsági információk regisztrálása](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Feltételes hozzáférés: Feltételek](concept-conditional-access-conditions.md)
+- [Feltételes hozzáférés: feltételek](concept-conditional-access-conditions.md)
 
-- [Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
-- [Ügyfélalkalmazás-függőségek](service-dependencies.md)
+- [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
+- [Ügyfélalkalmazás függőségei](service-dependencies.md)

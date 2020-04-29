@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linux-virtuális gépek terheléselosztása az Azure-ban
+title: Oktatóanyag – Linux rendszerű virtuális gépek terheléselosztása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre három Linux rendszerű virtuális gépen terheléselosztót az Azure CLI-vel egy magas rendelkezésre állású és biztonságos alkalmazáshoz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 89ed39d1cd18fc97cec06dce4313271731b23b90
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460035"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
@@ -35,7 +35,7 @@ A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a
 > * Terheléselosztó megtekintése működés közben
 > * Virtuális gépek hozzáadása a terheléselosztóhoz és eltávolításuk a terheléselosztóból
 
-Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -217,7 +217,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 Az alkalmazás magas rendelkezésre állásának növeléséhez helyezze a virtuális gépeket egy rendelkezésre állási csoportba. A rendelkezésre állási csoportokról további információt az előző, a [magas rendelkezésre állású virtuális gépek létrehozásával](tutorial-availability-sets.md) foglalkozó oktatóanyagban talál.
 
-Hozzon létre egy rendelkezésre állási [készletet az az vm rendelkezésre állási készletének létrehozása segítségével.](/cli/azure/vm/availability-set) Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
+Hozzon létre egy rendelkezésre állási készletet az [az VM rendelkezésre állása-set Create](/cli/azure/vm/availability-set)paranccsal. Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
 
 ```azurecli-interactive 
 az vm availability-set create \
