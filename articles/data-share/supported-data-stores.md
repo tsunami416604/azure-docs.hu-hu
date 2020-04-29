@@ -1,42 +1,42 @@
 ---
-title: Támogatott adattárolók az Azure Data Share-ben
-description: Ismerje meg az Azure Data Share használatához támogatott adattárakat.
+title: Támogatott adattárak az Azure-adatmegosztásban
+description: Ismerje meg az Azure-adatmegosztás használatát támogató adattárakat.
 ms.service: data-share
 author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501809"
 ---
-# <a name="supported-data-stores-in-azure-data-share"></a>Támogatott adattárolók az Azure Data Share-ben
+# <a name="supported-data-stores-in-azure-data-share"></a>Támogatott adattárak az Azure-adatmegosztásban
 
-Az Azure Data Share nyílt és rugalmas adatmegosztást biztosít, beleértve a különböző adattárakból és adattárakból való megosztást is. Az adatszolgáltatók megoszthatják az adatokat egy adattárból, és adatfogyasztóik kiválaszthatják, hogy melyik adattárba fogadják az adatokat. 
+Az Azure-beli adatmegosztás nyitott és rugalmas adatmegosztást biztosít, többek között a különböző adattárakból történő megosztási képességet is beleértve. Az adatszolgáltatók megoszthatnak egy adattárolóból származó adatmegosztást, és az adatok fogyasztóik kiválaszthatják, hogy melyik adattárba fogadják az adatok. 
 
-Ebben a cikkben megismerheti az Azure Data Share által támogatott Azure-adattárak gazdag készletét. Az adatszolgáltatók és az adatfogyasztók által kihasználható adattárak kombinációiról is találhat információkat. 
+Ebből a cikkből megismerheti az Azure-adatmegosztások által támogatott Azure-adattárak gazdag készletét. Emellett az adatszolgáltatók és az adatfogyasztók által kihasználható adattárak kombinációit is megtalálhatja. 
 
-## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Milyen adattárak at támogat az Azure Data Share? 
+## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Milyen adattárakat támogat az Azure-adatmegosztás? 
 
-Az alábbi táblázat részletezi az Azure Data Share támogatott adatforrásait. 
+Az alábbi táblázat az Azure-adatmegosztás támogatott adatforrásait részletezi. 
 
-| Adattár | Pillanatkép-alapú megosztás | Helyen történő megosztás 
+| Adattár | Pillanatkép-alapú megosztás | Helyi megosztás 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage |✓ | |
 | 1. generációs Azure Data Lake Storage |✓ | |
 | 2. generációs Azure Data Lake Storage |✓ ||
 | Azure SQL Database |Nyilvános előzetes verzió | |
-| Azure Synapse Analytics (korábban Azure SQL DW) |Nyilvános előzetes verzió | |
+| Azure szinapszis Analytics (korábban Azure SQL DW) |Nyilvános előzetes verzió | |
 | Azure Data Explorer | |Nyilvános előzetes verzió |
 
 ## <a name="data-store-support-matrix"></a>Adattár támogatási mátrixa
 
-Az Azure Data Share rugalmasságot biztosít az adatfogyasztók számára, amikor úgy döntenek, hogy egy adattárban fogadja nak adatokat. Például az Azure SQL Database-ből megosztott adatok az Azure Data Lake Store Gen2, az Azure SQL Database vagy az Azure Synapse Analytics szolgáltatásba is beérkezhetnek. Az ügyfelek kiválaszthatják, hogy milyen formátumban fogadják az adatokat a fogadott adatmegosztás konfigurálásakor. 
+Az Azure-beli adatmegosztás rugalmasságot biztosít az adattáraknak az adattárakban való elfogadásához. Előfordulhat például, hogy az Azure SQL Database által megosztott adatok Azure Data Lake Store Gen2, Azure SQL Database vagy az Azure szinapszis Analyticsbe érkeznek. Az ügyfelek kiválaszthatják, hogy a fogadott adatmegosztás konfigurálásakor milyen formátumú adatfogadásra van lehetőség. 
 
-Az alábbi táblázat részletezi az adatmegosztás elfogadásakor és konfigurálásakor az adatfogyasztók által nyújtott különböző kombinációkat és választási lehetőségeket. Az adatkészlet-leképezések konfigurálásáról az [adatkészlet-leképezések konfigurálása című](how-to-configure-mapping.md)témakörben talál további információt.
+Az alábbi táblázat a különböző kombinációkat és választásokat ismerteti, amelyeket az adatfogyasztók az adatmegosztás elfogadásakor és konfigurálásakor tartalmaznak. Az adatkészlet-hozzárendelések konfigurálásával kapcsolatos további információkért lásd: [adatkészlet-hozzárendelések konfigurálása](how-to-configure-mapping.md).
 
 |  | Azure Blob Storage | 1. generációs Azure Data Lake Storage | 2. generációs Azure Data Lake Storage | Azure SQL Database | Azure Synapse Analytics 
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -44,27 +44,27 @@ Az alábbi táblázat részletezi az adatmegosztás elfogadásakor és konfigur�
 | 1. generációs Azure Data Lake Storage | ✓ | | ✓|
 | 2. generációs Azure Data Lake Storage | ✓ | | ✓|
 | Azure SQL Database | ✓ | | ✓| ✓| ✓|
-| Azure Synapse Analytics (korábban Azure SQL DW) | ✓ | | ✓| ✓| ✓|
+| Azure szinapszis Analytics (korábban Azure SQL DW) | ✓ | | ✓| ✓| ✓|
 
-## <a name="share-from-a-storage-account"></a>Megosztás tárfiókból
-Az Azure Data Share támogatja a fájlok, mappák és fájlrendszerek megosztását az Azure Data Lake Gen1 és az Azure Data Lake Gen2 szolgáltatásból. Azt is támogatja a blobok, mappák és tárolók megosztását az Azure Blob Storage-ból. Jelenleg csak a blokkblob támogatott. Ha a mappák pillanatkép-alapú megosztásban vannak megosztva, az adatfogyasztó dönthet úgy, hogy teljes másolatot készít a megosztási adatokról, vagy a növekményes pillanatkép-képességet kihasználva csak az új vagy frissített fájlokat másolja. Az azonos nevű meglévő fájlok felülíródnak.
+## <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból
+Az Azure-beli adatmegosztás támogatja a fájlok, mappák és fájlrendszerek megosztását Azure Data Lake Gen1 és Azure Data Lake Gen2. Emellett támogatja a Blobok, mappák és tárolók megosztását az Azure Blob Storage-ból. Jelenleg csak a Block blob támogatott. Ha a mappák a pillanatkép-alapú megosztásban vannak megosztva, az adatfogyasztó dönthet úgy, hogy teljes másolatot készít a megosztási adatokról, vagy kihasználja a növekményes pillanatkép-képességet, hogy csak az új vagy frissített fájlokat másolja. A rendszer felülírja az azonos nevű meglévő fájlokat.
 
 ## <a name="share-from-a-sql-based-source"></a>Megosztás SQL-alapú forrásból
-Az Azure Data Share támogatja az Azure SQL Database és az Azure Synapse Analytics (korábban Azure SQL DW) tábláinak és nézeteinek megosztását. Az adatfogyasztók választhatnak, hogy az adatokat az Azure Data Lake Store Gen2 vagy az Azure Blob Storage-ba csv vagy parkettafájlként fogadják el. Ne feledje, hogy a fájlformátumok alapértelmezés szerint csv.Note that by default, file formats are csv. Az adatfogyasztó dönthet úgy, hogy az adatokat parketta formátumban kapja meg, ha szükséges. Ez az adatfogadáskor az adatkészlet-leképezési beállításokban végezhető el. 
+Az Azure-beli adatmegosztás támogatja a táblák és nézetek megosztását a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatával. Az adatfogyasztók dönthetnek úgy, hogy elfogadják az adatAzure Data Lake Store Gen2 vagy az Azure Blob Storage CSV-vagy Parque-fájlként. Vegye figyelembe, hogy alapértelmezés szerint a fájlformátumok CSV-fájlok. Az adatfogyasztó dönthet úgy, hogy a kívánt módon a parketta formátumban fogadja az adott adatkérést. Ez az adatkészlet-leképezési beállításokban végezhető el az adat fogadásakor. 
 
-Amikor adatokat fogad az Azure Data Lake Store Gen2 vagy az Azure Blob Storage, teljes pillanatképek felülírja a célfájl tartalmát. 
+Az Azure Data Lake Store Gen2 vagy az Azure Blob Storageba való befogadásakor a teljes Pillanatképek felülírják a célfájl tartalmát. 
 
-Az adatfogyasztó dönthet úgy, hogy az adatokat az általa választott táblába fogadja. Ebben a forgatókönyvben, ha a céltábla még nem létezik, az Azure Data Share létrehozza az SQL-táblát a forrássémával. Ha egy céltábla már létezik ugyanazzal a névvel, a rendszer elejti és felülírja a legújabb teljes pillanatképpel. A céltábla leképezésekénül alternatív séma és táblanév adható meg. Növekményes pillanatképek jelenleg nem támogatottak. 
+Az adatfogyasztók dönthetnek úgy, hogy az Ön által választott táblázatba fogadják az adatmennyiséget. Ebben az esetben, ha a céltábla még nem létezik, az Azure-adatmegosztás létrehozza az SQL-táblázatot a forrás sémával. Ha egy céltábla már létezik ugyanazzal a névvel, a rendszer elveti és felülírja a legújabb teljes pillanatképtel. A céltábla leképezése esetén megadhat egy alternatív sémát és egy Táblanév nevet is. A növekményes Pillanatképek jelenleg nem támogatottak. 
 
-Az SQL-alapú forrásokból történő megosztás előfeltételekkel rendelkezik a tűzfalszabályokhoz és engedélyekhez kapcsolódóan. Kérjük, olvassa el az adatok [megosztásának](share-your-data.md) előzményeit.
+Az SQL-alapú forrásokból való megosztáshoz a tűzfalszabályok és az engedélyek előfeltételei vonatkoznak. A részletekért tekintse meg az [adatok megosztása](share-your-data.md) oktatóanyag előfeltételek című szakaszát.
 
-## <a name="share-from-azure-data-explorer"></a>Megosztás az Azure Data Explorerből
-Az Azure Data Share támogatja az adatbázisok helyben történő megosztását az Azure Data Explorer-fürtökből. Az adatszolgáltató adatbázis- vagy fürtszinten is megoszthat. Az adatbázis szintjén megosztott adatfogyasztó csak az adatszolgáltató által megosztott adatbázis(ok)hoz férhet hozzá. Fürtszinten megosztva az adatfogyasztó hozzáférhet a szolgáltató fürtjének összes adatbázisához, beleértve az adatszolgáltató által létrehozott jövőbeli adatbázisokat is.
+## <a name="share-from-azure-data-explorer"></a>Megosztás az Azure Adatkezelő
+Az Azure-beli adatmegosztás lehetővé teszi az adatbázisok helyben történő megosztását az Azure Adatkezelő-fürtökön. Az adatszolgáltató megoszthatja az adatbázist vagy a fürt szintjét. Az adatbázis szintjén megosztva az adatfogyasztó csak az adatszolgáltató által megosztott adatbázis (oka) t fogja tudni elérni. A fürt szintjén megosztott adatfogyasztók a szolgáltató fürtjéből származó összes adatbázishoz hozzáférhetnek, beleértve az adatszolgáltató által létrehozott jövőbeli adatbázisokat is.
 
-A megosztott adatbázisok eléréséhez az adatfogyasztónak saját Azure Data Explorer-fürttel kell rendelkeznie. Az adatfogyasztó Azure Data Explorer-fürtjének ugyanabban az Azure-adatközpontban kell megtelepednie, mint az adatszolgáltató Azure Data Explorer-fürtjének. Megosztási kapcsolat létrehozásakor az Azure Data Share szimbolikus kapcsolatot hoz létre a szolgáltató és a fogyasztó Azure Data Explorer-fürtjei között.
+A megosztott adatbázisok eléréséhez az adatfogyasztónak saját Azure Adatkezelő-fürtöt kell használnia. Az adatfogyasztó Azure Adatkezelő fürtjének ugyanabban az Azure-adatközpontban kell megkeresnie, mint az adatszolgáltató Azure Adatkezelő-fürtje. A megosztási kapcsolat létrehozásakor az Azure-beli adatmegosztás szimbolikus hivatkozást hoz létre a szolgáltató és a fogyasztó Azure Adatkezelő-fürtök között.
 
-Az Azure Data Explorer két adatbetöltési módot támogat: a kötegelt és a streamelést. A megosztott adatbázisban a kötegből kapott adatok néhány másodperc től néhány percig jelennek meg az adatfogyasztói oldalon. A streamelésből származó adatok akár 24 órát is igénybe vehetnek, hogy megjelenjenek az adatfogyasztói oldalon. 
+Az Azure Adatkezelő kétféle adatfeldolgozási módot támogat: a Batch és a streaming. A megosztott adatbázis batch szolgáltatásból kapott adatok néhány másodperc és néhány perc között az adatfogyasztó oldalon is megjelennek. A streamingtől kapott adatok akár 24 órát is igénybe vehetnek, hogy megjelenjenek az adatfeldolgozó oldalon. 
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatok megosztásának megkezdéséhez folytassa az [adatkezelési oktatóanyag megosztásával.](share-your-data.md)
+Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: Végpontkimondott szöveg áttekintése – LUIS'
-description: Ebben az oktatóanyagban javítsa az alkalmazás-előrejelzéseket a LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával, amelyben a LUIS nem biztos. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
+title: 'Oktatóanyag: a végpont hosszúságú kimondott szöveg áttekintése – LUIS'
+description: Ebben az oktatóanyagban a Luis nem biztos, hogy a Luis HTTP-végponton keresztül kapott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejleszti az alkalmazások előrejelzéseit. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548729"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: Javítsa ki a bizonytalan előrejelzéseket a végpontkimondott szöveg áttekintésével
-Ebben az oktatóanyagban javítsa az alkalmazás-előrejelzéseket a LUIS HTTPS-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával, amelyben a LUIS nem biztos. Tekintse át a végpont kimondott szövegrendszeres részeként az ütemezett LUIS-karbantartás.
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
+Ebben az oktatóanyagban a Luis HTTPS-végponton keresztül fogadott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejlesztheti az alkalmazás-előrejelzéseket, hogy a LUIS nem biztos benne. Tekintse át a végpontok hosszúságú kimondott szöveg az ütemezett LUIS-karbantartás rendszeres részeként.
 
-Ez az ellenőrzési folyamat lehetővé teszi a LUIS számára, hogy megismerje az alkalmazástartományt. A LUIS kiválasztja a felülvizsgálati listában megjelenő kimondott szövegeket. Ez a lista a következő tulajdonságokkal rendelkezik:
+Ez a felülvizsgálati folyamat lehetővé teszi a LUIS számára az alkalmazás tartományának megismerését. LUIS kiválasztja a felülvizsgálati listában megjelenő hosszúságú kimondott szöveg. Ez a lista a következő tulajdonságokkal rendelkezik:
 
 * Az alkalmazásra jellemző.
 * Az alkalmazás előrejelzési pontosságának fejlesztésére szolgál.
@@ -26,38 +26,38 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Példaalkalmazás importálása
+> * Alkalmazás importálása – példa
 > * A végpont beszédmódjainak áttekintése
 > * Alkalmazás betanítása és közzététele
 > * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Példaalkalmazás importálása
+## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
-Az alábbi lépésekkel importálhat egy alkalmazást.
+Egy alkalmazás importálásához kövesse az alábbi lépéseket.
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Az alkalmazás betanítása az entitásmódosítások alkalmazásra való alkalmazásához
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Az alkalmazás betanítása az entitás módosításának alkalmazására
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Az alkalmazás közzététele a HTTP-végpontról való eléréséhez
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Az alkalmazás közzététele a HTTP-végpontról való hozzáféréshez
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="add-utterances-at-the-endpoint"></a>Kimondott szöveg hozzáadása a végponthoz
+## <a name="add-utterances-at-the-endpoint"></a>Hosszúságú kimondott szöveg hozzáadása a végponton
 
-Ebben az alkalmazásban leképezések és entitások, de nincs végpont-használat. Ez a végpont használat szükséges az alkalmazás a végpont utterance (kifejezés) felülvizsgálattal az alkalmazás javítása.
+Ebben az alkalmazásban szándékai és entitásai vannak, de nem rendelkezik végpont-használattal. Ez a végpont-használat szükséges ahhoz, hogy az alkalmazás javítsa a végpontok teljes áttekintését.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Lépjen az URL-cím végére a címsorban, és cserélje le _YOUR_QUERY_HERE_ az alábbi táblázatban szereplő kimondott szövegekkel. Minden utterance (kifejezés) küldje el az utterance (kifejezés) és az eredmény. Ezután cserélje le az utterance (kifejezés) végén a következő utterance (kifejezés) helyett.
+1. Lépjen az URL-cím végére a címsorban, és cserélje le a _YOUR_QUERY_HEREt_ az alábbi táblázatban szereplő hosszúságú kimondott szöveg. Minden Kimondás esetén küldje el a teljes kilépést, és szerezze be az eredményt. Ezután cserélje le a lemondás végére a következő kifejezéssel.
 
-    |Végpont kimondott szövege|Igazított szándék|
+    |Végpontok kimondása|Igazított leképezés|
     |--|--|
     |`I'm looking for a job with Natural Language Processing`|`GetJobInformation`|
     |`I want to cancel on March 3`|`Utilities.Cancel`|
@@ -73,35 +73,35 @@ Ebben az alkalmazásban leképezések és entitások, de nincs végpont-használ
 
 ## <a name="review-endpoint-utterances"></a>A végpont beszédmódjainak áttekintése
 
-Tekintse át a végpont kimondott szövegeket a megfelelően igazított szándék. Míg az összes verzióban felülvizsgálandó kimondott szövegkészlet, a szándék megfelelő igazításának folyamata csak az aktuális _aktív modellhez_ adja hozzá a példa utterance (kifejezés) értéket.
+Tekintse át a végpont hosszúságú kimondott szöveg a megfelelően igazított szándékhoz. Habár a hosszúságú kimondott szöveg egyetlen készlete van, amely minden verzióban áttekinthető, a szándék megfelelő igazításának folyamata csak a jelenlegi _aktív modellhez_ járul hozzá a példaként.
 
-1. A **portál Build** szakaszában válassza **a Végpontkimondott szöveg áttekintése** a bal oldali navigációs. A lista az **ApplyForJob** szándék szerint van szűrve.
+1. A portál **Létrehozás** szakaszában válassza a bal oldali navigációs sávon a **végpont hosszúságú kimondott szöveg áttekintése** elemet. A lista az **ApplyForJob** szándék szerint van szűrve.
 
     > [!div class="mx-imgBorder"]
     > ![A bal oldali navigációs menüben található Végponti kimondott szövegek áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Ez az `I'm looking for a job with Natural Language Processing`utterance (kifejezés), a , nem a megfelelő szándékkal.
+    Ez a Kimondás `I'm looking for a job with Natural Language Processing`nem megfelelő szándékú.
 
-1.  Az utterance (kifejezés) igazításához az utterance (kifejezés) sorban válassza ki a megfelelő **igazított szándékot.** `GetJobInformation` Adja hozzá a módosított utterance (kifejezés) az alkalmazáshoz a pipa kiválasztásával.
+1.  A Kimondás igazításához a teljes sorban válassza ki a megfelelő **igazított szándékot** `GetJobInformation`. A jelölőnégyzet bejelölésével adja hozzá a megváltozott kiírást az alkalmazáshoz.
 
     > [!div class="mx-imgBorder"]
     > ![A bal oldali navigációs menüben található Végponti kimondott szövegek áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
 
-    Tekintse át a fennmaradó utterances ebben a szándékban, szükség szerint korrigálja az igazított szándékot. Használja a kezdeti utterance (kifejezés) tábla ebben az oktatóanyagban az igazított szándék megtekintéséhez.
+    Tekintse át a további hosszúságú kimondott szöveg ebben a szándékban, és szükség szerint javítsa ki az igazított szándékot. Ebben az oktatóanyagban a kezdeti lemondás tábla segítségével tekintheti meg az igazított szándékot.
 
-    A **felülvizsgálati végpont utterances** lista már nem rendelkezik a javított utterances. Ha több kimondott szöveg jelenik meg, folytassa a munkát a listán, javítsa ki az igazított leképezéseket, amíg a lista üres nem lesz.
+    A **felülvizsgálati végpont hosszúságú kimondott szöveg** listájának már nem kell a korrigált hosszúságú kimondott szöveg. Ha további hosszúságú kimondott szöveg jelennek meg, folytassa a listát, és javítsa a igazított leképezéseket, amíg a lista üres nem lesz.
 
-    Az entitás címkézésének bármilyen javítása a szándék igazítása után történik, a Szándék részletei lapról.
+    Az entitások címkézésének minden kijavítása a szándék igazítása után történik, a szándék részletek lapról.
 
 1. Tanítsa be és tegye ismét közzé az alkalmazást.
 
-## <a name="get-intent-prediction-from-endpoint"></a>Leképezési előrejelzés beszereznie a végpontból
+## <a name="get-intent-prediction-from-endpoint"></a>Leképezési előrejelzés beolvasása a végpontról
 
-Ellenőrizze, hogy a megfelelően igazított példa utterances javult az alkalmazás előrejelzése, próbálkozzon egy utterance (kifejezés közel a javított utterance (kifejezés) .
+Ha ellenőrizni szeretné, hogy a megfelelően igazított példa hosszúságú kimondott szöveg javította-e az alkalmazás előrejelzését, próbáljon meg egy teljes kizárót kijavítani.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Lépjen az URL-cím végére a címsorban, és cserélje le _YOUR_QUERY_HERE_ a gombra. `Are there any natural language processing jobs in my department right now?`
+1. Lépjen az URL-cím végére a címsorban, és cserélje le a `Are there any natural language processing jobs in my department right now?` _YOUR_QUERY_HEREt_ a következőre:.
 
    ```json
     {
@@ -207,7 +207,7 @@ Ellenőrizze, hogy a megfelelően igazított példa utterances javult az alkalma
     }
    ```
 
-   Most, hogy a bizonytalan kimondott szöveg ek megfelelően vannak igazítva, a helyes szándék **ot magas pontszámmal**jósolták meg.
+   Most, hogy a bizonytalan hosszúságú kimondott szöveg helyesen vannak igazítva, a megfelelő szándékot **magas pontszámot**jósolta meg.
 
 ## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Az áttekintés helyettesíthető további kimondott szövegek hozzáadásával?
 Felmerülhet a kérdés, hogy miért ne adhatna hozzá további példaként szolgáló kimondott szövegeket. Mi a végponti kimondott szövegek áttekintésének célja? Egy valós LUIS-alkalmazásban a végponti kimondott szövegek a felhasználóktól származnak, Ön által még nem használt szóhasználattal és elrendezéssel. Ha ugyanazt a szóhasználatot és elrendezést alkalmazta volna, az eredeti előrejelzés nagyobb százalékos értékkel rendelkezne.

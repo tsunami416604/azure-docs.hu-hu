@@ -9,15 +9,15 @@ ms.date: 03/30/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: dcc34123731a3c60b4e76c9180c2e5c2a7c56b92
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529279"
 ---
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
-* [Python 3.7-es vagy újabb verzió](https://www.python.org/downloads/) ajánlott. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. A Python által támogatott egyéb verziókért lásd: [Azure IoT-eszközszolgáltatások](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) az SDK dokumentációban.
+* A [Python 3,7-es vagy újabb verziója](https://www.python.org/downloads/) javasolt. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. A Python egyéb verziói esetében lásd: az SDK dokumentációjának [Azure IoT-eszközök funkciói](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) .
 
     > [!IMPORTANT]
-    > Mivel a cikkben szereplő eszközkód az aszinkron API-t használja, a Python 2.7 nem használható.
+    > Mivel a cikkben található eszköz kódja az aszinkron API-t használja, a Python 2,7 nem használható.

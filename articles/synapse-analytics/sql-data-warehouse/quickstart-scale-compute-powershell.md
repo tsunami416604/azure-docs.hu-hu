@@ -1,6 +1,6 @@
 ---
-title: A Synapse SQL-készlet számítási méretezése (Azure PowerShell)
-description: Az Azure PowerShell használatával skálázhatja a Synapse SQL-készlet (adattárház) számításait.
+title: Méretezési számítás a szinapszis SQL-készlethez (Azure PowerShell)
+description: A szinapszis SQL-készlet (adattárház) számítási felskálázását Azure PowerShell használatával végezheti el.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -12,39 +12,39 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80633782"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: A Synapse SQL-készlet számításainak méretezése az Azure PowerShell segítségével
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Gyors útmutató: a Azure PowerShell
 
-Az Azure PowerShell használatával skálázhatja a Synapse SQL-készlet (adattárház) számításait. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
+A szinapszis SQL-készlet (adattárház) számítási felskálázását Azure PowerShell használatával végezheti el. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL-készlet, amely skálázható. Ha létre kell hoznia egyet, a [Create and Connect - portal (Létrehozás és csatlakozás - portál)](create-data-warehouse-portal.md) segítségével hozzon létre egy **mySampleDataWarehouse**nevű SQL-készletet.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy méretezhető SQL-készlettel. Ha létre kell hoznia egyet, a [create és a összekapcsolás-Portal](create-data-warehouse-portal.md) használatával hozzon létre egy **mySampleDataWarehouse**nevű SQL-készletet.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be Azure-előfizetésébe a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
 ```
 
-A használt előfizetés megtekintéséhez futtassa a [Get-AzSubscription futtassa.](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+A [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)futtatásával megtekintheti, hogy melyik előfizetést használja.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [Set-AzContext programot.](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)parancsot.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -56,20 +56,20 @@ Keresse meg a felfüggeszteni és folytatni tervezett adattárházhoz tartozó a
 
 Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2. Kattintson az **Azure Synapse Analytics (korábbi SQL DW)** elemre az Azure Portal bal oldali navigációs lapján.
-3. Válassza ki a **mySampleDataWarehouse** az **Azure Synapse Analytics (korábban SQL DW)** lapon az adattárház megnyitásához.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre a Azure Portal bal oldali navigációs oldalán.
+3. Az adatraktár megnyitásához válassza a **mySampleDataWarehouse** lehetőséget az **Azure szinapszis Analytics (korábban SQL DW)** lapon.
 
     ![Kiszolgálónév és erőforráscsoport](./media/quickstart-scale-compute-powershell/locate-data-warehouse-information.png)
 
-4. Írja fel az adattárház nevét. Ezt fogja használni az adatbázis neveként. Ne feledje, hogy az adattárház az adatbázisok egy típusa. Írja fel a kiszolgáló nevét és az erőforráscsoportot is. A szüneteltetési és folytatási parancsokban a kiszolgáló nevet és az erőforráscsoport nevét fogja használni.
-5. Csak a kiszolgálónév első részét használja a PowerShell-parancsmagokban. Az előző lemezképben a teljes kiszolgálónév sqlpoolservername.database.windows.net. Az **sqlpoolservername-t** használjuk a PowerShell-parancsmagban a kiszolgáló neveként.
+4. Írja fel az adattárház nevét. Ezt fogja használni az adatbázis neveként. Ne feledje, hogy az adattárház az adatbázisok egy típusa. Írja fel a kiszolgáló nevét és az erőforráscsoportot is. A kiszolgáló nevét és az erőforráscsoport nevét a Szüneteltetés és folytatás parancsban fogja használni.
+5. A PowerShell-parancsmagokban csak a kiszolgáló nevének első részét használja. Az előző képen a teljes kiszolgáló neve sqlpoolservername.database.windows.net. A PowerShell-parancsmagban a **sqlpoolservername** -t használjuk a kiszolgáló neveként.
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
-Az SQL készletben növelheti vagy csökkentheti a számítási erőforrásokat az adattárház egységek módosításával. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
+Az SQL-készletben az adatraktár-egységek módosításával növelheti vagy csökkentheti a számítási erőforrásokat. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
 
-Az adatraktári egységek módosításához használja a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell parancsmag. A következő példa az adattárház egységeket DW300c-re állítja a **mySampleDataWarehouse**adatbázishoz, amely a kiszolgáló **sqlpoolservername**erőforráscsoporterőforrás-csoportjának **nevében** található.
+Az adatraktár-egységek módosításához használja a [set-AzSqlDatabase PowerShell-](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot. A következő példa a DW300c adatraktár-egységeit állítja be az adatbázis- **mySampleDataWarehouse**, amely a kiszolgáló **sqlpoolservername**erőforráscsoport- **resourcegroupname** található.
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>Az adattárház állapotának ellenőrzése
 
-Az adatraktár aktuális állapotának megtekintéséhez használja a [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell-parancsmag. Ez a parancsmag a datagroup **resourcegroupname** és a kiszolgálói **sqlpoolservername.database.windows.net** **mySampleDataWarehouse** adatbázisállapotát mutatja.
+Az adatraktár aktuális állapotának megtekintéséhez használja a [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell-parancsmagot. Ez a parancsmag a **mySampleDataWarehouse** -adatbázis állapotát jeleníti meg a ResourceGroup **resourcegroupname** és a kiszolgáló **sqlpoolservername.database.Windows.net**.
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -121,7 +121,7 @@ $database | Select-Object DatabaseName,Status
 
 ## <a name="next-steps"></a>További lépések
 
-Most már megtanulta, hogyan skálázhatja a számítási SQL-készlet. Ha többet szeretne megtudni az SQL-készletről, folytassa az adatok betöltésével kapcsolatos oktatóanyagmal.
+Ezzel megtanulta, hogyan méretezheti a számítási lehetőséget az SQL-készlethez. Ha többet szeretne megtudni az SQL-készletről, folytassa a betöltési oktatóanyaggal.
 
 > [!div class="nextstepaction"]
->[Adatok betöltése SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md)
+>[Adatgyűjtés SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md)

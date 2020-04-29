@@ -1,7 +1,7 @@
 ---
-title: Mi az a Magával ragadó Reader API?
+title: Mi a magával ragadó olvasó API?
 titleSuffix: Azure Cognitive Services
-description: A Magával ragadó Olvasó API egy olyan eszköz, amely lehet használni elhelyezésére emberek tanulási különbségek, vagy segít az új olvasók és nyelvtanulók.
+description: A lebilincselő olvasó API egy olyan eszköz, amellyel a tanulási különbségekkel rendelkező személyeket, illetve az új olvasókat és nyelvi tanulókat is felhasználhatják.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,56 +11,56 @@ ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
 ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80052386"
 ---
 # <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-A [Magával ragadó Olvasó](https://www.onenote.com/learningtools) egy inkluzívan megtervezett eszköz, amely bevált technikákat valósít meg az olvasás megértésének javítására a feltörekvő olvasók, a nyelvtanulók és a tanulási nehézségekkel küzdő emberek, például a diszlexia számára.
+A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg a feltörekvő olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségek, például a diszlexia megismerése érdekében.
 
 Webalkalmazásában a Modern olvasó SDK-jával használhatja a Modern olvasót.
 
-## <a name="what-does-immersive-reader-do"></a>Mit csinál a Magával ragadó olvasó?
+## <a name="what-does-immersive-reader-do"></a>Mit tesz a magával ragadó olvasó?
 
-A Magával ragadó olvasó célja, hogy az olvasás mindenki számára hozzáférhetőbb legyen.
+A magával ragadó olvasó úgy lett kialakítva, hogy mindenki számára elérhetővé tegye az olvasót.
 
-* Tartalom megjelenítése minimális olvasási nézetben
+* A tartalom minimális olvasási nézetben való megjelenítése
 
   ![Modern olvasó](./media/immersive-reader.png)
 
-* Gyakran használt szavak képeit jeleníti meg
+* Megjeleníti a gyakran használt szavak képeit
 
-  ![Képszótár](./media/picture-dictionary.png)
+  ![KÉPszóTÁR](./media/picture-dictionary.png)
 
-* Főnevek, igék, melléknevek és határozószavak kiemelése
+* Kiemelt nevek, igék, melléknevek és határozószók
 
   ![A beszéd részei](./media/parts-of-speech.png)
 
-* Hangosan felolvassa a tartalmat
+* Hangosan beolvassa a tartalmat
 
-  ![Hangos felolvasás](./media/read-aloud.png)
+  ![Hangosan olvasása](./media/read-aloud.png)
 
 * Lefordítja a tartalmat egy másik nyelvre
 
   ![Fordítás](./media/translation.png)
 
-* Szókra bontja a szavakat
+* Megszakítja a szavakat szótagokra
 
-  ![Tanmenet](./media/syllabification.png)
+  ![Syllabification](./media/syllabification.png)
 
-## <a name="how-does-immersive-reader-work"></a>Hogyan működik a Magával ragadó olvasó?
+## <a name="how-does-immersive-reader-work"></a>Hogyan működik a alámerülés olvasó?
 
-A Magával ragadó olvasó egy önálló webes alkalmazás, amely a Magával ragadó olvasó JavaScript SDK használatával `iframe`történő meghívásesetén a meglévő webalkalmazás tetején jelenik meg egy . Amikor felhívja az API-t, hogy indítsa el a Magával ragadó olvasó, meg kell adnia a kívánt tartalmat megjeleníteni a magával ragadó olvasó. SDK-nk kezeli a Immersive `iframe` Reader háttérszolgáltatás létrehozását és stílusát, amely feldolgozza a tartalom tartalmát a beszéd, a szöveg-beszéd, a fordítás és így tovább.
+A részletes olvasó egy önálló webalkalmazás, amely a saját webalkalmazásának a használatával történő meghívásakor jelenik meg a meglévő webalkalmazáson keresztül `iframe`. Amikor meghívja az API-t, hogy elindítsa a lebilincselő olvasót, megadhatja, hogy milyen tartalmat szeretne megjeleníteni a lebilincselő olvasóban. Az SDK kezeli a `iframe` és a kommunikáció létrehozását és stílusát az olvasói háttérrendszer-szolgáltatással, amely a beszéd részeire, szövegről beszédre, fordításra és egyebekre dolgozza fel a tartalmat.
 
 ## <a name="next-steps"></a>További lépések
 
 A Modern olvasó használatának első lépései:
 
-* Ugrás a [rövid útmutatóba](./quickstart.md)
-* Fedezze fel a [magával ragadó Reader SDK-t a GitHubon](https://github.com/microsoft/immersive-reader-sdk)
-* Olvassa el a [magával ragadó Reader SDK-útmutatót](./reference.md)
+* Ugrás [a gyors](./quickstart.md) üzembe helyezésre
+* Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
+* Olvassa el a [magára olvasó SDK-referenciát](./reference.md)
