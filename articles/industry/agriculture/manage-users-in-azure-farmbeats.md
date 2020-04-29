@@ -1,87 +1,87 @@
 ---
-title: Felhasználók kezelése az Azure FarmBeats-ben
-description: Ez a cikk ismerteti, hogyan kezelheti a felhasználók at Azure FarmBeats.
+title: Felhasználók kezelése az Azure FarmBeats
+description: Ez a cikk bemutatja, hogyan kezelheti a felhasználókat az Azure FarmBeats-ben.
 author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502065"
 ---
 # <a name="manage-users"></a>Felhasználók kezelése
 
-Az Azure FarmBeats felhasználói felügyeletet tartalmaz az Azure Active Directory (Azure AD) példány részét vevő személyek számára. Felhasználók hozzáadása az Azure FarmBeats-példány hoz az API-k eléréséhez, a létrehozott térképek megtekintéséhez, és a hozzáférés érzékelő telemetriai a farmból.
+Az Azure FarmBeats felhasználói felügyeletet tartalmaz a Azure Active Directory (Azure AD) példányának részét képező felhasználók számára. Hozzáadhat felhasználókat az Azure FarmBeats-példányhoz az API-k eléréséhez, megtekintheti a generált térképeket, és elérheti az érzékelő telemetria a farmról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure FarmBeats telepítése szükséges. További információ: [Install Azure FarmBeats](install-azure-farmbeats.md).
-- Az Azure FarmBeats-példányból hozzáadni vagy eltávolítani kívánt felhasználók e-mail-azonosítói.
+- Az Azure FarmBeats telepítése szükséges. További információ: az [Azure FarmBeats telepítése](install-azure-farmbeats.md).
+- Azon felhasználók e-mail-azonosítói, amelyeket hozzá szeretne adni, vagy amelyekről el szeretné távolítani az Azure FarmBeats-példányát.
 
-## <a name="manage-azure-farmbeats-users"></a>Az Azure FarmBeats felhasználóinak kezelése
+## <a name="manage-azure-farmbeats-users"></a>Azure FarmBeats-felhasználók kezelése
 
-Az Azure FarmBeats az Azure AD-t használja a hitelesítéshez, a hozzáférés-vezérléshez és a szerepkörökhöz. Az Azure AD-bérlőben felhasználókat adhat hozzá az Azure FarmBeats-ben.
+Az Azure FarmBeats az Azure AD-t használja a hitelesítéshez, a hozzáférés-vezérléshez és a szerepkörökhöz. Az Azure AD-bérlőben felhasználókat adhat hozzá az Azure FarmBeats.
 
 > [!NOTE]
-> Ha egy felhasználó nem Egy Azure AD-bérlői felhasználó, kövesse az Utasításokat az **Azure AD-felhasználók hozzáadása** szakaszban a beállítás befejezéséhez.
+> Ha a felhasználó nem Azure AD-bérlői felhasználó, kövesse az **Azure ad-felhasználók hozzáadása** szakasz utasításait a telepítés befejezéséhez.
 
-Az Azure FarmBeats kétféle felhasználói szerepkört támogat:
+Az Azure FarmBeats két típusú felhasználói szerepkört támogat:
 
- - **Rendszergazda:** Teljes hozzáférés az Azure FarmBeats Datahub API-khoz. Ebben a szerepkörben lévő felhasználók lekérdezhetik az összes Azure FarmBeats Datahub-objektumot, és végrehajthatják a FarmBeats gyorsítóösszes műveletét.
- - **Írásvédett:** A FarmBeats Datahub API-k írásvédett elérése. A felhasználók megtekinthetik a Datahub API-kat, a gyorssegéd irányítópultjait és a térképeket. Az írásvédett hozzáféréssel rendelkező felhasználók nem hajthatnak végre olyan műveleteket, mint a térképek létrehozása, az eszközök társítása vagy farmok létrehozása.
+ - **Rendszergazda**: teljes hozzáférés az Azure FarmBeats Datahub API-khoz. Az ebben a szerepkörben lévő felhasználók lekérhetik az összes Azure FarmBeats Datahub objektumot, és az FarmBeats-gyorsító összes műveletét elvégezheti.
+ - **Írásvédett**: csak olvasási hozzáférés a FarmBeats Datahub API-khoz. A felhasználók megtekinthetik a Datahub API-kat, a gyorsító irányítópultokat és a térképeket. A csak olvasási hozzáféréssel rendelkező felhasználók nem hajthatnak végre olyan műveleteket, mint például a térképek létrehozása, az eszközök társítása vagy a farmok létrehozása.
 
-## <a name="add-users-to-azure-farmbeats"></a>Felhasználók hozzáadása az Azure FarmBeats szolgáltatáshoz
+## <a name="add-users-to-azure-farmbeats"></a>Felhasználók hozzáadása az Azure FarmBeats
 
-Felhasználók hozzáadása az Azure FarmBeats szolgáltatáshoz:
+Felhasználók hozzáadása az Azure FarmBeats:
 
-1. Jelentkezzen be a gyorssegédbe, és kattintson a **Beállítások** ikonra.
-2. Válassza **a Hozzáférés-vezérlés lehetőséget**.
+1. Jelentkezzen be a Gyorssegédbe, majd kattintson a **Beállítások** ikonra.
+2. Válassza a **Access Control**lehetőséget.
 
-    ![A Farmok beállításai ablaktábla](./media/create-farms-in-azure-farmbeats/settings-users-1.png)
+    ![A farmok beállításai panel](./media/create-farms-in-azure-farmbeats/settings-users-1.png)
 
-3. Adja meg annak a felhasználónak az e-mail azonosítóját, akihez hozzáférést kíván adni.
-4. Válassza ki a kívánt szerepkört, **rendszergazda** vagy **írásvédett.**
-5. Válassza **a Szerepkör hozzáadása lehetőséget.**
+3. Adja meg annak a felhasználónak az e-mail-AZONOSÍTÓját, amelyhez hozzáférést szeretne biztosítani.
+4. Válassza ki a kívánt szerepkört, **rendszergazda** vagy **csak olvasható**lehetőséget.
+5. Válassza a **szerepkör hozzáadása**elemet.
 
-A hozzáadott felhasználó most már elérheti az Azure FarmBeats (mind datahub és gyorsító).
+A hozzáadott felhasználó mostantól elérheti az Azure FarmBeats (a Datahub és a gyorsító is).
 
-## <a name="delete-users-from-azure-farmbeats"></a>Felhasználók törlése az Azure FarmBeats szolgáltatásból
+## <a name="delete-users-from-azure-farmbeats"></a>Felhasználók törlése az Azure FarmBeats
 
 Felhasználók eltávolítása az Azure FarmBeats rendszerből:
 
-1. Jelentkezzen be a gyorssegédbe, és kattintson a **Beállítások** ikonra.
-2. Válassza **a Hozzáférés-vezérlés lehetőséget**.
+1. Jelentkezzen be a Gyorssegédbe, majd kattintson a **Beállítások** ikonra.
+2. Válassza a **Access Control**lehetőséget.
 3. Válassza a **Törlés** elemet.
 
-   A felhasználó törlődik a rendszerből. A következő megerősítő üzenet jelenik meg:
+   A felhasználó törlődik a rendszerből. A következő megerősítő üzenetet kapja:
 
-   ![Az Azure FarmBeats megerősítő üzenete](./media/create-farms-in-azure-farmbeats/manage-users-2.png)
+   ![Azure FarmBeats-megerősítő üzenet](./media/create-farms-in-azure-farmbeats/manage-users-2.png)
 
 ## <a name="add-azure-ad-users"></a>Azure AD-felhasználók hozzáadása
 
 > [!NOTE]
-> Az Azure FarmBeats-felhasználóknak létezniük kell az Azure AD-bérlőben, mielőtt hozzárendeli őket az alkalmazásokhoz és szerepkörökhöz. Ha egy felhasználó nem létezik az Azure AD-bérlőben, kövesse az ebben a szakaszban található utasításokat. Hagyja ki az utasításokat, ha egy felhasználó már létezik az Azure AD-bérlőben.
+> Az Azure FarmBeats-felhasználóknak az Azure AD-bérlőben kell léteznie ahhoz, hogy alkalmazásokat és szerepköröket rendeljenek hozzájuk. Ha a felhasználó nem létezik az Azure AD-bérlőben, kövesse az ebben a szakaszban található utasításokat. Ha a felhasználó már létezik az Azure AD-bérlőben, hagyja ki az utasításokat.
 
-Kövesse a felhasználók Azure AD-hez való hozzáadásának lépéseit:
+A következő lépésekkel adhat hozzá felhasználókat az Azure AD-hoz:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2. A jobb felső sarokban válassza ki a fiókját, majd váltson a FarmBeats-hez társított Azure AD-bérlőre.
-3. Válassza az Azure Active > **Directory-felhasználók lehetőséget.** **Azure Active Directory**
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. A jobb felső sarokban válassza ki a fiókját, majd váltson arra az Azure AD-bérlőre, amely a FarmBeats-hez van társítva.
+3. Válassza ki **Azure Active Directory** > **felhasználókat**.
 
     Megjelenik az Azure AD-felhasználók listája.
 
-4. Ha felhasználót szeretne hozzáadni a címtárhoz, válassza az **Új felhasználó**lehetőséget. Külső felhasználó hozzáadásához válassza az **Új vendégfelhasználó lehetőséget.**
+4. Ha felhasználót szeretne hozzáadni a címtárhoz, válassza az **új felhasználó**lehetőséget. Külső felhasználó hozzáadásához válassza az **új vendég felhasználó**lehetőséget.
 
-    ![A "Minden felhasználó" ablaktábla](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
+    ![A "minden felhasználó" panel](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
 
-5. Jelölje ki az új felhasználó nevét, majd töltse ki a szükséges mezőket az adott felhasználóhoz.
+5. Válassza ki az új felhasználó nevét, majd hajtsa végre a szükséges mezőket az adott felhasználó számára.
 6. Kattintson a **Létrehozás** gombra.
 
-Az Azure AD-felhasználók kezeléséről a [Felhasználók hozzáadása vagy törlése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/)című témakörben talál.
+Az Azure AD-felhasználók felügyeletével kapcsolatos információkért lásd: [felhasználók hozzáadása vagy törlése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/).
 
 ## <a name="next-steps"></a>További lépések
 
-Sikeresen hozzáadott felhasználókat az Azure FarmBeats-példányhoz. Most, megtanulják, hogyan kell [létrehozni és kezelni gazdaságok](manage-farms-in-azure-farmbeats.md#create-farms).
+Sikeresen hozzáadta a felhasználókat az Azure FarmBeats-példányhoz. Most Ismerkedjen meg a [farmok létrehozásával és kezelésével](manage-farms-in-azure-farmbeats.md#create-farms).

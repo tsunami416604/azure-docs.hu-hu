@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
 ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334690"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
-| Erőforrások [erőforráscsoportonként](../articles/azure-resource-manager/management/overview.md#resource-groups) | Az erőforrásokat erőforráscsoport nem korlátozza. Ehelyett egy erőforráscsoport erőforrástípusa korlátozza őket. Lásd a következő sort. |
-| Erőforrások erőforráscsoportonként, erőforrástípusonként |800 – Egyes erőforrástípusok meghaladhatják a 800-as korlátot. [Az Erőforrások nem korlátozódik 800 példányra erőforráscsoportonként](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
-| Központi telepítések erőforráscsoportonként a telepítési előzményekben |800<sup>1</sup> |
-| Erőforrások telepítésenként |800 |
-| Felügyeleti zárolások egyedi hatókörenként |20 |
-| Címkék száma erőforrásonként vagy erőforráscsoportonként |50 |
-| Címkekulcs hossza |512 |
+| Erőforrások [erőforrás-csoportonként](../articles/azure-resource-manager/management/overview.md#resource-groups) | Az erőforrások nem korlátozódnak az erőforráscsoporthoz. Ehelyett egy erőforráscsoport erőforrástípus van korlátozva. Lásd a következő sort. |
+| Erőforrások erőforrás-csoportonként, erőforrás-típus szerint |800 – egyes erőforrástípusok túllépik a 800 korlátot. Tekintse [meg az erőforrásokat, amelyek erőforráscsoport esetén nem korlátozódnak 800 példányra](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
+| Üzemelő példányok erőforráscsoport szerint az üzembe helyezési előzményekben |800<sup>1</sup> |
+| Erőforrások üzembe helyezése |800 |
+| Felügyeleti zárolások egyedi hatókör szerint |20 |
+| Címkék száma erőforrás vagy erőforráscsoport szerint |50 |
+| Címke kulcsának hossza |512 |
 | Címke értékének hossza |256 |
 
-<sup>1 1</sup> Ha eléri a 800 központi telepítések erőforráscsoportonként, törölje a központi telepítések az előzményekből, amelyek már nincs szükség. Egy bejegyzés törlése a telepítési előzmények ből nincs hatással az üzembe helyezett erőforrásokra. További információt a [Hiba feloldása 800-nál nagyobb üzemidő esetén](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md)című témakörben talál.
+<sup>1</sup> Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. További információ: a [hiba elhárítása, ha a központi telepítés száma meghaladja a 800](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md)-at.
 
-#### <a name="template-limits"></a>Sablonkorlátok
+#### <a name="template-limits"></a>Sablonok korlátai
 
 | Érték | Korlát |
 | --- | --- |
 | Paraméterek |256 |
 | Változók |256 |
-| Erőforrások (beleértve a másolások számát) |800 |
+| Erőforrások (beleértve a példányszámot is) |800 |
 | Kimenetek |64 |
-| Sablonkifejezés |24 576 karakter |
+| Sablon kifejezése |24 576 karakter |
 | Exportált sablonok erőforrásai |200 |
 | Sablon mérete |4 MB |
-| Paraméterfájl mérete |64 KB |
+| Paraméter fájlmérete |64 KB |
 
-Egyes sablonkorlátokat beágyazott sablon használatával túlléphet. További információt a [Csatolt sablonok használata Azure-erőforrások üzembe helyezésekor](../articles/azure-resource-manager/templates/linked-templates.md)című témakörben talál. A paraméterek, változók vagy kimenetek számának csökkentése érdekében több értéket egyesíthet egy objektumban. További információ: [Objects as parameters](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
+Az egyes sablonokra vonatkozó korlátokat egy beágyazott sablon használatával lehet meghaladni. További információ: a [csatolt sablonok használata az Azure-erőforrások telepítésekor](../articles/azure-resource-manager/templates/linked-templates.md). A paraméterek, változók és kimenetek számának csökkentése érdekében több értéket is egyesítheti egy objektumban. További információ: [objektumok paraméterként](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).

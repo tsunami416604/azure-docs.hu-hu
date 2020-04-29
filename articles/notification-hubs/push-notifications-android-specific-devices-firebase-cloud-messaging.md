@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések küldése adott eszközökre az Azure Notification Hubs és a Google Firebase Cloud Messaging használatával | Microsoft dokumentumok
-description: Megtudhatja, hogy az Értesítési központok használatával hogyan küldhet értesítéseket adott Android-eszközökre az Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) használatával.
+title: Leküldéses értesítések küldése adott eszközökre az Azure Notification Hubs és a Google Firebase Cloud Messaging használatával | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a Notification Hubst az értesítések adott Android-eszközökre történő leküldéséhez az Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) használatával.
 services: notification-hubs
 documentationcenter: android
 author: sethmanheim
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
 ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80126880"
 ---
-# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: Értesítések küldése adott eszközökre az Értesítési központok és a Google Firebase Cloud Messaging használatával
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: értesítések küldése adott eszközökre Notification Hubs és Google Firebase Cloud Messaging használatával
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -38,13 +38,13 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
 > * Kategóriaválasztást ad a mobilalkalmazáshoz.
-> * Címkékkel ellátott értesítésekre van regisztrálva.
+> * Címkékkel rendelkező értesítések regisztrálva.
 > * Címkés értesítéseket küld.
 > * Az alkalmazás tesztelése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag az oktatóanyagban létrehozott alkalmazásra [épül: Értesítések leküldése androidos eszközökre az Azure Értesítési központok és a Firebase-felhőüzenetek használatával.](notification-hubs-android-push-notification-google-fcm-get-started.md) Az oktatóanyag elindítása előtt töltse ki az [oktatóanyagot: Értesítések leküldése androidos eszközökre az Azure Értesítési központok és a Firebase Felhőüzenetek használatával.](notification-hubs-android-push-notification-google-fcm-get-started.md)
+Ez az oktatóanyag az [oktatóanyag: leküldéses értesítések Android-eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával](notification-hubs-android-push-notification-google-fcm-get-started.md)létrehozott alkalmazásra épül. Az oktatóanyag megkezdése előtt végezze el a következő [oktatóanyagot: leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 ## <a name="add-category-selection-to-the-app"></a>Kategóriaválasztó hozzáadása az alkalmazáshoz
 
@@ -115,10 +115,10 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     <string name="label_sports">Sports</string>
     ```
 
-    A `main_activity.xml` grafikus elrendezésnek az alábbi képen láthatónak kell lennie:
+    A `main_activity.xml` grafikus elrendezésnek az alábbi képen láthatóhoz hasonlóan kell kinéznie:
 
     ![][A1]
-3. Hozzon `Notifications` létre egy osztályt `MainActivity` ugyanabban a csomagban, mint az osztályában.
+3. Hozzon létre `Notifications` egy osztályt ugyanabban a csomagban `MainActivity` , mint az osztály.
 
     ```java
     import java.util.HashSet;
@@ -204,12 +204,12 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     ```
 
     Ez az osztály a helyi tárolóban tárolja a hírkategóriákat, amelyeket ennek az eszköznek meg kell kapnia. Ezenkívül olyan metódusokat is tartalmaz, amelyek az adott kategóriákra való regisztrációra szolgálnak.
-4. Az `MainActivity` osztályban adjon hozzá `Notifications`egy mezőt:
+4. A `MainActivity` osztályban adjon hozzá egy mezőt a következőhöz `Notifications`:
 
     ```java
     private Notifications notifications;
     ```
-5. Ezután frissítse `onCreate` a módszert a következő kódban látható módon. Az Értesítési központoknál az **Értesítések** osztály **subscribeToCategories** metódusában regisztrál. 
+5. Ezután frissítse a `onCreate` metódust az alábbi kódban látható módon. A Notification Hubs az **értesítési** osztály **subscribeToCategories** metódusában regisztrálhat. 
 
     ```java
     @Override
@@ -267,7 +267,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     }
     ```
 
-    Ez a módszer létrehoz egy listát `Notifications` a kategóriák, és használja az osztály tárolja a listát a helyi tárolóés regisztrálja a megfelelő címkéket az értesítési központ. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
+    Ez a módszer kategóriákat hoz létre, és a `Notifications` osztály használatával tárolja a listát a helyi tárolóban, és regisztrálja a megfelelő címkéket az értesítési központban. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
 
 Az alkalmazás most már képes egy kategóriakészlet tárolására az eszköz helyi tárterületén, és az értesítési központban is regisztrálhat, ha a felhasználó módosítja a kiválasztott kategóriákat.
 
@@ -275,7 +275,7 @@ Az alkalmazás most már képes egy kategóriakészlet tárolására az eszköz 
 
 Ezek a lépések végzik az értesítési központban való regisztrációt az indításkor, a helyi tárterületen tárolt kategóriák használatával.
 
-1. Ellenőrizze, hogy a következő kód `onCreate` van-e `MainActivity` az osztályban lévő metódus végén:
+1. Győződjön meg arról, hogy a következő kód a `onCreate` metódus végén található a `MainActivity` osztályban:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());

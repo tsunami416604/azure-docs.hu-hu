@@ -8,21 +8,21 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80272942"
 ---
-Egy előfizetésen belül több szolgáltatást is létrehozhat. Mindegyik kiépíthető egy adott szinten. Csak az egyes szinteken engedélyezett szolgáltatások száma korlátozza. Létrehozhat például 12 szolgáltatást az alapszinten, és további 12 szolgáltatást az S1 szinten ugyanazon az előfizetésen belül. A szintekről további információt a [Termékváltozat vagy az Azure Cognitive Search csomag kiválasztása](../articles/search/search-sku-tier.md)című témakörben talál.
+Egy előfizetésen belül több szolgáltatást is létrehozhat. Mindegyiket egy adott rétegben lehet kiépíteni. Csak az egyes szintek által engedélyezett szolgáltatások száma korlátozza. Létrehozhat például akár 12 szolgáltatást az alapszintű szinten, és egy másik 12 szolgáltatást az S1 szinten ugyanazon előfizetés keretében. További információ a rétegek használatáról: [SKU vagy szintű Azure Cognitive Search kiválasztása](../articles/search/search-sku-tier.md).
 
-Kérésre maximális szolgáltatási limitek emelhetők. Ha több szolgáltatásra van szüksége ugyanazon az előfizetésen belül, forduljon az Azure-támogatáshoz.
+Kérés esetén a szolgáltatási korlátok maximális száma is megoldható. Ha ugyanahhoz az előfizetéshez több szolgáltatásra van szüksége, forduljon az Azure ügyfélszolgálatához.
 
-| Erőforrás            | Ingyenes<sup>1</sup> | Basic | S1  | S2 | S3 | S3&nbsp;HD | 1. | 2. |
+| Erőforrás            | Ingyenes<sup>1</sup> | Basic | S1  | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | ------------------- | ---- | ----- | --- | -- | -- | ----- | -- | -- |
-| Maximális szolgáltatások    |1     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
-| Maximális skála a keresési egységekben (SU)<sup>2</sup> |N/A |3 SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |
+| Szolgáltatások maximális száma    |1     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
+| Maximális méretezés a keresési egységekben (SU)<sup>2</sup> |N/A |3 SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |
 
-<sup>1</sup> Ingyenes alapul megosztott, nem dedikált, források. A megosztott erőforrások nem támogatják a felskálázást.
+<sup>1</sup> az ingyenes szolgáltatás megosztott, nem dedikált erőforrásokon alapul. A vertikális felskálázás nem támogatott a megosztott erőforrásokon.
 
-<sup>2</sup> A keresési egységek olyan számlázási egységek, *amelyekrepénként* vagy *partícióként*vannak lefoglalva. A tárolási, indexelési és lekérdezési műveletekhez erőforrásokra is szükség van. Az SU-számításokról a [Lekérdezési és indexelési számítási feladatok erőforrásszintek méretezése](../articles/search/search-capacity-planning.md).. 
+<sup>2</sup> a keresési egységek olyan számlázási egységek, amelyek *replikaként* vagy *partícióként*vannak kiosztva. A tárolási, indexelési és lekérdezési műveletekhez mindkét erőforrásra szüksége van. A SU-számításokkal kapcsolatos további információkért lásd: [erőforrások szintjének skálázása lekérdezési és indexelési](../articles/search/search-capacity-planning.md)feladatokhoz. 

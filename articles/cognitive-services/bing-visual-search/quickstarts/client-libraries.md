@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A Bing Visual Search ügyféltár használata'
+title: 'Gyors útmutató: az Bing Visual Search ügyféloldali kódtár használata'
 titleSuffix: Azure Cognitive Services
-description: A Visual Search API ügyféltárakat kínál, amelyek megkönnyítik a keresési képességek integrálását az alkalmazásokba. Ezzel a rövid útmutatóval elindíthatja a keresési kérelmek küldését, és visszaszerezheti az eredményeket.
+description: A Visual Search API olyan ügyféloldali kódtárakat kínál, amelyek megkönnyítik a keresési funkciók integrálását az alkalmazásokba. Ezzel a rövid útmutatóval megkezdheti a keresési kérelmek küldését, és visszatekintheti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: e1d3a947df486cd347c17afae5d8dbce21878e09
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549994"
 ---
-# <a name="quickstart-use-the-bing-visual-search-client-library"></a>Rövid útmutató: A Bing Visual Search ügyféltár használata
+# <a name="quickstart-use-the-bing-visual-search-client-library"></a>Gyors útmutató: az Bing Visual Search ügyféloldali kódtár használata
 
 ::: zone pivot="programming-language-csharp"
 

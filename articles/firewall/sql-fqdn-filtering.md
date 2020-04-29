@@ -1,6 +1,6 @@
 ---
-title: Az Azure Firewall alkalmazásszabályainak konfigurálása SQL fqdn-ekkel
-description: Ebben a cikkben megtudhatja, hogyan konfigurálhatja az SQL-fqdns az Azure Firewall alkalmazásszabályok.
+title: Azure Firewall alkalmazás-szabályok konfigurálása SQL FQDN-sel
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja az SQL FQDN-ket Azure Firewall alkalmazási szabályokban.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,41 +8,41 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: victorh
 ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501495"
 ---
-# <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Az Azure Firewall alkalmazásszabályainak konfigurálása SQL fqdn-ekkel
+# <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall alkalmazás-szabályok konfigurálása SQL FQDN-sel
 
 > [!IMPORTANT]
-> Az Azure Firewall alkalmazásszabályok SQL fqdns jelenleg nyilvános előzetes verzióban.
+> Azure Firewall SQL FQDN-sel rendelkező alkalmazás-szabályok jelenleg nyilvános előzetes verzióban érhetők el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Most már konfigurálhatja az Azure Firewall alkalmazásszabályok SQL fqdns. Ez lehetővé teszi, hogy a virtuális hálózatokból való hozzáférést csak a megadott SQL-kiszolgálópéldányokra korlátozza.
+Mostantól az SQL FQDN-sel is konfigurálhatja Azure Firewall alkalmazási szabályokat. Ez lehetővé teszi, hogy a virtuális hálózatokról csak a megadott SQL Server-példányokra korlátozza a hozzáférést.
 
-Az SQL teljes tartománynokkal szűrheti a forgalmat:
+Az SQL FQDN használatával szűrheti a forgalmat:
 
-- A virtuális hálózatok egy Azure SQL-adatbázis vagy egy Azure SQL Data Warehouse. Például: Csak *a sql-server1.database.windows.net*való hozzáférést engedélyezze.
-- A helyszíni Azure SQL felügyelt példányok vagy a virtuális hálózatokban futó SQL IaaS között.
-- A küllős a küllős az Azure SQL felügyelt példányok vagy az SQL IaaS fut a virtuális hálózatokban.
+- A virtuális hálózatok egy Azure SQL Database vagy egy Azure SQL Data Warehouse. Például: csak a *SQL-server1.database.Windows.net*elérésének engedélyezése.
+- A helyszínről az Azure SQL felügyelt példányaira vagy a virtuális hálózatok futó SQL-IaaS.
+- Az Azure SQL felügyelt példányain vagy a virtuális hálózatok futó SQL-IaaS.
 
-A nyilvános előzetes verzió során az SQL FQDN-szűrés csak [proxy módban](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (1433-as port) támogatott. Ha az SQL-t az alapértelmezett átirányítási módban használja, a [hálózati szabályok](overview.md#network-traffic-filtering-rules)részeként az SQL szolgáltatáscímkéje alapján szűrheti a hozzáférést.
-Ha nem alapértelmezett portokat használ az SQL IaaS-forgalomhoz, konfigurálhatja ezeket a portokat a tűzfalalkalmazás-szabályokban.
+A nyilvános előzetes verzióban az SQL FQDN-szűrés csak [proxy módban](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) támogatott (1433-es port). Ha az SQL-t az alapértelmezett átirányítási módban használja, a [hálózati szabályok](overview.md#network-traffic-filtering-rules)részeként szűrheti a hozzáférést az SQL-szolgáltatás címkével.
+Ha nem alapértelmezett portokat használ az SQL IaaS-forgalomhoz, ezeket a portokat a tűzfal alkalmazási szabályaiban állíthatja be.
 
-Az SQL-fqdns alkalmazásszabályok jelenleg az Azure Portalon, az Azure CLI-n, a REST-en és a sablonokon keresztül érhetők el az összes régióban.
+Az SQL FQDN-sel rendelkező alkalmazási szabályok jelenleg minden régióban elérhetők az Azure Portal, az Azure CLI, a REST és a sablonok használatával.
 
 ## <a name="configure-using-azure-cli"></a>Konfigurálás az Azure CLI használatával
 
-1. Telepítsen egy [Azure-tűzfalat az Azure CLI használatával.](deploy-cli.md)
-2. Ha az Azure SQL Database, az SQL Data Warehouse vagy az SQL Felügyelt példány forgalmát szűri, győződjön meg arról, hogy az SQL-kapcsolat mód **proxy**ra van állítva. Az SQL-kapcsolatmód közötti váltásról az [Azure SQL-kapcsolat beállításai című témakörben olvashat.](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)
+1. Azure Firewall üzembe helyezése az [Azure CLI használatával](deploy-cli.md).
+2. Ha Azure SQL Database, SQL Data Warehouse vagy SQL felügyelt példányra szűri a forgalmat, győződjön meg arról, hogy az SQL-kapcsolati mód **proxyra**van beállítva. Az SQL-kapcsolati mód váltásával kapcsolatos további információkért lásd: [Azure SQL-kapcsolati beállítások](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).
 
    > [!NOTE]
-   > Az SQL *proxy* mód az *átirányításhoz*képest több késést eredményezhet. Ha továbbra is szeretné használni az átirányítási módot, amely az Azure-on belül csatlakozó ügyfelek alapértelmezett módja, szűrheti a hozzáférést az SQL [szolgáltatáscímkéjével](service-tags.md) a tűzfal [hálózati szabályokban.](tutorial-firewall-deploy-portal.md#configure-a-network-rule)
+   > Az SQL *proxy* mód több késést eredményezhet az *átirányításhoz*képest. Ha továbbra is az átirányítási módot szeretné használni, amely az Azure-on keresztül csatlakozó ügyfelek esetében az alapértelmezett, akkor a hozzáférést a tűzfal [hálózati szabályaiban](tutorial-firewall-deploy-portal.md#configure-a-network-rule)található SQL- [szolgáltatás címkével](service-tags.md) szűrheti.
 
-3. Alkalmazásszabály konfigurálása SQL fqdn-nel az SQL-kiszolgálóhoz való hozzáférés engedélyezéséhez:
+3. SQL FQDN-sel rendelkező alkalmazás-szabály konfigurálása SQL-kiszolgálóhoz való hozzáférés engedélyezéséhez:
 
    ```azurecli
    az extension add -n azure-firewall
@@ -58,16 +58,16 @@ Az SQL-fqdns alkalmazásszabályok jelenleg az Azure Portalon, az Azure CLI-n, a
    ```
 
 ## <a name="configure-using-the-azure-portal"></a>Konfigurálás az Azure Portal használatával
-1. Telepítsen egy [Azure-tűzfalat az Azure CLI használatával.](deploy-cli.md)
-2. Ha az Azure SQL Database, az SQL Data Warehouse vagy az SQL Felügyelt példány forgalmát szűri, győződjön meg arról, hogy az SQL-kapcsolat mód **proxy**ra van állítva. Az SQL-kapcsolatmód közötti váltásról az [Azure SQL-kapcsolat beállításai című témakörben olvashat.](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)  
+1. Azure Firewall üzembe helyezése az [Azure CLI használatával](deploy-cli.md).
+2. Ha Azure SQL Database, SQL Data Warehouse vagy SQL felügyelt példányra szűri a forgalmat, győződjön meg arról, hogy az SQL-kapcsolati mód **proxyra**van beállítva. Az SQL-kapcsolati mód váltásával kapcsolatos további információkért lásd: [Azure SQL-kapcsolati beállítások](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).  
 
    > [!NOTE]
-   > Az SQL *proxy* mód az *átirányításhoz*képest több késést eredményezhet. Ha továbbra is szeretné használni az átirányítási módot, amely az Azure-on belül csatlakozó ügyfelek alapértelmezett módja, szűrheti a hozzáférést az SQL [szolgáltatáscímkéjével](service-tags.md) a tűzfal [hálózati szabályokban.](tutorial-firewall-deploy-portal.md#configure-a-network-rule)
-3. Adja hozzá az alkalmazásszabályt a megfelelő protokollal, porttal és SQL teljes tartománynnnel, majd válassza a **Mentés gombot.**
-   ![alkalmazásszabály SQL fqdn-nel](media/sql-fqdn-filtering/application-rule-sql.png)
-4. Sql-hozzáférés egy virtuális gép ről egy virtuális hálózat, amely szűri a forgalmat a tűzfalon keresztül. 
-5. Ellenőrizze, hogy [az Azure Firewall-naplók a](log-analytics-samples.md) forgalom engedélyezett.
+   > Az SQL *proxy* mód több késést eredményezhet az *átirányításhoz*képest. Ha továbbra is az átirányítási módot szeretné használni, amely az Azure-on keresztül csatlakozó ügyfelek esetében az alapértelmezett, akkor a hozzáférést a tűzfal [hálózati szabályaiban](tutorial-firewall-deploy-portal.md#configure-a-network-rule)található SQL- [szolgáltatás címkével](service-tags.md) szűrheti.
+3. Adja hozzá az alkalmazási szabályt a megfelelő protokoll-, port-és SQL FQDN- **fájlhoz**, majd válassza a mentés lehetőséget.
+   ![alkalmazási szabály SQL FQDN-sel](media/sql-fqdn-filtering/application-rule-sql.png)
+4. SQL-hozzáférés egy virtuális gépről egy olyan VNet, amely a tűzfalon keresztül szűri a forgalmat. 
+5. Annak ellenőrzése, hogy a [Azure Firewall naplókban](log-analytics-samples.md) engedélyezett-e a forgalom.
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL-proxy- és átirányítási módokról az [Azure SQL adatbázis-kapcsolatarchitektúrájában olvashat.](../sql-database/sql-database-connectivity-architecture.md)
+Az SQL proxy és az átirányítási módok megismeréséhez tekintse meg az [Azure SQL Database kapcsolódási architektúráját](../sql-database/sql-database-connectivity-architecture.md)ismertető témakört.

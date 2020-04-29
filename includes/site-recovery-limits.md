@@ -1,6 +1,6 @@
 ---
-title: Hely-helyreállítási korlátok táblázata
-description: A hely-helyreállítás rendszerkorlátainak ismertetése.
+title: Site Recovery határértékek tábla
+description: A Site Recovery rendszerkorlátait ismerteti.
 services: site recovery
 documentationcenter: NA
 author: csilauraa
@@ -14,20 +14,20 @@ ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
 ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335133"
 ---
-A következő korlátozások az Azure Site Recovery-re vonatkoznak.
+A következő korlátozások vonatkoznak a Azure Site Recoveryra.
 
 | Korlátazonosító | Korlát |
 | --- | --- |
-| Tárolók száma előfizetésenként |500 |     
-| Kiszolgálók száma Azure-tárolónként |250 |
-| Védelmi csoportok száma Azure-tárolónként |Nincs korlátozás |
-| Helyreállítási tervek száma Azure-tárolónként |Nincs korlátozás |
-| Kiszolgálók száma védelmi csoportonként |Nincs korlátozás |
-| Kiszolgálók száma helyreállítási tervenként |50 |
+| Tárolók száma/előfizetés |500 |     
+| Kiszolgálók száma Azure-tárolóban |250 |
+| Védelmi csoportok száma az Azure-tárolóban |Korlátlan |
+| Helyreállítási tervek száma Azure-tárolóban |Korlátlan |
+| Kiszolgálók száma védelmi csoportonként |Korlátlan |
+| Kiszolgálók száma helyreállítási terv szerint |50 |
 

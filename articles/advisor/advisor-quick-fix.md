@@ -1,53 +1,53 @@
 ---
-title: Gyors javítás szervizelése az Advisor-ajánlásokhoz
-description: Tömeges szervizelés végrehajtása az Advisor gyorsjavításával
+title: Gyors javítási szervizelés az Advisor ajánlásaihoz
+description: Csoportos szervizelés végrehajtása a gyors javítással az Advisorban
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502489"
 ---
-# <a name="quick-fix-remediation-for-advisor"></a>Gyors javítás szervizelése az Advisor számára
-**A Gyorsjavítás** lehetővé teszi a gyorsabb és egyszerűbb szervizelést a több erőforrásra vonatkozó javaslatok érdekében. Lehetővé teszi az erőforrások tömeges szervizelését, és segít az előfizetések gyorsabb optimalizálásában az erőforrások nagy méretekben való szervizelésével.
-A funkció csak bizonyos javaslatokhoz érhető el az Azure Portalon keresztül.
+# <a name="quick-fix-remediation-for-advisor"></a>Gyors javítási szervizelés az Advisorhoz
+A **gyors javítás** a több erőforrásra vonatkozó javaslat gyorsabb és egyszerűbb megoldását teszi lehetővé. Lehetővé teszi az erőforrások tömeges szervizelését, és lehetővé teszi az előfizetések gyorsabb optimalizálását az erőforrások nagy mértékű szervizelésével.
+A szolgáltatás csak bizonyos ajánlásokhoz érhető el, Azure Portalon keresztül.
 
 
-## <a name="steps-to-use-quick-fix"></a>A "Gyorsjavítás" használatának lépései
+## <a name="steps-to-use-quick-fix"></a>A gyors javítás használatának lépései
 
-1. A **gyorsjavítás** címkével ellátott javaslatok listájából kattintson a javaslatra.
+1. A **gyors javítás** címkével rendelkező javaslatok listájában kattintson a javaslatra.
 
-   ![Tanácsadó gyors javítás](./media/quick-fix-1.png)
+   ![Advisor – gyors javítás](./media/quick-fix-1.png)
    
-   *A képen látható árak csak célokat szolgálnak*
+   *A rendszerkép árai csak példaként szolgálnak.*
 
-2. A javaslat részletei lapon láthatja azokat az erőforrásokat, amelyekre vonatkozóan rendelkezik ezzel a javaslatkal. Válassza ki az összes olyan erőforrást, amelyet a javaslathoz helyre kíván adni.
+2. A javaslat részletei lapon megtekintheti azokat az erőforrásokat, amelyekhez ezt a javaslatot elvégezte. Válassza ki az összes olyan erőforrást, amelyet a javaslathoz szeretne szervizelni.
 
-   ![Tanácsadó gyors javítás](./media/quick-fix-2.png)
+   ![Advisor – gyors javítás](./media/quick-fix-2.png)
    
-   *A képen látható árak csak célokat szolgálnak*
+   *A rendszerkép árai csak példaként szolgálnak.*
 
-3. Miután kiválasztotta az erőforrásokat, kattintson a **Gyors javítás** gombra a tömeges javításhoz.
+3. Miután kiválasztotta az erőforrásokat, kattintson a **gyors javítás** gombra a tömeges szervizeléshez.
 
    > [!NOTE]
-   > Előfordulhat, hogy a felsorolt erőforrások egy része le van tiltva, mert nem rendelkezik a módosításukhoz szükséges engedélyekkel.
+   > Előfordulhat, hogy a felsorolt erőforrások némelyike le van tiltva, mert nem rendelkezik a megfelelő engedélyekkel a módosításhoz.
    
    > [!NOTE]
-   > Ha más következményei is vannak, az Advisorban említett előnyökön kívül a tapasztalatban is tájékoztatjuk Önt, hogy segítsen megalapozott kármentesítési döntéseket hozni.
+   > Ha más következményekkel is jár, az Advisorban említett előnyök mellett a tapasztalatok alapján tájékoztatni fogja Önt a hasznos szervizelési döntések meghozataláról.
    
-4. Értesítést kap a javítás befejezéséről. Hibaüzenet jelenik meg, ha vannak olyan erőforrások, amelyek nincsenek kiállítva, és az erőforrások a kiválasztott módban az erőforráslista nézetben.  
+4. Értesítést fog kapni a szervizelés befejezéséről. A rendszer hibaüzenetet jelenít meg, ha vannak olyan erőforrások, amelyek nem szervizeltek, és az erőforrások a kijelölt módban vannak az erőforrás-lista nézetben.  
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Advisor-ajánlásokról:
-* [Bevezetés az Azure Advisorba](advisor-overview.md)
+Az Advisor ajánlásaival kapcsolatos további információkért lásd:
+* [Bevezetés a Azure Advisorba](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Tanácsadói költségajánlások](advisor-cost-recommendations.md)
-* [Tanácsadó teljesítményre vonatkozó ajánlásai](advisor-performance-recommendations.md)
-* [Tanácsadó biztonsági ajánlásai](advisor-security-recommendations.md)
-* [Az Advisor Operational Excellence ajánlásai](advisor-operational-excellence-recommendations.md)
-* [Tanácsadó PIHENÉS API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
+* [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
+* [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
+* [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)

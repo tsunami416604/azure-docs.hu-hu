@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN-átjáró: S2S VPN-kapcsolatok létrehozása és kezelése: Oktatóanyag'
+title: 'Azure VPN Gateway: S2S VPN-kapcsolatok létrehozása és kezelése: oktatóanyag'
 description: Oktatóanyag – S2S VPN-kapcsolatok létrehozása és felügyelete az Azure PowerShell-modullal
 services: vpn-gateway
 author: yushwang
@@ -9,13 +9,13 @@ ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
 ms.openlocfilehash: 18c6188e1b13c35a4c28a5f9e7fc863f00798eed
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80616399"
 ---
-# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Oktatóanyag: S2S VPN-kapcsolatok létrehozása és kezelése a PowerShell használatával
+# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Oktatóanyag: S2S VPN-kapcsolatok létrehozása és kezelése a PowerShell-lel
 
 Az Azure S2S VPN-kapcsolatok biztonságos, helyszínek közötti kapcsolatot biztosítanak az ügyfél helyszínei és az Azure között. Ez az oktatóanyag bemutatja az IPsec S2S VPN-kapcsolatok életciklusát, például az S2S VPN-kapcsolatok létrehozását és felügyeletét. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -29,21 +29,21 @@ Az alábbi diagram az oktatóanyagban használt topológiát mutatja:
 
 ![Helyek közötti VPN-kapcsolat ábrája](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Az Azure Cloud Shell és az Azure PowerShell együttműködése
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell és Azure PowerShell használata
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="requirements"></a>Követelmények
 
-Az első oktatóanyag befejezése: [Hozzon létre VPN-átjárót az Azure PowerShelllel](vpn-gateway-tutorial-create-gateway-powershell.md) a következő erőforrások létrehozásához:
+Fejezze be az első oktatóanyagot: [hozzon létre egy VPN-átjárót Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) a következő erőforrások létrehozásához:
 
-1. Erőforráscsoport (TestRG1), virtuális hálózat (VNet1) és a GatewaySubnet
+1. Erőforráscsoport (TestRG1), virtuális hálózat (VNet1) és GatewaySubnet
 2. VPN-átjáró (VNet1GW)
 
-A virtuális hálózat paramétereinek értékei alább vannak felsorolva. Vegye figyelembe a helyi hálózati átjáró további értékeit, amelyek a helyszíni hálózatot képviselik. Módosítsa az alábbi értékeket a környezet és a hálózat beállítása alapján, majd másolja és illessze be az oktatóanyag változóinak beállításához. Ha a Cloud Shell munkamenet időtúllépés, vagy egy másik PowerShell-ablakot kell használnia, másolja és illessze be a változókat az új munkamenetbe, és folytassa az oktatóanyag.
+A virtuális hálózat paramétereinek értékei alább vannak felsorolva. Jegyezze fel a helyi hálózati átjáró további értékeit, amelyek a helyszíni hálózatot képviselik. Módosítsa az alábbi értékeket a környezet és a hálózat beállítása alapján, majd másolja és illessze be az oktatóanyag változóinak megadásához. Ha a Cloud Shell munkamenete időtúllépést tapasztal, vagy egy másik PowerShell-ablakot kell használnia, másolja és illessze be a változókat az új munkamenetbe, és folytassa az oktatóanyagot.
 
 >[!NOTE]
-> Ha ezt használja a kapcsolat létesítéséhez, győződjön meg arról, hogy módosítsa az értékeket, hogy megfeleljenek a helyszíni hálózatnak. Ha csak oktatóanyagként futtatja ezeket a lépéseket, nem kell módosításokat végrehajtania, de a kapcsolat nem fog működni.
+> Ha ezt használja a kapcsolódáshoz, akkor ügyeljen arra, hogy módosítsa az értékeket a helyszíni hálózatnak megfelelően. Ha a lépéseket csak oktatóanyagként futtatja, nem kell módosítania a módosításokat, de a kapcsolódás nem fog működni.
 >
 
 ```azurepowershell-interactive
@@ -91,7 +91,7 @@ New-AzLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
 
 ## <a name="create-a-s2s-vpn-connection"></a>S2S VPN-kapcsolat létrehozása
 
-Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között a [New-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection)segítségével. Vegye figyelembe, hogy helyek közötti VPN-kapcsolat esetében a „-ConnectionType” értéke: *IPsec*.
+Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között a [New-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection). Vegye figyelembe, hogy helyek közötti VPN-kapcsolat esetében a „-ConnectionType” értéke: *IPsec*.
 
 ```azurepowershell-interactive
 $vng1 = Get-AzVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -102,13 +102,13 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1
   -ConnectionType IPsec -SharedKey "Azure@!b2C3" -ConnectionProtocol IKEv2
 ```
 
-BGP használata esetén egészítse ki a nem kötelező „**-EnableBGP $True**” tulajdonsággal, amely engedélyezi a BGP-t a kapcsolaton. Ez alapértelmezés szerint le van tiltva. A "-ConnectionProtocol" paraméter nem kötelező, az IKEv2 az alapértelmezett beállítás. Az IKEv1 protokollokkal létesített kapcsolatot a **-ConnectionProtocol IKEv1 (Kapcsolatprotokoll IKEv1)** megadásával hozhatja létre.
+BGP használata esetén egészítse ki a nem kötelező „**-EnableBGP $True**” tulajdonsággal, amely engedélyezi a BGP-t a kapcsolaton. Ez alapértelmezés szerint le van tiltva. A "-ConnectionProtocol" paraméter nem kötelező a IKEv2 alapértelmezett értékkel. A IKEv1-protokollokkal létesített kapcsolatokat az **-ConnectionProtocol IKEv1**megadásával hozhatja létre.
 
 ## <a name="update-the-vpn-connection-pre-shared-key-bgp-and-ipsecike-policy"></a>A VPN kapcsolat előmegosztott kulcs, BGP és IPsec/IKE-szabályzat tulajdonságainak frissítése
 
 ### <a name="view-and-update-your-pre-shared-key"></a>Az előmegosztott kulcs megtekintése és frissítése
 
-Az Azure S2S VPN-kapcsolat egy előmegosztott kulcsot (titkot) használ a helyszíni VPN-eszköz és az Azure VPN-átjáró közötti hitelesítéshez. Megtekintheti és frissítheti a [Get-AzVirtualNetworkConnectionConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionsharedkey) és a [Set-AzVirtualNetworkNetworkConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnectionsharedkey)kapcsolat előmegosztott kulcsát.
+Az Azure S2S VPN-kapcsolat egy előmegosztott kulcsot (titkot) használ a helyszíni VPN-eszköz és az Azure VPN-átjáró közötti hitelesítéshez. A [Get-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionsharedkey) és a [set-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnectionsharedkey)használatával megtekintheti és frissítheti a kapcsolatok előmegosztott kulcsát.
 
 > [!IMPORTANT]
 > Az előmegosztott kulcs egy **nyomtatható ASCII-karaktereket** tartalmazó, 128 karakternél nem hosszabb karakterlánc.
@@ -120,7 +120,7 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1
 ```
 
-A kimenet "**\@Azure !b2C3**" lesz a fenti példát követve. Az alábbi paranccsal az előmegosztott kulcs értékét "**Azure\@!_b2=C3**" értékre módosíthatja:
+A kimenet "**\@Azure! b2C3**" lesz a fenti példát követve. Az alábbi parancs használatával módosíthatja az előmegosztott kulcs értékét az "**Azure\@! _b2 = C3**" értékre:
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkGatewayConnectionSharedKey `
@@ -136,9 +136,9 @@ Az Azure VPN-átjárók támogatják a BGP dinamikus útválasztási protokollt.
 * Helyszíni helyi hálózati átjáró ASN-száma
 * Helyszíni helyi hálózati átjáró BGP-társának IP-címe
 
-Ha még nem konfigurálta a BGP-tulajdonságokat, a következő parancsok hozzáadják ezeket a tulajdonságokat a VPN-átjáróhoz és a helyi hálózati átjáróhoz: [Set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) és [Set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
+Ha nem konfigurálta a BGP-tulajdonságokat, a következő parancsokkal adja hozzá ezeket a tulajdonságokat a VPN-átjáróhoz és a helyi hálózati átjáróhoz: [set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) és [set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
 
-A BGP-tulajdonságok konfigurálásához használja az alábbi példát:
+A BGP-tulajdonságok konfigurálásához használja a következő példát:
 
 ```azurepowershell-interactive
 $vng1 = Get-AzVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -149,7 +149,7 @@ Set-AzLocalNetworkGateway -LocalNetworkGateway $lng1 `
   -Asn $LNGASN1 -BgpPeeringAddress $BGPPeerIP1
 ```
 
-BGP engedélyezése a [Set-AzVirtualNetworkConnection segítségével.](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnection)
+Engedélyezze a BGP [-t a set-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnection).
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection `
@@ -184,7 +184,7 @@ Az algoritmusok teljes listájáért és az utasításokért olvassa el [az S2S 
 
 ## <a name="add-another-s2s-vpn-connection"></a>Másik S2S VPN-kapcsolat hozzáadása
 
-Adjon hozzá egy további S2S VPN-kapcsolatot ugyanahhoz a VPN-átjáróhoz, hozzon létre egy másik helyi hálózati átjárót, és hozzon létre egy új kapcsolatot az új helyi hálózati átjáró és a VPN-átjáró között. Használja az alábbi példákat, győződjön meg arról, hogy módosítsa a változókat, hogy azok tükrözzék a saját hálózati konfigurációját.
+Adjon hozzá egy további S2S VPN-kapcsolatot ugyanahhoz a VPN-átjáróhoz, hozzon létre egy másik helyi hálózati átjárót, és hozzon létre egy új kapcsolatot az új helyi hálózati átjáró és a VPN-átjáró között. Használja az alábbi példákat, és ügyeljen arra, hogy módosítsa a változókat a saját hálózati konfigurációjának megfelelően.
 
 ```azurepowershell-interactive
 # On-premises network - LNGIP2 is the VPN device public IP address
@@ -212,7 +212,7 @@ Most már két S2S-kapcsolattal rendelkezik az Azure VPN-átjáróhoz.
 
 ## <a name="delete-a-s2s-vpn-connection"></a>S2S VPN-kapcsolat törlése
 
-S2S VPN-kapcsolat törlése [az Remove-AzVirtualNetworkGatewayConnection segítségével.](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkgatewayconnection)
+Törölje a S2S VPN-kapcsolatát a [Remove-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkgatewayconnection).
 
 ```azurepowershell-interactive
 Remove-AzVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1
@@ -226,7 +226,7 @@ Remove-AzVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ez a konfiguráció egy prototípus, teszt vagy koncepciópróba-telepítés része, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolíthatja az erőforráscsoportot, a VPN-átjárót és az összes kapcsolódó erőforrást.
+Ha ez a konfiguráció egy prototípus-, tesztelési vagy próba-koncepciós telepítés része, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot, a VPN-átjárót és az összes kapcsolódó erőforrást.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $RG1
@@ -245,5 +245,5 @@ Ebben az oktatóanyagban az S2S VPN-kapcsolatok létrehozásának és kezelésé
 Folytassa a következő oktatóanyaggal, amelyben a helyek közötti (S2S), a virtuális hálózatok közötti (VNet-to-VNet) és a pont–hely (P2S) kapcsolatokkal ismerkedhet meg.
 
 > [!div class="nextstepaction"]
-> * [Virtuálishálózat és virtuális hálózat között kapcsolatok létrehozása](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [VNet-VNet kapcsolatok létrehozása](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Pont–hely kapcsolatok létrehozása](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

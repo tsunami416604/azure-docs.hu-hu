@@ -9,17 +9,17 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 3b1ecc55f184dd2f9bfc5a6eb8410a664c0d282c
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80573192"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Metrikariasztások (klasszikus) |Előfizetésenként 100 aktív riasztási szabály. | Hívja a támogatást. |
-| Metrikákhoz kapcsolódó riasztások |Előfizetésenként 2000 aktív riasztási szabály az Azure nyilvános, az Azure China 21Vianet és az Azure Government felhőiben. | Hívja a támogatást. |
-| Tevékenységnapló-riasztások | Előfizetésenként 100 aktív riasztási szabály. | Ugyanaz, mint az alapértelmezett. |
-| Naplóriasztások | Előfizetésenként 512 aktív riasztási szabály. 200 aktív riasztási szabály erőforrásonként. | Hívja a támogatást. |
-| Műveletcsoportok |Előfizetésenként 2000 műveletcsoport. | Hívja a támogatást. |
-| Automatikus méretezési beállítások |100 régiónként előfizetésenként. | Ugyanaz, mint az alapértelmezett. |
+| Metrikus riasztások (klasszikus) |100 aktív riasztási szabályok/előfizetés. | Hívja a támogatási szolgálatot. |
+| Metrikákhoz kapcsolódó riasztások |2 000 aktív riasztási szabályok/előfizetés az Azure Public, az Azure China 21Vianet és a Azure Government felhőkben. | Hívja a támogatási szolgálatot. |
+| Tevékenységnapló-riasztások | 100 aktív riasztási szabályok/előfizetés. | Ugyanaz, mint az alapértelmezett. |
+| Naplóriasztások | 512 aktív riasztási szabályok/előfizetés. 200 aktív riasztási szabályok/erőforrás. | Hívja a támogatási szolgálatot. |
+| Műveletcsoportok |2 000 műveleti csoport/előfizetés. | Hívja a támogatási szolgálatot. |
+| Az autoskálázás beállításai |100/régió/előfizetés. | Ugyanaz, mint az alapértelmezett. |
