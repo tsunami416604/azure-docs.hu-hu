@@ -1,16 +1,16 @@
 ---
-title: Felügyelt erőforráscsoport & virtuális gépek átméretezése – Azure CLI
-description: Azure CLI mintaparancsfájlt biztosít, amely egy felügyelt erőforráscsoportot kap egy Azure felügyelt alkalmazásban. A parancsfájl újraméretezi a virtuális gépeket.
+title: Felügyelt erőforráscsoport beolvasása & virtuális gépek átméretezése – Azure CLI
+description: Olyan Azure CLI-parancsfájlt biztosít, amely felügyelt erőforráscsoportot kap egy Azure által felügyelt alkalmazásban. A szkript átméretezi a virtuális gépeket.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: 878a8d660495c932cc8fa44bb1ed06e79576729b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650057"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Felügyelt erőforráscsoport erőforrásainak lekérése és virtuális gépek átméretezése az Azure CLI használatával

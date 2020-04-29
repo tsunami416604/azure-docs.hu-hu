@@ -1,5 +1,5 @@
 ---
-title: Az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB Table API használata PHP-ből
+title: Az Azure Storage Table service vagy a PHP-Azure Cosmos DB Table API használata
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 author: sakash279
 ms.author: akshanka
@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76771054"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével
@@ -140,7 +140,7 @@ catch(ServiceException $e){
 További információt a táblák nevére vonatkozó korlátozásokról a [Table Service adatmodelljét ismertető][table-data-model] témakörben talál.
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy új **Entity** objektumot, és továbbítsa a **TableRestProxy->insertEntity** metódushoz. Vegye figyelembe, hogy entitás létrehozásakor meg kell adnia egy `PartitionKey` és egy `RowKey` értéket. Ezek az entitás egyedi azonosítói, és az értékeik sokkal gyorsabban lekérdezhetők, mint a többi entitástulajdonság. A rendszer a `PartitionKey` használatával automatikusan elosztja a tábla entitásait számos tárcsomópont között. Az ugyanazzal a `PartitionKey` tulajdonsággal rendelkező entitások tárolása ugyanazon a csomóponton történik. (Az ugyanazon a csomóponton tárolt több entitásműveletei jobban teljesítenek, mint a különböző csomópontokon tárolt entitásokon.) A `RowKey` egy partíción belüli entitás egyedi azonosítója.
+Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy új **Entity** objektumot, és továbbítsa a **TableRestProxy->insertEntity** metódushoz. Vegye figyelembe, hogy entitás létrehozásakor meg kell adnia egy `PartitionKey` és egy `RowKey` értéket. Ezek az entitás egyedi azonosítói, és az értékeik sokkal gyorsabban lekérdezhetők, mint a többi entitástulajdonság. A rendszer a `PartitionKey` használatával automatikusan elosztja a tábla entitásait számos tárcsomópont között. Az ugyanazzal a `PartitionKey` tulajdonsággal rendelkező entitások tárolása ugyanazon a csomóponton történik. (Az ugyanazon a csomóponton tárolt több entitás műveletei jobbak, mint a különböző csomópontokon tárolt entitások esetén.) A `RowKey` a partíción belüli entitás egyedi azonosítója.
 
 ```php
 require_once 'vendor/autoload.php';

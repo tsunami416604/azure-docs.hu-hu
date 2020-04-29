@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77365321"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a Hyper-V-ben
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális eszköz üzembe helyezése a hipervizorban
 > * A virtuális eszköz elindítása és az IP-cím lekérése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,44 +86,44 @@ Virtuális eszköz létrehozásához a következőkre lesz szüksége:
 A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipervizoron.
 
 1. A Windows Server-gazdagépen másolja a virtuális eszköz rendszerképét a helyi meghajtóra. Ezt a VHDX-rendszerképet az Azure Portalról töltötte le. Jegyezze fel a helyet, ahová a rendszerképet másolta, mivel az eljárás későbbi szakaszában szükség lesz rá.
-2. Nyissa meg a **Kiszolgálókezelőt**. A jobb felső sarokban kattintson az **Eszközök** gombra, és válassza a **Hyper-V Kezelő**lehetőséget.
+2. Nyissa meg a **Kiszolgálókezelőt**. A jobb felső sarokban kattintson az **eszközök** elemre, és válassza a **Hyper-V kezelője**elemet.
 
-    ![Hyper-V Manager kiválasztása a Kiszolgálókezelőben](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
+    ![A Hyper-V kezelőjének kiválasztása a Kiszolgálókezelőben](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
   
 3. A **Hyper-V kezelője** hatókörpanelén kattintson jobb gombbal a rendszercsomópontra, majd a megnyíló helyi menüben kattintson az **Új** > **Virtuális gép** elemre.
 
-   ![Új virtuális gép létrehozása a Hyper-V Kezelőben](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
+   ![Új virtuális gép létrehozása a Hyper-V kezelőjében](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Az Új virtuális gép varázsló **Előkészületek** lapján kattintson a **Tovább** gombra.
 5. A **Név és hely megadása** lapon adja meg a virtuális eszköz **nevét**. Kattintson a **Tovább** gombra.
 
-   ![Név és hely lap megadása](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
+   ![Név és hely megadása lap](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. A **Generáció beállítása** lapon válassza a **2. generáció** lehetőséget a .vhdx-eszköz rendszerképének típusaként, majd kattintson a **Tovább** gombra.    
 
-   ![Létrehozási lap megadása](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
+   ![Generáció oldalának meghatározása](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
 7. A **Memória hozzárendelése** lapon adjon meg egy legalább **8192 MB** méretű **indítási memóriát**, ne engedélyezze a dinamikus memóriát, majd kattintson a **Tovább** gombra.
 
-   ![Memórialap hozzárendelése](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
+   ![Memória kiosztása lap](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
 8. A **Hálózatkezelés beállítása** lapon adja meg az internetre csatlakoztatott virtuális kapcsolót, majd kattintson a **Tovább** gombra.
 
-   ![Hálózati lap konfigurálása](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
+   ![Hálózatkezelés beállítása lap](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
 9. A **Virtuális merevlemez csatlakoztatása** lapon válassza a **Meglévő virtuális merevlemez használata** lehetőséget, adja meg a virtuális eszköz rendszerképének helyét, majd kattintson a **Tovább** gombra.
 
-   ![Virtuális merevlemez-lap csatlakoztatása](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
+   ![Virtuális merevlemez összekapcsolásának lapja](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
 10. Tekintse át az **összefoglalást**, majd kattintson a **Befejezés** gombra a virtuális gép létrehozásához.
 
-    ![Az Új virtuális gép varázsló lapja](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
+    ![Az új virtuális gép varázsló oldalának befejezése](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
 11. A minimális követelmények teljesítéséhez 4 virtuális processzorra van szükség. A 4 virtuális processzor hozzáadásához válassza ki a gazdarendszert a **Hyper-V kezelő** ablakában. A jobb oldali panel **Virtuális gépek** listájában keresse meg az imént létrehozott virtuális gépet. Jelölje ki, kattintson a jobb gombbal a gép nevére, majd válassza a **Beállítások** elemet.
 
     ![A virtuális gép beállításai](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. A **Beállítások** lap bal oldali panelén kattintson a **Processzor** lehetőségre. A jobb oldali panelen állítsa a **virtuális processzorok számát** 4-re (vagy többre). Kattintson az **Alkalmaz** gombra.
 
-    ![Virtuális processzorok számának beállítása a Beállítások lapon](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
+    ![Virtuális processzorok számának beállítása a beállítások lapon](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
 13. Ahhoz, hogy megfeleljen a minimális követelményeknek, egy 2 TB méretű virtuális adatlemezt is hozzá kell adnia. A **Beállítások** lapon:
 
     1. A bal oldali panelen válassza az **SCSI-vezérlő** lehetőséget.
     2. A jobb oldali panelen válassza a **Merevlemez** lehetőséget, és kattintson a **Hozzáadás** gombra.
 
-    ![Merevlemez hozzáadása a Beállítások lapon](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
+    ![Merevlemez-meghajtó hozzáadása a beállítások lapon](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
 14. A **Merevlemez** lapon válassza a **Virtuális merevlemez** lehetőséget, és kattintson az **Új** gombra. Megnyílik az **Új virtuális merevlemez varázsló**.
 
     ![Új virtuális merevlemez varázsló](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
@@ -131,18 +131,18 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 16. A **Lemezformátum kiválasztása** lapon fogadja el az alapértelmezett **VHDX** formátumot. Kattintson a **Tovább** gombra.
 17. A **Lemeztípus kiválasztása** lapon állítsa a virtuális merevlemez típusát a **Dinamikusan bővülő** típusra (ajánlott). A **Rögzített méretű** lemez is működhet, de előfordulhat, hogy túl sokat kellene várnia. Azt javasoljuk, hogy ne alkalmazza a **Különbség** beállítást. Kattintson a **Tovább** gombra.
 
-    ![Lemeztípus kiválasztása lap](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
+    ![Lemez típusának kiválasztása lap](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
 18. A **Név és hely megadása** lapon adja meg az adatlemez **nevét** és **helyét** (ez utóbbit tallózva is megkeresheti). Kattintson a **Tovább** gombra.
 
     ![Név és hely megadása lap](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
 19. A **Lemez beállítása** lapon válassza az **Új üres virtuális merevlemez létrehozása** lehetőséget, és adjon meg legalább **2 TB** méretet.
     
-    Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető, A lemez zsugorításának megkísérlése az eszközön lévő összes helyi adat elvesztését eredményezi. Az adatlemez bővítése nem támogatott. Kattintson a **Tovább** gombra.
+    Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető, A lemez lekicsinyítésére tett kísérlet során a rendszer az eszközön lévő összes helyi adatvesztés elvesztését eredményezi. Az adatlemez kiterjesztése nem támogatott. Kattintson a **Tovább** gombra.
 
     ![Lemez konfigurálása lap](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Az **Összefoglalás** lapon tekintse át a virtuális adatlemez adatait, és ha elégedett, kattintson a **Befejezés** gombra a lemez létrehozásához. A varázsló bezáródik, és a rendszer hozzáadja a virtuális merevlemezt a géphez.
 
-    ![Az Új virtuális merevlemez varázsló lap befejezése](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
+    ![Az új virtuális merevlemez varázsló oldalának befejezése](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
 21. Lépjen vissza a **Beállítások** lapra. Az **OK** gombra kattintva zárja be a **Beállítások** lapot, és lépjen vissza a Hyper-V kezelőjének ablakára.
 
     ![Beállítások lap](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
@@ -156,9 +156,9 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
    ![Virtuális eszköz indítása](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. Amikor az eszköz már fut, jelölje ki, kattintson rá a jobb gombbal, és válassza a **Csatlakozás** lehetőséget.
 
-3. 10–15 percig is eltarthat, amíg az eszköz elkészül. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Nyomja `Ctrl + Alt + Delete` meg a virtuális eszközbe való bejelentkezéshez. Az alapértelmezett felhasználó az *EdgeUser*, az alapértelmezett jelszó pedig a *Password1*.
+3. 10–15 percig is eltarthat, amíg az eszköz elkészül. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Kattintson `Ctrl + Alt + Delete` a gombra a virtuális eszközre való bejelentkezéshez. Az alapértelmezett felhasználó az *EdgeUser*, az alapértelmezett jelszó pedig a *Password1*.
 
-   ![Bejelentkezés a virtuális eszközbe](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
+   ![Bejelentkezés a virtuális eszközre](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
    
 6. Az 5–7. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. DHCP-környezetben hagyja ki ezeket a lépéseket. Ha nem DHCP-környezetben indította az eszközt, erről egy üzenet tájékoztatja.
     
@@ -170,15 +170,15 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
     
 9. Miután a kezdeti beállítás befejeződött és az eszköz elindult, az eszköz szalagcímének szövege jelenik meg. Jegyezze fel a szalagcímen megjelenő IP- és URL-címet az eszköz kezeléséhez. Az IP-címmel csatlakozhat a virtuális készülék webes kezelőfelületéhez, ahol elvégezheti a helyi beállítást és az aktiválást.
 
-   ![Virtuális eszköz szalagcíme IP-címmel és kapcsolat URL-címével](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
+   ![Virtuális eszköz szalagcíme IP-címmel és a kapcsolatok URL-címével](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
-Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében. Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg a minimális konfigurációs [követelményeket: Ellenőrizze, hogy a gazdarendszer megfelel-e a virtuális eszközök minimális követelményeinek.](#check-the-host-system)
+Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében. Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg a minimálisan szükséges konfigurációs követelményeket a következő témakörben: [a gazdarendszer megfelel a virtuális eszközök minimális követelményeinek](#check-the-host-system).
 
-Ha a helyi webes felhasználói felület használatával történő kezdeti konfiguráció során bármilyen más hibával szembesül, olvassa el a következő munkafolyamatokat:
+Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi webes felhasználói felülettel, tekintse meg a következő munkafolyamatokat:
 
-- [Diagnosztikai tesztek futtatása a webes felhasználói felület telepítésének elhárításához.](data-box-gateway-troubleshoot.md#run-diagnostics)
-- [Naplócsomag létrehozása és naplófájlok megtekintése](data-box-gateway-troubleshoot.md#collect-support-package).
+- [Diagnosztikai tesztek futtatása a webes felhasználói felület beállításának hibakereséséhez](data-box-gateway-troubleshoot.md#run-diagnostics).
+- [Naplófájlok előállítása és a naplófájlok megtekintése](data-box-gateway-troubleshoot.md#collect-support-package).
 
 ## <a name="next-steps"></a>További lépések
 

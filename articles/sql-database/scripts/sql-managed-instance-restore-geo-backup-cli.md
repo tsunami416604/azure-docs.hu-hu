@@ -1,6 +1,6 @@
 ---
-title: CLI példa A geo-backup visszaállítása - Azure SQL Database
-description: Azure CLI példaparancsfájl az Azure SQL felügyelt példány adatbázisának helyreállításához georedundáns biztonsági mentésből.
+title: CLI-példa a Geo-Backup visszaállítása – Azure SQL Database
+description: Azure CLI – példa parancsfájl egy Azure SQL felügyelt példány-adatbázis egy geo-redundáns biztonsági másolatból történő visszaállításához.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
 ms.openlocfilehash: 1bd0322aee83fb980c60382a2ff3eaab1cd1313c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061749"
 ---
-# <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Felügyelt példány-adatbázis visszaállítása a CLI segítségével egy másik földrajzi régióba
+# <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Felügyelt példányok adatbázisának visszaállítása a CLI használatával egy másik földrajzi régióba
 
-Ez az Azure CLI-parancsfájl példa visszaállítja az Azure SQL felügyelt példány adatbázisegy távoli geo-régió (geo-visszaállítás).  
+Ez az Azure CLI parancsfájl-példa egy Azure SQL felügyelt példány-adatbázist állít vissza egy távoli földrajzi régióból (Geo-visszaállítás).  
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -28,7 +28,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Egy meglévő felügyelt példánypár, [lásd: Azure CLI használata Azure SQL Database felügyelt példány létrehozásához.](sql-database-create-configure-managed-instance-cli.md)
+A felügyelt példányok egy meglévő párja: az [Azure CLI használata Azure SQL Database felügyelt példány létrehozásához](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -52,13 +52,13 @@ echo "Restoring $($managedDatabase) to $($targetInstance)..."
 az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name $targetInstance --time "2018-05-20T05:34:22"
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
-| [az sql midb](/cli/azure/sql/midb) | Felügyelt példány adatbázisparancsai. |
+| [az SQL MidB](/cli/azure/sql/midb) | Felügyelt példány adatbázis-parancsai. |
 
 ## <a name="next-steps"></a>További lépések
 

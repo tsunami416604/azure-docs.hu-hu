@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Több-bérlős adatbázis tervezése – Nagy kapacitású (Citus) – Azure Database for PostgreSQL'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, népethet fel és kérdezheti le az elosztott táblákat az Azure Database for PostgreSQL Hyperscale (Citus) adatbázisában.
+title: 'Oktatóanyag: több-bérlős adatbázis tervezése – nagy kapacitású (Citus) – Azure Database for PostgreSQL'
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, tölthet fel és foglalhat le elosztott táblákat Azure Database for PostgreSQL nagy kapacitású (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -10,34 +10,34 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74978151"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: több-bérlős adatbázis tervezése az Azure Database for PostgreSQL – Hyperscale (Citus) használatával
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 
-Ebben az oktatóanyagban az Azure Database for PostgreSQL - Hyperscale (Citus) segítségével megtudhatja, hogyan:
+Ebben az oktatóanyagban a Azure Database for PostgreSQL-nagy kapacitású (Citus) használatával megismerheti a következőket:
 
 > [!div class="checklist"]
 > * Rugalmas skálázási (Citus) kiszolgálócsoport létrehozása
-> * Séma létrehozása a psql segédprogrammal
-> * Szilánktáblák csomópontok között
+> * Séma létrehozása a psql segédprogram használatával
+> * Több csomópont közötti szegmens táblák
 > * Mintaadatok betöltése
-> * Bérlői adatok lekérdezése
-> * Adatok megosztása a bérlők között
-> * Bérlőnkénti séma testreszabása
+> * Bérlői adatbázis lekérdezése
+> * Az adatmegosztás a bérlők között
+> * A séma testreszabása bérlő szerint
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="use-psql-utility-to-create-a-schema"></a>Séma létrehozása a psql segédprogrammal
+## <a name="use-psql-utility-to-create-a-schema"></a>Séma létrehozása a psql segédprogram használatával
 
-Miután csatlakozott az Azure Database for PostgreSQL - Hyperscale (Citus) psql használatával, elvégezhet néhány alapvető feladatot. Ez az oktatóanyag bemutatja egy olyan webalkalmazás létrehozását, amely lehetővé teszi a hirdetők számára kampányaik nyomon követését.
+Miután csatlakozott a Azure Database for PostgreSQL-nagy kapacitású (Citus) a psql használatával, elvégezheti néhány alapvető feladatot. Ez az oktatóanyag végigvezeti egy olyan webalkalmazás létrehozásának lépésein, amely lehetővé teszi a hirdetők számára a kampányok nyomon követését.
 
-Az alkalmazást több vállalat is használhatja, ezért hozzunk létre egy táblázatot a vállalatok és egy másik kampányaik tárolására. A psql konzolon futtassa a következő parancsokat:
+Több vállalat is használhatja az alkalmazást, ezért hozzunk létre egy táblázatot, amely a vállalatokat és egy másikat tart fenn a kampányok számára. Futtassa a következő parancsokat a psql-konzolon:
 
 ```sql
 CREATE TABLE companies (
@@ -63,7 +63,7 @@ CREATE TABLE campaigns (
 );
 ```
 
-Minden kampány fizet a hirdetések megjelenítéséért. Adjon hozzá egy táblázatot a hirdetésekhez is, a következő kódot futtatva a psql-ben a fenti kód után:
+Minden kampány a hirdetések futtatására fog fizetni. Vegyen fel egy táblázatot a hirdetéseket is, ha a fenti kód után futtatja a következő kódot a psql-ben:
 
 ```sql
 CREATE TABLE ads (
@@ -84,7 +84,7 @@ CREATE TABLE ads (
 );
 ```
 
-Végül nyomon követjük az egyes hirdetésekkel kapcsolatos kattintásokra és megjelenítésekre vonatkozó statisztikákat:
+Végezetül nyomon követjük az egyes ad-kattintások és benyomások statisztikáit:
 
 ```sql
 CREATE TABLE clicks (
@@ -118,19 +118,19 @@ CREATE TABLE impressions (
 );
 ```
 
-Az újonnan létrehozott táblákat a psql-ben lévő táblák listájában a következő futással láthatja:
+Az újonnan létrehozott táblákat a psql mostantól a következő parancs futtatásával tekintheti meg:
 
 ```postgres
 \dt
 ```
 
-A több-bérlős alkalmazások csak bérlőnként kényszeríthetik ki az egyediséget, ezért minden elsődleges és idegen kulcs tartalmazza a vállalati azonosítót.
+A több-bérlős alkalmazások csak bérlők számára kényszerítik az egyediséget, ezért az elsődleges és a külső kulcsok esetében is a vállalati azonosító is érvényes.
 
-## <a name="shard-tables-across-nodes"></a>Szilánktáblák csomópontok között
+## <a name="shard-tables-across-nodes"></a>Több csomópont közötti szegmens táblák
 
-A nagy kapacitású központi telepítés tárolja a táblasorokat a különböző csomópontokon a felhasználó által kijelölt oszlop értéke alapján. Ez a "terjesztési oszlop" azt jelzi, hogy melyik bérlő melyik sor a tulajdonosa.
+A nagy kapacitású központi telepítése a különböző csomópontokon lévő táblázat sorait egy felhasználó által kijelölt oszlop értéke alapján tárolja. Ez a "terjesztési oszlop" jelzi, hogy melyik bérlő tulajdonosa a soroknak.
 
-Állítsuk be a terjesztési oszlopot vállalati\_azonosítónak, a bérlőazonosítónak. A psql-ben futtassa a következő függvényeket:
+Állítsa be a terjesztési oszlopot vállalati\_azonosítóként, a bérlő azonosítójának megadásával. A psql-ben futtassa a következő függvényeket:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -142,7 +142,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 ## <a name="ingest-sample-data"></a>Mintaadatok betöltése
 
-A psql-en kívül most, a normál parancssorban töltse le a mintaadatkészleteket:
+A psql kívül most a normál parancssorban töltse le a minta adatkészleteket:
 
 ```bash
 for dataset in companies campaigns ads clicks impressions geo_ips; do
@@ -150,7 +150,7 @@ for dataset in companies campaigns ads clicks impressions geo_ips; do
 done
 ```
 
-Vissza belül psql, tömeges betölteni az adatokat. Ügyeljen arra, hogy a psql-t ugyanabban a könyvtárban futtassa, ahol az adatfájlokat letöltötte.
+A psql-ben újra betölti az adatmennyiséget. Ügyeljen arra, hogy a psql ugyanabban a könyvtárban fusson, ahol letöltötte az adatfájlokat.
 
 ```sql
 SET CLIENT_ENCODING TO 'utf8';
@@ -162,11 +162,11 @@ SET CLIENT_ENCODING TO 'utf8';
 \copy impressions from 'impressions.csv' with csv
 ```
 
-Ezek az adatok mostantól feldolgozócsomópontok között lesznek elosztva.
+Ezek az adatfeldolgozó csomópontok között lesznek elosztva.
 
-## <a name="query-tenant-data"></a>Bérlői adatok lekérdezése
+## <a name="query-tenant-data"></a>Bérlői adatbázis lekérdezése
 
-Amikor az alkalmazás egyetlen bérlő adatait kéri, az adatbázis egyetlen munkavégző csomóponton futtathatja a lekérdezést. Egybérlős lekérdezések egyetlen bérlőazonosító szerint szűr. Például a következő `company_id = 5` lekérdezési szűrők a hirdetésekhez és a megjelenítésekhez. Próbálja meg futtatni a psql-ben, hogy lássa az eredményeket.
+Ha az alkalmazás egyetlen bérlő számára kér le adatkérést, akkor az adatbázis egyetlen feldolgozó csomóponton hajthatja végre a lekérdezést. Az egybérlős lekérdezések egyetlen bérlői azonosító alapján szűrhetők. A következő lekérdezési szűrők `company_id = 5` például a hirdetéseket és a benyomásokat jelenítik meg. Próbálja meg futtatni a psql az eredmények megtekintéséhez.
 
 ```sql
 SELECT a.campaign_id,
@@ -183,11 +183,11 @@ GROUP BY a.campaign_id, a.id
 ORDER BY a.campaign_id, n_impressions desc;
 ```
 
-## <a name="share-data-between-tenants"></a>Adatok megosztása a bérlők között
+## <a name="share-data-between-tenants"></a>Az adatmegosztás a bérlők között
 
-Eddig az összes táblát a `company_id`, de néhány adat természetesen nem "tartozik" bármely bérlő, különösen, és megosztható. Előfordulhat például, hogy a példaként szereplő hirdetési platform összes vállalata az IP-címek alapján szeretne földrajzi információkat kapni a közönségszámára.
+Addig is `company_id`, amíg az összes táblát el nem terjesztette, de bizonyos adatok természetesen nem "tartoznak" egyetlen bérlőhöz sem, és megoszthatók. Előfordulhat például, hogy az ad platform összes vállalata az IP-címek alapján földrajzi adatokat szeretne kapni a célközönségnek.
 
-Hozzon létre egy táblázatot a megosztott földrajzi adatok tárolására. Futtassa a következő parancsokat a psql-ben:
+Hozzon létre egy táblázatot a közös földrajzi információk tárolásához. Futtassa a következő parancsokat a psql:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -199,21 +199,21 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Ezután `geo_ips` készítsen egy "referenciatáblát", amely a tábla másolatát tárolja minden munkavégző csomóponton.
+Ezután hozzon `geo_ips` egy "hivatkozási táblázatot" a tábla egy példányának tárolásához minden munkavégző csomóponton.
 
 ```sql
 SELECT create_reference_table('geo_ips');
 ```
 
-Töltse be a példaadatokkal. Ne felejtse el futtatni ezt a parancsot a psql-ben a könyvtáron belülről, ahol az adatkészletet letöltötte.
+Töltse be például az adathalmazt. Ne felejtse el futtatni ezt a parancsot a psql-ben abban a könyvtárban, ahol letöltötte az adatkészletet.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-A kattintási táblázat\_geo ips-szel való összekapcsolódása minden csomóponton hatékony.
-Itt van egy illesztés, hogy megtalálja a helyét mindenkinek, aki rákattintott a hirdetésre
-290. Próbálja meg futtatni a lekérdezést a psql.Try running the query in psql.
+A Clicks táblázat a Geo\_IP-címekkel való csatlakoztatása minden csomóponton hatékonyan működik.
+Itt találja az ad-ra rákattintott mindenki helyét
+290. Próbálja meg futtatni a lekérdezést a psql-ben.
 
 ```sql
 SELECT c.id, clicked_at, latlon
@@ -223,14 +223,14 @@ SELECT c.id, clicked_at, latlon
    AND c.ad_id = 290;
 ```
 
-## <a name="customize-the-schema-per-tenant"></a>Bérlőnkénti séma testreszabása
+## <a name="customize-the-schema-per-tenant"></a>A séma testreszabása bérlő szerint
 
-Előfordulhat, hogy minden bérlőnek olyan speciális információkat kell tárolnia, amelyekre másoknem van szükségük. Azonban minden bérlő közös infrastruktúrával rendelkezik egy azonos adatbázissémával. Hová mehetnek az extra adatok?
+Előfordulhat, hogy minden bérlőnek a mások számára nem szükséges speciális adatokat kell tárolnia. Azonban minden bérlő közös infrastruktúrát oszt meg azonos adatbázis-sémával. Hol lehet a további adatvesztés?
 
-Az egyik trükk az, hogy egy nyílt végű oszlop típus, mint a PostgreSQL JSONB.  A sémánkban van egy `clicks` JSONB mező a . `user_data`
-Egy vállalat (például az ötös vállalat) az oszlop segítségével nyomon követheti, hogy a felhasználó mobileszközön van-e.
+Az egyik trükk az, hogy egy nyílt végű típusú oszlopot, például a PostgreSQL JSONB használja.  A séma tartalmaz egy JSONB mezőt a `clicks` híváshoz `user_data`.
+Egy vállalat (mondjuk az öt vállalat) az oszlopot használva nyomon követheti, hogy a felhasználó mobil eszközön van-e.
 
-Az alábbiakban lekérdezősjáték: mobilvagy hagyományos látogatók.
+A következő lekérdezésből megtudhatja, hogy ki és Mikor szeretne többet: mobil vagy hagyományos látogató.
 
 ```sql
 SELECT
@@ -242,7 +242,7 @@ GROUP BY user_data->>'is_mobile'
 ORDER BY count DESC;
 ```
 
-Tudjuk optimalizálni ezt a lekérdezést egy cég létrehozásával [részleges index](https://www.postgresql.org/docs/current/static/indexes-partial.html).
+Ezt a lekérdezést egyetlen vállalat számára is optimalizálhatja [részleges index](https://www.postgresql.org/docs/current/static/indexes-partial.html)létrehozásával.
 
 ```sql
 CREATE INDEX click_user_data_is_mobile
@@ -250,7 +250,7 @@ ON clicks ((user_data->>'is_mobile'))
 WHERE company_id = 5;
 ```
 
-Általánosabban, létrehozhatunk egy [GIN indexet](https://www.postgresql.org/docs/current/static/gin-intro.html) az oszlopon belüli minden kulcshoz és értékhez.
+Általánosabban létrehozhatunk egy gin- [indexeket](https://www.postgresql.org/docs/current/static/gin-intro.html) az oszlopban található összes kulcson és értéken.
 
 ```sql
 CREATE INDEX click_user_data
@@ -267,12 +267,12 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben azure-erőforrásokat hozott létre egy kiszolgálócsoportban. Ha a jövőben nem várható, hogy szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálócsoportot. Nyomja *meg* a Törlés gombot a *kiszolgálócsoport Áttekintés* lapján. Amikor a rendszer előugró lapon kéri, erősítse meg a kiszolgálócsoport nevét, és kattintson a végső *Törlés* gombra.
+Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan építhetki ki egy nagykapacitású (Citus) kiszolgálócsoportot. A psql-rel kapcsolódott hozzá, létrehozott egy sémát és elosztott adatokat. Megtanulta az adatok lekérdezését a bérlőkön belül és azok között, és a bérlőnkénti séma testreszabását.
+Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogy a bérlők között és között is lekérdezze az adatlekérdezést, valamint a séma személyre szabását a bérlőn belül.
 
-Ezután ismerje meg a hiperskála fogalmait.
+Ezután megismerheti a nagy kapacitású fogalmait.
 > [!div class="nextstepaction"]
-> [Nagy kapacitású csomóponttípusok](https://aka.ms/hyperscale-concepts)
+> [Nagy kapacitású csomópont-típusok](https://aka.ms/hyperscale-concepts)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a ContractSafe Saml2 Egyszeri bejelentkezéssel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a ContractSafe Saml2 egyszeri bejelentkezés között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ContractSafe egy saml2 SSO-val | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a ContractSafe egy saml2 SSO között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,144 +16,144 @@ ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77185619"
 ---
-# <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezésének (SSO) integrálása a ContractSafe Saml2 egyszeri bejelentkezéssel
+# <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a ContractSafe egy saml2 SSO-val
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a ContractSafe Saml2 SSO-t az Azure Active Directoryval (Azure AD). Ha integrálja a ContractSafe Saml2 SSO-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ContractSafe egy saml2 SSO-t Azure Active Directory (Azure AD-val). Ha integrálja az ContractSafe egy saml2 SSO-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja, hogy ki férhet hozzá a ContractSafe Saml2 SSO-hoz az Azure AD-ben.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan jelentkezzen be a ContractSafe Saml2 SSO az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen: az Azure Portalon.
+* Annak szabályozása, hogy ki férhet hozzá a ContractSafe egy saml2 SSO-hoz az Azure AD-ben.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a ContractSafe egy saml2 SSO-ba az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni a szoftver szolgáltatásként (SaaS) alkalmazás integráció az Azure [AD,Lásd: Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A kezdéshez a következők szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* ContractSafe Saml2 SSO-előfizetés, amelyen az SSO engedélyezve van.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Egy ContractSafe egy saml2 egyszeri bejelentkezéses előfizetés engedélyezve.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben. A ContractSafe Saml2 Egyszeri szolgáltató támogatja az **IDP**által kezdeményezett egyszeri szolgáltatót.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A ContractSafe egy saml2 SSO támogatja a **identitásszolgáltató**által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="add-contractsafe-saml2-sso-from-the-gallery"></a>ContractSafe Saml2 SSO hozzáadása a galériából
+## <a name="add-contractsafe-saml2-sso-from-the-gallery"></a>ContractSafe egy saml2 SSO hozzáadása a katalógusból
 
-A ContractSafe Saml2 SSO azure AD-be való integrációjának konfigurálásához hozzá kell adnia a ContractSafe Saml2 SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A ContractSafe egy saml2 SSO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a ContractSafe egy saml2 SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a Minden **alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **katalógus hozzáadásszakaszában** írja be a **ContractSafe Saml2 SSO** kifejezést a keresőmezőbe.
-1. Válassza a **ContractSafe Saml2 SSO** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **ContractSafe egy saml2 SSO** kifejezést a keresőmezőbe.
+1. Válassza az **ContractSafe egy SAML2 SSO** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-sso-for-contractsafe-saml2-sso"></a>Az Azure AD-sSO konfigurálása és tesztelése a ContractSafe Saml2 SSO-hoz
+## <a name="configure-and-test-azure-ad-sso-for-contractsafe-saml2-sso"></a>Azure AD SSO konfigurálása és tesztelése ContractSafe egy saml2 SSO-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a ContractSafe Saml2 SSO-val egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a contractsafe Saml2 sso kapcsolódó felhasználója között.
+Konfigurálja és tesztelje az Azure AD SSO-t a ContractSafe egy saml2 SSO-val egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a ContractSafe egy saml2 SSO-ban.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a ContractSafe Saml2 SSO-val hajtsa végre a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és a ContractSafe egy saml2 SSO-val való teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. [Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso) hogy a felhasználók használhassák ezt a funkciót.
-   * [Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD SSO teszteléséhez a **B.Simon-fiók** használatával.
-   * [Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user) hogy **b.Simon** azure AD sso használatát.
+1. [Konfigurálja az Azure ad SSO](#configure-azure-ad-sso) -t, hogy a felhasználók használhatják ezt a funkciót.
+   * [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad SSO teszteléséhez a **B. Simon** -fiók használatával.
+   * [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy **B. Simon** engedélyezze az Azure ad SSO használatát.
 
-1. [Konfigurálja a ContractSafe Saml2 SSO-t](#configure-contractsafe-saml2-sso) az sso-beállítások alkalmazásoldali konfigurálásához.
-   * [Hozzon létre egy ContractSafe Saml2 SSO teszt felhasználó,](#create-a-contractsafe-saml2-sso-test-user) hogy egy megfelelője **B.Simon** a ContractSafe Saml2 SSO, amely kapcsolódik a felhasználó Azure AD-ábrázolása.
-2. [Tesztelje az SSO-t,](#test-sso) hogy ellenőrizze, működik-e a konfiguráció.
+1. [Konfigurálja a ContractSafe egy SAML2 SSO](#configure-contractsafe-saml2-sso) -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+   * [Hozzon létre egy ContractSafe-egy SAML2 SSO-tesztelési felhasználót](#create-a-contractsafe-saml2-sso-test-user) , hogy az a felhasználó Azure ad-képviseletéhez kapcsolódó **B. Simon** ContractSafe-egy saml2.
+2. Ellenőrizze az [SSO](#test-sso) -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az Azure AD SSO engedélyezéséhez kövesse az alábbi lépéseket az Azure Portalon:
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **ContractSafe Saml2 egyszeri** bejelentkezés alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások egy saml-lel** lapon válassza az **egyszerű SAML-konfiguráció** szerkesztési (toll) ikonját a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **ContractSafe egy saml2 SSO** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfiguráció** szerkesztés (toll) ikonját a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon adja meg a következő értékeket a megfelelő mezőkben:
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő értékeket a megfelelő mezőkben:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő formátumban:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő formátum használatával:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő formátumban:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő formátum használatával:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval és a válasz URL-címével. Lépjen kapcsolatba a [ContractSafe Saml2 SSO ügyfél támogatási csapatával,](mailto:support@contractsafe.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható formátumokat is megjelenítheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot a [ContractSafe egy SAML2 SSO-ügyfél támogatási csapatával](mailto:support@contractsafe.com) az értékek lekéréséhez. A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
 
-1. A ContractSafe Saml2 Egyszeri bejelentkezés egy adott formátumban várja az SAML-állításokat, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML tokenattribútum-konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A ContractSafe egy saml2 SSO adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![Gyakori alapértelmezett attribútumok](common/default-attributes.png)
 
-1. Az alapértelmezett attribútumok mellett a ContractSafe Saml2 SSO alkalmazás azt várja, hogy még néhány attribútum ot visszaadjon az SAML-válaszban. Ezek az attribútumok előre ki vannak töltve, de áttekintheti őket az igényeinek megfelelően. Az alábbi lista a további attribútumokat tartalmazza.
+1. Az alapértelmezett attribútumok mellett a ContractSafe egy saml2 SSO-alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. Ezek az attribútumok előre ki vannak töltve, de a követelmények szerint áttekinthetők. Az alábbi listában a további attribútumok láthatók.
 
-    | Név | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |
-    | e-mailnév | user.userprincipalname |
-    | e-mail | user.onpremisesuserprincipalname |
+    | EmailName | User. userPrincipalName |
+    | e-mail | User. onpremisesuserprincipalname |
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszban** keresse meg az **összevonási metaadat-XML című területet.** A Tanúsítvány letöltéséhez válassza a **Letöltés** lehetőséget, majd mentse a számítógépre.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját**. Válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez, majd mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. A **ContractSafe Saml2 SSO beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **ContractSafe egy saml2-SSO beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-## <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+## <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy **B.Simon**nevű tesztfelhasználót hoz létre az Azure Portalon.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal **B. Simon**néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget. Válassza a **Felhasználók**lehetőséget, majd a **Minden felhasználó lehetőséget.**
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írjon be `username@companydomain.extension` egy e-mail címet a formátumban. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. A **Felhasználónév** mezőben adja meg az e-mail-címet a `username@companydomain.extension` formátumban. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
-## <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+## <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi a **B.Simon** számára az Azure SSO használatát a ContractSafe Saml2 SSO-hoz való hozzáférés biztosításával.
+Ebben a szakaszban a **B. Simon** számára engedélyezi az Azure SSO használatát azáltal, hogy hozzáférést biztosít a CONTRACTSAFE egy saml2 SSO-hoz.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **ContractSafe Saml2 SSO**lehetőséget.
-1. Az alkalmazás áttekintése lapon keresse meg a **Kezelés szakaszt,** majd válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **ContractSafe egy saml2 egyszeri bejelentkezés**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, majd válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** **párbeszédpanelen** a Felhasználók és csoportok lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-   ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+   ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a **Felhasználók** listából. Ezután válassza a **Kijelölés** gombot a képernyő alján.
-1. Ha az SAML-feltételben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából. Ezután válassza a **Kijelölés** gombot a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a **felhasználók** listából. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-contractsafe-saml2-sso"></a>A ContractSafe Saml2 sso konfigurálása
+## <a name="configure-contractsafe-saml2-sso"></a>ContractSafe egy saml2 SSO konfigurálása
 
-Az SSO konfigurálásához a **ContractSafe Saml2 SSO** oldalon el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [ContractSafe Saml2 SSO támogatási csapatának.](mailto:support@contractsafe.com) A csapat felelős az SAML SSO-kapcsolat mindkét oldalon megfelelő beállításáért.
+Ha az SSO-t a **ContractSafe egy SAML2 SSO** oldalon szeretné konfigurálni, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [ContractSafe egy saml2 SSO támogatási csapatának](mailto:support@contractsafe.com). A csapat feladata az SAML SSO-kapcsolatok megfelelő beállítása mindkét oldalon.
 
-## <a name="create-a-contractsafe-saml2-sso-test-user"></a>ContractSafe Saml2 SSO-tesztfelhasználó létrehozása
+## <a name="create-a-contractsafe-saml2-sso-test-user"></a>ContractSafe-egy saml2 SSO-teszt felhasználó létrehozása
 
-Hozzon létre egy B.Simon nevű felhasználót a ContractSafe Saml2 SSO-ban. Együttműködve a [ContractSafe Saml2 SSO támogatási csapatával](mailto:support@contractsafe.com) a felhasználók hozzáadása a ContractSafe Saml2 SSO platformon. A felhasználókat az SSO használata előtt létre kell hozni és aktiválni kell.
+Hozzon létre egy B. Simon nevű felhasználót a ContractSafe egy saml2 SSO-ban. A [ContractSafe egy SAML2 SSO támogatási csapatával](mailto:support@contractsafe.com) a felhasználókat a CONTRACTSAFE egy saml2 SSO platformon veheti fel. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-## <a name="test-sso"></a>SSO tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Tesztelje az Azure AD SSO-konfigurációt a hozzáférési panel használatával. Ha a Hozzáférési panelen kiválasztja a ContractSafe Saml2 SSO csempét, automatikusan be kell jelentkeznie a ContractSafe Saml2 sso-ba, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Tesztelje Azure AD SSO-konfigurációját a hozzáférési panel használatával. Amikor kiválasztja a ContractSafe egy saml2 SSO csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a ContractSafe egy saml2 SSO-ba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Az SaaS-alkalmazások Azure Active Directoryval való integrálásáról szóló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a ContractSafe Saml2 SSO-t az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a ContractSafe egy saml2 SSO-t az Azure AD-vel](https://aad.portal.azure.com/)

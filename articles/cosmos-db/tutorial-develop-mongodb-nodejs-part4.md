@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Szögletes alkalmazást az Azure Cosmos DB MongoDB-hoz (Part1) elérhető API-jával
+title: Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB (part1)
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 4. része
 author: johnpapa
 ms.service: cosmos-db
@@ -11,15 +11,15 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75441167"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Hozzon létre egy Angular alkalmazást az Azure Cosmos DB MongoDB-hoz való API-jával – Cosmos-fiók létrehozása
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Cosmos-fiók létrehozása
 
-Ez a több részes oktatóanyag bemutatja, hogyan hozhat létre egy új alkalmazást a Node.js nyelven express és angular nyelven, majd csatlakoztassa a [Cosmos-fiókhoz, amely a Cosmos DB MongoDB API-jával van konfigurálva.](mongodb-introduction.md)
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
 
 Az oktatóanyag 4. része a [3. részre](tutorial-develop-mongodb-nodejs-part3.md) épül, és az alábbi feladatokat ismerteti:
 
@@ -48,7 +48,7 @@ Az oktatóanyag ezen szakaszában az Azure Cloud Shellt (a webböngészőben) va
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-Hozzon létre egy Azure [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) Cosmos DB-fiókot a paranccsal.
+Hozzon létre egy Azure Cosmos DB fiókot [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) a paranccsal.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -60,7 +60,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 A parancs végrehajtása egy-két percet is igénybe vehet. Amint befejeződött, a terminálablakban megjelennek az új adatbázissal kapcsolatos információk. 
 
 Amint az Azure Cosmos DB-fiók létrejött:
-1. Új böngészőablak megnyitása és ugrás[https://portal.azure.com](https://portal.azure.com)
+1. Nyisson meg egy új böngészőablakot, és lépjen a következőre[https://portal.azure.com](https://portal.azure.com)
 1. Kattintson az Azure Cosmos DB emblémára ![Az Azure Cosmos DB ikonja az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) a bal oldali sávon, és az megjeleníti az összes rendelkezésre álló Azure Cosmos DB-adatbázist.
 1. Kattintson az imént létrehozott Azure Cosmos DB-fiókra, válassza az **Overview** (Áttekintés) lapot, és görgessen le a térképig, amelyen az adatbázis található. 
 

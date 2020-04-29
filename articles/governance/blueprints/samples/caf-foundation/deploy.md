@@ -1,126 +1,126 @@
 ---
-title: CAF Foundation-tervezet mintatelepítése
-description: Üzembe helyezése lépéseket a CAF Foundation tervezet minta, beleértve a tervezet összetevő paraméter részleteit.
+title: A CAF Foundation Blueprint minta üzembe helyezése
+description: A CAF Foundation Blueprint-minta üzembe helyezésének lépései, beleértve a Blueprint-összetevők paraméterének részleteit.
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: df17f8c3f539e25635ea4718be9d51d5e5e3f708
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74545522"
 ---
-# <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Telepítse a Microsoft Cloud Adoption Framework for Azure Foundation tervezetminta
+# <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure Foundation Blueprint minta Microsoft Cloud bevezetési keretrendszerének üzembe helyezése
 
-A Microsoft Cloud Adoption Framework for Azure (CAF) Foundation blueprint minta központi telepítéséhez a következő lépéseket kell elvégezni:
+Az Azure (CAF) Foundation tervhez készült Microsoft Cloud bevezetési keretrendszer üzembe helyezéséhez a következő lépéseket kell elvégeznie:
 
 > [!div class="checklist"]
-> - Új tervrajz létrehozása a mintából
-> - A minta példányának megjelölése **közzétettként**
-> - A tervrajz másolatának hozzárendelése egy meglévő előfizetéshez
+> - Új terv létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
 
-## <a name="create-blueprint-from-sample"></a>Tervrajz létrehozása mintából
+## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
-Először valósítsa meg a tervtervezet minta egy új tervtervezet a környezetben a minta, mint a kezdő.
+Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. A bal oldali **Első lépések** lapon válassza a **Létrehozás** gombot a _Rajzrajz létrehozása_csoportban.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Keresse meg a **CAF Foundation** tervezet minta alatt _Egyéb minták_ és válassza a Használja ezt **a mintát**.
+1. Keresse meg a **CAF Foundation** tervezet mintát _más minták_ alatt, és válassza a **minta használata**lehetőséget.
 
-1. Adja meg a tervminta _alapjait:_
+1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Tervrajz neve:** Adja meg a caf alapítvány tervminta példányának nevét.
-   - **Definíció helye:** Használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
+   - **Terv neve**: adjon meg egy nevet a CAF Foundation tervezet mintájának másolatához.
+   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
-1. Válassza az _Eltérések_ lapot a lap tetején, vagy a **Tovább: Eltérések** a lap alján.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
-1. Tekintse át a tervmintát kiálló összetevők listáját. Sok összetevő nek vannak paraméterei, amelyeket később definiálunk. Válassza **a Vázlat mentése lehetőséget,** ha befejezte a tervezetminta áttekintését.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-## <a name="publish-the-sample-copy"></a>A mintapéldány közzététele
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-A tervtervezet minta példánya most már létre lett hozva a környezetében. **Vázlat** módban jön létre, és közzé kell **tenni,** mielőtt hozzárendelhető és üzembe helyezhető. A tervezet minta példánya testreszabható a környezet és az igények, de a módosítás elmozdíthatja a CAF Foundation tervrajz.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a CAF Foundation tervből is áthelyezhető.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza ki a **blueprint definíciók** lap a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, majd válassza ki.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza a **Tervrajz közzététele** lehetőséget a lap tetején. A jobb oldali új lapon adja meg a tervezetminta egy **verzióját.** Ez a tulajdonság akkor hasznos, ha később módosítja a munkát. Adjon **meg módosítási megjegyzéseket,** például "A CAF Foundation tervezetmintából közzétett első verzió". Ezután válassza a **Közzététel** lehetőséget a lap alján.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint például az "első verzió, amelyet a CAF Foundation Blueprint-minta közzétett." Ezután válassza a **Közzététel** elemet az oldal alján.
 
-## <a name="assign-the-sample-copy"></a>A mintapéldány hozzárendelése
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Miután a tervezetminta példánya sikeresen **közzélett,,** hozzárendelhető egy előfizetéshez a felügyeleti csoporton belül, amelybe mentve mentették. Ez a lépés az, ahol paraméterek et biztosítanak, hogy a tervezet minta másolatának minden egyes központi telepítése egyedi legyen.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza ki a **blueprint definíciók** lap a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, majd válassza ki.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza **a Blueprint hozzárendelése** lehetőséget a tervezetdefiníciós lap tetején.
+1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
 
-1. Adja meg a tervezet hozzárendelésének paraméterértékeit:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
-       - **Előfizetések:** Válasszon ki egy vagy több előfizetést, amely abban a felügyeleti csoportban van, amelybe a tervezetminta másolatát mentette. Ha egynél több előfizetést választ ki, mindegyikhez egy-egy hozzárendelés jön létre a megadott paraméterek használatával.
-     - **Hozzárendelés neve**: A név előre ki van töltve a tervrajz neve alapján.
-       Szükség szerint változtassa meg, vagy hagyja úgy, ahogy van.
-     - **Hely**: Válassza ki azt a régiót, amelyben a felügyelt identitást létre szeretné hozni.
+       - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
+       Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást.
      - Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja.
-       További információ: [Felügyelt identitások az Azure-erőforrásokhoz.](../../../../active-directory/managed-identities-azure-resources/overview.md)
-     - **Blueprint-definíciós verzió:** Válasszon egy **közzétett** változata a tervezet minta példánya.
+       További információ: [felügyelt identitások az Azure-erőforrásokhoz](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
-     Válassza ki a környezetéhez való tervezetzárolási beállítást. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
+     Válassza ki a környezethez tartozó terv zárolási beállítását. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Válassza az alapértelmezett _rendszerhozzárendelt_ felügyelt identitás beállítást vagy a _felhasználó által hozzárendelt_ identitásbeállítást.
+     Válassza ki az alapértelmezett _rendszerhez rendelt_ felügyelt identitás vagy a _felhasználó által hozzárendelt_ identitás lehetőséget.
 
    - Tervparaméterek
 
-     Az ebben a szakaszban meghatározott paramétereket a tervezet definíciójában szereplő számos műtermék használja a konzisztencia biztosításához.
+     Az ebben a szakaszban meghatározott paramétereket a terv definíciójában található számos összetevő használja a konzisztencia biztosításához.
 
-     - **Szervezet:** Adja meg a szervezet nevét, például contoso, egyedinek kell lennie.
-     - **Azure régió**: Válassza ki az Azure-régió t.
-     - **Engedélyezett helyek:** Mely Azure-régiók engedélyezi az erőforrások beépítését?
+     - **Szervezet**: adja meg a szervezet nevét (például contoso) egyedinek kell lennie.
+     - **Azure-régió**: válassza ki az Azure-régiót a központi telepítéshez.
+     - **Engedélyezett helyszínek**: mely Azure-régiók engedélyezik az erőforrások beépítését?
      
-   - Műtermék-paraméterek
+   - Összetevő paramétereinek
 
-     Az ebben a szakaszban meghatározott paraméterek a műtermékre vonatkoznak, amely alatt definiálva van. Ezek a paraméterek [dinamikus paraméterek,](../../concepts/parameters.md#dynamic-parameters) mivel a terv hozzárendelése során vannak definiálva. A teljes lista- vagy műtermék-paramétereket és azok leírását a [Műtermék paraméterek táblázatban láthatja.](#artifact-parameters-table)
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
-1. Miután az összes paramétert megadta, válassza a **Hozzárendelés** lehetőséget a lap alján. A tervrajz-hozzárendelés jön létre, és a műtermék üzembe helyezése kezdődik. A telepítés nagyjából egy órát vesz igénybe. A telepítés állapotának ellenőrzéséhez nyissa meg a tervhozzárendelést.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure Blueprints szolgáltatás és a beépített tervezetminták **ingyenesek.** Az Azure-erőforrások [ára termékenként.](https://azure.microsoft.com/pricing/) A [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) segítségével becsülje meg a tervezet minta által üzembe helyezett erőforrások futtatásának költségét.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták **díjmentesek**. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
-## <a name="artifact-parameters-table"></a>Műtermék-paraméterek táblája
+## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
-Az alábbi táblázat a tervezet összetevő paramétereinek listáját tartalmazza:
+A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Műtermék neve|Műtermék típusa|Paraméter neve|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Policy_Allowed-StorageAccount-SKUs|Diagnosztikai naplótárfiókokban használt termékváltozat|
-|Engedélyezett virtuálisgép-skus|Szabályzat-hozzárendelés|Policy_Allowed-VM-SKUs|Engedélyezett virtuálisgép-skus|
-|CostCenter TAG hozzáfűzése erőforráscsoportokhoz|Szabályzat-hozzárendelés|Policy_CostCenter_Tag|A CostCenter TAG és annak értéke hozzáfűzése az erőforráscsoportból|
-|Olyan erőforrástípusok, amelyeket nem kíván engedélyezni a környezetben|Szabályzat-hozzárendelés|Házirend-_Allowed-erőforrás-típusok|Mely Azure-erőforrásokat szeretné engedélyezni a környezetében?|
-|A Key Vault telepítése|Resource Manager-sablon|KV-AccessPolicy|**Zárolva** – Az Azure <Object ID> AD-csoport vagy a kulcstárolóban engedélyeket adó felhasználó|
-|A Log Analytics telepítése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolva** – Az adatok napok száma megmarad a Log Analytics szolgáltatásban|
-|A Log Analytics telepítése|Resource Manager-sablon|LogAnalytics_Location|**Zárolva** - A munkaterület létrehozásakor használt terület|
+|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Policy_Allowed – StorageAccount – SKU|A diagnosztikai napló tárolási fiókjaiban használt SKU|
+|Engedélyezett virtuális gépek SKU-i|Szabályzat-hozzárendelés|Policy_Allowed – VM-SKU|Engedélyezett virtuális gépek SKU-i|
+|CostCenter-címke hozzáfűzése erőforráscsoporthoz|Szabályzat-hozzárendelés|Policy_CostCenter_Tag|CostCenter címke és a hozzá tartozó érték hozzáfűzése az erőforráscsoporthoz|
+|A környezetében engedélyezni nem kívánt erőforrástípusok|Szabályzat-hozzárendelés|Házirend _Allowed – erőforrás-típusok|Mely Azure-erőforrásokat szeretné engedélyezni a környezetben|
+|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolva** – az Azure ad- <Object ID> csoport vagy a felhasználó engedélyt ad a Key Vault|
+|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
+|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_Location|**Zárolt** – a munkaterület létrehozásakor használt régió|
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette a CAF Foundation tervminta telepítésének lépéseit, látogasson el a következő cikkbe, és ismerje meg az architektúrát:
+Most, hogy áttekintette a CAF Foundation Blueprint-minta üzembe helyezésének lépéseit, tekintse meg a következő cikket az architektúra megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [CAF Alapítvány tervrajza - Áttekintés](./index.md)
+> [A CAF Foundation tervezete – áttekintés](./index.md)
 
 További cikkek a tervekről és a használatukról:
 
-- További információ a [tervterv életciklusáról.](../../concepts/lifecycle.md)
-- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](../../concepts/parameters.md)használni.
-- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](../../concepts/sequencing-order.md)
-- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](../../concepts/resource-locking.md)
-- További információ a [meglévő hozzárendelések frissítéséhez.](../../how-to/update-existing-assignments.md)
+- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../../how-to/update-existing-assignments.md) elsajátítása.

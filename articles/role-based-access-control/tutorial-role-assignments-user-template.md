@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC és a Resource Manager sablonnal'
-description: Megtudhatja, hogyan adhat hozzáférést egy felhasználónak az Azure-erőforrásokhoz szerepköralapú hozzáférés-vezérlés (RBAC) használatával az oktatóanyagban található Azure Resource Manager-sablon használatával.
+title: 'Oktatóanyag: felhasználói hozzáférés engedélyezése az Azure-erőforrásokhoz a RBAC és Resource Manager-sablonnal'
+description: Megtudhatja, hogyan biztosíthat felhasználói hozzáférést az Azure-erőforrásokhoz szerepköralapú hozzáférés-vezérléssel (RBAC) az oktatóanyag Azure Resource Manager sablonjának használatával.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -14,37 +14,37 @@ ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
 ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77138204"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC és a Resource Manager sablon használatával
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC és Resource Manager-sablonnal
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelése. Ebben az oktatóanyagban létrehoz egy erőforráscsoportot, és hozzáférést biztosít a felhasználónak az erőforráscsoportban lévő virtuális gépek létrehozásához és kezeléséhez. Ez az oktatóanyag az Erőforrás-kezelő sablon üzembe helyezésének folyamatára összpontosít a hozzáférés biztosításához. Az Erőforrás-kezelő sablonjainak fejlesztéséről az [Erőforrás-kezelő dokumentációja](/azure/azure-resource-manager/) és a sablon hivatkozása című [témakörben olvashat bővebben.](/azure/templates/microsoft.authorization/allversions
-)
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban létrehoz egy erőforráscsoportot, és felhasználói hozzáférést biztosít a virtuális gépek létrehozásához és kezeléséhez az erőforráscsoporthoz. Ez az oktatóanyag egy Resource Manager-sablon üzembe helyezésének folyamatát ismerteti a hozzáférés biztosításához. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.authorization/allversions
+).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzáférés megadása egy felhasználószámára egy erőforráscsoport hatókörén
+> * Hozzáférés biztosítása egy erőforráscsoport-hatókörben lévő felhasználó számára
 > * Az üzembe helyezés ellenőrzése
 > * A fölöslegessé vált elemek eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szerepkör-hozzárendelések hozzáadásához és eltávolításához a következőkre van szükség:
+A szerepkör-hozzárendelések hozzáadásához és eltávolításához a következőket kell tennie:
 
-* `Microsoft.Authorization/roleAssignments/write`és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például [a Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy [a tulajdonos](built-in-roles.md#owner)
+* `Microsoft.Authorization/roleAssignments/write`és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-A rövid útmutatóban használt sablon az [Azure rövidútmutatós sablonjaiból származik.](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/) További Azure-engedélyezési sablonok [itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization)találhatók.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)származik. További Azure-hitelesítéssel kapcsolatos sablonok [itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization)találhatók.
 
-A sablon üzembe helyezéséhez válassza a **Próbálja ki** az Azure Cloud rendszerhéj megnyitásához, majd illessze be a következő PowerShell-parancsfájlt a rendszerhéj ablakába. A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablakára, majd válassza a **Beillesztés parancsot.**
+A sablon üzembe helyezéséhez válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához, majd illessze be a következő PowerShell-szkriptet a rendszerhéj ablakába. A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj-ablakra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -63,15 +63,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Nyissa meg az utolsó eljárásban létrehozott erőforráscsoportot. Az alapértelmezett név a projekt neve **rg** csatolt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Nyissa meg az utolsó eljárásban létrehozott erőforráscsoportot. Az alapértelmezett név a projekt neve **RG** hozzáfűzéssel.
 1. A bal oldali menüben válassza az **Access control (IAM)** lehetőséget.
 1. Válassza a **Szerepkör-hozzárendelések** lehetőséget. 
-1. A **Név mezőbe**írja be az utolsó eljárásban beírt e-mail címet. Látnia kell, hogy az e-mail-címmel rendelkező felhasználó rendelkezik a **Virtuálisgép közreműködői** szerepkörrel.
+1. A **név**mezőben adja meg az utolsó eljárásban beírt e-mail-címet. Az e-mail-címmel rendelkező felhasználónak látnia kell a **virtuális gép közreműködői** szerepkört.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Az utolsó eljárásban létrehozott erőforráscsoport eltávolításához válassza a **Próbálja ki** az Azure Cloud rendszerhéj megnyitásához lehetőséget, majd illessze be a következő PowerShell-parancsfájlt a rendszerhéj ablakába.
+Az utolsó eljárásban létrehozott erőforráscsoport eltávolításához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához, majd illessze be a következő PowerShell-szkriptet a rendszerhéj ablakába.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a same project name you used in the last procedure"
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
+> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)

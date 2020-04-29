@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Experience Cloudszolgáltatással | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az Experience Cloud között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Experience Cloud szolgáltatással | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a felhő között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,75 +16,75 @@ ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d044a229764d0d6ce1d0f3b10b95d406ccd3dd5f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77371412"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Experience Cloud szolgáltatással
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Experience Cloud szolgáltatással
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Experience Cloud szolgáltatást az Azure Active Directoryval (Azure AD). Ha integrálja az Experience Cloud szolgáltatást az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Experience Cloudt Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Experience Cloud-t, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér az Experience Cloud szolgáltatáshoz.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezve az Experience Cloud az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* Az Azure AD-ben való hozzáférés a Felhőbeli élményhez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a felhőbe az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Tapasztalja meg a Cloud egyszeri bejelentkezés (SSO) engedélyezett előfizetését.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Felhőalapú egyszeri bejelentkezéses (SSO) előfizetések használata.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az Experience Cloud támogatja az **SP és az IDP** által kezdeményezett SSO-t
-* Az Élményfelhő konfigurálása után kényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlők a feltételes hozzáféréstől származnak. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
-
-
-## <a name="adding-experience-cloud-from-the-gallery"></a>Az Élményfelhő hozzáadása a galériából
-
-Az Experience Cloud azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Experience Cloud-ot a katalógusból a felügyelt SaaS-alkalmazások listájához.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **katalógus hozzáadásszakaszában** írja be az **Élményfelhő** kifejezést a keresőmezőbe.
-1. Válassza **az Élményfelhő** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+* A Cloud Experience támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* Az élmény felhő beállítása után kényszerítheti a munkamenet-vezérlők betartatását, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-experience-cloud"></a>Az Azure AD egyszeri bejelentkezésének konfigurálása és tesztelése az Experience Cloud szolgáltatáshoz
+## <a name="adding-experience-cloud-from-the-gallery"></a>Felhőbeli élmény hozzáadása a katalógusból
 
-Konfigurálja és tesztelje az Azure AD SSO-t az Experience Cloud szolgáltatással egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó az Experience Cloud ban.
+A Felhőbeli élmény Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a felhőt a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Az Azure AD SSO-élményszolgáltatás élményfelhővel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Experience Cloud** kifejezést a keresőmezőbe.
+1. Válassza a **Felhőbeli élmény** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[A Experience Cloud Egyszeri bejelentkezés konfigurálása](#configure-experience-cloud-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    * **[Hozzon létre egy experience cloud teszt felhasználó](#create-experience-cloud-test-user)** - egy megfelelője B.Simon az Élményfelhőben, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-experience-cloud"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése Felhőbeli élményhez
+
+Konfigurálja és tesztelje az Azure AD SSO-t a Cloud Experience használatával egy **B. Simon**nevű tesztelési felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a felhőben.
+
+Az Azure AD SSO az Experience Cloud szolgáltatással való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[FELHŐALAPÚ bejelentkezési élmény konfigurálása](#configure-experience-cloud-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Felhőbeli felhasználói élmény létrehozása](#create-experience-cloud-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-beli partnert szeretne létrehozni a felhőben.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **Experience Cloud** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/)a **Cloud** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minták használatával:
+    a. Az **azonosító** szövegmezőbe írja be a következő mintákat használó URL-címet:
     
     |||
     |-|-|
@@ -93,7 +93,7 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     | `https://<cluster>.medallia.eu/sso/<company>`|
     | `https://<cluster>.medallia.au/sso/<company>`|
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minták használatával:
+    b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintákat használó URL-címet:
 
     |||
     |-|-|
@@ -103,9 +103,9 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     | `https://<cluster>.medallia.au/sso/<company>/logonSubmit.do`|
 
 
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minták használatával:
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minták használatával:
 
     |||
     |-|-|
@@ -115,68 +115,68 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     | `https://<cluster>.medallia.au/sso/<company>`|
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [az Experience Cloud Ügyfél támogatási csapatával,](mailto:support@medallia.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ha ezeket az értékeket szeretné megkapni, forduljon a felhőalapú ügyfélszolgálati [csapathoz](mailto:support@medallia.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. Az **Élményfelhő beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **felhő beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban lehetővé teszi b.Simon azure egyszeri bejelentkezés használatával az Experience Cloud hozzáférést biztosít.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a felhőhöz.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza az **Élményfelhő**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Felhőbeli élmény**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-experience-cloud-sso"></a>A felhasználói élmény felhőalapú sso-jának konfigurálása
+## <a name="configure-experience-cloud-sso"></a>Felhőalapú egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához az **Experience Cloud** oldalon el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról az [Experience Cloud támogatási csapatának.](mailto:support@medallia.com) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Ha egyszeri bejelentkezést szeretne beállítani a **felhasználói élmény felhőben** , el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalről a [Cloud Support Team](mailto:support@medallia.com)szolgáltatásba. Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-experience-cloud-test-user"></a>Az Élményfelhő tesztfelhasználójának létrehozása
+### <a name="create-experience-cloud-test-user"></a>Felhasználói felület létrehozása felhőalapú tesztkörnyezet
 
-Ebben a szakaszban hozzon létre egy B.Simon nevű felhasználót az Élményfelhőben. Az [Experience Cloud támogatási csapatával](mailto:support@medallia.com) együttműködve vegye fel a felhasználókat az Experience Cloud platformra. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Cloud Experience-ben. A felhőalapú [támogatási csapattal](mailto:support@medallia.com) együttműködve veheti fel a felhasználókat a Cloud platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen az Élményfelhő csempére kattint, automatikusan be kell jelentkeznie az Élményfelhőbe, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a élmény felhő csempére kattint, automatikusan be kell jelentkeznie arra a felhőbe, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki az Experience Cloud szolgáltatást az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a felhőt az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

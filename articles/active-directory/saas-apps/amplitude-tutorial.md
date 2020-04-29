@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Amplitúdóval | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az Amplitúdó között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az amplitúdóval | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és amplitúdó között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,170 +17,170 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d077da34a6e82ced957c4da1e6abf7a5e294e78
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72596252"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Amplitúdóval
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az amplitúdóval
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Amplitúdót az Azure Active Directoryval (Azure AD). Ha integrálja az Amplitúdót az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az amplitúdót Azure Active Directory (Azure AD) használatával. Az amplitúdó Azure AD-val való integrálásával a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér az Amplitúdóhoz.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve amplitúdó az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* Az Amplitúdóhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Amplitúdóba az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Amplitúdó egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Az amplitúdó egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az Amplitúdó támogatja az **SP-t és az IDP** által kezdeményezett SSO-t
-* Az amplitúdó támogatja a **Just In Time** felhasználói kiépítést
+* Az amplitúdó támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* Az amplitúdó a felhasználók üzembe helyezésének **időpontját is** támogatja
 
-## <a name="adding-amplitude-from-the-gallery"></a>Amplitúdó hozzáadása a galériából
+## <a name="adding-amplitude-from-the-gallery"></a>Amplitúdó hozzáadása a gyűjteményből
 
-Az Amplitúdó Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Amplitúdót a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az amplitúdó Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az amplitúdót a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be az **Amplitúdót** a keresőmezőbe.
-1. Válassza **az Amplitúdó** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be az **amplitúdó** kifejezést a keresőmezőbe.
+1. Válassza az **amplitúdó** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-amplitude"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését az Amplitúdóhoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-amplitude"></a>Az Azure AD egyszeri bejelentkezésének konfigurálása és tesztelése az Amplitúdóhoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t amplitúdóval egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó amplitúdóban.
+Konfigurálja és tesztelje az Azure AD SSO-t az amplitúdóval egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az Amplitúdóban.
 
-Az Azure AD SSO amplitúdóval való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO az amplitúdóval való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja az Amplitúdó-sSO-t](#configure-amplitude-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    * **[Hozzon létre amplitúdóteszt-felhasználót](#create-amplitude-test-user)** – hogy b.Simon megfelelője legyen az Amplitúdóban, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. Az **[AMPLITÚDÓ SSO konfigurálása](#configure-amplitude-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre amplitúdó-teszt felhasználót](#create-amplitude-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó "B. Simon" betűvel rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **Amplitúdó-alkalmazások** integrációja lapon keresse meg a **Kezelés szakaszt,** és válassza ki **az egyszeri bejelentkezést.**
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/)az **amplitúdó** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet:`https://amplitude.com/saml/sso/metadata`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://amplitude.com/saml/sso/metadata`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://analytics.amplitude.com/saml/sso/<uniqueid>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://analytics.amplitude.com/saml/sso/<uniqueid>`
 
     > [!NOTE]
-    > A Válasz URL-értéke nem valós. Az oktatóanyag későbbi részében megkapja a Válasz URL-értékét.
+    > A válasz URL-cím értéke nem valódi. A válasz URL-címét az oktatóanyag későbbi részében fogja megkapni.
 
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet:`https://analytics.amplitude.com/sso`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://analytics.amplitude.com/sso`
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. Az **Amplitúdó beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. Az **amplitúdó beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés használatával amplitúdó hozzáférést biztosít.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít az Amplitúdóhoz.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza az **Amplitúdó**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **amplitúdó**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-amplitude-sso"></a>Amplitúdó sso konfigurálása
+## <a name="configure-amplitude-sso"></a>Amplitúdó SSO konfigurálása
 
-1. Az Amplitúdón belüli konfiguráció automatizálásához telepítenie kell a **My Apps Secure Sign-in böngészőbővítményt** **a Bővítmény telepítése**gombra kattintva.
+1. Az amplitúdón belüli konfiguráció automatizálásához a **bővítmény telepítése**lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-1. Hozzáadása után kiterjesztés a böngésző, kattintson a **Beállítása Amplitúdó irányítja,** hogy az Amplitúdó alkalmazás. Itt adja meg a rendszergazdai hitelesítő adatokat az Amplitúdóba való bejelentkezéshez. A böngésző bővítmény automatikusan konfigurálja az alkalmazást, és automatizálja a 3-6.
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson az **amplitúdó beállítása** elemre, és az amplitúdó-alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat az Amplitúdóba való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
 
-    ![Beállítási konfiguráció](common/setup-sso.png)
+    ![Telepítési konfiguráció](common/setup-sso.png)
 
-1. Ha manuálisan szeretné beállítani az Amplitúdót, nyisson meg egy új böngészőablakot, és jelentkezzen be rendszergazdaként az Amplitúdós vállalati webhelyre, és hajtsa végre a következő lépéseket:
+1. Ha manuálisan szeretné beállítani az amplitúdót, nyisson meg egy új böngészőablakot, és jelentkezzen be az amplitúdó céges webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-1. Kattintson a Bal oldali navigációs sávon a **Felügyeleti megtervezése** elemre.
+1. A bal oldali navigációs sávon kattintson a **terv adminisztrátor** elemre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/amplitude-tutorial/configure1.png)
 
-1. Válassza ki a **Microsoft Azure Active Directory metaadatait** az **SSO-integrációból.**
+1. Válassza ki **Microsoft Azure Active Directory metaadatokat** az **SSO-integrációból**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/amplitude-tutorial/configure2.png)
 
-1. Az **Egyszeri bejelentkezés beállítása szakaszban** hajtsa végre az alábbi lépéseket:
+1. Az **egyszeri bejelentkezés beállítása** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/amplitude-tutorial/configure3.png)
 
-    a. Nyissa meg a letöltött **metaadat-XML-t** az Azure Portalon a jegyzettömbben, illessze be a tartalmat a **Microsoft Azure Active Directory metaadatok** szövegmezőjébe.
+    a. Nyissa meg a letöltött **metaadatok XML-** fájlját Azure Portal a Jegyzettömbben, illessze be a tartalmat a **Microsoft Azure Active Directory metaadatok** szövegmezőbe.
 
-    b. Másolja a **válasz URL-cím (ACS)** értékét, és illessze be az **Azure Portalon az egyszerű SAML-konfiguráció válasz** **URL-címmezőjébe.**
+    b. Másolja a **Válasz URL-címet (ACS)** , és illessze be az **ALAPszintű SAML-konfiguráció** **Válasz url-** szövegmezőbe a Azure Portal.
 
-    c. Kattintson a **Mentés gombra**
+    c. Kattintson a **Mentés** gombra
 
-### <a name="create-amplitude-test-user"></a>Amplitúdó-teszt felhasználójának létrehozása
+### <a name="create-amplitude-test-user"></a>Amplitúdó-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy B.Simon nevű felhasználó jön létre az Amplitúdó ban. Az Amplitúdó támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó már nem létezik az Amplitúdó, egy új jön létre a hitelesítés után.
+Ebben a szakaszban egy B. Simon nevű felhasználó van létrehozva az Amplitúdóban. Az amplitúdó támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik az Amplitúdóban, a rendszer egy újat hoz létre a hitelesítés után.
 
 > [!Note]
-> Ha manuálisan kell létrehoznia egy felhasználót, forduljon [az Amplitúdó támogatási csapatához.](https://amplitude.zendesk.com)
+> Ha manuálisan kell létrehoznia egy felhasználót, forduljon az [amplitúdó-támogatási csapathoz](https://amplitude.zendesk.com).
 
-## <a name="test-sso"></a>SSO tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a hozzáférési panelampultude csempéjére kattint, automatikusan be kell jelentkeznie az SSO-t beállító Amplitúdóba. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Amikor a hozzáférési panelen a amplitúdó csempére kattint, automatikusan be kell jelentkeznie az Amplitúdóba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki az Amplitúdót az Azure AD-vel](https://aad.portal.azure.com/)
+- [Az amplitúdó kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

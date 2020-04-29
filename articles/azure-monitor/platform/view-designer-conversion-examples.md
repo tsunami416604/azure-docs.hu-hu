@@ -1,5 +1,5 @@
 ---
-title: Példák az Azure Monitor nézettervezője ként a munkafüzetek konvertálási példáihoz
+title: Azure Monitor tervező átalakítása munkafüzetek átalakítására – példák
 description: ''
 author: austonli
 ms.author: aul
@@ -7,19 +7,19 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274163"
 ---
-# <a name="view-designer-conversion-examples"></a>Tervezői konvertálási példák megtekintése
+# <a name="view-designer-conversion-examples"></a>Példa tervezői átalakításra
 
-A nézettervező többlapos munkafüzetének replikálásához másolja és illessze be a következő kódot a Speciális szerkesztőbe, amelyet az eszköztár </> szimbóluma jelöl
+A tervező Többlapos munkafüzetének replikálásához másolja és illessze be a következő kódot a speciális Szerkesztőbe, amelyet az eszköztár </> szimbóluma jelöl.
 
 ![Speciális szerkesztő eszköztár](media/view-designer-conversion-examples/toolbar.png)
 
-Előfordulhat, hogy a felhasználóknak frissíteniük kell a lekérdezési beállításokat és előfizetéseiket a saját elérhető erőforrásaikra
+Előfordulhat, hogy a felhasználóknak frissíteniük kell a lekérdezés beállításait és előfizetéseit a saját elérhető erőforrásaik számára
 
 ## <a name="vertical"></a>Függőleges
 
@@ -337,7 +337,7 @@ Előfordulhat, hogy a felhasználóknak frissíteniük kell a lekérdezési beá
 }
 ```
 
-## <a name="tabbed"></a>Kalanderez 
+## <a name="tabbed"></a>Többlapos 
 
 ```Json
 {

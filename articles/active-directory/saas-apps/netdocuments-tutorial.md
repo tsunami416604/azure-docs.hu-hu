@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a NetDocuments programmal | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a NetDocuments között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NetDocuments | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és NetDocuments között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,133 +17,133 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72035704"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a NetDocuments programmal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NetDocuments
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a NetDocuments dokumentumokat az Azure Active Directoryval (Azure AD). Ha integrálja a NetDocuments-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a NetDocuments a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az NetDocuments-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, hogy ki férhet hozzá a NetDocuments-hez.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezve a NetDocuments az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A NetDocuments-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a NetDocuments az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* NetDocuments egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* NetDocuments egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A NetDocuments támogatja az **SP** által kezdeményezett SSO-t
+* A NetDocuments támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
 ## <a name="adding-netdocuments-from-the-gallery"></a>NetDocuments hozzáadása a gyűjteményből
 
-A NetDocuments Azure AD-be való integrációjának konfigurálásához hozzá kell adnia a netdocuments-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A NetDocuments Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a NetDocuments a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be a **NetDocuments** kifejezést a keresőmezőbe.
-1. Válassza a **NetDocuments** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **NetDocuments** kifejezést a keresőmezőbe.
+1. Válassza ki a **NetDocuments** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-netdocuments"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése a NetDocuments szolgáltatáshoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-netdocuments"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a NetDocuments
 
-Konfigurálja és tesztelje az Azure AD SSO-t a NetDocuments segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a netdocuments kapcsolódó felhasználója között.
+Konfigurálja és tesztelje az Azure AD SSO-t a NetDocuments a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a NetDocuments-ben.
 
-Az Azure AD SSO netdocuments-sel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a NetDocuments konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a NetDocuments egyszeri bejelentkezést](#configure-netdocuments-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    1. **[NetDocuments tesztfelhasználó létrehozása](#create-netdocuments-test-user)** – b.Simon megfelelője a NetDocuments-ben, amely a felhasználó Azure AD-ábrázolásához kapcsolódik.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[NETDOCUMENTS SSO konfigurálása](#configure-netdocuments-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre NetDocuments-teszt felhasználót](#create-netdocuments-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-NetDocuments rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **NetDocuments** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza **az egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **NetDocuments** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
     
-    c. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`http://netdocuments.com/VAULT`
+    c. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`http://netdocuments.com/VAULT`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és a Válasz URL-címmel. A tárházazonosító egy **hitelesítés-hitelesítéssel** kezdődő érték, amelyet a NetDocuments adattárhoz társított 8 karakterből álló kód követ. További információkért tekintse meg a [NetDocuments összevont identitástámogatási dokumentumát.](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) Másik lehetőségként lépjen kapcsolatba a [NetDocuments ügyféltámogatási csapatával,](https://support.netdocuments.com/hc/) hogy megkapja ezeket az értékeket, ha nehezen tudja konfigurálni a fenti információkat. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. A tárház-azonosító egy olyan érték, amely a NetDocuments-tárházhoz tartozó, a **CA-** tól kezdődően 8 karakterből áll. További információért tekintse meg a [NetDocuments összevont identitás támogatási dokumentumát](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) . Ha nehézségekbe ütközik a fenti információk használatával, vegye fel a kapcsolatot a NetDocuments ügyfélszolgálati [csapatával](https://support.netdocuments.com/hc/) is. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A NetDocuments alkalmazás az SAML-állításokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumkonfigurációjához. A következő képernyőképen az alapértelmezett attribútumok listája látható, ahol a **nameidentifier** a **user.userprincipalname**. A NetDocuments alkalmazás azt várja, hogy a **névazonosító** le legyen képezve **az employeeid-val** vagy bármely más, a szervezetre **névazonosítóként**vonatkozó jogcímekkel, ezért az attribútumleképezést a **Szerkesztés** ikonra kattintva kell módosítania, és módosítania kell az attribútumleképezést.
+1. A NetDocuments alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A NetDocuments-alkalmazás az **AlkalmazottKód** vagy bármely más, a szervezete számára a **NameIdentifier**-ként alkalmazható jogcím használatával rendeli hozzá a **NameIdentifier** , ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
 
     ![image](common/edit-attribute.png)
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. A **NetDocuments beállítása** csoportban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **NetDocuments beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a NetDocuments hozzáférést biztosítva a NetDocuments.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a NetDocuments.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **NetDocuments**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **NetDocuments**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-netdocuments-sso"></a>NetDocuments sso konfigurálása
+## <a name="configure-netdocuments-sso"></a>NetDocuments SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a NetDocuments vállalati webhelyére rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a NetDocuments vállalati webhelyre rendszergazdaként.
 
-2. Nyissa meg a **Rendszergazda**lehetőséget.
+2. Nyissa meg a **rendszergazdát**.
 
-3. Kattintson **a Felhasználók és csoportok hozzáadása és eltávolítása gombra.**
+3. Kattintson **a felhasználók és csoportok hozzáadása és eltávolítása**elemre.
    
     ![Repository](./media/netdocuments-tutorial/ic795047.png "Adattár") (Adattár)
 
-4. Kattintson **a Speciális hitelesítési beállítások megadása gombra.**
+4. Kattintson a **speciális hitelesítési beállítások konfigurálása lehetőségre**.
     
     ![Speciális hitelesítési beállítások konfigurálása](./media/netdocuments-tutorial/ic795048.png "Speciális hitelesítési beállítások konfigurálása")
 
@@ -151,49 +151,49 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a NetDoc
    
     ![Federated Identity](./media/netdocuments-tutorial/ic795049.png "Federated Identity")
    
-    a. Összevont **identitáskiszolgáló-típusként**válassza az **Active Directory összevonási szolgáltatások**lehetőséget.
+    a. **Összevont identitás-kiszolgáló típusaként**válassza a **Active Directory összevonási szolgáltatások (AD FS)** lehetőséget.
    
-    b. Kattintson **a Fájl kiválasztása**gombra a letöltött metaadatfájl Azure Portalról letöltött fájl feltöltéséhez.
+    b. Kattintson a **Fájl választása**gombra, és töltse fel a letöltött metaadat-fájlt, amelyet a Azure Portal letöltött.
    
     c. Kattintson az **OK** gombra.
 
-### <a name="create-netdocuments-test-user"></a>NetDocuments tesztfelhasználó létrehozása
+### <a name="create-netdocuments-test-user"></a>NetDocuments-tesztelési felhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a NetDocuments szolgáltatásba, ki kell építeni őket a NetDocuments dokumentumaiba.  
-A NetDocuments esetében a kiépítés manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a NetDocuments, a NetDocuments kell kiépíteni őket.  
+NetDocuments esetén a kiépítés manuális feladat.
 
-**Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a **NetDocuments** vállalati webhelyére rendszergazdaként.
+1. Jelentkezzen be a **NetDocuments** vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **Rendszergazda gombra.**
+2. A felső menüben kattintson a **rendszergazda**elemre.
    
     ![Felügyelet](./media/netdocuments-tutorial/ic795051.png "Rendszergazda")
 
-3. Kattintson **a Felhasználók és csoportok hozzáadása és eltávolítása gombra.**
+3. Kattintson **a felhasználók és csoportok hozzáadása és eltávolítása**elemre.
    
     ![Repository](./media/netdocuments-tutorial/ic795047.png "Adattár") (Adattár)
 
-4. Az **E-mail cím** mezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory-fiók e-mail címét, majd kattintson a **Felhasználó hozzáadása gombra.**
+4. Az **E-mail cím** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory fiók e-mail-címét, majd kattintson a **felhasználó hozzáadása**elemre.
    
-    ![E-mail cím](./media/netdocuments-tutorial/ic795053.png "E-mail-cím")
+    ![E-mail-cím](./media/netdocuments-tutorial/ic795053.png "E-mail-cím")
    
     >[!NOTE]
-    >Az Azure Active Directory-fiók tulajdonosa kap egy e-mailt, amely tartalmaz egy hivatkozást, hogy erősítse meg a fiókot, mielőtt aktívvá válik. Az Azure Active Directory felhasználói fiókok kiépítéséhez a NetDocuments által biztosított bármely más NetDocuments felhasználói fiók-létrehozási eszközzel vagy API-val is használható.
+    >A Azure Active Directory fiók tulajdonosa egy e-mailt fog kapni, amely tartalmaz egy hivatkozást, amely megerősíti a fiókot, mielőtt az aktívvá válna. A NetDocuments által biztosított egyéb NetDocuments-létrehozási eszközöket vagy API-kat használhatja Azure Active Directory felhasználói fiókok kiépítéséhez.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelEn a NetDocuments csempére kattint, automatikusan be kell jelentkeznie arra a NetDocuments dokumentumba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a NetDocuments csempére kattint, automatikusan be kell jelentkeznie arra a NetDocuments, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a NetDocuments szolgáltatást az Azure AD-vel](https://aad.portal.azure.com/)
+- [A NetDocuments kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 

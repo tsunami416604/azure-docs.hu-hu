@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja az EFI Digital StoreFronttal | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az EFI Digital StoreFront között.
+title: 'Oktatóanyag: Azure Active Directory integráció EFI digitális kirakattal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és EFI digitális kirakat között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,186 +17,186 @@ ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 270b3e7059ffa1de6c53af2ece1ee5b44300af5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158364"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Oktatóanyag: Az Azure Active Directory integrációja az EFI Digital StoreFront tal
+# <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Oktatóanyag: Azure Active Directory integráció EFI digitális kirakattal
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az EFI Digital StoreFrontot az Azure Active Directoryval (Azure AD).
-Az EFI Digital StoreFront integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az EFI digitális kirakatokat Azure Active Directory (Azure AD) használatával.
+Az EFI digitális kirakat az Azure AD-vel való integrálásával a következő előnyöket nyújtja:
 
-* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá az EFI Digital StoreFront-hoz.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek az EFI Digital StoreFront (Single Sign-On) szolgáltatásba az Azure AD-fiókjukkal.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben szabályozhatja az EFI digitális kirakat elérését.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az EFI digitális kirakatba (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálásához az EFI Digital StoreFront szolgáltatással a következő elemekre van szükség:
+Az Azure AD-integráció EFI digitális kirakattal való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* EFI Digital StoreFront egyszeri bejelentkezéses előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* EFI digitális kirakat egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Az EFI Digital StoreFront támogatja az **SP** által kezdeményezett SSO-t
+* Az EFI digitális kirakata támogatja az **SP** által KEZDEMÉNYEZett SSO
 
-## <a name="adding-efi-digital-storefront-from-the-gallery"></a>EFI Digital StoreFront hozzáadása a galériából
+## <a name="adding-efi-digital-storefront-from-the-gallery"></a>EFI digitális kirakat hozzáadása a katalógusból
 
-Az EFI Digital StoreFront Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az EFI Digital StoreFront-ot a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az EFI digitális kirakat Azure AD-be való integrálásának konfigurálásához az EFI digitális kirakatot hozzá kell adnia a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha hozzá szeretné adni az EFI Digital StoreFront-ot a galériából, hajtsa végre az alábbi lépéseket:**
+**Ha EFI digitális kirakatot szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **EFI Digital StoreFront**kifejezést , válassza az **EFI Digital StoreFront** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **EFI digitális kirakat**, válassza az **EFI digitális kirakat** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![EFI Digital StoreFront az eredménylistában](common/search-new-app.png)
+     ![EFI digitális kirakat az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését az EFI Digital StoreFront szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat az EFI Digital StoreFront létre kell hozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az EFI digitális kirakattal konfigurálhatja és tesztelheti egy **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az EFI digitális kirakatban található kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az EFI Digital StoreFront segítségével a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés EFI digitális kirakattal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az EFI Digital StoreFront Single Sign-On](#configure-efi-digital-storefront-single-sign-on)** --hoz konfigurálja az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre EFI Digital StoreFront teszt felhasználó](#create-efi-digital-storefront-test-user)** - egy megfelelője Britta Simon az EFI Digital StoreFront, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[EFI digitális kirakat egyszeri bejelentkezésének konfigurálása](#configure-efi-digital-storefront-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[EFI digitális kirakati teszt-felhasználó létrehozása](#create-efi-digital-storefront-test-user)** – ha az EFI-alapú digitális kirakatban található, a felhasználó Azure ad-Britta kapcsolódó, a.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához az EFI Digital StoreFront szolgáltatással hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezés EFI digitális kirakattal való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **EFI Digital StoreFront** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/) **EFI digitális kirakat** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![EFI Digital StoreFront Domain és URL-ek egyszeri bejelentkezési információk](common/sp-identifier.png)
+    ![EFI digitális kirakati tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.myprintdesk.net/DSF`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.myprintdesk.net/DSF`
 
-    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<companyname>.myprintdesk.net/DSF/asp4/`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.myprintdesk.net/DSF/asp4/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [az EFI Digital StoreFront ügyféltámogatási csapatával,](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez lépjen kapcsolatba az [EFI digitális kirakat ügyfelének támogatási csoportjával](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. Az **EFI Digital StoreFront beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+6. Az **EFI digitális kirakat beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure-hirdetésazonosító
+    b. Azure ad-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-efi-digital-storefront-single-sign-on"></a>Az EFI Digital StoreFront egyszeri bejelentkezéskonfigurálása
+### <a name="configure-efi-digital-storefront-single-sign-on"></a>EFI digitális kirakat egyszeri bejelentkezésének konfigurálása
 
-Az **efi Digital StoreFront** oldalán történő egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról az [EFI Digital StoreFront ügyféltámogatási csapatának.](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Az egyszeri bejelentkezés EFI-alapú **digitális Kirakaton** való konfigurálásához el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról az [EFI digitális kirakati ügyfél-támogatási csapatának](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
+    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t az EFI Digital StoreFront használatával.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az EFI digitális kirakathoz való hozzáférés biztosításával.
 
-1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza az **EFI Digital StoreFront**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **EFI digitális kirakat**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza az **EFI Digital StoreFront lehetőséget.**
+2. Az alkalmazások listában válassza az **EFI digitális kirakat**elemet.
 
-    ![Az EFI Digital StoreFront hivatkozása az Alkalmazások listában](common/all-applications.png)
+    ![Az EFI digitális kirakat hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-efi-digital-storefront-test-user"></a>EFI Digital StoreFront tesztfelhasználó létrehozása
+### <a name="create-efi-digital-storefront-test-user"></a>EFI digitális kirakat tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az EFI Digital StoreFront alkalmazásban. Együttműködve [EFI Digital StoreFront támogatási csapatával](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) a felhasználók hozzáadása az EFI Digital StoreFront platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az EFI digitális kirakatban. Az [EFI digitális kirakat-támogatási csapatával](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) felveheti a felhasználókat az EFI digitális kirakati platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a hozzáférési panelen az EFI Digital StoreFront csempére kattint, automatikusan be kell jelentkeznie az EFI Digital StoreFrontba, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a EFI digitális kirakat csempére kattint, automatikusan be kell jelentkeznie az EFI digitális kirakatba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

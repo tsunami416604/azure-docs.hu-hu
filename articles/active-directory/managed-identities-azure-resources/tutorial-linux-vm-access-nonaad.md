@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:` Felügyelt identitás használata az Azure Key Vault eléréséhez – Linux – Azure AD
+title: Oktatóanyag`:` felügyelt identitás használata a Azure Key Vault-Linux-Azure ad eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74232170"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
@@ -44,7 +44,7 @@ Az Azure-erőforrások felügyeltszolgáltatás-identitásának segítségével 
 
 Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a VM rendszer által hozzárendelt felügyelt identitása hozzá tudjon férni.   
 
-1. A bal oldali navigációs sáv tetején válassza az **Erőforrás biztonsága** > +**Identitáskulcs-tároló****Security + Identity** > lehetőséget.  
+1. A bal oldali navigációs sáv tetején válassza az **erőforrás** > létrehozása**Biztonság és Identitáskezelés** > **Key Vault**lehetőséget.  
 2. Adja meg az új Key Vault **nevét**. 
 3. A Key Vaultot ugyanabban az előfizetésben és erőforráscsoportban hozza létre, mint a korábban létrehozott virtuális gépet. 
 4. Válassza a **Hozzáférési szabályzatok** lehetőséget, és kattintson az **Új hozzáadása** gombra. 
@@ -69,7 +69,7 @@ Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja k�
 A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre.Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
  
 1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra. 
-2. **Csatlakozzon** a virtuális géphez az Ön által választott SSH-ügyféllel. 
+2. **Kapcsolódjon** a virtuális géphez az Ön által választott SSH-ügyféllel. 
 3. A terminálablakban a CURL használatával indítson egy olyan kérést az Azure-erőforrások helyi felügyelt identitásainak végpontjára, amely lekér egy hozzáférési jogkivonatot az Azure Key Vaultból.  
  
     A hozzáférési jogkivonatra vonatkozó CURL-kérelmet alább láthatja.  

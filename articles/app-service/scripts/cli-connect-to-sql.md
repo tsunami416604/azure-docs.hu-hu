@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Alkalmazás csatlakoztatása SQL-adatbázishoz'
-description: Ismerje meg, hogyan használhatja az Azure CLI-t az App Service-alkalmazás üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan csatlakoztathat egy alkalmazást egy SQL-adatbázishoz.
+title: 'CLI: alkalmazások összekapcsolása SQL-adatbázishoz'
+description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan csatlakoztatható egy alkalmazás egy SQL-adatbázishoz.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 74e5af6c295ffada0fbb8d1ded63177afadad285
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058129"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>App Service-alkalmazás csatlakoztatása SQL-adatbázishoz a CLI használatával
+# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>App Service-alkalmazás összekötése egy SQL-adatbázissal a parancssori felület használatával
 
-Ez a mintaparancsfájl létrehoz egy Azure SQL-adatbázist és egy App Service-alkalmazást. Ezután az alkalmazásbeállítások használatával összekapcsolja az SQL-adatbázist az alkalmazással.
+Ez a példa egy Azure SQL Database-adatbázist és egy App Service alkalmazást hoz létre. Ezután az alkalmazás beállításainak használatával kapcsolódik az SQL-adatbázishoz az alkalmazáshoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,17 +34,17 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a parancsfájl a következő parancsokat használja egy erőforráscsoport, az App Service-alkalmazás, az SQL Database és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás, SQL Database és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
 | [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | Létrehoz egy SQL-adatbáziskiszolgálót.  |
 | [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | Létrehoz egy új adatbázist az SQL-adatbáziskiszolgálóval. |
 | [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | Létrehozza egy adatbázis kapcsolati sztringjét. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Alkalmazás-beállítás létrehozása vagy frissítése egy App Service-alkalmazáshoz. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Egy App Service alkalmazás alkalmazás-beállításainak létrehozása vagy frissítése. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 
 ## <a name="next-steps"></a>További lépések
 

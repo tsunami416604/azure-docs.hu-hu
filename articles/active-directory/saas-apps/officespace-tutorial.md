@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az OfficeSpace szoftverrel | Microsoft dokumentumok'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az OfficeSpace Software között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OfficeSpace szoftverrel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és OfficeSpace szoftver között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,182 +17,182 @@ ms.date: 10/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80712c7f59845287006c1699524573c6094498b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75561711"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az OfficeSpace szoftverrel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OfficeSpace szoftverrel
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az OfficeSpace szoftvert az Azure Active Directoryval (Azure AD). Ha integrálja az OfficeSpace szoftvert az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a OfficeSpace szoftvert Azure Active Directory (Azure AD) használatával. Ha integrálja a OfficeSpace szoftvert az Azure AD-val, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, hogy ki férhet hozzá az OfficeSpace szoftverhez.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezhessenek az OfficeSpace Szoftverbe az Azure AD-fiókjukkal.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A OfficeSpace szoftverhez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek, hogy OfficeSpace a szoftvereket az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* OfficeSpace Software egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* OfficeSpace szoftveres egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az OfficeSpace szoftver támogatja az **SP** által kezdeményezett sso-t
-
-
-* Az OfficeSpace szoftver támogatja **a Just In Time** felhasználói kiépítést
+* A OfficeSpace szoftver támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
 
-## <a name="adding-officespace-software-from-the-gallery"></a>OfficeSpace szoftver hozzáadása a galériából
-
-Az OfficeSpace Szoftver Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az OfficeSpace szoftvert a katalógusból a felügyelt SaaS-alkalmazások listájához.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be az **OfficeSpace Szoftver** kifejezést a keresőmezőbe.
-1. Válassza az **OfficeSpace Szoftver** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+* A OfficeSpace szoftver **csak időben támogatja a** felhasználók üzembe helyezését
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-officespace-software"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése az OfficeSpace Software alkalmazáshoz
+## <a name="adding-officespace-software-from-the-gallery"></a>OfficeSpace-szoftver hozzáadása a katalógusból
 
-Konfigurálja és tesztelje az Azure AD SSO-t az OfficeSpace szoftverrel egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó az OfficeSpace Szoftverben.
+A OfficeSpace-szoftverek Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a OfficeSpace szoftvert a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Az Azure AD SSO OfficeSpace szoftverrel való konfigurálásához és teszteléséhez hajtsa végre az alábbi építőelemeket:
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **OfficeSpace Software** kifejezést a keresőmezőbe.
+1. Válassza ki a **OfficeSpace szoftvert** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja az OfficeSpace Software SSO-t](#configure-officespace-software-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    1. **[Hozzon létre OfficeSpace Szoftver teszt felhasználó](#create-officespace-software-test-user)** - hogy egy megfelelője B.Simon az OfficeSpace szoftver, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-officespace-software"></a>Azure AD-alapú egyszeri bejelentkezés konfigurálása és tesztelése OfficeSpace szoftverhez
+
+Konfigurálja és tesztelje az Azure AD SSO-t OfficeSpace szoftverrel egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a OfficeSpace szoftverben.
+
+Az Azure AD SSO OfficeSpace szoftverrel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[OfficeSpace szoftveres egyszeri bejelentkezés konfigurálása](#configure-officespace-software-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre OfficeSpace szoftveres tesztelési felhasználót](#create-officespace-software-test-user)** –, hogy a OfficeSpace-szoftverben található, a felhasználó Azure ad-képviseletéhez kapcsolódó, B. Simon.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **OfficeSpace Software** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza **az egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/)a **OfficeSpace Software** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.officespacesoftware.com/users/sign_in/saml`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.officespacesoftware.com/users/sign_in/saml`
 
-    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`<company name>.officespacesoftware.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`<company name>.officespacesoftware.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [az OfficeSpace szoftverügyfél támogatási csapatával,](mailto:support@officespacesoftware.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez lépjen kapcsolatba a [OfficeSpace szoftveres](mailto:support@officespacesoftware.com) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az OfficeSpace Software alkalmazás az SAML-állításokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumkonfigurációjához. A következő képernyőképen az alapértelmezett attribútumok listája látható, ahol a **nameidentifier** a **user.userprincipalname**. Az OfficeSpace Software alkalmazás elvárja, hogy a **névazonosító** t appleképezve legyen **user.mail,** ezért az attribútumleképezést a **Szerkesztés** ikonra kattintva kell módosítania, és módosítania kell az attribútumleképezést.
+1. A OfficeSpace szoftveres alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A OfficeSpace szoftveralkalmazások azt várja, hogy a **NameIdentifier** a **User. mail**használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
 
     ![image](common/edit-attribute.png)
 
-1. A fentieken kívül az OfficeSpace Software alkalmazás arra számít, hogy néhány további attribútum ot kell visszaadni az SAML válaszban, amelyek az alábbiakban láthatók. Ezek az attribútumok is előre ki vannak töltve, de áttekintheti őket a követelmény nek megfelelően.
+1. A fentieken kívül a OfficeSpace-alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútuma|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |
-    | e-mail | user.mail |
-    | név | user.displayname |
-    | first_name | user.givenname |
-    | last_name | user.vezetéknév |
+    | e-mail | User. mail |
+    | név | felhasználó. DisplayName |
+    | first_name | User. givenName |
+    | last_name | felhasználó. vezetéknév |
 
-1. Az **SAML aláíró tanúsítvány csoportban** kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
+1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
     ![SAML aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
 
-1. Az **SAML aláíró tanúsítvány szakaszban** másolja a **hüvelykujj értékét,** és mentse a számítógépre.
+1. Az **SAML aláíró tanúsítvány** szakaszban másolja az **ujjlenyomat értékét** , és mentse a számítógépre.
 
-    ![Ujjlenyomat másolása érték](common/copy-thumbprint.png)
+    ![Ujjlenyomat értékének másolása](common/copy-thumbprint.png)
 
-1. Az **OfficeSpace szoftver beállítása** csoportban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **OfficeSpace szoftver beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít az OfficeSpace szoftverhez.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a OfficeSpace szoftverhez.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza az **OfficeSpace Software lehetőséget.**
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza ki a **OfficeSpace szoftvert**.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="configure-officespace-software-sso"></a>Officespace szoftverstso konfigurálása
+### <a name="configure-officespace-software-sso"></a>OfficeSpace szoftveres egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az OfficeSpace Software bérlőjéhez.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a OfficeSpace szoftveres bérlőbe.
 
-2. Nyissa meg a **Beállítások lapot,** és kattintson **az Összekötők gombra.**
+2. Válassza a **Beállítások** , majd az **Összekötők**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_002.png)
 
-3. Kattintson **az SAML-hitelesítés gombra.**
+3. Kattintson az **SAML-hitelesítés**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_003.png)
 
-4. Az **SAML-hitelesítés** szakaszban hajtsa végre az alábbi lépéseket:
+4. Az **SAML hitelesítés** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/officespace-tutorial/tutorial_officespace_004.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_004.png)
 
-    a. A **Kijelentkezésszolgáltató URL-címmezőjébe** illessze be a **Kijelentkezés URL-címének** értékét, amelyet az Azure Portalról másolt.
+    a. A **kijelentkezési szolgáltató URL-címe** szövegmezőbe illessze be azt a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
-    b. Az **ügyfél idp cél URL-szövegmezőbe** illessze be a **bejelentkezési URL-cím** értékét, amelyet az Azure Portalról másolt.
+    b. Az **ügyfél identitásszolgáltató-cél URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
-    c. Illessze be az Azure Portalról másolt **ujjlenyomat-értéket** az **Ügyfél IDP-tanúsítvány ujjlenyomatának** szövegmezőjébe. 
+    c. Illessze be a Azure Portalból másolt **ujjlenyomat** -értéket az ügyfél- **identitásszolgáltató tanúsítványának ujjlenyomat** szövegmezőbe. 
 
-    d. Kattintson **a Beállítások mentése gombra.**
+    d. Kattintson a **Beállítások mentése**gombra.
 
-### <a name="create-officespace-software-test-user"></a>OfficeSpace szoftverteszt-felhasználó létrehozása
+### <a name="create-officespace-software-test-user"></a>OfficeSpace szoftveres tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B.Simon nevű felhasználó jön létre az OfficeSpace Szoftverben. Az OfficeSpace szoftver támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik az OfficeSpace Szoftverben, a hitelesítés után új felhasználó jön létre.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a OfficeSpace szoftverben. A OfficeSpace szoftver támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a OfficeSpace szoftverben, a hitelesítés után létrejön egy új.
 
 > [!NOTE]
-> Ha manuálisan kell létrehoznia egy felhasználót, kapcsolatba kell lépnie [az OfficeSpace szoftvertámogatási csapatával.](mailto:support@officespacesoftware.com)
+> Ha manuálisan kell létrehoznia egy felhasználót, kapcsolatba kell lépnie a [OfficeSpace szoftver támogatási csoportjával](mailto:support@officespacesoftware.com).
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen az OfficeSpace Szoftver csempére kattint, automatikusan be kell jelentkeznie az OfficeSpace szoftverbe, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a OfficeSpace szoftver csempére kattint, automatikusan be kell jelentkeznie arra a OfficeSpace-szoftverbe, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki az OfficeSpace szoftvert az Azure AD-vel](https://aad.portal.azure.com/)
+- [OfficeSpace szoftver kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 

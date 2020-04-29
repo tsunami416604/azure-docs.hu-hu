@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:` Felügyelt identitás használata az Azure Key Vault eléréséhez – Windows – Azure AD
+title: Oktatóanyag`:` felügyelt identitás használata Azure Key Vault-Windows-Azure ad eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Key Vaulthoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971892"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Oktatóanyag: Hozzáférés az Azure Key Vaulthoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással 
@@ -48,11 +48,11 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása  
  
-Ez a szakasz bemutatja, hogyan adhat hozzáférést a virtuális gép egy key vaultban tárolt titkos kulcs. Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure AD-hitelesítést.Az Azure AD-hitelesítést azonban nem minden Azure-szolgáltatás támogatja.Az Azure-erőforrások felügyelt identitásainak ilyen szolgáltatásokkal való használatához tárolja el a szolgáltatás hitelesítő adatait az Azure Key Vaultban, és a virtuális gép felügyelt identitásával férjen hozzá a Key Vaulthoz, hogy le tudja kérni a hitelesítő adatokat. 
+Ez a szakasz bemutatja, hogyan biztosítható a virtuális gép hozzáférése egy Key Vault tárolt titkos kulcshoz. Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure AD-hitelesítést.Az Azure AD-hitelesítést azonban nem minden Azure-szolgáltatás támogatja.Az Azure-erőforrások felügyelt identitásainak ilyen szolgáltatásokkal való használatához tárolja el a szolgáltatás hitelesítő adatait az Azure Key Vaultban, és a virtuális gép felügyelt identitásával férjen hozzá a Key Vaulthoz, hogy le tudja kérni a hitelesítő adatokat. 
 
 Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a VM rendszer által hozzárendelt felügyelt identitása hozzá tudjon férni.   
 
-1. A bal oldali navigációs sáv tetején válassza az **Erőforrás biztonsága** > +**Identitáskulcs-tároló****Security + Identity** > lehetőséget.  
+1. A bal oldali navigációs sáv tetején válassza az **erőforrás** > létrehozása**Biztonság és Identitáskezelés** > **Key Vault**lehetőséget.  
 2. Adja meg az új Key Vault **nevét**. 
 3. A Key Vaultot ugyanabban az előfizetésben és erőforráscsoportban hozza létre, mint a korábban létrehozott virtuális gépet. 
 4. Válassza a **Hozzáférési szabályzatok** lehetőséget, és kattintson az **Új hozzáadása** gombra. 
@@ -75,12 +75,12 @@ Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja k�
  
 ## <a name="access-data"></a>Adatok elérése  
 
-Ez a szakasz bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot a virtuális gép identitásával, és használja a titkos kulcsot a Key Vaultból. Ha nincs telepítve a PowerShell 4.3.1-es vagy újabb verziója, [le kell töltenie és telepítenie kell a legújabb verziót](https://docs.microsoft.com/powershell/azure/overview).
+Ez a szakasz bemutatja, hogyan kérhet hozzáférési tokent a virtuális gép identitásával, és hogyan kérheti le a titkos kulcsot a Key Vault. Ha nincs telepítve a PowerShell 4.3.1-es vagy újabb verziója, [le kell töltenie és telepítenie kell a legújabb verziót](https://docs.microsoft.com/powershell/azure/overview).
 
 Először a VM rendszer által hozzárendelt felügyelt identitásával szerezzen be egy hozzáférési jogkivonatot a Key Vaulton végzett hitelesítéshez:
  
 1. A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre.
-2. Írja be azt a **felhasználónevet** és **jelszót,** amelyhez a **Windows virtuális gép**létrehozásakor adott hozzá.  
+2. Adja meg a **felhasználónevét** és **jelszavát** , amelyet a **Windows rendszerű virtuális gép**létrehozásakor adott hozzá.  
 3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a PowerShellt a távoli munkamenetben.  
 4. A PowerShellben hívjon meg egy webes kérést a bérlőn, amellyel lekéri a jogkivonatot a helyi gazdagéphez a virtuális gép adott portján.  
 

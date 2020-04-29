@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Firmex VDR-rel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Firmex VDR között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Firmex VDR | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Firmex VDR között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,200 +16,200 @@ ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdfb857d3a68081fda84aef33e6b5a4b4d1bce28
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76761237"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Firmex VDR-rel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Firmex-VDR
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Firmex VDR-t az Azure Active Directoryval (Azure AD). Ha integrálja a Firmex VDR-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Firmex-VDR a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Firmex VDR, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Firmex VDR-hez.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezhessenek a Firmex VDR-be az Azure AD-fiókjukkal.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* Vezérlés az Azure AD-ben, aki hozzáfér a Firmex VDR.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Firmex VDR az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Firmex VDR egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Firmex VDR egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Firmex VDR támogatja az **SP és az IDP** által kezdeményezett SSO-t
+* A Firmex VDR támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-* A Firmex konfigurálása után kényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlők a feltételes hozzáféréstől származnak. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* A Firmex konfigurálása után kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-firmex-vdr-from-the-gallery"></a>Firmex VDR hozzáadása a galériából
+## <a name="adding-firmex-vdr-from-the-gallery"></a>Firmex-VDR hozzáadása a gyűjteményből
 
-A Firmex VDR Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Firmex VDR-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Firmex-VDR Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Firmex-VDR a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be a **Firmex VDR** kifejezést a keresőmezőbe.
-1. Válassza a **Firmex VDR** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Firmex VDR** kifejezést a keresőmezőbe.
+1. Válassza ki a **FIRMEX VDR** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-firmex-vdr"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése a Firmex VDR-hez
+## <a name="configure-and-test-azure-ad-single-sign-on-for-firmex-vdr"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Firmex VDR
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Firmex VDR segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó a Firmex VDR-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Firmex VDR egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Firmex VDR.
 
-Az Azure AD SSO firmex VDR-rel való konfigurálásához és teszteléséhez hajtsa végre az alábbi építőelemeket:
+Az Azure AD SSO Firmex-VDR való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a Firmex VDR Egyszeri bejelentkezést](#configure-firmex-vdr-sso)** - az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    * **[Hozzon létre Firmex VDR tesztfelhasználót](#create-firmex-vdr-test-user)** – hogy a Firmex VDR-ben b.Simon megfelelője legyen, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Firmex-VDR SSO konfigurálása](#configure-firmex-vdr-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Firmex-VDR-teszt felhasználó létrehozása](#create-firmex-vdr-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon FIRMEX-VDR rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Firmex VDR-alkalmazásintegrációs** lapon keresse meg a **Kezelés szakaszt,** és válassza ki **az egyszeri bejelentkezést.**
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A beállítások szerkesztéséhez kattintson az **SAML-lel való egyszeri bejelentkezés** beállítása lapon az egyszerű **SAML-konfiguráció** szerkesztési/tollikonjára.
+1. A [Azure Portal](https://portal.azure.com/) **Firmex VDR** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania semmilyen lépést, mivel az alkalmazás már előre integrálva van az Azure-ral.
+1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írja be az URL-címet:`https://login.firmex.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://login.firmex.com`
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
-1. A Firmex VDR alkalmazás egy adott formátumban várja az SAML-állításokat, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Firmex VDR alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
-1. A fentieken kívül a Firmex VDR alkalmazás arra számít, hogy néhány további attribútum ot kell visszaadni az SAML válaszban, amelyek az alábbiakban láthatók. Ezek az attribútumok is előre ki vannak töltve, de áttekintheti őket a követelmények nek megfelelően.
+1. A fentiek mellett a Firmex VDR alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútuma|
+    | Name (Név) | Forrás attribútum|
     | ------------ | --------- |
-    | e-mail | user.mail |
+    | e-mail | User. mail |
 
-1. Az **egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszban** keresse meg az **összevonási metaadat-XML-t,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. A **Set-up Firmex VDR** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **set-up FIRMEX VDR** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban lehetővé teszi b.Simon azure egyszeri bejelentkezés t a Firmex VDR hozzáférést biztosítva a Firmex VDR.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Firmex VDR.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **Firmex VDR**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **FIRMEX VDR**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-firmex-vdr-sso"></a>A Firmex VDR SSO konfigurálása
+## <a name="configure-firmex-vdr-sso"></a>Firmex VDR SSO konfigurálása
 
 ### <a name="before-you-get-started"></a>A kezdés előtt
 
-#### <a name="what-youll-need"></a>Amire szüksége lesz?
+#### <a name="what-youll-need"></a>Mire lesz szüksége
 
 -   Aktív Firmex-előfizetés
--   Az Azure AD az SSO szolgáltatás
--   A rendszergazda az SSO konfigurálásához
--   Az Egyszeri bejelentkezés engedélyezése után a vállalat összes felhasználójának sso használatával kell bejelentkeznie a Firmex-be, és nem kell bejelentkezési jelszót használnia.
+-   Azure AD-beli egyszeri bejelentkezéses szolgáltatás
+-   A rendszergazda konfigurálja az SSO-t
+-   Ha engedélyezve van az egyszeri bejelentkezés, a vállalat összes felhasználójának be kell jelentkeznie a Firmex az SSO használatával, és nem kell bejelentkezési vagy jelszót használnia.
 
-#### <a name="how-long-will-this-take"></a>Meddig fog ez tartani?
+#### <a name="how-long-will-this-take"></a>Mennyi időt vesz igénybe?
 
-Az SSO megvalósítása néhány percet vesz igénybe. Gyakorlatilag nincs állásidő a Firmex Support között, amely lehetővé teszi az Egyszeri használat talvaló használatát a webhelyszámára, és a vállalat felhasználói nak az Egyszeri sso használatával történő hitelesítése között. Csak kövesse az alábbi lépéseket.
+Az SSO implementálása néhány percet vesz igénybe. A Firmex támogatása gyakorlatilag nem áll fenn az egyszeri bejelentkezés engedélyezésével a webhelyén, a vállalat felhasználói pedig SSO használatával hitelesítik magukat. Csak kövesse az alábbi lépéseket.
 
-### <a name="step-1---identify-your-companys-domains"></a>1. lépés – A vállalat tartományainak azonosítása
+### <a name="step-1---identify-your-companys-domains"></a>1. lépés – a vállalat tartományának azonosítása
 
-Azonosítsa azokat a tartományokat, amelyekbe a vállalat felhasználói bejelentkeznek.
+Azonosítsa azokat a tartományokat, amelyekkel a vállalat felhasználói bejelentkeznek.
 
-Példa:
+Például:
 
 - @firmex.com
 - @firmex.ca
 
-### <a name="step-2---contact-firmex-support-with-your-domains"></a>2. lépés - Lépjen kapcsolatba a Firmex ügyfélszolgálatával a domainjeivel
+### <a name="step-2---contact-firmex-support-with-your-domains"></a>2. lépés – Kapcsolatfelvétel a Firmex-támogatással a tartományokkal
 
-Írjon [e-mailt a Firmex ügyfélszolgálatának,](mailto:support@firmex.com) vagy hívja a 1888 688 4042 x.11-et, hogy beszéljen a Firmex ügyfélszolgálatával. Adja át a domain adatait. A Firmex Support hozzáadja a domaineket a VDR-hez, mint **azt állította domainek**. A rendszergazdának most konfigurálnia kell az SSO-t.
+E-mail- [Firmex támogató csapat](mailto:support@firmex.com) vagy 1888 688 4042 x. 11 hívása, hogy beszéljen a Firmex támogatásáról. Adja át a tartomány adatait. A Firmex-támogatás a tartományokat a VDR adja hozzá az **igényelt tartományokhoz**. A rendszergazdának most már konfigurálnia kell az SSO-t.
 
-Figyelmeztetés: Amíg a webhely rendszergazdája nem konfigurálja az igényelt tartományokat, a vállalat felhasználói nem tudnak bejelentkezni a VDR-be. A nem vállalati felhasználók (azaz a vendégfelhasználók) továbbra is bejelentkezhetnek e-mailcímükkel/jelszavukkal. A konfiguráció néhány percet vesz igénybe.
+Figyelmeztetés: amíg a hely rendszergazdája nem konfigurálja az igényelt tartományokat, a vállalat felhasználói nem tudnak majd bejelentkezni a VDR. A nem vállalati felhasználók (azaz a vendég felhasználók) továbbra is bejelentkezhetnek az e-mail-/jelszavuk használatával. A konfiguráció eltarthat néhány percig.
 
-### <a name="step-3---configure-the-claimed-domains"></a>3. lépés - Az igényelt tartományok konfigurálása
+### <a name="step-3---configure-the-claimed-domains"></a>3. lépés – az igényelt tartományok konfigurálása
 
-1. Jelentkezzen be a Firmex webhelyadminisztrátoraként.
-1. A bal felső sarokban kattintson a vállalat emblémájára.
-1. Válassza az **SSO** lapot. Ezután válassza **az SSO-konfiguráció lehetőséget.** Kattintson a konfigurálni kívánt tartományra.
+1. Jelentkezzen be a Firmex webhely-rendszergazdaként.
+1. A bal felső sarokban kattintson a céges emblémára.
+1. Válassza az **egyszeri bejelentkezés** lapot. Ezután válassza az **SSO-konfiguráció**lehetőséget. Kattintson a konfigurálni kívánt tartományra.
 
     ![Igényelt tartományok](./media/firmex-vdr-tutorial/edit-sso.png)  
 
-1. A rendszergazda töltse ki a következő mezőket. A mezőket az identitásszolgáltatótól kell venni:  
+1. Adja meg a rendszergazdának a következő mezőket. A mezőket az identitás-szolgáltatótól kell venni:  
 
     ![SSO-konfiguráció](./media/firmex-vdr-tutorial/SSO-config.png)
 
-    a. Az **Entitásazonosító** szövegdobozába illessze be az **Azure AD-azonosító** értékét, amelyet az Azure Portalról másolt.
+    a. Az **entitás-azonosító** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
 
-    b. Az **identitásszolgáltató URL-címmezőjébe** illessze be a **bejelentkezési URL-értéket,** amelyet az Azure Portalról másolt.
+    b. Az **Identity Provider URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
-    c. **Nyilvános kulcsú tanúsítvány** – Hitelesítési célokra a kibocsátó digitálisan aláírhatja az SAML-üzenetet. Az üzenet aláírásának ellenőrzéséhez az üzenetfogadó egy nyilvános kulcsot használ, amely ről ismert, hogy a kibocsátóhoz tartozik. Hasonlóképpen, egy üzenet titkosításához a kibocsátónak ismernie kell a végső fogadóhoz tartozó nyilvános titkosítási kulcsot. Mindkét esetben – az aláírás és a titkosítás – a megbízható nyilvános kulcsokat előre meg kell osztani.  Ez az **Összevonási metaadat-XML** **X509Certificate tanúsítványa**
+    c. **Nyilvános kulcsú tanúsítvány** – hitelesítési célból a kibocsátó digitálisan aláírja az SAML-üzenetet. Az üzenet aláírásának ellenőrzéséhez az üzenet fogadója egy ismert nyilvános kulcsot használ, amely a kibocsátóhoz tartozik. Hasonlóképpen, egy üzenet titkosításához a végső fogadóhoz tartozó nyilvános titkosítási kulcsnak ismertnek kell lennie a kibocsátó számára. Mindkét esetben – aláírás és titkosítás – a megbízható nyilvános kulcsokat előre meg kell osztani.  Ez az **x509** az **összevonási metaadatok XML-fájlja**
 
-    d. Kattintson a **Mentés** gombra az SSO-konfiguráció befejezéséhez. A módosítások azonnal életbe lépnek.
+    d. Az egyszeri bejelentkezés konfigurációjának befejezéséhez kattintson a **Mentés** gombra. A módosítások azonnal érvénybe lépnek.
 
-1. Jelenleg az Egyszeri sso engedélyezve van a webhelyen.
+1. Jelenleg az SSO engedélyezve van a webhelyen.
 
-### <a name="create-firmex-vdr-test-user"></a>Firmex VDR tesztfelhasználó létrehozása
+### <a name="create-firmex-vdr-test-user"></a>Firmex VDR-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B.Simon nevű felhasználót hoz létre a Firmex alkalmazásban. Működjön együtt a [Firmex támogatási csapatával](mailto:support@firmex.com) a felhasználók firmex platformon való hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Firmex-ben. Együttműködik a [Firmex támogatási csapatával](mailto:support@firmex.com) , hogy hozzáadja a felhasználókat a Firmex platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-## <a name="test-sso"></a>SSO tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a Firmex VDR csempére kattint, automatikusan be kell jelentkeznie a Firmex VDR-be, amelyhez az Egyszeri bejelentkezést beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a Firmex VDR csempére kattint, automatikusan be kell jelentkeznie arra a Firmex-VDR, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a Firmex VDR-t az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a Firmex VDR az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Hogyan védheti meg a Firmex-et a fejlett láthatósággal és ellenőrzésekkel?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Firmex és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

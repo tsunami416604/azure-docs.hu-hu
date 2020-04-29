@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: HDInsight Apache Storm to Storage - Azure/Data Lake'
-description: Oktatóanyag – Ismerje meg, hogyan írhat az Apache Storm segítségével az Azure HDInsight HDFS-kompatibilis tárhelyére.
+title: 'Oktatóanyag: a HDInsight Apache Storm a Storage-ban – Azure/Data Lake'
+description: Oktatóanyag – Ismerje meg, hogy a Apache Storm használatával hogyan írhat a HDFS-kompatibilis tárolóba az Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,40 +9,40 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73241213"
 ---
-# <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Oktatóanyag: Írjon az Apache Hadoop HDFS-nek az Apache Storm szolgáltatásból az Azure HDInsight szolgáltatásban
+# <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Oktatóanyag: írás Apache Hadoop HDFS az Azure HDInsight Apache Stormból
 
-Ez az oktatóanyag bemutatja, hogyan lehet az Apache Storm segítségével adatokat írni az Apache Storm által a HDInsighton használt HDFS-kompatibilis tárhelyre. A HDInsight az Azure Storage és az Azure Data Lake Storage is használható HDFS-kompatibilis tárolóként. A Storm egy [HdfsBolt-összetevőt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) biztosít, amely adatokat ír a HDFS-be. Ez a dokumentum a HdfsBolt-tárolóbármelyik tárológépre történő írással kapcsolatos információkat tartalmazza.
+Ez az oktatóanyag azt mutatja be, hogyan használható a Apache Storm a Apache Storm által a HDInsight-ben használt HDFS-kompatibilis tárolóba való íráshoz. A HDInsight az Azure Storage-t és a Azure Data Lake Storage is használhatja HDFS-kompatibilis tárolóként. A Storm egy [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) -összetevőt biztosít, amely az HDFS-ba írja az adatot. Ez a dokumentum információt nyújt a HdfsBolt-ból származó tárolók típusának írásáról.
 
-A jelen dokumentumban használt példatopológia a Storm a HDInsight-on található összetevőkre támaszkodik. Előfordulhat, hogy módosítani kell az Azure Data Lake Storage-szal való együttműködésre, ha más Apache Storm-fürtökkel használja.
+A dokumentumban használt példa topológiája a HDInsight-alapú Storm-hez tartozó összetevőkre támaszkodik. Előfordulhat, hogy a módosítást úgy kell megkövetelni, hogy más Apache Storm fürtökkel való használat esetén Azure Data Lake Storage működjön.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A fürt konfigurálása parancsfájlművelettel
-> * A topológia összeállítása és csomagolása
-> * A topológia telepítése és futtatása
-> * Kimeneti adatok megtekintése
+> * A fürt konfigurálása parancsfájl-művelettel
+> * A topológia létrehozása és becsomagolása
+> * A topológia üzembe helyezése és futtatása
+> * Kimeneti adatokat tekinthet meg
 > * A topológia leállítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Java Developer Kit (JDK) 8-as verzió](https://aka.ms/azure-jdks)
 
-* [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [telepítve](https://maven.apache.org/install.html) szerint Apache.  Maven egy projekt épít rendszer Java projektek.
+* Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
-* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* A fürtök [elsődleges tárolóURI-séma.](../hdinsight-hadoop-linux-information.md#URI-and-scheme) Ez az `wasb://` Azure Storage, `abfs://` az Azure Data `adl://` Lake Storage Gen2 vagy az Azure Data Lake Storage Gen1 esetében lesz. Ha a biztonságos átvitel engedélyezve van `wasbs://`az Azure Storage számára, az URI lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure `wasb://` Storage `abfs://` számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az `wasbs://`URI a következő lesz:.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
 ### <a name="example-configuration"></a>Konfigurációs példa
 
-A következő YAML egy `resources/writetohdfs.yaml` részlet a példában szereplő fájlból. Ez a fájl határozza meg a Storm topológia segítségével [flux](https://storm.apache.org/releases/current/flux.html) keretapache storm.
+A következő YAML a példában szereplő `resources/writetohdfs.yaml` fájl kivonata. Ez a fájl határozza meg a Storm-topológiát a Apache Storm [Flux](https://storm.apache.org/releases/current/flux.html) -keretrendszerének használatával.
 
 ```yaml
 components:
@@ -100,67 +100,67 @@ bolts:
 
 Ez a YAML a következő elemeket határozza meg:
 
-* `syncPolicy`: Azt határozza meg, hogy a fájlok mikor vannak szinkronizálva/kiürítve a fájlrendszerbe. Ebben a példában minden 1000 tuples.
-* `fileNameFormat`: Meghatározza a fájlok írásakor használandó elérési utat és fájlnévmintát. Ebben a példában az elérési út futásidőben, szűrő használatával `.txt`érhető el, és a fájlkiterjesztés a .
-* `recordFormat`: Meghatározza az írott fájlok belső formátumát. Ebben a példában a mezőket a `|` karakter haezteti.
-* `rotationPolicy`: Meghatározza, hogy mikor kell elforgatni a fájlokat. Ebben a példában nem történik elforgatás.
-* `hdfs-bolt`: Az előző összetevőket használja az `HdfsBolt` osztály konfigurációs paramétereként.
+* `syncPolicy`: Meghatározza, hogy a rendszer mikor szinkronizálja vagy Ürítse ki a fájlokat a fájlrendszerben. Ebben a példában minden 1000-rekordok.
+* `fileNameFormat`: Meghatározza a fájlok írásakor használandó elérési utat és fájlnevet. Ebben a példában az elérési utat egy szűrővel kell megadni futásidőben, és a fájlkiterjesztés a `.txt`következő:.
+* `recordFormat`: Az írt fájlok belső formátumának meghatározása. Ebben a példában a mezőket a `|` karakter tagolja.
+* `rotationPolicy`: Meghatározza, hogy mikor kell elforgatni a fájlokat. Ebben a példában a rendszer nem hajt végre rotációt.
+* `hdfs-bolt`: Az előző összetevőket használja konfigurációs paraméterekként a `HdfsBolt` osztályhoz.
 
-A Flux keretrendszerről további [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)információt a .
+További információ a Flux-keretrendszerről: [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html).
 
 ## <a name="configure-the-cluster"></a>A fürt konfigurálása
 
-Alapértelmezés szerint a Storm on HDInsight nem `HdfsBolt` tartalmazza azokat az összetevőket, amelyek az Azure Storage vagy a Data Lake Storage a Storm osztályelérési útja során kommunikálnak. A következő parancsfájlművelettel adja hozzá `extlib` ezeket az összetevőket a Storm könyvtárához a fürtön:
+Alapértelmezés szerint a Storm on HDInsight nem tartalmazza az Azure Storage szolgáltatással való kommunikációhoz `HdfsBolt` használt összetevőket, Data Lake Storage vagy a Storm osztályútvonal. A következő parancsfájl-művelettel adhatja hozzá ezeket az összetevőket `extlib` a fürtön található Storm-címtárhoz:
 
 | Tulajdonság | Érték |
 |---|---|
-|Parancsfájl típusa |- Egyéni|
-|Bash parancsfájl URI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
-|Csomóponttípus(ok) |Nimbus, biztos|
+|Parancsfájl típusa |– Egyéni|
+|Bash-parancsfájl URI-ja |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
+|Csomópont típusa (i) |Nimbus, felügyelő|
 |Paraméterek |None|
 
-A parancsfájl fürttel való használatáról a [HDInsight-fürtök testreszabása parancsfájlműveletek használatával](./../hdinsight-hadoop-customize-cluster-linux.md) című dokumentumban talál további információt.
+További információ a parancsfájlnak a fürthöz való használatáról: [HDInsight-fürtök testreszabása parancsfájl-műveletek dokumentum használatával](./../hdinsight-hadoop-customize-cluster-linux.md) .
 
-## <a name="build-and-package-the-topology"></a>A topológia összeállítása és csomagolása
+## <a name="build-and-package-the-topology"></a>A topológia létrehozása és becsomagolása
 
-1. Töltse le a [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) példaprojektet a fejlesztői környezetbe.
+1. Töltse le a példa projektet [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) a alkalmazásból a fejlesztői környezetbe.
 
-2. A parancssorból, terminálból vagy rendszerhéj-munkamenetből módosítsa a könyvtárakat a letöltött projekt gyökerére. A topológia létrehozásához és csomagolásához használja a következő parancsot:
+2. A parancssorból, a terminálból vagy a rendszerhéj-munkamenetből módosítsa a könyvtárakat a letöltött projekt gyökerébe. A topológia létrehozásához és előkészítéséhez használja a következő parancsot:
 
     ```cmd
     mvn compile package
     ```
 
-    A létrehozás és a csomagolás befejezése után `target`egy új könyvtár `StormToHdfs-1.0-SNAPSHOT.jar`neve is található, amely a . Ez a fájl tartalmazza a lefordított topológiát.
+    A build és a csomagolás befejezése után egy nevű `target`új könyvtár található, amely egy nevű `StormToHdfs-1.0-SNAPSHOT.jar`fájlt tartalmaz. Ez a fájl tartalmazza a lefordított topológiát.
 
-## <a name="deploy-and-run-the-topology"></a>A topológia telepítése és futtatása
+## <a name="deploy-and-run-the-topology"></a>A topológia üzembe helyezése és futtatása
 
-1. A következő paranccsal másolja a topológiát a HDInsight-fürtbe. Cserélje `CLUSTERNAME` le a fürt nevére.
+1. A következő parancs használatával másolja a topológiát a HDInsight-fürtre. Cserélje `CLUSTERNAME` le a nevet a fürt nevére.
 
     ```cmd
     scp target\StormToHdfs-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
     ```
 
-1. Miután a feltöltés befejeződött, az alábbiak használatával csatlakozhat a HDInsight-fürthöz az SSH használatával. Cserélje `CLUSTERNAME` le a fürt nevére.
+1. A feltöltés befejeződése után a következő paranccsal csatlakozhat a HDInsight-fürthöz az SSH használatával. Cserélje `CLUSTERNAME` le a nevet a fürt nevére.
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. A csatlakozás után a következő paranccsal hozzon létre egy nevű `dev.properties`fájlt:
+1. Csatlakozás után a következő paranccsal hozzon létre egy nevű `dev.properties`fájlt:
 
     ```bash
     nano dev.properties
     ```
 
-1. A `dev.properties` fájl tartalmaként a következő szöveget használja. Szükség szerint vizsgálja felül az [URI-séma](../hdinsight-hadoop-linux-information.md#URI-and-scheme)alapján.
+1. Használja a következő szöveget a `dev.properties` fájl tartalmának megfelelően. Szükség szerint módosítsa az [URI-séma](../hdinsight-hadoop-linux-information.md#URI-and-scheme)alapján.
 
     ```
     hdfs.write.dir: /stormdata/
     hdfs.url: wasbs:///
     ```
 
-    A fájl mentéséhez használja a __Ctrl + X__, y , és végül __enter__billentyűt. __Y__ A fájl értékei beállítják a tárolási URL-címet és azt a könyvtárnevet, amelybe az adatokat írják.
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__, majd az __Y__billentyűt, és végül __írja be__a következőt:. A fájl értékei a tárolási URL-címet és annak a könyvtárnak a nevét írják be, amelybe az adatok bekerülnek.
 
 1. A topológia elindításához használja a következő parancsot:
 
@@ -168,17 +168,17 @@ A parancsfájl fürttel való használatáról a [HDInsight-fürtök testreszab�
     storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
     ```
 
-    Ez a parancs elindítja a topológiát a Flux-keretrendszer használatával a fürt Nimbus csomópontjára való elküldésével. A topológiát `writetohdfs.yaml` az edényben található fájl határozza meg. A `dev.properties` fájl szűrőként kerül átadásra, és a topoológia beolvassa a fájlban lévő értékeket.
+    Ez a parancs elindítja a topológiát a Flux keretrendszer használatával, ha elküldi azt a fürt Nimbus-csomópontjára. A topológiát a jar-ban `writetohdfs.yaml` található fájl határozza meg. A `dev.properties` rendszer szűrőként továbbítja a fájlt, és a fájlban található értékeket a topológia olvassa be.
 
-## <a name="view-output-data"></a>Kimeneti adatok megtekintése
+## <a name="view-output-data"></a>Kimeneti adatokat tekinthet meg
 
-Az adatok megtekintéséhez használja a következő parancsot:
+Az adatmegjelenítéshez használja a következő parancsot:
 
   ```bash
   hdfs dfs -ls /stormdata/
   ```
 
-Megjelenik a topológia által létrehozott fájlok listája. Az alábbi lista az előző parancsok által visszaadott adatokat tartalmazza:
+Megjelenik a topológia által létrehozott fájlok listája. Az alábbi lista az előző parancsokban visszaadott értékeket szemlélteti:
 
 ```output
 Found 23 items
@@ -193,7 +193,7 @@ Found 23 items
 
 ## <a name="stop-the-topology"></a>A topológia leállítása
 
-A storm topológiák a leállított állapotig vagy a fürt törléséig futnak. A topológia leállításához használja a következő parancsot:
+A Storm-topológiák Leállításig futnak, vagy a fürt törlődik. A topológia leállításához használja a következő parancsot:
 
 ```bash
 storm kill hdfswriter
@@ -211,7 +211,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan írhat adatokat az Apache Storm által a HDInsighton használt HDFS-kompatibilis tárolóba az Apache Storm segítségével.
+Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Apache Stormt a Apache Storm által a HDInsight-ben használt HDFS-kompatibilis tárolóba való íráshoz.
 
 > [!div class="nextstepaction"]
-> Fedezzen fel más [Apache Storm-példákat a HDInsighthoz](apache-storm-example-topology.md)
+> További [Apache Storm példák a HDInsight](apache-storm-example-topology.md)

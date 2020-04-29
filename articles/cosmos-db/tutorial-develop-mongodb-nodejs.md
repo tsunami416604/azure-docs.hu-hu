@@ -1,5 +1,5 @@
 ---
-title: Node.Js, Angular alkalmazás az Azure Cosmos DB MongoB API-jával (Part1)
+title: Node. js, a MongoB Azure Cosmos DB API-ját használó szögletes alkalmazás (part1)
 description: Ebben a videoalapú oktatóanyag-sorozatban megtudhatja, hogyan hozhat létre MongoDB-alkalmazásokat Azure Cosmos DB adatbázison Angular és Node használatával a MongoDB-hez használt API-kkal.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,17 +11,17 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444688"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Hozzon létre egy Angular alkalmazást az Azure Cosmos DB MongoDB-hoz való API-jával
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB
 
-Ez a több részes oktatóanyag bemutatja, hogyan hozhat létre egy új alkalmazást a Node.js nyelven express és angular nyelven, majd csatlakoztassa a [Cosmos-fiókhoz, amely a Cosmos DB MongoDB API-jával van konfigurálva.](mongodb-introduction.md)
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Lehetővé teszi, hogy gyorsan hozzon létre és lekérdezési dokumentum, kulcs/érték, és a gráf adatbázisok, amelyek kihasználják a globális terjesztési és horizontális skálázási képességek a Cosmos DB magjában. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Lehetővé teszi olyan dokumentum-, kulcs/érték-és Graph-adatbázisok gyors létrehozását és lekérdezését, amelyek kihasználják a globális elosztási és horizontális méretezési képességeket a Cosmos DB középpontjában. 
 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 

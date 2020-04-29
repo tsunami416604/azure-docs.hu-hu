@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:` Felügyelt identitás használata az Azure Storage eléréséhez – Linux – Azure AD
+title: 'Oktatóanyag`:` : felügyelt identitás használata az Azure Storage – Linux – Azure ad eléréséhez'
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b11df2e1a6140d251801a3243f3eaa9458b77d29
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971921"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Hozzáférés az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
@@ -29,7 +29,7 @@ ms.locfileid: "75971921"
 Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy Linux rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Blobtároló létrehozása egy tárfiókban
 > * Hozzáférés engedélyezése a Linux rendszerű virtuális gép felügyelt identitása számára egy Azure Storage-tárolóhoz
 > * Hozzáférési jogkivonat lekérése, majd azzal az Azure Storage meghívása
@@ -46,7 +46,7 @@ A jelen oktatóanyagban a parancssori példaszkriptek futtatása kétféleképpe
 - Az [Azure Cloud Shell](~/articles/cloud-shell/overview.md) használatával az Azure Portalon vagy a minden egyes kódblokk jobb felső sarkában megtalálható **Kipróbálom** gombbal.
 - Ha inkább a helyi parancssori konzolt kívánja használni, [telepítse a CLI 2.0 legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb).
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
 Ebben a szakaszban egy új tárfiókot fog létrehozni. 
 
@@ -55,7 +55,7 @@ Ebben a szakaszban egy új tárfiókot fog létrehozni.
 3. A **Név** mezőben adja meg a tárfiók nevét.  
 4. A **Telepítési modell** mezőben a **Resource Manager**, a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson **a Létrehozás gombra.**
+6. Kattintson a **Létrehozás**gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -83,8 +83,8 @@ A VM felügyelt identitásával lekérheti az Azure-tárolóblob adatait.
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.  
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
-3. Kattintson **a + Szerepkör-hozzárendelés hozzáadása** a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális gép.
-4. A **Szerepkör csoportban**válassza a **Storage Blob Data Reader (Tárolóblob-adatolvasó) lehetőséget.** 
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez.
+4. A **szerepkör**alatt a legördülő listából válassza a **Storage blob-Adatolvasó**lehetőséget. 
 5. A következő legördülő menüben, a **Hozzáférés hozzárendelése** területen válassza ki a **Virtuális gép** elemet.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a **Minden erőforráscsoport** értékre.  
 7. A **Kiválasztás** mezőben válassza ki a virtuális gépet, majd kattintson a **Mentés** gombra.
@@ -98,7 +98,7 @@ Az Azure Storage natív támogatást nyújt az Azure AD-hitelesítésnek, így k
 Az alábbi lépések elvégzéséhez a korábban létrehozott virtuális gépről kell dolgoznia, az ahhoz való csatlakozáshoz pedig egy SSH-ügyfélre van szüksége. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](~/articles/virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](~/articles/virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
 
 1. Az Azure Portalon lépjen a **Virtuális gépek** területre, keresse meg a Linux rendszerű virtuális gépét, majd az **Áttekintés** lapon kattintson a **Csatlakozás** gombra. Másolja ki sztringet a virtuális géphez való csatlakozáshoz.
-2. **Csatlakozzon** a virtuális géphez az Ön által választott SSH-ügyféllel. 
+2. **Kapcsolódjon** a virtuális géphez az Ön által választott SSH-ügyféllel. 
 3. A terminálablakban a CURL használatával küldjön kérést a helyi felügyeltidentitás-végpontra egy hozzáférési jogkivonat lekérésére az Azure Resource Managerhez.
     
     ```bash

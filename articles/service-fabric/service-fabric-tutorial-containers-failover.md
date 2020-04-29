@@ -1,5 +1,5 @@
 ---
-title: Feladatátvétel és tárolók alkalmazás méretezése
+title: Tárolók feladatátvétele és méretezése
 description: Ez az oktatóanyag bemutatja a feladatátvételek kezelését egy Azure Service Fabric-tárolóalkalmazásban.  Emellett megismerheti a fürtben futó tárolók és szolgáltatások méretezésének módját.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614094"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Oktatóanyag: Tárolószolgáltatások Service Fabrickel történő feladatátvételének és méretezésének bemutatása

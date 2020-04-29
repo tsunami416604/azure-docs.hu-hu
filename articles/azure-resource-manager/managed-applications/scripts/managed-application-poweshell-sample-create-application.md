@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell-parancsfájl-minta – Felügyelt alkalmazás telepítése
-description: Azure PowerShell-mintaparancsfájl-mintát biztosít, amely felügyelt alkalmazásdefiníciót telepít az előfizetésbe.
+title: Azure PowerShell parancsfájl-minta – felügyelt alkalmazás üzembe helyezése
+description: Azure PowerShell minta parancsfájl-mintát biztosít, amely egy felügyelt alkalmazás definícióját telepíti az előfizetésre.
 author: tfitzmac
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650169"
 ---
-# <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Felügyelt alkalmazás központi telepítése a PowerShell szolgáltatáskatalógusához
+# <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Felügyelt alkalmazás üzembe helyezése egy szolgáltatás-katalógusban a PowerShell használatával
 
 Ez a szkript üzembe helyezi egy felügyelt alkalmazás definícióját a szolgáltatáskatalógusból.
 
@@ -33,7 +33,7 @@ Ez a szkript a következő parancsot használja egy felügyelt alkalmazás üzem
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új-AzManagedalkalmazás](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Létrehoz egy felügyelt alkalmazást. Megadja a sablonhoz szükséges definícióazonosítót és paramétereket. |
+| [Új – AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Létrehoz egy felügyelt alkalmazást. Megadja a sablonhoz szükséges definícióazonosítót és paramétereket. |
 
 
 ## <a name="next-steps"></a>További lépések

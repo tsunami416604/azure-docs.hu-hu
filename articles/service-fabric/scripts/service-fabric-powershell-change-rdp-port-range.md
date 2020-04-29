@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.custom: sfrev
 ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76025016"
 ---
 # <a name="update-the-rdp-port-range-values"></a>Az RPD-porttartomány értékeinek frissítése
 
-Ez a példaszkript módosítja az RPD-porttartomány értékeit a fürtcsomópont virtuális gépein a fürt üzembe helyezése után.  Az Azure PowerShellre azért van szükség, hogy a rendszer ne váltson a háttérben lévő virtuális gépek között.  A parancsfájl `Microsoft.Network/loadBalancers` leveszi az erőforrást a fürt `inboundNatPools.frontendPortRangeStart` `inboundNatPools.frontendPortRangeEnd` erőforráscsoportjában, és frissíti a és az értékeket. Szabja testre a paramétereket szükség szerint.
+Ez a példaszkript módosítja az RPD-porttartomány értékeit a fürtcsomópont virtuális gépein a fürt üzembe helyezése után.  Az Azure PowerShellre azért van szükség, hogy a rendszer ne váltson a háttérben lévő virtuális gépek között.  A parancsfájl lekéri `Microsoft.Network/loadBalancers` az erőforrást a fürt erőforráscsoporthoz, és frissíti a `inboundNatPools.frontendPortRangeStart` és `inboundNatPools.frontendPortRangeEnd` az értékeket. Szabja testre a paramétereket szükség szerint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

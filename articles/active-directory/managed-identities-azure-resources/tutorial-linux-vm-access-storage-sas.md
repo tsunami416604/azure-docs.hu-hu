@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Access Azure Storage sas-hitelesítő adatokkal – Linux – Azure AD'
+title: 'Oktatóanyag: az Azure Storage elérése SAS-hitelesítő adatokkal – Linux – Azure AD'
 description: Oktatóanyag, amely bemutatja, hogyan használhatja a Linux virtuális gép rendszer által hozzárendelt felügyelt identitását az Azure Storage elérésére a tárelérési kulcs helyett SAS-hitelesítő adatok használatával.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 670ae329943610ba16411da3782bc1da079c6490
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74183199"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage elérése SAS-hitelesítő adatok használatával Linux VM-beli rendszer által hozzárendelt identitással
@@ -35,7 +35,7 @@ A szolgáltatási SAS segítségével korlátozott hozzáférési lehetőséget 
 
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Blobtároló létrehozása a tárfiókban
 > * Hozzáférés engedélyezése virtuális gép számára a tárfiók a Resource Managerben lévő SAS-adataihoz 
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd a SAS-adatok lekérése a Resource Managerből annak használatával 
@@ -44,7 +44,7 @@ A szolgáltatási SAS segítségével korlátozott hozzáférési lehetőséget 
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
 Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt a lépést, és a VM rendszer által hozzárendelt felügyelt identitása számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
 
@@ -53,7 +53,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt
 3. Adjon meg egy nevet a tárfiók számára a **Név** mezőben, amelyet később használ majd.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson **a Létrehozás gombra.**
+6. Kattintson a **Létrehozás**gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -74,7 +74,7 @@ Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A VM 
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
-3. Kattintson **a + Szerepkör-hozzárendelés hozzáadása** a lap tetejére egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez
 4. A lap jobb oldalán a **Szerepkör** értékeként adja meg a „Tárfiók-közreműködő” értéket. 
 5. A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a „Virtuális gép” értéket.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a „Minden erőforráscsoport” értékre.  

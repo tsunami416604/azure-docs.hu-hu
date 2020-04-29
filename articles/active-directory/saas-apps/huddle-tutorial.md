@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Huddle-szal | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Huddle között.
+title: 'Oktatóanyag: Azure Active Directory integráció a zűrzavar-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és zűrzavar között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,99 +17,99 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1faf1c1fcdefb0c93d36c195f0cf44626a555f44
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158987"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Oktatóanyag: Az Azure Active Directory integrációja a Huddle-szal
+# <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Oktatóanyag: Azure Active Directory integráció a zűrzavar
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Huddle-t az Azure Active Directoryval (Azure AD).
-A Huddle integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a zűrzavar a Azure Active Directory (Azure AD) szolgáltatással.
+A zűrzavar és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Huddle.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve huddle (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a zűrzavar.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a zűrzavar (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálásához a Huddle-szal a következő elemekre van szükség:
+Az Azure AD-integráció zűrzavar való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* Huddle egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Zűrzavar egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Huddle támogatja **sp és IDP** kezdeményezett SSO
+* A zűrzavar támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-## <a name="adding-huddle-from-the-gallery"></a>Huddle hozzáadása a galériából
+## <a name="adding-huddle-from-the-gallery"></a>Zűrzavar hozzáadása a gyűjteményből
 
-A Huddle azure AD-be való integrációjának konfigurálásához hozzá kell adnia a Huddle-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A zűrzavar Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a zűrzavar a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A Huddle hozzáadása a galériából, hajtsa végre az alábbi lépéseket:**
+**Ha zűrzavar szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Huddle**, válassza **huddle** az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **zűrzavar**kifejezést, válassza a **zűrzavar** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Összebújik az eredmények listájában](common/search-new-app.png)
+     ![Zűrzavar az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Huddle-szal egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat huddle létre kell hozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az zűrzavar-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a zűrzavar kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Huddle-szal a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés zűrzavar való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja a Huddle Single Sign-On](#configure-huddle-single-sign-on)** --t az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre huddle teszt felhasználó](#create-huddle-test-user)** - egy megfelelője Britta Simon a Huddle, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Zűrzavar egyszeri bejelentkezés konfigurálása](#configure-huddle-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre zűrzavar-teszt felhasználót](#create-huddle-test-user)** – hogy a zűrzavar Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés zűrzavar való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Huddle** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **zűrzavar** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **Egyszerű SAML-konfiguráció** szakaszban Ha az alkalmazást **IDP** által kezdeményezett módban kívánja konfigurálni, hajtsa végre a következő lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
     > [!NOTE]
-    > A huddle példány automatikusan észleli a tartományban adja meg az alábbi.
+    > A rendszer automatikusan észleli a zűrzavar-példányt az alább megadott tartományból.
 
-    ![Huddle Domain és URL-címek egyszeri bejelentkezési információk](common/idp-intiated.png)
+    ![Zűrzavar tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet:
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
     | | |
     |--|--|
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az al
     | `https://login.huddle.com`|
     | |
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
 
     | | |
     |--|--|
@@ -126,11 +126,11 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az al
     | `https://login.huddle.com/saml/idp-initiated-sso`|
     | |
 
-5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Huddle Domain és URL-címek egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
+    ![Zűrzavar tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | | |
     |--|--|
@@ -139,121 +139,121 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az al
     | |
 
     > [!NOTE]
-    > A bejelentkezési URL-érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba [a Huddle ügyfél támogatási csapatával,](https://huddle.zendesk.com) hogy megkapja ezt az értéket.
+    > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [zűrzavar](https://huddle.zendesk.com) ügyfélszolgálatával.
 
-6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. A **Huddle beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+7. A **zűrzavar beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure-hirdetésazonosító
+    b. Azure ad-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-huddle-single-sign-on"></a>Huddle egyszeri bejelentkezés konfigurálása
+### <a name="configure-huddle-single-sign-on"></a>Zűrzavar egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához a **Huddle** oldalon el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket az Azure Portalról a [Huddle támogatási csapatának.](https://huddle.zendesk.com/) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **zűrzavar** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [zűrzavar támogatási csapatához](https://huddle.zendesk.com/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 > [!NOTE]
-> Az egyszeri bejelentkezést a Huddle támogatási csapatának kell engedélyeznie. Értesítést kap, ha a konfiguráció befejeződött.
+> Az egyszeri bejelentkezést a zűrzavar-támogatási csapatnak kell engedélyeznie. A konfiguráció befejezését követően értesítést kap.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
+    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés használatával a Huddle hozzáférést biztosít.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a zűrzavar hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd a **Huddle**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **zűrzavar**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Huddle**lehetőséget.
+2. Az alkalmazások listában válassza a **zűrzavar**lehetőséget.
 
-    ![A Huddle hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![Az zűrzavar hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-huddle-test-user"></a>Huddle tesztfelhasználó létrehozása
+### <a name="create-huddle-test-user"></a>Zűrzavar-tesztelési felhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Huddle-ba, ki kell építeni őket a Huddle-ba. A Huddle esetében a kiépítés manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a zűrzavar, a zűrzavar kell kiépíteni őket. Zűrzavar esetén a kiépítés manuális feladat.
 
-**A felhasználói kiépítés konfigurálásához hajtsa végre a következő lépéseket:**
+**A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a **Huddle** vállalati webhelyére rendszergazdaként.
+1. Jelentkezzen be a **zűrzavar** vállalati webhelyre rendszergazdaként.
 
-2. Kattintson **a Munkaterület gombra.**
+2. Kattintson a **munkaterület**elemre.
 
-3. Kattintson **a Személyek \> meghívása gombra.**
+3. Kattintson **a \> személyek meghívása személyek**elemre.
 
     ![People](./media/huddle-tutorial/ic787838.png "People")
 
-4. Az **Új felkérés létrehozása** csoportban hajtsa végre az alábbi lépéseket:
+4. Az **új meghívás létrehozása** szakaszban hajtsa végre a következő lépéseket:
   
-    ![Új meghívó](./media/huddle-tutorial/ic787839.png "Új meghívó")
+    ![Új meghívás](./media/huddle-tutorial/ic787839.png "Új meghívás")
   
-    a. A Válassza ki a **csapatot, hogy meghívja a személyeket, hogy csatlakozzon** lista, válassza ki **a csapat**.
+    a. A **csapat választása a személyek összekapcsolására** listából válassza a **csapat**lehetőséget.
 
-    b. Írja be egy érvényes Azure AD-fiók **e-mail címét,** amelyet ki szeretne építeni az **Enter e-mail-címbe azoknak a személyeknek, akiket meg szeretne hívni** a szövegdobozba.
+    b. Írja be annak az érvényes Azure AD-fióknak az **e-mail-címét** , amelyet be szeretne állítani az **e-mail-cím megadásához a szövegmezőbe behívni kívánt személyek** számára.
 
-    c. Kattintson **a Meghívás gombra.**
+    c. Kattintson a **meghívás**gombra.
 
     > [!NOTE]
-    > Az Azure AD-fiók tulajdonosa kap egy e-mailt, amely egy linket, hogy erősítse meg a fiókot, mielőtt aktívvá válik.
+    > Az Azure AD-fiók tulajdonosa egy e-mailt fog kapni, amely tartalmazza a fiók megerősítését, mielőtt az aktívvá válna.
 
 > [!NOTE]
-> A Huddle felhasználói fiók létrehozása bármely más, a Huddle által biztosított API-k at használhat az Azure AD felhasználói fiókok kiépítéséhez.
+> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a zűrzavar által biztosított zűrzavar felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a Huddle csempére kattint, automatikusan be kell jelentkeznie a Huddle-be, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a zűrzavar csempére kattint, automatikusan be kell jelentkeznie arra a zűrzavar, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

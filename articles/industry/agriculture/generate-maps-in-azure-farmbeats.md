@@ -1,222 +1,222 @@
 ---
 title: Térképek létrehozása
-description: Ez a cikk ismerteti, hogyan hozhat létre leképezéseket az Azure FarmBeats.This article describes how to generate maps in Azure FarmBeats.
+description: Ez a cikk bemutatja, hogyan hozhatja ki a térképeket az Azure FarmBeats-ben.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271771"
 ---
 # <a name="generate-maps"></a>Térképek létrehozása
 
-Az Azure FarmBeats használatával a következő leképezéseket hozhat létre műholdas képekkel és érzékelőadatokkal. A Térképek segítségével megtekintheti a farm földrajzi helyét, és meghatározhatja az eszközök megfelelő helyét.
+Az Azure FarmBeats használatával a következő térképeket hozhatja ki a műholdképek és az érzékelő adatbemenetek használatával. A Maps segítségével megtekintheti a farm földrajzi helyét, és azonosíthatja az eszközök megfelelő helyét.
 
-  - **Érzékelő elhelyezési térképe**: Javaslatokat ad arra vonatkozóan, hogy hány érzékelőt kell használni, és hol kell elhelyezni őket egy farmon.
-  - **Műholdas indexek térkép**: Egy gazdaság vegetációs és vízindexét jeleníti meg.
-  - **Talaj Nedvesség hőtérkép**: A talaj nedvességeloszlását mutatja a műholdas adatok és az érzékelő adatok beolvasztásával.
+  - **Szenzor-elhelyezési Térkép**: ajánlásokat biztosít a használatban lévő érzékelők számának és a farmon való elhelyezésének módjáról.
+  - **Satellite**indexek térképe: a farm vegetációs indexét és a víz indexét jeleníti meg.
+  - A **talaj nedvességtartalmának hő**: a talaj nedvességtartalmának eloszlását mutatja be a műholdon tárolt adatforgalom és az érzékelői adatforgalom
 
-## <a name="sensor-placement-map"></a>Érzékelő elhelyezési térképe
+## <a name="sensor-placement-map"></a>Érzékelő elhelyezési leképezése
 
-A FarmBeats érzékelő elhelyezése térkép segíti a talaj nedvességérzékelők elhelyezését. A térkép kimenete az érzékelők telepítéséhez használható koordináták listájából áll. A bemenetek ezen érzékelők használják együtt műholdas képek generálni a talaj nedvesség hőtérkép.
+A FarmBeats-érzékelő elhelyezési térképe segíti a talaj nedvességtartalmának érzékelők elhelyezését. A Térkép kimenete az érzékelők központi telepítésének koordinátáit tartalmazza. Ezekből az érzékelőkből származó bemeneteket a rendszer a műholdas képekkel együtt használja a talaj nedvességtartalmának hő létrehozásához.
 
-Ez a térkép a lombkorona szegmentálásával származik, ahogy az az év során több dátumon is látható. Még a csupasz talaj és az épületek is a lombkorona részét képezik. Eltávolíthatja azokat az érzékelőket, amelyek nem szükségesek a helyszínen. Ez a térkép útmutatást nyújt, és az egyéni tudás alapján kissé megváltoztathatja a pozíciót és a számokat. Az érzékelők hozzáadása nem csökkenti a talaj nedvességhőtérképének eredményeit, de fennáll annak a lehetősége, hogy a hőtérkép pontossága romlik, ha az érzékelő száma csökken.
+Ez a Térkép az év során több dátummal ellátott lombkorona szegmentálásával származtatható. A lombkorona része még a puszta talaj és az épületek is. A helyen nem szükséges érzékelők eltávolíthatók. Ez a Térkép útmutatásként szolgál, és a pozíciót és a számokat a saját tudása alapján kis mértékben módosíthatja. Az érzékelők hozzáadása nem visszafejlődés a hő eredményeit, de a hő pontossága is csökkenhet, ha az érzékelő száma csökken.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az érzékelőelhelyezési térkép létrehozása előtt teljesítse az alábbi előfeltételeket:
+A következő előfeltételeknek kell megfelelnie az érzékelő elhelyezési térképének létrehozása előtt:
 
-- A gazdaság méretének egy hektárnál többnek kell lennie.
-- A felhőmentes Sentinel-jelenetek számának a kiválasztott dátumtartományban hatnál többnek kell lennie.
-- Legalább hat felhőmentes Sentinel-jelenetnek 0,3-nál nagyobb vagy azzal egyenlő normalizált különbségű vegetációs indexszel (NDVI) kell rendelkeznie.
+- A farm méretének egynél több hektárnak kell lennie.
+- A felhő nélküli Sentinel-jelenetek számának a kiválasztott dátumtartomány esetében hatnál nagyobbnak kell lennie.
+- Legalább hat felhőalapú Sentinel-jelenetnek a 0,3-nál nagyobb vagy azzal egyenlő, normalizált különbségi vegetációs indexszel (NDVI) kell rendelkeznie.
 
     > [!NOTE]
-    > A Sentinel felhasználónként csak két egyidejű szálat engedélyez. Ennek eredményeképpen a feladatok várólistára kerülnek, és hosszabb időt vehet igénybe.
+    > A Sentinel csak két egyidejű szálat engedélyez felhasználónként. Ennek eredményeképpen a feladatok várólistára kerülnek, és hosszabb időt is igénybe vehetnek.
 
-### <a name="dependencies-on-sentinel"></a>Függőségek a Sentineltől
+### <a name="dependencies-on-sentinel"></a>A Sentinel függőségei
 
-A következő függőségek a Sentinelre vonatkoznak:
+A Sentinel a következő függőségekre vonatkozik:
 
-- A Sentinel teljesítményétől függünk a műholdas képek letöltéséhez. Ellenőrizze a Sentinel teljesítményállapotát és karbantartási [tevékenységeit.](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome)
-- A Sentinel felhasználónként csak két egyidejű [letöltési szálat](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services) engedélyez.
-- A precíziós térképgenerálást befolyásolja a [Sentinel lefedettsége és a revisit gyakoriság.]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage)
+- A műhold-lemezképek letöltésére a Sentinel-teljesítmény függ. A Sentinel teljesítmény állapotának és karbantartási [tevékenységeinek](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome)ellenőrzését.
+- A Sentinel csak két egyidejű [letöltési szálat](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services) engedélyez felhasználónként.
+- A precíziós leképezések generációját a [Sentinel-lefedettség és az újra-látogatás gyakorisága]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage)befolyásolja.
 
-## <a name="create-a-sensor-placement-map"></a>Érzékelőelhelyezési térkép létrehozása
-Ez a szakasz az érzékelőelhelyezési térképek létrehozásának eljárásait részletezi.
+## <a name="create-a-sensor-placement-map"></a>Érzékelő elhelyezési Térkép létrehozása
+Ez a szakasz az érzékelő elhelyezési leképezések létrehozási eljárásait részletezi.
 
 > [!NOTE]
-> Az érzékelőelhelyezési térképet a **Térképek** lapon vagy a **Pontossági térképek létrehozása legördülő** menüből kezdeményezheti a **Farm részletei** lapon.
+> Az érzékelő elhelyezési leképezését kezdeményezheti a **térképek** oldalról vagy a **Farm részletek** lapján található **precíziós térképek létrehozása** legördülő menüből.
 
 Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon nyissa meg a bal oldali navigációs menü **Térképek** lapján.
-2. Válassza **a Térképek létrehozása**lehetőséget, majd a legördülő menüBen válassza az Érzékelő **elhelyezése** parancsot.
+1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
+2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüben válassza az **érzékelő elhelyezése** lehetőséget.
 
-    ![Érzékelő elhelyezésének kiválasztása](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-1.png)
+    ![Az érzékelő elhelyezésének kiválasztása](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-1.png)
 
-3. Miután **kiválasztotta az Érzékelő elhelyezése**lehetőséget, megjelenik az **Érzékelő elhelyezése** ablak.
+3. Az **érzékelő elhelyezésének**kiválasztása után megjelenik az **érzékelő elhelyezése** ablak.
 
     ![Érzékelő elhelyezése ablak](./media/get-sensor-data-from-sensor-partner/sensor-placement-1.png)
 
 4. Válasszon ki egy farmot a **Farm** legördülő menüből.
-   A farm kereséséhez és kijelöléséhez görgethet a legördülő listában, vagy beírhatja a farm nevét a szövegmezőbe.
-5. Az elmúlt évre vonatkozó térkép létrehozásához válassza az **Ajánlott**lehetőséget.
-6. Ha egyéni dátumtartományhoz szeretne térképet létrehozni, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelyhez létre szeretné hozni az Érzékelőelhelyezés imát.
-7. Válassza **a Térképek létrehozása**lehetőséget.
- Megjelenik egy megerősítő üzenet a feladat részleteivel.
+   A farm kereséséhez és kiválasztásához görgessen a legördülő listából, vagy írja be a farm nevét a szövegmezőbe.
+5. Az előző évhez tartozó Térkép létrehozásához válassza az **ajánlott**lehetőséget.
+6. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelyhez az érzékelő elhelyezési leképezését elő szeretné állítani.
+7. Válassza a **leképezések előállítása**lehetőséget.
+ Megjelenik egy megerősítő üzenet a feladatok részleteivel.
 
-  A feladat állapotáról a **Feladatok megtekintése**című szakaszban talál további információt. Ha a feladat állapota *sikertelen,* akkor egy részletes hibaüzenet jelenik meg a *Sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, majd próbálkozzon újra.
+  A feladat állapotáról további információt a **feladatok megtekintése**című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
 
-  Ha a probléma továbbra is fennáll, tekintse meg a [Hibaelhárítás szakaszban,](troubleshoot-azure-farmbeats.md) vagy lépjen kapcsolatba az [Azure FarmBeats fórum a](https://aka.ms/FarmBeatsMSDN) megfelelő naplók támogatása.
+  Ha a probléma továbbra is fennáll, tekintse meg a [hibakeresés](troubleshoot-azure-farmbeats.md) szakaszt, vagy lépjen kapcsolatba az [Azure FarmBeats Fórumával a kapcsolódó naplók támogatásához](https://aka.ms/FarmBeatsMSDN) .
 
-### <a name="view-and-download-a-sensor-placement-map"></a>Érzékelőelhelyezési térkép megtekintése és letöltése
+### <a name="view-and-download-a-sensor-placement-map"></a>Érzékelő elhelyezési térképének megtekintése és letöltése
 
 Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon nyissa meg a bal oldali navigációs menü **Térképek** lapján.
+1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 
-    ![Válassza a bal oldali navigációs menü Térképek parancsát](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
+    ![Válasszon térképeket a bal oldali navigációs menüből](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
 
-2. Válassza a **Szűrő** lehetőséget az ablak bal oldali navigációs sávján.
-  A **Szűrő** ablak ban megjelennek a keresési feltételek.
+2. Válassza a **szűrő** lehetőséget az ablak bal oldali navigációs sávján.
+  A **szűrő** ablak a keresési feltételeket jeleníti meg.
 
     ![Szűrő ablak](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. A legördülő menükben válassza a **Típus**, **dátum**és **Név** értékek lehetőséget. Ezután válassza az **Alkalmaz** lehetőséget a megtekinteni kívánt térkép kereséséhez.
-  A feladat létrehozásának dátuma type_farmname_YYYY-MM-DD formátumban jelenik meg.
-4. Görgessen végig a rendelkezésre álló térképek listáján az oldal végén található navigációs sávok segítségével.
-5. Jelölje ki a megtekinteni kívánt térképet. Egy előugró ablak jeleníti meg a kijelölt térkép előnézetét.
-6. Válassza **a Letöltés**lehetőséget, és töltse le az érzékelő koordinátáinak GeoJSON-fájlját.
+3. Válassza ki a **típus**, a **dátum**és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet.
+  A feladatok létrehozásának dátuma type_farmname_YYYY-hh-nn formátumban jelenik meg.
+4. Görgessen végig az elérhető térképek listáján az oldal végén lévő navigációs sávok használatával.
+5. Válassza ki a megtekinteni kívánt térképet. Megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
+6. Válassza a **Letöltés**lehetőséget, majd töltse le az érzékelő koordinátáinak GeoJSON-fájlját.
 
-    ![Érzékelő elhelyezése térkép előnézete](./media/get-sensor-data-from-sensor-partner/download-sensor-placement-map-1.png)
+    ![Érzékelő elhelyezési térképének előnézete](./media/get-sensor-data-from-sensor-partner/download-sensor-placement-map-1.png)
 
-## <a name="satellite-indices-map"></a>Műholdas indexek térképe
+## <a name="satellite-indices-map"></a>Szatellit indexek térképe
 
-A következő szakaszok ismertetik a műholdas indexek térképének létrehozásával és megtekintésével járó eljárásokat.
-
-> [!NOTE]
-> Műholdas indexek leképezését a **Térképek** oldalon vagy a **Pontossági térképek létrehozása legördülő** menüből kezdeményezheti a **Farm részletei** lapon.
-
-FarmBeats lehetővé teszi, hogy létrehoz NDVI, Enhanced Vegetation Index (EVI), és normalizált különbség víz index (NDWI) térképek gazdaságok. Ezek az indexek segítenek meghatározni, hogy a növény jelenleg növekszik, vagy nőtt a múltban, és a reprezentatív vízszint a talajban.
-
+A következő szakaszokban ismertetjük a műholdas indexek térképének létrehozásával és megtekintésével kapcsolatos eljárásokat.
 
 > [!NOTE]
-> Sentinel-kép szükséges azokhoz a napokhoz, amikor a térkép létrejön.
+> A **Térkép** lapról vagy a **pontos térképek létrehozása** legördülő menüből a **Farm részletek** lapján kezdeményezheti a szatellit indexek leképezését.
+
+A FarmBeats lehetővé teszi a NDVI, a továbbfejlesztett vegetációs index (EVI) és a normalizált különbözeti (NDWI) leképezések létrehozását a farmok számára. Ezek az indexek segítenek meghatározni, hogyan növekszik a termés, vagy a múltban, valamint a reprezentatív vízszinteket a helyszínen.
 
 
-## <a name="create-a-satellite-indices-map"></a>Műholdas indextérkép létrehozása
+> [!NOTE]
+> A Térkép létrehozási napjaihoz Sentinel-rendszerkép szükséges.
+
+
+## <a name="create-a-satellite-indices-map"></a>Műholdas indexek létrehozása – Térkép
 
 Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon nyissa meg a bal oldali navigációs menü **Térképek** lapján.
-2. Válassza **a Térképek létrehozása**lehetőséget, majd a legördülő menü Műholdas **indexek** parancsát.
+1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
+2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüben válassza a **Satellite indexek** lehetőséget.
 
-    ![Válassza a Műholdas indexek lehetőséget a legördülő menüből](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-satellite-indices-1.png)
+    ![Válassza ki a Satellite indexeket a legördülő menüből](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-satellite-indices-1.png)
 
-3. A **Műholdas indexek**kiválasztása után megjelenik a **Műholdas indexek** ablak.
+3. A **szatellit**indexek kiválasztása után megjelenik a **Satellite indexek** ablak.
 
-    ![Műholdas indexek ablak](./media/get-sensor-data-from-sensor-partner/satellitte-indices-1.png)
+    ![Satellite indexek ablak](./media/get-sensor-data-from-sensor-partner/satellitte-indices-1.png)
 
 4. Válasszon ki egy farmot a legördülő menüből.
-   A farm kereséséhez és kiválasztásához görgethet a legördülő listában, vagy megadhatja a farm nevét.   
-5. Az utolsó heti térkép létrehozásához válassza a This Week (Ezen a **héten)** lehetőséget.
-6. Ha egyéni dátumtartományhoz szeretne térképet létrehozni, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdési és befejezési dátumot, amelyhez létre szeretné hozni a Műholdas indexek térképét.
-7. Válassza **a Térképek létrehozása**lehetőséget.
-    Megjelenik egy megerősítő üzenet a feladat részleteivel.
+   A farm kereséséhez vagy kiválasztásához görgessen a legördülő listából, vagy adja meg a farm nevét.   
+5. Az elmúlt hét térképének létrehozásához válassza ki **ezt a hetet**.
+6. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelynek a műhold-indexek leképezését elő szeretné állítani.
+7. Válassza a **leképezések előállítása**lehetőséget.
+    Megjelenik egy megerősítő üzenet a feladatok részleteivel.
 
-    ![Műholdas indexek térkép-visszaigazolási üzenete](./media/get-sensor-data-from-sensor-partner/successful-satellitte-indices-1.png)
+    ![Satellite indexek Térkép megerősítő üzenet](./media/get-sensor-data-from-sensor-partner/successful-satellitte-indices-1.png)
 
-    A feladat állapotáról a **Feladatok megtekintése**című szakaszban talál további információt. Ha a feladat állapota *sikertelen,* akkor egy részletes hibaüzenet jelenik meg a *Sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, majd próbálkozzon újra.
+    A feladat állapotáról további információt a **feladatok megtekintése**című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
 
-    Ha a probléma továbbra is fennáll, tekintse meg a [Hibaelhárítás szakaszban,](troubleshoot-azure-farmbeats.md) vagy lépjen kapcsolatba az [Azure FarmBeats fórum a](https://aka.ms/FarmBeatsMSDN) megfelelő naplók támogatása.
+    Ha a probléma továbbra is fennáll, tekintse meg a [hibakeresés](troubleshoot-azure-farmbeats.md) szakaszt, vagy lépjen kapcsolatba az [Azure FarmBeats Fórumával a kapcsolódó naplók támogatásához](https://aka.ms/FarmBeatsMSDN) .
 
 ### <a name="view-and-download-a-map"></a>Térkép megtekintése és letöltése
 
 Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon nyissa meg a bal oldali navigációs menü **Térképek** lapján.
+1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 
     ![Térképek kiválasztása](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
 
-2. Válassza a **Szűrő** lehetőséget az ablak bal oldali navigációs sávján. A **Szűrő** ablak ban megjelennek a keresési feltételek.
+2. Válassza a **szűrő** lehetőséget az ablak bal oldali navigációs sávján. A **szűrő** ablak a keresési feltételeket jeleníti meg.
 
-    ![A Szűrő ablak keresési feltételeket jelenít meg](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
+    ![A szűrő ablak a keresési feltételeket jeleníti meg](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. A legördülő menükben válassza a **Típus**, **dátum**és **Név** értékek lehetőséget. Ezután válassza az **Alkalmaz** lehetőséget a megtekinteni kívánt térkép kereséséhez.
-  A feladat létrehozásának dátuma type_farmname_YYYY-MM-DD formátumban jelenik meg.
+3. Válassza ki a **típus**, a **dátum**és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet.
+  A feladatok létrehozásának dátuma type_farmname_YYYY-hh-nn formátumban jelenik meg.
 
-4. Görgessen végig a rendelkezésre álló térképek listáján az oldal végén található navigációs sávok segítségével.
-5. A **farmnév** és a **dátum**minden kombinációjához a következő három térkép áll rendelkezésre:
-    - NDVI között
-    - Evi
-    - NDWI között
-6. Jelölje ki a megtekinteni kívánt térképet. Egy előugró ablak jeleníti meg a kijelölt térkép előnézetét.
-7. A **Download** letöltési formátum kiválasztásához válassza a Letöltés lehetőséget a legördülő menüből. A térkép letöltése és tárolása a számítógép helyi mappájában történik.
+4. Görgessen végig az elérhető térképek listáján az oldal végén lévő navigációs sávok használatával.
+5. A **farm nevének** és **dátumának**minden kombinációja esetében a következő három Térkép érhető el:
+    - NDVI
+    - EVI
+    - NDWI
+6. Válassza ki a megtekinteni kívánt térképet. Megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
+7. A letöltési formátum kiválasztásához válassza a **Letöltés** lehetőséget a legördülő menüből. A Térkép le van töltve, és a számítógép helyi mappájában tárolódik.
 
-    ![Kiválasztott műholdas indexek térkép előnézete](./media/get-sensor-data-from-sensor-partner/download-satellite-indices-map-1.png)
+    ![Kiválasztott Satellite indexek – előzetes verzió](./media/get-sensor-data-from-sensor-partner/download-satellite-indices-map-1.png)
 
-## <a name="soil-moisture-heatmap"></a>Talaj Nedvesség hőtérkép
+## <a name="soil-moisture-heatmap"></a>Talaj nedvességtartalmának hő
 
-A talaj nedvessége az a víz, amit a talajrészecskék közötti terekben tartanak.A Soil Moisture hőtérkép segítségével bármilyen mélységben, nagy felbontásban, a gazdaságon belül megértheti a talaj nedvességtartalmát. A pontos és használható talajnedvesség hőtérkép létrehozásához az érzékelők egységes telepítésére van szükség. Az összes érzékelőnek ugyanattól a szolgáltatótól kell származnia. A különböző szolgáltatók különbséget mutatnak a talaj nedvességtartalmának mérésében, valamint a kalibrálási különbségekben. A hőtérkép egy adott mélységre generálódik az adott mélységben telepített érzékelők segítségével.
+A talaj nedvességtartalma a talaj részecskék közötti térközben tárolt víz.A talaj nedvesség-hő segít megérteni a talaj nedvességtartalmának adatait bármilyen mélységben, a farmon belül nagy felbontásban. Pontos és felhasználható nedvesség-hő létrehozásához az érzékelők egységes üzembe helyezésére van szükség. Az érzékelőknek ugyanabból a szolgáltatóból kell származnia. A különböző szolgáltatók eltérő módon határozzák meg a talaj nedvességtartalmának mértékét, a kalibrálási különbségekkel együtt. A hő az adott mélységben üzembe helyezett érzékelők használatával jön létre.
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-A Talajnedvesség hőtérkép létrehozása előtt teljesítse az alábbi előfeltételeket:
+A következő előfeltételeknek kell megfelelnie, mielőtt megkísérli a talaj nedvességtartalmának hő:
 
-- Legalább három talajnedvesség-érzékelőt kell telepíteni. Ne próbálja meg létrehozni a talaj nedvesség hőtérkép előtt érzékelők telepítése és kapcsolódó gazdaságban.
-- A Soil Moisture hőtérkép generálását befolyásolja a Sentinel útvonallefedettsége, felhőtakarója és felhőárnyéka. Legalább egy felhőmentes Sentinel Jelenetnek rendelkezésre kell állnia az elmúlt 120 napban attól a naptól számítva, amikor a Soil Moisture hőtérképet kérték.
-- A farmon telepített érzékelők legalább felének online állapotban kell lennie, és adatfolyam-továbbítást kell rendelkeznie az adatközpontba.
-- A hőtérképet ugyanattól a szolgáltatótól származó érzékelőmérők segítségével kell létrehozni.
+- Legalább három nedvesség-érzékelőt kell üzembe helyezni. Ne próbálja meg létrehozni a talaj nedvességtartalmát az érzékelők üzembe helyezése és a farmhoz való hő előtt.
+- A talaj nedvességtartalmának hő a Sentinel Path lefedettsége, a Cloud Cover és a Cloud Shadow is befolyásolja. Legalább egy felhőalapú Sentinel-színtérnek elérhetőnek kell lennie az elmúlt 120 napban, azon a napon, ameddig a hő kérték.
+- A farmon üzembe helyezett érzékelők legalább felének online állapotban kell lennie, és adatfolyamot kell biztosítania a datahub.
+- A hő ugyanabból a szolgáltatóból származó Sensor-mértékek használatával kell létrehozni.
 
 
-## <a name="create-a-soil-moisture-heatmap"></a>Hozzon létre egy talaj nedvesség hőtérkép
+## <a name="create-a-soil-moisture-heatmap"></a>Talaj nedvességtartalmának hő létrehozása
 
 Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon nyissa meg a bal oldali navigációs menü **Térképek** lapját a **Térképek** lap megtekintéséhez.
-2. Válassza **a Térképek létrehozása**lehetőséget, majd a legördülő menü **Talajnedvesség** parancsát.
+1. A kezdőlapon kattintson a Maps ( **térképek** ) elemre a bal oldali navigációs menüben a **Maps** oldal megtekintéséhez.
+2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüből válassza a **talaj nedvesség** lehetőséget.
 
-    ![Válassza a Talajnedvesség lehetőséget a legördülő menüből](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-soil-moisture-1.png)
+    ![Válassza ki a talaj nedvességtartalmát a legördülő menüből](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-soil-moisture-1.png)
 
-3. Miután **kiválasztotta**a Talaj nedvességét , megjelenik a **Talajnedvesség** ablak.
+3. A **talaj nedvességének**kiválasztása után megjelenik a **talaj nedvességtartalma** ablak.
 
-    ![Talaj nedvesség ablak](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![A talaj nedvességtartalmának ablaka](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 4. Válasszon ki egy farmot a **Farm** legördülő menüből.
-   A farm kereséséhez és kiválasztásához görgethet a legördülő listából, vagy megadhatja a farm nevét a **Farm kiválasztása** legördülő menüben.
-5. A **Talajnedvesség-érzékelő kiválasztása Legördülő** menüben válassza ki azt a talajnedvesség-érzékelőt, amelynek a térképét létre szeretné hozni.
-Az érzékelő mértékének megkereséséhez nyissa meg **az Érzékelők**lehetőséget, és válassza ki a talajnedvesség-érzékelőt. Ezután az **Érzékelő tulajdonságai** csoportban használja a Mérték neve **című**szakasz értékét.
-6. Ha térképet szeretne létrehozni a **Ma** vagy **a Hét**számára, válasszon a lehetőségek közül.
-7. Ha egyéni dátumtartományhoz szeretne térképet létrehozni, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelynek a Talajnedvesség hőtérképet létre kívánja hozni.
-8. Válassza **a Térképek létrehozása**lehetőséget.
- Megjelenik egy megerősítő üzenet a feladat részleteivel.
+   A farm kereséséhez és kiválasztásához görgessen a legördülő listából, vagy adja meg a farm nevét a **Farm kiválasztása** legördülő menüben.
+5. A **felszín nedvesség-érzékelői mértékének kiválasztása** legördülő menüben válassza ki a talaj nedvességtartalmának érzékelő mértékét (mélységét), amelyhez a térképet elő szeretné állítani.
+Az érzékelő mértékének megkereséséhez nyissa meg az **érzékelők**elemet, és válassza ki a talaj nedvességtartalmának érzékelőjét. Ezután az **érzékelő tulajdonságai** szakaszban használja a **mérték neve**értéket.
+6. Ha **ma** vagy **ezen a héten**szeretne térképet készíteni, válassza ki az egyik lehetőséget.
+7. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelynek a talaj-nedvesség hő elő kívánja állítani.
+8. Válassza a **leképezések előállítása**lehetőséget.
+ Megjelenik egy megerősítő üzenet a feladatok részleteivel.
 
-   ![Talaj nedvességtérkép-megerősítő üzenet](./media/get-sensor-data-from-sensor-partner/successful-soil-moisture-1.png)
+   ![A talaj nedvességtartalmának leképezését kérő üzenet](./media/get-sensor-data-from-sensor-partner/successful-soil-moisture-1.png)
 
-    A feladat állapotáról a **Feladatok megtekintése**című szakaszban talál további információt. Ha a feladat állapota *sikertelen,* akkor egy részletes hibaüzenet jelenik meg a *Sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, majd próbálkozzon újra.
+    A feladat állapotáról további információt a **feladatok megtekintése**című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
 
-    Ha a probléma továbbra is fennáll, tekintse meg a [Hibaelhárítás szakaszban,](troubleshoot-azure-farmbeats.md) vagy lépjen kapcsolatba az [Azure FarmBeats fórum a](https://aka.ms/FarmBeatsMSDN) megfelelő naplók támogatása.
+    Ha a probléma továbbra is fennáll, tekintse meg a [hibakeresés](troubleshoot-azure-farmbeats.md) szakaszt, vagy lépjen kapcsolatba az [Azure FarmBeats Fórumával a kapcsolódó naplók támogatásához](https://aka.ms/FarmBeatsMSDN) .
 
 ### <a name="view-and-download-a-map"></a>Térkép megtekintése és letöltése
 
 Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon nyissa meg a bal oldali navigációs menü **Térképek** lapján.
+1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 
-    ![Ugrás a Térképek re](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
+    ![Ugrás a Maps-re](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
 
-2. Válassza a **Szűrő** lehetőséget az ablak bal oldali navigációs sávján. A **Szűrő** ablak ban jelenik meg, ahonnan térképeket kereshet.
+2. Válassza a **szűrő** lehetőséget az ablak bal oldali navigációs sávján. Megjelenik a **szűrő** ablak, ahol kereshet térképeket.
 
-    ![Válassza a Szűrő lehetőséget a bal oldali navigációs sávról](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
+    ![Szűrő kiválasztása a bal oldali navigációs sávon](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3.  A legördülő menükben válassza a **Típus**, **dátum**és **Név** értékek lehetőséget. Ezután válassza az **Alkalmaz** lehetőséget a megtekinteni kívánt térkép kereséséhez. A feladat létrehozásának dátuma type_farmname_YYYY-MM-DD formátumban jelenik meg.
-4. A táblafejlécek melletti **Rendezés** ikonra a **Farm**, **Dátum**, **Létrehozás dátum,** **feladatazonosító**és feladattípus szerinti rendezéshez kattintson a Rendezés ikonra. **Job Type**
-5. Görgessen végig a rendelkezésre álló térképek listáján az oldal végén található navigációs gombokkal.
-6. Jelölje ki a megtekinteni kívánt térképet. Egy előugró ablak jeleníti meg a kijelölt térkép előnézetét.
-7. A **Download** letöltési formátum kiválasztásához válassza a Letöltés lehetőséget a legördülő menüből. A térkép letöltése és tárolása a megadott mappában történik.
+3.  Válassza ki a **típus**, a **dátum**és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet. A feladatok létrehozásának dátuma type_farmname_YYYY-hh-nn formátumban jelenik meg.
+4. Válassza a tábla fejlécek melletti **Rendezés** ikont a **Farm**, a **dátum**, **a létrehozás, a**feladat **azonosítója**és a **feladattípus**alapján történő rendezéshez.
+5. Görgessen végig az elérhető térképek listáján az oldal végén található navigációs gombok használatával.
+6. Válassza ki a megtekinteni kívánt térképet. Megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
+7. A letöltési formátum kiválasztásához válassza a **Letöltés** lehetőséget a legördülő menüből. A rendszer letölti és tárolja a térképet a megadott mappában.
 
-    ![Talaj nedvesség hőtérkép előnézet](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
+    ![A talaj nedvességtartalmának hő előzetes verziója](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

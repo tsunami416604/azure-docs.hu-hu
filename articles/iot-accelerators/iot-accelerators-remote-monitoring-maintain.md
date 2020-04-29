@@ -1,5 +1,5 @@
 ---
-title: Riasztások használata a távoli figyelési megoldásban - Azure | Microsoft dokumentumok
+title: Riasztások használata a távoli figyelési megoldásban – Azure | Microsoft Docs
 description: Ez az oktatóanyag azt mutatja be, hogyan használhatja a riasztásokat a távoli monitorozási megoldásgyorsítóhoz csatlakoztatott eszközökkel kapcsolatos problémák azonosítására és megoldására.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73890924"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Oktatóanyag: Eszközökkel kapcsolatos problémák észlelése és megoldása
@@ -28,7 +28,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Eszköz által kiváltott riasztás vizsgálata
 > * Az eszközzel kapcsolatos probléma megoldása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -36,11 +36,11 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 Ön észreveszi, hogy a **Dashboard** (Irányítópult) lapon a **Prototype** eszközzel társított szabály által kiváltott, nem várt hőmérsékleti riasztások jelennek meg:
 
-[![Az irányítópulton látható riasztások](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
+[![Az irányítópulton megjelenített riasztások](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
 
 A probléma további vizsgálatához válassza a riasztás mellett található, **riasztás vizsgálatára** szolgáló gombot:
 
-[![Riasztás feltárása az irányítópultról](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
+[![Ismerkedés a riasztással az irányítópulton](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
 
 A riasztás részletes nézetében a következők láthatók:
 
@@ -52,13 +52,13 @@ A riasztás részletes nézetében a következők láthatók:
 
 A riasztás nyugtázásához jelölje ki az összes jelölőnégyzetet az **Alert occurrences** (Riasztás előfordulásai) alatt, majd válassza az **Acknowledge** (Nyugtázás) lehetőséget. Ezzel a művelettel tudatja a többi üzemeltetővel, hogy látta a riasztást, és dolgozik rajta.
 
-[![Nyugtázza a riasztásokat](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
+[![A riasztások nyugtázása](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
 
 A riasztás nyugtázása után az előfordulás állapota **Acknowledged** (Nyugtázva) állapotúra módosul.
 
 A riasztott eszközök listájában látható a hőmérsékleti riasztás aktiválásáért felelős **Prototype** eszköz:
 
-[![A riasztást okozó eszközök felsorolása](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
+[![A riasztást kiváltó eszközök listázása](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
 
 ## <a name="resolve-the-issue"></a>A probléma megoldása
 
@@ -70,20 +70,20 @@ A riasztott eszközök listájából válassza ki az eszközt, amelyen művelet 
 
 Válassza a **DecreaseTemperature** elemet, majd a feladat nevét állítsa **DecreaseTemperature** értékre. Ezután kattintson az **Apply** (Alkalmaz) gombra:
 
-[![A feladat létrehozása a hőmérséklet csökkentéséhez](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
+[![A hőmérséklet csökkentéséhez szükséges feladatok létrehozása](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
 A feladat állapotának nyomon követéséhez kattintson a **View job status** (Feladat állapotának megtekintése) elemre. A **Jobs** (Feladatok) nézetben nyomon követheti a megoldás összes feladatát és metódushívását:
 
-[![A feladat figyelése a hőmérséklet csökkentéséhez](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
+[![Figyelje meg a feladatot a hőmérséklet csökkentése érdekében](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
 
 Az eszköz hőmérsékletének csökkenését a telemetria megtekintésével ellenőrizheti a **Dashboard** (Irányítópult) lapon:
 
-[![A hőmérséklet-csökkenés megtekintése](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
+[![A hőmérséklet csökkenésének megtekintése](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan azonosíthatja az eszközökkel kapcsolatos problémákat a riasztások alapján, és hogyan hajthat végre műveleteket ezeken az eszközökön a probléma megoldása érdekében. Ha meg szeretné tudni, hogyan csatlakoztathat valódi eszközt a megoldásgyorsítóhoz, folytassa az útmutató cikkekkel.
+Ez az oktatóanyag bemutatta, hogyan azonosíthatja az eszközökkel kapcsolatos problémákat a riasztások alapján, és hogyan hajthat végre műveleteket ezeken az eszközökön a probléma megoldása érdekében. Ha szeretné megtudni, hogyan csatlakoztatható valódi eszköz a megoldás-gyorssegédhez, folytassa az útmutató cikkeivel.
 
 Most, hogy már tisztában van vele, hogyan kezelheti az eszközökkel kapcsolatos problémákat, a javasolt következő lépés annak megismerése, hogyan [csatlakoztatható az eszköz a távoli monitorozási megoldásgyorsítóhoz](iot-accelerators-connecting-devices.md).

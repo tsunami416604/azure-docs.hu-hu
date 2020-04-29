@@ -1,5 +1,5 @@
 ---
-title: Az Azure Cosmos DB Table API és az Azure Table Storage használata a Ruby segítségével
+title: Azure Cosmos DB Table API és az Azure Table Storage használata a Ruby használatával
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76770881"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel

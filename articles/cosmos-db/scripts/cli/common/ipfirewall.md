@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure Cosmos-fiókot IP-tűzfallal
-description: Hozzon létre egy Azure Cosmos-fiókot IP-tűzfallal
+title: Azure Cosmos-fiók létrehozása IP-tűzfallal
+description: Azure Cosmos-fiók létrehozása IP-tűzfallal
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,22 +8,22 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: 8b0ab04e2117108566962cc9a473556098e0e51d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71275590"
 ---
 # <a name="create-an-azure-cosmos-account-with-ip-firewall-using-azure-cli"></a>Azure Cosmos-fiók létrehozása IP-tűzfallal az Azure CLI használatával
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a témakör megköveteli, hogy az Azure CLI 2.0.73-as vagy újabb verzióját futassza. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0.73 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Példaszkript
 
 > [!NOTE]
-> Ez a minta egy SQL (Core) API-fiók használatával szemlélteti. Ha ezt a mintát más API-khoz szeretné használni, alkalmazza az `ip-range-filter` alábbi parancsfájlban lévő paramétert az API-specifikus parancsfájl `az cosmosdb account create` parancsára.
+> Ez a példa egy SQL-(Core-) API-fiók használatát mutatja be. Ha más API-khoz szeretné használni ezt a mintát `ip-range-filter` , alkalmazza az alábbi parancsfájl paraméterét az API-specifikus parancsfájl `az cosmosdb account create` parancsához.
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/ipfirewall.sh "Create an Azure Cosmos account with ip firewall.")]
 
@@ -47,6 +47,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Cosmos DB CLI-ről az [Azure Cosmos DB CLI dokumentációjában](/cli/azure/cosmosdb)olvashat bővebben.
+A Azure Cosmos DB CLI-vel kapcsolatos további információkért lásd: [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
 
-Az Azure Cosmos DB CLI parancsfájlminták megtalálhatók az [Azure Cosmos DB CLI GitHub-tárházban.](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)
+A CLI-szkriptek összes Azure Cosmos DB a [Azure Cosmos db CLI GitHub-tárházban](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)található.

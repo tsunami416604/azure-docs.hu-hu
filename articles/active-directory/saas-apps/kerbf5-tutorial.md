@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az F5-tel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az F5 között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és F5 között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,320 +17,320 @@ ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75431462"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az F5-tel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az F5-öt az Azure Active Directoryval (Azure AD). Ha integrálja az F5-öt az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az F5-et Azure Active Directory (Azure AD) használatával. Az F5 és az Azure AD integrálásával a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér az F5-höz.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve f5 az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* Az F5-hez hozzáférő Azure AD-beli vezérlés.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezzenek az F5-be az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
 * F5 egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
 
-* A közös megoldás üzembe helyezése a következő licenccel rendelkezik:
-    * F5 BIG-IP® Legjobb csomag (vagy)
+* A közös megoldás üzembe helyezéséhez a következő licenc szükséges:
+    * F5 BIG-IP® legjobb csomag (vagy)
 
-    * F5 BIG-IP access policy manager™ (APM) önálló licenc
+    * F5 BIG-IP Access Policy Manager™ (APM) önálló licenc
 
-    * F5 BIG-IP Access Policy Manager™ (APM) bővítménylicenc egy meglévő BIG-IP F5 BIG-IP-n® Helyi Forgalomkezelő™ (LTM).
+    * F5 BIG-IP Access Policy Manager™ (APM) bővítmény licence egy meglévő BIG-IP F5 BIG-IP® helyi Traffic Manager™ (LTM).
 
-    * A fenti licencen kívül az F5 rendszer a következő licencekkel is licencelhető:
+    * A fenti licencen kívül az F5-es verziójú rendszerek is licenccel rendelkezhetnek a következővel:
 
-        * URL-szűrő előfizetés az URL-kategória adatbázisának használatához
+        * URL-szűrési előfizetés az URL-kategória adatbázisának használatára
 
-        * F5 IP Intelligence-előfizetés az ismert támadók és a rosszindulatú forgalom észlelésére és blokkolására
+        * F5 IP Intelligence-előfizetés az ismert támadók és a rosszindulatú forgalom észleléséhez és blokkolásához
 
-        * Hálózati hardverbiztonsági modul (HSM) a digitális kulcsok védelmére és kezelésére az erős hitelesítéshez
+        * Hálózati hardveres biztonsági modul (HSM) a digitális kulcsok erős hitelesítéshez való védelméhez és kezeléséhez
 
-* Az F5 BIG-IP rendszer APM modulokkal van kiépítve (az LTM nem kötelező)
+* Az F5 BIG-IP rendszer APM-modulokkal van kiépítve (a LTM nem kötelező)
 
-* Bár nem kötelező, erősen ajánlott az F5-rendszerek telepítése egy [szinkronizálási/feladatátvételi eszközcsoportban](https://techdocs.f5.com/content/techdocs/en-us/bigip-14-1-0/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), amely tartalmazza az aktív készenléti pár, egy lebegő IP-címet a magas rendelkezésre állás (HA). A kapcsolatösszesítés-ellenőrzési protokoll (LACP) használatával további illesztőredundancia érhető el. Az LACP egyetlen virtuális kapcsolatként (összesítő csoportként) kezeli a csatlakoztatott fizikai felületeket, és észleli a csoporton belüli kapcsolathibákat.
+* Bár nem kötelező, erősen ajánlott az F5 rendszer üzembe helyezése egy [szinkronizálási/feladatátvételi eszköz csoportjában](https://techdocs.f5.com/content/techdocs/en-us/bigip-14-1-0/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), amely magában foglalja az aktív készenléti párokat, valamint a magas rendelkezésre állású, LEBEGŐPONTOS IP-címet. A további illesztőfelület-redundancia a link aggregációs vezérlő protokoll (LACP) használatával érhető el. A LACP egyetlen virtuális csatolóként (összesítő csoportként) kezeli a csatlakoztatott fizikai adaptereket, és észleli a csoporton belüli összes illesztőfelületi hibát.
 
-* Kerberos-alkalmazások esetén a korlátozott delegáláshoz helyszíni AD-szolgáltatásfiók.  Az AD delegálási fiók létrehozásáról az [F5 dokumentációban](https://support.f5.com/csp/article/K43063049) olvashat.
+* Kerberos-alkalmazások esetén egy helyszíni AD-szolgáltatásfiók a korlátozott delegáláshoz.  Az AD delegálási fiók létrehozásához tekintse meg az [F5 dokumentációt](https://support.f5.com/csp/article/K43063049) .
 
-## <a name="access-guided-configuration"></a>Irányított konfiguráció elérése
+## <a name="access-guided-configuration"></a>Hozzáférés az irányított konfigurációhoz
 
-* Hozzáférés vezérelt konfigurációja" az F5 TMOS 13.1.0.8-as és újabb verzióiban támogatott. Ha a BIG-IP rendszer 13.1.0.8 alatti verziót futtat, olvassa el a **Speciális konfiguráció című** részt.
+* A hozzáférés-vezérelt konfiguráció az F5 TMOS 13.1.0.8 vagy újabb verzióban támogatott. Ha a BIG-IP rendszer a 13.1.0.8 alábbi verzióját futtatja, tekintse meg a **Speciális konfiguráció** szakaszt.
 
-* Az Access irányított konfiguráció teljesen új és áramvonalas felhasználói élményt nyújt. Ez a munkafolyamat-alapú architektúra intuitív, újrabelépő konfigurációs lépéseket biztosít a kiválasztott topológiához igazítva.
+* A hozzáférés-vezérelt konfiguráció egy teljesen új és áramvonalas felhasználói élményt nyújt. Ez a munkafolyamat-alapú architektúra a kiválasztott topológiához igazított, intuitív és újra belépő konfigurációs lépéseket biztosít.
 
-* Mielőtt továbblépne a konfigurációra, frissítse az irányított konfigurációt a legújabb használati esetcsomag letöltésével [downloads.f5.com.](https://login.f5.com/resource/login.jsp?ctx=719748) A frissítéshez kövesse az alábbi eljárást.
+* Mielőtt folytatná a konfigurálást, frissítse az irányított konfigurációt úgy, hogy letölti a legújabb használati eset csomagot a [downloads.F5.com](https://login.f5.com/resource/login.jsp?ctx=719748)webhelyről. A frissítéshez kövesse az alábbi eljárást.
 
     >[!NOTE]
-    >Az alábbi képernyőképek a legújabb verzióra (BIG-IP 15.0 az AGC 5.0-s verziójával). Az alábbi konfigurációs lépések a 13.1.0.8-tól a legújabb BIG-IP verzióig érvényesek.
+    >Az alábbi Képernyőképek a legújabb verzióra vonatkoznak (BIG-IP 15,0, AGC-verzió: 5,0). Az alábbi konfigurációs lépések érvényesek erre a használati esetre a 13.1.0.8 és a legújabb BIG-IP-verzió között.
 
-1. Az F5 BIG-IP web felhasználói felületén kattintson **az Access >> útmutató konfigurációjára**.
+1. Az F5 BIG-IP webes felületen kattintson a **hozzáférés >> útmutató konfiguráció**elemre.
 
-2. Az **Irányított konfiguráció lapon** kattintson az **Irányított konfiguráció frissítése** elemre a bal felső sarokban.
+2. Az **irányított konfiguráció** lapon kattintson az **irányított konfiguráció frissítése** elemre a bal felső sarokban.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure14.png) 
 
-3. A Frissítési útmutató konfigurációja előugró képernyőn válassza a **Fájl kiválasztása lehetőséget** a letöltött használati esetcsomag feltöltéséhez, majd kattintson a **Feltöltés és telepítés** gombra.
+3. A frissítési útmutató konfigurációjának pop képernyőjén válassza a **fájl kiválasztása** elemet a letöltött használati eset csomag feltöltéséhez, majd kattintson a **feltöltés és telepítés** gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure15.png) 
 
-4. Amikor a frissítés befejeződött, kattintson a **Folytatás** gombra.
+4. A frissítés befejezésekor kattintson a **Continue (folytatás** ) gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az F5 támogatja az **SP és az IDP** által kezdeményezett sso-t
+* F5 **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés támogatása
 * Az F5 SSO három különböző módon konfigurálható.
 
-- [Az F5 egyszeri bejelentkezéskonfigurálása a Kerberos-alkalmazáshoz](#configure-f5-single-sign-on-for-kerberos-application)
+- [Az F5 egyszeri bejelentkezés konfigurálása a Kerberos-alkalmazáshoz](#configure-f5-single-sign-on-for-kerberos-application)
 
-- [Az F5 egyszeri bejelentkezésének konfigurálása fejlécalapú alkalmazáshoz](headerf5-tutorial.md)
+- [Az F5 egyszeri bejelentkezés konfigurálása a fejléc-alapú alkalmazáshoz](headerf5-tutorial.md)
 
-- [Az F5 egyszeri bejelentkezéskonfigurálása speciális Kerberos-alkalmazáshoz](advance-kerbf5-tutorial.md)
+- [Az F5 egyszeri bejelentkezés konfigurálása a speciális Kerberos-alkalmazáshoz](advance-kerbf5-tutorial.md)
 
-### <a name="key-authentication-scenarios"></a>Kulcshitelesítési forgatókönyvek
+### <a name="key-authentication-scenarios"></a>Legfontosabb hitelesítési forgatókönyvek
 
-Az Azure Active Directory natív integrációs támogatása mellett az Olyan modern hitelesítési protokollok, mint az Open ID Connect, az SAML és a WS-Fed protokollok esetében az F5 kiterjeszti a biztonságos hozzáférést az örökölt alapú hitelesítési alkalmazásokhoz mind a belső, mind a külső hozzáféréshez az Azure AD-vel, lehetővé téve a forgatókönyvek (pl. jelszó nélküli hozzáférés) ezen alkalmazásokhoz. Ez a következőket foglalja magában:
+A modern hitelesítési protokollok (például az Open ID csatlakozás, az SAML és a WS-Fed) natív integrációs támogatása Azure Active Directory mellett az F5 az Azure AD-vel való belső és külső hozzáféréshez is biztosítja az örökölt hitelesítési alkalmazások biztonságos hozzáférését, így a modern forgatókönyvek (például jelszó nélküli hozzáférés) lehetővé teszik ezeket az alkalmazásokat. Ilyenek például a következők:
 
-* Fejlécalapú hitelesítési alkalmazások
+* Fejléc alapú hitelesítési alkalmazások
 
 * Kerberos-hitelesítési alkalmazások
 
-* Névtelen hitelesítés vagy beépített hitelesítési alkalmazások nélkül
+* Névtelen hitelesítés vagy nem beépített hitelesítési alkalmazások
 
-* NTLM-hitelesítési alkalmazások (védelem kettős kérdéssel a felhasználó számára)
+* NTLM hitelesítési alkalmazások (védelem kettős kéréssel a felhasználó számára)
 
-* Űrlapalapú alkalmazás (védelem kettős kérdéssel a felhasználó számára)
+* Űrlap-alapú alkalmazás (védelem kettős rákérdezéssel a felhasználó számára)
 
-## <a name="adding-f5-from-the-gallery"></a>F5 hozzáadása a galériából
+## <a name="adding-f5-from-the-gallery"></a>Az F5 hozzáadása a gyűjteményből
 
-Az F5 Azure AD-be való integrációjának konfigurálásához hozzá kell adnia az F5-öt a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az F5 Azure AD-integrációjának konfigurálásához az F5 billentyűt kell hozzáadnia a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be az **F5** értéket a keresőmezőbe.
-1. Válassza az **F5** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **F5** kifejezést.
+1. Válassza az **F5** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése az F5-hez
+## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése F5 rendszerhez
 
-Konfigurálja és tesztelje az Azure AD SSO-t az F5-tel egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az F5-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t az F5 használatával egy **B. Simon**nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az F5 billentyűvel.
 
-Az Azure AD SSO f5-tel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO az F5 használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja az F5 Egyszeri bejelentkezést](#configure-f5-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    1. **[Hozzon létre F5 tesztfelhasználót](#create-f5-test-user)** – b.Simon megfelelője az F5-ben, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. Az **[F5 SSO konfigurálása](#configure-f5-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre F5 test User](#create-f5-test-user)** – ha a felhasználó Azure ad-képviseletéhez társított B
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **F5** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/)az **F5** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
 
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [az F5 ügyféltámogatási csapatával](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) az értékek lefelvételéhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A következő értékek megszerzéséhez lépjen kapcsolatba az [F5 ügyfél-támogatási csapattal](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadat-XML** és **tanúsítvány (Base64)** lapot, majd válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** és **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. Az **F5 beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. Az **F5 beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t az F5-höz való hozzáférés biztosításával.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az F5 elérésének biztosításával.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza az **F5**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **F5**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
-1. Kattintson a **Feltételes hozzáférés gombra.**
-1. Kattintson az **Új házirend gombra.**
-1. Most már láthatja az F5-ös alkalmazást a hitelesítésvédelmi szabályzat egyik erőforrásaként, és alkalmazhat bármilyen feltételes hozzáférést, beleértve a Multifactor Auth-ot, az eszközalapú hozzáférés-vezérlést vagy az identitásvédelmi szabályzatot.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. Kattintson a **feltételes hozzáférés** lehetőségre.
+1. Kattintson az **új házirend**elemre.
+1. Mostantól megtekintheti az F5 alkalmazás erőforrásként a HITELESÍTÉSSZOLGÁLTATÓI házirendet, és alkalmazhatja a feltételes hozzáférést, beleértve a többtényezős hitelesítést, az eszközön alapuló hozzáférés-vezérlést vagy az Identity Protection-házirendet.
 
-## <a name="configure-f5-sso"></a>F5 sso konfigurálása
+## <a name="configure-f5-sso"></a>Az F5 SSO konfigurálása
 
-- [Az F5 egyszeri bejelentkezésének konfigurálása fejlécalapú alkalmazáshoz](headerf5-tutorial.md)
+- [Az F5 egyszeri bejelentkezés konfigurálása a fejléc-alapú alkalmazáshoz](headerf5-tutorial.md)
 
-- [Az F5 egyszeri bejelentkezéskonfigurálása speciális Kerberos-alkalmazáshoz](advance-kerbf5-tutorial.md)
+- [Az F5 egyszeri bejelentkezés konfigurálása a speciális Kerberos-alkalmazáshoz](advance-kerbf5-tutorial.md)
 
-### <a name="configure-f5-single-sign-on-for-kerberos-application"></a>Az F5 egyszeri bejelentkezéskonfigurálása a Kerberos-alkalmazáshoz
+### <a name="configure-f5-single-sign-on-for-kerberos-application"></a>Az F5 egyszeri bejelentkezés konfigurálása a Kerberos-alkalmazáshoz
 
 ### <a name="guided-configuration"></a>Irányított konfiguráció
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be rendszergazdaként az F5 (Kerberos) vállalati webhelyére, és hajtsa végre az alábbi lépéseket:
+1. Nyisson meg egy új böngészőablakot, és jelentkezzen be az F5 (Kerberos) vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-1. A metaadat-tanúsítványt importálnia kell az F5-be, amelyet a beállítási folyamat későbbi részében fog használni.
+1. Importálnia kell a metaadat-tanúsítványt az F5 rendszerbe, amelyet később a telepítési folyamat során fog használni.
 
-1. Nyissa meg **a Rendszer> tanúsítványkezelés > forgalmi tanúsítványkezelés > SSL-tanúsítványlista .** Válassza az **Importálás lehetőséget** a jobb oldali sarokban. Adja meg **a tanúsítvány nevét** (a konfiguráció ban később hivatkozni fog). A **tanúsítványforrásban**válassza a Fájl feltöltése lehetőséget, adja meg az Azure-ból letöltött tanúsítványt az SAML Single Sign on konfigurálása közben. Kattintson **az Importálás gombra.**
+1. Navigáljon a **System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. Adja meg a **tanúsítvány nevét** (a konfiguráció későbbi részében lesz hivatkozva). A **tanúsítvány forrása**területen válassza a fájl feltöltése lehetőséget, hogy az SAML egyszeri bejelentkezés konfigurálásakor az Azure-ból letöltött tanúsítványt adja meg. Kattintson az **Importálás**gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure01.png) 
 
-1. Ezenkívül **az alkalmazás állomásnevéhez SSL-tanúsítványszükséges. Nyissa meg a Rendszer> tanúsítványkezelés > a forgalomvédelem > az SSL-tanúsítványlista.** Válassza az **Importálás lehetőséget** a jobb oldali sarokban. **Az importálás típusa** **PKCS 12(IIS)** lesz. Adja meg **a kulcs nevét** (a rendszer később a konfigurációban hivatkozik), és adja meg a PFX-fájlt. Adja meg a PFX **jelszavát.** Kattintson **az Importálás gombra.**
+1. Emellett **SSL-tanúsítványra lesz szüksége az alkalmazás állomásneve számára. Navigáljon a System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. AZ **Importálás típusa** **PKCS 12 (IIS)** lesz. Adja meg a **kulcs nevét** (a konfiguráció későbbi részében lesz hivatkozva), majd adja meg a pfx-fájlt. A PFX-fájl **jelszavának** megadása. Kattintson az **Importálás**gombra.
 
     >[!NOTE]
-    >A példában az `Kerbapp.superdemo.live`alkalmazásunk neve , wild card tanúsítványt használunk, a kulcsnevünk`WildCard-SuperDemo.live`
+    >A példában az alkalmazás neve az `Kerbapp.superdemo.live`, hogy egy wild card-tanúsítványt használunk a kulcsnév`WildCard-SuperDemo.live`
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure02.png) 
  
-1. Az Irányított élményt az Azure AD-összevonás és az alkalmazáshozzáférés beállításához használjuk. Ugrás – F5 BIG-IP **Main,** és válassza **az Access > irányított konfigurációs > összevonási > AZ SAML-szolgáltató lehetőséget.** Kattintson a **Tovább** gombra, majd a **Tovább** gombra a konfiguráció megkezdéséhez.
+1. Az Azure AD-összevonás és az alkalmazás-hozzáférés beállításához az interaktív élményt fogjuk használni. Ugrás az – F5 BIG-IP **Main** elemre, és válassza a **hozzáférés > irányított konfiguráció > összevonási > SAML-szolgáltató**elemet. Kattintson a **tovább** gombra, majd a konfigurálás megkezdéséhez kattintson a **tovább** gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure03.png) 
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure04.png)
 
-1. Adja meg **a konfiguráció nevét**. Adja meg az **entitásazonosítót** (ugyanaz, mint amit az Azure AD alkalmazás konfigurációja). Adja meg az **állomásnevét**. Adjon hozzá **egy ismertetési leírást** a hivatkozáshoz. Fogadja el a többi alapértelmezett bejegyzést, és jelölje ki **& Mentés a Tovább**gombot.
+1. Adja meg a **konfiguráció nevét**. Határozza meg az **entitás azonosítóját** (ugyanaz, mint amit az Azure ad-alkalmazás konfigurációjában konfigurált). Adja meg az **állomásnév nevét**. Adja meg a hivatkozás **leírását** . Fogadja el a fennmaradó alapértelmezett bejegyzéseket, és válassza ki, majd kattintson a **mentés & tovább**gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure05.png) 
 
-1. Ebben a példában egy új virtuális kiszolgálót hozunk létre 192.168.30.200-as 443-as porttal. Adja meg a virtuális kiszolgáló IP-címét a **célcímben.** Válassza az Ügyfél **SSL-profilját,** és válassza az Új létrehozása lehetőséget. Adja meg a korábban feltöltött alkalmazástanúsítványt (a példában szereplő helyettesítő kártya tanúsítványát) és a társított kulcsot, majd kattintson **a Mentés & Tovább gombra.**
+1. Ebben a példában egy új virtuális kiszolgálót hozunk létre a 443-as port 192.168.30.200. A **célként megadott címben**válassza a virtuális kiszolgáló IP-címét. Válassza ki az ügyfél **SSL-profilját**, majd válassza az új létrehozása lehetőséget. Adja meg a korábban feltöltött alkalmazás tanúsítványát (a példában szereplő Wild Card-tanúsítványt) és a társított kulcsot, majd kattintson a **mentés & tovább**gombra.
 
     >[!NOTE]
-    >ebben a példában a belső webszerver fut port 80 és szeretnénk közzétenni azt a 443.
+    >Ebben a példában a belső webkiszolgáló a 80-as porton fut, és a 443-as verzióban szeretné közzétenni.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure06.png)
 
-1. Az **IdP-összekötő konfigurálásához a Módszer kiválasztása csoportban**adja meg a metaadatokat, kattintson a Fájl kiválasztása elemre, és töltse fel az Azure AD-ből korábban letöltött metaadat-XML-fájlt. Adja meg az SAML IDP-összekötő egyedi **nevét.** Válassza ki a korábban feltöltött **metaadat-aláíró tanúsítványt.** Kattintson **& Tovább mentés gombra.**
+1. A **identitásszolgáltató-összekötő konfigurálásához válassza a módszer lehetőséget**, majd adja meg a metaadatokat, kattintson a fájl kiválasztása lehetőségre, és töltse fel az Azure ad-ből korábban letöltött metaadat-XML-fájlt. Adja meg az SAML IDENTITÁSSZOLGÁLTATÓ-összekötő egyedi **nevét** . Válassza ki a korábban feltöltött **metaadat-aláíró tanúsítványt** . Kattintson a **mentés & tovább**gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure07.png)  
 
-1. A **Készlet kiválasztása csoportban**adja meg az **Új létrehozása lehetőséget** (másik lehetőségként jelöljön ki egy már létező készletet). Hagyja, hogy más érték legyen az alapértelmezett érték. A Készletkiszolgálók csoportban írja be az IP-címet az **IP-cím/csomópont név mezőbe.** Adja meg a **portot**. Kattintson **& Tovább mentés gombra.**
+1. A **készlet kiválasztása**területen adja meg az **új létrehozása** elemet (másik lehetőségként válasszon egy már létező készletet). Hagyja, hogy a többi érték legyen alapértelmezett. A készlet-kiszolgálók területen írja be az IP-címet az **IP-cím/csomópont neve**mezőbe. A **portot**határozza meg. Kattintson a **mentés & tovább**gombra.
  
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure08.png)
 
-1. Az Egyszeri bejelentkezés beállításai képernyőn válassza az **Egyszeri bejelentkezés engedélyezése**lehetőséget. A **Kijelölt egyszeri bejelentkezés típusa csoportban** válassza a **Kerberos**lehetőséget. Cserélje **le a session.saml.last.Identity-t** **a session.saml.last.attr.name.Identity** kifejezésre a **Felhasználónév forrás csoportban** (ez a változó az Azure AD-ben a jogcímleképezés használatával beállított). Válassza **a Speciális beállítás megjelenítése lehetőséget.** A **Kerberos Tartomány** mezőbe írja be a Tartománynevet. A **Fióknév/fiókjelszó csoportban** adja meg az APM delegálási fiókját és jelszavát. Adja meg a tartományvezérlő IP-címét a **KDC** mezőben. Kattintson **& Tovább mentés gombra.**
+1. Az egyszeri bejelentkezés beállításai képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A **kiválasztott egyszeri bejelentkezés típusnál** válassza a **Kerberos**lehetőséget. Cserélje le a **Session. SAML. Last. Identity** nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a **Felhasználónév forrása** mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Válassza a **Speciális beállítások megjelenítése**lehetőséget. A **Kerberos** tartomány mezőbe írja be a tartománynevet. A **fiók neve/fiók jelszava** területen adja meg az APM-delegálási fiókot és a jelszót. A **KDC** mezőben adhatja meg a tartományvezérlő IP-címét. Kattintson a **mentés & tovább**gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure09.png)   
 
-1. Ennek az útmutatónak az alkalmazásában kihagyjuk a végpont-ellenőrzéseket.  A részleteket az F5 dokumentációjában találja.  A képernyőn válassza **a Mentés & Tovább**gombot .
+1. Ebben az útmutatóban kihagyjuk a végponti ellenőrzéseket.  További részletekért tekintse meg az F5 dokumentációját.  A képernyőn válassza a **mentés & tovább**lehetőséget.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure10.png) 
 
-1. Fogadja el az alapértelmezett beállításokat, és kattintson **a Mentés & Tovább gombra**. Az SAML-munkamenet-kezelési beállításokkal kapcsolatos részletekért tekintse meg az F5 dokumentációját.
+1. Fogadja el az alapértelmezett beállításokat, majd kattintson a **mentés & tovább**gombra. Az SAML-munkamenet-kezelési beállításokkal kapcsolatos részletekért olvassa el az F5 dokumentációját.
 
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure11.png) 
  
-1. Tekintse át az összefoglaló képernyőt, és válassza **a Telepítés lehetőséget** a BIG-IP konfigurálásához.
+1. Tekintse át az összegző képernyőt, és válassza a **telepítés** lehetőséget a Big-IP konfigurálásához.
  
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure12.png)
 
-1. Az alkalmazás konfigurálása után kattintson a **Befejezés gombra.**
+1. Az alkalmazás konfigurálását követően kattintson a **Befejezés**gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
 >[!NOTE]
->A referencia [ide](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) kattintva
+>A hivatkozáshoz kattintson [ide](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)
 
 ### <a name="configuring-an-active-directory-aaa-server"></a>Active Directory AAA-kiszolgáló konfigurálása
 
-Az Access Policy Manager (APM) active directory AAA-kiszolgálójának konfigurálásához adja meg az APM számára a felhasználók hitelesítéséhez használt tartományvezérlőket és hitelesítő adatokat.
+A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót kell konfigurálnia a felhasználók hitelesítéséhez használandó APM-EK és hitelesítő adatok megadásához.
 
-1.  A Fő lapon kattintson a **Hozzáférési házirend > az Active Directory > AAA-kiszolgálók**elemre. Megnyílik az Active Directory-kiszolgálók listaképernyője.
+1.  A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
 
-2.  Kattintson **a Létrehozás gombra.** Megnyílik az Új kiszolgáló tulajdonságai képernyő.
+2.  Kattintson a **Létrehozás**gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
 
-3.  A **Név** mezőbe írja be a hitelesítési kiszolgáló egyedi nevét.
+3.  A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
 
-4.  A **Tartománynév** mezőbe írja be a Windows tartomány nevét.
+4.  A **tartomány neve** mezőbe írja be a Windows-tartomány nevét.
 
-5.  A **Kiszolgálói kapcsolat** beállításhoz válasszon az alábbi lehetőségek közül:
+5.  A **Kiszolgálói kapcsolatok** beállításnál válassza a következő lehetőségek egyikét:
 
-    * Válassza **a Készlet használata lehetőséget** az AAA-kiszolgáló magas rendelkezésre állásának beállításához.
+    * Válassza a **készlet használata** lehetőséget az AAA-kiszolgáló magas rendelkezésre állásának beállításához.
 
-    * Válassza a **Közvetlen** lehetőséget az AAA-kiszolgáló önálló funkciókhoz való beállításához.
+    * Válassza a **közvetlen** lehetőséget az AAA-kiszolgáló önálló működéshez való beállításához.
 
-6.  Ha a **Közvetlen**lehetőséget választotta, írjon be egy nevet a **Tartományvezérlő** mezőbe.
+6.  Ha a **közvetlen**lehetőséget választotta, adjon meg egy nevet a **tartományvezérlő** mezőben.
 
-7.  Ha a **Készlet**használata lehetőséget választotta, konfigurálja a készletet:
+7.  Ha a **készlet**használata lehetőséget választotta, konfigurálja a készletet:
 
-    * Írjon be egy nevet a **Tartományvezérlőkészlet neve** mezőbe.
+    * Írjon be egy nevet a **tartományvezérlő készletének neve** mezőbe.
 
-    * Adja meg a **készlet tartományvezérlőit** úgy, hogy beírja mindegyik IP-címét és állomásnevét, majd a **Hozzáadás** gombra kattint.
+    * Adja meg a készletben lévő **tartományvezérlőket** úgy, hogy mindegyikhez beírja az IP-címet és az állomásnevet, majd a **Hozzáadás** gombra kattint.
 
-    * Az AAA-kiszolgáló állapotának figyeléséhez lehetőség van egy állapotfigyelő kiválasztására: ebben az esetben csak a **gateway_icmp** monitor megfelelő; kiválaszthatja a **Kiszolgálókészlet-figyelő** listából.
+    * Az AAA-kiszolgáló állapotának figyeléséhez lehetősége van az állapotfigyelő kiválasztására: ebben az esetben csak az **gateway_icmp** figyelő szükséges. kiválaszthatja a **kiszolgálói készlet figyelője** listából.
 
-8.  A **Rendszergazdai név** mezőbe írja be az Active Directory rendszergazdai engedélyekkel rendelkező rendszergazda kis- és nagybetűs nevét. Az APM az AD-lekérdezés **Rendszergazdai név** és **Rendszergazdai jelszó** mezőiben szereplő adatokat használja. Ha az Active Directory névtelen lekérdezésekhez van konfigurálva, nem kell rendszergazdai nevet megadnia. Ellenkező esetben az APM-nek megfelelő jogosultsággal rendelkező fiókra van szüksége ahhoz, hogy egy Active Directory-kiszolgálóhoz kötődjen, leolvassa a felhasználói csoport adatait, és lekéri az Active Directory jelszóházirendjeit a jelszóval kapcsolatos funkciók támogatásához. (Az APM-nek be kell olvasnia a jelszóházirendeket, például ha az AD-lekérdezésműveletben a Felhasználó nak a jelszó módosítása előtt a jelszó megváltoztatására lehetőséget választja.) Ha ebben a konfigurációban nem adja meg a rendszergazdai fiók adatait, az APM a felhasználói fiók segítségével olvassa le az adatokat. Ez akkor működik, ha a felhasználói fiók megfelelő jogosultsággal rendelkezik.
+8.  A rendszergazda **neve** mezőbe írja be a kis-és nagybetűket megkülönböztető nevet egy olyan rendszergazdának, aki Active Directory rendszergazdai jogosultságokkal rendelkezik. Az APM az AD-lekérdezéshez tartozó **rendszergazdai név** és **rendszergazdai jelszó** mezőkben szereplő információkat használja. Ha a Active Directory névtelen lekérdezésekhez van konfigurálva, nem kell megadnia a Rendszergazdá nevét. Ellenkező esetben az APM-nek olyan fiókra van szüksége, amely megfelelő jogosultsággal rendelkezik a Active Directory-kiszolgálóhoz való kötéshez, a felhasználói csoport adatainak beolvasásához, valamint Active Directory jelszóházirend beolvasásához a jelszóval kapcsolatos funkciók támogatásához. (Az APM-nek be kell olvasnia a szabályzatokat, például ha bejelöli a jelszó módosításának kérése a felhasználótól az AD-lekérdezési művelet lejárata előtt beállítást.) Ha nem ad meg rendszergazdai fiókot ebben a konfigurációban, az APM a felhasználói fiók használatával kéri le az adatokat. Ez akkor működik, ha a felhasználói fióknak megfelelő jogosultsága van.
 
-9.  A **Rendszergazdai jelszó** mezőbe írja be a Tartománynévhez társított rendszergazdai jelszót.
+9.  A **rendszergazdai jelszó** mezőbe írja be a tartománynévhez társított rendszergazdai jelszót.
 
-10. A **Rendszergazdai jelszó ellenőrzése** mezőbe írja be újra a **Tartománynév** beállításhoz társított rendszergazdai jelszót.
+10. A **rendszergazdai jelszó ellenőrzése** mezőben írja be újra a **tartománynév** beállításhoz társított rendszergazdai jelszót.
 
-11. A **Csoportgyorsítótár élettartama** mezőbe írja be a napok számát. Az alapértelmezett élettartam 30 nap.
+11. A **csoport gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
 
-12. A **Jelszóbiztonsági objektum gyorsítótárának élettartama** mezőbe írja be a napok számát. Az alapértelmezett élettartam 30 nap.
+12. A **jelszó biztonsági objektum gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
 
-13. A **Kerberos előhitelesítési titkosítási típus** listájában válasszon ki egy titkosítási típust. Az alapértelmezett érték: **Nincs**. Ha titkosítási típust ad meg, a BIG-IP rendszer kerberos-előhitelesítési adatokat tartalmaz az első hitelesítési szolgáltatáskérelem (AS-REQ) csomagban.
+13. A **Kerberos előhitelesítés titkosítási típusa** listából válassza ki a titkosítási típust. Az alapértelmezett érték a **none**. Ha titkosítási típust ad meg, a BIG-IP rendszer az első hitelesítési szolgáltatási kérelem (AS-REQ) csomagján belül Kerberos-előhitelesítést is tartalmaz.
 
-14. Az **Időelés** mezőbe írja be az AAA-kiszolgáló időmegt/másodpercben iódésidő-időközét.In the Timeout field, type a timeout interval (in seconds) for the AAA server. (Ez a beállítás nem kötelező.)
+14. Az **időtúllépés** mezőben adja meg az AAA-kiszolgáló időtúllépési intervallumát (másodpercben). (Ez a beállítás nem kötelező.)
 
-15. Kattintson a **Kész gombra.** Az új kiszolgáló megjelenik a listán. Ezzel hozzáadja az új Active Directory-kiszolgálót az Active Directory-kiszolgálók listájához.
+15. Kattintson a **kész**gombra. Az új kiszolgáló megjelenik a listán. Ezzel hozzáadja az új Active Directory-kiszolgálót a Active Directory kiszolgálók listájához.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure17.png)
 
-### <a name="saml-configuration"></a>SAML konfiguráció
+### <a name="saml-configuration"></a>SAML-konfiguráció
 
-1. A metaadat-tanúsítványt importálnia kell az F5-be, amelyet a beállítási folyamat későbbi részében fog használni. Nyissa meg **a Rendszer> tanúsítványkezelés > forgalmi tanúsítványkezelés > SSL-tanúsítványlista .** Válassza az **Importálás lehetőséget** a jobb oldali sarokban.
+1. Importálnia kell a metaadat-tanúsítványt az F5 rendszerbe, amelyet később a telepítési folyamat során fog használni. Navigáljon a **System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure18.png)
 
-2. Az SAML IDP beállításához keresse meg az **Access > Összevonási > SAML: Külső Idp-összekötők > szolgáltató**ját, majd kattintson a > létrehozása **metaadatokból parancsra.**
+2. Az SAML-IDENTITÁSSZOLGÁLTATÓ beállításához **navigáljon a > összevonási > SAML: szolgáltató > külső identitásszolgáltató-összekötők**lehetőségre, majd kattintson **a > létrehozása metaadatokból**elemre.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure19.png)
 
@@ -344,55 +344,55 @@ Az Access Policy Manager (APM) active directory AAA-kiszolgálójának konfigur�
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure24.png)
 
-1. Az SAML SP beállításához keresse meg az **Access > az Összevonás > az SAML-szolgáltató > helyi SP-szolgáltatások** elemre, és kattintson a **Létrehozás gombra.** Hajtsa végre az alábbi információkat, és kattintson az **OK gombra.**
+1. Az SAML SP beállításához navigáljon a **hozzáférés > összevonási > SAML-szolgáltató > helyi SP-szolgáltatások** elemre, majd kattintson a **Létrehozás**gombra. Hajtsa végre a következő információkat, majd kattintson **az OK**gombra.
 
     * Típus neve: KerbApp200SAML
-    * Entitásazonosító*:https://kerbapp200.superdemo.live
-    * SP névbeállításai
+    * Entitás azonosítója *:https://kerbapp200.superdemo.live
+    * SP-név beállításai
     * Séma: https
-    * Házigazda: kerbapp200.superdemo.live
-    * Leírás: kerbapp200.superdemo.live
+    * Gazdagép: kerbapp200. redemo. Live
+    * Leírás: kerbapp200. redemo. Live
 
      ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure25.png)
 
-     b. Válassza ki az SP konfigurációt, a KerbApp200SAML elemet, és kattintson **a Kötés/UnBind IdP-összekötők**elemre.
+     b. Válassza ki az SP-konfigurációt, a KerbApp200SAML, majd kattintson a **identitásszolgáltató-összekötők kötése/** megszüntetése elemre.
 
      ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure26.png)
 
      ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure27.png)
 
-     c. Kattintson az **Új sor hozzáadása** gombra, és válassza ki az előző lépésben létrehozott külső **IdP-összekötőt,** kattintson a **Frissítés**gombra, majd az **OK**gombra.
+     c. Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lépésben létrehozott **külső identitásszolgáltató-összekötőt** , kattintson a **frissítés**elemre, majd **az OK**gombra.
 
      ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure28.png)
 
-1. A Kerberos egyszeri bejelentkezés konfigurálásához keresse meg **az Access > Single Sign-on > Kerberos (Egyszeres bejelentkezés) >** a Kerberos-t, és kattintson a **Kész**gombra.
+1. A Kerberos SSO konfigurálásához navigáljon az **> egyszeri bejelentkezés > Kerberos**, teljes információ és kattintson a **kész**lehetőségre.
 
     >[!Note]
-    > Létre kell hoznia és meg kell adnia a Kerberos delegálási fiókot. KCD-szakasz hivatkozása (a függelék hivatkozása változó referenciákra)
+    > Ehhez létre kell hoznia és meg kell adni a Kerberos-delegálási fiókot. Tekintse át a KCD szakaszt (lásd: függelék a változó hivatkozásokhoz)
 
-    * **Felhasználónév forrása**: session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Username forrás**: Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/givenName
 
-    * **Felhasználó tartomány forrása**: session.logon.last.domain
+    * **Felhasználói tartomány forrása**: Session. Logon. Last. domain
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure29.png)
 
-1. Az Access-profil konfigurálásához keresse meg **az Access >-profil/házirendek > Access Profile (munkamenet-házirendenként)** elemre, kattintson a **Létrehozás**gombra, töltse ki az alábbi információkat, majd kattintson a **Kész**gombra.
+1. A hozzáférési profil konfigurálásához navigáljon a hozzáférés **> profil/szabályzatok > hozzáférési profil (munkamenet-szabályzatok)** elemre, kattintson a **Létrehozás**gombra, végezze el a következő információkat, majd kattintson a **kész**gombra.
 
     * Név: KerbApp200
-    * Profil típusa: Minden
-    * Profil hatóköre: Profil
-    * Nyelvek: Angol
+    * Profil típusa: ALL
+    * Profil hatóköre: profil
+    * Nyelvek: angol
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure30.png)
 
-1. Kattintson a KerbApp200 névre, töltse ki a következő információkat, és kattintson a **Frissítés gombra.**
+1. Kattintson a névre, KerbApp200, végezze el a következő információkat, majd kattintson a **frissítés**gombra.
 
-    * Domain Cookie: superdemo.live
+    * Tartományi cookie: főbemutató. élő
     * SSO-konfiguráció: KerAppSSO_sso
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure31.png)
 
-1. Kattintson **a Hozzáférési szabályzat,** majd a "KerbApp200" profil **hozzáférési szabályzatának szerkesztése** elemre.
+1. Kattintson a **hozzáférési házirend** elemre, majd kattintson a **hozzáférési szabályzat szerkesztése** elemre a "KerbApp200" profilhoz.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure32.png)
 
@@ -400,48 +400,48 @@ Az Access Policy Manager (APM) active directory AAA-kiszolgálójának konfigur�
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure34.png)
 
-    * **session.logon.last.usernameUPN expr {[mcget {session.saml.last.identity}]}**
+    * **Session. Logon. Last. usernameUPN kifejezés {[mcget {Session. SAML. Last. Identity}]}**
 
-    * **session.ad.lastactualdomain TEXT superdemo.live**
+    * **Session. ad. lastactualdomain TEXT-bemutató. élő**
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure35.png)
 
-    * **(userPrincipalName=%{session.logon.last.usernameUPN})**
+    * **(userPrincipalName =% {Session. Logon. Last. usernameUPN})**
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure36.png)
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure37.png)
 
-    * **session.logon.last.username expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }**
+    * **Session. Logon. Last. username kifejezés {"[mcget {Session. ad. Last. attr. sAMAccountName}]"}**
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure38.png)
 
-    * **mcget {session.logon.last.username}**
-    * **mcget {session.logon.last.password**
+    * **mcget {Session. Logon. Last. username}**
+    * **mcget {Session. Logon. Last. password**
 
-1. Új csomópont hozzáadásához keresse meg a Helyi forgalom > csomópontok **> csomópontlista elemre, kattintson a Létrehozás gombra,** töltse ki az alábbi adatokat, majd kattintson a **Kész**gombra.
+1. Új csomópont hozzáadásához navigáljon a **helyi forgalom > csomópontok > csomópont listára, kattintson a Létrehozás gombra**, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
 
     * Név: KerbApp200
     * Leírás: KerbApp200
-    * Cím: 192.168.20.200
+    * Címe: 192.168.20.200
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure39.png)
 
-1. Új készlet létrehozásához keresse meg **a Helyi forgalom > a készletek > készletlista elemre, kattintson a Létrehozás gombra,** töltse ki az alábbi információkat, majd kattintson a **Kész**gombra.
+1. Új készlet létrehozásához navigáljon a **helyi forgalom > készletek > készlet listára, kattintson a Létrehozás gombra**, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
 
-    * Név: KerbApp200-Pool
+    * Név: KerbApp200 – készlet
     * Leírás: KerbApp200-Pool
-    * Egészségügyi monitorok: http
-    * Cím: 192.168.20.200
-    * Szolgálati port: 81
+    * Állapot-figyelők: http
+    * Címe: 192.168.20.200
+    * Szolgáltatási port: 81
 
         ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure40.png)
 
-1. A virtuális kiszolgáló létrehozásához keresse meg **a virtuális kiszolgálók helyi > a virtuális kiszolgálók listáját > > +**, töltse ki az alábbi információkat, majd kattintson a Kész **gombra.**
+1. Virtuális kiszolgáló létrehozásához navigáljon a **helyi forgalom > virtuális kiszolgálók > Virtual Server List > +**, végezze el a következő információkat, majd kattintson a **kész**gombra.
 
     * Név: KerbApp200
-    * Cél címe/maszk: Állomás 192.168.30.200
-    * Szolgáltatás portja: Port 443 HTTPS
+    * Cél címe/maszk: host 192.168.30.200
+    * Szolgáltatási port: Port 443 HTTPS
     * Hozzáférési profil: KerbApp200
     * Az előző lépésben létrehozott hozzáférési profil megadása
 
@@ -452,50 +452,50 @@ Az Access Policy Manager (APM) active directory AAA-kiszolgálójának konfigur�
 ### <a name="setting-up-kerberos-delegation"></a>A Kerberos-delegálás beállítása 
 
 >[!NOTE]
->A referencia [ide](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf) kattintva
+>A hivatkozáshoz kattintson [ide](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf)
 
 *  **1. lépés:** Delegálási fiók létrehozása
 
-    **Példa:**
-    * Domain név: **superdemo.live**
+    **Például**
+    * Tartománynév: **főbemutató. élő**
 
-    * Sam fiók neve: **big-ipuser**
+    * Sam-fiók neve: **Big-ipuser**
 
-    * New-ADUser -Name "APM delegálási host/big-ipuser.superdemo.live@superdemo.live fiók" -UserPrincipalName -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    * New-ADUser-Name "APM delegálási fiók"- host/big-ipuser.superdemo.live@superdemo.live userPrincipalName-sAMAccountName "Big-ipuser"-PasswordNeverExpires $True-enabled $True-AccountPassword (read-Host-AsSecureString "password! 1234")
 
-* **2. lépés:** Az SPN beállítása (az APM delegálási fiókjában)
+* **2. lépés:** SPN beállítása (az APM delegálási fiókján)
 
-    **Példa:**
-    * setspn -A **host/big-ipuser.superdemo.live** big-ipuser
+    **Például**
+    * Setspn – A **Host/Big-ipuser. redemo. Live** Big-ipuser
 
-* **3. lépés:** Az SPN-delegálás (az App Service-fiókhoz) állítsa be az F5 delegálási fiók megfelelő delegálását.
-    Az alábbi példában az APM delegálási fiók konfigurálása folyamatban van a KCD-hez az FRP-App1.superdemo-hoz. élő alkalmazás.
+* **3. lépés:** SPN-delegálás (a App Service fiók esetében) állítsa be a megfelelő delegálást az F5 delegálási fiókhoz.
+    Az alábbi példában az APM delegálási fiók konfigurálva van a KCD for FRP-App1. redemo használatára. élő alkalmazás.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure43.png)
 
-* Adja meg a fenti referenciadokumentumban [az e](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)című dokumentumban említett részleteket.
+* Adja [meg a fenti](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)hivatkozási dokumentumban említett részleteket.
 
-### <a name="create-f5-test-user"></a>F5 tesztfelhasználó létrehozása
+### <a name="create-f5-test-user"></a>F5 test User létrehozása
 
-Ebben a szakaszban hozzon létre egy B.Simon nevű felhasználót az F5-ben. Az [F5 ügyféltámogatási csapatával](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) együttműködve adja hozzá a felhasználókat az F5 platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. 
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az F5 billentyűvel. A felhasználók az F5 platformon való hozzáadásához az [F5 ügyfél-támogatási csapat](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) használható. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. 
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell jelentkeznie arra az F5-be, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell jelentkeznie az F5-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki az F5-öt az Azure AD-vel](https://aad.portal.azure.com/)
+- [Az F5 kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Az F5 egyszeri bejelentkezésének konfigurálása fejlécalapú alkalmazáshoz](headerf5-tutorial.md)
+- [Az F5 egyszeri bejelentkezés konfigurálása a fejléc-alapú alkalmazáshoz](headerf5-tutorial.md)
 
-- [Az F5 egyszeri bejelentkezéskonfigurálása speciális Kerberos-alkalmazáshoz](advance-kerbf5-tutorial.md)
+- [Az F5 egyszeri bejelentkezés konfigurálása a speciális Kerberos-alkalmazáshoz](advance-kerbf5-tutorial.md)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja az SAP HANA-val | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az SAP HANA között.
+title: 'Oktatóanyag: Azure Active Directory integráció a SAP HANAtal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SAP HANA között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,261 +17,261 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44a34fe5637e895ea69b6fc4c277b7722b306c97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73161180"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Az Azure Active Directory integrációja az SAP HANA-val
+# <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Azure Active Directory integráció a SAP HANA
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az SAP HANA-t az Azure Active Directoryval (Azure AD).
-Az SAP HANA integrálása az Azure AD-vel a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SAP HANAt Azure Active Directory (Azure AD) használatával.
+A SAP HANA az Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér az SAP HANA.You can control in Azure AD who has access to SAP HANA.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve az SAP HANA (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá SAP HANAhoz.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a SAP HANAba (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció sap HANA konfigurálásához a következő elemekre van szüksége:
+Az Azure AD-integráció SAP HANAval való konfigurálásához a következő elemek szükségesek:
 
 - Azure AD-előfizetés
-- Az SAP HANA-előfizetés, amely egyszeri bejelentkezés (SSO) engedélyezve van
-- Hana-példány, amely bármely nyilvános IaaS-, helyszíni, Azure-beli virtuális gépen vagy SAP-példányon fut az Azure-ban
-- Az XSA Administration webes felület, valamint a HANA-példányra telepített HANA Studio
+- Az egyszeri bejelentkezést (SSO) engedélyező SAP HANA előfizetés
+- Olyan HANA-példány, amely nyilvános IaaS, helyszíni, Azure-beli virtuális gépen vagy nagy méretű SAP-példányokon fut az Azure-ban
+- A XSA felügyelet webes felülete, valamint a Hana-példányra telepített HANA Studio
 
 > [!NOTE]
-> Nem javasoljuk, hogy az SAP HANA éles környezetben tesztelje az oktatóanyag lépéseit. Tesztelje az integrációt először az alkalmazás fejlesztési vagy átmeneti környezetében, majd használja az éles környezetet.
+> Az oktatóanyag lépéseinek teszteléséhez nem ajánlott SAP HANA éles környezetét használni. Először tesztelje az integrációt az alkalmazás fejlesztési vagy átmeneti környezetében, majd használja az éles környezetet.
 
-Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi ajánlásokat:
+Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* SAP HANA egyszeri bejelentkezéssel rendelkező előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* SAP HANA egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Az SAP HANA támogatja az **IDP** által kezdeményezett SSO-t
-* Az SAP HANA támogatja **a just-in-time** felhasználói kiépítést
+* SAP HANA támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* SAP HANA támogatja **az** igény szerinti felhasználói üzembe helyezést
 
 ## <a name="adding-sap-hana-from-the-gallery"></a>SAP HANA hozzáadása a gyűjteményből
 
-Az SAP HANA azure AD-be való integrálásának konfigurálásához hozzá kell adnia az SAP HANA-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+SAP HANA az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia SAP HANA a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Sap HANA hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha SAP HANA szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **SAP HANA**, válassza **az SAP HANA** az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **SAP HANA**kifejezést, válassza a **SAP HANA** az eredmények paneljén, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![SAP HANA az eredménylistában](common/search-new-app.png)
+     ![SAP HANA az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést az SAP HANA-val egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés működéséhez létre kell hozni egy kapcsolat közötti kapcsolat egy Azure AD-felhasználó és a kapcsolódó felhasználó sap HANA létre kell hozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését SAP HANA a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SAP HANA kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az SAP HANA-val a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az SAP HANA Single Sign-On](#configure-sap-hana-single-sign-on)** -konfigurálásához az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre SAP HANA tesztfelhasználó](#create-sap-hana-test-user)** – egy megfelelője Britta Simon az SAP HANA, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[SAP HANA egyszeri bejelentkezés konfigurálása](#configure-sap-hana-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre SAP HANA test User](#create-sap-hana-test-user)** -t, hogy a Britta Simon partnere legyen a SAP HANA, amely a felhasználó Azure ad-képviseletéhez van csatolva.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához az SAP HANA-val hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **SAP HANA** alkalmazásintegrációs lapon válassza **az Egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **SAP HANA** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon hajtsa végre az alábbi lépéseket:
+4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
 
-    ![SAP HANA-tartomány és URL-címek egyszeri bejelentkezési információk](common/idp-intiated.png)
+    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak SAP HANA](common/idp-intiated.png)
 
-    a. Az **Azonosító** mezőbe írja be a következőt:`HA100`
+    a. Az **azonosító** szövegmezőbe írja be a következőt:`HA100`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba [az SAP HANA ügyfél támogatási csapatával,](https://cloudplatform.sap.com/contact.html) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezekhez az értékekhez vegye fel a kapcsolatot SAP HANA ügyfélszolgálati [csapatával](https://cloudplatform.sap.com/contact.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. AZ SAP HANA alkalmazás az SAML-állításokat egy adott formátumban várja. Konfigurálja az alkalmazás következő jogcímeket. Ezeknek az attribútumoknak az értékeit az alkalmazásintegrációs lap **Felhasználói attribútumok** szakaszában kezelheti. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** gombra a **Felhasználói attribútumok** párbeszédpanel megnyitásához.
+5. SAP HANA alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. A **Felhasználói attribútumok & jogcímek** párbeszédpanel **Felhasználói attribútumok** & párbeszédpanelen hajtsa végre a következő lépéseket:
+6. A felhasználói **attribútumok** **& a jogcímek** párbeszédpanelen hajtsa végre a következő lépéseket:
  
-    a. Kattintson a **Szerkesztés ikonra** a **Felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
-    b. Az **Átalakítás** listában válassza **a ExtractMailPrefix() (ExtractMailPrefix() (ExtractMailPrefix() (ExtractMailPrefix() (ExtractMailPrefix() (Átalakítási**
+    b. Az **átalakítás** listából válassza a **ExtractMailPrefix ()** elemet.
 
-    c. Az **1.** **user.mail**
+    c. Az **1. paraméter** listából válassza a **User. mail**elemet.
 
-    d. Kattintson a **Mentés** gombra.
+    d. Kattintson a **Save** (Mentés) gombra.
 
-7. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
 ### <a name="configure-sap-hana-single-sign-on"></a>SAP HANA egyszeri bejelentkezés konfigurálása
 
-1. Az SAP HANA oldalán egyszeri bejelentkezés konfigurálásához jelentkezzen be a **HANA XSA webkonzolra** a megfelelő HTTPS-végpontra való megtérésével.
+1. Ha az egyszeri bejelentkezést az SAP HANA oldalon szeretné konfigurálni, jelentkezzen be a **HANA XSA Webkonzolra** a megfelelő HTTPS-végponton.
 
     > [!NOTE]
-    > Az alapértelmezett konfigurációban az URL-cím átirányítja a kérelmet egy bejelentkezési képernyőre, amely egy hitelesített SAP HANA-adatbázis-felhasználó hitelesítő adatait igényli. A bejelentkező felhasználónak engedéllyel kell rendelkeznie az SAML felügyeleti feladatok elvégzéséhez.
+    > Az alapértelmezett konfigurációban az URL-cím átirányítja a kérést egy bejelentkezési képernyőre, amelyhez hitelesített SAP HANA adatbázis-felhasználó hitelesítő adatai szükségesek. A bejelentkező felhasználónak rendelkeznie kell az SAML felügyeleti feladatok végrehajtásához szükséges engedélyekkel.
 
-2. Az XSA webes felületén nyissa meg az **SAML-identitásszolgáltató t.** Itt válassza ki **+** a képernyő alján lévő gombot az **Identitásszolgáltató adatainak hozzáadása** ablaktábla megjelenítéséhez. Ezután tegye a következő lépéseket:
+2. A XSA webes felületén nyissa meg az **SAML-identitás szolgáltatóját**. Innen válassza a **+** képernyő alján található gombot az **Identity Provider információinak hozzáadása** panel megjelenítéséhez. Ezután hajtsa végre a következő lépéseket:
 
-    ![Identitásszolgáltató hozzáadása](./media/saphana-tutorial/sap1.png)
+    ![Identitás-szolgáltató hozzáadása](./media/saphana-tutorial/sap1.png)
 
-    a. Az **Identitásszolgáltató adatainak hozzáadása** ablaktáblán illessze be a metaadat-XML tartalmát (amelyet az Azure Portalról töltött le) a **Metaadatok** mezőbe.
+    a. Az **Identity Provider információinak hozzáadása** panelen illessze be a metaadatok XML-fájljának tartalmát (amelyet a Azure Portalból töltött le) a **metaadatok** mezőbe.
 
-    ![Identitásszolgáltató beállításainak hozzáadása](./media/saphana-tutorial/sap2.png)
+    ![Identitás-szolgáltató beállításainak megadása](./media/saphana-tutorial/sap2.png)
 
-    b. Ha az XML-dokumentum tartalma érvényes, az elemzési folyamat kinyeri a **Tárgy, az Entitásazonosító és** a Kiállító mezőhöz szükséges információkat az **Általános adatképernyő** területén. Azt is kibontja az url-mezők a **Cél** képernyő területén, például az **alap URL-cím és a SingleSignOn URL-cím (*)** mezők.
+    b. Ha az XML-dokumentum tartalma érvényes, az elemzési folyamat kibontja az **általános** adatképernyő területén a **tulajdonos, az entitás-azonosító és a kiállító** mezőkhöz szükséges adatokat. Emellett kigyűjti a **célként** megadott képernyő URL mezőihez szükséges adatokat, például az **alap URL-címet és a SingleSignon URL-címét (*)** .
 
-    ![Identitásszolgáltató beállításainak hozzáadása](./media/saphana-tutorial/sap3.png)
+    ![Identitás-szolgáltató beállításainak megadása](./media/saphana-tutorial/sap3.png)
 
-    c. Az **Általános adatok** képernyőterület **Név** mezőjében adja meg az új SAML SSO-identitásszolgáltató nevét.
+    c. Az **általános** adatképernyő terület **név** mezőjébe írja be az új SAML SSO-azonosító nevét.
 
     > [!NOTE]
-    > Az SAML IDP neve kötelező, és egyedinek kell lennie. Úgy tűnik, a rendelkezésre álló SAML IDP-k listájában jelenik meg, amely akkor jelenik meg, ha az SAML-t választja az SAP HANA XS-alkalmazások használandó hitelesítési módszereként. Ezt például az XS-műtermék-felügyelet **eszköz Hitelesítési** képernyőjén teheti meg.
+    > Az SAML-IDENTITÁSSZOLGÁLTATÓ neve kötelező, és egyedinek kell lennie. Megjelenik a rendelkezésre álló SAML-IDP listájában, amely akkor jelenik meg, ha a SAP HANA XS-alkalmazások használatára vonatkozó hitelesítési módszerként kiválasztja az SAML-t. Ezt például az XS-összetevő felügyeleti eszközének **hitelesítési** képernyő területén teheti meg.
 
-3. Válassza a **Mentés** lehetőséget az SAML-identitásszolgáltató részleteinek mentéséhez és az új SAML IDP hozzáadásához az ismert SAML idp-k listájához.
+3. A **Save (Mentés** ) gombra kattintva mentheti a SAML-identitás szolgáltatójának adatait, és hozzáadhatja az új SAML-identitásszolgáltató az ismert SAML-IDP listájához.
 
     ![Mentés gomb](./media/saphana-tutorial/sap4.png)
 
-4. A HANA Studio rendszerben a **Konfiguráció** lap rendszertulajdonságain belül szűrje a beállításokat **saml**szerint. Ezután állítsa be a **assertion_timeout** **10 mp-ről** **120 mp-re.**
+4. A HANA Studióban, a **konfiguráció** lap rendszertulajdonságai között, az **SAML**alapján szűrheti a beállításokat. Ezután módosítsa a **assertion_timeout** **10 másodperc** és **120 másodperc**közötti értékre.
 
     ![assertion_timeout beállítás](./media/saphana-tutorial/sap7.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
+    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés az SAP HANA használatával.
+Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri bejelentkezést az SAP HANA elérésének biztosításával.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza az **SAP HANA**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **SAP HANA**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában írja be és válassza az **SAP HANA parancsot.**
+2. Az alkalmazások listában írja be és válassza a **SAP HANA**lehetőséget.
 
-    ![Az SAP HANA hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![Az alkalmazások lista SAP HANA hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-sap-hana-test-user"></a>SAP HANA-tesztfelhasználó létrehozása
+### <a name="create-sap-hana-test-user"></a>SAP HANA tesztelési felhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az SAP HANA-ba, ki kell építenie őket az SAP HANA-ban.
-Az SAP HANA támogatja **a just-in-time kiépítése,** amely alapértelmezés szerint engedélyezve van.
+Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a SAP HANAba, be kell építenie azokat a SAP HANAban.
+SAP HANA támogatja az igény szerinti **üzembe**helyezést, amely alapértelmezés szerint engedélyezve van.
 
-Ha manuálisan kell létrehoznia egy felhasználót, tegye a következő lépéseket:
+Ha manuálisan kell létrehoznia egy felhasználót, hajtsa végre a következő lépéseket:
 
 >[!NOTE]
->Módosíthatja a felhasználó által használt külső hitelesítést. Hitelesíthetik magukat egy külső rendszerrel, például a Kerberos-szal. A külső identitásokról a [tartományi rendszergazdától](https://cloudplatform.sap.com/contact.html)kaphat részletes információt.
+>Módosíthatja a felhasználó által használt külső hitelesítést. Külső rendszerekkel, például Kerberos-hitelesítéssel is hitelesíthetők. A külső identitásokkal kapcsolatos részletes információkért forduljon a [tartományi rendszergazdához](https://cloudplatform.sap.com/contact.html).
 
-1. Nyissa meg az [SAP HANA Studio](https://help.sap.com/viewer/a2a49126a5c546a9864aae22c05c3d0e/2.0.01/en-us) rendszergazdaként, és engedélyezze a DB-felhasználó SAML Egyszeri kiszolgáló.
+1. Nyissa meg a [SAP HANA studiót](https://help.sap.com/viewer/a2a49126a5c546a9864aae22c05c3d0e/2.0.01/en-us) rendszergazdaként, majd engedélyezze az adatbázis-felhasználó számára az SAML SSO-t.
 
     ![Felhasználó létrehozása](./media/saphana-tutorial/sap5.png)
 
-2. Jelölje be az **SAML-től**balra lévő láthatatlan jelölőnégyzetet, majd a **Hivatkozás konfigurálása** lehetőséget.
+2. Jelölje be a láthatatlan jelölőnégyzetet az **SAML**bal oldalán, majd válassza a **Konfigurálás** hivatkozást.
 
-3. Az SAML IDP hozzáadásához válassza a **Hozzáadás** lehetőséget.  Válassza ki a megfelelő SAML IDP-t, majd kattintson **az OK gombra.**
+3. Válassza a **Hozzáadás** lehetőséget az SAML-identitásszolgáltató hozzáadásához.  Válassza ki a megfelelő SAML-IDENTITÁSSZOLGÁLTATÓ, majd kattintson **az OK gombra**.
 
-4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), vagy válassza **a Bármely**lehetőséget. Ezután kattintson az **OK** gombra.
+4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), **vagy válasszon egyet**. Ezután kattintson az **OK** gombra.
 
    > [!Note]
-   > Ha a **Minden** jelölőnégyzet nincs bejelölve, akkor a HANA-ban lévő felhasználónévnek pontosan meg kell egyeznie az upn-ban lévő felhasználó nevével a tartományutótag előtt. (Például, BrittaSimon@contoso.com lesz BrittaSimon a HANA.)
+   > Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor a HANA-beli felhasználónévnek pontosan egyeznie kell a felhasználó nevével az UPN-ben a tartomány utótagja előtt. (Például BrittaSimon BrittaSimon@contoso.com válik a HANA-ban.)
 
-5. Tesztelési célokra rendelje hozzá az összes **XS-szerepkört** a felhasználóhoz.
+5. Tesztelési célból rendeljen hozzá minden **XS** -szerepkört a felhasználóhoz.
 
-    ![Szerepkörök hozzárendelése](./media/saphana-tutorial/sap6.png)
+    ![Szerepkörök kiosztása](./media/saphana-tutorial/sap6.png)
 
     > [!TIP]
-    > Olyan engedélyeket kell megadnia, amelyek csak a használati eseteknek megfelelőek.
+    > Olyan engedélyeket kell megadni, amelyek csak a használati esetekben megfelelőek.
 
 6. Mentse a felhasználót.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha az SAP HANA csempére kattint a hozzáférési panelen, automatikusan be kell jelentkeznie az SAP HANA-ba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a SAP HANA csempére kattint, automatikusan be kell jelentkeznie arra a SAP HANAra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

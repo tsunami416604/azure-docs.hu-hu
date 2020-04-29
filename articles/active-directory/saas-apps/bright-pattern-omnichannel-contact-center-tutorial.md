@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Bright Pattern Omnichannel Contact Centerrel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Bright Pattern Omnichannel Contact Center között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Bright Pattern Omnichannel Contact centerrel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Bright Pattern Omnichannel Contact Center között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,158 +17,158 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27cda1f1a797ca0cb8e1b9d1c4cd7498c22ddde5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74081939"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Bright Pattern Omnichannel Contact Centerrel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Bright Pattern Omnichannel Contact centerrel
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Bright Pattern Omnichannel Contact Centert az Azure Active Directoryval (Azure AD). Ha integrálja a Bright Pattern Omnichannel Contact Centert az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Bright Pattern Omnichannel kapcsolattartási központot Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Bright Pattern Omnichannel kapcsolattartási központot, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Bright Pattern Omnichannel Contact Center.Control in Azure AD who has access to Bright Pattern Omnichannel Contact Center.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve bright pattern omnichannel Contact Center az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* Vezérlőelem az Azure AD-ben, aki hozzáfér a Bright Pattern Omnichannel Contact Centerhez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Bright Pattern Omnichannel Contact Centerbe az Azure AD-fiókkal.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Bright Pattern Omnichannel Contact Center egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A Bright Pattern Omnichannel az egyszeri bejelentkezés (SSO) engedélyezett előfizetését.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 
 
-* A Bright Pattern Omnichannel Contact Center támogatja az **SP és az IDP** által kezdeményezett SSO-t
-* A Bright Pattern Omnichannel Contact Center támogatja **a Just In Time** felhasználói kiépítést
+* A Bright Pattern Omnichannel Contact Center támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A Bright Pattern Omnichannel Contact Center **csak időben támogatja a** felhasználók üzembe helyezését
 
 
-## <a name="adding-bright-pattern-omnichannel-contact-center-from-the-gallery"></a>Fényes mintázatú többcsatornás kapcsolatfelvételi központ hozzáadása a galériából
+## <a name="adding-bright-pattern-omnichannel-contact-center-from-the-gallery"></a>Fényes minta Omnichannel Contact Center hozzáadása a katalógusból
 
-A Bright Pattern Omnichannel Contact Center azure AD-be való integrálásának konfigurálásához hozzá kell adnia a fényes minta omnicsatornás kapcsolati központot a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Bright Pattern Omnichannel kapcsolattartási központ Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy Bright Pattern Omnichannel Contact centert a galériából a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **gyűjtemény Hozzáadás szakaszába** írja be a **Fényes mintás omnicsatorna kapcsolati központot** a keresőmezőbe.
-1. Válassza a **Világos mintázatú omnicsatorna-kapcsolati központot** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe a **fényes minta Omnichannel kapcsolattartási központ** kifejezést.
+1. Válassza a **Bright Pattern Omnichannel Contact centert** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-bright-pattern-omnichannel-contact-center"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését a Bright Pattern többcsatornás kapcsolattartó központhoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bright-pattern-omnichannel-contact-center"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Bright Pattern Omnichannel Contact Centerhez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Bright Pattern Omnichannel Contact Center segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Bright Pattern Omnichannel Contact Centerben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Bright Pattern Omnichannel Contact Center használatával egy **B. Simon**nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Bright Pattern Omnichannel Contact Center szolgáltatásban.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Világos minta többcsatornás kapcsolati központtal, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a Bright Pattern Omnichannel Contact Center használatával végezze el a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a Bright Pattern Omnichannel Contact Center SSO-t](#configure-bright-pattern-omnichannel-contact-center-sso)** – az alkalmazás oldalon az egyszeri bejelentkezési beállítások konfigurálásához.
-    1. **[Hozzon létre fényes minta Omnichannel Contact Center teszt felhasználó](#create-bright-pattern-omnichannel-contact-center-test-user)** -, hogy egy megfelelője B.Simon a Bright Pattern Omnichannel Contact Center, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[Bright Pattern Omnichannel Contact Center SSO konfigurálása](#configure-bright-pattern-omnichannel-contact-center-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre egy világos mintát a Omnichannel Contact Center tesztelési felhasználóval](#create-bright-pattern-omnichannel-contact-center-test-user)** , hogy a B. Simon-nak egy, a felhasználó Azure ad-képviseletéhez kapcsolódó, világos mint Omnichannel kapcsolattartási központ tagja legyen.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Világos minta omnicsatornás kapcsolati központ** alkalmazásintegrációs lapján keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/)a **Bright Pattern Omnichannel Contact Center** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`<SUBDOMAIN>_sso`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`<SUBDOMAIN>_sso`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
 
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.brightpattern.com/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.brightpattern.com/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a Bright Pattern Omnichannel Contact Center ügyféltámogatási csapatával,](mailto:support@brightpattern.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezekhez az értékekhez vegye fel a kapcsolatot a [Bright Pattern Omnichannel Contact Center ügyfél-támogatási csapatával](mailto:support@brightpattern.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A Bright Pattern Omnichannel Contact Center alkalmazás az SAML-állításokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML tokenattribútum-konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Bright Pattern Omnichannel Contact Center-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/edit-attribute.png)
 
-1. Amellett, hogy a fenti, Bright Pattern Omnichannel Contact Center alkalmazás elvárja, hogy néhány további attribútumok at kell átadni vissza SAML választ, amelyek az alábbiakban látható. Ezek az attribútumok is előre ki vannak töltve, de áttekintheti őket a követelmény nek megfelelően.
+1. A fentieken felül a Bright Pattern Omnichannel Contact Center alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Név | Névtér  |
+    | Name (Név) | Névtér  |
     | ---------------| --------------- |
-    | firstName | user.givenname |
-    | lastName | user.vezetéknév |
-    | e-mail | user.mail |
+    | firstName | User. givenName |
+    | lastName | felhasználó. vezetéknév |
+    | e-mail | User. mail |
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **Világos mintázatú omnicsatorna-kapcsolattartó központ beállítása csoportban** másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **világos minta Omnichannel kapcsolattartási központ beállítása** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t azáltal, hogy hozzáférést biztosít a Bright Pattern Omnichannel Contact Center.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Bright Pattern Omnichannel Contact Centerhez.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **Világos mintázatú omnicsatorna Kapcsolati központ lehetőséget.**
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **világos minta Omnichannel kapcsolattartási központ**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>Fényes minta többcsatornás kapcsolattartó központjának sso-jának konfigurálása
+## <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>A Bright Pattern Omnichannel kapcsolati központ egyszeri bejelentkezésének konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához a **Bright Pattern Omnichannel Contact Center** oldalán el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket az Azure Portalról a [Bright Pattern Omnichannel Contact Center támogatási csapatának.](mailto:support@brightpattern.com) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Ha be szeretné állítani az egyszeri bejelentkezést a **Bright Pattern Omnichannel, a kapcsolati központ** oldalon el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket Azure Portalról a [Bright Pattern Omnichannel Contact Center támogatási csapatához](mailto:support@brightpattern.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-bright-pattern-omnichannel-contact-center-test-user"></a>Fényes minta létrehozása Többcsatornás Kapcsolattartó központ tesztfelhasználója
+### <a name="create-bright-pattern-omnichannel-contact-center-test-user"></a>Világos minta létrehozása Omnichannel Contact Center tesztelési felhasználó
 
-Ebben a szakaszban egy B.Simon nevű felhasználó jön létre a Bright Pattern Omnichannel Contact Center alkalmazásban. A Bright Pattern Omnichannel Contact Center támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a Bright Pattern Omnichannel Contact Center alkalmazásban, a hitelesítés után egy új jön létre.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Bright Pattern Omnichannel Contact Center szolgáltatásban. A világos mintában a Omnichannel Contact Center támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a világos mintában, a Omnichannel Contact Center, a hitelesítés után létrejön egy újat.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a Hozzáférési panelen a Világos mintázatú Omnicsatorna Kapcsolati központ csempére kattint, automatikusan be kell jelentkeznie a Világos mintázatú omnicsatornás kapcsolattartó központba, amelyhez az SSO-t állította be. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a Bright Pattern Omnichannel Contact Center csempére kattint, automatikusan be kell jelentkeznie a Bright Pattern Omnichannel, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a Bright Pattern Omnichannel Contact Center t az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki az Azure AD-vel a Bright Pattern Omnichannel Contact centert](https://aad.portal.azure.com/)
 

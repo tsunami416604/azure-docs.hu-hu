@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Naplók streamelése egy Azure-eseményközpontba | Microsoft dokumentumok
-description: Megtudhatja, hogy miként állíthatja be az Azure Diagnostics szolgáltatást az Azure Active Directory-naplók eseményközpontba való leküldéses hez
+title: Oktatóanyag – stream-naplók az Azure Event hub-ba | Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be a Azure Active Directory naplók beküldését az Event hubhoz Azure Diagnostics
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74007658"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Oktatóanyag: Az Azure Active Directory-naplók streamelése egy Azure-eseményközpontba
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Oktatóanyag: stream Azure Active Directory naplók az Azure Event hub-ba
 
-Ebben az oktatóanyagban megtudhatja, hogyan állíthatja be az Azure Monitor diagnosztikai beállításait az Azure Active Directory (Azure AD) naplóinak egy Azure-eseményközpontba való streameléséhez. Ezzel a mechanizmussal integrálhatja a naplókat olyan külső biztonságiinformáció- és eseménykezelési (SIEM-) eszközökkel, mint a Splunk és a QRadar.
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be Azure Monitor diagnosztikai beállítások stream Azure Active Directory (Azure AD) naplóit egy Azure Event hub-ba. Ezzel a mechanizmussal integrálhatja a naplókat olyan külső biztonságiinformáció- és eseménykezelési (SIEM-) eszközökkel, mint a Splunk és a QRadar.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -37,11 +37,11 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
 * Egy Event Hubs-névtér és -eseményközpont az Azure-előfizetésében. Megismerkedhet az [eseményközpont létrehozásának](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) menetével.
 
-## <a name="stream-logs-to-an-event-hub"></a>Naplók streamelése egy eseményközpontba
+## <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-2. Válassza az **Azure Active Directory** > **figyelési** > **naplózási naplóit.** 
+2. Válassza **Azure Active Directory** > **figyelési** > **naplók**lehetőséget. 
 
 3. Válassza a **Beállítások exportálása** lehetőséget.  
     
@@ -77,7 +77,7 @@ Miután az adatok megjelentek az eseményközpontban, kétféleképpen érheti e
 
 * **Támogatott SIEM-eszköz konfigurálásával**. Az adatok eseményközpontból való beolvasásához a legtöbb eszköz használata esetében szükség van az eseményközpont kapcsolati sztringjére és bizonyos jogosultságokra az Azure-előfizetésben. Az Azure Monitorral integrált, külső gyártótól származó eszközök közé többek között az alábbiak tartoznak:
     
-    * **ArcSight**: Az Azure AD-naplók Splunk-mal való integrálásáról az [Azure Active Directory-naplók integrálása](howto-integrate-activity-logs-with-arcsight.md)az ArcSight használatával az Azure Monitor használatával című témakörben talál további információt.
+    * **ArcSight**: az Azure ad-naplók splunk-mel való integrálásával kapcsolatos további információkért lásd: [Azure Active Directory-naplók integrálása a ArcSight a Azure monitor használatával](howto-integrate-activity-logs-with-arcsight.md).
     
     * **Splunk**: Az Azure AD-naplók a Splunkkal való integrálásával kapcsolatos további információkért lásd [az Azure AD-naplók a Splunkkal történő integrálását az Azure Monitor használatával](tutorial-integrate-activity-logs-with-splunk.md) ismertető cikket.
     
@@ -90,8 +90,8 @@ Miután az adatok megjelentek az eseményközpontban, kétféleképpen érheti e
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Active Directory-naplók integrálása az ArcSight szolgáltatással az Azure Monitor használatával](howto-integrate-activity-logs-with-arcsight.md)
+* [Azure Active Directory-naplók integrálása a ArcSight a Azure Monitor használatával](howto-integrate-activity-logs-with-arcsight.md)
 * [Azure AD-naplók integrálása a Splunkkal az Azure Monitor használatával](tutorial-integrate-activity-logs-with-splunk.md)
 * [Azure AD-naplók integrálása a SumoLogickal az Azure Monitor használatával](howto-integrate-activity-logs-with-sumologic.md)
-* [Naplónaplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-audit-log-schema.md)
+* [A naplózási naplók sémájának értelmezése Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)
