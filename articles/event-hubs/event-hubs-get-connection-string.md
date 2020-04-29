@@ -1,6 +1,6 @@
 ---
-title: Kapcsolati karakterlánc beletöltése – Azure Event Hubs | Microsoft dokumentumok
-description: Ez a cikk utasításokat tartalmaz egy kapcsolati karakterlánc beszerzéséhez, amelyet az ügyfelek az Azure Event Hubs-hoz való csatlakozáshoz használhatnak.
+title: A kapcsolatok karakterláncának beolvasása – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk útmutatást nyújt olyan kapcsolati karakterlánc beszerzéséhez, amelyet az ügyfelek használhatnak az Azure-Event Hubshoz való kapcsolódáshoz.
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -11,74 +11,74 @@ ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
 ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264933"
 ---
-# <a name="get-an-event-hubs-connection-string"></a>Event Hubs kapcsolati karakterlánc ának beszereznie
+# <a name="get-an-event-hubs-connection-string"></a>Event Hubs-kapcsolatok karakterláncának beolvasása
 
-Az Event Hubs használatához létre kell hoznia egy Eseményközpontok névterét. A névtér több eseményközpont vagy Kafka-témakör hatókör-tárolója. Ez a névtér egyedi [teljes tartománynevet](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)biztosít. A névtér létrehozása után beszerezheti az Event Hubs-szal való kommunikációhoz szükséges kapcsolati karakterláncot.
+A Event Hubs használatához létre kell hoznia egy Event Hubs névteret. A névtér egy több Event hub-vagy Kafka-témakör hatókör-tárolója. Ez a névtér egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)-t biztosít. Miután létrehozta a névteret, beolvashatja a Event Hubssal való kommunikációhoz szükséges kapcsolódási karakterláncot.
 
-Az Azure Event Hubs kapcsolati karakterlánca a következő összetevőket ágyazja be,
+Az Azure Event Hubshoz tartozó kapcsolatok karakterlánca a következő, beágyazott összetevőket tartalmaz:
 
-* FQDN = a létrehozott EventHubs-névtér teljes tartományneve (tartalmazza az EventHubs névtér nevét, amelyet servicebus.windows.net követ)
+* FQDN = a létrehozott EventHubs-névtér teljes tartományneve (tartalmazza a EventHubs-névtér nevét, majd a servicebus.windows.net-t)
 * SharedAccessKeyName = az alkalmazás SAS-kulcsaihoz választott név
 * SharedAccessKey = a kulcs generált értéke.
 
-A kapcsolati karakterlánc sablon így néz ki:
+A kapcsolatok karakterlánc-sablonja úgy néz ki, mint
 ```
 Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 ```
 
-Egy példa kapcsolati karakterlánc így nézhet ki:`Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
+Például a következőhöz hasonló kapcsolatok karakterlánca lehet:`Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
 
-Ez a cikk végigvezeti a kapcsolati karakterlánc megszerzésének különböző módjain.
+Ez a cikk végigvezeti a kapcsolatok sztring beszerzésének különböző módjain.
 
-## <a name="get-connection-string-from-the-portal"></a>Kapcsolati karakterlánc bekésezése a portálról
+## <a name="get-connection-string-from-the-portal"></a>A portálon keresztüli kapcsolatok karakterláncának beolvasása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
-2. Válassza a bal oldali navigációs menü **Minden szolgáltatás lehetőséget.** 
-3. Válassza **az Eseményközpontok lehetőséget** az **Analytics** szakaszban. 
-4. Az eseményközpontok listájában válassza ki az eseményközpontot.
-6. Az **Event Hubs Namespace (Eseményközpontok névtér) lapján** válassza a bal oldali menü **Megosztott hozzáférési házirendek parancsát.**
+2. A bal oldali navigációs menüben válassza a **minden szolgáltatás** lehetőséget. 
+3. Az **elemzés** szakaszban válassza a **Event Hubs** lehetőséget. 
+4. Az Event hubok listájában válassza ki az Event hub elemet.
+6. A **Event Hubs névtér** lapon válassza a bal oldali menüben a **megosztott elérési házirendek** elemet.
 
-    ![Megosztott hozzáférési házirendek menüelem](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
-7. Válasszon egy **megosztott hozzáférési szabályzatot** a házirendek listájában. Az alapértelmezett neve: **RootManageSharedAccessPolicy**. Hozzáadhat egy megfelelő engedélyekkel rendelkező házirendet (olvasás, írás), és használhatja azt a házirendet. 
+    ![Közös hozzáférésű házirendek menüelem](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+7. Válasszon ki egy **megosztott hozzáférési házirendet** a szabályzatok listájában. Az alapértelmezett név: **RootManageSharedAccessPolicy**. Hozzáadhat egy szabályzatot a megfelelő engedélyekkel (olvasás, írás), és használhatja a szabályzatot. 
 
-    ![Az Event Hubs megosztott hozzáférési házirendjei](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-8. Jelölje ki a **Másolás** gombot a **Kapcsolatkarakterlánc-elsődleges kulcs** mező mellett. 
+    ![Event Hubs megosztott hozzáférési házirendek](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
+8. Válassza a **kapcsolódási karakterlánc – elsődleges kulcs** mező melletti **Másolás** gombot. 
 
-    ![Event Hubs - kapcsolati karakterlánc bekésezése](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
+    ![Event Hubs – a kapcsolatok karakterláncának beolvasása](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
-## <a name="getting-the-connection-string-with-azure-powershell"></a>A kapcsolati karakterlánc beszerzése az Azure PowerShelllel
+## <a name="getting-the-connection-string-with-azure-powershell"></a>A Azure PowerShell a kapcsolatok karakterláncának beolvasása
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A [Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey) segítségével lejuthat az adott házirend/szabály nevének kapcsolati karakterláncára az alábbiak szerint:
+A [Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey) használatával lekérheti az adott házirend/szabály neve számára a kapcsolódási karakterláncot az alább látható módon:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
 
-## <a name="getting-the-connection-string-with-azure-cli"></a>A kapcsolati karakterlánc beszerzése az Azure CLI-vel
-Az alábbiakban lejuthat a névtér kapcsolati karakterláncának lekérni:
+## <a name="getting-the-connection-string-with-azure-cli"></a>A kapcsolatok karakterláncának beolvasása az Azure CLI-vel
+A következő paranccsal kérheti le a névtérhez tartozó kapcsolódási karakterláncot:
 
 ```azurecli-interactive
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-Vagy használhatja a következőket egy EventHub-entitás kapcsolati karakterláncának lekérni:
+Vagy az alábbi paranccsal kérheti le a EventHub entitáshoz tartozó kapcsolódási karakterláncot:
 
 ```azurecli-interactive
 az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey
 ```
 
-Az Azure CLI-parancsok az Event Hubs szolgáltatáshoz című témakörben talál további információt [az Azure CLI for Event Hubs című témakörben.](/cli/azure/eventhubs)
+Az Event Hubs Azure CLI-parancsaival kapcsolatos további információkért lásd: [Az Azure CLI a Event Hubshoz](/cli/azure/eventhubs).
 
 ## <a name="next-steps"></a>További lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Eseményközpontok – áttekintés](event-hubs-what-is-event-hubs.md)
-* [Event Hub létrehozása](event-hubs-create.md)
+* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
+* [Event hub létrehozása](event-hubs-create.md)

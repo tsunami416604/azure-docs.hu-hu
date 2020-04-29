@@ -1,5 +1,5 @@
 ---
-title: Bing News Search C# ügyfélkönyvtár – rövid útmutató
+title: Bing News Search C# ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,32 +9,32 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: fd43fcb1b5fb70862ed1c1fa5111f0893495b437
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503887"
 ---
-Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Bing News Search ügyfélkönyvtárában a C# számára. Bár a Bing News Search a legtöbb programozási nyelvvel kompatibilis REST API-val rendelkezik, az ügyfélkódtár egyszerű módot kínál a szolgáltatás alkalmazásokba való integrálására. A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch)
+Ezzel a rövid útmutatóval megkezdheti a C#-hoz készült Bing News Search ügyféloldali kódtár híreinek keresését. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017-es vagy újabb verzióinak](https://www.visualstudio.com/downloads/)bármely kiadása.
+* A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
-* A [Bing News Keresés SDK NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). A csomag telepítése a következőket is telepíti:
+* A [BING News Search SDK NuGet csomagja](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). A csomag telepítése a következőket is telepíti:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-Ha a Bing News Search ügyféltárhasználatával szeretne beállítani `Manage NuGet Packages` egy konzolalkalmazást, keresse meg a Visual Studio Megoldáskezelőszolgáltatásának beállítását.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.NewsSearch` csomagot.
+Ha a Bing News Search ügyféloldali kódtár használatával szeretne konzolt beállítani, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studióban található megoldáskezelő.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.NewsSearch` csomagot.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a következőket a fő kódfájlhoz.
+1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a következőt a fő kódhoz.
     
     ```csharp
     using System;
@@ -42,7 +42,7 @@ Ha a Bing News Search ügyféltárhasználatával szeretne beállítani `Manage 
     using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
     ```
 
-2. Hozzon létre egy változót az API-kulcshoz, egy keresési kifejezést, majd hozza létre vele a hírkereső ügyfelet.
+2. Hozzon létre egy változót az API-kulcshoz, egy keresési kifejezéshez, majd hozza létre a News Search-ügyfelet.
 
     ```csharp
     var key = "YOUR-ACCESS-KEY";
@@ -52,12 +52,12 @@ Ha a Bing News Search ügyféltárhasználatával szeretne beállítani `Manage 
 
 ## <a name="send-a-request-and-parse-the-result"></a>Kérelem küldése és az eredmény elemzése
 
-1. Az ügyfél segítségével keresési kérelmet küldhet a Bing News Search szolgáltatásnak:
+1. Keresési kérelem küldése a Bing News Search szolgáltatásnak az ügyfél használatával:
     ```csharp
     var newsResults = client.News.SearchAsync(query: searchTerm, market: "en-us", count: 10).Result;
     ```
 
-2. Ha bármilyen eredményt adott vissza, elemezd őket:
+2. Ha bármilyen eredményt adott vissza, elemezheti őket:
 
     ```csharp
     if (newsResults.Value.Count > 0)

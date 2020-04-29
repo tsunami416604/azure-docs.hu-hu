@@ -1,6 +1,6 @@
 ---
-title: Példa osztálytípusokra az Azure Lab Services-en | Microsoft dokumentumok
-description: Bizonyos típusú osztályokat biztosít, amelyekhez az Azure Lab Services használatával laborokat állíthat be.
+title: Példák a Azure Lab Services-osztályokra | Microsoft Docs
+description: Bizonyos típusú osztályokat biztosít, amelyekhez a Azure Lab Services használatával állíthatja be a laborokat.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,58 +14,58 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 27619a69a1f7fbded8ce6430afc2b8e9a8b4a00c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79296727"
 ---
-# <a name="class-types-overview---azure-lab-services"></a>Osztálytípusok áttekintése – Azure Lab Services
+# <a name="class-types-overview---azure-lab-services"></a>Osztályok típusai – áttekintés – Azure Lab Services
 
-Az Azure Lab Services lehetővé teszi, hogy gyorsan állítsa be az osztálytermi laborkörnyezetben a felhőben. Ebben a szakaszban található cikkek útmutatást nyújtanak, hogyan állíthat be többtípusú tantermi laborok az Azure Lab Services használatával.
+Azure Lab Services lehetővé teszi, hogy gyorsan be lehessen állítani a Felhőbeli tantermi tesztkörnyezet környezeteit. Az ebben a szakaszban található cikkek segítséget nyújtanak a különböző típusú osztálytermi laborok beállításához Azure Lab Services használatával.
 
-## <a name="deep-learning-in-natural-language-processing"></a>Mélytanulás a természetes nyelvi feldolgozásban
+## <a name="deep-learning-in-natural-language-processing"></a>Mélytanulás a természetes nyelvfeldolgozásban
 
-Az Azure Lab Services használatával beállíthat egy, a természetes nyelvi feldolgozás (NLP) mélytanulásra összpontosító labort. A természetes nyelvi feldolgozás (NLP) a mesterséges intelligencia (AI) egy formája, amely lehetővé teszi a számítógépek fordítását, beszédfelismerését és más nyelvismereti képességeit. NLP-osztályt használó diákok egy Linux virtuális gépet (VM) kapnak, hogy megtanulják, hogyan alkalmazhatnak neurális hálózati algoritmusokat az írott emberi nyelv elemzéséhez használt mélytanulási modellek fejlesztéséhez.
+Beállíthat egy olyan labort, amely a természetes nyelvi feldolgozás (NLP) mély tanulására koncentrál a Azure Lab Services használatával. A természetes nyelvi feldolgozás (NLP) a mesterséges intelligencia (AI) formája, amely lehetővé teszi, hogy a számítógépek fordítással, beszédfelismeréssel és más nyelvi felismerési képességekkel rendelkeznek. Az NLP osztályba tartozó diákok linuxos virtuális gépet (VM) kapnak, amelyből megtudhatja, hogyan alkalmazhat neurális hálózati algoritmusokat az írott emberi nyelv elemzéséhez használt mély tanulási modellek fejlesztéséhez.
 
-Az ilyen típusú laborok beállításáról az [Azure Lab Services használatával a természetes nyelvi feldolgozás ban a mélytanulásra összpontosító labor beállítása című témakörben](class-type-deep-learning-natural-processing.md)talál részletes információt.
+Az ilyen típusú laborok beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a természetes nyelvi feldolgozás terén a Azure Lab Services használatával](class-type-deep-learning-natural-processing.md).
 
 ## <a name="shell-scripting-on-linux"></a>Héjszkriptek használata Linuxon
 
-Beállíthatja a labor tanítani shell scripting Linuxon. A parancsfájlok használata a rendszerfelügyelet hasznos része, amely lehetővé teszi a rendszergazdák számára az ismétlődő feladatok elkerülését. Ebben a mintaforgatókönyvben az osztály a hagyományos bash-parancsfájlokat és a továbbfejlesztett parancsfájlokat ismerteti. A továbbfejlesztett parancsfájlok olyan parancsfájlok, amelyek bash parancsokat és Rubint kombinálnak. Ez a megközelítés lehetővé teszi, hogy Ruby adatokat továbbítson, és lejátssza a parancsokat a rendszerhéjlal való interakcióhoz.
+Beállíthat egy labort a rendszerhéj-parancsfájlok Linuxon való tanításához. A parancsfájlok hasznos részét képezik a rendszerfelügyeletnek, amely lehetővé teszi a rendszergazdák számára az ismétlődő feladatok elkerülését. Ebben a példában az osztály a hagyományos bash-parancsfájlokat és a továbbfejlesztett parancsfájlokat tartalmazza. A továbbfejlesztett parancsfájlok olyan parancsfájlok, amelyek a bash-parancsokat és a Ruby-t ötvözik. Ez a módszer lehetővé teszi a Ruby számára, hogy a Shell használatával kommunikáljon a környékre és bash-parancsokra.
 
-A diákok figyelembe ezeket a szkriptek osztályok kap egy Linux virtuális gép, hogy megtanulják az alapokat a Linux, és megismerkednek a bash shell scripting. A Linux virtuális gép jön a távoli asztali hozzáférés engedélyezve van, és [gedit](https://help.gnome.org/users/gedit/stable/) és [Visual Studio Code](https://code.visualstudio.com/) szövegszerkesztők telepítve.
+Az ilyen programozási osztályokat tartalmazó tanulók Linux rendszerű virtuális gépeket szereznek be a Linux alapjaihoz, és megismerhetik a bash rendszerhéj parancsfájljait is. A linuxos virtuális gépen engedélyezve van a távoli asztali hozzáférés, és telepítve van a [gedit](https://help.gnome.org/users/gedit/stable/) és a [Visual Studio Code](https://code.visualstudio.com/) szövegszerkesztő.
 
-Az ilyen típusú laborok beállításáról a [Shell linuxos parancsfájljacímű](class-type-shell-scripting-linux.md)témakörben talál részletes információt.
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [rendszerhéj-parancsfájlok futtatása Linuxon](class-type-shell-scripting-linux.md).
 
 ## <a name="ethical-hacking"></a>Etikus hackertevékenység
 
-Létrehozhategy labort egy olyan osztálynak, amely az etikus hackelés törvényszéki oldalára összpontosít. A behatolási tesztelés, amelyet az etikus feltörési közösség alkalmaz, akkor történik, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz, hogy bemutassa a rosszindulatú támadó által kihasználható biztonsági réseket.
+Beállíthat egy olyan osztályhoz tartozó labort, amely az etikai feltörések kriminalisztikai oldalára koncentrál. A behatolási teszt, amelyet az etikai hackelési Közösség használ, akkor következik be, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz a rosszindulatú támadó által kihasználható biztonsági rések bemutatására.
 
-Egy etikus hackelési osztályban a diákok modern technikákat tanulhatnak a sebezhetőségek elleni védekezésre. Minden diák kap egy Windows Server-gazdavirtuális gépet, amely két beágyazott virtuális géppel rendelkezik – egy [metasploitable3](https://github.com/rapid7/metasploitable3) lemezképpel rendelkező virtuális gép, egy másik pedig [Kali Linux-lemezképpel](https://www.kali.org/) rendelkező gép. A metasploitable virtuális gép célokra használható.  A Kali Linux virtuális gép hozzáférést biztosít a kriminalisztikai feladatok végrehajtásához szükséges eszközökhöz.
+Egy etikai hackelési osztályban a tanulók modern technikákat tanulnak a biztonsági rések elleni védelemhez. Minden tanuló egy olyan Windows Server Host virtuális gépet kap, amely két beágyazott virtuális géppel rendelkezik – egy [Metasploitable3](https://github.com/rapid7/metasploitable3) -lemezképpel rendelkező virtuális géppel és egy másik, [Kali Linux](https://www.kali.org/) -lemezképpel rendelkező géppel. A Metasploitable virtuális gép felhasználási célokra szolgál.  A Kali Linux rendszerű virtuális gép hozzáférést biztosít a kriminalisztikai feladatok végrehajtásához szükséges eszközökhöz.
 
-Az ilyen típusú laborok beállításáról az [Etikus hackelési osztály tanítására szolgáló labor beállítása című](class-type-ethical-hacking.md)témakörben talál részletes információt.
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása az etikai Hacking osztály megtanításához](class-type-ethical-hacking.md).
 
 ## <a name="database-management"></a>Adatbázis-kezelés
-Adatbázisok fogalmak egyike a bevezető tanfolyamok tanított a legtöbb Computer Science osztályok az egyetemen. Az Azure Lab Services-ben beállíthat egy tesztkörnyezetet egy alapszintű adatbázis-felügyeleti osztályhoz. Beállíthat például egy virtuálisgép-sablont egy [MySQL](https://www.mysql.com/) Database Server vagy egy [SQL Server 2019-kiszolgálóval](https://www.microsoft.com/sql-server/sql-server-2019) rendelkező tesztkörnyezetben.
+Az adatbázisok fogalmai az egyetemen bevezető tanfolyamok egyike. Beállíthat egy labort az alapszintű adatbázisok felügyeleti osztályához Azure Lab Servicesban. Beállíthat például egy virtuálisgép-sablont egy laborban egy [MySQL](https://www.mysql.com/) -adatbázis-kiszolgálóval vagy egy [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) -kiszolgálóval.
 
-Az ilyen típusú tesztkörnyezet beállításáról a [Relációs adatbázisok adatbázis-kezelésének tanításához](class-type-database-management.md)labor beállítása című témakörben talál részletes információt.
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a kapcsolódó adatbázisok adatbázis-kezelésének tanításához](class-type-database-management.md).
 
-## <a name="python-and-jupyter-notebooks"></a>Python- és Jupyter-jegyzetfüzetek
-Az Azure Lab Servicesben sablongépet állíthat be a [Jupyter-jegyzetfüzetek](http://jupyter-notebook.readthedocs.io)használatának tanításához szükséges eszközökkel. A Jupyter Notebooks egy nyílt forráskódú projekt, amely lehetővé teszi a rich text és a végrehajtható [Python](https://www.python.org/) forráskód egyszerű kombinálását egyetlen vásznon, amelyet jegyzetfüzetnek neveznek. A jegyzetfüzet futtatása a bemenetek és kimenetek lineáris rekordját eredményezi.  Ezek a kimenetek tartalmazhatnak szöveget, adattáblázatokat, pontdiagramokat stb.
+## <a name="python-and-jupyter-notebooks"></a>Python-és Jupyter-jegyzetfüzetek
+A [Jupyter-jegyzetfüzetek](http://jupyter-notebook.readthedocs.io)használatának megtanításához szükséges eszközökkel beállíthatja Azure Lab Servicesban a sablonhoz tartozó gépeket. A Jupyter notebookok egy nyílt forráskódú projekt, amely lehetővé teszi, hogy könnyedén kombinálja a Rich Text és a végrehajtható [Python](https://www.python.org/) -forráskódot egyetlen, jegyzetfüzet nevű vásznon. A jegyzetfüzetek futtatása a bemenetek és kimenetek lineáris rekordját eredményezi.  Ezek a kimenetek tartalmazhatnak szöveget, táblákat, valamint elszórt ábrákat és egyéb adatokat.
 
-Az ilyen típusú laborok beállításáról az [Adattudomány python- és Jupyter-jegyzetfüzetekkel való tanításához labor beállítása című témakörben](class-type-jupyter-notebook.md)talál részletes információt.
+Az ilyen típusú laborok beállításával kapcsolatos részletes információkat a [tesztkörnyezet beállítása az adatelemzéshez Python-és Jupyter-jegyzetfüzetekkel](class-type-jupyter-notebook.md)című témakörben talál.
 
 ## <a name="mobile-app-development-with-android-studio"></a>Mobilalkalmazások fejlesztése az Android Studio használatával
-Az Azure Lab Services ben labort állíthat be egy bevezető mobilalkalmazás-fejlesztési osztály tanításához. Ez az osztály azokra az Android mobilalkalmazásokra összpontosít, amelyek közzétehetők a [Google Play Áruházban.](https://play.google.com/store/apps)  A diákok megtanulják, hogyan kell használni [az Android Studio](https://developer.android.com/studio) alkalmazásokat.  [Az Android visual Studio emulátor](https://visualstudio.microsoft.com/vs/msft-android-emulator/) az alkalmazás helyi tesztelésére szolgál.
+Beállíthat egy labort Azure Lab Servicesban egy bevezető Mobile Application Development osztály betanításához. Ez az osztály a [Google Play áruház](https://play.google.com/store/apps)közzétett androidos mobil alkalmazásokra koncentrál.  A tanulók megtudhatják, hogyan hozhat létre alkalmazásokat a [Android Studio](https://developer.android.com/studio) használatával.  Az [Androidhoz készült Visual Studio Emulator](https://visualstudio.microsoft.com/vs/msft-android-emulator/) az alkalmazás helyi tesztelésére szolgál.
 
-Az ilyen típusú laborok beállításáról a [Tesztkörnyezet beállítása a mobilalkalmazás-fejlesztés androidos környezetben történő tanításához](class-type-mobile-dev-android-studio.md)című témakörben talál részletes információt.
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a mobileszközök fejlesztéséhez Android Studio használatával](class-type-mobile-dev-android-studio.md).
 
 
 ## <a name="next-steps"></a>További lépések
 
 Lásd az alábbi cikkeket:
 
-- [Az Azure Lab Services használatával a természetes nyelvi feldolgozás mélytanulására összpontosító labor beállítása](class-type-deep-learning-natural-processing.md)
+- [Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services](class-type-deep-learning-natural-processing.md)
 - [Héjszkriptek használata Linuxon](class-type-shell-scripting-linux.md)
 - [Etikus hackertevékenység](class-type-ethical-hacking.md)

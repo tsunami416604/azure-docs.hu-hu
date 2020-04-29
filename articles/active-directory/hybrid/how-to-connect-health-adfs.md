@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261566"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
-Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. Az Azure AD Connect (Sync) és az Azure AD Connect Health figyeléséről az [Azure AD Connect állapotának használata szinkronizáláshoz című](how-to-connect-health-sync.md)témakörben talál további információt. Az Active Directory tartományi szolgáltatások és az Azure AD Connect Health figyeléséről az [Azure AD Connect Health használata az Active Directory tartományi szolgáltatásokkal című](how-to-connect-health-adds.md)témakörben talál további információt.
+Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. A Azure AD Connect (Sync) Azure AD Connect Health használatával történő figyelésével kapcsolatos információkért lásd: a [Azure ad Connect Health szinkronizálásának használata](how-to-connect-health-sync.md). Továbbá a Azure AD Connect Health Active Directory tartományi szolgáltatások figyelésével kapcsolatos további információkért lásd: a [Azure ad Connect Health használata AD DS használatával](how-to-connect-health-adds.md).
 
 ## <a name="alerts-for-ad-fs"></a>AD FS-riasztások
 Az aktív riasztások listáját az Azure AD Connect Health-riasztások szakaszban láthatja. Minden egyes riasztás tartalmazza a fontos információkat, a megoldás lépéseit, valamint a kapcsolódó dokumentációra mutató hivatkozásokat.

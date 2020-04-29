@@ -1,6 +1,6 @@
 ---
-title: StorSimple Eszközkezelő szolgáltatás telepítése | Microsoft dokumentumok
-description: Bemutatja, hogyan hozhat létre és törölheti a StorSimple Eszközkezelő szolgáltatást az Azure Portalon, és ismerteti a szolgáltatás regisztrációs kulcsának kezelését.
+title: A StorSimple Eszközkezelő Service üzembe helyezése | Microsoft Docs
+description: A cikk azt ismerteti, hogyan lehet létrehozni és törölni a StorSimple Eszközkezelő szolgáltatást a Azure Portalban, és ismerteti a szolgáltatás regisztrációs kulcsának kezelését.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,114 +15,114 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267455"
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás telepítése a StorSimple virtuális tömbhöz
+# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás üzembe helyezése a StorSimple virtuális tömbben
 
 ## <a name="overview"></a>Áttekintés
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-A StorSimple Eszközkezelő szolgáltatás fut a Microsoft Azure-ban, és több StorSimple-eszközhöz csatlakozik. Miután létrehozta a szolgáltatást, használhatja az eszközök kezelésére a Microsoft Azure portal fut a böngészőben. Ez lehetővé teszi a StorSimple Eszközkezelő szolgáltatáshoz egyetlen központi helyről csatlakoztatott összes eszköz figyelését, ezáltal minimalizálva a felügyeleti terheket.
+A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSimple-eszközhöz csatlakozik. A szolgáltatás létrehozása után a segítségével felügyelheti az eszközöket a böngészőben futó Microsoft Azure Portal. Ez lehetővé teszi a StorSimple Eszközkezelő szolgáltatáshoz kapcsolódó összes eszköz figyelését egyetlen központi helyről, így minimalizálva az adminisztrációs terheket.
 
 A StorSimple Eszközkezelő szolgáltatással kapcsolatos gyakori feladatok a következők:
 
 * Szolgáltatás létrehozása
 * Szolgáltatás törlése
 * Szolgáltatásregisztrációs kulcs lekérése
-* A szolgáltatás regisztrációs kulcsának újragenerálása
+* A szolgáltatás regisztrációs kulcsának újbóli előállítása
 
-Ez az oktatóanyag ismerteti, hogyan hajthatja végre az egyes előző feladatokat. Az ebben a cikkben található információk csak a StorSimple virtuális tömbökre vonatkoznak. A StorSimple 8000 sorozattal kapcsolatos további információkért [látogasson el a StorSimple Manager szolgáltatás telepítéséhez.](storsimple-manage-service.md)
+Ez az oktatóanyag az előző feladatok végrehajtását ismerteti. A cikkben szereplő információk csak StorSimple virtuális tömbökre alkalmazhatók. A StorSimple 8000 sorozattal kapcsolatos további információkért látogasson el a [StorSimple Manager szolgáltatás üzembe helyezése](storsimple-manage-service.md)című témakörre.
 
 ## <a name="create-a-service"></a>Szolgáltatás létrehozása
 
 Szolgáltatás létrehozásához a következőkre van szükség:
 
-* Nagyvállalati szerződéssel rendelkező előfizetés
-* Aktív Microsoft Azure tárfiók
+* Előfizetés Nagyvállalati Szerződés
+* Aktív Microsoft Azure Storage-fiók
 * A hozzáférés-kezeléshez használt számlázási adatok
 
-Azt is választhatja, hogy hozzon létre egy tárfiókot, amikor létrehozza a szolgáltatást.
+Azt is megteheti, hogy létrehoz egy Storage-fiókot a szolgáltatás létrehozásakor.
 
-Egyetlen szolgáltatás több eszközt is kezelhet. Egy eszköz azonban nem terjedhet ki több szolgáltatásra. Egy nagyvállalat több szolgáltatáspéldánysal is rendelkezhet különböző előfizetésekkel, szervezetekkel vagy akár üzembe helyezési helyekkel.
+Egyetlen szolgáltatás több eszközt is kezelhet. Az eszközök azonban nem terjedhetnek ki több szolgáltatásra. A nagyméretű vállalatok több szolgáltatási példánnyal is dolgozhatnak különböző előfizetésekkel, szervezetekkel vagy akár üzembe helyezési helyekkel.
 
 > [!NOTE]
-> A StorSimple Device Manager szolgáltatás külön példányaira van szükség a StorSimple 8000 sorozatú eszközök és a StorSimple virtuális tömbök kezeléséhez.
+> A StorSimple 8000 sorozatú eszközök és a StorSimple virtuális tömbök felügyeletéhez külön StorSimple Eszközkezelő szolgáltatásra van szükség.
 
 
-A szolgáltatás létrehozásához hajtsa végre az alábbi lépéseket.
+Egy szolgáltatás létrehozásához hajtsa végre az alábbi lépéseket.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
 ## <a name="delete-a-service"></a>Szolgáltatás törlése
 
-A szolgáltatás törlése előtt győződjön meg arról, hogy nem használják a csatlakoztatott eszközök. Ha a szolgáltatás használatban van, inaktiválja a csatlakoztatott eszközöket. Az inaktiválási művelet megszakítja az eszköz és a szolgáltatás közötti kapcsolatot, de megőrzi az eszköz adatait a felhőben.
+A szolgáltatás törlése előtt győződjön meg arról, hogy nem használja a csatlakoztatott eszközöket. Ha a szolgáltatás használatban van, inaktiválja a csatlakoztatott eszközöket. Az inaktiválási művelet megszakítja a kapcsolatot az eszköz és a szolgáltatás között, de megőrzi az eszközön tárolt összes eszközt a felhőben.
 
 > [!IMPORTANT]
-> A szolgáltatás törlése után a művelet nem vonható vissza. A szolgáltatást használó eszközöknek gyári alaphelyzetbe kell állítaniuk, mielőtt egy másik szolgáltatással használható lenne. Ebben a forgatókönyvben az eszközön lévő helyi adatok, valamint a konfiguráció elvesznek.
+> A szolgáltatás törlése után a művelet nem vonható vissza. A szolgáltatást használó összes eszköznek gyári visszaállítást kell végeznie, mielőtt más szolgáltatással is használható lenne. Ebben a forgatókönyvben az eszközön található helyi adategységek és a konfiguráció is elvész.
  
 
 A szolgáltatás törléséhez hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-delete-a-service"></a>Szolgáltatás törlése
 
-1. Lépjen a **Minden erőforrás** menüpontra. Keresse meg a StorSimple Eszközkezelő szolgáltatást. Válassza ki a törölni kívánt szolgáltatást.
+1. Lépjen a **Minden erőforrás** menüpontra. Keressen rá a StorSimple Eszközkezelő szolgáltatásra. Válassza ki a törölni kívánt szolgáltatást.
    
-    ![A törölni kívánt szolgáltatás kiválasztása](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Lépjen a szolgáltatás irányítópultjára, és győződjön meg arról, hogy nincsenek eszközök a szolgáltatáshoz csatlakoztatva. Ha nincs enek regisztrálva eszköz a szolgáltatáshoz, akkor egy szalagcímüzenet is megjelenik. Kattintson a **Törlés** gombra.
+    ![Válassza ki a törlendő szolgáltatást](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
+2. Lépjen a szolgáltatás irányítópultra, és győződjön meg arról, hogy nincsenek csatlakoztatott eszközök a szolgáltatáshoz. Ha nincsenek regisztrálva eszközök a szolgáltatásban, a rendszer egy szalagcím-üzenetet is megjelenít a hatáshoz. Kattintson a **Törlés** gombra.
    
     ![Szolgáltatás törlése](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
-3. Amikor megerősítést kér, kattintson az **Igen** gombra a megerősítő értesítésben. 
+3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra a megerősítő értesítésben. 
    
     ![Szolgáltatás törlésének megerősítése](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
-4. A szolgáltatás törlése eltarthat néhány percig. A szolgáltatás sikeres törlése után értesítést kap.
+4. A szolgáltatás törléséhez néhány percet is igénybe vehet. A szolgáltatás sikeres törlése után értesítést kap.
    
-    ![Sikeres szolgáltatástörlés](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
+    ![Szolgáltatás sikeres törlése](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
 
-A szolgáltatások listája frissül.
+A szolgáltatások listája frissülni fog.
 
  ![A szolgáltatások frissített listája](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>Szolgáltatásregisztrációs kulcs lekérése
-Miután sikeresen létrehozott egy szolgáltatást, regisztrálnia kell a StorSimple-eszközt a szolgáltatással. Az első StorSimple-eszköz regisztrálásához szüksége lesz a szolgáltatás regisztrációs kulcsára. További eszközök regisztrálásához egy meglévő StorSimple szolgáltatás, szüksége lesz mind a regisztrációs kulcs és a szolgáltatás adattitkosítási kulcs (amely a regisztráció során az első eszközön jön létre). A szolgáltatás adattitkosítási kulcsáról további információt a [StorSimple biztonság című](storsimple-security.md)témakörben talál. A regisztrációs kulcsot a szolgáltatás **Keys** paneljének elérésével szerezheti be.
+Miután sikeresen létrehozott egy szolgáltatást, regisztrálnia kell a StorSimple-eszközt a szolgáltatásban. Az első StorSimple-eszköz regisztrálásához szüksége lesz a szolgáltatás regisztrációs kulcsára. Ha további eszközöket szeretne regisztrálni egy meglévő StorSimple-szolgáltatással, akkor a regisztrációs kulcsra és a szolgáltatás adattitkosítási kulcsára is szüksége lesz (amely az első eszközön jön létre a regisztráció során). A szolgáltatási adatok titkosítási kulcsával kapcsolatos további információkért lásd: [StorSimple biztonság](storsimple-security.md). A regisztrációs kulcsot a szolgáltatás **kulcsok** paneljén érheti el.
 
-Hajtsa végre az alábbi lépéseket a szolgáltatás regisztrációs kulcsának levételéhez.
+A szolgáltatás regisztrációs kulcsának beszerzéséhez hajtsa végre a következő lépéseket.
 
-#### <a name="to-get-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának beszerezése
-1. A **StorSimple Eszközkezelő** panelen nyissa meg a **Felügyeleti &gt; ** **kulcsok lapot.**
+#### <a name="to-get-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának beszerzése
+1. A **StorSimple Eszközkezelő** panelen lépjen a **felügyeleti &gt; ** **kulcsok**elemre.
    
    ![Kulcsok panel](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. A **Kulcsok** panelen megjelenik egy szolgáltatásregisztrációs kulcs. Másolja a regisztrációs kulcsot a másolásikonra. 
+2. A **kulcsok** panelen megjelenik a szolgáltatás regisztrációs kulcsa. Másolja a regisztrációs kulcsot a másolás ikon használatával. 
 
-Tartsa a szolgáltatás regisztrációs kulcsát biztonságos helyen. Szüksége lesz erre a kulcsra, valamint a szolgáltatás adattitkosítási kulcsára, hogy további eszközöket regisztrálhasson ezzel a szolgáltatással. A szolgáltatás regisztrációs kulcsának beszerzése után konfigurálnia kell az eszközt a Windows PowerShell storSimple-kapcsolaton keresztül.
+A szolgáltatás regisztrációs kulcsának biztonságos helyen kell maradnia. Erre a kulcsra, valamint a szolgáltatás adattitkosítási kulcsára lesz szüksége a szolgáltatáshoz tartozó további eszközök regisztrálásához. A szolgáltatás regisztrációs kulcsának beszerzése után a Windows PowerShell StorSimple-bővítménye felületen keresztül kell konfigurálnia az eszközt.
 
-## <a name="regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának újragenerálása
-Újra kell generálnia egy szolgáltatásregisztrációs kulcsot, ha kulcselforgatást kell végrehajtania, vagy ha a szolgáltatás-rendszergazdák listája megváltozott. A kulcs újragenerálásakor az új kulcs csak a későbbi eszközök regisztrálására szolgál. A már regisztrált eszközöket ez a folyamat nem érinti.
+## <a name="regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának újbóli előállítása
+Ha el kell végeznie a kulcs elforgatását, vagy ha a szolgáltatás-rendszergazdák listája módosult, újra kell létrehoznia a szolgáltatás regisztrációs kulcsát. A kulcs újralétrehozásakor az új kulcs csak a további eszközök regisztrálására szolgál. A folyamat nem érinti a már regisztrált eszközöket.
 
-A szolgáltatásregisztrációs kulcs újragenerálásához hajtsa végre az alábbi lépéseket.
+A szolgáltatás regisztrációs kulcsának újralétrehozásához hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának újragenerálása
-1. A **StorSimple Eszközkezelő** panelen nyissa meg a **Felügyeleti &gt; ** **kulcsok lapot.**
+#### <a name="to-regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának előállítása
+1. A **StorSimple Eszközkezelő** panelen lépjen a **felügyeleti &gt; ** **kulcsok**elemre.
    
    ![Kulcsok panel](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. A **Billentyűk** panelen kattintson a **Regenerate gombra.**
+2. A **kulcsok** panelen kattintson az **újragenerálás**elemre.
    
-   ![Kattintson az újragenerálás gombra](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. A **Szolgáltatás regisztrációs kulcsának újragenerálása** panelen tekintse át a kulcsok újragenerálásakor szükséges műveletet. A szolgáltatásban regisztrált összes további eszköz az új regisztrációs kulcsot fogja használni. A megerősítéshez kattintson a **Regenerate gombra.** A regisztráció befejezése után értesítést kap.
+   ![Kattintson az újragenerált elemre.](./media/storsimple-virtual-array-manage-service/getregkey5.png)
+3. A **szolgáltatás regisztrációs kulcsának újragenerálása** panelen tekintse át a kulcsok újragenerálása esetén szükséges műveletet. A szolgáltatásban regisztrált összes további eszköz az új regisztrációs kulcsot fogja használni. A megerősítéshez kattintson az **újbóli létrehozás** gombra. A regisztráció befejezését követően értesítést kap.
    
-   ![Kulcs újragenerálásának megerősítése](./media/storsimple-virtual-array-manage-service/getregkey3.png)
-4. Egy új szolgáltatásregisztrációs kulcs jelenik meg.
+   ![Kulcs újralétrehozásának megerősítése](./media/storsimple-virtual-array-manage-service/getregkey3.png)
+4. Ekkor megjelenik egy új szolgáltatás regisztrációs kulcsa.
    
-    ![Kulcs újragenerálásának megerősítése](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![Kulcs újralétrehozásának megerősítése](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
-   Másolja a kulcsot, és mentse el az új eszközök regisztrálásához ezzel a szolgáltatással.
+   Másolja ezt a kulcsot, és mentse a szolgáltatáshoz tartozó új eszközök regisztrálásához.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [kezdheti el](storsimple-virtual-array-deploy1-portal-prep.md) a StorSimple virtuális tömb.
-* További információ [a StorSimple eszköz felügyeletéről.](storsimple-ova-web-ui-admin.md)
+* Megtudhatja, hogyan [kezdheti](storsimple-virtual-array-deploy1-portal-prep.md) meg a StorSimple virtuális tömböket.
+* Ismerje meg [a StorSimple-eszköz felügyeletét](storsimple-ova-web-ui-admin.md).
 

@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159411"
 ---
-A dokumentum `inferenceconfig.json` bejegyzései leképezik az [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) osztály paramétereit. Az alábbi táblázat a JSON-dokumentumban szereplő entitások és a módszer paraméterei közötti leképezést ismerteti:
+A `inferenceconfig.json` dokumentumban szereplő bejegyzések a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) osztály paramétereinek felelnek meg. A következő táblázat ismerteti a JSON-dokumentum entitásai közötti leképezést, valamint a metódus paramétereit:
 
-| JSON entitás | Metódus paramétere | Leírás |
+| JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
-| `entryScript` | `entry_script` | A lemezképhez futtatandó kódot tartalmazó helyi fájl elérési útja. |
-| `sourceDirectory` | `source_directory` | Választható. A kép létrehozásához az összes fájlt tartalmazó mappák elérési útja, amely megkönnyíti a mappában vagy almappában lévő fájlok elérését. A webszolgáltatás függőségeként feltölthet egy teljes mappát a helyi számítógépről. Megjegyzés: a entry_script, conda_file és extra_docker_file_steps elérési utak a source_directory elérési úthoz viszonyított görbék. |
-| `environment` | `environment` | Választható.  Azure Machine Learning [környezetben.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)|
+| `entryScript` | `entry_script` | A rendszerképhez futtatandó kódot tartalmazó helyi fájl elérési útja. |
+| `sourceDirectory` | `source_directory` | Választható. Az összes fájlt tartalmazó mappák elérési útja a rendszerkép létrehozásához, amely megkönnyíti a mappában vagy almappában található fájlok elérését. A webszolgáltatások függőségeiként feltölthet egy teljes mappát a helyi gépről. Megjegyzés: a entry_script, a conda_file és a extra_docker_file_steps útvonalak relatív elérési utak az source_directory elérési úthoz. |
+| `environment` | `environment` | Választható.  Azure Machine Learning [környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py).|
 
-Az Azure Machine [Learning-környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) teljes specifikációit a következtetés konfigurációs fájlban is felveheti. Ha ez a környezet nem létezik a munkaterületen, az Azure Machine Learning létrehozza azt. Ellenkező esetben az Azure Machine Learning szükség esetén frissíti a környezetet. A következő JSON egy példa:
+Azure Machine Learning [környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) teljes specifikációit a következtetési konfigurációs fájlban is megadhatja. Ha ez a környezet nem létezik a munkaterületen, akkor a Azure Machine Learning létrehozza azt. Ellenkező esetben a Azure Machine Learning szükség esetén frissíti a környezetet. A következő JSON egy példa:
 
 ```json
 {
@@ -65,7 +65,7 @@ Az Azure Machine [Learning-környezet](https://docs.microsoft.com/python/api/azu
 }
 ```
 
-Egy meglévő Azure Machine [Learning-környezetben](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) is használhatja a leválasztott CLI-paramétereket, és eltávolíthatja a "környezet" kulcsot a következtetés konfigurációs fájlból. Használja az -e a környezet nevét, és --ev a környezeti verzió. Ha nem adja meg a --ev értéket, a legújabb verzió lesz használva. Íme egy példa egy következtetés konfigurációs fájl:
+Meglévő Azure Machine Learning- [környezetet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) is HASZNÁLHAT külön CLI-paraméterekben, és eltávolíthatja a "környezet" kulcsot a következtetési konfigurációs fájlból. Használja az-e nevet a környezet neveként, a--EV pedig a környezet verzióját. Ha nem ad meg--EV-t, a rendszer a legújabb verziót fogja használni. Íme egy példa a következtetési konfigurációs fájlra:
 
 ```json
 {
@@ -74,9 +74,9 @@ Egy meglévő Azure Machine [Learning-környezetben](https://docs.microsoft.com/
 }
 ```
 
-A következő parancs bemutatja, hogyan telepíthet egy modellt az előző következtetéskonfigurációs fájl (myInferenceConfig.json) használatával. 
+A következő parancs bemutatja, hogyan helyezhet üzembe egy modellt az előző következtetési konfigurációs fájl (myInferenceConfig. JSON) használatával. 
 
-Egy meglévő Azure Machine [Learning-környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) (AzureML-Minimal) legújabb verzióját is használja.
+Egy meglévő Azure Machine Learning- [környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) legújabb verzióját is használja (AzureML-minimal néven).
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic myInferenceConfig.json -e AzureML-Minimal --dc deploymentconfig.json

@@ -1,6 +1,6 @@
 ---
-title: Csoportalapú licenceléstovábbi forgatókönyvek – Azure AD | Microsoft dokumentumok
-description: További forgatókönyvek az Azure Active Directory csoportalapú licenceléséhez
+title: Csoportos licenceléssel kapcsolatos további forgatókönyvek – Azure AD | Microsoft Docs
+description: További forgatókönyvek Azure Active Directory csoport alapú licenceléshez
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
@@ -16,160 +16,160 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266285"
 ---
-# <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák, amelyek csoportok használatával kezelik a licencelést az Azure Active Directoryban
+# <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
 
-Az alábbi információk és példák segítségével pontosabbismereteket szerezhet az Azure Active Directory (Azure AD) csoportalapú licenceléséről.
+Az alábbi információk és példák segítségével összetettebb ismereteket szerezhet Azure Active Directory (Azure AD) csoport alapú licencelésről.
 
-## <a name="usage-location"></a>Felhasználás helye
+## <a name="usage-location"></a>Használat helye
 
-Nem minden Microsoft-szolgáltatás érhető el minden területen. Mielőtt egy licencet hozzá lehetne rendelni egy felhasználóhoz, a rendszergazdának meg kell **adnia** a felhasználó Használati hely tulajdonságát. Az [Azure Portalon megadhatja a](https://portal.azure.com)használati helyet a **Felhasználói** &gt; **profil** &gt; **beállításai ban.**
+Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. [A Azure Portal](https://portal.azure.com)a **felhasználói** &gt; **profil** &gt; **beállításaiban**megadhatja a használati helyet.
 
-Csoportlicenc-hozzárendelés esetén a megadott használati hely nélküli felhasználók öröklik a címtár helyét. Ha több helyen vannak felhasználók, győződjön meg arról, hogy ezt helyesen tükrözi a felhasználói erőforrásokban, mielőtt felhasználókat ad hozzá a licenccel rendelkező csoportokhoz.
+A csoport licencének hozzárendelésekor a megadott használati hely nélküli felhasználók öröklik a címtár helyét. Ha több helyen is vannak felhasználók, ügyeljen arra, hogy a felhasználói erőforrásokban megfelelően tükrözze, mielőtt felhasználókat adna hozzá a licencekhez.
 
 > [!NOTE]
-> A csoportlicenc-hozzárendelés soha nem módosítja a felhasználó meglévő használati helyértékét. Azt javasoljuk, hogy mindig adja meg a használati hely részeként a felhasználói létrehozási folyamat az Azure AD-ben (például az AAD Connect konfiguráció) - amely biztosítja, hogy a licenc-hozzárendelés eredménye mindig helyes, és a felhasználók nem kapnak szolgáltatásokat olyan helyeken, amelyek nem engedélyezettek.
+> A csoportos licenc-hozzárendelés soha nem módosítja egy felhasználó meglévő használati helyének értékét. Azt javasoljuk, hogy mindig a használati helyet állítsa be a felhasználói létrehozási folyamat részeként az Azure AD-ben (például HRE-kapcsolat konfigurálása), amely biztosítja, hogy a licenc-hozzárendelés eredménye mindig helyes legyen, és a felhasználók nem kapnak olyan helyeket, amely nem engedélyezett.
 
-## <a name="use-group-based-licensing-with-dynamic-groups"></a>Csoportalapú licencelés használata dinamikus csoportokkal
+## <a name="use-group-based-licensing-with-dynamic-groups"></a>Csoport alapú licencelés használata dinamikus csoportokkal
 
-A csoportalapú licencelés bármely biztonsági csoporttal használható, ami azt jelenti, hogy kombinálható az Azure AD dinamikus csoportokkal. A dinamikus csoportok szabályokat futtatnak a felhasználói erőforrás-attribútumokkal szemben, hogy automatikusan hozzávessék és eltávolítsák a felhasználókat a csoportokból.
+A Group-alapú licencelést bármely biztonsági csoporttal használhatja, ami azt jelenti, hogy az Azure AD dinamikus csoportjaival kombinálható. A dinamikus csoportok szabályokat futtatnak a felhasználói erőforrás attribútumain a felhasználók csoportokból való automatikus hozzáadásához és eltávolításához.
 
-Létrehozhat például egy dinamikus csoportot a felhasználókhoz rendelni kívánt egyes termékcsoportokhoz. Minden csoportot egy olyan szabály tölt fel, amely a felhasználókat az attribútumaik alapján adja hozzá, és minden csoport hoz hozzá a kívánt licenceket. Az attribútumot a helyszínen rendelheti hozzá, és szinkronizálhatja az Azure AD-vel, vagy kezelheti az attribútumot közvetlenül a felhőben.
+Létrehozhat például egy dinamikus csoportot néhány olyan termékhez, amelyet hozzá szeretne rendelni a felhasználókhoz. Minden csoportot egy szabály tölt fel, amely a felhasználókat az attribútumaik szerint adja hozzá, és minden csoporthoz hozzá van rendelve a kapni kívánt licencek. A helyszíni attribútumot hozzárendelheti, és szinkronizálhatja az Azure AD-vel, vagy közvetlenül a felhőben is kezelheti az attribútumot.
 
-A licencek röviddel a csoporthoz való hozzáadódásuk után kerülnek hozzárendelésre a felhasználóhoz. Az attribútum módosításakor a felhasználó elhagyja a csoportokat, és eltávolítja a licenceket.
+A licencek hozzárendelése a felhasználóhoz röviddel a csoportba való felvételük után történik. Ha az attribútum megváltozik, a felhasználó elhagyja a csoportokat, és a licencek el lesznek távolítva.
 
 ### <a name="example"></a>Példa
 
-Fontolja meg egy helyszíni identitáskezelési megoldás példáját, amely eldönti, hogy mely felhasználók férhetnek hozzá a Microsoft webszolgáltatásokhoz. Az **Extensiontribute1 kiterjesztést** használja a felhasználó által használt licenceket képviselő karakterlánc-érték tárolására. Az Azure AD Connect szinkronizálja azt az Azure AD-vel.
+Tekintse át a helyszíni Identitáskezelő megoldás példáját, amely eldönti, hogy mely felhasználók férhetnek hozzá a Microsoft Web Serviceshez. A **extensionAttribute1** használatával tárolja a felhasználó által birtokolt licenceket jelképező karakterlánc-értéket. Azure AD Connect szinkronizálja az Azure AD-vel.
 
-Előfordulhat, hogy a felhasználóknak egy licencre van szükségük, de egy másikra, vagy mindkettőre. Íme egy példa, amelyben az Office 365 Nagyvállalati E5 és enterprise mobility + security (EMS) licenceket osztja csoportokban lévő felhasználók nak:
+Előfordulhat, hogy a felhasználóknak egy licencre van szükségük, de nem egy másikra, vagy mindkettőre szüksége lehet. Íme egy példa, amelyben az Office 365 Enterprise E5-és Enterprise Mobility + Security-(EMS-) licenceket a csoportba tartozó felhasználók számára terjeszti:
 
-#### <a name="office-365-enterprise-e5-base-services"></a>Office 365 Nagyvállalati E5: alapszolgáltatások
+#### <a name="office-365-enterprise-e5-base-services"></a>Office 365 Enterprise E5: alapszolgáltatások
 
-![Képernyőkép az Office 365 Nagyvállalati E5-ös verzió alapszolgáltatásairól](./media/licensing-group-advanced/o365-e5-base-services.png)
+![Képernyőfelvétel az Office 365 Enterprise E5 alapszolgáltatásairól](./media/licensing-group-advanced/o365-e5-base-services.png)
 
-#### <a name="enterprise-mobility--security-licensed-users"></a>Vállalati mobilitás + biztonság: licencelt felhasználók
+#### <a name="enterprise-mobility--security-licensed-users"></a>Enterprise Mobility + Security: licenccel rendelkező felhasználók
 
-![Képernyőkép az Enterprise Mobility + Security licencelt felhasználóiról](./media/licensing-group-advanced/o365-e5-licensed-users.png)
+![Képernyőkép a Enterprise Mobility + Security licenccel rendelkező felhasználókról](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-Ebben a példában módosítson egy felhasználót, és `EMS;E5_baseservices;` állítsa a kiterjesztéstAttribute1 értékre, ha azt szeretné, hogy a felhasználó mindkét licenccel rendelkezjen. Ezt a módosítást helyszíni legeltetésre is kiteheti. Miután a módosítás szinkronizálódik a felhővel, a felhasználó automatikusan hozzáadódik mindkét csoporthoz, és licenceket rendel hozzá.
+Ehhez a példához módosítsa az egyik felhasználót, és állítsa be a extensionAttribute1 a `EMS;E5_baseservices;` értékre, ha azt szeretné, hogy a felhasználó mindkét licenccel rendelkezzen. Ezt a módosítást a helyszínen végezheti el. Miután a módosítás szinkronizálva lett a felhővel, a rendszer automatikusan hozzáadja a felhasználót mindkét csoporthoz, és hozzárendeli a licenceket.
 
-![Képernyőkép a felhasználó bővítményének beállításárólAttribute1](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
+![A felhasználó extensionAttribute1 beállítását bemutató képernyőfelvétel](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
 > [!WARNING]
-> Legyen óvatos, amikor módosítja egy meglévő csoport tagsági szabályát. Ha egy szabály módosul, a rendszer újraértékeli a csoport tagságát, és eltávolítja azokat a felhasználókat, akik már nem felelnek meg az új szabálynak (az új szabálynak továbbra is megfelelő felhasználókat ez a folyamat nem érinti). Ezek a felhasználók a folyamat során eltávolítják a licenceiket, ami a szolgáltatás elvesztését vagy bizonyos esetekben adatvesztést eredményezheti.
+> Meglévő csoport tagsági szabályának módosításakor legyen körültekintő. Egy szabály módosításakor a rendszer újraértékeli a csoport tagságát, és az új szabálynak nem megfelelő felhasználókat eltávolítja (a folyamat nem érinti azokat a felhasználókat, akik továbbra is megfelelnek az új szabálynak). Ezek a felhasználók a folyamat során törlődnek a licenccel, ami a szolgáltatás elvesztését okozhatja, vagy bizonyos esetekben adatvesztést eredményezhet.
 > 
-> Ha rendelkezik egy nagy dinamikus csoporttal, amelytől a licenc-hozzárendeléshez függ, fontolja meg egy kisebb tesztcsoport on-ra vonatkozó nagyobb módosítások érvényesítését, mielőtt a főcsoportra alkalmazna.
+> Ha nagy dinamikus csoporttal rendelkezik, akkor a licenc-hozzárendeléstől függ, hogy a fő csoportba való alkalmazása előtt érdemes-e a kisebb tesztelési csoportok jelentősebb módosításait érvényesíteni.
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>Több csoport és több licenc
 
-A felhasználó több licenccel rendelkező csoport tagja is lehet. Íme néhány dolog, amit figyelembe kell venni:
+Egy felhasználó több, licenccel rendelkező csoport tagja is lehet. Íme néhány megfontolandó szempont:
 
-- Ugyanahhoz a termékhez több licenc is átfedheti egymást, és azt eredményezi, hogy az összes engedélyezett szolgáltatás a felhasználóra vonatkozik. A következő példa két licencelési csoportot mutat be: *Az E3 alapszolgáltatások* tartalmazzák az alapszolgáltatások üzembe helyezéséhez először, minden felhasználó számára. *Az E3 kiterjesztett szolgáltatások* további szolgáltatásokat (Sway és Planner) tartalmaznak, amelyekcsak egyes felhasználók számára telepíthetők. Ebben a példában a felhasználó mindkét csoporthoz hozzá lett adva:
+- Ugyanannak a terméknek több licence is átfedésben van, és az összes engedélyezett szolgáltatást alkalmazza a felhasználóra. Az alábbi példa két licencelési csoportot mutat be: az *E3 alapszolgáltatások* az elsőként üzembe helyezett alapszolgáltatásokat tartalmazzák az összes felhasználó számára. Az *E3 bővített szolgáltatásai* pedig további szolgáltatásokat (Sway és Planner) tartalmaznak, amelyek csak bizonyos felhasználók számára telepíthetők. Ebben a példában a felhasználó mindkét csoporthoz hozzá lett adva:
 
-  ![Képernyőkép az engedélyezett szolgáltatásokról](./media/licensing-group-advanced/view-enabled-services.png)
+  ![Az engedélyezett szolgáltatások képernyőképe](./media/licensing-group-advanced/view-enabled-services.png)
 
-  Ennek eredményeképpen a felhasználó a termékben lévő 12 szolgáltatásból 7 engedélyezve van, miközben csak egy licencet használ ehhez a termékhez.
+  Ennek eredményeképpen a felhasználó csak egy licenccel rendelkezik a termék 12 szolgáltatásával, míg a termékhez csak egy licenc használható.
 
-- Az *E3* licenc kiválasztása további részleteket jelenít meg, beleértve azt is, hogy a csoportlicenc-hozzárendelés mely szolgáltatásokat engedélyezte a felhasználónak.
+- Az *E3* licenc kiválasztásával további részletek jelennek meg, például arról, hogy mely szolgáltatásokra van engedélyezve a felhasználó által a csoport licencének hozzárendelése.
 
-## <a name="direct-licenses-coexist-with-group-licenses"></a>A közvetlen licencek a csoportlicencekkel együtt léteznek
+## <a name="direct-licenses-coexist-with-group-licenses"></a>A közvetlen licencek együtt léteznek a csoportos licencekkel
 
-Ha egy felhasználó licencet örököl egy csoporttól, a felhasználó tulajdonságai között nem távolíthatja el vagy módosíthatja közvetlenül a licenc-hozzárendelést. A módosításokat a csoportban kell végrehajtani, majd az összes felhasználóra propagálni kell.
+Ha a felhasználó egy csoporttól örökli a licencet, a licenc-hozzárendelést nem lehet közvetlenül eltávolítani vagy módosítani a felhasználó tulajdonságaiban. Módosításokat kell végezni a csoportban, majd az összes felhasználó számára propagálni kell.
 
-Az örökölt licenc mellett azonban lehetőség van arra, hogy ugyanazt a terméklicencet közvetlenül a felhasználóhoz rendelje. A termékből további szolgáltatásokat is engedélyezhet csak egy felhasználó számára, anélkül, hogy ez hatással lenne a többi felhasználóra.
+Az örökölt licenc mellett azonban lehetséges, hogy ugyanezt a licencet közvetlenül a felhasználóhoz rendeli hozzá. A termékből további szolgáltatásokat is engedélyezhet, anélkül, hogy ez hatással lenne a többi felhasználóra.
 
-A közvetlenül hozzárendelt licencek eltávolíthatók, és nem érintik az örökölt licenceket. Fontolja meg azt a felhasználót, aki egy csoporttól örökli az Office 365 Nagyvállalati E3 licencet.
+A közvetlenül hozzárendelt licencek eltávolíthatók, és nincsenek hatással az örökölt licencekre. Vegye figyelembe azt a felhasználót, aki az Office 365 nagyvállalati E3 licencet örökli egy csoportból.
 
-Kezdetben a felhasználó csak az *E3 alapszolgáltatások* csoportjától örökli a licencet, amely négy szolgáltatási tervet tesz lehetővé.
+Kezdetben a felhasználó csak az *alapszintű E3 Services* -csoportból örökli a licencet, amely négy szolgáltatáscsomag használatát teszi lehetővé.
 
-1. Válassza **a Hozzárendelés** lehetőséget, ha közvetlenül hozzá szeretne rendelni egy E3 licencet a felhasználóhoz. Ebben az esetben a Yammer Enterprise kivételével minden szolgáltatási tervet le fog tiltani.
+1. Válassza a **hozzárendelés** lehetőséget, hogy közvetlenül rendeljen hozzá egy E3-licencet a felhasználóhoz. Ebben az esetben az összes szervizcsomagot le fogja tiltani a Yammer Enterprise kivételével.
 
-    Ennek eredményeképpen a felhasználó továbbra is csak egy licencet használ az E3 termékhez. A közvetlen hozzárendelés azonban csak az adott felhasználó számára teszi lehetővé a Yammer Enterprise szolgáltatást. Megtekintheti, hogy mely szolgáltatásokat engedélyezi a csoporttagság a közvetlen hozzárendeléssel szemben.
+    Ennek eredményeképpen a felhasználó továbbra is csak egy licencet használ az E3 termékhez. A közvetlen hozzárendelés azonban csak az adott felhasználó számára engedélyezi a Yammer Enterprise szolgáltatást. Láthatja, hogy mely szolgáltatásokat engedélyezte a csoporttagság a közvetlen hozzárendeléssel szemben.
 
 1. Közvetlen hozzárendelés használata esetén a következő műveletek engedélyezettek:
 
-   - A Yammer Enterprise közvetlenül kikapcsolható a felhasználói erőforráson. Az ábrán látható **Be/Ki** kapcsoló engedélyezve volt ehhez a szolgáltatáshoz, nem pedig a másik szolgáltatásváltás. Mivel a szolgáltatás közvetlenül a felhasználón van engedélyezve, módosítható.
-   - A közvetlenül hozzárendelt licenc részeként további szolgáltatások is engedélyezhetők.
-   - Az **Eltávolítás** gombbal eltávolíthatja a közvetlen licencet a felhasználótól. Láthatja, hogy a felhasználó most már csak az örökölt csoportlicenccel rendelkezik, és csak az eredeti szolgáltatások maradnak engedélyezve:
+   - A Yammer Enterprise közvetlenül is kikapcsolható a felhasználói erőforráson. Az ábrán a **be-és kikapcsolási** váltógomb engedélyezve lett ehhez a szolgáltatáshoz, nem pedig a másik szolgáltatás váltására. Mivel a szolgáltatás közvetlenül a felhasználón van engedélyezve, módosítható.
+   - További szolgáltatásokat is engedélyezheti a közvetlenül hozzárendelt licenc részeként.
+   - Az **Eltávolítás** gomb használatával eltávolíthatja a közvetlen licencet a felhasználótól. Láthatja, hogy a felhasználó most már csak az örökölt csoport licenccel rendelkezik, és csak az eredeti szolgáltatások maradnak engedélyezve:
 
 ## <a name="managing-new-services-added-to-products"></a>A termékekhez hozzáadott új szolgáltatások kezelése
 
-Amikor a Microsoft új szolgáltatást ad hozzá egy terméklicenc-csomaghoz, az alapértelmezés szerint engedélyezve van minden olyan csoportban, amelyhez a terméklicencet hozzárendelte. A bérlő azon felhasználói, akik előfizettek a termékváltozásokkal kapcsolatos értesítésekre, előre e-maileket kapnak, amelyek értesítik őket a közelgő szolgáltatáskiegészítésekről.
+Ha a Microsoft új szolgáltatást hoz létre egy termék-licencelési csomaghoz, alapértelmezés szerint engedélyezve van minden olyan csoportban, amelyhez hozzárendelte a licencet. A bérlő azon felhasználói, akik a termék módosításaira vonatkozó értesítésekre előfizetnek, e-maileket kapnak a közelgő szolgáltatási kiegészítésekkel kapcsolatos értesítésekről.
 
-Rendszergazdaként áttekintheti a módosítás által érintett összes csoportot, és végrehajthatja a szükséges műveleteket, például letilthatja az új szolgáltatást az egyes csoportokban. Ha például csak bizonyos szolgáltatásokat célzó csoportokat hozott létre a központi telepítéshez, újra meglátogathatja ezeket a csoportokat, és meggyőződhet arról, hogy az újonnan hozzáadott szolgáltatások le vannak tiltva.
+Rendszergazdaként áttekintheti a változás által érintett összes csoportot, és megteheti a műveletet, például letilthatja az új szolgáltatást az egyes csoportokban. Ha például olyan csoportokat hozott létre, amelyek csak meghatározott szolgáltatásokat céloznak meg a központi telepítéshez, akkor újra megtekintheti ezeket a csoportokat, és gondoskodhat arról, hogy az újonnan hozzáadott szolgáltatások le legyenek tiltva.
 
-Íme egy példa arra, hogy hogyan nézhet ki ez a folyamat:
+Íme egy példa arra, hogy a folyamat milyen módon nézhet ki:
 
-1. Eredetileg több csoporthoz rendelte hozzá az *Office 365 Nagyvállalati E5* terméket. Az *o365 E5 – Exchange* nevű csoportok egyike csak úgy lett kialakítva, hogy csak az *Exchange Online (2. csomag)* szolgáltatást engedélyezze tagjai számára.
+1. Eredetileg az *Office 365 Enterprise E5* terméket rendelte több csoporthoz. A *O365 E5-Exchange-* nek nevezett csoportok egyike csak az *Exchange Online (2. csomag)* szolgáltatásnak a tagjai számára történő engedélyezését szolgálja.
 
-2. Értesítést kapott a Microsofttól arról, hogy az E5 termék egy új szolgáltatással - a *Microsoft Streamtel*- bővül. Amikor a szolgáltatás elérhetővé válik a bérlőben, a következőket teheti:
+2. A Microsofttól értesítést kapott arról, hogy az E5 termék ki lesz bővítve egy új szolgáltatás- *Microsoft stream*. Ha a szolgáltatás elérhetővé válik a bérlőben, a következőket teheti:
 
-3. Nyissa meg az [**Azure Active Directory > Licencek > Minden termék**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) panelt, és válassza az Office *365 Nagyvállalati E5*lehetőséget, majd válassza **a Licencelt csoportok** lehetőséget az adott termékkel rendelkező összes csoport listájának megtekintéséhez.
+3. Lépjen a [**Azure Active Directory > licencek > minden termék**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) panelre, és válassza az *Office 365 Enterprise E5*lehetőséget, majd válassza a **licencelt csoportok** lehetőséget az adott termékkel rendelkező csoportok listájának megtekintéséhez.
 
-4. Kattintson arra a csoportra, amelyet át szeretne tekinteni (ebben az esetben az *O365 E5 - Exchange only).* Ez megnyitja a **Licencek** fület.
+4. Kattintson az áttekinteni kívánt csoportra (ebben az esetben az *O365 E5-Exchange-* re). Ekkor megnyílik a **licencek** lap. az E5-licencre kattintva megnyílik egy panel, amely felsorolja az összes engedélyezett szolgáltatást.
    > [!NOTE]
-   > A *Microsoft Stream* szolgáltatás automatikusan hozzáadva és engedélyezve van ebben a csoportban, az Exchange *Online* szolgáltatás mellett:
+   > A *Microsoft stream* szolgáltatás automatikusan lett hozzáadva és engedélyezve ebben a csoportban, az *Exchange Online* szolgáltatás mellett:
 
-   ![Képernyőkép a csoportlicenchez hozzáadott új szolgáltatásról](./media/licensing-group-advanced/manage-new-services.png)
+   ![Képernyőfelvétel a csoport licencéhez hozzáadott új szolgáltatásról](./media/licensing-group-advanced/manage-new-services.png)
 
-5. Ha le szeretné tiltani az új szolgáltatást ebben a csoportban, kattintson a szolgáltatás melletti **Be/Ki** kapcsolóra, és a módosítás megerősítéséhez kattintson a **Mentés** gombra. Az Azure AD most feldolgozza a csoport összes felhasználóját a módosítás alkalmazásához; a csoporthoz hozzáadott új felhasználók nem engedélyezve vannak a *Microsoft Stream* szolgáltatásban.
+5. Ha le szeretné tiltani az új szolgáltatást ebben a csoportban, kattintson a szolgáltatás melletti **be-és kikapcsolási** kapcsolóra, majd a módosítás megerősítéséhez kattintson a **Save (Mentés** ) gombra. Az Azure AD most feldolgozza a csoport összes felhasználóját, hogy alkalmazza a módosítást; a csoportba felvett új felhasználókhoz nem lesz engedélyezve a *Microsoft stream* szolgáltatás.
 
    > [!NOTE]
-   > Előfordulhat, hogy a felhasználók számára továbbra is engedélyezve van a szolgáltatás valamilyen más licenc-hozzárendelés (egy másik csoport, amelynek tagjai vagy közvetlen licenc-hozzárendelés) keresztül.
+   > A felhasználók továbbra is használhatják a szolgáltatást valamilyen más licenc-hozzárendeléssel (egy másik csoport tagjai vagy egy közvetlen licenc-hozzárendelés).
 
-6. Szükség esetén hajtsa végre ugyanazokat a lépéseket a termékhez rendelt többi csoport esetében is.
+6. Ha szükséges, hajtsa végre ugyanezeket a lépéseket a termékhez rendelt más csoportokhoz.
 
-## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>A PowerShell használatával megtekintheti, hogy ki rendelkezik örökölt és közvetlen licenccel
-PowerShell-parancsfájl segítségével ellenőrizheti, hogy a felhasználók közvetlenül vagy egy csoporttól örökölt licenccel rendelkeznek-e.
+## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>A PowerShell használatával megtekintheti, hogy ki örökölt és közvetlen licenceket
+A PowerShell-parancsfájlok segítségével ellenőrizhető, hogy a felhasználók rendelkeznek-e közvetlenül vagy egy csoporttól örökölt licenccel.
 
-1. Futtassa a `connect-msolservice` parancsmag hitelesítheti magát, és csatlakozzon a bérlőhöz.
+1. Futtassa a `connect-msolservice` parancsmagot a bérlő hitelesítéséhez és a hozzá való kapcsolódáshoz.
 
-2. `Get-MsolAccountSku`a bérlőben található összes kiépített terméklicenc felderítésére használható.
+2. `Get-MsolAccountSku`a bérlő összes kiépített termék-licencének felderítésére használható.
 
-   ![Képernyőkép a Get-Msolaccountsku parancsmagról](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+   ![A Get-Msolaccountsku parancsmag képernyőképe](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
-3. Ezzel a [PowerShell-parancsfájllal](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)használja a *FiókSkuId* értéket az önt érdeklő licenchez. Ez elkészíti azoknak a felhasználóknak a listáját, akik rendelkeznek ezzel a licenccel a licenc hozzárendelésének módjára vonatkozó információkkal.
+3. Használja az *AccountSkuId* értéket a [PowerShell-szkripttel](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)érintett licenchez. Ekkor megjelenik azoknak a felhasználóknak a listája, akik rendelkeznek ezzel a licenccel a licenc hozzárendelésével kapcsolatos információkkal.
 
-## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Csoportalapú licencelési tevékenység figyelése a naplók használatával
+## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Naplózási naplók használata a csoport alapú licencelési tevékenységek figyeléséhez
 
-[Az Azure AD naplózási naplóival](../reports-monitoring/concept-audit-logs.md#audit-logs) megtekintheti a csoportalapú licenceléssel kapcsolatos összes tevékenységet, beleértve a következőket:
-- aki csoportoklicencét módosította
-- amikor a rendszer elkezdte feldolgozni a csoportlicenc-módosítást, és amikor befejeződött
-- milyen licencmódosítások történtek a felhasználónál a csoportlicenc-hozzárendelés eredményeként.
+Az [Azure ad-naplók](../reports-monitoring/concept-audit-logs.md#audit-logs) használatával megtekintheti a csoport alapú licenceléssel kapcsolatos összes tevékenységet, beleértve a következőket:
+- a csoport licenceit módosította
+- Amikor a rendszer elindította a csoport licencének feldolgozását, és amikor elkészült
+- a felhasználó által a csoportos licenc-hozzárendelés eredményeképpen végrehajtott licencek módosításai.
 
 >[!NOTE]
-> A naplózási naplók a portál Azure Active Directory-szakaszának legtöbb paneljén érhetők el. Attól függően, hogy hol éri el őket, a szűrők et előre alkalmazhatjuk, hogy csak a panel kontextusához kapcsolódó tevékenységeket jelenítsenek meg. Ha nem látja a várt eredményeket, vizsgálja meg [a szűrési beállításokat,](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs) vagy férjen hozzá a szűretlen naplóihoz az [**Azure Active Directory > tevékenység> naplózási naplói között.**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)
+> A naplók a portál Azure Active Directory szakaszának legtöbb panelén elérhetők. Attól függően, hogy hol fér hozzá, a szűrők előre alkalmazhatók, hogy csak a panel környezetéhez kapcsolódó tevékenység jelenjen meg. Ha nem látja a várt eredményeket, vizsgálja meg [a szűrési beállításokat](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs) , vagy a [**Azure Active Directory > tevékenység > a naplók**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)területen nyissa meg a nem szűrt naplókat.
 
-### <a name="find-out-who-modified-a-group-license"></a>A csoportlicenc módosításának kiderítése
+### <a name="find-out-who-modified-a-group-license"></a>Megtudhatja, hogy ki módosította a csoport licencét
 
-1. Állítsa a **Tevékenység** szűrőt *a Csoportlicenc beállítása* beállításra, majd kattintson az Alkalmaz **gombra.**
-2. Az eredmények tartalmazzák a csoportokon beállított vagy módosított licencek összes esetét.
+1. Állítsa be a **tevékenység** szűrőt a *csoport licencének beállításához* , majd kattintson az **alkalmaz**gombra.
+2. Az eredmények közé tartozik a csoportokon beállított vagy módosított licencek összes esete.
    >[!TIP]
-   > A csoport nevét a *Cél* szűrőbe is beírhatja az eredmények hatóköréhez.
+   > A *cél* szűrőben a csoport nevét is beírhatja az eredmények hatókörének meghatározásához.
 
-3. Jelöljön ki egy elemet a listában a változások részleteinek megtekintéséhez. A Licenc-hozzárendelés régi és új értékeit is felsorolt *Módosított tulajdonságok* csoportban vannak felsorolva.
+3. Válasszon ki egy elemet a listában a változás részleteinek megtekintéséhez. A *módosított tulajdonságok* területen a licenc-hozzárendelés régi és új értékei szerepelnek a felsorolásban.
 
-Íme egy példa a csoportlicenc legutóbbi változásaira, a részletekkel:
+Íme egy példa a legutóbbi csoport licencének változásaira, a részletekkel:
 
-![Képernyőkép csoportlicenc módosításai](./media/licensing-group-advanced/audit-group-license-change.png)
+![Képernyőfelvétel-csoport licencének változásai](./media/licensing-group-advanced/audit-group-license-change.png)
 
-### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Megtudhatja, hogy mikor kezdődtek és fejeződtek be a csoportmódosítások feldolgozása
+### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Annak megállapítása, hogy a csoport változásai megkezdődött és befejeződött-e
 
 Amikor egy licenc megváltozik egy csoporton, az Azure AD elkezdi alkalmazni a módosításokat az összes felhasználóra.
 
-1. Ha meg szeretné tekinteni, hogy a csoportok mikor kezdték el feldolgozni, állítsa a **Tevékenység** szűrőt a *Csoportalapú licenc alkalmazásának megkezdése elemre*a felhasználók számára. Vegye figyelembe, hogy a művelet szereplője a *Microsoft Azure AD csoportalapú licencelés* – egy rendszerfiók, amely az összes csoportlicenc-módosítás végrehajtására szolgál.
+1. Ha szeretné megtekinteni, hogy a csoportok mikor kezdték meg a feldolgozást, állítsa be a **tevékenység** szűrőt, hogy *megkezdje a csoport alapú licenc alkalmazását* Vegye figyelembe, hogy a művelet szereplője *Microsoft Azure ad csoport-alapú licencelés* – egy olyan rendszerfiók, amely az összes csoportos licencelési módosítás végrehajtásához használatos.
    >[!TIP]
-   > Kattintson a lista egyik elemére a *Módosított tulajdonságok* mező megtekintéséhez – ez mutatja a feldolgozásra felvett licencmódosításokat. Ez akkor hasznos, ha több módosítást végzett egy csoporton, és nem biztos abban, hogy melyiket dolgozták fel.
+   > Kattintson a lista egyik elemére a *módosított tulajdonságok* mező megjelenítéséhez – ez megjeleníti a feldolgozásra kiválasztott licencek változásait. Ez akkor hasznos, ha egy csoporton több módosítást hajtott végre, és nem biztos benne, hogy melyik lett feldolgozva.
 
-2. Hasonlóképpen, ha meg szeretné tekinteni, hogy a csoportok mikor fejezték be a feldolgozást, használja a Befejezés a *csoportalapú licenc alkalmazása a felhasználókra*szűrőértéket.
+2. Hasonlóképpen, ha szeretné megtekinteni, hogy a csoportok Mikor dolgozzák fel a feldolgozást, használja a szűrési érték *befejezése csoport alapú licenc alkalmazása a felhasználók számára*lehetőséget.
    > [!TIP]
-   > Ebben az esetben a *Módosított tulajdonságok* mező tartalmazza az eredmények összegzését – ez akkor hasznos, ha gyorsan ellenőrizheti, hogy a feldolgozás hibát eredményezett-e. Példa a kimenetre:
+   > Ebben az esetben a *módosított tulajdonságok* mező az eredmények összegzését tartalmazza – ez hasznos lehet annak gyors ellenőrzéséhez, hogy a feldolgozás hibákat eredményezett-e. Példa a kimenetre:
    > ```
    > Modified Properties
    > ...
@@ -178,54 +178,54 @@ Amikor egy licenc megváltozik egy csoporton, az Azure AD elkezdi alkalmazni a m
    > New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
    > ```
 
-3. A csoport feldolgozásának teljes naplóját, beleértve az összes felhasználói módosítást is, állítsa be a következő szűrőket:
-   - **Kezdeményezte (actor)**: "Microsoft Azure AD-csoportalapú licencelés"
-   - **Dátumtartomány** (nem kötelező): egyéni tartomány arra az időpontra, amikor egy adott csoport elindult és befejeződött a feldolgozás
+3. Ha meg szeretné tekinteni a csoport feldolgozásának teljes naplóját, beleértve az összes felhasználó módosítását, állítsa be a következő szűrőket:
+   - **Kezdeményező (színész)**: "Microsoft Azure ad csoport alapú licencelés"
+   - **Dátumtartomány** (nem kötelező): egyéni tartomány, ha tudja, hogy egy adott csoport elindult, és befejeződött a feldolgozás.
 
-Ez a mintakimenet a feldolgozás kezdetét, az összes ebből eredő felhasználói módosítást és a feldolgozás befejezését mutatja.
+Ez a minta kimenet a feldolgozás kezdetét, az összes eredményül kapott felhasználói változást és a feldolgozás befejezését mutatja.
 
-![Képernyőkép csoportlicenc módosításai](./media/licensing-group-advanced/audit-group-processing-log.png)
+![Képernyőfelvétel-csoport licencének változásai](./media/licensing-group-advanced/audit-group-processing-log.png)
 
 >[!TIP]
-> A *Felhasználói licenc módosítása* elemre kattintva megjelennek az egyes felhasználókra alkalmazott licencmódosítások részletei.
+> A *felhasználói licencek módosításához* kapcsolódó elemek elemre kattintva megtekintheti az egyes felhasználókra alkalmazott licenc-módosítások részleteit.
 
 ## <a name="deleting-a-group-with-an-assigned-license"></a>Hozzárendelt licenccel rendelkező csoport törlése
 
-Aktív licenccel rendelkező csoportot nem lehet törölni. A rendszergazda törölhet idáig egy olyan csoportot, amely nem veszi észre, hogy az a licencek felhasználóktól való eltávolítását okozza – ezért először a licencek eltávolítását kérünk a csoportból, mielőtt törölhető lenne.
+Nem lehet törölni egy olyan csoportot, amelyhez aktív licenc van rendelve. Egy rendszergazda törölheti azt a csoportot, amely nem veszi észre, hogy a licenceket el kell távolítani a felhasználóktól, ezért a törléshez előbb el kell távolítani a csoportból a licenceket.
 
-Amikor megpróbál törölni egy csoportot az Azure Portalon, az ![ehhez hasonló hibaüzenet jelenhet meg: A képernyőkép-csoport törlése nem sikerült](./media/licensing-group-advanced/groupdeletionfailed.png)
+Ha a Azure Portal egy csoport törlését kísérli meg, a következőhöz hasonló hibaüzenet jelenhet meg: ![képernyőkép-csoport törlése sikertelen](./media/licensing-group-advanced/groupdeletionfailed.png)
 
-Nyissa meg a csoport **Licencek** lapját, és nézze meg, hogy vannak-e hozzárendelt licencek. Ha igen, távolítsa el ezeket a licenceket, és próbálja meg újra törölni a csoportot.
+Lépjen a csoport **licencek** fülére, és ellenőrizze, hogy vannak-e hozzárendelve licencek. Ha igen, távolítsa el ezeket a licenceket, és próbálja meg újból törölni a csoportot.
 
-Hasonló hibák jelenhetnek meg, amikor a PowerShell vagy a Graph API-n keresztül próbálja törölni a csoportot. Ha a helyszíni szinkronizálású csoportot használ, az Azure AD Connect hibákat is jelenthet, ha nem törli a csoportot az Azure AD-ben. Minden ilyen esetben ellenőrizze, hogy vannak-e a csoporthoz rendelt licencek, és először távolítsa el őket.
+Hasonló hibák jelenhetnek meg, amikor a csoportot a PowerShell vagy Graph API használatával próbálta törölni. Ha a helyszíni rendszerből szinkronizált csoportot használ, akkor a Azure AD Connect hibákat is jelenthet, ha nem törli a csoportot az Azure AD-ben. Minden ilyen esetben ellenőrizze, hogy vannak-e hozzárendelve licencek a csoporthoz, és először távolítsa el őket.
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 
-Ha csoportalapú licencelést használ, érdemes megismerkedni az alábbi korlátozások kal és ismert problémákkal.
+Ha Group-alapú licencelést használ, érdemes megismernie az alábbi korlátozásokat és ismert problémákat.
 
 - A csoportalapú licenckezelés jelenleg nem támogatja az olyan csoportokat, amelyek más (beágyazott) csoportokat tartalmaznak. Ha egy beágyazott csoportra alkalmaz egy licencet, az csak a csoport közvetlen első szintű felhasználótagjaira lesz alkalmazva.
 
-- A szolgáltatás csak biztonsági csoportokkal és securityEnabled=TRUE rendszerrel rendelkező Office 365-csoportokesetében használható.
+- A szolgáltatás csak biztonsági csoportokkal és securityEnabled = TRUE értékű Office 365-csoportokkal használható.
 
-- A [Microsoft 365 felügyeleti központ](https://admin.microsoft.com) jelenleg nem támogatja a csoportalapú licencelést. Ha egy felhasználó licencet örököl egy csoporttól, ez a licenc normál felhasználói licencként jelenik meg az Office felügyeleti portálon. Ha megpróbálja módosítani a licencet, vagy megpróbálja eltávolítani a licencet, a portál hibaüzenetet ad vissza. Az örökölt csoportlicencek nem módosíthatók közvetlenül a felhasználón.
+- A [Microsoft 365 felügyeleti központ](https://admin.microsoft.com) jelenleg nem támogatja a csoport alapú licencelést. Ha a felhasználó egy csoporttól örökli a licencet, ez a licenc az Office felügyeleti portálon normál felhasználói licencként jelenik meg. Ha megpróbálja módosítani a licencet, vagy megpróbálja eltávolítani a licencet, a portál egy hibaüzenetet ad vissza. Az örökölt csoportos licencek nem módosíthatók közvetlenül a felhasználón.
 
-- Ha egy nagy csoporthoz (például 100 000 felhasználóhoz) licenceket rendelhozzá vagy módosít, az hatással lehet a teljesítményre. Pontosabban az Azure AD-automatizálás által létrehozott módosítások mennyisége negatívan befolyásolhatja a címtár-szinkronizálás teljesítményét az Azure AD és a helyszíni rendszerek között.
+- Ha a licencek egy nagy csoporthoz vannak rendelve vagy módosítva (például 100 000 felhasználó), az hatással lehet a teljesítményre. Az Azure AD Automation által generált változások mennyisége negatív hatással lehet az Azure AD és a helyszíni rendszerek közötti címtár-szinkronizálás teljesítményére.
 
 - Ha dinamikus csoportokat használ a felhasználóhoz tartozó tagság kezeléséhez, ellenőrizze, hogy a felhasználó a csoport tagja-e, mert ez szükséges a licenc hozzárendeléséhez. Ha nem, [ellenőrizze dinamikus csoporthoz tartozó tagsági szabály feldolgozási folyamatának állapotát](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
 
-- Bizonyos nagy terhelésesetén hosszú időbe telhet a csoportok licencmódosításának vagy a meglévő licenccel rendelkező csoportok tagsági változásainak feldolgozása. Ha úgy látja, hogy a módosítások több mint 24 órát vesznek igénybe a 60 000-es vagy annál kisebb felhasználókból álló csoportméret feldolgozásához, kérjük, [nyisson meg egy támogatási jegyet,](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) amely lehetővé teszi számunkra a vizsgálat. 
+- Bizonyos nagy terhelésű helyzetekben hosszú időt is igénybe vehet a csoportok és a tagsági változások a meglévő licencekkel rendelkező csoportokba való módosítása során. Ha úgy látja, hogy a módosítások több mint 24 órát vesznek igénybe a 60K-felhasználók vagy annál kisebb méretű csoportok feldolgozásához, [Nyisson meg egy támogatási jegyet](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) , amely lehetővé teszi számunkra a vizsgálatát. 
 
-- A licenckezelés automatizálása nem reagál automatikusan a környezet minden változástípusára. Előfordulhat például, hogy elfogyott a licenc, ami miatt egyes felhasználók hibaállapotban vannak. A rendelkezésre álló ülőhelyek számának felszabadításához eltávolíthat néhány közvetlenül hozzárendelt licencet más felhasználóktól. A rendszer azonban nem reagál automatikusan erre a változásra, és nem javítja ki a felhasználókat ebben a hibaállapotban.
+- A licencelési szolgáltatás automatizálása nem reagál automatikusan a környezet összes változására. Előfordulhat például, hogy elfogyott a licencek, ami miatt egyes felhasználók hibás állapotba kerülhetnek. A rendelkezésre álló ülőhelyek számának felszabadításához eltávolíthat néhány közvetlenül hozzárendelt licencet a többi felhasználótól. A rendszer azonban nem reagál automatikusan erre a változásra, és kijavítja a felhasználókat az adott hiba állapotában.
 
-  Az ilyen típusú korlátozások kerülő megoldásaként lépjen a **Csoport** panelaz Azure AD-ben, és kattintson **az Újrafeldolgozás gombra.** Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibaállapotokat.
+  Az ilyen típusú korlátozások megkerülő megoldásként nyissa meg a **csoport** panelt az Azure ad-ben, és kattintson az **újrafeldolgozás**gombra. Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibák állapotait.
 
 ## <a name="next-steps"></a>További lépések
 
 A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 
-* [Mi a csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Mi a Azure Active Directory csoportos licencelése?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 * [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Felhasználók áttelepítése a terméklicencek között az Azure Active Directory csoportalapú licencelésével](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Példák a Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)
+* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

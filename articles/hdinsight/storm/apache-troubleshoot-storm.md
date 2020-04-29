@@ -1,7 +1,7 @@
 ---
-title: Storm hibaelhárítása az Azure HDInsight használatával
-description: Válaszok az Apache Storm Azure HDInsight használatával kapcsolatos gyakori kérdésekre.
-keywords: Azure HDInsight, Storm, GYAKORI KÉRDÉSEK, hibaelhárítási útmutató, gyakori problémák
+title: Storm-hibák az Azure HDInsight használatával
+description: Választ kaphat a Apache Storm Azure HDInsight való használatával kapcsolatos gyakori kérdésekre.
+keywords: Azure HDInsight, Storm, GYIK, hibaelhárítási útmutató, gyakori problémák
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,27 +10,27 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271927"
 ---
-# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Az Apache Storm hibáinak elhárítása az Azure HDInsight használatával
+# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Apache Storm az Azure HDInsight használatával – problémamegoldás
 
-Ismerje meg a legfontosabb problémákat és azok megoldásait az [Apache Storm](https://storm.apache.org/) rakományokkal való munkához az [Apache Ambari-ban.](https://ambari.apache.org/)
+Ismerje meg a leggyakoribb problémákat és azok megoldásait [Apache Storm](https://storm.apache.org/) hasznos adatok [Apache Ambari](https://ambari.apache.org/)való használatához.
 
-## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Hogyan érhetem el a Storm felhasználói felületét egy fürtön?
+## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Hogyan hozzáférni a Storm felhasználói felületéhez a fürtön?
 
-A Storm felhasználói felületét két lehetőség közül választhat:
+A Storm felhasználói felületének böngészőből való eléréséhez két lehetőség közül választhat:
 
 ### <a name="apache-ambari-ui"></a>Apache Ambari felhasználói felület
 
-1. Nyissa meg az Ambari irányítópultot.
-2. A szolgáltatások listájában válassza a **Storm**lehetőséget.
-3. A **Gyorshivatkozások** menüben válassza a **Storm UI parancsot.**
+1. Nyissa meg a Ambari irányítópultot.
+2. A szolgáltatások listájában válassza a **Storm**elemet.
+3. A **gyors hivatkozások** menüben válassza a **Storm UI**lehetőséget.
 
-### <a name="direct-link"></a>Közvetlen kapcsolat
+### <a name="direct-link"></a>Közvetlen hivatkozás
 
 A Storm felhasználói felületét a következő URL-címen érheti el:
 
@@ -38,152 +38,152 @@ A Storm felhasználói felületét a következő URL-címen érheti el:
 
 Például: `https://stormcluster.azurehdinsight.net/stormui`
 
-## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hogyan vihetem át a Storm eseményközpont kifolyó ellenőrzőpont-adatait az egyik topológiából a másikba?
+## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hogyan a Storm Event hub kiöntő ellenőrzőpont-információit az egyik topológiáról a másikra?
 
-Ha olyan topológiákat fejleszt ki, amelyek az Azure Event Hubs-ból a HDInsight Storm eseményközpont-kimondó .jar fájl használatával olvasnak, telepítenie kell egy olyan topológiát, amelynek ugyanaz a neve egy új fürtön. Azonban meg kell őriznie az ellenőrzőpont-adatokat, amelyek véglegesítették az [Apache ZooKeeper](https://zookeeper.apache.org/) a régi fürtön.
+Ha az Azure Event Hubsból beolvasott topológiákat fejleszt az HDInsight Storm Event hub kiöntő. jar fájljával, olyan topológiát kell üzembe helyeznie, amelynek neve megegyezik egy új fürt nevével. Azonban meg kell őriznie a régi fürtön [Apache ZooKeeperhoz](https://zookeeper.apache.org/) véglegesített ellenőrzőpont-adatellenőrzéseket.
 
-### <a name="where-checkpoint-data-is-stored"></a>Az ellenőrzőpont-adatok tárolásának helye
+### <a name="where-checkpoint-data-is-stored"></a>Ellenőrzőpont-adattárolók
 
-Az eltolások ellenőrzőpont-adatait a ZooKeeper eseményközpont-kifolyója két gyökérútvonalon tárolja:
+Az eltolások ellenőrzőpont-értékeit az Event hub kiöntő ZooKeeper tárolja két fő elérési úton:
 
-- A nem tranzakciós kifolyó ellenőrzőpontok a ban `/eventhubspout`tárolódnak.
+- A nem tranzakciós kiöntő ellenőrzőpontok a `/eventhubspout`ben tárolódnak.
 
-- A tranzakciós kifolyó ellenőrzőpont-adatait a rendszer tárolja a ban. `/transactional`
+- A tranzakciós kiöntő ellenőrzőpont-adatkészletek tárolása a-ben `/transactional`történik.
 
-### <a name="how-to-restore"></a>Hogyan lehet visszaállítani
+### <a name="how-to-restore"></a>Visszaállítás
 
-Ha le szeretné venni azokat a parancsfájlokat és kódtárakat, amelyek segítségével adatokat exportálanak a ZooKeeper alkalmazásból, majd új néven importálja az adatokat a ZooKeeper alkalmazásba, olvassa el a [HDInsight Storm példáit.](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0)
+A ZooKeeper-ből történő adatexportáláshoz használt parancsfájlok és kódtárak beszerzéséhez, majd az ZooKeeper új névvel történő importálásához tekintse meg a [HDInsight Storm-példák](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0)című témakört.
 
-A lib mappában .jar fájlok találhatók, amelyek tartalmazzák az exportálási/importálási művelet megvalósítását. A bash mappa rendelkezik egy példa parancsfájlt, amely bemutatja, hogyan kell exportálni az adatokat a ZooKeeper kiszolgálóról a régi fürtön, majd importálja vissza az új fürt ZooKeeper kiszolgálójára.
+A lib mappa. jar fájlokkal rendelkezik, amelyek tartalmazzák az exportálási/importálási művelet megvalósítását. A bash mappa egy példa parancsfájlt tartalmaz, amely bemutatja, hogyan exportálhatja az adatok a régi fürtön lévő ZooKeeper-kiszolgálóról, majd importálhatja a ZooKeeper-kiszolgálóra az új fürtön.
 
-Futtassa a [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) parancsfájlt a ZooKeeper csomópontokból az exportáláshoz, majd az adatok importálásához. Frissítse a parancsfájlt a megfelelő Hortonworks Data Platform (HDP) verzióra. (Azon dolgozunk, hogy ezeket a parancsfájlokat általánossá tegyék a HDInsightban. Az általános parancsfájlok a fürt bármely csomópontjáról futtathatók a felhasználó módosításai nélkül.)
+Futtassa a [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) parancsfájlt a ZooKeeper-csomópontokból az exportáláshoz, majd az adatok importálásához. Frissítse a parancsfájlt a megfelelő Hortonworks-adatplatform (HDP) verzióra. (Dolgozunk a parancsfájlok általános HDInsight való végrehajtásán. Az általános parancsfájlok a fürt bármely csomópontján futtathatók a felhasználó módosítása nélkül.)
 
-Az exportálási parancs a metaadatokat egy Apache Hadoop distributed File System (HDFS) elérési útjára írja (az Azure Blob Storage vagy az Azure Data Lake Storage szolgáltatásban) a beállított helyen.
+Az export parancs a metaadatokat egy Apache Hadoop elosztott fájlrendszer (HDFS) elérési útra írja (az Azure Blob Storage vagy a Azure Data Lake Storage) egy megadott helyen.
 
 ### <a name="examples"></a>Példák
 
-#### <a name="export-offset-metadata"></a>Eltolás metaadatainak exportálása
+#### <a name="export-offset-metadata"></a>Eltolási metaadatok exportálása
 
-1. Az SSH használatával nyissa meg a ZooKeeper fürtet azon a fürtön, amelyből az ellenőrzőpont-eltolást exportálni kell.
-2. Futtassa a következő parancsot (a HDP-verziókarakterlánc frissítése `/stormmetadta/zkdata` után) a ZooKeeper eltolási adatok exportálásához a HDFS elérési útjára:
+1. Az SSH használatával nyissa meg a ZooKeeper-fürtöt azon a fürtön, amelyről az ellenőrzőpont-eltolást exportálni kívánja.
+2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy exportálja a `/stormmetadta/zkdata` ZooKeeper eltolási értékeit a HDFS elérési útjába:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
     ```
 
-#### <a name="import-offset-metadata"></a>Eltolásmetaadatainak importálása
+#### <a name="import-offset-metadata"></a>Eltolási Metaadatok importálása
 
-1. Az SSH használatával nyissa meg a ZooKeeper fürta a fürtön, amelyből az ellenőrzőpont-eltolást importálni kell.
-2. Futtassa a következő parancsot (a HDP-verziókarakterlánc frissítése után) a `/stormmetadata/zkdata` ZooKeeper eltolási adatok importálásához a HDFS elérési útjáról a célfürt ZooKeeper kiszolgálójára:
+1. Az SSH használatával nyissa meg a ZooKeeper-fürtöt azon a fürtön, amelyről az ellenőrzőpont-eltolást importálni kell.
+2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy az ZooKeeper-eltolási `/stormmetadata/zkdata` adatok importálása a HDFS elérési útjáról a cél fürt ZooKeeper-kiszolgálójára:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
     ```
 
-#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Az eltolási metaadatok törlése, hogy a topológiák az elejétől vagy a felhasználó által választott időbélyegből kezdhessék meg az adatok feldolgozását
+#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Eltolási metaadatok törlése, hogy a topológiák el tudják kezdeni az adatok feldolgozását az elejéről, vagy a felhasználó által választott időbélyegből
 
-1. Az SSH használatával nyissa meg a ZooKeeper fürta a fürtön, amelyből az ellenőrzőpont eltolását törölni kell.
-2. Futtassa a következő parancsot (a HDP verziókarakterlánc frissítése után) az aktuális fürt összes ZooKeeper eltolási adatának törléséhez:
+1. Az SSH használatával nyissa meg a ZooKeeper-fürtöt azon a fürtön, amelyről az ellenőrzőpont-eltolást törölni kell.
+2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét) az aktuális fürt összes ZooKeeper-eltolási értékének törléséhez:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter delete /eventhubspout
     ```
 
-## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hogyan találhatom meg a Storm bináris fájlokat egy fürtön?
+## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hogyan megkeresni a Storm bináris fájljait egy fürtön?
 
-Az aktuális HDP-verem storm `/usr/hdp/current/storm-client`bináris fájljai a rendszerben vannak. A hely ugyanaz mind a fő csomópontok, mind a feldolgozó csomópontok esetében.
+Az aktuális HDP-verem Storm bináris fájljai a `/usr/hdp/current/storm-client`következőben találhatók:. A hely ugyanaz, mint a fő csomópontok és a munkavégző csomópontok esetében.
 
-A /usr/hdp -ben több bináris fájl is lehet `/usr/hdp/2.5.0.1233/storm`adott HDP-verziókhoz (például ). A `/usr/hdp/current/storm-client` mappa a fürtön futó legújabb verzióval van csatolva.
+Több bináris fájl is lehet a/usr/HDP adott HDP-verzióihoz (például `/usr/hdp/2.5.0.1233/storm`). A `/usr/hdp/current/storm-client` mappa a fürtön futó legújabb verzióra van összekapcsolva.
 
-További információ: [Csatlakozás HDInsight-fürthöz SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Apache Storm](https://storm.apache.org/)használatával.
+További információ: [Kapcsolódás HDInsight-fürthöz SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Apache Storm](https://storm.apache.org/)használatával.
 
-## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan állapítható meg a Storm-fürt központi telepítési topológiája?
+## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan megállapítani egy Storm-fürt telepítési topológiáját?
 
-Először azonosítsa a HDInsight Storm alkalmazással telepített összes összetevőt. A Storm-fürt négy csomópontkategóriából áll:
+Először azonosítsa a HDInsight Storm-mel telepített összes összetevőt. A Storm-fürtök négy csomópontos kategóriából állnak:
 
-* Átjárócsomópontok
+* Átjáró-csomópontok
 * Fő csomópontok
-* ZooKeeper csomópontok
-* Dolgozó csomópontok
+* ZooKeeper-csomópontok
+* Munkavégző csomópontok
 
-### <a name="gateway-nodes"></a>Átjárócsomópontok
+### <a name="gateway-nodes"></a>Átjáró-csomópontok
 
-Az átjárócsomópont egy átjáró és fordított proxyszolgáltatás, amely nyilvános hozzáférést biztosít egy aktív Ambari felügyeleti szolgáltatáshoz. Azt is kezeli Ambari vezető választás.
+Az átjáró-csomópont egy átjáró és fordított proxy szolgáltatás, amely lehetővé teszi a nyilvános hozzáférést egy aktív Ambari-kezelési szolgáltatáshoz. Emellett kezeli a Ambari Leader-választásokat is.
 
 ### <a name="head-nodes"></a>Fő csomópontok
 
-A viharfőcsomópontok a következő szolgáltatásokat futtatják:
+A Storm-fej csomópontjai a következő szolgáltatásokat futtatják:
 * Nimbus
-* Ambari szerver
-* Ambari metrikák kiszolgáló
-* Ambari mérőszámok gyűjtő
+* Ambari-kiszolgáló
+* Ambari metrikák kiszolgálója
+* Ambari metrikák gyűjtője
  
-### <a name="zookeeper-nodes"></a>ZooKeeper csomópontok
+### <a name="zookeeper-nodes"></a>ZooKeeper-csomópontok
 
-A HDInsight háromcsomópontos ZooKeeper kvórummal érkezik. A kvórum mérete rögzített, és nem konfigurálható újra.
+A HDInsight három csomópontos ZooKeeper kvórumot tartalmaz. A kvórum mérete rögzített, és nem konfigurálható újra.
 
-A fürt ben lévő storm szolgáltatások úgy vannak konfigurálva, hogy automatikusan használják a ZooKeeper kvórumot.
+A fürt Storm Services a ZooKeeper kvórum automatikus használatára van konfigurálva.
 
-### <a name="worker-nodes"></a>Dolgozó csomópontok
+### <a name="worker-nodes"></a>Munkavégző csomópontok
 
-A storm-feldolgozó csomópontok a következő szolgáltatásokat futtatják:
+A Storm Worker csomópontjai a következő szolgáltatásokat futtatják:
 * Felügyelő
-* Feldolgozó Java virtuális gépek (JVM), topológiák futtatásához
-* Ambari ügynök
+* Worker Java Virtual Machines (JVMs) a futó topológiák futtatásához
+* Ambari-ügynök
 
-## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hogyan találhatom meg a Storm eseményközpont-kifolyó bináris fájljait a fejlesztéshez?
+## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hogyan megkeresi a Storm Event hub kiöntő bináris fájljait a fejlesztéshez?
 
-A Storm eseményközpont-kifolyó .jar fájlok topológiával való használatáról az alábbi forrásokban talál további információt.
+A Storm Event hub kiöntő. jar fájloknak a topológiával való használatával kapcsolatos további információkért tekintse meg a következő forrásokat.
 
 ### <a name="java-based-topology"></a>Java-alapú topológia
 
-[Események feldolgozása az Azure Event Hubs-ból az Apache Storm segítségével a HDInsight (Java) szolgáltatással](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
+[Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (Java) szolgáltatással](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
-### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-alapú topológia (Monó a HDInsight 3.4+ Linux Storm fürtökön)
+### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-alapú topológia (mono on HDInsight 3.4 + Linux Storm-fürtök)
 
-[Események feldolgozása az Azure Event Hubs-ból az Apache Storm segítségével a HDInsighton (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (C#) használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
 
-### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Legújabb Apache Storm eseményközpont bináris fájlok HDInsight 3.5+ Linux Storm fürtökhöz
+### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>A legújabb Apache Storm Event hub kiöntő bináris fájljai a HDInsight 3.5 + Linux Storm-fürtökhöz
 
-A HDInsight 3.5+ Linux Storm-fürtökkel működő legújabb Storm eseményközpont-kifolyó használatáról az [mvn-repo readme fájlban olvashat.](https://github.com/hdinsight/mvn-repo/blob/master/README.md)
+Ha szeretné megtudni, hogyan használhatja a HDInsight 3.5 + Linux Storm-fürtöket használó legújabb Storm Event hub kiöntőt, tekintse meg a [MVN-tárház információs fájlját](https://github.com/hdinsight/mvn-repo/blob/master/README.md).
 
-### <a name="source-code-examples"></a>Példák forráskódra
+### <a name="source-code-examples"></a>Példák a forráskódra
 
-Példák [az](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) Azure Event Hubról való olvasásra és írásra egy Apache Storm-topológia használatával (Java nyelven írva) egy Azure HDInsight-fürtön.
+Tekintse át a [példákat](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) az Azure Event hub beolvasására és írására egy Azure HDInsight-fürtön található Apache Storm-topológia használatával (Java-ban írt).
 
-## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Hogyan találhatom meg a Storm Log4J 2 konfigurációs fájljait a fürtökön?
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Hogyan megkeresni a Storm Log4J 2 konfigurációs fájlját a fürtökön?
 
-Az [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) konfigurációs fájljainak azonosítása a Storm szolgáltatásokhoz.
+A Storm Services [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) konfigurációs fájljainak azonosításához.
 
-### <a name="on-head-nodes"></a>A főcsomópontokon
+### <a name="on-head-nodes"></a>A fő csomópontokon
 
-A Nimbus Log4J konfigurációja a rendszerből származik. `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`
+A rendszer `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`beolvassa a Nimbus Log4J konfigurációját.
 
 ### <a name="on-worker-nodes"></a>Munkavégző csomópontokon
 
-A felügyelő Log4J konfigurációját a rendszer olvassa be a rendszerből. `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`
+A felügyelő Log4J- `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`konfigurációjának beolvasása.
 
-A munkavégző Log4J konfigurációs fájlja a programból származik. `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`
+A Worker Log4J konfigurációs fájljának olvasása: `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`.
 
-Példák:`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+Példák`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
 ---
 
-## <a name="not-a-leader-exception"></a>Nincs vezető kivétel
+## <a name="not-a-leader-exception"></a>Nem vezető kivétel
 
-A topológia elküldésekor a felhasználó a következőhöz `Topology submission exception, cause not a leader, the current leader is NimbusInfo`hasonló hibaüzenetet kaphat: .
+A topológia elküldésekor a felhasználó a következőhöz hasonló hibaüzenetet kaphat: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
 
-A feloldáshoz előfordulhat, hogy a felhasználónak be kell nyújtania egy jegyet a csomópontok újraindításához/újraindításához. További információ: [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
+A megoldáshoz előfordulhat, hogy a felhasználónak be kell állítania egy jegyet, hogy a csomópontok újraindulnak vagy újraindulnak. További információ: [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-- Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+- Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-- Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

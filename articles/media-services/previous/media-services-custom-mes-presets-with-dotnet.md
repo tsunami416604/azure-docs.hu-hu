@@ -1,6 +1,6 @@
 ---
-title: Az adathordozó-kódoló standard készleteinek testreszabása | Microsoft dokumentumok
-description: Ez a témakör bemutatja, hogyan hajtható végre a speciális kódolás a Media Encoder Standard feladatkészletek testreszabásával. A témakör bemutatja, hogyan hozhat létre kódolási feladatot és feladatot a Media Services .NET SDK használatával. Azt is bemutatja, hogyan kell egyéni készleteket a kódolási feladathoz.
+title: Media Encoder Standard-készletek testreszabása | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan hajthat végre speciális kódolást Media Encoder Standard feladat-előállítók testreszabásával. A témakör bemutatja, hogyan használható a Media Services .NET SDK kódolási feladat és feladat létrehozásához. Azt is bemutatja, hogyan lehet egyéni beállításkészleteket megadni a kódolási feladathoz.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251244"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Az adathordozó-kódoló standard készleteinek testreszabása  
+# <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard-beállításkészletek testreszabása  
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk bemutatja, hogyan végezhet speciális kódolást a Media Encoder Standard (MES) segítségével egyéni készlet használatával. A cikk a .NET segítségével hoz létre egy kódolási feladatot és egy feladatot végrehajtó feladatot.  
+Ez a cikk bemutatja, hogyan végezhető el a Media Encoder Standard (MES) speciális kódolása egyéni beállításkészlet használatával. A cikk a .NET használatával hoz létre egy kódolási feladatot és egy feladatot, amely végrehajtja ezt a feladatot.  
 
-Ez a cikk bemutatja, hogyan szabhatja testre a beállításokat a [H264 Többszörös bitráta 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) készlet használatával és a rétegek számának csökkentésével. A [Media Encoder Standard készletkészlettestreszabása](media-services-advanced-encoding-with-mes.md) cikk bemutatja a speciális kódolási feladatok végrehajtására használható egyéni készleteket.
+Ebből a cikkből megtudhatja, hogyan szabhatja testre a készletet a [H264 több bitráta 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) -készletének és a rétegek számának csökkentésével. Az [Media Encoder standard-készletek testreszabása](media-services-advanced-encoding-with-mes.md) cikk a speciális kódolási feladatok végrehajtásához használható egyéni előbeállításokat mutatja be.
 
 > [!NOTE]
-> A cikkben ismertetett egyéni készletek nem használhatók a Media Services V3-transzformációkban vagy a CLI-parancsokban. [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) További részletekért tekintse meg a [v2 és a v3 között történő áttelepítési útmutatást.](../latest/migrate-from-v2-to-v3.md)
+> Az ebben a cikkben ismertetett egyéni beállításkészletek nem használhatók [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) átalakításokban vagy a CLI-parancsokban. További részletekért tekintse meg a [v2 és v3 közötti áttelepítési útmutatót](../latest/migrate-from-v2-to-v3.md) .
 
-## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES-készlet testreszabása
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES-beállításkészlet testreszabása
 
-### <a name="original-preset"></a>Eredeti készlet
+### <a name="original-preset"></a>Eredeti beállításkészlet
 
-Mentse a [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) cikkben definiált JSON-t egy .json kiterjesztésű fájlban. Például **CustomPreset_JSON.json**.
+Mentse a JSON [több bitráta 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) -cikkben definiált JSON-fájlt egy. JSON kiterjesztésű fájlban. Például **CustomPreset_JSON. JSON**.
 
-### <a name="customized-preset"></a>Testre szabott készlet
+### <a name="customized-preset"></a>Testreszabott beállításkészlet
 
-Nyissa meg a **CustomPreset_JSON.json** fájlt, és távolítsa el az első három réteget a **H264Layers-ből,** hogy a fájl így néz ki.
+Nyissa meg a **CustomPreset_JSON. JSON** fájlt, és távolítsa el az első három réteget a **H264Layers** , így a fájl így néz ki.
 
 ```json 
     {  
@@ -113,26 +113,26 @@ Nyissa meg a **CustomPreset_JSON.json** fájlt, és távolítsa el az első hár
     }  
 ```
 
-## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódolás a Media Services .NET SDK szolgáltatással
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódolás Media Services .NET SDK-val
 
-A következő kódpélda a Media Services .NET SDK segítségével hajtja végre a következő feladatokat:
+A következő kódrészlet a Media Services .NET SDK-t használja a következő feladatok elvégzéséhez:
 
 - Hozzon létre egy kódolási feladatot.
-- Hivatkozás a Media Encoder Standard kódolóra.
+- A Media Encoder Standard kódolóra mutató hivatkozás beszerzése.
 - Töltse be az előző szakaszban létrehozott egyéni JSON-készletet. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
 - Kódolási feladat hozzáadása a feladathoz. 
-- Adja meg a kódolandó bemeneti eszközt.
-- Hozzon létre egy kimeneti eszközt, amely tartalmazza a kódolt eszközt.
-- Adjon hozzá egy eseménykezelőt a feladat előrehaladásának ellenőrzéséhez.
+- Adja meg a kódolni kívánt bemeneti objektumot.
+- Hozzon létre egy kimeneti eszközt, amely tartalmazza a kódolt objektumot.
+- Adjon hozzá egy eseménykezelőt a feladatok előrehaladásának ellenőrzéséhez.
 - Küldje el a feladatot.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztői környezetet, és népesítse be az app.config fájlt a kapcsolatadataival, ahogy azt a Media Services fejlesztése a [.NET fájlban leírta.](media-services-dotnet-how-to-use.md) 
+Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa   
 
@@ -266,7 +266,7 @@ namespace CustomizeMESPresests
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hogyan kódolhatja az egyéni átalakítás segítségével CLI](../latest/custom-preset-cli-howto.md)
+- [Kódolás egyéni átalakítással a CLI használatával](../latest/custom-preset-cli-howto.md)
 - [Kódolás a Media Services v3 használatával](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

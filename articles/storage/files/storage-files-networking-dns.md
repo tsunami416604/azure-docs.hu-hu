@@ -1,6 +1,6 @@
 ---
-title: DNS-továbbítás konfigurálása Azure Files hoz | Microsoft dokumentumok
-description: Az Azure Files hálózati lehetőségeinek áttekintése.
+title: DNS-továbbítás konfigurálása Azure Fileshoz | Microsoft Docs
+description: A Azure Files hálózati beállításainak áttekintése.
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,50 +8,50 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 35dfbcb274721049f2160719222ca89038c93356
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80082499"
 ---
-# <a name="configuring-dns-forwarding-for-azure-files"></a>DNS-továbbítás konfigurálása Azure-fájlokhoz
-Az Azure Files lehetővé teszi, hogy privát végpontokat hozzon létre a fájlmegosztásokat tartalmazó tárfiókokhoz. Bár számos különböző alkalmazás számára hasznos, a privát végpontok különösen hasznosak az Azure-fájlmegosztásokhoz való csatlakozáshoz a helyszíni hálózatról VPN- vagy ExpressRoute-kapcsolaton keresztül, privát társviszony-létesítés használatával. 
+# <a name="configuring-dns-forwarding-for-azure-files"></a>DNS-továbbítás konfigurálása az Azure Fileshoz
+Azure Files lehetővé teszi, hogy saját végpontokat hozzon létre a fájlmegosztást tartalmazó Storage-fiókok számára. Bár számos különböző alkalmazás esetében hasznos, a privát végpontok különösen hasznosak az Azure-fájlmegosztás helyszíni hálózatról VPN-vagy ExpressRoute-kapcsolattal való összekapcsolásához. 
 
-Annak érdekében, hogy a tárfiókhoz való csatlakozás oka a hálózati alagúton keresztül haladjon, a tárfiók teljesen minősített tartománynevét (FQDN) a privát végpont privát IP-címére kell feloldania. Ennek elérése érdekében a tárolási végpont utótagot`core.windows.net` (nyilvános felhőrégiók esetében) kell továbbítania az Azure privát DNS-szolgáltatásához, amely a virtuális hálózaton belül érhető el. Ez az útmutató bemutatja, hogyan kell beállítani és konfigurálni a DNS-továbbítást úgy, hogy megfelelően feloldódjon a tárfiók privát végpontIP-címére.
+Ahhoz, hogy a Storage-fiók kapcsolata meghaladjon a hálózati alagúton, a Storage-fiók teljes tartománynevének (FQDN) fel kell oldania a privát végpont magánhálózati IP-címére. Ennek eléréséhez továbbítania kell a tárolási végpont utótagját (`core.windows.net` a nyilvános felhő régiói esetében) a virtuális hálózatról elérhető Azure-beli magánhálózati DNS-szolgáltatásba. Ez az útmutató bemutatja, hogyan állíthatja be és konfigurálhatja a DNS-továbbítást a Storage-fiók magánhálózati végpontjának IP-címére való megfelelő feloldáshoz.
 
-Azt javasoljuk, hogy olvassa el [az Azure Files telepítésének tervezése](storage-files-planning.md) és az Azure Files hálózati [szempontokat,](storage-files-networking-overview.md) mielőtt elvégezná a cikkben ismertetett lépéseket.
+Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervezését](storage-files-planning.md) , és [Azure Files hálózati megfontolásokat](storage-files-networking-overview.md) a jelen cikkben ismertetett lépések végrehajtása előtt.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Files kétféle végpontot biztosít az Azure-fájlmegosztások eléréséhez: 
-- Nyilvános végpontok, amelyek nyilvános IP-címmel rendelkeznek, és a világ bármely pontjáról elérhetők.
-- Privát végpontok, amelyek egy virtuális hálózaton belül léteznek, és a virtuális hálózat címteréből rendelkeznek privát IP-címmel.
+Azure Files két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
+- Nyilvános végpontok, amelyek nyilvános IP-címmel rendelkeznek, és bárhonnan elérhetők a világ bármely pontján.
+- Saját végpontok, amelyek egy virtuális hálózaton belül találhatók, és rendelkeznek magánhálózati IP-címmel a virtuális hálózat címterület területén belülről.
 
-Nyilvános és privát végpontok léteznek az Azure storage-fiókban. A tárfiók egy felügyeleti konstrukció, amely egy megosztott tárolókészletet képvisel, amelyben több fájlmegosztást, valamint egyéb tárolási erőforrásokat, például blobtárolókat vagy várólistákat telepíthet.
+A nyilvános és a privát végpontok az Azure Storage-fiókban találhatók. A Storage-fiók egy olyan felügyeleti szerkezet, amely egy megosztott tárolót jelöl, amelyben több fájlmegosztást is üzembe helyezhet, valamint más tárolási erőforrásokat, például blob-tárolókat vagy várólistákat.
 
-Minden tárfiók teljesen minősített tartománynévvel (FQDN) rendelkezik. A nyilvános felhőrégiók, ez a teljes tartománynév követi a mintát, `storageaccount.file.core.windows.net` ahol `storageaccount` a tárfiók neve. Ha erre a névre vonatkozókéréseket hajt végre, például a megosztást a munkaállomásra csatlakoztatja az SMB használatával, az operációs rendszer DNS-vizsgálatot hajt végre, hogy a teljesen minősített tartománynevet egy IP-címre oldja meg, amelyre az SMB-kérelmek küldéséhez használható.
+Minden Storage-fióknak van egy teljes tartományneve (FQDN). A nyilvános Felhőbeli régiók esetében ez a teljes tartománynév azt `storageaccount.file.core.windows.net` a `storageaccount` mintát követi, ahol a a Storage-fiók neve. Ha ilyen nevű kérelmeket küld, például az SMB használatával csatlakoztatja a megosztást a munkaállomáson, az operációs rendszer DNS-lekérdezést hajt végre, hogy feloldja a teljes tartománynevet egy olyan IP-címen, amelyet az SMB-kérelmek küldésére használhat.
 
-Alapértelmezés szerint `storageaccount.file.core.windows.net` a nyilvános végpont IP-címére oldódik fel. A nyilvános végpont egy tárfiók üzemelteti egy Azure storage-fürt, amely számos más tárfiókok nyilvános végpontok üzemelteti. Amikor létrehoz egy privát végpontot, egy privát DNS-zóna kapcsolódik ahhoz a virtuális `storageaccount.file.core.windows.net` hálózathoz, amelyhez hozzá lett adva, és a cname rekord leképezése a tárfiók magánhálózati végpontjának privát IP-címéhez tartozó A rekordbejegyzéshez. Ez lehetővé `storageaccount.file.core.windows.net` teszi, hogy fqdn a virtuális hálózaton belül, és azt feloldja a privát végpont IP-címét.
+Alapértelmezés `storageaccount.file.core.windows.net` szerint a rendszer feloldja a nyilvános végpont IP-címét. A Storage-fiók nyilvános végpontja egy Azure Storage-fürtön található, amely számos más Storage-fiók nyilvános végpontját tárolja. Privát végpont létrehozásakor a rendszer egy privát DNS-zónát csatol ahhoz a virtuális hálózathoz, amelyhez hozzá lett adva, és egy CNAME rekord `storageaccount.file.core.windows.net` van társítva a Storage-fiók magánhálózati végpontjának magánhálózati IP-címéhez tartozó rekord-bejegyzéshez. Ez lehetővé teszi a virtuális `storageaccount.file.core.windows.net` hálózaton belüli FQDN használatát, és azt a magánhálózati végpont IP-címére oldja fel.
 
-Mivel a végső célunk a tárfiókban tárolt Azure-fájlmegosztások elérése a helyszíni hálózati alagútból, például VPN- vagy ExpressRoute-kapcsolatból, konfigurálnia kell a helyszíni DNS-kiszolgálókat, hogy továbbítsák az Azure-ba irányuló kérelmeket. Fájlok szolgáltatás az Azure privát DNS-szolgáltatás. Ehhez be kell állítania `*.core.windows.net` az Azure virtuális hálózatán belül üzemeltetett DNS-kiszolgálóra (vagy az Egyesült Államok kormányának, Németországnak vagy Kína nemzeti felhőinek megfelelő tárolási végpont-utótagot) az Azure virtuális hálózatán tárolt DNS-kiszolgálóra *történő feltételes továbbítást.* Ez a DNS-kiszolgáló ezután rekurzív an-felelek továbbítja a kérelmet az Azure privát DNS-szolgáltatásának, amely a tárfiók teljesen minősített tartománynevét a megfelelő privát IP-címre oldja fel.
+Mivel a végső célunk a helyszíni Storage-fiókban üzemeltetett Azure-fájlmegosztás hálózati alagút, például VPN-vagy ExpressRoute-kapcsolat használatával való elérése, konfigurálnia kell a helyszíni DNS-kiszolgálókat, hogy továbbítsák a Azure Files szolgáltatásnak küldött kéréseket az Azure Private DNS szolgáltatásnak. Ehhez be kell állítania a *feltételes továbbítást* `*.core.windows.net` (vagy a megfelelő tárolási VÉGPONT utótagját az Egyesült Államok kormánya, Németország vagy Kína nemzeti felhők esetében) egy, az Azure-beli virtuális hálózaton belül üzemeltetett DNS-kiszolgálóra. A DNS-kiszolgáló ezt követően rekurzív módon továbbítja a kérést az Azure privát DNS-szolgáltatásához, amely feloldja a Storage-fiók teljes tartománynevét a megfelelő magánhálózati IP-címhez.
 
-Az Azure Files DNS-továbbításának konfigurálására egy virtuális gép futtatásához kell futtatni egy DNS-kiszolgálót a kérelmek továbbításához, azonban ez egy egyszeri lépés a virtuális hálózaton tárolt összes Azure-fájlmegosztás esetében. Emellett ez nem kizárólagos követelmény az Azure Files számára – minden olyan Azure-szolgáltatás, amely támogatja a helyszíni hozzáféréssel rendelkező privát végpontokat, igénybe veheti az ebben az útmutatóban konfigurált DNS-továbbítást: Azure Blob storage, SQL Azure, Cosmos DB, Stb. 
+A DNS-továbbítás Azure Files konfigurálásakor a virtuális gépnek futnia kell egy DNS-kiszolgáló üzemeltetéséhez a kérések továbbításához, azonban ez a lépés a virtuális hálózaton belül üzemeltetett összes Azure-fájlmegosztás esetében egy alkalommal. Emellett ez nem kizárólagos követelmény, hogy Azure Files – bármely olyan Azure-szolgáltatás, amely támogatja a helyszíni eléréshez használni kívánt privát végpontokat, az útmutatóban konfigurált DNS-továbbítást is igénybe veheti: Azure Blob Storage, SQL Azure, Cosmos DB stb. 
 
-Ez az útmutató bemutatja az Azure storage-végpont DNS-továbbításának konfigurálásának lépéseit, így az Azure Files mellett az összes többi Azure storage-szolgáltatás (Azure Blob storage, Azure Table storage, Azure Queue storage stb.) DNS-névfeloldási kérelmei is megjelennek. az Azure privát DNS-szolgáltatásához. Szükség esetén más Azure-szolgáltatások hoz is hozzáadható további végpontok. A helyszíni DNS-kiszolgálókra visszavezető DNS-továbbítás is konfigurálva lesz, így a virtuális hálózaton (például egy DFS-N-kiszolgálón) belüli felhőbeli erőforrások feloldhatják a helyszíni számítógépneveket. 
+Ez az útmutató a DNS-továbbítás konfigurálásának lépéseit mutatja be az Azure Storage-végpont számára, így a Azure Fileson kívül a DNS-névfeloldási kérelmeket a többi Azure Storage-szolgáltatáshoz (Azure Blob Storage, Azure Table Storage, Azure üzenetsor Storage stb.) továbbítjuk az Azure privát DNS-szolgáltatásához. További Azure-szolgáltatásokhoz további végpontok is hozzáadhatók, ha szükséges. A rendszer a helyi DNS-kiszolgálókra történő visszaküldést is konfigurálja, így a virtuális hálózaton (például egy DFS-N-kiszolgálón) a Felhőbeli erőforrásokat is felhasználhatja a helyszíni gépek nevének feloldásához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A DNS-továbbítás Azure Files-ba való beállítása előtt el kell végeznie a következő lépéseket:
+Mielőtt a DNS-továbbítást beállíthatja Azure Filesre, végre kell hajtania a következő lépéseket:
 
-- A csatlakoztatni kívánt Azure-fájlmegosztást tartalmazó tárfiók. Ha tudni szeretné, hogyan hozhat létre tárfiókot és Azure-fájlmegosztást, olvassa [el az Azure-fájlmegosztás létrehozása című témakört.](storage-how-to-create-file-share.md)
-- A tárfiók privát végpontja. Ha tudni szeretné, hogyan hozhat létre privát végpontot az Azure Files számára, [olvassa el a Privát végpont létrehozása](storage-files-networking-endpoints.md#create-a-private-endpoint)című témakört.
-- Az Azure PowerShell-modul [legújabb verziója.](https://docs.microsoft.com/powershell/azure/install-az-ps)
+- Egy olyan Storage-fiók, amely tartalmazza a csatlakoztatni kívánt Azure-fájlmegosztást. További információ a Storage-fiókok és az Azure-fájlmegosztás létrehozásáról: [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md).
+- A Storage-fiókhoz tartozó magánhálózati végpont. Ha meg szeretné tudni, hogyan hozhat létre saját végpontot a Azure Fileshoz, tekintse meg [a privát végpont létrehozása](storage-files-networking-endpoints.md#create-a-private-endpoint)című témakört.
+- A Azure PowerShell modul [legújabb verziója](https://docs.microsoft.com/powershell/azure/install-az-ps) .
 
 > [!Important]  
-> Ez az útmutató feltételezi, hogy a DNS-kiszolgálót a Windows Server en belül használja a helyszíni környezetben. Az útmutatóban ismertetett összes lépés nem csak a Windows DNS-kiszolgálóval, hanem bármely DNS-kiszolgálóval lehetséges.
+> Ez az útmutató feltételezi, hogy a Windows Serveren belüli DNS-kiszolgálót használja a helyszíni környezetben. A jelen útmutatóban ismertetett lépések bármilyen DNS-kiszolgálóval lehetségesek, nem csak a Windows DNS-kiszolgáló.
 
-## <a name="manually-configuring-dns-forwarding"></a>DNS-továbbítás kézi konfigurálása
-Ha már rendelkezik DNS-kiszolgálókkal az Azure virtuális hálózatán belül, vagy ha egyszerűen csak a saját virtuális gépeit szeretné DNS-kiszolgálókként telepíteni bármilyen módszerrel, akkor manuálisan konfigurálhatja a DNS-t a beépített DNS-kiszolgálóval. PowerShell-parancsmagok.
+## <a name="manually-configuring-dns-forwarding"></a>DNS-továbbítás manuális konfigurálása
+Ha már rendelkezik DNS-kiszolgálókkal az Azure-beli virtuális hálózaton belül, vagy ha egyszerűen saját virtuális gépeket szeretne üzembe helyezni DNS-kiszolgálóként a szervezet által használt bármely módszer alapján, manuálisan is konfigurálhatja a DNS-t a beépített DNS-kiszolgáló PowerShell-parancsmagokkal.
 
-A helyszíni DNS-kiszolgálókon hozzon létre `Add-DnsServerConditionalForwarderZone`egy feltételes továbbítót a használatával. Ezt a feltételes továbbítókell telepíteni az összes helyszíni DNS-kiszolgálók hatékony an-nincs megfelelő továbbítása forgalmat az Azure-ba. Ne felejtse el helyettesíteni `<azure-dns-server-ip>` a környezetének megfelelő IP-címeket.
+A helyszíni DNS-kiszolgálókon hozzon létre egy feltételes továbbítót a `Add-DnsServerConditionalForwarderZone`használatával. Ezt a feltételes továbbítót az összes helyszíni DNS-kiszolgálón üzembe kell helyezni, hogy az az Azure-ba irányuló forgalom megfelelő továbbítására legyen érvényes. Ne felejtse `<azure-dns-server-ip>` el lecserélni a környezetet a megfelelő IP-címekre.
 
 ```powershell
 $vnetDnsServers = "<azure-dns-server-ip>", "<azure-dns-server-ip>"
@@ -65,7 +65,7 @@ Add-DnsServerConditionalForwarderZone `
         -MasterServers $vnetDnsServers
 ```
 
-Az Azure virtuális hálózatán belüli DNS-kiszolgálókon is létre kell helyeznie egy továbbítót, hogy a tárfiók DNS-zónájára vonatkozó kérelmek `168.63.129.16`az Azure privát DNS-szolgáltatásra irányuljanak, amelyet a fenntartott IP-cím irányít. (Ne felejtse `$storageAccountEndpoint` el feldolgozni, ha a parancsokat egy másik PowerShell-munkameneten belül futtatja.)
+Az Azure-beli virtuális hálózaton belüli DNS-kiszolgálókon egy továbbítót is be kell állítani, hogy a Storage-fiók DNS-zónájára irányuló kérések a fenntartott IP-cím `168.63.129.16`alá tartozó Azure Private DNS szolgáltatásra legyenek irányítva. (Ne feledje a feltöltést, `$storageAccountEndpoint` ha egy másik PowerShell-munkamenetben futtatja a parancsokat.)
 
 ```powershell
 Add-DnsServerConditionalForwarderZone `
@@ -73,10 +73,10 @@ Add-DnsServerConditionalForwarderZone `
         -MasterServers "168.63.129.16"
 ```
 
-## <a name="using-the-azure-files-hybrid-module-to-configure-dns-forwarding"></a>Az Azure Files Hybrid modul használata a DNS-továbbítás konfigurálásához
-Annak érdekében, hogy a DNS-továbbítás konfigurálása a lehető legegyszerűbb legyen, automatizálást biztosítottunk az Azure Files Hybrid modulban. A modulban a DNS-kezeléshez biztosított parancsmagok segítségével üzembe helyezheti a DNS-kiszolgálókat az Azure virtuális hálózatában, és frissítheti a helyszíni DNS-kiszolgálókat, hogy továbbítsa őket. 
+## <a name="using-the-azure-files-hybrid-module-to-configure-dns-forwarding"></a>A Azure Files hibrid modul használata a DNS-továbbítás konfigurálásához
+Ahhoz, hogy a lehető legkönnyebben konfigurálja a DNS-továbbítást, az automatizálást a Azure Files hibrid modulban biztosítjuk. Az ebben a modulban a DNS manipulálására szolgáló parancsmagok segítséget nyújtanak a DNS-kiszolgálók üzembe helyezéséhez az Azure-beli virtuális hálózaton, és a helyszíni DNS-kiszolgálók frissítését is lehetővé teszik. 
 
-Ha még soha nem használta az Azure Files Hybrid modult, először telepítenie kell azt a munkaállomásra. Töltse le az Azure Files Hybrid PowerShell modul [legújabb verzióját:](https://github.com/Azure-Samples/azure-files-samples/releases)
+Ha soha nem használta a Azure Files hibrid modult, először telepítenie kell a munkaállomásra. Töltse le a Azure Files Hybrid PowerShell-modul [legújabb verzióját](https://github.com/Azure-Samples/azure-files-samples/releases) :
 
 ```PowerShell
 # Unzip the downloaded file
@@ -92,9 +92,9 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 Import-Module -Name AzFilesHybrid
 ```
 
-A DNS-továbbítási megoldás üzembe helyezése két lépésből áll, létrehozva egy DNS-továbbítási szabálykészletet, amely meghatározza, hogy mely Azure-szolgáltatásoknak kívánja továbbítani a kérelmeket, és a DNS-továbbítók tényleges üzembe helyezését. 
+A DNS-továbbító megoldás üzembe helyezése két lépésből áll: egy DNS-továbbító szabálykészlet létrehozása, amely meghatározza, hogy mely Azure-szolgáltatások továbbítják a kérelmeket, valamint a DNS-továbbítók tényleges központi telepítését. 
 
-A következő példa továbbítja a kérelmeket a tárfiókba, az Azure Files, az Azure Blob storage, az Azure Table storage és az Azure Queue storage beküldő kéréseit. Ha szükséges, további Azure-szolgáltatás továbbítása a szabályhoz `-AzureEndpoints` a `New-AzDnsForwardingRuleSet` parancsmag paraméterén keresztül. Ne felejtse `<virtual-network-name>`el `<subnet-name>` kicserélni `<virtual-network-resource-group>`a , és a környezetének megfelelő értékeket.
+A következő példa továbbítja a kéréseket a Storage-fióknak, az Azure Files, az Azure Blob Storage, az Azure Table Storage és az Azure üzenetsor-tárolásra vonatkozó kérelmeket. Ha kívánja, további Azure-szolgáltatás továbbítását is hozzáadhatja a szabályhoz `-AzureEndpoints` a (z `New-AzDnsForwardingRuleSet` ) parancsmag paraméterén keresztül. Ne felejtse `<virtual-network-resource-group>`el `<virtual-network-name>`lecserélni `<subnet-name>` a környezetet a megfelelő értékekre.
 
 ```PowerShell
 # Create a rule set, which defines the forwarding rules
@@ -108,21 +108,21 @@ New-AzDnsForwarder `
         -VirtualNetworkSubnetName "<subnet-name>"
 ```
 
-Ezenkívül hasznosnak/szükségesnek találhatja számos további paraméter megszolgáltatását:
+Emellett hasznos/szükséges lehet a további paraméterek biztosításához:
 
 | Paraméter neve | Típus | Leírás |
 |----------------|------|-------------|
-| `DnsServerResourceGroupName` | `string` | Alapértelmezés szerint a DNS-kiszolgálók ugyanabba az erőforráscsoportba lesznek telepítve, mint a virtuális hálózat. Ha ez nem kívánatos, ez a paraméter lehetővé teszi, hogy válasszon egy alternatív erőforráscsoportot, amelybe telepíteni kell őket. |
-| `DnsForwarderRootName` | `string` | Alapértelmezés szerint az Azure-ban üzembe helyezett DNS-kiszolgálók a nevekkel `DnsFwder-*`rendelkeznek, ahol a csillagot iterátor tölti fel. Ez a paraméter megváltoztatja a név `DnsFwder`gyökerét (azaz ). |
-| `VmTemporaryPassword` | `SecureString` | Alapértelmezés szerint egy véletlenszerű jelszót választ a virtuális gép által a tartományhoz való csatlakozás előtt lévő ideiglenes alapértelmezett fiókhoz. A tartományhoz való csatlakozás után az alapértelmezett fiók le van tiltva. |
-| `DomainToJoin` | `string` | A DNS-virtuális géphez csatlakozni csatlakozó tartomány. Alapértelmezés szerint ez a tartomány annak a számítógépnek a tartománya alapján van kiválasztva, amelyen a parancsmagokat futtatja. |
-| `DnsForwarderRedundancyCount` | `int` | A virtuális hálózatra telepítandó DNS-virtuális gépek száma. Alapértelmezés szerint `New-AzDnsForwarder` két DNS-kiszolgálót telepít az Azure virtuális hálózatában egy rendelkezésre állási csoportban a redundancia biztosítása érdekében. Ez a szám igény szerint módosítható. |
-| `OnPremDnsHostNames` | `HashSet<string>` | A továbbítók létrehozásához a helyszíni DNS-állomásnevek manuálisan megadott listája. Ez a paraméter akkor hasznos, ha nem kíván továbbítókat alkalmazni az összes helyszíni DNS-kiszolgálón, például ha manuálisan megadott DNS-névvel rendelkező ügyféltartománya van. |
-| `Credential` | `PSCredential` | A DNS-kiszolgálók frissítésekor használandó hitelesítő adat. Ez akkor hasznos, ha a bejelentkezett felhasználói fiók nem rendelkezik a DNS-beállítások módosításához szükséges engedélyekkel. |
-| `SkipParentDomain` | `SwitchParameter` | Alapértelmezés szerint a DNS-továbbítók a környezetben létező legmagasabb szintű tartományra lesznek alkalmazva. Ha például `northamerica.corp.contoso.com` a gyermektartománya, `corp.contoso.com`a továbbító a hozzá társított `corp.contoso.com`DNS-kiszolgálókhoz lesz létrehozva. Ezzel a paraméterrel továbbítókat `northamerica.corp.contoso.com`hoz létre a rendszerben. |
+| `DnsServerResourceGroupName` | `string` | Alapértelmezés szerint a DNS-kiszolgálók a virtuális hálózattal megegyező erőforráscsoporthoz lesznek telepítve. Ha ez nem megfelelő, ez a paraméter lehetővé teszi, hogy kiválasszon egy másik erőforráscsoportot, amelybe telepíteni kívánja őket. |
+| `DnsForwarderRootName` | `string` | Alapértelmezés szerint az Azure-ban üzembe helyezett DNS-kiszolgálóknak vannak a nevei `DnsFwder-*`, ahol a csillagot egy iteráció tölti ki. Ez a paraméter megváltoztatja a név gyökerét (azaz `DnsFwder`). |
+| `VmTemporaryPassword` | `SecureString` | Alapértelmezés szerint a virtuális gép a tartományhoz való csatlakozás előtt egy véletlenszerű jelszót választ az ideiglenes alapértelmezett fiókhoz. A tartományhoz való csatlakozás után az alapértelmezett fiók le van tiltva. |
+| `DomainToJoin` | `string` | A tartomány, amelyhez csatlakoztatni kívánja a DNS-beli virtuális gépet (ka) t. Alapértelmezés szerint ez a tartomány a parancsmagokat futtató számítógép tartománya alapján van kiválasztva. |
+| `DnsForwarderRedundancyCount` | `int` | A virtuális hálózathoz telepítendő DNS virtuális gépek száma. Alapértelmezés szerint két `New-AzDnsForwarder` DNS-kiszolgálót helyez üzembe az Azure-beli virtuális hálózaton a rendelkezésre állási csoportokban a redundancia biztosítása érdekében. Ez a szám szükség szerint módosítható. |
+| `OnPremDnsHostNames` | `HashSet<string>` | A helyszíni DNS-állomásnevek manuálisan megadott listája a továbbítók létrehozásához. Ez a paraméter akkor lehet hasznos, ha nem kívánja alkalmazni a továbbítókat az összes helyszíni DNS-kiszolgálón, például ha több ügyfél is van, amelyek manuálisan megadott DNS-névvel rendelkeznek. |
+| `Credential` | `PSCredential` | A DNS-kiszolgálók frissítésekor használandó hitelesítő adat. Ez akkor lehet hasznos, ha a felhasználó által bejelentkezett felhasználói fiók nem rendelkezik a DNS-beállítások módosítására vonatkozó engedélyekkel. |
+| `SkipParentDomain` | `SwitchParameter` | Alapértelmezés szerint a DNS-továbbítók a környezetben létező legmagasabb szintű tartományra lesznek alkalmazva. Ha `northamerica.corp.contoso.com` például a a gyermektartomány `corp.contoso.com`, a továbbító a-hez társított DNS-kiszolgálókhoz lesz létrehozva. `corp.contoso.com` Ezzel a paraméterrel a továbbítókat fogja létrehozni a `northamerica.corp.contoso.com`alkalmazásban. |
 
 ## <a name="confirm-dns-forwarders"></a>DNS-továbbítók megerősítése
-A DNS-továbbítók sikeres alkalmazásának vizsgálata előtt javasoljuk, hogy törölje a `Clear-DnsClientCache`DNS-gyorsítótárat a helyi munkaállomáson a használatával. Annak ellenőrzéséhez, hogy sikeresen fel tudja-e oldani a `Resolve-DnsName` `nslookup`tárfiók teljesen minősített tartománynevét, használja a vagy a .
+A tesztelés előtt ellenőrizze, hogy a DNS-továbbítók alkalmazása sikeresen megtörtént-e, javasoljuk, hogy törölje a DNS- `Clear-DnsClientCache`gyorsítótárat a helyi munkaállomáson a használatával. Annak ellenőrzéséhez, hogy sikeresen fel tudja-e oldani a Storage-fiók teljes tartománynevét, használja `Resolve-DnsName` a `nslookup`(z) vagy a (z) lehetőséget.
 
 ```powershell
 # Replace storageaccount.file.core.windows.net with the appropriate FQDN for your storage account.
@@ -130,7 +130,7 @@ A DNS-továbbítók sikeres alkalmazásának vizsgálata előtt javasoljuk, hogy
 Resolve-DnsName -Name storageaccount.file.core.windows.net
 ```
 
-Ha a névfeloldás sikeres, akkor a feloldott IP-cím nek meg kell egyeznie a tárfiók IP-címével.
+Ha a névfeloldás sikeres, látnia kell a megoldott IP-címet, amely megfelel a Storage-fiók IP-címének.
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -145,7 +145,7 @@ Section    : Answer
 IP4Address : 192.168.0.4
 ```
 
-Ha már beállított vpn- vagy ExpressRoute-kapcsolatot, `Test-NetConnection` azt is ellenőrizheti, hogy a TCP-kapcsolat sikeresen létrehozható-e a tárfiókhoz.
+Ha már beállított egy VPN-vagy ExpressRoute-kapcsolat használatát `Test-NetConnection` , azt is megtudhatja, hogy a TCP-kapcsolat sikeresen elvégezhető-e a Storage-fiókjában.
 
 ```PowerShell
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB
@@ -153,5 +153,5 @@ Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCP
 
 ## <a name="see-also"></a>Lásd még
 - [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-- [Az Azure Files hálózati szempontjai](storage-files-networking-overview.md)
-- [Az Azure Files hálózati végpontjainak konfigurálása](storage-files-networking-endpoints.md)
+- [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
+- [Azure Files hálózati végpontok konfigurálása](storage-files-networking-endpoints.md)
