@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69558753"
 ---
 > [!div class="op_single_selector"]
@@ -17,19 +17,19 @@ ms.locfileid: "69558753"
 > * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-A háttéralkalmazások használhatják az Azure IoT Hub primitívjeit, például [az ikereszközt][lnk-devtwin] és [a közvetlen metódusokat][lnk-c2dmethod]az eszközökön végrehajtott eszközkezelési műveletek távoli indításához és figyeléséhez. Ez az oktatóanyag bemutatja, hogyan működhet együtt egy háttéralkalmazás és egy eszközalkalmazás egy távoli eszköz újraindításának kezdeményezése és figyelése az IoT Hub használatával.
+A háttérbeli alkalmazások az Azure IoT Hub primitíveket, például az eszközök [kettős][lnk-devtwin] és [közvetlen metódusait][lnk-c2dmethod]használhatják az eszközökön található eszközkezelés távoli indításához és figyeléséhez. Ebből az oktatóanyagból megtudhatja, hogyan működhet együtt a háttérbeli alkalmazások és az eszközök egy távoli eszköz újraindításának elindításához és figyeléséhez IoT Hub használatával.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-Közvetlen módszerrel kezdeményezhet eszközkezelési műveleteket (például újraindítás, gyári alaphelyzetbe állítás és belső vezérlőprogram frissítése) egy háttéralkalmazásból a felhőben. A készülék a következőkért felelős:
+A felhőben található háttérbeli alkalmazásból közvetlen metódust használhat az Eszközkezelő műveletek (például az újraindítás, a gyári beállítások visszaállítása és a belső vezérlőprogram frissítése) elindításához. Az eszköz feladata:
 
-* Az IoT Hubról küldött metóduskérés kezelése.
+* A IoT Hub által elküldett metódus-kérelem feldolgozása.
 
-* A megfelelő eszközspecifikus művelet megművelete az eszközön.
+* A megfelelő eszközre vonatkozó művelet kezdeményezése az eszközön.
 
-* Állapotfrissítések biztosítása *jelentett tulajdonságokon* keresztül az IoT Hub.
+* Az állapot frissítéseinek biztosítása a *jelentett tulajdonságokkal* IoT hub.
 
-A felhőben lévő háttéralkalmazás segítségével ikereszköz-lekérdezéseket futtathat az eszközkezelési műveletek előrehaladásának jelentéséhez.
+A felhőben található háttérbeli alkalmazás használatával az eszközökre vonatkozó kettős lekérdezések futtatásával jelentést készíthet az Eszközkezelő műveleteinek folyamatáról.
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

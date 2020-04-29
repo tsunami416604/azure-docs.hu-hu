@@ -1,6 +1,6 @@
 ---
-title: MongoDB dokumentumonkénti TTL-szolgáltatás az Azure Cosmos DB-ben
-description: Ismerje meg, hogyan állíthatja be a dokumentumok élő értékének beállítását az Azure Cosmos DB MongoDB API-jával, amely egy idő után automatikusan törli őket a rendszerből.
+title: A Azure Cosmos DB MongoDB
+description: Megtudhatja, hogyan állíthatja be a dokumentumok élettartamát a Azure Cosmos DB API-MongoDB használatával, hogy egy adott idő elteltével automatikusan törölje azokat a rendszerből.
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
@@ -8,15 +8,15 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61330681"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lejárttá tétele a MongoDB-hez készült Azure Cosmos DB API-val
 
-Az élettartam- (TTL-) funkció lehetővé teszi, hogy az adatbázis adatai automatikusan elévüljenek. Az Azure Cosmos DB MongoDB API-ja a Cosmos DB alapvető TTL-képességeit használja. Két mód támogatott: alapértelmezett TTL-érték beállítása az egész gyűjteményhez és egyedi TTL-érték megadása az egyes dokumentumokhoz. A Cosmos DB MongoDB API-jában a TTL-indexeket és a dokumentumonkénti TTL-értékeket szabályozó logika megegyezik a [Cosmos DB-vel.](../cosmos-db/mongodb-indexing.md)
+Az élettartam- (TTL-) funkció lehetővé teszi, hogy az adatbázis adatai automatikusan elévüljenek. A Azure Cosmos DB API-MongoDB a Cosmos DB alapvető TTL-funkcióit használja. Két mód támogatott: alapértelmezett TTL-érték beállítása az egész gyűjteményhez és egyedi TTL-érték megadása az egyes dokumentumokhoz. A Cosmos DB API-MongoDB a TTL-indexeket és a dokumentumon belüli TTL-értékeket szabályozó logikai érték [megegyezik a Cosmos db](../cosmos-db/mongodb-indexing.md).
 
 ## <a name="ttl-indexes"></a>TTL-indexek
 A TTL gyűjteményben történő univerzális engedélyezéséhez [TTL-index (élettartamindex)](../cosmos-db/mongodb-indexing.md) létrehozása szükséges. A TTL-index a _ts mező indexe expireAfterSeconds értékkel.
@@ -55,7 +55,7 @@ Az élettartamnak int32 típusú értéknek kell lennie. Vagy lehet egy int32-be
 
 A dokumentum TTL-értékének megadása nem kötelező, TTL-értékkel nem rendelkező dokumentumok is beszúrhatók a gyűjteménybe.  Ebben az esetben a gyűjtemény TTL-értéke lesz figyelembe véve. 
 
-A következő dokumentumok érvényes TTL-értékekkel rendelkeznek. A dokumentumok beszúrása után a dokumentum TTL-értékei felülbírálják a gyűjtemény TTL értékeit. Tehát a dokumentumok 20 másodperc után el lesznek távolítva.   
+A következő dokumentumok érvényes TTL-értékekkel rendelkeznek. A dokumentumok beszúrása után a dokumentum TTL-értékei felülbírálják a gyűjtemény TTL-értékeit. Tehát a dokumentumok 20 másodperc után el lesznek távolítva.   
 
 ```JavaScript 
 globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: 20.0}) 
@@ -72,10 +72,10 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>A dokumentumonkénti TTL-funkció aktiválása
 
-A dokumentumonkénti TTL funkció aktiválható az Azure Cosmos DB MongoDB API-jával.
+A dokumentumon belüli TTL funkció a Azure Cosmos DB API-MongoDB is aktiválható.
 
-![Képernyőkép a Portál dokumentumon kénti TTL funkciójának aktiválásáról](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+![Képernyőkép a dokumentumon belüli TTL funkció aktiválásáról a portálon](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>További lépések
-* [Adatok lejárata az Azure Cosmos DB-ben automatikusan az élő idővel](../cosmos-db/time-to-live.md)
-* [Az Azure Cosmos DB MongoDB-hoz való API-jával konfigurált Cosmos-adatbázis indexelése](../cosmos-db/mongodb-indexing.md)
+* [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)
+* [A Cosmos-adatbázis indexelése a MongoDB Azure Cosmos DB API-val konfigurálva](../cosmos-db/mongodb-indexing.md)

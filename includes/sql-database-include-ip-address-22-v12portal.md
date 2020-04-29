@@ -1,7 +1,7 @@
 ---
 title: Kiszolgálószintű tűzfalszabályok
 description: Kiszolgálószintű tűzfalszabályok
-keywords: sql kapcsolat,kapcsolati karakterlánc
+keywords: SQL-kapcsolatok, kapcsolatok karakterlánca
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,33 +11,33 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179198"
 ---
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. A bal oldali listában válassza a **Minden szolgáltatás lehetőséget.**
+2. A bal oldali listában válassza a **minden szolgáltatás**lehetőséget.
 
-3. Görgessen és válassza az **SQL-kiszolgálókat**.
+3. Görgessen le, és válassza az **SQL-kiszolgálók**lehetőséget.
 
-    ![Az Azure SQL Database-kiszolgáló megkeresése a portálon][b21-FindServerInPortal]
-5. A szűrő szövegmezőjébe írja be a kiszolgáló nevét. Megjelenik a sor.
+    ![A Azure SQL Database-kiszolgáló megkeresése a portálon][b21-FindServerInPortal]
+5. A szűrő szövegmezőbe kezdje el beírni a kiszolgáló nevét. Ekkor megjelenik a sor.
 
 6. Válassza ki a kiszolgáló sorát. Megjelenik a kiszolgáló panelje.
 
-7. A kiszolgálópanelen válassza a **Beállítások lehetőséget.**
+7. A kiszolgáló paneljén válassza a **Beállítások**lehetőséget.
 
-8. Válassza **a Tűzfal**lehetőséget.
+8. Válassza a **tűzfal**lehetőséget.
 
-    ![A tűzfal beállításainak >][b31-SettingsFirewallNavig]
-9. Válassza **az Ügyfél IP hozzáadása**lehetőséget. Írja be az új szabály nevét az első szövegmezőbe.
+    ![Beállítások kiválasztása > tűzfal][b31-SettingsFirewallNavig]
+9. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget. Írja be az új szabály nevét az első szövegmezőbe.
 
-10. Írja be az engedélyezni kívánt tartomány alacsony és magas IP-címértékeit.
+10. Adja meg az engedélyezni kívánt tartomány alacsony és magas IP-címének értékeit.
 
-    * Ez lehet kéznél levő -hoz volna a alacsony érték vég -val **.0** és a magas érték vég -val **.255.**
+    * Hasznos lehet, ha az alacsony érték a **. 0** és a magas értékkel végződik **. 255**.
 
 11. Kattintson a **Mentés** gombra.
 

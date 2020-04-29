@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70393816"
 ---
 ## <a name="set-up"></a>Beállítás
 
-### <a name="create-a-translator-text-resource"></a>Fordítószöveg-erőforrás létrehozása
+### <a name="create-a-translator-text-resource"></a>Translator Text erőforrás létrehozása
 
-Az Azure Cognitive Servicest olyan Azure-erőforrások képviselik, amelyekre előfizet. Hozzon létre egy erőforrást a translator text az [Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) a helyi gépen. További lehetőségek:
+Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást Translator Text a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. További lehetőségek:
 
-* Kap egy [próbakulcs](https://azure.microsoft.com/try/cognitive-services) érvényes részére 7 napok részére szabad. A regisztráció után elérhető lesz az Azure-webhelyen.
-* Meglévő erőforrás megtekintése az [Azure Portalon.](https://portal.azure.com/)
+* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services) ingyenes 7 napig érvényes. A regisztráció után elérhető lesz az Azure webhelyén.
+* Megtekintheti a [Azure Portal](https://portal.azure.com/)meglévő erőforrásait.
 
-Miután beszerzett egy kulcsot a próba-előfizetésből vagy erőforrásból, hozzon létre két [környezeti változót:](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
+A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után hozzon létre két [környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`- A Fordító szöveg erőforrásának előfizetési kulcsa.
-* `TRANSLATOR_TEXT_ENDPOINT`- A fordítószöveg globális végpontja. A `https://api.cognitive.microsofttranslator.com/` címet használja.
+* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`– A Translator Text erőforráshoz tartozó előfizetési kulcs.
+* `TRANSLATOR_TEXT_ENDPOINT`– A Translator Text globális végpontja. A `https://api.cognitive.microsofttranslator.com/` címet használja.

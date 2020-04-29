@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69906962"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906962"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új Go projektet kedvenc IDE vagy szerkesztő vagy új mappával az asztalon. Ezután másolja ezt a kódrészletet a projektbe/mappába egy fájlban, amelynek neve `get-languages.go`.
+Hozzon létre egy új go-projektet a kedvenc IDE-vagy szerkesztőjével vagy az asztalon lévő új mappával. Ezután másolja ezt a kódrészletet a projektbe vagy mappájába egy nevű `get-languages.go`fájlba.
 
 ```go
 package main
@@ -32,11 +32,11 @@ import (
 )
 ```
 
-## <a name="create-the-main-function"></a>A fő funkció létrehozása
+## <a name="create-the-main-function"></a>A fő függvény létrehozása
 
-Hozzuk létre az alkalmazásunk fő funkcióját. Észre fogod venni, hogy ez egy sor nyikód. Ennek az az oka, hogy egyetlen függvényt hozunk létre a translator text támogatott nyelveinek listájának be- és nyomtatásához.
+Hozzuk létre a fő függvényt az alkalmazáshoz. Megfigyelheti, hogy a kód egyetlen sor. Ennek az az oka, hogy egyetlen függvényt hozunk létre a Translator Text támogatott nyelveinek listájának beolvasásához és kinyomtatásához.
 
-Ez a minta megpróbálja olvasni a fordító szövegvégpontját egy környezeti változóból: `TRANSLATOR_TEXT_ENDPOINT`. Ha még nem ismeri a környezeti változókat, beállíthatja a `endpoint` sztringet, és megjegyzéssé teheti a feltételes utasítást.
+Ez a minta megpróbálja beolvasni a Translator Text végpontot egy környezeti változóból `TRANSLATOR_TEXT_ENDPOINT`:. Ha még nem ismeri a környezeti változókat, beállíthatja a `endpoint` sztringet, és megjegyzéssé teheti a feltételes utasítást.
 
 Másolja a projektbe a következő kódot:
 
@@ -51,9 +51,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-get-a-list-of-supported-languages"></a>A támogatott nyelvek listájának leéséhez hozzon létre egy függvényt
+## <a name="create-a-function-to-get-a-list-of-supported-languages"></a>Függvény létrehozása a támogatott nyelvek listájának lekéréséhez
 
-Hozzunk létre egy függvényt a támogatott nyelvek listájának bekerüléséhez.
+Hozzunk létre egy függvényt a támogatott nyelvek listájának lekéréséhez.
 
 ```go
 func getLanguages(uri string) {
@@ -64,9 +64,9 @@ func getLanguages(uri string) {
 }
 ```
 
-Ezután készítsük el az URL-címet. Az URL-cím `Parse()` a `Query()` és a módszerek használatával épül fel.
+Ezután hozzon létre egy URL-címet. Az URL-cím a és `Parse()` `Query()` a metódusok használatával készült.
 
-Másolja ezt a `getLanguages` kódot a függvénybe.
+Másolja ezt a kódot a `getLanguages` függvénybe.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -80,7 +80,7 @@ u.RawQuery = q.Encode()
 
 ## <a name="build-the-request"></a>A kérelem felépítése
 
-Most, hogy jsonként kódolta a kérelemtörzset, létrehozhatja a POST-kérelmet, és meghívhatja a Translator Text API-t.
+Most, hogy kódolta a kérés törzsét JSON-ként, felépítheti a POST-kérést, és meghívhatja a Translator Text API.
 
 ```go
 // Build the HTTP GET request
@@ -98,11 +98,11 @@ if err != nil {
 }
 ```
 
-Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem paramétereit is meg kell egyeznie. [További információ a többszolgáltatásos előfizetés hitelesítéséről.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
+Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>A válasz leírója és nyomtatása
+## <a name="handle-and-print-the-response"></a>A válasz kezelése és nyomtatása
 
-Adja hozzá ezt `getLanguages` a kódot a függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
+Adja hozzá ezt a kódot `getLanguages` a függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
 
 ```go
 // Decode the JSON response
@@ -127,7 +127,7 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Keresse meg az ország/régió rövidítését ebben [a nyelveklistájában.](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)
+Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
@@ -217,7 +217,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
+Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

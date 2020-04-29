@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: d7126acebae02a60e5c485b74716aaa84b99f781
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69906832"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -31,7 +31,7 @@ Ezekre a modulokra a HTTP-kérelem és az `'X-ClientTraceId'` fejléc egyedi azo
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>Az előfizetési kulcs és a végpont beállítása
 
-Ez a minta megpróbálja elolvasni a Translator Text előfizetési `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` `TRANSLATOR_TEXT_ENDPOINT`kulcsot és végpontot az alábbi környezeti változókból: és . Ha nem ismeri a környezeti változókat, `subscriptionKey` `endpoint` beállíthatja, karakterláncként, és megjegyzést fűzhet a feltételes utasításokhoz.
+Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT`környezeti változókból: és. Ha nem ismeri a környezeti változókat, beállíthatja `subscriptionKey` és `endpoint` karakterláncként is megadhatja a feltételes utasításokat, és megjegyzéseket fűzhet hozzájuk.
 
 Másolja a projektbe a következő kódot:
 
@@ -53,7 +53,7 @@ var endpoint = process.env[endpoint_var];
 A kérelemmodulon keresztül elérhető `request()` metódus lehetővé teszi a HTTP-metódus, az URL-cím, a kérelemparaméterek, a fejlécek és a JSON-törzs `options` objektumként való átadását. Az alábbi kódrészletben a kérelmet fogjuk konfigurálni:
 
 >[!NOTE]
-> A végpontokról, az útvonalakról és a kérelemparaméterekről a [Translator Text API 3.0: Break Sentence című témakörben talál](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)további információt.
+> További információ a végpontokról, az útvonalakról és a kérelmek paramétereivel kapcsolatban: [Translator Text API 3,0: break mondat](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```javascript
 let options = {
@@ -77,7 +77,7 @@ let options = {
 
 A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából.
 
-Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem fejlécében is szerepelnie kell.
+Ha Cognitive Services több szolgáltatást használó előfizetést használ, a `Ocp-Apim-Subscription-Region` kérések fejlécében is szerepelnie kell.
 
 További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
@@ -124,7 +124,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
+Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

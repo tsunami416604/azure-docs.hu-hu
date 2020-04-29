@@ -9,14 +9,14 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68780207"
 ---
-1. Nyissa meg a virtuális hálózati átjáró lapját. A panelt többféleképpen is megtalálhatja. Az átjáróhoz úgy navigálhat, hogy a **virtuális hálózat neve -> áttekintése -> csatlakoztatott eszközök -> az átjáró neve**.
-2. Az átjáró lapján kattintson a **Kapcsolatok gombra.** A Kapcsolatok lapon kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** lap megnyitásához.
+1. Nyissa meg a virtuális hálózati átjáró lapját. A panelt többféleképpen is megtalálhatja. Az átjáró eléréséhez nyissa meg az **VNet nevét – > áttekintése – > csatlakoztatott eszközök – > az átjáró nevét**.
+2. Az átjáró lapján kattintson a **kapcsolatok**elemre. A Kapcsolatok lapon kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** lap megnyitásához.
 
    ![Helyek közötti kapcsolat létrehozása](./media/vpn-gateway-add-site-to-site-connection-portal-include/configure-site-to-site-connection.png)
 3. A **Kapcsolat hozzáadása** lapon állítsa be a kapcsolathoz tartozó értékeket.

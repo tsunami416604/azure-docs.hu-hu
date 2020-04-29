@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 18f76ea4acc99038939a2653bb66875154529126
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67178812"
 ---
-Ha aszinkron munkát kell végrehajtania a kezelőben, elhalaszthatja a token `deferral` beállítását egy objektum kérésével, majd befejezésével, mint a következő példában.
+Ha a kezelőben aszinkron munkát kell végrehajtania, elhalaszthatja a token beállítását egy `deferral` objektum igénylésével, majd az alábbi példában látható módon.

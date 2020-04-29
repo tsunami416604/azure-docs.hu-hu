@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Cassandra API-fiók lekérdezési adatai az Azure Cosmos DB-ben'
-description: Ez az oktatóanyag bemutatja, hogyan lehet lekérdezni a felhasználói adatokat egy Azure Cosmos DB Cassandra API-fiókból egy Java alkalmazás használatával.
+title: 'Oktatóanyag: adatok lekérdezése Cassandra API-fiókból Azure Cosmos DB'
+description: Ez az oktatóanyag bemutatja, hogyan kérdezheti le a felhasználói adatait egy Azure Cosmos DB Cassandra API-fiókból egy Java-alkalmazás használatával.
 ms.service: cosmos-db
 author: kanshiG
 ms.author: govindk
@@ -10,27 +10,27 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60899899"
 ---
-# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Cassandra API-fiók lekérdezési adatai az Azure Cosmos DB-ben
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: adatok lekérdezése Cassandra API-fiókból Azure Cosmos DB
 
-Fejlesztőként előfordulhat, hogy olyan alkalmazásokat használ, amelyek kulcs-érték párokat használnak. Cassandra API-fiók használatával az Azure Cosmos DB tárolja és lekérdezi a kulcs/érték adatokat. Ez az oktatóanyag bemutatja, hogyan lehet lekérdezni a felhasználói adatokat egy Cassandra API-fiókból az Azure Cosmos DB-ben egy Java alkalmazás használatával. A Java alkalmazás a [Java-illesztőprogramot](https://github.com/datastax/java-driver) használja, és lekérdezi a felhasználói adatokat, például a felhasználói azonosítót, a felhasználónevet és a felhasználói várost. 
+Fejlesztőként lehetnek olyan alkalmazások, amelyek kulcs/érték párokat használnak. A kulcs/érték típusú adattárolók tárolására és lekérdezésére Cassandra API fiókot használhat a Azure Cosmos DBban. Ez az oktatóanyag azt mutatja be, hogyan lehet lekérdezni a felhasználói adatait egy Cassandra API-fiókból a Azure Cosmos DB Java-alkalmazás használatával. A Java-alkalmazás a [Java-illesztőprogramot](https://github.com/datastax/java-driver) használja, és lekérdezi a felhasználói adatforrásokat, például a felhasználói azonosítót, a felhasználónevet és a felhasználói város nevét. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Cassandra-tábla adatainak lekérdezése
+> * Adatok lekérdezése Cassandra-táblából
 > * Az alkalmazás futtatása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ez a cikk egy többrészes oktatóanyag része. Mielőtt elkezdené, győződjön meg arról, hogy az előző lépéseket a Cassandra API-fiók, kulcstér, tábla és [a minta adatok betöltése a táblába.](cassandra-api-load-data.md) 
+* Ez a cikk egy többrészes oktatóanyag része. Mielőtt elkezdené, győződjön meg arról, hogy az előző lépések végrehajtásával hozza létre a Cassandra API fiókot, a térközt, a táblát és [a betöltési mintát a táblába](cassandra-api-load-data.md). 
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve kérdezze le a Cassandra API-fiók adatait:
 ## <a name="run-the-java-app"></a>A Java-alkalmazás futtatása
 1. Nyisson meg egy parancssort vagy terminálablakot. Illessze be az alábbi kódblokkot. 
 
-   Ez a kód megváltoztatja a könyvtárat (cd) arra a mappaelérési útra, ahol a projektet létrehozta. Ezután futtatja az `mvn clean install` parancsot a `cosmosdb-cassandra-examples.jar` fájl célmappán belüli létrehozásához. Végül futtatja a Java-alkalmazást.
+   Ez a kód módosítja a könyvtárat (CD) arra a mappára, ahová a projektet létrehozta. Ezután futtatja az `mvn clean install` parancsot a `cosmosdb-cassandra-examples.jar` fájl célmappán belüli létrehozásához. Végül futtatja a Java-alkalmazást.
 
    ```bash
    cd "cassandra-demo"
@@ -107,11 +107,11 @@ Az alábbi lépéseket követve kérdezze le a Cassandra API-fiók adatait:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez jelölje ki a virtuális gép erőforráscsoportját, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan lehet adatokat lekérdezni egy Cassandra API-fiókból az Azure Cosmos DB-ben. Továbbléphet a következő cikkre:
+Ebben az oktatóanyagban megtanulta, hogyan lehet lekérdezni egy Cassandra API fiók adatait a Azure Cosmos DBban. Továbbléphet a következő cikkre:
 
 > [!div class="nextstepaction"]
 > [Adatok áttelepítése Cassandra API-fiókba](cassandra-import-data.md)

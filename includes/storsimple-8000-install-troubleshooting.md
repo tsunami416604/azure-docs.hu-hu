@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179314"
 ---
 ## <a name="troubleshooting-update-failures"></a>A frissítéssel kapcsolatos hibák elhárítása
 **Mi a teendő, ha megjelenik egy értesítés, hogy a frissítés előtti ellenőrzések sikertelenek voltak?**
 
-Ha egy előzetes ellenőrzés sikertelen, tekintse meg az oldal alján lévő részletes értesítési sávot. Ez útmutatást nyújt arról, hogy miért volt sikertelen az előzetes ellenőrzés. Például értesítést kap arról, hogy a vezérlő állapot-ellenőrzése és a hardverösszetevő állapotellenőrzése sikertelen volt. Nyissa meg **a > hardver állapotának figyelése**lehetőséget. Meg kell győződnie arról, hogy mindkét vezérlő kifogástalan és online. Azt is meg kell győződnie arról, hogy a StorSimple eszköz összes hardverösszetevője kifogástalannak bizonyult ebben a panelben. Ezután próbálja meg telepíteni a frissítéseket. Ha nem tudja kijavítani a hardverösszetevő problémáit, a további lépésekért forduljon a Microsoft ügyfélszolgálatához.
+Ha egy előzetes ellenőrzés sikertelen, tekintse meg az oldal alján lévő részletes értesítési sávot. Ez útmutatást nyújt arról, hogy miért volt sikertelen az előzetes ellenőrzés. Például értesítést kap arról, hogy a vezérlő állapotának ellenőrzését és a hardver-összetevő állapotának ellenőrzését nem sikerült végrehajtani. Válassza a **figyelés > hardver állapota**lehetőséget. Győződjön meg arról, hogy mindkét vezérlő kifogástalan állapotú és online állapotban van. Azt is meg kell győződnie arról, hogy a StorSimple-eszköz összes hardveres összetevője kifogástalan állapotú ezen a panelen. Ezután próbálja meg telepíteni a frissítéseket. Ha nem tudja kijavítani a hardverösszetevő problémáit, a további lépésekért forduljon a Microsoft ügyfélszolgálatához.
 
 **Mi a teendő, ha „A frissítéseket nem lehet telepíteni” hibaüzenetet kap, és a rendszer azt javasolja, hogy tekintse meg a frissítési hibaelhárítási útmutatót a hiba okának meghatározásához?**
 

@@ -9,21 +9,21 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179675"
 ---
 ## <a name="push-image-to-registry"></a>Rendszerkép leküldése a beállításjegyzékbe
 
-Ahhoz, hogy rendszerképet tudjon küldeni egy Azure Container Registry tárolóregisztrációs adatbázisba, először szüksége van egy rendszerképre. Ha még nem rendelkezik helyi tárolórendszerképekkel, futtassa a következő [docker-lekéréses][docker-pull] parancsot egy meglévő rendszerkép lekérése a Docker Hubból. Ebben a példában `hello-world` húzza ki a képet.
+Ahhoz, hogy rendszerképet tudjon küldeni egy Azure Container Registry tárolóregisztrációs adatbázisba, először szüksége van egy rendszerképre. Ha még nem rendelkezik helyi tároló lemezképekkel, futtassa a következő [Docker pull][docker-pull] parancsot egy meglévő rendszerkép lekéréséhez a Docker hub-ból. Ebben a példában a `hello-world` rendszerkép lekérése.
 
 ```
 docker pull hello-world
 ```
 
-Mielőtt leküldhetné a rendszerképet a regisztrációs adatbázisba, fel kell címkéznie az ACR bejelentkezési kiszolgálójának teljes nevével. A bejelentkezési kiszolgáló neve a * \<rendszerleíró\>adatbázis neve .azurecr.io* formátumban (az összes kisbetű), például *mycontainerregistry007.azurecr.io*.
+Mielőtt leküldhetné a rendszerképet a regisztrációs adatbázisba, fel kell címkéznie az ACR bejelentkezési kiszolgálójának teljes nevével. A bejelentkezési kiszolgáló nevét a következő formátumban *mycontainerregistry007.azurecr.io* * \<kell megadni: Registry\>-Name. azurecr.IO* (mind kisbetűs), például mycontainerregistry007.azurecr.IO.
 
 Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Helyettesítse be az `<acrLoginServer>` helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
 
@@ -31,13 +31,13 @@ Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatáv
 docker tag hello-world <acrLoginServer>/hello-world:v1
 ```
 
-Végül a [docker push][docker-push] paranccsal küldje le a rendszerképet az ACR-példányba. Helyettesítse be az `<acrLoginServer>` helyére az ACR-példány bejelentkezési kiszolgálójának nevét. Ebben a példában létrehozza a **hello-world** tárház, amely a `hello-world:v1` rendszerképet.
+Végül a [docker push][docker-push] paranccsal küldje le a rendszerképet az ACR-példányba. Helyettesítse be az `<acrLoginServer>` helyére az ACR-példány bejelentkezési kiszolgálójának nevét. Ez a példa a **Hello-World** tárházat hozza létre `hello-world:v1` , amely tartalmazza a képet.
 
 ```
 docker push <acrLoginServer>/hello-world:v1
 ```
 
-Miután lelökte a rendszerképet `hello-world:v1` a tároló beállításjegyzékébe, távolítsa el a rendszerképet a helyi Docker-környezetből. (Vegye figyelembe, hogy ez a [docker rmi][docker-rmi] parancs nem távolítja el a rendszerképet a hello-world tárházból az **Azure-tároló** beállításjegyzékében.)
+Miután leküldte a rendszerképet a tároló-beállításjegyzékbe, távolítsa el a `hello-world:v1` rendszerképet a helyi Docker-környezetből. (Vegye figyelembe, hogy ez a [Docker RMI][docker-rmi] -parancs nem távolítja el a rendszerképet a **Hello-World** adattárból az Azure Container registryben.)
 
 ```
 docker rmi <acrLoginServer>/hello-world:v1

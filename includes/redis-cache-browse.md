@@ -9,24 +9,24 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67179689"
 ---
 Ha nem rögzítette a gyorsítótárat az irányítópultra, az [Azure Portal](https://portal.azure.com)**Minden szolgáltatás** részén találhatja meg.
 
-![Azure-gyorsítótár a Redis Tallózás panelhez](media/redis-cache-browse/redis-cache-browse.png)
+![Azure cache a Redis böngészési paneljén](media/redis-cache-browse/redis-cache-browse.png)
 
-A gyorsítótárak megtekintéséhez kattintson a **Minden szolgáltatás** elemre, és keresse meg **az Azure Cache for Redis webhelyet.** 
+A gyorsítótárak megtekintéséhez kattintson a **minden szolgáltatás** lehetőségre, és keresse meg az **Azure cache-t a Redis**. 
 
 Válassza ki a kívánt gyorsítótárat a beállítások megtekintéséhez és konfigurálásához.
 
-![Azure cache a Redis tallózási gyorsítótárának listájához](media/redis-cache-browse/redis-caches.png)
+![Azure cache a Redis tallózási gyorsítótár listájához](media/redis-cache-browse/redis-caches.png)
 
-Megtekintheti és konfigurálhatja a gyorsítótárat az **Azure Cache for Redis** panel.
+A gyorsítótárat megtekintheti és konfigurálhatja az **Azure cache for Redis** panelről.
 
-![Azure cache a Redis összes beállításához](media/redis-cache-browse/redis-cache-blade.png)
+![Azure cache az összes beállítás Redis](media/redis-cache-browse/redis-cache-blade.png)
 
 

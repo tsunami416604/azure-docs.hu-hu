@@ -11,22 +11,22 @@ ms.custom: include file
 ms.date: 12/21/2018
 ms.author: diberry
 ms.openlocfilehash: 355fe134939b26c51d6e03368f782845628a6b96
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179427"
 ---
-Az ügyfélalkalmazás tudnia kell, ha egy utterance (kifejezés) nem értelmes vagy megfelelő az alkalmazás számára. A **Nincs** szándék minden alkalmazáshoz hozzáadódik a létrehozási folyamat részeként annak megállapítására, hogy az ügyfélalkalmazás nem tud-e megválaszolni egy utterance (kifejezés) lehetőséget.
+Az ügyfélalkalmazásnak tudnia kell, hogy a Kimondás nem értelmezhető vagy nem megfelelő-e az alkalmazáshoz. A rendszer a létrehozási folyamat részeként hozzáadja az egyes alkalmazásokhoz a **nincs** szándékot annak megállapításához, hogy az ügyfélalkalmazás nem válaszol-e.
 
-Ha a LUIS visszaadja a **Nincs** szándék egy utterance (kifejezés) az ügyfélalkalmazás kérheti, ha a felhasználó szeretné befejezni a beszélgetést, vagy adjon több útvonalat a beszélgetés folytatásához. 
+Ha LUIS a **none** szándékot adja vissza, az ügyfélalkalmazás megkérdezheti, hogy a felhasználó szeretné-e lemondani a beszélgetést, vagy további útmutatást ad a beszélgetés folytatásához. 
 
 > [!CAUTION] 
-> Ne hagyja üresen a **Nincs** szándékot. 
+> Ne hagyja üresen a **nincs** leképezést. 
 
 1. A bal oldali panelen válassza az **Intents** (Szándékok) lehetőséget.
 
-2. Válassza ki a **None** szándékot. Adjon hozzá három kimondott szöveget, amelyet a felhasználó megadhat, de nem releváns a Humán erőforrás alkalmazás szempontjából:
+2. Válassza ki a **None** szándékot. Vegyen fel három hosszúságú kimondott szöveg, amelyet a felhasználó megadhat, de nem vonatkozik az emberi erőforrások alkalmazására:
 
     | Példák kimondott szövegekre|
     |--|

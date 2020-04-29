@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Workspot Control vezérlővel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directoryhoz és a Workspot-vezérlőhöz.
+title: 'Oktatóanyag: Azure Active Directory integráció a Workspot-vezérlővel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Workspot vezérlőhöz.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,236 +16,236 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67086681"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Az Azure Active Directory integrációja a Workspot vezérlővel
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Azure Active Directory integráció a Workspot-vezérlővel
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Workspot-vezérlőt az Azure Active Directoryval (Azure AD). Ha integrálja a Workspot Controlt az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Workspot-vezérlést Azure Active Directory (Azure AD) használatával. Ha integrálja az Workspot-vezérlőt az Azure AD-val, a következőket teheti:
 
-* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a Workspot-vezérlőhöz.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan jelentkezzen be a Workspot Control (egyszeri bejelentkezés [SSO]) segítségével az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen: az Azure Portalon.
+* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a Workspot vezérlőhöz.
+* Lehetővé teheti a felhasználók számára, hogy az Azure AD-fiókjaik használatával automatikusan bejelentkezzenek a Workspot vezérlőbe (egyszeri bejelentkezés [SSO]).
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Az Azure AD-vel való SaaS-alkalmazások integrációjáról az [Azure AD-ben található alkalmazásokegyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakörben talál további információt.
+Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos további információkért lásd: [egyszeri bejelentkezés az Azure ad-alkalmazásokba](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció és a Workspot Control konfigurálásához a következő dolgokra van szükség:
+Az Azure AD-integráció Workspot-vezérlővel való konfigurálásához a következőkre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/)kaphat.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-* Workspot Control egyszeri bejelentkezés t-enabled előfizetés.
+* Egy Workspot vezérlő egyszeri bejelentkezésre képes előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
 > [!Note]
-> A Workspot Control támogatja az SP által kezdeményezett és az IDP által kezdeményezett egyszeri szolgáltatót.
+> A Workspot vezérlő támogatja az SP által kezdeményezett és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
 
 
-## <a name="adding-workspot-control-from-the-gallery"></a>Workspot-vezérlő hozzáadása a gyűjteményből
+## <a name="adding-workspot-control-from-the-gallery"></a>Workspot-vezérlő hozzáadása a katalógusból
 
-A Workspot Control azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Workspot Controlt a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Workspot-vezérlés Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Workspot vezérlőt a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha a gyűjteményből szeretné hozzáadni a Workspot vezérlőt, kövesse az alábbi lépéseket:**
+**A Workspot-vezérlő a katalógusból való hozzáadásához kövesse az alábbi lépéseket:**
 
-1. Az [Azure Portal](https://portal.azure.com)bal oldali ablaktáblájában válassza az Azure **Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások lehetőséget,** és válassza **az Összes alkalmazás lehetőséget.**
+2. Lépjen a **vállalati alkalmazások** elemre, és válassza a **minden alkalmazás**lehetőséget.
 
-    ![A Vállalati alkalmazások ablaktábla](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Válassza az **Új alkalmazás** lehetőséget az ablak tetején.
+3. Az ablak tetején válassza az **új alkalmazás** lehetőséget.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a Workspot Control ( **Munkapont vezérlés**) kifejezést, válassza az eredménypanelen a **Munkapont vezérlése** elemet, majd kattintson a **Hozzáadás gombra.**
+4. A keresőmezőbe írja be a **Workspot vezérlőt**, válassza a **Workspot vezérlés** lehetőséget az eredmények panelen, majd válassza a **Hozzáadás**lehetőséget.
 
-     !["Hozzáadás a galériából" ablak](common/search-new-app.png)
+     !["Hozzáadás a katalógusból" ablak](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést a Workspot Control egy tesztfelhasználó, Britta Simon számára.
-Egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó a Workspot Control.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Workspot-vezérléssel a Britta Simon segítségével.
+Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a Workspot-vezérlőben.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Workspot-vezérlővel a következő feladatokat kell elvégeznie:
+Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásához és teszteléséhez a következő feladatokat kell elvégeznie:
 
-1. [Konfigurálja az Azure AD egyszeri bejelentkezést,](#configure-azure-ad-single-sign-on) hogy a felhasználók használhassák a funkciót.
-2. [Konfigurálja a Workspot Control egyszeri bejelentkezést](#configure-workspot-control-single-sign-on) az alkalmazás oldalon az egyszeri bejelentkezési beállítások konfigurálásához.
-3. [Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simon számára.
-4. [Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user) hogy Britta Simon használhassa az Azure AD egyszeri bejelentkezést.
-5. [Hozzon létre egy Workspot Control teszt felhasználó](#create-a-workspot-control-test-user) létrehozásához egy megfelelője Britta Simon a Workspot Control, amely kapcsolódik a felhasználó Azure AD-ábrázolása.
-6. [Tesztelje az egyszeri bejelentkezést](#test-single-sign-on) a konfiguráció működésének ellenőrzéséhez.
+1. Az [Azure ad egyszeri bejelentkezés konfigurálásával](#configure-azure-ad-single-sign-on) engedélyezheti a felhasználók számára a funkció használatát.
+2. A [Workspot-vezérlés egyszeri bejelentkezésének konfigurálásával](#configure-workspot-control-single-sign-on) konfigurálhatja az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+3. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon szolgáltatásban.
+4. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy a Britta Simon engedélyezze az Azure ad egyszeri bejelentkezés használatát.
+5. [Hozzon létre egy Workspot vezérlőt](#create-a-workspot-control-test-user) , amely a felhasználó Azure ad-képviseletéhez kapcsolódó, a Workspot-vezérlőben található Britta Simon elérési útjának létrehozását mutatja be.
+6. Az [egyszeri bejelentkezés tesztelésével](#test-single-sign-on) ellenőrizheti, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésnek a Workspot Control vezérléssel történő konfigurálásához kövesse az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásához kövesse az alábbi lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/) **Workspot Control** alkalmazásintegrációs lapján válassza az Egyszeri **bejelentkezés**lehetőséget.
+1. Az Azure Portal **Workspot vezérlő** alkalmazás-integráció lapján válassza [Azure portal](https://portal.azure.com/)az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** ablakban válassza az **SAML** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezési **módszer kiválasztása** ablakban válassza az **SAML** mód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési kiválasztó módszer ablak kijelölése](common/select-saml-option.png)
+    ![Válassza ki az egyszeri bejelentkezés kiválasztási módszerét ablakban](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** (ceruza) ikonra az **alapvető SAML-konfiguráció**eléréséhez.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** (ceruza) ikont az **alapszintű SAML-konfiguráció**eléréséhez.
 
-    ![Az "Egyszerű SAML-konfiguráció" elem ben kiemelt szerkesztési ikon](common/edit-urls.png)
+    ![Szerkesztés ikon kiemelve az "alapszintű SAML-konfiguráció"](common/edit-urls.png)
 
-4. Ha az **egyszerű SAML-konfiguráció** szakaszban az alkalmazást IDP által kezdeményezett módban szeretné konfigurálni, kövesse az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást identitásszolgáltató módban szeretné konfigurálni, kövesse az alábbi lépéseket:
 
-    ![Workspot Vezérlő tartomány és URL egyszeri bejelentkezési információk](common/idp-intiated.png)
+    ![Workspot és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    1. Az **azonosító** szövegmezőjébe írjon be egy URL-címet a következő mintában:<br/>
-    ***https://<<i> </i>INSTANCENAME>-saml.workspot.com/saml/metadata***
+    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő mintában:<br/>
+    ***https://<<i> </i>példánynév> – SAML.workspot.com/SAML/metadata***
 
-    1. A **válasz URL-címének** mezőjébe írjon be egy URL-címet a következő mintában:<br/>
-    ***https://<<i> </i>INSTANCENAME>-saml.workspot.com/saml/assertion***
+    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő mintában:<br/>
+    ***https://<<i> </i>példánynév> – SAML.workspot.com/SAML/Assertion***
 
-5. Ha az alkalmazást SP által kezdeményezett módban szeretné konfigurálni, válassza **a További URL-címek beállítása**lehetőséget.
+5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása**lehetőséget.
 
-    ![Workspot Vezérlő tartomány és URL egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
+    ![Workspot és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő mintában:<br/>
-    ***https://<<i> </i>INSTANCENAME>-saml.workspot.com/***
+    A **bejelentkezési URL** szövegmezőben adjon meg egy URL-címet a következő mintában:<br/>
+    ***https://<<i> </i>példánynév> – SAML.workspot.com/***
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Cserélje le ezeket az értékeket a tényleges azonosítóra, a válasz URL-címére és a bejelentkezési URL-re. Ezeknek az értékeknek a beszerezéséhez lépjen kapcsolatba a [Workspot Control ügyféltámogatási csapatával.](mailto:support@workspot.com) Vagy is hivatkozhat a mintákat az Azure Portal **alapszintű SAML konfigurációs** szakaszában.
+    > Ezek az értékek nem valósak. Cserélje le ezeket az értékeket a tényleges azonosítóra, a válasz URL-címére és a bejelentkezési URL-címre. Az értékek lekéréséhez lépjen kapcsolatba a [Workspot-vezérlő](mailto:support@workspot.com) ügyfélszolgálatával. Vagy a Azure Portal **alapszintű SAML-konfiguráció** szakaszának mintázatait is megtekintheti.
 
-6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában válassza a **Letöltés a** **tanúsítvány letöltéséhez (Base64)** lehetőséget a rendelkezésre álló lehetőségek közül a követelményeknek megfelelően. Mentse a számítógépre.
+6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** letöltéséhez az elérhető lehetőségek közül a követelmények szerint. Mentse a számítógépére.
 
     ![A tanúsítvány (Base64) letöltési hivatkozása](common/certificatebase64.png)
 
-7. A **Workspot-vezérlő beállítása** csoportban másolja a megfelelő URL-címeket az ön igényeinek megfelelően:
+7. A **Workspot-vezérlő beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények szerint:
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    - **Bejelentkezés i URL-címe**
+    - **Bejelentkezési URL-cím**
 
-    - **Azure Hirdetés-azonosító**
+    - **Azure AD-azonosító**
 
-    - **Kijelentkezés URL-címe**
+    - **Kijelentkezési URL-cím**
 
-### <a name="configure-workspot-control-single-sign-on"></a>A Workspot-vezérlő egyszeri bejelentkezéskonfigurálása
+### <a name="configure-workspot-control-single-sign-on"></a>Workspot-vezérlés egyszeri bejelentkezésének konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Workspot-vezérlőbe biztonsági rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Workspot Control szolgáltatásba biztonsági rendszergazdaként.
 
-2. A lap tetején lévő eszköztáron válassza a **Beállítás,** majd az **SAML lehetőséget.**
+2. A lap tetején található eszköztáron válassza a **beállítás** , majd az **SAML**lehetőséget.
 
     ![Beállítási lehetőségek](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
-3. A **Biztonsági helyességifeltétel-jelölő nyelv konfigurációja** ablakban hajtsa végre az alábbi lépéseket:
+3. A **Security Assertion Markup Language konfiguráció** ablakban hajtsa végre az alábbi lépéseket:
  
-    ![Biztonsági helyességifeltétel-jelölési nyelv konfigurációja ablak](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
+    ![Security Assertion Markup Language konfigurációs ablak](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    1. Az **Entitásazonosító** mezőbe illessze be az **Azure-hirdetési azonosítót,** amelyet az Azure Portalról másolt.
+    1. Az **entitás azonosítója** mezőben illessze be a Azure Portalból másolt **Azure ad-azonosítót** .
 
-    1. A **Signon Service URL-címe** mezőbe illessze be az Azure Portalról másolt **bejelentkezési URL-címet.**
+    1. Illessze be a Azure Portalból másolt **bejelentkezési URL-címet** a **szolgáltatás URL-címe** mezőbe.
 
-    1. A **Kijelentkezési szolgáltatás URL-címe** mezőbe illessze be az Azure Portalról másolt **kijelentkezési URL-címet.**
+    1. A **kijelentkezési szolgáltatás URL-címe** mezőben illessze be a Azure Portalból másolt **KIJELENTKEZÉSI URL-címet** .
 
-    1. Válassza a **Fájl frissítése** az X.509-tanúsítványba az Azure Portalról letöltött base-64 kódolású tanúsítványba való feltöltéshez.
+    1. Válassza ki a **fájl frissítése** elemet az X. 509 tanúsítványba való feltöltéshez a Azure Portal által letöltött base-64 kódolású tanúsítványt.
 
     1. Kattintson a **Mentés** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót az Azure Portalon.
+Ebben a szakaszban egy teszt felhasználót hoz létre a Azure Portal.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**, a **Felhasználók**, majd az Összes **felhasználó lehetőséget.**
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**, a **felhasználók**, majd az **összes felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget az ablak tetején.
+2. Válassza az **új felhasználó** lehetőséget az ablak tetején.
 
-    ![Az "Új felhasználó" gomb](common/new-user.png)
+    ![Az "új felhasználó" gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között hajtsa végre az alábbi lépéseket:
+3. A felhasználó tulajdonságainál kövesse az alábbi lépéseket:
 
-    ![A Felhasználó tulajdonságai ablak](common/user-properties.png)
+    ![A felhasználó tulajdonságai ablak](common/user-properties.png)
 
-    1. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **brittasimon@* yourcompanydomain.extension***. Írja be például a ** BrittaSimon@contosobeírását.<i> </i> com**.
+    1. A Felhasználónév mezőbe írja be a **brittasimon@* yourcompanydomain. Extension * * * **nevet** . Adja meg ** BrittaSimon@contosopéldául a következőt:.<i> </i> com**.
 
-    1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet. Ezután írja le a **Jelszó** mezőben megjelenő értéket.
+    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Ezután jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
     1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban hozzáférést biztosít Britta Simonnak a Workspot-vezérlőhöz, hogy az Azure egyszeri bejelentkezést használhassa.
+Ebben a szakaszban Simon Britta-hozzáférést biztosít a Workspot vezérlőhöz, hogy lehetővé tegye az Azure-beli egyszeri bejelentkezés használatát.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**, Az **összes alkalmazás**lehetőséget, majd **a Workspot-vezérlő t.**
+1. A Azure Portal válassza a **vállalati alkalmazások**, **minden alkalmazás**, majd a **Workspot vezérlő**elemet.
 
-    ![A Vállalati alkalmazások ablaktábla](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Workspot Control lehetőséget.**
+2. Az alkalmazások listában válassza a **Workspot vezérlő**elemet.
 
-    ![A Workspot Control hivatkozás a Alkalmazások listában](common/all-applications.png)
+    ![A Workspot vezérlő hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Válassza a **Felhasználó hozzáadása** gombot. Ezután válassza a **Felhasználók és csoportok** lehetőséget a Hozzárendelés **hozzáadása** ablakban.
+4. Válassza a **felhasználó hozzáadása** gombot. Ezután válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** ablakban.
 
-    ![A "Hozzárendelés hozzáadása" ablak](common/add-assign-user.png)
+    ![A "hozzárendelés hozzáadása" ablak](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** ablakban válassza **a Britta Simon** elemet a **Felhasználók** listából. Ezután kattintson a **Kiválasztás** elemre.
+5. A **felhasználók és csoportok** ablakban válassza a **Britta Simon** elemet a **felhasználók** listából. Ezután kattintson a **Kiválasztás** elemre.
 
-6. Ha az SAML-feltételben szerepkörértéket vár, válassza ki a felhasználó megfelelő szerepkörét a **Szerepkör kiválasztása** ablaklistájából. Ezután kattintson alul a **Kijelölés** gombra.
+6. Ha az SAML-kijelentésben bármely szerepkör értéke várható, válassza ki a megfelelő szerepkört a felhasználó számára a **szerepkör kiválasztása** ablakban lévő listából. Ezután kattintson az alul található **kijelölés** elemre.
 
-7. A **Hozzárendelés hozzáadása** ablakban válassza a **Hozzárendelés**lehetőséget.
+7. A **hozzárendelés hozzáadása** ablakban válassza a **hozzárendelés**lehetőséget.
 
-### <a name="create-a-workspot-control-test-user"></a>Workspot-vezérlő tesztfelhasználójának létrehozása
+### <a name="create-a-workspot-control-test-user"></a>Workspot-vezérlő tesztelési felhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Workspot-vezérlőbe, ki kell építeni őket a Workspot-vezérlőbe. A kiépítés manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Workspot-vezérlőbe, a Workspot vezérlőbe kell azokat kiépíteni. A kiépítés manuális feladat.
 
 **Felhasználói fiók kiépítéséhez kövesse az alábbi lépéseket:**
 
-1. Jelentkezzen be a Workspot Vezérlőbe biztonsági rendszergazdaként.
+1. Jelentkezzen be a Workspot-vezérlőbe biztonsági rendszergazdaként.
 
-2. A lap tetején lévő eszköztáron válassza a **Felhasználók,** majd a **Felhasználó hozzáadása lehetőséget.**
+2. A lap tetején található eszköztáron válassza a **felhasználók** , majd a **felhasználó hozzáadása**elemet.
 
     !["Felhasználók" beállításai](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
-3. Az **Új felhasználó hozzáadása** ablakban hajtsa végre az alábbi lépéseket:
+3. Az **új felhasználó hozzáadása** ablakban kövesse az alábbi lépéseket:
 
     !["Új felhasználó hozzáadása" ablak](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    1. A **Keresztnév** mezőbe írja be a felhasználó keresztnevét, például **Britta**.
+    1. Az **Utónév** mezőbe írja be a felhasználó utónevét (például **Britta**).
 
-    1. A **Vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például **Simon**.
+    1. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét (például **Simon**).
 
-    1. Az **E-mail** mezőbe írja be a felhasználó e-mail címét, például ** Brittasimon@contoso.<i> </i> com**.
+    1. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például ** Brittasimon@contoso:<i> </i> . com**.
 
-    1. Válassza ki a megfelelő felhasználói szerepkört a **Szerepkör** legördülő listából.
+    1. Válassza ki a megfelelő felhasználói szerepkört a **szerepkör** legördülő listából.
 
-    1. Válassza ki a megfelelő felhasználói csoportot a **Csoport** legördülő listából.
+    1. Válassza ki a megfelelő felhasználói csoportot a **csoport** legördülő listából.
 
-    1. Válassza **a Felhasználó hozzáadása**lehetőséget.
+    1. Válassza a **felhasználó hozzáadása**elemet.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban teszteljük az Azure AD egyszeri bejelentkezési konfigurációnkat a *Hozzáférési panelen*keresztül.
+Ebben a szakaszban a *hozzáférési panelen*teszteljük az Azure ad egyszeri bejelentkezési konfigurációját.
 
-Amikor a Hozzáférési panelen a **Workspot Vezérlőcsempére** kattint, automatikusan be kell jelentkeznie arra a Workspot vezérlőbe, amelyhez az SSO-t beállította. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Ha a hozzáférési panelen a **Workspot vezérlő** csempére kattint, automatikusan be kell jelentkeznie arra a Workspot-vezérlőre, amelyhez be kell ÁLLÍTANIA az SSO-t. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
-- [Egyszeri bejelentkezés az alkalmazásokba az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

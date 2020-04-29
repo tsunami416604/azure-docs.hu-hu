@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179647"
 ---
-Kövesse az adott körülményekhez szükséges lépéseket.
+Kövesse az adott körülményeknek megfelelő lépéseket.
 
-### <a name="unregister-a-connected-process-server"></a>Csatlakoztatott folyamatkiszolgáló regisztrációjának megszüntetése
+### <a name="unregister-a-connected-process-server"></a>Csatlakoztatott folyamat kiszolgálójának regisztrációjának törlése
 
-1. Hozzon létre távoli kapcsolatot a folyamatkiszolgálóval rendszergazdaként.
-2. A **Vezérlőpulton**nyissa meg a **Programok > A program eltávolítása segédprogramot.**
-3. Távolítsa el a **microsoft azure site recovery mobilitási szolgáltatás/fő célkiszolgáló programot.**
-4. Távolítsa el a **microsoft azure site recovery konfigurációs/folyamatkiszolgáló programot.**
-5. A **3.**
+1. Hozzon létre távoli kapcsolatot a Process Serverrel rendszergazdaként.
+2. A **Vezérlőpulton**nyissa meg a **programok > a program eltávolítása**elemet.
+3. Távolítsa el a programot **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló**.
+4. Távolítsa el a programot **Microsoft Azure site Recovery Configuration/Process Server**.
+5. A 3. és a 4. lépésben szereplő programok eltávolítása után távolítsa el **Microsoft Azure site Recovery konfiguráció/folyamat kiszolgáló függőségeit**.
 
-### <a name="unregister-a-disconnected-process-server"></a>Leválasztott folyamatkiszolgáló regisztrációjának megszüntetése
+### <a name="unregister-a-disconnected-process-server"></a>Leválasztott folyamat-kiszolgáló regisztrációjának törlése
 
-Csak akkor használja ezeket a lépéseket, ha nincs mód arra, hogy felélessze azt a gépet, amelyre a folyamatkiszolgáló telepítve van.
+Csak akkor használja ezeket a lépéseket, ha nincs mód arra, hogy újraéleszteni azt a gépet, amelyen a Process Server telepítve van.
 
-1. Jelentkezzen be a konfigurációs kiszolgálón rendszergazdaként.
-2. Nyisson meg egy Felügyeleti `%ProgramData%\ASR\home\svsystems\bin`parancssort, és keresse meg a tallózást.
-3. Futtassa ezt a parancsot egy vagy több folyamatkiszolgáló listájának leéséhez.
+1. Jelentkezzen be rendszergazdaként a konfigurációs kiszolgálóra.
+2. Nyisson meg egy rendszergazdai parancssort, és keresse `%ProgramData%\ASR\home\svsystems\bin`meg a következőt:.
+3. Futtassa ezt a parancsot egy vagy több folyamat-kiszolgáló listájának lekéréséhez.
 
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-    - S. Nem: a folyamatkiszolgáló sorozatszáma.
-    - IP/név: A folyamatkiszolgálót futtató számítógép IP-címe és neve.
-    - Szívverés: A folyamatkiszolgáló-gép utolsó szívverése.
-    ![Regisztráció megszüntetése](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    - S. Nem: a Process Server sorozatszáma.
+    - IP/Name: a Process Servert futtató gép IP-címe és neve.
+    - Szívverés: az utolsó szívverés a Process Server gépről.
+    ![Regisztráció törlése – cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
-4. Adja meg a regisztrációról törölni kívánt folyamatkiszolgáló sorozatszámát.
-5. A folyamatkiszolgáló regisztrációjának megszüntetése eltávolítja az összes részletet a rendszerből, és a következő üzenetet jeleníti meg: **Sikeresen regisztrált kiszolgálónév-> (kiszolgáló-IP-cím)**
+4. A regisztrálni kívánt folyamat-kiszolgáló sorozatszámának meghatározása.
+5. A folyamat-kiszolgáló regisztrációjának törlése eltávolítja a rendszer összes adatát, és a következő üzenetet jeleníti meg: a **kiszolgáló neve sikeresen megszüntetve> (kiszolgáló-IP-cím)**
 

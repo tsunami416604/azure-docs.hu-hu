@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 63996d5e654f22235ab1c243067389653bfaabd8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65798429"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Bing Web Search SDK-minták
@@ -32,8 +32,8 @@ A kívánt nyelvhez használható SDK-t az alábbi címeken érheti el.
 
 * Első lépések [Python-mintákkal](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
   * A definíciókat és a függőségeket a [Python-kódtárakban](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-websearch) találja.
-* [A Node.js minták első lépései](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-  * Lásd [még: Node.js Web Search](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesWebSearch).
+* Ismerkedés a [Node. js-mintákkal](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+  * Lásd még: [Node. js Web Search](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesWebSearch).
 * Ismerkedés a [.NET-mintákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
   * [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
   * További definíciókat és függőségeket találhat a [.NET-kódtárakban](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingWebSearch).

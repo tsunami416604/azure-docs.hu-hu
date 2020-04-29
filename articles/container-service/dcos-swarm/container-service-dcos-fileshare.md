@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Fájlmegosztás az Azure DC/OS fürthöz
+title: ELAVULT Fájlmegosztás az Azure DC/OS-fürthöz
 description: Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz az Azure Container Service-ben
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60480384"
 ---
-# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(ELAVULT) Fájlmegosztás létrehozása és csatlakoztatása tartományvezérlő-/operációsrendszer-fürthöz
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>ELAVULT Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -35,7 +35,7 @@ Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Fájlmegosztás létrehozása a Microsoft Azure-ban
 
-Mielőtt Azure-fájlmegosztást használna egy ACS DC/OS-fürtben, létre kell hoznia a tárfiókot és a fájlmegosztást. A tárat és a fájlmegosztást a következő szkripttel hozhatja létre. Frissítse a paramétereket a környezetből származóparaméterekkel.
+Mielőtt Azure-fájlmegosztást használna egy ACS DC/OS-fürtben, létre kell hoznia a tárfiókot és a fájlmegosztást. A tárat és a fájlmegosztást a következő szkripttel hozhatja létre. Frissítse a paramétereket a környezetével.
 
 ```azurecli-interactive
 # Change these four parameters

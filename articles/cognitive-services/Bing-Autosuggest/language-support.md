@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60547336"
 ---
-# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>A Bing Autosuggest API nyelvi és régiótámogatása
+# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>A Bing Autosuggest API nyelvi és területi támogatása
 
-Az alábbi lista a Bing Autosuggest API által támogatott nyelveket sorolja fel.
+Az alábbiakban a Bing Autosuggest API által támogatott nyelveket sorolja fel.
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -56,8 +56,8 @@ Az alábbi lista a Bing Autosuggest API által támogatott nyelveket sorolja fel
 | Portugál (Brazília)   | `pt-BR`|
 | Portugál (Portugália) | `pt-PT`|
 | Orosz     | `ru`          |
-| spanyol (argentínai)    | `es-AR`          |
-| spanyol (chilei)     | `es-CL`          |
+| Spanyol (Argentína)    | `es-AR`          |
+| Spanyol (Chile)     | `es-CL`          |
 | Spanyol (Mexikó)    | `es-MX`          |
 | Spanyol (Spanyolország)    | `es-ES`          |
 | Spanyol (Egyesült Államok)    | `es-US`          |
@@ -66,5 +66,5 @@ Az alábbi lista a Bing Autosuggest API által támogatott nyelveket sorolja fel
 
 ## <a name="see-also"></a>Lásd még
 
-- [Az Azure Cognitive Services dokumentációs lapja](https://docs.microsoft.com/azure/cognitive-services/)
-- [Az Azure Cognitive Services terméklapja](https://azure.microsoft.com/services/cognitive-services/)
+- [Azure Cognitive Services dokumentációs oldal](https://docs.microsoft.com/azure/cognitive-services/)
+- [Azure Cognitive Services-termék lap](https://azure.microsoft.com/services/cognitive-services/)
