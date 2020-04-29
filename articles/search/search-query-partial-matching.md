@@ -1,7 +1,7 @@
 ---
-title: Részleges kifejezések, minták és speciális karakterek
+title: Részleges feltételek, mintázatok és speciális karakterek
 titleSuffix: Azure Cognitive Search
-description: Helyettesítő karakteres, regex és előtag-lekérdezések használatával egyezés teljes vagy részleges kifejezések et az Azure Cognitive Search lekérdezési kérelem. A speciális karaktereket tartalmazó nehezen egyező minták teljes lekérdezésszintaxissal és egyéni elemzőkkel oldhatók meg.
+description: Használjon helyettesítő karaktereket, regexeket és előtag-lekérdezéseket az Azure Cognitive Search lekérdezési kérelemben szereplő teljes vagy részleges feltételek egyeztetéséhez. A speciális karaktereket tartalmazó, nehezen egyeztethető minták teljes lekérdezési szintaxissal és egyéni elemzővel oldhatók fel.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,50 +9,50 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262876"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezésű keresés és különleges karakterekkel rendelkező minták (helyettesítő karakter, regex, minták)
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezéses keresés és minták speciális karakterekkel (helyettesítő karakterek, regex, mintázatok)
 
-A *részleges kifejezésű keresés* olyan lekérdezésekre utal, amelyek részlettöredékekből állnak, ahol a teljes kifejezés helyett előfordulhat, hogy csak a kifejezés kezdete, közepe vagy vége (más néven előtag, infix vagy utótag lekérdezés). A *minta* töredékek kombinációját eredményezheti, gyakran speciális karakterekkel, például kötőjelekkel vagy perjelekkel, amelyek a lekérdezési karakterlánc részét képezik. A gyakori használati esetek közé tartozik a telefonszám, URL, személyek vagy termékkódok, illetve összetett szavak részeinek lekérdezése.
+A *részleges kifejezéses keresés* olyan kifejezésekre hivatkozik, amelyek a kifejezés töredékeit foglalják magukban, ahol a teljes kifejezés helyett csak a kezdő, a középső vagy a záró kifejezés (más néven előtag, Infix vagy utótag típusú lekérdezések) lehet. A *minták* töredékek kombinációját is tartalmazhatják, gyakran olyan speciális karakterekkel, mint a lekérdezési karakterlánc részét képező kötőjelek vagy perjelek. Gyakori használati esetek közé tartozik például egy telefonszám, URL-cím, személy vagy termékkód, vagy összetett szó részeinek lekérdezése.
 
-A részleges és a mintakeresés akkor lehet problémás, ha az index nem rendelkezik a várt formátumú kifejezésekkel. Az indexelés [lexikális elemzési fázisában](search-lucene-query-architecture.md#stage-2-lexical-analysis) (feltéve, hogy az alapértelmezett szabványos analizátor) a speciális karakterek elvesznek, az összetett és összetett karakterláncok feloszlanak, és a szóköz törlődik; amelyek mindegyike a mintalekérdezések sikertelensedéséhez vezethet, ha nem található egyezés. Például egy telefonszám `+1 (425) 703-6214` (tokenizált `"1"`, `"425"` `"703"`, `"6214"`, , ) nem `"3-62"` jelenik meg a lekérdezésben, mert az adott tartalom valójában nem létezik az indexben. 
+A részleges és a minta keresés problémát okozhat, ha az index nem rendelkezik a várt formátumú feltételekkel. Az indexelés [lexikális elemzési fázisában](search-lucene-query-architecture.md#stage-2-lexical-analysis) (feltéve, hogy az alapértelmezett standard elemző) a speciális karaktereket elveti, az összetett és az összetett karakterláncok fel vannak osztva, és a szóközök törlődnek; a minta-lekérdezések sikertelenek lehetnek, ha nem található egyezés. `+1 (425) 703-6214` Például egy telefonszám ( `"1"` `"425"`például:,, `"703"`, `"6214"`) nem fog megjelenni a `"3-62"` lekérdezésben, mert a tartalom valójában nem létezik az indexben. 
 
-A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és szükség esetén speciális karaktereket, hogy részleges kifejezéseket és mintákat egyezhessen. A megoldás alapja egy ép karakterlánc kiegészítő mezőjének létrehozása, valamint tartalommegőrző elemző használata.
+A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és a speciális karaktereket is, ha szükséges, a részleges feltételek és minták egyeztetéséhez. Ha egy további mezőt hoz létre egy ép karakterlánchoz, és egy Content-Serving Analyzert használ, a megoldás alapja.
 
 > [!TIP]
-> Ismeri a postás és rest API-kat? [Töltse le a lekérdezési példák gyűjteménye](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) lekérdezése részleges kifejezések és speciális karakterek ebben a cikkben leírt.
+> Ismeri a Poster és a REST API-kat? [Töltse le a lekérdezési példák gyűjteményét](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) , amely a jelen cikkben ismertetett részleges kifejezéseket és speciális karaktereket kérdezi le.
 
-## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Mi a részleges keresés az Azure Cognitive Search-ben?
+## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Mi a részleges keresés az Azure-ban Cognitive Search
 
-Az Azure Cognitive Search alkalmazásban a részleges keresés és a minta a következő űrlapokon érhető el:
+Az Azure Cognitive Searchban a részleges keresés és a minta az alábbi űrlapokon érhető el:
 
-+ [Előtag keresés](query-simple-syntax.md#prefix-search), `search=cap*`például , egyezés a "Cap'n Jack's Waterfront Inn" vagy a "Gacc Capital". Használhatja az egyszerű lekérdezés szintaxisát vagy a teljes Lucene lekérdezés szintaxisát az előtag kereséshez.
++ [Előtag-keresés](query-simple-syntax.md#prefix-search), például `search=cap*`a "kapitány Jack Waterfront Inn" vagy a "Gacc Capital" egyeztetése. Az egyszerű lekérdezési szintaxist vagy a teljes Lucene lekérdezési szintaxist használhatja az előtag-kereséshez.
 
-+ [Helyettesítő karakteres keresés](query-lucene-syntax.md#bkmk_wildcard) vagy [reguláris kifejezések,](query-lucene-syntax.md#bkmk_regex) amelyek egy beágyazott karakterlánc mintáját vagy részeit keresik. A helyettesítő karakter és a reguláris kifejezések teljes Lucene szintaxist igényelnek. Az utótagok és az indexlekérdezések reguláris kifejezésként vannak megfogalmazva.
++ [Helyettesítő karakteres keresés](query-lucene-syntax.md#bkmk_wildcard) vagy [reguláris kifejezés](query-lucene-syntax.md#bkmk_regex) , amely egy beágyazott sztring mintázatát vagy részeit keresi. A helyettesítő karaktereknek és a reguláris kifejezéseknek a teljes Lucene szintaxissal kell rendelkezniük. Az utótag és az index lekérdezése reguláris kifejezésként van kialakítva.
 
-  Néhány példa a részleges kifejezéskeresésre: a következők: Utótag-lekérdezés esetén az "alfanumerikus" kifejezés sel kapcsolatban helyettesítő`search=/.*numeric.*/`keresési ( ) használatával kereshet egyezést. Belső karaktereket, például URL-töredékeket tartalmazó részleges kifejezés esetén előfordulhat, hogy escape karaktereket kell hozzáadnia. A JSON-ban `/` az előremutató per `\`eltávozik egy hátrafelé irányuló perjellel. Így `search=/.*microsoft.com\/azure\/.*/` a "microsoft.com/azure/" URL-töredék szintaxisa.
+  Néhány példa a részleges kifejezéses keresésre: az alábbiakat tartalmazza. Az "alfanumerikus" kifejezéssel megadott utótag-lekérdezés esetében helyettesítő karakteres keresést (`search=/.*numeric.*/`) kell használni a találatok kereséséhez. A belső karaktereket (például egy URL-töredéket) tartalmazó részleges kifejezéshez szükség lehet escape-karakterek hozzáadására. A JSON-ban a továbbítási perjelek `/` egy visszafelé perjelet `\`eredményeznek. `search=/.*microsoft.com\/azure\/.*/` Ennek megfelelően a "Microsoft.com/Azure/" URL-töredék szintaxisa.
 
-Mint megjegyezte, a fentiek mindegyike megköveteli, hogy az index olyan formátumban tartalmazkarakterláncokat, amelyek elősegítik a mintaegyeztetést, amelyet a standard analizátor nem biztosít. A cikkben ismertetett lépéseket követve biztosíthatja, hogy a forgatókönyvek támogatásához szükséges tartalom létezik.
+Ahogy azt a fentiekben is említettük, a fentiek mindegyike megköveteli, hogy az index a minta egyeztetését eredményező sztringeket tartalmazzon, amelyeket a standard Analyzer nem biztosít. A cikkben ismertetett lépéseket követve gondoskodhat arról, hogy a szükséges tartalom létezik az ilyen forgatókönyvek támogatásához.
 
-## <a name="solving-partialpattern-search-problems"></a>Részleges/mintakeresési problémák megoldása
+## <a name="solving-partialpattern-search-problems"></a>Részleges/minta keresési problémák megoldása
 
-Ha töredékeken vagy mintákon vagy speciális karaktereken kell keresnie, felülbírálhatja az alapértelmezett elemzőt egy egyszerűbb tokenizálási szabályok szerint működő egyéni analizátorral, megtartva az egész karakterláncot. Egy lépést hátra, a megközelítés így néz ki:
+Ha töredékekre vagy mintázatokra vagy speciális karakterekre kell keresnie, felülbírálhatja az alapértelmezett elemzőt egy olyan egyéni elemzővel, amely egyszerűbb jogkivonatok létrehozása-szabályok alatt működik, megőrizve a teljes karakterláncot. A lépés a következőképpen néz ki:
 
-+ Mező definiálása a karakterlánc ép verziójának tárolásához (feltéve, hogy elemezni és nem elemzett szöveget szeretne)
-+ Válasszon előre definiált analizátort, vagy definiáljon egyéni analizátort egy nem elemzett ép karakterlánc kimenetéhez
-+ Egyéni elemző hozzárendelése a mezőhöz
++ Adjon meg egy mezőt, amely a sztring érintetlen verzióját tárolja (feltéve, hogy elemezni és nem elemzett szöveget kíván használni)
++ Válasszon egy előre definiált analizátort, vagy Definiáljon egy egyéni elemzőt egy nem elemzett inép karakterlánc kimenetéhez
++ Az egyéni elemző kiosztása a mezőhöz
 + Az index létrehozása és tesztelése
 
 > [!TIP]
-> Az analizátorok kiértékelése egy iteratív folyamat, amely gyakori index-újraépítést igényel. Ezt a lépést megkönnyítheti a Postman, a [Create Index,](https://docs.microsoft.com/rest/api/searchservice/create-index) [Delete Index,](https://docs.microsoft.com/rest/api/searchservice/delete-index)[Load Documents](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)és [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents)REST API-k használatával. A Dokumentumok betöltése mezőben a kérelemtörzsnek tartalmaznia kell egy kis reprezentatív adatkészletet, amelyet tesztelni szeretne (például egy telefonszámokkal vagy termékkódokkal rendelkező mezővel). Ezekkel az API-kkal ugyanabban a Postman-gyűjteményben gyorsan végighaladhat ezeken a lépéseken.
+> Az elemzők kiértékelése olyan iterációs folyamat, amely gyakori index-újraépítést igényel. Ezt a lépést a Poster, a REST API-k [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index), az indexek [törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index), a[dokumentumok betöltése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)és a dokumentumok [keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)során egyszerűbbé teheti. A betöltési dokumentumok esetében a kérelem törzsének tartalmaznia kell egy kis reprezentatív adatkészletet, amelyet szeretne tesztelni (például egy telefonszámot vagy Termékkód számot tartalmazó mező). Ha ezekkel az API-kkal ugyanabban a Poster-gyűjteményben vannak, gyorsan elvégezheti ezeket a lépéseket.
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Ismétlődő mezők különböző forgatókönyvekhez
 
-Az elemzők mezőnként vannak hozzárendelve, ami azt jelenti, hogy mezőket hozhat létre az indexben a különböző forgatókönyvekhez való optimalizáláshoz. Pontosabban, lehet, hogy meghatározza a "featureCode" és a "featureCodeRegex", hogy támogassa a rendszeres teljes szöveges keresés az első, és a speciális minta megfelelő a második.
+Az elemzők kiosztása egy mező alapján történik, ami azt jelenti, hogy az indexben mezőket hozhat létre a különböző forgatókönyvek optimalizálásához. Pontosabban megadhatja a "featureCode" és a "featureCodeRegex" karakterláncot, hogy támogassa a normál teljes szöveges keresést az első, és a speciális minta egyeztetését a másodikban.
 
 ```json
 {
@@ -71,22 +71,22 @@ Az elemzők mezőnként vannak hozzárendelve, ami azt jelenti, hogy mezőket ho
 },
 ```
 
-## <a name="choose-an-analyzer"></a>Válasszon egy elemzőt
+## <a name="choose-an-analyzer"></a>Elemző kiválasztása
 
-Amikor olyan elemzőt választ, amely teljes időtartamú jogkivonatokat hoz létre, a következő elemzők gyakori a következők:
+Ha olyan elemzőt választ ki, amely teljes körű jogkivonatokat állít elő, a következő elemzők gyakoriak:
 
-| Elemző | Viselkedésmódok |
+| Analyzer | Viselkedés |
 |----------|-----------|
-| [nyelvi elemzők](index-add-language-analyzers.md) | Megőrzi a kötőjeleket összetett szavakban vagy karakterláncokban, magánhangzómutációkban és igeformákban. Ha a lekérdezési minták kötőjeleket is tartalmaznak, elegendő lehet egy nyelvi elemző használata. |
-| [Kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | A teljes mező tartalma egyetlen kifejezésként tokenálódik. |
-| [Szóköz](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Csak a fehér tereken válik el. A kötőjeleket vagy más karaktereket tartalmazó kifejezéseket a csomag egyetlen jogkivonatként kezeli. |
-| [egyéni elemző](index-add-custom-analyzers.md) | (ajánlott) Egyéni analizátor létrehozása lehetővé teszi, hogy adja meg a tokenizer és a token szűrő. Az előző analizátorokat a hogy-is kell használni. Az egyéni analizátor lehetővé teszi, hogy válassza ki, mely tokenizers és token szűrők használata. <br><br>Az ajánlott kombináció a [kisméretű tokenszűrővel](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)rendelkező [tokenizer kulcsszó.](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) Önmagában az előre definiált [kulcsszóelemző](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nem kisbetűs kisbetűs szöveget, ami a lekérdezések sikertelensítéséhez vezethet. Az egyéni analizátor egy mechanizmust biztosít a kisbetűs jogkivonat-szűrő hozzáadásához. |
+| [nyelvi elemzők](index-add-language-analyzers.md) | A megőrzi a kötőjeleket összetett szavakban vagy sztringekben, magánhangzó-mutációkban és művelet-űrlapokban. Ha a lekérdezési minták kötőjeleket tartalmaznak, a nyelvi elemző használata elegendő lehet. |
+| [kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | A teljes mező tartalma egyetlen kifejezésként van jogkivonat. |
+| [szóköz](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Csak szóközöket választ ki. A kötőjeleket vagy más karaktereket tartalmazó kifejezéseket egyetlen jogkivonatként kezeli a rendszer. |
+| [Egyéni analizátor](index-add-custom-analyzers.md) | ajánlott Az egyéni elemző létrehozása lehetővé teszi a tokenizer és a jogkivonat-szűrő megadását is. A korábbi elemzőket a következőképpen kell használni:. Az egyéni elemző lehetővé teszi, hogy kiválassza a használni kívánt tokenizers és jogkivonat-szűrőket. <br><br>Az ajánlott kombináció a [tokenizer kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) , amely egy [kisbetűs jogkivonat-szűrővel](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)rendelkezik. Önmagában az előre definiált [kulcsszó-elemző](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nem kisbetűs, így a lekérdezések sikertelenek lehetnek. Az egyéni elemző egy mechanizmust biztosít az alsó szintű jogkivonat-szűrő hozzáadásához. |
 
-Ha egy webes API-teszteszközt használ, például postmant, hozzáadhatja a [Test Analyzer REST-hívást](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a tokenizált kimenet vizsgálatához.
+Ha webes API-teszt eszközt (például Poster) használ, hozzáadhatja a [test Analyzer-Rest-hívást](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a jogkivonat-kimenet vizsgálatához.
 
-A munkához rendelkeznie kell egy meglévő indexszel. Adott egy meglévő index és egy mező, amely kötőjelek vagy részleges kifejezések, kipróbálhatja a különböző elemzők több mint konkrét kifejezéseket, hogy milyen jogkivonatok bocsátanak ki.  
+A használatához rendelkeznie kell egy meglévő indexszel. A meglévő indexek és a kötőjeleket vagy a részleges kifejezéseket tartalmazó mezők esetében különböző elemzőket lehet kipróbálni a megadott feltételek alapján, hogy megtudja, milyen jogkivonatok vannak kibocsátva.  
 
-1. Ellenőrizze a Standard analizátor, hogy hogyan kifejezések tokenized alapértelmezés szerint.
+1. Tekintse meg a standard Analyzert, és tekintse meg, hogy alapértelmezés szerint a rendszer milyen feltételekkel rendelkezik.
 
    ```json
    {
@@ -95,7 +95,7 @@ A munkához rendelkeznie kell egy meglévő indexszel. Adott egy meglévő index
    }
     ```
 
-1. Értékelje ki a választ, hogy lássa, hogyan tokenized a szöveg et az indexen belül. Figyelje meg, hogy az egyes kifejezéseket hogyan lehet kisbetűsen felbontani és felbontani.
+1. Értékelje ki a választ, és tekintse meg, hogy a szöveg hogyan legyen jogkivonatban az indexen belül. Figyelje meg, hogy az egyes kifejezések kisebbek és feltörtek.
 
     ```json
     {
@@ -121,7 +121,7 @@ A munkához rendelkeznie kell egy meglévő indexszel. Adott egy meglévő index
         ]
     }
     ```
-1. Módosítsa a kérelmet `whitespace` `keyword` a vagy analizátor használatára:
+1. Módosítsa a kérelmet a vagy `whitespace` `keyword` a Analyzer használatára:
 
     ```json
     {
@@ -130,7 +130,7 @@ A munkához rendelkeznie kell egy meglévő indexszel. Adott egy meglévő index
     }
     ```
 
-1. Most a válasz egyetlen jogkivonatból áll, nagybetűs, a kötőjelek a karakterlánc részeként megmaradnak. Ha egy mintában vagy részleges kifejezésben kell keresnie, a lekérdezési motor nak megvan az alapja az egyezés megtalálásához.
+1. A válasz mostantól egyetlen tokenből áll, amely a karakterlánc részeként megőrzött kötőjelekkel van ellátva. Ha egy mintázatra vagy egy részleges kifejezésre kell keresnie, a lekérdezési motor mostantól a találatok megtalálásának alapja.
 
 
     ```json
@@ -147,17 +147,17 @@ A munkához rendelkeznie kell egy meglévő indexszel. Adott egy meglévő index
     }
     ```
 > [!Important]
-> Ne feledje, hogy a lekérdezéselemzők gyakran kisbetűs kifejezéseket a keresési kifejezésben a lekérdezési fa létrehozásakor. Ha olyan elemzőt használ, amely nem kisbetűs szövegbevitelt használ, és nem kapja meg a várt eredményeket, ez lehet az oka. A megoldás egy kisméretű jogkivonat-szűrő hozzáadása, az alábbi "Egyéni elemzők használata" című szakaszban leírtak szerint.
+> Ügyeljen arra, hogy a lekérdezés-elemzők a lekérdezési fa létrehozásakor gyakran alacsonyabb eseti kifejezéseket adjanak a keresési kifejezésekben. Ha olyan elemzőt használ, amely nem a kis-és nagybetűket használja, és nem várt eredményeket kap, ez az oka lehet. A megoldás egy kisméretű jogkivonat-szűrő hozzáadása az alábbi, "egyéni elemzők használata" című szakaszban leírtak szerint.
 
 ## <a name="configure-an-analyzer"></a>Analizátor konfigurálása
  
-Akár analizátorokat értékel, akár egy adott konfigurációval halad előre, meg kell adnia az analizátort a meződefiníción, és esetleg magát az analizátort kell konfigurálnia, ha nem beépített analizátort használ. Az elemzők cseréjekor általában újra kell építenie az indexet (drop, recreate és reload). 
+Függetlenül attól, hogy az elemzőket kiértékeli, vagy egy adott konfigurációval halad előre, meg kell adnia az analizátort a mező definíciójában, és saját maga is konfigurálnia kell, ha nem beépített elemzőt használ. Az elemzők cseréjekor általában újra kell építeni az indexet (eldobás, újbóli létrehozás és újratöltés). 
 
-### <a name="use-built-in-analyzers"></a>Beépített analizátorok használata
+### <a name="use-built-in-analyzers"></a>Beépített elemzők használata
 
-A beépített vagy előre definiált elemzők név szerint `analyzer` megadhatók egy meződefiníció tulajdonságán, és nincs szükség további konfigurációra az indexben. A következő példa bemutatja, `whitespace` hogyan kell beállítani az analizátor egy mezőben. 
+A beépített vagy előre definiált elemzők név szerint adhatók meg egy `analyzer` mező definíciójának tulajdonságában, és az indexben nem szükséges további konfiguráció. Az alábbi példa bemutatja, hogyan állíthatja be az `whitespace` elemzőt egy mezőre. 
 
-További forgatókönyveket és további információarról más beépített elemzők, lásd: [Előre definiált elemzők lista](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+További forgatókönyvek és további információ a beépített elemzők használatáról: [előre definiált elemzők listája](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {
@@ -172,14 +172,14 @@ További forgatókönyveket és további információarról más beépített ele
 
 ### <a name="use-custom-analyzers"></a>Egyéni elemzők használata
 
-Ha [egyéni analizátort](index-add-custom-analyzers.md)használ, definiálja azt az indexben a tokenizer, token szűrő, a lehetséges konfigurációs beállítások felhasználó által definiált kombinációjával. Ezután hivatkozzon egy meződefinícióra, ugyanúgy, mint egy beépített elemzőre.
+Ha [Egyéni elemzőt](index-add-custom-analyzers.md)használ, definiálja az indexben a tokenizer felhasználó által definiált kombinációjában, amely a lehetséges konfigurációs beállításokkal rendelkezik. Ezután hivatkozzon egy mező-definícióra, ugyanúgy, mint a beépített elemző.
 
-Ha a cél a teljes távú tokenizálás, egy egyéni analizátor, amely egy **kulcsszó tokenizer** és **kis-nagybetűs token szűrő** ajánlott.
+Ha a cél a teljes távú jogkivonatok létrehozása, a **kulcsszó tokenizer** és **kisbetűs jogkivonat-szűrőből** álló egyéni analizátor ajánlott.
 
-+ A tokenizer kulcsszó egyetlen jogkivonatot hoz létre a mező teljes tartalmához.
-+ A kisbetűs tokenszűrő a kisbetűket kisbetűs szöveggé alakítja át. A lekérdezéselemzők általában kisbetűs, nagybetűs szövegbevitelt tartalmaznak. Az alsó burkolat homogenizálja a bemeneteket a tokenizált kifejezésekkel.
++ A tokenizer kulcsszó egyetlen jogkivonatot hoz létre egy mező teljes tartalmához.
++ A kisbetűs jogkivonat szűrője a nagybetűket kis méretű szöveggé alakítja át. A lekérdezés-elemzők általában kisbetűsek a nagybetűs szöveg bemenetei. Az alsó szintű ház homogenizálja a bemeneteket a jogkivonatos feltételekkel.
 
-A következő példa egy egyéni elemzőt mutat be, amely a kulcsjogkivonat-szűrőt és egy kisbetűs jogkivonat-szűrőt biztosít.
+Az alábbi példa egy egyéni elemzőt mutat be, amely a kulcsszó tokenizer és egy kisbetűs jogkivonat-szűrőt biztosít.
 
 ```json
 {
@@ -211,35 +211,35 @@ A következő példa egy egyéni elemzőt mutat be, amely a kulcsjogkivonat-szű
 ```
 
 > [!NOTE]
-> A `keyword_v2` tokenizer `lowercase` és a jogkivonat-szűrő ismert a rendszer, és az alapértelmezett konfigurációk használatával, ezért hivatkozhat rájuk név szerint anélkül, hogy először meg kell határoznia őket.
+> A `keyword_v2` rendszer a `lowercase` tokenizer és a jogkivonat-szűrőt ismeri a rendszeren, és az alapértelmezett konfigurációját használja, ezért a név alapján hivatkozhat rájuk, anélkül, hogy először kellene megadnia őket.
 
 ## <a name="build-and-test"></a>Buildelés és tesztelés
 
-Miután definiált egy indexet a forgatókönyvet támogató elemzőkkel és meződefiníciókkal, töltsön be olyan dokumentumokat, amelyek reprezentatív karakterláncokkal rendelkeznek, így tesztelheti a részleges karakterlánc-lekérdezéseket. 
+Miután meghatározta a forgatókönyvét támogató elemzőket és mezőértékeket tartalmazó indexet, betöltheti a reprezentatív karakterláncokat tartalmazó dokumentumokat, hogy tesztelje a részleges karakterlánc-lekérdezéseket. 
 
-Az előző szakaszok magyarázták a logikát. Ez a szakasz végighalad az egyes API-kon, amelyeket meg kell hívnia a megoldás tesztelésekén. Mint korábban említettük, ha egy interaktív webes teszteszköz, mint a Postman, akkor végre ezeket a feladatokat gyorsan.
+Az előző szakaszban a logikát ismertetjük. Ez a szakasz végigvezeti az egyes API-k lépésein, amelyeket a megoldás tesztelésekor kell meghívnia. Ahogy korábban már említettük, ha interaktív webes tesztelési eszközt (például Poster) használ, gyorsan elvégezheti ezeket a feladatokat.
 
-+ [Az Index törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) eltávolítja az azonos nevű meglévő indexet, így újra létrehozhatja azt.
++ Az [index törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) eltávolítja az azonos nevű meglévő indexet, hogy újra létre lehessen hozni.
 
-+ [Az Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) létrehozza a keresési szolgáltatás indexstruktúráját, beleértve az analizátor definícióit és az analizátor specifikációval rendelkező mezőket.
++ A [create index](https://docs.microsoft.com/rest/api/searchservice/create-index) létrehozza az index struktúrát a keresési szolgáltatásban, beleértve az analizátor-definíciókat és a Analyzer-specifikációval rendelkező mezőket.
 
-+ [A Dokumentumok betöltése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) importálja az indexével megegyező szerkezetű dokumentumokat, valamint a kereshető tartalmat. Ezt a lépést követően az index készen áll a lekérdezésre vagy tesztelésre.
++ A [betöltési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a dokumentumokat a tárgymutatóval megegyező struktúrával, valamint kereshető tartalommal importálják. A lépés után az index készen áll a lekérdezésre vagy a tesztelésre.
 
-+ [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) vezették be [Válasszon egy elemző](#choose-an-analyzer). Tesztelje az index néhány karakterláncát különböző elemzők használatával, hogy megértse, hogyan tokenálodtak a kifejezések.
++ A [test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) bemutatkozott a [válasszon egy elemzőt](#choose-an-analyzer). Tesztelje az index egyes karakterláncait különböző elemzők használatával, hogy megtudja, hogyan történik a feltételek tokenje.
 
-+ [A Keresési dokumentumok dokumentum a](https://docs.microsoft.com/rest/api/searchservice/search-documents) lekérdezési kérelmek létrehozásának módját ismerteti egyszerű [szintaxissal](query-simple-syntax.md) vagy [teljes Lucene szintaxissal](query-lucene-syntax.md) helyettesítő és reguláris kifejezésekhez.
++ A [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) során megtudhatja, hogyan hozhat létre egy lekérdezési kérést [egyszerű szintaxissal](query-simple-syntax.md) vagy [teljes Lucene szintaxissal](query-lucene-syntax.md) helyettesítő karakterekkel és reguláris kifejezésekkel.
 
-  Részleges lekérdezések esetén, például a "3-6214" lekérdezésével a "+1 (425) 703-6214" egyezésének megkereséséhez használhatja az egyszerű szintaxist: `search=3-6214&queryType=simple`.
+  A részleges lejáratú lekérdezéseknél, például a "3-6214" lekérdezésben a "+ 1 (425) 703-6214" kifejezésre való kereséshez használhatja az egyszerű szintaxist: `search=3-6214&queryType=simple`.
 
-  Az infix- és utótag-lekérdezések, például a "numerikus" lekérdezése az "alfanumerikus" egyezés kereséséhez használja a teljes Lucene szintaxist és egy reguláris kifejezést:`search=/.*num.*/&queryType=full`
+  A Infix és az utótag lekérdezéséhez, például a "NUM" vagy a "numerikus" lekérdezéshez az "alfanumerikus" kifejezéshez használja a teljes Lucene szintaxist és egy reguláris kifejezést:`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>Tippek és ajánlott eljárások
 
 ### <a name="tune-query-performance"></a>Lekérdezési teljesítmény hangolása
 
-Ha az ajánlott konfiguráció, amely tartalmazza a keyword_v2 jogkivonatoló és a kis-tokentszűrő, előfordulhat, hogy a lekérdezési teljesítmény csökkenése miatt a további jogkivonat-szűrő feldolgozása a meglévő jogkivonatok az indexben. 
+Ha a keyword_v2 tokenizer és a kisbetűs jogkivonat-szűrőt tartalmazó ajánlott konfigurációt alkalmazza, a lekérdezés teljesítményének csökkenése miatt előfordulhat, hogy az indexben már meglévő jogkivonatok esetében a további jogkivonat-szűrő feldolgozása történik. 
 
-A következő példa egy [EdgeNGramTokenFilter-t](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) ad hozzá, hogy az előtag gyorsabb legyen. További tokenek jönnek létre a 2-25 karakter kombinációk, amelyek magukban foglalják a karaktereket: (nem csak MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/S, MSFT/SQ, MSFT/SQL). Képzelheti el, hogy a további tokenizálás nagyobb indexet eredményez.
+Az alábbi példa egy [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) hozzáadásával teszi lehetővé, hogy az előtag gyorsabban illeszkedjen. További tokenek jönnek létre a 2-25 karakteres kombinációkban, amelyek karaktereket tartalmaznak: (nem csak MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/SQ, MSFT/SQL). Az is elképzelhető, hogy a további jogkivonatok létrehozása nagyobb indexet eredményeznek.
 
 ```json
 {
@@ -278,13 +278,13 @@ A következő példa egy [EdgeNGramTokenFilter-t](https://lucene.apache.org/core
 ]
 ```
 
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Különböző elemzők használata indexeléshez és lekérdezésfeldolgozáshoz
+### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Különböző elemzők használata az indexeléshez és a lekérdezések feldolgozásához
 
-Az elemzők et indexelés és a lekérdezés végrehajtása során hívják meg. Gyakori, hogy ugyanazt az analizátort használja mindkét, de konfigurálhatja az egyéni elemzők minden számítási feladatokhoz. Az analizátor-felülírások egy `analyzers` szakasz [indexdefiníciójában](https://docs.microsoft.com/rest/api/searchservice/create-index) vannak megadva, majd adott mezőkre hivatkoznak. 
+Az adatelemzők az indexelés során és a lekérdezés végrehajtása során hívhatók. Gyakran ugyanazt az elemzőt használja mindkettőhöz, de az egyes munkaterhelésekhez egyéni elemzőket is beállíthat. Az elemző felülbírálások egy `analyzers` szakasz [index definíciójában](https://docs.microsoft.com/rest/api/searchservice/create-index) vannak megadva, majd adott mezőkre hivatkoznak. 
 
-Ha az egyéni elemzés csak az indexelés során szükséges, alkalmazhatja az egyéni elemző csak indexelés, és továbbra is a szabványos Lucene-elemző (vagy más elemző) a lekérdezések.
+Ha az indexelés során csak egyéni elemzésre van szükség, az egyéni elemzőt alkalmazhatja az indexelésre, és továbbra is használhatja a standard Lucene Analyzert (vagy más elemzőt) a lekérdezésekhez.
 
-A szerepkör-specifikus elemzés megadásához mindegyikhez beállíthat tulajdonságokat `indexAnalyzer` `searchAnalyzer` a mezőben, az alapértelmezett `analyzer` tulajdonságot és nem azt.
+A szerepkör-specifikus elemzés megadásához megadhatja a mező tulajdonságait az alapértelmezett `indexAnalyzer` `searchAnalyzer` `analyzer` tulajdonság helyett az egyes beállításokhoz.
 
 ```json
 "name": "featureCode",
@@ -294,9 +294,9 @@ A szerepkör-specifikus elemzés megadásához mindegyikhez beállíthat tulajdo
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk bemutatja, hogy az elemzők hogyan járulnak hozzá a lekérdezési problémákhoz és a lekérdezési problémák megoldásához. Következő lépésként tekintse meg közelebbről az indexelésre és a lekérdezésfeldolgozásra gyakorolt analizátorhatást. Különösen fontolja meg a Szöveg elemzése API-t a tokenizált kimenet visszaadására, hogy pontosan láthassa, mit hoz létre egy elemző az indexhez.
+Ez a cikk azt ismerteti, hogyan járulnak hozzá az elemzők a problémák lekérdezéséhez és a lekérdezési problémák megoldásához. A következő lépésként tekintse meg az analizátorra gyakorolt hatást az indexeléssel és a lekérdezések feldolgozásával kapcsolatban. Különösen érdemes lehet a Retext API-t használni a jogkivonat-kimenet visszaküldéséhez, hogy pontosan lássuk, mit hoz létre az elemző az indexhez.
 
 + [Nyelvi elemzők](search-language-support.md)
-+ [Elemzőelemzők szövegfeldolgozáshoz az Azure Cognitive Search szolgáltatásban](search-analyzers.md)
-+ [Szöveg API elemzése (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Az Azure Cognitive Searchban való szövegszerkesztés elemzői](search-analyzers.md)
++ [Szöveges API elemzése (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
 + [A teljes szöveges keresés működése (lekérdezési architektúra)](search-lucene-query-architecture.md)

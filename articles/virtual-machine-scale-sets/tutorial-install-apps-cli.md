@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Alkalmazások telepítése méretezési készletben az Azure CLI-vel
+title: Oktatóanyag – alkalmazások telepítése egy méretezési csoportba az Azure CLI-vel
 description: Megismerheti, hogyan telepíthet alkalmazásokat virtuálisgép-méretezési csoportokban az egyéni szkriptbővítménnyel és az Azure CLI-vel
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 6faaa3bc5149d4245d026e6f91e358993e15421d
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011216"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure CLI-vel
@@ -23,7 +23,7 @@ Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-pé
 > * Az egyéni Azure-szkriptek bővítményének használata
 > * Egy méretezési csoporton futtatott alkalmazás frissítése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -52,7 +52,7 @@ Az aktuális parancshéjban hozzon létre egy *customConfig.json* nevű fájlt, 
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -122,7 +122,7 @@ Ne zárja be a böngészőt, hogy megtekinthesse a frissített verziót a követ
 
 
 ## <a name="update-app-deployment"></a>Alkalmazástelepítés frissítése
-A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Amikor a méretezési készlet et egy `--upgrade-policy-mode` előző lépésben hozták létre, a *beállítás automatikus*lett állítva. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
+A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Ha a méretezési csoport egy korábbi lépésben lett létrehozva, `--upgrade-policy-mode` a beállítás értéke *automatikus*. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
 
 Az aktuális parancshéjban hozzon létre egy *customConfigv2.json* nevű fájlt, és illessze bele a következő konfigurációt. A definíció az alkalmazástelepítési szkript frissített (*v2*) verzióját futtatja:
 
@@ -151,7 +151,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és annak összes erőforrását az [az csoport törlésével.](/cli/azure/group) A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

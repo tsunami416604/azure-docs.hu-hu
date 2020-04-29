@@ -1,6 +1,6 @@
 ---
-title: Az Azure CDN-tartalom korlátozása ország/régió szerint | Microsoft dokumentumok
-description: Ismerje meg, hogyan korlátozhatja a hozzáférést ország/régió az Azure CDN-tartalomhoz a geo-szűrési funkció használatával.
+title: Azure CDN tartalom korlátozása ország/régió szerint | Microsoft Docs
+description: Megtudhatja, hogyan korlátozhatja az ország/régió hozzáférését a Azure CDN tartalomhoz a Geo-szűrés funkció használatával.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,100 +15,100 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: allensu
 ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260156"
 ---
-# <a name="restrict-azure-cdn-content-by-countryregion"></a>Az Azure CDN-tartalom korlátozása ország/régió szerint
+# <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN tartalmának korlátozása ország/régió szerint
 
 ## <a name="overview"></a>Áttekintés
-Amikor egy felhasználó kéri a tartalmat, alapértelmezés szerint a rendszer a kérést küldő felhasználó helyétől függetlenül kézbesíti a tartalmat. Bizonyos esetekben azonban ország/régió szerint korlátozhatja a tartalomhoz való hozzáférést. A *geoszűrési* funkcióval szabályokat hozhat létre a CDN-végpont adott elérési útjaira, hogy engedélyezze vagy letiltsa a tartalmat a kiválasztott országokban/régiókban.
+Amikor egy felhasználó a tartalmat kéri, a rendszer alapértelmezés szerint a tartalmat is kézbesíti, függetlenül attól, hogy melyik felhasználó a kérést. Bizonyos esetekben azonban előfordulhat, hogy az ország/régió alapján korlátozni szeretné a tartalmakhoz való hozzáférést. A *geo-szűrés* funkcióval szabályokat hozhat létre a CDN-végponton megadott elérési utakon, így engedélyezheti vagy letilthatja a tartalmat a kiválasztott országokban/régiókban.
 
 > [!IMPORTANT]
-> **A Microsoft-profilokból származó Azure CDN Standard** nem támogatja az elérési út alapú geoszűrést.
+> **A Microsoft-profilokból Azure CDN standard** nem támogatja az elérésiút-alapú földrajzi szűrést.
 > 
 
-## <a name="standard-profiles"></a>Szabványos profilok
-Ebben a szakaszban az **Azure CDN Standard az Akamai** és **az Azure CDN Standard** csak a Verizon-profilok. 
+## <a name="standard-profiles"></a>Standard profilok
+Az ebben a szakaszban ismertetett eljárások a Akamai és a **Azure CDN standard szintű** , csak a Verizon-profilokból származó **Azure CDN szabványokra** vonatkoznak. 
 
-A **Verizon-profilokból származó Azure CDN Premium** esetén a Geoszűrés aktiválásához a **Kezelés** portált kell használnia. További információ: [Azure CDN Premium from Verizon profiles](#azure-cdn-premium-from-verizon-profiles).
+A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrés aktiválásához a **Manage** Portalt kell használnia. További információ: [Azure CDN Premium from Verizon Profiles](#azure-cdn-premium-from-verizon-profiles).
 
-### <a name="define-the-directory-path"></a>A könyvtár elérési útjának meghatározása
-A geoszűrési funkció eléréséhez jelölje ki a CDN-végpontot a portálon belül, majd válassza a bal oldali menü BEÁLLÍTÁSOK csoportbeállítások **parancsát.** 
+### <a name="define-the-directory-path"></a>A könyvtár elérési útjának megadása
+A Geo-szűrés funkció eléréséhez válassza ki a CDN-végpontot a portálon belül, majd válassza a **geo-szűrés** lehetőséget a bal oldali menü beállítások területén. 
 
-![Geoszűrő szabvány](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![Geo-szűrési standard](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
-A **PATH** mezőben adja meg annak a helynek a relatív elérési útját, ahhoz a helyhez, ahhoz a helyhez, ahhoz a helyhez, ahhoz a helyhez, ahhoz a helyhez, ahhoz a helyhez, ahhoz a helyhez, ahhoz a helyhez, ahhoz a helyhez 
+Az **elérési út** mezőben határozza meg annak a helynek a relatív elérési útját, amelyhez a felhasználók engedélyezik vagy megtagadják a hozzáférést. 
 
-A címtár elérési útjainak megadásával (például */pictures/*) alkalmazhatja az összes fájlra vonatkozó geoszűrést, vagy kiválaszthatja az adott mappákat. Egyetlen fájlra (például */pictures/city.png)* is alkalmazhat geoszűrést. Több szabály is megengedett; a szabály megadása után egy üres sor jelenik meg a következő szabály beírásához.
+A földrajzi szűrést alkalmazhatja az összes fájlhoz egy továbbítási perjel (/) használatával, vagy kiválaszthat meghatározott mappákat a könyvtár elérési útjának megadásával (például */Pictures/*). A földrajzi szűrést egyetlen fájlba is alkalmazhatja (például */Pictures/City.png*). Több szabály is engedélyezett; a szabály megadása után egy üres sor jelenik meg, amely megadja a következő szabályt.
 
-Az alábbi könyvtárelérési útszűrők mindegyike például érvényes:   
+A következő könyvtár-elérésiút-szűrők például érvényesek:   
 */*                                 
-*/Fotók/*     
-*/Fotók/Strasbourg/*     
-*/Fotók/Strasbourg/város.png*
+*/Fotó/*     
+*/Photos/Strasbourg/*     
+*/Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>A művelet típusának meghatározása
 
-A **MŰVELET** listában válassza az **Engedélyezés** vagy **a Letiltás**lehetőséget: 
+A **művelet** listából válassza az **Engedélyezés** vagy a **Letiltás**lehetőséget: 
 
-- **Engedélyezés:** Csak a megadott országokból/régiókból származó felhasználók férhetnek hozzá a rekurzív útvonalról kért eszközökhöz.
+- **Engedélyezés**: csak a megadott országokból/régiókból származó felhasználók férhetnek hozzá a rekurzív elérési útról kért eszközökhöz.
 
-- **Letiltás:** A megadott országokból/régiókból származó felhasználók nem férhetnek hozzá a rekurzív útvonalról kért eszközökhöz. Ha nincs más ország-/régiószűrési beállítás konfigurálva az adott helyhez, akkor az összes többi felhasználó hozzáférhet.
+- **Letiltás**: a megadott országokból/régiókból származó felhasználók nem férhetnek hozzá a rekurzív elérési útról kért eszközökhöz. Ha ezen a helyen nincs más ország/régió szerinti szűrési lehetőség konfigurálva, az összes többi felhasználó hozzáférése is engedélyezett lesz.
 
-Például egy földrajzi szűrési szabály az elérési út *blokkolására /Fotók/Strasbourg/* a következő fájlokat szűri:     
-*\//http:\<végpont>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*\//\<http: végpont>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+Például a */photos/Strasbourg/* elérési út blokkolására szolgáló geo-szűrési szabály a következő fájlokat szűri:     
+*http\<:\//Endpoint>. azureedge.net/photos/Strasbourg/1000.jpg*
+*http:\//\<Endpoint>. azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
 
-### <a name="define-the-countriesregions"></a>Az országok/régiók meghatározása
-Az **ORSZÁGKÓDOK** listában válassza ki azokat az országokat/régiókat, amelyeket le szeretne tiltani vagy engedélyezni szeretné az elérési útnak. 
+### <a name="define-the-countriesregions"></a>Országok/régiók meghatározása
+Az **országkódok** listából válassza ki azokat az országokat/régiókat, amelyeket le kíván tiltani, vagy engedélyezni kívánja az elérési utat. 
 
-Miután befejezte az országok/régiók kiválasztását, válassza a **Mentés** lehetőséget az új geoszűrési szabály aktiválásához. 
+Miután befejezte az országok/régiók kijelölését, válassza a **Mentés** lehetőséget az új geo-szűrési szabály aktiválásához. 
 
-![Geoszűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![Geo-szűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Szabály törléséhez jelölje ki a jelet a **Geoszűrés** lap listájából, majd válassza a **Törlés gombot.**
+Egy szabály törléséhez válassza ki a listából a **geo-szűrés** lapon, majd válassza a **Törlés**lehetőséget.
 
-## <a name="azure-cdn-premium-from-verizon-profiles"></a>Azure CDN Premium a Verizon-profilokból
-**A Verizon-profilokból származó Azure CDN Premium esetében** a geoszűrési szabály létrehozásához szükséges felhasználói felület eltérő:
+## <a name="azure-cdn-premium-from-verizon-profiles"></a>Prémium szintű Azure CDN Verizon-profilokból
+A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrési szabály létrehozásához használt felhasználói felület különbözik:
 
-1. Az Azure CDN-profiljának felső menüjében válassza a **Kezelés lehetőséget.**
+1. A Azure CDN profil felső menüjében válassza a **kezelés**lehetőséget.
 
-2. A Verizon portálon válassza a **HTTP Large**lehetőséget, majd az **Országszűrés**lehetőséget.
+2. A Verizon portálon válassza a **http Large**, majd az **ország szűrése**lehetőséget.
 
-    ![Geoszűrő szabvány](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![Geo-szűrési standard](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
-3. Válassza **az Országszűrő hozzáadása lehetőséget.**
+3. Válassza az **ország szűrő hozzáadása**lehetőséget.
 
     Az **első lépés:** oldal jelenik meg.
 
-4. Írja be a könyvtár elérési útját, válassza a **Blokkolás** vagy **a Hozzáadás**lehetőséget, majd a **Tovább**gombot.
+4. Adja meg a könyvtár elérési útját, válassza a **Letiltás** vagy **Hozzáadás**lehetőséget, majd kattintson a **tovább**gombra.
 
     A **második lépés:** oldal jelenik meg. 
 
-5. Jelöljön ki egy vagy több országot/régiót a listából, majd a **Befejezés** gombra a szabály aktiválásához. 
+5. Válasszon ki egy vagy több országot/régiót a listából, majd válassza a **Befejezés** gombot a szabály aktiválásához. 
     
-    Az új szabály megjelenik az **Országszűrés** lap táblázatában.
+    Az új szabály megjelenik az **ország szűrése** lap táblázatban.
 
-    ![Geoszűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![Geo-szűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Az ország-/területszűrési szabályok táblázatban jelölje ki a szabály melletti törlés ikont a törléshez, vagy a szerkesztésikont a módosításhoz.
+Az ország/régió szűrési szabályok táblázatban válassza a törlés ikont egy szabály mellett a törléshez, vagy a Szerkesztés ikont a módosításhoz.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-* A geoszűrési konfiguráció módosításai nem lépnek azonnal érvénybe:
+* A Geo-szűrési konfiguráció módosításai nem lépnek azonnal érvénybe:
    * A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
    * Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
    * A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
  
-* Ez a szolgáltatás nem támogatja a helyettesítő karaktereket (például *).
+* Ez a funkció nem támogatja a helyettesítő karaktereket (például *).
 
-* A relatív elérési úthoz társított geoszűrési konfigurációt rekurzív módon alkalmazza a rendszer az adott elérési útra.
+* A relatív elérési úttal társított geo-szűrési konfiguráció rekurzív módon van alkalmazva erre az elérési útra.
 
-* Ugyanarra a relatív elérési útra csak egy szabály alkalmazható. Ez azt, hogy nem hozhat létre több ország-/régiószűrőt, amelyek ugyanarra a relatív elérési útra mutatnak. Mivel azonban az ország-/régiószűrők rekurzívak, egy mappa több ország-/régiószűrővel is rendelkezhet. Más szóval egy korábban konfigurált mappa almappájához másik ország-/régiószűrő rendelhető.
+* Ugyanarra a relatív elérési útra csak egy szabály alkalmazható. Vagyis nem hozható létre több ország/régió szűrő, amely ugyanarra a relatív elérési útra mutat. Mivel azonban az ország/régió szűrők rekurzívak, a mappának több ország/régió szűrője is lehet. Ez azt jelenti, hogy egy korábban konfigurált mappa almappája hozzárendelhető egy másik ország/régió szűrőhöz.
 
-* A geoszűrési szolgáltatás országkódok at használ, hogy meghatározza azokat az országokat/régiókat, amelyekről egy biztonságos címtárra vonatkozó kérelem engedélyezett vagy le van tiltva. Bár az Akamai és a Verizon profilok támogatják a legtöbb azonos országkódok, van néhány különbség. További információ: [Azure CDN országkódok](/previous-versions/azure/mt761717(v=azure.100)). 
+* A Geo-szűrési funkció országkódok használatával határozza meg azokat az országokat/régiókat, amelyekről egy biztonságos könyvtárra vonatkozó kérés engedélyezett vagy le van tiltva. Bár a Akamai és a Verizon-profilok a legtöbb azonos országkód használatát támogatják, néhány eltérés van. További információ: [Azure CDN országkódok](/previous-versions/azure/mt761717(v=azure.100)). 
 

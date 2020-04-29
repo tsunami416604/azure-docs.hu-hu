@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB-hoz való csatlakozás a Robo 3T segítségével
-description: Ismerje meg, hogyan csatlakozhat az Azure Cosmos DB-hez a Robo 3T és az Azure Cosmos DB MongoDB-hoz való API-ja használatával
+title: A Robo 3T használata a Azure Cosmos DBhoz való kapcsolódáshoz
+description: Ismerje meg, hogyan csatlakozhat a Azure Cosmos DB a Robo 3T és a Azure Cosmos DB API-MongoDB
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
@@ -8,46 +8,46 @@ ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: 627849acb902a721c80b98adbd16103b4729591b
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114191"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Robo 3T használata a MongoDB-hez készült Azure Cosmos DB API-hoz
 
-A Cosmos-fiókhoz a Robo 3T használatával való csatlakozáshoz a következőket kell tennie:
+Ha a Robo 3T használatával szeretne csatlakozni a Cosmos-fiókhoz, a következőket kell tennie:
 
 * A [Robo 3T](https://robomongo.org/) letöltése és telepítése
-* A Cosmos DB [kapcsolati karakterlánc](connect-mongodb-account.md) adatainak
+* A Cosmos DB a [kapcsolatok karakterláncával](connect-mongodb-account.md) kapcsolatos információk
 
 > [!NOTE]
-> Jelenleg a Robo 3T v1.2 és az alacsonyabb verziók támogatottak a Cosmos DB MongoDB API-jával.
+> Jelenleg a Robo 3T v 1.2 és az alacsonyabb verziók a Cosmos DB API-ját támogatják a MongoDB.
 
 ## <a name="connect-using-robo-3t"></a>Csatlakozás a Robo 3T használatával
 
-Ha hozzá szeretné adni cosmos-fiókját a Robo 3T kapcsolatkezelőhöz, hajtsa végre az alábbi lépéseket:
+Az alábbi lépések végrehajtásával adhatja hozzá Cosmos-fiókját a Robo 3T-Csatlakozáskezelőhöz:
 
-1. Az [itt](connect-mongodb-account.md)található utasítások alapján olvassa be az Azure Cosmos DB API-jával konfigurált Cosmos-fiók kapcsolatadatait.
+1. A Azure Cosmos DB API-MongoDB konfigurált Cosmos-fiókhoz tartozó kapcsolatok adatainak beolvasása az [itt](connect-mongodb-account.md)leírt utasítások alapján.
 
-    ![Képernyőkép a kapcsolati karakterlánc panelről](./media/mongodb-robomongo/connectionstringblade.png)
+    ![Képernyőfelvétel a kapcsolatok sztring panelről](./media/mongodb-robomongo/connectionstringblade.png)
 2. Futtassa a *Robomongo* alkalmazást.
 
-3. A kapcsolatok kezeléséhez kattintson a **Fájl csoport csatlakozási** gombjára. Ezután kattintson a **Létrehozás gombra** a **MongoDB kapcsolatok** ablakban, amely megnyitja a **Kapcsolatbeállítások** ablakot.
+3. Kattintson a kapcsolat gombra a **fájl** területen a kapcsolatok kezeléséhez. Ezután kattintson a **Létrehozás** elemre a **MongoDB-kapcsolatok** ablakban, amely megnyitja a **kapcsolati beállítások** ablakot.
 
-4. A **Kapcsolat beállításai** ablakban válasszon nevet. Ezután keresse meg a **gazdatestet** és **a portot** a **Port**kapcsolati adatok között az 1. **Address**
+4. A **kapcsolatbeállítások** ablakban válasszon egy nevet. Ezután keresse meg a **gazdagépet** és a **portot** az 1. lépésben megadott elérhetőségi adatokból, és adja meg őket a **címe** és a **port**mezőbe.
 
-    ![Képernyőkép a Robomongo Kapcsolatok kezelése](./media/mongodb-robomongo/manageconnections.png)
-5. A **Hitelesítés** lapon kattintson a **Hitelesítés végrehajtása gombra.** Ezután adja meg az adatbázist (alapértelmezés szerint *rendszergazda),* **felhasználónév** és **jelszó**.
-Mind **a felhasználónév,** mind a **jelszó** megtalálható a kapcsolati adatokban az 1.
+    ![Képernyőkép a Robomongo kapcsolatok kezeléséről](./media/mongodb-robomongo/manageconnections.png)
+5. A **hitelesítés** lapon kattintson a **hitelesítés elvégzése**lehetőségre. Ezután adja meg az adatbázisát (az alapértelmezett *rendszergazda*), a **felhasználónevet** és a **jelszót**.
+Az 1. lépésben a **Felhasználónév** és a **jelszó** is megtalálható a kapcsolatok adatai között.
 
-    ![Képernyőkép a Robomongo hitelesítés lapról](./media/mongodb-robomongo/authentication.png)
-6. Az **SSL** lapon jelölje be **az SSL protokoll használata**jelölőnégyzetet, majd módosítsa a **hitelesítési módszert** **önaláírt tanúsítványra.**
+    ![Képernyőkép a Robomongo-hitelesítés lapról](./media/mongodb-robomongo/authentication.png)
+6. Az **SSL** lapon jelölje be az **SSL protokoll használata**lehetőséget, majd módosítsa a **hitelesítési módszert** **önaláírt tanúsítványra**.
 
-    ![Képernyőkép a Robomongo SSL lapról](./media/mongodb-robomongo/SSL.png)
-7. Végül kattintson a **Teszt** gombra, és ellenőrizze, hogy tud-e csatlakozni, majd a **Mentés gombra.**
+    ![A Robomongo SSL lapjának képernyőképe](./media/mongodb-robomongo/SSL.png)
+7. Végül kattintson a **test (tesztelés** ) elemre annak ellenőrzéséhez, hogy tud-e csatlakozni, majd **mentse**.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan használhatja a [Studio 3T-t](mongodb-mongochef.md) az Azure Cosmos DB MongoDB-hoz való API-jával.
-- Fedezze fel a [MongoDB-mintákat](mongodb-samples.md) az Azure Cosmos DB MongoDB-hoz kapcsolódó API-jával.
+- Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
+- Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.

@@ -1,67 +1,67 @@
 ---
-title: A TLS 1.0 és 1.1 eltávolítása az Azure Cache for Redis használatával
-description: Ismerje meg, hogyan távolíthatja el a TLS 1.0-s és 1.1-es állapotát az alkalmazásból, amikor az Azure Cache for Redis-szel kommunikál
+title: A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
+description: Ismerje meg, hogyan távolíthatja el a TLS 1,0 és 1,1 alkalmazást az alkalmazásból az Azure cache Redis való kommunikációja során
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
 ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261239"
 ---
-# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1.0 és 1.1 eltávolítása az Azure Cache for Redis használatával
+# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
-A Transport Layer Security (TLS) 1.2-es vagy újabb verziójának kizárólagos használata felé halad unk. A TLS 1.0-s és 1.1-es verziói róluk ismert, hogy ki vannak téve az olyan támadásoknak, mint a BEAST és az USZS, és más gyakori sebezhetőségi és kitettségi (CVE) hiányosságokkal rendelkeznek. Nem támogatják a Fizetésikártya-ipar (PCI) megfelelőségi szabványai által ajánlott modern titkosítási módszereket és titkosítási csomagokat sem. Ez [a TLS biztonsági blog](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) részletesebben ismerteti a biztonsági rések némelyikét.
+A Transport Layer Security (TLS) 1,2-es vagy újabb verziójának kizárólagos használatára az egész iparágra kiterjedő leküldés. A 1,0-es és 1,1-as TLS-verziók ismertek olyan támadásokra, mint például a BEAST és az USZKÁR, valamint más gyakori biztonsági rések és a kitettségek (CVE) gyengeségei. Emellett nem támogatják a Payment Card Industry (PCI) megfelelőségi szabványai által ajánlott modern titkosítási módszereket és titkosítási csomagokat. Ez a [TLS biztonsági blog](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) részletesebben ismerteti ezeket a biztonsági réseket.
 
-Ennek részeként a következő módosításokat hajtjuk végre a Redis-hez rendelt Azure Cache-ben:
+Ennek a tevékenységnek a részeként a következő módosításokat hajtjuk végre az Azure cache Redis:
 
-* **1. fázis:** Az újonnan létrehozott gyorsítótárpéldányok esetében az alapértelmezett minimális TLS-verzió 1.2-es lesz. (Ez korábban TLS 1.0 volt.) A meglévő gyorsítótár-példányok ezen a ponton nem frissülnek. Szükség esetén a visszamenőleges kompatibilitás érdekében a [minimális TLS-verziót](cache-configure.md#access-ports) 1.0-ra vagy 1.1-re módosíthatja. Ez a módosítás az Azure Portalon vagy más felügyeleti API-kon keresztül hajtható el.
-* **2. fázis:** Nem támogatjuk tovább a TLS 1.0-s és 1.1-es verzióját. A módosítás után az alkalmazásnak a TLS 1.2-es vagy újabb használatát kell használnia a gyorsítótárral való kommunikációhoz.
+* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót 1,2-re konfigurálja. (Ez a TLS 1,0 volt.) Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok. Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében. Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
+* **2. fázis:** A TLS 1,0-es és 1,1-es verziójának támogatása nem áll le. A módosítás után az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
 
-Ezenkívül a módosítás részeként eltávolítjuk a régebbi, nem biztonságos cypher lakosztályok támogatását.  Támogatott cypher csomagjaink a következőkre lesznek korlátozva, ha a gyorsítótár 1.2-es minimális TLS-verziójával van konfigurálva.
+Emellett a változás részeként eltávolítja a régebbi, nem biztonságos Cypher-csomagok támogatását.  A támogatott Cypher-csomagok a következőre lesznek korlátozva, ha a gyorsítótár a 1,2-es minimális TLS-verzióval van konfigurálva.
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
-Ez a cikk általános útmutatást nyújt a korábbi TLS-verziókfüggőségek észleléséhez és az alkalmazásból való eltávolításához.
+Ez a cikk általános útmutatást nyújt a korábbi TLS-verziók függőségeinek észleléséhez és az alkalmazásból való eltávolításához.
 
-A módosítások hatálybalépésének dátumai a következők:
+A módosítások érvénybe léptetésének dátuma:
 
-| Felhő               | 1. fázis Kezdési dátum | 2. fázis Kezdési dátum      |
+| Felhő               | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma      |
 |---------------------|--------------------|-------------------------|
-| Azure (globális)      |  2020. január 13.  | 2020. május 11. |
-| Azure Government    |  2020. március 13.    | 2020. május 11.            |
-| Azure Germany       |  2020. március 13.    | 2020. május 11.            |
-| Azure China         |  2020. március 13.    | 2020. május 11.            |
+| Azure (globális)      |  2020. január 13.  | 2020. május 11. (bővített) |
+| Azure Government    |  Március 13., 2020    | Május 11., 2020            |
+| Azure Germany       |  Március 13., 2020    | Május 11., 2020            |
+| Azure China         |  Március 13., 2020    | Május 11., 2020            |
 
-## <a name="check-whether-your-application-is-already-compliant"></a>Annak ellenőrzése, hogy az alkalmazás már megfelel-e a követelményeknek
+## <a name="check-whether-your-application-is-already-compliant"></a>Annak ellenőrzését, hogy az alkalmazás már megfelelő-e
 
-A legegyszerűbb módja annak, hogy megtudja, hogy az alkalmazás működni fog-e a TLS 1.2-vel, ha a **Minimális TLS verzióértéket** TLS 1.2-re állítja egy teszt- vagy átmeneti gyorsítótárban, amelyet használ. A **Minimális TLS-verzióbeállítás** a gyorsítótár-példány [speciális beállításaiban](cache-configure.md#advanced-settings) található az Azure Portalon. Ha az alkalmazás továbbra is a várt módon működik a módosítás után, akkor valószínűleg megfelelő. Előfordulhat, hogy konfigurálnia kell néhány Redis ügyfélkönyvtárat, amelyet az alkalmazás kifejezetten a TLS 1.2 engedélyezéséhez használ, hogy az adott biztonsági protokollon keresztül csatlakozhassanak az Azure Cache for Redis-hez.
+A legkönnyebben megtudhatja, hogy az alkalmazás a TLS 1,2-mel működik-e, ha a TLS- **verzió minimális** értékét a TLS 1,2 értékre állítja egy olyan tesztelési vagy előkészítési gyorsítótárban, amelyet használ. A **TLS minimális verziója** beállítás a Azure Portal gyorsítótár-példányának [speciális beállításaiban](cache-configure.md#advanced-settings) található. Ha az alkalmazás a változás után is továbbra is a várt módon működik, valószínűleg megfelelőnek kell lennie. Előfordulhat, hogy az alkalmazás által használt egyes Redis-kódtárakat külön kell konfigurálnia, hogy engedélyezze a TLS 1,2-et, hogy az adott biztonsági protokollon keresztül Redis az Azure cache-hez.
 
-## <a name="configure-your-application-to-use-tls-12"></a>Az alkalmazás konfigurálása a TLS 1.2 használatára
+## <a name="configure-your-application-to-use-tls-12"></a>Az alkalmazás konfigurálása a TLS 1,2 használatára
 
-A legtöbb alkalmazás Redis ügyfélkódtárakat használ a gyorsítótárakkal való kommunikáció kezelésére. Az alábbiakban a népszerű ügyfélkódtárak különböző programozási nyelveken és keretrendszerekben a TLS 1.2 használatára vonatkozó beállítására vonatkozó utasításokat olvashatja.
+A legtöbb alkalmazás Redis-kódtárakat használ a gyorsítótárral való kommunikáció kezelésére. Az alábbiakban útmutatást talál néhány, a különböző programozási nyelveken és keretrendszerekben található népszerű ügyféloldali függvénytár konfigurálásához a TLS 1,2 használatához.
 
 ### <a name="net-framework"></a>.NET-keretrendszer
 
-A Redis .NET ügyfelek alapértelmezés szerint a legkorábbi TLS-verziót használják a .NET Framework 4.5.2-es vagy korábbi verzióján, és a .NET Framework 4.6-os vagy újabb verzióján a legújabb TLS-verziót használják. Ha a .NET Framework régebbi verzióját használja, manuálisan engedélyezheti a TLS 1.2-t:
+A Redis .NET-ügyfelek alapértelmezés szerint a legkorábbi TLS-verziót használják a .NET-keretrendszer 4.5.2-es vagy korábbi verziójában, és a legújabb TLS-verziót használják a .NET-keretrendszer 4,6-es vagy újabb verziójára Ha a .NET-keretrendszer régebbi verzióját használja, a TLS 1,2-et manuálisan is engedélyezheti:
 
-* **StackExchange.Redis:** Állítsa `ssl=true` `sslprotocols=tls12` be, és a kapcsolat ihúr.
-* **ServiceStack.Redis:** Kövesse a [ServiceStack.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) utasításokat, és legalább a ServiceStack.Redis 5.6-os szükséges.
+* **StackExchange. Redis:** Állítsa `ssl=true` be `sslprotocols=tls12` a és a karakterláncot a kapcsolatok karakterláncában.
+* **ServiceStack. Redis:** Kövesse a [ServiceStack. Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) utasításokat, és a ServiceStack. Redis v 5.6 minimálisan szükséges.
 
 ### <a name="net-core"></a>.NET Core
 
-A Redis .NET Core ügyfelek alapértelmezés szerint a legújabb TLS-verziót használják.
+A Redis .NET Core-ügyfelek alapértelmezés szerint a legújabb TLS-verziót használják.
 
 ### <a name="java"></a>Java
 
-A Redis Java-ügyfelek a TLS 1.0-s verzióját használják a Java 6-os vagy korábbi verzióján. Jedik, saláta és Redisson nem tud csatlakozni az Azure Cache for Redis, ha a TLS 1.0 le van tiltva a gyorsítótárban. Frissítse a Java-keretrendszert az új TLS-verziók használatához.
+A Redis Java-ügyfelek TLS 1,0-et használnak a Java 6-os vagy korábbi verzióján. A jedis, a saláta és a Redisson nem tud csatlakozni az Azure cache-hez a Redis, ha a TLS 1,0 le van tiltva a gyorsítótárban. A Java-keretrendszer frissítése új TLS-verziók használatára.
 
-Java 7 esetén a Redis-ügyfelek alapértelmezés szerint nem használják a TLS 1.2-t, de konfigurálhatók hozzá. A Jedik lehetővé teszik az alapul szolgáló TLS-beállítások megadását a következő kódrészlettel:
+A Java 7 esetében a Redis-ügyfelek alapértelmezés szerint nem használják a TLS 1,2-et, de konfigurálható rá. A jedis segítségével megadhatja a mögöttes TLS-beállításokat a következő kódrészlettel:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -77,21 +77,21 @@ shardInfo.setPassword("cachePassword");
 Jedis jedis = new Jedis(shardInfo);
 ```
 
-A saláta és a Redisson ügyfelek még nem támogatják a TLS-verzió megadását, így megszakadnak, ha a gyorsítótár csak TLS 1.2-es kapcsolatokat fogad el. Ezen ügyfelek javításait ellenőrizzük, ezért ellenőrizze ezeket a csomagokat egy frissített verzióhoz ezzel a támogatással.
+A saláta és a Redisson-ügyfelek még nem támogatják a TLS-verzió megadását, ezért a gyorsítótár csak TLS 1,2-kapcsolatokat fogad el. Az ügyfelekre vonatkozó javítások felülvizsgálata folyamatban van, ezért ezeket a csomagokat egy frissített verzióra kell ellenőrizni.
 
-A Java 8-ban a TLS 1.2 alapértelmezés szerint használatos, és a legtöbb esetben nem szükséges az ügyfélkonfiguráció frissítése. A biztonság kedvéért tesztelje az alkalmazást.
+A Java 8 esetében a TLS 1,2 alapértelmezés szerint használatos, és a legtöbb esetben nem szükséges frissíteni az ügyfél konfigurációját. A biztonság érdekében tesztelje az alkalmazást.
 
 ### <a name="nodejs"></a>Node.js
 
-A Redis csomópont és az IORedis alapértelmezés szerint a TLS 1.2-t használja.
+A Node Redis és a IORedis alapértelmezés szerint a TLS 1,2-et használja.
 
 ### <a name="php"></a>PHP
 
-#### <a name="predis"></a>Predis között
+#### <a name="predis"></a>Predis
  
-* A PHP 7-nél korábbi verziók: A Predis csak a TLS 1.0-t támogatja. Ezek a verziók nem működnek a TLS 1.2- vel; frissítenie kell a TLS 1.2 használatához.
+* PHP 7-es verziónál korábbi verziók: a Predis csak a TLS 1,0-et támogatja. Ezek a verziók nem működnek a TLS 1,2; a TLS 1,2 használatára kell frissítenie.
  
-* PHP 7.0-tól PHP 7.2.1-ig: A Predis alapértelmezés szerint csak a TLS 1.0-t vagy az 1.1-et használja. A TLS 1.2-es használata a következő kerülő megoldás. Az ügyfélpéldány létrehozásakor adja meg a TLS 1.2 értéket:
+* PHP 7,0 – PHP 7.2.1: a Predis alapértelmezés szerint csak a TLS 1,0 vagy 1,1 protokollt használja. A TLS 1,2 használatát a következő megkerülő megoldással végezheti el. A TLS 1,2 megadása az ügyfél példányának létrehozásakor:
 
   ``` PHP
   $redis=newPredis\Client([
@@ -105,20 +105,20 @@ A Redis csomópont és az IORedis alapértelmezés szerint a TLS 1.2-t használj
   ]);
   ```
 
-* PHP 7.3 és újabb verziók: A Predis a legújabb TLS verziót használja.
+* PHP 7,3 és újabb verziók: a Predis a legújabb TLS-verziót használja.
 
-#### <a name="phpredis"></a>PhpRedis között
+#### <a name="phpredis"></a>PhpRedis
 
-A PhpRedis nem támogatja a TLS-t egyetlen PHP verzióban sem.
+A PhpRedis nem támogatja a TLS használatát bármilyen PHP-verzióban.
 
 ### <a name="python"></a>Python
 
-A Redis-py alapértelmezés szerint a TLS 1.2-t használja.
+A Redis-másolási szolgáltatás alapértelmezés szerint a TLS 1,2 protokollt használja.
 
 ### <a name="go"></a>GO
 
-A Redigo alapértelmezés szerint a TLS 1.2-t használja.
+A Redigo alapértelmezés szerint a TLS 1,2-et használja.
 
 ## <a name="additional-information"></a>További információ
 
-- [Az Azure Cache beállítása a Redis-hez](cache-configure.md)
+- [Az Azure cache konfigurálása a Redis-hez](cache-configure.md)

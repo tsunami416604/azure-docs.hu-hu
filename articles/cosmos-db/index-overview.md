@@ -1,29 +1,29 @@
 ---
 title: Indexelés az Azure Cosmos DB-ben
-description: Ismerje meg, hogyan működik az indexelés az Azure Cosmos DB-ben, különböző típusú indexek, például a tartomány, térbeli, összetett indexek támogatott.
+description: Ismerje meg, hogy az indexelés hogyan működik a Azure Cosmos DBban, különböző típusú indexek, például a tartomány, a térbeli és az összetett indexek támogatottak.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
 ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273239"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 
-Az Azure Cosmos DB egy séma-független adatbázis, amely lehetővé teszi, hogy az alkalmazás iterálni anélkül, hogy a séma vagy index kezelése. Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli a [tárolóban](databases-containers-items.md#azure-cosmos-containers) lévő összes elem minden tulajdonságát anélkül, hogy bármilyen sémát definiálna vagy másodlagos indexeket kellene konfigurálnia.
+Azure Cosmos DB egy séma-agnosztikus adatbázis, amely lehetővé teszi az alkalmazáson belüli iterációt anélkül, hogy a sémát vagy az indexelést kellene foglalkoznia. Alapértelmezés szerint a Azure Cosmos DB automatikusan indexel minden tulajdonságot a [tároló](databases-containers-items.md#azure-cosmos-containers) összes eleméhez anélkül, hogy sémát kellene meghatároznia vagy másodlagos indexeket kellene konfigurálnia.
 
-A cikk célja annak ismertetése, hogy az Azure Cosmos DB hogyan indexeli az adatokat, illetve hogy miként használja az indexeket a lekérdezési teljesítmény javításához. Javasoljuk, hogy az [indexelési házirendek](index-policy.md)testreszabása előtt menjen át ezen a szakaszon.
+A cikk célja annak ismertetése, hogy az Azure Cosmos DB hogyan indexeli az adatokat, illetve hogy miként használja az indexeket a lekérdezési teljesítmény javításához. Azt javasoljuk, hogy az [indexelési szabályzatok](index-policy.md)testreszabásának megismerése előtt folytassa ezt a szakaszt.
 
 ## <a name="from-items-to-trees"></a>Elemektől a fákig
 
-Minden alkalommal, amikor egy elemet tárolóban tárolnak, annak tartalma JSON-dokumentumként lesz kivetítve, majd faábrázolássá alakul. Ez azt jelenti, hogy az elem minden tulajdonsága csomópontként jelenik meg egy fán. Egy pszeudo gyökércsomópont jön létre szülőként az elem összes első szintű tulajdonságához. A levélcsomópontok tartalmazzák az elem által szállított tényleges skaláris értékeket.
+Minden alkalommal, amikor egy elem egy tárolóban tárolódik, a tartalma JSON-dokumentumként van kialakítva, majd egy faszerkezetbe konvertálva. Ez azt jelenti, hogy az adott elem minden tulajdonsága egy fa csomópontjaiként lesz megjelenítve. A rendszer egy pszeudo-főcsomópontot hoz létre szülőként az elem összes első szintű tulajdonságához. A levél csomópontjai tartalmazzák az elemek tényleges skaláris értékeit.
 
-Vegyük például ezt az elemet:
+Példaként tekintse meg ezt az tételt:
 
 ```json
     {
@@ -39,17 +39,17 @@ Vegyük például ezt az elemet:
     }
 ```
 
-Ez lenne képviseli a következő fa:
+A következő fa fogja képviselni:
 
-![Az előző elem faként jelenik meg](./media/index-overview/item-as-tree.png)
+![Az előző elem faszerkezetként van ábrázolva](./media/index-overview/item-as-tree.png)
 
-Figyelje meg, hogyan vannak kódolva a tömbök a fában: egy tömb minden bejegyzése kap egy köztes csomópontot, amely a tömbön belüli bejegyzés indexével van címkézve (0, 1 stb.).
+Vegye figyelembe, hogy a tömbök a fában vannak kódolva: a tömb minden bejegyzése egy köztes csomópontot kap, amely a tömbben (0, 1 stb.) lévő bejegyzés indexével van megjelölve.
 
-## <a name="from-trees-to-property-paths"></a>A fáktól a tulajdonságelérési utakig
+## <a name="from-trees-to-property-paths"></a>A fák és a tulajdonságok közötti útvonalakig
 
-Az Azure Cosmos DB azért alakítja át az elemeket fákká, mert lehetővé teszi, hogy a tulajdonságokra hivatkozzon a fákon belüli útvonalaik. Egy tulajdonság elérési útjának leválasztásához átjárhatjuk a fát a gyökércsomóponttól a tulajdonságig, és összefűzhetjük az egyes áthaladó csomópontok feliratait.
+Ennek az az oka, hogy Azure Cosmos DB átalakítja az elemeket a fákba, mivel lehetővé teszi a tulajdonságok hivatkozását a fák elérési útjain belül. Ha egy tulajdonság elérési útját szeretné lekérni, a fában áthaladhat a gyökér csomópontból a tulajdonságba, és összefűzheti az egyes bejárt csomópontok feliratait.
 
-Az alábbiakban a fent leírt példaelem minden tulajdonságának elérési útjai láthatók:
+Itt láthatók a fent ismertetett példában szereplő egyes tulajdonságok elérési útjai:
 
     /locations/0/country: "Germany"
     /locations/0/city: "Berlin"
@@ -60,17 +60,17 @@ Az alábbiakban a fent leírt példaelem minden tulajdonságának elérési útj
     /exports/0/city: "Moscow"
     /exports/1/city: "Athens"
 
-Egy elem írásakor az Azure Cosmos DB hatékonyan indexeli az egyes tulajdon elérési útját és a megfelelő értéket.
+Egy elem írásakor Azure Cosmos DB hatékonyan indexeli az egyes tulajdonságok elérési útját és a hozzá tartozó értéket.
 
-## <a name="index-kinds"></a>Index típusai
+## <a name="index-kinds"></a>Index típusa
 
-Az Azure Cosmos DB jelenleg háromféle indexet támogat.
+Azure Cosmos DB jelenleg három típusú indexet támogat.
 
 ### <a name="range-index"></a>Tartomány indexe
 
-**A tartományindex** rendezett faszerű struktúrán alapul. A tartományindex-típusú a következőkre szolgál:
+A **Range** index egy megrendelt fastruktúrán alapul. A tartomány indexének típusa a következő:
 
-- Egyenlőségi lekérdezések:
+- Esélyegyenlőségi lekérdezések:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
@@ -80,55 +80,55 @@ Az Azure Cosmos DB jelenleg háromféle indexet támogat.
    SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
    ```
 
-   Egyenlőségi egyezés tömbelemen
+   Egyenlőségi egyezés egy tömb elemnél
    ```sql
     SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
     ```
 
-- Tartománylekérdezések:
+- Tartomány lekérdezései:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (munkák `>`, `<` `>=`, `<=` `!=`, , )
+  `>`(a `<`, `>=` `<=`,,,) `!=`
 
-- Tulajdonság jelenlétének ellenőrzése:
+- Tulajdonság meglétének ellenőrzése:
 
    ```sql
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- A karakterlánc-előtag egyezik (a kulcsszó ttartalmazza a tartományindexet):
+- A karakterlánc-előtag egyezései (a kulcsszó nem fogja kihasználni a tartomány indexét):
 
    ```sql
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
    ```
 
-- `ORDER BY`Lekérdezések:
+- `ORDER BY`lekérdezések
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`Lekérdezések:
+- `JOIN`lekérdezések
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-A tartományindexek skaláris értékeken (karakterlánc on vagy számon) használhatók.
+A tartomány-indexek a skaláris értékeken (String vagy Number) is használhatók.
 
 ### <a name="spatial-index"></a>Térbeli index
 
-**A térbeli** indexek hatékony lekérdezéseket tesznek lehetővé térinformatikai objektumokon, például - pontokon, vonalakon, sokszögeken és többpoligonon. Ezek a lekérdezések ST_DISTANCE, ST_WITHIN ST_INTERSECTS kulcsszavakat használnak. Az alábbiakban néhány példa, hogy a térbeli index fajta:
+A **térbeli** indexek hatékony lekérdezéseket tesznek lehetővé térinformatikai objektumokon, például pontokon, vonalakon, sokszögeken és több sokszögen. Ezek a lekérdezések ST_DISTANCE, ST_WITHIN, ST_INTERSECTS kulcsszavakat használnak. A következő példák a térbeli index típusát használják:
 
-- Térinformatikai távolságlekérdezések:
+- Földrajzi távolsági lekérdezések:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Térinformatikai belül lekérdezések:
+- Térinformatika a lekérdezéseken belül:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
@@ -140,51 +140,51 @@ A tartományindexek skaláris értékeken (karakterlánc on vagy számon) haszn�
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-A térbeli indexek helyesen formázott [GeoJSON](geospatial.md) objektumokon használhatók. A pontok, a linestringek, a sokszögek és a multipoligonok jelenleg támogatottak.
+A térbeli indexek megfelelően formázott [GeoJSON](geospatial.md) -objektumokon is használhatók. A pontok, Linestring, sokszögek és többsokszögek jelenleg támogatottak.
 
 ### <a name="composite-indexes"></a>Összetett indexek
 
-**Az összetett** indexek növelik a hatékonyságot, ha több mezőben hajt végre műveleteket. Az összetett index-fajtát a következőkre használjuk:
+Az **összetett** indexek nagyobb hatékonyságot biztosítanak, ha több mezőn végez műveleteket. Az összetett index típusa a következő:
 
-- `ORDER BY`több tulajdonságra vonatkozó lekérdezések:
+- `ORDER BY`több tulajdonság lekérdezései:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Lekérdezések szűrővel `ORDER BY`és . Ezek a lekérdezések összetett indexet használhatnak, `ORDER BY` ha a szűrőtulajdonság hozzá van adva a záradékhoz.
+- Lekérdezések szűrővel és `ORDER BY`. Ezek a lekérdezések összetett indexet használhatnak, ha a Filter tulajdonságot hozzáadja `ORDER BY` a záradékhoz.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
 ```
 
-- Szűrővel rendelkező lekérdezések két vagy több olyan tulajdonságra, ahol legalább egy tulajdonság egyenlőségszűrő
+- Lekérdezés két vagy több tulajdonsággal rendelkező szűrővel, ahol legalább egy tulajdonság egy egyenlőségi szűrő.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Mindaddig, amíg egy szűrő predikátum használja az egyik index fajta, a lekérdezési motor kiértékeli, hogy az első vizsgálat előtt a többit. Ha például sql-lekérdezésünk van, például`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Mindaddig, amíg az egyik szűrési predikátum az egyik indexet használja, a lekérdezési motor kiértékeli, hogy először a REST ellenőrzése előtt. Ha például SQL-lekérdezéssel rendelkezik, például:`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
-* A fenti lekérdezés először szűri azokat a bejegyzéseket, ahol a keresztnév = "András" az index használatával. Ezután az összes firstName = "András" bejegyzést átadja egy későbbi folyamaton, hogy kiértékelje a tartalmazza a szűrőpredikátumot.
+* A fenti lekérdezés először szűrni fogja azokat a bejegyzéseket, ahol a firstName = "Andrew" kifejezést használja az index használatával. Ezután továbbítja az összes firstName = "Andrew" bejegyzést egy későbbi folyamaton keresztül, hogy kiértékelje a tartalmazza a szűrő predikátumát.
 
-* Felgyorsíthatja a lekérdezéseket, és elkerülheti a teljes tárolóvizsgálatot, ha olyan függvényeket használ, amelyek nem használják az indexet (pl. tartalmazza) további szűrőpredikátumok hozzáadásával, amelyek az indexet használják. A szűrőzáradékok sorrendje nem fontos. A lekérdezési motor fogja kitalálni, hogy mely predikátumok szelektívebb, és ennek megfelelően futtassa a lekérdezést.
+* Felgyorsíthatja a lekérdezéseket, és elkerülheti a tárolók teljes vizsgálatát, ha olyan függvényeket használ, amelyek nem használják az indexet (például tartalmazza) az indexet használó további szűrési predikátumok hozzáadásával. A Filter záradékok sorrendje nem fontos. A lekérdezési motor kideríti, hogy mely predikátumok szelektívek, és ennek megfelelően futtatják a lekérdezést.
 
 
 ## <a name="querying-with-indexes"></a>Lekérdezés indexekkel
 
-Az adatok indexeléseksorán kinyert elérési utak megkönnyítik az index lekérdezés feldolgozása során történő lekérdezésének lekérdezésének lekérdezése során történő lekérdezésének lekérdezésének lekérdezési lekérdezésének lekérdezése. Ha egy `WHERE` lekérdezés záradékát az indexelt elérési utak listájával egyezteti, a lekérdezéspredikátumnak megfelelő elemek nagyon gyorsan azonosíthatók.
+Az adatindexelés során kinyert elérési utak megkönnyítik az index keresését egy lekérdezés feldolgozásakor. Az indexelt `WHERE` elérési utak listáját tartalmazó lekérdezés záradékának egyeztetésével nagyon gyorsan azonosíthatja a lekérdezési predikátumnak megfelelő elemeket.
 
-Vegyük például a `SELECT location FROM location IN company.locations WHERE location.country = 'France'`következő lekérdezést: . A lekérdezési predikátum (az elemek szűrése, ahol bármely helyen "Franciaország" az országa) megegyezik az alábbi pirossal kiemelt elérési úttal:
+Vegyük például a következő lekérdezést: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. A lekérdezési predikátum (elemek szűrése, ahol bármely hely "Franciaország", mint országa) az alábbi piros színnel jelölt elérési útra hasonlít:
 
-![Adott elérési út egyeztetése egy fán belül](./media/index-overview/matching-path.png)
+![Megadott elérési út megfeleltetése egy fában belül](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Egy `ORDER BY` záradék, amely egyetlen tulajdonság által imaszol, *mindig* tartományindexet igényel, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyentel. Hasonlóképpen a `ORDER BY` több tulajdonság által rendelésre leadott lekérdezésnek *mindig* összetett indexre van szüksége.
+> Egy `ORDER BY` olyan záradék, amelyet egy adott tulajdonság megrendelése *mindig* egy tartomány indexre van szüksége, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyennel. Hasonlóképpen, a `ORDER BY` több tulajdonság által megrendelést igénylő lekérdezésnek *mindig* összetett indexre van szüksége.
 
 ## <a name="next-steps"></a>További lépések
 
-Az indexelésről az alábbi cikkekben olvashat bővebben:
+Az indexeléssel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 - [Indexelési házirend](index-policy.md)
-- [Az indexelési házirend kezelése](how-to-manage-indexing-policy.md)
+- [Az indexelési szabályzat kezelése](how-to-manage-indexing-policy.md)

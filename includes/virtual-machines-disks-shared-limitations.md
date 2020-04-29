@@ -9,32 +9,32 @@ ms.date: 04/09/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 1e53dda2c6cb293a9204f344d152daa1937aa38b
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008342"
 ---
-Előzetes verzióban a megosztott lemezek engedélyezése csak a lemeztípusok egy részhalmaza számára érhető el. Jelenleg csak az ultra lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemezre, amelynek engedélyezve van a megosztott lemeze, a következő korlátozások vonatkoznak, lemeztípus szerint rendezve:
+Az előzetes verzióban a megosztott lemezek engedélyezése csak a lemezek egy részhalmaza számára lehetséges. Jelenleg csak az ultra-lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemez, amelyen engedélyezve vannak a megosztott lemezek, a következő korlátozások vonatkoznak a lemez típusa szerint rendezve:
 
 ### <a name="ultra-disks"></a>Ultralemezek
 
-Az ultralemezek saját külön korlátozásokkal rendelkeznek, amelyek nem kapcsolódnak a megosztott lemezekhez. Az ultralemezek korlátairól az [Azure ultralemezek használata .for ultra disks.](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md)
+Az ultra-lemezek külön listával rendelkeznek a korlátozásokról, amelyek nem kapcsolódnak a megosztott lemezekhez. Az ultra Disk korlátozásai esetében tekintse meg az [Azure Ultra Disks használatát](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md)ismertető témakört.
 
-Az ultralemezek megosztásakor a következő további korlátozások vannak:
+Az ultra-lemezek megosztásakor a következő korlátozások vonatkoznak rájuk:
 
-- Jelenleg csak az USA nyugati részén támogatott.
-- Jelenleg csak az Azure Resource Manager vagy SDK-támogatás.
-- Csak alaplemezek használhatók a Windows Server feladatátvevő fürt egyes verzióiban, további információt a [Feladatátvevő fürthardver-követelmények és a tárolási lehetőségek](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)című témakörben talál.
+- Jelenleg csak az USA nyugati régiójában támogatott.
+- Jelenleg csak Azure Resource Manager vagy SDK-támogatással rendelkezik.
+- Csak alaplemezek használhatók a Windows Server feladatátvevő fürt egyes verzióiban, részletekért lásd: a [feladatátvételi fürtszolgáltatás hardverkövetelmények és tárolási lehetőségei](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
 
 ### <a name="premium-ssds"></a>Prémium szintű SSD-k
 
-- Jelenleg csak az USA nyugati középső régiójában támogatott.
-- A lemezen osztozó összes virtuális gépet ugyanabban a [közelségi elhelyezési csoportban](../articles/virtual-machines/windows/proximity-placement-groups.md)kell telepíteni.
-- Csak adatlemezeken engedélyezhető, operációsrendszer-lemezeken nem.
-- Csak alaplemezek használhatók a Windows Server feladatátvevő fürt egyes verzióiban, további információt a [Feladatátvevő fürthardver-követelmények és a tárolási lehetőségek](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)című témakörben talál.
-- A ReadOnly állomásgyorsítótár-gyorsítótárazás nem érhető `maxShares>1`el a prémium szintű SSD-k esetében.
-- A rendelkezésre állási csoportok és `FaultDomainCount` a virtuálisgép-méretezési csoportok csak 1-es beállítással használhatók.
-- Az Azure Backup és az Azure Site Recovery támogatása még nem érhető el.
+- Jelenleg csak az USA nyugati középső régiója támogatja.
+- A lemezt megosztó virtuális gépeket ugyanabban a [közelségi elhelyezési csoportban](../articles/virtual-machines/windows/proximity-placement-groups.md)kell telepíteni.
+- Csak adatlemezeken engedélyezhető, operációsrendszer-lemezekkel nem.
+- Csak alaplemezek használhatók a Windows Server feladatátvevő fürt egyes verzióiban, részletekért lásd: a [feladatátvételi fürtszolgáltatás hardverkövetelmények és tárolási lehetőségei](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
+- A írásvédett SSD-k gyorsítótárazása nem érhető el a `maxShares>1`prémium szintű SSD-k esetében.
+- A rendelkezésre állási csoportok és a virtuálisgép-méretezési csoportok `FaultDomainCount` csak 1 értékkel használhatók.
+- Azure Backup és Azure Site Recovery támogatás még nem érhető el.
 
-Ha érdekli a megosztott lemezek kipróbálása, akkor [iratkozzon fel az előnézetre.](https://aka.ms/AzureSharedDiskPreviewSignUp)
+Ha érdekli a megosztott lemezek kipróbálása, akkor [regisztráljon az előzetes](https://aka.ms/AzureSharedDiskPreviewSignUp)verzióra.

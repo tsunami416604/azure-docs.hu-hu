@@ -1,6 +1,6 @@
 ---
 title: Tervezési útmutató a replikált táblákhoz
-description: Javaslatok replikált táblák synapse SQL-ben történő tervezéséhez
+description: A replikált táblák a szinapszis SQL-ben történő tervezésével kapcsolatos javaslatok
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,59 +12,59 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80990786"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Tervezési útmutató a replikált táblák SQL Analytics szolgáltatásban való használatához
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Tervezési útmutató a replikált táblák használatához az SQL Analyticsben
 
-Ez a cikk javaslatokat tartalmaz az SQL Analytics-sémában replikált táblák tervezéséhez. Ezekkel a javaslatokkal javíthatja a lekérdezési teljesítményt az adatok mozgásának és a lekérdezés összetettségének csökkentésével.
+Ebből a cikkből megtudhatja, hogyan tervezhet replikált táblákat az SQL Analytics-sémában. Ezekkel az ajánlásokkal javíthatja a lekérdezési teljesítményt azáltal, hogy csökkenti az adatáthelyezést és a lekérdezés bonyolultságát.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy ismeri az sql analytics adatterjesztési és adatáthelyezési fogalmait.További információt az [architektúra](massively-parallel-processing-mpp-architecture.md) cikkben talál.
+Ez a cikk azt feltételezi, hogy ismeri az adatterjesztéssel és az adatáthelyezéssel kapcsolatos fogalmakat az SQL Analytics szolgáltatásban.További információt az [architektúrával](massively-parallel-processing-mpp-architecture.md) foglalkozó cikkben talál.
 
-A táblatervezés részeként a lehető legnagyobb mértékben ismerje meg az adatokat és az adatok lekérdezésének módját.Vegyük például a következő kérdéseket:
+A tábla kialakításának részeként a lehető legnagyobb mértékben megismerheti az adatait és az adatlekérdezés módját.Vegyük például a következő kérdéseket:
 
-- Mekkora az asztal?
-- Milyen gyakran frissül a táblázat?
-- Vannak tény- és dimenziótáblák az SQL Analytics-adatbázisban?
+- Mekkora a táblázat?
+- Milyen gyakran frissül a tábla?
+- Van-e a tény-és dimenziós táblázatok egy SQL Analytics-adatbázisban?
 
 ## <a name="what-is-a-replicated-table"></a>Mi az a replikált tábla?
 
-A replikált tábla rendelkezik az egyes számítási csomópontokon elérhető tábla teljes másolatával. A replikált tábla esetében nincs szükség adatadásra a számítási csomópontok között az összekapcsolási vagy aggregációs művelet előtt. Mivel a tábla több példányt is készített, a replikált táblák akkor működnek a legjobban, ha a tábla mérete kisebb, mint 2 GB tömörített.  2 GB nem egy kemény határ.  Ha az adatok statikusak, és nem változnak, nagyobb táblákat replikálhat.
+A replikált táblák minden számítási csomóponton elérhetők a tábla teljes másolatával. A replikált tábla esetében nincs szükség adatadásra a számítási csomópontok között az összekapcsolási vagy aggregációs művelet előtt. Mivel a táblának több példánya van, a replikált táblák akkor működnek a legjobban, ha a tábla mérete kisebb, mint 2 GB.  2 GB nem rögzített korlát.  Ha az adatmennyiség statikus, és nem változik, nagyobb táblákat is replikálhat.
 
-Az alábbi ábrán egy replikált tábla látható, amely minden számítási csomóponton elérhető. Az SQL Analytics a replikált tábla teljes mértékben másolja a terjesztési adatbázis ba minden számítási csomóponton.
+Az alábbi ábrán egy replikált tábla látható, amely az egyes számítási csomópontokon elérhető. Az SQL Analytics szolgáltatásban a replikált tábla minden számítási csomóponton teljes mértékben másolódik egy terjesztési adatbázisba.
 
 ![Replikált tábla](./media/design-guidance-for-replicated-tables/replicated-table.png "Replikált tábla")  
 
-A replikált táblák jól működnek a csillagséma dimenziótábláihoz. A dimenziótáblák általában olyan ténytáblákhoz vannak összekötve, amelyek a dimenziótáblától eltérően vannak elosztva.  A méretek általában olyan méretűek, amely lehetővé teszi több példány tárolását és karbantartását. A dimenziók lassan változó leíró adatokat tárolnak, például a vevő nevét és címét, valamint a termék adatait. Az adatok lassan változó jellege a replikált tábla karbantartásának kevesebb megőrzését eredményezi.
+A replikált táblák jól működnek a Star-sémák dimenziós tábláiban. A dimenzió táblák általában a dimenzió táblától eltérő eloszlású táblákhoz vannak csatlakoztatva.  A méretek általában olyan méretűek, amelyek lehetővé teszik a több példány tárolását és karbantartását. A dimenziók a lassan megjelenő leíró adatokat tárolják, például az ügyfél nevét és a lakcímét, valamint a termék részleteit. Az adatmennyiség lassan változó jellege a replikált tábla kevesebb karbantartásához vezet.
 
-Fontolja meg egy replikált tábla használatát, ha:
+Egy replikált tábla használata:
 
-- A lemezen lévő asztal mérete a sorok számától függetlenül kisebb, mint 2 GB. A táblázat méretének megkereséséhez használja a [DBCC](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`PDW_SHOWSPACEUSED parancsot: .
-- A tábla olyan illesztésekben használatos, amelyek egyébként adatáthelyezést igényelnek. Ha nem ugyanabban az oszlopban lévő táblákat , például egy kivonatoló elosztott táblát egy ciklikus multiplexelési táblához csatlakozik, adatáthelyezésre van szükség a lekérdezés végrehajtásához.  Ha az egyik tábla kicsi, fontolja meg egy replikált táblát. A legtöbb esetben azt javasoljuk, hogy a ciklikus multiplexelési táblák helyett replikált táblákat használjon. A lekérdezési tervekben az adatmozgatási műveletek megtekintéséhez használja a [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  A BroadcastMoveOperation egy tipikus adatmozgatási művelet, amely replikált táblával kiküszöbölhető.  
+- A lemezen lévő táblázat mérete kevesebb, mint 2 GB, a sorok számától függetlenül. A táblázat méretének megkereséséhez használhatja a [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancsot: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`.
+- A tábla olyan illesztésekben használatos, amelyek egyébként adatáthelyezést igényelnek. Ha olyan táblákat szeretne csatlakoztatni, amelyek nem ugyanazon az oszlopon vannak elosztva, például egy kivonattal elosztott táblán egy ciklikus multiplexelés táblázatba, a lekérdezés befejezéséhez adatáthelyezés szükséges.  Ha a táblák egyike kicsi, vegye fontolóra a replikált táblát. A legtöbb esetben javasolt a replikált táblák használata a ciklikus multiplexelés helyett. A lekérdezési tervekben lévő adatáthelyezési műveletek megtekintéséhez használja a következőt: [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  A BroadcastMoveOperation a tipikus adatáthelyezési művelet, amely egy replikált tábla használatával törölhető.  
 
-Előfordulhat, hogy a replikált táblák nem a legjobb lekérdezési teljesítményt eredményezik, ha:
+A replikált táblák nem eredményezik a legjobb lekérdezési teljesítményt, ha:
 
-- A táblázat gyakori beszúrási, frissítési és törlési műveleteket is tartalmazza.Az adatkezelési nyelv (DML) műveletei a replikált tábla újraépítését igénylik.A gyakori újraépítés lassabb teljesítményt eredményezhet.
-- Az SQL Analytics-adatbázis méretezése gyakran történik. Az SQL Analytics-adatbázis méretezése módosítja a számítási csomópontok számát, ami a replikált tábla újraépítését eredményezi.
-- A tábla nagy számú oszlopot tartalmaz, de az adatműveletek általában csak kis számú oszlophoz férnek hozzá. Ebben a forgatókönyvben a teljes tábla replikálása helyett hatékonyabb lehet a tábla terjesztése, majd a gyakran használt oszlopokindex létrehozása. Ha egy lekérdezés adatáthelyezést igényel, az SQL Analytics csak a kért oszlopok adatait helyezi át.
+- A tábla gyakori INSERT, Update és DELETE műveletekkel rendelkezik.Az adatmanipulációs nyelv (DML) műveletei a replikált tábla újraépítését igénylik.A gyakran előforduló Újraépítés lassabb teljesítményt eredményezhet.
+- Az SQL Analytics-adatbázis méretezése gyakran történik. Az SQL Analytics-adatbázisok skálázása megváltoztatja a számítási csomópontok számát, amelyek a replikált tábla újraépítésekor keletkeznek.
+- A tábla nagy számú oszlopot tartalmaz, de az adatműveletek általában csak kis számú oszlopot férnek hozzá. Ebben az esetben a teljes tábla replikálása helyett hatékonyabb lehet a tábla terjesztése, majd létre kell hozni egy indexet a gyakran használt oszlopokon. Ha egy lekérdezés adatáthelyezést igényel, az SQL Analytics csak a kért oszlopokra helyezi át az adatátvitelt.
 
-## <a name="use-replicated-tables-with-simple-query-predicates"></a>Replikált táblák használata egyszerű lekérdezési predikátumokkal
+## <a name="use-replicated-tables-with-simple-query-predicates"></a>A replikált táblák használata egyszerű lekérdezési predikátumokkal
 
-Mielőtt úgy dönt, hogy egy tábla terjesztését vagy replikálását választja, gondolja át, hogy milyen típusú lekérdezéseket kíván futtatni a táblához. Amikor csak lehetséges,
+Mielőtt megkezdené egy tábla terjesztését vagy replikálását, gondolja át, milyen típusú lekérdezéseket szeretne futtatni a táblán. Ha lehetséges,
 
-- Replikált táblák használata egyszerű lekérdezési predikátumokkal, például egyenlőség vagy egyenlőtlenség lekérdezések.
-- Elosztott táblák használata összetett lekérdezési predikátumokkal rendelkező lekérdezésekhez, például A LIKE vagy a NOT LIKE.
+- Replikált táblákat használhat egyszerű lekérdezési predikátumokkal, például egyenlőséggel vagy egyenlőtlenséggel rendelkező lekérdezéseknél.
+- Elosztott táblák használata összetett lekérdezési predikátumokkal rendelkező lekérdezésekhez, például hasonló vagy nem hasonló.
 
-A processzorigényes lekérdezések akkor teljesítenek a legjobban, ha a munka az összes számítási csomópontközött elvan osztva. Például a táblák minden során számításokat futtató lekérdezések jobban teljesítenek az elosztott táblákon, mint a replikált táblák. Mivel a replikált tábla teljes egészében tárolja az egyes számítási csomópontok, egy CPU-igényes lekérdezés ta-replikált tábla fut a teljes tábla minden számítási csomóponton. Az extra számítás lelassíthatja a lekérdezés teljesítményét.
+A CPU-igényes lekérdezések akkor működnek a legjobban, ha a munka az összes számítási csomóponton el van osztva. A számításokat egy táblázat minden egyes sorára futtató lekérdezések például jobb teljesítményt biztosítanak az elosztott táblákon, mint a replikált táblák. Mivel a rendszer minden számítási csomóponton teljes egészében tárolja a replikált táblát, a rendszer egy, a replikált táblával kapcsolatos CPU-igényes lekérdezést futtat minden számítási csomóponton a teljes táblán. Az extra számítás lelassíthatja a lekérdezések teljesítményét.
 
-Ez a lekérdezés például összetett predikátum.  Gyorsabban fut, ha az adatok egy elosztott táblában vannak, nem pedig replikált táblában. Ebben a példában az adatok kör-ciklikus multiplexelés terjeszthető.
+Ez a lekérdezés például egy összetett predikátummal rendelkezik.  Gyorsabban fut, ha az adatforgalom replikált tábla helyett elosztott táblázatban található. Ebben a példában az adatgyűjtés ciklikusan terjeszthető lehet.
 
 ```sql
 
@@ -74,11 +74,11 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 
 ```
 
-## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Meglévő ciklikus multiplexelési táblák átalakítása replikált táblákká
+## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Meglévő ciklikus időszeletelési táblázatok átalakítása replikált táblákra
 
-Ha már rendelkezik ciklikus multiplexeléstáblákkal, javasoljuk, hogy konvertálja őket replikált táblákká, ha azok megfelelnek a cikkben ismertetett feltételeknek. A replikált táblák javítják a ciklikus multiplexelési táblák teljesítményét, mivel nem szükséges az adatok mozgatása.  A ciklikus multiplexelési tábla mindig adatáthelyezést igényel az illesztésekhez.
+Ha már van ciklikusan megnyitható táblái, javasoljuk, hogy konvertálja azokat replikált táblákra, ha azok megfelelnek a jelen cikkben leírt feltételeknek. A replikált táblák javítják a ciklikusan megjelenő táblák teljesítményét, mivel nem szükségesek az adatáthelyezéshez.  A Round-Robin tábla mindig adatáthelyezést igényel az illesztésekhez.
 
-Ez a példa [ctas](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével módosítja a DimSalesTerritory táblát replikált táblává. Ez a példa attól függetlenül működik, hogy a DimSalesTerritory kivonatoló vagy ciklikus multiplexelésű.
+Ez a példa a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával módosítja a DimSalesTerritory táblát egy replikált táblára. Ez a példa attól függetlenül működik, hogy a DimSalesTerritory kivonat-elosztott vagy ciklikus multiplexelés.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
@@ -97,11 +97,11 @@ RENAME OBJECT [dbo].[DimSalesTerritory_REPLICATE] TO [DimSalesTerritory];
 DROP TABLE [dbo].[DimSalesTerritory_old];
 ```
 
-### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Lekérdezési teljesítmény példa ciklikus multiplexelésre és replikáltra
+### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Lekérdezési teljesítmény – példa a ciklikus multiplexelés és a replikált
 
-A replikált tábla nem igényel adatáthelyezést az illesztések, mert a teljes tábla már jelen van az egyes számítási csomópontokon. Ha a dimenziótáblák ciklikus multiplexelésűek, egy illesztés másolja a dimenziótáblát teljes egészében az egyes számítási csomópontokra. Az adatok áthelyezéséhez a lekérdezési terv egy BroadcastMoveOperation nevű műveletet tartalmaz. Ez a fajta adatmozgatási művelet lelassítja a lekérdezési teljesítményt, és replikált táblák használatával megszűnik. A lekérdezési terv lépéseinek megtekintéséhez használja a [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) rendszerkatalógus nézetét.  
+A replikált táblákhoz nincs szükség adatáthelyezésre az illesztésekhez, mert a teljes tábla már megtalálható az egyes számítási csomópontokon. Ha a dimenziós táblák ciklikusan elosztottak, az illesztések teljes mértékben átmásolják a dimenzió táblát az egyes számítási csomópontokra. Az adatáthelyezéshez a lekérdezési terv egy BroadcastMoveOperation nevű műveletet tartalmaz. Ez a típusú adatáthelyezési művelet lelassítja a lekérdezési teljesítményt, és a replikált táblák használatával kiesik. A lekérdezési terv lépéseinek megtekintéséhez használja a [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Rendszerkatalógus nézetet.  
 
-Például a következő lekérdezés az AdventureWorks séma, a `FactInternetSales` tábla kivonat-elosztott. A `DimDate` `DimSalesTerritory` táblák kisebb dimenziótáblák. Ez a lekérdezés a 2004-es pénzügyi év észak-amerikai értékesítését adja vissza:
+A AdventureWorks séma következő lekérdezésében például a `FactInternetSales` tábla kivonat-eloszlású. A `DimDate` és `DimSalesTerritory` a táblák kisebb dimenzió táblák. Ez a lekérdezés a 2004-as pénzügyi év teljes értékesítéseit adja vissza Észak-Amerika:
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -114,63 +114,63 @@ WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
 
-Újra létrehoztuk `DimDate` `DimSalesTerritory` és ciklikus multiplexelési asztalként. Ennek eredményeképpen a lekérdezés a következő lekérdezési tervet mutatta, amely több szórásos áthelyezési műveletet is magában látott:
+Újra létre lett hozva `DimDate` , `DimSalesTerritory` és ciklikus időszeletelésű táblázatként. Ennek eredményeképpen a lekérdezés a következő lekérdezési tervet mutatta, amelynek több szórásos mozgatási művelete van:
 
-![Ciklikus multiplexeléses lekérdezési terv](./media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg)
+![Ciklikus multiplexelés – lekérdezési terv](./media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg)
 
-Újra létrehoztuk `DimDate` `DimSalesTerritory` és replikált táblákként létrehoztuk, és újra futtattuk a lekérdezést. Az eredményül kapott lekérdezési terv sokkal rövidebb, és nem rendelkezik szórásos lépéseket.
+A rendszer újból `DimDate` létrehozta `DimSalesTerritory` a és a replikált táblákat, majd újra futtatta a lekérdezést. Az eredményül kapott lekérdezési terv sokkal rövidebb, és nem rendelkezik szórási lépésekkel.
 
 ![Replikált lekérdezési terv](./media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg)
 
-## <a name="performance-considerations-for-modifying-replicated-tables"></a>A replikált táblák módosításával kapcsolatos teljesítményszempontok
+## <a name="performance-considerations-for-modifying-replicated-tables"></a>A replikált táblák módosításának teljesítményével kapcsolatos megfontolások
 
-Az SQL Analytics a tábla fő verziójának karbantartásával valósítja meg a replikált táblát. A fő verziót az egyes számítási csomópontok első terjesztési adatbázisába másolja. Változás esetén az SQL Analytics először frissíti a fő verziót, majd újraépíti az egyes számítási csomópontok tábláit. A replikált tábla újraépítése magában foglalja a tábla másolása minden számítási csomópont, majd az indexek létrehozása.  Egy DW2000c replikált táblája például 5 példányt ad az adatokból.  Egy fő példány és egy teljes másolat minden számítási csomóponton.  Az összes adat terjesztési adatbázisokban tárolódik. Az SQL Analytics ezt a modellt használja a gyorsabb adatmódosítási utasítások és a rugalmas skálázási műveletek támogatásához.
+Az SQL Analytics egy replikált táblát valósít meg a tábla főverziójának megtartásával. A főverziót az összes számítási csomóponton az első terjesztési adatbázisba másolja. Ha változás történik, az SQL Analytics először frissíti a fő verziót, majd újraépíti a táblákat az egyes számítási csomópontokon. A replikált tábla újraépítése magában foglalja a tábla másolását az egyes számítási csomópontokra, majd az indexek összeállítását.  Egy DW2000c replikált táblájának például 5 másolata van az adatmennyiségről.  Egy fő másolat és egy teljes másolat az egyes számítási csomópontokon.  A rendszer minden adatforrást a terjesztési adatbázisokban tárol. Az SQL Analytics ezt a modellt használja a gyorsabb adatmódosítási utasítások és a rugalmas skálázási műveletek támogatásához.
 
-Újraépítésre van szükség a következő után:
+Az Újraépítés a következő után szükséges:
 
-- Az adatok betöltése vagy módosítása
-- A Synapse SQL-példány más szintre van méretezve
-- A tábladefiníció frissül
+- Az adatfeltöltés vagy módosítás
+- A szinapszis SQL-példánya más szintre van méretezve
+- A tábla definíciója frissítve
 
-Az újraépítésnem szükséges a következők után:
+Az Újraépítés a következő után nem szükséges:
 
 - Szüneteltetési művelet
 - Folytatási művelet
 
-Az újraépítés nem történik meg közvetlenül az adatok módosítása után. Ehelyett az újraépítés akkor aktiválódik, amikor egy lekérdezés először választ ki a táblából.  A lekérdezés, amely elindította az újraépítés tanév olvasás azonnal a fő verziója a tábla, miközben az adatok aszinkron módon másolt minden számítási csomópont. Amíg az adatmásolás be nem fejeződik, a további lekérdezések továbbra is a tábla főverzióját fogják használni.  Ha olyan tevékenység történik a replikált táblával szemben, amely egy másik újraépítést kényszerít, az adatmásolás érvénytelenné válik, és a következő select utasítás újra másolja az adatokat.
+Az Újraépítés nem történik meg közvetlenül az adatmódosítás után. Ehelyett az Újraépítés akkor aktiválódik, amikor a lekérdezés első alkalommal kiválasztja a táblázatot.  Az a lekérdezés, amely azonnal elindította az újraépítési beolvasásokat a tábla fő verziójából, miközben az adatok aszinkron módon másolódnak át az egyes számítási csomópontokra. Az Adatmásolás befejezéséig a további lekérdezések továbbra is a tábla fő verzióját használják.  Ha bármilyen tevékenység történik a replikált táblán, amely egy másik újraépítést kényszerít, az adatmásolat érvénytelenné válik, és a következő SELECT utasítás ismét átmásolja az adatok másolását.
 
-### <a name="use-indexes-conservatively"></a>Indexek használata konzervatív módon
+### <a name="use-indexes-conservatively"></a>Az indexek konzervatív használata
 
-A replikált táblákra a szokásos indexelési eljárások vonatkoznak. Az SQL Analytics az újraépítés részeként újraépíti az egyes replikált táblaindexeket. Csak akkor használjon indexeket, ha a teljesítménynövekedés meghaladja az indexek újraépítésének költségét.
+A szabványos indexelési eljárások a replikált táblákra vonatkoznak. Az SQL Analytics az Újraépítés részeként újraépíti az egyes replikált táblák indexeit. Csak az indexek használata, ha a teljesítmény meghaladja az indexek újjáépítésének költségeit.
 
-### <a name="batch-data-load"></a>Kötegadatok betöltése
+### <a name="batch-data-load"></a>Batch-adatterhelés
 
-Adatok replikált táblákba történő betöltésekor próbálja meg minimalizálni az újraépítéseket a terhelések együtt kötegelésével. Végezze el az összes kötegelt terhelést a select utasítások futtatása előtt.
+Ha replikált táblákba tölti be az adatgyűjtést, próbálja meg az Újraépítés minimalizálását a kötegelt betöltések együtt. A SELECT utasítások futtatása előtt hajtsa végre az összes kötegelt terhelést.
 
-Ez a betöltési minta például négy forrásból tölti be az adatokat, és négy újraépítést hív meg.
+Például a terhelési minta négy forrásból tölti be az adatait, és négy újraépítést hív meg.
 
         Load from source 1.
-- Válassza ki az utasításeseményindítók újraépítését 1.
-        Betöltés a forrás2-ből.
-- Válassza ki az utasításeseményindítók újraépítését 2.
-- Betöltés a 3-as forrásból.
-- Válassza ki az utasításeseményindítók újraépítését 3.
-- Betöltés a 4-es forrásból.
-- Válassza ki az utasításeseményindítók újraépítését 4.
+- Válassza az utasítás Újraépítés 1 lehetőséget.
+        Betöltés a 2. forrásból.
+- A SELECT utasítás elindítja a 2. újraépítést.
+- Betöltés a 3. forrásból.
+- A SELECT utasítás elindítja a 3. Újraépítés elemet.
+- Betöltés a 4. forrásból.
+- Válassza az utasítás Újraépítés 4 lehetőséget.
 
-Ez a betöltési minta például négy forrásból tölti be az adatokat, de csak egy újraépítést hív meg.
+Például a terhelési minta négy forrásból tölti be az adatait, de csak egy újraépítést hív meg.
 
-- Betöltés az 1-es forrásból.
-- Betöltés a forrás2-ből.
-- Betöltés a 3-as forrásból.
-- Betöltés a 4-es forrásból.
-- Válassza ki az utasításeseményindítók újraépítését.
+- Betöltés az 1. forrásból.
+- Betöltés a 2. forrásból.
+- Betöltés a 3. forrásból.
+- Betöltés a 4. forrásból.
+- Válassza az utasítás eseményindítók Újraépítés lehetőséget.
 
-### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Replikált tábla újraépítése kötegelt terhelés után
+### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Replikált tábla újraépítése batch-betöltés után
 
-A lekérdezések konzisztens végrehajtási idejének biztosítása érdekében fontolja meg a replikált táblák kötegelt terhelés utáni összeállításának kényszerítése. Ellenkező esetben az első lekérdezés továbbra is adatáthelyezést használ a lekérdezés befejezéséhez.
+A konzisztens lekérdezés-végrehajtási idők biztosítása érdekében érdemes lehet a replikált táblákat a Batch betöltését követően kényszeríteni. Ellenkező esetben az első lekérdezés továbbra is az adatáthelyezést használja a lekérdezés befejezéséhez.
 
-Ez a lekérdezés a [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV-t használja a módosított, de újranem épített replikált táblák listázásához.
+Ez a lekérdezés a [sys. pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV használatával sorolja fel azokat a replikált táblákat, amelyeket módosítottak, de nem építették újra.
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
@@ -183,7 +183,7 @@ SELECT [ReplicatedTable] = t.[name]
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
 
-Az újraépítés elindításához futtassa a következő utasítást az előző kimenet minden tábláján.
+Az Újraépítés elindításához futtassa a következő utasítást az előző kimenetben lévő összes táblán.
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
@@ -193,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 Replikált tábla létrehozásához használja az alábbi utasítások egyikét:
 
-- [TÁBLA LÉTREHOZÁSA (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [TÁBLA AS SELECT LÉTREHOZÁSA (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE a SELECT (SQL Analytics) használatával](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Az elosztott táblák áttekintését az [elosztott táblák](sql-data-warehouse-tables-distribute.md)című témakörben találja.
+Az elosztott táblák áttekintését lásd: [elosztott táblák](sql-data-warehouse-tables-distribute.md).

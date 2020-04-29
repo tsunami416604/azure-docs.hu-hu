@@ -1,7 +1,7 @@
 ---
 title: Egyszerű lekérdezés létrehozása
 titleSuffix: Azure Cognitive Search
-description: Például a teljes szöveges keresés egyszerű szintaxisán alapuló lekérdezések futtatásához, a szűrőkeresés, a földrajzi keresés, a faceted keresés az Azure Cognitive Search indexe alapján.
+description: Példa a lekérdezések futtatására a teljes szöveges keresés egyszerű szintaxisa, a szűrési keresés, a Geo-keresés és az Azure Cognitive Search indexek közötti részletes keresés alapján.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,73 +9,73 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261805"
 ---
-# <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search szolgáltatásban
+# <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search
 
-Az Azure Cognitive [Search, az egyszerű lekérdezés szintaxisa](query-simple-syntax.md) meghívja az alapértelmezett lekérdezéselemző teljes szöveges keresési lekérdezések egy indexen. Ez az elemző gyors, és kezeli a gyakori forgatókönyveket, beleértve a teljes szöveges keresést, a szűrt és a kifejezésre végzett keresést, valamint a földrajzi keresést. 
+Az Azure Cognitive Searchban az [egyszerű lekérdezési szintaxis](query-simple-syntax.md) meghívja az alapértelmezett lekérdezési elemzőt a teljes szöveges keresési lekérdezések indexre való végrehajtásához. Ez az elemző gyors, és kezeli a gyakori forgatókönyveket, például a teljes szöveges keresést, a szűrt és a sokoldalú keresést, valamint a Geo-keresést. 
 
-Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére, a `search=` Keresési [dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) művelet paraméterének feltöltésére.
+Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére, a [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) művelet `search=` paraméterének feltöltésére.
 
-Egy másik lekérdezés szintaxisa [a Full Lucene,](query-lucene-syntax.md)amely összetettebb lekérdezési struktúrákat támogat, például az intelligens és helyettesítő karakteres keresést, ami további időt vehet igénybe. További információt és a teljes szintaxist bemutató példákat [a Teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
+Egy alternatív lekérdezési szintaxis [teljes Lucene](query-lucene-syntax.md), amely összetettebb lekérdezési struktúrákat támogat, például a fuzzy és a helyettesítő karakterek keresését, ami további időt vehet igénybe. További információt és példákat a teljes szintaxissal kapcsolatban [a teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
 
-## <a name="formulate-requests-in-postman"></a>A kérelmek megfogalmazása a Postmanben
+## <a name="formulate-requests-in-postman"></a>Kérelmek összeállítása a Poster-ban
 
-A következő példák a [New York-i OpenData kezdeményezés](https://nycopendata.socrata.com/) által biztosított adatkészlet alapján elérhető állásokból álló NYC Jobs keresési indexet használják ki. Ezek az adatok nem tekinthetők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox szolgáltatás, ami azt jelenti, hogy nem kell egy Azure-előfizetés vagy az Azure Cognitive Search, hogy megpróbálja ezeket a lekérdezéseket.
+Az alábbi példákban a [New York OpenData Initiative City](https://nycopendata.socrata.com/) által biztosított adatkészletek alapján elérhető feladatokat tartalmazó NYC-feladatok keresési indexét használjuk. Ezek az adathalmazok nem tekintendők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox-szolgáltatáson alapul, ami azt jelenti, hogy a lekérdezések kipróbálásához nincs szükség Azure-előfizetésre vagy Azure-Cognitive Searchra.
 
-Amire szüksége van a Postman vagy egy ezzel egyenértékű eszköz kiadó HTTP kérelmet GET. További információ: [Rövid útmutató: Az Azure Cognitive Search REST API felfedezése a Postman használatával](search-get-started-postman.md)című témakörben olvashat.
+A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: gyors útmutató [: az Azure Cognitive Search REST API közzététele a Poster használatával](search-get-started-postman.md).
 
-### <a name="set-the-request-header"></a>A kérelemfejléc beállítása
+### <a name="set-the-request-header"></a>A kérelem fejlécének beállítása
 
-1. A kérelem fejlécében állítsa a `application/json` **Tartalomtípus** t .
+1. A kérelem fejlécében állítsa be a **Content-Type értéket a következőre** : `application/json`.
 
-2. Adjon hozzá egy **api-kulcsot**, és `252044BE3886FE4A8E3BAA4F595114BB`állítsa a következő karakterláncra: . Ez a nyc jobs indexet üzemeltető sandbox keresési szolgáltatás lekérdezési kulcsa.
+2. Adjon hozzá egy **API-kulcsot**, és állítsa be a következő sztringre: `252044BE3886FE4A8E3BAA4F595114BB`. Ez egy lekérdezési kulcs a NYC-feladatok indexét futtató sandbox Search szolgáltatáshoz.
 
-Miután megadta a kérelem fejlécét, újra felhasználhatja azt a cikkben szereplő összes lekérdezéshez, és csak a **search=** karakterláncot cserélheti ki. 
+A kérelem fejlécének megadását követően újra felhasználhatja azt a jelen cikk összes lekérdezéséhez, csak a **Search =** sztringet felcserélve. 
 
   ![Postman-kérelem fejléce](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>A kérelem URL-címének beállítása
 
-A kérés egy GET parancs az Azure Cognitive Search végpontot és keresési karakterláncot tartalmazó URL-címmel párosítva.
+A kérelem egy GET parancs, amely az Azure Cognitive Search végpontot és a keresési karakterláncot tartalmazó URL-címmel párosítva van.
 
   ![Postman-kérelem fejléce](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
-Az URL-összetétel a következő elemekkel rendelkezik:
+Az URL-összeállítás a következő elemekből áll:
 
-+ **`https://azs-playground.search.windows.net/`** az Azure Cognitive Search fejlesztői csapata által fenntartott sandbox keresési szolgáltatás. 
-+ **`indexes/nycjobs/`** a NYC-feladatok indexe az adott szolgáltatás indexgyűjteményében. A kérelemhez a szolgáltatás név és az index is szükséges.
-+ **`docs`** az összes kereshető tartalmat tartalmazó dokumentumgyűjtemény. A kérelem fejlécében megadott lekérdezési API-kulcs csak a dokumentumgyűjteményt célzó olvasási műveleteken működik.
-+ **`api-version=2019-05-06`** beállítja az api-verziót, amely minden kéréshez szükséges paraméter.
++ **`https://azs-playground.search.windows.net/`** Az Azure Cognitive Search fejlesztői csapata által karbantartott sandbox keresési szolgáltatás. 
++ **`indexes/nycjobs/`** a New York Jobs index a szolgáltatás indexek gyűjteményében. A kéréshez a szolgáltatás nevét és indexét is meg kell adni.
++ **`docs`** az összes kereshető tartalmat tartalmazó dokumentumok gyűjteménye. A kérelem fejlécében megadott lekérdezési API-kulcs csak olyan olvasási műveleteken működik, amelyek a dokumentumok gyűjteményét célozzák meg.
++ **`api-version=2019-05-06`** Beállítja az API-verziót, amely minden kérelem esetében kötelező paraméter.
 + **`search=*`** a lekérdezési karakterlánc, amely a kezdeti lekérdezésben null értékű, és az első 50 eredményt adja vissza (alapértelmezés szerint).
 
 ## <a name="send-your-first-query"></a>Az első lekérdezés elküldése
 
-Ellenőrzési lépésként illessze be a következő kérést a GET fájlba, és kattintson a **Küldés**gombra. Az eredmények részletes JSON-dokumentumokként kerülnek visszaadásra. A teljes dokumentumokat a rendszer visszaadja, így az összes mező és érték megtekintése.
+Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, és kattintson a **Küldés**gombra. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza. A rendszer a teljes dokumentumot adja vissza, ami lehetővé teszi az összes mező és az összes érték megtekintését.
 
-Ezt az URL-címet érvényesítési lépésként illessze be egy REST-ügyfélbe, és tekintse meg a dokumentumszerkezetet.
+Illessze be ezt az URL-címet egy REST-ügyfélbe érvényesítési lépésként, és tekintse meg a dokumentum szerkezetét.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-A lekérdezési **`search=*`** karakterlánc , a null vagy üres keresés meghatározatlan keresési megfelelője. Ez nem különösebben hasznos, de ez a legegyszerűbb keresés, amit tehetünk.
+A lekérdezési karakterlánc **`search=*`**() nem meghatározott keresés, amely egyenértékű null vagy üres kereséssel. Ez nem különösen hasznos, de ez a legegyszerűbb keresési lehetőség.
 
-Tetszés szerint **`$count=true`** hozzáadhatja az URL-címhez a keresési feltételeknek megfelelő dokumentumok számát. Egy üres keresési karakterlánc, ez az összes dokumentumot az indexben (kb. 2800 esetében NYC Jobs).
+Opcionálisan hozzáadhatja **`$count=true`** az URL-címet a keresési feltételeknek megfelelő dokumentumok számának visszaadásához. Üres keresési sztring esetén ez az indexben található összes dokumentum (körülbelül 2800 a NYC-feladatok esetében).
 
-## <a name="how-to-invoke-simple-query-parsing"></a>Egyszerű lekérdezéselemzés megmeghívása
+## <a name="how-to-invoke-simple-query-parsing"></a>Egyszerű lekérdezések elemzésének meghívása
 
-Az interaktív lekérdezések esetében nem kell megadnia semmit: az alapértelmezett egyszerű. A kódban, ha korábban meglett meghívva **queryType=full** a teljes lekérdezés szintaxisához, alaphelyzetbe állíthatja az alapértelmezett et a **queryType=simple**.
+Az interaktív lekérdezésekhez nem kell semmit megadnia: az egyszerű érték az alapértelmezett. Ha a Code (kód) beállításnál korábban a **queryType = Full** értéket választotta a teljes lekérdezési szintaxishoz, alaphelyzetbe állíthatja az alapértelmezettet a **queryType = Simple**értékkel.
 
-## <a name="example-1-field-scoped-query"></a>1. példa: Mezőhatókörrel kapcsolatos lekérdezés
+## <a name="example-1-field-scoped-query"></a>1. példa: mező hatókörű lekérdezés
 
-Ez az első példa nem elemző-specifikus, de az első alapvető lekérdezési koncepció, az elszigetelés bevezetéséhez vezetünk. Ez a példa a lekérdezés végrehajtását és a választ csak néhány konkrét mezőre. Az olvasható JSON-válasz strukturálásának ismerete akkor fontos, ha az eszköz postás vagy kereső. 
+Ez az első példa nem elemző-specifikus, de az első alapvető lekérdezési koncepció bevezetéséhez vezetünk: a tárolás. Ez a példa hatókörök lekérdezési végrehajtását és a válaszát csak néhány konkrét mezőre szűkíti. Az olvasható JSON-válaszok szerkezetének ismerete fontos, ha az eszköz Poster vagy Search Explorer. 
 
-Röviden, a lekérdezés csak a *business_title* mezőt célozza meg, és csak az üzleti címeket adja vissza. A szintaxis a **searchFields ,** hogy korlátozza a lekérdezés végrehajtását, hogy csak a business_title mezőt, és **válassza ki,** hogy mely mezők szerepelnek a válaszban.
+A rövidség kedvéért a lekérdezés csak a *business_title* mezőt célozza meg, és csak az üzleti címeket adja vissza. A szintaxis **searchFields** a lekérdezés végrehajtásának korlátozása csak a business_title mezőre, és **válassza ki** , hogy mely mezők szerepeljenek a válaszban.
 
 ### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
 
@@ -83,7 +83,7 @@ Röviden, a lekérdezés csak a *business_title* mezőt célozza meg, és csak a
 searchFields=business_title&$select=business_title&search=*
 ```
 
-Ugyanaz a lekérdezés, amely több mezőt tartalmazó, vesszővel tagolt listában.
+Itt ugyanaz a lekérdezés, amelyben több mező található a vesszővel tagolt listában.
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
@@ -97,29 +97,29 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
-  ![Postás minta válasz](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Poster-minta válasz](media/search-query-lucene-examples/postman-sample-results.png)
 
-Lehet, hogy észrevette a keresési pontszámot a válaszban. Az 1-es egységes pontszámok akkor fordulnak elő, ha nincs rang, vagy azért, mert a keresés nem volt teljes szöveges keresés, vagy mert nem alkalmaztak feltételt. A feltétel nélküli null kereséshez a sorok tetszőleges sorrendben térnek vissza. Ha tényleges feltételeket ad meg, látni fogja, hogy a keresési pontszámok értelmes értékekké alakulnak.
+Lehetséges, hogy észrevette a keresési pontszámot a válaszban. 1 egységes pontszám akkor fordul elő, ha nincs rangsor, vagy mert a keresés nem teljes szöveges keresés, vagy nem lett alkalmazva. A feltétel nélküli null kereséshez a sorok tetszőleges sorrendben jönnek vissza. A tényleges feltételek belefoglalásakor a keresési pontszámok jelentős értékekre lesznek kialakítva.
 
-## <a name="example-2-look-up-by-id"></a>2. példa: Felnézés azonosító szerint
+## <a name="example-2-look-up-by-id"></a>2. példa: Keresés azonosító alapján
 
-Ez a példa egy kicsit atipikus, de a keresési viselkedések kiértékelésekor érdemes megvizsgálni egy adott dokumentum teljes tartalmát, hogy megértse, miért került bele vagy nem került ki az eredményekből. Ha egy dokumentumot teljes egészében vissza szeretne adni, a dokumentumazonosítóban átadhatja a [lookup műveletet.](https://docs.microsoft.com/rest/api/searchservice/lookup-document)
+Ez a példa egy kicsit atipikus, de a keresési viselkedés kiértékelése során érdemes megvizsgálni egy adott dokumentum teljes tartalmát, hogy megtudja, miért került bele vagy kizárt az eredményekből. Egyetlen dokumentum teljes egészében történő visszaadásához használjon [keresési műveletet](https://docs.microsoft.com/rest/api/searchservice/lookup-document) a dokumentum azonosítójának továbbításához.
 
-Minden dokumentum egyedi azonosítóval rendelkezik. A lekérdezés szintaxisának kipróbálásához először adja vissza a dokumentumazonosítók listáját, hogy megtalálja a használhatót. Nyc-feladatok esetén az azonosítók a `id` mezőben tárolódnak.
+Minden dokumentum egyedi azonosítóval rendelkezik. Ha egy keresési lekérdezés szintaxisát szeretné kipróbálni, először a dokumentumok azonosítóinak listáját kell visszaadnia, hogy megtalálja az egyiket a használathoz. A NYC-feladatok esetében az azonosítók a `id` mezőben vannak tárolva.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
-A következő példa egy "9E1E3AF9-0660-4E00-AF51-9B654925A2D5" (9E1E3AF9-0660-4E00-AF51-9B654925A2D5) alapján `id` egy adott dokumentumot visszaad, amely először az előző válaszban jelent meg. A következő lekérdezés a teljes dokumentumot adja vissza, nem csak a kijelölt mezőket. 
+A következő példa egy olyan keresési lekérdezés, amely az előző válaszban `id` elsőként megjelenő "9E1E3AF9-0660-4E00-AF51-9B654925A2D5" alapján adott dokumentumot ad vissza. A következő lekérdezés a teljes dokumentumot adja vissza, nem csak a kijelölt mezőket. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
-## <a name="example-3-filter-queries"></a>3. példa: Lekérdezések szűrése
+## <a name="example-3-filter-queries"></a>3. példa: lekérdezések szűrése
 
-[A szűrő szintaxisa](https://docs.microsoft.com/azure/search/search-query-odata-filter) olyan OData-kifejezés, amelyet **kereséssel** vagy önmagában is használhat. Egy keresési paraméter nélküli önálló szűrő akkor hasznos, ha a szűrőkifejezés képes az érdeklődésre számot tartó dokumentumok teljes minősítésére. Lekérdezési karakterlánc nélkül nincs lexikális vagy nyelvi elemzés, nincs pontozás (az összes pontszám 1), és nincs rangsorolás. Figyelje meg, hogy a keresési karakterlánc üres.
+A [szűrési szintaxis](https://docs.microsoft.com/azure/search/search-query-odata-filter) egy OData kifejezés, amelyet a **kereséssel** vagy önmagában is használhat. A keresési paraméter nélküli önálló szűrő akkor hasznos, ha a szűrő kifejezés képes teljes mértékben minősíteni a dokumentumokat. A lekérdezési karakterláncok nélkül nincs lexikális vagy nyelvi elemzés, nincs pontozás (az összes pontszám 1), és nincs rangsor. Figyelje meg, hogy a keresési karakterlánc üres.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -135,27 +135,27 @@ Együtt használva a szűrő először a teljes indexre lesz alkalmazva, majd a 
 
   ![Lekérdezési válasz szűrése](media/search-query-simple-examples/filtered-query.png)
 
-Ha szeretné kipróbálni ezt a Postman segítségével GET, akkor illessze be ezt a karakterláncot:
+Ha szeretné kipróbálni a Poster használatával a GET paranccsal, illessze be a következő karakterláncot:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-A szűrő és a keresés **`search.ismatch*()`** kombinálásának másik hatékony módja a szűrőkifejezés, ahol a szűrőn belül keresési lekérdezést használhat. Ez a szűrőkifejezés helyettesítő karaktert használ a *tervben* a business_title kiválasztásához, beleértve a terv, a tervező, a tervezés stb.
+Egy másik hatékony módszer a szűrő és a keresés **`search.ismatch*()`** összekapcsolására egy szűrési kifejezésben, ahol keresési lekérdezést használhat a szűrőn belül. Ez a szűrési kifejezés egy helyettesítő karaktert használ a *tervben* a business_title kiválasztásához, beleértve a tervet, a Plannert, a tervezést és így tovább.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-A függvényről további információt a [search.ismatch című témakörben talál a "Példák szűrése" című témakörben.](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)
+A függvénnyel kapcsolatos további információkért tekintse [meg a Search. ismatch "példák szűrése"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)című témakört.
 
-## <a name="example-4-range-filters"></a>4. példa: Tartományszűrők
+## <a name="example-4-range-filters"></a>4. példa: tartomány szűrőinek
 
-A tartományszűrést **`$filter`** bármilyen adattípus kifejezései támogatják. A következő példák numerikus és karakterláncmezőkön keresnek. 
+A tartomány szűrése bármely **`$filter`** adattípushoz kifejezéssel támogatott. A következő példák a numerikus és a sztring mezőkre mutatnak keresést. 
 
-Az adattípusok fontosak a tartományszűrőkben, és akkor működnek a legjobban, ha a numerikus adatok numerikus mezőkben, a karakterlánc-adatok pedig karakterláncmezőkben találhatók. Numerikus adatok karakterláncmezőkben nem alkalmas tartományok, mert numerikus karakterláncok nem hasonlíthatók össze az Azure Cognitive Search. 
+Az adattípusok fontosak a tartományhoz tartozó szűrőkben, és akkor működnek a legjobban, ha numerikus mezőkben numerikus adat szerepel, és a sztring mezőkben sztring szerepel. A karakterlánc mezőiben szereplő numerikus adat nem alkalmas tartományokhoz, mert a numerikus karakterláncok nem összehasonlíthatóak az Azure Cognitive Searchban. 
 
-A következő példák POST formátumúak az olvashatóság érdekében (numerikus tartomány, majd szövegtartomány):
+Az alábbi példák formátuma az olvashatóság (numerikus tartomány, majd a szöveges tartomány):
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-  ![Tartományszűrő numerikus tartományokhoz](media/search-query-simple-examples/rangefilternumeric.png)
+  ![Numerikus tartományokhoz tartozó tartomány-szűrő](media/search-query-simple-examples/rangefilternumeric.png)
 
 
 ```http
@@ -181,9 +181,9 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     }
 ```
 
-  ![Tartományszűrő szövegtartományokhoz](media/search-query-simple-examples/rangefiltertext.png)
+  ![Tartomány-szűrő a szöveges tartományokhoz](media/search-query-simple-examples/rangefiltertext.png)
 
-Ezeket a Postman-ben is kipróbálhatja a GET használatával:
+A GET paranccsal is kipróbálhatja ezeket a Poster használatával:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
@@ -194,13 +194,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ```
 
 > [!NOTE]
-> Értéktartományok on-val való faceting gyakori keresési alkalmazás követelmény. A színtartomány-navigációs struktúrák szűrőinek létrehozásáról további információt és példákat a ["Szűrés tartomány alapján" című témakörben talál: *"Szűrés*tartomány alapján" című témakörben.](search-faceted-navigation.md#filter-based-on-a-range)
+> Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra vonatkozó követelmény. További információt és példákat a szűrők kiépítéséhez a dimenziós navigációs struktúrákhoz a részletes [ *navigáció megvalósítása*című témakör "szűrés tartomány alapján"](search-faceted-navigation.md#filter-based-on-a-range)című szakaszában talál.
 
-## <a name="example-5-geo-search"></a>5. példa: Földrajzi keresés
+## <a name="example-5-geo-search"></a>5. példa: Geo-keresés
 
-A mintaindex tartalmaz egy geo_location mezőt szélességi és hosszúsági koordinátákkal. Ez a példa a [geo.distance függvényt](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) használja, amely egy kiindulási pont kerületén belül szűri a dokumentumokat, tetszőleges távolságra (kilométerben) ki. A lekérdezés (4) utolsó értékének módosításával csökkentheti vagy nagyíthatja a lekérdezés felületét.
+A minta index egy geo_location mezőt tartalmaz szélességi és hosszúsági koordinátákkal. Ez a példa a [Geo. Distance függvényt](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) használja, amely egy kiindulási pont kerületén belüli dokumentumok szűrésére szolgál, az Ön által megadott távolságra (kilométerben). A lekérdezésben szereplő utolsó értéket (4) módosíthatja a lekérdezés felületi területének csökkentése vagy nagyítása érdekében.
 
-A következő példa POST formátumban olvasható:
+A következő példa formátuma az olvashatóság érdekében:
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -211,90 +211,90 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-Az olvashatóbb eredmények érdekében a keresési eredmények et úgy vágja le a program, hogy tartalmazzák a beosztásazonosítót, a beosztást és a munkahelyi helyet. A kezdő koordinátákat egy véletlenszerű dokumentumból szerezték be az indexben (ebben az esetben egy Staten Island-i munkahelyhez.
+További olvasható találatok esetén a keresési eredmények a feladatok AZONOSÍTÓjának, a beosztás és a munkahelyi hely belefoglalására vannak kimetszve. A kezdeti koordinátákat a rendszer egy véletlenszerű dokumentumból szerezte be az indexben (ebben az esetben a Staten Island-beli munkahelyhez.
 
-Azt is próbálja ki ezt a Postman segítségével GET:
+Ezt a GET paranccsal is kipróbálhatja a Poster használatával:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>6. példa: Keresés pontossága
+## <a name="example-6-search-precision"></a>6. példa: a keresés pontossága
 
-A kifejezéslekérdezések egyetlen kifejezések, amelyek közül talán sok is, amelyek et egymástól függetlenül értékelik ki. A kifejezéslekérdezéseket idézőjelek közé kell tenni, és szó szerinti karakterláncként kell kiértékelni. A mérkőzés pontosságát operátorok és searchMode szabályozzák.
+A kifejezéses lekérdezések egyetlen kifejezésből állnak, amelyek közül sok közülük egymástól függetlenül kerül kiértékelésre. A kifejezéses lekérdezések idézőjelek közé vannak lefoglalva, és egy Verbatim sztringként vannak kiértékelve. A egyezés pontosságát a kezelők és a searchMode vezérlik.
 
-1. **`&search=fire`** példa: 150 eredményt ad vissza, ahol az összes egyezés a dokumentumban valahol a tűz szót tartalmazza.
+1. példa **`&search=fire`** : a 150 eredményt adja vissza, ahol az összes egyezés tartalmazza a Word tüzet a dokumentumban.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
-2. **`&search=fire department`** példa: 2002-es eredményeket ad vissza. A rendszer visszaküldi az egyezéseket a tűzoltóságot vagy a részleget tartalmazó dokumentumokhoz.
+2. példa **`&search=fire department`** : a 2002 eredményt adja vissza. A rendszer a tüzet vagy a részleget tartalmazó dokumentumok egyezéseit adja vissza.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-3. **`&search="fire department"`** példa: 82 eredményt ad vissza. A karakterlánc idézőjelek közé foglalása mindkét kifejezésre szó szerinti keresés, és az egyezések tokenizált kifejezéseken találhatók az egyesített kifejezésekből álló indexben. Ez megmagyarázza, hogy **`search=+fire +department`** egy ilyen keresés miért nem egyenértékű. Mindkét feltétel szükséges, de a beolvasott önállóan. 
+3. példa **`&search="fire department"`** : a 82 eredményt adja vissza. A karakterlánc idézőjelek közé történő befoglalása mindkét kifejezésben egy Verbatim-keresés, a egyezések pedig a kombinált kifejezésekből álló indexben található, jogkivonatokban lévő kifejezésekben találhatók. Ez a cikk azt ismerteti, **`search=+fire +department`** hogy a hasonló keresés miért nem egyenértékű. Mindkét feltételt kötelező megadni, de egymástól függetlenül vizsgáljuk. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>7. példa: Logikai értékek a searchMode segítségével
+## <a name="example-7-booleans-with-searchmode"></a>7. példa: logikai értékek searchMode
 
-Az egyszerű szintaxis karakter ( karakter formájában`+, -, |`támogatja a logikai operátorokat . . A searchMode paraméter tájékoztatja a pontosság és `searchMode=any` a visszahívás közötti kompromisszumokat, előnyben részesítve a visszahívást (a feltételek egyeztetése megfelel az eredményhalmaz dokumentumának), és `searchMode=all` előnyben részesíti a pontosságot (minden feltételnek egyeztethetőnek kell lennie). Az alapértelmezett `searchMode=any`beállítás a , amely zavaró lehet, ha egy lekérdezést több operátorral halmoz fel, és a szűkebb eredmények helyett szélesebb lesz. Ez különösen igaz a NEM, ahol az eredmények tartalmazzák az összes dokumentumot "nem tartalmaz" egy adott kifejezést.
+Az egyszerű szintaxis a logikai operátorokat karakter (`+, -, |`) formában támogatja. A searchMode paraméter a pontosság és a visszahívás közötti kompromisszumokat adja meg, `searchMode=any` és a szívességet idézi elő (a feltételek egyeztetése az eredményhalmaz dokumentumára van beállítva), `searchMode=all` és a pontosságot (az összes feltételt egyeztetni kell). Az alapértelmezett érték `searchMode=any`az, ami zavaró lehet, ha több operátort tartalmazó lekérdezést halmoz fel, és a szűkebb eredmények helyett szélesebb körűen fog megjelenni. Ez különösen igaz, és nem, ahol az eredmények tartalmazzák az összes olyan dokumentumot, amely "nem tartalmaz" egy adott kifejezést.
 
-Az alapértelmezett searchMode (bármely) használatával 2800 dokumentumot ad vissza: azokat, amelyek a többrészes "tűzoltóság" kifejezést tartalmazzák, valamint minden olyan dokumentumot, amely nem rendelkezik a "Metrotech Center" kifejezéssel.
+Az alapértelmezett searchMode (any), a 2800-es dokumentumok visszaadása: a több részből álló "tűzoltó részleg" kifejezést tartalmazó, valamint az "Metrotech Center" kifejezéssel nem rendelkező dokumentumok.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![keresési mód bármely](media/search-query-simple-examples/searchmodeany.png)
+  ![tetszőleges keresési mód](media/search-query-simple-examples/searchmodeany.png)
 
-A searchMode `all` módosítása a feltételekre gyakorolt kumulatív hatás érvényesítésére, és egy kisebb eredményhalmazt - 21 dokumentumot - ad vissza, amely a teljes "tűzoltóság" kifejezést tartalmazó dokumentumokat tartalmaz, mínusz a Metrotech Center címén végzett feladatok.
+A searchMode módosítása `all` a feltételek kumulatív hatásának érvényesítésére és egy kisebb eredményhalmaz-21 dokumentum visszaadására, amely a teljes "tűzoltó részleg" kifejezést tartalmazza, és levonva a feladatokat a Metrotech Center-címen.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![keresési mód minden](media/search-query-simple-examples/searchmodeall.png)
+  ![összes keresési mód](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>8. példa: Az eredmények strukturálása
+## <a name="example-8-structuring-results"></a>8. példa: az eredmények strukturálása
 
-Számos paraméter szabályozza, hogy mely mezők szerepeljenek a keresési eredményekközött, az egyes kötegekben visszaadott dokumentumok száma és a rendezési sorrend. Ez a példa az előző példák közül néhányat újra előad, az eredményeket a **$select** utasítás és a szó szerinti keresési feltételek használatával bizonyos mezőkre korlátozza, és 82 egyezést ad vissza. 
+Számos paraméter határozza meg, hogy mely mezők szerepelnek a keresési eredmények között, az egyes kötegekben visszaadott dokumentumok száma és a rendezési sorrend. Ebben a példában az előző példák közül néhányat felhasználunk, a **$Select** utasítás és a Verbatim keresési feltételek alapján adott mezőkre korlátozza az eredményeket, és visszaadja a 82 egyezéseket 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-Az előző példához fűzve cím szerint rendezhet. Ez a rendezés azért működik, mert civil_service_title *rendezhető* az indexben.
+Az előző példához hozzáfűzve megadhatja a title (cím) sorrendet. Ez a rendezés azért működik, mert a civil_service_title az indexben *rendezhető* .
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
-A lapozási eredmények a **$top** paraméter használatával valósulnak meg, ebben az esetben az első 5 dokumentum visszaadása:
+A lapozási eredmények a **$Top** paraméter használatával valósulnak meg, ebben az esetben az első 5 dokumentumot adja vissza:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
-A következő 5-ös beszerezéséhez hagyja ki az első adagot:
+A következő 5 beszerzéséhez hagyja ki az első köteget:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>További lépések
-Próbálja meg megadni a lekérdezéseket a kódban. Az alábbi hivatkozások bemutatják, hogyan állíthatók be keresési lekérdezések a .NET és a REST API számára az alapértelmezett egyszerű szintaxis használatával.
+Próbálkozzon a kódban szereplő lekérdezések megadásával. Az alábbi hivatkozások azt ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz az alapértelmezett egyszerű szintaxis használatával.
 
 * [Az index lekérdezése a .NET SDK használatával](search-query-dotnet.md)
 * [Az index lekérdezése a REST API használatával](search-create-index-rest-api.md)
 
-További szintaxis-referencia, lekérdezési architektúra és példák az alábbi hivatkozásokon találhatók:
+A szintaxissal, a lekérdezési architektúrával és a példákkal kapcsolatban a következő hivatkozásokban találhat további tudnivalókat:
 
-+ [Lucene szintaxislekérdezési példák speciális lekérdezések létrehozásához](search-query-lucene-examples.md)
++ [Példák a speciális lekérdezések kiépítési Lucene](search-query-lucene-examples.md)
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
 + [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Teljes Lucene-lekérdezés](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Szűrés és rendelési szintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Szűrő-és OrderBy szintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)

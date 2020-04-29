@@ -1,93 +1,93 @@
 ---
-title: Alkalmazástérkép az Azure Application Insightsban | Microsoft dokumentumok
-description: Összetett alkalmazás-topológiák figyelése az alkalmazástérképpel
+title: Alkalmazás-hozzárendelés az Azure Application Insightsban | Microsoft Docs
+description: Összetett alkalmazás-topológiák figyelése az alkalmazás-hozzárendeléssel
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80989527"
 ---
-# <a name="application-map-triage-distributed-applications"></a>Alkalmazás térkép: Triage elosztott alkalmazások
+# <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
-Az Alkalmazástérkép segítségével észlelheti a teljesítménybeli szűk keresztmetszeteket vagy a meghibásodási pontokat az elosztott alkalmazás összes összetevőjében. A térképminden csomópontja egy alkalmazás-összetevőt vagy annak függőségeit jelöli; és egészségügyi KPI-vel és riasztási állapottal rendelkezik. Bármelyik összetevőről átkattinthat a részletesebb diagnosztika, például az Application Insights-események között. Ha az alkalmazás Azure-szolgáltatásokat használ, átkattinthat az Azure-diagnosztikára is, például az SQL Database Advisor-javaslatokra.
+Az alkalmazás-hozzárendeléssel a teljesítmény szűk keresztmetszetek vagy meghibásodási pontok fordulnak elő az elosztott alkalmazás összes összetevőjénél. A Térkép minden csomópontja egy alkalmazás-összetevőt vagy annak függőségeit jelöli. és az állapot KPI és a riasztások állapota. A bármely összetevőtől kezdve a részletesebb diagnosztika, például a Application Insights események elemre kattintva végezhető el. Ha az alkalmazás az Azure-szolgáltatásokat használja, akkor az Azure Diagnostics szolgáltatásra is kattinthat, például SQL Database Advisor javaslatokat.
 
 ## <a name="what-is-a-component"></a>Mi az összetevő?
 
-Az összetevők egymástól függetlenül telepíthető részei az elosztott/mikroszolgáltatási alkalmazásnak. A fejlesztők és a műveleti csapatok kódszintű láthatósággal vagy hozzáféréssel rendelkeznek az alkalmazás-összetevők által létrehozott telemetriai adatokhoz. 
+Az összetevők egymástól függetlenül telepíthetők a Distributed/-Services-alkalmazás részeként. A fejlesztőknek és az operatív csapatoknak kód szintű láthatósággal vagy az alkalmazás-összetevők által generált telemetria való hozzáféréssel kell rendelkezniük. 
 
-* Az összetevők eltérnek a "megfigyelt" külső függőségektől, például az SQL-től, az EventHub-tól stb., amelyekhez a csapat/szervezet nem férhet hozzá (kód vagy telemetria).
-* Az összetevők tetszőleges számú kiszolgáló-/szerepkör-/tárolópéldányon futnak.
-* Az összetevők lehetnek különálló Application Insights instrumentation kulcsok (akkor is, ha az előfizetések eltérőek) vagy különböző szerepkörök jelentési egyetlen Application Insights instrumentation kulcs. Az előnézeti térkép élménye az összetevőket a beállításuktól függetlenül jeleníti meg.
+* Az összetevők különböznek a "megfigyelt" külső függőségek, például az sqltól, a EventHub stb., amelyek nem férhetnek hozzá a csapatához vagy szervezetéhez (kód vagy telemetria).
+* Az összetevők tetszőleges számú kiszolgáló/szerepkör/tároló példányon futnak.
+* Az összetevők különálló Application Insights rendszerállapot-kulcsok (még akkor is, ha az előfizetések eltérőek) vagy a különböző szerepkörök, amelyek egyetlen Application Insights kialakítási kulcsnak vannak kialakítva. Az előnézet-leképezési élmény az összetevőket mutatja, függetlenül attól, hogy milyen módon vannak beállítva.
 
-## <a name="composite-application-map"></a>Összetett alkalmazástérkép
+## <a name="composite-application-map"></a>Összetett alkalmazás-hozzárendelés
 
-A teljes alkalmazástopológiát a kapcsolódó alkalmazás-összetevők több szintjén is megtekintheti. Az összetevők lehetnek különböző Application Insights-erőforrások, vagy egy erőforrás különböző szerepkörei. Az alkalmazástérkép az összetevőket az Application Insights SDK-val rendelkező kiszolgálók közötti HTTP-függőségi hívások követésével keresi meg. 
+Az alkalmazás teljes topológiája a kapcsolódó alkalmazás-összetevők több szintjén is megtekinthető. Az összetevők lehetnek különbözőek Application Insights erőforrásai, vagy egy adott erőforrás különböző szerepkörei. Az alkalmazás-hozzárendelés a kiszolgálók között a telepített Application Insights SDK-val végrehajtott HTTP-függőségi hívásokkal megkeresi az összetevőket. 
 
-Ez a tapasztalat az összetevők fokozatos felfedezésével kezdődik. Az alkalmazástérkép első betöltésekén a lekérdezések egy sora jelenik meg az összetevőhöz kapcsolódó összetevők felderítéséhez. A bal felső sarokban lévő gomb frissül az alkalmazás összetevőinek számával, amint azok felvannak derítve. 
+Ez a élmény az összetevők fokozatos felderítésével kezdődik. Amikor először tölti be az alkalmazás-hozzárendelést, a rendszer elindítja a lekérdezések egy halmazát, hogy felderítse az ehhez az összetevőhöz kapcsolódó összetevőket. A bal felső sarokban található gomb a felderített alkalmazásban lévő összetevők számával fog frissülni. 
 
-A "Térkép-összetevők frissítése" gombra kattintva a térkép frissül az addig felderített összes összetevővel. Az alkalmazás összetettségétől függően ez egy percet is igénybe vehet.
+Ha a "Térkép-összetevők frissítése" gombra kattint, a Térkép frissül az addig felderített összes összetevővel. Az alkalmazás összetettségétől függően ez egy percet is igénybe vehet.
 
-Ha az összes összetevő szerepkörök egyetlen Application Insights-erőforrás, majd ez a felderítési lépés nem szükséges. Az ilyen alkalmazás kezdeti terhelése minden összetevővel rendelkezik.
+Ha az összes összetevő szerepkör egyetlen Application Insights erőforráson belül van, akkor ez a felderítési lépés nem szükséges. Az ilyen alkalmazások kezdeti terhelése az összes összetevőjét tartalmazni fogja.
 
-![Alkalmazástérkép képernyőkép](media/app-map/app-map-001.png)
+![Alkalmazás-Térkép képernyőképe](media/app-map/app-map-001.png)
 
-Az egyik legfontosabb célja ennek a tapasztalatnak az, hogy képes legyen elképzelni összetett topológiák több száz alkatrészek.
+Ennek a tapasztalatnak az egyik fő célja, hogy képes legyen a több száz összetevővel rendelkező összetett topológiák megjelenítésére.
 
-Kattintson bármelyik összetevőre a kapcsolódó elemzések megtekintéséhez, és folytassa az adott összetevő teljesítmény- és hibaosztályozási élményét.
+Kattintson bármelyik összetevőre a kapcsolódó információk megjelenítéséhez, és lépjen az adott összetevő teljesítményére és meghibásodására vonatkozó osztályozási felületre.
 
 ![Flyout](media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>Hibák vizsgálata
 
-Válassza **ki a hibák kivizsgálását** a hibák ablaktábla elindításához.
+Válassza a **hibák vizsgálata** lehetőséget a hibák ablaktábla elindításához.
 
 ![Képernyőkép a hibák kivizsgálásáról gomb](media/app-map/investigate-failures.png)
 
-![Képernyőkép a hibák élményéről](media/app-map/failures.png)
+![Képernyőfelvétel a hibákról](media/app-map/failures.png)
 
 ### <a name="investigate-performance"></a>Teljesítmény vizsgálata
 
-A teljesítménnyel kapcsolatos problémák elhárításához válassza **a Teljesítmény vizsgálata**lehetőséget.
+A teljesítménnyel kapcsolatos problémák elhárításához válassza a **teljesítmény vizsgálata**lehetőséget.
 
-![Képernyőkép a teljesítmény vizsgálatáról gomb](media/app-map/investigate-performance.png)
+![A teljesítmény vizsgálata gomb képernyőképe](media/app-map/investigate-performance.png)
 
-![Képernyőkép a teljesítményélményről](media/app-map/performance.png)
+![A teljesítmény élményét bemutató képernyőkép](media/app-map/performance.png)
 
-### <a name="go-to-details"></a>Részletek megugrása
+### <a name="go-to-details"></a>Ugrás a részletekre
 
-Válassza **az ugrás a részletekre** lehetőséget a végpontok között folytatott tranzakciós élmény feltárásához, amely a hívási verem szintjéig kínál megtekintéseket.
+Válassza az **Ugrás a részletekhez** lehetőséget a végpontok közötti tranzakciós élmény megismeréséhez, amely a hívási verem szintjéhez nyújt nézeteket.
 
-![Képernyőkép a részletekhez gombról](media/app-map/go-to-details.png)
+![Képernyőkép a részletekről gomb](media/app-map/go-to-details.png)
 
-![Képernyőkép a végpontok között lebonyolított tranzakciók részleteiről](media/app-map/end-to-end-transaction.png)
+![Képernyőkép a végpontok közötti tranzakció részleteiről](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-logs-analytics"></a>Naplók megtekintése (Analytics)
+### <a name="view-logs-analytics"></a>Naplók megtekintése (Analitika)
 
-Az alkalmazások adatainak további lekérdezéséhez és vizsgálatához kattintson **a Nézet elemre a Naplók (Analytics) területen.**
+Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson a **megtekintés a naplókban (Analitika)** elemre.
 
-![A nézet az Analytics-ben gomb képernyőképe](media/app-map/view-logs.png)
+![Képernyőkép a nézetről az Analytics gombon](media/app-map/view-logs.png)
 
-![Az elemzési élmény képernyőképe. A kérelem átlagos válaszidőtartamát összegző vonaldiagram az elmúlt 12 órában.](media/app-map/log-analytics.png)
+![Képernyőkép az elemzési élményről. Az elmúlt 12 órában egy kérelem átlagos válaszának időtartamát összefoglaló grafikon.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Riasztások
 
-Az aktív riasztások és az alapul szolgáló szabályok megtekintéséhez válassza a **riasztások at.**
+Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló szabályok megtekintéséhez válassza a **riasztások**lehetőséget.
 
-![A riasztások képernyőképe gomb](media/app-map/alerts.png)
+![A riasztások gomb képernyőképe](media/app-map/alerts.png)
 
 ![Képernyőkép az elemzési élményről](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Felhőbeli szerepkör nevének beállítása
+## <a name="set-cloud-role-name"></a>Felhőbeli szerepkör nevének megadása
 
-Az Application Map a **felhőszerepkör névtulajdonságát** használja a térképen található összetevők azonosítására. Az Application Insights SDK automatikusan hozzáadja a felhőbeli szerepkör név tulajdonságát az összetevők által kibocsátott telemetriai adatokhoz. Az SDK például hozzáad egy webhely nevet vagy szolgáltatásszerepkör-nevet a felhőbeli szerepkör névtulajdonságához. Vannak azonban olyan esetek, amikor felül szeretné bírni az alapértelmezett értéket. A felhőbeli szerepkör nevének felülbírálása és az alkalmazástérképen megjelenő értékek módosítása:
+Az alkalmazás-hozzárendelés a **Felhőbeli szerepkör neve** tulajdonságot használja a térképen található összetevők azonosítására. A Application Insights SDK automatikusan hozzáadja a Felhőbeli szerepkör neve tulajdonságot az összetevők által kibocsátott telemetria. Az SDK például hozzáadja a webhely nevét vagy a szolgáltatási szerepkör nevét a Felhőbeli szerepkör neve tulajdonsághoz. Vannak azonban olyan esetek, amikor érdemes lehet felülbírálni az alapértelmezett értéket. A felhő szerepkör nevének felülbírálásához és az alkalmazás-hozzárendelésben megjelenített elemek módosításához:
 
-# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
+# <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
-**Írjon egyéni TelemettryInitializer az alábbiak szerint.**
+**Az alábbi módon írhat egyéni TelemetryInitializer.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -110,9 +110,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET alkalmazások: Initializer betöltése az aktív TelemetryConfiguration**
+**ASP.NET-alkalmazások: az inicializáló betöltése az aktív TelemetryConfiguration**
 
-Az ApplicationInsights.config fájlban:
+A ApplicationInsights. config fájlban:
 
 ```xml
     <ApplicationInsights>
@@ -124,7 +124,7 @@ Az ApplicationInsights.config fájlban:
     </ApplicationInsights>
 ```
 
-A webalkalmazások ASP.NET másik módja az inicializáló kódban való példányosítása, például Global.aspx.cs:
+A webalkalmazások ASP.NET alternatív módszere az inicializáló létrehozása kódban, például a Global.aspx.cs-ben:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -138,11 +138,11 @@ A webalkalmazások ASP.NET másik módja az inicializáló kódban való példá
 ```
 
 > [!NOTE]
-> Initializer hozzáadása `ApplicationInsights.config` használatával `TelemetryConfiguration.Active` vagy használatával nem érvényes ASP.NET Core alkalmazások. 
+> Az inicializálás a `ApplicationInsights.config` vagy a használatával `TelemetryConfiguration.Active` való hozzáadása ASP.net Core alkalmazások esetében nem érvényes. 
 
-**core alkalmazások ASP.NET: Initializer betöltése a TelemettryConfiguration**
+**ASP.NET Core alkalmazások: az inicializáló betöltése a TelemetryConfiguration**
 
-Az [ASP.NET core](asp-net-core.md#adding-telemetryinitializers) alkalmazások `TelemetryInitializer` hozzáadása egy új történik hozzáadásával, hogy a függőségi injektálás tároló, az alábbiak szerint. Ez történik `ConfigureServices` a módszer `Startup.cs` az osztályban.
+[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadását a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` `Startup.cs` osztály metódusában történik.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -155,9 +155,9 @@ Az [ASP.NET core](asp-net-core.md#adding-telemetryinitializers) alkalmazások `T
 
 # <a name="java"></a>[Java](#tab/java)
 
-**Java ügynök**
+**Java-ügynök**
 
-A [Java agent 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) esetében a felhőbeli szerepkör neve a következőképpen van beállítva:
+A [Java-ügynök 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) a Felhőbeli szerepkör neve a következőképpen van beállítva:
 
 ```json
 {
@@ -169,11 +169,11 @@ A [Java agent 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-pr
 }
 ```
 
-A felhőbeli szerepkör nevét a környezeti ```APPLICATIONINSIGHTS_ROLE_NAME```változó használatával is beállíthatja.
+A Felhőbeli szerepkör nevét a környezeti változó ```APPLICATIONINSIGHTS_ROLE_NAME```használatával is beállíthatja.
 
 **Java SDK**
 
-Ha az SDK-t használja, kezdve az Application Insights Java SDK 2.5.0-val, megadhatja a felhőszerepkör nevét a `<RoleName>` `ApplicationInsights.xml` fájlhoz való hozzáadással, például.
+Ha az SDK-t használja, kezdve Application Insights Java SDK 2.5.0-vel, megadhatja a Felhőbeli szerepkör nevét `<RoleName>` a `ApplicationInsights.xml` fájl hozzáadásával, például:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -184,11 +184,11 @@ Ha az SDK-t használja, kezdve az Application Insights Java SDK 2.5.0-val, megad
 </ApplicationInsights>
 ```
 
-Ha a Spring Boot az Application Insights tavaszi rendszerindítási starter, az egyetlen szükséges változás az, hogy állítsa be az egyéni nevét az alkalmazás az application.properties fájlban.
+Ha a Spring Boott a Application Insights Spring boot Starter használatával használja, az egyetlen szükséges módosítás az alkalmazás egyéni nevének beállítása az Application. properties fájlban.
 
 `spring.application.name=<name-of-app>`
 
-A Tavaszi rendszerindító automatikusan hozzárendeli a felhőszerepkör nevét a spring.application.name tulajdonsághoz megadott értékhez.
+A Spring boot Starter automatikusan hozzárendeli a Felhőbeli szerepkör nevét a spring.application.name tulajdonsághoz megadott értékhez.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
@@ -199,7 +199,7 @@ appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
 appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
 ```
 
-### <a name="alternate-method-for-nodejs"></a>Alternatív módszer a Node.js-hez
+### <a name="alternate-method-for-nodejs"></a>Alternatív módszer a Node. js-hez
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -223,17 +223,17 @@ appInsights.addTelemetryInitializer((envelope) => {
 ```
 ---
 
-### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>A felhőbeli szerepkör nevének ismertetése az alkalmazásleképezés környezetében
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>A Felhőbeli szerepkör nevének megértése az alkalmazás-hozzárendelés kontextusában
 
-Ami a **felhőszerepkör-név**átgondolását illeti, hasznos lehet egy olyan alkalmazástérképet megtekinteni, amelytöbb felhőalapú szerepkörnevet is bemutat:
+A **Felhőbeli szerepkör nevének**megismerése érdekében hasznos lehet megtekinteni egy olyan alkalmazás-hozzárendelést, amely több felhőalapú szerepkör-névvel rendelkezik:
 
-![Alkalmazástérkép képernyőkép](media/app-map/cloud-rolename.png)
+![Alkalmazás-Térkép képernyőképe](media/app-map/cloud-rolename.png)
 
-A zöld mezőkben lévő nevek feletti alkalmazásleképezések felhőalapú szerepkörnév-értékek az adott elosztott alkalmazás különböző aspektusaihoz. Tehát ez app szerepei `Authentication`állnak: , `acmefrontend`, `Inventory Management`, a `Payment Processing Worker Role`. 
+Az alkalmazás-hozzárendelés a zöld mezőkben található nevek felett a Felhőbeli szerepkörök neve értékek az adott elosztott alkalmazás különböző szempontjaihoz. Így ehhez az alkalmazáshoz a szerepkörei a következők `Authentication`: `acmefrontend`, `Inventory Management`,, `Payment Processing Worker Role`a. 
 
-Ebben az alkalmazásban az egyes felhőszerepkör-nevek is egy másik egyedi Application Insights-erőforrást is képvisel nek saját instrumentation kulcsokkal. Mivel az alkalmazás tulajdonosa rendelkezik hozzáféréssel mind a négy különböző Application Insights-erőforrások, Application Map képes összefűzni egy térképet az alapul szolgáló kapcsolatok.
+Ebben az alkalmazásban a Felhőbeli szerepkörök nevei egy másik egyedi Application Insights erőforrást is jelentenek a saját kialakítási kulcsaik használatával. Mivel ennek az alkalmazásnak a tulajdonosa a négy különböző Application Insights erőforráshoz fér hozzá, az Application Map képes összekeverni az alapul szolgáló kapcsolatok térképét.
 
-A [hivatalos meghatározások](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93)esetében:
+A [hivatalos definíciók](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93)esetében:
 
 ```
    [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
@@ -245,52 +245,52 @@ A [hivatalos meghatározások](https://github.com/Microsoft/ApplicationInsights-
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Másik lehetőségként a **felhőbeli szerepkörpéldány** hasznos lehet olyan esetekben, amikor a **felhőbeli szerepkör neve** azt mondja, hogy a probléma valahol a webes előtér-házban van, de előfordulhat, hogy a webes előtér-alapú kapcsolatot több terhelés-kiegyensúlyozott kiszolgálón futtatja, így a Kusto-lekérdezéseken keresztül mélyebbrétegben fúrhat, és tudni, hogy a probléma hatással van-e az összes webes előtér-kiszolgálóra/példányra, vagy csak egy rendkívül fontos lehet.
+Másik lehetőségként a **Felhőbeli szerepkör-példány** hasznos lehet olyan helyzetekben, ahol a **Felhőbeli szerepkör neve** azt jelzi, hogy a probléma valahol a webes kezelőfelületen fut, de előfordulhat, hogy a webes kezelőfelület több elosztott terhelésű kiszolgálóra is futtatható, így a Kusto-lekérdezéseken keresztül mélyebben megtudhatja, hogy a probléma hatással van-e az összes webes előtér-kiszolgálóra/példányra, vagy csak egy rendkívül fontos
 
-Egy forgatókönyv, ahol érdemes felülírni az értéket a felhőbeli szerepkör-példány lehet, ha az alkalmazás fut egy tárolóba egy tárolókörnyezetben, ahol csak ismerve az egyes kiszolgáló nem lehet elég információ, hogy keresse meg egy adott probléma.
+Egy olyan forgatókönyv, amelyben érdemes lehet felülbírálni a Felhőbeli szerepkör példányának értékét, ha az alkalmazás egy olyan tárolóban fut, ahol az egyes kiszolgálók nem feltétlenül elegendő információval szolgálnak az adott probléma megtalálásához.
 
-A felhőbeli szerepkörnév-tulajdonság telemetriai inicializálókkal való felülbírálásáról további információt az [ITelemetryInitializer hozzáadása című](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)témakörben talál.
+További információ arról, hogyan bírálható felül a Felhőbeli szerepkör Name tulajdonsága a telemetria inicializálók használatával [: tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha nem sikerül az Alkalmazástérkép várt módon működnie, próbálkozzon az alábbi lépésekkel:
+Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
 ### <a name="general"></a>Általános kérdések
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
-    A támogatott SDK-k listáját ebben a [cikkben](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) olvashatja.
+    A támogatott SDK-k listáját ebben a [cikkben](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) találja.
 
 2. Frissítse az összes összetevőt a legújabb SDK-verzióra.
 
-3. Ha c#-os Azure Functions-et használ, frissítsen [a V2 függvényekre.](https://docs.microsoft.com/azure/azure-functions/functions-versions)
+3. Ha a C# használatával Azure Functionst használ, frissítsen a [functions v2](https://docs.microsoft.com/azure/azure-functions/functions-versions)-re.
 
-4. Ellenőrizze, hogy a [felhőbeli szerepkör neve](#set-cloud-role-name) megfelelően van-e konfigurálva.
+4. Ellenőrizze, hogy a [Felhőbeli szerepkör neve](#set-cloud-role-name) helyesen van-e konfigurálva.
 
 5. Ha valamelyik függőség hiányzik, ellenőrizze, hogy az [automatikusan gyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) listájában szerepel-e. Ha nem, manuálisan úgy is nyomon követheti egy [függőségek nyomon követése hívással](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ### <a name="too-many-nodes-on-the-map"></a>Túl sok csomópont van a térképen
 
-Az Application Map egy alkalmazáscsomópontot hoz létre a kérelem telemetriában szereplő minden egyes egyedi felhőszerepkör-névhez, és egy függőségi csomópontot a függőségi telemetriai adatokban a típus, a cél és a felhőszerepkör nevének minden egyes egyedi kombinációjához. Ha több mint 10 000 csomópont van a telemetriai adatokban, az Application Map nem lesz képes lekérni az összes csomópontot és hivatkozást, így a térkép nem lesz teljes. Ebben az esetben figyelmeztető üzenet jelenik meg a térkép megtekintésekor.
+Az alkalmazás-hozzárendelés egy alkalmazás-csomópontot hoz létre a kérelem telemetria található minden egyes egyedi felhőalapú szerepkör nevéhez, valamint egy függőségi csomópontot a típus, a cél és a Felhőbeli szerepkör minden egyedi kombinációja számára a függőségi telemetria. Ha a telemetria több mint 10 000 csomópont található, az Application Map nem fogja tudni beolvasni az összes csomópontot és hivatkozást, így a Térkép hiányos lesz. Ha ez történik, egy figyelmeztető üzenet jelenik meg a Térkép megtekintésekor.
 
-Ezenkívül az Alkalmazástérkép csak legfeljebb 1000 különálló, nem csoportosított csomópontot támogat egyszerre. Az Alkalmazástérkép csökkenti a vizuális összetettséget azáltal, hogy csoportosítja az azonos típusú és hívókkal rendelkező függőségeket, de ha a telemetriatúl sok egyedi felhőszerepkör-nevet vagy túl sok függőségi típust tartalmaz, akkor a csoportosítás nem lesz elegendő, és a térkép nem lesz képes megjeleníteni.
+Emellett az alkalmazás-hozzárendelés legfeljebb 1000 külön nem csoportosított csomópontot támogat. Az alkalmazás-hozzárendelés csökkenti a vizualizációk összetettségét olyan függőségek csoportosításával, amelyek ugyanazzal a típussal és hívóval rendelkeznek, de ha a telemetria túl sok egyedi Felhőbeli szerepkör-névvel vagy túl sok függőségi típussal rendelkezik, a csoportosítás nem lesz elegendő, és a Térkép nem fog tudni megjeleníteni.
 
-A probléma megoldásához módosítania kell a műszerezést a felhőbeli szerepkör nevének, a függőségtípusnak és a függőségi célmezőknek a megfelelő beállításához.
+A probléma megoldásához módosítania kell a kialakítást, hogy megfelelően állítsa be a Felhőbeli szerepkör nevét, a függőség típusát és a függőségi cél mezőket.
 
-* A függőségi célnak egy függőség logikai nevét kell képviselnie. Sok esetben ez megegyezik a függőség kiszolgálójának vagy erőforrásnevének. Http-függőségek esetén például az állomásnév van beállítva. Nem tartalmazhat egyedi azonosítókat vagy paramétereket, amelyek egyik kérésről a másikra változnak.
+* A függőségi célnak a függőség logikai nevét kell képviselnie. Sok esetben ez egyenértékű a függőség kiszolgálójának vagy erőforrásának nevével. A HTTP-függőségek esetében például az állomásnévre van beállítva. Nem tartalmazhat olyan egyedi azonosítókat vagy paramétereket, amelyek az egyik kérelemből a másikba változnak.
 
-* A függőségtípusnak a függőség logikai típusát kell képviselnie. Például a HTTP, SQL vagy Azure Blob tipikus függőségi típusok. Nem tartalmazhat egyedi azonosítókat.
+* A függőségi típusnak a függőség logikai típusát kell képviselnie. Például a HTTP, az SQL vagy az Azure Blob jellemző függőségi típusok. Nem tartalmazhat egyedi azonosítókat.
 
-* A felhőalapú szerepkörnevének célját a [fenti szakasz](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)ismerteti.
+* A Felhőbeli szerepkör nevét a [fenti szakasz](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)ismerteti.
 
-## <a name="portal-feedback"></a>A portál visszajelzései
+## <a name="portal-feedback"></a>Portál visszajelzése
 
-Ha visszajelzést szeretne küldeni, használja a visszajelzési lehetőséget.
+A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
-![MapLink-1 kép](./media/app-map/14-updated.png)
+![MapLink – 1 rendszerkép](./media/app-map/14-updated.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni arról, hogyan működik a korreláció az Application Insightsban tekintse meg a [telemetriai korrelációs cikket.](correlation.md)
-* A [végpontok közötti tranzakciódiagnosztikai felület](transaction-diagnostics.md) egyetlen nézetben korrelálja a kiszolgálóoldali telemetriai adatokat az összes Application Insights figyelt összetevőből.
-* A speciális korrelációs forgatókönyvek ASP.NET Core és ASP.NET tekintse meg a [pálya egyéni műveletek](custom-operations-tracking.md) cikket.
+* Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](correlation.md).
+* A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.
+* A ASP.NET Core-és ASP.NET kapcsolatos speciális korrelációs forgatókönyvek esetében tekintse meg az [Egyéni műveletek nyomon követése](custom-operations-tracking.md) című cikket.

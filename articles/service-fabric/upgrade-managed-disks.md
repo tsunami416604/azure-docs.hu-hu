@@ -1,37 +1,37 @@
 ---
-title: Fürtcsomópontok frissítése az Azure által felügyelt lemezek használatához
-description: Az alábbiakban bemutatja, hogyan frissítheti a meglévő Service Fabric-fürtöt az Azure által felügyelt lemezek használatához, a fürt kevés vagy semmilyen állásidő nélkül.
+title: Fürtcsomópontok frissítése az Azure Managed Disks használatára
+description: A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 ms.topic: how-to
 ms.date: 4/07/2020
 ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991211"
 ---
-# <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure által felügyelt lemezek használatához
+# <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure Managed Disks használatára
 
-[Az Azure által felügyelt lemezek](../virtual-machines/windows/managed-disks-overview.md) az ajánlott lemeztárolási ajánlat az Azure virtuális gépekkel való használatra az adatok állandó tárolásához. Javíthatja a Service Fabric-számítási feladatok rugalmasságát a virtuálisgép-méretezési csoportok frissítésével, amelyek a csomóponttípusok a felügyelt lemezek használatára szolgálnak. Az alábbiakban bemutatja, hogyan frissítheti a meglévő Service Fabric-fürtöt az Azure által felügyelt lemezek használatához, a fürt kevés vagy semmilyen állásidő nélkül.
+Az [Azure Managed](../virtual-machines/windows/managed-disks-overview.md) Disks az ajánlott lemezes tárolási ajánlat az Azure Virtual Machines szolgáltatásban az adattároláshoz. A Service Fabric számítási feladatok rugalmasságát a felügyelt lemezek használatára szolgáló virtuálisgép-méretezési csoportok frissítésével növelheti. A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 
-A Service Fabric-fürtcsomópont felügyelt lemezek használatára történő frissítésének általános stratégiája a következő:
+Service Fabric fürtcsomópont a felügyelt lemezek használatára való frissítésének általános stratégiája a következő:
 
-1. Telepítsen egy egyébként duplikált, adott csomóponttípusú virtuálisgép-méretezési készletet, de a [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) objektumot a virtuálisgép méretezési csoport központi telepítési sablonjának `osDisk` szakaszához adva. Az új méretezési csoportnak ugyanahhoz a terheléselosztóhoz / IP-címhez kell kötődnie, mint az eredetihez, hogy az ügyfelek ne tapasztalhassanak szolgáltatáskimaradást az áttelepítés során.
+1. Helyezzen üzembe egy, az adott csomópont típusú, másképpen duplikált virtuálisgép-méretezési készletet, de `osDisk` a virtuálisgép-méretezési csoport telepítési sablonjának szakaszához hozzáadott [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) objektummal. Az új méretezési csoportnak ugyanahhoz a terheléselosztó/IP-címhez kell tartoznia, mint az eredeti, így az ügyfelek nem tapasztalnak szolgáltatás-kimaradást az áttelepítés során.
 
-2. Miután az eredeti és a frissített méretezési csoportok egymás mellett futnak, tiltsa le az eredeti csomópontpéldányokat egyenként, hogy a rendszerszolgáltatások (vagy az állapotalapú szolgáltatások replikái) áttérjenek az új méretezési csoportra.
+2. Ha az eredeti és a frissített méretezési csoportok is futnak egymás mellett, tiltsa le az eredeti csomópont-példányokat egy időben, hogy a rendszerszolgáltatások (vagy az állapot-nyilvántartó szolgáltatások replikái) át legyenek telepítve az új méretezési csoportba.
 
-3. Ellenőrizze, hogy a fürt és az új csomópontok kifogástalanállapotúak-e, majd távolítsa el a törölt csomópontok eredeti méretezési csoportját és csomópontállapotát.
+3. Ellenőrizze, hogy a fürt és az új csomópontok állapota Kifogástalan-e, majd távolítsa el a törölt csomópontok eredeti méretezési csoportját és csomópontjának állapotát.
 
-Ez a cikk végigvezeti a példafürt elsődleges csomóponttípusának felügyelt lemezek használatára történő frissítésének lépésein, elkerülve a fürtállásokat (lásd alább). A példa tesztfürt kezdeti állapota egy csomóponttípusú [Ezüst tartósságból](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)áll, amelyet egyetlen méretezési csoport öt csomópontos támogat.
+Ez a cikk végigvezeti egy példa-fürt elsődleges csomópont-típusának a felügyelt lemezek használatára való frissítésének lépésein, és a fürt leállásának elkerülésével (lásd az alábbi megjegyzést). A példaként szolgáló tesztelési fürt kezdeti állapota egy [ezüst tartósságú](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)csomópontból áll, amely egyetlen, öt csomóponttal rendelkező méretezési csoporttal rendelkezik.
 
 > [!CAUTION]
-> Ezzel az eljárással csak akkor tapasztalhat kimaradást, ha függőségevan a fürt DNS-étől (például a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)elérésekor). Az [előtér-szolgáltatások architekturális ajánlott eljárása,](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) hogy valamilyen [terheléselosztó](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) van a csomóponttípusok előtt, hogy a csomópont-csere lehetővé tegye kimaradás nélkül.
+> Ezt az eljárást csak akkor fogja tapasztalni, ha a fürt DNS-függőségeivel rendelkezik (például [Service Fabric Explorerhoz](service-fabric-visualizing-your-cluster.md)való hozzáféréskor). Az [előtér-szolgáltatásokra vonatkozó ajánlott eljárás](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) az, hogy a csomópontok típusai előtt valamilyen [terheléselosztó](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) legyen elérhető, hogy leállás nélkül lehessen lecserélni a csomópontokat.
 
-Az alábbiakban az Azure Resource Manager [sablonjait és parancsmagjait](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) olvashatja, amelyeket a frissítési forgatókönyv befejezéséhez fogunk használni. A sablon módosításait az alábbi [elsődleges csomóponttípus frissített méretezési csoportjának telepítése](#deploy-an-upgraded-scale-set-for-the-primary-node-type) ismerteti.
+Az alábbi [sablonok és parancsmagok](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) a frissítési forgatókönyv elvégzéséhez használni kívánt Azure Resource Manager. A sablon módosításait a [frissített méretezési csoport üzembe helyezése az alábbi elsődleges csomópont-típushoz című](#deploy-an-upgraded-scale-set-for-the-primary-node-type) részben találja.
 
-## <a name="set-up-the-test-cluster"></a>A tesztfürt beállítása
+## <a name="set-up-the-test-cluster"></a>A tesztelési fürt beállítása
 
-Állítsuk be a kezdeti Service Fabric tesztfürt. Először [töltse le](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) az Azure resource manager mintasablonokat, amelyeket a forgatókönyv végrehajtásához használunk.
+Állítsa be a kezdeti Service Fabric tesztelési fürtöt. Először [töltse le](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) a forgatókönyv végrehajtásához használni kívánt Azure Resource Manager-sablonokat.
 
 Ezután jelentkezzen be az Azure-fiókjába.
 
@@ -40,11 +40,11 @@ Ezután jelentkezzen be az Azure-fiókjába.
 Login-AzAccount -SubscriptionId "<subscription ID>"
 ```
 
-A következő parancsok végigvezetik egy új önaláírt tanúsítvány létrehozásán és a tesztfürt üzembe helyezésén. Ha már rendelkezik használni kívánt tanúsítvánnyal, ugorjon [a Fürt telepítéséhez meglévő tanúsítvány használata lehetőségre.](#use-an-existing-certificate-to-deploy-the-cluster)
+A következő parancsok végigvezetik egy új önaláírt tanúsítvány létrehozásán és a tesztelési fürt üzembe helyezésén. Ha már rendelkezik egy használni kívánt tanúsítvánnyal, ugorjon [a meglévő tanúsítvány használata a fürt üzembe helyezéséhez](#use-an-existing-certificate-to-deploy-the-cluster).
 
-### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Önaláírt tanúsítvány létrehozása és a fürt telepítése
+### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Önaláírt tanúsítvány létrehozása és a fürt üzembe helyezése
 
-Először rendelje hozzá a Service Fabric-fürt központi telepítéséhez szükséges változókat. Állítsa be `resourceGroupName`a `certSubjectName` `parameterFilePath`, `templateFilePath` , , és az adott fiók és környezet értékét:
+Először rendelje hozzá az Service Fabric-fürt üzembe helyezéséhez szükséges változókat. Módosítsa a `resourceGroupName`, `certSubjectName` `parameterFilePath`a, a és `templateFilePath` a értékét az adott fiókhoz és környezethez:
 
 ```powershell
 # Assign deployment variables
@@ -57,11 +57,11 @@ $parameterFilePath = "C:\Initial-1NodeType-UnmanagedDisks.parameters.json"
 ```
 
 > [!NOTE]
-> Győződjön `certOutputFolder` meg arról, hogy a hely létezik a helyi számítógépen, mielőtt a parancsot egy új Service Fabric-fürt üzembe helyezéséhez.
+> A parancs futtatása `certOutputFolder` előtt győződjön meg arról, hogy a hely létezik a helyi gépen, mielőtt új Service Fabric fürtöt szeretne üzembe helyezni.
 
-Ezután nyissa meg a [*Initial-1NodeType-UnmanagedDisks.parameters.json*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) fájlt, és állítsa be a PowerShellben beállított dinamikus értékek `clusterName` et, és `dnsName` mentse a módosításokat.
+Ezután nyissa meg a [*kezdeti-1NodeType-UnmanagedDisks. Parameters. JSON*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) fájlt, és módosítsa `clusterName` a `dnsName` és a értékeit, hogy azok megfeleljenek a PowerShellben megadott dinamikus értékeknek, és mentse a módosításokat.
 
-Ezután telepítse a Service Fabric tesztfürtjét:
+Ezután telepítse a Service Fabric test-fürtöt:
 
 ```powershell
 # Deploy the initial test cluster
@@ -74,7 +74,7 @@ New-AzServiceFabricCluster `
     -ParameterFile $parameterFilePath
 ```
 
-A telepítés befejezése után keresse meg a`$certPfx` *.pfx* fájlt ( ) a helyi számítógépen, és importálja a tanúsítványtárolóba:
+Miután az üzembe helyezés befejeződött, keresse meg a *. pfx* -`$certPfx`fájlt a helyi gépen, és importálja a tanúsítványtárolóba:
 
 ```powershell
 cd c:\certificates
@@ -86,11 +86,11 @@ Import-PfxCertificate `
      -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
 ```
 
-A művelet visszaadja a tanúsítvány ujjlenyomatát, amelyet [az új fürthöz való csatlakozáshoz és állapotának ellenőrzéséhez](#connect-to-the-new-cluster-and-check-health-status) fog használni. (Hagyja ki a következő szakaszt, amely a fürt telepítésének alternatív megközelítése.)
+A művelet visszaküldi a tanúsítvány ujjlenyomatát, amelyet az [új fürthöz való kapcsolódáshoz](#connect-to-the-new-cluster-and-check-health-status) fog használni, és megtekintheti annak állapotát. (Hagyja ki a következő szakaszt, amely a fürt üzembe helyezésének alternatív megközelítése.)
 
-### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>Meglévő tanúsítvány használata a fürt telepítéséhez
+### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>Meglévő tanúsítvány használata a fürt üzembe helyezéséhez
 
-A tesztfürt üzembe helyezéséhez egy meglévő Azure Key Vault-tanúsítványt is használhat. Ehhez be kell [szereznie a Key Vaultra és a](#obtain-your-key-vault-references) tanúsítvány ujjlenyomatára mutató hivatkozásokat.
+A tesztelési fürt üzembe helyezéséhez meglévő Azure Key Vault tanúsítványt is használhat. Ehhez meg kell [szereznie a Key Vault és a tanúsítvány ujjlenyomatára mutató hivatkozásokat](#obtain-your-key-vault-references) .
 
 ```powershell
 # Key Vault variables
@@ -99,12 +99,12 @@ $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourc
 $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
 ```
 
-Nyissa meg a [*Initial-1NodeType-UnmanagedDisks.parameters.json*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) fájlt, és módosítsa az `clusterName` értékeket, és `dnsName` valami egyedi.
+Nyissa meg a [*kezdeti-1NodeType-UnmanagedDisks. Parameters. JSON*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) fájlt, és módosítsa `clusterName` a `dnsName` és a értékeit valami egyedire.
 
-Végül jelöljön ki egy erőforráscsoport nevet `templateFilePath` `parameterFilePath` a fürthöz, és állítsa be a *Initial-1NodeType-UnmanagedDisks* fájlok helyét és helyét:
+Végül jelöljön ki egy erőforráscsoport-nevet a fürthöz, és állítsa be `templateFilePath` a `parameterFilePath` *kezdeti 1NodeType-UnmanagedDisks* fájlok és helyeit:
 
 > [!NOTE]
-> A kijelölt erőforráscsoportnak már léteznie kell, és ugyanabban a régióban kell lennie, mint a Key Vault.
+> A kijelölt erőforráscsoport már léteznie kell, és ugyanabban a régióban kell lennie, mint a Key Vault.
 
 ```powershell
 # Deploy the new scale set (upgraded to use managed disks) into the primary node type.
@@ -113,7 +113,7 @@ $templateFilePath = "C:\Upgrade-1NodeType-2ScaleSets-ManagedDisks.json"
 $parameterFilePath = "C:\Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json"
 ```
 
-Végül futtassa a következő parancsot a kezdeti tesztfürt telepítéséhez:
+Végül futtassa a következő parancsot a kezdeti tesztelési fürt üzembe helyezéséhez:
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -126,9 +126,9 @@ New-AzResourceGroupDeployment `
     -Verbose
 ```
 
-### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Csatlakozás az új fürthöz és állapotellenőrzés
+### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Kapcsolódás az új fürthöz és az állapot állapotának ellenõrzése
 
-Csatlakozzon a fürthöz, és győződjön meg arról, `clusterName` `thumb` hogy mind az öt csomópontja kifogástalan (a fürt változóinak és változóinak cseréje):
+Kapcsolódjon a fürthöz, és győződjön meg arról, hogy mind az öt csomópontja `clusterName` kifogástalan `thumb` állapotban van (cserélje le a fürt változóit):
 
 ```powershell
 # Connect to the cluster
@@ -149,23 +149,23 @@ Connect-ServiceFabricCluster `
 Get-ServiceFabricClusterHealth
 ```
 
-Ezzel készen állunk a frissítési eljárás megkezdésére.
+Ezzel készen áll a frissítési eljárás megkezdésére.
 
-## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>Frissített méretezési csoport telepítése az elsődleges csomóponttípushoz
+## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>Továbbfejlesztett méretezési csoport üzembe helyezése az elsődleges csomópont típusaként
 
-A csomóponttípus frissítéséhez vagy *vertikális méretezéséhez*telepíteni kell az adott csomóponttípus virtuálisgép-méretezési készletének egy példányát, amely egyébként megegyezik `nodeTypeRef` `subnet`az `loadBalancerBackendAddressPools`eredeti méretezési készlettel (beleértve az azonos , és ) való hivatkozást, kivéve, hogy tartalmazza a kívánt frissítést/módosításokat, valamint a saját külön alhálózatát és bejövő NAT-címkészletét. Mivel egy elsődleges csomóponttípust frissítünk, az új méretezési`isPrimary: true`csoport az eredeti méretezési csoporthoz hasonlóan elsődleges ( ) lesz megjelölve. (Nem elsődleges csomóponttípus-frissítések esetén egyszerűen hagyja ki ezt.)
+A csomópontok frissítéséhez vagy *vertikális méretezéséhez*telepíteni kell a csomópont típusú virtuálisgép-méretezési csoport egy másolatát, amely egyébként azonos az eredeti méretezési csoporttal (többek között a `nodeTypeRef` `subnet`következőre való hivatkozással, és `loadBalancerBackendAddressPools`), kivéve, hogy az tartalmazza a kívánt frissítést/módosításokat, valamint a saját külön alhálózatát és a bejövő NAT-címkészletet. Mivel elsődleges csomópont-típust frissítünk, az új méretezési csoport elsődlegesként (`isPrimary: true`) lesz megjelölve, ugyanúgy, mint az eredeti méretezési csoport. (A nem elsődleges csomópont típusú frissítésekhez egyszerűen hagyja ki ezt.)
 
-Az egyszerűség kedvéért a *frissítés-1NodeType-2ScaleSets-ManagedDisks* [sablonban](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) és paraméterfájlokban már elvégezte a szükséges [módosításokat.](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json)
+Az egyszerűség kedvéért a szükséges módosítások már az *upgrade-1NodeType-2ScaleSets-ManagedDisks* [sablonban](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) és a [Parameters](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) fájlokban is megtörténtek.
 
-A következő szakaszok részletesen ismertetik a sablon változásait. Ha szeretné, kihagyhatja a magyarázatot, és [folytathatja a frissítési eljárás következő lépésével.](#obtain-your-key-vault-references)
+A következő szakaszokban részletesen ismertetjük a sablon változásait. Ha szeretné, kihagyhatja a magyarázatot, és folytathatja a [frissítési eljárás következő lépését](#obtain-your-key-vault-references).
 
-### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>A fürtsablon frissítése a frissített méretezési csoportgal
+### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>A fürt sablonjának frissítése a frissített méretezési csoporttal
 
-Az alábbiakban az eredeti fürttelepítési sablon szakaszonkénti módosításait olvashatja az elsődleges csomóponttípus frissített méretezési csoportjának hozzáadásához.
+Az alábbi, az eredeti fürt központi telepítési sablonjának szakasz – szakasz szerinti módosításai az elsődleges csomópont típusához tartozó frissített méretezési csoport hozzáadására szolgálnak.
 
 #### <a name="parameters"></a>Paraméterek
 
-Adja hozzá a példány nevét, számát és az új méretezési csoport méretét. Vegye `vmNodeType1Name` figyelembe, hogy az új méretezési csoport egyedi, míg a darabszám és a méret értékek megegyeznek az eredeti méretezési csoport.
+Paraméterek hozzáadása az új méretezési csoport példányának nevéhez, darabszámához és méretéhez. Vegye figyelembe `vmNodeType1Name` , hogy az új méretezési csoport egyedi, míg a darabszám és a méret érték megegyezik az eredeti méretezési csoporttal.
 
 **Sablonfájl**
 
@@ -188,7 +188,7 @@ Adja hozzá a példány nevét, számát és az új méretezési csoport méret�
 },
 ```
 
-**Paraméterek fájl**
+**Parameters fájl**
 
 ```json
 "vmNodeType1Name": {
@@ -204,7 +204,7 @@ Adja hozzá a példány nevét, számát és az új méretezési csoport méret�
 
 ### <a name="variables"></a>Változók
 
-A központi `variables` telepítési sablon szakaszban adjon hozzá egy bejegyzést az új méretezési csoport bejövő NAT-címkészletéhez.
+A központi telepítési sablon `variables` szakaszban adja meg az új méretezési csoport bejövő NAT-címkészlet bejegyzését.
 
 **Sablonfájl**
 
@@ -214,15 +214,15 @@ A központi `variables` telepítési sablon szakaszban adjon hozzá egy bejegyz�
 
 ### <a name="resources"></a>További források
 
-A központi telepítési sablon *erőforrásai csoportban* adja hozzá az új virtuálisgép-méretezési készletet, szem előtt tartva az alábbi dolgokat:
+A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új virtuálisgép-méretezési készletet, szem előtt tartva ezeket a dolgokat:
 
-* Az új méretezési csoport ugyanarra a csomóponttípusra hivatkozik, mint az eredeti:
+* Az új méretezési csoport ugyanarra a csomópont-típusra hivatkozik, mint az eredeti:
 
     ```json
     "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* Az új méretezési készlet ugyanarra a terheléselosztó-háttércímre és alhálózatra hivatkozik (de más bejövő nat-készletet használ):
+* Az új méretezési csoport ugyanarra a terheléselosztó háttérbeli címére és alhálózatra hivatkozik (de egy másik terheléselosztó bejövő NAT-készletet használ):
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -240,13 +240,13 @@ A központi telepítési sablon *erőforrásai csoportban* adja hozzá az új vi
     }
    ```
 
-* Az eredeti méretezési csoporthoz hasonlóan az új méretezési csoport is elsődleges csomóponttípusként van megjelölve. (Nem elsődleges csomóponttípusok frissítésekor hagyja ki ezt a módosítást.)
+* Az eredeti méretezési csoporthoz hasonlóan az új méretezési csoport is elsődleges csomópont-típusként van megjelölve. (A nem elsődleges csomópontok típusának frissítésekor hagyja ki ezt a módosítást.)
 
     ```json
     "isPrimary": true,
     ```
 
-* Az eredeti méretezési csoporttól eltérően az új méretezési csoport felügyelt lemezek használatára frissül.
+* Az eredeti méretezési csoporttól eltérően az új méretezési csoport a felügyelt lemezek használatára van frissítve.
 
     ```json
     "managedDisk": {
@@ -254,33 +254,33 @@ A központi telepítési sablon *erőforrásai csoportban* adja hozzá az új vi
     }
     ```
 
-Miután végrehajtotta a sablon- és paraméterfájlok összes módosítását, folytassa a következő szakaszban a Key Vault-hivatkozások beszerzéséhez és a frissítések fürtbe való telepítéséhez.
+Miután végrehajtotta a sablon és a paraméterek fájljaiban történt összes változást, folytassa a következő szakasszal a Key Vault referenciáinak beolvasásához és a frissítések fürtön való telepítéséhez.
 
-### <a name="obtain-your-key-vault-references"></a>A Key Vault-hivatkozások beszerzése
+### <a name="obtain-your-key-vault-references"></a>A Key Vault-referenciák beszerzése
 
-A frissített konfiguráció üzembe helyezéséhez először a Key Vaultban tárolt fürttanúsítványra mutató hivatkozásokat kell beszereznie. Ezek az értékek megkeresésének legegyszerűbb módja az Azure Portalon keresztül. A következők szükségesek:
+A frissített konfiguráció üzembe helyezéséhez először szerezzen be több hivatkozást a Key Vault tárolt fürt-tanúsítványra. Az értékek megkeresésének legegyszerűbb módja a Azure Portal. A következők szükségesek:
 
-* **A fürttanúsítvány Key Vault-URL-címe.** Az Azure Portalon lévő Key Vaultban válassza **a Tanúsítványok** > *a kívánt tanúsítványtitkos* > **azonosítót:**
+* **A fürt tanúsítványának Key Vault URL-címe.** A Azure Portal Key Vault válassza a **tanúsítványok** > *a kívánt tanúsítvány* > **titkos azonosítóját**:
 
     ```powershell
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **A fürttanúsítvány ujjlenyomata.** (Valószínűleg már rendelkezik ezzel, ha [a kezdeti fürthöz csatlakozik az](#connect-to-the-new-cluster-and-check-health-status) állapotának ellenőrzéséhez.) Ugyanebből a tanúsítványpanelről **(Tanúsítványok** > *a kívánt tanúsítványból)* az Azure Portalon másolja az **X.509 SHA-1 ujjlenyomatot (hexaxában):**
+* **A fürt tanúsítványának ujjlenyomata.** (Ha [a kezdeti fürthöz kapcsolódott az](#connect-to-the-new-cluster-and-check-health-status) állapotának vizsgálatához, valószínűleg már ezt is megteheti.) Ugyanabból a tanúsítványból (**Certificates** > a tanúsítvány*a kívánt tanúsítvánnyal*) Azure Portal másolja az **X. 509 SHA-1 ujjlenyomatot (hexadecimális)**:
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
     ```
 
-* **A key vault erőforrás-azonosítója.** Az Azure Portalon lévő Key Vaultban válassza **a Properties** > **Resource ID**lehetőséget:
+* **A Key Vault erőforrás-azonosítója.** A Azure Portal Key Vault válassza a **Tulajdonságok** > **erőforrás-azonosító**elemet:
 
     ```powershell
     $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
     ```
 
-### <a name="deploy-the-updated-template"></a>A frissített sablon telepítése
+### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
 
-Szükség `parameterFilePath` szerint `templateFilePath` módosítsa a és a következő parancsot:
+Módosítsa a `parameterFilePath` és `templateFilePath` szükség szerint, majd futtassa a következő parancsot:
 
 ```powershell
 # Deploy the new scale set (upgraded to use managed disks) into the primary node type.
@@ -297,15 +297,15 @@ New-AzResourceGroupDeployment `
     -Verbose
 ```
 
-Amikor a központi telepítés befejeződik, ellenőrizze újra a fürt állapotát, és győződjön meg arról, hogy mind a tíz csomópont (öt az eredeti és öt az új méretezési csoportban) kifogástalan állapotban van.When the deployment completes, check the cluster health again and ensure all ten nodes (five on the original and five on the new scale set) are healthy.
+Ha az üzembe helyezés befejeződött, ellenőrizze újra a fürt állapotát, és győződjön meg arról, hogy az összes tíz csomópont (az eredeti és öt az új méretezési csoporton) kifogástalan állapotú.
 
 ```powershell
 Get-ServiceFabricClusterHealth
 ```
 
-## <a name="migrate-seed-nodes-to-the-new-scale-set"></a>Magcsomópontok áttelepítése az új méretezési készletbe
+## <a name="migrate-seed-nodes-to-the-new-scale-set"></a>A vetőmag-csomópontok migrálása az új méretezési csoportba
 
-Most már készen állunk az eredeti méretezési halmaz csomópontjainak letiltására. Ezek a csomópontok letiltása, a rendszerszolgáltatások és a magcsomópontok áttelepülnek az új méretezési csoport virtuális gépeire, mert elsődleges csomóponttípusként is meg van jelölve.
+Most már készen áll az eredeti méretezési csoport csomópontjainak letiltására. Mivel ezek a csomópontok le lesznek tiltva, a rendszerszolgáltatások és a vetőmag-csomópontok átkerülnek az új méretezési csoport virtuális gépei felé, mert az elsődleges csomópont-típusként is meg van jelölve.
 
 ```powershell
 # Disable the nodes in the original scale set.
@@ -317,16 +317,16 @@ foreach($name in $nodeNames){
 }
 ```
 
-A Service Fabric Explorer segítségével figyelheti a magcsomópontok áttelepítését az új méretezési készletre és az eredeti méretezési skálán lévő csomópontok előrehaladását *a Letiltás letiltása* *állapotra.*
+A Service Fabric Explorer segítségével figyelheti a magok áttelepítését az új méretezési csoportba, és az eredeti méretezési csoport csomópontjainak a *letiltott* állapotba való *letiltásának* folyamatát.
 
-![A Szolgáltatásháló-kezelő a letiltott csomópontok állapotát mutatja](./media/upgrade-managed-disks/service-fabric-explorer-node-status.png)
+![A letiltott csomópontok állapotának megjelenítése Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-node-status.png)
 
 > [!NOTE]
-> Eltarthat egy ideig, amíg a letiltási művelet az eredeti méretezési készlet összes csomópontjára. Az adatok konzisztenciájának biztosítása érdekében egyszerre csak egy magcsomópont módosítható. Minden egyes magcsomópont-módosításhoz fürtfrissítésszükséges; így egy magcsomópont cseréje két fürtfrissítést igényel (egy-egy csomópont hozzáadása és eltávolítása). Ebben a mintaforgatókönyvben az öt magcsomópontok frissítése tíz fürtfrissítést eredményez.
+> Eltarthat egy ideig, amíg az eredeti méretezési csoport összes csomópontján el nem végzi a letiltási műveletet. Az adatkonzisztencia garantálása érdekében egyszerre csak egy mag-csomópont módosítható. Minden egyes mag-csomópont változásához szükség van egy fürt frissítésére; így a magok csomópontjának cseréje két fürt frissítését igényli (egyet a csomópontok hozzáadásához és eltávolításához). A példában szereplő öt mag-csomópont frissítése tíz fürt frissítését eredményezi.
 
-## <a name="remove-the-original-scale-set"></a>Az eredeti méretezési készlet eltávolítása
+## <a name="remove-the-original-scale-set"></a>Az eredeti méretezési csoport eltávolítása
 
-A letiltási művelet befejezése után távolítsa el a méretezési készletet.
+A letiltási művelet befejezése után távolítsa el a méretezési csoportját.
 
 ```powershell
 # Remove the original scale set
@@ -340,11 +340,11 @@ Remove-AzVmss `
 Write-Host "Removed scale set $scaleSetName"
 ```
 
-A Service Fabric Explorer, az eltávolított csomópontok (és így a *fürt állapota)* most jelenik meg *hiba* állapotban.
+Service Fabric Explorer az eltávolított csomópontok (és így a *fürt állapota*) mostantól *hibás* állapotban jelennek meg.
 
-![A Service Fabric Explorer hibás állapotban lévő letiltott csomópontokat jelenít meg](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
+![A hibás állapotú letiltott csomópontok megjelenítése Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
 
-Távolítsa el az elavult csomópontokat a Service Fabric-fürtből a fürt állapotának *OK*állapotának visszaállításához.
+Távolítsa el az elavult csomópontokat a Service Fabric-fürtből a fürt állapotának *OK*értékre való visszaállításához.
 
 ```powershell
 # Remove node states for the deleted scale set
@@ -354,22 +354,22 @@ foreach($name in $nodeNames){
 }
 ```
 
-![Service Fabric Explorer hibás állapotban lévő lefelé jelző csomókkal](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
+![Service Fabric Explorer a hibás állapotú csomópontok eltávolításakor](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a forgatókönyvben megtanulta, hogyan frissítheti a Service Fabric-fürt virtuálisgép-méretezési készleteit felügyelt lemezek használatára, miközben elkerüli a szolgáltatás kimaradásokat a folyamat során. A kapcsolódó témakörökről az alábbi forrásokban olvashat bővebben.
+Ebben az útmutatóban megtanulta, hogyan frissíthet egy Service Fabric-fürt virtuálisgép-méretezési csoportjait a felügyelt lemezek használatára, miközben elkerüli a szolgáltatás leállását a folyamat során. A kapcsolódó témakörökkel kapcsolatos további információkért tekintse meg az alábbi forrásokat.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 * [Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása](service-fabric-scale-up-node-type.md)
 
-* [Méretezési csoport sablonjának konvertálása felügyelt lemezek használatára](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
+* [Méretezési csoport sablonjának átalakítása felügyelt lemezek használatára](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 
-* [Service Fabric-csomóponttípus eltávolítása](service-fabric-how-to-remove-node-type.md)
+* [Service Fabric csomópont típusának eltávolítása](service-fabric-how-to-remove-node-type.md)
 
 Lásd még:
 
-* [Minta: Fürtcsomópontok frissítése az Azure által kezelt lemezek használatához](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
+* [Minta: fürtcsomópontok frissítése az Azure Managed Disks használatára](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
-* [Vertikális skálázási szempontok](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)
+* [Vertikális skálázási megfontolások](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

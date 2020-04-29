@@ -1,7 +1,7 @@
 ---
-title: Vészhelyreállítás megvalósítása biztonsági mentés és visszaállítás használatával az API Management ben
+title: Vész-helyreállítás implementálása biztonsági mentéssel és visszaállítással API Management
 titleSuffix: Azure API Management
-description: Ismerje meg, hogyan használhatja a biztonsági mentést és a visszaállítást a vészhelyreállítás végrehajtásához az Azure API Managementben.
+description: Ismerje meg, hogyan végezheti el a biztonsági mentést és a visszaállítást a vész-helyreállításhoz az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -14,79 +14,79 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
 ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261006"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
-Az API-k Azure API Management en keresztüli közzétételével és kezelésével kihasználja a hibatűrést és az infrastruktúra-képességeket, amelyeket egyébként manuálisan tervezne, valósítana meg és kezelne. Az Azure platform a költségek töredékéért csökkenti a potenciális hibák nagy részét.
+Az API-k Azure API Management használatával történő közzétételével és kezelésével kihasználhatja a hibatűrést és az olyan infrastrukturális képességeket, amelyeket manuálisan tervez, implementál és kezelhet. Az Azure platform csökkenti a lehetséges hibák nagy hányadát a költségek töredékéért.
 
-Az API Management szolgáltatást kiszolgáló régiót érintő rendelkezésre állási problémák helyreállításához bármikor készen kell állnia a szolgáltatás egy másik régióban történő újragenerálására. A helyreállítási idő célkitűzésétől függően érdemes lehet egy vagy több régióban készenléti szolgáltatást tartani. Megpróbálhatja a konfigurációjukat és a tartalmukat az aktív szolgáltatással a helyreállítási pont céljának megfelelően szinkronban tartani. A szolgáltatás biztonsági mentési és visszaállítási funkciói biztosítják a vész-helyreállítási stratégia megvalósításához szükséges építőelemeket.
+A API Management szolgáltatást üzemeltető régiót érintő rendelkezésre állási problémák helyreállításához a szolgáltatást bármikor újra létre kell állítani egy másik régióban. A helyreállítási időre vonatkozó célkitűzéstől függően előfordulhat, hogy egy vagy több régióban szeretné megőrizni a készenléti szolgáltatást. Azt is megteheti, hogy az aktív szolgáltatással szinkronban tartja a konfigurációt és a tartalmakat a helyreállítási pont célkitűzése szerint. A szolgáltatás biztonsági mentési és visszaállítási funkciói lehetővé teszik a vész-helyreállítási stratégia megvalósításához szükséges építőelemeket.
 
-A biztonsági mentési és visszaállítási műveletek az API Management szolgáltatás konfigurációjának replikálására is használhatók az operatív környezetek között, például fejlesztési és átmeneti állapotok között. Vigyázz, hogy a futásidejű adatok, például a felhasználók és az előfizetések is másolásra kerülnek, ami nem mindig kívánatos.
+A biztonsági mentési és visszaállítási műveletek API Management szolgáltatás konfigurációjának replikálására is használhatók az operatív környezetek, például a fejlesztés és az előkészítés során. Ügyeljen arra, hogy a futásidejű, például a felhasználók és az előfizetések adatait is másolja a rendszer, ami esetleg nem mindig kívánatos.
 
-Ez az útmutató bemutatja, hogyan automatizálhatja a biztonsági mentési és visszaállítási műveleteket, és hogyan biztosíthatja a biztonsági mentési és visszaállítási kérelmek azure Resource Manager általi sikeres hitelesítését.
+Ez az útmutató bemutatja, hogyan automatizálható a biztonsági mentési és visszaállítási műveletek, valamint a biztonsági mentési és visszaállítási kérelmek sikeres hitelesítése Azure Resource Manager alapján.
 
 > [!IMPORTANT]
-> A visszaállítási művelet nem módosítja a célszolgáltatás egyéni állomásnév-konfigurációját. Azt javasoljuk, hogy ugyanazt az egyéni állomásnevet és TLS-tanúsítványt használja az aktív és a készenléti szolgáltatásokhoz is, hogy a visszaállítási művelet befejezése után a forgalom átirányítható a készenléti példányra egy egyszerű DNS CNAME módosítással.
+> A visszaállítási művelet nem módosítja a cél szolgáltatás egyéni állomásnév-konfigurációját. Azt javasoljuk, hogy ugyanazt az egyéni állomásnév-és TLS-tanúsítványt használja az aktív és a készenléti szolgáltatásokhoz is, hogy a visszaállítási művelet befejezése után a forgalom átirányítható legyen a készenléti példányra egy egyszerű DNS-CNAME változással.
 >
-> A biztonsági mentési művelet nem rögzíti az Azure Portal analytics paneljén megjelenített jelentésekben használt előre összesített naplóadatokat.
+> A biztonsági mentési művelet nem rögzíti a Azure Portal Analytics paneljén megjelenített jelentésekben szereplő, előre összevont naplózási adatokat.
 
 > [!WARNING]
-> Minden biztonsági mentés 30 nap után lejár. Ha a 30 napos lejárati időszak lejárta után próbál meg biztonsági `Cannot restore: backup expired` másolatot visszaállítani, a visszaállítás üzenettel sikertelen lesz.
+> Az egyes biztonsági másolatok 30 nap elteltével lejárnak. Ha a 30 napos lejárati időszak lejárta után megkísérli visszaállítani a biztonsági mentést, akkor a visszaállítás egy `Cannot restore: backup expired` üzenettel meghiúsul.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="authenticating-azure-resource-manager-requests"></a>Az Azure Resource Manager-kérelmek hitelesítése
+## <a name="authenticating-azure-resource-manager-requests"></a>Azure Resource Manager kérelmek hitelesítése
 
 > [!IMPORTANT]
-> A REST API biztonsági mentési és visszaállítási használja az Azure Resource Manager, és egy másik hitelesítési mechanizmus, mint a REST API-k az API-kezelő entitások kezelésére. Ebben a szakaszban található lépések ismertetik, hogyan hitelesítheti az Azure Resource Manager-kérelmeket. További információt az [Azure Resource Manager-kérelmek hitelesítése című témakörben talál.](/rest/api/index)
+> A biztonsági mentéshez és visszaállításhoz használt REST API Azure Resource Manager, és egy másik hitelesítési mechanizmussal rendelkezik, mint a API Management entitások felügyeletéhez szükséges REST API-k. Az ebben a szakaszban ismertetett lépések bemutatják, hogyan lehet hitelesíteni a Azure Resource Manager kérelmeket. További információ: [Azure Resource Manager kérelmek hitelesítése](/rest/api/index).
 
-Az Azure Resource Managert használó erőforrásokon végzett összes feladatot hitelesíteni kell az Azure Active Directoryval a következő lépések végrehajtásával:
+A Azure Resource Manager használó erőforrásokon végrehajtott összes feladatot a következő lépések végrehajtásával kell hitelesíteni a Azure Active Directory használatával:
 
--   Alkalmazás hozzáadása az Azure Active Directory-bérlőhöz.
+-   Alkalmazás hozzáadása a Azure Active Directory bérlőhöz.
 -   Állítsa be a hozzáadott alkalmazás engedélyeit.
--   A kérelmek hitelesítéséhez az Azure Resource Manager token beszerezni.
+-   Kérje le a jogkivonatot a kérelmek Azure Resource Manager való hitelesítéséhez.
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory-alkalmazás létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az API Management szolgáltatáspéldányt tartalmazó előfizetés használatával keresse meg az **Azure Active Directory** (Azure Active Directory > Manage/App registrations) **alkalmazásregisztrációk** lapját.
+2. Az API Management Service-példányát tartalmazó előfizetés használatával navigáljon a Azure Active Directory **Alkalmazásregisztrációk** (Azure Active Directory **Azure Active Directory** > felügyelet/Alkalmazásregisztrációk) lapjára.
 
     > [!NOTE]
-    > Ha az Azure Active Directory alapértelmezett könyvtára nem látható a fiókja számára, forduljon az Azure-előfizetés rendszergazdájához, hogy megadja a szükséges engedélyeket a fiókjához.
+    > Ha az Azure Active Directory alapértelmezett könyvtára nem látható a fiókjában, forduljon az Azure-előfizetés rendszergazdájához, és adja meg a szükséges engedélyeket a fiókjához.
 
 3. Kattintson az **Új alkalmazásregisztráció** elemre.
 
-    A **Létrehozás** ablak a jobb oldalon jelenik meg. Itt adhatja meg az AAD alkalmazás releváns adatait.
+    A **Létrehozás** ablak a jobb oldalon jelenik meg. Itt adhatja meg a HRE alkalmazáshoz kapcsolódó információkat.
 
 4. Adjon nevet az alkalmazásnak.
-5. Az alkalmazás típushoz válassza a **Natív**lehetőséget.
-6. Adjon meg egy helyőrző URL-címet, például `http://resources` az **átirányítási URI-hoz,** mivel ez egy kötelező mező, de az értéket később nem használja. Az alkalmazás mentéséhez kattintson a jelölőnégyzetre.
-7. Kattintson **a Létrehozás gombra.**
+5. Az alkalmazás típusa mezőben válassza a **natív**lehetőséget.
+6. Adjon meg egy helyőrző URL- `http://resources` címet, például az **átirányítási URI**esetében, mivel ez egy kötelező mező, de az értéket nem használja később. Az alkalmazás mentéséhez kattintson a jelölőnégyzetre.
+7. Kattintson a **Létrehozás**gombra.
 
 ### <a name="add-an-application"></a>Alkalmazás hozzáadása
 
 1. Az alkalmazás létrehozása után kattintson az **API-engedélyek**elemre.
-2. Kattintson **a + Engedély hozzáadása gombra.**
-4. Nyomja **le a Microsoft API-k kiválasztásával**.
+2. Kattintson **az + engedély hozzáadása**lehetőségre.
+4. Kattintson a **Microsoft API-k kiválasztása elemre**.
 5. Válassza az **Azure Service Management**lehetőséget.
-6. Nyomja **le a Kijelölés gombot.**
+6. Kattintson a **kiválasztás**gombra.
 
     ![Engedélyek hozzáadása](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. Kattintson a **Delegált engedélyek** elemre az újonnan hozzáadott alkalmazás mellett, jelölje be az **Access Azure Service Management (előzetes verzió) jelölőnégyzetet.**
-8. Nyomja **le a Kijelölés gombot.**
-9. Kattintson **az Engedélyek megadása gombra.**
+7. Kattintson a **delegált engedélyek** elemre az újonnan hozzáadott alkalmazás mellett, jelölje be az **Access Azure Service Management (előzetes verzió)** jelölőnégyzetet.
+8. Kattintson a **kiválasztás**gombra.
+9. Kattintson az **engedélyek megadása**elemre.
 
 ### <a name="configuring-your-app"></a>Az alkalmazás konfigurálása
 
-A biztonsági mentést generáló és restaurálandó API-k hívása előtt be kell szereznie egy jogkivonatot. A következő példa a [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet csomagot használja a jogkivonat beolvasásához.
+A biztonsági mentést létrehozó API-k meghívása és a visszaállítás előtt le kell kérnie a tokent. A következő példa a [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet-csomagot használja a jogkivonat lekéréséhez.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -113,35 +113,35 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Cserélje `{tenant id}` `{application id}`ki `{redirect uri}` a , , és a következő utasításokat használja:
+Cserélje `{tenant id}`le `{application id}`, és `{redirect uri}` használja az alábbi utasításokat:
 
-1. Cserélje `{tenant id}` le a létrehozott Azure Active Directory-alkalmazás bérlői azonosítóját. Az azonosítót az **Alkalmazásregisztrációk** -> **végpontjai**elemre kattintva érheti el.
+1. Cserélje `{tenant id}` le a helyére a létrehozott Azure Active Directory alkalmazás BÉRLŐi azonosítóját. Az azonosítót **Alkalmazásregisztrációk** -> **végpontokra**kattintva érheti el.
 
     ![Végpontok][api-management-endpoint]
 
-2. Cserélje `{application id}` le a **Beállítások** lapra való navigálással megkapandó értékre.
-3. Cserélje `{redirect uri}` le az Azure Active **Directory-alkalmazás Átirányítási URI-k** lapján szereplő értékre.
+2. Cserélje `{application id}` le a értéket a beolvasott értékre a **Beállítások** lapon.
+3. Cserélje le `{redirect uri}` az értéket a Azure Active Directory alkalmazás **átirányítási URI** -k lapjáról.
 
-    Az értékek megadása után a példakódnak a következő példához hasonló jogkivonatot kell visszaadnia:
+    Az értékek megadása után a kód példájának az alábbi példához hasonló tokent kell visszaadnia:
 
     ![Jogkivonat][api-management-arm-token]
 
     > [!NOTE]
-    > A token egy bizonyos időszak után lejár. Új jogkivonat létrehozásához hajtsa végre újra a kódmintát.
+    > A jogkivonat bizonyos idő elteltével lejárhat. Új jogkivonat létrehozásához hajtsa végre ismét a kód mintát.
 
-## <a name="calling-the-backup-and-restore-operations"></a>A biztonsági mentési és visszaállítási műveletek hívása
+## <a name="calling-the-backup-and-restore-operations"></a>A biztonsági mentési és visszaállítási műveletek meghívása
 
-A REST API-k [API-kezelő szolgáltatás - Biztonsági mentés](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) i és [Api-kezelési szolgáltatás – Visszaállítás.](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
+A REST API-k az [API Management szolgáltatás – biztonsági mentési](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) és [API Management szolgáltatás – visszaállítás](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore).
 
-A következő szakaszokban ismertetett "biztonsági mentési és visszaállítási" műveletek hívása előtt állítsa be a REST-hívás engedélyezési kérelem fejlécét.
+A következő szakaszokban leírt "biztonsági mentési és visszaállítási" műveletek meghívása előtt állítsa be a REST-hívás engedélyezési kérelmének fejlécét.
 
 ```csharp
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-### <a name="back-up-an-api-management-service"></a><a name="step1"> </a>API-felügyeleti szolgáltatás biztonsági szolgálatának biztonsági szolgálata
+### <a name="back-up-an-api-management-service"></a><a name="step1"> </a>API Management szolgáltatás biztonsági mentése
 
-Az API Management szolgáltatás biztonsági rendszerének biztonsági és biztonsági szolgálata a következő HTTP-kérést adja ki:
+API Management szolgáltatás biztonsági mentése a következő HTTP-kérést adja ki:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
@@ -149,12 +149,12 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ahol:
 
--   `subscriptionId`- Annak az előfizetésnek az azonosítója, amely rendelkezik a biztonsági másolatot próbál tartalmazó API Management szolgáltatásról
--   `resourceGroupName`- az Azure API Management szolgáltatás erőforráscsoportjának neve
--   `serviceName`- annak az API Management szolgáltatásnak a neve, amelyről a létrehozáskor megadott biztonsági másolatot készít
--   `api-version`- csere`2018-06-01-preview`
+-   `subscriptionId`-Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, amelyről biztonsági másolatot szeretne készíteni
+-   `resourceGroupName`-Az Azure API Management szolgáltatás erőforráscsoport neve
+-   `serviceName`– annak a API Management-szolgáltatásnak a neve, amelyről biztonsági másolatot készít a létrehozás időpontjában.
+-   `api-version`-csere a`2018-06-01-preview`
 
-A kérelem törzsében adja meg a cél Azure storage-fiók nevét, a hozzáférési kulcsot, a blobtároló nevét és a biztonsági másolat nevét:
+A kérelem törzsében adja meg a cél Azure Storage-fiók nevét, a hozzáférési kulcsot, a blob-tároló nevét és a biztonsági másolat nevét:
 
 ```json
 {
@@ -165,27 +165,27 @@ A kérelem törzsében adja meg a cél Azure storage-fiók nevét, a hozzáfér�
 }
 ```
 
-Állítsa a `Content-Type` kérelemfejléc értékét `application/json`a értékre.
+Adja meg a `Content-Type` kérelem fejlécének értékét a `application/json`következőre:.
 
-A biztonsági mentés egy hosszú ideig futó művelet, amely több mint egy percet is igénybe vehet. Ha a kérés sikeres volt, és a `202 Accepted` biztonsági mentési `Location` folyamat megkezdődött, egy fejléccel rendelkező válaszállapotkódot kap. A "GET" kérelmek et `Location` a fejlécben lévő URL-címre a művelet állapotának megismeréséhez. Amíg a biztonsági mentés folyamatban van, továbbra is "202 Elfogadott" állapotkódot kap. A válaszkód `200 OK` a biztonsági mentési művelet sikeres befejezését jelzi.
+A Backup egy hosszú ideig futó művelet, amely több mint egy percet is igénybe vehet. Ha a kérelem sikeres volt, és a biztonsági mentési folyamat elindult, a `202 Accepted` rendszer egy `Location` fejlécet tartalmazó Response állapotkódot kap. A művelet állapotának megállapításához végezze el a `Location` "Get" kéréseket a fejlécben lévő URL-címhez. Amíg a biztonsági mentés folyamatban van, továbbra is "202 elfogadott" állapotkódot kap. A válasz kódja a `200 OK` biztonsági mentési művelet sikeres befejezését jelzi.
 
-Biztonsági mentési vagy visszaállítási kérelem készítésekor vegye figyelembe az alábbi korlátozásokat:
+Biztonsági mentési vagy visszaállítási kérelem készítésekor vegye figyelembe a következő korlátozásokat:
 
--   **A** kérelemtörzsben megadott **tárolónak léteznie kell**.
--   Amíg a biztonsági mentés folyamatban van, **kerülje a felügyeleti módosításokat a szolgáltatásban,** például a Termékváltozat frissítését vagy visszaminősítését, a tartománynév módosítását stb.
--   A biztonsági mentés visszaállítása **csak 30 napig garantált** a létrehozása óta.
--   **Az** elemzési jelentések létrehozásához használt használati adatok **nem szerepelnek** a biztonsági mentésben. Az [Azure API Management REST API-val][azure api management rest api] rendszeres időközönként lekérheti az elemzési jelentéseket a megőrzésérdekében.
--   Ezenkívül a következő elemek nem képezik a biztonsági mentési adatok részét: egyéni tartomány TLS/SSL tanúsítványok és az ügyfél által feltöltött köztes vagy főtanúsítványok, a fejlesztői portál tartalma és a virtuális hálózati integráció beállításai.
--   A szolgáltatás biztonsági mentések végrehajtásának gyakorisága befolyásolja a helyreállítási pont célját. Minimalizálása érdekében azt javasoljuk, hogy rendszeres biztonsági mentéseket hajtson végre, és igény szerinti biztonsági mentéseket hajtson végre az API Management szolgáltatás módosítása után.
--   **A** szolgáltatás konfigurációján végrehajtott módosítások (például API-k, házirendek és fejlesztői portálmegjelenések) a biztonsági mentés iművelete során **kizárhatók a biztonsági mentésből, és elvesznek.**
--   **Engedélyezze** a hozzáférést a vezérlősíkról az Azure Storage-fiókhoz, ha a [tűzfal][azure-storage-ip-firewall] engedélyezve van. Az ügyfélnek meg kell nyitnia az [Azure API Management Control Plane IP-címeit][control-plane-ip-address] a tárfiókban a biztonsági mentéshez vagy a visszaállításhoz. 
+-   A kérelem törzsében megadott **tárolónak** **léteznie kell**.
+-   A biztonsági mentés folyamatban van, így **elkerülhető a szolgáltatásban történt felügyeleti változások** , például az SKU frissítése vagy a lefokozás, a tartománynév módosítása és egyebek.
+-   A biztonsági másolat visszaállítását csak a létrehozás időpontja óta **30 napig garantáljuk** .
+-   Az elemzési jelentések létrehozásához használt **használati adatok** **nem szerepelnek** a biztonsági mentésben. Az [Azure API Management REST API][azure api management rest api] használatával rendszeres időközönként beolvashatja az elemzési jelentéseket a megőrzéshez.
+-   Emellett a következő elemek nem részei a biztonsági mentési adatoknak: egyéni tartomány TLS/SSL-tanúsítványok, valamint az ügyfél, a fejlesztői portál tartalma és a virtuális hálózat integrációs beállításai által feltöltött bármely közbenső vagy főtanúsítvány.
+-   A szolgáltatás biztonsági másolatának elvégzéséhez használt gyakoriság a helyreállítási pontok céljára is hatással van. A lehető legkisebbre csökkentése érdekében javasoljuk, hogy a rendszeres biztonsági mentéseket és az igény szerinti biztonsági mentéseket a API Management szolgáltatás módosítása után végezze el.
+-   A szolgáltatás konfigurációjában (például az API-k, a házirendek és a fejlesztői portál megjelenésében) **végrehajtott módosítások** **kizárhatók a biztonsági mentésből, és elvesznek**.
+-   Hozzáférés **engedélyezése** a vezérlési síkon az Azure Storage-fiókba, ha engedélyezve van a [tűzfal][azure-storage-ip-firewall] . Az ügyfélnek meg kell nyitnia az [Azure API Management vezérlési sík IP-címeit][control-plane-ip-address] a Storage-fiókjában a biztonsági mentéshez vagy a visszaállításhoz. 
 
 > [!NOTE]
-> Ha egy API Management szolgáltatásból próbál biztonsági mentést/visszaállítást végezni egy olyan tárfiók használatával, amelyen engedélyezve van a [tűzfal,][azure-storage-ip-firewall] ugyanabban az Azure-régióban, akkor ez nem fog működni. Ennek az az oka, hogy az Azure Storage-nak érkező kérelmek nem snated egy nyilvános IP-cím compute > (Azure Api Management vezérlő sík). Régiók közötti tárolási kérelem lesz SNATed.
+> Ha olyan Storage-fiókkal kísérli meg a biztonsági mentést és a visszaállítást, amelyről vagy egy API Management szolgáltatásról [van szükség][azure-storage-ip-firewall] , akkor az azonos Azure-régióban nem fog működni. Ennek az az oka, hogy az Azure Storage-ba irányuló kérések nem címfordítást nyilvános IP-címekre a számítási > (Azure API Management Control Plane). A régiók közötti tárolási kérelem címfordítást lesz.
 
-### <a name="restore-an-api-management-service"></a><a name="step2"> </a>API-felügyeleti szolgáltatás visszaállítása
+### <a name="restore-an-api-management-service"></a><a name="step2"> </a>API Management szolgáltatás visszaállítása
 
-Ha egy API Management szolgáltatást szeretne visszaállítani egy korábban létrehozott biztonsági másolatból, tegye a következő HTTP-kérelmet:
+API Management szolgáltatás korábban létrehozott biztonsági másolatból történő visszaállításához végezze el a következő HTTP-kérést:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
@@ -193,12 +193,12 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ahol:
 
--   `subscriptionId`- Annak az előfizetésnek az azonosítója, amely azt az API Management szolgáltatást tartalmazza, amelybe biztonsági másolatot készít,
--   `resourceGroupName`- annak az erőforráscsoportnak a neve, amely az Azure API Management szolgáltatást tartalmazza, amelybe biztonsági másolatot készít
--   `serviceName`- az API Management szolgáltatás nak a létrehozáskor megadott helyére történő visszaállítása
--   `api-version`- csere`2018-06-01-preview`
+-   `subscriptionId`-Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, és amelyről biztonsági másolatot kíván visszaállítani
+-   `resourceGroupName`-Az Azure API Management szolgáltatást tároló erőforráscsoport neve, amelyről biztonsági másolatot kíván visszaállítani
+-   `serviceName`– annak a API Management-szolgáltatásnak a neve, amelyet a rendszer a létrehozáskor adott vissza.
+-   `api-version`-csere a`2018-06-01-preview`
 
-A kérelem törzsében adja meg a biztonsági másolat helyét. Ez azt, hogy adja hozzá az Azure storage-fiók nevét, a hozzáférési kulcsot, a blobtároló nevét és a biztonsági másolat nevét:
+A kérelem törzsében határozza meg a biztonságimásolat-fájl helyét. Adja hozzá az Azure Storage-fiók nevét, a hozzáférési kulcsot, a blob-tároló nevét és a biztonsági másolat nevét:
 
 ```json
 {
@@ -209,28 +209,28 @@ A kérelem törzsében adja meg a biztonsági másolat helyét. Ez azt, hogy adj
 }
 ```
 
-Állítsa a `Content-Type` kérelemfejléc értékét `application/json`a értékre.
+Adja meg a `Content-Type` kérelem fejlécének értékét a `application/json`következőre:.
 
-A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több percet is igénybe vehet. Ha a kérelem sikeres volt, és a `202 Accepted` visszaállítási folyamat `Location` megkezdődött, egy fejléccel ellátott válaszállapotkódot kap. A "GET" kérelmek et `Location` a fejlécben lévő URL-címre a művelet állapotának megismeréséhez. Amíg a visszaállítás folyamatban van, továbbra is megkapja a "202 Elfogadott" állapotkódot. A visszaállítási `200 OK` művelet sikeres befejezését jelző válaszkód.
+A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több percet is igénybe vehet. Ha a kérelem sikeres volt, és a visszaállítási folyamat elindult, egy `202 Accepted` `Location` fejlécet tartalmazó válasz állapotkódot kap. A művelet állapotának megállapításához végezze el a `Location` "Get" kéréseket a fejlécben lévő URL-címhez. Amíg a visszaállítás folyamatban van, továbbra is megkapja az "202 elfogadott" állapotkódot. A válasz kódja a `200 OK` visszaállítási művelet sikeres befejezését jelzi.
 
 > [!IMPORTANT]
-> A visszaállított szolgáltatás **termékváltozatának** **meg kell egyeznie** a visszaállított biztonsági rendszer termékváltozatával.
+> A visszaállított szolgáltatás **SKU** -jának **meg kell egyeznie** a visszaállítani kívánt biztonsági másolati szolgáltatás SKU-jának.
 >
-> **A** szolgáltatás konfigurációján végrehajtott módosítások (például API-k, házirendek, fejlesztői portál megjelenése) a visszaállítási művelet folyamatban van, **felülírhatók.**
+> A szolgáltatás konfigurációjában (például API-k, házirendek, fejlesztői portál megjelenés) végrehajtott **módosítások** **felülírhatják**a visszaállítási műveletet.
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> A biztonsági mentési és visszaállítási műveletek a PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) és [_a Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) parancsokkal is elvégezhetők.
+> A biztonsági mentési és visszaállítási műveletek a PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) és a [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) parancsokkal is elvégezhetők.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a következő forrásokat a biztonsági mentési/visszaállítási folyamat különböző forgatókönyveihez.
+Tekintse meg a következő forrásokat a biztonsági mentési/visszaállítási folyamat különböző lépéseihez.
 
--   [Azure API-felügyeleti fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
+-   [Azure API Management-fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Az API Management biztonsági mentésének és helyreállításának automatizálása a Logic Apps használatával](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: A konfiguráció](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-    biztonsági mentése és visszaállítása_A Stuart által részletezett megközelítés nem felel meg a hivatalos útmutatásnak, de érdekes._
+-   [Azure API Management: a konfiguráció](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+    biztonsági mentése és visszaállítása_a Stuart által részletezett megközelítés nem felel meg a hivatalos útmutatásnak, de érdekes._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

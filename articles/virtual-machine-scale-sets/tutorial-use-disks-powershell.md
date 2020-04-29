@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Lemezek létrehozása és használata méretezési csoportokhoz az Azure PowerShell használatával
+title: Oktatóanyag – lemezek létrehozása és használata méretezési csoportokhoz Azure PowerShell
 description: Megismerheti, hogyan hozhat létre és használhat felügyelt lemezeket a virtuálisgép-méretezési csoportokhoz az Azure PowerShell használatával, beleértve a lemezek hozzáadását, előkészítését, listázását és leválasztását.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 6cdd1ee3c18d63e1a8c7734a9efc2573f6b04b33
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011191"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Lemezek létrehozása és használata virtuálisgép-méretezési csoportokhoz Azure PowerShell-lel
@@ -26,7 +26,7 @@ A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-p
 > * Lemezek teljesítménye
 > * Adatlemezek csatolása és előkészítése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -88,7 +88,7 @@ Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, na
 A méretezési csoport létrehozásakor vagy egy meglévő méretezési csoporthoz is létrehozhat és csatlakoztathat lemezeket.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Lemezek csatlakoztatása méretezési csoport létrehozásakor
-Hozzon létre egy virtuálisgép-méretezési készletet [az Új AzVmss](/powershell/module/az.compute/new-azvmss)segítségével. Amikor a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót a virtuálisgép-példányokhoz. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályai elosztják a 80-as TCP-porton érkező forgalmat, valamint lehetővé teszik a távoli asztali forgalmat a 3389-es, valamint a PowerShell távoli eljáráshívásokat az 5985-ös TCP-porton.
+Hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss). Amikor a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót a virtuálisgép-példányokhoz. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályai elosztják a 80-as TCP-porton érkező forgalmat, valamint lehetővé teszik a távoli asztali forgalmat a 3389-es, valamint a PowerShell távoli eljáráshívásokat az 5985-ös TCP-porton.
 
 Két lemez jön létre a `-DataDiskSizeGb` paraméterrel. Az első lemez *64* GB, míg a második lemez *128* GB méretű. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
@@ -108,7 +108,7 @@ New-AzVmss `
 A méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Lemez csatolása meglévő méretezési csoporthoz
-Meglévő méretezési csoporthoz is hozzáadhat lemezeket. Az előző lépésben létrehozott méretezési készlet segítségével adjon hozzá egy másik lemezt [az Add-AzVmssDataDisk segítségével.](/powershell/module/az.compute/add-azvmssdatadisk) Az alábbi példa egy újabb *128* GB-os lemezt csatlakoztat egy meglévő méretezési csoporthoz:
+Meglévő méretezési csoporthoz is hozzáadhat lemezeket. Használja az előző lépésben létrehozott méretezési készletet egy másik lemez hozzáadásához az [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk)használatával. Az alábbi példa egy újabb *128* GB-os lemezt csatlakoztat egy meglévő méretezési csoporthoz:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -137,7 +137,7 @@ A méretezési csoport virtuálisgép-példányaihoz létrehozott és hozzácsat
 A folyamat a méretezési csoport több virtuálisgép-példányán való automatizálásához használja az Azure egyéni szkriptek futtatására szolgáló bővítményét. A bővítmény képes a szkriptek helyi végrehajtására az egyes virtuálisgép-példányokon, például előkészíti a csatlakoztatott adatlemezeket. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
 
 
-A következő példa egy GitHub-mintatár-tárniegyből futtat egy parancsfájlt az [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) bővítményminden egyes virtuálisgép-példányon, amely előkészíti az összes nyers csatolt adatlemezt:
+Az alábbi példa egy GitHub-minta-tárházból származó szkriptet hajt végre minden olyan virtuálisgép-példányon, amely az összes nyers csatolt adatlemezt előkészítő [AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) rendelkezik:
 
 
 ```azurepowershell-interactive
@@ -169,7 +169,7 @@ Update-AzVmss `
 
 Annak megerősítéséhez, hogy a lemezek megfelelően elő lettek készítve, RDP-kapcsolaton keresztül csatlakozzon az egyik virtuálisgép-példányhoz. 
 
-Először is, kap a terheléselosztó objektum [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Ezután tekintse meg a bejövő NAT-szabályokat a [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig)segítségével. A NAT-szabályok listázzák az RDP által figyelt mindegyik virtuálisgép-példány *FrontendPort* értékét. Végül a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress)segítségével töltse le a terheléselosztó nyilvános IP-címét:
+Először szerezze be a terheléselosztó objektumot a [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Ezután tekintse meg a bejövő NAT-szabályokat a [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). A NAT-szabályok listázzák az RDP által figyelt mindegyik virtuálisgép-példány *FrontendPort* értékét. Végül szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
 
 
 ```azurepowershell-interactive
@@ -241,7 +241,7 @@ Zárja le a VM-példánnyal kiépített távoli asztali kapcsolat munkamenetet.
 
 
 ## <a name="list-attached-disks"></a>Csatlakoztatott lemezek listázása
-A méretezési csoporthoz csatlakoztatott lemezekre vonatkozó információk megtekintéséhez használja a [Get-AzVmss-t](/powershell/module/az.compute/get-azvmss) az alábbiak szerint:
+A méretezési csoportokhoz csatolt lemezekkel kapcsolatos információk megtekintéséhez használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) a következő módon:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
@@ -275,7 +275,7 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Lemez leválasztása
-Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. Lemez méretezési csoportról való leválasztásához használja [az Remove-AzVmssDataDisk programot,](/powershell/module/az.compute/remove-azvmssdatadisk) és adja meg a lemez logikai alvázszámait. A luns jelennek meg a [kimenetget-AzVmss](/powershell/module/az.compute/get-azvmss) az előző szakaszban. Az alábbi példa leválasztja a *3* LUN-számú lemezt a méretezési csoportról:
+Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. Ha le szeretne választani egy lemezt egy méretezési csoportból, használja a [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) , és adja meg a lemez LUN-számát. A logikai egységek az előző szakaszban található [Get-AzVmss](/powershell/module/az.compute/get-azvmss) kimenetében jelennek meg. Az alábbi példa leválasztja a *3* LUN-számú lemezt a méretezési csoportról:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -297,7 +297,7 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és a lemezek eltávolításához törölje az erőforráscsoportot és annak összes erőforrását az [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)segítségével. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
+A méretezési csoport és a lemezek eltávolításához törölje az erőforráscsoportot és az összes erőforrását a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

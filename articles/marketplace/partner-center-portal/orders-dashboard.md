@@ -1,6 +1,6 @@
 ---
-title: Partnerközpont-rendelések irányítópult a Kereskedelmi Piactér elemzésében
-description: Ismerje meg, hogyan érheti el a marketplace-ajánlati megbízásairól szóló analitikus jelentéseket grafikus és letölthető formátumban.
+title: A partner Center Orders irányítópultja a kereskedelmi piactér elemzésében
+description: Megtudhatja, hogyan érheti el a Piactéri ajánlatokra vonatkozó analitikus jelentéseket grafikus és letölthető formátumban.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,126 +8,126 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261261"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Rendelések irányítópultja a kereskedelmi piactér elemzésében
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A megrendelések irányítópultja a kereskedelmi piactér elemzésében
 
-Ez a cikk a Partnerközpont **Rendelések irányítópultjáról** nyújt tájékoztatást. Ez az irányítópult grafikus és letölthető formátumban jeleníti meg a rendelésekkel kapcsolatos információkat.
+Ez a cikk a partner Center **orders (megrendelések) irányítópultján** tartalmaz információkat. Ez az irányítópult grafikus és letölthető formátumban jeleníti meg a rendelésekkel kapcsolatos információkat.
 
-A Partnerközpont elemzési eszközeinek **Rendelések irányítópultjának** eléréséhez nyissa meg az **[Elemzés irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a Kereskedelmi piactér csoportban.
+A partner Center Analytics-eszközök **orders (megrendelések) irányítópultjának** megnyitásához nyissa meg az **[elemzés irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a kereskedelmi piactéren.
 
 >[!NOTE]
-> Az elemzési terminológia részletes meghatározását a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológia](./faq-terminology.md)című témakörben található.
+> Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
 
 ## <a name="orders-dashboard"></a>Rendelések irányítópult
 
-**Az Elemzés** menü **Rendelések irányítópultja** megjeleníti az összes SaaS-ajánlat aktuális rendelését. A következő elemek grafikus ábrázolásait tekintheti meg:
+Az **elemzés** menü **orders (megrendelések) irányítópultja** megjeleníti az összes SaaS-ajánlat aktuális rendeléseit. A következő elemek grafikus ábrázolásait tekintheti meg:
 
-- [Rendelés összegzése](#order-summary)
-- [Rendelések földrajzi hely szerint](#orders-by-geography)
+- [Megrendelés összegzése](#order-summary)
+- [Megrendelések földrajz szerint](#orders-by-geography)
 - [Megrendelések ajánlatok szerint](#orders-by-offers)
-- [Rendelési trend oldalanként és ülőhelyenként](#orders-trend-per-site-versus-per-seat)
-- [Rendelések a ski-k szerint](#orders-by-skus)
-- [Megrendelések és ülőhelyek trend](#orders-and-seats-trend)
+- [Orders trend per site/Seat](#orders-trend-per-site-versus-per-seat)
+- [Rendelések SKU szerint](#orders-by-skus)
+- [Megrendelések és ülőhelyek trendje](#orders-and-seats-trend)
 - [Rendelés részletei tábla](#order-details-table)
 
 > [!NOTE]
-> Különbségek vannak a között, ahogyan az elemzési jelentések megjelennek a Cloud Partner Portal (CPP) portálon és az új kereskedelmi piactér program között a Partnerközpontban. Az egyik konkrét módszer az, hogy a CPP **Eladói elemzési adatai** nak van **megrendelései & használat** lapja, amely a használatalapú ajánlatok és a nem használatalapú ajánlatok adatait jeleníti meg. A Partnerközpontban a **Rendelések** lapon külön lap található a SaaS-ajánlatok számára.
+> Az elemzési jelentések az Cloud Partner Portal (CPP) és a partner Center új kereskedelmi piactér programjában jelennek meg. Az egyik konkrét módszer az, hogy a CPP-beli **értékesítői** elemzések olyan **Orders & használati** lapokkal rendelkeznek, amelyek a használati és a nem használaton alapuló ajánlatok adatait jelenítik meg. A partner Centerben a **megrendelések** oldalon külön lap található az SaaS-ajánlatok számára.
 
-## <a name="order-dashboard-details"></a>Irányítópult részleteinek megrendelése
+## <a name="order-dashboard-details"></a>Rendelési irányítópult részletei
 
 Ez a szakasz részletesebben ismerteti az elemzési jelentéseket.
 
-### <a name="order-summary"></a>Rendelés összegzése
+### <a name="order-summary"></a>Megrendelés összegzése
 
-A Rendelés összegzése szakasz megjeleníti az összes megvásárolt rendelés (a visszavont rendelések kivételével), a visszavont rendelések és az ülőhelyek számát.
+Az Order Summary (megrendelés összegzése) szakasz az összes megvásárolt megrendelés (a megszakított megrendelések kivételével), a megszakított megrendelések és a helyek számát jeleníti meg.
 
-Az Összes rendelés melletti százalékos érték a kiválasztott dátumtartomány ban lévő növekedés összegét jelöli.
+Az összes rendelés melletti százalékos érték a kijelölt dátumtartomány növekedésének mértékét jelöli.
 
-![Partnerközpont – Rendelés elemzése összegzése](./media/order-summary.png)
+![A partneri központ elemzésének sorrendje – összefoglalás](./media/order-summary.png)
 
-- A felfelé mutató zöld háromszög pozitív növekedési tendenciát jelez.
-- A lefelé mutató piros háromszög az előző hónaphoz képest negatív növekedési tendenciát jelez.
-- A növekedési trendeket mikrosávos grafikonok képviselik. Az egyes hónapok értékét úgy jelenítheti meg, hogy a diagram oszlopai fölé viszi az egérmutatót.
-- A visszavont rendelések a korábban megvásárolt, majd a kiválasztott dátumtartományban visszavont rendelések száma.
-- Az ülőhelyek száma a kiválasztott dátumtartományban létrehozott ülőhelyek száma.
+- A felfelé mutató zöld háromszög pozitív növekedési trendet jelez.
+- Egy lefelé mutató piros háromszög jelzi az előző hónaphoz viszonyított negatív növekedési tendenciát.
+- A növekedési trendeket a Micro Bar graphs jelképezi. Az egyes hónapok értékét a diagramon belüli oszlopok fölé húzva jelenítheti meg.
+- A megszakított megrendelések a korábban megvásárolt és a kijelölt dátumtartomány során megszakított megrendelések száma.
+- A helyek a kiválasztott dátumtartomány során létrehozott helyek száma.
 
-### <a name="orders-by-geography"></a>Rendelések földrajzi hely szerint
+### <a name="orders-by-geography"></a>Megrendelések földrajz szerint
 
-A **Rendelések földrajzi** hőtérkép szerint megjeleníti a rendelések számát a világtérképen, és megjeleníti az Ügyfél országa alapján leképezett ülőhelyeket. Ez a hőtérkép ugyanúgy működik, mint az **[Ügyfél földrajzi hőtérkép szerint.](./customer-dashboard.md#customer-by-geography)**
+A **Orders by földrajz** hő megjeleníti a megrendelések számát egy globális térképen, és az ügyfél országa alapján leképezett ülőhelyeket jelenít meg. Ez a hő ugyanúgy működik, mint az **[ügyfél földrajzi hő](./customer-dashboard.md#customer-by-geography)**.
 
-![Partnerközpont Rendelések elemzése földrajzi hely szerint](./media/orders-by-geography.png)
+![A partner Center elemzi a rendeléseket földrajz szerint](./media/orders-by-geography.png)
 
 ### <a name="orders-by-offers"></a>Megrendelések ajánlatok szerint
 
-A **Rendelések ajánlat szerint** fánkdiagram a rendeléseket (beleértve a visszavont rendeléseket is) az ajánlatnevük szerint rendezi.
+A **Orders by ajánlatok** a fánk-gráfok szerint rendezik a rendeléseket (beleértve a megszakított rendeléseket is) az ajánlat nevük alapján.
 
-- A felső ajánlatok megjelennek a grafikonon, a többi ajánlat pedig "Rest All" (Összes pihenés) néven van csoportosítva.
-- A jelmagyarázatban kiválaszthatja az okat, hogy csak azok jelenjenek meg a grafikonon.
-- Ha a grafikonon egy szelet fölé viszi a mutatót, akkor az ajánlat megrendeléseinek száma és százalékos aránya az összes ajánlatban lévő rendelések teljes számához képest.
-- Az **ajánlatok alapján idikta trend** havi növekedési trendeket jelenít meg. A hónap oszlop a rendelések számát jelöli ajánlatnév szerint. A vonaldiagram a z tengelyen ábrázolt növekedési százalékos trendet jeleníti meg.
-- A diagram tetején lévő csúszkával jobbra és balra görgethet az x tengely mentén, és adott adatpontokra összpontosíthat.
-- A trenddiagramot úgy jelenítheti meg, hogy kijelöl egy adott elemet a jelmagyarázaton.
-- Kiválaszthatja a **visszavont rendelések**trendjeinek és adatainak megjelenítését is. A grafikon ugyanúgy fog működni, mint a **rendelések ajánlatdiagram szerint.**
+- A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig "Rest all"-ként van csoportosítva.
+- A jelmagyarázatban megadott ajánlatokat kiválasztva csak a gráfban található ajánlatokat jelenítheti meg.
+- Ha a diagramon egy szelet fölé viszi az egérmutatót, a megrendelések száma és az ajánlat százalékos aránya az összes ajánlaton alapul.
+- A **Orders by ajánlatok trend** a havi havi növekedési trendeket jeleníti meg. A hónap oszlop a megrendelések számát jelöli az ajánlat neve alapján. A diagram egy z-tengelyen ábrázolt százalékos növekedési arányt jeleníti meg.
+- A diagram tetején található csúszka segítségével jobbra és balra görgetheti az x tengelyt, és az adott adatpontokra koncentrálhat.
+- A trend diagramot egy adott elem kiválasztásával jelenítheti meg a jelmagyarázatban.
+- Dönthet úgy is, hogy a **megszakított megrendelésekhez**kapcsolódó trendeket és az adatfolyamatokat is megjeleníti. A gráf ugyanúgy fog működni, mint a **Orders by ajánlatok** gráf.
 
-### <a name="orders-trend-per-site-versus-per-seat"></a>Rendelések Trend webhelyenként és ülőhelyenként
+### <a name="orders-trend-per-site-versus-per-seat"></a>Orders trend per site/Seat
 
-A **webhelyenkénti és az ülőhelyenkénti** fánkdiagram a saas-i és az ülőhelyenkénti SaaS-rendelések ügyfélenkénti bontását mutatja (ez a diagram tartalmazza a törölt rendeléseket). Az oszlopdiagram az ügyfelek által vásárolt SaaS-és ülőhelyenkénti SaaS-rendelések trendjét mutatja (ez a diagram tartalmazza a visszavont rendeléseket).
+A **helyek közötti** és az munkaállomásonkénti fánk-diagram a helyek és az ügyfelek által megvásárolt munkaállomásonkénti SaaS-utasítások részletezését jelöli (ez a diagram a megszakított rendeléseket is tartalmazza). Az oszlopdiagram a site SaaS és az ügyfelek által vásárolt munkaállomásonkénti SaaS-megrendelések trendjét jelöli (ez a diagram a megszakított rendeléseket is tartalmazza).
 
-### <a name="orders-by-skus"></a>Rendelések a ski-k szerint
+### <a name="orders-by-skus"></a>Rendelések SKU szerint
 
-A **Rendelések termékváltozatonként** diagram a rendelések trendjét mutatja a Raktározási egység (SKU) szintjén az összes ajánlatesetében (ez magában foglalja a visszavont rendeléseket is). A fánkdiagram az első öt Termékváltozat-rendelés bontását mutatja, az oszlopdiagram pedig az első öt termékváltozat rendeléseinek trendjét.
+A **megrendelések az SKU** -diagram szerint az összes ajánlathoz tartozó készletezési egység (SKU) szintjén szerepelnek (ez tartalmazza a megszakított rendeléseket is). A fánk diagram az első öt SKU-megrendelés részletezését jelöli, az oszlopdiagram pedig az első öt SKU megrendeléseinek tendenciáját jelöli.
 
-### <a name="orders-and-seats-trend"></a>Megrendelések és ülések trend
+### <a name="orders-and-seats-trend"></a>Megrendelések és ülőhelyek trendje
 
-A **megrendelések és helyek trendtáblázata** a legtöbb megrendeléssel rendelkező 50 legjobb ajánlatot mutatja be. Ezek a ranglistán jelennek meg, és a legmagasabb rendelésszám és a rendelési százalék szerint vannak rendezve.
+A **Orders and seats trend** diagram a legmagasabb számú rendeléssel rendelkező első 50-ajánlatokat mutatja be. Ezek a ranglistán jelennek meg, és a sorrendjük a legmagasabb rendelési szám és a megrendelés százaléka alapján történik.
 
-- **Rendelések ski-k szerint :** Válasszon egy ajánlatot a diagram első öt sk-jának rendelésszámának megtekintéséhez.
-- **Helyek a suk-ok szerint**: Az első öt suk-ra vonatkozó ülőhelyek havi trendje. Ha a kiválasztott ajánlat nem ülőhelyenkénti ajánlat, akkor ezen a területdiagramon nem jelennek meg adatok.
+- **Rendelések SKU szerint**: válasszon egy ajánlatot a diagramon az első öt SKU-hoz tartozó rendelési szám részletezésének megtekintéséhez.
+- **Helyek SKU szerint**: az első öt SKU-ra vonatkozó ülések havi trendje. Ha a kiválasztott ajánlat nem egy munkaállomásonkénti ajánlat, akkor ebben a területen nem jelenik meg az összes információ.
 
-### <a name="canceled-orders-by-offers"></a>Visszavont ajánlatok általi rendelések
+### <a name="canceled-orders-by-offers"></a>Megszakított megrendelések ajánlatok szerint
 
-A **Visszavont rendelések kördiagram alapján** az összes visszavont rendelést az ajánlatnevük szerint rendezi. A felső ajánlatok a grafikonon jelennek meg, a többi ajánlat pedig "Rest All" (Összes enszimény) néven van csoportosítva. A jelmagyarázatban megjelenítendő ajánlatokat kiválaszthatja a grafikonon.
+A **megszakított Orders by ajánlatok** kördiagrama az összes megszakított rendelést az ajánlat nevük alapján rendezi. A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig "Rest all"-ként van csoportosítva. A jelmagyarázatban a diagramon megjelenő konkrét ajánlatokat is kiválaszthatja.
 
-- Ha a grafikonon egy szelet fölé viszi a mutatót, megjelenik a rendelések száma és a kiválasztott ajánlat százalékos aránya az összes ajánlatrendeléseinek teljes számához képest.
-- Az oszlopdiagram havi trendeket jelenít meg. Az oszlopok a visszavont rendelések számát jelölik ajánlatnév szerint. A diagram tetején lévő csúszkával jobbra és balra görgethet az x tengely mentén, és adott adatpontokra összpontosíthat. A trenddiagramot úgy jelenítheti meg, hogy kijelöl egy adott elemet a jelmagyarázaton.
+- Ha a diagramon egy szelet fölé viszi a kurzort, a rendszer megjeleníti a kiválasztott ajánlathoz tartozó megrendelések számát és százalékos arányát az összes ajánlatban szereplő megrendelések teljes számával szemben.
+- Az oszlopdiagram hónapról hónapra eső trendeket jelenít meg. Az oszlopok az ajánlat neve alapján megszakított megrendelések számát jelölik. A diagram tetején található csúszka segítségével jobbra és balra görgetheti az x tengelyt, és az adott adatpontokra koncentrálhat. A trend diagramot egy adott elem kiválasztásával jelenítheti meg a jelmagyarázatban.
 
 ### <a name="order-details-table"></a>Rendelés részletei tábla
 
-A Rendelés részletei tábla az 1000 legfontosabb rendelés számozott listáját jeleníti meg az akvizíció dátuma szerint rendezve.
+Az Order Details (megrendelés részletei) tábla a 1000 Top orders (beszerzési dátum szerint rendezve) számozott listát jeleníti meg.
 
 - A rács minden oszlopa rendezhető.
-- Az adatok kinyerhetők egy TSV fájlba, ha a rekordok száma kevesebb, mint 1000.
-- Ha a rekordok száma 1000-nél több, az exportált adatok aszinkron módon kerülnek a letöltési oldalra a következő 30 napra.
-- Szűrők alkalmazhatók a **Rendelés részletei táblára,** hogy csak azÖnt érdeklő adatok jelenjenek meg. Az adatok ország, Azure-licenctípus, piactéri licenctípus, ajánlattípus, rendelésállapota, ingyenes nyomvonalak, piactér-előfizetés-azonosító, ügyfélazonosító és vállalatnév szerint szűrhetők.
+- Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
+- Ha a 1000-es számú rekordok száma, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
+- A szűrők az **Order Details (megrendelés részletei) táblára** alkalmazhatók, hogy csak az Önt érdeklő adatokat jelenítsék meg. Az adatszűrést ország, Azure-licenc típusa, piactér-licenc típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, piactér-előfizetés azonosítója, ügyfél-azonosító és cégnév alapján lehet szűrni.
 
-#### <a name="orders-page-filters"></a>Rendelések oldalszűrői
+#### <a name="orders-page-filters"></a>Megrendelések oldal szűrőinek
 
-Ezek a szűrők az oldal szintjén kerülnek alkalmazásra.
+Ezeket a szűrőket az oldal szintjén alkalmazza a rendszer.
 
-Több szűrőt is kijelölhet a megtekinteni kívánt feltételek és a **Részletes rendelési adatok** rácsában/exportálása korként megjelenítő adatok diagramjának megjelenítéséhez. A szűrők a rendelési lap jobb felső sarkában kiválasztott adattartományhoz kinyert adatokra vonatkoznak.
+Több szűrőt is kiválaszthat, hogy a diagramot a megtekinteni kívánt feltételekhez és a **részletes rendelési** adatrácsban/exportáláshoz megadott feltételeknek megfelelően jelenítse meg. A szűrők a megrendelések oldal jobb felső sarkában kiválasztott adattartományra kinyert adattartományon lesznek alkalmazva.
 
-- Az ajánlattípusok és az ajánlatnevek csak a kiválasztott dátumtartományban rendelésekkel rendelkező ajánlatokhoz vannak felsorolva. A listában szereplő ajánlatnevek a listában kiválasztott ajánlattípusokesetében jelennek meg.
-- Az alkalmazott szűrők az egyes kiválasztott szűrők összes mutatóit jelenítik meg az egyes kiválasztott szűrőkön belül. Az alkalmazott szűrők nem jelennek meg, ha az alapértelmezett kijelölés van kiválasztva.
-- Ha az **Összes** lehetőség van kiválasztva az egyik legördülő listához, akkor a kiválasztott oldal összes mutatója összesítve lesz. Például: "Minden" az ajánlattípusok szűrő beállítás azt jelenti, hogy az összes ajánlattípusok vannak kiválasztva. Ez a legördülő listák alapértelmezett kijelölése. Az alkalmazott szűrők megjelenítése nem jelenít meg **semmit,** ha az Összes ki van jelölve.
-- **Többszörös értékválasztás:** Az oldal összes mutatója összesítve jelenik meg a legördülő lista összes kiválasztottja esetében. Ha több kijelölés történik, az alkalmazott szűrő az összes megadott kijelölés számát jeleníti meg. Lásd az alábbi képet referencia.
+- Az ajánlat típusa és az ajánlat neve csak azokra a ajánlatokra van felsorolva, amelyekhez a kiválasztott dátumtartomány esetében rendeléseket rendelt. A listában szereplő ajánlatok nevei megjelennek a listában kiválasztott ajánlati típusoknál.
+- Az alkalmazott szűrők megjelenítik az egyes kijelöléseken belüli összes mérőszámot az egyes kiválasztott szűrőknél. Az alkalmazott szűrők nem jelennek meg, ha az alapértelmezett kijelölés van kiválasztva.
+- Ha az egyik legördülő lista valamelyikére van kiválasztva, akkor a kiválasztott oldalon **lévő összes metrika** összesítésre kerül. Például: az "all" az ajánlat típusainak szűrése beállítás azt jelenti, hogy az összes ajánlat típus ki van választva. Ez a legördülő listák alapértelmezett kiválasztása. Az alkalmazott szűrők képernyőn nem jelenik meg semmi, ha az **összes** ki van választva.
+- **Több érték kiválasztása**: a lapon lévő összes metrika összesítve lesz a legördülő lista alatti összes beállítás esetében. Ha több beállítás is megtörtént, az alkalmazott szűrő megjeleníti az összes kiválasztott beállítás számát. Az alábbi képen megtekintheti a hivatkozást.
 
-    ![Partnerközpont A rendelés elemzése több értékkel a szűréshez alkalmazva](./media/filters-applied.png)
+    ![A partner Center elemzési sorrendje több, szűrésre alkalmazott értékkel](./media/filters-applied.png)
 
-- **Egyetlen érték választás:** Ha egy érték van kiválasztva, az alkalmazott szűrő a kijelölt szűrő számát jeleníti meg. Lásd az alábbi képet a referencia.
+- **Egyetlen érték kiválasztása**: Ha egy érték van kiválasztva, akkor az alkalmazott szűrő a kiválasztott szűrő számát jeleníti meg. Tekintse meg az alábbi képet a hivatkozáshoz.
 
-     ![Partnerközpont A rendelés elemzése egyetlen értékkel a szűrőre alkalmazva](./media/filters-applied-single.png)
+     ![A partneri központ elemzési sorrendje egyetlen, a szűrőre alkalmazott értékkel](./media/filters-applied-single.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- A Partnerközpont kereskedelmi piacterén elérhető elemzési jelentések áttekintését [a Partnerközpont Kereskedelmi piacterületén található Analytics for the commercial marketplace című témakörben találja.](./analytics.md)
-- Az ajánlat marketplace-tevékenységét összegző összesített adatok grafikonjait, trendjeit és értékeit [lásd: Összefoglaló irányítópult a kereskedelmi piactér-elemzésben.](./summary-dashboard.md)
-- A virtuális gép (VM) kínál használati és forgalmi díjas számlázási metrikák, [lásd: Használati irányítópult a kereskedelmi piactér analytics.](./usage-dashboard.md)
-- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket is, az [Ügyfél irányítópultja a kereskedelmi piactér elemzésében](./customer-dashboard.md)című témakörben talál.
-- Az elmúlt 30 nap letöltési kérelmeinek listáját a [Letöltések irányítópulta a kereskedelmi piactér-elemzésben című témakörben tartalmazza.](./downloads-dashboard.md)
-- Az Azure Marketplace-en és az AppSource-on az ajánlatokra vonatkozó ügyfél-visszajelzések összevont nézetét a [Minősítések és véleményezések irányítópultja című témakörben tekintheti meg a kereskedelmi piactér-elemzésekben.](./ratings-reviews.md)
-- A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekről és az adatkifejezések átfogó szótáráról a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.
+- A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
+- Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
+- A virtuális gép (VM) használati és mért számlázási mérőszámokat kínál, lásd [a használati irányítópultot a kereskedelmi piactér elemzésében](./usage-dashboard.md).
+- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket, lásd [a kereskedelmi piactér elemzésének ügyfél-irányítópultját](./customer-dashboard.md).
+- Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./downloads-dashboard.md).
+- Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a [kereskedelmi piactér elemzésének minősítések és értékelések irányítópultját](./ratings-reviews.md)
+- A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekre, valamint az adatkifejezések átfogó szótárát lásd: [Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez](./faq-terminology.md).

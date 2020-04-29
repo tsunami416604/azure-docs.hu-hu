@@ -1,174 +1,174 @@
 ---
-title: A Blockchain Data Manager konfigurálása az Azure Portal használatával - Azure Blockchain Szolgáltatás
-description: Az Azure Portalon keresztül létrehozhatja és kezelheti a Blockchain Data Manager for Azure Blockchain Szolgáltatást.
+title: Blockchain-Data Manager konfigurálása Azure Portal-Azure Blockchain Service használatával
+description: Blockchain-Data Manager létrehozása és kezelése az Azure Blockchain Service-hez a Azure Portal használatával.
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
 ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260598"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>A Blockchain Data Manager konfigurálása az Azure Portallal
 
-Konfigurálja a Blockchain Data Manager for Azure Blockchain Service-t a blokklánc-adatok rögzítéséhez és elküldéséhez egy Azure Event Grid topic-témakörbe.
+Konfigurálja a Blockchain Data Manager az Azure Blockchain szolgáltatáshoz, hogy rögzítse a Blockchain-adatgyűjtést, és küldje el egy Azure Event Grid témakörbe.
 
-A Blockchain Data Manager-példány konfigurálásához:
+A Blockchain Data Manager példányának konfigurálásához a következőket kell tennie:
 
-* Blockchain Data Manager-példány létrehozása egy Azure Blockchain Szolgáltatás tranzakciócsomóponthoz
-* A blokklánc-alkalmazások hozzáadása
+* Blockchain-Data Manager példány létrehozása Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz
+* Blockchain-alkalmazások hozzáadása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Teljes [gyorsútmutató: Hozzon létre egy blockchain tagot az Azure Portalon](create-member.md) vagy a [gyorsútmutatóban: Hozzon létre egy Azure Blockchain Service blockchain-tagot az Azure CLI használatával.](create-member-cli.md) Az Azure Blockchain Service *Standard* tier használata esetén ajánlott blockchain data manager használata.
-* [Eseményrács témakörének](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
-* Információ [az Eseménykezelőkről az Azure Event Gridben](../../event-grid/event-handlers.md)
+* Teljes rövid útmutató [: blockchain-tag létrehozása a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md). Az Azure Blockchain Service *standard* szintű Blockchain Data Manager használata esetén ajánlott.
+* [Event Grid témakör](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
+* További információ a [Azure Event Grid-beli eseménykezelőről](../../event-grid/event-handlers.md)
 
 ## <a name="create-instance"></a>Példány létrehozása
 
-A Blockchain Data Manager-példány csatlakozik és figyel egy Azure Blockchain Service tranzakciós csomópontot. Csak a tranzakciócsomóponthoz hozzáféréssel rendelkező felhasználók hozhatnak létre kapcsolatot. Egy példány rögzíti az összes nyers blokk és nyers tranzakciós adatokat a tranzakciócsomópont. Blockchain Data Manager közzéteszi **a RawBlockAndTransactionMsg** üzenetet, amely egy szuperhalmaza visszaad web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) és [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) lekérdezések.
+Egy Blockchain Data Manager-példány csatlakozik egy Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz, és figyeli azokat. Csak a tranzakciós csomóponthoz hozzáféréssel rendelkező felhasználók hozhatnak létre kapcsolatot. Egy példány az összes nyers blokk és nyers tranzakció adatait rögzíti a tranzakciós csomópontról. A Blockchain Data Manager közzétesz egy **RawBlockAndTransactionMsg** -üzenetet, amely a web3. ETH [GetBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) és a [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) lekérdezések által visszaadott információk egy részét képezi.
 
-A kimenő kapcsolat blockchain adatokat küld az Azure Event Grid. Egyetlen kimenő kapcsolatot konfigurál, amikor létrehozza a példányt. A Blockchain Data Manager több Eseményrács-témakör kimenő kapcsolatot támogat bármely adott Blockchain Data Manager-példányhoz. Blockchain adatokat küldhet egyetlen célhelyre, vagy küldhet blokklánc-adatokat több célhelyre. Másik cél hozzáadásához csak adjon hozzá további kimenő kapcsolatokat a példányhoz.
+A kimenő kapcsolatok a blockchain adatokat küldenek Azure Event Grid. A példány létrehozásakor egyetlen kimenő kapcsolódást kell konfigurálnia. A Blockchain Data Manager több Event Grid témakör kimenő kapcsolatait is támogatja bármely adott Blockchain Data Manager-példány esetében. Blockchain-adatküldést egyetlen célhelyre is küldhet, vagy több célhelyre is küldhet blockchain-fájlokat. Egy másik cél hozzáadásához csak további kimenő kapcsolatokat adjon hozzá a példányhoz.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Nyissa meg az Azure Blockchain Service-tagot, amelyhez csatlakozni szeretne a Blockchain Data Managerhez. Válassza a **Blockchain Data Manager**lehetőséget.
+1. Nyissa meg az Azure Blockchain szolgáltatás azon tagját, amelyhez csatlakozni szeretne a Blockchain Data Manager. Válassza ki a **Blockchain Data Manager**.
 1. Válassza a **Hozzáadás** lehetőséget.
 
-    ![Blockchain-adatkezelő hozzáadása](./media/data-manager-portal/add-instance.png)
+    ![Blockchain hozzáadása Data Manager](./media/data-manager-portal/add-instance.png)
 
     Adja meg a következő részleteket:
 
     Beállítás | Leírás
     --------|------------
-    Név | Adjon meg egy csatlakoztatott Blockchain Data Manager egyedi nevét. A Blockchain Data Manager neve kisbetűket és számokat tartalmazhat, és legfeljebb 20 karakter hosszú.
-    Tranzakciócsomópont | Válasszon egy tranzakciócsomópontot. Csak az olvasási hozzáféréssel rendelkező tranzakciócsomópontok jelennek meg.
-    Kapcsolat neve | Adja meg annak a kimenő kapcsolatnak az egyedi nevét, amelybe a blokklánc-tranzakció adatait küldi el.
-    Eseményrács végpontja | Válasszon egy eseményrács-témakört ugyanabban az előfizetésben, mint a Blockchain Data Manager-példány.
+    Name (Név) | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager. A Blockchain Data Manager neve kisbetűket és számokat tartalmazhat, és legfeljebb 20 karakter hosszúságú lehet.
+    Tranzakciós csomópont | Válasszon tranzakciós csomópontot. Csak az olvasási hozzáféréssel rendelkező tranzakciós csomópontok jelennek meg.
+    Kapcsolat neve | Adja meg a kimenő kapcsolatok egyedi nevét, ahol a blockchain tranzakciós adatküldés történik.
+    Event Grid-végpont | Válassza ki az Event Grid-témakört ugyanabban az előfizetésben, mint a Blockchain Data Manager-példányt.
 
-1. Válassza **az OK gombot.**
+1. Kattintson az **OK** gombra.
 
-    A Blockchain Data Manager-példány létrehozása kevesebb mint egy percet vesz igénybe. A példány üzembe helyezése után automatikusan elindul. A futó Blockchain Data Manager-példány rögzíti a blokklánc-eseményeket a tranzakciócsomópontról, és adatokat küld a kimenő kapcsolatoknak.
+    Egy Blockchain Data Manager példány létrehozásához kevesebb mint egy percet vesz igénybe. A példány üzembe helyezése után a rendszer automatikusan elindítja azt. Egy futó Blockchain Data Manager példány rögzíti a Blockchain eseményeket a tranzakciós csomópontból, és adatokat küld a kimenő kapcsolatoknak.
 
-    Az új példány megjelenik az Azure Blockchain Service-tag Blockchain Data Manager-példányainak listájában.
+    Az új példány megjelenik a Blockchain Data Manager példányok listájában az Azure Blockchain szolgáltatás tagja számára.
 
-    ![A Blockchain Data Member példányainak listája](./media/data-manager-portal/instance-list.png)
+    ![A Blockchain-adattagok példányainak listája](./media/data-manager-portal/instance-list.png)
 
-## <a name="add-blockchain-application"></a>Blockchain alkalmazás hozzáadása
+## <a name="add-blockchain-application"></a>Blockchain-alkalmazás hozzáadása
 
-Ha hozzáad egy blockchain alkalmazást, a Blockchain Data Manager dekódolja az alkalmazás esemény- és tulajdonságállapotát. Ellenkező esetben csak a nyers blokk és a nyers tranzakciós adatok küldése. A Blockchain Data Manager a szerződéscímek üzembe helyezésekor is felderíti a szerződéscímeket. Több blockchain alkalmazást is hozzáadhat egy Blockchain Data Manager-példányhoz.
+Blockchain-alkalmazás hozzáadásakor a Blockchain Data Manager dekódolja az alkalmazás esemény-és tulajdonsági állapotát. Ellenkező esetben a rendszer csak a nyers blokkot és a nyers tranzakciós adatkészletet küldi el. A Blockchain Data Manager a szerződések központi telepítésekor is felfedi a szerződések címét. Több blockchain-alkalmazást is hozzáadhat egy Blockchain Data Manager-példányhoz.
 
 > [!IMPORTANT]
-> Jelenleg a Solidity [tömbtípusokat](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) [mapping types](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) deklaráló blokklánc-alkalmazások nem támogatottak teljes mértékben. A tömb- vagy leképezéstípusként deklarált tulajdonságok nem lesznek dekódolva *a ContractPropertiesMsg* vagy *a DecodedContractEventsMsg* üzenetekben.
+> Jelenleg a [blockchain vagy a](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) [leképezési típusokat](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) deklaráló alkalmazások nem teljes mértékben támogatottak. A tömbként vagy leképezési típusként deklarált tulajdonságokat a rendszer nem dekódolja a *ContractPropertiesMsg* vagy a *DecodedContractEventsMsg* üzenetekben.
 
-A Blockchain Data Manager intelligens szerződésa ABI-t igényel, és az alkalmazás hozzáadásához üzembe helyezte bytecode fájlt.
+Az Blockchain Data Manager az alkalmazás hozzáadásához intelligens szerződéssel rendelkező ABI-t és telepített bytecode-fájlt igényel.
 
-### <a name="get-contract-abi-and-bytecode"></a>Szerződés ABI és bytecode bekéselése
+### <a name="get-contract-abi-and-bytecode"></a>Egyezményes ABI és bytecode beszerzése
 
-A szerződés ABI határozza meg az intelligens szerződés interfészek. Leírja, hogyan lehet kölcsönhatásba lépni az intelligens szerződéssel. Az Azure [Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) segítségével másolja a szerződés ABI a vágólapra.
+A szerződési ABI definiálja az intelligens szerződési felületeket. Leírja, hogyan kezelheti az intelligens szerződést. A [Ethereum-bővítményhez készült Azure Blockchain Development Kit](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) használatával másolhatja át a szerződéses ABI-t a vágólapra.
 
-1. A Visual Studio Kódkezelő ablaktábláján bontsa ki a Solidity projekt **build/szerződések** mappáját.
-1. Kattintson a jobb gombbal a szerződés metaadat-jsonfájljára. A fájlnév az intelligens szerződés neve, amelyet a **.json** kiterjesztés követ.
-1. Válassza **a Szerződés ABI másolása lehetőséget.**
+1. A Visual Studio Code Explorer ablaktáblán bontsa ki a szilárdtest-projekt **Build/szerződések** mappáját.
+1. Kattintson a jobb gombbal a szerződés metaadatainak JSON-fájljára. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
+1. Válassza a **Szerződés másolása ABI**elemet.
 
-    ![A Visual Studio Kód ablaktáblája a Szerződés másolása ABI-kijelöléssel](./media/data-manager-portal/abi-devkit.png)
+    ![A Visual Studio Code panel és a másolási szerződés ABI kiválasztása](./media/data-manager-portal/abi-devkit.png)
 
-    A szerződés ABI másolja a vágólapra.
+    A rendszer átmásolja a szerződéses ABI-t a vágólapra.
 
-1. Mentse az **abi** tömböt JSON fájlként. Például *abi.json*. A fájlt egy későbbi lépésben használhatja.
+1. Mentse az **ABI** TÖMBÖt JSON-fájlként. Például: *ABI. JSON*. Ezt a fájlt egy későbbi lépésben használhatja.
 
-A Blockchain Data Manager megköveteli az intelligens szerződés üzembe helyezett bytecode-ot. Az üzembe helyezett bytecode eltér az intelligens szerződés bytecode. Az Azure blockchain fejlesztői csomag bővítmény használatával másolja a bytecode a vágólapra.
+A Blockchain Data Manager igényli az intelligens szerződés üzembe helyezett bytecode. Az üzembe helyezett bytecode eltér az intelligens szerződés bytecode. Az Azure blockchain Development Kit bővítmény használatával másolja a bytecode a vágólapra.
 
-1. A Visual Studio Kódkezelő ablaktábláján bontsa ki a Solidity projekt **build/szerződések** mappáját.
-1. Kattintson a jobb gombbal a szerződés metaadat-jsonfájljára. A fájlnév az intelligens szerződés neve, amelyet a **.json** kiterjesztés követ.
-1. Válassza **a Tranzakcióbájtmásolási bájkód lehetőséget.**
+1. A Visual Studio Code Explorer ablaktáblán bontsa ki a szilárdtest-projekt **Build/szerződések** mappáját.
+1. Kattintson a jobb gombbal a szerződés metaadatainak JSON-fájljára. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
+1. Válassza a **tranzakció másolása bytecode**lehetőséget.
 
-    ![A Visual Studio Kód ablaktáblája a Tranzakcióbájkód másolása beállítással](./media/data-manager-portal/bytecode-devkit.png)
+    ![Visual Studio Code ablaktábla a másolási tranzakció bytecode kijelölésével](./media/data-manager-portal/bytecode-devkit.png)
 
-    A bytecode a vágólapra kerül.
+    A rendszer a vágólapra másolja a bytecode.
 
-1. Mentse a **bytecode** értéket JSON-fájlként. Például *bytecode.json*. A fájlt egy későbbi lépésben használhatja.
+1. Mentse a **bytecode** -értéket JSON-fájlként. Például: *bytecode. JSON*. Ezt a fájlt egy későbbi lépésben használhatja.
 
-A következő példa a VS Code szerkesztőben megnyitott *abi.json* és *bytecode.json* fájlokat mutatja be. A fájloknak hasonlónak kell látszaniuk.
+Az alábbi példa az *ABI. JSON* és a *bytecode. JSON* fájlt mutatja meg a vs Code Editorban. A fájloknak hasonlóan kell kinézniük.
 
-![Példa abi.json és bytecode.json fájlokra](./media/data-manager-portal/contract-files.png)
+![ABI. JSON és bytecode. JSON fájlok – példa](./media/data-manager-portal/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>Szerződés ABI- és bytecode URL-címének létrehozása
+### <a name="create-contract-abi-and-bytecode-url"></a>Egyezményes ABI és bytecode URL-cím létrehozása
 
-A Blockchain Data Manager megköveteli, hogy a szerződés ABI és bytecode fájlok url-címből elérhetők legyenek az alkalmazás hozzáadásakor. Az Azure Storage-fiók használatával privát an-hetedi url-címet adhat meg.
+A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode fájlok elérhetők legyenek egy URL-cím használatával az alkalmazások hozzáadásakor. Az Azure Storage-fiókkal privát elérésű URL-címet is megadhat.
 
 #### <a name="create-storage-account"></a>Storage-fiók létrehozása
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Szerződésfájlok feltöltése
+#### <a name="upload-contract-files"></a>Szerződések fájljainak feltöltése
 
-1. Hozzon létre egy új tárolót a tárfiókhoz. Válassza **a Tárolók > a Tároló lehetőséget.**
+1. Hozzon létre egy új tárolót a Storage-fiókhoz. Válassza a tárolók **> tároló**elemet.
 
-    ![Tárfiók-tároló létrehozása](./media/data-manager-portal/create-container.png)
+    ![Storage-fiók tárolójának létrehozása](./media/data-manager-portal/create-container.png)
 
     | Mező | Leírás |
     |-------|-------------|
-    | Név  | Nevezze el a tárolót. Például az *intelligens* |
-    | Nyilvános hozzáférés szintje | Válassza a *Privát lehetőséget (nincs névtelen hozzáférés)* |
+    | Name (Név)  | Nevezze el a tárolót. Például: *smartcontract* |
+    | Nyilvános hozzáférés szintje | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
 
 1. A tároló létrehozásához válassza az **OK** gombot.
-1. Jelölje ki a tárolót, majd válassza **a Feltöltés**lehetőséget.
-1. Válassza ki mindkét létrehozott JSON-fájlt a Szerződés ABI és a [bytecode leválasztása](#get-contract-abi-and-bytecode) szakaszban.
+1. Válassza ki a tárolót, majd válassza a **feltöltés**lehetőséget.
+1. Válassza ki a [szerződések beszerzése ABI és bytecode](#get-contract-abi-and-bytecode) szakaszban létrehozott JSON-fájlokat.
 
-    ![Blob feltöltése](./media/data-manager-portal/upload-blobs.png)
+    ![BLOB feltöltése](./media/data-manager-portal/upload-blobs.png)
 
     Válassza a **Feltöltés** lehetőséget.
 
-#### <a name="generate-url"></a>URL létrehozása
+#### <a name="generate-url"></a>URL-cím előállítása
 
-Minden blobhoz hozzon létre egy közös hozzáférési aláírást.
+Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
-1. Válassza ki az ABI JSON blobot.
-1. SAS **létrehozása jelölőnégyzetet**
-1. Állítsa be a kívánt hozzáférési aláírás elévülését, majd válassza **a Blob SAS-token és URL létrehozása**lehetőséget.
+1. Válassza ki az ABI JSON-blobot.
+1. **Sas-előállítók** kiválasztása
+1. Állítsa be a kívánt hozzáférési aláírás lejáratát, majd válassza **a blob sas-token és URL-cím létrehozása**lehetőséget.
 
-    ![SAS-jogkivonat létrehozása](./media/data-manager-portal/generate-sas.png)
+    ![SAS-token előállítása](./media/data-manager-portal/generate-sas.png)
 
-1. Másolja a **Blob SAS URL-címét,** és mentse a következő szakaszra.
-1. Ismételje meg az [URL-generálása](#generate-url) lépéseket a bytecode JSON blob.
+1. Másolja a **blob sas URL-címét** , és mentse a következő szakaszra.
+1. Ismételje meg a bytecode JSON [-blob URL-címének előállítása](#generate-url) lépéseit.
 
 ### <a name="add-application-to-instance"></a>Alkalmazás hozzáadása a példányhoz
 
-1. Válassza ki a Blockchain Data Manager-példányt a példánylistából.
-1. Válassza a **Blockchain alkalmazások lehetőséget.**
+1. Válassza ki a Blockchain Data Manager példányt a példány listából.
+1. Válassza a **Blockchain-alkalmazások**elemet.
 1. Válassza a **Hozzáadás** lehetőséget.
 
-    ![Blockchain alkalmazás hozzáadása](./media/data-manager-portal/add-application.png)
+    ![Blockchain-alkalmazás hozzáadása](./media/data-manager-portal/add-application.png)
 
-    Adja meg a blockchain alkalmazás nevét és az intelligens szerződés ABI és bytecode URL-eket.
+    Adja meg a blockchain-alkalmazás nevét és az intelligens szerződési ABI és bytecode URL-eket.
 
     Beállítás | Leírás
     --------|------------
-    Név | Adja meg a nyomon követendő blockchain alkalmazás egyedi nevét.
-    Szerződés ABI | A Szerződés ABI-fájl URL-elérési útja. További információ: [Szerződés létrehozása ABI és bytecode URL.For more information, see Create contract ABI and bytecode URL.](#create-contract-abi-and-bytecode-url)
-    Szerződés bytecode | A bytecode fájl URL-elérési útja. További információ: [Szerződés létrehozása ABI és bytecode URL.For more information, see Create contract ABI and bytecode URL.](#create-contract-abi-and-bytecode-url)
+    Name (Név) | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
+    Egyezményes ABI | A szerződéses ABI-fájl URL-címének elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
+    Szerződés bytecode | A bytecode fájl URL-elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
 
-1. Válassza **az OK gombot.**
+1. Kattintson az **OK** gombra.
 
-    Az alkalmazás létrehozása után az alkalmazás megjelenik a blockchain alkalmazások listájában.
+    Az alkalmazás létrehozása után az alkalmazás megjelenik a blockchain-alkalmazások listájában.
 
-    ![Blockchain alkalmazáslista](./media/data-manager-portal/artifact-list.png)
+    ![Blockchain-alkalmazások listája](./media/data-manager-portal/artifact-list.png)
 
-Törölheti az Azure Storage-fiókot, vagy használhatja több blokklánc-alkalmazás konfigurálásához. Ha törölni szeretné az Azure Storage-fiókot, törölheti az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó tárfiók, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
+Törölheti az Azure Storage-fiókot, vagy felhasználhatja további blockchain alkalmazások konfigurálásához. Ha törölni szeretné az Azure Storage-fiókot, törölheti az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó tárfiók, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
-## <a name="stop-instance"></a>Leállítási példány
+## <a name="stop-instance"></a>Példány leállítása
 
-Állítsa le a Blockchain Manager-példányt, ha le szeretné állítani a blokklánc-események rögzítését és a kimenő kapcsolatokra történő adatküldést. A példány leállításakor a Blockchain Data Manager nem számít fel díjat. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/blockchain-service) tartalmaz.
+Állítsa le a Blockchain Manager-példányt, ha le szeretné állítani a Blockchain-események rögzítését és az adatok küldését a kimenő kapcsolatokra. Ha a példány leáll, a Blockchain Data Managerért nem számítunk fel díjat. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/blockchain-service) tartalmaz.
 
-1. Nyissa meg **az Áttekintés lehetőséget,** és válassza **a Leállítás**lehetőséget.
+1. Lépjen az **Áttekintés** elemre, és válassza a **Leállítás**lehetőséget.
 
-    ![Leállítási példány](./media/data-manager-portal/stop-instance.png)
+    ![Példány leállítása](./media/data-manager-portal/stop-instance.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki a következő oktatóanyag létrehozása blockchain tranzakció üzenetkezelő segítségével Blockchain Data Manager és az Azure Cosmos DB.
+Próbálja ki a következő oktatóanyagot, amely egy blockchain-tranzakciós Blockchain-kezelőt hoz létre a Data Manager és Azure Cosmos DB használatával.
 
 > [!div class="nextstepaction"]
 > [Adatok küldése az Azure Cosmos DB-be a Blockchain Data Managerrel](data-manager-cosmosdb.md)

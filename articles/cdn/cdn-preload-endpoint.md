@@ -1,6 +1,6 @@
 ---
-title: Eszközök előzetes betöltése egy Azure CDN-végponton | Microsoft dokumentumok
-description: Ismerje meg, hogyan lehet előre betölteni a gyorsítótárazott tartalmat egy Azure CDN-végponton.
+title: Eszközök előzetes betöltése egy Azure CDN végponton | Microsoft Docs
+description: Megtudhatja, hogyan tölthető be előre a gyorsítótárazott tartalom egy Azure CDN végponton.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: allensu
 ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260275"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Eszközök előzetes betöltése Azure CDN-végponton
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Alapértelmezés szerint az eszközök csak akkor kerülnek a gyorsítótárba, ha a rendszer kéri őket. Mivel a peremhálózati kiszolgálók még nem gyorsítótárazták a tartalmat, és a kérelmet továbbítaniuk kell az eredeti kiszolgálóra, az egyes régiókból érkező első kérés hosszabb időt vehet igénybe, mint a későbbi kérelmek. Az első találatos késés elkerülése érdekében előzetesen töltse be az eszközöket. A jobb ügyfélélmény biztosítása mellett a gyorsítótárazott eszközök előzetes betöltése csökkentheti a hálózati forgalmat az eredeti kiszolgálón.
+Alapértelmezés szerint az eszközök csak akkor lesznek gyorsítótárazva, amikor a rendszer kéri. Mivel a peremhálózati kiszolgálók még nem gyorsítótárazták a tartalmat, és a kérést továbbítani kell a forráskiszolgálón, az egyes régiók első kérelme hosszabb időt vehet igénybe a későbbi kérelmeknél. Ennek elkerüléséhez az adategységeket előre be kell tölteni. Amellett, hogy jobb felhasználói élményt nyújt, a gyorsítótárazott eszközök előzetes betöltése csökkentheti a hálózati forgalmat a forráskiszolgálón.
 
 > [!NOTE]
-> Az eszközök előzetes betöltése nagy események vagy tartalom esetén hasznos, amelyek egyszerre válnak elérhetővé sok felhasználó számára, például egy új filmkiadás vagy egy szoftverfrissítés számára.
+> Az eszközök előzetes betöltése olyan nagyméretű események vagy tartalmak esetében hasznos, amelyek egyszerre több felhasználó számára is elérhetők, például egy új film kiadása vagy egy szoftverfrissítés.
 > 
 > 
 
 Ez az oktatóanyag végigvezeti a gyorsítótárazott tartalom előzetes betöltésén az összes Azure CDN peremhálózati csomóponton.
 
 ## <a name="to-pre-load-assets"></a>Eszközök előzetes betöltése
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg a CDN-profilt, amely tartalmazza a végpontot előtölteni kívánt. Megnyílik a profilablaktábla.
+1. A [Azure Portal](https://portal.azure.com)keresse meg azt a CDN-profilt, amely az előre betölteni kívánt végpontot tartalmazza. Megnyílik a profil panel.
     
-2. Kattintson a végpontra a listában. Megnyílik a végpontablaktábla.
-3. A CDN végpontablaktábláján válassza a **Betöltés**lehetőséget.
+2. Kattintson a végpontra a listában. Megnyílik a végpont ablaktábla.
+3. A CDN-végpont ablaktáblán válassza a **Betöltés**lehetőséget.
    
-    ![CDN végpont ablaktábla](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
+    ![CDN-végpont panel](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
-    Megnyílik **a Betöltés** ablaktábla.
+    Megnyílik a **Load (Betöltés** ) ablaktábla.
    
-    ![CDN betöltési ablaktábla](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. A **Tartalom elérési út esetén**adja meg a betölteni `/pictures/kitten.png`kívánt eszközök (például) teljes elérési útját.
+    ![CDN betöltési panel](./media/cdn-preload-endpoint/cdn-load-blade.png)
+4. A **tartalom elérési útja**mezőbe írja be a betölteni kívánt eszközök teljes elérési útját (például `/pictures/kitten.png`:).
    
    > [!TIP]
-   > A szöveg beírásának megkezdése után további **Tartalomelérési út** szövegmezők jelennek meg, amelyek lehetővé teszik több eszköz listájának összeállítását. Ha törölni szeretné az eszközöket a listából, kattintson a három pont (...) gombra, majd a **Törlés gombra.**
+   > A szöveg bevitelének megkezdése után a további **tartalom elérési útja** szövegmezők lehetővé teszik, hogy több eszköz listáját is felépítse. Ha törölni szeretné az eszközöket a listából, válassza a három pontot (...), majd kattintson a **Törlés**gombra.
    > 
-   > Minden tartalomelérési útnak relatív URL-címnek kell lennie, amely megfelel a következő [reguláris kifejezéseknek:](/dotnet/standard/base-types/regular-expression-language-quick-reference)  
-   > - Egyetlen fájlelérési út betöltése:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > Minden tartalom elérési útjának relatív URL-címnek kell lennie, amely megfelel a következő [reguláris kifejezéseknek](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
+   > - Egyetlen fájl elérési útjának betöltése:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
    > - Egyetlen fájl betöltése lekérdezési karakterlánccal:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
-   > Mivel minden eszköznek saját elérési úttal kell rendelkeznie, nincs helyettesítő funkció az eszközök előzetes betöltéséhez.
+   > Mivel minden eszköznek saját elérési útnak kell lennie, nincs helyettesítő karakter a betöltés előtti eszközökhöz.
    > 
    > 
    
     ![Betöltés gomb](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. Amikor befejezte a tartalomelérési utak beírását, válassza a **Betöltés**lehetőséget.
+5. Ha végzett a tartalom elérési útjainak beírásával, válassza a **Betöltés**lehetőséget.
    
 
 > [!NOTE]
-> CdN-profilonként percenként legfeljebb 10 terhelési kérelem érhető el, és egyszerre 50 egyidejű elérési út dolgozható fel. Minden elérési út hosszhatára 1024 karakter.
+> A CDN-profilok száma percenként 10 betöltési kérést és 50 egyidejű feldolgozási útvonalat is feldolgozhat. Az egyes elérési utak hossza 1024 karakter.
 > 
 > 
 
 ## <a name="see-also"></a>Lásd még
-* [Azure CDN-végpont kiürítése](cdn-purge-endpoint.md)
-* [Azure CDN REST API-hivatkozás: Tartalom előtöltése egy végponton](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API-hivatkozás: Tartalom kiürítése egy végpontról](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN végpont kiürítése](cdn-purge-endpoint.md)
+* [Azure CDN REST API-hivatkozás: tartalom előzetes betöltése egy végponton](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN REST API-hivatkozás: tartalom kiürítése egy végpontból](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

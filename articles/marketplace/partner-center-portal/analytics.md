@@ -1,6 +1,6 @@
 ---
-title: Analytics a partnerközpont kereskedelmi piacteréhez
-description: Áttekintés az analitikus jelentések eléréséről az értékesítések figyelése, a teljesítmény értékelése és a piactéri ajánlatok optimalizálása érdekében.
+title: A partner Center kereskedelmi piactérének elemzései
+description: Tekintse át az elemzési jelentések elérését az értékesítések figyeléséhez, a teljesítmény kiértékeléséhez és a Piactéri ajánlatok optimalizálásához.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,29 +8,29 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262281"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics a partnerközpont kereskedelmi piacteréhez
+# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi piactérének elemzései
 
-Megtudhatja, hogy miként érheti el az analitikus jelentéseket a Microsoft Partner Centerben az értékesítés figyeléséhez, a teljesítmény értékeléséhez és az ajánlatok optimalizálásához a piactéren. Partnerként figyelemmel kísérheti az ajánlatlistákat a PartnerKözpont által támogatott adatvizualizációs és betekintési grafikonok segítségével, és módot találhat az értékesítés maximalizálására. A továbbfejlesztett elemzési eszközök lehetővé teszik, hogy a teljesítményeredmények alapján cselekedjen, és jobb kapcsolatot tartson fenn ügyfeleivel és viszonteladóival.
+Ismerje meg, hogyan érheti el az elemzési jelentéseket a Microsoft partner Centerben az értékesítések figyelése, a teljesítmény kiértékelése és az ajánlatok a piactéren való optimalizálása érdekében. Partnerként a partner Center által támogatott adatvizualizációk és betekintési diagramok segítségével figyelheti az ajánlati listáját, és megtalálhatja az értékesítés maximalizálásának módjait. A továbbfejlesztett elemzési eszközök lehetővé teszik a teljesítménybeli eredmények elvégzését, valamint az ügyfelekkel és viszonteladókkal való jobb kapcsolatok fenntartását.
 
-## <a name="partner-center-analytics-tools"></a>Partnerközpont-elemzési eszközök
+## <a name="partner-center-analytics-tools"></a>A partner Center Analytics eszközei
 
-A Partnerközpont elemzési eszközeinek eléréséhez nyissa meg az **[Elemzés irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a Kereskedelmi piactér csoportban.
+A partner Center Analytics eszközeinek eléréséhez nyissa meg az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópultot a kereskedelmi piactéren.
 
 >[!NOTE]
-> Az elemzési terminológia részletes meghatározását a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológia](./faq-terminology.md)című témakörben található.
+> Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Az ajánlat marketplace-tevékenységét összegző összesített adatok grafikonjait, trendjeit és értékeit lásd: [Összefoglaló irányítópult a kereskedelmi piactér-elemzésben.](./summary-dashboard.md)
-- A megrendelésekgrafikus és letölthető formátumban című témakörben talál további információt [a Rendelések irányítópultja a kereskedelmi piactér elemzésében.](./orders-dashboard.md)
-- A virtuális gép (VM) kínál használati és forgalmi díjas számlázási metrikák, lásd: [Használati irányítópult a kereskedelmi piactér analytics.](./usage-dashboard.md)
-- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket is, a [Vevői irányítópult a kereskedelmi piactér elemzésében](./customer-dashboard.md)című témakörben talál.
-- Az elmúlt 30 nap letöltési kérelmeinek listáját a [Letöltések irányítópultja a kereskedelmi piactér-elemzésben című témakörben tartalmazza.](./downloads-dashboard.md)
-- Az Azure Marketplace-en és az AppSource-on az ajánlatokra vonatkozó ügyfél-visszajelzések összevont nézetét a [Minősítések és véleményezések irányítópultja című témakörben tekintheti meg a kereskedelmi piactér-elemzésekben.](./ratings-reviews.md)
-- A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekről és az adatkifejezések átfogó szótáráról a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.
+- Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
+- További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).
+- A virtuális gép (VM) használati és mért számlázási mérőszámokat kínál, lásd [a használati irányítópultot a kereskedelmi piactér elemzésében](./usage-dashboard.md).
+- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket, lásd [a kereskedelmi piactér elemzésének ügyfél-irányítópultját](./customer-dashboard.md).
+- Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./downloads-dashboard.md).
+- Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a [kereskedelmi piactér elemzésének minősítések és értékelések irányítópultját](./ratings-reviews.md)
+- A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekre, valamint az adatkifejezések átfogó szótárát lásd: [Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez](./faq-terminology.md).

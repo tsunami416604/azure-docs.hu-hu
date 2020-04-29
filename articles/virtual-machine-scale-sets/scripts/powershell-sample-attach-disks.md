@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-minták – Adatlemezek csatolása és használata
-description: Ez a parancsfájl létrehoz egy Azure virtuálisgép-méretezési készletet, és csatolja és előkészíti az adatlemezeket a PowerShell használatával.
+title: Azure PowerShell minták – adatlemezek csatolása és használata
+description: Ez a szkript létrehoz egy Azure virtuálisgép-méretezési készletet, és csatlakoztatja és előkészíti az adatlemezeket a PowerShell használatával.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: bff0bb0673862d614aac5bb783bc501516871b29
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010395"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Adatlemezek csatolása és használata virtuálisgép-méretezési csoportokkal PowerShell használatával
@@ -38,10 +38,10 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új AzVmss](/powershell/module/az.compute/new-azvmss) | Létrehozza a virtuálisgép-méretezési csoportot és az összes támogató erőforrást, beleértve a virtuális hálózatot, a terheléselosztót és a NAT-szabályokat. |
+| [Új – AzVmss](/powershell/module/az.compute/new-azvmss) | Létrehozza a virtuálisgép-méretezési csoportot és az összes támogató erőforrást, beleértve a virtuális hálózatot, a terheléselosztót és a NAT-szabályokat. |
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Lekéri a virtuálisgép-méretezési csoport adatait. |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) | Egy virtuálisgép-bővítményt ad hozzá az egyéni szkriptekhez egy alapszintű webalkalmazás telepítéséhez. |
-| [Update-AzVmss](/powershell/module/az.compute/update-azvmss) | Frissíti a virtuálisgép-méretezési csoport modelljét a virtuálisgép-bővítmény alkalmazására. |
+| [Frissítés – AzVmss](/powershell/module/az.compute/update-azvmss) | Frissíti a virtuálisgép-méretezési csoport modelljét a virtuálisgép-bővítmény alkalmazására. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
 ## <a name="next-steps"></a>További lépések

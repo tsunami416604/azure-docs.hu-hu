@@ -1,6 +1,6 @@
 ---
 title: Azure-beli felügyelt lemez megosztása virtuális gépek között (előzetes verzió)
-description: Ismerje meg az Azure által felügyelt lemezek több virtuális gép közötti megosztását.
+description: További információ az Azure Managed Disks több virtuális gépen való megosztásáról.
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 04/09/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 3792a98c4ddcab36496f7e83482f2a1382c93d0d
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008533"
 ---
-# <a name="azure-shared-disks"></a>Azure megosztott lemezei
+# <a name="azure-shared-disks"></a>Azure-beli megosztott lemezek
 
 [!INCLUDE [virtual-machines-disks-shared](../../../includes/virtual-machines-disks-shared.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné engedélyezni és használni a megosztott lemezeket a felügyelt lemezekhez, folytassa a [megosztott lemez engedélyezése című](disks-shared-enable.md) cikkünkkel.
+Ha a felügyelt lemezek megosztott lemezeit szeretné engedélyezni és használni, folytassa a [megosztott lemez engedélyezése](disks-shared-enable.md) című cikktel.

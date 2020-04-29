@@ -1,6 +1,6 @@
 ---
-title: A virtuális gépek ajánlatai díjszabása | Azure Piactér
-description: A virtuális gépajánlatok díjszabásának három módszerét ismerteti.
+title: A virtuális gépekkel kapcsolatos ajánlatok díjszabása | Azure piactér
+description: Ez a cikk a virtuális gépekkel kapcsolatos ajánlatok díjszabásának három módszerét ismerteti.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 487e66b39bc63363497cb3497d32158efd0c6c8a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255889"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Virtuálisgép-ajánlatok díjszabása
 ==================================
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a Partnerközponttal, és az ajánlatok partnerközpontba való áttelepítése után is működni fognak. Az integráció kis változtatásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, és győződjön meg arról, hogy a kód továbbra is működik a Partnerközpontba való áttelepítés után.
+> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
 
-A virtuális gépajánlatok díjszabásának három módja van: személyre szabott alapdíjszabás, magonkénti díjszabás és táblázatkezelődíj.
+A virtuális gépekre vonatkozó ajánlatok díjszabása a következő három módon adható meg: testreszabott alapszintű díjszabás, alapszintű díjszabás és a számolótábla díjszabása.
 
 
-<a name="customized-core-pricing"></a>Személyre szabott alapárképzés
+<a name="customized-core-pricing"></a>Testreszabott alapvető díjszabás
 -----------------------
 
-Az árak az egyes régiókra és alapvető kombinációkra vonatkoznak. Az értékesítési lista minden régióját meg kell adni a **definition virtualMachinePricing**/**regionPrices** szakaszában.  Használja a megfelelő pénznemkódokat az egyes [régiókhoz](#regions) a kérelemben.  A következő példa a következő követelményeket mutatja be:
+A díjszabás az egyes régiók és a Core kombinációk esetében egyedi. Az értékesítési listán szereplő összes régiót meg kell adni a definíció **virtualMachinePricing**/**regionPrices** szakaszában.  A kérelemben szereplő minden egyes [régióhoz](#regions) használja a megfelelő pénznemkóddal.  A következő példa ezeket a követelményeket mutatja be:
 
 ``` json
     "virtualMachinePricing": 
@@ -69,10 +69,10 @@ Az árak az egyes régiókra és alapvető kombinációkra vonatkoznak. Az ért�
 ```
 
 
-<a name="per-core-pricing"></a>Magonkénti árképzés
+<a name="per-core-pricing"></a>Alapszintű díjszabás
 ----------------
 
-Ebben az esetben a megjelenítők egy árat adnak meg USD-ben a termékváltozatukhoz, és az összes többi ár automatikusan generálódik. Az alaponkénti ár a kérelem **egyetlen** paraméterében van megadva.
+Ebben az esetben a közzétevők a SKU-ban egy árat határoznak meg USD értékben, és minden egyéb díj automatikusan létrejön. Az egységenkénti díj a kérelem **egyetlen** paraméterében van megadva.
 
 ``` json
      "virtualMachinePricing": 
@@ -87,10 +87,10 @@ Ebben az esetben a megjelenítők egy árat adnak meg USD-ben a termékváltozat
 ```
 
 
-<a name="spreadsheet-pricing"></a>Számolótábla-díjszabás
+<a name="spreadsheet-pricing"></a>Táblázat díjszabása
 -------------------
 
-A közzétevő is feltöltheti a díjszabási táblázatot egy ideiglenes tárolóhelyre, majd az URI-t is belefoglalhatja a kérelembe, mint más fájlösszetevőket. A számolótáblát ezután feltölti, lefordítja a megadott árütemezés kiértékeléséhez, és végül frissíti az ajánlatot az árképzési információkkal. Az ajánlat későbbi GET-kérelmei visszaadják a számolótábla URI-ját és a régió kiértékelt árait.
+A közzétevő a díjszabási táblázatot is feltöltheti egy ideiglenes tárolóhelyre, majd belefoglalja az URI-t a kérelembe, például a többi fájl összetevőt. A rendszer feltölti a táblázatot, és lefordítja a megadott árlista kiértékelésére, végül pedig a díjszabási információkkal frissíti az ajánlatot. Az ajánlatra vonatkozó későbbi GET-kérések a táblázat URI azonosítóját és a régió értékelt árát fogják visszaadni.
 
 ``` json
      "virtualMachinePricing": 
@@ -103,16 +103,16 @@ A közzétevő is feltöltheti a díjszabási táblázatot egy ideiglenes tárol
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Új magméretek hozzáadva a 7/2/2019-en
+<a name="new-core-sizes-added-on-722019"></a>Új alapvető méretek hozzáadva a 7/2/2019
 ---------------------------
 
-2019. július 2-án a virtuális gép közzétevői értesítést kaptak az új Azure virtuálisgép-méretek új árainak hozzáadásáról (a magok száma alapján).  Az új árak a 10, 44, 48, 60, 120, 208 és 416 magméretekre vannak.  A meglévő virtuális gép kínál új árak at ezek a magok méretek automatikusan számított a jelenlegi árak alapján.  2019. augusztus 1-ig a kiadóknak át kell tekinteniük a további árakat, és el kell készíteniük a kívánt módosításokat.  Ezen időpont után, ha a kiadó még nem tette közzé újra, az új alapméretek automatikusan kiszámított árai lépnek érvénybe.
+Az új Azure-beli virtuálisgép-méretek (a magok száma alapján) új díjszabást kapott a VM-közzétevők 2019. július 2-án.  Az új árak a következő alapméretekre vonatkoznak: 10, 44, 48, 60, 120, 208 és 416.  A meglévő virtuális gépek esetében a magok méretének új díjait a jelenlegi árak alapján automatikusan kiszámítjuk.  A kiadók 2019 augusztus 1-ig megtekintik a további árakat, és elvégzik a kívánt módosításokat.  Ezt a dátumot követően, ha a közzétevő még nem tette közzé újra, az új alapvető méretek automatikusan kiszámított árai érvénybe lépnek.
 
 
 <a name="regions"></a>Régiók
 -------
 
-Az alábbi táblázat a testreszabott alapárképzéshez megadható különböző régiókat és a hozzájuk tartozó pénznemkódokat mutatja be.
+A következő táblázat azokat a különböző régiókat mutatja be, amelyeket megadhat a testreszabott alapdíjszabáshoz, valamint a hozzájuk tartozó pénznemkóddal.
 
 | **Régió** | **Név**             | **Pénznemkód** |
 |------------|----------------------|-------------------|
@@ -120,71 +120,71 @@ Az alábbi táblázat a testreszabott alapárképzéshez megadható különböz�
 | AR         | Argentína            | ARS               |
 | AU         | Ausztrália            | AUD               |
 | AT         | Ausztria              | EUR               |
-| BH         | Bahrein              | Bhd               |
+| BH         | Bahrein              | BHD               |
 | BY         | Belarusz              | RUB               |
 | BE         | Belgium              | EUR               |
 | BR         | Brazília               | USD               |
-| BG         | Bulgária             | Bgn               |
+| BG         | Bulgária             | BGN               |
 | CA         | Kanada               | CAD               |
-| CL         | Chile                | Clp               |
-| CO         | Kolumbia             | Zsaru               |
-| CR         | Costa Rica           | Crc               |
-| HR         | Horvátország              | Hrk               |
+| CL         | Chile                | CLP               |
+| CO         | Kolumbia             | MÁSOLATTAL               |
+| CR         | Costa Rica           | CRC               |
+| HR         | Horvátország              | HRK               |
 | CY         | Ciprus               | EUR               |
-| CZ         | Cseh Köztársaság       | Czk               |
+| CZ         | Cseh Köztársaság       | CZK               |
 | DK         | Dánia              | DKK               |
 | DO         | Dominikai Köztársaság   | USD               |
 | EC         | Ecuador              | USD               |
-| EG         | Egyiptom                | Egp               |
+| EG         | Egyiptom                | EGP               |
 | SV         | Salvador          | USD               |
 | EE         | Észtország              | EUR               |
 | FI         | Finnország              | EUR               |
 | JK         | Franciaország               | EUR               |
 | DE         | Németország              | EUR               |
 | GR         | Görögország               | EUR               |
-| GT         | Guatemala            | GTQ között               |
+| GT         | Guatemala            | GTQ               |
 | HK         | Hongkong (KKT)        | HKD               |
 | HU         | Magyarország              | Ft               |
-| IS         | Izland              | Isk               |
+| IS         | Izland              | ISK               |
 | IN         | India                | INR               |
 | ID (Azonosító)         | Indonézia            | IDR               |
 | IE         | Írország              | EUR               |
-| IL         | Izrael               | Ils               |
+| IL         | Izrael               | ILS               |
 | IT         | Olaszország                | EUR               |
 | JP         | Japán                | JPY               |
-| JO         | Jordánia               | Jod               |
-| KZ         | Kazahsztán           | KZT között               |
-| KE         | Kenya                | Kes               |
+| JO         | Jordánia               | JOD               |
+| KZ         | Kazahsztán           | KZT               |
+| KE         | Kenya                | KES               |
 | KR         | Dél-Korea                | KRW               |
-| KW         | Kuvait               | KWD között               |
+| KW         | Kuvait               | KWD               |
 | LV         | Lettország               | EUR               |
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litvánia            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Észak-Macedónia      | Mkd               |
+| MK         | Észak-Macedónia      | MKD               |
 | MY         | Malajzia             | MYR               |
 | MT         | Málta                | EUR               |
 | MX         | Mexikó               | MXN               |
 | ME         | Montenegró           | EUR               |
-| MA         | Marokkó              | Őrült               |
+| MA         | Marokkó              | ŐRÜLT               |
 | NL         | Hollandia          | EUR               |
 | NZ         | Új-Zéland          | NZD               |
 | NG         | Nigéria              | NGN               |
 | NO         | Norvégia               | NOK               |
 | OM         | Omán                 | OMR               |
-| PK         | Pakisztán             | Pkr               |
+| PK         | Pakisztán             | PKR               |
 | PA         | Panama               | USD               |
-| PY         | Paraguay             | PYG között               |
-| PE         | Peru                 | Toll               |
+| PY         | Paraguay             | PYG               |
+| PE         | Peru                 | TOLLAS               |
 | PH         | Fülöp-szigetek          | PHP               |
-| PL         | Lengyelország               | Pln               |
+| PL         | Lengyelország               | PLN               |
 | PT         | Portugália             | EUR               |
 | PR         | Puerto Rico          | USD               |
-| QA         | Katar                | QAR között               |
-| RO         | Románia              | Ron               |
+| QA         | Katar                | QAR               |
+| RO         | Románia              | RON               |
 | RU         | Oroszország               | RUB               |
 | SA         | Szaúd-Arábia         | SAR               |
-| RS         | Szerbia               | Rsd               |
+| RS         | Szerbia               | RSD               |
 | SG         | Szingapúr            | SGD               |
 | SK         | Szlovákia             | EUR               |
 | SI         | Szlovénia             | EUR               |
@@ -194,11 +194,11 @@ Az alábbi táblázat a testreszabott alapárképzéshez megadható különböz�
 | SE         | Svédország               | SEK               |
 | CH         | Svájc          | CHF               |
 | TW         | Tajvan               | TWD               |
-| TH         | Thaiföld             | Thb               |
-| TT         | Trinidad és Tobago  | Ttd               |
+| TH         | Thaiföld             | THB               |
+| TT         | Trinidad és Tobago  | TTD               |
 | TN         | Tunézia              | TND               |
 | TR         | Törökország               | TRY               |
-| UA         | Ukrajna              | Uah               |
+| UA         | Ukrajna              | UAH               |
 | AE         | Egyesült Arab Emírségek | EUR               |
 | GB         | Egyesült Királyság       | GBP               |
 | USA         | Egyesült Államok        | USD               |

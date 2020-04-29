@@ -9,30 +9,30 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008340"
 ---
 ## <a name="limitations"></a>Korlátozások
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
 
-## <a name="disk-sizes"></a>Lemezméretek
+## <a name="disk-sizes"></a>Lemezek mérete
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-shared-disks"></a>Megosztott lemezek telepítése
 
-### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Prémium szintű SSD telepítése megosztott lemezként
+### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Prémium SSD üzembe helyezése megosztott lemezként
 
-Ha olyan felügyelt lemezt szeretne telepíteni, amelyen `maxShares` engedélyezve van a megosztott lemez szolgáltatás, használja az új tulajdonságot, és adjon meg egy 1-nél nagyobb értéket. Ez lehetővé teszi a lemez megosztható több virtuális gép között.
+Ha olyan felügyelt lemezt kíván üzembe helyezni, amelyen engedélyezve van a megosztott lemez szolgáltatás `maxShares` , használja az új tulajdonságot, és adjon meg egy 1-nél nagyobb értéket. Így a lemez több virtuális gépen is megosztható.
 
 > [!IMPORTANT]
-> Az érték `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez nincs csatlakoztatva az összes virtuális géphez. Tekintse meg a [lemezméretek](#disk-sizes) a megengedett értékeket. `maxShares`
+> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares`.
 
-A következő sablon használata `[parameters('dataDiskName')]` `[resourceGroup().location]`előtt `[parameters('dataDiskSizeGB')]`cserélje `[parameters('maxShares')]` le a , , és a saját értékeit.
+A következő sablon használata előtt cserélje le `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]`a, a, `[parameters('maxShares')]` a és a értéket a saját értékeire.
 
 ```json
 { 
@@ -73,14 +73,14 @@ A következő sablon használata `[parameters('dataDiskName')]` `[resourceGroup(
 }
 ```
 
-### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Ultralemez központi telepítése megosztott lemezként
+### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Ultra-lemez üzembe helyezése megosztott lemezként
 
 #### <a name="cli"></a>parancssori felület
 
-Ha olyan felügyelt lemezt szeretne telepíteni, `maxShares` amelyen a megosztott lemez szolgáltatás engedélyezve van, módosítsa a paramétert 1-nél nagyobb értékre. Ez lehetővé teszi a lemez megosztható több virtuális gép között.
+Ha olyan felügyelt lemezt kíván üzembe helyezni, amelyen engedélyezve van a megosztott `maxShares` lemez szolgáltatás, módosítsa a paramétert 1-nél nagyobb értékre. Így a lemez több virtuális gépen is megosztható.
 
 > [!IMPORTANT]
-> Az érték `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez nincs csatlakoztatva az összes virtuális géphez. Tekintse meg a [lemezméretek](#disk-sizes) a megengedett értékeket. `maxShares`
+> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares`.
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Ha olyan felügyelt lemezt szeretne telepíteni, amelyen a megosztott lemez szolgáltatás engedélyezve van, használja a tulajdonságot, `maxShares` és adjon meg egy 1-nél nagyobb értéket. Ez lehetővé teszi a lemez megosztható több virtuális gép között.
+Ha a megosztott lemez funkciót engedélyező felügyelt lemezt kíván telepíteni, használja a `maxShares` tulajdonságot, és adjon meg egy 1-nél nagyobb értéket. Így a lemez több virtuális gépen is megosztható.
 
 > [!IMPORTANT]
-> Az érték `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez nincs csatlakoztatva az összes virtuális géphez. Tekintse meg a [lemezméretek](#disk-sizes) a megengedett értékeket. `maxShares`
+> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares`.
 
-A következő sablon használata `[parameters('dataDiskName')]` `[resourceGroup().location]`előtt `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]`cserélje `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]`le `[parameters('diskIOPSReadOnly')]`a `[parameters('diskMBpsReadOnly')]` , , , , , , , , és a saját értékeit.
+A következő sablon használata előtt cserélje le `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`a,,,,,, és `[parameters('diskMBpsReadOnly')]` értéket a saját értékeire.
 
 ```json
 {
@@ -168,12 +168,12 @@ A következő sablon használata `[parameters('dataDiskName')]` `[resourceGroup(
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Az Azure megosztott lemezei használata a virtuális gépekkel
+### <a name="using-azure-shared-disks-with-your-vms"></a>Az Azure-beli megosztott lemezek használata a virtuális gépekkel
 
-Miután telepítette a megosztott `maxShares>1`lemezt a , csatlakoztathatja a lemezt egy vagy több virtuális géphez.
+Miután telepített egy megosztott lemezt a használatával `maxShares>1`, csatlakoztathatja a lemezt egy vagy több virtuális géphez.
 
 > [!IMPORTANT]
-> A lemezen megosztott összes virtuális gépet ugyanabban a [közelségelhelyezési csoportban](../articles/virtual-machines/windows/proximity-placement-groups.md)kell telepíteni.
+> A lemezt megosztó virtuális gépeket ugyanabban a [közelségi elhelyezési csoportban](../articles/virtual-machines/windows/proximity-placement-groups.md)kell telepíteni.
 
 ```azurepowershell-interactive
 
@@ -197,9 +197,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>Támogatott SCSI PR-parancsok
 
-Miután csatlakoztatta a megosztott lemezt a fürtben lévő virtuális gépekhez, kvórumot hozhat létre, és az SCSI PR használatával olvashat és olvashat a lemezre. Az Azure megosztott lemezei használata esetén a következő PR-parancsok érhetők el:
+Miután csatlakoztatta a megosztott lemezt a fürtben lévő virtuális gépekhez, létrehozhat kvórumot, és írási/olvasási lehetőséget is használhat a lemezre az SCSI PR használatával. Az Azure megosztott lemezek használatakor az alábbi PR-parancsok érhetők el:
 
-A lemezzel való interakcióhoz kezdje az állandó foglalási művelet listájával:
+A lemezzel való kommunikációhoz Kezdje a következőt: állandó – foglalás-művelet lista:
 
 ```
 PR_REGISTER_KEY 
@@ -217,7 +217,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-PR_RESERVE, PR_PREEMPT_RESERVATION vagy PR_RELEASE_RESERVATION használata esetén adja meg az alábbi állandó foglalási típusok egyikét:
+PR_RESERVE, PR_PREEMPT_RESERVATION vagy PR_RELEASE_RESERVATION használatakor adja meg a következő állandó fenntartási típus egyikét:
 
 ```
 PR_NONE 
@@ -235,9 +235,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-A PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION vagy PR_RELEASE-RESERVATION használatakor állandó foglalási kulcsot is meg kell adnia.
+PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION vagy PR_RELEASE – foglalás használatakor állandó foglalási kulcsot kell megadnia.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha érdekli a megosztott lemezek kipróbálása, [regisztráljon az előzetes verzióra.](https://aka.ms/AzureSharedDiskPreviewSignUp)
+Ha érdekli a megosztott lemezek kipróbálása, [regisztráljon az előzetes](https://aka.ms/AzureSharedDiskPreviewSignUp)verzióra.

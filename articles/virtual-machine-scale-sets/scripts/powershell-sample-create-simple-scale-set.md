@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-minták – Hozzon létre egy alapvető virtuálisgép-méretezési csoportot
-description: Ez a parancsfájl létrehoz egy Azure virtuálisgép-méretezési készlet et Windows Server 2016 rendszerű, rdp-n keresztül érhető el.
+title: Azure PowerShell minták – alapszintű virtuálisgép-méretezési csoport létrehozása
+description: Ez a szkript egy Windows Server 2016 rendszert futtató Azure virtuálisgép-méretezési készletet hoz létre, amely RDP-n keresztül érhető el.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 380b3d25bdcd5df5f095b2d87e832bf73422759e
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011480"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Alapszintű virtuálisgép-méretezési csoport létrehozása a PowerShell-lel
@@ -39,7 +39,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új AzVmss](/powershell/module/az.compute/new-azvmss) | Létrehozza a virtuálisgép-méretezési csoportot és az összes támogató erőforrást, beleértve a virtuális hálózatot, a terheléselosztót és a NAT-szabályokat. |
+| [Új – AzVmss](/powershell/module/az.compute/new-azvmss) | Létrehozza a virtuálisgép-méretezési csoportot és az összes támogató erőforrást, beleértve a virtuális hálózatot, a terheléselosztót és a NAT-szabályokat. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
 ## <a name="next-steps"></a>További lépések

@@ -1,6 +1,6 @@
 ---
-title: Tervezze meg ga környezetét - Azure Time Series Insights | Microsoft dokumentumok
-description: Az Azure Time Series Insights GA-környezet előkészítésére, konfigurálására és üzembe helyezésére vonatkozó gyakorlati tanácsok.
+title: A GA-környezet megtervezése – Azure Time Series Insights | Microsoft Docs
+description: Ajánlott eljárások a Azure Time Series Insights GA-környezet előkészítéséhez, konfigurálásához és üzembe helyezéséhez.
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -12,119 +12,119 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: seodec18
 ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272712"
 ---
-# <a name="plan-your-azure-time-series-insights-ga-environment"></a>Tervezze meg az Azure Time Series Insights GA-környezetét
+# <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 
-Ez a cikk ismerteti, hogyan tervezze meg az Azure Time Series Insights általános rendelkezésre állási (GA) környezet a várható be-és adatmegőrzési követelmények alapján.
+Ez a cikk azt ismerteti, hogyan tervezze meg a Azure Time Series Insights általánosan elérhető (GA) környezetét a várható bejövő forgalom és az adatmegőrzési követelmények alapján.
 
 ## <a name="video"></a>Videó
 
-**Ebből a videóból többet is megtudhat az Azure Time Series Insights ban való adatmegőrzésről és a tervezésről:**<br /><br />
+**Tekintse meg ezt a videót, ha többet szeretne megtudni az adatok megőrzéséről Azure Time Series Insights és a tervezéshez**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az Azure Time Series Insights használatával való ismerkedés hez a legjobb, ha tudja, hogy mennyi adatot szeretne leadni percig, és mennyi ideig kell tárolnia az adatokat.  
+A Azure Time Series Insightsének megkezdéséhez érdemes megismerni, hogy mennyi adattal kell leküldeni a percben, és hogy mennyi ideig kell tárolnia az adatait.  
 
-A Time Series Insights számos másodszereplőjének kapacitásáról és megőrzéséről a [Time Series Insights díjszabása](https://azure.microsoft.com/pricing/details/time-series-insights/)című olvasni tudó további információt.
+A Time Series Insights SKU kapacitásával és megtartásával kapcsolatos további információkért olvassa el [Time Series Insights díjszabását](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
-A Time Series Insights-környezet hosszú távú sikerének legjobb megtervezéséhez vegye figyelembe az alábbi attribútumokat:
+Az Time Series Insights-környezet hosszú távú sikeres megtervezéséhez vegye figyelembe a következő attribútumokat:
 
 - [Tárolókapacitás](#storage-capacity)
 - [Adatmegőrzés időtartama](#data-retention)
-- [A be- és nagykapacitás](#ingress-capacity)
-- [Az események alakítása](#shape-your-events)
-- [Annak biztosítása, hogy a referenciaadatok a helyükön legyenek](#ensure-that-you-have-reference-data)
+- [Bejövő kapacitás](#ingress-capacity)
+- [Az események átalakítása](#shape-your-events)
+- [A rendelkezésre álló adathivatkozások biztosítása](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Tárkapacitás
 
-Alapértelmezés szerint a Time Series Insights megőrzi az adatokat a kiépített tárterület (egység &#215; egységegység egységegység egység) és a be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és
+Alapértelmezés szerint a Time Series Insights a kiépített tárterület mennyisége alapján megőrzi az adatmennyiséget (egységként &#215; az egységenkénti tárterület mennyiségét) és a bejövő forgalmat.
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
-Módosíthatja az **adatmegőrzési idő** beállítást az Azure Time Series Insights környezetben. Legfeljebb 400 napos megőrzést engedélyezhet. 
+Módosíthatja az **adatmegőrzési idő** beállításait a Azure Time Series Insights-környezetben. Akár 400 napig is engedélyezheti a megőrzést. 
 
-Az Azure Time Series Insights két móddal rendelkezik:
+Azure Time Series Insights két mód van:
 
-* Az egyik mód a legfrissebb adatokra optimalizál. Kényszeríti a **házirendet a régi adatok törlése** így a legutóbbi adatok elérhetővé a példány. Ez a mód alapértelmezés szerint be van kapcsolva. 
-* A másik úgy optimalizálja az adatokat, hogy a konfigurált adatmegőrzési korlátok alatt maradjanak. **A be- és visszalépések** szüneteltetése megakadályozza az új adatok be- és belépését, ha a tárolási korlát túllépte a **működést.**
+* Az egyik mód a legnaprakészebb adatokra optimalizált. Kikényszeríti a szabályzatot, hogy **kiürítse a korábbi** , a példánnyal elérhetővé vált adatvesztést. Alapértelmezés szerint ez a mód be van kapcsolva. 
+* A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A **Bejövő forgalom szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a **tárolási korlát túllépte a tárterületet**.
 
-Módosíthatja a megőrzési és a két mód közötti váltást a környezet konfigurációs lapján az Azure Portalon.
+Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapjának két módja között állítható be.
 
 > [!IMPORTANT]
-> Az Azure Time Series Insights GA-környezetben legfeljebb 400 napos adatmegőrzést konfigurálhat.
+> A Azure Time Series Insights GA-környezetben legfeljebb 400 napos adatmegőrzést állíthat be.
 
 ### <a name="configure-data-retention"></a>Az adatmegőrzés konfigurálása
 
-1. Az [Azure Portalon](https://portal.azure.com)válassza ki a Time Series Insights-környezetben.
+1. A [Azure Portal](https://portal.azure.com)válassza ki Time Series Insights-környezetét.
 
-1. A **Time Series Insights környezet** ablaktábláján a **Beállítások**csoportban válassza a Storage **configuration (Tároló konfigurációja)** lehetőséget.
+1. A **Time Series Insights környezet** ablaktáblán a **Beállítások**területen válassza a **tárolási konfiguráció**elemet.
 
-1. Az **Adatmegőrzési idő (napokban)** mezőbe írjon be egy 1 és 400 közötti értéket.
+1. Az **adatmegőrzési idő (nap)** mezőben adjon meg egy 1 és 400 közötti értéket.
 
    [![Megőrzés konfigurálása](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Ha többet szeretne tudni a megfelelő adatmegőrzési házirend megvalósításáról, olvassa [el az Adatmegőrzés konfigurálása című cikket.](./time-series-insights-how-to-configure-retention.md)
+> Ha többet szeretne megtudni a megfelelő adatmegőrzési szabályzat megvalósításáról, olvassa el a [megőrzés konfigurálását](./time-series-insights-how-to-configure-retention.md)ismertető témakört.
 
-## <a name="ingress-capacity"></a>A be- és nagykapacitás
+## <a name="ingress-capacity"></a>Bejövő kapacitás
 
 [!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
 
-### <a name="environment-planning"></a>Környezettervezés
+### <a name="environment-planning"></a>Környezet tervezése
 
-A második terület, amely a Time Series Insights-környezet tervezésére összpontosít, a be- és telepítési kapacitás. A napi bejövő tároló és eseménykapacitás percenként, 1 KB-os blokkokban mérhető. A csomag maximálisan megengedett mérete 32 KB. A 32 KB-nál nagyobb adatcsomagok csonkulnak.
+A Time Series Insights-környezet megtervezésére koncentráló második terület a bejövő kapacitás. A napi bejövő tárterület és az esemény kapacitása percenként mérve, 1 KB-os blokkokban. Az engedélyezett csomagméret maximális mérete 32 KB. Az 32 KB-nál nagyobb adatcsomagok csonkítva vannak.
 
-Az S1 vagy S2 Termékváltozat kapacitása egyetlen környezetben 10 egységre növelhető. S1 környezetből nem lehet áttérni egy S2 környezetbe. S2 környezetből nem lehet áttérni egy S1-be.
+Egyetlen környezetben növelheti egy S1 vagy S2 SKU kapacitását 10 egységre. S1-környezetből S2-re nem lehet áttelepíteni. S2-környezetből S1-re nem lehet áttelepíteni.
 
-A be- ésnagykapacitás esetén először határozza meg a teljes be- ésbekerülési díjat havonta. Ezután határozza meg, hogy mire van szüksége a percenkénti igényeinek. 
+A beáramlási kapacitás esetében először határozza meg, hogy havonta hány bejövő forgalom szükséges. Ezután határozza meg a percenkénti igényeket. 
 
-A sávszélesség-szabályozás és a késés percenkénti kapacitásban játszik szerepet. Ha az adatok betöltése 24 óránál rövidebb ideig tart, a Time Series Insights "felzárkózhat" az előző táblázatban felsorolt díjak kétszeresének bejövő sebességével.
+A szabályozás és a késés percenkénti kapacitásban játszik szerepet. Ha van egy olyan csúcsa az adatforgalomban, amely 24 óránál rövidebb ideig tart, Time Series Insights "felzárkózhat" az előző táblázatban felsorolt díjszabási arányban.
 
-Ha például egyetlen S1 termékváltozattal rendelkezik, az adatok percenként 720 eseménysebességével érkeznek, és az adatátviteli sebesség egy óránál rövidebb ideig, legfeljebb 1440 esemény, de nincs észrevehető késés a környezetben. Ha azonban több mint egy órán keresztül meghaladja az 1440 eseményt percenként, valószínűleg késést fog tapasztalni az adatokban, amelyek láthatóvá válnak, és elérhetők a környezetben lekérdezéshez.
+Ha például egyetlen S1 SKU-val rendelkezik, az adatforgalom percenként 720 eseményt, az adatforgalom pedig kevesebb, mint egy órán keresztül, 1 440 esemény vagy annál kevesebb értékre van kiterjedően, a környezetében nincs észrevehető késés. Ha azonban több mint egy óráig meghaladja az 1 440 eseményt, akkor valószínű, hogy a környezetben megjelenített és lekérdezésre rendelkezésre álló adatmennyiség késést tapasztal.
 
-Előfordulhat, hogy nem tudja előre, hogy mennyi adatot szeretne leadni. Ebben az esetben az [Azure IoT Hub](../iot-hub/iot-hub-metrics.md) és az [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) adattelemetriai adatait az Azure Portal-előfizetésben találja. A telemetriai adatok segítségével meghatározhatja, hogyan kell kiépíteni a környezetet. Használja a **Metrikák** ablaktáblán az Azure Portalon a megfelelő eseményforrás telemetriai adatok megtekintéséhez. Ha ismeri az eseményforrás-mutatókat, hatékonyabban tervezheti meg és építheti ki a Time Series Insights-környezetet.
+Előfordulhat, hogy nem tudja előre, hogy mennyi adattal kell leküldeni. Ebben az esetben az [azure IoT hub](../iot-hub/iot-hub-metrics.md) és az [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) adattelemetria az Azure Portal-előfizetésében találhatja meg. A telemetria segítségével eldöntheti, hogyan építheti ki a környezetet. A megfelelő eseményforrás megjelenítéséhez használja a Azure Portal **metrika** ablaktábláját a telemetria megtekintéséhez. Ha megérti az eseményforrás mérőszámait, hatékonyabban megtervezheti és kiépítheti Time Series Insights-környezetét.
 
-### <a name="calculate-ingress-requirements"></a>A be- és nagybe- és be- és visszaképzési követelmények kiszámítása
+### <a name="calculate-ingress-requirements"></a>Bejövő forgalomra vonatkozó követelmények kiszámítása
 
-A be- és nagybe- és be- és nagybe- és be- és nagybe- és be- és be- és be
+A bejövő forgalomra vonatkozó követelmények kiszámítása:
 
-- Ellenőrizze, hogy a be- éstelepítési kapacitás meghaladja-e az átlagos percenkénti sebességet, és hogy a környezet elég nagy-e ahhoz, hogy a várható be- és be- és átfutási idő kétszeresét, mint egy órával a kapacitást kezelje.
+- Ellenőrizze, hogy a bejövő kapacitás meghaladja-e az átlagos percenkénti sebességet, valamint azt, hogy a környezet elég nagy-e, hogy a várható beáramlási arányt legalább egy óránál kevesebb kapacitással kezelje.
 
-- Ha a be- és nagymértékű kiugrások 1 óránál tovább tartanak, használja a csúcsarányt átlagosan. A csúcssebesség kezeléséhez képes környezet kiépítése.
+- Ha a bejövő tüskék 1 óránál hosszabb ideig tartanak, akkor az átlagnál használja a csúcs arányát. Hozzon létre egy olyan környezetet, amely képes kezelni a csúcsok arányát.
 
 ### <a name="mitigate-throttling-and-latency"></a>A szabályozás és a késés csökkentése
 
-A sávszélesség-szabályozás és a késés megelőzéséről a [Késés és a szabályozás csökkentése című](time-series-insights-environment-mitigate-latency.md)lapban olvashat bővebben.
+A szabályozás és a késés elkerülésével kapcsolatos további információkért olvassa el a [késés és a szabályozás mérséklését](time-series-insights-environment-mitigate-latency.md)ismertető témakört.
 
-## <a name="shape-your-events"></a>Az események alakítása
+## <a name="shape-your-events"></a>Az események formázása
 
-Fontos annak biztosítása, hogy az események időbetöltése a Time Series Insights-ba történő küldésének módja támogassa a kiépített környezet méretét. (Ezzel szemben a környezet méretét leképezheti a Time Series Insights által beolvasások száma és az egyes események mérete alapján.) Azt is fontos átgondolni, hogy milyen attribútumokat érdemes szeletelni és szűrni az adatok lekérdezésekekénél.
+Fontos, hogy az események Time Series Insights való küldésének módja támogassa a kiépített környezet méretét. (Fordítva a környezet méretét leképezheti, hogy hány esemény Time Series Insights olvasás és az egyes események mérete.) Azt is fontos tudni, hogy milyen attribútumokat érdemes használni a szeleteléshez és a szűréshez az adatai lekérdezése során.
 
 > [!TIP]
-> Tekintse át a JSON-formázási dokumentációt az [Események küldése című részben.](time-series-insights-send-events.md)
+> Tekintse át a JSON-kialakítási dokumentációt az [események küldése](time-series-insights-send-events.md)című dokumentumban.
 
-## <a name="ensure-that-you-have-reference-data"></a>Győződjön meg arról, hogy rendelkezik referenciaadatokkal
+## <a name="ensure-that-you-have-reference-data"></a>Ellenőrizze, hogy vannak-e referenciák
 
-A *referencia-adatkészlet* olyan elemek gyűjteménye, amelyek az eseményforrásból származó eseményeket bővítik. A Time Series Insights bejövő műveletek motorja az eseményforrás minden eseményét a referencia-adatkészlet megfelelő adatsorával egyesíti. A bővített esemény ezután lekérdezésre érhető el. Az illesztés a referencia-adatkészletben definiált **elsődleges kulcs** oszlopokon alapul.
+A *hivatkozási adatkészlet* olyan elemek gyűjteménye, amelyek kibővítik az esemény forrásának eseményeit. A Time Series Insights beáramlási motor a hivatkozási adatkészlet megfelelő adatsorával összekapcsolja az adott esemény forrását. A kibővített esemény ezután elérhető a lekérdezéshez. Az illesztés a hivatkozási adatkészletben definiált **elsődleges kulcs** oszlopain alapul.
 
 > [!NOTE]
-> A referenciaadatok visszamenőleges en nincsenek összefűzve. Csak a jelenlegi és a jövőbeli belső kapcsolatadatait egyezteti, és a referencia-adatkészlethez csatlakozik a konfigurálás és a feltöltés után. Ha nagy mennyiségű előzményadatot szeretne küldeni a Time Series Insights számára, és nem tölt fel vagy hoz létre referenciaadatokat a Time Series Insights ban, előfordulhat, hogy újra kell végeznie a munkáját (tipp: nem szórakoztató).  
+> A hivatkozási adathivatkozások nincsenek visszamenőlegesen csatlakoztatva. A rendszer csak a jelenlegi és a jövőbeli bejövő adatokat egyezteti és csatlakoztatja a hivatkozási adatkészlethez a konfigurálás és a feltöltés után. Ha nagy mennyiségű korábbi adatmennyiséget szeretne elküldeni a Time Series Insightsba, és nem szeretné először feltölteni vagy létrehozni referenciákat a Time Series Insightsban, előfordulhat, hogy meg kell ismételni a munkát (Tipp: nem szórakoztató).  
 
-Ha többet szeretne megtudni arról, hogyan hozhat létre, tölthet fel és kezelhet referenciaadatokat a Time Series Insights ban, olvassa el [a Referencia adatkészlet dokumentációját.](time-series-insights-add-reference-data-set.md)
+Ha szeretne többet megtudni arról, hogyan hozhatók létre, tölthetők fel és kezelhetők a Time Series Insightsban található hivatkozási adatok, olvassa el a [hivatkozási adatkészlet dokumentációját](time-series-insights-add-reference-data-set.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- Első lépések: [új Time Series Insights-környezet](time-series-insights-get-started.md)et hozhat létre az Azure Portalon.
+- Első lépésként hozzon létre [egy új Time Series Insights környezetet a Azure Portal](time-series-insights-get-started.md).
 
-- További információ arról, hogyan [vehet fel eseményközpontok eseményforrását](time-series-insights-how-to-add-an-event-source-eventhub.md) a Time Series Insights-ba.
+- Megtudhatja, hogyan [adhat hozzá egy Event Hubs eseményforrás](time-series-insights-how-to-add-an-event-source-eventhub.md) Time Series Insightshoz.
 
-- Az [IoT Hub eseményforrásának konfigurálásáról](time-series-insights-how-to-add-an-event-source-iothub.md)olvashat.
+- További információ az [IoT hub eseményforrás konfigurálásáról](time-series-insights-how-to-add-an-event-source-iothub.md).

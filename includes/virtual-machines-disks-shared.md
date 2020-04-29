@@ -9,128 +9,128 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008536"
 ---
-Az Azure megosztott lemezei (előzetes verzió) egy új funkció az Azure felügyelt lemezei számára, amelyek lehetővé teszik a felügyelt lemez egyidejű csatlakoztatását több virtuális géphez (VM). Egy felügyelt lemez csatlakoztatása több virtuális géphez lehetővé teszi, hogy új üzembe helyezése vagy a meglévő fürtözött alkalmazások áttelepítése az Azure-ba.
+Az Azure Shared Disks (előzetes verzió) az Azure Managed Disks új funkciója, amely lehetővé teszi a felügyelt lemezek egyidejű csatolását több virtuális géphez (VM). A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba.
 
 ## <a name="how-it-works"></a>Működés
 
-A fürtben lévő virtuális gépek az [SCSI-állandó foglalások (SCSI](https://www.t10.org/members/w_spc3.htm) PR) használatával a fürtözött alkalmazás által kiválasztott foglalás alapján olvashatnak vagy írhatnak a csatlakoztatott lemezre. Az SCSI PR egy iparági szabvány, amelyet a helyszíni tárolóhálózaton (SAN) futó alkalmazások használnak. Az SCSI PR engedélyezése felügyelt lemezen lehetővé teszi, hogy ezeket az alkalmazásokat az Azure-ba telepítse át.
+A fürtben lévő virtuális gépek a fürtözött alkalmazás által az [állandó SCSI-foglalások](https://www.t10.org/members/w_spc3.htm) (SCSI PR) használatával kiválasztott foglalás alapján olvashatják vagy írhatják a csatlakoztatott lemezeket. Az SCSI PR egy iparági szabvány, amely a helyi hálózaton (SAN) futó alkalmazások által használható. A felügyelt lemezeken az SCSI PR engedélyezése lehetővé teszi, hogy áttelepítse ezeket az alkalmazásokat az Azure-ba.
 
-A megosztott lemezek megosztott blokktárolót kínálnak, amely több virtuális gépről érhető el, ezek logikai egységszámként (LUN) érhetők el. A logikai és azonosítók ezután egy célból (lemezről) jelennek meg a kezdeményezőnek (VM). Ezek a helyi tárolók úgy néznek ki, mint a közvetlenül csatlakoztatott tároló (DAS) vagy a virtuális gép helyi meghajtója.
+A felügyelt lemezek megosztása olyan megosztott blokkos tárhelyet kínál, amely több virtuális gépről is elérhető, ezek logikai egységként (LUN) vannak kitéve. Ezután a logikai egységeket a rendszer egy kezdeményező (virtuális gép) számára mutatja be egy cél (lemez) alapján. Ezek a logikai egységek úgy néznek ki, mint a Direct-Attached-Storage (DAS) vagy egy helyi meghajtó a virtuális géphez.
 
-A megosztott felügyelt lemezek natív módon nem kínálnak teljes körűen felügyelt fájlrendszert, amely SMB/NFS-sel érhető el. Olyan fürtkezelőt kell használnia, például a Windows Server feladatátvevő fürtjét (WSFC) vagy a Pacemakert, amely kezeli a fürtcsomópont-kommunikációt és az írási zárolást.
+A megosztott felügyelt lemezek nem natív módon biztosítanak egy teljes körűen felügyelt fájlrendszert, amely SMB/NFS használatával érhető el. A fürt csomópontjainak kommunikációját, valamint az írási zárolást kezelő fürtszolgáltatást kell használnia, például a Windows Server feladatátvevő fürtöt (WSFC) vagy a pacemakert.
 
 ## <a name="limitations"></a>Korlátozások
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
 
-## <a name="disk-sizes"></a>Lemezméretek
+## <a name="disk-sizes"></a>Lemezek mérete
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
 
-## <a name="sample-workloads"></a>Számítási feladatok minta
+## <a name="sample-workloads"></a>Minta számítási feladatok
 
 ### <a name="windows"></a>Windows
 
-A legtöbb Windows-alapú fürtözés a WSFC-re épül, amely a fürtcsomópontok kommunikációjának összes alapvető infrastruktúráját kezeli, lehetővé téve az alkalmazások számára, hogy kihasználják a párhuzamos hozzáférési minták előnyeit. A WSFC a Windows Server verziójától függően csv- és nem CSV-alapú beállításokat is lehetővé tesz. További információt a [Feladatátvevő fürt létrehozása című dokumentumban talál.](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)
+A legtöbb Windows-alapú fürtözés a WSFC-ra épül, amely az összes alapvető infrastruktúrát kezeli a fürt csomópontjainak kommunikációjában, így az alkalmazások kihasználhatják a párhuzamos hozzáférési minták előnyeit. A WSFC a Windows Server verziójától függően CSV-és nem CSV-alapú beállításokat is lehetővé tesz. További részletekért tekintse meg a [feladatátvevő fürt létrehozása](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)című témakört.
 
-Néhány wsfc-en futó népszerű alkalmazás a következő:
+A WSFC-on futó népszerű alkalmazások többek között a következők:
 
-- SQL Server feladatátvevő fürtpéldányai (FCI)
-- Kibővített fájlkiszolgáló (SoFS)
-- Általános használatra szánt fájlkiszolgáló (IW-munkaterhelés)
-- Távoli asztali kiszolgáló felhasználói profillemeze (RDS UPD)
+- SQL Server feladatátvevő fürt példányai (%-ban)
+- Kibővíthető fájlkiszolgáló (SoFS)
+- Általános célú fájlkiszolgáló (IW munkaterhelés)
+- Távoli asztal Server felhasználói profil lemeze (RDS UPD)
 - SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
 
-A Linux-fürtök kihasználhatják a fürtkezelőket, például [a Pacemakert.](https://wiki.clusterlabs.org/wiki/Pacemaker) A pacemaker a [Corosync-ra](http://corosync.github.io/corosync/)épül, amely lehetővé teszi a fürtkommunikációt a magas rendelkezésre állású környezetekben telepített alkalmazások számára. Néhány gyakori fürtözött fájlrendszer közé tartozik [az ocfs2](https://oss.oracle.com/projects/ocfs2/) és [a gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). A foglalásokat és a regisztrációkat olyan segédprogramokkal kezelheti, mint [a fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) és [a sg_persist.](https://linux.die.net/man/8/sg_persist)
+A Linux-fürtök képesek kihasználni a fürtszolgáltatásokat, például a [pacemakert](https://wiki.clusterlabs.org/wiki/Pacemaker). A pacemaker a [Corosync](http://corosync.github.io/corosync/)-ra épül, és lehetővé teszi a fürtök kommunikációját a magasan elérhető környezetekben üzembe helyezett alkalmazásokhoz. Egyes gyakori fürtözött fájlrendszerek közé tartozik a [OCFS2](https://oss.oracle.com/projects/ocfs2/) és a [GFS2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). A foglalásokat és a regisztrációkat a [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) és [sg_persist](https://linux.die.net/man/8/sg_persist)segédprogramokkal is kezelheti.
 
 ## <a name="persistent-reservation-flow"></a>Állandó foglalási folyamat
 
-Az alábbi ábrán egy minta 2 csomós fürtözött adatbázis-alkalmazás, amely az SCSI PR segítségével lehetővé teszi a feladatátvételt az egyik csomópontról a másikra.
+A következő ábra egy minta 2 csomópontos fürtözött adatbázis-alkalmazást mutat be, amely az SCSI PR-t használja az egyik csomópontról a másikra történő feladatátvétel engedélyezéséhez.
 
-![Két csomópont-fürt. A fürtön futó alkalmazás kezeli a lemez elérését](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![Két csomópontos fürt. A fürtön futó alkalmazások kezelik a lemezhez való hozzáférést.](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
-Az áramlás a következő:
+A folyamat a következő:
 
-1. Az Azure VM1 és VM2 futó fürtözött alkalmazás regisztrálja a lemezolvasási vagy -írási szándékát.
-1. Az alkalmazáspéldány a VM1 majd kizárólagos foglalást igényel a lemezre íráshoz.
-1. Ez a foglalás az Azure-lemezen van kényszerítve, és az adatbázis most már kizárólag írni a lemezre. A VM2-en az alkalmazáspéldányból származó írások nem lesznek sikeresek.
-1. Ha az alkalmazáspéldány a VM1-en leáll, a VM2-n lévő példány most már kezdeményezheti az adatbázis feladatátvételt és a lemez átvétele.
-1. Ez a foglalás most már az Azure-lemezen, és a lemez már nem fogadja el a virtuális gépről írt írásokat. Csak a VM2-ből fogad el írásokat.
-1. A fürtözött alkalmazás befejezheti az adatbázis feladatátvételt, és a VM2-től érkező kérelmeket szolgálhat ki.
+1. Az Azure VM1 és VM2-on futó fürtözött alkalmazás a lemezre való írásra vagy írásra is regisztrálja a szándékát.
+1. A VM1 lévő alkalmazás példánya kizárólagos foglalást tart a lemezre való íráshoz.
+1. Ezt a foglalást az Azure-lemezen kell kikényszeríteni, és az adatbázis már kizárólag a lemezre tud írni. A VM2 alkalmazás példányában lévő összes írás sikertelen lesz.
+1. Ha a VM1 futó alkalmazás példánya leáll, a VM2-példány mostantól kezdeményezheti az adatbázis feladatátvételét és a lemez átvételét.
+1. Ez a foglalás már érvényben van az Azure-lemezen, és a lemez már nem fogadja el az írásokat a VM1. A művelet csak a VM2 származó írásokat fogadja el.
+1. A fürtözött alkalmazás elvégezheti az adatbázis feladatátvételét, és kézbesítheti a VM2 érkező kéréseket.
 
-Az alábbi ábra egy másik gyakori fürtözött számítási feladatokat mutat be, amelyek több csomópontból állnak, amelyek adatokat olvasnak a lemezről a párhuzamos folyamatok futtatásához, például a gépi tanulási modellek betanításához.
+Az alábbi ábrán egy olyan gyakori fürtözött munkaterhelés látható, amely több csomópontból származó adatok olvasását mutatja be a lemezről a párhuzamos folyamatok futtatásához, például a gépi tanulási modellek betanításához.
 
-![Négy csomópont virtuálisgép-fürt, minden csomópont regisztrálja az írási szándékot, az alkalmazás kizárólagos foglalást vesz igénybe az írási eredmények megfelelő kezeléséhez](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Négy csomópontos virtuálisgép-fürt, az egyes csomópontok az írási szándékot regisztrálják, az alkalmazás kizárólagos foglalást tart az írási eredmények megfelelő kezelésére.](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
-Az áramlás a következő:
+A folyamat a következő:
 
-1. Az összes virtuális gépen futó fürtözött alkalmazás regisztrálja a lemezre való olvasásvagy írás szándékát.
-1. A VM1 alkalmazáspéldány a lemezre íráshoz kizárólagos foglalást készít, miközben más virtuális gépekről nyitja meg az olvasásokat a lemezre.
-1. Ez a foglalás az Azure-lemezen van kényszerítve.
-1. A fürt összes csomópontja most már olvashat a lemezről. Csak egy csomópont írja vissza az eredményeket a lemezre a fürt összes csomópontja nevében.
+1. Az összes virtuális gépen futó fürtözött alkalmazás a lemezre való íráshoz vagy íráshoz regisztrálja a szándékot.
+1. A VM1 alkalmazás-példánya kizárólagos foglalást használ a lemezre való íráshoz, miközben a más virtuális gépekről érkező olvasási adatokat nyit meg a lemezre.
+1. Ezt a foglalást az Azure-lemezen kell kikényszeríteni.
+1. A fürt összes csomópontja most már képes olvasni a lemezről. A fürt összes csomópontja nevében csak egy csomópont írja vissza az eredményeket a lemezre.
 
 ### <a name="ultra-disks-reservation-flow"></a>Ultra lemezek foglalási folyamata
 
-Az ultralemezek további fojtószelepet kínálnak, összesen két fojtószelepet. Ennek köszönhetően az ultralemezek foglalási folyamat a korábbi szakaszban leírtak szerint működhet, vagy szabályozhatja és terjesztheti a teljesítményt részletesebben.
+Az ultra-lemezek további szabályozást kínálnak, összesen két szabályozásra. Ennek köszönhetően az ultra-lemezek foglalási folyamata a korábbi szakaszban leírtak szerint működhet, vagy részletesebben szabályozhatja és terjesztheti a teljesítményt.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
 
-## <a name="ultra-disk-performance-throttles"></a>Ultra lemez teljesítményszabályozása
+## <a name="ultra-disk-performance-throttles"></a>Ultravékony lemezek teljesítményének szabályozása
 
-Az ultralemezek rendelkeznek azzal az egyedülálló képességgel, hogy lehetővé tegyék a teljesítmény beállítását a módosítható attribútumok kiteszik, és lehetővé teszik azok módosítását. Alapértelmezés szerint csak két módosítható attribútum létezik, de a megosztott ultralemezek két további attribútummal rendelkeznek.
+Az ultra-lemezek egyedi képességgel rendelkeznek, amely lehetővé teszi a teljesítmény beállítását a módosítható attribútumok kiszűrésével, és lehetővé teszi a módosítását. Alapértelmezés szerint csak két módosítható attribútum létezik, de a megosztott Ultra-lemezek két további attribútummal rendelkeznek.
 
 
 |Attribútum  |Leírás  |
 |---------|---------|
-|DiskIOPS readwrite     |A megosztási lemezt írási hozzáféréssel rendelkező összes virtuális gépen engedélyezett IOPS-ok teljes száma.         |
-|DiskMBpsReadWrite írása     |A teljes átviteli sebesség (MB/s) engedélyezett az összes virtuális gép csatlakoztatása a megosztott lemez írási hozzáféréssel.         |
-|DiskIOPSReadOnly*     |A megosztott lemezt readonly-ként rögzítő összes virtuális gépen engedélyezett IOPS-ok teljes száma.         |
-|DiskMBpsReadOnly*     |A megosztott lemezt readonly-ként rögzítő összes virtuális gép számára engedélyezett teljes átviteli sebesség (MB/s).         |
+|DiskIOPSReadWrite     |Az összes olyan virtuális gépen engedélyezett IOPS száma, amely a megosztási lemezt írási hozzáféréssel csatlakoztatja.         |
+|DiskMBpsReadWrite     |A teljes átviteli sebesség (MB/s) engedélyezett az összes virtuális gépen, amely a megosztott lemezt írási hozzáféréssel csatlakoztatja.         |
+|DiskIOPSReadOnly*     |Az összes olyan virtuális gépen engedélyezett IOPS teljes száma, amely ReadOnly módon csatlakoztatja a megosztott lemezt.         |
+|DiskMBpsReadOnly*     |A teljes átviteli sebesség (MB/s) engedélyezett az összes olyan virtuális gépen, amely a megosztott lemezt ReadOnly módon csatlakoztatja.         |
 
-\*Csak megosztott ultralemezekre vonatkozik
+\*Csak a megosztott Ultra-lemezekre vonatkozik
 
-A következő képletek bemutatják, hogyan állíthatók be a teljesítményjellemzők, mivel a felhasználók módosíthatók:
+A következő képletek azt mutatják be, hogyan lehet beállítani a teljesítmény attribútumokat, mivel azok felhasználó által módosítható:
 
-- DiskiOPSReadWrite/DiskIOPSReadOnly: 
-    - 300 IOPS/GiB IOPS-korlát, lemezenként legfeljebb 160 K IOPS-érték
+- DiskIOPSReadWrite/DiskIOPSReadOnly: 
+    - 300 IOPS/GiB IOPS korlátja, legfeljebb 160K IOPS
     - Legalább 100 IOPS
-    - DiskIOPSReadWrite + DiskIOPSReadOnly legalább 2 IOPS/GiB
-- DiskMBpsRead/ DiskMBpsReadOnly:
-    - Egyetlen lemez átviteli korlátja 256 KiB/s minden egyes kiosztott IOPS esetén, lemezenként legfeljebb 2000 Mb/s-ig
-    - A minimális garantált lemezátviteli sebesség 4KiB/s minden egyes kiosztott IOPS esetén, a teljes alapterv minimum 1 M/s
+    - A DiskIOPSReadWrite + DiskIOPSReadOnly legalább 2 IOPS/GiB
+- DiskMBpsRead írási/DiskMBpsReadOnly:
+    - Egy lemez átviteli korlátja minden kiépített IOPS esetében 256 KiB/s, lemezenként legfeljebb 2000 MB/s-onként
+    - Minden egyes kiépített IOPS esetében a minimális garantált átviteli sebesség 4KiB/s, a teljes alapértéknek legalább 1 MBps-nek kell lennie
 
 ### <a name="examples"></a>Példák
 
-Az alábbi példák néhány forgatókönyvet mutatnak be, amelyek bemutatják, hogy a szabályozás hogyan működhet a megosztott ultralemezekkel, különösen.
+Az alábbi példák néhány forgatókönyvet mutatnak be, amelyek bemutatják, hogyan működhet a szabályozás a megosztott Ultra-lemezekkel, pontosabban.
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Fürt megosztott köteteit használó két csomópont
+#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Két csomópontos fürt fürt megosztott kötetei használatával
 
-Az alábbi példa egy 2 csomópontos WSFC fürtözött megosztott köteteket használó. Ezzel a konfigurációval mindkét virtuális gép egyidejű írási hozzáféréssel rendelkezik a lemezhez, ami azt eredményezi, hogy a ReadWrite szabályozás a két virtuális gép között oszlik meg, és a csak a csak olvasható szabályozás nincs használatban.
+A következő példa egy, a fürtözött megosztott köteteket használó 2 csomópontos WSFC. Ezzel a konfigurációval mindkét virtuális gépnek egyidejű írási hozzáférése van a lemezhez, ami azt eredményezi, hogy a ReadWrite-szabályozás a két virtuális gép között oszlik el, és a nem használt ReadOnly szabályozás.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV két csomópont ultra példa":::
-
-:::image-end:::
-
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Két csomópontfürt fürtmegosztási kötetek nélkül
-
-Az alábbi példa egy kétcsomópontos WSFC-t mutat be, amely nem fürtözött megosztott köteteket használ. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ennek eredményeként a ReadWrite szabályozás kizárólag az elsődleges virtuális gép és a ReadOnly szabályozás csak a másodlagos által használt.
-
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV két csomópont nincs csv ultra lemez példa":::
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Két csomópontos CSV-példa":::
 
 :::image-end:::
 
-#### <a name="four-node-linux-cluster"></a>Négy csomópont Linux-fürt
+#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Két csomópontos fürt fürt megosztási kötetei nélkül
 
-Az alábbiakban egy 4 csomópontos Linux-fürt egyetlen íróval és három kibővített olvasókkal. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ennek eredményeként a ReadWrite szabályozás kizárólag az elsődleges virtuális gép és a ReadOnly szabályozás a másodlagos virtuális gépek által felosztott.
+A következő példa egy olyan 2 csomópontos WSFC mutat be, amely nem használ fürtözött megosztott köteteket. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, hogy a ReadWrite-szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és az írásvédett szabályozás csak a másodlagos használatban van.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Négy csomópont ultra-szabályozás példa":::
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-fájl két csomópontja nem rendelkezik a CSV-vel – példa":::
+
+:::image-end:::
+
+#### <a name="four-node-linux-cluster"></a>Négy csomópontos Linux-fürt
+
+A következő példa egy 4 csomópontos linuxos fürtöt mutat be egyetlen író és három kibővíthető olvasóval. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, hogy a ReadWrite-szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és a másodlagos virtuális gépek által feldarabolt ReadOnly szabályozás.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Négy csomópontos Ultra-szabályozási példa":::
 
 :::image-end:::

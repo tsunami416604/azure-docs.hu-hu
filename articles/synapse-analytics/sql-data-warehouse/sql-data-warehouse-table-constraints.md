@@ -1,6 +1,6 @@
 ---
 title: Elsődleges, idegen és egyedi kulcsok
-description: A táblakényszerek támogatása a Synapse SQL-készletben az Azure Synapse Analytics-ben
+description: Táblázatos korlátozások a szinapszis SQL-készlet támogatása az Azure szinapszis Analyticsben
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,32 +12,32 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: f97163d02836442430037e18439bcf0724046332
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80990769"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Elsődleges kulcs, idegen kulcs és egyedi kulcs a Szinapszis SQL-készletében
+# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Elsődleges kulcs, külső kulcs és egyedi kulcs a szinapszis SQL-készletben
 
-Ismerje meg a synapse SQL-készlet táblakényszereit, beleértve az elsődleges kulcsot, az idegen kulcsot és az egyedi kulcsot.
+Ismerje meg a szinapszis SQL-készletben található táblázatos korlátozásokat, beleértve az elsődleges kulcsot, a külső kulcsot és az egyedi kulcsot.
 
 ## <a name="table-constraints"></a>Táblakorlátozások
 
-A Synapse SQL-készlet támogatja a következő táblakényszereket: 
-- A PRIMEP KULCS csak akkor támogatott, ha a NONCLUSTERED és a NOT ENFORCED egyaránt használatos.    
-- A UNIQUE megkötés csak a NOT ENFORCED beállítással támogatott.
+A szinapszis SQL-készlet a következő táblázatos korlátozásokat támogatja: 
+- Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZERÍTett érték is használatban van.    
+- Az egyedi korlátozás csak a nem KÉNYSZERÍTett használata esetén támogatott.
 
-Szintaxis esetén jelölje be [a TÁBLA MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) és A TÁBLA LÉTREHOZÁSA [jelölőnégyzetet.](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse) 
+A szintaxishoz kattintson az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) és a [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)elemre. 
 
-Foreign KEY megkötés nem támogatott a Szinapszis SQL-készlet.  
+A FOREIGN KEY korlátozás nem támogatott a szinapszis SQL-készletben.  
 
 
 ## <a name="remarks"></a>Megjegyzések
 
-Az elsődleges kulcs és/vagy az egyedi kulcs lehetővé teszi, hogy a Synapse SQL-készletmotor optimális végrehajtási tervet hozzon létre egy lekérdezéshez.  Az elsődleges kulcs oszlopában vagy egyedi megkötésoszlopában lévő összes értéknek egyedinek kell lennie.
+Az elsődleges kulcs és/vagy egyedi kulcs lehetővé teszi a szinapszis SQL Pool Engine számára, hogy optimális végrehajtási tervet készítsen a lekérdezésekhez.  Az elsődleges kulcs oszlopában vagy egyedi korlátozási oszlopában szereplő összes értéknek egyedinek kell lennie.
 
-Miután létrehozott egy táblát elsődleges kulccsal vagy egyedi megkötéssel a Synapse SQL-készletben, a felhasználóknak meg kell győződniük arról, hogy az oszlopokban lévő összes érték egyedi.  Ennek megsértése miatt a lekérdezés pontatlan eredményt adhat vissza.  Ez a példa azt mutatja be, hogy a lekérdezés hogyan adhat vissza pontatlan eredményt, ha az elsődleges kulcs vagy az egyedi megkötésoszlop ismétlődő értékeket tartalmaz.  
+Miután létrehozott egy elsődleges kulccsal vagy egyedi megkötéssel rendelkező táblázatot a szinapszis SQL-készletben, a felhasználóknak meg kell győződniük arról, hogy az oszlopok összes értéke egyedi.  Ennek megsértése miatt előfordulhat, hogy a lekérdezés pontatlan eredményt ad vissza.  Ez a példa azt mutatja be, hogyan lehet a lekérdezés pontatlan eredményt adni, ha az elsődleges kulcs vagy az egyedi megkötés oszlop duplikált értékeket tartalmaz.  
 
 ```sql
  -- Create table t1
@@ -164,12 +164,12 @@ a1          total
 
 ## <a name="examples"></a>Példák
 
-Hozzon létre egy synapse SQL-készlettáblát elsődleges kulccsal: 
+Hozzon létre egy szinapszis SQL Pool-táblázatot egy elsődleges kulccsal: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Hozzon létre egy szinapszis SQL-készlettáblát egyedi megkötéssel:
+A szinapszis SQL Pool-tábla létrehozása egyedi korlátozással:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -177,4 +177,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>További lépések
 
-A synapse SQL-készlet tábláinak létrehozása után a következő lépés az adatok betöltése a táblába. A betöltési oktatóanyagról az [Adatok betöltése a Synapse SQL-készletbe című](load-data-wideworldimportersdw.md)témakörben található.
+Miután létrehozta a szinapszis SQL-készlethez tartozó táblákat, a következő lépés az adatai betöltése a táblába. Betöltési oktatóanyagért lásd: [az adatgyűjtés a SZINAPSZIS SQL-készletbe](load-data-wideworldimportersdw.md).

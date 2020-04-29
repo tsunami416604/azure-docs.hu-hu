@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd szintezése hangfájllá, C++ (Windows) – Beszédszolgáltatás'
+title: 'Gyors útmutató: hangfelismerés a hangfájlba, C++ (Windows) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: wolfma
 ms.openlocfilehash: 2703756a748d8e57321e54b3a9cb961916d337b6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275337"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -72,17 +72,17 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. Cserélje le `helloworld.wav` a karakterláncot a saját fájlnevére.
+1. Cserélje le a `helloworld.wav` karakterláncot a saját fájlnevére.
 
-1. A menüsorban válassza az > **Összes** **fájlmentése**lehetőséget.
+1. A menüsávban válassza a **fájl** > **Mentés összes mentése**elemet.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. A menüsorban válassza **buildmegoldás összeállítása** > **az** alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a Build **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. A **helloworld** alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5)** billentyűt.
+1.  > A **HelloWorld** alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az **F5**billentyűt).
 
-1. A program a szöveget beszédbeszédmé alakítja, és a megadott hangadatokba menti.
+1. A szöveget a rendszer beszédre konvertálja, és a megadott hangadatokba menti.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]

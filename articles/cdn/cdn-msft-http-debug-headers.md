@@ -1,6 +1,6 @@
 ---
-title: Http-fejlécek debug for Azure CDN from Microsoft | Microsoft dokumentumok
-description: A hibakeresési gyorsítótár-kérelem fejlécei további információkat nyújtanak a kért eszközre alkalmazott gyorsítótár-házirendről. Ezek a fejlécek a Microsoft Azure CDN-re jellemzőek.
+title: HTTP-fejlécek hibakeresése Azure CDN a Microsofttól | Microsoft Docs
+description: A hibakeresési gyorsítótár-kérelmek fejlécei további információkat nyújtanak a kért eszközre alkalmazott gyorsítótár-házirendről. Ezek a fejlécek kifejezetten a Microsoft Azure CDN.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260411"
 ---
-# <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Debug HTTP-fejléc a Microsoft Azure CDN-jéhez
-A hibakeresési válasz `X-Cache`fejléce , a részleteket tartalmazza arról, hogy a CDN-verem melyik rétegéből szolgálták ki a tartalmat. Ez a fejléc a Microsoft Azure CDN-re jellemző.
+# <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Hibakeresés HTTP-fejléce Azure CDN a Microsofttól
+A hibakeresési válasz fejléce `X-Cache`részletesen ismerteti, hogy a CDN-verem melyik rétegét kézbesítették a tartalom. Ez a fejléc kifejezetten a Microsoft Azure CDN.
 
-### <a name="response-header-format"></a>Válaszfejléc formátuma
+### <a name="response-header-format"></a>Válasz fejlécének formátuma
 
 Fejléc | Leírás
 -------|------------
-X-Cache: TCP_HIT | Ez a fejléc akkor jelenik meg, amikor a tartalom a CDN peremhálózati gyorsítótárából kerül kiszolgálásra. 
-X-Cache: TCP_REMOTE_HIT | Ez a fejléc akkor jelenik meg, amikor a tartalom a CDN regionális gyorsítótárából (Origin pajzsréteg) szolgál ki.
-X-Cache: TCP_MISS | Ez a fejléc akkor jelenik meg, ha gyorsítótár-tévesztés történt, és a tartalom az Originből jelenik meg. 
+X gyorsítótár: TCP_HIT | A rendszer ezt a fejlécet adja vissza, amikor a tartalmat a CDN Edge-gyorsítótárból kézbesíti. 
+X gyorsítótár: TCP_REMOTE_HIT | A rendszer ezt a fejlécet adja vissza, amikor a tartalmat a CDN regionális gyorsítótárból (Origin Shield Layer) kézbesíti.
+X gyorsítótár: TCP_MISS | A rendszer ezt a fejlécet adja vissza, ha a gyorsítótárból hiányzik a gyorsítótár, és a tartalom a forrástól származik. 
 
 

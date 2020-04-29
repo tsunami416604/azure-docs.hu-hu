@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-minták – Zónaredundáns méretezési készlet
-description: Ez a parancsfájl létrehoz egy Azure virtuálisgép-méretezési készlet et, amely több rendelkezésre állási zónán keresztül fut.
+title: Azure CLI-minták – Zone-redundáns méretezési csoport
+description: Ez a szkript egy Ubuntut futtató Azure virtuálisgép-méretezési készletet hoz létre több Availability Zoneson.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,13 +10,13 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 80b173daf2101180e5d78de625b914bd8396b7af
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010358"
 ---
-# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Zónaredundáns virtuálisgép-méretezési készlet létrehozása az Azure CLI-vel
+# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Zone-redundáns virtuálisgép-méretezési csoport létrehozása az Azure CLI-vel
 Ez a szkript egy Ubuntu rendszert futtató virtuálisgép-méretezési csoportot hoz létre több rendelkezésre állási zónában. A szkript futtatása után a virtuális gépet RDP-kapcsolaton keresztül érheti el.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

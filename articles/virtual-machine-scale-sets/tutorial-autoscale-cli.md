@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Méretezési halmaz automatikus skálázása az Azure CLI-vel
+title: Oktatóanyag – méretezési csoport autoskálázása az Azure CLI-vel
 description: Ismerje meg, hogyan skálázhat automatikusan virtuálisgép-méretezési csoportokat az Azure CLI használatával a processzorterhelés növekedésének vagy csökkenésének megfelelően
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 711553fd0a71103f340137755ef51264e3883c25
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010385"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus skálázása az Azure CLI használatával
@@ -25,7 +25,7 @@ Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuál
 > * Virtuálisgép-példányok és automatikus skálázás-aktiválási szabályok terhelési tesztje
 > * Visszaméretezés, ha az igény csökken
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,7 +54,7 @@ az vmss create \
 
 ## <a name="define-an-autoscale-profile"></a>Automatikus skálázási profil meghatározása
 
-Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségek szabályozását azáltal, hogy nem folyamatosan hozza létre a virtuálisgép-példányokat, és egyensúlyt teremt az elfogadható teljesítmény és a horizontális felskálázási eseményben maradó példányok minimális számával. Automatikus skálázási profilt az [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) paranccsal hozhat létre. A következő példa a virtuálisgép-példányok alapértelmezett és egyben minimális (*2*), valamint a maximális (*10*) értékét állítja be:
+Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségeket a virtuálisgép-példányok folyamatos létrehozásával, valamint az elfogadható teljesítmény elosztásával, amely egy méretezési eseményen maradó példányok minimális száma. Automatikus skálázási profilt az [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) paranccsal hozhat létre. A következő példa a virtuálisgép-példányok alapértelmezett és egyben minimális (*2*), valamint a maximális (*10*) értékét állítja be:
 
 ```azurecli-interactive
 az monitor autoscale create \
@@ -200,7 +200,7 @@ Lépjen ki a *watch* segédprogramból a `Ctrl-c` paranccsal. A méretezési cso
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és annak összes erőforrását az [az csoport törlésével.](/cli/azure/group) A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

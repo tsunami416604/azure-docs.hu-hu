@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Méretezési készlet automatikus skálázása az Azure PowerShell használatával
+title: Oktatóanyag – méretezési csoport autoskálázása Azure PowerShell
 description: Ismerje meg, hogyan méretezhet automatikusan virtuálisgép-méretezési csoportokat az Azure PowerShell-lel a processzorterhelés növekedésének vagy csökkenésének megfelelően.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81008998"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: virtuálisgép-méretezési csoportok automatikus skálázása az Azure PowerShell-lel
@@ -27,7 +27,7 @@ Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuál
 > * Virtuálisgép-példányok és automatikus skálázás-aktiválási szabályok terhelési tesztje
 > * Visszaméretezés, ha az igény csökken
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 Létezik egy ismert hiba, amely az Azure PowerShell-modul 6.8.1-es vagy újabb verzióját érinti, beleértve az Azure Cloud Shell aktuális verzióját is. Ez az oktatóanyag csak az Azure PowerShell-modul 6.0.0–6.8.0 közötti verziójával futtatható. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
@@ -66,12 +66,12 @@ Ez a szabály az alábbi paramétereket tartalmazza:
 
 | Paraméter               | Magyarázat                                                                                                         | Érték          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-| *-MetricName*           | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat |
-| *-TimeGrain*            | Az elemzendő metrikák gyűjtési gyakorisága.                                                                   | 1 perc       |
+| *– MetricName*           | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat |
+| *– TimeGrain*            | Az elemzendő metrikák gyűjtési gyakorisága.                                                                   | 1 perc       |
 | *-MetricStatistic*      | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag        |
-| *-TimeWindow*           | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 5 perc      |
-| *-Üzemeltető*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint   |
-| *-Küszöb*            | Az érték, amely esetén az automatikus skálázási szabály aktivál egy műveletet.                                                      | 70%            |
+| *– TimeWindow*           | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 5 perc      |
+| *– Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint   |
+| *– Küszöbérték*            | Az érték, amely esetén az automatikus skálázási szabály aktivál egy műveletet.                                                      | 70%            |
 | *-ScaleActionDirection* | Meghatározza, hogy a szabály alkalmazásakor a méretezési csoport fel- vagy leskáláz.                                             | Növelés       |
 | *-ScaleActionScaleType* | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása   |
 | *-ScaleActionValue*     | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                            | 3              |
@@ -117,7 +117,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
 
 
 ## <a name="define-an-autoscale-profile"></a>Automatikus skálázási profil meghatározása
-Profilok létrehozásával társíthatja az automatikus skálázási szabályokat a méretezési csoportokhoz. Az automatikus skálázási profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását, és társítja az automatikus skálázási szabályokat. Automatikus skálázási profilt a [New-AzureRmAutoscaleProfile](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleProfile) paranccsal hozhat létre. A következő példa beállítja az alapértelmezett, és minimális, kapacitása *2* virtuálisgép-példányok, és legfeljebb *10.* Ezután csatolja az előző lépésekben létrehozott horizontális fel- és leskálázási szabályokat:
+Profilok létrehozásával társíthatja az automatikus skálázási szabályokat a méretezési csoportokhoz. Az automatikus skálázási profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását, és társítja az automatikus skálázási szabályokat. Automatikus skálázási profilt a [New-AzureRmAutoscaleProfile](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleProfile) paranccsal hozhat létre. Az alábbi példa az alapértelmezett és a minimális kapacitást, a *2* virtuálisgép-példányok számát és a maximum *10*értéket állítja be. Ezután csatolja az előző lépésekben létrehozott horizontális fel- és leskálázási szabályokat:
 
 ```azurepowershell-interactive
 $myScaleProfile = New-AzureRmAutoscaleProfile `
@@ -129,7 +129,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 ```
 
 
-## <a name="apply-autoscale-profile-to-a-scale-set"></a>Automatikus méretezési profil alkalmazása méretezési készletre
+## <a name="apply-autoscale-profile-to-a-scale-set"></a>Az autoskálázási profil alkalmazása méretezési csoportra
 Az utolsó lépés az automatikus skálázási profil alkalmazása a méretezési csoportra. A méretezési csoport ezután képes lesz az automatikus le- és felskálázásra az alkalmazás igényei szerint. Az automatikus skálázási profil az [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) paranccsal alkalmazható az alábbiak szerint:
 
 ```azurepowershell-interactive
@@ -180,7 +180,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Amikor a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (alapértelmezés szerint a mintaparancsokban az *azureuser* és a *P\@ssw0rd! ).* Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (a minta parancsaiban alapértelmezés szerint az *azureuser* és a *\@P ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -209,7 +209,7 @@ Annak érdekében, hogy a **CPU Stress** eszköz tovább futhasson, mindkét tá
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Aktív automatikus skálázási szabályok monitorozása
-A méretezési csoportban lévő virtuálisgép-példányok számának monitorozásához használja a **while** parancsot. 5 percet vesz igénybe, amíg az automatikus skálázási skálázás idoben megkezdi a horizontális felskálázási folyamatot a **CPUStress** által az egyes virtuálisgép-példányokon generált CPU-terhelésre válaszul:
+A méretezési csoportban lévő virtuálisgép-példányok számának monitorozásához használja a **while** parancsot. 5 percet vesz igénybe, hogy az automatikus skálázás a **CPUStress** által a virtuálisgép-példányok által generált CPU-terhelésre adott válaszként Felskálázási folyamattal kezdődjön:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

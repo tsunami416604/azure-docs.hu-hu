@@ -1,6 +1,6 @@
 ---
-title: Tömeges importálási és frissítési műveletek végrehajtása az Azure Cosmos DB tömeges végrehajtó Jázmán-kódtárjával
-description: Az Azure Cosmos DB-dokumentumok tömeges importálása és frissítése a tömeges végrehajtó Java-kódtár használatával
+title: A tömeges importálási és frissítési műveletek végrehajtásához használja a Azure Cosmos DB csoportos futtatású Java-kódtárat.
+description: Azure Cosmos DB dokumentumok tömeges importálása és frissítése a tömeges végrehajtó Java-kódtár használatával
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,25 +10,25 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985643"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Műveletek tömeges végrehajtása Azure Cosmos DB-adatokon a tömeges végrehajtási Java-kódtárral
 
-Ez az oktatóanyag az Azure Cosmos DB tömeges végrehajtó Jáp-kódtárának importálásához és frissítéséhez való használatával kapcsolatos utasításokat tartalmaz. A tömeges végrehajtó könyvtár, és hogyan segít a masszív átviteli és tárolási tőkeáttétel, [tömeges végrehajtó könyvtár áttekintése](bulk-executor-overview.md) cikket. Ebben az oktatóanyagban egy Java-alkalmazást hoz létre, amely véletlenszerű dokumentumokat hoz létre, és tömegesen importálva egy Azure Cosmos-tárolóba. Importálás után tömegesen frissíti a dokumentum egyes tulajdonságait. 
+Ez az oktatóanyag útmutatást nyújt a Azure Cosmos DB tömeges végrehajtó Java-könyvtárának használatáról az importáláshoz és a Azure Cosmos DB dokumentumok frissítéséhez. Ha többet szeretne megtudni a tömeges végrehajtó függvénytárról, valamint arról, hogy miként segíti a nagy átviteli sebesség és tárterület kihasználását, tekintse meg a [tömeges végrehajtó függvénytár áttekintését](bulk-executor-overview.md) ismertető cikket. Ebben az oktatóanyagban egy olyan Java-alkalmazást hoz létre, amely véletlenszerű dokumentumokat hoz létre, és tömegesen importálnak egy Azure Cosmos-tárolóba. Az importálás után tömegesen frissíti a dokumentumok egyes tulajdonságait. 
 
-Jelenleg a tömeges végrehajtó könyvtár csak az Azure Cosmos DB SQL API és a Gremlin API-fiókok támogatja. Ez a cikk ismerteti, hogyan használhatja a tömeges végrehajtó Java-kódtár SQL API-fiókok használatával. A tömeges végrehajtó .NET-kódtár Gremlin API-val való használatáról az [Azure Cosmos DB Gremlin API tömeges műveleteinek végrehajtásáról](bulk-executor-graph-dotnet.md)olvashat.
+Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API és Gremlin API-fiókok támogatják. Ez a cikk azt ismerteti, hogyan használható a tömeges végrehajtó Java-függvénytár SQL API-fiókokkal. A tömeges végrehajtó .NET-kódtár Gremlin API-val történő használatáról további információt a [tömeges műveletek végrehajtása Azure Cosmos db GREMLIN API-ban](bulk-executor-graph-dotnet.md)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) mielőtt elkezdené.  
+* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .  
 
-* Az [Azure Cosmos DB-t ingyenesen,](https://azure.microsoft.com/try/cosmosdb/) ingyenesen és kötelezettségvállalások nélkül is kipróbálhatja. Vagy használhatja az [Azure Cosmos DB-emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
+* Az Azure-előfizetések nélkül, díjmentesen és kötelezettségvállalásokon keresztül [Azure Cosmos db ingyen kipróbálhatja](https://azure.microsoft.com/try/cosmosdb/) . Vagy használhatja a [Azure Cosmos db emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
 
-* [Java Fejlesztő készlet (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
+* [Java Development Kit (JDK) 1.7 +](/java/azure/jdk/?view=azure-java-stable)  
   - Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.  
 
   - Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
@@ -37,23 +37,23 @@ Jelenleg a tömeges végrehajtó könyvtár csak az Azure Cosmos DB SQL API és 
   
   - Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
 
-* Hozzon létre egy Azure Cosmos DB SQL API-fiókot a Java gyorsútmutató cikk [adatbázis-fiók létrehozása](create-sql-api-java.md#create-a-database-account) című szakaszában ismertetett lépésekkel.
+* Hozzon létre egy Azure Cosmos DB SQL API-fiókot a Java rövid útmutató című cikk [adatbázis-fiók létrehozása](create-sql-api-java.md#create-a-database-account) című szakaszában ismertetett lépések segítségével.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most váltsunk át a kódokkal való munkára egy minta Java-alkalmazás letöltésével a GitHubról. Ez az alkalmazás tömeges műveleteket hajt végre az Azure Cosmos DB-adatokon. Az alkalmazás klónozásához nyisson meg egy parancssort, keresse meg azt a könyvtárat, amelybe az alkalmazást másolni szeretné, és futtassa a következő parancsot:
+Most váltson a Code-ra, és töltsön le egy minta Java-alkalmazást a GitHubról. Ez az alkalmazás csoportos műveleteket hajt végre Azure Cosmos DB adatokon. Az alkalmazás klónozásához nyisson meg egy parancssort, Navigáljon arra a könyvtárra, ahová az alkalmazást másolni szeretné, majd futtassa a következő parancsot:
 
 ```
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-A klónozott tárház két "bulkimport" és "bulkupdate" mintát tartalmaz az "\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor" mappához képest. A "bulkimport" alkalmazás véletlenszerű dokumentumokat hoz létre, és importálja őket az Azure Cosmos DB-be. A "bulkupdate" alkalmazás frissíti az Azure Cosmos DB egyes dokumentumait. A következő szakaszokban áttekintjük a kódot az egyes mintaalkalmazásokban. 
+A klónozott adattár a "\azure-cosmosdb-bulkexecutor-Java-Getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor" mappához képest két mintát tartalmaz: "BulkImport" és "bulkupdate". A "BulkImport" alkalmazás véletlenszerűen létrehozott dokumentumokat hoz létre, és azokat Azure Cosmos DBba importálja. A "bulkupdate" alkalmazás néhány dokumentumot frissít Azure Cosmos DBban. A következő részekben áttekintjük a kódot mindegyik minta alkalmazásban. 
 
-## <a name="bulk-import-data-to-azure-cosmos-db"></a>Adatok tömeges importálása az Azure Cosmos DB-be
+## <a name="bulk-import-data-to-azure-cosmos-db"></a>Az Azure Cosmos DBbe való tömeges importálás
 
-1. Az Azure Cosmos DB kapcsolati karakterláncai argumentumként vannak felolvasva, és a CmdLineConfiguration.java fájlban definiált változókhoz vannak rendelve.  
+1. A Azure Cosmos DB kapcsolódási karakterláncai argumentumként vannak beolvasva, és a CmdLineConfiguration. Java fájlban meghatározott változókhoz vannak rendelve.  
 
-2. Ezután a DocumentClient objektuminicial inicializálódik a következő utasításokkal:  
+2. A DocumentClient objektum a következő utasításokkal lett inicializálva:  
 
    ```java
    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
@@ -65,7 +65,7 @@ A klónozott tárház két "bulkimport" és "bulkupdate" mintát tartalmaz az "\
       ConsistencyLevel.Session)
    ```
 
-3. A DocumentBulkExecutor objektum inicializálása magas újrapróbálkozási értékekkel történik a várakozási idő és a szabályozott kérelmek esetében. Ezután 0-ra vannak állítva, hogy a torlódások ellenőrzését a DocumentBulkExecutor élettartama alatt átadják.  
+3. A DocumentBulkExecutor objektum a várakozási idő és a szabályozott kérelmek magas újrapróbálkozási értékeivel lett inicializálva. Ezután a 0 értékre vannak állítva, hogy átadja a zsúfoltság-vezérlést a DocumentBulkExecutor élettartama érdekében.  
 
    ```java
    // Set client's retry options high for initialization
@@ -88,12 +88,12 @@ A klónozott tárház két "bulkimport" és "bulkupdate" mintát tartalmaz az "\
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Hívja meg az importAll API-t, amely véletlenszerű dokumentumokat hoz létre az Azure Cosmos-tárolóba történő tömeges importáláshoz. A parancssori konfigurációk at a CmdLineConfiguration.java fájlban konfigurálhatja.
+4. Hívja meg a beosztott API-t, amely véletlenszerű dokumentumokat hoz létre tömeges importálásra egy Azure Cosmos-tárolóba. A parancssori konfigurációkat a CmdLineConfiguration. Java fájlon belül is konfigurálhatja.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
    ```
-   A tömeges importálási API json-szerializált dokumentumok gyűjteményét fogadja el, és a következő szintaxissal rendelkezik, további részletekért olvassa el az [API dokumentációját:](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)
+   A tömeges importálási API JSON-szerializált dokumentumok gyűjteményét fogadja el, és a következő szintaxissal rendelkezik, további részletekért tekintse meg az [API dokumentációját](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java
    public BulkImportResponse importAll(
@@ -103,43 +103,43 @@ A klónozott tárház két "bulkimport" és "bulkupdate" mintát tartalmaz az "\
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;   
    ```
 
-   Az importAll metódus a következő paramétereket fogadja el:
+   Az inportál metódus a következő paramétereket fogadja el:
  
    |**Paraméter**  |**Leírás**  |
    |---------|---------|
-   |isUpsert    |   A dokumentum upsert-jét lehetővé tevő zászló. Ha egy adott azonosítóval rendelkező dokumentum már létezik, akkor az frissül.  |
-   |disableAutomaticIdGeneration     |   Az azonosító automatikus létrehozásának letiltására figyelmeztető. Alapértelmezés szerint igaz értékre van állítva.   |
-   |maxConcurrencyPerPartitionRange    |  A partíciókulcs-tartományonkénti egyidejűség maximális mértéke. Az alapértelmezett érték 20.  |
+   |isUpsert    |   A dokumentumok upsert engedélyezésének jelzője. Ha a megadott AZONOSÍTÓJÚ dokumentum már létezik, frissül.  |
+   |disableAutomaticIdGeneration     |   Az azonosító automatikus generálásának letiltására szolgáló jelző. Alapértelmezés szerint igaz értékre van állítva.   |
+   |maxConcurrencyPerPartitionRange    |  A partíciós kulcs tartományának maximális párhuzamossági foka. Az alapértelmezett érték 20.  |
 
-   **Tömeges importálási válaszobjektum-definíciója** A tömeges importálási API-hívás eredménye a következő beválasztási módszereket tartalmazza:
+   **Tömeges importálási válasz objektumának definíciója** A tömeges importálási API-hívás eredménye a következő Get metódusokat tartalmazza:
 
    |**Paraméter**  |**Leírás**  |
    |---------|---------|
-   |int getNumberOfDocumentsImported()  |   A tömeges importálási API-híváshoz sikeresen importált dokumentumok teljes száma.      |
-   |dupla getTotalRequestUnitsConsumed()   |  A tömeges importálási API-hívás által felhasznált teljes kérelemegységek (RU).       |
-   |Időtartam getTotalTimeTaken()   |    A tömeges importálási API-hívás által a végrehajtás befejezéséhez szükséges teljes idő.     |
-   |A\<geterrors()> |  Lekéri a hibák listáját, ha a tömeges importálási API-híváshoz megadott kötegből néhány dokumentum nem sikerült beszúrni.       |
-   |Objektum\<> GetBadInputDocuments() listázása  |    A nem formátumos dokumentumok listája, amelyeket nem sikerült importálni a tömeges importálási API-hívásban. A felhasználónak ki kell javítania a visszaadott dokumentumokat, és újra meg kell próbálnia az importálást. A hibásan formázott dokumentumok olyan dokumentumokat tartalmaznak, amelyek azonosítóértéke nem karakterlánc (null vagy bármely más adattípus érvénytelennek minősül).     |
+   |int getNumberOfDocumentsImported ()  |   A tömeges importálási API-híváshoz megadott dokumentumokból sikeresen importált dokumentumok teljes száma.      |
+   |dupla getTotalRequestUnitsConsumed ()   |  A tömeges importálási API-hívás által felhasznált összes kérelmek egysége (RU).       |
+   |Időtartam getTotalTimeTaken ()   |    A tömeges importálási API hívása által a végrehajtás befejezésére tett teljes idő.     |
+   |Kivételek listázása\<> getErrors () |  Lekéri a hibák listáját, ha nem sikerült beszúrni a tömeges importálási API-híváshoz megadott kötegből kiolvasott dokumentumokat.       |
+   |Objektum\<listázása> getBadInputDocuments ()  |    Azon helytelen formátumú dokumentumok listája, amelyeket nem sikerült importálni a tömeges importálási API-hívásban. A felhasználónak ki kell javítania a visszaadott dokumentumokat, és újra kell próbálkoznia az importálás A helytelen formátumú dokumentumok közé tartoznak azok a dokumentumok, amelyek azonosító értéke nem sztring (null vagy bármely más adattípus érvénytelennek tekintendő).     |
 
-5. Miután a tömeges importálási alkalmazás készen állt, az "mvn clean package" paranccsal készítse el a parancssori eszközt a forrásból. Ez a parancs jar fájlt hoz létre a célmappában:  
+5. Miután megtörtént a tömeges importálás alkalmazása, hozza létre a parancssori eszközt a forrásból a "MVN tiszta csomag" parancs használatával. Ez a parancs egy jar-fájlt hoz létre a célmappában:  
 
    ```java
    mvn clean package
    ```
 
-6. A célfüggőségek létrehozása után a tömeges importőr alkalmazást a következő paranccsal hívhatja meg:  
+6. A cél függőségeinek létrehozása után a tömeges importáló alkalmazást a következő parancs használatával hívhatja meg:  
 
    ```java
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
-   A tömeges importőr létrehoz egy új adatbázist és egy gyűjteményt az App.config fájlban megadott adatbázisnévvel, gyűjteménynévvel és átviteli értékekkel. 
+   A tömeges importáló létrehoz egy új adatbázist és egy gyűjteményt, amely az app. config fájlban megadott adatbázis-névvel, gyűjtemény nevével és átviteli értékkel rendelkezik. 
 
-## <a name="bulk-update-data-in-azure-cosmos-db"></a>Tömeges frissítési adatok az Azure Cosmos DB-ben
+## <a name="bulk-update-data-in-azure-cosmos-db"></a>A Azure Cosmos DBban tárolt adatmennyiségek tömeges frissítése
 
-A bulkUpdateAsync API-val frissítheti a meglévő dokumentumokat. Ebben a példában a Név mezőt új értékre állítja be, és eltávolítja a Leírás mezőt a meglévő bizonylatokból. A támogatott mezőfrissítési műveletek teljes készletét lásd az [API dokumentációjában.](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor) 
+A meglévő dokumentumokat a BulkUpdateAsync API használatával frissítheti. Ebben a példában a Name (név) mezőt egy új értékre állítja be, és eltávolítja a Leírás mezőt a meglévő dokumentumokból. A támogatott mező-frissítési műveletek teljes készletét lásd: [API-dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
 
-1. A frissítési elemeket a megfelelő mezőfrissítési műveletekkel együtt határozza meg. Ebben a példában a SetUpdateOperation segítségével frissítheti a Név mezőt, az UnsetUpdateOperation mezőt pedig a Leírás mező t az összes dokumentumból. Más műveleteket is végrehajthat, például egy dokumentummezőt egy adott értékkel növelve, adott értékeket lenyomhat egy tömbmezőbe, vagy eltávolíthat egy adott értéket egy tömbmezőből. A tömeges frissítési API által biztosított különböző módszerekről az [API dokumentációjában](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)olvashat.  
+1. Meghatározza a frissítési elemeket a megfelelő mező-frissítési műveletekkel együtt. Ebben a példában a SetUpdateOperation segítségével frissíti a Name (név) mezőt és a UnsetUpdateOperation, hogy eltávolítsa a Leírás mezőt az összes dokumentumból. Más műveleteket is végrehajthat, például egy adott értékkel növelheti a dokumentum mező értékét, leküldheti a konkrét értékeket egy tömb mezőjébe, vagy eltávolíthat egy adott értéket egy tömb mezőből. Ha többet szeretne megtudni a tömeges frissítési API által nyújtott különböző módszerekről, tekintse meg az [API dokumentációját](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -155,13 +155,13 @@ A bulkUpdateAsync API-val frissítheti a meglévő dokumentumokat. Ebben a péld
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Hívja meg az updateAll API-t, amely véletlenszerű dokumentumokat hoz létre, majd tömegesen importálható egy Azure Cosmos-tárolóba. Beállíthatja, hogy a parancssori konfigurációk átadhatók legyenek a CmdLineConfiguration.java fájlban.
+2. Hívja meg a updateAll API-t, amely véletlenszerű dokumentumokat hoz létre, majd tömegesen importálja őket egy Azure Cosmos-tárolóba. Beállíthatja, hogy a parancssori konfigurációk a CmdLineConfiguration. Java fájlban legyenek átadva.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   A tömeges frissítési API elfogadja a frissítendő elemek gyűjteményét. Minden frissítési elem meghatározza az azonosítóval és partíciókulcs-értékkel azonosított dokumentumon végrehajtandó mezőfrissítési műveletek listáját. További részletekért tekintse meg az [API dokumentációját:](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)
+   A tömeges frissítési API a frissítendő elemek gyűjteményét fogadja el. Minden frissítési elem meghatározza az AZONOSÍTÓval és a partíciós kulcs értékével azonosított dokumentum-frissítési műveletek listáját. További részletekért tekintse meg az [API dokumentációját](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java
    public BulkUpdateResponse updateAll(
@@ -169,28 +169,28 @@ A bulkUpdateAsync API-val frissítheti a meglévő dokumentumokat. Ebben a péld
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;
    ```
 
-   Az updateAll metódus a következő paramétereket fogadja el:
+   A updateAll metódus a következő paramétereket fogadja el:
 
    |**Paraméter** |**Leírás** |
    |---------|---------|
-   |maxConcurrencyPerPartitionRange   |  A partíciókulcs-tartományonkénti egyidejűség maximális mértéke. Az alapértelmezett érték 20.  |
+   |maxConcurrencyPerPartitionRange   |  A partíciós kulcs tartományának maximális párhuzamossági foka. Az alapértelmezett érték 20.  |
  
-   **Tömeges importálási válaszobjektum-definíciója** A tömeges importálási API-hívás eredménye a következő beválasztási módszereket tartalmazza:
+   **Tömeges importálási válasz objektumának definíciója** A tömeges importálási API-hívás eredménye a következő Get metódusokat tartalmazza:
 
    |**Paraméter** |**Leírás**  |
    |---------|---------|
-   |int getNumberOfDocumentsUpdated()  |   A tömeges frissítési API-híváshoz sikeresen frissített dokumentumok teljes száma.      |
-   |dupla getTotalRequestUnitsConsumed() |  A tömeges frissítési API-hívás által felhasznált teljes kérelemegységek (RU).       |
-   |Időtartam getTotalTimeTaken()  |   A teljes idő által a tömeges frissítési API-hívás a végrehajtás befejezéséhez.      |
-   |A\<geterrors()>   |       Lekéri a hibák listáját, ha a tömeges frissítési API-híváshoz megadott kötegből néhány dokumentum beszúrása nem sikerült.      |
+   |int getNumberOfDocumentsUpdated ()  |   Azon dokumentumok teljes száma, amelyek sikeresen frissítve lettek a tömeges frissítési API-híváshoz megadott dokumentumokból.      |
+   |dupla getTotalRequestUnitsConsumed () |  A tömeges frissítési API-hívás által felhasznált összes kérési egység (RU).       |
+   |Időtartam getTotalTimeTaken ()  |   A tömeges frissítési API hívása által a végrehajtás befejezésére tett teljes idő.      |
+   |Kivételek listázása\<> getErrors ()   |       A hibák listájának beolvasása, ha a tömeges frissítési API-híváshoz megadott kötegből nem sikerült beszúrni néhány dokumentumot.      |
 
-3. Miután a tömeges frissítési alkalmazás készen áll, az "mvn clean package" paranccsal készítse el a parancssori eszközt a forrásból. Ez a parancs jar fájlt hoz létre a célmappában:  
+3. Miután elvégezte a tömeges frissítés alkalmazását, hozza létre a parancssori eszközt a forrásból a "MVN tiszta csomag" parancs használatával. Ez a parancs egy jar-fájlt hoz létre a célmappában:  
 
    ```
    mvn clean package
    ```
 
-4. A célfüggőségek létrehozása után a tömeges frissítési alkalmazást a következő paranccsal hívhatja meg:
+4. A cél függőségeinek létrehozása után a tömeges frissítési alkalmazást a következő parancs használatával hívhatja meg:
 
    ```
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
@@ -198,20 +198,20 @@ A bulkUpdateAsync API-val frissítheti a meglévő dokumentumokat. Ebben a péld
 
 ## <a name="performance-tips"></a>Teljesítménnyel kapcsolatos tippek 
 
-A tömeges végrehajtó könyvtár használatakor vegye figyelembe a következő szempontokat a jobb teljesítmény érdekében:
+Tömeges végrehajtó könyvtár használata esetén vegye figyelembe a következő szempontokat a jobb teljesítmény érdekében:
 
-* A legjobb teljesítmény érdekében futtassa az alkalmazást egy Azure virtuális gép ugyanabban a régióban, mint a Cosmos DB-fiók írási régióban.  
-* A nagyobb átviteli érték eléréséhez:  
+* A legjobb teljesítmény érdekében az alkalmazást egy olyan Azure-beli virtuális gépről futtassa, amely ugyanabban a régióban található, mint a Cosmos DB fiók írási régiója.  
+* A magasabb átviteli sebesség elérése érdekében:  
 
-   * Állítsa a JVM halomméretét elég nagy számra, hogy elkerülje a memóriaproblémákat a nagy számú dokumentum kezelése során. Javasolt halommemória-méret: max(3GB, 3 * sizeof(minden dokumentum átadott tömeges importálási API egy kötegben)).  
-   * Van egy előfeldolgozási idő, ami miatt nagyobb átviteli teljesítményt kap, ha nagy számú dokumentumot hajt végre tömeges műveletek et. Így ha 10 000 000 dokumentumot szeretne importálni, a tömeges importálás futtatása 10-szer 10 nagy méretű, 1 000 000 méretű dokumentumon előnyösebb, mint a tömeges importálás futtatása 100-szor 100 000 méretű dokumentumokon.  
+   * A nagy számú dokumentum kezelésére szolgáló memória-probléma elkerülése érdekében állítsa a JVM halom méretét elég nagy számra. Javasolt halom mérete: Max (3GB, 3 * sizeof (az összes dokumentum, amely egy kötegben tömeges importálási API-ként lett átadva)).  
+   * Van egy előfeldolgozási idő, amely miatt nagyobb átviteli sebességre lesz szüksége, amikor nagy mennyiségű dokumentummal rendelkező tömeges műveleteket végez. Tehát ha az 10 000 000-es dokumentumokat kívánja importálni, a tömeges importálás 10 alkalommal 10 nagy mennyiségű, 1 000 000-es méretű dokumentumot használ, mint a tömeges importálás 100-es idő100 pontját az egyes 100 000 méretekhez tartozó dokumentumok esetében.  
 
-* Javasoljuk, hogy egyetlen DocumentBulkExecutor objektumot példányosítson ki a teljes alkalmazás egyetlen virtuális gépen belül, amely egy adott Azure Cosmos-tárolónak felel meg.  
+* Ajánlott egyetlen DocumentBulkExecutor objektumot létrehozni a teljes alkalmazáshoz egyetlen virtuális gépen belül, amely egy adott Azure Cosmos-tárolónak felel meg.  
 
-* Mivel egyetlen tömeges művelet API-végrehajtás fogyaszt egy nagy darab az ügyfélgép CPU és hálózati IO.Since a single bulk operation API execution consumes a large chunk of the client machine's CPU and network IO. Ez úgy történik, hogy több feladatot hoz létre belsőleg, elkerülheti, hogy több egyidejű feladatot hozzon létre az alkalmazásfolyamaton belül minden egyes tömeges művelet API-hívása. Ha egy virtuális gépen futó egyetlen tömeges művelet API-hívása nem tudja felhasználni a teljes tároló átviteli-áteresztőidejét (ha a tároló átviteli > 1 millió RU/s), célszerű külön virtuális gépeket létrehozni a tömeges működésű API-hívások egyidejű végrehajtásához.
+* Mivel egyetlen tömeges művelet API-végrehajtása nagy mennyiségű adatrészletet használ az ügyfélszámítógép CPU-és hálózati IO-jával. Ez úgy történik, hogy belsőleg több feladatot indít el, így elkerülhető, hogy az alkalmazás folyamatában több egyidejű feladat ne legyen végrehajtva a tömeges működésű API-hívások végrehajtása során. Ha egyetlen virtuális gépen futó egyetlen tömeges művelet API-hívása nem tudja felhasználni a teljes tároló átviteli sebességét (ha a tároló átviteli sebessége > 1 000 000 RU/s), érdemes lehet külön virtuális gépeket létrehozni a tömeges művelet API-hívások egyidejű végrehajtásához.
 
     
 ## <a name="next-steps"></a>További lépések
-* Ha többet szeretne megtudni a maven csomag részleteiről és a tömeges végrehajtó Java könyvtárának kiadási feljegyzéseiről, olvassa el[a tömeges végrehajtó SDK részletei .](sql-api-sdk-bulk-executor-java.md)
+* További információ a Maven csomag részleteiről és a tömeges végrehajtó Java-függvénytár kibocsátási megjegyzéséről:[tömeges végrehajtó SDK – részletek](sql-api-sdk-bulk-executor-java.md).
 
 

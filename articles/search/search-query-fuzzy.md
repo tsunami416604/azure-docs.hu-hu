@@ -1,7 +1,7 @@
 ---
 title: Intelligens keresés
 titleSuffix: Azure Cognitive Search
-description: Valósítson meg egy "érted" keresési élményt egy elgépelt kifejezés vagy elírás automatikus javításához.
+description: A "DID it Mean" keresési élményének megvalósításával automatikusan kijavítani a hibásan írt kifejezést vagy az elírást.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,108 +9,108 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262434"
 ---
-# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy keresés az elírások és elírások kijavítására
+# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>A hibás helyesírási hibák és az elírások kijavítása a zavaros kereséssel
 
-Az Azure Cognitive Search támogatja az intelligens keresés, egy fajta lekérdezés, amely kompenzálja az elírások és elgépelt kifejezések a bemeneti karakterláncban. Ezt úgy éri el, hogy hasonló összetételű kifejezéseket keres. A keresés kiterjesztése a közeli találatra automatikusan korrigálja az elírást, ha az eltérés csak néhány rossz helyre tett karakter. 
+Az Azure Cognitive Search támogatja a zavaros keresést, egy olyan típusú lekérdezést, amely kompenzálja az elírásokat és a helytelenül beírt kifejezéseket a bemeneti karakterláncban. Ezt a hasonló kompozíciót tartalmazó kifejezések keresésével végezheti el. A közeli találatok közötti keresés kibontásával automatikusan kijavításra kerül egy elírás, ha az eltérés csupán néhány hibás karakter. 
 
-## <a name="what-is-fuzzy-search"></a>Mi az a homályos keresés?
+## <a name="what-is-fuzzy-search"></a>Mi az a zavaros keresés?
 
-Ez egy terjeszkedési gyakorlat, amely hasonló összetételű feltételekkel egyezést hoz létre. Ha egy fuzzy keresés van megadva, a motor létrehoz egy grafikont (alapuló [determinisztikus véges automaton elmélet)](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)hasonlóan összeállított kifejezések, az összes egész kifejezéseket a lekérdezésben. Ha például a lekérdezés három kifejezést tartalmaz a "Washington egyetem", a `search=university~ of~ washington~` lekérdezés minden kifejezéséhez létrejön egy grafikon (az intelligens keresésben nincs stop-word eltávolítás, így az "of" egy grafikont kap).
+Ez egy olyan terjeszkedési gyakorlat, amely egyezést eredményez a hasonló kompozícióval rendelkező feltételekben. Ha meg van adva egy fuzzy keresés, a motor összeállít egy gráfot (amely a [determinisztikus véges automata elmélet](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)alapján) a lekérdezésben szereplő összes kifejezéshez hasonlóan áll. Ha például a lekérdezés három kifejezést tartalmaz: "University of Washington", a lekérdezésben `search=university~ of~ washington~` minden kifejezéshez létrejön egy gráf (nem áll le a leállítási szó a zavaros keresésben, így a "a" diagramot kap).
 
-A grafikon minden kifejezésből legfeljebb 50 kibontásból vagy permutációból áll, amelyek a folyamat helyes és helytelen változatait is rögzítik. A motor ezután a válasz ban a legfontosabb releváns egyezéseket adja vissza. 
+A gráf akár 50 kiterjesztésből vagy permutációból áll, amelyek mindegyike a folyamat helyes és helytelen változatait rögzíti. A motor ezután visszaadja a válaszban a legmagasabb releváns egyezéseket. 
 
-Egy olyan kifejezés, mint az "egyetem", a grafikon lehet "unversty, universty, egyetem, univerzum, inverz". Minden olyan dokumentum, amely megfelel a grafikonon szereplő dokumentumoknak, szerepelni fog az eredményekközött. Ellentétben más lekérdezésekkel, amelyek elemzik a szöveget, hogy kezeljék az ugyanazon szó különböző formáit ("egerek" és "egér"), az intelligens lekérdezések összehasonlítása névértéken, a szöveg nyelvi elemzése nélkül kerül elemzésre. "Universe" és "inverz", amelyek szemantikailag különböző, majd egyezik, mert a szintaktikai eltérések kicsik.
+Az "Egyetem" kifejezéshez hasonlóan a gráf "unversty, Universty, University, Universe, Inverse" lehet. A gráfon megegyező dokumentumok az eredmények között szerepelnek. A szöveget más olyan lekérdezésekkel ellentétben, amelyek ugyanazt a szót ("egerek" és "egér") eltérő formában kezelik, a rendszer az összehasonlításokat a szövegben található nyelvi elemzések nélkül, Face értékként veszi át. A "Universe" és az "Inverse", amely szemantikailag eltérő, az egyeztetést eredményezi, mert a szintaktikai eltérések kicsik.
 
-Az egyezés akkor sikerül, ha az eltérések két vagy kevesebb szerkesztésre korlátozódnak, ahol a szerkesztés beszúrt, törölt, helyettesített vagy átültetett karakter. A differenciált megadó karakterlánc-korrekciós algoritmus a [Damerau-Levenshtein távolságmérő,](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) amelyet "a két szó másikba váltásához szükséges műveletek minimális száma (beszúrások, törlések, helyettesítések vagy két szomszédos karakter átültetése) írnak le.The string correction algorithm that specifies the differential is the Damerau-Levenshtein distance metric, described as the "minimum number of operations (insertis, delerations, szubsztitálás, vagy átültetéskét szomszédos karakterek) szükséges változtatni az egyik szót a másikba ". 
+A egyezés sikeres, ha az eltérések két vagy kevesebb módosításra korlátozódnak, ahol a Szerkesztés beszúrt, törölt, helyettesített vagy átültetett karakter lehet. A különbözetet megadó karakterlánc-korrekciós algoritmus a [Damerau-Levenshtein távolsági](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) metrika, amely a "minimális számú művelet (a beszúrások, a törlések, a helyettesítések vagy két szomszédos karakter átültetése) szükséges ahhoz, hogy módosítani lehessen egy szót a másikba". 
 
-Az Azure Cognitive Search-ben:
+Az Azure Cognitive Searchban:
 
-+ Az intelligens lekérdezés teljes kifejezésekre vonatkozik, de az AND konstrukciókon keresztül is támogathatja a kifejezéseket. Például a "Unviersty~ of~ "Wshington~" megegyezik a "University of Washington"-ban.
++ A fuzzy lekérdezés a teljes kifejezésekre vonatkozik, de a kifejezéseket és az építményeket is támogathatja. Például: "Unviersty ~ of ~" Wshington ~ "megegyeznek a" Washington Egyetem "kifejezéssel.
 
-+ A szerkesztés alapértelmezett távolsága 2. Az érték `~0` azt jelenti, hogy nincs kibontás (csak a pontos `~1` kifejezés tekinthető egyezésnek), de megadhat egy fokú különbséget vagy egy szerkesztést. 
++ A Szerkesztés alapértelmezett távolsága 2. Egy érték `~0` nem jelent terjeszkedést (csak a pontos kifejezés minősül egyezésnek), de az egyik eltérést vagy `~1` egy módosítást is megadhat. 
 
-+ Egy homályos lekérdezés legfeljebb 50 további permutációt bővíthet ki. Ez a korlát nem konfigurálható, de a szerkesztési távolság 1-re való csökkentésével hatékonyan csökkenthető a bővítések száma.
++ A zavaros lekérdezések legfeljebb 50 további variációs időszakra bonthatók ki. Ez a korlát nem konfigurálható, de a szerkesztési távolság 1 értékre csökkentése révén hatékonyan csökkentheti a bővítések számát.
 
-+ A válaszok olyan dokumentumokból állnak, amelyek releváns egyezést tartalmaznak (legfeljebb 50).
++ A válaszok olyan dokumentumokból állnak, amelyek megfelelő egyezést tartalmaznak (legfeljebb 50).
 
-Együttesen a grafikonok az indexben lévő tokenekkel való egyezési feltételekként kerülnek elküldésre. Képzelheti, hogy az intelligens keresés eredendően lassabb, mint más lekérdezési űrlapok. Az index mérete és összetettsége meghatározhatja, hogy az előnyök elegendőek-e a válasz késésének ellensúlyozásához.
+Együttesen a gráfok egyeztetési feltételként lesznek elküldve az indexben lévő jogkivonatokkal szemben. A zavaros keresés a többi lekérdezési űrlapnál is eleve lassabb. Az index mérete és összetettsége határozza meg, hogy az előnyök elegendőek-e a válasz késésének ellensúlyozására.
 
 > [!NOTE]
-> Mivel a homályos keresés általában lassú, érdemes lehet megvizsgálni az olyan alternatívákat, mint az n-gram indexelés, a rövid karaktersorozatok progressziójával (két és három karaktersorozat bigram és trigram tokenek esetén). A nyelvtől és a lekérdezési felülettől függően az n-gram jobb teljesítményt eredményezhet. A kompromisszum az, hogy az n-gram indexelés nagyon tárolási intenzív és sokkal nagyobb indexeket generál.
+> Mivel a zavaros keresés lassú, érdemes lehet olyan alternatívákat kivizsgálni, mint például az n-Gram indexelés, a rövid karakteres sorozatok előrehaladásával (két és három karakteres sorozat a bigram és a trigram tokenek esetében). A nyelvtől és a lekérdezési felülettől függően az n-Gram jobb teljesítményt eredményezhet. A kikapcsolás az, hogy az n-Gram indexelés nagyon nagy tárolási igényű, és sokkal nagyobb indexeket hoz létre.
 >
-> Egy másik alternatíva, amely akkor úgy, ha azt szeretné kezelni, csak a legpéldátlanabb esetekben lenne [szinonima térkép](search-synonyms.md). Például a "keresés" leképezése "serach, serch, sarch" vagy "retrieve" a "retreive" kifejezésre.
+> Egy másik alternatíva, amelyet érdemes megfontolnia, hogy csak a legvalószínűbb eseteket szeretné kezelni, [szinonimának](search-synonyms.md)számít-e. Például a "keresés" a "Gyorskeresés, a serch, a sarch" vagy a "lekérés" értékre való leképezéséhez.
 
-## <a name="indexing-for-fuzzy-search"></a>Intelligens keresés indexelése
+## <a name="indexing-for-fuzzy-search"></a>A fuzzy keresés indexelése
 
-Az elemzők nem használatosak a lekérdezés feldolgozása során egy kibontási gráf létrehozásához, de ez nem jelenti azt, hogy az elemzőket figyelmen kívül kell hagyni az intelligens keresési forgatókönyvekben. Végül is az indexelés során analizátorokat használnak a tokenek létrehozásához, amelyek egyeztetése történik, függetlenül attól, hogy a lekérdezés szabad formában, szűrt keresés, vagy egy fuzzy keresés egy grafikon bemenetként. 
+A lekérdezés feldolgozásakor a rendszer nem használja az elemzőket a bővítési gráfok létrehozásához, de ez nem jelenti azt, hogy az elemzők figyelmen kívül hagyják a zavaros keresési helyzetekben. Az indexelés során a rendszer az indexelő használatával olyan jogkivonatokat hoz létre, amelyekkel a megfeleltetés megtörténik, függetlenül attól, hogy a lekérdezés szabad formátumú-e, szűrt keresés, vagy egy olyan, a gráftal való intelligens keresés, amely bemenetként szerepel. 
 
-Általában, ha az analizátorok at mezőalapú alapon, a döntés, hogy finomítsa az elemzési lánc alapja az elsődleges használati eset (a szűrő vagy a teljes szöveges keresés), nem pedig speciális lekérdezési formák, mint a fuzzy keresés. Emiatt nincs külön analizátor ajánlás a fuzzy kereséshez. 
+Általában az elemzők mező szerinti kiosztásakor az elemzési lánc finomhangolására vonatkozó döntés az elsődleges használati eset (egy szűrő vagy teljes szöveges keresés) alapján történik, és nem a speciális lekérdezési űrlapokkal, például a fuzzy kereséssel. Ezért nem létezik konkrét elemző javaslat a fuzzy kereséshez. 
 
-Ha azonban a tesztlekérdezések nem a várt egyezéseket eredményezik, megpróbálhatja az indexelési elemzőt, és [egy nyelvi elemzőre állítja,](index-add-language-analyzers.md)hogy jobb eredményeket érjen-e el. Egyes nyelvek, különösen a magánhangzó mutációkkal rendelkezők, élvezhetik a Microsoft természetes nyelvi processzorai által létrehozott inflexiós és szabálytalan szóformák előnyeit. Bizonyos esetekben a megfelelő nyelvi analizátor használata különbséget tehet abban, hogy egy kifejezés tokenizedje a felhasználó által megadott értékkel kompatibilis módon történik-e.
+Ha azonban a tesztelési lekérdezések nem a várt egyezéseket alkotják, megpróbálkozhat az indexelési elemző megváltoztatásával, ha azt szeretné, hogy [a rendszer jobb](index-add-language-analyzers.md)eredményeket kapjon. Bizonyos nyelvek, különösen a magánhangzó-mutációkkal, kihasználhatják a Microsoft Natural Language processors által generált inflexiós és szabálytalan Word formákat. Bizonyos esetekben a megfelelő nyelvi elemző használatával különbséget tehet abban, hogy a kifejezés jogkivonatos-e a felhasználó által megadott értékkel kompatibilis módon.
 
-## <a name="how-to-use-fuzzy-search"></a>Fuzzy keresés használata
+## <a name="how-to-use-fuzzy-search"></a>A fuzzy Search használata
 
-Az intelligens lekérdezések a Teljes Lucene lekérdezés szintaxisával készülnek, és a [Lucene-lekérdezéselemzőre hivatkoznak.](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)
+A fuzzy lekérdezések a teljes Lucene lekérdezési szintaxis használatával készültek, amely meghívja a [Lucene lekérdezés-elemzőt](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-1. Állítsa be a teljes Lucene-elemzőt a lekérdezésben (`queryType=full`).
+1. Állítsa be a teljes Lucene-elemzőt a lekérdezésen (`queryType=full`).
 
-1. Ha szükséges, a kérést adott mezőkre`searchFields=<field1,field2>`is ki kell terjeszteni, ezzel a paraméterrel ( ). 
+1. Igény szerint a kérelem hatókörét meghatározott mezőkre is használhatja, ezzel a`searchFields=<field1,field2>`paraméterrel (). 
 
-1. Fűzte hozzá a`~`tilde ( ) operátort`search=<string>~`a teljes kifejezés ( ) végén.
+1. Fűzze hozzá a tilde`~`() operátort a teljes időszak végén (`search=<string>~`).
 
-   Ha meg szeretné adni a szerkesztési távolságot ( ) szeretné megadni,`~1`adjon meg egy nem kötelező paramétert, egy 0 és 2 közötti számot (alapértelmezett), ha meg szeretné adni a szerkesztési távolságot ( ). A "kék~" vagy a "kék~1" például a "kék", a "blues" és a "glue" szót adja vissza.
+   Adjon meg egy 0 és 2 közötti számot (alapértelmezett érték), ha meg szeretné adni a szerkesztési távolságot (`~1`). Például a "Blue ~" vagy a "Blue ~ 1" a "Blue", a "blues" és a "ragasztó" értéket fogja visszaadni.
 
-Az Azure Cognitive Search a kifejezés és a távolság (legfeljebb 2) mellett nincs további paramétereket a lekérdezésben.
+Az Azure Cognitive Search a lejárati idő és a távolság (legfeljebb 2) mellett nem adhat meg további paramétereket a lekérdezéshez.
 
 > [!NOTE]
-> A lekérdezés feldolgozása során az intelligens lekérdezések nem mennek át [lexikális elemzésnek.](search-lucene-query-architecture.md#stage-2-lexical-analysis) A lekérdezésbemenet közvetlenül hozzáadódik a lekérdezési fához, és kibontva hozzon létre egy kifejezésgrafikont. Az egyetlen végrehajtott átalakítás az alacsonyabb burkolat.
+> A lekérdezések feldolgozásakor a zavaros lekérdezések nem esnek a [lexikális analízisbe](search-lucene-query-architecture.md#stage-2-lexical-analysis). A lekérdezési bemenet közvetlenül a lekérdezési fában lesz hozzáadva, és kibontva a használati feltételek diagramjának létrehozásához. Az egyetlen végrehajtott átalakítás az alsó burkolat.
 
-## <a name="testing-fuzzy-search"></a>Fuzzy keresés tesztelése
+## <a name="testing-fuzzy-search"></a>Fuzzy Keresés tesztelése
 
-Az egyszerű teszteléshez javasoljuk, hogy [a Kereséskezelő](search-explorer.md) vagy a [Postman](search-get-started-postman.md) egy lekérdezési kifejezésen keresztül idítsa. Mindkét eszköz interaktív, ami azt jelenti, hogy gyorsan végigléphet egy kifejezés több változatán, és kiértékelheti a visszaadott válaszokat.
+Az egyszerű tesztelés érdekében javasoljuk, hogy a [Search Explorer](search-explorer.md) vagy a [Poster](search-get-started-postman.md) segítségével ismételje meg a lekérdezési kifejezéseket. Mindkét eszköz interaktív, ami azt jelenti, hogy gyorsan elvégezheti egy kifejezés több változatának lépéseit, és kiértékelheti a visszaadott válaszokat.
 
-Ha az eredmények nem egyértelműek, a [leütéskiemelésesegíthet](search-pagination-page-layout.md#hit-highlighting) az egyezés azonosításában a válaszban. 
+Ha az eredmények nem egyértelműek, a [találatok kiemelése](search-pagination-page-layout.md#hit-highlighting) segít azonosítani a válaszban szereplő egyezést. 
 
 > [!Note]
-> A találatkiemelés használata az intelligens egyezések azonosítására korlátozott, és csak az alapvető fuzzy kereséshez működik. Ha az index pontozási profillal rendelkezik, vagy ha a lekérdezést további szintaxissal rétegezi, előfordulhat, hogy a leütés kiemelése nem tudja azonosítani az egyezést. 
+> A találatok kiemelésének használata a zavaros egyezések azonosítására korlátozott, és csak az alapszintű fuzzy keresésre használható. Ha az indexben pontozási profilok szerepelnek, vagy ha a lekérdezést további szintaxissal rétegbe emeli, a találatok kiemelése nem tudja azonosítani a egyezést. 
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>1. példa: fuzzy keresés a pontos kifejezéssel
 
-Tegyük fel, hogy `"Description"` a következő karakterlánc létezik a keresési dokumentum egy mezőjében:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Tegyük fel, hogy a következő `"Description"` sztring létezik egy keresési dokumentum egy mezőjében:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
-Kezdje egy fuzzy kereséssel a "különleges" kifejezéssel, és adja hozzá a leíró leemelést a Leírás mezőhöz:
+Kezdje egy fuzzy kereséssel a "speciális" kifejezésre, és vegyen fel találatot kiemelve a Leírás mezőbe:
 
     search=special~&highlight=Description
 
-A válaszban, mivel leadott leemelést adott hozzá, a formázás a "speciális" kifejezésre lesz alkalmazva.
+A válaszban, mivel a találatok kiemelését adta hozzá, a formázás a "speciális" értékre lesz alkalmazva a megfelelő kifejezésként.
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Próbálja meg újra a kérelmet, elírás "különleges" azáltal, hogy ki több betű ("pe"):
+Próbálja megismételni a kérést, és a "speciális" kifejezés elindításával több betűt ("PE") kell kiírnia:
 
     search=scial~&highlight=Description
 
-Eddig nem változott a válasz. Az alapértelmezett 2 fokos távolság, eltávolítása két karakter "pe" a "különleges" továbbra is lehetővé teszi a sikeres mérkőzés az adott kifejezés.
+Eddig nem változik a válasz. Az alapértelmezett 2 fokos távolságot használva a "speciális" két karakterből álló "PE" eltávolítása továbbra is lehetővé teszi az adott időszak sikeres egyeztetését.
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Még egy kérés, tovább módosíthatja a keresési kifejezést egy utolsó karakter kivéve, összesen három törlés (a "különleges" a "scal"):
+Még egy kérelem kipróbálása, a keresési kifejezés további módosítása: egy utolsó karakter megadásával összesen három törlésre (a "speciális" értékről a "skálázásra"):
 
     search=scal~&highlight=Description
 
-Figyelje meg, hogy ugyanazt a választ adja vissza, de most ahelyett, hogy a "speciális", a fuzzy egyezés az "SQL".
+Figyelje meg, hogy ugyanazt a választ adja vissza, de mostantól nem a "speciális" értékre, hanem az "SQL" kifejezésre.
 
             "@search.score": 0.4232868,
             "@search.highlights": {
@@ -118,11 +118,11 @@ Figyelje meg, hogy ugyanazt a választ adja vissza, de most ahelyett, hogy a "sp
                     "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
                 ]
 
-Ennek a kibővített példának az a lényege, hogy bemutassa, milyen egyértelmű, hogy a találatkiemelés kétértelmű eredményeket hozhat. A rendszer minden esetben ugyanazt a dokumentumot adja vissza. Ha a dokumentumazonosítókra támaszkodott volna az egyezés ellenőrzéséhez, akkor lehet, hogy kihagyta volna a "különleges" és az "SQL" közötti váltást.
+Ennek a kibővített példának a lényege, hogy illusztrálja, hogy a találatok kiemelése nem egyértelmű eredményeket hoz. A rendszer minden esetben ugyanazt a dokumentumot adja vissza. Ha a dokumentumok azonosítóit használta a egyezés ellenőrzéséhez, lehetséges, hogy kihagyta a "speciális" és "SQL" közötti váltást.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [A teljes szöveges keresés működése az Azure Cognitive Search szolgáltatásban (lekérdezéselemzési architektúra)](search-lucene-query-architecture.md)
-+ [Kereséskezelő](search-explorer.md)
++ [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
++ [Keresési ablak](search-explorer.md)
 + [Lekérdezés a .NET-ben](search-query-dotnet.md)
-+ [Lekérdezés a REST-ben](search-create-index-rest-api.md)
++ [A lekérdezés a REST-ben](search-create-index-rest-api.md)

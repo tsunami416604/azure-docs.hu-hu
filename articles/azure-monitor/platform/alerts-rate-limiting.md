@@ -1,36 +1,36 @@
 ---
-title: Sms-ek, e-mailek, leküldéses értesítések sebességkorlátozása
-description: Ismerje meg, hogy az Azure hogyan korlátozza a lehetséges SMS-ek, e-mailek, Azure App leküldéses vagy webhook-értesítések számát egy műveletcsoportból.
+title: SMS-, e-mail-és leküldéses értesítések korlátozása
+description: Ismerje meg, hogyan korlátozza az Azure a lehetséges SMS-t, e-maileket, Azure app push-vagy webhook-értesítéseket a műveleti csoportokból.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
 ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114332"
 ---
-# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Hang-, SMS-, e-mailek, Azure-alkalmazásleküldéses értesítések és webhook-bejegyzések sebességkorlátozása
-A díjkorlátozás az értesítések felfüggesztése, amely akkor következik be, ha túl sok van elküldve egy adott telefonszámra, e-mail címre vagy eszközre. A sebességkorlátozás biztosítja, hogy a riasztások kezelhetők és végrehajthatók legyenek.
+# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>A hangra, SMS-re, e-mailekre, az Azure-alkalmazás leküldéses értesítéseire és a webhookra vonatkozó hozzászólások
+A díjszabási korlátozás az értesítések felfüggesztése, amely akkor fordul elő, ha túl sok érkezik egy adott telefonszámra, e-mail-címre vagy eszközre. A díjszabási korlátozás biztosítja, hogy a riasztások kezelhető és végrehajthatóak legyenek.
 
-A díjkorlát küszöbértékei a következők:
+A díjszabási küszöbértékek a következők:
 
-- **SMS**: 5 percenként legfeljebb 1 SMS.
-- **Hang**: 5 percenként legfeljebb 1 hanghívás.
-- **E-mail**: Nem több, mint 100 e-mailegy óra alatt.
+- **SMS**: legfeljebb 1 SMS-t 5 percenként.
+- **Hang**: legfeljebb 1 hanghívás 5 percenként.
+- **E-mail**: legfeljebb 100 e-mail-cím egy órán belül.
  
-  Más intézkedések nem arány korlátozott.
+  A többi művelet nem korlátozott.
 
-## <a name="rate-limit-rules"></a>Díjkorlát szabályai
-- Egy adott telefonszámot vagy e-mailt a sebesség korlátozott, ha több üzenetet kap, mint a küszöbérték lehetővé teszi.
-- A telefonszám vagy e-mail számos előfizetésben része lehet a műveletcsoportoknak. A díjkorlátozás minden előfizetésre vonatkozik. A küszöbérték elérésekor érvényes, még akkor is, ha az üzenetek több előfizetésből érkeznek.
-- Ha egy e-mail cím korlátozott, a rendszer további értesítést küld a sebességkorlátozás közlésére. Az e-mail kimondja, hogy mikor jár le a sebességkorlátozás.
+## <a name="rate-limit-rules"></a>Maximális díjszabási szabályok
+- Egy adott telefonszám vagy e-mail-cím korlátozott, ha több üzenetet kap, mint amennyit a küszöbérték lehetővé tesz.
+- A telefonszámok vagy e-mailek számos előfizetésben lehetnek a műveleti csoportok részei. A díjszabásra vonatkozó korlátozás az összes előfizetésre vonatkozik. A küszöbérték elérésekor akkor is érvényes, ha több előfizetésből is érkeznek üzenetek.
+- Ha egy e-mail-cím korlátozott, a rendszer további értesítést küld a korlátozásról. Az e-mail állapotok, ha a korlátozás lejár.
 
 ## <a name="next-steps"></a>További lépések ##
-* További információ az [SMS-riasztások viselkedéséről.](alerts-sms-behavior.md)
-* Áttekintést [kaphat a tevékenységnapló-riasztásokról,](alerts-overview.md)és megtudhatja, hogyan fogadhat értesítéseket.  
-* További információ arról, hogyan konfigurálhatja a [riasztásokat a szolgáltatás állapotáról szóló értesítés feladásakor.](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+* További információ az [SMS-riasztás viselkedéséről](alerts-sms-behavior.md).
+* [Tekintse át a tevékenységek naplójának riasztásait](alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
+* Megtudhatja, hogyan [konfigurálhatja a riasztásokat, amikor egy szolgáltatás állapotáról értesítést küldenek](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 

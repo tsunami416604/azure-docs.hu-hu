@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Beszéd szintetizálása, Java (Windows, Linux, macOS) – Beszédszolgáltatás'
+title: 'Gyors útmutató: beszédfelismerési beszéd, Java (Windows, Linux, macOS) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy egyszerű Java-alkalmazást, amely rögzíti és szintetizálja a beszédeket a szövegből, és lejátssza azt az alapértelmezett hangszóróval.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy egyszerű Java-alkalmazást, amely rögzíti és szintetizálja a szöveget, és játssza le az alapértelmezett hangszóróval.
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: yulili
 ms.openlocfilehash: 31bfe77c85723d6c24872f1e52ede60936f7804e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275055"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza az**Új** > **osztály** **fájlja** > lehetőséget.
+1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **fájl** > **új** > **osztály**elemet.
 
 1. A **New Java Class** (Új Java-osztály) ablakban írja be a **speechsdk.quickstart** kifejezést a **Package** (Csomag), a **Main** (Fő) kifejezést pedig a **Név** mezőbe.
 
@@ -45,8 +45,8 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-Nyomja le az F11 billentyűt, vagy válassza**a Debug futtatása** **lehetőséget.** > 
-Amikor a rendszer kéri, írjon be egy szöveget, és az alapértelmezett hangszóróból hallható a szintetizált hang.
+Nyomja le az F11 billentyűt, vagy válassza a**hibakeresés** **futtatása** > lehetőséget.
+Ha a rendszer kéri, írja be a szöveget, és hallja az alapértelmezett hangsugárzó által játszott szintetizált hangot.
 
 ## <a name="next-steps"></a>További lépések
 

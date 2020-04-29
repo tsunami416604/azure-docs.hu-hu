@@ -1,6 +1,6 @@
 ---
-title: Dinamikus webhelygyorsítás az Azure CDN-en keresztül
-description: Az Azure CDN támogatja a dinamikus tartalommal rendelkező fájlok dinamikus helygyorsítási (DSA) optimalizálását.
+title: Dinamikus hely gyorsítás Azure CDNon keresztül
+description: A Azure CDN támogatja a dinamikus webhely-gyorsítási (DSA) optimalizálást a dinamikus tartalommal rendelkező fájlokhoz.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,175 +15,175 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253832"
 ---
-# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus webhelygyorsítás az Azure CDN-en keresztül
+# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus hely gyorsítás Azure CDNon keresztül
 
-A robbanás a szociális média, az elektronikus kereskedelem, és a hiper-személyre szabott web, a gyorsan növekvő százaléka a tartalom szolgált a végfelhasználók valós időben. A felhasználók gyors, megbízható és személyre szabott webes élményt várnak el, függetlenül a böngészőjüktől, helyüktől, eszközüktől vagy hálózatuktól. Azonban az igazi újítások, amelyek ezeket a tapasztalatokat annyira vonzóvá teszik, szintén lassú oldalletöltéseket eredményeznek, és veszélyeztetik a fogyasztói élmény minőségét. 
+A közösségi média, az elektronikus kereskedelem és a Hyper-személyre szabott webes fejlesztés révén a végfelhasználók számára kiszolgált tartalom gyorsan növekszik, és valós időben jön létre. A felhasználók egy gyors, megbízható és személyre szabott webes élményt várnak, amely független a böngészőtől, a helytől, az eszköztől vagy a hálózattól. Azonban az ilyen tapasztalatokat kihasználó újítások is lelassítják a lapok letöltését, és a fogyasztói élmény minőségét kockáztatjuk. 
 
-A szabványos tartalomkézbesítési hálózat (CDN) funkciója lehetővé teszi a fájlok gyorsítótárazását a végfelhasználókhoz közelebb, hogy felgyorsítsa a statikus fájlok kézbesítését. A dinamikus webalkalmazások nál azonban nem lehetséges a tartalom peremhálózati helyeken való gyorsítótárazása, mert a kiszolgáló a felhasználó viselkedésére válaszul hozza létre a tartalmat. Az ilyen tartalom kézbesítésének felgyorsítása összetettebb, mint a hagyományos élgyorsítótárazás, és teljes körű megoldást igényel, amely finoman hangolja az egyes elemeket a teljes adatútvonal mentén a kezdetektől a kézbesítésig. Az Azure CDN dinamikus webhelygyorsítás (DSA) optimalizálásával a dinamikus tartalmú weboldalak teljesítménye mérhetően javul.
+A standard Content Delivery Network (CDN) funkció lehetővé teszi a fájlok a végfelhasználók számára történő gyorsítótárazását a statikus fájlok továbbításának felgyorsításához. A dinamikus webalkalmazások esetében azonban a tartalom az Edge-helyekre való gyorsítótárazása nem lehetséges, mert a kiszolgáló a felhasználói viselkedésre válaszul hozza létre a tartalmat. Az ilyen tartalmak továbbításának felgyorsítása bonyolultabb, mint a hagyományos peremhálózat-gyorsítótárazás, és egy teljes körű megoldást igényel, amely az összes elemet a kezdetektől fogva a teljes adatelérési út mentén tökéletesen lehangolja. Az Azure CDN Dynamic site Acceleration (DSA) optimalizálásával a dinamikus tartalommal rendelkező weblapok teljesítménye mérhetővé fejlődött.
 
-**Az Akamai azure CDN-je** és a **Verizon Azure CDN-je** egyaránt kínál DSA-optimalizálást a végpontlétrehozása során a **Menu optimalizált** menün keresztül. A Microsoft dinamikus webhelygyorsítását az [Azure Front Door Service kínálja.](https://docs.microsoft.com/azure/frontdoor/front-door-overview)
+A Akamai-ből és a **Azure CDN-ből származó** **Azure CDN** a DSA-optimalizálást a végpontok létrehozásakor a menüre **optimalizált** menüben biztosítjuk. A Microsoft által kínált dinamikus webhely-gyorsítás az Azure-beli [bejárati ajtó szolgáltatáson](https://docs.microsoft.com/azure/frontdoor/front-door-overview)keresztül érhető el.
 
 > [!Important]
-> **Az Akamai-profilokból származó Azure CDN** esetén módosíthatja a CDN-végpont optimalizálását a létrehozása után.
+> A **Akamai** -profilokból való Azure CDN esetében lehetősége van egy CDN-végpont optimalizálásának módosítására a létrehozása után.
 >   
 > A **Verizon Azure CDN** típusú profilok esetén nem módosíthatja a CDN-végpont optimalizálását a végpont létrehozása után.
 
-## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>A CDN-végpont konfigurációja a dinamikus fájlok kézbesítésének felgyorsításához
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>CDN-végpont konfigurációja a dinamikus fájlok továbbításának felgyorsításához
 
-CdN-végpont konfigurálásához a dinamikus fájlok kézbesítésének optimalizálásához használhatja az Azure Portalt, a REST API-kat vagy az ügyfél SDK-kat, hogy ugyanazt a dolgot programozott módon végezze el. 
+Ha egy CDN-végpontot úgy szeretne konfigurálni, hogy optimalizálja a dinamikus fájlok kézbesítését, használhatja a Azure Portal, a REST API-kat vagy az ügyfél-SDK-k bármelyikét, hogy ugyanezt programozott módon végezze el. 
 
-**CdN-végpont konfigurálása a DSA-optimalizáláshoz az Azure Portal használatával:**
+**CDN-végpont konfigurálása a DSA-optimalizáláshoz a Azure Portal használatával:**
 
-1. A **CDN-profillapon** válassza a **Végpont**lehetőséget.
+1. A **CDN-profil** lapon válassza a **végpont**lehetőséget.
 
    ![Új CDN-végpont hozzáadása](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    Megjelenik a **Végpont hozzáadása** panel.
 
-2. Az **Optimalizált csoportban**válassza a **Dinamikus helygyorsítás**lehetőséget.
+2. **A rendszerre optimalizált**területen válassza a **dinamikus hely gyorsítás**lehetőséget.
 
-    ![Új CDN-végpont létrehozása a DSA-val](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
+    ![Új CDN-végpont létrehozása a DSA-vel](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. A **Mintavétel elérési útja**mezőbe írja be a fájl érvényes elérési útját.
+3. A mintavételi **útvonalhoz**adjon meg egy érvényes elérési utat a fájlhoz.
 
-    A mintavételi útvonal a DSA-ra jellemző szolgáltatás, és a létrehozáshoz érvényes elérési út szükséges. A DSA egy kis *mintavételi elérési utat* használ, amelyet az eredeti kiszolgálón helyeznek el a CDN hálózati útválasztási konfigurációinak optimalizálásához. A mintavételi elérési út fájl, letöltheti és feltöltheti a mintafájlt a webhelyre, vagy egy meglévő eszköz a származási, amely körülbelül 10 KB méretű.
+    A mintavételi útvonal a DSA-re jellemző szolgáltatás, és a létrehozáshoz érvényes elérési út szükséges. A DSA egy kisméretű mintavételi *elérésiút* -fájlt használ a forrás-kiszolgálón, hogy optimalizálja a CDN hálózati útválasztási konfigurációit. A mintavételi útvonal fájljában letöltheti és feltöltheti a fájlt a webhelyére, vagy használhat egy olyan meglévő eszközt, amely körülbelül 10 KB méretű.
 
-4. Adja meg a többi szükséges végponti beállítást (további információt az [Új CDN-végpont létrehozása) című](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)témakörben talál, majd válassza **a Hozzáadás lehetőséget.**
+4. Adja meg a többi szükséges végponti beállítást (további információért lásd: [új CDN-végpont létrehozása](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)), majd válassza a **Hozzáadás**lehetőséget.
 
-   A CDN-végpont létrehozása után alkalmazza a DSA-optimalizálást az összes olyan fájlra, amely megfelel bizonyos feltételeknek. 
+   A CDN-végpont létrehozása után a rendszer az összes olyan fájlhoz alkalmazza a DSA-optimalizálást, amely megfelel bizonyos feltételeknek. 
 
 
-**Meglévő végpont konfigurálása a DSA-hoz (csak Akamai-profilokból származó Azure CDN):**
+**Meglévő végpont konfigurálása a DSA-hoz (Azure CDN csak Akamai-profilokból):**
 
-1. A **CDN-profillapon** jelölje ki a módosítani kívánt végpontot.
+1. A **CDN-profil** lapon válassza ki a módosítani kívánt végpontot.
 
-2. A bal oldali ablaktáblában válassza az **Optimalizálás**lehetőséget. 
+2. A bal oldali panelen válassza az **optimalizálás**lehetőséget. 
 
-   Megjelenik **az Optimalizálás** lap.
+   Megjelenik az **optimalizálás** lap.
 
-3. Az **Optimalizált csoportban**válassza a **Dinamikus helygyorsítás**lehetőséget, majd a **Mentés**lehetőséget.
+3. **A rendszerre optimalizált**területen válassza a **dinamikus hely gyorsítás**lehetőséget, majd kattintson a **Mentés**gombra.
 
 > [!Note]
-> DSA felár ellenében. További információt a [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/)című témakörben talál.
+> A DSA extra díjat számít fel. További információ: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
-## <a name="dsa-optimization-using-azure-cdn"></a>DSA-optimalizálás az Azure CDN használatával
+## <a name="dsa-optimization-using-azure-cdn"></a>DSA-optimalizálás Azure CDN használatával
 
-Az Azure CDN dinamikus webhelygyorsítása a következő technikák alkalmazásával felgyorsítja a dinamikus eszközök kézbesítését:
+A dinamikus hely gyorsításának Azure CDN felgyorsítja a dinamikus eszközök kézbesítését az alábbi módszerek használatával:
 
--   [Útvonaloptimalizálás](#route-optimization)
+-   [Útvonal-optimalizálás](#route-optimization)
 -   [TCP-optimalizálások](#tcp-optimizations)
--   [Objektum előzetes betöltése (csak az Akamai-ból származó Azure CDN)](#object-prefetch-azure-cdn-from-akamai-only)
--   [Adaptív képtömörítés (csak az Akamai-ból származó Azure CDN)](#adaptive-image-compression-azure-cdn-from-akamai-only)
+-   [Objektum kiprefektusa (csak a Akamai Azure CDN)](#object-prefetch-azure-cdn-from-akamai-only)
+-   [Adaptív képtömörítés (Azure CDN csak Akamai)](#adaptive-image-compression-azure-cdn-from-akamai-only)
 
-### <a name="route-optimization"></a>Útvonaloptimalizálás
+### <a name="route-optimization"></a>Útvonal-optimalizálás
 
-Az útvonaloptimalizálás azért fontos, mert az internet dinamikus hely, ahol a forgalom és az ideiglenes kimaradások folyamatosan módosítják a hálózati topológiát. A Border Gateway Protocol (BGP) az internet útválasztási protokollja, de előfordulhat, hogy gyorsabb útvonalak vannak a közvetítő jelenléti pont (PoP) kiszolgálóin keresztül. 
+Az útvonal-optimalizálás azért fontos, mert az Internet dinamikus hely, ahol a forgalom és az átmeneti kimaradások folyamatosan változnak a hálózati topológiában. A Border Gateway Protocol (BGP) az Internet útválasztási protokollja, de lehet, hogy gyorsabb útvonalak találhatók a közvetítői pontok közötti (PoP-) kiszolgálókon keresztül. 
 
-Az útvonaloptimalizálás az eredeti ség legoptimálisabb útvonalát választja ki, így a webhely folyamatosan elérhető, és a dinamikus tartalom a lehető leggyorsabb és legmegbízhatóbb útvonalon kerül a végfelhasználókhoz. 
+Az útvonal-optimalizálás kiválasztja a forrás optimális elérési útját, hogy a helyek folyamatosan elérhetők legyenek, és a dinamikus tartalmat a lehető leggyorsabb és legmegbízhatóbb útvonalon keresztül továbbítsák a végfelhasználók számára. 
 
-Az Akamai hálózat technikákat használ a valós idejű adatok gyűjtésére és a különböző útvonalak összehasonlítására az Akamai kiszolgáló különböző csomópontjain keresztül, valamint az alapértelmezett BGP útvonalat a nyílt interneten keresztül az origó és a CDN él közötti leggyorsabb útvonal meghatározásához. Ezek a technikák elkerülik az internetes torlódási pontokat és a hosszú útvonalakat. 
+A Akamai-hálózat technikákat használ a valós idejű adatok gyűjtésére és a különböző elérési utak összehasonlítására a Akamai-kiszolgáló különböző csomópontjain, valamint az Open interneten az alapértelmezett BGP-útvonalon, amely meghatározza a forrás és a CDN Edge közötti leggyorsabb útvonalat. Ezek a technikák elkerülik az internetes torlódási pontokat és a hosszú útvonalakat. 
 
-Hasonlóképpen a Verizon hálózat az Anycast DNS, a nagy kapacitású támogató POP-ok és az állapotellenőrzések kombinációját használja a legjobb átjárók meghatározásához, hogy az ügyféltől az eredetihöz irányítsa az adatokat.
+Hasonlóképpen, a Verizon-hálózat a többhelyes DNS, a nagy kapacitású támogatási durranás és az állapot-ellenőrzések kombinációját használja, hogy meghatározza a legjobb átjárókat az ügyfél és a forrás közötti legjobb adattovábbításhoz.
  
-Ennek eredményeképpen a teljesen dinamikus és tranzakciós tartalom gyorsabban és megbízhatóbban kerül a végfelhasználókhoz, még akkor is, ha nem gyorsítótárazható. 
+Ennek eredményeképpen a teljes dinamikus és tranzakciós tartalmak gyorsabban és megbízhatóbban jutnak el a végfelhasználók számára, még akkor is, ha nem gyorsítótárazható. 
 
-### <a name="tcp-optimizations"></a>TCP-optimalizálás
+### <a name="tcp-optimizations"></a>TCP-optimalizálások
 
-A TCP (Transmission Control Protocol) az IP-hálózaton lévő alkalmazások közötti információtovábbításra használt ip-protokollcsomag szabványa.  Alapértelmezés szerint több oda-vissza kérelemre van szükség a TCP-kapcsolat beállításához, valamint a hálózati torlódások elkerülésére vonatkozó korlátokra, ami nagy méretekben a hatékonyság csökkenését eredményezi. **Az Akamai Azure CDN-je** három területen optimalizálja ezt a problémát: 
+A Transmission Control Protocol (TCP) az IP-hálózaton lévő alkalmazások közötti információk továbbítására használt Internet Protocol Suite szabványa.  Alapértelmezés szerint több visszamenőleges kérelem szükséges a TCP-kapcsolatok beállításához, valamint a hálózati torlódások elkerülésének korlátaihoz, ami a nagy hatékonyságot eredményezi. A **Akamai Azure CDN** a következő három területen optimalizálja ezt a problémát: 
 
- - [A TCP lassú indításának kiküszöbölése](#eliminating-tcp-slow-start)
- - [A tartós csatlakozások kihasználása](#leveraging-persistent-connections)
- - [TCP-csomagparamétereinek finomhangolása](#tuning-tcp-packet-parameters)
+ - [A TCP lassú indításának megszüntetése](#eliminating-tcp-slow-start)
+ - [Állandó kapcsolatok kihasználása](#leveraging-persistent-connections)
+ - [TCP-csomagok paramétereinek hangolása](#tuning-tcp-packet-parameters)
 
-#### <a name="eliminating-tcp-slow-start"></a>A TCP lassú indításának kiküszöbölése
+#### <a name="eliminating-tcp-slow-start"></a>A TCP lassú indításának megszüntetése
 
-A TCP *lassú indítása* a TCP protokoll olyan algoritmusa, amely a hálózaton keresztül küldött adatok mennyiségének korlátozásával megakadályozza a hálózati torlódást. A küldő és a fogadó közötti kis torlódási ablakméretekkel kezdődik, amíg el nem éri a maximális értéket, vagy nem észleli a csomagvesztést.
+A TCP *lassú indítás* a TCP protokoll algoritmusa, amely megakadályozza a hálózati torlódást a hálózaton keresztül továbbított adatmennyiség korlátozásával. A kis torlódások ablakának mérete a küldő és a fogadó között a maximális érték elérésekor vagy a csomagok elvesztésének észlelése után indul el.
 
- Mind **az Akamai azure-beli CDN,** mind a **Verizon-profilokból származó Azure CDN** kiküszöböli a TCP lassú kezdését a következő három lépéssel:
+ A **Akamai** és **a Azure CDN a Verizon** -profilokból egyaránt Azure CDN a következő három lépéssel megszünteti a TCP lassú indítását:
 
-1. Az állapot- és sávszélesség-figyelés a peremhálózati PoP-kiszolgálók közötti kapcsolatok sávszélességének mérésére szolgál.
+1. Az állapot-és sávszélesség-figyelés az Edge PoP-kiszolgálók közötti kapcsolatok sávszélességének mérésére szolgál.
     
-2. Metrikák vannak megosztva a peremhálózati PoP-kiszolgálók között, így minden kiszolgáló tisztában van a körülötte lévő többi POP hálózati feltételeivel és a kiszolgáló állapotával.  
+2. A metrikák az Edge PoP-kiszolgálók között vannak megosztva, hogy mindegyik kiszolgáló tisztában legyen a hálózati feltételekkel és a többi durranás kiszolgáló állapotával.  
     
-3. A CDN peremhálózati kiszolgálók feltételezéseket tesznek bizonyos átviteli paraméterekről, például arról, hogy milyen optimális ablakméretnek kell lennie, amikor a közelben lévő más CDN peremhálózati kiszolgálókkal kommunikál. Ez a lépés azt jelenti, hogy a kezdeti torlódási ablak mérete növelhető, ha a CDN peremhálózati kiszolgálók közötti kapcsolat állapota nagyobb csomagadatátvitelre képes.  
+3. A CDN Edge-kiszolgálók feltételezik néhány továbbítási paramétert, például azt, hogy mi az optimális ablakméret, ha más CDN Edge-kiszolgálókkal kommunikál a közelségében. Ez a lépés azt jelenti, hogy a kezdeti torlódási ablak mérete növelhető, ha a CDN Edge-kiszolgálók közötti kapcsolat állapota nagyobb adatátviteli kapacitást biztosít.  
 
-#### <a name="leveraging-persistent-connections"></a>A tartós csatlakozások kihasználása
+#### <a name="leveraging-persistent-connections"></a>Állandó kapcsolatok kihasználása
 
-CdN használatával kevesebb egyedi gép csatlakozik közvetlenül az eredeti kiszolgálóhoz, mint a közvetlenül az ön forrásához csatlakozó felhasználók. Az Azure CDN is készletek felhasználói kérelmek együtt kevesebb kapcsolatot létesíteni az eredeti.
+A CDN használatával kevesebb egyedi gép csatlakozik a forrás-kiszolgálóhoz közvetlenül a forráshoz csatlakozó felhasználókhoz képest. A Azure CDN a felhasználói kérések összevonásával kevesebb kapcsolatot létesít a forrással.
 
-Ahogy korábban említettük, a TCP-kapcsolat létrehozásához több kézfogási kérelemre van szükség. A HTTP-fejléc által `Keep-Alive` megvalósított állandó kapcsolatok a meglévő TCP-kapcsolatokat több HTTP-kérelemhez is újra felhasználják az oda-vissza út mentéséhez és a kézbesítés felgyorsításához. 
+Ahogy korábban említettük, több kézfogási kérelemre van szükség a TCP-kapcsolat létrehozásához. A `Keep-Alive` HTTP-fejléc által megvalósított állandó kapcsolatok, a meglévő TCP-kapcsolatok újbóli használata több HTTP-kérelem esetében, az átállási idő és a továbbítás felgyorsításának megtakarítása érdekében. 
 
-**A Verizon Azure CDN-je** rendszeresen életre kelti a csomagokat a TCP-kapcsolaton keresztül, hogy megakadályozza a nyitott kapcsolat bezárását.
+A **Verizon Azure CDN** is rendszeres életben tartási csomagokat küld a TCP-kapcsolaton keresztül, hogy megakadályozza a nyitott kapcsolat lezárását.
 
-#### <a name="tuning-tcp-packet-parameters"></a>TCP-csomagparamétereinek finomhangolása
+#### <a name="tuning-tcp-packet-parameters"></a>TCP-csomagok paramétereinek hangolása
 
-**Az Akamai Azure CDN-je** a kiszolgálók közötti kapcsolatokat szabályozó paramétereket hangolja, és a következő technikák alkalmazásával csökkenti a webhelybe ágyazott tartalom lekéréséhez szükséges hosszú távú adatváltások mennyiségét:
+**Azure CDN a Akamai** a kiszolgáló és a kiszolgáló közötti kapcsolatokra vonatkozó paramétereket hangolja le, és csökkenti a helyen beágyazott tartalom lekéréséhez szükséges hosszú távú útvonalak mennyiségét a következő módszerek használatával:
 
-- A kezdeti torlódási ablak növelése, hogy több csomag küldhető el anélkül, hogy megkellene várnia a nyugtázást.
-- A kezdeti újraküldési időtúltöltés csökkentése a veszteség észlelése és az újraküldés gyorsabb annektizálása érdekében.
-- A minimális és maximális újraküldési időszám csökkentése a várakozási idő csökkentése érdekében, feltételezve, hogy a csomagok elvesztek az átvitelben.
+- Megnövelheti a kezdeti torlódási időszakot, így több csomag is elküldhető, és nem kell nyugtát várnia.
+- A kezdeti újraküldési időkorlát csökkentése, hogy a rendszer elveszítse az adatvesztést, és gyorsabban történjen az újratovábbítás.
+- A minimális és a maximális újrapróbálkozási időkorlát csökkentése a várakozási idő csökkentéséhez, mielőtt a csomagok elvesztek az átvitel során.
 
-### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Objektum előzetes betöltése (csak az Akamai-ból származó Azure CDN)
+### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Objektum kiprefektusa (csak a Akamai Azure CDN)
 
-A legtöbb webhely egy HTML-lapból áll, amely különböző egyéb forrásokra, például képekre és parancsfájlokra hivatkozik. Amikor egy ügyfél weblapot kér, a böngésző először letölti és elemzi a HTML-objektumot, majd további kéréseket küld a csatolt eszközökhöz, amelyek a lap teljes betöltéséhez szükségesek. 
+A legtöbb webhely egy HTML-oldalból áll, amely különböző más erőforrásokra, például képekre és parancsfájlokra hivatkozik. Amikor egy ügyfél egy weblapon kér le egy weblapot, a böngésző először letölti és elemzi a HTML-objektumot, majd további kérelmeket tesz elérhetővé az oldal teljes betöltéséhez szükséges csatolt eszközökhöz. 
 
-*Prefetch* egy olyan technika, hogy letölteni a képeket és parancsfájlokat ágyazott HTML oldalon, miközben a HTML szolgál a böngésző, és mielőtt a böngésző is teszi ezeket az objektum kérelmeket. 
+A *prefektus* egy olyan módszer, amellyel a HTML-oldalba ágyazott képeket és parancsfájlokat beolvashatja, miközben a HTML-t a böngésző kézbesíti, és még a böngésző is megkéri ezeket az objektumokat. 
 
-Ha az előzetes betöltési lehetőség be van kapcsolva, amikor a CDN a HTML-alaplapot szolgálja ki az ügyfél böngészőjében, a CDN elemzi a HTML-fájlt, és további kéréseket küld a csatolt erőforrásokra vonatkozóan, és tárolja azt a gyorsítótárában. Amikor az ügyfél kéri a csatolt eszközök, a CDN peremhálózati kiszolgáló már rendelkezik a kért objektumokat, és azonnal kiszolgálhatja őket anélkül, hogy oda-vissza az eredeti. Ez az optimalizálás a gyorsítótárazható és a nem gyorsítótárazható tartalom számára is előnyös.
+Ha bekapcsolja a kiinduló lehetőséget, amikor a CDN a HTML-alapú alapoldalt szolgálja ki az ügyfél böngészőjében, a CDN elemzi a HTML-fájlt, és további kérelmeket készít minden kapcsolódó erőforráshoz, és tárolja azt a gyorsítótárában. Ha az ügyfél a kapcsolódó eszközökre vonatkozó kérelmeket küld, a CDN Edge-kiszolgáló már rendelkezik a kért objektumokkal, és azonnal kiszolgálhatja őket, anélkül, hogy a forrást oda kellene kapcsolni. Ez az optimalizálás a gyorsítótárazható és nem gyorsítótárazható tartalmat is előnyben részesül.
 
-### <a name="adaptive-image-compression-azure-cdn-from-akamai-only"></a>Adaptív képtömörítés (csak az Akamai-ból származó Azure CDN)
+### <a name="adaptive-image-compression-azure-cdn-from-akamai-only"></a>Adaptív képtömörítés (Azure CDN csak Akamai)
 
-Egyes eszközök, különösen a mobileszközök, időről időre lassabb hálózati sebességet tapasztalnak. Ezekben a helyzetekben előnyösebb a felhasználó számára, ha gyorsabban fogadja a kisebb képeket a weboldalán, ahelyett, hogy hosszú ideig várna a teljes felbontású képekre.
+Bizonyos eszközök, különösen a mobilok, időről időre lassabb hálózati sebességgel rendelkeznek. Ezekben az esetekben előnyösebb, hogy a felhasználó gyorsabban kapjon kisebb képeket a weblapján ahelyett, hogy hosszú időt kellene várnia a teljes felbontású képekre.
 
-Ez a funkció automatikusan figyeli a hálózat minőségét, és szabványos JPEG tömörítési módszereket alkalmaz, ha a hálózati sebesség lassabb a szállítási idő növelése érdekében.
+Ez a szolgáltatás automatikusan figyeli a hálózati minőséget, és szabványos JPEG-tömörítési módszereket alkalmaz, ha a hálózati sebesség lassabb a szállítási idő javítása érdekében.
 
 Adaptív képtömörítés | Fájlkiterjesztések  
 --- | ---  
-JPEG tömörítés | .jpg, .jpeg, .jpe, .jig, .jgig, .jgi
+JPEG-tömörítés | . jpg,. jpeg,. JPE,. sablon,. jgig,. JGI
 
 ## <a name="caching"></a>Gyorsítótárazás
 
-A DSA esetén a gyorsítótárazás alapértelmezés szerint ki van kapcsolva a CDN-en, még akkor is, ha az origó tartalmazza `Cache-Control` vagy `Expires` fejlécek a válaszban. A DSA általában olyan dinamikus eszközökhöz használatos, amelyeket nem szabad gyorsítótárazni, mert az egyes ügyfelek egyediek. A gyorsítótárazás megtörheti ezt a viselkedést.
+A DSA használatával a gyorsítótárazás alapértelmezés szerint ki van kapcsolva a CDN-ben, még akkor is `Cache-Control` , `Expires` ha a válaszban szerepel a forrás vagy a fejléc. A DSA általában olyan dinamikus eszközökhöz használatos, amelyeket nem szabad gyorsítótárazni, mivel azok egyediek az egyes ügyfelek számára. A gyorsítótárazás megszüntetheti ezt a viselkedést.
 
-Ha van egy weboldal vegyesen statikus és dinamikus eszközök, a legjobb, hogy egy hibrid megközelítést, hogy a legjobb teljesítményt. 
+Ha olyan webhellyel rendelkezik, amely a statikus és a dinamikus eszközök kombinációját használja, a legjobb megoldás a legjobb teljesítmény érdekében. 
 
-A **Verizon Azure CDN Standard** és az **Akamai-profilokból származó Azure CDN Standard** esetén gyorsítótárazást kapcsolhat be adott DSA-végpontokhoz [gyorsítótárazási szabályok](cdn-caching-rules.md)használatával.
+A **Verizon** és a Akamai-profiloktól **Azure CDN standard** szintű Azure CDN esetében a gyorsítótárazási [szabályok](cdn-caching-rules.md)használatával bekapcsolhatja az adott DSA-végpontok gyorsítótárazását.
 
 A gyorsítótárazási szabályok elérése:
 
-1. A **CDN-profil** lapon a Beállítások csoportban válassza a **Gyorsítótárazási szabályok lehetőséget.**  
+1. A **CDN-profil** lap beállítások területén válassza a **gyorsítótárazási szabályok**elemet.  
     
     ![CDN-gyorsítótárszabályok gomb](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
-    Megnyílik **a Gyorsítótárazási szabályok** lap.
+    Megnyílik a **gyorsítótárazási szabályok** lap.
 
-2. Hozzon létre egy globális vagy egyéni gyorsítótárazási szabályt a DSA-végpont gyorsítótárazásának bekapcsolására. 
+2. Hozzon létre egy globális vagy egyéni gyorsítótárazási szabályt a DSA-végpont gyorsítótárazásának bekapcsolásához. 
 
-Csak **a Verizon-profilokból származó Azure CDN Premium** esetén a [szabálymotor](cdn-rules-engine.md)használatával kapcsolja be az adott DSA-végpontok gyorsítótárazását. A létrehozott szabályok csak a profil DSA-ra optimalizált végpontjait érintik. 
+Csak a Verizon-profilokból **származó Azure CDN Premium** esetén a [szabályok motor](cdn-rules-engine.md)használatával kapcsolja be a gyorsítótárazást adott DSA-végpontokra. A létrehozott szabályok csak a DSA-ra optimalizált profilhoz tartozó végpontokat érintik. 
 
-A szabálymotor elérése:
+A szabályok motor elérése:
     
-1. A **CDN-profil** lapon válassza a **Kezelés lehetőséget.**  
+1. A **CDN-profil** lapon válassza a **kezelés**lehetőséget.  
     
-    ![CDN-profilkezelés gomb](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
+    ![CDN-profil kezelése gomb](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Megnyílik a CDN felügyeleti portál.
 
-2. A CDN felügyeleti portálon válassza az **ADN**lehetőséget, majd válassza **a Szabálymotor lehetőséget.** 
+2. A CDN felügyeleti portálján válassza az **ADN**, majd a **szabályok motor**elemet. 
 
-    ![Szabályok motor DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+    ![A DSA szabályainak motorja](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
 
 
-Másik lehetőségként két CDN-végpontot is használhat: az egyik végpontot dsa-val optimalizálva dinamikus eszközök, a másik végpont statikus optimalizálási típussal optimalizálva, például általános webes kézbesítéssel, gyorsítótárazható eszközök kézbesítéséhez. Módosítsa a weblap URL-címeit úgy, hogy közvetlenül a használni kívánt CDN-végponton lévő eszközhöz kapcsolódjon. 
+Azt is megteheti, hogy két CDN-végpontot is használhat: egy DSA-val optimalizált végpontot, amely dinamikus eszközöket és egy statikus optimalizálási típussal optimalizált másik végpontot (például általános webes kézbesítés) biztosít a gyorsítótárazható eszközök kézbesítéséhez. Módosítsa a weblap URL-címeit, hogy közvetlenül a használni kívánt CDN-végponton lévő eszközre hivatkozzon. 
 
-Például: `mydynamic.azureedge.net/index.html` egy dinamikus oldal, amely a DSA-végpontból töltődik be.A html-lap több statikus elemre hivatkozik, például JavaScript-függvénytárakra vagy `mystatic.azureedge.net/banner.jpg` `mystatic.azureedge.net/scripts.js`a statikus CDN-végpontról betöltött képekre, például a és a parancsra. 
+Például: `mydynamic.azureedge.net/index.html` egy dinamikus lap, és betöltődik a DSA-végpontból.A HTML-oldal több olyan statikus objektumra hivatkozik, mint például a JavaScript-kódtárak vagy a statikus CDN- `mystatic.azureedge.net/banner.jpg` végpontról betöltött képek, például a és `mystatic.azureedge.net/scripts.js`a. 
 
 
 

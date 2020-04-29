@@ -1,13 +1,13 @@
 ---
-title: Az Azure virtuális gépek méretei – Memória | Microsoft dokumentumok
-description: Az Azure-ban a virtuális gépekhez elérhető különböző memóriaoptimalizált méretek. A vCPU-k, adatlemezek és hálózati adapterek számával, valamint a tárolóátviteli és hálózati sávszélességgel kapcsolatos információkat sorolja fel a sorozat méreteihez.
+title: Azure-beli virtuális gépek méretei – memória | Microsoft Docs
+description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző memória-optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
-keywords: Virtuális gép elkülönítése,izolált virtuális gép,izoláció,izolált
+keywords: VM-elkülönítés, elkülönített virtuális gép, elkülönítés, elkülönített
 ms.assetid: ''
 ms.service: virtual-machines
 ms.devlang: na
@@ -16,29 +16,29 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.openlocfilehash: 5a20e9c64b6ef948167333b54b16b34e84dc0e32
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273579"
 ---
-# <a name="memory-optimized-virtual-machine-sizes"></a>Memóriaoptimalizált virtuális gépméretek
+# <a name="memory-optimized-virtual-machine-sizes"></a>Memória-optimalizált virtuális gépek méretei
 
-A memóriaoptimalizált virtuálisgép-méretek magas memória-és CPU-arányt kínálnak, amely kiválóan alkalmas relációs adatbázis-kiszolgálók, közepes és nagy gyorsítótárak és memóriabeli elemzések hez. Ez a cikk a csoportosítás egyes méreteihez a vCPU-k, adatlemezek és hálózati adapterek, valamint a tárolási átviteli és hálózati sávszélesség számáról tartalmaz tájékoztatást.
+A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt kínálnak, amely kiválóan használható a kapcsolódó adatbázis-kiszolgálók, a közepes és a nagy gyorsítótárak, valamint a memóriabeli elemzések számára. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózati sávszélességgel kapcsolatos információkat tartalmaz ebben a csoportosításban.
 
-- [Dv2 és DSv2-sorozat](dv2-dsv2-series-memory.md), a follow-on, hogy az eredeti D-sorozat, tartalmaz egy erősebb CPU. A Dv2-sorozat körülbelül 35%-kal gyorsabb, mint a D-sorozat. Ez fut az&reg; Intel&reg; Xeon 8171M 2.1 GHz&reg; (Skylake) vagy az Intel Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) vagy az Intel&reg; Xeon&reg; E5-2673 v3 2.4 GHz (Haswell) processzorok, és az Intel Turbo Boost Technology 2.0. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+- A [Dv2 és a DSv2 sorozat](dv2-dsv2-series-memory.md), amely az eredeti D sorozatra mutat, hatékonyabb processzorral rendelkezik. A Dv2 sorozat körülbelül 35%-kal gyorsabb a D sorozatnál. Az Intel&reg; xeon&reg; 8171M 2,1 GHz (Skylake) vagy Intel&reg; Xeon&reg; E5-2673 v4 2,3 GHz (Broadwell) vagy Intel&reg; Xeon&reg; E5-2673 v3 2,4 GHz (Haswell) processzorokkal, valamint az Intel Turbo Boost Technology 2,0-mel fut. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
-    A Dv2 és DSv2 sorozat ú alkalmazások gyorsabb vCPU-k, jobb ideiglenes tárolási teljesítmény vagy nagyobb memóriaigény esetén ideálisak. Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
+    A Dv2 és a DSv2 sorozat ideális olyan alkalmazások számára, amelyek gyorsabb vCPU, jobb ideiglenes tárolási teljesítményt vagy nagyobb memóriát igényelnek. Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
 
-- Az [Eav4 és Easv4 sorozat](eav4-easv4-series.md) az AMD 2,35 GHz-es EPYC<sup>TM</sup> 7452 processzorát használja többszálas konfigurációban, akár 256 MB L3 gyorsítótárral, növelve a legtöbb memóriaoptimalizált munkaterhelés futtatásának lehetőségeit. Az Eav4 és Easv4 sorozat ugyanolyan memória- és lemezkonfigurációval rendelkezik, mint az Ev3 & Esv3 sorozat.
+- A [Eav4 és a Easv4 sorozat](eav4-easv4-series.md) az AMD 2.35 GHz EPYC<sup>TM</sup> 7452 processzorát egy többszálas konfigurációban, akár 256mb L3 gyorsítótárral, a legtöbb memóriára optimalizált számítási feladatok futtatására szolgáló lehetőségek növelésével teszi elérhetővé. A Eav4-sorozat és a Easv4-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a Ev3 & Esv3 sorozat.
 
-- Az [Ev3 és esv3 sorozatú](ev3-esv3-series.md) &reg; Intel Xeon&reg; 8171M 2.1&reg; GHz&reg; (Skylake) vagy az Intel Xeon E5-2673 v4 2.3 GHz (Broadwell) processzor egy hiper-szálas konfigurációban, amely jobb értéket nyújt a legtöbb általános célú számítási munkához, és az Ev3-at a legtöbb más felhő általános célú virtuális gépeihez igazítja. A memória bővült (7 GiB/vCPU-ról 8 GiB/vCPU-ra), míg a lemez- és hálózati korlátokat magonként módosították, hogy igazodjanak a hiperszálas működésre való áttéréshez. Az Ev3 a D/Dv2 családok nagy memóriában lévő virtuálisgép-méreteinek nyomon követése.
+- A [Ev3 és a Esv3 sorozatú](ev3-esv3-series.md) &reg; Intel&reg; Xeon 8171M 2,1 GHz (Skylake) vagy Intel&reg; Xeon&reg; E5-2673 v4 2,3 GHz (Broadwell) processzor egy Hyper-threaded konfigurációban, jobb értékű kiépítés a legtöbb általános célú számítási feladathoz, és a Ev3 integrálása a legtöbb más felhőben található általános célú virtuális gépekkel. A memória kibontása megtörtént (7 GiB/vCPU – 8 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer a Hyper-Threading szolgáltatáshoz való áttéréssel összehangolva kiigazította. A Ev3 a D/Dv2 családok nagy memóriabeli virtuálisgép-méretének követése.
 
-- Az M sorozat magas [vCPU-számot](m-series.md) (akár 128 vCPU-t) és nagy mennyiségű memóriát (akár 3,8 TiB) kínál. Emellett rendkívül nagy adatbázisokhoz vagy más alkalmazásokhoz is ideális, amelyek nagy vCPU-számmal és nagy mennyiségű memóriával járnak.
+- Az [M sorozat](m-series.md) magas vCPU (akár 128 vCPU) és nagy mennyiségű memóriát (legfeljebb 3,8 TiB) kínál. Emellett ideális a rendkívül nagy méretű adatbázisok vagy más alkalmazások számára, amelyek nagy vCPU és nagy mennyiségű memóriát foglalnak magukban.
 
-- Az Mv2 sorozat a felhőben lévő virtuális gépek legnagyobb vCPU-számát (akár 416 vCPU-t) és legnagyobb memóriát (akár 11,4 TiB).The [Mv2-series](mv2-series.md) offers the highest vCPU count (up to 416 vCPU) and largest memory (up to 11.4 TiB) of any VM in the cloud. Ideális a rendkívül nagy adatbázisokhoz vagy más alkalmazásokhoz, amelyek nagy vCPU-számmal és nagy mennyiségű memóriával járnak.
+- A [Mv2 sorozat](mv2-series.md) a legmagasabb vCPU (legfeljebb 416 vCPU) és a legnagyobb (legfeljebb 11,4 TiB) memóriával rendelkezik a felhőben. Ideális megoldás a rendkívül nagy méretű adatbázisok vagy más alkalmazások számára, akik nagy vCPU és nagy mennyiségű memóriát foglalnak magukban.
 
-Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy adott hardvertípusra vannak elkülönítve, és egyetlen ügyfélnek vannak szentelve. Ezek a virtuális gépméretek a legalkalmasabbak olyan számítási feladatokhoz, amelyek nagyfokú elkülönítést igényelnek más ügyfelektől olyan számítási feladatokhoz, amelyek olyan elemeket tartalmaznak, mint a megfelelőségi és szabályozási követelmények. Az ügyfelek dönthetnek úgy is, hogy tovább osztják az elkülönített virtuális gépek erőforrásait a [beágyazott virtuális gépek Azure-támogatásával.](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) Tekintse meg az alábbi virtuálisgép-családok lapjait az elkülönített virtuálisgép-beállításokért.
+Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve. Ezek a virtuálisgép-méretek olyan számítási feladatokhoz ideálisak, amelyek nagy fokú elkülönítést igényelnek más ügyfelektől olyan munkaterhelések esetén, mint például a megfelelőségi és szabályozási követelmények. Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait. Az elkülönített virtuálisgép-lehetőségekért tekintse meg az alábbi virtuális gépeket tartalmazó lapokat.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -51,4 +51,4 @@ Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy adott hard
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

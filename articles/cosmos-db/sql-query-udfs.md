@@ -1,38 +1,38 @@
 ---
-title: Felhasználó által definiált függvények (UDF-ek) az Azure Cosmos DB-ben
-description: Ismerje meg a felhasználó által definiált függvények az Azure Cosmos DB.
+title: Felhasználó által definiált függvények (UDF) Azure Cosmos DB
+description: A Azure Cosmos DB felhasználó által definiált függvények megismerése.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011123"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Felhasználó által definiált függvények (UDF-ek) az Azure Cosmos DB-ben
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Felhasználó által definiált függvények (UDF) Azure Cosmos DB
 
-Az SQL API támogatja a felhasználó által definiált függvényeket (UDF). A skaláris UDF-ek segítségével nulla vagy több argumentumot adhat át, és egyetlen argumentum eredményt adhat vissza. Az API ellenőrzi az egyes argumentumok, hogy a jogi JSON-értékek.  
+Az SQL API támogatást nyújt a felhasználó által definiált függvények (UDF) számára. A skaláris UDF használatával nulla vagy több argumentumot adhat meg, és egyetlen argumentumot ad vissza eredményként. Az API ellenőrzi, hogy az egyes argumentumok jogi JSON-értékekként vannak-e megadva.  
 
-## <a name="udf-use-cases"></a>UDF-használati esetek
+## <a name="udf-use-cases"></a>UDF használati esetek
 
-Az API kiterjeszti az SQL szintaxist az UDF-ek használatával az egyéni alkalmazáslogika támogatásához. Az UDF-eket regisztrálhatja az SQL API-val, és hivatkozhat rájuk az SQL-lekérdezésekben. A tárolt eljárásokkal és eseményindítókkal ellentétben az UDF-ek írásvédettek.
+Az API kiterjeszti az SQL szintaxisát, hogy támogassa az egyéni alkalmazás-logikát a UDF használatával. A UDF az SQL API-val regisztrálhatja, és SQL-lekérdezésekben hivatkozhat rájuk. A tárolt eljárásokkal és eseményindítókkal ellentétben a UDF csak olvashatók.
 
-UDF-ek használatával kiterjesztheti az Azure Cosmos DB lekérdezési nyelvét. UdFs egy nagyszerű módja annak, hogy kifejezzék összetett üzleti logika a lekérdezés kivetítése.
+A UDF használatával kiterjesztheti Azure Cosmos DB lekérdezési nyelvét. A UDF nagyszerű lehetőséget biztosít összetett üzleti logikák kiértékelésére egy lekérdezés kivetítésében.
 
-Azonban azt javasoljuk, elkerülve UDFs, ha:
+Javasoljuk azonban a UDF elkerülését, ha:
 
-- Az Azure Cosmos DB-ben már létezik egy egyenértékű [rendszerfüggvény.](sql-query-system-functions.md) A rendszerfüggvények mindig kevesebb RU-t használnak, mint az egyenértékű UDF.System functions will always use less RU's than the equivalent UDF.
-- Az UDF az egyetlen `WHERE` szűrő a lekérdezés záradékában. UdF nem használja az indexet, így az UDF kiértékelése dokumentumok betöltését igényli. Az indexet udf-fel kombinálva az indexet használó további `WHERE` szűrőpredikátumok kombinálásával a záradék ban csökken az UDF által feldolgozott dokumentumok száma.
+- Egy egyenértékű [rendszerfunkció](sql-query-system-functions.md) már létezik a Azure Cosmos DBban. A System functions mindig kevesebb RU-t használ, mint az egyenértékű UDF.
+- Az UDF az egyetlen szűrő a lekérdezés `WHERE` záradékában. Az UDF nem használja az indexet, ezért az UDF kiértékeléséhez dokumentumokat kell betölteni. Az indexet használó további szűrési predikátumok és az UDF együttes használata esetén a `WHERE` záradékban az UDF által feldolgozott dokumentumok száma is csökken.
 
-Ha egy lekérdezésben többször is ugyanazt az UDF-et kell használni, akkor az UDF-re kell hivatkozni egy [segédlekérdezésben,](sql-query-subquery.md#evaluate-once-and-reference-many-times)amely lehetővé teszi, hogy join kifejezéssel értékeljük ki egyszer az UDF-et, de többször is hivatkozhatunk rá.
+Ha ugyanazokat az UDF-ket kell használnia egy lekérdezésben, hivatkoznia kell az UDF-re egy [allekérdezésben](sql-query-subquery.md#evaluate-once-and-reference-many-times), így egy JOIN kifejezéssel kiértékelheti az UDF-t egyszer, de többször is hivatkozhat rájuk.
 
 ## <a name="examples"></a>Példák
 
-A következő példa regisztrálja az UDF egy elemtároló a Cosmos-adatbázisban. A példa létrehoz egy UDF-et, amelynek neve `REGEX_MATCH`. Két JSON-karakterlánc-értéket `input` fogad `pattern`el, és ellenőrzi, hogy az első megegyezik-e `string.match()` a másodikban megadott mintával a JavaScript függvény használatával.
+Az alábbi példa egy UDF-tárolót regisztrál a Cosmos adatbázisban. A példa létrehoz egy UDF-t, `REGEX_MATCH`amelynek a neve:. Két JSON-karakterlánc-értéket `input` fogad el `pattern`, és ellenőrzi, hogy az első a JavaScript `string.match()` függvény használatával a másodikban megadott mintázattal egyezik-e.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -48,7 +48,7 @@ A következő példa regisztrálja az UDF egy elemtároló a Cosmos-adatbázisba
            regexMatchUdf).Result;  
 ```
 
-Most használja ezt az UDF-et egy lekérdezés-vetületben. A kis- és nagybetűket megkülönböztető `udf.` előtaggal rendelkező UDF-eket a lekérdezéseken belüli híváskor fel kell jogosítania.
+Most használja ezt az UDF-t egy lekérdezési leképezésben. A UDF a kis-és nagybetűket megkülönböztető `udf.` előtaggal kell rendelkeznie, ha lekérdezéseken belülről hívja őket.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -68,7 +68,7 @@ Az eredmény a következő:
     ]
 ```
 
-Használhatja az UDF minősített `udf.` az előtag egy szűrőn belül, mint a következő példában:
+A szűrőn belüli `udf.` előtaggal minősített UDF-t használhatja az alábbi példában látható módon:
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -85,9 +85,9 @@ Az eredmény a következő:
     }]
 ```
 
-Lényegében udf-ek érvényes skaláris kifejezések, amelyek et vetületekben és szűrőkben is használhat.
+Lényegében a UDF érvényes skaláris kifejezések, amelyeket kivetítések és szűrők is használhatnak.
 
-Az UDF-ek teljesítményének bővítéséhez tekintsen egy másik, feltételes logikával rendelkező példát:
+Ha ki szeretné bővíteni a UDF erejét, tekintse meg a feltételes logikát bemutató példát:
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -111,7 +111,7 @@ Az UDF-ek teljesítményének bővítéséhez tekintsen egy másik, feltételes 
                 seaLevelUdf);
 ```
 
-A következő példa az UDF-et gyakorolja:
+Az alábbi példa az UDF-t alkalmazza:
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
@@ -133,12 +133,12 @@ Az eredmény a következő:
     ]
 ```
 
-Ha az UDF-paraméterek által említett tulajdonságok nem érhetők el a JSON-értékben, a paraméter nem definiáltnak minősül, és az UDF-meghívás kimarad. Hasonlóképpen, ha az UDF eredménye nincs definiálva, az nem szerepel az eredményben.
+Ha az UDF-paraméterek által hivatkozott tulajdonságok nem érhetők el a JSON-értékben, a paraméter nem definiált minősül, és az UDF-hívás kimarad. Hasonlóképpen, ha az UDF eredménye nincs meghatározva, az eredmény nem tartalmazza azt.
 
-Amint azt az előző példák mutatják, udf-ek integrálja a JavaScript-nyelv erejét az SQL API-val. UdFs nyújt gazdag programozható felület et összetett eljárási, feltételes logika segítségével a beépített JavaScript futásidejű képességek. Az SQL API az adott forráselem-hoz az adott FORRÁSelem argumentumait adja meg az aktuális WHERE vagy SELECT záradék fázisban. Az eredmény zökkenőmentesen beépül a teljes végrehajtási folyamatba. Összefoglalva, UDFs nagyszerű eszközök összetett üzleti logika részeként lekérdezések.
+Ahogy az előző példákban is látható, a UDF integrálja a JavaScript nyelv erejét az SQL API-val. A UDF a beépített JavaScript-futtatókörnyezeti funkciókkal összetett eljárási, feltételes logikát biztosító, sokoldalú, programozható felületet biztosít. Az SQL API megadja a UDF argumentumait az egyes forrásoldali elemeknél az aktuális WHERE vagy SELECT záradékban a feldolgozáshoz. Az eredmény zökkenőmentesen be van építve a teljes végrehajtási folyamatba. Összefoglalva, a UDF nagyszerű eszközei a lekérdezések részeként összetett üzleti logikának.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
 - [Rendszerfüggvények](sql-query-system-functions.md)
 - [Összesítések](sql-query-aggregates.md)

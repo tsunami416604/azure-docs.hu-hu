@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Beszéd szintetizálása, C# (UWP) – beszédszolgáltatás'
+title: 'Gyors útmutató: beszédfelismerési beszéd, C# (UWP) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben létre fog hozni egy C# Universal Windows Platform- (UWP-) alkalmazást a Cognitive Services Speech SDK használatával. A szövegből valós időben szintetizálhatja a beszédet az eszköz hangszórójáig. Az alkalmazás a Speech SDK NuGet csomaggal és a Microsoft Visual Studio 2019-tel készült.
+description: Ebben a cikkben létre fog hozni egy C# Universal Windows Platform- (UWP-) alkalmazást a Cognitive Services Speech SDK használatával. A beszédet valós időben szintetizálhatja a szövegből az eszköz hangszóróján. Az alkalmazás a Speech SDK NuGet csomagjával és a Microsoft Visual Studio 2019-mel készült.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
 ms.openlocfilehash: 89fc5fddffb291942b8f3a4db3dfdf4ccd6cf46a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275413"
 ---
 > [!NOTE]
@@ -22,47 +22,47 @@ ms.locfileid: "81275413"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-Most adja hozzá az XAML-kódot, amely meghatározza az alkalmazás felhasználói felületét, és adja hozzá a C# kód-mögötti implementációt.
+Most adja hozzá az alkalmazás felhasználói felületét meghatározó XAML-kódot, és adja hozzá a C#-kódot a megvalósítás mögött.
 
-1. A **Megoldáskezelőben**nyissa meg a programot. `MainPage.xaml`
+1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
 
-1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet `</Grid>`a **Rácscímkébe** (a kettő között `<Grid>` és):
+1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe `<Grid>` ( `</Grid>`és között):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/text-to-speech/helloworld/MainPage.xaml#StackPanel)]
 
-1. A **Megoldáskezelőben**nyissa meg a `MainPage.xaml.cs`mögötti kód forrásfájlt. (Ez alatt csoportosítva `MainPage.xaml`.)
+1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.)
 
-1. Cserélje le az összes benne lévő kódot a következő kódrészletre:
+1. Cserélje le az összes kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/text-to-speech/helloworld/MainPage.xaml.cs#code)]
 
-1. A forrásfájl kezelőjében `Speak_ButtonClicked` keresse `YourSubscriptionKey`meg a karakterláncot , és cserélje le az előfizetési kulcsra.
+1. A forrásfájl `Speak_ButtonClicked` kezelőjében keresse meg a karakterláncot `YourSubscriptionKey`, és cserélje le az előfizetési kulcsra.
 
-1. A `Speak_ButtonClicked` kezelőben keresse `YourServiceRegion`meg a karakterláncot , és cserélje le az előfizetéshez társított [régióra.](~/articles/cognitive-services/Speech-Service/regions.md) (Például használja `westus` az ingyenes próba-előfizetéshez.)
+1. A `Speak_ButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceRegion`, és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . (Például használja `westus` az ingyenes próbaverziós előfizetést.)
 
-1. A módosítások mentéséhez válassza az > **Összes** **fájlmentése**lehetőséget a menüsorban.
+1. A menüsávban válassza a **fájl** > **Mentés** lehetőséget a módosítások mentéséhez.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Most már készen áll az alkalmazás megépítésére és tesztelésére.
+Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
-1. A menüsorban válassza a Build megoldás **összeállítása** > **Build Solution** az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Az alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5)** billentyűt. Megjelenik **a helloworld** ablak.
+1. Az alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az F5 billentyűt). **F5** >  Megjelenik a **HelloWorld** ablak.
 
-   ![Minta UWP beszédszintetizáló alkalmazás C# nyelven – rövid útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
+   ![Minta UWP Speech szintézis alkalmazása a C#-ben – gyors útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
-1. Írjon be néhány szöveget a szövegmezőbe, és kattintson a **Felolvasás gombra.** A szöveg továbbítása a beszédfelismerési szolgáltatásba kerül, és beszédre szintetizálódik, amely a hangszórón szól.
+1. Írjon be egy szöveget a szövegmezőbe, majd kattintson a **Speak (beszéd**) gombra. A rendszer továbbítja a szöveget a Speech Service-nek, és szintetizálta a beszédet, amely a beszélőn játszik.
 
-    ![Beszédszintézis felhasználói felülete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
+    ![Speech szintézis felhasználói felület](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>További lépések
 

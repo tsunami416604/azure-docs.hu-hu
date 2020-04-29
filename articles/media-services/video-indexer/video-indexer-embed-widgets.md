@@ -1,7 +1,7 @@
 ---
-title: Videoindexelő widgetek beágyazása az alkalmazásokba
+title: Video Indexer widgetek beágyazása az alkalmazásokba
 titleSuffix: Azure Media Services
-description: További információ a Video Indexer widgetek alkalmazásokba való beágyazásáról.
+description: Megtudhatja, hogyan ágyazhat be Video Indexer widgeteket az alkalmazásaiba.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,118 +11,118 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262910"
 ---
-# <a name="embed-video-indexer-widgets-in-your-apps"></a>Videoindexelő widgetek beágyazása az alkalmazásokba
+# <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
-Ez a cikk bemutatja, hogyan ágyazhat be videoindexelő widgeteket az alkalmazásokba. A Video Indexer háromféle widget beágyazását támogatja az alkalmazásokba: *Cognitive Insights*, *Player*és *Editor*.
+Ebből a cikkből megtudhatja, hogyan ágyazhat be Video Indexer widgeteket az alkalmazásaiba. Video Indexer támogatja a három típusú widget beágyazását az alkalmazásokba: *kognitív betekintést*, *lejátszót*és *szerkesztőt*.
 
-A 2-es verziótól kezdve a widget alap URL-címe tartalmazza a megadott fiók régióját. Az USA nyugati régiójában például egy `https://wus2.videoindexer.ai/embed/insights/...`fiók a következőket hozza létre: .
+A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fiók régióját. Például az USA nyugati régiójában lévő fiók a következőt hozza `https://wus2.videoindexer.ai/embed/insights/...`létre:.
 
 ## <a name="widget-types"></a>Vezérlőtípusok
 
 ### <a name="cognitive-insights-widget"></a>Kognitív elemzési vezérlő
 
-A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A Cognitive Insights widget a következő választható URL-paramétereket támogatja:
+A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Név|Meghatározás|Leírás|
+|Name (Név)|Meghatározás|Leírás|
 |---|---|---|
-|`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt elemzések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` csak az emberek és a kulcsszavak felhasználói felületének elemzési adatait jeleníti meg.<br/>Elérhető lehetőségek: emberek, animáltKarakterek, kulcsszavak, címkék, érzelmek, érzelmek, témák, kulcsképek, átirat, ocr, hangszórók, jelenetek, és namedEntities.|
-|`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők vezérlését.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési és letöltési gombot jeleníti meg.<br/>Elérhető lehetőségek: keresés, letöltés, készletek, nyelv.|
-|`language`|Rövid nyelvkód (nyelvnév)|Az elemzési nyelvet szabályozza.<br/>Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>Vagy`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
-|`locale` | Rövid nyelvkód | A felhasználói felület nyelvét szabályozza. Az alapértelmezett érték `en`. <br/>Példa: `locale=de`.|
-|`tab` | A kijelölt alapértelmezett lap | Az **Elemzések** lapot szabályozza, amely alapértelmezés szerint megjelenik. <br/>Példa: `tab=timeline` az elemzéseket az **Idővonal** lap kijelölésével jeleníti meg.|
+|`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
+|`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
+|`language`|Rövid nyelvi kód (nyelv neve)|Az ellenőrzési nyelv szabályozása.<br/>Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>vagy`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`locale` | Egy rövid nyelvi kód | A felhasználói felület nyelvének szabályozása. Az alapértelmezett érték `en`. <br/>Példa: `locale=de`.|
+|`tab` | Az alapértelmezett kijelölt lap | Az alapértelmezés **Insights** szerint megjelenített adatvizsgálatok lapot vezérli. <br/>Példa: `tab=timeline` a bepillantást jeleníti meg az **Idősor** lapon.|
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
 
-A Lejátszó widget segítségével adaptív átviteli sebesség használatával streamelhet videókat. A Lejátszó widget a következő választható URL-paramétereket támogatja.
+A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Név|Meghatározás|Leírás|
+|Name (Név)|Meghatározás|Leírás|
 |---|---|---|
-|`t` | Másodpercekkel az elejétől | A játékos a megadott időponttól kezdel el játszani.<br/> Példa: `t=60`. |
-|`captions` | Nyelvkód | A felirat letöltése a megadott nyelven történik a widget betöltése során, hogy elérhető legyen a **Feliratok** menüben.<br/> Példa: `captions=en-US`. |
+|`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
+|`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
 |`showCaptions` | Logikai érték | Beállítja, hogy a lejátszó betöltésekor a feliratok megjelenítése már engedélyezve legyen.<br/> Példa: `showCaptions=true`. |
-|`type`| | Aktiválja az audiolejátszó bőrét (a videorészt eltávolítjuk).<br/> Példa: `type=audio`. |
-|`autoplay` | Logikai érték | Azt jelzi, hogy a lejátszónak betöltéskor el kell-e kezdenie a videó lejátszását. Az alapértelmezett érték `true`.<br/> Példa: `autoplay=false`. |
-|`language`/`locale` | Nyelvkód | A lejátszó nyelvét szabályozza. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
+|`type`| | Aktiválja a hanglejátszó bőrét (a videó rész törlődik).<br/> Példa: `type=audio`. |
+|`autoplay` | Logikai érték | Azt jelzi, hogy a játékosnak be kell-e játszania a videót a betöltéskor. Az alapértelmezett érték `true`.<br/> Példa: `autoplay=false`. |
+|`language`/`locale` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
 
-### <a name="editor-widget"></a>Szerkesztő widget
+### <a name="editor-widget"></a>Szerkesztői widget
 
-A Szerkesztő widget segítségével új projekteket hozhat létre, és kezelheti a videó elemzési adatait. A Szerkesztő widget a következő választható URL-paramétereket támogatja.
+A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Név|Meghatározás|Leírás|
+|Name (Név)|Meghatározás|Leírás|
 |---|---|---|
-|`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazására használt fiókban találhatók.<br> A szerkesztő widget `accessToken` hez szükség van a paraméterre. |
-|`language` | Nyelvkód | A lejátszó nyelvét szabályozza. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
-|`locale` | Rövid nyelvkód | Az elemzési nyelvet szabályozza. Az alapértelmezett érték `en`.<br/>Példa: `language=de`. |
+|`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
+|`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
+|`locale` | Egy rövid nyelvi kód | Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték `en`.<br/>Példa: `language=de`. |
 
-<sup>*</sup>A tulajdonosnak `accessToken` óvatosan kell eljárnia.
+<sup>*</sup>A tulajdonosnak körültekintően kell megadnia `accessToken` .
 
 ## <a name="embedding-public-content"></a>Nyilvános tartalom beágyazása
 
-1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyére.
-2. Jelölje ki azt a videót, amelyet dolgozni szeretne.
-3. Válassza ki a**</>** videó alatt megjelenő beágyazási gombot ( ).
+1. Jelentkezzen be a [video Indexer](https://www.videoindexer.ai/) webhelyére.
+2. Válassza ki a videót, amelyet használni szeretne.
+3. Válassza a videó alatt megjelenő beágyazás gombot (**</>**).
 
-    Miután kiválasztotta a **Beágyazás** gombot, kiválaszthatja azt a widgetet, amelyet be szeretne ágyazni az alkalmazásba.
-4. Válassza ki a kívánt típusú widgetet **(Cognitive Insights,** **Player**vagy **Editor**).
-5. Másolja a beágyazási kódot **(a beágyazott kód másolása** párbeszédpanelen jelenik meg a **Megosztás & beágyazáspárbeszédpanelen).**
+    A **beágyazás** gomb kiválasztását követően kiválaszthatja az alkalmazásba beágyazni kívánt widgetet.
+4. Válassza ki a kívánt widget típusát (**kognitív ismeretek**, **lejátszó**vagy **szerkesztő**).
+5. Másolja a beágyazási kódot (ekkor megjelenik a **beágyazott kód másolása** a **megosztás & beágyazási** párbeszédpanelen).
 6. Adja hozzá a kódot az alkalmazáshoz.
 
 > [!NOTE]
-> Ha problémái vannak a videoURL-ek `location` megosztásával, adja hozzá a paramétert a hivatkozáshoz. A paramétert [azAzure-régiókra](regions.md)kell beállítani, amelyekben a Video Indexelő létezik. Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+> Ha problémák merülnek fel a videó URL-címeinek `location` megosztásakor, adja hozzá a paramétert a hivatkozáshoz. A paramétert azon [Azure-régiókra kell beállítani, amelyekben video Indexer létezik](regions.md). Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Személyes tartalom beágyazása
 
-Privát videó beágyazásához egy hozzáférési jogkivonatot kell átadnia az `src` iframe attribútumában:
+Privát videó beágyazásához át kell adnia egy hozzáférési jogkivonatot az IFRAME `src` -attribútumban:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-A Cognitive Insights widget tartalmának levételéhez használja az alábbi módszerek egyikét:
+Az alábbi módszerek egyikével szerezheti be a kognitív ismereteket ismertető widget tartalmát:
 
-- Az Insights Widget API [beszereznie.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)<br/>
-- A [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Adja hozzá lekérdezési paraméterként az URL-címhez. Adja meg ezt `src` az URL-címet az iframe értékeként, ahogy azt korábban is látható.
+- Az eredmények [lekérése widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API.<br/>
+- A [videó-hozzáférési jogkivonat beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Adja hozzá lekérdezési paraméterként az URL-címhez. Ezt az URL-címet `src` állítsa be az IFRAME értékeként a korábban látható módon.
 
-Ahhoz, hogy a beágyazott widgetben szerkesztési elemzési lehetőségeket biztosítson, át kell adnia egy hozzáférési tokent, amely szerkesztési engedélyeket tartalmaz. Használja [a Get Insights Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) `&allowEdit=true`et vagy a Video Access Token [beszereznie](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) a segítségével.
+A beágyazott widget szerkesztési információinak megadásához olyan hozzáférési jogkivonatot kell átadnia, amely szerkesztési engedélyeket tartalmaz. Használja az információ [beolvasása widgetet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) vagy a `&allowEdit=true` [videó-hozzáférési token beszerzése elemet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) .
 
 ## <a name="widgets-interaction"></a>Vezérlőinterakciók
 
-A Cognitive Insights widget interakcióba léphet egy videóval az alkalmazásban. Ez a szakasz bemutatja, hogy ez a kommunikáció hogyan valósítható meg.
+A kognitív betekintő widget interakcióba léphet az alkalmazás egy videóján. Ez a szakasz bemutatja, hogy ez a kommunikáció hogyan valósítható meg.
 
-![Cognitive Insights widget videoindexelő](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+![Kognitív bepillantások widget Video Indexer](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
 
 ### <a name="cross-origin-communications"></a>Eltérő eredetű kommunikáció
 
-Ahhoz, hogy a Video Indexer widgetek kommunikálhassanak más összetevőkkel, a Video Indexer szolgáltatás:
+Video Indexer widgetek más összetevőkkel való kommunikációjának lekéréséhez a Video Indexer szolgáltatás:
 
-- A kereszt-eredetű kommunikáció HTML5 metódusát használja. `postMessage`
+- A kereszthivatkozások közötti kommunikáció HTML5-módszerét `postMessage`használja.
 - ellenőrzi az üzenetet a VideoIndexer.ai forráson.
 
-Ha megvalósítja a saját játékoskódját, és integrálható a Cognitive Insights widgetekkel, az Ön felelőssége, hogy ellenőrizze az VideoIndexer.ai származó üzenet eredetét.
+Ha saját lejátszó kódot valósít meg, és integrálja a kognitív betekintő widgeteket, az Ön felelőssége, hogy ellenőrizze a VideoIndexer.ai származó üzenet eredetét.
 
-### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>Widgetek beágyazása az alkalmazásba vagy a blogba (ajánlott)
+### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>Widgetek beágyazása az alkalmazásba vagy a blogjába (ajánlott)
 
-Ez a szakasz bemutatja, hogyan érhető el a két Video Indexer widget közötti interakció, így amikor a felhasználó kiválasztja az alkalmazás insight vezérlőjét, a játékos a megfelelő pillanatra ugrik.
+Ez a szakasz azt mutatja be, hogyan lehet interakciót elérni két Video Indexer widget között, hogy amikor egy felhasználó kiválasztja a betekintési vezérlőt az alkalmazásban, a lejátszó a megfelelő pillanatra ugrik.
 
 1. Másolja a Lejátszó vezérlő beágyazási kódját.
 2. Másolja a Kognitív elemzési vezérlő beágyazási kódját.
 3. Adja hozzá a [közvetítőfájlt](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js), amely a két vezérlő közötti kommunikációt kezeli:<br/> 
 `<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
-Most, amikor a felhasználó kiválasztja az alkalmazás éleslátás-vezérlését, a játékos a megfelelő pillanatra ugrik.
+Most, amikor egy felhasználó kiválasztja a betekintési vezérlőt az alkalmazásban, a lejátszó a megfelelő pillanatra ugrik.
 
-További információt a [Video Indexer - Beágyazás mindkét Widgets demo című témakörben talál.](https://codepen.io/videoindexer/pen/NzJeOb)
+További tudnivalókért tekintse meg a [widgetek video Indexer beágyazását bemutató](https://codepen.io/videoindexer/pen/NzJeOb)témakört.
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>A Kognitív elemzési vezérlő beágyazása és az Azure Media Player használata a tartalmak lejátszásához
 
-Ez a szakasz bemutatja, hogyan érhető el a Cognitive Insights-widget és az Azure Media Player-példány közötti interakció az [AMP beépülő modul](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)használatával.
+Ez a szakasz bemutatja, hogyan lehet interakciót elérni egy kognitív bepillantási widget és egy Azure Media Player-példány között az [amp beépülő](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)modullal.
 
-1. Videoindexelő beépülő modul hozzáadása az AMP-lejátszóhoz:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
-2. Az Azure Media Player létrehozása a Video Indexer beépülő modullal.
+1. Video Indexer beépülő modul hozzáadása az AMP-lejátszóhoz:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
+2. Azure Media Player példánya a Video Indexer beépülő modullal.
 
         // Init the source.
         function initSource() {
@@ -168,17 +168,17 @@ Ez a szakasz bemutatja, hogyan érhető el a Cognitive Insights-widget és az Az
 
 3. Másolja a Kognitív elemzési vezérlő beágyazási kódját.
 
-Most már kommunikálhat az Azure Media Playerrel.
+Most már tud kommunikálni Azure Media Playerokkal.
 
-További információt az [Azure Media Player + VI Insights bemutatóban](https://codepen.io/videoindexer/pen/rYONrO)talál.
+További információkért tekintse meg a [Azure Media Player + VI bepillantást ismertető bemutatót](https://codepen.io/videoindexer/pen/rYONrO).
 
-### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>A Video Indexer Cognitive Insights widget beágyazása és egy másik videolejátszó használata
+### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>A Video Indexer kognitív betekintési widget beágyazása és más videolejátszó használata
 
-Ha az Azure Media Player-en kívül más videolejátszót használ, manuálisan kell manipulálnia a videolejátszót a kommunikáció eléréséhez.
+Ha nem a Azure Media Playert használja, akkor manuálisan kell módosítania a videolejátszót a kommunikáció eléréséhez.
 
 1. Szúrja be a videólejátszót.
 
-    Például egy szabványos HTML5-lejátszó:
+    Szabványos HTML5-lejátszó például:
 
         <video id="vid1" width="640" height="360" controls autoplay preload>
            <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
@@ -217,27 +217,27 @@ Ha az Azure Media Player-en kívül más videolejátszót használ, manuálisan 
         
         </script>
 
-További információt az [Azure Media Player + VI Insights bemutatóban](https://codepen.io/videoindexer/pen/YEyPLd)talál.
+További információkért tekintse meg a [Azure Media Player + VI bepillantást ismertető bemutatót](https://codepen.io/videoindexer/pen/YEyPLd).
 
 ## <a name="adding-subtitles"></a>Feliratok hozzáadása
 
-Ha a saját [Azure Media Player-alkalmazásával](https://aka.ms/azuremediaplayer)videoindexelő-elemzéseket ágyaz be, a módszer segítségével beszerezheti a `GetVttUrl` feliratokat (feliratokat). A JavaScript-metódust a Video Indexer AMP `getSubtitlesUrl` beépülő modulból is meghívhatja (ahogy azt korábban is látható).
+Ha saját [Azure Media Player](https://aka.ms/azuremediaplayer)segítségével ágyaz be video Indexer-betekintést, a `GetVttUrl` metódussal lezárt feliratokat (feliratokat) is lekérhet. A JavaScript-metódust a Video Indexer AMP beépülő modulból is meghívhatja `getSubtitlesUrl` (a korábban látható módon).
 
 ## <a name="customizing-embeddable-widgets"></a>Beágyazható vezérlők testreszabása
 
 ### <a name="cognitive-insights-widget"></a>Kognitív elemzési vezérlő
 
-Kiválaszthatja a kívánt elemzési típusokat. Ehhez adja meg őket a következő URL-paraméter értékeként, amely hozzáadódik a beágyazási kódhoz `&widgets=<list of wanted widgets>`(az API-ból vagy a webalkalmazásból): .
+Kiválaszthatja, hogy milyen típusú bepillantást szeretne. Ehhez adja meg azokat értékként a következő URL-paraméterhez, amelyet a rendszer a beolvasott beágyazási kódhoz adott hozzá (az API-ból vagy a webalkalmazásból `&widgets=<list of wanted widgets>`):.
 
-A lehetséges értékek `people` `animatedCharacters` a `keywords` `labels`következők: `emotions` `topics`, `keyframes` `transcript`, `ocr` `sentiments` `speakers`, , , , , , `scenes`, és `namedEntities`.
+A lehetséges értékek a következők `people`: `animatedCharacters` , `keywords` `labels` `sentiments` `emotions` `topics` `scenes` `namedEntities`,,,,,,,,,, és. `keyframes` `transcript` `ocr` `speakers`
 
-Ha például olyan widgetet szeretne beágyazni, amely csak személyeket és kulcsszavakat tartalmazó elemzéseket tartalmaz, az iframe-beágyazási URL-címe a következőképpen fog kinézni:
+Ha például olyan widgetet szeretne beágyazni, amely csak személyeket és kulcsszavakat tartalmaz, az iframe Beágyazási URL-címe a következőképpen fog kinézni:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Az iframe ablak címe az iframe URL-cím megadásával `&title=<YourTitle>` is testreszabható. (Ez testre `<title>` szabja a HTML érték).
+Az IFRAME-ablak címe testreszabható az IFRAME URL-cím megadásával `&title=<YourTitle>` is. (Testreszabja a HTML `<title>` -értéket).
    
-Ha például azt szeretné, hogy az iframe-ablak "MyInsights" címet adjon, az URL így fog kinézni:
+Ha például azt szeretné, hogy az IFRAME-ablak a "MyInsights" címet adja meg, az URL-cím a következőhöz hasonló lesz:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
 
@@ -251,37 +251,37 @@ Például:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
-Alapértelmezés szerint a Video Indexer player automatikusan létrehozott feliratokat, amelyek alapján a videó átirata. Az átirat a videóból a videó feltöltésekén kiválasztott forrásnyelvvel kerül kinyerésre.
+Alapértelmezés szerint az Video Indexer-lejátszó automatikusan létrehozta a videó átiratán alapuló zárt feliratokat. A videóból kinyert átirat a videó feltöltésekor kiválasztott forrás nyelvét jelöli.
 
-Ha más nyelvvel szeretne beágyazni, `&captions=<Language Code>` hozzáadhatja a beágyazólejátszó URL-címét. Ha azt szeretné, hogy a feliratok alapértelmezés szerint megjelenjenek, akkor átadhatja &showCaptions=true.If you want the captions to be displayed by default default, you can pass &showCaptions=true.
+Ha más nyelvű beágyazást szeretne, hozzáadhat `&captions=<Language Code>` a beágyazási lejátszó URL-címéhez. Ha azt szeretné, hogy a feliratok alapértelmezés szerint megjelenjenek, &showCaptions = True értéket adhat át.
 
-A beágyazási URL így fog kinézni:
+A beágyazási URL-cím ezután a következőképpen fog kinézni:
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>Robotpilota
 
-Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. úgy is dönthet, `&autoplay=false` hogy nem, ha átadja az előző beágyazási URL-címet.
+Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. az előző beágyazási URL-címre `&autoplay=false` való átadással dönthet úgy, hogy nem.
 
 ## <a name="code-samples"></a>Kódminták
 
-Tekintse meg a [kódminták](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) tártárát, amely a Video Indexer API és a Widgets mintáit tartalmazza:
+Tekintse meg a [Code Samples](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) -tárházat, amely mintákat tartalmaz video Indexer API-hoz és widgetekhez:
 
 | Fájl/mappa                       | Leírás                                |
 |-----------------------------------|--------------------------------------------|
-| `azure-media-player`              | Videóindexelő videó betöltése egyéni Azure Media Playerbe.                        |
-| `azure-media-player-vi-insights`  | A VI Insights beágyazása egyéni Azure Media Player alkalmazásba.                             |
-| `control-vi-embedded-player`      | Beágyazni VI Player és ellenőrzik azt kívülről.                                    |
-| `custom-index-location`           | VI Insights beágyazása egyéni külső helyről (lehet ügyfél egy blob).     |
-| `embed-both-insights`             | A VI Insights alapszintű használata a játékosok és az elemzések között egyaránt.                            |
-| `embed-insights-with-AMP`         | Vi Insights-widget beágyazása egyéni Azure Media Player alkalmazásba.                      |
-| `customize-the-widgets`           | Vi widgetek beágyazása testreszabott beállításokkal.                                     |
-| `embed-both-widgets`              | Beágyazni VI Player és Insights és kommunikálni közöttük.                      |
-| `url-generator`                   | A felhasználók által megadott beállítások alapján hoz létre egyéni beágyazási URL-t.             |
-| `html5-player`                    | A VI Insights beágyazása alapértelmezett HTML5-videólejátszóval.                           |
+| `azure-media-player`              | Videó-indexelő videó betöltése egyéni Azure Media Playerban.                        |
+| `azure-media-player-vi-insights`  | A VI-betekintést egyéni Azure Media Player ágyazhatja be.                             |
+| `control-vi-embedded-player`      | A VI-lejátszó beágyazása és felügyelete kívülről.                                    |
+| `custom-index-location`           | A VI-betekintést egy egyéni külső helyről ágyazhatja be (ez lehet az ügyfél egy blobja).     |
+| `embed-both-insights`             | A VI bepillantást nyerhet a játékosokra és az adatokra.                            |
+| `embed-insights-with-AMP`         | A VI-betekintési widget beágyazása egyéni Azure Media Player.                      |
+| `customize-the-widgets`           | A VI widgetek beágyazása testreszabott beállításokkal.                                     |
+| `embed-both-widgets`              | A VI-lejátszó és-információk beágyazása és a velük való kommunikáció.                      |
+| `url-generator`                   | Egyéni beágyazási URL-címeket hoz létre a felhasználó által megadott beállítások alapján.             |
+| `html5-player`                    | A VI-betekintést egy alapértelmezett HTML5-videolejátszó alá ágyazhatja.                           |
 
 ## <a name="next-steps"></a>További lépések
 
-A Video Indexer-elemzések megtekintéséről és szerkesztéséről a [VideoIndexer-elemzések megtekintése és szerkesztése című témakörben](video-indexer-view-edit.md)talál további információt.
+Video Indexer információk megtekintésével és szerkesztésével kapcsolatos információkért lásd: [video Indexer-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
 
-Is, nézd meg [Video indexer CodePen](https://codepen.io/videoindexer/pen/eGxebZ).
+Tekintse meg a [video Indexer CodePen](https://codepen.io/videoindexer/pen/eGxebZ)is.

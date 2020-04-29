@@ -1,90 +1,90 @@
 ---
-title: Adatbázis-biztonság – Azure Cosmos DB
-description: Ismerje meg, hogy az Azure Cosmos DB hogyan biztosít adatbázis-védelmet és adatbiztonságot az adatok számára.
+title: Adatbázis biztonsága – Azure Cosmos DB
+description: Ismerje meg, hogyan biztosítja az Azure Cosmos DB az adatbázis védelmét és az adatbiztonságot az adatai számára.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
 ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273511"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 
 Ez a cikk az Azure Cosmos DB által az adatbázis feltörésének megakadályozása, észlelése és kezelése érdekében biztosított adatbázis-biztonsági ajánlott eljárásokat és fő funkciókat írja le.
 
-## <a name="whats-new-in-azure-cosmos-db-security"></a>Az Azure Cosmos DB biztonsági szolgáltatás újdonságai
+## <a name="whats-new-in-azure-cosmos-db-security"></a>A Azure Cosmos DB biztonság újdonságai
 
-Az inaktív titkosítás már elérhető az Azure Cosmos DB-ben tárolt dokumentumok és biztonsági mentések számára az összes Azure-régióban. Az inaktív titkosítás automatikusan érvénybe lép mind az új, mind a meglévő ügyfelek rekedve ezekben a régiókban. Nincs szükség konfigurálni semmit; és ugyanazt a nagy késleltetést, átviteli, rendelkezésre állást és funkcionalitást kapja, mint korábban, azzal az előnnyel, hogy tudja, az adatok biztonságosak és biztonságosak az inaktív titkosítással.
+A REST-alapú titkosítás mostantól elérhető az összes Azure-régióban Azure Cosmos DB tárolt dokumentumok és biztonsági másolatok számára. A REST-titkosítást a rendszer automatikusan alkalmazza az új és a meglévő ügyfelekre is ezekben a régiókban. Semmit nem kell konfigurálnia; és ugyanolyan nagy késést, teljesítményt, rendelkezésre állást és funkcionalitást kap, mint korábban, hogy az adatok biztonsága és biztonsága biztonságos legyen a REST-titkosítással.
 
-## <a name="how-do-i-secure-my-database"></a>Hogyan biztosíthatom az adatbázisomat?
+## <a name="how-do-i-secure-my-database"></a>Az adatbázis biztonságának Hogyan
 
-Az adatbiztonság megosztott felelősség Ön, az ügyfél és az adatbázis-szolgáltató között. A választott adatbázis-szolgáltatótól függően a felelősség mértéke eltérő lehet. Ha helyszíni megoldást választ, a végpontvédelemtől kezdve a hardver fizikai biztonságáig mindent meg kell adnia , ami nem könnyű feladat. Ha egy PaaS-felhő-adatbázis-szolgáltatót, például az Azure Cosmos DB-t választja, az aggodalomra okot adó terület jelentősen csökken. Az alábbi kép, amely a Microsoft [megosztott felelősségei a felhőalapú számítástechnikával](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) kapcsolatos tanulmányából származik, bemutatja, hogyan csökken a felelőssége egy PaaS-szolgáltatóval, például az Azure Cosmos DB-vel.
+Az adatbiztonság az Ön, az ügyfél és az adatbázis-szolgáltató között megosztott felelősség. Attól függően, hogy melyik adatbázis-szolgáltatót választja, az Ön által viselt felelősség mértéke változhat. Ha helyszíni megoldást választ, meg kell adnia mindent a végpontok elleni védelemtől a hardver fizikai biztonsága érdekében – ami nem egyszerű feladat. Ha úgy dönt, hogy egy olyan, a felhőben tárolt, a Azure Cosmos DBt is kiválasztó, a területe jelentősen csökken Az alábbi, a Microsoft által a [felhőalapú számítástechnikai feladatokkal kapcsolatos közös felelősséggel](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) foglalkozó rendszerkép azt mutatja be, hogyan csökken a felelőssége egy olyan Pásti-szolgáltatóval, mint a Azure Cosmos db.
 
-![Az ügyfél- és adatbázis-szolgáltató felelőssége](./media/database-security/nosql-database-security-responsibilities.png)
+![Az ügyfél-és adatbázis-szolgáltató feladatai](./media/database-security/nosql-database-security-responsibilities.png)
 
-Az előző ábrán magas szintű felhőbiztonsági összetevők láthatók, de milyen elemek miatt kell aggódnia kifejezetten az adatbázis-megoldáshoz? És hogyan lehet összehasonlítani a megoldásokat egymással?
+Az előző ábrán a magas szintű Felhőbeli biztonsági összetevők láthatók, de milyen elemek szükségesek az adatbázis-megoldáshoz? És hogyan lehet összehasonlítani egymással a megoldásokat?
 
-Az adatbázisrendszerek összehasonlítására vonatkozó követelmények alábbi ellenőrzőlistáját javasoljuk:
+A következő, az adatbázis-rendszerek összehasonlítására szolgáló követelmények listáját ajánljuk:
 
 - Hálózati biztonság és tűzfal beállításai
 - Felhasználói hitelesítés és részletes felhasználói vezérlők
-- A regionális hibák globális replikálásának képessége
-- Feladatátvétel egyik adatközpontból a másikba
-- Helyi adatreplikáció adatközponton belül
-- Automatikus adatmentés
-- Törölt adatok visszaállítása biztonsági mentésekből
-- Érzékeny adatok védelme és elkülönítése
+- Az adatreplikálás globálisan a regionális hibákra
+- Az egyik adatközpontból a másikba való feladatátvétel lehetősége
+- Helyi adatreplikálás egy adatközponton belül
+- Automatikus biztonsági mentések
+- Törölt adatok visszaállítása biztonsági másolatokból
+- Bizalmas adatok védelme és elkülönítése
 - Támadások figyelése
-- Reagálás a támadásokra
-- Az adatok adatgyűjtés-irányítási korlátozások betartásának földrajzi kerítésezése
-- A védett adatközpontokban lévő kiszolgálók fizikai védelme
+- Válaszadás a támadásokra
+- Az adatkezelési korlátozások betartásának lehetősége geo-kerítésre
+- A védett adatközpontokban található kiszolgálók fizikai védelme
 - Tanúsítványok
 
-És bár nyilvánvalónak tűnhet, a legutóbbi [nagyszabású adatbázis-jogsértések](https://thehackernews.com/2017/01/mongodb-database-security.html) emlékeztetnek minket a következő követelmények egyszerű, de kritikus fontosságára:
+És bár nyilvánvalónak tűnhet, a közelmúltban [nagy léptékű adatbázis-megsértések](https://thehackernews.com/2017/01/mongodb-database-security.html) emlékeztetnek minket az alábbi követelmények egyszerű, de kritikus jelentőségére:
 
-- Naprakészen tartott javított kiszolgálók
-- HTTPS alapértelmezés szerint/TLS-titkosítás
-- Rendszergazdai fiókok erős jelszóval
+- A javított kiszolgálók naprakészen tartanak
+- HTTPS alapértelmezett/TLS titkosítással
+- Erős jelszavakkal rendelkező rendszergazdai fiókok
 
-## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Hogyan biztosítja az Azure Cosmos DB az adatbázisomat?
+## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Hogyan Azure Cosmos DB az adatbázis biztonsága
 
-Nézzük vissza az előző listát – hány ilyen biztonsági követelményeket biztosít az Azure Cosmos DB? Minden egyes darabot.
+Nézzünk vissza az előző listára – hány biztonsági követelményt Azure Cosmos DB biztosítanak? Minden egy.
 
-Ássuk bele magunkat részletesen.
+Ismerkedjen meg minden részlettel.
 
-|Biztonsági követelmény|Az Azure Cosmos DB biztonsági megközelítése|
+|Biztonsági követelmény|Azure Cosmos DB biztonsági megközelítése|
 |---|---|
-|Hálózati biztonság|Az adatbázis védelmének első védelmi rétege az IP-tűzfal használata. Az Azure Cosmos DB támogatja a házirend-alapú IP-alapú hozzáférés-vezérlés a bejövő tűzfal támogatása. Az IP-alapú hozzáférés-vezérlések hasonlóak a hagyományos adatbázis-rendszerek által használt tűzfalszabályokhoz, de azok ki vannak bontva, így az Azure Cosmos-adatbázisfiók csak jóváhagyott gépek vagy felhőszolgáltatások készletéről érhető el. További információ az [Azure Cosmos DB tűzfal támogatási](firewall-support.md) cikkében.<br><br>Az Azure Cosmos DB lehetővé teszi egy adott IP-cím (168.61.48.0), egy IP-tartomány (168.61.48.0/8) és IP-cím és tartományok kombinációjának engedélyezését. <br><br>Az engedélyezett listán kívüli gépekről származó összes kérelmet az Azure Cosmos DB blokkolja. A jóváhagyott gépektől és felhőszolgáltatásoktól érkező kérelmeknek ezután be kell fejezniük a hitelesítési folyamatot, hogy hozzáférés-vezérlést kapjanak az erőforrásokhoz.<br><br> [A virtuális hálózati szolgáltatás címkék](../virtual-network/service-tags-overview.md) segítségével hálózati elkülönítést, és az Azure Cosmos DB-erőforrások védelme az általános internetről. Biztonsági szabályok létrehozásakor a szolgáltatáscímkéket használjon adott IP-címek helyett. A szolgáltatáscímke nevének (például az AzureCosmosDB) megadásával a szabály megfelelő forrás- vagy célmezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.|
-|Engedélyezés|Az Azure Cosmos DB kivonat-alapú üzenethitelesítési kódot (HMAC) használ az engedélyezéshez. <br><br>Minden kérelem kivonatolt a titkos fiók kulcshasználatával, és a következő base-64 kódolt kivonatküldi minden egyes hívás az Azure Cosmos DB. A kérelem érvényesítéséhez az Azure Cosmos DB szolgáltatás a megfelelő titkos kulcsot és tulajdonságokat használ egy kivonat létrehozásához, majd összehasonlítja az értéket a kérelemben szereplővel. Ha a két érték egyezik, a művelet sikeresen engedélyezett, és a kérelem feldolgozása, ellenkező esetben van egy engedélyezési hiba, és a kérelem elutasításra kerül.<br><br>Használhat egy [főkulcsot](secure-access-to-data.md#master-keys), vagy egy [erőforrás-jogkivonatot,](secure-access-to-data.md#resource-tokens) amely lehetővé teszi a részletes hozzáférést egy erőforráshoz, például egy dokumentumhoz.<br><br>További információ az [Azure Cosmos DB-erőforrásokhoz való hozzáférés biztosítása.](secure-access-to-data.md)|
-|Felhasználók és engedélyek|A fiók főkulcsával adatbázisonként felhasználói erőforrásokat és engedély-erőforrásokat hozhat létre. Az erőforrás-jogkivonat egy adatbázis engedélyéhez van társítva, és meghatározza, hogy a felhasználó rendelkezik-e hozzáféréssel (írási és írási, írásvédett vagy nincs hozzáférés) az adatbázis ban lévő alkalmazás-erőforrásokhoz. Az alkalmazás-erőforrások közé tartoznak a tárolók, a dokumentumok, a mellékletek, a tárolt eljárások, az eseményindítók és az UDF-ek. Az erőforrás-jogkivonat ezután a hitelesítés során az erőforráshoz való hozzáférés biztosításához vagy megtagadásához használatos.<br><br>További információ az [Azure Cosmos DB-erőforrásokhoz való hozzáférés biztosítása.](secure-access-to-data.md)|
-|Active directory-integráció (RBAC)| A Cosmos-fiókhoz, az adatbázishoz, a tárolóhoz és az ajánlatokhoz (átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és átviteli- és elérési- hozzáféréshez) való hozzáférést is biztosíthatja vagy korlátozhatja az Azure Portalon. Az IAM szerepköralapú hozzáférés-vezérlést biztosít, és integrálható az Active Directoryval. Beépített szerepköröket vagy egyéni szerepköröket használhat egyének és csoportok számára. További információt az [Active Directory integrációs](role-based-access-control.md) cikkében talál.|
-|Globális replikáció|Az Azure Cosmos DB kulcsrakész globális terjesztést kínál, amely lehetővé teszi, hogy egyetlen kattintással replikálja az adatokat az Azure bármelyik világméretű adatközpontjára. A globális replikáció lehetővé teszi, hogy globálisan skálázjon, és alacsony késleltetésű hozzáférést biztosítson az adatokhoz világszerte.<br><br>A biztonság összefüggésében a globális replikáció biztosítja az adatvédelmet a regionális hibák ellen.<br><br>További információ: [Globális adatterjesztés](distribute-data-globally.md).|
-|Régiónkénti feladatátvétel|Ha az adatokat több adatközpontban replikálta, az Azure Cosmos DB automatikusan átgördül a műveleteken, ha egy regionális adatközpont offline állapotba kerül. Létrehozhat egy rangsorolt feladatátvételi régiók listáját azadatok replikálásának régiójával. <br><br>További információ az [Azure Cosmos DB regionális feladatátvételeiről.](high-availability.md)|
-|Helyi replikáció|Az Azure Cosmos DB még egyetlen adatközponton belül is automatikusan replikálja az adatokat a magas rendelkezésre állás érdekében, így választhat a [konzisztenciaszintek közül.](consistency-levels.md) Ez a replikáció garantálja a 99,99%-os [rendelkezésre állási SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) az összes egyrégiós fiókok és az összes több régiós fiókok nyugodt konzisztencia és 99,999%-os olvasási rendelkezésre állás az összes többrégiós adatbázis-fiókok.|
-|Automatizált online biztonsági mentések|Az Azure Cosmos-adatbázisok rendszeresen biztonsági mentése és tárolása georedundáns tárolóban történik. <br><br>További információ az [Automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel.](online-backup-and-restore.md)|
-|Törölt adatok visszaállítása|Az automatikus online biztonsági mentések segítségével helyreállíthatja azokat az adatokat, amelyeket véletlenül az esemény után akár ~ 30 nappal törölt. <br><br>További információ az [Automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel](online-backup-and-restore.md)|
-|Érzékeny adatok védelme és elkülönítése|Az Összes adat a régiókban felsorolt Újdonságok? most már titkosítva van.<br><br>A személyes adatok és egyéb bizalmas adatok elkülöníthetők egy adott tárolóra és írásra és írásra, vagy az írásvédett hozzáférés csak meghatározott felhasználókra korlátozható.|
-|Támadások figyelése|A [naplózás és a tevékenységnaplók](logging.md)használatával figyelheti a fiókját a normál és rendellenes tevékenységekre. Megtekintheti, hogy milyen műveleteket hajtottak végre az erőforrásokon, ki kezdeményezte a műveletet, mikor történt a művelet, a művelet állapota, és még sok más, amint az a táblázatot követő képernyőképen látható.|
-|Reagálás a támadásokra|Miután kapcsolatba lépett az Azure-támogatással egy esetleges támadás bejelentéséhez, egy 5 lépéses incidens-reagálási folyamat elindul. Az 5 lépéses folyamat célja, hogy a probléma észlelése és a vizsgálat megkezdése után a lehető leggyorsabban helyreállítsa a normál szolgáltatásbiztonságot és műveleteket.<br><br>További információ a [Microsoft Azure biztonsági válasza a felhőben](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)című részben.|
-|Geo-kerítés|Az Azure Cosmos DB biztosítja a szuverén régiók (például Németország, Kína, USA-beli kormány) adatirányítását.|
-|Védett létesítmények|Az Azure Cosmos DB-ben tárolt adatok az Azure védett adatközpontjaiban található SSD-ken tárolódnak.<br><br>További információ a [Microsoft globális adatközpontjaiban](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
-|HTTPS/SSL/TLS titkosítás|Az Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. Az Azure Cosmos DB a TLS 1.2-t is támogatja.<br>Lehetőség van egy minimális TLS verziókiszolgálói oldal kényszerítésére. Ehhez vegye fel [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)a kapcsolatot.|
-|Titkosítás inaktív állapotban|Az Azure Cosmos DB-ben tárolt összes adat inkultálta az inkett. További információ az [Azure Cosmos DB titkosítása inaktív módon](./database-encryption-at-rest.md)|
-|Javított szerverek|Felügyelt adatbázisként az Azure Cosmos DB szükségtelenné teszi a kiszolgálók kezelését és javítását, amely automatikusan elvégezhető.|
-|Rendszergazdai fiókok erős jelszóval|Nehéz elhinni, hogy még ezt a követelményt is meg kell említenünk, de néhány versenytársunkkal ellentétben lehetetlen jelszó nélkül rendelkezni az Azure Cosmos DB-ben.<br><br> A TLS- és HMAC titkos alapú hitelesítésen keresztüli biztonság alapértelmezés szerint bevan sülve.|
-|Biztonsági és adatvédelmi tanúsítványok| A tanúsítványok legfrissebb listáját lásd a teljes [Azure Compliance-webhelyen,](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) valamint a legújabb [Azure Megfelelőségi dokumentumot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) az összes tanúsítványsal (keresés a Cosmos-ra). 2018. április 25-i posta (Azure #CosmosDB: Secure, private, compliant, amely tartalmazza a SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High és még sok más tartalmat) tartalmazó, célzottabb olvasd el.
+|Hálózati biztonság|Az adatbázis biztonságossá tételéhez az IP-tűzfal használata az első védelmi réteg. Azure Cosmos DB támogatja a házirend által vezérelt IP-alapú hozzáférés-vezérlést a bejövő tűzfalak támogatásához. Az IP-alapú hozzáférés-vezérlések a hagyományos adatbázis-rendszerek által használt tűzfalszabályok hasonlóak, de kibővülnek, így az Azure Cosmos adatbázis-fiók csak jóváhagyott gépekből vagy felhőalapú szolgáltatásokból érhető el. További információt [Azure Cosmos db tűzfal támogatási](firewall-support.md) cikkében talál.<br><br>Azure Cosmos DB lehetővé teszi egy adott IP-cím (168.61.48.0), egy IP-címtartomány (168.61.48.0/8), valamint az IP-címek és tartományok kombinációjának engedélyezését. <br><br>Azure Cosmos DB letiltja az ezen az engedélyezési listán kívüli gépekről származó összes kérelmet. A jóváhagyott gépektől és a Cloud servicestől érkező kéréseket a hitelesítési folyamatnak kell elvégeznie, hogy hozzáférés-vezérlést kapjon az erőforrásokhoz.<br><br> A [virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md) a hálózati elkülönítés eléréséhez és a Azure Cosmos db-erőforrások általános internetről való ellátásához használhatók. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például AzureCosmosDB) megadásával a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.|
+|Engedélyezés|A Azure Cosmos DB kivonat-alapú üzenethitelesítő kódot (HMAC) használ a hitelesítéshez. <br><br>Minden kérelmet a titkos fiók kulcsa alapján kell kivonattal ellátni, és a rendszer a következő Base-64 kódolású kivonatot küldi el a Azure Cosmos DB összes hívásával. A kérelem érvényesítéséhez a Azure Cosmos DB szolgáltatás a helyes titkos kulcsot és tulajdonságokat használja a kivonat létrehozásához, majd összehasonlítja az értéket a kérelemben szereplővel. Ha a két érték egyezik, a művelet sikeresen engedélyezve lesz, és a rendszer feldolgozza a kérést, ellenkező esetben a rendszer elutasítja a kérelmet.<br><br>Használhatja a [főkulcsot](secure-access-to-data.md#master-keys)vagy egy [erőforrás-tokent](secure-access-to-data.md#resource-tokens) is, amely lehetővé teszi a részletes hozzáférést egy erőforráshoz, például egy dokumentumhoz.<br><br>További információ a [Azure Cosmos db erőforrásaihoz való hozzáférés biztonságossá tételéről](secure-access-to-data.md).|
+|Felhasználók és engedélyek|A fiók főkulcsának használatával létrehozhat egy adatbázison felhasználói erőforrásokat és engedélyek erőforrásait. Az erőforrás-token egy adatbázisban lévő engedélyhez van társítva, és meghatározza, hogy a felhasználó rendelkezik-e hozzáféréssel (írható-olvasható, írásvédett vagy nincs hozzáférés) az adatbázisban lévő alkalmazás-erőforráshoz. Az alkalmazás erőforrásai közé tartozik a tároló, a dokumentumok, a mellékletek, a tárolt eljárások, az eseményindítók és a UDF. Az erőforrás-tokent a rendszer a hitelesítés során használja az erőforráshoz való hozzáférés megadásához vagy megtagadásához.<br><br>További információ a [Azure Cosmos db erőforrásaihoz való hozzáférés biztonságossá tételéről](secure-access-to-data.md).|
+|Active Directory-integráció (RBAC)| Az Azure Portal hozzáférés-vezérlés (IAM) használatával is megadhatja vagy korlátozhatja a Cosmos-fiók, az adatbázis, a tároló és az ajánlatok elérését. A IAM a szerepköralapú hozzáférés-vezérlést és a Active Directory integrációját biztosítja. Használhat beépített szerepköröket vagy egyéni szerepköröket egyéni felhasználókhoz és csoportokhoz. További információ: [Active Directory Integration](role-based-access-control.md) article.|
+|Globális replikálás|A Azure Cosmos DB kulcsrakész globális terjesztést kínál, amely lehetővé teszi az adatai replikálását az Azure egyik globális adatközpontja számára egy gombnyomással. A globális replikáció lehetővé teszi, hogy globálisan méretezhető legyen, és alacsony késésű hozzáférést biztosítson az adataihoz világszerte.<br><br>A biztonság kontextusában a globális replikáció biztosítja a regionális hibákkal szembeni adatvédelmet.<br><br>További információ: [Globális adatterjesztés](distribute-data-globally.md).|
+|Régiónkénti feladatátvétel|Ha több adatközpontban replikálta az adatait, Azure Cosmos DB automatikusan legörgeti a műveleteket, ha a regionális adatközpont offline állapotba kerül. Létrehozhatja a feladatátvételi régiók rangsorolt listáját azon régiók használatával, amelyekben az adatait replikálja. <br><br>További információ a [regionális feladatátvételekről Azure Cosmos DBban](high-availability.md).|
+|Helyi replikálás|A Azure Cosmos DB még egy adatközponton belül is automatikusan replikálja az adatok magas rendelkezésre állását, így biztosítva a [konzisztencia-szintek](consistency-levels.md)választékát. Ez a replikálás garantálja a 99,99%-os [rendelkezésre állási SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) -t az összes egyrégiós fiókhoz és az összes többrégiós fiókhoz, amely nyugodt konzisztenciát és 99,999%-os olvasási rendelkezésre állást biztosít az összes több régiós adatbázis|
+|Automatizált online biztonsági másolatok|Az Azure Cosmos-adatbázisok rendszeresen készülnek, és egy geo redundáns tárolóban tárolódnak. <br><br>További információ: [automatikus online biztonsági mentés és visszaállítás Azure Cosmos DBsal](online-backup-and-restore.md).|
+|Törölt adatértékek visszaállítása|Az automatizált online biztonsági másolatok segítségével helyreállíthatja az esetlegesen véletlenül törölt adatokat az eseményt követő 30 napon belül. <br><br>További információ: [automatikus online biztonsági mentés és visszaállítás Azure Cosmos db](online-backup-and-restore.md)|
+|Bizalmas adatok védelme és elkülönítése|Az Újdonságok listájában felsorolt régiók összes adatai mostantól titkosítva van.<br><br>A személyes adatok és az egyéb bizalmas adatok elkülöníthetők bizonyos tárolók és írási és olvasási hozzáférés esetén, vagy csak olvasási hozzáféréssel rendelkezhetnek bizonyos felhasználóknak.|
+|Támadások figyelése|A naplózási [és a tevékenységi naplók](logging.md)használatával figyelheti a fiókját a normál és rendellenes tevékenységekhez. Megtekintheti, hogy milyen műveleteket hajtottak végre az erőforrásokon, ki kezdeményezte a műveletet, a művelet bekövetkeztekor, a művelet állapotát, és sokkal többet, ahogy az a táblázatot követő képernyőképen is látható.|
+|Válaszadás a támadásokra|Miután felvette a kapcsolatot az Azure-támogatással, hogy jelentsen egy lehetséges támadást, egy 5 lépésből álló incidens-válasz indult el. Az 5 lépésből álló folyamat célja, hogy a probléma észlelése és a vizsgálat elindítása után a lehető leggyorsabban visszaállítsa a normál szolgáltatás biztonsági és üzemeltetési műveleteit.<br><br>További információ: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
+|Földrajzi kerítés|Azure Cosmos DB biztosítja az adatkezelést a szuverén régiók számára (például Németország, Kína, US Gov).|
+|Védett létesítmények|A Azure Cosmos DBban tárolt adategységeket az Azure védett adatközpontjai SSD-k tárolják.<br><br>További információ a [Microsoft globális adatközpontokban](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
+|HTTPS/SSL/TLS titkosítás|A Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. A Azure Cosmos DB a TLS 1,2-et is támogatja.<br>Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).|
+|Titkosítás inaktív állapotban|A Azure Cosmos DB tárolt összes adatforgalom inaktív állapotban van. További információ a [Azure Cosmos db inaktív titkosításról](./database-encryption-at-rest.md)|
+|Javított kiszolgálók|Felügyelt adatbázisként a Azure Cosmos DB szükségtelenné teszi a kiszolgálók felügyeletét és javítását, ami automatikusan történik.|
+|Erős jelszavakkal rendelkező rendszergazdai fiókok|Nehéz elhinni, hogy még meg is kell említeni ezt a követelményt, de a versenytársaktól eltérően nem lehet rendszergazdai fiókja, amely nem rendelkezik jelszóval a Azure Cosmos DBban.<br><br> A TLS-vel és a HMAC-alapú titkos hitelesítéssel történő biztonság alapértelmezés szerint besütött.|
+|Biztonsági és adatvédelmi tanúsítványok| A minősítések legnaprakészebb listája a teljes [Azure-megfelelőségi webhelyet](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) , valamint a legújabb [Azure-megfelelőségi dokumentumot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) tartalmazza minden minősítéssel (a Cosmos kifejezés keresése). A koncentráltabb olvasásért tekintse meg 2018 az [Azure #CosmosDB: Secure, Private, kompatibilis, SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP magas és sok más.
 
-A következő képernyőkép bemutatja, hogyan használhatja a naplózási és tevékenységnaplókat a fiók figyelésére: ![Az Azure Cosmos DB tevékenységnaplói](./media/database-security/nosql-database-security-application-logging.png)
+A következő képernyőképen látható, hogyan használhatók a naplózási naplózási és a tevékenységi ![naplók a fiók figyeléséhez: Azure Cosmos db](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>További lépések
 
-A főkulcsokról és az erőforrás-jogkivonatokról az [Azure Cosmos DB-adatokhoz való hozzáférés védelme](secure-access-to-data.md)című témakörben talál további információt.
+További információ a főkulcsokról és az erőforrás-jogkivonatokról: a [Azure Cosmos db adatokhoz való hozzáférés biztonságossá tétele](secure-access-to-data.md).
 
-A naplózásról az [Azure Cosmos DB diagnosztikai naplózása](logging.md)című témakörben talál további információt.
+További információ a naplózásról: [Azure Cosmos db diagnosztikai naplózás](logging.md).
 
-A Microsoft-tanúsítványokról az [Azure Adatvédelmi központban](https://azure.microsoft.com/support/trust-center/)talál további információt.
+További információ a Microsoft-tanúsítványokról: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/).

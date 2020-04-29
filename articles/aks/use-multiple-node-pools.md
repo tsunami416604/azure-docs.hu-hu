@@ -1,51 +1,51 @@
 ---
-title: Több csomópontkészlet használata az Azure Kubernetes-szolgáltatásban (AKS)
-description: Megtudhatja, hogyan hozhat létre és kezelhet több csomópontkészletet egy fürthöz az Azure Kubernetes-szolgáltatásban (AKS)
+title: Több Node-készlet használata az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készletet egy fürthöz az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259085"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürt több csomópontkészletének létrehozása és kezelése az Azure Kubernetes szolgáltatásban (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
-Az Azure Kubernetes-szolgáltatásban (AKS) az azonos konfigurációs csomópontok *csomópontkészletekbe*vannak csoportosítva. Ezek a csomópontkészletek tartalmazzák az alkalmazásokat futtató mögöttes virtuális gépeket. A csomópontok kezdeti száma és méretük (SKU) definiálva van, amikor létrehoz egy AKS-fürtöt, amely létrehoz egy [rendszercsomópont-készletet.][use-system-pool] A különböző számítási vagy tárolási igényekkel bíró alkalmazások támogatásához további *felhasználói csomópontkészleteket*hozhat létre. A rendszercsomópont-készletek elsődleges célja a kritikus rendszerpodok, például a CoreDNS és az alagútfront üzemeltetése. A felhasználói csomópontkészletek elsődleges célja az alkalmazáspodok üzemeltetése. Az alkalmazáspodok azonban ütemezhetők a rendszercsomópont-készleteken, ha csak egy készletet szeretne az AKS-fürtben. A felhasználói csomópontkészletek, ahol az alkalmazás-specifikus podok. Használja például ezeket a további felhasználói csomópontkészleteket gpu-k biztosításához a nagy számítási igényű alkalmazásokhoz, vagy a nagy teljesítményű SSD-tárolóhoz való hozzáférést.
+Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. Ezek a csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A csomópontok kezdeti száma és a mérete (SKU) akkor van meghatározva, amikor egy AK-fürtöt hoz létre, amely létrehoz egy [rendszercsomópont-készletet][use-system-pool]. A különböző számítási vagy tárolási igényekkel rendelkező alkalmazások támogatásához további *felhasználói csomópont-készleteket*is létrehozhat. A rendszercsomópont-készletek a kritikus rendszerhüvelyek, például a CoreDNS és a tunnelfront üzemeltetésének elsődleges célját szolgálják ki. A felhasználói csomópontok készletei az alkalmazás-hüvelyek üzemeltetésének elsődleges céljaként szolgálnak. Az Application hüvelyek azonban a rendszercsomópont-készletekbe ütemezhetők, ha csak egy készletet szeretne használni az AK-fürtben. A felhasználói csomópontok készletei az alkalmazás-specifikus hüvelyek elhelyezésére szolgálnak. Ezekkel a további felhasználói csomópont-készletekkel például GPU-t biztosíthat a nagy számítási igényű alkalmazásokhoz, vagy hozzáférhet a nagy teljesítményű SSD-tárolóhoz.
 
 > [!NOTE]
-> Ez a szolgáltatás lehetővé teszi, hogy több csomópontkészlet létrehozása és kezelése jobban szabályozhatja. Ennek eredményeképpen külön parancsok szükségesek a létrehozáshoz/frissítéshez/törléshez. Korábban fürtműveletek `az aks create` `az aks update` a felügyeltfürt API-n keresztül vagy használták, és ez volt az egyetlen lehetőség a vezérlősík és egyetlen csomópontkészlet módosítására. Ez a szolgáltatás az ügynökkészlet-készletek számára külön műveletkészletet tesz `az aks nodepool` elérhetővé az agentPool API-n keresztül, és a parancskészlet használatát igényli az egyes csomópontkészleteken végrehajtott műveletek végrehajtásához.
+> Ez a funkció lehetővé teszi a több csomópontos készlet létrehozását és kezelését. Ennek eredményeképpen külön parancsok szükségesek a létrehozás/frissítés/törlés számára. Korábban a managedCluster API `az aks create` - `az aks update` val vagy annak használatával végzett fürtműveleteket, és az egyetlen lehetőség, hogy megváltoztassa a vezérlő síkot és egyetlen csomópontos készletet. Ez a funkció az agentPool API-n keresztül egy külön műveleti készletet tesz elérhetővé az ügynökök számára `az aks nodepool` , és a parancs használatát igényli a műveletek végrehajtásához egy adott csomópont-készleten.
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet több csomópontkészletet egy AKS-fürtben.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet több Node-készletet egy AK-fürtben.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure CLI 2.2.0-s vagy újabb verzióját telepíteni és konfigurálni kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Szüksége lesz az Azure CLI-es vagy újabb verziójára, amely telepítve van és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="limitations"></a>Korlátozások
 
-A következő korlátozások vonatkoznak a több csomópontkészletet támogató AKS-fürtök létrehozásakor és kezelésében:
+A több csomópontot támogató AK-fürtök létrehozásakor és kezelésekor a következő korlátozások érvényesek:
 
-* Lásd: [Kvóták, virtuálisgép-méretkorlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (AKS).][quotas-skus-regions]
-* Törölheti a rendszercsomópont-készleteket, feltéve, hogy egy másik rendszercsomópont-készlet telje el az AKS-fürtben.
-* A rendszerkészleteknek legalább egy csomópontot kell tartalmazniuk, és a felhasználói csomópontkészletek nulla vagy több csomópontot tartalmazhatnak.
-* Az AKS-fürtnek a standard termékváltozat terheléselosztót kell használnia több csomópontkészlet használatához, a szolgáltatás nem támogatott az alapszintű termékváltozat terheléselosztóival.
-* Az AKS-fürtnek virtuálisgép-méretezési készleteket kell használnia a csomópontokhoz.
-* A csomópontkészlet neve csak kisalfanumerikus karaktereket tartalmazhat, és kisbetűvel kell kezdődnie. Linux-csomópontkészletek esetén a hossznak 1 és 12 karakter között kell lennie, a Windows-csomópontkészletek esetében a hossznak 1 és 6 karakter között kell lennie.
-* Minden csomópontkészletnek ugyanabban a virtuális hálózatban kell lennie.
-* Ha fürtlétrehozási időben több csomópontkészletet hoz létre, a csomópontkészletek által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlősíkhoz beállított verzióval. Ez frissíthető a fürt csomópontonkénti készletműveletek használatával történő kiépítése után.
+* Tekintse [meg a kvótákat, a virtuális gépek méretére vonatkozó korlátozásokat és a régió elérhetőségét az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions].
+* A rendszercsomópont-készleteket törölheti, ha rendelkezik egy másik rendszercsomópont-készlettel, hogy az AK-fürtön legyen a helyük.
+* A rendszerkészleteknek legalább egy csomópontot tartalmazniuk kell, és a felhasználói csomópontok készletei nulla vagy több csomópontot is tartalmazhatnak.
+* Az AK-fürtnek a standard SKU Load balancert kell használnia több Node-készlet használatához, a szolgáltatás alapszintű SKU-terheléselosztó esetén nem támogatott.
+* Az AK-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
+* A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie, a Windows-csomópontok esetében a hossznak 1 és 6 karakter közöttinek kell lennie.
+* Az összes csomópont-készletnek ugyanabban a virtuális hálózatban kell lennie.
+* Ha több csomópont-készletet hoz létre a fürt létrehozásakor, a csomópontok által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlési síkon beállított verzióval. Ezt azután frissítheti, ha a fürtöt csomópont-készletezési műveletek használatával állították ki.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
 > [!Important]
-> Ha az AKS-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, azt javasoljuk, hogy legalább három csomópontot használjon a csomópontkészlethez.
+> Ha az AK-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, javasoljuk, hogy legalább három csomópontot használjon a csomópont-készlethez.
 
-Első lépésekhez hozzon létre egy AKS-fürtöt egyetlen csomópontkészlettel. A következő példa az [az csoport létrehozása][az-group-create] parancsot használja egy *myResourceGroup* nevű erőforráscsoport létrehozásához az *eastus* régióban. Ezután létrejön egy *myAKSCluster* nevű AKS-fürt az [az aks create][az-aks-create] paranccsal. A *--kubernetes-verzió* *1.15.7* segítségével mutatja be, hogyan frissítheti a csomópontkészlet egy következő lépésben. A támogatott [Kubernetes-verziót megadhatja.][supported-versions]
+Első lépésként hozzon létre egy AK-fürtöt egyetlen csomópontos készlettel. Az alábbi példa az az [Group Create][az-group-create] paranccsal létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ezután létrejön egy *myAKSCluster* nevű AK-fürt az az [AK Create][az-aks-create] paranccsal. A *1.15.7* egy *--kubernetes-verziója* a következő lépésben mutatja be, hogyan lehet frissíteni egy csomópont-készletet. Megadhat bármilyen [támogatott Kubernetes-verziót][supported-versions].
 
 > [!NOTE]
-> Az *alapszintű* terheléselosztó termékváltozat **nem támogatott** több csomópontkészlet használata esetén. Alapértelmezés szerint az AKS-fürtök az Azure CLI és az Azure Portal *standard* terheléselosztó termékváltozatával jönnek létre.
+> Az *alapszintű* Load Balancer SKU **nem támogatott** több csomópontos készlet használata esetén. Alapértelmezés szerint az AK-fürtök a *standard* Load Balancer SKU-val jönnek létre az Azure CLI-ből és Azure Portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -65,17 +65,17 @@ az aks create \
 A fürt létrehozása néhány percet vesz igénybe.
 
 > [!NOTE]
-> Annak érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópontkészletben, mivel az alapvető rendszerszolgáltatások ezen a csomópontkészleten futnak.
+> Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben, mivel az alapvető rendszerszolgáltatások ezen a csomópont-készleten futnak.
 
-Amikor a fürt készen áll, az [az aks get-credentials][az-aks-get-credentials] paranccsal lekéri a fürt hitelesítő adatait a következőhöz: `kubectl`
+Ha a fürt elkészült, használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot a fürt hitelesítő adatainak lekéréséhez a következővel való használatra `kubectl`:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="add-a-node-pool"></a>Csomópontkészlet hozzáadása
+## <a name="add-a-node-pool"></a>Csomópont-készlet hozzáadása
 
-Az előző lépésben létrehozott fürt egyetlen csomópontkészlettel rendelkezik. Adjunk hozzá egy második csomópontkészletet az [az aks nodepool add][az-aks-nodepool-add] paranccsal. A következő példa létrehoz egy *mynodepool* nevű csomópontkészletet, amely *3* csomópontot futtat:
+Az előző lépésben létrehozott fürt egyetlen csomópont-készlettel rendelkezik. Hozzunk létre egy második csomópont-készletet az az [AK nodepool Add][az-aks-nodepool-add] paranccsal. A következő példa egy *mynodepool* nevű csomópont-készletet hoz létre, amely *3* csomópontot futtat:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -87,15 +87,15 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> A csomópontkészlet nevének kisbetűvel kell kezdődnie, és csak alfanumerikus karaktereket tartalmazhat. Linux-csomópontkészletek esetén a hossznak 1 és 12 karakter között kell lennie, a Windows-csomópontkészletek esetében a hossznak 1 és 6 karakter között kell lennie.
+> A csomópont-készlet nevének kisbetűvel kell kezdődnie, és csak alfanumerikus karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie, a Windows-csomópontok esetében a hossznak 1 és 6 karakter közöttinek kell lennie.
 
-A csomópontkészletek állapotának megtekintéséhez használja az [aks csomópontkészletlista][az-aks-nodepool-list] parancsot, és adja meg az erőforráscsoportot és a fürt nevét:
+A csomópont-készletek állapotának megtekintéséhez használja az az [AK Node Pool List][az-aks-nodepool-list] parancsot, és adja meg az erőforráscsoportot és a fürt nevét:
 
 ```azurecli-interactive
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-A következő példa kimenetazt mutatja, hogy *a mynodepool* sikeresen létrejött a csomópontkészlethárom csomópontjával. Amikor az AKS-fürt az előző lépésben jött létre, egy alapértelmezett *nodepool1* jött létre *2*csomópontszámmal.
+A következő példa kimenete azt mutatja, hogy a *mynodepool* sikeresen létrejött a csomópont-készletben lévő három csomóponttal. Ha az AK-fürt az előző lépésben lett létrehozva, a rendszer egy alapértelmezett *nodepool1* hozott létre, amelynek a csomópontja *2*.
 
 ```output
 [
@@ -123,20 +123,20 @@ A következő példa kimenetazt mutatja, hogy *a mynodepool* sikeresen létrejö
 ```
 
 > [!TIP]
-> Ha nincs megadva *VmSize* csomópontkészlet hozzáadásakor, az alapértelmezett méret *Standard_DS2_v3* a Windows-csomópontkészletek és a Linux-csomópontkészletek *Standard_DS2_v2.* Ha nincs *megadva OrchestratorVersion,* akkor alapértelmezés szerint a vezérlősíkkal azonos verziójú.
+> Ha nem ad meg *VmSize* a csomópont hozzáadásakor, az alapértelmezett méret *Standard_DS2_v3* a Windows-csomópontok készletei számára, és a Linux-csomópontok *Standard_DS2_v2* . Ha nincs megadva *OrchestratorVersion* , az alapértelmezett érték a vezérlő síkjával megegyező verzió.
 
-### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Csomópontkészlet hozzáadása egyedi alhálózattal (előzetes verzió)
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Csomópont-készlet hozzáadása egyedi alhálózattal (előzetes verzió)
 
-A számítási feladatok a fürt csomópontjainak felosztását külön készletekre lehet szükség a logikai elkülönítés érdekében. Ez az elkülönítés a fürt minden csomópontkészletéhez rendelt külön alhálózattal támogatott. Ez olyan követelményekkel is megoldhatja, mint például a csomópontkészletek között felosztható, nem összefüggő virtuális hálózati címterület.
+A számítási feladatok esetében előfordulhat, hogy a fürt csomópontjait különálló készletekbe kell osztani a logikai elkülönítéshez. Ez az elkülönítés a fürt egyes csomópontjaihoz dedikált külön alhálózatokkal is támogatott. Ez olyan követelményeket is képes kezelni, mint például a nem összefüggő virtuális hálózati címtartomány a csomópont-készletek közötti felosztásához.
 
 #### <a name="limitations"></a>Korlátozások
 
-* A csomóponthalmazokhoz rendelt összes alhálózatnak ugyanahhoz a virtuális hálózathoz kell tartoznia.
-* A rendszerpodok nak hozzáféréssel kell rendelkezniük a fürt összes csomópontjához, hogy kritikus funkciókat, például DNS-feloldást biztosítsanak a coreDNS-en keresztül.
-* Egy egyedi alhálózat csomópontkészletenként hozzárendelése az Azure CNI előzetes verzióban korlátozódik.
-* A hálózati házirendek egyedi alhálózattal csomópontonkénti használatával nem támogatott az előzetes verzió.
+* A nodepools rendelt összes alhálózatnak ugyanahhoz a virtuális hálózathoz kell tartoznia.
+* A rendszerhüvelyeknek hozzá kell férniük a fürt összes csomópontja számára a kritikus funkciók, például a coreDNS keresztüli DNS-feloldás biztosításához.
+* A csomópont-készlet egyedi alhálózatának hozzárendelése az előzetes verzióban az Azure CNI korlátozódik.
+* Az előzetes verzióban nem támogatott a hálózati házirendek egyedi alhálózattal való használata.
 
-Ha dedikált alhálózattal rendelkező csomópontkészletet szeretne létrehozni, adja át az alhálózati erőforrás-azonosítót további paraméterként csomópontkészlet létrehozásakor.
+Ha egy dedikált alhálózattal rendelkező csomópont-készletet szeretne létrehozni, adja át az alhálózati erőforrás-azonosítót további paraméterként egy csomópont-készlet létrehozásakor.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -148,19 +148,19 @@ az aks nodepool add \
     --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
 ```
 
-## <a name="upgrade-a-node-pool"></a>Csomópontkészlet frissítése
+## <a name="upgrade-a-node-pool"></a>Csomópont-készlet frissítése
 
 > [!NOTE]
-> A fürt vagy csomópontkészlet frissítési és méretezési műveletei nem fordulhatnak elő egyszerre, ha hibát kísérelt meg. Ehelyett minden művelettípusnak be kell fejeződnie a célerőforráson, mielőtt az adott erőforrásra vonatkozó következő kérést végrehajtana. Erről bővebben a [hibaelhárítási útmutatónkban](https://aka.ms/aks-pending-upgrade)olvashat.
+> Fürtön vagy csomóponton található műveletek frissítése és méretezése nem végezhető el egyszerre, ha a rendszer hibát adott vissza. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a [hibaelhárítási útmutatóban](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
 
-Amikor az AKS-fürt eredetileg az első `--kubernetes-version` lépésben jött létre, *1.15.7-es* érték lett megadva. Ez a készlet a Kubernetes verziója mind a vezérlősík és az alapértelmezett csomópont készlet. Az ebben a szakaszban található parancsok bemutatják, hogyan frissíthet egyetlen adott csomópontkészletet.
+Ha az AK-fürt eredetileg az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.15.7* adott meg. Ez a Kubernetes-verziót adja meg a vezérlési síkon és az alapértelmezett csomópont-készlet esetében is. Az ebben a szakaszban szereplő parancsok azt ismertetik, hogyan lehet frissíteni egy adott csomópont-készletet.
 
-A vezérlősík Kubernetes verziójának frissítése és a csomópontkészlet frissítése közötti kapcsolatot az [alábbi szakasz](#upgrade-a-cluster-control-plane-with-multiple-node-pools)ismerteti.
+A vezérlési sík és a Kubernetes verziójának frissítése közötti kapcsolatot az [alábbi szakasz](#upgrade-a-cluster-control-plane-with-multiple-node-pools)ismerteti.
 
 > [!NOTE]
-> A csomópontkészlet operációsrendszer-lemezképverziója a fürt Kubernetes verziójához van kötve. Csak a fürt frissítése után kap operációs rendszer rendszerkép-frissítéseket.
+> A Node Pool operációsrendszer-rendszerkép verziója a fürt Kubernetes-verziójához van kötve. A fürt frissítését követően csak az operációs rendszer rendszerképének frissítését fogja kérni.
 
-Mivel ebben a példában két csomópontkészlet van, az [aks nodepool-frissítés][az-aks-nodepool-upgrade] sel kell használnunk a csomópontkészlet frissítését. Frissítsük a *mynodepool-t* Kubernetes *1.15.7-re.* Az [aks nodepool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópontkészletet, ahogy az a következő példában látható:
+Mivel ebben a példában két csomópont-készlet található, a csomópont-készlet frissítéséhez [az az AK nodepool upgrade][az-aks-nodepool-upgrade] -t kell használnia. Frissítse a *mynodepool* az Kubernetes *1.15.7*. Az az [AK nodepool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -171,7 +171,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-Sorolja fel ismét a csomópontkészletek állapotát az [aks csomópontkészletlista][az-aks-nodepool-list] paranccsal. A következő példa azt mutatja, hogy a *mynodepool* *frissítési* állapotban van *1.15.7-re:*
+Sorolja fel újra a csomópont-készletek állapotát az az [AK Node Pool List][az-aks-nodepool-list] parancs használatával. A következő példa azt mutatja, hogy a *mynodepool* a *1.15.7* *Verziófrissítési* állapotban van:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -206,49 +206,49 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-A csomópontok frissítése a megadott verzióra néhány percet vesz igénybe.
+A csomópontok a megadott verzióra való frissítése néhány percet vesz igénybe.
 
-Ajánlott eljárásként frissítenie kell az Összes csomópont-készletek egy AKS-fürtben, hogy ugyanazt a Kubernetes-verzió. Az alapértelmezett `az aks upgrade` viselkedés az, hogy az összes csomópontkészletet a vezérlősíkkal együtt frissíti az igazítás elérése érdekében. Az egyes csomópontkészletek frissítésével folyamatos frissítés és ütemezés idáig biztosíthatja a podok ütemezését a csomópontkészletek között, hogy az alkalmazás-uptime a fent említett korlátozásokon belül maradjon.
+Ajánlott eljárásként egy AK-fürt összes csomópont-készletét ugyanarra a Kubernetes-verzióra kell frissíteni. Az alapértelmezett viselkedése `az aks upgrade` az, ha az összes csomópont-készletet a vezérlési síkkal együtt frissíti az igazítás eléréséhez. Az egyes csomópont-készletek verziófrissítése lehetővé teszi a működés közbeni frissítés végrehajtását és a csomópontok közötti ütemezést, hogy a fent említett korlátozásokon belül fenntartsa az alkalmazás üzemidőét.
 
-## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Fürtvezérlő sík frissítése több csomópontkészlettel
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Fürt vezérlőelem síkja több Node-készlettel
 
 > [!NOTE]
-> A Kubernetes a szabványos [szemantikai verziószámozási](https://semver.org/) verziószámozási sémát használja. A verziószám *x.y.z-ben*van kifejezve, ahol *x* a főverzió, *az y* az alverzió, a *z* pedig a javítási verzió. Például az *1.12.6-os*verzióban az 1 a főverzió, a 12 az alverzió, a 6 pedig a javítóverzió. A vezérlősík Kubernetes verziója és a kezdeti csomópontkészlet a fürt létrehozása során van beállítva. Minden további csomópontkészlet rendelkezik a Kubernetes-verzióbeállítással, amikor hozzáadja őket a fürthöz. A Kubernetes verziók eltérőek lehetnek a csomópontkészletek, valamint a csomópontkészlet és a vezérlősík között.
+> A Kubernetes a szabványos [szemantikai verziószámozási](https://semver.org/) sémát használja. A verziószám *x. y. z*értékként van kifejezve, ahol az *x* a főverzió, az *y* az alverzió, a *z* pedig a javítás verziója. Például a *1.12.6*verzióban az 1 a főverzió, a 12 a másodlagos verzió, a 6 pedig a javítás verziója. A Kubernetes-verzió és a kezdeti csomópont-készlet is be van állítva a fürt létrehozásakor. Az összes további csomópont-készlet Kubernetes-verziója be van állítva a fürthöz való hozzáadásakor. A Kubernetes-verziók eltérőek lehetnek a csomópont-készletek, valamint a csomópont-készlet és a vezérlő síkja között.
 
-Egy AKS-fürt két fürterőforrás-objektummal rendelkezik, amelyekhez Kubernetes-verziók vannak társítva.
+Az AK-fürtök két fürterőforrás-objektummal rendelkeznek, amelyek Kubernetes-verzióval vannak társítva.
 
-1. Fürtvezérlő sík Kubernetes verziója.
-2. Kubernetes-verzióval rendelkező csomópontkészlet.
+1. A fürt vezérlő síkja Kubernetes verziója.
+2. Csomópont-készlet Kubernetes-verzióval.
 
-Egy vezérlősík egy vagy több csomópontkészletre van leképezve. A frissítési művelet viselkedése attól függ, hogy melyik Azure CLI-parancsot használja.
+A vezérlő síkja egy vagy több csomópont-készletet képez le. A frissítési művelet viselkedése attól függ, hogy melyik Azure CLI-parancsot használja a rendszer.
 
-Az AKS vezérlősík `az aks upgrade`frissítését a használatával kell használni. Ez a parancs frissíti a vezérlősík verzióját és a fürt összes csomópontkészletét.
+Az AK-vezérlési sík frissítéséhez a-t kell használnia `az aks upgrade`. Ez a parancs frissíti a vezérlési sík verzióját és a fürt összes csomópont-készletét.
 
-A `az aks upgrade` parancs kiadása `--control-plane-only` a jelzőfrissítéssel csak a fürtvezérlő síkot frissíti. A fürt egyik társított csomópontkészlete sem módosul.
+A `az aks upgrade` parancs és a `--control-plane-only` jelző kiadása csak a fürt vezérlőjét frissíti. A fürthöz társított csomópont-készletek egyike sincs módosítva.
 
-Az egyes csomópontkészletek frissítéséhez a használatához kell használni. `az aks nodepool upgrade` Ez a parancs csak a megadott Kubernetes-verzióval rendelkező célcsomópont-készletet frissíti
+Az egyes csomópont-készletek frissítéséhez a használata `az aks nodepool upgrade`szükséges. Ez a parancs csak a cél csomópont-készletet frissíti a megadott Kubernetes-verzióval.
 
-### <a name="validation-rules-for-upgrades"></a>A frissítések rekedési szabályai
+### <a name="validation-rules-for-upgrades"></a>A frissítésekre vonatkozó érvényesítési szabályok
 
-Az érvényes Kubernetes-frissítéseket a fürt vezérlősíkjára és csomópontkészleteire a következő szabálykészletek ellenőrzik.
+A fürt Kubernetes és a csomópont-készletek érvényes frissítéseit az alábbi szabályok határozzák meg.
 
-* A csomópontkészletek frissítéséhez érvényes verziókra vonatkozó szabályok:
-   * A csomópontkészlet verziójának a vezérlősíkévfőverziójával azonos *főverzióval* kell rendelkeznie.
-   * A csomópontkészlet *alverziójának* a vezérlősík verziójának két *alverzióján* belül kell lennie.
-   * A csomópontkészlet verziója nem lehet `major.minor.patch` nagyobb, mint a vezérlőverzió.
+* A csomópont-készletek frissítésének érvényes verzióira vonatkozó szabályok:
+   * A csomópont-készlet verziójának *ugyanazzal a* főverzióval kell rendelkeznie, mint a vezérlő síkja.
+   * A csomópont-készlet alverziójának a vezérlési sík verziójának *két* *alverzióján* belül kell lennie.
+   * A csomópont-készlet verziója nem lehet nagyobb, mint `major.minor.patch` a vezérlő verziója.
 
-* A frissítési művelet elküldésének szabályai:
-   * A vezérlősík vagy a Kubernetes-verzió nem minősíthető vissza.
-   * Ha a Csomópont készlet Kubernetes verzió nincs megadva, a viselkedés attól függ, hogy az ügyfél használatban van. Az Erőforrás-kezelő sablonjaiban a deklaráció visszaáll a csomópontkészlethez definiált meglévő verzióra, ha használatban van, ha nincs beállítva, akkor a vezérlősík verziója visszaesik.
-   * Egy vezérlősíkot vagy csomópontkészletet egyszerre frissíthet vagy méretezhet, nem küldhet egyszerre több műveletet egyetlen vezérlősíkon vagy csomópontkészlet-erőforráson.
+* A frissítési művelet elküldésére vonatkozó szabályok:
+   * A vezérlő síkja vagy a Node Pool Kubernetes verziója nem minősíthető vissza.
+   * Ha nincs megadva a csomópont-készlet Kubernetes verziója, a viselkedés a használt ügyféltől függ. A Resource Manager-sablonokban szereplő deklaráció visszakerül a csomópont-készlethez definiált meglévő verzióra, ha a nincs beállítva, ha a vezérlési sík verziója visszaesik.
+   * Egy adott időpontban frissítheti vagy méretezheti a vezérlési síkot vagy a csomópont-készletet, nem küldhet egyszerre több műveletet egyetlen vezérlő síkon vagy Node Pool-erőforráson.
 
-## <a name="scale-a-node-pool-manually"></a>Csomópontkészlet manuális méretezése
+## <a name="scale-a-node-pool-manually"></a>Csomópont-készlet manuális skálázása
 
-Az alkalmazás számítási feladatok módosítása, előfordulhat, hogy egy csomópont készlet ben csomópontok számát kell skáláznia. A csomópontok száma fel- vagy leskálázható.
+Az alkalmazás számítási feladatainak változása miatt szükség lehet a csomópontok számának skálázására. A csomópontok száma növelhető felfelé vagy lefelé.
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-A csomópontkészlet csomópontjainak számának méretezéséhez használja az [aks csomópontkészlet méretezési][az-aks-nodepool-scale] parancsát. A következő példa a *mynodepool* csomópontjainak számát *5-re*méretezi:
+A csomópontok számának skálázásához használja az az [AK Node Pool Scale][az-aks-nodepool-scale] parancsot. Az alábbi példa a *mynodepool* csomópontok számát *5*-re méretezi:
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -259,7 +259,7 @@ az aks nodepool scale \
     --no-wait
 ```
 
-Sorolja fel ismét a csomópontkészletek állapotát az [aks csomópontkészletlista][az-aks-nodepool-list] paranccsal. A következő példa azt mutatja, hogy a *mynodepool* *méretezési* állapotban *van, 5* csomópontúj számlálóval:
+Sorolja fel újra a csomópont-készletek állapotát az az [AK Node Pool List][az-aks-nodepool-list] parancs használatával. Az alábbi példa azt mutatja, hogy a *mynodepool* a *skálázási* állapotban van, és új számú *5* csomóponttal rendelkezik:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -294,24 +294,24 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-A méretezési művelet befejezéséhez néhány percet vesz igénybe.
+A skálázási művelet elvégzése néhány percet vesz igénybe.
 
-## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Adott csomópontkészlet automatikus méretezése a fürt automatikus méretezőjének engedélyezésével
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>A fürt automatikus méretezésének engedélyezésével automatikusan méretezhető egy adott csomópont-készlet
 
-Az AKS külön szolgáltatást kínál a csomópontkészletek automatikus méretezéséhez a [fürt automatikus skálázójával.](cluster-autoscaler.md) Ez a funkció csomópontkészletenként engedélyezhető, egyedi minimális és maximális léptékszámmal csomópontkészletenként. Ismerje meg, hogyan [használhatja a fürt automatikus skálázó csomópontkészletenként](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+Az AK egy külön funkciót kínál, amellyel automatikusan méretezheti a csomópont-készleteket a [fürt automatikus méretezés](cluster-autoscaler.md)nevű funkciójával. Ez a funkció egy csomópont-készleten engedélyezhető, és a csomópontok egyedi minimális és maximális skálázási száma. Megtudhatja, hogyan [használhatja a fürt automéretezőjét egy csomópontos készleten](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
-## <a name="delete-a-node-pool"></a>Csomópontkészlet törlése
+## <a name="delete-a-node-pool"></a>Csomópont-készlet törlése
 
-Ha már nincs szüksége készletre, törölheti azt, és eltávolíthatja az alapul szolgáló virtuálisgép-csomópontokat. Csomópontkészlet törléséhez használja az [aks csomópontkészlet törlési][az-aks-nodepool-delete] parancsát, és adja meg a csomópontkészlet nevét. A következő példa törli az előző lépésekben létrehozott *mynoodepoolt:*
+Ha már nincs szüksége a készletre, törölheti, és eltávolíthatja a mögöttes virtuálisgép-csomópontokat. Egy csomópont-készlet törléséhez használja az az [AK Node Pool delete][az-aks-nodepool-delete] parancsot, és adja meg a csomópont-készlet nevét. A következő példa törli az előző lépésekben létrehozott *mynoodepool* :
 
 > [!CAUTION]
-> Nincsenek helyreállítási lehetőségek adatvesztésre, amelyek a csomópontkészlet törlésekor fordulhatnak elő. Ha a podok nem ütemezhetők más csomópontkészleteken, ezek az alkalmazások nem érhetők el. Győződjön meg arról, hogy nem törli a csomópontkészletet, ha a használatban lévő alkalmazások nem rendelkeznek adatbiztonsági másolatokkal, vagy nem képesek a fürt más csomópontkészletein futtatni.
+> A csomópontok törlésekor előfordulhat, hogy az adatvesztéshez nincs helyreállítási lehetőség. Ha a hüvely nem ütemezhető más csomópont-készletekre, ezek az alkalmazások nem érhetők el. Győződjön meg arról, hogy nem törli a csomópont-készletet, ha a használatban lévő alkalmazásokban nincsenek biztonsági másolatok, vagy a fürt más csomópontjain is futtathatók.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-Az [az aks csomópontkészletlista][az-aks-nodepool-list] parancs következő kimenete azt mutatja, hogy a *mynodepool* *törlési* állapotban van:
+Az az [AK Node Pool List][az-aks-nodepool-list] parancs kimenete az alábbi példa alapján mutatja *mynodepool* , hogy a mynodepool *törlési* állapotban van:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -346,15 +346,15 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-A csomópontok és a csomópontkészlet törlése néhány percet vesz igénybe.
+A csomópontok és a csomópont-készlet törlése néhány percet vesz igénybe.
 
-## <a name="specify-a-vm-size-for-a-node-pool"></a>Virtuálisgép méretének megadása csomópontkészlethez
+## <a name="specify-a-vm-size-for-a-node-pool"></a>Virtuális gép méretének megadása egy csomópont-készlethez
 
-Az előző példákban egy csomópontkészlet létrehozásához egy alapértelmezett virtuális gép mérete volt a fürtben létrehozott csomópontok hoz létre. Egy gyakoribb forgatókönyv, hogy hozzon létre csomópontkészletek különböző virtuálisgép-méreteket és képességeket. Létrehozhat például egy csomópontkészletet, amely nagy mennyiségű PROCESSZORral vagy memóriával rendelkező csomópontokat tartalmaz, vagy egy GPU-támogatást támogató csomópontkészletet. A következő lépésben [a taints és a tolerations](#schedule-pods-using-taints-and-tolerations) segítségével megmondja a Kubernetes ütemező, hogyan korlátozhatja a hozzáférést a podok, amelyek futtathatók ezeken a csomópontokon.
+Az előző példákban egy csomópont-készlet létrehozásához a fürtben létrehozott csomópontok alapértelmezett virtuálisgép-méretét használták. A leggyakoribb forgatókönyv az, hogy a különböző virtuálisgép-méretekkel és képességekkel rendelkező csomópont-készleteket hozzon létre. Létrehozhat például egy olyan csomópont-készletet, amely nagy mennyiségű PROCESSZORral vagy memóriával rendelkező csomópontokat tartalmaz, vagy egy olyan csomópont-készletet, amely GPU-támogatást biztosít. A következő lépésben a [szennyező és a tolerancia használatával](#schedule-pods-using-taints-and-tolerations) közli, hogy a Kubernetes ütemező hogyan korlátozza az ezeken a csomópontokon futtatható hüvelyek elérését.
 
-A következő példában hozzon létre egy GPU-alapú csomópontkészletet, amely a virtuális gép *Standard_NC6* használja. Ezek a virtuális gépek powered by nvidia Tesla K80 kártya. A rendelkezésre álló virtuálisgép-méretekről az [Azure-beli Linuxos virtuális gépek méretei című témakörben][vm-sizes]talál további információt.
+Az alábbi példában hozzon létre egy GPU-alapú csomópont-készletet, amely a *Standard_NC6* VM-méretet használja. Ezeket a virtuális gépeket az NVIDIA Tesla K80 kártya működteti. A rendelkezésre álló virtuálisgép-méretekkel kapcsolatos információkért lásd: [a Linux rendszerű virtuális gépek méretei az Azure-ban][vm-sizes].
 
-Hozzon létre egy csomópontkészletet az [aks csomópontkészlet hozzáadása][az-aks-nodepool-add] paranccsal. Ezúttal adja meg a *gpunodepool* `--node-vm-size` nevet, és a paraméterrel adja meg a *Standard_NC6* méretet:
+Hozzon létre egy csomópont-készletet az az [AK Node Pool Add][az-aks-nodepool-add] paranccsal. Ezúttal adja meg a *gpunodepool*nevet, és használja a `--node-vm-size` paramétert a *Standard_NC6* méretének megadásához:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -366,7 +366,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-A következő példa kimenetaz [az aks csomópontkészlet lista][az-aks-nodepool-list] parancs azt mutatja, hogy *gpunodepool* *létrehozása* csomópontok a megadott *VmSize:*
+Az az [AK Node Pool List][az-aks-nodepool-list] parancs kimenete az alábbi példa alapján mutatja, hogy a *Gpunodepool* csomópontokat *hoz létre* a megadott *VmSize*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -403,9 +403,9 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 A *gpunodepool* sikeres létrehozása néhány percet vesz igénybe.
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>Podok ütemezése taints és tolerations használatával
+## <a name="schedule-pods-using-taints-and-tolerations"></a>A hüvelyek kiosztása a fertőzöttség és a tolerancia használatával
 
-Most már két csomópontkészlet található a fürtben – az eredetileg létrehozott alapértelmezett csomópontkészlet és a GPU-alapú csomópontkészlet. Használja a [kubectl get csomópontok parancsot][kubectl-get] a fürt csomópontjainak megtekintéséhez. A következő példa kimenete a csomópontokat mutatja be:
+Most már két csomópont-készlet található a fürtben – az alapértelmezett, eredetileg létrehozott Node-készletet és a GPU-alapú csomópont-készletet. A fürt csomópontjainak megtekintéséhez használja a [kubectl Get Nodes][kubectl-get] parancsot. A következő példa kimenete a csomópontokat mutatja:
 
 ```console
 kubectl get nodes
@@ -417,22 +417,22 @@ aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
 aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
-A Kubernetes-ütemező használhat taints és tűrések korlátozhatja, milyen számítási feladatok futtathatók a csomópontokon.
+A Kubernetes-ütemező használatával megtilthatja, hogy milyen számítási feladatok futhatnak a csomópontokon.
 
-* Egy **taint** egy csomópontra van alkalmazva, amely azt jelzi, hogy csak adott podok ütemezhetők rájuk.
-* Ezután **egy tolerálást** alkalmaznak egy podra, amely lehetővé teszi számukra, hogy *tolerálják* a csomópont romlottságát.
+* A rendszer egy olyan csomópontra alkalmazza a **megromlást** , amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
+* A **rendszer egy olyan** Pod-ra alkalmazza a betartást, amely lehetővé *teszi a* csomópontok megromlását.
 
-A Speciális Kubernetes ütemezett funkciók használatáról az [AKS speciális ütemezőszolgáltatásainak gyakorlati tanácsai című témakörben][taints-tolerations] talál további információt.
+További információ a speciális Kubernetes ütemezett funkcióinak használatáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][taints-tolerations]
 
-Ebben a példában alkalmazzon egy taint a GPU-alapú csomópont a --node-taints paranccsal. Adja meg a GPU-alapú csomópont nevét az `kubectl get nodes` előző parancs kimenetéből. A program key=value pairként, majd ütemezési lehetőségként alkalmazza a taint.The taint is applied as a *key=value* pair and then a scheduling option. A következő példa az *sku=gpu* párt használja, és meghatározza, hogy a podok egyébként *noschedule* képességgel rendelkeznek:
+Ebben a példában a--Node-tains parancs használatával alkalmazzon egy Taint a GPU-alapú csomópontra. Adja meg a GPU-alapú csomópont nevét az előző `kubectl get nodes` parancs kimenetében. A szennyező elem *kulcs = érték* pár, majd egy ütemezési beállításként van alkalmazva. A következő példa az *SKU = GPU* párt használja, és a hüvelyek definiálása egyébként a nem *menetrendi* képességgel rendelkezik:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
-A következő alapvető példa YAML-jegyzékfájl egy tűrést használ, hogy a Kubernetes ütemező egy NGINX-pod futtatásához a GPU-alapú csomóponton. A Tensorflow-feladat MNIST adatkészleten való futtatásához megfelelőbb, de időigényes példát az [AKS-en nagy számítási nagy számítási feladatokhoz című][gpu-cluster]témakörben található.
+A következő alapszintű példa YAML a tolerancia használatával lehetővé teszi, hogy a Kubernetes-ütemező egy NGINX Pod-t futtasson a GPU-alapú csomóponton. A Tensorflow-feladatok MNIST-adatkészleten való futtatásának megfelelőbb, de időigényes példáját a [GPU használata nagy számítási igényű munkaterhelésekhez az AK-][gpu-cluster]ban című témakörben tekintheti meg.
 
-Hozzon létre `gpu-toleration.yaml` egy elnevezett fájlt, és másolja a következő példa YAML:
+Hozzon létre egy `gpu-toleration.yaml` nevű fájlt, és másolja a következő PÉLDÁBAN szereplő YAML:
 
 ```yaml
 apiVersion: v1
@@ -457,13 +457,13 @@ spec:
     effect: "NoSchedule"
 ```
 
-Ütemezze a `kubectl apply -f gpu-toleration.yaml` podot a következő paranccsal:
+A pod a `kubectl apply -f gpu-toleration.yaml` parancs használatával ütemezhet:
 
 ```console
 kubectl apply -f gpu-toleration.yaml
 ```
 
-Néhány másodpercet vesz igénybe a hüvely ütemezése és az NGINX-kép lekérése. Használja a [kubectl leírás pod][kubectl-describe] parancsot a pod állapotát. A következő kondenzált példa kimenet az *sku=gpu:NoSchedule* terration alkalmazását mutatja. Az események szakaszban az ütemező hozzárendelte a podot az *aks-gpunodepool-28993262-vmss000000* GPU-alapú csomóponthoz:
+Eltarthat néhány másodpercig a pod beütemezett és az NGINX-rendszerkép lekéréséhez. A hüvely állapotának megtekintéséhez használja az [kubectl Leírás Pod][kubectl-describe] parancsot. A következő összehasonlított példa kimenete az *SKU = GPU:* a nem ütemezett tolerancia alkalmazását mutatja. Az Events (események) szakaszban az ütemező hozzárendelte a hüvelyt az *AK-gpunodepool-28993262-vmss000000* GPU-alapú csomóponthoz:
 
 ```console
 kubectl describe pod mypod
@@ -484,13 +484,13 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Csak azok a podok ütemezhetők a *gpunodepool*csomópontjaira, amelyek ezt a tolatást alkalmazzák. Minden más pod lenne ütemezve a *nodepool1* csomópont-készlet. Ha további csomópontkészleteket hoz létre, további taints és tűrések használatával korlátozhatja, hogy milyen podok ütemezhetők ezeken a csomópont-erőforrásokon.
+A *gpunodepool*csomópontjain csak azok a hüvelyek ütemezhetők, amelyeken ez a tolerancia alkalmazva van. Minden egyéb Pod a *nodepool1* csomópont-készletben lesz ütemezve. Ha további csomópont-készleteket hoz létre, további megterhelések és a megromlások használatával korlátozhatja, hogy milyen hüvelyek ütemezhetők a csomópont-erőforrásokon.
 
-## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Csomópontkészlet értékének, címkéjének vagy címkéjének megadása
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Válassza ki a csomópont-készlethez tartozó Taint, címkét vagy címkét
 
-Csomópontkészlet létrehozásakor hozzáadhat taints, címkék vagy címkék, hogy a csomópont készlet. Ha hozzáad egy romlottat, címkét vagy címkét, az adott csomópontkészleten belüli összes csomópont is megkapja azt a romlottat, címkét vagy címkét.
+A csomópontok létrehozásakor megadhatja az adott csomópont-készlethez tartozó adatterületeket, címkéket vagy címkéket. Ha egy Taint, címkét vagy címkét ad hozzá, az adott csomóponton belüli összes csomópont a megromlást, címkét vagy címkét is megkapja.
 
-Ha egy csomónt is szeretne létrehozni, használja [az aks nodepool add][az-aks-nodepool-add]. Adja meg a *taintnp nevet,* és a `--node-taints` paraméter segítségével adja meg a *sku=gpu:NoSchedule* értéket a taint-hez.
+Ha a csomópontot szennyező elemekkel szeretné létrehozni, használja [az az AK nodepool Add][az-aks-nodepool-add]. Adja meg a *taintnp* nevet, és `--node-taints` a paraméter használatával adja meg az *SKU = GPU:* a Taint a szennyező számára.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -502,7 +502,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-A következő példa kimenetaz [az aks nodepool list][az-aks-nodepool-list] parancs azt mutatja, hogy *taintnp* *létrehozása* csomópontok a megadott *nodeTaints*:
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Taintnp* csomópontokat *hoz létre* a megadott *nodeTaints*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -526,11 +526,11 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-A taint információ látható Kubernetes kezelésére ütemezési szabályok csomópontok kezelésére.
+A szennyező adatok láthatók a Kubernetes a csomópontok ütemezési szabályainak kezelésére.
 
-Címkéket is hozzáadhat egy csomópontkészlethez a csomópontkészlet létrehozása során. A csomópontkészletben beállított címkék hozzáadódnak a csomópontkészlet minden csomópontjához. Ezek [a címkék a Kubernetes-ben láthatók][kubernetes-labels] a csomópontok ütemezési szabályainak kezeléséhez.
+A csomópont-készlet létrehozása során címkéket is hozzáadhat egy csomópont-készlethez. A csomópont-készleten beállított címkéket a rendszer hozzáadja a csomópont-készlet minden egyes csomópontjára. Ezek a [címkék láthatók a Kubernetes][kubernetes-labels] a csomópontok ütemezési szabályainak kezelésére.
 
-Ha címkét is rendelkező csomópontkészletet szeretne létrehozni, használja [az aks nodepool add][az-aks-nodepool-add]. Adja meg a *name labelnp nevet,* és a `--labels` paraméter rel adja meg *az dept=IT* és a *costcenter=9999* értéket a címkékhez.
+Ha címkével rendelkező csomópont-készletet szeretne létrehozni, használja [az az AK nodepool Add][az-aks-nodepool-add]. Adja meg a *labelnp* nevet, és `--labels` a paraméter használatával adja meg a *dept = it* és a *costcenter = 9999* címkét.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -543,9 +543,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Címke csak a csomópontkészletek létrehozása során állítható be. A címkéknek kulcs-érték párnak is kell lenniük, és [érvényes szintaxissal][kubernetes-label-syntax]kell rendelkezniük.
+> A csomópont-készlet létrehozásakor csak a csomópont-készletek esetében lehet beállítani a címkét. A címkéknek is kulcs/érték pároknak kell lenniük, és [érvényes szintaxissal][kubernetes-label-syntax]kell rendelkezniük.
 
-Az [az aks nodepool list][az-aks-nodepool-list] parancs következő kimenete azt mutatja, hogy a *labelnp* a megadott *csomópontcímkékkel*rendelkező csomópontok *létrehozása:*
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Labelnp* csomópontokat *hoz létre* a megadott *nodeLabels*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -570,9 +570,9 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Az AKS-fürt csomópontkészleteire azure-címkét alkalmazhat. A csomópontkészletre alkalmazott címkék a csomópontkészlet minden csomópontjára vonatkoznak, és a frissítések en keresztül megmaradnak. Címkék et is alkalmaznak a csomópontkészlethez a kibővített műveletek során hozzáadott új csomópontokra. Címke hozzáadása segíthet az olyan feladatokban, mint a házirendek nyomon követése vagy a költségbecslés.
+Egy Azure-címkét alkalmazhat a Node-készletekre az AK-fürtben. A csomópont-készletre alkalmazott címkéket a rendszer a csomóponton belüli összes csomópontra alkalmazza, és a frissítésekkel megőrzi őket. A címkéket a rendszer a csomópont-készlethez hozzáadott új csomópontokra is alkalmazza a kibővíthető műveletek során. A címkék hozzáadásával olyan feladatok segíthetnek, mint például a szabályzatok nyomon követése vagy a költségbecslés.
 
-Hozzon létre egy csomópontkészletet az [aks nodepool add][az-aks-nodepool-add]használatával. Adja meg a *tagnodepool nevet,* és a paraméter segítségével adja meg `--tag` *az dept=IT* és a *costcenter=9999* értéket a címkékhez.
+Hozzon létre egy csomópont-készletet az az [AK nodepool Add][az-aks-nodepool-add]paranccsal. Adja meg a *tagnodepool* nevet, és `--tag` a paraméter használatával adja meg a *dept = it* és a *costcenter = 9999* címkét.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -585,9 +585,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> A paramétert `--tags` az [aks nodepool update][az-aks-nodepool-update] parancs használatakor, valamint a fürt létrehozása során is használhatja. A fürt létrehozása `--tags` során a paraméter a címkét alkalmazza a fürttel létrehozott kezdeti csomópontkészletre. Minden címkenévnek meg kell felelnie az [Azure-erőforrások rendszerezéséhez a Címkék használata][tag-limitation]című területen található korlátozásoknak. A csomópontkészlet frissítése a `--tags` paraméterrel frissíti a meglévő címkeértékeket, és hozzáfűzi az új címkéket. Ha például a csomópontkészlet rendelkezett *dept=IT* és *costcenter=9999* címkék, és frissítette a *team=dev* és *costcenter=111* címkék, akkor nodepool volna *dept=IT*, *costcenter=111*, és *team=dev* címkékhez.
+> Használhatja a paramétert is `--tags` , ha az [az AK nodepool Update][az-aks-nodepool-update] parancsot használja, valamint a fürt létrehozásakor. A fürt létrehozása során a `--tags` paraméter alkalmazza a címkét a fürttel létrehozott kezdeti csomópont-készletre. Az [Azure-erőforrások rendszerezéséhez][tag-limitation]az összes címke nevének be kell tartania a használati címkék korlátozásait. Ha a (z) paraméterrel frissíti egy csomópont-készletet, a `--tags` meglévő kódelemek összes értékének frissítése és az új címkék hozzáfűzése. Ha például a csomópont-készletben a *dept = it* és a *costcenter = 9999* szerepel a címkéknél, és frissítette a *Team = dev* és a *costcenter = 111* címkével, akkor a címkékhez nodepool a *dept = it*, a *costcenter = 111*és a *Team = dev* .
 
-Az [az aks nodepool list][az-aks-nodepool-list] parancs következő példája azt mutatja, hogy a *tagnodepool* a megadott *címkével*rendelkező csomópontok *létrehozása:*
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Tagnodepool* csomópontokat *hoz létre* a megadott *címkével*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -614,17 +614,17 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-## <a name="manage-node-pools-using-a-resource-manager-template"></a>Csomópontkészletek kezelése Erőforrás-kezelő sablonnal
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>Csomópont-készletek kezelése Resource Manager-sablonnal
 
-Ha egy Azure Resource Manager-sablon használatával hoz létre és kezelhet erőforrásokat, általában frissítheti a beállításokat a sablonban, és újratelepítheti az erőforrás frissítéséhez. Az AKS csomópontkészleteivel a kezdeti csomópontkészlet-profil nem frissíthető az AKS-fürt létrehozása után. Ez a viselkedés azt jelenti, hogy nem frissíthet egy meglévő Erőforrás-kezelő sablont, nem módosíthatja a csomópontkészleteket, és nem helyezheti üzembe újra. Ehelyett létre kell hoznia egy külön Erőforrás-kezelő sablont, amely csak egy meglévő AKS-fürt csomópontkészleteit frissíti.
+Ha Azure Resource Manager sablont használ az erőforrások létrehozásához és kezeléséhez, általában frissíti a sablon beállításait, és újból üzembe helyezi az erőforrás frissítéséhez. Az AK-ban található Node-készletekkel a kezdeti csomópont-készlet profilja nem frissíthető az AK-fürt létrehozása után. Ez azt jelenti, hogy nem frissítheti a meglévő Resource Manager-sablonokat, módosíthatja a csomópont-készleteket, és újból üzembe helyezheti azokat. Ehelyett létre kell hoznia egy különálló Resource Manager-sablont, amely csak a meglévő AK-fürtökhöz tartozó csomópont-készleteket frissíti.
 
-Hozzon létre `aks-agentpools.json` egy sablont, például illessze be a következő példajegyzéket. Ez a példasablon a következő beállításokat konfigurálja:
+Hozzon létre egy sablont `aks-agentpools.json` , például illessze be a következő példát a jegyzékbe. A példában szereplő sablon a következő beállításokat konfigurálja:
 
-* Frissíti a *Myagentpool* nevű *Linux-csomópontkészletet* három csomópont futtatásához.
-* Beállítja a csomópontkészlet csomópontjait a Kubernetes *1.15.7-es*verziójának futtatásához.
-* A csomópont méretét *Standard_DS2_v2.*
+* Frissíti a *myagentpool* nevű *Linux* Node-készletet három csomópont futtatásához.
+* Beállítja a csomópont-készlet csomópontjait a Kubernetes-verzió *1.15.7*futtatásához.
+* Meghatározza a csomópont méretét *Standard_DS2_v2ként*.
 
-Szükség szerint szerkesztheti ezeket az értékeket a csomópontkészletek frissítéséhez, hozzáadásához vagy törléséhez:
+Szükség szerint szerkessze ezeket az értékeket a csomópont-készletek frissítéséhez, hozzáadásához vagy törléséhez:
 
 ```json
 {
@@ -693,7 +693,7 @@ Szükség szerint szerkesztheti ezeket az értékeket a csomópontkészletek fri
 }
 ```
 
-Telepítse ezt a sablont az [az csoport központi telepítési létrehozási][az-group-deployment-create] parancsával, ahogy az a következő példában látható. A rendszer kéri a meglévő AKS-fürt nevét és helyét:
+Ezt a sablont az az [Group Deployment Create][az-group-deployment-create] paranccsal telepítheti, ahogy az az alábbi példában is látható. A rendszer kéri a meglévő AK-fürt nevének és helyének megadását:
 
 ```azurecli-interactive
 az group deployment create \
@@ -702,7 +702,7 @@ az group deployment create \
 ```
 
 > [!TIP]
-> A címke hozzáadásával a csomópont készlet hozzáadásával a *címke* tulajdonság a sablonban, ahogy az a következő példában látható.
+> A következő példában látható módon hozzáadhat egy címkét a csomópont-készlethez a sablon *címke* tulajdonságának hozzáadásával.
 > 
 > ```json
 > ...
@@ -720,36 +720,36 @@ az group deployment create \
 > ...
 > ```
 
-Az Erőforrás-kezelő sablonban megadott csomópontkészlet-beállításoktól és műveletektől függően eltarthat néhány percig az AKS-fürt frissítése.
+A Resource Manager-sablonban definiált csomópont-készlet beállításaitól és műveleteitől függően néhány percet is igénybe vehet az AK-fürt frissítése.
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Csomópontonkénti nyilvános IP-cím hozzárendelése csomópontkészlethez (előzetes verzió)
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Nyilvános IP-cím társítása egy csomópont-készlethez (előzetes verzió)
 
 > [!WARNING]
-> A nyilvános IP-cím csomópontonkénti hozzárendelésének előzetes verziója során nem használható a *standard terheléselosztó termékváltozattal az AKS-ben* a virtuális gép kiépítésével ütköző lehetséges terheléselosztó szabályok miatt. Ennek a korlátozásnak az eredményeként a Windows-ügynökkészletek nem támogatottak ezzel az előzetes verzióval. Előzetes verzióban az *alapszintű terheléselosztó termékváltozatot* kell használnia, ha csomópontonként nyilvános IP-címet kell hozzárendelnie.
+> A nyilvános IP-címek/csomópontok kiosztásának előnézete során a rendszer nem használhatja a *standard Load BALANCER SKU-t az AK-ban* , mert lehetséges terheléselosztó-szabályok ütköznek a virtuális gépek üzembe helyezésével. Ennek a korlátozásnak az eredményeképpen a Windows-ügynök készletei nem támogatottak ehhez az előzetes verziójú szolgáltatáshoz. Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t kell használnia, ha csomópontként kell hozzárendelni egy nyilvános IP-címet.
 
-Az AKS-csomópontok nak nincs szükségük saját nyilvános IP-címekre a kommunikációhoz. Előfordulhat azonban, hogy a csomópontok csomópontkészletében lévő csomópontoknak saját dedikált nyilvános IP-címeket kell fogadniuk. Gyakori forgatókönyv a játékszámítási feladatok, ahol a konzol kell, hogy közvetlen kapcsolatot egy felhőalapú virtuális gép az ugrások minimalizálása érdekében. Ez a forgatókönyv érhető el az AKS-ben egy előzetes verziójú funkció, csomópont nyilvános IP (előzetes verzió) regisztrálásával.
+Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. A forgatókönyvek azonban megkövetelhetik a csomópontok csomópontjait, hogy megkapják a saját dedikált nyilvános IP-címeiket. Gyakori forgatókönyv a játékok számítási feladataihoz, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel a ugrások csökkentése érdekében. Ez a forgatókönyv egy előzetes verziójú funkció, a csomópont nyilvános IP-címe (előzetes verzió) regisztrálásával érhető el az AK-on.
 
-Regisztráljon a csomópont nyilvános IP-szolgáltatás a következő Azure CLI-parancs kiadásával.
+Regisztráljon a csomópont nyilvános IP-címére a következő Azure CLI-parancs kiadásával.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Sikeres regisztráció után telepítsen egy Azure Resource [above](#manage-node-pools-using-a-resource-manager-template) Manager-sablont a `enableNodePublicIP` fenti utasításokkal megegyező utasításokat követve, és adja hozzá a logikai tulajdonságot az agentPoolProfiles-hoz. Állítsa be `true` az értéket úgy, `false` ahogy alapértelmezés szerint nincs megadva. 
+A sikeres regisztráció után helyezzen üzembe egy Azure Resource Manager sablont a [fenti](#manage-node-pools-using-a-resource-manager-template) utasítások alapján, és adja hozzá a logikai `enableNodePublicIP` tulajdonságot a agentPoolProfiles. Állítsa az értéket alapértelmezett `true` értékre, `false` ha nincs megadva beállítás. 
 
-Ez a tulajdonság csak egy létrehozási idejű tulajdonság, és a 2019-06-01 minimális API-verzióját igényli. Ez linuxos és Windows-csomópontkészletekre is alkalmazható.
+Ez a tulajdonság csak létrehozási idő tulajdonság, és legalább 2019-06-01-es API-verziót igényel. Ez a Linux-és a Windows-csomópont-készletekre is alkalmazható.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ebben a cikkben létrehozott egy AKS-fürtöt, amely tartalmazza a GPU-alapú csomópontokat. A szükségtelen költségek csökkentése érdekében érdemes törölni a *gpunodepool*, vagy az egész AKS-fürt.
+Ebben a cikkben létrehozta a GPU-alapú csomópontokat tartalmazó AK-fürtöt. A szükségtelen díjak csökkentése érdekében érdemes törölni a *gpunodepool*vagy a teljes Kabai fürtöt.
 
-A GPU-alapú csomópontkészlet törléséhez használja az [aks nodepool delete][az-aks-nodepool-delete] parancsot a következő példában látható módon:
+A GPU-alapú csomópont-készlet törléséhez használja az az [AK nodepool delete][az-aks-nodepool-delete] parancsot az alábbi példában látható módon:
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
 ```
 
-Maga a fürt törléséhez az [az csoport törlési][az-group-delete] parancsával törölje az AKS erőforráscsoportot:
+A fürt törléséhez használja az az [Group delete][az-group-delete] parancsot az AK-erőforráscsoport törléséhez:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -757,11 +757,11 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [rendszercsomópont-készletekről.][use-system-pool]
+További információ a [rendszercsomópont-készletekről][use-system-pool].
 
-Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet több csomópontkészletet egy AKS-fürtben. A podok csomópontkészletek közötti vezérléséről az [AKS speciális ütemező szolgáltatásainak gyakorlati tanácsai című témakörben][operator-best-practices-advanced-scheduler]talál további információt.
+Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet több Node-készletet egy AK-fürtben. További információ a hüvelyek csomópontok közötti szabályozásáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][operator-best-practices-advanced-scheduler].
 
-A Windows Server tárolócsomópont-készletek létrehozásáról és használatáról a [Windows Server-tároló létrehozása az AKS-ben][aks-windows]című témakörben található.
+A Windows Server Container Node-készletek létrehozásához és használatához lásd: [Windows Server-tároló létrehozása az AK-ban][aks-windows].
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

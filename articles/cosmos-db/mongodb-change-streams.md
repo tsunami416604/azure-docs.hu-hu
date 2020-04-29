@@ -1,6 +1,6 @@
 ---
-title: Adatfolyamok módosítása az Azure Cosmos DB MongoDB-hoz való API-jában
-description: Ismerje meg, hogyan használhatja a változásfolyamokat az Azure Cosmos DB MongoDB API-jában az adatok módosításai beszerezéséhez.
+title: Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
+description: Megtudhatja, hogyan használhatja az adatváltozásokat az Azure Cosmos DB API-MongoDB az adatváltozások beszerzéséhez.
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
 ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114149"
 ---
-# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása az Azure Cosmos DB MongoDB-hoz való API-jában
+# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
 
-[Módosítsa a hírcsatorna-támogatást](change-feed.md) az Azure Cosmos DB MongoDB API-jában a változásfolyamok API használatával érhető el. A változásstreamek API használatával az alkalmazások lejuthatnak a gyűjteményben vagy az elemekegyetlen szegmensben végrehajtott módosításai. Később további műveleteket is végrehajthat az eredmények alapján. A gyűjteményelemeinek módosításai a módosítási idő sorrendjében kerülnek rögzítésre, és a rendezési sorrend shard kulcsonként garantált.
+A Azure Cosmos DB API-MongoDB való [adatcsatorna](change-feed.md) -támogatás módosítása a Streams API-t használva érhető el. Az adatfolyamok módosítása API használatával az alkalmazások beszerezhetik a gyűjteményen vagy az egyetlen szegmensben lévő elemeken végrehajtott módosításokat. Később további műveleteket is végrehajthat az eredmények alapján. A gyűjtemény elemeinek módosításait a rendszer a módosítási idő sorrendjében rögzíti, és a rendezési sorrendet a rendszer a szegmens kulcsa szerint biztosítja.
 
 > [!NOTE]
-> A változásfolyamok használatához hozza létre a fiókot az Azure Cosmos DB MongoDB API-jának 3.6-os verziójával vagy egy újabb verzióval. Ha a változásfolyam-példákat egy korábbi verzióhoz `Unrecognized pipeline stage name: $changeStream` futtatja, előfordulhat, hogy megjelenik a hiba.
+> Az adatfolyamok módosításának használatához hozza létre a fiókot a Azure Cosmos DB API-MongoDB vagy egy újabb verziójának 3,6-es verziójával. Ha az adatfolyam módosítása példát egy korábbi verzióra futtatja, akkor előfordulhat, hogy `Unrecognized pipeline stage name: $changeStream` a hibaüzenet jelenik meg.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-A következő korlátozások vonatkoznak a változási adatfolyamok használatára:
+A Change streamek használatakor a következő korlátozások érvényesek:
 
-* A `operationType` `updateDescription` és a tulajdonságok még nem támogatottak a kimeneti dokumentumban.
-* A `insert` `update`, `replace` és a műveletek típusajelenleg támogatott. 
-* A törlési művelet vagy más események még nem támogatottak.
+* A `operationType` és `updateDescription` a tulajdonságok még nem támogatottak a kimeneti dokumentumban.
+* A `insert`, `update`a és `replace` az Operations típusok jelenleg támogatottak. 
+* A törlési művelet vagy más esemény még nem támogatott.
 
-Ezek a korlátozások miatt a $match szakasz, $project szakasz és a fullDocument beállítások szükségesek, ahogy az előző példákban látható.
+A korlátozások miatt a $match szakasz, a $project szakasz és a fullDocument lehetőségek szükségesek, ahogy az előző példákban is látható.
 
-Az Azure Cosmos DB SQL API-jának módosítási hírcsatornájával ellentétben nincs külön [változáscsatorna-feldolgozókód-kód,](change-feed-processor.md) amely a változásfolyamok felhasználásához vagy egy bérlettárolót igényelne. Jelenleg nem támogatja az [Azure Functions eseményindítók](change-feed-functions.md) a változásstreamek feldolgozásához.
+A Azure Cosmos DB SQL API-ban megjelenő változási csatornától eltérően a változási adatfolyamok nem használhatók fel külön [módosítási adatcsatornára](change-feed-processor.md) , vagy a bérletek tárolóra van szükségük. Jelenleg nem támogatott a [Azure functions eseményindítók](change-feed-functions.md) feldolgozása a változási adatfolyamok feldolgozásához.
 
 ## <a name="error-handling"></a>Hibakezelés
 
-A következő hibakódok és üzenetek támogatottak a változási adatfolyamok használatakor:
+A Change streamek használatakor a következő hibakódok és üzenetek támogatottak:
 
-* **HTTP-hibakód 16500** - Ha a változásstream szabályozása van, üres lapot ad vissza.
+* **Http-hibakód 16500** – ha a Change stream szabályozása megtörtént, üres lapot ad vissza.
 
-* **NamespaceNotFound (OperationType Invalidate)** - Ha nem létező változásfolyamot futtat a gyűjteményen, `NamespaceNotFound` vagy ha a gyűjteményt eldobják, akkor a rendszer hibaüzenetet ad vissza. Mivel `operationType` a tulajdonság nem adható vissza a kimeneti `operationType Invalidate` dokumentumban, a hiba helyett a `NamespaceNotFound` hiba ad vissza.
+* **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a `operationType Invalidate` hiba helyett, a rendszer a `NamespaceNotFound` hibát adja vissza.
 
 ## <a name="examples"></a>Példák
 
-A következő példa bemutatja, hogyan lehet a gyűjtemény összes elemére módosítási adatfolyamokat beszerezni. Ez a példa egy kurzort hoz létre az elemek megtekintéséhez, amikor beszúrják, frissítik vagy kicserélik őket. A `$match` fázis, `$project` a `fullDocument` szakasz és a beállítás szükséges a változásfolyamok leválasztásához. A módosítási adatfolyamok használatával végzett törlési műveletek figyelése jelenleg nem támogatott. Kerülő megoldásként lágy jelölőt adhat a törölt elemekhez. Hozzáadhat például egy attribútumot a "törölt" elemhez. Ha törölni szeretné az elemet, beállíthatja a "törölt" szót, `true` és beállíthat egy TTL-t az elemen. Mivel a "törölt" `true` frissítés frissítésegy frissítés, ez a változás látható lesz a változásfolyamban.
+Az alábbi példa azt szemlélteti, hogyan lehet módosítani a gyűjtemény összes elemének változásait. Ez a példa létrehoz egy kurzort, amellyel megtekintheti a beszúrt, frissített vagy lecserélt elemeket. A `$match` változtatási `$project` adatfolyamok beszerzéséhez a szakasz, a szakasz és `fullDocument` a beállítás szükséges. A módosítási streameket használó törlési műveletek figyelése jelenleg nem támogatott. Megkerülő megoldásként hozzáadhat egy lágy jelölőt a törölt elemekhez. Hozzáadhat például egy attribútumot a "törölt" nevű elemhez. Ha törölni szeretné az elemeket, beállíthatja a "törölt" értéket, `true` és beállíthatja az élettartamot az elemnél. Mivel a "törölt" érték `true` frissítése frissül, ez a változás látható lesz a változási adatfolyamban.
 
-### <a name="javascript"></a>Javascript:
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 var cursor = db.coll.watch(
@@ -62,7 +62,7 @@ while (!cursor.isExhausted()) {
 }
 ```
 
-### <a name="c"></a>C#:
+### <a name="c"></a>C#
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()
@@ -83,9 +83,9 @@ while (enumerator.MoveNext()){
 enumerator.Dispose();
 ```
 
-## <a name="changes-within-a-single-shard"></a>Változások egyetlen szegmensen belül
+## <a name="changes-within-a-single-shard"></a>Egyetlen szegmensen belüli változások
 
-A következő példa bemutatja, hogyan lehet az elemek módosításait egyetlen szegmensen belül. Ebben a példában leteszi az elemek módosításait, amelyek shard kulcs egyenlő "a" és a szegmens kulcs értéke egyenlő "1". Lehetőség van arra, hogy a különböző ügyfelek olvasási változások a különböző szegmensek párhuzamosan.
+Az alábbi példa azt szemlélteti, hogyan lehet módosítani az elemeket egyetlen szegmensen belül. Ez a példa a "a" és a "1" értékkel egyenlő, a szilánkok kulcsának értékét tartalmazó elemek változásait olvassa be. Lehetséges, hogy a különböző ügyfelek különböző szegmensekről származó módosításokat olvasnak párhuzamosan.
 
 ```javascript
 var cursor = db.coll.watch(
@@ -106,5 +106,5 @@ var cursor = db.coll.watch(
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az élő idő használata az adatok automatikus lejáratához az Azure Cosmos DB MongoDB-hoz való API-jában](mongodb-time-to-live.md)
-* [Indexelés az Azure Cosmos DB MongoDB-hoz elérhető API-jában](mongodb-indexing.md)
+* [A MongoDB Azure Cosmos DB API-ban való használatának ideje az élettartam lejáratára](mongodb-time-to-live.md)
+* [Indexelés Azure Cosmos DB API-MongoDB](mongodb-indexing.md)

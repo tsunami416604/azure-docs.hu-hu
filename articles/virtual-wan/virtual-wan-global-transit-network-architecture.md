@@ -1,7 +1,7 @@
 ---
-title: 'Architektúra: Globális tranzithálózati architektúra'
+title: 'Architektúra: globális átviteli hálózati architektúra'
 titleSuffix: Azure Virtual WAN
-description: Tudnivalók a Virtual WAN globális tranzithálózati architektúrájáról
+description: Ismerje meg a Virtual WAN-hoz készült globális átviteli hálózati architektúrát
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,139 +9,139 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81113167"
 ---
-# <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális tranzithálózati architektúra és virtuális WAN
+# <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
-A modern vállalatoknak mindenütt szüksége van a hiperelosztott alkalmazások, adatok és felhasználók közötti kapcsolatra a felhőben és a helyszínen. A globális tranzithálózati architektúrát a vállalatok a felhőközpontú, modern, globális vállalati informatikai lábnyom konszolidálására, összekapcsolására és szabályozására alkalmazzák.
+A modern vállalatok a felhőben és a helyszíni környezetekben a Hyper-elosztott alkalmazások, az adatközpontok és a felhasználók közötti mindennapos kapcsolatokat igénylik. A vállalatok a globális átviteli hálózati architektúrát a felhőalapú modern, globális vállalati IT-lábnyom megszilárdítására, összekapcsolására és szabályozására használják.
 
-A globális tranzithálózati architektúra egy klasszikus hub-and-spoke kapcsolódási modellen alapul, ahol a felhőben üzemeltetett hálózati "hub" lehetővé teszi a végpontok közötti tranzitív kapcsolatot, amely különböző típusú "küllők" között terjeszthető.
+A globális átviteli hálózat architektúrája egy olyan klasszikus sugaras kapcsolati modellen alapul, ahol a felhőben üzemeltetett hálózat "hub" lehetővé teszi az olyan végpontok közötti tranzitív kapcsolódást, amelyek különböző típusú "küllők" között terjeszthetők.
 
-Ebben a modellben a küllő lehet:
-* Virtuális hálózat (Virtuális hálózatok)
-* Fizikai elágazási hely
+Ebben a modellben a küllő a következő lehet:
+* Virtuális hálózat (virtuális hálózatok)
+* Fizikai ág helye
 * Távoli felhasználó
 * Internet
 
 ![hub és küllő](./media/virtual-wan-global-transit-network-architecture/figure1.png)
 
-**1. ábra: Globális tranzit-hub-and-spoke hálózat**
+**1. ábra: globális árutovábbítási hub és küllős hálózat**
 
-1. ábra a globális tranzithálózat logikai nézetét mutatja be, ahol a földrajzilag elosztott felhasználók, a fizikai helyek és a virtuális hálózatok a felhőben üzemeltetett hálózati hubon keresztül kapcsolódnak egymáshoz. Ez az architektúra lehetővé teszi a logikai egyugrásos tranzit kapcsolatot a hálózati végpontok között.
+Az 1. ábrán a globális átviteli hálózat logikai nézete látható, ahol a földrajzilag elosztott felhasználók, fizikai helyek és virtuális hálózatok a felhőben üzemeltetett hálózati elosztón keresztül kapcsolódnak egymáshoz. Ez az architektúra lehetővé teszi a logikai egyugrásos átviteli kapcsolatok használatát a hálózati végpontok között.
 
-## <a name="global-transit-network-with-virtual-wan"></a><a name="globalnetworktransit"></a>Globális tranzithálózat virtuális WAN-nal
+## <a name="global-transit-network-with-virtual-wan"></a><a name="globalnetworktransit"></a>Globális átviteli hálózat virtuális WAN-kapcsolattal
 
-Az Azure Virtual WAN a Microsoft által felügyelt felhőhálózati szolgáltatás. A szolgáltatás összes hálózati összetevőjét a Microsoft üzemelteti és kezeli. A Virtual WAN-ról további információt a [Virtual WAN Áttekintés](virtual-wan-about.md) című cikkben talál.
+Az Azure Virtual WAN egy Microsoft által felügyelt felhőalapú hálózati szolgáltatás. A szolgáltatás által alkotott összes hálózati összetevőt a Microsoft üzemelteti és kezeli. A virtuális WAN-ról további információt a [virtuális WAN áttekintése](virtual-wan-about.md) című cikkben talál.
 
-Az Azure Virtual WAN lehetővé teszi a globális tranzithálózati architektúrát azáltal, hogy minden kapcsolatot lehetővé tesz a virtuális hálózatok, a fiókhelyek, az SaaS- és a PaaS-alkalmazások és a felhasználók globálisan elosztott felhőalapú számítási feladatai között.
+Az Azure Virtual WAN lehetővé teszi a globális átviteli hálózatok architektúráját azáltal, hogy a virtuális hálózatok, a fiókirodákban, az SaaS-és a Pásti-alkalmazásokban, valamint a felhasználókon elérhető, globálisan elosztott Felhőbeli számítási feladatok teljes körű és bármilyen módon elérhető kapcsolatát engedélyezi.
 
 ![Azure Virtual WAN](./media/virtual-wan-global-transit-network-architecture/figure2.png)
 
-**2. ábra: Globális tranzithálózat és virtuális WAN**
+**2. ábra: globális tranzit hálózat és virtuális WAN**
 
-Az Azure Virtual WAN architektúrában a virtuális WAN-központok azure-régiókban vannak kiépítve, amelyhez az ágak, virtuális hálózatok és távoli felhasználók csatlakoztatása lehet. A fizikai elágazási helyeket a Premium ExpressRoute vagy a webhely-HELY VPN, a virtuális hálózatok virtuális hálózati kapcsolatok, és a távoli felhasználók közvetlenül csatlakozhatnak a hub felhasználói VPN (point-to-site VPN). A Virtual WAN régióközi virtuálishálózat-kapcsolatot is támogat, ahol az egyik régióban lévő virtuális hálózat egy másik régióban lévő virtuális WAN-elosztóhoz csatlakoztatható.
+Az Azure Virtual WAN architektúrában a virtuális WAN-hubok az Azure-régiókban vannak kiépítve, amelyekhez az ágakat, a virtuális hálózatok és a távoli felhasználókat is összekapcsolhatjuk. A fizikai fiókirodák prémium szintű ExpressRoute vagy helyek közötti VPN-kapcsolattal csatlakoznak a központhoz, a virtuális hálózatok a VNet-kapcsolatok segítségével csatlakoznak a központhoz, a távoli felhasználók pedig közvetlenül kapcsolódhatnak a hubhoz a felhasználó VPN-je (pont – hely VPN) használatával. A Virtual WAN támogatja a régiók közötti VNet kapcsolatot is, ahol az egyik régióban lévő VNet egy másik régióban lévő virtuális WAN-hubhoz is csatlakoztathatók.
 
-Virtuális WAN-t úgy hozhat létre, hogy egyetlen virtuális WAN-központot hoz létre a régióban, amely a legtöbb küllővel (ágak, virtuális hálózatok, felhasználók) rendelkezik, majd a más régiókban lévő küllők csatlakoztatása a hubhoz. Ez egy jó lehetőség, ha a vállalati lábnyom többnyire egy régióban néhány távoli küllők.  
+Létrehozhat egy virtuális WAN-t úgy, hogy létrehoz egy virtuális WAN-központot a régiójában, amely a legnagyobb számú küllőt (ágakat, virtuális hálózatok, felhasználókat) és a más régiókban lévő küllőket csatlakoztatja a hubhoz. Ez jó megoldás, ha egy nagyvállalati lábnyom főleg egy régióban, néhány távoli küllővel.  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Hub-to-hub kapcsolat (előzetes verzió)
+## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Központ – központ kapcsolat (előzetes verzió)
 
-A nagyvállalati felhőbeli lábnyom több felhőrégióra is kiterjedhet, és optimális (késés-bölcs) a felhő eléréséhez a fizikai webhelyükhöz és a felhasználókhoz legközelebb eső régióból. A globális tranzithálózati architektúra egyik alapelve, hogy lehetővé tegye a régiók közötti kapcsolatot az összes felhőbeli és helyszíni hálózati végpont között. Ez azt jelenti, hogy az egyik régióban a felhőhöz kapcsolódó ágból érkező forgalom az [Azure Global Network](https://azure.microsoft.com/global-infrastructure/global-network/)által engedélyezett hub-to-hub kapcsolat használatával elérheti az egyik régióban lévő másik ágat vagy virtuális hálózatot.
+A vállalati Felhőbeli lábnyom több Felhőbeli régióra is kiterjed, és az optimális (késés-Wise) a felhőnek a fizikai helyükhöz és a felhasználókhoz legközelebb eső régióból való elérésére szolgál. A globális átviteli hálózati architektúra egyik kulcsfontosságú alapelve a régiók közötti kapcsolat engedélyezése a Felhőbeli és a helyszíni hálózati végpontok között. Ez azt jelenti, hogy egy adott régióban a felhőhöz csatlakoztatott ágakból érkező forgalom egy másik régióban is elérheti az [Azure globális hálózata](https://azure.microsoft.com/global-infrastructure/global-network/)által engedélyezett, a csomópontok közötti kapcsolatot használó régiókat vagy VNet.
 
 ![régiók közötti](./media/virtual-wan-global-transit-network-architecture/figure3.png)
 
-**3. ábra: Virtual WAN régióközi kapcsolat**
+**3. ábra: virtuális WAN régiók közötti kapcsolat**
 
-Ha egyetlen virtuális WAN-ban több hub van engedélyezve, a hubok automatikusan összekapcsolódnak a hubok közötti kapcsolatokon keresztül, így lehetővé teszik a globális kapcsolatot a több régióban elosztott ágak és virtuális hálózatok között. 
+Ha egy virtuális WAN-ban több hub is engedélyezve van, a hubok automatikusan csatlakoznak a hub – hub kapcsolatokon keresztül, így lehetővé téve a globális kapcsolódást a több régióban elosztott ágak és virtuális hálózatok között. 
 
-Emellett a hubok, amelyek mind ugyanahhoz a virtuális WAN-hoz tartoznak, különböző regionális hozzáférési és biztonsági házirendekhez társíthatók. További információt a cikk [biztonság- és házirend-vezérlése](#security) című témakörben talál.
+Emellett a virtuális WAN összes részét képező hubok különböző regionális hozzáférési és biztonsági házirendekhez társíthatók. További információ: [biztonsági és házirend-vezérlés](#security) a cikk későbbi részében.
 
 ## <a name="any-to-any-connectivity"></a><a name="anytoany"></a>Bármilyen kapcsolat
 
-A globális tranzithálózati architektúra lehetővé teszi, hogy bármilyen kapcsolat a virtuális WAN hubokon keresztül. Ez az architektúra kiküszöböli vagy csökkenti a küllők közötti teljes háló- vagy részleges hálókapcsolat szükségességét, amelynek kiépítése és karbantartása összetettebb. Ezenkívül a hub-and-spoke és a mesh hálózatok útválasztási vezérlése könnyebben konfigurálható és karbantartható.
+A globális átviteli hálózati architektúra a virtuális WAN-hubokon keresztül bármilyen kapcsolódást tesz lehetővé. Ez az architektúra kiküszöböli vagy csökkenti a küllők közötti teljes rácsvonal vagy részleges háló kapcsolat szükségességét, amelyek összetettebbek a létrehozáshoz és a karbantartáshoz. Emellett a hub-és küllős és a mesh hálózatok útválasztási vezérlése könnyebben konfigurálható és kezelhető.
 
-Bármely kapcsolat (a globális architektúra környezetében) lehetővé teszi, hogy a globálisan elosztott felhasználókkal, ágakkal, adatközpontokkal, virtuális hálózatokkal és alkalmazásokkal rendelkező vállalatok a "tranzit" hub(ok)on keresztül csatlakozzanak egymáshoz. Az Azure Virtual WAN globális tranzitrendszerként működik.
+Bármely – bármely kapcsolat (globális architektúra kontextusában) lehetővé teszi, hogy a vállalat globálisan elosztott felhasználókkal, ágakkal, adatközpontokkal, virtuális hálózatok és alkalmazásokkal kapcsolódjon egymáshoz az "árutovábbítási" központ (ok) n keresztül. Az Azure Virtual WAN globális árutovábbítási rendszerrel működik.
 
-![bármely bármely](./media/virtual-wan-global-transit-network-architecture/figure4.png)
+![bármilyen](./media/virtual-wan-global-transit-network-architecture/figure4.png)
 
-**4. ábra: Virtuális WAN közlekedési útvonalak**
+**4. ábra: virtuális WAN-forgalom elérési útjai**
 
-Az Azure Virtual WAN a következő globális tranzitkapcsolati útvonalakat támogatja. A zárójelben lévő betűk a 4.
+Az Azure Virtual WAN a következő globális átviteli csatlakozási útvonalakat támogatja. A zárójelben lévő betűk a 4. ábrán láthatók.
 
-* Fiók-vnet (a)
-* Ág-ág (b)
-  * ExpressRoute globális elérés és virtuális WAN
-* Távoli felhasználó-virtuális hálózat (c)
-* Távoli felhasználó-ágancika (d)
-* Virtuális hálózat és virtuális hálózat (e)
-* Ág-hub-hub-to-Branch (f)
-* Ág-hub-hub-to-VNet (g)
-* Virtuális hálózat-hub-hub-to-VNet (h)
+* Ág – VNet (a)
+* Ág – ág (b)
+  * ExpressRoute Global Reach és virtuális WAN
+* Távoli felhasználó – VNet (c)
+* Távoli felhasználó – ág (d)
+* VNet – VNet (e)
+* Ág – központ – hub – ág (f)
+* Ág – központ – hub – VNet (g)
+* VNet – hub-VNet (h)
 
-### <a name="branch-to-vnet-a-and-branch-to-vnet-cross-region-g"></a>Ág-vnet (a) és a fiók-to-VNet régiók közötti (g)
+### <a name="branch-to-vnet-a-and-branch-to-vnet-cross-region-g"></a>Ág – VNet (a) és ág – VNet közötti régió (g)
 
-A Branch-to-VNet az Azure Virtual WAN által támogatott elsődleges elérési út. Ez az elérési út lehetővé teszi, hogy ágakat csatlakoztasson az Azure IAAS vállalati számítási feladatokhoz, amelyek az Azure virtuális hálózatokban vannak telepítve. Az ágak az ExpressRoute vagy a helyek közötti VPN-en keresztül csatlakoztathatók a virtuális WAN-hoz. A forgalom virtuális hálózatokhoz, amelyek virtuális hálózatkapcsolatokon keresztül csatlakoznak a virtuális WAN-csomópontokhoz. Explicit [átjáró átvitele](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) nem szükséges a Virtual WAN, mert a Virtual WAN automatikusan engedélyezi az átjáró átvitelét a telephelyre. Tekintse meg a [Virtual WAN Partners](virtual-wan-configure-automation-providers.md) cikkét az SD-WAN CPE virtual WAN-hoz való csatlakoztatásáról.
+A VNet az Azure Virtual WAN által támogatott elsődleges elérési út. Ez az elérési út lehetővé teszi, hogy az Azure virtuális hálózatok üzembe helyezett Azure IAAS Enterprise-munkaterhelésekhez csatlakozhasson ágakat. Az ágak a ExpressRoute vagy a helyek közötti VPN használatával csatlakoztathatók a virtuális WAN-hoz. A VNet-kapcsolatokon keresztül a virtuális WAN-központokhoz csatlakozó virtuális hálózatok áthaladó forgalom. A virtuális WAN esetében nem szükséges explicit [átjáró-átvitel](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) , mert a virtuális WAN automatikusan engedélyezi az átjárónak a fiókirodába való átvitelét. Tekintse meg a [virtuális WAN-partnerek](virtual-wan-configure-automation-providers.md) című cikket, amely bemutatja, hogyan CSATLAKOZTATHATÓ egy SD-WAN CPE a virtuális WAN-hoz.
 
-### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute globális elérés és virtuális WAN
+### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach és virtuális WAN
 
-Az ExpressRoute egy privát és rugalmas módja annak, hogy a helyszíni hálózatokat a Microsoft Cloud-hoz csatlakoztassa. A Virtual WAN támogatja az Express Route áramköri kapcsolatokat. A telephely virtual WAN-hoz való csatlakoztatásához express route-on 1) Prémium áramkör 2) Áramkör kell a Globális elérés engedélyezett helyen.
+A ExpressRoute egy privát és rugalmas módszer a helyi hálózatok Microsoft Cloudhoz való összekapcsolására. A Virtual WAN támogatja az Express Route Circuit-kapcsolatokat. Ha egy fiókirodai helyet a Virtual WAN-hoz csatlakoztat, az Express Route 1) Premium Circuit 2) áramkört Global Reach engedélyezett helyen kell lennie.
 
-Az ExpressRoute Global Reach az ExpressRoute egyik kiegészítő szolgáltatása. A Global Reach segítségével összekapcsolhatja az ExpressRoute-áramköröket, hogy magánhálózatot hozlétre a helyszíni hálózatok között. Az ExpressRoute használatával az Azure Virtual WAN-hoz kapcsolódó ágak megkövetelik, hogy az ExpressRoute globális elérése kommunikáljon egymással.
+A ExpressRoute Global Reach a ExpressRoute kiegészítő szolgáltatása. A Global Reach segítségével összekapcsolhatja a ExpressRoute-áramköröket, hogy magánhálózat legyen a helyszíni hálózatok között. Azok az ágak, amelyek az Azure Virtual WAN-hoz csatlakoznak a ExpressRoute használatával, az ExpressRoute Global Reach kell kommunikálni egymással.
 
-Ebben a modellben minden ág, amely az ExpressRoute használatával csatlakozik a virtuális WAN-hubhoz, csatlakozhat a virtuális hálózatokhoz az ág-virtuális hálózat elérési útján. Az ág-ággal való forgalom nem halad át a hubon, mert az ExpressRoute Globális elérés optimálisabb elérési utat tesz lehetővé az Azure WAN-on keresztül.
+Ebben a modellben minden olyan ág, amely a ExpressRoute használatával csatlakozik a virtuális WAN-hubhoz, a virtuális hálózatok a VNet útvonalon keresztül csatlakozhat. Az elágazási forgalom nem kerül át a központba, mert az ExpressRoute Global Reach az Azure WAN-on keresztüli optimális elérési utat tesz lehetővé.
 
-### <a name="branch-to-branch-b-and-branch-to-branch-cross-region-f"></a>Ágközi (b) és ágközi régiók (f)
+### <a name="branch-to-branch-b-and-branch-to-branch-cross-region-f"></a>Ág – ág (b) és ág – ág közötti régió (f)
 
-Az ágak ExpressRoute-áramkörök és/vagy helyek közötti VPN-kapcsolatok használatával csatlakoztathatók egy Azure virtuális WAN-hubhoz. Az ágakat csatlakoztathatja az ághoz legközelebb eső virtuális WAN hubhoz.
+Az ágak ExpressRoute áramkörök és/vagy helyek közötti VPN-kapcsolatok használatával csatlakoztathatók egy Azure-beli virtuális WAN-hubhoz. Az ágakat csatlakoztathatja a virtuális WAN-hubhoz, amely az ág legközelebb eső régiójában található.
 
-Ez a beállítás lehetővé teszi, hogy a vállalatok az Azure gerinchálózatát kihasználva csatlakoztassa az ágakat. Annak ellenére, hogy ez a képesség elérhető, mérlegelnie kell az ágak azure-beli Virtuális WAN-on keresztüli csatlakoztatásának előnyeit, szemben egy privát WAN használatával.  
+Ez a beállítás lehetővé teszi, hogy a vállalatok az Azure gerincet használják az ágak összekapcsolásához. Bár ez a funkció elérhető, érdemes mérlegelni a fiókirodák Azure-beli virtuális WAN-kapcsolaton keresztül történő csatlakoztatásának előnyeit, valamint a privát WAN használatát.  
 
-### <a name="remote-user-to-vnet-c"></a>Távoli felhasználó-virtuális hálózat (c)
+### <a name="remote-user-to-vnet-c"></a>Távoli felhasználó – VNet (c)
 
-Közvetlen, biztonságos távoli hozzáférést engedélyezhet az Azure-hoz a távoli felhasználói ügyfél és a virtuális WAN közötti pont-hely kapcsolat használatával. A vállalati távoli felhasználóknak már nem kell a felhőbe hajtással a felhőbe hajtással vállalati VPN-t használva.
+Engedélyezheti a közvetlen, biztonságos távoli hozzáférést az Azure-hoz pont – hely kapcsolat használatával egy távoli felhasználói ügyfélről egy virtuális WAN-ra. A vállalati távoli felhasználóknak már nem kell hajtű a felhőbe a vállalati VPN használatával.
 
-### <a name="remote-user-to-branch-d"></a>Távoli felhasználó-ágancika (d)
+### <a name="remote-user-to-branch-d"></a>Távoli felhasználó – ág (d)
 
-A távoli felhasználó-ágelérési út lehetővé teszi a távoli felhasználók, akik egy pont-hely kapcsolat az Azure-hoz hozzáférés helyszíni számítási feladatok és alkalmazások a felhőn keresztül. Ez az elérési út rugalmasságot biztosít a távoli felhasználók számára az Azure-ban és a helyszíni üzembe helyezett számítási feladatok eléréséhez. A vállalatok lehetővé tehetik a központi felhőalapú biztonságos távelérés-szolgáltatást az Azure Virtual WAN-ban.
+A távoli felhasználó – ág elérési út lehetővé teszi, hogy a távoli felhasználók, akik pont – hely kapcsolattal csatlakoznak az Azure-hoz a helyszíni számítási feladatokhoz és alkalmazásokhoz a felhőn keresztül történő átvitelsel. Ez az elérési út biztosítja a távoli felhasználók számára a rugalmasságot az Azure-ban és a helyszínen üzembe helyezett munkaterhelések eléréséhez. A vállalatok engedélyezhetik a központi felhőalapú biztonságos távelérés szolgáltatást az Azure Virtual WAN-ban.
 
-### <a name="vnet-to-vnet-transit-e-and-vnet-to-vnet-cross-region-h"></a>Virtuális hálózat és virtuális hálózat közötti átvitel (e) és virtuális hálózat közötti régióközi (h)
+### <a name="vnet-to-vnet-transit-e-and-vnet-to-vnet-cross-region-h"></a>VNet – VNet tranzit (e) és VNet – VNet régió (h)
 
-A virtuális hálózat-virtuális hálózat közötti átvitel lehetővé teszi, hogy a virtuális hálózatok egymáshoz való csatlakozásérdekében többrétegű alkalmazások, amelyek több virtuális hálózaton keresztül valósítják meg. Opcionálisan virtuális hálózatok at is csatlakoztathat egymáshoz a virtuális hálózat társviszony-létesítés, és ez alkalmas lehet bizonyos forgatókönyvek, ahol a VWAN hubon keresztül történő átvitel nem szükséges.
+A VNet – VNet tranzit lehetővé teszi, hogy a virtuális hálózatok a több virtuális hálózatok-ben megvalósított többrétegű alkalmazások összekapcsolásához csatlakozhasson egymáshoz. A virtuális hálózatok egymással is összekapcsolhatók a VNet-közvetítéssel, és ez olyan esetekben lehet megfelelő, amikor az VWAN hub-on keresztül történő átvitel nem szükséges.
 
-## <a name="security-and-policy-control"></a><a name="security"></a>Biztonság és házirend-ellenőrzés
+## <a name="security-and-policy-control"></a><a name="security"></a>Biztonság és házirend-vezérlés
 
-Az Azure Virtual WAN-központok összekapcsolják az összes hálózati végpontot a hibrid hálózaton keresztül, és potenciálisan láthatják az összes átviteli hálózati forgalmat. A virtuális WAN-elosztók biztonságos virtuális elosztókká alakíthatók az Azure Tűzfal VWAN-központokon belüli telepítésével a felhőalapú biztonság, a hozzáférés és a házirend-vezérlés engedélyezéséhez. Az Azure firewalls vezénylése a virtuális WAN-központokban az Azure Firewall Manager által végezhető el.
+Az Azure Virtual WAN-hubok összekötik az összes hálózati végpontot a hibrid hálózaton, és lehetséges, hogy az összes átviteli hálózati forgalom megjelenik. A virtuális WAN-hubok biztonságos virtuális hubokba alakíthatók, ha a Azure Firewallt a VWAN-hubokon belül telepíti, hogy engedélyezze a felhőalapú biztonságot, a hozzáférést és a házirend-vezérlést. A virtuális WAN-hubokban található Azure-tűzfalak összehangolása a Azure Firewall Manager által végezhető el.
 
-[Az Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) a globális tranzithálózatok biztonságának kezeléséhez és méretezéséhez szükséges lehetőségeket biztosítja. Az Azure Firewall Manager lehetővé teszi az útválasztás, a globális házirend-kezelés, a fejlett internetes biztonsági szolgáltatások központi kezelését harmadik félen keresztül az Azure tűzfallal együtt.
+A [Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) biztosítja a globális átviteli hálózatok biztonságának kezeléséhez és méretezéséhez szükséges képességeket. A Azure Firewall Manager lehetővé teszi, hogy központilag kezelhesse az útválasztást, a globális házirendek felügyeletét, a speciális internetes biztonsági szolgáltatásokat harmadik felekkel, valamint a Azure Firewall.
 
-![biztonságos virtuális központ az Azure Firewall tűzfallal](./media/virtual-wan-global-transit-network-architecture/figure5.png)
+![biztonságos virtuális központ Azure Firewall](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
-**5. ábra: Biztonságos virtuális központ az Azure tűzfallal**
+**5. ábra: biztonságos virtuális központ Azure Firewall**
 
-Az Azure Firewall a virtuális WAN támogatja a következő globális biztonságos tranzit kapcsolatelérési utak. A zárójelben lévő betűk az 5.
+A virtuális WAN Azure Firewall a következő globálisan biztonságos tranzit-csatlakozási útvonalakat támogatja. A zárójelben lévő betűk az 5. ábrán láthatók.
 
-* Virtuális hálózat és virtuális hálózat között biztonságos átvitel (e)
-* Virtuális hálózat–internet vagy külső biztonsági szolgáltatás (i)
-* Internetkapcsolat vagy külső biztonsági szolgáltatás (j)
+* VNet – VNet biztonságos átvitel (e)
+* VNet vagy harmadik féltől származó biztonsági szolgáltatás (i)
+* Ág – Internet vagy harmadik féltől származó biztonsági szolgáltatás (j)
 
-### <a name="vnet-to-vnet-secured-transit-e"></a>Virtuális hálózat és virtuális hálózat között biztonságos átvitel (e)
+### <a name="vnet-to-vnet-secured-transit-e"></a>VNet – VNet biztonságos átvitel (e)
 
-A virtuális hálózat-virtuális hálózat biztonságos átvitel lehetővé teszi, hogy a virtuális hálózatok csatlakozni egymáshoz az Azure tűzfalon keresztül a virtuális WAN hub.
+A VNet – VNet biztonságos továbbítás lehetővé teszi, hogy a virtuális hálózatok a virtuális WAN-központban lévő Azure Firewall keresztül kapcsolódjon egymáshoz.
 
-### <a name="vnet-to-internet-or-third-party-security-service-i"></a>Virtuális hálózat–internet vagy külső biztonsági szolgáltatás (i)
+### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet vagy harmadik féltől származó biztonsági szolgáltatás (i)
 
-A virtuális hálózat-internet vagy harmadik fél által védett átvitel lehetővé teszi a virtuális hálózatok számára, hogy csatlakozzanak az internethez vagy egy támogatott külső biztonsági szolgáltatásokhoz az Azure tűzfalon keresztül a virtuális WAN hubon.
+A VNet vagy harmadik féltől származó biztonságos tranzit lehetővé teszi, hogy a virtuális hálózatok a virtuális WAN-központban lévő Azure Firewall keresztül kapcsolódjon az internethez vagy egy támogatott harmadik féltől származó biztonsági szolgáltatáshoz.
 
-### <a name="branch-to-internet-or-third-party-security-service-j"></a>Internetkapcsolat vagy külső biztonsági szolgáltatás (j)
-A fiók-to-Internet vagy külső biztonságos átvitel lehetővé teszi az ágak számára, hogy csatlakozzanak az internethez vagy egy támogatott külső biztonsági szolgáltatások az Azure tűzfalon keresztül a virtuális WAN hub.
+### <a name="branch-to-internet-or-third-party-security-service-j"></a>Ág – Internet vagy harmadik féltől származó biztonsági szolgáltatás (j)
+Az ág – Internet vagy harmadik féltől származó biztonságos továbbítás lehetővé teszi, hogy az ágak a virtuális WAN-központban Azure Firewall keresztül csatlakozhassanak az internethez vagy egy támogatott harmadik féltől származó biztonsági szolgáltatáshoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Hozzon létre egy kapcsolatot a Virtual WAN használatával, és telepítse az Azure tűzfalat a VWAN hub(ok)on.
+Hozzon létre egy virtuális WAN-kapcsolaton keresztüli kapcsolatokat, és telepítse a Azure Firewallt az VWAN hub (ok) ban.
 
-* [Helyek közötti kapcsolatok a Virtual WAN használatával](virtual-wan-site-to-site-portal.md)
+* [Helyek közötti kapcsolatok virtuális WAN használatával](virtual-wan-site-to-site-portal.md)
 * [ExpressRoute-kapcsolatok virtuális WAN használatával](virtual-wan-expressroute-portal.md)
-* [Az Azure Firewall Manager az Azure FW üzembe helyezéséhez a VWAN-ben](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [Azure Firewall Manager az Azure FW üzembe helyezéséhez a VWAN-ben](https://go.microsoft.com/fwlink/?linkid=2107683)

@@ -1,43 +1,43 @@
 ---
 title: Az Azure AD használata az Azure Kubernetes szolgáltatásban
-description: Ismerje meg, hogyan használhatja az Azure AD-t az Azure Kubernetes-szolgáltatásban (AKS)
+description: Ismerje meg, hogyan használhatja az Azure AD-t az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
 ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114646"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Az Azure AD integrálása az Azure Kubernetes szolgáltatásban (előzetes verzió)
 
 > [!Note]
-> Az aKS v1-es integrációval rendelkező meglévő AKS-fürtöket nem érinti az új AKS v2-élmény.
+> Az Active Directory-integrációval rendelkező meglévő AK v1-fürtöket az új AK v2-élmény nem érinti.
 
-Az Azure AD-integráció az AKS v2-vel úgy lett kialakítva, hogy egyszerűsítse az Azure AD-integrációt az AKS v1-es felhasználói felülettel, ahol a felhasználóknak ügyfélalkalmazást, kiszolgálóalkalmazást kellett létrehozniuk, és az Azure AD-bérlőnek címtárolvasási engedélyeket kellett adniuk. Az új verzióban az AKS-erőforrás-szolgáltató kezeli az ügyfél- és kiszolgálóalkalmazásokat.
+Az AK v2-vel való Azure AD-integráció úgy lett kialakítva, hogy leegyszerűsítse az Azure AD-integrációt az AK v1-es verziójával, ahol a felhasználóknak létre kellett hozniuk egy ügyfélalkalmazás-alkalmazást, egy kiszolgálói alkalmazást, és az Azure AD-bérlőt a címtár Az új verzióban az AK erőforrás-szolgáltató kezeli az ügyfél-és kiszolgálói alkalmazásokat.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Jelenleg nem frissíthet egy meglévő Azure AD-kompatibilis AKS-v1-fürtöt a v2-es élményre.
+* Jelenleg nem frissíthet egy meglévő Azure AD-kompatibilis AK v1-fürtöt a v2 felületre.
 
 > [!IMPORTANT]
-> Az AKS előzetes funkciók önkiszolgáló, opt-in alapon érhetők el. Az előzetes verziók "adott verzióban" és "ahogy elérhetők", és nem tartoznak a szolgáltatásiszint-szerződések és a korlátozott jótállás hatálya alá. Az AKS-előzeteseket részben az ügyfélszolgálat fedezi a legjobb erőfeszítés alapján. Mint ilyen, ezek a funkciók nem célja a termelés használatra. További információt az alábbi támogatási cikkekben talál:
+> Az AK előzetes verziójának funkciói az önkiszolgáló, a választható lehetőségek alapján érhetők el. Az előzetes verziók az "adott állapotban" és "elérhetőként" jelennek meg, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A (z) és az ügyfél-támogatási szolgálatok a lehető leghatékonyabban fedezik az előzetes verziókat. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért lásd a következő támogatási cikkeket:
 >
-> - [Az AKS támogatási irányelvei](support-policies.md)
+> - [AK-támogatási szabályzatok](support-policies.md)
 > - [Azure-támogatás – gyakori kérdések](faq.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 A következő erőforrásokat kell telepítenie:
 
-- Az Azure CLI 2.2.0-s vagy újabb verziója
-- Az aks-preview 0.4.38 kiterjesztés
-- Kubectl egy minimális változata [1,18 béta](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#client-binaries)
+- Az Azure CLI, a 2.2.0 vagy újabb verzió
+- Az AK – előzetes verziójú 0.4.38 bővítmény
+- Kubectl a [1,18 Beta](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#client-binaries) minimális verziójával
 
-Az aks-preview bővítmény vagy újabb verzió telepítéséhez/frissítéséhez használja a következő Azure CLI-parancsokat:
+A következő Azure CLI-parancsokkal telepítheti/frissítheti az AK-előnézet bővítményt vagy újabb verziót:
 
 ```azurecli
 az extension add --name aks-preview
@@ -49,37 +49,37 @@ az extension update --name aks-preview
 az extension list
 ```
 
-A kubectl telepítéséhez használja az alábbiakat:
+A kubectl telepítéséhez használja a következőt:
 
 ```azurecli
 sudo az aks install-cli
 kubectl version --client
 ```
 
-Ezeket az [utasításokat](https://kubernetes.io/docs/tasks/tools/install-kubectl/) más operációs rendszerekhez is használhatja.
+[Ezeket az utasításokat](https://kubernetes.io/docs/tasks/tools/install-kubectl/) más operációs rendszerekhez használhatja.
 
 > [!CAUTION]
-> Miután regisztrált egy szolgáltatást egy előfizetésen, jelenleg nem függeszheti le a szolgáltatást. Ha engedélyezi az előzetes verzió egyes szolgáltatásait, előfordulhat, hogy az előfizetésben később létrehozott összes AKS-fürthöz alapértelmezett értékeket használ. Az éles előfizetések előzetes funkcióinak engedélyezése nem lehetséges. Ehelyett használjon külön előfizetést az előzetes verzió funkcióinak teszteléséhez és a visszajelzések összegyűjtéséhez.
+> Miután regisztrált egy szolgáltatást egy előfizetéshez, jelenleg nem tudja törölni a szolgáltatást. Az előzetes verziójú funkciók engedélyezésekor az alapértelmezett beállítások az előfizetésben később létrehozott AK-fürtökhöz is használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Ehelyett használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-Az állapot **regisztrált**állapotként való megjelenítése több percig is eltarthat. A regisztrációs állapotot az [az szolgáltatáslista](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) paranccsal ellenőrizheti:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztráltként jelenik `Microsoft.ContainerService` meg, frissítse az erőforrás-szolgáltató regisztrációját az [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>AKS-fürt létrehozása engedélyezve az Azure AD-vel
+## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>AK-fürt létrehozása az Azure AD-vel engedélyezve
 
-Most már létrehozhat egy AKS-fürtöt a következő CLI-parancsokkal.
+Most létrehozhat egy AK-fürtöt az alábbi parancssori felületi parancsokkal.
 
 Először hozzon létre egy Azure-erőforráscsoportot:
 
@@ -88,25 +88,25 @@ Először hozzon létre egy Azure-erőforráscsoportot:
 az group create --name myResourceGroup --location centralus
 ```
 
-Ezután hozzon létre egy AKS-fürtöt:
+Ezután hozzon létre egy AK-fürtöt:
 
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
 ```
-A fenti parancs három csomópontos AKS-fürtöt hoz létre, de a fürtet létrehozó felhasználó alapértelmezés szerint nem tagja annak a csoportnak, amely hozzáfér ehhez a fürthöz. Ennek a felhasználónak létre kell hoznia egy Azure AD-csoportot, hozzá kell adnia magát a csoport tagjaként, majd frissítenie kell a fürtöt az alábbiak szerint. Kövesse az utasításokat [itt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
+A fenti parancs létrehoz egy három csomópontos AK-fürtöt, de a fürtöt létrehozó felhasználó alapértelmezés szerint nem tagja egy olyan csoportnak, amely hozzáfér ehhez a fürthöz. A felhasználónak létre kell hoznia egy Azure AD-csoportot, fel kell vennie magát a csoport tagjaként, majd frissítenie kell a fürtöt az alábbiak szerint. Kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
 
-Miután létrehozott egy csoportot, és felvette magát (és másokat) tagként, frissítheti a fürtöt az Azure AD csoporttal a következő paranccsal
+Miután létrehozott egy csoportot, és hozzáadta saját magát (és másokat) tagként, a következő parancs használatával frissítheti a fürtöt az Azure AD-csoporttal.
 
 ```azurecli-interactive
 az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
-Másik lehetőségként, ha először hoz létre egy csoportot, és tagokat ad hozzá, engedélyezheti az Azure AD csoportot a létrehozási időben a következő paranccsal,
+Ha először létrehoz egy csoportot, és tagokat ad hozzá, akkor az alábbi parancs használatával engedélyezheti az Azure AD-csoportot a létrehozás ideje alatt.
 
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
-Egy Azure AD v2-fürt sikeres létrehozása a következő szakaszt rendelkezik a választörzsben
+Az Azure AD v2-fürt sikeres létrehozása a következő szakaszt tartalmazza a válasz törzsében:
 ```
 "Azure ADProfile": {
     "adminGroupObjectIds": null,
@@ -121,12 +121,12 @@ Egy Azure AD v2-fürt sikeres létrehozása a következő szakaszt rendelkezik a
 A fürt néhány percen belül létrejön.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Hozzáférés egy Azure AD-kompatibilis fürthöz
-A rendszergazda hitelesítő adatainak beszereznie a fürt eléréséhez:
+A rendszergazdai hitelesítő adatok beszerzése a fürt eléréséhez:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
-Most használja a kubectl get csomópontok parancsot a fürt csomópontjainak megtekintéséhez:
+Most használja a kubectl Get Nodes parancsot a fürt csomópontjainak megtekintéséhez:
 
 ```azurecli-interactive
 kubectl get nodes
@@ -137,20 +137,20 @@ aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
 
-A fürt eléréséhez szükséges felhasználói hitelesítő adatok beszerezni:
+A fürt eléréséhez szükséges felhasználói hitelesítő adatok beszerzése:
  
 ```azurecli-interactive
  az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
 A bejelentkezéshez kövesse az utasításokat.
 
-Ön kap: **Be kell jelentkeznie a szerverre (jogosulatlan)**
+A következőt kapja: be **kell jelentkeznie a kiszolgálóra (nem engedélyezett)**
 
-A fenti felhasználó hibaüzenetet kap, mert a felhasználó nem része a fürthöz hozzáféréssel rendelkező csoportnak.
+A fenti felhasználó hibaüzenetet kap, mert a felhasználó nem része egy olyan csoportnak, amely hozzáfér a fürthöz.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az [Azure AD szerepköralapú hozzáférés-vezérlésről.][azure-ad-rbac]
+Ismerkedjen meg az [Azure ad szerepkör-alapú Access Controlával][azure-ad-rbac].
 
 <!-- LINKS - Internal -->
 [azure-ad-rbac]: azure-ad-rbac.md

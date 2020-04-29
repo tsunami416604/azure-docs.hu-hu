@@ -1,6 +1,6 @@
 ---
-title: Adott ajánlat lekérése API | Azure Piactér
-description: Az API lekéri a megadott ajánlatot a közzétevő névterén belül.
+title: Megadott ajánlati API beolvasása | Azure piactér
+description: Az API lekérdezi a megadott ajánlatot a közzétevő névterén belül.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,24 +8,24 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: f2182ed2377a392f55af2c1f723be325bd518349
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255914"
 ---
-<a name="retrieve-a-specific-offer"></a>Adott ajánlat lekérése
+<a name="retrieve-a-specific-offer"></a>Adott ajánlat beolvasása
 =========================
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a Partnerközponttal, és az ajánlatok partnerközpontba való áttelepítése után is működni fognak. Az integráció kis változtatásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, és győződjön meg arról, hogy a kód továbbra is működik a Partnerközpontba való áttelepítés után.
+> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
 
-A megadott ajánlat lekérése a közzétevő névterén belül.  
+Lekéri a megadott ajánlatot a közzétevő névterén belül.  
 
-Az ajánlat egy adott verzióját is lekérheti, vagy lekérheti az ajánlatot vázlat, nézet vagy éles tárolóhelyeken. Ha nincs megadva tárolóhely, `draft`az alapértelmezett érték a . A nem előzetesverzióban vagy közzénem tett ajánlat lekérésével `404 Not Found` hiba fog bekövetkezni.
+Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot Piszkozat, megtekintés vagy éles tárolóhelyek használatával. Ha nincs megadva tárolóhely, az alapértelmezett érték `draft`. A nem előzetesen megtekintett vagy közzétett ajánlat beolvasására tett kísérlet `404 Not Found` hibát eredményez.
 
 > [!WARNING]
-> Ez az API nem olvassa be a titkos típusmezők titkos értékeit.
+> Ez az API nem kéri le a titkos típusok mezőinek titkos értékeit.
 
 ``` http
     GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
@@ -43,10 +43,10 @@ Az ajánlat egy adott verzióját is lekérheti, vagy lekérheti az ajánlatot v
 
 | **Név**    | **Leírás**                                                                          | **Adattípus** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Például a Contoso                                                        | Sztring        |
-| offerId     | Guid, amely egyedileg azonosítja az ajánlatot.                                                 | Sztring        |
-| version     | A beolvasott ajánlat verziója. Alapértelmezés szerint a rendszer a legújabb ajánlat verzióját olvassa be. | Egész szám       |
-| slotId      | A nyílás, amelyből az ajánlatot le kell kérni, a következők egyike lehet:      <br/>  - `Draft`(alapértelmezett) lekéri a jelenleg vázlatban lévő ajánlatverziót.  <br/>  -  `Preview`lekéri az előzetes verzióban jelenleg elérhető ajánlatverziót.     <br/>  -  `Production`lekéri a jelenleg éles környezetben lévő ajánlatverziót.          |      Enum |
+| publisherId | publisherId. Például: contoso                                                        | Sztring        |
+| offerId     | Az ajánlatot egyedileg azonosító GUID.                                                 | Sztring        |
+| version     | A beolvasott ajánlat verziója. Alapértelmezés szerint a rendszer beolvassa a legújabb ajánlat verzióját. | Egész szám       |
+| slotId      | Az a tárolóhely, amelyből az ajánlatot le kell kérni, az alábbiak egyike lehet:      <br/>  - `Draft`(alapértelmezés) lekérdezi a jelenleg vázlatos ajánlat verzióját.  <br/>  -  `Preview`a jelenleg előzetes verzióban elérhető ajánlat verziószámának beolvasása.     <br/>  -  `Production`az aktuálisan éles üzemben lévő ajánlat verziószámának beolvasása.          |      Enum |
 | api-verzió | Az API legújabb verziója                                                                    | Dátum          |
 |  |  |  |
 
@@ -61,7 +61,7 @@ Az ajánlat egy adott verzióját is lekérheti, vagy lekérheti az ajánlatot v
 |  |  |
 
 
-<a name="body-example"></a>Példa törzsre
+<a name="body-example"></a>Példa szövegtörzsre
 ------------
 
 ### <a name="response"></a>Válasz
@@ -169,28 +169,28 @@ Az ajánlat egy adott verzióját is lekérheti, vagy lekérheti az ajánlatot v
 ```
 
 
-### <a name="response-body-properties"></a>Választörzs tulajdonságai
+### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
 
 |  **Név**       |   **Leírás**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
-|  offerTypeId    | Az ajánlat típusát azonosítja                                                                                                    |
+|  offerTypeId    | Az ajánlat típusát azonosítja.                                                                                                    |
 |  publisherId    | A közzétevő egyedi azonosítója                                                                                              |
-|  status         | Az ajánlat állapota. A lehetséges értékek listáját lásd alább [Az Ajánlat állapota.](#offer-status)                                  |
+|  status         | Az ajánlat állapota. A lehetséges értékek listájáért lásd az [ajánlat állapota](#offer-status) alább.                                  |
 |  Azonosító             | Az ajánlatot egyedileg azonosító GUID                                                                                         |
-|  version        | Az ajánlat aktuális verziója. A verziótulajdonságot az ügyfél nem tudja módosítani. Minden kiadás után növekszik.    |
-|  definíció     | A munkaterhelés tényleges meghatározása                                                                                               |
-|  módosítottIdő    | AZ ajánlat utolsó módosításának dátuma                                                                                   |
+|  version        | Az ajánlat aktuális verziója. Az ügyfél nem tudja módosítani a Version tulajdonságot. Minden közzététel után növekszik.    |
+|  definíció     | A munkaterhelés tényleges definíciója                                                                                               |
+|  changedTime    | Az ajánlat utolsó módosításának UTC szerinti dátuma                                                                                   |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Válasz állapotkódjai
+### <a name="response-status-codes"></a>Válasz-állapotkódok
 
 | **Kód**  | **Leírás**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`- A kérés feldolgozása sikeresen megtörtént, és a közzétevő alatt lévő összes ajánlat visszakerült az ügyfélhez.               |
-|  400      | `Bad/Malformed request`- A hibaválasz törzse további információkat tartalmazhat.                                                 |
-|  403      | `Forbidden`- Az ügyfél nem fér hozzá a megadott névtérhez.                                                        |
-|  404      | `Not found`- A megadott entitás nem létezik. Az ügyfélnek ellenőriznie kell a publisherAzonosítót, az offerId-et és a verziót (ha meg van adva).      |
+|  200      | `OK`– A kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.               |
+|  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                                                 |
+|  403      | `Forbidden`– Az ügyfél nem fér hozzá a megadott névtérhez.                                                        |
+|  404      | `Not found`– A megadott entitás nem létezik. Az ügyfélnek ellenőriznie kell a publisherId, a offerId és a verziót (ha meg van adva).      |
 |  |  |
 
 
@@ -198,11 +198,11 @@ Az ajánlat egy adott verzióját is lekérheti, vagy lekérheti az ajánlatot v
 
 |  **Név**                   |   **Leírás**                             |
 | --------------------------- |  -------------------------------------------- |
-|  Soha nem lett közzétéve             | Az ajánlatot soha nem tették közzé.               |
-|  Nincs beindítva                 | Az ajánlat új, de nem indult el.              |
-|  VárakozásA PublisherReview-ra  | Az ajánlat a közzétevő jóváhagyására vár.      |
-|  Fut                    | Az ajánlat beküldése feldolgozása folyamatban van.          |
-|  Sikeres                  | Az ajánlat beküldése befejeződött a feldolgozás.    |
-|  Megszakítva                   | Az ajánlat beküldését törölték.                |
-|  Sikertelen                     | Az ajánlat beküldése nem sikerült.                      |
+|  NeverPublished             | Az ajánlatot még soha nem tették közzé.               |
+|  NotStarted                 | Az ajánlat új, de nem indult el.              |
+|  WaitingForPublisherReview  | Az ajánlat a közzétevő jóváhagyására vár.      |
+|  Fut                    | Az ajánlatok beküldése folyamatban van.          |
+|  Sikeres                  | Az ajánlat küldése befejeződött a feldolgozás során.    |
+|  Megszakítva                   | Az ajánlat beküldését megszakították.                |
+|  Sikertelen                     | Az ajánlat küldése nem sikerült.                      |
 |  |  |

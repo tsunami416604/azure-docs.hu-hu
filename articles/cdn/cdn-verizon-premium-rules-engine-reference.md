@@ -1,6 +1,6 @@
 ---
-title: Azure CDN-szabályok motorhivatkozása | Microsoft dokumentumok
-description: Az Azure CDN-szabályok motorjának referenciadokumentációja megfelel a feltételeknek és a funkcióknak.
+title: A Azure CDN Rules Engine referenciája | Microsoft Docs
+description: A Azure CDN szabályok motorjának a feltételekkel és szolgáltatásokkal kapcsolatos dokumentációja.
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253390"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN a Verizon Premium szabályok motorjának referencia
+# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN a Verizon Premium Rules motor referenciája
 
-Ez a cikk részletes leírást tartalmaz az Azure Content Delivery Network (CDN) szabálymotorhoz rendelkezésre álló egyezési feltételekről és [funkciókról.](cdn-verizon-premium-rules-engine.md)
+Ez a cikk az Azure Content Delivery Network (CDN) [szabályok motorjának](cdn-verizon-premium-rules-engine.md)elérhető egyeztetési feltételeinek és funkcióinak részletes leírását tartalmazza.
 
-A szabálymotor tazon rendszer a végső hatóságként szolgál a CDN által feldolgozott konkrét típusú kérelmek feldolgozására vonatkozóan.
+A szabályok motor úgy lett kialakítva, hogy az adott típusú kérelmeknek a CDN általi feldolgozásának végső hatósága legyen.
 
-**Gyakori felhasználások:**
+**Gyakori felhasználások**:
 
-- Egyéni gyorsítótár-házirend felülbírálása vagy definiálása.
-- Bizalmas tartalomra vonatkozó kérések biztonságossá tétele vagy megtagadása.
-- Kérések átirányítása.
-- Egyéni naplóadatok tárolása.
+- Egyéni gyorsítótár-szabályzat felülbírálása vagy definiálása.
+- Bizalmas tartalomra vonatkozó kérések biztonságos vagy megtagadása.
+- Átirányítási kérelmek.
+- Egyéni naplófájlok tárolása.
 
 ## <a name="terminology"></a>Terminológia
 
-A szabály [**feltételes kifejezések**](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md), [**egyezési feltételek**](cdn-verizon-premium-rules-engine-reference-match-conditions.md)és [**jellemzők**](cdn-verizon-premium-rules-engine-reference-features.md)használatával kerül meghatározásra . Ezek az elemek a következő ábrán jelennek meg:
+A szabályok a [**feltételes kifejezések**](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md), a [**egyezési feltételek**](cdn-verizon-premium-rules-engine-reference-match-conditions.md)és a [**funkciók**](cdn-verizon-premium-rules-engine-reference-features.md)használatával lettek definiálva. Ezek az elemek a következő ábrán vannak kiemelve:
 
- ![CDN egyezési feltétel](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
+ ![CDN-egyeztetési feltétel](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
 
 ## <a name="syntax"></a>Szintaxis
 
-A speciális karakterek kezelésének módja attól függően változik, hogy az egyezési feltétel vagy jellemző hogyan kezeli a szöveges értékeket. Az egyezési feltétel vagy szolgáltatás a szöveget az alábbi módokon értelmezheti:
+A speciális karakterek kezelésének módja attól függően változik, hogy a egyezési feltétel vagy szolgáltatás milyen módon kezeli a szöveges értékeket. Az egyeztetési feltétel vagy szolgáltatás a következő módokon értelmezheti a szöveget:
 
 1. [**Literális értékek**](#literal-values)
 2. [**Helyettesítő karakteres értékek**](#wildcard-values)
@@ -43,40 +43,40 @@ A speciális karakterek kezelésének módja attól függően változik, hogy az
 
 ### <a name="literal-values"></a>Literális értékek
 
-A literális értékként értelmezett szöveg az összes speciális karaktert kezeli, a % szimbólum kivételével, az egyeztetni kívánt érték részeként. Más szóval a literális `\'*'\` egyezési feltétel csak akkor teljesül, ha a pontos értéket `\'*'\`(azaz) megtalálja.
+A literál értékként értelmezett szöveg az összes speciális karaktert kezeli, a (z)% Symbol kivételével, az értéknek megfelelő részeként. Más szóval a konstans egyezési feltétel `\'*'\` csak akkor teljesül, ha a pontos érték (azaz `\'*'\`) megtalálható.
 
-Az URL-kódolás (például) `%20`százalékos szimbóluma jelzi.
+A százalékos szimbólum az URL-kódolás (például: `%20`) jelölésére szolgál.
 
 ### <a name="wildcard-values"></a>Helyettesítő karakteres értékek
 
-A helyettesítő karakterként értelmezett szöveg további jelentést rendel a speciális karakterekhez. Az alábbi táblázat a következő karakterkészlet értelmezését ismerteti:
+A helyettesítő karakterként értelmezett szöveg a speciális karakterek további jelentését rendeli hozzá. A következő táblázat a következő karakterkészletek értelmezését ismerteti:
 
 Karakter | Leírás
 ----------|------------
-\ | A fordított perjel a táblázatban megadott karakterek bármelyikének kikerülésére szolgál. A megkerülendő speciális karakter előtt közvetlenül meg kell adni egy fordított perjelet.<br/>A következő szintaxis például csillagot választ ki:`\*`
-% | Az URL-kódolás (például) `%20`százalékos szimbóluma jelzi.
+\ | A program fordított perjelet használ a táblázatban megadott karakterek bármelyikének megmeneküléséhez. Meg kell adni egy fordított perjelet közvetlenül a kikerülő különleges karakter előtt.<br/>Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
+% | A százalékos szimbólum az URL-kódolás (például: `%20`) jelölésére szolgál.
 \* | A csillag egy helyettesítő karakter, amely egy vagy több karaktert jelöl.
-Space (Szóköz) | A szóköz karakter azt jelzi, hogy egy egyezési feltétel tegyeztethető ki a megadott értékek vagy minták bármelyikével.
-"érték" | Az egyetlen idézőjelnek nincs különleges jelentése. Az egyszeres idézőjelek azonban azt jelzik, hogy egy értéket literális értékként kell kezelni. Ezt a következő módokon lehet használni:<br><br/>- Lehetővé teszi, hogy az egyezési feltétel akkor teljesüljön, amikor a megadott érték megegyezik az összehasonlítási érték bármely részével.  Például `'ma'` az alábbi karakterláncok bármelyikének megfelelne: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template. **ma**p<br /><br />- Ez lehetővé teszi, hogy egy speciális karaktert kell meghatározni, mint egy szó karakter. Megadhatja például a szó szerinti szóköz karaktert, ha egy szóközt `' '` egy `'sample value'`idézőjelek közé foglal (azaz vagy ) egy szóközt.<br/>- Lehetővé teszi egy üres érték megadást. Adjon meg egy üres értéket egy idézőjelek (azaz '') készlet ének megadásával.<br /><br/>**Fontos:**<br/>- Ha a megadott érték nem tartalmaz helyettesítő karaktert, akkor automatikusan literális értéknek minősül, ami azt jelenti, hogy nem szükséges egyszeres idézőjelek készletét megadni.<br/>- Ha a fordított perjel nem kerüli el a tábla egy másik karakterét, a rendszer figyelmen kívül hagyja, ha egy idézőjelek halmazában van megadva.<br/>- Egy másik módja annak, hogy adjon meg egy speciális karaktert, `\`mint egy szó szerinti karakter, hogy elkerülje azt egy fordított perjel (azaz, ).
+Space (Szóköz) | A szóköz karakter azt jelzi, hogy egy egyezési feltétel teljesül a megadott értékek vagy minták valamelyikével.
+érték | Egyetlen árajánlat nem rendelkezik speciális jelentéssel. Az aposztrófok készlete azonban azt jelzi, hogy egy értéket literál értékként kell kezelni. A szolgáltatás a következő módokon használható:<br><br/>– Lehetővé teszi az egyeztetési feltétel teljesülését, ha a megadott érték megegyezik az összehasonlítási érték bármely részével.  Például `'ma'` a következő sztringek bármelyike megfelel: <br/><br/>/Business/**ma**rathon/Asset.htm<br/>**ma**p. gif<br/>/business/template. **ma**p<br /><br />– Lehetővé teszi, hogy egy speciális karakter literál karakterként legyen megadva. Megadhat például egy literál szóköz karaktert úgy, `' '` hogy az idézőjelek közé helyezi a szóköz karaktert (azaz vagy `'sample value'`).<br/>– Lehetővé teszi, hogy a rendszer üres értéket ad meg. Adja meg az üres értéket egy idézőjelek készletének megadásával (azaz: "").<br /><br/>**Fontos**<br/>– Ha a megadott érték nem tartalmaz helyettesítő karaktert, a rendszer automatikusan literál értékként veszi figyelembe, ami azt jelenti, hogy nem szükséges egyetlen idézőjelet megadni.<br/>– Ha egy fordított perjel nem kerül egy másik karakterbe a táblázatban, figyelmen kívül hagyja a rendszer, ha egy idézőjelek készletében van megadva.<br/>– Egy speciális karakter literál karakterként való megadásának másik módja, ha egy fordított perjelet (azaz `\`) használ.
 
 ### <a name="regular-expressions"></a>Reguláris kifejezések
 
-A reguláris kifejezések olyan mintát határoznak meg, amelyet a program egy szöveges értéken belül keres. A reguláris kifejezés jelölése különböző szimbólumok konkrét jelentését határozza meg. Az alábbi táblázat azt mutatja be, hogy a rendszer hogyan kezeli a speciális karaktereket a reguláris kifejezéseket támogató feltételek és jellemzők szerint.
+A reguláris kifejezések határozzák meg a szöveges értéken belül keresendő mintát. A reguláris kifejezések jelölése meghatározott kifejezéseket definiál a különböző szimbólumokhoz. A következő táblázat azt mutatja be, hogyan kezeli a speciális karaktereket a reguláris kifejezéseket támogató feltételek és funkciók egyeztetésével.
 
-Különleges karakter | Leírás
+Speciális karakter | Leírás
 ------------------|------------
-\ | A fordított perjel kikerüli az azt követő karaktert, ami azt eredményezi, hogy a karakter tanuskodik, ahelyett, hogy a reguláris kifejezés jelentését venné fel. A következő szintaxis például csillagot választ ki:`\*`
-% | A százalékos szimbólum jelentése a használattól függ.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis http változót azonosít.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis egy százalékos szimbólumot használ a HTTP-változó azonosítására és határolójelként.<br />`\%`: A százalékos szimbólum kikerülése lehetővé teszi, hogy literális értékként vagy URL-kódolás jelzésére használják (például `\%20`).
-\* | A csillag lehetővé teszi, hogy az előző karakter nulla vagy több alkalommal egyezzen.
-Space (Szóköz) | A szóközkaraktereket általában literális karakterként kezeli a program.
-"érték" | Az egyszeres idézőjeleket a karakterek konstans karakterekként kezelik. Az egyszeres idézőjelek halmazának nincs különleges jelentése.
+\ | Egy fordított perjel elmenekül a következő karakterrel, ami azt eredményezi, hogy a karaktert literál értékként kell kezelni, ahelyett, hogy a reguláris kifejezés jelentését kellene használnia. Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
+% | A százalékos szimbólum jelentése a használattól függ.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változót azonosít.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis egy százalékos szimbólummal azonosítja a HTTP-változót és elválasztóként.<br />`\%`: A százalékos szimbólum megmenekülése lehetővé teszi, hogy literál értékként, vagy URL-kódolást jelezzen (például `\%20`:).
+\* | A csillag lehetővé teszi, hogy az előző karakter nulla vagy több alkalommal legyen összepárosítva.
+Space (Szóköz) | A szóköz karaktert általában literál karakterként kezeli a rendszer.
+érték | Az aposztrófok literál karakterekként lesznek kezelve. Az idézőjelek halmaza nem rendelkezik speciális jelentéssel.
 
-A reguláris kifejezéseket támogató feltételek nek és szolgáltatásoknak megfeleltetik a Perl-kompatibilis reguláris kifejezések (PCRE) által meghatározott mintákat.
+A reguláris kifejezéseket támogató feltételek és funkciók egyeztetése a Perl-kompatibilis reguláris kifejezésekkel (PCRE) meghatározott mintákat fogad el.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A szabálymotor megfelel a feltételeknek](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
-- [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Szabályok motor jellemzői](cdn-verizon-premium-rules-engine-reference-features.md)
-- [A HTTP viselkedésének felülbírálása a szabálymotor használatával](cdn-verizon-premium-rules-engine.md)
-- [Az Azure CDN – áttekintés](cdn-overview.md)
+- [Szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Szabályok motor feltételes kifejezések](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
+- [A szabályok motorjának funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
+- [HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)
+- [Azure CDN áttekintése](cdn-overview.md)

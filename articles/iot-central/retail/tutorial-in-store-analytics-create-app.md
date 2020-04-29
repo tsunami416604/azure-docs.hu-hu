@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Hozzon létre egy üzleten belüli elemzési alkalmazást az Azure IoT Centralban
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy store-on belüli elemzési kiskereskedelmi alkalmazást az IoT Centralban. Létre fogja hozni, testreszabhatja és hozzáadja az érzékelőeszközöket.
+title: Oktatóanyag – áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy áruházbeli elemzési kiskereskedelmi alkalmazást IoT Centralban. Létrehozza, testreszabhatja és érzékelő eszközöket adhat hozzá.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -12,68 +12,68 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81000251"
 ---
-# <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: Hozzon létre egy in-store elemzési alkalmazást az Azure IoT Centralban
+# <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 
 
 
-Az oktatóanyag bemutatja a megoldáskészítőknek, hogyan hozhatnak létre egy Azure IoT Central in store elemzési alkalmazást. A mintaalkalmazás egy kiskereskedelmi üzlet. Ez egy megoldás arra a közös üzleti igényre, hogy figyelemmel kísérjük és alkalmazkodjunk a kihasználtsághoz és a környezeti feltételekhez.
+Az oktatóanyag bemutatja, hogyan hozhat létre Azure IoT Central Store-beli elemzési alkalmazást a megoldás-építők számára. A minta alkalmazás egy kiskereskedelmi áruházban található. Ez egy olyan megoldás, amely a közös üzleti igényeknek megfelelően figyeli és alkalmazkodik a kihasználtsági és környezeti feltételekhez.
 
-Az Ön által felépített mintaalkalmazás három valódi eszközt tartalmaz: egy Rigado Cascade 500 átjárót és két RuuviTag érzékelőt. Az oktatóanyag azt is bemutatja, hogyan használhatja az alkalmazássablonban található szimulált foglalt foglaltságérzékelőt tesztelési célokra. A Rigado C500 átjáró az alkalmazás kommunikációs központjaként szolgál. Kommunikál az áruház érzékelőivel, és kezeli a felhőhöz fűződő kapcsolatukat. A RuuviTag egy környezeti érzékelő, amely telemetriai, beleértve a hőmérséklet, páratartalom, és a nyomás. A szimulált kihasználtságérzékelő lehetővé teszi a mozgás és a jelenlét nyomon követését az üzlet pénztári területein. 
+A létrehozott minta alkalmazás három valódi eszközt tartalmaz: egy Rigado Cascade 500-átjárót és két RuuviTag érzékelőt. Az oktatóanyag azt is bemutatja, hogyan használhatók tesztelési célokra az alkalmazás sablonjában található szimulált foglaltság érzékelő. A Rigado C500-átjáró az alkalmazás kommunikációs központjaként szolgál. A tárolóban lévő érzékelőkkel kommunikál, és kezeli a felhővel létesített kapcsolataikat. A RuuviTag olyan környezeti érzékelő, amely telemetria biztosít, beleértve a hőmérsékletet, a páratartalomot és a nyomást. A szimulált foglaltság érzékelő lehetővé teszi a mozgás és a jelenlét nyomon követését egy áruház pénztári területein. 
 
-Ez az oktatóanyag a Rigado és a RuuviTag eszközök alkalmazáshoz való csatlakoztatásához használható. Ha egy másik átjáró és érzékelők, továbbra is követheti az alkalmazás létrehozásához szükséges lépéseket. A bemutató azt is bemutatja, hogyan lehet létrehozni szimulált RuuviTag érzékelők. A szimulált érzékelők lehetővé teszik az alkalmazás felépítését, ha nem rendelkezik valódi eszközökkel. 
+Ez az oktatóanyag a Rigado és a RuuviTag eszközök alkalmazáshoz való csatlakoztatásának utasításait tartalmazza. Ha rendelkezik egy másik átjáróval és érzékelőkkel, akkor továbbra is követheti az alkalmazás felépítésének lépéseit. Az oktatóanyag azt is bemutatja, hogyan hozhat létre szimulált RuuviTag-érzékelőket. A szimulált érzékelők lehetővé teszik az alkalmazás felépítését, ha nem rendelkezik valós eszközökkel. 
 
-A pénztár és az állapotfigyelő megoldás három részből áll:
+A pénztári és a feltétel-figyelési megoldást három részből fejlesztheti:
 
-* Az alkalmazás létrehozása és eszközök csatlakoztatása a feltételek figyeléséhez
-* Az irányítópult testreszabása, hogy az operátorok figyelhessék és kezelhessék az eszközöket
-* Az adatexportálás konfigurálása, hogy az üzletkezelők elemzéseket futtathassanak és vizualizálhassák az elemzéseket
+* Az alkalmazás létrehozása és az eszközök csatlakoztatása a figyelési feltételekhez
+* Az irányítópult testreszabása a kezelők számára az eszközök figyeléséhez és kezeléséhez
+* Az adatexportálás konfigurálása az áruházbeli kezelők számára az elemzések futtatásához és az elemzések megjelenítéséhez
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Az Azure IoT Central **in-store analytics – pénztár** sablon használatával kiskereskedelmi áruházbeli alkalmazást hozhat létre
-> * Az alkalmazásbeállításainak testreszabása
-> * IoT-eszközsablonok létrehozása és testreszabása
+> * Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central **in-store Analytics-Checkout** sablon használatával
+> * Az Alkalmazásbeállítások testreszabása
+> * IoT-sablonok létrehozása és testreszabása
 > * Eszközök csatlakoztatása az alkalmazáshoz
 > * Szabályok és műveletek hozzáadása a feltételek figyeléséhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag-sorozat befejezéséhez a következőkre van szükség:
-* Egy Azure-előfizetés ajánlott. Az ingyenes 7 napos próbaverziót igény szerint használhatja. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs oldalán.](https://aka.ms/createazuresubscription)
-* Hozzáférés egy átjáróeszközhöz és két környezeti érzékelőhöz (opcionálisan használhat szimulált eszközöket az oktatóanyagban leírtak szerint)
-* Eszközsablonok a használt eszközökhöz (sablonok az oktatóanyagban használt összes eszközhöz rendelkezésre állnak)
+Az oktatóanyag-Sorozat elvégzéséhez a következőkre lesz szüksége:
+* Az Azure-előfizetés használata ajánlott. Igény szerint ingyenes 7 napos próbaverziót is használhat. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription).
+* Hozzáférés egy átjáró-eszközhöz és két környezeti érzékelőhöz (az oktatóanyagban leírtak szerint szimulált eszközöket is használhat)
+* A használt eszközökhöz tartozó eszközök sablonjai (a sablonok az oktatóanyagban használt összes eszközhöz elérhetők)
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
-Ebben a szakaszban hozzon létre egy új Azure IoT Central-alkalmazást egy sablonból. Ezt az alkalmazást fogja használni az oktatóanyag-sorozatban a teljes megoldás létrehozásához.
+Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból. Ezt az alkalmazást az oktatóanyag-sorozatban fogja használni teljes megoldás létrehozásához.
 
 Új Azure IoT Central-alkalmazás létrehozása:
 
-1. Keresse meg az [Azure IoT Central alkalmazáskezelő](https://aka.ms/iotcentral) webhelyét.
+1. Navigáljon az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyére.
 
-1. Ha Rendelkezik Azure-előfizetéssel, jelentkezzen be az eléréséhez használt hitelesítő adatokkal, ellenkező esetben jelentkezzen be Egy Microsoft-fiókkal:
+1. Ha rendelkezik Azure-előfizetéssel, jelentkezzen be az eléréséhez használt hitelesítő adatokkal, máskülönben jelentkezzen be Microsoft-fiók használatával:
 
     ![Lépjen a céges fiókjába](./media/tutorial-in-store-analytics-create-app/sign-in.png)
 
 1. Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassza az **Új alkalmazás** lehetőséget.
 
-1. Válassza a **Kiskereskedelem**lehetőséget.  A kiskereskedelmi oldalon több kiskereskedelmi alkalmazássablon jelenik meg.
+1. Válassza a **kereskedelmi**lehetőséget.  A kiskereskedelmi oldalon számos kereskedelmi alkalmazás-sablon látható.
 
-Új bolti elemzési kivételalkalmazás létrehozása:  
+Új, áruházbeli elemzési pénztári alkalmazás létrehozása:  
 
-1. Válassza ki az **in-store analytics - pénztár** alkalmazás sablont. Ez a sablon eszközsablonokat tartalmaz az oktatóanyagban használt összes eszközhöz, kivéve a RuuviTag érzékelőket. A sablon egy kezelői irányítópultot is biztosít a pénztár és a környezeti feltételek, valamint az eszköz állapotának figyelésére. 
+1. Válassza ki az **áruházbeli elemzés-pénztár** alkalmazás sablonját. Ez a sablon az oktatóanyagban használt összes eszközhöz tartalmaz RuuviTag-érzékelők kivételével. A sablon egy operátori irányítópultot is biztosít a pénztárak és a környezeti feltételek, valamint az eszköz állapotának figyeléséhez. 
 
-1. Tetszés szerint válasszon egy rövid **alkalmazásnevet**. Ez az alkalmazás egy contoso nevű fiktív kiskereskedelmi üzleten alapul. Az oktatóanyag a *Contoso pénztár* **alkalmazásnevét** használja. Az alkalmazássablon a Northwind fiktív cégen alapul. Ebben az oktatóanyagban a Contoso segítségével megtudhatja, hogyan szabhatja testre az alkalmazást.
+1. Igény szerint válasszon egy felhasználóbarát **nevet**. Ez az alkalmazás a contoso nevű kitalált kiskereskedelmi áruházon alapul. Az oktatóanyag a *contoso-pénztár* **alkalmazás nevét** használja. Az alkalmazás sablonja a vállalati Northwind vállalaton alapul. Ebben az oktatóanyagban a contoso használatával megtudhatja, hogyan szabhatja testre az alkalmazást.
 
     > [!NOTE]
-    > Ha rövid **alkalmazásnevet**használ, akkor is egyedi értéket kell használnia az alkalmazás **URL-címéhez.**
+    > Ha felhasználóbarát **alkalmazás-nevet**használ, továbbra is egyedi értéket kell használnia az alkalmazás **URL-címéhez**.
 
-1. Ha Rendelkezik Azure-előfizetéssel, adja meg *a címtár, az Azure-előfizetés és a régió*. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaverziót,** és kivégezheti a szükséges kapcsolattartási adatokat.  
+1. Ha Azure-előfizetéssel rendelkezik, adja meg a *címtárat, az Azure-előfizetést és a régiót*. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat.  
 
     A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../core/quick-deploy-iot-central.md).
 
@@ -81,211 +81,211 @@ Ebben a szakaszban hozzon létre egy új Azure IoT Central-alkalmazást egy sabl
 
     ![Azure IoT Central Alkalmazás létrehozása oldal](./media/tutorial-in-store-analytics-create-app/preview-application-template.png)
 
-    ![Azure IoT Central Alkalmazásszámlázási adatok létrehozása](./media/tutorial-in-store-analytics-create-app/preview-application-template-billinginfo.png)
+    ![Azure IoT Central alkalmazás számlázási adatainak létrehozása](./media/tutorial-in-store-analytics-create-app/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Alkalmazásbeállítások testreszabása
 
-Szerkesztőként számos beállítást módosíthat az alkalmazás felhasználói élményének testreszabásához. Ebben a szakaszban egy előre definiált alkalmazástémát választhat ki. Tetszés szerint megtudhatja, hogyan hozhat létre egyéni témát, és frissítheti az alkalmazásképet. Az egyéni téma lehetővé teszi az alkalmazás böngészőjének színeit, a böngésző ikonját és az alkalmazás emblémáját, amely megjelenik az árbocfejen.
+Építőként több beállítást is módosíthat az alkalmazás felhasználói felületének testreszabásához. Ebben a szakaszban egy előre definiált alkalmazási témát fogunk kijelölni. Megtudhatja, hogyan hozhat létre egyéni témákat, és hogyan frissítheti az alkalmazás rendszerképét. Az egyéni témák lehetővé teszik az alkalmazás böngészője színeinek, a böngésző ikonjának és a fejlécben megjelenő alkalmazás emblémájának megadását.
 
-Előre definiált alkalmazástéma kiválasztása:
+Előre definiált alkalmazás-téma kiválasztása:
 
-1. Válassza a **Beállítások lehetőséget** az árbocfejlécen.
+1. Válassza a **Beállítások** elemet a fejlécben.
 
-    ![Az Azure IoT Central alkalmazásbeállításai](./media/tutorial-in-store-analytics-create-app/settings-icon.png)
+    ![Az Azure IoT Central alkalmazás beállításai](./media/tutorial-in-store-analytics-create-app/settings-icon.png)
 
 2. Válasszon ki egy új **témát**.
 
 3. Kattintson a **Mentés** gombra.
 
-Ahelyett, hogy egy előre definiált témát használna, létrehozhat egy egyéni témát. Ha mintaképeket szeretne használni az alkalmazás testreszabásához és az oktatóanyag befejezéséhez, töltse le a [Contoso mintaképeket.](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/retail)
+Az előre definiált témák helyett létrehozhat egy egyéni témát is. Ha minta lemezképek készletét szeretné használni az alkalmazás testreszabásához és az oktatóanyag elvégzéséhez, töltse le a [contoso-minta lemezképeit](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/retail).
 
 Egyéni téma létrehozása:
 
-1. Bontsa ki a bal oldali ablaktáblát, ha még nem bontotta ki.
+1. A bal oldali ablaktábla kibontása, ha még nincs kibontva.
 
-    ![Az Azure IoT Central bal oldali ablaktáblája](./media/tutorial-in-store-analytics-create-app/dashboard-expand.png)
+    ![Azure IoT Central bal oldali ablaktábla](./media/tutorial-in-store-analytics-create-app/dashboard-expand.png)
 
-1. Válassza **a Felügyeleti > Az alkalmazás testreszabása**lehetőséget.
+1. Válassza **az adminisztráció > az alkalmazás testreszabása**lehetőséget.
 
-1. A **Módosítás** gombbal kiválaszthatja az **Alkalmazás emblémájaként**feltöltendő képet. Tetszés szerint adjon meg egy értéket az **Embléma helyettesítő szövegéhez.** 
+1. A **módosítás** gombbal kiválaszthatja az **alkalmazás emblémájának**feltöltendő képet. Opcionálisan megadhat egy értéket a **logo helyettesítő szöveghez**. 
 
-1. A **Módosítás** gombbal választhat ja a böngészőlapokon megjelenő **böngészőikonképet.**
+1. A **módosítás** gomb használatával kiválaszthatja a böngésző lapjain megjelenő **böngészőablak-ikont** .
 
-1. Szükség esetén cserélje le az alapértelmezett **böngészőszíneket** HTML hexadecimális színkódok hozzáadásával. A **fejléchez**adja hozzá a *#008575.*  Az **Ékezethez**adja hozzá a *#A1F3EA.* 
+1. Igény szerint cserélje le a **böngésző alapértelmezett színét** a HTML hexadecimális színkódok hozzáadásával. A **fejléchez**adja hozzá a *#008575*.  A **Hangsúlyhoz**adja hozzá a *#A1F3EA*. 
 
 1. Kattintson a **Mentés** gombra. 
 
     ![Az Azure IoT Central testreszabott emblémája](./media/tutorial-in-store-analytics-create-app/select-application-logo.png)
 
-    A mentés után az alkalmazás frissíti a böngésző színeit, az emblémát az árbocfejen és a böngésző ikonját. 
+    A mentés után az alkalmazás frissíti a böngésző színeit, az emblémát a fejlécben és a böngésző ikonját. 
 
-    ![Az Azure IoT Central frissített alkalmazásbeállításai](./media/tutorial-in-store-analytics-create-app/saved-application-settings.png)
+    ![Az Azure IoT Central frissített Alkalmazásbeállítások](./media/tutorial-in-store-analytics-create-app/saved-application-settings.png)
 
-Az alkalmazáskép frissítése:
+Az alkalmazás rendszerképének frissítése:
 
-1. Válassza **a Felügyeleti > alkalmazásbeállításait**.
+1. Válassza az **adminisztráció > az Alkalmazásbeállítások**lehetőséget.
 
-1. A **Kép kiválasztása** gombbal kiválaszthatja az alkalmazásképként feltölteni kívánt képet. Ez a kép az IOt Central alkalmazáskezelő **Saját alkalmazások** lapján jelenik meg az alkalmazáscsempén.
+1. A **rendszerkép kiválasztása** gomb használatával kiválaszthatja az alkalmazási képként feltölteni kívánt képet. Ez a rendszerkép a IoT Central Application Manager **saját alkalmazások** lapjának alkalmazás csempén jelenik meg.
 
 1. Kattintson a **Mentés** gombra.
 
-1. Szükség esetén keresse meg a **Saját alkalmazások** nézetet az [Azure IoT Central alkalmazáskezelő](https://aka.ms/iotcentral) webhelyén. Az alkalmazáscsempe megjeleníti a frissített alkalmazásképet.
+1. Szükség esetén navigáljon a **saját alkalmazások** nézethez az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén. Az alkalmazás csempe megjeleníti a frissített alkalmazás rendszerképét.
 
-    ![Az Azure IoT Central testre szabhatja az alkalmazásképet](./media/tutorial-in-store-analytics-create-app/customize-application-image.png)
+    ![Azure IoT Central alkalmazás rendszerképének testreszabása](./media/tutorial-in-store-analytics-create-app/customize-application-image.png)
 
-## <a name="create-device-templates"></a>Eszközsablonok létrehozása
-Szerkesztőként olyan eszközsablonokat hozhat létre, amelyek lehetővé teszik, hogy Ön és az alkalmazás-üzemeltetők konfigurálják és kezeljék az eszközöket. Hozzon létre egy sablont egy egyéni, egy meglévő sablonfájl importálásával, vagy egy sablon importálásával az Azure IoT eszközkatalógusból. Miután létrehozott és testreszabott egy eszközsablont, valós eszközöket csatlakoztathat az alkalmazáshoz. Szükség esetén használjon eszközsablont szimulált eszközök létrehozásához tesztelésre.
+## <a name="create-device-templates"></a>Eszközök sablonjainak létrehozása
+Építőként létrehozhat olyan sablonokat, amelyek lehetővé teszik az Ön és az alkalmazások kezelői számára az eszközök konfigurálását és kezelését. Létrehozhat egy sablont egy egyéni sablon létrehozásával, egy meglévő sablonfájl importálásával vagy egy sablon importálásával az Azure IoT-eszköz katalógusból. Miután létrehozta és testreszabta az eszköz sablonját, a használatával valós eszközöket kapcsolhat az alkalmazásához. Igény szerint a szimulált eszközök teszteléséhez is használhat egy eszközt.
 
-Az **in-store analytics - pénztár** alkalmazás sablon eszközsablonok több eszközhöz.  Az alkalmazásban használt három eszköz közül kettőhöz eszközsablonok tartoznak. A RuuviTag eszközsablon nem szerepel az **in-store analytics - pénztár** alkalmazássablonban. Ebben a szakaszban hozzáad egy eszközsablont a RuuviTag érzékelőkhöz az alkalmazáshoz.
+A **tárolón belüli elemzés – pénztár** alkalmazás sablon több eszközhöz is rendelkezik.  Az alkalmazásban használt három eszköz közül kettőhöz vannak az eszközök sablonjai. A RuuviTag-eszköz sablonja nem szerepel a **Store Analytics-Checkout** alkalmazás sablonjában. Ebben a szakaszban egy RuuviTag-érzékelőkhöz tartozó sablont ad hozzá az alkalmazáshoz.
 
-RuuviTag eszközsablon hozzáadása az alkalmazáshoz:
+RuuviTag-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
-1. Válassza **az Eszközsablonok lehetőséget** a bal oldali ablaktáblában.
+1. A bal oldali ablaktáblán válassza ki az **eszközök sablonjait** .
 
-1. Új eszközsablon létrehozásához válassza a **+ Új** lehetőséget.
+1. Új sablon létrehozásához válassza az **+ új** lehetőséget.
 
-1. Keresse meg és válassza ki a **RuuviTag** érzékelő eszközsablont az Azure IoT eszközkatalógusban. 
+1. Keresse meg és válassza ki a **RuuviTag** -érzékelő eszköz sablonját az Azure IoT-eszköz katalógusában. 
 
-1. Válassza a **Tovább lehetőséget: Testreszabás**.
+1. Válassza a **Tovább: testreszabás**lehetőséget.
 
-    ![Az Azure IoT Központi RuuviTag érzékelőeszköz-sablonja](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![Azure IoT Central RuuviTag-érzékelő eszköz sablonja](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
-1. Kattintson a **Létrehozás** gombra. Az alkalmazás hozzáadja a RuuviTag eszköz sablont.
+1. Kattintson a **Létrehozás** gombra. Az alkalmazás hozzáadja a RuuviTag-eszköz sablonját.
 
-1. Válassza **az Eszközsablonok lehetőséget** a bal oldali ablaktáblában. Az oldal megjeleníti az alkalmazássablonban található összes eszközsablont, valamint az imént hozzáadott RuuviTag eszközsablont.
+1. A bal oldali ablaktáblán válassza ki az **eszközök sablonjait** . A lap megjeleníti az alkalmazás sablonjában szereplő összes eszközt, valamint az imént hozzáadott RuuviTag-sablont.
 
-    ![Az Azure IoT Központi RuuviTag érzékelőeszköz-sablonja](./media/tutorial-in-store-analytics-create-app/device-templates-list.png)
+    ![Azure IoT Central RuuviTag-érzékelő eszköz sablonja](./media/tutorial-in-store-analytics-create-app/device-templates-list.png)
 
-## <a name="customize-device-templates"></a>Eszközsablonok testreszabása
-Az alkalmazásban lévő eszközsablonokat háromféleképpen szabhatja testre. Először testre szabhatja az eszközök natív beépített felületeit az eszköz képességeinek módosításával. A hőmérséklet-érzékelővel például módosíthatja a részleteket, például a hőmérséklet-interfész megjelenítendő nevét, az adattípust, a mértékegységeket, valamint a minimális és maximális működési tartományokat. 
+## <a name="customize-device-templates"></a>Az eszközök sablonjainak testreszabása
+Az alkalmazásban háromféle módon szabhatja testre az eszközök sablonjait. Először testreszabhatja az eszközök natív beépített felületeit az eszköz képességeinek módosításával. Például egy hőmérséklet-érzékelővel megváltoztathatja az adatokat, például a hőmérséklet-interfész megjelenítendő nevét, az adattípust, a mértékegységet, a minimális és a maximális működési tartományt. 
 
-Másodszor, szabja testre az eszközsablonokat felhőalapú tulajdonságok hozzáadásával. A felhőalapú tulajdonságok nem részei a beépített eszközképességeknek. A felhőalapú tulajdonságok olyan egyéni adatok, amelyeket az Azure IoT Central alkalmazás hoz létre, tárol és társít az eszközökhöz. Egy felhőtulajdonság például lehet számított érték, vagy metaadatok, például egy olyan hely, amelyet egy eszközkészlethez szeretne társítani. 
+Másodszor, a felhő tulajdonságainak hozzáadásával testre szabhatja az eszközök sablonjait. A felhő tulajdonságai nem részei a beépített eszköz képességeinek. A felhő tulajdonságai olyan egyéni adatértékek, amelyeket az Azure IoT Central alkalmazás hoz létre, tárol és társít az eszközeihez. Egy Felhőbeli tulajdonságra példa lehet számított érték, vagy olyan metaadatok, mint például az eszközök készletéhez társítandó hely. 
 
-Harmadszor, egyéni nézetek létrehozásával testreszabhatja az eszközsablonokat. A nézetek leteszik az operátorok számára az eszközök telemetriai és metaadatainak megjelenítését, például az eszköz metrikáit és állapotát.
+Harmadszor, egyéni nézetek létrehozásával testreszabhatja az eszközök sablonjait. A nézetek lehetővé teszik, hogy az operátorok vizuálisan jelenítsék meg az eszközök telemetria és metaadatait, például az eszközök mérőszámait és állapotát.
 
-Itt az első két módszert használja a RuuviTag érzékelők eszközsablonjának testreszabásához. Az érzékelők nézeteinek létrehozásáról a [Szimulált eszköz hozzáadása az IoT Central alkalmazás](../core/quick-create-simulated-device.md) hoz rövid útmutató című témakörben talál további információt.
+Itt az első két módszer használatával testreszabhatja a RuuviTag-érzékelőkhöz tartozó eszköz sablonját. Az érzékelők nézeteinek létrehozásával kapcsolatos információkért tekintse meg a [szimulált eszköz hozzáadása a IoT Central alkalmazáshoz](../core/quick-create-simulated-device.md) című rövid útmutatót.
 
-A RuuviTag eszközsablon beépített felületeinek testreszabása:
+A RuuviTag-eszköz beépített felületének testreszabása:
 
-1. Válassza **az Eszközsablonok lehetőséget** a bal oldali ablaktáblában. 
+1. A bal oldali ablaktáblán válassza ki az **eszközök sablonjait** . 
 
-1. Válassza ki a SablonT a RuuviTag érzékelőkhöz. 
+1. Válassza ki a RuuviTag-érzékelőkhöz tartozó sablont. 
 
-1. A bal oldali ablaktábla elrejtése. A sablon összesítő nézete megjeleníti az eszköz képességeit.
+1. A bal oldali ablaktábla elrejtése A sablon összegző nézete az eszköz képességeit jeleníti meg.
 
-    ![Azure IoT Central RuuviTag eszközsablon összefoglaló nézete](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-summary-view.png)
+    ![Azure IoT Central RuuviTag-sablon összegző nézete](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-summary-view.png)
 
-1. Válassza a RuuviTag eszközsablon menü **Testreszabás parancsát.** 
+1. Válassza a **Testreszabás** lehetőséget a RuuviTag-eszköz sablon menüjében. 
 
-1. Görgessen a képességek listájában, és keresse meg a `humidity` telemetriai típust. Ez a sor elem a szerkeszthető **Display name** értéke *páratartalom*.
+1. Görgessen a lehetőségek listájához, és keresse `humidity` meg a telemetria típusát. Ez az a sor, amelynek a *nedvességtartalma*a szerkeszthető **megjelenítendő név** értékével rendelkezik.
 
-A következő lépésekben testre szabhatja a `humidity` RuuviTag-érzékelők telemetriai típusát. Szükség esetén testre szabhatja a többi telemetriai típust.
+A következő lépésekben testreszabhatja a `humidity` RuuviTag érzékelők telemetria-típusát. Igény szerint testreszabhat néhány más telemetria-típust.
 
-A `humidity` telemetriai típushoz hajtsa végre a következő módosításokat:
+A `humidity` telemetria típusnál végezze el a következő módosításokat:
 
-1. A **Kibontás** vezérlőelem kiválasztásával bontsa ki a sor sémarészleteit.
+1. A **Kibontás** vezérlő kiválasztásával bontsa ki a sor sémájának részleteit.
 
-1. Frissítse a **Megjelenítendő név** értékét *a páratartalomról* egy egyéni értékre, például *a Relatív páratartalomra.*
+1. Frissítse a **megjelenítendő név** értékét a *nedvességtől* egy egyéni értékre, például a *relatív páratartalom*értékre.
 
-1. Módosítsa a **Szemantikai típus** beállítást *Nincs* beállításról *páratartalom*ra.  Szükség esetén állítsa be a séma értékeket a páratartalom telemetriai típus a kibontott séma nézetben. A sémabeállítások lehetővé teszik, hogy részletes érvényesítési követelményeket hozzon létre az érzékelők által nyomon követett adatokhoz. Beállíthat például egy adott felület minimális és maximális működési tartományértékeit.
+1. Módosítsa a **szemantikai típus** beállítást a *nincs* értékről a *nedvességre*.  Megadhatja a séma értékeit a kibontott séma nézetben a páratartalom telemetria típushoz. A séma beállításai lehetővé teszik, hogy részletes ellenőrzési követelményeket hozzon létre az érzékelők által nyomon követett adathoz. Megadhatja például a minimális és a maximális operációsrendszer-értékeket egy adott csatolóhoz.
 
 1. A módosítások mentéséhez válassza a **Mentés** gombot.
 
-    ![Az Azure IoT Central RuuviTag eszközsablon testreszabása](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![Azure IoT Central RuuviTag-sablon testreszabása](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
-Felhőtulajdonság hozzáadása egy eszközsablonhoz az alkalmazásban:
+Felhőbeli tulajdonság hozzáadása az alkalmazásban lévő eszköz sablonhoz:
 
-1. Válassza a RuuviTag eszközsablon **menüjének Felhőtulajdonságok parancsát.**
+1. A RuuviTag eszköz sablon menüjében válassza a **felhő tulajdonságai** elemet.
 
-1. Válassza **a Felhőhozzáadása tulajdonság lehetőséget.** 
+1. Válassza a **Felhőbeli tulajdonság hozzáadása**lehetőséget. 
 
-Adja meg a következő értékeket az egyes eszközök helyének tárolására egyéni tulajdonság létrehozásához:
+A következő értékek megadásával hozzon létre egyéni tulajdonságot az egyes eszközök helyének tárolásához:
 
-1. Adja meg a **Megjelenítendő név** *hely* értékét. Ezt az értéket a program automatikusan a **Név** mezőbe másolja, amely a tulajdonság rövid neve. Használhatja a másolt értéket, vagy módosíthatja azt.
+1. Adja meg a **megjelenítendő név**értékének *helyét* . A rendszer automatikusan átmásolja ezt az értéket a **név** mezőbe, amely a tulajdonság rövid neve. Használhatja a másolt értéket, vagy módosíthatja.
 
-1. Válassza a *Karakterlánc* elemet a **Séma** legördülő menüben. A karakterlánctípus lehetővé teszi, hogy a sablon alapján bármely eszközhöz helynév-karakterláncot társítson. Például minden eszközhöz társíthat egy területet egy üzletben. Szükség esetén beállíthatja a tulajdonság **szemantikai típusát** *Hely*re, és ez automatikusan *Geopoint*ra állítja a **sémát.** Lehetővé teszi a GPS koordináták társítására egy eszközhöz. 
+1. Válassza a *sztring* elemet a **séma** legördülő menüben. A karakterlánc típusa lehetővé teszi, hogy a sablon alapján bármilyen eszközzel társítsa a hely neve karakterláncot. Előfordulhat például, hogy egy tárolóban lévő területeket társít az egyes eszközökhöz. Igény szerint beállíthatja a tulajdonság **szemantikai típusát** a *tartózkodási helyükre*, és ez automatikusan beállítja a **séma** *Geopoint*. Lehetővé teszi, hogy a GPS-koordinátákat társítsa egy eszközhöz. 
 
-1. Állítsa **a minimális hosszt** *2-re.* 
+1. Állítsa be a **minimális hosszt** *2*értékre. 
 
-1. Állítsa **a Szóköz vágása** **beállítását Be**beállításra.
+1. Állítsa be a **szóközöket** **a**be értékre.
 
-1. Válassza a **Mentés** lehetőséget az egyéni felhőalapú tulajdon mentéséhez.
+1. Válassza a **Mentés** lehetőséget az egyéni Felhőbeli tulajdonság mentéséhez.
 
-    ![Az Azure IoT Central RuuviTag eszközsablon testreszabása](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-cloud-property.png)
+    ![Azure IoT Central RuuviTag-sablon testreszabása](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-cloud-property.png)
 
 1. Kattintson a **Publish** (Közzététel) elemre. 
 
-    Az eszközsablon közzététele láthatóvá teszi azt az alkalmazásfelelősök számára. Miután közzétett egy sablont, használja azt szimulált eszközök létrehozásához tesztelésre, vagy valós eszközöket csatlakoztathat az alkalmazáshoz. Ha már vannak az alkalmazáshoz csatlakoztatott eszközök, a testreszabott sablon közzététele leküldéses a módosításokat az eszközökre.
+    Az eszközök közzétételével láthatóvá válik az alkalmazások operátorai. Miután közzétett egy sablont, a használatával szimulált eszközöket állíthat elő teszteléshez, vagy valódi eszközöket kapcsolhat az alkalmazáshoz. Ha már rendelkezik az alkalmazáshoz csatlakoztatott eszközökkel, a testreszabott sablon közzététele leküldi a módosításokat az eszközökön.
 
 ## <a name="add-devices"></a>Eszközök felvétele
-Miután létrehozta és testreszabta az eszközsablonokat, ideje eszközöket hozzáadni. 
+Miután létrehozta és testreszabta az eszközök sablonjait, itt az ideje, hogy hozzáadja az eszközöket. 
 
-Ebben az oktatóanyagban a következő valós és szimulált eszközök segítségével hozhatja létre az alkalmazást:
-- Egy igazi Rigado C500 átjáró
-- Két igazi RuuviTag érzékelő
-- Egy szimulált **kihasználtsági** érzékelő. A szimulált érzékelő szerepel az alkalmazássablonban, így nem kell létrehozni. 
+Ebben az oktatóanyagban a következő valós és szimulált eszközöket használja az alkalmazás létrehozásához:
+- Egy valós Rigado C500-átjáró
+- Két valós RuuviTag érzékelő
+- Szimulált **kihasználtsági** érzékelő. A szimulált érzékelőt az alkalmazás sablonja tartalmazza, így nem kell létrehoznia. 
 
 > [!NOTE]
-> Ha nem rendelkezik valódi eszközökkel, akkor is befejezheti ezt az oktatóanyagot szimulált RuuviTag érzékelők létrehozásával. A következő utasítások a szimulált RuuviTag létrehozásának lépéseit tartalmazzák. Nem kell szimulált átjárót létrehoznia.
+> Ha nem rendelkezik valós eszközökkel, a szimulált RuuviTag-érzékelők létrehozásával továbbra is elvégezheti ezt az oktatóanyagot. A következő utasítások a szimulált RuuviTag létrehozásának lépéseit foglalják magukban. Nem kell szimulált átjárót létrehoznia.
 
-Hajtsa végre az alábbi két cikklépéseit egy igazi Rigado átjáró és RuuviTag érzékelők csatlakoztatásához. Miután elkészült, térjen vissza az oktatóanyaghoz. Mivel ebben az oktatóanyagban már létrehozott eszközsablonokat, nem kell újra létrehoznia őket a következő irányban.
+A Real Rigado Gateway és a RuuviTag érzékelők összekapcsolásához hajtsa végre a következő két cikk lépéseit. Ha elkészült, térjen vissza ehhez az oktatóanyaghoz. Mivel ebben az oktatóanyagban már létrehozta az eszközöket, a következő irányokba nem kell újból létrehoznia őket.
 
-- Rigado-átjáró csatlakoztatásához lásd: [Rigado Cascade 500 csatlakoztatása az Azure IoT Central alkalmazáshoz.](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
-- A RuuviTag-érzékelők csatlakoztatásához olvassa el [a RuuviTag-érzékelő csatlakoztatása az Azure IoT Central alkalmazáshoz](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Ezekkel az utasításokkal szükség esetén két szimulált érzékelőt is létrehozhat.
+- A Rigado-átjárók összekapcsolásával kapcsolatban lásd: [Rigado Cascade 500 összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- A RuuviTag-érzékelők összekapcsolásával kapcsolatban lásd: [RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Ezeket az utasításokat két szimulált érzékelő létrehozásához is használhatja, ha szükséges.
 
 ## <a name="add-rules-and-actions"></a>Szabályok és műveletek hozzáadása
-Az Azure IoT Central alkalmazás érzékelőinek használatával a feltételek figyelésére szabályokat hozhat létre bizonyos feltételek teljesülése esetén műveletek futtatásához. A szabály egy eszközsablonhoz és egy vagy több eszközhöz van társítva, és olyan feltételeket tartalmaz, amelyeknek az eszköz telemetriai adatai vagy események alapján kell teljesülniük. A szabályhoz egy vagy több társított művelet is tartozik. A műveletek közé tartozhat az e-mail értesítések küldése, vagy egy webhook-művelet aktiválása az adatok más szolgáltatásoknak való küldéséhez. Az **in-store analytics - pénztár** alkalmazás sablon tartalmaz néhány előre meghatározott szabályokat az eszközök az alkalmazásban.
+Az Azure IoT Central-alkalmazásban a feltételek figyelésére szolgáló érzékelők használatának részeként szabályokat hozhat létre, amelyekkel bizonyos feltételek teljesülése esetén futtathat műveleteket. Egy szabály társítva van egy eszköz sablonhoz és egy vagy több eszközhöz, és olyan feltételeket tartalmaz, amelyeknek az eszköz telemetria vagy eseményei alapján kell teljesülniük. Egy szabályhoz egy vagy több társított művelet is tartozik. A műveletek tartalmazhatják e-mail-értesítések küldését vagy egy webhook-művelet aktiválását, amely adatokat küld más szolgáltatásoknak. Az **in-store Analytics-Checkout** alkalmazás sablonja tartalmaz néhány előre meghatározott szabályt az alkalmazásban lévő eszközökhöz.
 
-Ebben a szakaszban hozzon létre egy új szabályt, amely ellenőrzi a maximális relatív páratartalom alapján a RuuviTag érzékelő telemetriai adatok alapján. Hozzáad egy műveletet a szabályhoz, hogy ha a páratartalom meghaladja a maximális értéket, az alkalmazás e-mailt küld. 
+Ebben a szakaszban egy új szabályt hoz létre, amely a RuuviTag-érzékelő telemetria alapján ellenőrzi a relatív páratartalom maximális szintjét. Adjon hozzá egy műveletet a szabályhoz, hogy ha a páratartalom meghaladja a maximális értéket, az alkalmazás e-mailt küld. 
 
 Szabály létrehozása: 
 
-1. Bontsa ki a bal oldali ablaktáblát.
+1. Bontsa ki a bal oldali panelt.
 
-1. Válassza a **Szabályok**lehetőséget.
+1. Válassza a **szabályok**lehetőséget.
 
-1. Válassza **a + Új**lehetőséget.
+1. Válassza az **+ új**lehetőséget.
 
-1. Adja meg a *páratartalom szintjét* a szabály neveként. 
+1. A szabály neveként adja meg a *páratartalom szintjét* . 
 
-1. Válassza ki a RuuviTag eszközsablont a **Scopes területen.** A megadott szabály az adott sablonon alapuló összes érzékelőre vonatkozik. Szükség esetén létrehozhat egy szűrőt, amely a szabályt csak az érzékelők egy meghatározott részhalmazára alkalmazza. 
+1. Válassza ki a RuuviTag-eszköz sablonját a **hatókörökben**. Az Ön által definiált szabály a sablon alapján az összes érzékelőre érvényes lesz. Szükség esetén létrehozhat egy szűrőt, amely csak az érzékelők egy meghatározott részhalmazára alkalmazza a szabályt. 
 
-1. Válassza `Relative humidity` ki a **Telemetriai adatokat.** Ez az eszköz képessége, amely egy előző lépésben testreszabott.
+1. Válassza `Relative humidity` ki a **telemetria**. Ez az eszköz azon funkciója, amelyet az előző lépésben testreszabtak.
 
-1. Válassza `Is greater than` ki **az operátort.** 
+1. Válassza `Is greater than` ki az **operátort**. 
 
-1. Adja meg a környezetének tipikus felső tartományú beltéri páratartalmát **az Érték .** Írja be például a *65*értéket. Olyan feltételt állított be a szabályhoz, amely akkor következik be, ha bármely RuuviTag valós vagy szimulált érzékelő relatív páratartalma meghaladja ezt az értéket. Előfordulhat, hogy a környezetében szokásos páratartalom-tartománytól függően az értéket fel- vagy lekell állítania.  
+1. Adjon meg egy tipikus felső tartományba eső, a környezetnek megfelelő belső páratartalom- **szintet.** Adja meg például a *65*értéket. Megadta a szabály feltételét, amely akkor fordul elő, ha a RuuviTag valós vagy szimulált érzékelő relatív páratartalma meghaladja ezt az értéket. Előfordulhat, hogy a környezete normál nedvességtartalmának megfelelően módosítania kell az értéket.  
 
-   ![Az Azure IoT Central adja hozzá a szabály feltételeit](./media/tutorial-in-store-analytics-create-app/rules-add-conditions.png)
+   ![Azure-IoT Central szabály feltételének hozzáadása](./media/tutorial-in-store-analytics-create-app/rules-add-conditions.png)
 
 Művelet hozzáadása a szabályhoz:
 
-1. Válassza a **+ E-mail lehetőséget.** 
+1. Válassza a **+ e-mail**lehetőséget. 
 
-1. Adja meg *a magas páratartalom értesítés,* mint a rövid **Megjelenítendő nevet** a művelet. 
+1. Adja meg a *magas páratartalom-értesítést* a művelet felhasználóbarát **megjelenítendő neveként** . 
 
-1. Adja meg a fiókjához társított e-mail címet a **Címzett mezőbe.** Ha más e-mailt használ, a használt címnek az alkalmazáshoz hozzáadott felhasználónak kell lennie. A felhasználónak legalább egyszer be és ki kell jelentkeznie.
+1. Adja meg a fiókjához tartozó e-mail- **címet a alkalmazásban.** Ha más e-mailt használ, a használt címnek olyan felhasználónak kell lennie, aki hozzá lett adva az alkalmazáshoz. A felhasználónak emellett legalább egyszer be kell jelentkeznie.
 
-1. Tetszés szerint írjon be egy megjegyzést, amelyet az e-mail szövegében szeretne szerepelni.
+1. Szükség esetén megadhat egy, az e-mail-szövegbe felvenni kívánt megjegyzést is.
 
-1. A művelet végrehajtásához válassza a **Kész** lehetőséget.
+1. A művelet befejezéséhez kattintson a **kész** gombra.
 
-   ![Az Azure IoT Central műveletek hozzáadása a szabályokhoz](./media/tutorial-in-store-analytics-create-app/rules-add-action.png)
+   ![Azure IoT Central műveletek hozzáadása a szabályokhoz](./media/tutorial-in-store-analytics-create-app/rules-add-action.png)
 
-1. Az új szabály mentéséhez és aktiválásához válassza a **Mentés** lehetőséget. 
+1. A Save ( **Mentés** ) gombra kattintva mentse és aktiválja az új szabályt. 
 
-    Néhány percen belül a megadott e-mail fióknak meg kell kezdenie az e-mailek fogadását. Az alkalmazás e-mailt küld minden alkalommal, amikor egy érzékelő azt jelzi, hogy a páratartalom meghaladja az ön állapotában lévő értéket.
+    Néhány percen belül a megadott e-mail-fióknak meg kell kezdenie az e-mailek fogadását. Az alkalmazás minden alkalommal küld e-mailt, amikor egy érzékelő azt jelzi, hogy a nedvességtartalom túllépte a feltételben megadott értéket.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-* Az Azure IoT Central **in-store analytics – pénztár** sablon használatával kiskereskedelmi áruházbeli alkalmazást hozhat létre
-* Az alkalmazásbeállításainak testreszabása
-* IoT-eszközsablonok létrehozása és testreszabása
+* Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central **in-store Analytics-Checkout** sablon használatával
+* Az Alkalmazásbeállítások testreszabása
+* IoT-sablonok létrehozása és testreszabása
 * Eszközök csatlakoztatása az alkalmazáshoz
 * Szabályok és műveletek hozzáadása a feltételek figyeléséhez
 
-Most, hogy létrehozott egy Azure IoT Central állapotfigyelő alkalmazást, az alábbiakat javasolta:
+Most, hogy létrehozott egy Azure IoT Central állapot-figyelési alkalmazást, a következő lépés a javasolt:
 
 > [!div class="nextstepaction"]
-> [Az operátori irányítópult testreszabása](./tutorial-in-store-analytics-customize-dashboard.md)
+> [Az operátor irányítópultjának testreszabása](./tutorial-in-store-analytics-customize-dashboard.md)

@@ -1,42 +1,42 @@
 ---
-title: Azure Private Link konfigurálása Azure Cosmos-fiókhoz
-description: Megtudhatja, hogyan állíthatja be az Azure Private Linket egy Azure Cosmos-fiók eléréséhez egy virtuális hálózatban lévő privát IP-cím használatával.
+title: Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
+description: Megtudhatja, hogyan állíthatja be az Azure Private-hivatkozást egy Azure Cosmos-fiók eléréséhez egy virtuális hálózatban lévő magánhálózati IP-cím használatával.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
 ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81270689"
 ---
-# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private Link konfigurálása Azure Cosmos-fiókhoz
+# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
 
-Az Azure Private Link használatával privát végponton keresztül csatlakozhat egy Azure Cosmos-fiókhoz. A privát végpont a virtuális hálózaton belüli alhálózatban lévő privát IP-címek készlete. Ezután korlátozhatja az Azure Cosmos-fiókhoz való hozzáférést a privát IP-címekre. Ha a Private Link korlátozott NSG-házirendekkel van kombinálva, ez segít csökkenteni az adatok kiszivárgásának kockázatát. A privát végpontokról az [Azure Private Link](../private-link/private-link-overview.md) cikkben olvashat bővebben.
+Az Azure Private link használatával privát végponton keresztül csatlakozhat egy Azure Cosmos-fiókhoz. A magánhálózati végpont a virtuális hálózaton belüli alhálózat magánhálózati IP-címeinek halmaza. Ezután korlátozhatja a hozzáférést egy Azure Cosmos-fiókhoz magánhálózati IP-címeken keresztül. Ha a privát hivatkozás korlátozott NSG-szabályzatokkal van kombinálva, az segít csökkenteni az adatkiszűrése kockázatát. Ha többet szeretne megtudni a privát végpontokról, tekintse meg az [Azure privát hivatkozását](../private-link/private-link-overview.md) ismertető cikket.
 
-A Private Link lehetővé teszi a felhasználók számára, hogy hozzáférjenek egy Azure Cosmos-fiókhoz a virtuális hálózaton belülről vagy bármely társviszonyt létesített virtuális hálózatról. A Privát kapcsolathoz leképezett erőforrások a helyszínen is elérhetők a VPN-en vagy az Azure ExpressRoute-on keresztüli privát társviszony-létesítésen keresztül. 
+A privát hivatkozás lehetővé teszi, hogy a felhasználók hozzáférjenek egy Azure Cosmos-fiókhoz a virtuális hálózatból vagy bármely társ virtuális hálózatból. A privát kapcsolatra leképezett erőforrások a VPN-en vagy az Azure-ExpressRoute keresztül is elérhetők a helyszínen keresztül. 
 
-Csatlakozhat egy Azure Cosmos-fiókhoz, amely a Private Link szolgáltatással konfigurálva van az automatikus vagy manuális jóváhagyási módszer rel. További információ: A Privát hivatkozás [dokumentációjának Jóváhagyási munkafolyamat](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) szakasza. 
+Az automatikus vagy manuális jóváhagyási módszer használatával kapcsolódhat egy privát kapcsolattal konfigurált Azure Cosmos-fiókhoz. További információ: a privát hivatkozás dokumentációjának [jóváhagyási munkafolyamat](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) szakasza. 
 
-Ez a cikk a privát végpont létrehozásának lépéseit ismerteti. Feltételezi, hogy az automatikus jóváhagyási módszert használja.
+Ez a cikk a privát végpontok létrehozásának lépéseit ismerteti. Feltételezi, hogy az automatikus jóváhagyási módszert használja.
 
 > [!NOTE]
-> A privát végpont támogatása jelenleg csak átjárókapcsolati módban érhető el. Közvetlen módban előnézeti funkcióként érhető el.
+> A magánhálózati végpontok támogatása jelenleg csak az átjárók közötti kapcsolatok esetében érhető el. A közvetlen mód a szolgáltatás előzetes verzióként érhető el.
 
-## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Privát végpont létrehozása az Azure Portal használatával
+## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Hozzon létre egy privát végpontot a Azure Portal használatával
 
-Az alábbi lépésekkel hozzon létre egy privát végpontot egy meglévő Azure Cosmos-fiókhoz az Azure Portal használatával:
+A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tartozó privát végpontot a Azure Portal használatával:
 
-1. A **Minden erőforrás** ablaktáblán válasszon egy Azure Cosmos-fiókot.
+1. A **minden erőforrás** panelen válasszon egy Azure Cosmos-fiókot.
 
-1. A beállítások listájából válassza a **Privát végpontkapcsolatok** elemet, majd a **Privát végpont**lehetőséget:
+1. Válassza a **privát végponti kapcsolatok** elemet a beállítások listájából, majd válassza a **privát végpont**elemet:
 
-   ![Beállítások egy privát végpont létrehozásához az Azure Portalon](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   ![Privát végpont létrehozására szolgáló kijelölés a Azure Portalban](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
 
-1. A Saját végpont létrehozása **- Alapjai** ablaktáblában adja meg vagy válassza ki a következő részleteket:
+1. A **privát végpont létrehozása – alapvető beállítások** panelen adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -44,69 +44,69 @@ Az alábbi lépésekkel hozzon létre egy privát végpontot egy meglévő Azure
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válasszon ki egy erőforráscsoportot.|
     | **Példány részletei** |  |
-    | Név | Adja meg a saját végpont nevét. Ha ez a név foglalt, hozzon létre egy egyedit. |
-    |Régió| Válassza ki azt a régiót, ahol a Privát hivatkozást telepíteni szeretné. Hozza létre a privát végpontot ugyanazon a helyen, ahol a virtuális hálózat létezik.|
+    | Name (Név) | Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedit. |
+    |Régió| Válassza ki azt a régiót, ahol a privát hivatkozást telepíteni szeretné. Hozza létre a magánhálózati végpontot ugyanazon a helyen, ahol a virtuális hálózat található.|
     |||
-1. Válassza a **Tovább: Erőforrás**lehetőséget.
-1. A **Saját végpont - Erőforrás létrehozása**mezőbe írja be vagy jelölje ki ezt az információt:
+1. Válassza a **Tovább: erőforrás**elemet.
+1. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    |Kapcsolati módszer  | Válassza **a Csatlakozás egy Azure-erőforráshoz a címtárban**lehetőséget. <br/><br/> Ezután kiválaszthatja az egyik erőforrást a Privát hivatkozás beállításához. Vagy kapcsolódhat valaki más erőforrásához egy önnel megosztott erőforrás-azonosító vagy alias használatával.|
+    |Kapcsolati módszer  | Válassza a **Kapcsolódás egy Azure-erőforráshoz a címtárban**lehetőséget. <br/><br/> Ezután kiválaszthatja az egyik erőforrást a privát hivatkozás beállításához. Vagy kapcsolódhat valaki másnak erőforrásához egy erőforrás-azonosító vagy egy, az Önnel megosztott alias használatával.|
     | Előfizetés| Válassza ki előfizetését. |
-    | Erőforrás típusa | Válassza a **Microsoft.AzureCosmosDB/databaseAccounts lehetőséget.** |
-    | Erőforrás |Válassza ki az Azure Cosmos-fiókot. |
-    |Cél alerőforrás |Válassza ki az Azure Cosmos DB API-típus, amely le szeretné képezni. Ez alapértelmezés szerint csak egy választás az SQL, MongoDB és Cassandra API-k. A Gremlin és a Table API-k, sql is **választhat,** mert ezek az API-k interoperábilisaz SQL API-t. |
+    | Erőforrás típusa | Válassza a **Microsoft. AzureCosmosDB/databaseAccounts**lehetőséget. |
+    | Erőforrás |Válassza ki az Azure Cosmos-fiókját. |
+    |Cél alerőforrása |Válassza ki a leképezni kívánt Azure Cosmos DB API-típust. Ez az alapértelmezett érték az SQL, a MongoDB és a Cassandra API-k esetében csak egyetlen választás. A Gremlin és a Table API-k esetében választhatja az **SQL** -t is, mivel ezek az API-k az SQL API-val együttműködnek. |
     |||
 
-1. Válassza a **Tovább lehetőséget: Konfiguráció**.
-1. A **Saját végpont létrehozása - Konfiguráció**csoportban adja meg vagy jelölje ki ezt az információt:
+1. Válassza a **Tovább: konfigurálás**lehetőséget.
+1. A **privát végpont létrehozása – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     |**Hálózat**| |
     | Virtuális hálózat| Válassza ki a virtuális hálózatot. |
     | Alhálózat | Válassza ki az alhálózatot. |
-    |**Privát DNS-integráció**||
-    |Integrálás privát DNS-zónával |Válassza az **Igen** lehetőséget. <br><br/> A privát végponthoz való privát csatlakozáshoz DNS-rekordra van szükség. Azt javasoljuk, hogy integrálja a privát végpont egy privát DNS-zóna. Használhatja saját DNS-kiszolgálóit is, vagy dns-rekordokat hozhat létre a virtuális gépeken lévő gazdafájlok használatával. |
-    |Privát DNS-zóna |Válassza **a privatelink.documents.azure.com**lehetőséget. <br><br/> A privát DNS-zóna automatikusan meghatározásra kerül. Az Azure Portal használatával nem módosíthatja.|
+    |**saját DNS integráció**||
+    |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. <br><br/> A magánhálózati végponthoz való kapcsolódáshoz DNS-rekordra van szükség. Javasoljuk, hogy a privát végpontot egy privát DNS-zónával integrálja. Saját DNS-kiszolgálókat is használhat, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával. |
+    |saját DNS zóna |Válassza a **privatelink.Documents.Azure.com**lehetőséget. <br><br/> A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.|
     |||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **Véleményezés + létrehozás** lapon az Azure érvényesíti a konfigurációt.
-1. Amikor megjelenik az **Érvényesítési átadott** üzenet, válassza a **Létrehozás gombot.**
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
+1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
 
-Ha jóváhagyta az Azure Cosmos-fiók privát hivatkozását, az Azure Portalon a tűzfal és a **virtuális hálózatok** ablaktáblán található Minden **hálózat** beállítás nem érhető el.
+Ha jóváhagyta az Azure Cosmos-fiókhoz tartozó privát hivatkozást, akkor a Azure Portalban a **tűzfal és a virtuális hálózatok** ablaktábla **minden hálózat** lehetőség nem érhető el.
 
-Az alábbi táblázat bemutatja a különböző Azure Cosmos-fiók API-típusok, támogatott al-erőforrások és a megfelelő privát zónanevek leképezése között. A Gremlin és table API-fiókok az SQL API-n keresztül is elérhetők, így ezekhez az API-khoz két bejegyzés tartoz.
+Az alábbi táblázat a különböző Azure Cosmos-fiók API-típusai, a támogatott alerőforrások és a hozzájuk tartozó saját zónák neve közötti leképezést mutatja. A Gremlin és a Table API fiókokat az SQL API-n keresztül is elérheti, így ezek az API-k két bejegyzést használhatnak.
 
-|Azure Cosmos-fiók API-típusa  |Támogatott alerőforrások (vagy csoportazonosítók) |Privát zóna neve  |
+|Azure Cosmos-fiók API-típusa  |Támogatott alerőforrások (vagy csoport azonosítója) |Saját zóna neve  |
 |---------|---------|---------|
 |SQL    |   SQL      | privatelink.documents.azure.com   |
 |Cassandra    | Cassandra        |  privatelink.cassandra.cosmos.azure.com    |
-|Mongo között   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
+|Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
 |Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
 |Gremlin     |  SQL       |  privatelink.documents.azure.com    |
 |Tábla    |    Tábla     |   privatelink.table.cosmos.azure.com    |
 |Tábla     |   SQL      |  privatelink.documents.azure.com    |
 
-### <a name="fetch-the-private-ip-addresses"></a>A privát IP-címek beolvasása
+### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
 
-A privát végpont kiépítése után lekérdezheti az IP-címeket. Az IP-címek megtekintése az Azure Portalon:
+A magánhálózati végpont kiépítés után lekérdezheti az IP-címeket. A Azure Portal IP-címeinek megtekintése:
 
 1. Válassza az **Összes erőforrás** elemet.
-1. Keresse meg a korábban létrehozott privát végpontot. Ebben az esetben ez **cdbPrivateEndpoint3**.
-1. A DNS-beállítások és AZ IP-címek megtekintéséhez **kattintson** az Áttekintés fülre.
+1. Keresse meg a korábban létrehozott privát végpontot. Ebben az esetben ez a **cdbPrivateEndpoint3**.
+1. A DNS-beállítások és az IP-címek megtekintéséhez válassza az **Áttekintés** lapot.
 
-![Privát IP-címek az Azure Portalon](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+![Magánhálózati IP-címek a Azure Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
-Privát végpontonként több IP-cím jön létre:
+Több IP-cím jön létre egy privát végponton:
 
 * Az Azure Cosmos-fiók globális (régió-agnosztikus) végpontjának egyike
-* Minden olyan régióhoz, ahol az Azure Cosmos-fiók telepítve van
+* Egy minden régióhoz, ahol az Azure Cosmos-fiók telepítve van
 
-## <a name="create-a-private-endpoint-by-using-azure-powershell"></a>Saját végpont létrehozása az Azure PowerShell használatával
+## <a name="create-a-private-endpoint-by-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 
-Futtassa a következő PowerShell-parancsfájlt egy "MyPrivateEndpoint" nevű privát végpont létrehozásához egy meglévő Azure Cosmos-fiókhoz. Cserélje le a változóértékeket a környezet adataira.
+Futtassa a következő PowerShell-szkriptet egy "MyPrivateEndpoint" nevű privát végpont létrehozásához egy meglévő Azure Cosmos-fiókhoz. Cserélje le a változó értékeket a környezet részleteire.
 
 ```azurepowershell-interactive
 $SubscriptionId = "<your Azure subscription ID>"
@@ -137,9 +137,9 @@ $subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.N
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
 ```
 
-### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>A privát végpont integrálása magánDNS-zónával
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Privát végpont integrálása privát DNS-zónával
 
-A privát végpont létrehozása után integrálhatja azt egy privát DNS-zónával a következő PowerShell-parancsfájl használatával:
+A privát végpont létrehozása után a következő PowerShell-parancsfájl használatával integrálhatja azt egy privát DNS-zónával:
 
 ```azurepowershell-interactive
 Import-Module Az.PrivateDns
@@ -172,9 +172,9 @@ New-AzPrivateDnsRecordSet -Name $recordName `
 }
 ```
 
-### <a name="fetch-the-private-ip-addresses"></a>A privát IP-címek beolvasása
+### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
 
-A privát végpont kiépítése után lekérdezheti az IP-címeket és az FQDN-hozzárendelést a következő PowerShell-parancsfájl használatával:
+A magánhálózati végpont kiosztása után a következő PowerShell-parancsfájl használatával kérdezheti le az IP-címeket és a teljes tartománynevek megfeleltetését:
 
 ```azurepowershell-interactive
 $pe = Get-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroupName myResourceGroup
@@ -185,9 +185,9 @@ foreach ($IPConfiguration in $networkInterface.IpConfigurations)
 }
 ```
 
-## <a name="create-a-private-endpoint-by-using-azure-cli"></a>Saját végpont létrehozása az Azure CLI használatával
+## <a name="create-a-private-endpoint-by-using-azure-cli"></a>Privát végpont létrehozása az Azure CLI használatával
 
-Futtassa a következő Azure CLI-parancsfájlt egy "myPrivateEndpoint" nevű privát végpont létrehozásához egy meglévő Azure Cosmos-fiókhoz. Cserélje le a változóértékeket a környezet adataira.
+Futtassa az alábbi Azure CLI-szkriptet egy "myPrivateEndpoint" nevű privát végpont létrehozásához egy meglévő Azure Cosmos-fiókhoz. Cserélje le a változó értékeket a környezet részleteire.
 
 ```azurecli-interactive
 # Resource group where the Azure Cosmos account and virtual network resources are located
@@ -235,9 +235,9 @@ az network private-endpoint create \
     --connection-name $PrivateConnectionName
 ```
 
-### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>A privát végpont integrálása magánDNS-zónával
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Privát végpont integrálása privát DNS-zónával
 
-A privát végpont létrehozása után integrálhatja azt egy privát DNS-zónával a következő Azure CLI parancsfájl használatával:
+A privát végpont létrehozása után a következő Azure CLI-parancsfájl használatával integrálhatja azt egy privát DNS-zónával:
 
 ```azurecli-interactive
 zoneName="privatelink.documents.azure.com"
@@ -262,11 +262,11 @@ az network private-dns record-set a create --name recordSet1 --zone-name private
 az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName -a <Private IP Address>
 ```
 
-## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Saját végpont létrehozása Erőforrás-kezelő sablon használatával
+## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Privát végpont létrehozása Resource Manager-sablonnal
 
-A Privát kapcsolat beállításához hozzon létre egy privát végpontot egy virtuális hálózati alhálózatban. Ezt egy Azure Resource Manager-sablon használatával érheti el.
+A magánhálózati kapcsolatot úgy is beállíthatja, hogy létrehoz egy magánhálózati végpontot egy virtuális hálózati alhálózatban. Ezt egy Azure Resource Manager sablon segítségével érheti el.
 
-A következő kód segítségével hozzon létre egy "PrivateEndpoint_template.json" nevű Erőforrás-kezelő sablont. Ez a sablon létrehoz egy privát végpontot egy meglévő Azure Cosmos SQL API-fiókhoz egy meglévő virtuális hálózatban.
+A következő kód használatával hozzon létre egy "PrivateEndpoint_template. JSON" nevű Resource Manager-sablont. Ez a sablon egy meglévő virtuális hálózat meglévő Azure Cosmos SQL API-fiókjához hoz létre privát végpontot.
 
 ```json
 {
@@ -325,9 +325,9 @@ A következő kód segítségével hozzon létre egy "PrivateEndpoint_template.j
 }
 ```
 
-**A sablon paraméterfájljának meghatározása**
+**A sablonhoz tartozó Parameters fájl megadása**
 
-Hozzon létre egy paraméterfájlt a sablonhoz, és nevezze el "PrivateEndpoint_parameters.json" névnek. Adja hozzá a következő kódot a paraméterfájlhoz:
+Hozzon létre egy paramétereket tartalmazó fájlt a sablonhoz, és nevezze el "PrivateEndpoint_parameters. JSON" néven. Adja hozzá a következő kódot a parameters (paraméterek) fájlhoz:
 
 ```json
 {
@@ -350,9 +350,9 @@ Hozzon létre egy paraméterfájlt a sablonhoz, és nevezze el "PrivateEndpoint_
 }
 ```
 
-**A sablon központi telepítése PowerShell-parancsfájl használatával**
+**A sablon üzembe helyezése PowerShell-parancsfájl használatával**
 
-Hozzon létre egy PowerShell-parancsfájlt a következő kód használatával. A parancsfájl futtatása előtt cserélje le az előfizetés-azonosítót, az erőforráscsoport nevét és más változóértékeket a környezet adataira.
+Hozzon létre egy PowerShell-parancsfájlt az alábbi kód használatával. A parancsfájl futtatása előtt cserélje le az előfizetés-azonosítót, az erőforráscsoport nevét és az egyéb változó értékeket a környezet részleteire.
 
 ```azurepowershell-interactive
 ### This script creates a private endpoint for an existing Azure Cosmos account in an existing virtual network
@@ -401,22 +401,22 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-A PowerShell-parancsfájlban `GroupId` a változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett `Sql`értékek `MongoDB` `Cassandra`a `Gremlin`következők: , , , , és `Table`. Egyes Azure Cosmos-fióktípusok több API-n keresztül érhetők el. Például:
+A PowerShell-parancsfájlban a `GroupId` változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett értékek a `Sql`következők `MongoDB`: `Cassandra`, `Gremlin`,, `Table`és. Néhány Azure Cosmos-fióktípus több API-n keresztül érhető el. Például:
 
-* A Gremlin API-fiók gremlin és SQL API-fiókokból is elérhető.
-* A Table API-fiók tábla- és SQL API-fiókokból is elérhető.
+* A Gremlin API-fiókok a Gremlin és az SQL API-fiókokból is elérhetők.
+* Table API fiók a tábla-és SQL API-fiókokból is elérhető.
 
-Ezekhez a fiókokhoz létre kell hoznia egy privát végpontot minden API-típushoz. A megfelelő API-típus a `GroupId` tömbben van megadva.
+Ezen fiókok esetében minden egyes API-típushoz létre kell hoznia egy privát végpontot. A megfelelő API-típus van megadva a `GroupId` tömbben.
 
-A sablon sikeres üzembe helyezése után az alábbi képen láthatóhoz hasonló kimenet et láthat. Az `provisioningState` érték `Succeeded` akkor, ha a magánvégpontok megfelelően vannak beállítva.
+A sablon sikeres üzembe helyezését követően az alábbi képen láthatóhoz hasonló kimenet jelenik meg. Az `provisioningState` érték az `Succeeded` , ha a magánhálózati végpontok megfelelően vannak beállítva.
 
-![Az Erőforrás-kezelő sablon telepítési kimenete](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+![Üzembe helyezési kimenet a Resource Manager-sablonhoz](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
 
-A sablon telepítése után a privát IP-címek az alhálózaton belül lesznek fenntartva. Az Azure Cosmos-fiók tűzfalszabálya úgy van konfigurálva, hogy csak a privát végpontból származó kapcsolatokat fogadjon.
+A sablon üzembe helyezése után a magánhálózati IP-címek az alhálózaton belül vannak lefoglalva. Az Azure Cosmos-fiók tűzfalszabály úgy van konfigurálva, hogy csak a magánhálózati végpontról fogadjon kapcsolatokat.
 
-### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>A privát végpont integrálása magánDNS-zónával
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>A privát végpont integrálása saját DNS zónával
 
-A következő kód segítségével hozzon létre egy "PrivateZone_template.json" nevű Erőforrás-kezelő sablont. Ez a sablon létrehoz egy privát DNS-zónát egy meglévő Azure Cosmos SQL API-fiókhoz egy meglévő virtuális hálózatban.
+A következő kód használatával hozzon létre egy "PrivateZone_template. JSON" nevű Resource Manager-sablont. Ez a sablon létrehoz egy magánhálózati DNS-zónát egy meglévő Azure Cosmos SQL API-fiókhoz egy meglévő virtuális hálózaton.
 
 ```json
 {
@@ -458,7 +458,7 @@ A következő kód segítségével hozzon létre egy "PrivateZone_template.json"
 }
 ```
 
-A következő kód segítségével hozzon létre egy "PrivateZoneRecords_template.json" nevű Erőforrás-kezelő sablont.
+A következő kód használatával hozzon létre egy "PrivateZoneRecords_template. JSON" nevű Resource Manager-sablont.
 
 ```json
 {
@@ -490,9 +490,9 @@ A következő kód segítségével hozzon létre egy "PrivateZoneRecords_templat
 }
 ```
 
-**A sablon paraméterfájljának meghatározása**
+**A sablonhoz tartozó Parameters fájl megadása**
 
-Hozza létre a következő két paraméterfájlt a sablonhoz. Hozza létre a "PrivateZone_parameters.json" kifejezést. a következő kóddal:
+Hozza létre a következő két paraméter-fájlt a sablonhoz. Hozza létre a "PrivateZone_parameters. JSON" fájlt. a következő kóddal:
 
 ```json
 {
@@ -509,7 +509,7 @@ Hozza létre a következő két paraméterfájlt a sablonhoz. Hozza létre a "Pr
 }
 ```
 
-Hozza létre a "PrivateZoneRecords_parameters.json" kifejezést. a következő kóddal:
+Hozza létre a "PrivateZoneRecords_parameters. JSON" fájlt. a következő kóddal:
 
 ```json
 {
@@ -526,9 +526,9 @@ Hozza létre a "PrivateZoneRecords_parameters.json" kifejezést. a következő k
 }
 ```
 
-**A sablon központi telepítése PowerShell-parancsfájl használatával**
+**A sablon üzembe helyezése PowerShell-parancsfájl használatával**
 
-Hozzon létre egy PowerShell-parancsfájlt a következő kód használatával. A parancsfájl futtatása előtt cserélje le az előfizetés-azonosítót, az erőforráscsoport nevét és más változóértékeket a környezet adataira.
+Hozzon létre egy PowerShell-parancsfájlt az alábbi kód használatával. A parancsfájl futtatása előtt cserélje le az előfizetés-azonosítót, az erőforráscsoport nevét és az egyéb változó értékeket a környezet részleteire.
 
 ```azurepowershell-interactive
 ### This script:
@@ -611,69 +611,69 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="configure-custom-dns"></a>Egyéni DNS konfigurálása
 
-Használjon egy privát DNS-zónát az alhálózaton belül, ahol létrehozta a privát végpontot. Konfigurálja úgy a végpontokat, hogy minden magánhálózati IP-cím DNS-bejegyzéshez van rendelve. (Lásd `fqdns` a tulajdonságot a korábban bemutatott válaszban.)
+Saját DNS-zónát kell használnia azon az alhálózaton belül, ahol létrehozta a magánhálózati végpontot. Konfigurálja úgy a végpontokat, hogy minden magánhálózati IP-cím le legyen képezve egy DNS-bejegyzésre. (Lásd a `fqdns` korábban bemutatott válasz tulajdonságát.)
 
-Amikor létrehozza a privát végpontot, integrálhatja azt egy privát DNS-zónával az Azure-ban. Ha úgy dönt, hogy ehelyett egyéni DNS-zónát használ, konfigurálnia kell azt, hogy dns-rekordokat adjon hozzá a magánhálózati végpontszámára fenntartott összes magánhálózati IP-címhez.
+A privát végpont létrehozásakor az Azure-ban egyesítheti azt egy privát DNS-zónával. Ha ehelyett egyéni DNS-zónát használ, úgy kell beállítania, hogy a magánhálózati végpont számára fenntartott magánhálózati IP-címekhez adja hozzá a DNS-rekordokat.
 
-## <a name="private-link-combined-with-firewall-rules"></a>Privát kapcsolat tűzfalszabályokkal kombinálva
+## <a name="private-link-combined-with-firewall-rules"></a>Privát hivatkozás a tűzfalszabályok együttes használatával
 
-A következő helyzetek és eredmények akkor lehetségesek, ha a Privát kapcsolat szolgáltatást tűzfalszabályokkal kombinálja:
+A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatkozásokat a tűzfalszabályok kombinálva használják:
 
-* Ha nem konfigurálja a tűzfalszabályokat, majd alapértelmezés szerint az összes forgalom hozzáférhet egy Azure Cosmos-fiókhoz.
+* Ha nem konfigurálja a tűzfalszabályok egyikét sem, akkor alapértelmezés szerint minden forgalom elérheti az Azure Cosmos-fiókokat.
 
-* Ha konfigurálja a nyilvános forgalmat vagy egy szolgáltatásvégpontot, és privát végpontokat hoz létre, akkor a megfelelő típusú tűzfalszabály különböző típusú bejövő forgalmat engedélyez.
+* Ha nyilvános forgalmat vagy szolgáltatási végpontot állít be, és privát végpontokat hoz létre, akkor a megfelelő tűzfalszabály engedélyezi a bejövő forgalom különböző típusait.
 
-* Ha nem konfigurál semmilyen nyilvános forgalmat vagy szolgáltatásvégpontot, és privát végpontokat hoz létre, majd az Azure Cosmos-fiók csak a privát végpontokon keresztül érhető el. Ha nem konfigurálja a nyilvános forgalmat vagy a szolgáltatás végpontját, miután az összes jóváhagyott magánvégpontot elutasították vagy törölték, a fiók a teljes hálózat számára megnyílik.
+* Ha nem állít be nyilvános forgalmat vagy szolgáltatási végpontot, és privát végpontokat hoz létre, akkor az Azure Cosmos-fiók csak a privát végpontokon keresztül érhető el. Ha nem konfigurálja a nyilvános forgalmat vagy a szolgáltatási végpontot, az összes jóváhagyott privát végpont elutasítása vagy törlése után a fiók nyitva van a teljes hálózaton.
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Nyilvános hálózati hozzáférés letiltása a fiók létrehozása során
 
-Az előző szakaszban leírtak szerint, és ha nincs beállítva konkrét tűzfalszabályok, egy privát végpont hozzáadása az Azure Cosmos-fiók csak magánvégpontokon keresztül érhető el. Ez azt jelenti, hogy az Azure Cosmos-fiók a nyilvános forgalomból érhető el a létrehozása után, és mielőtt egy privát végpont hozzáadása. Annak érdekében, hogy a nyilvános hálózati hozzáférés már a magánhálózati `publicNetworkAccess` végpontok létrehozása előtt is le legyen tiltva, beállíthatja a jelzőt a fiók létrehozása `Disabled` során. Tekintse meg [ezt az Azure Resource Manager sablont](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) egy példa, amely bemutatja, hogyan használja ezt a jelzőt.
+Az előző szakaszban leírtak szerint, és hacsak nincsenek megadva meghatározott tűzfalszabályok, a privát végpontok hozzáadásával az Azure Cosmos-fiókja csak privát végpontokon keresztül érhető el. Ez azt jelenti, hogy az Azure Cosmos-fiók a létrehozása után, illetve a privát végpont hozzáadása előtt elérhető a nyilvános forgalomból. Annak biztosítása érdekében, hogy a nyilvános hálózati hozzáférés le legyen tiltva, még a privát végpontok létrehozása előtt is, `publicNetworkAccess` beállíthatja `Disabled` a jelölőt a fiók létrehozása során. Tekintse meg [ezt a Azure Resource Manager sablont](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) a jelző használatának módját bemutató példához.
 
-## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Saját végpont frissítése régió hozzáadásakor vagy eltávolításakor
+## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Privát végpont frissítése régió hozzáadásakor vagy eltávolításakor
 
-Régiók hozzáadása vagy eltávolítása egy Azure Cosmos-fiókhoz, dns-bejegyzések hozzáadását vagy eltávolítását kell igényelnie az adott fiókhoz. A régiók hozzáadása vagy eltávolítása után frissítheti az alhálózat privát DNS-zónáját, hogy tükrözze a hozzáadott vagy eltávolított DNS-bejegyzéseket és a hozzájuk tartozó privát IP-címeket.
+A régiók Azure Cosmos-fiókhoz való hozzáadásával vagy eltávolításával ehhez a fiókhoz DNS-bejegyzéseket kell hozzáadnia vagy eltávolítania. A régiók hozzáadása vagy eltávolítása után frissítheti az alhálózat saját DNS-zónáját, hogy azok tükrözzék a hozzáadott vagy eltávolított DNS-bejegyzéseket, valamint a hozzájuk tartozó magánhálózati IP-címeket.
 
-Tegyük fel például, hogy egy Azure Cosmos-fiókot három régióban telepít: "USA nyugati régiója", "USA középső régiója" és "Nyugat-Európa". Amikor privát végpontot hoz létre a fiókjához, négy privát IP-hely van lefoglalva az alhálózatban. A három régióhoz egy-egy IP-cím tartozik, és egy IP a globális/régió-agnosztikus végponthoz.
+Tegyük fel például, hogy egy Azure Cosmos-fiókot helyez üzembe három régióban: "USA nyugati régiója", "Közép-USA" és "Nyugat-Európa". Amikor létrehoz egy privát végpontot a fiókjához, négy privát IP-cím van lefoglalva az alhálózatban. A három régió mindegyikének van egy IP-címe, és a globális/régió-agnosztikus végpontnak egyetlen IP-címe van.
 
-Később előfordulhat, hogy egy új régiót (például "USA keleti régiója") ad hozzá az Azure Cosmos-fiókhoz. Az új régió hozzáadása után hozzá kell adnia egy megfelelő DNS-rekordot a saját DNS-zónához vagy az egyéni DNS-hez.
+Később hozzáadhat egy új régiót (például "East US") az Azure Cosmos-fiókhoz. Az új régió hozzáadása után hozzá kell adnia egy megfelelő DNS-rekordot a saját DNS-zónájához vagy az egyéni DNS-hez.
 
-A terület eltávolításakor ugyanazokat a lépéseket használhatja. A régió eltávolítása után el kell távolítania a megfelelő DNS-rekordot a saját DNS-zónájából vagy az egyéni DNS-ből.
+A régió eltávolításakor ugyanezeket a lépéseket használhatja. A régió eltávolítását követően el kell távolítania a megfelelő DNS-rekordot a saját DNS-zónájából vagy az egyéni DNS-ből.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-A következő korlátozások érvényesek, ha privát kapcsolatot használ egy Azure Cosmos-fiókkal:
+Az alábbi korlátozások érvényesek, ha privát hivatkozást használ egy Azure Cosmos-fiókkal:
 
-* Ha egy Azure Cosmos-fiókkal használja a Privát kapcsolatot egy közvetlen módú kapcsolat használatával, csak a TCP protokollt használhatja. A HTTP protokoll még nem támogatott.
+* Ha közvetlen módú kapcsolattal rendelkező privát hivatkozást használ egy Azure Cosmos-fiókkal, akkor csak a TCP protokollt használhatja. A HTTP protokoll még nem támogatott.
 
-* A privát végpont támogatása jelenleg csak átjárókapcsolati módban érhető el. Közvetlen módban előnézeti funkcióként érhető el.
+* A magánhálózati végpontok támogatása jelenleg csak az átjárók közötti kapcsolatok esetében érhető el. A közvetlen mód a szolgáltatás előzetes verzióként érhető el.
 
-* Ha az Azure Cosmos DB API-ját használja a MongoDB-fiókokhoz, a rendszer csak a 3.6-os kiszolgálón lévő `*.mongo.cosmos.azure.com`fiókok (azaz a végpontot formátumban használó fiókok) támogatja a privát végpontot. A Private Link nem támogatott a 3.2-es kiszolgálón lévő fiókok `*.documents.azure.com`(azaz a végpontot formátumban használó fiókok) esetében. A Privát hivatkozás használatához telepítse át a régi fiókokat az új verzióra.
+* Ha Azure Cosmos DB API-ját használja a MongoDB-fiókokhoz, a rendszer csak a kiszolgáló 3,6-es verziójában lévő fiókok esetében támogatja a magánhálózati végpontot (azaz a végpontot a formátumban `*.mongo.cosmos.azure.com`használó fiókok esetében). A magánhálózati hivatkozás nem támogatott a (z `*.documents.azure.com`) 3,2-es verziójú kiszolgálókon lévő fiókok esetében (azaz a végpontot használó fiókok esetében). A privát hivatkozás használatához át kell telepítenie a régi fiókokat az új verzióra.
 
-* Ha az Azure Cosmos DB API-t használja a Privát hivatkozással rendelkező MongoDB-fiókokhoz, nem használhatja az olyan eszközöket, mint a Robo 3T, a Studio 3T és a Mongúz. A végpont csak akkor rendelkezhet `appName=<account name>` Private Link támogatással, ha a paraméter meg van adva. Például: `replicaSet=globaldb&appName=mydbaccountname`. Mivel ezek az eszközök nem adják át az alkalmazás nevét a kapcsolati karakterláncban a szolgáltatásnak, nem használhatja a Privát hivatkozást. De továbbra is elérheti ezeket a fiókokat az SDK-illesztőprogramok használatával a 3.6-os verzióval.
+* Ha a Azure Cosmos DB API-ját privát kapcsolattal rendelkező MongoDB-fiókokhoz használja, nem használhat olyan eszközöket, mint például a Robo 3T, a Studio 3T és a mongúz. A végpont csak akkor rendelkezhet privát hivatkozásokkal, ha `appName=<account name>` a paraméter meg van adva. Például: `replicaSet=globaldb&appName=mydbaccountname`. Mivel ezek az eszközök nem adják át az alkalmazás nevét a kapcsolati sztringben a szolgáltatáshoz, nem használhat privát hivatkozást. Ezek a fiókok azonban a 3,6-es verzióval rendelkező SDK-illesztőprogramok használatával is elérhetők.
 
-* Nem helyezhet át és nem törölhet virtuális hálózatot, ha az privát kapcsolatot tartalmaz.
+* Virtuális hálózat nem helyezhető át és nem törölhető, ha privát hivatkozást tartalmaz.
 
-* Nem törölheti az Azure Cosmos-fiókot, ha egy privát végponthoz van csatolva.
+* Egy Azure Cosmos-fiók nem törölhető, ha egy privát végponthoz van csatolva.
 
-* Nem feladatátvételegy Azure Cosmos-fiók egy olyan régióban, amely nincs leképezve a fiókhoz csatolt összes privát végpontok.
+* Nem hajtható végre feladatátvétel egy Azure Cosmos-fiókkal olyan régióban, amely nincs hozzárendelve a fiókhoz csatolt összes privát végponthoz.
 
-* A hálózati rendszergazdának legalább a "*/PrivateEndpointConnectionsApproval" engedélyt kell adni az Azure Cosmos-fiók hatókörén az automatikusan jóváhagyott magánvégpontok létrehozásához.
+* A hálózati rendszergazdának meg kell adni legalább a "*/PrivateEndpointConnectionsApproval" engedélyt az Azure Cosmos-fiók hatókörében, hogy automatikusan jóváhagyott privát végpontokat hozzon létre.
 
-### <a name="limitations-to-private-dns-zone-integration"></a>A privát DNS-zóna integrációjának korlátai
+### <a name="limitations-to-private-dns-zone-integration"></a>A magánhálózati DNS-zónák integrálására vonatkozó korlátozások
 
-A magánDNS-zónában lévő DNS-rekordok nem törlődnek automatikusan, ha töröl egy privát végpontot, vagy eltávolít egy régiót az Azure Cosmos-fiókból. A DNS-rekordokat manuálisan kell eltávolítania a következő előtt:
+A magánhálózati DNS-zónában lévő DNS-rekordokat a rendszer nem távolítja el automatikusan, amikor töröl egy privát végpontot, vagy eltávolít egy régiót az Azure Cosmos-fiókból. A DNS-rekordokat manuálisan kell eltávolítania a következő előtt:
 
-* A magánDNS-zónához kapcsolódó új privát végpont hozzáadása.
-* Új régió hozzáadása minden olyan adatbázisfiókhoz, amelyhez privát végpontok vannak csatolva ehhez a privát DNS-zónához.
+* Ehhez a magánhálózati DNS-zónához társított új privát végpont hozzáadása.
+* Új régió hozzáadása bármely olyan adatbázis-fiókhoz, amely az ehhez a magánhálózati DNS-zónához csatolt privát végpontokkal rendelkezik.
 
-Ha nem törli a DNS-rekordokat, váratlan adatsík-problémák léphetnek fel. Ezek a problémák közé tartozik a privát végponteltávolítása vagy a régió eltávolítása után hozzáadott régiók adatkimaradása.
+Ha nem törli a DNS-rekordokat, előfordulhat, hogy váratlan adatsík-problémák történnek. Ezek a problémák közé tartoznak az adatkimaradások a privát végpont eltávolítása vagy a régió eltávolítása után hozzáadott régiókhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az Azure Cosmos DB biztonsági funkcióiról, olvassa el az alábbi cikkeket:
+A Azure Cosmos DB biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* Az Azure Cosmos DB tűzfalának konfigurálásához olvassa el a Tűzfal támogatása című [témakört.](firewall-support.md)
+* Ha Azure Cosmos DB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatása](firewall-support.md)című témakört.
 
-* Ha tudni szeretné, hogyan konfigurálhat virtuális hálózati szolgáltatásvégpontot az Azure Cosmos-fiókhoz, olvassa el a [Hozzáférés konfigurálása virtuális hálózatokból](how-to-configure-vnet-service-endpoint.md)című témakört.
+* Ha meg szeretné tudni, hogyan konfigurálhatja az Azure Cosmos-fiókhoz tartozó virtuális hálózati szolgáltatás végpontját, tekintse meg a [virtuális hálózatok elérésének konfigurálása](how-to-configure-vnet-service-endpoint.md)című témakört.
 
-* Ha többet szeretne megtudni a Privát hivatkozásról, tekintse meg az [Azure Private Link](../private-link/private-link-overview.md) dokumentációját.
+* Ha többet szeretne megtudni a privát hivatkozásokról, tekintse meg az [Azure Private link](../private-link/private-link-overview.md) dokumentációját.

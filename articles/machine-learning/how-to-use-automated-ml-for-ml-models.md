@@ -1,7 +1,7 @@
 ---
-title: Az autoML használatával modelleket hozhat létre & üzembe helyezéséhez
+title: Modellek létrehozása a autoML használatával & üzembe helyezése
 titleSuffix: Azure Machine Learning
-description: Az Azure Machine Learning használatával automatizált gépi tanulási modelleket hozhat létre, véleményezhet és helyezhet üzembe.
+description: Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learningokkal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,254 +12,254 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
 ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81257232"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése az Azure Machine Learning segítségével
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogyan hozhat létre, fedezhet fel és helyezhet üzembe automatizált gépi tanulási modelleket egyetlen kódsor nélkül az Azure Machine Learning stúdiófelületén. Az automatizált gépi tanulás egy olyan folyamat, amelyben a kiválasztott legjobb gépi tanulási algoritmus tválasztja ki az Ön számára az adott adatokhoz. Ez a folyamat lehetővé teszi a gépi tanulási modellek gyors generálását. [További információ az automatizált gépi tanulásról.](concept-automated-ml.md)
+Ebből a cikkből megtudhatja, hogyan hozhat létre, vizsgálhat és helyezhet üzembe automatizált gépi tanulási modelleket anélkül, hogy a Azure Machine Learning Studio felületén egyetlen soros kódot kellene létrehoznia. Az automatizált gépi tanulás az a folyamat, amelyben az adott adataihoz használandó legjobb gépi tanulási algoritmus van kiválasztva. Ez a folyamat lehetővé teszi a gépi tanulási modellek gyors létrehozását. [További információ az automatizált gépi tanulásról](concept-automated-ml.md).
  
-Példának a végéig próbálkozzon az [oktatóanyaggal, amely az Azure Machine Learning automatikus gépi tanulási felületével hoz létre besorolási modellt.](tutorial-first-experiment-automated-ml.md) 
+A végpontok közötti példaként próbálja ki az [oktatóanyagot a besorolási modell létrehozásához Azure Machine learning automatikus ml-felületével](tutorial-first-experiment-automated-ml.md). 
 
-A Python-kódalapú élményhez [konfigurálja az automatikus gépi tanulási kísérleteket](how-to-configure-auto-train.md) az Azure Machine Learning SDK-val.
+Python-kód alapú felhasználói felület esetén [konfigurálja az automatizált gépi tanulási kísérleteket](how-to-configure-auto-train.md) az Azure Machine learning SDK-val.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Azure Machine Learning-munkaterület **nagyvállalati**kiadástípussal. Lásd: [Azure Machine Learning-munkaterület létrehozása.](how-to-manage-workspace.md)  Meglévő munkaterület Enterprise edition re való frissítéséhez olvassa el [a Frissítés nagyvállalati kiadásra című témakört.](how-to-manage-workspace.md#upgrade)
+* Egy **nagyvállalati kiadású**Azure Machine learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  Ha egy meglévő munkaterületet nagyvállalati kiadásra szeretne frissíteni, tekintse meg [a frissítés az Enterprise Edition](how-to-manage-workspace.md#upgrade)rendszerre című
 
 ## <a name="get-started"></a>Bevezetés
 
-1. Jelentkezzen be az Azure https://ml.azure.comMachine Learning beadására a itt. 
+1. Jelentkezzen be Azure Machine Learning a https://ml.azure.comkövetkező címen:. 
 
 1. Válassza ki az előfizetést és a munkaterületet. 
 
-1. Keresse meg a bal oldali ablaktáblát. Válassza **az Automatikus ml lehetőséget** a **Szerző** szakaszban.
+1. Navigáljon a bal oldali panelre. A **Szerző** szakaszban válassza az **automatikus ml** lehetőséget.
 
-[![Az Azure Machine Learning stúdió navigációs ablaktáblája](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
+[![Azure Machine Learning Studio navigációs panelje](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
 
- Ha ez az első alkalom, hogy kísérleteket végez, megjelenik egy üres lista és a dokumentációra mutató hivatkozások. 
+ Ha első alkalommal végez kísérleteket, egy üres lista jelenik meg, amely a dokumentációra mutató hivatkozásokat tartalmaz. 
 
-Ellenkező esetben megjelenik a legutóbbi automatikus gépi tanulási kísérletek listája, beleértve az SDK-val létrehozottakat is. 
+Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája, beleértve azokat is, amelyeket az SDK-val hoztak létre. 
 
 ## <a name="create-and-run-experiment"></a>Kísérlet létrehozása és futtatása
 
-1. Válassza a **+ Új automatikus ml-futtatás lehetőséget,** és feltöltse az űrlapot.
+1. Válassza az **+ új AUTOMATIZÁLT ml Futtatás** lehetőséget, és töltse ki az űrlapot.
 
-1. Jelöljön ki egy adatkészletet a tárolótárolóból, vagy hozzon létre egy új adatkészletet. Az adatkészletek helyi fájlokból, webes URL-címekből, adattárakból vagy Azure-ban nyitott adatkészletekből hozhatók létre. 
+1. Válasszon ki egy adatkészletet a tárolóból, vagy hozzon létre egy új adatkészletet. Az adatkészletek helyi fájlokból, webes URL-címekből, adattárolóból vagy Azure Open-adatkészletből hozhatók létre. 
 
     >[!Important]
-    > A képzési adatokra vonatkozó követelmények:
-    >* Az adatoknak táblázatos formában kell lenniük.
-    >* Az előre jelezni kívánt értéknek (céloszlop) jelen kell lennie az adatokban.
+    > A betanítási adatgyűjtésre vonatkozó követelmények:
+    >* Az adatokat táblázatos formában kell megadni.
+    >* A megjósolni kívánt értéknek (célként megadott oszlopnak) jelen kell lennie az adatsorokban.
 
-    1. Ha új adatkészletet szeretne létrehozni a helyi számítógépen lévő fájlból, válassza a **Tallózás** gombot, majd jelölje ki a fájlt. 
+    1. Ha új adatkészletet szeretne létrehozni a helyi számítógépen található fájlból, válassza a **Tallózás** lehetőséget, majd válassza ki a fájlt. 
 
-    1. Adjon egyedi nevet az adatkészletnek, és adjon meg egy nem kötelező leírást. 
+    1. Adjon egyedi nevet az adatkészletnek, és adjon meg egy opcionális leírást. 
 
-    1. Válassza a **Tovább** gombot az Adattár és a **fájlválasztó űrlap**megnyitásához. Ezen az űrlapon kiválaszthatja, hogy hová szeretné feltölteni az adatkészletet; az alapértelmezett tároló, amely automatikusan létrejön a munkaterülettel, vagy válasszon egy tárolótárolót, amelyet a kísérlethez használni szeretne. 
+    1. Kattintson a **tovább** gombra az **adattár és a fájl kiválasztása űrlap**megnyitásához. Ezen az űrlapon választhatja ki az adatkészlet feltöltésének helyét; a munkaterülettel automatikusan létrehozott alapértelmezett tároló, vagy válasszon egy, a kísérlethez használni kívánt tárolót. 
 
-    1. Tekintse át a **Beállítások és előnézeti** űrlapot a pontosságérdekében. Az űrlap a fájltípus alapján intelligensen van feltöltve. 
+    1. A pontosság érdekében tekintse át a **beállításokat és az előnézet** űrlapot. Az űrlap intelligensen van feltöltve a fájl típusa alapján. 
 
         Mező| Leírás
         ----|----
-        Fájlformátum| A fájlban tárolt adatok elrendezését és típusát határozza meg.
-        Elválasztó| Egy vagy több karakter a különálló, független területek közötti határ megadásához egyszerű szövegben vagy más adatfolyamokban.
-        Encoding| Azt határozza meg, hogy milyen karaktersématáblát használjon az adatkészlet olvasásához.
-        Oszlopfejlécek| Azt jelzi, hogy az adatkészlet fejléceit (ha vannak ilyenek) hogyan kezeli a rendszer.
-        Sorok kihagyása | Azt jelzi, hogy hány, ha van ilyen sor kimarad az adatkészletből.
+        Fájlformátum| Meghatározza a fájlban tárolt adatelrendezést és-típust.
+        Elválasztó| Egy vagy több karakter, amely egy egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt.
+        Encoding| Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.
+        Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.
     
-        Válassza a **Tovább lehetőséget.**
+        Kattintson a **Tovább** gombra.
 
-    1. A **Séma** űrlap intelligens en a Beállítások **és az előnézet** i. Itt konfigurálja az egyes oszlopok adattípusát, tekintse át az oszlopneveket, és válassza ki, hogy mely **oszlopokat szeretné nem szerepelni** a kísérlethez. 
+    1. A **séma** űrlapja intelligens módon van feltöltve a **beállítások és az előnézet** űrlapon megadott beállítások alapján. Itt konfigurálhatja az egyes oszlopok adattípusát, áttekintheti az oszlopnevek nevét, és kiválaszthatja, hogy mely oszlopok **ne szerepeljenek** a kísérletben. 
             
-        Válassza a **Tovább gombot.**
+        Válassza a **tovább lehetőséget.**
 
-    1. A **Részletek megerősítése** űrlap az **Alapszintű adatok** és beállítások és **előnézeti** űrlapokon korábban feltöltött információk összegzése. Azt is beállíthatja, hogy hozzon létre egy adatprofilt az adatkészlet hez egy profilkészítési engedélyezett számítási használatával. További információ az [adatprofilozásról.](#profile)
+    1. A **részletek megerősítése** űrlap az **alapszintű információ** és **beállítások és az előnézet** űrlapon korábban feltöltött információk összegzése. Lehetősége van arra is, hogy adatprofilt hozzon létre az adatkészlethez egy profilkészítést engedélyező számítás használatával. További információ az [adatprofilkészítésről](#profile).
 
-        Válassza a **Tovább lehetőséget.**
-1. Jelölje ki az újonnan létrehozott adatkészletet, ha megjelenik. Megtekintheti az adatkészlet és a mintastatisztikák előnézetét is. 
+        Kattintson a **Tovább** gombra.
+1. Válassza ki az újonnan létrehozott adatkészletet, amint megjelenik. Emellett megtekintheti az adatkészlet és a minta statisztikáinak előnézetét is. 
 
-1. A **Futtatás konfigurálása** képernyőn adjon meg egy egyedi kísérletnevet.
+1. A **Run (Futtatás** ) űrlapon adja meg a kísérlet egyedi nevét.
 
-1. Jelöljön ki egy céloszlopot; ez az az oszlop, amelyen előrejelzéseket szeretne tenni.
+1. Válasszon ki egy cél oszlopot; Ez az az oszlop, amelynek a előrejelzéseit el szeretné végezni.
 
-1. Válasszon ki egy számítási feladatot az adatprofilkészítési és betanítási feladathoz. A meglévő számítási feladatok listája a legördülő listában érhető el. Új számítás létrehozásához kövesse a 7.
+1. Válassza ki az adatprofilkészítési és-betanítási feladatokhoz tartozó számítási feladatot. A meglévő számítások listája elérhető a legördülő menüben. Új számítás létrehozásához kövesse a 7. lépésben szereplő utasításokat.
 
-1. Válassza **az Új számítás létrehozása** lehetőséget a kísérlet számítási környezetének konfigurálásához.
+1. Válassza az **új számítás létrehozása** lehetőséget a számítási környezet konfigurálásához a kísérlethez.
 
     Mező|Leírás
     ---|---
     Számítási név| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet.
-    Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási.
-    Min / Max csomópontok (speciális beállítások)| A profiladatok hoz meg kell adnia 1 vagy több csomópontot. Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6 csomópont egy AML-számításhoz.
+    Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.
+    Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia. Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6 csomópont a pénzmosás-számításokhoz.
     
-    Kattintson a **Létrehozás** gombra. Egy új számítás létrehozása eltarthat néhány percig.
+    Kattintson a **Létrehozás** gombra. Egy új számítás létrehozása néhány percet is igénybe vehet.
 
     >[!NOTE]
-    > A számítási név jelzi, ha a kiválasztott/létrehozott számítás engedélyezve van a *profilkészítés.* (További részletekért lásd az [adatprofilkészítés](#profile) szakaszt).
+    > A számítási név azt jelzi, hogy a kiválasztott számítási/létrehozási *profil engedélyezve*van-e. (További részletekért lásd az [adatok profilkészítési](#profile) szakaszát).
 
-    Válassza a **Tovább lehetőséget.**
+    Kattintson a **Tovább** gombra.
 
-1. A **Feladat típusa és beállításai** képernyőn válassza ki a feladat típusát: besorolás, regresszió vagy előrejelzés. További [információ: Tevékenységtípusok definiálása](how-to-define-task-type.md) további információkért.
+1. A feladattípus **és beállítások** űrlapon válassza ki a feladattípust: besorolás, regresszió vagy előrejelzés. További információért lásd: tevékenységtípusok [definiálása](how-to-define-task-type.md) .
 
-    1. A besoroláshoz engedélyezheti a mélytanulást is, amelyet a szöveg jellemzőinkhez használnak.
+    1. A besoroláshoz is engedélyezheti a mély tanulást, amelyet a Text featurizations is használhat.
 
-    1. Előrejelzéshez:
-        1. Időoszlop kiválasztása: Ez az oszlop a használandó időadatokat tartalmazza.
+    1. Előrejelzés:
+        1. Válassza ki az Time oszlopot: ez az oszlop a használni kívánt időértékeket tartalmazza.
 
-        1. Előrejelzési horizont kiválasztása: Adja meg, hogy a modell hány időegységet (perc/óra/nap/hét/hónap/év) tud előre jelezni a jövőre nézve. Minél tovább van szükség a modell megjósolni a jövőben, annál kevésbé lesz pontos lesz. [További információ az előrejelzési és előrejelzési horizontról.](how-to-auto-train-forecast.md)
+        1. Előrejelzési horizont kiválasztása: azt jelzi, hogy a modell hány időegységet (perc/óra/nap/hét/hónap/év) fog tudni a jövőben előre jelezni. Minél több modellre van szükség a jövőbeli előrejelzéshez, annál kevésbé pontos lesz. [További információ az előrejelzési és előrejelzési horizontról](how-to-auto-train-forecast.md).
 
-1. (Nem kötelező) További konfigurációs beállítások megtekintése: további beállítások, amelyekkel jobban szabályozhatja a betanítási feladatot. Ellenkező esetben az alapértelmezett értékek a kísérlet kiválasztása és az adatok alapján kerülnek alkalmazásra. 
+1. Választható További konfigurációs beállítások megtekintése: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
 
     További konfigurációk|Leírás
     ------|------
-    Elsődleges mutató| A modell pontozásához használt fő metrika. [További információ a modellmutatókról.](how-to-configure-auto-train.md#explore-model-metrics)
-    Automatikus featurization| Jelölje be, ha engedélyezni vagy letiltani szeretné az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához. Nem támogatott az idősorozat-előrejelzési tevékenység típusában. [További információ az előfeldolgozásról.](#featurization) 
-    Magyarázza el a legjobb modellt | Válassza az engedélyezéshez vagy a letiltáshoz, hogy megmutathassa az ajánlott legjobb modell magyarázhatóságát
-    Blokkolt algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatból.
-    Kilépési feltétel| Ha a feltételek bármelyike teljesül, a képzési feladat leáll. <br> *Képzési feladat ideje (óra)*: Mennyi ideig, hogy a képzési feladat futtatásához. <br> *Metrika pontszám küszöbértéke:* Az összes folyamat minimális metrikapontszáma. Ez biztosítja, hogy ha egy meghatározott célmetrikát szeretne elérni, nem tölt több időt a képzési feladat, mint szükséges.
-    Ellenőrzés| Válassza ki a képzési feladatban használni kívánt keresztellenőrzési lehetőségek egyikét. [További információ a keresztérvényesítésről.](how-to-configure-auto-train.md)
-    Egyidejűség| *Maximális egyidejű ismétlések:* A képzési feladatban tesztelésre alkalmas folyamatok (iterációk) maximális száma. A feladat nem fog futni a megadott számú ismétlésnél többet.
+    Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
+    Automatikus featurization| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. Az idősorozat-előrejelzés feladattípusa nem támogatott. [További információ az előfeldolgozásról](#featurization). 
+    A legjobb modell ismertetése | Az engedélyezés vagy a Letiltás lehetőség kiválasztásával megjelenítheti a javasolt legjobb modell magyarázatát
+    Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból.
+    Kilépési feltétel| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Képzési idő (óra)*: meddig kell futtatni a betanítási feladatot. <br> *Metrika pontszámának küszöbértéke*: minimális metrikai pontszám minden folyamathoz. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
+    Ellenőrzés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
+    Egyidejűség| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál.
 
-1. (Nem kötelező) Jellemzőbeállítások megtekintése: ha engedélyezi az **Automatikus jellemző funkciót** a További **konfigurációs beállítások** képernyőn, ezen az űrlapon adhatja meg, hogy mely oszlopokon hajtsa végre a featurizations-eket, és válassza ki, hogy melyik statisztikai értéket használja a hiányzó értékimputálásokhoz.
+1. Választható Featurization-beállítások megtekintése: Ha úgy dönt, hogy engedélyezi az **automatikus featurization** a **további konfigurációs beállítások** űrlapon, ezen az űrlapon adhatja meg, hogy mely oszlopok hajtják végre ezeket a featurizations, és válassza ki, hogy melyik statisztikai értéket kívánja használni a hiányzó érték imputations.
 
 <a name="profile"></a>
 
-## <a name="data-profiling--summary-stats"></a>Adatprofilkészítés i. & összefoglaló statisztikái
+## <a name="data-profiling--summary-stats"></a>Adatprofilkészítés & összefoglaló statisztikái
 
-Az adathalmazban számos összefoglaló statisztikát kaphat annak ellenőrzéséhez, hogy az adatkészlet ml-kompatibilis-e. A nem numerikus oszlopok esetében csak az olyan alapvető statisztikákat tartalmazzák, mint a min, a max és a hibaszám. Numerikus oszlopok esetén megtekintheti a statisztikai pillanataikat és a becsült kvantitatív elemeket is. Adatprofilunk konkrétan a következőket tartalmazza:
+Az adatkészletek széles skáláját veheti igénybe, így ellenőrizheti, hogy az adatkészlete ML-re van-e állítva. A nem numerikus oszlopokhoz csak olyan alapszintű statisztikák tartoznak, mint a min, a Max és a errors. A numerikus oszlopok esetében statisztikai pillanataikat és becsült quantiles is áttekintheti. Az adatprofil a következőket tartalmazza:
 
 >[!NOTE]
-> Üres bejegyzések jelennek meg a nem releváns típusú szolgáltatásoknál.
+> A lényegtelen típusokkal rendelkező funkciók esetében üres bejegyzések jelennek meg.
 
 Statisztika|Leírás
 ------|------
-Szolgáltatás| Az összegzett oszlop neve.
-Profil| A kikövetkeztetett típuson alapuló in-line megjelenítés. Például a karakterláncok, a logikai értékek és a dátumok értékszámmal rendelkeznek, míg a tizedesjegyek (numerikusszámok) hozzávetőleges histogramokat. Ez lehetővé teszi az adatok terjesztésének gyors megértését.
-Típuselosztás| Az oszlopon belüli típusok sorba sorba sorba sorba sorba sorba sorba sorba sorba sorba sorba sorba sorba sorba sorba A null értékek a saját típusuk, ezért ez a vizualizáció a páratlan vagy hiányzó értékek észleléséhez hasznos.
-Típus|Az oszlop kikövetkeztetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
-Min| Az oszlop minimális értéke. Üres bejegyzések jelennek meg olyan szolgáltatásoknál, amelyek típusa nem tartalmaz belső sorrendet (pl. logikai).
+Szolgáltatás| Az összesíteni kívánt oszlop neve.
+Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
+Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
+Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
+Min| Az oszlop minimális értéke. Az üres bejegyzések olyan szolgáltatások esetében jelennek meg, amelyeknek a típusa nem rendelkezik a bennük rejlő sorrendtel (például logikai értékekkel).
 Max| Az oszlop maximális értéke. 
-Darabszám| Az oszlopban lévő hiányzó és nem hiányzó bejegyzések teljes száma.
-Nem hiányzik a darabszám| Az oszlopban nem hiányzó bejegyzések száma. Az üres karakterláncokat és hibákat a rendszer értékként kezeli, így azok nem járulnak hozzá a "nem hiányzik számhoz".
-Kvantitúk| Az adatok eloszlásának érzékelése érdekében minden kvantilisnél hozzávetőleges értékek.
-Középérték| Az oszlop számtani középértékének vagy átlagának.
-Szórás| Az oszlop adatainak diszperziós mennyiségének vagy változásának mérése.
-Eltérés| Annak mérése, hogy az oszlop adatai milyen mértékben terjednek el az átlagos értéktől. 
-Ferdeség| Annak mérése, hogy az oszlop adatai mennyire különböznek a normál eloszlástól.
-Kurtózis| Annak mérése, hogy az oszlop adatai milyen erősen vannak összemérve a normál eloszlással.
+Darabszám| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
+Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
+Quantiles| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
+Középérték| Az oszlop számtani középértéke vagy átlaga.
+Szórás| Az oszlop adateloszlásának vagy variációjának mértékét.
+Eltérés| Az oszlop adatainak kiszóródásának mértéke az átlagos értéktől számítva. 
+Ferdeség| Az oszlop adatainak normál eloszlásból való megmérése.
+Csúcsosságát| Azt méri, hogy az oszlop adatmennyisége milyen mértékben lett összehasonlítva a normál eloszlással.
 
 <a name="featurization"></a>
 
-## <a name="advanced-featurization-options"></a>Speciális funkciók beállításai
+## <a name="advanced-featurization-options"></a>Speciális featurization beállítások
 
-Az automatizált gépi tanulás automatikusan kínál előfeldolgozást és adatkorlátokat, hogy segítsen azonosítani és kezelni az adatokkal kapcsolatos esetleges problémákat. 
+Az automatizált gépi tanulás automatikusan biztosítja az előfeldolgozást és az guardrails, így könnyebben azonosíthatja és kezelheti az adataival kapcsolatos lehetséges problémákat. 
 
 ### <a name="preprocessing"></a>Előfeldolgozás
 
 > [!NOTE]
-> Ha az automatikusan létrehozott ML modelleket [ONNX-modellbe](concept-onnx.md)kívánja exportálni, az ONNX formátumban csak a *-val jelzett featurization beállítások támogatottak. További információ a [modellek ONNX-re való konvertálásáról.](concept-automated-ml.md#use-with-onnx) 
+> Ha úgy tervezi, hogy az automatikus ML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, a ONNX formátuma csak a *-val jelzett featurization-beállításokat támogatja. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx). 
 
-|Lépések&nbsp;előfeldolgozása| Leírás |
+|&nbsp;Lépések előfeldolgozása| Leírás |
 | ------------- | ------------- |
-|Nagy számosság eldobása vagy varianciajellemzők nélkül* |Ezeket a betanítási és érvényesítési készletekből, beleértve az okat a funkciókat, amelyek minden értékhiányzik, azonos értéket az összes sorban, vagy rendkívül magas számosságú (például kivék, azonosítók vagy GUID-k).|
-|Imputált hiányzó értékek* |Numerikus jellemzők esetén az oszlopban lévő értékek átlagával kell impeskedni.<br/><br/>A kategorikus funkciók, impimpa a leggyakoribb érték.|
-|További funkciók létrehozása* |DateTime funkciók esetén: Év, Hónap, Nap, Hét napja, Év napja, Negyedév, Az év hete, Óra, Perc, Másodperc.<br/><br/>Szöveg jellemzők: Kifejezés gyakorisága alapján unigramm, két gramm, és három karakter-gramm.|
-|Átalakítás és kódolás *|A kevés egyedi értékkel rendelkező numerikus jellemzők kategorikus jellemzőkké alakulnak át.<br/><br/>Az egy forró kódolás alacsony számossági kategorikus; a nagy számosság, egy forró hash kódolás.|
-|Word beágyazások|Szöveg featurizer, amely átalakítja vektorok szöveges tokenek mondatvektorok egy előre betanított modell használatával. A program összesíti a dokumentumba beágyazó vektort, hogy dokumentumjellemző-vektort hozlétre.|
-|Célkódolások|A kategorikus jellemzők esetében az egyes kategóriákat a regressziós problémák átlagos célértékével, valamint az egyes osztályok osztályvalószínűségével vannak leképezve a besorolási problémákhoz. A ritka adatkategóriák által okozott feltérképezés és zaj túlzott felszerelésének csökkentése érdekében frekvenciaalapú súlyozást és k-szeres keresztellenőrzést alkalmaznak.|
-|Szöveges célkódolás|A szövegbevitelhez egy halmozott lineáris modellt használ szótáskával az egyes osztályok valószínűségének létrehozásához.|
-|A bizonyítékok súlya (WoE)|Kiszámítja a WoE-t a kategorikus oszlopok és a céloszlop korrelációjának mértékén. Kiszámítása az osztályon kívüli és osztályon kívüli valószínűségek arányának naplójaként kerül kiszámításra. Ez a lépés osztályonként egy numerikus jellemzőoszlopot ad ki, és szükségtelenül csökkenti a hiányzó értékek és a kiugró értékű kezelés kifejezett imputálásának szükségességét.|
-|Fürt távolsága|K-means fürtözési modellt képez be az összes numerikus oszlopban.  K új szolgáltatásokat, fürtenként egy új numerikus funkciót ad ki, amely tartalmazza az egyes minták távolságát az egyes fürtök centroidjával.|
+|Eldobás magas fokú vagy nem variancia funkciók * |Ezeket a betanítási és érvényesítési csoportokból is elhúzhatja, beleértve az összes hiányzó értékkel rendelkező szolgáltatásokat, az összes sorban lévő és a rendkívül magas fokú (például kivonatok, azonosítók vagy GUID azonosítók) értékeket.|
+|Hiányzó értékek – imputáltak * |Numerikus funkciók esetében az oszlopban szereplő értékek átlaga.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell beszámítani az imputált funkciókat.|
+|További funkciók * |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br/><br/>A szöveges funkciókhoz: unigrams, bi-gramm és Tri-Character-gramm alapján történő kifejezés gyakorisága.|
+|Átalakítás és kódolás *|A kevés egyedi értékkel rendelkező numerikus funkciók a kategorikus funkciókba lesznek átalakítva.<br/><br/>A rendszer egy gyors kódolást végez az alacsony szintű a magas fokú, egy gyors kivonatolású kódolás.|
+|Word-beágyazások|Szöveges Képtulajdonság, amely egy előre betanított modell használatával átalakítja a szöveges tokenek vektorait a mondatokra. A dokumentumokban lévő összes Word beágyazási vektora össze van összesítve egy dokumentum-szolgáltatás vektorának létrehozásához.|
+|Cél kódolások|A kategorikus funkciók esetében az egyes kategóriákat a regressziós problémák átlagos céljának megfelelően leképezi, valamint az osztály valószínűségét az egyes osztályok számára a besorolási problémák esetén. A rendszer a gyakoriságon alapuló súlyozást és a k-fold kereszt-ellenőrzést alkalmazza a leképezések és a ritka adatkategóriák által okozott zaj csökkentése érdekében.|
+|Szöveges cél kódolása|Szöveges bevitel esetén a rendszer egy halmozott lineáris modellt használ, amelyben a rendszer az egyes osztályok valószínűségét állítja elő.|
+|Bizonyítékok súlyozása (jaj)|Kiszámítja a jaj-et a kategorikus oszlopok korrelációja alapján a cél oszlophoz. A számítás az osztályban és az osztályon kívüli valószínűségek arányának naplója. Ez a lépés egy numerikus funkció oszlopát jeleníti meg, és eltávolítja a hiányzó értékek és a kiugró eljárás explicit módon történő bevonásának szükségességét.|
+|Fürt távolsága|A k – a csoportosítási modellt jelenti az összes numerikus oszlopon.  Az új funkciók megjelenítése, egy új numerikus szolgáltatás, amely az egyes minták távolságát az egyes fürtök középpontját tartalmazza.|
 
-### <a name="data-guardrails"></a>Adatkorlátok
+### <a name="data-guardrails"></a>Az adatguardrails
 
-Az adatkorlátok akkor kerülnek alkalmazásra, ha az automatikus jellemzőbeállítás engedélyezve van, vagy az érvényesítés automatikusra van állítva. Az adatkorlátok segítségével azonosíthatja az adatokkal kapcsolatos lehetséges problémákat (pl. hiányzó értékek, osztálykiegyensúlyozatlanság), és segít a korrekciós intézkedések elvégzésében a jobb eredmények érdekében. 
+Az adatguardrails akkor lesznek alkalmazva, ha az automatikus featurization engedélyezve van, vagy az érvényesítés automatikus értékre van beállítva. Az adatok guardrails segítségével azonosíthatja az adataival kapcsolatos lehetséges problémákat (például a hiányzó értékeket, az osztály egyensúlyhiányát), és segítheti a javító műveleteket a jobb eredmények érdekében. 
 
-A felhasználók áttekinthetik az adatkorlátokat a stúdióban egy automatikus ml-futtatás **adatkorlátlapján** belül, vagy beállíthatják, ```show_output=True``` amikor egy kísérletet küld a Python SDK használatával. 
+A felhasználók áttekinthetik az guardrails a Studióban az automatikus ML-Futtatás **guardrails** lapján, vagy ```show_output=True``` a Python SDK használatával a kísérlet elküldésével. 
 
-#### <a name="data-guardrail-states"></a>Adatvédő sínállamok
+#### <a name="data-guardrail-states"></a>AdatGuardrail állapotok
 
-Az adatkorlátok a következő három állapot egyikét jelenítik meg: **Átadott**, **Kész**vagy **Riasztás.**
+Az adatguardrails három állapot egyikét jeleníti meg: **átadott**, **elkészült**vagy **riasztásos**.
 
 Állapot| Leírás
 ----|----
-Átment| A rendszer nem észlelt adatproblémákat, és nincs szükség felhasználói műveletre. 
-Kész| A program módosításokat alkalmazott az adatokon. Javasoljuk a felhasználóknak, hogy tekintsék át az automatizált ml korrekciós intézkedéseket annak biztosítása érdekében, hogy a módosítások igazodjanak a várt eredményekhez. 
-Figyelmeztették| A rendszer nem pótolható adatproblémát észlelt. Javasoljuk a felhasználóknak, hogy vizsgálják felül és oldják meg a problémát. 
+Telt| Nem észlelhető adatprobléma, és nincs szükség felhasználói beavatkozásra. 
+Kész| A módosítások érvénybe lépnek az adatain. Javasoljuk, hogy a felhasználók ellenőrizzék az automatikus ML-es javítási műveleteket, hogy a módosítások megfeleljenek a várt eredményeknek. 
+Riasztást kap| A rendszer olyan adatproblémát észlelt, amely nem orvosolható. Javasoljuk, hogy a felhasználók módosítsák és javítsák a problémát. 
 
 >[!NOTE]
-> Az automatikus ml-kísérletek korábbi verziói egy negyedik állapotot jelenítek meg: **Javítva**. Az újabb kísérletek nem jelenítik meg ezt az állapotot, és a **Rögzített** állapotot megjelenítő összes korlát ekkor a **Kész**.   
+> Az automatikus ML-kísérletek korábbi verziói a negyedik állapotot jelenítik meg: **kijavítva**. Az újabb kísérletek nem jelenítik meg ezt az állapotot, és a **rögzített** állapotot megjelenítő összes guardrails **megjelenik.**   
 
-Az alábbi táblázat ismerteti a jelenleg támogatott adatkorlátokat és a kapcsolódó állapotokat, amelyekkel a felhasználók a kísérlet elküldésekor találkoznak.
+A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint azokat a társított állapotokat, amelyeket a felhasználók a kísérlet elküldésekor megkaphatnak.
 
-Védőkorlát|status|Az&nbsp;&nbsp;eseményindító feltétele
+Guardrail|status|&nbsp;Trigger&nbsp;feltétele
 ---|---|---
-Hiányzó jellemzőértékek imputálása |**Átment** <br><br><br> **Kész**| A program nem észlelt hiányzó jellemzőértékeket a betanítási adatokban. További információ a [hiányzó értékimputálásról.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Hiányzó jellemzőértékek észlelése a betanítási adatok és imputed.
-Nagy számosságú funkciókezelés |**Átment** <br><br><br> **Kész**| A bemenetek elemzése történt, és nem észleltek magas számossági jellemzőket. További információ a [magas számosságú funkciók észleléséről.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer nagy számossági jellemzőket észlelt a bemeneteken, és kezelte őket.
-Érvényesítési felosztás kezelése |**Kész**| *Az érvényesítési konfiguráció "auto" volt beállítva, és a betanítási adatok **kevesebb** mint 20 000 sort tartalmaztak.* <br> A betanított modell minden egyes iterációja keresztellenőrzéssel lett érvényesítve. További információ az [érvényesítési adatokról.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Az érvényesítési konfiguráció "auto" volt beállítva, és a betanítási adatok **több** mint 20 000 sort tartalmaztak.* <br> A bemeneti adatok at egy betanítási adatkészletre és egy érvényesítési adatkészletre osztották fel a modell érvényesítéséhez.
-Osztálykiegyensúlyozás észlelése |**Átment** <br><br><br><br> **Figyelmeztették** | A bemenetek elemzése, és minden osztály kiegyensúlyozott a betanítási adatok. Egy adatkészlet akkor tekinthető kiegyensúlyozottnak, ha minden osztály megfelelő reprezentatimával rendelkezik az adatkészletben, a minták számával és arányával mérve. <br><br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben. A modell torzításának javítása a kiegyensúlyozási probléma megoldásához. További információ a [kiegyensúlyozatlan adatokról.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
-Memóriaproblémák észlelése |**Átment** <br><br><br><br> **Kész** |<br> A program elemezte a kiválasztott {horizont, lag, gördülő ablak} értéket, és nem észlelt memóriabeli problémákat. További információ az [idősorozat-előrejelzési konfigurációkról.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>A program elemezte a kiválasztott {horizon, lag, rolling window} értékeket, és a kísérlet memóriafogytását okozhatja. A késés vagy a gördülő ablakkonfigurációk ki vannak kapcsolva.
-Frekvenciaészlelés |**Átment** <br><br><br><br> **Kész** |<br> A rendszer elemezte az idősorokat, és az összes adatpont az észlelt frekvenciához igazodik. <br> <br> A rendszer elemezte az idősorokat, és olyan adatpontokat észlelt, amelyek nem illeszkednek az észlelt frekvenciához. Ezeket az adatpontokat eltávolították az adatkészletből. További információ [az idősorozat-előrejelzésre való felkészülésről.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+Hiányzó szolgáltatási értékek imputálási |**Telt** <br><br><br> **Kész**| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékek imputálási.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputált.
+Magas fokú szolgáltatások kezelését |**Telt** <br><br><br> **Kész**| A rendszer elemezte a bemeneteket, és nem észlelt magas fokú sarkalatos funkciót. További információ a [magas fokú kardinális funkciók észleléséről.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer a feladatokhoz tartozó magas minőségi funkciókat észlelte, és kezelte azokat.
+Ellenőrzés felosztásának ellenőrzése |**Kész**| *Az érvényesítési konfiguráció az "Auto" értékre van állítva, a betanítási adatként pedig **kevesebb** mint 20 000 sor szerepel.* <br> A betanított modell minden egyes iterációját kereszt-ellenőrzés útján érvényesítjük. További információ az [érvényesítési](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) információkról. <br><br> *Az érvényesítési konfiguráció az "Auto" értékre van állítva, a betanítási adatként pedig **több** mint 20 000 sor szerepel.* <br> A bemeneti adatok egy betanítási adatkészletbe és egy ellenőrzési adatkészletbe vannak osztva a modell érvényesítéséhez.
+Osztály kiegyensúlyozásának észlelése |**Telt** <br><br><br><br> **Riasztást kap** | A rendszer elemezte a bemeneteket, és az összes osztály kiegyensúlyozottan szerepel a betanítási adatokban. Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számával és arányával mérve. <br><br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben. A modell torzulásának javításához javítsa ki az egyenlegező problémát. További információ a [kiegyensúlyozatlan adatvédelemről.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
+Memória-problémák észlelése |**Telt** <br><br><br><br> **Kész** |<br> A kiválasztott {Horizon, lag, Rolling Window} érték elemzése megtörtént, és a rendszer nem észlelt memóriabeli problémákat. További információ az idősorozat- [előrejelzési konfigurációkról.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>A kiválasztott {Horizon, lag, Rolling Window} értékek elemzése megtörtént, és a kísérlet valószínűleg kifogy a memóriából. A késés vagy a működés közbeni ablak konfigurációja ki van kapcsolva.
+Gyakoriság észlelése |**Telt** <br><br><br><br> **Kész** |<br> Az idősorozat elemzése megtörtént, és az összes adatpont az észlelt gyakorisággal van igazítva. <br> <br> Az idősorozat elemzése megtörtént, és az észlelt gyakorisággal nem igazított adatpontok észlelhetők. Ezek az adatpontok el lettek távolítva az adatkészletből. További információ az [idősorozat-előrejelzés adatainak előkészítéséről.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
 
 ## <a name="run-experiment-and-view-results"></a>Kísérlet futtatása és eredmények megtekintése
 
-A kísérlet futtatásához válassza a **Befejezés** lehetőséget. A kísérlet előkészítése akár 10 percet is igénybe vehet. A betanítási feladatok és az egyes folyamatok futtatásának befejezése további 2-3 percet is igénybe vehet.
+A kísérlet futtatásához kattintson a **Befejezés** gombra. A kísérlet előkészítése akár 10 percet is igénybe vehet. A betanítási feladatok és az egyes folyamatok futtatásának befejezése további 2-3 percet is igénybe vehet.
 
 ### <a name="view-experiment-details"></a>A kísérlet részleteinek megtekintése
 
-A **Részletek futtatása** képernyő megnyílik a **Részletek** lapon. Ez a képernyő a kísérletfuttatásának összegzését jeleníti meg, beleértve a futtatási szám melletti állapotsort is. 
+Megnyílik a **Futtatás részletei** képernyő a **részletek** lapon. Ez a képernyő a kísérlet futtatásának összegzését jeleníti meg, beleértve a futtatási szám melletti állapotsort is. 
 
 A **Modellek** lapon a létrehozott modellek listája található metrikaérték szerint rendezve. Alapértelmezés szerint az a modell, amely a kiválasztott metrika alapján a legmagasabb értékű, a lista tetején jelenik meg. A betanítási feladat több modellt is kipróbál, amelyek sorra felkerülnek a listára. Ennek segítségével gyorsan összehasonlíthatja az addig létrehozott modellek metrikáját.
 
-[![Részletes irányítópult futtatása](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+[![Futtatás részletei irányítópult](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
 
-### <a name="view-training-run-details"></a>Az edzésfuttatás részleteinek megtekintése
+### <a name="view-training-run-details"></a>Képzések futtatási részleteinek megtekintése
 
-Részletezze a befejezett modellek bármelyikét, és tekintse meg a betanítási futtatás részleteit, például a **Modell részletei** lapon lévő metrikák futtatását vagy a Képi megjelenítések lap **teljesítménydiagramjait.** [További információ a diagramokról.](how-to-understand-automated-ml.md)
+Az összes befejezett modell részletezésével megtekintheti a képzések futtatásának részleteit, például a **modell részletei** lapon vagy a **vizualizációk** lapon lévő teljesítmény diagramokon található mérőszámok futtatása című témakört. További információ a [diagramokról](how-to-understand-automated-ml.md).
 
 [![Iteráció részletei](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>A modell üzembe helyezése
 
-Miután a legjobb modell kéznél, itt az ideje, hogy üzembe, mint egy webszolgáltatás megjósolni az új adatok.
+Miután megadta a legjobb modellt, itt az ideje, hogy webszolgáltatásként telepítse azt az új adatforrások előrejelzéséhez.
 
-Az automatikus ml kód írása nélkül segíti a modell üzembe helyezését:
+Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
 
-1. Van néhány lehetőség a telepítésre. 
+1. Van néhány lehetőség a telepítéshez. 
 
-    + 1. lehetőség: A legjobb modell üzembe helyezéséhez (a megadott metrikafeltételek szerint), válassza ki a **Telepítés a legjobb modell** gombot a **Részletek** lapon.
+    + 1. lehetőség: a legjobb modell üzembe helyezéséhez (az Ön által meghatározott metrikai feltételek alapján) válassza a **legjobb modell telepítése** gombot a **részletek** lapon.
 
-    + 2. lehetőség: Ha egy adott modell iterációt szeretne telepíteni ebből a kísérletből, részletezze a modellt a **Modell részletei** lap megnyitásához, és válassza a **Modell telepítése**lehetőséget.
+    + 2. lehetőség: egy adott modell iterációjának üzembe helyezése ebből a kísérletből, részletezés a modellben a modell **részletei** lap megnyitásához, majd válassza a **modell üzembe helyezése**lehetőséget.
 
-1. A Modell telepítése ablaktábla **feltöltése.**
+1. Töltse ki a **modell üzembe helyezése** ablaktáblát.
 
     Mező| Érték
     ----|----
-    Név| Adja meg a központi telepítés egyedi nevét.
-    Leírás| Adjon meg egy leírást, hogy jobban azonosíthassa, mire szolgál ez a központi telepítés.
-    Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Az Azure Kubernetes-szolgáltatás (AKS)* vagy az *Azure Container Instance (ACI).*
-    Számítási név| *Csak az AKS-re vonatkozik:* Válassza ki annak az AKS-fürtnek a nevét, amelybe telepíteni szeretné.
-    Hitelesítés engedélyezése | Jelölje be, ha lehetővé szeretné tenni a jogkivonat- vagy kulcsalapú hitelesítést.
-    Egyéni központi telepítési eszközök használata| Engedélyezze ezt a funkciót, ha saját pontozási parancsfájlt és környezeti fájlt szeretne feltölteni. [További információ a parancsfájlok pontozásáról.](how-to-deploy-and-where.md#script)
+    Name (Név)| Adja meg a központi telepítés egyedi nevét.
+    Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
+    Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)*.
+    Számítási név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
+    Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.
+    Egyéni központi telepítési eszközök használata| Engedélyezze ezt a funkciót, ha fel szeretné tölteni a saját pontozási parancsfájlját és a környezeti fájlját. [További információ a pontozási parancsfájlokról](how-to-deploy-and-where.md#script).
 
     >[!Important]
-    > A fájlneveknek 32 karakternél kisebbnek kell lenniük, és alfanumerikus értékkel kell kezdődniük és végződniük. Lehetnek kötőjelek, aláhúzások, pontok és alfanumerikusak között. Szóközök nem engedélyezettek.
+    > A fájlneveknek 32 karakternél rövidebbnek kell lenniük, és betűkkel kell kezdődnie és végződnie. Kötőjeleket, aláhúzásokat, pontokat és alfanumerikus elemeket tartalmazhat. Szóközök használata nem engedélyezett.
 
-    A *Speciális* menü alapértelmezett telepítési funkciókat kínál, például [adatgyűjtési](how-to-enable-app-insights.md) és erőforrás-kihasználtsági beállításokat. Ha felül szeretné írni ezeket az alapértelmezett értékeket, ezt ebben a menüben tegye meg.
+    A *speciális* menü olyan alapértelmezett központi telepítési funkciókat kínál, mint például [az adatgyűjtés](how-to-enable-app-insights.md) és az erőforrás-kihasználtsági beállítások. Ha ezeket az alapértelmezett értékeket szeretné felülbírálni ebben a menüben.
 
-1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés körülbelül 20 percet is igénybe vehet.
+1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés körülbelül 20 percet vesz igénybe.
 
-Most már van egy operatív webszolgáltatás generálni előrejelzések! Az előrejelzéseket a [Power BI beépített Azure Machine Learning-támogatásából](how-to-consume-web-service.md#consume-the-service-from-power-bi)származó szolgáltatás lekérdezésével tesztelheti.
+Most már rendelkezik egy olyan operatív webszolgáltatással, amely előrejelzéseket készít! Az előrejelzések teszteléséhez a szolgáltatást a [Power bi beépített Azure Machine learning-támogatásával](how-to-consume-web-service.md#consume-the-service-from-power-bi)lehet lekérdezni.
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a webszolgáltatások felhasználásáról.](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)
-* [Ismerje meg az automatizált gépi tanulási eredményeket.](how-to-understand-automated-ml.md)
-* [További információ az automatizált gépi tanulásról](concept-automated-ml.md) és az Azure Machine Learningről.
+* [Ismerje meg, hogyan használhat webszolgáltatásokat](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* Az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md).
+* [További információ az automatikus gépi tanulásról és a](concept-automated-ml.md) Azure Machine Learningról.

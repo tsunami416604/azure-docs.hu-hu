@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Méretezési csoport automatikus skálázása Azure-sablonokkal
+title: Oktatóanyag – méretezési csoport autoskálázása Azure-sablonokkal
 description: Ismerje meg, hogyan méretezhet automatikusan egy virtuálisgép-méretezési csoportot az Azure Resource Manager-sablonok segítségével a processzorterhelés növekedésének vagy csökkenésének megfelelően
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 02fe74a2dad7da655969c5c9523c696657425e49
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011310"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure-sablonnal
@@ -24,7 +24,7 @@ Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuál
 > * Virtuálisgép-példányok és automatikus skálázás-aktiválási szabályok terhelési tesztje
 > * Visszaméretezés, ha az igény csökken
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -69,11 +69,11 @@ Ez a szabály az alábbi paramétereket tartalmazza:
 | *timeGrain*       | Az elemzendő metrikák gyűjtési gyakorisága.                                                                   | 1 perc        |
 | *timeAggregation* | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag         |
 | *timeWindow*      | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 5 perc       |
-| *Üzemeltető*        | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint    |
+| *üzemeltető*        | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint    |
 | *threshold*       | Az érték, amely esetén az automatikus skálázási szabály aktivál egy műveletet.                                                      | 70%             |
 | *direction*       | Meghatározza, hogy a méretezési csoport a szabály alkalmazásakor horizontálisan le- vagy fel legyen skálázva.                                              | Növelés        |
-| *Típus*            | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása    |
-| *value*           | Hány virtuálisgép-példány legyen horizontálisan le- vagy felskálázva a szabály alkalmazásakor.                                             | 3               |
+| *típusa*            | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása    |
+| *érték*           | Hány virtuálisgép-példány legyen horizontálisan le- vagy felskálázva a szabály alkalmazásakor.                                             | 3               |
 | *cooldown*        | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc       |
 
 Az alábbi szabály lesz hozzáadva az előző szakaszban található *Microsoft.insights/autoscalesettings* erőforrás-szolgáltató profil szakaszához:
@@ -136,7 +136,7 @@ Az alábbi példában egy olyan szabályt határozunk meg, amely horizontálisan
 ## <a name="create-an-autoscaling-scale-set"></a>Automatikus skálázást végző méretezési csoport létrehozása
 A mintasablon segítségével hozzunk létre egy méretezési csoportot, és alkalmazzuk az automatikus skálázási szabályokat. [Áttekintheti az elkészült sablont](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json), vagy [megtekintheti a sablon *Microsoft.insights/autoscalesettings* erőforrás-szolgáltató](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220) szakaszát.
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

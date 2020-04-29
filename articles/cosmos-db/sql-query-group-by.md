@@ -1,25 +1,25 @@
 ---
-title: GROUP BY záradék az Azure Cosmos DB-ben
-description: Ismerje meg az Azure Cosmos DB GROUP BY záradékát.
+title: GROUP BY záradék Azure Cosmos DB
+description: A Azure Cosmos DB GROUP BY záradékának megismerése.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261601"
 ---
-# <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY záradék az Azure Cosmos DB-ben
+# <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY záradék Azure Cosmos DB
 
-A GROUP BY záradék egy vagy több megadott tulajdonság értéke szerint osztja fel a lekérdezés eredményeit.
+A GROUP BY záradék a lekérdezés eredményét egy vagy több megadott tulajdonság értékei alapján osztja el.
 
 > [!NOTE]
-> Az Azure Cosmos DB jelenleg támogatja a GROUP BY-t a .NET SDK 3.3-as és újabb verzióiban, valamint a JavaScript SDK 3.4-es és újabb verzióit.
-> Más nyelvi SDK-k támogatása jelenleg nem érhető el, de a tervek szerint.
+> A Azure Cosmos DB jelenleg a .NET SDK 3,3-es vagy újabb verziójában, valamint a JavaScript SDK 3,4-es vagy újabb verziójában támogatja a GROUP BY használatát.
+> A más nyelvi SDK-k támogatása jelenleg nem érhető el, de tervbe van véve.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -35,25 +35,25 @@ A GROUP BY záradék egy vagy több megadott tulajdonság értéke szerint osztj
 
 - `<scalar_expression_list>`
 
-   Megadja a lekérdezés eredményének felosztásához használt kifejezéseket.
+   Meghatározza azokat a kifejezéseket, amelyeket a rendszer a lekérdezési eredmények felosztásához használ majd.
 
 - `<scalar_expression>`
   
-   Minden skaláris kifejezés engedélyezett, kivéve a skaláris allekérdezéseket és a skaláris aggregátumokat. Minden skaláris kifejezésnek legalább egy tulajdonsághivatkozást tartalmaznia kell. Az egyes kifejezések száma vagy az egyes kifejezések számossága nincs korlátozva.
+   Minden skaláris kifejezés engedélyezett a skaláris allekérdezések és a skaláris összesítések kivételével. Minden skaláris kifejezésnek tartalmaznia kell legalább egy tulajdonság-referenciát. Nem korlátozható az egyes kifejezések száma, illetve a kifejezések kardinálisa.
 
 ## <a name="remarks"></a>Megjegyzések
   
-  Ha egy lekérdezés GROUP BY záradékot használ, a SELECT záradék csak a GROUP BY záradékban szereplő tulajdonságok és rendszerfüggvények részhalmazát tartalmazhatja. Az egyik kivétel az [összesítő rendszerfüggvény,](sql-query-aggregates.md)amely a GROUP BY záradékban való szerepeltetés nélkül jelenhet meg a SELECT záradékban. A SELECT záradékban mindig szerepelhet literális értékek is.
+  Ha egy lekérdezés GROUP BY záradékot használ, a SELECT záradék csak a GROUP BY záradékban szereplő tulajdonságok és rendszerfüggvények részhalmazát tartalmazza. Az egyetlen kivétel a [rendszerfüggvények összesítése](sql-query-aggregates.md), amely a Select záradékban megjelenhet a Group By záradékba való felvétel nélkül. A SELECT záradékban mindig szerepelhetnek literál értékeket is.
 
-  A GROUP BY záradéknak a SELECT, FROM és WHERE záradék után, az OFFSET LIMIT záradék előtt kell lennie. Jelenleg nem használhatja a GROUP BY parancsot ORDER BY záradékkal, de ez a terv.
+  A GROUP BY záradéknak a SELECT, a FROM, a WHERE záradék és az ELTOLÁSi korlát záradéka után kell szerepelnie. A GROUP BY utasítás nem használható ORDER BY záradékkal, de ez tervezett.
 
-  A GROUP BY záradék nem teszi lehetővé a következők egyikét sem:
+  A GROUP BY záradék nem engedélyezi a következők egyikét sem:
   
-- Aliasing tulajdonságok vagy aliasing rendszerfüggvények (aliasing továbbra is engedélyezett a SELECT záradékban)
-- Segédlekérdezések
-- Összesítési rendszerfüggvények (ezek csak a SELECT záradékban engedélyezettek)
+- Alias-tulajdonságok vagy aliasrendszer-függvények (a SELECT záradékban továbbra is engedélyezett az alias)
+- Allekérdezéseket
+- Összesítő rendszerfunkciók (ezek csak a SELECT záradékban engedélyezettek)
 
-Az összesítő rendszerfüggvénnyel és `GROUP BY` segédlekérdezéssel rendelkező lekérdezések nem támogatottak. A következő lekérdezés például nem támogatott:
+Az összesített rendszerfunkcióval és allekérdezéssel rendelkező `GROUP BY` lekérdezések nem támogatottak. Például a következő lekérdezés nem támogatott:
 
 ```sql
 SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
@@ -61,9 +61,9 @@ SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName
 
 ## <a name="examples"></a>Példák
 
-Ezek a példák az [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo)szolgáltatáson keresztül elérhető tápérték-adatkészletet használják.
+Ezek a példák a [Azure Cosmos DB lekérdezési demókörnyezet](https://www.documentdb.com/sql/demo)által elérhető táplálkozási adatkészletet használják.
 
-Például az itt egy lekérdezés, amely az egyes élelmiszercsoportokban lévő elemek teljes számát adja vissza:
+Például itt egy olyan lekérdezés, amely az egyes foodGroup lévő elemek teljes számát adja vissza:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -71,7 +71,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-Néhány eredmény (TOP kulcsszó segítségével korlátozza az eredményeket):
+Néhány eredmény (a leggyakoribb kulcsszó az eredmények korlátozására szolgál):
 
 ```json
 [{
@@ -92,7 +92,7 @@ Néhány eredmény (TOP kulcsszó segítségével korlátozza az eredményeket):
 }]
 ```
 
-Ez a lekérdezés két kifejezést használ az eredmények felosztására:
+Ez a lekérdezés két kifejezést használ az eredmények felosztásához:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -125,7 +125,7 @@ Néhány eredmény:
 }]
 ```
 
-Ennek a lekérdezésnek van egy rendszerfüggvénye a GROUP BY záradékban:
+A lekérdezés a GROUP BY záradékban található rendszerfüggvényt tartalmaz:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -154,7 +154,7 @@ Néhány eredmény:
 }]
 ```
 
-Ez a lekérdezés kulcsszavakat és rendszerfüggvényeket is használ az elemtulajdonság-kifejezésben:
+Ez a lekérdezés a kulcsszavakat és a rendszerfüggvényeket is használja az Item tulajdonság kifejezésében:
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion

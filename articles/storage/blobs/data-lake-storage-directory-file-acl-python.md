@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 Python SDK fájlokhoz & ACL-khez
-description: Használja a Python-címtan kezelheti a könyvtárakat, valamint a fájl- és címtárhozzáférés-vezérlési listákat (ACL) olyan tárfiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS).
+title: Azure Data Lake Storage Gen2 Python SDK a fájlokhoz & ACL-ek
+description: A Python segítségével kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér.
 author: normesta
 ms.service: storage
 ms.date: 04/10/2020
@@ -9,33 +9,33 @@ ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262349"
 ---
-# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a könyvtárakat, fájlokat és ACL-okat az Azure Data Lake Storage Gen2-ben
+# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet a Python könyvtárakat, fájlokat és engedélyeket olyan tárfiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
+Ez a cikk bemutatja, hogyan lehet a Python használatával könyvtárakat, fájlokat és engedélyeket létrehozni és kezelni olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
 
-[Csomag (Python-csomagindex)](https://pypi.org/project/azure-storage-file-datalake/) | [minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API-referencia](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [Gen1 a Gen2 leképezés](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | visszajelzést[ad](https://github.com/Azure/azure-sdk-for-python/issues)
+[Csomag (Python Package index)](https://pypi.org/project/azure-storage-file-datalake/) | [minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API-referenciák](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [visszajelzés küldése](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * Olyan tárfiók, amelynek hierarchikus névtere (HNS) engedélyezve van. Az [alábbi](data-lake-storage-quickstart-create-account.md) utasításokat követve hozzon létre egyet.
+> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Telepítse az Azure Data Lake Storage ügyfélkönyvtárat a Pythonhoz [a pip](https://pypi.org/project/pip/)használatával.
+Telepítse a Pythonhoz készült Azure Data Lake Storage ügyféloldali kódtárat a [pip](https://pypi.org/project/pip/)használatával.
 
 ```
 pip install azure-storage-file-datalake
 ```
 
-Adja hozzá ezeket az importálási kimutatásokat a kódfájl tetejéhez.
+Adja hozzá ezeket az importálási utasításokat a fájl elejéhez.
 
 ```python
 import os, uuid, sys
@@ -44,15 +44,15 @@ from azure.core._match_conditions import MatchConditions
 from azure.storage.filedatalake._models import ContentSettings
 ```
 
-## <a name="connect-to-the-account"></a>Csatlakozás a fiókhoz
+## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
 
-A jelenések ebben a cikkben, létre kell hoznia egy **DataLakeServiceClient** példányt, amely a tárfiókot jelöli. 
+A cikkben szereplő kódrészletek használatához létre kell hoznia egy **DataLakeServiceClient** -példányt, amely a Storage-fiókot jelképezi. 
 
-### <a name="connect-by-using-an-account-key"></a>Csatlakozás fiókkulcs használatával
+### <a name="connect-by-using-an-account-key"></a>Csatlakozási fiók kulcsa alapján
 
-Ez a legegyszerűbb módja annak, hogy csatlakozzon egy fiókhoz. 
+Ez a legegyszerűbb módszer a fiókhoz való kapcsolódásra. 
 
-Ez a példa egy **DataLakeServiceClient-példányt** hoz létre egy fiókkulcs használatával.
+Ez a példa egy **DataLakeServiceClient** -példányt hoz létre a fiók kulcsa alapján.
 
 ```python
 try:  
@@ -65,15 +65,15 @@ except Exception as e:
     print(e)
 ```
  
-- Cserélje `storage_account_name` le a helyőrző értéket a tárfiók nevére.
+- Cserélje le `storage_account_name` a helyőrző értékét a Storage-fiók nevére.
 
-- Cserélje `storage_account_key` le a helyőrző értéket a tárfiók hozzáférési kulcsára.
+- Cserélje le `storage_account_key` a helyőrző értékét a Storage-fiók hozzáférési kulcsára.
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>Csatlakozás az Azure Active Directory (AD) használatával
+### <a name="connect-by-using-azure-active-directory-ad"></a>Kapcsolat Azure Active Directory (AD) használatával
 
-Használhatja az [Azure identity ügyfélkódtár python](https://pypi.org/project/azure-identity/) az alkalmazás hitelesítéséhez az Azure AD.You can use the Azure identity client library for Python to authenticate your application with Azure AD.
+A [Pythonhoz készült Azure Identity ügyféloldali kódtár](https://pypi.org/project/azure-identity/) használatával hitelesítheti az alkalmazást az Azure ad-vel.
 
-Ez a példa egy **DataLakeServiceClient-példányt** hoz létre egy ügyfélazonosító, egy ügyféltitok és egy bérlői azonosító használatával.  Ezeknek az értékeknek a [beszerzése, olvassa el a jogkivonat beszerzése az Azure AD-től az ügyfélalkalmazásból érkező kérelmek engedélyezéséhez](../common/storage-auth-aad-app.md)című témakört.
+Ez a példa egy **DataLakeServiceClient** -példányt hoz létre egy ügyfél-azonosítóval, egy ügyfél-titkos kulccsal és egy BÉRLŐi azonosítóval.  Az értékek [lekéréséhez lásd: token beszerzése az Azure ad-ből az ügyfélalkalmazások kéréseinek engedélyezéséhez](../common/storage-auth-aad-app.md).
 
 ```python
 def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
@@ -91,13 +91,13 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 ```
 
 > [!NOTE]
-> További példák: az [Azure identity ügyfélkódtár python dokumentáció.](https://pypi.org/project/azure-identity/)
+> További példákért tekintse meg az [Azure Identity ügyféloldali kódtárat a Python](https://pypi.org/project/azure-identity/) dokumentációjában.
 
 ## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
-A fájlrendszer a fájlok tárolójaként működik. Létrehozhat egyet a **FileSystemDataServiceServiceClient.create_file_system** metódus hívásával.
+A fájlrendszer tárolóként működik a fájlok számára. Létrehozhat egyet a **FileSystemDataLakeServiceClient. create_file_system** metódus meghívásával.
 
-Ez a példa létrehoz `my-file-system`egy fájlrendszert.
+Ez a példa egy nevű `my-file-system`fájlrendszert hoz létre.
 
 ```python
 def create_file_system():
@@ -113,9 +113,9 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Directory-hivatkozás létrehozása a **FileSystemClient.create_directory** metódus hívásával.
+Hozzon létre egy címtár-referenciát a **FileSystemClient. create_directory** metódus meghívásával.
 
-Ez a példa `my-directory` egy fájlrendszerhez nevezett könyvtárat ad hozzá. 
+Ez a példa egy nevű `my-directory` könyvtárat helyez el egy fájlrendszerhez. 
 
 ```python
 def create_directory():
@@ -126,11 +126,11 @@ def create_directory():
      print(e) 
 ```
 
-## <a name="rename-or-move-a-directory"></a>Könyvtár átnevezése vagy áthelyezése
+## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
-Könyvtár átnevezése vagy áthelyezése a **DataLakeDirectoryClient.rename_directory** metódus hívásával. Adja át a kívánt könyvtár elérési útját egy paraméternek. 
+Nevezze át vagy helyezze át a könyvtárat a **DataLakeDirectoryClient. rename_directory** metódus meghívásával. Adja meg a kívánt könyvtár elérési útját (a paramétert). 
 
-Ez a példa átnevezi az `my-subdirectory-renamed`alkönyvtárat a nevére.
+Ez a példa átnevez egy alkönyvtárat a névre `my-subdirectory-renamed`.
 
 ```python
 def rename_directory():
@@ -148,9 +148,9 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-Könyvtár törlése a **DataLakeDirectoryClient.delete_directory** metódus hívásával.
+A **DataLakeDirectoryClient. delete_directory** metódus meghívásával törölhet egy könyvtárat.
 
-Ez a példa törli `my-directory`a .  
+Ez a példa törli a nevű `my-directory`könyvtárat.  
 
 ```python
 def delete_directory():
@@ -163,14 +163,14 @@ def delete_directory():
      print(e) 
 ```
 
-## <a name="manage-directory-permissions"></a>Címtárengedélyek kezelése
+## <a name="manage-directory-permissions"></a>Címtár engedélyeinek kezelése
 
-A **DataLakeDirectoryClient.get_access_control** metódus hívásával és az ACL beállításával a **DataLakeDirectoryClient.set_access_control** metódus hívásával.
+A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeDirectoryClient. get_access_control** metódust, és állítsa be az ACL-t úgy, hogy meghívja a **DataLakeDirectoryClient. set_access_control** metódust.
 
 > [!NOTE]
-> Ha az alkalmazás engedélyezi a hozzáférést az Azure Active Directory (Azure AD) használatával, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá van rendelve a [Storage Blob Data Owner szerepkörhöz.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) Ha többet szeretne tudni az ACL-engedélyek alkalmazásáról és módosításuk hatásairól, olvassa el [a Hozzáférés-vezérlés az Azure Data Lake Storage Gen2 alkalmazásban című témakört.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
 
-Ez a példa beveszi és beállítja a névvel ellátott könyvtár ACL-t. `my-directory` A `rwxr-xrw-` karakterlánc olvasási, írási és végrehajtási engedélyeket ad a tulajdonában lévő felhasználónak, csak olvasási és végrehajtási engedélyeket ad a birtokló csoportnak, és az összes többi olvasási és írási engedélyt ad.
+Ez a példa lekérdezi és beállítja a nevű `my-directory`könyvtár ACL-listáját. A karakterlánc `rwxr-xrw-` megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
 
 ```python
 def manage_directory_permissions():
@@ -197,9 +197,9 @@ def manage_directory_permissions():
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba 
 
-Először hozzon létre egy fájlhivatkozást a célkönyvtárban a **DataLakeFileClient** osztály egy példányának létrehozásával. Töltsön fel egy fájlt a **DataLakeFileClient.append_data** metódus hívásával. Győződjön meg arról, hogy a feltöltést a **DataLakeFileClient.flush_data** metódus hívásával fejezi be.
+Először hozzon létre egy fájlt a célhelyen a **DataLakeFileClient** osztály egy példányának létrehozásával. Töltsön fel egy fájlt a **DataLakeFileClient. append_data** metódus meghívásával. Ügyeljen arra, hogy a feltöltést a **DataLakeFileClient. flush_data** metódus meghívásával végezze el.
 
-Ez a példa egy szövegfájlt `my-directory`tölt fel a nevesített könyvtárba.   
+Ez a példa egy szövegfájlt tölt fel egy nevű `my-directory`könyvtárba.   
 
 ```python
 def upload_file_to_directory():
@@ -223,11 +223,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> Ha a fájlmérete nagy, a kódnak több hívást kell kezdeményeznie a **DataLakeFileClient.append_data** metódushoz. Fontolja meg a **DataLakeFileClient.upload_data** metódus használatát. Így a teljes fájlt egyetlen hívással feltöltheti. 
+> Ha a fájl mérete nagy, a kódnak több hívást is el kell végeznie a **DataLakeFileClient. append_data** metódushoz. Ehelyett érdemes lehet a **DataLakeFileClient. upload_data** metódust használni. Így feltöltheti a teljes fájlt egyetlen hívással. 
 
-## <a name="upload-a-large-file-to-a-directory"></a>Nagyfájl feltöltése könyvtárba
+## <a name="upload-a-large-file-to-a-directory"></a>Nagyméretű fájl feltöltése egy könyvtárba
 
-A **DataLakeFileClient.upload_data** metódussal nagy fájlokat tölthet fel anélkül, hogy több hívást kellene kezdeményeznie a **DataLakeFileClient.append_data** metódusba.
+A **DataLakeFileClient. upload_data** metódus használatával nagyméretű fájlokat tölthet fel anélkül, hogy több hívást kellene tennie a **DataLakeFileClient. append_data** metódushoz.
 
 ```python
 def upload_file_to_directory_bulk():
@@ -251,12 +251,12 @@ def upload_file_to_directory_bulk():
 
 ## <a name="manage-file-permissions"></a>Fájlengedélyek kezelése
 
-A **DataLakeFileClient.get_access_control** metódus hívásával és az ACL beállításával a **DataLakeFileClient.set_access_control** metódus hívásával.
+Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeFileClient. get_access_control** metódust, és állítsa be az ACL-t úgy, hogy meghívja a **DataLakeFileClient. set_access_control** metódust.
 
 > [!NOTE]
-> Ha az alkalmazás engedélyezi a hozzáférést az Azure Active Directory (Azure AD) használatával, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá van rendelve a [Storage Blob Data Owner szerepkörhöz.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) Ha többet szeretne tudni az ACL-engedélyek alkalmazásáról és módosításuk hatásairól, olvassa el [a Hozzáférés-vezérlés az Azure Data Lake Storage Gen2 alkalmazásban című témakört.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
 
-Ez a példa beveszi és beállítja egy nevű fájl ACL-ét. `my-file.txt` A `rwxr-xrw-` karakterlánc olvasási, írási és végrehajtási engedélyeket ad a tulajdonában lévő felhasználónak, csak olvasási és végrehajtási engedélyeket ad a birtokló csoportnak, és az összes többi olvasási és írási engedélyt ad.
+Ez a példa lekérdezi és beállítja a nevű `my-file.txt`fájl hozzáférés-vezérlési listáját. A karakterlánc `rwxr-xrw-` megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
 
 ```python
 def manage_file_permissions():
@@ -283,9 +283,9 @@ def manage_file_permissions():
      print(e) 
 ```
 
-## <a name="download-from-a-directory"></a>Letöltés könyvtárból 
+## <a name="download-from-a-directory"></a>Letöltés egy címtárból 
 
-Nyisson meg egy helyi fájlt írásra. Ezután hozzon létre egy **DataLakeFileClient** példányt, amely a letölteni kívánt fájlt jelöli. Hívja meg a **DataLakeFileClient.read_file** fájlból bájtokat olvasson, majd írja ezeket a bájtokat a helyi fájlba. 
+Nyisson meg egy helyi fájlt írásra. Ezután hozzon létre egy **DataLakeFileClient** -példányt, amely a letölteni kívánt fájlt jelöli. Hívja meg a **DataLakeFileClient. read_file** fájlt a fájl bájtjainak olvasásához, majd írja be a bájtokat a helyi fájlba. 
 
 ```python
 def download_file_from_directory():
@@ -311,9 +311,9 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
-A könyvtár tartalmának listázása a **FileSystemClient.get_paths** metódus hívásával, majd az eredmények között történő számbavétel.
+A könyvtár tartalmának listázásához hívja meg a **FileSystemClient. get_paths** metódust, majd az eredmények alapján sorolja fel azokat.
 
-Ebben a példában a program kinyomtatja az egyes alkönyvtárak és -fájlok elérési útját, amelyek egy könyvtárban `my-directory`találhatók.
+Ez a példa kinyomtatja az egyes alkönyvtárak és fájlok elérési útját, amely `my-directory`egy nevű könyvtárban található.
 
 ```python
 def list_directory_contents():
@@ -333,8 +333,8 @@ def list_directory_contents():
 ## <a name="see-also"></a>Lásd még
 
 * [API-referenciadokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
-* [Csomag (Python-csomagindex)](https://pypi.org/project/azure-storage-file-datalake/)
+* [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-file-datalake/)
 * [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Gen1 –Gen2 leképezés](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-python/issues)

@@ -1,6 +1,6 @@
 ---
-title: Műveletek beolvasása API | Azure Piactér
-description: Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megadott operationId lekéri.
+title: Operations API beolvasása | Azure piactér
+description: Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasása a megadott operationId.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255872"
 ---
 # <a name="retrieve-operations"></a>Műveletek lekérése
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a Partnerközponttal, és az ajánlatok partnerközpontba való áttelepítése után is működni fognak. Az integráció kis változtatásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, és győződjön meg arról, hogy a kód továbbra is működik a Partnerközpontba való áttelepítés után.
+> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
 
-Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megadott operationId lekéri. Az ügyfél lekérdezési paramétereket használhat a futó műveletek szűréséhez.
+Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasása a megadott operationId. Előfordulhat, hogy az ügyfél lekérdezési paramétereket használ a futó műveletek szűréséhez.
 
 ``` https
 
@@ -34,9 +34,9 @@ Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megad
 
 |  **Név**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Közzétevő azonosítója, például`Contoso`                                                                   |  Sztring       |
+|  publisherId       |  Közzétevő azonosítója, például:`Contoso`                                                                   |  Sztring       |
 |  offerId           |  Ajánlat azonosítója                                                                                              |  Sztring       |
-|  operationId       |  GUID, amely egyedileg azonosítja a műveletet az ajánlatban. A operationId lehet beolvasni ezzel az API-val, és a válasz HTTP-fejlécében is megjelenik bármely hosszú ideig futó művelet, például a [közzétételi ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   Guid   |
+|  operationId       |  GUID, amely egyedileg azonosítja a műveletet az ajánlaton. Lehetséges, hogy a operationId ezt az API-t használja, és a válasz HTTP-fejlécében is visszakerül a hosszú ideig futó műveletre, például a [közzétételi ajánlat](./cloud-partner-portal-api-publish-offer.md) API-ra.  |   Guid   |
 |  api-verzió       | Az API legújabb verziója |    Dátum      |
 |  |  |  |
 
@@ -50,11 +50,11 @@ Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megad
 |  |  |
 
 
-## <a name="body-example"></a>Példa törzsre
+## <a name="body-example"></a>Példa szövegtörzsre
 
 ### <a name="response"></a>Válasz
 
-#### <a name="get-operations"></a>GET műveletek
+#### <a name="get-operations"></a>Műveletek beolvasása
 
 ``` json
     [
@@ -79,7 +79,7 @@ Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megad
     ]
 ```
 
-#### <a name="get-operation"></a>GET művelet
+#### <a name="get-operation"></a>Művelet beolvasása
 
 ``` json
     [
@@ -170,37 +170,37 @@ Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megad
     ]
 ```
 
-### <a name="response-body-properties"></a>Választörzs tulajdonságai
+### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
 
 |  **Név**                    |  **Leírás**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | A műveletet egyedileg azonosító GUID                                                       |
-|  benyújtástípusa              | Azonosítja az ajánlathoz jelentett művelet típusát, például`Publish/GoLive`      |
-|  createdDateTime             | A művelet létrehozásának utc-dátuma                                                       |
-|  lastActionDateTime          | UTC dátumidő, amikor az utolsó frissítés történt a művelet                                       |
-|  status                      | A művelet állapota `not started` \| `running` \| `failed` \| `completed`vagy . Egyszerre csak egy `running` művelet nek lehet állapota. |
-|  error                       | Sikertelen műveletekre vonatkozó hibaüzenet                                                               |
+|  submissionType              | Meghatározza az ajánlathoz jelentett művelet típusát, például:`Publish/GoLive`      |
+|  createdDateTime             | UTC datetime a művelet létrehozásakor                                                       |
+|  lastActionDateTime          | UTC dátum és idő, amikor a legutóbbi frissítés befejeződött a műveletnél                                       |
+|  status                      | `not started` \| `running` \| `failed` A művelet állapota \| vagy `completed`. Egyszerre csak egy művelet lehet állapottal `running` rendelkezhet. |
+|  error                       | Sikertelen műveletek hibaüzenete                                                               |
 |  |  |
 
-### <a name="response-step-properties"></a>Válaszlépés tulajdonságai
+### <a name="response-step-properties"></a>Válasz lépés tulajdonságai
 
 |  **Név**                    |  **Leírás**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
-| becsültTimeFrame | A művelet becsült időtartama |
-| id | A lépésfolyamat egyedi azonosítója |
+| estimatedTimeFrame | A művelet becsült időtartama |
+| id | A lépés folyamatának egyedi azonosítója |
 | leírás | A lépés leírása |
-| lépésneve | A lépés rövid neve |
-| status | A lépés állapota vagy `notStarted` \| `running` \| `failed` \|`completed` |
+| stepName | A lépéshez tartozó rövid név |
+| status | A lépés állapota, vagy `notStarted` \| `running` \| `failed` \|`completed` |
 | üzenet | A lépés során észlelt értesítések és figyelmeztetések. Karakterláncok tömbje |
-| progressSzázalék | 0 és 100 között a lépés előrehaladását jelző egész szám |
+| progressPercentage | 0 és 100 közötti egész szám, amely a lépés előrehaladását jelzi |
 | | |
 
-### <a name="response-status-codes"></a>Válasz állapotkódjai
+### <a name="response-status-codes"></a>Válasz-állapotkódok
 
 | **Kód**  |   **Leírás**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK`- A kérés feldolgozása sikeresen megtörtént, és a kért művelet(ek) visszalett küldve.        |
-|  400      | `Bad/Malformed request`- A hibaválasz törzse további információkat tartalmazhat.                    |
-|  403      | `Forbidden`- Az ügyfél nem fér hozzá a megadott névtérhez.                          |
-|  404      | `Not found`- A megadott entitás nem létezik.                                                 |
+|  200      | `OK`– A kérés feldolgozása sikeres volt, és a kért művelet (ek) vissza lettek küldve.        |
+|  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                    |
+|  403      | `Forbidden`– Az ügyfél nem fér hozzá a megadott névtérhez.                          |
+|  404      | `Not found`– A megadott entitás nem létezik.                                                 |
 |  |  |

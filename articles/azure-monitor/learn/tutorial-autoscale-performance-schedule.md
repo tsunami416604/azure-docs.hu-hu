@@ -1,5 +1,5 @@
 ---
-title: Az Azure-erőforrások automatikus skálázása adatok vagy ütemezés alapján
+title: Azure-erőforrások méretezése az adatmennyiség vagy az ütemterv alapján
 description: Automatikus méretezési beállítás létrehozása egy App Service-csomaghoz metrikai adatok és egy ütemezés használatával
 author: anirudhcavale
 services: azure-monitor
@@ -9,10 +9,10 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: a4502a9ec7866d9b1ecb0f2aa2257e759fd417c8
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81114679"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
@@ -27,7 +27,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Horizontális leskálázási művelet kiváltása és a példányszám csökkenésének megfigyelése
 > * Az erőforrások törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
@@ -36,7 +36,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 ## <a name="create-a-web-app-and-app-service-plan"></a>Webalkalmazás és App Service-csomag létrehozása
 1. Kattintson az **Erőforrás létrehozása** lehetőségre a bal oldali navigációs ablaktáblán.
 2. Keresse meg és válassza ki a *Webalkalmazás* elemet, és kattintson a **Létrehozás** elemre.
-3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot *myResourceGroup', vagy helyezze el egy ön által választott erőforráscsoportba.
+3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot * myResourceGroup, vagy helyezze egy kiválasztott erőforráscsoport-csoportba.
 
 A rendszer néhány percen belül üzembe helyezi az erőforrásokat. Az oktatóanyag fennmaradó részében használja a webalkalmazást és a vonatkozó App Service-csomagot.
 
@@ -126,7 +126,7 @@ Az imént létrehozott automatikus méretezési beállítás felskálázási fel
 
 2. Egymás után gyorsan frissítse az oldalt 10-nél többször.
 
-3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Miután a lap betöltődik, válassza az **Automatikus méretezés** lapot.
+3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Miután az oldal betöltődik, válassza az **autoscale** (automatikusan skálázás) lapot.
 
 4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 
@@ -145,7 +145,7 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
 2. Töltse be az Azure Portalt.
 
-3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Miután a lap betöltődik, válassza az **Automatikus méretezés** lapot.
+3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Miután az oldal betöltődik, válassza az **autoscale** (automatikusan skálázás) lapot.
 
 4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 

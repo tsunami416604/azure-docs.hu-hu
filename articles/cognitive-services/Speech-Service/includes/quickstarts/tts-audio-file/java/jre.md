@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 096e0ec8af3d3802d662a9f7d43dbfbc04a130ad
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275166"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza az**Új** > **osztály** **fájlja** > lehetőséget.
+1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **fájl** > **új** > **osztály**elemet.
 
 1. A **New Java Class** (Új Java-osztály) ablakban írja be a **speechsdk.quickstart** kifejezést a **Package** (Csomag), a **Main** (Fő) kifejezést pedig a **Név** mezőbe.
 
@@ -104,16 +104,16 @@ ms.locfileid: "81275166"
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. Cserélje le `helloworld.wav` a karakterláncot a saját fájlnevére.
+1. Cserélje le a `helloworld.wav` karakterláncot a saját fájlnevére.
 
-1. Cserélje le `Hello world!` a karakterláncot a saját szövegére.
+1. Cserélje le a `Hello world!` karakterláncot a saját szövegére.
 
 1. Mentse a projekt módosításait.
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-Nyomja le az F11 billentyűt, vagy válassza**a Debug futtatása** **lehetőséget.** > 
-A program a szöveget beszédbeszédmé alakítja, és a megadott hangadatokba menti.
+Nyomja le az F11 billentyűt, vagy válassza a**hibakeresés** **futtatása** > lehetőséget.
+A szöveget a rendszer beszédre konvertálja, és a megadott hangadatokba menti.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]

@@ -1,6 +1,6 @@
 ---
-title: Kína tartalomkézbesítés az Azure CDN-nel | Microsoft dokumentumok
-description: Ismerje meg, hogy miként kézbesíti a tartalmat a kínai felhasználók nak az Azure Content Delivery Network (CDN) használatával.
+title: A kínai tartalom kézbesítése Azure CDNvel | Microsoft Docs
+description: Ismerkedjen meg az Azure Content Delivery Network (CDN) használatával, hogy tartalmat nyújtson a kínai felhasználóknak.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -16,54 +16,54 @@ ms.date: 05/16/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254104"
 ---
-# <a name="china-content-delivery-with-azure-cdn"></a>Kína tartalomkézbesítés az Azure CDN-nel
+# <a name="china-content-delivery-with-azure-cdn"></a>A kínai tartalom kézbesítése Azure CDN
 
-Az Azure Content Delivery Network (CDN) globális tartalommal szolgálhat a kínai felhasználók számára a Kínához közeli POP-helyekkel vagy bármely olyan POP-mal, amely a legjobb teljesítményt nyújtja a Kínából származó kéréseknek. Ha azonban Kína jelentős piac az ügyfelek számára, és gyors teljesítményre van szükségük, fontolja meg az Azure CDN China használatát.
+Az Azure Content Delivery Network (CDN) globálisan Kínában vagy bármely olyan POP-ponttal rendelkező felhasználók számára biztosít tartalmat a kínai felhasználóknak, akik a legjobb teljesítményt nyújtanak a Kínából származó kérelmek esetében. Ha azonban Kína jelentős piacot biztosít ügyfelei számára, és a gyors teljesítményre van szükségük, érdemes inkább a Azure CDN Kínában használni.
 
-Az Azure CDN China annyiban különbözik az Azure CDN globaltól, hogy számos helyi szolgáltatóval együttműködve szállít jattot a Kínán belüli POP-okból. A kínai megfelelőség és szabályozás miatt külön előfizetést kell regisztrálnia az Azure CDN China használatához, és webhelyeinek ICP-licenccel kell rendelkezniük. A tartalomkézbesítés engedélyezéséhez és kezeléséhez szükséges portál és API-élmény megegyezik az Azure CDN globális és az Azure CDN China szolgáltatással.
+Azure CDN Kína különbözik a Azure CDN globálistól, hogy a tartalmakat a kínai pop-ról származó, számos helyi szolgáltatóval való partneri kapcsolattal biztosítja. A kínai megfelelőség és szabályozás miatt külön előfizetést kell regisztrálnia Azure CDN Kínában való használatra, és a webhelyeknek ICP-licenccel kell rendelkezniük. A tartalmak kézbesítésének engedélyezéséhez és kezeléséhez szükséges portál és API-élmény a Azure CDN globális és Azure CDN Kínában is megegyeznek.
 
-## <a name="comparison-of-azure-cdn-global-and-azure-cdn-china"></a>Az Azure CDN globális és az Azure CDN China összehasonlítása
+## <a name="comparison-of-azure-cdn-global-and-azure-cdn-china"></a>A Azure CDN globális és Azure CDN Kínában való összehasonlítása
 
-Az Azure CDN global és az Azure CDN China a következő funkciókkal rendelkezik:
+Azure CDN a Global és a Azure CDN China a következő funkciókat tartalmazza:
 
-- Azure CDN globális:
+- Globális Azure CDN:
 
-     - Portál:https://portal.azure.com  
+     - Portálhttps://portal.azure.com  
 
-     - Tartalomkézbesítés tanaként teljesít Kínán kívül
+     - A tartalom átvitelét Kínában kívül végzi
 
-     - Négy árképzési szint: Microsoft szabvány, Verizon szabvány, Verizon prémium és Akamai szabvány
+     - Négy díjszabási szint: Microsoft standard, Verizon standard, Verizon Premium és Akamai standard
 
      - [Dokumentáció](https://docs.microsoft.com/azure/cdn/)
 
-- Azure CDN Kína:
+- Azure CDN Kínában:
 
-     - Portál:https://portal.azure.cn
+     - Portálhttps://portal.azure.cn
 
-     - Tartalomkézbesítést hajt végre Kínán belül
+     - Elvégzi a tartalom továbbítását Kínában
 
-     - Két tarifacsomag: Standard és prémium
+     - Két díjszabási szint: standard és prémium
 
      - [Dokumentáció](https://docs.azure.cn/en-us/cdn/)
  
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az Azure CDN China-ról, olvassa el a következő témakört:
+Ha többet szeretne megtudni a Azure CDN Kínával kapcsolatban, tekintse meg a következőt:
 
-- [Tartalomkézbesítési hálózat szolgáltatásai](https://www.azure.cn/en-us/home/features/cdn/)
+- [Content Delivery Network funkciók](https://www.azure.cn/en-us/home/features/cdn/)
 
 - [Az Azure Content Delivery Network áttekintése](https://docs.azure.cn/en-us/cdn/cdn-overview)
 
 - [Az Azure Content Delivery Network használata](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Az Azure-szolgáltatások elérhetősége Kínában](https://docs.microsoft.com/azure/china/concepts-service-availability)
+- [Azure-szolgáltatás elérhetősége Kínában](https://docs.microsoft.com/azure/china/concepts-service-availability)
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: Szöveg moderálása a Szövegmoderálás API használatával – Tartalommoderátor
+title: Mérsékelt szöveg a szöveges moderálási API használatával – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Test-drive szöveges moderálás segítségével a szöveg moderálás API-t az online konzolon.
+description: Tesztelje a szöveg moderálását a Text moderációs API használatával az online konzolon.
 services: cognitive-services
 author: PatrickFarley
 ms.author: pafarley
@@ -11,56 +11,56 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272593"
 ---
-# <a name="moderate-text-from-the-api-console"></a>Mérsékelt szöveg az API-konzolról
+# <a name="moderate-text-from-the-api-console"></a>Mérsékelt szöveg az API-konzolból
 
-Az Azure Content Moderator [szövegmoderálási API-jával](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) a szöveges tartalom káromkodását kése bírja, és összehasonlíthatja az egyéni és megosztott listákkal.
+Az Azure Content Moderator [szöveges moderálási API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) -ját használva megvizsgálhatja a szöveges tartalmakat, és összehasonlíthatja azokat az egyéni és a megosztott listával.
 
-## <a name="get-your-api-key"></a>Az API-kulcs beszerezése
+## <a name="get-your-api-key"></a>Az API-kulcs beszerzése
 
-Mielőtt tesztelheti az API-t az online konzolon, szüksége van az előfizetési kulcsra. Ez a **Beállítások** lapon, az **Ocp-Apim-Subscription-Key** mezőben található. További információkért lásd az [Áttekintést](overview.md).
+Mielőtt tesztelni tudja az API-t az online konzolon, szüksége lesz az előfizetési kulcsra. Ez a **Beállítások** lap **OCP-APIM-előfizetés-Key** mezőjében található. További információkért lásd az [Áttekintést](overview.md).
 
-## <a name="navigate-to-the-api-reference"></a>Navigálás az API-hivatkozásra
+## <a name="navigate-to-the-api-reference"></a>Navigáljon az API-referenciához
 
-Nyissa meg a [Szövegmoderálás API hivatkozását.](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) 
+Nyissa meg a [szöveges MODERÁLÁS API-referenciáját](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
 
-  Megnyílik **a Szöveg - Képernyő** lap.
+  Megnyílik a **szöveges képernyő** oldal.
 
 ## <a name="open-the-api-console"></a>Az API-konzol megnyitása
 
-Az **Open API tesztelési konzol,** válassza ki a régiót, amely a legszorosabban leírja a helyét. 
+Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-  ![Szöveg – Képernyőoldal területének kijelölése](images/test-drive-region.png)
+  ![Szöveg-képernyő oldal régió kiválasztása](images/test-drive-region.png)
 
-  Megnyílik **a Text - Screen** API konzol.
+  Megnyílik a **text-Screen** API-konzol.
 
 ## <a name="select-the-inputs"></a>A bemenetek kiválasztása
 
 ### <a name="parameters"></a>Paraméterek
 
-Válassza ki a szövegképernyőn használni kívánt lekérdezési paramétereket. Ebben a példában használja a **nyelv**alapértelmezett értékét. Üresen is hagyhatja, mert a művelet a végrehajtás részeként automatikusan felismeri a valószínű nyelvet.
+Válassza ki a szöveges képernyőn használni kívánt lekérdezési paramétereket. Ebben a példában az alapértelmezett értéket használja a **Language (nyelv**) beállításnál. Azt is üresen hagyhatja, mert a művelet végrehajtása során a rendszer automatikusan felismeri a valószínűsíthető nyelvet.
 
 > [!NOTE]
-> A **nyelvi** paraméter, `eng` rendelje hozzá, vagy hagyja üresen, hogy a gép által támogatott **besorolási** válasz (előzetes funkció). **Ez a funkció csak az angol nyelvet támogatja.**
+> A **Language** paraméterhez rendelje `eng` hozzá, vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
 >
-> A **káromkodási kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját,](http://www-01.sil.org/iso639-3/codes.asp) vagy hagyja üresen.
+> A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
-Az **automatikus javításhoz**, **a személyazonosításra alkalmas**adatokhoz és a **besoroláshoz (előnézet)** válassza a **True**lehetőséget. Hagyja üresen a **ListId mezőt.**
+Az **Automatikus javítás** **, a**személyes adatok és a **besorolás (előzetes verzió)** beállításnál válassza az **igaz**lehetőséget. Hagyja üresen a **ListId** mezőt.
 
-  ![Szöveg – Képernyőkonzol lekérdezési paraméterei](images/text-api-console-inputs.PNG)
+  ![Szöveges képernyős konzol lekérdezési paraméterei](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Tartalomtípus
 
-A **Tartalomtípus mezőben**válassza ki a képernyőzni kívánt tartalom típusát. Ebben a példában használja az alapértelmezett **szöveget/egyszerű** tartalomtípust. Az **Ocp-Apim-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
+A **Content-Type (tartalom típusa**) mezőben válassza ki a képernyőn megjelenő tartalom típusát. Ebben a példában az alapértelmezett **text/plain** tartalomtípust használjuk. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
 
-### <a name="sample-text-to-scan"></a>Mintaszöveg beszkaval
+### <a name="sample-text-to-scan"></a>Vizsgálandó mintaszöveg
 
-A **Kérelem törzsmezőbe** írjon be egy szöveget. A következő példa egy szándékos elírást mutat be a szövegben.
+A **kérelem törzse** mezőbe írjon be egy szöveget. Az alábbi példa egy szándékos elírást mutat be a szövegben.
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 
@@ -69,10 +69,10 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP:
 
 ## <a name="analyze-the-response"></a>A válasz elemzése
 
-A következő válasz az API-ból származó különböző elemzéseket mutatja be. Ez tartalmazza a potenciális káromkodás, személyes adatok, besorolás (előzetes verzió), és az automatikusan javított változat.
+Az alábbi válasz az API különböző bepillantást jeleníti meg. A szolgáltatás tartalmazhatja a lehetséges trágár, személyes és besorolást (előzetes verzió) és az automatikusan javított verziót.
 
 > [!NOTE]
-> A géppel támogatott "Besorolás" funkció előzetes verzióban érhető el, és csak az angol nyelvet támogatja.
+> A géppel támogatott "besorolás" funkció előzetes verzióban érhető el, és csak az angol nyelvet támogatja.
 
 ```json
 {
@@ -133,8 +133,8 @@ A következő válasz az API-ból származó különböző elemzéseket mutatja 
 }
 ```
 
-A JSON-válasz összes szakaszának részletes magyarázatát a [Szövegmoderálás](text-moderation-api.md) fogalmi útmutatójában talál.
+A JSON-válasz összes részének részletes ismertetését a [szöveges moderálás](text-moderation-api.md) fogalmi útmutatójában találja.
 
 ## <a name="next-steps"></a>További lépések
 
-Használja a REST API-t a kódban, vagy kövesse a [.NET SDK rövid útmutatót](dotnet-sdk-quickstart.md) az alkalmazásba való integráláshoz.
+Használja a kódban szereplő REST API, vagy kövesse a [.net SDK](dotnet-sdk-quickstart.md) gyors üzembe helyezését az alkalmazással való integráláshoz.

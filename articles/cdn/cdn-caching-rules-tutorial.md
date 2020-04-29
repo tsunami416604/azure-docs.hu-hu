@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254308"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Oktatóanyag: Azure CDN-gyorsítótárazási szabályok beállítása
 
 > [!NOTE] 
-> A gyorsítótárazási szabályok csak a **Verizon azure CDN Standard és** az **Akamai-profilokból származó Azure CDN Standard esetén** érhetők el. A **Microsoft-profilokból származó Azure CDN** esetében a **Verizon-profilokból származó Azure CDN Premium** [standard szabálymotorját](cdn-standard-rules-engine-reference.md) kell használnia, hasonló funkciókhoz a [Verizon Premium-szabályok motorját](cdn-rules-engine.md) kell **használnia** a Kezelés portálon.
+> A gyorsítótárazási szabályok csak a **Verizon Azure CDN standard** csomagból és a Akamai-profilokból **Azure CDN standard** csomagból érhetők el. A **Microsoft** -profilokból Azure CDN a [standard szintű szabályok motorját](cdn-standard-rules-engine-reference.md) kell használnia a Verizon-profilokkal való **Azure CDN premiumhoz** , a **felügyeleti portálon** a hasonló funkciókhoz a [Verizon Premium Rules motort](cdn-rules-engine.md) kell használnia.
  
 
 Ez az oktatóanyag leírja, hogyan használhatók az Azure Content Delivery Network (CDN) gyorsítótárazási szabályai az alapértelmezett gyorsítótár-lejárati viselkedés globális vagy egyéni feltételek megadásával, például URL-elérési úttal vagy fájlkiterjesztéssel történő módosítására. Az Azure CDN két gyorsítótárazási szabálytípust biztosít:

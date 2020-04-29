@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Alkalmazások telepítése méretezési csoportba Azure-sablonokkal
+title: Oktatóanyag – alkalmazások telepítése egy méretezési csoportba Azure-sablonokkal
 description: Megismerheti, hogyan telepíthet alkalmazásokat virtuálisgép-méretezési csoportokban az egyéni szkriptbővítménnyel és Azure Resource Manager-sablonok használatával
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: aa5ce8876675b4332b92ee09295409540a5e6e66
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011214"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban Azure-sablonnal
@@ -23,7 +23,7 @@ Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-pé
 > * Az egyéni Azure-szkriptek bővítményének használata
 > * Egy méretezési csoporton futtatott alkalmazás frissítése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -65,11 +65,11 @@ A *fileUris* tulajdonság használatával meghatározhatók a forrásként szolg
 }
 ```
 
-Egy teljes példa egy Azure-sablon, amely telepíti a méretezési csoport és az egyéni parancsfájl-bővítmény, lásd: [https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json). A következő szakaszban ezt a mintasablont fogjuk használni.
+A méretezési csoport és az egyéni szkriptek bővítményét üzembe helyező Azure-sablonok teljes példáját a [https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json)következő témakörben tekintheti meg:. A következő szakaszban ezt a mintasablont fogjuk használni.
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-A mintasablon használatával hozzunk létre egy méretezési csoportot, és alkalmazzuk az egyéni szkriptbővítményt. Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
+A mintasablon használatával hozzunk létre egy méretezési csoportot, és alkalmazzuk az egyéni szkriptbővítményt. Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -107,7 +107,7 @@ Ne zárja be a böngészőt, hogy megtekinthesse a frissített verziót a követ
 
 
 ## <a name="update-app-deployment"></a>Alkalmazástelepítés frissítése
-A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Amikor a méretezési csoport egy előző lépésben jött létre, a *frissítési házirend* *beállítása Automatikus*lett. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
+A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Ha a méretezési csoport egy korábbi lépésben lett létrehozva, a *UpgradePolicy* *automatikus*értékre lett állítva. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
 
 Az egyéni szkriptbővítmény definíciójának frissítéséhez módosítsa a sablont úgy, hogy az egy új telepítési szkriptre hivatkozzon. Ahhoz, hogy az egyéni szkriptbővítmény felismerje a módosítást, új fájlnevet kell használnia. Az egyéni szkriptbővítmény nem vizsgálja át a szkript tartalmát, hogy történt-e benne változás. Az alábbi definíció egy frissített telepítési szkriptet használt, amelynek a neve ki lett egészítve a *_v2* kifejezéssel:
 
@@ -147,7 +147,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és annak összes erőforrását az [az csoport törlésével.](/cli/azure/group) A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

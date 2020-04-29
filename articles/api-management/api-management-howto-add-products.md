@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
 ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81260996"
 ---
 # <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
@@ -47,17 +47,17 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     Termék hozzáadásakor meg kell adnia a következő információkat: 
 
-    | Név                     | Leírás                                                                                                                                                                                                                                                                                                             |
+    | Name (Név)                     | Leírás                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Megjelenített név             | A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.                                                                                                                                                                                                                                                        |
-    | Név                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
+    | Name (Név)                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
     | Leírás              | A **Leírás** mezőben részletes információkat adhat meg a termékről, például a funkcióját vagy az API-kat, amelyekhez hozzáférést nyújt.                                                                                                                                               |
     | Állapot                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
     | Előfizetés szükséges    | Jelölje be az **Előfizetés szükséges** jelölőnégyzetet, ha egy felhasználónak elő kell fizetnie a termék használatára.                                                                                                                                                                                                                                   |
     | Jóváhagyást igényel        | Jelölje be a **Jóváhagyást igényel** jelölőnégyzetet, ha azt szeretné, hogy egy rendszergazda döntsön a termék előfizetésére vonatkozó kérelmek elfogadásáról vagy elutasításáról. Ha a jelölőnégyzet nincs bejelölve, a rendszer az előfizetési kísérleteket automatikusan elfogadja.                                                                                                                         |
     | Előfizetések számának korlátozása | Az egyidejű előfizetések számának korlátozásához adjon meg egy határértéket.                                                                                                                                                                                                                                |
     | Jogi feltételek              | Megadhatja a termék használati feltételeit, amelyeket az előfizetőknek el kell fogadniuk, hogy használni tudják a terméket.                                                                                                                                                                                                             |
-    | API-k                     | A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/> A termék létrehozása során hozzáadhat meglévő API-kat, Később hozzáadhat egy API-t a termékhez, akár a Termék **Beállítások** lapján, akár egy API létrehozásakor. |
+    | API-k                     | A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/> A termék létrehozása során hozzáadhat meglévő API-kat, Később is hozzáadhat egy API-t a termékhez a termék **Beállítások** lapján vagy egy API létrehozásakor. |
 
 3. Az új termék létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -67,7 +67,7 @@ A mentés után is folytathatja a termék konfigurálását a **Beállítások**
 
 A termék előfizetőit az **Előfizetések** lapon tekintheti meg, ahol új előfizetőket is megadhat.
 
-A **hozzáférés-vezérlés** lapon beállíthatja egy termék láthatóságát a fejlesztők vagy a vendégek számára.
+Egy termék láthatóságának beállítása a fejlesztők és a vendégek számára a **hozzáférés-vezérlés** lapon.
 
 ## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>API-k hozzáadása termékekhez
 

@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések és terminológiák a Partnerközpont kereskedelmi piactéri elemzéséhez
-description: Ismerje meg, hogyan oldhat meg a kereskedelmi piactér elemzésével kapcsolatos gyakori kérdéseket. Tartalmaz egy adatszótárt az elemzési terminológiához.
+title: Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez a partner Centerben
+description: Ismerje meg, hogyan foglalkozhat a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdésekre. Adatszótárt tartalmaz az elemzési terminológiához.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,98 +8,98 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81251826"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Gyakori kérdések és terminológiák a kereskedelmi piactér elemzéséhez
+# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez
 
-Ez a cikk a Partnerközpontban található elemzési üzenetekkel kapcsolatos gyakori kérdésekkel foglalkozik, és az elemzési terminológiáról is tartalmaz szótárat.
+Ez a cikk a partner Center Analytics-üzeneteivel kapcsolatos gyakori kérdéseket tárgyalja, és az elemzési terminológia szótárát is tartalmazza.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Ez a rész választ ad a Partnerközpontban a **No Analytics Available Yet** üzenetekkel kapcsolatos gyakori kérdésekre.
+Ez a szakasz a partner Centerben **még nem elérhető Analytics** -üzenetekkel kapcsolatos gyakran feltett kérdésekre ad választ.
 
-**Nem tudom megtekinteni az elemzési adataimat a Partnerközpontban. Amikor elérem ezeket az oldalakat, az alábbi üzenet jelenik meg. Miért van ez?**
+**Nem tudom megtekinteni az elemzési adataikat a partner Centerben. Amikor elérem ezeket az oldalakat, az alábbi üzenet jelenik meg. Miért van ez?**
 
-![Még nincs adat az ajánlataihoz](./media/analytics-faq-no-data.png)
+![Még nem szerepelnek az ajánlatok adatai](./media/analytics-faq-no-data.png)
 
-Miért lehet, hogy ezt az üzenetet kapja:
+Miért lehetséges a következő üzenet beszerzése:
 
-- Jelenleg nincs enek akvizíció a közzétett ajánlatokhoz a piacon. Ez azt jelentheti, hogy ajánlatai a piactéren vannak, és a termék megjelenítési oldalain lévő ügyfelektől szereznek megtekintéseket, de az ügyfelek még nem tettek lépéseket a vásárlásukés telepítésük érdekében.
-- Lehet, hogy az ajánlat közzététele folyamatban van, és még nem él. Az ügyfelek csak élő ajánlatokat szerezhetnek be. Az ajánlatok állapotának ellenőrzéséhez olvassa el az Áttekintés az Elemzés irányítópulton című [témakört.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) További információt a [Kereskedelmi piactér elemzéseinek összefoglaló irányítópultja](./summary-dashboard.md)című témakörben talál.
-- Ajánlatai szerepelhetnek **kapcsolatfelvételi**ként , amelyek csak listaajánlatok, és a piactéren lévő ügyfelek nem vásárolhatnak meg. Bár ezek az ajánlatok érdeklődőket hoznak létre, és meg vannak osztva Önnel, a rendelések nem jönnek létre ezekhez az ajánlatokhoz, mivel nem vásárolhatók meg. Az ajánlatlista típusának ellenőrzéséhez lépjen a beállítási oldalra.
+- Jelenleg nem léteznek beszerzések a közzétett ajánlatokhoz a piactéren. Ez azt is jelentheti, hogy az ajánlatok a piactéren működnek, és a termékek megjelenítési oldalain lévő ügyfelektől származó nézeteket szereznek, de az ügyfelek még nem tettek lépéseket a vásárlásra és a telepítésre.
+- Lehetséges, hogy az ajánlat közzététele folyamatban van, és még nem él. Az ügyfelek csak élő ajánlatokat szerezhetnek be. Az ajánlatok állapotának vizsgálatához tekintse meg az Áttekintés az [irányítópult elemzése](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)című témakört. További információ: [Összefoglalás irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
+- Az ajánlatok **felvehetik Önnel a kapcsolatot**, csak a listában szereplő ajánlatokat, és nem vásárolhatják meg az ügyfelek a piactéren. Bár ezek az ajánlatok létrehoznak érdeklődőket, és megosztották Önnel, a megrendelések nem jönnek létre ezekhez az ajánlatokhoz, mert nem vásárolhatók meg. Az ajánlat-lista típusának megadásához lépjen a telepítés lapra.
 
-**Tudom, hogy vannak elemzési adataim, de az alábbi üzenet jelenik meg:**
+**Tudom, hogy elemzési adataim vannak, de az alábbi üzenet jelenik meg:**
 
-![Nincs adat az adott dátumtartományra vonatkozóan](./media/analytics-faq-data-range.png)
+![Nincsenek adatok a megadott dátumtartomány számára](./media/analytics-faq-data-range.png)
 
-Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal, de a kiválasztott dátumtartományhoz nem. A 2010 óta eltelt adatok megtekintéséhez válasszon másik dátumtartományt vagy egyéni dátumtartományt. További információt a [kereskedelmi piactér elemzéseinek Összefoglaló irányítópultjának](./summary-dashboard.md)Dátumtartomány szakaszában talál.
+Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal, de a kiválasztott dátumtartomány nem rendelkezik adatokkal. Válasszon másik dátumtartományt vagy egyéni dátumtartományt a 2010 óta megjelenő adatok megtekintéséhez. További információkért tekintse [meg a kereskedelmi piactér Analytics összefoglaló irányítópultjának](./summary-dashboard.md)dátumtartomány szakaszát.
 
-## <a name="dictionary-of-data-terms"></a>Adatkifejezések szótára
+## <a name="dictionary-of-data-terms"></a>Az adatszótár kifejezése
 
 | Attribútum neve | Jelentések | Meghatározás|
 |---|---|---|
-| Azure-licenctípus | Vevő, rendelés | Az ügyfelek által az Azure megvásárlásához használt licencszerződés típusa. Más néven Csatorna |
-| Azure licenctípusa: Felhőszolgáltató | Vevő, rendelés | A végfelhasználó az Azure-t és a Marketplace-ajánlatot a felhőszolgáltatón keresztül szerzi be, amely viszonteladóként működik.|
-| Azure licenctípusa: Enterprise | Vevő, rendelés | A végfelhasználó az Azure-t és a Marketplace-ajánlatot egy közvetlenül a Microsofttal aláírt nagyvállalati szerződésen keresztül szerzi be.|
-| Azure licenctípus: Nagyvállalati viszonteladón keresztül  | Vevő, rendelés | A végfelhasználó az Azure-t és a Marketplace-ajánlatot egy viszonteladón keresztül szerzi be, aki megkönnyíti a Microsofttal kötött nagyvállalati szerződésüket.|  |
-| Azure licenctípusa: Pay as You Go| Vevő, rendelés | A végfelhasználó az Azure-t és a Marketplace-ajánlatot egy közvetlenül a Microsofttal aláírt "Csak annyiban fizetendő" szerződés keretében szerzi be az Azure-t és a Marketplace-ajánlatot.||
-| Felhőpéldány neve| Rendelés| Az a Microsoft Cloud, amelyben a virtuális gép központi telepítése történt.||
-| Felhőpéldány neve: Azure Global| Rendelés| A nyilvános globális Microsoft-felhő.|| |
-| Felhőpéldány neve: Azure Government | Rendelés| A kormányspecifikus Microsoft-felhők a következő kormányok egyikéhez: Kína, Németország vagy az Amerikai Egyesült Államok.| |
-| Ügyfél városa| Ügyfél| Az ügyfél által megadott városnév. A város eltérhet az ügyfél Azure-előfizetésében lévő várostól.||
-| Ügyfél kommunikációs nyelve  | Ügyfél| Az ügyfél által a kommunikációhoz előnyben részesített nyelv.||
-| Vevő vállalatneve | Vevő, rendelés | A vevő által megadott vállalatnév. A név eltérhet az ügyfél Azure-előfizetésében lévő várostól.|  |
-| Vevő országa | Vevő, rendelés | A vevő által megadott országnév. Ország eltérő lehet, mint az ország az ügyfél Azure-előfizetés.|  |
-| Ügyfél e-mail címe| Ügyfél| A végfelhasználó által megadott e-mail cím. Az e-mail eltérhet az ügyfél Azure-előfizetésében található e-mail címtől.||
-| Vevő utóneve| Ügyfél| A vevő által megadott név. A név eltérhet az ügyfél Azure-előfizetésében megadott névtől.| |
-| Ügyfél azonosítója | Vevő, rendelés | A vevőhöz rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Piactér-előfizetéssel rendelkezik.|  |
-| Vevő irányítószáma  | Ügyfél| A vevő által megadott irányítószám. A kód eltérhet az ügyfél Azure-előfizetésében megadott irányítószámtól.| |
-| Vevő állapota| Ügyfél| Az ügyfél által megadott állapot (cím). Az állam eltérhet az ügyfél Azure-előfizetésében megadott állapottól.| |
-| Beszerzés dátuma| Ügyfél| Az első nap, amikor az ügyfél megvásárolta az Ön által közzétett ajánlatot.| |
-| Elveszett dátum| Ügyfél| Az utolsó dátum, amikor a vevő visszavonta a korábban megvásárolt utolsó ajánlatot.||
-| Új vevő  | Rendelés| Az érték azonosítja az új ügyfél megszerzése egy vagy több ajánlatot az első alkalommal (vagy nem). Az érték "Igen" lesz, ha ugyanabban a naptári hónapban a "Beszerzett dátum" érték. Az érték "Nem" lesz, ha az ügyfél a naptári hónap előtt megvásárolta az Ön ajánlatait. |
-| Az előnézeti termékváltozat| Rendelés| Az érték tudatja Önvel, ha a termékváltozatot "előnézetként" címkézte. Érték lesz "Igen", ha a termékváltozat megfelelően van címkézve, és csak az Ön által engedélyezett Azure-előfizetések üzembe helyezheti és használhatja ezt a lemezképet. Az érték "Nem" lesz, ha a termékváltozat nincs "előzetes verzióként" azonosítva.  |
-| A promóciós kapcsolat opt-in| Ügyfél| Az érték tudatja Önnel, ha az ügyfél proaktív módon engedélyezte a közzétevők promóciós kapcsolatát. Jelenleg nem mutatjuk be a lehetőséget az ügyfeleknek, ezért nemet jelöltünk meg. A funkció telepítése után ennek megfelelően elkezdjük a frissítést.|
-| Piactéri licenc típusa| Rendelés| A Marketplace-ajánlat számlázási módszere.||
-| Piactérlicenc típusa: Számlázás az Azure-on keresztül| Rendelés| A Microsoft az Ön ügynöke ehhez a Marketplace-ajánlathoz, és az Ön nevében számláz az ügyfeleknek. (PayG hitelkártya vagy vállalati számla)||
-| Piactéri licenc típusa: Hozza magával a saját licencét | Rendelés| A virtuális gép telepítése szükséges egy licenckulcsot az ügyfél által biztosított. A Microsoft nem számlázaz ügyfeleknek, hogy ajánlataikat ily módon a piactéren keresztül listázták.||
-| Piactéri licenc típusa: Ingyenes| Rendelés| Az ajánlat úgy van beállítva, hogy minden felhasználó számára ingyenes legyen. A Microsoft nem számít fel díjat az ügyfeleknek az ajánlat használatáért.||
-| Piactéri licenc típusa: A Microsoft mint viszonteladó  | Rendelés| A Microsoft az Ön viszonteladója ehhez a Marketplace-ajánlathoz.|  |
-| Marketplace-előfizetés azonosítója | Vevő, rendelés | Az ügyfél által a Marketplace-ajánlat megvásárlásához használt Azure-előfizetéshez társított egyedi azonosító. Az azonosító korábban az Azure-előfizetés GUID azonosítója volt.||
-| Offer Name  | Rendelés| A Marketplace-ajánlat neve.|| |
-| Ajánlat típusa  | Rendelés| A Microsoft Piactér ajánlatának típusa.|||
-| Ajánlat típusa: Felügyelt alkalmazás  | Rendelés | Használja az Azure-alkalmazást: felügyelt alkalmazásajánlat típusa, ha a következő feltételek szükségesek: Egy előfizetés-alapú megoldást telepít az ügyfél számára egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával. Ön vagy ügyfele megköveteli, hogy a megoldást egy partner nek kell kezelnie. |
-| Ajánlat típusa: Azure-alkalmazás| Rendelés | Használja az Azure Application megoldássablon ajánlattípusát, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy egyszerű virtuális gépen kívül.||
-| Ajánlat típusa: Consulting Service| Rendelés| Az Azure Marketplace-en található tanácsadási szolgáltatások segítségével összekapcsolhatja ügyfeleit az Azure-használattámogatásával és bővítésével.| |
-| Ajánlat típusa: Konténer | Rendelés| Használja a Container-ajánlat típusát, ha a megoldás egy Kubernetes-alapú Azure-tárolószolgáltatásként kiépített Docker-tárolórendszerkép.||
-| Ajánlat típusa: Dynamics 365 Üzleti Központ| Rendelés| Akkor használja ezt az ajánlattípust, ha a megoldás integrálva van a Dynamics 365 for Finance and Operations alkalmazással| |
-| Ajánlat típusa: Dynamics 365 for Customer Engagement | Rendelés| Akkor használja ezt az ajánlattípust, ha a megoldás integrálva van a Dynamics 365 for Customer Engagement alkalmazással.||
-| Ajánlat típusa: IoT edge modul | Rendelés| Az Azure IoT Edge-modulok az IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Az Azure Stream Analytics), a harmadik féltől származó szolgáltatásokat vagy a saját megoldásspecifikus kódot. |
-| Ajánlat típusa: Power BI alkalmazás | Rendelés| A Power BI alkalmazásajánlat-típusának használata a Power BI-val integrált alkalmazás telepítésekor.|  |
-| Ajánlat típusa: SaaS alkalmazás| Rendelés| A SaaS-alkalmazásajánlat típusával lehetővé teszi az ügyfél számára, hogy előfizetésként megvásárolja a SaaS-alapú, technikai megoldást.||
-| Ajánlat típusa: Virtuális gép | Rendelés| Használja a virtuális gép ajánlat típusát, amikor üzembe helyez egy virtuális berendezést az ügyfélhez társított előfizetéshez.||
-| Ajánlat típusa: Visual Studio Piactér bővítmény  | Rendelés| Az Azure DevOps-bővítményfejlesztők számára korábban elérhető ajánlattípus. Az Azure DevOps-bővítményfejlesztők közvetlenül az ügyfeleknek értékesíthetik a bővítményt. A bővítményajánlatok fizetősként konfigurálhatók, vagy próbaverzióval is konfigurálhatók. |
-| Rendelés érvénytelenítési dátuma| Rendelés| A Marketplace-rendelés érvénytelenítésének dátuma.||
-| Rendelésazonosító| Rendelés| A Marketplace-szolgáltatás vevői rendelésének egyedi azonosítója. A virtuális gép használatalapú ajánlatai nincsenek rendeléshez társítva.| |
-| Rendelés beszerzési dátuma| Rendelés| A Marketplace-rendelés létrehozásának dátuma.|||
-| Megrendelés állapota| Rendelés| A Marketplace-rendelés állapota az adatok utolsó frissítésekor.|     |
-| Rendelés állapota: Aktív  | Rendelés| A vevő megvásároltegy rendelést, és nem mondta vissza a rendelést.|         |
-| Rendelés állapota: visszavonva | Rendelés| A vevő korábban megvásárolt egy rendelést, és ezt követően visszavonta a rendelést.||
-| Szolgáltató e-mail címe| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató e-mail címe. Ha az ügyfél viszonteladón keresztül enterprise, akkor ez lesz a viszonteladó. Ha egy felhőszolgáltató (CSP) is részt vesz, ez lesz a kripta.|
-| Szolgáltató neve| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél viszonteladón keresztül enterprise, akkor ez lesz a viszonteladó. Ha egy felhőszolgáltató (CSP) is részt vesz, ez lesz a kripta.|
-| SKU| Rendelés| A termékváltozat neve a közzététel során meghatározott aknak. Egy ajánlat sok termékváltozattal rendelkezhet, de egy termékváltozat csak egyetlen ajánlathoz társítható.||
-| Próba időszak záró dátuma| Rendelés| A rendelés próbaidőszakának kezdőnapja vagy vége.||
+| Azure-licenc típusa | Ügyfél, megrendelés | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna |
+| Azure-licenc típusa: felhőalapú megoldás szolgáltatója | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactért a felhőalapú megoldás szolgáltatóján keresztül szerzik be, aki viszonteladóként működik.|
+| Azure-licenc típusa: Enterprise | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy Nagyvállalati Szerződéson keresztül szerzik be, közvetlenül a Microsofttal.|
+| Azure-licenc típusa: Enterprise a viszonteladón keresztül  | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy viszonteladón keresztül szerzik be, amely megkönnyíti a Nagyvállalati Szerződés a Microsofttal.|  |
+| Azure-licenc típusa: utólagos fizetés| Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat a "Pay as go" szerződés keretében szerzik be közvetlenül a Microsofttal.||
+| Felhőbeli példány neve| Rendelés| Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént.||
+| Felhőbeli példány neve: Azure Global| Rendelés| A nyilvános globális Microsoft-felhő.|| |
+| Felhőbeli példány neve: Azure Government | Rendelés| Kormányzati specifikus Microsoft-felhők a következő kormányok egyikére: Kína, Németország vagy az Amerikai Egyesült Államok Egyesült Államok.| |
+| Customer City| Ügyfél| Az ügyfél által megadott város neve. A város eltérő lehet az ügyfél Azure-előfizetésében lévő várostól.||
+| Ügyfél-kommunikációs nyelv  | Ügyfél| Az ügyfél által a kommunikációhoz előnyben részesített nyelv.||
+| Ügyfél vállalatának neve | Ügyfél, megrendelés | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa.|  |
+| Ügyfél országa | Ügyfél, megrendelés | Az ügyfél által megadott ország neve. Az ország eltérő lehet az ügyfél Azure-előfizetésében lévő országtól.|  |
+| Ügyfél e-mail-címe| Ügyfél| A végfelhasználó által megadott e-mail-cím. Az e-mail nem lehet az ügyfél Azure-előfizetésében szereplő e-mail-cím.||
+| Ügyfél utóneve| Ügyfél| Az ügyfél által megadott név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel.| |
+| Ügyfél azonosítója | Ügyfél, megrendelés | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik.|  |
+| Ügyfél postai irányítószáma  | Ügyfél| Az ügyfél által megadott postai irányítószám. A kód különbözhet az ügyfél Azure-előfizetésében megadott postai kóddal.| |
+| Ügyfél állapota| Ügyfél| Az ügyfél által megadott állapot (címe). Az állapot különbözhet az ügyfél Azure-előfizetésében megadott állapottól.| |
+| Beszerzés dátuma| Ügyfél| Az első dátum, amikor az ügyfél az Ön által közzétett összes ajánlatot megvásárolta.| |
+| Elveszett dátum| Ügyfél| Az utolsó időpont, amikor az ügyfél megszakította a korábban megvásárolt összes ajánlatot.||
+| Új ügyfél  | Rendelés| Az érték azonosítja azt az új ügyfelet, amely első alkalommal szerez be egy vagy több ajánlatot (vagy nem). Az érték "yes" lesz, ha a "date beszerzett" dátummal megegyező naptári hónapon belül van. Az érték "nem" lesz, ha az ügyfél a jelentett naptári hónap előtt megvásárolta az ajánlatait. |
+| Előzetes verziójú SKU| Rendelés| Az érték tudatja Önnel, ha az SKU-t "Preview"-ként jelölte meg. Az érték "yes" lesz, ha az SKU-t ennek megfelelően címkézték, és csak az Ön által jóváhagyott Azure-előfizetések telepíthetők és használhatók. Az érték "nem" lesz, ha az SKU nem "Preview"-ként lett azonosítva.  |
+| A promóciós kapcsolatfelvételi lehetőség| Ügyfél| Az érték tudatja Önnel, hogy az ügyfél proaktív módon választotta-e a közzétevők számára a promóciós kapcsolatfelvételt. Jelenleg nem vesszük igénybe az ügyfeleket, ezért a táblán a "nem" jelölés szerepel. A szolgáltatás üzembe helyezését követően a frissítés ennek megfelelően kezdődik.|
+| Marketplace-licenc típusa| Rendelés| A Piactéri ajánlat számlázási módszere.||
+| Marketplace-licenc típusa: számlázás az Azure-ban| Rendelés| A Microsoft az Ön ügynöke ehhez a Piactéri ajánlathoz, és az Ön nevében számláz ügyfeleket. (TB hitelkártya vagy vállalati számla)||
+| Marketplace-licenc típusa: saját licenc használata | Rendelés| A virtuális gépnek szüksége van az ügyfél által az üzembe helyezéshez biztosított licenckulcs használatára. A Microsoft nem számlázza az ügyfeleket az ajánlatuk ezen a piactéren való listázásához.||
+| Marketplace-licenc típusa: ingyenes| Rendelés| Az ajánlat úgy van konfigurálva, hogy az összes felhasználó számára szabadon legyen. A Microsoft nem számláz az ügyfeleknek az ajánlat használatáért.||
+| Marketplace-licenc típusa: Microsoft as viszonteladó  | Rendelés| A Microsoft a piactér-ajánlat viszonteladója.|  |
+| Piactér-előfizetés azonosítója | Ügyfél, megrendelés | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt.||
+| Offer Name  | Rendelés| A Piactéri ajánlat neve.|| |
+| Ajánlat típusa  | Rendelés| Az Microsoft Marketplace ajánlat típusa.|||
+| Ajánlat típusa: felügyelt alkalmazás  | Sorrendben | Használja az Azure-alkalmazást: felügyelt alkalmazási ajánlat típusa a következő feltételek teljesülése esetén: egy vagy több virtuális gép vagy egy teljes IaaS-alapú megoldás használatával telepítheti az ügyfél előfizetéses megoldását. Ön vagy az ügyfele megköveteli, hogy a megoldást egy partnernek kell kezelnie. |
+| Ajánlat típusa: Azure-alkalmazás| Sorrendben | Használja az Azure-alkalmazás megoldás-sablonjának ajánlat típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség.||
+| Ajánlat típusa: tanácsadási szolgáltatás| Rendelés| Az Azure piactéren elérhető tanácsadói szolgáltatások segítségével az ügyfeleket a szolgáltatásokkal összekapcsolhatják az Azure használatának támogatásához és kiterjesztéséhez.| |
+| Ajánlat típusa: tároló | Rendelés| Ha a megoldás egy, a Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép, akkor használja a Container ajánlat típusát.||
+| Ajánlat típusa: Dynamics 365 Business Central| Rendelés| Akkor használja ezt az ajánlatot, ha a megoldás integrálva van a Dynamics 365 for Finance and Operations szolgáltatással| |
+| Ajánlat típusa: Dynamics 365 for Customer engagement | Rendelés| Akkor használja ezt az ajánlatot, ha a megoldás integrálva van a Dynamics 365-mel a Customer engagement szolgáltatáshoz.||
+| Ajánlat típusa: IoT Edge modul | Rendelés| A Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
+| Ajánlat típusa: Power BI alkalmazás | Rendelés| Ha a Power BI integrált alkalmazást telepít központilag, használja a Power BI alkalmazási ajánlat típusát.|  |
+| Ajánlat típusa: SaaS-alkalmazás| Rendelés| A SaaS app Offer típus használatával engedélyezheti az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldását.||
+| Ajánlat típusa: virtuális gép | Rendelés| Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát.||
+| Ajánlat típusa: Visual Studio Marketplace bővítmény  | Rendelés| Az ajánlat típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Az Azure DevOps Extension fejlesztőinek továbbítják a bővítményt közvetlenül az ügyfeleknek. A bővítmények a kifizetett vagy próbaverzióval is konfigurálhatók. |
+| Megrendelés megszakításának dátuma| Rendelés| A Piactéri rendelés megszakításának dátuma.||
+| Rendelésazonosító| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
+| Megrendelés vásárlásának dátuma| Rendelés| A Piactéri rendelés létrehozásának dátuma.|||
+| Megrendelés állapota| Rendelés| A Piactéri megrendelés állapota az utolsó frissítés alkalmával.|     |
+| Megrendelés állapota: aktív  | Rendelés| Az ügyfél megvásárolt egy rendelést, és nem szakította meg a rendelését.|         |
+| Megrendelés állapota: megszakítva | Rendelés| Az ügyfél korábban megvásárolt egy rendelést, és később megszakította a rendelését.||
+| Szolgáltatói E-mail cím| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató e-mail-címe. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
+| Szolgáltató neve| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
+| SKU| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
+| Próbaverzió befejezési dátuma| Rendelés| Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér.||
 
 ## <a name="next-steps"></a>További lépések
 
-- A Partnerközpont kereskedelmi piacterén elérhető elemzési jelentések áttekintését [a Partnerközpont Kereskedelmi piacterületén található Analytics for the commercial marketplace című témakörben találja.](./analytics.md)
-- Az ajánlat marketplace-tevékenységét összegző összesített adatok grafikonjait, trendjeit és értékeit lásd: [Összefoglaló irányítópult a kereskedelmi piactér-elemzésben.](./summary-dashboard.md)
-- A megrendelésekgrafikus és letölthető formátumban című témakörben talál további információt [a Rendelések irányítópultja a kereskedelmi piactér elemzésében.](./orders-dashboard.md)
-- A virtuális gép (VM) kínál használati és forgalmi díjas számlázási metrikák, lásd: [Használati irányítópult a kereskedelmi piactér analytics.](./usage-dashboard.md)
-- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket is, a [Vevői irányítópult a kereskedelmi piactér elemzésében](./customer-dashboard.md)című témakörben talál.
-- Az elmúlt 30 nap letöltési kérelmeinek listáját a [Letöltések irányítópultja a kereskedelmi piactér-elemzésben című témakörben tartalmazza.](./downloads-dashboard.md)
-- Az Azure Marketplace-en és az AppSource-on az ajánlatokra vonatkozó ügyfél-visszajelzések összevont nézetét a [Minősítések és véleményezések irányítópultja című témakörben tekintheti meg a kereskedelmi piactér-elemzésekben.](./ratings-reviews.md)
+- A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
+- Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
+- További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).
+- A virtuális gép (VM) használati és mért számlázási mérőszámokat kínál, lásd [a használati irányítópultot a kereskedelmi piactér elemzésében](./usage-dashboard.md).
+- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket, lásd [a kereskedelmi piactér elemzésének ügyfél-irányítópultját](./customer-dashboard.md).
+- Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./downloads-dashboard.md).
+- Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a [kereskedelmi piactér elemzésének minősítések és értékelések irányítópultját](./ratings-reviews.md)

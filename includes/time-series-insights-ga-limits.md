@@ -10,54 +10,54 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81263343"
 ---
-A következő összegzi a kulcskorlátokat az általános elérhetőségben.
+Az alábbiakban az általánosan elérhető főbb korlátokat összegzi.
 
-### <a name="sku-ingress-rates-and-capacities"></a>A Termékváltozat be- és kapacitásai
+### <a name="sku-ingress-rates-and-capacities"></a>SKU-ba beáramló díjak és kapacitások
 
-Az S1 és S2 termékváltozatok díjai és kapacitásai rugalmasságot biztosítanak egy új Time Series Insights-környezet konfigurálásakor. A termékváltozat-kapacitás a napi be- és bájtok száma alapján jelzi a napi be- és bájtsebességet, amelyik előbb következik be. Vegye figyelembe, hogy a be- ésézés *percenként*imperget, és a **szabályozás** a token gyűjtő algoritmus használatával történik. A be- és be- és átakat 1 KB-os blokkokban mérik. Például egy 0,8 KB-os tényleges esemény egy eseményként, egy 2,6 KB-os esemény pedig három eseménynek számít.
+Az S1 és az S2 SKU beáramlási aránya és kapacitása rugalmasságot biztosít az új Time Series Insights környezet konfigurálásakor. Az SKU kapacitása azt jelzi, hogy a napi beáramlási arány a tárolt események vagy bájtok száma alapján történik, attól függően, hogy melyik az első. Vegye figyelembe, hogy a bejövő forgalom *percenként*mérhető, és a **szabályozás** a jogkivonat-gyűjtő algoritmus használatával történik. A bejövő forgalom 1 KB-os blokkokban van mérve. Például egy 0,8 KB-os tényleges eseményt egyetlen eseményként kell mérni, a 2,6 KB-os esemény pedig három eseménynek számít.
 
-| S1 termékváltozat kapacitása | Be- és visszakamatemelési arány | Maximális tárolókapacitás
+| S1 SKU kapacitása | Bejövő forgalom aránya | Maximális tárolókapacitás
 | --- | --- | --- |
-| 1 | 1 GB (1 millió esemény) naponta | 30 GB (30 millió esemény) havonta |
-| 10 | 10 GB (10 millió esemény) naponta | 300 GB (300 millió esemény) havonta |
+| 1 | 1 GB (1 000 000 esemény) naponta | 30 GB (30 000 000 esemény) havonta |
+| 10 | 10 GB (10 000 000 esemény) naponta | 300 GB (300 000 000 esemény)/hó |
 
-| S2 termékváltozat kapacitása | Be- és visszakamatemelési arány | Maximális tárolókapacitás
+| S2 SKU kapacitás | Bejövő forgalom aránya | Maximális tárolókapacitás
 | --- | --- | --- |
-| 1 | 10 GB (10 millió esemény) naponta | 300 GB (300 millió esemény) havonta |
-| 10 | 100 GB (100 millió esemény) naponta | 3 TB (3 milliárd esemény) havonta |
+| 1 | 10 GB (10 000 000 esemény) naponta | 300 GB (300 000 000 esemény)/hó |
+| 10 | 100 GB (100 000 000 esemény)/nap | 3 TB (3 000 000 000 esemény) havonta |
 
 > [!NOTE]
-> A kapacitások lineárisan skáláznak, így a 2 kapacitású S1 termékváltozat támogatja a napi 2 GB (2 millió) eseményt és a 60 GB-os (60 millió esemény) havonta.
+> A kapacitások lineárisan méretezhetők, ezért a 2. kapacitású S1 SKU 2 GB-ot (2 000 000), napi beléptetési arányt és 60 GB-ot (60 000 000 eseményt) támogat.
 
-S2 Termékváltozat-környezetek támogatása lényegesen több esemény havonta, és lényegesen nagyobb be- és kapacitással rendelkeznek.
+Az S2 SKU-környezetek havonta több eseményt támogatnak, és lényegesen magasabb beáramlási kapacitással rendelkeznek.
 
 | SKU  | Események száma havonta  | Események száma percenként | Esemény mérete percenként  |
 |---------|---------|---------|---------|---------|
-| S1     |   30 millió   |  720    |  720 KB   |
- |S2     |   300 millió   | 7,200   | 7200 KB  |
+| S1     |   30 000 000   |  720    |  720 KB   |
+ |S2     |   300 000 000   | 7 200   | 7 200 KB  |
 
-### <a name="property-limits"></a>Ingatlankorlátok
+### <a name="property-limits"></a>Tulajdonságok korlátai
 
-GA tulajdonságkorlátok függ a termékváltozat-környezet, amely a kiválasztott. A megadott eseménytulajdonságok megfelelő JSON-, CSV- és diagramoszlopokkal rendelkeznek, amelyek a [Time Series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)programban tekinthetők meg.
+A GA-tulajdonságok korlátai a kiválasztott SKU-környezettől függenek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyek megtekinthetők a [Time Series Insights Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
 | SKU | Maximális tulajdonságok |
 | --- | --- |
-| S1 | 600 tulajdonság (oszlopok) |
-| S2 | 800 tulajdonság (oszlopok) |
+| S1 | 600 tulajdonságok (oszlopok) |
+| S2 | 800 tulajdonságok (oszlopok) |
 
 ### <a name="event-sources"></a>Eseményforrások
 
-Példányonként legfeljebb két eseményforrás támogatott. 
+A példányok száma legfeljebb két eseményforrás esetén támogatott. 
 
-* További információ az [eseményközpont-forrás hozzáadásáról.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)
-* [Konfiguráljon egy IoT hubforrást.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)
+* Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+* [IoT hub-forrás](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)konfigurálása.
 
 ### <a name="api-limits"></a>API-korlátok
 
-A Time Series Insights általános elérhetőségéhez tartozó REST API-korlátozásokat a [REST API referenciadokumentációja](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)határozza meg.
+Az általános elérhetőség Time Series Insights REST API korlátozásait a REST API dokumentációjában [találja](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)meg.

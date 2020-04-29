@@ -1,5 +1,5 @@
 ---
-title: Szövegfelolvasó tároló végpontjának lekérdezése
+title: Szöveg – beszéd tároló végpontjának lekérdezése
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81274991"
 ---
-A tároló [REST-alapú végpontAPI-kat](../rest-text-to-speech.md)biztosít. A platform-, keretrendszer- és nyelvi változatokhoz számos [mintaforráskód-projekt](https://github.com/Azure-Samples/Cognitive-Speech-TTS) áll rendelkezésre.
+A tároló [REST-alapú Endpoint API-kat](../rest-text-to-speech.md)biztosít. A platformhoz, a keretrendszerhez és a nyelvi változatokhoz számos [minta forráskód-projekt](https://github.com/Azure-Samples/Cognitive-Speech-TTS) áll rendelkezésre.
 
-A *szabványos szövegfelolvasó* tárolóval a letöltött képcímke területi beállítására és hangjára kell támaszkodnia. Ha például letöltötte `latest` a címkét, `en-US` az `JessaRUS` alapértelmezett területi beállítás és a hang. Az `{VOICE_NAME}` érv ezután lesz [`en-US-JessaRUS`](../language-support.md#standard-voices). Lásd az alábbi SSML példát:
+A *normál szöveg-beszéd* tárolóval a letöltött Képcímke területi beállítását és hangját kell használnia. Ha például letöltötte a `latest` címkét, az alapértelmezett területi beállítás a `en-US` és a `JessaRUS` hang. Az `{VOICE_NAME}` argumentum ekkor a következő [`en-US-JessaRUS`](../language-support.md#standard-voices):. Tekintse meg az alábbi példában SSML:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -27,11 +27,11 @@ A *szabványos szövegfelolvasó* tárolóval a letöltött képcímke területi
 </speak>
 ```
 
-Az *egyéni szövegfelolvasáshoz* azonban be kell szereznie a **Hang/ modell** t az egyéni [hangportálról.](https://aka.ms/custom-voice-portal) Az egyéni modellnév a hangnév szinonimája. Keresse meg a **Betanítás** lapot, és másolja `{VOICE_NAME}` a Hang **/ modellt,** amelyet argumentumként szeretne használni.
+Az *egyéni szöveg-beszéd* kapcsolathoz azonban az [Egyéni hangportálon](https://aka.ms/custom-voice-portal)kell megszereznie a **hangfelvételt/modellt** . Az egyéni modell neve szinonimája a hang nevét. Navigáljon a **képzés** lapra, és másolja a használni kívánt **hang/modell** `{VOICE_NAME}` argumentumként.
 <br><br>
-:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Egyéni hangmodell - hangnév":::
+:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Egyéni hangmodell – hang neve":::
 
-Lásd az alábbi SSML példát:
+Tekintse meg az alábbi példában SSML:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -41,7 +41,7 @@ Lásd az alábbi SSML példát:
 </speak>
 ```
 
-Készítsünk egy HTTP POST-kérelmet, amely néhány fejlécet és egy adathasznos adatot biztosít. Cserélje `{VOICE_NAME}` le a helyőrzőt a saját értékére.
+Hozzon létre egy HTTP POST-kérelmet, amely néhány fejlécet és adattartalomot biztosít. Cserélje le `{VOICE_NAME}` a helyőrzőt a saját értékére.
 
 ```curl
 curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 \
@@ -53,8 +53,8 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
 
 A parancs a következőket hajtja végre:
 
-* HTTP POST-kérelmet hoz `speech/synthesize/cognitiveservices/v1` létre a végponthoz.
-* Megadja a `Accept` fejlécet:`audio/*`
-* A további `Content-Type` információt `application/ssml+xml`a fejlécben adja meg: [Request body](../rest-text-to-speech.md#request-body).
-* A `X-Microsoft-OutputFormat` további beállításokhoz a fejlécet `riff-16khz-16bit-mono-pcm`adja meg, lásd a [hangkimenetet.](../rest-text-to-speech.md#audio-outputs)
-* A [beszédszintetizáló nyelvi (SSML)](../speech-synthesis-markup.md) kérést a `{VOICE_NAME}` végpontnak küldi.
+* Egy HTTP POST-kérelmet hoz létre a `speech/synthesize/cognitiveservices/v1` végponthoz.
+* Egy `Accept` fejlécet ad meg`audio/*`
+* A `Content-Type` fejlécének megadása `application/ssml+xml`, további információ: [kérelem törzse](../rest-text-to-speech.md#request-body).
+* A `X-Microsoft-OutputFormat` fejlécét adja `riff-16khz-16bit-mono-pcm`meg, további beállításokért lásd: [hangkimenet](../rest-text-to-speech.md#audio-outputs).
+* A [Speech szintézis Markup Language (SSML)](../speech-synthesis-markup.md) kérelem `{VOICE_NAME}` küldése a végpontnak.

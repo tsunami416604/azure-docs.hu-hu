@@ -1,6 +1,6 @@
 ---
-title: Safelist az Azure Portal URL-címeit a tűzfalon vagy a proxykiszolgálón
-description: Adja hozzá ezeket az URL-címeket a proxykiszolgáló megkerüléséhez az Azure Portallal és annak szolgáltatásaival való kommunikációhoz
+title: A tűzfal vagy a proxykiszolgáló Azure Portal URL-címeinek safelist
+description: Adja hozzá ezeket az URL-címeket a proxykiszolgáló megkerüléséhez a Azure Portal és annak szolgáltatásaival való kommunikációhoz
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255048"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist az Azure Portal URL-címeit a tűzfalon vagy a proxykiszolgálón
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>A tűzfal vagy a proxykiszolgáló Azure Portal URL-címeinek safelist
 
-Konfigurálhatja a helyszíni biztonsági eszközöket, hogy megkerüljék az Azure Portal URL-címeire vonatkozó biztonsági korlátozásokat. Ez a konfiguráció javíthatja a helyi vagy nagy kiterjedésű hálózat és az Azure-felhő közötti teljesítményt és kapcsolatot.
+A helyszíni biztonsági eszközöket a Azure Portal URL-címekre vonatkozó biztonsági korlátozások megkerülésére állíthatja be. Ez a konfiguráció növelheti a teljesítményt és a kapcsolatot a helyi vagy a széles körű hálózat és az Azure-felhő között.
 
-A hálózati rendszergazdák gyakran telepítenek proxykiszolgálókat, tűzfalakat vagy más eszközöket. Ezek az eszközök segítenek a biztonságos és arról, hogy a felhasználók hogyan férnek hozzá az internethez. A felhasználók védelmét szolgáló szabályok néha blokkolhatják vagy lelassíthatják a jogszerű, üzleti vonatkozású internetes forgalmat. Ez a forgalom magában foglalja az Ön és az Azure közötti kommunikációt. A hálózat és az Azure Portal és szolgáltatásai közötti kapcsolat optimalizálása érdekében javasoljuk, hogy adja hozzá az Azure Portal URL-címeit a biztonságos listához.
+A hálózati rendszergazdák gyakran proxykiszolgálót, tűzfalakat vagy más eszközöket helyeznek üzembe. Ezek az eszközök segítenek a felhasználók hozzáférésének biztosításában és felügyeletében. A felhasználók biztosítására tervezett szabályok időnként letilthatják vagy lelassítják az üzleti kapcsolatban álló internetes forgalmat. Ez a forgalom magában foglalja az Ön és az Azure közötti kommunikációt. A hálózat és a Azure Portal és a szolgáltatásai közötti kapcsolat optimalizálása érdekében javasoljuk, hogy Azure Portal URL-címeket adjon hozzá a safelist.
 
-## <a name="azure-portal-urls-for-proxy-bypass"></a>Az Azure portal URL-címei a proxymegkerüléshez
+## <a name="azure-portal-urls-for-proxy-bypass"></a>A proxy megkerülésének Azure Portal URL-címei
 
-Az Azure Portal biztonságos listájához tartozó URL-végpontok az Azure-felhőre vonatkoznak, ahol a szervezet telepítve van. Ha engedélyezni szeretné, hogy a hálózati forgalom ezekre a végpontokra megkerülje a korlátozásokat, válassza ki a felhőt. Ezután adja hozzá az URL-címek listáját a proxykiszolgálóhoz vagy a tűzfalhoz.
+A Azure Portal safelist URL-végpontok kifejezetten az Azure-felhőre vonatkoznak, ahol a szervezet üzembe van helyezve. Ha engedélyezni szeretné a végpontok felé irányuló hálózati forgalmat a korlátozások megkerüléséhez, válassza ki a felhőt. Ezután adja hozzá az URL-címek listáját a proxykiszolgálóhoz vagy a tűzfalhoz.
 
 #### <a name="public-cloud"></a>[Nyilvános felhő](#tab/public-cloud)
 
@@ -50,7 +50,7 @@ Az Azure Portal biztonságos listájához tartozó URL-végpontok az Azure-felh�
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloud"></a>[Az Egyesült Államok kormányzati felhője](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[Egyesült államokbeli kormányzati felhő](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -63,7 +63,7 @@ Az Azure Portal biztonságos listájához tartozó URL-végpontok az Azure-felh�
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloud"></a>[Kína kormány cloud](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[Kínai kormányzati felhő](#tab/china-government-cloud)
 
 ```
 *.azure.cn
@@ -77,6 +77,6 @@ Az Azure Portal biztonságos listájához tartozó URL-végpontok az Azure-felh�
 ---
 
 > [!NOTE]
-> Az ezekre a végpontokra irányuló forgalom szabványos TCP-portokat használ http (80) és HTTPS (443) esetén.
+> A végpontok felé irányuló forgalom szabványos TCP-portokat használ a HTTP (80) és a HTTPS (443) számára.
 >
 >

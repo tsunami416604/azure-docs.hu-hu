@@ -1,86 +1,86 @@
 ---
-title: Rendszercsomópont-készletek használata az Azure Kubernetes-szolgáltatásban (AKS)
-description: Ismerje meg, hogyan hozhat létre és kezelhet rendszercsomópont-készleteket az Azure Kubernetes-szolgáltatásban (AKS)
+title: Rendszercsomópont-készletek használata az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg, hogyan hozhat létre és kezelhet rendszercsomópont-készleteket az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
 ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259068"
 ---
-# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes-szolgáltatásban (AKS)
+# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
-Az Azure Kubernetes-szolgáltatásban (AKS) az azonos konfigurációs csomópontok *csomópontkészletekbe*vannak csoportosítva. A csomópontkészletek tartalmazzák az alkalmazásokat futtató mögöttes virtuális gépeket. A rendszercsomópont-készletek és a felhasználói csomópontkészletek két különböző csomópontkészlet-mód az AKS-fürtökhöz. A rendszercsomópont-készletek elsődleges célja a kritikus rendszerpodok, például a CoreDNS és az alagútfront üzemeltetése. A felhasználói csomópontkészletek elsődleges célja az alkalmazáspodok üzemeltetése. Az alkalmazáspodok azonban ütemezhetők a rendszercsomópont-készleteken, ha csak egy készletet szeretne az AKS-fürtben. Minden AKS-fürtnek legalább egy legalább egy csomónkkal rendelkező rendszercsomópont-készletet kell tartalmaznia. 
+Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. A csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A rendszercsomópont-készletek és a felhasználói csomópontok készletei két különböző Node Pool-mód az AK-fürtökhöz. A rendszercsomópont-készletek a kritikus rendszerhüvelyek, például a CoreDNS és a tunnelfront üzemeltetésének elsődleges célját szolgálják ki. A felhasználói csomópontok készletei az alkalmazás-hüvelyek üzemeltetésének elsődleges céljaként szolgálnak. Az Application hüvelyek azonban a rendszercsomópont-készletekbe ütemezhetők, ha csak egy készletet szeretne használni az AK-fürtben. Minden AK-fürtnek legalább egy csomóponttal rendelkező rendszercsomópont-készletet kell tartalmaznia. 
 
 > [!Important]
-> Ha az AKS-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, azt javasoljuk, hogy legalább három csomópontot használjon a csomópontkészlethez.
+> Ha az AK-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, javasoljuk, hogy legalább három csomópontot használjon a csomópont-készlethez.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Az Azure CLI 2.3.1-es vagy újabb verziójára van szükség telepítve és konfigurálva. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+* Szüksége lesz az Azure CLI 2.3.1-es vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="limitations"></a>Korlátozások
 
-A rendszercsomópont-készleteket támogató AKS-fürtök létrehozásakor és kezelésekor a következő korlátozások érvényesek.
+A rendszercsomópont-készleteket támogató AK-fürtök létrehozásakor és kezelésekor a következő korlátozások érvényesek.
 
-* Lásd: [Kvóták, virtuálisgép-méretkorlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (AKS).][quotas-skus-regions]
-* Az AKS-fürt kell építeni a virtuális gép méretezési készletek a virtuális gép típusa.
-* A csomópontkészlet neve csak kisalfanumerikus karaktereket tartalmazhat, és kisbetűvel kell kezdődnie. Linux csomópontkészletek esetén a hossznak 1 és 12 karakter között kell lennie. Windows-csomópontkészletek esetén a hossznak 1 és 6 karakter között kell lennie.
+* Tekintse [meg a kvótákat, a virtuális gépek méretére vonatkozó korlátozásokat és a régió elérhetőségét az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions].
+* Az AK-fürtöt virtuálisgép-méretezési csoportokkal kell felépíteni.
+* A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie. Windows-csomópontos készletek esetén a hossznak 1 és 6 karakter közöttinek kell lennie.
 
-## <a name="system-and-user-node-pools"></a>Rendszer- és felhasználói csomópontkészletek
+## <a name="system-and-user-node-pools"></a>Rendszer-és felhasználói csomópontok készletei
 
-A rendszercsomópont-készletcsomópont-csomópontok címkéje **kubernetes.azure.com/mode: rendszer**. Minden AKS-fürt legalább egy rendszercsomópont-készletet tartalmaz. A rendszercsomópont-készletekre a következő korlátozások vonatkoznak:
+A rendszercsomópont-készlet csomópontjain a **kubernetes.Azure.com/Mode címke: System**. Minden AK-fürt legalább egy rendszercsomópont-készletet tartalmaz. A rendszercsomópont-készletek a következő korlátozásokkal rendelkeznek:
 
-* Az osType rendszerkészleteknek Linuxnak kell lenniük.
-* Az osType felhasználói csomópontkészletek linuxos vagy Windows-típusúak lehetnek.
-* A rendszerkészleteknek legalább egy csomópontot kell tartalmazniuk, és a felhasználói csomópontkészletek nulla vagy több csomópontot tartalmazhatnak.
-* A rendszercsomópont-készletek hez legalább 2 vCPU-t és 4 GB memóriát igénylő virtuálisgép-termékváltozat szükséges.
-* A rendszercsomópont-készleteknek legalább 30 podot kell támogatniuk a [podok minimális és maximális értékképletében leírtak szerint.][maximum-pods]
-* A direkt csomópontkészletek felhasználói csomópontkészleteket igényelnek.
+* A Rendszerkészletek osType Linux rendszernek kell lennie.
+* A felhasználói csomópont-készletek osType lehet Linux vagy Windows.
+* A rendszerkészleteknek legalább egy csomópontot tartalmazniuk kell, és a felhasználói csomópontok készletei nulla vagy több csomópontot is tartalmazhatnak.
+* A rendszercsomópont-készletek legalább 2 vCPU és 4 GB memóriával rendelkező VM SKU-t igényelnek.
+* A rendszercsomópont-készleteknek legalább 30 hüvelyt kell támogatniuk, a [hüvelyek minimális és maximális értékének képlete][maximum-pods]szerint.
+* A helyszíni csomópont-készletek felhasználói csomópont-készleteket igényelnek.
 
-A következő műveleteket teheti meg csomópontkészletekkel:
+A következő műveleteket hajthatja végre a Node Pools használatával:
 
-* Módosítsa a rendszercsomópont-készletet felhasználói csomópontkészletté, feltéve, hogy egy másik rendszercsomópont-készlet telje meg az AKS-fürtben.
-* Felhasználói csomópontkészlet rendszercsomópont-készletté történő módosítása.
-* Felhasználói csomópontkészletek törlése.
-* Törölheti a rendszercsomópont-készleteket, feltéve, hogy egy másik rendszercsomópont-készlet telje el az AKS-fürtben.
-* Egy AKS-fürt több rendszercsomópont-készlettel is rendelkezhet, és legalább egy rendszercsomópont-készletet igényel.
+* Módosítsa a rendszercsomópont-készletet felhasználói csomópont-készletként, ha rendelkezik egy másik rendszercsomópont-készlettel, hogy a helyére kerüljön az AK-fürtben.
+* Felhasználói csomópont-készlet módosítása rendszercsomópont-készletként.
+* Felhasználói csomópontok készletének törlése.
+* A rendszercsomópont-készleteket törölheti, ha rendelkezik egy másik rendszercsomópont-készlettel, hogy az AK-fürtön legyen a helyük.
+* Az AK-fürtök több rendszercsomópont-készlettel rendelkezhetnek, és legalább egy rendszercsomópont-készletet igényelnek.
 
-## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Új AKS-fürt létrehozása rendszercsomópont-készlettel
+## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Új AK-fürt létrehozása rendszercsomópont-készlettel
 
-Új AKS-fürt létrehozásakor automatikusan létrehoz egy egyetlen csomópontos rendszercsomópont-készletet. A kezdeti csomópontkészlet alapértelmezés szerint rendszertípusú. Amikor új csomópontkészleteket hoz létre az aks nodepool add, ezek a csomópontkészletek felhasználói csomópontkészletek, kivéve, ha kifejezetten megadja a mód paramétert.
+Amikor új AK-fürtöt hoz létre, a rendszer automatikusan létrehoz egy egyetlen csomóponttal rendelkező rendszercsomópont-készletet. A kezdeti csomópont-készlet alapértelmezett értéke rendszer típusú üzemmód. Amikor új csomópont-készleteket hoz létre az az AK nodepool Add paranccsal, ezek a csomópont-készletek a felhasználói csomópontok készletei, kivéve, ha explicit módon megadja a Mode paramétert.
 
-A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* régióban.
+A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa létrehoz egy *myAKSCluster* nevű fürtöt, amelyegy csomópontot tartalmazó rendszerkészlettel rendelkezik. Az éles számítási feladatok hoz győződjön meg arról, hogy legalább három csomóponton rendszercsomópont-készleteket használ. Ez a művelet több percig is eltarthat.
+Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy olyan rendszerkészlettel, amely egy csomópontot tartalmaz. Az éles számítási feladatokhoz győződjön meg arról, hogy legalább három csomóponttal rendelkező rendszercsomópont-készleteket használ. A művelet végrehajtása több percet is igénybe vehet.
 
 ```azurecli-interactive
 az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Rendszercsomópont-készlet hozzáadása meglévő AKS-fürthöz
+## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Rendszercsomópont-készlet hozzáadása meglévő AK-fürthöz
 
-Egy vagy több rendszercsomópont-készletet adhat hozzá a meglévő AKS-fürtökhöz. A következő parancs hozzáad egy módtípusú csomópontkészletet, amelynek alapértelmezett száma három csomópont.
+Egy vagy több rendszercsomópont-készletet is hozzáadhat meglévő AK-fürtökhöz. A következő parancs egy üzemmód típusú rendszer csomópont-készletét adja meg, amelynek alapértelmezett száma három csomópont.
 
 ```azurecli-interactive
 az aks nodepool add -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
 ```
-## <a name="show-details-for-your-node-pool"></a>A csomópontkészlet részleteinek megjelenítése
+## <a name="show-details-for-your-node-pool"></a>A Node-készlet részleteinek megjelenítése
 
-A csomópontkészlet adatait a következő paranccsal ellenőrizheti.  
+A csomópont-készlet részleteit a következő paranccsal tekintheti meg.  
 
 ```azurecli-interactive
 az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 ```
 
-A rendszercsomópont-készletekhez **rendszertípusú** mód van definiálva, a felhasználói csomópontkészletekhez **pedig Felhasználó** mód.
+A System Node-készletekhez egy **rendszer** típusú mód van definiálva, és a felhasználói csomópontok készletei esetében **felhasználói** üzemmód van megadva.
 
 ```output
 {
@@ -112,17 +112,17 @@ A rendszercsomópont-készletekhez **rendszertípusú** mód van definiálva, a 
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>Rendszer- és felhasználói csomópontkészletek frissítése
+## <a name="update-system-and-user-node-pools"></a>Rendszer-és felhasználói csomópont-készletek frissítése
 
-A rendszer- és a felhasználói csomópontkészletek módjait is módosíthatja. A rendszercsomópont-készletet csak akkor módosíthatja felhasználói készletté, ha az AKS-fürtön már létezik egy másik rendszercsomópont-készlet.
+A rendszer-és a felhasználói csomópont-készletek üzemmódját is megváltoztathatja. A rendszercsomópont-készleteket csak akkor módosíthatja felhasználói készletre, ha már létezik egy másik rendszercsomópont-készlet az AK-fürtön.
 
-Ez a parancs a rendszercsomópont-készletet felhasználói csomópontkészletté módosítja.
+Ez a parancs egy rendszercsomópont-készletet módosít egy felhasználói csomópont-készletre.
 
 ```azurecli-interactive
 az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode user
 ```
 
-Ez a parancs egy felhasználói csomópontkészletet rendszercsomópont-készletté változtat.
+Ez a parancs egy felhasználói csomópont-készletet módosít egy rendszercsomópont-készletre.
 
 ```azurecli-interactive
 az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
@@ -131,9 +131,9 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 ## <a name="delete-a-system-node-pool"></a>Rendszercsomópont-készlet törlése
 
 > [!Note]
-> Ha az API 2020-03-02-es verziójá előtt szeretné használni a rendszercsomópont-készleteket az AKS-fürtökön, adjon hozzá egy új rendszercsomópont-készletet, majd törölje az eredeti alapértelmezett csomópontkészletet.
+> Ha a rendszercsomópont-készleteket az AK-fürtökön a 2020-03-02-es API-verzió előtt szeretné használni, vegyen fel egy új rendszercsomópont-készletet, majd törölje az eredeti alapértelmezett csomópont-
 
-Korábban nem lehetett törölni a rendszercsomópont-készletet, amely az AKS-fürt kezdeti alapértelmezett csomópontkészlete volt. Most már rugalmasan törölheti a csomópontok készletét a fürtökből. Mivel az AKS-fürtöknek legalább egy rendszercsomópont-készletre van szükségük, legalább két rendszercsomópont-készlettel kell rendelkeznie az AKS-fürtön, mielőtt törölheti az egyiket.
+Korábban nem lehetett törölni a rendszercsomópont-készletet, amely a kezdeti alapértelmezett Node-készlet volt egy AK-fürtben. Mostantól rugalmasan törölheti a fürt összes csomópont-készletét. Mivel az AK-fürtök legalább egy rendszercsomópont-készletet igényelnek, legalább két rendszercsomópont-készlettel kell rendelkeznie az AK-fürtön, mielőtt törölni lehetne őket.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
@@ -141,7 +141,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet rendszercsomópont-készleteket egy AKS-fürtben. A több csomópontkészlet használatáról további információt a Több csomópontkészlet használata című [témakörben talál.][use-multiple-node-pools]
+Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet rendszercsomópont-készleteket egy AK-fürtben. További információ a több csomópontos készletek használatáról: [több csomópontos készlet használata][use-multiple-node-pools].
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
