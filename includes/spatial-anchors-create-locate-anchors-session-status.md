@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: bb75ea0f8eb3fcf85a06cadd68ae111d51369891
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76694316"
 ---
-Ahogy azt korábban már leírtuk, elegendő környezeti adatokra van szükség, mielőtt új felhőtérbeli horgonyt próbálna létrehozni. Ez `ReadyForCreateProgress` azt jelenti, hogy 1 felett kell `RecommendedForCreateProgress` lennie, bár javasoljuk, hogy várjon, amíg 1 felett van.
+A korábban leírtaknak megfelelően elegendő környezeti adatmennyiségre van szükség, mielőtt új Felhőbeli térbeli horgonyt hozna létre. Ez azt `ReadyForCreateProgress` jelenti, hogy 1-nél nagyobbnak kell lennie, `RecommendedForCreateProgress` de azt javasoljuk, hogy várjon, amíg erre nem kerül sor.

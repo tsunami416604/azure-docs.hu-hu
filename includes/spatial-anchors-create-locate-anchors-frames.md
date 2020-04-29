@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 505670e719e86086dbf7721b4298ec913220f928
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76694494"
 ---
-## <a name="provide-frames-to-the-session"></a>Keretek biztosítása a munkamenethez
+## <a name="provide-frames-to-the-session"></a>Keretek megadása a munkamenet számára
 
-A térbeli horgonymunkamenet úgy működik, hogy feltérképezi a felhasználó körüli területet. Ezzel segít meghatározni, hogy hol horgonyok találhatók. A mobil platformok (iOS & Android) natív hívást igényelnek a kameraképhez, hogy képkockákat szerezzenek be a platform AR-könyvtárából. Ezzel szemben a HoloLens folyamatosan szamárkítja a környezetet, így nincs szükség olyan konkrét hívásra, mint a Mobilon.
+A térbeli horgony munkamenete úgy működik, hogy a területet a felhasználó köré térképezi fel. Ez segít meghatározni, hogy hol találhatók a horgonyok. A mobil platformok (iOS & Android) natív hívást igényelnek a kamera hírcsatornájának, hogy keretet kapjanak a platform AR könyvtárából. Ezzel szemben a HoloLens folyamatosan ellenőrzi a környezetet, így a mobilon nem szükséges egy adott hívás.

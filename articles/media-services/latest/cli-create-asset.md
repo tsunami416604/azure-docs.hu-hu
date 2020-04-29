@@ -1,5 +1,5 @@
 ---
-title: Tartalom feltöltése Azure Media Services-eszközre az Azure CLI használatával
+title: Tartalom feltöltése egy Azure Media Services eszközre az Azure CLI használatával
 description: A jelen témakörben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre Media Services-objektumot, melybe tartalmat tud feltölteni.
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 0c24464050d0beee120dcb234582a464d6245270
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76310645"
 ---
 # <a name="cli-example-create-an-asset"></a>CLI-példa: Objektum létrehozása
@@ -27,7 +27,7 @@ A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre M
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -37,4 +37,4 @@ A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre M
 
 ## <a name="next-steps"></a>További lépések
 
-[A Media Services áttekintése](media-services-overview.md)
+[Media Services áttekintése](media-services-overview.md)

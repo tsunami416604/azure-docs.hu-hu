@@ -11,16 +11,16 @@ ms.custom: include file
 ms.date: 01/15/2020
 ms.author: diberry
 ms.openlocfilehash: 7ef219e6b5f7547029612ec3898efec51abd4712
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122893"
 ---
-## <a name="change-the-model-update-frequency"></a>A modellfrissítés gyakoriságának módosítása
+## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
-Az Azure Portalon a Configuration **(Szabó)** erőforrás a konfigurációs lapon módosítsa a **modell frissítési gyakoriságát** 10 másodpercre. Ez a rövid időtartam gyorsan betanítja a szolgáltatást, lehetővé téve, hogy lássa, hogyan változik a legfelső művelet az egyes iterációkhoz.
+A Azure Portal a **konfiguráció** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez a rövid időtartam gyorsan betanítja a szolgáltatást, így megtekintheti, hogyan változik az egyes iterációk legfelső szintű művelete.
 
-![Modellfrissítési gyakoriság módosítása](../media/settings/configure-model-update-frequency-settings.png)
+![Modell frissítési gyakoriságának módosítása](../media/settings/configure-model-update-frequency-settings.png)
 
-Amikor egy Personalizer hurok első példányosított, nincs modell, mivel nem volt Jutalom API-hívások a vonat. A ranghívások minden elemesetében egyenlő valószínűségeket adnak vissza. Az alkalmazás továbbra is rangsorolja a tartalmat a RewardActionId kimenetével.
+Ha a rendszer először létrehoz egy személyre szabott hurkot, nem áll rendelkezésre modell, mert nem áll rendelkezésre jutalom API-hívás a betanításhoz. A rangsorban megjelenő hívások az egyes elemek esetében azonos valószínűségeket adnak vissza. Az alkalmazásnak mindig a RewardActionId kimenetével kell rangsorolnia a tartalmat.

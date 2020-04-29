@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Hozzon létre egy webes alkalmazást, amely elindítja a Magával ragadó olvasót a Node.js'
+title: 'Gyors útmutató: hozzon létre egy webalkalmazást, amely a Node. js-szel elindítja a magával ragadó olvasót'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban teljesen új webalkalmazást hozhat létre, és hozzáadhatja a Magával ragadó Olvasó API-funkciót.
+description: Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és hozzáadhatja a magával ragadó olvasó API funkcióját.
 author: pasta
 manager: nitinme
 ms.service: cognitive-services
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: 749e75fed409632c613713a49154e4cd8dc265b3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75946326"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Rövid útmutató: Hozzon létre egy webes alkalmazást, amely elindítja a Magával ragadó olvasót (Node.js)
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Rövid útmutató: hozzon létre egy webalkalmazást, amely elindítja a lebilincselő olvasót (node. js)
 
-A [Magával ragadó olvasó](https://www.onenote.com/learningtools) egy inkluzívan tervezett eszköz, amely bevált technikákat valósít meg az olvasás megértésének javítása érdekében.
+A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
-Ebben a rövid útmutatóban teljesen új webes alkalmazást hozhat létre, és integrálhatja a Magával ragadó olvasót a Magával ragadó olvasó SDK használatával. A rövid útmutató teljes munkamintája [itt](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)érhető el.
+Ebben a rövid útmutatóban egy webalkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót a saját olvasó SDK használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)egy teljes körű működő minta érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Active Directory-hitelesítéshez konfigurált magával ragadó reader-erőforrás. A beállításhoz kövesse [az alábbi utasításokat.](./how-to-create-immersive-reader.md) A környezeti tulajdonságok konfigurálásakor szüksége lesz néhány itt létrehozott értékre. Mentse a munkamenet kimenetét egy szöveges fájlba későbbi használatra.
-* [Node.js](https://nodejs.org/) és [fonal](https://yarnpkg.com)
-* Egy IDE, mint például a [Visual Studio kód](https://code.visualstudio.com/)
+* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](./how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
+* [Node. js](https://nodejs.org/) és [fonal](https://yarnpkg.com)
+* IDE, például a [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Node.js webalkalmazás létrehozása expressz elsajátítva
+## <a name="create-a-nodejs-web-app-with-express"></a>Node. js-alapú Webalkalmazás létrehozása az Express-szel
 
-Hozzon létre egy Node.js webalkalmazást az `express-generator` eszközzel.
+Hozzon létre egy Node. js-webalkalmazást az `express-generator` eszközzel.
 
 ```bash
 npm install express-generator -g
@@ -40,7 +40,7 @@ express --view=pug quickstart-nodejs
 cd quickstart-nodejs
 ```
 
-Telepítse a fonalfüggőségeket, és `request` `dotenv`adja hozzá a függőségeket és a , amelyeket a program később a rövid útmutatóban fog használni.
+Telepítse a fonal-függőségeket, `request` és `dotenv`adja hozzá a függőségeket, amelyeket később a rövid útmutatóban fog használni.
 
 ```bash
 yarn
@@ -52,8 +52,8 @@ yarn add dotenv
 
 ### <a name="configure-authentication-values"></a>Hitelesítési értékek konfigurálása
 
-Hozzon létre egy új fájlt, amelynek neve _.env_ a projekt gyökerében. Illessze be a következő kódot, amely a Immersive Reader erőforrás létrehozásakor megadott értékeket adja meg.
-Ne adjon meg idézőjeleket vagy a "{" és "}" karaktereket.
+Hozzon létre egy _. env_ nevű új fájlt a projekt gyökerében. Illessze be a következő kódot a mezőbe, és adja meg azokat az értékeket, amelyeket a magával ragadó olvasó erőforrás létrehozásakor adott meg.
+Ne tartalmazzon idézőjeleket vagy a "{" és "}" karaktereket.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -62,18 +62,18 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a forrásvezérlőbe, mivel olyan titkos kulcsokat tartalmaz, amelyeket nem szabad nyilvánosságra hozni.
+Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni.
 
-Ezután nyissa meg _az app.js fájlt,_ és adja hozzá a következőket a fájl tetejéhez. Ezzel betölti az .env fájlban környezeti változóként definiált tulajdonságokat a csomópontba.
+Ezután nyissa meg az _app. js_ fájlt, és adja hozzá a következőt a fájl elejéhez. Ezzel betölti a. env fájlban definiált tulajdonságokat környezeti változókként a csomópontba.
 
 ```javascript
 require('dotenv').config();
 ```
 
-### <a name="update-the-router-to-acquire-the-token"></a>Frissítse az útválasztót a token beszerzéséhez
-Nyissa meg a _routes\index.js_ fájlt, és cserélje le az automatikusan létrehozott kódot a következő kódra.
+### <a name="update-the-router-to-acquire-the-token"></a>Az útválasztó frissítése a jogkivonat beszerzéséhez
+Nyissa meg a _routes\index.js_ fájlt, és cserélje le az automatikusan generált kódot a következő kódra.
 
-Ez a kód létrehoz egy API-végpontot, amely beszerzi az Azure AD hitelesítési jogkivonatot az egyszerű szolgáltatás jelszavával. Az altartományt is lekéri. Ezután egy jogkivonatot és altartományt tartalmazó objektumot ad vissza.
+Ez a kód egy olyan API-végpontot hoz létre, amely Azure AD-hitelesítési jogkivonatot szerzi be a szolgáltatás egyszerű jelszava használatával. Az altartományt is lekéri. Ezután visszaadja a jogkivonatot és altartományt tartalmazó objektumot.
 
 ```javascript
 var express = require('express');
@@ -125,11 +125,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-A **GetTokenAndSubdomain** API-végpontot valamilyen hitelesítési forma (például [OAuth)](https://oauth.net/2/)mögött kell biztosítani annak érdekében, hogy illetéktelen felhasználók ne szerezzenek be jogkivonatokat a Magával ragadó olvasó szolgáltatás és a számlázás ellen; hogy a munka túlmutat a rövid útmutató hatókörén.
+A **GetTokenAndSubdomain** API-végpontot biztonságossá kell tennie valamilyen hitelesítési módszer (például [OAuth](https://oauth.net/2/)) mögött, hogy megakadályozza a jogosulatlan felhasználók számára a jogkivonatok beszerzését a felhasználatlan olvasó szolgáltatás és a számlázás során. Ez a rövid útmutató hatókörén kívül esik.
 
-## <a name="add-sample-content"></a>Mintatartalom hozzáadása
+## <a name="add-sample-content"></a>Minta tartalmának hozzáadása
 
-Most hozzáadjuk a mintatartalmat ehhez a webalkalmazáshoz. Nyissa meg _a nézeteket\index.pug,_ és cserélje le az automatikusan létrehozott kódot erre a mintára:
+Most hozzáadunk egy minta tartalmat ehhez a webalkalmazáshoz. Nyissa meg a _views\index.PUG_ , és cserélje le az automatikusan generált kódot a következő mintára:
 
 ```pug
 doctype html
@@ -235,26 +235,26 @@ script(type="text/javascript").
 ```
 
 
-Figyelje meg, hogy az egész szöveg nek van **egy lang** attribútuma, amely leírja a szöveg nyelveit. Ez az attribútum segít a Magával ragadó olvasó nak a megfelelő nyelvi és nyelvtani funkciók biztosításában.
+Figyelje meg, hogy az összes szöveg **lang** attribútummal rendelkezik, amely a szöveg nyelveit írja le. Ez az attribútum segíti a magával ragadó olvasót a megfelelő nyelvi és nyelvtani funkciók biztosításában.
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-A webalkalmazás unk készen áll. Indítsa el az alkalmazást a következő futtatásával:
+A webalkalmazás most már készen áll. Indítsa el az alkalmazást a futtatásával:
 
 ```bash
 npm start
 ```
 
-Nyissa meg a _http://localhost:3000_böngészőt, és keresse meg a t. A következőnek kell megjelennie:
+Nyissa meg a böngészőt _http://localhost:3000_, és navigáljon a gombra. A következőnek kell megjelennie:
 
-![Mintaalkalmazás](./media/quickstart-nodejs/1-buildapp.png)
+![Minta alkalmazás](./media/quickstart-nodejs/1-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>Indítsa el a magával ragadó olvasót
+## <a name="launch-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
-Ha a "Magával ragadó olvasó" gombra kattint, látni fogja a Magával ragadó olvasót, amelyet az oldalon lévő tartalommal indít.
+Ha a "magára olvasó" gombra kattint, megjelenik a megjelenő, az oldalon található tartalommal ellátott olvasó.
 
 ![Modern olvasó](./media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel a [magával ragadó Reader SDK-t](https://github.com/microsoft/immersive-reader-sdk) és a [magával ragadó Reader SDK-referenciát](./reference.md)
+* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 3f92e0515c9e8218b29149a3a33383f49eae068d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264591"
 ---
 > [!div class="nextstepaction"]
-> [C++ minták felfedezése a GitHubon](https://aka.ms/speech/github-cpp)
+> [A C++ minták megismerése a GitHubon](https://aka.ms/speech/github-cpp)

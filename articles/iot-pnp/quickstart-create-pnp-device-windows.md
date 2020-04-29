@@ -1,6 +1,6 @@
 ---
-title: IoT Plug and Play előzetes verziójú eszköz (Windows) létrehozása | Microsoft dokumentumok
-description: Eszközképességi modell használata eszközkód létrehozásához. Ezután futtassa az eszközkódot, és tekintse meg az eszköz csatlakozik az IoT Hubhoz.
+title: IoT-Plug and Play előnézeti eszköz (Windows) létrehozása | Microsoft Docs
+description: Eszköz-képesség modell használata az eszköz kódjának létrehozásához. Ezután futtassa az eszköz kódját, és tekintse meg az eszközt a IoT Hubhoz való kapcsolódáshoz.
 author: miagdp
 ms.author: miag
 ms.date: 12/30/2019
@@ -9,48 +9,48 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75867493"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Gyorsútmutató: IoT Plug and Play előzetes verziójú eszköz (Windows) létrehozásához használjon eszközképesség-modellt
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Gyors útmutató: eszköz-képesség modell használata IoT Plug and Play előnézeti eszköz (Windows) létrehozásához
 
 [!INCLUDE [iot-pnp-quickstarts-1-selector.md](../../includes/iot-pnp-quickstarts-1-selector.md)]
 
-Az _eszközképességi modell_ (DCM) az IoT Plug and Play eszközök képességeit írja le. A DCM gyakran kapcsolódik egy termékváltozathoz. A DCM-ben definiált képességek újrafelhasználható felületekbe vannak rendezve. A DCM-ből létrehozott csontváz eszközkód. Ez a rövid útmutató bemutatja, hogyan hozhat létre IoT Plug and Play eszközt a Windows rendszeren a VS Code használatával egy DCM használatával.
+Az _eszköz képességi modellje_ (DCM) ismerteti a IoT Plug and Play eszköz képességeit. A DCM gyakran társítva van egy termék SKU-hoz. A DCM-ben meghatározott képességek újrafelhasználható felületekbe vannak rendezve. A DCM-eszköz kódját létrehozhatja a DCM-ből. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a VS Code-t a Windowson egy IoT Plug and Play-eszköz létrehozásához DCM használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató végrehajtásához a következő szoftvert kell telepítenie a helyi számítógépre:
+A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket a helyi gépre:
 
-* **C++ buildeszközökkel** és **NuGet csomagkezelői összetevők** munkaterheléseivel [fejlesztőeszközök](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) kelhet létre a Visual Studio számára. Vagy ha már rendelkezik [visual studio (közösségi, professzionális vagy nagyvállalati)](https://visualstudio.microsoft.com/downloads/) 2019,2017 vagy 2015 azonos számítási feladatok telepítve.
+* [Hozzon létre eszközöket a Visual studióhoz](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) a **C++ Build Tools** és a **NuGet Package Manager-összetevő** számítási feladataival. Ha már rendelkezik a [Visual Studióval (Közösség, Professional vagy Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 vagy 2015-val, és ugyanazokat a számítási feladatokat telepítette.
 * [Git](https://git-scm.com/download/).
-* [CMake](https://cmake.org/download/).
-* [Visual Studio kód](https://code.visualstudio.com/).
+* [CMAK](https://cmake.org/download/).
+* [Visual Studio Code](https://code.visualstudio.com/).
 
 ### <a name="install-azure-iot-tools"></a>Az Azure IoT-eszközök telepítése
 
-Az alábbi lépésekkel telepítheti az [Azure IoT Tools for VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) bővítménycsomagot:
+Az alábbi lépéseket követve telepítheti a VS Code bővítmény-csomaghoz készült [Azure IoT-eszközöket](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) :
 
-1. A VS-kód ban válassza a **Bővítmények** lapot.
-1. Keresse meg az **Azure IoT-eszközöket.**
+1. A VS Code-ban válassza a **kiterjesztések** lapot.
+1. Keresse meg az **Azure IoT-eszközöket**.
 1. Válassza az **Install** (Telepítés) lehetőséget.
 
-### <a name="install-the-azure-iot-explorer"></a>Az Azure IoT-felfedező telepítése
+### <a name="install-the-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése
 
-Töltse le és telepítse az **Azure IoT Explorer** legújabb kiadását az eszköz [tárházlapjáról,](https://github.com/Azure/azure-iot-explorer/releases) válassza ki az .msi fájlt az "Eszközök" alatt a legújabb frissítéshez.
+Töltse le és telepítse az **Azure IoT Explorer** legújabb kiadását az eszköz [tárházának](https://github.com/Azure/azure-iot-explorer/releases) oldaláról, ehhez válassza ki az. msi fájlt a legutóbbi frissítéshez az "eszközök" területen.
 
-### <a name="get-the-connection-string-for-your-company-model-repository"></a>A vállalati modelltárház kapcsolati karakterláncának beszereznie
+### <a name="get-the-connection-string-for-your-company-model-repository"></a>A vállalati modell adattárához tartozó kapcsolatok karakterláncának beolvasása
 
-A vállalati _modelltárház kapcsolati karakterláncát_ az [Azure Certified for IoT portálportálon](https://preview.catalog.azureiotsolutions.com) találhatja meg, ha microsoftos munkahelyi vagy iskolai fiókkal, vagy ha rendelkezik ilyennel, a Microsoft-partnerazonosítójával jelentkezik be. Miután bejelentkezett, válassza **a Vállalati tárház** lehetőséget, majd **a Kapcsolati karakterláncokat.**
+A _vállalati modell adattárának kapcsolati karakterláncát_ az [Azure Certified for IoT portál](https://preview.catalog.azureiotsolutions.com) portálon találja, ha Microsoft munkahelyi vagy iskolai fiókkal jelentkezik be, vagy ha rendelkezik Microsoft partner-azonosítóval. A bejelentkezést követően válassza a **vállalati tárház** , majd a **kapcsolatok karakterláncok**lehetőséget.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Futtassa a következő parancsot az _IoT hub kapcsolati karakterláncának_ lekérnia a hubhoz (megjegyzés későbbi használatra):
+Futtassa a következő parancsot a hub _IoT hub-beli kapcsolódási karakterláncának_ lekéréséhez (jegyezze fel később a használatra):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -58,9 +58,9 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
-Ebben a rövid útmutatóban a [Vcpkg-könyvtárkezelővel](https://github.com/microsoft/vcpkg) telepítheti az Azure IoT C-eszköz SDK-t a fejlesztői környezetben.
+Ebben a rövid útmutatóban a [Vcpkg](https://github.com/microsoft/vcpkg) Library Manager használatával telepítheti az Azure IoT C Device SDK-t a fejlesztői környezetbe.
 
-1. Nyisson meg egy parancssort. A Vcpkg telepítéséhez hajtsa végre a következő parancsot:
+1. Nyisson meg egy parancssort. Futtassa a következő parancsot a Vcpkg telepítéséhez:
 
     ```cmd
     git clone https://github.com/Microsoft/vcpkg.git
@@ -69,71 +69,71 @@ Ebben a rövid útmutatóban a [Vcpkg-könyvtárkezelővel](https://github.com/m
     .\bootstrap-vcpkg.bat
     ```
 
-    Ezután a felhasználói szintű [integráció](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)csatlakoztatásához futtassa a következőket (megjegyzés: az első használatkor rendszergazdaszükséges):
+    Ezután a felhasználó szintű [integráció](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)összekapcsolásához futtassa a következőt (Megjegyzés: az első használathoz rendszergazdai jogosultság szükséges):
 
     ```cmd
     .\vcpkg.exe integrate install
     ```
 
-1. Telepítse az Azure IoT C-eszköz SDK Vcpkg:Install Azure IoT C device SDK Vcpkg:
+1. Az Azure IoT C Device SDK Vcpkg telepítése:
 
     ```cmd
     .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
-## <a name="author-your-model"></a>A modell megkészítése
+## <a name="author-your-model"></a>A modell szerzője
 
-Ebben a rövid útmutatóban egy meglévő mintaeszköz-képességi modellt és a kapcsolódó felületeket használ.
+Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és társított csatolókat használ.
 
-1. Hozzon `pnp_app` létre egy mappát a helyi meghajtón. Ezt a mappát az eszközmodellfájljaihoz és az eszközkódcsonkjához használhatja.
+1. Hozzon `pnp_app` létre egy mappát a helyi meghajtón. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
 
-1. Töltse le az [eszköz képességmodelljét és felületét, mintafájlokat](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) és [felületmintát,](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) és mentse a fájlokat a `pnp_app` mappába.
+1. Töltse le az [eszköz képességeinek modelljét és a felületi minta fájljait](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) és a [felületét](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) , és mentse a fájlokat a `pnp_app` mappába.
 
     > [!TIP]
-    > Ha fájlt szeretne letölteni a GitHubról, keresse meg a fájlt, kattintson a jobb gombbal a **Raw**elemre, és válassza **a Hivatkozás mentése másként parancsot.**
+    > Egy fájl GitHubról való letöltéséhez navigáljon a fájlhoz, kattintson a jobb gombbal a **RAW**elemre, majd válassza a **hivatkozás mentése másként**lehetőséget.
 
-1. Nyissa `pnp_app` meg a mappát a VS-kóddal. Megtekintheti a fájlokat intelliSense:
+1. Mappa `pnp_app` megnyitása a vs Code-ban. A fájlokat az IntelliSense használatával tekintheti meg:
 
-    ![Eszközképességi modell](media/quickstart-create-pnp-device/dcm.png)
+    ![Eszköz képességeinek modellje](media/quickstart-create-pnp-device/dcm.png)
 
-1. A letöltött fájlokban `<YOUR_COMPANY_NAME_HERE>` cserélje `@id` le `schema` a és a mezőket egy egyedi értékre. Csak az a-z, A-Z, 0-9 és aláhúzáskaraktereket használja. További információ: [Digital Twin identifier format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
+1. A letöltött fájlokban cserélje le `<YOUR_COMPANY_NAME_HERE>` a `@id` és `schema` a mezőket egy egyedi értékre. Csak az a – z, A-Z, 0-9 és aláhúzás karaktereket használja. További információ: [digitális kettős azonosító formátuma](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
-## <a name="generate-the-c-code-stub"></a>A C-kódcsonk létrehozása
+## <a name="generate-the-c-code-stub"></a>A C kód kiváltása
 
-Most, hogy rendelkezik egy DCM és a hozzá tartozó felületek, létrehozhatja az eszköz kódját, amely megvalósítja a modellt. A C kódcsonk létrehozása a VS-kódban:
+Most, hogy már rendelkezik DCM-rel és a hozzá tartozó csatolókkal, létrehozhatja a modellt megvalósító eszköz kódját. A C-kód a (z) VS Code-ban való létrehozásához:
 
-1. Ha `pnp_app` a mappa meg van nyitva a VS-kódban, a **Ctrl+Shift+P** billentyűkombinációval nyissa meg a parancspalettát, írja be az **IoT Plug and Play**parancsot, és válassza **az Eszközkód csonklétrehozása lehetőséget.**
+1. Ha a `pnp_app` mappa meg van nyitva a vs Code-ban, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának előállítása**lehetőséget.
 
     > [!NOTE]
-    > Az IoT Plug and Play CodeGen CLI első használatakor néhány másodpercet vesz igénybe az automatikus letöltés és telepítés.
+    > Amikor első alkalommal használja a IoT Plug and Play CodeGen CLI-t, néhány másodperc elteltével automatikusan letöltheti és telepítheti.
 
-1. Válassza ki a **SampleDevice.capabilitymodel.json** fájlt az eszközkód csonklétrehozásához.
+1. Válassza ki az **SampleDevice. capabilitymodel. JSON** fájlt, amelyet az eszköz kódjának generálásához kíván használni.
 
-1. Írja be a projekt nevét **sample_device**. Ez az eszközalkalmazás neve.
+1. Adja meg a projekt nevét **sample_device**. Ez az eszköz-alkalmazás neve.
 
-1. Válassza az **ANSI C nyelvet.**
+1. Válassza az **ANSI C** nyelvet.
 
-1. Válassza **a Via IoT Hub eszköz kapcsolati karakterlánc** csatlakozási módszerként.
+1. Válassza a **IoT hub eszköz kapcsolatok karakterlánca** lehetőséget a csatlakoztatási módszerként.
 
-1. Projektsablonként válassza **a CMake Project on Windows** lehetőséget.
+1. Válassza a **Windows rendszerhez készült CMAK-projekt** lehetőséget a Project sablonként.
 
-1. Válassza a **Via Vcpkg** lehetőséget az eszköz SDK-jának felvételére.
+1. Válassza a **Vcpkg-on keresztül** lehetőséget az eszköz SDK-val való felvételéhez.
 
-1. Egy új mappa nevű **sample_device** jön létre ugyanazon a helyen, mint a DCM fájlt, és benne vannak a generált eszköz kód csonkfájlokat. A VS Code megnyit egy új ablakot ezek megjelenítéséhez.
+1. A rendszer egy **sample_device** nevű új mappát hoz létre a DCM-fájllal megegyező helyen, és ez a generált kódlap-fájlok. A VS Code egy új ablakot nyit meg, amely megjeleníti ezeket.
     ![Eszköz kódja](media/quickstart-create-pnp-device/device-code.png)
 
 ## <a name="build-and-run-the-code"></a>A kód létrehozása és futtatása
 
-A Vcpkg csomag segítségével hozza létre a generált eszközkód csonkot. Az alkalmazást hoz létre szimulálja egy eszköz, amely csatlakozik egy IoT hub. Az alkalmazás telemetriai adatokat és tulajdonságokat küld, és parancsokat fogad.
+A létrehozott Vcpkg-csomag használatával létrehozza a generált eszköz kódját. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
 
-1. Hozzon `cmake` létre egy `sample_device` alkönyvtárat a mappában, és keresse meg azt a mappát:
+1. Hozzon `cmake` létre egy alkönyvtárat a `sample_device` mappában, és navigáljon a következő mappába:
 
     ```cmd
     mkdir cmake
     cd cmake
     ```
 
-1. Futtassa a következő parancsokat a létrehozott kódcsonk létrehozásához (a helyőrző helyett a Vcpkg tártár könyvtára):
+1. Futtassa a következő parancsokat a generált kód létrehozásához (a helyőrzőt cserélje le a Vcpkg-tárház könyvtárára):
 
     ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
@@ -142,7 +142,7 @@ A Vcpkg csomag segítségével hozza létre a generált eszközkód csonkot. Az 
     ```
     
     > [!NOTE]
-    > Ha a Visual Studio 2017-et vagy 2015-öt használja, a CMake-generátort a használt buildeszközök alapján kell megadnia:
+    > A Visual Studio 2017-es vagy a 2015-es verziójának használata esetén meg kell adnia a CMak-generátort az Ön által használt build-eszközök alapján:
     >```cmd
     ># Either
     >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
@@ -151,47 +151,47 @@ A Vcpkg csomag segítségével hozza létre a generált eszközkód csonkot. Az 
     >```
 
     > [!NOTE]
-    > Ha a cmake nem találja a C++ fordítót, az előző parancs futtatásakor buildhibákat kap. Ebben az esetben próbálja meg futtatni ezt a parancsot a [Visual Studio parancssori parancssorból.](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)
+    > Ha a CMAK nem találja a C++ fordítót, akkor az előző parancs futtatásakor hibaüzeneteket kap. Ha ez történik, próbálja meg futtatni ezt a parancsot a [Visual Studio parancssorában](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
 
-1. Miután a build sikeresen befejeződött, futtassa az alkalmazást, paraméterként haladva az IoT hub eszköz kapcsolati karakterláncán.
+1. A létrehozás sikeres befejezése után futtassa az alkalmazást, és adja át az IoT hub-eszközhöz tartozó kapcsolatok sztringjét paraméterként.
 
     ```cmd\sh
     .\Debug\sample_device.exe "<YourDeviceConnectionString>"
     ```
 
-1. Az eszközalkalmazás megkezdi az adatok küldését az IoT Hubra.
+1. Az eszköz megkezdi az adatok küldését a IoT Hubba.
 
-    ![Futó eszközalkalmazás](media/quickstart-create-pnp-device/device-app-running.png)
+    ![Eszközön futó alkalmazás](media/quickstart-create-pnp-device/device-app-running.png)
 
 ## <a name="validate-the-code"></a>A kód ellenőrzése
 
-### <a name="publish-device-model-files-to-model-repository"></a>Eszközmodell-fájlok közzététele a modelltárházban
+### <a name="publish-device-model-files-to-model-repository"></a>Eszköz-modell fájljainak közzététele a Model repositoryban
 
-Az eszközkód ellenőrzése az **Azure IoT Explorer,** közzé kell tennie a fájlokat a modell tárházban.
+Az eszköz kódjának az **Azure IoT Explorerrel**való ellenőrzéséhez közzé kell tennie a fájlokat a modell adattárában.
 
-1. Ha `pnp_app` a mappa meg van nyitva a VS-kódban, a **Ctrl+Shift+P** billentyűkombinációval nyissa meg a parancspalettát, írja be és válassza az **IoT Plug & Play: Fájlok küldése a modelltárházba**lehetőséget.
+1. Ha a `pnp_app` mappa meg van nyitva a vs Code-ban, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a parancsot, majd válassza a **IoT plug & Play: fájlok elküldése a modell adattárba**lehetőséget
 
-1. Kijelölés `SampleDevice.capabilitymodel.json` `EnvironmentalSensor.interface.json` és fájlok.
+1. Válassza `SampleDevice.capabilitymodel.json` ki `EnvironmentalSensor.interface.json` a és a fájlokat.
 
-1. Adja meg a vállalati modell tárház kapcsolati karakterláncát.
-
-    > [!NOTE]
-    > A kapcsolati karakterlánc csak akkor szükséges, amikor először csatlakozik a tárházhoz.
-
-1. A VS Code kimeneti ablakban és értesítésben ellenőrizheti, hogy a fájlok közzététele sikeresen megtörtént-e.
+1. Adja meg a vállalati modell adattárához tartozó kapcsolatok sztringjét.
 
     > [!NOTE]
-    > Ha hibákat tapasztal az eszközmodell-fájlok közzétételekor, megpróbálhatja az **IoT Plug and Play: Sign out Model Repository parancsot** a kijelentkezéshez, és újra végigmenni a lépéseken.
+    > A kapcsolati karakterláncra csak akkor van szükség, amikor először csatlakozik az adattárhoz.
 
-### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>A kód érvényesítéséhez használja az Azure IoT-felfedezőt
+1. A VS Code output ablakban és az értesítésben megtekintheti, hogy a fájlok közzététele sikeresen megtörtént-e.
+
+    > [!NOTE]
+    > Ha hibaüzenet jelenik meg az eszköz-modell fájljainak közzétételekor, akkor próbálja meg használni a **IoT Plug and Play: Jelentkezzen ki a modell tárházában** a kijelentkezéshez, és ismételje meg a lépéseket.
+
+### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>A kód érvényesítése az Azure IoT Explorer használatával
 
 [!INCLUDE [iot-pnp-iot-explorer-1.md](../../includes/iot-pnp-iot-explorer-1.md)]
 
-4. A vállalati tárház hozzáadásához válassza a **Beállítások**lehetőséget, majd **a + Moduldefinícióforrás hozzáadása**lehetőséget, majd a Vállalati **tárházat.** Adja hozzá a vállalati modelltárkapcsolati karakterláncát, és válassza a **Mentés és csatlakozás**lehetőséget.
+4. A vállalati tárház hozzáadásához válassza a **Beállítások**, majd a **modul-definíciós forrás**, majd a **vállalati tárház**lehetőséget. Adja hozzá a vállalati modell adattárának kapcsolati karakterláncát, majd kattintson a **Mentés és a csatlakoztatás**lehetőségre.
 
-1. Az **Eszközök** áttekintése lapon keresse meg a korábban létrehozott eszközidentitást. Ha az eszközalkalmazás továbbra is fut a parancssorban, ellenőrizze, hogy az eszköz **kapcsolati állapota** az Azure IoT Explorer _ben csatlakoztatottként jelent-e_ (ha nem, nyomja meg a **Frissítés** gombot, amíg nincs). A további részletek megtekintéséhez válassza ki az eszközt.
+1. Az **eszközök** áttekintése lapon keresse meg a korábban létrehozott eszköz identitását. Ha az eszköz még fut a parancssorban, ellenőrizze, hogy az eszköz **kapcsolati állapota** az Azure IoT Explorerben _csatlakoztatva_ van-e (ha nem, nyomja meg a **frissítést** , amíg meg nem történik). Válassza ki az eszközt a további részletek megtekintéséhez.
 
-1. Bontsa ki a felületet id **urn:<YOUR_INTERFACE_NAME>:EnvironmentalSensor:1** az IoT Plug and Play primitívek – tulajdonságok, parancsok és telemetriai adatok megjelenítéséhez. A felület neve jelenik meg a modell készítésekénél beírt név.
+1. Bontsa ki az **urn: <YOUR_INTERFACE_NAME>: EnvironmentalSensor: 1** azonosítójú felületet, és tekintse meg a IoT Plug and Play primitívek – tulajdonságok, parancsok és telemetria. A megjelenő felület neve a modell készítésekor behelyezett név.
 
 [!INCLUDE [iot-pnp-iot-explorer-2.md](../../includes/iot-pnp-iot-explorer-2.md)]
 
@@ -199,9 +199,9 @@ Az eszközkód ellenőrzése az **Azure IoT Explorer,** közzé kell tennie a f�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre IoT Plug and Play eszközt DCM használatával.
+Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre IoT Plug and Play-eszközt DCM használatával.
 
-Ha többet szeretne megtudni a DCM-ekről és a saját modellek létrehozásáról, folytassa az oktatóanyaggal:
+Ha többet szeretne megtudni a DCMs és a saját modelljeinek létrehozásáról, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Eszközképesség-modell létrehozása és tesztelése a Visual Studio-kód használatával](tutorial-pnp-visual-studio-code.md)
+> [Oktatóanyag: eszköz-képesség modell létrehozása és tesztelése a Visual Studio Code használatával](tutorial-pnp-visual-studio-code.md)
