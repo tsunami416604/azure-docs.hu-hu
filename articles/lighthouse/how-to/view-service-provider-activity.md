@@ -1,49 +1,49 @@
 ---
 title: Szolgáltatói tevékenység megtekintése
-description: Az ügyfelek megtekinthetik a naplózott tevékenységeket, hogy lássák a szolgáltatók által az Azure delegált erőforrás-kezelésén keresztül végrehajtott műveleteket.
+description: Az ügyfelek megtekinthetik a naplózott tevékenységeket a szolgáltatók által az Azure-beli delegált erőforrás-kezelésen keresztül végrehajtott műveletek megtekintéséhez.
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77649636"
 ---
 # <a name="view-service-provider-activity"></a>Szolgáltatói tevékenység megtekintése
 
-Azok az ügyfelek, akik delegált előfizetéseket kaptak az Azure delegált erőforrás-kezelésért, [megtekinthetik az Azure-tevékenységnapló](../../azure-monitor/platform/platform-logs-overview.md) adatait, és megtekinthetik az összes végrehajtott műveletet. Ez teljes betekintést nyújt az ügyfelek nek az Azure delegált erőforrás-kezelése révén végrehajtott műveletekre, valamint az ügyfél saját Azure Active Directory (Azure AD) bérlőjének felhasználói által végzett műveletekre.
+Azok az ügyfelek, akik az Azure-beli delegált erőforrás-kezeléshez delegált előfizetésekkel rendelkeznek, [megtekinthetik az Azure-tevékenység naplójának](../../azure-monitor/platform/platform-logs-overview.md) adatait az összes művelet megtekintéséhez Ez teljes körű láthatóságot biztosít az ügyfeleknek a szolgáltatók számára az Azure-beli delegált erőforrás-kezelésen keresztül, valamint az ügyfél saját Azure Active Directory (Azure AD) bérlője által végzett műveletek végrehajtásával.
 
 > [!TIP]
-> Az Azure Policy beépített szabályzat-definícióját is biztosítjuk a hatókörök felügyelt bérlőnek való delegálásának naplózásához. További információ: [Delegálások naplózása a környezetben című témakörben.](view-manage-service-providers.md#audit-delegations-in-your-environment)
+> Egy Azure Policy beépített szabályzat-definíciót is biztosítunk a hatókörök delegálásának naplózására egy felügyeleti bérlő számára. További információ: [a delegálások naplózása a környezetben](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
-## <a name="view-activity-log-data"></a>Tevékenységnapló adatainak megtekintése
+## <a name="view-activity-log-data"></a>Tevékenység naplójának adatnézete
 
-A [tevékenységnaplót az](../../azure-monitor/platform/activity-log-view.md) Azure Portal **Monitor** menüjében tekintheti meg. Ha az eredményeket egy adott előfizetésre szeretné korlátozni, a szűrők segítségével válasszon ki egy adott előfizetést. A [tevékenységnapló-eseményeket](../../azure-monitor/platform/activity-log-view.md) programozott módon is megtekintheti és bekeresheti.
-
-> [!NOTE]
-> A szolgáltató bérlőinek felhasználói megtekinthetik a delegált előfizetés tevékenységnaplójának eredményeit egy ügyfél-bérlőben, ha megkapták az [Olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört, amely tartalmazza az Olvasó-hozzáférést), amikor az előfizetést az Azure delegált erőforrás-kezeléséhez beszervezték.
-
-A tevékenységnaplóban megjelenik a művelet neve és állapota, valamint a végrehajtás dátuma és időpontja. Az **oszlop által kezdeményezett esemény** megmutatja, hogy melyik felhasználó hajtotta végre a műveletet, függetlenül attól, hogy egy felhasználó egy szolgáltató bérlője az Azure delegált erőforrás-kezelés, vagy a felhasználó az ügyfél saját bérlője. Vegye figyelembe, hogy a felhasználó neve jelenik meg, nem pedig a bérlő vagy a szerepkör, amely a felhasználó rendelt az adott előfizetéshez.
-
-A naplózott tevékenység az elmúlt 90 napban érhető el az Azure Portalon. Ha többet szeretne megtudni arról, hogyan tárolhatja ezeket az adatokat 90 napnál hosszabb ideig, olvassa [el az Azure-tevékenységnaplók gyűjtése és elemzése a Log Analytics-munkaterületen című témakört.](../../azure-monitor/platform/activity-log-collect.md)
+A [tevékenység naplóját](../../azure-monitor/platform/activity-log-view.md) a Azure Portal **figyelő** menüjéből tekintheti meg. Ha az eredményeket egy adott előfizetésre szeretné korlátozni, használja a szűrőket egy adott előfizetés kiválasztásához. [A tevékenységek naplózási eseményeit programozott módon is megtekintheti és lekérheti](../../azure-monitor/platform/activity-log-view.md) .
 
 > [!NOTE]
-> A szolgáltató felhasználói megjelennek a tevékenységnaplóban, de ezek a felhasználók és szerepkör-hozzárendeléseik nem jelennek meg a **hozzáférés-vezérlésben (IAM),** illetve a szerepkör-hozzárendelési adatok API-kon keresztüli beolvasásakor.
+> A szolgáltató bérlője által biztosított felhasználók megtekinthetik a tevékenység naplójának eredményét egy ügyfél-bérlőben lévő delegált előfizetésre vonatkozóan, ha az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört is tartalmaznak, amely olvasói hozzáférést is tartalmaz) az Azure-beli delegált erőforrás-kezeléshez.
 
-## <a name="set-alerts-for-critical-operations"></a>Riasztások beállítása a kritikus műveletekhez
+A tevékenység naplójában látni fogja a művelet nevét és állapotát, valamint a végrehajtás dátumát és időpontját. Az oszlop **által kezdeményezett esemény** azt jeleníti meg, hogy melyik felhasználó végezte el a műveletet, függetlenül attól, hogy a szolgáltató bérlője egy Azure-beli delegált erőforrás-kezelést vagy egy, az ügyfél saját bérlője által elindított felhasználó. Vegye figyelembe, hogy a felhasználó neve jelenik meg, nem pedig a bérlő vagy a felhasználó által az előfizetéshez hozzárendelt szerepkör.
 
-Ha tudni szeretné, hogy a szolgáltatók (vagy a saját bérlője felhasználói) kritikus műveleteket hajtanak végre, javasoljuk, hogy hozzon létre [tevékenységnapló-riasztásokat.](../../azure-monitor/platform/activity-log-alerts.md) Előfordulhat például, hogy egy előfizetés összes felügyeleti műveletét nyomon szeretné követni, vagy értesítést kaphat, ha egy adott erőforráscsoport bármely virtuális gépe törlődik. Amikor riasztásokat hoz létre, azok tartalmazzák a felhasználók által az ügyfél saját bérlőjében, valamint a bérlők kezelése során végrehajtott műveleteket.
+A naplózott tevékenység a Azure Portal az elmúlt 90 napban érhető el. Az adatok 90 napnál hosszabb ideig történő tárolásával kapcsolatban tekintse meg [Az Azure-beli tevékenység-naplók gyűjtése és elemzése log Analytics munkaterületen](../../azure-monitor/platform/activity-log-collect.md)című témakört.
 
-További információt a [Tevékenységnapló-riasztások létrehozása és kezelése című témakörben talál.](../../azure-monitor/platform/alerts-activity-log.md)
+> [!NOTE]
+> A szolgáltató felhasználói a tevékenység naplójában jelennek meg, de a felhasználók és a hozzájuk tartozó szerepkör-hozzárendelések nem jelennek meg **Access Control (iam)** vagy a szerepkör-hozzárendelési adatok API-kon keresztüli lekérdezése során.
 
-## <a name="create-log-queries"></a>Naplólekérdezések létrehozása
+## <a name="set-alerts-for-critical-operations"></a>Riasztások beállítása kritikus műveletekhez
 
-Lekérdezéseket hozhat létre a naplózott tevékenység elemzéséhez vagy adott elemekre való összpontosításhoz. Például előfordulhat, hogy egy audit megköveteli, hogy jelentést az összes felügyeleti szintű műveletek et egy előfizetés. Létrehozhat egy lekérdezést, amely csak ezekre a műveletekre szűr, és az eredményeket felhasználó, dátum vagy más érték szerint rendezi.
+Annak érdekében, hogy a szolgáltatók (vagy a saját bérlők felhasználói) által végzett kritikus műveletekkel tisztában legyenek, javasoljuk, hogy hozzon létre [műveletnapló-riasztásokat](../../azure-monitor/platform/activity-log-alerts.md). Előfordulhat például, hogy nyomon szeretné követni az előfizetések összes felügyeleti műveletét, vagy értesítést kap, ha egy adott erőforráscsoport valamelyik virtuális gépe törölve van. Ha riasztásokat hoz létre, azok magukban foglalják a felhasználók által az ügyfél saját bérlője által végrehajtott műveleteket, valamint a bérlők felügyeletét is.
 
-További információt a [Naplólekérdezések áttekintése az Azure Monitorban](../../azure-monitor/log-query/log-query-overview.md)című témakörben talál.
+További információ: [műveletnapló riasztások létrehozása és kezelése](../../azure-monitor/platform/alerts-activity-log.md).
+
+## <a name="create-log-queries"></a>Naplóbeli lekérdezések létrehozása
+
+Létrehozhat lekérdezéseket a naplózott tevékenység elemzéséhez, vagy adott elemekre koncentrálhat. Előfordulhat például, hogy egy naplózáshoz jelentést kell készítenie az előfizetésen végrehajtott összes felügyeleti szintű műveletről. Létrehozhat egy lekérdezést, amely csak ezeket a műveleteket szűri, és az eredményeket felhasználó, dátum vagy más érték szerint rendezi.
+
+További információ: [Azure monitorban található naplók áttekintése](../../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure Monitorról.](../../azure-monitor/index.yml)
-- Ismerje meg, hogyan tekintheti meg és kezelheti a [szolgáltatói ajánlatokat](view-manage-service-providers.md) az Azure Portalon.
+- További információ a [Azure monitorról](../../azure-monitor/index.yml).
+- Megtudhatja, hogyan [tekintheti meg és kezelheti](view-manage-service-providers.md) a szolgáltatói ajánlatokat a Azure Portalban.

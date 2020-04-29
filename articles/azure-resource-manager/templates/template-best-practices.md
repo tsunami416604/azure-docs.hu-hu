@@ -1,58 +1,58 @@
 ---
 title: Ajánlott eljárások a sablonokhoz
-description: Az Azure Resource Manager-sablonok szerzői ajánlott megközelítéseit ismerteti. Javaslatokat tesz a sablonok használata során felmerülő gyakori problémák elkerülésére.
+description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156412"
 ---
-# <a name="arm-template-best-practices"></a>Arm sablon gyakorlati tanácsok
+# <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
-Ez a cikk javaslatokat ad az Azure Resource Manager (ARM) sablon létrehozásáról. Ezek a javaslatok segítenek elkerülni a gyakori problémákat, amikor egy ARM-sablont használ a megoldás üzembe helyezéséhez.
+Ez a cikk a Azure Resource Manager-(ARM-) sablon létrehozásával kapcsolatos ajánlásokat ismerteti. Ezek a javaslatok segítenek elkerülni a gyakori problémákat, amikor egy ARM-sablont használ egy megoldás üzembe helyezéséhez.
 
-Az Azure-előfizetések szabályozásával kapcsolatos javaslatokért tekintse meg az [Azure vállalati állványzat: Előíró előfizetés-szabályozás.](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+Az Azure-előfizetések szabályozásával kapcsolatos javaslatokért lásd [: az Azure Enterprise-állvány:](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)előfeltételként szükséges előfizetés szabályozása.
 
-Az Azure [Resource Manager-sablonok fejlesztése a felhőkonzisztenciához](templates-cloud-consistency.md)című témakörben olvashat, amely javaslatokat tartalmaz az összes Azure felhőalapú környezetben dolgozó sablonok létrehozásáról.
+Az összes Azure-beli felhőalapú környezetben működő sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager-sablonok fejlesztése a Felhőbeli konzisztencia](templates-cloud-consistency.md)érdekében.
 
-## <a name="template-limits"></a>Sablonkorlátok
+## <a name="template-limits"></a>Sablonok korlátai
 
-Korlátozza a sablon méretét 4 MB-ra, és minden paraméterfájlt 64 KB-ra. A 4 MB-os korlát a sablon végleges állapotára vonatkozik, miután iteratív erőforrás-definíciókkal, valamint változók és paraméterek értékekkel bővítette. 
+Korlátozza a sablon méretét 4 MB-ra, az egyes paramétereket pedig 64 KB-ra. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután az ismétlődő erőforrás-definíciókkal bővült, valamint a változók és paraméterek értékeit. 
 
-Ön a következőkre is korlátozódik:
+A következőket is korlátozhatja:
 
-* 256 paraméter
-* 256 változó
-* 800 erőforrás (beleértve a másolások számát)
-* 64 kimeneti érték
-* 24 576 karakter egy sablonkifejezésben
+* 256 paraméterek
+* 256 változók
+* 800-erőforrások (beleértve a példányszámot)
+* 64 kimeneti értékek
+* 24 576 karakter egy sablon kifejezésében
 
-Egyes sablonkorlátokat beágyazott sablon használatával túlléphet. További információ: [Csatolt sablonok használata azure-erőforrások üzembe helyezésekor.](linked-templates.md) A paraméterek, változók vagy kimenetek számának csökkentése érdekében több értéket egyesíthet egy objektumban. További információ: [Objects as parameters](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Az egyes sablonokra vonatkozó korlátokat egy beágyazott sablon használatával lehet meghaladni. További információ: az [Azure-erőforrások üzembe helyezéséhez csatolt sablonok használata](linked-templates.md). A paraméterek, változók és kimenetek számának csökkentése érdekében több értéket is egyesítheti egy objektumban. További információ: [objektumok paraméterként](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Erőforráscsoport
 
-Amikor erőforrásokat telepít egy erőforráscsoportba, az erőforráscsoport metaadatokat tárol az erőforrásokról. A metaadatok az erőforráscsoport helyén tárolódnak.
+Amikor erőforrásokat telepít egy erőforráscsoporthoz, az erőforráscsoport az erőforrásokkal kapcsolatos metaadatokat tárolja. A metaadatokat az erőforráscsoport helye tárolja.
 
-Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A többi régió erőforrásai továbbra is a várt módon fognak működni, de nem frissíthetők. A kockázat minimalizálása érdekében keresse meg az erőforráscsoportot és az erőforrásokat ugyanabban a régióban.
+Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A kockázat minimalizálásához keresse meg az erőforráscsoportot és az erőforrásokat ugyanabban a régióban.
 
 ## <a name="parameters"></a>Paraméterek
 
-Az ebben a szakaszban található információk akkor lehetnek [hasznosak, ha paraméterekkel dolgozik.](template-parameters.md)
+Az ebben a szakaszban található információk hasznosak lehetnek, ha [paraméterekkel](template-parameters.md)dolgozik.
 
-### <a name="general-recommendations-for-parameters"></a>A paraméterekre vonatkozó általános ajánlások
+### <a name="general-recommendations-for-parameters"></a>Paraméterekre vonatkozó általános javaslatok
 
-* Minimalizálja a paraméterek használatát. Ehelyett használjon változókat vagy literális értékeket olyan tulajdonságokhoz, amelyeket nem kell megadni a központi telepítés során.
+* Csökkentse a paraméterek használatát. Ehelyett használjon változókat vagy literál értékeket azokhoz a tulajdonságokhoz, amelyeket nem kell megadni az üzembe helyezés során.
 
-* Paraméternevekhez használjon tevekis- és kis- és nagybetűket.
+* Használjon teve-esetet a paraméterek neveihez.
 
-* A környezettől függően változó beállításokhoz ,például termékváltozathoz, mérethez vagy kapacitástól függően) használható paraméterek.
+* Paraméterek használata olyan beállításokhoz, amelyek a környezettől függően változnak, például SKU, size vagy Capacity.
 
-* A könnyebb azonosítás érdekében használjon paramétereket a megadandó erőforrásnevekhez.
+* Használja az egyszerű azonosításhoz megadni kívánt erőforrásnevek paramétereit.
 
-* Adja meg a metaadatok ban szereplő összes paraméter leírását:
+* Adja meg a metaadatokban szereplő összes paraméter leírását:
 
    ```json
    "parameters": {
@@ -65,7 +65,7 @@ Az ebben a szakaszban található információk akkor lehetnek [hasznosak, ha pa
    }
    ```
 
-* Adja meg a nem érzékeny paraméterek alapértelmezett értékeit. Az alapértelmezett érték megadásával könnyebb telepíteni a sablont, és a sablon felhasználói egy megfelelő értéket látnak. Egy paraméter alapértelmezett értékének az alapértelmezett központi telepítési konfigurációban lévő összes felhasználóra érvényesnek kell lennie. 
+* A nem bizalmas paraméterek alapértelmezett értékének meghatározása. Az alapértelmezett érték megadásával megkönnyíti a sablon üzembe helyezését, a sablon felhasználói pedig egy megfelelő értéket láthatnak. Egy paraméter alapértelmezett értékének érvényesnek kell lennie az alapértelmezett telepítési konfigurációban lévő összes felhasználó számára. 
    
    ```json
    "parameters": {
@@ -79,7 +79,7 @@ Az ebben a szakaszban található információk akkor lehetnek [hasznosak, ha pa
    }
    ```
 
-* Választható paraméter megadásához ne használjon üres karakterláncot alapértelmezett értékként. Ehelyett használjon literális értéket vagy nyelvi kifejezést az érték létrehozásához.
+* Egy opcionális paraméter megadásához ne használjon üres karakterláncot alapértelmezett értékként. Ehelyett használjon literál értéket vagy nyelvi kifejezést egy érték létrehozásához.
 
    ```json
    "storageAccountName": {
@@ -91,17 +91,17 @@ Az ebben a szakaszban található információk akkor lehetnek [hasznosak, ha pa
    },
    ```
 
-* Ne használjon paramétert az API-verzióhoz egy erőforrástípushoz. Az erőforrás tulajdonságai és értékei verziószámtól függően változhatnak. Az IntelliSense egy kódszerkesztőben nem tudja meghatározni a megfelelő sémát, ha az API-verzió paraméterre van állítva. Ehelyett a sablonban az API-verzió kódolása.
+* Ne használjon paramétert az API-verzióhoz az erőforrástípus esetében. Az erőforrás-tulajdonságok és az értékek verziószáma eltérő lehet. Az IntelliSense egy szerkesztőprogramban nem tudja meghatározni a megfelelő sémát, ha az API-verzió értéke paraméter. Ehelyett a sablonban rögzített API-verziót kell használnia.
 
-* Takarékosan `allowedValues` használja. Csak akkor használja, ha meg kell győződnie arról, hogy bizonyos értékek nem szerepelnek az engedélyezett beállításokban. Ha túl `allowedValues` tágan használja, előfordulhat, hogy blokkolja az érvényes központi telepítések nem tartja naprakészen a listát.
+* Használjon `allowedValues` takarékosan. Csak akkor használja, ha meg kell győződnie arról, hogy néhány érték nem szerepel az engedélyezett beállítások között. Ha túl széles `allowedValues` körben használja, letilthatja az érvényes központi telepítéseket, ha nem tartja naprakészen a listát.
 
-* Ha a sablonban szereplő paraméternév megegyezik a PowerShell központi telepítési parancsának egy paraméterével, az Erőforrás-kezelő ezt az elnevezési ütközést a **FromTemplate** sablonparaméterhez való hozzáadásával oldja fel. Ha például egy **ResourceGroupName** nevű paramétert ad meg a sablonban, az ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. A telepítés során a rendszer kéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate sablonhoz.**
+* Ha a sablon egyik paramétere megegyezik a PowerShell üzembe helyezési parancsában szereplő paraméterekkel, az erőforrás-kezelő feloldja ezt az elnevezési ütközést úgy, hogy hozzáadja a Postfix **FromTemplate** a sablon paraméterhez. Ha például egy **ResourceGroupName** nevű paramétert tartalmaz a sablonban, az ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. Az üzembe helyezés során a rendszer kéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate**számára.
 
-### <a name="security-recommendations-for-parameters"></a>Biztonsági javaslatok a paraméterekhez
+### <a name="security-recommendations-for-parameters"></a>Paraméterekkel kapcsolatos biztonsági javaslatok
 
-* Mindig használjon paramétereket a felhasználónevekhez és jelszavakhoz (vagy titkos kulcsokhoz).
+* Mindig használja a felhasználónevek és jelszavak (vagy titkos kódok) paramétereit.
 
-* Minden `securestring` jelszóhoz és titokhoz használható. Ha bizalmas adatokat ad át egy `secureObject` JSON-objektumban, használja a típust. A biztonságos karakterlánc- vagy biztonságos objektumtípusokkal rendelkező sablonparaméterek nem olvashatók az erőforrás-telepítés után. 
+* Minden `securestring` jelszóhoz és titokhoz használható. Ha bizalmas adatokat továbbít egy JSON-objektumban, használja a `secureObject` típust. A biztonságos karakterláncot vagy biztonságos objektumtípust tartalmazó sablon-paraméterek nem olvashatók be az erőforrás-telepítés után. 
    
    ```json
    "parameters": {
@@ -114,13 +114,13 @@ Az ebben a szakaszban található információk akkor lehetnek [hasznosak, ha pa
    }
    ```
 
-* Ne adjon meg alapértelmezett értékeket a felhasználónevekhez, jelszavakhoz vagy bármely olyan értékhez, amelyhez típus szükséges. `secureString`
+* Ne adja meg az alapértelmezett értékeket a felhasználónevek, jelszavak vagy bármely olyan érték számára `secureString` , amelyhez típus szükséges.
 
-* Ne adjon meg alapértelmezett értékeket olyan tulajdonságokhoz, amelyek növelik az alkalmazás támadási felületét.
+* Ne adja meg az alkalmazás támadási felületét növelő tulajdonságok alapértelmezett értékeit.
 
-### <a name="location-recommendations-for-parameters"></a>A paraméterek helymeghatározási javaslatai
+### <a name="location-recommendations-for-parameters"></a>Paraméterekre vonatkozó javaslatok
 
-* Paraméter használatával adja meg az erőforrások helyét, és `resourceGroup().location`állítsa az alapértelmezett értéket a értékre. Helyparaméter megadása lehetővé teszi a sablon felhasználói számára, hogy megadják azt a helyet, amelynek engedéllyel rendelkeznek a telepítéshez.
+* Egy paraméter használatával adja meg az erőforrások helyét, és állítsa be az alapértelmezett értéket `resourceGroup().location`. A Location paraméter megadása lehetővé teszi a sablon felhasználói számára, hogy olyan helyet adjon meg, amelyben a telepítésük engedéllyel rendelkezik.
 
    ```json
    "parameters": {
@@ -134,51 +134,51 @@ Az ebben a szakaszban található információk akkor lehetnek [hasznosak, ha pa
    },
    ```
 
-* Ne adja `allowedValues` meg a helyparamétert. Előfordulhat, hogy a megadott helyek nem minden felhőben érhetők el.
+* Ne határozza `allowedValues` meg a Location paramétert. Előfordulhat, hogy a megadott webhelyek nem érhetők el az összes felhőben.
 
-* Használja a hely paraméter értékét olyan erőforrásokhoz, amelyek valószínűleg ugyanazon a helyen vannak. Ez a megközelítés minimálisra csökkenti, hogy a felhasználókhányszor kérik a helyadatok megadását.
+* Használja a Location paraméter értékét azon erőforrások esetében, amelyeknek valószínűleg ugyanazon a helyen kell lenniük. Ez a megközelítés lekicsinyíti a felhasználók számára a helyadatok megadására vonatkozó kérések számát.
 
-* Olyan erőforrások esetén, amelyek nem minden helyen érhetők el, használjon külön paramétert, vagy adjon meg egy literális helyértéket.
+* Az összes helyen nem elérhető erőforrások esetében használjon külön paramétert, vagy határozzon meg egy literális helyet.
 
 ## <a name="variables"></a>Változók
 
-A következő információk hasznosak lehetnek, ha [változókkal dolgozik:](template-variables.md)
+A következő információk hasznosak lehetnek a [változók](template-variables.md)használatakor:
 
-* A változónevekhez használjon tevekistost.
+* A Camel Case változó nevek használata.
 
-* Változókat használhat olyan értékekhez, amelyeket egysablonban többször is fel kell használnia. Ha egy értéket csak egyszer használ, a kódolt érték megkönnyíti a sablon olvasását.
+* Használjon változókat olyan értékekhez, amelyeket többször kell használni a sablonban. Ha egy értéket csak egyszer használ, a rögzített érték megkönnyíti a sablon olvasását.
 
-* Változókat használjon a sablonfüggvények összetett elrendezéséből származó értékekhez. A sablon könnyebben olvasható, ha az összetett kifejezés csak változókban jelenik meg.
+* Használjon változókat a sablon függvények összetett elrendezése alapján létrehozott értékekhez. A sablon könnyebben olvasható, ha a komplex kifejezés csak a változókban jelenik meg.
 
-* Ne használjon változókat egy `apiVersion` erőforráshoz. Az API-verzió határozza meg az erőforrás sémáját. Gyakran nem módosíthatja a verziót az erőforrás tulajdonságainak módosítása nélkül.
+* Ne használjon változókat `apiVersion` erőforráson. Az API verziója határozza meg az erőforrás sémáját. A verzió gyakran nem módosítható az erőforrás tulajdonságainak módosítása nélkül.
 
-* A sablon **változók** szakaszában nem használható a [referencia](template-functions-resource.md#reference) függvény. A **referenciafüggvény** értékét az erőforrás futásidejű állapotából nyeri. A változók azonban a sablon kezdeti elemzéssorán feloldódnak. Olyan értékeket hozhat létre, amelyeknek közvetlenül a sablon **erőforrások** vagy **kimenetek** szakaszában kell a **referenciafüggvényt** létrehozniuk.
+* A [hivatkozási](template-functions-resource.md#reference) függvény nem használható a sablon **változók** szakaszában. A **Reference** függvény az erőforrás futásidejű állapotáról származtatja az értékét. A változók azonban a sablon kezdeti elemzése során is megoldhatók. Olyan értékeket kell megadnia, amelyeknek a **hivatkozási** függvényt közvetlenül a sablon **erőforrások** vagy **kimenetek** szakaszában kell megadniuk.
 
-* Egyedi nek kell lennie az erőforrásnevek változóinak.
+* Adja meg azokat az erőforrásnevek változóit, amelyeknek egyedinek kell lenniük.
 
-* A [JSON-objektumok ismétlődő](copy-variables.md) mintázatának létrehozásához használjon másolási hurkot a változókban.
+* Használjon egy [másolási hurkot a változók között](copy-variables.md) , hogy ismétlődő JSON-objektumokat hozzon létre.
 
 * Távolítsa el a nem használt változókat.
 
 ## <a name="resource-dependencies"></a>Erőforrás-függőségek
 
-A beállítani uk [lévő függőségek](define-resource-dependency.md) meghatározásakor kövesse az alábbi irányelveket:
+A beállított [függőségek](define-resource-dependency.md) meghatározásakor kövesse az alábbi irányelveket:
 
-* Használja a **referencia** függvényt, és adja át az erőforrás nevét, hogy implicit függőséget állítson be a tulajdonságmegosztáshoz szükséges erőforrások között. Ne adjon hozzá `dependsOn` explicit elemet, ha már definiált implicit függőséget. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát.
+* Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. Ha már definiált `dependsOn` implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát.
 
-* Gyermekerőforrás beállítása a szülőerőforrástól függőként.
+* Adja meg a gyermek erőforrást a szülő erőforrástól függőként.
 
-* A [feltételelem hamis](conditional-resource-deployment.md) értékű erőforrások automatikusan törlődnek a függőségi sorrendből. Állítsa be a függőségeket, mintha az erőforrás mindig telepítve lenne.
+* A False értékre beállított [állapotú](conditional-resource-deployment.md) erőforrásokat a rendszer automatikusan eltávolítja a függőségi sorrendből. Állítsa be a függőségeket úgy, hogy az erőforrás mindig telepítve legyen.
 
-* Hagyja, hogy a függőségek kaszkádolnak anélkül, hogy kifejezetten beállítanák őket. A virtuális gép például egy virtuális hálózati adaptertől függ, a virtuális hálózati adapter pedig egy virtuális hálózattól és nyilvános IP-címektől. Ezért a virtuális gép mindhárom erőforrás után üzembe kerül, de ne állítsa be explicit módon a virtuális gépet mindhárom erőforrástól függőként. Ez a megközelítés tisztázza a függőségi sorrendet, és megkönnyíti a sablon későbbi módosítását.
+* A függőségek kaszkádolt beállítása explicit módon történő beállítás nélkül. A virtuális gép például egy virtuális hálózati adaptertől függ, és a virtuális hálózati adapter a virtuális hálózattól és a nyilvános IP-címektől függ. Ezért a virtuális gépet mindhárom erőforrás után telepíti a rendszer, de a virtuális gépet a mindhárom erőforrástól függőként nem állítja be explicit módon. Ez a megközelítés tisztázza a függőségi sorrendet, és megkönnyíti a sablon későbbi módosítását.
 
-* Ha egy érték megadható az üzembe helyezés előtt, próbálja meg függőség nélkül telepíteni az erőforrást. Ha például egy konfigurációs értéknek szüksége van egy másik erőforrás nevére, előfordulhat, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, adjon hozzá függőséget.
+* Ha az üzembe helyezés előtt meg lehet határozni egy értéket, próbálja meg az erőforrást függőség nélkül telepíteni. Ha például egy konfigurációs értéknek egy másik erőforrás nevére van szüksége, lehet, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, vegyen fel egy függőséget.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
-Az alábbi információk hasznosak lehetnek, ha [erőforrásokkal](template-syntax.md#resources)dolgozik:
+A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 
-* Annak érdekében, hogy más közreműködők jobban megértsék az erőforrás célját, adja meg a **megjegyzéseket** a sablonban az egyes erőforrásokhoz:
+* Annak érdekében, hogy más közreműködők is megértsék az erőforrás célját, a sablonban szereplő egyes erőforrások **megjegyzéseit** kell megadnia:
    
    ```json
    "resources": [
@@ -193,7 +193,7 @@ Az alábbi információk hasznosak lehetnek, ha [erőforrásokkal](template-synt
    ]
    ```
 
-* Ha nyilvános *végpontot* (például egy Azure Blob-tároló nyilvános végpontját) használ, *ne kódolja* a névteret. A **hivatkozási** függvénnyel dinamikusan beolvasható a névtér. Ezzel a módszerrel telepítheti a sablont különböző nyilvános névtérkörnyezetekben anélkül, hogy manuálisan módosítaná a végpontot a sablonban. Állítsa be az API-verziót ugyanarra a verzióra, amelyet a sablonban lévő tárfiókhoz használ:
+* Ha *nyilvános végpontot* használ a sablonban (például egy Azure Blob Storage nyilvános végpontot), *ne* a névteret. A névtér dinamikus beolvasásához használja a **Reference** függvényt. Ezt a módszert használhatja a sablon különböző nyilvános névtérbeli környezetekben történő üzembe helyezéséhez anélkül, hogy manuálisan módosítaná a végpontot a sablonban. Állítsa az API-verziót ugyanarra a verzióra, amelyet a sablonban használt Storage-fiókhoz használ:
    
    ```json
    "diagnosticsProfile": {
@@ -204,7 +204,7 @@ Az alábbi információk hasznosak lehetnek, ha [erőforrásokkal](template-synt
    }
    ```
    
-   Ha a tárfiók ugyanabban a sablonban van telepítve, amelyet létrehoz, és a tárfiók neve nincs megosztva a sablon egy másik erőforrásával, nem kell megadnia a szolgáltató névterét vagy az apiVersiont, amikor az erőforrásra hivatkozik. A következő példa az egyszerűsített szintaxist mutatja be:
+   Ha a Storage-fiók ugyanabban a sablonban van telepítve, amelyet Ön hoz létre, és a Storage-fiók neve nincs megosztva a sablonban lévő másik erőforrással, nem kell megadnia a szolgáltatói névteret vagy a apiVersion, amikor az erőforrásra hivatkozik. Az alábbi példa az egyszerűsített szintaxist szemlélteti:
    
    ```json
    "diagnosticsProfile": {
@@ -215,7 +215,7 @@ Az alábbi információk hasznosak lehetnek, ha [erőforrásokkal](template-synt
    }
    ```
      
-   Hivatkozhat egy másik erőforráscsoportban lévő meglévő tárfiókra is:
+   Hivatkozhat egy másik erőforráscsoporthoz tartozó meglévő Storage-fiókra is:
 
    ```json
    "diagnosticsProfile": {
@@ -226,17 +226,17 @@ Az alábbi információk hasznosak lehetnek, ha [erőforrásokkal](template-synt
    }
    ```
 
-* Nyilvános IP-címeket csak akkor rendeljen hozzá egy virtuális géphez, ha egy alkalmazás nak szüksége van rá. Ha hibakereséscéljából, illetve felügyeleti vagy felügyeleti célokra szeretne csatlakozni egy virtuális géphez (VM), használjon bejövő NAT-szabályokat, virtuális hálózati átjárót vagy ugródobozt.
+* Csak akkor rendeljen nyilvános IP-címeket a virtuális géphez, ha egy alkalmazáshoz szükség van. A virtuális géphez (VM) való kapcsolódáshoz, illetve felügyeleti vagy felügyeleti célból a bejövő NAT-szabályokat, a virtuális hálózati átjárókat vagy a Jumpbox használhatja.
    
      A virtuális gépekhez való csatlakozásról további információt a következő témakörben talál:
    
    * [Virtuális gépek futtatása N szintű architektúrához az Azure-ban](../../guidance/guidance-compute-n-tier-vm.md)
-   * [WinRM-hozzáférés beállítása a virtuális gépekhez az Azure Resource Managerben](../../virtual-machines/windows/winrm.md)
-   * [Külső hozzáférés engedélyezése a virtuális géphez az Azure Portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [WinRM-hozzáférés beállítása virtuális gépekhez Azure Resource Manager](../../virtual-machines/windows/winrm.md)
+   * [Külső hozzáférés engedélyezése a virtuális géphez a Azure Portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Külső hozzáférés engedélyezése a virtuális géphez a PowerShell használatával](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Külső hozzáférés engedélyezése a Linux virtuális géphez az Azure CLI használatával](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Külső hozzáférés engedélyezése linuxos virtuális géphez az Azure CLI használatával](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-* A nyilvános IP-címek **domainNameLabel** tulajdonságának egyedinek kell lennie. A **domainNameLabel** értéknek 3 és 63 karakter közöttinek kell lennie, `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`és a reguláris kifejezésben meghatározott szabályokat kell követnie: . Mivel a **uniqueString** függvény 13 karakter hosszú karakterláncot hoz létre, a **dnsPrefixString** paraméter legfeljebb 50 karakterből állhat:
+* A nyilvános IP-címek **domainnamelabel értékkel** tulajdonságának egyedinek kell lennie. A **domainnamelabel értékkel** értékének 3 és 63 karakter közöttinek kell lennie, és követnie kell az ebben a reguláris `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`kifejezésben megadott szabályokat:. Mivel a **uniqueString** függvény 13 karakter hosszúságú karakterláncot hoz létre, a **dnsPrefixString** paraméter 50 karakterre van korlátozva:
 
    ```json
    "parameters": {
@@ -253,7 +253,7 @@ Az alábbi információk hasznosak lehetnek, ha [erőforrásokkal](template-synt
    }
    ```
 
-* Amikor jelszót ad hozzá egy egyéni parancsfájl-bővítményhez, használja a **commandToExecute** tulajdonságot a **protectedSettings** tulajdonságban:
+* Amikor jelszót ad hozzá egy egyéni parancsfájl-bővítményhez, használja a **commandToExecute** tulajdonságot a **protectedsettingsfromkeyvault** tulajdonságban:
    
    ```json
    "properties": {
@@ -273,11 +273,11 @@ Az alábbi információk hasznosak lehetnek, ha [erőforrásokkal](template-synt
    ```
    
    > [!NOTE]
-   > Annak érdekében, hogy titkos kulcsok titkosítva vannak, amikor paraméterekként a virtuális gépek és bővítmények, használja a **protectedSettings** tulajdonság a megfelelő bővítmények.
+   > Annak biztosítása érdekében, hogy a titkos kódok titkosítva legyenek a virtuális gépek és bővítmények paraméterként való átadásakor, használja a megfelelő bővítmények **protectedsettingsfromkeyvault** tulajdonságát.
    > 
    > 
 
 ## <a name="next-steps"></a>További lépések
 
-* A sablonfájl szerkezetéről az [ARM-sablonok szerkezetének és szintaxisának megismerése című témakörben olvashat.](template-syntax.md)
-* Az Azure felhőkörnyezetében dolgozó sablonok létrehozásáról az [ARM-sablonok fejlesztése a felhőkonzisztenciához című](templates-cloud-consistency.md)témakörben olvashat.
+* A sablonfájl struktúrájával kapcsolatos információkért lásd [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
+* Az összes Azure-beli felhőalapú környezetben működő sablonok létrehozásával kapcsolatos javaslatokért lásd: [ARM-sablonok fejlesztése a Felhőbeli konzisztencia](templates-cloud-consistency.md)érdekében.

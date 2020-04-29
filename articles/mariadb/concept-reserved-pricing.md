@@ -1,70 +1,70 @@
 ---
-title: Előre fizetett számítási fenntartott kapacitással - Azure Database for MariaDB
-description: A MariaDB fenntartott kapacitású Számítási erőforrásaihoz szükséges Azure Database előre fizetése
+title: Előre fizetés a számításhoz fenntartott kapacitással – Azure Database for MariaDB
+description: Előre fizetés Azure Database for MariaDB számítási erőforrások számára fenntartott kapacitással
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 9a6bd3cab41c69075f5170a8a3aad4f059d970e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159047"
 ---
-# <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>A MariaDB fenntartott kapacitású Számítási erőforrásaihoz szükséges Azure Database előre fizetése
+# <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for MariaDB számítási erőforrások számára fenntartott kapacitással
 
-A MariaDB Azure Database mostantól segít pénzt megtakarítani, ha előre kifizeti a számítási erőforrásokat az használatalapú fizetéses árakhoz képest. A MariaDB-hez biztosított Azure Database használatával egy vagy három évre előzetes kötelezettséget vállal a MariaDB-kiszolgálókra, hogy jelentős kedvezményt kapjon a számítási költségekből. Az Azure Database mariaDB fenntartott kapacitásmegvásárlásához meg kell adnia az Azure-régiót, a központi telepítés típusát, a teljesítményszintet és a kifejezést. </br>
+A Azure Database for MariaDB mostantól segít pénzt megtakarítani a számítási erőforrások előfizetésével, az utólagos elszámolású árakhoz képest. A Azure Database for MariaDB fenntartott kapacitással a MariaDB-kiszolgálókon egy-egy vagy három éves időszakra vonatkozó előzetes kötelezettségvállalás áll rendelkezésre, hogy jelentős kedvezményt kapjon a számítási költségek. Azure Database for MariaDB fenntartott kapacitás megvásárlásához meg kell adnia az Azure-régiót, a központi telepítési típust, a teljesítménnyel kapcsolatos szintet és a kifejezést. </br>
 
-Nem kell hozzárendelnie a foglalást a MariaDB-kiszolgálók adott Azure-adatbázisához. A Már futó Azure Database for MariaDB vagy az újonnan telepített, automatikusan megkapja a fenntartott díjszabás előnyeit. A foglalás megvásárlásával ön egy vagy három évig előre megfizeti a számítási költségeket. Amint megvásárol egy foglalást, a MariaDB-hez rendelt Azure-adatbázis a foglalási attribútumokkal megegyező számítási díjakat már nem számítja fel a használatalapú díjszabás szerint. A foglalás nem terjed ki a MariaDB adatbázis-kiszolgálóhoz kapcsolódó szoftverekre, hálózatokra vagy tárolási díjakra. A foglalási időszak végén a számlázási juttatás lejár, és az Azure Database for MariaDB a díjfelosztón keresztül kerül számlázásra. A foglalások nem újulnak meg automatikusan. Díjszabási információkért tekintse meg az [Azure Database for MariaDB fenntartott kapacitásajánlat.](https://azure.microsoft.com/pricing/details/mariadb/) </br>
+A foglalást nem kell hozzárendelni adott Azure Database for MariaDB kiszolgálókhoz. Egy már futó Azure Database for MariaDB vagy újonnan üzembe helyezett szolgáltatás automatikusan megkapja a fenntartott díjszabás előnyeit. A foglalás megvásárlásával előre fizet a számítási költségekre egy vagy három év alatt. A foglalás megvásárlása után az Azure Database for MariaDB számítási díjait a foglalási attribútumoknak megfelelően már nem számítjuk fel az utólagos elszámolású díjszabás szerint. A foglalások nem fedik le a MariaDB adatbázis-kiszolgálóhoz kapcsolódó szoftver-, hálózatkezelési és tárolási díjakat. A foglalási időszak végén a számlázási juttatás lejár, a Azure Database for MariaDB pedig az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem automatikus megújítást végeznek. A díjszabással kapcsolatos információkért tekintse meg a [Azure Database for MariaDB fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/mariadb/). </br>
 
-A MariaDB számára fenntartott kapacitáshoz azure-adatbázist vásárolhatja meg az [Azure Portalon.](https://portal.azure.com/) A lefoglalt kapacitás megvásárlása:
+A [Azure Portal](https://portal.azure.com/)Azure Database for MariaDB fenntartott kapacitást is vásárolhat. A fenntartott kapacitás megvásárlása:
 
-* Legalább egy vállalati vagy egyéni előfizetés tulajdonosi szerepkörben kell lennie, ha felosztó-ki-felárak vannak.
-* Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetésben eA-rendszergazdának kell lennie.
-* A Felhőszolgáltató (CSP) program esetében csak a rendszergazdai ügynökök vagy az értékesítési ügynökök vásárolhatnak Azure Database-t a MariaDB számára fenntartott kapacitáshoz. </br>
+* Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
+* Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
+* A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg Azure Database for MariaDB fenntartott kapacitást. </br>
 
-A nagyvállalati ügyfelek és az használatalapú fizetéses ügyfelek foglalási vásárlásokért való felszámításának részletei, az [Azure-foglalások használatának ismertetése a nagyvállalati regisztrációhoz,](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) valamint [az Azure-foglalás használatának megismerése az használatalapú fizetéses előfizetéshez.](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
-
-
-## <a name="determine-the-right-server-size-before-purchase"></a>A megfelelő kiszolgálóméret meghatározása vásárlás előtt
-
-A foglalás méretének a meglévő vagy hamarosan üzembe helyezendő adatbázisok példánya által egy adott régióban használt számítási mennyiség teljes mennyiségén kell alapulnia, és ugyanazt a teljesítményszintet és hardvergenerálást kell használnia.</br>
-
-Tegyük fel például, hogy egy általános célt futtat, a Gen5 – 32 virtuálismagos MariaDB adatbázist, és két memóriaoptimalizált memóriát, a Gen5 – 16 virtuálismagos MariaDB-adatbázisokat. Továbbá, azt feltételezzük, hogy azt tervezi, hogy telepíteni a következő hónapban egy további általános célja, Gen5 – 32 virtuális magadatbázis-kiszolgáló, és egy memória optimalizált, Gen5 – 16 vCore adatbázis-kiszolgáló. Tegyük fel, hogy tudja, hogy szüksége lesz ezekre az erőforrásokra legalább 1 évig. Ebben az esetben meg kell vásárolnia egy 64 (2x32) virtuális mag, 1 éves foglalás egyetlen adatbázis általános célja - Gen5 és egy 48 (2x16 + 16) virtuális mag 1 év foglalás egyetlen adatbázis memória optimalizált - Gen5
+Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzése után: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) , valamint az [Azure-foglalás használatának](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)ismertetése az utólagos elszámolású előfizetéshez.
 
 
-## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Azure-adatbázis vásárlása a MariaDB számára fenntartott kapacitáshoz
+## <a name="determine-the-right-server-size-before-purchase"></a>A kiszolgáló megfelelő méretének meghatározása a vásárlás előtt
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2. Válassza a **Minden szolgáltatás** > **foglalása lehetőséget.**
-3.  Válassza a **Hozzáadás** lehetőséget, majd a Vásárlás foglalások ablaktáblán válassza **az Azure Database for MariaDB** lehetőséget a MariaDB-adatbázisok új foglalásának megvásárlásához.
-4.  Töltse ki a szükséges mezőket. A meglévő vagy új adatbázisok, amelyek megfelelnek a kiválasztott attribútumok jogosultak a fenntartott kapacitáskedvezmény. A MariaDB-kiszolgálók Azure-adatbázisának tényleges száma, amely a kedvezményt kapja, a kiválasztott hatókörtől és mennyiségtől függ.
+A foglalások méretének a meglévő vagy hamarosan üzembe helyezett adatbázisok egy adott régión belüli, illetve ugyanazon teljesítményszint és hardveres generáció használatával felhasznált számítási mennyiségén kell alapulnia.</br>
 
-
-![A fenntartott árak áttekintése](media/concepts-reserved-pricing/mariadb-reserved-price.png)
+Tegyük fel például, hogy egy általános célt futtat, Gen5 – 32 virtuális mag MariaDB-adatbázist, és két memóriát optimalizált, Gen5 – 16 virtuális mag MariaDB adatbázist. Továbbá Tételezzük fel, hogy a következő hónapban szeretne üzembe helyezni egy további általános célt, a Gen5 – 32 virtuális mag adatbázis-kiszolgálót és egy, a Gen5 – 16 virtuális mag adatbázis-kiszolgálót. Tegyük fel, hogy tudnia kell, hogy legalább 1 évig szüksége lesz ezekre az erőforrásokra. Ebben az esetben vásárolnia kell egy 64 (2x32) virtuális mag, 1 éves foglalást az Egyadatbázisos általános célú Gen5 és a 48 (2x16 + 16) virtuális mag 1 év foglalása egyetlen adatbázishoz optimalizált memória esetén – Gen5
 
 
-Az alábbi táblázat a szükséges mezőket ismerteti.
+## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Azure Database for MariaDB fenntartott kapacitás vásárlása
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Válassza **a minden szolgáltatás** > **foglalás**lehetőséget.
+3.  Válassza a **Hozzáadás** lehetőséget, majd a foglalások ablaktáblán válassza a **Azure Database for MariaDB** lehetőséget a MariaDB-adatbázisok új foglalásának megvásárlásához.
+4.  Töltse ki a kötelező mezőket. Meglévő vagy új adatbázisok, amelyek megfelelnek a kiválasztott attribútumoknak, a fenntartott kapacitás kedvezményét kapják meg. A kedvezményt megkapó Azure Database for MariaDB kiszolgálók tényleges száma függ a hatókörtől és a kiválasztott mennyiségtől.
+
+
+![A fenntartott díjszabás áttekintése](media/concepts-reserved-pricing/mariadb-reserved-price.png)
+
+
+A következő táblázat a kötelező mezőket ismerteti.
 
 | Mező | Leírás |
 | :------------ | :------- |
-| Előfizetés   | Az Azure Database a MariaDB lefoglalt kapacitásfoglalásához használt előfizetés. Az előfizetés fizetési módja az Azure Database előzetes költségeit számítja fel a MariaDB számára fenntartott kapacitásfoglalásért. Az előfizetéstípusnak nagyvállalati szerződésnek (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P) vagy egyedi megállapodásnak kell lennie a felosztó-kiosztó díjszabással (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. A felosztó-kiosztó díjszabással rendelkező egyéni előfizetések esetén a díjakat az előfizetés hitelkártyájára vagy számlafizetési módjára terheljük.
-| Hatókör | A virtuálismag-foglalás hatóköre egy előfizetésre vagy több előfizetésre (megosztott hatókörre) terjedhet ki. Ha a következőket választja: </br></br> **Megosztott**, a virtuálismag-foglalási kedvezmény az Azure Database for MariaDB-kiszolgálókra vonatkozik, amelyek a számlázási környezetben futó előfizetésekben futnak. A vállalati ügyfelek számára a megosztott hatókör a regisztráció, és a regisztráción belüli összes előfizetést tartalmazza. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egyetlen előfizetés**, a virtuálismag-foglalási kedvezmény az Azure Database for MariaDB-kiszolgálókra vonatkozik ebben az előfizetésben. </br></br> **Egyetlen erőforráscsoport,** a foglalási kedvezmény a kiválasztott előfizetésben lévő MariaDB-kiszolgálók Azure Database for MariaDB-kiszolgálókra és az adott előfizetésen belül kiválasztott erőforráscsoportra vonatkozik.
-| Régió | Az Azure-régió, amely az Azure Database a MariaDB fenntartott kapacitásfoglalás.
-| Központi telepítés típusa | Az Azure Database for MariaDB erőforrástípus, amelyhez meg szeretné vásárolni a foglalást.
-| Teljesítményszint | A MariaDB-kiszolgálók Azure-adatbázisának szolgáltatási szintje.
+| Előfizetés   | A Azure Database for MariaDB fenntartott kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a Azure Database for MariaDB fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
+| Hatókör | A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva**a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó Azure Database for MariaDB-kiszolgálókra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egyszeri előfizetés**esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő Azure Database for MariaDB-kiszolgálókra alkalmazza a rendszer. </br></br> **Egy erőforráscsoport**, a foglalási kedvezményt a rendszer a kijelölt előfizetésben található Azure Database for MariaDB-kiszolgálókra és az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz alkalmazza.
+| Régió | Az Azure Database for MariaDB fenntartott kapacitás foglalása által érintett Azure-régió.
+| Központi telepítés típusa | Az a Azure Database for MariaDB erőforrástípus, amelyre a foglalást megvásárolni szeretné.
+| Teljesítményszint | A Azure Database for MariaDB-kiszolgálók szolgáltatási szintje.
 | Időtartam | Egy év
-| Mennyiség | Az Azure Database-ben a MariaDB számára fenntartott kapacitásfoglaláshoz vásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a Teljesítmény szintben lévő virtuális magok száma, amelyek le vannak foglalva, és a számlázási engedményt kapják. Ha például egy Azure Database for MariaDB-kiszolgálók hoz egy Azure Database-t futtat vagy tervez futtatni, amelynek teljes számítási kapacitása Gen5 16 virtuális mag az USA keleti régiójában, akkor a mennyiséget 16-ként kell megadnia, hogy maximalizálja az összes kiszolgáló előnyét.
+| Mennyiség | A Azure Database for MariaDB fenntartott kapacitás foglalása keretében megvásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a lefoglalt teljesítményszint virtuális mag, és a számlázási kedvezményt kapja. Ha például olyan Azure Database for MariaDB-kiszolgálókat futtat, amelyeken az USA keleti régiójában az Gen5 16 virtuális mag teljes számítási kapacitása fut, akkor az összes kiszolgáló előnyének maximalizálása érdekében a 16-as mennyiséget kell megadnia.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
-## <a name="vcore-size-flexibility"></a>virtuálismag-méret rugalmassága
+## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 
-A virtuális mag méretének rugalmassága segít a teljesítményszinten és a régión belül fel- vagy leskálázhatóként, a fenntartott kapacitáselőnyeinek elvesztése nélkül. 
+a virtuális mag méretének rugalmassága segít a teljesítmény-és a régión belüli vertikális felskálázásban, a fenntartott kapacitási juttatás elvesztése nélkül. 
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
@@ -72,13 +72,13 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-A virtuálismag-foglalási kedvezmény automatikusan vonatkozik az Azure Database for MariaDB-kiszolgálók számára, amelyek megfelelnek a MariaDB által fenntartott kapacitásfoglalási hatókörnek és attribútumnak. Frissítheti az Azure-adatbázis hatókörét a MariaDB számára fenntartott kapacitásfoglaláshoz az Azure Portalon, a PowerShellen, a CLI-n vagy az API-n keresztül. </br></br>
-Ha meg szeretné tudni, hogyan kezelheti az Azure Database for MariaDB fenntartott kapacitását, olvassa el az Azure Database kezelése a MariaDB számára fenntartott kapacitással című témakört.
+A virtuális mag foglalási kedvezmény automatikusan érvényes azon Azure Database for MariaDB-kiszolgálók számára, amelyek megfelelnek az Azure Database for MariaDB fenntartott kapacitás foglalási hatókörének és attribútumainak. A MariaDB fenntartott kapacitás foglalásának hatókörét a Azure Portal, a PowerShell, a CLI vagy az API segítségével frissítheti. </br></br>
+A Azure Database for MariaDB fenntartott kapacitás kezelésével kapcsolatos információkért lásd: Azure Database for MariaDB fenntartott kapacitás kezelése.
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Mik azok az Azure-foglalások?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-* [Azure-foglalások kezelése](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+* [Mi a Azure Reservations](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
+* [Az Azure Reservations kezelése](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 * [Az Azure Reservations-kedvezmény ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mariadb)
 * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)

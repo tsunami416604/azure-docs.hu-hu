@@ -1,7 +1,7 @@
 ---
-title: A szolgáltatási erőforrás áthelyezése régiók között
+title: A szolgáltatási erőforrások áthelyezése régiók között
 titleSuffix: Azure Cognitive Search
-description: Ez a cikk bemutatja, hogyan helyezheti át az Azure Cognitive Search erőforrásait egyik régióból a másikba az Azure-felhőben.
+description: Ez a cikk bemutatja, hogyan helyezheti át Azure Cognitive Search-erőforrásait az egyik régióból a másikba az Azure-felhőben.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,42 +10,42 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 03/24/2020
 ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246302"
 ---
-# <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Az Azure Cognitive Search szolgáltatás áthelyezése egy másik Azure-régióba
+# <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search-szolgáltatás áthelyezése másik Azure-régióba
 
-Alkalmanként az ügyfelek megkérdezik, hogy áthelyez-e egy keresési szolgáltatást egy másik régióba. Jelenleg nincs beépített mechanizmus vagy eszköz, amely segít a feladatban, de ez a cikk segíthet megérteni az azonos eredmény elérésének manuális lépéseit.
+Alkalmanként előfordulhat, hogy az ügyfelek egy másik régióba helyezik át a keresési szolgáltatást. Jelenleg nincs olyan beépített mechanizmus vagy eszköz, amely segítséget nyújt az adott feladathoz, de ez a cikk segít megérteni az azonos eredmény elérésének manuális lépéseit.
 
 > [!NOTE]
-> Az Azure Portalon minden szolgáltatás rendelkezik egy **Exportálási sablon** paranccsal. Az Azure Cognitive Search esetén ez a parancs egy szolgáltatás alapvető definícióját (név, hely, szint, replika és partíciószám) hozza létre, de nem ismeri fel a szolgáltatás tartalmát, és nem viszi át a kulcsokat, szerepköröket vagy naplókat. Bár a parancs létezik, nem javasoljuk, hogy használja a keresési szolgáltatás áthelyezéséhez.
+> A Azure Portal minden szolgáltatás rendelkezik **exportálási sablon** paranccsal. Az Azure Cognitive Search esetében ez a parancs egy szolgáltatás alapszintű definícióját (név, hely, réteg, replika és partíciók száma) állítja elő, de nem ismeri fel a szolgáltatás tartalmát, és nem végez kulcsokat, szerepköröket vagy naplókat. Bár a parancs létezik, nem javasoljuk, hogy használja a keresési szolgáltatás áthelyezéséhez.
 
-## <a name="guidance-for-moving-a-service"></a>Útmutató a szolgáltatás áthelyezéséhez
+## <a name="guidance-for-moving-a-service"></a>Útmutató a szolgáltatások áthelyezéséhez
 
-1. Azonosítsa a függőségeket és a kapcsolódó szolgáltatásokat, hogy megismerjék a szolgáltatás áthelyezése teljes hatását, ha nem csak az Azure Cognitive Search-et kell áthelyeznie.
+1. Azonosítsa a függőségeket és a kapcsolódó szolgáltatásokat, hogy megértsék a szolgáltatások áthelyezésének teljes hatását, ha többre van szüksége, mint az Azure Cognitive Search.
 
-   Az Azure Storage naplózásra, tudástároló létrehozására szolgál, és a ai-bővítés és indexelés általánosan használt külső adatforrása. A Cognitive Services függőség a ai gazdagításában. Mind a Cognitive Services, mind a keresési szolgáltatás nak ugyanabban a régióban kell lennie, ha a i-dúsítást használ.
+   Az Azure Storage a naplózáshoz, a Tudásbázis létrehozásához, valamint a mesterséges intelligencia-bővítéshez és-indexeléshez használatos külső adatforrás. Cognitive Services a mesterséges intelligencia-gazdagítás függősége. A Cognitive Services és a keresési szolgáltatásnak ugyanabban a régióban kell lennie, ha AI-dúsítást használ.
 
-1. Hozzon létre egy leltárt a szolgáltatás összes objektumáról, hogy tudja, mit kell áthelyezni: indexeket, szinonimaleképezéseket, indexelőket, adatforrásokat, skillseteket. Ha engedélyezte a naplózást, hozzon létre és archiválja azon jelentéseket, amelyekre egy korábbi bejegyzéshez szüksége lehet.
+1. Hozzon létre leltárt a szolgáltatásban található összes objektumról, hogy tudja, mit kell áthelyezni: indexek, szinonimák térképek, indexelő, adatforrások, szakértelmével. Ha engedélyezte a naplózást, hozzon létre és archiváljon minden olyan jelentést, amelyre szüksége lehet egy korábbi rekordhoz.
 
-1. Ellenőrizze az árak és a rendelkezésre állás az új régióban, hogy biztosítsa az Azure Cognitive Search és az új régió kapcsolódó szolgáltatásainak elérhetőségét. A funkciók többsége minden régióban elérhető, de néhány előzetes verziójú funkció korlátozott annektált.
+1. Tekintse meg az árképzést és a rendelkezésre állást az új régióban az Azure Cognitive Search és az új régióban található kapcsolódó szolgáltatások elérhetőségének biztosítása érdekében. A funkciók többsége minden régióban elérhető, de bizonyos előzetes verziójú funkciók korlátozott rendelkezésre állással rendelkeznek.
 
-1. Hozzon létre egy szolgáltatást az új régióban, és tegye közzé újra a forráskódból a meglévő indexeket, szinonimát leképezőket, indexelőket, adatforrásokat és skillseteket. Ne feledje, hogy a szolgáltatásneveknek egyedinek kell lenniük, így a meglévő név nem használható fel újra. Ellenőrizze az egyes skillset, hogy ha a kapcsolatok cognitive Services továbbra is érvényesek az azonos régióban követelmény. Tudástárolók létrehozása esetén ellenőrizze az Azure Storage kapcsolati karakterláncait, ha egy másik szolgáltatást használ.
+1. Hozzon létre egy szolgáltatást az új régióban, és tegye közzé újból a forráskódból a meglévő indexeket, a szinonimákat, az indexelő, az adatforrásokat és a szakértelmével. Ne feledje, hogy a szolgáltatás nevének egyedinek kell lennie, hogy a meglévő nevet ne használja újra. Ellenőrizze az egyes készségkészlet, hogy a Cognitive Services kapcsolatok továbbra is érvényesek-e az azonos régióra vonatkozó követelmény szempontjából. Az Azure Storage-hoz készült kapcsolatok karakterláncait is megtekintheti, ha más szolgáltatást használ.
 
-1. Adott esetben töltse be újra az indexeket és a tudástárolókat. Az alkalmazáskódot használja a JSON-adatok indexbe való lelökéséhez, vagy az indexelők ismételt futtatásával a dokumentumok külső forrásokból történő lekérése. 
+1. Indexek és tudásbázisok újratöltése, ha van ilyen. Az alkalmazás kódjának használatával leküldheti a JSON-adatok indexbe való küldését, vagy újrafuttathatja az indexelő dokumentumokat a külső forrásokból származó dokumentumok lekéréséhez. 
 
-1. Engedélyezze a naplózást, és ha használja őket, hozzon létre újra biztonsági szerepköröket.
+1. Engedélyezze a naplózást, és ha használja őket, hozza létre újra a biztonsági szerepköröket.
 
-1. Frissítse az ügyfélalkalmazásokat és a tesztcsomagokat az új szolgáltatásnév és API-kulcsok használatához, és tesztelje az összes alkalmazást.
+1. Az ügyfélalkalmazások és a tesztelési csomagok frissítése az új szolgáltatásnév és API-kulcsok használatára és az összes alkalmazás tesztelésére.
 
-1. Törölje a régi szolgáltatást, miután az új szolgáltatás teljesen tesztelt és működőképes.
+1. Törölje a régi szolgáltatást, ha az új szolgáltatás teljes körű tesztelése és működtetése megtörtént.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi hivatkozások segítségével további információkat találhat a fent ismertetett lépések végrehajtásakor.
+A következő hivatkozások segítséget nyújtanak a fenti lépések elvégzéséhez szükséges további információk megkereséséhez.
 
 + [Az Azure Cognitive Search díjszabása és régiói](https://azure.microsoft.com/pricing/details/search/)
 + [Szint kiválasztása](search-sku-tier.md)

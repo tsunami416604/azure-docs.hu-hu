@@ -1,6 +1,6 @@
 ---
-title: Speciális kódolás végrehajtása mes-készletek testreszabásával | Microsoft dokumentumok
-description: Ez a témakör bemutatja, hogyan hajtható végre a speciális kódolás a Media Encoder Standard feladatkészletek testreszabásával.
+title: Speciális kódolás végrehajtása a MES-beállításkészletek testreszabásával | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan hajthat végre speciális kódolást Media Encoder Standard feladat-előállítók testreszabásával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,49 +15,49 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 5f7611fd9df207df51fa0e51218d8a234583b1f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529783"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Speciális kódolás végrehajtása a MES-készletek testreszabásával 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Speciális kódolás végrehajtása a MES-beállításkészletek testreszabásával 
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a témakör bemutatja, hogyan szabhatja testre a Media Encoder Standard készleteket. A [Media Encoder Standard kódolásegyéni készleteket használó](media-services-custom-mes-presets-with-dotnet.md) témakör bemutatja, hogyan lehet a .NET használatával kódolási feladatot és a feladatot végrehajtó feladatot létrehozni. Miután testreszabott egy készletet, adja meg az egyéni készleteket a kódolási feladathoz. 
+Ez a témakör bemutatja, hogyan szabhatja testre a Media Encoder Standard beállításkészleteit. A [Media Encoder standard egyéni beállításkészletek használatával történő kódolás](media-services-custom-mes-presets-with-dotnet.md) azt mutatja be, hogyan használható a .net egy kódolási feladat létrehozásához és egy feladat végrehajtásához. Az előre beállított beállítások testreszabása után adja meg az egyéni beállításkészletet a kódolási feladathoz. 
 
-Ha XML-készletet használ, ügyeljen arra, hogy megőrizze az elemek sorrendjét, ahogy az az alábbi XML-mintákban látható (például a KeyFrameInterval-nak meg kell előznie a SceneChangeDetection-t).
+Ha XML-készletet használ, ügyeljen arra, hogy megőrizze az elemek sorrendjét, ahogy az alábbi XML-példákban is látható (például a KeyFrameInterval előtt kell megelőznie a SceneChangeDetection).
 
 > [!NOTE] 
-> A Media Encoder Standard számos speciális Media Services v2-es szolgáltatása jelenleg nem érhető el a v3-ban. További információt a szolgáltatáshiányosságai című [témakörben talál.](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis)
+> A Media Encoder Standard Advanced Media Services v2 számos funkciója jelenleg nem érhető el a v3-as verzióban. További információ: [szolgáltatások hiányosságainak](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis).
 
-## <a name="support-for-relative-sizes"></a>A relatív méretek támogatása
+## <a name="support-for-relative-sizes"></a>Relatív méretek támogatása
 
-Bélyegképek létrehozásakor nem kell mindig képpontban megadni a kimeneti szélességet és magasságot. Megadhatja őket százalékban, a tartományban [1%, ..., 100%].
+Miniatűrök létrehozásakor nem kell mindig a kimeneti szélességet és a magasságot megadni képpontban. Megadhatja azokat százalékban, az [1%,..., 100%] tartományban.
 
-### <a name="json-preset"></a>JSON készlet
+### <a name="json-preset"></a>JSON-készlet
     "Width": "100%",
     "Height": "100%"
 
-### <a name="xml-preset"></a>XML-készlet
+### <a name="xml-preset"></a>XML-beállításkészlet
     <Width>100%</Width>
     <Height>100%</Height>
 
 ## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Miniatűrök létrehozása
 
-Ez a szakasz bemutatja, hogyan szabható testre egy miniatűröket létrehozó készlet. Az alábbiakban meghatározott készlet információkat tartalmaz afájl kódolásáról, valamint a miniatűrök létrehozásához szükséges információkat. Bármelyik MES-készletet elkészítheti, amely dokumentálja [ezt a](media-services-mes-presets-overview.md) szakaszt, és hozzáadhat olyan kódot, amely miniatűröket generál.  
+Ebből a szakaszból megtudhatja, hogyan szabhatja testre a miniatűröket létrehozó beállításkészletet. Az alábbi előre definiált készlet a fájl kódolásához és a miniatűrök létrehozásához szükséges információkhoz tartalmaz információkat. A [jelen](media-services-mes-presets-overview.md) szakaszban ismertetett MES-előállítók bármelyikét elvégezheti, és hozzáadhat olyan kódot, amely miniatűröket hoz létre.  
 
 > [!NOTE]
-> A következő készletBen a **SceneChangeDetection** beállítás csak akkor állítható igaz értékre, ha egyetlen bitrátavideóra kódol. Ha többbitráta-sebességű videóra kódol, és a **SceneChangeDetection** értékét igaz értékre állítja, a kódoló hibát ad vissza.  
+> A következő beállításkészlet **SceneChangeDetection** beállítása csak akkor állítható be igaz értékre, ha egyetlen bitráta-videó kódolást használ. Ha többszörös sávszélességű videót kódol, és a **SceneChangeDetection** igaz értékre állítja, a kódoló hibát ad vissza.  
 >
 >
 
-A sémáról a [következő](media-services-mes-schema.md) témakörben olvashat bővebben.
+A sémával kapcsolatos további információkért tekintse meg [ezt a](media-services-mes-schema.md) témakört.
 
-Győződjön meg arról, hogy áttekinti a [Szempontok szakaszt.](#considerations)
+Ügyeljen rá, hogy ellenőrizze a [szempontok](#considerations) szakaszt.
 
-### <a name="json-preset"></a><a id="json"></a>JSON készlet
+### <a name="json-preset"></a><a id="json"></a>JSON-készlet
     {
       "Version": 1.0,
       "Codecs": [
@@ -157,7 +157,7 @@ Győződjön meg arról, hogy áttekinti a [Szempontok szakaszt.](#consideration
     }
 
 
-### <a name="xml-preset"></a><a id="xml"></a>XML-készlet
+### <a name="xml-preset"></a><a id="xml"></a>XML-beállításkészlet
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -234,25 +234,25 @@ Győződjön meg arról, hogy áttekinti a [Szempontok szakaszt.](#consideration
 
 A következő szempontokat kell figyelembe venni:
 
-* Explicit időbélyegek használata a Start/Step/Range feltételezi, hogy a bemeneti forrás legalább 1 perc hosszú.
-* Jpg /Png/BmpImage elemek Start, Step és Range karakterlánc attribútumokkal rendelkeznek – ezek a következőképpen értelmezhetők:
+* A kezdés/lépés/tartomány explicit időbélyegek használata feltételezi, hogy a bemeneti forrás legalább 1 percet vesz igénybe.
+* A jpg/PNG/BmpImage elemek indítási, Step és Range karakterlánc-attribútumokkal rendelkeznek – ezeket a következőképpen lehet értelmezni:
 
-  * Keretszám, ha nem negatív egész számok, például "Start": "120",
-  * A forrás időtartamához viszonyítva, ha %utótagban van kifejezve, például "Start": "15%", VAGY
-  * Időbélyeg, ha hh:PP:SS- ben van kifejezve... formátum, például "Start" : "00:01:00"
+  * A keret száma, ha nem negatív egész számok, például "Start": "120",
+  * A forrás időtartamához képest, ha%-utótagként van kifejezve, például "Start": "15%", vagy
+  * Időbélyeg, ha a következőképpen van megadva: óó: PP: mm... formátum, például "Start": "00:01:00"
 
-    Keverheti és párosíthatja a jelöléseket, ahogy tetszik.
+    A jelöléseket a kívánt módon keverheti és párosíthatja.
 
-    Ezenkívül a Start egy speciális makrót is támogat:{Best}, amely megpróbálja meghatározni a tartalom első "érdekes" keretét MEGJEGYZÉS: (A lépés és a tartomány figyelmen kívül lesz hagyva, ha a Start értéke {Best})
-  * Alapértelmezések: Start:{Best}
-* A kimeneti formátumot minden képformátumhoz kifejezetten meg kell adni: Jpg/Png/BmpFormat. Ha jelen van, a MES a JpgVideo-t jpgformat-ra és így tovább egyezik. A OutputFormat egy új képkokod-specifikus makrót vezet be: {Index}, amelynek jelen kell lennie (egyszer és csak egyszer) a képkimeneti formátumokhoz.
+    Emellett a Start egy speciális makrót is támogat: {Best}, amely megpróbálja meghatározni a tartalom első "érdekes" keretét: (a lépés és a tartomány figyelmen kívül lesz hagyva, ha a Start értéke {Best})
+  * Alapértékek: Start: {Best}
+* A kimeneti formátumot explicit módon meg kell adni az egyes képformátumokhoz: jpg/PNG/BmpFormat. Ha jelen van, a MES megfelel a JpgVideo JpgFormat, és így tovább. A OutputFormat egy új rendszerkép-kodek specifikus makrót ({index}) vezet be, amely a képkimeneti formátumok esetében (egyszer és egyszer) is szerepelnie kell.
 
-## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>Videó vágása (vágás)
-Ez a szakasz a kódoló készletek módosításáról szól, hogy kivágja vagy vágja le a bemeneti videót, ahol a bemenet irt. A kódoló is használható klip vagy berendezés egy eszköz, amely rögzített vagy archivált egy élő közvetítés - a részleteket e állnak rendelkezésre ebben a [blogban](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>Videó levágása (vágás)
+Ez a szakasz a kódoló-előállítók módosítását tárgyalja a bemeneti videóhoz, ahol a bemenet egy úgynevezett köztes fájl vagy igény szerinti fájl. A kódoló egy élő streamből rögzített vagy archivált adategység rögzítésére vagy levágására is használható – ennek részletei ebben a [blogban](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)érhetők el.
 
-A videók vágásához az [ebben](media-services-mes-presets-overview.md) a szakaszban dokumentált MES-készletek bármelyikét elviheti, és módosíthatja a **Források** elemet (lásd alább). A StartTime értékének meg kell egyeznie a bemeneti videó abszolút időbélyegeivel. Ha például a bemeneti videó első képkockájának időbélyegzője 12:00:10.000, akkor a StartTime-nak legalább 12:00:10.000-nek kell lennie. Az alábbi példában azt feltételezzük, hogy a bemeneti videó kezdő időbélyege nulla. **A forrásokat** az előre beállított készlet elejére kell helyezni.
+A videók körülvágásához bármely [, a következő szakaszban](media-services-mes-presets-overview.md) dokumentált MES-beállításkészletet végrehajthat, és módosíthatja a **Sources** elemet (az alább látható módon). A kezdő időpont értékének meg kell egyeznie a bemeneti videó abszolút időbélyegzővel. Ha például a bemeneti videó első képkockája 12:00:10.000, akkor a kezdő időpontnak legalább 12:00:10.000 és nagyobb számnak kell lennie. Az alábbi példában feltételezzük, hogy a bemeneti videó kezdő időbélyege nulla. A **forrásokat** a beállításkészlet elején kell elhelyezni.
 
-### <a name="json-preset"></a><a id="json"></a>JSON készlet
+### <a name="json-preset"></a><a id="json"></a>JSON-készlet
     {
       "Version": 1.0,
       "Sources": [
@@ -371,8 +371,8 @@ A videók vágásához az [ebben](media-services-mes-presets-overview.md) a szak
       ]
     }
 
-### <a name="xml-preset"></a>XML-készlet
-A videók vágásához az [itt](media-services-mes-presets-overview.md) dokumentált MES-készletek bármelyikét elviheti, és módosíthatja a **Források** elemet (lásd alább).
+### <a name="xml-preset"></a>XML-beállításkészlet
+A videók körülvágása érdekében az [itt](media-services-mes-presets-overview.md) dokumentált MES-készletek bármelyikét elvégezheti, és módosíthatja a **Sources** elemet (az alább látható módon).
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -491,11 +491,11 @@ A videók vágásához az [itt](media-services-mes-presets-overview.md) dokument
 
 ## <a name="create-an-overlay"></a><a id="overlay"></a>Átfedés létrehozása
 
-A Media Encoder Standard lehetővé teszi, hogy egy képet egy meglévő videóra fedjen. Jelenleg a következő formátumok támogatottak: png, jpg, gif és bmp. Az alábbiakban definiált készlet egy egyszerű példa a videó fedvény.
+A Media Encoder Standard lehetővé teszi egy rendszerkép átfedését egy meglévő videóra. Jelenleg a következő formátumok támogatottak: PNG, jpg, GIF és BMP. Az alábbi előre megadott beállításkészlet egy videó átfedésének alapszintű példája.
 
-Az előre beállított fájl definiálása mellett tudatnia kell a Media Services szolgáltatással, hogy melyik fájl van az eszközben az átfedési kép, és melyik fájl az a forrásvideó, amelyre a képet át szeretné fedni. A videofájlnak kell lennie az **elsődleges** fájlnak.
+Egy előre definiált fájl definiálásán kívül azt is meg kell adnia, hogy Media Services tudja, hogy az eszköz mely fájlja az átfedésben lévő rendszerkép, és hogy melyik fájl a forrásként szolgáló videó, amelybe a képet át kívánja adni. A videofájl **elsődleges** fájlnak kell lennie.
 
-A .NET használata esetén adja hozzá a következő két függvényt a [témakörben](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) definiált .NET példához. Az **UploadMediaFilesFromFolder** függvény fájlokat tölt fel egy mappából (például BigBuckBunny.mp4 és Image001.png), és az mp4 fájlt az eszköz elsődleges fájljának állítja be. Az **EncodeWithOverlay** függvény a neki átadott egyéni előre beállított fájlt (például az azt követő készletet) használja a kódolási feladat létrehozásához.
+Ha .NET-et használ, adja hozzá a következő két függvényt [a témakörben](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) definiált .net-példához. A **UploadMediaFilesFromFolder** függvény fájlokat tölt fel egy mappából (például BigBuckBunny. mp4 és kép001. png), és beállítja, hogy az MP4-fájl az objektum elsődleges fájlja legyen. A **EncodeWithOverlay** függvény a megadott egyéni előre definiált fájlt (például a következő készletet) használja a kódolási feladat létrehozásához.
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -553,13 +553,13 @@ A .NET használata esetén adja hozzá a következő két függvényt a [témak�
 > [!NOTE]
 > Jelenlegi korlátozások:
 >
-> Az átfedés opacitási beállítása nem támogatott.
+> Az átfedés opacitásának beállítása nem támogatott.
 >
-> A forrásvideó-fájlnak és az átfedési képfájlnak ugyanabban az eszközben kell lennie, és a videofájlt kell elsődleges fájlként beállítani ebben az eszközben.
+> A forrásként szolgáló videofájl és az átfedésben lévő képfájlnak ugyanabban az adategységben kell lennie, és a videofájl az adategységben lévő elsődleges fájlként kell megadnia.
 >
 >
 
-### <a name="json-preset"></a>JSON készlet
+### <a name="json-preset"></a>JSON-készlet
     {
       "Version": 1.0,
       "Sources": [
@@ -635,7 +635,7 @@ A .NET használata esetén adja hozzá a következő két függvényt a [témak�
     }
 
 
-### <a name="xml-preset"></a>XML-készlet
+### <a name="xml-preset"></a>XML-beállításkészlet
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
@@ -696,14 +696,14 @@ A .NET használata esetén adja hozzá a következő két függvényt a [témak�
     </Preset>
 
 
-## <a name="insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Néma hangsáv beszúrása, ha a bemenet nem rendelkezik hanggal
-Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak videót tartalmaz, és nem tartalmaz hangot, akkor a kimeneti eszköz olyan fájlokat tartalmaz, amelyek csak videoadatokat tartalmaznak. Előfordulhat, hogy egyes játékosok nem tudják kezelni az ilyen kimeneti adatfolyamokat. Ezzel a beállítással kényszerítheti a kódolót, hogy csendes hangsávot adjon a kimenethez ebben a forgatókönyvben.
+## <a name="insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Csendes hangfelvétel beszúrása, ha a bemenet nem rendelkezik hanggal
+Alapértelmezés szerint ha olyan bemenetet küld a kódolónak, amely csak videót tartalmaz, és nincs hang, akkor a kimeneti eszköz csak videó adatokat tartalmazó fájlokat tartalmaz. Előfordulhat, hogy egyes játékosok nem tudják kezelni az ilyen kimeneti adatfolyamokat. Ezzel a beállítással kényszerítheti a kódolót, hogy egy csendes hangsávot adjon hozzá a forgatókönyv kimenetéhez.
 
-Ha azt szeretné, hogy a kódoló olyan eszközt állítson létre, amely néma hangsávot tartalmaz, ha a bemenet nem rendelkezik hanggal, adja meg az "InsertSilenceIfNoAudio" értéket.
+Ha úgy szeretné kényszeríteni a kódolót, hogy olyan objektumot hozzon létre, amely csendes hangsávot tartalmaz, ha a bemenet nem rendelkezik hanggal, adja meg a "InsertSilenceIfNoAudio" értéket.
 
-Az [ebben](media-services-mes-presets-overview.md) a szakaszban dokumentált MES-készletek bármelyikét elláthatja, és elvégezheti a következő módosításokat:
+Az [ebben](media-services-mes-presets-overview.md) a szakaszban ISMERTETett MES-előállítók bármelyikét elvégezheti, és a következő módosítást végezheti el:
 
-### <a name="json-preset"></a>JSON készlet
+### <a name="json-preset"></a>JSON-készlet
     {
       "Channels": 2,
       "SamplingRate": 44100,
@@ -712,19 +712,19 @@ Az [ebben](media-services-mes-presets-overview.md) a szakaszban dokumentált MES
       "Condition": "InsertSilenceIfNoAudio"
     }
 
-### <a name="xml-preset"></a>XML-készlet
+### <a name="xml-preset"></a>XML-beállításkészlet
     <AACAudio Condition="InsertSilenceIfNoAudio">
       <Channels>2</Channels>
       <SamplingRate>44100</SamplingRate>
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>Automatikus áthatolás letiltása
-Az ügyfeleknek nem kell semmit sem tenniük, ha szeretnék, ha a váltottsoros tartalmak automatikusan kilesznek eresztve. Ha az automatikus de-interlacing be van kapcsolva (alapértelmezett), a MES nem az automatikus kimutatására váltottsoros keretek és csak de-interlaces keretek jelölt váltottsoros.
+## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>Automatikus letiltás letiltása
+Az ügyfeleknek nem kell bármit megtenniük, ha úgy tetszik, hogy az interlaced tartalma automatikusan összefűzött. Ha az automatikus kikapcsolási funkció be van kapcsolva (alapértelmezett), a MES az összefűzött keretek automatikus észlelését végzi el, és csak az egymással összefűzött képkockákat jelöli.
 
-Kikapcsolhatja az automatikus de-interlacing kikapcsolását. Ez a beállítás nem ajánlott.
+Kikapcsolhatja az automatikus kikapcsolást. Ez a beállítás nem ajánlott.
 
-### <a name="json-preset"></a>JSON készlet
+### <a name="json-preset"></a>JSON-készlet
     "Sources": [
     {
      "Filters": {
@@ -735,7 +735,7 @@ Kikapcsolhatja az automatikus de-interlacing kikapcsolását. Ez a beállítás 
     }
     ]
 
-### <a name="xml-preset"></a>XML-készlet
+### <a name="xml-preset"></a>XML-beállításkészlet
     <Sources>
     <Source>
       <Filters>
@@ -748,7 +748,7 @@ Kikapcsolhatja az automatikus de-interlacing kikapcsolását. Ez a beállítás 
 
 
 ## <a name="audio-only-presets"></a><a id="audio_only"></a>Csak hangbeállítások
-Ez a rész két csak hanggal kapcsolatos MES-készletet mutat be: AAC Audio és AAC Good Quality Audio.
+Ez a szakasz két csak hangra vonatkozó MES-beállításkészletet mutat be: AAC hang-és AAC jó minőségű hang.
 
 ### <a name="aac-audio"></a>AAC hang
     {
@@ -796,24 +796,24 @@ Ez a rész két csak hanggal kapcsolatos MES-készletet mutat be: AAC Audio és 
 
 ## <a name="concatenate-two-or-more-video-files"></a><a id="concatenate"></a>Két vagy több videofájl összefűzése
 
-A következő példa bemutatja, hogyan hozhat létre egy készletet két vagy több videofájl összefűzésére. A leggyakoribb forgatókönyv az, amikor fejlécet vagy előzetest szeretne hozzáadni a fő videóhoz. A tervezett felhasználás az, amikor a szerkesztett videofájlok megosztják a tulajdonságokat (videofelbontás, képkockasebesség, hangsávszám stb.). Ügyeljen arra, hogy ne keverje össze a különböző képkockasebességgel rendelkező videókat, vagy a különböző számú hangsávot.
+Az alábbi példa azt szemlélteti, hogyan lehet előállítani egy készletet két vagy több videofájl összefűzésére. A leggyakoribb forgatókönyv az, amikor egy fejlécet vagy egy trailert szeretne hozzáadni a fő videóhoz. A rendeltetésszerű használat akkor történik meg, amikor a szerkesztett videofájlok közösen használják a megosztási tulajdonságokat (videó felbontása, Képkockasebesség, hangsávok száma stb.). Ügyeljen arra, hogy ne keverje a különböző képarányú videókat vagy különböző számú hangsávot.
 
 >[!NOTE]
->Az összefűzés funkció jelenlegi kialakítása arra számít, hogy a bemeneti videoklipek konzisztensek a felbontás, a képkockasebesség stb. 
+>Az összefűzési funkció aktuális terve arra vár, hogy a bemeneti videoklipek konzisztensek legyenek a felbontás, a képkockák aránya stb. alapján. 
 
 ### <a name="requirements-and-considerations"></a>Követelmények és megfontolások
 
-* A bemeneti videóknak csak egy hangsávval kell rendelkezniük.
-* A bemeneti videók nak azonos képkockasebességgel kell rendelkezniük.
-* A videókat külön eszközökbe kell feltölteni, és a videókat az egyes eszközök elsődleges fájljaként kell beállítani.
-* Tudnod kell a videók időtartamát.
-* Az alábbi előre beállított példák feltételezik, hogy az összes bemeneti videó nullával kezdődik. Módosítania kell a StartTime-értékeket, ha a videók eltérő indítási időbélyeggel rendelkeznek, mint általában az élő archívumok esetében.
-* A JSON-készlet explicit hivatkozásokat tesz az input eszközök Eszközazonosító értékére.
-* A mintakód feltételezi, hogy a JSON-készlet egy helyi fájlba lett mentve, például "C:\supportFiles\preset.json". Azt is feltételezi, hogy két eszköz két videofájl feltöltésével jött létre, és ismeri a kapott AssetID értékeket.
-* A kódrészlet és a JSON-készlet két videofájl összefűzésének példáját mutatja. A következő konkretitissza ki kettőnél több videóra:
+* A bemeneti videók csak egyetlen hangsávval rendelkezhetnek.
+* A bemeneti videóknak azonos képaránysal kell rendelkezniük.
+* Fel kell töltenie a videóit különálló eszközökre, és minden egyes eszközön meg kell adnia a videókat elsődleges fájlként.
+* Ismernie kell a videók időtartamát.
+* Az alábbi előre definiált példák azt feltételezik, hogy az összes bemeneti videó üres időbélyeggel kezdődik. Ha a videók eltérő kezdő időbélyegzővel rendelkeznek, akkor módosítania kell a kezdő időpontokat, ahogy az az élő archívumok esetében is jellemző.
+* A JSON-beállításkészlet explicit módon hivatkozik a bemeneti eszközök AssetID értékeire.
+* A mintakód azt feltételezi, hogy a JSON-beállításkészlet helyi fájlba lett mentve, például: "C:\supportFiles\preset.json". Azt is feltételezi, hogy két eszköz lett létrehozva két videofájl feltöltésével, és ismeri az eredményül kapott AssetID értékeket.
+* A kódrészlet és a JSON-készlet egy példát mutat be két videofájl összefűzésére. A következő lehetőségek közül kettőnél több videóra is kiterjesztheti:
 
-  1. Hívás feladat. InputAssets.Add() többször is hozzá több videót, sorrendben.
-  2. A JSON "Források" elemének megfelelő szerkesztése további bejegyzések hozzáadásával, ugyanabban a sorrendben.
+  1. Feladat hívása. A InputAssets. Add () elem ismételt hozzáadásával további videókat adhat hozzá a sorrendben.
+  2. A JSON "Sources" elemének megfelelő szerkesztése a további bejegyzések hozzáadásával ugyanabban a sorrendben.
 
 ### <a name="net-code"></a>.NET-kód
 
@@ -848,9 +848,9 @@ A következő példa bemutatja, hogyan hozhat létre egy készletet két vagy t�
     job.Submit();
     job.GetExecutionProgressTask(CancellationToken.None).Wait();
 
-### <a name="json-preset"></a>JSON készlet
+### <a name="json-preset"></a>JSON-készlet
 
-Frissítse az egyéni készletet az összefonni kívánt eszközök azonosítóival és az egyes videók megfelelő időszegmensével.
+Frissítse az egyéni készletet az összefűzni kívánt eszközök azonosítói alapján, valamint az egyes videók megfelelő időszegmensével.
 
     {
       "Version": 1.0,
@@ -905,23 +905,23 @@ Frissítse az egyéni készletet az összefonni kívánt eszközök azonosítói
     }
 
 ## <a name="crop-videos-with-media-encoder-standard"></a><a id="crop"></a>Videók körülvágása a Media Encoder Standarddel
-Tekintse meg a [Crop videók Media Encoder Standard témakörben.](media-services-crop-video.md)
+Tekintse meg a [videók körülvágása Media Encoder standard](media-services-crop-video.md) témakört.
 
-## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>Videosáv beszúrása, ha a bemenet nem rendelkezik videóval
+## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>Videó követése, ha a bemenet nem tartalmaz videót
 
-Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak hangot tartalmaz, és nem tartalmaz videót, akkor a kimeneti eszköz olyan fájlokat tartalmaz, amelyek csak hangadatokat tartalmaznak. Előfordulhat, hogy egyes lejátszók, köztük az Azure Media Player [(lásd ezt)](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)nem tudják kezelni az ilyen adatfolyamokat. Ezzel a beállítással kényszerítheti a kódolót, hogy monokróm videosávot adjon a kimenethez ebben a forgatókönyvben.
+Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak hangot vagy videót tartalmaz, akkor a kimeneti eszköz csak hangadatokat tartalmazó fájlokat tartalmaz. Néhány játékos, beleértve a Azure Media Playert is (lásd [ezt](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)) előfordulhat, hogy nem tudja kezelni az ilyen adatfolyamokat. Ezzel a beállítással kényszerítheti a kódolót, hogy adjon hozzá egy monokróm videó-követést az adott forgatókönyv kimenetéhez.
 
 > [!NOTE]
-> A kódoló kényszerítése egy kimeneti videosáv beszúrására növeli a kimeneti eszköz méretét, és ezáltal a kódolási feladat költségeit. Teszteket kell futtatnia annak ellenőrzésére, hogy ez az eredő növekedés csak szerény hatással van-e a havi díjakra.
+> Ha a kódolót egy kimeneti videó beszúrására kényszeríti, a kimeneti eszköz mérete megnő, és így a kódolási feladathoz felmerülő költségek is növekednek. A tesztek futtatásával ellenőrizheti, hogy ez az eredő növekedés csak mérsékelt hatással van-e a havi díjakra.
 >
 
-### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Videó beszúrása csak a legalacsonyabb bitrátával
+### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Videó beszúrása csak a legalacsonyabb sávszélességű
 
-Tegyük fel, hogy több bitráta-kódolási készletet használ, például [a "H264 Multiple Bitrate 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) a teljes bemeneti katalógus kódolásához a streameléshez, amely videofájlok és csak hangfájlok keverékét tartalmazza. Ebben az esetben, ha a bemenetnem rendelkezik videóval, érdemes lehet kényszeríteni a kódolót, hogy egy monokróm videosávot helyezzen be a legalacsonyabb bitrátával, szemben a videó beillesztésével minden kimeneti bitráta esetén. Ennek eléréséhez az **InsertBlackIfNoVideoBottomLayerOnly** jelzőt kell használnia.
+Tegyük fel, hogy több bitrátát használó kódolási beállításkészletet használ, mint például a ["H264 Multiple bitráta 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) , hogy kódolja a teljes bemeneti katalógust a folyamatos átvitelhez, amely a videofájlok és a csak hangfájlok kombinációját tartalmazza. Ebben a forgatókönyvben, ha a bemenet nem tartalmaz videót, érdemes lehet kényszeríteni a kódolót úgy, hogy a lehető legalacsonyabb sávszélességgel illesszen be egy monokróm videó-követést, és ne helyezzen be videót minden kimeneti bitrátánál. Ennek eléréséhez a **InsertBlackIfNoVideoBottomLayerOnly** jelzőt kell használnia.
 
-Az [ebben](media-services-mes-presets-overview.md) a szakaszban dokumentált MES-készletek bármelyikét elláthatja, és elvégezheti a következő módosításokat:
+Az [ebben](media-services-mes-presets-overview.md) a szakaszban ISMERTETett MES-előállítók bármelyikét elvégezheti, és a következő módosítást végezheti el:
 
-#### <a name="json-preset"></a>JSON készlet
+#### <a name="json-preset"></a>JSON-készlet
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -931,9 +931,9 @@ Az [ebben](media-services-mes-presets-overview.md) a szakaszban dokumentált MES
           ]
     }
 
-#### <a name="xml-preset"></a>XML-készlet
+#### <a name="xml-preset"></a>XML-beállításkészlet
 
-XML használatakor használja a Condition="InsertBlackIfNoVideoBottomLayerOnly" tulajdonságot a **H264Video** elem attribútumaként, és a Condition="InsertSilenceIfNoAudio" attribútumot **az AACAudio**attribútumként.
+XML használata esetén használja a Condition = "InsertBlackIfNoVideoBottomLayerOnly" attribútumot a **H264Video** elemhez és a Condition = "InsertSilenceIfNoAudio" attribútumként a **AACAudio**.
 
 ```
 . . .
@@ -959,12 +959,12 @@ XML használatakor használja a Condition="InsertBlackIfNoVideoBottomLayerOnly" 
 . . .
 ```
 
-### <a name="inserting-video-at-all-output-bitrates"></a>Videó beszúrása az összes kimeneti bitrátára
-Tegyük fel, hogy több bitráta kódolási készletet használ, például [a "H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) a teljes bemeneti katalógus kódolásához a streameléshez, amely videofájlok és csak hangfájlok keverékét tartalmazza. Ebben a forgatókönyvben, ha a bemenet nem rendelkezik videóval, érdemes lehet kényszeríteni a kódolót, hogy helyezzen be egy monokróm videosávot az összes kimeneti bitrátába. Ez biztosítja, hogy a kimeneti eszközök homogének tekintetében számos video-és hangsávot. Ennek eléréséhez meg kell adnia az "InsertBlackIfNoVideo" jelzőt.
+### <a name="inserting-video-at-all-output-bitrates"></a>Videó beszúrása minden kimeneti bitrátánál
+Tegyük fel, hogy több bitrátát használó kódolási beállításkészletet használ, például a ["H264 Multiple bitráta 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) -t a teljes bemeneti katalógus kódolásához a folyamatos átvitelhez, amely a videofájlok és a csak hangfájlok kombinációját tartalmazza. Ebben a forgatókönyvben, ha a bemenetnek nincs videója, érdemes lehet a kódolót kényszeríteni, hogy az összes kimeneti bitrátán beillesszen egy monokróm videó sávot. Ez biztosítja, hogy a kimeneti eszközök mind homogének legyenek a videók és hangsávok számának tekintetében. Ennek eléréséhez meg kell adnia a "InsertBlackIfNoVideo" jelzőt.
 
-Az [ebben](media-services-mes-presets-overview.md) a szakaszban dokumentált MES-készletek bármelyikét elláthatja, és elvégezheti a következő módosításokat:
+Az [ebben](media-services-mes-presets-overview.md) a szakaszban ISMERTETett MES-előállítók bármelyikét elvégezheti, és a következő módosítást végezheti el:
 
-#### <a name="json-preset"></a>JSON készlet
+#### <a name="json-preset"></a>JSON-készlet
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -974,9 +974,9 @@ Az [ebben](media-services-mes-presets-overview.md) a szakaszban dokumentált MES
           ]
     }
 
-#### <a name="xml-preset"></a>XML-készlet
+#### <a name="xml-preset"></a>XML-beállításkészlet
 
-XML használatakor használja a Condition="InsertBlackIfNoVideo" tulajdonságot a **H264Video** elem attribútumaként, és a Condition="InsertSilenceIfNoAudio" attribútumot az **AACAudio**attribútumként.
+XML használata esetén használja a Condition = "InsertBlackIfNoVideo" attribútumot a **H264Video** elemhez és a Condition = "InsertSilenceIfNoAudio" attribútumként a **AACAudio**.
 
 ```
 . . .
@@ -1003,9 +1003,9 @@ XML használatakor használja a Condition="InsertBlackIfNoVideo" tulajdonságot 
 ```
 
 ## <a name="rotate-a-video"></a><a id="rotate_video"></a>Videó elforgatása
-A [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 0/90/180/270 szögben támogatja a forgatást. Az alapértelmezett viselkedés az "Automatikus", ahol megpróbálja észlelni a bejövő videofájl elforgatási metaadatait, és kompenzálni azt. Az [ebben](media-services-mes-presets-overview.md) a szakaszban definiált készletek egyikének a következő **Források** elemet kell feltüntetnie:
+A [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 0/90/180/270-es szögben támogatja a rotációt. Az alapértelmezett viselkedés az "automatikus", ahol a rendszer megpróbálja felderíteni a beérkező videofájl forgási metaadatait, és kompenzálja azt. Adja meg a következő **források** elemet az [ebben](media-services-mes-presets-overview.md) a szakaszban meghatározott előzetes beállítások egyikéhez:
 
-### <a name="json-preset"></a>JSON készlet
+### <a name="json-preset"></a>JSON-készlet
     "Sources": [
     {
       "Streams": [],
@@ -1017,7 +1017,7 @@ A [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stand
     "Codecs": [
 
     ...
-### <a name="xml-preset"></a>XML-készlet
+### <a name="xml-preset"></a>XML-beállításkészlet
     <Sources>
            <Source>
           <Streams />
@@ -1027,9 +1027,9 @@ A [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stand
         </Source>
     </Sources>
 
-A [jelen](media-services-mes-schema.md#PreserveResolutionAfterRotation) témakörben további információt talál arról, hogy a kódoló hogyan értelmezi a szélesség és a magasság beállításokat a készletben, amikor az elforgatáskompenzáció aktiválódik.
+Tekintse meg [ezt](media-services-mes-schema.md#PreserveResolutionAfterRotation) a témakört, amely arról nyújt tájékoztatást, hogy a kódoló hogyan értelmezi az előre beállított szélességi és magassági beállításokat a rotációs kompenzáció elindításakor.
 
-A "0" értékkel jelezheti a kódolónak, hogy figyelmen kívül hagyja a bemeneti videóban lévő elforgatási metaadatokat, ha vannak ilyenek.
+A "0" érték megadásával jelezheti, hogy a kódoló figyelmen kívül hagyja a rotációs metaadatokat, ha vannak ilyenek a bemeneti videóban.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -1038,4 +1038,4 @@ A "0" értékkel jelezheti a kódolónak, hogy figyelmen kívül hagyja a bemene
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Media Services kódolás – áttekintés](media-services-encode-asset.md)
+[Media Services kódolás áttekintése](media-services-encode-asset.md)

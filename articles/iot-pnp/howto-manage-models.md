@@ -1,6 +1,6 @@
 ---
-title: IoT Plug and Play előzetes modellek kezelése a tárházban| Microsoft Dokumentumok"
-description: Az Azure Certified for IoT portal, az Azure CLI és a Visual Studio-kód használatával a tárházban lévő eszközképesség-modellek kezelése.
+title: IoT kezelése Plug and Play előnézeti modellek az adattárban | Microsoft Docs "
+description: Az eszköz képesség modelljeinek kezelése az adattárban az Azure Certified for IoT portál, az Azure CLI és a Visual Studio Code használatával.
 author: Philmea
 manager: philmea
 ms.service: iot-pnp
@@ -9,57 +9,57 @@ ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
 ms.openlocfilehash: 78406175090521af70381f61f4e33dfb6c35ac8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159149"
 ---
 # <a name="manage-models-in-the-repository"></a>Modellek kezelése a tárházban
 
-Az IoT Plug and Play Preview modelltártár eszközképességi modelleket és interfészeket tárol. A tárház a modelleket és a felületeket felderíthetővé és a megoldásfejlesztők által felderíthetővé teszi.
+A IoT Plug and Play előzetes modell tárháza az eszköz képességeinek modelljeit és felületeit tárolja. A tárház lehetővé teszi, hogy a modellek és felületek felderíthetők legyenek a megoldások fejlesztői számára.
 
-A tárház kezeléséhez három eszköz használható:
+Három eszköz használható az adattár kezeléséhez:
 
 - Az Azure Certified for IoT portál
 - Azure CLI
 - Visual Studio Code
 
-## <a name="model-repositories"></a>Modelltárolók
+## <a name="model-repositories"></a>Modell adattárai
 
-Kétféle modelltárház létezik az eszközképességi modellek és felületek tárolására:
+Az eszköz-képesség modellek és felületek tárolásához kétféle modell-tárház létezik:
 
-- Az [Azure Certified for IoT eszközkatalógusban](https://aka.ms/iotdevcat)egyetlen _nyilvános tárház_ található, amely tárolja az eszközök eszközképességi modelljeit és felületeit. Ez a tárház a Microsoft Partners által közzétett [közös interfészeket,](./concepts-common-interfaces.md) [dcm-eket és interfészeket](./howto-onboard-portal.md)is tárolja. Ha meg szeretné tudni, hogyan hitelesítheti az eszközt, és hogyan adhat hozzá eszközképességi modelljét a nyilvános tárházhoz, olvassa el az [IoT Plug and Play eszköz hitelesítése című oktatóanyagcímű témakört.](./tutorial-certification-test.md)
-- Több _vállalati adattárak_. A vállalati tárház automatikusan létrejön a szervezet számára, amikor [az Azure Certified for IoT portálra kerül.](./howto-onboard-portal.md) A vállalati tárház segítségével tárolhatja az eszköz képességi modelljeit és felületeit a fejlesztés és a tesztelés során.
+- Létezik egy _nyilvános tárház_ , amely az eszköz képességeinek modelljeit és felületeit tárolja az [Azure Certified for IoT Device Catalog](https://aka.ms/iotdevcat)eszközön. Ez a tárház a Microsoft-partnerek által közzétett [általános interfészeket](./concepts-common-interfaces.md) és [DCMs és illesztőket](./howto-onboard-portal.md)is tárolja. Ha szeretné megtudni, hogyan hitelesítheti az eszközt, és hogyan adhatja hozzá az eszköz képességeinek modelljét a nyilvános tárházhoz, tekintse meg a [IoT Plug and Play eszköz tanúsítását](./tutorial-certification-test.md)ismertető oktatóanyagot.
+- Több _vállalati tárház_is rendelkezésre áll. A céges tárház automatikusan létrejön a szervezet számára, amikor bevezeti [Az Azure Certified for IoT portált](./howto-onboard-portal.md). A vállalati adattár segítségével az eszköz képességeinek modelljeit és felületeit a fejlesztés és a tesztelés során is tárolhatja.
 
-## <a name="azure-certified-for-iot-portal"></a>Azure Certified for IoT portál
+## <a name="azure-certified-for-iot-portal"></a>Az Azure Certified for IoT portál
 
 Az [Azure Certified for IoT portálon](https://preview.catalog.azureiotsolutions.com)a következő feladatokat végezheti el:
 
-- [Az IoT-eszköz hitelesítési folyamatának befejezése.](./tutorial-certification-test.md)
-- IoT Plug and Play eszközképesség-modellek keresése. Ezekkel a modellekkel [gyorsan hozhat létre IoT-kompatibilis eszközöket, és integrálhatja őket megoldásokkal.](./quickstart-connect-pnp-device-solution-node.md)
+- [Fejezze be a IoT-eszköz minősítési folyamatát](./tutorial-certification-test.md).
+- Keresse meg a IoT Plug and Play eszköz képességeinek modelljeit. Ezekkel a modellekkel [gyorsan hozhat létre IoT-kompatibilis eszközöket, és integrálhatja azokat megoldásokkal](./quickstart-connect-pnp-device-solution-node.md).
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI parancsokat biztosít az iot Plug and Play nyilvános és vállalati modelladattárakban az eszközképességi modellek és felületek kezeléséhez. További információkért tekintse meg az [Azure IoT-bővítmény telepítése és használata az Azure CLI](./howto-install-pnp-cli.md) útmutató.
+Az Azure CLI lehetővé teszi az eszköz-képességi modellek és felületek felügyeletét a IoT Plug and Play a nyilvános és a vállalati modell adattárakban. További információ: az Azure [IoT bővítmény telepítése és használata az Azure CLI-hez](./howto-install-pnp-cli.md) útmutató.
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-A **Modelltárház** nézet megnyitása a Visual Studio-kódban.
+A **modell tárház** nézetének megnyitása a Visual Studio Code-ban.
 
-1. Nyissa meg a Visual Studio-kódot, használja **a Ctrl+Shift+P**billentyűkombinációt, és válassza az **IoT Plug and Play: Open Model Repository parancsot.**
+1. Nyissa meg a Visual Studio Code-ot, használja a **CTRL + SHIFT + P billentyűkombinációt**, írja be és válassza a **IoT Plug and Play: Open Model adattár**elemet.
 
-1. Választhat, hogy **megnyitja a nyilvános modell tárház** vagy **nyílt szervezeti modell tárház**. A vállalati modell tárház, meg kell adnia a modell tárház kapcsolati karakterlánc. Ez a kapcsolati karakterlánc az [Azure Certified for IoT portalon](https://preview.catalog.azureiotsolutions.com) található a **vállalati tárház** **Kapcsolatkarakterláncok** lapján.
+1. Dönthet úgy, hogy **megnyithatja a nyilvános modell tárházát** vagy **megnyithatja a szervezeti modell adattárát**. A vállalati modell tárháza esetében meg kell adnia a modell adattárához tartozó kapcsolódási karakterláncot. Ez a [IoT-portálon](https://preview.catalog.azureiotsolutions.com) található, a **vállalati tárházhoz**tartozó **kapcsolatok karakterláncok** lapján megtalálhatja ezt a kapcsolatokat megadó karakterláncot.
 
-1. Egy új lap megnyitja a **Modelltárház** nézetet.
+1. Egy új lapon megnyílik a **modell tárházának** nézete.
 
-    Ebben a nézetben eszközképességi modelleket és felületeket adhat hozzá, tölthet le és törölhet. Szűrő segítségével megkeresheti a lista bizonyos elemeit.
+    Ez a nézet eszköz-képességi modellek és felületek hozzáadására, letöltésére és törlésére használható. Egy szűrő használatával megkeresheti a listában szereplő egyes elemeket.
 
-1. A vállalati modelltárház és a nyilvános modelltárház közötti váltáshoz használja a **Ctrl+Shift+P**billentyűkombinációt, és válassza az **IoT Plug and Play: Sign out Model Repository parancsot.** Ezután használja újra az **IoT Plug and Play: Open Model Repository** parancsot.
+1. Ha váltani szeretne a vállalati modell adattára és a nyilvános modell tárháza között, használja a **CTRL + SHIFT + P billentyűkombinációt**, írja be és válassza a **IoT Plug and Play: kijelentkezési modell adattárát**. Ezután használja a **IoT Plug and Play: Nyissa meg újra a Model repository** parancsot.
 
 > [!NOTE]
-> A VS-kódban a nyilvános modelltárház csak olvasható. A Microsoft Partners frissítheti a nyilvános adattárat az [Azure Certified for IoT portálon.](https://preview.catalog.azureiotsolutions.com)
+> A VS Code-ban a nyilvános modell tárháza csak olvasható. A Microsoft partnerei frissíthetik a nyilvános tárházat az [Azure Certified for IoT portálon](https://preview.catalog.azureiotsolutions.com).
 
 ## <a name="next-steps"></a>További lépések
 
-A javasolt következő lépés az [IoT Plug and Play eszköz hitelesítésre való beküldése.](tutorial-certification-test.md)
+A következő lépés azt ismerteti, hogyan lehet [beküldeni egy IoT Plug and Play eszközét minősítésre](tutorial-certification-test.md).

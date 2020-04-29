@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061541"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A JavaScript használata a címtárak, a fájlok és a hozzáférés-vezérlési listák kezeléséhez Azure Data Lake Storage Gen2

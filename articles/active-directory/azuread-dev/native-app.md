@@ -1,6 +1,6 @@
 ---
-title: Natív alkalmazások az Azure Active Directoryban
-description: Bemutatja, hogy mik a natív alkalmazások, és az alapismeretek a protokollfolyamat, a regisztráció és a jogkivonat lejárata ehhez az alkalmazástípushoz.
+title: Natív alkalmazások Azure Active Directory
+description: Leírja, hogy milyen natív alkalmazások vannak, és milyen alapismereteket biztosít a protokollok, a regisztráció és a jogkivonat lejárata ehhez az alkalmazás típusához.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,52 +14,52 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9ecf711f5442b6f21de53d2735ad1c94d7cb6223
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154797"
 ---
 # <a name="native-apps"></a>Natív alkalmazások
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-A natív alkalmazások olyan alkalmazások, amelyek egy felhasználó nevében webes API-t hívnak meg. Ez a forgatókönyv az OAuth 2.0 engedélyezési kód engedélyezési típusára épül egy nyilvános ügyféllel, az [OAuth 2.0 specifikáció](https://tools.ietf.org/html/rfc6749)4.1 szakaszában leírtak szerint. A natív alkalmazás az OAuth 2.0 protokoll használatával szerez be egy hozzáférési jogkivonatot a felhasználó számára. Ezt a hozzáférési jogkivonatot ezután elküldi a kérelemben a webes API-nak, amely engedélyezi a felhasználót, és visszaadja a kívánt erőforrást.
+A natív alkalmazások olyan alkalmazások, amelyek egy felhasználó nevében webes API-t hívnak meg. Ez a forgatókönyv a OAuth 2,0 engedélyezési kódjának nyilvános ügyféllel való létrehozásához készült, a [OAuth 2,0 specifikációjának](https://tools.ietf.org/html/rfc6749)4,1. szakasza szerint. A natív alkalmazás a OAuth 2,0 protokoll használatával szerzi be a felhasználó hozzáférési jogkivonatát. Ezt a hozzáférési jogkivonatot ezután a rendszer elküldi a webes API-nak a kérelemben, amely engedélyezi a felhasználót, és visszaadja a kívánt erőforrást.
 
 ## <a name="diagram"></a>Ábra
 
-![Natív alkalmazás a webes API-diagramhoz](./media/authentication-scenarios/native-app-to-web-api.png)
+![Natív alkalmazás webes API-diagramhoz](./media/authentication-scenarios/native-app-to-web-api.png)
 
-## <a name="protocol-flow"></a>Protokoll-folyamat
+## <a name="protocol-flow"></a>Protokoll folyamatábrája
 
-Ha az AD hitelesítési kódtárak, a legtöbb protokoll részleteket alább leírt kezeli az Ön számára, például a böngésző pop-up, token cache, és kezelése frissítési jogkivonatok.
+Ha az AD-hitelesítési kódtárakat használja, az alábbiakban ismertetett protokoll-részletek többségét kezelheti Önnek, például a böngésző előugró ablakát, a jogkivonat gyorsítótárazását és a frissítési tokenek kezelését.
 
-1. Egy böngésző előugró ablak használatával a natív alkalmazás kérelmet nyújt be az Azure AD engedélyezési végpontjára. Ez a kérelem tartalmazza az alkalmazásazonosítót és a natív alkalmazás átirányítási URI-ját az Azure Portalon látható módon, valamint a webes API alkalmazásazonosító-URI-ját. Ha a felhasználó még nem jelentkezett be, a rendszer kéri, hogy jelentkezzen be újra
-1. Az Azure AD hitelesíti a felhasználót. Ha ez egy több-bérlős alkalmazás, és hozzájárulásszükséges az alkalmazás használatához, a felhasználó nak beleegyezését kell adnia, ha még nem tette meg. A jóváhagyás megadása után és a sikeres hitelesítés után az Azure AD kiad egy engedélyezési kód választ az ügyfélalkalmazás átirányítási URI-jára.
-1. Amikor az Azure AD kiad egy engedélyezési kód választ az átirányítási URI-ra, az ügyfélalkalmazás leállítja a böngésző interakcióját, és kinyeri az engedélyezési kódot a válaszból. Ezzel az engedélyezési kóddal az ügyfélalkalmazás kérést küld az Azure AD tokenvégpontjára, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás részleteit (alkalmazásazonosító és átirányítási URI), valamint a kívánt erőforrást (alkalmazásazonosító URI-t a webes API).
-1. Az engedélyezési kódot, valamint az ügyfélalkalmazásra és a webes API-ra vonatkozó információkat az Azure AD érvényesíti. Sikeres érvényesítés után az Azure AD két jogkivonatot ad vissza: egy JWT-hozzáférési jogkivonatot és egy JWT-frissítési jogkivonatot. Emellett az Azure AD a felhasználóalapvető adatait adja vissza, például a megjelenítendő nevét és a bérlői azonosítót.
-1. HTTPS-kapcsolaton keresztül az ügyfélalkalmazás a visszaadott JWT-hozzáférési jogkivonatot használja a JWT-karakterlánc hozzáadása a "tulajdonos" megjelöléssel a kérelem engedélyezési fejlécében a webes API-hoz. A webes API ezután érvényesíti a JWT-jogkivonatot, és ha az érvényesítés sikeres, visszaadja a kívánt erőforrást.
-1. Amikor a hozzáférési jogkivonat lejár, az ügyfélalkalmazás hibaüzenetet kap, amely azt jelzi, hogy a felhasználónak újra hitelesítenie kell magát. Ha az alkalmazás rendelkezik egy érvényes frissítési jogkivonattal, egy új hozzáférési jogkivonat beszerzésére használható anélkül, hogy a felhasználót újra be kellene jelentkeznie. Ha a frissítési jogkivonat lejár, az alkalmazásnak újra újra interaktívan hitelesítenie kell a felhasználót.
+1. A böngésző előugró ablakában a natív alkalmazás egy kérést küld az Azure AD engedélyezési végpontjának. Ez a kérelem tartalmazza a natív alkalmazás alkalmazás-AZONOSÍTÓját és átirányítási URI-JÁT a Azure Portalban látható módon, valamint a webes API-hoz tartozó alkalmazás-azonosító URI-t. Ha a felhasználó még nem jelentkezett be, a rendszer felszólítja, hogy jelentkezzen be újra
+1. Az Azure AD hitelesíti a felhasználót. Ha több-bérlős alkalmazásra van szükség az alkalmazás használatához, a felhasználónak hozzá kell járulnia, ha még nem tette volna meg. A hozzájárulás megadása és a sikeres hitelesítés után az Azure AD az ügyfélalkalmazás átirányítási URI-JÁT adja vissza az engedélyezési kód válasza alapján.
+1. Ha az Azure AD az átirányítási URI-nak adott válaszként válaszol, az ügyfélalkalmazás leállítja a böngésző interakcióját, és kibontja az engedélyezési kódot a válaszból. Ezzel az engedélyezési kóddal az ügyfélalkalmazás kérelmet küld az Azure AD jogkivonat-végpontjának, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás részleteit (az alkalmazás AZONOSÍTÓját és az átirányítási URI-t), valamint a kívánt erőforrást (a webes API-hoz tartozó alkalmazás-azonosító URI-t).
+1. Az ügyfélalkalmazás és a webes API engedélyezési kódját és információit az Azure AD ellenőrzi. A sikeres ellenőrzés után az Azure AD két tokent ad vissza: egy JWT hozzáférési tokent és egy JWT frissítési tokent. Az Azure AD továbbá alapszintű adatokat ad vissza a felhasználóról, például a megjelenítendő nevüket és a bérlő AZONOSÍTÓját.
+1. HTTPS-kapcsolaton keresztül az ügyfélalkalmazás a visszaadott JWT hozzáférési tokent használja, hogy hozzáadja a JWT karakterláncot egy "tulajdonos" megjelöléssel a webes API-nak küldött kérelem engedélyezési fejlécében. A webes API ezt követően ellenőrzi az JWT tokent, és ha az érvényesítés sikeres, a visszaadja a kívánt erőforrást.
+1. Ha a hozzáférési jogkivonat lejár, az ügyfélalkalmazás olyan hibaüzenetet kap, amely jelzi, hogy a felhasználónak újra kell hitelesítenie magát. Ha az alkalmazás érvényes frissítési jogkivonattal rendelkezik, akkor az új hozzáférési jogkivonat beszerzéséhez a felhasználónak nem kell újra bejelentkeznie. Ha a frissítési jogkivonat lejár, az alkalmazásnak interaktív módon kell hitelesítenie a felhasználót.
 
 > [!NOTE]
-> Az Azure AD által kiadott frissítési jogkivonat több erőforrás eléréséhez használható. Például ha rendelkezik egy ügyfélalkalmazás, amely rendelkezik engedéllyel, hogy hívja a két webes API-k, a frissítési jogkivonat ot lehet használni, hogy egy hozzáférési jogkivonatot a másik webes API-t is.
+> Az Azure AD által kiadott frissítési jogkivonat több erőforrás elérésére is használható. Ha például van egy ügyfélalkalmazás, amely jogosult két webes API meghívására, a frissítési token használatával hozzáférési tokent kaphat a másik webes API-hoz is.
 
 ## <a name="code-samples"></a>Kódminták
 
-Tekintse meg a natív alkalmazás-web API-forgatókönyvek kódmintáit. És, nézz vissza gyakran - adunk új mintákat gyakran. [Natív alkalmazás a webes API-hoz](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
+Tekintse meg a natív alkalmazásra vonatkozó példákat a webes API-forgatókönyvek esetében. És térjen vissza gyakran – új mintákat gyakran adunk hozzá. [Natív alkalmazás webes API-hoz](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
 ## <a name="app-registration"></a>Alkalmazásregisztráció
 
-Ha regisztrál egy alkalmazást az Azure AD v1.0-s végpontjával, olvassa [el az Alkalmazás regisztrálása című témakört.](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+Az alkalmazások regisztrálásához az Azure AD 1.0-s verziójának végpontján tekintse meg az alkalmazás [regisztrálása](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)című témakört.
 
-* Egyetlen bérlő – mind a natív alkalmazás, mind a webes API-t ugyanabban a címtárban kell regisztrálni az Azure AD-ben. A webes API beállítható úgy, hogy engedélyeket hozzon létre, amelyek a natív alkalmazás erőforrásaihoz való hozzáférésének korlátozására szolgálnak. Az ügyfélalkalmazás ezután kiválasztja a kívánt engedélyeket az Azure Portal "Engedélyek más alkalmazásokhoz" legördülő menüből.
-* Több-bérlős – Először is, a natív alkalmazás csak valaha regisztrált a fejlesztő vagy a közzétevő könyvtárában. Másodszor, a natív alkalmazás úgy van beállítva, hogy jelezze a működési engedélyeket. A szükséges engedélyek listája egy párbeszédablakban jelenik meg, amikor a célkönyvtárban lévő felhasználó vagy rendszergazda hozzájárul az alkalmazáshoz, amely elérhetővé teszi azt a szervezet számára. Egyes alkalmazások csak felhasználói szintű engedélyeket igényelnek, amelyekhez a szervezet bármely felhasználója beleegyezhet. Más alkalmazások rendszergazdai szintű engedélyeket igényelnek, amelyekhez a szervezet felhasználója nem járulhat hozzá. Csak a címtár-rendszergazda adhat beleegyezést az ilyen szintű engedélyeket igénylő alkalmazásokhoz. Ha a felhasználó vagy a rendszergazda hozzájárul, csak a webes API van regisztrálva a címtárban. 
+* Egyetlen bérlő – a natív alkalmazást és a webes API-t is regisztrálni kell ugyanabban a címtárban az Azure AD-ben. A webes API beállítható úgy, hogy a natív alkalmazás erőforrásokhoz való hozzáférésének korlátozására szolgáló engedélyeket biztosítson. Az ügyfélalkalmazás ezután kiválasztja a kívánt engedélyeket az "engedélyek más alkalmazásoknak" legördülő menüből a Azure Portal.
+* Több-bérlős – először a natív alkalmazás csak a fejlesztő vagy a közzétevő címtárában van regisztrálva. Másodszor, a natív alkalmazás úgy van konfigurálva, hogy jelezze a működéséhez szükséges engedélyeket. A szükséges engedélyek listája egy párbeszédpanelen jelenik meg, ha a célként megadott könyvtárban lévő felhasználó vagy rendszergazda beleegyezik az alkalmazásba, ami elérhetővé teszi a szervezet számára. Egyes alkalmazásokhoz csak felhasználói szintű engedélyek szükségesek, amelyeket a szervezet bármely felhasználója jóváhagyhat. Más alkalmazásokhoz rendszergazdai szintű engedélyek szükségesek, amelyeket a szervezet felhasználója nem tud jóváhagyni. Csak a címtár-rendszergazda engedélyezheti az ilyen szintű engedélyeket igénylő alkalmazásokhoz való hozzáférést. Ha a felhasználó vagy a rendszergazda beleegyezik, csak a webes API lesz regisztrálva a címtárában. 
 
-## <a name="token-expiration"></a>Token lejárata
+## <a name="token-expiration"></a>Jogkivonat lejárata
 
-Ha a natív alkalmazás az engedélyezési kódot használja egy JWT-hozzáférési jogkivonat lekéréséhez, jwt-frissítési jogkivonatot is kap. Amikor a hozzáférési jogkivonat lejár, a frissítési jogkivonat segítségével újra hitelesíteni a felhasználót anélkül, hogy újra be kellene jelentkeznie. Ezt a frissítési jogkivonatot ezután a felhasználó hitelesítésére használják, ami egy új hozzáférési jogkivonatot és frissítési jogkivonatot eredményez.
+Ha a natív alkalmazás az engedélyezési kódját használja egy JWT hozzáférési jogkivonat beszerzéséhez, akkor a JWT frissítési tokent is kap. Ha a hozzáférési jogkivonat lejár, a frissítési token használatával újra hitelesítheti a felhasználót anélkül, hogy újra be kellene jelentkeznie. Ezt a frissítési tokent a rendszer a felhasználó hitelesítésére használja, amely új hozzáférési jogkivonatot és frissítési jogkivonatot eredményez.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [egyéb alkalmazástípusokról és -forgatókönyvekről](app-types.md)
-- Ismerje meg az Azure [AD-hitelesítés alapjait](v1-authentication-scenarios.md)
+- További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
+- Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

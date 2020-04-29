@@ -1,6 +1,6 @@
 ---
-title: A Mobility Service Proxy beállításainak konfigurálása az Azure és az Azure katasztrófa-helyreállítási célokra | Microsoft dokumentumok
-description: A mobilitási szolgáltatás konfigurálásának részleteit tartalmazza, ha az ügyfelek proxyt használnak a forráskörnyezetben.
+title: Mobilitási szolgáltatás proxybeállításait konfigurálja az Azure-hoz az Azure vész-helyreállításhoz | Microsoft Docs
+description: Részletesen ismerteti, hogyan kell konfigurálni a mobilitási szolgáltatást, ha az ügyfelek proxyt használnak a forrás környezetében.
 services: site-recovery
 author: sideeksh
 manager: rochakm
@@ -9,50 +9,50 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503126"
 ---
-# <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>A mobility service proxy beállításainak konfigurálása az Azure és az Azure vész-helyreállítási
+# <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Mobilitási szolgáltatás proxybeállításait konfigurálhatja az Azure-hoz az Azure vész-helyreállításhoz
 
-Ez a cikk útmutatást nyújt a hálózati konfigurációk testreszabásához a cél Azure virtuális gépen (VM), amikor replikálja és helyreállíta az Azure virtuális gépeket egyik régióból a másikba az [Azure Site Recovery](site-recovery-overview.md)használatával.
+Ez a cikk útmutatást nyújt a hálózati konfigurációk testreszabásához a cél Azure-beli virtuális gépen (VM), ha az Azure-beli virtuális gépeket az egyik régióból a másikba, [Azure site Recovery](site-recovery-overview.md)használatával replikálja és helyreállítja.
 
-Ez a dokumentum célja, hogy lépéseket adjon az Azure Site Recovery Mobility Service proxybeállításainak konfigurálásához az Azure-tól az Azure-ig történő vész-helyreállítási forgatókönyvben. 
+Ennek a dokumentumnak a célja, hogy az Azure-ban Azure Site Recovery mobilitási szolgáltatás proxybeállítások konfigurálásához szükséges lépéseket adja meg az Azure-beli vész-helyreállítási forgatókönyvhöz. 
 
-A proxyk olyan hálózati átjárók, amelyek engedélyezik/lehetővé teszik a hálózati kapcsolatokvégpontok számára. A proxy általában az ügyfélgépen kívüli gép, amely megpróbálja elérni a hálózati végpontokat. A megkerülési lista lehetővé teszi, hogy az ügyfél közvetlenül a végpontokhoz létesítsen kapcsolatokat anélkül, hogy a proxyn keresztül haladna. A hálózati rendszergazdák szükség esetén proxyhoz is beállíthatnak felhasználónevet és jelszót, hogy csak a hitelesített ügyfelek használhassák a proxyt. 
+A proxyk olyan hálózati átjárók, amelyek engedélyezik vagy letiltják a hálózati kapcsolatokat a végpontokhoz. Általában a proxy az ügyfélszámítógépen kívüli gép, amely megpróbál hozzáférni a hálózati végpontokhoz. A megkerülési lista lehetővé teszi, hogy az ügyfél közvetlenül a végpontokhoz csatlakoztassa a kapcsolatot anélkül, hogy a proxyn kellene haladnia. Előfordulhat, hogy a hálózati rendszergazdák csak a hitelesített ügyfelek használhatják a proxyt a Felhasználónév és a jelszó beállításához. 
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Ismerje meg, hogyan biztosít a Site Recovery vészhelyreállítást ebben a [forgatókönyvben.](azure-to-azure-architecture.md)
-Ismerje meg a [hálózati útmutatást,](azure-to-azure-about-networking.md) amikor replikálja és helyreállíta az Azure-beli virtuális gépeket egyik régióból a másikba az [Azure Site Recovery](site-recovery-overview.md)használatával.
-Győződjön meg arról, hogy a proxy megfelelően van beállítva a szervezet igényei nek megfelelően.
+[Ebből a forgatókönyvből](azure-to-azure-architecture.md)megtudhatja, hogyan biztosít a site Recovery vész-helyreállítást.
+Ismerje meg a [hálózatkezelési útmutatót](azure-to-azure-about-networking.md) , ha az Azure-beli virtuális gépeket az egyik régióból a másikba, [Azure site Recovery](site-recovery-overview.md)használatával replikálja és helyreállítja.
+Győződjön meg arról, hogy a proxy megfelelően van beállítva a szervezet igényei alapján.
 
 ## <a name="configure-the-mobility-service"></a>A mobilitási szolgáltatás konfigurálása
 
-A Mobility Service csak a nem hitelesített proxykat támogatja. A Site Recovery végpontokkal való kommunikációhoz két módon adhat meg proxyrészleteket. 
+A mobilitási szolgáltatás csak a nem hitelesített proxykat támogatja. Kétféle módon adhatja meg Site Recovery-végpontokkal folytatott kommunikációhoz szükséges proxy adatait. 
 
-### <a name="method-1-auto-detection"></a>1. módszer: Automatikus észlelés
+### <a name="method-1-auto-detection"></a>1. módszer: automatikus észlelés
 
-A Mobility Service automatikusan észleli a proxybeállításokat a környezeti beállításokból vagy az IE-beállításokból (csak Windows) a replikáció engedélyezése során. 
+A mobilitási szolgáltatás automatikusan észleli a proxybeállításokat a környezeti beállítások vagy az IE beállításai közül (csak Windows esetén) a replikáció engedélyezésekor. 
 
-- Windows operációs rendszer: A replikáció engedélyezése során a Mobilszolgáltatás észleli az Internet Explorer helyi rendszerfelhasználóhoz konfigurált proxybeállításait. A helyi rendszerfiók proxyjának beállításához a rendszergazda a psexec segítségével elindíthatja a parancssort, majd az Internet Explorer t. 
-- Windows operációs rendszer: A proxybeállítások környezeti változókként vannak konfigurálva http_proxy és no_proxy. 
-- Linux operációs rendszer: A proxybeállítások az /etc/profile vagy /etc/environment kapcsolókban vannak konfigurálva, http_proxy, no_proxy. 
-- Az automatikusan észlelt proxybeállításoka Mobility Service proxy config file ProxyInfo.conf 
-- A ProxyInfo.conf alapértelmezett helye 
-    - Windows: C:\ProgramData\Microsoft Azure Site Recovery\Config\ProxyInfo.conf 
-    - Linux: /usr/local/InMage/config/ProxyInfo.conf
+- Windows operációs rendszer: a replikáció engedélyezése során a mobilitási szolgáltatás észleli az Internet Explorerben konfigurált proxybeállításokat a helyi rendszerfelhasználó számára. Ha a proxyt a helyi rendszerfiókhoz szeretné beállítani, a rendszergazda a PsExec használatával elindíthat egy parancssort, majd az Internet Explorert. 
+- Windows operációs rendszer: a proxybeállítások környezeti változókként vannak konfigurálva http_proxy és no_proxy. 
+- Linux operációs rendszer: a proxybeállítások a/etc/Profile vagy a/etc/Environment-ben vannak konfigurálva környezeti változókként http_proxy no_proxy. 
+- Az automatikusan észlelt proxybeállítások a mobilitási szolgáltatás proxyjának ProxyInfo. conf fájlba kerülnek. 
+- A ProxyInfo. conf alapértelmezett helye 
+    - Windows: C:\ProgramData\Microsoft Azure site Recovery\Config\ProxyInfo.conf 
+    - Linux:/usr/local/InMage/config/ProxyInfo.conf
 
 
-### <a name="method-2-provide-custom-application-proxy-settings"></a>2. módszer: Egyéni alkalmazásproxy-beállítások megadása
+### <a name="method-2-provide-custom-application-proxy-settings"></a>2. módszer: egyéni alkalmazásproxy-beállítások megadása
 
-Ebben az esetben az ügyfél egyéni alkalmazásproxy-beállításokat biztosít a Mobility Service config file ProxyInfo.conf fájlban. Ez a módszer lehetővé teszi az ügyfelek számára, hogy proxy csak a Mobility Service vagy egy másik proxy az Azure Site Recovery Mobility Service, mint egy proxy (vagy nem proxy) a többi alkalmazás a gépen.
+Ebben az esetben az ügyfél egyéni alkalmazásproxy-beállításokat biztosít a mobilitási szolgáltatás konfigurációs fájljában a ProxyInfo. conf fájlban. Ez a módszer lehetővé teszi, hogy az ügyfelek csak a mobilitási szolgáltatáshoz vagy egy másik Azure Site Recovery proxyhoz szolgáltassanak proxyt, mint egy proxy (vagy nem proxy) a gépen lévő alkalmazások többi részének.
 
-## <a name="proxy-template"></a>Proxysablon
-A ProxyInfo.conf a következő sablonthttp://1.2.3.4 tartalmazza [proxy] Address= Port=5678 BypassList=hypervrecoverymanager.windowsazure.com,login.microsoftonline.com,blob.core.windows.net. A BypassList nem támogatja a helyettesítő karaktereket, mint a "*.windows.net", de windows.net adni elég jó ahhoz, hogy megkerülje. 
+## <a name="proxy-template"></a>Proxy sablon
+A ProxyInfo. conf fájl a következő sablont tartalmazza [proxy]http://1.2.3.4 címe = port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, login. microsoftonline. com, blob. Core. Windows. net. A BypassList nem támogatja a helyettesítő karaktereket (például "*. windows.net"), de a windows.net megadása elég jó az megkerüléshez. 
 
 ## <a name="next-steps"></a>Következő lépések:
-- Olvassa el az Azure virtuális gépek replikálásával [kapcsolatos hálózati útmutatót.](site-recovery-azure-to-azure-networking-guidance.md)
-- Üzembe helyezése vész-helyreállítási [replikálásával Azure virtuális gépek.](site-recovery-azure-to-azure.md)
+- Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](site-recovery-azure-to-azure-networking-guidance.md) .
+- A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](site-recovery-azure-to-azure.md).

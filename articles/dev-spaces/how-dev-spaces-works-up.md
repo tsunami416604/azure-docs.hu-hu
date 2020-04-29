@@ -1,100 +1,100 @@
 ---
-title: A kód azure dev spaces-szel való futtatása hogyan működik?
+title: A kód futtatása az Azure dev Spaces működésével
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: A kód Azure Kubernetes szolgáltatás azure dev spaces szolgáltatással való futtatásának folyamatai
-keywords: azds.yaml, Azure Dev Spaces, Fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók
+description: A kód Azure Kubernetes Service-ben való futtatásának folyamatait ismerteti az Azure dev Spaces szolgáltatással
+keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 6851c04ac0b72db1bd13c991875c16b0beadc573
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241360"
 ---
-# <a name="how-running-your-code-with-azure-dev-spaces-works"></a>A kód azure dev spaces-szel való futtatása hogyan működik?
+# <a name="how-running-your-code-with-azure-dev-spaces-works"></a>A kód futtatása az Azure dev Spaces működésével
 
-Az Azure Dev Spaces többféle lehetőséget kínál a Kubernetes-alkalmazások gyors iterálására és hibakeresésére, valamint a csapatával való együttműködésre egy Azure Kubernetes-szolgáltatás (AKS) fürtön. Miután a [projekt készen áll a fejlesztési területen való futtatásra,][how-it-works-prep]a fejlesztői terek segítségével létrehozhatja és futtathatja a projektet az AKS-fürtben.
+Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétlését és hibakeresését, valamint a csapattal való együttműködését egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön. Miután a [projekt készen áll a fejlesztői tárhelyen való futtatásra][how-it-works-prep], a fejlesztői terek használatával felépítheti és futtathatja a projektjét az AK-fürtben.
 
-Ez a cikk ismerteti, mi történik a kód futtatásához az AKS-ben a fejlesztői tárolók.
+Ez a cikk azt ismerteti, hogy mi történik a kód futtatása az AK-ban a dev Spaces szolgáltatással.
 
 ## <a name="run-your-code"></a>A kód futtatása
 
-Ha a kódot fejlesztői területen `up` szeretné futtatni, adja `azds.yaml` ki a parancsot ugyanabban a könyvtárban, mint a fájlt:
+Ha a kódot egy fejlesztői térben szeretné futtatni, adja ki `up` a parancsot a `azds.yaml` fájllal megegyező könyvtárban:
 
 ```cmd
 azds up
 ```
 
-A `up` parancs feltölti az alkalmazás forrásfájljait és a projekt létrehozásához és futtatásához szükséges egyéb összetevőket a fejlesztési területre. Innen a fejlesztői térben lévő vezérlő:
+A `up` parancs feltölti az alkalmazás forrásfájljait és a projekt létrehozásához és futtatásához szükséges egyéb összetevőket a fejlesztői területhez. A fejlesztői terület vezérlője:
 
 1. Létrehozza a Kubernetes objektumokat az alkalmazás üzembe helyezéséhez.
-1. Az alkalmazás tárolóját építi.
-1. Az alkalmazás üzembe helyezése a fejlesztői térben.
-1. Nyilvánosan elérhető DNS-nevet hoz létre az alkalmazásvégponthoz, ha konfigurálva van.
-1. *Port-forward* használatával hozzáférést biztosít az alkalmazás http://localhostvégpontjához a használatával.
-1. Előre stdout és stderr az ügyféloldali szerszámozás.
+1. Létrehozza az alkalmazás tárolóját.
+1. Üzembe helyezi az alkalmazást a fejlesztői térben.
+1. Nyilvánosan elérhető DNS-nevet hoz létre az alkalmazás-végponthoz, ha konfigurálva van.
+1. A *porton keresztül továbbítja* az alkalmazás-végponthoz való hozzáférést http://localhosta használatával.
+1. Az stdout és a stderr továbbítása az ügyféloldali eszközökhöz.
 
 
 ## <a name="starting-a-service"></a>Szolgáltatás indítása
 
-Amikor egy fejlesztői térben indít el egy szolgáltatást, az ügyféloldali eszköz- és vezérlőegység koordinálja a forrásfájlok szinkronizálását, a tároló és a Kubernetes-objektumok létrehozását, valamint az alkalmazás futtatását.
+Amikor egy szolgáltatást egy fejlesztői térben indít el, az ügyféloldali szerszámozás és vezérlő koordinálja a forrásfájlok szinkronizálását, létrehozza a tárolót és a Kubernetes objektumokat, és futtatja az alkalmazást.
 
-Egy részletesebb szinten, itt van, mi történik, ha fut: `azds up`
+Részletesebben a futtatáskor `azds up`a következő történik:
 
-1. [A fájlok szinkronizálása][sync-section] a felhasználó számítógépéről egy Azure-fájltárolóval történik, amely a felhasználó AKS-fürtjére egyedi. A rendszer feltölti a forráskódot, a Helm-diagramot és a konfigurációs fájlokat.
-1. A vezérlő létrehoz egy új munkamenet indítására vonatkozó kérelmet. Ez a kérelem számos tulajdonságot tartalmaz, köztük egy egyedi azonosítót, a terület nevét, a forráskód elérési útját és a hibakeresési jelzőt.
-1. A vezérlő lecseréli a *Helm-diagram $(tag)* helyőrzőjét az egyedi munkamenet-azonosítóra, és telepíti a szolgáltatás Helm-diagramját. Hivatkozás hozzáadása az egyedi munkamenet-azonosítóa a Helm diagram lehetővé teszi, hogy az adott munkamenet a KS-fürtben telepített tároló ta- és a kapcsolódó információkat.
-1. A Helm-diagram telepítése során a Kubernetes webhook felvételi kiszolgáló további tárolókat ad hozzá az alkalmazás podjához a műszerezéshez és a projekt forráskódjához való hozzáféréshez. A devspaces-proxy és devspaces-proxy-init tárolók http-nyomkövetés és a tér útválasztás adódik hozzá. A devspaces-build tároló hozzá van adva, hogy a pod hozzáférést biztosít a Docker-példány és a projekt forráskód az alkalmazás tárolójának létrehozásához.
-1. Az alkalmazás pod indításakor a devspaces-build tároló és devspaces-proxy-init tároló az alkalmazástároló létrehozásához használt. Az alkalmazástároló és a devspaces-proxy tárolók ezután elindulnak.
-1. Az alkalmazástároló indítása után az ügyféloldali funkció a Kubernetes portforward funkcióval *http-hozzáférést* biztosít az alkalmazáshoz. http://localhost Ez a porttovábbítás a fejlesztői számítógépet a fejlesztői térben lévő szolgáltatáshoz csatlakoztatja.
-1. Ha a pod összes tárolója elindult, a szolgáltatás fut. Ezen a ponton az ügyféloldali funkciók elkezdik streamelni a HTTP-nyomkövetéseket, az stdout-ot és az stderr-t. Ezt az információt a fejlesztő ügyféloldali funkciója jeleníti meg.
+1. A [fájlok szinkronizálása][sync-section] a felhasználó számítógépéről egy olyan Azure file Storage-ba történik, amely egyedi a felhasználó AK-fürtjén. A rendszer feltölti a forráskódot, a Helm-diagramot és a konfigurációs fájlokat.
+1. A vezérlő új munkamenet elindítására vonatkozó kérelmet hoz létre. Ez a kérelem több tulajdonságot tartalmaz, beleértve az egyedi azonosítót, a tárhely nevét, a forráskód elérési útját és egy hibakeresési jelzőt.
+1. A vezérlő lecseréli az *$ (tag)* helyőrzőt a Helm diagramon az egyedi munkamenet-azonosítóval, és telepíti a Helm-diagramot a szolgáltatáshoz. Az egyedi munkamenet-AZONOSÍTÓra mutató hivatkozás hozzáadása a Helm diagramhoz lehetővé teszi, hogy az AK-fürtön üzembe helyezett tároló a munkamenet-kérelemhez és a kapcsolódó információkhoz legyen kötve.
+1. A Helm diagram telepítése során a Kubernetes webhook-felvételi kiszolgáló további tárolókat hoz létre az alkalmazás Pod eszközéhez, és hozzáfér a projekt forráskódhoz. A rendszer hozzáadja a devspaces-proxy és a devspaces-proxy-init tárolókat a HTTP-nyomkövetés és a térköz-útválasztás biztosításához. A rendszer hozzáadja a devspaces tárolót, amely hozzáférést biztosít a Docker-példányhoz és a projekt forráskódját az alkalmazás tárolójának létrehozásához.
+1. Az alkalmazás Pod indításakor a devspaces-Build tároló és a devspaces-proxy-init tároló az alkalmazás-tároló összeállítására szolgál. Az alkalmazás-tároló és a devspaces-proxy tárolók elindulnak.
+1. Az alkalmazás-tároló elindítása után az ügyféloldali funkció a Kubernetes *Port-Forward* funkciót használja az alkalmazáshoz való http-hozzáférés biztosításához http://localhost. Ennek a portnak a továbbítása a fejlesztési számítógépet a fejlesztői térben található szolgáltatáshoz kapcsolja.
+1. Ha a pod összes tárolója elindult, a szolgáltatás fut. Ezen a ponton az ügyféloldali funkciók elkezdik továbbítani a HTTP-nyomkövetéseket, az stdout-t és a stderr. Ezt az információt a fejlesztő ügyféloldali funkciója jeleníti meg.
 
 ## <a name="updating-a-running-service"></a>Futó szolgáltatás frissítése
 
-A szolgáltatás futása közben az Azure Dev Spaces frissítheti a szolgáltatást, ha a projekt forrásfájljai bármelyike megváltozik. A fejlesztői tárolóhelyek a szolgáltatás frissítését is eltérően kezelik a módosított fájl típusától függően. A fejlesztői tárolók háromféleképpen frissíthetik a futó szolgáltatást:
+A szolgáltatás futása közben az Azure dev Spaces képes frissíteni a szolgáltatást, ha a projekt bármelyik fájlja megváltozik. A dev Spaces emellett a módosított fájl típusától függően eltérő módon frissíti a szolgáltatást. A fejlesztői helyek háromféle módon frissíthetik a futó szolgáltatásokat:
 
 * Fájl közvetlen frissítése
-* Az alkalmazás folyamatának újraépítése és újraindítása a futó alkalmazás tárolójában
-* Az alkalmazás tárolójának újraépítése és újratelepítése
+* Az alkalmazás folyamatának újraépítése és újraindítása a futó alkalmazás tárolóján belül
+* Az alkalmazás tárolójának újraépítése és újbóli üzembe helyezése
 
-![Az Azure Dev Spaces fájlszinkronizálása](media/how-dev-spaces-works/file-sync.svg)
+![Azure dev Spaces-fájlok szinkronizálása](media/how-dev-spaces-works/file-sync.svg)
 
-Bizonyos projektfájlok, amelyek statikus eszközök, mint például a html, css és cshtml fájlok, közvetlenül frissíthetők az alkalmazás tárolójában anélkül, hogy bármit újrakellene indítani. Ha egy statikus eszköz megváltozik, az új fájl szinkronizálódik a fejlesztési területtel, majd a futó tároló használja.
+Bizonyos olyan projektfájlok, amelyek statikus eszközök, például HTML-, CSS-és cshtml-fájlok, közvetlenül az alkalmazás tárolójában frissíthetők anélkül, hogy bármit újraindítanak. Ha egy statikus eszköz megváltozik, az új fájl szinkronizálva lesz a fejlesztői területtel, majd a futó tároló használja.
 
-A fájlok, például a forráskód vagy az alkalmazáskonfigurációs fájlok módosításai az alkalmazás folyamatának újraindításával alkalmazhatók a futó tárolóban. A fájlok szinkronizálása után az alkalmazás folyamata újraindul a futó tárolón belül a *devhostagent* folyamat használatával. Amikor először hozza létre az alkalmazás tárolóját, a vezérlő lecseréli az alkalmazás indítási parancsát egy másik folyamatra, a *devhostagent-re.* Az alkalmazás tényleges folyamata ezután egy alárendelt folyamatként fut a *devhostagent*alatt, és a kimeneti piped használatával *devhostagent*'s kimenet. A *devhostagent* folyamat is része a fejlesztői szóközök, és a futó tárolóban a fejlesztői tárolóban parancsokat hajthat végre a fejlesztői tárolónevében. Újraindítás végrehajtásakor a *devhostagent*:
+A fájlok, például a forráskód vagy az alkalmazás konfigurációs fájljainak módosításai az alkalmazás folyamatának a futó tárolón belüli újraindításával alkalmazhatók. A fájlok szinkronizálása után az alkalmazás folyamata újraindul a futó tárolón belül a *devhostagent* folyamat használatával. Amikor először hozza létre az alkalmazás tárolóját, a vezérlő lecseréli az alkalmazás indítási parancsát egy másik, *devhostagent*nevű folyamattal. Az alkalmazás tényleges folyamata ezután alárendelt folyamatként fut a *devhostagent*alatt, és a kimenete a *devhostagent*kimenetének használatával van leválasztva. A *devhostagent* folyamat a fejlesztői terek részét képezi, és a futó tárolóban parancsokat is végrehajthat a fejlesztői szóközök nevében. Újraindítás esetén a *devhostagent*:
 
-* Leállítja az alkalmazáshoz társított aktuális folyamatot vagy folyamatokat
+* Leállítja az alkalmazáshoz társított aktuális folyamatot vagy folyamatokat.
 * Újraépíti az alkalmazást
-* Újraindítja az alkalmazáshoz társított folyamatot vagy folyamatokat
+* Újraindítja az alkalmazáshoz társított folyamatot vagy folyamatokat.
 
-A *devhostagent* végrehajtásának módja az előző lépések [konfigurálása a. `azds.yaml` ][azds-yaml-section]
+A *devhostagent* hajtja végre az előző lépéseket a [alkalmazásban `azds.yaml` ][azds-yaml-section].
 
-A projektfájlok, például a Dockerfiles, a csproj-fájlok vagy a Helm-diagram bármely része frissítései megkövetelik az alkalmazás tárolójának újraépítését és újratelepítését. Ha ezen fájlok egyike szinkronizálva van a fejlesztési térrel, a vezérlő futtatja a [helm upgrade][helm-upgrade] parancsot, és az alkalmazás tárolója újraépül, és újraüzembe kerül.
+A projektfájlok, például a Dockerfiles, a csproj-fájlok vagy a Helm diagram bármely részének frissítéseihez újra kell építeni és újra telepíteni az alkalmazás tárolóját. Ha a fájlok egyike szinkronizálva van a fejlesztői területtel, a vezérlő futtatja a [Helm upgrade][helm-upgrade] parancsot, és az alkalmazás tárolóját újraépíti és újból üzembe helyezi.
 
-## <a name="file-synchronization"></a>Fájlszinkronizálás
+## <a name="file-synchronization"></a>Fájl szinkronizálása
 
-Az első alkalommal, amikor egy alkalmazás elindul egy fejlesztői térben, az alkalmazás összes forrásfájlja feltöltésre kerül. Amíg az alkalmazás fut, és a későbbi újraindítások, csak a módosított fájlokat feltölteni. A folyamat koordinálására két fájl használható: egy ügyféloldali fájl és egy kontroller oldali fájl.
+Amikor első alkalommal indít el egy alkalmazást egy fejlesztői térben, a rendszer az alkalmazás összes forrásfájljait feltölti. Amíg az alkalmazás fut, és a későbbi újraindítások során csak a módosított fájlok lesznek feltöltve. Ennek a folyamatnak a koordinálására két fájl használható: egy ügyféloldali fájl és egy vezérlő oldali fájl.
 
-Az ügyféloldali fájl egy ideiglenes könyvtárban van tárolva, és a fejlesztői tárolóhelyeken futó projektkönyvtár kivonata alapján kapta a nevét. Windows rendszeren például olyan fájl javallt, mint *a Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef 1234567890abcdef 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef123* Linux alatt az ügyféloldali fájl a */tmp* könyvtárban van tárolva. A címtár a macOS rendszeren `echo $TMPDIR` a parancs futtatásával található meg.
+Az ügyféloldali fájlt egy ideiglenes könyvtárban tárolja a rendszer, és a fejlesztői tárhelyeken futó projekt könyvtárának kivonata alapján nevezi el. Előfordulhat például, hogy a Windowsban egy fájl, például a *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* a projekthez. Linux rendszeren az ügyféloldali fájlt a */tmp* könyvtárban tárolja a rendszer. A (z) `echo $TMPDIR` parancs futtatásával megkeresheti a MacOS-es könyvtárat.
 
-Ez a fájl JSON formátumban van, és a következőket tartalmazza:
+A fájl JSON formátumú, és a következőket tartalmazza:
 
-* Minden egyes projektfájlhoz, amely szinkronizálva van a fejlesztési térrel,
+* A fejlesztői területtel szinkronizált egyes projektfájlok bejegyzései
 * Szinkronizálási azonosító
-* Az utolsó szinkronizálási művelet időbélyege
+* A legutóbbi szinkronizálási művelet időbélyege
 
-Minden projektfájl-bejegyzés tartalmazza a fájl elérési útját és időbélyegét.
+Minden projektfájl-bejegyzés tartalmazza a fájl elérési útját és az időbélyegét.
 
-A vezérlőoldali fájl az AKS-fürtön tárolódik. Ez tartalmazza a szinkronizálási azonosítót és az utolsó szinkronizálás időbélyegét.
+A vezérlő oldali fájl tárolása az AK-fürtön történik. Tartalmazza a szinkronizálási azonosítót és a legutóbbi szinkronizálás időbélyegét.
 
-A szinkronizálás akkor történik, ha a szinkronizálási időbélyegek nem egyeznek az ügyféloldali és a vezérlőoldali fájlok között. A szinkronizálás során az ügyféloldali eszközeszköz az ügyféloldali fájlban lévő fájlbejegyzések felett is megtérül. Ha a fájl időbélyege a szinkronizálási időbélyeg után van, a fájl szinkronizálva lesz a fejlesztési térbe. A szinkronizálás befejezése után a szinkronizálási időbélyegek mind az ügyféloldali, mind a vezérlőoldali fájlokban frissülnek.
+Szinkronizálás történik, ha a szinkronizálási időbélyegek nem egyeznek az ügyféloldali és a vezérlő oldali fájlok között. A szinkronizálás során az ügyféloldali eszköz megismétli az ügyféloldali fájlban lévő fájlok bejegyzéseit. Ha a fájl időbélyege a szinkronizálási időbélyeg után van, a fájl szinkronizálva lesz a fejlesztői területtel. A szinkronizálás befejeződése után a szinkronizálási időbélyegek az ügyféloldali és a vezérlő oldali fájlokon is frissülnek.
 
-Ha az ügyféloldali fájl nincs jelen, a program az összes projektfájlt szinkronizálja. Ez a viselkedés lehetővé teszi a teljes szinkronizálás kényszerítését az ügyféloldali fájl törlésével.
+Az összes projektfájl szinkronizálva van, ha az ügyféloldali fájl nincs jelen. Ez a viselkedés lehetővé teszi a teljes szinkronizálás kényszerítését az ügyféloldali fájl törlésével.
 
-## <a name="how-running-your-code-is-configured"></a>A kód futtatásának konfigurálása
+## <a name="how-running-your-code-is-configured"></a>A kód futtatásának beállítása
 
-Az Azure Dev `azds.yaml` Spaces a szolgáltatás telepítéséhez és konfigurálásához használja a fájlt. A vezérlő `install` a `azds.yaml` fájlban lévő tulajdonság gal való felpróbálata segítségével telepíti a Helm-diagramot, és létrehozza a Kubernetes-objektumokat:
+Az Azure dev Spaces `azds.yaml` a fájlt használja a szolgáltatás telepítéséhez és konfigurálásához. A vezérlő a `install` `azds.yaml` fájl tulajdonságát használja a Helm diagram telepítéséhez és a Kubernetes objektumok létrehozásához:
 
 ```yaml
 ...
@@ -120,25 +120,25 @@ install:
 ...
 ```
 
-Alapértelmezés szerint `prep` a parancs létrehozza a Helm diagramot. Azt is beállítja a *install.chart* tulajdonságot a Helm diagram könyvtárába. Ha egy másik helyen szeretne Helm-diagramot használni, frissítheti ezt a tulajdonságot, hogy az adott helyet használja.
+Alapértelmezés szerint a `prep` parancs létrehozza a Helm diagramot. Emellett beállítja a *install. chart* tulajdonságot is a Helm diagram könyvtárába. Ha egy másik helyen szeretné használni a Helm-diagramot, ezt a tulajdonságot az adott hely használatára is frissítheti.
 
-A Helm-diagramok telepítésekor az Azure Dev Spaces lehetővé teszi az értékek felülbírálását a Helm-diagramban. A Helm diagram alapértelmezett értékei a. `charts/APP_NAME/values.yaml`
+A Helm-diagramok telepítésekor az Azure dev Spaces lehetővé teszi az értékek felülbírálását a Helm diagramon. A Helm diagram alapértelmezett értékei a következőben találhatók `charts/APP_NAME/values.yaml`:.
 
-Az *install.values* tulajdonság használatával felsorolhat egy vagy több olyan fájlt, amely meghatározza a Helm diagramban lecserélni kívánt értékeket. Ha például kifejezetten az alkalmazás fejlesztési területen való futtatásakor szeretne állomásnevet vagy adatbázis-konfigurációt, használhatja ezt a felülbírálási funkciót. Azt is hozzá egy *?* a fájlnevek bármelyikének végén, hogy azt választhatóként állítsa be.
+A *install. Values* tulajdonság használatával listázhat egy vagy több olyan fájlt, amely a Helm diagramon lecserélni kívánt értékeket határozza meg. Ha például azt szeretné, hogy egy állomásnév vagy adatbázis-konfiguráció kifejezetten az alkalmazás egy fejlesztői térben való futtatásakor fusson, ezt a felülbírálási funkciót használhatja. Hozzáadhat egy-t is *?* a fájlnevek bármelyikének végén adja meg azt opcionálisként.
 
-Az *install.set* tulajdonság lehetővé teszi egy vagy több, a Helm diagramban lecserélni kívánt érték konfigurálását. Az *install.set* fájlban konfigurált értékek felülírják az install.values fájlban felsorolt fájlokban konfigurált *értékeket.* Az *install.set* alatt lévő tulajdonságok a Helm diagram értékeitől függenek, és a létrehozott Helm-diagramtól függően eltérőek lehetnek.
+A *install. set* tulajdonság lehetővé teszi egy vagy több lecserélni kívánt érték konfigurálását a Helm diagramon. A *install. set* fájlban konfigurált értékek felülbírálják a *install. Values*fájlban felsorolt fájlokban konfigurált értékeket. A *telepítési. set* tulajdonság tulajdonságai a Helm diagram értékeitől függenek, és a generált Helm diagramtól függően eltérőek lehetnek.
 
-A fenti példában az *install.set.replicaCount* tulajdonság közli a vezérlővel, hogy hány példányt kell futtatnia az alkalmazás a fejlesztői térben. A forgatókönyvtől függően növelheti ezt az értéket, de hatással lesz az alkalmazás podjához való hibakereső csatolása. További információt a [hibaelhárítási cikkben][troubleshooting]talál.
+A fenti példában az *install. set. replicaCount* tulajdonság azt jelzi, hogy az alkalmazás hány példánya fut a fejlesztői térben. A forgatókönyvtől függően növelheti ezt az értéket, de hatással lehet a hibakereső az alkalmazás Pod-ra való csatolására. További információ: [hibaelhárítási cikk][troubleshooting].
 
-A létrehozott Helm-diagramban a tárolókép *értéke {{ . Values.image.repository }}:{{ . Values.image.tag }}*. A `azds.yaml` fájl az *install.set.image.tag* tulajdonságot alapértelmezés szerint *$(tag)* értékként definiálja, amely *a(z) {{ értékeként szolgál. Values.image.tag }}*. Az *install.set.image.tag* tulajdonság ily módon történő beállításával lehetővé teszi, hogy az alkalmazás tárolólemezképét az Azure Dev Spaces futtatásakor külön címkézze fel. Ebben a konkrét esetben a kép értéke az * \<image.repository>:$(tag) értékként*van címkézve. A * * változót kell használnia az *install.set.image.tag* értékeként ahhoz, hogy a fejlesztői tároló felismeri és megkeresse a tárolót az AKS-fürtben.
+A generált Helm diagramon a tároló képe a következőre van beállítva: *{{. Values. rendszerkép. adattár}}: {{. Values. rendszerkép. tag}}*. A `azds.yaml` fájl az *install. set. file. tag* tulajdonságot a *$ (címke)* értékként adja meg alapértelmezés szerint, amelyet a rendszer a *{{értékeként használ. Values. rendszerkép. tag}}*. Az *install. set. rendszerkép. tag* tulajdonság beállításával így az alkalmazáshoz tartozó tároló-rendszerkép az Azure dev Spaces futtatásakor eltérő módon címkézhető. Ebben a konkrét esetben a rendszerkép a * \<rendszerkép. adattár>: $ (címke) értékként*van megjelölve. A *$ (tag)* változót a *install. set. rendszerkép. tag* értékként kell használni a fejlesztői szóközök felismeréséhez, és meg kell keresnie a tárolót az AK-fürtben.
 
-A fenti példában `azds.yaml` az *install.set.ingress.hosts*. Az *install.set.ingress.hosts* tulajdonság a nyilvános végpontok állomásnév-formátumát határozza meg. Ez a tulajdonság *$(spacePrefix)*, *$(rootSpacePrefix)* és *$(hostSuffix)* értéket is használ, amelyek a vezérlő által megadott értékek.
+A fenti példában `azds.yaml` az *install. set. beáramló. hosts*. A *install. set. beáramló. hosts* tulajdonság a nyilvános végpontok állomásnév-formátumát határozza meg. Ez a tulajdonság a *$ (spacePrefix)*, a *$ (rootSpacePrefix)* és a *$ (hostSuffix)* értéket is használja, amely a vezérlő által megadott érték.
 
-A *$(spacePrefix)* a gyermekfejlesztői terület neve, amely *spacename.s*. A *$(rootSpacePrefix)* a szülőterület neve. Ha például az *azureuser* *alapértelmezett*gyermekterület, akkor a *$(rootSpacePrefix)* értéke *az alapértelmezett,* a *$(spacePrefix)* értéke pedig *az azureuser.s*. Ha a szóköz nem gyermekterület, *a $(spacePrefix)* üres. Ha például az *alapértelmezett* területnek nincs szülőterülete, akkor a *$(rootSpacePrefix)* értéke *az alapértelmezett,* a *$(spacePrefix)* értéke pedig üres. A *$(hostSuffix)* egy DNS-utótag, amely az AKS-fürtben futó Azure dev spaces ingress controllerre mutat. Ez a DNS-utótag például * \*egy helyettesítő DNS-bejegyzésnek felel meg. RANDOM_VALUE.eus.azds.io*, amely akkor jött létre, amikor az Azure Dev Spaces vezérlő hozzá lett adva az AKS-fürthöz.
+A *$ (spacePrefix)* a gyermek fejlesztői terület neve, amely a *SPACENAME. s*formátum formáját ölti. A *$ (rootSpacePrefix)* a szülő terület neve. Ha például az *Azureus* egy *alapértelmezett*gyermekobjektum, a *$ (rootSpacePrefix)* érték értéke *alapértelmezett* , a *$ (spacePrefix)* pedig az *Azureus. s*. Ha a szóköz nem gyermek, a *$ (spacePrefix)* üres. Ha például az *alapértelmezett* szóköz nem rendelkezik szülő területtel, a *$ (rootSpacePrefix)* érték értéke *alapértelmezett* , a *$ (spacePrefix)* érték pedig üres. A *$ (hostSuffix)* egy olyan DNS-utótag, amely az AK-fürtben futó Azure dev Spaces beléptetési vezérlőre mutat. Ez a DNS-utótag a helyettesítő karakteres DNS-bejegyzésnek felel meg, például * \*:. RANDOM_VALUE. EUs. azds. IO*, amely akkor jött létre, amikor az Azure dev Spaces-vezérlőt hozzáadták az AK-fürthöz.
 
-A fenti `azds.yaml` fájlban frissítheti az *install.set.ingress.hosts* fájlt is az alkalmazás állomásnevének módosításához. Ha például az alkalmazás hostname-jét *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* és *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* értékre szeretné egyszerűsíteni.
+A fenti `azds.yaml` fájlban azt is megteheti, hogy frissíti a *install. set. beáramló. hosts* fájlt, hogy megváltoztassa az alkalmazás állomásnevét. Ha például azt szeretné, hogy az alkalmazás állomásneve leegyszerűsítse a $ ( *spacePrefix) $ (rootSpacePrefix) webfrontend $ (hostSuffix)* értéket a *$ (spacePrefix) $ (rootSpacePrefix) Web $ (hostSuffix*) webverzióra.
 
-Az alkalmazás tárolójának létrehozásához a vezérlő a `azds.yaml` konfigurációs fájl alábbi szakaszait használja:
+Az alkalmazáshoz tartozó tároló létrehozásához a vezérlő a `azds.yaml` konfigurációs fájl alábbi részeit használja:
 
 ```yaml
 build:
@@ -155,13 +155,13 @@ configurations:
 ...
 ```
 
-A vezérlő egy Docker-fájlt használ az alkalmazás létrehozásához és futtatásához.
+A vezérlő Docker használ az alkalmazás létrehozásához és futtatásához.
 
-A *build.context* tulajdonság felsorolja azt a könyvtárat, ahol a Docker-fájlok léteznek. A *build.dockerfile* tulajdonság határozza meg a Dockerfile nevét az alkalmazás éles verziójának létrehozásához. A *configurations.develop.build.dockerfile* tulajdonság konfigurálja a Docker-fájl nevét az alkalmazás fejlesztői verziójához.
+A *Build. Context* tulajdonság felsorolja azt a könyvtárat, ahol a Dockerfiles létezik. A *Build. Docker* tulajdonság határozza meg az alkalmazás éles verziójának létrehozásához használt Docker nevét. A *konfigurációk. Development. Build. Docker* tulajdonság az alkalmazás fejlesztői verziójának Docker nevét konfigurálja.
 
-A különböző Docker-fájlok fejlesztési és éles környezetben lehetővé teszi, hogy bizonyos dolgokat a fejlesztés során, és tiltsa le ezeket a cikkeket éles környezetben. Például engedélyezheti a hibakeresést vagy a részletesebb naplózást a fejlesztés során, és letilthatja éles környezetben. Ezeket a tulajdonságokat akkor is frissítheti, ha a Docker-fájlok neve eltérő, vagy egy másik helyen vannak.
+A fejlesztés és a gyártás különböző Dockerfiles lehetővé teszi bizonyos dolgok használatát a fejlesztés során, és letiltja ezeket az elemeket az éles környezetekben való üzembe helyezéshez. Például engedélyezheti a hibakeresést vagy részletesebb naplózást a fejlesztés során, és letilthatja azt éles környezetben. Ezeket a tulajdonságokat akkor is frissítheti, ha a Dockerfiles neve másként van, vagy egy másik helyen található.
 
-Annak érdekében, hogy a fejlesztés során gyorsan iterate, az Azure Dev Spaces szinkronizálja a helyi projekt módosításait, és fokozatosan frissíti az alkalmazást. A konfigurációs `azds.yaml` fájl alábbi szakasza a szinkronizálás és a frissítés konfigurálására szolgál:
+A fejlesztés során a gyors iteráció elősegítése érdekében az Azure dev Spaces szinkronizálja a helyi projekt változásait, és fokozatosan frissíti az alkalmazást. A szinkronizálás és a frissítés `azds.yaml` konfigurálásához a konfigurációs fájl alábbi szakasza szolgál:
 
 ```yaml
 ...
@@ -182,13 +182,13 @@ configurations:
 ...
 ```
 
-A módosításokat szinkronizáló fájlok és könyvtárak a *configurations.develop.container.sync* tulajdonságban jelennek meg. Ezek a könyvtárak kezdetben szinkronizálódnak a parancs futtatásakor, valamint a `up` módosítások észlelésekor. Ha további vagy különböző könyvtárakat szeretne szinkronizálni a fejlesztői térben, módosíthatja ezt a tulajdonságot.
+A szinkronizálni kívánt fájlok és könyvtárak megjelennek a *konfigurációk. fejlesztői. Container. Sync* tulajdonságban. A rendszer először szinkronizálja ezeket a címtárakat, `up` amikor futtatja a parancsot, valamint a módosítások észlelését. Ha vannak olyan további vagy különböző könyvtárak, amelyeket szinkronizálni szeretne a fejlesztői területtel, módosíthatja ezt a tulajdonságot.
 
-A *configurations.develop.container.iterate.buildCommands* tulajdonság határozza meg, hogyan lehet az alkalmazást fejlesztési forgatókönyvben felépíteni. A *configurations.develop.container.command* tulajdonság biztosítja az alkalmazás fejlesztési forgatókönyvben történő futtatásának parancsát. Előfordulhat, hogy frissíteni szeretné ezeket a tulajdonságokat, ha további build- vagy futásidejű jelzők vagy paraméterek vannak a fejlesztés során.
+A *konfigurációk. Development. Container. iteráció. buildCommands* tulajdonság azt adja meg, hogyan kell felépíteni az alkalmazást egy fejlesztési forgatókönyvben. A *konfigurációk. Development. Container. Command* tulajdonság biztosítja az alkalmazás fejlesztési forgatókönyvben való futtatásához szükséges parancsot. Előfordulhat, hogy frissítenie kell ezeket a tulajdonságokat, ha további Build vagy Runtime jelzőket vagy paramétereket szeretne használni a fejlesztés során.
 
-A *configurations.develop.container.iterate.processesToKill* felsorolja azokat a folyamatokat, amelyeket az alkalmazás leállításához meg kell ölni. Érdemes lehet frissíteni ezt a tulajdonságot, ha módosítani szeretné az alkalmazás újraindítási viselkedését a fejlesztés során. Ha például frissítette a *configurations.develop.container.iterate.buildParancsok* vagy *configurations.develop.container.command* tulajdonságokat az alkalmazás felépítésének vagy elindításának módosításához, előfordulhat, hogy módosítania kell a folyamatok leállítását.
+A *konfigurációk. Build. Container. iteráció. processesToKill* felsorolja az alkalmazás leállításához szükséges folyamatokat. Érdemes lehet frissíteni ezt a tulajdonságot, ha módosítani szeretné az alkalmazás újraindítási viselkedését a fejlesztés során. Ha például frissítette a *konfigurációkat. fejlessze a. Container. iteráció. buildCommands* vagy a configurations. Build. *Container. Command* tulajdonságokat az alkalmazás létrehozásának vagy indításának megváltoztatásához, előfordulhat, hogy módosítania kell a leállított folyamatokat.
 
-Amikor a kódot a `azds prep` parancs használatával készíti elő, lehetősége van a `--enable-ingress` jelző hozzáadására. A `--enable-ingress` jelző hozzáadása nyilvánosan elérhető URL-címet hoz létre az alkalmazásszámára. Ha kihagyja ezt a jelzőt, az alkalmazás csak a fürtön belül vagy a localhost alagút használatával érhető el. A `azds prep` parancs futtatása után módosíthatja ezt a beállítást, és módosíthatja a *bejövő kapcsolat.engedélyezéshez használható tulajdonságot* a alkalmazásban: `charts/APPNAME/values.yaml`
+Ha a `azds prep` parancs használatával készíti elő a kódot, lehetősége van a `--enable-ingress` jelző hozzáadására. A `--enable-ingress` jelző hozzáadása nyilvánosan elérhető URL-címet hoz létre az alkalmazáshoz. Ha kihagyja ezt a jelzőt, az alkalmazás csak a fürtön belül vagy a localhost-alagút használatával érhető el. A `azds prep` parancs futtatása után megváltoztathatja ezt a beállítást a *bejövő. enabled* tulajdonság módosításával a következőben `charts/APPNAME/values.yaml`:
 
 ```yaml
 ingress:
@@ -197,17 +197,17 @@ ingress:
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a hálózatkezelésről és arról, hogyan továbbítja a kérelmeket az Azure dev spaces-ben, olvassa el [az Útválasztás és az Azure Dev Spaces közötti működést.][how-it-works-routing]
+További információ a hálózatkezelésről és a kérelmek az Azure dev Spaces szolgáltatásban való továbbításáról: [Hogyan működik az Útválasztás az Azure dev Spaces][how-it-works-routing]használatával.
 
-Ha többet szeretne tudni arról, hogy miként fejlesztheti és fejlesztheti az Azure Dev Spaces szolgáltatást, olvassa el [A fejlesztői számítógép csatlakoztatása a fejlesztői térhöz való csatlakoztatása][how-it-works-connect] és [a kód azure dev spaces-rel való távoli hibakeresésének működése című][how-it-works-remote-debugging]témakört.
+Ha többet szeretne megtudni arról, hogyan használható az Azure dev Spaces a gyors iteráció és a fejlesztés érdekében, tekintse meg a [fejlesztői számítógép és a fejlesztői terület összekapcsolásának módját][how-it-works-connect] , valamint azt, [hogy a kód hogyan működik együtt az Azure dev Spaces][how-it-works-remote-debugging]használatával.
 
-Az Azure Dev Spaces használatával a projekt futtatásához az alábbi rövid útmutatók at kezdheti el:
+Az Azure dev Spaces a projekt futtatásához való használatának megkezdéséhez tekintse meg az alábbi rövid útmutatókat:
 
-* [Gyorsan iterálni és debug a Visual Studio kód és a Java][quickstart-java]
-* [Gyorsan iterálni és hibakeresés a Visual Studio Code és a .NET][quickstart-netcore]
-* [Gyorsan iterálni és hibakeresés a Visual Studio kód és Node.js][quickstart-node]
-* [Gyorsan iterate és debug a Visual Studio és a .NET Core][quickstart-vs]
-* [A CLI használata a Kubernetes alkalmazásának fejlesztéséhez][quickstart-cli]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a Node. js-sel][quickstart-node]
+* [Gyors iteráció és hibakeresés a Visual Studióval és a .NET Core-val][quickstart-vs]
+* [Alkalmazás fejlesztése a Kubernetes-on a CLI használatával][quickstart-cli]
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured

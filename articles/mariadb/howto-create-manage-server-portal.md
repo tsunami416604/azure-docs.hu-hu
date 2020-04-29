@@ -1,100 +1,100 @@
 ---
-title: Kiszolgáló kezelése – Azure portal – Azure-adatbázis a MariaDB-hez
-description: Ismerje meg, hogyan kezelheti a MariaDB-kiszolgálóazure-adatbázisát az Azure Portalon.
+title: Kiszolgáló kezelése – Azure Portal – Azure Database for MariaDB
+description: Megtudhatja, hogyan kezelheti Azure Database for MariaDB-kiszolgálókat a Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 43004f8c52bbec17f78ed4be024cf75224dbd179
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530240"
 ---
-# <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>A MariaDB-kiszolgáló Azure-adatbázisának kezelése az Azure Portal használatával
-Ez a cikk bemutatja, hogyan kezelheti az Azure-adatbázis MariaDB-kiszolgálók. A felügyeleti feladatok közé tartozik a számítási és tárolási méretezés, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló részleteinek megtekintése.
+# <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló kezelése a Azure Portal használatával
+Ez a cikk bemutatja, hogyan kezelheti a Azure Database for MariaDB-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
 
 ## <a name="sign-in"></a>Bejelentkezés
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>A kiszolgáló létrehozása
-A [rövid útmutatóból](quickstart-create-mariadb-server-database-using-azure-portal.md) megtudhatja, hogyan hozhat létre és kezdheti el a MariaDB-kiszolgálóhoz való Azure Database szolgáltatást.
+A rövid útmutatóból megtudhatja [, hogyan](quickstart-create-mariadb-server-database-using-azure-portal.md) hozhat létre és kezdjen el egy Azure Database for MariaDB-kiszolgálót.
 
-## <a name="scale-compute-and-storage"></a>A számítás és a tárolás méretezése
+## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
 
-A kiszolgáló létrehozása után az általános célú és a memóriaoptimalizált rétegek között az igények változása kor skálázható. A virtuális magok növelésével vagy csökkentésével a számítási és a memória méretezése is. A tárhely skálázható (azonban nem lehet a tárolót csökkenteni).
+A kiszolgáló létrehozása után a általános célú és a memória optimalizált szintjei között méretezheti az igények változását. A számítási és a memória méretezése a virtuális mag növelésével vagy csökkentésével is elvégezhető. A tárterület méretezhető (azonban nem méretezheti le a tárterületet).
 
-### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>Általános célú és memóriaoptimalizált rétegek közötti méretezés
+### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>Méretezés általános célú és a memória optimalizált szintjei között
 
-Az Általános célról a memóriaoptimalizáltra skálázható, és fordítva. A kiszolgáló létrehozása után nem érdemes az alapszintre és az alapszintről való váltást. 
+Általános célúról a memóriára optimalizált és fordítva is méretezhető. A kiszolgáló létrehozása után az alapszintű csomagra való váltás nem támogatott. 
 
-1. Válassza ki a kiszolgálót az Azure Portalon. Válassza a **Tarifacsomag**lehetőséget, amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
-2. Válassza az **Általános cél** vagy a **Memória optimalizált**lehetőséget attól függően, hogy mire skáláz. 
+2. Válassza ki az **általános célú** vagy a **memória optimalizált**elemet attól függően, hogy mit kíván méretezni. 
 
-    ![változás-árképzési szint](./media/howto-create-manage-server-portal/change-pricing-tier.png)
-
-    > [!NOTE]
-    > A rétegek módosítása a kiszolgáló újraindítását okozza.
-
-4. A módosítások mentéséhez válassza az **OK gombot.**
-
-
-### <a name="scale-vcores-up-or-down"></a>Virtuális magok méretezése fel- vagy leskálán
-
-1. Válassza ki a kiszolgálót az Azure Portalon. Válassza a **Tarifacsomag**lehetőséget, amely a **Beállítások** szakaszban található.
-
-2. Módosítsa a **virtuálismag-beállítást** úgy, hogy a csúszkát a kívánt értékre mozgatja.
-
-    ![méretarányos számítás](./media/howto-create-manage-server-portal/scaling-compute.png)
+    ![változás – díjszabás – réteg](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
-    > A virtuális magok méretezése a kiszolgáló újraindítását okozza.
+    > A rétegek módosítása a kiszolgáló újraindítását eredményezi.
 
-3. A módosítások mentéséhez válassza az **OK gombot.**
+4. A módosítások mentéséhez kattintson **az OK gombra** .
 
 
-### <a name="scale-storage-up"></a>A tárolás méretezése felskálázva
+### <a name="scale-vcores-up-or-down"></a>Méretezési virtuális mag felfelé vagy lefelé
 
-1. Válassza ki a kiszolgálót az Azure Portalon. Válassza a **Tarifacsomag**lehetőséget, amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
-2. Módosítsa a **Tároló** beállítást úgy, hogy a csúszkát a kívánt értékre húzza.
+2. Módosítsa a **virtuális mag** beállítást úgy, hogy áthelyezi a csúszkát a kívánt értékre.
 
-    ![méretezési tároló](./media/howto-create-manage-server-portal/scaling-storage.png)
+    ![méretezés – számítás](./media/howto-create-manage-server-portal/scaling-compute.png)
 
     > [!NOTE]
-    > A tároló nem csökkenthető.
+    > A skálázás virtuális mag a kiszolgáló újraindítását okozza.
 
-3. A módosítások mentéséhez válassza az **OK gombot.**
+3. A módosítások mentéséhez kattintson **az OK gombra** .
+
+
+### <a name="scale-storage-up"></a>A tárterület felskálázása
+
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
+
+2. Módosítsa a **tárolási** beállításokat úgy, hogy a csúszkát felfelé helyezi a kívánt értékre.
+
+    ![méretezés – tárterület](./media/howto-create-manage-server-portal/scaling-storage.png)
+
+    > [!NOTE]
+    > A tárterület nem méretezhető le.
+
+3. A módosítások mentéséhez kattintson **az OK gombra** .
 
 
 ## <a name="update-admin-password"></a>Rendszergazdai jelszó frissítése
-Módosíthatja a rendszergazdai szerepkör jelszavát az Azure Portalhasználatával.
+A rendszergazdai szerepkör jelszava a Azure Portal használatával módosítható.
 
-1. Válassza ki a kiszolgálót az Azure Portalon. Az **Áttekintés ablakban** válassza a **Jelszó alaphelyzetbe állítása lehetőséget.**
+1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
 
    ![Áttekintés](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
-2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegdoboz kérni fogja a jelszó összetettségére vonatkozó követelményeket.
+2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
-   ![alaphelyzetbe állítás](./media/howto-create-manage-server-portal/reset-password.png)
+   ![jelszó alaphelyzetbe állítása](./media/howto-create-manage-server-portal/reset-password.png)
 
-3. Az új jelszó mentéséhez válassza az **OK gombot.**
+3. Az új jelszó mentéséhez kattintson **az OK gombra** .
 
 
 ## <a name="delete-a-server"></a>Kiszolgáló törlése
 
-Törölheti a kiszolgálót, ha már nincs rá szüksége. 
+Ha már nincs szüksége rá, törölheti a kiszolgálót. 
 
-1. Válassza ki a kiszolgálót az Azure Portalon. Az **Áttekintés ablakban** válassza a **Törlés**lehetőséget.
+1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés**lehetőséget.
 
     ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
-2. Írja be a kiszolgáló nevét a beviteli mezőbe, és ellenőrizze, hogy ez az a kiszolgáló, amelyet törölni szeretne.
+2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy ez a kiszolgáló, amelyet törölni szeretne.
 
-    ![megerősítés-törlés](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![Törlés megerősítése](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > A kiszolgáló törlése visszafordíthatatlan.
@@ -103,5 +103,5 @@ Törölheti a kiszolgálót, ha már nincs rá szüksége.
 
 
 ## <a name="next-steps"></a>További lépések
-- További információ a biztonsági mentések és [a kiszolgáló-visszaállítás szolgáltatásról](howto-restore-server-portal.md)
-- További információ a [Hangolási és figyelési lehetőségekről a MariaDB Azure Database szolgáltatásában](concepts-monitoring.md)
+- A [biztonsági másolatok és a kiszolgáló-visszaállítás](howto-restore-server-portal.md) ismertetése
+- Ismerkedjen meg [a hangolási és figyelési lehetőségekkel Azure Database for MariaDB](concepts-monitoring.md)

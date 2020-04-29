@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrások használatának ellenőrzése a korlátok kal szemben | Microsoft dokumentumok
-description: Ismerje meg, hogyan ellenőrizheti az Azure-erőforrások használatát az Azure-előfizetési korlátokkal szemben.
+title: Az Azure-erőforrás használatának korlátozása a korlátok között | Microsoft Docs
+description: Ismerje meg, hogyan ellenőrizhető az Azure-erőforrások használata az Azure-előfizetési korlátokon.
 services: networking
 documentationcenter: na
 author: KumudD
@@ -13,42 +13,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79455562"
 ---
-# <a name="check-resource-usage-against-limits"></a>Erőforrás-használat ellenőrzése korlátok kal szemben
+# <a name="check-resource-usage-against-limits"></a>Az erőforrás-használat korlátainak keresése
 
-Ebből a cikkből megtudhatja, hogyan láthatja az előfizetésben üzembe helyezett egyes hálózati erőforrástípusok számát, és hogy mik az [előfizetési korlátok.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) Az erőforrás-használat korlátok ellenezése hasznos az aktuális használat nyomon követéséhez és a későbbi használatra való tervezéshez. Használhatja az [Azure Portalon](#azure-portal), [PowerShell,](#powershell)vagy az [Azure CLI](#azure-cli) a használat nyomon követéséhez.
+Ebből a cikkből megtudhatja, hogyan tekintheti meg az előfizetésében üzembe helyezett egyes hálózati erőforrástípusok számát, valamint az [előfizetési korlátokat](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) . Az erőforrás-használat korlátainak megtekintésére való képesség hasznos lehet az aktuális használat nyomon követéséhez és a jövőbeli használat megtervezéséhez. A használat nyomon követéséhez használhatja az [Azure Portalt](#azure-portal), a [PowerShellt](#powershell)vagy az [Azure CLI](#azure-cli) -t.
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az Azure [Portalra.](https://portal.azure.com)
-2. Az Azure Portal felső, bal sarkában válassza a **Minden szolgáltatás**lehetőséget.
-3. Írja be az *Előfizetések* **jelölőnégyzetet** a Szűrő mezőbe. Amikor a keresési eredmények között megjelenik az **Előfizetések** elem, válassza ki.
-4. Válassza ki annak az előfizetésnek a nevét, amelynek használati adatait meg szeretné tekinteni.
-5. A **BEÁLLÍTÁSOK csoportban**válassza **a Használat + kvóta lehetőséget.**
+1. Jelentkezzen be az Azure [Portalra](https://portal.azure.com).
+2. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás**lehetőséget.
+3. Adja meg az *előfizetéseket* a **szűrő** mezőben. Amikor a keresési eredmények között megjelenik az **Előfizetések** elem, válassza ki.
+4. Válassza ki annak az előfizetésnek a nevét, amelyre vonatkozóan meg szeretné tekinteni a használati adatokat.
+5. A **Beállítások**területen válassza a **használat + kvóta**elemet.
 6. Az alábbi lehetőségek közül választhat:
-   - **Erőforrástípusok**: Kiválaszthatja az összes erőforrástípust, vagy kiválaszthatja a megtekinteni kívánt erőforrástípusokat.
-   - **Szolgáltatók**: Kiválaszthatja az összes erőforrás-szolgáltatót, vagy **kiválaszthatja a Számítási**, **Hálózati**vagy **Tárolási lehetőséget.**
-   - **Helyek**: Kiválaszthatja az összes Azure-helyet, vagy kiválaszthatja az adott helyeket.
-   - Kiválaszthatja, hogy az összes erőforrást, vagy csak azokat az erőforrásokat, ahol legalább egy telepítve van.
+   - **Erőforrástípusok**: kiválaszthatja az összes erőforrástípust, vagy kiválaszthatja a megtekinteni kívánt erőforrások típusait.
+   - **Szolgáltatók**: kiválaszthatja az összes erőforrás-szolgáltatót, vagy kiválaszthatja a **számítás**, a **hálózat**vagy a **tárterület**lehetőséget.
+   - **Helyszínek**: kiválaszthatja az összes Azure-helyet, vagy kijelölhet bizonyos helyszíneket is.
+   - Kiválaszthatja az összes erőforrás megjelenítését, vagy csak azokat az erőforrásokat, amelyeken legalább egy telepítve van.
 
-     Az alábbi képen látható példa az USA keleti részén legalább egy erőforrást üzembe helyezett összes hálózati erőforrást megjeleníti:
+     Az alábbi képen látható példa az összes olyan hálózati erőforrást mutatja, amely legalább egy, az USA keleti régiójában üzembe helyezett erőforrással rendelkezik:
 
        ![Használati adatok megtekintése](./media/check-usage-against-limits/view-usage.png)
 
-     Az oszlopokat az oszlopfejléc kiválasztásával rendezheti. A megjelenített korlátok az előfizetés korlátai. Ha meg kell növelnie az alapértelmezett korlátot, válassza a **Kérelem növelése**lehetőséget, majd töltse ki és küldje el a támogatási kérelmet. Minden erőforrás nak van egy maximális limitje az [Azure-korlátokban.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) Ha az aktuális korlát már elérte a maximális számot, a korlát nem növelhető.
+     Az oszlopokat az oszlop fejlécének kiválasztásával rendezheti. A megjelenő korlátok az előfizetésre vonatkozó korlátok. Ha növelje az alapértelmezett korlátot, válassza a **kérés növekedése**lehetőséget, majd fejezze be és küldje el a támogatási kérést. Az összes erőforráshoz az Azure [korlátaiban](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)legfeljebb egy korlát szerepel. Ha a jelenlegi korlátja már a maximális számon van, a határérték nem növelhető.
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Futtathatja az Azure Cloud [Shellben](https://shell.azure.com/powershell)követett parancsokat, vagy a PowerShell t a számítógépről futtathatja. Az Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShell t a számítógépről futtatja, szüksége van az Azure PowerShell-modul 1.0.0-s vagy újabb verzióra. Futtassa `Get-Module -ListAvailable Az` a számítógépen, hogy megtalálja a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, `Login-AzAccount` az Azure-ba való bejelentkezéshez is futnia kell.
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa `Get-Module -ListAvailable Az` a parancsot a számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia `Login-AzAccount` kell az Azure-ba való bejelentkezéshez.
 
-Tekintse meg a használatot korlátok között a [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)segítségével. A következő példa lekéri az olyan erőforrások használatát, ahol legalább egy erőforrás telepítve van az USA keleti részén:
+A [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)használatával megtekintheti a korlátozásokat. A következő példa beolvassa azokat az erőforrásokat, amelyekben legalább egy erőforrás üzembe van helyezve az USA keleti régiójában:
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `
@@ -57,7 +57,7 @@ Get-AzNetworkUsage `
   | Format-Table ResourceType, CurrentValue, Limit
 ```
 
-A következő példakimenettel megegyező formátumú kimenetet kap:
+A kimenet a következő példa kimenetével megegyező formátumban jelenik meg:
 
 ```output
 ResourceType            CurrentValue Limit
@@ -71,9 +71,9 @@ Network Watchers                   1     1
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Ha az Azure parancssori felület (CLI) parancsokkal hajthatja végre a cikkben szereplő feladatokat, futtassa a parancsokat az [Azure Cloud Shellben,](https://shell.azure.com/bash)vagy a CLI futtatásával a számítógépről. Ez a cikk az Azure CLI 2.0.32-es vagy újabb verzióját igényli. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha az Azure CLI-t helyileg futtatja, `az login` az Azure-ba való bejelentkezéshez is futnia kell.
+Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja az Azure CLI-t, az Azure-ba `az login` való bejelentkezéshez is futnia kell.
 
-Tekintse meg a használat korlátok között [az az hálózati lista-használat](/cli/azure/network?view=azure-cli-latest#az-network-list-usages). A következő példa az USA keleti részén lévő erőforrások használatát kapja meg:
+Az az [Network List-](/cli/azure/network?view=azure-cli-latest#az-network-list-usages)relimits használatával megtekintheti a korlátozásokat. Az alábbi példa az USA keleti régiójában található erőforrások használatát kéri le:
 
 ```azurecli-interactive
 az network list-usages \
@@ -81,7 +81,7 @@ az network list-usages \
   --out table
 ```
 
-A következő példakimenettel megegyező formátumú kimenetet kap:
+A kimenet a következő példa kimenetével megegyező formátumban jelenik meg:
 
 ```output
 Name                    CurrentValue Limit

@@ -1,7 +1,7 @@
 ---
-title: 'PCA-alapú anomáliadetektálás: Modul hivatkozás'
+title: 'PCA-alapú anomáliák észlelése: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a PCA-alapú anomáliadetektálási modult a fő összetevőelemzésen (PCA) alapuló anomáliadetektálási modell létrehozásához.
+description: Ismerje meg, hogy a PCA-alapú anomáliák észlelési moduljának használatával hogyan hozhat létre egy anomália-észlelési modellt az elsődleges összetevők elemzése (PCA) alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,86 +10,86 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 0672b9769feae65c73a6f752a268968a7bad9e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502983"
 ---
-# <a name="pca-based-anomaly-detection"></a>PCA-alapú anomáliadetektálás
+# <a name="pca-based-anomaly-detection"></a>PCA-alapú rendellenesség-észlelés
 
-Ez a cikk ismerteti, hogyan használhatja a **PCA-alapú anomáliadetektálási** modul az Azure Machine Learning designer (előzetes verzió), a fő összetevő-elemzés (PCA) alapuló anomáliadetektálási modell létrehozásához.
+Ez a cikk azt ismerteti, hogyan használható a **PCA-alapú anomália-észlelési** modul a Azure Machine learning Designerben (előzetes verzió), amely a fő összetevők elemzése (PEM) alapján anomália-észlelési modellt hoz létre.
 
-Ez a modul segít egy modell létrehozásában olyan forgatókönyvekben, ahol könnyen beszerezhető adatokat egy osztályból, például érvényes tranzakciók, de nehéz elegendő mintát beszerezni a célzott anomáliákból. 
+Ez a modul segít olyan modellek létrehozásában, amelyekben könnyen beszerezhetők az egyik osztályból származó betanítási adatok, például az érvényes tranzakciók, de nehéz a megcélzó anomáliák megfelelő mintáinak beszerzése. 
 
-Például a csalárd tranzakciók észleléséhez nagyon gyakran nincs elég példa a csalásra, hogy betanítsa, de sok példa van a jó tranzakciókra. A **PCA-alapú anomáliadetektálási** modul a rendelkezésre álló funkciók elemzésével megoldja a problémát, hogy meghatározza, mi minősül "normál" osztálynak, és távolságmérő számokat alkalmaz az anomáliákat képviselő esetek azonosítására. Ez lehetővé teszi a modell betanítását a meglévő kiegyensúlyozatlan adatok használatával.
+Például a csalárd tranzakciók észleléséhez nagyon gyakran nincs elég példa arra, hogy a csalás a betanításhoz, de a jó tranzakciók számos példája van. A **PEM-alapú anomáliák észlelése** modul megoldja a problémát az elérhető szolgáltatások elemzésével, amely meghatározza, hogy mit jelent a "normál" osztály, és milyen távolsági metrikákat alkalmaz a rendellenességeket képviselő esetek azonosítására. Ez lehetővé teszi a modell betanítását meglévő, kiegyensúlyozatlan adatértékek használatával.
 
-## <a name="more-about-principal-component-analysis"></a>További információk a fő összetevő-elemzésről
+## <a name="more-about-principal-component-analysis"></a>További tudnivalók a fő összetevők elemzéséről
 
-*A fő komponenselemzés*, amelyet gyakran PCA-ra rövidítve, a gépi tanulás egy bevált technikája. A PCA-t gyakran használják feltáró adatelemzésben, mert feltárja az adatok belső szerkezetét, és megmagyarázza az adatok varianciáját.
+A *fő összetevő elemzése*, amely gyakran a PCA-ra van rövidítve, a gépi tanulásban kialakított eljárás. A PCA-t gyakran használják a felderítő adatelemzés során, mert az az adat belső struktúráját mutatja be, és ismerteti az adateltérést.
 
-A PCA több változót tartalmazó adatok elemzésével működik. A változók közötti korrelációkat keresi, és meghatározza az eredmények közötti különbségeket legjobban figyelembe véve az értékek kombinációját. Ezek a kombinált jellemzőértékek a fő összetevőknek nevezett kompaktabb szolgáltatástér *létrehozására szolgálnak.*
+A PEM a több változót tartalmazó adatok elemzésével működik. A változók közötti korrelációkat keres, és meghatározza, hogy a legjobban milyen értékeket kell rögzíteni a kimenetben. Ezeknek az egyesített szolgáltatásoknak a használatával a rendszer a *fő összetevőknek*nevezett, kompakt szolgáltatási terület létrehozására szolgál.
 
-Az anomáliadetektáláshoz minden új bemenetet elemez a rendszer, és az anomáliadetektálási algoritmus kiszámítja az eigenvectors vetületét egy normalizált rekonstrukciós hibával együtt. A normalizált hiba az anomáliapontszámként használatos. Minél nagyobb a hiba, annál rendellenesebb a példány.
+A anomáliák észlelése esetén minden új bemenet elemzése megtörténik, és az anomáliák észlelési algoritmusa kiszámítja a eigenvectors kivetítését, valamint egy normalizált újraépítési hibát. A normalizált hiba az anomália pontszámként szolgál. Minél nagyobb a hiba, annál több rendellenes a példány.
 
-A PCA működéséről és az anomáliadetektálás megvalósításáról az alábbi dokumentumokban talál további információt:
+A PEM működéséről és az anomáliák észlelésének megvalósításáról a következő dokumentumokban talál további információt:
 
-- [Randomizált algoritmus a fő összetevő elemzéshez.](https://arxiv.org/abs/0809.2274) Rokhlin, Szlan és Tygert
+- [Randomizált algoritmus az elsődleges összetevők elemzéséhez](https://arxiv.org/abs/0809.2274). Rokhlin, Szlan és Tygert
 
-- [A szerkezet véletlenszerűséggel történő megtalálása: Valószínűségi algoritmusok a hozzávetőleges mátrixbomlások létrehozásához](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (PDF letöltés). Halko, Martinsson és Tropp.
+- [Véletlenszerű struktúrák keresése: valószínűségi algoritmusok a mátrixok hozzávetőleges összetételének létrehozásához](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (PDF letöltés). Halko, Martinsson és TROPP.
 
-## <a name="how-to-configure-pca-anomaly-detection"></a>A PCA anomáliadetektálás konfigurálása
+## <a name="how-to-configure-pca-anomaly-detection"></a>A PCA anomália észlelésének konfigurálása
 
-1. Adja hozzá a **PCA-alapú anomáliadetektálási** modult a tervező ben lévő folyamathoz. Ez a modul az **Anomáliadetektálás** kategóriában található.
+1. Adja hozzá a **PCA-alapú anomália-észlelési** modult a folyamathoz a tervezőben. Ez a modul az **anomáliák észlelése** kategóriában található.
 
-2. A **PCA-alapú anomáliadetektálásmodul** jobb paneljén kattintson a **Betanítási mód** beállításra, és adja meg, hogy a modellt egy adott paraméterkészlet használatával szeretné-e betanítani, vagy a legjobb paraméterek megkereséséhez használjon paraméteres söprést.
+2. A **PCA-alapú anomália észlelési** moduljának jobb oldali paneljén kattintson a **betanítási mód** lehetőségre, és jelezze, hogy a modellt egy adott paraméterek használatával szeretné-e betanítani, vagy egy paraméteres leválasztással keresse meg a legjobb paramétereket.
 
-    - **Egyetlen paraméter**: Akkor válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és argumentumként megadott értékkészletet adjon meg.
+    - **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg egy adott értékeket argumentumként.
 
-3. **A PCA-ban használandó összetevők száma**: Adja meg a kimeneti szolgáltatások vagy összetevők számát.
+3. A **PCA-ben használandó összetevők száma**: adja meg, hogy hány kimeneti funkció vagy összetevő legyen kimenetben.
 
-    A PCA-t használó kísérlettervezés fontos része annak eldöntése, hogy hány összetevőt kell felvenni. Általános útmutatás, hogy ne tartalmazza a pca-összetevők száma, mint vannak változók. Ehelyett néhány kisebb számú összetevővel kell kezdenie, és növelnie kell azokat, amíg bizonyos feltételek nem teljesülnek.
+    Annak a döntése, hogy a rendszer hány összetevőt tartalmaz, a kísérletezés a PCA használatával történő tervezésének fontos részét képezi. Általános útmutató, hogy ne tartalmazzon azonos számú PCA-összetevőt, mivel vannak változók. Ehelyett kisebb számú összetevővel kell kezdődnie, és csak néhány feltétel teljesülése esetén növelheti őket.
 
-    A legjobb eredmény akkor érhető el, ha a kimeneti összetevők száma **kisebb, mint** az adatkészletben elérhető szolgáltatásoszlopok száma.
+    A legjobb eredmények akkor érhetők el, ha a kimeneti összetevők száma **kevesebb, mint** az adatkészletben elérhető funkciók oszlopainak száma.
 
-4. Adja meg a véletlenszerű PCA-képzés során végrehajtandó túlmintavételezés mértékét. Anomáliadetektálási problémák esetén a kiegyensúlyozatlan adatok megnehezítik a szabványos PCA-technikák alkalmazását. A túlmintavételezés megadásával növelheti a célpéldányok számát.
+4. A véletlenszerű PCA-képzés során elvégzendő túlmintavételezési mennyiség meghatározása. Az anomáliák észlelésével kapcsolatos problémák esetén a kiegyensúlyozatlan adatelemzések megnehezítik a szabványos PEM-technikák alkalmazását. Bizonyos mennyiségű túlmintavételezés megadásával növelheti a célként megadott példányok számát.
 
-    Ha 1 értéket ad meg, a végrehajtás nem történik meg. Ha 1-nél nagyobb értéket ad meg, a modell betanításához további minták jönnek létre.
+    Ha az 1 érték van megadva, a rendszer nem végez túlmintavételezést. Ha 1-nél nagyobb értéket ad meg, a modell betanításakor további minták jönnek létre.
 
-    Két lehetőség van, attól függően, hogy használ-e paraméteres söprést vagy sem:
+    Két lehetőség közül választhat, attól függően, hogy a paramétert használja-e vagy sem:
 
-    - **A randomizált PCA túlmintavételezési paramétere**: Írjon be egyetlen egész számot, amely a kisebbségi osztály túlmintavételezésének arányát jelöli a normál osztályhoz viszonyítva. (Az **egyparaméteres** betanítási módszer használataesetén érhető el.)
+    - **Túlmintavételezési paraméter a randomizált PCA esetében**: adjon meg egy egész számot, amely a kisebbségi osztály a normál osztályban való túlmintavételezésének arányát jelöli. (Az **egyetlen paraméteres** betanítási módszer használata esetén érhető el.)
 
     > [!NOTE]
-    > A túlmintavételezett adatkészlet nem tekinthető meg. A túlmintavételezés PCA-val való használatáról a [Műszaki megjegyzések](#technical-notes)című témakörben talál további információt.
+    > A túlmintavételezéses adatkészletet nem lehet megtekinteni. További információ arról, hogyan használják a túlmintavételezést a PCA használatával: [technikai megjegyzések](#technical-notes).
 
-5. **A bemeneti funkció engedélyezése normalizálást jelent:** Ezzel a beállítással az összes bemeneti jellemző nullára való normalizálásához. A PCA esetében általában ajánlott a normalizálás vagy a nullára méretezés, mivel a PCA célja a változók közötti variancia maximalizálása.
+5. A **bemeneti funkció engedélyezése a normalizálás lehetővé tétele**: Ha ezt a beállítást választja, az összes bemeneti funkció egy nulla középértékre normalizálható. A PEM esetében általában a normalizálás vagy a méretezés nullára javasolt, mivel a PCA célja, hogy maximalizálja a változók közötti eltérést.
 
-     Alapértelmezés szerint ez a beállítás van kijelölve. Törölje a jelet a jelölőnégyzetből, ha az értékek már normalizáltak egy másik módszerrel vagy léptékkel.
+     Alapértelmezés szerint ez a beállítás van kijelölve. Törölje ezt a beállítást, ha az értékek más módszer vagy méretezés használatával már normalizálva vannak.
 
-6. Tagged betanítási adatkészlet és az egyik betanítási modul csatlakoztatása:
+6. Címkézett betanítási adatkészlet és az egyik betanítási modul összekötése:
 
-    - Ha a **Trainer mód létrehozása** beállítást **egy paraméterre**állítja be, használja a [Train Anomaly Detection Model module (Anomáliadetektálási modell betanítása)](train-anomaly-detection-model.md) modult.
+    - Ha az **oktatói mód létrehozása** beállítást **egyetlen paraméterre**állítja be, használja a [Train rendellenesség-észlelési modell](train-anomaly-detection-model.md) modult.
 
-7. Küldje el a folyamatot.
+7. A folyamat elküldése.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Ha a betanítás befejeződött, mentheti a betanított modellt, vagy csatlakoztathatja a [Score Model](score-model.md) modulhoz az anomáliapontszámok előrejelzéséhez.
+Ha betanítást végez, mentheti a betanított modellt, vagy a [pontszám modell](score-model.md) modulhoz kapcsolódva megjósolhatja a anomália pontszámait.
 
-Az anomáliadetektálási modell eredményeinek kiértékelése további lépéseket igényel:
+Egy anomália-észlelési modell eredményeinek kiértékelése néhány további lépést is igényel:
 
-1. Annak ellenőrzése, hogy mindkét adatkészletben elérhető-e pontszámoszlop
+1. Győződjön meg arról, hogy a pontszám oszlop mindkét adatkészletben elérhető
 
-    Ha megpróbál kiértékelni egy anomáliadetektálási modellt, és a "Nincs összehasonlítható pontozott adatkészletben nincs pontszámoszlop" hibaüzenet jelenik meg, az azt jelenti, hogy egy tipikus kiértékelési adatkészletet használ, amely egy címkeoszlopot tartalmaz, de nincs valószínűségi pontszám. Olyan adatkészletet kell választania, amely megfelel az anomáliadetektálási modellek sémakimenetének, amely tartalmazza **a pontozott címkék** és **a pontozott valószínűség oszlopot.**
+    Ha egy anomália-észlelési modellt próbál kiértékelni, és a következő hibaüzenetet kapja: "nincs pontszám oszlop az összehasonlított adatkészletben", az azt jelenti, hogy egy olyan tipikus értékelési adatkészletet használ, amely tartalmaz egy címke oszlopot, de nincs valószínűségi pontszám. Ki kell választania egy olyan adatkészletet, amely megfelel az anomáliák észlelési modelljeinek, beleértve a **pontszámmal** ellátható címkéket és a **pontozásos valószínűség** oszlopot.
 
-2. Annak ellenőrzése, hogy a címkeoszlopok meg vannak-e jelölve
+2. Ügyeljen rá, hogy a címke oszlopai legyenek megjelölve
 
-    Előfordulhat, hogy a címkeoszlophoz társított metaadatok törlődnek a folyamatdiagramon. Ha ez történik, amikor a [Modell kiértékelése](evaluate-model.md) modul segítségével összehasonlítja a két anomáliadetektálási modellek eredményeit, előfordulhat, hogy a "Nincs címke oszlop a pontozott adatkészletben", vagy "Nincs címke oszlop a pontozott adatkészlet összehasonlítani".
+    Előfordul, hogy a Label oszlophoz társított metaadatokat a folyamat gráfja eltávolítja. Ha ez történik, a [modell kiértékelése](evaluate-model.md) modul használatával összehasonlíthatja a két anomália-észlelési modell eredményét, előfordulhat, hogy a következő hibaüzenet jelenik meg: "nincs felirat oszlop a pontozásos adatkészletben", vagy "nincs felirat oszlop az összehasonlítható adatkészletben".
 
-    Ezt a hibát úgy kerülheti el, hogy a Modell [kiértékelése](evaluate-model.md) modul elé adja a [Metaadatok szerkesztése](edit-metadata.md) modult. Az oszlopkijelölő segítségével válassza ki az osztályoszlopot, és a **Mezők** legördülő listában válassza a **Címke lehetőséget.**
+    A hiba elkerüléséhez adja hozzá a [metaadatok szerkesztése](edit-metadata.md) modult a [modell kiértékelése](evaluate-model.md) modulhoz. Az oszlop kiválasztásával válassza ki az osztály oszlopot, és a **mezők** legördülő listában válassza a **címke**lehetőséget.
 
-3. A [Python-parancsfájl végrehajtása](execute-python-script.md) parancs segítségével a címkeoszlop-kategóriákat 1(pozitív, normál) és 0(negatív, rendellenes) értékre állíthatja.
+3. Használja a [Python-szkript végrehajtása](execute-python-script.md) lehetőséget a Label oszlop kategóriáinak 1 (pozitív, normál) és 0 (negatív, rendellenes) értékre való beállításához.
 
     ````
     label_column_name = 'XXX'
@@ -100,11 +100,11 @@ Az anomáliadetektálási modell eredményeinek kiértékelése további lépés
     
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
-Ez az algoritmus pca-t használ a normál osztályt tartalmazó szubtér közelítésére. A szubteret az adatkovariancia mátrix felső eigenértékeihez társított eigenvectors okán kell kalibrálni. Minden egyes új bemenetnél az anomáliadetektor először kiszámítja a vetületét az eigenvectors, majd kiszámítja a normalizált rekonstrukciós hiba. Ez a hiba az anomáliapontszám. Minél nagyobb a hiba, annál rendellenesebb a példány. A normál terület kiszámításának módjáról a Wikipedia: [Principal Component Analysis (Fő összetevő-elemzés)](https://wikipedia.org/wiki/Principal_component_analysis) című témakörben talál részleteket. 
+Ez az algoritmus PEM használatával közelíti meg a normál osztályt tartalmazó alterületet. Az alterületet az adatszórási mátrix legfelső eigenvalues társított eigenvectors öleli fel. Minden új bemenetnél az anomália detektor először kiszámítja a eigenvectors való leképezését, majd kiszámítja a normalizált újraépítési hibát. Ez a hiba a rendellenesség pontszáma. Minél nagyobb a hiba, annál rendellenesebb a példány. A normál terület kiszámításának részletes ismertetését a wikipedia: [fő összetevő elemzése](https://wikipedia.org/wiki/Principal_component_analysis) című témakörben tekintheti meg. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 
-A tervezőmodulokra jellemző hibák listáját [a tervezőhöz tartozó kivételek és hibakódok (előzetes verzió)](designer-error-codes.md) című témakörben tekintheti meg."
+A Designer modulokra vonatkozó hibák listáját [a tervező (előzetes verzió) kivételei és hibakódai](designer-error-codes.md) részben tekintheti meg.

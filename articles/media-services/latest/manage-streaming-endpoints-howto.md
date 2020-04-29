@@ -1,6 +1,6 @@
 ---
-title: Streamelési végpontok kezelése az Azure Media Services v3-as oldalával
-description: Ez a cikk bemutatja, hogyan kezelheti a streamelési végpontokat az Azure Media Services v3 használatával.
+title: Adatfolyam-végpontok kezelése Azure Media Services v3-val
+description: Ez a cikk bemutatja, hogyan kezelheti a streaming-végpontokat Azure Media Services v3-val.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
 ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79461044"
 ---
-# <a name="manage-streaming-endpoints-with--media-services-v3"></a>Streamelési végpontok kezelése a Media Services 3-as oldalával
+# <a name="manage-streaming-endpoints-with--media-services-v3"></a>Adatfolyam-végpontok kezelése Media Services v3-val
 
-Amikor a Media Services-fiók jön létre egy **alapértelmezett** [streamelési végpont](streaming-endpoint-concept.md) hozzáadódik a fiók **leállított** állapotban. A tartalom streamelésének megkezdéséhez és a [dinamikus csomagolás](dynamic-packaging-overview.md) és a [dinamikus titkosítás](content-protection-overview.md)előnyeinek kihasználásához a streamelési végpontnak, amelyből tartalmat szeretne streamelni, **futó** állapotban kell lennie.
+A Media Services fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** [folyamatos átviteli végpontot](streaming-endpoint-concept.md) . A tartalom folyamatos átvitelének megkezdéséhez, valamint a [dinamikus csomagolás](dynamic-packaging-overview.md) és a [dinamikus titkosítás](content-protection-overview.md)kihasználásához a adatfolyam-továbbítási végpontnak **futó** állapotban kell lennie.
 
-Ez a cikk bemutatja, hogyan hajthatja végre a [start](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) parancsot a streamelési végponton különböző technológiák használatával. 
+Ez a cikk bemutatja, hogyan hajthatja végre a [Start](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) parancsot a folyamatos átviteli végponton különböző technológiák használatával. 
  
 > [!NOTE]
-> A számlázás csak akkor történik meg, ha a streamelési végpont futó állapotban van.
+> Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont fut állapotban van.
     
 ## <a name="prerequisites"></a>Előfeltételek
 
-Felülvizsgálat: 
+Tekintse át 
 
-* [A Media Services fogalmai](concepts-overview.md)
-* [Végpont streamelési koncepciója](streaming-endpoint-concept.md)
+* [Media Services fogalmak](concepts-overview.md)
+* [Streaming Endpoint koncepciója](streaming-endpoint-concept.md)
 * [Dinamikus csomagolás](dynamic-packaging-overview.md)
 
 ## <a name="use-rest"></a>A REST használata
@@ -46,18 +46,18 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 További információkért lásd: 
 
-* A [kezdés egy StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) referencia dokumentáció.
-* A streamelési végpont indítása aszinkron művelet. 
+* A [Start a streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) Reference dokumentációja.
+* Az adatfolyam-végpont indítása aszinkron művelet. 
 
-    A hosszú ideig futó műveletek figyeléséről a Hosszú ideig futó műveletek című [témakörben talál](media-services-apis-overview.md)további információt.
-* Ez [a Postman-gyűjtemény](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) több REST-műveletpéldáit is tartalmazza, többek között a streamelési végpont indítását.
+    További információ a hosszan futó műveletek figyeléséről: [hosszan futó műveletek](media-services-apis-overview.md).
+* Ez a [Poster-gyűjtemény](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) több Rest-műveletre mutató példákat tartalmaz, beleértve a folyamatos átviteli végpontok indítását is.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata 
  
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-1. Nyissa meg az Azure Media Services-fiókját.
-1. A bal oldali ablaktáblában válassza a **Végpontok streamelése**lehetőséget.
-1. Jelölje ki az elindítani kívánt streamelési végpontot, majd válassza a **Start**gombot.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Nyissa meg Azure Media Services-fiókját.
+1. A bal oldali ablaktáblán válassza a **folyamatos átviteli végpontok**lehetőséget.
+1. Válassza ki az elindítani kívánt folyamatos átviteli végpontot, majd kattintson a **Start**gombra.
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
@@ -70,7 +70,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-További információ: [az ams streaming-endpoint start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
+További információ: [az AMS streaming-Endpoint Start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
 
 ## <a name="use-sdks"></a>SDK-k használata
 
@@ -84,7 +84,7 @@ if (streamingEndpoint.resourceState() != StreamingEndpointResourceState.RUNNING)
 }
 ```
 
-Tekintse meg a teljes [Java-kódmintát](https://github.com/Azure-Samples/media-services-v3-java/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/src/main/java/sample/StreamHLSAndDASH.java#L128).
+Tekintse meg a teljes [Java-kód mintát](https://github.com/Azure-Samples/media-services-v3-java/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/src/main/java/sample/StreamHLSAndDASH.java#L128).
 
 ### <a name="net"></a>.NET
 
@@ -99,11 +99,11 @@ if (streamingEndpoint != null)
     }
 ```
 
-Tekintse meg a teljes [.NET kódmintát](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/Program.cs#L112).
+Tekintse meg a [.net-kód teljes mintáját](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/Program.cs#L112).
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-* [Media Services v3 OpenAPI specifikáció (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [Végpont-műveletek streamelése](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [Media Services v3 OpenAPI-specifikáció (hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
+* [Folyamatos átviteli végpont műveletei](https://docs.microsoft.com/rest/api/media/streamingendpoints)

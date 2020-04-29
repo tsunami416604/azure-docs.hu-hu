@@ -1,6 +1,6 @@
 ---
-title: Sémák az Azure Security Center riasztásaihoz
-description: Ez a cikk ismerteti a különböző sémák által használt Azure Security Center biztonsági riasztások.
+title: A Azure Security Center-riasztások sémái
+description: Ez a cikk a biztonsági riasztások Azure Security Center által használt különböző sémákat ismerteti.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,55 +13,55 @@ ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
 ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062953"
 ---
-# <a name="security-alerts-schemas"></a>Biztonsági riasztások sémák
+# <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
-Az Azure Security Center szabványos rétegének felhasználói biztonsági riasztásokat kapnak, ha a Security Center fenyegetést észlel az erőforrásaikszámára.
+Azure Security Center Standard csomagjának felhasználói biztonsági riasztásokat kapnak, ha Security Center észlelik az erőforrásaik fenyegetését.
 
-Ezeket a biztonsági riasztásokat az Azure Security Center **fenyegetésvédelmi** lapjain vagy külső eszközökön, például a következőkön tekintheti meg:
+Ezeket a biztonsági riasztásokat megtekintheti Azure Security Center **veszélyforrások elleni védelmi** oldalain, illetve külső eszközökkel, például a következőkkel:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – a Microsoft natív SIEM-je. A Sentinel-összekötő értesítéseket kap az Azure Security Centertől, és elküldi azokat az Azure Sentinel [Log Analytics-munkaterületére.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
-- Külső gyártók által im-ek – A Security Center [folyamatos exportálási](continuous-export.md) eszközeivel adatokat küldhet az [Azure Event Hubs szolgáltatásnak.](https://docs.microsoft.com/azure/event-hubs/) Ezután integrálja az Event Hub-adatokat egy külső Gyártóhekkel.
-- [A REST API](https://docs.microsoft.com/rest/api/securitycenter/) – Ha a REST API-t használja a riasztások eléréséhez, tekintse meg az [online riasztások API dokumentációját.](https://docs.microsoft.com/rest/api/securitycenter/alerts)
+- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – a Microsoft Felhőbeli natív Siem-je. A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azokat az Azure Sentinel [log Analytics munkaterületére](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) .
+- Harmadik féltől származó SIEM-k – a Security Center [folyamatos exportálási](continuous-export.md) eszközeivel küldhet adatküldést az [Azure-Event Hubsba](https://docs.microsoft.com/azure/event-hubs/). Ezután integrálja az Event hub-adatait egy harmadik féltől származó SIEM-mel.
+- [A REST API](https://docs.microsoft.com/rest/api/securitycenter/) – ha a REST API használatával fér hozzá a riasztásokhoz, tekintse meg az [online riasztások API dokumentációját](https://docs.microsoft.com/rest/api/securitycenter/alerts).
 
-Ha bármilyen programozott módszert használ a riasztások felhasználásához, a megfelelő sémára lesz szüksége az Ön számára releváns mezők megkereséséhez. Ha egy eseményközpontba exportál, vagy általános HTTP-összekötőkkel próbálja elindítani a munkafolyamat-automatizálást, használja a sémákat a JSON-objektumok megfelelő elemzéséhez.
+Ha bármilyen programozott módszert használ a riasztások felhasználásához, a megfelelő sémára lesz szüksége az Ön számára releváns mezők megtalálásához. Emellett, ha egy Event hub-ba exportál, vagy a munkafolyamat-automatizálást általános HTTP-összekötővel próbálja elindítani, a sémák segítségével megfelelően elemezheti a JSON-objektumokat.
 
 >[!IMPORTANT]
-> A séma némileg eltér az egyes forgatókönyvek, ezért győződjön meg róla, hogy válassza ki a megfelelő lapot alább.
+> A séma némileg eltér az egyes forgatókönyvek esetében, ezért ügyeljen arra, hogy az alábbi megfelelő lapot válassza ki.
 
 
 ## <a name="the-schemas"></a>A sémák 
 
 
-### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[Munkafolyamat-automatizálás és folyamatos exportálás az Eseményközpontba](#tab/schema-continuousexport)
+### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[Munkafolyamat-automatizálás és folyamatos Exportálás az Event hub-ba](#tab/schema-continuousexport)
 
-### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>Minta JSON a Logic Apps, event hub és külső SIEM-ek számára küldött riasztásokhoz
+### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>JSON-minta a Logic Apps, az Event hub és a harmadik féltől származó SIEM-nek elküldett riasztásokhoz
 
-Az alábbiakban megtalálja a sémát a riasztási események átadott:
+Az alábbiakban megtalálhatja az átadott riasztási események sémáját:
 
-- A Security Center munkafolyamat-automatizálásában konfigurált Azure Logic App-példányok
-- Az Azure Event Hub a Security Center folyamatos exportálási funkciójával
+- Az Security Center munkafolyamat-automatizálásában konfigurált Azure Logic app-példányok
+- Azure Event hub a Security Center folyamatos exportálási funkciójával
 
-A munkafolyamat-automatizálási funkcióról a [Riasztásokra és javaslatokra adott válaszok automatizálása](workflow-automation.md)című témakörben talál további információt.
-A folyamatos exportálásról további információt a Riasztások és javaslatok exportálása című [témakörben talál.](continuous-export.md)
+További információ a munkafolyamat-automatizálási szolgáltatásról: [válaszok automatizálása a riasztásokra és javaslatokra](workflow-automation.md).
+További információ a folyamatos exportálásról: [riasztások és javaslatok exportálása](continuous-export.md).
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
 
 
 
-### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Az Azure Sentinel és a Log Analytics munkaterületei](#tab/schema-sentinel)
+### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Azure Sentinel-és Log Analytics-munkaterületek](#tab/schema-sentinel)
 
-A Sentinel-összekötő értesítéseket kap az Azure Security Centertől, és elküldi azokat az Azure Sentinel Log Analytics-munkaterületére. 
+A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azokat az Azure Sentinel Log Analytics munkaterületére. 
 
-Ha a Security Center riasztásait használva sentinelesetvagy incidens létrehozásához szüksége lesz az alább látható riasztások sémájára. 
+Ha Security Center riasztásokat használó Sentinel-esetet vagy eseményt szeretne létrehozni, szüksége lesz az alább látható riasztások sémájára. 
 
-Az Azure Sentinelről további információt [a dokumentációban](https://docs.microsoft.com/azure/sentinel/)talál.
+Az Azure Sentinel szolgáltatással kapcsolatos további információkért tekintse meg [a dokumentációt](https://docs.microsoft.com/azure/sentinel/).
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -70,14 +70,14 @@ Az Azure Sentinelről további információt [a dokumentációban](https://docs.
 
 ### <a name="azure-activity-log"></a>[Azure-tevékenységnapló](#tab/schema-activitylog)
 
-Az Azure Security Center naplózása generált biztonsági riasztások eseményekként az Azure-tevékenységnaplóban.
+Azure Security Center naplózza a biztonsági riasztásokat az Azure-tevékenység naplójában lévő eseményekként.
 
-A biztonsági riasztások eseményeit a Tevékenységnaplóban az alábbi módon tekintheti meg:
+A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti meg, ha a riasztás aktiválása eseményt keresi, ahogy az látható:
 
-[![A tevékenységnaplóban az Aktiválási riasztás esemény keresése](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
+[![A riasztás aktiválása esemény tevékenységi naplójának keresése](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
 
 
-### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>Minta JSON az Azure-tevékenységnaplóba küldött riasztásokhoz
+### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>JSON-minta az Azure-tevékenység naplójába küldendő riasztásokhoz
 
 ```json
 {
@@ -142,27 +142,27 @@ A biztonsági riasztások eseményeit a Tevékenységnaplóban az alábbi módon
 
 |Mező|Leírás|
 |----|----|
-|**Csatornák**|Állandó, "Művelet"|
-|**korrelációazonosító**|Az Azure Security Center riasztásazonosítója|
-|**Leírás**|A figyelmeztető jelzés leírása|
-|**eventDataId**|Lásd correlationId|
-|**eventName**|Az érték és a localizedValue almezők tartalmazzák a riasztás megjelenítendő nevét|
-|**Kategória**|Az érték és a localizedValue almezők állandóak - "Biztonság"|
-|**eventTimestamp**|UTC időbélyeg a riasztás létrehozásának időpontjára|
-|**id**|A teljesen minősített riasztásazonosító|
-|**Szinten**|Állandó, "Információs"|
-|**műveletazonosító**|Lásd correlationId|
-|**operationName**|Az értékmező állandó - "Microsoft.Security/locations/alerts/activate/action", és a honosított érték "Riasztás aktiválása" lesz (potenciálisan honosítható a felhasználó területi beállításával)|
+|**csatornák**|Állandó, "művelet"|
+|**correlationId**|A Azure Security Center riasztás azonosítója|
+|**Leírás**|A riasztás leírása|
+|**eventDataId**|Lásd: correlationId|
+|**eventName**|Az érték és a localizedValue almező tartalmazza a riasztás megjelenítendő nevét.|
+|**Kategória**|Az érték és a localizedValue almező állandó – "biztonság"|
+|**eventTimestamp**|UTC-időbélyeg a riasztás generálásakor|
+|**id**|A teljesen minősített riasztás azonosítója|
+|**szintű**|Állandó, "tájékoztató"|
+|**operationId**|Lásd: correlationId|
+|**operationName**|Az érték mező állandó – "Microsoft. Security/Locations/Alerts/Activate/Action", a honosított érték pedig "riasztás aktiválása" lesz (potenciálisan honosítható a felhasználó területi beállítása)|
 |**resourceGroupName**|Tartalmazni fogja az erőforráscsoport nevét|
-|**resourceProviderName**|Az érték és a localizedValue almezők állandóak - "Microsoft.Security"|
-|**resourceType típus**|Az érték és a localizedValue almezők állandóak - "Microsoft.Security/locations/alerts"|
-|**resourceId**|A teljesen minősített Azure-erőforrásazonosító|
-|**Állapot**|Az érték és a localizedValue almezők állandóak - "Aktív"|
-|**alállapot**|Az érték és a localizedValue almezők üresek|
-|**beküldésIdőbélyeg**|A tevékenységnaplóba küldött eseménybeküldött eseményUTC-időbélyegzője|
-|**előfizetésazonosító**|A feltört erőforrás előfizetési azonosítója|
-|**Tulajdonságok**|Egy JSON táska további tulajdonságok kal kapcsolatos riasztást. Ezek az egyik riasztásról a másikra változhatnak, azonban a következő mezők jelennek meg az összes riasztásban:<br>- súlyossága: A támadás súlyossága<br>- compromisedEntity: A feltört erőforrás neve<br>- felszámolásLépések: A javítási lépések sora<br>- A riasztás gyilkos láncú szándéka. A lehetséges szándékokat a [Szándékok táblázat dokumentálja](alerts-reference.md#intentions)|
-|**relatedEvents (kapcsolódó események)**|Állandó - üres tömb|
+|**resourceProviderName**|Az érték és a localizedValue almező állandó – "Microsoft. Security"|
+|**resourceType**|Az érték és a localizedValue almező állandó – "Microsoft. Security/Locations/riasztások"|
+|**resourceId**|A teljesen minősített Azure-erőforrás azonosítója|
+|**állapota**|Az érték és a localizedValue almező állandó – "aktív"|
+|**Részállapot**|Az érték és a localizedValue almező üres|
+|**submissionTimestamp**|Az esemény küldésének UTC-időbélyege a tevékenység naplójába|
+|**subscriptionId**|A feltört erőforrás előfizetési azonosítója|
+|**Tulajdonságok**|A riasztáshoz tartozó további tulajdonságok JSON-táska. Ezek az egyik riasztásból a másikra válthatnak, azonban a következő mezők jelennek meg az összes riasztásban:<br>– Súlyosság: a támadás súlyossága<br>-compromisedEntity: a feltört erőforrás neve<br>-remediationSteps: a végrehajtandó szervizelési lépések tömbje<br>-szándék: a riasztás leölési láncra irányuló szándéka. A lehetséges leképezések dokumentálva vannak a [szándékok táblázatában](alerts-reference.md#intentions)|
+|**relatedEvents**|Állandó – üres tömb|
 |||
 
 
@@ -171,20 +171,20 @@ A biztonsági riasztások eseményeit a Tevékenységnaplóban az alábbi módon
 
 ### <a name="ms-graph-api"></a>[MS Graph API](#tab/schema-graphapi)
 
-A Microsoft Graph a Microsoft 365-ben található adatok és intelligencia átjárója. Egységes programozhatósági modellt biztosít, amelyekkel az Office 365, a Windows 10 és az Enterprise Mobility + Security hatalmas mennyiségű adathoz férhet hozzá. A Microsoft Graph rengeteg adatával olyan szervezetek és fogyasztók számára hozhat létre alkalmazásokat, amelyek felhasználók millióival lépnek kapcsolatba.
+A Microsoft Graph az adatokhoz és az intelligenciához tartozó átjáró a Microsoft 365ban. Egy egységesített programozható modellt biztosít, amellyel a nagy mennyiségű, az Office 365-es, a Windows 10-es és a Enterprise Mobility + Security-beli adatmennyiséget érheti el. A Microsoft Graphban található adatmennyiség használatával olyan szervezeteknek és fogyasztóknak készült alkalmazásokat hozhat létre, amelyek több millió felhasználóval működnek.
 
-Az MS Graph-nak küldött biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)található.
+Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)érhető el.
 
 ---
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk ismerteti a sémákat, amelyeket az Azure Security Center fenyegetésvédelmi eszközei használnak a biztonsági riasztási információk küldésekor.
+Ez a cikk azokat a sémákat ismerteti, amelyeket a Azure Security Center veszélyforrások elleni védelmi eszközei használnak a biztonsági riasztási információk küldésekor.
 
-A biztonsági riasztások biztonsági központon kívülről való elérésének módjairól a következő oldalakon talál további információt:
+A biztonsági riasztások Security Centeron kívülről történő elérésének módjaival kapcsolatos további információkért tekintse meg a következő lapokat:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) - a Microsoft natív SIEM-je
-- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) – a Microsoft teljes körűen felügyelt, valós idejű adatbetöltési szolgáltatása
-- A Security Center [folyamatos exportálási funkciója](continuous-export.md)
-- [Log Analytics-munkaterületek](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) – Az Azure Monitor naplóadatokat tárol egy Log Analytics-munkaterületen, amely adatokat és konfigurációs adatokat tartalmazó tárolóban tárolja a naplóadatokat
+- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – a Microsoft Felhőbeli natív Siem-je
+- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) – a Microsoft teljes körűen felügyelt, valós idejű adatfeldolgozási szolgáltatása
+- Security Center [folyamatos exportálási funkciója](continuous-export.md)
+- [Log Analytics-munkaterületek](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) – a Azure Monitor a log Analytics munkaterületen tárolja a naplózási adatokat, egy olyan tárolót, amely adatokat és konfigurációs adatokat tartalmaz.

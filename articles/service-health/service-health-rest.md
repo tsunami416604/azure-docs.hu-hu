@@ -1,24 +1,24 @@
 ---
-title: Azure-erőforrás-állapotesemények beszereznie a REST API használatával | Microsoft dokumentumok
-description: Az Azure REST API-k segítségével az Azure-erőforrások állapoteseményeit szerezheti be.
+title: Azure Resource Health-események beszerzése a REST API használatával | Microsoft Docs
+description: Használja az Azure REST API-kat az Azure-erőforrások állapotának beszerzéséhez.
 ms.topic: conceptual
 ms.date: 06/06/2017
 ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77654001"
 ---
-# <a name="get-resource-health-using-the-rest-api"></a>Erőforrás-állapot beszereznie a REST API-val 
+# <a name="get-resource-health-using-the-rest-api"></a>Resource Health beolvasása a REST API használatával 
 
-Ez a példacikk bemutatja, hogyan lehet lekérni az Azure-erőforrások állapotesemények listáját az előfizetésben az [Azure REST API használatával.](/rest/api/azure/)
+Ez a példa azt mutatja be, hogyan kérhető le az előfizetésben található Azure-erőforrások állapot-eseményeinek listája az [azure REST API](/rest/api/azure/)használatával.
 
-A REST API-hoz teljes körű referenciadokumentáció és további minták érhetők el az [Azure Monitor REST-hivatkozásában.](/rest/api/monitor) 
+A REST API dokumentációja és a további minták a [Azure monitor Rest-referenciában](/rest/api/monitor)érhetők el. 
 
 ## <a name="build-the-request"></a>A kérelem felépítése
 
-Az alábbi `GET` HTTP-kérelem segítségével sorolja fel az előfizetés `2018-05-16` állapoteseményeit a között és `2018-06-20`a között.
+A következő `GET` HTTP-kérelem használatával sorolja fel az előfizetéséhez tartozó állapotadatok listáját a és `2018-05-16` `2018-06-20`a közötti időtartamra.
 
 ```http
 https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
@@ -35,20 +35,20 @@ A következő fejlécek megadása kötelező:
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
-| Név | Leírás |
+| Name (Név) | Leírás |
 | :--- | :---------- |
-| subscriptionId | Az Azure-előfizetést azonosító előfizetés-azonosító. Ha több előfizetéssel rendelkezik, olvassa el [a Több előfizetés sel végzett témakört.](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) |
-| api-verzió | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum `2015-04-01`a fenti URL-ben található api-verzióra vonatkozik.  |
-| $filter | A visszaadott eredmények készletének csökkentésére irányuló szűrési lehetőség. A paraméter megengedett mintái [a Tevékenységnaplók művelet hivatkozásában](/rest/api/monitor/activitylogs/list#uri-parameters)érhetők el. A bemutatott példa az összes eseményt rögzíti a 2018-05-16 és 2018-06-20 közötti időtartományban |
+| subscriptionId | Az Azure-előfizetést azonosító előfizetés azonosítója. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. |
+| api-verzió | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum a fenti URL `2015-04-01`-cím részét képező API-verziót tartalmazza.  |
+| $filter | A visszaadott eredmények készletének csökkentésére szolgáló szűrési beállítás. A paraméter engedélyezett mintái a [tevékenységi naplók műveletéhez tartozó hivatkozásban](/rest/api/monitor/activitylogs/list#uri-parameters)érhetők el. A megjelenített példa a 2018-05-16 és 2018-06-20 közötti időtartományban lévő összes eseményt rögzíti. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>A kérés törzse
 
-Ehhez a művelethez nincs szükség kéréstörzsre.
+Ehhez a művelethez nem szükséges a kérelem törzse.
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-A 200-as állapotkód a szűrőparaméternek megfelelő állapotesemény-értékek `nextlink` listájával, valamint egy URI-val együtt jelenik meg az eredmények következő lapjának lekéréséhez.
+Az 200-as állapotkódot a rendszer a Filter paraméternek megfelelő állapotadatok listáját adja vissza, valamint egy `nextlink` URI-t az eredmények következő oldalának lekéréséhez.
 
 ## <a name="example-response"></a>Példaválasz 
 

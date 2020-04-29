@@ -1,60 +1,60 @@
 ---
-title: Erőforrások üzembe helyezése REST API-val és sablonnal
-description: Az Azure Resource Manager és a Resource Manager REST API használatával erőforrásokat helyezhet üzembe az Azure-ba. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
+title: Erőforrások üzembe helyezése REST API és sablonnal
+description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Resource Manager REST API használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153233"
 ---
-# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Erőforrás-kezelő REST API-val
+# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Resource Manager-REST API
 
-Ez a cikk bemutatja, hogyan használhatja a Resource Manager REST API-t az Azure Resource Manager (ARM) sablonokkal az erőforrások Azure-ba való üzembe helyezéséhez.
+Ez a cikk azt ismerteti, hogyan használható a Resource Manager-REST API Azure Resource Manager-(ARM-) sablonokkal az erőforrások Azure-beli üzembe helyezéséhez.
 
-A sablont felveheti a kérelem törzsére, vagy egy fájlra mutató hivatkozást. Fájl használata esetén lehet helyi vagy külső fájl, amely URI-n keresztül érhető el. Ha a sablon egy tárfiókban van, korlátozhatja a sablonhoz való hozzáférést, és a telepítés során biztosíthat egy sas-jogkivonatot.
+Megadhatja a sablont a kérelem törzsében, vagy csatolhat egy fájlhoz. Fájl használata esetén helyi fájl vagy egy URI-n keresztül elérhető külső fájl lehet. Ha a sablon egy Storage-fiókban található, korlátozhatja a hozzáférést a sablonhoz, és megadhat egy közös hozzáférési aláírási (SAS-) tokent az üzembe helyezés során.
 
-## <a name="deployment-scope"></a>Központi telepítési hatókör
+## <a name="deployment-scope"></a>Központi telepítés hatóköre
 
-A központi telepítést egy felügyeleti csoportra, egy Azure-előfizetésre vagy egy erőforráscsoportra célozhatja. A legtöbb esetben a központi telepítéseket egy erőforráscsoportra fogja célozni. A felügyeleti csoport vagy az előfizetés-központi telepítések használatával szabályzatokat és szerepkör-hozzárendeléseket alkalmazhat a megadott hatókörben. Az előfizetési központi telepítések segítségével erőforráscsoportot is hozhat létre, és erőforrásokat helyezhet üzembe. A központi telepítés hatókörétől függően különböző parancsokat kell használnia.
+Az üzembe helyezést egy felügyeleti csoportra, egy Azure-előfizetésre vagy egy erőforráscsoporthoz is megcélozhatja. A legtöbb esetben az üzemelő példányokat egy erőforráscsoporthoz fogja megcélozni. Felügyeleti csoport vagy előfizetés központi telepítése a házirendek és a szerepkör-hozzárendelések alkalmazására a megadott hatókörön belül. Az előfizetések központi telepítését is használhatja az erőforráscsoport létrehozásához és az erőforrások üzembe helyezéséhez. A központi telepítés hatókörének függvényében különböző parancsokat kell használnia.
 
-Ha egy **erőforráscsoportra**szeretné telepíteni, használja [a Központi telepítések – Létrehozás .](/rest/api/resources/deployments/createorupdate) A kérelmet a következő kedélybe küldi a rendszer:
+Egy **erőforráscsoporthoz**való üzembe helyezéshez használja a [központi telepítések – létrehozás](/rest/api/resources/deployments/createorupdate)lehetőséget. A kérelmet a következő címre küldi a rendszer:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Ha egy **előfizetésre**szeretne telepíteni, használja [a Központi telepítések – Létrehozás előfizetési hatókörben](/rest/api/resources/deployments/createorupdateatsubscriptionscope). A kérelmet a következő kedélybe küldi a rendszer:
+Az **előfizetéshez**való üzembe helyezéshez használja a [központi telepítések – létrehozás az előfizetések hatókörében](/rest/api/resources/deployments/createorupdateatsubscriptionscope)lehetőséget. A kérelmet a következő címre küldi a rendszer:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Az előfizetési szintű központi telepítésekről további információt [az Erőforráscsoportok és -erőforrások létrehozása előfizetési szinten](deploy-to-subscription.md)című témakörben talál.
+Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
 
-Ha egy **felügyeleti csoportba**szeretné telepíteni, használja [a Központi telepítések – Létrehozás a felügyeleti csoport hatókörén.](/rest/api/resources/deployments/createorupdateatmanagementgroupscope) A kérelmet a következő kedélybe küldi a rendszer:
+Egy **felügyeleti csoportba**történő központi telepítéshez használja a [központi telepítések – létrehozás felügyeleti csoport hatókörét](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). A kérelmet a következő címre küldi a rendszer:
 
 ```HTTP
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-A felügyeleticsoport szintű központi telepítésekről további információt [az Erőforrások létrehozása a felügyeleti csoport szintjén című témakörben](deploy-to-management-group.md)talál.
+További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
 
-Ebben a cikkben szereplő példák erőforráscsoport-telepítések használatát használja.
+A cikkben szereplő példák az erőforráscsoportok központi telepítését használják.
 
 ## <a name="deploy-with-the-rest-api"></a>Üzembe helyezés a REST API-val
 
-1. Állítsa be [a közös paramétereket és fejléceket,](/rest/api/azure/)beleértve a hitelesítési jogkivonatokat is.
+1. [Közös paraméterek és fejlécek](/rest/api/azure/)beállítása, beleértve a hitelesítési jogkivonatokat.
 
-1. Ha nem rendelkezik meglévő erőforráscsoporttal, hozzon létre egy erőforráscsoportot. Adja meg az előfizetés azonosítóját, az új erőforráscsoport nevét és a megoldáshoz szükséges helyet. További információt az [Erőforráscsoport létrehozása](/rest/api/resources/resourcegroups/createorupdate)című témakörben talál.
+1. Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy erőforráscsoportot. Adja meg az előfizetés-AZONOSÍTÓját, az új erőforráscsoport nevét és a megoldáshoz szükséges helyet. További információ: Create an [Resource Group (erőforráscsoport létrehozása](/rest/api/resources/resourcegroups/createorupdate)).
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
    ```
 
-   A kérelem törzs, mint például:
+   A kérelem törzse például:
 
    ```json
    {
@@ -65,17 +65,17 @@ Ebben a cikkben szereplő példák erőforráscsoport-telepítések használatá
    }
    ```
 
-1. Ellenőrizze a központi telepítést a végrehajtása előtt a [sablon telepítési](/rest/api/resources/deployments/validate) művelet ellenőrzése futtatásával. A központi telepítés tesztelése során adja meg a paramétereket pontosan úgy, ahogy a központi telepítés végrehajtásakor (a következő lépésben látható).
+1. Ellenőrizze az üzemelő példányt, mielőtt végrehajtja a [sablon-telepítési művelet ellenőrzése](/rest/api/resources/deployments/validate) műveletet. A központi telepítés tesztelésekor pontosan úgy adja meg a paramétereket, ahogy a telepítés végrehajtásakor (a következő lépésben látható).
 
-1. Sablon üzembe helyezéséhez adja meg az előfizetés azonosítóját, az erőforráscsoport nevét, a központi telepítés nevét a kérelem URI-jában.
+1. Sablon üzembe helyezéséhez adja meg az előfizetés AZONOSÍTÓját, az erőforráscsoport nevét, a központi telepítés nevét a kérelem URI-ja alapján.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
    ```
 
-   A kérelem törzsében adjon meg egy hivatkozást a sablonra és a paraméterfájlra. A paraméterfájlról az [Erőforrás-kezelő paraméterfájl létrehozása](parameter-files.md)című témakörben talál további információt.
+   A kérelem törzsében adjon meg egy hivatkozást a sablonra és a paraméter fájlra. További információ a paraméter fájlról: [Resource Manager-paraméter fájljának létrehozása](parameter-files.md).
 
-   Figyelje meg, hogy az **üzemmód** **növekményesre**van állítva. A teljes telepítés futtatásához állítsa a **módot** **Befejezés**módra. Legyen óvatos a teljes mód használatakor, mivel véletlenül törölheti a sablonban nem található erőforrásokat.
+   Figyelje meg **mode** , hogy a mód **növekményes**értékre van állítva. Teljes telepítés futtatásához állítsa be a **módot** a **befejezéshez**. Ügyeljen arra, hogy a teljes módot használja, mert a sablonban nem szereplő erőforrásokat véletlenül nem lehet törölni.
 
    ```json
    {
@@ -93,7 +93,7 @@ Ebben a cikkben szereplő példák erőforráscsoport-telepítések használatá
    }
    ```
 
-    Ha naplózni szeretné a válasz tartalmát, tartalmat vagy mindkettőt szeretne naplózni, akkor a **debugSetting-ot** is szerepeljenek a kérelemben.
+    Ha a válasz tartalmát, a tartalom kérését vagy mindkettőt szeretné naplózni, vegyen fel **debugSetting** a kérelembe.
 
    ```json
    {
@@ -114,11 +114,11 @@ Ebben a cikkben szereplő példák erőforráscsoport-telepítések használatá
    }
    ```
 
-    Beállíthatja a tárfiókot, hogy egy közös hozzáférésű aláírás (SAS) jogkivonatot használjon. További információt a [Hozzáférés delegálása megosztott hozzáférésű aláírással című témakörben talál.](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)
+    Beállíthatja, hogy a Storage-fiók közös hozzáférésű aláírás (SAS) jogkivonatot használjon. További információ: [hozzáférés delegálása közös hozzáférési aláírással](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
-    Ha egy paraméterhez (például egy jelszóhoz) bizalmas értéket kell megadnia, adja hozzá ezt az értéket egy key vaulthoz. A key vault lekérése az üzembe helyezés során, ahogy az előző példában látható. További információ: [Biztonságos értékek áthárítása az üzembe helyezés során.](key-vault-parameter.md)
+    Ha egy paraméterhez (például jelszóhoz) bizalmas értéket kell megadnia, adja hozzá ezt az értéket egy kulcstartóhoz. Kérje le a Key vaultot az üzembe helyezés során, ahogy az az előző példában is látható. További információ: [biztonságos értékek továbbítása az üzembe helyezés során](key-vault-parameter.md).
 
-1. Ahelyett, hogy a sablon és a paraméterek fájljaihoz csatolna, felveheti őket a kérelem törzsébe. A következő példa a kérelem törzsét mutatja be a sablonnal és a paraméterrel a szövegközi:
+1. A sablonhoz és paraméterekhez kapcsolódó fájlokhoz való csatolás helyett a kérés törzsében is felveheti őket. A következő példa a kérelem törzsét mutatja be a sablonnal és paraméterrel:
 
    ```json
    {
@@ -181,7 +181,7 @@ Ebben a cikkben szereplő példák erőforráscsoport-telepítések használatá
    }
    ```
 
-1. A sablon központi telepítésének állapotának leminősítéséhez használja a [Központi telepítések – Get parancsot.](/rest/api/resources/deployments/get)
+1. A sablon üzembe helyezési állapotának lekéréséhez használja a [Get](/rest/api/resources/deployments/get)lehetőséget.
 
    ```HTTP
    GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
@@ -189,8 +189,8 @@ Ebben a cikkben szereplő példák erőforráscsoport-telepítések használatá
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha hiba esetén szeretne visszaáll egy sikeres központi telepítésre, olvassa el [a Hiba visszaállítása a sikeres üzembe helyezéshez.](rollback-on-error.md)
-- Ha meg szeretné adni, hogyan kezelje az erőforráscsoportban létező, de a sablonban nem definiált erőforrásokat, olvassa el az Azure Resource Manager telepítési módjai című [témakört.](deployment-modes.md)
-- Az aszinkron REST-műveletek kezeléséről az [Aszinkron Azure-műveletek nyomon követése](../management/async-operations.md)című témakörben olvashat.
-- A sablonokról az [ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című témakörben olvashat bővebben.
+- Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
+- Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
+- További információ az aszinkron REST-műveletek kezeléséről: az [aszinkron Azure-műveletek nyomon követése](../management/async-operations.md).
+- A sablonokkal kapcsolatos további tudnivalókért tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 

@@ -3,50 +3,50 @@ title: Az Azure Dev Spaces működése
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Az Azure Dev Spaces energiaellátását előíró folyamatok ismertetése
-keywords: Azure dev spaces, fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók
+description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
+keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80234970"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Az Azure Dev Spaces működése
 
-A Kubernetes-alkalmazások fejlesztése kihívást jelenthet. Docker és Kubernetes konfigurációs fájlokat kell. Ki kell találnia, hogyan tesztelheti az alkalmazást helyileg, és más függő szolgáltatásokkal való interakció. Előfordulhat, hogy egyszerre több szolgáltatás fejlesztését és tesztelését kell kezelnie egy fejlesztői csapattal.
+A Kubernetes-alkalmazások fejlesztése kihívást jelenthet. A Docker és a Kubernetes konfigurációs fájljaira van szüksége. Meg kell határoznia, hogyan tesztelheti az alkalmazást helyileg, és hogyan dolgozhat más függő szolgáltatásokkal. Előfordulhat, hogy egyszerre több szolgáltatás fejlesztését és tesztelését kell kezelnie, és egy fejlesztői csapattal kell foglalkoznia.
 
-Az Azure Dev Spaces többféle lehetőséget kínál a Kubernetes-alkalmazások gyors iterálására és hibakeresésére, valamint a csapatával való együttműködésre. Ez a cikk ismerteti, mire képes az Azure Dev Spaces, és hogyan működik.
+Az Azure dev Spaces számos lehetőséget kínál a Kubernetes-alkalmazások gyors megismétlésére és hibakeresésére, valamint a csapattal való együttműködésre. Ez a cikk ismerteti az Azure dev Spaces által elvégezhető műveleteket és azok működését.
 
-## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>Gyorsan iterate és hibakeresés a Kubernetes alkalmazás
+## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>Kubernetes-alkalmazás gyors megismétlése és hibakeresése
 
-Az Azure Dev Spaces csökkenti a Kubernetes-alkalmazás fejlesztésére, tesztelésére és iterészézésére irányuló erőfeszítéseket az AKS-fürt környezetében. Ez a csökkentés lehetővé teszi a fejlesztők számára, hogy az alkalmazások üzleti logikájára összpontosítsanak, és ne konfigurálják szolgáltatásaikat a Kubernetes-ben való futtatáshoz.
+Az Azure dev Spaces szolgáltatás csökkenti a Kubernetes-alkalmazás fejlesztését, tesztelését és iterációját az AK-fürt környezetében. Ez a csökkentési erőfeszítések lehetővé teszik a fejlesztők számára, hogy alkalmazásaikat üzleti logikára összpontosítsanak, és nem konfigurálja a szolgáltatásaikat a Kubernetes-ben való futtatásra.
 
-### <a name="connect-your-development-machine-to-aks"></a>Csatlakoztassa fejlesztőgépét az AKS-hez
+### <a name="connect-your-development-machine-to-aks"></a>A fejlesztői gép összekötése az AK-val
 
-Az Azure Dev Spaces segítségével csatlakoztathatja a fejlesztői számítógépet az AKS-fürthöz, így úgy futtathatja és hibakeresést okozhat a fejlesztői számítógépen, mintha a fürtön futna. Az Azure Dev Spaces átirányítja a forgalmat a csatlakoztatott AKS-fürt által a fürtön, amely egy távoli ügynökként működik, hogy irányítsa át a forgalmat a fejlesztői gép és a fürt között. Ez a forgalomátirányítás lehetővé teszi, hogy a fejlesztői számítógépen és az AKS-fürtön futó szolgáltatások úgy kommunikáljanak, mintha ugyanabban az AKS-fürtben lennének. A fejlesztői gép AKS-hez való csatlakoztatásáról a [Fejlesztői számítógép és az AKS-fürt csatlakoztatása című témakörben talál][how-it-works-connect]további információt.
+Az Azure dev Spaces használatával összekapcsolhatja a fejlesztési számítógépét az AK-fürttel, így a kódot futtathatja és hibakeresést végezhet a fejlesztői számítógépen, mintha a fürtön futna. Az Azure dev Spaces átirányítja a forgalmat a csatlakoztatott AK-fürt között úgy, hogy egy olyan Pod-t futtat a fürtön, amely távoli ügynökként működik a fejlesztői gép és a fürt közötti forgalom átirányításához. Ez a forgalom átirányítása lehetővé teszi, hogy az AK-fürtön futó fejlesztői számítógép és szolgáltatások programkódja kommunikáljon úgy, mintha ugyanabban az AK-fürtben lennének. A fejlesztői gép AK-hoz való csatlakoztatásával kapcsolatos további információkért lásd: [a fejlesztői számítógép csatlakoztatása az AK-fürthöz][how-it-works-connect].
 
-### <a name="run-your-code-in-aks"></a>A kód futtatása az AKS-ben
+### <a name="run-your-code-in-aks"></a>A kód futtatása AK-ban
 
-A fejlesztési számítógép és az AKS-fürt közötti forgalom átirányítása mellett az Azure Dev Spaces segítségével konfigurálhatja és gyorsan futtathatja a kódot közvetlenül az AKS-ben. A Visual Studio, a Visual Studio-kód vagy az Azure Dev Spaces CLI segítségével az Azure Dev-helyek feltöltik a kódot a fürtbe, majd létreveszik és futtatják azt. Az Azure Dev-terek is intelligensen szinkronizálja a kódváltozásokat, és indítsa újra a szolgáltatást, hogy szükség szerint tükrözze a módosításokat. A kód futtatása közben a buildnaplók és a HTTP-nyomkövetések streamelése az ügyfélhez történik, így nyomon követheti a folyamatot, és diagnosztizálhatja a problémákat. Az Azure Dev Spaces használatával is csatolhatja a hibakeresőt a Visual Studio és a Visual Studio-kód java, node.js és .NET Core szolgáltatásokhoz. További információ: [Hogyan működik a projekt előkészítése az Azure Dev Spaces számára,][how-it-works-prep] [Hogyan működik a kód futtatása az Azure Dev Spaces használatával,][how-it-works-up]valamint A kód azure dev [spaces-szel történő távoli hibakeresése][how-it-works-remote-debugging]című témakörben.
+Amellett, hogy átirányítja a forgalmat a fejlesztői számítógép és az AK-fürt között, az Azure dev Spaces használatával konfigurálhatja és gyorsan futtathatja a kódot az AK-ban. A Visual Studióban, a Visual Studio Code-ban vagy az Azure dev Spaces CLI-vel az Azure dev Spaces feltölti a kódot a fürtbe, majd felépíti és futtatja azt. Az Azure dev Spaces képes intelligensen szinkronizálni a kód módosításait, és újraindítani a szolgáltatást, hogy szükség szerint tükrözze a módosításokat. A kód futtatásakor a rendszer a naplókat és a HTTP-nyomkövetéseket adatfolyamként továbbítja az ügyfélnek, így nyomon követheti a folyamat előrehaladását, és diagnosztizálhatja az esetleges problémákat. Használhatja az Azure dev Spaces szolgáltatást is, hogy a hibakeresőt a Visual Studióban és a Visual Studio Code-ban a Java, a Node. js és a .NET Core szolgáltatásokhoz csatolja. További információkért lásd: [projekt előkészítése az Azure dev Spaces működéséhez][how-it-works-prep], [Hogyan működik a kód az Azure dev Spaces][how-it-works-up]szolgáltatással, és [Hogyan működik a kód távoli hibakeresése az Azure dev Spaces][how-it-works-remote-debugging]szolgáltatással.
 
 ## <a name="team-development"></a>Csoportos fejlesztés
 
-Az Azure Dev Spaces segítségével a csapatok hatékonyan dolgozhatnak az alkalmazásukon ugyanazon az AKS-fürtön anélkül, hogy zavaróak lennek.
+Az Azure dev Spaces lehetővé teszi, hogy az egyazon AK-fürtön az alkalmazások hatékonyabban működjenek az alkalmazáson, és ne legyen zavaró.
 
-### <a name="intelligent-routing-between-dev-spaces"></a>Intelligens útválasztás a fejlesztési terek között
+### <a name="intelligent-routing-between-dev-spaces"></a>Intelligens útválasztás a fejlesztői helyek között
 
-Az Azure Dev Spaces használatával a csapat megoszthatja a felhőalapú natív alkalmazást futtató egyetlen AKS-fürtöt, és elszigetelt fejlesztői tereket hozhat létre, ahol a csapat anélkül fejleszthet, tesztelhet és hibakeresést, hogy megzavarnák a többi fejlesztői tereket. Az alkalmazás alapverziója gyökérfejlesztési területen fut. A csapattagok ezután független gyermekfejlesztői tereket hoznak létre az alkalmazás fejlesztési, tesztelési és hibakeresési módosításai alapján. A fejlesztői terekben az útválasztási képességeken keresztül a gyermekfejlesztői terek továbbíthatják a kérelmeket a gyermek fejlesztési térben futó szolgáltatások és a szülő fejlesztési tér között. Ez az útválasztás lehetővé teszi a fejlesztők számára, hogy a szolgáltatás saját verzióját futtassák, miközben újra felhasználják a szülőterületfüggő szolgáltatásait. Minden gyermektérnek saját egyedi URL-címe van, amelyet mások megoszthatnak és elérhetnek az együttműködés hez. Az útválasztási lehetőségek Azure dev spaces-ben való működéséről az [Útválasztás és az Azure dev spaces működésének című témakörben][how-it-works-routing]talál további információt.
+Az Azure dev Spaces használatával a csapat megoszthat egy Felhőbeli natív alkalmazást futtató egyoszlopos fürtöt, és elkülönített fejlesztői helyeket hozhat létre, ahol a csapat fejlesztheti, tesztelheti és hibakeresést végezhet a többi fejlesztői szóközzel való beavatkozás nélkül. Az alkalmazás alapszintű verziója egy gyökérszintű fejlesztői térben fut. A csapattagok ezután létrehozzák a független gyermek-fejlesztési helyeket az alkalmazás fejlesztésének, tesztelésének és hibakeresésének alapvető területe alapján. A dev Spaces útválasztási képességein keresztül a gyermek-fejlesztési területek a gyermek-fejlesztési térben és a szülő fejlesztői térben futó szolgáltatások közötti kérelmeket is átirányítják. Ez az Útválasztás lehetővé teszi a fejlesztők számára, hogy egy szolgáltatás saját verzióját futtassák, miközben a fölérendelt területtől függő szolgáltatások újrafelhasználását. Minden egyes gyermekobjektum saját egyedi URL-címmel rendelkezik, amelyet mások is megoszthatnak és használhatnak együttműködésre. További információ arról, hogyan működik az Útválasztás az Azure dev Spaces-ben: [Hogyan működik az Útválasztás az Azure dev Spaces szolgáltatással][how-it-works-routing].
 
-### <a name="live-testing-an-open-pull-request"></a>Nyílt lekéréses kérelem élő tesztelése
+### <a name="live-testing-an-open-pull-request"></a>Nyitott lekéréses kérelem élő tesztelése
 
-A GitHub-műveletek et az Azure Dev Spaces használatával is tesztelheti az alkalmazás módosításait egy lekéréses kérelemben közvetlenül a fürtben, mielőtt egyesülne. Az Azure dev spaces automatikusan telepítheti az alkalmazás felülvizsgálati verzióját a fürtre, lehetővé téve a szerző és a többi csapattag számára, hogy áttekintsék a módosításokat a teljes alkalmazás környezetében. Az Azure Dev Spaces útválasztási képességeit használva az alkalmazás ez a felülvizsgálati verziója is telepítve van a fürtben anélkül, hogy más fejlesztési tereket befolyásolna. Mindezek a képességek lehetővé teszik, hogy magabiztosan jóváhagyja és egyesítse a lekéréses kérelmeket. A GitHub-műveletek és az Azure Dev Spaces példa: [GitHub-műveletek & Azure Kubernetes-szolgáltatás.][pr-flow]
+A GitHub-műveleteket az Azure dev Spaces használatával is használhatja, ha az egyesítés előtt közvetlenül a fürtben szeretné tesztelni az alkalmazás módosításait egy lekéréses kérelemben. Az Azure dev Spaces szolgáltatás automatikusan üzembe helyezheti az alkalmazás felülvizsgálati verzióját a fürtön, így a szerző és az egyéb csapattagok is áttekinthetik a módosításokat a teljes alkalmazás környezetében. Az Azure dev Spaces útválasztási képességeinek használatával az alkalmazás felülvizsgálati verziója a fürtön is üzembe helyezhető anélkül, hogy az hatással lenne a többi fejlesztői területre. Az összes funkció lehetővé teszi a pull-kérelmek magabiztos jóváhagyását és egyesítését. A GitHub-műveletekre és az Azure dev Spaces-re vonatkozó példa: [GitHub-műveletek & Azure Kubernetes Service][pr-flow].
 
 ## <a name="next-steps"></a>További lépések
 
-A helyi fejlesztői gép AKS-fürthöz való csatlakoztatásának megkezdéséhez olvassa el [a fejlesztői gép csatlakoztatása AKS-fürthöz][connect].
+A helyi fejlesztési gép AK-fürthöz való csatlakoztatásának megkezdéséhez lásd: [a fejlesztői gép csatlakoztatása egy AK-fürthöz][connect].
 
-Az Azure Dev Spaces csapatfejlesztéshez való használatának első lépései az [Azure Dev Spaces rövid útmutatójában.][quickstart-team]
+Az Azure dev Spaces for Team Development használatának megkezdéséhez tekintse meg a [csapat fejlesztését az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
 [connect]: how-to/connect.md
 [how-it-works-connect]: how-dev-spaces-works-connect.md

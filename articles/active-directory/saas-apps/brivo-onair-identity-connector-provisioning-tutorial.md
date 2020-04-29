@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Brivo Onair Identity Connector konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a Brivo Onair Identity Connector felhasználói fiókjainak automatikus kiépítésére és kiépítésének kimerülésével.
+title: 'Oktatóanyag: a Brivo onair-identitás-összekötő konfigurálása a felhasználók automatikus üzembe helyezéséhez a Azure Active Directory segítségével | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Brivo onair.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,150 +16,150 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246653"
 ---
-# <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Oktatóanyag: A Brivo Onair identity connector konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a Brivo onair Identity Connector konfigurálása a felhasználók automatikus kiépítési feladataihoz
 
-Ez az oktatóanyag célja, hogy bemutassa a Brivo Onair Identity Connector és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához, hogy automatikusan üzembe helyezze a felhasználókat és/vagy csoportokat a Brivo Onair Identity Connector számára.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Brivo onair Identity Connector és a Azure Active Directory (Azure AD) számára az Azure AD konfigurálásához, hogy automatikusan kiépítse és kiépítse a felhasználókat és/vagy csoportokat a Brivo onair Identity Connectorhoz.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Egy Azure AD-bérlő
-* [Brivo Onair Identity Connector bérlő](https://www.brivo.com/lp/quote)
-* A Brivo Onair Identity Connector vezető rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
+* Azure AD-bérlő
+* [Brivo onair-összekötő bérlője](https://www.brivo.com/lp/quote)
+* Egy felhasználói fiók a Brivo onair Identity Connector vezető rendszergazdai engedélyekkel.
 
-## <a name="assigning-users-to-brivo-onair-identity-connector"></a>Felhasználók hozzárendelése a Brivo Onair identitásösszekötőhöz
+## <a name="assigning-users-to-brivo-onair-identity-connector"></a>Felhasználók kiosztása a Brivo onair Identity Connectorhoz
 
-Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a Brivo Onair Identity Connector-hoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Brivo Onair Identity Connector-hoz az alábbi utasításokat követve:
-* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjai férhetnek hozzá a Brivo onair Identity Connectorhoz. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat és/vagy csoportokat a onair Identity Connector Brivo:
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-brivo-onair-identity-connector"></a>Fontos tippek a felhasználók Brivo Onair Identity Connector hoz való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-brivo-onair-identity-connector"></a>Fontos Tippek a felhasználók Brivo-onair identitás-összekötőhöz való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Brivo Onair Identity Connector az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve az Brivo onair Identity Connectorhoz a felhasználó automatikus kiépítési konfigurációjának teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználót a Brivo Onair Identity Connector-hoz rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
+* Amikor felhasználót rendel a Brivo onair Identity Connectorhoz, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Brivo Onair identity connector beállítása a kiépítéshez
+## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>A Brivo onair Identity Connector beállítása a kiépítés számára
 
-1.    Jelentkezzen be a [Brivo Onair Identity Connector felügyeleti konzoljára.](https://acs.brivo.com/login/) Nyissa meg **a Fiók > fiókbeállítások lapot.**
+1.    Jelentkezzen be a [Brivo onair Identity Connector felügyeleti konzolra](https://acs.brivo.com/login/). Válassza a **fiók > Fiókbeállítások lehetőséget**.
 
-    ![Brivo Onair Identity Connector felügyeleti konzol](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+    ![Brivo onair Identity Connector felügyeleti konzol](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  Kattintson az **Azure AD** fülre. Az **Azure AD** részletek lapon adja meg újra a rendszergazdai fiók jelszavát. Kattintson a **Küldés gombra.**
+2.  Kattintson az **Azure ad** fülre. Az **Azure ad** -Részletek lapon adja meg újra a legfelső szintű rendszergazdai fiók jelszavát. Kattintson a **Submit (elküldés**) gombra.
 
-    ![Brivo Onair Identity Connector azúr](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+    ![Brivo onair Identity Connector – Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    Kattintson a **Token másolása** gombra, és mentse a **titkos tokent.** Ezt az értéket a Brivo Onair Identity Connector alkalmazás kiépítés lapján a Titkos jogkivonat mezőben adja meg az Azure Portalon.
+3.    Kattintson a **jogkivonat másolása** gombra, és mentse a **titkos jogkivonatot**. Ez az érték a Brivo onair Identity Connector alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében lesz megadva a Azure Portal.
 
-    ![Brivo Onair Identity Connector token](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+    ![Brivo onair-azonosító tokenje](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
-## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Brivo Onair Identity Connector hozzáadása a galériából
+## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Brivo onair-identitás összekötő hozzáadása a katalógusból
 
-Brivo Onair Identity Connector konfigurálása előtt az Automatikus felhasználói kiépítés az Azure AD-vel, hozzá kell adnia a Brivo Onair Identity Connector az Azure AD-alkalmazáskatalógusa a felügyelt SaaS-alkalmazások listájához.
+Mielőtt Brivo a onair Identity Connectort az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, hozzá kell adnia a Brivo onair Identity Connectort az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-**Brivo Onair Identity Connector hozzáadása az Azure AD alkalmazásgyűjteményből, hajtsa végre a következő lépéseket:**
+**Az Azure AD Brivo az alábbi lépéseket követve veheti fel a onair Identity Connectort:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Brivo Onair Identity Connector ( Brivo Onair Identity Connector**) kifejezést, válassza a **Brivo Onair Identity Connector elemet** az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **Brivo onair Identity Connector**kifejezést, válassza az **Brivo onair Identity Connector** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Brivo Onair Identity Connector az eredménylistában](common/search-new-app.png)
+    ![Brivo onair-identitás összekötője az eredmények listájában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-brivo-onair-identity-connector"></a>Automatikus felhasználói kiépítés konfigurálása a Brivo Onair identity Connector rendszerbe 
+## <a name="configuring-automatic-user-provisioning-to-brivo-onair-identity-connector"></a>Automatikus felhasználó-kiépítés konfigurálása a Brivo onair Identity Connectorhoz 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a Brivo Onair Identity Connector-ban az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
+Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálásának lépésein, amelyekkel felhasználókat és/vagy csoportokat hozhat létre, frissíthet és letilthat a Brivo onair Identity Connectorban az Azure AD-ben a felhasználók és/vagy csoportok hozzárendelései alapján.
 
-### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>A Brivo Onair Identity Connector automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása az Brivo onair Identity Connectorhoz az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Brivo Onair Identity Connector**lehetőséget.
+2. Az alkalmazások listában válassza a **Brivo onair Identity Connector**elemet.
 
-    ![A Brivo Onair Identity Connector hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![Az Brivo onair Identity Connector hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **Rendszergazdai hitelesítő** adatok `https://scim.brivo.com/ActiveDirectory/v2/` csoportban adja meg a **bérlői URL-címet.** Adja meg a **titkos jogkivonat**korábbi, beolvasott **SCIM hitelesítési token** értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Brivo Onair Identity Connector-hoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a Brivo Onair Identity Connector-fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://scim.brivo.com/ActiveDirectory/v2/` meg a **bérlői URL-címet**. Adja meg a **scim-hitelesítési jogkivonat** értékét a **titkos tokenben**. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a Brivo onair Identity connectorhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Brivo onair Identity Connector-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítési e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Kattintson a **Save** (Mentés) gombra.
 
-8. A **Leképezések** szakaszban válassza **az Azure Active Directory felhasználóinak szinkronizálása brivo onair identity connector**lehetőséget.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók Brivo a onair Identity Connector**lehetőséget.
 
-    ![Brivo Onair identity connector felhasználói leképezések](media/brivo-onair-identity-connector-provisioning-tutorial/user-mappings.png )
+    ![Brivo onair identitás-összekötő felhasználói hozzárendelései](media/brivo-onair-identity-connector-provisioning-tutorial/user-mappings.png )
 
-9. Tekintse át az Azure AD és a Brivo Onair Identity Connector között szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kijelölt attribútumok a Brivo Onair Identity Connector felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Brivo onair Identity Connector használatával Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Brivo onair Identity Connector felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Brivo Onair identity összekötő felhasználói attribútumai](media/brivo-onair-identity-connector-provisioning-tutorial/user-attributes.png)
+    ![Brivo onair identitás-összekötő felhasználói attribútumai](media/brivo-onair-identity-connector-provisioning-tutorial/user-attributes.png)
 
-10. A **Leképezések** szakaszban válassza **az Azure Active Directory-csoportok szinkronizálása brivo onair identity connector**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása lehetőséget, hogy Brivo a onair Identity Connectort**.
 
-    ![Brivo Onair identity összekötő csoport leképezései](media/brivo-onair-identity-connector-provisioning-tutorial/group-mappings.png)
+    ![Brivo-onair identitás-összekötő csoportjának leképezése](media/brivo-onair-identity-connector-provisioning-tutorial/group-mappings.png)
 
-11. Tekintse át az Azure AD és a Brivo Onair Identity Connector között szinkronizált csoportattribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kijelölt attribútumok a Brivo Onair Identity Connector csoportjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+11. Tekintse át az Azure AD-ből szinkronizált Brivo az **attribútum-hozzárendelési** szakaszban található onair-identitás összekötőn. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Brivo onair Identity Connector csoportjának a frissítési műveletekhez való egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Brivo Onair identity összekötő csoport attribútumai](media/brivo-onair-identity-connector-provisioning-tutorial/group-attributes.png)
+    ![Brivo onair identitás-összekötő csoport attribútumai](media/brivo-onair-identity-connector-provisioning-tutorial/group-attributes.png)
 
-12. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Az Azure AD-létesítési szolgáltatás engedélyezéséhez a Brivo Onair Identity Connector, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Brivo onair Identity Connectorhoz, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
-    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni a Brivo Onair Identity Connector számára a **beállítások** szakasz **hatókörében** a kívánt értékek kiválasztásával.
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára a Brivo onair Identity Connectort szeretné kiépíteni a **Beállítások** szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz ban figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a Brivo Onair Identity Connector összes végrehajtott műveleteket.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Brivo onair Identity Connectoron végrehajtott összes műveletet ismertetik.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -1,7 +1,7 @@
 ---
-title: 'Anomáliadetektálási modell betanítása: modul hivatkozási'
+title: 'A Train rendellenesség észlelési modellje: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a Train Anomaly Detection Model modul betanított anomáliadetektálási modell létrehozásához.
+description: Megtudhatja, hogyan hozhat létre egy betanított anomália-észlelési modellt a Train anomália-észlelési modell modul használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,50 +10,50 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 78ed2d85729cce94e8dfa579545f558d2cfe4651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502970"
 ---
-# <a name="train-anomaly-detection-model"></a>Anomáliadetektálási modell betanítása
+# <a name="train-anomaly-detection-model"></a>Rendellenesség-észlelési modell betanítása
 
-Ez a cikk ismerteti, hogyan használhatja a **betanítási anomáliaészlelési modell** modul az Azure Machine Learning designer (előzetes verzió) egy betanított anomáliaészlelési modell létrehozásához.
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) **Train rendellenesség-észlelési modell** modulja egy betanított anomália-észlelési modell létrehozásához.
 
-A modul az anomáliadetektálási modell modell modell és egy címkézetlen adatkészlet modellparaméterkészletét adja meg bemenetként. Egy betanított anomáliadetektálási modellt ad vissza, a betanítási adatok címkéivel együtt.  
+A modul a modell paramétereinek egy készletét adja meg a rendellenesség-észlelési modellhez és egy címkézetlen adatkészlethez. Egy betanított anomália-észlelési modellt ad vissza, amely a betanítási adatokhoz tartozó címkék készletével együtt.  
 
-A tervezőben található anomáliadetektálási algoritmusokról az alábbi témakörökben olvashat bővebben: 
+A tervezőben elérhető anomália-észlelési algoritmusokkal kapcsolatos további információkért tekintse meg a következő témaköröket: 
 
-+ [PCA-alapú anomáliadetektálás](pca-based-anomaly-detection.md)  
++ [PCA-alapú rendellenesség-észlelés](pca-based-anomaly-detection.md)  
 
-## <a name="how-to-configure-train-anomaly-detection-model"></a>A vonatanomália-észlelési modell konfigurálása 
+## <a name="how-to-configure-train-anomaly-detection-model"></a>A Train anomália észlelési modell konfigurálása 
 
-1.  Adja hozzá a **Train Anomaly Detection Model** modult a tervező ben a folyamathoz. Ez a modul az **Anomáliadetektálás** kategóriában található.
+1.  Adja hozzá a **vonat anomália észlelési modell** modult a folyamathoz a tervezőben. Ez a modul az **anomáliák észlelése** kategóriában található.
 
-2. Csatlakoztassa az anomáliadetektálásra tervezett modulok egyikét, például a [PCA-alapú anomáliadetektálást](pca-based-anomaly-detection.md)
+2. A anomáliák észlelésére tervezett modulok egyikének összekötése, például a [PCA-alapú anomáliák észlelése](pca-based-anomaly-detection.md)
 
-    Más típusú modellek nem támogatottak; a folyamat futtatásakor a hiba jelenik meg: Minden modellnek azonos tanulótípussal kell rendelkeznie.  
+    Más típusú modellek nem támogatottak; a folyamat futtatásakor a következő hibaüzenet jelenik meg: minden modellnek ugyanazzal a tanulói típussal kell rendelkeznie.  
 
-3.  Konfigurálja az anomáliadetektálási modult a címkeoszlop kiválasztásával és az algoritmusra jellemző egyéb paraméterek beállításával.  
+3.  Konfigurálja az anomáliák észlelése modult a Label (címke) oszlop kiválasztásával, és az algoritmushoz tartozó egyéb paraméterek megadásával.  
 
-4.  Betanítási adatkészlet csatolása a **train anomáliadetektálási modell**jobb oldali bemenetéhez.  
+4.  Csatoljon egy betanítási adatkészletet a **vonat anomália észlelési modell**jobb oldali bemenetéhez.  
 
-5.  Küldje el a folyamatot.  
+5.  A folyamat elküldése.  
 
 ## <a name="results"></a>Results (Eredmények)
 
-A képzés befejezése után:
+A betanítás befejezése után:
 
-+ A modell paramétereinek megtekintéséhez kattintson a jobb gombbal a modulra, és válassza a **Visualize parancsot.** 
++ A modell paramétereinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget. 
 
-+ Előrejelzések létrehozásához használja [a Score Model](score-model.md) új bemeneti adatokat.
++ Az előrejelzések létrehozásához használja a [score modelt](score-model.md) új bemeneti adatokkal.
 
-+ A betanított modell pillanatképének mentéséhez jelölje ki a modult, és kattintson az **Adatkészlet regisztrálása** ikonra a jobb oldali panel **kimenetek+naplók** lapján.   
++ A betanított modell pillanatképének mentéséhez válassza ki a modult, majd kattintson az **adatkészlet regisztrálása** ikonra a jobb oldali panel **outputs + naplók** lapján.   
 
  
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 
-A tervezőmodulokra jellemző hibák listáját [a tervező (előzetes verzió) Kivételek és hibakódok](designer-error-codes.md) című témakörben tekintheti meg.
+A Designer modulokra jellemző hibák listáját [a tervező (előzetes verzió) kivételei és hibakódai](designer-error-codes.md) részben tekintheti meg.
 '

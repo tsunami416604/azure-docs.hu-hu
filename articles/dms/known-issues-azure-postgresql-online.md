@@ -1,7 +1,7 @@
 ---
-title: 'Ismert problémák: Online áttelepítések a PostgreSQL-ről a PostgreSQL-adatbázisba'
+title: 'Ismert problémák: a PostgreSQL-ből való online áttelepítés Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
-description: Ismerje meg a PostgreSQL-ből az Azure Database Migration Service használatával az Azure Database Migration Service használatával az Azure Database Migration Service használatával az online áttelepítésekkel kapcsolatos ismert problémákat és áttelepítési korlátozásokat.
+description: Ismerje meg a PostgreSQL-ről online áttelepítéssel kapcsolatos ismert problémákat és áttelepítési korlátozásokat a Azure Database Migration Service használatával Azure Database for PostgreSQL.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -15,36 +15,36 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235272"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ről az Azure DB for PostgreSQL-re történő online áttelepítéssel kapcsolatban
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online áttelepítéssel a PostgreSQL-hez készült Azure DB-be
 
-A PostgreSQL-ről a PostgreSQL-re a PostgreSQL-adatbázisba való online áttelepítéssel kapcsolatos ismert problémákat és korlátozásokat a következő szakaszok ismertetik.
+A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel kapcsolatos ismert problémák és korlátozások a következő szakaszokban olvashatók.
 
 ## <a name="online-migration-configuration"></a>Online áttelepítési konfiguráció
 
-- A forrás PostgreSQL szerverének a 9.4-es, 9.5-ös, 9.6-os, 10-es vagy 11-es verziót kell futtatnia. További információt a [Támogatott PostgreSQL adatbázis-verziók](../postgresql/concepts-supported-versions.md)című cikkben talál.
-- Csak az azonos vagy magasabb verzióra való áttelepítések támogatottak. Például a PostgreSQL 9.5 áttelepítése az Azure Database for PostgreSQL 9.6 vagy 10-re támogatott, de a PostgreSQL 11-ről a PostgreSQL 9.6-ra való áttelepítés nem támogatott.
-- A logikai replikáció engedélyezéséhez a **Forrás PostgreSQL postgresql.conf** fájlban állítsa be a következő paramétereket:
+- A forrás PostgreSQL-kiszolgálónak a 9,4, 9,5, 9,6, 10 vagy 11 verziót kell futtatnia. További információkért lásd a [PostgreSQL-adatbázisok támogatott verzióit](../postgresql/concepts-supported-versions.md)ismertető cikket.
+- Csak az azonos vagy újabb verzióra történő áttelepítések támogatottak. Ha például a PostgreSQL 9,5-et Azure Database for PostgreSQL 9,6-re vagy 10-re szeretné áttelepíteni, de a PostgreSQL 11-es verzióról a PostgreSQL 9,6-re való Migrálás nem támogatott.
+- A logikai replikáció engedélyezéséhez a **forrás PostgreSQL PostgreSQL. conf** fájlban adja meg a következő paramétereket:
   - **wal_level** = logikai
-  - **max_replication_slots** = [legalább maximális számú adatbázis áttelepítéshez]; Ha négy adatbázist szeretne áttelepíteni, állítsa az értéket legalább 4-re.
-  - **max_wal_senders** = [egyidejűleg futó adatbázisok száma]; az ajánlott érték 10
-- DMS-ügynök IP hozzáadása a Forráshoz PostgreSQL pg_hba.conf
-  1. Jegyezze fel a DMS IP-címét, miután befejezte az Azure Database Migration Service egy példányának kiépítését.
-  2. Adja hozzá az IP-címet a pg_hba.conf fájlhoz az alábbi módon:
+  - **max_replication_slots** = [legalább az adatbázisok maximális száma az áttelepítéshez]; Ha négy adatbázist szeretne áttelepíteni, állítsa az értéket legalább 4 értékre.
+  - **max_wal_senders** = [egyidejűleg futó adatbázisok száma]; a javasolt érték 10
+- DMS-ügynök IP-címének hozzáadása a forrás PostgreSQL pg_hba. conf
+  1. A Azure Database Migration Service-példány üzembe helyezésének befejezése után jegyezze fel a DMS IP-címét.
+  2. Adja hozzá az IP-címet a pg_hba. conf fájlhoz az alábbiak szerint:
 
       ```
           host  all     172.16.136.18/10    md5
           host  replication postgres    172.16.136.18/10    md5
       ```
 
-- A felhasználónak rendelkeznie kell a forrásadatbázist tároló kiszolgáló replikációs szerepkörrel.
-- A forrás- és céladatbázis-sémáknak egyezniük kell.
-- A séma a cél Azure Database for PostgreSQL-Single server nem rendelkezik idegen kulcsokkal. Az idegen kulcsok eldobásához használja az alábbi lekérdezést:
+- A felhasználónak rendelkeznie kell a replikációs szerepkörrel a forrás-adatbázist üzemeltető kiszolgálón.
+- A forrás-és a célként megadott adatbázis-sémáknak egyezniük kell.
+- A cél Azure Database for PostgreSQL sémája – az egyetlen kiszolgáló nem rendelkezhet idegen kulcsokkal. A külső kulcsok eldobásához használja az alábbi lekérdezést:
 
     ```
                                 SELECT Queries.tablename
@@ -75,7 +75,7 @@ A PostgreSQL-ről a PostgreSQL-re a PostgreSQL-adatbázisba való online áttele
 
     Futtassa a ’drop foreign key’-t (ez a második oszlop) a lekérdezési eredményben.
 
-- A séma a cél Azure Database for PostgreSQL-Single server nem rendelkezhet eseményindítók. Az alábbi műveletek letiltása a céladatbázisban:
+- A cél Azure Database for PostgreSQL sémája – az egyetlen kiszolgáló nem rendelkezhet eseményindítókkal. A következő paranccsal tilthatja le az eseményindítókat a célként megadott adatbázisban:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
@@ -83,41 +83,41 @@ A PostgreSQL-ről a PostgreSQL-re a PostgreSQL-adatbázisba való online áttele
 
 ## <a name="datatype-limitations"></a>Adattípus-korlátozások
 
-  **Korlátozás:** Ha nincs elsődleges kulcs a táblákon, előfordulhat, hogy a módosítások nem lesznek szinkronizálva a céladatbázissal.
+  **Korlátozás**: Ha a táblák nem rendelkeznek elsődleges kulccsal, akkor előfordulhat, hogy a módosítások nem szinkronizálhatók a céladatbázis használatával.
 
-  **Megoldás:** Ideiglenesen állítson be elsődleges kulcsot a tábla számára az áttelepítés folytatásához. Az elsődleges kulcsot az adatáttelepítés befejezése után távolíthatja el.
+  **Megkerülő megoldás**: átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez a folytatáshoz. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
 
-## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Korlátozások az AWS RDS PostgreSQL-ről történő online áttelepítéskor
+## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Az AWS RDS PostgreSQL-ről történő online áttelepítés korlátozásai
 
-Amikor online áttelepítést próbál végrehajtani az AWS RDS PostgreSQL-ről a PostgreSQL-adatbázisba, a következő hibák léphetnek fel.
+Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online áttelepítést végezni, a következő hibák merülhetnek fel.
 
-- **Hiba**: A(z) "{table}" tábla "{column}" oszlopának alapértelmezett értéke a forrás- és célkiszolgálókon eltérő. Az érték „{value on source}” a forráson és „{value on target}” a célon.
+- **Hiba**: a (z) {Database} adatbázisban a (z) {Table} tábla {Column} oszlopának alapértelmezett értéke eltér a forrás-és a célkiszolgálón. Az érték „{value on source}” a forráson és „{value on target}” a célon.
 
-  **Korlátozás**: Ez a hiba akkor fordul elő, ha egy oszlopséma alapértelmezett értéke eltér a forrás- és a céladatbázisok között.
-  **Megoldás:** Győződjön meg arról, hogy a célon lévő séma megegyezik a forrás sémájával. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL online áttelepítési dokumentációját.](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)
+  **Korlátozás**: Ez a hiba akkor fordul elő, ha egy oszlop sémájának alapértelmezett értéke eltér a forrás-és a cél-adatbázisok között.
+  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Hiba**: A(z) "{database}" céladatbázis "{tables}" táblákkal rendelkezik, ahol a(z) "{database}" forrásadatbázis "{tables}" számú táblával rendelkezik. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
+- **Hiba**: a (z) {Database} céladatbázis {number of Tables} táblát tartalmaz, ahol a (z) {Database} forrásoldali adatbázis {number of Tables} táblát tartalmaz. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
 
-  **Korlátozás**: Ez a hiba akkor fordul elő, ha a táblák száma eltér a forrás- és a céladatbázis között.
+  **Korlátozás**: Ez a hiba akkor fordul elő, ha a táblák száma eltér a forrás-és a cél-adatbázis között.
 
-  **Megoldás:** Győződjön meg arról, hogy a célon lévő séma megegyezik a forrás sémájával. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL online áttelepítési dokumentációját.](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)
+  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Hiba:** A(z) {database} forrásadatbázis üres.
+- **Hiba:** A forrás-adatbázis ({Database}) üres.
 
-  **Korlátozás**: Ez a hiba akkor fordul elő, ha a forrásadatbázis üres. Ez valószínűleg azért van, mert rossz adatbázist választott ki forrásként.
+  **Korlátozás**: Ez a hiba akkor fordul elő, ha a forrásadatbázis üres. Valószínűleg azért, mert a megfelelő adatbázist választotta forrásként.
 
-  **Megoldás:** Ellenőrizze duplán az áttelepítéshez kijelölt forrásadatbázist, majd próbálkozzon újra.
+  **Áthidaló megoldás**: Ellenőrizze az áttelepítéshez kiválasztott forrásadatbázis-adatbázist, majd próbálkozzon újra.
 
-- **Hiba:** A(z) {database} céladatbázis üres. Migrálja a sémát.
+- **Hiba:** A célként megadott adatbázis ({Database}) üres. Migrálja a sémát.
 
-  **Korlátozás**: Ez a hiba akkor fordul elő, ha nincs séma a céladatbázisban. Győződjön meg arról, hogy a célséma megegyezik a forrás sémájával.
-  **Megoldás:** Győződjön meg arról, hogy a célon lévő séma megegyezik a forrás sémájával. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL online áttelepítési dokumentációját.](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)
+  **Korlátozás**: Ez a hiba akkor fordul elő, ha a céladatbázis nem rendelkezik sémával. Győződjön meg arról, hogy a cél sémája egyezik a forrásban található sémával.
+  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 ## <a name="other-limitations"></a>Egyéb korlátozások
 
-- Az adatbázis neve nem tartalmazhat pontosvesszőt (;).
-- A rögzített táblának elsődleges kulccsal kell rendelkeznie. Ha egy tábla nem rendelkezik elsődleges kulccsal, a DELETE és az UPDATE rekordműveletek eredménye kiszámíthatatlan lesz.
-- Az elsődleges kulcs szegmensfrissítése figyelmen kívül lesz hagyva. Ilyen esetekben az ilyen frissítés alkalmazását a cél olyan frissítésként azonosítja, amely nem frissítette a sorokat, és a kivételek táblába írt rekordot eredményez.
-- Több, azonos nevű, de eltérő kis- és nagybetűs (pl. table1, TABLE1 és Table1) áttelepítése kiszámíthatatlan viselkedést okozhat, ezért nem támogatott.
-- A [CREATE | ALTER | DROP | TRUNCATE] tábla DDL-ek nem támogatottak.
-- Az Azure Database Migration Service egyetlen áttelepítési tevékenység csak legfeljebb négy adatbázis befogadására.
+- Az adatbázis neve nem tartalmazhatja a pontosvesszőt (;).
+- A rögzített táblának rendelkeznie kell egy elsődleges kulccsal. Ha egy tábla nem rendelkezik elsődleges kulccsal, a törlés és a rekord frissítése művelet eredménye kiszámíthatatlan lesz.
+- Az elsődleges kulcs szegmensének frissítése figyelmen kívül lesz hagyva. Ilyen esetekben az ilyen frissítés alkalmazását a cél olyan frissítésként azonosítja, amely nem módosította a sorokat, és egy, a kivételek táblába írt rekordot fog eredményezni.
+- Több tábla ugyanazzal a névvel való áttelepítése, de egy másik eset (például Tábla1, TÁBLA1 és tábla1) kiszámíthatatlan működést eredményezhet, ezért nem támogatott.
+- A (z) [CREATE | feldolgozásának módosítása ALTER | DROP | CSONKOLT] a Table DDLs nem támogatott.
+- Azure Database Migration Service egyetlen áttelepítési tevékenység legfeljebb négy adatbázist tud fogadni.

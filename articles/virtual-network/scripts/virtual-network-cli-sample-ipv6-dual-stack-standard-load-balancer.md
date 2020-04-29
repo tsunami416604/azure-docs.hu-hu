@@ -1,7 +1,7 @@
 ---
-title: Azure CLI-parancsfájlminta – Az IPv6 előtétszolgáltatás konfigurálása – Standard terheléselosztó
+title: Azure CLI-parancsfájl mintája – IPv6-standard Load Balancer konfigurálása
 titlesuffix: Azure Virtual Network
-description: IPv6-végpontok engedélyezése az Azure CLI használatával az Azure virtuális hálózatban
+description: IPv6-végpontok engedélyezése az Azure CLI használatával az Azure-ban Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,36 +13,36 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235039"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-végpontok konfigurálása virtuális hálózati parancsfájlban a Standard Load Balancer(preview) használatával
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-végpontok konfigurálása virtuális hálózati parancsfájlokban minta standard Load Balancer használatával (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan telepíthet kétverű (IPv4 + IPv6) alkalmazást az Azure-ban, amely kettős IP-című kettős veremű virtuális hálózatot, kettős IP-címvel rendelkező standard terheléselosztót, kettős IP-címvel rendelkező virtuális virtuális hálózatot, kettős IP-konfigurációval rendelkező virtuális gépgyártókat, hálózati adapterekkel rendelkező virtuális gépeket tartalmaz konfiguráció, kettős hálózati biztonsági csoport szabályok , és a kettős nyilvános IP.configuration, dual network security group rules ,and dual public IP.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős verem (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy Dual stack-alhálózattal rendelkező kettős veremű virtuális hálózatot tartalmaz, egy standard Load Balancer kettős (IPv4 + IPv6) előtér-konfigurációval, a kettős IP-konfigurációval rendelkező virtuális gépekkel, a kettős hálózati biztonsági csoporttal és a kettős nyilvános IP-címmel.
 
 A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/bash) vagy egy helyi Azure CLI-telepítésből futtathatja. Ha a parancssori felületet helyileg használja, akkor ehhez a szkripthez az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja a parancssori felületet, akkor emellett a `az login` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az IPv6 azure-beli virtuális hálózati szolgáltatás használatához csak egyszer kell konfigurálnia az előfizetést az alábbiak szerint:
+Az IPv6 az Azure Virtual Network szolgáltatáshoz való használatához az előfizetést csak egyszer kell konfigurálnia az alábbiak szerint:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-A funkcióregisztráció befejezéséhez akár 30 perc is igénybe vesszen. A regisztrációs állapot ot a következő Azure CLI-parancs futtatásával ellenőrizheti:
+A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure CLI-parancs futtatásával tekintheti meg:
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-A regisztráció befejezése után futtassa a következő parancsot:
+A regisztráció befejeződése után futtassa a következő parancsot:
 
 ```azurecli
 az provider register --namespace Microsoft.Network
@@ -282,13 +282,13 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Az IPv6 kétletétes virtuális hálózatának megtekintése az Azure Portalon
-Az IPv6 kettős veremű virtuális hálózatot az Azure Portalon az alábbiak szerint tekintheti meg:
-1. A portál keresősávján írja be a *dsVnet*.
-2. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki. Ez elindítja a *dsVnet*nevű kettős verem virtuális hálózat **áttekintése** lapját. A kétverű virtuális hálózat a két hálózati adaptert jeleníti meg, amelyek iPv4- és IPv6-konfigurációkkal is rendelkeznek, és amelyek a *dsSubnet*nevű kettős veremalhálózatban találhatók. 
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>IPv6-alapú kettős verem virtuális hálózatának megtekintése Azure Portal
+Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti meg Azure Portalban:
+1. A portál keresési sávján adja meg a *dsVnet*.
+2. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki. Ez elindítja a *dsVnet*nevű kettős verem virtuális hálózat **Áttekintés** lapját. A kettős verem virtuális hálózata két hálózati adaptert jelenít meg, amelyek IPv4-és IPv6-konfigurációval rendelkeznek, amelyek a *dsSubnet*nevű kettős verem alhálózatában találhatók. 
 
 > [!NOTE]
-> Az IPv6 for Azure virtuális hálózat érhető el az Azure Portalon írásvédett ebben az előzetes verzióban.
+> Az Azure-beli virtuális hálózat IPv6-értéke csak olvashatóként érhető el a Azure Portal ebben az előzetes kiadásban.
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 

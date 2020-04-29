@@ -1,68 +1,68 @@
 ---
-title: Első fizetett kereskedelmi piacon | Azure Piactér
-description: További információ arról, hogyan kap kifizetéseket a bevételeiért a kereskedelmi piacon.
+title: Fizetés a kereskedelmi piactéren | Azure piactér
+description: Megtudhatja, hogyan fogadhatja a bevételeit a kereskedelmi piactéren.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275832"
 ---
 # <a name="getting-paid"></a>Fizetés fogadása
-Íme néhány fontos információ az ajánlatok, bővítmények és hirdetési bevételek kifizetéséről.
+Íme néhány fontos információ az ajánlatok, bővítmények és hirdetési bevételek fizetésének fogadásáról.
 
 > [!IMPORTANT]
-> Mielőtt pénzt kapna az ajánlati értékesítésből a kereskedelmi piacon, be kell [állítania a kifizetési számláját, és ki kell töltenie a szükséges adózási űrlapokat.](set-up-your-payout-account-tax-forms.md)
+> Ahhoz, hogy pénzt kapjon a kereskedelmi piactéren elérhető értékesítési ajánlatból, be kell [állítania a kifizetési fiókját, és ki kell töltenie a szükséges adózási űrlapokat](set-up-your-payout-account-tax-forms.md).
 
-## <a name="store-fee"></a>Bolti díj
+## <a name="store-fee"></a>Tárolási díj
 
-Amikor [regisztrál egy fejlesztői fiókra,](https://go.microsoft.com/fwlink/p/?LinkID=615100)elfogadja a [Microsoft Azure Piactér kiadói szerződését.](https://go.microsoft.com/fwlink/p/?LinkID=699560) Ez a szerződés ismerteti az Ön és a Microsoft közötti kapcsolatot, mivel az a kereskedelmi piacon történő értékesítési ajánlatra vonatkozik, beleértve azt az Áruházi díjat is, amelyet a Microsoft minden egyes értékesítésért felszámít.
+Amikor [regisztrál egy fejlesztői fiókra](https://go.microsoft.com/fwlink/p/?LinkID=615100), elfogadja a [Microsoft Azure Marketplace kiadói szerződést](https://go.microsoft.com/fwlink/p/?LinkID=699560). Ez a szerződés az Ön és a Microsoft közötti kapcsolatot mutatja be, mivel a kereskedelmi piactéren értékesítési ajánlatra vonatkozik, beleértve az áruházi díjat is, amelyet a Microsoft minden egyes értékesítésre felszámít.
 
-A díjakat hivatalosan a [Microsoft Azure Piactér kiadói szerződése](https://go.microsoft.com/fwlink/p/?LinkID=699560)határozza meg. Mindig tekintse át a dokumentumot, ha bármilyen kérdése van.
+A díjakat hivatalosan a [Microsoft Azure Marketplace kiadói szerződésben](https://go.microsoft.com/fwlink/p/?LinkID=699560)határozzák meg. Ha kérdése van, mindig tekintse át ezt a dokumentumot.
 
-Az Áruház díja a kereskedelmi piactér által beszedett összes ajánlatértékesítésre vonatkozik, beleértve a bővítményeket is.
+Az áruházi díjat a kereskedelmi piactér által gyűjtött összes ajánlati értékesítésre, beleértve a bővítményeket is.
 
-## <a name="price-tiers"></a>Árszintek
+## <a name="price-tiers"></a>Árképzési szintek
 
-A kiválasztott árcsomag(ok) minden olyan országban beállítja az eladási árat, ahol az ajánlat terjesztését választja. További árképzési funkciókat is használhat, például különböző árakat választhat a különböző piacokhoz.
+A kiválasztott árképzési szintek minden olyan országban beállítja az értékesítési árat, amelyben az ajánlat terjesztését választja. További díjszabási funkciókat is használhat, például különböző árakat választhat a különböző piacokon.
 
-Ingyenesen felajánlhatja az alkalmazást, vagy választhat egy árat, amelyet az ügyfeleknek kell fizetniük az ajánlat megszerzéséért. Az árszintek 0,99 USD-nél kezdődnek, további növekményekkel (1,09 USD, 1,19 USD és így tovább). Az árszintek közötti lépések az ár növekedésével nőnek.
+Az alkalmazást ingyenesen kínálhatja, vagy kiválaszthat egy árat, amelyet az ügyfeleknek fizetniük kell az ajánlat megvásárlásához. Az árak szintjei a következővel kezdődnek:. 99 USD, további növekményekkel (1,09 USD, 1,19 USD stb.). Az árak szintjei közötti növekmények növekednek, ahogy az ár magasabb lesz.
 
 > [!NOTE] 
-> Ezek az árcsomagok az ajánlaton belül kínált bővítményekre is vonatkoznak.
+> Ezek az árak az ajánlaton belül kínált bővítményekre is érvényesek.
 
-Minden árcsomagnak megfelelő értéke van az Áruház által kínált pénznemekben. Ezeket az értékeket arra használjuk, hogy segítsünk önnek eladni ajánlatát hasonló áron világszerte. A devizaárfolyamok változása miatt azonban a pontos értékesítési összeg kissé eltérhet egyik pénznemben.
+Minden egyes árszint megfelelő értékkel rendelkezik az áruház által kínált összes pénznemben. Ezeket az értékeket arra használjuk, hogy az ajánlatát az egész világon összehasonlítható áron értékesítse. A külföldi árfolyamok változásai miatt azonban a pontos eladások mennyisége némileg eltérhet az egyik pénznemtől a másikig.
 
-Lehetősége van arra is, hogy egy adott piac helyi pénznemében megadjon egy általad választott szabad formájú árat. Ha ezt teszi, az ár nem módosul (még akkor sem, ha a konverziós arány oka megváltozik), hacsak nem küld be új árat. 
+Lehetősége van arra is, hogy egy adott piac helyi pénznemében adja meg a választott szabad formájú árat. Ha ezt teszi, a rendszer nem módosítja az árat (még akkor is, ha módosulnak a konverziós arányok), kivéve, ha új árral küldi el a frissítést. 
 
-Ne feledje, hogy a kiválasztott ár tartalmazhat olyan értékesítést vagy hozzáadottérték-adót, amelyet a vevőknek meg kell fizetniük. További [információ: Adózási adatok a fizetett ajánlatért.](tax-details-paid-transactions.md)
-
-
-## <a name="payout-reporting"></a>Kifizetési jelentés
-
-A fizetési adatok részleteit és a jelentések letöltését a Partnerközpont **Kifizetési összegzésében** érheti [el.](https://partner.microsoft.com/dashboard) Az itt látható információkról és arról, hogy hogyan kategorizáljuk a keresett pénzt, [lásd: Kifizetési összefoglaló](payout-summary.md).
+Ne feledje, hogy a kiválasztott díj olyan értékesítési vagy értéknövelt adót is tartalmazhat, amelyet az ügyfeleknek fizetniük kell. További információért tekintse [meg a fizetős ajánlat adózási adatait](tax-details-paid-transactions.md) .
 
 
-## <a name="payout-timeframe"></a>Kifizetési időkeret
+## <a name="payout-reporting"></a>Kifizetési jelentéskészítés
 
-A kifizetések havonta történnek (feltéve, hogy a vonatkozó fizetési küszöbérték teljesült, és ön nem helyezte el a kifizetést az alábbiakszerint). Az adott hónap 15.-ig általában az adott hónapban esedékes befizetést küldjük el. Ne feledje, hogy a kifizetések általában 3-10 további munkanapot vesznek igénybe a kifizetési számla eléréséhez. További információ: [Fizetési küszöbértékek, módszerek és időkeretek](payment-thresholds-methods-timeframes.md).
+A fizetési adatok részleteit a [partner Center](https://partner.microsoft.com/dashboard) **kifizetési összefoglalásával** érheti el, és letöltheti a jelentéseket. Az itt megjelenő információkkal és a keresett pénz kategorizálásával kapcsolatos további információkért lásd a [kifizetési összefoglalót](payout-summary.md).
 
 
-##  <a name="payout-hold-status"></a>Kifizetési visszatartás állapota
+## <a name="payout-timeframe"></a>Kifizetés időkerete
 
-Alapértelmezés szerint a kifizetéseket havi rendszerességgel küldjük el a fent leírtak szerint. Azonban lehetősége van arra, hogy a kifizetések egy program ot tartásba, amely megakadályozza számunkra, hogy küldjön kifizetéseket a fiókjába. Ha úgy döntesz, hogy a kifizetéseit várakoztatod, továbbra is rögzítjük az elért bevételeket, és a részleteket a **kifizetési összefoglalódban**adjuk meg. A visszatartás eltávolításáig azonban nem küldünk kifizetéseket a fiókjába.
+A kifizetések havi rendszerességgel történnek (feltéve, hogy a vonatkozó fizetési küszöbérték teljesült, és az alább leírtak szerint nem helyezte el a befizetését). A hónap 15. napján egy adott hónapban esedékes fizetési díj általában elküldhető. Vegye figyelembe, hogy a kifizetések általában 3 – 10 további munkanapot vesznek igénybe, hogy elérjék a kifizetési fiókját. További információ: [fizetési küszöbértékek, metódusok és időkeretek](payment-thresholds-methods-timeframes.md).
 
-A kifizetések várakoztatásához nyissa meg a **Fejlesztői beállítások lapot.** A **Kifizetés és adózás**csoportban a Kifizetés és **adózási profil hozzárendelése** csoportban keresse meg azt a programot, amelyhez kifizetéseket szeretne tartani. A program kifizetéseinek megtartásához kattintson **a Fizetés visszatartása** jelölőnégyzetre. Bármikor módosíthatja a kifizetési visszatartás állapotát, de ne feledje, hogy döntése hatással lesz a következő havi kifizetésre. Ha például áprilisi kifizetést szeretne tartani, akkor a kifizetési visszatartás állapotát március vége előtt állítsa **Be** állapotra.
 
-Miután beállította a kifizetési várakoztatásállapotát **Be**, a program összes kifizetése várakozik, amíg a csúszkát vissza nem kapcsolja **ki**. Ha így tesz, a következő havi kifizetési ciklusban is szerepelni fog (feltéve, hogy a vonatkozó kifizetési küszöbértékek teljesültek). Ha például a kifizetések várakoztatva vannak, de júniusban szeretnéd a kifizetést, akkor a kifizetési visszatartás állapotát május vége előtt **kapcsold ki.**
+##  <a name="payout-hold-status"></a>Kifizetés holdjának állapota
+
+Alapértelmezés szerint a fentiekben leírtak szerint havi rendszerességgel küldjük el a kifizetéseket. Lehetősége van azonban arra is, hogy a kifizetéseit egy megtartott programba helyezi, ami megakadályozza, hogy kifizesse a fiókját. Ha úgy dönt, hogy megtartja a befizetését, továbbra is rögzítjük a beszerzett bevételt, és megadhatjuk a **nyeremények összegzésének**részleteit. Azonban addig nem küldünk fizetést a fiókjába, amíg el nem távolítja a tárolót.
+
+A befizetések tárolásához lépjen a **fejlesztői beállítások menüpontra**. A **kifizetés és az adó**területen a **kifizetési és adózási profil hozzárendelése** szakaszban keresse meg azt a programot, amelyhez a kifizetéseket tárolni szeretné. A programhoz tartozó fizetések tárolásához kattintson a **saját fizetés megtartása** jelölőnégyzetre. Bármikor módosíthatja a kifizetési állapotot, de vegye figyelembe, hogy a döntés a következő havi kifizetésre is hatással van. Ha például a április végét szeretné megtartani, mindenképpen **a március vége előtt állítsa** be a kifizetési Holding állapotát.
+
+Miután beállította a kifizetés állapotát **a be**értékre, a program összes kifizetése megmarad, amíg a csúszkát vissza **nem kapcsolja.** Ha így tesz, a következő havi kifizetési ciklusban is szerepelni fog (ha teljesülnek az érvényes fizetési küszöbértékek). Ha például megtartotta a befizetését, de a júniusi kifizetést szeretné kinyerni, akkor a határidő lejárta előtt mindenképpen **kapcsolja ki** a kifizetési Hold állapotot.
 
 > [!NOTE]
-> **A kifizetési visszatartás állapota** minden programra külön-külön vonatkozik (Microsoft Store, reklám, Azure Marketplace stb.). Ha az összes programon szeretné tartani a kifizetéseket, akkor minden programon külön-külön kell fizetnie.
+> A **kifizetési Holding-állapot** minden egyes programra külön vonatkozik (Microsoft Store, reklám, Azure Marketplace stb.). Ha az összes programban szeretné kifizetni a befizetéseket, minden egyes programban külön kell fizetnie.
 
 
  

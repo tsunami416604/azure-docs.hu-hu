@@ -1,22 +1,22 @@
 ---
-title: Feltételes telepítés sablonokkal
-description: Bemutatja, hogyan lehet feltételesen telepíteni egy erőforrást egy Azure Resource Manager-sablonban.
+title: Feltételes üzembe helyezés sablonokkal
+description: Ismerteti, hogyan lehet erőforrást feltételesen üzembe helyezni egy Azure Resource Manager-sablonban.
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153420"
 ---
-# <a name="conditional-deployment-in-arm-templates"></a>Feltételes telepítés ARM sablonokban
+# <a name="conditional-deployment-in-arm-templates"></a>Feltételes üzembe helyezés ARM-sablonokban
 
-Néha szükség van egy erőforrás üzembe helyezésére egy Azure Resource Manager (ARM) sablonban. Az `condition` elem segítségével adja meg, hogy az erőforrás telepítve van-e. Az elem értéke igaz vagy hamis lesz. Ha az érték igaz, az erőforrás létrejön. Ha az érték hamis, az erőforrás nem jön létre. Az érték csak a teljes erőforrásra alkalmazható.
+Előfordulhat, hogy egy Azure Resource Manager (ARM-) sablonban is telepítenie kell egy erőforrást. Az `condition` elem használatával adhatja meg, hogy az erőforrás telepítve van-e. Az elem értéke TRUE (igaz) vagy FALSE (hamis) értékre lesz feloldva. Ha az érték TRUE (igaz), a rendszer létrehozza az erőforrást. Ha az érték false (hamis), az erőforrás nincs létrehozva. Az értéket csak a teljes erőforrásra lehet alkalmazni.
 
 ## <a name="new-or-existing-resource"></a>Új vagy meglévő erőforrás
 
-A feltételes telepítés segítségével új erőforrást hozhat létre, vagy használhat egy meglévőt. A következő példa bemutatja, hogyan használhatja a feltételt egy új tárfiók üzembe helyezéséhez vagy egy meglévő tárfiók használatához.
+A feltételes telepítés használatával létrehozhat egy új erőforrást, vagy használhat egy meglévőt is. Az alábbi példa bemutatja, hogyan használható a feltétel egy új Storage-fiók üzembe helyezésére vagy egy meglévő Storage-fiók használatára.
 
 ```json
 {
@@ -33,13 +33,13 @@ A feltételes telepítés segítségével új erőforrást hozhat létre, vagy h
 }
 ```
 
-Ha az **újOrExisting** paraméter **értéke új,** a feltétel igaz értéket ad ki. A tárfiók telepítve van. Azonban ha **newOrExisting** van beállítva **a meglévő,** a feltétel kiértékeli a hamis, és a tárfiók nincs telepítve.
+Ha a **newOrExisting** paraméter értéke **új**, a feltétel igaz értéket ad vissza. A Storage-fiók telepítve van. Ha azonban a **newOrExisting** a **meglévő**értékre van állítva, a feltétel hamis értéket ad vissza, és a Storage-fiók nincs telepítve.
 
-Az elemet használó teljes `condition` példasablonról a [Virtuális gép új vagy meglévő virtuális hálózattal, tárhellyel és nyilvános IP-címvel című témakörben olvashat.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)
+A `condition` elemet használó teljes példaként tekintse meg a [virtuális gép új vagy meglévő Virtual Network, tárterületet és nyilvános IP-címet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
 ## <a name="allow-condition"></a>Feltétel engedélyezése
 
-Átadhat egy paraméterértéket, amely azt jelzi, hogy egy feltétel engedélyezett-e. A következő példa egy SQL-kiszolgálót telepít, és opcionálisan engedélyezi az Azure IP-címeket.
+Egy paraméter értékét átadhatja, amely jelzi, hogy engedélyezett-e a feltétel. Az alábbi példa egy SQL Servert telepít, és opcionálisan engedélyezi az Azure IP-címeket.
 
 ```json
 {
@@ -71,21 +71,21 @@ Az elemet használó teljes `condition` példasablonról a [Virtuális gép új 
 }
 ```
 
-A teljes sablonról az [Azure SQL logikai kiszolgálója című témakörben olvashat.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server)
+A teljes sablonhoz lásd: [Azure SQL logikai kiszolgáló](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server).
 
 ## <a name="runtime-functions"></a>Futásidejű függvények
 
-Ha egy [referencia-](template-functions-resource.md#reference) vagy [listafüggvényt](template-functions-resource.md#list) használ egy feltételesen üzembe helyezett erőforrással, a függvény akkor is kiértékelésre kerül, ha az erőforrás nincs telepítve. Hibaüzenetet kap, ha a függvény nem létező erőforrásra hivatkozik.
+Ha a [hivatkozás](template-functions-resource.md#reference) vagy a [lista](template-functions-resource.md#list) függvényt egy feltételesen telepített erőforrással használja, akkor a függvény akkor is ki lesz értékelve, ha az erőforrás nincs telepítve. Hibaüzenet jelenik meg, ha a függvény olyan erőforrásra hivatkozik, amely nem létezik.
 
-Az [if](template-functions-logical.md#if) függvény segítségével győződjön meg arról, hogy a függvény csak az erőforrás üzembe helyezésekor kiértékelt feltételeket. Tekintse meg a [ha függvényt](template-functions-logical.md#if) egy mintasablonhoz, amely feltételesen üzembe helyezett erőforrással használja a ha és a hivatkozás funkciót.
+Az [IF](template-functions-logical.md#if) függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor feltételként van kiértékelve. Tekintse meg az IF [függvényt](template-functions-logical.md#if) egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
 
-Az erőforrást pontosan úgy állítja be, hogy egy feltételes [erőforrástól függjön,](define-resource-dependency.md) pontosan úgy, mint bármely más erőforrás. Ha egy feltételes erőforrás nincs telepítve, az Azure Resource Manager automatikusan eltávolítja azt a szükséges függőségek.
+Egy erőforrást egy feltételes erőforrástól [függőként](define-resource-dependency.md) kell beállítania, pontosan úgy, ahogy bármely más erőforrás. Ha egy feltételes erőforrás nincs telepítve, Azure Resource Manager automatikusan eltávolítja a szükséges függőségekről.
 
 ## <a name="condition-with-complete-mode"></a>Feltétel teljes móddal
 
-Ha egy [sablont teljes móddal](deployment-modes.md) telepít, és egy erőforrás nincs telepítve, mert a feltétel kiértékelése hamis, az eredmény attól függ, hogy melyik REST API-verziót használja a sablon üzembe helyezéséhez. Ha a 2019-05-10-nél korábbi verziót használja, az erőforrás **nem törlődik.** A 2019-05-10 vagy újabb, az erőforrás **törlődik**. Az Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást, ha a feltétel hamis.
+Ha [teljes móddal](deployment-modes.md) rendelkező sablont telepít, és az erőforrás nincs telepítve, mert a feltétel hamis értéket ad vissza, akkor az eredmény attól függ, hogy REST API milyen verziót használ a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. A Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást, ha a feltétel hamis.
 
 ## <a name="next-steps"></a>További lépések
 
-* A sablonok létrehozásával kapcsolatos javaslatokért olvassa el az [ARM-sablon gyakorlati tanácsait.](template-best-practices.md)
-* Egy erőforrás több példányának létrehozásához olvassa el az [Erőforrás-ismétlés az ARM-sablonokban című témakört.](copy-resources.md)
+* A sablonok létrehozásával kapcsolatos javaslatokért lásd: [ARM-sablon – ajánlott eljárások](template-best-practices.md).
+* Egy erőforrás több példányának létrehozásához tekintse [meg az erőforrás-iteráció az ARM-sablonokban](copy-resources.md)című témakört.

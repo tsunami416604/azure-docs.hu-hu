@@ -1,98 +1,98 @@
 ---
-title: 'Hibaelhárítás: Az Azure Functions Runtime nem érhető el'
-description: Ismerje meg, hogyan hárítható el egy érvénytelen tárfiók hibaelhárítása.
+title: 'Hibakeresési hiba: Azure Functions-futtatókörnyezet nem érhető el'
+description: Ismerje meg, hogyan lehet elhárítani egy érvénytelen Storage-fiókot.
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063781"
 ---
-# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibaelhárítási hiba: "Az Azure Functions Runtime nem érhető el"
+# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibakeresési hiba: "a Azure Functions-futtatókörnyezet nem érhető el"
 
-Ez a cikk segítséget nyújt az Azure Portalon megjelenő következő hibakarakterláncok elhárításához:
+Ez a cikk segítséget nyújt a Azure Portalban megjelenő következő hibaüzenetek hibakeresésében:
 
-> "Hiba: Az Azure Functions Runtime nem érhető el. Kattintson ide a tárolási konfigurációval kapcsolatos részletekért."
+> "Hiba: a Azure Functions-futtatókörnyezet nem érhető el. Kattintson ide a tárolási konfiguráció részleteinek megtekintéséhez.
 
-Ez a probléma akkor fordul elő, ha az Azure Functions Runtime nem tud elindulni. A probléma leggyakoribb oka az, hogy a függvényalkalmazás elvesztette a hozzáférést a tárfiókhoz. További információ: [Storage-fiók követelmények](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
+Ez a probléma akkor fordul elő, ha a Azure Functions-futtatókörnyezet nem indítható el. A probléma leggyakoribb oka, hogy a Function alkalmazás elvesztette a hozzáférést a Storage-fiókjához. További információ: a [Storage-fiókra vonatkozó követelmények](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
 
-A cikk további részében elháríthatja a hiba következő okait, például az egyes esetadatok azonosítását és megoldását.
+A cikk további részében a hiba következő okának elhárítása segít, beleértve az egyes esetek azonosítását és megoldását.
 
-## <a name="storage-account-was-deleted"></a>A tárfiók törölve lett
+## <a name="storage-account-was-deleted"></a>A Storage-fiók törölve
 
-Minden függvényalkalmazás működéséhez tárfiók szükséges. Ha törli a fiókot, a funkció nem fog működni.
+Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. Ha a fiók törölve lett, a függvény nem fog működni.
 
-Először keresse meg a tárfiók nevét az alkalmazás beállításaiban. Vagy `AzureWebJobsStorage` `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a tárfiók nevét egy kapcsolati karakterláncba csomagolva. További információ: [App settings reference for Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage` Vagy `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a Storage-fiók nevét, amely egy kapcsolatok karakterláncában van becsomagolva. További információ: [az Alkalmazásbeállítások referenciája Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
 
-Keresse meg a tárfiókot az Azure Portalon, hogy még mindig létezik-e. Ha törölték, hozza létre újra a tárfiókot, és cserélje ki a tárolási kapcsolat karakterláncait. A függvénykód elvész, és újra kell telepítenie.
+Keresse meg a Storage-fiókját a Azure Portalban, és ellenőrizze, hogy még létezik-e. Ha törölték, hozza létre újra a Storage-fiókot, és cserélje le a tárolási kapcsolatok karakterláncait. A függvény kódja elveszett, és újra kell telepítenie.
 
-## <a name="storage-account-application-settings-were-deleted"></a>A tárfiók alkalmazásbeállításai törlődtek
+## <a name="storage-account-application-settings-were-deleted"></a>A Storage-fiók alkalmazásának beállításai törölve
 
-Az előző lépésben, ha nem találja a tárfiók kapcsolati karakterlánc, valószínűleg törölték vagy felülírták. Az alkalmazásbeállítások törlése leggyakrabban akkor történik, ha üzembe helyezési tárolóhelyeket vagy Azure Resource Manager-parancsfájlokat használ az alkalmazásbeállítások beállításához.
+Ha az előző lépésben nem találja a Storage-fiókhoz tartozó kapcsolatok karakterláncát, a rendszer valószínűleg törölte vagy felülírta azt. Az Alkalmazásbeállítások törlésére leggyakrabban akkor kerül sor, ha üzembe helyezési pontokat használ, vagy Azure Resource Manager parancsfájlokat az Alkalmazásbeállítások megadásához.
 
-### <a name="required-application-settings"></a>Szükséges alkalmazásbeállítások
+### <a name="required-application-settings"></a>Szükséges Alkalmazásbeállítások
 
-* Szükséges:
+* Szükséges
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * A felhasználási terv funkcióihoz szükséges:
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-További információ: [App settings reference for Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
+További információ: [az Alkalmazásbeállítások referenciája Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
 ### <a name="guidance"></a>Útmutatás
 
-* Ne ellenőrizze a "bővítőhely beállítását" a következő beállítások egyikét sem. Ha a telepítési tárolóhelyek cseréje, a függvényalkalmazás megszakad.
-* Ne módosítsa ezeket a beállításokat az automatikus központi telepítések részeként.
-* Ezeket a beállításokat meg kell adni, és a létrehozás időpontjában érvényesnek kell lenniük. Egy automatikus központi telepítés, amely nem tartalmazza ezeket a beállításokat, olyan függvényalkalmazást eredményez, amely nem fog futni, még akkor is, ha a beállítások később kerülnek hozzáadásra.
+* Ezeknél a beállításoknál ne a "tárolóhely beállítása" lehetőséget. Ha az üzembe helyezési pontokat cseréli, a Function alkalmazás megszakítja a műveletet.
+* Ne módosítsa ezeket a beállításokat az automatikus telepítések részeként.
+* Ezeket a beállításokat meg kell adni, és érvényesnek kell lenniük a létrehozáskor. Egy automatikus központi telepítés, amely nem tartalmazza ezeket a beállításokat, a függvény alkalmazás nem fog futni, még akkor sem, ha később hozzáadják a beállításokat.
 
-## <a name="storage-account-credentials-are-invalid"></a>A tárfiók hitelesítő adatai érvénytelenek
+## <a name="storage-account-credentials-are-invalid"></a>A Storage-fiók hitelesítő adatai érvénytelenek
 
-A korábban tárgyalt tárfiók kapcsolati karakterláncait frissíteni kell a tárolókulcsok újragenerálása esetén. A tárolásikulcs-kezelésről további információt az [Azure Storage-fiók létrehozása című témakörben](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)talál.
+A tárolási kulcsok újragenerálása esetén frissíteni kell a korábban tárgyalt Storage-fiókhoz tartozó kapcsolatok karakterláncait. További információ a Storage Key Management szolgáltatásról: [Azure Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
-## <a name="storage-account-is-inaccessible"></a>A tárfiók nem érhető el
+## <a name="storage-account-is-inaccessible"></a>A Storage-fiók nem érhető el
 
-A függvényalkalmazásnak hozzá kell tudnia férni a tárfiókhoz. A függvényalkalmazás tárfiókhoz való hozzáférését tiltó gyakori problémák a következők:
+A Function alkalmazásnak képesnek kell lennie hozzáférni a Storage-fiókhoz. A Function app egy Storage-fiókhoz való hozzáférését letiltó gyakori problémák a következők:
 
-* A függvényalkalmazás az App Service-környezetben a megfelelő hálózati szabályok nélkül van telepítve, hogy lehetővé tegye a tárfiókba irányuló és onnan érkező forgalmat.
+* A Function alkalmazást a rendszer a megfelelő hálózati szabályok nélkül helyezi üzembe a App Service Environment a Storage-fiókba irányuló és onnan érkező forgalom engedélyezéséhez.
 
-* A tárfiók tűzfala engedélyezve van, és nincs beállítva a függvények közötti és onnan érkező forgalom engedélyezésére. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* A Storage-fiók tűzfala engedélyezve van, és nincs konfigurálva a függvények felé irányuló és onnan érkező forgalom engedélyezéséhez. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="daily-execution-quota-is-full"></a>A napi végrehajtási kvóta megtelt
 
-Ha napi végrehajtási kvótával rendelkezik, a függvényalkalmazás ideiglenesen le van tiltva, ami miatt a portál vezérlők közül sok elérhetetlenné válik. 
+Ha a napi végrehajtási kvóta konfigurálva van, a Function alkalmazás átmenetileg le lesz tiltva, ami miatt a portál számos vezérlője elérhetetlenné válik. 
 
-A kvóta ellenőrzése az [Azure Portalon](https://portal.azure.com)válassza **platform funkciók** > **funkció alkalmazás beállításai** a függvényalkalmazásban. Ha túllépte a beállított **napi használati kvótát,** a következő üzenet jelenik meg:
+A [Azure Portal](https://portal.azure.com)kvótájának ellenőrzéséhez válassza a **platform szolgáltatásai** > **függvényalkalmazás beállítások** elemet a Function alkalmazásban. Ha a beállított **napi használati kvótát** használja, a következő üzenet jelenik meg:
 
-  > "A Függvény alkalmazás elérte a napi használati kvótát, és a következő 24 órás időkeretig leállították."
+  > "A függvényalkalmazás elérte a napi használati kvótát, és a következő 24 órás időkereten belül le lett állítva."
 
-A probléma megoldásához távolítsa el vagy növelje a napi kvótát, majd indítsa újra az alkalmazást. Ellenkező esetben az alkalmazás végrehajtása a következő napig le van tiltva.
+A probléma megoldásához távolítsa el vagy növelje meg a napi kvótát, majd indítsa újra az alkalmazást. Ellenkező esetben az alkalmazás végrehajtása a következő napig le lesz tiltva.
 
 ## <a name="app-is-behind-a-firewall"></a>Az alkalmazás tűzfal mögött van
 
-A függvény futásidejű lehet, hogy nem érhető el a következő okok miatt:
+Előfordulhat, hogy a függvény futtatókörnyezete a következő okok valamelyike miatt nem érhető el:
 
-* A függvényalkalmazás egy [belső terheléselosztásos App Service-környezetben](../app-service/environment/create-ilb-ase.md) található, és úgy van beállítva, hogy blokkolja a bejövő internetes forgalmat.
+* A Function alkalmazást [belső terheléselosztású app Service Environment](../app-service/environment/create-ilb-ase.md) üzemelteti, és úgy van konfigurálva, hogy letiltsa a bejövő internetes forgalmat.
 
-* A függvényalkalmazás [bejövő IP-korlátozásokkal](functions-networking-options.md#inbound-ip-restrictions) rendelkezik, amelyek az internet-hozzáférés letiltására vannak konfigurálva. 
+* A Function alkalmazás [bejövő IP-korlátozásokkal](functions-networking-options.md#inbound-ip-restrictions) rendelkezik, amelyek az Internet-hozzáférés blokkolására vannak konfigurálva. 
 
-Az Azure Portal hívásokat kezdeményez közvetlenül a futó alkalmazás a függvények listájának lekéréséhez, és http-hívásokat kezdeményez a Kudu végpontra. A **Platform szolgáltatások** lapon található platformszintű beállítások továbbra is elérhetők.
+A Azure Portal közvetlenül a futó alkalmazásban hívja meg a függvények listáját, és HTTP-hívásokat kezdeményez az kudu-végpontra. A platform **szolgáltatásai** lap platform szintű beállításai továbbra is elérhetők.
 
-Az App Service-környezet konfigurációjának ellenőrzése:
-1. Nyissa meg annak az alhálózatnak a hálózati biztonsági csoportját (NSG), amelyben az App Service-környezet található.
-1. Ellenőrizze a bejövő szabályokat, hogy a forgalom, amely a számítógép nyilvános IP-címéről, ahol az alkalmazás eléréséhez érkezik. 
+A App Service Environment konfiguráció ellenőrzése:
+1. Nyissa meg annak az alhálózatnak a hálózati biztonsági csoportját (NSG), ahol a App Service Environment található.
+1. Ellenőrizze, hogy a bejövő szabályok lehetővé teszik-e az alkalmazáshoz hozzáférő számítógép nyilvános IP-címéről érkező forgalom engedélyezését. 
    
-A portált olyan számítógépről is használhatja, amely az alkalmazást futtató virtuális hálózathoz vagy a virtuális hálózaton futó virtuális géphez csatlakozik. 
+A portált olyan számítógépről is használhatja, amely az alkalmazást futtató virtuális hálózathoz vagy a virtuális hálózatban futó virtuális géphez van csatlakoztatva. 
 
-A bejövő szabályok konfigurálásáról az [App Service-környezet hálózati szempontjaicímű hálózati szempontok](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)című szakaszában talál további információt.
+A bejövő szabályok konfigurálásával kapcsolatos további információkért tekintse [meg az App Service Environment hálózatkezelési szempontjainak](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)hálózati biztonsági csoportjai című szakaszát.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a funkcióalkalmazások figyeléséről:
+Ismerje meg a Function apps figyelését:
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions monitorozása](functions-monitoring.md)

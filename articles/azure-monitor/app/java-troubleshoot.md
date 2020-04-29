@@ -1,68 +1,68 @@
 ---
-title: Alkalmazáselemzési adatok – problémamegoldás Java webes projektben
-description: Hibaelhárítási útmutató – élő Java-alkalmazások figyelése az Application Insights segítségével.
+title: Java-webprojektek Application Insightsának hibáinak megoldása
+description: Hibaelhárítási útmutató – élő Java-alkalmazások figyelése Application Insightsokkal.
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657180"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
-Kérdések vagy problémák az [Azure Application Insights Java-ban?][java] Íme néhány tipp.
+[Az Azure Application Insights-][java]mel kapcsolatos kérdések és problémák Java-ban? Íme néhány tipp.
 
-## <a name="build-errors"></a>Build hibák
-**Az Eclipse vagy intellij ötlet, amikor hozzáadja az Application Insights SDK keresztül Maven vagy Gradle, kapok build vagy ellenőrzőösszeg érvényesítési hibákat.**
+## <a name="build-errors"></a>Felépítési hibák
+**Az Eclipse-ben vagy a IntelliJ-ben, ha a Application Insights SDK-t Maven-vagy Gradle-n keresztül adja hozzá, a Build vagy az ellenőrzőösszeg érvényesítési hibáit.**
 
-* Ha a `<version>` függőségi elem helyettesítő karakterekkel (pl. (Maven) `<version>[2.0,)</version>` vagy (Gradle) `version:'2.0.+'`rendelkező mintát használ, `2.0.1`próbáljon meg egy adott verziót megadni a következőhöz hasonlóan: . Tekintse meg a legújabb verzió [kiadási megjegyzéseket.](https://github.com/Microsoft/ApplicationInsights-Java/releases)
+* Ha a függőségi `<version>` elem helyettesítő karakterekkel (például Maven) `<version>[2.0,)</version>` vagy (Gradle) `version:'2.0.+'`rendelkező mintázatot használ, próbáljon meg inkább egy adott verziót megadni, például `2.0.1`:. Tekintse meg a legújabb verzió [kibocsátási megjegyzéseit](https://github.com/Microsoft/ApplicationInsights-Java/releases) .
 
-## <a name="no-data"></a>Nincs adat
-**Sikeresen felvettem az Application Insightsot, és futtattam az alkalmazást, de még soha nem láttam adatokat a portálon.**
+## <a name="no-data"></a>Nincsenek adatkészletek
+**Felvettem Application Insights sikeresen, és futtattam az alkalmazást, de még soha nem láttam az adataim a portálon.**
 
-* Várjon egy percet, és kattintson a Frissítés gombra. A diagramok rendszeresen frissülnek, de manuálisan is frissíthetők. A frissítési időköz a diagram időtartományáttól függ.
-* Ellenőrizze, hogy rendelkezik-e az ApplicationInsights.xml fájlban (a projekt erőforrásmappájában) vagy a Környezeti változóban definiált instrumentation kulccsal.
-* Ellenőrizze, hogy `<DisableTelemetry>true</DisableTelemetry>` nincs-e csomópont az XML-fájlban.
-* Előfordulhat, hogy a tűzfalon meg kell nyitnia a 80-as és a 443-as TCP-portokat, hogy a kimenő forgalom dc.services.visualstudio.com. A [tűzfalkivételek teljes listájának](../../azure-monitor/app/ip-addresses.md) megtekintése
-* A Microsoft Azure start tábláján tekintse meg a szolgáltatás állapotleképezését. Ha vannak riasztási jelzések, várja meg, amíg azok visszatértek az OK gombra, majd zárja be, majd nyissa meg újra az Application Insights alkalmazás panel.
-* [A naplózás bekapcsolása:](#debug-data-from-the-sdk) az `<SDKLogger />` ApplicationInsights.xml fájl gyökércsomópontja alatti elem hozzáadásával (a projekt erőforrásmappájában), és ellenőrizze, hogy vannak-e olyan bejegyzések, amelyek et az AI: INFO/WARN/ERROR elemekkel előnéznek a gyanús naplók miatt. 
-* Győződjön meg arról, hogy a Java SDK sikeresen betöltötte a megfelelő ApplicationInsights.xml fájlt, és megnézi a konzol kimeneti üzeneteit a "A konfigurációs fájl sikeresen megtalálható" utasítást.
-* Ha a konfigurációs fájl nem található, ellenőrizze a kimeneti üzeneteket, hogy hol keresse a konfigurációs fájlt, és győződjön meg arról, hogy az ApplicationInsights.xml fájl az egyik ilyen keresési helyen található. Ökölszabályként a konfigurációs fájlt az Application Insights SDK JARs közelében helyezheti el. Például: a Tomcat ban ez a WEB-INF/classes mappát jelenti. A fejlesztés során az ApplicationInsights.xml fájlt a webes projekt erőforrásmappájába helyezheti.
-* Kérjük, tekintse meg a GitHub problémák oldalon az Ismert problémák az SDK.Please also look at [GitHub issues page](https://github.com/Microsoft/ApplicationInsights-Java/issues) for known issues with the SDK.
-* Győződjön meg arról, hogy az Application Insights mag, a web, az ügynök és a naplózási appenders ugyanazon verzióját használja a verzióütközési problémák elkerülése érdekében.
+* Várjon egy percet, és kattintson a frissítés gombra. A diagramok rendszeresen frissülnek, de manuálisan is frissítheti őket. A frissítési időköz a diagram időtartományának függvénye.
+* Győződjön meg arról, hogy a ApplicationInsights. xml fájlban (a projekt erőforrások mappájában) vagy környezeti változóként konfigurált kialakítási kulccsal rendelkezik.
+* Ellenőrizze, hogy nincs- `<DisableTelemetry>true</DisableTelemetry>` e csomópont az XML-fájlban.
+* Előfordulhat, hogy a tűzfalon meg kell nyitnia a 80-es és a 443-es TCP-portot a dc.services.visualstudio.com kimenő forgalmához. A [tűzfal-kivételek teljes listáját](../../azure-monitor/app/ip-addresses.md) lásd:
+* A Microsoft Azure kezdőképernyőn tekintse meg a szolgáltatás állapotát jelző lapot. Ha vannak riasztási jelzések, várjon, amíg vissza nem tért az OK gombra, majd zárjunk be és nyissa meg újra a Application Insights alkalmazás paneljét.
+* A [naplózás bekapcsolásához](#debug-data-from-the-sdk) vegyen fel egy `<SDKLogger />` elemet a ApplicationInsights. xml fájl legfelső szintű csomópontjában (a projekt erőforrások mappájába), és keresse meg az AI: info/warn/Error típusú gyanús naplókhoz tartozó bejegyzéseket. 
+* Győződjön meg arról, hogy a Java SDK sikeresen betöltötte a megfelelő ApplicationInsights. xml fájlt, és megtekinti a konzol kimeneti üzeneteit a "konfigurációs fájl sikeresen megtalálva" utasításban.
+* Ha a konfigurációs fájl nem található, tekintse meg a kimeneti üzeneteket, ahol megtekintheti a konfigurációs fájl keresésének helyét, és győződjön meg arról, hogy a ApplicationInsights. xml az egyik keresési helyen található. Az általános szabály, hogy a konfigurációs fájlt a Application Insights SDK-tégelyek közelében helyezheti el. Például: a Tomcat-ben ez a WEB-INF/classs mappát jelenti. A fejlesztés során elhelyezheti a ApplicationInsights. xml fájlt a webes projekt erőforrások mappájába.
+* Tekintse meg a [GitHub-problémák oldalát](https://github.com/Microsoft/ApplicationInsights-Java/issues) is, amely az SDK ismert problémáit tartalmazza.
+* A verziók ütközésével kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az Application Insights Core, web, Agent és naplózási hozzáfűzése azonos verzióját használja.
 
-#### <a name="i-used-to-see-data-but-it-has-stopped"></a>Régebben láttam az adatokat, de leállt
-* Ellenőrizze az [állapot blog](https://blogs.msdn.com/b/applicationinsights-status/).
-* Elérte az adatpontok havi kvótáját? Nyissa meg a Beállítások/Kvóta és az Árképzés lehetőséget. Ha igen, frissítheti a csomagot, vagy fizethet a további kapacitásért. Tekintse meg az [árképzési rendszert](https://azure.microsoft.com/pricing/details/application-insights/).
-* Frissítette mostanában az SDK-t? Győződjön meg arról, hogy csak egyedi SDK-üvegek vannak jelen a projektkönyvtárban. Az SDK-nak nem lehet két különböző verziója.
-* A megfelelő AI-erőforrást keresi? Kérjük, egyezik az alkalmazás iKey-je az erőforrás, ahol telemetriai adatokat vár. Ugyanolyannak kell lenniük.
+#### <a name="i-used-to-see-data-but-it-has-stopped"></a>Felhasználtam az adatmegjelenítést, de leállt
+* Keresse meg az [állapot blogját](https://blogs.msdn.com/b/applicationinsights-status/).
+* Megtalálta az adatpontok havi kvótáját? A beállítások/kvóta és díjszabás megnyitásával tájékozódhat. Ha igen, lehetősége van a csomag frissítésére, vagy a további kapacitás megfizetésére. Tekintse meg a [díjszabási sémát](https://azure.microsoft.com/pricing/details/application-insights/).
+* Nemrég frissítette az SDK-t? Győződjön meg arról, hogy csak egyedi SDK-tégelyek jelennek meg a projekt címtárában. Az SDK-nak nem lehet két különböző verziója.
+* A megfelelő AI-erőforrást keresi? Adja meg az alkalmazás Rendszerállapotkulcsot az erőforráshoz, ahol a telemetria vár. Azonosnak kell lenniük.
 
-#### <a name="i-dont-see-all-the-data-im-expecting"></a>Nem látom az összes várt adatot
-* Nyissa meg a Használat és a becsült költség lapot, és ellenőrizze, hogy a [mintavétel működik-e.](../../azure-monitor/app/sampling.md) (A 100%-os átvitel azt jelenti, hogy a mintavétel nem működik.) Az Application Insights szolgáltatás beállítható, hogy elfogadja csak egy töredéke a telemetriai, hogy érkezik az alkalmazásból. Ez segít a telemetriahavi kvótáján belül maradni.
-* Be van kapcsolva az SDK mintavételezése? Ha igen, az adatok mintavételezése az összes vonatkozó típusra megadott sebességgel történne.
-* A Java SDK egy régebbi verzióját futtatja? A 2.0.1-es verziótól kezdve hibatűrő mechanizmust vezettünk be az időszakos hálózati és háttérhibák, valamint a helyi meghajtókon lévő adatmegőrzés kezelésére.
-* A túlzott telemetria miatt megfojtják? Ha bekapcsolja az INFO naplózást, megjelenik egy "Az alkalmazás szabályozása" naplóüzenet. A jelenlegi korlát 32k telemetriai elemek/másodperc.
+#### <a name="i-dont-see-all-the-data-im-expecting"></a>Nem látom az összes várt adatértéket
+* Nyissa meg a használati és becsült költségek lapot, és győződjön meg arról, hogy a [mintavételezés](../../azure-monitor/app/sampling.md) működik-e. (a 100%-os átviteli érték azt jelenti, hogy a mintavételezés nem működik.) A Application Insights szolgáltatás beállítható úgy, hogy csak az alkalmazásból érkező telemetria egy részét fogadja el. Ez segít megőrizni a telemetria havi kvótáját.
+* Be van kapcsolva az SDK-mintavétel? Ha igen, az adat mintavétele az összes vonatkozó típushoz megadott sebességgel történik.
+* A Java SDK egy régebbi verzióját futtatja? Az 2.0.1-es verziótól kezdődően a hibatűrési mechanizmust bevezetjük az időszakos hálózati és háttérbeli hibák kezelésére, valamint az adatmegőrzésre a helyi meghajtókon.
+* A túlságosan nagy telemetria miatt szabályozásra kerül? Ha bekapcsolja az információ-naplózást, megjelenik egy "alkalmazás szabályozása" üzenet. Aktuális korlátunk a 32k telemetria-elemek/másodperc.
 
-### <a name="java-agent-cannot-capture-dependency-data"></a>A Java-ügynök nem tudja rögzíteni a függőségi adatokat
-* Konfigurálta a Java-ügynököt a [Java-ügynök konfigurálása](java-agent.md) szerint?
-* Győződjön meg arról, hogy mind a java agent jar, mind az AI-Agent.xml fájl ugyanabba a mappába kerül.
-* Győződjön meg arról, hogy az automatikusan gyűjtést megkísérelt függőség támogatja az automatikus gyűjtést. Jelenleg csak a MySQL, az MsSQL, az Oracle DB és az Azure Cache for Redis függőségi gyűjteményt támogatjuk.
+### <a name="java-agent-cannot-capture-dependency-data"></a>A Java-ügynök nem tudja rögzíteni a függőségi adatmennyiséget
+* Konfigurálta a Java-ügynököt a [Java-ügynök konfigurálása](java-agent.md) után?
+* Győződjön meg arról, hogy a Java Agent jar és a AI-Agent. xml fájl is ugyanabba a mappába kerül.
+* Győződjön meg arról, hogy az automatikus gyűjtéshez szükséges függőséget az automatikus gyűjtemény támogatja. Jelenleg csak a MySQL, az MsSQL, a Oracle DB és az Azure cache támogatott a Redis függőségi gyűjteményhez.
 
 ## <a name="no-usage-data"></a>Nincsenek használati adatok
-**A kérelmekre és a válaszidőkre vonatkozó adatokat látok, de nincs oldalmegtekintés, böngésző vagy felhasználói adat.**
+**Megjelennek a kérelmekkel és a válaszadási időpontokkal kapcsolatos információk, de nem találhatók meg az oldal nézet, a böngésző vagy a felhasználói információ.**
 
-Sikeresen beállította az alkalmazást, hogy telemetriát küldjön a kiszolgálóról. Most a következő lépés az, hogy [állítsa be a weboldalakat, hogy küldjön telemetriai adatokat a böngészőből][usage].
+Sikeresen beállította az alkalmazást, hogy telemetria küldjön a kiszolgálóról. A következő lépés a [weblapok beállítása a telemetria a webböngészőből való elküldéséhez][usage].
 
-Azt is megteheti, ha az ügyfél egy alkalmazás egy [telefon vagy más eszköz,][platforms]küldhet telemetriai adatokat onnan.
+Azt is megteheti, hogy ha az ügyfél egy [telefonon vagy más eszközön][platforms]lévő alkalmazás, telemetria is küldhet.
 
-Használja ugyanazt a instrumentation kulcsot az ügyfél és a kiszolgáló telemetria beállításához. Az adatok ugyanabban az Application Insights-erőforrásban jelennek meg, és az ügyfélről és a kiszolgálóról származó eseményekkorrelkapcsolatos.
+Használja ugyanazt a kialakítási kulcsot az ügyfél és a kiszolgáló telemetria beállításához. Az adatok ugyanabban a Application Insights erőforrásban jelennek meg, és az ügyfél és a kiszolgáló eseményei is összekapcsolhatók.
 
 
-## <a name="disabling-telemetry"></a>Telemetrialetiltása
-**Hogyan tudom letiltani a telemetriai gyűjteményt?**
+## <a name="disabling-telemetry"></a>Telemetria letiltása
+**Hogyan lehet letiltani a telemetria-gyűjteményt?**
 
-Kódban:
+A kódban:
 
 ```Java
 
@@ -72,32 +72,32 @@ Kódban:
 
 **Vagy**
 
-Frissítse az ApplicationInsights.xml fájlt (a projekt erőforrásmappájában). Adja hozzá a következőket a gyökércsomópont hoz:
+Frissítse a ApplicationInsights. xml fájlt (a projekt erőforrások mappájából). Adja hozzá a következőt a gyökérszintű csomóponthoz:
 
 ```XML
 
     <DisableTelemetry>true</DisableTelemetry>
 ```
 
-Az XML-módszerrel újra kell indítani az alkalmazást az érték módosításakor.
+Az XML-metódus használatával újra kell indítania az alkalmazást az érték módosításakor.
 
 ## <a name="changing-the-target"></a>A cél módosítása
-**Hogyan módosíthatom, hogy a projektem melyik Azure-erőforrásnak küld adatokat?**
+**Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?**
 
-* [Az új erőforrás műszerezési kulcsának beszerezni.][java]
-* Ha az Azure Toolkit for Eclipse használatával adta hozzá az Application Insights-ot a projekthez, kattintson a jobb gombbal a webes projektre, válassza az **Azure**, **Az Application Insights konfigurálása**lehetőséget, és módosítsa a kulcsot.
-* Ha a Instrumentation kulcsot környezeti változóként konfigurálta, frissítse a környezeti változó értékét az új iKey-vel.
-* Ellenkező esetben frissítse a kulcsot az ApplicationInsights.xml fájlban a projekt erőforrásmappájában.
+* [Szerezze be az új erőforrás rendszerállapot-kulcsát.][java]
+* Ha a Azure Toolkit for Eclipse használatával adta hozzá Application Insights a projekthez, kattintson a jobb gombbal a webes projektre, válassza az **Azure**-t, **konfigurálja a Application Insights**, és módosítsa a kulcsot.
+* Ha a kialakítási kulcsot környezeti változóként konfigurálta, frissítse a környezeti változó értékét új Rendszerállapotkulcsot.
+* Ellenkező esetben frissítse a kulcsot a ApplicationInsights. xml fájlban a projekt erőforrások mappájából.
 
-## <a name="debug-data-from-the-sdk"></a>Az SDK-ból származó adatok hibakeresése
+## <a name="debug-data-from-the-sdk"></a>Adatok hibakeresése az SDK-ból
 
-**Hogyan tudom meg, mit csinál az SDK?**
+**Honnan tudhatom meg, hogy mit csinál az SDK?**
 
-Ha további információra van kíváncsi az API-ban zajló eseményekről, adja hozzá `<SDKLogger/>` az ApplicationInsights.xml konfigurációs fájl gyökércsomópontja alá.
+Ha többet szeretne megtudni arról, hogy mi történik az API-ban `<SDKLogger/>` , adja hozzá a ApplicationInsights. xml konfigurációs fájljának gyökérszintű csomópontját.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights.xml fájl
+### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
 
-Azt is utasíthatja a naplózóval, hogy adja ki egy fájlba:
+Azt is utasíthatja, hogy a naplózó fájlba írja a kimenetet:
 
 ```XML
   <SDKLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
@@ -107,9 +107,9 @@ Azt is utasíthatja a naplózóval, hogy adja ki egy fájlba:
 </SDKLogger>
 ```
 
-### <a name="spring-boot-starter"></a>Tavaszi boot starter
+### <a name="spring-boot-starter"></a>Spring boot Starter
 
-Ha engedélyezni szeretné az SDK-naplózást a Spring Boot Alkalmazásalkalmazásokkal az Application Insights tavaszi rendszerindítási starter használatával, adja hozzá a következőket a `application.properties` fájlhoz:
+Ha az SDK-naplózást a Spring boot-alkalmazásokkal szeretné engedélyezni a Application Insights Spring boot Starter `application.properties` használatával, adja hozzá a következőt a fájlhoz:
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -117,7 +117,7 @@ azure.application-insights.logger.base-folder-path=C:/agent/AISDK
 azure.application-insights.logger.level=trace
 ```
 
-vagy normál hibára nyomtatva:
+vagy a standard hibába való nyomtatáshoz:
 
 ```yaml
 azure.application-insights.logger.type=console
@@ -126,7 +126,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Java ügynök
 
-A JVM-ügynök naplózásának engedélyezése az [AI-Agent.xml fájl frissítéséhez](java-agent.md):
+A JVM-ügynök naplózásának engedélyezéséhez frissítse a [AI-Agent. xml fájlt](java-agent.md):
 
 ```xml
 <AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
@@ -137,60 +137,60 @@ A JVM-ügynök naplózásának engedélyezése az [AI-Agent.xml fájl frissíté
 ```
 
 ### <a name="java-command-line-properties"></a>Java parancssori tulajdonságok
-_A 2.4.0-s verzió óta_
+_A verzió 2.4.0 óta_
 
-A naplózás engedélyezése parancssori beállításokkal, konfigurációs fájlok módosítása nélkül:
+A naplózás engedélyezése parancssori kapcsolók használatával a konfigurációs fájlok módosítása nélkül:
 
 ```
 java -Dapplicationinsights.logger.file.level=trace -Dapplicationinsights.logger.file.uniquePrefix=AI -Dapplicationinsights.logger.baseFolderPath="C:/my/log/dir" -jar MyApp.jar
 ```
 
-vagy normál hibára nyomtatva:
+vagy a standard hibába való nyomtatáshoz:
 
 ```
 java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 ```
 
-## <a name="the-azure-start-screen"></a>Az Azure kezdőképernyője
-**Az [Azure portalt](https://portal.azure.com)nézem. Mond valamit a térkép az alkalmazásommal kapcsolatban?**
+## <a name="the-azure-start-screen"></a>Az Azure kezdőképernyő
+**Megtekintem [a Azure Portal](https://portal.azure.com). A Térkép az alkalmazásról szól?**
 
-Nem, az Azure-kiszolgálók állapotát mutatja világszerte.
+Nem, az Azure-kiszolgálók állapotát mutatja az egész világon.
 
-*Az Azure start tábláján (kezdőképernyőn) hogyan találhatok adatokat az alkalmazásommal kapcsolatban?*
+*Az Azure-beli kezdőképernyőn (kezdőképernyő) Hogyan kereshetek meg az alkalmazással kapcsolatos adatok?*
 
-Feltéve, hogy [beállítja az alkalmazást az Application Insights számára,][java]kattintson a Tallózás gombra, válassza az Application Insights lehetőséget, és válassza ki az alkalmazáshoz létrehozott alkalmazás-erőforrást. Ahhoz, hogy a jövőben gyorsabban odaérj, rögzítheted az alkalmazásodat a kezdőtáblára.
+Feltételezve, hogy az [alkalmazást a Application Insightshoz állítja be][java], kattintson a Tallózás gombra, válassza a Application Insights lehetőséget, majd válassza ki az alkalmazáshoz létrehozott alkalmazás-erőforrást. A jövőben a közeljövőben rögzítheti az alkalmazást az üzenőfalon.
 
 ## <a name="intranet-servers"></a>Intranetes kiszolgálók
-**Figyelhetek egy kiszolgálót az intraneten?**
+**Figyelhető egy kiszolgáló az intraneten?**
 
-Igen, feltéve, hogy a kiszolgáló telemetriai adatokat küldhet az Application Insights-portálra a nyilvános interneten keresztül.
+Igen, ha a kiszolgáló telemetria tud küldeni a Application Insights portálra a nyilvános interneten keresztül.
 
-Előfordulhat, hogy a tűzfalon meg kell nyitnia a 80-as és a 443-as TCP-portokat a dc.services.visualstudio.com és f5.services.visualstudio.com kimenő forgalom hoz.
+Előfordulhat, hogy a tűzfalon a 80-es és a 443-es TCP-portot kell megnyitnia a kimenő forgalom dc.services.visualstudio.com és f5.services.visualstudio.com.
 
 ## <a name="data-retention"></a>Adatmegőrzés
-**Mennyi ideig őrzi meg az adatokat a portálon? Biztonságos?**
+**Mennyi ideig tartanak a portálon tárolt adat? Biztonságos?**
 
-Lásd: [Adatmegőrzés és adatvédelem][data].
+Tekintse meg [az adatmegőrzést és az adatvédelmet][data].
 
 ## <a name="debug-logging"></a>Hibakeresési naplózás
-Az Application `org.apache.http`Insights a . Ez az Application Insights alapedényein belül `com.microsoft.applicationinsights.core.dependencies.http`van áthelyezve a névtér alatt. Ez lehetővé teszi, hogy az Application `org.apache.http` Insights olyan forgatókönyveket kezeljen, amelyekben ugyanazon különböző verziói egy kódbázisban léteznek.
+Application Insights használja `org.apache.http`. Ez a névtér `com.microsoft.applicationinsights.core.dependencies.http`alatt Application Insights Core tégelyben található. Ez lehetővé teszi, hogy a Application Insights olyan forgatókönyveket kezeljen, `org.apache.http` amelyekben ugyanazok a különböző verziói találhatók meg egy kódon belül.
 
 >[!NOTE]
->Ha engedélyezi a DEBUG szintnaplózást az alkalmazás összes névterében, akkor azt `org.apache.http` az `com.microsoft.applicationinsights.core.dependencies.http`összes végrehajtó modul tiszteletben tartja, beleértve a névre átnevezett .. Az Application Insights nem fogja tudni alkalmazni a szűrést ezekre a hívásokra, mert a naplóhívást az Apache-függvénytár kezdeményezi. A DEBUG szintnaplózás jelentős mennyiségű naplóadatot eredményez, és nem ajánlott az élő termelési példányok számára.
+>Ha engedélyezi a HIBAKERESÉSi szintű naplózást az alkalmazás összes névterében, a rendszer az összes végrehajtó modult tiszteletben tartja, `org.apache.http` beleértve a nevet is `com.microsoft.applicationinsights.core.dependencies.http`. A Application Insights nem fogja tudni alkalmazni ezeket a hívásokat, mert az Apache Library a napló hívását végzi. A HIBAKERESÉSi szint naplózása jelentős mennyiségű naplófájlt eredményez, és nem ajánlott éles üzemi példányok esetén.
 
 
 ## <a name="next-steps"></a>További lépések
-**Beállítottam az Application Insights alkalmazást a Java-kiszolgálóalkalmazáshoz. Mi mást tehetnék?**
+**Beállítottam Application Insights a Java Server-alkalmazáshoz. Mit tehetek?**
 
-* [A weboldalak elérhetőségének ellenőrzése][availability]
-* [Weblaphasználat figyelése][usage]
-* [A használati és az eszközalkalmazásokkal kapcsolatos problémák diagnosztizálása][platforms]
-* [Az alkalmazás használatának nyomon követésére használt kód írása][track]
+* [Weblapok rendelkezésre állásának monitorozása][availability]
+* [Weblap használatának figyelése][usage]
+* [A használat követése és a problémák diagnosztizálása az eszköz alkalmazásaiban][platforms]
+* [Kód írása az alkalmazás használatának nyomon követéséhez][track]
 * [Diagnosztikai naplók rögzítése][javalogs]
 
 ## <a name="get-help"></a>Segítségkérés
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [Probléma fájlja a GitHubon](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [Probléma fájl a GitHubon](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

@@ -4,10 +4,10 @@ description: A szolgáltatás állapotával kapcsolatos értesítések segítsé
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77653968"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon

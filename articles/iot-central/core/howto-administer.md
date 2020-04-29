@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Central alkalmazásbeállításainak módosítása | Microsoft dokumentumok
-description: Rendszergazdaként az Azure IoT Central alkalmazás kezelése alkalmazásnév, URL-cím módosításával, kép feltöltésével és alkalmazás törlésével
+title: Az Azure IoT Central alkalmazás beállításainak módosítása | Microsoft Docs
+description: Rendszergazdaként az alkalmazás nevének, URL-címének, feltöltésének és az alkalmazás törlésének megváltoztatásával hogyan kezelheti Azure IoT Central alkalmazását.
 author: viv-liu
 ms.author: viviali
 ms.date: 11/27/2019
@@ -9,45 +9,45 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158681"
 ---
-# <a name="change-iot-central-application-settings"></a>IoT Central alkalmazásbeállításainak módosítása
+# <a name="change-iot-central-application-settings"></a>IoT Central alkalmazás beállításainak módosítása
 
 
 
-Ez a cikk ismerteti, hogyan, rendszergazdaként kezelheti az alkalmazás nevét és URL-címét, a kép feltöltése, és egy alkalmazás törlése az Azure IoT Central-alkalmazásban.
+Ez a cikk azt ismerteti, hogyan kezelheti az alkalmazást rendszergazdaként az alkalmazás nevének és URL-címének módosításával, a rendszerkép feltöltésével és az alkalmazás törlésével az Azure IoT Central alkalmazásban.
 
-A **felügyeleti** szakasz eléréséhez és használatához egy Azure IoT Central alkalmazás **rendszergazdai** szerepkörben kell lennie. Ha létrehoz egy Azure IoT Central-alkalmazást, a rendszer automatikusan hozzárendeli az adott alkalmazás **rendszergazdai** szerepköréhez.
+Az **Adminisztráció** szakasz eléréséhez és használatához **rendszergazdai** szerepkörrel kell rendelkeznie egy Azure IoT Central-alkalmazáshoz. Ha létrehoz egy Azure IoT Central alkalmazást, a rendszer automatikusan hozzárendeli az adott alkalmazáshoz tartozó **rendszergazdai** szerepkörhöz.
 
-## <a name="change-application-name-and-url"></a>Alkalmazás névnek és URL-címnek módosítása
+## <a name="change-application-name-and-url"></a>Alkalmazás nevének és URL-címének módosítása
 
-Az **Alkalmazásbeállítások** lapon módosíthatja az alkalmazás nevét és URL-címét, majd válassza a **Mentés lehetőséget.**
+Az **Alkalmazásbeállítások** lapon módosíthatja az alkalmazás nevét és URL-címét, majd válassza a **Mentés**lehetőséget.
 
 ![Alkalmazásbeállítások lap](media/howto-administer/image0-a.png)
 
-Ha a rendszergazda egyéni témát hoz létre az alkalmazáshoz, ez a lap tartalmaz egy lehetőséget az **alkalmazásnevének** elrejtésére a felhasználói felületen. Ez a beállítás akkor hasznos, ha az egyéni téma alkalmazásemblémája tartalmazza az alkalmazás nevét. További információ: [Az Azure IoT központi felhasználói felületének testreszabása.](./howto-customize-ui.md)
+Ha a rendszergazda egyéni témát hoz létre az alkalmazáshoz, ez a lap tartalmaz egy lehetőséget az **alkalmazás nevének** elrejtésére a felhasználói felületen. Ez a beállítás akkor hasznos, ha az egyéni téma alkalmazásának emblémája tartalmazza az alkalmazás nevét. További információ: [Az Azure IoT Central felhasználói felületének testreszabása](./howto-customize-ui.md).
 
 > [!Note]
-> Ha módosítja az URL-címet, a régi URL-t egy másik Azure IoT Central-ügyfél is megveheti. Ha ez megtörténik, akkor már nem használható. Az URL-cím módosításakor a régi URL-cím már nem működik, és értesítenie kell a felhasználókat a használandó új URL-címről.
+> Ha megváltoztatja az URL-címet, a régi URL-címet egy másik Azure IoT Central ügyfél is elvégezheti. Ha ez történik, már nem használható. Ha megváltoztatja az URL-címet, a régi URL-cím már nem működik, és értesítenie kell a felhasználókat a használni kívánt új URL-címről.
 
 ## <a name="delete-an-application"></a>Alkalmazás törlése
 
-A **Törlés** gombbal véglegesen törölheti az IoT Central alkalmazást. Ez a művelet véglegesen törli az alkalmazáshoz társított összes adatot.
+Az IoT Central alkalmazás végleges törléséhez használja a **delete (Törlés** ) gombot. Ez a művelet véglegesen törli az alkalmazáshoz társított összes adatmennyiséget.
 
 > [!Note]
-> Egy alkalmazás törléséhez is rendelkeznie kell engedélyekkel az azure-előfizetésben kiválasztott erőforrások törléséhez, amikor létrehozta az alkalmazást. További információ: [Szerepköralapú hozzáférés-vezérlés használata az Azure-előfizetési erőforrásokhoz való hozzáférés kezeléséhez.](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
+> Egy alkalmazás törléséhez az alkalmazás létrehozásakor kiválasztott Azure-előfizetésben is rendelkeznie kell az erőforrások törléséhez szükséges engedélyekkel. További információ: [szerepköralapú hozzáférés-vezérlés használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
 ## <a name="manage-programmatically"></a>Programozott kezelés
 
-Az IoT Central Azure Resource Manager SDK-csomagok node, Python, C#, Ruby, Java és Go esetén érhetők el. Ezekkel a csomagokkal hozhat létre, listázhat, frissíthet vagy törölhet IoT Central-alkalmazásokat. A csomagok a hitelesítés és a hibakezelés kezeléséhez segítőket tartalmaznak.
+IoT Central Azure Resource Manager SDK-csomagok a Node, a Python, a C#, a Ruby, a Java és a go esetében érhetők el. Ezeket a csomagokat IoT Central-alkalmazások létrehozásához, listázásához, frissítéséhez vagy törléséhez használhatja. A csomagok közé tartoznak a hitelesítés és a hibakezelés kezeléséhez szükséges segítők.
 
-Az Azure Resource Manager SDK-k használatára [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples)vonatkozó példákat a.
+Példákat talál arra, hogyan használhatja a Azure Resource Manager SDK-kat [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples)a következő helyen:.
 
-További információ: a következő GitHub-adattárak és -csomagok:
+További információért lásd a következő GitHub-adattárakat és-csomagokat:
 
 | Nyelv | Adattár | Csomag |
 | ---------| ---------- | ------- |
@@ -60,4 +60,4 @@ További információ: a következő GitHub-adattárak és -csomagok:
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerkedett az Azure IoT Central alkalmazás felügyeletével, a javasolt következő lépés a [Felhasználók és szerepkörök kezelése](howto-manage-users-roles.md) az Azure IoT Centralban.
+Most, hogy megismerte az Azure IoT Central-alkalmazás felügyeletének módját, a javasolt következő lépés a [felhasználók és szerepkörök kezelése](howto-manage-users-roles.md) az Azure IoT Central-ban című témakörben.

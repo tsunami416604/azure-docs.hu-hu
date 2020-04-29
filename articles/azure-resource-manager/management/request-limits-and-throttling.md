@@ -1,124 +1,124 @@
 ---
 title: Kérelemkorlátozások és -szabályozás
-description: Bemutatja, hogyan kell használni a szabályozás ta- és előfizetés-kezelői kérelmek, ha elérte az előfizetési korlátokat.
+description: Ismerteti, hogyan használható a szabályozás Azure Resource Manager kérelmekkel, ha elérte az előfizetési korlátokat.
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239363"
 ---
 # <a name="throttling-resource-manager-requests"></a>Erőforrás-kezelő kéréseinek szabályozása
 
-Ez a cikk azt ismerteti, hogy az Azure Resource Manager hogyan szabályozza a kérelmeket. Bemutatja, hogyan követheti nyomon a korlát elérése előtt megmaradó kérelmek számát, és hogyan válaszolhat, ha elérte a korlátot.
+Ez a cikk azt ismerteti, hogyan Azure Resource Manager szabályozza a kérelmeket. Bemutatja, hogyan követheti nyomon a korlátot megelőzően megmaradó kérelmek számát, és hogyan válaszolhat a korlát elérésekor.
 
-A fojtás két szinten történik. Az Azure Resource Manager szabályozza az előfizetésés a bérlő kérelmeket. Ha a kérelem az előfizetés és a bérlő szabályozási korlátja alatt van, az Erőforrás-kezelő továbbítja a kérelmet az erőforrás-szolgáltatónak. Az erőforrás-szolgáltató a műveletekhez igazított szabályozási korlátokat alkalmaz. Az alábbi képen bemutatja, hogyan szabályozás a kérelem a felhasználó tól az Azure Resource Manager és az erőforrás-szolgáltató.
+A szabályozás két szinten történik. Azure Resource Manager szabályozza az előfizetés és a bérlő kérelmeit. Ha a kérelem az előfizetés és a bérlő szabályozási korlátja alá esik, a Resource Manager átirányítja a kérést az erőforrás-szolgáltatónak. Az erőforrás-szolgáltató a műveletekhez igazított szabályozási korlátozásokat alkalmaz. Az alábbi képen látható, hogyan történik a szabályozás alkalmazása a felhasználótól a Azure Resource Manager és az erőforrás-szolgáltatótól.
 
-![Sávszélesség-szabályozás kérése](./media/request-limits-and-throttling/request-throttling.svg)
+![Kérelmek szabályozása](./media/request-limits-and-throttling/request-throttling.svg)
 
-## <a name="subscription-and-tenant-limits"></a>Előfizetési és bérlői korlátok
+## <a name="subscription-and-tenant-limits"></a>Előfizetés és bérlő korlátai
 
-Minden előfizetési szintű és bérlői szintű művelet szabályozási korlátok hatálya alá tartozik. Az előfizetési kérelmek olyan kérelmek, amelyek az előfizetés-azonosító átadását, például az előfizetéserőforrás-csoportok lekérését foglalják magukban. A bérlői kérelmek nem tartalmazzák az előfizetés-azonosítót, például az érvényes Azure-helyek lekérését.
+Minden előfizetési szintű és bérlői szintű művelethez szabályozási korlátok vonatkoznak. Az előfizetési kérelmek olyanok, amelyek az előfizetés-azonosító átadását foglalják magukban, például az erőforráscsoportok beolvasása az előfizetésben. A bérlői kérelmek nem tartalmazzák az előfizetés-azonosítót, például érvényes Azure-beli hely beolvasását.
 
-Az óránkénti alapértelmezett szabályozási korlátok az alábbi táblázatban láthatók.
+Az alapértelmezett szabályozási korlát/óra az alábbi táblázatban látható.
 
 | Hatókör | Műveletek | Korlát |
 | ----- | ---------- | ------- |
-| Előfizetés | Olvas | 12000 |
-| Előfizetés | Törli | 15 000 |
-| Előfizetés | Írja | 1200 |
-| Bérlő | Olvas | 12000 |
-| Bérlő | Írja | 1200 |
+| Előfizetés | olvasás | 12000 |
+| Előfizetés | törli | 15 000 |
+| Előfizetés | írja | 1200 |
+| Bérlő | olvasás | 12000 |
+| Bérlő | írja | 1200 |
 
 Ezeknek a korlátoknak a hatóköre a kéréseket intéző rendszerbiztonsági tag (felhasználó vagy alkalmazás) és az előfizetés azonosítója vagy a bérlő azonosítója. Ha a kérések több rendszerbiztonsági tagból érkeznek, akkor az előfizetésben vagy a bérlőben a korlát nagyobb, mint óránként 12 000 olvasás és 1200 írás.
 
-Ezek a korlátozások minden Egyes Azure Resource Manager-példányra vonatkoznak. Minden Azure-régióban több példány található, és az Azure Resource Manager minden Azure-régióban telepítve van.  Tehát a gyakorlatban a határértékek magasabbak, mint ezek a korlátok. A kérelmeket egy felhasználó általában kezeli az Azure Resource Manager különböző példányai.
+Ezek a korlátozások minden Azure Resource Manager példányra érvényesek. Minden Azure-régióban több példány található, és Azure Resource Manager az összes Azure-régióban üzembe helyezhető.  Így a gyakorlatban a határértékek magasabbak, mint a határértékek. A felhasználóktól érkező kéréseket általában a Azure Resource Manager különböző példányai kezelik.
 
 ## <a name="resource-provider-limits"></a>Erőforrás-szolgáltatói korlátok
 
-Az erőforrás-szolgáltatók saját sávszélesség-szabályozási korlátjukat alkalmazzák. Mivel az Erőforrás-kezelő szabályszabályozza az elsődleges azonosító tésszel, és az Erőforrás-kezelő példánya szerint, az erőforrás-szolgáltató több kérést kaphat, mint az előző szakaszalapértelmezett korlátai.
+Az erőforrás-szolgáltatók saját szabályozási korlátokat alkalmaznak. Mivel az erőforrás-kezelő az elsődleges azonosító és a Resource Manager-példány alapján szabályozza a szabályozást, előfordulhat, hogy az erőforrás-szolgáltató több kérést kap, mint az előző szakasz alapértelmezett korlátai.
 
-Ez a szakasz néhány széles körben használt erőforrás-szolgáltató szabályozási korlátait ismerteti.
+Ez a szakasz a széles körben használt erőforrás-szolgáltatók szabályozási korlátait tárgyalja.
 
-### <a name="storage-throttling"></a>Tárolási szabályozás
+### <a name="storage-throttling"></a>Tárolás szabályozása
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ### <a name="network-throttling"></a>Hálózati sávszélesség-szabályozás
 
-A Microsoft.Network erőforrás-szolgáltató a következő szabályozási korlátokat alkalmazza:
+A Microsoft. Network erőforrás-szolgáltató a következő szabályozási korlátokat alkalmazza:
 
 | Művelet | Korlát |
 | --------- | ----- |
-| írás / törlés (PUT) | 1000 percenként |
-| olvasás (GET) | 10000 5 percenként |
+| írás/törlés (PUT) | 1000/5 perc |
+| olvasás (GET) | 10000/5 perc |
 
 ### <a name="compute-throttling"></a>Számítási szabályozás
 
-A számítási műveletek szabályozási korlátairól az [API-szabályozási hibák elhárítása – Számítási hiba című](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)témakörben talál további információt.
+További információ a számítási műveletek korlátozásáról: [API-szabályozási hibák elhárítása – számítás](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
 
-A virtuálisgép-méretezési csoporton belüli virtuálisgép-példányok ellenőrzéséhez használja a [Virtuálisgép-méretezési készletek műveletet.](/rest/api/compute/virtualmachinescalesetvms) Használja például a [virtuális gép méretezési készletének virtuális gépekkel –](/rest/api/compute/virtualmachinescalesetvms/list) paraméterekkel rendelkező listája a virtuálisgép-példányok energiagazdálkodási állapotának ellenőrzéséhez. Ez az API csökkenti a kérelmek számát.
+Virtuálisgép-méretezési csoporton belüli virtuálisgép-példányok ellenőrzéséhez használja a [Virtual Machine Scale sets műveleteket](/rest/api/compute/virtualmachinescalesetvms). Használja például a virtuálisgép [-méretezési csoport virtuális gépek-lista](/rest/api/compute/virtualmachinescalesetvms/list) paramétereit a virtuálisgép-példányok energiagazdálkodási állapotának vizsgálatához. Ez az API csökkenti a kérelmek számát.
 
 ### <a name="azure-resource-graph-throttling"></a>Az Azure Resource Graph szabályozása
 
-[Az Azure Resource Graph](../../governance/resource-graph/overview.md) korlátozza a kérelmek számát a műveletekhez. A cikkben a fennmaradó kérelmek meghatározásához szükséges lépések, valamint a korlát elérésekor a válaszadás irása ira is vonatkoznak az Erőforrás-diagramra. A Resource Graph azonban saját korlátot és alaphelyzetbe állítást állít be. További információ: [Resource Graph szabályozásfejlécek](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
+Az [Azure Resource Graph](../../governance/resource-graph/overview.md) korlátozza a műveleteire irányuló kérések számát. A cikkben ismertetett lépések alapján megállapíthatja a fennmaradó kérelmeket, és hogyan reagálhat a korlátra, ha az erőforrás-gráfra is érvényes. Az erőforrás-gráf azonban beállítja a saját korlátját és az alaphelyzetbe állítási arányt. További információ: az [erőforrás-gráf szabályozására szolgáló fejlécek](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
 
 ## <a name="error-code"></a>Hibakód
 
-Amikor eléri a korlátot, a **429-es**HTTP-állapotkód túl sok kérés jelenik meg. A válasz tartalmaz egy **Újrapróbálkozás utáni** értéket, amely megadja, hogy az alkalmazásnak hány másodpercet kell várnia (vagy alvó állapotba kell várnia) a következő kérelem elküldése előtt. Ha az újrapróbálkozási érték letelte előtt küld egy kérelmet, a rendszer nem dolgozza fel a kérést, és új újrapróbálkozási értéket ad vissza.
+Ha eléri a korlátot, a 429-as HTTP-állapotkód **túl sok kérést**kap. A válasz tartalmazza az **újrapróbálkozások** utáni értéket, amely meghatározza, hogy az alkalmazás hány másodpercig várjon (vagy alvó állapotba), mielőtt elküldené a következő kérést. Ha az újrapróbálkozási érték lejárta előtt küld egy kérést, a rendszer nem dolgozza fel a kérést, és új újrapróbálkozási értéket ad vissza.
 
-A megadott időre való várakozás után bezárhatja és újra megnyithatja a kapcsolatot az Azure-ral. A kapcsolat alaphelyzetbe állításával csatlakozhat az Azure Resource Manager egy másik példányához.
+A megadott időpontra való várakozás után lezárhatja és újra megnyithatja az Azure-hoz való kapcsolódást. A kapcsolat alaphelyzetbe állításával csatlakozhat a Azure Resource Manager egy másik példányához.
 
-Ha egy Azure SDK-t használ, az SDK automatikus újrapróbálkozási konfigurációval rendelkezhet. További információ: [Az Azure-szolgáltatások újrapróbálkozási útmutatója.](/azure/architecture/best-practices/retry-service-specific)
+Ha Azure SDK-t használ, lehet, hogy az SDK automatikus újrapróbálkozási konfigurációval rendelkezik. További információ: [újrapróbálkozási útmutató az Azure-szolgáltatásokhoz](/azure/architecture/best-practices/retry-service-specific).
 
-Egyes erőforrás-szolgáltatók 429-et adnak vissza, hogy bejelentsenek egy átmeneti problémát. A probléma lehet egy túlterhelési állapot, amelyet közvetlenül nem okoz a kérés. Vagy ideiglenes hibát jelenthet a célerőforrás vagy a függő erőforrás állapotával kapcsolatban. A hálózati erőforrás-szolgáltató például 429-et ad vissza az **ÚjrapróbálhatóHibaDueToAnotherOperation** hibakóddal, ha a célerőforrást egy másik művelet zárolta. Annak megállapításához, hogy a hiba a szabályozásból vagy egy ideiglenes feltételből származik-e, tekintse meg a hiba részleteit a válaszban.
+Egyes erőforrás-szolgáltatók a 429-et egy ideiglenes probléma jelentésére adják vissza. A probléma olyan túlterhelési feltétel lehet, amely közvetlenül nem a kérelem által okozott. Vagy ideiglenes hibát jelenthet a célként megadott erőforrás vagy a függő erőforrás állapotáról. A hálózati erőforrás-szolgáltató például a 429 értéket adja vissza a **RetryableErrorDueToAnotherOperation** hibakódtal, ha a célként megadott erőforrás zárolva van egy másik művelettel. Annak megállapításához, hogy a hiba a szabályozásból vagy egy ideiglenes állapotból származik-e, tekintse meg a válaszban a hiba részleteit.
 
 ## <a name="remaining-requests"></a>Fennmaradó kérelmek
 
-A fennmaradó kérelmek számát a válaszfejlécek vizsgálatával határozhatja meg. Az olvasási kérelmek a fejlécben a fennmaradó olvasási kérelmek számának értékét adják vissza. Az írási kérelmek tartalmazzák a fennmaradó írási kérelmek számát. Az alábbi táblázat az okat az értékeket megvizsgálható válaszfejléceket ismerteti:
+A hátralévő kérések számát a válasz fejlécek vizsgálatával határozhatja meg. Az olvasási kérelmek egy értéket adnak vissza a fejlécben a hátralévő olvasási kérelmek számának megfelelően. Az írási kérelmek tartalmazzák a fennmaradó írási kérések számát. A következő táblázat ismerteti azokat a válasz-fejléceket, amelyeket megvizsgálhat az értékekhez:
 
 | Válasz fejléce | Leírás |
 | --- | --- |
-| x-ms-ratelimit-remaining-subscription-olvasás |Az előfizetés hatóköre beolvassa a fennmaradó olvasást. Ez az érték olvasási műveleteknél ad vissza. |
-| x-ms-ratelimit-remaining-subscription-writes |Előfizetés hatókörrel írt írások maradt. Ezt az értéket az írási műveletek során adja vissza a rendszer. |
-| x-ms-ratelimit-remaining-tenant-olvasás |A bérlő hatóköre még olvas |
-| x-ms-ratelimit-remaining-tenant-writes |A bérlő hatókörrel írt írásai |
-| x-ms-ratelimit-remaining-subscription-resource-requests |Előfizetés hatókörrel kapcsolatos erőforrástípus-kérelmek hátralévő.<br /><br />Ez a fejlécérték csak akkor kerül visszaadásra, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. Az Erőforrás-kezelő ezt az értéket adja hozzá az előfizetés olvasása vagy írása helyett. |
-| x-ms-ratelimit-remaining-subscription-resource-entities-read |Előfizetés hatókörrel rendelkező erőforrástípus-beszedési kérelmek hátra.<br /><br />Ez a fejlécérték csak akkor kerül visszaadásra, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. Ez az érték a fennmaradó beszedési kérelmek (listaerőforrások) számát adja meg. |
-| x-ms-ratelimit-remaining-tenant-resource-requests |A bérlő hatókörrel rendelkező erőforrástípus-kérelmek hátravannak.<br /><br />Ez a fejléc csak bérlői szintű kérelmekhez kerül hozzáadásra, és csak akkor, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. Az Erőforrás-kezelő ezt az értéket adja hozzá a bérlő olvasása vagy írása helyett. |
-| x-ms-ratelimit-remaining-tenant-resource-entities-read |Bérlőhatókör-erőforrás típusú gyűjtemény kérelmek hátra.<br /><br />Ez a fejléc csak bérlői szintű kérelmekhez kerül hozzáadásra, és csak akkor, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. |
+| x-MS-ratelimit – hátralévő előfizetés – olvasás |Az előfizetés hatókörön belüli olvasása megmaradt. A rendszer ezt az értéket adja vissza olvasási műveletekben. |
+| x-MS-ratelimit – hátralévő előfizetés – írások |Az előfizetés hatókörön belüli írása megmaradt. A rendszer ezt az értéket adja vissza az írási műveletekhez. |
+| x-MS-ratelimit-fennmaradó-bérlő-olvasások |Bérlői hatókörű olvasások megmaradtak |
+| x-MS-ratelimit-fennmaradó-bérlő-írások |A bérlő hatókörén belüli írások megmaradtak |
+| x-MS-ratelimit-fennmaradó-előfizetés-erőforrás-kérelmek |Az előfizetés hatókörön belüli erőforrás-típusaira vonatkozó kérelmek száma megmarad.<br /><br />Ezt a fejléc-értéket csak akkor adja vissza a rendszer, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. A Resource Manager hozzáadja ezt az értéket az előfizetés vagy írás helyett. |
+| x-MS-ratelimit-fennmaradó-előfizetés-erőforrás-entitások – olvasás |Az előfizetési hatókörrel rendelkező erőforrástípus-gyűjtési kérelmek megmaradnak.<br /><br />Ezt a fejléc-értéket csak akkor adja vissza a rendszer, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. Ez az érték megadja a fennmaradó gyűjtési kérelmek számát (erőforrások listázása). |
+| x-MS-ratelimit-fennmaradó-bérlő-erőforrás-kérelmek |A bérlői hatókörön belüli erőforrás-kérelmek száma megmaradt.<br /><br />Ezt a fejlécet csak a bérlői szintű kérésekhez adja hozzá a rendszer, és csak akkor, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. A Resource Manager hozzáadja ezt az értéket a bérlői olvasások vagy írások helyett. |
+| x-MS-ratelimit-fennmaradó-bérlő-erőforrás-entitások – olvasás |A bérlői hatókörrel rendelkező erőforrástípus-gyűjtési kérések megmaradnak.<br /><br />Ezt a fejlécet csak a bérlői szintű kérésekhez adja hozzá a rendszer, és csak akkor, ha egy szolgáltatás felülbírálta az alapértelmezett korlátot. |
 
-Az erőforrás-szolgáltató a fennmaradó kérelmekre vonatkozó információkat is visszaadhat válaszfejléceket. A számítási erőforrás-szolgáltató által visszaadott válaszfejlécekről a [Hívásdíj információs válaszfejlécei](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers)című témakörben talál további információt.
+Az erőforrás-szolgáltató a válasz fejléceit is visszaküldheti a fennmaradó kérelmekkel kapcsolatos információkkal. A számítási erőforrás-szolgáltató által visszaadott válasz fejlécekkel kapcsolatos információkért tekintse meg a [hívási sebességre vonatkozó tájékoztatási fejléceket](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
 
-## <a name="retrieving-the-header-values"></a>A fejlécértékek beolvasása
+## <a name="retrieving-the-header-values"></a>A fejléc értékeinek beolvasása
 
-Ezeknek a fejlécértékeknek a beolvasása a kódban vagy a parancsfájlban nem különbözik a fejlécértékek beolvasását. 
+A fejléc értékeinek beolvasása a kódban vagy a parancsfájlban nem különbözik, mint a fejlécek értékének beolvasása. 
 
-A **C#** mezőben például a fejlécértékét egy **válasz** nak nevezett **HttpWebResponse** objektumból a következő kóddal lehet beolvasni:
+A **C# nyelvben**például lekéri a fejléc értékét egy **Válasz** nevű **HttpWebResponse** objektumból a következő kóddal:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-A **PowerShellben**a fejlécértékét egy Invoke-WebRequest műveletből olvassa be.
+A **PowerShellben**a fejléc értékét egy meghívó-webkérési műveletből kéri le.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-A teljes PowerShell-példát az Erőforrás-kezelő előfizetési korlátainak ellenőrzése című témakörben [taszítja.](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)
+Teljes PowerShell-példaként tekintse [meg az előfizetés Resource Manager-korlátainak ellenőrzését](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)ismertető témakört.
 
-Ha meg szeretné tekinteni a fennmaradó hibakeresési kérelmeket, megadhatja a **-Debug** paramétert a PowerShell-parancsmagon. **PowerShell**
+Ha szeretné megtekinteni a további hibakeresési kérelmeket, megadhatja a **-Debug** paramétert a **PowerShell** -parancsmagon.
 
 ```powershell
 Get-AzResourceGroup -Debug
 ```
 
-Amely számos értéket ad vissza, beleértve a következő válaszértéket:
+Amely sok értéket ad vissza, beleértve a következő választ:
 
 ```output
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -131,13 +131,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-reads: 11999
 ```
 
-Az írási korlátok beírásához használjon írási műveletet: 
+Írási korlátok beszerzéséhez használjon írási műveletet: 
 
 ```powershell
 New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
-Amely számos értéket ad vissza, beleértve a következő értékeket:
+Amely sok értéket ad vissza, beleértve a következő értékeket:
 
 ```output
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -150,13 +150,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-Az **Azure CLI**rendszerben a fejléc értékét a részletesebb beállítás használatával szerezheti be.
+Az **Azure CLI**-ben a fejléc értékét a részletesebb lehetőség használatával kérdezheti le.
 
 ```azurecli
 az group list --verbose --debug
 ```
 
-Amely számos értéket ad vissza, beleértve a következő értékeket:
+Amely sok értéket ad vissza, beleértve a következő értékeket:
 
 ```output
 msrest.http_logger : Response status: 200
@@ -170,13 +170,13 @@ msrest.http_logger :     'Vary': 'Accept-Encoding'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '11998'
 ```
 
-Az írási korlátok beírásához használjon írási műveletet: 
+Írási korlátok beszerzéséhez használjon írási műveletet: 
 
 ```azurecli
 az group create -n myresourcegroup --location westus --verbose --debug
 ```
 
-Amely számos értéket ad vissza, beleértve a következő értékeket:
+Amely sok értéket ad vissza, beleértve a következő értékeket:
 
 ```output
 msrest.http_logger : Response status: 201
@@ -191,6 +191,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>További lépések
 
-* A teljes PowerShell-példát az Erőforrás-kezelő előfizetési korlátainak ellenőrzése című témakörben [taszítja.](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)
-* A korlátokról és kvótákról az [Azure előfizetési és szolgáltatáskorlátai, kvótái és korlátai](../../azure-resource-manager/management/azure-subscription-service-limits.md)című témakörben talál további információt.
-* Az aszinkron REST-kérelmek kezeléséről az [Aszinkron Azure-műveletek nyomon követése](async-operations.md)című témakörben olvashat.
+* Teljes PowerShell-példaként tekintse [meg az előfizetés Resource Manager-korlátainak ellenőrzését](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)ismertető témakört.
+* További információ a korlátozásokról és a kvótáról: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* További információ az aszinkron REST-kérelmek kezeléséről: az [aszinkron Azure-műveletek nyomon követése](async-operations.md).

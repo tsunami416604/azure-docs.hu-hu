@@ -1,24 +1,24 @@
 ---
-title: Sablon biztonságos üzembe helyezése SAS-jogkivonattal
-description: Erőforrások üzembe helyezése az Azure-ba egy SAS-jogkivonattal védett Azure Resource Manager-sablonnal. Az Azure PowerShell és az Azure CLI megjelenítése.
+title: Sablon biztonságos üzembe helyezése SAS-tokenrel
+description: Erőforrások üzembe helyezése az Azure-ban olyan Azure Resource Manager sablonnal, amelyet SAS-jogkivonat véd. A Azure PowerShell és az Azure CLI-t jeleníti meg.
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156395"
 ---
-# <a name="deploy-private-arm-template-with-sas-token"></a>Privát ARM-sablon telepítése SAS-jogkivonattal
+# <a name="deploy-private-arm-template-with-sas-token"></a>Private ARM-sablon üzembe helyezése SAS-tokenrel
 
-Ha az Azure Resource Manager (ARM) sablon egy tárfiókban található, korlátozhatja a sablonhoz való hozzáférést, hogy elkerülje a nyilvános felfedést. A védett sablonhoz úgy érhet el, hogy létrehoz egy közös hozzáférésű aláírási (SAS) jogkivonatot a sablonhoz, és biztosítja a jogkivonatot a központi telepítés során. Ez a cikk bemutatja, hogyan használhatja az Azure PowerShell vagy az Azure CLI egy sas-jogkivonattal egy sablon üzembe helyezéséhez.
+Ha a Azure Resource Manager-(ARM-) sablon egy Storage-fiókban található, akkor a sablonhoz való hozzáférést korlátozhatja, hogy ne tegye nyilvánosan nyilvánosságra. A biztonságos sablont úgy érheti el, hogy létrehoz egy közös hozzáférésű aláírás (SAS) tokent a sablonhoz, és az üzembe helyezés során megadja a tokent. Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell vagy az Azure CLI egy olyan sablon üzembe helyezéséhez, amely SAS-tokent tartalmaz.
 
-## <a name="create-storage-account-with-secured-container"></a>Tárfiók létrehozása biztonságos tárolóval
+## <a name="create-storage-account-with-secured-container"></a>Storage-fiók létrehozása biztonságos tárolóval
 
-A következő parancsfájl létrehoz egy tárfiókot és tárolót, amelynek nyilvános hozzáférése ki van kapcsolva.
+A következő parancsfájl egy nyilvános hozzáféréssel rendelkező Storage-fiókot és-tárolót hoz létre.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -61,11 +61,11 @@ az storage container create \
 
 ---
 
-## <a name="upload-template-to-storage-account"></a>Sablon feltöltése a tárfiókba
+## <a name="upload-template-to-storage-account"></a>Sablon feltöltése a Storage-fiókba
 
-Most már készen áll a sablon feltöltésére a tárfiókba. Adja meg a használni kívánt sablon elérési útját.
+Most már készen áll arra, hogy feltöltse a sablont a Storage-fiókba. Adja meg a használni kívánt sablon elérési útját.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -85,15 +85,15 @@ az storage blob upload \
 
 ---
 
-## <a name="provide-sas-token-during-deployment"></a>SAS-jogkivonat biztosítása az üzembe helyezés során
+## <a name="provide-sas-token-during-deployment"></a>SAS-token megadása az üzembe helyezés során
 
-Privát sablon központi telepítése egy tárfiókban, hozzon létre egy SAS-jogkivonatot, és vegye fel a sablon URI-ba. Állítsa be a lejárati időt, hogy elegendő idő a központi telepítés befejezéséhez.
+Ha privát sablont szeretne üzembe helyezni egy Storage-fiókban, állítson be egy SAS-tokent, és vegye fel azt a sablon URI-kódjába. Állítsa be a lejárati időt, hogy elegendő idő legyen a telepítés befejezésére.
 
 > [!IMPORTANT]
-> A sablont tartalmazó blob csak a fiók tulajdonosa számára érhető el. Azonban, ha létrehoz egy SAS-jogkivonatot a blobhoz, a blob mindenki számára elérhető az adott URI-val. Ha egy másik felhasználó elfogja az URI-t, a felhasználó hozzáférhet a sablonhoz. A SAS-jogkivonat jó módszer a sablonokhoz való hozzáférés korlátozására, de ne tartalmazzon bizalmas adatokat, például jelszavakat közvetlenül a sablonban.
+> A sablont tartalmazó blob csak a fiók tulajdonosa számára érhető el. Ha azonban SAS-jogkivonatot hoz létre a blobhoz, a blob mindenki számára elérhető lesz az adott URI-val. Ha egy másik felhasználó elfogja az URI-t, a felhasználó hozzáférhet a sablonhoz. Az SAS-token jó módszer a sablonokhoz való hozzáférés korlátozására, de nem tartalmazhat bizalmas adatokat, például jelszavakat közvetlenül a sablonban.
 >
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -136,9 +136,9 @@ az deployment group create \
 
 ---
 
-A SAS-jogkivonat csatolt sablonokkal való használatáról a [Csatolt sablonok használata az Azure Resource Manager rel](linked-templates.md)című témakörben olvashat.
+A csatolt sablonokkal rendelkező SAS-tokenek használatára vonatkozó példát a [csatolt sablonok használata Azure Resource Manager segítségével](linked-templates.md)című témakörben talál.
 
 
 ## <a name="next-steps"></a>További lépések
-* A sablonok üzembe helyezésének bemutatása az [ERŐFORRÁSOK üzembe helyezése ARM-sablonokkal és az Azure PowerShell használatával című témakörben olvashat.](deploy-powershell.md)
-* Paraméterek sablonban történő meghatározásáról a [Sablonok készítése](template-syntax.md#parameters)című témakörben olvashat.
+* A sablonok telepítésének bevezetését lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).
+* A sablonban található paraméterek definiálásához lásd: [sablonok készítése](template-syntax.md#parameters).

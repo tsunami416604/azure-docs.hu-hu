@@ -1,6 +1,6 @@
 ---
-title: Ország- és régiókódok társeladása | Azure Piactér
-description: Használja ezeket a kétbetűs ország- és régiókódokat, amikor az ajánlat társértékesítési oldalán megadja az elérhetőségi adatokat.
+title: Ország-és régiókódok közös értékesítése | Azure piactér
+description: Használja ezt a kétbetűs ország-/régiókódot, ha az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,37 +8,37 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80277056"
 ---
-# <a name="co-sell-country-and-region-codes"></a>Ország- és régiókódok közös értékesítése
+# <a name="co-sell-country-and-region-codes"></a>Ország-és régiókódok közös értékesítése
 
-Használja ezeket a kétbetűs ország- és régiókódokat, amikor [az ajánlat társértékesítési oldalán megadja az elérhetőségi adatokat.](commercial-marketplace-co-sell.md)
+Használja ezt a kétbetűs ország-/régiókódot, ha [az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít](commercial-marketplace-co-sell.md).
 
-Ha a kapcsolattartó az összes országot/régiót lefedi, használja az "OOO" hárombetűs kódot.
+Ha a kapcsolattartó az összes országot/régiót tartalmazza, használja az "OOO" három betűt.
 
-Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két betűkódot vesszővel elválasztva (például idézőjelek nélkül írja be az "US, CA, FR" értéket).
+Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két betűs kódot vesszővel elválasztva (például idézőjelek nélkül adja meg a "US, CA, FR" kifejezést).
 
-## <a name="countryregion-table"></a>Ország/terület tábla
+## <a name="countryregion-table"></a>Ország/régió tábla
 
 |   Ország/régió neve               |   ISO-2   |
 |-------------------------------------|-----------|
-| Globális kapcsolatok                     | Ooo       |
+| Globális névjegyek                     | OOO       |
 | Afganisztán                         | AF        |
-| Åland-szigetek                       | Ax        |
+| Åland-szigetek                       | AX        |
 | Albánia                             | AL        |
 | Algéria                             | DZ        |
 | Amerikai Szamoa                      | AS        |
 | Andorra                             | AD        |
 | Angola                              | AO        |
-| Antarktisz                          | Aq        |
+| Antarktisz                          | AQ        |
 | Antigua és Barbuda                 | AG        |
 | Argentína                           | AR        |
 | Örményország                             | AM        |
-| Aruba                               | Aw        |
+| Aruba                               | AW        |
 | Ausztrália                           | AU        |
 | Ausztria                             | AT        |
 | Azerbajdzsán                          | AZ        |
@@ -50,15 +50,15 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Belgium                             | BE        |
 | Belize                              | BZ        |
 | Benin                               | BJ        |
-| Bermuda                             | Bm        |
+| Bermuda                             | BM        |
 | Bhután                              | BT        |
 | Bolívia                             | BO        |
-| Bonaire                             | Bq        |
+| Bonaire                             | BQ        |
 | Bosznia-Hercegovina              | BA        |
 | Botswana                            | BW        |
-| Bouvet-sziget                       | Bv        |
+| Bouvet-sziget                       | BV        |
 | Brazília                              | BR        |
-| Brit indiai-óceáni terület      | Io        |
+| Brit indiai-óceáni terület      | IO        |
 | Brit Virgin-szigetek              | VG        |
 | Brunei                              | BN        |
 | Bulgária                            | BG        |
@@ -77,53 +77,53 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Karácsony-sziget                    | CX        |
 | Cocos (Keeling)-szigetek             | CC        |
 | Kolumbia                            | CO        |
-| Comore-szigetek                             | Km        |
-| Kongó                               | Cg        |
+| Comore-szigetek                             | KM        |
+| Kongó                               | CG        |
 | Kongó (KDK)                         | CD        |
-| Cook-szigetek                        | Ck        |
+| Cook-szigetek                        | CK        |
 | Costa Rica                          | CR        |
 | Côte d'Ivoire                       | CI        |
 | Horvátország                             | HR        |
 | Kuba                                | CU        |
-| Curaçao                             | Cw        |
+| Curaçao                             | CW        |
 | Ciprus                              | CY        |
 | Dánia                             | DK        |
-| Dzsibuti                            | Dj        |
+| Dzsibuti                            | DJ        |
 | Dominika                            | DM        |
 | Dominikai Köztársaság                  | DO        |
 | Ecuador                             | EC        |
 | Egyiptom                               | EG        |
 | Salvador                         | SV        |
-| Egyenlítői-Guinea                   | Gq        |
+| Egyenlítői-Guinea                   | GQ        |
 | Eritrea                             | ER        |
 | Észtország                             | EE        |
-| eSwatini között                            | SZ        |
+| eSwatini                            | SZ        |
 | Etiópia                            | ET        |
-| Feröer szigetek                       | FO (FO)        |
+| Feröer szigetek                       | UTCÁN        |
 | Fidzsi                                | FJ        |
 | Finnország                             | FI        |
 | Franciaország                              | JK        |
 | Francia Guyana                       | GF        |
-| Francia Polinézia                    | Pf        |
-| Francia Déli Területek         | Tf        |
+| Francia Polinézia                    | PF        |
+| Francia Déli Területek         | TF        |
 | Gabon                               | FE        |
 | Gambia                              | GM        |
 | Grúzia                             | GE        |
 | Németország                             | DE        |
 | Ghána                               | GH        |
-| Gibraltár                           | Gi        |
+| Gibraltár                           | GI        |
 | Görögország                              | GR        |
-| Grönland                           | Gl        |
-| Grenada                             | Gd        |
+| Grönland                           | GL        |
+| Grenada                             | GD        |
 | Guadeloupe                          | GP        |
 | Guam                                | GU        |
 | Guatemala                           | GT        |
-| Guernsey                            | Gg        |
+| Guernsey                            | GG        |
 | Guinea                              | GN        |
-| Bissau-Guinea                       | Gw        |
+| Bissau-Guinea                       | GW        |
 | Guyana                              | GY        |
 | Haiti                               | HT        |
-| Heard-sziget és McDonald-szigetek   | Hm        |
+| Heard-sziget és McDonald-szigetek   | HM        |
 | Honduras                            | HN        |
 | Hongkong (KKT)                       | HK        |
 | Magyarország                             | HU        |
@@ -138,12 +138,12 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Olaszország                               | IT        |
 | Jamaica                             | JM        |
 | Japán                               | JP        |
-| Jersey                              | JE KÖZÖTT        |
+| Jersey                              | JE        |
 | Jordánia                              | JO        |
 | Kazahsztán                          | KZ        |
 | Kenya                               | KE        |
 | Kiribati                            | KI        |
-| Korea (dél)                       | KR        |
+| Dél-Korea                       | KR        |
 | Kuvait                              | KW        |
 | Kirgizisztán                          | KG        |
 | Laosz                                | LA        |
@@ -165,7 +165,7 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Marshall-szigetek                    | MH        |
 | Martinique                          | MQ        |
 | Mauritánia                          | MR        |
-| Mauritius                           | Mu        |
+| Mauritius                           | MU        |
 | Mayotte                             | YT        |
 | Mexikó                              | MX        |
 | Mikronézia                          | FM        |
@@ -187,7 +187,7 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Niger                               | NE        |
 | Nigéria                             | NG        |
 | Niue                                | NU        |
-| Norfolk-sziget                      | Nf        |
+| Norfolk-sziget                      | NF        |
 | Észak-Korea                         | KP        |
 | Északi Mariana-szigetek            | MP        |
 | Észak-Macedónia                     | MK        |
@@ -197,11 +197,11 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Palau                               | PW        |
 | Palesztin Hatóság               | PS        |
 | Panama                              | PA        |
-| Pápua Új-Guinea                    | Oldal        |
+| Pápua Új-Guinea                    | PG        |
 | Paraguay                            | PY        |
 | Peru                                | PE        |
 | Fülöp-szigetek                         | PH        |
-| Pitcairn-szigetek                    | Pn        |
+| Pitcairn-szigetek                    | PN        |
 | Lengyelország                              | PL        |
 | Portugália                            | PT        |
 | Puerto Rico                         | PR        |
@@ -210,14 +210,14 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Románia                             | RO        |
 | Oroszország                              | RU        |
 | Ruanda                              | RW        |
-| Szent Barthélemy                    | BL        |
+| Saint Barthélemy                    | BL        |
 | Saint Kitts és Nevis               | KN        |
-| Saint Lucia                         | Lc        |
-| Saint Martin                        | Mf        |
-| Saint Pierre és Miquelon           | PM        |
+| Saint Lucia                         | LC        |
+| Saint Martin                        | MF        |
+| Saint-Pierre és Miquelon           | PM        |
 | Saint Vincent és Grenadine-szigetek    | VC        |
 | Szamoa                               | WS        |
-| San Marino                          | Sm        |
+| San Marino                          | SM        |
 | São Tomé és Príncipe               | ST        |
 | Szaúd-Arábia                        | SA        |
 | Szenegál                             | SN        |
@@ -225,31 +225,31 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Seychelle-szigetek                          | SC        |
 | Sierra Leone                        | SL        |
 | Szingapúr                           | SG        |
-| Sint Maarten                        | Sx        |
+| Sint Maarten                        | SX        |
 | Szlovákia                            | SK        |
 | Szlovénia                            | SI        |
-| Salamon-szigetek                     | Sb        |
+| Salamon-szigetek                     | SB        |
 | Szomália                             | SO        |
 | Dél-afrikai Köztársaság                        | ZA        |
-| Dél-Georgia és Dél-Sandwich-szigetek | Gs    |
+| Déli-Georgia és Déli-Sandwich-szigetek | GS    |
 | Dél-Szudán                         | SS        |
 | Spanyolország                               | ES        |
 | Srí Lanka                           | LK        |
-| Szent Ilona, Mennybemenetel, Tristan da Cunha | SH     |
+| Szent Ilona, Ascension, Tristan da Cunha | SH     |
 | Szudán                               | SD        |
 | Suriname                            | SR        |
-| Svalbard                            | Sj        |
+| Svalbard                            | SJ        |
 | Svédország                              | SE        |
 | Svájc                         | CH        |
 | Szíria                               | SY        |
 | Tajvan                              | TW        |
-| Tádzsikisztán                          | Tj        |
+| Tádzsikisztán                          | TJ        |
 | Tanzánia                            | TZ        |
 | Thaiföld                            | TH        |
 | Timor-Leste                         | TL        |
 | Togo                                | TG        |
-| Tokelau                             | Tk        |
-| Tonga                               | A        |
+| Tokelau                             | TK        |
+| Tonga                               | HOGY        |
 | Trinidad és Tobago                 | TT        |
 | Tunézia                             | TN        |
 | Törökország                              | TR        |
@@ -262,19 +262,19 @@ Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két 
 | Egyesült Királyság                      | GB        |
 | Egyesült Államok                       | USA        |
 | Uruguay                             | UY        |
-| Az Egyesült Államok külső szigetei               | UM        |
+| Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
 | Amerikai Virgin-szigetek                 | VI        |
 | Üzbegisztán                          | UZ        |
-| Vanuatu                             | Je        |
-| Vatikán                        | VA        |
+| Vanuatu                             | JE        |
+| Vatikáni Városállam                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
-| Wallis és Futuna                   | Wf        |
-| Jemen                               | Ti        |
+| Wallis és Futuna                   | WF        |
+| Jemen                               | TI        |
 | Zambia                              | ZM        |
 | Zimbabwe                            | ZW        |
 |   |   |   |
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [partnerközpontban található közös értékesítési lehetőségről.](./commercial-marketplace-co-sell.md)
+- További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./commercial-marketplace-co-sell.md).

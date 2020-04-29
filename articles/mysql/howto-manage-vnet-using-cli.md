@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózati végpontok kezelése - Azure CLI – Azure Database for MySQL
-description: Ez a cikk ismerteti, hogyan hozhat létre és kezelhet Azure Database for MySQL VNet szolgáltatás végpontok és szabályok az Azure CLI parancssorhasználatával.
+title: VNet-végpontok kezelése – Azure CLI – Azure Database for MySQL
+description: Ez a cikk azt ismerteti, hogyan hozhatók létre és kezelhetők Azure Database for MySQL VNet szolgáltatásbeli végpontok és szabályok az Azure CLI parancssorral.
 author: bolzmj
 ms.author: mbolz
 manager: jhubbard
@@ -9,28 +9,28 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c01f92f8144c8ebfce2d475f8b13ab1d70bca118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063584"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Azure-adatbázis létrehozása és kezelése a MySQL virtuálishálózat szolgáltatásvégpontjaihoz az Azure CLI használatával
-A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MySQL-kiszolgálóra. Kényelmes Azure parancssori felület (CLI) parancsokkal virtuális hálózat végpontjait és szabályait hozhatja létre, frissítheti, törölheti, listázhatja és jelenítheti meg a kiszolgáló kezeléséhez szükséges virtuális hálózat végpontjait és szabályait. Az Azure Database for MySQL VNet szolgáltatásvégpontok áttekintését, beleértve a korlátozásokat, a [MySQL Server virtuálishálózat-szolgáltatásvégpontjaihoz készült Azure Database című témakörben olvashat.](concepts-data-access-and-security-vnet.md) VNet szolgáltatás végpontok érhetők el az összes támogatott régiókban az Azure Database for MySQL.
+# <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MySQL VNet-szolgáltatásbeli végpontok létrehozása és kezelése az Azure CLI-vel
+A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MySQL-kiszolgálóra. A kényelmes Azure parancssori felületi (CLI) parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet VNet szolgáltatási végpontokat és szabályokat a kiszolgáló kezeléséhez. Az Azure Database for MySQL VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for MySQL Server VNet Service-végpontok](concepts-data-access-and-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for MySQL összes támogatott régiójában elérhetők.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az útmutató útmutatón való átlépéshez a következőkre van szükség:
-- Telepítse [az Azure CLI-t,](/cli/azure/install-azure-cli) vagy használja az Azure Cloud Shellt a böngészőben.
-- [Azure-adatbázis a MySQL-kiszolgálóhoz és adatbázishoz.](quickstart-create-mysql-server-database-using-azure-cli.md)
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Telepítse [Az Azure CLI](/cli/azure/install-azure-cli) -t, vagy használja a Azure Cloud shellt a böngészőben.
+- Egy [Azure Database for MySQL-kiszolgáló és-adatbázis](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 > [!NOTE]
-> A Virtuálishálózat-szolgáltatás végpontjainak támogatása csak általános célú és memóriaoptimalizált kiszolgálókhoz érhető el.
-> Virtuális hálózati társviszony-létesítés esetén, ha a forgalom egy közös virtuális hálózat átjáró szolgáltatás végpontok, és állítólag a társ, hozzon létre egy ACL/VNet szabály, amely lehetővé teszi az Azure virtuális gépek az átjáró virtuális hálózat az Azure Database for MySQL-kiszolgáló eléréséhez.
+> A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
+> VNet esetén, ha a forgalom egy közös VNet-átjárón keresztül áramlik a szolgáltatási végpontokkal, és a partnernek kell lennie, hozzon létre egy ACL/VNet szabályt, amely lehetővé teszi, hogy az Azure Virtual Machines az átjáró VNet hozzáférjenek a Azure Database for MySQL-kiszolgálóhoz.
 
-## <a name="configure-vnet-service-endpoints-for-azure-database-for-mysql"></a>Vnet szolgáltatásvégpontok konfigurálása a MySQL-hez készült Azure Database szolgáltatáshoz
-A [hálózati virtuális hálózatok](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) konfigurálására a virtuális hálózatok konfigurálására szolgálnak.
+## <a name="configure-vnet-service-endpoints-for-azure-database-for-mysql"></a>Vnet-szolgáltatási végpontok konfigurálása Azure Database for MySQLhoz
+Az az [Network vnet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) parancs a virtuális hálózatok konfigurálására szolgál.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -45,20 +45,20 @@ Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, am
 
 - A fióknak rendelkeznie kell a megfelelő engedélyekkel egy virtuális hálózat és egy szolgáltatásvégpont létrehozásához.
 
-A szolgáltatásvégpontokat a virtuális hálózatokon egymástól függetlenül konfigurálhatja a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználó.
+A szolgáltatási végpontok egymástól függetlenül konfigurálhatók virtuális hálózatokon a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználóktól.
 
-Az Azure-szolgáltatás erőforrásainak virtuális hálózathoz való biztonságossá tétele érdekében a felhasználónak engedéllyel kell rendelkeznie a "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" használatára a hozzáadott alhálózatok hoz. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
+Az Azure-szolgáltatási erőforrások VNet való biztonságossá tételéhez a felhasználónak engedéllyel kell rendelkeznie a "Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/" jogosultsággal a hozzáadott alhálózatokhoz. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
 
 További információk a [beépített szerepkörökről](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) és a bizonyos engedélyek [egyéni szerepkörökhöz](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) való hozzárendeléséről.
 
-A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha a virtuális hálózat és az Azure-szolgáltatás erőforrásai különböző előfizetésekben vannak, az erőforrásoknak ugyanahhoz az Active Directory (AD) bérlőhöz kell tartozniuk. Győződjön meg arról, hogy mindkét előfizetés rendelkezik a **Microsoft.Sql** erőforrás-szolgáltató regisztrálva. További információkért lásd [az erőforrás-kezelő-regisztrációt][resource-manager-portal]
+A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha a VNet és az Azure-szolgáltatási erőforrások különböző előfizetésekben találhatók, akkor az erőforrásoknak ugyanahhoz a Active Directory (AD) bérlőhöz kell tartozniuk. Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. SQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
 
 > [!IMPORTANT]
-> Erősen ajánlott elolvasni ezt a cikket a szolgáltatás végpontkonfigurációk és szempontok futtatása előtt az alábbi parancsfájl, vagy a szolgáltatás végpontok konfigurálása. **Virtuális hálózat szolgáltatás végpontja:** A [virtuális hálózati szolgáltatás végpontja](../virtual-network/virtual-network-service-endpoints-overview.md) egy alhálózat, amelynek tulajdonságértékei egy vagy több hivatalos Azure-szolgáltatástípus-neveket tartalmaznak. A VNet-szolgáltatások végpontjai a **Microsoft.Sql**szolgáltatástípust használják, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik. Ez a szolgáltatáscímke az Azure SQL Database, az Azure Database for PostgreSQL és a MySQL-szolgáltatásokra is vonatkozik. Fontos megjegyezni, ha a **Microsoft.Sql** szolgáltatáscímke egy Virtuálishálózat-szolgáltatás végpontra alkalmazza a szolgáltatásvégpont-forgalmat az összes Azure Database-szolgáltatáshoz, beleértve az Azure SQL Database-t, az Azure Database for PostgreSQL-t és az Azure Database for MySQL-kiszolgálókat az alhálózaton. 
+> Javasoljuk, hogy olvassa el ezt a cikket a szolgáltatás-végponti konfigurációkról és a szempontokról, mielőtt futtatná az alábbi parancsfájlt, vagy konfigurálja a szolgáltatási végpontokat. **Virtual Network szolgáltatási végpont:** A [Virtual Network szolgáltatási végpont](../virtual-network/virtual-network-service-endpoints-overview.md) olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. A VNet Services-végpontok a **Microsoft. SQL**nevű szolgáltatástípus-nevet használják, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik. Ez a szolgáltatási címke a Azure SQL Databasere, a Azure Database for PostgreSQL és a MySQL szolgáltatásokra is vonatkozik. Fontos megjegyezni, hogy amikor a **Microsoft. SQL** szolgáltatás címkéjét egy VNet szolgáltatási végpontra alkalmazza, a szolgáltatás végponti forgalmát konfigurálja az összes Azure Database-szolgáltatáshoz, beleértve az alhálózaton lévő Azure SQL Database, Azure Database for PostgreSQL és Azure Database for MySQL kiszolgálókat is. 
 > 
 
-### <a name="sample-script-to-create-an-azure-database-for-mysql-database-create-a-vnet-vnet-service-endpoint-and-secure-the-server-to-the-subnet-with-a-vnet-rule"></a>Mintaparancsfájl a MySQL-adatbázis Azure-adatbázisának létrehozásához, virtuális hálózat, virtuális hálózat szolgáltatásvégpont létrehozásához és a kiszolgáló alhálózathoz való védelméhez egy virtuális hálózat-szabály segítségével
-A példaszkriptben módosítsa a kiemelt sorokat, és adja meg azokban a rendszergazdai felhasználónevét és jelszavát. Cserélje le a `az account set --subscription` parancsban használt SubscriptionID azonosítót a saját előfizetési azonosítójára.
+### <a name="sample-script-to-create-an-azure-database-for-mysql-database-create-a-vnet-vnet-service-endpoint-and-secure-the-server-to-the-subnet-with-a-vnet-rule"></a>Parancsfájl Azure Database for MySQL adatbázis létrehozásához, VNet létrehozásához, VNet szolgáltatás végpontjának biztonságossá tételéhez, valamint a kiszolgáló VNet-szabállyal való biztonságossá tétele az alhálózathoz
+A példaszkriptben módosítsa a kiemelt sorokat, és adja meg azokban a rendszergazdai felhasználónevét és jelszavát. Cserélje le a `az account set --subscription` parancsban használt SubscriptionID a saját előfizetés-azonosítójával.
 [!code-azurecli-interactive[main](../../cli_scripts/mysql/create-mysql-server-vnet/create-mysql-server.sh?highlight=5,20 "Create an Azure Database for MySQL, VNet, VNet service endpoint, and VNet rule.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása

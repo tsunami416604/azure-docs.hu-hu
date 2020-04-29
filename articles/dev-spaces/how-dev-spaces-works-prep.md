@@ -1,51 +1,51 @@
 ---
-title: Hogyan működik egy projekt előkészítése az Azure Dev Spaces számára?
+title: Projekt előkészítése az Azure dev Spaces működéséhez
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: A projekt előkészítése az Azure Dev Spaces használatával
-keywords: azds.yaml, Azure Dev Spaces, Fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók
+description: Ismerteti a projekt előkészítését az Azure dev Spaces működésével
+keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241633"
 ---
-# <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Hogyan működik egy projekt előkészítése az Azure Dev Spaces számára?
+# <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projekt előkészítése az Azure dev Spaces működéséhez
 
-Az Azure Dev Spaces többféle lehetőséget kínál a Kubernetes-alkalmazások gyors iterálására és hibakeresésére, valamint a csapatával való együttműködésre egy Azure Kubernetes-szolgáltatás (AKS) fürtön. A fejlesztői tárolók docker-fájlokat és helm-diagramokat hozhatnak létre a projekthez. A Fejlesztői tárolók konfigurációs fájlt is létrehoz és használ a Kubernetes-alkalmazások AKS-ben történő üzembe helyezéséhez, futtatásához és hibakereséséhez. Mindezek a fájlok az alkalmazás kódjával vannak eltaszatolva, és hozzáadhatóak a verziókezelő rendszerhez.
+Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétlését és hibakeresését, valamint a csapattal való együttműködését egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön. A fejlesztői területek létrehozhatnak Dockerfiles és Helm-diagramokat a projekthez. A dev Spaces egy konfigurációs fájlt is létrehoz és használ a Kubernetes-alkalmazások AK-beli üzembe helyezéséhez, futtatásához és hibakereséséhez. Az összes ilyen fájl az alkalmazás kódjával együtt található, és hozzáadható a verziókövetés rendszeréhez.
 
-Ez a cikk ismerteti, mi történik, hogyan készítse elő a projektet az AKS-ben a fejlesztői szóközök.
+Ez a cikk azt ismerteti, hogy mi történik a projekt előkészítésében, hogy az AK-ban és a dev Spaces szolgáltatásban fusson
 
 ## <a name="prepare-your-code"></a>A kód előkészítése
 
-Annak érdekében, hogy az alkalmazás futtatásához egy fejlesztői térben, azt kell konténerezett, és meg kell határoznia, hogyan kell telepíteni a Kubernetes. Az alkalmazás konténeresítéséhez egy Docker-fájlszükséges. Annak meghatározásához, hogy az alkalmazás hogyan van telepítve a Kubernetes-ben, helm [diagramra](https://docs.helm.sh/)van szüksége. Az alkalmazás Dockerfile és Helm diagramjának létrehozásához az ügyféloldali `prep` eszközök biztosítják a következő parancsot:
+Ahhoz, hogy az alkalmazás egy fejlesztői térben fusson, a tárolónak kell lennie, és meg kell határoznia, hogyan kell telepíteni a Kubernetes. Az alkalmazás tárolóba helyezése szüksége lesz egy Docker. Ha meg szeretné határozni, hogy az alkalmazás hogyan legyen központilag telepítve a Kubernetes-re, [Helm-diagramra](https://docs.helm.sh/)van szüksége. Ahhoz, hogy segítséget nyújtson az alkalmazáshoz tartozó Docker és Helm diagram létrehozásában, az ügyféloldali eszközök a következő `prep` parancsot biztosítják:
 
 ```cmd
 azds prep --enable-ingress
 ```
 
-A `prep` parancs megvizsgálja a fájlokat a projektben, és megpróbálja létrehozni a Dockerfile és a Helm diagram fut az alkalmazás Kubernetes. Jelenleg a `prep` parancs létrehoz egy Dockerfile és Helm diagramot a következő nyelveken:
+A `prep` parancs megtekinti a projektben lévő fájlokat, és megpróbálja létrehozni a Docker és a Helm diagramot az alkalmazás futtatásához a Kubernetes-ben. A `prep` parancs jelenleg a következő nyelvekkel hoz majd Docker és Helm diagramot:
 
 * Java
 * Node.js
 * .NET Core
 
-A *must* `prep` parancsot forráskódot tartalmazó könyvtárból kell futtatni. A `prep` parancs futtatása a megfelelő könyvtárból lehetővé teszi, hogy az ügyféloldali eszközelem azonosítsa a nyelvet, és hozzon létre egy megfelelő Dockerfile az alkalmazás konténeres. A parancsot `prep` java *projektekhez pom.xml* fájlt tartalmazó könyvtárból is futtathatja.
+A *must* `prep` parancsot olyan könyvtárból kell futtatnia, amely forráskódot tartalmaz. Ha a `prep` parancsot a megfelelő könyvtárból futtatja, lehetővé teszi, hogy az ügyféloldali eszköz azonosítsa a nyelvet, és megfelelő Docker hozzon létre az alkalmazás tárolóba helyezése. A `prep` parancsot egy olyan könyvtárból is futtathatja, amely egy *Pom. XML* fájlt tartalmaz a Java-projektekhez.
 
-Ha a `prep` parancsot olyan címtárból futtatja, amely nem tartalmaz forráskódot, az ügyféloldali eszköznem hoz létre Docker-fájlt. A következő hibaüzenet jelenik meg: *A Nem támogatott nyelv miatt a Dockerfile nem jött létre.* Ez a hiba akkor is előfordul, ha az ügyféloldali eszköznem ismeri fel a projekt típusát.
+Ha olyan könyvtárból `prep` futtatja a parancsot, amely nem tartalmaz forráskódot, az ügyféloldali eszközkészlet nem hoz majd Docker. Emellett a következő hibaüzenetet is megjeleníti: *a Docker nem hozható létre a nem támogatott nyelv miatt*. Ez a hiba akkor is előfordulhat, ha az ügyféloldali eszközkészlet nem ismeri fel a projekt típusát.
 
-A `prep` parancs futtatásakor megadhatja a `--enable-ingress` jelzőt. Ez a jelző arra utasítja a vezérlőt, hogy hozzon létre egy interneten elérhető végpontot ehhez a szolgáltatáshoz. Ha nem adja meg ezt a jelzőt, a szolgáltatás csak a fürtből vagy az ügyféloldali eszközhasználat által létrehozott localhost alagút használatával érhető el. Ezt a viselkedést a `prep` parancs futtatása után engedélyezheti vagy letilthatja a létrehozott Helm-diagram frissítésével.
+A `prep` parancs futtatásakor lehetősége van megadnia a `--enable-ingress` jelzőt. Ez a jelző arra utasítja a vezérlőt, hogy hozzon létre egy internetről elérhető végpontot ehhez a szolgáltatáshoz. Ha nem adja meg ezt a jelzőt, a szolgáltatás csak a fürtön belülről, vagy az ügyféloldali eszközök által létrehozott localhost-alagút használatával érhető el. A `prep` parancs futtatása után engedélyezheti vagy letilthatja ezt a viselkedést a generált Helm diagram frissítésével.
 
-A `prep` parancs nem helyettesíti a projektben meglévő Dockerfiles vagy Helm diagramokat. Ha egy meglévő Docker-fájl vagy Helm diagram ugyanazt az `prep` elnevezési `prep` konvenciót használja, mint a parancs által létrehozott fájlok, a parancs kihagyja a fájlok generálását. Ellenkező esetben `prep` a parancs saját Dockerfile vagy Helm diagramot hoz létre a meglévő fájlok mellett.
+A `prep` parancs nem cseréli le a projektben meglévő Dockerfiles-vagy Helm-diagramokat. Ha egy meglévő Docker-vagy Helm-diagram ugyanazt az elnevezési konvenciót használja, mint `prep` a parancs által `prep` generált fájlok, akkor a parancs kihagyja a fájlok generálását. Ellenkező esetben a `prep` parancs létrehozza a saját Docker vagy Helm-diagramot a meglévő fájlok oldalára.
 
 > [!IMPORTANT]
-> Az Azure Dev Spaces a Dockerfile és a Helm diagramot használja a projekthez a kód létrehozásához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
+> Az Azure dev Spaces a Docker és Helm diagramot használja a projekthez a kód létrehozásához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
-A `prep` parancs egy `azds.yaml` fájlt is létrehoz a projekt gyökerében. Az Azure Dev Spaces ezt a fájlt használja az alkalmazás létrehozásához, telepítéséhez, konfigurálásához és futtatásához. Ez a konfigurációs fájl felsorolja a Dockerfile és a Helm diagram helyét, és további konfigurációt is biztosít az összetevők tetején.
+A `prep` parancs a projekt gyökerében `azds.yaml` is létrehozza a fájlt. Az Azure dev Spaces ezt a fájlt használja az alkalmazás létrehozásához, telepítéséhez, konfigurálásához és futtatásához. Ez a konfigurációs fájl felsorolja a Docker és a Helm diagram helyét, valamint további konfigurációkat is biztosít ezen összetevők felett.
 
-Íme egy példa a [.NET Core mintaalkalmazással](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend)létrehozott azds.yaml fájl:
+Íme egy példa az azds. YAML fájlra, amelyet a [.net Core Sample Application](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend)használatával hoztak létre:
 
 ```yaml
 kind: helm-release
@@ -92,19 +92,19 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-A `azds.yaml` `prep` parancs által létrehozott fájl egyszerű, egyetlen projektfejlesztési forgatókönyvhöz használható. Ha az adott projekt összetettsége megnőtt, előfordulhat, hogy `prep` a parancs futtatása után frissítenie kell ezt a fájlt. Előfordulhat például, hogy a projekt a fejlesztési vagy hibakeresési igények alapján módosítani szeretné a build- vagy indítási folyamatot. Előfordulhat, hogy több alkalmazás is van a projektben, amelyek több buildfolyamatot vagy eltérő buildtartalmat igényelnek.
+A `azds.yaml` `prep` parancs által generált fájl célja, hogy egyszerű, egyetlen projekt-fejlesztési forgatókönyvhöz működjön. Ha az adott projektnek nagyobb a bonyolultsága, akkor előfordulhat, hogy a `prep` parancs futtatása után frissítenie kell ezt a fájlt. Előfordulhat például, hogy a projektnek a fejlesztési vagy hibakeresési igények alapján módosítania kell a Build vagy a Launch folyamatát. Több alkalmazás is lehet a projektben, amelyhez több fordítási folyamat vagy más Build-tartalom szükséges.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni arról, hogy miként futtathatja a kódot a fejlesztői tárhelyen, olvassa el [a Kód azure dev spaces használatával való futtatása.][how-it-works-up]
+Ha többet szeretne megtudni a kód a fejlesztői tárhelyen való futtatásáról, tekintse meg a [kód futtatása az Azure dev Spaces szolgáltatással][how-it-works-up]című témakört.
 
-Az Azure Dev Spaces használatával előkészítheti a projektet az Azure Dev Space számára, olvassa el az alábbi rövid útmutatókat:
+Az Azure dev Spaces használatának megkezdéséhez az Azure fejlesztői tárhelyhez készült projekt előkészítéséhez tekintse meg az alábbi rövid útmutatókat:
 
-* [Gyorsan iterálni és debug a Visual Studio kód és a Java][quickstart-java]
-* [Gyorsan iterálni és hibakeresés a Visual Studio Code és a .NET][quickstart-netcore]
-* [Gyorsan iterálni és hibakeresés a Visual Studio kód és Node.js][quickstart-node]
-* [Gyorsan iterate és debug a Visual Studio és a .NET Core][quickstart-vs]
-* [A CLI használata a Kubernetes alkalmazásának fejlesztéséhez][quickstart-cli]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és a Node. js-sel][quickstart-node]
+* [Gyors iteráció és hibakeresés a Visual Studióval és a .NET Core-val][quickstart-vs]
+* [Alkalmazás fejlesztése a Kubernetes-on a CLI használatával][quickstart-cli]
 
 [how-it-works-up]: how-dev-spaces-works-up.md
 [quickstart-cli]: quickstart-cli.md

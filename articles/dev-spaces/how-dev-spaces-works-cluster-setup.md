@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Útmutató Azure Kubernetes Service-fürt beállításához az Azure dev Spaces működéséhez
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241724"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Fürt beállítása az Azure dev Spaces működéséhez

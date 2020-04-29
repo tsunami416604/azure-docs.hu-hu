@@ -1,7 +1,7 @@
 ---
-title: 'Ismert problémák: Áttelepítés az Oracle-ről a PostgreSQL Azure-adatbázisába'
+title: 'Ismert problémák: áttelepítés Oracle-ből Azure Database for PostgreSQLba'
 titleSuffix: Azure Database Migration Service
-description: Ismerje meg az Oracle-ből az Azure Database for PostgreSQL-Single kiszolgálóra az Azure Database-t az Azure Database Migration Service használatával történő online áttelepítésekkel kapcsolatos ismert problémákat és áttelepítési korlátozásokat.
+description: Ismerje meg az ismert problémákat és az áttelepítési korlátozásokat az Oracle-ből származó online áttelepítéssel, hogy a Azure Database Migration Service használatával Azure Database for PostgreSQL egyetlen kiszolgálóra.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -13,60 +13,60 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: fcebc7eb170239e5d7efd8a32599a6e782f630bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235239"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások az Oracle-ről az Azure DB-re a PostgreSQL-Single kiszolgálóra való online áttelepítéssel kapcsolatban
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások az Oracle-ből az Azure-ba való online áttelepítéssel a PostgreSQL-hez – egyetlen kiszolgáló
 
-Az Oracle-ről az Azure Database for PostgreSQL-Single kiszolgálóra történő online áttelepítéssel kapcsolatos ismert problémákat és korlátozásokat a következő szakaszok ismertetik.
+Az Oracle-ből az Azure Database for PostgreSQL-Single Serverre történő online áttelepítéssel kapcsolatos ismert problémák és korlátozások a következő szakaszokban olvashatók.
 
-## <a name="oracle-versions-supported-as-a-source-database"></a>Forrásadatbázisként támogatott Oracle-verziók
+## <a name="oracle-versions-supported-as-a-source-database"></a>A forrás-adatbázisként támogatott Oracle-verziók
 
-Az Azure Database Migration Service támogatja a csatlakozást:
+A Azure Database Migration Service a következőhöz való csatlakozást támogatja:
 
-- Oracle verzió 10g, 11g, és 12c.
-- Oracle Enterprise, Standard, Express és Personal Edition.
+- Az Oracle 10g-, 11g-és 12c-verziója.
+- Oracle Enterprise, standard, Express és Personal kiadás.
 
-Az Azure Database Migration Service nem támogatja a több-bérlős tárolóadatbázisokhoz (CDB)-hez való csatlakozást.
+Azure Database Migration Service nem támogatja a több-bérlős tároló adatbázisaihoz (CDBs) való csatlakozást.
 
-## <a name="postgresql-versions-supported-as-a-target-database"></a>A postgreSQL verziók céladatbázisként támogatottak
+## <a name="postgresql-versions-supported-as-a-target-database"></a>A PostgreSQL-verziók a célként megadott adatbázisként támogatottak
 
-Az Azure Database Migration Service támogatja az Azure Database for PostgreSQL-Single server 9.5, 9.6, 10 és 11 verziójú Azure Database szolgáltatásba való áttelepítést. Tekintse meg a [cikk támogatott PostgreSQL adatbázis-verziók](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) aktuális információkat verziótámogatás az Azure Database for PostgreSQL-Single server.
+Azure Database Migration Service támogatja az áttelepítést a Azure Database for PostgreSQL-Single Server 9,5, 9,6, 10 és 11 verzióra. Tekintse meg a [PostgreSQL-adatbázis támogatott](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) verzióit a Azure Database for PostgreSQL-egyetlen kiszolgáló verziójának támogatásáról szóló aktuális információkért.
 
 ## <a name="datatype-limitations"></a>Adattípus-korlátozások
 
 A következő adattípusok **nem** lesznek áttelepítve:
 
-- BFILE
-- SORAZONOSÍTÓ
-- Ref
+- BFÁJL
+- ROWID
+- REF
 - UROWID
-- ANYDATA (ANYDATA)
+- ANYDATA
 - SDO_GEOMETRY
-- Beágyazott táblázatok
+- Beágyazott táblák
 - Felhasználó által definiált adattípusok
 - Megjegyzések
 - Virtuális oszlopok
-- Materializált nézetek a ROWID oszlop alapján
+- ROWID oszlopon alapuló, lényeges nézetek
 
-Emellett az üres BLOB/CLOB oszlopok null értékre vannak leképezve a célon.
+Továbbá üres BLOB-/CLOB-oszlopok vannak leképezve NULL értékre a célhelyen.
 
-## <a name="lob-limitations"></a>Lob-korlátozások
+## <a name="lob-limitations"></a>LOB-korlátozások
 
-- Ha a korlátozott méretű LOB mód engedélyezve van, az Oracle forrás üres LOB-jai NULL értékként lesznek replikálva.
-- A hosszú objektumnevek (30 bájtnál több) nem támogatottak.
-- A LONG és A LONG RAW oszlopban lévő adatok nem haladhatják meg a 64k-et. A 64k-en túli adatok csonkulnak.
-- Csak az Oracle 12-ben a LOB-oszlopok módosításai nem támogatottak (áttelepítésre kerülnek).
-- Az XMLTYPE és a LOB-oszlopok updates nem támogatott (áttelepítés).
+- Ha a korlátozott méretű LOB mód engedélyezve van, az Oracle-forrás üres LOBs NULL értékként lesznek replikálva.
+- A hosszú objektumok neve (30 bájtnál több) nem támogatott.
+- A hosszú és hosszú nyers oszlopban lévő adatértékek nem haladhatják meg a 64 KB-ot. A 64 KB-nál nagyobb adatértékek csonkítva lesznek.
+- Csak Oracle 12 esetén a LOB-oszlopok módosításai nem támogatottak (migrálva).
+- A XMLTYPE és a LOB-oszlopok frissítései nem támogatottak (migrálva).
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
-- Az ügyfeleknek a SYSDBA segítségével kell csatlakozniuk az Oracle-hez.
-- A partíciós/alpartíció-műveletekből (ADD, DROP, EXCHANGE és TRUNCATE) eredő adatváltozások nem kerülnek áttelepítésre, és a következő hibákat okozhatják:
-  - Add műveletek esetén a hozzáadott adatok frissítései és törlései "0 érintett sor" figyelmeztetést adhatnak vissza.
-  - Drop és TRUNCATE műveletek esetén az új beszúrások "ismétlődések" hibákat okozhatnak.
-  - Exchange-műveletek esetén "0 érintett sor" figyelmeztetés és "ismétlődések" hibák fordulhatnak elő.
-- Azok a táblák, amelyek neve aposztrófot tartalmaz, nem replikálhatók.
+- Az ügyfeleknek SYSDBA kell használniuk az Oracle-hez való kapcsolódáshoz.
+- A partíció/alpartíciós műveletek (Hozzáadás, eldobás, EXCHANGE és CSONKÍTás) miatti adatváltozások nem lesznek áttelepítve, és a következő hibákhoz vezethetnek:
+  - A HOZZÁADÁSi műveletekhez a hozzáadott adatokhoz tartozó frissítések és törlések "0 sor érintett" figyelmeztetést adhatnak vissza.
+  - A DROP és a CSONKÍTás műveletekhez az új beszúrások "duplikált" hibákat okozhatnak.
+  - Az EXCHANGE-műveletek esetében a "0 sor érintett" figyelmeztetés és az "ismétlődések" hibaüzenet jelenhet meg.
+- Azok a táblák, amelyek neve aposztrófokat tartalmaz, nem replikálhatók.

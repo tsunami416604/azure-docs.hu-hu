@@ -4,10 +4,10 @@ description: 'Gyakori kérdésekre adott válaszok a következő témakörökben
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156055"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
@@ -22,7 +22,7 @@ Igen. Előfizetésenként az Azure Backup minden támogatott régiójához legfe
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott?
 
-Tárolónként maximum 1000 Azure-beli virtuális gépet regisztrálhat. Ha a Microsoft Azure biztonsági mentési ügynök, regisztrálhat akár 50 MARS-ügynökök egy trezor. És regisztrálhat 50 MABS kiszolgálót/DPM-kiszolgálót egy tárolóba.
+Tárolónként maximum 1000 Azure-beli virtuális gépet regisztrálhat. Ha a Microsoft Azure Backup-ügynököt használja, legfeljebb 50 MARS-ügynököt regisztrálhat. Továbbá regisztrálhat 50 MABS-kiszolgálókat/DPM-kiszolgálókat egy tárba.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Egy tároló hány adatforrás/elem védelmére képes?
 
@@ -75,7 +75,7 @@ Igen.
 
 Az Azure Backup a következő operációs rendszerek fájljainak és mappáinak biztonsági mentését támogatja, az Azure Backup Server és a DPM által védett alkalmazások mellett.
 
-**OS** | **Sku** | **Részletek**
+**OS** | **SKU** | **Részletek**
 --- | --- | ---
 Munkaállomás | |
 Windows 10, 64 bites | Enterprise, Pro, Home | A gépekre telepítve kell lenniük a legújabb szervizcsomagoknak és frissítéseknek.
@@ -123,7 +123,7 @@ BMR/rendszerállapot |A biztonsági mentés alatt álló gép BMR-ének vagy ren
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Vonatkozik méretkorlátozás a Recovery Services-tárolóval biztonsági másolatokba mentett adatok mennyiségére?
 
-Nincs korlátozva a teljes adatmennyiség, amelyről biztonsági másolatot lehet a Recovery Services-tároló használatával. Az egyes adatforrások (az Azure virtuális gépeken kívül) legfeljebb 54 400 GB méretűek lehetnek. A korlátokról további információt a [támogatási mátrix tárolókorlátok szakaszában](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)talál.
+Recovery Services-tároló használatával nem korlátozható a biztonsági mentéshez használható teljes adatmennyiség. Az egyes adatforrások (az Azure-beli virtuális gépeken kívül) legfeljebb 54 400 GB méretűek lehetnek. A korlátokkal kapcsolatos további információkért tekintse [meg a tároló korlátai szakaszt a támogatási mátrixban](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Miért kisebb a Recovery Services-tárolóba átvitt adatok mérete a biztonsági mentéshez kiválasztott adatok méreténél?
 

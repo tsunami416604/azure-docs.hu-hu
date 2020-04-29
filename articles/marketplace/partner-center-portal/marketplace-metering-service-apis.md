@@ -1,6 +1,6 @@
 ---
-title: Piactér-mérési szolgáltatás API-jai | Azure Piactér
-description: A SaaS-ajánlatok használati eseménye az Azure Marketplace-en.
+title: Marketplace-mérési szolgáltatás API-k | Azure piactér
+description: Az SaaS-ajánlatok használati eseménye az Azure piactéren.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,35 +8,35 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275747"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace metering service API-k
 
-A használati esemény API lehetővé teszi, hogy egy adott megvásárolt entitás használati eseményeit bocsáthatja ki. A használati eseménykérelem a közzétevő által az ajánlat közzétételekor meghatározott mérési szolgáltatások dimenziójára hivatkozik.
+A használati esemény API lehetővé teszi használati események kibocsátását egy adott megvásárolt entitás számára. A használati eseményre vonatkozó kérelem a közzétevő által az ajánlat közzétételekor megadott mérési szolgáltatási dimenzióra hivatkozik.
 
 ## <a name="usage-event"></a>Használati esemény
 
-**POST**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
 |            |          |
 | ---------- | ---------------------- |
-| `ApiVersion` | A kérelemhez használandó művelet verziója. A legújabb API-verzió: 2018-08-31. |
+| `ApiVersion` | A kérelemhez használni kívánt művelet verziója. A legújabb API-verzió a 2018-08-31. |
 
-*Fejlécek kérése:*
+*Kérelem fejlécei:*
 
-| Tartalomtípus       | `application/json`    |
+| Content-Type       | `application/json`    |
 | ------------------ | ---------------------------- |
-| `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és megadja a válaszfejlécekben. |
-| `x-ms-correlationid` | Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
-| `authorization`   | [JSON webes jogkivonat (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: A HTTP-kérelem esetén `Bearer` a hivatkozott hivatkozásból beszerzett jogkivonat előtagja. |
+| `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
+| `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
+| `authorization`   | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor `Bearer` a hivatkozott hivatkozástól kapott jogkivonat előtagját. |
 
-*Kérés:*
+*Kérelem*
 
 ```json
 {
@@ -67,7 +67,7 @@ OK
 ```
 
 Kód: 400 <br>
-Hibás kérés, hiányzó vagy érvénytelen adatok vagy lejárt
+Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyiség
 
 ```json
 {
@@ -85,7 +85,7 @@ Hibás kérés, hiányzó vagy érvénytelen adatok vagy lejárt
 ```
 
 Kód: 403<br>
-Hibás kérés, hiányzó vagy érvénytelen adatok vagy lejárt
+Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyiség
 
 ```json
 {
@@ -95,7 +95,7 @@ Hibás kérés, hiányzó vagy érvénytelen adatok vagy lejárt
 ```
 
 Kód: 409<br>
-Ütközés, amikor megkapjuk a használati felhívást a használati erőforrás azonosítója, és a tényleges használat, amely már létezik. A válasz `additionalInfo` olyan mezőt tartalmaz, amely az elfogadott üzenetre tartalmaz információt.
+Ütközés, ha a használati erőforrás-azonosító használati hívását, valamint a már létező érvényes használati adatokat fogadjuk. A válasz tartalmazni `additionalInfo` fog egy mezőt, amely az elfogadott üzenettel kapcsolatos információkat tartalmaz.
 
 ```json
 {
@@ -113,30 +113,30 @@ Kód: 409<br>
 }
 ```
 
-## <a name="batch-usage-event"></a>Köteghasználati esemény
+## <a name="batch-usage-event"></a>Batch-használati esemény
 
-A kötegelt használati esemény API lehetővé teszi, hogy egyszerre több megvásárolt entitás használati eseményeit is kibocsáthatja. A köteghasználati eseménykérelem a közzétevő által az ajánlat közzétételekor meghatározott mérési szolgáltatások dimenziójára hivatkozik.
+A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvásárolt entitás használati eseményeit is kibocsátsa. A Batch-használati eseményre vonatkozó kérelem a közzétevő által az ajánlat közzétételekor megadott mérési szolgáltatási dimenzióra hivatkozik.
 
 >[!Note]
->Több SaaS-ajánlatot is regisztrálhat a Microsoft kereskedelmi piacán. Minden regisztrált SaaS-ajánlat rendelkezik egy egyedi Azure AD-alkalmazás, amely hitelesítési és engedélyezési célokra van regisztrálva. A kötegben kibocsátott eseményeknek ugyanazzal az Azure AD-alkalmazással rendelkező ajánlatokhoz kell tartozniuk az ajánlat regisztrálásakor.
+>Több SaaS-ajánlatot is regisztrálhat a Microsoft kereskedelmi piactéren. Minden regisztrált SaaS-ajánlathoz tartozik egy egyedi Azure AD-alkalmazás, amely hitelesítési és engedélyezési célból van regisztrálva. A Batch szolgáltatásban kibocsátott eseményeknek ugyanahhoz az Azure AD-alkalmazáshoz tartozó ajánlatokhoz kell tartozniuk az ajánlat regisztrálásakor.
 
-**HOZZÁSZÓLÁS:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Post:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
 |            |     |
 | ---------- | -------------------- |
-| `ApiVersion` | A kérelemhez használandó művelet verziója. A legújabb API-verzió: 2018-08-31. |
+| `ApiVersion` | A kérelemhez használni kívánt művelet verziója. A legújabb API-verzió a 2018-08-31. |
 
-*Fejlécek kérése:*
+*Kérelem fejlécei:*
 
-| Tartalomtípus       | `application/json`       |
+| Content-Type       | `application/json`       |
 | ------------------ | ------ |
-| `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
-| `x-ms-correlationid` | Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, egy jön létre, és a válasz fejlécekben. |
-| `authorization`      | [JSON webes jogkivonat (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: A HTTP-kérelem esetén `Bearer` a hivatkozott hivatkozásból beszerzett jogkivonat előtagja.  |
+| `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
+| `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
+| `authorization`      | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor `Bearer` a hivatkozott hivatkozástól kapott jogkivonat előtagját.  |
 
-*Kérés:*
+*Kérelem*
 ```json
 {
   "request": [
@@ -192,22 +192,22 @@ OK
 }
 ```
 
-Az API-válaszban `BatchUsageEvent` hivatkozott állapotkód leírása:
+Az API- `BatchUsageEvent` válaszban hivatkozott állapotkód leírása:
 
 | Állapotkód  | Leírás |
 | ---------- | -------------------- |
 | `Accepted` | Elfogadott kód. |
 | `Expired` | Lejárt használat. |
-| `Duplicate` | Duplikált használat biztosított. |
+| `Duplicate` | Ismétlődő használat van megadva. |
 | `Error` | Hibakód. |
 | `ResourceNotFound` | A megadott használati erőforrás érvénytelen. |
-| `ResourceNotAuthorized` | Nincs jogosultsága az erőforrás használatának biztosításához. |
-| `InvalidDimension` | A dimenzió, amelyhez a használat átlett adták, érvénytelen ehhez az ajánlathoz/tervhez. |
+| `ResourceNotAuthorized` | Ön nem jogosult az erőforrás használatának megadására. |
+| `InvalidDimension` | Ebben az ajánlatban vagy tervben érvénytelen a dimenzió, amelynek a kihasználtsága átadásra kerül. |
 | `InvalidQuantity` | Az átadott mennyiség < 0. |
-| `BadArgument` | A bemenet hiányzik vagy hibásan formázott. |
+| `BadArgument` | A bemenet hiányzik vagy helytelen formátumú. |
 
 Kód: 400<br>
-Hibás kérés, hiányzó vagy érvénytelen adatok vagy lejárt
+Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyiség
 
 ```json
 {
@@ -224,7 +224,7 @@ Hibás kérés, hiányzó vagy érvénytelen adatok vagy lejárt
 }
 ```
 Kód: 403<br>
-A felhasználó nem kezdeményezi a hívást
+A felhasználó jogosulatlanul teszi ezt a hívást
 
 ```json
 {
@@ -235,4 +235,4 @@ A felhasználó nem kezdeményezi a hívást
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: [SaaS-díjas számlázás.](./saas-metered-billing.md)
+További információ: Saas- [mért számlázás](./saas-metered-billing.md).

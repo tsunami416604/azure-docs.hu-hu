@@ -1,6 +1,6 @@
 ---
-title: Sokszögréteg hozzáadása térképhez | Microsoft Azure Maps
-description: Ebből a cikkből megtudhatja, hogyan jeleníthet meg sokszöget és több sokszöget a Microsoft Azure Maps Web SDK-ban egy térképen.
+title: Sokszög réteg hozzáadása térképhez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a sokszögeket és a több sokszöget a Microsoft Azure Maps web SDK-ban.
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -10,19 +10,19 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 9191f054ca3c7374bcbc7bec46573289a512612c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535052"
 ---
-# <a name="add-a-polygon-layer-to-the-map"></a>Sokszögréteg hozzáadása a térképhez
+# <a name="add-a-polygon-layer-to-the-map"></a>Sokszög réteg hozzáadása a térképhez
 
-Ez a cikk bemutatja, `Polygon` hogyan `MultiPolygon` jelenítheti meg a térkép geometriáinak és jellemzőjeit egy sokszögréteg használatával. Az Azure Maps Web SDK támogatja a körgeometriák létrehozását is a [kiterjesztett GeoJSON-sémában meghatározottak](extend-geojson.md#circle)szerint. Ezek a körök a térképen való rendereléskor sokszögekké alakulnak át. Az atlaszba tekerve minden jellemző geometria könnyen [frissíthető. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztály.
+Ez a cikk bemutatja, hogyan jelenítheti meg a `Polygon` Térkép `MultiPolygon` területeit és funkcióit a térképen a sokszög réteg használatával. A Azure Maps web SDK támogatja a kör alakú geometriák létrehozását is a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)definiált módon. Ezeket a köröket a rendszer sokszögekre alakítja át a térképen való megjelenítéskor. Az Atlas használatával egyszerűen frissíthető az összes szolgáltatás geometriája [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztálya
 
-## <a name="use-a-polygon-layer"></a>Sokszögréteg használata 
+## <a name="use-a-polygon-layer"></a>Sokszög réteg használata 
 
-Ha egy sokszögréteg adatforráshoz csatlakozik, és betöltődik a térképre, akkor a terület `Polygon` és a `MultiPolygon` szolgáltatások jelennek meg. Sokszög létrehozásához adja hozzá egy adatforráshoz, és a [Sokszögréteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) használatával adja meg egy sokszögréteggel.
+Ha egy sokszög réteg egy adatforráshoz van csatlakoztatva, és a térképen töltődik be, az a terület `Polygon` és `MultiPolygon` a funkciók között jelenik meg. Sokszög létrehozásához vegye fel azt egy adatforrásba, majd a [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) osztály használatával jelenítse meg a sokszög réteget.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -47,48 +47,48 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 }), 'labels');
 ```
 
-Az alábbiakban a fenti kód teljes és futó mintája látható.
+Alább látható a fenti kód teljes és működő mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Sokszög hozzáadása térképhez ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a Toll <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>sokszög hozzáadása</a> az Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>Maps ( ) térképéhez a CodePen alkalmazásban című <a href='https://codepen.io'>tollat.</a>
+<iframe height='500' scrolling='no' title='Sokszög hozzáadása térképhez ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>sokszög hozzáadása</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="use-a-polygon-and-line-layer-together"></a>Sokszög és vonalréteg együttes használata
+## <a name="use-a-polygon-and-line-layer-together"></a>Sokszög és vonal rétegek együttes használata
 
-A vonalréteg a sokszögek körvonalának renderelésére szolgál. A következő kódminta az előző példához hasonlóan poligont jelenít meg, de most hozzáad egy vonalréteget. Ez a vonalréteg az adatforráshoz kapcsolódó második réteg.  
+A sokszögek körvonalának megjelenítéséhez egy vonal réteget kell használni. A következő mintakód az előző példához hasonló sokszöget jelenít meg, de most egy sor réteget is felvesz. Ez a vonal az adatforráshoz csatlakozó második réteg.  
 
-<iframe height='500' scrolling='no' title='Sokszög és vonalréteg sokszög hozzáadásához' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A CodePen alkalmazásban a <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Tollsokszög és a vonalréteg</a> ből a<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>Sokszög</a>az Azure Maps ( ) segítségével adhat hozzá.
+<iframe height='500' scrolling='no' title='Sokszög és vonal réteg a sokszög hozzáadásához' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Az <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>vegye fel a sokszöget a toll és a vonal rétegben</a> .
 </iframe>
 
-## <a name="fill-a-polygon-with-a-pattern"></a>Sokszög kitöltése mintával
+## <a name="fill-a-polygon-with-a-pattern"></a>Sokszög kitöltése mintázattal
 
-A sokszög színnel való kitöltésén kívül a sokszöget is használhatja a sokszög kitöltéséhez. Töltsön be egy képmintát a térképkép sprite `fillPattern` erőforrásaiba, majd hivatkozzon erre a képre a sokszögréteg tulajdonságával.
+A sokszög színekkel való kitöltése mellett a sokszög kitöltéséhez használhat képmintázatot is. Helyezzen be egy képmintázatot a Maps-rendszerkép sprite-erőforrásaiba, majd hivatkozzon `fillPattern` erre a képre a sokszög rétegének tulajdonságával.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög kitöltési mintázata" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Toll <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>sokszög kitöltési mintáját</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) szerint a <a href='https://codepen.io'>CodePen webhelyen.</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög kitöltési mintája" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>sokszögének kitöltésére szolgáló mintát</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 > [!TIP]
-> Az Azure Maps webes SDK számos testreszabható képsablont biztosít, amelyeket kitöltési mintaként használhat. További információt a [Képsablonok használata](how-to-use-image-templates-web-sdk.md) című dokumentumban talál.
+> A Azure Maps web SDK számos testreszabható képsablont biztosít, amelyeket kitöltési mintázatként használhat. További információ: a [képsablonokkal](how-to-use-image-templates-web-sdk.md) kapcsolatos dokumentum használata.
 
-## <a name="customize-a-polygon-layer"></a>Sokszögréteg testreszabása
+## <a name="customize-a-polygon-layer"></a>Sokszög-réteg testreszabása
 
-A Sokszög rétegnek csak néhány formázási lehetősége van. Itt van egy szerszám -hoz megpróbál őket ki.
+A sokszög rétegnek csak néhány stílusa van. Itt látható egy eszköz, amellyel kipróbálhatja őket.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='LXvxpg között' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört a <a href='https://codepen.io'>CodePen webhelyen.</a>
+<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által LXvxpg tollat a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <a id="addACircle"></a>
 
 ## <a name="add-a-circle-to-the-map"></a>Kör hozzáadása a térképhez
 
-Az Azure Maps a GeoJSON-séma egy kiterjesztett verzióját használja, amely a körök definícióját tartalmazza, ahogy [az itt](extend-geojson.md#circle)is említettük. Egy kör jelenik meg a `Point` térképen egy funkció létrehozásával. Ez `Point` egy `subType` tulajdonság, `"Circle"` amelynek `radius` értéke és egy olyan tulajdonsága van, amelynek száma a sugarat méterben jelöli. 
+Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely a körök definícióját tartalmazza, ahogy az [itt](extend-geojson.md#circle)látható. Egy kör a térképen egy `Point` funkció létrehozásával jelenik meg. Ez `Point` egy olyan `subType` tulajdonsággal rendelkezik, amely `"Circle"` egy értékkel rendelkezik, és egy olyan `radius` tulajdonságot tartalmaz, amely egy szám, amely a sugarat méterben jelöli. 
 
 ```javascript
 {
@@ -104,16 +104,16 @@ Az Azure Maps a GeoJSON-séma egy kiterjesztett verzióját használja, amely a 
 }  
 ```
 
-Az Azure Maps Web SDK `Point` `Polygon` ezeket a funkciókat szolgáltatásokká alakítja. Ezután ezek a jellemzők a térképen sokszög és vonalrétegek használatával jelennek meg, ahogy az a következő kódmintában látható.
+A Azure Maps web SDK ezeket `Point` a funkciókat `Polygon` szolgáltatásokra konvertálja. Ezután ezek a funkciók a térképen a sokszög és a vonal rétegek használatával jelennek meg, ahogy az alábbi mintakód is mutatja.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Kör hozzáadása térképhez' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a Toll hozzáadása kör az Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>Maps ( ) <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>térképéhez</a> a <a href='https://codepen.io'>CodePen</a>webhelyen.
+<iframe height='500' scrolling='no' title='Kör hozzáadása térképhez' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>-on lévő Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>, és adjon hozzá egy kört egy térképhez</a> .
 </iframe>
 
-## <a name="make-a-geometry-easy-to-update"></a>A geometria frissítésének egyszerűvé tétele
+## <a name="make-a-geometry-easy-to-update"></a>Geometria egyszerű frissítése
 
-Az `Shape` osztály körbefolyatja [a geometriát](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) vagy [a jellemzőt,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) és megkönnyíti ezeknek a szolgáltatásoknak a frissítését és karbantartását. Alakzatváltozó példányosítani szeretné az alakzatváltozókat, adja át a geometriát vagy a tulajdonságok egy készletét az alakzatkonstrátornak.
+Egy `Shape` osztály egy [geometriát](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) vagy [szolgáltatást](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) csomagol, és megkönnyíti ezeknek a funkcióknak a frissítését és karbantartását. Egy alakzat változójának létrehozásához adjon át egy geometriát vagy egy tulajdonságot az alakzat konstruktorának.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -123,11 +123,11 @@ var shape1 = new atlas.Shape(new atlas.data.Point[0,0], { myProperty: 1 });
 var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], { myProperty: 1 });
 ```
 
-A következő kódminta bemutatja, hogyan kell körbefolyatni egy kör GeoJSON objektumot egy alakzatosztállyal. Ahogy a sugár értéke megváltozik az alakzatban, a kör automatikusan megjelenik a térképen.
+Az alábbi mintakód bemutatja, hogyan lehet kör alakú GeoJSON objektumot becsomagolni egy Shape osztállyal. Az alakzatban lévő RADIUS-változások értékeként a kör automatikusan a térképen jelenik meg.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Alakzattulajdonságainak frissítése' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>Tollfrissítés</a> alakzat<a href='https://codepen.io/azuremaps'>@azuremaps</a>tulajdonságait az Azure Maps ( ) szerint a <a href='https://codepen.io'>CodePen-en.</a>
+<iframe height='500' scrolling='no' title='Alakzat tulajdonságainak frissítése' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>frissítési alakzatának tulajdonságait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések
@@ -138,12 +138,12 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [Sokszög](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Sokszögréteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)
+> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Sokszögréteg beállításai](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
-A térképekhez hozzáadni rakandó további kódpéldákat az alábbi cikkekben talál:
+A térképekhez hozzáadandó további példákat a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
 > [Adatforrás létrehozása](create-data-source-web-sdk.md)
@@ -163,4 +163,4 @@ A térképekhez hozzáadni rakandó további kódpéldákat az alábbi cikkekben
 További források:
 
 > [!div class="nextstepaction"]
-> [Az Azure Maps GeoJSON specifikációbővítménye](extend-geojson.md#circle)
+> [Azure Maps GeoJSON specifikációs bővítmény](extend-geojson.md#circle)

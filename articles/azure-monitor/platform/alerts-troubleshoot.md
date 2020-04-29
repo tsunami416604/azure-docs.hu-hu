@@ -1,246 +1,246 @@
 ---
-title: Az Azure Monitor riasztásainak és értesítéseinek hibaelhárítása
-description: Gyakori problémák az Azure Monitor riasztásokkal és a lehetséges megoldásokkal.
+title: Riasztások és értesítések Azure Monitor hibaelhárítása
+description: Azure Monitor riasztásokkal és lehetséges megoldásokkal kapcsolatos gyakori problémák.
 author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
 ms.openlocfilehash: beb47f961c6f24453bd49aa5807c9d801fc199a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80132326"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Az Azure Monitor riasztásaiban felmerülő problémák elhárítása 
+# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor riasztásokkal kapcsolatos problémák elhárítása 
 
-Ez a cikk ismerteti az Azure Monitor riasztási gyakori problémák.
+Ez a cikk a Azure Monitor riasztásokkal kapcsolatos gyakori problémákat ismerteti.
 
-Az Azure Monitor-riasztások proaktív módon értesítik Önt, ha fontos feltételek találhatók a figyelési adatokban. Lehetővé teszik a problémák azonosítását és kezelését, mielőtt a rendszer felhasználói észrevennék őket. A riasztásokról a [Microsoft Azure riasztásainak áttekintése](alerts-overview.md)című témakörben olvashat bővebben.
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztással kapcsolatos további információkért lásd: [a Microsoft Azure riasztások áttekintése](alerts-overview.md).
 
-## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>A riasztáson végrehajtott művelet vagy értesítés nem a várt módon működött
+## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>A riasztáson elvégzett művelet vagy értesítés nem a várt módon működik
 
-Ha egy kiküldött riasztást az Azure Portalon, de van egy probléma néhány műveletvagy értesítés, tekintse meg a következő szakaszokat.
+Ha egy kilőtt riasztás jelenik meg a Azure Portalban, de a műveleteivel vagy értesítéseivel kapcsolatban probléma merül fel, tekintse meg a következő részeket.
 
-## <a name="did-not-receive-expected-email"></a>Nem kaptam meg a várt e-mailt
+## <a name="did-not-receive-expected-email"></a>Nem érkezett meg a várt e-mail
 
-Ha megjelenik egy kirúgott riasztás az Azure Portalon, de nem kapta meg a róla konfigurált e-mailt, kövesse az alábbi lépéseket: 
+Ha egy kilőtt riasztás jelenik meg a Azure Portalban, de nem kapta meg a rajta konfigurált e-mailt, kövesse az alábbi lépéseket: 
 
-1. **Az e-mailt letiltotta egy [műveletszabály?](alerts-action-rules.md)** 
+1. **Egy [műveleti szabály](alerts-action-rules.md)letiltotta az e-mailt**? 
 
-    Ellenőrizze a portálon a kilőtt riasztásra kattintva, és tekintse meg az előzmények lapot az elnyomott [műveletcsoportokról:](action-groups.md) 
+    Ellenőrizze, hogy a kilőtt riasztásra kattint-e a portálon, és tekintse meg a letiltott [műveleti csoportok](action-groups.md)előzményei lapot: 
 
-    ![Riasztási művelet szabályelnyomási előzményei](media/alerts-troubleshoot/history-action-rule.png)
+    ![Riasztási műveleti szabály elnyomásának előzményei](media/alerts-troubleshoot/history-action-rule.png)
 
-1. **Az "E-mail azure-erőforrás-kezelői szerepkör" művelet típusa?**
+1. **Az "e-mail-Azure Resource Manager szerepkör" művelet típusa?**
 
-    Ez a művelet csak az Azure Resource Manager szerepkör-hozzárendeléseit vizsgálja, amelyek az előfizetés hatókörében vannak, és *felhasználó típusúak.*  Győződjön meg arról, hogy a szerepkört az előfizetés szintjén rendelte hozzá, és nem az erőforrás vagy az erőforráscsoport szintjén.
+    Ez a művelet csak az előfizetési hatókörben és a *felhasználó*típusú Azure Resource Manager szerepkör-hozzárendeléseket vizsgálja.  Győződjön meg arról, hogy a szerepkört az előfizetési szinten rendelte hozzá, nem pedig az erőforrás szintjén vagy az erőforráscsoport szintjén.
 
-1. **Az e-mail kiszolgáló és a postaláda elfogadja a külső e-maileket?**
+1. **Az e-mail-kiszolgáló és a postaláda külső e-maileket fogad el?**
 
-    Ellenőrizze, hogy az e-mailek nem vannak-e letiltva:
+    Ellenőrizze, hogy az e három címről érkező e-mailek nincsenek-e Letiltva:
       - azure-noreply@microsoft.com  
       - azureemail-noreply@microsoft.com
       - alerts-noreply@mail.windowsazure.com
 
-    Gyakori, hogy a belső levelezési listák vagy terjesztési listák blokkolják a külső e-mail címekről érkező e-maileket. Meg kell, hogy whitelist a fenti e-mail címeket.  
-    A teszteléshez adjon hozzá egy normál munkahelyi e-mail címet (nem levelezési listát) a műveletcsoporthoz, és ellenőrizze, hogy érkeznek-e értesítések az adott e-mailre. 
+    Gyakori, hogy a belső levelezőlisták vagy terjesztési listája letiltja az e-maileket a külső e-mail-címekről. A fenti e-mail-címeket meg kell adni.  
+    A teszteléshez adjon hozzá egy normál munkahelyi e-mail-címet (nem levelezési listát) a műveleti csoporthoz, és ellenőrizze, hogy érkeznek-e az e-mailekre. 
 
-1. **Az e-mailt a beérkezett üzenetekre vonatkozó szabályok vagy a spamszűrő dolgozta fel?** 
+1. **A beérkezett e-mail-szabályok vagy a levélszemét-szűrők feldolgozása megtörtént?** 
 
-    Ellenőrizze, hogy nincsenek-e olyan beérkezett üzenetekre vonatkozó szabályok, amelyek törlik ezeket az e-maileket, vagy áthelyezik őket egy mellékmappába. A beérkezett üzenetekre vonatkozó szabályok például elkaphatnak bizonyos feladókat vagy a tárgyban lévő szavakat.
+    Ellenőrizze, hogy nincsenek-e e-maileket törlő beérkezett fájlok, vagy helyezze át őket egy oldal mappájába. A beérkezett fájlok szabályai például tartalmazhatnak konkrét küldőket vagy adott szavakat a tárgyban.
 
-    Is, ellenőrizze:
+    Győződjön meg arról is, hogy:
     
-      - az e-mail kliens (például az Outlook, a Gmail) spam beállításai
-      - a feladó korlátozza / spam beállítások / karantén beállításait az e-mail szerver (mint az Exchange, Office 365, G-suite)
-      - az e-mail biztonsági készülék beállításait, ha vannak ilyenek (például Barracuda, Cisco). 
+      - az e-mail-ügyfélprogram Levélszemét-beállításai (például Outlook, Gmail)
+      - a küldő korlátozza/levélszemét beállítások/karantén beállítások az e-mail kiszolgáló (például Exchange, Office 365, G-Suite)
+      - az e-mail-biztonsági berendezés beállításai, ha vannak ilyenek (például a Barracuda, a Cisco). 
 
-1. **Véletlenül leiratkozott az akciócsoportról?** 
+1. **Véletlenül leiratkozott a műveleti csoportból?** 
 
-    A figyelmeztető e-mailek egy hivatkozást biztosítanak a műveletcsoportból való leiratkozáshoz. Annak ellenőrzése, hogy véletlenül leiratkozott-e erről a műveletcsoportról:
+    A riasztási e-mailek a műveleti csoportból való leiratkozásra mutató hivatkozást biztosítanak. A következő lépésekkel ellenőrizze, hogy véletlenül leiratkozott-e a műveleti csoportból:
 
-    1. Nyissa meg a műveletcsoportot a portálon, és ellenőrizze az Állapot oszlopot:
+    1. Nyissa meg a műveleti csoportot a portálon, és keresse meg az állapot oszlopot:
 
-    ![műveletcsoport állapotoszlopa](media/alerts-troubleshoot/action-group-status.png)
+    ![műveleti csoport állapota oszlop](media/alerts-troubleshoot/action-group-status.png)
 
-    2. Keressen e-mailben a leiratkozás megerősítésére:
+    2. A leiratkozási megerősítés megkeresése az e-mailben:
 
-    ![leiratkozott a riasztási műveletcsoportból](media/alerts-troubleshoot/unsubscribe-action-group.png)
+    ![leiratkozott a riasztási műveleti csoportból](media/alerts-troubleshoot/unsubscribe-action-group.png)
 
-    Ha újra szeretne előfizetni – használja a leiratkozást megerősítő e-mailben található hivatkozást, vagy távolítsa el az e-mail címet az akciócsoportból, majd adja hozzá újra. 
+    Az előfizetés újbóli megadásához használja a leiratkozási visszaigazoló e-mailben kapott hivatkozást, vagy távolítsa el az e-mail-címet a műveleti csoportból, majd adja vissza újra. 
  
-1. **Korlátozott minősítést kapott, mivel sok e-mail érkezik egyetlen e-mail címre?** 
+1. **A minősítés korlátozott, mert számos e-mail-cím egyetlen e-mail-címre fog rendelkezni?** 
 
-    Az e-mail sebessége óránként legfeljebb 100 e-mailre [korlátozódik](alerts-rate-limiting.md) minden egyes e-mail címre. Ha eléri ezt a küszöbértéket, további e-mail értesítések et eldobunk.  Ellenőrizze, hogy kapott-e olyan üzenetet, amely arról jelzi, hogy az e-mail címe ideiglenesen korlátozott: 
+    Az e-mailek díjszabása legfeljebb 100 e-mail-címre van [korlátozva](alerts-rate-limiting.md) minden egyes e-mail-címre. Ha átadja ezt a küszöbértéket, a rendszer eldobott további értesítő e-maileket.  Ellenőrizze, hogy kapott-e egy üzenetet, amely jelzi, hogy az e-mail-címe átmenetileg korlátozott: 
  
-   ![E-mail arány korlátozott](media/alerts-troubleshoot/email-paused.png)
+   ![E-mailek aránya korlátozott](media/alerts-troubleshoot/email-paused.png)
 
-   Ha nagy mennyiségű értesítést szeretne kapni sebességkorlátozás nélkül, fontolja meg egy másik művelet, például a webhook, a logikai alkalmazás, az Azure-függvény vagy az automatizálási runbookok használatát, amelyek egyike sem korlátozott. 
+   Ha nagy mennyiségű értesítést szeretne kapni a ráta korlátozása nélkül, érdemes lehet egy másik műveletet, például webhookot, Logic app-t, Azure-függvényt vagy Automation-runbookok használni, amelynek egyik mértéke sem korlátozott. 
 
-## <a name="did-not-receive-expected-sms-voice-call-or-push-notification"></a>Nem kapott várt SMS-t, hanghívást vagy leküldéses értesítést
+## <a name="did-not-receive-expected-sms-voice-call-or-push-notification"></a>Nem érkezett meg a várt SMS-, hanghívási vagy leküldéses értesítés
 
-Ha a portálon megjelenik egy kirúgott riasztás, de nem kapta meg a beállított SMS-t, hanghívást vagy leküldéses értesítést, kövesse az alábbi lépéseket: 
+Ha a portálon egy kilőtt riasztás jelenik meg, de nem kapta meg az SMS-t, a hanghívást vagy a leküldéses értesítést, amelyet korábban konfigurált, kövesse az alábbi lépéseket: 
 
-1. **A műveletet [műveletszabály](alerts-action-rules.md)tiltotta el?** 
+1. **Egy [műveleti szabály](alerts-action-rules.md)letiltotta a műveletet?** 
 
-    Ellenőrizze a portálon a kilőtt riasztásra kattintva, és tekintse meg az előzmények lapot az elnyomott [műveletcsoportokról:](action-groups.md) 
+    Ellenőrizze, hogy a kilőtt riasztásra kattint-e a portálon, és tekintse meg a letiltott [műveleti csoportok](action-groups.md)előzményei lapot: 
 
-    ![Riasztási művelet szabályelnyomási előzményei](media/alerts-troubleshoot/history-action-rule.png)
+    ![Riasztási műveleti szabály elnyomásának előzményei](media/alerts-troubleshoot/history-action-rule.png)
 
-   Ha ez nem volt szándékos, módosíthatja, letilthatja vagy törölheti a műveletszabályt.
+   Ha ez nem szándékos, módosíthatja, letilthatja vagy törölheti a műveleti szabályt.
  
-1. **SMS / hang: Helyes a telefonszáma?**
+1. **SMS/Voice: helyes a telefonszáma?**
 
-   Ellenőrizze, hogy az SMS-művelet nem tartalmaz-e elírásokat az országkódban vagy a telefonszámon. 
+   Az SMS-művelet elírását az országkód vagy a telefonszám esetében olvassa el. 
  
-1. **SMS / hang: voltál arány korlátozott?** 
+1. **SMS/Voice: korlátozott a díjszabás?** 
 
-    Az SMS- és hanghívások sebessége telefonszámonként öt percenként legfeljebb egy értesítésre korlátozódik. Ha eléri ezt a küszöbértéket, az értesítések ellesznek dobva. 
+    Az SMS-és hanghívások száma legfeljebb egy, a telefonszámon öt percenkénti értesítésre korlátozódik. Ha átadja ezt a küszöbértéket, a rendszer elveti az értesítéseket. 
 
-      - Hanghívás – ellenőrizze a híváselőzményeket, és ellenőrizze, hogy az előző öt percben más hívás ad-e az Azure-ból. 
-      - SMS - ellenőrizze az SMS-előzményeket egy üzenetben, amely azt jelzi, hogy a telefonszáma korlátozott volt. 
+      - Hanghívás – tekintse meg a hívások előzményeit, és ellenőrizze, hogy az előző öt percben az Azure-tól eltérő hívást kapott-e. 
+      - SMS – tekintse meg az SMS előzményeit, amely azt jelzi, hogy a telefonszáma korlátozott. 
 
-    Ha nagy mennyiségű értesítést szeretne kapni sebességkorlátozás nélkül, fontolja meg egy másik művelet, például a webhook, a logikai alkalmazás, az Azure-függvény vagy az automatizálási runbookok használatát, amelyek egyike sem korlátozott. 
+    Ha nagy mennyiségű értesítést szeretne kapni a ráta korlátozása nélkül, érdemes lehet egy másik műveletet, például webhookot, Logic app-t, Azure-függvényt vagy Automation-runbookok használni, amelynek egyik mértéke sem korlátozott. 
  
-1. **SMS: Véletlenül leiratkozott az akciócsoportról?**
+1. **SMS: véletlenül leiratkozott a műveleti csoportból?**
 
-    Nyissa meg az SMS-előzményeket, és ellenőrizze, hogy leiratkozott-e az SMS-kézbesítésről ettől az adott műveletcsoporttól (a TILTó action_group_short_name válasz használatával) vagy az összes műveletcsoportból (a STOP válasz használatával). Ha újra szeretne feliratkozni, küldje el a megfelelő SMS parancsot (ENABLE action_group_short_name vagy START), vagy távolítsa el az SMS műveletet a műveletcsoportból, majd adja hozzá újra.  További információt az [SMS-riasztások viselkedése műveletcsoportokban](alerts-sms-behavior.md)című témakörben talál.
+    Nyissa meg az SMS-előzményeket, és ellenőrizze, hogy kikapcsolta-e az SMS-kézbesítést az adott műveleti csoportból (a LETILTÁS action_group_short_name válasz használatával) vagy az összes műveleti csoportból (a leállítási válasz használatával). Az előfizetés ismételt előfizetéséhez küldje el a megfelelő SMS-parancsot (engedélyezze action_group_short_name vagy indítsa el), vagy távolítsa el az SMS-műveletet a műveleti csoportból, majd adja újra újra.  További információ: [SMS-riasztás viselkedése a műveleti csoportokban](alerts-sms-behavior.md).
 
-1. **Véletlenül letiltotta az értesítéseket a telefonján?**
+1. **Véletlenül letiltotta az értesítéseket a telefonon?**
 
-   A legtöbb mobiltelefon lehetővé teszi, hogy letiltsa a hívásokat vagy az SMS-eket bizonyos telefonszámokról vagy rövid kódokról, vagy letiltsa az adott alkalmazásokból (például az Azure mobilalkalmazásból származó leküldéses értesítéseket). Annak ellenőrzéséhez, hogy véletlenül blokkolta-e az értesítéseket a telefonján, keresse meg a telefon operációs rendszerének és modelljének dokumentációját, vagy tesztelje egy másik telefonszámmal és telefonszámmal. 
+   A legtöbb mobiltelefon lehetővé teszi a hívások vagy SMS-ek letiltását bizonyos telefonszámokból vagy rövid kódokból, illetve leküldéses értesítések letiltására bizonyos alkalmazásokból (például a Azure mobile app). Annak ellenőrzéséhez, hogy véletlenül letiltotta-e az értesítéseket a telefonján, keresse meg a telefonos operációs rendszerre és a modellre vonatkozó dokumentációt, vagy végezzen el egy másik telefonszámot és telefonszámot. 
 
-## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>Más típusú műveletet várt, de nem 
+## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>A program egy másik típusú műveletet várt, de nem 
 
-Ha egy kiváltott riasztás látható a portálon, de a konfigurált művelet nem aktiválódott, kövesse az alábbi lépéseket: 
+Ha a portálon egy kilőtt riasztás látható, de a beállított művelete nem aktiválódik, kövesse az alábbi lépéseket: 
 
-1. **A műveletet műveletszabály eltiakarta?** 
+1. **Egy műveleti szabály letiltotta a műveletet?** 
 
-    Ellenőrizze a portálon a kilőtt riasztásra kattintva, és tekintse meg az előzmények lapot az elnyomott [műveletcsoportokról:](action-groups.md) 
+    Ellenőrizze, hogy a kilőtt riasztásra kattint-e a portálon, és tekintse meg a letiltott [műveleti csoportok](action-groups.md)előzményei lapot: 
 
-    ![Riasztási művelet szabályelnyomási előzményei](media/alerts-troubleshoot/history-action-rule.png)
+    ![Riasztási műveleti szabály elnyomásának előzményei](media/alerts-troubleshoot/history-action-rule.png)
  
-    Ha ez nem volt szándékos, módosíthatja, letilthatja vagy törölheti a műveletszabályt. 
+    Ha ez nem szándékos, módosíthatja, letilthatja vagy törölheti a műveleti szabályt. 
 
-1. **Nem vált ki egy webhook?**
+1. **Nem aktiválódik a webhook?**
 
-    1. **Le tiltották a forrás IP-címeit?**
+    1. **Le lettek tiltva a forrás IP-címei?**
     
-       Engedélyezési lista az [IP-címek,](action-groups.md#action-specific-information) amelyek a webhook hívják.
+       A webhook által meghívott [IP-címek](action-groups.md#action-specific-information) engedélyezési listája.
 
-    1. **Megfelelően működik a webhook-végpont?**
+    1. **A webhook-végpont megfelelően működik?**
 
-       Ellenőrizze, hogy a konfigurált webhook-végpont helyes-e, és a végpont megfelelően működik-e. Ellenőrizze a webhook naplók vagy eszköz a kódot, így meg tudná vizsgálni (például naplózza a bejövő hasznos adat). 
+       Ellenőrizze, hogy helyes-e a konfigurált webhook-végpont, és a végpont megfelelően működik-e. Tekintse meg a webhook-naplókat, vagy adja meg a kódját, hogy megvizsgálható legyen (például naplózza a bejövő adattartalmat). 
 
-    1. **A Slacket vagy a Microsoft Teamst hívja?**  
-    Ezek a végpontok elvárja egy adott JSON formátumban. Kövesse [az alábbi utasításokat](action-groups-logic-app.md) a logikai alkalmazás művelet konfigurálásához.
+    1. **A Slack vagy a Microsoft Teams szolgáltatást hívja?**  
+    Ezek a végpontok egy adott JSON-formátumot várnak. A Logic app-műveletek konfigurálásához kövesse az [alábbi utasításokat](action-groups-logic-app.md) .
 
-    1. **A webhook nem reagált, vagy hibákat adott vissza?** 
+    1. **A webhook nem válaszol, vagy hibát adott vissza?** 
 
-        A webhook-válasz időbeli elállási ideje 10 másodperc. A webhook-hívás a következő HTTP-állapotkódok visszaadásakor legfeljebb két további alkalommal lesz újra próbálkozva: 408, 429, 503, 504, vagy ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második és egyben utolsó újrapróbálkozás 100 másodperc után történik. Ha a második újrapróbálkozás sikertelen, a rendszer 30 percig semelyik műveletcsoport számára nem hívja meg újra a végpontot.
+        A webhook válaszának időtúllépési időtartama 10 másodperc. A webhook-hívást a rendszer a következő HTTP-állapotkódok visszaadásakor két további alkalommal próbálkozik: 408, 429, 503, 504, vagy ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második és a végső újrapróbálkozás 100 másodperc után történik. Ha a második újrapróbálkozás sikertelen, a rendszer 30 percig semelyik műveletcsoport számára nem hívja meg újra a végpontot.
 
-## <a name="action-or-notification-happened-more-than-once"></a>A művelet vagy értesítés többször is megtörtént 
+## <a name="action-or-notification-happened-more-than-once"></a>A művelet vagy az értesítés többször is történt 
 
-Ha egy riasztásról (például e-mailről vagy SMS-ről) többször is értesítést kapott, vagy a riasztás művelete (például webhook vagy Azure-funkció) többször is működésbe lépett, kövesse az alábbi lépéseket: 
+Ha többször is kapott értesítést egy riasztásról (például egy e-mailről vagy SMS-ről), vagy a riasztás műveletét (például a webhookot vagy az Azure-függvényt) többször is elindították, kövesse az alábbi lépéseket: 
 
-1. **Tényleg ugyanaz a figyelmeztetés?** 
+1. **Valóban ugyanez a riasztás?** 
 
-    Bizonyos esetekben több hasonló riasztás tanusított körülbelül ugyanabban az időben. Szóval, úgy tűnhet, hogy ugyanaz a riasztás többször is aktiválta a tetteit. Előfordulhat például, hogy egy tevékenységnapló-riasztási szabály úgy van beállítva, hogy az esemény indításakor, valamint az esemény állapotmezőjének szűrésének sikertelenségor (sikeres vagy sikertelen) működésbe lépve is elinduljon. 
+    Bizonyos esetekben több hasonló riasztást is kilőttek egy időben. Így előfordulhat, hogy úgy tűnik, mintha ugyanaz a riasztás többször is kiváltotta a műveleteit. A műveletnapló riasztási szabálya például beállítható úgy, hogy az esemény megkezdése esetén mindkettőt elindítsa, és ha befejeződött (sikeres vagy sikertelen), az Event Status (esemény állapota) mezőben nem végez szűrést. 
 
-    Annak ellenőrzéséhez, hogy ezek a műveletek vagy értesítések különböző riasztásokból származnak-e, vizsgálja meg a riasztás részleteit, például az időbélyegét és a riasztásazonosítót vagy a korrelációs azonosítóját. Másik lehetőségként ellenőrizze a kirúgott riasztások listáját a portálon. Ebben az esetben módosítania kell a riasztási szabály logikáját, vagy más módon kell konfigurálnia a riasztási forrást. 
+    Annak ellenőrzése érdekében, hogy ezek a műveletek vagy értesítések különböző riasztásokból származnak-e, vizsgálja meg a riasztás részleteit, például az időbélyegét, vagy a riasztás azonosítóját vagy a korrelációs azonosítóját. Azt is megteheti, hogy a portálon megtalálhatja a felgyújtott riasztások listáját. Ebben az esetben módosítania kell a riasztási szabály logikáját, vagy más módon konfigurálnia kell a riasztás forrását. 
 
-1. **Ismétlődik a művelet több műveletcsoportban is?** 
+1. **Ismétlődik a művelet több műveleti csoportban?** 
 
-    Riasztás esetén a rendszer egymástól függetlenül dolgozza fel a műveletcsoportokat. Így ha egy művelet (például egy e-mail cím) jelenik meg több aktivált műveletcsoportban, akkor műveletcsoportonként egyszer kell hívni. 
+    A riasztások elindítását követően az egyes műveleti csoportokat egymástól függetlenül dolgozzák fel. Ha tehát egy művelet (például egy e-mail-cím) több aktivált műveleti csoportban jelenik meg, akkor a rendszer egy műveleti csoportonként egyszer hívja meg. 
 
-    A műveletcsoportok aktiválásának ellenőrzéséhez ellenőrizze a riasztási előzmények lapot. A riasztási szabályban definiált mindkét műveletcsoport, valamint a műveletszabályok által a riasztáshoz hozzáadott műveletcsoportok is megjelennek: 
+    A műveleti csoportok aktiválásának vizsgálatához tekintse meg a riasztási előzmények lapot. A riasztási szabályban meghatározott műveleti csoportok és műveleti csoportok is megjelennek a riasztáshoz a műveleti szabályok szerint: 
 
-    ![Művelet ismétlődik több műveletcsoportban](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
+    ![Több műveleti csoportban ismétlődő művelet](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
 
-## <a name="action-or-notification-has-an-unexpected-content"></a>A művelet vagy értesítés nem várt tartalommal rendelkezik
+## <a name="action-or-notification-has-an-unexpected-content"></a>A művelet vagy az értesítés nem várt tartalmat tartalmaz
 
-Ha megkapta a riasztást, de úgy véli, hogy néhány mezője hiányzik vagy helytelen, kövesse az alábbi lépéseket: 
+Ha megkapta a riasztást, de úgy véli, hogy egyes mezői hiányoznak vagy helytelenek, kövesse az alábbi lépéseket: 
 
-1. **A műveletnek megfelelő formátumot választotta?** 
+1. **A megfelelő formátumot választotta a művelethez?** 
 
-    Minden művelettípus (e-mail, webhook stb.) két formátummal rendelkezik : az alapértelmezett, az örökölt formátum és az [újabb közös sémaformátum](alerts-common-schema.md). Amikor létrehoz egy műveletcsoportot, megadhatja a műveletenként kívánt formátumot – a műveletcsoportok különböző műveletei eltérő formátumúak lehetnek. 
+    Minden Művelettípus (e-mail-cím, webhook stb.) két formátumban van – az alapértelmezett, örökölt formátum és az [újabb általános séma formátuma](alerts-common-schema.md). A műveleti csoport létrehozásakor a kívánt formátumot kell megadnia. a műveleti csoportok különböző műveletei különböző formátumokkal rendelkezhetnek. 
 
-    Például webhook művelet: 
+    A webhook művelethez például: 
 
-    ![webhook műveletséma beállítás](media/alerts-troubleshoot/webhook.png)
+    ![webhook műveleti séma beállítása](media/alerts-troubleshoot/webhook.png)
 
-    Ellenőrizze, hogy a művelet szintjén megadott formátum megfelel-e a vártnak. Előfordulhat például, hogy olyan kódot fejlesztett ki, amely válaszol a riasztásokra (webhook, függvény, logikai alkalmazás stb.), és egy formátumot vár, de később a műveletben Ön vagy egy másik személy más formátumot adott meg.  
+    Ellenőrizze, hogy a műveleti szinten megadott formátum a várt érték-e. Előfordulhat például, hogy olyan programkódot fejlesztett ki, amely válaszol a riasztásokra (webhook, függvény, logikai alkalmazás stb.), ami egy formátumot vár, de később a műveletben, vagy egy másik személy eltérő formátumot adott meg.  
 
-    Emellett ellenőrizze a hasznos adatformátumban (JSON) a [tevékenységnapló-riasztásokat,](activity-log-alerts-webhook.md)a [naplókeresési riasztásokat](alerts-log-webhook.md) (mind az Application Insights, mind a log analytics), a [metrikariasztásokat](alerts-metric-near-real-time.md#payload-schema), a [közös riasztási sémát](alerts-common-schema-definitions.md)és az elavult [klasszikus metrikariasztásokat.](alerts-webhooks.md)
+    Továbbá tekintse meg a [tevékenységek naplójának riasztásait](activity-log-alerts-webhook.md)(JSON) a [naplózott keresési riasztások](alerts-log-webhook.md) (a Application Insights és a log Analytics esetében is), a [metrikus riasztások](alerts-metric-near-real-time.md#payload-schema)esetében a [gyakori riasztási séma](alerts-common-schema-definitions.md)esetében, valamint az elavult [klasszikus metrikai riasztásokat](alerts-webhooks.md).
 
  
-1. **Tevékenységnapló-riasztások: Elérhetők az adatok a tevékenységnaplóban?** 
+1. **Műveletnapló riasztásai: a tevékenység naplójában elérhető információk?** 
 
-    [A tevékenységnapló-riasztások](activity-log-alerts.md) olyan riasztások, amelyek az Azure-tevékenységnaplóba írt eseményeken alapulnak, például az Azure-erőforrások létrehozásával, frissítésével vagy törlésével kapcsolatos eseményeken, a szolgáltatás állapot- és erőforrás-állapoteseményeken, illetve az Azure Advisor és az Azure-szabályzat megállapításain. Ha a tevékenységnapló alapján kapott riasztást, de néhány szükséges mező hiányzik vagy helytelen, először ellenőrizze magát a tevékenységnaplóban lévő eseményeket. Ha az Azure-erőforrás nem írta meg a keresett mezőket a tevékenységnapló-esemény, ezek a mezők nem szerepelnek a megfelelő riasztást. 
+    A [műveletnapló riasztásai](activity-log-alerts.md) olyan riasztások, amelyek az Azure-beli tevékenység naplójában írt eseményeken alapulnak, például az Azure-erőforrások létrehozásával, frissítésével vagy törlésével, a szolgáltatás állapotával és erőforrás-állapotával kapcsolatos eseményekkel, valamint a Azure Advisor és Azure Policy eredményeivel kapcsolatban. Ha a műveletnapló alapján riasztást kapott, de egyes szükséges mezők hiányoznak vagy helytelenek, először tekintse meg az eseményeket a tevékenység naplójában. Ha az Azure-erőforrás nem írta meg a keresett mezőket a tevékenység naplójában, akkor ezek a mezők nem kerülnek bele a megfelelő riasztásba. 
 
-## <a name="action-rule-is-not-working-as-expected"></a>A műveletszabály nem a várt módon működik 
+## <a name="action-rule-is-not-working-as-expected"></a>A műveleti szabály nem a várt módon működik 
 
-Ha egy kilőtt riasztás látható a portálon, de egy kapcsolódó műveletszabály nem a várt módon működött, kövesse az alábbi lépéseket: 
+Ha a portálon egy kilőtt riasztás látható, de a kapcsolódó műveleti szabály nem a várt módon működött, kövesse az alábbi lépéseket: 
 
-1. **Engedélyezve van a műveletszabály?** 
+1. **Engedélyezve van a műveleti szabály?** 
 
-    Ellenőrizze a műveletszabály állapotoszlopában, hogy a kapcsolódó műveletszerepkör engedélyezve van-e. 
+    A műveleti szabály állapota oszlopban ellenőrizze, hogy a kapcsolódó műveleti szerepkör engedélyezve van-e. 
 
-    ![Grafikus](media/alerts-troubleshoot/action-rule-status.png) 
+    ![grafikus](media/alerts-troubleshoot/action-rule-status.png) 
 
-    Ha nincs engedélyezve, engedélyezheti a műveletszabályt, ha kijelöli, majd az Engedélyezés gombra kattint. 
+    Ha nincs engedélyezve, engedélyezheti a műveleti szabályt úgy, hogy kijelöli, majd az Engedélyezés lehetőségre kattint. 
 
-1. **Ez egy szolgáltatás állapotriasztás?** 
+1. **A szolgáltatás állapota riasztás?** 
 
-    A szolgáltatás állapotriasztásait (figyelőszolgáltatás = "Szolgáltatás állapota") nem érintik a műveletszabályok. 
+    A szolgáltatás állapotával kapcsolatos riasztásokat (figyelő szolgáltatás = "Service Health") nem érinti a műveleti szabályok. 
 
-1. **A műveletszabály a riasztásra hat?** 
+1. **A műveleti szabály a riasztásra reagál?** 
 
-    Ellenőrizze, hogy a műveletszabály feldolgozta-e a riasztást a portálon az elindított riasztásra kattintva, és tekintse meg az előzmények lapot.
+    Ellenőrizze, hogy a műveleti szabály feldolgozta-e a riasztást úgy, hogy rákattint a kilőtt riasztásra a portálon, és megtekinti az előzmények lapot.
 
-    Íme egy példa az összes műveletcsoportot letiltó műveletszabályra: 
+    Íme egy példa a műveleti szabályra az összes műveleti csoport letiltásához: 
  
-     ![Riasztási művelet szabályelnyomási előzményei](media/alerts-troubleshoot/history-action-rule.png)
+     ![Riasztási műveleti szabály elnyomásának előzményei](media/alerts-troubleshoot/history-action-rule.png)
 
-    Íme egy példa egy műveletszabályra, amely egy másik műveletcsoportot ad hozzá:
+    Példa egy másik műveleti csoport hozzáadására szolgáló műveleti szabályra:
 
-    ![Művelet ismétlődik több műveletcsoportban](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
+    ![Több műveleti csoportban ismétlődő művelet](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
  
 
-1. **A műveletszabály hatóköre és a szűrő megfelel az elindított riasztásnak?** 
+1. **A műveleti szabály hatóköre és a szűrő megfelel a kilőtt riasztásnak?** 
 
-    Ha úgy gondolja, hogy a műveletszabálynak el kellett volna lennie, de nem kellett volna, vagy hogy nem kellett volna elsülnie, de így történt, gondosan vizsgálja meg a műveletszabály hatókörét és a szűrőfeltételeket az ellett tüzelt riasztás tulajdonságaival szemben. 
+    Ha úgy gondolja, hogy a műveleti szabálynak kilőtt, de nem volt, vagy nem kellett volna, de nem tette volna meg, alaposan vizsgálja meg a műveleti szabály hatókörét és a szűrési feltételeket, valamint a kilőtt riasztás tulajdonságait. 
 
 
-## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>A kilőtt riasztás riasztási azonosítójának megkeresése
+## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>Kilőtt riasztás riasztási azonosítójának megkeresése
 
-Amikor megnyit egy esetet egy adott tüzelésű riasztás (például – ha nem kapta meg az e-mail értesítést), meg kell adnia a riasztásazonosítót. 
+Ha egy adott kilőtt riasztásra vonatkozó esetet nyit meg (például – ha nem kapta meg az e-mail-értesítést), meg kell adnia a riasztás azonosítóját. 
 
-A hely megkereséséhez kövesse az alábbi lépéseket:
+A megkereséséhez kövesse az alábbi lépéseket:
 
-1. Az Azure Portalon keresse meg a kirúgott riasztások listáját, és keresse meg az adott riasztást. A szűrők segítségével megkeresheti azt. 
+1. A Azure Portal navigáljon a kilőtt riasztások listájához, és keresse meg az adott riasztást. A szűrők segítségével megkeresheti. 
 
-1. Kattintson a riasztásra a riasztás részleteinek megnyitásához. 
+1. A riasztás részleteinek megnyitásához kattintson a riasztásra. 
 
-1. Görgessen le az első lap (az összegzés lap) riasztási mezőiben, amíg meg nem találja, és másolja azt. Ez a mező tartalmaz egy "Másolás vágólapra" segédgombot is, amelyet használhat.  
+1. Görgessen lefelé az első lap riasztás mezőiben (az összefoglalás lapon), amíg meg nem találja, és másolja. Ebben a mezőben a "másolás a vágólapra" segítő gomb is megtalálható.  
 
-    ![riasztási azonosító keresése](media/alerts-troubleshoot/get-alert-id.png)
+    ![riasztás azonosítójának keresése](media/alerts-troubleshoot/get-alert-id.png)
 
-## <a name="problem-creating-updating-or-deleting-action-rules-in-the-azure-portal"></a>Probléma a műveletszabályok létrehozása, frissítése vagy törlése az Azure Portalon
+## <a name="problem-creating-updating-or-deleting-action-rules-in-the-azure-portal"></a>Probléma a műveleti szabályok létrehozásával, frissítésével vagy törlésével kapcsolatban a Azure Portalban
 
-Ha hiba történt egy [műveletszabály](alerts-action-rules.md)létrehozása, frissítése vagy törlése közben, kövesse az alábbi lépéseket: 
+Ha hiba történt a [műveleti szabály](alerts-action-rules.md)létrehozása, frissítése vagy törlése során, kövesse az alábbi lépéseket: 
 
-1. **Engedélyhiba történt?**  
+1. **Hibaüzenetet kapott?**  
 
-    Rendelkeznie kell a [figyelési közreműködő beépített szerepkörrel,](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)vagy a műveletszabályokhoz és riasztásokhoz kapcsolódó konkrét engedélyekkel.
+    Rendelkeznie kell a [figyelő közreműködői beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor), vagy a műveleti szabályokkal és riasztásokkal kapcsolatos konkrét engedélyekkel.
 
-1. **Ellenőrizte a műveletszabály paramétereit?**  
+1. **Ellenőrizte a műveleti szabály paramétereit?**  
 
-    Ellenőrizze a [műveletszabály dokumentációját,](alerts-action-rules.md)vagy a [PowerShell Set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) parancsot. 
+    Győződjön meg a [műveleti szabály dokumentációjában](alerts-action-rules.md)vagy a [műveleti szabály PowerShell set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) parancsának megtekintéséhez. 
 
 
 ## <a name="next-steps"></a>További lépések
-- Naplóriasztás használata esetén olvassa el a [Naplóriasztások hibaelhárítása](alert-log-troubleshoot.md)című témakört is.
-- Lépjen vissza az [Azure Portalra,](https://portal.azure.com) és ellenőrizze, hogy a fenti útmutatással megoldotta-e a problémát. 
+- Ha naplózási riasztást használ, tekintse meg a [riasztások hibaelhárítása](alert-log-troubleshoot.md)című témakört is.
+- Lépjen vissza a [Azure Portal](https://portal.azure.com) , és ellenőrizze, hogy megoldotta-e a problémát a fenti útmutatás alapján 

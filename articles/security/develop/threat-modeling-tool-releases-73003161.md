@@ -1,55 +1,55 @@
 ---
-title: A Microsoft Threat Modeling Tool 03/22/2020 kiadása – Azure
-description: A fenyegetésmodellező eszköz kiadási megjegyzésekének dokumentálása
+title: Microsoft Threat Modeling Tool kiadás 03/22/2020 – Azure
+description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 03/22/2020
 ms.openlocfilehash: 6fea4d48b62d6ea429d37924ffd15855db6294cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80146861"
 ---
-# <a name="threat-modeling-tool-update-release-73003161---03222020"></a>A Threat Modeling Tool 7.3.00316.1 - 03/22/2020 frissítés
+# <a name="threat-modeling-tool-update-release-73003161---03222020"></a>Threat Modeling Tool Update kiadás 7.3.00316.1-03/22/2020
 
-A Microsoft Threat Modeling Tool (TMT) 7.3.00316.1-es verziója 2020.
+A Microsoft Threat Modeling Tool (TMT) 7.3.00316.1 verziója március 22 2020-én megjelent, és a következő módosításokat tartalmazza:
 
 - Javított kisegítő lehetőségek
 - Hibajavítások
-- Új Diagramreader-szolgáltatás
+- Új DiagramReader funkció
 
-## <a name="notable-bug-fixes"></a>Figyelemre méltó hibajavítások
+## <a name="notable-bug-fixes"></a>Jelentős hibajavítások
 
-### <a name="exporting-the-threat-list-to-csv"></a>A fenyegetéslista exportálása CSV-be
+### <a name="exporting-the-threat-list-to-csv"></a>A fenyegetések listájának exportálása CSV-re
 
-A CSV-be való exportálás inkonzisztens módon választotta ki, hogy a fenyegetéslistából mely mezőket exportálná a rendszer. Most a fenyegetéslista összes mezője a CSV-fájlba lesz exportálva. 
+Az Exportálás CSV-fájlba funkció inkonzisztensen ki lett választva, hogy mely mezők legyenek exportálva a veszélyforrások listájáról. Mostantól a fenyegetések listájáról származó összes mező exportálva lesz a CSV-fájlba. 
 
-### <a name="ux-bugs"></a>UX hibák
+### <a name="ux-bugs"></a>UX-hibák
 
-- Az elsődleges munkafolyamat súgómenüi (létrehozás/megnyitás/elemzés) és a sablonszerkesztő-élmény mostantól egységes menübeállításokkal rendelkeznek.
-- A rajzsablonok ablaktáblájának keresősávja most már szabványos kurorral rendelkezik, és megfelelő címkéket adott hozzá.
+- Az elsődleges munkafolyamat Súgó menüjében (létrehozás/Megnyitás/elemzés) és a sablon szerkesztői felülete mostantól konzisztens menüpontokkal rendelkezik.
+- A rajzsablonok ablaktáblán a keresősáv mostantól szabványos kurzorral rendelkezik, és a megfelelő címkéket adta hozzá.
 
 ## <a name="new-features"></a>Új funkciók
 
-### <a name="diagramreader-feature-has-been-added"></a>A Diagramolvasó szolgáltatás hozzáadva
+### <a name="diagramreader-feature-has-been-added"></a>A DiagramReader funkció hozzá lett adva
 
-A főmenüben egy új DiagramReader-szolgáltatás került feladásra, amíg a modell meg van nyitva. Ez a funkció a modell grafikus ábrázolását szövegalapú narratívává alakítja. 
+Új DiagramReader funkció lett hozzáadva a főmenüben, miközben a modell meg van nyitva. Ez a funkció átalakítja a modell grafikus ábrázolását egy szöveges elbeszélésbe. 
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek:
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
-- .NET verzió szükséges:
-  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
+- .NET-verzió szükséges:
+  - [.Net-4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
 - További követelmények:
-  - Internetkapcsolat az eszköz frissítéseinek, valamint a sablonoknak a fogadásához
+  - Internetkapcsolat az eszköz és a sablonok frissítéseinek fogadásához
 
 ## <a name="documentation-and-feedback"></a>Dokumentáció és visszajelzés
 
-- A fenyegetésmodellező eszköz dokumentációja [a docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és információkat tartalmaz [az eszköz használatával kapcsolatban.](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)
+- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és [az eszköz használatával](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)kapcsolatos információkat tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

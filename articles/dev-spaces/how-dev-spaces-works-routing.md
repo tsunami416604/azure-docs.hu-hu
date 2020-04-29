@@ -1,72 +1,72 @@
 ---
-title: Az útválasztás működése az Azure dev spaces-szel
+title: Hogyan működik az Útválasztás az Azure dev Spaces-szel
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Az Azure dev spaces-t működtető folyamatok és az útválasztás működésének ismertetése
-keywords: Azure dev spaces, fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók
+description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces és az Útválasztás működik
+keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241386"
 ---
-# <a name="how-routing-works-with-azure-dev-spaces"></a>Az útválasztás működése az Azure dev spaces-szel
+# <a name="how-routing-works-with-azure-dev-spaces"></a>Hogyan működik az Útválasztás az Azure dev Spaces-szel
 
-Az Azure Dev Spaces többféle lehetőséget kínál a Kubernetes-alkalmazások gyors iterálására és hibakeresésére, valamint a csapatával való együttműködésre egy Azure Kubernetes-szolgáltatás (AKS) fürtön. Miután a projekt egy fejlesztői térben fut, az Azure Dev Spaces további hálózati és útválasztási lehetőségeket biztosít a projekthez.
+Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétlését és hibakeresését, valamint a csapattal való együttműködését egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön. Miután a projekt egy fejlesztői területen fut, az Azure dev Spaces további hálózatkezelési és útválasztási funkciókat biztosít a projekthez.
 
-Ez a cikk ismerteti, hogyan működik az útválasztási témakörzel fejlesztői szóközök.
+Ez a cikk azt ismerteti, hogyan működik az Útválasztás a dev Spaces-szel.
 
 ## <a name="how-routing-works"></a>Az útválasztás működése
 
-A fejlesztői terület az AKS-re épül, és ugyanazokat a [hálózati fogalmakat](../aks/concepts-network.md)használja. Az Azure Dev Spaces is rendelkezik egy központi *ingressmanager* szolgáltatással, és telepíti a saját ingress controller az AKS-fürtre. A *bejövő kapcsolatkezelő* szolgáltatás figyeli az AKS-fürtök fejlesztési tereket, és bővíti az Azure Dev Spaces ingress controller a fürtben a be- és befutóobjektumok útválasztás az alkalmazás podok. A devspaces-proxy tároló minden `azds-route-as` pod http-fejlécet ad hozzá a HTTP-forgalom egy fejlesztői tér az URL-cím alapján. Az URL-címre *http://azureuser.s.default.serviceA.fedcba09...azds.io* vonatkozó kérés például http-fejlécet kapna a használatával. `azds-route-as: azureuser` A devspaces-proxy tároló nem `azds-route-as` ad hozzá fejlécet, ha már van ilyen.
+A fejlesztői terület az AK-ra épül, és ugyanazokat a [hálózatkezelési fogalmakat](../aks/concepts-network.md)használja. Az Azure dev Spaces egy központi *ingressmanager* -szolgáltatással is rendelkezik, és üzembe helyezi a saját bejövő vezérlőjét az AK-fürtön. A *ingressmanager* szolgáltatás FIGYELI az AK-fürtöket a dev Spaces-ben, és kibővíti az Azure dev Spaces-ba való belépést a fürtben a bejövő objektumokkal az Application hüvelyek útválasztásához. Az egyes Pod devspaces-tárolója egy `azds-route-as` http-fejlécet tesz elérhetővé az URL-cím alapján a fejlesztői területhez való http-adatforgalomhoz. Az URL-címre érkező kérés például egy *http://azureuser.s.default.serviceA.fedcba09...azds.io* http-fejlécet kap a `azds-route-as: azureuser`következővel:. A devspaces tároló nem ad hozzá `azds-route-as` fejlécet, ha az egyik már létezik.
 
-Ha egy HTTP-kérés a fürtön kívülről érkezik egy szolgáltatásba, a kérelem a bejövő adategység-vezérlőhöz kerül. A be- éselőszoba-vezérlő közvetlenül a megfelelő podhoz irányítja a kérelmet a be- és küldési objektumok és szabályok alapján. A devspaces-proxy tároló a pod ban megkapja `azds-route-as` a kérést, hozzáadja a fejléc et az URL-cím alapján, majd továbbítja a kérelmet az alkalmazástárolóba.
+Amikor HTTP-kérést végeznek a fürtön kívüli szolgáltatásra, a kérés a bejövő vezérlőre lép. A beáramló vezérlő közvetlenül a megfelelő Pod-ra irányítja át a kérést a bejövő objektumai és szabályai alapján. A pod devspaces-proxy tároló fogadja a kérést, hozzáadja a `azds-route-as` fejlécet az URL-cím alapján, majd átirányítja a kérést az alkalmazás-tárolóba.
 
-Ha egy HTTP-kérés tanusít egy másik szolgáltatás a fürtön belül, a kérelem először a hívó szolgáltatás devspaces-proxy tároló. A devspaces-proxy tároló megnézi a `azds-route-as` HTTP-kérelmet, és ellenőrzi a fejlécet. A fejléc alapján a devspaces-proxy tároló megkeresi a fejlécértékhez társított szolgáltatás IP-címét. Ha egy IP-cím található, a devspaces-proxy tároló átirányítja a kérelmet, hogy az IP-címet. Ha nem található IP-cím, a devspaces-proxy tároló a szülőalkalmazás-tárolóhoz irányítja a kérelmet.
+Amikor HTTP-kérést végez egy másik szolgáltatásból a fürtön belül, a kérelem először a hívó szolgáltatás devspaces-tárolóján halad végig. A devspaces-proxy tároló a HTTP-kérést tekinti át `azds-route-as` , és ellenőrzi a fejlécet. A fejléc alapján a devspaces tároló a fejléc értékéhez tartozó szolgáltatás IP-címét fogja megkeresni. Ha a rendszer IP-címet talál, a devspaces tároló átirányítja a kérést az adott IP-címhez. Ha nem található IP-cím, a devspaces tároló továbbítja a kérést a szülő alkalmazás tárolójába.
 
-Például az Alkalmazások *ServiceA* és *ServiceB* telepítve vannak egy szülő fejlesztői terület nevű *alapértelmezett.* *ServiceA* támaszkodik *serviceB* és http-hívásokat kezdeményez. Az Azure User létrehoz egy gyermek fejlesztői területet az *azureuser*nevű *alapértelmezett* terület alapján. Az Azure User is telepíti a saját verzióját *serviceA* a gyermek térben. Amikor a kérelmet: *http://azureuser.s.default.serviceA.fedcba09...azds.io*
+Az Applications *servicea* és a *serviceB* például az *alapértelmezett*nevű szülő fejlesztői területre van telepítve. a *servicea* a *serviceB* -ra TÁMASZKODik, és http-hívásokat tesz lehetővé. Az Azure-felhasználó létrehoz egy gyermek-fejlesztési helyet az *azureuser*nevű *alapértelmezett* hely alapján. Az Azure User a *servicea* saját verzióját is üzembe helyezi a gyermek területére. Kérelem küldése *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
 
-![Azure dev spaces útválasztás](media/how-dev-spaces-works/routing.svg)
+![Az Azure dev Spaces útválasztása](media/how-dev-spaces-works/routing.svg)
 
-1. A be- és előtér-vezérlő megkeresi az URL-címhez társított pod IP-címét, amely *serviceA.azureuser.*
-1. A bejövő adatok vezérlő lekeresi a pod IP-címét az Azure User fejlesztési területén, és továbbítja a kérelmet a *serviceA.azureuser* pod.
-1. A devspaces-proxy tároló a *serviceA.azureuser* pod a `azds-route-as: azureuser` kérés t, és http-fejlécként hozzáadja.
-1. A *serviceA.azureuser* pod devspaces-proxy tárolója a serviceA.azureuser pod *serviceA.azureuser pod serviceA.azureuser* pod *serviceA* alkalmazástárolójának továbbítja a kérelmet.
-1. A *serviceA.azureuser pod serviceA.azureuser* pod *serviceA* alkalmazás a *B szolgáltatást*hívja. A *serviceA* alkalmazás a meglévő `azds-route-as` fejléc megőrzéséhez is `azds-route-as: azureuser`tartalmaz kódot, amely ebben az esetben a .
-1. A devspaces-proxy tároló a *serviceA.azureuser* pod megkapja a kérést, és megkeresi `azds-route-as` a *serviceB* IP-értéke alapján a fejléc.
-1. A *serviceA.azureuser* pod devspaces-proxy tárolója nem talál IP-címet a *serviceB.azureuser*számára.
-1. A *serviceA.azureuser* pod devspaces-proxy tárolója megkeresi a *B szolgáltatás* IP-címét a szülőtérben, amely *serviceB.default.*
-1. A devspaces-proxy tároló a *serviceA.azureuser* pod megkeresi az IP *serviceB.default* és irányítja a kérelmet a *serviceB.default* pod.
-1. A *serviceB.default* pod devspaces-proxy tárolója megkapja a kérést, és a *serviceB.default* pod *serviceB* alkalmazástárolójába irányítja a kérelmet.
-1. A *serviceB.default* pod *ServiceB* alkalmazás választ ad vissza a *serviceA.azureuser* pod.
-1. A *serviceA.azureuser* pod devspaces-proxy tárolója megkapja a választ, és a *serviceA.azureuser pod serviceA.azureuser* pod *serviceA* alkalmazástárolójára irányítja a választ.
-1. A *serviceA* alkalmazás megkapja a választ, majd visszaadja a saját válaszát.
-1. A *serviceA.azureuser* pod devspaces-proxy tárolója megkapja a választ a *serviceA* alkalmazástárolóból, és a választ a fürtön kívüli eredeti hívónak irányítja.
+1. A bejövő vezérlő megkeresi az URL-címhez társított Pod IP-címét, amely a *servicea. azureuser*.
+1. A beáramló vezérlő megkeresi az Azure-felhasználó fejlesztői területén található Pod IP-címét, és átirányítja a kérést a *servicea. azureuser* Pod-ra.
+1. A *servicea. azureuser* Pod devspaces-tárolója megkapja a kérést, és http `azds-route-as: azureuser` -fejlécként adja meg.
+1. A servicea devspaces-tárolója *. az azureuser* Pod a servicea *. azureuser* POD szolgáltatásban továbbítja a kérést *a servicea alkalmazás* tárolójába.
+1. A servicea *. azureuser* *Pod szolgáltatásbeli alkalmazása* meghívja a *serviceB*. A *servicea* alkalmazás emellett kódot is tartalmaz a meglévő `azds-route-as` fejléc megőrzése érdekében, ami ebben az esetben `azds-route-as: azureuser`a következő:.
+1. A servicea devspaces-tárolója *. az azureuser* Pod fogadja a kérést, és a `azds-route-as` fejléc értéke alapján megkeresi a *serviceB* IP-címét.
+1. A *servicea. azureuser* Pod devspaces-proxy tárolója nem talál IP-címet a *serviceB. azureuser*számára.
+1. A *servicea. azureuser* Pod devspaces-proxy tárolója megkeresi a *serviceB* lévő IP-címet a szülő térben, amely a *serviceB. default*.
+1. A servicea devspaces-tárolója *. az azureuser* Pod megkeresi a *serviceB. default* IP-címét, és átirányítja a kérést a *serviceB. default* Pod-ra.
+1. A *serviceB. default* Pod devspaces-tárolója megkapja a kérést, és átirányítja a kérést a *serviceB. default* Pod *serviceB* -alkalmazás tárolójába.
+1. A *serviceB* alkalmazás a *serviceB. az alapértelmezett* Pod a *servicea. azureuser* Pod-re adott választ ad vissza.
+1. A *servicea. azureuser* Pod devspaces-tárolója megkapja a választ, és körözteti a választ a servicea *. azureuser* POD szolgáltatásban található *servicea* alkalmazás-tárolóba.
+1. A *servicea* alkalmazás fogadja a választ, majd visszaadja a saját válaszát.
+1. A *servicea. azureuser* Pod devspaces-tárolója fogadja a *servicea* alkalmazás-tárolótól érkező választ, és a fürtön kívülre irányítja a választ az eredeti hívónak.
 
-Minden más, nem HTTP-nek minősülő TCP-forgalom áthalad a bejövő forgalom vezérlőn és a devspaces-proxy tárolókon változatlanul.
+Az összes többi TCP-forgalom, amely nem HTTP-továbbítást hajt végre a bejövő és a devspaces tárolóban, nem módosult.
 
 ## <a name="sharing-a-dev-space"></a>Fejlesztői terület megosztása
 
-Amikor egy csapattal dolgozik, [megoszthatja a fejlesztői területet egy teljes csapaton keresztül,](how-to/share-dev-spaces.md) és származtatott fejlesztői tereket hozhat létre. A fejlesztői terület bárki által használható, aki közreműködői hozzáféréssel rendelkezik a fejlesztői terület erőforráscsoportjához.
+Ha csapattal dolgozik, [megoszthat egy fejlesztői területet egy teljes csapaton belül](how-to/share-dev-spaces.md) , és származtatott fejlesztői szóközöket hozhat létre. A fejlesztői területet bárki használhatja, aki közreműködői hozzáféréssel rendelkezik a fejlesztői terület erőforráscsoporthoz.
 
-Egy másik fejlesztési területből származó új fejlesztői területet is létrehozhat. Amikor létrehoz egy származtatott fejlesztői területet, a *azds.io/parent-space=PARENT-SPACE-NAME* címke hozzáadódik a származtatott fejlesztői tér névteréhez. Emellett a szülő fejlesztői terület összes alkalmazás a származtatott fejlesztői területtel van megosztva. Ha egy alkalmazás frissített verzióját telepíti a származtatott fejlesztői területre, az csak a származtatott fejlesztői térben fog létezni, és a szülő fejlesztési terület változatlan marad. A származtatott fejlesztői terek vagy *nagyszülői* terek legfeljebb három szintje lehet.
+Létrehozhat egy másik fejlesztői területből származtatott új fejlesztői helyet is. Származtatott fejlesztői terület létrehozásakor a rendszer hozzáadja a *azds.IO/Parent-Space=PARENT-Space-Name* címkét a származtatott fejlesztői terület névteréhez. Emellett a szülő fejlesztői területről származó összes alkalmazás meg van osztva a származtatott fejlesztői területtel. Ha egy alkalmazás frissített verzióját telepíti a származtatott fejlesztői területre, akkor csak a származtatott fejlesztői területen fog megjelenni, és a szülő fejlesztői terület érintetlen marad. A származtatott fejlesztői szóközök és a *nagyszülő* szóközök közül legfeljebb három szint adható meg.
 
-A származtatott fejlesztői terület is intelligensmódon irányítja a kérelmeket a saját alkalmazások és a szülő től megosztott alkalmazások között. Az útválasztás úgy működik, hogy megpróbálja a kérelmet a származtatott fejlesztői térben lévő alkalmazáshoz irányítani, és a szülő fejlesztői területről visszaesik a megosztott alkalmazásba. Ha az alkalmazás nem a szülőterületen található, a programterv visszakerül a nagyszülőtérben lévő megosztott alkalmazásra.
+A származtatott fejlesztői terület is intelligens módon irányítja a kérelmeket a saját alkalmazásai és a szülőtől megosztott alkalmazások között. Az Útválasztás úgy működik, hogy megpróbál átirányítani egy alkalmazást a származtatott fejlesztői területen, és visszakerül a megosztott alkalmazásra a szülő fejlesztői területről. Ha az alkalmazás nincs a szülő térben, az Útválasztás visszakerül a szülő terület megosztott alkalmazására.
 
-Példa:
-* A fejlesztési terület *alapértelmezett szolgáltatása* *A* és *ServiceB.*
-* A fejlesztési terület *azureuser* származik *alapértelmezett.*
-* Az A *szolgáltatás* frissített verziója telepítve van az *azureuser.*
+Például:
+* A fejlesztői terület *alapértelmezett értéke* az Applications *Servicea* és a *serviceB*.
+* A dev Space *Azureus* az *alapértelmezett értékből*származik.
+* A *servicea* frissített verziója van üzembe helyezve az *azureuser*-ben.
 
-Az *azureuser*használatakor az *A szolgáltatásba* irányuló összes kérés az *azureuser*frissített verziójára lesz irányítva. A *B szolgáltatásnak* küldött kérés először megpróbálja átirányítani a *B szolgáltatás* *azureuser* verziójára. Mivel nem létezik, a rendszer a B *szolgáltatás* *alapértelmezett* verziójához irányítja. Ha az *Azureuser* verziója *ServiceA* törlődik, az Összes kérelmet *serviceA* lesz vissza az *alapértelmezett* verziója *serviceA.*
+Az *azureuser*használatakor a *servicea szolgáltatásnak* küldött összes kérelem a frissített verzióra lesz irányítva az *azureuser*-ben. A *serviceB* iránti kérés először a *serviceB* *azureuser* -verziójára lesz irányítva. Mivel nem létezik, a rendszer a *serviceB* *alapértelmezett* verziójára irányítja át. Ha a *servicea szolgáltatáshoz* tartozó *azureuser* verziója el lett távolítva, a *servicea* szolgáltatáshoz intézett összes kérelem vissza fog térni a *servicea* *alapértelmezett* verziójának használatára.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha példákat szeretne látni arra, hogy az Azure Dev Spaces hogyan használja az útválasztást a gyors iteráció és fejlesztés érdekében, olvassa el [A fejlesztői gép csatlakoztatása a fejlesztői térhöz való csatlakoztatása című][how-it-works-connect]témakört, [a kód Azure Dev Spaces használatával történő távoli hibakeresés működését,][how-it-works-remote-debugging] [valamint a GitHub-műveletek & az Azure Kubernetes-szolgáltatás][pr-flow]című témakört.
+Ha szeretné megtekinteni, hogy az Azure dev Spaces hogyan használja az útválasztást a gyors iteráció és a fejlesztés érdekében, tekintse meg a [fejlesztői gép a fejlesztői tárhelyhez való csatlakoztatásának][how-it-works-connect]módját, [a kód távoli hibakeresését az Azure dev Spaces][how-it-works-remote-debugging]szolgáltatással, valamint a [GitHub-műveleteket & Azure Kubernetes szolgáltatást][pr-flow].
 
-Az útválasztás és az Azure Dev Spaces csapatfejlesztéssel való használatának első lépései az [Azure Dev Spaces rövid útmutatójában.][quickstart-team]
+Az Útválasztás és az Azure dev Spaces közötti együttműködés használatának megkezdéséhez tekintse meg a [csapat fejlesztése az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-connect]: how-dev-spaces-works-connect.md
