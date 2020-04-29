@@ -1,43 +1,43 @@
 ---
 title: Mintamodellek
-description: A mintamodellek forrásainak listája.
+description: A minta modellek forrásait sorolja fel.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
 ms.openlocfilehash: 0c28d36c7934fbbac0ddd11562c8dc237b0360ee
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679484"
 ---
 # <a name="sample-models"></a>Mintamodellek
 
-Ez a cikk az Azure remote rendering szolgáltatás teszteléséhez használható mintaadatok egyes erőforrásait sorolja fel.
+Ez a cikk az Azure távoli renderelési szolgáltatás teszteléséhez használható mintaadatok egyes erőforrásait sorolja fel.
 
-## <a name="built-in-sample-model"></a>Beépített mintamodell
+## <a name="built-in-sample-model"></a>Beépített minta modell
 
-Beépített mintamodellt biztosítunk, amely mindig betölthető az **URL-builtin://Engine**
+Egy beépített minta modellt biztosítunk, amely mindig betölthető az URL- **Builtin://Engine** használatával
 
-![Mintamodell](./media/sample-model.png "Mintamodell")
+![Minta modell](./media/sample-model.png "Minta modell")
 
-Modell statisztika:
+Modell statisztikái:
 
-| Név | Érték |
+| Name (Név) | Érték |
 |-----------|:-----------|
-| [Szükséges virtuális gép mérete](../how-tos/session-rest-api.md#create-a-session) | Standard |
-| Háromszögek száma | 18 millió |
-| Mozgatható alkatrészek száma | 2073 |
+| [Szükséges VM-méret](../how-tos/session-rest-api.md#create-a-session) | Standard |
+| Háromszögek száma | 18 700 000 |
+| Mozgó részek száma | 2073 |
 | Anyagok száma | 94 |
 
-## <a name="third-party-data"></a>Harmadik fél től származó adatok
+## <a name="third-party-data"></a>Harmadik féltől származó adatszolgáltatások
 
-A Khronos Csoport egy sor glTF mintamodellt tart fenn tesztelésre. Az ARR támogatja a glTF formátumot szövegben (*.gltf*) és bináris (*.glb*) formában. Javasoljuk, hogy a legjobb vizuális eredmények érdekében használja a PBR modelleket:
+A Khronos csoport a teszteléshez glTF-mintákat tart fenn. Az ARR a glTF formátumot is támogatja szöveg (*. glTF*) és bináris (*. borai*) formában. Javasoljuk, hogy használja a PBR-modelleket a legjobb vizuális eredményekhez:
 
-* [glTF mintamodellek](https://github.com/KhronosGroup/glTF-Sample-Models)
+* [glTF-minták](https://github.com/KhronosGroup/glTF-Sample-Models)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Modell renderelése unityvel](../quickstarts/render-model.md)
-* [Rövid útmutató: Modell konvertálása rendereléshez](../quickstarts/convert-model.md)
+* [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
+* [Gyors útmutató: modell átalakítása renderelésre](../quickstarts/convert-model.md)

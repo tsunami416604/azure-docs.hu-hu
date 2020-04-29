@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: a060cd35bbb42d2c31e98bed4855b2d27bfcbada
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756644"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
@@ -34,7 +34,7 @@ Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üz
 
 1. Válassza ki a korábbi rövid útmutatóban létrehozott függvényt.
 
-1. Válassza **> Új kimenet integrálása > Azure Queue Storage lehetőséget.**
+1. Válassza az **integráció > új kimenet > Azure Queue Storage**lehetőséget.
 
 1. Kattintson a **Kiválasztás** gombra.
 
@@ -66,7 +66,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
 
 1. Frissítse a függvénykódot a függvény nyelvétől függően:
 
-    # <a name="c"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C#\#](#tab/csharp)
 
     Adjon hozzá egy **outputQueueItem** paramétert a metódus aláírásához, ahogy az alábbi példában is látható.
 

@@ -6,39 +6,39 @@ ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
 ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80754848"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
-Az Azure Functions lehetővé teszi a kód futtatását kiszolgáló nélküli környezetben anélkül, hogy először virtuális gépet (VM) vagy közzé egy webalkalmazást. Ebben a cikkben megtudhatja, hogyan használhatja az Azure Functions egy "hello world" HTTP-aktivált függvény az Azure Portalon.
+Azure Functions lehetővé teszi a kód kiszolgáló nélküli környezetben való futtatását anélkül, hogy először létre kellene hoznia egy virtuális gépet (VM), vagy közzé kellene tennie egy webalkalmazást. Ebből a cikkből megtudhatja, hogyan használhatja a Azure Functionst a "Hello World" HTTP által aktivált függvény létrehozásához a Azure Portalban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Ha C# fejlesztő, fontolja meg [az első függvény létrehozását a Visual Studio 2019-ben](functions-create-your-first-function-visual-studio.md) a portál helyett. 
+Ha Ön C#-fejlesztő, érdemes [létrehoznia az első függvényt a Visual Studio 2019-ben](functions-create-your-first-function-visual-studio.md) a portál helyett. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás lehetővé teszi a függvények logikai egységként történő csoportosítását az erőforrások egyszerűbb kezelése, üzembe helyezése, méretezése és megosztása érdekében.
+Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-Ezután hozzon létre egy függvényt az új függvényalkalmazásban.
+Ezután hozzon létre egy függvényt az új függvény alkalmazásban.
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>HTTP által aktivált függvény létrehozása
 
-1. Bontsa ki az **+** új függvényalkalmazást, kattintson a **Funkciók**gomb melletti gombra, válassza **a Portálon**lehetőséget, majd kattintson a **Folytatás gombra.**
+1. Bontsa ki az új Function alkalmazást, **+** kattintson a **függvények**elem melletti gombra, válassza a **portálon**, majd a **Folytatás**lehetőséget.
 
-    ![Gyorsútmutató a platform kiválasztásához.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Funkciók a platform kiválasztásához.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
-1. Válassza **a WebHook + API**lehetőséget, majd a Create **(Létrehozás) lehetőséget.**
+1. Válassza a **webhook + API**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
     ![A függvények gyors létrehozása az Azure Portalon.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
@@ -48,13 +48,13 @@ Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
 ## <a name="test-the-function"></a>A függvény tesztelése
 
-1. Az új függvényben válassza **a</> A függvény URL-címének bekerülése** lehetőséget a jobb felső sarokban. 
+1. Az új függvényben válassza a jobb felső sarokban található **</> a függvény URL-címének beolvasása** elemet. 
 
-1. A **Függvény URL-címének bemásolása** párbeszédpanelen válassza az **alapértelmezett (Funkcióbillentyű)** elemet a legördülő listából, majd válassza a **Másolás**lehetőséget. 
+1. A **függvény URL-címének lekérése** párbeszédpanelen válassza az **alapértelmezett (funkcióbillentyű)** lehetőséget a legördülő listából, majd válassza a **Másolás**lehetőséget. 
 
     ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Illessze be a függvény URL-címét a böngésző címsorába. Adja hozzá a `&name=<your_name>` lekérdezési karakterlánc értékét az URL-cím végéhez, és nyomja le az Enter billentyűt a kérelem futtatásához. 
+1. Illessze be a függvény URL-címét a böngésző címsorába. Adja hozzá a lekérdezési `&name=<your_name>` karakterlánc értékét az URL végéhez, majd nyomja le az ENTER billentyűt a kérelem futtatásához. 
 
     Az alábbi példa a böngészőben visszaadott választ mutatja:
 
@@ -62,7 +62,7 @@ Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
     A kérelem URL-címe alapértelmezés szerint tartalmazza a függvény HTTP protokollon keresztüli eléréséhez szükséges kulcsot.
 
-1. A függvény futásakor a rendszer nyomkövetési adatok ír a naplókba. Az előző végrehajtás nyomkövetési kimenetének megtekintéséhez térjen vissza a függvényhez a portálon, és válassza ki a képernyő alján lévő nyilat a **Naplók kibontásához.**
+1. A függvény futásakor a rendszer nyomkövetési adatok ír a naplókba. Az előző végrehajtás nyomkövetési kimenetének megtekintéséhez térjen vissza a függvényhez a portálon, és kattintson a képernyő alján található nyílra a **naplók**kibontásához.
 
    ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-first-azure-function/function-view-logs.png)
 

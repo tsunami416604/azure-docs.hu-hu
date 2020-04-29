@@ -1,7 +1,7 @@
 ---
-title: Aszinkron beszélgetés átírása (előzetes verzió) - Beszédszolgáltatás
+title: Aszinkron beszélgetés átírása (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használhatja az aszinkron beszélgetésátírást a Beszédszolgáltatás használatával. Csak Java-ban érhető el.
+description: Ismerje meg, hogyan használhatja az aszinkron beszélgetéseket a Speech Service használatával. Csak Java esetén érhető el.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
 ms.openlocfilehash: 57543f4a3779145ce66259eec1abac195b63c7ba
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80384296"
 ---
 # <a name="asynchronous-conversation-transcription-preview"></a>Aszinkron beszélgetés átírása (előzetes verzió)
 
-Ebben a cikkben az aszinkron beszélgetés átírása a **RemoteConversationTranscriptionClient** API használatával látható. Ha konfigurálta a beszélgetés átírását, hogy aszinkron átírás, és van egy, `conversationId`beszerezheti az átírás társított `conversationId` **remoteconversationtranscriptionclient** API-t.
+Ebben a cikkben az aszinkron beszélgetések átírását mutatjuk be a **RemoteConversationTranscriptionClient** API használatával. Ha úgy konfigurálta a beszélgetési átírást `conversationId`, hogy aszinkron átírást végezzen, a **RemoteConversationTranscriptionClient** API- `conversationId` val társított átírást is beszerezheti.
 
-## <a name="asynchronous-vs-real-time--asynchronous"></a>Aszinkron vs. valós idejű + aszinkron
+## <a name="asynchronous-vs-real-time--asynchronous"></a>Aszinkron és valós idejű + aszinkron
 
-Az aszinkron átírással streamelheti a beszélgetés hangját, de nincs szüksége valós időben visszaküldött átírásra. Ehelyett a hang elküldése után `conversationId` `Conversation` használja a lekérdezés az aszinkron átírás állapotát. Amikor az aszinkron átírás készen áll, a `RemoteConversationTranscriptionResult`.
+Az aszinkron átírással továbbíthatja a beszélgetés hangját, de a valós időben nem kell visszaadnia az átírást. Ehelyett a hang elküldése után használja `conversationId` `Conversation` a parancsot az aszinkron átírás állapotának lekérdezéséhez. Ha az aszinkron átírás elkészült, megkapja a `RemoteConversationTranscriptionResult`.
 
-A valós idejű és aszinkron, megkapja az átírás valós időben, hanem kap az átírás `conversationId` lekérdezésével a (hasonló aszinkron forgatókönyv).
+A valós idejű és aszinkron megoldásokkal valós időben érheti el az átírást, az átírást pedig a `conversationId` (az aszinkron forgatókönyvhöz hasonlóan) lekérdezéssel is lekérdezheti.
 
-Az aszinkron átírás végrehajtásához két lépés szükséges. Az első lépés az, hogy töltse fel a hang, választotta vagy csak aszinkron vagy valós idejű plusz aszinkron. A második lépés az, hogy az átírás eredményeit.
+Az aszinkron átírás végrehajtásához két lépés szükséges. Első lépésként töltse fel a hangot, válassza a csak aszinkron vagy a valós idejű és az aszinkron lehetőséget. A második lépés az átirat eredményeinek beolvasása.
 
 ## <a name="upload-the-audio"></a>A hang feltöltése
 
-Az aszinkron átírás végrehajtása előtt el kell küldenie a hangot a Beszélgetésátírási szolgáltatásnak a Microsoft Cognitive Speech kliens SDK (1.8.0-s vagy újabb verzió) használatával.
+Az aszinkron átírás végrehajtása előtt el kell küldenie a hang-és beszélgetés-átírási szolgáltatást a Microsoft kognitív Speech Client SDK (1.8.0 vagy újabb verzió) használatával.
 
-Ez a példakód bemutatja, hogyan hozhat létre beszélgetés-átírót csak aszinkron módban. Annak érdekében, hogy a hang az átíró, meg kell adni audio streaming kódot származó [átírás beszélgetések valós időben a Speech SDK](how-to-use-conversation-transcription-service.md). A támogatott platformok és nyelvek API-k megtekintéséhez tekintse meg a témakör **Korlátozások** című szakaszát.
+Ez a mintakód azt mutatja be, hogyan hozható létre a beszélgetési átirat a csak aszinkron üzemmódhoz. Ahhoz, hogy hangot továbbítson az átiratoknak, [a SPEECH SDK-val valós időben](how-to-use-conversation-transcription-service.md)kell felvennie a hangos adatfolyam-kódot, amelyből a beszédfelismerési beszélgetésekből származik. A támogatott platformok és nyelvek API-k megtekintéséhez tekintse meg a jelen témakör **korlátozások** című szakaszát.
 
 ```java
 // Create the speech config object
@@ -101,7 +101,7 @@ Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
-Ha azt szeretnénk, valós idejű _plusz_ aszinkron, megjegyzést, és uncomment a megfelelő kódsorokat az alábbiak szerint:
+Ha azt szeretné, hogy a valós idejű _és_ az aszinkron, a megjegyzések és a megjegyzések a megfelelő sorokban legyenek megadva a következő módon:
 
 ```java
 // Set the property for asynchronous transcription
@@ -111,17 +111,17 @@ Ha azt szeretnénk, valós idejű _plusz_ aszinkron, megjegyzést, és uncomment
 speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 ```
 
-## <a name="get-transcription-results"></a>Transzkripciós eredmények beolvasása
+## <a name="get-transcription-results"></a>Átirat eredményeinek beolvasása
 
-Ez a lépés megkapja az aszinkron átíráseredményeit, de feltételezi, hogy minden olyan valós idejű feldolgozás, amelyet esetleg szükséges, máshol történik. További információ: [A beszélgetések valós idejű átírása a beszédbeszéd SDK-val](how-to-use-conversation-transcription-service.md)című témakörben található.
+Ez a lépés beolvassa az aszinkron átírási eredményeket, de feltételezi, hogy az esetlegesen szükséges valós idejű feldolgozás máshol történik. További információ: beszélgetések átírása [valós időben a SPEECH SDK-val](how-to-use-conversation-transcription-service.md).
 
-Az itt látható kódhoz az **1.8.0 távoli beszélgetésre**, amelyet csak Java (1.8.0 vagy újabb) támogat Windows, Linux és Android rendszeren (csak 26-os vagy újabb API-szint).
+Az itt látható kód esetében szükség van a **Remote-beszélgetés 1.8.0 verziójára**, amely csak a Java (1.8.0 vagy újabb verzió) esetén támogatott Windows, Linux és Android rendszeren (csak az API 26-os vagy újabb verziójában).
 
-### <a name="obtaining-the-client-sdk"></a>Az ügyfél SDK-jának beszerzése
+### <a name="obtaining-the-client-sdk"></a>Az ügyfél-SDK beszerzése
 
-A **távoli beszélgetést** a pom.xml fájl szerkesztésével szerezheti be az alábbiak szerint.
+A következő módon állíthatja be a **távoli beszélgetést** a Pom. xml fájl szerkesztésével.
 
-1. A fájl végén, a záró `</project>`címke előtt `repositories` hozzon létre egy elemet, amely a Beszéd SDK Maven tárházára hivatkozik:
+1. A fájl végén a záró címke `</project>`előtt hozzon létre egy `repositories` elemet, amely a Speech SDK Maven-tárházára hivatkozik:
 
    ```xml
    <repositories>
@@ -133,7 +133,7 @@ A **távoli beszélgetést** a pom.xml fájl szerkesztésével szerezheti be az 
    </repositories>
    ```
 
-2. Is adjon `dependencies` hozzá egy elemet, a remoteconversation-client-sdk 1.8.0 függőségként:
+2. Vegyen fel `dependencies` egy elemet is a remoteconversation-Client-SDK 1.8.0-függőségként:
 
    ```xml
    <dependencies>
@@ -147,9 +147,9 @@ A **távoli beszélgetést** a pom.xml fájl szerkesztésével szerezheti be az 
 
 3. A módosítások mentése
 
-### <a name="sample-transcription-code"></a>Mintaátírás kódja
+### <a name="sample-transcription-code"></a>Példa transzkripciós kód
 
-Miután a `conversationId`, hozzon létre egy távoli beszélgetés átírása ügyfél **RemoteConversationTranscriptionClient** az ügyfélalkalmazásban az aszinkron átírás állapotának lekérdezéséhez. [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) objektum leolvasásához használja **a(z) GetTranscriptionOperation** metódust a **RemoteConversationTranscriptionClient** programban. A PollerFlux objektum információt kap a **RemoteConversationTranscriptionOperation** távoli műveletállapotáról és a **RemoteConversationTranscriptionResult**végeredményről. Miután a művelet befejeződött, **a(z) RemoteConversationTranscriptionResult** get **getFinalResult** metódus [tikaszóra](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)történő hívásával kapja meg a getFinalResult metódust. Ebben a kódban egyszerűen kinyomtatjuk az eredmény tartalmát a rendszer kimenetére.
+Miután létrehozta a `conversationId`-t, hozzon létre egy távoli beszélgetési **RemoteConversationTranscriptionClient** az ügyfélalkalmazás számára az aszinkron átírás állapotának lekérdezéséhez. [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) -objektum beszerzéséhez használja a **RemoteConversationTranscriptionClient** **getTranscriptionOperation** metódusát. A PollerFlux objektum információkkal fog rendelkezni a távoli műveleti állapot **RemoteConversationTranscriptionOperation** és a végső eredmény **RemoteConversationTranscriptionResult**. A művelet befejezését követően a GetFinalResult **RemoteConversationTranscriptionResult** hívja meg **getFinalResult** a [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java). Ebben a kódban egyszerűen kinyomtatjuk az eredmény tartalmát a rendszer kimenetére.
 
 ```java
 // Create the speech config object
@@ -202,4 +202,4 @@ System.out.println("Operation finished");
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Fedezze fel mintáinkat a GitHubon](https://aka.ms/csspeech/samples)
+> [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

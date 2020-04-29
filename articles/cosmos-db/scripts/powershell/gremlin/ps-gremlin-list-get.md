@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsfájl az Azure Cosmos DB Gremlin API-hoz való műveletek listázásához és leéséhez
-description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB-lista és a Gremlin API-hoz való műveletek beszerezése
+title: PowerShell-szkript a Azure Cosmos DB Gremlin API-hoz tartozó műveletek listázásához és lekéréséhez
+description: Azure PowerShell script-Azure Cosmos DB-lista és-lekérési műveletek a Gremlin API-hoz
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: bd764dce0bc55582125bdb4e6ffd86dec924390b
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366055"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Adatbázisok és grafikonok listázása és lehívása az Azure Cosmos DB-hoz – Gremlin API
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Adatbázisok és diagramok listázása és lekérése a Azure Cosmos DB-Gremlin API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,10 +39,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Listázza a Cosmos DB-fiókokat, vagy lead egy megadott Cosmos DB-fiókot. |
-| [Get-AzCosmosDBGremlinAdatbázis](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | Listázza a Cosmos DB Gremlin API-adatbázisokat egy fiókban, vagy lead egy adott Cosmos DB Gremlin API-adatbázist egy fiókban. |
-| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Listázza a Cosmos DB Gremlin API Graphs egy adatbázisban, vagy lead egy megadott Cosmos DB Gremlin API-tábla egy adatbázisban. |
-|**Azure erőforráscsoportok**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Felsorolja Cosmos DB fiókokat, vagy lekéri a megadott Cosmos DB fiókot. |
+| [Get-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | Felsorolja Cosmos DB Gremlin API-adatbázisait egy fiókban, vagy lekéri egy adott Cosmos DB Gremlin API-adatbázist egy fiókban. |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Felsorolja Cosmos DB Gremlin API-gráfokat egy adatbázisban, vagy lekéri egy adott Cosmos DB Gremlin API-táblázatot egy adatbázisban. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

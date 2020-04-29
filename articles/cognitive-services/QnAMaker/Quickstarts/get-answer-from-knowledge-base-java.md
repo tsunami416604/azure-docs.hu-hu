@@ -1,41 +1,41 @@
 ---
-title: 'Rövid útmutató: Válasz kérése a tudásbázistól - REST, Java - QnA Maker'
-description: Ez a Java REST-alapú rövid útmutató végigvezeti a tudásbázistól programozott válasz beszerzésén.
+title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, Java – QnA Maker'
+description: Ez a Java REST-alapú rövid útmutató végigvezeti egy adott Tudásbázisból származó válasz beszerzésének lépésein.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 67f09b6d1e284cdf35825a2e584b372bd2adf70a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851739"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Rövid útmutató: Válaszok egy kérdésre egy java-val rendelkező tudásbázisból
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Gyors útmutató: válaszok egy tudásbázisbeli kérdésre Java használatával
 
-Ez a rövid útmutató végigvezeti a programozott beolvasása egy közzétett QnA Maker tudásbázis. A tudásbázis olyan [adatforrásokból](../Concepts/knowledge-base.md) származó kérdéseket és válaszokat tartalmaz, mint például a gyakori kérdések. A kérdést a [rendszer](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) elküldi a QnA Maker szolgáltatásnak. A [válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a felül előre jelzett választ.
+Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az [adatforrásokból](../Concepts/knowledge-base.md) , például a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ.
 
-[Referenciadokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
+[Dokumentációs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
-* Ez a minta az Apache [HTTP-ügyfél](https://hc.apache.org/httpcomponents-client-ga/) http-összetevőkből. A következő Apache HTTP ügyfélkódtárakat kell hozzáadnia a projekthez:
-    * httpclient-4.5.3.jar
-    * httpcore-4.4.6.jar
-    * commons-fakitermelés-1.2.jar
-* [Visual Studio kód](https://code.visualstudio.com/)
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza **a Kulcsok** az **Erőforrás-kezelés** az Azure-irányítópulton a QnA Maker erőforrás.
-* **Lapbeállítások közzététele.** Ha nem rendelkezik közzétett tudásbázissal, hozzon létre egy üres tudásbázist, majd importáljon egy tudásbázist a **Beállítások** lapon, majd tegye közzé. Letöltheti és használhatja [ezt az alapvető tudásbázist.](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)
+* Ez a példa az Apache [http-ügyfelet](https://hc.apache.org/httpcomponents-client-ga/) használja a http-összetevőkből. Hozzá kell adnia a következő Apache HTTP-ügyféloldali kódtárakat a projekthez:
+    * httpclient-4.5.3. jar
+    * httpcore-4.4.6. jar
+    * Commons-Logging-1.2. jar
+* [Visual Studio Code](https://code.visualstudio.com/)
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza a **kulcsok** elemet az **Erőforrás-kezelés** területen az QnA Maker erőforráshoz tartozó Azure-irányítópulton.
+* **Közzétételi** oldal beállításai Ha nem rendelkezik közzétett tudásbázissal, hozzon létre egy üres tudásbázist, majd importáljon egy tudásbázist a **Beállítások** lapon, majd tegye közzé. [Ezt az alapszintű tudásbázist](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)töltheti le és használhatja.
 
-    A közzétételi lap beállításai közé tartozik a POST útvonal érték, az Állomás érték és az EndpointKey érték.
+    A közzétételi oldal beállításai közé tartozik az útvonal értéke, a gazdagép értéke és a EndpointKey érték.
 
     ![Publish settings (Közzétételi beállítások)](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
 ## <a name="create-a-java-file"></a>Java-fájl létrehozása
 
-Nyissa meg a VSCode-ot, és hozzon létre egy új nevű fájlt, `GetAnswer.java` és adja hozzá a következő osztályt:
+Nyissa meg a VSCode, és hozzon létre egy nevű `GetAnswer.java` új fájlt, és adja hozzá a következő osztályt:
 
 ```Java
 public class GetAnswer {
@@ -49,31 +49,31 @@ public class GetAnswer {
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
-Ez a rövid útmutató Apache osztályokat használ a HTTP-kérelmekhez. A GetAnswer osztály felett, a `GetAnswer.java` fájl tetején adja hozzá a szükséges függőségeket a projekthez:
+Ez a rövid útmutató a HTTP-kérelmek Apache-osztályait használja. A GetAnswer osztály felett a `GetAnswer.java` fájl tetején adja hozzá a szükséges függőségeket a projekthez:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=5-13 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-Az `GetAnswer.java` osztály tetején adja hozzá a QnA Maker eléréséhez szükséges állandókat. Ezek az értékek a tudásbázis közzététele után a **Közzététel** lapon találhatók.
+Az `GetAnswer.java` osztály tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=26-42 "Add the required constants")]
 
-## <a name="add-a-post-request-to-send-question"></a>Post-kérelem hozzáadása kérdés küldéséhez
+## <a name="add-a-post-request-to-send-question"></a>Kérdés küldésére szolgáló POST-kérelem hozzáadása
 
-A következő kód https-kérelmet küld a QnA Maker API-nak, hogy küldje el a kérdést a tudásbázisnak, és megkapja a választ:
+A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a kérdést a Tudásbázisnak, és fogadja a választ:
 
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
-A `Authorization` fejléc értéke tartalmazza `EndpointKey`a karakterláncot .
+A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey`.
 
-További információ a [kérésről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról.](../how-to/metadata-generateanswer-usage.md#generateanswer-response)
+További információ a [kérelemről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-A program létrehozása és futtatása a parancssorból. Automatikusan elküldi a kérelmet a QnA Maker API-nak, majd kinyomtatja a konzolablakba.
+Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automatikusan elküldi a kérést a QnA Maker APInak, majd a konzol ablakba fog nyomtatni.
 
-1. A fájl összeállítása:
+1. Hozza létre a fájlt:
 
     ```bash
     javac -cp "lib/*" GetAnswer.java

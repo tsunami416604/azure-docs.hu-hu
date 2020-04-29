@@ -1,26 +1,26 @@
 ---
-title: A modellkonvertálás konfigurálása
-description: Az összes modellátalakítási paraméter leírása
+title: A modellátalakítás konfigurálása
+description: Az összes modell-átalakítási paraméter leírása
 author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: eb287b812c477b2e472c48d7bd8f44574a398bac
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681570"
 ---
-# <a name="configure-the-model-conversion"></a>A modellkonvertálás konfigurálása
+# <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
-Ez a fejezet a modellátalakítás lehetőségeit tartalmazza.
+Ez a fejezet a modell átalakításának lehetőségeit dokumentálja.
 
-## <a name="settings-file"></a>Beállítások fájl
+## <a name="settings-file"></a>Beállítási fájl
 
-Ha egy `ConversionSettings.json` megnevezett fájl található a bemeneti modell melletti bemeneti tárolóban, akkor a modell átalakítási folyamatának további konfigurációját biztosítja.
+Ha egy nevű `ConversionSettings.json` fájl megtalálható a bemeneti tárolóban a bemeneti modell mellett, akkor a rendszer a modell átalakítási folyamatának további konfigurációját használja.
 
-A fájl tartalmának meg kell felelnie a következő json sémának:
+A fájl tartalmának meg kell felelnie a következő JSON-sémának:
 
 ```json
 {
@@ -53,7 +53,7 @@ A fájl tartalmának meg kell felelnie a következő json sémának:
 }
 ```
 
-Egy `ConversionSettings.json` példa fájl lehet:
+Lehetséges például `ConversionSettings.json` , hogy a fájl:
 
 ```json
 {
@@ -65,76 +65,76 @@ Egy `ConversionSettings.json` példa fájl lehet:
 
 ### <a name="geometry-parameters"></a>Geometriai paraméterek
 
-* `scaling`- Ez a paraméter egyenletesen méretezi a modellt. A skálázás segítségével növekszik vagy zsugorít egy modellt, például egy épületmodell megjelenítése egy asztallapon. Mivel a renderelési motor várakozásai szerint a hosszok méterben vannak megadva, a paraméter egy másik fontos használata akkor merül fel, amikor egy modellt különböző egységekben határoznak meg. Ha például egy modell centiméterben van definiálva, akkor a 0,01-es skálázás alkalmazása a modellt a megfelelő méretben jeleníti meg.
-Egyes forrásadat-formátumok (például .fbx) egységskálázási tippet biztosítanak, amely esetben a konvertálás implicit módon a modellt mérőegységekre méretezi. A forrásformátum által biztosított implicit méretezés a méretezési paraméteren felül lesz alkalmazva.
-A végső méretezési tényező a geometriai csúcsokra és a jelenetdiagram-csomópontok helyi transzformációira lesz alkalmazva. A gyökérentitás átalakításának skálázása változatlan marad.
+* `scaling`– Ez a paraméter egységesen méretezi a modellt. A skálázás felhasználható egy modell növelésére vagy összekapcsolására, például egy kiépítési modell megjelenítésére egy tábla tetején. Mivel a renderelési motor a mérőszámok hosszának meghatározására vár, a paraméter egy másik fontos használata akkor fordul elő, ha a modell különböző egységekben van definiálva. Ha például egy modell centiméterben van definiálva, akkor a 0,01-es méret alkalmazása esetén a modellt a megfelelő méretben kell megjeleníteni.
+Bizonyos forrásadatok formátuma (például. FBX) egy egység skálázási mutatót biztosít, amely esetben az átalakítás implicit módon méretezi a modellt a mérő egységekre. A forrás formátuma által biztosított implicit skálázás a skálázási paraméter tetején lesz alkalmazva.
+A végső skálázási tényező a geometriai csúcspontokra és a Scene Graph-csomópontok helyi átalakítására lesz alkalmazva. A gyökérszintű entitás átalakításának skálázása változatlan marad.
 
-* `recenterToOrigin`- kimondja, hogy a modellt úgy kell átalakítani, hogy a határolókerete az origó közepére legyen.
-A központosítás akkor fontos, ha a forrásmodell az eredetitől távol odébb van, mivel ebben az esetben a lebegőpontos pontossági problémák renderelési hibákat okozhatnak.
+* `recenterToOrigin`– Azt állítja be, hogy egy modellt át kell alakítani, hogy a határolókeret középpontba kerüljön a forráson.
+A középpontba helyezés akkor fontos, ha a forrás modellt a forrástól távol helyezik el, mivel ebben az esetben a lebegőpontos pontossággal kapcsolatos hibák okozhatnak megjelenítési összetevőket.
 
-* `opaqueMaterialDefaultSidedness`- A renderelő motor feltételezi, hogy az átlátszatlan anyagok kétoldalasak.
-Ha nem ez a kívánt viselkedés, akkor ezt a paramétert "SingleSided" (SingleSided) beállításra kell állítani. További információt az [egyoldalas renderelés](../../overview/features/single-sided-rendering.md)című témakörben talál.
+* `opaqueMaterialDefaultSidedness`– A renderelési motor azt feltételezi, hogy az átlátszatlan anyagok kétoldalasak.
+Ha ez nem a kívánt viselkedés, a paramétert "SingleSided" értékre kell beállítani. További információ: [egyoldalas megjelenítés](../../overview/features/single-sided-rendering.md).
 
-### <a name="material-overrides"></a>Anyag-felülbírálások
+### <a name="material-overrides"></a>Anyagok felülbírálása
 
-* `material-override`- Ez a paraméter lehetővé teszi az anyagok feldolgozását [az átalakítás során.](override-materials.md)
+* `material-override`– Ez a paraméter lehetővé teszi, hogy az anyagok feldolgozása az [átalakítás során testreszabható](override-materials.md)legyen.
 
 ### <a name="color-space-parameters"></a>Színtér paraméterei
 
-A renderelési motor arra számít, hogy a színértékek lineáris térben vannak.
-Ha egy modell gammatérrel van definiálva, akkor ezeket a beállításokat igaz értékre kell állítani.
+A renderelési motor a színértékeket a lineáris térben várja.
+Ha a modell a gamma szóköz használatával van definiálva, akkor ezeket a beállításokat igaz értékre kell állítani.
 
-* `gammaToLinearMaterial`- Konvertálja anyag színek gamma tér lineáris tér
-* `gammaToLinearVertex`- Konvertálja a csúcspont színeit a gamma térből a lineáris térbe
+* `gammaToLinearMaterial`– Az anyag színeinek konvertálása a gamma-területről a lineáris helyre
+* `gammaToLinearVertex`– A csúcspontok színeinek konvertálása a gamma-területről a lineáris helyre
 
 > [!NOTE]
-> Az FBX-fájlok esetében `true` ezek a beállítások alapértelmezés szerint be vannak állítva. Az összes többi fájltípus `false`esetében az alapértelmezett érték a .
+> FBX- `true` fájlok esetén ezek a beállítások alapértelmezés szerint vannak beállítva. Az összes többi fájltípus esetében az alapértelmezett érték a `false`következő:.
 
 ### <a name="scene-parameters"></a>Jelenet paraméterei
 
-* `sceneGraphMode`- Meghatározza, hogy a jelenet grafikon a forrásfájlban konvertálja:
-  * `dynamic`(alapértelmezett): A fájlban lévő összes objektum [entitásként](../../concepts/entities.md) van elérhető az API-ban, és egymástól függetlenül átalakítható. A csomóponthierarchia futásidőben megegyezik a forrásfájl ban lévő szerkezettel.
-  * `static`: Az ÖSSZES objektum elérhető az API-ban, de egymástól függetlenül nem alakítható át.
-  * `none`: A jelenetdiagram egy objektumba van összecsukva.
+* `sceneGraphMode`-Meghatározza, hogy a program hogyan konvertálja a színtér gráfját:
+  * `dynamic`(alapértelmezett): a fájlban lévő összes objektum az API- [ban szerepel, és](../../concepts/entities.md) egymástól függetlenül alakítható át. A csomópont-hierarchia futásidőben azonos a forrásfájl struktúrájával.
+  * `static`: Az összes objektum elérhető az API-ban, de nem alakítható át egymástól függetlenül.
+  * `none`: A jelenet gráf egyetlen objektumba van összecsukva.
 
-Minden mód különböző futásidejű teljesítménnyel rendelkezik. Módban `dynamic` a teljesítményköltség lineárisan skálázódik a diagramon lévő [entitások](../../concepts/entities.md) számával, még akkor is, ha egyetlen alkatrész táta kerül áthelyezésre. Csak akkor használható, ha az alkalmazáshoz külön-külön mozgó alkatrészek szükségesek, például "robbanásnézet" animáció esetén.
+Az egyes üzemmódok különböző futásidejű teljesítménnyel rendelkeznek. A `dynamic` módban a teljesítmény a gráfban lévő [entitások](../../concepts/entities.md) számával lineárisan méretezhető, még akkor is, ha egyetlen rész sem kerül áthelyezésre. Ezt csak akkor érdemes használni, ha az alkalmazáshoz szükség van a részek áthelyezésére, például egy "Alábontás nézet" animációra.
 
-A `static` mód exportálja a teljes jelenetdiagramot, de a diagramon belüli részek a gyökérrészhez képest állandó transzformációval rendelkeznek. Az objektum gyökércsomópontja azonban továbbra is áthelyezhető, elforgatható vagy méretezhető jelentős teljesítményköltség nélkül. Ezenkívül [a térbeli lekérdezések](../../overview/features/spatial-queries.md) egyes részeket adnak vissza, és minden egyes rész [állapotfelülírással](../../overview/features/override-hierarchical-state.md)módosítható. Ebben a módban az objektumonkénti futásidejű terhelés elhanyagolható. Ideális olyan nagy jelenetekhez, ahol még mindig szükség van objektumonkénti ellenőrzésre, de nem változtat az objektumonkénti átalakításonként.
+A `static` mód exportálja a teljes jelenet gráfot, de az ebben a gráfban található részek állandó átalakítóval rendelkeznek a gyökérszintű részhez képest. Az objektum legfelső szintű csomópontja azonban továbbra is áthelyezhető, elforgatható vagy méretezhető, és nincs jelentős teljesítménybeli díj. Emellett a [térbeli lekérdezések](../../overview/features/spatial-queries.md) az egyes részeket adják vissza, és az egyes részeket az [állapot felülbírálásai](../../overview/features/override-hierarchical-state.md)segítségével lehet módosítani. Ebben a módban az objektum futásidejű terhelése elhanyagolható. Ideális olyan nagy méretű jeleneteknél, ahol továbbra is szükség van az objektumon belüli ellenőrzésre, de az objektum-átalakítás nem változik.
 
-A `none` mód rendelkezik a legkisebb futásidejű terheléssel és valamivel jobb betöltési idővel. Ebben az üzemmódban nem lehetséges az egyes objektumok ellenőrzése vagy átalakítása. Használati esetek, például a fotogrammetriai modellek, amelyek nem rendelkeznek értelmes jelenet grafikon az első helyen.
+A `none` mód a legalacsonyabb futtatókörnyezettel rendelkezik, és valamivel jobb betöltési időt is igénybe venni. Az önálló objektumok vizsgálata és átalakítása ebben a módban nem lehetséges. A használati esetek például olyan photogrammetry modellek, amelyeken nem szerepelnek az értelmes Scene gráfok az első helyen.
 
 > [!TIP]
-> Számos alkalmazás több modellt tölt be. A használat módjától függően optimalizálnia kell az egyes modellek konverziós paramétereit. Ha például meg szeretné jeleníteni egy autó modelljét, hogy a felhasználó szétszedje és `dynamic` részletesen megvizsgálja, akkor módban kell átalakítania. Ha azonban az autót bemutatóterem-környezetbe szeretné helyezni, akkor a `sceneGraphMode` modell `static` átalakítható a beállítással vagy akár `none`.
+> Számos alkalmazás több modellt is betölt. Az egyes modellekhez tartozó konverziós paramétereket a használatuk módjától függően érdemes optimalizálni. Ha például egy autó modelljét szeretné megjeleníteni a felhasználó számára, és részletesen megvizsgálja azt, akkor a `dynamic` módot kell konvertálnia. Ha azonban azt is szeretné, hogy az autó egy show Room-környezetben legyen elhelyezve, a modell a `sceneGraphMode` készlet és a `static` beállítás között `none`is konvertálható.
 
 ### <a name="physics-parameters"></a>Fizikai paraméterek
 
-* `generateCollisionMesh`- Ha egy modell [térbeli lekérdezéseinek](../../overview/features/spatial-queries.md) támogatására van szüksége, ezt a beállítást engedélyezni kell. A legrosszabb esetben az ütközési háló létrehozása megduplázhatja az átváltási időt. Az ütközési kapcsolatokkal rendelkező modellek betöltése hosszabb időt vesz igénybe, és a `dynamic` jelenetgrafikon használatakor nagyobb futásidejű teljesítményük is van. Az általános optimális teljesítmény érdekében tiltsa le ezt a beállítást minden olyan modellen, amelyen nincs szükség térbeli lekérdezésekre.
+* `generateCollisionMesh`– Ha a modellen a [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md) támogatásra van szüksége, ezt a beállítást engedélyezni kell. A legrosszabb esetben az ütközési háló létrehozása megduplázhatja az átalakítási időt. Az ütközési hálókkal rendelkező modellek a betöltéshez és a `dynamic` Scene Graph használatakor hosszabb időt is igénybe vehetik. Az optimális teljesítmény érdekében tiltsa le ezt a beállítást minden olyan modellen, amelyen nincs szükség térbeli lekérdezésekre.
 
-### <a name="unlit-materials"></a>Megvilágítatlan anyagok
+### <a name="unlit-materials"></a>Kivilágított anyagok
 
-* `unlitMaterials`- Alapértelmezés szerint az átalakítás inkább [létre PBR anyagok](../../overview/features/pbr-materials.md). Ez a beállítás arra utasítja a konvertert, hogy az összes anyagot [színes anyagként](../../overview/features/color-materials.md) kezelje. Ha olyan adatokkal rendelkezik, amelyek már tartalmaznak világítást, például a fotogrammetria segítségével létrehozott modelleket, ez a beállítás lehetővé teszi, hogy gyorsan érvényesítse a megfelelő átalakítást az összes anyagra vonatkozóan, anélkül, hogy minden egyes anyagot külön-külön [felül kellene bírálnia.](override-materials.md)
+* `unlitMaterials`– Alapértelmezés szerint a konverzió szívesebben hozza létre a [pbr-anyagokat](../../overview/features/pbr-materials.md). Ez a beállítás azt jelzi, hogy a konverter az összes anyagot [színanyagként](../../overview/features/color-materials.md) kezeli. Ha olyan adatokkal rendelkezik, amelyek már befoglalják a világítást, például a photogrammetry használatával létrehozott modelleket, ez a beállítás lehetővé teszi, hogy gyorsan érvényesítse az összes anyag helyes átalakítását anélkül, hogy az [egyes anyagokat felül kellene bírálni](override-materials.md) .
 
-### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Konvertálás régebbi FBX formátumokból, Phong anyagmodellel
+### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Konvertálás régebbi FBX-formátumokból
 
-* `fbxAssumeMetallic`- Az FBX formátum régebbi verziói phong anyagmodell segítségével határozzák meg anyagaikat. Az átalakítási folyamatnak arra kell következtetnie, hogy ezek az anyagok hogyan felelnek meg a renderelő [PBR modelljének](../../overview/features/pbr-materials.md). Általában ez jól működik, de kétértelműség merülhet fel, ha egy anyagnak nincs textúrája, magas specular értéke idoben és nem szürke albedo színe. Ebben az esetben, az átalakítás kell választani a rangsorban a magas specular értékek, meghatározása erősen fényvisszaverő, fémes anyag, ahol az albedo szín feloldódik, vagy rangsorolja az albedo szín, meghatározó valami, mint egy fényes színes műanyag. Alapértelmezés szerint az átalakítási folyamat azt feltételezi, hogy a nagy specular értékek fémes anyagot jelentenek olyan esetekben, amikor kétértelműség alkalmazandó. Ez a paraméter `false` beállítható úgy, hogy az ellenkező irányba váltson.
+* `fbxAssumeMetallic`– A FBX-formátum régebbi verziói az anyagokat egy, egy vagy több anyagot tartalmazó modell használatával határozzák meg. Az átalakítási folyamatnak azt a következtetést kell kimutatnia, hogy ezek az anyagok hogyan képezik le a megjelenítő [pbr-modelljét](../../overview/features/pbr-materials.md). Ez általában jól működik, de a kétértelműség akkor merülhet fel, ha egy anyag nem tartalmaz textúrákat, nagy fényvisszaverődési értékeket és nem szürke albedó-színt. Ebben a körülmények között a konverziónak választania kell a nagy teljesítményű értékek rangsorolása, a nagy mértékben tükröző fémes anyagok meghatározásával, ahol a albedó színe megszűnik, vagy rangsorolja a albedó színét, ami a fényes színes műanyaghoz hasonló. Alapértelmezés szerint az átalakítási folyamat azt feltételezi, hogy a nagyon fényvisszaverődési értékek fémes anyagokat jelentenek azokban az esetekben, ahol a kétértelműség vonatkozik. Ez a paraméter `false` beállítható úgy, hogy átváltson a másikra.
 
-### <a name="coordinate-system-overriding"></a>A rendszer felülbírálásának koordinálása
+### <a name="coordinate-system-overriding"></a>Koordinátarendszer-felülbírálás
 
-* `axis`- Hogy felülbírálja a koordináta-rendszer egység-vektorokat. Az alapértelmezett `["+x", "+y", "+z"]`értékek a . Elméletileg az FBX formátumnak van egy fejléce, ahol ezek a vektorok definiálódnak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátum rögzített koordináta-rendszert is meghatároz. A gyakorlatban egyes eszközök vagy helytelen adatokkal rendelkeznek a fejlécükben, vagy más koordináta-rendszerkonvencióval lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszer felülbírálását. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z tengelyt és az Y tengelyt, és megtartja a koordináta-rendszer átadási adottságát az Y tengely irányának megfordításával.
+* `axis`– A koordináta rendszeregység – vektorok felülbírálása. Az `["+x", "+y", "+z"]`alapértelmezett értékek:. Elméletileg a FBX formátuma tartalmaz egy fejlécet, ahol ezek a vektorok definiálva vannak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátuma rögzített koordináta-rendszereket is meghatároz. A gyakorlatban bizonyos adategységek helytelen információval rendelkeznek a fejlécben, vagy egy másik koordináta-rendszeregyezménnyel lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszerek felülbírálását a kompenzálása érdekében. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z-tengelyt és az y tengelyt, és megtartja a koordináta-rendszer kézhasználat az Y tengely irányának invertálása mellett.
 
-### <a name="vertex-format"></a>Csúcspont formátum
+### <a name="vertex-format"></a>Csúcspont formátuma
 
-Lehetőség van a háló csúcsformátumának beállítására, a pontosság kereskedeleméhez a memória megtakarításérdekében. Az alacsonyabb memóriaigény lehetővé teszi nagyobb modellek betöltését vagy jobb teljesítmény elérését. Az adatoktól függően azonban a nem megfelelő formátum jelentősen befolyásolhatja a renderelés minőségét.
+A hálók csúcspont-formátumát a memória megtakarításának pontossága érdekében lehet módosítani. Az alacsonyabb memória-lábnyom lehetővé teszi nagyobb modellek betöltését vagy jobb teljesítmény elérését. Az adataitól függően azonban a helytelen formátum jelentős hatással lehet a renderelés minőségére.
 
 > [!CAUTION]
-> A csúcspont formátumának módosítása a legvégső megoldás, ha a modellek már nem férnek bele a memóriába, vagy ha a lehető legjobb teljesítményt nyújtják. A módosítások könnyen bevezethetik a renderelési leleteket, mind a nyilvánvalóakat, mind a finomakat. Hacsak nem tudja, mire kell vigyáznia, ne módosítsa az alapértelmezett értéket.
+> Ha a modell nem fér bele a memóriába, vagy ha a lehető legjobb teljesítményre van optimalizálva, a csúcspont formátumának módosítását kell utolsóként megadni. A változtatások könnyen bevezethetik a renderelési összetevőket, amelyek egyaránt egyértelműek és finomak. Ha nem tudja, mit kell keresnie, ne módosítsa az alapértelmezett értéket.
 
-Ezek a kiigazítások lehetségesek:
+Ezek a módosítások lehetségesek:
 
-* Bizonyos adatfolyamok explicit módon szerepelhetnek vagy kizárhatók.
-* Az adatfolyamok pontossága csökkenthető a memóriahely csökkentése érdekében.
+* Az adott adatfolyamok explicit módon szerepelhetnek vagy zárhatók ki.
+* Az adatfolyamok pontossága csökkenthető a memória helyigényének csökkentése érdekében.
 
-A `vertex` fájl következő `.json` szakasza nem kötelező. Minden olyan részesetében, amely nincs kifejezetten megadva, az átalakítási szolgáltatás visszaáll az alapértelmezett beállításra.
+A `.json` fájl `vertex` következő szakasza nem kötelező. Minden explicit módon megadott résznél az átalakítási szolgáltatás visszaáll az alapértelmezett értékre.
 
 ```json
 {
@@ -152,86 +152,86 @@ A `vertex` fájl következő `.json` szakasza nem kötelező. Minden olyan rész
     ...
 ```
 
-Ha egy összetevőt `NONE`a rendszerre kényszerít, akkor garantált, hogy a kimeneti háló nem rendelkezik a megfelelő adatfolyamkal.
+Ha az összetevőt arra `NONE`kényszeríti, hogy a kimeneti rácsvonal nem rendelkezik a megfelelő streamtel.
 
-#### <a name="component-formats-per-vertex-stream"></a>Összetevőformátumok csúcspont-adatfolyamonként
+#### <a name="component-formats-per-vertex-stream"></a>Összetevő-formátumok/Vertex Stream
 
-Ezek a formátumok a megfelelő összetevőkhöz engedélyezettek:
+Ezek a formátumok a megfelelő összetevők esetében engedélyezettek:
 
-| Csúcspont-összetevő | Támogatott formátumok (félkövér = alapértelmezett) |
+| Csúcspont-összetevő | Támogatott formátumok (Bold = default) |
 |:-----------------|:------------------|
-|pozíció| **32_32_32_FLOAT,** 16_16_16_16_FLOAT |
-|szín0| **8_8_8_8_UNSIGNED_NORMALIZED,** NINCS |
-|szín1| 8_8_8_8_UNSIGNED_NORMALIZED, **NINCS**|
-|Normál| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, NINCS |
-|Érintő| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, NINCS |
-|binormális| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, NINCS |
-|texcoord0 között| **32_32_FLOAT**, 16_16_FLOAT, NINCS |
-|texcoord1| **32_32_FLOAT**, 16_16_FLOAT, NINCS |
+|pozíció| **32_32_32_FLOAT**, 16_16_16_16_FLOAT |
+|color0| **8_8_8_8_UNSIGNED_NORMALIZED**, nincs |
+|szín1| 8_8_8_8_UNSIGNED_NORMALIZED, **nincs**|
+|normál| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, nincs |
+|tangensét| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, nincs |
+|binormal| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, nincs |
+|texcoord0| **32_32_FLOAT**, 16_16_FLOAT, nincs |
+|texcoord1| **32_32_FLOAT**, 16_16_FLOAT, nincs |
 
-#### <a name="supported-component-formats"></a>Támogatott összetevőformátumok
+#### <a name="supported-component-formats"></a>Támogatott összetevők formátumai
 
-A formátumok memórialábnyomai a következők:
+A formátumok memória-lábnyomai a következők:
 
-| Formátum | Leírás | Csúcspontonkénti bájt |
+| Formátum | Leírás | Bájt/csúcspont |
 |:-------|:------------|:---------------|
-|32_32_FLOAT|kétkomponensű teljes lebegőpontos pontosság|8
-|16_16_FLOAT|kétkomponensű fél lebegőpontos pontosság|4
-|32_32_32_FLOAT|háromkomponensű teljes lebegőpontos pontosság|12
-|16_16_16_16_FLOAT|négykomponensű fél lebegőpontos pontosság|8
-|8_8_8_8_UNSIGNED_NORMALIZED|négykomponensű bájt, tartományra `[0; 1]` normalizálva|4
-|8_8_8_8_SIGNED_NORMALIZED|négykomponensű bájt, tartományra `[-1; 1]` normalizálva|4
+|32_32_FLOAT|két összetevő teljes lebegőpontos pontossága|8
+|16_16_FLOAT|két összetevős fél lebegőpontos pontossága|4
+|32_32_32_FLOAT|három összetevőből teljes lebegőpontos pontosság|12
+|16_16_16_16_FLOAT|négy összetevős fél lebegőpontos pontossága|8
+|8_8_8_8_UNSIGNED_NORMALIZED|négy összetevős bájt, normalizálva a `[0; 1]` tartományhoz|4
+|8_8_8_8_SIGNED_NORMALIZED|négy összetevős bájt, normalizálva a `[-1; 1]` tartományhoz|4
 
-#### <a name="best-practices-for-component-format-changes"></a>Gyakorlati tanácsok az összetevők formátumának módosításához
+#### <a name="best-practices-for-component-format-changes"></a>Ajánlott eljárások az összetevő formátumának változásaihoz
 
-* `position`: Ritka, hogy a csökkentett pontosság elegendő. **16_16_16_16_FLOAT** észrevehető kvantálási leleteket vezet be, még a kis modellek esetében is.
-* `normal`, `tangent` `binormal`, : Ezek az értékek általában együtt változnak. Hacsak nincsenek észrevehető megvilágítási leletek, amelyek a normál kvantálásból származnak, nincs ok a pontosság növelésére. Bizonyos esetekben azonban ezek az összetevők nem **állíthatók:**
-  * `normal`, `tangent`és `binormal` csak akkor van szükség, ha a modellben legalább egy anyagot meg kell világítani. Az ARR-ben ez a helyzet akkor, ha a modellen bármikor [PBR anyagot](../../overview/features/pbr-materials.md) használnak.
-  * `tangent`és `binormal` csak akkor van szükség, ha a megvilágított anyagok bármelyike normál térképtextúrát használ.
-* `texcoord0`, `texcoord1` : A textúrakoordináták csökkentett pontosságot `[0; 1]` (**16_16_FLOAT**) használhatnak, ha értékeik a tartományban maradnak, és amikor a címzett textúrák maximális mérete 2048 x 2048 képpont. Ha ezeket a határértékeket túllépik, a textúraleképezés minősége romlik.
+* `position`: Ritkán fordul elő, hogy a kisebb pontosság elegendő. a **16_16_16_16_FLOAT** a nagy méretű modellek esetében is bevezeti a észlelhető kvantálási összetevőket.
+* `normal`, `tangent`, `binormal`: Általában ezek az értékek együtt változnak. Ha a normál kvantálást eredményező, észrevehetően megvilágított összetevők nem indokolják meg a pontosság növelését. Bizonyos esetekben azonban ezek az összetevők a **none**értékre állíthatók:
+  * `normal`, `tangent`és `binormal` csak akkor szükséges, ha a modellben legalább egy anyagot meg kell világítani. Az ARR-ben ez a helyzet akkor, ha egy [pbr-anyagot](../../overview/features/pbr-materials.md) bármikor használ a modellben.
+  * `tangent`és `binormal` csak akkor szükséges, ha a megvilágított anyagok bármelyike normál Térkép textúrát használ.
+* `texcoord0`: `texcoord1` A textúra koordinátái használhatnak kisebb pontosságot (**16_16_FLOAT**), ha az értékek a `[0; 1]` tartományon maradnak, és ha a kezelt textúrák maximális mérete 2048 x 2048 képpont. Ha túllépi a korlátokat, a textúra-leképezés minősége is csökkenni fog.
 
 #### <a name="example"></a>Példa
 
-Tegyük fel, hogy van egy fotogrammetriai modell, amely világítás sült a textúrák. A modell rendereléséhez mindössze a csúcspontok és a textúrakoordináták szükségesek.
+Tegyük fel, hogy van egy photogrammetry-modellje, amely a textúrákba besütött világítással rendelkezik. Minden, ami a modell megjelenítéséhez szükséges, a csúcsponti pozíciók és a textúra koordinátái.
 
-Alapértelmezés szerint a konverternek azt kell feltételeznie, hogy a modellen a `normal` `tangent`PBR-anyagokat valamikor használni szeretné, így a , és `binormal` az adatokat hozza létre. Ennek `position` következtében a csúcspontmemória-használat (12 bájt) + `texcoord0` (8 `normal` bájt) + `tangent` (4 bájt) `binormal` + (4 bájt) + (4 bájt) = 32 bájt. Az ilyen típusú nagyobb modellek könnyen több millió csúcsot okozhatnak, ami olyan modelleket eredményez, amelyek több gigabájt memóriát is képesek igénybe venni. Az ilyen nagy mennyiségű adat hatással van a teljesítményre, és akár elfogyhat is a memória.
+Alapértelmezés szerint a konvertálónak feltételezni kell, hogy egy modellben a pbr-anyagokat egy időben szeretné használni, így Ön is `normal`létrehozhatja `tangent`, `binormal` és felhasználhatja azokat. Következésképpen a vertex `position` memóriahasználat (12 bájt) + `texcoord0` (8 bájt) + `normal` (4 bájt `tangent` `binormal` ) + (4 bájt) + (4 bájt) = 32 bájt. Az ilyen típusú nagyobb modellek egyszerűen több millió csúcsponttal rendelkezhetnek, ami a több gigabájt memóriát is igénybe vehet. Ilyen nagy mennyiségű adat befolyásolja a teljesítményt, és előfordulhat, hogy elfogyott a memória.
 
-Tudva, hogy soha nem kell dinamikus megvilágítás a modellen, és tudva, hogy `NONE` az `texcoord0` összes textúra`16_16_FLOAT`koordináták hatótávolságon belül, `[0; 1]` beállíthatja `normal`, , `tangent`és `binormal` a fele pontosság ( ), ami csak 16 byte per csúcspont. A hálóadatok félbe vágása lehetővé teszi a nagyobb modellek betöltését és potenciálisan javítja a teljesítményt.
+Tudván, hogy soha nem szükséges a modell dinamikus megvilágítása, és tudván, hogy az összes `[0; 1]` textúra koordinátái a tartományon `normal`belül `tangent`vannak, `binormal` beállíthatja, és a `NONE` (z) és a (z) és a (z), a és a (z), és `texcoord0` a (`16_16_FLOAT`z) A (többek között) Mesh-adat kivágása lehetővé teszi a nagyobb modellek betöltését és a teljesítmény növelését.
 
-## <a name="typical-use-cases"></a>Tipikus használati esetek
+## <a name="typical-use-cases"></a>Jellemző használati esetek
 
-Egy adott használati eset hez jó importálási beállítások keresése fárasztó folyamat lehet. Másrészt a konvertálási beállítások jelentős hatással lehetnek a futásidejű teljesítményre.
+Egy adott használati eset megfelelő importálási beállításainak megkeresése unalmas folyamat lehet. Másfelől előfordulhat, hogy a konverziós beállítások jelentős hatással lehetnek a futtatókörnyezet teljesítményére.
 
-Vannak bizonyos használati esetek, amelyek megfelelnek a konkrét optimalizálás. Néhány példa az alábbiakban található.
+Vannak bizonyos használati esetek, amelyek adott optimalizálásokra érvényesek. Néhány példát alább találhat.
 
-### <a name="use-case-architectural-visualization--large-outdoor-maps"></a>Használati eset: Építészeti képi megjelenítés / nagy szabadtéri térképek
+### <a name="use-case-architectural-visualization--large-outdoor-maps"></a>Használati eset: építészeti vizualizáció/nagyméretű kültéri térképek
 
-* Az ilyen típusú jelenetek általában statikus, ami azt jelenti, hogy nem kell mozgatható alkatrészeket. Ennek megfelelően `sceneGraphMode` a `static` beállítható, `none`vagy akár , ami javítja a futásidejű teljesítményt. Mód `static` esetén a jelenet gyökércsomópontja továbbra is mozgatható, elforgatható és méretezhető, például az 1:1 arányú skála (első személyű nézetesetén) és az asztallap nézet közötti dinamikus váltáshoz.
+* Ezek a típusú jelenetek általában statikusak, ami azt jelenti, hogy nincs szükségük mozgó részekre. Ennek megfelelően a `sceneGraphMode` állítható be `static` vagy akár akár is `none`, ami javítja a futtatókörnyezet teljesítményét. A `static` módban a jelenet legfelső szintű csomópontja továbbra is áthelyezhető, elforgatható és méretezhető, például dinamikusan válthat a 1:1 skála (első személy nézet) és a tábla felső nézete között.
 
-* Ha alkatrészeket kell mozgatnia, ez általában azt is jelenti, hogy szüksége van a sugárképek vagy más [térbeli lekérdezések támogatására,](../../overview/features/spatial-queries.md)hogy ezeket az alkatrészeket elsősorban kiválaszthassa. Másrészt, ha nem kíván mozogni valamit, nagy az esélye, hogy ön is nem kell, hogy részt vegyenek a térbeli lekérdezések, és ezért kapcsolja ki a `generateCollisionMesh` zászlót. Ez a kapcsoló jelentős hatással van a konverziós időkre, a betöltési időkre és a futásidejű per frame frissítési költségekre.
+* Ha a körüli részeket át kell helyeznie, ez általában azt is jelenti, hogy támogatásra van szüksége a raycasts vagy más [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md), így az első helyen kiválaszthatja ezeket a részeket. Ha azonban nem kívánja áthelyezni a körülötte lévőket, valószínűleg nem kell a térbeli lekérdezésekben részt vennie, és így ki is kapcsolhatja a `generateCollisionMesh` jelzőt. Ez a kapcsoló jelentős hatással van az átalakítási időpontokra, a betöltési időpontokra, valamint az egyes kereteken belüli frissítési költségekre is.
 
-* Ha az alkalmazás nem használ `opaqueMaterialDefaultSidedness` [kivágott síkokat,](../../overview/features/cut-planes.md)a jelzőt ki kell kapcsolni. A teljesítménynövekedés általában 20%-30%. Cut síkok továbbra is használható, de nem lesz back-arcok, amikor belenéz a belső része kontró, amely úgy néz ki, ellentétes intuitív. További információt az [egyoldalas renderelés](../../overview/features/single-sided-rendering.md)című témakörben talál.
+* Ha az alkalmazás nem használ [kivágási síkokat](../../overview/features/cut-planes.md), a `opaqueMaterialDefaultSidedness` jelzőt ki kell kapcsolni. A teljesítmény-nyereség általában 20%-30%. A kivágott síkok továbbra is használhatók, de nem lesznek háttérbeli arcok, amikor az objektumok belső részeire néznek, és ez a számláló intuitív. További információ: [egyoldalas megjelenítés](../../overview/features/single-sided-rendering.md).
 
-### <a name="use-case-photogrammetry-models"></a>Használati eset: Fotogrammetriai modellek
+### <a name="use-case-photogrammetry-models"></a>Használati eset: photogrammetry-modellek
 
-A fotogrammetriai modellek renderelésekén általában nincs szükség jelenetdiagramra, így a `sceneGraphMode` beállítás a . `none` Mivel ezek a modellek ritkán tartalmaznak összetett jelenet grafikon kezdeni, a hatása ennek a lehetőségnek jelentéktelennek kell lennie, mégis.
+A photogrammetry-modellek renderelése esetén általában nincs szükség a jelenet gráfra, így beállíthatja a `sceneGraphMode` - `none`t. Mivel ezek a modellek ritkán tartalmaznak egy összetett színtér-diagramot, amely a következővel kezdődik, a lehetőség hatásának jelentéktelennek kell lennie, mégis.
 
-Mivel a világítás már sült a textúrák, nincs dinamikus világítás szükséges. Ezért:
+Mivel a megvilágítás már besütött a textúrákba, nem szükséges dinamikus megvilágítás. Ezért:
 
-* Állítsa `unlitMaterials` be `true` a zászlót, hogy kapcsolja be az összes anyag ot világít [színes anyagok](../../overview/features/color-materials.md).
-* Távolítsa el a szükségtelen adatokat a csúcspont formátumból. Lásd a fenti [példát.](#example)
+* Állítsa be `unlitMaterials` a jelölőt úgy `true` , hogy az összes anyagot kivilágítatlan [színanyagokba](../../overview/features/color-materials.md)kapcsolja.
+* Szüntesse meg a nem szükséges adatok csúcspont-formátumból való eltávolítását. Lásd a fenti [példát](#example) .
 
-### <a name="use-case-visualization-of-compact-machines-etc"></a>Használati eset: Kompakt gépek megjelenítése stb.
+### <a name="use-case-visualization-of-compact-machines-etc"></a>Használati eset: kompakt gépek megjelenítése stb.
 
-Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel egy kis mennyiségben. A renderelő erősen optimalizált kezelni az ilyen eseteket is. Az előző használati esetben említett optimalizálások többsége azonban itt nem vonatkozik:
+Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel rendelkeznek egy kis köteten belül. A megjelenítő nagy mértékben van optimalizálva az ilyen esetek kezelésére. Az előző használati esetben említett optimalizálások többsége azonban itt nem érvényes:
 
-* Az egyes részeknek választhatónak és `sceneGraphMode` mozgathatónak `dynamic`kell lenniük, ezért a részeket a számára kell hagyni.
-* A sugáröntvények általában az alkalmazás szerves részét képezik, ezért ütközési tűnéseket kell létrehozni.
-* A kivágott síkok jobban néznek ki, ha a `opaqueMaterialDefaultSidedness` jelző engedélyezve van.
+* Az egyes részeknek kijelölhető és mozgathatónak kell `sceneGraphMode` lenniük, így a `dynamic`kötelezően meg kell maradnia.
+* A Ray-öntvények általában az alkalmazás szerves részét képezik, ezért az ütközési hálókat kell létrehozni.
+* A kivágott síkok jobban kitűnnek a `opaqueMaterialDefaultSidedness` jelzővel.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)
-* [PBR anyagok](../../overview/features/pbr-materials.md)
-* [Anyagok felülbírálása a modell átalakítása során](override-materials.md)
+* [PBR-anyagok](../../overview/features/pbr-materials.md)
+* [Anyagok felülírása a modellátalakítás során](override-materials.md)

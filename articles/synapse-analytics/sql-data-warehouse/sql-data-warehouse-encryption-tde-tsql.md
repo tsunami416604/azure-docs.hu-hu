@@ -1,6 +1,6 @@
 ---
 title: Transzparens adattitkosítás (T-SQL)
-description: Transzparens adattitkosítás (TDE) az Azure Synapse Analytics (T-SQL)
+description: Transzparens adattitkosítás (TDE) az Azure szinapszis Analyticsben (T-SQL)
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ae751cc5b8e3ab67f3e65757724d0ebae1c45e02
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745250"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde"></a>Az átlátszó adattitkosítás (TDE) első lépései
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Ismerkedés a transzparens adattitkosításrel (TDE)
 
 > [!div class="op_single_selector"]
 >
-> * [Biztonság – áttekintés](sql-data-warehouse-overview-manage-security.md)
+> * [Biztonsági áttekintés](sql-data-warehouse-overview-manage-security.md)
 > * [Hitelesítés](sql-data-warehouse-authentication.md)
 > * [Titkosítás (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Titkosítás (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Az átlátszó adattitkosítás (TDE) engedélyezéséhez rendszergazdának vagy a dbmanager szerepkör tagjának kell lennie.
+A transzparens adattitkosítás (TDE) engedélyezéséhez rendszergazdának vagy a DBManager szerepkör tagjának kell lennie.
 
 ## <a name="enabling-encryption"></a>Titkosítás engedélyezése
 
 A TDE engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Csatlakozás az adatbázist tároló kiszolgáló *főadatbázisához* rendszergazdai vagy a **főadatbázis dbmanager-szerepkörének** tagja ként történő bejelentkezéssel
-2. Az adatbázis titkosításához hajtsa végre a következő utasítást.
+1. Kapcsolódjon a *Master* adatbázishoz az adatbázist futtató kiszolgálón egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
+2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
@@ -46,22 +46,22 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 A TDE letiltásához kövesse az alábbi lépéseket:
 
-1. Csatlakozás a *főadatbázishoz* rendszergazdai vagy a **főadatbázis dbmanager-szerepkörének** tagjaként történő csatlakozással
-2. Az adatbázis titkosításához hajtsa végre a következő utasítást.
+1. Kapcsolódjon a *Master* adatbázishoz egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
+2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> A szüneteltetett SQL-készletet a TDE-beállítások módosítása előtt újra kell indítani.
+> A TDE beállítások módosítása előtt a szüneteltetett SQL-készletet újra kell indítani.
 
 ## <a name="verifying-encryption"></a>Titkosítás ellenőrzése
 
-A titkosítási állapot ellenőrzéséhez kövesse az alábbi lépéseket:
+A titkosítás állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1. Csatlakozás a *főkiszolgáló-* vagy példányadatbázishoz rendszergazdai vagy a **főadatbázis dbmanager-szerepkörének** tagja ként történő bejelentkezéssel
-2. Az adatbázis titkosításához hajtsa végre a következő utasítást.
+1. Kapcsolódjon a *Master* vagy a instance adatbázishoz egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
+2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
 
 ```sql
 SELECT
@@ -71,9 +71,9 @@ FROM
     sys.databases;
 ```
 
-Az eredmény ```1``` titkosított adatbázist ```0``` jelez, nem titkosított adatbázist jelöl.
+Egy titkosított adatbázist ```1``` jelez, ```0``` amely egy nem titkosított adatbázist jelez.
 
-## <a name="encryption-dmvs"></a>Titkosítási DMV-k
+## <a name="encryption-dmvs"></a>Titkosítási DMV
 
-* [sys.adatbázisok](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys. Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys. dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

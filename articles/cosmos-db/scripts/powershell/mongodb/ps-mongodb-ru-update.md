@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsfájl az Azure Cosmos DB MongoDB-hoz való API-jának RU/s-ai frissítéséhez
-description: Megtudhatja, hogy miként frissítheti egy Adatbázis vagy egy tároló átviteli erejét az Azure Cosmos DB MongoDB-hoz való API-jában
+title: PowerShell-szkript az RU/s frissítéséhez Azure Cosmos DB API-MongoDB
+description: Megtudhatja, hogyan frissítheti egy adatbázis vagy egy tároló adatátviteli sebességét PowerShell-parancsfájl használatával a MongoDB-hez Azure Cosmos DB API-ban
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: c0dba303a82fb39036b04198f835e4a1e71b6a1d
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365859"
 ---
-# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Ru/s frissítése az Azure Cosmos DB adatbázisához vagy gyűjteményéhez – MongoDB API
+# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>A Azure Cosmos DB-MongoDB API-hoz készült adatbázishoz vagy gyűjteményhez tartozó RU/s frissítése
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBMongoDBAdatbázis](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB MongoDB API-adatbázis. |
-| [Set-AzCosmosDBMongoDBGyűjtemény](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB SQL Collection. |
-|**Azure erőforráscsoportok**| |
+| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Új vagy meglévő Cosmos DB MongoDB API-adatbázis frissítését hozza létre vagy frissíti. |
+| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Új vagy meglévő Cosmos DB SQL-gyűjtemény frissítését hozza létre vagy frissíti. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

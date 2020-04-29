@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 90ab36389ceac2e8aad12332db433732525c62f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851827"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Java használatával
@@ -20,16 +20,16 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Tudásbázis létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Referenciadokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+[Dokumentációs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java-minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Go 1.10.1](https://golang.org/dl/)
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és a végpont (amely tartalmazza az erőforrás nevét) lekéréséhez válassza az erőforrás **gyorsindítását** az Azure Portalon.
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
 
-A [mintakód](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) elérhető a GitHub-tárlaton a QnA Maker Java-val.
+A [mintakód](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) elérhető a GitHub-tárházban QnA Maker Javával.
 
 ## <a name="create-a-knowledge-base-file"></a>Egy tudásbázisfájl létrehozása
 
@@ -44,12 +44,12 @@ A `CreateKB.java` tetején a következő sorok hozzáadásával adja hozzá a sz
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is a `CreateKB` osztályhoz.
 
-Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és az erőforrás nevének beolvasásához válassza a **gyorsútmutatót** az Azure Portalon a QnA Maker-erőforráshoz.
+Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és az erőforrás nevének lekéréséhez **válassza a** gyors üzembe helyezés lehetőséget a QnA Maker erőforrásának Azure Portal.
 
 Állítsa be a következő értékeket:
 
-* `<your-qna-maker-subscription-key>`- A **kulcs** egy 32 karakterből álló karakterlánc, és elérhető az Azure Portalon, a QnA Maker erőforrás, a gyorsútmutató lapon. Ez nem ugyanaz, mint az előrejelzési végpont kulcs.
-* `<your-resource-name>`- Az **erőforrás neve** a szerzői végpont URL-címének létrehozásához `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`használható, a . Ez nem ugyanaz az URL-cím, amelyet az előrejelzési végpont lekérdezéséhez használnak.
+* `<your-qna-maker-subscription-key>`– A **kulcs** egy 32 karakterből álló karakterlánc, és a Azure Portal QnA Maker erőforrásban, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
+* `<your-resource-name>`– Az **Erőforrás neve** a szerzői végpont URL-címének létrehozásához használható a következő formátumban: `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 Az osztály befejezéséhez nem kell hozzáadnia a záró kerek zárójelet. Ez a rövid útmutató végén a végső kódrészletben szerepel.
 
@@ -117,7 +117,7 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 ```
 
 ## <a name="add-a-main-method"></a>Fő metódus hozzáadása
-A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A műveletazonosító t a POST válasz fejlécmezőjében adja vissza a **hely,** majd a GET-kérelemútvonal részeként használja. A `while` hurok újrapróbálkozik az állapottal, ha az nem fejeződött be.
+A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A rendszer visszaadja a művelet AZONOSÍTÓját a POST Response **fejléc mezőjében**, majd az útvonal részeként használja a Get kérelemben. A `while` hurok újrapróbálkozik az állapottal, ha az nem fejeződött be.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

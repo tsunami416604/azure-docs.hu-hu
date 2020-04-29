@@ -1,88 +1,88 @@
 ---
-title: Oktatóanyag – Sablon exportálása az Azure Portalról
-description: Ismerje meg, hogyan használhatja az exportált sablont a sablonfejlesztés befejezéséhez.
+title: Oktatóanyag – sablon exportálása a Azure Portalból
+description: Megtudhatja, hogyan használhatja az exportált sablont a sablon fejlesztésének befejezéséhez.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80408554"
 ---
-# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: Exportált sablon használata az Azure Portalról
+# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
-Ebben az oktatóanyag-sorozatban létrehozott egy sablont egy Azure storage-fiók üzembe helyezéséhez. A következő két oktatóanyagban hozzáad egy *App Service-csomagot* és egy *webhelyet.* Ahelyett, hogy teljesen új sablonokat hozna létre, megtudhatja, hogyan exportálhat sablonokat az Azure Portalról, és hogyan használhatja a mintasablonokat az [Azure gyorsútmutató sablonjaiból.](https://azure.microsoft.com/resources/templates/) Ezeket a sablonokat az Ön által használt testreszabásra szabhatja. Ez az oktatóanyag a sablonok exportálására és a sablon eredményének testreszabására összpontosít. Körülbelül **14 percet** vesz igénybe.
+Ebben az oktatóanyag-sorozatban létrehozott egy sablont egy Azure Storage-fiók üzembe helyezéséhez. A következő két oktatóanyagban hozzá kell adnia egy *app Service csomagot* és egy *webhelyet*. A sablonok a semmiből való létrehozása helyett megtudhatja, hogyan exportálhat sablonokat a Azure Portalból, és hogyan használhatók a sablonok az Azure-beli [Gyorsindítás sablonokból](https://azure.microsoft.com/resources/templates/). Ezeket a sablonokat saját használatra testreszabhatja. Ez az oktatóanyag a sablonok exportálására, valamint a sablon eredményének testreszabására koncentrál. A művelet elvégzése körülbelül **14 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azt javasoljuk, hogy töltse ki az [oktatóanyagot a kimenetekről,](template-tutorial-add-outputs.md)de ez nem szükséges.
+Javasoljuk, hogy fejezze be a [kimenetekkel kapcsolatos oktatóanyagot](template-tutorial-add-outputs.md), de ez nem kötelező.
 
-A Visual Studio-kódnak rendelkeznie kell a Resource Manager Tools bővítménylel, valamint az Azure PowerShell vagy az Azure CLI használatával. További információt a [sabloneszközök című témakörben talál.](template-tutorial-create-first-template.md#get-tools)
+A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Véleményezési sablon
+## <a name="review-template"></a>Sablon áttekintése
 
-Végén az előző bemutató, a sablon volt a következő JSON:
+Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
-Ez a sablon jól működik a tárfiókok üzembe helyezéséhez, de érdemes lehet további erőforrásokat hozzáadni hozzá. Egy sablont exportálhat egy meglévő erőforrásból, hogy gyorsan lekérhesse az adott erőforrás JSON-ját.
+Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet további erőforrásokat hozzáadni hozzá. Egy meglévő erőforrásból is exportálhat sablonokat, így gyorsan lekérheti a JSON-t az adott erőforráshoz.
 
 ## <a name="create-app-service-plan"></a>App Service-csomag létrehozása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
-1. A **Keresés a Piactéren**mezőbe írja be az **App Service-csomag**kifejezést, majd válassza **az App Service-csomag lehetőséget.**  Ne válassza az **App Service-csomag (klasszikus)**
+1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
 1. Kattintson a **Létrehozás** gombra.
 1. Adja meg a következőt:
 
-    - **Előfizetés**: válassza ki az Azure-előfizetést.
-    - **Erőforráscsoport**: Válassza **az Új létrehozása lehetőséget,** majd adjon meg egy nevet. Adjon meg egy másik erőforráscsoport-nevet, mint amelyet ebben az oktatóanyag-sorozatban használt.
-    - **Név**: adja meg az App service csomag nevét.
+    - **Előfizetés**: válassza ki az Azure-előfizetését.
+    - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adjon meg egy nevet. Adjon meg egy másik erőforráscsoport-nevet, mint amelyet a jelen oktatóanyag-sorozatban használt.
+    - **Név**: adja meg az App Service-csomag nevét.
     - **Operációs rendszer**: válassza a **Linux**lehetőséget.
-    - **Régió**: válasszon egy Azure-helyet. Például **az USA középső régiója**.
-    - **Tarifacsomag:** a költségek csökkentése érdekében módosítsa a termékváltozat **alapszintű B1** (a fejlesztési/tesztelési területen).
+    - **Régió**: válasszon ki egy Azure-helyet. Például az **USA középső**régiója.
+    - **Árképzési szint**: a költségek megtakarításához módosítsa a SKU-t az **alapszintű B1** -re (fejlesztés/tesztelés).
 
-    ![Erőforrás-kezelő sablon exportálási sablonportálja](./media/template-tutorial-export-template/resource-manager-template-export.png)
-1. Válassza **a Véleményezés és létrehozás lehetőséget.**
+    ![Resource Manager-sablon exportálása sablon portál](./media/template-tutorial-export-template/resource-manager-template-export.png)
+1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
 1. Kattintson a **Létrehozás** gombra. Az erőforrás létrehozása néhány percet vesz igénybe.
 
 ## <a name="export-template"></a>Sablon exportálása
 
-1. Válassza **az Ugrás az erőforráshoz**lehetőséget.
+1. Válassza **az Ugrás erőforráshoz**lehetőséget.
 
     ![Erőforrás megnyitása](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
-1. Válassza **a Sablon exportálása lehetőséget.**
+1. Válassza a **sablon exportálása**lehetőséget.
 
-    ![Erőforrás-kezelő sablon exportálási sablonja](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
+    ![Resource Manager-sablon exportálása sablon](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   Az exportálási sablon szolgáltatás egy erőforrás aktuális állapotát veszi fel, és létrehoz egy sablont annak üzembe helyezéséhez. A sablon exportálása hasznos módja lehet az erőforrás üzembe helyezéséhez szükséges JSON gyors beszerzésének.
+   A sablon exportálása funkció egy erőforrás aktuális állapotát veszi alapul, és létrehoz egy sablont az üzembe helyezéséhez. A sablon exportálása hasznos lehet a JSON gyors beszerzéséhez, amely az erőforrások üzembe helyezéséhez szükséges.
 
-1. Másolja a sablonba a **Microsoft.Web/serverfarmdefiníciót** és a paraméterdefiníciót.
+1. Másolja a **Microsoft. Web/kiszolgálófarmok** definícióját és a paraméter definícióját a sablonba.
 
-    ![Erőforrás-kezelő sablon exportált sablonja](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
+    ![Resource Manager-sablon exportálása sablon exportált sablon](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> Az exportált sablon általában részletesebb, mint szeretné a sablon létrehozásakor. Az exportált sablon termékváltozat-objektuma például öt tulajdonsággal rendelkezik. Ez a sablon működik, de csak a **name** tulajdonságot használhatja. Kezdheti az exportált sablonnal, majd tetszés szerint módosíthatja azt, hogy megfeleljen az igényeinek.
+> Az exportált sablon általában részletesebb, mint a sablon létrehozásakor. Az exportált sablon SKU objektuma például öt tulajdonsággal rendelkezik. Ez a sablon működik, de csak a **Name** tulajdonságot használhatja. Elindíthatja az exportált sablont, majd módosíthatja azt úgy, hogy illeszkedjen az igényeinek megfelelően.
 
-## <a name="revise-existing-template"></a>Meglévő sablon felülvizsgálata
+## <a name="revise-existing-template"></a>Meglévő sablon módosítása
 
-Az exportált sablon a szükséges JSON nagy részét biztosítja, de testre kell szabnia a sablonhoz. Fordítson különös figyelmet a sablon és az exportált sablon paraméterei és változói közötti különbségekre. Nyilvánvaló, hogy az exportálási folyamat nem ismeri a sablonban már definiált paramétereket és változókat.
+Az exportált sablon lehetővé teszi a legtöbb szükséges JSON-t, de testre kell szabnia azt a sablonhoz. Fordítson különös figyelmet a sablon és az exportált sablon közötti paraméterek és változók különbségére. Az exportálási folyamat természetesen nem ismeri a sablonban már definiált paramétereket és változókat.
 
-A következő példa kiemeli a sablon kiegészítéseit. Ez tartalmazza az exportált kódot, valamint néhány változtatást. Először módosítja a paraméter nevét, hogy megfeleljen az elnevezési konvenciónak. Másodszor, a helyparamétert használja az alkalmazásszolgáltatási csomag helyéhez. Harmadszor eltávolítja a **nevet** a **tulajdonságobjektumon** belül, mert ez az érték redundáns az erőforrás szintjén lévő **névtulajdonsággal.**
+Az alábbi példa kiemeli a sablon kiegészítéseit. Az exportált kódot és néhány módosítást is tartalmaz. Először is megváltoztatja a paraméter nevét, hogy az megfeleljen az elnevezési konvenciónak. Másodszor, a Location paramétert használja az App Service-csomag helyéhez. Harmadszor, eltávolítja a **nevet** a **Properties** objektumon belül, mert ez az érték redundáns a **Name** tulajdonsággal az erőforrás szintjén.
 
-Másolja a teljes fájlt, és cserélje le a sablontartalmát.
+Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json" range="1-77" highlight="28-31,50-69":::
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Használja az Azure CLI vagy az Azure PowerShell egy sablon üzembe helyezéséhez.
+Sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell-t.
 
-Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -97,7 +97,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A központi telepítési parancs futtatásához az Azure CLI [legújabb verziójával](/cli/azure/install-azure-cli) kell rendelkeznie.
+Az üzembe helyezési parancs futtatásához az Azure CLI [legújabb verziójára](/cli/azure/install-azure-cli) van szükség.
 
 ```azurecli
 az deployment group create \
@@ -110,31 +110,31 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
+> Ha az üzemelő példány nem sikerült, a hibakeresési naplók megjelenítéséhez használja a **Debug** kapcsolót a telepítési paranccsal.  A teljes hibakeresési naplók megjelenítéséhez használhatja a **részletes** kapcsolót is.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Az üzembe helyezést az Azure Portalon található erőforráscsoport feltárásával ellenőrizheti.
+A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. A bal oldali menüben válassza az **Erőforráscsoportok**lehetőséget.
-1. Válassza ki azt az erőforráscsoportot, amelybe telepítette.
-1. Az erőforráscsoport tartalmaz egy tárfiókot és egy App Service-csomag.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
+1. Az erőforráscsoport egy Storage-fiókot és egy App Service tervet tartalmaz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-Ha most leáll, érdemes lehet az erőforráscsoport törlésével felvetheti a telepített erőforrásokat.
+Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
 
-1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
+1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
-4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
+4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulta, hogyan exportálhat egy sablont az Azure Portalról, és hogyan használhatja az exportált sablont a sablon fejlesztéséhez. Az Azure gyorsindítási sablonjai valegyszerűsíthetik a sablonfejlesztést.
+Megtanulta, hogyan exportálhat sablont a Azure Portalból, és hogyan használhatja az exportált sablont a sablon fejlesztéséhez. Az Azure rövid útmutató sablonjait is használhatja a sablonok fejlesztésének egyszerűbbé tételéhez.
 
 > [!div class="nextstepaction"]
-> [Azure gyorsindítási sablonjainak használata](template-tutorial-quickstart-template.md)
+> [Az Azure Gyorsindítás sablonjainak használata](template-tutorial-quickstart-template.md)

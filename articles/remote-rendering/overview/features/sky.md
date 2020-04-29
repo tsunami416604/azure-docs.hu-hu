@@ -1,43 +1,43 @@
 ---
-title: Az ég imátvisszatükröződései
-description: Az égi tükröződések környezeti térképeinek beállítása
+title: Égbolt tükröződése
+description: Ismerteti, hogyan lehet környezeti térképeket beállítani a Sky-tükrözésekhez
 author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 7316df7bcf78e3a154510e69116c288b2b293d4c
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680608"
 ---
-# <a name="sky-reflections"></a>Az ég imátvisszatükröződései
+# <a name="sky-reflections"></a>Égbolt tükröződése
 
-Az Azure távoli renderelés, a sky textúra segítségével világítobjektumok reálisan. A kiterjesztett valóság alkalmazások, ez a textúra kell hasonlítania a valós környezetben, hogy tárgyak jelennek meg meggyőző. Ez a cikk bemutatja, hogyan módosíthatja az ég textúráját.
+Az Azure Remote rendering szolgáltatásban egy Sky-textúrát használunk az objektumok reális megvilágítására. A kibővített valóságot használó alkalmazások esetében ennek a textúrának hasonlónak kell lennie a valós környezetéhez, hogy az objektumok meggyőzőek legyenek. Ez a cikk az égbolt textúrájának módosítását ismerteti.
 
 > [!NOTE]
-> Az ég textúráját *környezettérképnek is nevezik.* Ezeket a kifejezéseket szinonimaként használjuk.
+> Az égbolt textúráját *környezeti térképnek*is nevezzük. Ezek a kifejezések szinonimaként használatosak.
 
 ## <a name="object-lighting"></a>Objektum megvilágítása
 
-Az Azure Remote Rendering fizikai *alapú renderelést* (PBR) alkalmaz a valósághű megvilágítási számításokhoz. Bár a jelenethez [fényforrásokat](lights.md) is hozzáadhat, a jó égi textúra használata a legnagyobb hatással van.
+Az Azure távoli renderelése *fizikailag alapú renderelést* (pbr) alkalmaz a reális megvilágítás-számításokhoz. Bár a megfelelő Felhőbeli textúra használatával hozzáadhat [fényforrásokat](lights.md) a jelenethez, a legnagyobb hatással van.
 
-Az alábbi képek azt mutatják, hogy a különböző felületek megvilágításának eredményei csak égi textúrával jelennek meg:
+Az alábbi képek a különböző felületek világításának eredményeit jelenítik meg, csak a Sky textúrával:
 
 | Érdesség  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Nem fém  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark (ZöldPointPark)](media/dielectric-0.25.png)  | ![GreenPointPark (ZöldPointPark)](media/dielectric-0.5.png)  | ![GreenPointPark (ZöldPointPark)](media/dielectric-0.75.png)  | ![GreenPointPark (ZöldPointPark)](media/dielectric-1.png)  |
-| Fém      | ![GreenPointPark (ZöldPointPark)](media/metallic-0.png)  | ![GreenPointPark (ZöldPointPark)](media/metallic-0.25.png)    | ![GreenPointPark (ZöldPointPark)](media/metallic-0.5.png)    | ![GreenPointPark (ZöldPointPark)](media/metallic-0.75.png)    | ![GreenPointPark (ZöldPointPark)](media/metallic-1.png)    |
+| Nem fém  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
+| Fém      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
 
-A világítási modellről további információt az [anyagokról](../../concepts/materials.md) szóló fejezetben talál.
+A világítástechnikai modellel kapcsolatos további információkért tekintse meg az [anyagok](../../concepts/materials.md) című fejezetet.
 
 > [!IMPORTANT]
-> Az Azure Remote Rendering csak a megvilágítási modellek hez használja az ég idomát. Ez nem teszi az eget, mint a háttér, mivel a kiterjesztett valóság alkalmazások már a megfelelő háttér - a valós világban.
+> Az Azure Remote rendering csak a világítási modellekhez használja az égbolt textúráját. Nem háttérként jeleníti meg az eget, mivel a kibővített valóságot használó alkalmazások már rendelkeznek megfelelő háttérrel – a valós világban.
 
-## <a name="changing-the-sky-texture"></a>Az ég textúrájának megváltoztatása
+## <a name="changing-the-sky-texture"></a>Az égbolt textúrájának módosítása
 
-A környezeti térkép módosításához mindössze annyit kell tennie, hogy `SkyReflectionSettings` [betölt egy textúrát,](../../concepts/textures.md) és megváltoztatja a munkamenetet:
+A környezeti Térkép módosításához mindössze annyit kell tennie, hogy [betölti a textúrát](../../concepts/textures.md) , és megváltoztatja a `SkyReflectionSettings`munkamenetet:
 
 ``` cs
 LoadTextureAsync _skyTextureLoad = null;
@@ -66,54 +66,54 @@ void ChangeEnvironmentMap(AzureSession session)
 }
 ```
 
-Ne feledje, hogy a `LoadTextureFromSASAsync` változat a fenti, mert a beépített textúra betöltődik. [Csatolt blobtárolókból](../../how-tos/create-an-account.md#link-storage-accounts)való betöltés `LoadTextureAsync` esetén használja a változatot.
+Vegye figyelembe, `LoadTextureFromSASAsync` hogy a rendszer a fenti változatot használja, mert a beépített textúra be van töltve. Ha [csatolt blob-tárolóból](../../how-tos/create-an-account.md#link-storage-accounts)tölt be betöltést, `LoadTextureAsync` használja a Variant elemet.
 
-## <a name="sky-texture-types"></a>Ég textúra típusai
+## <a name="sky-texture-types"></a>Égbolt típusú textúrák
 
-A *[kockatérképeket](https://en.wikipedia.org/wiki/Cube_mapping)* és a *2D-textúrákat* is használhatja környezeti térképként.
+A *[cubemaps](https://en.wikipedia.org/wiki/Cube_mapping)* és a *2D textúrákat* is használhatja környezeti térképként.
 
-Minden textúrának [támogatott textúraformátumban](../../concepts/textures.md#supported-texture-formats)kell lennie. Nem kell mipmaps-et megadnia az ég textúráihoz.
+Az összes textúrának [támogatott textúra formátumúnak](../../concepts/textures.md#supported-texture-formats)kell lennie. Nem kell megadnia a Mipmap a Sky-textúrákhoz.
 
-### <a name="cube-environment-maps"></a>Kocka környezet térképek
+### <a name="cube-environment-maps"></a>Adatkocka-környezet térképe
 
-Referenciaként, itt van egy csomagolatlan cubemap:
+Hivatkozásként itt látható egy csomagolatlan cubemap:
 
-![Csomagolatlan kockatérkép](media/Cubemap-example.png)
+![Csomagolatlan cubemap](media/Cubemap-example.png)
 
-A `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` `TextureType.CubeMap` kockatérkép-textúrák betöltéséhez használható.
+A `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` with `TextureType.CubeMap` paranccsal betöltheti a cubemap-textúrákat.
 
-### <a name="sphere-environment-maps"></a>Gömb környezeti térképei
+### <a name="sphere-environment-maps"></a>Gömb-környezeti térképek
 
-Ha 2D textúrát használ környezeti térképként, a képnek [gömb alakú koordinátatérben](https://en.wikipedia.org/wiki/Spherical_coordinate_system)kell lennie.
+A 2D-mintázatok környezeti térképként való használatakor a képnek [gömb-koordináta-térben](https://en.wikipedia.org/wiki/Spherical_coordinate_system)kell lennie.
 
-![Az ég képe gömb alakú koordinátákkal](media/spheremap-example.png)
+![Egy Sky-rendszerkép a gömb koordinátáiban](media/spheremap-example.png)
 
-Gömbkörnyezet `TextureType.Texture2D` térképek betöltéséhez használható. `AzureSession.Actions.LoadTextureAsync`
+A `AzureSession.Actions.LoadTextureAsync` with `TextureType.Texture2D` paranccsal betöltheti a gömb-környezeti térképeket.
 
 ## <a name="built-in-environment-maps"></a>Beépített környezeti térképek
 
-Az Azure remote rendering néhány beépített környezeti leképezést biztosít, amelyek mindig elérhetők. Minden beépített környezeti térkép kockatérkép.
+Az Azure Remote rendering számos beépített környezeti leképezést biztosít, amelyek mindig elérhetők. Az összes beépített környezeti Térkép a cubemaps.
 
-|Azonosító                         | Leírás                                              | Illusztráció                                                      |
+|Azonosító                         | Leírás                                              | Ábrán                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Különböző csíkos fények, fényes beltéri alapvilágítás    | ![Autókereskedés](media/autoshop.png)
-|builtin://BoilerRoom               | Erős beltéri fény beállítás, több ablakvilágítás      | ![Kazánterem](media/boiler-room.png)
-|builtin://ColorfulStudio           | Változó színű fények közepesen könnyű beltéri környezetben  | ![SzínesStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Mérsékelten világos környezeti csarnok fény                     | ![SmallHangar között](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Homályos beltéri beállítás világos-sötét kontraszttal              | ![Iparipipeandvalve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Nappali környezeti szoba fény, világos ablak terület fény     | ![Lebombo között](media/lebombo.png)
-|builtin://SataraNight              | Sötét éjszakai égbolt és föld sok környező fényekkel   | ![SataraNight között](media/satara-night.png)
-|builtin://SunnyVondelpark          | Erős napfény és árnyékkontraszt                      | ![SunnyVondelpark között](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Tiszta égi fény mérsékelt földi világítással            | ![Syferfontein között](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Mérsékelten változó nap és árnyék                         | ![TearsOfSteelBridge között](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Esti naplemente fény közeledik szürkület                    | ![VelenceNaplemente](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Világos, buja-zöld és fehér fénytónusok, halvány talaj | ![WhippleCreekRegionálisPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Nappali erős környezeti földi fénnyel                 | ![WinterRiver között](media/winter-river.png)
-|builtin://DefaultSky               | Ugyanaz, mint a TearsOfSteelBridge                               | ![DefaultSky (Alapértelmezettsky)](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | Különféle szalagos fények, világos beltéri alapszintű megvilágítás    | ![Autoshop](media/autoshop.png)
+|builtin://BoilerRoom               | Világos beltéri fény beállítása, több ablakos fények      | ![BoilerRoom](media/boiler-room.png)
+|builtin://ColorfulStudio           | Változóan színes fények Közepes fényű beltéri környezetben  | ![ColorfulStudio](media/colorful-studio.png)
+|builtin://Hangar                   | Közepesen fényes környezeti csarnok                     | ![SmallHangar](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Halvány beltéri beállítás világos sötét kontraszttal              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Nappali környezeti helyiség világos, világos ablakos fény     | ![Lebombo](media/lebombo.png)
+|builtin://SataraNight              | Sötét éjszakai égbolt és számos környező fénnyel   | ![SataraNight](media/satara-night.png)
+|builtin://SunnyVondelpark          | Napfény és árnyék kontrasztja                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Tiszta égbolt            | ![Syferfontein](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Mérsékelten változó nap és árnyalat                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Esti naplemente a félhomályban                    | ![VeniceSunset](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Világos, buja-zöld és fehér fény tónusok, halvány terep | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Nappali és világos környezeti alapfény                 | ![WinterRiver](media/winter-river.png)
+|builtin://DefaultSky               | Ugyanaz, mint a TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Lámpa](../../overview/features/lights.md)
-* [Nyersanyagok](../../concepts/materials.md)
+* [Fények](../../overview/features/lights.md)
+* [Anyagok](../../concepts/materials.md)
 * [Textúrák](../../concepts/textures.md)
 * [A TexConv parancssori eszköz](../../resources/tools/tex-conv.md)

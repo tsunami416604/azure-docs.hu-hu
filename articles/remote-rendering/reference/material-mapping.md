@@ -1,130 +1,130 @@
 ---
-title: Anyagleképezés modellformátumokhoz
-description: A modellforrás-formátumokból PBR-anyaggá történő alapértelmezett átalakítás t ismerteti.
+title: Anyagleképzés a modellformátumokhoz
+description: Leírja a modell forrás formátumának a PBR-anyagokra való alapértelmezett átalakítását
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680387"
 ---
-# <a name="material-mapping-for-model-formats"></a>Anyagleképezés modellformátumokhoz
+# <a name="material-mapping-for-model-formats"></a>Anyagleképzés a modellformátumokhoz
 
-A forráseszköz [modellként történő konvertálásakor](../how-tos/conversion/model-conversion.md)a konverter minden [hálóhoz](../concepts/meshes.md) [létrehoz anyagokat](../concepts/materials.md) . Az anyagok létrehozásának módja [felülbírálható.](../how-tos/conversion/override-materials.md) Alapértelmezés szerint azonban az átalakítás [PBR-anyagokat](../overview/features/pbr-materials.md)hoz létre . Mivel minden forrásfájl-formátum, például az FBX, saját konvenciókat használ az anyagok meghatározásához, ezeket a konvenciókat le kell képeznie az Azure távoli renderelés PBR-anyagparamétereire. 
+Ha a forrásként szolgáló eszközt [modellként alakítja át](../how-tos/conversion/model-conversion.md), a konverter [anyagokat](../concepts/materials.md) hoz létre az egyes [hálók](../concepts/meshes.md)számára. Az anyagok létrehozási módja [felülbírálható](../how-tos/conversion/override-materials.md). Alapértelmezés szerint azonban a konverzió a [pbr-anyagokat](../overview/features/pbr-materials.md)fogja létrehozni. Mivel minden forrásfájl-formátum (például a FBX) saját konvenciókat használ az anyagok definiálásához, ezeket az egyezményeket le kell képezni az Azure távoli renderelés PBR-anyagokra vonatkozó paramétereinek. 
 
-Ez a cikk a forráseszközökből származó anyagok futásidejű anyagokká konvertálásához használt pontos leképezéseket sorolja fel.
+Ez a cikk felsorolja az anyagok forrásként való átalakításához használt pontos leképezéseket a futásidejű anyagokra.
 
 ## <a name="gltf"></a>glTF
 
-Szinte mindent a glTF 2.0 specifikáció támogatja az Azure Remote Rendering, kivéve *EmissiveFactor* és *EmissiveTexture*.
+A glTF 2,0 specifikáció szinte mindent támogat az Azure távoli renderelésben, kivéve a *EmissiveFactor* és a *EmissiveTexture*.
 
-Az alábbi táblázat a leképezést mutatja be:
+A következő táblázat a leképezést mutatja be:
 
 | glTF | Azure Remote Rendering |
 |:-------------------|:--------------------------|
 |   baseColorFactor   |   albedoColor              |
-|   baseColorTexture  |   albedoTérkép                |
-|   metallicFactor    |   fémesség                |
-|   fémes textúra   |   metalnessTérkép             |
-|   érdességFaktor   |   Érdesség                |
-|   érdességTextúra  |   érdességTérkép             |
-|   okclusionFactor   |   Elzáródás                |
-|   okklúziótextúra  |   okklúziós térkép             |
+|   baseColorTexture  |   albedoMap                |
+|   metallicFactor    |   Fémmegmunkálás                |
+|   metallicTexture   |   metalnessMap             |
+|   roughnessFactor   |   érdesség                |
+|   roughnessTexture  |   roughnessMap             |
+|   occlusionFactor   |   elzáródás                |
+|   occlusionTexture  |   occlusionMap             |
 |   normalTexture     |   normalMap                |
-|   alfaCutoff       |   alphaClipThreshold       |
-|   alphaMode.OPAQUE  |   alphaClipEnabled = hamis, átlátszó = hamis |
-|   alphaMode.MASK    |   alphaClipEnabled = igaz, átlátszó = hamis  |
-|   alphaMode.BLEND   |   isTransparent = igaz     |
-|   kétoldalas       |   isDoubleSided            |
+|   alphaCutoff       |   alphaClipThreshold       |
+|   alphaMode. ÁTLÁTSZATLAN  |   alphaClipEnabled = false, isTransparent = false |
+|   alphaMode. MASK    |   alphaClipEnabled = true, isTransparent = false  |
+|   alphaMode. BLEND   |   isTransparent = True     |
+|   doubleSided       |   isDoubleSided            |
 |   emissiveFactor    |   -                        |
-|   emissiveTextúra   |   -                        |
+|   emissiveTexture   |   -                        |
 
-A glTF minden textúrájának lehet egy `texCoord` értéke, amelyet az Azure távoli renderelési anyagok is támogatnak.
+A glTF minden textúrája tartalmazhat egy `texCoord` értéket, amelyet az Azure távoli renderelési anyagai is támogatnak.
 
 ### <a name="embedded-textures"></a>Beágyazott textúrák
 
-A * \*.bin* vagy * \*.glb* fájlokba ágyazott textúrák támogatottak.
+A * \*. bin* vagy * \*. borai* fájlokba ágyazott textúrák támogatottak.
 
-### <a name="supported-gltf-extension"></a>Támogatott glTF kiterjesztés
+### <a name="supported-gltf-extension"></a>Támogatott glTF-bővítmény
 
-Az alapszolgáltatáskészleten kívül az Azure Remote Rendering a következő glTF-bővítményeket támogatja:
+Az alapszolgáltatások készletén kívül az Azure Remote rendering a következő glTF-bővítményeket támogatja:
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
 * [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
-* [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): [Színanyagoknak](../overview/features/color-materials.md)felel meg. *Az emissive* anyagok esetében ajánlott ezt a bővítményt használni.
-* [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md): Fémes érdességi textúrák helyett szórt-specular-glossiness textúrákat adhat. Az Azure távoli leképezési implementációja közvetlenül követi a bővítmény konverziós képleteit.
+* [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): a [színes anyagoknak](../overview/features/color-materials.md)felel meg. A *Emissive* -anyagok esetében ajánlott ezt a bővítményt használni.
+* [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md): a fémes-érdes textúrák helyett diffúz ragyogás-textúrákat is biztosíthat. Az Azure távoli renderelési implementációja közvetlenül a bővítmény átalakítási képleteit követi.
 
 ## <a name="fbx"></a>FBX
 
-Az FBX formátum zárt forráskódú, és az FBX anyagok általában nem kompatibilisek a PBR anyagokkal. Az FBX a felületek összetett leírását használja, sok egyedi paraméterrel és tulajdonsággal, és **nem mindegyiket használja az Azure távoli leadási folyamat.**
+A FBX formátuma zárt – a forrás-és a FBX-anyagok általában nem kompatibilisek a PBR-anyagokkal. A FBX a felületek összetett leírását használja számos egyedi paraméterrel és tulajdonsággal, és **nem mindegyiket használja az Azure távoli renderelési folyamata**.
 
 > [!IMPORTANT]
-> Az Azure Remote Rendering modell konverziós folyamat csak támogatja **az FBX 2011 és újabb**.
+> Az Azure távoli renderelési modell átalakítási folyamata csak a **2011-es és újabb FBX**támogatja.
 
-Az FBX formátum konzervatív megközelítést határoz meg az anyagokra vonatkozóan, a hivatalos FBX specifikációban csak két típus van:
+A FBX formátuma az anyagok konzervatív megközelítését határozza meg, a hivatalos FBX-specifikációnak csak két típusa van:
 
-* *Lambert* - Nem általánosan használt jó ideje már, de még mindig támogatja a konvertáló Phong a konverziós idő.
-* *Phong* - Szinte minden anyag és a legtöbb tartalom eszközök használja ezt a típust.
+* *Lambert* – a már nem gyakran használt sokáig, de továbbra is támogatott, ha az átalakítás időpontjában a (z).
+* A *-ben* szinte minden anyag és a legtöbb tartalmi eszköz ezt a típust használja.
 
-A Phong modell pontosabb, és ezt használják, mint az *egyetlen* modell FBX anyagok. Az alábbiakban az *FBX anyagaként*fogják emlegetni.
+Az FBX-modell pontosabb, és *kizárólag* az anyagokhoz használható modellként szolgál. Az alábbiakban *FBX-anyagként*lesz hivatkozva.
 
-> Maya két egyéni kiterjesztést használ az FBX-hez, és egyéni tulajdonságokat határoz meg az anyag PBR- és Stingray-típusaira vonatkozóan. Ezek az adatok nem szerepelnek az FBX-specifikációban, ezért az Azure Remote Rendering jelenleg nem támogatja.
+> A Maya két egyéni bővítményt használ a FBX-hoz egyéni tulajdonságok definiálásával a PBR és a rája típusú anyagokhoz. Ezek az adatok nem szerepelnek az FBX-specifikációban, ezért az Azure távoli renderelés jelenleg nem támogatja.
 
-Az FBX Materials a Diffúz-Specular-SpecularLevel koncepciót használja, így a diffúz textúráról az albedo térképre való átalakításához ki kell számolnunk a többi paramétert, hogy kivonjuk őket a diffúzból.
+A FBX anyagok a diffúz-SpecularLevel koncepciót használják, így a diffúz textúrából egy albedó-térképre való átalakításhoz ki kell számítani a többi paramétert a diffúz kivonáshoz.
 
-> Az FBX összes színe és textúrája sRGB-térben (más néven Gamma térben) található, de az Azure Remote Rendering lineáris térrel működik a vizualizáció során, és a keret végén mindent sRGB-térré alakít át. Az Azure Remote Renderelési eszközfolyamat átalakítja mindent lineáris térben, hogy küldje el előkészített adatokat a renderelő.
+> A FBX összes színe és textúrája az sRGB-térben (más néven gamma-terület) van, de az Azure-alapú távoli renderelés lineáris területtel működik a vizualizáció során, és a keret végén átalakítja az összes beállítást az sRGB területre. Az Azure Remote rendering Asset folyamata mindent a lineáris területre konvertál, hogy előkészített adatként küldje el a megjelenítő számára.
 
-Ez a táblázat bemutatja, hogyan vannak leképezve a textúrák az FBX-anyagokról az Azure remote rendering anyagokra. Némelyiket nem közvetlenül, hanem a képletekben részt vevő más textúrákkal kombinálva (például a diffúz textúra):
+Ez a táblázat bemutatja, hogyan képezhetők le textúrák a FBX-anyagokból az Azure távoli renderelési anyagaiba. Némelyiket nem használják közvetlenül, hanem a képletekben részt vevő más textúrákkal (például a diffúz szerkezettel) együtt:
 
 | FBX | Azure Remote Rendering |
 |:-----|:----|
-| AmbientColor (Környezetiszín) | Okklúziós térkép   |
-| Szórt színező | *használt Albedo, Metalness* |
-| Átlátszószín | *használt alfa-csatorna Albedo* |
-| TransparencyFactor (Átláthatósági tényező) | *használt alfa-csatorna Albedo* |
-| Opacitás | *használt alfa-csatorna Albedo* |
-| SpecularColor | *használt Albedo, Fémesség, Érdesség* |
-| SpecularFactor| *használt Albedo, Fémesség, Érdesség* |
-| ShininessExponent között | *használt Albedo, Fémesség, Érdesség* |
+| AmbientColor | Elzáródási Térkép   |
+| DiffuseColor | *Albedó, fémekhez használatos* |
+| TransparentColor | *a albedó alfa-csatornája esetében használatos* |
+| TransparencyFactor | *a albedó alfa-csatornája esetében használatos* |
+| Homály | *a albedó alfa-csatornája esetében használatos* |
+| SpecularColor | *Albedó, Fémesség, érdesség* |
+| SpecularFactor| *Albedó, Fémesség, érdesség* |
+| ShininessExponent | *Albedó, Fémesség, érdesség* |
 | NormalMap | NormalMap |
-| Bump | *normál térképé alakítva* |
+| Konfigurációkezelő állítható magasabbra | *NormalMap konvertálva* |
 | EmissiveColor | - |
 | EmissiveFactor | - |
-| ReflectionColor (Tükröződésszín) | - |
-| DisplacementColor (ElmozdulásSzín) | - |
+| ReflectionColor | - |
+| DisplacementColor | - |
 
-A fenti feltérképezés az anyagátalakítás legösszetettebb része, számos feltételezés miatt, amelyeket meg kell tenni. Ezeket a feltételezéseket az alábbiakban tárgyaljuk.
+A fenti leképezés az anyag-átalakítás legbonyolultabb része, mivel számos feltételezést kell végrehajtani. Ezeket a feltételezéseket alább mutatjuk be.
 
-Az alábbiakban használt néhány meghatározás:
+Néhány alább használt definíció:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Piros ≥ 0,2125 + `Specular`. Zöld ≥ 0,7154 + `Specular`. Kék ( 0,0721 )
-* `DiffuseBrightness`= 0,299 `Diffuse`* . Piros<sup>2</sup> + 0,587 * `Diffuse`. Zöld<sup>2</sup> + 0,114 * `Diffuse`. Kék<sup>2</sup>
-* `SpecularBrightness`= 0,299 `Specular`* . Piros<sup>2</sup> + 0,587 * `Specular`. Zöld<sup>2</sup> + 0,114 * `Specular`. Kék<sup>2</sup>
-* `SpecularStrength`= max(`Specular`. Piros, `Specular`. Zöld, `Specular`. Kék)
+* `SpecularIntensity` = `Specular`. Piros ∗ 0,2125 + `Specular`. Zöld ∗ 0,7154 + `Specular`. Kék ∗ 0,0721
+* `DiffuseBrightness`= 0,299 * `Diffuse`. Piros<sup>2</sup> + 0,587 * `Diffuse`. Zöld<sup>2</sup> + 0,114 * `Diffuse`. Kék<sup>2</sup>
+* `SpecularBrightness`= 0,299 * `Specular`. Piros<sup>2</sup> + 0,587 * `Specular`. Zöld<sup>2</sup> + 0,114 * `Specular`. Kék<sup>2</sup>
+* `SpecularStrength`= Max (`Specular`. Piros, `Specular`. Zöld, `Specular`. Kék
 
-A SpecularIntensity képlet [itt](https://en.wikipedia.org/wiki/Luma_(video))érhető el .
-A fényerő képletét ez a [specifikáció](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)ismerteti.
+A SpecularIntensity képlet [innen](https://en.wikipedia.org/wiki/Luma_(video))származik.
+Ez a [specifikáció](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)a fényerő képletét írja le.
 
 ### <a name="roughness"></a>Érdesség
 
-`Roughness`ebből `Specular` a `ShininessExponent` képletből számítják ki és [használjuk.](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf) A képlet a Phong specular exponens érdességének közelítése:
+`Roughness`[ennek a képletnek](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)a `Specular` kiszámítása és `ShininessExponent` használata. A képlet a (z) a következő:
 
 ```Cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
-### <a name="metalness"></a>Fémesség
+### <a name="metalness"></a>Fémmegmunkálás
 
-`Metalness`ebből `Diffuse` a `Specular` képletből számítják ki és használjuk [a glTF specifikációból.](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)
+`Metalness`ezt a `Diffuse` [képletet a glTF-specifikáció](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)alapján számítja ki és `Specular` használja.
 
-Az ötlet itt az, hogy megoldjuk az egyenletet: Ax<sup>2</sup> + Bx + C = 0.
-Alapvetően, dielektromos felületek tükrözik mintegy 4%-a fény egy specular módon, és a többi diffúz. Fémes felületek nem tükrözik a fényt diffúz módon, de minden egy specular módon.
-Ennek a képletnek van néhány hátránya, mert nincs mód arra, hogy különbséget tegyünk a fényes műanyag és a fényes fémfelületek között. Feltételezzük, hogy a felület legtöbbször fémes tulajdonságokkal rendelkezik, és ennek következtében a fényes műanyag/gumi felületek nem a várt módon néznek ki.
+Itt az a gondolat, hogy megoldjuk a következő egyenletet: AX<sup>2</sup> + BX + C = 0.
+Alapvetően a dielektromos felületek a fény 4%-át tükrözik a fényt tükröző módon, a többi pedig diffúz. A fémes felületek nem tükrözik a fényt a diffúz módon, hanem az egészet.
+Ennek a képletnek néhány hátránya van, mivel nem lehet különbséget tenni a fényes műanyagok és a fényes fémes felületek között. Tegyük fel, hogy a felületnek nagy része fémes tulajdonságokkal rendelkezik, ezért a fényes műanyag/gumi felületek nem a várt módon jelennek meg.
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -137,12 +137,12 @@ value = (-B + squareRoot) / (2 * A)
 Metalness = clamp(value, 0.0, 1.0);
 ```
 
-### <a name="albedo"></a>Albedo között
+### <a name="albedo"></a>Albedó
 
-`Albedo`a számítás `Diffuse`a `Specular`lehetőségből történik, és `Metalness`a.
+`Albedo`a, `Diffuse` `Specular`a és `Metalness`a alapján van kiszámítva.
 
-Ametalness részben leírtak szerint a dielektromos felületek a fény mintegy 4%-át tükrözik.  
-Az ötlet itt az, hogy `Dielectric` lineárisan interpolálja között és `Metal` a színek segítségével `Metalness` érték tényezőként. Ha a `0.0`fémesség , akkor attól függően, hogy specular lesz vagy egy sötét színű (ha a lénfém magas), vagy diffúz nem változik (ha nincs specular jelen). Ha a fémesség nagy érték, akkor a diffúz szín eltűnik a fényvisszaverődési szín javára.
+A Metaling című szakaszban leírtak szerint a dielektromos felületek a fény 4%-át tükrözik.  
+Az itt található ötlet a `Dielectric` és `Metal` a színek lineáris interpolációja az érték `Metalness` tényezőként való használatával. Ha a fémesség `0.0`értéke, akkor a visszaverődéstől függően sötét színű lesz (ha magas a visszaverődés), vagy a diffúzió nem változik (ha nincs fényvisszaverődés). Ha a fémesség nagy értékű, akkor a diffúz szín eltűnik a fényvisszaverődési szín mellett.
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -154,26 +154,26 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB`a fenti képlet alapján számították ki, de az alfa-csatorna további számításokat igényel. Az FBX formátum homályos az átláthatóságról, és sokféleképpen definiálhatja azt. A különböző tartalomeszközök különböző módszereket használnak. Az ötlet itt az, hogy egyesítse őket egy képlet. Egyes eszközöket azonban helytelenül átláthatóként jelenít meg, ha nem közös módon hozták létre őket.
+`AlbedoRGB`a fenti képlet alapján számítottuk ki, de az alfa-csatorna további számításokat igényel. A FBX formátuma homályos az áttetszőséggel kapcsolatban, és számos módon definiálható. A különböző tartalmi eszközök különböző módszereket használnak. A következő ötlet az, hogy egyesítse őket egyetlen képletbe. A szolgáltatás nem megfelelően átlátszóként jeleníti meg az eszközöket, azonban ha azok nem közös módon jönnek létre.
 
-Ezt a számítás `TransparentColor` `TransparencyFactor`a `Opacity`, , :
+Ez a következőből lett `TransparentColor`kiszámítva:, `TransparencyFactor`, `Opacity`:
 
-ha `Opacity` van meghatározva, akkor `AlbedoAlpha`  =  `Opacity` használja közvetlenül: else  
-ha `TransparencyColor` meg van `AlbedoAlpha` adva, akkor =`TransparentColor`1,0 - (( . Piros `TransparentColor`+ . Zöld `TransparentColor`+ . Kék) / 3.0) más  
-ha `TransparencyFactor`, `AlbedoAlpha` akkor = 1,0 -`TransparencyFactor`
+Ha `Opacity` meg van adva, használja közvetlenül a következőket `AlbedoAlpha`  =  `Opacity` : más  
+Ha `TransparencyColor` meg van adva, `AlbedoAlpha` akkor = 1,0-(`TransparentColor`(). Piros + `TransparentColor`. Zöld + `TransparentColor`. Kék)/3,0) egyéb  
+If `TransparencyFactor`, then `AlbedoAlpha` = 1,0-`TransparencyFactor`
 
-A `Albedo` végső szín négy csatornával rendelkezik, amelyek a `AlbedoRGB` . `AlbedoAlpha`
+A végső `Albedo` színnek négy csatornája van, `AlbedoRGB` amely a `AlbedoAlpha`és a együttesét kombinálja.
 
 ### <a name="summary"></a>Összefoglalás
 
-Összefoglalva itt `Albedo` lesz nagyon közel az `Diffuse`eredeti `Specular` , ha közel van a nulla. Ellenkező esetben a felület úgy néz ki, mint egy fémes felület, és elveszti a diffúz színt. A felület fog kinézni polírozott és fényvisszaverő, ha `ShininessExponent` elég nagy és `Specular` világos. Ellenkező esetben a felület fog kinézni durva, és alig tükrözik a környezetet.
+Ha itt szeretné összefoglalni, `Albedo` nagyon közel lesz az eredetihöz `Diffuse`, `Specular` ha közel van nullához. Ellenkező esetben a felület egy fémes felületnek fog kinézni, és elveszti a diffúz színt. A felület kifinomultabb és fényvisszaverő lesz, ha `ShininessExponent` elég nagy, és `Specular` világos. Ellenkező esetben a felület durva lesz, és alig tükrözi a környezetet.
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* A jelenlegi képlet nem működik jól az egyszerű színes geometria. Ha `Specular` elég világos, akkor minden geometria fényvisszaverő fémfelületekké válik, szín nélkül. A megoldás az, `Specular` hogy az eredetihez képest 30%-ra csökken, vagy az [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)konverziós beállítást használja.
-* PBR-anyagok at nemrég `Maya` `3DS Max` adtak hozzá, és a tartalom-létrehozási eszközök. Az általuk használt egyéni felhasználó által definiált fekete doboz tulajdonságait, hogy adja át az FBX. Az Azure távoli renderelés nem olvassa ezeket a további tulajdonságokat, mert azok nincsenek dokumentálva, és a formátum zárt forrásból.
+* Az aktuális képlet nem működik jól az egyszerű, színes geometria esetében. Ha `Specular` elég fényes, akkor az összes geometriában fényvisszaverő fémes felületek válnak szín nélkül. A megkerülő megoldás `Specular` az eredetitől 30%-ra, a konverziós beállítások [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)pedig használható.
+* A PBR-anyagok a közelmúltban `Maya` lettek hozzáadva a és a tartalom- `3DS Max` létrehozási eszközökhöz. Egyéni, felhasználó által definiált fekete dobozos tulajdonságokat használnak a FBX való továbbításhoz. Az Azure távoli renderelés nem olvassa el ezeket a további tulajdonságokat, mert nincsenek dokumentálva, és a formátum lezárt – forrás.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Modell átalakítása](../how-tos/conversion/model-conversion.md)
-* [Felülíró anyagok a modell átalakítása során](../how-tos/conversion/override-materials.md)
+* [Anyagok felülbírálása a modell átalakítása során](../how-tos/conversion/override-materials.md)

@@ -1,41 +1,41 @@
 ---
 title: Egyoldalas renderelés
-description: Az egyoldalas renderelési beállítások és használati esetek ismertetése
+description: Az egyoldalas megjelenítési beállítások és a használati esetek ismertetése
 author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.openlocfilehash: 34ee5d4978c6476da407cde33598a5713177078e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80682012"
 ---
 # <a name="single-sided-rendering"></a>Egyoldalas renderelés
 
-A legtöbb renderelő a teljesítmény javítása érdekében [visszalapozatási](https://en.wikipedia.org/wiki/Back-face_culling) eljárással javítja a teljesítményt. Amikor azonban a hálókat [vágott síkokkal](cut-planes.md)nyitják fel, a felhasználók gyakran a háromszögek hátsó oldalát nézik. Ha ezeket a háromszögeket leselejtezik, az eredmény nem tűnik meggyőzőnek.
+A legtöbb megjelenítő [háttérbeli selejtezést](https://en.wikipedia.org/wiki/Back-face_culling) használ a teljesítmény növelése érdekében. Ha azonban a rácsvonalak kivágása a [kivágási síkokkal](cut-planes.md)történik, a felhasználók gyakran a háromszögek hátoldalán jelennek meg. Ha ezek a háromszögek el vannak selejtezett, az eredmény nem tűnik meggyőzőnek.
 
-A probléma megbízható megelőzésének módja a háromszögek *kétoldalas renderelése.* Mivel a visszalaposítás nem használ teljesítménybeli következményekkel jár, az Azure távoli renderelés alapértelmezés szerint csak kétoldalas renderelésre vált a vágott síkkal metsző szemközésű szemképekhez.
+A probléma megbízható megelőzése a háromszögek *kétoldalas megjelenítésének módja.* Mivel a háttérbeli selejtezés nem használ teljesítménybeli következményeket, alapértelmezés szerint az Azure távoli renderelési funkció csak a kivágási síkon feldarabolt rácsvonalak kétoldalas megjelenítésére vált.
 
-Az *egyoldalas renderelési* beállítás lehetővé teszi a viselkedés testreszabását.
+Az *egyoldalas renderelési* beállítással testreszabhatja ezt a viselkedést.
 
 > [!CAUTION]
-> Az egyoldalas renderelési beállítás egy kísérleti funkció. Lehet, hogy újra eltávolítják a jövőben. Kérjük, ne módosítsa az alapértelmezett beállítást, kivéve, ha valóban megoldja az alkalmazás kritikus problémáját.
+> Az egyoldalas megjelenítési beállítás egy kísérleti funkció. Előfordulhat, hogy a későbbiekben újra el lesz távolítva. Ne módosítsa az alapértelmezett beállítást, kivéve, ha az alkalmazásban kritikus problémát észlel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az egyoldalas renderelési beállítás csak a beállítással átalakított, `opaqueMaterialDefaultSidedness` a `SingleSided`beállításával konvertált szemképekre van [hatással.](../../how-tos/conversion/configure-model-conversion.md) Alapértelmezés szerint ez a `DoubleSided`beállítás a értékre van állítva.
+Az egyoldalas renderelési beállítás csak olyan rácsvonalak esetében lép érvénybe, amelyeket a `opaqueMaterialDefaultSidedness` következő beállítással [alakítottak át](../../how-tos/conversion/configure-model-conversion.md) :. `SingleSided` Alapértelmezés szerint ez a beállítás a `DoubleSided`következőre van beállítva:.
 
 ## <a name="single-sided-rendering-setting"></a>Egyoldalas renderelési beállítás
 
-Három különböző mód létezik:
+Három különböző mód van:
 
-**Normál:** Ebben a módban a program a program mindig megjeleníti a biztonsági műveleteket, amikor konvertálják őket. Ez azt jelenti, `opaqueMaterialDefaultSidedness` hogy `SingleSided` a beállított beállítással konvertált szemközti elemek mindig akkor jelennek meg, ha a hátsó felületselejtezés engedélyezve van, még akkor is, ha metszik egymást egy kivágott síkban.
+**Normál:** Ebben a módban a rácsvonalak mindig a konvertáláskor lesznek megjelenítve. Ez azt jelenti, hogy a `opaqueMaterialDefaultSidedness` készlettel `SingleSided` konvertált rácsvonalak mindig engedélyezve lesznek a háttérbeli selejtezéssel, még akkor is, ha egy kivágási síkon metszik őket.
 
-**Dinamikusduplasziding:** Ebben az üzemmódban, amikor egy kivágott sík metszi a hálót, automatikusan kétoldalas renderelésre vált. Ez az alapértelmezett mód.
+**DynamicDoubleSiding:** Ebben a módban, amikor egy kivágási sík metszi a hálót, automatikusan a kétoldalas megjelenítésre vált. Ez az alapértelmezett mód.
 
-**AlwaysDoubleSided:** Arra kényszeríti az összes egyoldalas geometriát, hogy mindig kétoldalas legyen. Ez a mód többnyire elérhető, így könnyen összehasonlíthatja az egyoldalas és a kétoldalas renderelés teljesítményhatását.
+**AlwaysDoubleSided:** Minden egyoldalas geometriát egyszerre kétoldalas megjelenítésre kényszerít. Ez a mód többnyire fel van téve, így egyszerűen összehasonlíthatja az egyoldalas és a kétoldalas renderelés teljesítményére gyakorolt hatást.
 
 Az egyoldalas renderelési beállítások módosítása a következőképpen végezhető el:
 
@@ -54,5 +54,5 @@ void ChangeSingleSidedRendering(AzureSession session)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Vágott síkok](cut-planes.md)
-* [A modellkonvertálás konfigurálása](../../how-tos/conversion/configure-model-conversion.md)
+* [Síkok kivágása](cut-planes.md)
+* [A modell átalakításának konfigurálása](../../how-tos/conversion/configure-model-conversion.md)

@@ -1,7 +1,7 @@
 ---
-title: Az RHEL/CentOS 7 beállítása – Beszédszolgáltatás
+title: A RHEL/CentOS 7 – Speech szolgáltatás konfigurálása
 titleSuffix: Azure Cognitive Services
-description: További információ az RHEL/CentOS 7 beállításáról a beszédfelismerési SDK-k használható.
+description: Ismerje meg, hogyan konfigurálhatja a RHEL/CentOS 7-et, hogy a Speech SDK használható legyen.
 services: cognitive-services
 author: pankopon
 manager: jhakulin
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: dc09d517d95b5a3f2a88504a14f1451d1de5ffc9
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80639162"
 ---
-# <a name="configure-rhelcentos-7-for-speech-sdk"></a>Az RHEL/CentOS 7 konfigurálása beszédfelismerési SDK-hoz
+# <a name="configure-rhelcentos-7-for-speech-sdk"></a>A RHEL/CentOS 7 beállítása a Speech SDK-hoz
 
-A Red Hat Enterprise Linux (RHEL) 8 x64 és CentOS 8 x64 hivatalosan is támogatja a Speech SDK 1.10.0-s és újabb verzióját. A beszédfelismerési SDK rhel/CentOS 7 x64 rendszeren is használható, de ehhez frissíteni kell a C++ fordítót (C++ fejlesztéshez) és a megosztott C++ futásidejű könyvtárat a rendszeren.
+Az Red Hat Enterprise Linux (RHEL) 8 x64 és CentOS 8 x64-et hivatalosan a Speech SDK verziójának 1.10.0 és újabb verziói támogatják. Az RHEL/CentOS 7 x64-es verzióban is használhatja a Speech SDK-t, de ehhez frissítenie kell a C++-fordítót (C++-fejlesztés esetén) és a megosztott C++ futtatókörnyezeti könyvtárat a rendszeren.
 
-A C++ fordító verziójának ellenőrzéséhez futtassa a következőket:
+A C++ fordító verziójának vizsgálatához futtassa a következőt:
 
 ```bash
 g++ --version
 ```
 
-Ha a fordító telepítve van, a kimenetnek így kell kinéznie:
+Ha a fordító telepítve van, a kimenetnek a következőhöz hasonlóan kell kinéznie:
 
 ```bash
 g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
 ```
 
-Ez az üzenet jelzi, hogy a GCC 4-es főverziója telepítve van. Ez a verzió nem támogatja teljes mértékben a C++ 11 szabványt, amelyet a Speech SDK használ. Ha c++ programot próbál lefordítani ezzel a GCC-verzióval és a Speech SDK fejlécekkel, az fordítási hibákat eredményez.
+Ez az üzenet azt jeleníti meg, hogy a GCC fő 4-es verziója telepítve van. Ez a verzió nem támogatja teljes mértékben a C++ 11 szabványt, amelyet a Speech SDK használ. A C++ program ezen GCC-verzióval való fordítására tett kísérlet során a beszédfelismerési SDK-fejlécek fordítási hibákat eredményeznek.
 
-Fontos a megosztott C++ futásidejű függvénytár (libstdc++) verziójának ellenőrzése is. A beszédbeszéd SDK-jának nagy része natív C++ kódként van megvalósítva, ami azt jelenti, hogy a libstdc++ függvénye az alkalmazások fejlesztéséhez használt nyelvtől.
+Fontos továbbá a megosztott C++ futtatókörnyezeti függvénytár (libstdc + +) verziójának a megkeresése is. A legtöbb Speech SDK natív C++ kódtáraként lett implementálva, ami azt jelenti, hogy az alkalmazások fejlesztéséhez használt nyelvtől függetlenül a libstdc + + függvénytől függ.
 
-A libstdc++ helyének megkereséséhez futtassa a következőt:
+A libstdc + + helyének a rendszeren való megtalálásához futtassa a következőt:
 
 ```bash
 ldconfig -p | grep libstdc++
 ```
 
-A vanília RHEL/CentOS 7 (x64) kimenete:
+A Vanilla RHEL/CentOS 7 (x64) kimenete a következő:
 
 ```
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
-Ezen üzenet alapján érdemes ellenőrizni a verziódefiníciókat ezzel a paranccsal:
+Ezen üzenet alapján a következő paranccsal tekintheti meg a verziók definícióit:
 
 ```bash
 strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
 ```
 
-A kimenetnek a következőnek kell lennie:
+A kimenetnek a következőket kell tennie:
 
 ```
 ...
@@ -65,14 +65,14 @@ CXXABI_1.3.7
 ...
 ```
 
-A beszédsdkóhoz **CXXABI_1.3.9** **GLIBCXX_3.** Ezeket az információkat `ldd libMicrosoft.CognitiveServices.Speech.core.so` a Linux-csomag beszédsdk-kódtáraion futtatva találhatja meg.
+A Speech SDK használatához a **CXXABI_1.3.9** és a **GLIBCXX_3.4.21**szükséges. Ezt az információt a Linux-csomagból a Speech SDK könyvtáraiban futtatva `ldd libMicrosoft.CognitiveServices.Speech.core.so` érheti el.
 
 > [!NOTE]
-> Ajánlott, hogy a rendszerre telepített GCC-verzió legalább **5.4.0**legyen, megfelelő futásidejű kódtárakkal.
+> Azt javasoljuk, hogy a rendszerre telepített GCC-verziónak legalább **5.4.0**kell lennie, a megfelelő futásidejű könyvtárakkal.
 
 ## <a name="example"></a>Példa
 
-Ez a mintaparancs bemutatja, hogyan konfigurálható az RHEL/CentOS 7 x64 fejlesztési célokra (C++, C#, Java, Python) a Speech SDK 1.10.0 vagy újabb beszédfelismerési sdk-val:
+Ez egy minta-parancs, amely bemutatja, hogyan konfigurálhatja a RHEL/CentOS 7 x64-et fejlesztésre (C++, C#, Java, Python) a Speech SDK 1.10.0 vagy újabb verziójára:
 
 ```bash
 # Only run ONE of the following two commands

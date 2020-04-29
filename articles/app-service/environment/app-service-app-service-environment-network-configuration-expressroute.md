@@ -1,6 +1,6 @@
 ---
-title: Az Azure ExpressRoute 1-es v1-es v1-es gépei
-description: Az Azure ExpressRoute alkalmazásszolgáltatási környezetéhez szükséges hálózati konfiguráció. Ez a dokumentum csak az örökölt v1 ASE-t használó ügyfelek számára érhető el.
+title: Az Azure ExpressRoute v1 konfigurálása
+description: A PowerApps App Service Environment hálózati konfigurációja az Azure ExpressRoute. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: stefsch
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
@@ -8,139 +8,139 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804435"
 ---
-# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Az Azure ExpressRoute-alapú App Service-környezet hálózati konfigurációs adatai a PowerApps alkalmazáskörnyezetéhez
+# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Hálózati konfiguráció részletei App Service Environment PowerApps az Azure ExpressRoute
 
-Az ügyfelek csatlakoztathatnak egy [Azure ExpressRoute-áramkört][ExpressRoute] a virtuális hálózati infrastruktúrájukhoz, hogy kibővíthessék helyszíni hálózatukat az Azure-ra. Az App Service-környezet a [virtuális hálózati][virtualnetwork] infrastruktúra alhálózatában jön létre. Az App Service-környezetben futó alkalmazások biztonságos kapcsolatokat hoznak létre olyan háttér-erőforrásokkal, amelyek csak az ExpressRoute-kapcsolaton keresztül érhetők el.  
+Az ügyfelek az Azure [ExpressRoute][ExpressRoute] áramkört a virtuális hálózati infrastruktúrához kapcsolódhatnak a helyszíni hálózat Azure-ra való kiterjesztéséhez. A App Service Environment a [virtuális hálózati][virtualnetwork] infrastruktúra alhálózatában jön létre. A App Service Environmenton futó alkalmazások biztonságos kapcsolatokat létesít a ExpressRoute-kapcsolaton keresztül elérhető háttérbeli erőforrásokhoz.  
 
-Az App Service-környezet a következő esetekben hozható létre:
-- Az Azure Resource Manager virtuális hálózatai.
+App Service Environment a következő forgatókönyvekben hozhatók létre:
+- Azure Resource Manager virtuális hálózatok.
 - Klasszikus üzembe helyezési modell virtuális hálózatok.
-- Nyilvános címtartományokat vagy RFC1918 címtereket (azaz magáncímeket) használó virtuális hálózatok. 
+- Nyilvános címtartományt vagy RFC1918 (azaz magánhálózati címet) használó virtuális hálózatok. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="required-network-connectivity"></a>Szükséges hálózati kapcsolat
 
-Az App Service-környezet hálózati kapcsolati követelményekkel rendelkezik, amelyek kezdetben nem teljesülnek az ExpressRoute-hoz csatlakoztatott virtuális hálózatban.
+App Service Environment olyan hálózati kapcsolati követelményekkel rendelkezik, amelyek kezdetben nem teljesülnek a ExpressRoute csatlakozó virtuális hálózatokban.
 
-Az App Service-környezet megfelelő működéséhez a következő hálózati kapcsolati beállítások szükségesek:
+App Service Environment működéséhez a következő hálózati kapcsolati beállítások szükségesek:
 
-* Kimenő hálózati kapcsolat az Azure Storage végpontjaihoz világszerte a 80-as és a 443-as porton is. Ezek a végpontok ugyanabban a régióban találhatók, mint az App Service Environment és más Azure-régiók. Az Azure Storage-végpontok feloldása a következő DNS-tartományok alatt: table.core.windows.net, blob.core.windows.net, queue.core.windows.net és file.core.windows.net.  
+* Az Azure Storage-végpontok felé irányuló kimenő hálózati kapcsolat a 80-as és a 443-es porton egyaránt elérhető. Ezek a végpontok ugyanabban a régióban találhatók, mint a App Service Environment és más Azure-régiók is. Az Azure Storage-végpontok a következő DNS-tartományok alatt oldhatók fel: table.core.windows.net, blob.core.windows.net, queue.core.windows.net és file.core.windows.net.  
 
-* Kimenő hálózati kapcsolat az Azure Files szolgáltatáshoz a 445-ös porton.
+* Kimenő hálózati kapcsolat a 445-es porton futó Azure Files szolgáltatással.
 
-* Kimenő hálózati kapcsolat az Azure SQL Database végpontok, amelyek ugyanabban a régióban található, mint az App Service-környezet. Az SQL Database végpontjai a database.windows.net tartomány ban oldódnak fel, amely nyílt hozzáférést igényel az 1433-as, 11000-11999-es és 14000-14999-es portokhoz. Az SQL Database V12 porthasználatáról a [Portok 1433-nál ADO.NET 4.5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)című témakörben talál további információt.
+* Kimenő hálózati kapcsolat Azure SQL Database-végpontokhoz, amelyek ugyanabban a régióban találhatók, mint App Service Environment. SQL Database végpontok a database.windows.net tartomány alatt oldhatók fel, amelyhez nyitott hozzáférés szükséges a 1433, 11000-11999 és 14000-14999 portokhoz. A SQL Database V12-es port használatának részleteit lásd: [1433-nál nagyobb portok a ADO.NET 4,5-hez](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
 
-* Kimenő hálózati kapcsolat az Azure felügyeleti sík végpontjaihoz (mind az Azure klasszikus üzembe helyezési modelljéhez, mind az Azure Resource Manager végpontjaihoz). Ezekhez a végpontokhoz való kapcsolódás magában foglalja a management.core.windows.net és management.azure.com tartományok. 
+* Kimenő hálózati kapcsolat az Azure Management-Plane-végpontokkal (a klasszikus Azure üzemi modell és a Azure Resource Manager végpontok). Az ezekhez a végpontokhoz való kapcsolódás magában foglalja a management.core.windows.net és a management.azure.com tartományokat. 
 
-* Kimenő hálózati kapcsolat a ocsp.msocsp.com, mscrl.microsoft.com és crl.microsoft.com tartományokhoz. A TLS-funkciók támogatásához ezekhez a tartományokhoz való kapcsolódás szükséges.
+* Kimenő hálózati kapcsolat a ocsp.msocsp.com, a mscrl.microsoft.com és a crl.microsoft.com tartományokkal. Ezen tartományokhoz való kapcsolódás szükséges a TLS-funkciók támogatásához.
 
-* A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a jelen cikkben említett összes végpont és tartomány feloldására. Ha a végpontok nem oldhatók fel, az App Service-környezet létrehozása sikertelen lesz. Minden meglévő App Service-környezet sérültként van megjelölve.
+* A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a cikkben említett összes végpont és tartomány feloldására. Ha a végpontok nem oldhatók fel, App Service Environment a létrehozás sikertelen lesz. Minden meglévő App Service Environment nem megfelelőként van megjelölve.
 
-* Az 53-as portkimenő hozzáférése szükséges a DNS-kiszolgálókkal való kommunikációhoz.
+* A DNS-kiszolgálókkal folytatott kommunikációhoz a 53-es porton kimenő hozzáférés szükséges.
 
-* Ha egy VPN-átjáró másik végén létezik egyéni DNS-kiszolgáló, a DNS-kiszolgálónak elérhetőnek kell lennie az App Service-környezetet tartalmazó alhálózatról. 
+* Ha egy VPN-átjáró másik végén létezik egy egyéni DNS-kiszolgáló, a DNS-kiszolgálónak elérhetőnek kell lennie az App Service Environmentt tartalmazó alhálózatból. 
 
-* A kimenő hálózati elérési út nem tud utazni a belső vállalati proxykon keresztül, és nem lehet a helyszínen bújtatni. Ezek a műveletek módosítják az App Service-környezetből érkező kimenő hálózati forgalom tényleges NAT-címét. Az App Service-környezet kimenő hálózati forgalmának NAT-címének módosításai számos végpont kapcsolódási hibáját okozzák. Az App Service-környezet létrehozása sikertelen. Minden meglévő App Service-környezet sérültként van megjelölve.
+* A kimenő hálózati elérési út nem tud utazni a belső vállalati proxyn keresztül, és nem kényszeríthető a helyszíni bújtatás. Ezek a műveletek megváltoztatják az App Service Environment kimenő hálózati forgalmának tényleges NAT-címeit. A App Service Environment kimenő hálózati forgalom NAT-címeinek változásai a különböző végpontok csatlakozási hibáit okozzák. A App Service Environment létrehozása sikertelen. Minden meglévő App Service Environment nem megfelelőként van megjelölve.
 
-* Engedélyezni kell az App Service Environment szükséges portjaihoz való bejövő hálózati hozzáférést. További információt az [App Service-környezetbe irányuló bejövő forgalom szabályozása című témakörben talál.][requiredports]
+* A App Service Environment szükséges portok bejövő hálózati hozzáférését engedélyezni kell. Részletekért lásd: a [Bejövő forgalom vezérlése app Service Environmentra][requiredports].
 
-A DNS-követelmények teljesítéséhez győződjön meg arról, hogy érvényes DNS-infrastruktúra van konfigurálva és karbantartva a virtuális hálózathoz. Ha az App Service Environment létrehozása után megváltozik a DNS-konfiguráció, a fejlesztők kényszeríthetik az App Service Environment alkalmazást az új DNS-konfiguráció felvételére. A működés közbeni környezet újraindítása az Azure-környezet kezelése az Azure Portalon az **Újraindítás** ikonhasználatával indítható [el.][NewPortal] Az újraindítás hatására a környezet felveszi az új DNS-konfigurációt.
+A DNS-követelmények teljesítéséhez győződjön meg arról, hogy érvényes DNS-infrastruktúra van konfigurálva és karbantartva a virtuális hálózat számára. Ha a DNS-konfiguráció App Service Environment létrehozása után módosul, akkor a fejlesztők kényszerítheti App Service Environment az új DNS-konfiguráció felvételére. A működés közbeni környezet újraindítását a [Azure Portal][NewPortal]app Service Environment kezelése elem **Újraindítási** ikonjának használatával aktiválhatja. Az újraindítás hatására a környezet felveszi az új DNS-konfigurációt.
 
-A bejövő hálózati hozzáférési követelmények teljesítéséhez konfiguráljon egy [hálózati biztonsági csoportot (NSG)][NetworkSecurityGroups] az App Service-környezet alhálózatán. Az NSG lehetővé teszi a szükséges hozzáférést [az App Service-környezetbe irányuló bejövő forgalom szabályozásához.][requiredports]
+A bejövő hálózati hozzáférési követelmények teljesítéséhez állítson be egy [hálózati biztonsági csoportot (NSG)][NetworkSecurityGroups] a app Service Environment alhálózaton. A NSG lehetővé teszi a szükséges hozzáférés [vezérlését app Service Environment felé irányuló bejövő forgalom szabályozásához][requiredports].
 
 ## <a name="outbound-network-connectivity"></a>Kimenő hálózati kapcsolat
 
-Alapértelmezés szerint egy újonnan létrehozott ExpressRoute-kapcsolat egy alapértelmezett útvonalat hirdet, amely lehetővé teszi a kimenő internetkapcsolatot. Az App Service Environment ezt a konfigurációt használhatja más Azure-végpontokhoz való csatlakozáshoz.
+Alapértelmezés szerint az újonnan létrehozott ExpressRoute-áramkör egy alapértelmezett útvonalat hirdet meg, amely lehetővé teszi a kimenő internetkapcsolatot. App Service Environment használhatja ezt a konfigurációt más Azure-végpontokhoz való kapcsolódáshoz.
 
-A közös ügyfélkonfiguráció saját alapértelmezett útvonaluk (0.0.0.0/0) meghatározása, amely a kimenő internetes forgalmat a helyszíni forgalomra kényszeríti. Ez a forgalom mindig megtöri az App Service-környezetet. A kimenő forgalom vagy le van tiltva a helyszínen, vagy NAT'd egy felismerhetetlen címkészlet, amely már nem működik a különböző Azure-végpontok.
+Egy közös ügyfél-konfiguráció a saját alapértelmezett útvonalának (0.0.0.0/0) meghatározása, amely kikényszeríti az internetes forgalmat a helyszíni forgalom felé. Ez a forgalmi folyamat mindig megszakítja App Service Environment. A kimenő forgalom a helyszínen vagy a NAT-on keresztül nem felismerhető olyan címtartomány, amely már nem működik különböző Azure-végpontokkal.
 
-A megoldás egy (vagy több) felhasználó által definiált útvonal (UDRs) definiálása az App Service-környezetet tartalmazó alhálózaton. Az UDR az alapértelmezett útvonal helyett a betartott alhálózati útvonalakat határozza meg.
+A megoldás egy (vagy több) felhasználó által megadott útvonal (UDR) definiálása a App Service Environmentt tartalmazó alhálózaton. A UDR olyan alhálózat-specifikus útvonalakat határoznak meg, amelyeket az alapértelmezett útvonal helyett tiszteletben tartanak.
 
 Ha lehetséges, használja a következő konfigurációt:
 
-* Az ExpressRoute-konfiguráció 0.0.0.0/0-t hirdet. Alapértelmezés szerint a konfigurációs kényszerítés iarati összes kimenő forgalmat a helyszínen.
-* Az App Service-környezetet tartalmazó alhálózatra alkalmazott UDR 0.0.0.0/0-t határoz meg a következő ugrástípusú internettel. Erre a konfigurációra a cikk későbbi részében ismertetünk egy példát.
+* A ExpressRoute-konfiguráció a 0.0.0.0/0 értéket hirdeti. Alapértelmezés szerint a konfigurációs kényszeríti a helyszíni összes kimenő forgalmat.
+* Az App Service Environmentt tartalmazó alhálózatra alkalmazott UDR a következő ugrás típusú internettel rendelkező 0.0.0.0/0 értéket határozza meg. Ennek a konfigurációnak a leírását a cikk későbbi részében találja.
 
-Ennek a konfigurációnak a kombinált hatása az, hogy az alhálózati szintű UDR elsőbbséget élvez az ExpressRoute kényszerítési bújtatásával szemben. Az App Service-környezetből származó kimenő internet-hozzáférés garantált.
+Ennek a konfigurációnak az együttes hatása, hogy az alhálózat szintű UDR elsőbbséget élveznek a ExpressRoute kényszerített bújtatásával szemben. A App Service Environment kimenő internet-hozzáférése garantált.
 
 > [!IMPORTANT]
-> Az UDR-ben definiált útvonalaknak elég konkrétnak kell lenniük ahhoz, hogy elsőbbséget élvezzenek az ExpressRoute-konfiguráció által hirdetett útvonalakkal szemben. A következő szakaszban ismertetett példa a széles 0.0.0.0/0 címtartományt használja. Ezt a tartományt véletlenül felülbírálhatják az útvonalhirdetések, amelyek konkrétabb címtartományokat használnak.
+> A UDR meghatározott útvonalaknak elég egyedinek kell lenniük ahhoz, hogy elsőbbséget élvezzenek a ExpressRoute-konfiguráció által meghirdetett útvonalakkal szemben. A következő szakaszban ismertetett példa a széles 0.0.0.0/0 címtartományt használja. Ez a tartomány véletlenül felülbírálható a több megadott címtartományt használó útválasztási hirdetményekben.
 > 
-> Az App Service-környezet nem támogatott az ExpressRoute-konfigurációk, amelyek kereszthirdetik az útvonalakat a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra. A nyilvános társviszony-létesítést konfigurált ExpressRoute-konfigurációk útvonalhirdetéseket kapnak a Microsofttól a Microsoft Azure IP-címtartományok nagy készletéhez. Ha ezeket a címtartományokat kereszthirdeti a privát társviszony-létesítési útvonalon, az App Service-környezet alhálózatából érkező összes kimenő hálózati csomag az ügyfél helyszíni hálózati infrastruktúrájának létesítési kényszerbújtatása. Ez a hálózati folyamat jelenleg nem támogatott az App Service-környezetben. Az egyik megoldás az, hogy állítsa le a kereszt-hirdetési útvonalak a nyilvános társviszony-létesítési útvonala a privát társviszony-létesítési útvonal.
+> A App Service Environment nem támogatott olyan ExpressRoute-konfigurációk esetén, amelyek az útvonalakat a nyilvános társítási útvonalról a privát társítási útvonalra hirdetik át. A nyilvános ExpressRoute konfigurált konfigurációk a Microsofttól érkező útválasztási hirdetményeket fogadnak Microsoft Azure IP-címtartományok nagy készlete számára. Ha ezeket a címtartományt a magánhálózati társítási útvonalon keresztül hirdetik, a App Service Environment alhálózat összes kimenő hálózati csomagjai kényszerítve lesznek az ügyfél helyszíni hálózati infrastruktúrájának bújtatására. Ez a hálózati folyamat jelenleg nem támogatott a App Service Environment. Az egyik megoldás az, hogy leállítja a hirdetési útvonalakat a nyilvános társi útvonalról a privát társítási útvonalra.
 > 
 > 
 
-A felhasználó által definiált útvonalakkal kapcsolatos háttér-információkat a [Virtuális hálózati forgalom útválasztása][UDROverview]című témakörben talál.  
+A felhasználó által megadott útvonalakkal kapcsolatos háttér-információkat lásd: [virtuális hálózati forgalom útválasztása][UDROverview].  
 
-A felhasználó által definiált útvonalak létrehozásáról és konfigurálásáról a [Hálózati forgalom útvonaltáblával történő irányítása a PowerShell használatával című témakörben olvashat.][UDRHowTo]
+A felhasználó által definiált útvonalak létrehozásával és konfigurálásával kapcsolatos információkért lásd: [hálózati forgalom irányítása útválasztási táblázattal a PowerShell használatával][UDRHowTo].
 
 ## <a name="udr-configuration"></a>UDR-konfiguráció
 
-Ez a szakasz egy udr-konfigurációt mutat be az App Service-környezetben.
+Ez a szakasz a App Service Environment UDR-konfigurációját mutatja be.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse az Azure PowerShellt az [Azure Letöltések lapról.][AzureDownloads] Válasszon egy 2015 júniusi vagy újabb dátumot. A**Windows PowerShell** **parancssori eszközök** > csoportban válassza a Telepítés **lehetőséget** a legújabb PowerShell-parancsmagok telepítéséhez.
+* Telepítse a Azure PowerShellt az [Azure letöltések oldaláról][AzureDownloads]. Válasszon egy, a 2015-es vagy újabb verziót tartalmazó letöltést. A legújabb PowerShell-parancsmagok telepítéséhez a **parancssori eszközök** > **Windows PowerShell**területén válassza a **telepítés** lehetőséget.
 
-* Hozzon létre egy egyedi alhálózatot az App Service Environment kizárólagos használatára. Az egyedi alhálózat biztosítja, hogy az alhálózatra alkalmazott udrs csak az App Service-környezet számára nyitott kimenő forgalmat alkalmazva.
+* Hozzon létre egy egyedi alhálózatot, amely kizárólagos használatra App Service Environment. Az egyedi alhálózat biztosítja, hogy az alhálózatra alkalmazott UDR csak App Service Environment számára legyen nyitott kimenő forgalom.
 
 > [!IMPORTANT]
-> Csak az App Service-környezet telepítése a konfigurációs lépések befejezése után. A lépések biztosítják, hogy a kimenő hálózati kapcsolat elérhető legyen az App Service-környezet telepítése előtt.
+> A konfigurációs lépések elvégzése után csak App Service Environment telepítése. A lépések végrehajtásával biztosítható, hogy a kimenő hálózati kapcsolat elérhető legyen App Service Environment telepítése előtt.
 
-### <a name="step-1-create-a-route-table"></a>1. lépés: Útvonaltábla létrehozása
+### <a name="step-1-create-a-route-table"></a>1. lépés: útválasztási táblázat létrehozása
 
-Hozzon létre egy **DirectInternetRouteTable** nevű útvonaltáblát az USA nyugati régiójában, ahogy az a kódrészletben látható:
+Hozzon létre egy **DirectInternetRouteTable** nevű útválasztási táblázatot az USA nyugati régiója Azure-régióban, az alábbi kódrészletben látható módon:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>2. lépés: Útvonalak létrehozása a táblázatban
+### <a name="step-2-create-routes-in-the-table"></a>2. lépés: útvonalak létrehozása a táblában
 
-Adja hozzá az útvonalakat az útvonaltáblához a kimenő internet-hozzáférés engedélyezéséhez.  
+A kimenő internet-hozzáférés engedélyezéséhez vegyen fel útvonalakat az útválasztási táblázatba.  
 
-Konfigurálja a kimenő internet-hozzáférést. Adjon meg egy útvonalat a 0.0.0.0/0-hoz, ahogy az ebben a kódrészletben látható:
+Konfigurálja a kimenő hozzáférést az internethez. Adjon meg egy útvonalat a 0.0.0.0/0 számára az ebben a kódrészletben látható módon:
 
 `Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet`
 
-A 0.0.0.0/0 a címtartomány széles tartománya. A tartományt az ExpressRoute által hirdetett, pontosabb címtartományok bírálják felül. A 0.0.0.0/0 útvonallal rendelkező UDR-t egy expressroute-konfigurációval együtt kell használni, amely csak 0.0.0.0/0-t hirdet. 
+a 0.0.0.0/0 egy széles címtartomány. A tartományt a ExpressRoute által hirdetett címtartomány felülbírálja. A 0.0.0.0/0 útvonalú UDR egy olyan ExpressRoute-konfigurációval együtt kell használni, amely csak a 0.0.0.0/0 értéket hirdeti meg. 
 
-Alternatív megoldásként töltse le az Azure által használt CIDR-tartományok aktuális, átfogó listáját. Az összes Azure IP-címtartomány XML-fájlja a [Microsoft letöltőközpontjából][DownloadCenterAddressRanges]érhető el.  
+Alternatív megoldásként töltse le az Azure által használt CIDR-tartományok aktuális, átfogó listáját. Az összes Azure IP-címtartomány XML-fájlja elérhető a [Microsoft letöltőközpontból][DownloadCenterAddressRanges].  
 
 > [!NOTE]
 >
-> Az Azure IP-címtartományok idővel változnak. A felhasználó által definiált útvonalakon rendszeres manuális frissítésekre van szükség a szinkronizáláshoz.
+> Az Azure IP-címtartományok az idő múlásával változnak. A felhasználó által definiált útvonalaknak rendszeres manuális frissítésekre van szükségük, hogy szinkronban maradjanak.
 >
-> Egyetlen UDR alapértelmezett felső határa 100. Az Azure IP-címtartományokat "összegeznie" kell a 100 útvonalkorláton belül. Az UDR által definiált útvonalaknak specifikusabbnak kell lenniük, mint az ExpressRoute-kapcsolat által hirdetett útvonalaknak.
+> Egyetlen UDR alapértelmezett felső korlátja 100 útvonal. Az 100-Route korláton belül az Azure IP-címek tartományait össze kell illeszteni. A UDR megadott útvonalaknak pontosabbnak kell lenniük, mint az ExpressRoute-kapcsolatok által meghirdetett útvonalaknál.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>3. lépés: A tábla társítása az alhálózathoz
+### <a name="step-3-associate-the-table-to-the-subnet"></a>3. lépés: a tábla hozzárendelése az alhálózathoz
 
-Társítsa az útvonaltáblát ahhoz az alhálózathoz, amelyen telepíteni kívánja az App Service-környezetet. Ez a parancs a **DirectInternetRouteTable** táblát az App Service-környezetet tartalmazó **ASESubnet** alhálózathoz társítja.
+Rendelje hozzá az útválasztási táblázatot arra az alhálózatra, ahová App Service Environment szeretné telepíteni. Ez a parancs a **DirectInternetRouteTable** táblát társítja a **ASESubnet** alhálózathoz, amely tartalmazni fogja a app Service Environment.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>4. lépés: Az útvonal tesztelése és megerősítése
+### <a name="step-4-test-and-confirm-the-route"></a>4. lépés: az útvonal tesztelése és megerősítése
 
-Miután az útvonaltábla az alhálózathoz van kötve, tesztelje és erősítse meg az útvonalat.
+Miután az útválasztási táblázat az alhálózathoz van kötve, tesztelje és erősítse meg az útvonalat.
 
-Virtuális gép üzembe helyezése az alhálózatba, és erősítse meg ezeket a feltételeket:
+Helyezzen üzembe egy virtuális gépet az alhálózaton, és erősítse meg a következő feltételeket:
 
-* Az Azure-ba és a nem Azure-végpontok ebben a cikkben ismertetett kimenő forgalom **nem** folyik le az ExpressRoute-kapcsolaton. Ha az alhálózatról érkező kimenő forgalom a helyszíni, a kontalárendelt kényszerítésű, az App Service-környezet létrehozása mindig sikertelen lesz.
-* A jelen cikkben ismertetett végpontok DNS-keresései mind megfelelően oldódnak fel. 
+* Az ebben a cikkben ismertetett Azure-és nem Azure-végpontokra irányuló kimenő forgalom **nem** halad le a ExpressRoute áramkörön. Ha az alhálózatról érkező kimenő forgalom kényszerített bújtatást végez a helyszínen, App Service Environment a létrehozás mindig sikertelen lesz.
+* Az ebben a cikkben ismertetett végpontok DNS-keresései mindegyike megfelelően oldódik meg. 
 
-Miután elvégezte a konfigurációs lépéseket, és megerősítette az útvonalat, törölje a virtuális gépet. Az alhálózatnak "üresnek" kell lennie az App Service-környezet létrehozásakor.
+Miután elvégezte a konfigurációs lépéseket, és erősítse meg az útvonalat, törölje a virtuális gépet. App Service Environment létrehozásakor az alhálózatnak "üresnek" kell lennie.
 
-Most már készen áll az App Service Environment telepítésére!
+Most már készen áll a App Service Environment üzembe helyezésére!
 
 ## <a name="next-steps"></a>További lépések
 
-A PowerApps App Service-környezettel való ismerkedésről [az App Service-környezet – Bevezetés című][IntroToAppServiceEnvironment]témakörben található.
+A PowerApps App Service Environment használatának megkezdéséhez tekintse meg a [app Service Environment bemutatása][IntroToAppServiceEnvironment]című témakört.
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 

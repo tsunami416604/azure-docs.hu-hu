@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Egyetlen AD-erdőkörnyezet et az Azure-ba kell betáplálni | Microsoft dokumentumok'
-description: Bemutatja, hogyan lehet beállítani egy hibrid identitáskörnyezet összevonása használatával.
+title: 'Oktatóanyag: egyetlen AD-erdős környezet összevonása az Azure-ba | Microsoft Docs'
+description: Bemutatja, hogyan lehet hibrid identitás-környezetet beállítani az összevonás használatával.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,42 +15,42 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80673701"
 ---
-# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Oktatóanyag: Egyetlen AD-erdőkörnyezet etetik a felhőbe
+# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Oktatóanyag: egyetlen AD-erdős környezet összevonása a felhőbe
 
 ![Létrehozás](media/tutorial-federation/diagram.png)
 
-A következő oktatóanyag bemutatja a hibrid identitáskörnyezet létrehozását az összevonás használatával.  Ez a környezet ezután tesztelésre vagy a hibrid identitás működésének megismerésére használható.
+A következő oktatóanyag végigvezeti a hibrid identitási környezetek összevonással történő létrehozásán.  Ezt a környezetet ezután tesztelésre vagy a hibrid identitás működésének megismerésére használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag befejezéséhez az alábbiakban az alábbi előfeltételek szükségesek
-- Egy számítógép, amelyen telepítve van a [Hyper-V.](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview)  Javasoljuk, hogy ezt Windows [10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) vagy [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) rendszerű számítógépen tegye meg.
+Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek
+- [Hyper-V-](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) t futtató számítógép.  Ezt a [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) vagy [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) rendszerű számítógépeken javasolt elvégezni.
 - [Azure-előfizetés](https://azure.microsoft.com/free)
-- - [Külső hálózati adapter,](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) amely lehetővé teszi, hogy a virtuális gép kommunikáljon az internettel.
+- - Egy [külső hálózati adapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , amely lehetővé teszi, hogy a virtuális gép kommunikáljon az internettel.
 - A Windows Server 2016 másolata
-- Ellenőrizhető [egyéni tartomány](../../active-directory/fundamentals/add-custom-domain.md)
+- Egy ellenőrizhető [egyéni tartomány](../../active-directory/fundamentals/add-custom-domain.md)
 
 > [!NOTE]
-> Ez az oktatóanyag PowerShell-parancsfájlokat használ, így a leggyorsabb idő alatt hozhatja létre az oktatóanyag-környezetet.  A parancsfájlok mindegyike olyan változót használ, amely a parancsfájlok elején deklarálva van deklarálva.  Módosíthatja és meg is kell változtatnia a változókat, hogy azok tükrözzék a környezetet.
+> Ez az oktatóanyag PowerShell-parancsfájlokat használ, hogy a leggyorsabb idő alatt létre tudja hozni az oktatóanyag-környezetet.  Mindegyik parancsfájl a parancsfájlok elején deklarált változókat használ.  A változókat a környezetnek megfelelően módosítani lehet.
 >
->A használt parancsfájlok az Azure AD Connect telepítése előtt általános Active Directory-környezetet hoznak létre.  Ezek relevánsak az összes oktató.
+>A használt szkriptek a Azure AD Connect telepítése előtt létrehoznak egy általános Active Directory környezetet.  Ezek minden oktatóanyaghoz relevánsak.
 >
-> Az oktatóanyagban használt PowerShell-parancsfájlok másolatai [itt](https://github.com/billmath/tutorial-phs)érhetők el a GitHubon.
+> Az oktatóanyagban használt PowerShell-parancsfájlok példányai [itt](https://github.com/billmath/tutorial-phs)érhetők el a githubon.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-Az első dolog, amit meg kell tennünk, annak érdekében, hogy a hibrid identitás környezet ben, és fut, hogy hozzon létre egy virtuális gépet, amely a helyszíni Active Directory-kiszolgáló.  
+Az első teendő, hogy a hibrid identitás-környezet felépítésének és működtetésének megkezdéséhez hozzon létre egy virtuális gépet, amelyet a helyszíni Active Directory-kiszolgálóként fog használni.  
 
 >[!NOTE]
->Ha még soha nem futtatott parancsfájlt a PowerShell `Set-ExecutionPolicy remotesigned` ben a gazdagépen, akkor futtatnia kell, és igent kell mondania a PowerShellben, a parancsfájlok futtatása előtt.
+>Ha még nem futtatott parancsfájlt a PowerShellben a gazdagépen, a parancsfájlok futtatása előtt `Set-ExecutionPolicy remotesigned` futtatnia kell a parancsot, és igent kell mondania a PowerShellben.
 
 Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
 ```powershell
@@ -78,25 +78,25 @@ $DVDDrive = Get-VMDvdDrive -VMName $VMName
 Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive 
 ```
 
-## <a name="complete-the-operating-system-deployment"></a>Az operációs rendszer telepítésének befejezése
-Annak érdekében, hogy befejezze az épület a virtuális gép, be kell fejeznie az operációs rendszer telepítését.
+## <a name="complete-the-operating-system-deployment"></a>Az operációs rendszer központi telepítésének befejezése
+A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operációs rendszer telepítését.
 
-1. Hyper-V Manager, kattintson duplán a virtuális gépre
+1. Hyper-V kezelője, kattintson duplán a virtuális gépre
 2. Kattintson a Start gombra.
-3. A program kéri, hogy "Nyomjon meg egy billentyűt a CD-ről vagy DVD-ről történő rendszerindításhoz". Rajta, és tegye meg.
-4. A Windows Server indítási képernyőjén válassza ki a kívánt nyelvet, és kattintson a **Tovább**gombra.
-5. Kattintson **a Telepítés gombra.**
-6. Írja be a licenckulcsot, és kattintson a **Tovább**gombra.
-7. Ellenőrizze **Elfogadom a licencfeltételeket, és kattintson a **Tovább**gombra.
-8. Egyéni beállítás **kiválasztása: Csak a Windows telepítése (speciális)**
-9. Kattintson a **Tovább gombra**
-10. A telepítés befejezése után indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket annak érdekében, hogy a virtuális gép a legfrissebb legyen.  Telepítse a legújabb frissítéseket.
+3. A rendszer felszólítja, hogy a CD-ről vagy DVD-ről történő rendszerindításhoz nyomja le bármelyik billentyűt. Ugorjon erre.
+4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
+5. Kattintson a **Telepítés most**lehetőségre.
+6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
+7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
+9. Kattintson a **tovább** gombra
+10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.
 
-## <a name="install-active-directory-pre-requisites"></a>Az Active Directory előfeltételeinek telepítése
-Most, hogy van egy virtuális gép, meg kell tennünk néhány dolgot az Active Directory telepítése előtt.  Ez azt illeti, át kell neveznünk a virtuális gépet, statikus IP-címet és DNS-adatokat kell beállítani, és telepíteni kell a Távoli kiszolgáló felügyeleti eszközeit.   Tegye a következőket:
+## <a name="install-active-directory-pre-requisites"></a>Active Directory Előfeltételek telepítése
+Most, hogy van egy virtuális gép, a Active Directory telepítése előtt végre kell hajtani néhány dolgot.  Éppen ezért át kell neveznie a virtuális gépet, meg kell adnia egy statikus IP-címet és a DNS-adatokat, és telepítenie kell a Távoli kiszolgálófelügyelet eszközeit.   Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
-2. Fuss, `Set-ExecutionPolicy remotesigned` és igent mondj minden [A]  Nyomja le az Enter billentyűt.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
+2. Futtassa `Set-ExecutionPolicy remotesigned` az Igen lehetőséget az összes [A] értékre.  Nyomja le az Enter billentyűt.
 3. Futtassa az alábbi parancsprogramot.
 
 ```powershell
@@ -129,10 +129,10 @@ Get-WindowsFeature | Where installed >>$featureLogPath
 Restart-Computer
 ```
 
-## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD környezet létrehozása
-Most, hogy létrehoztuk a virtuális gép, és átnevezték, és egy statikus IP-címet, akkor megy előre, és telepítse és konfigurálja az Active Directory tartományi szolgáltatások.  Tegye a következőket:
+## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD-környezet létrehozása
+Most, hogy létrehozta a virtuális gépet, és átnevezték, és statikus IP-címmel rendelkezik, a Active Directory tartományi szolgáltatások telepítését és konfigurálását is elvégezheti.  Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
 ```powershell 
@@ -160,9 +160,9 @@ Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -Doma
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD-felhasználó létrehozása
-Most, hogy rendelkezünk az Active Directory környezet, szükségünk van egy tesztfiók.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
+Most, hogy rendelkezünk a Active Directory-környezettel, tesztelési fiókra van szükségünk.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
 ```powershell 
@@ -183,10 +183,10 @@ New-ADUser -Name $Name -GivenName $Givenname -Surname $Surname -DisplayName $Dis
 Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Enabled $true
 ```
 
-## <a name="create-a-certificate-for-ad-fs"></a>Tanúsítvány létrehozása az AD FS-hez
-Most létrehozunk egy TLS/SSL tanúsítványt, amelyet az AD FS fog használni.  Ez lesz egy önaláírt tanúsítványt, és csak tesztelési célokra.  A Microsoft nem javasolja az önaláírt tanúsítványok használatát éles környezetben. Tegye a következőket:
+## <a name="create-a-certificate-for-ad-fs"></a>Tanúsítvány létrehozása AD FShoz
+Most létrehozunk egy TLS/SSL-tanúsítványt, amelyet a AD FS fog használni.  Ez egy önaláírt tanúsítvány lesz, és csak tesztelési célokra használható.  A Microsoft nem javasolja, hogy éles környezetben ne használjon önaláírt tanúsítványt. Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
 ```powershell 
@@ -199,93 +199,93 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 ```
 
 ## <a name="create-an-azure-ad-tenant"></a>Azure AD-bérlő létrehozása
-Most létre kell hoznunk egy Azure AD-bérlőt, hogy szinkronizálhassuk a felhasználókat a felhővel.  Új Azure AD-bérlő létrehozásához tegye a következőket.
+Most létre kell hozni egy Azure AD-bérlőt, hogy szinkronizálni lehessen a felhasználókat a felhőben.  Új Azure AD-bérlő létrehozásához tegye a következőket.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
 4. Kattintson a **Létrehozás** gombra.</br>
 ![Létrehozás](media/tutorial-password-hash-sync/create1.png)</br>
-5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza **a Létrehozás lehetőséget.** Ezzel létrejön a címtár.
-6. Miután ez befejeződött, kattintson az **itt** linkre, a könyvtár kezeléséhez.
+5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás**lehetőséget. Ezzel létrejön a címtár.
+6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Globális rendszergazda létrehozása az Azure AD-ben
-Most, hogy rendelkezünk egy Azure AD-bérlővel, létrehozunk egy globális rendszergazdai fiókot.  Ez a fiók az Azure AD Connect-fiók létrehozásához használható az Azure AD Connect telepítése során.  Az Azure AD-összekötő fiók az Azure AD-be történő adatok írásához használható.   A globális rendszergazdai fiók létrehozásához tegye a következőket.
+Most, hogy rendelkezünk egy Azure AD-Bérlővel, globális rendszergazdai fiókot hozunk létre.  Ezzel a fiókkal lehet létrehozni az Azure AD Connector-fiókot Azure AD Connect telepítés közben.  Az Azure AD Connector-fiók az információk Azure AD-be való írásához használatos.   A globális rendszergazdai fiók létrehozásához tegye a következőket.
 
 1.  A **Kezelés** alatt válassza a **Felhasználókat**.</br>
 ![Létrehozás](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Válassza a **Minden felhasználó**, majd az **+ Új felhasználó** lehetőséget.
-3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **Címtár szerepkört** globális **rendszergazdára** is módosítani szeretné. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>
+3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **címtárbeli szerepkört** a **globális rendszergazdára** is módosítani kívánja. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>
 ![Létrehozás](media/tutorial-password-hash-sync/gadmin2.png)</br>
-4. Miután ez befejeződött, nyisson meg egy új webböngészőt, és jelentkezzen be myapps.microsoft.com az új globális rendszergazdai fiók és az ideiglenes jelszó használatával.
-5. Módosítsa a globális rendszergazda jelszavát olyanra, amire emlékezni fog.
+4. Ha ez befejeződik, nyisson meg egy új webböngészőt, és jelentkezzen be a myapps.microsoft.com-be az új globális rendszergazdai fiókkal és az ideiglenes jelszóval.
+5. Módosítsa a globális rendszergazda jelszavát úgy, hogy megjegyezzen.
 
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>Az egyéni tartománynév hozzáadása a címtárhoz
-Most, hogy van egy bérlőnk és egy globális rendszergazdánk, hozzá kell adnunk az egyéni tartományunkat, hogy az Azure ellenőrizhesse azt.  Tegye a következőket:
+Most, hogy van egy bérlőnk és egy globális rendszergazda, hozzá kell adnia az egyéni tartományt, hogy az Azure ellenőrizni tudja.  Tegye a következőket:
 
-1. Vissza az [Azure Portalon](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) győződjön meg róla, hogy zárja be a **Minden felhasználó** panel.
+1. Lépjen vissza a [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a **minden felhasználó** panel bezárásához.
 2. A bal oldalon válassza az **Egyéni tartománynevek** elemet.
-3. Válassza **az Egyéni tartomány hozzáadása**lehetőséget.</br>
+3. Válassza az **egyéni tartomány hozzáadása**lehetőséget.</br>
 ![Összevonás](media/tutorial-federation/custom1.png)</br>
-4. Az **Egyéni tartománynevek mezőbe**írja be az egyéni tartomány nevét, majd kattintson a Tartomány **hozzáadása**gombra.
-5. Az egyéni tartománynév képernyőn TXT vagy MX információkat kap.  Ezt az információt hozzá kell adni a tartománya alá tartozó tartományregisztráló DNS-adataihoz.  Tehát meg kell menni a tartományregisztráló, adja meg a TXT vagy MX információkat a DNS-beállításokat a tartomány.  Ez lehetővé teszi az Azure számára a tartomány igazolását.  Ez akár 24 órát is igénybe vehet, amíg az Azure ellenőrzi azt.  További információt az [Egyéni tartomány hozzáadása dokumentációban](../../active-directory/fundamentals/add-custom-domain.md) talál.</br>
+4. Az **Egyéni tartománynevek**mezőben adja meg az egyéni tartomány nevét a mezőbe, majd kattintson a **tartomány hozzáadása**lehetőségre.
+5. Az Egyéni tartománynév képernyőn TXT-vagy MX-információkkal fog ellátni.  Ezeket az adatokat hozzá kell adni a tartományhoz tartozó tartományregisztráló DNS-adataihoz.  Ezért a tartományregisztráló a tartomány DNS-beállításaiban adja meg a TXT vagy az MX információt.  Ez lehetővé teszi, hogy az Azure ellenőrizze a tartományt.  Ez akár 24 órát is igénybe vehet az Azure számára az ellenőrzéshez.  További információt az [egyéni tartomány hozzáadása](../../active-directory/fundamentals/add-custom-domain.md) dokumentációban talál.</br>
 ![Összevonás](media/tutorial-federation/custom2.png)</br>
-6. Az ellenőrzés ellenőrzéséhez kattintson az Ellenőrzés gombra.</br>
+6. A hitelesítés ellenőrzéséhez kattintson az ellenőrzés gombra.</br>
 ![Összevonás](media/tutorial-federation/custom3.png)</br>
 
-## <a name="download-and-install-azure-ad-connect"></a>Az Azure AD Connect letöltése és telepítése
-Most itt az ideje, hogy töltse le és telepítse az Azure AD Connect.  Miután telepítettük, végigfutunk az expressz telepítésen.  Tegye a következőket:
+## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect letöltése és telepítése
+Most itt az ideje, hogy letöltse és telepítse Azure AD Connect.  A telepítés után az expressz telepítéssel fogunk futni.  Tegye a következőket:
 
-1. [Az Azure AD Connect letöltése](https://www.microsoft.com/download/details.aspx?id=47594)
+1. [Azure ad Connect](https://www.microsoft.com/download/details.aspx?id=47594) letöltése
 2. Keresse meg az **AzureADConnect.msi** fájlt, és kattintson rá duplán.
 3. Az üdvözlőképernyőn jelölje be a licencfeltételek elfogadását jelző mezőt, és kattintson a **Continue** (Folytatás) gombra.  
-4. A Gyorsbeállítások képernyőn kattintson a **Testreszabás gombra.**  
-5. A Szükséges összetevők telepítése képernyőn. Kattintson a **Telepítés gombra.**  
-6. A Felhasználói bejelentkezés képernyőn válassza az **Összevonás a AD FS-sel** lehetőséget, majd kattintson a **Tovább**gombra.
+4. Az expressz beállítások képernyőn kattintson a **Testreszabás**elemre.  
+5. A szükséges összetevők telepítése képernyőn. Kattintson a **telepítés**gombra.  
+6. A felhasználó bejelentkezési képernyőjén válassza az **összevonás AD FS** lehetőséget, majd kattintson a **tovább**gombra.
 ![Összevonás](media/tutorial-federation/fed1.png)
 
-1. A Csatlakozás az Azure AD-hez képernyőn adja meg a fent létrehozott globális rendszergazda felhasználónevét és jelszavát, majd kattintson a **Tovább**gombra.
-2. A Könyvtárak csatlakoztatása képernyőn kattintson a **Könyvtár hozzáadása**gombra.  Ezután válassza **az Új AD-fiók létrehozása lehetőséget,** írja be a contoso\Rendszergazda felhasználónevet és jelszót, majd kattintson az **OK**gombra.
+1. A Kapcsolódás az Azure AD-hoz képernyőn adja meg a fent létrehozott globális rendszergazda felhasználónevét és jelszavát, majd kattintson a **tovább**gombra.
+2. A címtárak összekapcsolása képernyőn kattintson a **könyvtár hozzáadása**lehetőségre.  Ezután válassza az **új ad-fiók létrehozása** lehetőséget, és adja meg a Contoso\Rendszergazda felhasználónevét és jelszavát, majd kattintson **az OK**gombra.
 3. Kattintson a **Tovább** gombra.
-4. Az Azure AD bejelentkezési konfigurációs képernyőn válassza a **Folytatás lehetőséget anélkül, hogy az összes UPN-utótagot ellenőrzött tartományoknak megfelelőnek megfeleltetne,** és kattintson a Tovább gombra. **Next.**
-5. A Tartomány- és szervezetiegység-szűrés képernyőn kattintson a **Tovább gombra.**
-6. A Felhasználók egyedi azonosítása képernyőn kattintson a **Tovább**gombra.
-7. A Felhasználók és eszközök szűrése képernyőn kattintson a **Tovább**gombra.
-8. A Választható szolgáltatások képernyőn kattintson a **Tovább**gombra.
-9. A Tartományi rendszergazda hitelesítő adatai lapon adja meg a contoso\Rendszergazda felhasználónevet és jelszót, majd kattintson a **Tovább gombra.**
-10. Az AD FS farm képernyőjén győződjön meg arról, hogy **az Új AD FS-farm konfigurálása** jelölőnégyzet be van jelölve.
-11. Válassza **az Összevonási kiszolgálókon telepített tanúsítvány használata** lehetőséget, és kattintson a **Tallózás gombra.**
-12. Írja be a DC1 értéket a keresőmezőbe, és jelölje ki, ha megtalálta.  Kattintson az **OK** gombra.
-13. A **Tanúsítványfájl** legördülő menüben válassza **adfs.contoso.com** a fent létrehozott tanúsítványt.  Kattintson a **Tovább** gombra.
+4. Az Azure AD bejelentkezési konfiguráció képernyőjén válassza a Folytatás lehetőséget **anélkül, hogy az összes UPN-utótagot egyeztetni kívánja a tartományokhoz** , és kattintson a **Tovább gombra.**
+5. A tartomány és szervezeti egység szűrése képernyőn kattintson a **tovább**gombra.
+6. A felhasználók egyedi azonosítása képernyőn kattintson a **tovább**gombra.
+7. A felhasználók és eszközök szűrése képernyőn kattintson a **tovább**gombra.
+8. A választható szolgáltatások képernyőn kattintson a **tovább**gombra.
+9. A tartományi rendszergazda hitelesítő adatai lapon adja meg a Contoso\rendszergazda felhasználónevét és jelszavát, majd kattintson a **Tovább gombra.**
+10. A AD FS Farm képernyőjén ellenőrizze, hogy be van-e jelölve az **új AD FS Farm konfigurálása** elem.
+11. Jelölje be **az összevonási kiszolgálókon telepített tanúsítvány használata** jelölőnégyzetet, majd kattintson a **Tallózás**gombra.
+12. A keresőmezőbe írja be a DC1 kifejezést, és válassza ki azt, amikor az megtalálható.  Kattintson az **OK** gombra.
+13. A **tanúsítványfájl** legördülő listából válassza ki a **ADFS.contoso.com** a fent létrehozott tanúsítványt.  Kattintson a **Tovább** gombra.
 ![Összevonás](media/tutorial-federation/fed2.png)
 
-1. Az AD FS-kiszolgáló képernyőjén kattintson a **Tallózás gombra,** és írja be a DC1 értéket a keresőmezőbe, és jelölje ki, ha megtalálta.  Kattintson az **OK** gombra.  Kattintson a **Tovább** gombra.
+1. A AD FS-kiszolgáló képernyőn kattintson a **Tallózás** gombra, és írja be a DC1 kifejezést a keresőmezőbe, és válassza ki, ha megtalálható.  Kattintson az **OK** gombra.  Kattintson a **Tovább** gombra.
 ![Összevonás](media/tutorial-federation/fed3.png)
 
-1. A webalkalmazás proxykiszolgálói képernyőn kattintson a **Tovább**gombra.
-2. Az AD FS szolgáltatásfiók képernyőjén adja meg a contoso\Rendszergazda felhasználónevet és jelszót, majd kattintson a **Tovább gombra.**
-3. Az Azure AD-tartomány képernyőn válassza ki az ellenőrzött egyéni tartományt a legördülő menüből, és kattintson a **Tovább**gombra.
+1. A webalkalmazás-proxy kiszolgálók képernyőn kattintson a **tovább**gombra.
+2. A AD FS szolgáltatásfiók képernyőn adja meg a Contoso\rendszergazda felhasználónevét és jelszavát, majd kattintson a **Tovább gombra.**
+3. Az Azure AD-tartomány képernyőn válassza ki az ellenőrzött egyéni tartományt a legördülő menüből, és kattintson a **tovább**gombra.
 4. A Ready to configure (Konfigurálásra kész) oldalon kattintson az **Install** (Telepítés) lehetőségre.
 5. A telepítés befejezése után kattintson az **Exit** (Kilépés) gombra.
-6. A telepítés befejezése után jelentkezzen ki, majd jelentkezzen be újra, mielőtt használná a Szinkronizálási szolgáltatáskezelőt vagy a Szinkronizálási szabályszerkesztőt.
+6. A telepítés befejezése után jelentkezzen ki, majd jelentkezzen be újra, mielőtt a Synchronization Service Manager vagy a szinkronizációs szabály szerkesztőjét használja.
 
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>A felhasználók létrehozásának és szinkronizálásának ellenőrzése
-Most ellenőrizni fogjuk, hogy a helyszíni címtárban lévő felhasználók szinkronizálva lettek-e, és most már léteznek az Azure AD-bérlőben.  Ne feledje, hogy ez eltarthat néhány óráig.  A felhasználók szinkronizálásának ellenőrzéséhez tegye a következőket.
+Most ellenőrizzük, hogy a helyszíni címtárban található felhasználók szinkronizálva lettek-e, és már léteznek-e az Azure AD-bérlőben.  Vegye figyelembe, hogy ez eltarthat néhány óráig.  A felhasználók szinkronizálásának ellenőrzéséhez tegye a következőket.
 
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
-2. A bal oldalon válassza az **Azure Active Directory lehetőséget**
+2. A bal oldalon válassza a **Azure Active Directory**
 3. A **Kezelés** alatt válassza a **Felhasználókat**.
-4. Ellenőrizze, hogy látja-e az ![új felhasználókat a bérlői szinkronizálásban](media/tutorial-password-hash-sync/synch1.png)
+4. Ellenőrizze, hogy megjelenik-e az új felhasználók a ![bérlői szinkronizálásban](media/tutorial-password-hash-sync/synch1.png)
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés tesztelése az egyik felhasználónkkal
+## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
-1. Tallózás a[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Bejelentkezés az új bérlőben létrehozott felhasználói fiókkal.  A következő formátumban kell bejelentkeznie: (user@domain.onmicrosoft.com). Használja ugyanazt a jelszót, amelyet a felhasználó a helyszíni bejelentkezéshez használ.
+1. Tallózással keresse meg a[https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: (user@domain.onmicrosoft.com). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.
    ![Ellenőrzés](media/tutorial-password-hash-sync/verify1.png)
 
-Most már sikeresen beállított egy hibrid identitáskörnyezetet, amely segítségével tesztelheti és megismerkedhet az Azure ajánlatával.
+Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
 ## <a name="next-steps"></a>Következő lépések
 

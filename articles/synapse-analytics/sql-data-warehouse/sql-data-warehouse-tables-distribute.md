@@ -1,6 +1,6 @@
 ---
-title: Elosztott táblák tervezési útmutatója
-description: Javaslatok kivonatelosztott és ciklikus multiplexelésű elosztott táblák synapse SQL-készletben tervezése.
+title: Az elosztott táblák tervezési útmutatója
+description: Javaslatok kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez a szinapszis SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,67 +12,67 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742870"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Útmutató az elosztott táblák synapse SQL-készletben történő tervezéséhez
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Útmutató elosztott táblák kialakításához a szinapszis SQL-készletben
 
-Javaslatok kivonatelosztott és ciklikus multiplexelésű elosztott táblák synapse SQL-készletek tervezése.
+Javaslatok kivonatoláshoz elosztott és ciklikusan elosztott táblázatok kialakításához a szinapszis SQL-készletekben.
 
-Ez a cikk feltételezi, hogy ismeri az adatok terjesztését és az adatok mozgatási fogalmait a Synapse SQL-készletben.További információ: [Azure Synapse Analytics massively párhuzamos feldolgozási (MPP) architektúra.](massively-parallel-processing-mpp-architecture.md)
+Ez a cikk feltételezi, hogy ismeri a szinapszis SQL-készlet adateloszlási és adatáthelyezési fogalmait.További információ: az [Azure szinapszis Analytics nagymértékben párhuzamos feldolgozási (MPP) architektúrája](massively-parallel-processing-mpp-architecture.md).
 
 ## <a name="what-is-a-distributed-table"></a>Mi az elosztott tábla?
 
-Az elosztott tábla egyetlen táblaként jelenik meg, de a sorok ténylegesen 60 felosztásközött vannak tárolva. A sorok terjesztése kivonatoló vagy ciklikus multiplexelési algoritmussal történik.  
+Egy elosztott tábla egyetlen táblázatként jelenik meg, de a sorok ténylegesen 60-eloszlásban vannak tárolva. A sorok kivonattal vagy ciklikus multiplexelés algoritmussal vannak elosztva.  
 
-**A kivonatoló elosztott táblák** javítják a lekérdezési teljesítményt nagy ténytáblákon, és a cikk középpontjában állnak. **A ciklikus multiplexelési táblázatok** hasznosak a betöltési sebesség növeléséhez. Ezek a tervezési lehetőségek jelentős hatással vannak a lekérdezési és betöltési teljesítmény javítására.
+**Kivonat – az elosztott táblák** javítják a lekérdezési teljesítményt a nagyméretű táblákon, és a cikk középpontjában állnak. A **ciklikusan** megjelenő táblázatok a betöltési sebesség javításához hasznosak. Ezek a tervezési döntések jelentős hatással vannak a lekérdezések és a teljesítmény-betöltés javítására.
 
-Egy másik táblatárolási lehetőség egy kis tábla replikálása az összes számítási csomóponton. További információt a [tervútmutató a replikált táblákhoz című témakörben talál.](design-guidance-for-replicated-tables.md) A három lehetőség gyors kiválasztásához olvassa el az Elosztott táblázatok a [táblák áttekintése című témakört.](sql-data-warehouse-tables-overview.md)
+Egy másik tábla tárolási lehetőség egy kis tábla replikálása az összes számítási csomóponton. További információ: [tervezési útmutató a replikált táblákhoz](design-guidance-for-replicated-tables.md). A három lehetőség közül a gyors választáshoz tekintse meg az elosztott táblák című részt a [táblázatok áttekintésében](sql-data-warehouse-tables-overview.md).
 
-A táblatervezés részeként a lehető legnagyobb mértékben ismerje meg az adatokat és az adatok lekérdezésének módját.Vegyük például a következő kérdéseket:
+A tábla kialakításának részeként a lehető legnagyobb mértékben megismerheti az adatait és az adatlekérdezés módját.Vegyük például a következő kérdéseket:
 
-- Mekkora az asztal?
-- Milyen gyakran frissül a táblázat?
-- Vannak tény- és dimenziótáblák a Szinapszis SQL-készletében?
+- Mekkora a táblázat?
+- Milyen gyakran frissül a tábla?
+- Van egy szinapszis SQL-készletben a tény-és dimenziós táblák?
 
-### <a name="hash-distributed"></a>Elosztott kivonat
+### <a name="hash-distributed"></a>Kivonat kiosztva
 
-A kivonatoló elosztott tábla a számítási csomópontok között egy determinisztikus kivonatoló függvény használatával osztja el a táblasorokat, hogy minden sort egy [disztribúcióhoz](massively-parallel-processing-mpp-architecture.md#distributions)rendeljen.
+A kivonatok – az elosztott tábla a számítási csomópontok között egy determinisztikus kivonatoló függvény használatával osztja el a táblázat sorait egy [eloszláshoz](massively-parallel-processing-mpp-architecture.md#distributions).
 
 ![Elosztott tábla](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Elosztott tábla")  
 
-Mivel az azonos értékek mindig azonos eloszlással rendelkeznek, az adattárház beépített ismeretekkel rendelkezik a sorhelyekről. A Synapse SQL-készletben ezt a tudást a lekérdezések során az adatok mozgásának minimalizálására használják, ami javítja a lekérdezési teljesítményt.
+Mivel az azonos értékek mindig azonos eloszlásba kerülnek, az adattárház beépített ismeretekkel rendelkezik a sorok helyeiről. A szinapszis SQL-készletben ez az információ az adatáthelyezés minimalizálására szolgál a lekérdezések során, ami javítja a lekérdezési teljesítményt.
 
-A kivonatoló elosztott táblák jól működnek a csillagséma nagy ténytábláihoz. Ezek nagyon nagy számú sorok, és még mindig nagy teljesítményt. Vannak, természetesen, néhány tervezési szempontok, amelyek segítenek abban, hogy a teljesítmény az elosztott rendszer célja, hogy. A cikkben ismertetett egyik ilyen szempont a helyes terjesztési oszlop kiválasztása.
+A kivonattal terjesztett táblázatok jól működnek a csillag sémában található nagyméretű táblákhoz. Nagyon nagy mennyiségű sorból állhatnak, és továbbra is nagy teljesítmény érhető el. Természetesen vannak olyan kialakítási megfontolások, amelyek segítenek az elosztott rendszer által biztosított teljesítmény megszerzésében. A megfelelő terjesztési oszlop kiválasztása az ebben a cikkben ismertetett szempontok egyike.
 
-Érdemes lehet kivonatoló táblát használni, ha:
+Használjon kivonatoló eloszlású táblázatot, ha:
 
-- A lemezen lévő asztal mérete meghaladja a 2 GB-ot.
-- A táblázat gyakori beszúrási, frissítési és törlési műveleteket is tartalmazza.
+- A lemez mérete nagyobb, mint 2 GB.
+- A tábla gyakori INSERT, Update és DELETE műveletekkel rendelkezik.
 
-### <a name="round-robin-distributed"></a>Ciklikus multiplexelt
+### <a name="round-robin-distributed"></a>Ciklikus multiplexelés – elosztott
 
-A ciklikus multiplexelésű elosztott tábla egyenletesen osztja el a táblasorokat az összes disztribúció között. A sorok felosztáshoz rendelése véletlenszerű. A kivonatoló elosztott táblákkal ellentétben az azonos értékű sorok nem garantáltan ugyanahhoz az eloszláshoz lesznek rendelve.
+A Round-Robin elosztott tábla egyenletesen osztja el a táblázat sorait az összes eloszlásban. A sorok eloszláshoz való hozzárendelése véletlenszerű. A kivonatok elosztott tábláitól eltérően az egyenlő értékekkel rendelkező sorok nem garantáltan ugyanahhoz a terjesztéshez rendelhetők hozzá.
 
-Ennek eredményeképpen a rendszernek néha meg kell hívnia egy adatmozgatási műveletet, hogy jobban rendszerezhesse az adatokat, mielőtt fel oldhatja a lekérdezést.  Ez az extra lépés lelassíthatja a lekérdezéseket. Például egy ciklikus multiplexelési tábla csatlakozása általában a sorok átkeverését igényli, ami teljesítménytalálat.
+Ennek eredményeképpen előfordulhat, hogy a rendszernek időnként meg kell hívnia egy adatáthelyezési műveletet, hogy jobban meg tudja szervezni az adatait, mielőtt feloldja a lekérdezést.  Ez az extra lépés lelassíthatja a lekérdezéseket. Egy ciklikus multiplexelés-táblázathoz való csatlakozáshoz például általában a sorok újrakeverése szükséges, ami a teljesítmény.
 
-Fontolja meg a ciklikus multiplexelés eloszlása a táblához a következő esetekben:
+A következő helyzetekben érdemes lehet a táblázat ciklikus multiplexelés használatával történő terjesztését használni:
 
-- Amikor az első lépések, mint egy egyszerű kiindulási pont, mivel ez az alapértelmezett
-- Ha nincs nyilvánvaló összekötő kulcs
-- Ha nincs jó jelölt oszlop a táblázat terjesztésére szolgáló kivonathoz
+- Az első lépések egyszerű kiindulási pontként, mivel ez az alapértelmezett
+- Ha nincs nyilvánvaló csatlakozási kulcs
+- Ha nincs jó jelölt oszlop a táblát elosztó kivonathoz
 - Ha a tábla nem oszt meg közös illesztési kulcsot más táblákkal
-- Ha az illesztés kevésbé jelentős, mint a lekérdezésben lévő többi illesztés
-- Ha a tábla ideiglenes átmeneti tábla
+- Ha az illesztés kevésbé jelentős, mint a lekérdezés többi illesztése
+- Ha a tábla ideiglenes előkészítési tábla
 
-A New [York-i taxiadatok betöltése](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) bemutató példa az adatok ciklikus multiplexelési átmeneti táblába történő betöltésére.
+A [New York-i taxik-adatgyűjtési útmutató betöltési](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) példát mutat be arra, hogyan tölthetők be az adathalmazok egy ciklikus időszeleteléses előkészítés
 
 ## <a name="choosing-a-distribution-column"></a>Terjesztési oszlop kiválasztása
 
-A kivonatoló elosztott tábla rendelkezik egy terjesztési oszlop, amely a kivonatkulcs. A következő kód például létrehoz egy kivonatoló elosztott táblát, amelynek terjesztési oszlopa a ProductKey.
+A kivonat – elosztott tábla olyan terjesztési oszlopot tartalmaz, amely a kivonatoló kulcs. A következő kód például egy kivonattal elosztott táblázatot hoz létre a termékkel, amely a terjesztési oszlop.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -92,57 +92,57 @@ WITH
 ;
 ```
 
-A terjesztési oszlop kiválasztása fontos tervezési döntés, mivel az ebben az oszlopban szereplő értékek határozzák meg a sorok elosztásának módját. A legjobb választás több tényezőtől függ, és általában magában foglalja a kompromisszumokat. Ha azonban első alkalommal nem a legjobb oszlopot választja, a [TÁBLA létrehozása mint kiválasztása (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével újra létrehozhatja a táblát egy másik terjesztési oszloppal.
+A terjesztési oszlop kiválasztása fontos tervezési döntés, mivel az oszlopban szereplő értékek határozzák meg a sorok elosztásának módját. A legjobb választás több tényezőtől függ, és általában kompromisszumokat is magában foglal. Ha azonban az első alkalommal nem választja ki a legjobb oszlopot, akkor a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával hozza létre újra a táblát egy másik terjesztési oszloppal.
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Olyan terjesztési oszlop kiválasztása, amely nem igényel frissítést
+### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Olyan terjesztési oszlopot válasszon, amely nem igényel frissítést
 
-Terjesztési oszlop csak akkor frissíthető, ha törli a sort, és nem szúr be egy új sort a frissített értékekkel. Ezért jelöljön ki egy statikus értékeket tartalmazó oszlopot.
+A terjesztési oszlop nem frissíthető, kivéve, ha törli a sort, és beszúr egy új sort a frissített értékekkel. Ezért válasszon ki egy statikus értékeket tartalmazó oszlopot.
 
-### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Elosztási oszlop kiválasztása egyenletesen elosztott adatokkal
+### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Válasszon ki egy olyan terjesztési oszlopot, amely egyenletesen osztja el az adatelosztást
 
-A legjobb teljesítmény érdekében az összes disztribúciónak körülbelül azonos számú sorral kell rendelkeznie. Ha egy vagy több felosztás aránytalanul sok sort tartalmaz, egyes felosztások befejezik a párhuzamos lekérdezés egy részét mások előtt. Mivel a lekérdezés nem fejezhető be, amíg az összes disztribúció feldolgozása be nem fejeződik, minden lekérdezés csak olyan gyors, mint a leglassabb eloszlás.
+A legjobb teljesítmény érdekében az összes eloszlásnak nagyjából azonos számú sorral kell rendelkeznie. Ha egy vagy több eloszlás nem arányos számú sort tartalmaz, egyes disztribúciók egy párhuzamos lekérdezés részét fejezik be mások előtt. Mivel a lekérdezés nem hajtható végre, amíg az összes eloszlás befejezte a feldolgozást, az egyes lekérdezések csak a leglassabb eloszlással gyorsak.
 
-- Az adatdöntés azt jelenti, hogy az adatok nem egyenletesen oszlanak el a disztribúciók között
-- A döntés feldolgozása azt jelenti, hogy egyes disztribúciók hosszabb időt vesznek igénybe, mint mások párhuzamos lekérdezések futtatásakor. Ez akkor fordulhat elő, ha az adatok ferdeek.
+- Az adattorzítás azt jelenti, hogy az adatforgalom nem egyenletesen oszlik meg a disztribúciók között
+- Az elferdítés azt jelenti, hogy egyes eloszlások a párhuzamos lekérdezések futtatásakor több időt is igénybe vehetnek. Ez akkor fordulhat elő, ha az adatdöntés megtörténik.
   
-A párhuzamos feldolgozás egyensúlyba hozásához jelöljön ki egy terjesztési oszlopot, amely:
+A párhuzamos feldolgozás kiegyensúlyozásához válasszon egy terjesztési oszlopot, amely a következő:
 
-- **Számos egyedi érték.** Az oszlopnak lehetnéhány ismétlődő értéke. Az azonos értékű sorok azonban ugyanahhoz az eloszláshoz vannak rendelve. Mivel 60 disztribúció van, az oszlopnak legalább 60 egyedi értékvel kell rendelkeznie.  Általában az egyedi értékek száma sokkal nagyobb.
-- **Nem rendelkezik NULL-okkal, vagy csak néhány NULL-ja van.** Egy szélsőséges példa esetén, ha az oszlop ban szereplő összes érték NULL, az összes sor ugyanahhoz az eloszláshoz van rendelve. Ennek eredményeképpen a lekérdezés feldolgozása egyetlen disztribúcióra van ferdítve, és nem élvezi a párhuzamos feldolgozás előnyeit.
-- **Nem dátumoszlop.** Az ugyanarra a dátumra vonatkozó összes adat ugyanabban az eloszlásban landol. Ha több felhasználó is ugyanazon a napon szűr, akkor a 60 disztribúcióból csak 1 végezze el az összes feldolgozási munkát.
+- **Számos egyedi értékkel rendelkezik.** Az oszlopnak lehet néhány ismétlődő értéke. Azonban az azonos értékkel rendelkező sorok ugyanahhoz a disztribúcióhoz vannak rendelve. Mivel a 60 eloszlások vannak, az oszlopnak legalább 60 egyedi értékkel kell rendelkeznie.  Általában az egyedi értékek száma sokkal nagyobb.
+- **Nem rendelkezik NULLával, vagy csak néhány NULLával rendelkezik.** Ha például az oszlopban szereplő összes érték NULL értékű, az összes sor ugyanahhoz a disztribúcióhoz van rendelve. Ennek eredményeképpen a lekérdezés feldolgozása egy eloszlásra van elferdítve, és nem használja a párhuzamos feldolgozást.
+- **Nem dátum típusú oszlop**. Az azonos dátummal rendelkező összes adat ugyanabban a disztribúcióban található. Ha több felhasználó mindegyike azonos dátummal van szűrve, akkor a 60-disztribúciók közül mindössze 1 az összes feldolgozási munkát végrehajtja.
 
-### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Válassza ki az adatmozgást minimalizáló terjesztési oszlopot
+### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Az adatáthelyezést lecsökkentő terjesztési oszlop kiválasztása
 
-A megfelelő lekérdezéseredmény-lekérdezések lekérdezése adatokat helyezhet át az egyik számítási csomópontról a másikra. Az adatáthelyezés gyakran akkor fordul elő, ha a lekérdezések összekapcsolódnak és összesítik az elosztott táblákat. A szinapszis SQL-készlet teljesítményének optimalizálására vonatkozó egyik legfontosabb stratégia az adatáthelyezés minimalizálását segítő terjesztési oszlop kiválasztása.
+A lekérdezési eredmények helyes lekérdezéséhez az adatok az egyik számítási csomópontról egy másikra helyezhetők át. Az adatáthelyezés általában akkor történik, amikor a lekérdezések összekapcsolással és összesítésekkel rendelkeznek az elosztott táblákon. Az adatáthelyezés minimálisra csökkentését segítő terjesztési oszlop kiválasztása az egyik legfontosabb stratégia a szinapszis SQL-készlet teljesítményének optimalizálásához.
 
-Az adatok mozgásának minimalizálása érdekében jelöljön ki egy terjesztési oszlopot, amely:
+Az adatáthelyezés minimalizálásához válasszon ki egy terjesztési oszlopot:
 
-- A `JOIN`, `GROUP BY`, `DISTINCT` `OVER`, `HAVING` , és záradékok. Ha két nagy ténytábla gyakran csatlakozik, a lekérdezési teljesítmény javul, ha mindkét táblát az egyik illesztőoszlopon osztja.  Ha egy táblát nem használnak illesztésekben, érdemes lehet a táblát a `GROUP BY` záradékban gyakran szereplő oszlopon terjeszteni.
-- *Nem* használatos `WHERE` a záradékok. Ez szűkítheti a lekérdezést, hogy ne fusson az összes disztribúción.
-- Ez *nem* dátumoszlop. A WHERE záradékok gyakran dátum szerint szűrnek.  Ha ez történik, az összes feldolgozás csak néhány disztribúción futtatható.
+- A `JOIN` `GROUP BY`, `DISTINCT` `HAVING` ,, és záradékokban van használatban. `OVER` Ha két nagy egyedkapcsolat-táblázat gyakran csatlakozik egymáshoz, a lekérdezés teljesítménye javul, ha mindkét táblát az egyik illesztési oszlopon osztja el.  Ha egy tábla nem használatos az illesztésekben, érdemes lehet a táblát olyan oszlopra terjeszteni, amely gyakran szerepel `GROUP BY` a záradékban.
+- *Nem* használatos a `WHERE` záradékokban. Ez leszűkítheti a lekérdezést úgy, hogy az ne fusson az összes disztribúción.
+- *Nem* dátum típusú oszlop. WHERE záradékok gyakran dátum szerint vannak szűrve.  Ebben az esetben az összes feldolgozás csak néhány disztribúción futhat.
 
-### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Mi a teendő, ha egyik oszlop sem jó terjesztési oszlop?
+### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Mi a teendő, ha egyik oszlop sem jó terjesztési oszlop.
 
-Ha egyik oszlop sem rendelkezik elegendő különböző értékkel egy terjesztési oszlophoz, létrehozhat egy új oszlopot egy vagy több érték összesítéseként. Az adatok adatáthelyezésének elkerülése érdekében a lekérdezések végrehajtása során használja az összetett terjesztési oszlopot illesztőoszlopként a lekérdezésekben.
+Ha egyik oszlop sem rendelkezik elég eltérő értékkel egy terjesztési oszlophoz, egy új oszlopot hozhat létre egy vagy több érték összetett összetételéhez. Ha el szeretné kerülni az adatáthelyezést a lekérdezés végrehajtása során, használja az összetett terjesztési oszlopot a lekérdezések JOIN oszlopa.
 
-Miután megtervezte a kivonatoló elosztott táblát, a következő lépés az adatok betöltése a táblába.  A terhelési útmutatóról a [Betöltés – áttekintés című témakörben olvashat.](design-elt-data-loading.md)
+Miután megtervezte a kivonatok elosztott tábláját, a következő lépés az adatokat a táblába betölteni.  Útmutatásért lásd: [Betöltés áttekintése](design-elt-data-loading.md).
 
-## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>Hogyan állapíthatja meg, hogy a terjesztési oszlop jó választás-e?
+## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>Hogyan állapítható meg, hogy a terjesztési oszlop jó választás-e
 
-Miután az adatok betöltése egy kivonatoló elosztott táblába, ellenőrizze, hogy a sorok egyenletesen oszlanak el a 60 disztribúciók között. Az eloszlásonkénti sorok akár 10%-os a teljesítményre gyakorolt észrevehető hatás nélkül változhatnak.
+Miután betöltötte az adatokat egy kivonat-elosztott táblába, ellenőrizze, hogy a sorok egyenletesen oszlanak-e el az 60-disztribúciók között. A eloszlásban lévő sorok akár 10%-kal is változhatnak, és nem észlelhető hatással a teljesítményre.
 
-### <a name="determine-if-the-table-has-data-skew"></a>Annak megállapítása, hogy a tábla rendelkezik-e adatdöntési
+### <a name="determine-if-the-table-has-data-skew"></a>Annak megállapítása, hogy a tábla tartalmaz-e adattorzítást
 
-Az adatdöntés ellenőrzésének gyors módja a [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használata. A következő SQL-kód a 60 disztribúcióban tárolt táblasorok számát adja vissza. A kiegyensúlyozott teljesítmény érdekében az elosztott tábla sorait egyenletesen kell elosztani az összes disztribúció között.
+Az elferdítés gyors módja az [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használata. A következő SQL-kód a 60-eloszlásokban tárolt sorok számát adja vissza. A kiegyensúlyozott teljesítmény érdekében az elosztott tábla sorait egyenletesen kell elosztani az összes eloszlás között.
 
 ```sql
 -- Find data skew for a distributed table
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Annak azonosítása, hogy mely táblák rendelkeznek 10%-nál több adatdöntési eltérésre:
+A 10%-nál több adateltérést tartalmazó táblák azonosításához:
 
-1. Hozza létre a dbo.vTableSizes nézetet, amely a [Táblák áttekintése](sql-data-warehouse-tables-overview.md#table-size-queries) című cikkben látható.  
+1. Hozza létre a dbo. vTableSizes nézetet, amely a [táblázatok áttekintő](sql-data-warehouse-tables-overview.md#table-size-queries) cikkében látható.  
 2. Futtassa az alábbi lekérdezést:
 
 ```sql
@@ -160,30 +160,30 @@ order by two_part_name, row_count
 ;
 ```
 
-### <a name="check-query-plans-for-data-movement"></a>Adatmozgatási lekérdezési tervek ellenőrzése
+### <a name="check-query-plans-for-data-movement"></a>Az adatáthelyezés lekérdezési terveinek keresése
 
-Egy jó terjesztési oszlop lehetővé teszi, hogy az illesztések és az összesítések minimális adatmozgást. Ez befolyásolja az illesztések írásmódját. Ahhoz, hogy két kivonatoló elosztott táblához minimális adatmozgást kapjon, az illesztési oszlopok egyikének a terjesztési oszlopnak kell lennie.  Ha két kivonatoló elosztott tábla csatlakozik egy azonos típusú terjesztési oszlophoz, az illesztés nem igényel adatáthelyezést. Az illesztések további oszlopokat is használhatnak adatáthelyezés nélkül.
+A jó terjesztési oszlopok lehetővé teszik az illesztések és az összesítések minimális adatáthelyezést. Ez befolyásolja a csatlakozások írásának módját. Ahhoz, hogy az illesztés minimális adatátvitelt kapjon két kivonattal elosztott táblán, az egyik illesztési oszlopnak a terjesztési oszlopnak kell lennie.  Ha két kivonatoló eloszlású tábla ugyanahhoz az adattípushoz tartozó terjesztési oszlophoz csatlakozik, az illesztés nem igényli az adatáthelyezést. Az illesztések további oszlopokat is használhatnak az adatáthelyezés felmerülése nélkül.
 
-Az adatok egyesítése soráni mozgásának elkerülése:
+Az adatáthelyezés elkerülése a csatlakozás során:
 
-- Az illesztésben részt vevő tábláknak kivonatot kell osztaniuk az illesztésben részt vevő oszlopok **egyikén.**
-- Az illesztési oszlopok adattípusainak mindkét tábla között egyeznek.
-- Az oszlopokat egyenlő operátorral kell összeilleszteni.
-- Az illesztéstípusa nem `CROSS JOIN`lehet .
+- Az illesztésben részt vevő táblákat kivonattal kell elosztani az illesztésben részt vevő oszlopok **egyikén** .
+- Az illesztési oszlopok adattípusának egyeznie kell mindkét tábla között.
+- Az oszlopokat egyenrangú operátorral kell csatlakoztatni.
+- Az illesztés típusa nem lehet a következő `CROSS JOIN`:.
 
-Ha meg szeretné tekinteni, hogy a lekérdezések adatáthelyezést tapasztalnak-e, tekintse meg a lekérdezési tervet.  
+Ha szeretné megtudni, hogy a lekérdezések adatáthelyezést tapasztalnak-e, tekintse meg a lekérdezési tervet.  
 
-## <a name="resolve-a-distribution-column-problem"></a>Terjesztési oszlopmal kapcsolatos probléma megoldása
+## <a name="resolve-a-distribution-column-problem"></a>Terjesztési oszlop problémáinak elhárítása
 
-Nem szükséges minden adatdöntési esetet feloldani. Az adatok terjesztése az adatok döntésének minimalizálása és az adatok mozgása közötti megfelelő egyensúly megtalálásának kérdése. Nem mindig lehetséges az adatdöntés és az adatmozgás minimalizálása. Néha a minimális adatmozgás előnye ellensúlyozhatja az adatok döntésének hatását.
+Nem szükséges az adattorzítás összes esetének feloldása. Az Adatelosztás a megfelelő egyensúly megtalálása az adattorzítás és az adatáthelyezés minimalizálása között. Nem mindig lehet minimálisra csökkenteni az adattorzítást és az adatáthelyezést. Előfordulhat, hogy a minimális adatáthelyezés előnye meghaladja az adattorzítás következményeit.
 
-Annak eldöntéséhez, hogy feloldja-e az adatdöntés feloldását egy táblában, a lehető legnagyobb mértékben meg kell értenie a számítási feladatokban lévő adatköteteket és lekérdezéseket. A [Lekérdezés figyelése](sql-data-warehouse-manage-monitor.md) című cikkben ismertetett lépésekkel figyelheti a döntés nek a lekérdezés teljesítményére gyakorolt hatását. Pontosabban keresse meg, hogy mennyi ideig tart a nagy lekérdezések befejezéséhez az egyes disztribúciók.
+Annak eldöntéséhez, hogy fel kell-e oldani az adatok eldöntését egy táblában, a számítási feladatban szereplő adatmennyiségekről és lekérdezésekről a lehető legnagyobb mértékben tisztában kell lennie. A lekérdezési teljesítményre gyakorolt hatás befolyásolása érdekében a [lekérdezés figyelése](sql-data-warehouse-manage-monitor.md) című cikk lépéseit követve ellenőrizheti. Pontosabban tekintse meg, hogy mennyi ideig tart a nagyméretű lekérdezések végrehajtása az egyes disztribúciók esetében.
 
-Mivel egy meglévő tábla terjesztési oszlopa nem módosítható, az adatdöntés feloldásának tipikus módja a tábla újbóli létrehozása egy másik terjesztési oszloppal.  
+Mivel a meglévő tábla eloszlás oszlopa nem módosítható, az adattorzítás feloldásának tipikus módja, ha újra létrehozza a táblát egy másik terjesztési oszloppal.  
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>A tábla újbóli létrehozása új terjesztési oszloppal
 
-Ez a példa [a CREATE TABLE AS SELECT segítségével](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) hoz létre újra egy másik kivonatterjesztési oszlopot tartalmazó táblát.
+Ez a példa a [CREATE TABLE használja,](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ha egy másik kivonatoló terjesztési oszlopot tartalmazó táblát szeretne újból létrehozni.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 
-- [TÁBLA LÉTREHOZÁSA (Szinapszis SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [TÁBLA LÉTREHOZÁSA VÁLASZTÓKÉNT (Szinapszis SQL-készlet)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (szinapszis SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE a SELECT (szinapszis SQL Pool) ELEMnél](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

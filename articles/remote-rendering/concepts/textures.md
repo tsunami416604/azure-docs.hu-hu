@@ -1,43 +1,43 @@
 ---
 title: Textúrák
-description: Textúra erőforrás munkafolyamat
+description: Textúra erőforrás-munkafolyamata
 author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 09fa22d33377dfcbafd84f0caeb5f33a575b1bce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681661"
 ---
 # <a name="textures"></a>Textúrák
 
-A textúrák nem módosítható [megosztott erőforrást jelentenek.](../concepts/lifetime.md) Textúrák lehet betölteni [blob storage](../how-tos/conversion/blob-storage.md) és a modellekre közvetlenül alkalmazható, amint azt [az oktatóanyag: A környezet és az anyagok módosítása](../tutorials/unity/changing-environment-and-materials.md). A textúrák azonban leggyakrabban egy átalakított [modell](../how-tos/conversion/model-conversion.md)részét képezik, ahol az [anyagok](materials.md)hivatkoznak rá.
+A textúrák egy megváltoztathatatlan [megosztott erőforrás](../concepts/lifetime.md). A textúrák a [blob Storage](../how-tos/conversion/blob-storage.md) -ból tölthetők be, és közvetlenül a modellekre alkalmazhatók, ahogy az [oktatóanyagban is látható: a környezet és az anyagok módosítása](../tutorials/unity/changing-environment-and-materials.md). Leggyakrabban azonban a textúrák egy [átalakított modell](../how-tos/conversion/model-conversion.md)részei lesznek, ahol az [anyagok](materials.md)hivatkoznak rájuk.
 
-## <a name="texture-types"></a>Textúratípusok
+## <a name="texture-types"></a>Textúra típusai
 
-A különböző textúratípusok különböző használati esetekben:
+A különböző típusú anyagminták különböző használati esetekkel rendelkeznek:
 
-* **2D textúrák** elsősorban [anyagokban](materials.md).
-* **Cubemaps** lehet használni az [égen](../overview/features/sky.md).
+* a **2D-textúrák** főleg [anyagokban](materials.md)használatosak.
+* A **Cubemaps** használható az [égbolton](../overview/features/sky.md).
 
-## <a name="supported-texture-formats"></a>Támogatott textúraformátumok
+## <a name="supported-texture-formats"></a>Támogatott textúra-formátumok
 
-Az ARR-nek adott összes textúrának [DDS formátumban](https://en.wikipedia.org/wiki/DirectDraw_Surface)kell lennie. Lehetőleg mipmaps és textúra tömörítés. Ha automatizálni szeretné az átalakítási folyamatot, tekintse meg [a TexConv parancssori eszközt.](../resources/tools/tex-conv.md)
+Az ARR-nek adott összes textúráknak [DDS formátumúnak](https://en.wikipedia.org/wiki/DirectDraw_Surface)kell lennie. Lehetőleg a Mipmap és a textúra tömörítéssel. Ha szeretné automatizálni az átalakítási folyamatot, tekintse meg [a TexConv parancssori eszközt](../resources/tools/tex-conv.md) .
 
 ## <a name="loading-textures"></a>Textúrák betöltése
 
-A textúra betöltésekor meg kell adnia a várt típusát. Ha a típus nem egyezik, a textúra terhelése sikertelen lesz.
-Ha egy textúrát kétszer tölt be ugyanazzal az URI-val, ugyanazt a textúraobjektumot adja vissza, mivel az [megosztott erőforrás.](../concepts/lifetime.md)
+Textúra betöltésekor meg kell adnia a várt típust. Ha a típus nem egyezik, a textúra betöltése sikertelen lesz.
+Ha egy textúrát kétszer tölt be ugyanazzal az URI-val, akkor ugyanazt a textúrát fogja visszaadni, mivel ez egy [megosztott erőforrás](../concepts/lifetime.md).
 
-A modellek betöltéséhez hasonlóan a textúraeszköz címzésének két változata van a forrásblob-tárolóban:
+A modellek betöltéséhez hasonlóan két változatban kell foglalkoznia a forrás blob Storage-ban található textúra-objektummal:
 
-* A textúraeszköz a SAS URI-val kezelhető. A megfelelő `LoadTextureFromSASAsync` terhelési `LoadTextureFromSASParams`funkció a paraméterrel van eladva. Használja ezt a változatot [a beépített textúrák betöltésekor](../overview/features/sky.md#built-in-environment-maps)is.
-* A textúra közvetlenül a blob storage paramétereivel kezelhető, ha a [blobstorage a fiókhoz van csatolva.](../how-tos/create-an-account.md#link-storage-accounts) A vonatkozó terhelési `LoadTextureAsync` funkció `LoadTextureParams`ebben az esetben a paraméterrel van eladva.
+* A textúrát az SAS URI-ja tudja kezelni. A megfelelő betöltési `LoadTextureFromSASAsync` függvény `LoadTextureFromSASParams`paraméterrel van ellátva. A [beépített textúrák](../overview/features/sky.md#built-in-environment-maps)betöltésekor ezt a változatot is használhatja.
+* A textúrát közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben `LoadTextureAsync` a megfelelő betöltési függvény `LoadTextureParams`a paraméter.
 
-A következő mintakód bemutatja, hogyan kell betölteni egy textúrát a SAS URI-n (vagy beépített textúrán) keresztül - vegye figyelembe, hogy csak a betöltési funkció/paraméter különbözik a másik esetben:
+Az alábbi mintakód bemutatja, hogyan tölthető be egy textúra az SAS URI-n keresztül (vagy beépített textúra) – vegye figyelembe, hogy csak a loading Function/paraméter különbözik a másik esettől:
 
 ``` cs
 LoadTextureAsync _textureLoad = null;
@@ -60,12 +60,12 @@ void LoadMyTexture(AzureSession session, string textureUri)
 }
 ```
 
-Attól függően, hogy a textúrát mire kellene használni, korlátozások lehetnek a textúra típusára és tartalmára vonatkozóan. A [PBR-anyag](../overview/features/pbr-materials.md) érdességi térképének például szürkeárnyalatosnak kell lennie.
+Attól függően, hogy mit kell használni a textúrában, a textúra típusa és tartalma korlátozásokat is tartalmazhat. Például a [pbr-anyagokhoz](../overview/features/pbr-materials.md) tartozó érdesség térképének szürkeárnyalatos kell lennie.
 
 > [!CAUTION]
-> Az ARR összes *Async* függvénye aszinkron műveleti objektumokat ad vissza. A művelet befejezéséig meg kell tárolnia az objektumokra mutató hivatkozást. Ellenkező esetben a C# szemétgyűjtő törölheti a műveletet korán, és soha nem fejeződhet be. A fenti mintakódban a "_textureLoad" tagváltozó tartjuk a hivatkozást, amíg a *Befejezett* esemény meg nem érkezik.
+> Az *ARR összes aszinkron függvénye aszinkron műveleti* objektumokat ad vissza. A művelet befejezését követően az objektumokra mutató hivatkozást kell tárolnia. Ellenkező esetben előfordulhat, hogy a C# Garbage Collector már korán törli a műveletet, és soha nem tud befejezni. A (z) "_textureLoad" tag változó feletti mintakód egy hivatkozás tárolására szolgál, amíg a *befejezett* esemény megérkezik.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Nyersanyagok](materials.md)
+* [Anyagok](materials.md)
 * [Ég](../overview/features/sky.md)

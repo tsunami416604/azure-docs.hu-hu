@@ -1,24 +1,24 @@
 ---
-title: Információ a konvertált modellről
-description: Az összes modellátalakítási paraméter leírása
+title: A konvertált modell adatainak lekérése
+description: Az összes modell-átalakítási paraméter leírása
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681518"
 ---
-# <a name="get-information-about-a-converted-model"></a>Információ a konvertált modellről
+# <a name="get-information-about-a-converted-model"></a>A konvertált modell adatainak lekérése
 
-A konverziós szolgáltatás által létrehozott arrAsset fájl kizárólag a renderelési szolgáltatás általi felhasználásra szolgál. Előfordulhatnak azonban olyan esetek, amikor a modellel kapcsolatos információkat renderelési munkamenet indítása nélkül szeretné elérni. Ezért a konverziós szolgáltatás egy JSON-fájlt helyez el az arrAsset fájl mellett a kimeneti tárolóban. Ha például egy `buggy.gltf` fájlt konvertálnak, a kimeneti `buggy.info.json` tároló a `buggy.arrAsset`konvertált eszköz mellett megnevezett fájlt fog tartalmazni. Információkat tartalmaz a forrásmodellről, a konvertált modellről és magáról az átalakításról.
+Az átalakítási szolgáltatás által létrehozott arrAsset-fájl kizárólag a renderelési szolgáltatás általi felhasználásra szolgál. Előfordulhat azonban, hogy a modellre vonatkozó információkat a renderelési munkamenet elindítása nélkül szeretné elérni. Ezért az átalakítási szolgáltatás egy JSON-fájlt helyez el a kimeneti tároló arrAsset fájlja mellett. Ha például egy fájl `buggy.gltf` konvertálása történik, a kimeneti tároló tartalmazni fog egy nevű `buggy.info.json` fájlt a konvertált eszköz `buggy.arrAsset`mellett. A forrás modellről, a konvertált modellről, valamint magáról a konverzióról tartalmaz információkat.
 
-## <a name="example-info-file"></a>Példa *információs* fájl
+## <a name="example-info-file"></a>Példa *információs* fájlra
 
-Íme egy példa *info* fájl által létrehozott `buggy.gltf`konvertáló nevű fájl:
+Íme egy példa a fájl konvertálásával létrehozott *információs* fájlra `buggy.gltf`:
 
 ```JSON
 {
@@ -75,57 +75,57 @@ A konverziós szolgáltatás által létrehozott arrAsset fájl kizárólag a re
 
 ## <a name="information-in-the-info-file"></a>Információ az információs fájlban
 
-### <a name="the-files-section"></a>A *fájlok* szakasz
+### <a name="the-files-section"></a>A *Files (fájlok* ) szakasz
 
-Ez a szakasz a megadott fájlneveket tartalmazza.
+Ez a szakasz tartalmazza a megadott fájlneveket.
 
 * `input`: A forrásfájl neve.
 * `output`: A kimeneti fájl neve, ha a felhasználó nem alapértelmezett nevet adott meg.
 
 ### <a name="the-conversionsettings-section"></a>A *conversionSettings* szakasz
 
-Ez a szakasz a modell konvertálásakor megadott [ConversionSettings](configure-model-conversion.md#settings-file) egy példányát tartalmazza.
+Ez a szakasz a modell átalakításakor megadott [ConversionSettings](configure-model-conversion.md#settings-file) másolatát tartalmazza.
 
 ### <a name="the-inputinfo-section"></a>A *inputInfo* szakasz
 
-Ez a szakasz a forrásfájl formátumával kapcsolatos információkat rögzíti.
+Ez a szakasz a forrásfájl formátumával kapcsolatos adatokat rögzíti.
 
-* `sourceAssetExtension`: A forrásfájl kiterjesztése.
+* `sourceAssetExtension`: A forrásfájl fájlkiterjesztés.
 * `sourceAssetFormat`: A forrásfájl formátumának leírása.
 * `sourceAssetFormatVersion`: A forrásfájl formátumának verziója.
-* `sourceAssetGenerator`: A forrásfájlt létrehozó eszköz neve, ha rendelkezésre áll.
+* `sourceAssetGenerator`: A forrásfájlt létrehozó eszköz neve, ha van ilyen.
 
 ### <a name="the-inputstatistics-section"></a>A *inputStatistics* szakasz
 
-Ez a szakasz a forrásjelenettel kapcsolatos információkat tartalmazza. Gyakran lesznek eltérések az ebben a szakaszban szereplő értékek és a forrásmodellt létrehozó eszköz egyenértékű értékei között. Ilyen különbségek várhatók, mert a modell az exportálási és átalakítási lépések során módosul.
+Ez a szakasz a forrás jelenetről tartalmaz információkat. Az ebben a szakaszban szereplő értékek és a forrás modellt létrehozó eszköz egyenértékű értékei között gyakran előfordulnak eltérések. Ilyen eltérések várhatók, mert a modell az exportálási és átalakítási lépések során módosul.
 
-* `numMeshes`: A hálórészek száma, ahol minden alkatrész egyetlen anyagra hivatkozhat.
-* `numFaces`: A _háromszögek_ teljes száma a teljes modellben. Vegye figyelembe, hogy a háló háromszögelése az átalakítás során történik.
-* `numVertices`: A csúcspontok teljes száma az egész modellben.
-* `numMaterial`: Az anyagok teljes száma az egész modellben.
-* `numFacesSmallestMesh`: A modell legkisebb hálójában lévő háromszögek száma.
+* `numMeshes`: A rácsvonalak száma, amelyben az egyes részek hivatkozhatnak egyetlen anyagra.
+* `numFaces`: A _háromszögek_ teljes száma a teljes modellben. Vegye figyelembe, hogy a háló a konverzió során háromszögárfolyam-számítást végez.
+* `numVertices`: A teljes modellben lévő csúcspontok teljes száma.
+* `numMaterial`: Az anyagok teljes száma a teljes modellben.
+* `numFacesSmallestMesh`: A modell legkisebb rácsvonalában található háromszögek száma.
 * `numFacesBiggestMesh`: A modell legnagyobb hálójában lévő háromszögek száma.
-* `numNodes`: A modell jelenetgrafikonjában lévő csomópontok száma.
-* `numMeshUsagesInScene`: A csomópontok által a véletlenek hivatkozásának száma. Egynél több csomópont hivatkozhat ugyanarra a hálóra.
-* `maxNodeDepth`: A csomópont maximális mélysége a jelenetdiagramon belül.
+* `numNodes`: A modell Scene gráf csomópontjainak száma.
+* `numMeshUsagesInScene`: A csomópontok száma, amikor a csomópontok hivatkozási rácsvonalak. Több csomópont is hivatkozhat ugyanarra a rácsvonalra.
+* `maxNodeDepth`: A jelenet gráfon belüli csomópontok maximális mélysége.
 
 ### <a name="the-outputinfo-section"></a>A *outputInfo* szakasz
 
-Ez a szakasz a létrehozott kimenetáltalános adatait rögzíti.
+Ez a szakasz a generált kimenet általános információit rögzíti.
 
-* `conversionToolVersion`: A modellkonverter verziója.
-* `conversionHash`: Az arrAsset-en belüli adatok kivonata, amely hozzájárulhat a rendereléshez. Annak megértésére használható, hogy a konverziós szolgáltatás más eredményt hozott-e, amikor ugyanazon a fájlon fut.
+* `conversionToolVersion`: A modell átalakító verziója.
+* `conversionHash`: A arrAsset belül található, a rendereléshez hozzájáruló adatokat tartalmazó kivonat. Azt is megtudhatja, hogy az átalakítási szolgáltatás eltérő eredményt adott-e meg, ha ugyanazon a fájlon fut újra.
 
-### <a name="the-outputstatistics-section"></a>A *kimeneti statisztika* szakasz
+### <a name="the-outputstatistics-section"></a>A *outputStatistics* szakasz
 
-Ez a szakasz az átalakított eszközből számított adatokat rögzíti.
+Ez a szakasz a konvertált eszközről kiszámított adatokat rögzíti.
 
-* `numMeshPartsCreated`: Az arrAsset ben lévő buborékok száma. Ez eltérhet `numMeshes` `inputStatistics` a szakaszban, mert instancing befolyásolja az átalakítási folyamat.
-* `numMeshPartsInstanced`: Az arrAsset-ben újrafelhasznált buborékok száma.
-* `recenteringOffset`: Ha `recenterToOrigin` a [ConversionSettings](configure-model-conversion.md) beállítás engedélyezve van, ez az érték az a fordítás, amely visszahelyezné a konvertált modellt az eredeti helyére.
-* `boundingBox`: A modell határait.
+* `numMeshPartsCreated`: A arrAsset lévő rácsvonalak száma. Ez a `inputStatistics` szakasztól `numMeshes` eltérő lehet, mert a egypéldányos az átalakítási folyamat érinti.
+* `numMeshPartsInstanced`: A arrAsset újrafelhasznált rácsvonalak száma.
+* `recenteringOffset`: Ha `recenterToOrigin` a [ConversionSettings](configure-model-conversion.md) engedélyezve van, ez az érték a fordítás, amely áthelyezi a konvertált modellt az eredeti helyére.
+* `boundingBox`: A modell határai.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Modell átalakítása](model-conversion.md)
-* [A modellkonvertálás konfigurálása](configure-model-conversion.md)
+* [A modellátalakítás konfigurálása](configure-model-conversion.md)

@@ -1,36 +1,36 @@
 ---
 title: Térbeli lekérdezések
-description: Térbeli lekérdezések csinálása jelenetben
+description: Térbeli lekérdezések a jelenetekben
 author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 9a981aeb08ec46900994fd599b592b9f16034f34
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680530"
 ---
 # <a name="spatial-queries"></a>Térbeli lekérdezések
 
-A térbeli lekérdezések olyan műveletek, amelyekkel megkérdezheti a távoli renderelési szolgáltatást, hogy mely objektumok találhatók egy adott területen. A térbeli lekérdezéseket gyakran használják interakciók megvalósításához, például annak kitalálására, hogy a felhasználó melyik objektumra mutat.
+A térbeli lekérdezések olyan műveletek, amelyekkel megkérheti a távoli renderelési szolgáltatást, amely egy adott helyen található objektumok. A térbeli lekérdezéseket gyakran használják az interakciók megvalósításához, például kitalálni, hogy a felhasználó melyik objektumot mutat.
 
-A rendszer minden térbeli lekérdezést kiértékel a kiszolgálón. Ennek következtében aszinkron műveletek, és az eredmények a hálózati késéstől függő késleltetéssel érkeznek. Mivel minden térbeli lekérdezés hálózati forgalmat generál, ügyeljen arra, hogy ne tegyen túl sokat egyszerre.
+Az összes térbeli lekérdezés kiértékelése a kiszolgálón történik. Ezért az aszinkron műveletek, és az eredmények a hálózati késéstől függő késéssel érkeznek. Mivel minden térbeli lekérdezés hálózati forgalmat generál, ügyeljen arra, hogy ne legyen túl sok egyszerre.
 
-## <a name="collision-meshes"></a>Ütközési minta
+## <a name="collision-meshes"></a>Ütközési rácsvonalak
 
-A térbeli lekérdezéseket a [Havok fizika motor hajtja,](https://www.havok.com/products/havok-physics) és egy dedikált ütközési hálót kell bemutatni. Alapértelmezés szerint a [modellkonverzió](../../how-tos/conversion/model-conversion.md) ütközési véletleneket hoz létre. Ha nincs szükség térbeli lekérdezésekre egy összetett modellen, fontolja meg az ütközési háló létrehozásának letiltását a [konvertálási beállításokban,](../../how-tos/conversion/configure-model-conversion.md)mivel az többféle hatással van:
+A térbeli lekérdezéseket a [Havok fizikai](https://www.havok.com/products/havok-physics) motor működteti, és egy dedikált ütközési rácsvonalat kell megadnia. Alapértelmezés szerint a [modell konvertálása](../../how-tos/conversion/model-conversion.md) ütközési hálókat hoz létre. Ha nem igényel térbeli lekérdezéseket egy összetett modellen, érdemes lehet letiltani az ütközések hálójának létrehozását az [átalakítási beállításokban](../../how-tos/conversion/configure-model-conversion.md), mivel ez több módon is kihat:
 
-* [A modellátalakítás](../../how-tos/conversion/model-conversion.md) jelentősen hosszabb időt vesz igénybe.
-* A konvertált modellfájl mérete észrevehetően nagyobb, ami hatással van a letöltési sebességre.
-* A futásidejű betöltési idő hosszabb.
-* A futásidejű CPU-memóriafelhasználás magasabb.
-* Van egy kis futásidejű teljesítmény terhelés minden modellpéldány.
+* A [modell konvertálása](../../how-tos/conversion/model-conversion.md) jóval hosszabb időt vesz igénybe.
+* A konvertált modell fájlmérete észrevehetően nagyobb, ami hatással van a letöltési sebességre.
+* A futásidejű betöltési ideje már nem érhető el.
+* A futásidejű CPU-memória kihasználtsága magasabb.
+* A modell minden példánya esetében kis teljesítményű futtatókörnyezeti teljesítménnyel kell számolni.
 
-## <a name="ray-casts"></a>Ray vet
+## <a name="ray-casts"></a>Ray-öntvények
 
-A *sugáröntés* olyan térbeli lekérdezés, amelyben a futásidejű ellenőrzi, hogy mely objektumokat metszi egy sugár, egy adott pozíciótól kezdve egy adott irányba mutatva. Optimalizálásként maximális sugártávolságot is megadnak, hogy ne keressünk túl távoli objektumokat.
+A *Ray Cast* egy térbeli lekérdezés, amelyben a futtatókörnyezet ellenőrzi, hogy egy fénysugár milyen objektumokat metsz el egy adott pozíciótól kezdve, és egy adott irányba mutat. Optimalizálásként a maximális távolságot is megadhatja, ha nem keres olyan objektumokat, amelyek túl távol vannak.
 
 ````c#
 async void CastRay(AzureSession session)
@@ -54,13 +54,13 @@ async void CastRay(AzureSession session)
 }
 ````
 
-Három találati gyűjtési mód létezik:
+Három találati gyűjtési mód van:
 
-* **Legközelebbi:** Ebben az üzemmódban csak a legközelebbi leütés lesz jelentve.
-* **Bármely:** Inkább ezt a módot, ha minden, amit tudni akarsz, *hogy* egy sugár megüt valamit, de nem érdekel, mi volt a hit pontosan. Ez a lekérdezés jelentősen olcsóbb lehet kiértékelni, de csak néhány alkalmazással is rendelkezik.
-* **Minden:** Ebben az üzemmódban a sugár mentén minden találatot a távolság szerint kell rendezni. Ne használja ezt a módot, hacsak nem kell több, mint az első találat. Korlátozza a jelentett találatok `MaxHits` számát a beállítással.
+* **Legközelebb:** Ebben a módban csak a legközelebbi találatot fogja jelenteni.
+* **Bármelyik:** Ezt a módot érdemes használni, ha szeretné tudni, *hogy* a Ray egyáltalán nem talált-e valamit, de nem érdekli, hogy pontosan mi volt a találat. Ez a lekérdezés jelentősen olcsóbbá teheti a kiértékelést, de csak néhány alkalmazást is tartalmaz.
+* **Összes:** Ebben a módban a Ray összes találata látható, távolság szerint rendezve. Ne használja ezt a módot, ha nincs szüksége az első találatra. Korlátozza a jelentett találatok számát a `MaxHits` kapcsolóval.
 
-Ha azt szeretné, hogy az objektumok szelektíven ne legyenek figyelembe véve a sugáröntvények nél, a [HierarchicalStateOverrideComponent](override-hierarchical-state.md) összetevő használható.
+Ha az objektumokat szelektív módon szeretné kizárni a Ray-öntvények számára, akkor a [HierarchicalStateOverrideComponent](override-hierarchical-state.md) összetevő használható.
 
 <!--
 The CollisionMask allows the quey to consider or ignore some objects based on their collision layer. If an object has layer L, it will be hit only if the mask has  bit L set.
@@ -68,19 +68,19 @@ It is useful in case you want to ignore objects, for instance when setting an ob
 TODO : Add an API to make that possible.
 -->
 
-### <a name="hit-result"></a>Találati eredmény
+### <a name="hit-result"></a>Találat eredménye
 
-A sugárleadott lekérdezés eredménye találatok tömbje. A tömb üres, ha nem talált el objektumot.
+A Ray Cast lekérdezés eredménye a találatok tömbje. A tömb üres, ha nincs találat.
 
-A leadott találat a következő tulajdonságokkal rendelkezik:
+A találatok a következő tulajdonságokkal rendelkeznek:
 
-* **HitEntity:** Melyik [entitást](../../concepts/entities.md) találták el.
-* **AlpartId:** Melyik *részhálót* találta el a [MeshComponent .](../../concepts/meshes.md) Lehet használni, hogy `MeshComponent.UsedMaterials` index, és keresse meg az [anyagot](../../concepts/materials.md) ezen a ponton.
-* **HitPozíció:** A világűr pozíciója, ahol a sugár metszi az objektumot.
-* **HitNormal:** A világtér felülete normális a háló a helyzet a metszéspont.
-* **TávolságToHit:** A távolság a sugár kezdő pozíciója és a találat.
+* **HitEntity:** Melyik [entitást](../../concepts/entities.md) észlelt a program.
+* Legtöbbje **:** Melyik *alhálót* találta meg egy [MeshComponent](../../concepts/meshes.md). A használatával indexelheti a- `MeshComponent.UsedMaterials` t, és megkeresheti az [anyagot](../../concepts/materials.md) ezen a ponton.
+* **HitPosition:** Az a hely, ahol a Ray összemetszi az objektumot.
+* **HitNormal:** A háló területének normál mérete a rácsvonal pozíciójában.
+* **DistanceToHit:** A sugár kezdő pozíciója és a találat közötti távolság.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Objektumhatárok](../../concepts/object-bounds.md)
-* [Felülbíráló hierarchikus állapotok](override-hierarchical-state.md)
+* [Hierarchikus állapotok felülbírálása](override-hierarchical-state.md)

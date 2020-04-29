@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférés – Többszintű szolgáltatás megkövetelése az Azure-kezeléshez – Azure Active Directory
-description: Egyéni feltételes hozzáférési szabályzat létrehozása az Azure felügyeleti feladatainak többtényezős hitelesítéséhez
+title: Feltételes hozzáférés – MFA megkövetelése az Azure Management szolgáltatáshoz – Azure Active Directory
+description: Egyéni feltételes hozzáférési szabályzat létrehozása a többtényezős hitelesítés megköveteléséhez az Azure felügyeleti feladataihoz
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,53 +12,53 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b92d833e6f32821ad907ff966771bbba8bbb77ce
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755172"
 ---
-# <a name="conditional-access-require-mfa-for-azure-management"></a>Feltételes hozzáférés: Többéves kortól megkövetelése az Azure-kezeléshez
+# <a name="conditional-access-require-mfa-for-azure-management"></a>Feltételes hozzáférés: MFA megkövetelése az Azure felügyeletéhez
 
-A szervezetek számos Azure-szolgáltatást használnak, és az Azure Resource Manager-alapú eszközökből kezelik őket, például:
+A szervezetek különböző Azure-szolgáltatásokat használnak és felügyelik azokat Azure Resource Manager-alapú eszközökről, például:
 
 * Azure Portal
 * Azure PowerShell
 * Azure CLI
 
-Ezek az eszközök magas szintű jogosultsággal rendelkező hozzáférést biztosíthatnak az erőforrásokhoz, amelyek módosíthatják az előfizetésegészének konfigurációit, a szolgáltatásbeállításokat és az előfizetési számlázást. Ezek a kiemelt erőforrások védelme érdekében a Microsoft azt javasolja, hogy az erőforrásokhoz hozzáférő felhasználók nak többtényezős hitelesítést kell jenük.
+Ezek az eszközök magas jogosultsági szintű hozzáférést biztosíthatnak az erőforrásokhoz, amelyek megváltoztathatják az előfizetés-alapú konfigurációkat, a szolgáltatás beállításait és az előfizetés számlázását. A Kiemelt erőforrások elleni védelem érdekében a Microsoft a többtényezős hitelesítés megkövetelését javasolja bármely olyan felhasználó számára, aki hozzáfér ezekhez az erőforrásokhoz.
 
 ## <a name="user-exclusions"></a>Felhasználói kizárások
 
-A feltételes hozzáférési szabályzatok hatékony eszközök, javasoljuk, hogy zárja ki a következő fiókokat a szabályzatból:
+A feltételes hozzáférési szabályzatok hatékony eszközök, ezért javasoljuk, hogy a szabályzatból kizárja a következő fiókokat:
 
-* **Vészelérési** vagy **törésüveg-fiókok** a bérlői fiók zárolásának megakadályozása érdekében. Abban a valószínűtlen esetben az összes rendszergazda ki van zárva a bérlőből, a vészelérési felügyeleti fiók segítségével jelentkezzen be a bérlőbe lépéseket a hozzáférés helyreállítása érdekében.
-   * További információ a cikkben található, [a vészelérési fiókok kezelése az Azure AD-ben.](../users-groups-roles/directory-emergency-access.md)
-* **Szolgáltatásfiókok** és **egyszerű szolgáltatás,** például az Azure AD Connect szinkronizálási fiók. A szolgáltatásfiókok olyan nem interaktív fiókok, amelyek nem kötődnek egy adott felhasználóhoz. Ezeket általában az alkalmazásokhoz programozott hozzáférést lehetővé tevő háttérszolgáltatások használják, de a rendszerekbe való rendszergazdai célú bejelentkezésre is használják őket. Az ilyen szolgáltatásfiókokat ki kell zárni, mivel az MFA nem hajtható végre programozott módon. A szolgáltatásnévi szolgáltatások hívásait a feltételes hozzáférés nem blokkolja.
-   * Ha a szervezet ezeket a fiókokat parancsfájlokban vagy kódokban használja, fontolja meg, hogy lecseréli őket [felügyelt identitásokra.](../managed-identities-azure-resources/overview.md) Ideiglenes megoldásként ezeket a konkrét fiókokat kizárhatja az alaptervi házirendből.
+* **Vészhelyzeti hozzáférés** vagy **megszakítás-Glass** fiókok a bérlői szintű fiókok zárolásának megakadályozása érdekében. Abban az esetben, ha nem valószínű, hogy az összes rendszergazda ki van zárva a bérlőből, a vészhelyzeti hozzáférésű rendszergazdai fiók segítségével bejelentkezhet a bérlőnek a hozzáférés helyreállításához szükséges lépésekkel.
+   * További információt a következő cikkben talál: [vészhelyzeti hozzáférési fiókok kezelése az Azure ad-ben](../users-groups-roles/directory-emergency-access.md).
+* **Szolgáltatásfiókok és** **egyszerű szolgáltatások**, például a Azure ad Connect szinkronizálási fiók. A szolgáltatásfiókok olyan nem interaktív fiókok, amelyek nincsenek egy adott felhasználóhoz kötve. Ezeket általában olyan háttér-szolgáltatások használják, amelyek lehetővé teszik a programozott hozzáférést az alkalmazásokhoz, de a rendszerekre is felhasználják a felügyeleti célokra való bejelentkezést. Ezeket a szolgáltatási fiókokat ki kell zárni, mert az MFA nem hajtható végre programozott módon. Az egyszerű szolgáltatások által kezdeményezett hívásokat nem blokkolja a feltételes hozzáférés.
+   * Ha a szervezete ezeket a fiókokat parancsfájlokban vagy kódban használja, érdemes lehet a [felügyelt identitásokkal](../managed-identities-azure-resources/overview.md)helyettesíteni őket. Ideiglenes megkerülő megoldásként kizárhatja ezeket a fiókokat az alapkonfiguráció házirendjéből.
 
-## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési házirend létrehozása
+## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-A következő lépések segítségével hozzon létre egy feltételes hozzáférési szabályzatot, amely megköveteli a hozzárendelt felügyeleti szerepköröktől a többtényezős hitelesítés elvégzéséhez.
+A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályzatot, amely a többtényezős hitelesítés végrehajtásához a hozzárendelt rendszergazdai szerepköröket igényli.
 
-1. Jelentkezzen be az **Azure Portalon** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférés-rendszergazdaként.
-1. Tallózással keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését.**
-1. Válassza az **Új házirend lehetőséget.**
-1. Adjon nevet a szabályzatának. Azt javasoljuk, hogy a szervezetek hozzanak létre egy értelmes szabvány a házirendek nevét.
-1. A **Hozzárendelések**csoportban válassza a **Felhasználók és csoportok lehetőséget.**
-   1. A **Belefoglalás**csoportban válassza a **Minden felhasználó lehetőséget.**
-   1. A **Kizárás csoportban**válassza a **Felhasználók és csoportok** lehetőséget, és válassza ki a szervezet vészelérési vagy törésüvegfiókjait. 
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
+   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Felhőalapú alkalmazások és műveletek** > **felvétele csoportban**válassza **az Alkalmazások kiválasztása**lehetőséget, válassza a Microsoft Azure **Management**lehetőséget, és válassza **a Kijelölés,** majd **a Kész**lehetőséget.
-1. A **Feltételek** > **az ügyfélalkalmazások (előzetes verzió)** csoportban állítsa a **Konfigurálás** beállítást **Igen**értékre, és válassza a **Kész gombot.**
-1. A**Grant** **access-vezérlők csoportban** > válassza a **Hozzáférési támogatás**lehetőséget, válassza a **Többtényezős hitelesítés megkövetelése**lehetőséget, majd a **Kijelölés**lehetőséget.
-1. Erősítse meg a beállításokat, és állítsa a **Házirend engedélyezése** **be**beállítást.
-1. A létrehozás gombra a házirend engedélyezéséhez válassza a **Létrehozás** gombot.
+1. A **Cloud apps vagy műveletek** > területen válassza az **alkalmazások kiválasztása****lehetőséget, válassza**a **Microsoft Azure felügyelet**lehetőséget, majd válassza a **kiválasztás** , majd a **kész**lehetőséget.
+1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-[Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
+[Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[Hatás meghatározása csak feltételes hozzáférésű jelentésmódhasználatával](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
 
-[Bejelentkezési viselkedés szimulálása a Feltételes hozzáférés Mi ha eszközzel](troubleshoot-conditional-access-what-if.md)
+[Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

@@ -1,6 +1,6 @@
 ---
-title: Erőforrásosztályok a munkaterhelés-kezeléshez
-description: Útmutató az erőforrásosztályok használatával az Azure Synapse Analytics lekérdezéseihez szükséges erőforrások kezeléséhez.
+title: Erőforrás-osztályok a számítási feladatok kezeléséhez
+description: Útmutató az Azure szinapszis Analytics szolgáltatásban található lekérdezések párhuzamosságának és számítási erőforrásainak kezeléséhez az erőforrás-osztályok használatával.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,41 +12,41 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743269"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure Synapse Analytics szolgáltatásban
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure szinapszis Analyticsben
 
-Útmutató az erőforrásosztályok használatával a synapszia SQL-készlet lekérdezéseinek memóriájának és egyidejűsse kezelésére az Azure Synapse-ban.  
+Útmutató az erőforrás-osztályok használatáról az Azure szinapszisban található szinapszis SQL Pool-lekérdezések memóriájának és egyidejűségének kezeléséhez.  
 
-## <a name="what-are-resource-classes"></a>Mik azok az erőforrásosztályok?
+## <a name="what-are-resource-classes"></a>Mik az erőforrás-osztályok?
 
-A lekérdezés teljesítménykapacitását a felhasználó erőforrásosztálya határozza meg.  Az erőforrásosztályok előre meghatározott erőforráskorlátok a Synapse SQL-készletben, amelyek a számítási erőforrásokat és a lekérdezés végrehajtásának egyidejűségét szabályozzák. Az erőforrásosztályok segítségével konfigurálhatja az erőforrásokat a lekérdezésekhez azáltal, hogy korlátozza az egyidejűleg futó lekérdezések számát és az egyes lekérdezésekhez rendelt számítási erőforrásokat.  Van egy kompromisszum a memória és az egyidejűség között.
+A lekérdezés kapacitását a felhasználó erőforrás-osztálya határozza meg.  Az erőforrás-osztályok előre meghatározott erőforrás-korlátokat tartalmaznak a szinapszis SQL-készletben, amelyek a számítási erőforrásokat és a párhuzamosságot használják a lekérdezések végrehajtásához. Az erőforrás-osztályok segítséget nyújthatnak a lekérdezések erőforrásainak konfigurálásához azáltal, hogy korlátozásokat állítanak be a párhuzamosan futó lekérdezések és az egyes lekérdezésekhez hozzárendelt számítási erőforrások számára.  A memória és a Egyidejűség között kompromisszum van.
 
-- A kisebb erőforrásosztályok csökkentik a lekérdezésenkénti maximális memóriát, de növelik az egyidejűséget.
-- A nagyobb erőforrásosztályok növelik a lekérdezésenkénti maximális memóriát, de csökkentik az egyidejűséget.
+- A kisebb erőforrás-osztályok csökkentik a maximális memóriát a lekérdezésekben, de növelhetik a párhuzamosságot.
+- A nagyobb erőforrás-osztályok a lekérdezésen alapuló maximális memóriát növelhetik, de a párhuzamosságot is csökkenthetik.
 
-Az erőforrásosztályoknak két típusa van:
+Két típusú erőforrás-osztály létezik:
 
-- Statikus erőforrásosztályok, amelyek kiválóan alkalmasak a rögzített adatkészletméret megnövekedett egyidejűségéhez.
-- Dinamikus erőforrásosztályok, amelyek kiválóan alkalmasak a növekvő méretű adatkészletek számára, és a szolgáltatási szint növelésével nagyobb teljesítményt igényelnek.
+- A statikus erőforrások osztályai, amelyek a rögzített adathalmazok méretének növelésére alkalmasak.
+- Dinamikus erőforrás-osztályok, amelyek olyan adatkészletek esetében alkalmasak, amelyek mérete növekszik, és nagyobb teljesítményre van szükség, mint a szolgáltatási szint skálázása.
 
-Az erőforrásosztályok egyidejűségi bővítőhelyeket használnak az erőforrás-felhasználás mérésére.  [Egyidejűségi bővítőhelyek](#concurrency-slots) magyarázata a cikk későbbi részében.
+Az erőforrás-osztályok a párhuzamossági tárolóhelyek használatával mérik az erőforrások felhasználását.  A [párhuzamossági résidőket](#concurrency-slots) a cikk későbbi részében ismertetjük.
 
-- Az erőforrásosztályok erőforrás-kihasználtságának megtekintéséhez olvassa el a [Memória- és egyidejűségi korlátok című témakört.](memory-concurrency-limits.md)
-- Az erőforrásosztály módosításához futtathatja a lekérdezést egy másik felhasználó alatt, vagy [módosíthatja az aktuális felhasználó erőforrásosztály-tagságát.](#change-a-users-resource-class)
+- Az erőforrás-osztályok erőforrás-felhasználásának megtekintéséhez tekintse meg a [memória és a Egyidejűség korlátai](memory-concurrency-limits.md)című témakört.
+- Az erőforrás osztályának módosításához egy másik felhasználó alatt futtathatja a lekérdezést, vagy [módosíthatja az aktuális felhasználó erőforrás-osztályának](#change-a-users-resource-class) tagságát.
 
-### <a name="static-resource-classes"></a>Statikus erőforrásosztályok
+### <a name="static-resource-classes"></a>Statikus erőforrás-osztályok
 
-A statikus erőforrásosztályok az aktuális teljesítményszinttől függetlenül azonos mennyiségű memóriát foglalnak le, amelyet [az adattárház egységekben](what-is-a-data-warehouse-unit-dwu-cdwu.md)mérnek. Mivel a lekérdezések a teljesítményszinttől függetlenül ugyanazt a memóriafoglalást kapják, [az adattárház horizontális felskálázása](quickstart-scale-compute-portal.md) lehetővé teszi, hogy egy erőforrásosztályon belül több lekérdezés fusson.  A statikus erőforrásosztályok akkor ideálisak, ha az adatmennyiség ismert és állandó.
+A statikus erőforrás-osztályok ugyanazt a memóriát foglalják magukban, függetlenül attól, hogy milyen teljesítményszint van megadva az [adatraktár-egységekben](what-is-a-data-warehouse-unit-dwu-cdwu.md). Mivel a lekérdezések ugyanazt a memóriát kapják meg, a teljesítmény szintjétől függetlenül, [az adatraktár horizontális felskálázása](quickstart-scale-compute-portal.md) lehetővé teszi, hogy több lekérdezés fusson egy adott erőforráson belül.  A statikus erőforrás-osztályok ideálisak, ha az adatmennyiség ismert és állandó.
 
-A statikus erőforrásosztályok az előre definiált adatbázis-szerepkörökkel vannak megvalósítva:
+A statikus erőforrás-osztályok a következő előre definiált adatbázis-szerepkörökkel vannak implementálva:
 
 - staticrc10
-- staticrc20
+- staticrc20 erőforrásosztályhoz
 - staticrc30
 - staticrc40
 - staticrc50
@@ -54,83 +54,83 @@ A statikus erőforrásosztályok az előre definiált adatbázis-szerepkörökke
 - staticrc70
 - staticrc80
 
-### <a name="dynamic-resource-classes"></a>Dinamikus erőforrásosztályok
+### <a name="dynamic-resource-classes"></a>Dinamikus erőforrás-osztályok
 
-A dinamikus erőforrásosztályok az aktuális szolgáltatási szinttől függően változó mennyiségű memóriát foglalnak le. Bár a statikus erőforrásosztályok előnyösek a nagyobb egyidejűség és a statikus adatkötetek számára, a dinamikus erőforrásosztályok jobban megfelelnek a növekvő vagy változó mennyiségű adatnak.  Ha nagyobb szolgáltatási szintre skáláz, a lekérdezések automatikusan több memóriát kapnak.  
+A dinamikus erőforrás-osztályok változó mennyiségű memóriát foglalnak le az aktuális szolgáltatási szinttől függően. Míg a statikus erőforrás-osztályok a magasabb párhuzamosságok és a statikus adatmennyiségek esetében előnyösek, a dinamikus erőforrás-osztályok a növekvő vagy változó mennyiségű adatokhoz alkalmasabbak.  Ha nagyobb szolgáltatási szintre bővít, a lekérdezések automatikusan több memóriát kapnak.  
 
-A dinamikus erőforrásosztályok az előre definiált adatbázis-szerepkörökkel vannak megvalósítva:
+A dinamikus erőforrás-osztályok a következő előre definiált adatbázis-szerepkörökkel vannak implementálva:
 
-- smallrc között
-- közepesrc
-- nagyobbc
+- smallrc
+- mediumrc
+- largerc
 - xlargerc
 
-Az egyes erőforrás-osztályok memóriafoglalása a következő.
+Az egyes erőforrás-osztályok memóriájának kiosztása a következő.
 
-| Szolgáltatási szint  | smallrc között           | közepesrc               | nagyobbc                | xlargerc               |
+| Szolgáltatási szint  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
-| DW200c         | 12.5%             | 12.5%                  | 22%                    | 70%                    |
-| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
-| DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
-| DW500c lehetőséget         | 5%                | 10%                    | 22%                    | 70%                    |
-| DW1000c a<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+| DW200c         | 12,5%             | 12,5%                  | 22                    | 70%                    |
+| DW300c         | 8%                | 10%                    | 22                    | 70%                    |
+| DW400c         | 6,25%             | 10%                    | 22                    | 70%                    |
+| DW500c lehetőséget         | 5%                | 10%                    | 22                    | 70%                    |
+| DW1000c<br> DW30000c | 3%       | 10%                    | 22                    | 70%                    |
 
-### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
+### <a name="default-resource-class"></a>Alapértelmezett erőforrás osztály
 
-Alapértelmezés szerint minden felhasználó tagja a dynamic resource class **smallrc**.
+Alapértelmezés szerint minden felhasználó a dinamikus erőforrás osztály **smallrc**tagja.
 
-A szolgáltatás-rendszergazda erőforrásosztálya smallrc-ben van rögzítve, és nem módosítható.  A szolgáltatás-rendszergazda a kiépítési folyamat során létrehozott felhasználó.  Az ebben a környezetben a szolgáltatás rendszergazdája a "Kiszolgálói bejelentkezéshez" megadott bejelentkezés, amikor új Synapse SQL-készletet hoz létre egy új kiszolgálóval.
+A szolgáltatás-rendszergazda erőforrás-osztálya a smallrc helyen van kijavítva, és nem módosítható.  A szolgáltatás-rendszergazda a kiépítési folyamat során létrehozott felhasználó.  A szolgáltatás rendszergazdája ebben a környezetben a "kiszolgálói rendszergazdai bejelentkezéshez" megadott bejelentkezési azonosítót adja meg új szinapszis SQL-készlet új kiszolgálóval való létrehozásakor.
 
 > [!NOTE]
-> Az Active Directory-rendszergazdaként definiált felhasználók vagy csoportok szintén szolgáltatás-rendszergazdák.
+> A Active Directory rendszergazdaként definiált felhasználók vagy csoportok is szolgáltatás-rendszergazdák.
 >
 >
 
-## <a name="resource-class-operations"></a>Erőforrásosztály-műveletek
+## <a name="resource-class-operations"></a>Erőforrás-osztály műveletei
 
-Az erőforrásosztályok célja az adatkezelési és -kezelési tevékenységek teljesítményének javítása. Összetett lekérdezések is részesülhetnek egy nagy erőforrás-osztály alatt futó. A nagy illesztések és rendezések lekérdezési teljesítménye például javulhat, ha az erőforrásosztály elég nagy ahhoz, hogy a lekérdezés tamásak a memóriában is végrehajthatók.
+Az erőforrás-osztályok úgy vannak kialakítva, hogy javítsák az adatkezelési és-kezelési tevékenységek teljesítményét. Az összetett lekérdezések a nagyméretű erőforrás-osztályok alatt is kihasználhatják a futtatást. A nagyméretű illesztések és rendezések lekérdezési teljesítménye például javítható, ha az erőforrás-osztály elég nagy ahhoz, hogy a lekérdezés a memóriában is fusson.
 
-### <a name="operations-governed-by-resource-classes"></a>Erőforrásosztályok által szabályozott műveletek
+### <a name="operations-governed-by-resource-classes"></a>Erőforrás-osztályok alá tartozó műveletek
 
-Ezeket a műveleteket az erőforrásosztályok szabályozzák:
+Ezeket a műveleteket az erőforrás-osztályok szabályozzák:
 
-- BESZÚRÁS–KIJELÖLÉS, FRISSÍTÉS, TÖRLÉS
-- SELECT (felhasználói táblák lekérdezésekekénekesetén)
-- ALTER INDEX - ÚJJÁÉPÍTÉS VAGY ÁTSZERVEZÉS
-- TÁBLA-ÚJRAÉPÍTÉS MÓDOSÍTÁSA
+- BESZÚRÁS – KIJELÖLÉS, FRISSÍTÉS, TÖRLÉS
+- SELECT (felhasználói táblák lekérdezésekor)
+- ALTER INDEX – Újraépítés vagy átrendezés
+- A TÁBLA ÚJRAÉPÍTÉSÉNEK MÓDOSÍTÁSA
 - CREATE INDEX
 - FÜRTÖZÖTT OSZLOPCENTRIKUS INDEX LÉTREHOZÁSA
-- TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT (CTA)CREATE TABLE AS SELECT (CTAS)
+- CREATE TABLE A SELECT (CTAS)
 - Az adatok betöltése
-- Az adatmozgatási szolgáltatás (DMS) által végzett adatmozgatási műveletek
+- Az adatátviteli szolgáltatás (DMS) által végrehajtott adatáthelyezési műveletek
 
 > [!NOTE]  
-> Select utasítások dinamikus felügyeleti nézetek (DMVs) vagy más rendszernézetek nem szabályozza sem az egyidejűségi korlátokat. A rendszeren futó lekérdezések számától függetlenül figyelheti a rendszert.
+> A dinamikus felügyeleti nézetekre (DMV) vagy más rendszernézetekre vonatkozó utasításokat nem a párhuzamossági korlátok egyike szabályozza. A rendszer figyelése a rendszeren futtatott lekérdezések számától függetlenül.
 >
 >
 
-### <a name="operations-not-governed-by-resource-classes"></a>Erőforrásosztályok által nem szabályozott műveletek
+### <a name="operations-not-governed-by-resource-classes"></a>Nem erőforrás-osztályokra vonatkozó műveletek
 
-Egyes lekérdezések mindig a smallrc erőforrásosztályban futnak, még akkor is, ha a felhasználó egy nagyobb erőforrásosztály tagja. Ezek a kivételező lekérdezések nem számítanak bele az egyidejűségi korlátba. Ha például az egyidejűségi korlát 16, sok felhasználó választhat a rendszernézetekből anélkül, hogy befolyásolná a rendelkezésre álló egyidejűségi bővítőhelyeket.
+Egyes lekérdezések mindig a smallrc-erőforrás osztályban futnak, még akkor is, ha a felhasználó egy nagyobb erőforrás osztály tagja. Ezek a kivételt képező lekérdezések nem számítanak bele a egyidejűségi korlátba. Ha például a párhuzamossági korlát 16, számos felhasználó kiválasztható a rendszernézetből az elérhető egyidejűségi tárolóhelyek befolyásolása nélkül.
 
-A következő utasítások mentesülnek az erőforrásosztályok alól, és mindig smallrc-ben futnak:
+Az alábbi utasítások mentesülnek az erőforrás-osztályoktól, és mindig a smallrc futnak:
 
-- LÉTREHOZÁS I VAGY CSEPPTÁBLA
-- TÁBLA MÓDOSÍTÁSA ... KAPCSOLÓ, SPLIT VAGY FELOSZTÁSPARTÍCIÓ
-- INDEX LETILTÁSÁNAK MÓDOSÍTÁSA
+- TÁBLA létrehozása vagy eldobása
+- TÁBLÁZAT MÓDOSÍTÁSA... PARTÍCIÓ VÁLTása, FELOSZTása vagy EGYESÍTÉSe
+- MÓDOSÍTÁSI INDEX LETILTÁSA
 - DROP INDEX
-- LÉTREHOZÁSI, FRISSÍTÉSI VAGY CSEPPSTATISZTIKA
-- TÁBLÁZAT CSONKOLÁSA
-- ENGEDÉLYEZÉSI MÓDOSÍTOTT
+- STATISZTIKÁK létrehozása, frissítése vagy eldobása
+- TRUNCATE TABLE
+- MÓDOSÍTÁS ENGEDÉLYEZÉSE
 - BEJELENTKEZÉS LÉTREHOZÁSA
-- CREATE, ALTER vagy DROP USER
-- LÉTREHOZÁSI, ALTER- VAGY EJTÉSI ELJÁRÁS
-- LÉTREHOZÁS VAGY LEGÖRDÜLŐ NÉZET
+- FELHASZNÁLÓ létrehozása, módosítása vagy eldobása
+- ELJÁRÁS létrehozása, módosítása vagy eldobása
+- NÉZET létrehozása vagy eldobása
 - ÉRTÉKEK BESZÚRÁSA
-- SELECT a rendszernézetekből és a DMV-kből
-- Magyarázni
-- Dbcc
+- Válasszon a rendszernézetek és a DMV közül
+- MEGMAGYARÁZNI
+- DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQL DW
@@ -139,18 +139,18 @@ Removed as these two are not confirmed / supported under SQL DW
 - REDISTRIBUTE
 -->
 
-## <a name="concurrency-slots"></a>Egyidejűségi bővítőhelyek
+## <a name="concurrency-slots"></a>Egyidejűségi tárolóhelyek
 
-Egyidejűségi bővítőhelyek egy kényelmes módja annak, hogy nyomon kövesse a lekérdezés végrehajtásához rendelkezésre álló erőforrásokat. Olyanok, mint a jegyek, amelyeket azért vásárolsz, hogy helyet foglaljon egy koncerten, mert az ülőhelyek korlátozottak. Az adatraktáronkénti egyidejűségi tárolóhelyek teljes számát a szolgáltatási szint határozza meg. A lekérdezés végrehajtása megkezdése előtt elegendő egyidejűségi bővítőhely lefoglalásához szükséges. Amikor egy lekérdezés befejeződik, felszabadítja az egyidejűségi tárolóhelyeket.  
+A egyidejűségi tárolóhelyek kényelmes megoldást jelentenek a lekérdezés-végrehajtáshoz elérhető erőforrások nyomon követésére. Ilyenek például a megvásárolt jegyek, amelyeket egy koncerten tartanak fenn, mert korlátozott az ülőhelyek száma. Az adatraktárban található egyidejűségi tárolóhelyek teljes számát a szolgáltatási szint határozza meg. Ahhoz, hogy egy lekérdezés el tudja indítani a végrehajtást, képesnek kell lennie elegendő egyidejű tárolóhely fenntartására. Amikor egy lekérdezés befejeződik, felszabadítja a párhuzamossági tárolóhelyeket.  
 
-- A 10 egyidejűségi bővítőhellyel futó lekérdezés ekként ötször több számítási erőforrást érhet el, mint a 2 egyidejűségi bővítőhely fut.
-- Ha minden lekérdezés 10 egyidejűségi bővítőhelyet igényel, és 40 egyidejűségi bővítőhely van, majd csak 4 lekérdezés futhat egyidejűleg.
+- A 10 egyidejű tárolóhelyet futtató lekérdezések 5 alkalommal több számítási erőforrást tudnak elérni, mint a 2 egyidejű bővítőhelyen futó lekérdezés.
+- Ha minden lekérdezés 10 egyidejű tárolóhelyet igényel, és 40 egyidejűségi tárolóhely van, akkor egyszerre csak 4 lekérdezés futhat.
 
-Csak az erőforrás-szabályozott lekérdezések használnak egyidejűségi tárolóhelyeket. A rendszerlekérdezések és néhány triviális lekérdezés nem használ fel bővítőhelyeket. A felhasznált egyidejűségi tárolóhelyek pontos számát a lekérdezés erőforrásosztálya határozza meg.
+Csak az erőforrás által szabályozott lekérdezések használják a párhuzamossági tárolóhelyeket. A rendszerlekérdezések és néhány triviális lekérdezés nem használ tárolóhelyet. A felhasználható párhuzamossági résidők pontos számát a lekérdezés erőforrás-osztálya határozza meg.
 
-## <a name="view-the-resource-classes"></a>Az erőforrásosztályok megtekintése
+## <a name="view-the-resource-classes"></a>Az erőforrás-osztályok megtekintése
 
-Az erőforrásosztályok előre definiált adatbázis-szerepkörként vannak megvalósítva. Az erőforrásosztályoknak két típusa van: dinamikus és statikus. Az erőforrásosztályok listájának megtekintéséhez használja a következő lekérdezést:
+Az erőforrás-osztályok előre definiált adatbázis-szerepkörökként vannak implementálva. Kétféle erőforrás-osztály létezik: dinamikus és statikus. Az erőforrás-osztályok listájának megtekintéséhez használja a következő lekérdezést:
 
 ```sql
 SELECT name
@@ -158,96 +158,96 @@ FROM   sys.database_principals
 WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 ```
 
-## <a name="change-a-users-resource-class"></a>Felhasználó erőforrásosztályának módosítása
+## <a name="change-a-users-resource-class"></a>Felhasználó erőforrás-osztályának módosítása
 
-Az erőforrásosztályok at úgy valósítják meg, hogy a felhasználókat adatbázis-szerepkörökhöz rendelik. Amikor egy felhasználó lekérdezést futtat, a lekérdezés a felhasználó erőforrásosztályával fut. Ha például egy felhasználó a staticrc10 adatbázis-szerepkör tagja, a lekérdezések kis mennyiségű memóriával futnak. Ha egy adatbázis-felhasználó az xlargerc vagy staticrc80 adatbázis-szerepkörök tagja, a lekérdezések nagy mennyiségű memóriával futnak.
+Az erőforrás-osztályok a felhasználók adatbázis-szerepkörökhöz való hozzárendelésével valósíthatók meg. Amikor egy felhasználó futtat egy lekérdezést, a lekérdezés a felhasználó erőforrás-osztályával fut. Ha például egy felhasználó a staticrc10 adatbázis-szerepkör tagja, a lekérdezések kis mennyiségű memóriával futnak. Ha egy adatbázis-felhasználó tagja a xlargerc vagy a staticrc80 adatbázis-szerepkörnek, a lekérdezések nagy mennyiségű memóriával futnak.
 
-A felhasználó erőforrásosztályának növeléséhez használja [a sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével adja hozzá a felhasználót egy nagy erőforrásosztály adatbázis-szerepköréhez.  Az alábbi kód hozzáad egy felhasználót a nagyobb adatbázis szerepkörhöz.  Minden kérelem a rendszermemória 22%-át kapja meg.
+A felhasználó erőforrás-osztályának növeléséhez a [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával adja hozzá a felhasználót egy nagy erőforrás-osztály adatbázis-szerepköréhez.  Az alábbi kód hozzáadja a felhasználót a largerc adatbázis-szerepkörhöz.  Minden kérelem a rendszermemória 22%-át kapja meg.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Az erőforrásosztály csökkentéséhez használja [a sp_droprolemember.](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Ha a "loaduser" nem tagja, vagy bármely más erőforrás-osztály, akkor az alapértelmezett smallrc erőforrásosztályba kerül, 3%-os memóriatámogatással.  
+Az erőforrás osztályának csökkentéséhez használja a [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Ha a "loaduser" nem tag vagy más erőforrás-osztály, az alapértelmezett smallrc-erőforrás osztályba kerül, és 3% memóriát biztosít.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
 ```
 
-## <a name="resource-class-precedence"></a>Erőforrásosztály prioritása
+## <a name="resource-class-precedence"></a>Erőforrás-osztály prioritása
 
-A felhasználók több erőforrásosztály tagjai is lehetnek. Ha egy felhasználó egynél több erőforrásosztályhoz tartozik:
+A felhasználók több erőforrás osztály tagjai lehetnek. Ha egy felhasználó több erőforrás osztályhoz tartozik:
 
-- A dinamikus erőforrásosztályok elsőbbséget élveznek a statikus erőforrás-osztályokkal szemben. Ha például egy felhasználó a mediumrc(dynamic) és a staticrc80 (statikus) tagja, a lekérdezések mediumrc-vel futnak.
-- A nagyobb erőforrásosztályok elsőbbséget élveznek a kisebb erőforrás-osztályokkal szemben. Ha például egy felhasználó a mediumrc és a largerc tagja, a lekérdezések nagyobbc-vel futnak. Hasonlóképpen, ha a felhasználó a staticrc20 és a statirc80 tagja, a lekérdezések staticrc80 erőforrás-elosztással futnak.
+- A dinamikus erőforrás-osztályok elsőbbséget élveznek a statikus erőforrások osztályaival szemben. Ha például egy felhasználó mind a mediumrc (dinamikus), mind a staticrc80 (statikus) tagja, a lekérdezések a mediumrc-vel futnak.
+- A nagyobb erőforrás-osztályok elsőbbséget élveznek a kisebb erőforrás-osztályokkal szemben. Ha például egy felhasználó tagja a mediumrc és a largerc, a lekérdezések a largerc-mel futnak. Hasonlóképpen, ha a felhasználó mind a staticrc20 erőforrásosztályhoz, mind a statirc80 tagja, akkor a lekérdezések staticrc80 erőforrás-lefoglalásokkal futnak.
 
 ## <a name="recommendations"></a>Javaslatok
 
 >[!NOTE]
->Fontolja meg a számítási feladatok kezelése képességek[(munkaterhelés elkülönítése,](sql-data-warehouse-workload-isolation.md) [besorolása](sql-data-warehouse-workload-classification.md) és [fontossága](sql-data-warehouse-workload-importance.md)) a számítási feladatok jobb szabályozása és a kiszámítható teljesítmény.  
+>Érdemes lehet kihasználni a munkaterhelés-kezelési képességeket (a[munkaterhelés elkülönítését](sql-data-warehouse-workload-isolation.md), a [besorolást](sql-data-warehouse-workload-classification.md) és a [fontosságot](sql-data-warehouse-workload-importance.md)) a számítási feladatok és a kiszámítható teljesítmény szabályozása érdekében.  
 >
 >
 
-Azt javasoljuk, hogy hozzon létre egy felhasználót, amely egy adott típusú lekérdezés vagy betöltési művelet futtatására szolgál. Adjon a felhasználónak állandó erőforrásosztályt ahelyett, hogy gyakran módosítaná az erőforrásosztályt. A statikus erőforrásosztályok nagyobb általános ellenőrzést biztosítanak a munkaterhelésen, ezért javasoljuk a statikus erőforrásosztályok használatát a dinamikus erőforrásosztályok mérlegelése előtt.
+Javasoljuk, hogy hozzon létre egy olyan felhasználót, amely egy adott típusú lekérdezési vagy betöltési művelet futtatására van kijelölve. Ezt a felhasználót állandó erőforrás-osztályként adja meg, és ne módosítsa az erőforrás osztályát gyakori módon. A statikus erőforrás-osztályok nagyobb mértékben szabályozzák a munkaterhelést, ezért javasoljuk, hogy statikus erőforrás-osztályokat használjon a dinamikus erőforrás-osztályok megfontolása előtt.
 
-### <a name="resource-classes-for-load-users"></a>Erőforrásosztályok a betöltő felhasználók számára
+### <a name="resource-classes-for-load-users"></a>Erőforrás-osztályok a betöltési felhasználók számára
 
-`CREATE TABLE`fürtözött oszlopcentrikus indexeket használ alapértelmezés szerint. Az adatok oszlopcentrikus indexbe való tömörítése memóriaigényes művelet, és a memórianyomás csökkentheti az index minőségét. A memórianyomás az adatok betöltésekor magasabb erőforrásosztályt eredményezhet. Annak érdekében, hogy a betöltések elegendő memóriával rendelkezzenek, hozzon létre egy olyan felhasználót, amely a betöltések futtatására van kijelölve, és hozzárendelheti a felhasználót egy magasabb erőforrásosztályhoz.
+`CREATE TABLE`Alapértelmezés szerint fürtözött oszlopcentrikus indexeket használ. Az adatok oszlopcentrikus-indexbe tömörítése egy memória-igényes művelet, a memória terhelése pedig csökkentheti az index minőségét. A memória-nyomás nagyobb erőforrás-osztályt eredményezhet az adatbetöltése során. Annak érdekében, hogy a terhelések elegendő memóriával rendelkezzenek, létrehozhat egy terhelés futtatására kijelölt felhasználót, és hozzárendelheti a felhasználót egy magasabb szintű erőforrás-osztályhoz.
 
-A terhelések hatékony feldolgozásához szükséges memória a betöltött tábla jellegétől és az adatok méretétől függ. A memóriakövetelményekről a [sorcsoportminőségének maximalizálása című](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)témakörben talál további információt.
+A terhelések feldolgozásához szükséges memória a betöltött tábla természetétől és az adatok méretétől függ. A memóriával kapcsolatos követelményekről a [sorcsoport minőségének maximalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)című témakörben olvashat bővebben.
 
-Miután meghatározta a memóriaszükségletet, válassza ki, hogy a betöltési felhasználót statikus vagy dinamikus erőforrásosztályhoz rendeli-e.
+Ha meghatározta a memória követelményét, válassza ki, hogy a betöltési felhasználót statikus vagy dinamikus erőforrás-osztályhoz kívánja-e rendelni.
 
-- Statikus erőforrásosztályt akkor használjon, ha a táblamemória követelményei egy adott tartományba esnek. A terhelések megfelelő memóriával futnak. Az adatraktár méretezésekénél a terhelések nem igényelnek több memóriát. Statikus erőforrásosztály használatával a memórialefoglalások állandóak maradnak. Ez a konzisztencia memóriát takarít meg, és lehetővé teszi, hogy több lekérdezés egyidejűleg fusson. Azt javasoljuk, hogy az új megoldások először a statikus erőforrásosztályokat használják, mivel ezek nagyobb vezérlést biztosítanak.
-- Dinamikus erőforrásosztályt használjon, ha a táblamemória követelményei igen eltérőek. A terhelések több memóriát igényelhetnek, mint amennyit az aktuális DWU vagy cDWU szint biztosít. Az adattárház méretezése több memóriát ad a betöltési műveletekhez, ami lehetővé teszi a betöltések gyorsabb elvégzését.
+- Statikus erőforrás-osztály használata, ha a tábla memóriájának követelményei egy adott tartományon belül esnek. A terhelés a megfelelő memóriával fut. Az adatraktár skálázásakor a terhelések nem igényelnek további memóriát. A statikus erőforrás osztály használatával a memória foglalása állandó marad. Ez a konzisztencia memóriát takarít meg, és lehetővé teszi, hogy a több lekérdezés egyidejűleg fusson. Javasoljuk, hogy az új megoldások először a statikus erőforrás-osztályokat használják, mivel ezek nagyobb ellenőrzést biztosítanak.
+- Dinamikus erőforrás-osztály használata, ha a tábla memóriájának követelményei széles skálán változnak. Előfordulhat, hogy a terhelések nagyobb memóriát igényelnek, mint az aktuális DWU vagy cDWU szint. Az adatraktár skálázása több memóriát ad hozzá a műveletek betöltéséhez, ami lehetővé teszi a terhelések gyorsabb végrehajtását.
 
-### <a name="resource-classes-for-queries"></a>Lekérdezések erőforrásosztályai
+### <a name="resource-classes-for-queries"></a>Lekérdezésekhez tartozó erőforrás-osztályok
 
-Egyes lekérdezések számításigényesek, mások nem.  
+Egyes lekérdezések nagy számítási igényűek, néhányat nem.  
 
-- Akkor válasszon dinamikus erőforrásosztályt, ha a lekérdezések összetettek, de nincs szükségük magas egyidejűségre.  Például a napi vagy heti jelentések létrehozása alkalmi erőforrásigény. Ha a jelentések nagy mennyiségű adatot dolgoznak fel, az adattárház méretezése több memóriát biztosít a felhasználó meglévő erőforrásosztályának.
-- Válasszon statikus erőforrásosztályt, ha az erőforrás-elvárások a nap folyamán változnak. Például egy statikus erőforrásosztály jól működik, ha az adatraktárt sokan kérdezik le. Az adattárház méretezésekénte a felhasználó számára lefoglalt memória mennyisége nem változik. Ennek következtében további lekérdezések hajthatók végre párhuzamosan a rendszeren.
+- Válassza ki a dinamikus erőforrás osztályt, ha a lekérdezések összetettek, de nincs szükség magas egyidejűségre.  Például a napi vagy heti jelentések létrehozása időnként szükség van az erőforrásokra. Ha a jelentések nagy mennyiségű adattal dolgoznak fel, az adatraktár skálázása nagyobb memóriát biztosít a felhasználó meglévő erőforrás-osztályának.
+- Válassza ki a statikus erőforrás osztályt, ha az erőforrás-várakozások a nap folyamán változnak. Egy statikus erőforráscsoport például jól működik, ha az adattárházat sok ember kérdezi le. Az adatraktár skálázásakor a felhasználónak kiosztott memória mennyisége nem változik. Ennek következtében a rendszeren párhuzamosan több lekérdezés is végrehajtható.
 
-A megfelelő memóriatámogatások számos tényezőtől függenek, például a lekérdezett adatok mennyiségétől, a táblasémák jellegétől, valamint a különböző illesztésektől, kijelöléstől és csoportosítási predikátumoktól. Általában több memória lefoglalása lehetővé teszi a lekérdezések gyorsabb befejezését, de csökkenti a teljes egyidejűséget. Ha az egyidejűség nem probléma, a memória túlfoglalása nem károsítja az átviteli kapacitást.
+A megfelelő memória-támogatás számos tényezőtől függ, például a lekérdezett adatok mennyiségétől, a tábla sémáinak természetétől, valamint a különböző illesztési, kiválasztási és csoportosítási beállításoktól. Általánosságban elmondható, hogy több memória kiosztása lehetővé teszi a lekérdezések gyorsabb elvégzését, de csökkenti a teljes párhuzamosságot. Ha a Egyidejűség nem probléma, a túlterhelést okozó memória nem károsítja az átviteli sebességet.
 
-A teljesítmény finomhangolásához használjon különböző erőforrásosztályokat. A következő szakasz egy tárolt eljárást ad, amely segít kitalálni a legjobb erőforrásosztályt.
+A teljesítmény finomhangolásához használjon különböző erőforrás-osztályokat. A következő szakasz egy tárolt eljárást tartalmaz, amely segít kideríteni a legjobb erőforrás-osztályt.
 
-## <a name="example-code-for-finding-the-best-resource-class"></a>Példa kód a legjobb erőforrásosztály megkeresésére
+## <a name="example-code-for-finding-the-best-resource-class"></a>Példa a legjobb erőforrás-osztály megtalálására szolgáló kódra
 
-A következő megadott tárolt eljárás segítségével kiszámíthatja az erőforrásosztályonkénti egyidejűségi és memóriatámogatás egy adott SLO-n, és a legjobb erőforrásosztályt a memóriaigényes CCI-műveletekhez a nem particionált CCI-táblában egy adott erőforrásosztályban:
+A következő megadott tárolt eljárással kiderítheti a párhuzamosságokat és a memória-engedélyezési műveleteket egy adott SLO esetében, valamint a legjobb erőforrás-osztályt a memória-igényes CCI-műveletekhez egy adott erőforrás osztályon nem particionált CCI-táblában:
 
-Itt a célja ennek a tárolt eljárás:
+A következő tárolt eljárás célja:
 
-1. Az egyidejűség i és memóriatámogatás megtekintése erőforrásosztályonként egy adott SLO-ban. A felhasználónak null értéket kell megadnia a sémához és a táblanévhez is, ahogy az ebben a példában látható.  
-2. A memóriaigényes CCI-műveletek legjobb erőforrásosztályának megtekintéséhez (betöltés, tábla másolása, index újraépítése stb.) egy adott erőforrásosztály nem particionált CCI tábláján. A tárolt proc táblasémát használ a szükséges memóriatámogatás megkeresésére.
+1. Egy adott SLO-beli erőforrás-osztály párhuzamossági és memória-engedélyezésének megtekintéséhez. A felhasználónak NULL értékűnek kell lennie a séma és a táblanév számára, ahogy az ebben a példában is látható.  
+2. Ha meg szeretné tekinteni a legjobb erőforrás-osztályt a memória-igényes KKU-műveletekhez (betöltés, tábla másolása, újraépítési index stb.) a nem particionált CCI-táblázatban egy adott erőforrás osztályban. A tárolt proc tábla sémája alapján állapítja meg a szükséges memória-hozzáférést.
 
 ### <a name="dependencies--restrictions"></a>Függőségek & korlátozások
 
-- Ez a tárolt eljárás nem a particionált cci tábla memóriaigényének kiszámítására szolgál.
-- Ez a tárolt eljárás nem veszi figyelembe a memóriakövetelményeket a CTAS/INSERT-SELECT SELECT részében, és feltételezi, hogy az egy SELECT.
+- Ez a tárolt eljárás nem úgy van kialakítva, hogy kiszámítsa egy particionált CCI-tábla memóriára vonatkozó követelményét.
+- Ez a tárolt eljárás nem veszi figyelembe a memóriára vonatkozó követelményeket az CTAS/INSERT – Select rész kiválasztásához, és feltételezi, hogy a kiválasztott elem.
 - Ez a tárolt eljárás egy ideiglenes táblát használ, amely abban a munkamenetben érhető el, ahol a tárolt eljárás létrejött.
-- Ez a tárolt eljárás az aktuális ajánlatoktól függ (például hardverkonfiguráció, DMS konfiguráció), és ha ezek bármelyike megváltozik, akkor ez a tárolt proc nem fog megfelelően működni.  
-- Ez a tárolt eljárás a meglévő egyidejűségi korlát-ajánlatoktól függ, és ha ezek megváltoznak, akkor ez a tárolt eljárás nem fog megfelelően működni.  
-- Ez a tárolt eljárás a meglévő erőforrásosztály-ajánlatoktól függ, és ha ezek megváltoznak, akkor ez a tárolt eljárás nem fog megfelelően működni.  
+- Ez a tárolt eljárás az aktuális ajánlattól függ (például hardverkonfiguráció, DMS-konfiguráció), és ha ezek bármelyike megváltozik, akkor ez a tárolt proc nem fog megfelelően működni.  
+- Ez a tárolt eljárás a meglévő egyidejűségi korláttól függ, és ha ezek a változások megváltoznak, akkor ez a tárolt eljárás nem fog megfelelően működni.  
+- Ez a tárolt eljárás a meglévő erőforrás-osztályoktól függ, és ha ezek változnak, akkor ez a tárolt eljárás nem fog megfelelően működni.  
 
 >[!NOTE]  
->Ha nem kapja meg a kimenetet a tárolt eljárás végrehajtása után a megadott paraméterekkel, akkor két eset lehet.
+>Ha nem kap kimenetet a megadott paraméterekkel rendelkező tárolt eljárás végrehajtása után, akkor két eset lehet.
 >
 >1. Vagy a DW paraméter érvénytelen SLO-értéket tartalmaz
->2. Vagy nincs megfelelő erőforrásosztály a kki-művelethez a táblában.
+>2. Vagy nincs megfelelő erőforrás-osztály a KKU-művelethez a táblában.
 >
->A DW100c esetében például a rendelkezésre álló legmagasabb memóriatámogatás 1 GB, és ha a táblaséma elég széles ahhoz, hogy átlépje az 1 GB-os követelményt.
+>A DW100c esetében például a legmagasabb rendelkezésre állású memória 1 GB, a tábla sémája pedig elég nagy ahhoz, hogy az 1 GB-os követelményt átadja.
 
-### <a name="usage-example"></a>Példa használati
+### <a name="usage-example"></a>Használati példa
 
 Szintaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:Vagy adjon meg null paramétert az aktuális DWU kinyeréséhez a DW DB-ból, vagy adjon meg bármely támogatott DWU-t "DW100c" formájában.
-2. @SCHEMA_NAME:Adja meg a tábla sémanevét
-3. @TABLE_NAME:Adja meg a kamat táblanevét
+1. @DWU:Adjon meg NULL paramétert az aktuális DWU kinyeréséhez a DW DB-ből, vagy adja meg a támogatott DWU a következő formában: "DW100c".
+2. @SCHEMA_NAME:Adja meg a tábla sémájának nevét.
+3. @TABLE_NAME:Adja meg a kamat táblanév nevét
 
-Példák a tárolt proc végrehajtására:
+Példák a tárolt folyamat végrehajtására:
 
 ```sql
 EXEC dbo.prc_workload_management_by_DWU 'DW2000c', 'dbo', 'Table1';  
@@ -256,7 +256,7 @@ EXEC dbo.prc_workload_management_by_DWU 'DW6000c', NULL, NULL;
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
 
-A következő utasítás létrehozza az előző példákban használt 1.
+A következő utasítás az előző példákban használt tábla1 hoz létre.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
 ### <a name="stored-procedure-definition"></a>Tárolt eljárás definíciója
@@ -592,4 +592,4 @@ GO
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme az SQL Analytics szolgáltatásban](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa el [a Memóriaoptimalizálás az oszlopcentrikus tömörítéshez című témakört.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
+Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele az SQL Analyticsben](sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [a oszlopcentrikus tömörítésének memória-optimalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).

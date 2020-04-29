@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: glenga
 ms.openlocfilehash: 44969063765099d350e21abfbd07792891443911
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673139"
 ---
 ::: zone pivot="programming-language-python"  
 ## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Virtuális környezet létrehozása és aktiválása
 
-A megfelelő mappában futtassa a következő parancsokat `.venv`a nevű virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Python 3.8, 3.7 vagy 3.6, amelyek az Azure Functions által támogatott.
+Egy megfelelő mappában futtassa a következő parancsokat a nevű `.venv`virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Azure Functions által támogatott Python 3,8, 3,7 vagy 3,6-ot használja.
 
-# <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 python -m venv .venv
@@ -26,7 +26,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-Ha a Python nem telepítette a venv csomagot a Linux disztribúcióra, futtassa a következő parancsot:
+Ha a Python nem telepítette a venv csomagot a Linux-disztribúcióban, futtassa a következő parancsot:
 
 ```bash
 sudo apt-get install python3-venv
@@ -54,5 +54,5 @@ py -m venv .venv
 
 ---
 
-Az összes további parancsot ebben az aktivált virtuális környezetben futtatja. (A virtuális környezetből `deactivate`való kilépéshez futtassa a .)
+Az összes további parancsot futtatja ebben az aktivált virtuális környezetben. (A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate`.)
 ::: zone-end

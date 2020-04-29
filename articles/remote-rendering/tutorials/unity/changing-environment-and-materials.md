@@ -1,39 +1,39 @@
 ---
-title: A környezet és az anyagok megváltoztatása
-description: Bemutató, amely bemutatja, hogyan lehet módosítani az ég térkép és az objektum anyagok Unity jelenetet.
+title: A környezet és az anyagok módosítása
+description: Ez az oktatóanyag bemutatja, hogyan módosíthatja az égbolt térképeit és az objektumokat egy Unity-jelenetben.
 author: jakrams
 ms.author: jakras
 ms.date: 02/03/2020
 ms.topic: tutorial
 ms.openlocfilehash: 1354ac3cf2c6fc716ac72ae339928fa49171893e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679617"
 ---
-# <a name="tutorial-changing-the-environment-and-materials"></a>Oktatóanyag: A környezet és az anyagok megváltoztatása
+# <a name="tutorial-changing-the-environment-and-materials"></a>Oktatóanyag: a környezet és az anyagok módosítása
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
-> * A jelenet környezeti térképének módosítása.
-> * Anyagparaméterek módosítása.
-> * Töltsön be egyéni textúrákat.
+> * Egy jelenet környezeti térképének módosítása
+> * Anyag paramétereinek módosítása
+> * Egyéni textúrák betöltése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy ismeri [az oktatóanyagot: Távoli entitásokkal való munka az Unity-ben](working-with-remote-entities.md). Azonban csak olyan Unity projektre van szüksége, amellyel csatlakozhat a munkamenetekhez, és betölthet egy modellt, amint az az [Oktatóanyag: Unity projekt beállítása a semmiből](project-setup.md).
+Ez az oktatóanyag azt feltételezi, hogy már ismeri a következő [oktatóanyagot: távoli entitások használata az egységben](working-with-remote-entities.md). Azonban csak olyan Unity-projektre van szükség, amellyel kapcsolódhat munkamenetekhez, és betöltheti a modelleket, ahogy az [oktatóanyag: Unity-projekt létrehozása a semmiből](project-setup.md)című szakaszban is látható.
 
 > [!TIP]
-> Az [ARR mintatár](https://github.com/Azure/azure-remote-rendering) tartalmazza előkészített Unity projektek minden oktató a *Unity* mappában, hogy használhatja a referenciaként.
+> Az [ARR-minták tárháza](https://github.com/Azure/azure-remote-rendering) előkészített Unity-projekteket tartalmaz az *Unity* mappában található összes oktatóanyaghoz, amelyet hivatkozásként használhat.
 
-## <a name="change-the-environment-map"></a>A környezeti térkép módosítása
+## <a name="change-the-environment-map"></a>A környezeti Térkép módosítása
 
-Az Azure Remote Rendering támogatja a [sky dobozok](../../overview/features/sky.md) (más néven "környezeti térképek") használatát a környezeti megvilágítás szimulálására. Ez különösen akkor hasznos, ha az objektumok *[fizikai alapú renderelést](../../overview/features/pbr-materials.md)* használnak, ahogy a mintamodellek teszik. ARR is jön-val a különböző beépített ég textúrák, hogy fogjuk használni ezt a bemutató.
+Az Azure Remote rendering a környezeti megvilágítás szimulálása érdekében támogatja a [Sky Box](../../overview/features/sky.md) (más néven "környezeti térképek") használatát. Ez különösen akkor hasznos, ha az objektumok *[fizikailag alapú renderelést](../../overview/features/pbr-materials.md)* használnak, mint a minta modelljeink. Az ARR számos beépített Sky-textúrákat is tartalmaz, amelyeket ebben az oktatóanyagban fogunk használni.
 
-Hozzon létre egy új script nevű **RemoteSky** és add hozzá egy új GameObject. Nyissa meg a parancsfájlt, és cserélje le a következő kódra:
+Hozzon létre egy új, **RemoteSky** nevű szkriptet, és vegye fel egy új GameObject. Nyissa meg a parancsfájlt, és cserélje le a következő kódra:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -95,15 +95,15 @@ public class RemoteSky : MonoBehaviour
 }
 ```
 
-Ne feledje, hogy a `LoadTextureFromSASAsync` változat a fenti, mert a beépített textúrák betöltése. [Csatolt blobtárolókból](../../how-tos/create-an-account.md#link-storage-accounts)való betöltés `LoadTextureAsync` esetén használja a változatot. Például, hogy ez hogyan működik a modellek megtalálható [modell betöltési szakaszban](../../concepts/models.md#loading-models).
+Vegye figyelembe, `LoadTextureFromSASAsync` hogy a rendszer a fenti változatot használja, mert a beépített textúrák betöltődik. Ha [csatolt blob-tárolóból](../../how-tos/create-an-account.md#link-storage-accounts)tölt be betöltést, `LoadTextureAsync` használja a Variant elemet. Példa erre a modellekre a [modell betöltése szakaszban](../../concepts/models.md#loading-models)található.
 
-Amikor futtatja a kódot, és átkapcsolja az égi térképeket, drasztikusan eltérő megvilágítást fog észlelni a modellen. A háttér azonban fekete marad, és nem láthatja a tényleges égbolt textúráját. Ez szándékos, mivel a háttér megjelenítése zavaró lenne egy kiterjesztett valóság eszközzel. Egy megfelelő alkalmazás, akkor használja ég textúrák, amelyek hasonlóak a valós környezetben, mivel ez segít, hogy tárgyak jelennek meg valóságosabb.
+Amikor futtatja a kódot, és átvált a Sky Maps-be, a modellen a drasztikusan eltérő megvilágítás jelenik meg. A háttér azonban feketén marad, és nem látja a tényleges égbolt textúráját. Ez szándékos, mivel a háttér megjelenítésével egy kibővített valóságot használó eszköz is zavaró lehet. A megfelelő alkalmazásokban a valós környezetéhez hasonló Sky-textúrákat kell használnia, mivel ez segít az objektumok valós megjelenésében.
 
 ## <a name="modify-materials"></a>Anyagok módosítása
 
-Az előző oktatóanyagban az [állapot felülbírálását](../../overview/features/override-hierarchical-state.md) használtuk az összetevőket a kijelölt objektumok színszínének módosításához. Most hasonló hatást szeretnénk elérni, de ezt egy tárgy [anyagának](../../concepts/materials.md) módosításával tesszük.
+Az előző oktatóanyagban az állapot- [felülbírálási összetevőket](../../overview/features/override-hierarchical-state.md) használtuk a kiválasztott objektumok árnyalatának módosításához. Most pedig egy hasonló hatást szeretnénk elérni, de ezt egy objektum [anyagának](../../concepts/materials.md) módosításával szeretnénk végrehajtani.
 
-Először is szükségünk van egy script felvenni tárgyakat, mint mi [a második bemutató](working-with-remote-entities.md). Ha még nem rendelkezik **RemoteRaycaster** parancsfájllal, hozza létre most. A tartalom lecserélése a következő kódra:
+Először is szükség van egy szkriptre az objektumok kiválasztásához, ahogy [a második oktatóanyagban](working-with-remote-entities.md)is. Ha még nem rendelkezik **RemoteRaycaster** -parancsfájllal, hozza létre most. Cserélje le a tartalmát a következő kódra:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -220,9 +220,9 @@ public class RemoteRaycaster : MonoBehaviour
 }
 ```
 
-Adja hozzá az összetevőt a *RemoteRendering* játékobjektumhoz. Feladata az egér alatti objektumok kitárolása és *a RemoteModelEntity* összetevők hozzáadása a kitárolt objektumokhoz. Ez az összetevő osztály, ahol végre a tényleges anyagváltozás funkciót.
+Adja hozzá az összetevőt a *RemoteRendering* játék objektumához. Az objektumok kiválogatása és az *RemoteModelEntity* -összetevők hozzáadása a kiválasztott objektumokhoz felelős. Ennek az összetevő-osztálynak a segítségével Implementáljuk az anyagok tényleges módosítási funkcióját.
 
-Ha még nem rendelkezik **RemoteModelEntity** parancsfájllal, hozza létre, és cserélje le annak tartalmát erre a kódra:
+Ha még nem rendelkezik **RemoteModelEntity** -parancsfájllal, hozza létre, és cserélje le a tartalmát a következő kódra:
 
 ```csharp
 using UnityEngine;
@@ -314,19 +314,19 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 
-Amikor futtatja ezt a kódot, az egérrel lebegő objektumok kilesznek emelve. A hatás hasonló ahhoz, amit a bemutató 2, de ahogy ez megvalósult más. Itt megkapjuk a kiválasztott objektumanyagainak listáját, majd módosítjuk az elsőt, hogy más albedo színű legyen.
+A kód futtatásakor az egérrel Kiemelt objektumok láthatók. A hatás hasonló ahhoz, amit a 2. oktatóanyagban tettünk, de a megvalósítás módja eltér. Itt bemutatjuk az anyagok listáját a kiválasztott objektumon, majd az elsőt úgy kell módosítani, hogy más albedó-szín legyen.
 
 > [!IMPORTANT]
-> Kérjük, vegye figyelembe, hogy ez a módszer kiemeli a modell helyes részeit, amodell szerzői módjától függ. Tökéletesen fog működni, ha minden tárgy pontosan egy anyagot használ. Ha azonban a modell nem rendelkezik 1:1 arányban az alkatrészek és az anyagok között, a fenti naiv kód nem fogja helyesen cselekedni.
+> Vegye figyelembe, hogy ez a módszer a modell helyes részeit emeli ki, attól függ, hogy a modell hogyan lett létrehozva. Tökéletesen működni fog, ha minden objektum pontosan egy anyagot használ. Ha azonban a modell nem rendelkezik 1:1-kapcsolattal a részek és az anyagok között, a fenti naiv kód nem lesz a megfelelő dolog.
 
-## <a name="use-a-different-texture"></a>Másik textúra használata
+## <a name="use-a-different-texture"></a>Más textúra használata
 
-[A textúrák](../../concepts/textures.md) általában egy forrásmodell részei. A [modell konvertálása](../../quickstarts/convert-model.md)során az összes textúrát a program a szükséges futásidejű formátumba konvertálja, és a végleges modellfájlba csomagolja. A textúra futásidőben történő cseréjéhez [mentse Azt DDS fájlformátumban,](https://en.wikipedia.org/wiki/DirectDraw_Surface) és töltse fel az Azure blob storage-ba. Tekintse meg [ezt a rövid útmutatót](../../quickstarts/convert-model.md) az Azure blobtároló létrehozásához. Miután rendelkezik egy blob tárolóval, megnyithatja az Azure Storage Explorerben, és feltöltheti a fájlt húzással.
+A [textúrák](../../concepts/textures.md) általában egy forrásoldali modell részét képezik. A [modell konvertálása](../../quickstarts/convert-model.md)során a rendszer minden textúrát átalakít a szükséges futásidejű formátumba, és becsomagolja a végső modellbe. Ha a textúrát futásidőben szeretné cserélni, mentse a [fájlt a DDS fájlformátumba](https://en.wikipedia.org/wiki/DirectDraw_Surface) , és töltse fel az Azure Blob Storage-ba. Az Azure Blob-tárolók létrehozásával kapcsolatban tekintse meg [ezt a rövid útmutatót](../../quickstarts/convert-model.md) . Ha rendelkezik blob-tárolóval, megnyithatja Azure Storage Explorerban, és feltölthet fájlokat a fogd és vidd használatával.
 
-A futásidejű oldalon két különböző módon címezhet meg egy textúraeszközt a blobstorage-ban:
+A futásidejű oldalon két különböző módon kezelheti a blob Storage-ban lévő textúra-eszközöket:
 
-* A textúra kezelése a SAS URI-val. Ezért kattintson a jobb gombbal a feltöltött fájlra, és válassza a **"Közös hozzáférésű aláírás beírása...**" parancsot a helyi menüből. Használja ezt a SAS URI-t a `LoadTextureFromSASAsync` függvényváltozattal (lásd az alábbi mintakódot).
-* Közvetlenül a textúra blobstorage-paraméterek szerint címezz, ha a [blobtár a fiókhoz van csatolva.](../../how-tos/create-an-account.md#link-storage-accounts) Ebben az esetben a `LoadTextureAsync`megfelelő terhelési funkció .
+* A textúra a SAS URI-ja alapján van megcímezve. Ehhez kattintson a jobb gombbal a feltöltött fájlra, majd válassza a helyi menü "**közös hozzáférési aláírás beolvasása..**." elemét. Használja ezt az SAS URI- `LoadTextureFromSASAsync` t a függvény variánsával (lásd az alábbi mintakód-t).
+* A textúrát a blob Storage-paraméterek közvetlen használatával oldja meg, ha a [blob Storage a fiókhoz van társítva](../../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben a megfelelő betöltési függvény van `LoadTextureAsync`.
 
 Most nyissa meg a **RemoteModelEntity** parancsfájlt, adja hozzá a következő kódot, és távolítsa el az ismétlődő függvényeket:
 
@@ -385,11 +385,11 @@ Most nyissa meg a **RemoteModelEntity** parancsfájlt, adja hozzá a következő
     }
 ```
 
-Futtassa ezt a kódot, és vigye az egérmutatót a modell fölé. Ha a modell megfelelő UV koordinátákkal rendelkezik, látnia kell a textúra megjelenését. Ellenkező esetben csak színváltozást észlelhet.
+Futtassa ezt a kódot, és vigye a kurzort a modell fölé. Ha a modellnek megfelelő UV-koordinátái vannak, megjelenik a textúrája. Ellenkező esetben előfordulhat, hogy csak a színváltozást észleli.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezzel lezárult az Azure Remote Rendering with Unity használatával kapcsolatos bevezető sorozatunk. Következő lépésként ismerkedjen meg az ARR néhány alapvető fogalomával, például [a munkamenetekkel,](../../concepts/sessions.md) [entitásokkal](../../concepts/entities.md)és [modellekkel,](../../concepts/models.md) hogy mélyebb megértést alakítson ki. Vannak is különböző funkciók, mint [a fények,](../../overview/features/lights.md) [vázlat renderelés,](../../overview/features/outlines.md) [hierarchikus állapot felülírja,](../../overview/features/override-hierarchical-state.md)és [anyagok,](../../concepts/materials.md) hogy meg kell vizsgálni részletesebben.
+Ez a bevezető sorozatot arra következteti, hogyan használható az Azure Remote rendering az Unity használatával. A következő lépésként Ismerkedjen meg az ARR-vel kapcsolatos alapvető fogalmakkal, például a [munkamenetek](../../concepts/sessions.md), az [entitások](../../concepts/entities.md)és a [modellek](../../concepts/models.md) mélyebb megismeréséhez. Többek között olyan funkciók is vannak, mint a [fények](../../overview/features/lights.md), a [Tagolás](../../overview/features/outlines.md), a [hierarchikus állapotú felülbírálások](../../overview/features/override-hierarchical-state.md)és a részletesebben feltárt [anyagok](../../concepts/materials.md) .
 
 > [!div class="nextstepaction"]
-> [Unity játék tárgyak és alkatrészek](../../how-tos/unity/objects-components.md)
+> [Unity game Objects és Components](../../how-tos/unity/objects-components.md)

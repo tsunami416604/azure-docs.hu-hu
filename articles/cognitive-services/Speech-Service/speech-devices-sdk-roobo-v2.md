@@ -1,7 +1,7 @@
 ---
-title: Beszédeszközök SDK Roobo Smart Audio Dev Kit v2 - Beszédszolgáltatás
+title: Beszédfelismerési eszközök SDK Roobo intelligens hang dev Kit v2 – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Előfeltételek és utasítások a beszédeszközök SDK, Roobo Smart Audio Dev Kit v2.
+description: Előfeltételek és utasítások a Speech Devices SDK első lépéseihez, Roobo Smart audio dev Kit v2.
 services: cognitive-services
 author: anushapatnala
 manager: wellsi
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: v-anusp
 ms.openlocfilehash: 2f325c80877068c53d690bd7ff74f768dab3a174
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80371583"
 ---
-# <a name="device-roobo-smart-audio-dev-kit-v2"></a>Eszköz: Roobo Smart Audio Dev Kit v2
+# <a name="device-roobo-smart-audio-dev-kit-v2"></a>Eszköz: Roobo Smart audio dev Kit v2
 
-Ez a cikk eszközspecifikus információkat tartalmaz a Roobo Smart Audio Dev Kit2 számára.
+Ez a cikk az Roobo Smart audio dev Kit2 eszközre vonatkozó információkat tartalmaz.
 
-## <a name="set-up-the-development-kit"></a>A fejlesztői készlet beállítása
+## <a name="set-up-the-development-kit"></a>A fejlesztői csomag beállítása
 
-1. A fejlesztőkészlet két mikro USB csatlakozóval rendelkezik. A bal oldali csatlakozó a fejlesztői készlet áramellátásához szükséges, és az alábbi képen power-ként van kiemelve. A helyes az, hogy ellenőrizzék azt, és van jelölve Debug a képen. 
-    ![A fejlesztői készlet csatlakoztatása](media/speech-devices-sdk/roobo-v2-connections.png)
-1. A fejlesztői készletet mikro USB-kábellel csatlakoztathatja a hálózati porthoz egy PC-hez vagy hálózati adapterhez. A felső tábla alatt zöld energiajelző világít.
-1. A fejlesztői készlet vezérléséhez csatlakoztassa a hibakeresési portot a számítógéphez egy második mikro-USB-kábellel. A megbízható kommunikáció érdekében elengedhetetlen, hogy kiváló minőségű kábelt használjunk.
-1. A fejlesztőkészlet et körkörösen - függőlegesen, a felett látható módon a mennyezet felé néző mikrofonokkal
+1. A fejlesztői készlet két Micro USB-összekötővel rendelkezik. A bal oldali összekötő a fejlesztői készlet bekapcsolására szolgál, és az alábbi képen Kiemelt teljesítményként jelenik meg. Az egyik az, hogy irányítsa, és a képen hibakeresést jelöl. 
+    ![A fejlesztői csomag csatlakoztatása](media/speech-devices-sdk/roobo-v2-connections.png)
+1. A Power port SZÁMÍTÓGÉPekhez vagy hálózati adapterhez való csatlakoztatásához használjon egy Micro USB-kábelt a fejlesztői készlethez. A felső táblán egy zöld energiaellátási kijelző jelenik meg.
+1. A fejlesztői csomag vezérléséhez csatlakoztassa a hibakeresési portot egy számítógéphez egy második Micro USB-kábel használatával. A megbízható kommunikáció biztosítása érdekében elengedhetetlen a kiváló minőségű kábelek használata.
+1. A fejlesztői csomag körkörösen való elosztása a fent látható felső korláttal rendelkező mikrofonokkal
 
 
 ## <a name="development-information"></a>Fejlesztési információk
 
-További fejlesztési információkért tekintse meg a [Roobo fejlesztési útmutatót](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
+További fejlesztési információk: [Roobo fejlesztői útmutató](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
-## <a name="audio-recordplay"></a>Hangfelvétel/lejátszás
+## <a name="audio-recordplay"></a>Hangrögzítés/lejátszás
 
-A DDK2 hangműveletek a következő módokon hajthatók végre:
-* Használja az ALSA nyílt forráskódú kódtártárakat és azok alkalmazásait.
-* Használja appmainprog felület en alkalmazásfejlesztés. DDK2 audio - kapcsolódó szoftver keretrendszer szabványos ALSA keretrendszer, használhatja libasound. Tehát, hogy dolgozzon ki szoftvert közvetlenül. Így az ALSA arecord és aplay segítségével közvetlenül rögzítheti és lejátszhatja a hangot.
+A DDK2-alapú hangműveletek a következő módokon végezhetők el:
+* Használjon ALSA nyílt forráskódú kódtárakat és alkalmazásaikat.
+* Appmainprog felület használata az alkalmazások fejlesztéséhez. A DDK2 hanggal kapcsolatos szoftveres keretrendszer szabványos ALSA-keretrendszert használ, és libasound is használhat. Így közvetlenül a szoftvereket fejlesztheti. Így az ALSA feljegyzést és aplay közvetlenül rögzíthet és hanglejátszást készíthet.

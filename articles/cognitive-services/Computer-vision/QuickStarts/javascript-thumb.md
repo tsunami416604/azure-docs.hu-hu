@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 2485794d9ec1ce78a8916014dc1117ed59c34e44
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656063"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Rövid útmutató: Miniatűr létrehozása a Computer Vision REST API és a JavaScript használatával
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API és a JavaScript használatával
 
-Ebben a rövid útmutatóban a Computer Vision REST API használatával létrehoz egy képminiatűrt. Megadhatja a magasságot és a szélességet, amely képarányban eltérhet a bemeneti képtől. A Computer Vision intelligens vágással intelligensen azonosítja a fontos területet, és az adott régió alapján vágási koordinátákat hoz létre.
+Ebben a rövid útmutatóban egy miniatűrt fog létrehozni egy képből a Computer Vision REST API használatával. Megadhatja a magasságot és a szélességet, ami eltérő lehet a bemeneti kép oldalaránya alapján. A Computer Vision az intelligens vágás használatával intelligens módon azonosítja a fontos területet, és az adott régió alapján készíti el a levágási koordinátákat.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot. Mentse az előfizetési kulcsot és a végpont URL-címét egy ideiglenes helyre.
+Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Mentse az előfizetési kulcsot és a végpont URL-címét egy ideiglenes helyre.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Hozzon létre egy _get-thumbnail.html_nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja a következő kódot.
-1. Szükség esetén cserélje le `value` a `inputImage` vezérlő attribútumának értékét egy elemezni kívánt másik lemezkép URL-címére.
+1. Hozzon létre egy _Get-thumbnail. html_nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja a következő kódot.
+1. Szükség esetén cserélje le a `value` `inputImage` vezérlő attribútumának értékét egy másik, elemezni kívánt rendszerkép URL-címére.
 1. Nyisson meg egy böngészőablakot.
 1. A böngészőben húzza a fájlt a böngészőablakba.
-1. Amikor a weblap megjelenik a böngészőben, illessze be az előfizetési kulcsot és a végpont URL-címét a megfelelő beviteli mezőkbe.
-1. Végül jelölje ki a **Bélyegkép generálása** gombot.
+1. Ha a weblap megjelenik a böngészőben, illessze be az előfizetési kulcsot és a végponti URL-címet a megfelelő beviteli mezőkbe.
+1. Végül kattintson a **miniatűr előállítása** gombra.
 
 ```html
 <!DOCTYPE html>

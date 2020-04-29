@@ -1,20 +1,20 @@
 ---
-title: Gyermekerőforrások sablonokban
-description: Ez a témakör azt ismerteti, hogy miként állíthatja be a gyermekerőforrások nevét és típusát egy Azure Resource Manager-sablonban.
+title: Gyermekek erőforrásai a sablonokban
+description: Ismerteti, hogyan lehet a Azure Resource Manager sablonban megadhatja a gyermek-erőforrások nevét és típusát.
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743837"
 ---
-# <a name="set-name-and-type-for-child-resources"></a>Gyermekerőforrások nevének és típusának beállítása
+# <a name="set-name-and-type-for-child-resources"></a>Adja meg a gyermek erőforrások nevét és típusát
 
-A gyermekerőforrások olyan erőforrások, amelyek csak egy másik erőforrás környezetében léteznek. Egy [virtuálisgép-bővítmény](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) például nem létezhet [virtuális gép](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)nélkül. A bővítmény erőforrás a virtuális gép gyermeke.
+A gyermek erőforrások olyan erőforrások, amelyek csak egy másik erőforrás kontextusában vannak. A virtuálisgép- [bővítmények](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) például nem létezhetnek [virtuális gép](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)nélkül. A bővítmény erőforrás a virtuális gép gyermeke.
 
-Az Erőforrás-kezelő sablonban megadhatja a gyermekerőforrást a szülő erőforráson belül vagy a fölérendelt erőforráson kívül. A következő példa a szülő erőforrás erőforrás-tulajdonságában szereplő gyermekerőforrást mutatja be.
+Egy Resource Manager-sablonban megadhatja a gyermek erőforrást a szülő erőforráson belül vagy a szülő erőforráson kívül is. Az alábbi példa a szülő erőforrás erőforrások tulajdonságában található gyermek erőforrást mutatja be.
 
 ```json
 "resources": [
@@ -27,7 +27,7 @@ Az Erőforrás-kezelő sablonban megadhatja a gyermekerőforrást a szülő erő
 ]
 ```
 
-A következő példa a fölérendelt erőforráson kívüli gyermekerőforrást mutatja be. Ezt a módszert akkor használhatja, ha a szülőerőforrás nincs telepítve ugyanabban a sablonban, vagy ha egynél több gyermekerőforrás létrehozásához szeretne [másolatot](copy-resources.md) használni.
+A következő példa a alárendelt erőforrást a szülő erőforráson kívül mutatja. Ezt a módszert akkor érdemes használni, ha a fölérendelt erőforrás nem ugyanabban a sablonban van telepítve, vagy ha a [Másolás](copy-resources.md) használatával több alárendelt erőforrást szeretne létrehozni.
 
 ```json
 "resources": [
@@ -40,18 +40,18 @@ A következő példa a fölérendelt erőforráson kívüli gyermekerőforrást 
 ]
 ```
 
-Az erőforrás nevéhez és típusához megadott értékek attól függően változnak, hogy a gyermek erőforrás a szülő erőforráson belül vagy kívül van-e definiálva.
+Az erőforrás neve és típusa számára megadott értékek attól függően változnak, hogy a gyermek erőforrás a szülő erőforráson belül vagy kívül van-e definiálva.
 
-## <a name="within-parent-resource"></a>Szülőerőforráson belül
+## <a name="within-parent-resource"></a>Szülő erőforráson belül
 
-Ha a szülőerőforrás-típuson belül van definiálva, a szöveg- és névértékeket egyetlen szóként, perések nélkül formázhatja.
+Ha a szülő erőforrástípus definiálja, a típus és a név értékeket perjel nélkül formázhatja egyetlen szóval.
 
 ```json
 "type": "{child-resource-type}",
 "name": "{child-resource-name}",
 ```
 
-A következő példa egy virtuális hálózatot és egy alhálózatot mutat be. Figyelje meg, hogy az alhálózat a virtuális hálózat erőforrástömbjének része. A név **alhálózat1,** a típus pedig **alhálózatok.** A gyermekerőforrás a szülőerőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermekerőforrás üzembe helyezése előtt.
+Az alábbi példa egy virtuális hálózatot és egy alhálózatot mutat be. Figyelje meg, hogy az alhálózat szerepel a virtuális hálózathoz tartozó erőforrások tömbben. A név a **Subnet1** értékre van állítva, a típus pedig **alhálózatokra**van beállítva. A gyermek erőforrás a szülő erőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermek erőforrás üzembe helyezése előtt.
 
 ```json
 "resources": [
@@ -85,20 +85,20 @@ A következő példa egy virtuális hálózatot és egy alhálózatot mutat be. 
 ]
 ```
 
-A teljes erőforrástípus továbbra is **Microsoft.Network/virtualNetworks/subnets**. Nem adja meg a **Microsoft.Network/virtualNetworks/** mert a szülő erőforrás típusából feltételezi.
+A teljes erőforrástípus továbbra is **Microsoft. Network/virtualNetworks/Subnets**. Nem biztosítja a **Microsoft. Network/virtualNetworks/** , mert a szülő erőforrástípus feltételezi.
 
-A gyermekerőforrás neve **Alhálózat1,** de a teljes név tartalmazza a szülőnevet. Nem adja meg **a Virtuális hálózat1,** mert a szülő erőforrás feltételezi.
+A gyermek erőforrás neve **Subnet1** értékre van állítva, de a teljes név tartalmazza a szülő nevét. Nem biztosít **VNet1** , mert a szülő erőforrásból feltételezhető.
 
-## <a name="outside-parent-resource"></a>Külső fölérendelt erőforrás
+## <a name="outside-parent-resource"></a>Fölérendelt erőforráson kívül
 
-Ha a szülőerőforráson kívül van definiálva, formázza a típust, és a perjellel tartalmazza a szülőtípust és a nevet.
+Ha a szülő erőforráson kívül van definiálva, a típust és a perjelet formázva adja meg a szülő típusát és nevét.
 
 ```json
 "type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-A következő példa egy virtuális hálózatot és alhálózatot mutat be, amelyek a gyökérszinten vannak definiálva. Figyelje meg, hogy az alhálózat nem szerepel a virtuális hálózat erőforrás-tömbjének. A név **VNet1/Subnet1,** a típus pedig **Microsoft.Network/virtualNetworks/subnets**. A gyermekerőforrás a szülőerőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermekerőforrás üzembe helyezése előtt.
+Az alábbi példa egy virtuális hálózatot és alhálózatot mutat be, amely a legfelső szinten van meghatározva. Figyelje meg, hogy az alhálózat nem része a virtuális hálózathoz tartozó erőforrások tömbnek. A név a **VNet1/Subnet1** értékre van beállítva, és a típus a **Microsoft. Network/virtualNetworks/Subnets**értékre van beállítva. A gyermek erőforrás a szülő erőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermek erőforrás üzembe helyezése előtt.
 
 ```json
 "resources": [
@@ -132,6 +132,6 @@ A következő példa egy virtuális hálózatot és alhálózatot mutat be, amel
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Resource Manager-sablonok létrehozásáról a Sablonok készítése című [témakörben olvashat.](template-syntax.md)
+* Azure Resource Manager sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](template-syntax.md).
 
-* Az erőforrás nevének formátumáról az erőforrásra való hivatkozáskor a [hivatkozási függvényben](template-functions-resource.md#reference)olvashat.
+* Ha többet szeretne megtudni az erőforrás nevének formátumáról az erőforrásra való hivatkozáskor, tekintse meg a [Reference függvényt](template-functions-resource.md#reference).

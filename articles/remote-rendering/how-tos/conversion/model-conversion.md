@@ -1,56 +1,56 @@
 ---
 title: Modell átalakítása
-description: A modell renderelésre történő átalakításának folyamata
+description: Leírja a modell átalakításának folyamatát
 author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681492"
 ---
 # <a name="convert-models"></a>Modellek konvertálása
 
-Az Azure remote rendering lehetővé teszi, hogy nagyon összetett modellek et jelenítsen meg. A maximális teljesítmény elérése érdekében az adatokat előkell dolgozni, hogy optimális formátumban legyenek. Az adatok mennyiségétől függően ez a lépés eltarthat egy ideig. Nem lenne praktikus, ha ezt az időt töltött során modell betöltése. Is, lenne pazarló megismételni ezt a folyamatot több ülés. Ezen okok miatt az ARR szolgáltatás dedikált *konverziós szolgáltatást*biztosít, amelyet előre futtathat.
-Konvertálás után egy modell betölthető egy Azure Storage-fiókból.
+Az Azure Remote rendering lehetővé teszi a nagyon összetett modellek megjelenítését. A maximális teljesítmény eléréséhez az adatfeldolgozást úgy kell megadni, hogy optimális formátumban legyenek. Az adatmennyiségtől függően ez a lépés hosszabb időt is igénybe vehet. A modell betöltése során ez az idő nem lenne praktikus. Emellett a folyamat többször is megismételheti ezt a folyamatot több munkamenet esetében is. Ezen okok miatt az ARR szolgáltatás egy dedikált *konverziós szolgáltatást*biztosít, amelyet az idő előtt futtathat.
+Az átalakítás után egy modell tölthető be egy Azure Storage-fiókból.
 
-## <a name="supported-source-formats"></a>Támogatott forrásformátumok
+## <a name="supported-source-formats"></a>Támogatott források formátuma
 
-A konverziós szolgáltatás a következő formátumokat támogatja:
+Az átalakítási szolgáltatás a következő formátumokat támogatja:
 
-- **FBX** (2011-es és újabb verzió)
-- **GLTF** (2.x verzió)
-- **GLB** (2.x verzió)
+- **FBX** (2011-es vagy újabb verzió)
+- **GLTF** (2. x verzió)
+- **Borai** (2. x verzió)
 
-Az anyagtulajdon-átalakítás formátumai között kisebb különbségek vannak, amint az a [modellformátumok fejezetanyag-feltérképezésében](../../reference/material-mapping.md)szerepel.
+Kisebb eltérések vannak a formátumok között az anyagi tulajdonságok átalakításával kapcsolatban, ahogy az a Chapter [anyagok leképezése a modell-formátumokhoz](../../reference/material-mapping.md)című részben szerepel.
 
 ## <a name="the-conversion-process"></a>Az átalakítási folyamat
 
-1. [Készítsen elő két Azure Blob Storage-tárolót:](blob-storage.md)egyet a bemenethez, egyet a kimenethez
-1. Töltse fel a modellt a bemeneti tárolóba (opcionálisan egy részútvonal alatt)
-1. Az átalakítási folyamat aktiválása [a modellkonverziós REST API-n](conversion-rest-api.md) keresztül
-1. A szolgáltatás lekérdezése a konverziós folyamathoz
-1. Miután elkészült, töltsön be egy modellt
-    - egy összekapcsolt tárfiókból (lásd a "Tárfiókok összekapcsolása" lépéseket a [Fiók létrehozása](../create-an-account.md#link-storage-accounts) a tárfiók összekapcsolására című témakörben)
-    - vagy *megosztott hozzáférésű aláírás (SAS)* megadásával.
+1. [Két Azure Blob Storage-tároló előkészítése](blob-storage.md): egy a bemenethez, egy a kimenethez
+1. Töltse fel a modellt a bemeneti tárolóba (opcionálisan egy alútvonalon belül)
+1. Az átalakítási folyamat elindítása [a modell átalakításán keresztül REST API](conversion-rest-api.md)
+1. Az átalakítási folyamat lekérdezése a szolgáltatással
+1. Ha elkészült, töltsön be egy modellt
+    - egy társított Storage-fiókból (lásd a "Storage-fiókok csatolása" lépéseket a [fiók létrehozása](../create-an-account.md#link-storage-accounts) a Storage-fiók összekapcsolásához című témakörben)
+    - vagy *közös hozzáférési aláírás (SAS)* megadásával.
 
-Minden modelladatok (bemeneti és kimeneti) a felhasználó által biztosított Azure blob storage tárolja. Az Azure remote rendering teljes körű felügyeletet biztosít az eszközkezelés felett.
+Minden modell-adat (bemenet és kimenet) a felhasználó által megadott Azure Blob Storage-tárolóban tárolódik. Az Azure-alapú távoli renderelés teljes körű irányítást biztosít az eszközök felügyeletéhez.
 
 ## <a name="conversion-parameters"></a>Átalakítási paraméterek
 
-A különböző konverziós lehetőségeket ebben a [fejezetben](configure-model-conversion.md)talál.
+A különböző átalakítási lehetőségekért tekintse meg [ezt a fejezetet](configure-model-conversion.md).
 
 ## <a name="examples"></a>Példák
 
-- [Rövid útmutató: A modell konvertálása renderelésre](../../quickstarts/convert-model.md) egy lépésről-lépésre bevezető, hogyan kell átalakítani a modellt.
-- [Példa PowerShell-parancsfájlok](../../samples/powershell-example-scripts.md), amelyek bemutatják a konverziós szolgáltatás használatát, megtalálható az [ARR minttárházban](https://github.com/Azure/azure-remote-rendering) a *Scripts* mappában.
+- Gyors útmutató [: modell átalakítása renderelésre](../../quickstarts/convert-model.md) – lépésenkénti bevezetés a modellek átalakítására.
+- [Például](../../samples/powershell-example-scripts.md)a konverziós szolgáltatás használatát bemutató PowerShell-parancsfájlok a *parancsfájlok* mappa [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) találhatók.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Blob Storage használata modellátalakításhoz](blob-storage.md)
-- [A modellkonverziós REST API](conversion-rest-api.md)
-- [A modellkonvertálás konfigurálása](configure-model-conversion.md)
-- [Anyagleképezés modellformátumokhoz](../../reference/material-mapping.md)
+- [Modellek átalakítása az Azure Blob Storage használatával](blob-storage.md)
+- [A modell átalakítási REST API](conversion-rest-api.md)
+- [A modell átalakításának konfigurálása](configure-model-conversion.md)
+- [Anyagleképzés a modellformátumokhoz](../../reference/material-mapping.md)

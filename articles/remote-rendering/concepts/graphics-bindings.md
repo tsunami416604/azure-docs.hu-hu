@@ -10,31 +10,31 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.openlocfilehash: 8b5db0532f3dcc8b6dfb024238d0cacff2e6d2a1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681882"
 ---
 # <a name="graphics-binding"></a>Grafikus kötés
 
-Ahhoz, hogy az Azure Remote Rendering egy egyéni alkalmazásban, azt integrálni kell az alkalmazás renderelési folyamatába. Ez az integráció a grafikus kötés felelőssége.
+Ahhoz, hogy egy egyéni alkalmazásban használni tudja az Azure távoli renderelést, integrálni kell az alkalmazás renderelési folyamatával. Ez az integráció a grafikus kötés felelőssége.
 
-A beállítás után a grafikus kötés hozzáférést biztosít a renderelt képet befolyásoló különböző funkciókhoz. Ezek a függvények két kategóriába sorolhatók: általános funkciók, amelyek mindig rendelkezésre `Microsoft.Azure.RemoteRendering.GraphicsApiType`állnak , és olyan speciális funkciók, amelyek csak a kiválasztott számára relevánsak .
+A beállítás után a grafikus kötés hozzáférést biztosít a renderelt képet érintő különböző funkciókhoz. Ezek a függvények két kategóriába sorolhatók: az általános függvények, amelyek mindig elérhetők, és csak a kijelölt `Microsoft.Azure.RemoteRendering.GraphicsApiType`funkciókhoz szükségesek.
 
-## <a name="graphics-binding-in-unity"></a>Grafikus kötés unity
+## <a name="graphics-binding-in-unity"></a>Grafikus kötés az egységben
 
-A Unity-ben az egész kötést a `RemoteUnityClientInit` struct kezeli. `RemoteManagerUnity.InitializeManager` A grafikus mód beállításához `GraphicsApiType` a mezőt a kiválasztott kötésre kell állítani. A mező automatikusan kitöltődik attól függően, hogy van-e xreszköz. A viselkedés manuálisan felülbírálható a következő viselkedésekkel:
+Az egységben a teljes kötést az `RemoteUnityClientInit` átadott struct kezeli. `RemoteManagerUnity.InitializeManager` A grafikus mód beállításához a `GraphicsApiType` mezőt a kiválasztott kötésre kell beállítani. A mező automatikusan ki lesz töltve attól függően, hogy van-e XRDevice. A viselkedés manuálisan felülbírálható a következő viselkedésekkel:
 
-* **HoloLens 2**: A [Windows Mixed Reality](#windows-mixed-reality) grafikus kötésmindig használatos.
-* **Lapos UWP asztali alkalmazás**: [A szimulációt](#simulation) mindig használják. A mód használatához kövesse az [Oktatóanyag: Unity projekt beállítása](../tutorials/unity/project-setup.md)teljesen új lépéseket.
-* **Unity szerkesztő**: [A szimulációt](#simulation) mindig használják, kivéve, ha wmr VR headset van csatlakoztatva, amely esetben az ARR le lesz tiltva, hogy lehetővé tegye az alkalmazás nem ARR-hez kapcsolódó részeinek hibakeresését. Lásd még: [holografikus remoting](../how-tos/unity/holographic-remoting.md).
+* **2. HoloLens**: a [Windows vegyes valóság](#windows-mixed-reality) grafikájának kötése mindig használatban van.
+* **Flat UWP asztali alkalmazás**: a [Szimuláció](#simulation) mindig használatban van. Ha ezt a módot szeretné használni, kövesse az [oktatóanyag: Unity-projekt létrehozása a semmiből](../tutorials/unity/project-setup.md)című témakör lépéseit.
+* **Unity Editor**: a [Szimuláció](#simulation) mindig használatban van, kivéve, ha egy WMR VR-fülhallgató csatlakozik, amely esetében az ARR le lesz tiltva, hogy az alkalmazás nem az ARR-vel kapcsolatos részeit lehessen elhárítani. Lásd még: [holografikus távelérés](../how-tos/unity/holographic-remoting.md).
 
-Az egyetlen másik fontos része a Unity elérése az [alapvető kötelező,](#access)az összes többi szakasz alatt lehet kihagyni.
+Az egység egyetlen további fontos része az [alapszintű kötés](#access)elérése, az alábbi összes további szakasz kihagyható.
 
 ## <a name="graphics-binding-setup-in-custom-applications"></a>Grafikus kötés beállítása egyéni alkalmazásokban
 
-Grafikus kötés kijelöléséhez tegye a következő két lépést: Először a program inicializálásakor statikusan inicializálva kell a grafikus kötést:
+A grafikus kötések kiválasztásához hajtsa végre a következő két lépést: először a grafikus kötést statikusan kell inicializálni a program inicializálásakor:
 
 ``` cs
 RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization;
@@ -44,11 +44,11 @@ managerInit.right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
 ```
 
-A fenti hívás szükséges az Azure Távoli renderelés inicializálásához a holografikus API-kba. Ezt a függvényt meg kell hívni, mielőtt bármilyen holografikus API-t meghívna, és mielőtt bármilyen más távoli renderelési API-hoz hozzáférne. Hasonlóképpen a megfelelő init-mentesítési függvényt `RemoteManagerStatic.ShutdownRemoteRendering();` is meg kell hívni, ha már nem hívnak holografikus API-kat.
+A fenti hívás az Azure távoli renderelés inicializálásához szükséges a holografikus API-khoz. Ezt a függvényt a holografikus API-k meghívása előtt meg kell hívni, mielőtt más távoli renderelési API-kat is elérhet. Hasonlóképpen a megfelelő deinit függvényt `RemoteManagerStatic.ShutdownRemoteRendering();` is meghívni kell, miután már nem történt meg a holografikus API-k hívása.
 
 ## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">Grafikus kötés elérése
 
-Az ügyfél beállítása után az alapvető grafikus kötés a `AzureSession.GraphicsBinding` getter segítségével érhető el. Az utolsó képkocka-statisztika például a következőképpen olvasható:
+Miután beállította az ügyfelet, az alapszintű grafikus kötés a `AzureSession.GraphicsBinding` kiolvasóval érhető el. Például az utolsó keret statisztikája a következőképpen kérhető le:
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -64,14 +64,14 @@ if (currentSesson.GraphicsBinding)
 
 ## <a name="graphic-apis"></a>Grafikus API-k
 
-Jelenleg két grafikus API választható ki, `WmrD3D11` és `SimD3D11`. Egy harmadik `Headless` létezik, de még nem támogatott az ügyféloldalon.
+Jelenleg két grafikus API lehet kijelölni, `WmrD3D11` és. `SimD3D11` Egy harmadik `Headless` létezik, de az ügyféloldali oldalon még nem támogatott.
 
 ### <a name="windows-mixed-reality"></a>Windows vegyes valóság
 
-`GraphicsApiType.WmrD3D11`a HoloLens 2 alapértelmezett kötése. Ez hozza `GraphicsBindingWmrD3d11` létre a kötést. Ebben a módban az Azure Remote Renderings közvetlenül a holografikus API-kba horgak.
+`GraphicsApiType.WmrD3D11`az alapértelmezett kötés, amely a 2. HoloLens fut. Létrehozza majd a `GraphicsBindingWmrD3d11` kötést. Ebben az üzemmódban az Azure-alapú távoli renderelés közvetlenül a holografikus API-khoz csatlakozik.
 
-A származtatott grafikus kötések `GraphicsBinding` eléréséhez az alapot le kell adni.
-A WMR-kötés használatához két dolgot kell tenni:
+A származtatott grafikus kötések eléréséhez az alapot `GraphicsBinding` el kell érni.
+Az WMR-kötés használatához két dolgot kell elvégezni:
 
 #### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>A használt koordináta-rendszer távoli renderelésének tájékoztatása
 
@@ -85,11 +85,11 @@ if (binding.UpdateUserCoordinateSystem(ptr) == Result.Success)
 }
 ```
 
-Ahol a `ptr` fenti nek egy `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` natív objektumra mutató mutatónak kell lennie, amely meghatározza azt a világtér koordináta-rendszert, amelyben az API koordinátái vannak kifejezve.
+Ahol a fentieknek `ptr` olyan natív `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` objektumra mutató mutatónak kell lenniük, amely meghatározza, hogy az API-ban lévő koordináták hol vannak kifejezve.
 
-#### <a name="render-remote-image"></a>Távoli kép renderelése
+#### <a name="render-remote-image"></a>Távoli rendszerkép megjelenítése
 
-Minden egyes képkocka elején a távoli keretet a hátsó pufferbe kell megjeleníteni. Ez a hívással `BlitRemoteFrame`történik, amely szín- és mélységadatokat is kitölt az aktuálisan kötött renderelési célba. Ezért fontos, hogy ez a hátsó puffer renderelési célként való kötése után történik.
+Az egyes keretek elején a távoli keretet a hátsó pufferbe kell megjeleníteni. Ezt a hívással `BlitRemoteFrame`végezheti el, amely a szín-és a mélységi információkat is kitölti az aktuálisan kötött megjelenítési célra. Ezért fontos, hogy ezt a hátsó puffer leképezési célként való kötése után végezze el.
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -99,12 +99,12 @@ binding.BlitRemoteFrame();
 
 ### <a name="simulation"></a>Szimuláció
 
-`GraphicsApiType.SimD3D11`a szimulációkötés, és ha `GraphicsBindingSimD3d11` be van jelölve, akkor létrehozza a grafikus kötést. Ez a felület a fejmozgás szimulálására szolgál, például egy asztali alkalmazásban, és egy monoszkopikus képet jelenít meg.
-A beállítás egy kicsit több részt, és a következőképpen működik:
+`GraphicsApiType.SimD3D11`a szimulált kötés, és ha be van jelölve `GraphicsBindingSimD3d11` , a a grafikus kötést hozza létre. Ez az interfész szimulálja a fej mozgását, például egy asztali alkalmazásban, és megjelenít egy monoscopic képet.
+A telepítő egy kicsit nagyobb szerepet játszik, és a következőképpen működik:
 
-#### <a name="create-proxy-render-target"></a>Proxyleképezési cél létrehozása
+#### <a name="create-proxy-render-target"></a>Proxy megjelenítési cél létrehozása
 
-Távoli és helyi tartalom kell tenni, hogy egy offscreen szín / mélység teszi cél `GraphicsBindingSimD3d11.Update` úgynevezett "proxy" segítségével a proxy kamera által szolgáltatott adatok a funkciót. A proxynak meg kell egyeznie a hátsó puffer felbontásával. Ha a munkamenet `GraphicsBindingSimD3d11.InitSimulation` készen áll, meg kell hívni, mielőtt csatlakozna hozzá:
+A távoli és a helyi tartalmat egy "proxy" nevű bemásolási szín/mélység megjelenítési célra kell megjeleníteni a `GraphicsBindingSimD3d11.Update` függvény által biztosított proxy-kamerás adat használatával. A proxynak meg kell egyeznie a hátsó puffer felbontásával. Ha a munkamenet elkészült, `GraphicsBindingSimD3d11.InitSimulation` a csatlakozás előtt meg kell hívni a következőhöz:
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -118,16 +118,16 @@ GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as Graphics
 simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
 ```
 
-Az init függvényt a natív d3d-eszközre, valamint a proxy rendercél színére és mélységi textúrájára mutatóval kell ellátni. Az `AzureSession.ConnectToRuntime` inicializálás után, és `DisconnectFromRuntime` többször is meghívható, de amikor másik munkamenetre vált, először a régi munkameneten kell meghívni, `GraphicsBindingSimD3d11.DeinitSimulation` mielőtt `GraphicsBindingSimD3d11.InitSimulation` egy másik munkamenetre hívható volna.
+Az init függvényt a natív D3D-eszközhöz tartozó mutatókkal, valamint a proxy megjelenítési célpontjának szín-és mélységmérő mintázatával kell megadni. A inicializálása után `AzureSession.ConnectToRuntime` többször `DisconnectFromRuntime` is hívható, de ha egy másik munkamenetre vált, először `GraphicsBindingSimD3d11.DeinitSimulation` a régi munkamenetben kell meghívni, mielőtt `GraphicsBindingSimD3d11.InitSimulation` egy másik munkamenetben is meghívható.
 
 #### <a name="render-loop-update"></a>Renderelési hurok frissítése
 
 A renderelési hurok frissítése több lépésből áll:
 
-1. Minden képkockát, mielőtt `GraphicsBindingSimD3d11.Update` bármilyen renderelés történik, az aktuális kameraátalakítással hívják meg, amelyet a rendszer a kiszolgálónak küld renderelt. Ugyanakkor a visszaadott proxy-transzformációt kell alkalmazni a proxykamerára, hogy a proxyrender-tárolóba kerüljön.
-Ha a visszaadott proxyfrissítés `SimulationUpdate.frameId` null értékű, akkor még nincsenek távoli adatok. Ebben az esetben a proxyrenderelési célba való renderelés helyett minden helyi tartalmat közvetlenül a hátsó pufferbe kell megjeleníteni az aktuális kameraadatok felhasználásával, és a következő két lépést kihagyja.
-1. Az alkalmazásnak most meg kell `GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`kötnie a proxy renderelési célját, és meg kell hívnia. Ez kitölti a távoli színt és mélységi adatokat a proxy renderelési célba. A proxykamera-átalakítás sal most már bármely helyi tartalom megjelenhet a proxyra.
-1. Ezután a hátsó puffert renderelési `GraphicsBindingSimD3d11.ReprojectProxy` célként kell kötni, és meg kell hívni, amikor is a hátsó puffer megjelenik.
+1. A Megjelenítés előtt minden egyes keretet a rendszer az `GraphicsBindingSimD3d11.Update` aktuális kamera-átalakítással együtt továbbít a kiszolgálónak, amelyet a rendszer a rendereléshez továbbít. Ugyanakkor a visszaadott proxy-átalakítást a proxy kamerára kell alkalmazni, hogy a proxy Render cél legyen.
+Ha a visszaadott proxy `SimulationUpdate.frameId` frissítése null értékű, a rendszer még nem rendelkezik távoli adattal. Ebben az esetben a proxy renderelési céljának való megjelenítés helyett a helyi tartalmat közvetlenül a jelenlegi kamera adataival kell megjeleníteni a hátsó pufferben, és a következő két lépés kimarad.
+1. Az alkalmazásnak ekkor meg kell kötnie a proxy megjelenítési `GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`célját és a hívást. Ezzel kitölti a távoli színeket és a mélységi információkat a proxy megjelenítési céljába. A helyi tartalom mostantól a proxy kamera-átalakító használatával is megjeleníthető a proxyn.
+1. Ezt követően a hátsó puffert leképezési célként kell kötni, és `GraphicsBindingSimD3d11.ReprojectProxy` a rendszer meghívja a visszaadott puffert.
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -157,4 +157,4 @@ else
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Unity-projekt beállítása a semmiből](../tutorials/unity/project-setup.md)
+* [Oktatóanyag: Unity-projekt létrehozása a semmiből](../tutorials/unity/project-setup.md)

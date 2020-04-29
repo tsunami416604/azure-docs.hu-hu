@@ -1,70 +1,70 @@
 ---
-title: Terminológia - Personalizer
-description: A personalizer a megerősítési tanulásból származó terminológiát használ. Ezeket a kifejezéseket az Azure Portalon és az API-kban használják.
+title: Terminológia – személyre szabás
+description: A személyre szabás szakkifejezéseket használ a megerősítő tanulásban. Ezeket a feltételeket a Azure Portal és az API-k használják.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77624274"
 ---
 # <a name="terminology"></a>Terminológia
 
-A personalizer a megerősítési tanulásból származó terminológiát használ. Ezeket a kifejezéseket az Azure Portalon és az API-kban használják.
+A személyre szabás szakkifejezéseket használ a megerősítő tanulásban. Ezeket a feltételeket a Azure Portal és az API-k használják.
 
-## <a name="conceptual-terminology"></a>Koncepcionális terminológia
+## <a name="conceptual-terminology"></a>Fogalmi terminológia
 
-* **Tanulási hurok:** Hozzon létre egy personalizer erőforrást, amelyet _tanulási huroknak_neveznek, az alkalmazás minden olyan részére, amely a személyre szabás előnyeit élvezheti. Ha egynél több személyre szabási tapasztalattal rendelkezik, hozzon létre egy-egy hurkot mindegyikhez.
+* **Tanulási hurok**: létrehozhat egy _tanulási ciklust_használó, személyre szabott erőforrást az alkalmazás minden olyan részéhez, amely kihasználhatja a személyre szabást. Ha több felhasználói felülettel rendelkezik, hozzon létre egy hurkot mindegyikhez.
 
-* **Modell**: A Personalizer modell rögzíti a felhasználói viselkedésről megismert összes adatot, beszerzi a betanítási adatokat a Rang és jutalom hívásoknak küldött argumentumok kombinációjából, valamint a tanulási szabályzat által meghatározott képzési viselkedéssel.
+* **Modell**: a személyre szabott modell rögzíti a felhasználói viselkedéssel kapcsolatos összes információt, betanítási adatok beszerzését a rangsorba és a jutalmazási hívásokba küldött argumentumok kombinációjával, valamint a tanulási szabályzat által meghatározott tanítási viselkedéssel.
 
-## <a name="personalizer-configuration"></a>Személyre szabó konfigurációja
+## <a name="personalizer-configuration"></a>Személyre szabott konfiguráció
 
-Personalizer van konfigurálva az [Azure Portalon.](https://portal.azure.com)
+A személyre szabott beállítás a [Azure Portal](https://portal.azure.com).
 
-* **Jutalmak:** konfigurálja az alapértelmezett értékeket a jutalom várakozási idejéhez, az alapértelmezett jutalomhoz és a jutalomösszesítési házirendhez.
+* **Jutalmak**: állítsa be az alapértelmezett értékeket a jutalmazási várakozási idő, az alapértelmezett jutalom és a jutalmazási összesítési házirend számára.
 
-* **Feltárás:** Konfigurálja a feltáráshoz használt ranghívások százalékos arányát
+* **Feltárás**: a feltáráshoz használandó rangsorolt hívások százalékos arányának konfigurálása
 
-* **Modellfrissítési gyakoriság:** A modell újrabetanításának gyakorisága.
+* **Modell frissítési gyakorisága**: milyen gyakran történik a modell újratanítása.
 
-* **Adatmegőrzés**: Hány napnyi adatot kell tárolni. Ez hatással lehet az offline értékelésekre, amelyek a tanulási ciklus javítására szolgálnak.
+* **Adatmegőrzés**: ennyi nap szükséges az adatok tárolására. Ez hatással lehet az offline értékelésekre, amelyek segítségével javíthatja a tanulási ciklust.
 
-## <a name="use-rank-and-reward-apis"></a>Rang- és jutalomAPI-k használata
+## <a name="use-rank-and-reward-apis"></a>A Rank és a jutalmazási API-k használata
 
-* **Rang**: Tekintettel a funkciókkal és a környezetfunkcióval kapcsolatos műveletekre, használja a felfedezést vagy a kihasználást a legfelső művelet (tartalomelem) visszaküldéséhez.
+* **Rank**: a funkciókkal és a környezeti funkciókkal kapcsolatos műveletekben a legfelső szintű művelet (tartalmi elem) visszaküldéséhez használja a felderítés vagy a kihasználat lehetőséget.
 
-    * **Műveletek**: A műveletek azok a tartalomelemek, mint például a termékek vagy a promóciók, amelyek közül választhat. Personalizer kiválasztja a legjobb művelet (vissza jutalom művelet azonosítója), hogy megjelenjen a felhasználók számára a Rang API-t.
+    * **Műveletek**: a műveletek közül választhat a tartalmi elemek, például termékek vagy promóciók. A személyre szabási művelet a rangsor API használatával jeleníti meg a felhasználók számára a legfontosabb műveletet (a jutalom műveleti AZONOSÍTÓját).
 
-    * **Kontextus**: A pontosabb rangsorolás érdekében adjon meg információkat a környezetéről, például:
+    * **Kontextus**: pontosabb rangsor biztosításához adja meg a környezetével kapcsolatos információkat, például:
         * A felhasználó.
-        * Az eszköz, amit bekapcsolnak.
+        * Az eszköz, amelyen be vannak kapcsolva.
         * Az aktuális idő.
-        * Egyéb adatok a jelenlegi helyzetről.
-        * A felhasználóvagy a környezet előzményadatai.
+        * Az aktuális helyzettel kapcsolatos egyéb információk.
+        * A felhasználóval vagy a környezettel kapcsolatos korábbi információk.
 
-        Az adott alkalmazás különböző környezeti adatokkal rendelkezhet.
+        Előfordulhat, hogy az adott alkalmazás eltérő környezeti információval rendelkezik.
 
-    * **[Jellemzők](concepts-features.md)**: Egy tartalomelemre vagy egy felhasználói környezetre vonatkozó információegység. Győződjön meg arról, hogy csak összesített funkciókat használ. Ne használjon meghatározott időpontokat, felhasználói azonosítókat vagy más nem összesített adatokat szolgáltatásként.
+    * **[Szolgáltatások](concepts-features.md)**: egy tartalmi elemre vagy egy felhasználói környezetre vonatkozó információk egysége. Ügyeljen arra, hogy csak az összesített szolgáltatásokat használja. Ne használjon adott időpontokat, felhasználói azonosítókat vagy más, nem aggregált adatokat szolgáltatásként.
 
-        * A _műveletfunkció_ a tartalom metaadatai.
-        * A _környezeti szolgáltatás_ metaadatok at a környezet, amelyben a tartalom jelenik meg.
+        * A _műveleti funkció_ a tartalommal kapcsolatos metaadatokat tartalmaz.
+        * A _környezeti funkciók_ a tartalom megjelenítését szolgáló kontextusra vonatkozó metaadatok.
 
-* **Feltárás:** A Personalizer szolgáltatás vizsgálja, ha ahelyett, hogy a legjobb műveletet advissza, más műveletet választ a felhasználó számára. A Personalizer szolgáltatás elkerüli a sodródást, a stagnálást, és a folyamatos felhasználói viselkedéshez való alkalmazkodást a felfedezéssel.
+* **Feltárás**: a személyre szabott szolgáltatás azt vizsgálja, hogy mikor, a legjobb művelet helyett egy másik műveletet választ a felhasználó számára. A személyre szabott szolgáltatás elkerüli a sodródás, a stagnálás és a folyamatos felhasználói viselkedésre való alkalmazkodást.
 
-* **Kihasználás:** A Personalizer szolgáltatás az aktuális modell segítségével dönti el a legjobb műveletet a múltbeli adatok alapján.
+* Kihasználat **: a**személyre szabott szolgáltatás a jelenlegi modellt használja a legalkalmasabb művelet eldöntésére a múltbeli információk alapján.
 
-* **Kísérlet időtartama**: Az az időtartam, ameddig a Personalizer szolgáltatás vár a jutalomra, attól a pillanattól kezdve, hogy a Rang hívás történt az adott eseményre.
+* **Kísérlet időtartama**: azt az időtartamot, ameddig a személyre szabott szolgáltatás megvárja a jutalmat, ettől kezdve az adott eseményhez tartozó rangsor meghívásának pillanatától számítva.
 
-* **Inaktív események:** Az inaktív esemény az, ahol a rang, de nem biztos benne, hogy a felhasználó valaha is látni fogja az eredményt, az ügyfél alkalmazás döntései miatt. Inaktív események lehetővé teszik, hogy hozzon létre és tárolhatja a személyre szabási eredményeket, majd úgy dönt, hogy dobja őket később anélkül, hogy befolyásolná a gépi tanulási modell.
+* **Inaktív események**: inaktív esemény az a hely, ahol rangot hívott, de nem biztos benne, hogy a felhasználó az ügyfélalkalmazás döntései miatt soha nem fogja látni az eredményt. Az inaktív események lehetővé teszik a személyre szabási eredmények létrehozását és tárolását, majd később eldönteni, hogy a gépi tanulási modell hatására a későbbiekben elveti őket.
 
 
-* **Jutalom:** Annak mértéke, hogy a felhasználó hogyan reagált a Rang API visszaadott jutalomművelet-azonosítójára, 0 és 1 közötti pontszámként. A 0 az 1-hez értéket az üzleti logika határozza meg, attól függően, hogy a választás hogyan segített elérni a személyre szabás üzleti céljait. A tanulási ciklus nem tárolja ezt a jutalmat egyéni felhasználói előzményekként.
+* **Jutalom**: azt méri, hogy a felhasználó hogyan válaszolt a Rank API által visszaadott jutalom műveleti azonosítóra 0 és 1 közötti pontszámként. A 0 – 1 értéket az üzleti logikája állítja be, attól függően, hogy a választás miként segítette a személyre szabás üzleti céljainak megvalósítását. A tanulási ciklus nem tárolja ezt a jutalmat egyéni felhasználói előzményekként.
 
 ## <a name="offline-evaluations"></a>Offline értékelések
 
-* **Kiértékelés:** Az offline értékelés határozza meg a hurok legjobb tanulási szabályzatát a hurok adatai alapján.
+* **Értékelés**: a hurok adatai alapján az offline kiértékelés meghatározza a hurok legjobb tanulási szabályzatát.
 
-* **Tanulási szabályzat:** Hogyan Szabatoz be a modell minden esemény határozza meg bizonyos paramétereket, amelyek befolyásolják a gépi tanulási algoritmus működését. Az új tanulási ciklus egy alapértelmezett **tanulási szabályzattal**kezdődik, amely mérsékelt teljesítményt eredményez. [Kiértékelések futtatásakor,](concepts-offline-evaluation.md)Personalizer létrehoz új tanulási szabályzatok kifejezetten a használati esetek ben a hurok. A Personalizer jelentősen jobban teljesít az egyes ciklusokra optimalizált szabályzatokkal, amelyek et az értékelés során generálnak. A tanulási szabályzat neve _tanulási beállítások_ a modell és a **tanulási beállítások** at a Personalizer erőforrás az Azure Portalon.
+* **Tanulási szabályzat**: a személyre szabott modelleket minden eseményre kiterjedően olyan paraméterek határozzák meg, amelyek befolyásolják a gépi tanulási algoritmus működését. Az új tanulási hurok egy alapértelmezett **képzési szabályzattal**kezdődik, amely mérsékelt teljesítményt eredményezhet. Az [értékelések](concepts-offline-evaluation.md)futtatásakor a személyre szabott új tanulási szabályzatokat hozhat létre, amelyek kifejezetten a hurok használati eseteire vannak optimalizálva. A személyre szabás a kiértékelés során generált minden egyes hurokhoz optimalizált házirendekkel jelentősen jobban teljesít. A tanulási szabályzat a Azure Portal személyre szabott erőforrásának **modell-és tanulási beállításaiban** található _tanulási beállítások_ nevű.

@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás privát módon egy webalkalmazáshoz az Azure Private Endpoint használatával
-description: Csatlakozás privát módon egy webalkalmazáshoz az Azure Private Endpoint használatával
+title: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
+description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
@@ -10,51 +10,51 @@ ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756280"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web Apphoz (előzetes verzió)
+# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
 > [!Note]
-> Az előzetes verzió az USA keleti régiójában és az USA nyugati régiójában 2 régióban érhető el az összes PremiumV2 Windows és Linux webalkalmazáshoz és rugalmas prémium funkcióhoz. 
+> Az előzetes verzió az USA keleti régiójában és az USA 2. nyugati régiójában érhető el az összes PremiumV2 Windows-és Linux-Web Apps, valamint a rugalmas prémium szintű funkciókhoz. 
 
-Az Azure Web App privát végpontjával engedélyezheti, hogy a magánhálózatban található ügyfelek biztonságosan hozzáférjenek az alkalmazáshoz a Privát kapcsolaton keresztül. A privát végpont egy IP-címet használ az Azure virtuális hálózat címterületéről. A magánhálózaton lévő ügyfél és a webalkalmazás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinchálózaton lévő privát kapcsolaton, így kiküszöböli a nyilvános internetről való kitettséget.
+Az Azure-webalkalmazás privát végpontjának használatával engedélyezheti a magánhálózaton található ügyfelek számára, hogy biztonságosan hozzáférjenek az alkalmazáshoz privát kapcsolaton keresztül. A privát végpont az Azure VNet IP-címét használja. A magánhálózaton lévő ügyfél és a webalkalmazás közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül történik, ami kiküszöböli a nyilvános internetről való kitettséget.
 
-A Web App privát végpontjának használata lehetővé teszi a következőket:
+A webalkalmazás privát végpontjának használata lehetővé teszi a következőket:
 
-- A webalkalmazás biztonságossá tétele a privát végpont konfigurálásával, a nyilvános expozíció kiküszöbölésével.
-- Biztonságosan csatlakozhat a Web Apphoz olyan helyszíni hálózatokról, amelyek VPN- vagy ExpressRoute-alapú privát társviszony-létesítéssel csatlakoznak a virtuális hálózathoz.
+- A webalkalmazás biztonságossá tételéhez konfigurálja a privát végpontot a nyilvános expozíció kiküszöbölése érdekében.
+- Biztonságosan csatlakozhat a webalkalmazáshoz olyan helyszíni hálózatokból, amelyek VPN-vagy ExpressRoute-alapú privát kapcsolattal csatlakoznak a VNet.
 
-Ha csak egy biztonságos kapcsolatra van szüksége a virtuális hálózat és a webalkalmazás között, a legegyszerűbb megoldás a Service Endpoint. Ha a webalkalmazást a helyszíni azure-átjárón, egy regionálistársviszony-létesítési virtuális hálózaton vagy egy globálisan társviszonyt, a privát végpont a megoldás.  
+Ha csak biztonságos kapcsolatra van szüksége a VNet és a webalkalmazás között, a legegyszerűbb megoldás a szolgáltatási végpont. Ha a webalkalmazást a helyszíni Azure-átjárón keresztül is el kell érnie, egy regionálisan felhasználható VNet vagy egy globálisan megválasztott VNet, a magánhálózati végpont a megoldás.  
 
-További információ: [Service Endpoints][serviceendpoint].
+További információ: szolgáltatás- [végpontok][serviceendpoint].
 
 ## <a name="conceptual-overview"></a>Fogalmi áttekintés
 
-A privát végpont egy speciális hálózati adapter (NIC) az Azure Web App egy alhálózat a virtuális hálózat (VNet).
-Amikor létrehoz egy privát végpontot a webalkalmazáshoz, biztonságos kapcsolatot biztosít a magánhálózat és a webalkalmazás ügyfelei között. A privát végponthoz egy IP-cím van rendelve a virtuális hálózat IP-címtartományából.
-A privát végpont és a webalkalmazás közötti kapcsolat biztonságos [privát kapcsolatot][privatelink]használ. A privát végpont csak a webalkalmazás bejövő folyamataihoz használatos. A kimenő folyamatok nem fogják használni ezt a privát végpontot, de a [virtuális hálózat integrációs szolgáltatásán][vnetintegrationfeature]keresztül egy másik alhálózatban is beadhat kimenő folyamatokat a hálózatba.
+A privát végpont egy speciális hálózati adapter (NIC) az Azure-webalkalmazáshoz a Virtual Network (VNet) egyik alhálózatában.
+Amikor létrehoz egy privát végpontot a webalkalmazáshoz, biztonságos kapcsolatot biztosít a magánhálózaton és a webalkalmazásban található ügyfelek között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához.
+A magánhálózati végpont és a webalkalmazás közötti kapcsolat biztonságos [privát hivatkozást][privatelink]használ. A magánhálózati végpont csak a webalkalmazásba érkező bejövő folyamatokhoz használható. A kimenő folyamatok nem fogják használni ezt a magánhálózati végpontot, de a kimenő folyamatokat egy másik alhálózaton is beinjektálhatja a [VNet-integrációs szolgáltatáson][vnetintegrationfeature]keresztül.
 
-Az alhálózat, ahol csatlakoztatja a privát végpont lehetnek más erőforrások is, nincs szükség egy dedikált üres alhálózat.
-A privát végpontot a webalkalmazástól eltérő régióban is telepítheti. 
+Az alhálózatot, amelyhez a privát végpontot csatlakoztatja, más erőforrásokkal is rendelkezhet, nincs szükség dedikált üres alhálózatra.
+A privát végpontot a webalkalmazástól eltérő régióban is üzembe helyezheti. 
 
 > [!Note]
->A virtuális hálózat integrációs szolgáltatás a Private Endpoint szolgáltatással megegyező alhálózatot nem használhatja, ez a virtuális hálózat integrációs szolgáltatásának korlátozása.
+>A VNet-integrációs szolgáltatás nem használhatja ugyanazt az alhálózatot, mint a privát végpont, ez a VNet-integrációs szolgáltatás korlátozása.
 
 Biztonsági szempontból:
 
-- Ha engedélyezi a privát végpontokat a webalkalmazáshoz, letiltja az összes nyilvános hozzáférést.
-- Más virtuális hálózatokban és alhálózatokban több privát végpontot is engedélyezhet, beleértve a más régiókban lévő virtuális hálózatokat is.
-- A privát végponti hálózati adapter IP-címének dinamikusnak kell lennie, de ugyanaz marad, amíg nem törli a privát végpontot.
-- A privát végpont hálózati adapterének nem társítható NSG-kapcsolat.
-- A magánvégpontot tartalmazó alhálózathoz nsg-társítható, de le kell tiltania a hálózati házirendek kényszerítését a magánvégpontok esetében: [Lásd: A hálózati házirendek letiltása a magánvégpontokhoz.][disablesecuritype] Ennek eredményeképpen nem szűrheti az NSG a hozzáférést a privát végponthoz.
-- Ha engedélyezi a privát végpontot a webalkalmazásban, a webalkalmazás [hozzáférési korlátozások][accessrestrictions] konfigurációja nem lesz kiértékelve.
-- Csökkentheti az adatok kiszivárgási kockázatát a virtuális hálózatból az összes NSG-szabály eltávolításával, ahol a cél az internet vagy az Azure-szolgáltatások címkézése. A Web App private-végpont alhálózatba való hozzáadása azonban lehetővé teszi, hogy az azonos telepítési bélyegzővel üzemeltetett és az internetnek elérhető webalkalmazást elérje.
+- Ha engedélyezi a privát végpontokat a webalkalmazáshoz, az összes nyilvános hozzáférés le van tiltva.
+- Több privát végpontot is engedélyezhet más virtuális hálózatok és alhálózatokban, beleértve a más régiókban található virtuális hálózatok is.
+- A magánhálózati végpont hálózati adapterének IP-címének dinamikusnak kell lennie, de addig marad, amíg nem törli a privát végpontot.
+- A privát végpont hálózati adaptere nem rendelkezhet társított NSG.
+- A privát végpontot futtató alhálózathoz NSG társítható, de le kell tiltania a hálózati házirendek kényszerítését a privát végponton: a [hálózati házirendek letiltása privát végpontok esetén][disablesecuritype]című témakört. Ennek eredményeképpen egyetlen NSG sem tudja szűrni a privát végponthoz való hozzáférést.
+- Ha engedélyezi a privát végpontot a webalkalmazáshoz, a rendszer nem értékeli ki a webalkalmazás [hozzáférési korlátozásait][accessrestrictions] .
+- Csökkentheti az adatok kiszűrése kockázatát a VNet az összes olyan NSG-szabály eltávolításával, ahol a cél az Internet vagy az Azure-szolgáltatások címkéje. Egy webalkalmazás privát végpontjának az alhálózatban való hozzáadásával azonban elérheti az ugyanazon telepítési bélyegzőn üzemeltetett webalkalmazásokat, és elérhetővé teheti őket az interneten.
 
-A Web App webes HTTP-naplóiban megtalálja az ügyfélforrás IP-címét. Ez a TCP-proxy protokoll használatával valósul meg, és az ügyfél IP-tulajdonságát a Web Appba továbbítja. További információt a [Kapcsolatinformáció beszerzése a TCP-proxy 2-es v2 használatával][tcpproxy]című témakörben talál.
+A webalkalmazás webes HTTP-naplóiban megtalálja az ügyfél forrásának IP-címét. Ez a TCP proxy protokoll használatával valósul meg, amely a-ügyfél IP-tulajdonságát továbbítja a webalkalmazásnak. További információ: a [kapcsolatok adatainak beszerzése a TCP proxy v2 használatával][tcpproxy].
 
 
   > [!div class="mx-imgBorder"]
@@ -62,20 +62,20 @@ A Web App webes HTTP-naplóiban megtalálja az ügyfélforrás IP-címét. Ez a 
 
 ## <a name="dns"></a>DNS
 
-Mivel ez a szolgáltatás előzetes verzióban érhető el, nem módosítjuk a DNS-bejegyzést az előzetes verzió során. A DNS-bejegyzést saját kezűleg kell kezelnie a privát DNS-kiszolgálón vagy az Azure DNS privát zónájában.
-Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a Web Appban. Az előzetes verzió során az egyéni nevet ugyanúgy ellenőrizni kell, mint bármely egyéni nevet, nyilvános DNS-feloldás használatával. További információt az [egyéni DNS-érvényesítés][dnsvalidation] című témakörben talál.
+Mivel ez a funkció előzetes verzióban érhető el, nem változtatjuk meg a DNS-bejegyzést az előzetes verzióban. A DNS-bejegyzést a saját DNS-kiszolgálójában vagy saját maga Azure DNS saját zónájában kell kezelnie.
+Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a webalkalmazásban. Az előzetes verzióban az egyéni nevet a nyilvános DNS-feloldást használó bármely egyéni névnek hasonlóan kell érvényesíteni. További információért lásd az [Egyéni DNS-érvényesítést][dnsvalidation] ismertető témakört.
 
 ## <a name="pricing"></a>Díjszabás
 
-A díjszabással kapcsolatos részletekről az [Azure Private Link díjszabása][pricing].
+A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása][pricing].
 
 ## <a name="limitations"></a>Korlátozások
 
-Rendszeresen fejlesztjük a Privát hivatkozás funkciót és a Privát végpontot, tekintse meg ebben a [cikkben][pllimitations] a korlátozásokkal kapcsolatos naprakész információkat.
+Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
 ## <a name="next-steps"></a>További lépések
 
-Privát végpont üzembe helyezése a webalkalmazáshoz a portálon keresztül: [Hogyan csatlakozhat privátan egy webalkalmazáshoz][howtoguide]
+Privát végpont üzembe helyezése a webalkalmazáshoz a portálon keresztül: a [webalkalmazásokhoz való magánhálózati kapcsolódás][howtoguide]
 
 
 

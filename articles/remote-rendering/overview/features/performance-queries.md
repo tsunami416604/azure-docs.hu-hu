@@ -1,41 +1,41 @@
 ---
 title: Kiszolgálóoldali teljesítménylekérdezések
-description: A kiszolgálóoldali teljesítménylekérdezések API-hívásokon keresztüli lekérdezései
+description: Kiszolgálóoldali teljesítményű lekérdezések végrehajtása API-hívások használatával
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80682025"
 ---
 # <a name="server-side-performance-queries"></a>Kiszolgálóoldali teljesítménylekérdezések
 
-A kiszolgálón nyújtott jó renderelési teljesítmény kritikus fontosságú a stabil képkockasebesség és a jó felhasználói élmény érdekében. Fontos, hogy gondosan figyelje a kiszolgáló teljesítményjellemzőit, és szükség esetén optimalizálja a teljesítményt. A teljesítményadatok lekérdezhetők dedikált API-függvényeken keresztül.
+A megfelelő megjelenítési teljesítmény a kiszolgálón kritikus fontosságú a stabil képarányok és a jó felhasználói élmény érdekében. Fontos, hogy körültekintően figyelje a kiszolgáló teljesítmény-jellemzőit, és szükség esetén optimalizálja azokat. A teljesítményadatokat dedikált API-függvények segítségével lehet lekérdezni.
 
-A renderelési teljesítmény leghatásosabb a modell bemeneti adatai. A bemeneti adatokat a [modellkonvertálás konfigurálása](../../how-tos/conversion/configure-model-conversion.md)című témakörben leírtak szerint módosíthatja.
+A renderelési teljesítmény legjelentősebb hatása a modell bemeneti adatai. A bemeneti adatokat a [modell átalakításának konfigurálása](../../how-tos/conversion/configure-model-conversion.md)című témakörben leírtak szerint állíthatja be.
 
-Az ügyféloldali alkalmazások teljesítménye is szűk keresztmetszetet jelenthet. Az ügyféloldali teljesítmény mélyreható elemzéséhez ajánlott [teljesítmény-nyomkövetést](../../how-tos/performance-tracing.md)végezni.
+Az ügyféloldali alkalmazások teljesítménye is szűk keresztmetszet lehet. Az ügyféloldali teljesítmény részletes elemzéséhez javasolt a [teljesítmény nyomon követése](../../how-tos/performance-tracing.md).
 
-## <a name="clientserver-timeline"></a>Ügyfél/kiszolgáló ütemterve
+## <a name="clientserver-timeline"></a>Ügyfél/kiszolgáló idővonala
 
-Mielőtt részletesen kifejtené a különböző késési értékeket, érdemes megtekinteni az ügyfél és a kiszolgáló közötti szinkronizálási pontokat az idővonalon:
+Mielőtt részletesen bekerül a különböző késési értékekre, érdemes megtekinteni az ügyfél és a kiszolgáló közötti szinkronizálási pontokat az idővonalon:
 
-![Csővezeték ütemterve](./media/server-client-timeline.png)
+![Folyamat idővonala](./media/server-client-timeline.png)
 
-Az ábra bemutatja, hogyan:
+Az ábrán az alábbiak láthatók:
 
-* a *Pose becslést* az ügyfél állandó 60 Hz-es képkockasebességgel (16,6 ms-onként) kezdi el
-* a szerver ezután elindul a renderelés, a póz alapján
-* a szerver visszaküldi a kódolt videoképet
-* az ügyfél dekódolja a képet, elvégzi néhány CPU és GPU munka a tetején, majd megjeleníti a képet
+* a *becslést* az ügyfél a 60 – Hz-es kereteken (minden 16,6 MS) állandó értékre vált.
+* a kiszolgáló ezután elindítja a renderelést a póz alapján
+* a kiszolgáló visszaküldi a kódolt videó képét
+* az ügyfél dekódolja a rendszerképet, végrehajt néhány CPU-t és GPU-t, majd megjeleníti a rendszerképet
 
-## <a name="frame-statistics-queries"></a>Keretstatisztikai lekérdezések
+## <a name="frame-statistics-queries"></a>Keret statisztikai lekérdezései
 
-A keretstatisztikák magas szintű információkat szolgáltatnak az utolsó képkockáról, például a késésről. A struktúrában `FrameStatistics` megadott adatokat az ügyféloldalon mérik, így az API egy szinkron hívás:
+A keret statisztikái magas szintű információkat biztosítanak az utolsó kerethez, például a késést. A `FrameStatistics` struktúrában megadott adat az ügyfél oldalán mérhető, így az API egy szinkron hívás:
 
 ````c#
 void QueryFrameData(AzureSession session)
@@ -52,28 +52,28 @@ A beolvasott `FrameStatistics` objektum a következő tagokat tartalmazza:
 
 | Tag | Magyarázat |
 |:-|:-|
-| latencyPoseToReceive | A kamera készletbecslésének késleltetése az ügyféleszközön addig, amíg az ehhez a pózhoz készült kiszolgálókeret teljes mértékben elérhető vé nem válik az ügyfélalkalmazás számára. Ez az érték magában foglalja a hálózati oda-vissza, a kiszolgáló leképezési idejét, a videó dekódolását és a vibrátor kompenzációt. Lásd **az 1.**|
-| latencyReceiveToPresent | Késés a fogadott távoli keret rendelkezésre állásából, amíg az ügyfélalkalmazás meg nem hívja a PresentFrame-et a processzoron. |
-| latencyPresentToDisplay  | A processzor on-termésének megjelenítésétől a kijelző kivilágításáig késleltetése. Ez az érték magában foglalja az ügyfél GPU-idejét, az operációs rendszer által végrehajtott keretpufferezést, a hardverújravetítést és az eszközfüggő kijelző-kifutási időt. Lásd **a fenti ábrán a 2.**|
-| timeSinceLastPresent | A cpu-n lévő PresentFrame későbbi hívásai között. A kijelző időtartamánál nagyobb értékek (például 16,6 ms egy 60 Hz-es ügyféleszközön) azt jelzik, hogy az ügyfélalkalmazás nem fejezi be időben a CPU-terhelést. Lásd **a fenti ábrán a 3.**|
-| videoFramesReceived | A kiszolgálótól az utolsó másodpercben fogadott keretek száma. |
-| videoFrameReusedCount | Az eszközön többször használt fogadott keretek száma az utolsó másodpercben. A nem nulla értékek azt jelzik, hogy a képkockákat újra fel kellett használni, és újra kellett felvetíteni a hálózati vibrezés vagy a kiszolgáló túlzott megjelenítési ideje miatt. |
-| videoFramesed | Az utolsó másodpercben dekódolt, de nem megjelenített fogadott keretek száma, mert újabb képkocka érkezett. A nem nulla értékek azt jelzik, hogy a hálózati vibrálás miatt több képkocka késik, majd egy adatfelvételben együtt érkezik meg az ügyféleszközre. |
-| videoFramediscarded | Nagyon hasonlít **a videoFramesSkipped,** de az oka annak, hogy elvetették, hogy a keret jött olyan későn, hogy nem is lehet korrelál minden függőben lévő jelent többé. Ha ez megtörténik, van néhány súlyos hálózati viszálykodás.|
-| videoFrameMinDelta | Az utolsó másodpercben érkező két egymást követő képkocka közötti minimális időtartam. A videoFrameMaxDelta-val együtt ez a tartomány jelzi a hálózati vagy videokodek által okozott vibrációt. |
-| videoFrameMaxDelta | Az utolsó másodpercben érkező két egymást követő képkocka közötti maximális idő. A videoFrameMinDelta-val együtt ez a tartomány jelzi a hálózati vagy videokodek által okozott vibrációt. |
+| latencyPoseToReceive | A kamera késése becslést jelent az eszközön, amíg az alkalmazáshoz tartozó kiszolgálói keret teljes mértékben elérhető az ügyfélalkalmazás számára. Ez az érték magában foglalja a hálózati bemutatót, a kiszolgáló megjelenítési idejét, a videó-dekódolást és a jitter-kompenzációt. Lásd **a fenti ábrán az 1. intervallumot.**|
+| latencyReceiveToPresent | A fogadott távoli keretek rendelkezésre állásának késése, amíg az ügyfélalkalmazás nem hívja meg a PresentFrame a PROCESSZORon. |
+| latencyPresentToDisplay  | Egy keretnek a CPU-ban való megjelenítésének késése, amíg a kijelző fel nem villan. Ez az érték tartalmazza az ügyfél GPU-időpontját, az operációs rendszer által végrehajtott összes frame-pufferelést, a hardverek újravetítését és az eszköztől függő megjelenítési vizsgálat időpontját. Lásd **a fenti ábrán a 2. intervallumot.**|
+| timeSinceLastPresent | A következő, a PROCESSZORon PresentFrame meghívások közötti idő. A megjelenítési időtartamnál nagyobb értékek (például az 16,6 MS egy 60-Hz-es ügyfélszámítógépen) jelzik, hogy az ügyfélalkalmazás által okozott problémák nem fejezik be a CPU-munkaterhelést időben. Lásd **a fenti ábrán látható 3. intervallumot.**|
+| videoFramesReceived | A kiszolgálóról az elmúlt másodpercben fogadott keretek száma. |
+| videoFrameReusedCount | A fogadott képkockák száma az elmúlt másodpercben, amely többször is használatban volt az eszközön. A nullától eltérő értékek azt jelzik, hogy a rendszer újra felhasználta a képkockákat, és a hálózati Jitter vagy a kiszolgáló túlzott megjelenítési ideje miatt újra feldolgozta őket. |
+| videoFramesSkipped | Az elmúlt másodpercben a visszakapott képkockák száma, amelyek dekódolása megtörtént, de a megjelenítés nem látható, mert újabb keret érkezett. A nullától eltérő értékek azt jelzik, hogy a hálózati vibrálás több képkockát okozott, majd az eszközön együtt megérkezik a burst állapotba. |
+| videoFramesDiscarded | Nagyon hasonlít a **videoFramesSkipped**, de az eldobásának oka, hogy egy keret olyan későn jött létre, hogy a függőben lévők már nem is korrelálnak. Ha ez bekövetkezik, a hálózati tartalom komoly.|
+| videoFrameMinDelta | Az elmúlt másodpercben két egymást követő keret között érkező minimális időtartam. A videoFrameMaxDelta együtt ez a tartomány a hálózat vagy a videó kodek által okozott vibrálás jelzését adja meg. |
+| videoFrameMaxDelta | Az elmúlt másodpercben két egymást követő keret között elérkező maximális időtartam. A videoFrameMinDelta együtt ez a tartomány a hálózat vagy a videó kodek által okozott vibrálás jelzését adja meg. |
 
-Az összes késési érték összege általában sokkal nagyobb, mint a rendelkezésre álló keretidő 60 Hz-en. Ez rendben van, mert több képkocka párhuzamosan repül, és az új képkockakérelmek a kívánt képkockasebességgel indulnak el, ahogy az az ábrán is látható. Azonban, ha a késés túl nagy, ez befolyásolja a [késői szakaszban újravetítés](../../overview/features/late-stage-reprojection.md)minőségét, és veszélyeztetheti az általános tapasztalat.
+Az összes késési érték összege általában jóval nagyobb, mint a rendelkezésre álló keret 60 Hz-nél. Ez azért van így, mert több keret van folyamatban párhuzamosan, és az új keretekre vonatkozó kérések a kívánt keretre kerülnek, ahogy az ábrán is látható. Ha azonban a késés túl nagy, az hatással van a [késői fázis újravetítésének](../../overview/features/late-stage-reprojection.md)minőségére, és veszélyeztetheti a teljes élményt.
 
-`videoFramesReceived`, `videoFrameReusedCount`és `videoFramesDiscarded` a hálózat és a kiszolgáló teljesítményének mérésére használható. Ha `videoFramesReceived` alacsony `videoFrameReusedCount` és magas, az hálózati torlódást vagy gyenge kiszolgálói teljesítményt jelezhet. A `videoFramesDiscarded` nagy érték a hálózati torlódást is jelzi.
+`videoFramesReceived``videoFrameReusedCount`a, a `videoFramesDiscarded` és a használatával mérhető a hálózat és a kiszolgáló teljesítménye. Ha `videoFramesReceived` alacsony és `videoFrameReusedCount` magas, akkor ez a hálózati torlódást vagy a kiszolgáló gyenge teljesítményét jelezheti. A magas `videoFramesDiscarded` érték A hálózati torlódást is jelzi.
 
-Végül`timeSinceLastPresent`, `videoFrameMinDelta`és `videoFrameMaxDelta` adjon képet a bejövő videoképkockák és a helyi behívások varianciájáról. A nagy variancia instabil képkockasebességet jelent.
+Végül,, és `videoFrameMaxDelta` a beérkező képkockák és a helyi meghívások eltérésének ötlete.`timeSinceLastPresent` `videoFrameMinDelta` A nagy variancia nem stabil képarányt jelent.
 
-A fenti értékek egyike sem jelzi egyértelműen a hálózat tiszta késését (az ábrán látható piros nyilakat), mivel a kiszolgáló `latencyPoseToReceive`foglalt megjelenítési idejét ki kell vonni a körbeútra szóló értékből. A teljes késés kiszolgálóoldali része olyan információ, amely nem érhető el az ügyfél számára. A következő bekezdés azonban azt ismerteti, hogy ez az érték hogyan `networkLatency` közelíthető meg a kiszolgáló további bevitelével, és hogyan érhető el az értéken keresztül.
+A fenti értékek egyike sem teszi egyértelművé a tiszta hálózati késést (az ábrán látható piros nyilat), mert a kiszolgáló elfoglalt állapotának pontos időpontját ki kell vonni a oda-értékből `latencyPoseToReceive`. Az általános késés kiszolgálóoldali része olyan információ, amely nem érhető el az ügyfél számára. A következő bekezdés azonban elmagyarázza, hogy ez az érték hogyan közelíthető meg a kiszolgáló további bemenetei és az `networkLatency` érték alapján.
 
-## <a name="performance-assessment-queries"></a>Teljesítményértékelési lekérdezések
+## <a name="performance-assessment-queries"></a>Teljesítmény-értékelési lekérdezések
 
-*A teljesítményértékelési lekérdezések* részletesebb információkat nyújtanak a kiszolgáló processzor- és GPU-munkaterheléséről. Mivel az adatokat a kiszolgálótól kérik, a teljesítmény-pillanatkép lekérdezése a szokásos aszinkron mintát követi:
+A *teljesítmény-értékelési lekérdezések* részletesebb információkat biztosítanak a kiszolgáló processzor-és GPU-munkaterheléséről. Mivel az adatok kérése a kiszolgálóról történik, a teljesítmény-pillanatfelvétel lekérdezése a szokásos aszinkron mintát követi:
 
 ``` cs
 PerformanceAssessmentAsync _assessmentQuery = null;
@@ -92,25 +92,25 @@ void QueryPerformanceAssessment(AzureSession session)
 }
 ```
 
-Az objektummal `FrameStatistics` ellentétben `PerformanceAssessment` az objektum kiszolgálóoldali információkat tartalmaz:
+`FrameStatistics` Az objektummal ellentétben az `PerformanceAssessment` objektum kiszolgálóoldali adatokat tartalmaz:
 
 | Tag | Magyarázat |
 |:-|:-|
-| timeCPU | A kiszolgáló átlagos processzora képkockánkénti átlaga ezredmásodpercben |
-| timeGPU | Kiszolgáló GPU-s átlaga képkockánkénti átlaga ezredmásodpercben |
-| kihasználtságCPU | A kiszolgáló teljes cpu-kihasználtsága százalékban |
-| használatGPU | A kiszolgáló GPU-jának teljes kihasználtsága százalékban |
-| memóriaCPU | A kiszolgáló fő memóriakihasználtságának teljes százaléka |
-| memória GPU | A dedikált videomemória teljes kihasználtsága a kiszolgáló GPU-jának százalékában |
-| hálózatLatency | A hozzávetőleges átlagos oda-vissza hálózati késés ezredmásodpercben. A fenti ábrán ez megfelel a piros nyilak összegének. Az értéket úgy számítjuk ki, hogy a `latencyPoseToReceive` kiszolgáló `FrameStatistics`tényleges renderelési idejét kivonjuk a értékéből. Bár ez a közelítés nem pontos, ez ad némi jelzést a hálózati késés, izolálva az ügyfélkésszámított késési értékek. |
-| sokszögekRenderelt | Az egy keretben megjelenített háromszögek száma. Ez a szám tartalmazza azokat a háromszögeket is, amelyeket a renderelés során később selejteznek le. Ez azt jelenti, hogy ez a szám nem változik sokat a különböző kamerapozíciókban, de a teljesítmény drasztikusan változhat, a háromszög selejtezési sebességétől függően.|
+| timeCPU | Átlagos kiszolgálói CPU-idő/keret (ezredmásodperc) |
+| timeGPU | Kiszolgáló GPU-ra vonatkozó átlagos ideje (ezredmásodperc) |
+| utilizationCPU | Kiszolgáló CPU-kihasználtsága összesen (százalék) |
+| utilizationGPU | Kiszolgáló GPU-kihasználtsága összesen (százalék) |
+| memoryCPU | Kiszolgáló összes fő memóriájának kihasználtsága százalékban |
+| memoryGPU | Dedikált videomemória teljes kihasználtsága a kiszolgálói GPU százalékában |
+| networkLatency | Az átlagos kétirányú hálózati késés ezredmásodpercben megadva. A fenti ábrán ez a piros nyilak összegének felel meg. Az értéket a rendszer a tényleges kiszolgáló renderelési idejének `latencyPoseToReceive` kivonásával számítja ki `FrameStatistics`. Habár ez a közelítés nem pontos, a hálózati késést is jelzi, amely az ügyfélen számított késési értékektől elkülönített. |
+| polygonsRendered | Az egyik keretben megjelenített háromszögek száma Ez a szám a renderelés során később kiselejtezett háromszögeket is tartalmazza. Ez azt jelenti, hogy ez a szám nem változik a különböző kamera-pozíciók között, de a teljesítmény jelentősen változhat, a háromszög-kiselejtezési aránytól függően.|
 
-Az értékek értékelésének segítése érdekében minden egyes rész minőségi besorolással érkezik, mint **a Nagy**, **Jó**, **Középszerű**vagy **a Rossz**.
-Ez az értékelési metrika a kiszolgáló állapotának durva jelzését adja meg, de nem tekinthető abszolútnak. Tegyük fel például, hogy a GPU-idő "középszerű" pontszáma jelenik meg. Úgy vélik, középszerű, mert megközelíti a határértéket a teljes frame időkeret költségvetést. Az Ön esetében azonban lehet, hogy egy jó érték mégis, mert ön teszi egy összetett modell.
+Az értékek felmérése érdekében minden részhez tartozik egy minőségi besorolás, például **nagyszerű**, **jó**, **közepes**vagy **rossz**.
+Ez az értékelési metrika a kiszolgáló állapotának durva jelzését biztosítja, de nem tekinthető abszolútnak. Tegyük fel például, hogy a GPU-idő "közepes" pontszámot tartalmaz. A rendszer közepesnek tekinti, mivel az a teljes keretre vonatkozó költségkerethez tartozó korláthoz közeledik. Ebben az esetben azonban érdemes lehet jó értéket adni, mert összetett modellt tesz elérhetővé.
 
-## <a name="statistics-debug-output"></a>Statisztikai hibakeresési kimenet
+## <a name="statistics-debug-output"></a>Statisztikák hibakeresési kimenete
 
-Az `ARRServiceStats` osztály körbejárja mind a keretstatisztikákat, mind a teljesítményértékelési lekérdezéseket, és kényelmes funkcionalitást biztosít a statisztikák összesített értékként vagy előre elkészített karakterláncként való visszaadásához. A következő kód a legegyszerűbb módja annak, hogy az ügyfélalkalmazásban a kiszolgálóoldali statisztikákat jelenítse meg.
+Az osztály `ARRServiceStats` a keret statisztikái és a teljesítmény-értékelési lekérdezéseket is tartalmazza, és kényelmes funkciókat biztosít a statisztikák összesített értékként való visszaküldéséhez, vagy egy előre elkészített sztringként. A következő kód a kiszolgálóoldali statisztika megjelenítésének legegyszerűbb módja az ügyfélalkalmazás számára.
 
 ``` cs
 ARRServiceStats _stats = null;
@@ -138,15 +138,15 @@ void Update()
 }
 ```
 
-A fenti kód a következő szöveggel feltölti a szöveges címkét:
+A fenti kód feltölti a szöveg címkéjét a következő szöveggel:
 
 ![ArrServiceStats karakterlánc kimenete](./media/arr-service-stats.png)
 
-Az `GetStatsString` API formázza az összes érték karakterláncát, de minden egyes érték `ARRServiceStats` programozott módon is lekérdezhető a példányból.
+Az `GetStatsString` API az összes érték sztringjét formázza, de minden egyes érték programozott módon is lekérdezhető a `ARRServiceStats` példányból.
 
-A tagoknak vannak olyan változatai is, amelyek az idő múlásával összesítik az értékeket. Lásd a tagokat `*Avg` `*Max`utótaggal , vagy `*Total`. A `FramesUsedForAverage` tag azt jelzi, hogy hány képkocka volt használva ehhez az összesítéshez.
+A tagoknak vannak olyan változatai is, amelyek az értékeket az idő múlásával összesítik. Tekintse meg a `*Avg`tagokat utótaggal, `*Max`vagy `*Total`. A tag `FramesUsedForAverage` azt jelzi, hogy az összesítéshez hány képkockát használtak.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Teljesítmény-nyomkövetések létrehozása](../../how-tos/performance-tracing.md)
-* [A modellkonvertálás konfigurálása](../../how-tos/conversion/configure-model-conversion.md)
+* [Teljesítmény-nyomkövetés létrehozása](../../how-tos/performance-tracing.md)
+* [A modell átalakításának konfigurálása](../../how-tos/conversion/configure-model-conversion.md)

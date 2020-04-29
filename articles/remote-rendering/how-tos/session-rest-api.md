@@ -1,33 +1,33 @@
 ---
-title: A munkamenet-kezelés REST API-ja
-description: A munkamenetek kezelésének ismertetése
+title: A munkamenet-felügyeleti REST API
+description: A munkamenetek felügyeletének ismertetése
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681245"
 ---
-# <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelés REST API-jának használata
+# <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
 
-Az Azure remote rendering funkció használatához létre kell hoznia egy *munkamenetet.* Minden munkamenet egy virtuális gépnek (VM) felel meg, amelyet az Azure-ban foglal le, és amely egy ügyféleszköz csatlakoztatására vár. Amikor egy eszköz csatlakozik, a virtuális gép megjeleníti a kért adatokat, és az eredményt videoadat-adatként jeleníti meg. A munkamenet létrehozása során kiválasztotta, hogy milyen típusú kiszolgálón kíván futni, amely meghatározza az árképzést. Ha a munkamenet már nincs szükség, meg kell állítani. Ha nem állítja le manuálisan, akkor automatikusan leáll, amikor a munkamenet *bérleti ideje* lejár.
+Az Azure távoli renderelési funkciójának használatához létre kell hoznia egy *munkamenetet*. Minden egyes munkamenet megfelel egy virtuális géphez (VM), amely az Azure-ban van lefoglalva, és arra vár, hogy csatlakoztasson egy ügyfélszámítógépet. Amikor egy eszköz csatlakozik a szolgáltatáshoz, a virtuális gép megjeleníti a kért adatforrásokat, és a videó streamként szolgáltatja az eredményt. A munkamenet létrehozása során kiválaszthatja, hogy melyik kiszolgálót szeretné futtatni, amely meghatározza a díjszabást. Ha a munkamenetet már nem szükséges, le kell állítani. Ha a munkamenet *címbérleti ideje* lejár, a rendszer automatikusan leállítja, ha nem állítja be manuálisan.
 
-PowerShell-parancsfájlt biztosítunk a *Scripts* mappában található [ARR-minták tárházában,](https://github.com/Azure/azure-remote-rendering) a *RenderingSession.ps1*mappában, amely bemutatja a szolgáltatás használatát. A parancsfájl és a konfiguráció itt ismertetésre: [Példa PowerShell-parancsfájlok](../samples/powershell-example-scripts.md)
+Egy PowerShell-szkriptet adunk a *RenderingSession. ps1*nevű *Scripts* mappában található [ARR Samples adattárban](https://github.com/Azure/azure-remote-rendering) , amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../samples/powershell-example-scripts.md)
 
 > [!TIP]
-> Az ezen a lapon felsorolt PowerShell-parancsok egymás kiegészítésére vannak kiírva. Ha az összes parancsfájlt egymás után futtatja ugyanazon a PowerShell-parancssorban, azok egymásra épülnek.
+> A lapon felsorolt PowerShell-parancsok célja, hogy kiegészítsék egymást. Ha az összes parancsfájlt ugyanabban a PowerShell-parancssorban futtatja, akkor azok egymásra épülnek.
 
 ## <a name="regions"></a>Régiók
 
-Tekintse meg az [elérhető régiók listáját](../reference/regions.md) az alap URL-címek a kérelmek et küldeni.
+Tekintse meg az [elérhető régiók listáját](../reference/regions.md) az alapurl-címek számára, hogy elküldje a kérelmeket.
 
-Az alábbi mintaszkriptek esetében a *westus2*régiót választottuk.
+Az alábbi minta-szkriptek esetében a *westus2*régiót választottuk.
 
-### <a name="example-script-choose-an-endpoint"></a>Példa parancsfájl: Válasszon egy végpontot
+### <a name="example-script-choose-an-endpoint"></a>Példa parancsfájlra: válasszon végpontot
 
 ```PowerShell
 $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
@@ -35,20 +35,20 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>Fiókok
 
-Ha nem rendelkezik távoli renderelési fiókkal, [hozzon létre egyet.](create-an-account.md) Minden erőforrást egy *fiókazonosító*azonosít, amely a munkamenet API-k egészében használatos.
+Ha nem rendelkezik távoli megjelenítési fiókkal, [hozzon létre egyet](create-an-account.md). Minden erőforrást egy *accountId*azonosít, amelyet a rendszer a munkamenet API-k során használ.
 
-### <a name="example-script-set-accountid-and-accountkey"></a>Példa parancsfájl: Fiókazonosító és accountKey beállítása
+### <a name="example-script-set-accountid-and-accountkey"></a>Példa szkriptre: set accountId és accountKey
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
 ```
 
-## <a name="common-request-headers"></a>Gyakori kérelemfejlécek
+## <a name="common-request-headers"></a>Gyakori kérelmek fejlécei
 
-* Az *engedélyezési* fejléc nek "`Bearer TOKEN`",`TOKEN`ahol " " értékűnek kell lennie a Secure Token Service által visszaadott hitelesítési jogkivonatnak. [returned by the Secure Token Service](tokens.md)
+* Az *engedélyezési* fejlécnek "`Bearer TOKEN`" értékűnek kell lennie, ahol`TOKEN`a "" a [biztonságos jogkivonat szolgáltatás által visszaadott](tokens.md)hitelesítési jogkivonat.
 
-### <a name="example-script-request-a-token"></a>Példa parancsfájl: Token kérése
+### <a name="example-script-request-a-token"></a>Példa szkriptre: jogkivonatot kér
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
@@ -57,31 +57,31 @@ $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
 
-## <a name="common-response-headers"></a>Gyakori válaszfejlécek
+## <a name="common-response-headers"></a>Gyakori válaszok fejlécei
 
-* Az *MS-CV* fejlécet a termékcsapat használhatja a szolgáltatáson belüli hívás nyomon követésére.
+* A termék csapata az *MS-CV* fejléc használatával nyomon követheti a hívást a szolgáltatáson belül.
 
 ## <a name="create-a-session"></a>Munkamenet létrehozása
 
-Ez a parancs munkamenetet hoz létre. Az új munkamenet azonosítóját adja vissza. Az összes többi parancshoz szükség van a munkamenet-azonosítóra.
+Ez a parancs létrehoz egy munkamenetet. Az új munkamenet AZONOSÍTÓját adja vissza. Minden más parancshoz szüksége lesz a munkamenet-AZONOSÍTÓra.
 
 | URI | Módszer |
 |-----------|:-----------|
-| /v1/fiókok/*accountId*/sessions/create | POST |
+| /v1/accounts/*accountId*/Sessions/Create | POST |
 
 **Kérelem törzse:**
 
-* maxLeaseTime (időtartomány): időtúlérték, amikor a virtuális gép automatikusan lelesz szerelve
-* modellek (tömb): eszköztároló URL-címei az előterheléshez
-* méret (karakterlánc): a virtuális gép mérete (**"standard"** vagy **"prémium").** Lásd a [virtuális gép méretére vonatkozó korlátozásokat.](../reference/limits.md#overall-number-of-polygons)
+* maxLeaseTime (TimeSpan): időtúllépési érték, ha a virtuális gép automatikusan leszerelve lesz
+* modellek (Array): eszközök tárolójának URL-címei a Preload számára
+* size (karakterlánc): a virtuális gép mérete (**"standard"** vagy **"Prémium"**). Lásd a virtuálisgép- [méretek bizonyos korlátozásait](../reference/limits.md#overall-number-of-polygons).
 
-**Válaszok:**
+**Válaszok**
 
-| Állapotkód | JSON hasznos teher | Megjegyzések |
+| Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 202 | - sessionId: GUID | Sikeres |
+| 202 | -Munkamenet-azonosító: GUID | Sikeres |
 
-### <a name="example-script-create-a-session"></a>Példa parancsfájl: Munkamenet létrehozása
+### <a name="example-script-create-a-session"></a>Példa szkriptre: munkamenet létrehozása
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/create" -Method Post -ContentType "application/json" -Body "{ 'maxLeaseTime': '4:0:0', 'models': [], 'size': 'standard' }" -Headers @{ Authorization = "Bearer $token" }
@@ -109,9 +109,9 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 52
 ```
 
-### <a name="example-script-store-sessionid"></a>Példa parancsfájl: Munkamenet-azonosító tárolása
+### <a name="example-script-store-sessionid"></a>Példa szkriptre: Store munkamenet-azonosító
 
-A fenti kérés válasza tartalmaz egy **munkamenet-azonosítót,** amelyre minden követési kérelemhez szüksége van.
+A fenti kérelem válasza tartalmaz egy **munkamenet**-azonosítót, amely az összes követési kérelemhez szükséges.
 
 ```PowerShell
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
@@ -119,26 +119,26 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 ## <a name="update-a-session"></a>Munkamenet frissítése
 
-Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak a munkamenet bérleti idejét hosszabbíthatja meg.
+Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet címbérleti idejét lehet kiterjeszteni.
 
 > [!IMPORTANT]
-> A bérleti idő mindig a munkamenet kezdete óta eltelt teljes időként van megadva. Ez azt jelenti, hogy ha egy órás bérleti idővel létrehozott egy munkamenetet, és további egy órával szeretné meghosszabbítani a bérleti időt, frissítenie kell a maxLeaseTime-ot két órára.
+> A címbérleti időt mindig a munkamenet kezdete óta teljes idő adja meg. Ez azt jelenti, hogy ha egy órás bérlettel rendelkező munkamenetet hozott létre, és egy másik órára szeretné kiterjeszteni a címbérleti időt, a maxLeaseTime két órára kell frissítenie.
 
 | URI | Módszer |
 |-----------|:-----------|
-| /v1/accounts/*accountID**/session/sessionId* | Javítás |
+| /v1/accounts/*accountID*/Sessions/*munkamenet* -azonosító | JAVÍTÁS |
 
 **Kérelem törzse:**
 
-* maxLeaseTime (időtartomány): időtúlérték, amikor a virtuális gép automatikusan lelesz szerelve
+* maxLeaseTime (TimeSpan): időtúllépési érték, ha a virtuális gép automatikusan leszerelve lesz
 
-**Válaszok:**
+**Válaszok**
 
-| Állapotkód | JSON hasznos teher | Megjegyzések |
+| Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
 | 200 | | Sikeres |
 
-### <a name="example-script-update-a-session"></a>Példa parancsfájl: Munkamenet frissítése
+### <a name="example-script-update-a-session"></a>Példa szkriptre: munkamenet frissítése
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,21 +160,21 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>Aktív munkamenetek beszereznie
+## <a name="get-active-sessions"></a>Aktív munkamenetek beolvasása
 
 Ez a parancs az aktív munkamenetek listáját adja vissza.
 
 | URI | Módszer |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions | GET |
+| /v1/accounts/*accountId*/Sessions | GET |
 
-**Válaszok:**
+**Válaszok**
 
-| Állapotkód | JSON hasznos teher | Megjegyzések |
+| Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 200 | - munkamenetek: munkamenet-tulajdonságok tömbje | A munkamenet-tulajdonságok leírását a "Munkamenet-tulajdonságok beszerezni" című szakaszban |
+| 200 | -Sessions: munkamenet-tulajdonságok tömbje | a munkamenet-tulajdonságok leírását a "munkamenet-tulajdonságok beolvasása" című szakaszban tekintheti meg. |
 
-### <a name="example-script-query-active-sessions"></a>Példa parancsfájl: Aktív munkamenetek lekérdezése
+### <a name="example-script-query-active-sessions"></a>Példa szkriptre: aktív munkamenetek lekérdezése
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,21 +203,21 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>Munkamenetek tulajdonságainak beszereznie
+## <a name="get-sessions-properties"></a>Munkamenetek tulajdonságainak beolvasása
 
-Ez a parancs egy munkamenetadatait adja vissza, például a virtuális gép állomásnevét.
+Ez a parancs egy munkamenetre vonatkozó adatokat ad vissza, például a virtuális gép állomásnevét.
 
 | URI | Módszer |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/session/*sessionId*/properties | GET |
+| /v1/accounts/*accountId*/Sessions/*munkamenet*-/Properties | GET |
 
-**Válaszok:**
+**Válaszok**
 
-| Állapotkód | JSON hasznos teher | Megjegyzések |
+| Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 200 | - üzenet: karakterlánc<br/>- sessionElapsedTime: timespan<br/>- sessionHostname: karakterlánc<br/>- sessionId: karakterlánc<br/>- sessionMaxLeaseTime: timespan<br/>- sessionSize: enum<br/>- sessionStatus: enum | enum sessionStatus { indítás, kész, leállítás, leállítás, lejárt, hiba}<br/>Ha az állapot "hiba" vagy "lejárt", az üzenet további információkat fog tartalmazni |
+| 200 | -üzenet: karakterlánc<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: karakterlánc<br/>-Munkamenet-azonosító: karakterlánc<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: Enum<br/>-sessionStatus: Enum | Enum sessionStatus {Start, Ready, Leállítás, leállítva, lejárt, hiba}<br/>Ha az állapot "Error" vagy "lejárt", akkor az üzenet további információkat tartalmaz. |
 
-### <a name="example-script-get-session-properties"></a>Példa parancsfájl: Munkamenet-tulajdonságok beszerezni
+### <a name="example-script-get-session-properties"></a>Példa szkriptre: munkamenet-tulajdonságok beolvasása
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -248,19 +248,19 @@ RawContentLength  : 60
 
 ## <a name="stop-a-session"></a>Munkamenet leállítása
 
-Ez a parancs leállít egy munkamenetet. A lefoglalt virtuális gép nem sokkal később visszalesz szerezve.
+Ez a parancs leállítja a munkamenetet. A lefoglalt virtuális gép hamarosan visszaigénylésre kerül.
 
 | URI | Módszer |
 |-----------|:-----------|
-| /v1/accounts/*accountId**/session/sessionId* | DELETE |
+| /v1/accounts/*accountId*/Sessions/*munkamenet* -azonosító | DELETE |
 
-**Válaszok:**
+**Válaszok**
 
-| Állapotkód | JSON hasznos teher | Megjegyzések |
+| Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
 | 204 | | Sikeres |
 
-### <a name="example-script-stop-a-session"></a>Példa parancsfájl: Munkamenet leállítása
+### <a name="example-script-stop-a-session"></a>Példa szkriptre: munkamenet leállítása
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Delete -Headers @{ Authorization = "Bearer $token" }
@@ -283,4 +283,4 @@ RawContentLength  : 0
 
 ## <a name="next-steps"></a>További lépések
 
-* [Példa PowerShell-parancsfájlokra](../samples/powershell-example-scripts.md)
+* [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)

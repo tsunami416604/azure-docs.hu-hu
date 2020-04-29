@@ -1,24 +1,24 @@
 ---
-title: Távoli renderelés beállítása egységre
-description: Az Azure remote rendering inicializálása Unity-projektben
+title: A Remote Rendering beállítása a Unityben
+description: Az Azure távoli renderelés inicializálása egy Unity-projektben
 author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
 ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681141"
 ---
-# <a name="set-up-remote-rendering-for-unity"></a>Távoli renderelés beállítása egységre
+# <a name="set-up-remote-rendering-for-unity"></a>A Remote Rendering beállítása a Unityben
 
-Az Azure Remote Rendering (ARR) unity engedélyezéséhez olyan dedikált módszereket biztosítunk, amelyek gondoskodnak néhány Unity-specifikus szempontból.
+Az Azure Remote rendering (ARR) egységben való engedélyezéséhez olyan dedikált módszereket biztosítunk, amelyek gondoskodnak bizonyos egységekre jellemző szempontokról.
 
 ## <a name="startup-and-shutdown"></a>Indítás és leállítás
 
-A távoli renderelés `RemoteManagerUnity`inicializálásához használja a használatát. Ez az osztály `RemoteManager` felhívja az általános, de már megvalósítja Unity-specifikus részleteket az Ön számára. A Unity például egy adott koordináta-rendszert használ. Híváskor `RemoteManagerUnity.Initialize`a megfelelő konvenció lesz beállítva. A hívás azt is megköveteli, hogy biztosítsa az Unity kamerát, amelyet a távolról megjelenített tartalom megjelenítéséhez kell használni.
+A távoli renderelés inicializálásához használja `RemoteManagerUnity`a következőt:. Ez az osztály az általános `RemoteManager` , de már megvalósítja az egység-specifikus adatokat. Az Unity például egy adott koordináta-rendszer használatával működik. A hívásakor `RemoteManagerUnity.Initialize`a rendszer a megfelelő konvenciót fogja beállítani. A híváshoz azt is meg kell adnia, hogy milyen Unity kamerát kell használni a távolról renderelt tartalom megjelenítéséhez.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -27,17 +27,17 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 ```
 
-A távoli renderelés leállításához hívja a hívást. `RemoteManagerStatic.ShutdownRemoteRendering()`
+A távoli renderelés leállítása érdekében hívja `RemoteManagerStatic.ShutdownRemoteRendering()`meg a következőt:.
 
-Miután `AzureSession` egy létrehozást és elsődleges renderelési munkamenetnek lett kiválasztva, azt a következőben `RemoteManagerUnity`kell regisztrálni:
+`AzureSession` Miután létrehozta és kiválasztotta az elsődleges renderelési munkamenetet, regisztrálnia kell a `RemoteManagerUnity`következővel:
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
 ```
 
-### <a name="full-example-code"></a>Teljes példakód
+### <a name="full-example-code"></a>Teljes példa kód
 
-Az alábbi kód bemutatja az Azure remote rendering inicializálásához szükséges összes lépést egységben:
+Az alábbi kód az Azure Remote rendering Unity-ben történő inicializálásához szükséges összes lépést mutatja be:
 
 ```cs
 // initialize Remote Rendering
@@ -62,21 +62,21 @@ session.ConnectToRuntime(new ConnectToRuntimeParams());
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-## <a name="convenience-functions"></a>Kényelmi funkciók
+## <a name="convenience-functions"></a>Kényelmi függvények
 
 ### <a name="session-state-events"></a>Munkamenet-állapot eseményei
 
-`RemoteManagerUnity.OnSessionUpdate`eseményeket bocsát ki, amikor a munkamenet állapota megváltozik, a részleteket a kód dokumentációjában találja.
+`RemoteManagerUnity.OnSessionUpdate`eseményeket bocsát ki a munkamenet-állapotának megváltozásakor, további részletekért tekintse meg a kód dokumentációját.
 
-### <a name="arrserviceunity"></a>ARRServiceUnity között
+### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`egy opcionális összetevő, amely egyszerűsíti a telepítést és a munkamenet-kezelést. Olyan beállításokat tartalmaz, amelyek automatikusan leállítják a munkamenetet, amikor az alkalmazás kilép, vagy a lejátszási mód kilép a szerkesztőből, valamint szükség esetén automatikusan megújítja a munkamenet-bérletet. Gyorsítótárazi az adatokat, például `LastProperties` a munkamenet tulajdonságait (lásd a változót), és megjeleníti a munkamenet-állapot változásainak és a munkamenet-hibák eseményeinek.
+`ARRServiceUnity`a egy opcionális összetevő a telepítés és a munkamenet-kezelés egyszerűsítéséhez. Olyan beállításokat tartalmaz, amelyekkel automatikusan leállíthatja a munkamenetet, amikor az alkalmazás kilép, vagy a lejátszás mód ki van zárva a szerkesztőben, valamint szükség esetén automatikusan megújítja a munkamenet-bérletet. Gyorsítótárazza az adatforrásokat, például a munkamenet tulajdonságait ( `LastProperties` lásd a változót), és megjeleníti az eseményeket a munkamenet-állapot változásaihoz és a munkamenet-hibákhoz.
 
-Egyszerre csak egy példány `ARRServiceUnity` lehet. Ez azt jelentette, hogy a kezdés gyorsabb megvalósítása néhány közös funkció. Egy nagyobb alkalmazás lehet előnyösebb, hogy ezeket a dolgokat magad, mégis.
+Egyszerre csak egy példánya `ARRServiceUnity` lehet. Ez azt jelenti, hogy néhány gyakori funkció megvalósításával gyorsabban kezdheti meg a lépéseket. A nagyobb alkalmazások esetében érdemes lehet ezeket a dolgokat is előnyben részesíteni, mégis.
 
-Például a beállítás és `ARRServiceUnity` a használat című témaköroktatóanyag: [Egységprojekt beállítása a semmiből című témakörben.](../../tutorials/unity/project-setup.md)
+Példa a beállításra és a használatra `ARRServiceUnity` : az [Unity-projekt teljesen új beállítása](../../tutorials/unity/project-setup.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Unity távoli renderelési csomagjának telepítése](install-remote-rendering-unity-package.md)
-* [Oktatóanyag: Unity-projekt beállítása a semmiből](../../tutorials/unity/project-setup.md)
+* [A Unity Remote Rendering-csomagjának telepítése](install-remote-rendering-unity-package.md)
+* [Oktatóanyag: Unity-projekt létrehozása a semmiből](../../tutorials/unity/project-setup.md)

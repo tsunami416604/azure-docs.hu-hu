@@ -1,46 +1,46 @@
 ---
-title: Importálás adatforrásokból - QnA Maker
-description: A QnA Maker tudásbázis a qna-párokhoz tartozó kérdés-válasz (QnA) készletekből és választható metaadatokból áll.
+title: Importálás adatforrásokból – QnA Maker
+description: A QnA Maker Tudásbázis egy kérdés-válasz típusú (QnA) készletből és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804282"
 ---
 # <a name="importing-from-data-sources"></a>Importálás adatforrásokból
 
-A tudásbázis nyilvános URL-ek és fájlok által bevitt kérdés-válasz halmazokból áll.
+A Tudásbázis a nyilvános URL-címek és fájlok által benyújtott kérdés-és answer-csoportokból áll.
 
-## <a name="data-source-locations"></a>Adatforrás-helyek
+## <a name="data-source-locations"></a>Adatforrás helyei
 
-A tartalom adatforrásból kerül a tudásbázisba. Az adatforrás-helyek **nyilvános URL-címek vagy fájlok,** amelyek nem igényelnek hitelesítést.
+A tartalom egy adatforrásból származó tudásbázisba kerül. Az adatforrás helyei **nyilvános URL-címek vagy fájlok**, amelyek nem igényelnek hitelesítést.
 
-A hitelesítéssel védett [SharePoint-fájlok](../how-to/add-sharepoint-datasources.md)kivételt képeznek. A SharePoint-erőforrásoknak fájloknak kell lenniük, nem weblapoknak. Ha az URL-cím webkiterjesztéssel végződik, például . ASPX, nem importálja a QnA Maker-be a SharePointból.
+A hitelesítéssel védett [SharePoint-fájlok](../how-to/add-sharepoint-datasources.md)kivételt képeznek. A SharePoint-erőforrásoknak fájlokat, nem weblapokat kell tartalmazniuk. Ha az URL-cím egy webes bővítménnyel végződik, például:. ASPX, a rendszer nem importálja QnA Maker a SharePointból.
 
-## <a name="chit-chat-content"></a>Csevegés tartalma
+## <a name="chit-chat-content"></a>Chit-csevegési tartalom
 
-A Chit chat QnA tartalomkészlet teljes tartalomadatforrásként érhető el több nyelven és társalgási stílusban. Ez lehet a kiindulási pont a bot személyiségét, és ez takarít meg az időt és költséget az írás őket a semmiből. További információ [arról, hogyan adhat hozzá](../how-to/chit-chat-knowledge-base.md) ezt a tartalomkészletet a tudásbázishoz.
+A Chit Chat QnA teljes tartalom-adatforrásként van felkínálva több nyelven és társalgási stílusban. Ez lehet a bot személyiségének kiindulási pontja, és megtakarítja az időt és a költségeket a semmiből való írás során. Megtudhatja [, hogyan adhatja hozzá](../how-to/chit-chat-knowledge-base.md) ezt a tartalmat a tudásbázishoz.
 
-## <a name="structured-data-format-through-import"></a>Strukturált adatformátum importálás útján
+## <a name="structured-data-format-through-import"></a>Strukturált adatformátum importálással
 
-A tudásbázis importálása lecseréli a meglévő tudásbázis tartalmát. Az importáláshoz `.tsv` strukturált fájlra van szükség, amely kérdéseket és választ tartalmaz. Ez az információ segít a QnA Maker csoportnak a kérdés-válasz készletek és attribútum őket egy adott adatforráshoz.
+A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az importáláshoz olyan `.tsv` strukturált fájl szükséges, amely kérdéseket és válaszokat tartalmaz. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz készleteket, és azokat egy adott adatforráshoz rendelni.
 
 | Kérdés  | Válasz  | Forrás| Metaadatok (1 kulcs: 1 érték) |
 |-----------|---------|----|---------------------|
-| 1. kérdés | Válasz1 | URL1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| 2. kérdés | 2. válasz | Szerkesztői|    `Key:Value`       |
+| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 | Szerkesztői|    `Key:Value`       |
 
-## <a name="structured-multi-turn-format-through-import"></a>Strukturált többfordulatos formátum importálás útján
+## <a name="structured-multi-turn-format-through-import"></a>Strukturált többsoros formátum importálással
 
-A többfordulatos beszélgetéseket `.tsv` fájlformátumban is létrehozhatja. A formátum lehetővé teszi a többfordulatos beszélgetések létrehozását a korábbi csevegési naplók elemzésével (más folyamatokkal, `.tsv` nem a QnA Maker használatával), majd a fájl automatizálással történő létrehozásához. Importálja a fájlt a meglévő tudásbázis lecseréléséhez.
+A többszörös kapcsolású beszélgetéseket `.tsv` fájlformátumban hozhatja létre. A formátum lehetővé teszi a többfordulatos beszélgetések létrehozását a korábbi csevegési naplók elemzésével (más folyamatokkal, nem a QnA Maker használatával), majd a `.tsv` fájl létrehozását az Automation segítségével. Importálja a fájlt a meglévő Tudásbázis cseréjéhez.
 
 > [!div class="mx-imgBorder"]
-> ![Fogalmi modell 3 szint multi-turn kérdés](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
+> ![3 szintű többfunkciós kérdés fogalmi modellje](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-A többfordulatos `.tsv`( multi-turn ) oszlopa a **Prompts**. Az `.tsv`Excelben látható példa a többfordulatos gyermekek meghatározásához szükséges információkat jeleníti meg:
+A többszörös bekapcsolás oszlopa `.tsv`a többszörös bekapcsolásra **vonatkozik.** Az Excelben `.tsv`látható példa a több bekapcsolású gyermekeket definiáló információk megjelenítéséhez:
 
 ```JSON
 [
@@ -49,16 +49,16 @@ A többfordulatos `.tsv`( multi-turn ) oszlopa a **Prompts**. Az `.tsv`Excelben 
 ]
 ```
 
-A **displayOrder** numerikus, a **displayText** pedig olyan szöveg, amely nem tartalmazhat markdownt.
+A **displayOrder** numerikus, és a **szöveg** olyan szöveg, amely nem tartalmaz Markdown.
 
 > [!div class="mx-imgBorder"]
-> ![Többfordulatos kérdés példa az Excelben látható módon](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
+> ![Példa az Excelben látható, többszörösen elérhető kérdésekre](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
 ## <a name="export-as-example"></a>Exportálás példaként
 
-Ha nem biztos benne, hogyan képviselje a `.tsv` QnA-párt a fájlban:
-* Használja ezt a [letölthető példát a GitHubról](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
-* Vagy hozza létre a készletet a QnA Maker portálon, mentse, majd exportálja a tudásbázist egy példa, hogyan kell képviselni a készlet.
+Ha nem biztos abban, hogy az QnA-párt képviselje `.tsv` a fájlban:
+* Ezt a [letölthető példát használhatja a githubról](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
+* Vagy hozza létre a készletet a QnA Maker-portálon, mentse, majd exportálja a tudásbázist egy példaként, hogy miként ábrázolja a készletet.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -67,14 +67,14 @@ Ha nem biztos benne, hogyan képviselje a `.tsv` QnA-párt a fájlban:
 
 ## <a name="see-also"></a>Lásd még
 
-A QnA Maker [Markdown hivatkozássegítségével](../reference-markdown-format.md) formázhatja válaszait.
+A válaszok formázásához használja a QnA Maker [Markdown-referenciát](../reference-markdown-format.md) .
 
 [A QnA Maker áttekintése](../Overview/overview.md)
 
-Tudásbázis létrehozása és szerkesztése a következőkkel:
+Tudásbázis létrehozása és szerkesztése az alábbiakkal:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-Válasz létrehozása a következőkkel:
+Válasz létrehozása az alábbiakkal:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

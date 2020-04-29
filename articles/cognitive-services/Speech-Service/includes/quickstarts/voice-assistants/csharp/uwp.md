@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671706"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](~/articles/cognitive-services/speech-service/get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * A [közvetlen vonalbeszédcsatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakoztatott robot létrehozása
-> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 > 
   > [!NOTE]
-  > Tekintse meg [a támogatott régiók listáját a hang-asszisztensek,](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) és győződjön meg arról, hogy az erőforrások telepítése az egyik ilyen régiókban.
+  > Tekintse meg [a támogatott régiók listáját a hangsegédek számára](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
 
-Az első lépés annak biztosítása, hogy a projekt meg legyen nyitva a Visual Studióban.
+Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visual Studióban.
 
-## <a name="start-with-some-boilerplate-code"></a>Kezdje néhány sablonkóddal.
+## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
-Adjunk hozzá néhány kódot, ami csontvázként működik a projektünkhöz.
+Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
-1. A **Megoldáskezelőben**nyissa meg a programot. `MainPage.xaml`
+1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
 
-1. A tervező XAML nézetében cserélje le a teljes tartalmat a következő kódrészletre, amely kezdetleges felhasználói felületet határoz meg:
+1. A tervező XAML nézetében cserélje le a teljes tartalmat a következő kódrészletre, amely egy kezdetleges felhasználói felületet definiál:
 
     ```xml
     <Page
@@ -81,16 +81,16 @@ Adjunk hozzá néhány kódot, ami csontvázként működik a projektünkhöz.
     </Page>
     ```
 
-A Tervező nézet frissül, hogy az alkalmazás felhasználói felülete jelenjen meg.
+A Tervező nézet frissül az alkalmazás felhasználói felületének megjelenítéséhez.
 
-1. A **Megoldáskezelőben**nyissa meg a `MainPage.xaml.cs`mögötti kód forrásfájlt. (Ez alatt csoportosítva `MainPage.xaml`.) Cserélje le a fájl tartalmát az alábbira, amely a következőket tartalmazza:
+1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.) Cserélje le a fájl tartalmát az alábbira, amely a következőket tartalmazza:
 
-- `using`utasítások a `Speech` és `Speech.Dialog` a névterekhez
-- Egyszerű implementáció a mikrofonhoz való hozzáférés biztosításához, gombkezelőhöz kötve
-- Alapvető felhasználói felületi segítők az alkalmazásban lévő üzenetek és hibák bemutatásához
-- Az inicializálási kód útvonalának olyan leszállási pontja, amely később lesz feltöltve
-- Segítő a szövegfelolvasás lelejátszásához (folyamatos átvitel támogatása nélkül)
-- Üres gombkezelő, amely később kezdi el hallgatni a zenét
+- `using`a és `Speech.Dialog` a `Speech` névterek utasításai
+- Egyszerű implementáció a mikrofon elérésének biztosításához, amely a gomb kezelőjéhez van kötve
+- Alapvető felhasználói felületi segítők az alkalmazásban lévő üzenetek és hibák megjelenítéséhez
+- Az inicializálási kód elérési útjának kiinduló pontja, amelyet később fel kell tölteni
+- A szöveg és a beszéd visszajátszására szolgáló segítő (folyamatos átvitel támogatása nélkül)
+- Egy üres gomb kezelője a figyelés megkezdéséhez, amely később fel lesz töltve
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -259,7 +259,7 @@ A Tervező nézet frissül, hogy az alkalmazás felhasználói felülete jelenje
         }
     }
     ```
-1. Adja hozzá a következő kódrészletet `InitializeDialogServiceConnector`a metódustörzséhez. Ez a `DialogServiceConnector` kód hozza létre az előfizetési adatokkal.
+1. Adja hozzá a következő kódrészletet a metódus törzséhez `InitializeDialogServiceConnector`. Ez a kód hozza `DialogServiceConnector` létre az előfizetési adatokat.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
@@ -273,14 +273,14 @@ A Tervező nézet frissül, hogy az alkalmazás felhasználói felülete jelenje
     ```
 
    > [!NOTE]
-   > Tekintse meg [a támogatott régiók listáját a hang-asszisztensek,](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) és győződjön meg arról, hogy az erőforrások telepítése az egyik ilyen régiókban.
+   > Tekintse meg [a támogatott régiók listáját a hangsegédek számára](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
    > [!NOTE]
-   > A robot konfigurálásáról a Közvetlen vonal [beszédcsatornájának](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)Bot Framework dokumentációjában olvashat.
+   > A robot konfigurálásával kapcsolatos információkért tekintse meg a [közvetlen vonalas beszéd csatorna](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
 
-1. Cserélje le `YourSpeechSubscriptionKey` a `YourServiceRegion` karakterláncokat és a saját értékeit a beszéd-előfizetéshez és [a régióhoz.](~/articles/cognitive-services/speech-service/regions.md)
+1. Cserélje le a `YourSpeechSubscriptionKey` karakterláncokat és `YourServiceRegion` a saját értékeit a beszédfelismerési előfizetéshez és a [régióhoz](~/articles/cognitive-services/speech-service/regions.md).
 
-1. Fűzze hozzá a következő kódrészletet a metódustörzs `InitializeDialogServiceConnector`végéhez. Ez a kód a robottevékenységeinek, a beszédfelismerési eredményeknek és egyéb információknak a kommunikációja által `DialogServiceConnector` támaszkodott események kezelőit állítja be.
+1. Fűzze hozzá a következő kódrészletet a metódus törzsének végéhez `InitializeDialogServiceConnector`. Ez a kód a által `DialogServiceConnector` hivatkozott események kezelőit állítja be a robot tevékenységei, a beszédfelismerés eredményei és egyéb információk közlésére.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ A Tervező nézet frissül, hogy az alkalmazás felhasználói felülete jelenje
     };
     ```
 
-1. Adja hozzá a következő kódrészletet `ListenButton_ButtonClicked` az `MainPage` osztályban lévő metódus törzséhez. Ez a `DialogServiceConnector` kód úgy van beállítva, hogy figyelje, mivel már létrehozta a konfigurációt, és regisztrálta az eseménykezelőket.
+1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus törzséhez a `MainPage` osztályban. Ez a kód a `DialogServiceConnector` figyelést állítja be, mert már megalakította a konfigurációt, és regisztrálta az eseménykezelőket.
 
     ```csharp
     if (connector == null)
@@ -366,19 +366,19 @@ A Tervező nézet frissül, hogy az alkalmazás felhasználói felülete jelenje
     
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-Most már készen áll az alkalmazás létrehozására és az egyéni hangasszisztens tesztelésére a Beszédszolgáltatás használatával.
+Most már készen áll az alkalmazás létrehozására és az egyéni hangsegéd tesztelésére a Speech Service használatával.
 
-1. A menüsorban válassza a Build megoldás **összeállítása** > **Build Solution** az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Az alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5)** billentyűt. Megjelenik **a helloworld** ablak.
+1. Az alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az F5 billentyűt). **F5** >  Megjelenik a **HelloWorld** ablak.
 
-   ![Minta UWP hangsegéd alkalmazás C# - rövid útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![Minta UWP hangsegéd alkalmazás a C#-ben – gyors útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Válassza **a Mikrofon engedélyezése**lehetőséget, és amikor megjelenik a hozzáférési engedélykérelem, válassza az **Igen**lehetőséget.
+1. Válassza a **mikrofon engedélyezése**lehetőséget, és ha a hozzáférési engedély kérése megjelenik, válassza az **Igen**lehetőséget.
 
-   ![Mikrofonhozzáférési engedély kérése](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Mikrofon-hozzáférési engedély kérése](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Válassza **a Beszélgetés a robottal**lehetőséget, és beszéljen egy angol kifejezést vagy mondatot az eszköz mikrofonjába. A beszéd továbbítása a Közvetlen vonal beszédcsatornájára kerül, és átírja az ablakban megjelenő szöveggé.
+1. Válassza **a beszélgetés a robottal**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
 

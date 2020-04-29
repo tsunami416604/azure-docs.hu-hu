@@ -1,7 +1,7 @@
 ---
-title: Api védelme az OAuth 2.0 használatával az AAD és az API Management segítségével
+title: API-k elleni védelem a OAuth 2,0 API Management és a HRE használatával
 titleSuffix: Azure API Management
-description: Ismerje meg, hogyan védheti meg a webes API-háttérrendszer az Azure Active Directory és az API Management használatával.
+description: Ismerje meg, hogyan védhető a webes API-k háttere Azure Active Directory és API Management használatával.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -14,188 +14,188 @@ ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
 ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804367"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az OAuth 2.0 Azure Active Directoryval és API Managementtel történő használatával
 
-Ez az útmutató bemutatja, hogyan konfigurálhatja az Azure API Management-példányt egy API védelmére az OAuth 2.0 protokoll használatával az Azure Active Directory (Azure AD) használatával. 
+Ez az útmutató bemutatja, hogyan konfigurálhatja Azure API Management-példányát az API-k biztosításához a OAuth 2,0 protokoll és a Azure Active Directory (Azure AD) használatával. 
 
 > [!NOTE]
-> Ez a funkció az API Management **fejlesztői**, **standard** és **prémium** szintjein érhető el.
+> Ez a funkció a API Management **fejlesztői**, **standard** és **prémium** szintjein érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A cikkben leírt lépések végrehajtásához a következőkre van szüksége:
-* API-felügyeleti példány
-* Az API Management-példányt használó, közzététel alatt lévő API
-* Egy Azure AD-bérlő
+A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
+* Egy API Management-példány
+* A API Management példányt használó, közzétett API
+* Azure AD-bérlő
 
 ## <a name="overview"></a>Áttekintés
 
-Íme egy gyors áttekintés a lépésekről:
+Íme egy gyors áttekintés a következő lépésekről:
 
-1. Regisztráljon egy alkalmazást (háttér-alkalmazás) az Azure AD-ben az API-t.
-2. Regisztráljon egy másik alkalmazást (ügyfél-alkalmazás) az Azure AD-ben, hogy képviselje az API-t meghívni igénylő ügyfélalkalmazást.
-3. Az Azure AD-ben engedélyeket ad meg, hogy az ügyfélalkalmazás hívja meg a háttér-alkalmazás.
-4. Konfigurálja úgy a fejlesztői konzolt, hogy az OAuth 2.0 felhasználói engedélyével hívja meg az API-t.
-5. Adja hozzá az **validate-jwt** házirendet az OAuth-jogkivonat érvényesítéséhez minden bejövő kérelemhez.
+1. Regisztráljon egy alkalmazást (backend-app) az Azure AD-ben az API képviseletéhez.
+2. Regisztráljon egy másik alkalmazást (ügyfélalkalmazás) az Azure AD-ben az API-t meghívó ügyfélalkalmazás megjelenítéséhez.
+3. Az Azure AD-ben adja meg az engedélyeket, hogy az ügyfélalkalmazás meghívja a háttér-alkalmazást.
+4. Konfigurálja úgy a fejlesztői konzolt, hogy az OAuth 2,0 felhasználói hitelesítés használatával hívja meg az API-t.
+5. Adja hozzá a **validate-JWT** szabályzatot az OAuth-jogkivonat ellenőrzéséhez minden bejövő kérelemnél.
 
-## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Alkalmazás regisztrálása az Azure AD-ben az API-t ábrázoló
+## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Alkalmazás regisztrálása az Azure AD-ben az API képviseletéhez
 
-Az API-k védelme az Azure AD-vel, az első lépés az, hogy regisztráljon egy alkalmazást az Azure AD-ben, amely az API-t képviseli. 
+Az API-k Azure AD-vel való ellátásához az első lépés egy olyan alkalmazás regisztrálása az Azure AD-ben, amely az API-t képviseli. 
 
-1. Az alkalmazás regisztrálásához lépjen az [Azure Portalra.](https://portal.azure.com) Keresse meg és válassza **ki az APP-regisztrációkat.**
+1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **alkalmazások regisztrációját**.
 
-1. Válassza **az Új regisztráció lehetőséget.** 
+1. Válassza az **új regisztráció**lehetőséget. 
 
-1. Amikor megjelenik a **Jelentkezési lap regisztrálása,** adja meg a jelentkezési lap regisztrációs adatait: 
-    - A **Név szakaszban** adjon meg egy értelmes alkalmazásnevet, amely megjelenik az alkalmazás felhasználói számára, például a *háttéralkalmazás*számára. 
-    - A **Támogatott fióktípusok** csoportban válasszon a forgatókönyvnek megfelelő beállítást. 
+1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait: 
+    - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például *háttér-alkalmazás*). 
+    - A **támogatott fióktípus** szakaszban válasszon egy olyan beállítást, amely megfelel a forgatókönyvnek. 
 
-1. Hagyja üresen az **Átirányítás URI** szakaszt.
-
-1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához. 
-
-1. Az alkalmazás **áttekintése** lapon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és rögzítse későbbre.
-
-1. Válassza **az API felfedése** lehetőséget, és állítsa be az **alkalmazásazonosító URI-ját** az alapértelmezett értékkel. Ezt az értéket későbbre rögzítse.
-
-1. A **Hatókör hozzáadása** gombra kattintva jelenítse meg a **Hatókör hozzáadása** lapot. Ezután hozzon létre egy új hatókört, `Files.Read`amelyet az API támogat (például ). Végül a **hatókör hozzáadása** gombra kattintva hozza létre a hatókört. Ismételje meg ezt a lépést az API által támogatott összes hatókör hozzáadásához.
-
-1. A hatókörök létrehozásakor jegyezze fel azokat egy későbbi lépésben való használatra. 
-
-## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Regisztráljon egy másik alkalmazást az Azure AD-ben egy ügyfélalkalmazás ábrázolásához
-
-Minden ügyfélalkalmazás, amely meghívja az API-t kell regisztrálni, mint egy alkalmazás az Azure AD-ben is. Ebben a példában az ügyfélalkalmazás a fejlesztői konzol az API Management fejlesztői portálon. Az alábbiakban bemutatja, hogyan regisztrálhat egy másik alkalmazást az Azure AD-ben a fejlesztői konzol képviseletére.
-
-1. Az alkalmazás regisztrálásához lépjen az [Azure Portalra.](https://portal.azure.com) Keresse meg és válassza **ki az APP-regisztrációkat.**
-
-1. Válassza **az Új regisztráció lehetőséget.**
-
-1. Amikor megjelenik a **Jelentkezési lap regisztrálása,** adja meg a jelentkezési lap regisztrációs adatait: 
-    - A **Név szakaszban** adjon meg egy értelmes alkalmazásnevet, amely megjelenik az alkalmazás felhasználói számára, például az *ügyfélalkalmazás számára.* 
-    - A **Támogatott fióktípusok** szakaszban válassza **a Fiókok lehetőséget bármely szervezeti címtárban (Bármely Azure AD-címtár - Több-bérlő)**. 
-
-1. Az **Átirányítás URI** szakaszában jelölje ki `Web` és írja be az URL-címet. `https://contoso5.portal.azure-api.net/signin`
+1. Hagyja üresen az **átirányítási URI** szakaszt.
 
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához. 
 
-1. Az alkalmazás **áttekintése** lapon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és rögzítse későbbre.
+1. Az alkalmazás **– Áttekintés** oldalon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később.
 
-Most hozzon létre egy ügyféltitkos kulcsot az alkalmazás számára egy későbbi lépésben.
+1. Válassza ki az **API közzététele** lehetőséget, és állítsa be az **alkalmazás-azonosító URI-ját** az alapértelmezett értékre. Jegyezze fel ezt az értéket később.
 
-1. Az ügyfélalkalmazás laplistájában válassza a **Tanúsítványok & titkos kulcsok**lehetőséget, majd az Új **ügyféltitok**lehetőséget.
+1. Kattintson a **hatókör hozzáadása** gombra a **hatókör** hozzáadása lap megjelenítéséhez. Ezután hozzon létre egy új hatókört, amelyet az API támogat (például `Files.Read`:). Végül kattintson a **hatókör hozzáadása** gombra a hatókör létrehozásához. Ismételje meg ezt a lépést az API által támogatott összes hatókör hozzáadásához.
 
-1. Az **Ügyféltitok hozzáadása**csoportban adja meg a **leírást.** Adja meg, hogy mikor járjon le a kulcs, és válassza a **Hozzáadás gombot.**
+1. A hatókörök létrehozásakor jegyezze fel őket egy későbbi lépésben való használatra. 
 
-A titkos kulcs létrehozásakor vegye figyelembe a következő lépésben használható kulcsértéket. 
+## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Egy másik alkalmazás regisztrálása az Azure AD-ben egy ügyfélalkalmazás képviseletéhez
+
+Minden ügyfélalkalmazás, amely meghívja az API-t, alkalmazásként kell regisztrálni az Azure AD-ben is. Ebben a példában az ügyfélalkalmazás a fejlesztői konzol a API Management fejlesztői portálon. A következő témakörből megtudhatja, hogyan regisztrálhat egy másik alkalmazást az Azure AD-ben a fejlesztői konzol megjelenítéséhez.
+
+1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **alkalmazások regisztrációját**.
+
+1. Válassza az **új regisztráció**lehetőséget.
+
+1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait: 
+    - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például *Client-app*). 
+    - A **támogatott fiókok típusai** szakaszban válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő)**. 
+
+1. Az **átirányítási URI** szakaszban válassza ki `Web` és adja meg az `https://contoso5.portal.azure-api.net/signin`URL-címet.
+
+1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához. 
+
+1. Az alkalmazás **– Áttekintés** oldalon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később.
+
+Most hozzon létre egy ügyfél-titkot az alkalmazás számára egy későbbi lépésben való használatra.
+
+1. Az ügyfélalkalmazás oldalain válassza a **tanúsítványok & titkok**lehetőséget, és válassza az **új ügyfél titka**lehetőséget.
+
+1. Az **ügyfél titkos kulcsának hozzáadása**területen adjon meg egy **leírást**. Válassza ki a kulcs lejárati idejét, majd válassza a **Hozzáadás**lehetőséget.
+
+A titkos kód létrehozásakor jegyezze fel a kulcs értékét egy későbbi lépésben való használatra. 
 
 ## <a name="grant-permissions-in-azure-ad"></a>Engedélyek megadása az Azure AD-ben
 
-Most, hogy regisztrált két alkalmazást az API és a fejlesztői konzol képviseletére, engedélyeket kell adnia ahhoz, hogy az ügyfélalkalmazás meghívja a háttéralkalmazást.  
+Most, hogy regisztrált két alkalmazást az API és a fejlesztői konzol képviseletére, engedélyeket kell megadnia ahhoz, hogy az ügyfél-alkalmazás meghívni lehessen a háttér-alkalmazást.  
 
-1. Az [Azure Portalon](https://portal.azure.com) adja meg az ügyfélalkalmazás engedélyeit. Keresse meg és válassza **ki az APP-regisztrációkat.**
+1. Lépjen a [Azure Portal](https://portal.azure.com) az ügyfélalkalmazás engedélyeinek megadásához. Keresse meg és válassza ki az **alkalmazások regisztrációját**.
 
-1. Válassza ki az ügyfélalkalmazást. Ezután az alkalmazás laplistájában válassza az **API-engedélyek lehetőséget.**
+1. Válassza ki az ügyfélalkalmazás. Ezután az alkalmazás oldalain válassza az **API-engedélyek**lehetőséget.
 
-1. Válassza **az Engedély hozzáadása**lehetőséget.
+1. Válassza **az engedély hozzáadása**lehetőséget.
 
-1. Az **API kiválasztása csoportban**válassza a **Saját API-k**lehetőséget, majd keresse meg és válassza ki a háttéralkalmazást.
+1. Az **API kiválasztása**területen válassza a **saját API**-k elemet, majd keresse meg és válassza ki a háttér-alkalmazás elemet.
 
-1. A **Delegált engedélyek csoportban**válassza ki a háttéralkalmazás megfelelő engedélyeit, majd válassza **az Engedélyek hozzáadása**lehetőséget.
+1. A **delegált engedélyek**területen válassza ki a háttér-alkalmazás megfelelő engedélyeit, majd válassza az **engedélyek hozzáadása**lehetőséget.
 
-1. Ha szükséges, az **API-engedélyek** lapon válassza a **Rendszergazdai hozzájárulás megadása \<a bérlői név>,** hogy a címtár összes felhasználója nevében beleegyezést adjon. 
+1. Ha szükséges, az **API-engedélyek** lapon jelölje be a **rendszergazdai jóváhagyás megadása \<a-bérlő neve>** lehetőséget, hogy a jóváhagyást a címtár összes felhasználója nevében megadja. 
 
-## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>OAuth 2.0 felhasználói engedély engedélyezése a fejlesztői konzolon
+## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>A OAuth 2,0 felhasználói hitelesítés engedélyezése a Fejlesztői konzolon
 
-Ezen a ponton az Azure AD-ben hozta létre az alkalmazásokat, és megfelelő engedélyeket adott ahhoz, hogy az ügyfélalkalmazás hívja meg a háttéralkalmazás. 
+Ezen a ponton létrehozta az alkalmazásait az Azure AD-ben, és megfelelő engedélyeket kapott ahhoz, hogy az ügyfél-alkalmazás meghívja a háttér-alkalmazást. 
 
-Ebben a példában a fejlesztői konzol az ügyfélalkalmazás. Az alábbi lépések bemutatják, hogyan engedélyezheti az OAuth 2.0 felhasználói engedélyezését a fejlesztői konzolon. 
+Ebben a példában a fejlesztői konzol az ügyfél-alkalmazás. A következő lépések azt ismertetik, hogyan engedélyezhető a OAuth 2,0 felhasználói hitelesítés a Fejlesztői konzolon. 
 
-1. Az Azure Portalon keresse meg az API Management-példányt.
+1. A Azure Portalban keresse meg a API Management-példányát.
 
-1. Válassza **az OAuth 2.0** > **Hozzáadás lehetőséget.**
+1. Válassza a **OAuth 2,0** > **Hozzáadás**lehetőséget.
 
-1. Adja meg **a megjelenítendő nevet** és **a leírást.**
+1. Adja **meg a megjelenítendő nevet** és a **leírást**.
 
-1. Az **Ügyfél regisztrációs lapjának URL-címéhez**adja `http://localhost`meg a helyőrző értékét, például . Az **ügyfélregisztrációs lap URL-címe** egy olyan lapra mutat, amelyet a felhasználók saját fiókjuk létrehozásához és konfigurálásához használhatnak az ezt támogató OAuth 2.0-s szolgáltatók számára. Ebben a példában a felhasználók nem hoznak létre és konfigurálnak saját fiókokat, ezért ehelyett helyőrzőt használ.
+1. Az **ügyfél-regisztrációs lap URL-címéhez**adja meg a helyőrző értékét `http://localhost`, például:. Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amelyet a felhasználók a saját fiókjaik létrehozására és konfigurálására használhatnak az ezt támogató OAuth 2,0-szolgáltatók számára. Ebben a példában a felhasználók nem hoznak létre és nem konfigurálja a saját fiókjaikat, ezért Ehelyett helyőrzőt használ.
 
-1. Az **engedélyezési engedélyezési típusoknál**válassza az **Engedélyezési kód lehetőséget.**
+1. Az **engedélyezési engedélyek típusainál**válassza az **engedélyezési kód**lehetőséget.
 
-1. Adja meg az **engedélyezési végpont URL-címét** és **a tokenvégpont URL-címét.** Ezeket az értékeket az Azure AD-bérlő **végpontok** lapjáról. Tallózással keresse meg ismét az **Alkalmazásregisztrációk** lapot, és válassza **a Végpontok**lehetőséget.
+1. Az **engedélyezési végpont URL-címének** és a **jogkivonat-végpont URL-címének**megadása. Olvassa be ezeket az értékeket az Azure AD-bérlő **végpontok** lapján. Nyissa meg ismét a **Alkalmazásregisztrációk** lapot, és válassza a **végpontok**lehetőséget.
 
 
-1. Másolja az **OAuth 2.0 engedélyezési végpontot,** és illessze be az **Engedélyezési végpont URL-címmezőjébe.** Válassza a **POST** lehetőséget az Engedélyezési kérelem metódus csoportban.
+1. Másolja az **OAuth 2,0 engedélyezési végpontot**, és illessze be az **engedélyezési végpont URL-címébe** . Válassza a **post** lehetőséget az engedélyezési kérelem metódusa alatt.
 
-1. Másolja az **OAuth 2.0 tokenvégpontot,** és illessze be a **Token végpont URL-címmezőjébe.** 
+1. Másolja a **OAuth 2,0 token-végpontot**, és illessze be a **jogkivonat-végpont URL-** szövegmezőbe. 
 
     >[!IMPORTANT]
-    > Használhatja a **v1** vagy **v2** végpontok. Azonban attól függően, hogy melyik verziót választja, az alábbi lépés eltérő lesz. V2-végpontok használatát javasoljuk. 
+    > A **v1** vagy **v2** végpontokat is használhatja. Azonban attól függően, hogy melyik verziót választja, az alábbi lépés eltérő lesz. A v2-végpontok használatát javasoljuk. 
 
-1. Ha **v1-es** végpontokat használ, adjon hozzá egy **nevű törzsparamétert.** Ennek a paraméternek az értékéhez használja a háttéralkalmazás **alkalmazásazonosítóját.** 
+1. Ha **v1** -es végpontokat használ, adjon hozzá egy **erőforrás**nevű Body paramétert. A paraméter értékeként használja a háttérbeli alkalmazás **alkalmazás-azonosítóját** . 
 
-1. V2-végpontok használata esetén használja a háttéralkalmazáshoz az **Alapértelmezett hatókör** mezőben létrehozott hatókört. **v2** Ügyeljen arra is, hogy a [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) tulajdonság `2` értékét az [alkalmazásjegyzékben](/azure/active-directory/develop/reference-app-manifest)állítsa be.
+1. Ha **v2** -végpontokat használ, használja az **Alapértelmezett hatókör** mezőben a háttér-alkalmazáshoz létrehozott hatókört. Ügyeljen arra is, hogy a [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) tulajdonság `2` értékét az [alkalmazás jegyzékfájljában](/azure/active-directory/develop/reference-app-manifest)állítsa be.
 
-1. Ezután adja meg az ügyfél hitelesítő adatait. Ezek az ügyfélalkalmazás hitelesítő adatai.
+1. Ezután határozza meg az ügyfél hitelesítő adatait. Az ügyfél-alkalmazás hitelesítő adatai.
 
-1. **Ügyfélazonosító**esetén használja az ügyfélalkalmazás **alkalmazásazonosítóját.**
+1. Az **ügyfél-azonosítóhoz**használja az ügyfél-alkalmazás **alkalmazás-azonosítóját** .
 
-1. Az **ügyféltitkos kulcs**hoz használja a korábban létrehozott kulcsot. 
+1. Az **ügyfél titkos**kulcsaként használja az ügyfélhez korábban létrehozott kulcsot. 
 
-1. Közvetlenül az ügyféltitkos kulcsot követően az engedélyezési kód engedélyezési típusának **redirect_url.** Jegyezze fel ezt az URL-címet.
+1. Az ügyfél titkos kulcsát közvetlenül a hitelesítési kód engedélyezési típusának **redirect_url** kell megadnia. Jegyezze fel ezt az URL-címet.
 
 1. Kattintson a **Létrehozás** gombra.
 
-1. Lépjen vissza az ügyfélalkalmazásba, és válassza a **Hitelesítés**lehetőséget.
+1. Térjen vissza az ügyfél-alkalmazáshoz, és válassza a **hitelesítés**lehetőséget.
 
-1. Az **Irányított URI-k átirányítása csoportban**válassza ki a **webként**beillesztendő típust, illessze be a **redirect_url** az **Átirányítás URI**csoportba, majd mentse.
+1. Az **átirányítási URI**-k területen válassza ki a típust **webesként**, illessze be a **redirect_urlt** az **átirányítási URI**alatt, majd mentse a következőt:.
 
-Most, hogy konfigurált egy OAuth 2.0 engedélyezési kiszolgálót, a fejlesztői konzol hozzáférési jogkivonatokat kaphat az Azure AD-től. 
+Most, hogy konfigurált egy OAuth 2,0-es engedélyezési kiszolgálót, a fejlesztői konzol hozzáférési jogkivonatokat szerezhet be az Azure AD-ből. 
 
-A következő lépés az OAuth 2.0 felhasználói engedély engedélyezése az API-hoz. Ez lehetővé teszi, hogy a fejlesztői konzol tudja, hogy be kell szereznie egy hozzáférési jogkivonatot a felhasználó nevében, mielőtt hívásokat kezdeményezne az API-hoz.
+A következő lépés a OAuth 2,0 felhasználói engedélyezésének engedélyezése az API-hoz. Ez lehetővé teszi, hogy a fejlesztői konzol tudja, hogy a felhasználó nevében be kell szereznie egy hozzáférési jogkivonatot, mielőtt meghívja az API-t.
 
-1. Tallózással keresse meg az API Management-példányt, és nyissa meg az **API-kat.**
+1. Keresse meg API Management-példányát, és nyissa meg az **API-kat**.
 
-2. Válassza ki a védeni kívánt API-t. Használhatja például a `Echo API`ot.
+2. Válassza ki a védelemmel ellátni kívánt API-t. Használhatja például a `Echo API`következőt:.
 
-3. Nyissa meg a **Beállítások lapot.**
+3. Válassza a **Beállítások lehetőséget**.
 
-4. A **Biztonság csoportban**válassza az **OAuth 2.0**lehetőséget, és válassza ki a korábban konfigurált OAuth 2.0-s kiszolgálót. 
+4. A **Biztonság**területen válassza a **OAuth 2,0**elemet, és válassza ki a korábban konfigurált OAuth 2,0-kiszolgálót. 
 
 5. Kattintson a **Mentés** gombra.
 
-## <a name="successfully-call-the-api-from-the-developer-portal"></a>Sikeresen meghívja az API-t a fejlesztői portálról
+## <a name="successfully-call-the-api-from-the-developer-portal"></a>Sikerült meghívni az API-t a fejlesztői portálról
 
 > [!NOTE]
-> Ez a szakasz nem vonatkozik a **felhasználási** szintre, amely nem támogatja a fejlesztői portált.
+> Ez a szakasz nem vonatkozik a fejlesztői portált nem támogató **felhasználási** szintjére.
 
-Most, hogy az OAuth 2.0 felhasználói engedélyezve van az API-n, a fejlesztői konzol kap egy hozzáférési jogkivonatot a felhasználó nevében, mielőtt meghívja az API-t.
+Most, hogy az OAuth 2,0 felhasználói hitelesítés engedélyezve van az API-ban, a fejlesztői konzol a felhasználó nevében szerzi be a hozzáférési jogkivonatot, mielőtt meghívja az API-t.
 
-1. Tallózzon az API alatti bármely műveletben a fejlesztői portálon, és válassza a **Kipróbálás**lehetőséget. Ezzel elérkezik a fejlesztői konzolhoz.
+1. Tallózással keresse meg az API alatt található összes műveletet a fejlesztői portálon, és válassza a **kipróbálás**lehetőséget. Ez a fejlesztői konzolra mutat.
 
-2. Jegyezz fel egy új elemet az **Engedélyezés** szakaszban, amely az imént hozzáadott engedélyezési kiszolgálónak felel meg.
+2. Jegyezze fel, hogy az **engedélyezési** szakasz egy új eleme, amely az imént hozzáadott engedélyezési kiszolgálónak felel meg.
 
-3. Válassza ki az **engedélyezési kódot** az engedélyezési legördülő listából, és a rendszer kéri, hogy jelentkezzen be az Azure AD-bérlőbe. Ha már be van jelentkezve a fiókkal, előfordulhat, hogy a rendszer nem kéri.
+3. Válassza az engedélyezési **kód** lehetőséget az engedélyezés legördülő listából, és a rendszer felszólítja, hogy jelentkezzen be az Azure ad-bérlőbe. Ha már bejelentkezett a fiókkal, előfordulhat, hogy a rendszer nem kérdezi le.
 
-4. Sikeres bejelentkezés után egy `Authorization` fejléc kerül a kérelembe, az Azure AD-ből származó hozzáférési jogkivonattal. A következő egy mintatoken (Base64 kódolva):
+4. A sikeres bejelentkezést követően a rendszer `Authorization` egy fejlécet ad hozzá a kérelemhez, amely az Azure ad hozzáférési jogkivonatával rendelkezik. A következő egy minta token (Base64 kódolású):
 
    ```
    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
    ```
 
-5. Válassza **a Küldés**lehetőséget, és az API-t sikeresen meghívhatja.
+5. Kattintson a **Küldés**lehetőségre, és az API-t sikeresen meghívhatja.
 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>JWT-érvényesítési házirend konfigurálása a kérelmek előzetes engedélyezéséhez
 
-Ezen a ponton, amikor egy felhasználó megpróbál hívást kezdeményezni a fejlesztői konzolról, a rendszer kéri a bejelentkezést. A fejlesztői konzol egy hozzáférési jogkivonatot szerez be a felhasználó nevében, és tartalmazza a jogkivonatot az API-hoz benyújtott kérelemben.
+Ezen a ponton, amikor egy felhasználó megpróbál hívást készíteni a fejlesztői konzolról, a rendszer felszólítja a felhasználót, hogy jelentkezzen be. A fejlesztői konzol egy hozzáférési jogkivonatot szerez be a felhasználó nevében, és tartalmazza az API-nak benyújtott kérelemben szereplő jogkivonatot.
 
-Mi történik azonban, ha valaki jogkivonat vagy érvénytelen jogkivonat nélkül hívja meg az API-t? Például próbálja meg hívni az `Authorization` API-t a fejléc nélkül, a hívás továbbra is megy keresztül. Ennek az az oka, hogy az API Management ezen a ponton nem ellenőrzi a hozzáférési jogkivonatot. Egyszerűen átadja a `Authorization` fejlécet a háttér-API-nak.
+Mi a teendő, ha valaki jogkivonat vagy érvénytelen token nélkül hívja meg az API-t? Ha például az API-t a `Authorization` fejléc nélkül szeretné hívni, a hívás továbbra is elérhető lesz. Ennek az az oka, hogy API Management ezen a ponton nem érvényesíti a hozzáférési jogkivonatot. Egyszerűen átadja a `Authorization` fejlécet a háttér-API-nak.
 
-A [JWT-szabályzat érvényesítése](api-management-access-restriction-policies.md#ValidateJWT) használatával előzetesen engedélyezheti a kérelmeket az API Managementben, az egyes bejövő kérelmek hozzáférési jogkivonatainak ellenőrzésével. Ha egy kérelem nem rendelkezik érvényes jogkivonatkal, az API Management blokkolja azt. Például adja hozzá a `<inbound>` következő házirendet `Echo API`a házirend szakaszához. Ellenőrzi a közönség jogcímegy hozzáférési jogkivonatot, és hibaüzenetet ad vissza, ha a jogkivonat érvénytelen. A házirendek konfigurálásáról a [Házirendek beállítása és szerkesztése](set-edit-policies.md)című témakörben talál további információt.
+A [JWT szabályzat érvényesítésével](api-management-access-restriction-policies.md#ValidateJWT) engedélyezheti a kérelmeket a API Managementban, az egyes bejövő kérelmek hozzáférési jogkivonatának ellenőrzésével. Ha egy kérelem nem rendelkezik érvényes jogkivonattal, API Management blokkolja. Adja hozzá például a következő szabályzatot a `<inbound>` szabályzat szakaszához. `Echo API` Ellenőrzi a célközönség jogcímet egy hozzáférési jogkivonatban, és hibaüzenetet ad vissza, ha a jogkivonat érvénytelen. A házirendek konfigurálásával kapcsolatos információkért lásd: [házirendek beállítása vagy szerkesztése](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -208,17 +208,17 @@ A [JWT-szabályzat érvényesítése](api-management-access-restriction-policies
 </validate-jwt>
 ```
 > [!NOTE]
-> Ez `openid-config` az URL-cím a v1-végpontnak felel meg. A v2 `openid-config`végponthoz `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`használja a használatát.
+> Ez `openid-config` az URL-cím a v1-végpontnak felel meg. A v2 `openid-config`-végpont esetében használja `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`a következőt:.
 
-## <a name="build-an-application-to-call-the-api"></a>Az API-t hívó alkalmazás létrehozása
+## <a name="build-an-application-to-call-the-api"></a>Alkalmazás létrehozása az API meghívásához
 
-Ebben az útmutatóban a fejlesztői konzolt használta az API `Echo API` Management ben mintaügyfél-alkalmazásként az OAuth 2.0 által védett rendszer hívásához. Ha többet szeretne tudni arról, hogyan hozhat létre egy alkalmazást, és hogyan valósíthatja meg az OAuth 2.0-s rendszert, olvassa el az [Azure Active Directory kódmintáit.](../active-directory/develop/sample-v2-code.md)
+Ebben az útmutatóban a fejlesztői konzolt használta a API Managementban, mint a OAuth 2,0 által `Echo API` védettként hívható minta ügyfélalkalmazás. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](../active-directory/develop/sample-v2-code.md).
 
 ## <a name="next-steps"></a>További lépések
-* További információ az [Azure Active Directoryról és az OAuth2.0-ról.](../active-directory/develop/authentication-scenarios.md)
-* Tekintse n le az API Managementről szóló további [videókat.](https://azure.microsoft.com/documentation/videos/index/?services=api-management)
-* A háttérszolgáltatás védelmének egyéb módjairól a [Kölcsönös tanúsítvány hitelesítése](api-management-howto-mutual-certificates.md)című témakörben van.
+* További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-scenarios.md)verzióról.
+* További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
+* A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](api-management-howto-mutual-certificates.md).
 
-* [Hozzon létre egy API Management szolgáltatáspéldányt.](get-started-create-service-instance.md)
+* [Hozzon létre egy API Management Service-példányt](get-started-create-service-instance.md).
 
-* [Az első API kezelése.](import-and-publish.md)
+* [Az első API kezelése](import-and-publish.md).

@@ -1,7 +1,7 @@
 ---
-title: A keresési eredmények szűrése – Bing Web Search API
+title: Keresési eredmények szűrése – Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: A "responseFilter" lekérdezési paraméter használatával szűrheti, hogy a Bing milyen típusú válaszokat tartalmaz a válaszban (például képek, videók és hírek).
+description: Az "responseFilter" lekérdezési paraméter használatával szűrheti a válaszban a Bing által megadott válaszok típusait (például képek, videók és Hírek).
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220269"
 ---
-# <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési válasz által tartalmazott válaszok szűrése  
+# <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési választ tartalmazó válaszok szűrése  
 
-Amikor lekérdezi a webet, a Bing visszaadja a kereséshez megtalált összes releváns tartalmat. Ha például a keresési lekérdezés "sailing+dinghies", a válasz a következő válaszokat tartalmazhatja:
+Amikor lekérdezi a webet, a Bing visszaadja a kereséshez talált összes releváns tartalmat. Ha például a keresési lekérdezés "Sailing + mentőcsónakokra", akkor a válasz a következő válaszokat tartalmazhatja:
 
 ```json
 {
@@ -47,19 +47,19 @@ Amikor lekérdezi a webet, a Bing visszaadja a kereséshez megtalált összes re
 
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 
-A Bing által visszaadott válaszok szűréséhez használja az alábbi lekérdezési paramétereket az API hívásakor.  
+A Bing által visszaadott válaszok szűréséhez használja az alábbi lekérdezési paramétereket az API meghívásakor.  
 
-### <a name="responsefilter"></a>ResponseFilter (Válaszszűrő)
+### <a name="responsefilter"></a>ResponseFilter
 
-A Bing által a válaszban szereplő válaszok típusai (például képek, videók és hírek) szűrhetők a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) lekérdezésparaméter használatával, amely a válaszok vesszővel tagolt listája. A válasz akkor kerül be a válaszba, ha a Bing releváns tartalmat talál hozzá. 
+A válaszban a Bing által megadott válaszok (például képek, videók és Hírek) alapján szűrheti a válaszokat a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) lekérdezési paraméter használatával, amely a válaszok vesszővel tagolt listája. A válasz tartalmazza a választ, ha a Bing megkeresi a megfelelő tartalmat. 
 
-Ha ki szeretné zárni a válasz konkrét `-` válaszait, például a képeket, készítsen elő egy karaktert a választípusra. Példa:
+Ha ki szeretne zárni a válaszból (például képekből) származó `-` konkrét válaszokat, a előtagot a válasz típusaként adja meg. Például:
 
 ```
 &responseFilter=-images,-videos
 ```
 
-Az alábbiakban bemutatjuk, hogyan lehet képeket, `responseFilter` videókat és híreket kérni a vitorlás csónakokról. A lekérdezési karakterlánc kódolásakor a vesszők %2C-re változnak.  
+Az alábbiakban bemutatjuk, `responseFilter` hogyan kérhet képeket, videókat és híreket a vitorlás mentőcsónakokra. A lekérdezési karakterlánc kódolásakor a vesszők a következőre változnak:% 2C.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -71,7 +71,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Az alábbiakban az előző lekérdezésre adott válasz látható. Mivel a Bing nem talált releváns videó- és híreredményeket, a válasz nem tartalmazza őket.
+Az alábbiakban az előző lekérdezésre adott válasz látható. Mivel a Bing nem találta meg a kapcsolódó videók és hírek eredményeit, a válasz nem tartalmazza azokat.
 
 ```json
 {
@@ -96,30 +96,30 @@ Az alábbiakban az előző lekérdezésre adott válasz látható. Mivel a Bing 
 }
 ```
 
-Bár a Bing az előző válaszban nem adott vissza videó- és híreredményeket, ez nem jelenti azt, hogy a videó- és hírtartalom nem létezik. Ez egyszerűen azt jelenti, hogy az oldal nem tartalmazza őket. Ha azonban több eredményt [ad,](./paging-webpages.md) a következő oldalak valószínűleg tartalmazzák azokat. Továbbá, ha közvetlenül hívja meg a [Video Search API-](../bing-video-search/search-the-web.md) és [hírkeresési API-végpontokat,](../bing-news-search/search-the-web.md) a válasz valószínűleg eredményeket tartalmaz.
+Bár a Bing nem adott vissza videót és híreket az előző válaszban, nem jelenti azt, hogy a videó-és hírek tartalma nem létezik. Ez egyszerűen azt jelenti, hogy a lap nem tartalmazza azokat. Ha azonban több találat is van a [lapon](./paging-webpages.md) , a következő lapok valószínűleg belefoglalják őket. Emellett, ha a [Video Search API](../bing-video-search/search-the-web.md) -t és [News Search API](../bing-news-search/search-the-web.md) -végpontokat közvetlenül hívja meg, a válasz valószínűleg eredményeket tartalmaz.
 
-Nem szívesen használja `responseFilter` egyetlen API-ból származó eredmények lehívását. Ha egyetlen Bing API-ból szeretne tartalmat kapni, hívja meg közvetlenül az API-t. Ha például csak a képek fogadásához küld egy kérelmet a Képkereső API-végpont, `https://api.cognitive.microsoft.com/bing/v7.0/images/search` vagy egy másik [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) végpontok. Az egyetlen API-hívás nem csak teljesítménymiatt fontos, hanem azért is, mert a tartalomspecifikus API-k gazdagabb eredményeket kínálnak. Az eredmények szűréséhez például olyan szűrőket is használhat, amelyek nem érhetők el a Webes keresési API számára.  
+A használatával `responseFilter` nem lehet egyetlen API-ból eredményeket szerezni. Ha egyetlen Bing API-val szeretne tartalmat használni, hívja meg az API-t közvetlenül. Ha például csak képeket szeretne kapni, küldjön egy kérést az Image Search API-végpontnak `https://api.cognitive.microsoft.com/bing/v7.0/images/search` vagy egy másik [lemezkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) -végpontnak. Az egyetlen API meghívása nem csak a teljesítmény szempontjából fontos, hanem azért, mert a tartalom-specifikus API-k gazdagabb eredményeket nyújtanak. Használhat például olyan szűrőket, amelyek nem érhetők el a Web Search API számára az eredmények szűréséhez.  
 
 ### <a name="site"></a>Webhely
 
-Ha egy adott tartományból szeretne `site:` keresési eredményeket kapni, vegye fel a lekérdezési paramétert a lekérdezési karakterláncba.  
+Egy adott tartomány keresési eredményeinek beszerzéséhez a lekérdezési karakterláncban adja meg a `site:` lekérdezési paramétert.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
 ```
 
 > [!NOTE]
-> A lekérdezéstől függően, ha `site:` a lekérdezésoperátort használja, előfordulhat, hogy a válasz a [biztonságos Keresés](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) beállítástól függetlenül felnőtt tartalmat tartalmaz. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát.
+> Ha a lekérdezési operátort használja `site:` , a lekérdezéstől függően előfordulhat, hogy a válasz csak felnőtt tartalmat tartalmazhat, a [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) beállítástól függetlenül. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát.
 
 ### <a name="freshness"></a>Frissesség
 
-Ha a webes választalálati eredményeket a Bing által egy adott időszakban felderített weblapokra szeretné korlátozni, állítsa a [frissességlekérdezési](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) paramétert a következő, kis- és nagybetűket nem megkülönböztető értékek egyikére:
+Ha korlátozni szeretné a webválaszok eredményeit arra a weblapra, amelyet a Bing adott időszakban észlelt, állítsa a [frissesség](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) lekérdezési paraméterét a következő kis-és nagybetűket megkülönböztető értékek egyikére:
 
-* `Day`— A Bing által az elmúlt 24 órában felfedezett weblapok visszaküldése
-* `Week`— A Bing által az elmúlt 7 napban felfedezett weblapok visszaküldése
-* `Month`— Az elmúlt 30 napban felfedezett visszaadási weboldalak
+* `Day`– A Bing által az elmúlt 24 órában felderített weblapok visszaküldése
+* `Week`– A Bing által az elmúlt 7 napban felderített weblapok visszaküldése
+* `Month`– Az elmúlt 30 napban felderített weblapok visszaküldése
 
-Ezt a paramétert az űrlapon egyéni dátumtartományra is beállíthatja. `YYYY-MM-DD..YYYY-MM-DD` 
+Ezt a paramétert egy egyéni dátumtartomány is megadhatja az űrlapon `YYYY-MM-DD..YYYY-MM-DD`. 
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
 
@@ -127,11 +127,11 @@ Ha az eredményeket egyetlen dátumra szeretné korlátozni, állítsa a frisses
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
 
-Az eredmények között szerepelhetnek olyan weblapok, amelyek kívül esnek a megadott időszakon, ha a Bing által a szűrési feltételeknek megfelelő weblapok száma kisebb, mint a kért weblapok száma (vagy a Bing által visszaadott alapértelmezett szám).
+Az eredmények tartalmazhatnak a megadott időszakon kívül eső weblapokat is, ha a szűrési feltételeknek megfelelő weblapok száma kevesebb, mint a kért weblapok száma (vagy a Bing által visszaadott alapértelmezett szám).
 
-## <a name="limiting-the-number-of-answers-in-the-response"></a>A válaszok számának korlátozása a válaszban
+## <a name="limiting-the-number-of-answers-in-the-response"></a>A válaszban szereplő válaszok számának korlátozása
 
-A Bing több választípust is visszaadhat a JSON-válaszban. Ha például *vitorlázás+dinghies lekérdezést*kérdez, `videos`a `relatedSearches`Bing visszaadhat `webpages`, `images`, és .
+A Bing több választ adhat vissza a JSON-válaszban. Ha például a *Sailing + mentőcsónakokra*lekérdezést kérdezi le, a Bing `webpages` `images`visszatérhet `videos`a következőre:, és `relatedSearches`.
 
 ```json
 {
@@ -147,7 +147,7 @@ A Bing több választípust is visszaadhat a JSON-válaszban. Ha például *vito
 }
 ```
 
-Ha korlátozni szeretné a válaszok számát, hogy a Bing visszatér az első két válasz (weblapok és képek), állítsa a [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) lekérdezési paraméter 2.
+Ha korlátozni szeretné a Bing által az első két válaszra (weblapok és képek) vonatkozó válaszok számát, állítsa a [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) lekérdezési paramétert 2 értékre.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&mkt=en-us HTTP/1.1  
@@ -159,7 +159,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-A válasz `webPages` csak `images`és a .
+A válasz csak `webPages` a és `images`a-t tartalmazza.
 
 ```json
 {
@@ -173,7 +173,7 @@ A válasz `webPages` csak `images`és a .
 }
 ```
 
-Ha hozzáadja `responseFilter` a lekérdezési paramétert az előző lekérdezéshez, és weblapokra és hírekre állítja be, a válasz csak weblapokat tartalmaz, mert a hírek nem rangsorolva vannak.
+Ha a `responseFilter` lekérdezési paramétert hozzáadja az előző lekérdezéshez, és azt weblapokra és hírekre állítja be, a válasz csak weblapokat tartalmaz, mivel a hírek nem rangsorolva vannak.
 
 ```json
 {
@@ -186,9 +186,9 @@ Ha hozzáadja `responseFilter` a lekérdezési paramétert az előző lekérdez�
 }
 ```
 
-## <a name="promoting-answers-that-are-not-ranked"></a>Nem rangsorolt válaszok népszerűsítése
+## <a name="promoting-answers-that-are-not-ranked"></a>A nem rangsorolt válaszok előléptetése
 
-Ha a bing által egy lekérdezéshez visszaadott legmagasabb rangsorolt válaszok weblapok, képek, videók és kapcsolódó keresések, a válasz tartalmazza ezeket a válaszokat. Ha [az answerCount értékét](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) kettőre (2) állítja be, a Bing a két legfontosabb rangsorolt választ adja vissza: weblapokat és képeket. Ha azt szeretné, hogy a Bing képeket és videókat vegyen fel a válaszba, adja meg az [előléptetési](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) lekérdezés paramétert, és állítsa be képekre és videókra.
+Ha a legfelső szintű válasz, amelyet a Bing visszaadott egy lekérdezéshez, a weblapok, a képek, a videók és a relatedSearches, a válasz tartalmazni fogja ezeket a válaszokat. Ha a [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) két (2) értékre állítja be, a Bing az első két rangsorolt választ adja vissza: weblapok és képek. Ha azt szeretné, hogy a Bing a válaszban képeket és videókat is tartalmazzon, adja meg az [előléptetés](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) lekérdezési paramétert, és állítsa be a képeket és a videókat.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&promote=images%2Cvideos&mkt=en-us HTTP/1.1  
@@ -200,7 +200,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-A fenti kérésre a következő válasz található. A Bing az első két választ, a weblapokat és a képeket adja vissza, és a videókat a válaszba lépteti fel.
+A fenti kérelemre adott válasz a következő: A Bing a legfontosabb két választ, weblapokat és képeket adja vissza, és támogatja a videókat a válaszban.
 
 ```json
 {
@@ -215,8 +215,8 @@ A fenti kérésre a következő válasz található. A Bing az első két válas
 }
 ```
 
-Ha hírekre állítod, `promote` a válasz nem tartalmazza a hírválaszt,&mdash;mert ez nem rangsorolt válasz, amelyet csak rangsorolt válaszokat hirdethetsz.
+Ha a News `promote` (Hírek) értékre van állítva, a válasz nem tartalmazza a hírek választ, mert&mdash;nem rangsorolt válasz, csak rangsorolt válaszokat lehet előléptetni.
 
-A hirdetni kívánt válaszok nem `answerCount` számítanak bele a korlátba. Ha például a rangsorolt válaszok hírek, képek és `answerCount` videók, `promote` és 1-re és hírekre állítod, a válasz híreket és képeket tartalmaz. Vagy ha a rangsorolt válaszok videók, képek és hírek, a válasz videókat és híreket tartalmaz.
+Az előléptetni kívánt válaszok nem számítanak bele a `answerCount` korlátba. Ha például a rangsorolt válaszok a hírek, a képek és a videók, és az 1 `answerCount` . és `promote` a hírek lehetőségre van állítva, a válasz híreket és képeket tartalmaz. Vagy ha a rangsorolt válaszok videók, képek és hírek, a válasz videókat és híreket tartalmaz.
 
-Csak akkor `promote` használható, ha `answerCount` megadja a lekérdezési paramétert.
+Csak akkor használható `promote` , ha megadja a `answerCount` lekérdezési paramétert.

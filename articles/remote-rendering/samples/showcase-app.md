@@ -1,28 +1,28 @@
 ---
-title: Unity kirakat alkalmazás
-description: Hivatkozás a GitHub-adattárra, amely a kirakatalkalmazást is elférjen
+title: Unity-bemutatóalkalmazás
+description: A Showcase-alkalmazást tároló GitHub-adattárra mutató hivatkozás
 author: florianborn71
 ms.author: flborn
 ms.date: 04/01/2020
 ms.topic: sample
 ms.openlocfilehash: e1e91a892a1c8b69b3dc7f6c79109377e13bd7ae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804452"
 ---
-# <a name="unity-showcase-application"></a>Unity kirakat alkalmazás
+# <a name="unity-showcase-application"></a>Unity-bemutatóalkalmazás
 
-A Unity kirakat alkalmazás egy Unity-alapú minta alkalmazás az Azure remote rendering funkciók bemutatására. Az Unity szerkesztőn belül és a Hololens 2-n is futtatható.
+Az Unity Showcase alkalmazás egy Unity-alapú minta alkalmazás, amely bemutatja az Azure távoli renderelési funkcióit. Az Unity-szerkesztőben és a 2. Hololens is futtatható.
 
-![Alkalmazás bemutatása](./media/showcase-app.png "Alkalmazás bemutatása")
+![Alkalmazás kirakata](./media/showcase-app.png "Alkalmazás kirakata")
 
-## <a name="source-repository"></a>Forrástár
+## <a name="source-repository"></a>Forrás adattár
 
-Az alkalmazás forráskódja a build/telepítési utasításokkal együtt megtalálható az [ARR mintatárházban.](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)
+Az alkalmazás forráskódja a Build/Deployment utasítások mellett az [ARR Samples repositoryban](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)található.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Modell renderelése unityvel](../quickstarts/render-model.md)
-* [Rövid útmutató: Modell konvertálása rendereléshez](../quickstarts/convert-model.md)
+* [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
+* [Gyors útmutató: modell átalakítása renderelésre](../quickstarts/convert-model.md)

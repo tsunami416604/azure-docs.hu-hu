@@ -1,58 +1,58 @@
 ---
-title: Dokumentumformátum importálására vonatkozó irányelvek – QnA Maker
-description: Ismerje meg, hogyan használják az URL-típusokat a QnA-párok importálásához és létrehozásához.
+title: A dokumentum formátumára vonatkozó irányelvek importálása – QnA Maker
+description: Ismerje meg, hogy az URL-típusok hogyan használhatók az QnA-párok importálásához és létrehozásához.
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804333"
 ---
-# <a name="format-guidelines-for-imported-documents-and-urls"></a>Az importált dokumentumok és URL-címek formázási irányelvei
+# <a name="format-guidelines-for-imported-documents-and-urls"></a>Az importált dokumentumokra és URL-címekre vonatkozó irányelvek formázása
 
-Tekintse át ezeket a formázási irányelveket, hogy a legjobb eredményt kapja a tartalomhoz.
+Tekintse át ezeket a formázási irányelveket, hogy a lehető legjobb eredményeket kapja a tartalomhoz.
 
-## <a name="formatting-considerations"></a>Formázási szempontok
+## <a name="formatting-considerations"></a>Formázási megfontolások
 
-Fájl vagy URL importálása után a QnA Maker a tartalmat [markdown formátumban](https://en.wikipedia.org/wiki/Markdown)konvertálja és tárolja. Az átalakítási folyamat új sorokat ad hozzá a szöveghez, például `\n\n`a . A markdown formátum ismerete segít megérteni a konvertált tartalmat és kezelni a tudásbázis tartalmát.
+Fájl vagy URL importálása után QnA Maker átalakítja és tárolja a tartalmat a [Markdown formátumban](https://en.wikipedia.org/wiki/Markdown). Az átalakítási folyamat új sorokat szúr be a szövegbe, `\n\n`például:. A Markdown formátum ismerete segít megérteni a konvertált tartalmat, és felügyelni a Tudásbázis tartalmát.
 
-Ha a tartalmat közvetlenül a tudásbázisban adja hozzá vagy szerkeszti, **a markdown formázással** rich text tartalmat hozhat létre, vagy módosíthatja a válaszban már meglévő markdown formátumú tartalmat. A QnA Maker a markdown formátum nagy részét támogatja, hogy rich text funkciókat nyújtson a tartalomhoz. Előfordulhat azonban, hogy az ügyfélalkalmazás, például egy csevegőrobot nem támogatja ugyanazokat a markdown-formátumokat. Fontos, hogy tesztelje az ügyfélalkalmazás a válaszok megjelenítését.
+Ha közvetlenül a Tudásbázisban adja hozzá vagy szerkeszti a tartalmat, a **Markdown formázás** használatával Rich Text tartalmat hozhat létre, vagy módosíthatja a Markdown formátum tartalmát, amely már szerepel a válaszban. QnA Maker támogatja a Markdown-formátum nagy részét, hogy Rich Text képességeket biztosítson a tartalomhoz. Előfordulhat azonban, hogy az ügyfélalkalmazás, például a csevegési robot nem támogatja ugyanazt a Markdown-formátumot. Fontos, hogy tesztelje az ügyfélalkalmazás válaszait.
 
 Tekintse meg a [tartalomtípusok és példák](./Concepts/content-types.md#file-and-url-data-types)teljes listáját.
 
-## <a name="basic-document-formatting"></a>Egyszerű dokumentumformázás
+## <a name="basic-document-formatting"></a>Alapszintű dokumentum formázása
 
-A QnA Maker vizuális nyomok alapján azonosítja a fájlokban található szakaszokat, alszakaszokat és kapcsolatokat:
+A QnA Maker a fájl szakaszait és alszakaszait és kapcsolatait azonosítja a vizualizációs jelek alapján, például:
 
-* Betűméret
-* Betűstílus
-* Számozás
-* Színek
+* betűméret
+* betűstílus
+* számozás
+* színek
 
-## <a name="product-manuals"></a>Termékkézikönyvek
+## <a name="product-manuals"></a>Termék-kézikönyvek
 
-A kézikönyv általában egy termékhez kapcsolódó útmutató anyag. Segít a felhasználónak a termék beállítását, használatát, karbantartását és hibaelhárítását. Amikor a QnA Maker feldolgoz egy kézikönyvet, a címsorokat és alcímeket kérdésként, az azt követő tartalmat pedig válaszként kinyeri. Lásd a példát [itt](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf).
+A manuális útmutató általában egy termékhez társuló segédanyag. Segítségével a felhasználó beállíthatja, használhatja, karbantarthatja és elháríthatja a terméket. Ha a QnA Maker manuálisan dolgozza fel a folyamatokat, a fejléceket és alfejléceket kérdésként és az azt követő tartalomként is kibontja a válaszként. [Itt](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)talál példát.
 
-Az alábbiakban egy indexlappal és hierarchikus tartalommal rendelkező kézikönyvet mutatunk be
+Az alábbi példa egy, az index oldalt tartalmazó manuális és a hierarchikus tartalom
 
- ![Példa egy tudásbázis termékkézikönyvére](./media/qnamaker-concepts-datasources/product-manual.png)
+ ![A tudásbázishoz tartozó termék kézi példája](./media/qnamaker-concepts-datasources/product-manual.png)
 
 > [!NOTE]
-> A kibontás a tartalomjegyzékkel és/vagy indexlappal, valamint a hierarchikus fejlécekkel rendelkező, tiszta struktúrával rendelkező kézikönyveken működik a legjobban.
+> A kinyerés a legjobban olyan kézikönyvek esetében működik, amelyek tartalomjegyzéket és/vagy index oldalt, valamint egy hierarchikus fejlécekkel rendelkező tiszta struktúrát alkotnak.
 
-## <a name="brochures-guidelines-papers-and-other-files"></a>Brosúrák, irányelvek, papírok és egyéb fájlok
+## <a name="brochures-guidelines-papers-and-other-files"></a>Prospektusok, útmutatók, dokumentumok és egyéb fájlok
 
-Sok más típusú dokumentumok is feldolgozhatók, hogy létrehoz qa pár, feltéve, hogy van egy világos szerkezet és elrendezés. Ezek a következők: brosúrák, iránymutatások, jelentések, tanulmányok, tudományos könyvek, politikák, könyvek stb. Lásd a példát [itt](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Számos más típusú dokumentum is feldolgozható a QA-párok létrehozásához, amennyiben azok tiszta struktúrával és elrendezéssel rendelkeznek. Ezek többek között a következők: prospektusok, irányelvek, jelentések, tanulmányok, tudományos dokumentumok, szabályzatok, könyvek stb. [Itt](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)talál példát.
 
-Az alábbiakban egy félszerkezetes dokumentum ravandál, index nélkül:
+Az alábbi példa egy félig strukturált doc-ra mutat, index nélkül:
 
- ![Félig strukturált Azure Blob storage](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+ ![Azure Blob Storage – félig strukturált doc](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
 
-## <a name="structured-qna-document"></a>Strukturált minőségbiztosítási dokumentum
+## <a name="structured-qna-document"></a>Strukturált QnA-dokumentum
 
-A doc-fájlokban a strukturált kérdések és válaszok formátuma soronként váltakozó kérdések és válaszok formájában jelenik meg, soronként egy kérdés, majd a következő sorban található válasz, az alábbiak szerint:
+A DOC-fájlokban strukturált kérdés-válasz formátuma váltakozó kérdések és válaszok formájában történik, és soronként egy kérdés jelenik meg, amelyet az alábbi sorban talál, ahogy az alább látható:
 
 ```text
 Question1
@@ -64,56 +64,56 @@ Question2
 Answer2
 ```
 
-Az alábbiakban egy strukturált QnA szódokumentum látható:
+Az alábbi példa egy strukturált QnA Word-dokumentumra mutat:
 
- ![Strukturált minőségbiztosítási dokumentum példa egy tudásbázishoz](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
+ ![Strukturált QnA dokumentum – példa tudásbázisra](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
-## <a name="structured-txt-tsv-and-xls-files"></a>Strukturált *TXT*, *TSV* és *XLS* fájlok
+## <a name="structured-txt-tsv-and-xls-files"></a>Strukturált *txt*-, *TSV* -és *xls* -fájlok
 
-A qna-k strukturált *.txt*, *.tsv* vagy *.xls* fájlok formájában is feltölthetők a QnA Maker programba, hogy tudásbázist hozzanak létre vagy bővítsenek.  Ezek lehetnek egyszerű szöveg, vagy rtf-ben vagy HTML-ben lévő tartalom.
+A QnAs strukturált *. txt*, *. TSV* vagy *. xls* kiterjesztésű fájlok formájában is feltölthető QnA Maker a Tudásbázis létrehozásához vagy bővítéséhez.  Ezek lehetnek egyszerű szövegek, vagy RTF-vagy HTML-tartalommal is rendelkezhetnek.
 
 | Kérdés  | Válasz  | Metaadatok (1 kulcs: 1 érték) |
 |-----------|---------|-------------------------|
-| 1. kérdés | Válasz1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| 2. kérdés | 2. válasz |      `Key:Value`           |
+| Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 |      `Key:Value`           |
 
-A forrásfájl további oszlopait a program figyelmen kívül hagyja.
+A forrásfájl további oszlopai figyelmen kívül lesznek hagyva.
 
 ### <a name="example-of-structured-excel-file"></a>Példa strukturált Excel-fájlra
 
-Az alábbiakban egy strukturált QnA *.xls* fájl látható, HTML-tartalommal:
+Az alábbi példa egy strukturált QnA *. xls* fájlt mutat be HTML-tartalommal:
 
- ![Strukturált minőségbiztosítási hiba például egy tudásbázishoz](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Strukturált QnA Excel-példa egy tudásbázisra](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
-### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Példa alternatív kérdésekre az egyválaszhoz az Excel-fájlban
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Példa az Excel-fájl egyetlen válaszára vonatkozó alternatív kérdésekre
 
-Az alábbiakban egy strukturált QnA *.xls* fájlra mutat be példát, amely egyetlen válaszhoz több alternatív kérdést is felvet:
+Az alábbi példa egy strukturált QnA *. xls* fájlt mutat be, amely több alternatív kérdést is biztosít egyetlen válaszhoz:
 
- ![Példa alternatív kérdésekre az egyválaszhoz az Excel-fájlban](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+ ![Példa az Excel-fájl egyetlen válaszára vonatkozó alternatív kérdésekre](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
-A fájl importálása után a kérdés-válasz pár a tudásbázisban található az alábbiak szerint:
+A fájl importálása után a kérdés-válasz pár az alábbi Tudásbázisban látható:
 
- ![Képernyőkép a tudásbázisba importált egyválaszos kérdésekre](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+ ![A tudásbázisba importált egyetlen válaszra vonatkozó alternatív kérdések képernyőképe](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
-## <a name="structured-data-format-through-import"></a>Strukturált adatformátum importálás útján
+## <a name="structured-data-format-through-import"></a>Strukturált adatformátum importálással
 
-A tudásbázis importálása lecseréli a meglévő tudásbázis tartalmát. Az importáláshoz olyan strukturált .tsv fájlra van szükség, amely adatforrásadatokat tartalmaz. Ez az információ segít a QnA Maker-nek a kérdés-válasz párok csoportosítását és egy adott adatforráshoz való hozzáadását.
+A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az importáláshoz egy strukturált. TSV fájl szükséges, amely az adatforrás adatait tartalmazza. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz párokat, és azokat egy adott adatforráshoz rendelni.
 
 | Kérdés  | Válasz  | Forrás| Metaadatok (1 kulcs: 1 érték) |
 |-----------|---------|----|---------------------|
-| 1. kérdés | Válasz1 | URL1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| 2. kérdés | 2. válasz | Szerkesztői|    `Key:Value`       |
+| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 | Szerkesztői|    `Key:Value`       |
 
 <a href="#formatting-considerations"></a>
 
-## <a name="multi-turn-document-formatting"></a>Többfordulatos dokumentumformázás
+## <a name="multi-turn-document-formatting"></a>Több-turn dokumentum formázása
 
-* A hierarchiát a címsorok és alfejlécek segítségével jelölje. Például h1 jelöli a szülő QnA és h2 jelöli a QnA, hogy kell venni, mint a prompt. A későbbi hierarchia kis címsorméretével jelölheti a későbbi hierarchiát. Ne használjon stílust, színt vagy más mechanizmust a dokumentum szerkezetének sugallására, a QnA Maker nem bontja ki a többszörös fordulatos utasításokat.
-* A címsor első karakterét nagybetűvel kell elévíteni.
-* Ne hagyjon kérdőjellel egy `?`címsort.
+* Fejlécek és alfejlécek használatával jelezheti a hierarchiát. Például a H1 paraméterrel jelezheti, hogy a szülő QnA és a H2 jelzi a QnA, amelyet a rendszer kérni fog. A kisebb fejlécek méretének használata a későbbi hierarchia jelölésére. Ne használjon stílust, színt vagy valamilyen más mechanizmust a dokumentum struktúrájának megjelenítéséhez, QnA Maker nem fogja kibontani a többszörös bekapcsolási utasításokat.
+* A fejléc első karakterének tőkésített kell lennie.
+* Ne fejezze be a fejlécet kérdőjeltel `?`.
 
-**Mintadokumentumok**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso előnyei (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso előnyei (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
+**Minta dokumentumok**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso-előnyök (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso-előnyök (PDF)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
 ## <a name="next-steps"></a>További lépések
 
-A [tartalomtípusok és példák](./Concepts/content-types.md#file-and-url-data-types) teljes listájának megtekintése
+Tekintse meg a [tartalomtípusok és példák](./Concepts/content-types.md#file-and-url-data-types) teljes listáját

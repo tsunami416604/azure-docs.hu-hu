@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsfájl az Azure Cosmos DB SQL API-adatbázis vagy -tároló átviteli teljesítményének (RU/s) lehívásához
-description: Azure PowerShell-parancsfájl az Azure Cosmos DB SQL API-adatbázis vagy -tároló átviteli teljesítményének (RU/s) lehívásához
+title: PowerShell-szkript a Azure Cosmos DB SQL API-adatbázishoz vagy-tárolóhoz tartozó átviteli sebesség (RU/s) lekéréséhez
+description: Azure PowerShell szkript a Azure Cosmos DB SQL API-adatbázishoz vagy-tárolóhoz tartozó átviteli sebesség (RU/s) lekéréséhez
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
 ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365606"
 ---
-# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Átviteli (RU/s) beszerezni az Azure Cosmos DB SQL API-adatbázishoz vagy -tárolóhoz
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Átviteli sebesség (RU/s) beolvasása Azure Cosmos DB SQL API-adatbázishoz vagy-tárolóhoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Az Azure Cosmos DB SQL API-adatbázis on kiosztott átviteli adatlehívása. |
-| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Az Azure Cosmos DB SQL API-tárolón kiépített átviteli adatlehívása. |
-|**Azure erőforráscsoportok**| |
+| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | A Azure Cosmos DB SQL API-adatbázison kiépített átviteli sebesség beolvasása. |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | A Azure Cosmos DB SQL API-tárolón kiépített átviteli sebesség beolvasása. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

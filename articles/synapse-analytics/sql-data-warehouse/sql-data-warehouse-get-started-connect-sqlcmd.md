@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az sqlcmd-hez
-description: Az sqlcmd parancssori segédprogrammal csatlakozhat egy Synapse SQL-készlethez, és lekérdezheti azt.
+title: Kapcsolat a Sqlcmd
+description: A Sqlcmd parancssori segédprogrammal csatlakozhat, és lekérdezheti a szinapszis SQL-készletét.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,35 +12,35 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 02157ca0d32d2347e50cc84a5c52e9c47b0f33b5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745197"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Csatlakozás a Synapse SQL-készlethez sqlcmd segítségével
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Kapcsolódás a szinapszis SQL-készlethez a Sqlcmd használatával
 
 > [!div class="op_single_selector"]
 >
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+> * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Az [sqlcmd][sqlcmd] parancssori segédprogrammal csatlakozhat egy SQL-készlethez, és lekérdezheti azt.  
+Használja az [Sqlcmd] [Sqlcmd] parancssori segédprogramot egy SQL-készlethez való kapcsolódáshoz és lekérdezéshez.  
 
-## <a name="1-connect"></a>1. Csatlakozás
+## <a name="1-connect"></a>1. kapcsolat
 
-Az [sqlcmd][sqlcmd] alkalmazással való ismerkedéshez nyissa meg a parancssort, és írja be az **sqlcmd** parancsot, majd az SQL-készlet adatbázisának kapcsolati karakterláncát. A kapcsolati sztringben a következő paraméterekre van szükség:
+A [Sqlcmd] [Sqlcmd] első lépéseihez nyissa meg a parancssort, és írja be a **Sqlcmd** karakterláncot az SQL Pool-adatbázishoz tartozó kapcsolódási karakterlánc után. A kapcsolati sztringben a következő paraméterekre van szükség:
 
 * **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
 * **Database (-d):** Az adatbázis neve.
-* **Idézett azonosítók engedélyezése (-I):** Az SQL-készletpéldányhoz való csatlakozáshoz engedélyezni kell az idézett azonosítókat.
+* **Idézett azonosítók engedélyezése (-I):** Az idézőjelek közé tartozó azonosítókat engedélyezni kell egy SQL Pool-példányhoz való kapcsolódáshoz.
 
 Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
 
-* **Felhasználó (-U):** Kiszolgáló felhasználója `<`a Felhasználó űrlapon`>`
+* **Felhasználó (-U):** A kiszolgáló felhasználója az `<`űrlap felhasználója`>`
 * **Password (-P):** A felhasználóhoz tartozó jelszó.
 
 A kapcsolati sztring például a következőképpen nézhet ki:
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > Az Active Directory használatával történő hitelesítéshez [engedélyeznie kell az Azure Active Directory-hitelesítést](sql-data-warehouse-authentication.md).
 
-## <a name="2-query"></a>2. Lekérdezés
+## <a name="2-query"></a>2. lekérdezés
 
 A kapcsolódás után kiadhatók a példányon a támogatott Transact-SQL utasítások.  Ebben a példában a lekérdezések elküldése interaktív módban történik.
 
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>További lépések
 
-Az sqlcmd-ben elérhető lehetőségekről további információt az [sqlcmd dokumentációjában](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)talál.
+A Sqlcmd-ben elérhető beállítások részletes ismertetését lásd: [Sqlcmd-dokumentáció](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

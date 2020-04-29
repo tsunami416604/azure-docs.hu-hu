@@ -1,131 +1,131 @@
 ---
-title: Ügyféloldali teljesítmény-nyomkövetések létrehozása
-description: Gyakorlati tanácsok az ügyféloldali teljesítményprofilkészítéshez a WPF használatával
+title: Ügyféloldali teljesítménykövetés létrehozása
+description: Ajánlott eljárások az ügyféloldali teljesítmény-profilkészítéshez a WPF használatával
 author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681310"
 ---
-# <a name="create-client-side-performance-traces"></a>Ügyféloldali teljesítmény-nyomkövetések létrehozása
+# <a name="create-client-side-performance-traces"></a>Ügyféloldali teljesítménykövetés létrehozása
 
-Számos oka lehet annak, hogy az Azure távoli renderelés teljesítménye nem olyan jó, mint a kívánt. A felhőkiszolgálón nyújtott tiszta renderelési teljesítmény mellett különösen a hálózati kapcsolat minősége jelentős hatással van az élményre. A kiszolgáló teljesítményének profiljához olvassa el a [kiszolgálóoldali teljesítménylekérdezéseket.](../overview/features/performance-queries.md)
+Számos oka lehet annak, hogy az Azure-alapú távoli renderelés teljesítménye miért nem megfelelő a kívánt módon. A felhő-kiszolgáló tiszta renderelési teljesítménye mellett különösen a hálózati kapcsolatok minősége jelentős hatással van a felhasználói élményre. A kiszolgáló teljesítményének [megkereséséhez](../overview/features/performance-queries.md)tekintse meg a kiszolgálóoldali teljesítménnyel kapcsolatos lekérdezések című fejezetet.
 
-Ez a fejezet arra összpontosít, hogy hogyan lehet azonosítani a potenciális ügyféloldali szűk keresztmetszeteket *a teljesítménynyomkövetések*révén.
+Ez a fejezet arra összpontosít, hogy miként azonosíthatók a potenciális ügyféloldali szűk keresztmetszetek a *teljesítmény-nyomkövetéseken*keresztül.
 
 ## <a name="getting-started"></a>Első lépések
 
-Ha még nem ismerkedik a Windows teljesítmény-nyomkövetési funkciójával, ez a szakasz a kezdéshez leggyakrabban megnevező kifejezéseket és alkalmazásokat fogja említeni.
+Ha még nem ismeri a Windows teljesítmény-nyomkövetési funkcióját, ez a szakasz ismerteti a legfontosabb feltételeket és alkalmazásokat, amelyekkel elsajátíthatja az első lépéseket.
 
 ### <a name="installation"></a>Telepítés
 
-Az ARR-rel való nyomon követéshez használt alkalmazások általános célú eszközök, amelyek minden Windows fejlesztéshez használhatók. Ezek a [Windows teljesítményeszközkészletén](https://docs.microsoft.com/windows-hardware/test/wpt/)keresztül találhatók. Az eszközkészlet letöltéséhez töltse le a [Windows assessment and Deployment Kit készletet.](https://docs.microsoft.com/windows-hardware/get-started/adk-install)
+Az ARR-vel való nyomkövetéshez használt alkalmazások általános célú eszközök, amelyek minden Windows-fejlesztéshez használhatók. Ezek a [Windows Performance Toolkit](https://docs.microsoft.com/windows-hardware/test/wpt/)segítségével érhetők el. Az eszközkészlet beszerzéséhez töltse le a [Windows Assessment and Deployment Kit csomagot](https://docs.microsoft.com/windows-hardware/get-started/adk-install).
 
 ### <a name="terminology"></a>Terminológia
 
-Amikor a teljesítménynyomkövetésekkel kapcsolatos információkat keres, elkerülhetetlenül számos kifejezéssel találkozik. A legfontosabbak a következők:
+A teljesítmény-nyomkövetéssel kapcsolatos információk keresésekor a rendszer elkerülhetetlenül megkeresi a különböző feltételeket. A legfontosabbak a következők:
 
 * `ETW`
 * `ETL`
 * `WPR`
 * `WPA`
 
-**ETW** jelentése [ **E**vent **T**versenyzés **a W**indows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Ez egyszerűen az átfogó neve a hatékony kernel szintű nyomkövetési létesítmény, amely be van építve a Windows. Ezt *eseménykövetésnek* nevezzük, mivel az ETW-t támogató alkalmazások eseményeket bocsátanak ki a teljesítményproblémák nyomon követését segítő műveletek naplózásához. Alapértelmezés szerint az operációs rendszer már olyan eseményeket bocsát ki, mint a lemezhozzáférés, a feladatkapcsolók és hasonlók. Az olyan alkalmazások, mint az ARR, egyéni eseményeket is bocsátanak ki, például az eldobott képkockákról, a hálózati késésről stb.
+A **ETW** az [ **E**- **T** **W**indows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Ez egyszerűen a Windows rendszerbe épített, hatékony kernel szintű nyomkövetési létesítmény átfogó neve. Ez az *esemény* -nyomkövetés, mivel a ETW támogató alkalmazások olyan naplózási műveletekhez bocsátanak ki eseményeket, amelyek segíthetnek a teljesítménnyel kapcsolatos problémák nyomon követésében. Alapértelmezés szerint az operációs rendszer már elküldi az eseményeket olyan dolgokhoz, mint a lemez-hozzáférés, a feladathoz tartozó kapcsolók és az ilyen. Az olyan alkalmazások, mint az ARR, egyéni eseményeket bocsátanak ki, például az eldobott kereteket, a hálózati késést stb.
 
-**Etl** jelentése **E**vent **T**verseny **L**ogging. Ez egyszerűen azt jelenti, hogy a nyomkövetés már összegyűjtött (naplózott), és ezért általában használják a fájl kiterjesztését fájlokat, hogy tárolja a nyomkövetési adatokat. Így, ha nem a nyomkövetés, \*akkor általában lesz egy .etl fájlt utána.
+Az **ETL** az **E**Vent **T**Race **L**ogging áll. Ez egyszerűen azt jelenti, hogy egy nyomkövetést gyűjtöttek (naplózott), ezért általában a nyomkövetési adatokat tároló fájlok fájlkiterjesztésként használatosak. Így ha nyomkövetést végez, általában egy \*. etl-fájllal fog rendelkezni.
 
-**A WPR** a [ **W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) rövidítése, és annak az alkalmazásnak a neve, amely elindítja és leállítja az eseménynyomok rögzítését. A WPR egy\*profilfájlt (.wprp) vesz fel, amely konfigurálja a naplózandó pontos eseményeket. Az `wprp` ilyen fájl az ARR SDK-hoz van ellátva. Ha nyomkövetést végez asztali számítógépen, közvetlenül elindíthatja a WPR-t. Amikor a HoloLensen nyomkövetést végez, általában a webes felületen keresztül kell végigmenni.
+A **WPR** a [ **W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) értékre áll, és az az alkalmazás neve, amely elindítja és leállítja az esemény-Nyomkövetések rögzítését. A WPR egy profilt (\*. wprp) használ, amely a naplózni kívánt eseményeket konfigurálja. Egy `wprp` ilyen fájl az ARR SDK-val van megadva. Ha egy asztali számítógépen nyomkövetést végez, a WPR közvetlenül is elindíthatja. Amikor nyomkövetést végez a HoloLens, általában a webes felületen halad át.
 
-**WPA** jelentése [ **W**indows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) és a neve \*a GUI alkalmazás, amely megnyitásához használt .etl fájlokat és szitot át az adatokat, hogy azonosítsa a teljesítmény problémákat. A WPA lehetővé teszi az adatok különböző kritériumok szerint történő rendezését, az adatok többféleképpen történő megjelenítését, a részletek beásását és az információk korrelációt.
+A **WPA** a [ **W**indows **P**erformance **A**](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) , a nalyzer pedig az. etl fájlok MEGNYITÁSához \*és a teljesítménnyel kapcsolatos problémák azonosításához használt gui-alkalmazás neve. A WPA lehetővé teszi, hogy különböző feltételek alapján rendezze az adatokat, több módon jelenítse meg az adatokat, részletezve a részleteket, és korrelálja az adatokat.
 
-Bár az ETL-nyomkövetések bármely Windows-eszközön (helyi PC, HoloLens, felhőkiszolgáló stb.) létrehozhatók, általában lemezre kerülnek, és asztali számítógépen elemzik a WPA-val. ETL fájlokat lehet küldeni más fejlesztők számára, hogy egy pillantást. Ne feledje, hogy a bizalmas adatok, például a fájlelérési utak és az IP-címek, lehet rögzíteni ETL-nyomokban, mégis. Az ETW kétféleképpen használható: nyomkövetések rögzítésére vagy a nyomkövetések elemzésére. A nyomkövetések rögzítése egyenesen előre halad, és minimális beállítást igényel. Elemzése nyomokat másrészt nem igényel tisztességes megértését mind a WPA eszköz és a probléma, hogy vizsgálja. A WPA tanulására szolgáló általános anyagokat az alábbiakban találjuk, valamint az ARR-specifikus nyomok értelmezésére vonatkozó iránymutatásokat.
+Míg az ETL-nyomkövetés bármely Windows-eszközön (helyi számítógépen, HoloLens, felhőalapú kiszolgálón stb.) hozható létre, a rendszer általában lemezre menti, és az asztali SZÁMÍTÓGÉPeken lévő WPA használatával elemzi őket. Az ETL-fájlokat más fejlesztőknek is elküldhetik, hogy lássák. Ügyeljen arra, hogy a bizalmas adatokat, például a fájlelérési utakat és az IP-címeket az ETL-nyomkövetésekben is rögzítheti. A ETW kétféleképpen is használhatja: Nyomkövetések rögzítésére vagy a Nyomkövetések elemzésére. A rögzítési Nyomkövetések közvetlen továbbítást igényelnek, és minimális beállításra van szükség. A nyomkövetési adatok elemzéséhez szükség van a WPA-eszköz és a vizsgált probléma tisztességes megismerésére. A WPA learning általános tananyaga alább található, valamint útmutatást ad az ARR-specifikus Nyomkövetések értelmezéséhez.
 
 ## <a name="recording-a-trace-on-a-local-pc"></a>Nyomkövetés rögzítése helyi számítógépen
 
-Az ARR teljesítményproblémák azonosításához inkább közvetlenül a HoloLensen kell nyomon követnie, mert ez az egyetlen módja annak, hogy pillanatképet kapjon a valódi teljesítményjellemzőkről. Ha azonban kifejezetten a HoloLens teljesítménykorlátozásai nélkül szeretne nyomozni, vagy csak meg szeretné tanulni, hogyan kell használni a WPA-t, és nem kell reális nyomon követnie, itt van, hogyan kell ezt megtenni.
+Az ARR teljesítménybeli problémák azonosításához érdemes közvetlenül egy HoloLens elvégezni a nyomkövetést, mivel ez az egyetlen lehetőség, hogy pillanatképet kapjon a valódi teljesítmény jellemzőiről. Ha azonban kifejezetten a HoloLens teljesítmény-korlátozásai nélkül szeretne nyomkövetést végezni, vagy ha szeretné megismerni a WPA használatát, és nem kell reális nyomkövetést végeznie, itt megtudhatja, hogyan teheti meg.
 
 ### <a name="wpr-configuration"></a>WPR-konfiguráció
 
-1. Indítsa el a [Windows Teljesítményrögzítőt](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) a *start menüből*.
-1. **További beállítások kibontása**
-1. Kattintson **a Profilok hozzáadása gombra...**
-1. Válassza ki az *AzureRemoteRenderingNetworkProfiling.wprp*fájlt. Ezt a fájlt az ARR SDK *eszközök/ETLProfiles*területen találja.
-   A profil most antól a WPR-ben jelenik meg az *Egyéni mérések*csoportban. Győződjön meg róla, hogy ez az egyetlen engedélyezett profil.
-1. *Első szintű osztályozás kibontása:*
-    * Ha mindössze annyit szeretne tenni, hogy rögzíti az ARR hálózati események gyors nyomkövetését, **tiltsa le** ezt a beállítást.
-    * Ha az ARR hálózati eseményeket más rendszerjellemzőkkel, például a processzor- vagy memóriahasználattal kell korrelálnia, **engedélyezze** ezt a beállítást.
-    * Ha engedélyezi ezt a beállítást, a nyomkövetés valószínűleg több gigabájt méretű lesz, és hosszú időt vesz igénybe a WPA-ban való mentés hez és megnyitáshoz.
+1. Indítsa el a [Windows Performance Recorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) alkalmazást a *Start menüből*.
+1. **További lehetőségek** kibontása
+1. Kattintson a **profilok hozzáadása...** elemre.
+1. Válassza ki a *AzureRemoteRenderingNetworkProfiling. wprp*fájlt. Ez a fájl az ARR SDK-ban található az *eszközök/ETLProfiles*területen.
+   A profil mostantól az *Egyéni mérések*területen jelenik meg a WPR. Győződjön meg arról, hogy az egyetlen engedélyezett profil.
+1. *Első szintű osztályozás*kibontása:
+    * Ha az összeset szeretné elvégezni, rögzítse az ARR hálózati események gyors nyomkövetését, és **Tiltsa le** ezt a beállítást.
+    * Ha az ARR hálózati eseményeket más rendszerjellemzőkkel (például CPU vagy memóriahasználat) kell összekapcsolni, akkor **engedélyezze** ezt a beállítást.
+    * Ha engedélyezi ezt a beállítást, a nyomkövetés valószínűleg több gigabájt méretű lesz, és hosszú ideig tart a Mentés és a Megnyitás a WPA-ban.
 
-Ezt követően a WPR konfiguráció így kell kinéznie:
+Ezt követően a WPR-konfigurációnak így kell kinéznie:
 
 ![WPR-konfiguráció](./media/wpr.png)
 
 ### <a name="recording"></a>Felvétel
 
-A **nyomkövetés** rögzítésének megkezdéséhez kattintson a Start gombra. A felvételt bármikor elindíthatja és leállíthatja; nem kell, hogy zárja be a kérelmet, mielőtt ezt. Mint látható, nem kell megadnia, hogy melyik alkalmazást kell nyomon követnie, mivel az ETW mindig rögzíti a nyomkövetést az egész rendszerre. A `wprp` fájl határozza meg, hogy milyen típusú eseményeket kell rögzíteni.
+A nyomkövetés rögzítésének megkezdéséhez kattintson a **Start** gombra. Bármikor elindíthatja és leállíthatja a rögzítést; ezt megelőzően nem kell lezárva az alkalmazást. Amint láthatja, hogy nem kell megadnia a nyomkövetési alkalmazást, mivel a ETW mindig a teljes rendszer nyomkövetését rögzíti. A `wprp` fájl meghatározza, hogy milyen típusú események legyenek rögzítve.
 
-A **Mentés gombra** kattintva leállíthatja a felvételt, és megadhatja, hogy hol tárolja az ETL-fájlt.
+A rögzítés leállításához és az ETL-fájl tárolási helyének megadásához kattintson a **Mentés** gombra.
 
-Most már van egy ETL fájl, amit vagy közvetlenül a WPA-ban nyit meg, vagy elküldheti valaki másnak.
+Most már rendelkezik egy ETL-fájllal, amelyet közvetlenül a WPA-ban nyithat meg, vagy elküldheti másnak.
 
-## <a name="recording-a-trace-on-a-hololens"></a>Nyomfelvétel holoLensen
+## <a name="recording-a-trace-on-a-hololens"></a>Nyomkövetés rögzítése egy HoloLens
 
-Ha egy HoloLensen szeretne nyomkövetést rögzíteni, indítsa el az eszközt, és adja meg annak IP-címét egy böngészőben az *Eszközportál*megnyitásához.
+A nyomkövetés HoloLens való rögzítéséhez indítsa el az eszközt, és adja meg az IP-címét egy böngészőben az *eszköz-portál*megnyitásához.
 
-![Eszközportál](./media/wpr-hl.png)
+![Eszköz portál](./media/wpr-hl.png)
 
-1. A bal oldalon nyissa meg a *Teljesítmény > teljesítménykövetés t.*
-1. **Egyéni profilok kijelölése**
-1. Kattintson **a Tallózás gombra...**
-1. Válassza ki az *AzureRemoteRenderingNetworkProfiling.wprp*fájlt. Ezt a fájlt az ARR SDK *eszközök/ETLProfiles*területen találja.
-1. Kattintson **a Nyomkövetés indítása gombra.**
-1. A HoloLens most egy nyomot rögzít. Győződjön meg arról, hogy elindítja a vizsgálni kívánt teljesítményproblémákat. Ezután kattintson **a Nyomon követés leállítása gombra.**
-1. A nyomkövetés a weblap alján jelenik meg. Kattintson a lemez ikonra a jobb oldalon az ETL fájl letöltéséhez.
+1. A bal oldalon navigáljon a *teljesítmény > a teljesítmény nyomon követése*elemre.
+1. **Egyéni profilok** kiválasztása
+1. Kattintson a **Tallózás gombra...**
+1. Válassza ki a *AzureRemoteRenderingNetworkProfiling. wprp*fájlt. Ez a fájl az ARR SDK-ban található az *eszközök/ETLProfiles*területen.
+1. Kattintson a **Nyomkövetés indítása** elemre
+1. A HoloLens most már rögzíti a nyomkövetést. Győződjön meg arról, hogy aktiválja a vizsgálni kívánt teljesítménnyel kapcsolatos problémákat. Ezután kattintson a **nyomkövetés leállítása**elemre.
+1. A nyomkövetés a weblap alján jelenik meg. Kattintson a jobb oldalon található lemez ikonra az ETL-fájl letöltéséhez.
 
-Most már van egy ETL fájl, amit vagy közvetlenül a WPA-ban nyit meg, vagy elküldheti valaki másnak.
+Most már rendelkezik egy ETL-fájllal, amelyet közvetlenül a WPA-ban nyithat meg, vagy elküldheti másnak.
 
-## <a name="analyzing-traces-with-wpa"></a>Nyomkövetések elemzése WPA-val
+## <a name="analyzing-traces-with-wpa"></a>Nyomkövetések elemzése a WPA-vel
 
 ### <a name="wpa-basics"></a>A WPA alapjai
 
-A Windows Teljesítményanalizáló az ETL-fájlok megnyitásának és a nyomkövetések vizsgálatának szabványos eszköze. A WPA működésének magyarázata nincs kivonva a cikk hatálya alá. Első lépésekhez tekintse meg az alábbi forrásokat:
+A Windows Performance Analyzer a szabványos eszköz az ETL-fájlok megnyitásához és a Nyomkövetések vizsgálatához. Annak magyarázata, hogyan működik a WPA a jelen cikk hatókörén kívül. Az első lépésekhez tekintse meg a következő erőforrásokat:
 
-* Tekintse meg a [bevezető videókat](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) az első áttekintésért.
-* A WPA-nak van egy *Első lépések* lapja, amely ismerteti a gyakori lépéseket. Tekintse meg a rendelkezésre álló témákat. Különösen az "Adatok megtekintése" alatt kap egy gyors bevezetőt, hogyan hozhat létre grafikonokat adott adatokhoz.
-* Van kiváló információ [ezen a honlapon](https://randomascii.wordpress.com/2015/09/24/etw-central/), azonban nem minden fontos a kezdők számára.
+* Tekintse meg az első áttekintést [bemutató videókat](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) .
+* A WPA-nak van egy *első lépések* lapja, amely a gyakori lépéseket ismerteti. Tekintse át az elérhető témaköröket. Különösen az "adatmegtekintés" alatt gyorsan bemutatjuk, hogyan hozhat létre gráfokat adott adathoz.
+* A [webhelyre](https://randomascii.wordpress.com/2015/09/24/etw-central/)vonatkozó kiváló információk azonban nem mindegyike fontos a kezdőknek.
 
-### <a name="graphing-data"></a>Adatok grafikusítása
+### <a name="graphing-data"></a>Az adatgráfok
 
-Az ARR nyomon követésének megkezdéséhez a következő darabokat jó tudni.
+Az ARR-nyomkövetés megkezdéséhez a következő részek jól ismertek.
 
-![Teljesítménygrafikon](./media/wpa-graph.png)
+![Teljesítmény gráf](./media/wpa-graph.png)
 
-A fenti képen egy nyomkövetési adatokat bemutató táblázat és ugyanazon adatok grafikonábrázolása látható.
+A fenti képen a nyomkövetési adatok és az ugyanazon adatok gráf ábrázolása látható.
 
-Az alján lévő táblázatban vegye figyelembe a sárga (arany) sávot és a kék sávot. Ezeket a sávokat bármelyik pozícióba húzhatja, és elhelyezheti.
+A lenti táblázatban jegyezze fel a sárga (arany) sávot és a kék sávot. Ezeket a sávokat áthúzhatja, és tetszőleges helyre helyezheti őket.
 
-A **sárga sávtól balra lévő összes oszlopot** **a gombként értelmezi a (nagy)** A billentyűk a fa szerkezetére szolgálnak a bal felső ablakban. Itt van két *kulcsfontosságú* oszlop, a "Szolgáltató neve" és a "Feladat neve". Ennek következtében a bal felső ablakban lévő faszerkezet két szint mély. Ha átrendezi az oszlopokat, vagy oszlopokat ad hozzá vagy távolít el a kulcsterületről, a fanézet szerkezete megváltozik.
+**A sárga sáv bal oldalán** lévő összes oszlopot **kulcsként**értelmezi a rendszer. A kulcsok használatával a fa a bal felső ablakban alakítható ki. Itt két *fő* oszlop, a "szolgáltató neve" és a "feladat neve" szerepel. Ebből következően a faszerkezet a bal felső ablakban két szint mély. Ha átrendezi az oszlopokat, vagy oszlopokat ad hozzá vagy távolít el a kulcs területen, a fanézetben a struktúra megváltozik.
 
-**A kék sávtól jobbra lévő oszlopok** a jobb felső ablakban lévő **grafikonmegjelenítéséhez** használatosak. Az esetek többségében csak az első oszlopot használja a rendszer, de egyes gráfmódok több adatoszlopot igényelnek. A vonaldiagramok működéséhez be kell állítani az oszlop *összesítési módját.* Használja az "Átlagos" vagy a "Max" értéket. Az aggregációs mód a diagram értékének meghatározására szolgál egy adott képpontban, amikor egy képpont több eseményt tartalmazó tartományt fed le. Ez az aggregáció "Sum" beállításával, majd nagyítással és kicsinyítéssel figyelhető meg.
+A **kék sáv jobb oldalán lévő oszlopok** a jobb felső sarokban **látható diagram megjelenítéséhez** használatosak. Az idő nagy részében csak az első oszlop használatos, de egyes diagramok esetében több adatoszlopra van szükség. A vonalas diagramok működéséhez meg kell adni az *összesítési módot* az oszlopon. Az "AVG" vagy a "Max" használata. Az összesítési mód segítségével határozható meg a gráf értéke egy adott képpontban, ha egy képpont több eseménnyel rendelkező tartományt foglal magában. Ezt megfigyelheti az Összesítés beállítása a "Sum" értékre, majd a nagyítás és kicsinyítés lehetőségre.
 
-A középső oszlopoknak nincs különösebb jelentésük.
+A középső oszlopok nem rendelkeznek speciális jelentéssel.
 
 ![Események nézet](./media/wpa-event-view.png)
 
-Az *Általános események nézet szerkesztőben* beállíthatja az összes oszlop megjelenítését, az összesítési módot, a rendezést és a kulcsként vagy grafikusként használt oszlopokat. A fenti példában a **2.** A 2-es mező általában az ETW-események első *egyéni adatmezője,* és így az ARR "FrameStatistics" események, amelyek valamilyen hálózati késési értéket képviselnek. Engedélyezze, hogy más "Mező" oszlopok további értékeket láthassanak az eseményből.
+Az *általános események nézet szerkesztőjében* konfigurálhatja az összes megjelenített oszlopot, az összesítési módot, a rendezést és a kulcsként vagy a gráfként használt oszlopokat. A fenti példában a **2. mező** engedélyezve van, és a 3-6 mező le van tiltva. A 2. mező általában egy ETW-esemény első *Egyéni* adatmezője, így az ARR "FrameStatistics" eseményekhez, amelyek bizonyos hálózati késési értékeket képviselnek. Az esemény további értékeinek megjelenítéséhez engedélyezze az egyéb "mező" oszlopokat.
 
 ### <a name="presets"></a>Készletek
 
-A nyomkövetés megfelelő elemzéséhez ki kell találnia a saját munkafolyamatát és az előnyben részesített adatok megjelenítését. Ahhoz azonban, hogy gyors áttekintést kapjunk az ARR-specifikus eseményekről, a Windows Szoftvervédelmi Platform profilját és a készletekfájljait az *Eszközök/ ETLProfiles*mappába foglaljuk. Teljes profil betöltéséhez válassza a WPA menüsor *Profilok > Alkalmazása lehetőséget,* vagy nyissa meg a Saját készletek *panelt* *(Ablak > Saját készletek)* és válassza az *Importálás*lehetőséget. Az előbbi létrehoz egy teljes WPA konfigurációt, mint az alábbi képen. Ez utóbbi csak a különböző nézetkonfigurációkhoz való készleteket teszi elérhetővé, és lehetővé teszi, hogy gyorsan megnyisson egy nézetet az ARR eseményadatok egy adott darabjának megtekintéséhez.
+A nyomkövetés megfelelő elemzéséhez meg kell határoznia a saját munkafolyamatot és az előnyben részesített adatmegjelenítést. Ha azonban gyors áttekintést szeretne kapni az ARR-specifikus eseményekről, a Windows szoftverlicencelési platform profilja és a fájlok előre beállítása a mappa *eszközei/ETLProfiles*között. A teljes profil betöltéséhez válassza a *profilok > alkalmazás...* lehetőséget a WPA menüsávon, vagy nyissa meg a *saját előkészletek* panelt (*ablak > saját beállításkészlet*), és válassza az *Importálás*lehetőséget. A korábbi verzióban az alábbi képen látható teljes WPA-konfiguráció lesz beállítva. Az utóbbi csak az elérhető különböző nézet-konfigurációkra vonatkozó előállításokat hajtja végre, és lehetővé teszi, hogy gyorsan megnyisson egy nézetet, hogy megtekintse az ARR-események egy adott adatát.
 
 ![Készletek](./media/wpa-arr-trace.png)
 
-A fenti képen a különböző ARR-specifikus események nézeteit, valamint a teljes CPU-kihasználtság nézetét jeleníti meg.
+A fenti képen a különböző ARR-specifikus események, valamint a teljes CPU-kihasználtság nézete látható.
 
 ## <a name="next-steps"></a>További lépések
 

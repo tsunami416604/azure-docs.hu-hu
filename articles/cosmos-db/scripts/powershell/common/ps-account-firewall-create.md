@@ -1,19 +1,19 @@
 ---
-title: PowerShell-parancsfájl az AZURE Cosmos DB-fiók ip-tűzfallal való létrehozásához
-description: Azure PowerShell-parancsfájlminta – Hozzon létre egy Azure Cosmos DB-fiókot IP-tűzfallal
+title: PowerShell-szkript egy Azure Cosmos DB-fiók létrehozásához IP-tűzfallal
+description: Azure PowerShell parancsfájl-minta – hozzon létre egy Azure Cosmos DB-fiókot IP-tűzfallal
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: f01e8e818a1b3cf4f999afa1e0801b2341ede2bf
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365672"
 ---
-# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Hozzon létre egy Azure Cosmos DB-fiókot AZ IP-tűzfallal
+# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Azure Cosmos DB-fiók létrehozása IP-tűzfallal
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "80365672"
 ## <a name="sample-script"></a>Példaszkript
 
 > [!NOTE]
-> Ez a minta egy SQL (Core) API-fiók használatával szemlélteti. Ha ezt a mintát más API-khoz szeretné használni, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra
+> Ez a példa egy SQL-(Core-) API-fiók használatát mutatja be. Ha más API-khoz szeretné használni ezt a mintát, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-firewall-create.ps1 "Create an Azure Cosmos account with IP Firewall")]
 
@@ -41,8 +41,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Új-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Új Cosmos DB-fiókot hoz létre. |
-|**Azure erőforráscsoportok**| |
+| [Új – AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Új Cosmos DB-fiók létrehozása. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

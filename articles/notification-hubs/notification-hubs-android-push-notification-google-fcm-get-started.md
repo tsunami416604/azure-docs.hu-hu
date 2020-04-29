@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések küldése Androidra az Azure Értesítési központok és a Firebase használatával | Microsoft dokumentumok
+title: Leküldéses értesítések küldése Androidra az Azure Notification Hubs és a Firebase használatával | Microsoft Docs
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan küldhet leküldéses értesítéseket Android-eszközökre az Azure Notification Hubs és a Google Firebase Cloud Messaging használatával.
 services: notification-hubs
 documentationcenter: android
@@ -19,50 +19,50 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80521550"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Oktatóanyag: Leküldéses értesítések küldése Android-eszközökre a Firebase használatával
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase használatával
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Notification Hubs és a Firebase Cloud Messaging (FCM) segítségével értesítéseket egy Android-alkalmazásba. Ebben az oktatóanyagban létrehoz egy üres Android-alkalmazást, amely leküldéses értesítéseket fogad a Firebase Cloud Messaging (FCM) használatával.
+Ez az oktatóanyag bemutatja, hogyan használható az Azure Notification Hubs és a Firebase Cloud Messaging (FCM) az értesítések Android-alkalmazásba való leküldéséhez. Ebben az oktatóanyagban létrehoz egy üres Android-alkalmazást, amely leküldéses értesítéseket fogad a Firebase Cloud Messaging (FCM) használatával.
 
-Az oktatóanyag elkészült kódja letölthető [a GitHubról.](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)
+Az oktatóanyaghoz tartozó befejezett kód letölthető a [githubról](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp).
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
 > * Android Studio-projekt létrehozása.
 > * A Firebase Cloud Messaginget támogató Firebase-projekt létrehozása.
-> * Hozzon létre egy központot.
-> * Csatlakoztassa az alkalmazást a hubhoz.
+> * Hozzon létre egy hubot.
+> * Csatlakoztathatja az alkalmazást az hubhoz.
 > * Az alkalmazás tesztelése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/). 
 
-A következő elemekre is szüksége van: 
+A következő elemek is szükségesek: 
 
-* A legújabb verzió az [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)
-* Android 2.3 vagy újabb a Firebase Cloud Messaging hez
-* A Google Repository 27-es vagy újabb felülvizsgálata a Firebase Cloud Messaging esetében
-* 9.0.2-es vagy újabb Google Play-szolgáltatások a Firebase Cloud Messaging hez
+* A [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797) legújabb verziója
+* Android 2,3 vagy újabb a Firebase Cloud Messaging szolgáltatáshoz
+* A Google adattár 27-ös vagy újabb verziója a Firebase Cloud Messaging szolgáltatáshoz
+* A Google Play Services 9.0.2 vagy újabb verziója a Firebase Cloud Messaging szolgáltatáshoz
 
-Az oktatóanyag befejezése előfeltétele az összes többi Értesítési központ oktatóanyagának az Android-alkalmazásokhoz.
+Az oktatóanyag elvégzése előfeltétele az Android-alkalmazásokhoz tartozó összes más Notification Hubs-oktatóanyag végrehajtásához.
 
 ## <a name="create-an-android-studio-project"></a>Android Studio-projekt létrehozása
 
-1. Indítsa el az Android Studio alkalmazást.
-2. Válassza **a Fájl**, majd az **Új**pontra, majd az Új **projekt**parancsra. 
-2. A **Projekt kiválasztása** lapon válassza a **Tevékenység kiürítése (Ürítés)** lehetőséget, majd a **Tovább**gombot. 
-3. A **Projekt konfigurálása** lapon tegye a következő lépéseket: 
+1. Android Studio elindítása.
+2. Válassza a **fájl**lehetőséget, mutasson az **új**elemre, majd válassza az **új projekt**lehetőséget. 
+2. A **projekt kiválasztása** lapon válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra. 
+3. A **projekt konfigurálása** oldalon hajtsa végre a következő lépéseket: 
     1. Adjon nevet az alkalmazásnak.
-    2. Adja meg a projektfájlok mentési helyét. 
+    2. Itt adhatja meg a projektfájlok mentési helyét. 
     3. Válassza a **Finish** (Befejezés) elemet. 
 
         ![A projekt konfigurálása)](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
@@ -71,38 +71,38 @@ Az oktatóanyag befejezése előfeltétele az összes többi Értesítési közp
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a name="configure-a-hub"></a>Hub konfigurálása
+## <a name="configure-a-hub"></a>Központ konfigurálása
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>A központ Firebase Cloud Messaging-beállításainak konfigurálása
 
-1. A bal oldali ablaktáblában a **Beállítások** csoportban válassza a **Google (GCM/FCM) lehetőséget.** 
-2. Adja meg a korábban mentett FCM-projekt **kiszolgálókulcsát.** 
-3. Az eszköztáron válassza a **Mentés gombot.** 
+1. A bal oldali ablaktábla **Beállítások** területén válassza a **Google (GCM/FCM)** lehetőséget. 
+2. Adja meg a korábban mentett FCM-projekthez tartozó **kiszolgálói kulcsot** . 
+3. Az eszköztáron válassza a **Mentés**lehetőséget. 
 
-    ![Azure értesítési központ – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
-4. Az Azure Portal on egy üzenetet jelenít meg a riasztásokat, hogy a hub sikeresen frissítve lett. A **Mentés** gomb le van tiltva. 
+    ![Azure Notification hub – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+4. A Azure Portal üzenet jelenik meg a riasztásokban, hogy a központ frissítése sikeresen megtörtént. A **Mentés** gomb le van tiltva. 
 
-A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messaging szolgáltatással. Olyan kapcsolati karakterláncokkal is rendelkezik, amelyek az értesítések eszközre küldéséhez és az értesítések fogadásához szükséges alkalmazás regisztrálásához szükségesek.
+A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud Messaging szolgáltatással. Emellett a kapcsolódási sztringek is megtalálhatók, amelyek szükségesek az értesítések egy eszközre való küldéséhez és egy alkalmazás regisztrálásához az értesítések fogadásához.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-szolgáltatások felvétele a projektbe
 
-1. Az Android Studio alkalmazásban válassza a menü **Eszközök parancsát,** majd az **SDK-kezelő t.** 
-2. Válassza ki a projektben használt Android SDK célverzióját. Ezután válassza **a Csomag részleteinek megjelenítése**lehetőséget. 
+1. A Android Studio területen válassza a menü **eszközök** elemét, majd válassza az **SDK-kezelő**elemet. 
+2. Válassza ki a projektben használt Android SDK cél verzióját. Ezután válassza a **csomag adatainak megjelenítése**lehetőséget. 
 
-    ![Android SDK Manager - célverzió kiválasztása](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Válassza a **Google API-k**lehetőséget, ha még nincs telepítve.
+    ![Android SDK-kezelő – cél verziójának kiválasztása](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Válassza a **Google API**-k lehetőséget, ha még nincs telepítve.
 
-    ![Android SDK Manager - Google API-k kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
-4. Váltson az **SDK-eszközök** lapra. Ha még nem telepítette a Google Play-szolgáltatásokat, válassza a **Google Play-szolgáltatásokat** az alábbi képen látható módon. Ezután válassza az **Alkalmaz** a telepítéshez lehetőséget. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
+    ![Android SDK-kezelő – kiválasztott Google API-k](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Váltson az **SDK-eszközök** lapra. Ha még nem telepítette a Google Play-szolgáltatásokat, válassza a **Google Play-szolgáltatások** lehetőséget az alábbi ábrán látható módon. Ezután válassza az **alkalmaz** elemet a telepítéshez. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
 
-    ![Android SDK Manager - Google Play Szolgáltatások kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
-3. Ha megjelenik a **Módosítás megerősítése** párbeszédpanel, válassza az **OK gombot.** A Komponenstelepítő telepíti a kért összetevőket. Az összetevők telepítése után válassza a **Befejezés** lehetőséget.
-4. Az **ÚJ projektek beállításai** párbeszédpanel bezárásához válassza az **OK** gombot.  
-1. Nyissa meg az AndroidManifest.xml fájlt, és *application* adja hozzá a következő címkét az alkalmazáscímkéhez.
+    ![Android SDK-kezelő – kiválasztott Google Play-szolgáltatások](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Ha megjelenik a **módosítás megerősítése** párbeszédpanel, kattintson az **OK gombra**. Az összetevő-telepítő telepíti a kért összetevőket. Az összetevők telepítése után válassza a **Befejezés** lehetőséget.
+4. Az **új projektek beállításainak** bezárásához kattintson **az OK gombra** .  
+1. Nyissa meg a AndroidManifest. xml fájlt, majd adja hozzá a következő címkét az *alkalmazás* címkéjéhez.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"
@@ -110,9 +110,9 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     ```
 
 
-### <a name="add-azure-notification-hubs-libraries"></a>Azure értesítési központok könyvtárainak hozzáadása
+### <a name="add-azure-notification-hubs-libraries"></a>Azure Notification Hubs-kódtárak hozzáadása
 
-1. Az alkalmazás Build.Gradle fájljában adja hozzá a következő sorokat a függőségek szakaszban.
+1. Az alkalmazás Build. Gradle fájljában adja hozzá a következő sorokat a függőségek szakaszhoz.
 
     ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
@@ -130,23 +130,23 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
 
 ### <a name="add-google-firebase-support"></a>Google Firebase-támogatás hozzáadása
 
-1. Az alkalmazás Build.Gradle fájljában adja hozzá a következő sorokat a **függőségek** szakaszban, ha azok még nem léteznek. 
+1. Az alkalmazás Build. Gradle fájljában adja hozzá a következő sorokat a **függőségek** szakaszban, ha még nem léteznek. 
 
     ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     ```
 
-2. Ha még nincs meg, adja hozzá a következő beépülő modult a fájl végén. 
+2. Ha még nem létezik, adja hozzá a következő beépülő modult a fájl végéhez. 
 
     ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
-3. Az eszköztáron válassza a **Szinkronizálás most** lehetőséget.
+3. Kattintson a **szinkronizálás most** elemre az eszköztáron.
 
-### <a name="update-the-androidmanifestxml-file"></a>Az AndroidManifest.xml fájl frissítése
+### <a name="update-the-androidmanifestxml-file"></a>A AndroidManifest. xml fájl frissítése
 
-1. Miután megkapta az FCM regisztrációs jogkivonatát, az [Azure Értesítési központokkal való regisztrációhoz használhatja.](notification-hubs-push-notification-registration-management.md) Ezt a regisztrációt a háttérben egy `IntentService` elnevezett használatával `RegistrationIntentService`támogatja. Ez a szolgáltatás is frissíti az FCM regisztrációs jogkivonatot. Az értesítések fogadására `FirebaseService` `FirebaseMessagingService` és kezelésére vonatkozó `onMessageReceived` metódust alosztályként elnevezett osztályt is létrehozhat. 
+1. Az FCM regisztrációs jogkivonat kézhezvétele után az Azure Notification Hubs-ban való [regisztrálásra](notification-hubs-push-notification-registration-management.md)használható. Ezt a regisztrációt a háttérben egy `IntentService` elnevezett `RegistrationIntentService`paranccsal támogathatja. Ez a szolgáltatás az FCM regisztrációs tokent is frissíti. Létrehoz egy nevű `FirebaseService` osztályt is a alosztályként, `FirebaseMessagingService` és felülbírálja `onMessageReceived` az értesítések fogadásához és kezeléséhez szükséges metódust. 
 
     Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül.
 
@@ -163,7 +163,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
         </intent-filter>
     </service>
     ```
-3. Adja hozzá a következő szükséges FCM-hez kapcsolódó engedélyeket a `</application>` címke alá.
+3. Adja hozzá a következő szükséges FCM-hez kapcsolódó engedélyeket `</application>` a címke alá.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -173,12 +173,12 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
 
 ### <a name="add-code"></a>Kód hozzáadása
 
-1. A Project View nézetben bontsa ki az **alkalmazás** > **src** > **main** > **java**. Kattintson a jobb gombbal a csomagmappára **a java**alatt, válassza az **Új**parancsot, majd válassza **a Java-osztály parancsot.** Írja be a név **értesítési beállításait,** majd kattintson az **OK gombra.**
+1. A Project nézetben bontsa ki az **app** > **src** > **Main** > **Java**elemet. Kattintson a jobb gombbal a csomag mappájára a **Java**területen, válassza az **új**, majd a **Java-osztály**elemet. Adja meg a **NotificationSettings** nevet, majd kattintson **az OK gombra**.
 
     Győződjön meg arról, hogy frissítette ezt a három helyőrzőt a `NotificationSettings` osztály alábbi kódjában:
 
-   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati sztringje. A kapcsolati karakterlánc másolásához kattintson az **Access Policies** elemre a hubon az [Azure Portalon.]
-   * **HubName**: Használja a hub nevét, amely megjelenik az [Azure Portal]központi lapján.
+   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati sztringje. A kapcsolati karakterlánc másolásához kattintson a [Azure Portal]a központ **hozzáférési szabályzatok** elemére.
+   * **HubName**: használja az [Azure Portal]hub lapján megjelenő hub nevét.
 
      `NotificationSettings` kód:
 
@@ -190,9 +190,9 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
         ```
 
      > [!IMPORTANT]
-     > Mielőtt továbblépne, írja be a hub **nevét** és **DefaultListenSharedAccessSignature** aláírását. 
+     > A folytatás előtt adja meg a hub **nevét** és **DefaultListenSharedAccessSignature** . 
 
-2. Adjon hozzá a projekthez egy másik új, `RegistrationIntentService` nevű osztályt. Ez az osztály `IntentService` valósítja meg a felületet. Emellett kezeli [az FCM-jogkivonat frissítését](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) és [az értesítési központtal való regisztrációt.](notification-hubs-push-notification-registration-management.md)
+2. Adjon hozzá a projekthez egy másik új, `RegistrationIntentService` nevű osztályt. Ez az osztály valósítja meg `IntentService` a felületet. Emellett kezeli [az FCM-token frissítését](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) és [az értesítési központba való regisztrációt](notification-hubs-push-notification-registration-management.md)is.
 
     Ehhez az osztályhoz az alábbi kódokat használja.
 
@@ -294,7 +294,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     }
     ```
 
-3. Az `MainActivity` osztályban adja `import` hozzá a következő állításokat az osztálydeklaráció fölé.
+3. A `MainActivity` osztályban adja hozzá a következő `import` utasításokat az osztály deklarációja felett.
 
     ```java
     import com.google.android.gms.common.ConnectionResult;
@@ -305,7 +305,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     import android.widget.Toast;
     ```
 
-4. Add hozzá a következő tagokat az osztály elejére. Ezeket a mezőket a [Google Play-szolgáltatások rendelkezésre állásának ellenőrzésére használja a Google által javasolt módon](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
+4. Adja hozzá a következő tagokat az osztály tetején. Ezeket a mezőket a [Google Play-szolgáltatások rendelkezésre állásának ellenőrzésére használja a Google által javasolt módon](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
 
     ```java
     public static MainActivity mainActivity;
@@ -314,7 +314,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     ```
 
-5. Az `MainActivity` osztályban add hozzá a következő módszert a Google Play-szolgáltatások elérhetőségének ellenőrzéséhez.
+5. A `MainActivity` osztályban adja hozzá a következő metódust a Google Play-szolgáltatások rendelkezésre állásának vizsgálatához.
 
     ```java
     /**
@@ -341,7 +341,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     }
     ```
 
-6. Az `MainActivity` osztályban adja hozzá a következő kódot, amely `IntentService` ellenőrzi a Google Play-szolgáltatásokat, mielőtt felhívna az FCM regisztrációs token beírásához és regisztráljon a hubon:
+6. A `MainActivity` osztályban adja hozzá a következő kódot, amely a Google Play-szolgáltatásokat ellenőrzi, mielőtt `IntentService` meghívja a-t az FCM regisztrációs jogkivonat beszerzéséhez, és regisztrálja a hubot a központban:
 
     ```java
     public void registerWithNotificationHubs()
@@ -354,7 +354,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     }
     ```
 
-7. Az `OnCreate` `MainActivity` osztály metódusában adja hozzá a következő kódot a regisztrációs folyamat elindításához a tevékenység létrehozásakor:
+7. A `MainActivity` osztály `OnCreate` metódusában adja hozzá a következő kódot a regisztrációs folyamat elindításához a tevékenység létrehozásakor:
 
     ```java
     @Override
@@ -368,7 +368,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     }
     ```
 
-8. Az alkalmazás állapotának és jelentésállapotának ellenőrzéséhez `MainActivity`adja hozzá az alábbi módszereket a következő konterre:
+8. Az alkalmazás állapotának és a jelentés állapotának az alkalmazásban való ellenőrzéséhez adja `MainActivity`hozzá ezeket a további metódusokat a következőhöz:
 
     ```java
     @Override
@@ -407,7 +407,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     }
     ```
 
-9. A `ToastNotify` metódus a *„Hello World”* `TextView` vezérlőt használja az állapot és az értesítések folyamatos jelentéséhez az alkalmazásban. A **res** > **layout** > **activity_main.xml** elrendezésben adja hozzá a következő azonosítót a vezérlőhez.
+9. A `ToastNotify` metódus a *„Hello World”* `TextView` vezérlőt használja az állapot és az értesítések folyamatos jelentéséhez az alkalmazásban. A **res** > **layout** > **activity_main. XML** elrendezésben adja hozzá a következő azonosítót a vezérlőhöz.
 
     ```java
     android:id="@+id/text_hello"
@@ -415,7 +415,7 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
 
     ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
-10. Ezután hozzáad egy alosztályt az AndroidManifest.xml fájlban definiált vevőhöz. Adjon hozzá a projekthez egy másik új, `FirebaseService` nevű osztályt.
+10. Ezután adjon hozzá egy alosztályt a AndroidManifest. xml fájlban meghatározott fogadóhoz. Adjon hozzá a projekthez egy másik új, `FirebaseService` nevű osztályt.
 
 11. Vegye fel a következő importálási utasításokat a `FirebaseService.java` felső részén:
 
@@ -435,9 +435,9 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     import androidx.core.app.NotificationCompat;
     ```
 
-12. Adja hozzá az `FirebaseService` osztály következő kódját, `FirebaseMessagingService`így az alosztálya.
+12. Adja hozzá a következő kódot az `FirebaseService` osztályhoz, ami egy alosztálya `FirebaseMessagingService`.
 
-    Ez a kód `onMessageReceived` felülbírálja a metódust, és jelenti a kapott értesítéseket. a leküldéses értesítést is elküldi az `sendNotification()` Android értesítéskezelőnek a módszer használatával. Hívja `sendNotification()` meg a metódust, ha az alkalmazás nem fut, és értesítést kap.
+    Ez a kód felülbírálja a `onMessageReceived` kapott metódust és a jelentések értesítéseit. a leküldéses értesítést is elküldi az Android Notification Managernek az `sendNotification()` metódus használatával. Hívja meg `sendNotification()` a metódust, ha az alkalmazás nem fut, és értesítést kap.
 
     ```java
     public class FirebaseService extends FirebaseMessagingService
@@ -522,49 +522,49 @@ A hub most úgy van beállítva, hogy működjön együtt a Firebase Cloud Messa
     }
     ```
 
-13. Az Android Studio menüsorán válassza a**Project újraépítése** **lehetőséget,** > hogy megbizonyosodjon arról, hogy nincsenek hibák a kódban. Ha hibaüzenetjelenik meg `ic_launcher` az ikonnal kapcsolatban, távolítsa el a következő utasítást az AndroidManifest.xml fájlból: 
+13. Android Studio a menüsávon válassza a **Létrehozás** > **Újraépítés projekt** lehetőséget, hogy a kódban ne legyen hiba. Ha hibaüzenet jelenik meg az `ic_launcher` ikonról, távolítsa el a következő utasítást a AndroidManifest. XML fájlból: 
 
     ```
         android:icon="@mipmap/ic_launcher"
     ```
-14. Győződjön meg arról, hogy rendelkezik az alkalmazás futtatásához. Ha nem rendelkezik ilyen, adjunk hozzá egyet az alábbiak szerint:
+14. Győződjön meg arról, hogy rendelkezik virtuális eszközzel az alkalmazás futtatásához. Ha még nem rendelkezik ilyennel, vegyen fel egyet a következő módon:
     1. ![Eszközkezelő megnyitása](./media/notification-hubs-android-push-notification-google-fcm-get-started/open-device-manager.png)
     2. ![Virtuális eszköz létrehozása](./media/notification-hubs-android-push-notification-google-fcm-get-started/your-virtual-devices.PNG)
 
-15. Futtassa az alkalmazást a kiválasztott eszközön, és ellenőrizze, hogy sikeresen regisztrál-e a hubbal.
+15. Futtassa az alkalmazást a kiválasztott eszközön, és ellenőrizze, hogy sikeresen regisztrálja-e az eszközt a hubhoz.
 
     > [!NOTE]
-    > A regisztráció a kezdeti indítás `onTokenRefresh()` során sikertelen lehet, amíg meg nem hívják a példányazonosító-szolgáltatás metódusát. Az értesítési központban történő regisztráció a frissítés után sikeresen megtörténik.
+    > A regisztráció sikertelen lehet a kezdeti indítás során, `onTokenRefresh()` amíg meg nem történik a példány-azonosító szolgáltatás metódusának meghívása. Az értesítési központban történő regisztráció a frissítés után sikeresen megtörténik.
 
-    ![Az eszköz regisztrálása sikeres](./media/notification-hubs-android-push-notification-google-fcm-get-started/device-registration.png)
+    ![Az eszköz regisztrálása sikerült](./media/notification-hubs-android-push-notification-google-fcm-get-started/device-registration.png)
 
 ## <a name="test-send-notification-from-the-notification-hub"></a>Értesítések küldésének tesztelése az értesítési központból
 
-Leküldéses értesítéseket küldhet az [Azure Portalról] az alábbi lépések végrehajtásával:
+Leküldéses értesítéseket a [Azure Portal] küldhet a következő lépések végrehajtásával:
 
-1. Az Azure Portalon, a hub értesítési központlapján válassza a **Tesztelés küldése** lehetőséget a **Hibaelhárítás** szakaszban.
+1. A Azure Portal a központ értesítési központ lapján válassza a **küldési teszt** lehetőséget a **Hibaelhárítás** szakaszban.
 3. A **Platformok** beállításnál válassza az **Android** lehetőséget.
-4. Válassza a **Küldés**lehetőséget.  Az Android-eszközön még nem jelenik meg értesítés, mert még nem futtatta rajta a mobilalkalmazást. A mobilalkalmazás futtatása után ismét a **Küldés** gombra kattintva megtekintheti az értesítési üzenetet.
+4. Válassza a **Küldés**lehetőséget.  Az Android-eszközön még nem jelenik meg értesítés, mert nem futtatta rajta a Mobile alkalmazást. Miután futtatta a Mobile alkalmazást, kattintson ismét a **Küldés** gombra az értesítési üzenet megtekintéséhez.
 5. A művelet eredményeit a lap alján található listában láthatja.
 
     ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
-6. Az értesítési üzenet megjelenik az eszközén. 
+6. Megjelenik az értesítési üzenet az eszközön. 
 
     ![Értesítési üzenet az eszközön](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-on-device.png)
     
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-### <a name="run-the-mobile-app-on-emulator"></a>A mobilalkalmazás futtatása emulátorral
-Mielőtt tesztelne leküldéses értesítéseket egy emulátoron belül, győződjön meg arról, hogy az emulátor képe támogatja az alkalmazáshoz kiválasztott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-kat, előfordulhat, hogy a **SERVICE\_NOT\_AVAILABLE** kivételt kapja.
+### <a name="run-the-mobile-app-on-emulator"></a>A Mobile App futtatása az emulátoron
+Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győződjön meg arról, hogy az Emulator-rendszerkép támogatja az alkalmazáshoz választott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-kat, akkor előfordulhat, hogy a **szolgáltatás\_\_nem érhető el** kivételt.
 
-Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **Beállítások** > **fiókok területen.** Ellenkező esetben az FCM-mel való regisztrációra tett kísérletek a **HITELESÍTÉS\_SIKERTELEN kivételt** eredményezhetik.
+Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **Beállítások** > **fiókok**területen. Ellenkező esetben az FCM-sel való regisztrációra tett kísérletek a **sikertelen\_hitelesítésre** vonatkozó kivételt okozhatnak.
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban a Firebase Cloud Messaging segítségével közvetített értesítéseket a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
+Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta az értesítések küldéséhez a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: Értesítések leküldése adott Android-eszközökre](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
+>[Oktatóanyag: leküldéses értesítések adott Android-eszközökhöz](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 
@@ -573,4 +573,4 @@ Ebben az oktatóanyagban a Firebase Cloud Messaging segítségével közvetítet
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Azure-portál]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

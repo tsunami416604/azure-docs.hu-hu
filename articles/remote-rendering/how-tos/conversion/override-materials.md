@@ -1,28 +1,28 @@
 ---
-title: Anyagok felülbírálása a modell átalakítása során
-description: A konverziós időpontban az anyagfelülbírálási munkafolyamat magyarázata
+title: Anyagok felülírása a modellátalakítás során
+description: A munkafolyamatot átváltási időben mutatja be
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681479"
 ---
-# <a name="override-materials-during-model-conversion"></a>Anyagok felülbírálása a modell átalakítása során
+# <a name="override-materials-during-model-conversion"></a>Anyagok felülírása a modellátalakítás során
 
-Az átalakítás során a forrásmodell anyagbeállításai taszították a renderelő által használt [PBR-anyagok](../../overview/features/pbr-materials.md) meghatározására.
-Néha az [alapértelmezett konverzió](../../reference/material-mapping.md) nem adja meg a kívánt eredményt, és módosításokat kell végrehajtania.
-Amikor egy modellt konvertálnak az Azure távoli renderelésben való használatra, anyag-felülbírálási fájlt biztosíthat az anyagkonverzió anyagonkénti elvégzésének testreszabásához.
-A [modellkonvertálás konfigurálásának](configure-model-conversion.md) szakasza utasításokat tartalmaz az anyag felülbírálási fájlnevének deklarálásához.
+Az átalakítás során a rendszer a forrás modell anyag-beállításait használja a megjelenítő által használt [pbr-anyagok](../../overview/features/pbr-materials.md) definiálásához.
+Előfordulhat, hogy az [alapértelmezett konverzió](../../reference/material-mapping.md) nem adja meg a kívánt eredményeket, és módosítania kell a módosításokat.
+Ha egy modellt az Azure Remote rendering szolgáltatásban való használatra konvertál, megadhat egy anyag-felülbírálási fájlt, amellyel testreszabhatja, hogy a rendszer milyen módon végezze el az anyag-átalakítást.
+A [modell átalakításának konfigurálásáról](configure-model-conversion.md) szóló szakasz útmutatást nyújt az anyag felülbírálási fájlnevének deklarálása során.
 
-## <a name="the-override-file-used-during-conversion"></a>Az átalakítás során használt felülíró fájl
+## <a name="the-override-file-used-during-conversion"></a>Az átalakítás során használt felülbírálási fájl
 
-Egyszerű példaként tegyük fel, hogy egy dobozmodell egyetlen anyaggal rendelkezik, az "Alapértelmezett". Az albedo színét módosítani kell az ARR-ben való használatra.
-Ebben az esetben `box_materials_override.json` a fájl a következőképpen hozható létre:
+Egyszerű Példaként tegyük fel, hogy egy box-modell egyetlen, "default" nevű anyagot tartalmaz. A albedó színét az ARR-ben való használatra kell beállítani.
+Ebben az esetben a következő `box_materials_override.json` módon hozhat létre egy fájlt:
 
 ```json
 [
@@ -38,7 +38,7 @@ Ebben az esetben `box_materials_override.json` a fájl a következőképpen hozh
 ]
 ```
 
-A `box_materials_override.json` fájl a bemeneti tárolóba `ConversionSettings.json` kerül, `box.fbx`és egy hozzáadódik a , amely megmondja az átalakításnak, hogy hol keresse a felülíró fájlt (lásd [A modellkonvertálás konfigurálása):](configure-model-conversion.md)
+A `box_materials_override.json` fájlt a rendszer a bemeneti tárolóba helyezi, `ConversionSettings.json` a pedig a `box.fbx`mellé kerül, amely megadja, hogy hol található a felülbírálási fájl (lásd: [a modell átalakításának konfigurálása](configure-model-conversion.md)):
 
 ```json
 {
@@ -46,13 +46,13 @@ A `box_materials_override.json` fájl a bemeneti tárolóba `ConversionSettings.
 }
 ```
 
-A modell konvertálásakor az új beállítások lépnek érvénybe.
+A modell átalakításakor az új beállítások lesznek érvényesek.
 
 ### <a name="color-materials"></a>Színes anyagok
 
-A [színanyag-modell](../../overview/features/color-materials.md) egy folyamatosan árnyékolt felületet ír le, amely független a megvilágítástól.
-Ez például a fotogrammetriai algoritmusok által készített eszközök esetében hasznos.
-Az anyag felülbírálási fájlokban az anyag színanyagnak `unlit` deklarálható a `true`beállítással.
+A [színanyag](../../overview/features/color-materials.md) modell egy állandóan árnyékolt felületet ír le, amely független a megvilágítástől.
+Ez a photogrammetry algoritmusok által készített eszközök esetében hasznos, például:.
+Az anyag-felülbírálási fájlokban egy anyag beállítható úgy, hogy a következőre `unlit` van `true`beállítva:.
 
 ```json
 [
@@ -67,11 +67,11 @@ Az anyag felülbírálási fájlokban az anyag színanyagnak `unlit` deklarálha
 ]
 ```
 
-### <a name="ignore-specific-texture-maps"></a>Adott textúratérképek figyelmen kívül hagyása
+### <a name="ignore-specific-texture-maps"></a>Adott textúratérkép figyelmen kívül hagyása
 
-Előfordulhat, hogy azt szeretné, hogy az átalakítási folyamat figyelmen kívül hagyja az egyes textúratérképeket. Ez akkor fordulhat elő, ha a modellt olyan eszköz hozta létre, amely a renderelő által nem megfelelően értelmezett speciális térképeket hoz létre. Például egy "Opacitástérkép", amely az opacitáson kívül más meghatározására szolgál, vagy egy modell, ahol a "NormalMap" "BumpMap" néven van tárolva. (Az utóbbi esetben figyelmen kívül szeretné hagyni a "NormalMap", ami miatt a konverter használni "BumpMap" a "NormalMap".)
+Esetenként előfordulhat, hogy az átalakítási folyamat figyelmen kívül hagyja az adott textúra-térképeket. Ez akkor fordulhat elő, ha a modellt olyan eszköz hozta létre, amely speciális térképeket hoz létre, amelyeket a megjelenítő nem megfelelően értelmezett. Például egy "OpacityMap", amely nem az opacitást definiálja, vagy egy olyan modellt, amelyben a "NormalMap" a "BumpMap" néven van tárolva. (Az utóbbi esetben figyelmen kívül hagyja a "NormalMap" kifejezést, ami azt eredményezi, hogy a konverter "BumpMap"-t használ "NormalMap"-ként.)
 
-Az elv egyszerű. Csak adjon hozzá `ignoreTextureMaps` egy nevű tulajdonságot, és adjon hozzá minden olyan textúratérképet, amelyet figyelmen kívül szeretne hagyni:
+Az elv egyszerű. Csak vegyen fel egy `ignoreTextureMaps` nevű tulajdonságot, és adja hozzá a figyelmen kívül hagyni kívánt textúrát:
 
 ```json
 [
@@ -82,11 +82,11 @@ Az elv egyszerű. Csak adjon hozzá `ignoreTextureMaps` egy nevű tulajdonságot
 ]
 ```
 
-A textúratérképek teljes listáját figyelmen kívül hagyhatja, lásd az alábbi JSON-sémát.
+Az figyelmen kívül hagyható textúratérkép teljes listájáért tekintse meg az alábbi JSON-sémát.
 
 ## <a name="json-schema"></a>JSON-séma
 
-Az anyagfájlok teljes JSON-sémáját itt adják meg. A rendelkezésre `unlit` `ignoreTextureMaps`álló tulajdonságok kivételével a [színanyag](../../overview/features/color-materials.md) és a [PBR-anyagmodellek](../../overview/features/pbr-materials.md) szakaszaiban leírt tulajdonságok egy részhalmaza.
+Az anyagokhoz tartozó fájlok teljes JSON-sémája itt van megadva. A `unlit` és a esetében a `ignoreTextureMaps`(z) és a (z) és a (z) a (z) [és a (](../../overview/features/color-materials.md) z) a (z) és a (z [) és a](../../overview/features/pbr-materials.md) (z)
 
 ```json
 {
@@ -173,4 +173,4 @@ Az anyagfájlok teljes JSON-sémáját itt adják meg. A rendelkezésre `unlit` 
 ## <a name="next-steps"></a>További lépések
 
 * [Színes anyagok](../../overview/features/color-materials.md)
-* [PBR anyagok](../../overview/features/pbr-materials.md)
+* [PBR-anyagok](../../overview/features/pbr-materials.md)

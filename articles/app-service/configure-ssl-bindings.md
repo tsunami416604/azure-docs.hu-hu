@@ -1,123 +1,123 @@
 ---
-title: Egyéni DNS biztonságossá tétele TLS/SSL kötéssel
-description: Biztonságos HTTPS-hozzáférés az egyéni tartományhoz egy TLS/SSL-kötés használatával egy tanúsítvánnyal. Javítsa webhelye biztonságát a HTTPS vagy a TLS 1.2 kényszerítésével.
+title: Egyéni DNS biztonságossá tétele TLS/SSL-kötéssel
+description: Biztonságos HTTPS-hozzáférés az egyéni tartományhoz egy tanúsítványhoz tartozó TLS/SSL-kötés létrehozásával. Javítsa a webhely biztonságát a HTTPS vagy a TLS 1,2 betartatásával.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80811743"
 ---
-# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service-ben
+# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
 
-Ez a cikk bemutatja, hogyan biztosíthatja az [egyéni tartományt](app-service-web-tutorial-custom-domain.md) az [App Service-alkalmazásban](https://docs.microsoft.com/azure/app-service/) vagy [a függvényalkalmazásban](https://docs.microsoft.com/azure/azure-functions/) egy tanúsítványkötés létrehozásával. Ha elkészült, elérheti az App Service-alkalmazást `https://` a végponton az egyéni DNS-nevéhez (például). `https://www.contoso.com` 
+Ez a cikk bemutatja, hogyan védheti meg az [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) a [app Service alkalmazásban](https://docs.microsoft.com/azure/app-service/) vagy a [Function alkalmazásban](https://docs.microsoft.com/azure/azure-functions/) egy tanúsítvány kötésének létrehozásával. Ha elkészült, elérheti a App Service alkalmazást a `https://` végpontban az egyéni DNS-név (például `https://www.contoso.com`) számára. 
 
-![Webalkalmazás egyéni TLS/SSL tanúsítvánnyal](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+![Egyéni TLS/SSL-tanúsítvánnyal rendelkező webalkalmazás](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
-[Egyéni tartomány](app-service-web-tutorial-custom-domain.md) tanúsítványlal történő védelme két lépésből áll:
+Az [Egyéni tartományok](app-service-web-tutorial-custom-domain.md) tanúsítványokkal történő biztonságossá tétele két lépésből áll:
 
-- [Adjon hozzá egy privát tanúsítványt az App Service-hez,](configure-ssl-certificate.md) amely megfelel a [magántanúsítvány követelményeinek.](configure-ssl-certificate.md#private-certificate-requirements)
--  Hozzon létre egy TLS-kötést a megfelelő egyéni tartományhoz. Ez a második lépés a cikk hatálya alá tartozik.
+- [Adjon hozzá egy privát tanúsítványt app Servicehoz](configure-ssl-certificate.md) , amely megfelel az összes [privát tanúsítványra vonatkozó követelménynek](configure-ssl-certificate.md#private-certificate-requirements).
+-  Hozzon létre egy TLS-kötést a megfelelő egyéni tartományhoz. Ez a második lépés a cikk hatálya alá esik.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az alkalmazás tarifacsomagjának bővítése.
-> * Egyéni tartomány védelme tanúsítvánnyal
+> * Egyéni tartomány biztonságossá tétele tanúsítvánnyal
 > * HTTPS kényszerítése
 > * A TLS 1.1/1.2 kényszerítése
 > * A TLS kezelésének automatizálása szkriptekkel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató követése:
+A következő útmutató követése:
 
 - [Létre kell hoznia egy App Service-alkalmazást.](/azure/app-service/)
-- [Tartománynév hozzárendelése az alkalmazáshoz,](app-service-web-tutorial-custom-domain.md) vagy [vásárlás és konfigurálás az Azure-ban](manage-custom-dns-buy-domain.md)
+- [Tartománynév hozzárendelése az alkalmazáshoz](app-service-web-tutorial-custom-domain.md) , illetve [Az Azure-beli vásárlás és konfigurálás](manage-custom-dns-buy-domain.md)
 - [Privát tanúsítvány hozzáadása az alkalmazáshoz](configure-ssl-certificate.md)
 
 > [!NOTE]
-> A magántanúsítványok hozzáadásának legegyszerűbb módja egy ingyenes App Service Felügyelt tanúsítvány (előzetes verzió) [létrehozása.](configure-ssl-certificate.md#create-a-free-certificate-preview)
+> Privát tanúsítvány hozzáadásának legegyszerűbb módja egy [ingyenes app Service felügyelt tanúsítvány](configure-ssl-certificate.md#create-a-free-certificate-preview) (előzetes verzió) létrehozása.
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 <a name="upload"></a>
 
-## <a name="secure-a-custom-domain"></a>Egyéni tartomány védelme
+## <a name="secure-a-custom-domain"></a>Egyéni tartomány biztonságossá tétele
 
-Tegye a következő lépéseket:
+Hajtsa végre a következő lépéseket:
 
-Az <a href="https://portal.azure.com" target="_blank">Azure Portalon</a>válassza a bal oldali **menüben** > az App Services**\<alkalmazásnév>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
 
-Az alkalmazás bal oldali navigációs sávján indítsa el a **TLS/SSL kötés** párbeszédpanelt:
+Az alkalmazás bal oldali navigációs sávján indítsa el a **TLS/SSL kötési** párbeszédpanelt a következő lépésekkel:
 
-- **Egyéni tartományok** > **hozzáadása kötés hozzáadása**
-- **TLS/SSL-beállítások** > **hozzáadása TLS/SSL kötés**
+- **Egyéni tartományok** > kijelölése**kötés hozzáadása**
+- **TLS/SSL-beállítások** > kiválasztása**TLS/SSL-kötés hozzáadása**
 
 ![Kötés hozzáadása a tartományhoz](./media/configure-ssl-bindings/secure-domain-launch.png)
 
-Az **Egyéni tartomány ban**jelölje ki azt az egyéni tartományt, amelyhez kötést szeretne hozzáadni.
+Az **egyéni tartomány**területen válassza ki azt az egyéni tartományt, amelyhez hozzá szeretné adni a kötést.
 
-Ha az alkalmazás már rendelkezik tanúsítvánnyal a kijelölt egyéni tartományhoz, nyissa meg a [Kötés létrehozása](#create-binding) közvetlenül című lehetőséget. Ellenkező esetben folytasd.
+Ha az alkalmazás már rendelkezik tanúsítvánnyal a kiválasztott egyéni tartományhoz, lépjen a [kötés közvetlen létrehozása](#create-binding) elemre. Ellenkező esetben folytassa a munkát.
 
 ### <a name="add-a-certificate-for-custom-domain"></a>Tanúsítvány hozzáadása egyéni tartományhoz
 
-Ha az alkalmazás nem rendelkezik tanúsítvánnyal a kijelölt egyéni tartományhoz, akkor két lehetősége van:
+Ha az alkalmazás nem rendelkezik tanúsítványokkal a kiválasztott egyéni tartományhoz, akkor két lehetőség közül választhat:
 
-- **PFX-tanúsítvány feltöltése** – Kövesse a munkafolyamatot [a Privát tanúsítvány feltöltése](configure-ssl-certificate.md#upload-a-private-certificate)területen, majd itt válassza ezt a lehetőséget.
-- **App Service-tanúsítvány importálása** – Kövesse a munkafolyamatot az [App Service-tanúsítvány importálása](configure-ssl-certificate.md#import-an-app-service-certificate)című helyen, majd itt válassza ezt a lehetőséget.
+- **Pfx-tanúsítvány feltöltése** – kövesse a munkafolyamatot a [privát tanúsítvány feltöltése](configure-ssl-certificate.md#upload-a-private-certificate)lapon, majd válassza ezt a lehetőséget.
+- **Importálás app Service-tanúsítvány** – kövesse a munkafolyamatot [app Service tanúsítvány importálása](configure-ssl-certificate.md#import-an-app-service-certificate)lapon, majd válassza ezt a lehetőséget.
 
 > [!NOTE]
-> [Létrehozhat ingyenes tanúsítványt](configure-ssl-certificate.md#create-a-free-certificate-preview) (előzetes verziót) vagy [importálhat egy Key Vault-tanúsítványt,](configure-ssl-certificate.md#import-a-certificate-from-key-vault)de ezt külön kell megtennie, majd vissza kell térnie a **TLS/SSL kötés** párbeszédpanelre.
+> [Létrehozhat egy ingyenes tanúsítványt](configure-ssl-certificate.md#create-a-free-certificate-preview) (előzetes verzió) is, vagy [importálhat egy Key Vault tanúsítványt](configure-ssl-certificate.md#import-a-certificate-from-key-vault), de ezt külön kell elvégeznie, majd vissza kell térnie a **TLS/SSL kötési** párbeszédpanelre.
 
 ### <a name="create-binding"></a>Kötés létrehozása
 
-Az alábbi táblázat segítségével konfigurálhatja a TLS-kötést a **TLS/SSL kötés** párbeszédpanelen, majd kattintson a **Kötés hozzáadása**gombra.
+A következő táblázat segítségével konfigurálhatja a TLS-kötést a **TLS/SSL-kötés** párbeszédpanelen, majd kattintson a **kötés hozzáadása**elemre.
 
 | Beállítás | Leírás |
 |-|-|
-| Egyéni tartomány | A TLS/SSL kötést hozzáadni. |
-| Magántanúsítvány ujjlenyomata | A kötésre kötelezett tanúsítvány. |
-| TLS/SSL típus | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - Több SNI SSL kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több TLS/SSL-tanúsítvány több tartományt biztosítson ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefoxot és az Operát) támogatja az SNI-t (további információ: [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** – Csak egy IP SSL-kötés adható hozzá. Ez a beállítás csak egy TLS/SSL-tanúsítvány számára teszi lehetővé egy dedikált nyilvános IP-cím biztonságossá tétele. A kötés konfigurálása után kövesse az [IP SSL rekord újraleképezése](#remap-a-record-for-ip-ssl)című elem lépéseit.<br/>Az IP SSL csak éles vagy elszigetelt szinteken támogatott. </li></ul> |
+| Egyéni tartomány | Az a tartománynév, amelyhez hozzá kell adni a TLS/SSL-kötést. |
+| Privát Tanúsítvány ujjlenyomata | A kötni kívánt tanúsítvány. |
+| TLS/SSL-típus | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** – több SNI SSL kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több TLS/SSL-tanúsítvány biztosítson több tartományt ugyanazon az IP-címen. A legtöbb modern böngésző (például az Internet Explorer, a Chrome, a Firefox és az Opera) támogatja a SNI (További információ: [kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** – csak egy IP SSL kötés adható hozzá. Ez a beállítás csak egy TLS/SSL-tanúsítványt engedélyez egy dedikált nyilvános IP-cím biztonságossá tételéhez. Miután konfigurálta a kötést, kövesse a következő témakörben ismertetett lépéseket: [IP SSL](#remap-a-record-for-ip-ssl).<br/>IP SSL csak éles környezetben vagy elszigetelt szinten támogatott. </li></ul> |
 
-A művelet befejezése után az egyéni tartomány TLS/SSL állapota **Biztonságos**állapotra változik.
+A művelet befejezése után az egyéni tartomány TLS/SSL-állapota **biztonságosra**változik.
 
-![A TLS/SSL kötés sikeres](./media/configure-ssl-bindings/secure-domain-finished.png)
+![A TLS/SSL-kötés sikerült](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
-> Az **egyéni tartományok** **biztonságos** állapota azt jelenti, hogy tanúsítványlal van biztosítva, de az App Service nem ellenőrzi, hogy a tanúsítvány önaláírt vagy lejárt-e, például, ami a böngészők nek hibát vagy figyelmeztetést is okozhat.
+> Az **Egyéni tartományokban** található **biztonságos** állapot azt jelenti, hogy a tanúsítvány védett, de app Service nem vizsgálja, hogy a tanúsítvány önaláírt vagy lejárt, például hogy a böngészők hibát vagy figyelmeztetést jelenítenek-e meg.
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Az A rekord újbóli leképezése az IP SSL-re
 
-Ha nem használja az IP SSL-t az alkalmazásban, ugorjon [az egyéni tartomány HTTPS tesztelése lehetőségre.](#test-https)
+Ha nem használja a IP SSL alkalmazást az alkalmazásban, ugorjon a [https tesztelése az egyéni tartományhoz](#test-https)lehetőségre.
 
-Alapértelmezés szerint az alkalmazás megosztott nyilvános IP-címet használ. Ha IP SSL-lel köt egy tanúsítványt, az App Service új, dedikált IP-címet hoz létre az alkalmazáshoz.
+Alapértelmezés szerint az alkalmazás egy megosztott nyilvános IP-címet használ. Ha IP SSLrel rendelkező tanúsítványt köt össze, App Service létrehoz egy új, dedikált IP-címet az alkalmazáshoz.
 
-Ha a tartomány beállításjegyzékét az alkalmazáshoz dedikálta, frissítse a tartomány beállításjegyzékét ezzel az új, dedikált IP-címmel.
+Ha hozzárendelt egy rekordot az alkalmazáshoz, frissítse a tartomány beállításjegyzékét ezzel az új, dedikált IP-címmel.
 
-Az alkalmazás **egyéni tartománylapja** az új, dedikált IP-címmel frissül. [Másolja ezt az IP-címet](app-service-web-tutorial-custom-domain.md#info), majd [képezze le újra az A rekordot](app-service-web-tutorial-custom-domain.md#map-an-a-record) erre az új IP-címre.
+Az alkalmazás **egyéni tartomány** lapja az új, dedikált IP-címmel frissül. [Másolja ezt az IP-címet](app-service-web-tutorial-custom-domain.md#info), majd [képezze le újra az A rekordot](app-service-web-tutorial-custom-domain.md#map-an-a-record) erre az új IP-címre.
 
 ## <a name="test-https"></a>HTTPS tesztelése
 
-A különböző böngészőkben `https://<your.custom.domain>` keresse meg annak ellenőrzését, hogy az alkalmazást szolgálja-e.
+A különböző böngészőkben keresse `https://<your.custom.domain>` meg az alkalmazást, és ellenőrizze, hogy az alkalmazás elérhető-e.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
-Az alkalmazáskód az "x-appservice-proto" fejlécen keresztül vizsgálhatja meg a protokollt. A fejléc értéke `http` vagy `https`a. 
+Az alkalmazás kódja a "x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https`. 
 
 > [!NOTE]
 > Ha az alkalmazás tanúsítvány-ellenőrzési hibákat ad, valószínűleg önaláírt tanúsítványt használ.
 >
 > Ha nem így van, előfordulhat, hogy kihagyott néhány köztes tanúsítványt, amikor a tanúsítványt a PFX-fájlba exportálta.
 
-## <a name="prevent-ip-changes"></a>Ip-módosítások megakadályozása
+## <a name="prevent-ip-changes"></a>IP-változások megakadályozása
 
-A bejövő IP-cím akkor is változhat, ha töröl egy kötést, még akkor is, ha az IP SSL. Ez különösen akkor fontos, ha olyan tanúsítványt újít meg, amely már IP SSL-kötésben van. Annak érdekében, hogy az alkalmazás IP-címe ne változzon, kövesse sorrendben az alábbi lépéseket:
+A bejövő IP-cím akkor is megváltozhat, ha törli a kötést, még akkor is, ha a kötés IP SSL. Ez különösen akkor fontos, ha olyan tanúsítványt újít meg, amely már egy IP SSL-kötésben van. Annak érdekében, hogy az alkalmazás IP-címe ne változzon, kövesse sorrendben az alábbi lépéseket:
 
 1. Töltse fel az új tanúsítványt.
 2. Kösse az új tanúsítványt a kívánt egyéni tartományhoz anélkül, hogy törölné a régit. Ez a művelet lecserélni a kötést ahelyett, hogy eltávolítaná a régit.
@@ -127,7 +127,7 @@ A bejövő IP-cím akkor is változhat, ha töröl egy kötést, még akkor is, 
 
 Alapértelmezés szerint bárki elérheti az alkalmazást HTTP használatával. A HTTP-kéréseket átirányíthatja a HTTPS-portra.
 
-Az alkalmazáslapon a bal oldali navigációs sávon válassza az **SSL-beállítások lehetőséget.** Ezután a **HTTPS Only** (Csak HTTPS) területen válassza az **On** (Be) elemet.
+Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-beállítások**elemet. Ezután a **HTTPS Only** (Csak HTTPS) területen válassza az **On** (Be) elemet.
 
 ![HTTPS kényszerítése](./media/configure-ssl-bindings/enforce-https.png)
 
@@ -141,17 +141,17 @@ Ha a művelet befejeződött, nyissa meg az alkalmazásra mutató HTTP URL-címe
 
 Az alkalmazása alapértelmezés szerint a [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2-t engedélyezi, amely az iparági szabványok, például a [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) szerint ajánlott TLS-szint. A TLS más verzióinak kényszerítéséhez kövesse az alábbi lépéseket:
 
-Az alkalmazáslapon a bal oldali navigációs sávon válassza az **SSL-beállítások lehetőséget.** Ezután a **TLS version** (TLS-verzió) szakaszban válassza ki a kívánt TLS minimális verzióját. Ez a beállítás csak a bejövő hívásokat szabályozza. 
+Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-beállítások**elemet. Ezután a **TLS version** (TLS-verzió) szakaszban válassza ki a kívánt TLS minimális verzióját. Ez a beállítás csak a bejövő hívásokat szabályozza. 
 
 ![A TLS 1.1 vagy 1.2 kényszerítése](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
 A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziójú kapcsolatokat.
 
-## <a name="handle-tls-termination"></a>A TLS végződésének lenyelése
+## <a name="handle-tls-termination"></a>TLS-megszakítás kezelése
 
-Az App Service-ben a [TLS-végződtetés](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztóknál történik, így minden HTTPS-kérelem titkosítatlan HTTP-kérelemként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy `X-Forwarded-Proto` a felhasználói kérelmek titkosítva vannak-e vagy sem, ellenőrizze a fejlécet.
+App Service a [TLS-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében fordul elő, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e `X-Forwarded-Proto` , vagy sem, vizsgálja meg a fejlécet.
 
-Nyelvspecifikus konfigurációs útmutatók, például a [Linux Node.js konfigurációs](containers/configure-language-nodejs.md#detect-https-session) útmutató, bemutatja, hogyan észlelheti a HTTPS-munkamenetet az alkalmazáskódban.
+A nyelvspecifikus konfigurációs útmutatók, például a [Linux Node. js konfigurációs](containers/configure-language-nodejs.md#detect-https-session) útmutatója bemutatja, hogyan ÉSZLELHETŐ egy https-munkamenet az alkalmazás kódjában.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
@@ -165,5 +165,5 @@ Nyelvspecifikus konfigurációs útmutatók, például a [Linux Node.js konfigur
 
 ## <a name="more-resources"></a>További erőforrások
 
-* [TLS-/SSL-tanúsítvány használata a kódban az Azure App Service-ben](configure-ssl-certificate-in-code.md)
-* [GYAKORI KÉRDÉSEK : App Service-tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [TLS/SSL-tanúsítvány használata a kódban Azure App Service](configure-ssl-certificate-in-code.md)
+* [Gyakori kérdések: App Service tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

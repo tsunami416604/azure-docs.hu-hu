@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 44823ce888e97b308f29403612f598c0eb585ae5
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673367"
 ---
-A várólista az [Azure Portalon](../articles/storage/queues/storage-quickstart-queues-portal.md) vagy a [Microsoft Azure Storage Explorerben](https://storageexplorer.com/)tekinthető meg. A várólista az Azure CLI-ben is megtekinthető, a következő lépésekben leírtak szerint:
+Az üzenetsor a [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) vagy a [Microsoft Azure Storage Explorerban](https://storageexplorer.com/)tekinthető meg. Az üzenetsor az Azure CLI-ben is megtekinthető az alábbi lépések szerint:
 
-1. Nyissa meg a függvényprojekt *local.setting.json* fájlját, és másolja a kapcsolati karakterlánc értékét. Terminál- vagy parancsablakban futtassa a következő `AZURE_STORAGE_CONNECTION_STRING`parancsot a program névre `<MY_CONNECTION_STRING>`szóló környezeti változó létrehozásához, és illessze be az adott kapcsolati karakterláncot a helyére. (Ez a környezeti változó azt jelenti, hogy nem kell megadnia a kapcsolati karakterláncot minden további parancshoz az `--connection-string` argumentum használatával.)
+1. Nyissa meg a Function projekt *Local. Setting. JSON* fájlt, és másolja a kapcsolatok karakterláncának értékét. Egy terminál-vagy parancssori ablakban futtassa a következő parancsot egy nevű `AZURE_STORAGE_CONNECTION_STRING`környezeti változó létrehozásához, és illessze be az adott kapcsolódási karakterláncot a `<MY_CONNECTION_STRING>`helyére. (Ez a környezeti változó azt jelenti, hogy nem kell megadnia a kapcsolódási karakterláncot `--connection-string` minden további parancshoz az argumentum használatával.)
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
@@ -35,15 +35,15 @@ A várólista az [Azure Portalon](../articles/storage/queues/storage-quickstart-
     
     ---
     
-1. (Nem kötelező) A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) parancs segítségével megtekintheti a storage várólistákat a fiókjában. A parancs kimenetének tartalmaznia `outqueue`kell egy várólistát, amely akkor jött létre, amikor a függvény az első üzenetét a várólistára írta.
+1. Választható A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) parancs használatával megtekintheti a fiókban található tárolási várólistákat. A parancs kimenetének tartalmaznia kell egy nevű `outqueue`várólistát, amely akkor jött létre, amikor a függvény első üzenetét írta a várólistára.
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. A [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) parancs segítségével olvassa el az üzenetet ebből a várólistából, amely a funkció korábbi tesztelésekén használt első név nek kell lennie. A parancs beolvassa és eltávolítja az első üzenetet a várólistából. 
+1. A ( [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) z) parancs használatával olvassa el a várólista üzenetét, amely a függvény korábbi teszteléséhez használt keresztnév. A parancs beolvassa és eltávolítja az első üzenetet a várólistából. 
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
@@ -61,8 +61,8 @@ A várólista az [Azure Portalon](../articles/storage/queues/storage-quickstart-
     az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
     ```
 
-    Ez a parancsfájl a certutil segítségével dekódolja a base64 kódolású üzenetgyűjteményt egy helyi ideiglenes fájlból. Ha nincs kimenet, próbálja meg `> NUL` eltávolítani a parancsfájlból a certutil kimenet letiltásához, ha hiba történik. 
+    Ez a szkript a certutil használatával dekódolja a Base64 kódolású üzenetek gyűjteményét egy helyi ideiglenes fájlból. Ha nincs kimenet, próbálja meg eltávolítani `> NUL` a szkriptből a certutil-kimenet letiltásának leállítására, ha hiba történt. 
     
     ---
     
-    Mivel az üzenet törzse [base64 kódolású,](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding)az üzenetet dekódolni kell, mielőtt megjelenik. A végrehajtás `az storage message get`után az üzenet törlődik a várólistából. Ha csak egy üzenet `outqueue`volt a alkalmazásban, akkor a parancs második futtatásakor nem fog beolvasni egy üzenetet, és ehelyett hibaüzenetet kap.
+    Mivel az üzenettörzs tárolása [Base64 kódolású](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding), az üzenetet a Megjelenítés előtt dekódolni kell. A végrehajtás `az storage message get`után a rendszer eltávolítja az üzenetet a várólistából. Ha csak egy üzenet szerepel a- `outqueue`ben, akkor nem fog beolvasni egy üzenetet, ha a parancsot Másodszor futtatja, hanem hibaüzenetet kap.

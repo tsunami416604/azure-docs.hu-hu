@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a Synapse SQL-készlethez
-description: Csatlakozzon az SQL-készlethez.
+title: Kapcsolódás a szinapszis SQL-készlethez
+description: Csatlakozás az SQL-készlethez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,22 +12,22 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e5c015751e8b0aeed7bd84086cc4f65c234fdb41
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745312"
 ---
-# <a name="connect-to-synapse-sql-pool"></a>Csatlakozás a Synapse SQL-készlethez
+# <a name="connect-to-synapse-sql-pool"></a>Kapcsolódás a szinapszis SQL-készlethez
 
-Csatlakozzon az SQL-készlethez.
+Csatlakozás az SQL-készlethez.
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
 
-A következő példában található kiszolgálónév sqlpoolservername.database.windows.net. A teljes kiszolgálónév lekérdezése:
+A kiszolgáló neve a következő példában sqlpoolservername.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
-1. Nyissa meg az [Azure Portalt.](https://portal.azure.com)
-2. Kattintson az **Azure Synapse Analytics .**
+1. Lépjen a [Azure Portal](https://portal.azure.com).
+2. Kattintson az **Azure szinapszis Analytics**elemre.
 3. Kattintson arra az SQL-készletre, amelyhez csatlakozni szeretne.
 4. Keresse meg a teljes kiszolgálónevet.
 
@@ -35,9 +35,9 @@ A következő példában található kiszolgálónév sqlpoolservername.database
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati sztringek
 
-Az SQL készlet támogatja [a ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC,](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). A legújabb verzió és dokumentáció megkereséséhez kattintson az előző illesztőprogramok egyikére.
+Az SQL-készlet támogatja a [ADO.net](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), az [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), a [php](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatát. A legújabb verzió és dokumentáció megkereséséhez kattintson a fenti illesztőprogramok egyikére.
 
-Ha automatikusan létre szeretné hozni a kapcsolati karakterláncot az Azure Portalon használt illesztőprogramhoz, kattintson az előző példa **adatbázis-kapcsolati karakterláncok megjelenítése** elemre. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
+A Azure Portal használt illesztőprogramhoz tartozó kapcsolati karakterlánc automatikus létrehozásához kattintson az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** elemre. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
@@ -68,7 +68,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="connection-settings"></a>Kapcsolati beállítások
 
-Az SQL-készlet szabványosít néhány beállítást a kapcsolat és az objektum létrehozása során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
+Az SQL-készlet Szabványosít néhány beállítást a csatlakozás és az objektum létrehozása során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
 
 | Adatbázis-beállítások | Érték |
 |:--- |:--- |
@@ -79,4 +79,4 @@ Az SQL-készlet szabványosít néhány beállítást a kapcsolat és az objektu
 
 ## <a name="next-steps"></a>További lépések
 
-A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](sql-data-warehouse-query-visual-studio.md). A hitelesítési beállításokról az [Azure Synapse Analytics hitelesítése](sql-data-warehouse-authentication.md)című témakörben olvashat bővebben.
+A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](sql-data-warehouse-query-visual-studio.md). További információ a hitelesítési lehetőségekről: [Az Azure szinapszis Analytics hitelesítése](sql-data-warehouse-authentication.md).

@@ -1,38 +1,38 @@
 ---
 title: Entitások
-description: Az Azure távoli renderelési API hatókörében lévő entitások meghatározása
+description: Az Azure távoli renderelési API hatókörében lévő entitások definíciója
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: d7b9ecd048b080ae0ec9fd3fb7a4fb35009551b8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681947"
 ---
 # <a name="entities"></a>Entitások
 
-Az *entitás* egy mozgatható objektumot képvisel a térben, és a távolról megjelenített tartalom alapvető építőköve.
+Az *entitások* a térben lévő ingó objektumokat jelölik, és a távolról renderelt tartalom alapvető építőeleme.
 
 ## <a name="entity-properties"></a>Entitás tulajdonságai
 
-Az entitások egy pozíció, elforgatás és lépték által meghatározott átalakítással rendelkeznek. Önmagukban entitások nem rendelkeznek megfigyelhető funkcióval. Ehelyett a viselkedés az entitásokhoz kapcsolódó összetevőkön keresztül kerül hozzáadásra. Például egy [CutPlaneComponent](../overview/features/cut-planes.md) csatlakoztatásával egy kivágott síkot hoz létre az entitás pozíciójában.
+Az entitások a pozíció, a rotáció és a skála alapján definiált átalakítóval rendelkeznek. Önmagában az entitások nem rendelkeznek megfigyelhető funkciókkal. Ehelyett a rendszer a viselkedést az entitásokhoz csatolt összetevőkön keresztül adja hozzá. Egy [CutPlaneComponent](../overview/features/cut-planes.md) csatolása például létrehoz egy kivágási síkot az entitás pozíciójában.
 
-Maga az entitás legfontosabb szempontja a hierarchia és az eredményül kapott hierarchikus átalakítás. Ha például több entitás kapcsolódik gyermekként egy megosztott fölérendelt entitáshoz, az összes ilyen entitás áthelyezhető, elforgatható és skálázható a fölérendelt entitás átalakításának módosításával.
+Maga az entitás legfontosabb aspektusa a hierarchia és a létrejövő hierarchikus transzformáció. Ha például több entitás gyermekként van csatolva egy megosztott szülő entitáshoz, akkor az összes ilyen entitás áthelyezhető, elforgatható, és méretezhető úgy, hogy megváltoztatja a szülő entitás átalakítását.
 
-Az entitás egyedi tulajdonában van a szülő, ami azt `Entity.Destroy()`jelenti, hogy ha a szülő megsemmisül , így a gyermekek és az összes kapcsolódó [összetevő](components.md). Így egy modell eltávolítása a helyszínről úgy `Destroy` érhető el, hogy meghívja `AzureSession.Actions.LoadModelAsync()` egy modell gyökércsomópontját, amelyet a SAS-változat vagy annak SAS-változata `AzureSession.Actions.LoadModelFromSASAsync()`ad vissza.
+Az entitások egyedi tulajdonosa a szülője, ami azt jelenti, hogy amikor a szülő megsemmisíti a-t `Entity.Destroy()`, a gyermekei és az összes csatlakoztatott [összetevő](components.md). Így a modell eltávolításával a rendszer meghívja `Destroy` a modellt, amelyet a `AzureSession.Actions.LoadModelAsync()` vagy az SAS-variánsa `AzureSession.Actions.LoadModelFromSASAsync()`ad vissza.
 
-Az entitások akkor jönnek létre, amikor a kiszolgáló betölti a tartalmat, vagy amikor a felhasználó objektumot szeretne hozzáadni a jelenethez. Ha például egy felhasználó egy háló belsejének megjelenítéséhez hozzá szeretne adni egy kivágott síkot, a felhasználó létrehozhat egy entitást, ahol a síknak léteznie kell, majd hozzáadhatja hozzá a kivágott sík összetevőt.
+Az entitások akkor jönnek létre, amikor a kiszolgáló tartalmat tölt be, vagy amikor a felhasználó hozzá szeretne adni egy objektumot a jelenethez. Ha például egy felhasználó egy kivágási síkot szeretne felvenni egy rácsvonal belsejének megjelenítéséhez, akkor a felhasználó létrehozhat egy entitást, ahol a sík léteznie kell, majd hozzá kell adnia a kivágási sík összetevőt.
 
 ## <a name="query-functions"></a>Lekérdezési függvények
 
-Az entitásokon kétféle lekérdezési függvény létezik: szinkron és aszinkron hívások. Szinkron lekérdezések csak az ügyfélen található adatokhoz használhatók, és nem tartalmaznak sok számítást. Ilyenek például az összetevők, a relatív objektumátalakítások vagy a szülő-gyermek kapcsolatok lekérdezése. Aszinkron lekérdezések olyan adatokhoz használatosak, amelyek csak a kiszolgálón találhatók, vagy olyan extra számítást tartalmaznak, amely túl drága lenne az ügyfélen való futtatáshoz. Ilyenek például a térbeli határlekérdezések vagy metaadat-lekérdezések.
+Az entitásokon két típusú lekérdezési funkció létezik: szinkron és aszinkron hívás. A szinkron lekérdezések csak az ügyfélen található, és nem sok számítási művelettel rendelkező adatmennyiségek esetében használhatók. Ilyenek például az összetevők, a relatív objektum-átalakítások vagy a szülő-gyermek kapcsolatok lekérdezése. Az aszinkron lekérdezések olyan adathoz használatosak, amelyek csak a kiszolgálón találhatók, vagy olyan további számításokat tartalmaznak, amelyek túl költségesek lesznek az ügyfélen való futtatáshoz. Ilyenek például a térbeli kötések vagy a metaadat-lekérdezések.
 
 ### <a name="querying-components"></a>Összetevők lekérdezése
 
-Egy adott típus összetevőjének `FindComponentOfType`megkereséséhez használja a következőt:
+Egy adott típusú összetevő megkereséséhez használja `FindComponentOfType`a következőt:
 
 ```cs
 CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(ObjectType.CutPlaneComponent);
@@ -43,10 +43,10 @@ CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
 
 ### <a name="querying-transforms"></a>Átalakítások lekérdezése
 
-Az átalakítási lekérdezések az objektum szinkron hívásai. Fontos megjegyezni, hogy az API-n keresztül lekérdezett átalakítások helyi térátalakítások, az objektum szülőjéhez képest. Kivételt képeznek a gyökérobjektumok, amelyek esetében a helyi tér és a világtér azonos.
+Az átalakítási lekérdezések szinkron hívásokat mutatnak az objektumon. Fontos megjegyezni, hogy az API-n keresztül lekérdezett átalakítások a helyi tér-átalakítások, az objektum szülőhöz képest. A kivételek a főobjektumok, amelyek esetében a helyi terület és a lemezterület azonos.
 
 > [!NOTE]
-> Nincs külön API az tetszőleges objektumok világtér-átalakításának lekérdezésére.
+> Nincs dedikált API a tetszőleges objektumok lemezterület-átalakításának lekérdezéséhez.
 
 ```cs
 // local space transform of the entity
@@ -54,15 +54,15 @@ Double3 translation = entity.Position;
 Quaternion rotation = entity.Rotation;
 ```
 
-### <a name="querying-spatial-bounds"></a>Térbeli határok lekérdezése
+### <a name="querying-spatial-bounds"></a>Térbeli korlátok lekérdezése
 
-A határlekérdezések olyan aszinkron hívások, amelyek teljes objektumhierarchián működnek, és egy entitást használnak gyökérként. Tekintse meg az objektumhatárokról szóló külön [fejezetet.](object-bounds.md)
+A kötött lekérdezések olyan aszinkron hívások, amelyek teljes objektum-hierarchián működnek, és egy entitást használnak gyökérként. Tekintse meg a dedikált fejezetet az [objektumok határaival](object-bounds.md)kapcsolatban.
 
 ### <a name="querying-metadata"></a>Metaadatok lekérdezése
 
-A metaadatok az objektumokon tárolt további adatok, amelyeket a kiszolgáló figyelmen kívül hagy. Az objektum metaadatai lényegében (név, érték) párok halmaza, ahol az _érték_ numerikus, logikai vagy karakterlánctípusú lehet. A metaadatok exportálhatók a modellel.
+A metaadatok az objektumokon tárolt további adatok, amelyeket a kiszolgáló figyelmen kívül hagy. Az objektum metaadatai lényegében a (név, érték) párok halmaza, ahol az _érték_ numerikus, logikai vagy karakterlánc típusú lehet. A metaadatok exportálhatók a modell használatával.
 
-A metaadat-lekérdezések egy adott entitás aszinkron hívásai. A lekérdezés csak egyetlen entitás metaadatait adja vissza, az algráf egyesített adatait nem.
+A metaadat-lekérdezések aszinkron hívások egy adott entitáson. A lekérdezés csak egyetlen entitás metaadatait adja vissza, nem az algráf egyesített információit.
 
 ```cs
 MetadataQueryAsync metaDataQuery = entity.QueryMetaDataAsync();
@@ -79,7 +79,7 @@ metaDataQuery.Completed += (MetadataQueryAsync query) =>
 };
 ```
 
-A lekérdezés akkor is sikeres lesz, ha az objektum nem tartalmaz metaadatokat.
+A lekérdezés akkor is sikeres lesz, ha az objektum nem rendelkezik metaadatokkal.
 
 ## <a name="next-steps"></a>További lépések
 

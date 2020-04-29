@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub modul identitása és ikermodul (Python)
-description: Ismerje meg, hogyan hozhat létre modulidentitást és frissítheti az ikermodult az IoT SDK-k python-hoz használatával.
+title: Azure IoT Hub modul-identitás és-modul twin (Python)
+description: Megtudhatja, hogyan hozhat létre modul-identitást és-frissítési modult a IoT SDK-k használatával a Pythonhoz.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
 ms.openlocfilehash: f846af548913e0cb3e872560e4b8438da306a255
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756945"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>Az IoT Hub modulidentitás és az ikermodul (Python) első lépései
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (Python)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [A modulidentitások és a modultwins](iot-hub-devguide-module-twins.md) hasonlóaz Azure IoT Hub-eszköz identitások és az ikereszközök, de finomabb részletességet biztosít. Míg az Azure IoT Hub-eszközidentitások és az ikereszközök lehetővé teszik, hogy egy háttéralkalmazás konfiguráljon egy eszközt, és láthatóvá tegye az eszköz feltételeit, a modulidentitások és a modultwins biztosítják ezeket a képességeket az eszköz egyes összetevőihez. A több összetevőből képes eszközökön, például az operációs rendszer alapú eszközökön vagy a belső vezérlőprogram-eszközökön lehetővé teszik az egyes összetevők elkülönített konfigurációját és feltételeit.
+> A [modul identitásai és az ikrek modul](iot-hub-devguide-module-twins.md) hasonló az Azure IoT hub-eszközök identitásához és az eszközök ikrekhez, de finomabb részletességet biztosít. Habár az Azure IoT Hub eszköz-identitások és az eszközök ikrek lehetővé teszik egy háttérbeli alkalmazás számára az eszköz konfigurálását, valamint az eszköz feltételeinek, a modul-identitások és a modul-összetételek láthatóságának biztosítását az eszközök egyes összetevői számára. A több összetevővel (például operációs rendszer alapú eszközökkel vagy belső vezérlőprogram-eszközökkel) rendelkező kompatibilis eszközökön az egyes összetevők elkülönített konfigurációját és feltételeit teszik lehetővé.
 >
 
-Az oktatóanyag végén három Python-alkalmazással rendelkezik:
+Az oktatóanyag végén három Python-alkalmazás található:
 
-* **CreateModule**, amely létrehoz egy eszköz identitását, modulidentitását és a kapcsolódó biztonsági kulcsokat az eszköz és a modulügyfelek csatlakoztatásához.
+* **CreateModule**, amely létrehoz egy eszköz identitását, egy modul identitását és a társított biztonsági kulcsokat az eszköz és a modul ügyfeleinek csatlakoztatásához.
 
-* **UpdateModuleTwinDesiredProperties ,** amely elküldi a frissített modul iker kívánt tulajdonságokat az IoT Hub.
+* **UpdateModuleTwinDesiredProperties**, amely a frissített modult IoT hub kívánt tulajdonságokat küldi el.
 
-* **ReceiveModuleTwinDesiredPropertiesPatch**, amely megkapja a modul iker kívánt tulajdonságok javítás a készüléken.
+* **ReceiveModuleTwinDesiredPropertiesPatch**, amely a modulhoz tartozó, a kívánt tulajdonságok javítását fogadja az eszközön.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -41,31 +41,31 @@ Az oktatóanyag végén három Python-alkalmazással rendelkezik:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebben a cikkben hozzon létre egy háttér-szolgáltatás, amely hozzáad egy eszközt az identitás-beállításjegyzékben, majd hozzáad egy modult az eszközhöz. Ehhez a szolgáltatáshoz a **rendszerleíró adatbázis írási** engedélye szükséges (amely magában foglalja **a rendszerleíró adatbázis olvasását**is). Hozzon létre egy szolgáltatást, amely hozzáadja a kívánt tulajdonságokat az újonnan létrehozott modul ikermoduljához. Ennek a szolgáltatásnak szüksége van a **szolgáltatás csatlakozási engedélyére.** Bár vannak olyan alapértelmezett megosztott hozzáférési házirendek, amelyek egyenként adják meg ezeket az engedélyeket, ebben a szakaszban egy egyéni megosztott hozzáférési szabályzatot hoz létre, amely mindkét engedélyt tartalmazza.
+Ebben a cikkben egy olyan háttér-szolgáltatást hoz létre, amely hozzáadja az eszközt az identitás-beállításjegyzékben, majd hozzáadja a modult az eszközhöz. Ennek a szolgáltatásnak szüksége van a **beállításjegyzék írási** engedélyére (amely magában foglalja a **beállításjegyzék olvasását**is). Olyan szolgáltatást is létrehozhat, amely hozzáadja a kívánt tulajdonságokat az újonnan létrehozott modulhoz tartozó modulhoz. A szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére. Habár vannak olyan alapértelmezett megosztott hozzáférési szabályzatok, amelyek egyenként adják meg ezeket az engedélyeket, ebben a szakaszban egy egyéni megosztott elérési házirendet hoz létre, amely mindkét engedélyt tartalmazza.
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Eszközidentitás és modulidentitás létrehozása az IoT Hubban
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Eszköz identitásának és modul-identitásának létrehozása IoT Hub
 
-Ebben a szakaszban hozzon létre egy Python szolgáltatásalkalmazást, amely létrehoz egy eszközidentitást és egy modulidentitást az IoT hub identitás-beállításjegyzékében. Egy eszköz vagy modul nem tud csatlakozni az IoT hubhoz, kivéve, ha rendelkezik egy bejegyzéssel az identitás-beállításjegyzékben. További információ: [Az IoT hub identitásbeállításának megismerése.](iot-hub-devguide-identity-registry.md) A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
+Ebben a szakaszban létrehoz egy Python szolgáltatásalkalmazás-alkalmazást, amely létrehoz egy eszköz-identitást és egy modul-identitást az IoT hub identitás-beállításjegyzékében. Egy eszköz vagy modul nem tud csatlakozni az IoT hubhoz, hacsak nem rendelkezik bejegyzéssel az Identity registryben. További információ: [az Identity Registry megismerése az IoT hub-ban](iot-hub-devguide-identity-registry.md). A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
 
-1. A parancssorban futtassa a következő parancsot az **azure-iot-hub** csomag telepítéséhez:
+1. A parancssorban futtassa a következő parancsot az **Azure-IOT-hub** csomag telepítéséhez:
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-1. A parancssorban futtassa a következő parancsot az **msrest** csomag telepítéséhez. A **HTTPOperationError** kivételek észleléséhez szüksége van erre a csomagra.
+1. A parancssorban futtassa a következő parancsot a **msrest** csomag telepítéséhez. Erre a csomagra szüksége lesz a **HTTPOperationError** -kivételek elfogásához.
 
     ```cmd/sh
     pip install msrest
     ```
 
-1. Szövegszerkesztő használatával hozzon létre egy **CreateModule.py** nevű fájlt a munkakönyvtárban.
+1. Egy szövegszerkesztővel hozzon létre egy **CreateModule.py** nevű fájlt a munkakönyvtárában.
 
-1. Adja hozzá a következő kódot a Python-fájlhoz. Cserélje le *a YourIoTHubConnectionString karakterláncot* az [IoT hub kapcsolati karakterláncának bemásolása](#get-the-iot-hub-connection-string)című helyen másolt kapcsolati karakterláncra.
+1. Adja hozzá a következő kódot a Python-fájlhoz. Cserélje le az *YourIoTHubConnectionString* -t az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)című részében lemásolt kapcsolatok karakterláncra.
 
     ```python
     import sys
@@ -128,25 +128,25 @@ Ebben a szakaszban hozzon létre egy Python szolgáltatásalkalmazást, amely l�
     python CreateModule.py
     ```
 
-Ez az alkalmazás létrehoz egy eszköz identitásazonosítóazonosítóazonosítót **myD myFirstDevice** és egy modul identitás id **myFirstModule** eszköz alatt **myFirstDevice**. (Ha az eszköz vagy a modul azonosítója már létezik az identitásjegyzékben, a kód egyszerűen beolvassa a meglévő eszköz- vagy moduladatokat.) Az alkalmazás megjeleníti az azonosítót és az elsődleges kulcsot az egyes identitások.
+Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha az eszköz vagy a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő eszköz-vagy modul-információkat.) Az alkalmazás megjeleníti az egyes identitások AZONOSÍTÓját és elsődleges kulcsát.
 
 > [!NOTE]
-> Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [Az IoT hub identitásbeállításának megismerése.](iot-hub-devguide-identity-registry.md)
+> Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [az Identity Registry megismerése az IoT hub-ban](iot-hub-devguide-identity-registry.md).
 >
 
-## <a name="update-the-module-twin-using-python-service-sdk"></a>Az ikermodul frissítése a Python szolgáltatás SDK-jával
+## <a name="update-the-module-twin-using-python-service-sdk"></a>A Twin modul frissítése a Python Service SDK használatával
 
-Ebben a szakaszban hozzon létre egy Python szolgáltatásalkalmazást, amely frissíti a modul iker kívánt tulajdonságait.
+Ebben a szakaszban egy olyan Python szolgáltatásalkalmazás-alkalmazást hoz létre, amely frissíti a modul a kívánt tulajdonságokat.
 
-1. A parancssorban futtassa a következő parancsot az **azure-iot-hub** csomag telepítéséhez. Ezt a lépést kihagyhatja, ha az előző szakaszban telepítette az **azure-iot-hub** csomagot.
+1. A parancssorban futtassa a következő parancsot az **Azure-IOT-hub** csomag telepítéséhez. Ezt a lépést kihagyhatja, ha az előző szakaszban telepítette az **Azure-IOT-hub** csomagot.
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-1. Szövegszerkesztő használatával hozzon létre egy **UpdateModuleTwinDesiredProperties.py** nevű fájlt a munkakönyvtárban.
+1. Egy szövegszerkesztővel hozzon létre egy **UpdateModuleTwinDesiredProperties.py** nevű fájlt a munkakönyvtárában.
 
-1. Adja hozzá a következő kódot a Python-fájlhoz. Cserélje le *a YourIoTHubConnectionString karakterláncot* az [IoT hub kapcsolati karakterláncának bemásolása](#get-the-iot-hub-connection-string)című helyen másolt kapcsolati karakterláncra.
+1. Adja hozzá a következő kódot a Python-fájlhoz. Cserélje le az *YourIoTHubConnectionString* -t az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)című részében lemásolt kapcsolatok karakterláncra.
 
     ```python
     import sys
@@ -182,23 +182,23 @@ Ebben a szakaszban hozzon létre egy Python szolgáltatásalkalmazást, amely fr
         print ( "IoTHubRegistryManager sample stopped" )
     ```
 
-## <a name="get-updates-on-the-device-side"></a>Frissítések beszerezni az eszköz oldalán
+## <a name="get-updates-on-the-device-side"></a>Frissítések letöltése az eszköz oldaláról
 
-Ebben a szakaszban hozzon létre egy Python-alkalmazást, hogy a modul iker kívánt tulajdonságok frissítése az eszközön.
+Ebben a szakaszban egy Python-alkalmazást hoz létre, amely a modulhoz tartozó Twin kívánt tulajdonságok frissítését kéri az eszközön.
 
-1. A modul kapcsolati karakterláncának bekapcsolása. Az [Azure Portalon](https://portal.azure.com/)keresse meg az IoT Hubot, és válassza ki az **IoT-eszközöket** a bal oldali ablaktáblában. Válassza ki a **myFirstDevice-t** az eszközök listájából, és nyissa meg. A **Modulidentitások csoportban**válassza a **MyFirstModule lehetőséget.** Másolja ki a modul kapcsolati sztringjét. Szüksége van rá a következő lépésben.
+1. A modulhoz tartozó kapcsolatok karakterláncának beolvasása. A [Azure Portalban](https://portal.azure.com/)navigáljon a IoT hub, és válassza a **IoT eszközök** elemet a bal oldali ablaktáblán. Válassza ki a **myFirstDevice** az eszközök listájából, és nyissa meg. A **modul-identitások**területen válassza a **myFirstModule**lehetőséget. Másolja ki a modul kapcsolati sztringjét. Ezt a következő lépésben kell megadnia.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-1. A parancssorban futtassa a következő parancsot az **azure-iot-device** csomag telepítéséhez:
+1. A parancssorban futtassa a következő parancsot az **Azure-IOT-Device** csomag telepítéséhez:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Szövegszerkesztő használatával hozzon létre egy **ReceiveModuleTwinDesiredPropertiesPatch.py** nevű fájlt a munkakönyvtárban.
+1. Egy szövegszerkesztővel hozzon létre egy **ReceiveModuleTwinDesiredPropertiesPatch.py** nevű fájlt a munkakönyvtárában.
 
-1. Adja hozzá a következő kódot a Python-fájlhoz. Cserélje le a *YourModuleConnectionString karakterláncot* az 1.
+1. Adja hozzá a következő kódot a Python-fájlhoz. Cserélje le a *YourModuleConnectionString* az 1. lépésben átmásolt modul-összekapcsolási sztringre.
 
     ```python
     import time
@@ -239,29 +239,29 @@ Ebben a szakaszban hozzon létre egy Python-alkalmazást, hogy a modul iker kív
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
-Ebben a szakaszban futtatja a **ReceiveModuleTwinDesiredPropertiesPatch** eszközalkalmazást, majd az **UpdateModuleTwinDesiredProperties** szolgáltatásalkalmazást a modul kívánt tulajdonságainak frissítéséhez.
+Ebben a szakaszban a **ReceiveModuleTwinDesiredPropertiesPatch** -eszköz alkalmazást futtatja, majd futtatja a **UpdateModuleTwinDesiredProperties** szolgáltatás alkalmazást a modul kívánt tulajdonságainak frissítéséhez.
 
-1. Nyisson meg egy parancssort, és futtassa az eszközalkalmazást:
+1. Nyisson meg egy parancssort, és futtassa az eszköz alkalmazást:
 
     ```cmd/sh
     python ReceiveModuleTwinDesiredPropertiesPatch.py
     ```
 
-   ![Az eszközalkalmazás kezdeti kimenete](./media/iot-hub-python-python-module-twin-getstarted/device-1.png)
+   ![Eszköz-alkalmazás kezdeti kimenete](./media/iot-hub-python-python-module-twin-getstarted/device-1.png)
 
-1. Nyisson meg egy külön parancssort, és futtassa a szolgáltatásalkalmazást:
+1. Nyisson meg egy külön parancssort, és futtassa a szolgáltatás alkalmazást:
 
     ```cmd/sh
     python UpdateModuleTwinDesiredProperties.py
     ```
 
-    Figyelje meg, hogy a **TelemetryInterval** kívánt tulajdonság a frissített ikermodulban jelenik meg a szolgáltatásalkalmazás kimenetében:
+    Figyelje meg, hogy a **TelemetryInterval** kívánt tulajdonság megjelenik a Service app-kimenetben a frissített modulban:
 
-   ![A szolgáltatásalkalmazás kimenete](./media/iot-hub-python-python-module-twin-getstarted/service.png)
+   ![Szolgáltatás-alkalmazás kimenete](./media/iot-hub-python-python-module-twin-getstarted/service.png)
 
-    Ugyanez a tulajdonság jelenik meg a kívánt tulajdonságjavító javításban, amelyet az eszközalkalmazás kimenetén kapott:
+    Ugyanez a tulajdonság jelenik meg az eszköz alkalmazás-kimenetében kapott kívánt tulajdonságok javításban:
 
-   ![Az eszközalkalmazás kimenete a kívánt tulajdonságok javítását mutatja](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
+   ![Az eszköz alkalmazás kimenete a kívánt tulajdonságok javítását mutatja](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>További lépések
 

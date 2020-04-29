@@ -1,7 +1,7 @@
 ---
-title: Hibásan írt szavak javítása - LUIS
+title: Helytelenül beírt szavak – LUIS
 titleSuffix: Azure Cognitive Services
-description: Javítsa ki a hibásan írt szavakat a kimondott szövegekben a Bing Helyesírás-ellenőrző API V7 hozzáadása a LUIS végpontlekérdezésekhez.
+description: Javítsa a hibásan írt szavakat a hosszúságú kimondott szöveg-ben a Bing Spell Check API v7 és LUIS végponti lekérdezések hozzáadásával.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,75 +12,75 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80396813"
 ---
-# <a name="correct-misspelled-words-with-bing-spell-check"></a>Hibásan írt szavak javítása a Bing helyesírás-ellenőrzésével
+# <a name="correct-misspelled-words-with-bing-spell-check"></a>Helytelenül írt szavak kijavítása Bing Spell Check
 
-Integrálhatja a LUIS-alkalmazást a [Bing Helyesírás-ellenőrző API V7-tel,](https://azure.microsoft.com/services/cognitive-services/spell-check/) hogy kijavítsa a hibásan írt szavakat az utterances-ben, mielőtt a LUIS előre jelzi az utterance (kifejezés) pontszámát és entitásait. 
+A Luis-alkalmazást [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) -vel integrálhatja, hogy javítsa a hibásan írt szavakat a hosszúságú kimondott szöveg, mielőtt Luis megjósolja a pontszámot és az entitásokat. 
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Első kulcs létrehozása a Bing Helyesírás-ellenőrzés V7-hez
+## <a name="create-first-key-for-bing-spell-check-v7"></a>Bing Spell Check v7 első kulcsának létrehozása
 
-Az [első Bing Helyesírás-ellenőrző API v7 kulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) ingyenes. 
+Az [első Bing Spell Check API v7-kulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) ingyenes. 
 
 ![Szabad kulcs létrehozása](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
 <a name="create-subscription-key"></a>
 
-## <a name="create-endpoint-key"></a>Végpontkulcs létrehozása
-Ha az ingyenes kulcs lejárt, hozzon létre egy végpontkulcsot.
+## <a name="create-endpoint-key"></a>Végponti kulcs létrehozása
+Ha az ingyenes kulcs lejárt, hozzon létre egy végponti kulcsot.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
-2. Válassza **az Erőforrás létrehozása lehetőséget** a bal felső sarokban.
+2. Válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 
 3. A keresőmezőbe írja be a `Bing Spell Check API V7` kifejezést.
 
-    ![Bing helyesírás-ellenőrző API V7 keresése](./media/luis-tutorial-bing-spellcheck/portal-search.png)
+    ![Bing Spell Check API v7 keresése](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
 4. Válassza ki a szolgáltatást. 
 
-5. A jobb oldalon megjelenik egy információs panel, amely információkat tartalmaz, beleértve a jogi közleményt is. Válassza a **Létrehozás gombot** az előfizetés-létrehozási folyamat megkezdéséhez. 
+5. Egy információs panel jelenik meg a jogot tartalmazó információkkal, beleértve a jogi értesítést is. Válassza a **Létrehozás** lehetőséget az előfizetés-létrehozási folyamat megkezdéséhez. 
 
-6. A következő panelen adja meg a szolgáltatás beállításait. Várja meg, amíg befejeződik a szolgáltatáslétrehozási folyamat.
+6. A következő panelen adja meg a szolgáltatás beállításait. Várjon, amíg a szolgáltatás-létrehozási folyamat befejeződik.
 
-    ![Szolgáltatásbeállítások megadása](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
+    ![Adja meg a szolgáltatás beállításait](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. A bal oldali navigációs **sávon** a Kedvencek cím alatt válassza a **Minden erőforrás** lehetőséget.
+7. A bal oldali navigációs sávon a **Kedvencek** cím alatt válassza az **összes erőforrás** lehetőséget.
 
-8. Válassza ki az új szolgáltatást. Típusa a **Cognitive Services,** a helyszín pedig **globális.** 
+8. Válassza ki az új szolgáltatást. A típusa **Cognitive Services** , és a hely **globális**. 
 
-9. A főpanelen válassza a **Billentyűk** lehetőséget az új billentyűk megtekintéséhez.
+9. A fő panelen a **kulcsok** elemre kattintva megtekintheti az új kulcsokat.
 
-    ![Fogd gombok](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
+    ![Kulcsok megragadása](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. Másolja az első kulcsot. Csak egy a két kulcs. 
+10. Másolja ki az első kulcsot. Csak a két kulcs egyikét kell megadnia. 
 
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
 ## <a name="adding-the-key-to-the-endpoint-url"></a>A kulcs hozzáadása a végpont URL-címéhez
-A végpontlekérdezéshez a lekérdezési karakterlánc paramétereiben átadott kulcsra van szükség minden olyan lekérdezésnél, amelyet helyesírás-javítást kíván alkalmazni. Lehet, hogy egy chatbot, amely felhívja a LUIS, vagy hívhatja a LUIS végpont API-t közvetlenül. A végpont hívásától függetlenül minden egyes hívásnak tartalmaznia kell a helyesírás-korrekciók megfelelő működéséhez szükséges információkat.
+A végponti lekérdezésnek a lekérdezési karakterlánc paraméterei között kell átadni a kulcsot a helyesírási korrekciót alkalmazni kívánt összes lekérdezéshez. Lehet, hogy van egy Csevegőrobot, amely meghívja a LUIS-t, vagy meghívhatja közvetlenül a LUIS Endpoint API-t. Függetlenül attól, hogy a végpont hogyan legyen meghívva, minden egyes hívásnak tartalmaznia kell a szükséges információkat a helyesírás-javítások megfelelő működéséhez.
 
-A végpont URL-címe több olyan értéket tartalmaz, amelyeket megfelelően kell átadni. A Bing Helyesírás-ellenőrző API v7 kulcs csak egy ilyen. A **spellCheck** paramétert igaz értékre kell állítania, és a **bing-spell-check-subscription-key** értékét a kulcsértékre kell állítania:
+A végpont URL-címe több olyan értéket tartalmaz, amelyeket helyesen kell átadni. A Bing Spell Check API v7-kulcs csupán egy másik. A **helyesírási** paramétert True értékre kell állítani, és a **Bing-Spell-Check-előfizetés-Key** értéket kell beállítania a kulcs értékére:
 
 `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=true&bing-spell-check-subscription-key={bingKey}&verbose=true&timezoneOffset=0&q={utterance}`
 
-## <a name="send-misspelled-utterance-to-luis"></a>Hibásan írt kimondott szöveg küldése a LUIS-nak
-1. Webböngészőben másolja az előző karakterláncot, `luisKey`és `bingKey` cserélje le a `region`, `appId`, és a saját értékeit. Győződjön meg arról, hogy a végpontrégiót használja, ha az eltér a közzétételi [régiótól.](luis-reference-regions.md)
+## <a name="send-misspelled-utterance-to-luis"></a>Hibásan írt kifejezés elküldése LUIS-re
+1. A böngészőben másolja az előző karakterláncot, és cserélje le a `region` `appId` `luisKey`,,, és `bingKey` a értéket a saját értékeire. Ügyeljen arra, hogy a végpont régióját használja, ha az eltér a közzétételi [régiótól](luis-reference-regions.md).
 
-2. Adjon hozzá egy hibásan írt utterance (kifejezés) például "Milyen messze van a hegy?". Az angol `mountain`nyelvben `n`a ( angol nyelven ) a helyes helyesírás. 
+2. Adjon hozzá egy hibásan írt kiírást, például "milyen messzire kerül a mountainn?". Az angol nyelvben a `mountain`, `n`az egyik, a helyes helyesírás. 
 
-3. Válassza az Enter lehetőséget, ha el szeretné küldeni a lekérdezést a LUIS-nak.
+3. Válassza az ENTER billentyűt a lekérdezés LUIS-nek való elküldéséhez.
 
-4. A LUIS JSON-eredménnyel `How far is the mountain?`válaszol. Ha a Bing Helyesírás-ellenőrző API v7 `query` hibás helyesírást észlel, a LUIS alkalmazás JSON-válaszának mezője tartalmazza az eredeti lekérdezést, és a `alteredQuery` mező a LUIS-nak küldött javított lekérdezést tartalmazza.
+4. LUIS egy JSON-eredménnyel válaszol `How far is the mountain?`. Ha Bing Spell Check API v7 hibát észlel, akkor a LUIS alkalmazás `query` JSON-válaszában szereplő mező tartalmazza az eredeti lekérdezést, és a `alteredQuery` mező tartalmazza a Luis-nak küldött javított lekérdezést.
 
 ```json
 {
@@ -96,15 +96,15 @@ A végpont URL-címe több olyan értéket tartalmaz, amelyeket megfelelően kel
 
 ## <a name="ignore-spelling-mistakes"></a>Helyesírási hibák figyelmen kívül hagyása
 
-Ha nem szeretné használni a Bing Helyesírás-ellenőrző API v7 szolgáltatás, meg kell adnia a megfelelő és helytelen helyesírási. 
+Ha nem szeretné használni a Bing Spell Check API v7 szolgáltatást, hozzá kell adnia a helyes és helytelen helyesírást. 
 
-Két megoldás:
+Két megoldás a következők:
 
-* Címke példa utterances, amelyek rendelkeznek a különböző helyesírási, hogy a LUIS megtudja tanulni a megfelelő helyesírást, valamint az elírások. Ez a beállítás több címkézési erőfeszítést igényel, mint a helyesírás-ellenőrző használata.
-* Hozzon létre egy kifejezéslistát a szó összes változatával. Ezzel a megoldással nem kell címkézni a szó változatok a példa utterances. 
+* Címkézheti például az összes különböző helyesírású hosszúságú kimondott szöveg, hogy LUIS el tudja sajátítani a megfelelő helyesírást és elírásokat. Ez a beállítás több címkézési erőfeszítést igényel, mint a spell-ellenőrző használata.
+* Hozzon létre egy kifejezés listát a szó összes változatával. Ezzel a megoldással nem kell megcímkézni a példában szereplő hosszúságú kimondott szöveg. 
 
-## <a name="publishing-page"></a>Közzététellap
-A [közzétételi](luis-how-to-publish-app.md) lapon a **Bing helyesírás-ellenőrzőjének engedélyezése** jelölőnégyzet található. Ez a kulcs létrehozásához és a végpont URL-címének változásaihoz szükséges kényelmi szempontból. Továbbra is a megfelelő végpontparamétereket kell használnia ahhoz, hogy a helyesírást minden egyes utterance (kifejezés) korrigálja. 
+## <a name="publishing-page"></a>Közzétételi oldal
+A [közzétételi](luis-how-to-publish-app.md) lapon engedélyezve van a **Bing helyesírás-ellenőrző engedélyezése** jelölőnégyzet. Ez a kulcs létrehozása és a végpont URL-címének megváltozása. Továbbra is a megfelelő végponti paramétereket kell használnia ahhoz, hogy a helyesírás kijavítva legyen az egyes részleteknél. 
 
 > [!div class="nextstepaction"]
-> [További információ a példakimondott szövegekről](luis-how-to-add-example-utterances.md)
+> [További információ a példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md)

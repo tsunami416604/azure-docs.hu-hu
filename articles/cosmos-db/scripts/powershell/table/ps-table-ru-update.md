@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsfájl az Azure Cosmos DB Table API RU/s frissítéséhez
-description: Megtudhatja, hogy miként frissítheti egy Azure Cosmos DB Table API-fiók ban lévő adatbázis vagy tároló átviteli erejét PowerShell-parancsfájlhasználatával
+title: PowerShell-parancsfájl az RU/s frissítéséhez Azure Cosmos DB Table API
+description: Ismerje meg, hogyan lehet PowerShell-parancsfájlokkal frissíteni egy adatbázis vagy egy tároló átviteli sebességét Azure Cosmos DB Table API fiókban
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 101e9e5591198b84bb9bba886249b0784cc6b43e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365944"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Ru/s frissítése egy táblához az Azure Cosmos DB- Table API-hoz
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Az RU/s frissítése Azure Cosmos DB-Table API táblához
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBTable tábla](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Creates or updates a Cosmos DB Table API Table. |
-|**Azure erőforráscsoportok**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Egy Cosmos DB Table API tábla létrehozása vagy frissítése. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

@@ -1,6 +1,6 @@
 ---
 title: Számítási feladatok besorolása
-description: Útmutató az Azure Synapse Analytics lekérdezéseihez szükséges számítási műveletek osztályozásának kezeléséhez.
+description: Útmutató a besorolás használatához az Azure szinapszis Analytics-lekérdezések egyidejűségi, fontossági és számítási erőforrásainak kezeléséhez.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,71 +12,71 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743649"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Az Azure Synapse Analytics számítási feladatok besorolása
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure szinapszis Analitika – számítási feladatok besorolása
 
-Ez a cikk ismerteti a számítási feladatok besorolási folyamata egy számítási feladat csoport hozzárendelése és fontossága a bejövő kérelmek Synapse SQL-készletek az Azure Synapse.
+Ez a cikk ismerteti a munkaterhelés-csoportok hozzárendelési folyamatát, valamint a beérkező kérések fontosságát a szinapszis SQL-készletekkel az Azure Szinapszisban.
 
 ## <a name="classification"></a>Osztályozás
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
-A munkaterhelés-kezelési besorolás lehetővé teszi a számítási feladatok házirendjeinek alkalmazását a kérelmekre [az erőforrásosztályok](resource-classes-for-workload-management.md#what-are-resource-classes) és [a fontosság](sql-data-warehouse-workload-importance.md)hozzárendelésével.
+A számítási feladatok kezelésének besorolása lehetővé teszi a munkaterhelési házirendek alkalmazását a kérelmekre az [erőforrás-osztályok](resource-classes-for-workload-management.md#what-are-resource-classes) és a [fontosság](sql-data-warehouse-workload-importance.md)kiosztásával.
 
-Bár számos módja van az adattárház számítási feladatok osztályozásának, a legegyszerűbb és leggyakoribb besorolás a betöltés és a lekérdezés. Az adatokat beszúrási, frissítési és törlési utasításokkal tölti be.  Az adatokat a kijelölésekkel lehet lekérdezni. Az adattárház-megoldás gyakran rendelkezik a terhelési tevékenység munkaterhelési házirenddel, például egy magasabb erőforrásosztály hozzárendelése több erőforrással. Egy másik számítási feladatok házirend vonatkozhat a lekérdezések, például kisebb fontosságú, mint a betöltési tevékenységek.
+Az adattárház-feladatok osztályozásának számos módja van, a legegyszerűbb és leggyakoribb besorolás a betöltés és a lekérdezés. Az adatokat INSERT, Update és DELETE utasításokkal kell betölteni.  Az adatlekérdezés a selects paranccsal végezhető el. Az adattárház-megoldások gyakran munkaterhelési szabályzattal rendelkeznek a betöltési tevékenységhez, például egy magasabb erőforrás-osztály hozzárendeléséhez több erőforrással. A lekérdezésekre más számítási feladatok is alkalmazhatók, például a terhelési tevékenységekhez képest kevésbé fontos.
 
-A terhelési és lekérdezési munkaterhelések alosztályozása is. Az albesorolás nagyobb ellenőrzést biztosít a számítási feladatok felett. A lekérdezési munkaterhelések például kockafrissítésekből, irányítópult-lekérdezésekből vagy alkalmi lekérdezésekből állhatnak. Ezek a lekérdezési munkaterhelések mindegyike különböző erőforrásosztályok vagy fontossági beállítások kal osztályozható. A terhelés is profitálhat az alosztályozáselőnyeiből. Nagyobb átalakítások rendelhetők nagyobb erőforrásosztályokhoz. Nagyobb fontosság lehet használni annak biztosítására, kulcsfontosságú értékesítési adatok betöltő előtt időjárási adatok vagy a szociális adatcsatorna.
+A terhelési és a lekérdezési számítási feladatok is meghatározhatók. Az albesorolás nagyobb mértékben szabályozza a számítási feladatokat. A lekérdezési munkaterhelések például a kocka frissítése, az irányítópult-lekérdezések és az alkalmi lekérdezések állhatnak. Ezeket a lekérdezési feladatokat különböző erőforrás-osztályokkal vagy fontossági beállításokkal osztályozhatja. A betöltés is kihasználhatja a besorolást. A nagyméretű átalakítások nagyobb erőforrás-osztályokhoz rendelhetők. A legfontosabb értékesítési adatforgalom az időjárási vagy a közösségi adatcsatorna megkezdése előtt nagyobb fontosságot biztosít.
 
-Nem minden utasítás van besorolva, mivel nem igényel erőforrásokat, vagy fontosságot igényel a végrehajtás befolyásolásához.  A DBCC parancsok, A BEGIN, a COMMIT és a ROLLBACK TRANSACTION utasítások nem osztályozva vannak.
+Nem minden utasítás van besorolva, mert nincs szükség erőforrásra, vagy fontos a végrehajtás befolyásolása.  A DBCC parancsok, a BEGIN, a COMMit és a revisszagurítás TRANZAKCIÓs utasítások nincsenek besorolva.
 
-## <a name="classification-process"></a>Osztályozási folyamat
+## <a name="classification-process"></a>Besorolási folyamat
 
-Besorolás a Synapse SQL-készlet az Azure Synapse érhető el ma azáltal, hogy a felhasználók hozzárendelése egy szerepkör, amely a megfelelő erőforrás-osztály hozzá rendelt [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával. Ezzel a képességgel az erőforrásosztályba való bejelentkezésen túli kérelmek jellemzése korlátozott. Egy gazdagabb besorolási módszer már elérhető a [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxissal.  Ezzel a szintaxissal a Szinapszis SQL-készlet felhasználói fontosságot rendelhetnek hozzá, `workload_group` és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a paraméteren keresztül.
+A szinapszis SQL-készletének az Azure Szinapszisban való besorolása ma a felhasználók olyan szerepkörhöz való hozzárendelésével érhető el, amely a hozzá tartozó erőforrás-osztállyal van társítva [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával. Az erőforrás-osztályba való bejelentkezésen túli kérések jellemzésének lehetősége korlátozott ezzel a képességgel. Most már elérhető a számítási [feladatok](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) besorolása szintaxissal, amely a besoroláshoz használható.  Ezzel a szintaxissal a szinapszis SQL-készlet felhasználóinak fontosságot rendelhetnek, és a `workload_group` paraméter használatával mennyit rendelnek hozzá a rendszer erőforrásaihoz.
 
 > [!NOTE]
-> A besorolás értékelése kérésenként történik. Egy munkamenetben több kérelem is eltérő en adható.
+> A besorolást a rendszer a kérelmek alapján értékeli ki. Egy munkamenetben több kérelem is besorolva különböző módon.
 
-## <a name="classification-weighting"></a>Osztályozási súlyozás
+## <a name="classification-weighting"></a>Besorolás súlyozása
 
-A besorolási folyamat részeként súlyozás van érvényben annak meghatározására, hogy melyik számítási feladat csoport van rendelve.  A súlyozás a következő:
+A besorolási folyamat részeként súlyozást kell meghatározni, hogy melyik munkaterhelési csoport legyen hozzárendelve.  A súlyozás a következőképpen megy végbe:
 
 |Osztályozó paraméter |Tömeg   |
 |---------------------|---------|
-|TAGNÉV:FELHASZNÁLÓ      |64       |
-|TAGNÉV:SZEREPKÖR      |32       |
+|TAGNÉV: FELHASZNÁLÓ      |64       |
+|TAGNÉV: SZEREPKÖR      |32       |
 |WLM_LABEL            |16       |
 |WLM_CONTEXT          |8        |
 |START_TIME/END_TIME  |4        |
 
-A `membername` paraméter kötelező.  Ha azonban a megadott tagnév adatbázis-felhasználó, nem pedig adatbázis-felhasználó, akkor a felhasználó súlyozása magasabb, és így az osztályozó lesz kiválasztva.
+A `membername` paraméter megadása kötelező.  Ha azonban a megadott tagnév adatbázis-felhasználó, akkor a felhasználó súlyozása magasabb, és így az osztályozó van kiválasztva.
 
-Ha egy felhasználó több szerepkör tagja, különböző erőforrásosztályokkal, több osztályozóhoz rendelve vagy egyezve, a felhasználó a legmagasabb erőforrásosztály-hozzárendelést kapja.  Ez a viselkedés összhangban van az erőforrásosztály-hozzárendelés meglévő viselkedésével.
+Ha a felhasználó több olyan szerepkör tagja, amely különböző osztályokba van rendelve, vagy több besoroláshoz van társítva, akkor a felhasználó a legmagasabb erőforrás-osztály-hozzárendelést kapja.  Ez a viselkedés összhangban van a meglévő erőforrás-osztály hozzárendelési viselkedésével.
 
 ## <a name="system-classifiers"></a>Rendszerosztályozók
 
-A számítási feladatok besorolása rendszerszámítási osztályozók. A rendszerosztályozók a meglévő erőforrásosztály-szerepkör-tagságokat normál fontosságú erőforrás-erőforrás-hozzárendelésekre térképezik le. A rendszerosztályozók nem ejthetők el. A rendszerosztályozók megtekintéséhez futtassa az alábbi lekérdezést:
+A számítási feladatok besorolása rendszerterhelési besorolásokkal rendelkezik. A rendszerosztályozók hozzárendelik a meglévő erőforrás-osztály szerepkör-tagságot az erőforrás-osztály erőforrás-hozzárendeléseihez a normál fontossággal. Nem lehet eldobni a rendszer-osztályozók. A rendszerosztályozók megtekintéséhez futtassa az alábbi lekérdezést:
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <= 12
 ```
 
-## <a name="mixing-resource-class-assignments-with-classifiers"></a>Erőforrásosztály-hozzárendelések összekeverése osztályozókkal
+## <a name="mixing-resource-class-assignments-with-classifiers"></a>Erőforrás-osztályok hozzárendeléseinek összekeverése osztályozók szerint
 
-Az Ön nevében létrehozott rendszerosztályozók egyszerű elérési utat biztosítanak a számítási feladatok besorolására való áttelepítéshez. Az erőforrásosztály szerepkör-leképezések besorolási prioritással történő használata téves besoroláshoz vezethet, amikor új fontos osztályozók at kezd létrehozni.
+Az Ön nevében létrehozott rendszerosztályozók egyszerű útvonalat biztosítanak a munkaterhelés-besorolásra való áttéréshez. A besorolási prioritással rendelkező erőforrás-osztály szerepkör-hozzárendelések használata téves besorolást eredményezhet, mivel új osztályozók fontossággal való létrehozásának megkezdése.
 
 Vegyük példaként a következő esetet:
 
-- Egy meglévő adattárházhoz egy adatbázis-felhasználó, a DBAUser van rendelve a largerc erőforrásosztály-szerepkörhöz. Az erőforrásosztály-hozzárendelés sp_addrolemember történt.
-- Az adattárház most frissül a munkaterhelés-kezeléssel.
-- Az új besorolásszintaxis teszteléséhez a DBARole adatbázis-szerepkör (amelynek a DBAUser is tagja), rendelkezik egy osztályozóval, amely leképezi őket mediumrc-re és nagy jelentőséggel bír.
-- Amikor a DBAUser bejelentkezik és lekérdezést futtat, a lekérdezés a largerc-hoz lesz rendelve. Mivel a felhasználó elsőbbséget élvez a szerepkör-tagsággal szemben.
+- A meglévő adattárházak adatbázis-felhasználói DBAUser vannak hozzárendelve a largerc erőforrás-osztály szerepkörhöz. Az erőforrás-osztály hozzárendelése a sp_addrolemembertel történt.
+- Az adattárház már frissítve van a munkaterhelés-kezeléssel.
+- Az új besorolási szintaxis teszteléséhez a DBARole adatbázis-szerepkör (amely a DBAUser tagja), rendelkezik egy, a számukra a mediumrc és a nagy fontossággal való leképezéshez létrehozott osztályozó.
+- Amikor a DBAUser bejelentkezik és futtat egy lekérdezést, a lekérdezés a largerc lesz hozzárendelve. Mivel a felhasználók elsőbbséget élveznek a szerepkör tagságával szemben.
 
-A hibabesorolás hibaelhárításának egyszerűsítése érdekében javasoljuk, hogy távolítsa el az erőforrásosztály szerepkör-leképezéseit a számítási feladatok osztályozóinak létrehozásakor.  Az alábbi kód visszaadja a meglévő erőforrásosztály-szerepkör-tagságokat.  Futtassa [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a megfelelő erőforrásosztályból visszaadott minden egyes tagnévhez.
+A hibák elhárítása érdekében javasoljuk, hogy távolítsa el az erőforrás-osztály szerepkör-hozzárendeléseket a számítási feladatok besorolásának létrehozásakor.  Az alábbi kód az erőforrás-osztály meglévő szerepkör-tagságát adja vissza.  [Sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) futtatása a megfelelő erőforrás osztályból visszaadott tagok nevénél.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -92,7 +92,7 @@ sp_droprolemember '[Resource Class]', membername
 
 ## <a name="next-steps"></a>További lépések
 
-- Az osztályozó konszern létrehozásáról további információt a [CREATE WORKLOAD CLASSIFIER (Transact-SQL) című témakörben talál.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
-- Tekintse meg a munkaterhelés-osztályozó létrehozásáról a [Számítási feladatok osztályozójának létrehozásáról a Számítási feladatok osztályozójának létrehozásáról](quickstart-create-a-workload-classifier-tsql.md)című rövid útmutatót.
-- Tekintse meg a [számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md) című útmutatócikkeket, valamint a [Munkaterhelés-kezelés kezelésének és figyelésének módját.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
-- A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) című témakört.
+- Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című témakört.  
+- Tekintse meg a számítási feladatok besorolásának létrehozásával kapcsolatos útmutatót a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-tsql.md)című témakörben.
+- Tekintse meg az útmutatókat a számítási [feladatok fontosságának konfigurálásához](sql-data-warehouse-how-to-configure-workload-importance.md) , valamint a számítási [feladatok felügyeletének kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- A lekérdezések és a hozzárendelt fontosság megtekintéséhez lásd: [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .

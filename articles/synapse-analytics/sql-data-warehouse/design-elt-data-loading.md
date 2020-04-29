@@ -1,6 +1,6 @@
 ---
-title: Etl helyett tervezze meg az ELT-t
-description: Rugalmas adatbetöltési stratégiák megvalósítása a Synapse SQL-készlethez az Azure Synapse Analytics szolgáltatásban
+title: ETL helyett a design ELT
+description: Rugalmas betöltési stratégiák implementálása a szinapszis SQL-készlethez az Azure szinapszis Analyticsen belül
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,83 +12,83 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744960"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>A Szinapszis SQL-készlet adatbetöltési stratégiái
+# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Az betöltési stratégiák a szinapszis SQL-készlethez
 
-A hagyományos SMP SQL-készletek egy kivonási, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. Az Azure Synapse Analytics synapse SQL-készlete masszívan párhuzamos feldolgozási (MPP) architektúrával rendelkezik, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát.
+A hagyományos SMP SQL-készletek kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. A szinapszis SQL Pool az Azure szinapszis Analyticsen belül egy nagymértékben párhuzamos feldolgozási (MPP) architektúrával rendelkezik, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát.
 
-A Kinyerés, betöltés és átalakítás (ELT) folyamat használata kihasználja az MPP-t, és kiküszöböli az adatok betöltése előtti átalakításához szükséges erőforrásokat.
+A kinyerési, betöltési és átalakítási (ELT) folyamat használatával a rendszer eltávolítja az MPP-t, és kiküszöböli az adatok átalakításához szükséges erőforrásokat a betöltés előtt.
 
-Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népszerű SQL Server-beállításokat, például a [bcp-t](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az [SqlBulkCopy API-t,](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)az adatok betöltésének leggyorsabb és leginkább skálázható módja a PolyBase külső tábláin és a [COPY utasításon](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (előzetes verzió).
+Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népszerű SQL Server lehetőségeket, például a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -t és a [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)-t, az adatok betöltésének leggyorsabb és leginkább méretezhető módja a albase külső táblák és a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (előzetes verzió).
 
-A PolyBase és a COPY utasítás segítségével a T-SQL-nyelven keresztül hozzáférhet az Azure Blob storage-ban vagy az Azure Data Lake Store-ban tárolt külső adatokhoz. A betöltéskor a legnagyobb rugalmasság érdekében javasoljuk a COPY utasítás használatát.
+A Base és a COPY utasítás használatával az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolt külső adatokhoz a T-SQL nyelv használatával férhet hozzá. A betöltés legrugalmasabban a MÁSOLÁSi utasítás használata javasolt.
 
 > [!NOTE]  
-> A COPY utasítás jelenleg nyilvános előzetes verzióban érhető el. Ha visszajelzést szeretne küldeni, küldjön sqldwcopypreview@service.microsoft.come-mailt a következő terjesztési listára: .
+> A COPY utasítás jelenleg nyilvános előzetes verzióban érhető el. Ha visszajelzést szeretne küldeni, küldjön e-mailt a következő terjesztési sqldwcopypreview@service.microsoft.comlistára:.
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>Mi az ELT?
+## <a name="what-is-elt"></a>Mi az a ELT?
 
-A kinyerés, a betöltés és az átalakítás (ELT) egy olyan folyamat, amelynek során az adatokat egy forrásrendszerből kinyerik, egy SQL-készletbe töltik be, majd átalakítják.
+A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer egy SQL-készletbe tölti be az adatok kinyerését, majd átalakítja azokat.
 
-Az ELT megvalósításának alapvető lépései a következők:
+A ELT megvalósításának alapvető lépései a következők:
 
 1. A forrásadatok kinyerése szövegfájlokba.
-2. Az adatokat az Azure Blob storage vagy az Azure Data Lake Store áruházba tárolhatja.
-3. Készítse elő az adatokat a betöltésre.
-4. Töltse be az adatokat átmeneti táblákba a PolyBase vagy a COPY paranccsal.
-5. Az adatok átalakítása.
+2. Az Azure Blob Storage-ba vagy Azure Data Lake Storeba helyezheti az adatterületet.
+3. Az adatgyűjtés előkészítése a betöltéshez.
+4. Töltse be az adatokba az átmeneti táblákat a Base vagy a COPY paranccsal.
+5. Alakítsa át az adathalmazt.
 6. Adatok beszúrása az éles üzemi táblákba.
 
-A PolyBase betöltési oktatóanyagáról a [PolyBase használata adatok azure blobstorage-ból történő betöltése.](load-data-from-azure-blob-storage-using-polybase.md)
+A Base betöltésével kapcsolatos oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](load-data-from-azure-blob-storage-using-polybase.md).
 
-További információ: [Minták betöltése blog](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/).
+További információ: [minták betöltése blog](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/).
 
-## <a name="1-extract-the-source-data-into-text-files"></a>1. A forrásadatok kibontása szöveges fájlokba
+## <a name="1-extract-the-source-data-into-text-files"></a>1. a forrásadatok kibontása szövegfájlba
 
-Az adatok kitárolása a tárolási helytől függ.  A cél az, hogy az adatokat áthelyezze a PolyBase és a COPY támogatott tagolt szövegbe vagy CSV fájlokba.
+A forrásrendszer adatokból való beolvasása a tárterület helyétől függ.  A cél az adatok alapszintű és a másolás támogatott tagolt szöveg-vagy CSV-fájlokba való áthelyezése.
 
-### <a name="polybase-and-copy-external-file-formats"></a>PolyBase és másolása külső fájlformátumok
+### <a name="polybase-and-copy-external-file-formats"></a>Kiinduló és külső fájlformátumok másolása
 
-A PolyBase és a COPY utasítás segítségével utf-8 és UTF-16 kódolású szöveg- vagy CSV-fájlokból tölthet be adatokat. A tagolt szöveg vagy CSV fájlok mellett a Hadoop fájlformátumokból, például az ORC-ből és a Parkettából is betöltődik. A PolyBase és a COPY utasítás a Gzip és a Snappy tömörített fájlokból is képes adatokat betölteni.
+A Base és a COPY utasítás használatával az adatok az UTF-8 és az UTF-16 kódolású tagolt szövegből vagy CSV-fájlokból tölthetők be. A tagolt szöveg-vagy CSV-fájlok mellett a Hadoop-fájlformátumokból, például az ORKből és a Parkettaből is betöltődik. A Base és a COPY utasítás a gzip és a Snappy tömörített fájlok adatait is képes betölteni.
 
-A kiterjesztett ASCII, a rögzített szélességű formátum és a beágyazott formátumok, például a WinZip vagy az XML nem támogatottak. Ha az SQL Server kiszolgálóról exportál, az [bcp parancssori eszközzel](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) exportálhatja az adatokat tagolt szövegfájlokba.
+A bővített ASCII, a rögzített szélességű formátum és a beágyazott formátumok, például a WinZip vagy az XML nem támogatottak. Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával tagolt szövegfájlba exportálhatja az adatok mennyiségét.
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Az adatok letárolása az Azure Blob storage-ba vagy az Azure Data Lake Store-ba
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. az adatgyűjtés az Azure Blob Storage-ba vagy Azure Data Lake Store
 
-Az Azure Storage-ban való letéréshez áthelyezheti [azazure blobtárolóba](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vagy az [Azure Data Lake Store Gen2 szolgáltatásba.](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Az adatokat mindkét helyen szöveges fájlokban kell tárolni. A PolyBase és a COPY utasítás mindkét helyről betölthető.
+Az Azure Storage-ban tárolt adatterületek áthelyezéséhez áthelyezheti azt az [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -ba vagy [Azure Data Lake Store Gen2](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Mindkét helyen az adatfájlokat szövegfájlokban kell tárolni. A Base és a COPY utasítás bármelyik helyről tölthető be.
 
-Az adatok Azure Storage-ba való áthelyezéséhez használható eszközök és szolgáltatások:
+Az Azure Storage-ba történő adatáthelyezéshez használható eszközök és szolgáltatások:
 
-- [Az Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) szolgáltatás javítja a hálózati átviteli teljesítményt, a teljesítményt és a kiszámíthatóságot. Az ExpressRoute egy olyan szolgáltatás, amely dedikált privát kapcsolaton keresztül továbbítja az adatokat az Azure-hoz. Az ExpressRoute-kapcsolatok nem továbbítják az adatokat a nyilvános interneten keresztül. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késéseket és nagyobb biztonságot nyújtanak, mint a nyilvános interneten keresztüli tipikus kapcsolatok.
-- [Az AZCopy segédprogram](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az adatokat a nyilvános interneten keresztül helyezi át az Azure Storage-ba. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. Ha az AZCopy segítségével rendszeresen szeretné végrehajtani a terheléseket, ellenőrizze a hálózati sebességet, hogy elfogadható-e.
-- [Az Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) rendelkezik egy átjáróval, amely a helyi kiszolgálón telepíthető. Ezután létrehozhat egy folyamatot az adatok áthelyezéséhez a helyi kiszolgálóról az Azure Storage-ba. A Data Factory és az SQL Analytics használatához olvassa el [az Adatok betöltése az SQL Analytics szolgáltatáshoz](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakört.
+- Az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. A ExpressRoute egy olyan szolgáltatás, amely az Azure-hoz való dedikált privát kapcsolatban továbbítja az adatait. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
+- A [AZCopy segédprogram](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az Azure Storage-ba helyezi át az adatátvitelt a nyilvános interneten keresztül. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. A AZCopy rendszeres betöltéséhez tesztelje a hálózati sebességet, és ellenőrizze, hogy elfogadható-e.
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. Ha az SQL Analytics szolgáltatással szeretne Data Factory használni, olvassa el az [SQL Analytics-beli adatbetöltése](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakört.
 
-## <a name="3-prepare-the-data-for-loading"></a>3. Készítse elő az adatokat a betöltésre
+## <a name="3-prepare-the-data-for-loading"></a>3. az adatgyűjtés előkészítése a betöltéshez
 
-Előfordulhat, hogy a betöltés előtt elő kell készítenie és meg kell tisztítania a tárfiókban lévő adatokat. Az adatok előkészítése akkor is elvégezhető, ha az adatok a forrásban vannak, miközben exportálja az adatokat szöveges fájlokba, vagy miután az adatok az Azure Storage-ban vannak.  Az adatokkal a lehető leghamarabb a legegyszerűbb dolgozni.  
+Előfordulhat, hogy a betöltés előtt elő kell készítenie és meg kell tisztítania a Storage-fiókban tárolt adatait. Az adatelőkészítés elvégezhető, miközben az adatai a forrásban vannak, miközben az adatait szövegfájlba exportálja, vagy az Azure Storage-ban tárolt adatai.  A lehető leghamarabb dolgozhat az adatkezelési folyamatokkal.  
 
 ### <a name="define-external-tables"></a>Külső táblák definiálása
 
-Ha PolyBase-t használ, a betöltés előtt meg kell határoznia a külső táblákat az SQL-készletben. A COPY utasítás nem igényel külső táblákat. A PolyBase külső táblákat használ az Azure Storage-adatok definiálására és elérésére.
+Ha a Base-t használja, a betöltés előtt meg kell határoznia a külső táblákat az SQL-készletben. A COPY utasítás nem igényli a külső táblákat. A Base külső táblákat használ az Azure Storage-ban tárolt adatok definiálásához és eléréséhez.
 
-Egy külső tábla hasonló az adatbázisnézethez. A külső tábla tartalmazza a táblasémát, és az SQL-készleten kívül tárolt adatokra mutat.
+Egy külső tábla hasonlít egy adatbázis-nézethez. A külső tábla tartalmazza a tábla sémáját, és az SQL-készleten kívül tárolt adatértékekre mutat.
 
-A külső táblák megadása magában foglalja az adatforrás, a szövegfájlok formátumának és a táblázatdefiníciók megadását. A Szükséges T-SQL szintaxis referenciacikkek a következők:
+A külső táblák meghatározása magában foglalja az adatforrás megadását, a szövegfájlok formátumát és a tábla definícióit. A T-SQL szintaxissal kapcsolatos, a szükséges cikkek a következők:
 
 - [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-A Parquet betöltésekor az SQL adattípus-leképezés a következő:
+A parketta betöltésekor az SQL adattípus-leképezés a következő:
 
-| **Parketta adattípusa** | **SQL adattípus** |
+| **Parketta adattípusa** | **SQL-adattípus** |
 | :-------------------: | :---------------: |
 |        tinyint        |      tinyint      |
 |       smallint        |     smallint      |
@@ -96,69 +96,69 @@ A Parquet betöltésekor az SQL adattípus-leképezés a következő:
 |        bigint         |      bigint       |
 |        logikai        |        bit        |
 |        double         |       lebegőpontos       |
-|         lebegőpontos         |       real        |
-|        double         |       Pénzt       |
-|        double         |    kis pénz     |
-|        sztring         |       nchar       |
+|         lebegőpontos         |       valós szám        |
+|        double         |       pénzt       |
+|        double         |    túlcsordulási     |
+|        sztring         |       NCHAR       |
 |        sztring         |     nvarchar      |
-|        sztring         |       Char        |
+|        sztring         |       char        |
 |        sztring         |      varchar      |
 |        binary         |      binary       |
-|        binary         |     varbinary között     |
+|        binary         |     varbinary     |
 |       időbélyeg       |       dátum        |
-|       időbélyeg       |   smalldatetime   |
+|       időbélyeg       |   idő adattípusúra   |
 |       időbélyeg       |     datetime2     |
 |       időbélyeg       |     dátum/idő      |
 |       időbélyeg       |       time        |
 |         dátum          |       dátum        |
 |        tizedes tört        |      tizedes tört      |
 
-A külső objektumok létrehozásának például a Betöltési oktatóanyag [Külső táblák létrehozása](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) című témakörben található.
+A külső objektumok létrehozásának példáját a betöltési útmutató [külső táblák létrehozása](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) lépésében tekintheti meg.
 
 ### <a name="format-text-files"></a>Szövegfájlok formázása
 
-PolyBase használata esetén a definiált külső objektumoknak a szövegfájlok sorait a külső táblázathoz és a fájlformátum-definícióhoz kell igazítaniuk. A szövegfájl egyes sorának adatainak igazodniuk kell a táblázat definíciójához.
+Ha a Base-t használja, a külső objektumoknak meg kell igazítaniuk a szövegfájl sorait a külső tábla és a fájlformátum definíciója szerint. A szövegfájl egyes soraiban lévő összes értéknek a tábla definícióját kell igazítania.
 A szövegfájlok formázása:
 
-- Ha az adatok nem relációs forrásból származnak, sorokká és oszlopokká kell alakítania azadatokat. Függetlenül attól, hogy az adatok relációs vagy nem relációs forrásból származnak, az adatokat úgy kell átalakítani, hogy igazodjanak annak a táblának az oszlopdefinícióihoz, amelybe az adatokat be kívánja tölteni.
-- A szövegfájlban lévő adatok formázásával igazodjon a céltábla oszlopaihoz és adattípusaihoz. A külső szövegfájlokban lévő adattípusok és az SQL-készlettábla közötti eltérés hatására a program elutasítja a sorokat a terhelés során.
-- A szövegfájl mezőinek elkülönítése terminátorral.  Ügyeljen arra, hogy olyan karaktert vagy karaktersorozatot használjon, amely nem található meg a forrásadatokban. Használja a [külső fájlformátum létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)mezőben megadott terminátort.
+- Ha az adatok nem összehasonlítható forrásból származnak, át kell alakítania azokat sorokra és oszlopokra. Függetlenül attól, hogy az adatok egy rokon vagy nem rokon forrásból származnak-e, az adatoknak át kell alakítani a táblázat azon oszlopainak definícióját, amelybe az adatok betöltését tervezi.
+- Formázza a szövegfájlban lévő adattípusokat, hogy a cél táblában lévő oszlopokkal és adattípusokkal igazodjanak. A külső szövegfájlokban lévő adattípusok és az SQL Pool tábla közötti helytelen igazítás a sorok elutasítását okozza a terhelés során.
+- Külön mezők a szövegfájlban egy lezáró fájllal.  Ügyeljen arra, hogy olyan karaktert vagy karaktert használjon, amely nem található meg a forrásadatok között. Használja a [külső fájlformátum létrehozásakor](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)megadott lezárót.
 
-## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. Töltse be az adatokat a PolyBase vagy a COPY utasítás használatával
+## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. az adatok betöltése a Base vagy a COPY utasítás használatával
 
-Ajánlott adatokat betölteni egy átmeneti táblába. Az átmeneti táblák lehetővé teszik a hibák kezelését a termelési táblák beavatkozása nélkül. Az átmeneti tábla is lehetőséget ad arra, hogy az SQL-készlet MPP adatátalakítások, mielőtt az adatokat éles táblákba.
+Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába tölti be. Az előkészítési táblázatok lehetővé teszik a hibák kezelését az éles táblákkal való beavatkozás nélkül. Az előkészítési táblázat lehetővé teszi, hogy az SQL Pool MPP-t használja az adatátalakításokhoz, mielőtt az adatfeldolgozási táblákba beszúrja azokat.
 
-A táblát előre létre kell hozni, amikor egy MÁSOLÁSsal rendelkező átmeneti táblába tölti be.
+A táblázatot előre létre kell hozni a MÁSOLÁSt végző előkészítési táblába való betöltéskor.
 
-### <a name="options-for-loading-with-polybase-and-copy-statement"></a>A PolyBase és copy utasítással való betöltés beállításai
+### <a name="options-for-loading-with-polybase-and-copy-statement"></a>A Base és a COPY utasítás betöltésének lehetőségei
 
-Az adatok PolyBase segítségével az alábbi betöltési lehetőségek bármelyikét használhatja:
+Az adatok alapszintű betöltéséhez használhatja a következő betöltési lehetőségeket:
 
-- [A PolyBase t-SQL-t](load-data-from-azure-blob-storage-using-polybase.md) használ, ha az adatok az Azure Blob storage vagy az Azure Data Lake Store tárolóban vannak. Ez biztosítja a legtöbb ellenőrzést a betöltési folyamat, hanem megköveteli, hogy meghatározza a külső adatobjektumokat. A többi módszer határozza meg ezeket az objektumokat a színfalak mögött, amikor a forrástáblákat a céltáblákhoz rendeli.  A T-SQL-betöltések vezényléséhez használhatja az Azure Data Factory, az SSIS vagy az Azure-függvényeket.
-- [Az SSIS-sel rendelkező PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jól működik, ha a forrásadatok az SQL Server ben vannak, akár a helyszíni SQL Server ben, akár a felhőben. Az SSIS határozza meg a forrás és a céltábla-hozzárendeléseket, és vezényli a terhelést is. Ha már rendelkezik SSIS-csomagokkal, módosíthatja a csomagokat, hogy működjenek együtt az új adattárház célállomással.
-- [PolyBase és copy utasítás az Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) egy másik vezénylési eszköz.  Meghatározza a folyamatot, és ütemezi a feladatokat.
-- [Az Azure Databricks-szel rendelkező PolyBase](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) adatokat továbbít egy táblából egy Databricks-adatkeretbe, és/vagy adatokat ír egy Databricks-adatkeretből egy táblába a PolyBase használatával.
+- A [T-SQL-](load-data-from-azure-blob-storage-using-polybase.md) sel jól használható, ha az adatok Azure Blob Storage-ban vagy Azure Data Lake Storeban vannak. A leghatékonyabban szabályozhatja a betöltési folyamatot, de külső adatobjektumokat is meg kell határoznia. A többi módszer ezeket az objektumokat a háttérben úgy definiálja, ahogy a forrástábla táblázatokra van leképezve.  A T-SQL-terhelések összehangolása érdekében Azure Data Factory, SSIS vagy Azure functions-T használhat.
+- A [SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jól működik, ha a forrásadatok SQL Server, vagy SQL Server a helyszínen vagy a felhőben. A SSIS meghatározza a forrást a céltábla leképezéséhez, és összehangolja a terhelést is. Ha már rendelkezik SSIS-csomagokkal, a csomagokat módosíthatja úgy, hogy az új adattárház-célhelyen működjenek.
+- [A Base és a copy utasítás Azure Data Factory (ADF) egy másik összehangoló](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eszköz.  Meghatározza a folyamatokat és az ütemezett feladatokat.
+- A [Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a tábla adatait egy Databricks-dataframe továbbítja, és/vagy egy Databricks-dataframe származó adatot ír be egy tábla használatával.
 
-### <a name="other-loading-options"></a>Egyéb berakodási lehetőségek
+### <a name="other-loading-options"></a>Egyéb betöltési beállítások
 
-A PolyBase és a COPY utasítás mellett használhatja a [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vagy az [SqlBulkCopy API-t](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)is. A bcp közvetlenül az adatbázisba töltődik be anélkül, hogy az Azure Blob-tárolón keresztül haladna, és csak kis terhelésekhez készült.
+A Base és a COPY utasítás mellett a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vagy a [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)is használható. a BCP az Azure Blob Storage szolgáltatáson keresztül közvetlenül az adatbázisba töltődik be, és csak kis terhelések esetén használható.
 
 > [!NOTE]
-> Ezeknek a beállításoknak a terhelési teljesítménye lassabb, mint a PolyBase és a COPY utasítás.
+> Ezen beállítások betöltési teljesítménye lassabb, mint a "Base" és a "COPY" utasítás.
 
-## <a name="5-transform-the-data"></a>5. Az adatok átalakítása
+## <a name="5-transform-the-data"></a>5. az adatátalakítás
 
-Amíg az adatok az átmeneti táblában vannak, hajtsa végre a számítási feladatok által igényelt átalakításokat. Ezután helyezze át az adatokat egy termelési táblába.
+Amíg az adatok az előkészítési táblában vannak, hajtsa végre a számítási feladatok által igényelt átalakításokat. Ezután helyezze át az adatátvitelt egy éles táblába.
 
-## <a name="6-insert-the-data-into-production-tables"></a>6. Az adatok beszúrása a termelési táblázatokba
+## <a name="6-insert-the-data-into-production-tables"></a>6. az adattábla beillesztése a termelési táblákba
 
-A betét ... SELECT utasítás az átmeneti táblából az állandó táblába helyezi át az adatokat.
+A Beszúrás a (...) A SELECT utasítás az átmeneti tábla adatait az állandó táblába helyezi át.
 
-EtL-folyamat tervezésekor próbálja meg futtatni a folyamatot egy kis tesztmintán. Próbálja meg kibontani 1000 sort a táblából egy fájlba, helyezze át az Azure-ba, majd próbálja meg betölteni egy átmeneti táblába.
+Az ETL-folyamat tervezésekor próbálja meg futtatni a folyamatot egy kis tesztelési mintán. Próbálja meg kibontani a 1000 sort a táblából egy fájlba, helyezze át az Azure-ba, majd próbálja meg betölteni egy előkészítési táblába.
 
-## <a name="partner-loading-solutions"></a>Partnerbetöltési megoldások
+## <a name="partner-loading-solutions"></a>Partneri betöltési megoldások
 
-Sok partnerünk rendelkezik rakodási megoldásokkal. További információkért tekintse meg [megoldáspartnereink](sql-data-warehouse-partner-business-intelligence.md)listáját.
+Számos partnerünk betöltési megoldásokkal rendelkezik. További információért tekintse meg a [megoldás partnereink](sql-data-warehouse-partner-business-intelligence.md)listáját.
 
 ## <a name="next-steps"></a>További lépések
 

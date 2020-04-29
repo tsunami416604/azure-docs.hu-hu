@@ -1,73 +1,73 @@
 ---
-title: Tudásbázis szerkesztése - QnA Maker
-description: A QnA Maker lehetővé teszi a tudásbázis tartalmának kezelését egy könnyen használható szerkesztési élmény biztosításával.
+title: Tudásbázis szerkesztése – QnA Maker
+description: A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élményt biztosítson a Tudásbázis tartalmának kezeléséhez.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 3cf5dcedd4d2cfa82fda002b71abca1e5bea4b18
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756721"
 ---
-# <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a tudásbázisban
+# <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
-A QnA Maker lehetővé teszi a tudásbázis tartalmának kezelését egy könnyen használható szerkesztési élmény biztosításával.
+A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élményt biztosítson a Tudásbázis tartalmának kezeléséhez.
 
-A QnA-párok adatforrásból, például fájlból vagy URL-címből kerülnek hozzáadásra, vagy szerkesztői forrásként kerülnek hozzáadásra. Egy szerkesztői forrás azt jelzi, hogy a QnA-párt manuálisan adták hozzá a QnA portálhoz. Minden QnA pár szerkeszthető.
+A QnA párokat egy adatforrásból, például egy fájlból vagy URL-címről, vagy szerkesztői forrásként kell hozzáadni. A szerkesztői forrás azt jelzi, hogy a QnA pár kézzel lett hozzáadva a QnA-portálhoz. Az összes QnA-pár szerkesztésre elérhető.
 
-## <a name="add-an-editorial-qna-pair"></a>Szerkesztői QnA-pár hozzáadása
-1. Jelentkezzen be a [QnA portálra,](https://www.qnamaker.ai/)majd válassza ki azt a tudásbázist, amelyhez hozzá szeretné adni a QnA-párt.
-1. A tudásbázis **EDIT** lapján válassza a **QnA-pár hozzáadása** lehetőséget egy új QnA-pár hozzáadásához.
+## <a name="add-an-editorial-qna-pair"></a>Szerkesztői QnA pár hozzáadása
+1. Jelentkezzen be a [QnA-portálra](https://www.qnamaker.ai/), majd válassza ki azt a tudásbázist, amelyhez hozzá szeretné adni a QnA-párosítást.
+1. A Tudásbázis **Szerkesztés** lapján válassza a **QnA-pár hozzáadása** lehetőséget egy új QnA-pár hozzáadásához.
 
-1. Az új QnA pársorban adja hozzá a szükséges **Kérdések** és **válasz** mezőket. A többi mező nem kötelező. Minden mező bármikor módosítható.
+1. Az új QnA-pár sorban adja hozzá a szükséges **kérdések** és **válaszok** mezőket. A többi mező megadása nem kötelező. Az összes mező bármikor módosítható.
 
-1. Ha tetszés szerint **alternatív kifejezéseket**is hozzáadhat. Az alternatív megfogalmazás a kérdés bármely formája, amely jelentősen eltér az eredeti kérdéstől, de ugyanazt a választ kell adnia.
+1. Szükség esetén **alternatív megfogalmazást**is hozzáadhat. Az alternatív megfogalmazás a kérdés bármilyen formája, amely jelentősen eltér az eredeti kérdéstől, de ugyanazt a választ kell biztosítania.
 
-    Amikor a tudásbázis tava van, és be van kapcsolva az [aktív tanulás,](use-active-learning.md) a QnA Maker alternatív kifejezéseket gyűjt, amelyeket el kell fogadnia. Ezek a választási lehetőségek az előrejelzés pontosságának növelése érdekében vannak kiválasztva.
+    Ha a Tudásbázis közzé van téve, és az [aktív tanulás](use-active-learning.md) be van kapcsolva, a QnA Maker összegyűjti az Ön által elfogadott alternatív megfogalmazás-beállításokat. Ezek a beállítások az előrejelzés pontosságának növeléséhez vannak kiválasztva.
 
-1. Tetszés szerint adja hozzá **a metaadatokat**. A metaadatok megtekintéséhez válassza a helyi menü **Nézet beállításai parancsát.** A metaadatok szűrőket adnak az ügyfélalkalmazás válaszaihoz, például egy csevegőrobothoz.
+1. Szükség esetén **metaadatokat**is hozzáadhat. A metaadatok megtekintéséhez válassza a helyi menü **beállítások megtekintése** elemét. A metaadatok olyan szűrőket biztosítanak a válaszokhoz, amelyeket az ügyfélalkalmazás, például egy csevegési robot biztosít.
 
-1. Szükség esetén adja hozzá a **nyomon követési utasításokat.** A nyomon követési utasítások további beszélgetési útvonalakat biztosítanak az ügyfélalkalmazásszámára, amelyet a felhasználó rendelkezésére bocsát.
+1. Igény szerint hozzáadhat **követő utasításokat**is. A követő kérések további beszélgetési útvonalakat biztosítanak az ügyfélalkalmazás számára a felhasználónak való megjelenítéshez.
 
-1. Válassza a **Mentés és betanítás** lehetőséget az előrejelzések megtekintéséhez, beleértve az új QnA-párt is.
+1. Válassza a **Mentés és a betanítás** lehetőséget az új QnA-párokat tartalmazó előrejelzések megjelenítéséhez.
 
-## <a name="edit-a-qna-pair"></a>QnA-pár szerkesztése
+## <a name="edit-a-qna-pair"></a>QnA pár szerkesztése
 
-Bármely QnA-pár bármely mezője szerkeszthető, függetlenül az eredeti adatforrástól. Előfordulhat, hogy egyes mezők nem láthatók a környezeti eszköztáron található jelenlegi **nézetbeállítások** miatt.
+Bármely QnA pár mező szerkeszthető, az eredeti adatforrástól függetlenül. Előfordulhat, hogy egyes mezők nem láthatók a környezeti eszköztáron található aktuális **nézet** beállításai miatt.
 
-## <a name="delete-a-qna-pair"></a>QnA-pár törlése
+## <a name="delete-a-qna-pair"></a>QnA pár törlése
 
-QnA törléséhez kattintson a **QnA** sor jobb szélén található törlés ikonra. Ez egy állandó művelet. Nem lehet visszacsinálni. A készletek törlése előtt exportálja a tudásbázist a **Közzététel** lapról.
+A QnA törléséhez kattintson a QnA sor jobb szélén található **Törlés** ikonra. Ez egy állandó művelet. Nem vonható vissza. A készletek törlése előtt érdemes lehet a TUDÁSBÁZISt a **közzétételi** lapról exportálni.
 
-![QnA-pár törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![QnA pár törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-## <a name="find-the-qna-pair-id"></a>A QnA-pár azonosítójának megkeresése
+## <a name="find-the-qna-pair-id"></a>A QnA pár AZONOSÍTÓjának megkeresése
 
-Ha meg kell találnia a QnA-pár azonosítót, két helyen megtalálhatja:
+Ha meg kell találnia a QnA pár AZONOSÍTÓját, két helyen is megtalálhatja:
 
-* Mutass on the delete icon on the QnA pair sorban you are interested in. A rámutatás szövege tartalmazza a QnA-pár azonosítót.
-* Exportálja a tudásbázist. A tudásbázis minden QnA-párja tartalmazza a QnA-pár azonosítót.
+* Vigye a kurzort a Delete (Törlés) ikonra a QnA pár sorában, amelyre kíváncsi. A hover szövege magában foglalja a QnA párosítási AZONOSÍTÓját.
+* Exportálja a tudásbázist. A Tudásbázisban minden QnA pár tartalmazza a QnA-párt AZONOSÍTÓját.
 
 ## <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 
-Alternatív kérdések hozzáadása egy meglévő QnA-párhoz a felhasználói lekérdezések egyezésének valószínűségének növelése érdekében.
+Alternatív kérdéseket adhat hozzá egy meglévő QnA-párosításhoz, így növelheti annak valószínűségét, hogy a felhasználó lekérdezése megegyezzen.
 
 ![Alternatív kérdések hozzáadása](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
 ## <a name="linking-qna-pairs"></a>QnA-párok összekapcsolása
 
-A QnA-párok összekapcsolása nyomon követési utasításokat is [mellékel.](multiturn-conversation.md) Ez egy logikai kapcsolat a Tudásbázis szintjén kezelt QnA-párok között. A nyomon követési utasításokat a QnA Maker portálon szerkesztheti.
+A QnA párok összekapcsolása a [követő kérésekkel](multiturn-conversation.md)történik. Ez egy logikai kapcsolat a QnA-párok között, a Tudásbázis szintjén felügyelve. A következő utasításokat szerkesztheti a QnA Maker-portálon.
 
-A qna-párok nem kapcsolhatók össze a válasz metaadataiban.
+A válasz metaadataiban nem lehet összekapcsolni a QnA párokat.
 
 ## <a name="add-metadata"></a>Metaadatok hozzáadása
 
-Metaadat-halmazok hozzáadásához először a **Nézet beállítások**, majd a Metaadatok megjelenítése lehetőséget választva adja hozzá a **metaadat-készleteket.** Ez megjeleníti a metaadat oszlopot. Ezután jelölje **+** ki a jelet egy metaadatkészlet hozzáadásához. Ez a készlet egy kulcsból és egy értékből áll.
+Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése**lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** jelet a metaadat-készlet hozzáadásához. Ez a készlet egy kulcsból és egy értékből áll.
 
-## <a name="save-changes-to-the-qna-pairs"></a>A QnA-párok módosításának mentése
+## <a name="save-changes-to-the-qna-pairs"></a>QnA-párok módosításainak mentése
 
-A módosítások elvesztésének elkerülése érdekében a módosítások elkerülése érdekében a Módosítások **és a Betanítás** lehetőséget rendszeresen válassza a Mentés és betanítás gombra.
+A módosítások elvesztésének elkerülése érdekében időnként válassza a **Mentés és a betanítás** lehetőséget.
 
 ![Metaadatok hozzáadása](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -76,4 +76,4 @@ A módosítások elvesztésének elkerülése érdekében a módosítások elker
 > [!div class="nextstepaction"]
 > [Együttműködés a tudásbázison](./collaborate-knowledge-base.md)
 
-* [A QnA Maker által használt Azure-erőforrások kezelése](set-up-qnamaker-service-azure.md)
+* [Az QnA Maker által használt Azure-erőforrások kezelése](set-up-qnamaker-service-azure.md)

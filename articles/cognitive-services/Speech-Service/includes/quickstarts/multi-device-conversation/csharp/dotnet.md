@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
 ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671326"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa **meg Program.cs,** és cserélje le az összes benne lévő kódot a következő kódra:
+1. Nyissa meg a **program.cs**, és cserélje le az összes kódot a következő kódra:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -199,26 +199,26 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
     }
     ```
 
-1. Ugyanebben a fájlban `YourSubscriptionKey` cserélje le a karakterláncot a Cognitive Speech-előfizetési kulcsra.
+1. Ugyanebben a fájlban cserélje le a karakterláncot `YourSubscriptionKey` a kognitív beszéd előfizetési kulcsára.
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. A menüsorban válassza az > **Összes** **fájlmentése**lehetőséget.
+1. A menüsávban válassza a **fájl** > **Mentés összes mentése**elemet.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Új beszélgetés létrehozásához és futtatásához hozza létre és futtassa az alkalmazást
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Az alkalmazás felépítése és futtatása új beszélgetés létrehozásához
 
-1. A menüsorban válassza **buildmegoldás összeállítása** > **az** alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a Build **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. A **helloworld** alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5)** billentyűt.
+1.  > A **HelloWorld** alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az **F5**billentyűt).
 
-1. Ha megjelenik `Started transcribing` az üzenet, elkezdheti a beszédet. Látni fogja, ahogy az átiratok megjelennek, miközben beszél.
-    - Ha megosztja a beszélgetési kódot a többiekkel, és ők csatlakoznak a beszélgetéshez, az átirataik is megjelennek.
+1. Amint megjelenik az üzenet `Started transcribing` , megkezdheti a beszédet. Ekkor megjelenik az átiratok, ahogy beszél.
+    - Ha a beszélgetési kódot másokkal is megosztja, és a beszélgetéshez csatlakoznak, az átiratokat is látni fogja.
 
-1. Ha végzett a beszédel, nyomja le a <kbd>Ctrl+C billentyűkombinációt</kbd> a hangrögzítés leállításához, és fejezze be a beszélgetést.
+1. Ha elkészült, nyomja le a <kbd>CTRL + C</kbd> billentyűkombinációt a hangrögzítés leállításához és a beszélgetés befejezéséhez.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Meglévő beszélgetéshez való csatlakozáshoz az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Az alkalmazás létrehozása és futtatása egy meglévő beszélgetéshez való csatlakozáshoz
 
-1. Másolja és illessze be a következő függvényt a **Program.cs:**
+1. Másolja és illessze be a következő függvényt a **program.cs**:
 
     ```csharp
     static async Task JoinConversationAsync(string conversationId)
@@ -294,7 +294,7 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
     }
     ```
 
-2. Cserélje `CreateConversationAsync();` ki `public static async Task Main(string[] args)` a funkciót a következőre:
+2. Cserélje `CreateConversationAsync();` le a `public static async Task Main(string[] args)` függvényben a következőket:
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,18 +303,18 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Lépjen vissza a Visual Studióba, és cserélje le a karakterláncot `YourConversationId` az előző lépésben létrehozott beszélgetésazonosítóra.
+4. Lépjen vissza a Visual studióhoz, és cserélje `YourConversationId` le a karakterláncot az előző lépésben létrehozott BESZÉLGETÉSi azonosítóra.
 
-5. A menüsorban válassza **buildmegoldás összeállítása** > **az** alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+5. Az alkalmazás létrehozásához a menüsávon válassza a Build **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-6. A **helloworld** alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5)** billentyűt.
+6.  > A **HelloWorld** alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az **F5**billentyűt).
 
-7. Ha megjelenik `Started transcribing` az üzenet, elkezdheti a beszédet. Látni fogja, ahogy az átiratok megjelennek, miközben beszél.
-    - Ha visszatér a böngészőjéhez, akkor az átiratok is megjelennek ott, miközben beszél.
+7. Amint megjelenik az üzenet `Started transcribing` , megkezdheti a beszédet. Ekkor megjelenik az átiratok, ahogy beszél.
+    - Ha visszatér a böngészőbe, az átírásokat is látni fogja, ahogy beszél.
 
-8. Ha végzett a beszédel, nyomja le a <kbd>Ctrl+C billentyűkombinációt</kbd> a hangrögzítés leállításához, és fejezze be a beszélgetést.
+8. Ha elkészült, nyomja le a <kbd>CTRL + C</kbd> billentyűkombinációt a hangrögzítés leállításához és a beszélgetés befejezéséhez.
 
-9. Lépjen vissza a böngészőbe, és lépjen ki a beszélgetésből a jobb felső sarokban található kilépésgombbal.
+9. Lépjen vissza a böngészőbe, és lépjen ki a beszélgetésből a jobb felső sarokban található Exit (Kilépés) gomb használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 

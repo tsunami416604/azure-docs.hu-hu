@@ -1,6 +1,6 @@
 ---
-title: Fürtözési pont adatai a térképen | Microsoft Azure Maps
-description: Ebből a cikkből megtudhatja, hogyan fürtözheti a pontadatokat, és hogyan jelenítheti meg azokat a Microsoft Azure Maps Web SDK használatával.
+title: A csoportosítási pontra vonatkozó adatelemek | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan teheti a fürtöket, és hogyan jelenítheti meg egy térképen a Microsoft Azure Maps web SDK használatával.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,23 +10,23 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen
 ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804571"
 ---
-# <a name="clustering-point-data"></a>Fürtözési pont adatai
+# <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 
-A térkép en számos adatpontjának megjelenítésekor az adatpontok átfedhetik egymást. Az átfedés miatt a térkép olvashatatlanná és nehezen használhatóvá válhat. A fürtözési pont adatai az egymáshoz közeli pontadatok egyesítésének és a térképen egyetlen fürtözött adatpontként való megjelenítésének folyamata. Ahogy a felhasználó ráközelít a térképre, a fürtök szétválnak az egyes adatpontjaikra. Ha nagy számú adatponttal dolgozik, használja a fürtözési folyamatokat a felhasználói élmény javítása érdekében.
+Ha sok adatpontot jelenít meg a térképen, az adatpontok átfedésben lehetnek egymással. Az átfedés miatt előfordulhat, hogy a Térkép olvashatatlan és nehezen használható. A fürtözési pontra vonatkozó adatgyűjtési folyamat a pontok egymáshoz közel lévő és a térképen való megjelenítését jelenti egyetlen fürtözött adatpontként. Ahogy a felhasználó nagyítja a térképet, a fürtök az egyes adatpontokon kívülre kerülnek. Ha nagy számú adatpontot használ, a fürtözési folyamatokkal növelheti felhasználói élményét.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-## <a name="enabling-clustering-on-a-data-source"></a>Fürtözés engedélyezése adatforráson
+## <a name="enabling-clustering-on-a-data-source"></a>Az adatforrások fürtözésének engedélyezése
 
-Engedélyezze a `DataSource` fürtözést `cluster` az osztályban úgy, hogy a beállítást igaz értékre állítja. Állítsa `ClusterRadius` be a közeli pontok kijelöléséhez, és fürtbe egyesítve azokat. Az érték `ClusterRadius` képpontban van. Itt `clusterMaxZoom` adhatja meg azt a nagyítási szintet, amelyen letilthatja a fürtözési logikát. Íme egy példa arra, hogyan engedélyezheti a fürtözést egy adatforrásban.
+Engedélyezze a fürtözést a `DataSource` osztályban úgy, hogy `cluster` a beállítást igaz értékre állítja. Állítsa `ClusterRadius` be a közeli pontok kijelölését, és egy fürthöz kombinálja őket. A értéke `ClusterRadius` képpontban megadva. Ezzel `clusterMaxZoom` a beállítással adható meg egy nagyítási szint, amelyen le kell tiltani a fürtszolgáltatási logikát. Íme egy példa arra, hogyan engedélyezhető a fürtözés egy adatforrásban.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -44,87 +44,87 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> Ha két adatpont közel van egymáshoz a földön, lehetséges, hogy a fürt soha nem szakad szét, függetlenül attól, hogy milyen közel van a felhasználó nagyítása. Ennek megoldásához beállíthatja `clusterMaxZoom` a fürtözési logika letiltásának lehetőségét, és egyszerűen megjeleníthet mindent.
+> Ha két adatpont van a helyszínen, akkor lehetséges, hogy a fürt soha nem szakad meg egymástól, attól függetlenül, hogy a felhasználó milyen mértékben nagyítja a szolgáltatást. Ennek a megoldásnak a `clusterMaxZoom` megadásával letilthatja a fürtözési logikát, és egyszerűen megjelenítheti a mindent.
 
-Az osztály által `DataSource` a fürtözéshez biztosított további módszerek:
+Az alábbiakban az osztály által a `DataSource` fürtözéshez biztosított további módszerek érhetők el:
 
-| Módszer | Visszatérés típusa | Leírás |
+| Módszer | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: szám) | Ígéret&lt;&lt;tömbjellemző&lt;geometriája, bármilyen&gt; \| alakzat&gt;&gt; | Az adott fürt gyermekeinek lekérése a következő nagyítási szinten. Ezek a gyerekek lehetnek a formák és alklaszterek kombinációja. Az alfürtök fürtözött tulajdonságokkal rendelkező szolgáltatások lesznek. |
-| getClusterExpansionZoom(clusterId: szám) | Ígéret&lt;száma&gt; | Kiszámítja azt a nagyítási szintet, amelyen a fürt kitágul vagy széttörik. |
-| getClusterLeaves(clusterId: szám, limit: szám, eltolás: szám) | Ígéret&lt;&lt;tömbjellemző&lt;geometriája, bármilyen&gt; \| alakzat&gt;&gt; | A fürt összes pontjának beolvasása. Állítsa `limit` be a pontok egy részhalmazának `offset` visszaadására, és használja a lapozáshoz a pontokat. |
+| getClusterChildren (clusterId: szám) | A&lt;tömb&lt;funkcióinak&lt;geometriája&gt; \| , bármilyen alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
+| getClusterExpansionZoom (clusterId: szám) | Ígéret&lt;száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
+| getClusterLeaves (clusterId: szám, korlát: szám, eltolás: szám) | A&lt;tömb&lt;funkcióinak&lt;geometriája&gt; \| , bármilyen alakzat&gt;&gt; | Egy fürt összes pontjának lekérése. Állítsa be `limit` a értéket a pontok részhalmazának visszaadásához, majd `offset` a pontokon keresztül használja a to (pontok) lapot. |
 
-## <a name="display-clusters-using-a-bubble-layer"></a>Fürtök megjelenítése buborékréteg használatával
+## <a name="display-clusters-using-a-bubble-layer"></a>Fürtök megjelenítése buborék réteg használatával
 
-A buborékréteg nagyszerű módja a csoportosított pontok megjelenítésének. A kifejezések segítségével méretezheti a sugarat, és módosíthatja a színt a fürtben lévő pontok száma alapján. Ha a fürtöket buborékréteggel jeleníti meg, akkor külön réteget kell használnia a nem fürtözött adatpontok megjelenítéséhez.
+A buborék réteg a fürtözött pontok renderelésének nagyszerű módja. Használjon kifejezéseket a sugár méretezésére és a szín módosítására a fürtben lévő pontok száma alapján. Ha buborék réteggel jeleníti meg a fürtöket, akkor egy különálló réteget kell használnia a nem fürtözött adatpontok megjelenítéséhez.
 
-Ha meg szeretné jeleníteni a fürt méretét a buborék tetején, használjon szöveget tartalmazó szimbólumréteget, és ne használjon ikont.
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Egyszerű buborékréteg-fürtözés" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>Basic buborékréteg fürtözését</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
-</iframe>
-
-## <a name="display-clusters-using-a-symbol-layer"></a>Fürtök megjelenítése szimbólumréteg használatával
-
-Az adatpontok megjelenítésekor a szimbólumréteg automatikusan elrejti az egymást átfedő szimbólumokat, hogy tisztább felhasználói felületet biztosítson. Ez az alapértelmezett viselkedés nem kívánatos, ha meg szeretné jelenlennie az adatpontok sűrűsége a térképen. Ezek a beállítások azonban módosíthatók. Az összes szimbólum megjelenítéséhez `allowOverlap` állítsa a `iconOptions` Szimbólumrétegek `true`tulajdonság beállítását a parancsra. 
-
-A fürtözés segítségével megjelenítheti az adatpontok sűrűségét, miközben tiszta felhasználói felületet tart fenn. Az alábbi minta bemutatja, hogyan adhat hozzá egyéni szimbólumokat, és hogyan jelölheti a fürtöket és az egyes adatpontokat a szimbólumréteg használatával.
+A buborék tetején található fürt méretének megjelenítéséhez használjon egy szöveget tartalmazó szimbólum réteget, és ne használjon ikont.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Fürtözött szimbólumréteg" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Fürtözött szimbólum réteget</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Alapszintű buborékdiagram-fürtözés" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>alapszintű buborék rétegének fürtözését</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="clustering-and-the-heat-maps-layer"></a>Klaszterek és a hőtérképek réteg
+## <a name="display-clusters-using-a-symbol-layer"></a>Fürtök megjelenítése egy szimbólum réteg használatával
 
-A hőtérképek nagyszerű módja annak, hogy megjelenítse az adatok sűrűségét a térképen. Ez a vizualizációs módszer önmagában nagy számú adatpontot képes kezelni. Ha az adatpontok csoportosítva vannak, és a fürtméretet használja a hőtérkép súlyaként, akkor a hőtérkép még több adatot képes kezelni. Ennek a beállításnak `weight` az eléréséhez állítsa `['get', 'point_count']`be a hőtérkép-réteg beállítását a értékre. Ha a fürt sugara kicsi, a hőtérkép majdnem megegyezik a nem fürtözött adatpontokat használó hőtérképpel, de sokkal jobban fog teljesíteni. Azonban minél kisebb a fürt sugara, annál pontosabb lesz a hőtérkép, de kevesebb teljesítményelőnnyel.
+Az adatpontok megjelenítésekor a szimbólum réteg automatikusan elrejti az egymással átfedésben lévő szimbólumokat a tisztább felhasználói felület biztosításához. Ez az alapértelmezett viselkedés nem kívánatos lehet, ha az adatpontok sűrűségét szeretné megjeleníteni a térképen. Ezek a beállítások azonban megváltoztathatók. Az összes szimbólum megjelenítéséhez állítsa a `allowOverlap` Symbol Layers `iconOptions` tulajdonság beállítását a `true`következőre:. 
+
+A fürtözés használatával jelenítheti meg az adatpontok sűrűségét a tiszta felhasználói felület megőrzése mellett. Az alábbi minta bemutatja, hogyan adhat hozzá egyéni szimbólumokat, és hogyan jelölheti ki a fürtöket és az egyes adatpontokat a szimbólum réteg használatával.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Fürt súlyozott hőtérképe" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Tollfürt súlyozott hőtérképét</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) szerint a <a href='https://codepen.io'>CodePen webhelyen.</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Fürtözött szimbólum réteg" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>fürtözött szimbólum réteget</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="mouse-events-on-clustered-data-points"></a>Egéresemények csoportosított adatpontokon
+## <a name="clustering-and-the-heat-maps-layer"></a>Fürtözés és a Heat Maps réteg
 
-Ha egéresemények lépnek fel fürtözött adatpontokat tartalmazó rétegen, a fürtözött adatpont GeoJSON-pont szolgáltatásobjektumként tér vissza az eseményhez. Ez a pontszolgáltatás a következő tulajdonságokkal rendelkezik:
+A Heat Maps nagyszerű lehetőséget mutat a térképen lévő adatsűrűség megjelenítésére. Ez a vizualizációs módszer nagy számú adatpontot képes kezelni. Ha az adatpontok fürtözöttek, és a rendszer a fürt méretét használja a Heat Map súlyozásához, akkor a Heat Map még több adattal is képes kezelni. Ennek a beállításnak a megadásához állítsa be a Heat Térkép `weight` réteg `['get', 'point_count']`beállítását a következőre:. Ha a fürt sugara kisméretű, a Heat Térkép a nem fürtözött adatpontok használatával nagyjából megegyezően fog megjelenni, de sokkal jobban fog végezni. Azonban minél kisebb a fürt sugara, annál pontosabbak lesznek a hőenergia-leképezések, de a teljesítményük kevesebb előnnyel jár.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="A fürt súlyozott felmelegedési térképe" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>fürtök súlyozott Heat térképét</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="mouse-events-on-clustered-data-points"></a>Az egér eseményei a fürtözött adatpontokon
+
+Ha az egér eseményei olyan rétegen történnek, amely fürtözött adatpontokat tartalmaz, a fürtözött adatpont GeoJSON pont szolgáltatás objektumként tér vissza az eseményre. Ennek a pontnak a funkciója a következő tulajdonságokkal fog rendelkezni:
 
 | Tulajdonság neve             | Típus    | Leírás   |
 |---------------------------|---------|---------------|
-| `cluster`                 | logikai | Azt jelzi, hogy a szolgáltatás fürtöt jelöl-e. |
-| `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható a `getClusterExpansionZoom` `getClusterChildren`DataSource `getClusterLeaves` , és metódusok. |
+| `cluster`                 | logikai | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
+| `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom`, `getClusterChildren`és `getClusterLeaves` metódusokkal. |
 | `point_count`             | szám  | A fürt által tartalmazott pontok száma.  |
-| `point_count_abbreviated` | sztring  | Olyan karakterlánc, amely rövidíti `point_count` az értéket, ha hosszú. (például 4000 lesz 4K)  |
+| `point_count_abbreviated` | sztring  | Egy karakterlánc, amely hosszabb ideig `point_count` rövidíti az értéket. (például 4 000-es lesz 4K)  |
 
-Ez a példa egy buborékréteget vesz igénybe, amely fürtpontokat jelenít meg, és kattintási eseményt ad hozzá. Amikor a kattintási esemény eseményindítók, a kód kiszámítja és nagyítja a térképet a következő nagyítási szintre, amelyen a fürt szétesik. Ez a funkció az `getClusterExpansionZoom` `DataSource` osztály metódusával `cluster_id` és a kattintott fürtözött adatpont tulajdonságával valósítja meg.
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört a <a href='https://codepen.io'>CodePen webhelyen.</a>
-</iframe>
-
-## <a name="display-cluster-area"></a>Fürtterület megjelenítése 
-
-A fürt által képviselt pontadatok egy területen vannak elosztva. Ebben a mintában, amikor az egér egy fürt fölé kerül, két fő viselkedés fordul elő. Először is, a klaszterben található egyedi adatpontokat a konvex hajótest kiszámítására használják. Ezután a konvex hajótest jelenik meg a térképen, hogy megjelenjen egy terület.  A konvex hajótest egy sokszög, amely körülöleli egy sor pontot, mint egy rugalmas sáv, és lehet számítani a `atlas.math.getConvexHull` módszerrel. A fürtben lévő összes pont a `getClusterLeaves` metódus sal beolvasható az adatforrásból.
+Ez a példa egy buborék réteget hoz létre, amely megjeleníti a fürtöket, és hozzáadja a click (kattintás) eseményt. Ha az esemény-Eseményindítók elemre kattint, a kód kiszámítja és nagyítja a térképet a következő nagyítási szintre, amelyen a fürt elszakad. Ez a funkció a `getClusterExpansionZoom` `DataSource` osztály metódusával és a fürtözött adatpontra rákattintott `cluster_id` tulajdonsággal valósítható meg.
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Klaszter terület konvex hajótest" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Tollfürt terület konvex hajótest</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Fürt getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által a <a href='https://codepen.io'>CodePen</a>-on található Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>cluster getClusterExpansionZoom</a> .
 </iframe>
 
-## <a name="aggregating-data-in-clusters"></a>Adatok összesítése fürtökben
+## <a name="display-cluster-area"></a>A fürt környékének megjelenítése 
 
-A fürtöket gyakran egy szimbólum mal jelölik, amely a fürtön belüli pontok számát használja. De néha kívánatos, hogy testre szabhatja a fürtök stílusát további mérőszámokkal. A fürtösszesítések segítségével egyéni tulajdonságok hozhatók létre és tölthetők fel [egy összesített kifejezésszámítással.](data-driven-style-expressions-web-sdk.md#aggregate-expression)  A fürtaggregátumok `clusterProperties` a `DataSource`beállításában határozhatók meg.
+A fürt által reprezentált pont-adat egy adott terület felett van elosztva. Ebben a példában, amikor az egérmutatót egy fürt fölé viszi, két fő viselkedés fordul elő. Először a fürtben lévő egyes adatpontokat fogjuk használni a domború hajótest kiszámításához. Ezután a domború hajótest megjelenik a térképen egy terület megjelenítéséhez.  A domború hajótest egy olyan sokszög, amely egy rugalmas szalaghoz hasonló pontokat helyez el, és a `atlas.math.getConvexHull` metódus használatával számítható ki. A fürtben található összes pont a `getClusterLeaves` metódus használatával kérhető le az adatforrásból.
 
-A következő minta egy összesítő kifejezést használ. A kód kiszámítja a fürt egyes adatpontjainak entitástípus-tulajdonsága alapján a számlálót. Amikor a felhasználó egy fürtre kattint, egy előugró ablak jelenik meg a fürtről további információkkal.
+<br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Fürtaggregátumok" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Tollfürt összesítéseit</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen webhelyen.</a>
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Fürt domború hajótest" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>fürt domború hajótestét</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>Fürtökben lévő adatösszesítés
+
+A fürtök gyakran jelképezik a fürtön belüli pontok számát jelző szimbólumot. Előfordulhat azonban, hogy a fürtök stílusát további mérőszámokkal szeretné testre szabni. A fürtök összesítései esetében egyéni tulajdonságok hozhatók létre és tölthetők fel [összesítő kifejezés](data-driven-style-expressions-web-sdk.md#aggregate-expression) számításával.  A fürt összesítései a `clusterProperties` `DataSource`alkalmazásban is meghatározhatók.
+
+Az alábbi minta összesítő kifejezést használ. A kód a fürt minden adatpontjának entitás típusa tulajdonsága alapján számítja ki a darabszámot. Amikor egy felhasználó rákattint egy fürtre, a felugró ablak további információkat jelenít meg a fürtről.
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Fürt összesítései" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>fürtök összesítéseit</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések
@@ -138,9 +138,9 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [DataSourceOptions objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [atlas.math névtér](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [Atlas. Math névtér](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
 
-Tekintse meg a kódpéldákat, hogy funkciókat adjon az alkalmazáshoz:
+Az alkalmazás funkcióinak hozzáadásához tekintse meg a kód példáit:
 
 > [!div class="nextstepaction"]
 > [Buborékréteg hozzáadása](map-add-bubble-layer.md)

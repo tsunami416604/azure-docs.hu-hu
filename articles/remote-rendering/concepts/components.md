@@ -1,28 +1,28 @@
 ---
 title: Összetevők
-description: Az Azure távoli renderelés hatókörében lévő összetevők meghatározása
+description: Az Azure távoli renderelés hatókörében található összetevők definíciója
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: cb8b38addef736914a8627971e57ea2b173293d6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681895"
 ---
 # <a name="components"></a>Összetevők
 
-Az Azure távoli renderelés az [entitásösszetevő-rendszer](https://en.wikipedia.org/wiki/Entity_component_system) mintáját használja. Míg [az entitások](entities.md) az objektumok pozícióját és hierarchikus összetételét képviselik, az összetevők felelősek a viselkedés megvalósításáért.
+Az Azure távoli renderelés az [entitás-összetevő](https://en.wikipedia.org/wiki/Entity_component_system) rendszermintáját használja. Míg az [entitások](entities.md) képviselik a pozíciót és az objektumok hierarchikus összetételét, az összetevők a viselkedés végrehajtásáért felelősek.
 
-A leggyakrabban használt összetevőtípusok a [hálóösszetevői,](meshes.md)amelyek hálókat adnak a renderelési folyamathoz. Hasonlóképpen, [könnyű alkatrészeket](../overview/features/lights.md) használnak, hogy adjunk világítás és [vágott sík alkatrészek](../overview/features/cut-planes.md) et használnak vágni nyitott csak nem.
+Az összetevők leggyakrabban használt típusai a [Rácsvonalak](meshes.md), amelyek a renderelési folyamatba helyezik a hálókat. Hasonlóképpen, a [világos összetevőket](../overview/features/lights.md) a rendszer a világító és a [kivágási sík összetevők](../overview/features/cut-planes.md) hozzáadására használja a nyitott rácsvonalak kivágására.
 
-Ezek az összetevők referenciapontként annak az entitásnak az átalakítóját (pozíció, elforgatás, lépték) használják, amelyhez kapcsolódnak.
+Ezek az összetevők a hivatkozási pontként, a hozzájuk kapcsolódó entitások átalakítását (pozícióját, elforgatását, méretezését) használják.
 
-## <a name="working-with-components"></a>Az összetevők kelése
+## <a name="working-with-components"></a>Összetevők használata
 
-Az összetevőket egyszerűen hozzáadhatja, eltávolíthatja és kezelheti programozott módon:
+Az összetevők programozott módon egyszerűen hozzáadhatók, eltávolíthatók és kezelhetők:
 
 ```cs
 // create a point light component
@@ -39,15 +39,15 @@ lightComponent.Destroy();
 lightComponent = null;
 ```
 
-Egy összetevő a létrehozás időpontjában kapcsolódik egy entitáshoz. Ezt követően nem helyezhető át egy másik entitásba. Az összetevők explicit módon `Component.Destroy()` törlődnek, vagy automatikusan, ha az összetevő tulajdonosi entitása megsemmisül.
+Az összetevők létrehozáskor egy entitáshoz vannak csatolva. Ezt követően nem helyezhető át másik entitásba. Az összetevők explicit módon törlődnek `Component.Destroy()` a vagy automatikusan, ha az összetevő tulajdonosi entitása megsemmisül.
 
-Egyszerre csak egy összetevőtípus tadható hozzá egy entitáshoz.
+Egyszerre csak egy példány adható hozzá egy entitáshoz.
 
-## <a name="unity-specific"></a>Egységspecifikus
+## <a name="unity-specific"></a>Unity-specifikus
 
-A Unity integráció további bővítményfunkciókkal rendelkezik az összetevőkkel való interakcióhoz. Lásd [Unity játék tárgyak és alkatrészek](../how-tos/unity/objects-components.md).
+Az Unity Integration további bővítmény-funkciókat biztosít az összetevőkkel való interakcióhoz. Lásd: [Unity game Objects és Components](../how-tos/unity/objects-components.md).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Objektumhatárok](object-bounds.md)
-* [Rácsvonalak](meshes.md)
+* [Hálók](meshes.md)

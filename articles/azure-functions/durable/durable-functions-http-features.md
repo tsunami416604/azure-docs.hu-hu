@@ -1,69 +1,69 @@
 ---
-title: HTTP-funkciók a tartós funkciókban – Azure-funkciók
-description: Ismerje meg az integrált HTTP-funkciókat az Azure Functions tartós funkciók bővítményében.
+title: HTTP-szolgáltatások a Durable Functions-Azure Functions
+description: Ismerje meg a Azure Functions Durable Functions bővítményének integrált HTTP-funkcióit.
 author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80802383"
 ---
-# <a name="http-features"></a>HTTP-szolgáltatások
+# <a name="http-features"></a>HTTP-funkciók
 
-A Durable Functions számos olyan funkcióval rendelkezik, amelyek megkönnyítik a tartós vezénylések és entitások HTTP-munkafolyamatokba való beépítését. Ez a cikk részletesen ismerteti ezeket a funkciókat.
+A Durable Functions számos funkcióval rendelkezik, amelyekkel könnyedén beépítheti a tartós és az entitásokat a HTTP-munkafolyamatokban. Ez a cikk részletesen ismerteti ezeket a funkciókat.
 
-## <a name="exposing-http-apis"></a>HTTP API-k felfedése
+## <a name="exposing-http-apis"></a>HTTP API-k kimutatása
 
-Vezénylések és entitások http-kérelmek használatával hívható és kezelhető. A Durable Functions bővítmény beépített HTTP API-kat ad elérhetővé. Emellett API-kat is biztosít a vezénylések és entitások http-aktivált függvényeken belüli kölcsönhatásban.
+A bevezetések és az entitások HTTP-kérelmek használatával hívhatók és kezelhetők. A Durable Functions bővítmény a beépített HTTP API-kat teszi elérhetővé. Emellett API-kat is biztosít a munkafolyamatokkal és entitásokkal való interakcióhoz a HTTP által aktivált függvények között.
 
 ### <a name="built-in-http-apis"></a>Beépített HTTP API-k
 
-A Durable Functions bővítmény automatikusan hozzáadja a HTTP API-k egy készletét az Azure Functions gazdagéphez. Ezekkel az API-kkal bármilyen kód írása nélkül kommunikálhat vezénylésekkel és entitásokkal.
+A Durable Functions bővítmény automatikusan hozzáadja a HTTP API-kat a Azure Functions gazdagéphez. Ezekkel az API-kkal bármilyen kód írása nélkül használhatja és kezelheti a munkafolyamatokat és az entitásokat.
 
 A következő beépített HTTP API-k támogatottak.
 
-* [Új vezénylési indítás](durable-functions-http-api.md#start-orchestration)
-* [Lekérdezés vezénylési példánya](durable-functions-http-api.md#get-instance-status)
-* [Vezénylési példány leállítása](durable-functions-http-api.md#terminate-instance)
-* [Külső esemény küldése vezénylési eseményre](durable-functions-http-api.md#raise-event)
-* [Vezénylési előzmények törlése](durable-functions-http-api.md#purge-single-instance-history)
-* [Műveletesemény küldése entitásnak](durable-functions-http-api.md#signal-entity)
-* [Entitás állapotának beszereznie](durable-functions-http-api.md#get-entity)
-* [Entitások listájának lekérdezése](durable-functions-http-api.md#list-entities)
+* [Új előkészítés indítása](durable-functions-http-api.md#start-orchestration)
+* [Lekérdezés-előkészítési példány](durable-functions-http-api.md#get-instance-status)
+* [Összehangoló példány leállítása](durable-functions-http-api.md#terminate-instance)
+* [Külső esemény küldése egy előkészítési folyamatnak](durable-functions-http-api.md#raise-event)
+* [Előkészítési előzmények törlése](durable-functions-http-api.md#purge-single-instance-history)
+* [Műveleti esemény küldése egy entitásnak](durable-functions-http-api.md#signal-entity)
+* [Entitás állapotának beolvasása](durable-functions-http-api.md#get-entity)
+* [Az entitások listájának lekérdezése](durable-functions-http-api.md#list-entities)
 
-Tekintse meg a [HTTP API-k cikkteljes](durable-functions-http-api.md) leírását a tartós függvények bővítmény által elérhetővé tett összes beépített HTTP API-k.
+A Durable Functions bővítmény által elérhető beépített HTTP API-k teljes leírását a [http API](durable-functions-http-api.md) -k című cikkben találja.
 
-### <a name="http-api-url-discovery"></a>HTTP API URL-felderítése
+### <a name="http-api-url-discovery"></a>HTTP API URL-cím felderítése
 
-A [vezénylési ügyfélkötés](durable-functions-bindings.md#orchestration-client) elérhetővé teszi az API-kat, amelyek kényelmes HTTP-válasz hasznos adatokat generálhatnak. Létrehozhat például egy adott vezénylési példány felügyeleti API-kra mutató hivatkozásokat tartalmazó választ. A következő példák egy HTTP-trigger függvényt mutatnak be, amely bemutatja, hogyan használhatja ezt az API-t egy új vezénylési példányhoz:
+A koordináló [ügyfél-kötés](durable-functions-bindings.md#orchestration-client) olyan API-kat tesz elérhetővé, amelyekkel kényelmes http-válasz hasznos adatokat lehet elérni. Létrehozhat például egy olyan választ, amely egy adott előkészítési példányhoz tartozó felügyeleti API-kra mutató hivatkozásokat tartalmaz. Az alábbi példák egy HTTP-trigger függvényt mutatnak be, amely bemutatja, hogyan használhatja ezt az API-t egy új előkészítési példányhoz:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**index.js**
+**index. js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**function.json**
+**function. JSON**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 ---
 
-Egy orchestrator függvény indítása a korábban bemutatott HTTP-trigger függvények használatával bármely HTTP-ügyfél használatával elvégezhető. A következő cURL parancs elindít `DoWork`egy orchestrator függvényt, melynek neve:
+A Orchestrator függvény elindítása a korábban bemutatott HTTP-trigger függvények használatával bármely HTTP-ügyfél használatával megtehető. A következő cURL-parancs elindít egy nevű `DoWork`Orchestrator-függvényt:
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
 ```
 
-Következő egy példa válasz egy vezénylési, amely az `abc123` azonosítója. Néhány részletet eltávolítottunk az egyértelműség érdekében.
+A következő egy példa erre a válaszra, amely `abc123` azonosítóként szerepel. Néhány részlet el lett távolítva az egyértelműség érdekében.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -80,41 +80,41 @@ Retry-After: 10
 }
 ```
 
-Az előző példában minden egyes `Uri` mező, amely egy beépített HTTP API-nak felel meg. Ezekkel az API-khasználatával kezelheti a cél vezénylési példány.
+Az előző példában az egyes mezők vége egy beépített HTTP API `Uri` -nak felel meg. Ezekkel az API-kkal kezelheti a cél-előkészítési példányt.
 
 > [!NOTE]
-> A webhook URL-címek formátuma attól függ, hogy az Azure Functions gazdagép melyik verzióját futtatja. Az előző példa az Azure Functions 2.0-s gazdagép.
+> A webhook URL-címeinek formátuma attól függ, hogy a Azure Functions gazdagép melyik verzióját futtatja. Az előző példa a Azure Functions 2,0 gazdagépre mutat.
 
-Az összes beépített HTTP API leírását a [HTTP API-k hivatkozási száma](durable-functions-http-api.md)tartalmazza.
+Az összes beépített HTTP API leírását a [http API-referenciában](durable-functions-http-api.md)tekintheti meg.
 
-### <a name="async-operation-tracking"></a>Aszinkron művelet nyomon követése
+### <a name="async-operation-tracking"></a>Aszinkron művelet követése
 
-A korábban említett HTTP-válasz célja, hogy segítsen megvalósítani a hosszú ideig futó HTTP-aszinkron API-kat a tartós függvényekkel. Ezt a mintát néha *fogyasztói mintának is nevezik.* Az ügyfél/kiszolgáló folyamat a következőképpen működik:
+A korábban említett HTTP-válasz úgy lett kialakítva, hogy segítse a hosszú ideig futó HTTP aszinkron API-k megvalósítását Durable Functions. Ezt a mintát más néven a *lekérdezési fogyasztói mintának*nevezzük. Az ügyfél/kiszolgáló folyamat a következőképpen működik:
 
-1. Az ügyfél http-kérelmet ad ki egy hosszú ideig futó folyamat, például egy orchestrator függvény elindításához.
-1. A cél HTTP-eseményindító http 202-es választ ad vissza egy "statusQueryGetUri" értékű Hely fejléccel.
-1. Az ügyfél lekérdezi az URL-címet a Hely fejlécében. Az ügyfél továbbra is látja a HTTP 202 válaszokat egy helyfejléccel.
-1. Ha a példány befejeződik vagy sikertelen, a Hely fejlécvégponthttp 200-at ad vissza.
+1. Az ügyfél egy HTTP-kérést bocsát ki egy hosszú ideig futó folyamat indításához, például egy Orchestrator függvényhez.
+1. A cél HTTP-trigger egy HTTP 202 választ ad vissza, amelynek a helye fejléce "statusQueryGetUri" értékkel rendelkezik.
+1. Az ügyfél lekérdezi az URL-címet a Location (hely) fejlécben. Az ügyfél továbbra is megtekinti a HTTP 202-válaszokat egy Location fejléctel.
+1. A példány befejeződése vagy meghibásodása esetén a Location fejlécben lévő végpont a HTTP 200 értéket adja vissza.
 
-Ez a protokoll lehetővé teszi a hosszú ideig futó folyamatok összehangolását olyan külső ügyfelekkel vagy szolgáltatásokkal, amelyek letudnak pollálni egy HTTP-végpontot, és követni tudják a Hely fejlécet. A minta ügyfél- és kiszolgálóimplementációi is be vannak építve a tartós függvények HTTP API-jaiba.
-
-> [!NOTE]
-> Alapértelmezés szerint az Azure Logic [Apps](https://azure.microsoft.com/services/logic-apps/) által biztosított összes HTTP-alapú művelet támogatja a szabványos aszinkron műveletmintát. Ez a képesség lehetővé teszi egy hosszú ideig futó tartós függvény beágyazását a Logic Apps munkafolyamat részeként. Az [Azure Logic Apps munkafolyamat-műveleteiben és a dokumentációban](../../logic-apps/logic-apps-workflow-actions-triggers.md)további részleteket talál az aszinkron HTTP-minták támogatásáról.
+Ez a protokoll lehetővé teszi a hosszan futó folyamatok koordinálását olyan külső ügyfelekkel vagy szolgáltatásokkal, amelyek lekérdezik a HTTP-végpontot, és követik a hely fejlécét. A minta ügyfél-és kiszolgáló-implementációja is be van építve a Durable Functions HTTP API-khoz.
 
 > [!NOTE]
-> A vezénylési műveletekkel végzett interakciók bármely függvénytípusból, nem csak a HTTP-aktivált függvényekből végezhetők el.
+> Alapértelmezés szerint a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/) által biztosított összes HTTP-alapú művelet támogatja a normál aszinkron műveleti mintát. Ez a funkció lehetővé teszi a hosszan futó tartós funkciók beágyazását egy Logic Apps munkafolyamat részeként. Az aszinkron HTTP-minták Logic Apps támogatásáról a [Azure Logic apps munkafolyamat-műveletek és eseményindítók dokumentációjában](../../logic-apps/logic-apps-workflow-actions-triggers.md)talál további információt.
 
-A vezénylések és az entitások ügyfélAPI-k használatával történő kezeléséről a [Példánykezelés című cikkben](durable-functions-instance-management.md)olvashat bővebben.
+> [!NOTE]
+> A feladatokkal való interakció bármely Function típusból elvégezhető, nem csak a HTTP által aktivált függvényekből.
+
+A következő témakörben talál további információt arról, hogyan kezelheti a folyamatokat és entitásokat az ügyféloldali API-k használatával: a [példányok kezelése című cikk](durable-functions-instance-management.md).
 
 ## <a name="consuming-http-apis"></a>HTTP API-k fogyasztása
 
-Ahogy azt az [orchestrator függvénykód-megkötések,](durable-functions-code-constraints.md)orchestrator függvények nem tudja az I/O közvetlenül. Ehelyett általában olyan [tevékenységfüggvényeket](durable-functions-types-features-overview.md#activity-functions) hívnak meg, amelyek I/O-műveleteket végeznek.
+A [Orchestrator függvény kód megkötései](durable-functions-code-constraints.md)című témakörben leírtaknak megfelelően a Orchestrator függvények nem tudják közvetlenül végrehajtani az I/O-műveleteket. Ehelyett általában az I/O-műveleteket elvégező [tevékenységi funkciókat](durable-functions-types-features-overview.md#activity-functions) hívja meg.
 
-A Durable Functions 2.0-s verziójával kezdve a vezénylési műveletek natív módon felszámíthatják a HTTP API-kat a [vezénylési eseményindító kötés](durable-functions-bindings.md#orchestration-trigger)használatával.
+A Durable Functions 2,0-től kezdődően a koordinálások natív módon használhatják a HTTP API-kat a [hangvezérelt trigger kötés](durable-functions-bindings.md#orchestration-trigger)használatával.
 
-A következő példakód egy kimenő HTTP-kérelmet készítő orchestrator függvényt jelenít meg:
+A következő mintakód egy Orchestrator függvényt mutat be, amely egy kimenő HTTP-kérést tesz:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -151,28 +151,28 @@ module.exports = df.orchestrator(function*(context){
 
 ---
 
-A "HTTP hívása" művelettel a következő műveleteket teheti meg az orchestrator függvényekben:
+A "HTTP hívása" művelettel a következő műveleteket végezheti el a Orchestrator függvényekben:
 
-* A HTTP API-k at közvetlenül a vezénylési függvényekből hívhatja meg, később említett bizonyos korlátozásokkal.
-* Automatikusan támogatja az ügyféloldali HTTP 202 állapotlekérdezési mintákat.
-* Az [Azure felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) használatával engedélyezett HTTP-hívásokat kezdeményezhet más Azure-végpontokra.
+* HTTP API-k közvetlen hívása a hangkezelő függvényekből, néhány korlátozással később.
+* Az ügyféloldali HTTP 202-állapot lekérdezési mintáinak automatikus támogatása.
+* Az [Azure által felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) használatával a hitelesítő http-hívásokat más Azure-végpontokhoz is elvégezheti.
 
-A HTTP API-k közvetlenül az orchestrator függvények használatával a közös forgatókönyvek bizonyos készletének kényelmét szánja. Ezeket a funkciókat saját maga valósíthatja meg a tevékenységfüggvények használatával. Sok esetben a tevékenységfüggvények nagyobb rugalmasságot biztosíthatnak.
+A HTTP-API-k közvetlenül a Orchestrator függvényekből való használatának lehetősége a gyakori forgatókönyvek bizonyos készletének kényelmét szolgálja. Ezeket a funkciókat saját maga is végrehajthatja a Activity functions használatával. Sok esetben a tevékenység-függvények nagyobb rugalmasságot biztosítanak.
 
-### <a name="http-202-handling"></a>HTTP 202 kezelés
+### <a name="http-202-handling"></a>HTTP 202-kezelő
 
-A "hívás HTTP" API automatikusan megvalósíthatja a lekérdezési fogyasztói minta ügyféloldalát. Ha egy nevű API egy Hely fejléccel rendelkező HTTP 202 választ ad vissza, az orchestrator függvény automatikusan lekérdezi a Hely erőforrást, amíg nem 202-től eltérő választ nem kap. Ez a válasz lesz az orchestrator függvénykódnak visszaadott válasz.
+A "HTTP hívása" API automatikusan megvalósíthatja a lekérdezési fogyasztói minta ügyféloldali oldalát. Ha egy nevű API HTTP 202-választ ad vissza egy Location fejléctel, a Orchestrator függvény automatikusan lekérdezi a hely erőforrását, amíg nem kap választ a 202-től eltérő válaszra. Ez a válasz a Orchestrator függvény kódjába kerül.
 
 > [!NOTE]
-> Az Orchestrator függvényei natív módon támogatják a kiszolgálóoldali lekérdezési fogyasztói mintát is, ahogy azt az [Async műveletkövetés ismerteti.](#async-operation-tracking) Ez a támogatás azt jelenti, hogy az egyik függvényalkalmazásban a vezénylések könnyen koordinálhatják az orchestrator-függvényeket más függvényalkalmazásokban. Ez hasonló az [alveződési](durable-functions-sub-orchestrations.md) koncepcióhoz, de támogatja az alkalmazások közötti kommunikációt. Ez a támogatás különösen hasznos a mikroszolgáltatás-stílusú alkalmazásfejlesztéshez.
+> A Orchestrator függvények natív módon támogatják a kiszolgálóoldali lekérdezési fogyasztói mintát is, az [aszinkron műveletek nyomon követése](#async-operation-tracking)című témakörben leírtak szerint. Ez a támogatás azt jelenti, hogy az egyik Function alkalmazásban az összehangolás egyszerűen koordinálja a Orchestrator függvényeket más Function-alkalmazásokban. Ez hasonló a [beszerelési](durable-functions-sub-orchestrations.md) koncepcióhoz, de támogatja az alkalmazások közötti kommunikációt. Ez a támogatás különösen hasznos a szolgáltatás stílusú alkalmazások fejlesztéséhez.
 
 ### <a name="managed-identities"></a>Felügyelt identitások
 
-A Durable Functions natív módon támogatja az Azure Active Directory (Azure AD) jogkivonatokat engedélyező API-khívásait. Ez a támogatás [azure felügyelt identitások segítségével](../../active-directory/managed-identities-azure-resources/overview.md) szerezze be ezeket a jogkivonatokat.
+A Durable Functions natív módon támogatja a Azure Active Directory (Azure AD) jogkivonatokat fogadó API-hívások engedélyezését. Ez a támogatás az [Azure által felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) használatával szerzi be ezeket a jogkivonatokat.
 
-A következő kód egy . A függvény hitelesített hívásokat kezdeményez a virtuális gépek újraindításához az Azure Resource Manager [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)használatával.
+A következő kód egy .NET Orchestrator-függvény példája. A függvény hitelesített hívásokat kezdeményez a virtuális gépek újraindításához a Azure Resource Manager [Virtual machines REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)használatával.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -224,41 +224,41 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Az előző példában `tokenSource` a paraméter úgy van konfigurálva, hogy az [Azure Resource Manager](../../azure-resource-manager/management/overview.md)számára azure AD-tokeneket szerezzen be. A jogkivonatokat az erőforrás `https://management.core.windows.net`URI-ja azonosítja. A példa feltételezi, hogy az aktuális függvényalkalmazás vagy helyileg fut, vagy felügyelt identitású függvényalkalmazásként lett telepítve. A helyi identitás vagy a felügyelt identitás a megadott erőforráscsoportban `myRG`lévő virtuális gépek kezeléséhez szükséges engedéllyel rendelkezik.
+Az előző példában a `tokenSource` paraméter a [Azure Resource Manager](../../azure-resource-manager/management/overview.md)Azure ad-jogkivonatok beszerzésére van konfigurálva. A jogkivonatokat az erőforrás-URI `https://management.core.windows.net`azonosítja. A példa azt feltételezi, hogy az aktuális Function alkalmazás helyileg fut, vagy felügyelt identitású Function alkalmazásként lett telepítve. A rendszer feltételezi, hogy a helyi identitás vagy a felügyelt identitás jogosult a virtuális gépek kezelésére a megadott `myRG`erőforráscsoporthoz.
 
-Futásidőben a konfigurált jogkivonat-forrás automatikusan egy OAuth 2.0-s hozzáférési jogkivonatot ad vissza. A forrás ezután hozzáadja a jogkivonatot tulajdonosi jogkivonatként a kimenő kérelem engedélyezési fejlécéhez. Ez a modell a következő okok miatt tovább javítja az engedélyezési fejlécek HTTP-kérelmekhez való manuális hozzáadását:
+Futásidőben a konfigurált jogkivonat-forrás automatikusan egy OAuth 2,0 hozzáférési tokent ad vissza. A forrás Ezután hozzáadja a jogkivonatot tulajdonosi jogkivonatként a kimenő kérelem engedélyezési fejlécébe. Ez a modell a következő okok miatt javítja az engedélyezési fejlécek manuális hozzáadását a HTTP-kérelmekhez:
 
-* A tokenfrissítés kezelése automatikusan történik. Nem kell aggódnia a lejárt tokenek miatt.
-* Jogkivonatokat soha nem tárolja a tartós vezénylési állapotban.
-* A tokenek beszerzésének kezeléséhez nem kell kódot írnia.
+* A rendszer automatikusan kezeli a jogkivonat-frissítést. Nem kell aggódnia a lejárt jogkivonatok miatt.
+* A tokeneket a rendszer soha nem tárolja tartós előkészítési állapotban.
+* Nem kell kódot írnia a tokenek beszerzésének kezeléséhez.
 
-Az [előre lefordított C# RestartVMs mintában](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)találhat egy teljesebb példát.
+Az előre [lefordított C# RestartVMs-mintában](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)részletesebb példát is talál.
 
-A felügyelt identitások nem korlátozódnak az Azure erőforrás-kezelésére. A felügyelt identitások segítségével hozzáférhet bármely API-hoz, amely elfogadja az Azure AD tulajdonosi jogkivonatokat, beleértve a Microsoft Azure-szolgáltatásait és a partnerek től származó webalkalmazásokat. A partner webalkalmazása akár egy másik függvényalkalmazás is lehet. Az Azure AD-hitelesítést támogató Microsoft Azure-szolgáltatások listáját az [Azure AD-hitelesítést támogató Azure-szolgáltatások](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)című témakörben található.
+A felügyelt identitások nem korlátozódnak az Azure erőforrás-kezelésre. A felügyelt identitások használatával olyan API-k érhetők el, amelyek elfogadják az Azure AD tulajdonosi jogkivonatait, beleértve a Microsoft és a partnerektől származó webalkalmazások Azure-szolgáltatásait is. Egy partner webalkalmazása akár egy másik Function-alkalmazás is lehet. Az Azure AD-hitelesítést támogató Microsoft Azure-szolgáltatások listáját az Azure [ad-hitelesítést támogató Azure-szolgáltatások](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)című témakörben tekintheti meg.
 
 ### <a name="limitations"></a>Korlátozások
 
-A HTTP API-k hívásának beépített támogatása kényelmi szolgáltatás. Nem minden forgatókönyvesetén megfelelő.
+A HTTP API-k meghívásának beépített támogatása kényelmi funkció. Az összes forgatókönyv esetében nem megfelelő.
 
-Az orchestrator-függvények által küldött HTTP-kérelmek és azok válaszai szerializáltak és állandóak várólista-üzenetekként. Ez a várakozási idő biztosítja, hogy a HTTP-hívások [megbízhatóak és biztonságosak legyenek a vezénylési visszajátszáshoz.](durable-functions-orchestrations.md#reliability) A sorban állási viselkedésnek azonban vannak korlátai is:
+A Orchestrator függvények által küldött HTTP-kérések és a rájuk adott válaszok szerializálva vannak és állandók üzenetsor-üzenetként. Ez a várólista-kezelési viselkedés biztosítja a HTTP [-hívások megbízhatóságát és biztonságát a rendezési ismétlésekhez](durable-functions-orchestrations.md#reliability). Azonban a várakozási sorba állítási viselkedés korlátai is vannak:
 
-* Minden HTTP-kérelem további késést tartalmaz egy natív HTTP-ügyfélhez képest.
-* A várólistaüzenetekbe nem férő nagykérési vagy válaszüzenetek jelentősen csökkenthetik a vezénylési teljesítményt. Az üzenet hasznos tárhelyének blobtárolóba történő kiszervezésének többletterhelése teljesítménycsökkenést okozhat.
-* Streamelés, adattömbök és bináris hasznos adatnem támogatott.
-* A HTTP-ügyfél viselkedésének testreszabása korlátozott.
+* Minden HTTP-kérelemhez a natív HTTP-ügyfélhez képest további késleltetés szükséges.
+* A várólista-üzenetbe nem illeszkedő nagyméretű kérelmek vagy válaszüzenetek jelentősen csökkenthetik a folyamat teljesítményét. Az üzenetek blob Storage-ba történő kiszervezésének terhelése az esetleges teljesítmény romlását okozhatja.
+* A folyamatos átviteli, a darabolási és a bináris adattartalom nem támogatott.
+* A HTTP-ügyfél viselkedésének testre szabása korlátozott.
 
-Ha a korlátozások bármelyike hatással lehet a használati esetre, fontolja meg inkább tevékenységfüggvények és nyelvspecifikus HTTP-ügyfélkódtárak használatával kimenő HTTP-hívások kezdeményezéséhez.
+Ha a korlátozások bármelyike érintheti a használati esetet, vegye figyelembe a tevékenységek és a nyelvspecifikus HTTP-ügyféloldali kódtárak használatát a kimenő HTTP-hívások elvégzéséhez.
 
 > [!NOTE]
-> Ha Ön .NET fejlesztő, talán csodálkozhat, hogy ez a szolgáltatás miért használja a **DurableHttpRequest** és **durableHttpResponse** típusokat a beépített .NET **HttpRequestMessage** és **HttpResponseMessage** típusok helyett.
+> Ha Ön .NET-fejlesztő, akkor érdemes tudni, hogy miért használja a szolgáltatás a **DurableHttpRequest** és a **DurableHttpResponse** típust a beépített .net **HttpRequestMessage** és **HttpResponseMessage** típus helyett.
 >
-> Ez a tervezési választás szándékos. Ennek elsődleges oka az, hogy az egyéni típusok segítenek biztosítani, hogy a felhasználók ne tegyenek hibás feltételezéseket a belső HTTP-ügyfél támogatott viselkedésével kapcsolatban. A tartós függvényekre jellemző típusok lehetővé teszik az API-tervezés egyszerűsítését is. Ők is könnyebben elérhetővé speciális funkciók, mint a [felügyelt identitás integráció](#managed-identities) és a [közvélemény-kutatás fogyasztói minta](#http-202-handling). 
+> Ez a tervezési lehetőség szándékos. Az elsődleges ok az, hogy az egyéni típusok segítenek biztosítani, hogy a felhasználók ne tegyenek helytelen feltételezéseket a belső HTTP-ügyfél által támogatott viselkedések tekintetében. A Durable Functionsra jellemző típusok szintén megkönnyítik az API-tervezés egyszerűsítését. Emellett könnyebben elérhetővé tehetik az olyan speciális szolgáltatásokat, mint a [felügyelt identitások integrálása](#managed-identities) és a [lekérdezési fogyasztói minta](#http-202-handling). 
 
-### <a name="extensibility-net-only"></a>Bővíthetőség (csak.NET)
+### <a name="extensibility-net-only"></a>Bővíthetőség (csak .NET)
 
-Az [Azure Functions .NET függőségi injektálással](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)testreszabhatoa a vezénylés belső HTTP-ügyféljének viselkedését. Ez a képesség hasznos lehet a kis viselkedési változások. Hasznos lehet a HTTP-ügyfél egységteszteléséhez is, mintaobjektumok befecskendezésével.
+A folyamat belső HTTP-ügyfelének viselkedését [Azure functions .net-függőségi befecskendezés](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)használatával lehet testreszabni. Ez a képesség hasznos lehet a kisméretű viselkedési változások elvégzéséhez. Emellett hasznos lehet a HTTP-ügyfelet az ál-objektumok befecskendezésével tesztelni.
 
-A következő példa bemutatja a függőségi injektálás használatával letiltani a TLS/SSL tanúsítvány érvényesítése vongazvófüggvények, amelyek meghívja a külső HTTP-végpontok.
+Az alábbi példa azt mutatja be, hogyan használható a függőségi befecskendezés a TLS/SSL-tanúsítvány érvényesítésének letiltására a külső HTTP-végpontokat meghívó Orchestrator függvények esetében.
 
 ```csharp
 public class Startup : FunctionsStartup
@@ -289,4 +289,4 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a tartós entitásokról](durable-functions-entities.md)
+> [A tartós entitások megismerése](durable-functions-entities.md)

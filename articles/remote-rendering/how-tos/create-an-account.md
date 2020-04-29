@@ -1,40 +1,40 @@
 ---
-title: Azure távoli leképezési fiók létrehozása
-description: Az Azure távoli rendereléshez való fiók létrehozásának lépéseit ismerteti
+title: Azure Remote Rendering-fiók létrehozása
+description: Útmutató az Azure-beli távoli rendereléshez szükséges fiók létrehozásához
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681297"
 ---
-# <a name="create-an-azure-remote-rendering-account"></a>Azure távoli leképezési fiók létrehozása
+# <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering-fiók létrehozása
 
-Ez a fejezet végigvezeti az **Azure távoli leképezési** szolgáltatás hozlétre egy fiókot lépéseket. A rövid útmutatók vagy oktatóanyagok kitöltéséhez kötelező érvényes fiók.
+Ez a fejezet végigvezeti az **Azure távoli renderelési** szolgáltatáshoz tartozó fiók létrehozásának lépésein. A rövid útmutatók vagy oktatóanyagok végrehajtásához érvényes fiók szükséges.
 
 ## <a name="create-an-account"></a>Fiók létrehozása
 
-Az Azure távoli leadási szolgáltatás fiókjának létrehozásához a következő lépések szükségesek:
+A következő lépések szükségesek ahhoz, hogy fiókot hozzon létre az Azure távoli renderelési szolgáltatáshoz:
 
-1. Ugrás a [Vegyes valóság előnézete lapra](https://aka.ms/MixedRealityPrivatePreview)
-1. Kattintson az "Erőforrás létrehozása" gombra
-1. A keresőmezőbe ("Keresés a piactéren") írja be a "Távoli renderelés" kifejezést, és nyomja meg az "Enter" szót.
-1. Az eredménylistában kattintson a "Távoli renderelés" csempére
-1. A következő képernyőn kattintson a "Létrehozás" gombra. Megnyílik egy űrlap, amely új távoli leképezési fiókot hoz létre:
-    1. Az "Erőforrás név" beállítása a fiók nevére
-    1. Szükség esetén frissítse az "Előfizetés"
-    1. Az "Erőforráscsoport" beállítása egy ön által választott erőforráscsoportra
-1. A fiók létrehozása után keresse meg azt, és:
-    1. Az *Áttekintés* lapon jegyezze fel a "Fiókazonosító"
-    1. A *Beállítások > hozzáférési kulcsok* lapon jegyezze fel az "Elsődleges kulcs" - ez a fiók titkos fiókkulcsa
+1. Ugrás a [vegyes valóság előnézeti oldalára](https://aka.ms/MixedRealityPrivatePreview)
+1. Kattintson az "erőforrás létrehozása" gombra
+1. A keresőmezőbe ("keresés a piactéren") írja be a "távoli renderelés" kifejezést, és nyomja le az ENTER billentyűt.
+1. Az eredmények listájában kattintson a "távoli renderelés" csempére.
+1. A következő képernyőn kattintson a "létrehozás" gombra. Megnyílik egy űrlap, amely létrehoz egy új távoli renderelési fiókot:
+    1. Az "erőforrás neve" beállítása a fiók nevére
+    1. Előfizetés frissítése, ha szükséges
+    1. Az "erőforráscsoport" beállítása tetszőleges erőforráscsoporthoz
+1. A fiók létrehozása után navigáljon hozzá, és:
+    1. Az *Áttekintés* lapon jegyezze fel a fiók azonosítóját.
+    1. A *beállítások > hozzáférési kulcsok* lapon jegyezze fel az "elsődleges kulcsot" – Ez a fiók titkos fiókjának kulcsa.
 
-### <a name="retrieve-the-account-information"></a>A fiókadatok lekérése
+### <a name="retrieve-the-account-information"></a>Fiókadatok beolvasása
 
-A minták és oktatóanyagok megkövetelik, hogy adja meg a fiók azonosítóját és egy kulcsot. Például a PowerShell mintparancsfájljaihoz használt **arrconfig.json** fájlban:
+A mintáknak és az oktatóanyagoknak meg kell adniuk a fiók AZONOSÍTÓját és kulcsát. A PowerShell-minta parancsfájljaihoz használt **arrconfig. JSON** fájlban például:
 
 ```json
     "accountSettings": {
@@ -44,57 +44,57 @@ A minták és oktatóanyagok megkövetelik, hogy adja meg a fiók azonosítójá
     },
 ```
 
-Tekintse meg a *régió* kitöltéséhez [rendelkezésre álló régiók listáját.](../reference/regions.md)
+A *régió* lehetőség kitöltéséhez tekintse meg az [elérhető régiók listáját](../reference/regions.md) .
 
-A portál **`arrAccountId`** **`arrAccountKey`** értékei a következő lépésekben leírtak szerint:
+A (z **`arrAccountId`** ) **`arrAccountKey`** és a (z) értékeit a portálon találja, az alábbi lépések szerint:
 
 * Nyissa meg az [Azure Portalt](https://www.portal.azure.com)
-* Keresse meg a **"Távoli renderelési fiók"** - meg kell a **"Legutóbbi források"** listán. A keresés a felső keresősávban is kereshető. Ebben az esetben győződjön meg arról, hogy a használni kívánt előfizetés az Alapértelmezett előfizetésszűrőben van kiválasztva (szűrőikon a keresősáv mellett):
+* A **"távoli renderelési fiók"** kifejezés megkeresése – a **"legutóbbi erőforrások"** listában kell szerepelnie. A felső menüsorban is megkeresheti a keresést. Ebben az esetben ellenőrizze, hogy a használni kívánt előfizetés ki van-e választva az alapértelmezett előfizetés-szűrőben (a keresősáv melletti szűrő ikon):
 
-![Előfizetésszűrő](./media/azure-subscription-filter.png)
+![Előfizetés-szűrő](./media/azure-subscription-filter.png)
 
-A fiókra kattintva megjelenik ez a képernyő, amely azonnal megjeleníti a **fiókazonosítót:**
+Ha a fiókjára kattint, megjelenik a képernyő, amely azonnal megjeleníti a **fiók azonosítóját** :
 
 ![Azure-fiók azonosítója](./media/azure-account-id.png)
 
-A billentyűhöz válassza a bal oldali panel **hozzáférési billentyűparancsait.** A következő oldalon egy elsődleges és egy másodlagos kulcs látható:
+A kulcshoz kattintson a bal oldali panelen a **hozzáférési kulcsok** elemre. A következő oldalon egy elsődleges és egy másodlagos kulcs látható:
 
 ![Azure-hozzáférési kulcsok](./media/azure-account-primary-key.png)
 
-Az érték **`arrAccountKey`** lehet elsődleges vagy másodlagos kulcs.
+A értéke **`arrAccountKey`** lehet elsődleges vagy másodlagos kulcs.
 
-## <a name="link-storage-accounts"></a>Tárfiókok összekapcsolása
+## <a name="link-storage-accounts"></a>Storage-fiókok csatolása
 
-Ez a bekezdés bemutatja, hogyan kapcsolhatja össze a tárfiókokat a távoli leképezési fiókkal. Ha egy tárfiók van kapcsolva, nem szükséges, hogy hozzon létre egy SAS URI minden alkalommal, amikor szeretne együttműködni a fiókjában lévő adatokkal, például egy modell betöltésekor. Ehelyett a tárfiók neveit közvetlenül használhatja a [modell betöltése szakaszban leírtak szerint.](../concepts/models.md#loading-models)
+Ez a bekezdés a Storage-fiókok távoli renderelési fiókjához való csatolását ismerteti. Ha egy Storage-fiók csatolva van, nem szükséges SAS URI-t előállítani, amikor a fiókjában lévő adataival szeretne kommunikálni, például egy modell betöltésekor. Ehelyett a Storage-fiókok nevét használhatja közvetlenül a [modell betöltése szakaszban](../concepts/models.md#loading-models)leírtak szerint.
 
-Az ebben a bekezdésben szereplő lépéseket minden olyan tárfiókesetében el kell végezni, amelynek ezt az alternatív hozzáférési módszert kell használnia. Ha még nem hozott létre tárfiókokat, a modell [konvertálása](../quickstarts/convert-model.md#storage-account-creation)a gyorsútmutató megfelelő lépésén haladhat végig.
+Az ebben a bekezdésben szereplő lépéseket minden olyan Storage-fiókhoz el kell végrehajtani, amely ezt az alternatív hozzáférési módszert használja. Ha még nem hozott létre Storage-fiókokat, a [modell konvertálása](../quickstarts/convert-model.md#storage-account-creation)a gyors üzembe helyezéshez című szakasz megfelelő lépéseit követheti.
 
-Most feltételezzük, hogy van egy tárfiók. Keresse meg a portálon lévő tárfiókot, és nyissa meg az adott tárfiók **hozzáférés-vezérlési (IAM)** lapját:
+Most feltételezzük, hogy van egy Storage-fiókja. Keresse meg a Storage-fiókot a portálon, és lépjen a **Access Control (iam)** lapra az adott Storage-fiókhoz:
 
-![IAM tárfiók](./media/azure-storage-account.png)
+![A Storage-fiók IAM](./media/azure-storage-account.png)
 
- Győződjön meg arról, hogy tulajdonosi engedélyekkel rendelkezik a tárfiókhoz, hogy győződjön meg arról, hogy szerepkör-hozzárendeléseket adhat hozzá. Ha nincs hozzáférése, a **Szerepkör-hozzárendelés hozzáadása** beállítás le lesz tiltva.
+ Győződjön meg arról, hogy rendelkezik tulajdonosi engedélyekkel ezen a Storage-fiókon, hogy hozzá tudja adni a szerepkör-hozzárendeléseket. Ha nincs hozzáférése, a **szerepkör-hozzárendelés hozzáadása** lehetőség le lesz tiltva.
 
- A következő lépésekben leírtak szerint három különböző szerepkört kell hozzáadnia. Ha nem adja meg mindhárom hozzáférési szintet, a tárfiók elérése közben engedélyproblémák lépnek fel.
+ Három különböző szerepkört kell felvennie a következő lépésekben leírtak szerint. Ha nem biztosít mindhárom hozzáférési szintet, akkor a rendszer a Storage-fiók elérésére tett kísérlet során jogosultsági problémákba ütközik.
 
- Az első szerepkör hozzáadásához kattintson a "Szerepkör-hozzárendelés hozzáadása" csempén található **Hozzáadás** gombra:
+ Az első szerepkör hozzáadásához kattintson a "szerepkör-hozzárendelés hozzáadása" csempére a **Hozzáadás** gombra:
 
-![IAM tárfiók](./media/azure-add-role-assignment.png)
+![A Storage-fiók IAM](./media/azure-add-role-assignment.png)
 
-* Az első hozzárendelhető szerepkör a **Tulajdonos,** ahogy az a fenti képernyőképen látható. 
-* Válassza a **Távoli renderelési fiók lehetőséget** a * Access**hozzárendelése legördülő menüből.**
-* Válassza ki az előfizetést és a távoli leképezési fiókot az utolsó legördülő menüben.
+* A hozzárendelni kívánt első szerepkör **tulajdonosa** a fenti képernyőképen látható. 
+* Válassza a **távoli renderelési fiók** lehetőséget a * hozzáférés legördülő listához**való hozzárendeléséhez** .
+* Válassza ki az előfizetését és a távoli renderelési fiókot az utolsó legördülő listában.
 
-Ismételje meg az új szerepkörök hozzáadását még kétszer a **szerepkör** legördülő menü megfelelő választásaihoz:
+Ismételje meg az új szerepkörök hozzáadását még egyszer a **szerepkör** legördülő menüjéből származó megfelelő beállításokhoz:
 * **Tárfiók-közreműködő**
-* **Storage Blob-adatközreműködő**
+* **Storage blob adatközreműködői**
 
-A többi legördülő menü az első lépésben is kiválasztásra kerül.
+A többi legördülő lista az első lépésben van kiválasztva.
 
-Ha mind a három szerepkört hozzáadta, az Azure remote rendering fiók a rendszer hez rendelt felügyelt szolgáltatásidentitások használatával rendelkezik hozzáféréssel a tárfiókhoz.
+Ha mindhárom szerepkört hozzáadta, az Azure távoli renderelési fiókja a rendszerhez rendelt felügyelt szolgáltatás-identitások használatával fér hozzá a Storage-fiókhoz.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Hitelesítés](authentication.md)
-* [Az Azure előtér-API-k használata a hitelesítéshez](frontend-apis.md)
-* [Példa PowerShell-parancsfájlokra](../samples/powershell-example-scripts.md)
+* [Az Azure frontend API-k használata a hitelesítéshez](frontend-apis.md)
+* [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)

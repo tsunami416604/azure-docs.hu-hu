@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Netvision Compas-szal | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Netvision Compas között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a net Vision Compas | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és net Vision Compas között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,184 +16,184 @@ ms.date: 03/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80520094"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Netvision Compas-szal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a net Vision-Compas
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Netvision Compas-t az Azure Active Directoryval (Azure AD). Ha integrálja a Netvision Compas-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a net Vision-Compas a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a net Vision Compas, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Netvision Compas.Control in Azure AD who has access to Netvision Compas.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve legyenek a Netvision Compas-ba az Azure AD-fiókjukkal.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* Vezérlés az Azure AD-ben, aki hozzáfér a net Vision Compas.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a net Vision Compas az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Netvision Compas egyszeri bejelentkezés (SSO) engedélyezve van előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* NET Vision Compas egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Netvision Compas támogatja az **SP és az IDP** által kezdeményezett sso-t
-* A Netvision Compas konfigurálása után kényszerítheti a Munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
-
-
-## <a name="adding-netvision-compas-from-the-gallery"></a>Netvision Compas hozzáadása a galériából
-
-A Netvision Compas Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Netvision Compas-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be a **Netvision Compas kifejezést** a keresőmezőbe.
-1. Válassza a **Netvision Compas** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+* A net Vision Compas támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A net Vision-Compas konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-netvision-compas"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése a Netvision Compas-hoz
+## <a name="adding-netvision-compas-from-the-gallery"></a>NET Vision-Compas hozzáadása a gyűjteményből
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Netvision Compas segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a netvision Compas kapcsolódó felhasználója között.
+A net Vision-Compas Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a net Vision-Compas a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Netvision Compas segítségével hajtsa végre az alábbi építőelemeket:
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **net Vision Compas** kifejezést a keresőmezőbe.
+1. Válassza ki a **net Vision Compas** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a Netvision Compas Egyszeri bejelentkezést](#configure-netvision-compas-sso)** – az alkalmazás oldalon az egyszeri bejelentkezési beállítások konfigurálásához.
-    1. **[Konfigurálja a Netvision Compas tesztfelhasználóját](#configure-netvision-compas-test-user)** – hogy a Netvision Compas b.Simon megfelelője, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-netvision-compas"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a net Vision Compas
+
+Konfigurálja és tesztelje az Azure AD SSO-t a net Vision Compas egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a net Vision Compas.
+
+Az Azure AD SSO net Vision-Compas való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Net Vision-COMPAS SSO konfigurálása](#configure-netvision-compas-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Net Vision-Compas-teszt felhasználó konfigurálása](#configure-netvision-compas-test-user)** – ha a felhasználó Azure ad-képviseletéhez csatolt B. Simon-beli net Vision-Compas van.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Netvision Compas** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **net Vision Compas** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Saml20`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Saml20`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a Netvision Compas ügyféltámogatási csapatával,](mailto:contact@net.vision) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a net Vision Compas-ügyfélszolgálati [csapatához](mailto:contact@net.vision) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** keresse meg az **összevonási metaadat-XML-t,** és válassza a **Letöltés** lehetőséget a metaadatfájl letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a metaadatok letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
 
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a Netvision Compas használatával.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a net Vision Compas.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **Netvision Compas lehetőséget.**
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **net Vision Compas**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-netvision-compas-sso"></a>A Netvision Compas SSO konfigurálása
+## <a name="configure-netvision-compas-sso"></a>NET Vision Compas SSO konfigurálása
 
-Ebben a részben engedélyezi az SAML SSO-t a **Netvision Compas**programban.
-1. Jelentkezzen be a **Netvision Compas-ba** egy rendszergazdai fiók használatával, és férjen hozzá a felügyeleti területhez.
+Ebben a szakaszban engedélyezheti az SAML SSO-t a **net Vision Compas**.
+1. Jelentkezzen be a **net Vision Compas** egy rendszergazdai fiókkal, és nyissa meg az adminisztrációs területét.
 
-    ![Rendszergazdai terület](media/netvision-compas-tutorial/admin.png)
+    ![Felügyeleti körzet](media/netvision-compas-tutorial/admin.png)
 
-1. Keresse meg a **Rendszer** területet, és válassza **az Identitásszolgáltatók lehetőséget.**
+1. Keresse meg **a rendszerkörnyezetet** , és válassza az **identitás-szolgáltatók**elemet.
 
-    ![Rendszergazdai azonosítók](media/netvision-compas-tutorial/admin-idps.png)
+    ![Rendszergazdai IDP](media/netvision-compas-tutorial/admin-idps.png)
 
-1. Válassza ki a **hozzáadási** műveletet az Azure AD új IDP-ként való regisztrálásához.
+1. Válassza ki a **Hozzáadás** műveletet az Azure ad új identitásszolgáltató való regisztrálásához.
 
-    ![IDP hozzáadása](media/netvision-compas-tutorial/idps-add.png)
+    ![IDENTITÁSSZOLGÁLTATÓ hozzáadása](media/netvision-compas-tutorial/idps-add.png)
 
-1. Válassza az **SAML lehetőséget** a **Szolgáltató típushoz.**
-1. Adja meg a **Megjelenítendő név** és a Leírás mezők értelmezett **értékeit.**
-1. Rendeljen **Netvision Compas-felhasználókat** az IDP-hez úgy, hogy kiválasztja az **Elérhető felhasználók** listából, majd a **Kijelölt hozzáadás** gombot. A felhasználók is hozzárendelhetők az IDP-hez a kiépítési eljárást követve.
-1. A **Metaadat** SAML beállításához kattintson a **Fájl kiválasztása** gombra, és jelölje ki a számítógépre korábban mentett metaadatfájlt.
-1. Kattintson a **Mentés** gombra.
+1. Válassza ki az **SAML** elemet a **szolgáltató típusaként**.
+1. Adjon meg értelmes értékeket a **megjelenítendő név** és a **Leírás** mezőkhöz.
+1. Rendelje hozzá a **net Vision Compas** -felhasználókat a identitásszolgáltató az **elérhető felhasználók** listájának kiválasztásával, majd a **kijelöltek hozzáadása** gombra kattintva. A kiépítési eljárást követve a felhasználókat a IDENTITÁSSZOLGÁLTATÓ is hozzá lehet rendelni.
+1. A **metaadatok** SAML beállításnál kattintson a **Fájl választása** gombra, és válassza ki a korábban mentett metaadat-fájlt a számítógépen.
+1. Kattintson a **Save** (Mentés) gombra.
 
-    ![IDP szerkesztése](media/netvision-compas-tutorial/idp-edit.png)
+    ![IDENTITÁSSZOLGÁLTATÓ szerkesztése](media/netvision-compas-tutorial/idp-edit.png)
 
 
-### <a name="configure-netvision-compas-test-user"></a>A Netvision Compas tesztfelhasználójának konfigurálása
+### <a name="configure-netvision-compas-test-user"></a>NET Vision Compas-tesztelési felhasználó konfigurálása
 
-Ebben a szakaszban konfigurálja a **Netvision Compas** egy meglévő felhasználóját az Azure AD sso használatára.
-1. Kövesse a **Netvision Compas** felhasználói kiépítési eljárását, a vállalat által meghatározottak szerint, vagy szerkesztse egy meglévő felhasználói fiókot.
-1. A felhasználó profiljának megadásakor győződjön meg arról, hogy a felhasználó **e-mail címe (személyes)** címe megegyezik az Azure AD felhasználónevével: username@companydomain.extension. Például: `B.Simon@contoso.com`.
+Ebben a szakaszban egy meglévő felhasználót konfigurál a **net Vision Compas** , hogy az Azure ad-t használja az SSO-hoz.
+1. Kövesse a **net Vision Compas** felhasználói üzembe helyezési eljárást a vállalat által meghatározott módon, vagy szerkesszen egy meglévő felhasználói fiókot.
+1. A felhasználó profiljának meghatározásakor ellenőrizze, hogy a felhasználó E-mail címe **(személyes)** egyezik-e az Azure ad-felhasználónévvel: username@companydomain.extension. Például: `B.Simon@contoso.com`.
 
     ![Felhasználó szerkesztése](media/netvision-compas-tutorial/user-config.png)
 
 Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli.
+Ebben a szakaszban teszteli az Azure AD egyszeri bejelentkezési konfigurációját.
 
-### <a name="using-the-access-panel-idp-initiated"></a>A hozzáférési panel használata (iDP kezdeményezett).
+### <a name="using-the-access-panel-idp-initiated"></a>A hozzáférési panel (IDENTITÁSSZOLGÁLTATÓ által kezdeményezett) használata.
 
-Amikor a Hozzáférési panelen a Netvision Compas csempére kattint, automatikusan be kell jelentkeznie a Netvision Compas-ba, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a net Vision Compas csempére kattint, automatikusan be kell jelentkeznie arra a net Vision-Compas, amelyhez be szeretné állítani az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Közvetlenül a Netvision Compas (SP kezdeményezett) elérése.
+### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Közvetlenül a net Vision-Compas (SP által kezdeményezett) elérésére.
 
-1. A **Netvision Compas** URL-címének elérése. Például: `https://tenant.compas.cloud`.
-1. Írja be a **Netvision Compas** felhasználónevet, és válassza a **Tovább**gombot.
+1. Hozzáférés a **net Vision Compas** URL-címéhez. Például: `https://tenant.compas.cloud`.
+1. Adja meg a **net Vision Compas** felhasználónevét, és kattintson a **Tovább gombra**.
 
     ![Felhasználói bejelentkezés](media/netvision-compas-tutorial/login-user.png)
 
-1. **(nem kötelező)** Ha a felhasználó hoz több IDPs belül **Netvision Compas,** az elérhető idps listája jelenik meg. Válassza ki a **Netvision Compas**programban korábban konfigurált Azure AD IDP-t.
+1. **(nem kötelező)** Ha a felhasználó több IDP van hozzárendelve a **net Vision-Compas**belül, megjelenik az elérhető IDP listája. Válassza ki a korábban a **net Vision Compas**KONFIGURÁLT Azure ad-identitásszolgáltató.
 
-    ![Bejelentkezési választás](media/netvision-compas-tutorial/login-choose.png)
+    ![Bejelentkezés választása](media/netvision-compas-tutorial/login-choose.png)
 
-1. A hitelesítés végrehajtásához a rendszer átirányítja az Azure AD-be. A sikeres hitelesítést követően automatikusan be kell jelentkeznie a **Netvision Compas-ba,** amelyhez beállította az Egyszeri bejelentkezést.
+1. A rendszer átirányítja az Azure AD-ba a hitelesítés elvégzéséhez. A sikeres hitelesítés után automatikusan be kell jelentkeznie arra a net Vision- **Compas** , amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a Netvision Compas-t az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a net Vision Compas az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

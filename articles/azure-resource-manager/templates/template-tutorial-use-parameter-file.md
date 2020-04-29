@@ -1,58 +1,58 @@
 ---
-title: Oktatóanyag – paraméterfájl használata sablon telepítéséhez
-description: Használjon paraméterfájlokat, amelyek tartalmazzák az Azure Resource Manager-sablon üzembe helyezéséhez használt értékeket.
+title: Oktatóanyag – sablon üzembe helyezése a paraméter használatával
+description: Használjon olyan paramétereket, amelyek tartalmazzák a Azure Resource Manager-sablon üzembe helyezéséhez használandó értékeket.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80411522"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Oktatóanyag: Paraméterfájlok használata az ARM-sablon telepítéséhez
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Oktatóanyag: paraméterek használata az ARM-sablon üzembe helyezéséhez
 
-Ebben az oktatóanyagban megtudhatja, hogyan [használhatja a paraméterfájlokat](parameter-files.md) a központi telepítés során megadott értékek tárolására. Az előző oktatóanyagokban a központi telepítési parancsbeépített paramétereket használt. Ez a megközelítés az Azure Resource Manager (ARM) sablon teszteléséhez működött, de a központi telepítések automatizálása során egyszerűbb lehet értékeket átadni a környezetben. A paraméterfájlok megkönnyítik egy adott környezet paraméterértékeinek csomagolását. Ebben az oktatóanyagban paraméterfájlokat hozhat létre fejlesztési és éles környezetekben. Körülbelül **12 percet** vesz igénybe.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatók a [paraméter-fájlok](parameter-files.md) az üzembe helyezés során beadott értékek tárolására. Az előző oktatóanyagokban beágyazott paramétereket használt a telepítési paranccsal. Ez a megközelítés a Azure Resource Manager-(ARM-) sablon tesztelésére szolgál, de a központi telepítések automatizálásakor könnyebb lehet átadni a környezete értékeit. A paraméter-fájlok megkönnyítik egy adott környezet paramétereinek értékének becsomagolását. Ebben az oktatóanyagban paramétereket hozhat létre fejlesztési és éles környezetekhez. A művelet végrehajtása körülbelül **12 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azt javasoljuk, hogy töltse ki az [oktatóanyagot a címkékről,](template-tutorial-add-tags.md)de ez nem szükséges.
+Javasoljuk, hogy fejezze be a [címkékre vonatkozó oktatóanyagot](template-tutorial-add-tags.md), de ez nem kötelező.
 
-A Visual Studio-kódnak rendelkeznie kell a Resource Manager Tools bővítménylel, valamint az Azure PowerShell vagy az Azure CLI használatával. További információt a [sabloneszközök című témakörben talál.](template-tutorial-create-first-template.md#get-tools)
+A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Véleményezési sablon
+## <a name="review-template"></a>Sablon áttekintése
 
-A sablon számos paramétert biztosít a telepítés során. Végén az előző bemutató, a sablon nézett ki:
+A sablon számos, az üzembe helyezés során megadható paramétert tartalmaz. Az előző oktatóanyag végén a sablon a következőképpen néz ki:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
-Ez a sablon jól működik, de most egyszerűen szeretné kezelni a sablonhoz megadott paramétereket.
+Ez a sablon jól működik, de most egyszerűen kezelheti a sablonhoz megadott paramétereket.
 
-## <a name="add-parameter-files"></a>Paraméterfájlok hozzáadása
+## <a name="add-parameter-files"></a>Paraméter-fájlok hozzáadása
 
-A paraméterfájlok Olyan JSON fájlok, amelyek szerkezete hasonló a sablonhoz. A fájlban adja meg az üzembe helyezés során átadni kívánt paraméterértékeket.
+A paraméter fájljai a sablonhoz hasonló struktúrával rendelkező JSON-fájlok. A fájlban adja meg az üzembe helyezés során átadni kívánt paramétereket.
 
-A VS-kód ban hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt az **azuredeploy.parameters.dev.json**névvel.
+A VS Code-ban hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt a **azuredeploy. Parameters. dev. JSON**néven.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Ez a fájl a fejlesztői környezet paraméterfájlja. Figyelje meg, hogy Standard_LRS használ a tárfiókhoz, **megnevezi** az erőforrásokat egy fejlesztési előtaggal, és a **környezeti** címkét **Fejlesztői**értékre állítja.
+Ez a fájl a fejlesztési környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_LRSt használ a Storage-fiókhoz, az erőforrásokat pedig **fejlesztői** előtaggal látja el, és beállítja a **környezeti** címkét a **dev**értékre.
 
-Ismét hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt az **azuredeploy.parameters.prod.json**névvel.
+Ismét hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt a **azuredeploy. Parameters. prod. JSON**néven.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Ez a fájl az éles környezet paraméterfájlja. Figyelje meg, hogy Standard_GRS használ a tárfiókhoz, megnevezi az erőforrásokat **egy contoso** előtaggal, és a **környezeti** címkét **élesre állítja.** Egy valós éles környezetben is szeretné használni egy alkalmazásszolgáltatás egy termékváltozat nem ingyenes, de továbbra is ezt a termékváltozatot ebben az oktatóanyagban továbbra is használni.
+Ez a fájl az éles környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_GRSt használ a Storage-fiókhoz, és megnevezi az erőforrásokat a **contoso** előtaggal, és beállítja a környezeti címkét az **éles** **környezetben** . Valós éles környezetben érdemes lehet olyan app Service-t használni, amely nem ingyenes, de továbbra is ezt az SKU-t fogjuk használni ehhez az oktatóanyaghoz.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Használja az Azure CLI vagy az Azure PowerShell a sablon üzembe helyezéséhez.
+A sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell.
 
-A sablon utolsó tesztjeként hozzon létre két új erőforráscsoportot. Az egyik a fejlesztői környezet, a ztán a fejlesztői környezet.
+A sablon utolsó tesztje hozzon létre két új erőforráscsoportot. Egyet a fejlesztői környezethez, egyet pedig az éles környezethez.
 
-Először is üzembe helyezünk a fejlesztői környezetben.
+Először üzembe kell helyezni a fejlesztői környezetet.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -71,7 +71,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A központi telepítési parancs futtatásához az Azure CLI [legújabb verziójával](/cli/azure/install-azure-cli) kell rendelkeznie.
+Az üzembe helyezési parancs futtatásához az Azure CLI [legújabb verziójára](/cli/azure/install-azure-cli) van szükség.
 
 ```azurecli
 templateFile="{path-to-the-template-file}"
@@ -88,7 +88,7 @@ az deployment group create \
 
 ---
 
-Most pedig az éles környezetbe telepítjük.
+Most üzembe helyezzük az éles környezetben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -121,29 +121,29 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
+> Ha az üzemelő példány nem sikerült, a hibakeresési naplók megjelenítéséhez használja a **Debug** kapcsolót a telepítési paranccsal.  A teljes hibakeresési naplók megjelenítéséhez használhatja a **részletes** kapcsolót is.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Az üzembe helyezést az Azure Portalon található erőforráscsoportok feltárásával ellenőrizheti.
+A központi telepítés ellenőrzéséhez tekintse meg az Azure Portal lévő erőforráscsoportokat.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. A bal oldali menüben válassza az **Erőforráscsoportok**lehetőséget.
-1. Az oktatóanyagban üzembe helyezett két új erőforráscsoport látható.
-1. Válassza ki bármelyik erőforráscsoportot, és tekintse meg az üzembe helyezett erőforrásokat. Figyelje meg, hogy megegyeznek az adott környezetben megadott értékekkel.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. Ekkor megjelenik az oktatóanyagban üzembe helyezett két új erőforráscsoport.
+1. Válassza ki az erőforráscsoportot, és tekintse meg a telepített erőforrásokat. Figyelje meg, hogy az adott környezethez tartozó paraméterben megadott értékeknek felelnek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
-2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét. Ha befejezte ezt a sorozatot, három erőforráscsoportot kell törölnie : myResourceGroup, myResourceGroupDev és myResourceGroupProd.
+1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
+2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét. Ha elvégezte ezt a sorozatot, három erőforráscsoport törölhető – myResourceGroup, myResourceGroupDev és myResourceGroupProd.
 3. Válassza ki az erőforráscsoport nevét.
-4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
+4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
 ## <a name="next-steps"></a>További lépések
 
-Gratulálunk, befejezte ezt a bevezetést a sablonok azure-ba való üzembe helyezéséhez. Tudassa velünk, ha bármilyen észrevétele és javaslata van a visszajelzés részben. Köszönjük!
+Gratulálunk, készen áll a sablonok Azure-ba történő üzembe helyezésének bevezetésére. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 
-A következő oktatóanyag-sorozat részletesebben ismerteti a sablonok üzembe helyezését.
+A következő oktatóanyag-Sorozat részletesebben ismerteti a sablonok üzembe helyezését.
 
 > [!div class="nextstepaction"]
-> [Helyi sablon telepítése](./deployment-tutorial-local-template.md)
+> [Helyi sablon üzembe helyezése](./deployment-tutorial-local-template.md)

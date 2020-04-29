@@ -1,27 +1,27 @@
 ---
-title: Holografikus távoli átmatozás és távoli renderelés használata egységben
-description: Hogyan használható a holografikus átmatoló előnézet az Azure távoli rendereléssel együtt?
+title: A holografikus távelérés és a távoli renderelés használata a Unityben
+description: Hogyan használható a holografikus távelérési előzetes verzió az Azure távoli rendereléssel együtt
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
 ms.openlocfilehash: ac47a2922e92233f0acabf75817a712671306bc1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681206"
 ---
-# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Holografikus távoli átmatozás és távoli renderelés használata egységben
+# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>A holografikus távelérés és a távoli renderelés használata a Unityben
 
-[A holografikus távoli renderelés](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) és az Azure távoli renderelés kölcsönösen kizárják egymást egy alkalmazáson belül. Mint ilyen, [Egység játék mód](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) van is nem elérhető.
+A [holografikus](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) távelérés és az Azure távoli renderelés kölcsönösen kizárják egymást egy alkalmazáson belül. Ilyenkor az [egységes lejátszási mód](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) is nem érhető el.
 
-Az Egység szerkesztő minden egyes futtatásához csak az egyik használható a kettő közül. A másik használatához először indítsa újra az Unityt.
+Az Unity Editor minden egyes futtatása esetén csak a kettő közül lehet használni. Ha a másikat szeretné használni, először indítsa újra az egységet.
 
-## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>A Unity lejátszási mód dalával megtekintheti a Hololens 2 előnézetét
+## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>A 2. Hololens előzetes verziójának használata Unity lejátszási módban
 
- A Unity lejátszási mód továbbra is használható, például az alkalmazás felhasználói felületének teszteléséhez. Azonban létfontosságú, hogy az ARR soha ne inicializálva. Különben összeomlik.
+ Az egység lejátszási módja továbbra is használható, például az alkalmazás felhasználói felületének teszteléséhez. Azonban fontos, hogy az ARR soha ne legyen inicializálva. Ellenkező esetben a rendszer összeomlik.
 
-## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>WMR VR headset használata az asztali előnézethez
+## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>WMR VR-fülhallgató használata az asztal előnézetéhez
 
-Ha windows Mixed Reality VR headset van jelen, akkor a Unity előnézetére használható. Ebben az esetben az ARR inicializálása rendben van, de a WMR headset használat közben nem lehet munkamenethez csatlakozni.
+Ha a Windows vegyes valóság VR headset van jelen, az egységen belül is megtekinthető. Ebben az esetben a rendszer nem tudja inicializálni az ARR-t, azonban a WMR headset használata közben nem lehet csatlakozni a munkamenethez.

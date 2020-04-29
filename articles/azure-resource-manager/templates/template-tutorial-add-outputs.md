@@ -1,56 +1,56 @@
 ---
-title: Oktatóanyag - kimenetek hozzáadása a sablonhoz
-description: A szintaxis egyszerűsítése érdekében adja hozzá a kimeneteket az Azure Resource Manager-sablonhoz.
+title: Oktatóanyag – kimenetek hozzáadása a sablonhoz
+description: Adja hozzá a kimeneteket a Azure Resource Manager-sablonhoz a szintaxis egyszerűsítése érdekében.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80743546"
 ---
-# <a name="tutorial-add-outputs-to-your-arm-template"></a>Oktatóanyag: Kimenetek hozzáadása az ARM-sablonhoz
+# <a name="tutorial-add-outputs-to-your-arm-template"></a>Oktatóanyag: kimenetek hozzáadása az ARM-sablonhoz
 
-Ebben az oktatóanyagban megtudhatja, hogyan ad vissza egy értéket az Azure Resource Manager (ARM) sablonból. Akkor használja a kimeneteket, ha egy üzembe helyezett erőforrásból származó értékre van szüksége. Ez az oktatóanyag **7 percet** vesz igénybe.
+Ebből az oktatóanyagból megtudhatja, hogyan adhat vissza értéket a Azure Resource Manager (ARM) sablonból. A kimenetek akkor használhatók, ha egy központilag telepített erőforrásból származó értékre van szüksége. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azt javasoljuk, hogy töltse ki az [oktatóanyagot a változókról,](template-tutorial-add-variables.md)de ez nem szükséges.
+Javasoljuk, hogy fejezze be a [változókról szóló oktatóanyagot](template-tutorial-add-variables.md), de ez nem kötelező.
 
-A Visual Studio-kódnak rendelkeznie kell a Resource Manager Tools bővítménylel, valamint az Azure PowerShell vagy az Azure CLI használatával. További információt a [sabloneszközök című témakörben talál.](template-tutorial-create-first-template.md#get-tools)
+A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Véleményezési sablon
+## <a name="review-template"></a>Sablon áttekintése
 
-Végén az előző bemutató, a sablon volt a következő JSON:
+Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
-Üzembe helyez egy tárfiókot, de nem ad vissza semmilyen információt a tárfiókról. Előfordulhat, hogy egy új erőforrásból kell rögzítenie a tulajdonságokat, hogy később is elérhetők lesznek.
+Üzembe helyez egy Storage-fiókot, de nem ad vissza semmilyen információt a Storage-fiókról. Előfordulhat, hogy a tulajdonságokat egy új erőforrásból kell rögzítenie, hogy később is elérhetők legyenek a hivatkozáshoz.
 
 ## <a name="add-outputs"></a>Kimenetek hozzáadása
 
-A kimenetek segítségével értékeket adhat vissza a sablonból. Például hasznos lehet, ha lekéri az új tárfiók végpontjait.
+A kimenetek segítségével adhat vissza értékeket a sablonból. Előfordulhat például, hogy hasznos lehet az új Storage-fiókhoz tartozó végpontok beszerzése.
 
-A következő példa kiemeli a sablon módosítását egy kimeneti érték hozzáadásához. Másolja a teljes fájlt, és cserélje le a sablontartalmát.
+A következő példa kiemeli a sablon módosítását a kimeneti érték hozzáadásához. Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
-Van néhány fontos elem, amelyet figyelembe kell venni a hozzáadott kimeneti értékkel kapcsolatban.
+Néhány fontos elemet érdemes megjegyezni a hozzáadott kimeneti értékről.
 
-A visszaadott érték típusa **objektum,** ami azt jelenti, hogy egy JSON-objektumot ad vissza.
+A visszaadott érték típusa **objektum**, ami azt jelenti, hogy egy JSON-objektumot ad vissza.
 
-A [hivatkozási](template-functions-resource.md#reference) függvény t használja a tárfiók futásidejű állapotának leéséhez. Egy erőforrás futásidejű állapotának lekért, adja át egy erőforrás nevét vagy azonosítóját. Ebben az esetben ugyanazt a változót használja, amelyet a tárfiók nevének létrehozásához használt.
+A [hivatkozási](template-functions-resource.md#reference) függvényt használja a Storage-fiók futásidejű állapotának lekéréséhez. Egy erőforrás futásidejű állapotának lekéréséhez egy erőforrás nevét vagy AZONOSÍTÓját kell átadnia. Ebben az esetben ugyanazt a változót használja, amelyet a Storage-fiók nevének létrehozásához használt.
 
-Végül az **elsődlegesvégpontok tulajdonságot** adja vissza a tárfiókból.
+Végül visszaadja a **primaryEndpoints** tulajdonságot a Storage-fiókból.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Készen áll a sablon üzembe helyezésére, és tekintse meg a visszaadott értéket.
+Készen áll a sablon üzembe helyezésére, és megtekinteni a visszaadott értéket.
 
-Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -65,7 +65,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A központi telepítési parancs futtatásához az Azure CLI [legújabb verziójával](/cli/azure/install-azure-cli) kell rendelkeznie.
+Az üzembe helyezési parancs futtatásához az Azure CLI [legújabb verziójára](/cli/azure/install-azure-cli) van szükség.
 
 ```azurecli
 az deployment group create \
@@ -77,7 +77,7 @@ az deployment group create \
 
 ---
 
-A központi telepítési parancs kimenetében csak akkor jelenik meg a következő példához hasonló objektum, ha a kimenet JSON formátumú:
+A központi telepítési parancs kimenetében az alábbi példához hasonló objektum jelenik meg, ha a kimenet JSON formátumú:
 
 ```json
 {
@@ -91,35 +91,35 @@ A központi telepítési parancs kimenetében csak akkor jelenik meg a következ
 ```
 
 > [!NOTE]
-> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
+> Ha az üzemelő példány nem sikerült, a hibakeresési naplók megjelenítéséhez használja a **Debug** kapcsolót a telepítési paranccsal.  A teljes hibakeresési naplók megjelenítéséhez használhatja a **részletes** kapcsolót is.
 
 ## <a name="review-your-work"></a>A munka áttekintése
 
-Sokat tettél az elmúlt hat oktató. Vessünk egy kis ideig, hogy vizsgálja felül, mit tett. Olyan sablont hozott létre, amelynek paraméterei könnyen biztosíthatóak. A sablon különböző környezetekben újrafelhasználható, mert lehetővé teszi a testreszabást, és dinamikusan létrehozza a szükséges értékeket. Azt is ad információt a tárfiók, amely a parancsfájlban használható.
+Sokat tett az elmúlt hat oktatóanyagban. Szánjon egy kis időt a megtörténtek áttekintésére. Létrehozott egy könnyen elérhető paramétereket tartalmazó sablont. A sablon többször is felhasználható a különböző környezetekben, mivel lehetővé teszi a testreszabást, és dinamikusan létrehozza a szükséges értékeket. Emellett a parancsfájlban használható Storage-fiókkal kapcsolatos információkat is adja vissza.
 
-Most nézzük meg az erőforráscsoport és a telepítési előzmények.
+Most nézzük meg az erőforráscsoportot és az üzembe helyezési előzményeket.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. A bal oldali menüben válassza az **Erőforráscsoportok**lehetőséget.
-1. Válassza ki azt az erőforráscsoportot, amelybe telepítette.
-1. Attól függően, hogy a lépéseket, akkor rendelkeznie kell legalább egy, és talán több tárfiókok az erőforráscsoportban.
-1. Azt is meg kell, hogy több sikeres központi telepítések az előzményekben felsorolt. Jelölje ki a hivatkozást.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
+1. Attól függően, hogy milyen lépések történtek, rendelkeznie kell legalább egy, és talán több Storage-fiókkal az erőforráscsoporthoz.
+1. Emellett több sikeres központi telepítést is meg kell jelennie az előzményekben. Válassza ki a hivatkozást.
 
    ![Központi telepítések kiválasztása](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. Az összes központi telepítést az előzményekben látja. Válassza ki az addoutputs nevű központi **telepítést.**
+1. Az összes üzemelő példány megjelenik az előzmények között. Válassza ki a **addoutputs**nevű központi telepítést.
 
    ![Telepítési előzmények megjelenítése](./media/template-tutorial-add-outputs/show-history.png)
 
-1. A bemeneteket áttekintheti.
+1. A bemenetek áttekinthetők.
 
    ![Bemenetek megjelenítése](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. Megtekintheti a kimeneteket.
+1. A kimenetek áttekinthetők.
 
    ![Kimenetek megjelenítése](./media/template-tutorial-add-outputs/show-outputs.png)
 
-1. Megtekintheti a sablont.
+1. Áttekintheti a sablont.
 
    ![Sablon megjelenítése](./media/template-tutorial-add-outputs/show-template.png)
 
@@ -127,16 +127,16 @@ Most nézzük meg az erőforráscsoport és a telepítési előzmények.
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-Ha most leáll, érdemes lehet az erőforráscsoport törlésével felvetheti a telepített erőforrásokat.
+Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
 
-1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
+1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
-4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
+4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban hozzáadott egy visszatérési értéket a sablonhoz. A következő oktatóanyagból megtudhatja, hogyan exportálhat egy sablont, és hogyan használhatja az exportált sablon egyes részeit a sablonban.
+Ebben az oktatóanyagban hozzáadott egy visszatérési értéket a sablonhoz. A következő oktatóanyagban megtudhatja, hogyan exportálhat sablont, és hogyan használhatja az exportált sablon részeit a sablonban.
 
 > [!div class="nextstepaction"]
 > [Exportált sablon használata](template-tutorial-export-template.md)

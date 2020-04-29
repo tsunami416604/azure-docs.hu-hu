@@ -1,14 +1,14 @@
 ---
-title: Strukturálatlan adatok tárolása az Azure Cosmos DB és functions használatával
+title: Strukturálatlan adatok tárolása Azure Cosmos DB és függvények használatával
 description: Strukturálatlan adatok tárolása az Azure Functions és a Cosmos DB használatával
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: d11b7e7d55d0327bdec0a8bd6c73571cf846fd3c
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756655"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Strukturálatlan adatok tárolása az Azure Functions és az Azure Cosmos DB használatával
@@ -65,7 +65,7 @@ A kimeneti kötés létrehozásához rendelkeznie kell egy SQL API-t használó 
 
 Cserélje le a meglévő függvénykódot a következő kódra a kiválasztott nyelven:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Cserélje le a meglévő C#-függvényt a következő kódra:
 

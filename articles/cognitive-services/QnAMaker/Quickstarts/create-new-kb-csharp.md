@@ -6,13 +6,13 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 78608d3acdfea07f21ccc42e8d530ff502fbb0b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851926"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Maker ben c# használatával rest
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker C# használatával a REST segítségével
 
 Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán és közzétételén. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/knowledge-base.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja.
 
@@ -20,32 +20,32 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Tudásbázis létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[C. referenciadokumentáció.](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# Sample](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
+[Hivatkozási dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója .
-* Rendelkeznie kell egy [QnA Maker erőforrással.](../How-To/set-up-qnamaker-service-azure.md) A kulcs és a végpont (amely tartalmazza az erőforrás nevét) lekéréséhez válassza az erőforrás **gyorsindítását** az Azure Portalon.
+* A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
+* Rendelkeznie kell [QnA Maker erőforrással](../How-To/set-up-qnamaker-service-azure.md). Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
 
-### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
+### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core alkalmazást a kívánt szerkesztőben vagy IDE-ben.
+Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
 
-Egy konzolablakban (például cmd, PowerShell vagy `dotnet new` Bash) a paranccsal `qna-maker-quickstart`hozhat létre egy új konzolalkalmazást a .. Ez a parancs egy egyszerű "Hello World" C# projektet hoz létre egyetlen forrásfájllal: *Program.cs*.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű `qna-maker-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappára. Az alkalmazást a következőkkel hozhatja létre:
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
 
 ```dotnetcli
 dotnet build
 ```
 
-A build kimenetnem tartalmazhat figyelmeztetéseket vagy hibákat.
+A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát.
 
 ```console
 ...
@@ -63,12 +63,12 @@ A Program.cs tetején cserélje le az önálló using utasítást a következő 
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-A Program osztály tetején adja hozzá a QnA Maker eléréséhez szükséges állandókat.
+A program osztály tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez.
 
-Állítsa be a következő értékeket a környezeti változókban:
+Adja meg a következő értékeket a környezeti változókban:
 
-* `QNA_MAKER_SUBSCRIPTION_KEY`- A **kulcs** egy 32 karakterből álló karakterlánc, és elérhető az Azure Portalon, a QnA Maker erőforrás, a gyorsútmutató lapon. Ez nem ugyanaz, mint az előrejelzési végpont kulcs.
-* `QNA_MAKER_ENDPOINT`- A **végpont** a szerzői url-cím, `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`a formátumában . Ez nem ugyanaz az URL-cím, amelyet az előrejelzési végpont lekérdezéséhez használnak.
+* `QNA_MAKER_SUBSCRIPTION_KEY`– A **kulcs** egy 32 karakterből álló karakterlánc, és a Azure Portal QnA Maker erőforrásban, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
+* `QNA_MAKER_ENDPOINT`– A **végpont** a szerzői URL-cím, a következő formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`:. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 

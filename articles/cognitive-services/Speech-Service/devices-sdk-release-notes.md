@@ -1,7 +1,7 @@
 ---
-title: Beszédeszközök SDK dokumentációja
+title: Beszédfelismerési eszközök SDK-dokumentációja
 titleSuffix: Azure Cognitive Services
-description: A kibocsátási megjegyzések naplót tartalmaznak a hangfrissítésekről, fejlesztésekről, hibajavításokról és a beszédeszközök SDK változásairól. Ez a cikk a beszédeszközök SDK minden egyes kiadásával frissül.
+description: A kibocsátási megjegyzésekben a frissítések, a javítások, a hibajavítások és a Speech Devices SDK módosításai szerepelnek. Ez a cikk a Speech Device SDK minden kiadásával frissül.
 services: cognitive-services
 author: wsturman
 manager: nitinme
@@ -11,94 +11,94 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
 ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80371623"
 ---
-# <a name="release-notes-speech-devices-sdk"></a>Kibocsátási megjegyzések: Beszédeszközök SDK
+# <a name="release-notes-speech-devices-sdk"></a>Kibocsátási megjegyzések: beszédfelismerési eszközök SDK
 
-A következő szakaszok a legutóbbi kiadások változásait sorolják fel.
+A következő fejezetek a legutóbbi kiadások változásait sorolja fel.
 
-## <a name="speech-devices-sdk-190"></a>Beszédeszközök SDK 1.9.0:
+## <a name="speech-devices-sdk-190"></a>Beszédfelismerési eszközök SDK-1.9.0:
 
-- Az [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64) kezdeti bináris a rendelkezésre áll.
-- Roobo v1 most használja Maven a speech SDK
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.9.0-s verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
+- A [URBETTER DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64) kezdeti bináris fájljai vannak megadva.
+- A Roobo v1 mostantól a Mavent használja a Speech SDK-hoz
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőjét a 1.9.0 verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
 
-## <a name="speech-devices-sdk-170"></a>Beszédeszközök SDK 1.7.0:
+## <a name="speech-devices-sdk-170"></a>Beszédfelismerési eszközök SDK-1.7.0:
 
-- A Linux ARM most már támogatott.
-- A [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) kezdeti bináris fájljai (Linux ARM64) állnak rendelkezésre.
-- A Windows-felhasználók használhatják `AudioConfig.fromDefaultMicrophoneInput()` vagy `AudioConfig.fromMicrophoneInput(deviceName)` megadhatják a használni kívánt mikrofont.
-- A könyvtár mérete optimalizálva van.
-- A többfordulatos felismerés támogatása ugyanazzal a beszéd-/szándékfelismerő objektummal.
-- A felismerés leállítása közben előforduló alkalmi lefagyás javítása.
-- A mintaalkalmazások mostmár tartalmaznak egy mintaparticipant.properties fájlt a fájl formátumának bemutatására.
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.7.0-s verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
+- A Linux ARM mostantól támogatott.
+- A [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) kezdeti bináris fájljai (Linux ARM64) vannak megadva.
+- A Windows-felhasználók `AudioConfig.fromDefaultMicrophoneInput()` használhatják `AudioConfig.fromMicrophoneInput(deviceName)` vagy megadhatják a használni kívánt mikrofont.
+- A könyvtár mérete optimalizált.
+- Több-turn felismerés támogatása ugyanazzal a beszédfelismerési/szándék-felismerő objektummal.
+- Javítsa ki az alkalmi lefagyást, amely az elismerés leállításakor következik be.
+- A minta alkalmazások mostantól egy minta résztvevő. properties fájlt tartalmaznak a fájl formátumának bemutatásához.
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőjét a 1.7.0 verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
 
-## <a name="speech-devices-sdk-160"></a>Beszédeszközök SDK 1.6.0:
+## <a name="speech-devices-sdk-160"></a>Beszédfelismerési eszközök SDK-1.6.0:
 
-- Az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatása Windows és Linux rendszeren közös [mintaalkalmazással](https://aka.ms/sdsdk-download)
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.6.0-s verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
+- Az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatása a Windows és a Linux rendszerben a gyakori [minta alkalmazással](https://aka.ms/sdsdk-download)
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőjét a 1.6.0 verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
 
-## <a name="speech-devices-sdk-151"></a>Beszédeszközök SDK 1.5.1:
+## <a name="speech-devices-sdk-151"></a>Beszédfelismerési eszközök SDK 1.5.1:
 
-- A mintaalkalmazásban szerepeljen a [beszélgetési átírás.](conversation-transcription-service.md)
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.5.1-es verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
+- Belefoglalja a [beszélgetés átírását](conversation-transcription-service.md) a minta alkalmazásba.
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőt a 1.5.1-es verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
 
-## <a name="speech-devices-sdk-150-2019-may-release"></a>Beszédeszközök SDK 1.5.0: 2019-május kiadás
+## <a name="speech-devices-sdk-150-2019-may-release"></a>Beszédfelismerési eszközök SDK 1.5.0:2019 – májusi kiadás
 
-- A Beszédeszközök SDK mostantól GA, és már nem egy kapuzott előzetes verzió.
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.5.0-s verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
-- Az új kulcsszótechnológia jelentős minőségi javulást hoz, lásd: Változások megtörése.
-- Új hangfeldolgozási folyamat a terepfelismerés javításához.
+- A Speech Devices SDK mostantól már nem egy nem elérhető előzetes verzió.
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőt a 1.5.0-es verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
+- Az új kulcsszó-technológia jelentős minőségbeli újdonságokat eredményez, lásd: a változtatások megszakítása.
+- Új hangfeldolgozási folyamat a továbbfejlesztett távoli mezők felismeréséhez.
 
-**Változások megbontása**
+**Kompatibilitástörő változások**
 
-- Az új kulcsszótechnológia miatt minden kulcsszót újra létre kell hozni a továbbfejlesztett kulcsszóportálunkon. A régi kulcsszavak teljes eltávolításához távolítsa el a régi alkalmazást.
-  - adb uninstall com.microsoft.cognitiveservices.speech.samples.sdsdkstarterapp
+- Az új kulcsszó-technológia miatt minden kulcsszót újra létre kell hozni a továbbfejlesztett kulcsszavas portálon. Ha teljesen el szeretné távolítani a régi kulcsszavakat az eszközről, távolítsa el a régi alkalmazást.
+  - ADB uninstall com. microsoft. cognitiveservices. Speech. Samples. sdsdkstarterapp
 
-## <a name="speech-devices-sdk-140-2019-apr-release"></a>Beszédeszközök SDK 1.4.0: 2019-április kiadás
+## <a name="speech-devices-sdk-140-2019-apr-release"></a>Speech Devices SDK 1.4.0:2019 – Apr kiadás
 
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.4.0-s verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőjét a 1.4.0 verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
 
-## <a name="speech-devices-sdk-131-2019-mar-release"></a>Beszédeszközök SDK 1.3.1: 2019-Mar kiadás
+## <a name="speech-devices-sdk-131-2019-mar-release"></a>Speech Devices SDK 1.3.1:2019 – Mar kiadás
 
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.3.1-es verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
-- Frissített kulcsszókezelés, lásd: Változások megtörése.
-- Minta alkalmazás hozzáteszi, nyelvválasztás mind a beszédfelismerés és a fordítás.
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőt a 1.3.1-es verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
+- Frissített kulcsszavas kezelés: a módosítások megszakítása.
+- A minta alkalmazás a beszédfelismerés és a fordítás nyelvének megválasztását is hozzáadja.
 
-**Változások megbontása**
+**Kompatibilitástörő változások**
 
-- [A kulcsszó telepítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) egyszerűsödött, most már az alkalmazás része, és nincs szükség külön telepítésre az eszközön.
-- A kulcsszófelismerés megváltozott, és két esemény támogatott.
-  - `RecognizingKeyword,`a beszéderedmény (nem ellenőrzött) kulcsszószöveget tartalmaz.
-  - `RecognizedKeyword`, azt jelzi, hogy a kulcsszófelismerés befejeződött az adott kulcsszó felismerésével.
+- [A kulcsszó telepítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) egyszerűsített, mostantól az alkalmazás része, és nincs szükség külön telepítésre az eszközön.
+- A kulcsszó-felismerés módosult, és két esemény támogatott.
+  - `RecognizingKeyword,`azt jelzi, hogy a beszédfelismerési eredmény tartalmaz (nem ellenőrzött) kulcsszavas szöveget.
+  - `RecognizedKeyword`azt jelzi, hogy a kulcsszó-felismerés befejeződött az adott kulcsszó felismerése során.
 
-## <a name="speech-devices-sdk-110-2018-nov-release"></a>Beszédeszközök SDK 1.1.0: 2018-nov kiadás
+## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech Devices SDK 1.1.0:2018 – november kiadás
 
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő 1.1.0-s verzióra frissült. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
-- A Far Field Beszédfelismerés pontossága továbbfejlesztett hangfeldolgozó algoritmusunkkal javult.
-- Minta alkalmazás hozzáadott Kínai beszédfelismerés támogatása.
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőt a 1.1.0 verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
+- A továbbfejlesztett hangfeldolgozási algoritmussal továbbfejlesztettük a beszédfelismerési pontosságot.
+- Példa a kínai beszédfelismerési támogatás hozzáadására.
 
-## <a name="speech-devices-sdk-101-2018-oct-release"></a>Beszédeszközök SDK 1.0.1: 2018-október i kiadás
+## <a name="speech-devices-sdk-101-2018-oct-release"></a>Speech Devices SDK 1.0.1:2018 – Oct kiadás
 
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése az 1.0.1-es verzióra. További információt a [kibocsátási megjegyzésekben talál.](https://aka.ms/csspeech/whatsnew)
-- Továbbfejlesztett hangfeldolgozási algoritmusunk javítja a beszédfelismerés pontosságát
-- Egy folyamatos felismerés audio session hiba javítva.
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőt a 1.0.1-es verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
+- A beszédfelismerés pontossága továbbfejlesztett hangfeldolgozási algoritmussal bővült
+- Egy folyamatos felismerési hang-munkamenet hibája javítva lett.
 
-**Változások megbontása**
+**Kompatibilitástörő változások**
 
-- Ezzel a kiadással számos törési módosítás vezet be. Kérjük, ellenőrizze [ezt az oldalt](https://aka.ms/csspeech/breakingchanges_1_0_0) az API-kkal kapcsolatos részletekért.
-- A KWS modellfájlok nem kompatibilisek a Speech Devices SDK 1.0.1-es rendszerrel. A meglévő kulcsszófájlok törlődnek, miután az új kulcsszófájlokat az eszközre írták.
+- Ezzel a kiadással számos feltörési változást vezetünk be. Az API-kkal kapcsolatos részletekért tekintse meg [ezt a lapot](https://aka.ms/csspeech/breakingchanges_1_0_0) .
+- A KWS-modell fájljai nem kompatibilisek a Speech Devices SDK 1.0.1-vel. A meglévő kulcsszavas fájlokat a rendszer az új Kulcsszóválasztó fájlok az eszközre való írása után törli.
 
-## <a name="speech-devices-sdk-050-2018-aug-release"></a>Beszédeszközök SDK 0.5.0: 2018-augusztus kiadás
+## <a name="speech-devices-sdk-050-2018-aug-release"></a>Speech Devices SDK 0.5.0:2018 – Aug kiadás
 
-- Javította a beszédfelismerés pontosságát azáltal, hogy kijavítottegy hibát a hangfeldolgozó kódban.
-- A [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevő frissítése 0.5.0-s verzióra. További információt a [kibocsátási megjegyzésekben talál.](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release)
+- Javította a beszédfelismerés pontosságát azáltal, hogy kijavít egy hibát a hangfeldolgozási kódban.
+- Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőjét a 0.5.0 verzióra. További információt a [kibocsátási megjegyzései](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release)című témakörben talál.
 
-## <a name="speech-devices-sdk-0212733-2018-may-release"></a>Beszédeszközök SDK 0.2.12733: 2018-május kiadás
+## <a name="speech-devices-sdk-0212733-2018-may-release"></a>Speech Devices SDK 0.2.12733:2018 – májusi kiadás
 
-A Cognitive Services beszédeszközök SDK első nyilvános előzetes kiadása.
+A Cognitive Services Speech Devices SDK első nyilvános előzetes kiadása.

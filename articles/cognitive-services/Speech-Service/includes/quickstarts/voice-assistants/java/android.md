@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Egyéni hangasszisztens létrehozása, Java (Android) – Beszédszolgáltatás'
+title: 'Gyors útmutató: egyéni hangsegéd létrehozása, Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre egyéni hangsegédet Az Android-alapú Java-ban a Beszéd SDK használatával.
+description: Megtudhatja, hogyan hozhat létre egyéni hangsegédet Java-on Android rendszeren a Speech SDK használatával.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671209"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](~/articles/cognitive-services/speech-service/get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * A [közvetlen vonalbeszédcsatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakoztatott robot létrehozása
-> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
+> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
   > [!NOTE]
-  > Tekintse meg [a támogatott régiók listáját a hang-asszisztensek,](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) és győződjön meg arról, hogy az erőforrások telepítése az egyik ilyen régiókban.
+  > Tekintse meg [a támogatott régiók listáját a hangsegédek számára](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
 ## <a name="create-and-configure-a-project"></a>Projekt létrehozása és konfigurálása
 
@@ -36,9 +36,9 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 ## <a name="create-user-interface"></a>A felhasználói felület létrehozása
 
-Ebben a szakaszban létrehozunk egy egyszerű felhasználói felületet (UI) az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml`. Az alapsablon tartalmaz egy címsort az alkalmazás `TextView` nevével, és egy a a "Hello world!" üzenettel.
+Ebben a szakaszban egy alapszintű felhasználói felületet (UI) hozunk létre az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml`. Az alapszintű sablon tartalmaz egy címsort az alkalmazás nevével, és `TextView` a "Hello World!" üzenettel.
 
-Ezután cserélje ki `activity_main.xml` a tartalmát a következő kódra:
+Ezután cserélje le a tartalmát `activity_main.xml` a következő kódra:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -89,17 +89,17 @@ Ezután cserélje ki `activity_main.xml` a tartalmát a következő kódra:
 
 Ez az XML egy egyszerű felhasználói felületet határoz meg a robottal való interakcióhoz.
 
-- Az `button` elem interakciót kezdeményez, `onBotButtonClicked` és kattintáskor meghívja a metódust.
-- Az `recoText` elem megjeleníti a beszéd-szöveg eredményeket, ahogy beszél a bot.
-- Az `activityText` elem megjeleníti a JSON hasznos teher a legújabb Bot Framework tevékenység a bot.
+- Az `button` elem interakciót kezdeményez, és rákattintáskor meghívja a `onBotButtonClicked` metódust.
+- Az `recoText` elem megjeleníti a beszéd – szöveg eredményeket a robottal való kommunikáció során.
+- Az `activityText` elem megjeleníti a robothoz tartozó legújabb bot Framework-tevékenység JSON-adattartalmát.
 
-A felhasználói felület szövegének és grafikus ábrázolásának így kell kinéznie:
+A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a következőképpen kell kinéznie:
 
 ![](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa `MainActivity.java`meg a tartalmat, és cserélje le a tartalmát a következő kódra:
+1. Nyissa meg `MainActivity.java`a (z) programot, és cserélje le a tartalmát a következő kódra:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -241,31 +241,31 @@ A felhasználói felület szövegének és grafikus ábrázolásának így kell 
     }
    ```
 
-   * A `onCreate` módszer olyan kódot tartalmaz, amely mikrofon- és internet-engedélyeket kér.
+   * A `onCreate` metódus olyan kódot tartalmaz, amely mikrofon-és Internet-engedélyeket kér.
 
-   * Ahogy korábban már említettük, az `onBotButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gombnyomás egyetlen interakciót ("turn") vált ki a robottal.
+   * Ahogy korábban már említettük, az `onBotButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gomb megnyomásával egyetlen interakciót ("turn") indít a robottal.
 
-   * A `registerEventListeners` módszer bemutatja a `DialogServiceConnector` bejövő tevékenységek alapvető kezelése által használt eseményeket.
+   * A `registerEventListeners` metódus a bejövő tevékenységek és az `DialogServiceConnector` alapszintű kezelési műveletek által használt eseményeket mutatja be.
 
-1. Ugyanabban a fájlban cserélje le az erőforrásoknak megfelelő konfigurációs karakterláncokat:
+1. Ugyanebben a fájlban cserélje le a konfigurációs karakterláncokat a megfelelő erőforrásokra:
 
     * A `YourSpeechSubscriptionKey` helyére írja be az előfizetési kulcsot.
 
-    * Cserélje `YourServiceRegion` le az előfizetéshez társított [régióra:](~/articles/cognitive-services/speech-service/regions.md) Jelenleg csak a Beszédszolgáltatás-régiók egy részhalmaza támogatott a Direct Line Speech szolgáltatással. További információ: [regions](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
+    * Cserélje `YourServiceRegion` le az előfizetéshez tartozó [régiót](~/articles/cognitive-services/speech-service/regions.md) , és csak a Speech Service-régiók egy részhalmazát támogatja a közvetlen vonalas beszéd. További információ: [régiók](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
 1. Csatlakoztassa az Android-eszközt a fejlesztői számítógéphez. Győződjön meg róla, hogy engedélyezte a [fejlesztői módot és az USB-hibakeresést](https://developer.android.com/studio/debug/dev-options) az eszközön.
 
-1. Az alkalmazás létrehozásához nyomja le a Ctrl+F9 billentyűkombinációt, vagy válassza a menüsor > **Project** **összeállítása**parancsát.
+1. Az alkalmazás létrehozásához nyomja le a CTRL + F9 billentyűkombinációt, vagy válassza a menüsávon a **Létrehozás** > **projekt** létrehozása lehetőséget.
 
-1. Az alkalmazás elindításához nyomja le a Shift+F10 billentyűkombinációt, vagy válassza a Run**Run 'app' (Alkalmazás futtatása)** **lehetőséget.** > 
+1. Az alkalmazás elindításához nyomja le a SHIFT + F10 billentyűkombinációt, **vagy válassza** > az**alkalmazás futtatása**parancsot.
 
 1. A megjelenő, az üzembehelyezési cél megadására szolgáló ablakban válassza ki az Android-eszközt.
 
    ![A Select Deployment Target (Üzembehelyezési cél kiválasztása) ablak képernyőképe](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-12-deploy.png)
 
-Miután az alkalmazás és annak tevékenysége elindult, kattintson a gombra, hogy elkezd beszélni a bot. Az átírt szöveg jelenik meg, amikor beszélsz, és a legutóbbi tevékenység, amit a robottól kaptál, akkor jelenik meg, amikor megérkezett. Ha a robot úgy van beállítva, hogy szóbeli válaszokat adjon, a szöveggé bírja automatikusan lejátssza a szöveget.
+Az alkalmazás és a tevékenység elindítása után a gombra kattintva megkezdheti a beszélgetést a robottal. Az átmásolt szöveg az Ön által beszélt módon jelenik meg, és a robottól kapott legújabb tevékenységek a fogadáskor megjelennek. Ha a robot úgy van konfigurálva, hogy a kimondott válaszokat adja meg, a beszédfelismerési szöveg automatikusan le lesz játszva.
 
 ![Az Android-alkalmazás képernyőképe](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-completed-turn.png)
 

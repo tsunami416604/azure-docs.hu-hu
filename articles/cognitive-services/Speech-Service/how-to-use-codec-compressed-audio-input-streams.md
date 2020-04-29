@@ -1,7 +1,7 @@
 ---
-title: Kódc tömörített hang streamelése a Beszéd SDK - Beszédszolgáltatással
+title: Stream codec tömörített hang a Speech SDK-Speech szolgáltatással
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan streamelhet tömörített hangot a beszédfelismerési sdk-vel a beszédfelismerési szolgáltatásba. Elérhető C++, C#, és Java for Linux, Java Android és Objective-C iOS.Available for C++, C#, and Java for Linux, Java in Android and Objective-C in iOS.
+description: Megtudhatja, hogyan továbbíthat tömörített hangot a beszédfelismerési szolgáltatásnak a Speech SDK-val. Elérhető a C++, a C# és a Java for Linux, a Java az Androidban és az Objective-C-ben iOS-ben.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
 ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80637276"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Kodek tömörített hangbemenet használata a beszédfelismerési SDK-val
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>A codec tömörített hangbemenetének használata a Speech SDK-val
 
-A beszédfelismerési szolgáltatás SDK **tömörített hangbemeneti stream** API lehetővé teszi, hogy a tömörített hangot a `PullStream` vagy `PushStream`a használatával streamelje a beszédfelismerési szolgáltatásba.
+A Speech Service SDK **tömörített hangbemeneti stream** API lehetővé teszi a tömörített hang továbbítását a beszédfelismerési szolgáltatásba vagy `PullStream` a `PushStream`vagy a használatával.
 
-A tömörített bemeneti hang streamelése jelenleg támogatott A C#, C++, Java windowsos (UWP alkalmazások nem támogatottak) és Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8) esetén. Az iOS platformon a Java és az Objective-C is támogatott.
-* Az RHEL 8 és CentOS 8 esetén a beszédfelismerési SDK 1.10.0-s vagy újabb verziója szükséges
-* A Beszéd SDK 1.11.0-s vagy újabb verziója szükséges a Windows rendszerhez.
+A streaming tömörített bemeneti hang jelenleg a C#, a C++, a Java on Windows (UWP-alkalmazások nem támogatott) és a Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8) esetében támogatott. A Java az iOS platformon is támogatja az Android és Objective-C nyelveken.
+* A Speech SDK 1.10.0 vagy újabb verziójára van szükség a RHEL 8 és a CentOS 8 esetében
+* A Windows rendszerhez a Speech SDK 1.11.0 vagy újabb verziója szükséges.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
@@ -46,7 +46,7 @@ A tömörített bemeneti hang streamelése jelenleg támogatott A C#, C++, Java 
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/prerequisites.md)]
 ::: zone-end
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>Példa kód kód kód kód tömörített audio bemenet
+## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/examples.md)]
@@ -67,4 +67,4 @@ A tömörített bemeneti hang streamelése jelenleg támogatott A C#, C++, Java 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A beszéd felismerésének ismertetése](quickstarts/speech-to-text-from-microphone.md)
+> [Megtudhatja, hogyan ismerheti fel a beszédfelismerést](quickstarts/speech-to-text-from-microphone.md)

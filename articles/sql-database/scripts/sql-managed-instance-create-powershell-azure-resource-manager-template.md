@@ -1,6 +1,6 @@
 ---
-title: Példa sablonra – felügyelt példány létrehozása az Azure SQL Database-ben
-description: Ezzel az Azure PowerShell-példaparancsfájllal hozzon létre egy felügyelt példányt az Azure SQL Database-ben.
+title: Példa sablonra – felügyelt példány létrehozása Azure SQL Database
+description: Ezzel a Azure PowerShell parancsfájllal felügyelt példányt hozhat létre a Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,35 +12,35 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: e5be8c9441be5ca441a5c0f7c4444c2edbdc7a95
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80811213"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány létrehozása az Azure Resource Manager sablonnal az Azure Resource Manager sablonnal
+# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány létrehozása Azure Resource Manager sablonnal a PowerShell használatával Azure SQL Database
 
-Az Azure SQL Database Felügyelt példány az Azure PowerShell-kódtár és az Azure Resource Manager-sablonok használatával hozható létre.
+Azure SQL Database felügyelt példány hozható létre Azure PowerShell kódtár és Azure Resource Manager sablonok használatával.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez az oktatóanyag az AZ PowerShell 1.4.0-s vagy újabb szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-Az Azure PowerShell-parancsok előre definiált Azure Resource Manager-sablonnal indíthatják el a központi telepítést. A sablonban a következő tulajdonságok adhatók meg:
+Azure PowerShell parancsok előre definiált Azure Resource Manager sablonnal indíthatók el a telepítéssel. A sablonban a következő tulajdonságokat lehet megadni:
 
 - Példány neve
-- SQL rendszergazdai felhasználónév és jelszó.
-- A példány mérete (magok száma és maximális tárolási méret).
-- Virtuális hálózat és alhálózat, ahol a példány kerül elhelyezésre.
-- A példány kiszolgálószintű rendezése (előzetes verzió).
+- SQL-rendszergazdai Felhasználónév és jelszó.
+- A példány mérete (magok száma és a tárterület maximális mérete).
+- A VNet és az alhálózat, ahová a példány kerül.
+- A példány kiszolgáló szintű rendezése (előzetes verzió).
 
-A példány neve, az SQL-rendszergazda felhasználóneve, a virtuális hálózat/alhálózat és a rendezés később nem módosítható. Más példánytulajdonságok módosíthatók.
+A példány neve, az SQL-rendszergazda felhasználóneve, a VNet/alhálózat és a rendezés később nem módosítható. Más példányok tulajdonságai módosíthatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a minta feltételezi, hogy [létrehozott egy érvényes hálózati környezetet,](../sql-database-managed-instance-create-vnet-subnet.md) vagy módosította a felügyelt példány meglévő virtuális [hálózatát.](../sql-database-managed-instance-configure-vnet-subnet.md) A minta a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) és a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) parancsmagokat használja, ezért győződjön meg arról, hogy telepítette a következő PowerShell-modulokat:
+Ez a példa feltételezi, hogy [létrehozott egy érvényes hálózati környezetet](../sql-database-managed-instance-create-vnet-subnet.md) , vagy módosította a felügyelt példány [meglévő VNet](../sql-database-managed-instance-configure-vnet-subnet.md) . A minta a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) és a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) parancsmagot használja, ezért győződjön meg arról, hogy telepítette a következő PowerShell-modulokat:
 
 ```powershell
 Install-Module Az.Network
@@ -49,7 +49,7 @@ Install-Module Az.Resources
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-A következő tartalmat kell elhelyezni egy olyan fájlban, amely a példány létrehozásához használt sablont jelöli:
+A következő tartalmat olyan fájlba kell helyezni, amely a példány létrehozásához használni kívánt sablont jelöli:
 
 ```json
 {
@@ -100,9 +100,9 @@ A következő tartalmat kell elhelyezni egy olyan fájlban, amely a példány l�
 }
 ```
 
-Feltételezés, hogy az Azure virtuális hálózat a megfelelően konfigurált alhálózat már létezik. Ha nem rendelkezik megfelelően konfigurált alhálózattal, készítse elő a hálózati környezetet külön [Azure Resource Managed sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) használatával, amely egymástól függetlenül vagy ebben a sablonban végrehajtható.
+Feltételezhető, hogy a megfelelően konfigurált alhálózattal rendelkező Azure-VNet már létezik. Ha nem rendelkezik megfelelően konfigurált alhálózattal, készítse elő a hálózati környezetet külön [Azure erőforrás-felügyelt sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) használatával, amely egymástól függetlenül végrehajtható, vagy ebben a sablonban is megtalálható.
 
-Mentse a fájl tartalmát .json fájlként, helyezze a fájl elérési útját a következő PowerShell-parancsfájlba, és módosítsa a parancsfájlban lévő objektumok nevét:
+Mentse a fájl tartalmát. JSON-fájlként, helyezze a fájl elérési útját a következő PowerShell-parancsfájlba, és módosítsa a parancsfájlban szereplő objektumok nevét:
 
 ```powershell
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"

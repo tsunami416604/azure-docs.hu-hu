@@ -12,36 +12,36 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745131"
 ---
-# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Törölt SQL-készlet visszaállítása az Azure Synapse Analytics használatával
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Törölt SQL-készlet visszaállítása az Azure szinapszis Analytics használatával
 
-Ebben a cikkben megtudhatja, hogy az Azure Portalon vagy a PowerShell használatával visszaállíthatja az SQL-t.
+Ebből a cikkből megtudhatja, hogyan állíthatja vissza az SQL-t a Azure Portal vagy a PowerShell használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU-kapacitást.** Minden SQL-készletet egy SQL-kiszolgáló üzemeltet (például myserver.database.windows.net), amely alapértelmezett DTU-kvótával rendelkezik.  Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő dtu kvótával a visszaállító adatbázishoz. A szükséges DTU kiszámításáról vagy további DTU-kérésről a [DTU-kvótamódosítás kérése.Learn](sql-data-warehouse-get-started-create-support-ticket.md)how to calculate DTU needed or to request more DTU, see Request a DTU quota change .
+**Ellenőrizze a DTU kapacitását.** Minden SQL-készletet egy SQL-kiszolgáló (például myserver.database.windows.net) üzemeltet, amely rendelkezik alapértelmezett DTU-kvótával.  Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
 
-## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Törölt adattárház visszaállítása a PowerShellen keresztül
+## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Törölt adattárház visszaállítása a PowerShell-lel
 
-Törölt SQL-készlet visszaállításához használja a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagát. Ha a megfelelő logikai kiszolgálót is törölték, az adattárház nem állítható vissza.
+Egy törölt SQL-készlet visszaállításához használja a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot. Ha a megfelelő logikai kiszolgáló törölve lett, az adatraktár nem állítható vissza.
 
-1. Mielőtt elkezdené, telepítse [az Azure PowerShellt.](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+1. Mielőtt elkezdené, győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
 2. Nyissa meg a PowerShellt.
-3. Csatlakozzon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
-4. Válassza ki a visszaállítandó törölt adatraktárt tartalmazó előfizetést.
-5. Az adott törölt adattárház beszereznie.
+3. Kapcsolódjon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
+4. Válassza ki azt az előfizetést, amely a visszaállítani kívánt törölt adattárházat tartalmazza.
+5. A megadott törölt adattárház beolvasása.
 6. A törölt adattárház visszaállítása
-    1. A törölt SQL Data Warehouse visszaállításához adjon meg egy másik logikai kiszolgálót.  Ez a logikai kiszolgáló más erőforráscsoportban és régióban is lehet.
-    1. Ha egy másik előfizetésre szeretne visszaállítani, az [Áthelyezés](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) gombbal helyezze át a logikai kiszolgálót egy másik előfizetésbe.
+    1. Ha egy másik logikai kiszolgálóra szeretné visszaállítani a törölt SQL Data Warehouse, akkor ügyeljen arra, hogy a másik logikai kiszolgáló nevét adja meg.  Ez a logikai kiszolgáló más erőforráscsoport és régió is lehet.
+    1. Másik előfizetésre való visszaállításhoz használja az [Áthelyezés](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) gombot a logikai kiszolgáló másik előfizetésre való áthelyezéséhez.
 7. Ellenőrizze, hogy a visszaállított adattárház online állapotban van-e.
-8. A visszaállítás befejezése után konfigurálhatja a helyreállított adattárházat [az adatbázis helyreállítás utáni konfigurálásával.](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)
+8. A visszaállítás befejezése után a helyreállított adattárházat a [helyreállítás után az adatbázis konfigurálása](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)után állíthatja be.
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -69,23 +69,23 @@ $RestoredDatabase = Restore-AzSqlDatabase –FromDeletedDatabaseBackup –Deleti
 $RestoredDatabase.status
 ```
 
-## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Törölt adatbázis visszaállítása az Azure Portal használatával
+## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Törölt adatbázis visszaállítása a Azure Portal használatával
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2. Keresse meg azt az SQL-kiszolgálót, amelyen a törölt adattárházat üzemeltette.
-3. Válassza a **Törölt adatbázisok ikont** a tartalomjegyzékben.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Navigáljon ahhoz az SQL Server-kiszolgálóhoz, amelyen a törölt adattárház található.
+3. Válassza a **törölt adatbázisok** ikont a tartalomjegyzékben.
 
     ![Törölt adatbázisok](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-01.png)
 
-4. Jelölje ki a visszaállítani kívánt törölt SQL-adattárházat.
+4. Válassza ki a visszaállítani kívánt törölt SQL Data Warehouse.
 
     ![A törölt adatbázisok kiválasztása](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-11.png)
 
-5. Adjon meg egy új **adatbázisnevet,** és kattintson **az OK** gombra
+5. Adja meg az új **adatbázis nevét** , majd kattintson **az OK** gombra.
 
-    ![Adatbázis nevének megadása](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
+    ![Adja meg az adatbázis nevét](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
-- [Visszaállítás geo-backup SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)
+- [Visszaállítás egy földrajzi biztonsági mentési SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)

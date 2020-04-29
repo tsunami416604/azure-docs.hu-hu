@@ -1,7 +1,7 @@
 ---
-title: Mondatpárosítás és -igazítás - Egyéni fordító
+title: Mondat párosítása és igazítása – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: A betanítás végrehajtása során a párhuzamos dokumentumokban lévő mondatok párosítva vannak vagy igazítva. Egyéni fordító megtanulja fordítások egy mondatot egy időben, elolvasva egy mondatot, a fordítás ezt a mondatot. Ezután a szavakat és kifejezéseket e két mondatban egymáshoz igazítja.
+description: A betanítás végrehajtása során a párhuzamos dokumentumokban lévő mondatok párosítva vannak vagy igazíthatók. Az egyéni fordító egyszerre tanul egy mondatot a mondatok beolvasásával, a mondat fordításával. Ezután a két mondatban található szavakat és kifejezéseket egymáshoz igazítja.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,42 +10,42 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: cf5b2b84142c9104ea5b3afa3ad179fd0ec07449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80370142"
 ---
-# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondatpárosítás és -igazítás párhuzamos dokumentumokban
+# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítása és igazítása párhuzamos dokumentumokban
 
-A képzés során a párhuzamos dokumentumokban lévő mondatokat párosítja vagy igazítja. Egyéni fordító jelenti a mondatok számát, hogy képes volt párosítani, mint az igazított mondatok az egyes adatkészletek.
+A képzés során a párhuzamos dokumentumokban lévő mondatok párosítva vannak vagy illeszkednek egymáshoz. Az egyéni fordító jelentést készít az egyes adatkészletek igazított mondatait tartalmazó mondatok számáról.
 
 ## <a name="pairing-and-alignment-process"></a>Párosítási és igazítási folyamat
 
-Egyéni fordító megtanulja a mondatok fordítását egy mondattal egy időben. Egy mondatot olvas fel a forrásból, majd ennek a mondatnak a lefordítását a célpontból. Ezután a szavakat és kifejezéseket e két mondatban egymáshoz igazítja. Ez a folyamat lehetővé teszi, hogy egy mondatban készítsen térképet a szavakról és kifejezésekről az egyenértékű szavakhoz és kifejezésekhez e mondat fordításában. Az igazítás megpróbálja biztosítani, hogy a rendszer olyan mondatokra igazodjon, amelyek egymás fordításai.
+Az egyéni fordító egyszerre tanulja meg a mondatok egy mondatának fordítását. Beolvasott egy mondatot a forrástól, majd a mondat fordítását a célhelyről. Ezután a két mondatban található szavakat és kifejezéseket egymáshoz igazítja. Ez a folyamat lehetővé teszi, hogy egy mondatban hozza létre a szavakat és kifejezéseket tartalmazó térképet az ennek a mondatnak a fordításában szereplő egyenértékű szavakra és kifejezésekre. Az igazítás megkísérli biztosítani, hogy a rendszer olyan mondatokat használjon, amelyek egymást fordítanak.
 
 ## <a name="pre-aligned-documents"></a>Előre igazított dokumentumok
 
-Ha tudja, hogy vannak párhuzamos dokumentumai, felülbírálhatja a mondatigazítást előre igazított szövegfájlok biztosításával. Mindkét dokumentum összes mondatát kibonthatja szöveges fájlba, soronként egy `.align` mondatot rendszerezhet, és kiterjesztéssel töltheti fel. A `.align` bővítmény jelzi az egyéni fordítónak, hogy ki kell hagynia a mondatigazítást.
+Ha tudja, hogy rendelkezik párhuzamos dokumentumokkal, felülbírálhatja a mondatok igazítását az előre igazított szövegfájlok beszerzésével. Mindkét mondatot kinyerheti szövegfájlba, soronként egy mondatot, és egy `.align` kiterjesztéssel feltöltheti a fájlt. A `.align` bővítmény egyéni fordítóként jelzi, hogy ki kell hagyni a mondatok igazítását.
 
-A legjobb eredmény érdekében győződjön meg arról, hogy soronként egy mondat van a fájlokban.Ne legyenek új sorkarakterek egy mondatban, mert ez rossz igazításokat okoz.
+A legjobb eredmények érdekében érdemes meggyőződni arról, hogy soronként egy mondat van a fájlokban.Egy mondaton belül ne legyen sortörés karakter, mert ez gyenge igazítást okoz.
 
 ## <a name="suggested-minimum-number-of-sentences"></a>Javasolt minimális számú mondat
 
-Ahhoz, hogy a képzés sikeres legyen, az alábbi táblázat az egyes dokumentumtípusokhoz szükséges mondatok minimális számát mutatja.Ez a korlátozás egy biztonsági háló, amely biztosítja, hogy a párhuzamos mondatok elegendő egyedi szókincset tartalmaznak a fordítási modell sikeres betanításához. Az általános iránymutatás szerint az emberi fordítás minőségének több, a domainen belüli párhuzamos mondatnak jobb minőségű modelleket kell eredményeznie.
+Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat az egyes dokumentum-típusokban szükséges mondatok minimális számát mutatja.Ez a korlátozás egy biztonsági háló, amely biztosítja, hogy a párhuzamos mondatok elég egyedi szókincset tartalmazzanak a fordítási modell sikeres betanításához. Az általános útmutatóban az emberi fordítási minőség több tartományra kiterjedő párhuzamos mondata is magasabb színvonalú modelleket eredményezhet.
 
-| Dokumentum típusa   | Javasolt minimális mondatszám | Maximális büntetésszám |
+| Dokumentum típusa   | Javasolt minimális mondatok száma | Mondatok maximális száma |
 |------------|--------------------------------------------|--------------------------------|
-| Képzés   | 10,000                                     | Nincs felső határ                 |
+| Képzés   | 10,000                                     | Nincs felső korlát                 |
 | Tuning     | 500                                      | 2500       |
 | Tesztelés    | 500                                      | 2500  |
-| Szótár | 0                                          | Nincs felső határ                 |
+| Szótár | 0                                          | Nincs felső korlát                 |
 
 > [!NOTE]
-> - Képzés nem indul el, és nem fog sikerülni, ha a 10.000 minimális büntetés számít képzés nem teljesül. 
-> - A hangolás és tesztelés nem kötelező. Ha nem adja meg őket, a rendszer eltávolítja a megfelelő százalékot a képzésből az érvényesítéshez és teszteléshez. 
-> - A modell csak szótáradatok használatával tanítható be. Kérjük, olvassa el [a Mi a szótár](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary).
+> - A képzés nem indul el, és sikertelen lesz, ha a betanításhoz a 10 000-es minimális számú mondat nem teljesül. 
+> - A hangolás és a tesztelés nem kötelező. Ha nem adja meg őket, a rendszer eltávolítja a megfelelő százalékot az ellenőrzéshez és teszteléshez használt képzésből. 
+> - A modelleket csak a szótárak adatai alapján lehet betanítani. Tekintse meg a [Mi az a szótár](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [aszótár](what-is-dictionary.md) használatáról az Egyéni fordítóban.
+- Megtudhatja, hogyan használhat [szótárt](what-is-dictionary.md) az egyéni fordítóban.

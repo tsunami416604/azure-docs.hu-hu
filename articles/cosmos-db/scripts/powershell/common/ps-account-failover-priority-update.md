@@ -1,19 +1,19 @@
 ---
-title: PowerShell-parancsfájl az egyfős Azure Cosmos-fiók feladatátvételi prioritásának módosításához
-description: Azure PowerShell-parancsfájlminta – Feladatátvételi prioritás módosítása vagy feladatátvétel idáig váltása egy Azure Cosmos DB egyfős fiókhoz
+title: PowerShell-parancsfájl egy egyfő Azure Cosmos-fiók feladatátvételi prioritásának módosításához
+description: Azure PowerShell parancsfájl-minta – feladatátvételi prioritás módosítása vagy feladatátvételi trigger indítása Azure Cosmos DB egyetlen főkiszolgálós fiók esetén
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366114"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>Feladatátvételi prioritás módosítása vagy feladatátvétel módosítása egy Azure Cosmos DB egyfős fiókhoz a PowerShell használatával
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>Feladatátvételi prioritás módosítása vagy feladatátvételi trigger indítása egy Azure Cosmos DB egyetlen főkiszolgálós fiókhoz a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,9 +22,9 @@ ms.locfileid: "80366114"
 ## <a name="sample-script"></a>Példaszkript
 
 > [!NOTE]
-> A régió minden `failoverPriority=0` olyan módosítása, amely elindítja a manuális feladatátvételt, és csak a manuális feladatátvételre konfigurált fiókkal végezhető el. Az összes többi régió módosításai egyszerűen módosítja a Cosmos-fiók feladatátvételi prioritását.
+> Egy régió bármely változása manuális `failoverPriority=0` feladatátvételt indít el, és csak manuális feladatátvételre konfigurált fiókkal végezhető el. Az összes többi régió módosításai egyszerűen módosítják a Cosmos-fiókok feladatátvételi prioritását.
 > [!NOTE]
-> Ez a minta egy SQL (Core) API-fiók használatával szemlélteti. Ha ezt a mintát más API-khoz szeretné használni, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra
+> Ez a példa egy SQL-(Core-) API-fiók használatát mutatja be. Ha más API-khoz szeretné használni ezt a mintát, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
 
@@ -43,9 +43,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Listázza a Cosmos DB-fiókokat, vagy lead egy megadott Cosmos DB-fiókot. |
-| [Update-AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Frissítse a Cosmos DB-fiók régióinak feladatátvételi prioritási sorrendjét. |
-|**Azure erőforráscsoportok**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Felsorolja Cosmos DB fiókokat, vagy lekéri a megadott Cosmos DB fiókot. |
+| [Frissítés – AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Egy Cosmos DB fiók régiójának feladatátvételi prioritási sorrendjének frissítése. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
