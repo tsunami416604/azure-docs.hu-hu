@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
 ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80234159"
 ---
 ### <a name="standard-and-neural-voices"></a>Standard és neurális hangok
 
-Ebben a táblázatban régió/végpont szerint határozhatja meg a szabványos és neurális hangok elérhetőségét:
+A táblázat segítségével meghatározhatja a standard és a neurális hangok rendelkezésre állását régiónként/végpont szerint:
 
 | Régió | Végpont | Standard hangok | Neurális hangok |
 |--------|----------|-----------------|---------------|
@@ -40,7 +40,7 @@ Ebben a táblázatban régió/végpont szerint határozhatja meg a szabványos �
 
 ### <a name="custom-voices"></a>Egyéni hangok
 
-Ha egyéni hangbetűtípust hozott létre, használja a létrehozott végpontot. Használhatja az alább felsorolt végpontokat is, és lecserélheti a `{deploymentId}` hangmodell központi telepítési azonosítóját.
+Ha egyéni hangbetűkészletet hozott létre, használja a létrehozott végpontot. Az alább felsorolt végpontokat is használhatja, `{deploymentId}` és lecserélheti a hangmodell üzembe HELYEZÉSi azonosítóját.
 
 | Régió | Végpont |
 |--------|----------|

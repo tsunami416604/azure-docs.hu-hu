@@ -1,6 +1,6 @@
 ---
-title: CLI példa- Feladatátvételi csoport – Azure SQL Database rugalmas készlet
-description: Azure CLI példaparancsfájl egy Azure SQL Database rugalmas készlet létrehozásához, adja hozzá egy feladatátvételi csoporthoz, és tesztelje a feladatátvételt.
+title: CLI-példa – feladatátvevő csoport – Azure SQL Database rugalmas készlet
+description: Azure CLI-példa parancsfájl egy Azure SQL Database rugalmas készlet létrehozásához, egy feladatátvételi csoporthoz való hozzáadásához és a feladatátvételi teszthez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061934"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>A CLI használatával azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz
+# <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz a CLI használatával
 
-Ez az Azure CLI-parancsfájl példa létrehoz egy adatbázist, hozzáadja egy rugalmas készlethez, létrehoz egy feladatátvételi csoportot, és teszteli a feladatátvételt.
+Ez az Azure CLI-parancsfájl egy önálló adatbázist hoz létre, amely egy rugalmas készletbe kerül, létrehoz egy feladatátvételi csoportot, és teszteli a feladatátvételi teszteket.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -42,23 +42,23 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
-| [az sql elastic-pool](/cli/azure/sql/elastic-pool) | Rugalmas készletparancsok. |
-| [az sql feladatátvételi csoport](/cli/azure/sql/failover-group) | Feladatátvételi csoport parancsai. |
+| [az SQL rugalmas készlet](/cli/azure/sql/elastic-pool) | Rugalmas készlet parancsai. |
+| [az SQL feladatátvétel-csoport](/cli/azure/sql/failover-group) | Feladatátvételi csoport parancsai. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).
 
-További SQL Database Azure CLI parancsfájlminták találhatók az [Azure Database Azure CLI parancsfájlokban.](../sql-database-cli-samples.md)
+További SQL Database Azure CLI-szkriptek a [Azure SQL Database Azure CLI-szkriptekben](../sql-database-cli-samples.md)találhatók.

@@ -1,6 +1,6 @@
 ---
-title: CLI példa – felügyelt példány létrehozása az Azure SQL Database-ben
-description: Azure CLI példaparancsfájl felügyelt példány létrehozásához az Azure SQL Database-ben
+title: CLI-példa – felügyelt példány létrehozása Azure SQL Database
+description: Azure CLI-példa parancsfájl egy felügyelt példány létrehozásához Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
 ms.openlocfilehash: 998bd8e39863dd9520d1a05e7fff52095c3be6c1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067445"
 ---
-# <a name="use-cli-to-create-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példányának létrehozása a CLI segítségével
+# <a name="use-cli-to-create-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány létrehozása a parancssori felület használatával
 
-Ez az Azure CLI-parancsfájl-példa egy Azure SQL Database felügyelt példányt hoz létre egy új virtuális hálózaton belüli dedikált alhálózatban. Egy útvonaltáblát és egy hálózati biztonsági csoportot is konfigurál a virtuális hálózathoz. A parancsfájl sikeres futtatása után a felügyelt példány a virtuális hálózaton belülről vagy egy helyszíni környezetből érhető el. Lásd: [Az Azure VM konfigurálása egy Azure SQL Database felügyelt példányhoz való csatlakozáshoz,](../sql-database-managed-instance-configure-vm.md) és [konfigurálása egy pont-hely kapcsolat egy Azure SQL-adatbázis felügyelt példánya a helyszíni.](../sql-database-managed-instance-configure-p2s.md)
+Ez az Azure CLI-parancsfájl egy Azure SQL Database felügyelt példányt hoz létre egy dedikált alhálózaton egy új virtuális hálózaton belül. Emellett egy útválasztási táblázatot és egy hálózati biztonsági csoportot is konfigurál a virtuális hálózathoz. A szkript sikeres futtatása után a felügyelt példány a virtuális hálózatról vagy egy helyszíni környezetből is elérhető. Lásd: az [Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való kapcsolódáshoz](../sql-database-managed-instance-configure-vm.md) , valamint [pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](../sql-database-managed-instance-configure-p2s.md).
 
 > [!IMPORTANT]
-> A korlátozásokat a [Támogatott régiók](../sql-database-managed-instance-resource-limits.md#supported-regions) és a [támogatott előfizetéstípusok című témakörben](../sql-database-managed-instance-resource-limits.md#supported-subscription-types)tésszet.
+> Korlátozásokkal kapcsolatban lásd: [támogatott régiók](../sql-database-managed-instance-resource-limits.md#supported-regions) és [támogatott előfizetési típusok](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -39,22 +39,22 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
-| [az hálózati virtuális hálózat](/cli/azure/network/vnet) | Virtuális hálózati parancsok. |
-| [az hálózati virtuális hálózat alhálózata](/cli/azure/network/vnet/subnet) | Virtuális hálózati alhálózati parancsok. |
-| [az hálózati útvonaltábla](/cli/azure/network/route-table) | Hálózati útvonaltábla-parancsok. |
-| [az sql mi](/cli/azure/sql/mi) | Felügyelt példányparancsok. |
+| [az Network vnet](/cli/azure/network/vnet) | Virtuális hálózati parancsok. |
+| [az Network vnet subnet](/cli/azure/network/vnet/subnet) | Virtuális hálózati alhálózati parancsok. |
+| [az Network Route-Table](/cli/azure/network/route-table) | Hálózati útválasztási táblázat parancsai. |
+| [az SQL mi](/cli/azure/sql/mi) | Felügyelt példányok parancsai. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,5 +1,5 @@
 ---
-title: CLI példa- Hozzon létre egy Azure SQL-adatbázist
+title: CLI-példa – Azure SQL Database-adatbázis létrehozása
 description: Ezzel az Azure CLI-példaszkripttel létrehozhat egy SQL-adatbázist.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: ecfa61f0680e20dd37a1fedc988664afa6e2a83b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067459"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Egy Azure SQL-adatbázis létrehozása és egy tűzfalszabály konfigurálása a parancssori felület használatával
@@ -36,21 +36,21 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
 | [az sql server](/cli/azure/sql/server#az-sql-server-create) | Kiszolgálói parancsok |
-| [az sql server tűzfal](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | A kiszolgáló tűzfalparancsai. |
-| [az sql db](/cli/azure/sql/db#az-sql-db-create) | Adatbázis-parancsok. |
+| [az SQL Server Firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Kiszolgálói tűzfal parancsai. |
+| [az SQL db](/cli/azure/sql/db#az-sql-db-create) | Adatbázis-parancsok. |
 
 ## <a name="next-steps"></a>További lépések
 

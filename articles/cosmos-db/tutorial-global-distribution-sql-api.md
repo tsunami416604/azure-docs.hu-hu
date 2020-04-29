@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Cosmos DB globális disztribúciós oktatóanyaga az SQL API-hoz'
-description: 'Oktatóanyag: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális disztribúciót az SQL API használatával .Net, Java, Python és számos más SDK-val'
+title: 'Oktatóanyag: Azure Cosmos DB globális terjesztési oktatóanyag az SQL API-hoz'
+description: 'Oktatóanyag: Ismerje meg, hogyan állíthatja be Azure Cosmos DB globális terjesztést az SQL API-val a .net, a Java, a Python és számos más SDK használatával'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80295528"
 ---
-# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB globális disztribúció beállítása az SQL API használatával
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
 Ebben a cikkben bemutatjuk, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az Azure Portallal, és hogyan csatlakozhat az SQL API használatával.
 
@@ -22,7 +22,7 @@ Ez a cikk a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Globális terjesztés konfigurálása az Azure Portallal
-> * Globális terjesztés konfigurálása az [SQL API-k](sql-api-introduction.md) használatával
+> * Globális terjesztés konfigurálása az [SQL API](sql-api-introduction.md) -k használatával
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
@@ -78,14 +78,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node.js/JavaScript
+## <a name="nodejsjavascript"></a>Node. js/JavaScript
 
 > [!NOTE]
 > A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
 >
 
-Az alábbiakban egy kód példa Node.js /Javascript.
+Alább látható egy példa a Node. js-hez vagy a Javascripthez.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -100,7 +100,7 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 
 ## <a name="python-sdk"></a>Python SDK
 
-A következő kód bemutatja, hogyan állíthat be előnyben részesített helyeket a Python SDK használatával:
+A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Python SDK használatával:
 
 ```python
 
@@ -110,9 +110,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Java V2 SDK
+## <a name="java-v2-sdk"></a>Java v2 SDK
 
-A következő kód bemutatja, hogyan állíthat be előnyben részesített helyeket a Java SDK használatával:
+A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Java SDK használatával:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -167,11 +167,11 @@ Példaválasz
 
 
 * Az összes PUT, POST és DELETE kérelemnek a megadott írási URI-ra kell érkeznie
-* Minden GET és egyéb írásvédett kérés (például lekérdezések) az ügyfél által választott bármely végpontra kerülhet.
+* A beolvasás és az egyéb írásvédett kérelmek (például a lekérdezések) az ügyfél tetszőleges végpontján léphetnek fel
 
 A csak olvasási régiókba érkező írási kérelmek a 403-as HTTP-hibakóddal („Tiltott”) hiúsulnak meg.
 
-Ha az írási régió az ügyfél kezdeti felderítési fázisa után megváltozik, az előző írási régióba történő későbbi írások sikertelenek lesznek a 403 HTTP-hibakóddal ("Tiltott"). Az ügyfélnek ilyenkor ismét le kell kérnie a régiók listáját a GET metódussal a frissített írási régió beszerzéséhez.
+Ha az írási régió az ügyfél kezdeti felderítési fázisa után változik, az előző írási régióba való későbbi írások sikertelenek lesznek a 403-as HTTP-hibakód miatt ("tiltott"). Az ügyfélnek ilyenkor ismét le kell kérnie a régiók listáját a GET metódussal a frissített írási régió beszerzéséhez.
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 

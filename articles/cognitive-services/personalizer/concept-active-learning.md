@@ -1,34 +1,34 @@
 ---
-title: Tanulási szabályzat - Személyre szabó
-description: A tanulási beállítások határozzák meg a *modellbetanítás hiperparamétereit.* Két modell az azonos adatok, amelyek bevannak tanítva a különböző tanulási beállítások a végén különböző.
+title: Tanulási szabályzat – személyre szabás
+description: A képzési beállítások határozzák meg a *hiperparaméterek beállításaát* . A különböző tanulási beállításokba betanított két modell eltérő lesz.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219345"
 ---
-# <a name="learning-policy-and-settings"></a>Tanulási szabályzat és beállítások
+# <a name="learning-policy-and-settings"></a>Képzési szabályzat és beállítások
 
-A tanulási beállítások határozzák meg a *modellbetanítás hiperparamétereit.* Két modell az azonos adatok, amelyek bevannak tanítva a különböző tanulási beállítások a végén különböző.
+A képzési beállítások határozzák meg a *hiperparaméterek beállításaát* . A különböző tanulási beállításokba betanított két modell eltérő lesz.
 
-[A tanulási szabályzat és a beállítások](how-to-settings.md#configure-rewards-for-the-feedback-loop) az Azure Portalon a Personalizer erőforráson vannak beállítva.
+A [képzési szabályzat és a beállítások](how-to-settings.md#configure-rewards-for-the-feedback-loop) a Azure Portal személyre szabott erőforrására vannak beállítva.
 
-## <a name="import-and-export-learning-policies"></a>Tanulási irányelvek importálása és exportálása
+## <a name="import-and-export-learning-policies"></a>Képzési szabályzatok importálása és exportálása
 
-Az Azure Portalról importálhat és exportálhat tanulási szabályzatfájlokat. Ezzel a módszerrel mentheti a meglévő házirendeket, tesztelheti őket, lecserélheti őket, és archiválhatja őket a forráskód-vezérlőben, mint összetevőket későbbi hivatkozásés naplózás.
+A Azure Portalból importálhat és exportálhat tanulási-házirend fájlokat. Ezzel a módszerrel mentheti a meglévő szabályzatokat, tesztelheti és lecserélheti őket, és archiválhatja őket a forráskód vezérlőelemben a későbbi referenciák és a naplózás érdekében.
 
-Ismerje [meg, hogyan importálhat](how-to-manage-model.md#import-a-new-learning-policy) és exportálhat tanulási szabályzatot az Azure Portalon a Personalizer-erőforráshoz.
+Megtudhatja, [Hogyan](how-to-manage-model.md#import-a-new-learning-policy) importálhat és exportálhat egy tanulási szabályzatot a Azure Portal a személyre szabott erőforráshoz.
 
-## <a name="understand-learning-policy-settings"></a>A tanulási házirend beállításainak ismertetése
+## <a name="understand-learning-policy-settings"></a>A tanulási szabályzat beállításainak megismerése
 
-A tanulási szabályzat beállításai nem módosíthatók. Csak akkor módosítsa a beállításokat, ha tisztában van azzal, hogy ezek hogyan befolyásolják a Personalizert. E nélkül a tudás nélkül problémákat okozhat, beleértve a Personalizer modellek érvénytelenítését.
+A tanulási szabályzat beállításai nem változnak. Csak akkor módosítsa a beállításokat, ha tisztában van azzal, hogyan befolyásolják a személyre szabást. Ezen ismeret nélkül problémákat okozhat, beleértve a személyre szabott modellek érvénytelenítését is.
 
-A Personalizer [vowpalwabbit](https://github.com/VowpalWabbit) segítségével edzi és pontzi az eseményeket. Tekintse meg a [vowpalwabbit dokumentációt](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments) arról, hogyan lehet a tanulási beállításokat a vowpalwabbit használatával szerkeszteni. Miután rendelkezik a megfelelő parancssori argumentumokkal, mentse a parancsot egy fájlba a következő formátumban (cserélje le az argumentumok tulajdonság értékét a kívánt paranccsal), és töltse fel a fájlt a **tanulási** beállítások importálásához az Azure Portalon a Personalizer erőforráshoz.
+A személyre szabott [vowpalwabbit](https://github.com/VowpalWabbit) -t használ az események betanítására és kiértékelésére. Tekintse meg a [vowpalwabbit dokumentációját](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments) , amely bemutatja, hogyan szerkesztheti a tanulási beállításokat a vowpalwabbit használatával. Ha a parancssori argumentumok megfelelőek, mentse a parancsot egy fájlba a következő formátumban (az argumentumok tulajdonság értékét cserélje le a kívánt parancsra), majd töltse fel a fájlt a személyre szabott erőforráshoz tartozó Azure Portal **modell és tanulási beállítások** paneljén található tanulási beállítások importálásához.
 
-Az `.json` alábbiakban egy tanulási szabályzat ot mutatunk be.
+A következő `.json` példa egy tanulási szabályzatot mutat be.
 
 ```json
 {
@@ -37,18 +37,18 @@ Az `.json` alábbiakban egy tanulási szabályzat ot mutatunk be.
 }
 ```
 
-## <a name="compare-learning-policies"></a>Tanulási irányelvek összehasonlítása
+## <a name="compare-learning-policies"></a>Tanulási szabályzatok összehasonlítása
 
-Offline [értékelésekkel](concepts-offline-evaluation.md)összehasonlíthatja, hogy a különböző tanulási irányelvek hogyan viszonyulnak a korábbi adatokhoz a Personalizer naplókban.
+Összehasonlíthatja, hogy a különböző képzési szabályzatok hogyan végezhetők el a személyre szabott naplók korábbi adatain az [Offline értékelések](concepts-offline-evaluation.md)használatával.
 
-[Töltse fel saját tanulási szabályzatait,](how-to-manage-model.md) hogy összehasonlíthassa őket a jelenlegi tanulási szabályzattal.
+[Töltse fel saját képzési szabályzatait](how-to-manage-model.md) , hogy összehasonlítsa őket az aktuális tanulási házirenddel.
 
-## <a name="optimize-learning-policies"></a>Tanulási irányelvek optimalizálása
+## <a name="optimize-learning-policies"></a>Tanulási szabályzatok optimalizálása
 
-A Personalizer offline kiértékelésben hozhat létre optimalizált tanulási [szabályzatot.](how-to-offline-evaluation.md) Az optimalizált tanulási szabályzat, amely jobb jutalmakat egy offline értékelés jobb eredményeket, ha használják online Personalizer.
+A személyre szabott képzési szabályzatok egy [Offline próbaverzióban](how-to-offline-evaluation.md)is létrehozhatók. Egy optimalizált tanulási szabályzat, amely jobb jutalmakat tartalmaz az offline értékelésekben, jobb eredményeket fog eredményezni, amikor online használatban van a személyre Szabásban.
 
-Miután optimalizálta a tanulási szabályzatot, közvetlenül alkalmazhatja azt a Personalizer-ra, így azonnal lecseréli az aktuális szabályzatot. Vagy mentheti az optimalizált szabályzatot további kiértékelésre, és később eldöntheti, hogy elveti, menti vagy alkalmazza azt.
+A tanulási szabályzatok optimalizálása után közvetlenül is alkalmazhatja a személyre szabást, hogy azonnal felváltsa az aktuális házirendet. Vagy mentheti az optimalizált szabályzatot a további értékeléshez, és később eldöntheti, hogy elveti, menti vagy alkalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [az aktív és inaktív eseményeket.](concept-active-inactive-events.md)
+* [Az aktív és az inaktív események](concept-active-inactive-events.md)megismerése.

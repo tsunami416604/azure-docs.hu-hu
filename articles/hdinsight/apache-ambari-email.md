@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsightban'
-description: Ez a cikk azt ismerteti, hogyan használhatja a SendGridet az Apache Ambari-val az e-mailes értesítésekhez.
+title: 'Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight'
+description: Ez a cikk azt ismerteti, hogyan használható az SendGrid az Apache Ambari az e-mailes értesítésekhez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
@@ -8,82 +8,82 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80082313"
 ---
-# <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Oktatóanyag: Az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsightban
+# <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight
 
-Ebben az oktatóanyagban konfigurálhatja az Apache Ambari e-mail értesítéseket a SendGrid használatával. [Az Apache Ambari](./hdinsight-hadoop-manage-ambari.md) leegyszerűsíti a HDInsight-fürtök felügyeletét és figyelését azáltal, hogy egy könnyen használható webes felhasználói felületet és REST API-t biztosít. Az Ambari a HDInsight-fürtökben található, és a fürt figyelésére és a konfiguráció módosítására szolgál. [A SendGrid](https://sendgrid.com/solutions/) egy ingyenes felhőalapú e-mail szolgáltatás, amely megbízható tranzakciós e-mail kézbesítést, méretezhetőséget és valós idejű elemzést, valamint rugalmas API-kat biztosít, amelyek megkönnyítik az egyéni integrációt. Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel.
+Ebben az oktatóanyagban az Apache Ambari e-mail értesítéseinek konfigurálását az SendGrid használatával végezheti el. Az [Apache Ambari](./hdinsight-hadoop-manage-ambari.md) megkönnyíti a HDInsight-fürtök felügyeletét és figyelését azáltal, hogy könnyen használható webes felhasználói felületet és REST API biztosít. A Ambari a HDInsight-fürtökben található, és a fürt figyelésére és a konfiguráció módosítására szolgál. A [SendGrid](https://sendgrid.com/solutions/) egy ingyenes felhőalapú e-mail-szolgáltatás, amely megbízható tranzakciós e-mail-kézbesítést, skálázhatóságot és valós idejű elemzéseket biztosít, valamint rugalmas API-kat kínál, amelyek egyszerűvé teszik az egyéni integrációt. Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Sendgrid-felhasználónév beszerzése
-> * Apache Ambari e-mail értesítések konfigurálása
+> * Sendgrid-Felhasználónév beszerzése
+> * Az Apache Ambari e-mail értesítéseinek konfigurálása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* SendGrid e-mail fiók. További [útmutatásért olvassa el az E-mailek küldése a SendGrid használatával az Azure-ral.](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)
+* Egy SendGrid e-mail-fiók. Lásd: az [e-mailek küldése az SendGrid használatával az Azure-](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) ban utasításokért.
 
-* Egy HDInsight-fürt. Lásd: [Apache Hadoop-fürtök létrehozása az Azure Portalon.](./hdinsight-hadoop-create-linux-clusters-portal.md)
+* An méretű HDInsight-fürt. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](./hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="obtain-sendgrid-username"></a>SendGrid-felhasználónév beszerzése
+## <a name="obtain-sendgrid-username"></a>SendGrid-Felhasználónév beszerzése
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg a SendGrid-erőforrást.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a SendGrid-erőforráshoz.
 
-1. Az Áttekintés lapon válassza a **Kezelés**lehetőséget a fiók SendGrid weblapjára.
+1. Az Áttekintés lapon válassza a **kezelés**lehetőséget, hogy a fiókja SendGrid weboldalát lépjen.
 
-    ![SendGrid – áttekintés az azure portalon](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    ![A SendGrid áttekintése az Azure Portalon](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
 
-1. A bal oldali menüben keresse meg a fiók nevét, majd **a Fiók adatai parancsra.**
+1. A bal oldali menüben navigáljon a fiók nevére, majd adja meg a **fiók adatait**.
 
-    ![SendGrid irányítópult-navigáció](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    ![SendGrid-irányítópult navigációja](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
 
-1. A **Fiók adatai** lapon rögzítse a **Felhasználónevet**.
+1. A **fiók részletei** lapon jegyezze fel a **felhasználónevet**.
 
-    ![SendGrid-fiók adatai](./media/apache-ambari-email/sendgrid-account-details.png)
+    ![SendGrid-fiók részletei](./media/apache-ambari-email/sendgrid-account-details.png)
 
-## <a name="configure-ambari-e-mail-notification"></a>Ambari e-mail értesítés konfigurálása
+## <a name="configure-ambari-e-mail-notification"></a>Ambari e-mail értesítések konfigurálása
 
-1. Egy webböngészőből keresse `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`meg `CLUSTERNAME` a , ahol a fürt neve.
+1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
 
-1. A **Műveletek** legördülő listában válassza az **Értesítések kezelése lehetőséget.**
+1. A **műveletek** legördülő listában válassza az **értesítések kezelése**lehetőséget.
 
-1. A **Riasztási értesítések kezelése ablakban** kattintson az **+** ikonra.
+1. A **Riasztási értesítések kezelése** ablakban válassza ki az **+** ikont.
 
     ![Ambari riasztási értesítés létrehozása](./media/apache-ambari-email/azure-portal-create-notification.png)
 
-1. A **Riasztási értesítés létrehozása** párbeszédpanelen adja meg a következő információkat:
+1. A **riasztási értesítés létrehozása** párbeszédpanelen adja meg a következő információkat:
 
     |Tulajdonság |Leírás |
     |---|---|
-    |Név|Adja meg az értesítés nevét.|
+    |Name (Név)|Adja meg az értesítés nevét.|
     |Csoportok|Konfigurálja a kívánt módon.|
     |Severity|Konfigurálja a kívánt módon.|
     |Leírás|Választható.|
-    |Módszer|Hagyjuk az **e-mail**.|
-    |E-mail címe:|Adjon meg e-mail(eke)t az értesítések fogadásához, vesszővel elválasztva.|
+    |Módszer|Hagyjon **e-mailt**.|
+    |E-mail cím|Adja meg az e-maileket az értesítések fogadásához, vesszővel elválasztva.|
     |SMTP-kiszolgáló|`smtp.sendgrid.net`|
-    |SMTP-port|25 vagy 587 (titkosítatlan/TLS kapcsolatok esetén).|
-    |E-mail-cím|Adja meg az e-mail címet. A címnek nem kell hitelesnek lennie.|
+    |SMTP-port|25 vagy 587 (titkosítatlan/TLS-kapcsolatokhoz).|
+    |E-mail-címe|Adjon meg egy e-mail-címet. A címnek nem kell hitelesnek lennie.|
     |Hitelesítés használata|Jelölje be ezt a jelölőnégyzetet.|
-    |Felhasználónév|Adja meg a SendGrid felhasználónevet.|
-    |Jelszó|Adja meg a SendGrid erőforrás azure-beli létrehozásakor használt jelszót.|
-    |Jelszó megerősítése|Írja be újra a jelszót.|
-    |A TLS indítása|Jelölje be ezt a jelölőnégyzetet.|
+    |Felhasználónév|Adja meg a SendGrid felhasználónevét.|
+    |Jelszó|Adja meg a SendGrid-erőforrás Azure-ban való létrehozásakor használt jelszót.|
+    |Jelszó megerősítése|Adja meg újra a jelszót.|
+    |TLS indítása|Jelölje be ezt a jelölőnégyzetet|
 
     ![Ambari riasztási értesítés létrehozása](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
-    Kattintson a **Mentés** gombra. Vissza fog térni a **Riasztási értesítések kezelése** ablakba.
+    Kattintson a **Mentés** gombra. Visszatér a **Riasztási értesítések kezelése** ablakra.
 
-1. A **Riasztási értesítések kezelése** ablakban válassza a **Bezárás**gombot.
+1. A **Riasztási értesítések kezelése** ablakban válassza a **Bezárás**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja az Apache Ambari e-mail értesítéseket a SendGrid használatával. Az Apache Ambari-ról az alábbiakban olvashat bővebben:
+Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja az Apache Ambari e-mailes értesítéseit a SendGrid használatával. Az Apache Ambari használatával kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes felületével](./hdinsight-hadoop-manage-ambari.md)
 

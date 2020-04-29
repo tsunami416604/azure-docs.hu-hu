@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazáshitelesítés értékeinek beszereznie
-description: Hozzon létre egy egyszerű szolgáltatás az SQL-adatbázis kódból való eléréséhez.
+title: Alkalmazás-hitelesítés értékeinek beolvasása
+description: Hozzon létre egy egyszerű szolgáltatást, amely a kóddal való SQL Database elérésére szolgál.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,24 +12,24 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5b2c64660f37745f5b13d53559037e84ca20c47b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476966"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Az SQL-adatbázis kódból való eléréséhez szükséges értékek beszereznie az alkalmazások hitelesítéséhez szükséges értékeket
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Az alkalmazások kód SQL Database való eléréséhez szükséges értékek beolvasása
 
-Az SQL-adatbázis létrehozásához és kezeléséhez a kódot regisztrálnia kell az alkalmazást az Azure Active Directory (AAD) tartományban az előfizetésben, ahol az Azure-erőforrások at hoztak létre.
+SQL Database kódból való létrehozásához és kezeléséhez regisztrálnia kell az alkalmazást a Azure Active Directory (HRE) tartományba az előfizetésben, ahol az Azure-erőforrásokat létrehozták.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatás létrehozása az alkalmazások erőforrásainak eléréséhez
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatásnév létrehozása egy alkalmazás erőforrásainak eléréséhez
 
-A következő példák az Active Directory (AD) alkalmazást és a C# alkalmazás hitelesítéséhez szükséges egyszerű szolgáltatást hozza létre. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Az alábbi példák létrehozzák a Active Directory (AD) alkalmazást és a C#-alkalmazás hitelesítéséhez szükséges egyszerű szolgáltatásnevet. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager (RM) modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modul. Az AzureRM-modul legalább 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban lévő parancsok argumentumai lényegében azonosak. A kompatibilitásukról az [Új Azure PowerShell Az modul bemutatása](/powershell/azure/new-azureps-module-az)című témakörben lehet további további további információkért.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 # sign in to Azure
@@ -102,4 +102,4 @@ Write-Output "_applicationSecret:" $secret
 ## <a name="see-also"></a>Lásd még
 
 [SQL-adatbázis létrehozása C-vel #](sql-database-get-started-csharp.md)  
-[Csatlakozás SQL-adatbázishoz az Azure Active Directory-hitelesítés használatával](sql-database-aad-authentication.md)
+[Csatlakozás SQL Databasehoz Azure Active Directory hitelesítés használatával](sql-database-aad-authentication.md)

@@ -1,5 +1,5 @@
 ---
-title: Képek ellenőrzése a C# - Content Moderátor egyéni listáival szemben
+title: Képek keresése az egyéni listán a C#-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: A cikk bemutatja, hogyan végezhető el képek moderálása egyéni képlistákkal a C#-hoz készült Content Moderator SDK-val.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72931757"
 ---
-# <a name="moderate-with-custom-image-lists-in-c"></a>Mérsékelt egyéni képlistákkal C-ben #
+# <a name="moderate-with-custom-image-lists-in-c"></a>Mérsékelt egyéni képlisták a C-ben #
 
-Ez a cikk információkat és kódmintákat tartalmaz, amelyek segítséget nyújtanak a [tartalommoderátor SDK -nek](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a .NET-hez való használatának megkezdéséhez:
+Ez a cikk a [.net-hez készült Content MODERATOR SDK a következőhöz](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való használatának megkezdéséhez nyújt segítséget és kódokat:
 - Egyéni képlista létrehozása
 - Képek hozzáadása és eltávolítása a listából
 - A listában szereplő összes kép azonosítóinak lekérése
@@ -32,9 +32,9 @@ Ez a cikk információkat és kódmintákat tartalmaz, amelyek segítséget nyú
 > [!NOTE]
 > A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 
-Az útmutató konzolalkalmazása szimulálja a lemezképlista API-val végrehajtható feladatok egy részét.
+Az útmutatóhoz tartozó konzolszoftver szimulálja a rendszerkép-lista API-val végrehajtható feladatokat.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. 
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
@@ -72,7 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez. Frissítse `AzureEndpoint` a `CMSubscriptionKey` és a mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket az azure-portálon található erőforrás **Rövid útmutató** lapján találja.
+Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez. Frissítse a `AzureEndpoint` és `CMSubscriptionKey` a mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
 
 ```csharp
 /// <summary>
@@ -242,7 +242,7 @@ private static Body listDetails;
 
 ## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Metódus létrehozása üzenetek naplófájlba történő írására
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -263,7 +263,7 @@ private static void WriteLine(string message = null, bool echo = false)
 
 ## <a name="create-a-method-to-create-the-custom-list"></a>Metódus létrehozása egyéni lista létrehozására
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -292,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Metódus létrehozása egy képgyűjtemény listához való hozzáadására
 
-Adja hozzá a következő módszert a **Program** osztályhoz. Ez az útmutató nem mutatja be, hogyan alkalmazhat címkéket a listában szereplő képekre. 
+Adja hozzá a következő metódust a **program** osztályhoz. Ez az útmutató nem mutatja be, hogyan alkalmazhat címkéket a képekre a listában. 
 
 ```csharp
 /// <summary>
@@ -336,7 +336,7 @@ IEnumerable<string> imagesToAdd, string label)
 
 ## <a name="create-a-method-to-remove-images-from-the-list"></a>Metódus létrehozása a képek listából való eltávolítására
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -373,7 +373,7 @@ private static void RemoveImages(
 
 ## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Metódus létrehozása a listában található összes kép tartalomazonosítójának lekérésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -400,7 +400,7 @@ private static ImageIds GetAllImageIds(
 
 ## <a name="create-a-method-to-update-the-details-of-the-list"></a>Metódus létrehozása a lista részleteinek frissítésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -430,7 +430,7 @@ private static ImageList UpdateListDetails(
 
 ## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Metódus létrehozása a lista részleteinek lekérésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz.
+Adja hozzá a következő metódust a **program** osztályhoz.
 
 ```csharp
 /// <summary>
@@ -457,7 +457,7 @@ private static ImageList GetListDetails(
 
 ## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Metódus létrehozása a lista keresési indexének frissítésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz. Valahányszor frissít egy listát, frissítenie kell a keresési indexét is, mielőtt képeket vetne össze a listával.
+Adja hozzá a következő metódust a **program** osztályhoz. Valahányszor frissít egy listát, frissítenie kell a keresési indexét is, mielőtt képeket vetne össze a listával.
 
 ```csharp
 /// <summary>
@@ -484,7 +484,7 @@ private static RefreshIndex RefreshSearchIndex(
 
 ## <a name="create-a-method-to-match-images-against-the-list"></a>Metódus létrehozása a képek listával való összevetésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -514,7 +514,7 @@ private static void MatchImages(
 
 ## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Metódus létrehozása a listában található összes kép törlésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -538,7 +538,7 @@ private static void DeleteAllImages(
 
 ## <a name="create-a-method-to-delete-the-list"></a>Metódus létrehozása a lista törlésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>
@@ -562,7 +562,7 @@ private static void DeleteCustomList(
 
 ## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Metódus létrehozása az összes képlista azonosítóinak lekérésére
 
-Adja hozzá a következő módszert a **Program** osztályhoz. 
+Adja hozzá a következő metódust a **program** osztályhoz. 
 
 ```csharp
 /// <summary>

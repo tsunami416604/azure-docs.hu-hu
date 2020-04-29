@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – A LAMP telepítése Linux os virtuális gépen az Azure-ban
+title: Oktatóanyag – LAMP üzembe helyezése Linux rendszerű virtuális gépen az Azure-ban
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan telepíthet LAMP stacket az Azure-ban üzemeltetett linuxos virtuális gépre
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80154372"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LAMP-webkiszolgáló telepítése Linux rendszerű virtuális gépre az Azure-ban
@@ -35,7 +35,7 @@ Ez a cikk ismerteti, hogyan helyezhet üzembe Apache-webkiszolgálót, MySQL-t �
 
 Ez a telepítés gyors teszteléshez és megvalósíthatósági vizsgálatokhoz használható. További információt a LAMP-veremről – beleértve az éles környezetre vonatkozó javaslatokat – az [Ubuntu dokumentációjában](https://help.ubuntu.com/community/ApacheMySQLPHP) talál.
 
-Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -55,7 +55,7 @@ A rendszer felszólítja a csomagok és más függőségek telepítésére. Ezze
 ## <a name="verify-installation-and-configuration"></a>A telepítés és a konfigurálás ellenőrzése
 
 
-### <a name="verify-apache"></a>Az Apache ellenőrzése
+### <a name="verify-apache"></a>Apache ellenőrzése
 
 Ellenőrizze az Apache verzióját a következő paranccsal:
 ```bash
@@ -75,13 +75,13 @@ Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetű
 mysql -V
 ```
 
-A MySQL telepítésének biztosítása érdekében, beleértve a `mysql_secure_installation` gyökérjelszó beállítását, futtassa a parancsfájlt. 
+A MySQL telepítésének biztonságossá tételéhez, beleértve a gyökér jelszavának beállítását is `mysql_secure_installation` , futtassa a parancsfájlt. 
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-Beállíthatja a Jelszó érvényesítése beépülő modult (ajánlott). Ezután állítson be egy jelszót a MySQL root felhasználó, és konfigurálja a fennmaradó biztonsági beállításokat a környezetben. Javasoljuk, hogy minden kérdésre válaszoljon az "Y" (igen) gombra.
+Igény szerint beállíthatja a jelszó ellenőrzése beépülő modult (ajánlott). Ezután állítson be egy jelszót a MySQL root felhasználóhoz, és konfigurálja a környezete fennmaradó biztonsági beállításait. Javasoljuk, hogy az "Y" (igen) kérdésre válaszoljon az összes kérdésre.
 
 Ha ki szeretné próbálni a MySQL funkcióit (MySQL-adatbázis létrehozása, felhasználók hozzáadása vagy a konfigurációs beállítások módosítása), jelentkezzen be a MySQL-be. Ez a lépés nem kötelező az oktatóanyag elvégzéséhez.
 
@@ -91,7 +91,7 @@ sudo mysql -u root -p
 
 Amikor végzett, a `\q` parancs beírásával lépjen ki a mysql parancssorból.
 
-### <a name="verify-php"></a>PHP ellenőrzése
+### <a name="verify-php"></a>A PHP ellenőrzése
 
 Ellenőrizze a PHP verzióját a következő paranccsal:
 
@@ -122,10 +122,10 @@ Ebben az oktatóanyagban egy LAMP-kiszolgálót helyezett üzembe az Azure-ban. 
 > * A telepítés és a konfigurálás ellenőrzése
 > * A WordPress telepítése a LAMP-kiszolgálón
 
-A következő oktatóanyagra lépésként megtudhatja, hogyan biztosíthat webkiszolgálókat TLS/SSL-tanúsítványokkal.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan védheti meg a TLS/SSL-tanúsítványokkal rendelkező webkiszolgálókat.
 
 > [!div class="nextstepaction"]
-> [Biztonságos webkiszolgáló a TLS-sel](tutorial-secure-web-server.md)
+> [Biztonságos webkiszolgáló TLS-vel](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

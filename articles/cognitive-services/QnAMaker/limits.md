@@ -1,39 +1,39 @@
 ---
-title: Korlátok és határok - QnA Maker
-description: A QnA Maker metakorlátokkal rendelkezik a tudásbázis és a szolgáltatás egyes részeire vonatkozóan. Fontos, hogy a tesztelés és a közzététel érdekében tartsa a tudásbázist ezeken a korlátokon belül.
+title: Korlátok és határok – QnA Maker
+description: A QnA Maker meta-korlátozásokkal rendelkezik a Tudásbázis és a szolgáltatás részeihez. A teszteléshez és közzétételhez fontos, hogy megőrizze a tudásbázist a korlátokon belül.
 ms.topic: reference
 ms.date: 02/14/2020
 ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273335"
 ---
-# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker tudásbáziskorlátai és határai
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
-Az alábbiakban megadott QnA Maker-korlátok az [Azure Cognitive Search díjszabási csomagkorlátai](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) és a [QnA Maker díjszabási szint korlátainak](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)kombinációja. Mindkét korlátkészletet ismernie kell, hogy megértse, hány tudásbázist hozhat létre erőforrásonként, és hogy az egyes tudásbázisok milyen nagyok növekedhetnek.
+Az alább megadott QnA Maker korlátok az [Azure Cognitive Search díjszabási szintjei](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) és a [QnA Maker díjszabási szintjeinek](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)kombinációja. Ismernie kell mindkét korlátot, hogy tisztában legyen azzal, hogy hány tudásbázist hozhat létre erőforrás alapján, és hogy mekkora az egyes tudásbázisok mérete.
 
 ## <a name="knowledge-bases"></a>Tudásbázisok
 
-A tudásbázisok maximális száma az [Azure Cognitive Search réteg korlátain](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)alapul.
+A tudásbázisok maximális száma az [Azure Cognitive Search szintű korlátokon](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)alapul.
 
-|**Azure Cognitive Search szint** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-szintű** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|A közzétett tudásbázisok maximális száma megengedett|2|14|49|199|199|2,999|
+|A közzétett tudásbázisok maximális száma engedélyezett|2|14|49|199|199|2 999|
 
- Ha például a réteg 15 engedélyezett indexszel rendelkezik, 14 tudásbázist tehet közzé (közzétett tudásbázisonként 1 indexet). A tizenötödik `testkb`index , a szerzői és tesztelési tudásbázisok hoz használatos.
+ Ha például a réteg 15 engedélyezett indextel rendelkezik, a közzétett Tudásbázisban 14 tudásbázist (1 indexet) tehet közzé. A tizenötödik index `testkb`a szerzői és tesztelési célú összes tudásbázishoz használatos.
 
-## <a name="extraction-limits"></a>Kivonási határértékek
+## <a name="extraction-limits"></a>Kinyerési korlátok
 
-### <a name="file-naming-constraints"></a>Fájlelnevezési megkötések
+### <a name="file-naming-constraints"></a>Fájl elnevezési korlátozásai
 
 A fájlnevek nem tartalmazhatják a következő karaktereket:
 
-|Ne használjon karaktert|
+|Ne használja a karaktert|
 |--|
-|Egyszeres idézőjel`'`|
-|Dupla idézőjel`"`|
+|Szimpla idézőjel`'`|
+|Idézőjel`"`|
 
 ### <a name="maximum-file-size"></a>Maximális fájlméret
 
@@ -47,60 +47,60 @@ A fájlnevek nem tartalmazhatják a következő karaktereket:
 
 ### <a name="maximum-number-of-files"></a>Fájlok maximális száma
 
-A kibontható fájlok maximális száma és a maximális fájlméret a **[QnA Maker tarifacsomag-korlátain](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** alapul.
+A kinyerhető fájlok maximális száma és a maximális fájlméret a **[QnA Maker díjszabási szintjétől](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** függ.
 
-### <a name="maximum-number-of-deep-links-from-url"></a>Az URL-címből származó mélyhivatkozások maximális száma
+### <a name="maximum-number-of-deep-links-from-url"></a>Az URL-címekről származó mély hivatkozások maximális száma
 
-A QnA-k URL-oldalról történő kinyeréséhez bejárható mélyhivatkozások maximális száma **20**.
+A QnAs egy URL-lapról való kinyeréséhez feltérképezhető mély hivatkozások maximális száma **20**.
 
-## <a name="metadata-limits"></a>Metaadat-korlátok
+## <a name="metadata-limits"></a>Metaadatok korlátai
 
-A metaadatok szövegalapú kulcs:értékpárként jelennek `product:windows 10`meg, például . Ez tárolja, és összehasonlították kisbetűvel.
+A metaadatok szöveges kulcsként jelennek meg: érték pár, például `product:windows 10`. A rendszer kisbetűvel tárolja és hasonlítja össze.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Az Azure Cognitive Search díjszabási szintje szerint
 
-A metaadatmezők maximális száma tudásbázisonként az **[Azure Cognitive Search réteg korlátain](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** alapul.
+A metaadatok mezőinek maximális száma a Tudásbázisban az Azure- **[Cognitive Search szint korlátain](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** alapul.
 
-|**Azure Cognitive Search szint** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-szintű** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Maximális metaadatmezők QnA Maker szolgáltatásonként (az összes kb-ben)|1,000|100*|1,000|1,000|1,000|1,000|
+|Metaadat-mezők maximális száma QnA Maker szolgáltatásban (az összes Tudásbázis)|1,000|100 *|1,000|1,000|1,000|1,000|
 
 ### <a name="by-name-and-value"></a>Név és érték szerint
 
-A metaadatok nevének és értékének hossza és elfogadható karakterei az alábbi táblázatban találhatók.
+A metaadatok nevének és értékének hosszát és elfogadható karaktereit a következő táblázat tartalmazza.
 
-|Elem|Engedélyezett karakter|Regex minta egyezés|Maximális karakter|
+|Elem|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
 |--|--|--|--|
-|Név (kulcs)|Lehetővé teszi<br>alfanumerikus (betűk és számjegyek)<br>`_`(aláhúzás)<br> Nem tartalmazhat szóközt.|`^[a-zA-Z0-9_]+$`|100|
-|Érték|Lehetővé teszi, hogy mindent, kivéve<br>`:`(kettőspont)<br>`|`(függőleges cső)<br>Csak egy érték engedélyezett.|`^[^:|]+$`|500|
+|Név (kulcs)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_`aláhúzásjellel<br> Nem tartalmazhat szóközt.|`^[a-zA-Z0-9_]+$`|100|
+|Érték|Mindent lehetővé tesz, kivéve<br>`:`kettőspont<br>`|`(függőleges cső)<br>Csak egy érték engedélyezett.|`^[^:|]+$`|500|
 |||||
 
-## <a name="knowledge-base-content-limits"></a>Tudásbázis-tartalomkorlátok
-A tudásbázis tartalmának általános korlátai:
-* A válasz szövegének hossza: 25 000
-* A kérdés szövegének hossza: 1000
-* A metaadatkulcs/érték szövegének hossza: 100
-* A metaadatok nevének támogatott karakterei: Ábécék, számjegyek és`_`
-* A metaadat-érték támogatott `:` karakterei: Kivételével a`|`
-* A fájlnév hossza: 200
-* Támogatott fájlformátumok: ".tsv", ".pdf", ".txt", ".docx", ".xlsx".
+## <a name="knowledge-base-content-limits"></a>A Tudásbázis tartalmi korlátai
+A Tudásbázis tartalmának általános korlátai:
+* Válasz szövegének hossza: 25 000
+* A szóban forgó szöveg hossza: 1 000
+* Metaadat-kulcs/érték szövegének hossza: 100
+* A metaadatok nevének támogatott karakterei: ábécék, számjegyek és`_`
+* A metaadatok értékének támogatott karaktereinek száma: `:` az összes kivételével, és`|`
+* Fájlnév hossza: 200
+* Támogatott fájlformátumok: ". TSV", ". pdf", ". txt", ". docx", ". xlsx".
 * Alternatív kérdések maximális száma: 300
-* A kérdés-válasz párok maximális száma: Az **[Azure Cognitive Search kiválasztott szintjétől](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** függ. A kérdés-válasz pár leképezi az Azure Cognitive Search index egy dokumentumot.
-* URL/HTML oldal: 1 millió karakter
+* A kérdés-válasz párok maximális száma: a kiválasztott **[Azure Cognitive Search szinttől](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** függ. A kérdések és válaszok pár egy Azure Cognitive Search indexre vonatkozó dokumentumra mutat.
+* URL-cím/HTML-lap: 1 000 000 karakter
 
-## <a name="create-knowledge-base-call-limits"></a>Tudásbázis-hívási korlátok létrehozása:
-Ezek jelentik az egyes létrehozási tudásbázis-műveletek korlátait; vagy a CreateKnowledgeBase API hívása elemre. *Create KB*
-* Alternatív kérdések maximális száma válaszonként: 300
-* Az URL-címek maximális száma: 10
+## <a name="create-knowledge-base-call-limits"></a>Tudásbázisbeli hívási korlátok létrehozása:
+Ezek az egyes Create Tudásbázis-műveletek korlátai. Ehhez kattintson a *Tudásbázis létrehozása* vagy a CreateKnowledgeBase API meghívása elemre.
+* Válaszoló alternatív kérdések maximális száma: 300
+* URL-címek maximális száma: 10
 * Fájlok maximális száma: 10
 
-## <a name="update-knowledge-base-call-limits"></a>Tudásbázis-hívási korlátok frissítése
-Ezek jelentik az egyes frissítési műveletek korlátait; vagyis kattintson a *Mentés és betanítás* gombra, vagy hívja meg az UpdateKnowledgeBase API-t.
-* Minden forrásnév hossza: 300
+## <a name="update-knowledge-base-call-limits"></a>A Tudásbázis hívási korlátainak frissítése
+Ezek a frissítési műveletek korlátainak felelnek meg; a UpdateKnowledgeBase API *mentése és betanítása* vagy meghívása elemre kattintva.
+* Az egyes források nevének hossza: 300
 * A hozzáadott vagy törölt alternatív kérdések maximális száma: 300
-* Hozzáadott vagy törölt metaadatmezők maximális száma: 10
-* Frissíthető URL-címek maximális száma: 5
+* A hozzáadott vagy törölt metaadat-mezők maximális száma: 10
+* A frissíthető URL-címek maximális száma: 5
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogy mikor és hogyan módosíthatja a [szolgáltatási tarifacsomagokat.](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)
+Megtudhatja, mikor és hogyan módosíthatja a [szolgáltatás díjszabási szintjeit](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku).

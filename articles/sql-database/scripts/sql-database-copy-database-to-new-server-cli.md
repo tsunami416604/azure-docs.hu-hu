@@ -1,6 +1,6 @@
 ---
-title: CLI példa-copy-Azure SQL adatbázis-új szerver
-description: Az Azure CLI példaparancsfájlja SQL-adatbázis másolásához egy új kiszolgálóra
+title: CLI-példa – az Azure SQL Database másolása – új kiszolgáló
+description: Azure CLI-példa parancsfájl egy SQL-adatbázis új kiszolgálóra való másolásához
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067477"
 ---
 # <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>SQL-adatbázis másolása új kiszolgálóra a CLI használatával
 
-Ez az Azure CLI-parancsfájl példa egy meglévő adatbázis másolatát hozza létre egy új kiszolgálón.
+Ez az Azure CLI-parancsfájl egy meglévő adatbázis másolatát hozza létre egy új kiszolgálón.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -42,20 +42,20 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 az group delete --name $targetResource
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
-| [az sql db másolása](/cli/azure/sql/db#az-sql-db-copy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
+| [az SQL db Copy](/cli/azure/sql/db#az-sql-db-copy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
 
 ## <a name="next-steps"></a>További lépések
 

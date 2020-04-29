@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsfájl az Azure Cosmos DB Table API átviteli teljesítményének (RU/s) lehívásához
-description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB átviteli sebességű (RU/s) tábla API-hoz
+title: PowerShell-szkript az átviteli sebesség (RU/s) lekéréséhez Azure Cosmos DB Table API
+description: Azure PowerShell script-Azure Cosmos DB beolvasási átviteli sebesség (RU/s) a Table API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 0129b03e578d00689f085281d0499830e6ba37c2
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365565"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Átviteli (RU/s) beszerezni egy táblát az Azure Cosmos DB- Table API-hoz
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Átviteli sebesség (RU/s) beszerzése Azure Cosmos DB-Table API táblához
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Leadja a megadott table API-tábla átviteli értékét. |
-|**Azure erőforráscsoportok**| |
+| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Lekérdezi a megadott Table API tábla átviteli sebesség értékét. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

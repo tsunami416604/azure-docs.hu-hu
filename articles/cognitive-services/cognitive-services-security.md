@@ -1,7 +1,7 @@
 ---
 title: Biztonság
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a Cognitive Services használatának különböző biztonsági szempontjait.
+description: További információ a Cognitive Services használatának különböző biztonsági szempontjairól.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,49 +10,49 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: dapine
 ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80131536"
 ---
-# <a name="azure-cognitive-services-security"></a>Az Azure Cognitive Services biztonsága
+# <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
-A biztonságot minden alkalmazás fejlesztése során kiemelt fontosságúnak kell tekinteni. A mesterséges intelligencia által lehetővé tett alkalmazások kilábalása még fontosabb a biztonság. Ebben a cikkben az Azure Cognitive Services biztonságának különböző aspektusait ismertetjük, például az átviteli réteg biztonságának használatát, a hitelesítést és a bizalmas adatok biztonságos konfigurálását.
+A biztonsági és az összes alkalmazás fejlesztésekor elsődleges prioritásnak kell tekinteni. A mesterséges intelligenciát használó alkalmazások kialakulásával a biztonság még ennél is fontosabb. Ebben a cikkben az Azure Cognitive Services Security különböző szempontjait ismertetjük, például a Transport Layer Security, a Authentication és a bizalmas adatok biztonságos konfigurálását.
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-A Cognitive Services összes HTTP-n keresztül elérhetővé tett végpontja kényszeríti a TLS 1.2-t. Kényszerített biztonsági protokoll esetén a Cognitive Services-végpontot meghívni próbáló fogyasztóknak be kell tartaniuk az alábbi irányelveket:
+A HTTP-n keresztül elérhető összes Cognitive Services-végpont TLS 1,2. A kényszerített biztonsági protokoll használatával az Cognitive Services végpontot meghívó felhasználóknak be kell tartaniuk az alábbi irányelveket:
 
-* Az ügyfél operációs rendszernek (OS) támogatnia kell a TLS 1.2-t
-* A HTTP-hívás hoz használt nyelvnek (és platformnak) meg kell adnia a TLS 1.2-t a kérés részeként
-  * A nyelvtől és a platformtól függően a TLS megadása implicit vagy explicit módon történik
+* Az ügyfél operációs rendszerének (OS) támogatnia kell a TLS 1,2-et
+* A HTTP-híváshoz használt nyelv (és platform) a kérelem részeként meg kell határoznia a TLS 1,2-as értéket.
+  * A nyelvtől és a platformtól függően a TLS meghatározása implicit módon vagy explicit módon történik
 
-A .NET-felhasználók számára vegye figyelembe a <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott eljárásokat. <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>
+.NET-felhasználók esetén vegye figyelembe a <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott <span class="docon docon-navigate-external x-hidden-focus"> </span>eljárásokat </a>.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A hitelesítés megvitatása során számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran összekeveredik egymással. Az identitás a biztonság egyik fő összetevője is. A személyazonosság egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"> </span>megbízóra </a>vonatkozó információk gyűjteménye. Az identitásszolgáltatók (IdP) identitásokat biztosítanak a hitelesítési szolgáltatásokszámára. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az erőforrásokhoz való hozzáférési jogok és jogosultságok megadása egy adott identitáshoz. A Cognitive Services számos ajánlata tartalmazza a szerepköralapú hozzáférés-vezérlést (RBAC). RBAC lehetne használni, hogy egyszerűsítse néhány szertartás részt manuálisan irányító megbízók. További részletek: [Szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz.](../role-based-access-control/overview.md)
+A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. Több Cognitive Services ajánlat, beleértve a szerepköralapú hozzáférés-vezérlést (RBAC). A RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével kapcsolatos ünnepségek egyszerűsítésére. További részletek: [szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
 
-Az előfizetési kulcsokkal, hozzáférési jogkivonatokkal és az Azure Active Directoryval (AAD) való hitelesítésről további információt az <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure Cognitive Services hitelesítési kérelmei<span class="docon docon-navigate-external x-hidden-focus"></span></a>című témakörben talál.
+Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
-## <a name="environment-variables-and-application-configuration"></a>Környezeti változók és alkalmazáskonfiguráció
+## <a name="environment-variables-and-application-configuration"></a>Környezeti változók és alkalmazás konfigurációja
 
-A környezeti változók név-érték párok, amelyek egy adott környezetben tárolódnak. A bizalmas adatok hoz a kódolatlan értékek biztonságosabb alternatívája a környezeti változók használata. A kódolt értékek nem biztonságosak, ezért el kell kerülni őket.
+A környezeti változók név-érték párok, amelyek egy adott környezetben tárolódnak. A bizalmas adatok hardcoded értékeinek használata biztonságosabb alternatíva a környezeti változók használata. A hardcoded értékei nem biztonságosak, ezért kerülendő.
 
 > [!CAUTION]
-> **Ne** használjon kódolt értékeket a bizalmas adatokhoz, ez egy jelentős biztonsági rés.
+> Ne **használjon hardcoded** -értékeket a bizalmas adatokhoz, így ez jelentős biztonsági rést jelent.
 
 > [!NOTE]
-> Míg a környezeti változók egyszerű szövegben vannak tárolva, egy környezetbe vannak szigetelve. Ha egy környezet sérül, akkor a változók is a környezettel.
+> Míg a környezeti változók egyszerű szövegként vannak tárolva, azok el vannak különítve egy környezetbe. Ha egy környezet biztonsága sérül, akkor a környezet változói is.
 
 ### <a name="set-environment-variable"></a>Környezeti változó beállítása
 
-Környezeti változók beállításához használja a következő `ENVIRONMENT_VARIABLE_KEY` parancsokat – `value` ahol az elnevezett kulcs, és a környezeti változóban tárolt érték.
+A környezeti változók megadásához használja a következő parancsokat – ahol a `ENVIRONMENT_VARIABLE_KEY` a megnevezett kulcs, `value` és a környezeti változóban tárolt érték.
 
-# <a name="command-line"></a>[Parancssori](#tab/command-line)
+# <a name="command-line"></a>[Parancssor](#tab/command-line)
 
-Az érték kelése és hozzárendelése a megőrzött környezeti változóhoz.
+Megőrzött környezeti változó létrehozása és kiosztása a megadott értékkel.
 
 ```CMD
 :: Assigns the env var to the value
@@ -66,9 +66,9 @@ A **parancssor**új példányában olvassa el a környezeti változót.
 echo %ENVIRONMENT_VARIABLE_KEY%
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Az érték kelése és hozzárendelése a megőrzött környezeti változóhoz.
+Megőrzött környezeti változó létrehozása és kiosztása a megadott értékkel.
 
 ```powershell
 # Assigns the env var to the value
@@ -84,14 +84,14 @@ A **Windows PowerShell**új példányában olvassa el a környezeti változót.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-Az érték kelése és hozzárendelése a megőrzött környezeti változóhoz.
+Megőrzött környezeti változó létrehozása és kiosztása a megadott értékkel.
 
 ```Bash
 # Assigns the env var to the value
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-A **Bash**új példányában olvassa el a környezeti változót.
+A **bash**új példányában olvassa el a környezeti változót.
 
 ```Bash
 # Prints the env var value
@@ -104,11 +104,11 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 ---
 
 > [!TIP]
-> Környezeti változó beállítása után indítsa újra az integrált fejlesztői környezetet (IDE) annak érdekében, hogy az újonnan hozzáadott környezeti változók elérhetők legyenek.
+> A környezeti változók beállítása után indítsa újra az integrált fejlesztői környezetet (IDE), és győződjön meg arról, hogy az újonnan hozzáadott környezeti változók elérhetők.
 
-### <a name="get-environment-variable"></a>Környezeti változó beszereznie
+### <a name="get-environment-variable"></a>Környezeti változó beolvasása
 
-Egy környezeti változó beolvasásához be kell olvasni a memóriába. A használt nyelvtől függően vegye figyelembe az alábbi kódrészleteket. Ezek a kódrészletek bemutatják, hogyan `ENVIRONMENT_VARIABLE_KEY` juthat el a `value`környezeti változóhoz a és rendelni egy .
+Környezeti változó beszerzéséhez a memóriába kell beolvasni. A használt nyelvtől függően vegye figyelembe az alábbi kódrészleteket. Ezek a kódrészletek bemutatják, hogyan kérheti le `ENVIRONMENT_VARIABLE_KEY` a környezeti változót, és `value`hogyan rendelhet hozzá egy nevű változóhoz.
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -182,7 +182,7 @@ import os
 value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 ```
 
-# <a name="objective-c"></a>[Célkitűzés-C](#tab/objective-c)
+# <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
 További információ: <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
@@ -196,5 +196,5 @@ NSString* value =
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel a különböző [kognitív szolgáltatásokat](welcome.md)
-* További információ a [Cognitive Services virtuális hálózatokról](cognitive-services-virtual-networks.md)
+* Ismerkedjen meg a különböző [Cognitive Servicesokkal](welcome.md)
+* További információ a [Cognitive Services Virtual Networks](cognitive-services-virtual-networks.md) szolgáltatásról

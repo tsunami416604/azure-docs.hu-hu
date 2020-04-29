@@ -1,7 +1,7 @@
 ---
-title: A keresési eredmények lapozása – Bing keresési API-k
+title: Az oldal keresési eredményeinek megjelenítése – Bing Search API-k
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogy miként lapozhat a keresési eredmények között a Bing Keresési API-kból.
+description: Megtudhatja, hogyan lapozhat a Bing Search API-k keresési eredményei között.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
 ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73481730"
 ---
-# <a name="how-to-page-through-results-from-the-bing-search-apis"></a>A Bing Keresési API-k találatai között való lapozás
+# <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Az Bing Search API-k eredményeinek megjelenítése
 
-Amikor hívást küld a Bing Web, egyéni, kép, hírek vagy videókeresési API-k, Bing visszaadja egy részhalmaza az összes találat, amely releváns lehet a lekérdezést. A rendelkezésre álló eredmények becsült teljes számának `totalEstimatedMatches` eléréséhez férjen hozzá a válaszobjektum mezőjéhez. 
+A Bing web, Custom, képek, hírek vagy Video Search API-k hívásának elküldésekor a Bing a lekérdezéshez kapcsolódó összes eredmény részhalmazát adja vissza. A rendelkezésre álló eredmények becsült teljes számának beszerzéséhez nyissa meg `totalEstimatedMatches` a válasz objektum mezőjét. 
 
-Példa: 
+Például: 
 
 ```json
 {
@@ -37,19 +37,19 @@ Példa:
 
 ## <a name="paging-through-search-results"></a>Lapozás a keresési eredmények között
 
-A rendelkezésre álló eredmények `count` lapozásához használja a lekérdezési `offset` paramétereket a kérés küldésekor.  
+Az elérhető eredmények között a `count` és `offset` a lekérdezési paramétereket használhatja a kérelem elküldésekor.  
 
 > [!NOTE]
 >
-> * A Bing Video, Image és News API-kkal történő`/video/search`lapozás`/news/search`csak az`/image/search`általános videó ( ), hírek ( ) és kép ( ) keresésre vonatkozik. A felkapott témakörök és kategóriák lapozása nem támogatott.  
-> * A `TotalEstimatedMatches` mező az aktuális lekérdezés keresési eredményeinek teljes számát becsüli meg. Amikor beállítja `offset` a és a paramétereket, ez a `count` becslés változhat.
+> * A Bing video, a képek és a News API-k lapozása csak általános videó`/video/search`(), Hírek`/news/search`() és képek`/image/search`() keresésekre vonatkozik. A lapozási témakörök és kategóriák nem támogatottak.  
+> * A `TotalEstimatedMatches` mező az aktuális lekérdezés keresési eredményeinek teljes számát adja meg. A `count` és `offset` paraméterek beállításakor ez a becslés változhat.
 
 | Paraméter | Leírás                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `count`   | Megadja a válaszban visszaadandó eredmények számát. Vegye figyelembe, hogy `count`a alapértelmezett értéke és a legfeljebb kért eredmények száma API-nként változik. Ezeket az értékeket a [Következő lépések](#next-steps)című hivatkozási dokumentációban találja. |
-| `offset`  | Megadja a kihagyandó eredmények számát. A `offset` nulla alapú, és kisebbnek`totalEstimatedMatches` - `count`kell lennie, mint ( ).                                           |
+| `count`   | Megadja a válaszban visszaadni kívánt eredmények számát. Vegye figyelembe, hogy az alapértelmezett `count`érték és a kérelmek maximális száma az API-tól függően változhat. Ezeket az értékeket a [következő lépések](#next-steps)szakaszban található hivatkozási dokumentációban találja. |
+| `offset`  | A kihagyni kívánt eredmények számát adja meg. A `offset` nulla-alapú, és kisebbnek kell lennie`totalEstimatedMatches` - `count`, mint ().                                           |
 
-Ha például oldalanként 15 eredményt szeretne megjeleníteni, `count` akkor 15, `offset` 0-ra kell állítania az eredmények első oldalát. Minden további API-hívás esetén 15-tel növelné. `offset` A következő példa 15 weblapot kér a 45-ös eltolástól kezdődően.
+Ha például 15 találat/oldal megjelenítését szeretné megjeleníteni, a találatok első oldalának `count` lekéréséhez `offset` 15 és 0-ra értéket kell beállítani. Minden további API-hívás esetében 15-re `offset` növekszik. Az alábbi példa 15 weblapot kér le a 45 eltolásnál kezdődően.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us HTTP/1.1  
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Ha az alapértelmezett `count` értéket használja, csak `offset` meg kell adnia a lekérdezési paramétert az API-hívásokban.  
+Ha az alapértelmezett `count` értéket használja, csak a `offset` lekérdezési paramétert kell megadnia az API-hívásokban.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us HTTP/1.1  
@@ -65,18 +65,18 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-A Bing-kép- és videoAPI-k `nextOffset` használatakor az érték kelelkerülheti az ismétlődő keresési eredményeket. Az érték beszerezése a vagy `Images` `Videos` a válaszobjektumokból, és a paraméterekkel való felhasználás a `offset` kérelmekben.  
+A Bing-rendszerkép és a videó API-k használatakor az `nextOffset` érték használatával elkerülhetők az ismétlődő keresési eredmények. Szerezze be az értéket a `Images` vagy `Videos` a válasz objektumokból, és használja azt a `offset` paraméterrel rendelkező kérésekben.  
 
 > [!NOTE]
-> A Bing Web Search API olyan keresési eredményeket ad vissza, amelyek weblapokat, képeket, videókat és híreket tartalmazhatnak. Amikor a Bing Web Search API-ból lapozgat a keresési eredmények között, csak [weblapokat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)hív meg, más választípusokat, például képeket és híreket nem. Az objektumok `WebPage` keresési eredményei más választípusokban is megjelenhetnek.
+> A Bing Web Search API olyan keresési eredményeket ad vissza, amelyek weblapokat, képeket, videókat és híreket is tartalmazhatnak. Ha a Bing Web Search API a keresési eredmények között lapoz át, [akkor csak a weblapok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)lapozása történik meg, más típusú válaszok, például képek vagy hírek. Az `WebPage` objektumok keresési eredményei tartalmazhatják a más válaszokban megjelenő eredményeket is.
 >
-> Ha a `responseFilter` lekérdezési paramétert szűrőértékek megadása nélkül használja, `offset` ne használja a és a `count` paramétereket. 
+> Ha a lekérdezési `responseFilter` paramétert a szűrési értékek megadása nélkül használja, ne használja `count` a `offset` és a paramétert. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mik azok a Bing Web Search API-k?](bing-api-comparison.md)
+* [Mik a Bing Web Search API-k?](bing-api-comparison.md)
 * [Bing Web Search API 7-es verzió – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
-* [Bing egyéni keresési API v7-es hivatkozása](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Bing News Search API v7-es hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Bing Video Search API v7-es hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Bing Image Search API v7 hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Custom Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Bing News Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Bing Video Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Bing Image Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

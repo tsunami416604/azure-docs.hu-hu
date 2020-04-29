@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Egyéni virtuálisgép-lemezkép használata méretezési készletben az Azure CLI-vel
+title: Oktatóanyag – egyéni virtuálisgép-rendszerkép használata egy méretezési csoporton az Azure CLI-vel
 description: Megismerheti, hogyan hozhat létre egyéni virtuálisgép-rendszerképeket az Azure CLI használatával, amelyek használatával virtuálisgép-méretezési csoportokat helyezhet üzembe
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80062719"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
@@ -24,7 +24,7 @@ Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a vi
 > * Egyéni virtuális gép rendszerképének létrehozása
 > * Az egyéni virtuálisgép-rendszerképet használó méretezési csoport üzembe helyezése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -91,7 +91,7 @@ A virtuális gép felszabadítása és általánosítása eltarthat néhány per
 
 Most hozzon létre egy rendszerképet a virtuális gépről az [az image create](/cli//azure/image) paranccsal. Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a virtuális gépéből:
 
-> - Nem, nem, nem, nem, nem, Ha az erőforráscsoport és a virtuális gép `--location` helye eltérő, hozzáadhatja a paramétert az alábbi parancsokhoz a lemezkép létrehozásához használt forrásvirtuális gép helyének konkrétságához. 
+> Megjegyzés Ha az erőforráscsoport és a virtuális gép helye eltérő, a `--location` paramétert hozzáadhatja az alábbi parancsokhoz a rendszerkép létrehozásához használt forrásoldali virtuális gép helyétől függően. 
 
 ```azurecli-interactive
 az image create \
@@ -147,7 +147,7 @@ Gépelje be a nyilvános IP-címet a webböngészőjébe. Az alapértelmezett NG
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és annak összes erőforrását az [az csoport törlésével.](/cli/azure/group) A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes
