@@ -1,6 +1,6 @@
 ---
-title: IoT Plug and Play Preview modellfelderítés megvalósítása | Microsoft dokumentumok
-description: Megoldásfejlesztőként ismerje meg, hogyan valósíthatja meg az IoT Plug and Play modellfelderítést a megoldásában.
+title: A IoT megvalósítása Plug and Play előnézeti modell felderítése | Microsoft Docs
+description: Megoldás fejlesztőként megismerheti, hogyan valósítható meg a IoT Plug and Play modell felderítése a megoldásban.
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
@@ -10,71 +10,71 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770477"
 ---
-# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT Plug and Play előzetes verziómodell-felderítés megvalósítása IoT-megoldásban
+# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>A IoT Plug and Play előnézeti modell felderítésének implementálása egy IoT-megoldásban
 
-Ez a cikk bemutatja, hogyan valósíthatja meg az IoT Plug and Play preview modellfelderítést egy IoT-megoldásban, mint megoldásfejlesztő.  Az IoT Plug and Play modellfelderítés azt ismerteti, hogy az IoT Plug and Play-eszközök hogyan azonosítják a támogatott képességmodelleket és -felületeket, és hogyan olvassa le az IoT-megoldások ezeket a képességmodelleket és felületeket.
+Ez a cikk azt ismerteti, hogyan lehet megoldás-fejlesztőként megvalósítani a IoT Plug and Play előnézeti modell felderítését egy IoT-megoldásban.  A IoT Plug and Play a modell felderítése, hogy a IoT Plug and Play-eszközök hogyan azonosítják a támogatott képességi modelljeit és felületeit, valamint azt, hogy egy IoT-megoldás hogyan kéri le ezeket a képességeket
 
-Az IoT-megoldásoknak két fő kategóriája van: a célorientált megoldások, amelyek az IoT Plug and Play eszközök ismert készletével működnek, és a modellalapú megoldások, amelyek bármilyen IoT Plug and Play eszközzel működnek.
+A IoT-megoldás két nagy kategóriája létezik: olyan célzott megoldás, amely a IoT Plug and Play-eszközök ismert készletével működik együtt, valamint olyan modell-vezérelt megoldásokkal, amelyek bármilyen IoT Plug and Play eszközzel működnek.
 
-Ez a koncepciócikk ismerteti, hogyan valósítható meg a modellfelderítés mindkét típusú megoldás.
+Ez a fogalom azt ismerteti, hogyan valósítható meg a modell felderítése mindkét típusú megoldásban.
 
 ## <a name="model-discovery"></a>Modellfelderítés
 
-Amikor egy IoT Plug and Play-eszköz először csatlakozik az IoT hubhoz, modelladatokat azonosító telemetriai üzenetet küld. Ez az üzenet tartalmazza az eszköz által megvalósított összeköttetések azonosítóit. Ahhoz, hogy a megoldás működjön az eszközzel, meg kell oldania ezeket az azonosítókat, és le kell kérnie az egyes összeköttetések definícióit.
+Amikor egy IoT Plug and Play eszköz először csatlakozik az IoT hub-hoz, egy telemetria-üzenetet küld. Ez az üzenet tartalmazza az eszköz által megvalósított felületek azonosítóit. Ahhoz, hogy a megoldás működjön az eszközzel, fel kell oldania ezeket az azonosítókat, és le kell kérnie az egyes illesztőfelületek definícióit.
 
-Az IoT Plug and Play eszköz által az eszközkiépítési szolgáltatás (DPS) segítségével a hubhoz való csatlakozássorán az alábbi lépéseket kell megtenni:
+Az alábbi lépéseket követve megtekintheti a IoT Plug and Play eszközét, amikor az eszköz kiépítési szolgáltatását (DPS) használja egy hubhoz való csatlakozáshoz:
 
-1. Ha az eszköz be van kapcsolva, csatlakozik a DPS globális végpontjához, és az engedélyezett módszerek egyikével hitelesíti magát.
-1. A DPS ezután hitelesíti az eszközt, és megkeresi azt a szabályt, amely megmondja, hogy melyik IoT hubhoz rendelje az eszközt. A DPS ezután regisztrálja az eszközt az adott elosztóval.
-1. A DPS egy IoT Hub-kapcsolati karakterláncot ad vissza az eszköznek.
-1. Az eszköz ezután egy felderítési telemetriai üzenetet küld az IoT Hub. A felderítéstelemetriai üzenet az eszköz által megvalósított összeköttetések azonosítóit tartalmazza.
-1. Az IoT Plug and Play eszköz most már készen áll az IoT hubot használó megoldással való használatra.
+1. Ha az eszköz be van kapcsolva, a globális végponthoz csatlakozik a DPS-hez, és a hitelesítés az engedélyezett módszerek egyikével történik.
+1. A DPS ezután hitelesíti az eszközt, és megkeresi azt a szabályt, amely közli, hogy az eszköz melyik IoT-hubhoz van hozzárendelve. A DPS ezután regisztrálja az eszközt az adott hubhoz.
+1. A DPS egy IoT Hub kapcsolódási karakterláncot ad vissza az eszköznek.
+1. Az eszköz ezután egy felderítési telemetria üzenetet küld a IoT Hubnak. A felderítési telemetria üzenet tartalmazza az eszköz által megvalósított felületek azonosítóit.
+1. A IoT Plug and Play eszköz most már készen áll az IoT hub-t használó megoldással való együttműködésre.
 
-Ha az eszköz közvetlenül csatlakozik az IoT hubhoz, az eszközkódba ágyazott kapcsolati karakterlánc használatával csatlakozik. Az eszköz ezután egy felderítési telemetriai üzenetet küld az IoT Hub.
+Ha az eszköz közvetlenül csatlakozik az IoT hub-hoz, az az eszköz kódjába ágyazott kapcsolati sztringet használva csatlakozik. Az eszköz ezután egy felderítési telemetria üzenetet küld a IoT Hubnak.
 
-Tekintse meg a [ModelInformation](concepts-common-interfaces.md) felület et, ha többet szeretne megtudni a modelladatok telemetriai üzenetéről.
+Tekintse meg a [ModelInformation](concepts-common-interfaces.md) felületét, és ismerkedjen meg a modell információi telemetria üzenettel.
 
-### <a name="purpose-built-iot-solutions"></a>Célirányosan készített IoT-megoldások
+### <a name="purpose-built-iot-solutions"></a>Célra épülő IoT-megoldások
 
-A célirányosan létrehozott IoT-megoldás az IoT Plug and Play eszközképességi modellek és interfészek ismert készletével működik.
+A IoT-megoldás egy ismert IoT-készlettel működik, amely az eszköz képességeinek és felületének ismert együttesét Plug and Play.
 
-A megoldáshoz előre csatlakozó eszközök képességmodelljével és felületeivel fog rendelkezni. A megoldás előkészítéséhez kövesse az alábbi lépéseket:
+Az eszközhöz a megoldáshoz való csatlakozáshoz szükséges képesség modell és felületek tartoznak. A megoldás előkészítéséhez kövesse az alábbi lépéseket:
 
-1. Tárolja a felület JSON fájlokat egy [modell tárházban,](./howto-manage-models.md) ahol a megoldás tudja olvasni őket.
-1. Írási logika az IoT-megoldásban a várt IoT Plug and Play képességmodellek és felület alapján.
-1. Iratkozzon fel a megoldás által használt IoT hubról érkező értesítésekre.
+1. Tárolja a felület JSON-fájljait egy olyan [modell-adattárban](./howto-manage-models.md) , ahol a megoldás képes olvasni őket.
+1. A IoT-megoldásban a várt IoT Plug and Play képesség modellek és felületek alapján írhat logikát.
+1. Fizessen elő a megoldás által használt IoT hub értesítéseire.
 
-Amikor értesítést kap egy új eszközkapcsolatról, kövesse az alábbi lépéseket:
+Amikor értesítést kap egy új eszköz-kapcsolatban, kövesse az alábbi lépéseket:
 
-1. Olvassa el a felderítéstelemetriai üzenetet a képességmodell és az eszköz által megvalósított felületek azonosítóinak lekéréséhez.
-1. Hasonlítsa össze a képességmodell azonosítóját az előre tárolt képességmodellek azonosítóival.
-1. Most már tudja, hogy milyen típusú eszköz van csatlakoztatva. Használja a korábban írt logikát, hogy a felhasználók megfelelően kommunikálhassanak az eszközzel.
+1. Olvassa el a felderítési telemetria üzenetet az eszköz által megvalósított képesség modell és felületek azonosítóinak beolvasásához.
+1. Hasonlítsa össze a képesség modell AZONOSÍTÓját az idő előtt tárolt képességi modellek azonosítói alapján.
+1. Most már tudja, milyen típusú eszköz kapcsolódott. A korábban írt logikával lehetővé teheti a felhasználók számára, hogy megfelelően használják az eszközt.
 
-### <a name="model-driven-solutions"></a>Modellvezérelt megoldások
+### <a name="model-driven-solutions"></a>Modellen alapuló megoldások
 
-A modellalapú IoT-megoldások bármilyen IoT Plug and Play eszközzel működhetnek. Egy modell alapú IoT-megoldás létrehozása összetettebb, de a előnye, hogy a megoldás a jövőben hozzáadott eszközökkel működik.
+A modellen alapuló IoT-megoldások bármilyen IoT Plug and Play eszközzel működhetnek. A modellen alapuló IoT-megoldás létrehozása összetettebb, de az előnye, hogy a megoldás a jövőben hozzáadott eszközökkel működik.
 
-Modellalapú IoT-megoldás létrehozásához logikát kell építenie az IoT Plug and Play felület primitívek: telemetriai adatok, tulajdonságok és parancsok alapján. Az IoT-megoldás logikája egy eszközt jelöl több telemetriai, tulajdonság- és parancsképességek kombinálásával.
+A modellre épülő IoT-megoldás létrehozásához létre kell hoznia egy logikát a IoT Plug and Play felületi primitívek esetében: telemetria, Properties és parancsok. A IoT-megoldás logikája olyan eszközt képvisel, amely több telemetria, tulajdonságot és parancs-képességet egyesít.
 
-A megoldásnak elő kell fizetnie az általa használt IoT hubról érkező értesítésekre is.
+A megoldásnak az általa használt IoT hub értesítéseire is elő kell fizetnie.
 
-Amikor a megoldás értesítést kap egy új eszközkapcsolatról, kövesse az alábbi lépéseket:
+Ha a megoldás értesítést kap egy új eszköz kapcsolatáról, kövesse az alábbi lépéseket:
 
-1. Olvassa el a felderítéstelemetriai üzenetet a képességmodell és az eszköz által megvalósított felületek azonosítóinak lekéréséhez.
-1. Minden azonosítóhoz olvassa el a teljes JSON-fájlt az eszköz képességeinek megkereséséhez.
-1. Ellenőrizze, hogy minden kapcsolat jelen van-e a megoldás által korábban lekért JSON-fájlok tárolására épített gyorsítótárakban.
-1. Ezután ellenőrizze, hogy az azonosítóval rendelkező felület szerepel-e a nyilvános modelltárházban. További információ: [Public model repository](howto-manage-models.md).
-1. Ha a felület nem található a nyilvános modell tárházban, próbálja meg keresni a megoldás által ismert bármely vállalati modell tárházban. A vállalati modelltártárház eléréséhez kapcsolati karakterláncra van szükség. További információ: [Vállalati modelltárház.](howto-manage-models.md)
-1. Ha nem találja az összes felületet sem a nyilvános modell tárházban, sem egy vállalati modell tárházban, ellenőrizheti, hogy az eszköz képes-e biztosítani a felület definícióját. Az eszköz megvalósíthatja a szabványos [ModelDefinition](concepts-common-interfaces.md) felületet, hogy információkat tegyen közzé arról, hogyan lehet beolvasni a felületfájlokat egy paranccsal.
-1. Ha megtalálta a JSON fájlokat az eszköz által megvalósított minden felülethez, akkor felsorolhatja az eszköz képességeit. Használja a korábban írt logikát, hogy a felhasználók kommunikálhassanak az eszközzel.
-1. Bármikor meghívhatja a digitális twins API-t a képességmodell-azonosító és az eszköz kapcsolatazonosítóinak lekéréséhez.
+1. Olvassa el a felderítési telemetria üzenetet az eszköz által megvalósított képesség modell és felületek azonosítóinak beolvasásához.
+1. Az egyes AZONOSÍTÓk esetében olvassa el a teljes JSON-fájlt az eszköz képességeinek megkereséséhez.
+1. Ellenőrizze, hogy vannak-e olyan gyorsítótárban található összes interfész, amelyet a megoldás által korábban lekért JSON-fájlok tárolására készített.
+1. Ezután ellenőrizze, hogy az adott AZONOSÍTÓval rendelkező felület szerepel-e a nyilvános modell adattárában. További információ: [nyilvános modell tárháza](howto-manage-models.md).
+1. Ha az illesztőfelület nem szerepel a nyilvános modell adattáran, próbálja meg a céges modellekben a megoldáshoz tartozó adattárakban keresni. A vállalati modell tárházának eléréséhez kapcsolati sztringre van szükség. További információ: [céges modell tárháza](howto-manage-models.md).
+1. Ha nem találja az összes illesztőfelületet a nyilvános modell adattárában vagy a vállalati modell adattárában, megtekintheti, hogy az eszköz képes-e az illesztőfelület-definíció megadására. Az eszközök a szabványos [ModelDefinition](concepts-common-interfaces.md) felületet implementálják, hogy az adott paranccsal hogyan lehet lekérdezni a csatoló fájljait egy parancs használatával.
+1. Ha a JSON-fájlokat az eszköz által megvalósított minden egyes csatolóhoz megtalálta, akkor az eszköz képességeit enumerálhatja. A korábban írt logikával engedélyezheti a felhasználók számára az eszköz használatát.
+1. A digitális Twins API-t bármikor meghívhatja, hogy beolvassa az eszközre vonatkozó képesség-modell AZONOSÍTÓját és a csatoló azonosítóit.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerkedett az IoT-megoldás modellfelderítésével, tudjon meg többet az [Azure IoT Platformról,](overview-iot-plug-and-play.md) hogy más képességeket is kihasználhasson a megoldáshoz.
+Most, hogy megismerte a Model Discovery egy IoT-megoldását, tudjon meg többet az [Azure IoT platformról](overview-iot-plug-and-play.md) a megoldás más képességeinek kihasználása érdekében.

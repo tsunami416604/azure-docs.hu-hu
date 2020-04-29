@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
 ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133617"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure Networking Services áttekintése
@@ -93,7 +93,7 @@ Ez a szakasz az Azure-beli hálózati szolgáltatásokat ismerteti, amelyek seg�
 |Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
 |---|---|---|
 |[DDoS-védelem](#ddosprotection) |Magas rendelkezésre állás az alkalmazások számára a felesleges IP-forgalom elleni védelem ellenében|[Azure DDoS Protection kezelése](../virtual-network/manage-ddos-protection.md)|
-|[Webalkalmazási tűzfal](#waf)|<p>Az [Azure WAF és a Application Gateway](../web-application-firewall/ag/ag-overview.md) helyi védelmet biztosít a nyilvános és privát címtartománybeli entitásoknak</p><p>A [bejárati ajtóval rendelkező Azure-WAF](../web-application-firewall/afds/afds-overview.md) a hálózat peremén a nyilvános végpontok számára biztosít védelmet.</p>|<p>[A robot védelmi szabályainak konfigurálása](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Egyéni válaszkód konfigurálása](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-korlátozási szabályok konfigurálása](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[A díjszabási korlát konfigurálása szabály](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Web Application Firewall (Webalkalmazási tűzfal)](#waf)|<p>Az [Azure WAF és a Application Gateway](../web-application-firewall/ag/ag-overview.md) helyi védelmet biztosít a nyilvános és privát címtartománybeli entitásoknak</p><p>A [bejárati ajtóval rendelkező Azure-WAF](../web-application-firewall/afds/afds-overview.md) a hálózat peremén a nyilvános végpontok számára biztosít védelmet.</p>|<p>[A robot védelmi szabályainak konfigurálása](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Egyéni válaszkód konfigurálása](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-korlátozási szabályok konfigurálása](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[A díjszabási korlát konfigurálása szabály](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure Firewall](#firewall)|Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Egy teljes mértékben állapotalapú tűzfalszolgáltatás, beépített magas rendelkezésre állással és korlátlan felhőméretezhetőséggel.|<p>[Azure Firewall üzembe helyezése vnet](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[-Azure Firewall üzembe helyezése hibrid hálózaton](../firewall/tutorial-hybrid-ps.md)</p> <p>[Bejövő forgalom szűrése Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
 |[Network security groups (Hálózati biztonsági csoportok)](#nsg)|Teljes részletességű elosztott végpont-vezérlés a virtuális gépen/alhálózatban az összes hálózati forgalom forgalmához|[Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/tutorial-filter-network-traffic.md)|
 |[Virtuális hálózati szolgáltatásvégpontok](#serviceendpoints)|Lehetővé teszi egyes Azure-szolgáltatási erőforrások hálózati hozzáférésének korlátozását egy virtuális hálózati alhálózatra.|[PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
@@ -104,7 +104,7 @@ A [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) a legkif
 
 ![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Webalkalmazási tűzfal
+### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Webalkalmazási tűzfal)
 
 Az [Azure webalkalmazási tűzfal](../web-application-firewall/overview.md) (WAF) védelmet nyújt a webalkalmazásoknak a gyakori webes biztonsági rések és sebezhetőségek, például az SQL-injektálás és a helyek közötti parancsfájlok használatával. Az Azure WAF a felügyelt szabályok segítségével a OWASP 10 legfontosabb biztonsági résen kívülről is biztosít védelmet a box-ban. Emellett az ügyfelek egyéni szabályokat is megadhatnak, amelyek az ügyfél által felügyelt szabályok a forrás IP-címtartomány alapján további védelmet biztosítanak, és olyan attribútumokat igényelnek, mint a fejlécek, a cookie-k, az űrlap adatmezői vagy a lekérdezési karakterlánc
 

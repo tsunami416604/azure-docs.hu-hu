@@ -1,6 +1,6 @@
 ---
-title: Az Azure NetApp-fájlok köteteinek csatlakoztatása virtuális gépekhez
-description: Ismerje meg, hogyan csatlakoztathat vagy leoldhat egy kötetet Windows os virtuális gépekhez vagy Linuxos virtuális gépekhez az Azure-ban.
+title: Azure NetApp Files kötetek csatlakoztatása virtuális gépekhez
+description: Megtudhatja, hogyan csatlakoztathat vagy leválaszthat köteteket Windows rendszerű virtuális gépekhez vagy linuxos virtuális gépekhez az Azure-ban.
 author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
@@ -8,38 +8,38 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: c439ff8df95d759e96d2fc82356bda8551507e8d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084940"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása 
 
-Szükség esetén csatlakoztathat vagy leválaszthat egy kötetet Windows vagy Linux rendszerű virtuális gépekhez.  A Linux-alapú virtuális gépek csatlakoztatási utasításai elérhetők az Azure NetApp-fájlokban.  
+Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú virtuális gépek kötetét.  A Linux rendszerű virtuális gépek csatlakoztatására vonatkozó utasítások a Azure NetApp Fileson érhetők el.  
 
-1. Kattintson a **Kötetek** panelre, majd válassza ki azt a kötetet, amelyhez csatlakoztatni szeretné. 
-2. Kattintson a Kiválasztott kötet **utasításoknak csatlakoztatása** elemre, majd kövesse az utasításokat a kötet csatlakoztatásához. 
+1. Kattintson a **kötetek** panelre, majd válassza ki azt a kötetet, amelyhez csatlakoztatni kívánja. 
+2. Kattintson a kijelölt kötet **csatlakoztatási utasításai** elemre, majd kövesse az utasításokat a kötet csatlakoztatásához. 
 
-    ![NFS csatlakoztatási utasítások](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
+    ![Csatlakoztatási utasítások NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
     ![Csatlakoztatási utasítások SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
     
-    NFSv4.1 használata esetén a következő paranccsal csatlakoztassa a fájlrendszert:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    Ha a NFSv 4.1-et használja, használja a következő parancsot a fájlrendszer csatlakoztatásához:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-3. Ha azt szeretné, hogy egy NFS-kötet automatikusan csatlakoztatva, amikor egy Azure `/etc/fstab` virtuális gép indításakor vagy újraindítása, adjon hozzá egy bejegyzést a fájlhoz az állomáson. 
+3. Ha egy Azure-beli virtuális gép indításakor vagy újraindításakor automatikusan csatlakoztatni szeretné az NFS-kötetet, vegyen fel egy `/etc/fstab` bejegyzést a gazdagépen lévő fájlba. 
 
     Például:`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
-    * `$ANFIP`Az Azure NetApp Files kötet IP-címe a kötet tulajdonságai panelen található.
-    * `$FILEPATH`Az Azure NetApp Files kötet exportálási útvonala.
-    * `$MOUNTPOINT`az NFS-exportálás csatlakoztatására használt Linux-állomáson létrehozott könyvtár.
+    * `$ANFIP`a kötet tulajdonságai panelen található Azure NetApp Files kötet IP-címe.
+    * `$FILEPATH`a Azure NetApp Files kötet exportálási útvonala.
+    * `$MOUNTPOINT`az NFS-exportálás csatlakoztatásához használt Linux-gazdagépen létrehozott könyvtár.
 
-4. Ha nfs-sel szeretné csatlakoztatni a kötetet a Windows rendszerhez:
+4. Ha csatlakoztatni szeretné a kötetet a Windowshoz az NFS használatával:
 
-    a. Először csatlakoztassa a kötetet egy Unix vagy Linux virtuális gépre.  
-    b. Futtasson egy `chmod 777` vagy `chmod 775` parancsot a kötethez.  
-    c. Csatlakoztassa a kötetet az NFS-ügyfélen keresztül Windows rendszeren.
+    a. Először csatlakoztassa a kötetet egy UNIX vagy Linux rendszerű virtuális gépre.  
+    b. Futtasson `chmod 777` egy `chmod 775` vagy parancsot a köteten.  
+    c. Csatlakoztassa a kötetet a Windows rendszer NFS-ügyfelén keresztül.
 
 ## <a name="next-steps"></a>További lépések
 

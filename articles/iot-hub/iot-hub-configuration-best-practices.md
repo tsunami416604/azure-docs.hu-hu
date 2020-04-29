@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub eszközkonfigurációs gyakorlati tanácsai | Microsoft dokumentumok
-description: Ismerje meg az automatikus eszközkezelés használatával kapcsolatos gyakorlati tanácsokat az IoT-eszközök nagy méretekben történő kezelésével kapcsolatos ismétlődő és összetett feladatok minimalizálása érdekében.
+title: Eszköz-konfiguráció – ajánlott eljárások az Azure IoT Hubhoz | Microsoft Docs
+description: Ismerje meg az automatikus eszközkezelés használatának ajánlott eljárásait, amelyekkel csökkenthető a IoT-eszközök nagy léptékű kezelése során felmerülő ismétlődő és összetett feladatok.
 author: robinsh
 ms.author: robinsh
 ms.date: 06/28/2019
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 67f0d9eb1fdac603ee82d568644e8ad8550d1c80
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024778"
 ---
-# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Az IoT-megoldáson belüli eszközkonfigurációval kapcsolatos gyakorlati tanácsok
+# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül
 
-Az Azure IoT Hub automatikus eszközkezelése számos ismétlődő és összetett feladatot automatizál a nagy eszközflották teljes életciklusa során. Ez a cikk az IoT-megoldás fejlesztésével és működtetésével kapcsolatos különböző szerepkörök számos ajánlott eljárását határozza meg.
+Az Azure IoT Hub automatikus eszközkezelés számos ismétlődő és összetett feladatot automatizál a nagyméretű eszközök flottáinak teljes életciklusa során. Ez a cikk a IoT-megoldások fejlesztéséhez és üzemeltetéséhez szükséges különböző szerepkörökkel kapcsolatos ajánlott eljárásokat ismerteti.
 
-* **IoT hardver gyártó/integrátor:** IoT-hardvergyártók, különböző gyártók tól származó hardvereket összeszerelő integrátorok, vagy más beszállítók által gyártott vagy integrált IoT-telepítéshez hardvert biztosító beszállítók. Részt vesz a firmware, a beágyazott operációs rendszerek és a beágyazott szoftverek fejlesztésében és integrálásában.
+* **IoT hardver gyártója/integrátora:** A IoT-hardverek gyártói, a különböző gyártóktól származó hardverek és a más szállítók által gyártott vagy integrált IoT üzembe helyezéséhez hardvert biztosító szolgáltatók. Részt vesz a belső vezérlőprogram, a beágyazott operációs rendszerek és a beágyazott szoftverek fejlesztésében és integrálásában.
 
-* **IoT-megoldás fejlesztője:** Az IoT-megoldás fejlesztését általában egy megoldásfejlesztő végzi. Ez a fejlesztő lehet egy házon belüli csapat vagy egy erre a tevékenységre szakosodott rendszerintegrátor. Az IoT-megoldás fejlesztője az IoT-megoldás különböző összetevőit a semmiből fejlesztheti ki, integrálhat különböző szabványos vagy nyílt forráskódú összetevőket, vagy testre szabhatja az [IoT-megoldásgyorsítót.](/azure/iot-accelerators/)
+* **IoT-megoldás fejlesztője:** A IoT-megoldások fejlesztését általában egy megoldás fejlesztője végzi. Ez a fejlesztő lehet egy házon belüli csapat vagy egy ebben a tevékenységben szakosodott rendszerintegrátor. A IoT-megoldás fejlesztője a IoT-megoldás különböző összetevőit fejlesztheti teljesen, integrálhatja a különböző standard vagy nyílt forráskódú összetevőket, vagy testre szabhatja az [IoT-megoldási gyorssegédeket](/azure/iot-accelerators/).
 
-* **IoT-megoldás operátor:** Az IoT-megoldás üzembe helyezése után hosszú távú műveleteket, figyelést, frissítéseket és karbantartást igényel. Ezeket a feladatokat egy házon belüli csapat végezheti el, amely informatikai szakemberekből, hardverüzemeltetési és karbantartási csapatokból, valamint a teljes IoT-infrastruktúra megfelelő viselkedését figyelő tartományszakértőkből áll.
+* **IoT-megoldás operátora:** A IoT-megoldás üzembe helyezése után hosszú távú műveleteket, figyelést, frissítést és karbantartást igényel. Ezeket a feladatokat egy házon belüli csapat is elvégezheti, amely információs technológiai szakemberekből, hardveres és karbantartási csapatokból, valamint olyan tartományi szakemberekből áll, akik a teljes IoT-infrastruktúra megfelelő viselkedését figyelik.
 
-## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>Az IoT-eszközök nagy méretekben történő konfigurálásához szükséges automatikus eszközkezelés ismertetése
+## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>A IoT-eszközök nagy léptékű konfigurálásához szükséges automatikus eszközkezelés ismertetése
 
-Az automatikus eszközkezelés magában foglalja az [eszköz ikrek](iot-hub-devguide-device-twins.md) és a [modul ikrek](iot-hub-devguide-module-twins.md) számos előnyét a kívánt és a jelentett állapotok szinkronizálásához a felhő és az eszközök között. [Az automatikus eszközkonfigurációk](iot-hub-auto-device-config.md) automatikusan frissítik az ikercsoportok nagy készleteit, és összegezik a haladást és a megfelelőséget. Az alábbi magas szintű lépések az automatikus eszközkezelés kifejlesztése és használata:
+Az automatikus eszközkezelés számos előnnyel jár a [Device Twins](iot-hub-devguide-device-twins.md) és a [Module ikrek](iot-hub-devguide-module-twins.md) számára, hogy szinkronizálja a kívánt és jelentett állapotokat a felhő és az eszközök között. Az [automatikus eszköz-konfigurációk](iot-hub-auto-device-config.md) automatikusan frissítik a nagy mennyiségű ikreket, és összegzik az előrehaladást és a megfelelőséget. A következő magas szintű lépések azt írják le, hogyan fejleszthető és használható az automatikus eszközkezelés:
 
-* Az **IoT hardver gyártó/integrátor** eszközfelügyeleti funkciókat valósít meg egy beágyazott alkalmazáson belül [az ikereszközök](iot-hub-devguide-device-twins.md)használatával. Ezek a funkciók magukban foglalhatják a belső vezérlőprogram frissítéseit, a szoftvertelepítést és -frissítést, valamint a beállítások kezelését.
+* A **IoT hardver gyártója/integrátora** egy beágyazott alkalmazásban az [eszközök ikrek](iot-hub-devguide-device-twins.md)használatával valósítja meg az eszközök felügyeleti funkcióit. Ezek a szolgáltatások magukban foglalhatják a belső vezérlőprogram frissítéseit, a szoftverek telepítését és frissítését, valamint a beállítások kezelését.
 
-* Az **IoT-megoldás fejlesztője** eszköztwins [és](iot-hub-devguide-device-twins.md) automatikus eszközkonfigurációk használatával valósítja meg az eszközkezelési műveletek felügyeleti [rétegét.](iot-hub-auto-device-config.md) A megoldásnak tartalmaznia kell egy kezelői felület meghatározását az eszközkezelési feladatok elvégzéséhez.
+* A **IoT-megoldás fejlesztője** az eszközökön az [ikrek](iot-hub-devguide-device-twins.md) és az [automatikus eszköz-konfigurációk](iot-hub-auto-device-config.md)használatával valósítja meg a felügyeleti réteget. A megoldásnak tartalmaznia kell egy operátori felület definiálását az eszközkezelés feladatainak elvégzéséhez.
 
-* Az **IoT-megoldás operátora** az IoT-megoldás segítségével hajtja végre az eszközfelügyeleti feladatokat, különösen az eszközök csoportosításához, konfigurációs módosítások , például belső vezérlőprogram-frissítések kezdeményezéséhez, a folyamat figyeléséhez és a felmerülő problémák elhárításához.
+* A **IoT-megoldás kezelője** az IoT-megoldás használatával hajtja végre az eszközkezelés feladatait, különösen az eszközök csoportosítását, a konfigurációs változások kezdeményezését, például a belső vezérlőprogram frissítését, a figyelés előrehaladását és a felmerülő problémák elhárítását.
 
-## <a name="iot-hardware-manufacturerintegrator"></a>IoT hardver gyártó/integrátor
+## <a name="iot-hardware-manufacturerintegrator"></a>IoT hardver gyártója/integrátora
 
-A következő gyakorlati tanácsok a beágyazott szoftverfejlesztéssel foglalkozó hardvergyártók és integrátorok számára:
+A következő gyakorlati tanácsok a beágyazott szoftverfejlesztés által használt hardvergyártók és integrátorok számára:
 
-* **Eszköz [ikrek](iot-hub-devguide-device-twins.md)megvalósítása:** Az eszköztwins engedélyezi a kívánt konfiguráció szinkronizálását a felhőből, valamint az aktuális konfiguráció és az eszköz tulajdonságainak jelentéséhez. A beágyazott alkalmazásokon belüli eszköztwins implementzi a legjobb módja az [Azure IoT SDK-kon](https://github.com/Azure/azure-iot-sdks)keresztül. Az ikereszközök a legalkalmasabbak a konfigurációra, mivel:
+* ** [Eszköz-ikrek](iot-hub-devguide-device-twins.md)implementálása:** Az eszközök ikrek lehetővé teszik a kívánt konfiguráció szinkronizálását a felhőből, valamint a jelenlegi konfiguráció és eszköz tulajdonságainak jelentését. Az eszközökhöz tartozó ikrek a beágyazott alkalmazásokon belüli megvalósításának legjobb módja az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k használata. Az eszközök ikrek a legmegfelelőbbek a konfigurációhoz, mert:
 
-    * Támogatja a kétirányú kommunikációt.
-    * Lehetővé teszi a csatlakoztatott és a leválasztott eszközállapotokat is.
+    * Kétirányú kommunikáció támogatása.
+    * A csatlakoztatott és a leválasztott eszközök állapotának engedélyezése.
     * Kövesse a végleges konzisztencia elvét.
-    * Teljes mértékben lekérdezhető a felhőben.
+    * Teljesen queriable a felhőben.
 
-* **Az ikereszköz felépítése az eszközkezeléséhez:** Az ikereszköz nek úgy kell felépíteni, hogy az eszközfelügyeleti tulajdonságok logikailag szakaszokba vannak csoportosítva. Ezzel lehetővé teszi a konfigurációs módosítások elkülönítését anélkül, hogy az ikercsoport más szakaszait befolyásolná. Hozzon létre például egy szakaszt a belső vezérlőprogram kívánt tulajdonságaiközött, egy másik szoftverszakaszt, és egy harmadik szakaszt a hálózati beállításokhoz. 
+* **A Device Twin eszköz strukturálása az eszközök felügyeletéhez:** Az eszköz ikerét strukturálni kell, hogy az eszközkezelés tulajdonságai logikai csoportokba legyenek csoportosítva. Ez lehetővé teszi a konfigurációs változások elkülönítését anélkül, hogy ez hatással lenne a Twin további részeire. Hozzon létre például egy szakaszt a belső vezérlőprogram, a szoftver egy másik szakasza és a hálózati beállítások harmadik szakasza között. 
 
-* **Az eszközkezeléshez hasznos eszközattribútumok jelentése:** Az olyan attribútumok, mint a fizikai eszköz gyártmánya és típusa, a belső vezérlőprogram, az operációs rendszer, a sorozatszám és más azonosítók hasznosak a jelentéskészítéshez és a konfigurációs változások célzási paramétereként.
+* **Az eszközök kezeléséhez hasznos eszköz-attribútumok jelentése:** Az olyan attribútumok, mint például a fizikai eszközök gyártmánya és modellje, a belső vezérlőprogram, az operációs rendszer, a sorozatszám és az egyéb azonosítók hasznosak a jelentéskészítéshez és a konfigurációs változások célzásához.
 
-* **Adja meg a jelentési állapot és a folyamat fő állapotait:** A legfelső szintű állapotokat fel kell sorolni, hogy azok jelenthetők legyenek az operátornak. Egy belső vezérlőprogram-frissítés például aktuális, letöltési, alkalmazási, folyamatban lévő és hiba állapotot jelez. További mezők definiálása az egyes állapotokkal kapcsolatos további információkért.
+* **A jelentések állapotának és előrehaladásának fő állapotának meghatározása:** A legfelső szintű állapotokat fel kell sorolni, hogy jelenteni tudják a kezelőnek. A belső vezérlőprogram frissítése például az aktuális, a letöltés, a alkalmazás, a folyamatban és a hiba állapotot jelenti. További mezők megadása az egyes állapotokkal kapcsolatban.
 
 ## <a name="iot-solution-developer"></a>IoT-megoldás fejlesztője
 
-Az alábbiakban gyakorlati tanácsok az Azure-ban alapuló IoT-megoldások fejlesztői számára:
+Az alábbi ajánlott eljárások az Azure-alapú rendszerek IoT megoldás-fejlesztői számára:
 
-* **Eszköz [ikrek](iot-hub-devguide-device-twins.md)megvalósítása:** Az eszköztwins engedélyezi a kívánt konfiguráció szinkronizálását a felhőből, valamint az aktuális konfiguráció és az eszköz tulajdonságainak jelentéséhez. A felhőalapú megoldásokalkalmazásain belüli eszköztwins implementzi a legjobb módja az [Azure IoT SDK-kon](https://github.com/Azure/azure-iot-sdks)keresztül. Az ikereszközök a legalkalmasabbak a konfigurációra, mivel:
+* ** [Eszköz-ikrek](iot-hub-devguide-device-twins.md)implementálása:** Az eszközök ikrek lehetővé teszik a kívánt konfiguráció szinkronizálását a felhőből, valamint a jelenlegi konfiguráció és eszköz tulajdonságainak jelentését. Az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k segítségével a legjobb módszer az eszközön futó ikrek megvalósítására a Cloud Solutions-alkalmazásokon belül. Az eszközök ikrek a legmegfelelőbbek a konfigurációhoz, mert:
 
-    * Támogatja a kétirányú kommunikációt.
-    * Lehetővé teszi a csatlakoztatott és a leválasztott eszközállapotokat is.
+    * Kétirányú kommunikáció támogatása.
+    * A csatlakoztatott és a leválasztott eszközök állapotának engedélyezése.
     * Kövesse a végleges konzisztencia elvét.
-    * Teljes mértékben lekérdezhető a felhőben.
+    * Teljesen queriable a felhőben.
 
-* **Eszközök rendszerezése az ikereszközök címkéivel:** A megoldásnak lehetővé kell tennie az üzemeltető számára, hogy minőségi gyűrűket vagy más eszközkészleteket határozzon meg különböző telepítési stratégiák, például kanárik alapján. Az eszközszervezet az eszköz ikercímkék és [lekérdezések](iot-hub-devguide-query-language.md)segítségével valósítható meg a megoldáson belül. Eszközszervezet szükséges, hogy a konfiguráció kiépítése biztonságosan és pontosan.
+* **Eszközök rendszerezése az eszköz kettős címkékkel:** A megoldásnak lehetővé kell tennie, hogy az operátor minőségi gyűrűket vagy más eszközöket határozzon meg különböző központi telepítési stratégiák, például a Kanári alapján. Az eszköz szervezete a megoldáson belül valósítható meg az eszközök Twin-címkék és a [lekérdezések](iot-hub-devguide-query-language.md)használatával. Az eszköz szervezete számára szükséges, hogy biztonságosan és pontosan engedélyezze a konfigurációt.
 
-* ** [Automatikus eszközkonfigurációk megvalósítása:](iot-hub-auto-device-config.md)** Az automatikus eszközkonfigurációk üzembe helyezik és figyelik a konfigurációs változásokat az IOt-eszközök nagy készleteire az ikereszközökön keresztül.
+* ** [Automatikus eszköz-konfigurációk](iot-hub-auto-device-config.md)implementálása:** Az eszközök automatikus konfigurálásával a IoT-eszközök nagy készletei számára is telepítheti és figyelheti a konfigurációs módosításokat.
 
-   Automatikus eszközkonfigurációk célkészletek eszköz twins a **célfeltétel,** amely egy lekérdezés tiszaeszköz ikercímkék vagy jelentett tulajdonságok. A **céltartalom** a kívánt tulajdonságok készlete, amely a megcélzott eszköz twins belül lesz beállítva. A céltartalomnak igazodnia kell az IoT hardver gyártója/integrátora által meghatározott ikereszköz-struktúrához. A **metrikák** az ikereszköz jelentett tulajdonságainak lekérdezései, és az IoT-hardver gyártója/integrátor által meghatározott ikereszköz-struktúrához is igazodniuk kell.
+   Az eszközök automatikus beállítása az eszközökön az ikrek számára a **célként megadott feltételek alapján,** amely az eszköz Twin-címkék vagy a jelentett tulajdonságok lekérdezése. A **célként megadott tartalom** a kívánt tulajdonságok halmaza, amely a megcélzott eszközön található ikreken belül lesz meghatározva. A célként megadott tartalomnak a IoT hardver gyártója/integrátora által meghatározott eszköz kettős szerkezettel kell igazodnia. A **metrikák** az eszköz Twin jelentett tulajdonságaiban található lekérdezések, és a IoT hardver gyártója/integrátora által definiált eszköz kettős struktúrával is összhangban kell lenniük.
 
-   Az automatikus eszközkonfigurációk először röviddel a konfiguráció létrehozása után, majd ötperces időközönként futnak. Ők is kihasználják az IoT Hub két eszköz műveletek olyan sebességgel, amely soha nem lépi túl a [szabályozás korlátot](iot-hub-devguide-quotas-throttling.md) az eszköz iker olvasások és frissítések.
+   Az automatikus eszköz-konfigurációk a konfiguráció létrehozása után első alkalommal futnak, majd öt percenként. Emellett a IoT Hub az eszköz két műveletét is kihasználják olyan sebességgel, amely soha nem lépi túl az eszköz kettős olvasási és frissítési [korlátait](iot-hub-devguide-quotas-throttling.md) .
 
-* **Az [eszközkiépítési szolgáltatás](../iot-dps/how-to-manage-enrollments.md)használata:** A megoldásfejlesztőknek az eszközkiépítési szolgáltatás segítségével kell hozzárendelniük az eszköz ikercímkéit az új eszközökhöz, hogy azok automatikusan konfigurálhatók legyenek az adott címkével rendelkező **ikerpárokat célzó automatikus eszközkonfigurációk** által. 
+* **A [Device kiépítési szolgáltatás](../iot-dps/how-to-manage-enrollments.md)használata:** a megoldás-fejlesztőknek az eszköz kiépítési szolgáltatását kell használniuk az eszközhöz tartozó Twin-címkék új eszközökhöz való hozzárendeléséhez, így azok automatikusan az adott címkével ellátott, az ikreket megcélzó **automatikus eszköz-konfigurációkhoz** lesznek konfigurálva. 
 
-## <a name="iot-solution-operator"></a>IoT-megoldás operátor
+## <a name="iot-solution-operator"></a>IoT-megoldás operátora
 
-Az alábbiakban ajánlott eljárásokat kínál az Azure-ra épülő IoT-megoldásokat használó IoT-megoldás-operátorok számára:
+Az alábbi ajánlott eljárások az Azure-ra épülő IoT-megoldást használó IoT megoldás-kezelők számára:
 
-* **Eszközök rendszerezése a felügyelethez:** Az IoT-megoldásnak meg kell határoznia vagy lehetővé kell tennie minőségi gyűrűk vagy más eszközkészletek létrehozását különböző telepítési stratégiák, például kanári kondukkul. Az eszközkészletek a konfigurációs módosítások bevezetésére és más, nagy léptékű eszközkezelési műveletek végrehajtására szolgálnak.
+* **Eszközök rendszerezése felügyeletre:** A IoT-megoldásnak meg kell határoznia vagy engedélyeznie kell a minőségi gyűrűk vagy más eszközök készletét különféle központi telepítési stratégiák (például a Kanári) alapján. A rendszer az eszközök készleteit fogja használni a konfigurációs változások kiszűréséhez, valamint az egyéb, az eszközökön elérhető felügyeleti műveletek végrehajtásához.
 
-* **Konfigurációs módosítások végrehajtása szakaszos bevezetéssel:**  A fokozatos bevezetés egy olyan átfogó folyamat, amelynek során az operátor az IoT-eszközök szélesítési készletének módosításait telepíti. A cél az, hogy fokozatosan változtatásokat, hogy csökkentsék a kockázatát, hogy széles körű törés változásokat.Az operátornak a megoldás felületét kell használnia egy [automatikus eszközkonfiguráció](iot-hub-auto-device-config.md) létrehozásához, és a célzási feltételnek meg kell céloznia az eszközök kezdeti készletét (például egy kanáricsoportot). Az operátornak ezután ellenőriznie kell a konfigurációs változást az eszközök kezdeti készletében.
+* **Konfigurációs módosítások elvégzése szakaszos kiépítéssel:**  A fokozatos üzembe helyezés egy átfogó folyamat, amelynek során az operátor módosításokat telepít a IoT-eszközök szélesebb körébe. A cél az, hogy fokozatosan végezze el a módosításokat, hogy csökkentse a nagy léptékű törések változásának kockázatát.Az operátornak a megoldás felületét kell használnia az [automatikus eszköz konfigurációjának](iot-hub-auto-device-config.md) létrehozásához, és a célcsoport-kezelési feltételnek az eszközök kezdeti készletét (például egy Kanári-csoportot) kell megcéloznia. Az operátornak ezután ellenőriznie kell a konfigurációs változást az eszközök kezdeti készletében.
 
-   Az ellenőrzés befejezése után az üzemeltető frissíti az automatikus eszközkonfigurációt, hogy nagyobb eszközkészletet tartalmazzon. Az operátornak azt is be kell állítania, hogy a konfiguráció prioritása magasabb legyen, mint az ezen eszközökre jelenleg megcélzott többi konfiguráció. A bevezetés az automatikus eszközkonfiguráció által jelentett metrikák használatával figyelhető.
+   Az ellenőrzés befejeződése után az operátor frissíti az automatikus eszköz konfigurációját, hogy az tartalmazza az eszközök nagyobb készletét. Az operátornak azt is meg kell adnia, hogy a konfiguráció prioritása nagyobb legyen, mint a jelenleg az adott eszközökre irányuló többi konfiguráció. A kivezetést az automatikus eszköz-konfiguráció által jelentett mérőszámok használatával lehet figyelni.
 
-* **Visszaállítások végrehajtása hibák vagy helytelen konfigurációk esetén:**  A hibákat vagy helytelen konfigurációkat okozó automatikus eszközkonfiguráció visszaállítható a **célzási feltétel** módosításával, hogy az eszközök már nem felelnek meg a célzási feltételnek. Győződjön meg arról, hogy egy másik, alacsonyabb prioritású automatikus eszközkonfiguráció továbbra is az ilyen eszközökre irányul. Ellenőrizze, hogy a visszaállítás sikerült-e a metrikák megtekintésével: A visszagörgetett konfiguráció nak már nem kell megjelenítenie a nem célzott eszközök állapotát, és a második konfiguráció metrikáknak most antól tartalmazniuk kell a továbbra is megcélzott eszközök számát.
+* **Visszaállítások végrehajtása hibák vagy helytelen konfiguráció esetén:**  A hibákat vagy helytelen konfigurációkat okozó automatikus eszköz-konfiguráció visszaállítható úgy, hogy megváltoztatja a **célzási feltételt** , így az eszközök már nem felelnek meg a célcsoport-kezelési feltételnek. Győződjön meg arról, hogy az alacsonyabb prioritású eszközök egy másik automatikus konfigurációja továbbra is megcélozza ezeket az eszközöket. Ellenőrizze, hogy a visszaállítás sikeres volt-e a metrikák megtekintésével: a visszaállított konfigurációnak többé nem kell megjelenítenie a nem megcélzott eszközök állapotát, és a második konfiguráció metrikáinak tartalmazniuk kell a továbbra is megcélzott eszközök számát.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg az eszközök ikreinek megvalósítását [az IOt Hubban az eszközök ikreinek megértése és használata során.](iot-hub-devguide-device-twins.md)
+* Ismerje meg, hogyan implementálhatja az eszközök ikreket, [és hogyan használhatja a IoT hub eszközeit](iot-hub-devguide-device-twins.md).
 
-* Az [IoT-eszközök nagy méretekben történő konfigurálása és figyelése](iot-hub-auto-device-config.md)című fázisban bemutatja az automatikus eszközkonfiguráció létrehozásának, frissítésének és törlésének lépéseit.
+* Útmutató az automatikus IoT létrehozásához, frissítéséhez vagy törléséhez a nagy [léptékű eszközök konfigurálása és figyelése](iot-hub-auto-device-config.md).
 
-* Belső vezérlőprogram-frissítési minta megvalósítása az eszköztwins és az automatikus eszközkonfigurációk használatával [az oktatóanyagban: Eszköz belső vezérlőprogramjának frissítési folyamatának megvalósítása](tutorial-firmware-update.md).
+* A belső vezérlőprogram frissítési mintájának implementálása az eszköz-ikrek és az automatikus eszköz-konfigurációk használatával az [oktatóanyagban: eszköz belső vezérlőprogram-frissítési folyamatának implementálása](tutorial-firmware-update.md).

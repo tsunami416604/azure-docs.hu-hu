@@ -1,6 +1,6 @@
 ---
 title: Azure-beli virtuális gép létrehozása és kezelése Java használatával
-description: A Java és az Azure Resource Manager segítségével üzembe helyezhet egy virtuális gépet és annak összes támogató erőforrását.
+description: A Java és a Azure Resource Manager használatával helyezzen üzembe egy virtuális gépet és annak összes támogató erőforrását.
 services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870029"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows-virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
+# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
 
-Egy [Azure virtuális gép](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) szüksége van több támogató Azure-erőforrások. Ez a cikk a virtuális gép erőforrások Java használatával történő létrehozását, kezelését és törlését ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
+Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) több támogató Azure-erőforrásra van szüksége. Ez a cikk a VM-erőforrások létrehozását, kezelését és törlését ismerteti a Java használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Maven-projekt létrehozása
@@ -28,12 +28,12 @@ Egy [Azure virtuális gép](overview.md?toc=%2fazure%2fvirtual-machines%2fwindow
 > * Erőforrások törlése
 > * Az alkalmazás futtatása
 
-Ezeket a lépéseket körülbelül 20 perc alatt kell megtennie.
+Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
-1. Ha még nem tette meg, telepítse a [Java](https://aka.ms/azure-jdks)alkalmazást.
-2. Telepítse [a Maven](https://maven.apache.org/download.cgi).
+1. Ha még nem tette meg, telepítse a [Java](https://aka.ms/azure-jdks)-t.
+2. Telepítse a [mavent](https://maven.apache.org/download.cgi).
 3. Hozzon létre egy új mappát és a projektet:
     
     ```
@@ -45,7 +45,7 @@ Ezeket a lépéseket körülbelül 20 perc alatt kell megtennie.
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-1. A `testAzureApp` mappa alatt `pom.xml` nyissa meg a fájlt,&gt; és adja hozzá a buildkonfigurációt a projekthez &lt;az alkalmazás létrehozásához:
+1. A `testAzureApp` mappában Nyissa meg a `pom.xml` fájlt, és adja hozzá a Build &lt;konfigurációt a projekthez&gt; , hogy lehetővé váljon az alkalmazás létrehozása:
 
     ```xml
     <build>
@@ -61,7 +61,7 @@ Ezeket a lépéseket körülbelül 20 perc alatt kell megtennie.
     </build>
     ```
 
-2. Adja hozzá az Azure Java SDK eléréséhez szükséges függőségeket.
+2. Adja meg a függőségeket, amelyek szükségesek az Azure Java SDK eléréséhez.
 
     ```xml
     <dependency>
@@ -110,11 +110,11 @@ Ezeket a lépéseket körülbelül 20 perc alatt kell megtennie.
 
 ## <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-A lépés megkezdése előtt győződjön meg arról, hogy rendelkezik-e hozzáféréssel egy [Active Directory egyszerű szolgáltatáshoz.](../../active-directory/develop/howto-create-service-principal-portal.md) Az alkalmazásazonosítót, a hitelesítési kulcsot és a bérlői azonosítót is rögzítenie kell egy későbbi lépésben.
+A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy [Active Directory egyszerű szolgáltatáshoz](../../active-directory/develop/howto-create-service-principal-portal.md). Az alkalmazás AZONOSÍTÓját, a hitelesítési kulcsot és a bérlő AZONOSÍTÓját is rögzíteni kell egy későbbi lépésben.
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési fájl létrehozása
 
-1. Hozzon létre `azureauth.properties` egy nevű fájlt, és adja hozzá a következő tulajdonságokat:
+1. Hozzon létre egy `azureauth.properties` nevű fájlt, és adja hozzá ezeket a tulajdonságokat:
 
     ```
     subscription=<subscription-id>
@@ -127,20 +127,20 @@ A lépés megkezdése előtt győződjön meg arról, hogy rendelkezik-e hozzáf
     graphURL=https://graph.microsoft.com/
     ```
 
-    Cserélje le ** &lt;az&gt; előfizetés-id-t** az előfizetés-azonosítóra, ** &lt;az alkalmazásazonosítót&gt; ** az Active Directory alkalmazásazonosítóra, ** &lt;&gt; ** a hitelesítési kulcsot az alkalmazáskulcsra és ** &lt;a bérlőazonosítót&gt; ** a bérlői azonosítóra.
+    Cserélje le ** &lt;az előfizetés&gt; -azonosítót** az előfizetési azonosítóra, ** &lt;az Application-ID&gt; -** t a Active Directory alkalmazás-azonosítóra, ** &lt;a hitelesítési kulcsot&gt; ** az alkalmazás kulcsára, és ** &lt;&gt; a bérlő azonosítóját** a bérlő azonosítójával.
 
 2. Mentse a fájlt.
-3. Állítson be egy AZURE_AUTH_LOCATION nevű környezeti változót a rendszerhéjban a hitelesítési fájl teljes elérési úttal.
+3. Állítson be egy AZURE_AUTH_LOCATION nevű környezeti változót a rendszerhéjban a hitelesítési fájl teljes elérési útjával.
 
 ### <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
-1. Nyissa `App.java` meg `src\main\java\com\fabrikam` a fájl alatt, és győződjön meg arról, hogy ez a csomag utasítás a tetején:
+1. Nyissa `App.java` meg a `src\main\java\com\fabrikam` fájlt a (z) területen, és győződjön meg róla, hogy a Package utasítás felül van:
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. A csomagutasítás alatt adja hozzá a következő importálási nyilatkozatokat:
+2. A Package utasítás alatt adja hozzá a következő importálási utasításokat:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -162,7 +162,7 @@ A lépés megkezdése előtt győződjön meg arról, hogy rendelkezik-e hozzáf
     import java.util.Scanner;
     ```
 
-2. A kérelmekhez szükséges Active Directory-hitelesítő adatok létrehozásához adja hozzá ezt a kódot az alkalmazásosztály fő metódusához:
+2. A kérések elvégzéséhez szükséges Active Directory hitelesítő adatok létrehozásához adja hozzá ezt a kódot az App osztály fő metódusához:
    
     ```java
     try {
@@ -182,9 +182,9 @@ A lépés megkezdése előtt győződjön meg arról, hogy rendelkezik-e hozzáf
 
 ### <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-Minden erőforrásnak [erőforráscsoportban](../../azure-resource-manager/management/overview.md)kell lennie.
+Az összes erőforrást egy [erőforráscsoporthoz](../../azure-resource-manager/management/overview.md)kell foglalni.
 
-Az alkalmazás értékeinek megadásához és az erőforráscsoport létrehozásához adja hozzá ezt a kódot a fő metódus kipróbálási blokkjához:
+Az alkalmazás értékének megadásához és az erőforráscsoport létrehozásához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Creating resource group...");
@@ -194,11 +194,11 @@ ResourceGroup resourceGroup = azure.resourceGroups()
     .create();
 ```
 
-### <a name="create-the-availability-set"></a>Az elérhetőségi készlet létrehozása
+### <a name="create-the-availability-set"></a>A rendelkezésre állási csoport létrehozása
 
-[A rendelkezésre állási készletek](tutorial-availability-sets.md) megkönnyítik az alkalmazás által használt virtuális gépek karbantartását.
+A [rendelkezésre állási](tutorial-availability-sets.md) csoportok megkönnyítik az alkalmazás által használt virtuális gépek karbantartását.
 
-Az elérhetőségi készlet létrehozásához adja hozzá ezt a kódot a fő metódus kipróbálási blokkjához:
+A rendelkezésre állási csoport létrehozásához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Creating availability set...");
@@ -209,11 +209,11 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
     .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
 ```
-### <a name="create-the-public-ip-address"></a>Nyilvános IP-cím létrehozása
+### <a name="create-the-public-ip-address"></a>A nyilvános IP-cím létrehozása
 
 A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) szükséges.
 
-A virtuális gép nyilvános IP-címének létrehozásához adja hozzá ezt a kódot a fő metódus próbablokkjához:
+A virtuális gép nyilvános IP-címének létrehozásához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Creating public IP address...");
@@ -227,9 +227,9 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-A virtuális gépnek a virtuális [hálózat](../../virtual-network/virtual-networks-overview.md)alhálózatában kell lennie.
+A virtuális gépnek egy [virtuális hálózat](../../virtual-network/virtual-networks-overview.md)alhálózatán kell lennie.
 
-Alhálózat és virtuális hálózat létrehozásához adja hozzá ezt a kódot a fő metódus próbablokkjához:
+Alhálózat és virtuális hálózat létrehozásához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Creating virtual network...");
@@ -246,7 +246,7 @@ Network network = azure.networks()
 
 A virtuális gépnek hálózati adapterre van szüksége a virtuális hálózaton való kommunikációhoz.
 
-Hálózati adapter létrehozásához adja hozzá ezt a kódot a fő metódus próbablokkjához:
+Hálózati adapter létrehozásához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Creating network interface...");
@@ -263,9 +263,9 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-Most, hogy létrehozta az összes támogató erőforrást, létrehozhat egy virtuális gépet.
+Most, hogy létrehozta az összes támogatási erőforrást, létrehozhat egy virtuális gépet.
 
-A virtuális gép létrehozásához adja hozzá ezt a kódot a fő metódus kipróbálási blokkjához:
+A virtuális gép létrehozásához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -287,11 +287,11 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> Ez az oktatóanyag a Windows Server operációs rendszer egy verzióját futtató virtuális gépet hoz létre. Ha többet szeretne tudni a többi lemezkép kiválasztásáról, olvassa el a [Navigálás és az Azure virtuálisgép-lemezképek kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával című témakört.
+> Ez az oktatóanyag egy olyan virtuális gépet hoz létre, amely a Windows Server operációs rendszer egy verzióját futtatja. További információ a többi rendszerkép kiválasztásáról: [Azure-beli virtuálisgép-rendszerképek navigálása és kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával.
 > 
 >
 
-Ha piactéri lemez lemezt szeretne használni piactéri lemezkép helyett, használja ezt a kódot: 
+Ha a Piactéri rendszerkép helyett meglévő lemezt szeretne használni, használja a következő kódot: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk")
@@ -314,17 +314,17 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Felügyeleti feladatok végrehajtása
 
-A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Ezenkívül az ismétlődő vagy összetett feladatok automatizálására kód is létrehozható.
+A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett érdemes lehet kódot létrehozni az ismétlődő vagy összetett feladatok automatizálásához.
 
-Ha valamit tennie kell a virtuális gép, be kell szereznie egy példányt. Adja hozzá ezt a kódot a fő metódus próbablokkjához:
+Ha bármit kell tennie a virtuális géppel, le kell kérnie a példányát. Adja hozzá ezt a kódot a Main metódus Try blokkjában:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-the-vm"></a>Információ a virtuális gépről
+### <a name="get-information-about-the-vm"></a>A virtuális géppel kapcsolatos információk lekérése
 
-A virtuális géppel kapcsolatos információk leéséhez adja hozzá ezt a kódot a fő metódus kipróbálási blokkjához:
+Ha információt szeretne kapni a virtuális gépről, adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("hardwareProfile");
@@ -382,9 +382,9 @@ input.nextLine();
 
 ### <a name="stop-the-vm"></a>A virtuális gép leállítása
 
-Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását, de továbbra is fel kell számítania, vagy leállíthatja a virtuális gépet, és felszabadíthatja azt. Amikor egy virtuális gép felvan szabadítva, a hozzá társított összes erőforrás is felszabadítva lesz, és a számlázás véget ér.
+Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását, de továbbra is fizetnie kell, vagy leállíthatja a virtuális gépet, és felszabadíthatja azt. Ha a virtuális gép fel van foglalva, a hozzá társított összes erőforrás fel van foglalva, és a számlázás véget ér.
 
-Ha meg szeretné állítani a virtuális gépet anélkül, hogy osztanád, add hozzá ezt a kódot a fő metódus próbablokkjához:
+Ha le szeretné állítani a virtuális gépet a felszabadítása nélkül, adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Stopping vm...");
@@ -393,7 +393,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-Ha fel szeretné osztani a virtuális gépet, módosítsa a PowerOff-hívást erre a kódra:
+Ha felszabadítani szeretné a virtuális gépet, módosítsa a kikapcsoló hívást a következő kódra:
 
 ```java
 vm.deallocate();
@@ -401,7 +401,7 @@ vm.deallocate();
 
 ### <a name="start-the-vm"></a>A virtuális gép elindítása
 
-A virtuális gép elindításához adja hozzá ezt a kódot a fő metódus kipróbálási blokkjához:
+A virtuális gép elindításához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Starting vm...");
@@ -412,9 +412,9 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>A virtuális gép átméretezése
 
-A virtuális gép méretének meghatározásakor a központi telepítés számos aspektusát figyelembe kell venni. További információ: [VM méretek](sizes.md).  
+A központi telepítés számos aspektusát figyelembe kell venni a virtuális gép méretének meghatározásakor. További információ: virtuális gépek [méretei](sizes.md).  
 
-A virtuális gép méretének módosításához adja hozzá ezt a kódot a fő metódus kipróbálási blokkjához:
+A virtuális gép méretének módosításához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Resizing vm...");
@@ -427,7 +427,7 @@ input.nextLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Adatlemez hozzáadása a virtuális géphez
 
-Ha 2 GB méretű adatlemezt szeretne hozzáadni a virtuális géphez, 0 logikai egysége és egy írási segédforrása van, adja hozzá ezt a kódot a fő metódus próbablokkjához:
+Ha olyan adatlemezt szeretne hozzáadni a virtuális géphez, amely 2 GB méretű, 0 LUN és ReadWrite gyorsítótárazási típust tartalmaz, adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
 ```java
 System.out.println("Adding data disk...");
@@ -440,30 +440,30 @@ input.nextLine();
 
 ## <a name="delete-resources"></a>Erőforrások törlése
 
-Mivel az Azure-ban használt erőforrásokért díjat számítunk fel, mindig ajánlott törölni azokat az erőforrásokat, amelyekre már nincs szükség. Ha törölni szeretné a virtuális gépeket és az összes támogató erőforrást, mindössze annyit kell tennie, hogy törli az erőforráscsoportot.
+Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes törölni a már nem szükséges erőforrásokat. Ha törölni szeretné a virtuális gépeket és az összes támogató erőforrást, mindössze annyit kell tennie, hogy törli az erőforráscsoportot.
 
-1. Az erőforráscsoport törléséhez adja hozzá ezt a kódot a fő metódus kipróbálási blokkjához:
+1. Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
    
     ```java
     System.out.println("Deleting resources...");
     azure.resourceGroups().deleteByName("myResourceGroup");
     ```
 
-2. Mentse az App.java fájlt.
+2. Mentse az app. Java fájlt.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Körülbelül öt percet vesz igénybe, amíg ez a konzolalkalmazás teljesen elindul az elejétől a végéig.
+Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig.
 
-1. Az alkalmazás futtatásához használja ezt a Maven parancsot:
+1. Az alkalmazás futtatásához használja a következő Maven-parancsot:
 
     ```
     mvn compile exec:java
     ```
 
-2. Mielőtt az **Enter** billentyű lenyomásával megszeretné kezdeni az erőforrások törlését, eltarthat néhány percet az erőforrások létrehozásának ellenőrzése az Azure Portalon. Kattintson a központi telepítés állapotára a központi telepítéssel kapcsolatos információk megtekintéséhez.
+2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
 
 
 ## <a name="next-steps"></a>További lépések
-* További információ a [Java-hoz való Azure-kódtárak](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)használatáról.
+* További információ a [Javához készült Azure-kódtárak](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)használatáról.
 

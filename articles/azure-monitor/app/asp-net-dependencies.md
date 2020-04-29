@@ -1,66 +1,66 @@
 ---
-title: Függőségek nyomon követése az Azure Application Insightsban | Microsoft dokumentumok
-description: Az Application Insights segítségével figyelheti a helyszíni vagy a Microsoft Azure webalkalmazásból érkező függőségi hívásokat.
+title: Függőségek nyomon követése az Azure Application Insightsban | Microsoft Docs
+description: A helyszíni vagy Microsoft Azure webalkalmazástól származó függőségi hívások figyelése Application Insightsokkal.
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731495"
 ---
-# <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insightsban 
+# <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
-A *függőség* egy külső összetevő, amelyet az alkalmazás hív meg. Ez általában egy HTTP,, adatbázis vagy fájlrendszer használatával hívott szolgáltatás. [Az Application Insights](../../azure-monitor/app/app-insights-overview.md) méri a függőségi hívások időtartamát, függetlenül attól, hogy sikertelen-e vagy sem, valamint további információkat, például a függőség nevét és így tovább. Megvizsgálhat bizonyos függőségi hívásokat, és összefüggésbe hozhatja őket a kérésekkel és kivételekkel.
+A *függőség* egy külső összetevő, amelyet az alkalmazás meghív. Általában a HTTP vagy egy adatbázis vagy egy fájlrendszer használatával hívott szolgáltatás. [Application Insights](../../azure-monitor/app/app-insights-overview.md) méri a függőségi hívások időtartamát, függetlenül attól, hogy a meghibásodása vagy sem, valamint további információk, például a függőség neve és így tovább. Megvizsgálhat bizonyos függőségi hívásokat, és összekapcsolhatja őket a kérelmekkel és a kivételekkel.
 
-## <a name="automatically-tracked-dependencies"></a>Automatikusan nyomon követett függőségek
+## <a name="automatically-tracked-dependencies"></a>Automatikusan követett függőségek
 
-Application Insights SDK-k .NET és `DependencyTrackingTelemetryModule` .NET Core hajók, amely egy telemetriai modul, amely automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) alkalmazások, ha a csatolt hivatalos dokumentumok szerint konfigurálva. `DependencyTrackingTelemetryModule` [nuget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) csomagként szállítják, és automatikusan megjelenik, ha a `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore`NuGet csomagok vagy a .
+Application Insights SDK-kat .NET-és .NET Core `DependencyTrackingTelemetryModule` -hajókhoz, amelyekkel a telemetria modul automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van a [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és a [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) alkalmazásokhoz, ha a társított hivatalos dokumentumokhoz van konfigurálva. `DependencyTrackingTelemetryModule` [ezt](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) a NuGet-csomagként szállítja, és automatikusan a NuGet-csomagok `Microsoft.ApplicationInsights.Web` vagy `Microsoft.ApplicationInsights.AspNetCore`a használatával történik.
 
- `DependencyTrackingTelemetryModule`jelenleg automatikusan követi a következő függőségeket:
+ `DependencyTrackingTelemetryModule`a jelenleg automatikusan nyomon követi a következő függőségeket:
 
 |Függőségek |Részletek|
 |---------------|-------|
-|http/https | Helyi vagy távoli http/https hívások |
-|WCF-hívások| Csak http-alapú kötések használata esetén követi automatikusan a nyomon követést.|
-|SQL | A segítségével `SqlClient`kezdeményezett hívások Tekintse meg [ezt](#advanced-sql-tracking-to-get-full-sql-query) az SQL-lekérdezés rögzítéséhez.  |
-|[Azure-tárhely (Blob, Tábla, Várólista)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-ügyféllel kezdeményezett hívások. |
-|[Eventhub ügyfél SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0-s vagy újabb verzió. |
-|[ServiceBus ügyfél SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0-s vagy újabb verzió. |
-|Azure Cosmos DB | Csak http/HTTPS protokoll használatával automatikusan követi nyomon. A TCP-módot az Application Insights nem rögzíti. |
+|HTTP/HTTPS | Helyi vagy távoli HTTP/HTTPS-hívások |
+|WCF-hívások| Csak automatikusan nyomon követhető, ha HTTP-alapú kötések vannak használatban.|
+|SQL | A-vel `SqlClient`végzett hívások. [Tekintse meg az SQL](#advanced-sql-tracking-to-get-full-sql-query) -lekérdezés rögzítését ismertető témakört.  |
+|[Azure Storage (blob, tábla, üzenetsor)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-ügyféllel kezdeményezett hívások. |
+|[EventHub ügyfél-SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | A 1.1.0 vagy újabb verzió. |
+|[ServiceBus ügyfél-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0 vagy újabb verzió. |
+|Azure Cosmos DB | Csak a HTTP/HTTPS használata esetén automatikusan nyomon követhető. A Application Insights nem rögzíti a TCP-módot. |
 
-Ha hiányzik egy függőség, vagy egy másik SDK-t használ, győződjön meg arról, hogy az [automatikusan gyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)listájában szerepel. Ha a függőség nem automatikusan gyűjtött, akkor is nyomon követheti manuálisan a [pálya függőségi hívás.](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)
+Ha hiányzik egy függőség, vagy egy másik SDK-t használ, győződjön meg róla, hogy az [automatikusan összegyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)listáján szerepel. Ha a függőség nincs automatikusan begyűjtve, nyomon követheti manuálisan a [függőségi hívással](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
-## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatikus függőségkövetés beállítása a konzolalkalmazásokban
+## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatikus függőség-követés beállítása a konzolos alkalmazásokban
 
-A .NET konzolalkalmazások függőségeiautomatikus nyomon követéséhez telepítse a Nuget csomagot `Microsoft.ApplicationInsights.DependencyCollector`, és inicializálja `DependencyTrackingTelemetryModule` az alábbiak szerint:
+A .NET-konzol alkalmazásaitól származó függőségek automatikus nyomon követéséhez `Microsoft.ApplicationInsights.DependencyCollector`telepítse a Nuget csomagot `DependencyTrackingTelemetryModule` , és inicializálja a következőt:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-A .NET Core konzolalkalmazások telemetryConfiguration.Active elavult. Tekintse meg a [munkavállalói szolgáltatás dokumentációjában](https://docs.microsoft.com/azure/azure-monitor/app/worker-service) és a [ASP.NET Core monitoring dokumentációban](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) található útmutatást
+A .NET Core Console-alkalmazások TelemetryConfiguration. Active elavult. A [Worker Service dokumentációjában](https://docs.microsoft.com/azure/azure-monitor/app/worker-service) és a [ASP.net Core monitoring dokumentációjában](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) talál útmutatást
 
-### <a name="how-automatic-dependency-monitoring-works"></a>Hogyan működik az automatikus függőségfigyelés?
+### <a name="how-automatic-dependency-monitoring-works"></a>Hogyan működik az automatikus függőség-figyelés?
 
-A függőségek automatikusan gyűjtésre kerülnek az alábbi technikák egyikével:
+A függőségeket a rendszer a következő módszerek egyikének használatával automatikusan gyűjti:
 
-* Byte-kód instrumentation használata a kiválasztott módszerek körül. (InstrumentationEngine vagy statusmonitorról vagy Az Azure Web App Extension-ből)
+* Byte Code Instrumentation használata a Select metódusok köré. (InstrumentationEngine a StatusMonitor vagy az Azure Web App Extension-ből)
 * EventSource visszahívások
-* DiagnosticSource visszahívások (a legújabb .NET/.NET core SDK-kban)
+* DiagnosticSource-visszahívások (a legújabb .NET/.NET Core SDK-k)
 
-## <a name="manually-tracking-dependencies"></a>Függőségek manuális nyomon követése
+## <a name="manually-tracking-dependencies"></a>Függőségek manuális követése
 
-Az alábbiakban néhány példa a függőségek, amelyek nem automatikusan gyűjtik, és így manuális nyomon követést igényel.
+Az alábbiakban néhány példát láthat a függőségekről, amelyeket a rendszer nem gyűjt automatikusan, és így manuális követést igényel.
 
-* Az Azure Cosmos DB automatikusan csak akkor követi nyomon, ha [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) van használva. A TCP-módot az Application Insights nem rögzíti.
+* A Azure Cosmos DB automatikusan nyomon követhető, ha a rendszer [HTTP/HTTPS protokollt](../../cosmos-db/performance-tips.md#networking) használ. A Application Insights nem rögzíti a TCP-módot.
 * Redis
 
-Az SDK által automatikusan nem gyűjtött függőségek esetében manuálisan nyomon követheti őket a szabványos automatikus gyűjtési modulok által használt [TrackDependency API használatával.](api-custom-events-metrics.md#trackdependency)
+Az SDK által automatikusan összegyűjtött függőségek esetében manuálisan nyomon követheti azokat a [TRACKDEPENDENCY API](api-custom-events-metrics.md#trackdependency) -val, amelyet a standard automatikus gyűjtemény moduljai használnak.
 
-Ha például olyan kódösszeállítással hozza létre a kódot, amelyet nem ön írt, az összes hívás átfutásával megtudhatja, hogy milyen mértékben járul hozzá a válaszidőkhöz. Ha azt szeretné, hogy ezek az adatok megjelenjenek `TrackDependency`az Application Insights függőségi diagramjaiban, küldje el őket a használatával.
+Ha például a kódot egy olyan szerelvény alapján hozza létre, amelyet nem írt magával, akkor az összes hívást megtudhatja, hogy megtudja, milyen mértékben járul hozzá a válaszadási időpontokhoz. Ha meg szeretné jeleníteni ezeket az adataikat a Application Insights függőségi diagramokban, küldje `TrackDependency`el a következővel:.
 
 ```csharp
 
@@ -78,74 +78,74 @@ Ha például olyan kódösszeállítással hozza létre a kódot, amelyet nem ö
     }
 ```
 
-Másik lehetőségként `TelemetryClient` bővítménymódszereket `StartOperation` is biztosít, amelyek `StopOperation` a függőségek manuális nyomon követésére használhatók, amint az [itt](custom-operations-tracking.md#outgoing-dependencies-tracking) látható
+Azt is `TelemetryClient` megteheti `StartOperation` , `StopOperation` hogy bővítményi metódusokat biztosít, amelyek használatával manuálisan követheti a függőségeket, ahogy az [itt](custom-operations-tracking.md#outgoing-dependencies-tracking) látható.
 
-Ha ki szeretné kapcsolni a szabványos függőség-követési modult, távolítsa el a függőségitkövetőtelemetelemet az [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) ASP.NET alkalmazáshoz. Az ASP.NET alapalkalmazásokhoz kövesse [az itt](asp-net-core.md#configuring-or-removing-default-telemetrymodules)található utasításokat.
+Ha ki szeretné kapcsolni a normál függőség-követési modult, távolítsa el a ASP.NET-alkalmazások [ApplicationInsights. config fájljában](../../azure-monitor/app/configuration-with-applicationinsights-config.md) található DependencyTrackingTelemetryModule mutató hivatkozást. ASP.NET Core alkalmazásokhoz kövesse az alábbi [utasításokat.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
-## <a name="tracking-ajax-calls-from-web-pages"></a>Ajax hívások nyomon követése weboldalakról
+## <a name="tracking-ajax-calls-from-web-pages"></a>AJAX-hívások követése weblapokról
 
-Weboldalak esetén az Application Insights JavaScript SDK automatikusan összegyűjti az AJAX-hívásokat függőségként.
+Weblapok esetében Application Insights JavaScript SDK automatikusan függőségként gyűjti az AJAX-hívásokat.
 
-## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Speciális SQL-követés a teljes SQL-lekérdezés lehívásához
+## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Részletes SQL-követés a teljes SQL-lekérdezés beszerzéséhez
 
-SQL-hívások esetén a kiszolgáló és az adatbázis nevét mindig a `DependencyTelemetry`rendszer az összegyűjtött névként gyűjti és tárolja. Van egy "data" nevű további mező, amely a teljes SQL-lekérdezés szövegét is tartalmazhatja.
+SQL-hívások esetén a rendszer a kiszolgáló és az adatbázis nevét gyűjti össze és tárolja az összegyűjtött `DependencyTelemetry`név szerint. Van egy "adat" nevű további mező, amely a teljes SQL-lekérdezési szöveget tartalmazhatja.
 
-A ASP.NET Core alkalmazások, nincs további lépés szükséges a teljes SQL-lekérdezés beszerezni.
+ASP.NET Core alkalmazások esetében nincs szükség további lépésekre a teljes SQL-lekérdezés beszerzéséhez.
 
-A ASP.NET alkalmazások esetében a teljes SQL-lekérdezés bájtkód-műszerezés segítségével történik, amely műszerezési motort igényel. További platformspecifikus lépésekre van szükség az alábbiakban leírtak szerint.
+A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezést a rendszer a byte Code Instrumentation segítségével gyűjti össze, amelyhez rendszerállapot-kezelő motor szükséges. Az alább leírtak szerint további platform-specifikus lépések szükségesek.
 
-| Platform | A teljes SQL-lekérdezés bekerüléséhez szükséges lépés(ek) |
+| Platform | A teljes SQL-lekérdezés beolvasásához szükséges lépés (ek) |
 | --- | --- |
-| Azure-webalkalmazás |A webalkalmazás vezérlőpultján [nyissa meg az Application Insights panelt,](../../azure-monitor/app/azure-web-apps.md) és engedélyezze az SQL-parancsokat a .NET |
-| IIS-kiszolgáló (Azure Virtuális gép, on-prem és így tovább.) | Az Állapotfigyelő PowerShell-modul segítségével [telepítse a Műszerezési motort,](../../azure-monitor/app/status-monitor-v2-api-reference.md) és indítsa újra az IIS-t. |
-| Azure-felhőszolgáltatás | Indítási feladat hozzáadása [a StatusMonitor telepítéséhez](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazást buildeléskor kell beépíteni az ApplicationInsights SDK-ba a [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) vagy [ASP.NET Core alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) NuGet-csomagjainak telepítésével |
-| IIS Expressz | Nem támogatott
+| Azure-webalkalmazás |A webalkalmazás-Vezérlőpulton [nyissa meg a Application Insights](../../azure-monitor/app/azure-web-apps.md) panelt, és engedélyezze az SQL-parancsokat a .net alatt. |
+| IIS-kiszolgáló (Azure-beli virtuális gép, helyszíni stb.) | A Állapotmonitor PowerShell-modullal [telepítse a Instrumentation-motort](../../azure-monitor/app/status-monitor-v2-api-reference.md) , és indítsa újra az IIS-t. |
+| Azure-felhőszolgáltatás | [Indítási feladat hozzáadása a StatusMonitor telepítéséhez](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazást a NuGet-csomagok [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) vagy [ASP.net Core alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) számára történő telepítésével kell előkészíteni a ApplicationInsights SDK-ra. |
+| IIS Express | Nem támogatott
 
-A fenti esetekben a műszerezési motor helyes beszerelésének helyes módja annak ellenőrzése, hogy `DependencyTelemetry` az összegyűjtött SDK-változat "rddp"-es. Az "rdddsd" vagy az "rddf" azt jelzi, hogy a függőségek gyűjtése a DiagnosticSource vagy az EventSource visszahívásokon keresztül történik, így a teljes SQL-lekérdezés nem lesz rögzítve.
+A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének helyes módszere az, hogy ellenőrzi, hogy a gyűjtött `DependencyTelemetry` SDK-verzió "rddp". a "rdddsd" vagy a "rddf" érték azt jelzi, hogy a függőségek gyűjtése DiagnosticSource vagy EventSource visszahívásokon keresztül történik, így a teljes SQL-lekérdezés nem lesz rögzítve.
 
-## <a name="where-to-find-dependency-data"></a>Hol találhatók a függőségi adatok?
+## <a name="where-to-find-dependency-data"></a>A függőségi adatkeresés helye
 
-* [Az Alkalmazástérkép](app-map.md) megjeleníti az alkalmazás és a szomszédos összetevők közötti függőségeket.
-* [A Tranzakciódiagnosztika](transaction-diagnostics.md) egységes, korrelált kiszolgálóadatokat jelenít meg.
-* [A böngészők lapon](javascript.md) az AJAX-hívások láthatók a felhasználók böngészőiből.
-* Kattintson át a lassú vagy sikertelen kérelmeket, hogy ellenőrizze a függőségi hívásokat.
-* [Az Analytics](#logs-analytics) a függőségi adatok lekérdezésére használható.
+* Az [alkalmazás-Térkép](app-map.md) megjeleníti az alkalmazás és a szomszédos összetevők közötti függőségeket.
+* A [tranzakciós diagnosztika](transaction-diagnostics.md) az egyesített, korrelált kiszolgáló adatait jeleníti meg.
+* A [böngészők lapon](javascript.md) Ajax-hívásokat láthat a felhasználói böngészőkből.
+* A függőségi hívások vizsgálatához kattintson a lassú vagy sikertelen kérelmekre.
+* Az [elemzési szolgáltatás](#logs-analytics) a függőségi adatlekérdezéshez használható.
 
-## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Lassú kérések diagnosztizálása
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Lassú kérelmek diagnosztizálása
 
-Minden kérelemesemény a függőségi hívásokhoz, kivételekhez és egyéb eseményekhez van társítva, amelyeket az alkalmazás a kérelem feldolgozása során nyomon követ. Így ha egyes kérelmek rosszul teljesítenek, megtudhatja, hogy ez a függőségből származó lassú válaszok miatt van-e.
+Minden kérési esemény társítva van a függőségi hívások, a kivételek és az alkalmazás által a kérelem feldolgozásakor követett egyéb eseményekhez. Ha azonban bizonyos kérések helytelenek, megtudhatja, hogy a függőség miatt lassú válasz-e.
 
-### <a name="tracing-from-requests-to-dependencies"></a>Nyomkövetés a kérelmektől a függőségekig
+### <a name="tracing-from-requests-to-dependencies"></a>Nyomkövetés a kérelmektől a függőségek felé
 
-Nyissa meg a **Teljesítmény** lapot, és keresse meg a Műveletek melletti Legfelső lap **Függőségek** lapját.
+Nyissa meg a **teljesítmény** lapot, és navigáljon a műveletek lap tetején található **függőségek** lapra.
 
-Kattintson a **függőség igéző neve** alatt. Miután kiválasztotta a függőséget, a függőség időtartamának eloszlása grafikonjelenik meg a jobb oldalon.
+Kattintson a **függőség nevére** a teljes területen. Miután kiválasztotta a függőség eloszlásának diagramját, a jobb oldalon jelennek meg.
 
-![A teljesítmény lapon kattintson a függőség fülre a diagram tetején, majd egy függőségi névre a diagramon.](./media/asp-net-dependencies/2-perf-dependencies.png)
+![A teljesítmény lapon kattintson a felső függőség fülre, majd a diagramon a függőség neve elemre.](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Kattintson a kék **minták** gombra a jobb alsó sarokban, majd egy mintán, hogy láthassa a tranzakció végpontok utáni részleteit.
+Kattintson a jobb alsó sarokban található kék **minták** gombra, majd egy mintán a végpontok közötti tranzakció részleteinek megjelenítéséhez.
 
-![Kattintson egy mintára a tranzakció végpontok között](./media/asp-net-dependencies/3-end-to-end.png)
+![Kattintson a mintára a végpontok közötti tranzakció részleteinek megtekintéséhez](./media/asp-net-dependencies/3-end-to-end.png)
 
-### <a name="profile-your-live-site"></a>Az élő webhely profilozása
+### <a name="profile-your-live-site"></a>Az élő webhely profilja
 
-Nem tudod, hová megy az idő? Az [Application Insights profilozó](../../azure-monitor/app/profiler.md) nyomon követi a HTTP-hívásokat az élő webhelyre, és megmutatja a függvényeket a kódban, amely a leghosszabb időt vett igénybe.
+Nincs ötlete, hogy mikor megy? A [Application Insights PROFILER](../../azure-monitor/app/profiler.md) http-hívásokat végez az élő webhelyhez, és megjeleníti a kód azon funkcióit, amelyek a leghosszabb időt vettek igénybe.
 
 ## <a name="failed-requests"></a>Sikertelen kérelmek
 
-A sikertelen kérelmek függőségek sikertelen hívásaival is társíthatók.
+A sikertelen kérések a függőségekhez tartozó sikertelen hívásokkal is társíthatók.
 
-A bal oldalon a **Hibák** lapra léphetünk, majd a felső sarokban található **függőségek** fülre kattinthatunk.
+Lépjen a **hibák** lapra a bal oldalon, majd kattintson a felül található **függőségek** fülre.
 
-![Kattintson a sikertelen kérelmek diagramjára](./media/asp-net-dependencies/4-fail.png)
+![Kattintson a sikertelen kérelmek diagramra](./media/asp-net-dependencies/4-fail.png)
 
-Itt láthatja a sikertelen függőségek számát. Ha további részleteket szeretne megtudni egy sikertelen előfordulásról, amely egy függőségi névre kattint az alsó táblázatban. A jobb alsó sarokban található kék **Függőségek** gombra kattintva megkaphatja a teljes tranzakció részleteit.
+Itt láthatja a sikertelen függőségek darabszámát. Ha további részleteket szeretne megtudni egy sikertelen előfordulásról, az alsó táblázatban található függőségi névre kattintva próbálkozhat. Kattintson a jobb alsó sarokban található kék **függőségek** gombra a végpontok közötti tranzakció részleteinek beszerzéséhez.
 
-## <a name="logs-analytics"></a>Naplók (Analytics)
+## <a name="logs-analytics"></a>Naplók (Analitika)
 
 A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követheti nyomon. Néhány példa:
 
-* Sikertelen függőségi hívások keresése:
+* A sikertelen függőségi hívások keresése:
 
 ``` Kusto
 
@@ -159,7 +159,7 @@ A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követhet
     dependencies | where client_Type == "Browser" | take 10
 ```
 
-* Kérelmekhez társított függőségi hívások keresése:
+* A kérelmekhez társított függőségi hívások keresése:
 
 ``` Kusto
 
@@ -170,7 +170,7 @@ A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követhet
 ```
 
 
-* Az oldalmegtekintésekhez társított AJAX-hívások keresése:
+* Az oldal nézeteihez kapcsolódó AJAX-hívások keresése:
 
 ``` Kusto 
 
@@ -182,15 +182,15 @@ A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követhet
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Hogyan történik az automatikus függőséggyűjtő jelentése a függőségek hívásaiban?*
+### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Hogyan nem sikerült az automatikus függőségi gyűjtő jelentése a függőségek meghívására?*
 
-* A sikertelen függőségi hívások "sikeres" mezőjének értéke Hamis lesz. `DependencyTrackingTelemetryModule`nem jelent `ExceptionTelemetry`jelentést . A függőség teljes adatmodelljét [itt](data-model-dependency-telemetry.md)ismerteti.
+* Sikertelen függőségi hívások esetén a "sikeres" mező értéke false (hamis) lesz. `DependencyTrackingTelemetryModule`nem jelent jelentést `ExceptionTelemetry`. A függőség teljes adatmodelljéről [itt](data-model-dependency-telemetry.md)olvashat.
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
-Mint minden Application Insights SDK, függőségi gyűjtemény modul is nyílt forráskódú. Olvassa el és járuljon hozzá a kódhoz, vagy jelentse a problémákat [a hivatalos GitHub-tárban.](https://github.com/Microsoft/ApplicationInsights-dotnet-server)
+Mint minden Application Insights SDK, a függőség-gyűjtési modul is nyílt forráskódú. Olvassa el és járuljon hozzá a kóddal, vagy jelentse [a hibákat a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)-tárházban.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Kivételek](../../azure-monitor/app/asp-net-exceptions.md)
-* [A felhasználói & oldaladatokat](../../azure-monitor/app/javascript.md)
+* [Felhasználói & lap adatvédelme](../../azure-monitor/app/javascript.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)

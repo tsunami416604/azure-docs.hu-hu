@@ -1,7 +1,7 @@
 ---
-title: Magyarázhatóság az automatizált ml-ben
+title: Elmagyarázás automatizált ML-ben
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan kaphat magyarázatot arról, hogy az automatikus ml-modell hogyan határozza meg a szolgáltatás fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
+description: Ismerje meg, hogyan állapíthatja meg, hogy az automatikus ML-modell hogyan határozza meg a funkció fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,38 @@ ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
 ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086419"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Értelmezhetőség: modellmagyarázatok az automatizált gépi tanulásban
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Értelmező: a modell magyarázatai az automatizált gépi tanulásban
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogyan kaphat magyarázatot az automatikus gépi tanulás (ML) az Azure Machine Learningben. Az automatikus ml segít megérteni a mesterséges funkciók fontosságát. 
+Ebből a cikkből megtudhatja, hogyan kérheti le a Azure Machine Learning automatikus gépi tanulás (ML) magyarázatát. Az automatikus ML segít megismerni a megtervezett funkciók fontosságát. 
 
-Az összes SDK-verzió alapértelmezés szerint `model_explainability=True` az 1.0.85 után. Az SDK 1.0.85-ös és korábbi `model_explainability=True` verzióiban a felhasználóknak be kell állítaniuk az objektumban a `AutoMLConfig` modell értelmezhetőségének használatához. 
+A 1.0.85 utáni összes SDK- `model_explainability=True` verzió alapértelmezés szerint van beállítva. Az SDK-verzió 1.0.85 és korábbi verzióiban a felhasználóknak `model_explainability=True` be kell `AutoMLConfig` állítaniuk az objektumban a modell-értelmező használata érdekében. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-- A legjobb modell vagy modell betanítása során értelmezhetőséget végezhet.
-- A vizualizációk engedélyezése az adatok mintáinak és magyarázatainak megjelenítéséhez.
-- Értelmezhetőség megvalósítása a következtetés vagy a pontozás során.
+- A legjobb modell vagy bármely modell tanítása során végezzen tolmácsolást.
+- A vizualizációk lehetővé teszik az adatmintázatok és a magyarázatok megjelenítését.
+- Értelmezhető megvalósítás a következtetés vagy pontozás során.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Értelmezhetőségi jellemzők. Fuss, `pip install azureml-interpret azureml-contrib-interpret` hogy a szükséges csomagokat.
-- Az automatizált ml-kísérletek készítésének ismerete. Az Azure Machine Learning SDK használatával kapcsolatos további információkért töltse ki ezt a [regressziós modell oktatóanyagát,](tutorial-auto-train-models.md) vagy tekintse meg az [automatikus gépi tanulási kísérletek konfigurálását.](how-to-configure-auto-train.md)
+- Értelmező funkciók. Futtassa `pip install azureml-interpret azureml-contrib-interpret` a parancsot a szükséges csomagok beszerzéséhez.
+- Az automatizált ML-kísérletek létrehozásának ismerete. További információ az Azure Machine Learning SDK használatáról: a [regressziós modell oktatóanyagának](tutorial-auto-train-models.md) elvégzése, vagy az [automatikus ml-kísérletek konfigurálása](how-to-configure-auto-train.md).
 
-## <a name="interpretability-during-training-for-the-best-model"></a>Értelmezhetőség a legjobb modell képzése során
+## <a name="interpretability-during-training-for-the-best-model"></a>A legjobb modell képzésének értelmezése
 
-A magyarázat lekérése a `best_run`ból, amely tartalmazza a mesterséges funkciók magyarázatát.
+Kérje le a magyarázatot `best_run`a alkalmazásból, amely a megtervezett funkciók magyarázatait is tartalmazza.
 
-### <a name="download-engineered-feature-importance-from-artifact-store"></a>Mesterséges funkciófontosság letöltése a műterméktárolóból
+### <a name="download-engineered-feature-importance-from-artifact-store"></a>Az összetevő-tárolóban megjelenő Kiemelt funkciók fontosságának letöltése
 
-A mesterséges `ExplanationClient` funkció magyarázatainak letöltésére a må± `best_run`műtermék tárolójából töltheti le. 
+A ( `best_run`) `ExplanationClient` használatával letöltheti a megtervezett funkció magyarázatait az összetevő-tárolóból. 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -51,11 +51,11 @@ engineered_explanations = client.download_model_explanation(raw=False)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-## <a name="interpretability-during-training-for-any-model"></a>Bármely modell edzése során értelmezhetőség 
+## <a name="interpretability-during-training-for-any-model"></a>Értelmezés a modell betanítása során 
 
-A modell magyarázatainak kiszámításakor és megjelenítésekor nem korlátozódik az automatikus rendszerhiba-modell meglévő modellmagyarázatára. A modell magyarázatát különböző tesztadatokkal is megkaphatja. Ebben a szakaszban található lépések bemutatják, hogyan számíthatja ki és jelenítheti meg a tesztadatok alapján a mesterséges szolgáltatásfontosságot.
+Ha kiszámítja a modellre vonatkozó magyarázatokat, és megjeleníti őket, nem korlátozódik az automatizált ML-modellre vonatkozó, meglévő modellre. A modellre vonatkozó magyarázatot különböző tesztelési adataival is megtalálhatja. Az ebben a szakaszban ismertetett lépések bemutatják, hogyan számíthatja ki és jelenítheti meg a tesztelési adatokon alapuló, mérnöki funkciók fontosságát.
 
-### <a name="retrieve-any-other-automl-model-from-training"></a>Bármely más AutoML-modell lekérése a betanításból
+### <a name="retrieve-any-other-automl-model-from-training"></a>Bármely más AutoML-modell beolvasása a képzésből
 
 ```python
 automl_run, fitted_model = local_run.get_output(metric='accuracy')
@@ -63,13 +63,13 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>A modell magyarázatának beállítása
 
-Használja, `automl_setup_model_explanations` hogy a mesterséges magyarázatot. A `fitted_model` hozhat létre a következő elemeket:
+`automl_setup_model_explanations` A segítségével megtalálhatja a megtervezett magyarázatokat. A `fitted_model` a következő elemeket hozhatja ki:
 
-- Kiemelt adatok betanított vagy vizsgálati mintákból
-- Mesterséges szolgáltatásnévlisták
-- Kereshető osztályok a címkézett oszlopban a besorolási forgatókönyvekben
+- Kiemelt adatok a betanított vagy tesztelési mintákból
+- Megtervezett funkciók neve listázza
+- Megkereshető osztályok a címkével ellátott oszlopban besorolási helyzetekben
 
-Az `automl_explainer_setup_obj` tartalmazza a fenti lista összes struktúrát.
+A `automl_explainer_setup_obj` tartalmazza a fenti lista összes szerkezetét.
 
 ```python
 from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
@@ -79,15 +79,15 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
                                                              task='classification')
 ```
 
-### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>A Mimic explainer inicializálása a funkció fontosságához
+### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>A funkciók fontosságának inicializálása az utánozó-magyarázattal
 
-Az AutoML-modellek magyarázatának létrehozásához használja az `MimicWrapper` osztályt. A MimicWrapper inicializálható a következő paraméterekkel:
+A AutoML-modellek magyarázatának létrehozásához használja a `MimicWrapper` osztályt. A MimicWrapper a következő paraméterekkel inicializálhatja:
 
-- A magyarázó beállítási objektuma
-- Az Ön munkaterülete
-- LightGBM modell, amely az `fitted_model` automatizált ml-modell helyettesítőjeként működik
+- A magyarázó telepítő objektum
+- Munkaterülete
+- Egy LightGBM-modell, amely helyettesítőként működik az `fitted_model` automatikus ml-modellben
 
-A MimicWrapper azt `automl_run` az objektumot is elviszi, ahol a megtervezett magyarázatok fel töltődnek.
+A MimicWrapper arra az `automl_run` objektumra is kerül, ahol a megtervezett magyarázatok fel lesznek töltve.
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -101,24 +101,24 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
                          classes=automl_explainer_setup_obj.classes)
 ```
 
-### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>A MimicExplainer használata a mesterséges funkciófontosság kiszámításához és megjelenítéséhez
+### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>A MimicExplainer használata a mérnöki funkciók fontosságának meghatározásához és megjelenítéséhez
 
-A MimicWrapper metódust `explain()` az átalakított tesztmintákkal hívhatja meg, hogy megkapja a létrehozott mesterséges funkciók jellemzőfontosságát. Az automatikus `ExplanationDashboard` ml-es featurizers által létrehozott mesterséges funkciók szolgáltatásfontossági értékeinek irányítópult-vizualizációját is megtekintheti.
+Az átalakított `explain()` tesztelési mintákkal hívhatja meg a metódust a MimicWrapper-ben, hogy a funkció fontosságot kapjon a generált mérnöki funkciók számára. A segítségével megtekintheti az automatikus ML featurizers használatával a generált mérnöki funkciók fontossági értékeinek irányítópult `ExplanationDashboard` -vizualizációját is.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Értelmezhetőség a következtetés során
+### <a name="interpretability-during-inference"></a>Értelmezhető a következtetés során
 
-Ebben a szakaszban megtudhatja, hogyan lehet üzembe egy automatikus ml-modell a magyarázó, amely az előző szakaszban a magyarázatok kiszámításához használt.
+Ebből a szakaszból megtudhatja, hogyan működővé tenni egy olyan automatizált ML-modellt, amely az előző szakaszban ismertetett magyarázatok kiszámításához használatos.
 
-### <a name="register-the-model-and-the-scoring-explainer"></a>Regisztrálja a modellt és a pontozási magyarázót
+### <a name="register-the-model-and-the-scoring-explainer"></a>A modell és a pontozási magyarázat regisztrálása
 
-A `TreeScoringExplainer` segítségével hozza létre a pontozási magyarázó, amely kiszámítja a megtervezett jellemző fontossági értékeket a következtetési idő. Inicializálja a pontozási `feature_map` magyarázó a korábban kiszámított. 
+A `TreeScoringExplainer` segítségével hozza létre a pontozási magyarázatot, amely kiszámítja a megtervezett funkció fontossági értékeit a következtetések időpontjában. A pontozási magyarázatot a `feature_map` korábban kiszámított értékkel inicializálhatja. 
 
-Mentse a pontozási magyarázó, majd regisztrálja a modell és a pontozási magyarázó a modellkezelési szolgáltatás. Futtassa a következő kódot:
+Mentse a pontozási magyarázatot, majd regisztrálja a modellt és a pontozási magyarázatot a modellkezelés szolgáltatással. Futtassa a következő kódot:
 
 ```python
 from azureml.interpret.scoring.scoring_explainer import TreeScoringExplainer, save
@@ -138,9 +138,9 @@ automl_run.upload_file('scoring_explainer.pkl', 'scoring_explainer.pkl')
 scoring_explainer_model = automl_run.register_model(model_name='scoring_explainer', model_path='scoring_explainer.pkl')
 ```
 
-### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>Conda-függőségek létrehozása a szolgáltatás beállításához
+### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>A szolgáltatás beállításához szükséges Conda-függőségek létrehozása
 
-Ezután hozza létre a szükséges környezeti függőségeket az üzembe helyezett modell tárolójában. Vegye figyelembe, hogy az azureml-defaults verzióval >= 1.0.45 kell szerepelnie pip-függőség, mert tartalmazza a szükséges funkciókat a modell webszolgáltatásként.
+Ezután hozza létre a szükséges környezeti függőségeket a tárolóban az üzembe helyezett modellhez. Vegye figyelembe, hogy a (z) >= 1.0.45 verzióval rendelkező alapértelmezett azureml pip-függőségként kell szerepelnie, mert tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -163,7 +163,7 @@ with open("myenv.yml","r") as f:
 
 ### <a name="deploy-the-service"></a>A szolgáltatás üzembe helyezése
 
-Telepítse a szolgáltatást a conda-fájl és a pontozási fájl használatával az előző lépésekből.
+Telepítse a szolgáltatást a Conda fájl és az előző lépésekből származó pontozási fájl használatával.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -188,9 +188,9 @@ service = Model.deploy(ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-### <a name="inference-with-test-data"></a>Következtetés a vizsgálati adatokkal
+### <a name="inference-with-test-data"></a>Következtetés tesztelési adattal
 
-Következtetéseket néhány tesztadatokat az automatikus ml-modell előre jelzett érték megtekintéséhez. Tekintse meg az előre jelzett érték mesterséges funkciófontosságát.
+Bizonyos tesztelési adatok alapján megtekintheti az automatikus ML-modellből származó előre jelzett értéket. Megtekintheti az előre jelzett értékhez tartozó mérnöki funkció fontosságát.
 
 ```python
 if service.state == 'Healthy':
@@ -205,12 +205,12 @@ if service.state == 'Healthy':
     print(output['engineered_local_importance_values'])
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Vizualizálás az adatok és magyarázatok mintáinak felfedezéséhez a betanítási időben
+### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Vizualizáció az adatmodellek és a magyarázatok észleléséhez a képzés ideje alatt
 
-Az [Azure Machine Learning stúdióban](https://ml.azure.com)vizualizálhatja a szolgáltatásfontossági diagramot a munkaterületén. Az automatikus gépi tanulási folyamat befejezése után válassza **a Modell részleteinek megtekintése** lehetőséget egy adott futtatás megtekintéséhez. A **magyarázatvizualizációs** irányítópult megtekintéséhez kattintson a Magyarázatok fülre.
+A funkció fontossága diagramot a munkaterületen, [Azure Machine learning Studióban](https://ml.azure.com)jelenítheti meg. Az automatikus ML-Futtatás befejezése után válassza a **modell részleteinek megtekintése** lehetőséget egy adott Futtatás megtekintéséhez. A **magyarázatok lapon** megtekintheti a magyarázat megjelenítése irányítópultot.
 
-[![Gépi tanulási értelmezhetőségi architektúra](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Machine Learning-értelmező architektúra](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni arról, hogy miként engedélyezheti a modellmagyarázatokat és a szolgáltatásfontosságot az Automatikus gépi tanulástól eltérő Azure Machine Learning SDK-területeken, tekintse meg az [értelmezhetőségről szóló cikket.](how-to-machine-learning-interpretability.md)
+További információ arról, hogyan engedélyezheti a modell magyarázatait és funkcióit a Azure Machine Learning SDK azon területein, amelyek [nem az automatizált](how-to-machine-learning-interpretability.md)gépi tanulást ismertetik.

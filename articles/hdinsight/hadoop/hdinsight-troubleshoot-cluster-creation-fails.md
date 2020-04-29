@@ -1,6 +1,6 @@
 ---
-title: Fürtlétrehozási hibák elhárítása az Azure HDInsight segítségével
-description: Ismerje meg, hogyan háríthatja el az Apache-fürt létrehozási problémáit az Azure HDInsight hoz.
+title: Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
+description: Ismerje meg, hogyan oldhatja meg az Apache cluster-létrehozási problémákat az Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,76 +9,76 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
 ms.openlocfilehash: 3af7515995a305f41fb9b9f85deb9107de51c622
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453489"
 ---
-# <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtlétrehozási hibák elhárítása az Azure HDInsight segítségével
+# <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
 
-A fürtlétrehozási hibák leggyakoribb kiváltó okai a következő problémák:
+A fürtök létrehozásával kapcsolatos hibák leggyakoribb kiváltó okai a következők:
 
 - Engedélyekkel kapcsolatos problémák
 - Erőforrás-házirendre vonatkozó korlátozások
 - Tűzfalak
 - Erőforrás-zárolások
 - Nem támogatott összetevő-verziók
-- Tárfiók névkorlátozásai
-- Szolgáltatáskimaradások
+- Storage-fiók nevének korlátozásai
+- Szolgáltatások kimaradásai
 
 ## <a name="permissions-issues"></a>Engedélyekkel kapcsolatos problémák
 
-Ha az Azure Data Lake Storage Gen2 `AmbariClusterCreationFailedErrorCode`használatával:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::jár, és a következő hibaüzenetet kapja: " ", nyissa meg az Azure Portalon, nyissa meg a storage-fiókot, és a hozzáférés-vezérlés (IAM) területen győződjön meg arról, hogy a **Storage Blob Data Contributor** vagy a Storage Blob Data **Owner** szerepkör hozzárendelt hozzáférést az **előfizetéshez hozzárendelt felügyelt identitáshoz.** További információt [A felügyelt identitásra vonatkozó engedélyek beállítása a Data Lake Storage Gen2-fiókban](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) című szakaszban találhat.
+Ha Azure Data Lake Storage Gen2 `AmbariClusterCreationFailedErrorCode`használ, és a következő hibaüzenetet kapja: ":::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::", nyissa meg a Azure Portal, lépjen a Storage-fiókjába, és a Access Control (iam) területen győződjön meg arról, hogy a **Storage blob-adatközreműködői** vagy a **Storage blob-adatok tulajdonosi** szerepköre hozzárendelt egy hozzáférést az előfizetés **felhasználóhoz rendelt felügyelt identitásához** . További információt [A felügyelt identitásra vonatkozó engedélyek beállítása a Data Lake Storage Gen2-fiókban](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) című szakaszban találhat.
 
-Ha az Azure Data Lake Storage Gen1 szolgáltatást használja, [itt](../hdinsight-hadoop-use-data-lake-store.md)olvashat a beállítási és konfigurációs utasításokról. A Data Lake Storage Gen1 nem támogatott a HBase-fürtök számára, és a HDInsight 4.0-s verziója nem.
+Ha Azure Data Lake Storage Gen1 használ, tekintse meg a telepítési és konfigurációs utasításokat [itt](../hdinsight-hadoop-use-data-lake-store.md). A Data Lake Storage Gen1 HBase-fürtök esetén nem támogatott, és a HDInsight 4,0-es verziójában nem támogatott.
 
-Az Azure Storage használata esetén győződjön meg arról, hogy a tárfiók neve érvényes a fürt létrehozása során.
+Ha az Azure Storage-t használja, győződjön meg arról, hogy a Storage-fiók neve érvényes a fürt létrehozásakor.
 
 ## <a name="resource-policy-restrictions"></a>Erőforrás-házirendre vonatkozó korlátozások
 
-Az előfizetés-alapú Azure-szabályzatok megtagadhatják a nyilvános IP-címek létrehozását. A HDInsight-fürt létrehozásához két nyilvános IP-cím szükséges.  
+Az előfizetés-alapú Azure-szabályzatok nem tagadhatják meg a nyilvános IP-címek létrehozását. A HDInsight-fürt létrehozásához két nyilvános IP-cím szükséges.  
 
-A következő házirendek általában hatással lehetnek a fürt létrehozására:
+Az alábbi házirendek általánosságban befolyásolhatják a fürtök létrehozását:
 
-* Az IP-cím & terheléselosztók létrehozását megakadályozó házirendek az előfizetésen belül.
-* A tárfiók létrehozását megakadályozó házirend.
-* A hálózati erőforrások törlését megakadályozó házirend (IP-cím /terheléselosztók).
+* A házirendek meggátolják az IP-címek & terheléselosztó létrehozását az előfizetésen belül.
+* Házirend a Storage-fiók létrehozásának megakadályozása.
+* A hálózati erőforrások törlését megakadályozó szabályzat (IP-/Load Balancer).
 
 ## <a name="firewalls"></a>Tűzfalak
 
-A virtuális hálózaton vagy a tárfiókban lévő tűzfalak megtagadhatják a HDInsight-felügyeleti IP-címekkel való kommunikációt.
+A virtuális hálózati vagy a Storage-fiókhoz tartozó tűzfalak megtagadhatják a HDInsight-felügyeleti IP-címekkel folytatott kommunikációt.
 
-Engedélyezze az alábbi táblázatban szereplő IP-címekről érkező forgalmat.
+Az alábbi táblázatban lévő IP-címekről érkező forgalom engedélyezése.
 
 | Forrás IP-címe | Cél | Irány |
 |---|---|---|
-| 168.61.49.99 | *:443 | Bejövő |
-| 23.99.5.239 | *:443 | Bejövő |
-| 168.61.48.131 | *:443 | Bejövő |
-| 138.91.141.162 | *:443 | Bejövő |
+| 168.61.49.99 | *: 443 | Bejövő |
+| 23.99.5.239 | *: 443 | Bejövő |
+| 168.61.48.131 | *: 443 | Bejövő |
+| 138.91.141.162 | *: 443 | Bejövő |
 
-Adja hozzá a fürt létrehozásának régiójára jellemző IP-címeket is. Tekintse meg [a HDInsight-kezelési IP-címeket](../hdinsight-management-ip-addresses.md) az egyes Azure-régiók címeinek listáját.
+Adja hozzá a fürthöz tartozó régióhoz tartozó IP-címeket is. Az egyes Azure-régiók címeinek listáját a [HDInsight-felügyeleti IP-címek](../hdinsight-management-ip-addresses.md) című részben tekintheti meg.
 
-Ha expressz útvonalat vagy saját egyéni DNS-kiszolgálót használ, olvassa el a Virtuális hálózat megtervezése az [Azure HDInsight hoz – több hálózat csatlakoztatása](../hdinsight-plan-virtual-network-deployment.md#multinet)című témakört.
+Ha expressz útvonalat vagy saját egyéni DNS-kiszolgálót használ, tekintse meg [a virtuális hálózat megtervezése az Azure HDInsight – több hálózat csatlakoztatása](../hdinsight-plan-virtual-network-deployment.md#multinet)című témakört.
 
 ## <a name="resources-locks"></a>Erőforrások zárolása  
 
-Győződjön meg arról, hogy nincsenek [zárolások a virtuális hálózaton és az erőforráscsoporton.](../../azure-resource-manager/management/lock-resources.md) A fürtök nem hozhatók létre és nem törölhetők, ha az erőforráscsoport zárolva van. 
+Győződjön meg arról, hogy a [virtuális hálózat és az erőforráscsoport nem zárolható](../../azure-resource-manager/management/lock-resources.md). A fürtöket nem lehet létrehozni vagy törölni, ha az erőforráscsoport zárolva van. 
 
 ## <a name="unsupported-component-versions"></a>Nem támogatott összetevő-verziók
 
-Győződjön meg arról, hogy az [Azure HDInsight támogatott verzióját](../hdinsight-component-versioning.md) és a megoldásban lévő Apache [Hadoop-összetevőket](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) használja.  
+Győződjön meg arról, hogy az [Azure HDInsight támogatott verzióját](../hdinsight-component-versioning.md) és a megoldás bármely [Apache Hadoop összetevőjét](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) használja.  
 
-## <a name="storage-account-name-restrictions"></a>Tárfiók névkorlátozásai
+## <a name="storage-account-name-restrictions"></a>Storage-fiók nevének korlátozásai
 
-A tárfióknevek nem lehetnek 24 karakternél hosszabbak, és nem tartalmazhatnak különleges karaktert. Ezek a korlátozások az alapértelmezett tárolónévre is vonatkoznak a tárfiókban.
+A Storage-fiókok neve nem lehet hosszabb 24 karakternél, és nem tartalmazhat speciális karaktert. Ezek a korlátozások az alapértelmezett tárolónévre is vonatkoznak a tárfiókban.
 
-Más elnevezési korlátozások a fürt létrehozása korra is vonatkoznak. További információt [a Fürtnév-korlátozások](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)című témakörben talál.
+Más elnevezési korlátozások is érvényesek a fürtök létrehozására. További információért lásd a [fürt nevének korlátozásait](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name).
 
-## <a name="service-outages"></a>Szolgáltatáskimaradások
+## <a name="service-outages"></a>Szolgáltatások kimaradásai
 
-Ellenőrizze [az Azure állapotát](https://status.azure.com) az esetleges kimaradások vagy szolgáltatási problémák.
+Győződjön meg arról, hogy az [Azure állapota](https://status.azure.com) esetleges kimaradások vagy szolgáltatási problémák esetén is fennáll.
 
 ## <a name="next-steps"></a>További lépések
 

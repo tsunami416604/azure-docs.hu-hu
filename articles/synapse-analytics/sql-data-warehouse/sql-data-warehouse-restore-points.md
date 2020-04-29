@@ -12,25 +12,25 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5c9b7eb1b03b6b6e3721c13f9ebf7da25dd2e376
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745057"
 ---
 # <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
-Ebben a cikkben megtudhatja, hogy hozzon létre egy új, felhasználó által definiált visszaállítási pontot egy SQL-készlet hez az Azure Synapse Analytics a PowerShell és az Azure Portal használatával.
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy új, felhasználó által definiált visszaállítási pontot egy SQL-készlethez az Azure szinapszis Analyticsben a PowerShell és a Azure Portal használatával.
 
-## <a name="create-user-defined-restore-points-through-powershell"></a>Felhasználó által definiált visszaállítási pontok létrehozása a PowerShellen keresztül
+## <a name="create-user-defined-restore-points-through-powershell"></a>Felhasználó által definiált visszaállítási pontok létrehozása a PowerShell-lel
 
-Felhasználó által definiált visszaállítási pont létrehozásához használja a [New-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell parancsmag.
+Felhasználó által definiált visszaállítási pont létrehozásához használja a [New-AzSqlDatabaseRestorePoint PowerShell-](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot.
 
-1. Mielőtt elkezdené, telepítse [az Azure PowerShellt.](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+1. Mielőtt elkezdené, győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
 2. Nyissa meg a PowerShellt.
-3. Csatlakozzon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
-4. Válassza ki a visszaállítandó adatbázist tartalmazó előfizetést.
-5. Hozzon létre egy visszaállítási pontot az adatraktár azonnali másolatához.
+3. Kapcsolódjon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
+4. Válassza ki azt az előfizetést, amely a visszaállítani kívánt adatbázist tartalmazza.
+5. Hozzon létre egy visszaállítási pontot az adattárház azonnali másolásához.
 
 ```Powershell
 
@@ -49,26 +49,26 @@ New-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName 
 
 ```
 
-6. Tekintse meg az összes meglévő visszaállítási pontot tartalmazó listát.
+6. Tekintse meg a meglévő visszaállítási pontok listáját.
 
 ```Powershell
 # List all restore points
 Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 ```
 
-## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Felhasználó által definiált visszaállítási pontok létrehozása az Azure Portalon keresztül
+## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Felhasználó által definiált visszaállítási pontok létrehozása a Azure Portal
 
-A felhasználó által definiált visszaállítási pontok az Azure Portalon keresztül is létrehozhatók.
+A felhasználó által definiált visszaállítási pontok a Azure Portal használatával is létrehozhatók.
 
-1. Jelentkezzen be az [Azure Portal-fiókjába.](https://portal.azure.com/)
+1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) -fiókjába.
 
-2. Keresse meg azt az SQL-készletet, amelyhez visszaállítási pontot szeretne létrehozni.
+2. Navigáljon arra az SQL-készletre, amelyhez visszaállítási pontot kíván létrehozni.
 
-3. Válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblából, és válassza **a + Új visszaállítási pont**lehetőséget. Ha az Új visszaállítási pont gomb nincs engedélyezve, győződjön meg arról, hogy az SQL-készlet nincs szüneteltetve.
+3. Válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új visszaállítási pont**lehetőséget. Ha az új visszaállítási pont gomb nincs engedélyezve, győződjön meg arról, hogy az SQL-készlet nincs szüneteltetve.
 
     ![Új visszaállítási pont](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
-4. Adja meg a felhasználó által definiált visszaállítási pont nevét, majd kattintson **az Alkalmaz gombra.** A felhasználó által definiált visszaállítási pontok alapértelmezett megőrzési ideje hét nap.
+4. Adja meg a felhasználó által definiált visszaállítási pont nevét, majd kattintson az **alkalmaz**gombra. A felhasználó által definiált visszaállítási pontok alapértelmezett megőrzési időtartama hét nap.
 
     ![A visszaállítási pont neve](./media/sql-data-warehouse-restore-points/creating-restore-point-11.png)
 
@@ -76,5 +76,5 @@ A felhasználó által definiált visszaállítási pontok az Azure Portalon ker
 
 - [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
 - [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
-- [Visszaállítás geo-backup SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)
+- [Visszaállítás egy földrajzi biztonsági mentési SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)
 

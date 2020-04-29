@@ -1,6 +1,6 @@
 ---
-title: Betöltés az SQL-készletbe az Azure Synapse Analytics szolgáltatásban
-description: Ismerje meg, hogyan lehet adatokat bedolgozni egy SQL-készletbe az Azure Synapse Analytics szolgáltatásban
+title: SQL-készletbe való betöltés az Azure szinapszis Analyticsben
+description: Ismerje meg, hogyan lehet az Azure szinapszis Analyticsben SQL-készletbe bevenni az információkat
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
@@ -10,67 +10,67 @@ ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430564"
 ---
-# <a name="ingesting-data-into-a-sql-pool"></a>Adatok betöltése SQL-készletbe
+# <a name="ingesting-data-into-a-sql-pool"></a>Az adatgyűjtés egy SQL-készletbe
 
-Ebben a cikkben megtudhatja, hogyan kell adatokat bedolgozni egy Azure Data Lake Gen 2 tárfiókból egy SQL-készletbe az Azure Synapse Analytics használatával.
+Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését egy Azure Data Lake Gen 2 Storage-fiókból egy SQL-készletbe az Azure szinapszis Analytics használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés:** Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
-* **Azure storage-fiók:** Az Azure Data Lake Storage Gen *2-t használja* forrásadattárként. Ha nem rendelkezik tárfiókkal, olvassa [el az Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) című témakört a létrehozási lépésekért.
-* **Azure Synapse Analytics:** Egy SQL-készletet használ *fogadó* adattárként. Ha nem rendelkezik egy Azure Synapse Analytics-példány, olvassa [el az SQL-készlet létrehozása](../../sql-database/sql-database-get-started-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseket hozzon létre.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
+* **Azure Storage-fiók**: a 2. generációs Azure Data Lake Storage használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
+* **Azure szinapszis Analytics**: SQL-készletet használ *fogadó adattárként* . Ha nem rendelkezik Azure-beli szinapszis Analytics-példánnyal, tekintse meg az [SQL-készlet létrehozása](../../sql-database/sql-database-get-started-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a létrehozás lépéseihez című témakört.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
-Az Azure Synapse Analytics egy összekapcsolt szolgáltatás, ahol meghatározza a kapcsolat adatait más szolgáltatásokkal. Ebben a szakaszban egy Azure Synapse Analytics és az Azure Data Lake Storage Gen2 kapcsolt szolgáltatás ad hozzá.
+Az Azure szinapszis Analyticsben a társított szolgáltatás a kapcsolati adatok más szolgáltatásokhoz való definiálására szolgál. Ebben a szakaszban egy Azure szinapszis Analytics és Azure Data Lake Storage Gen2 társított szolgáltatást fog hozzáadni.
 
-1. Nyissa meg az Azure Synapse Analytics felhasználói felületét, és nyissa meg a **Kezelés** lapot.
-1. A **Külső kapcsolatok csoportban**válassza a **Csatolt szolgáltatások**lehetőséget.
-1. Csatolt szolgáltatás hozzáadásához kattintson az **Új**gombra.
-1. Válassza ki az Azure Data Lake Storage Gen2 csempét a listából, és kattintson a **Folytatás**gombra.
-1. Adja meg a hitelesítési hitelesítő adatokat. A fiókkulcs, az egyszerű szolgáltatás és a felügyelt identitás jelenleg támogatott hitelesítési típusok. Kattintson a kapcsolat tesztelésére, és ellenőrizze, hogy a hitelesítő adatok helyesek-e. Ha végzett, kattintson a **Létrehozás** gombra.
-1. Ismételje meg a 3-5. Az Azure Synapse Analytics, SQL-hitelesítés, felügyelt identitás és egyszerű szolgáltatás jelenleg támogatott.
+1. Nyissa meg az Azure szinapszis Analytics UX eszközt, és lépjen a **kezelés** lapra.
+1. A **külső kapcsolatok**területen válassza a **társított szolgáltatások**elemet.
+1. Társított szolgáltatás hozzáadásához kattintson az **új**elemre.
+1. Válassza ki a Azure Data Lake Storage Gen2 csempét a listából, majd kattintson a **Folytatás**gombra.
+1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. A hitelesítő adatok helyességének ellenőrzéséhez kattintson a kapcsolódás tesztelése elemre. Ha elkészült, kattintson a **Létrehozás** gombra.
+1. Ismételje meg a 3-5 lépést, de Azure Data Lake Storage Gen2 helyett válassza ki az Azure szinapszis Analytics csempét, és adja meg a megfelelő kapcsolatok hitelesítő adatait. Az Azure szinapszis Analytics, az SQL-hitelesítés, a felügyelt identitás és az egyszerű szolgáltatásnév jelenleg támogatott.
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
-A folyamat egy tevékenységcsoport végrehajtásának logikai folyamatát tartalmazza. Ebben a szakaszban hozzon létre egy folyamatot, amely egy másolási tevékenységet tartalmaz, amely az ADLS gen 2 adatait egy SQL-készletbe továbbítja.
+A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát tartalmazzák. Ebben a szakaszban egy másolási tevékenységet tartalmazó folyamatot hoz létre, amely a 2. generációs ADLS származó adatok SQL-készletbe való betöltését teszi elérhetővé.
 
-1. Lépjen az **Orchestrate** lapra. Kattintson a csővezetékek fejléce melletti plusz ikonra, és válassza a **Folyamat lehetőséget.**
-1. A Tevékenységek ablaktábla **Áthelyezés és átalakítás** csoportban húzza az Adatok **másolását** a folyamatvászonra.
-1. Kattintson a másolási tevékenységre, és **New** lépjen a **Forrás** lapra.
-1. Válassza ki az Azure Data Lake Storage gen2-t az adattárként, és kattintson a folytatás gombra.
-1. Formátumként válassza a DelimitedText (Tagolt szöveg) lehetőséget, majd kattintson a folytatás gombra.
-1. A készlet tulajdonságok ablaktábláján jelölje ki a létrehozott ADLS csatolt szolgáltatást. Adja meg a forrásadatok fájlelérési útját, és adja meg, hogy az első sornak van-e fejléce. A sémát importálhatja a fájltárolóból vagy egy mintafájlból. Ha végzett, kattintson az OK gombra.
-1. Új **fogadóadatkészlet** létrehozásához kattintson az **Új** gombra.
-1. Válassza ki az Azure Synapse Analytics az adattár, és kattintson a folytatás.
-1. A set properties pane,válassza ki az Azure Synapse Analytics csatolt szolgáltatás létrehozott. Ha meglévő táblába ír, jelölje ki azt a legördülő menüből. Ellenkező esetben jelölje be a **Szerkesztés** és az új táblanév beírása jelölőnégyzetet. Ha végzett, kattintson az OK gombra.
-1. Tábla létrehozásakor engedélyezze az **Automatikus létrehozás lehetőséget** a tábla beállításmezőben.
+1. Lépjen a **hangszerelés** lapra. kattintson a folyamatok fejléc melletti plusz ikonra, és válassza a **folyamat**lehetőséget.
+1. Az **áthelyezés és átalakítás** területen a tevékenységek panelen húzza az **Adatmásolás** elemet a folyamat vászonra.
+1. Kattintson a másolási tevékenységre, és válassza a **forrás** fület. az **új** elemre kattintva hozzon létre egy új forrás-adatkészletet.
+1. Válassza ki Azure Data Lake Storage Gen2, és kattintson a Continue (folytatás) gombra.
+1. Válassza a DelimitedText formátumot, és kattintson a Folytatás gombra.
+1. A készlet tulajdonságai ablaktáblán válassza ki a létrehozott ADLS társított szolgáltatást. Adja meg a forrásadatok fájljának elérési útját, és adja meg, hogy az első sorban van-e fejléc. Importálhatja a sémát a file Store-ból vagy egy mintából. Ha elkészült, kattintson az OK gombra.
+1. Lépjen a fogadó **lapra.** új fogadó adatkészlet létrehozásához kattintson az **új** elemre.
+1. Válassza az Azure szinapszis Analytics lehetőséget adattárként, majd kattintson a Folytatás gombra.
+1. A készlet tulajdonságai ablaktáblán válassza ki az Ön által létrehozott Azure szinapszis Analytics társított szolgáltatást. Ha egy meglévő táblába ír, válassza ki a legördülő menüből. Ha nem, akkor a **Szerkesztés** és a bevitel megadásával adja meg az új tábla nevét. Ha elkészült, kattintson az OK gombra.
+1. Ha táblát hoz létre, engedélyezze az **Automatikus létrehozás táblát** a tábla beállítás mezőjében.
 
-## <a name="debug-and-publish-pipeline"></a>Hibakeresési és közzétételi folyamat
+## <a name="debug-and-publish-pipeline"></a>Folyamat hibakeresése és közzététele
 
-Miután befejezte a folyamat konfigurálását, végrehajthatja a hibakeresési futtatást, mielőtt közzéteszi az összetevőket, hogy ellenőrizze, hogy minden helyes-e.
+Ha befejezte a folyamat konfigurálását, hibakeresési futtatást hajthat végre, mielőtt közzéteszi az összetevőket, hogy minden helyes legyen.
 
 1. A folyamat hibakereséséhez válassza a **Hibakeresés** elemet az eszköztáron. A folyamat futtatási állapotát az ablak alján található **Kimenet** lapon tekintheti meg. 
-1. Miután a folyamat sikeresen lefutott, a felső eszköztáron válassza az **Összes közzététele**lehetőséget. Ez a művelet közzéteszi a Synapse Analytics szolgáltatáshoz létrehozott entitásokat (adatkészleteket és folyamatokat).
-1. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. Az értesítési üzenetek megtekintéséhez kattintson a jobb felső sarokban lévő csengő gombra. 
+1. Ha a folyamat sikeresen futtatható, a felső eszköztáron válassza az **összes közzététele**lehetőséget. Ez a művelet közzéteszi a szinapszis Analytics szolgáltatásban létrehozott entitásokat (adatkészleteket és folyamatokat).
+1. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. Az értesítési üzenetek megtekintéséhez kattintson a jobb felső sarokban található harang gombra. 
 
 
-## <a name="trigger-and-monitor-the-pipeline"></a>A folyamat aktiválása és figyelése
+## <a name="trigger-and-monitor-the-pipeline"></a>A folyamat elindítása és figyelése
 
-Ebben a lépésben manuálisan indítsa el az előző lépésben közzétett folyamatot. 
+Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan indítja el. 
 
-1. Az eszköztáron válassza az **Eseményindító hozzáadása** lehetőséget, majd az **Eseményindító most**lehetőséget. A **Folyamatfuttatás** lapon válassza a **Befejezés** elemet.  
-1. Lépjen a bal oldali **oldalsávon** található Monitor fülre. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A **Műveletek** oszlopban lévő hivatkozások segítségével megtekintheti a tevékenység részleteit, és újra futtathatja a folyamatot.
-1. A folyamat futásához társított tevékenységfuttatások megtekintéséhez kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. Ebben a példában csak egy tevékenység van, így csak egy bejegyzés jelenik meg a listában. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). Válassza **a folyamatfuttatások** felüli kiválasztásával lépjen vissza a folyamatfuttatások nézetbe. A nézet frissítéséhez válassza a **Frissítés** parancsot.
-1. Ellenőrizze, hogy az adatok helyesen vannak-e beírva az SQL-készletbe.
+1. Válassza az **aktiválás hozzáadása** lehetőséget az eszköztáron, majd válassza az **aktiválás most**lehetőséget. A **Folyamatfuttatás** lapon válassza a **Befejezés** elemet.  
+1. Lépjen a **figyelés** lapra a bal oldali oldalsávban. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A **műveletek** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
+1. A folyamat futásához társított tevékenységfuttatások megtekintéséhez kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. Ebben a példában csak egy tevékenység van, így csak egy bejegyzés jelenik meg a listában. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). Válassza a felső **folyamat futtatása** lehetőséget a folyamat futási nézetének visszalépéséhez. A nézet frissítéséhez válassza a **Frissítés** parancsot.
+1. Ellenőrizze, hogy az adatai helyesen vannak-e írva az SQL-készletben.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A Synapse Analytics adatintegrációjáról az [Azure Data Lake Storage Gen2 cikkében](data-integration-data-lake.md) olvashat az adatok betöltéséről.
+A szinapszis Analytics adatintegrálásával kapcsolatos további információkért lásd: adatok beolvasása [Azure Data Lake Storage Gen2](data-integration-data-lake.md) cikkbe.

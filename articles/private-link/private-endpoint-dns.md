@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 46ecf1bf2f5bd7900677cd115f8571ec3551a874
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134272"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209026"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Private Endpoint DNS-konfiguráció
 
@@ -55,7 +55,7 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az al
 |Azure Database for MySQL (Microsoft. DBforMySQL/Servers)|Portra beállított mysqlserver|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (Microsoft. DBforMariaDB/Servers)|mariadbServer|privatelink.mariadb.database.azure.com|
 |Azure Key Vault (Microsoft. kulcstartó/tárolók)|tár|privatelink.vaultcore.azure.net|
-|Azure Kubernetes Service – Kubernetes API (Microsoft. Tárolószolgáltatás/managedClusters)    | managedCluster | {GUID}. privatelink. <region>. azmk8s.IO|
+|Azure Kubernetes Service – Kubernetes API (Microsoft. Tárolószolgáltatás/managedClusters)    | managedCluster | {GUID}. privatelink. {Region}. azmk8s. IO|
 |Azure Search (Microsoft. Search/searchServices)|searchService|privatelink.search.windows.net|   
 |Azure Container Registry (Microsoft. ContainerRegistry/nyilvántartók) | registry | privatelink.azurecr.io |
 |Azure-alkalmazás konfigurációja (Microsoft. Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|

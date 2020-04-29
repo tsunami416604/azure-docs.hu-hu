@@ -6,18 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: e229bb7af02255c0714c559b841afac9a66a7c7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 568bac3c6c80173e38d7b15de17e90cb4fbdab80
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535612"
+ms.locfileid: "82208958"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI-vel
 
 Ez a cikk a Linux rendszerű virtuális gépek Azure-beli rendelkezésre állási zónában történő létrehozásához szükséges lépéseket ismerteti az Azure CLI használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
-Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-overview.md#services-support-by-region) hozza létre a virtuális gépet.
+Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-region.md) hozza létre a virtuális gépet.
 
 Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és bejelentkezett egy Azure-fiókba az [az login](/cli/azure/reference-index)paranccsal.
 

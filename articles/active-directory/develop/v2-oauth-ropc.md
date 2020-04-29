@@ -1,7 +1,7 @@
 ---
-title: Bejelentkezés az erőforrás-tulajdonosi jelszó hitelesítő adataival támogatás | Azure
+title: Jelentkezzen be az erőforrás-tulajdonos jelszava hitelesítő adataival | Azure
 titleSuffix: Microsoft identity platform
-description: Támogatja a böngésző nélküli hitelesítési folyamatokat az erőforrás-tulajdonosi jelszó hitelesítő adatok (ROPC) támogatás használatával.
+description: Támogatja a böngésző nélküli hitelesítési folyamatokat az erőforrás-tulajdonos jelszavas hitelesítő adatai (ROPC) megadása esetén.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,40 +14,40 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868651"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft identity platform és OAuth 2.0 Erőforrás-tulajdonos jelszóhitelesítő adatai
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform és OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatai
 
-A Microsoft identity platform támogatja az [OAuth 2.0 Erőforrás-tulajdonos i jelszóhitelesítő adatok (ROPC) támogatást,](https://tools.ietf.org/html/rfc6749#section-4.3)amely lehetővé teszi az alkalmazás számára, hogy közvetlenül kezelje a jelszót.  Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen.  Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
+A Microsoft Identity platform támogatja a [OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), amely lehetővé teszi, hogy az alkalmazás közvetlenül a jelszavának kezelésével jelentkezzen be a felhasználóba.  Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját.  Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
 > [!WARNING]
-> A Microsoft azt javasolja, hogy _ne_ használja a ROPC-folyamatot. A legtöbb esetben biztonságosabb alternatívák állnak rendelkezésre és ajánlottak. Ez az áramlás nagyon nagy fokú bizalmat igényel az alkalmazásiránt, és olyan kockázatokat hordoz, amelyek nincsenek jelen más folyamatokban. Ezt a folyamatot csak akkor használja, ha más biztonságosabb folyamatok nem használhatók.
+> A Microsoft azt javasolja, hogy _ne használja a_ ROPC folyamatot. A legtöbb esetben biztonságosabb alternatívák érhetők el és ajánlottak. Ennek a folyamatnak nagyon nagyfokú megbízhatóságra van szüksége az alkalmazásban, és olyan kockázatokat hordoz, amelyek nem jelennek meg más folyamatokban. Ezt a folyamatot csak akkor használja, ha a többi biztonságosabb folyamat nem használható.
 
 > [!IMPORTANT]
 >
-> * A Microsoft identity platform végpont csak az Azure AD-bérlők ROPC-jét támogatja, a személyes fiókokat nem. Ez azt jelenti, hogy bérlő-specifikus`https://login.microsoftonline.com/{TenantId_or_Name}`végpontot `organizations` ( ) vagy a végpontot kell használnia.
-> * Az Azure AD-bérlőbe meghívott személyes fiókok nem használhatják a ROPC-t.
-> * A jelszóval nem rendelkező fiókok nem tudnak bejelentkezni a ROPC-n keresztül. Ebben az esetben azt javasoljuk, hogy egy másik folyamatot használjon az alkalmazáshoz.
-> * Ha a felhasználóknak többtényezős hitelesítést (MFA) kell használniuk az alkalmazásba való bejelentkezéshez, akkor a rendszer le tiltja őket.
-> * A ROPC nem támogatott [a hibrid identitás-összevonási](/azure/active-directory/hybrid/whatis-fed) forgatókönyvekben (például a helyszíni fiókok hitelesítéséhez használt Azure AD és ADFS). Ha a felhasználók teljes oldalas átirányítása egy helyszíni identitásszolgáltatók, az Azure AD nem tudja tesztelni a felhasználónevet és a jelszót az adott identitásszolgáltatóval szemben. [Az átmenő hitelesítést](/azure/active-directory/hybrid/how-to-connect-pta) azonban a ROPC támogatja.
+> * A Microsoft Identity platform végpontja csak az Azure AD-bérlők ROPC támogatja, a személyes fiókokat nem. Ez azt jelenti, hogy a bérlő-specifikus végpontot (`https://login.microsoftonline.com/{TenantId_or_Name}`) vagy a `organizations` végpontot kell használnia.
+> * Az Azure AD-bérlők számára meghívott személyes fiókok nem használhatják a ROPC.
+> * Azok a fiókok, amelyeknek nincsenek jelszavai, nem jelentkezhetnek be a ROPC-on keresztül. Ennél a forgatókönyvnél azt javasoljuk, hogy ehelyett használjon egy másik folyamatot az alkalmazáshoz.
+> * Ha a felhasználóknak többtényezős hitelesítést (MFA) kell használniuk az alkalmazásba való bejelentkezéshez, a rendszer letiltja a helyet.
+> * A ROPC nem támogatott [hibrid identitás-összevonási](/azure/active-directory/hybrid/whatis-fed) forgatókönyvekben (például az Azure ad és a helyszíni fiókok hitelesítéséhez használt ADFS). Ha a felhasználók teljes körűen átirányítják a helyszíni identitás-szolgáltatókat, az Azure AD nem tudja tesztelni a felhasználónevet és a jelszót az identitás-szolgáltatón. Az [átmenő hitelesítés](/azure/active-directory/hybrid/how-to-connect-pta) a ROPC esetében is támogatott.
 
-## <a name="protocol-diagram"></a>Protokolldiagram
+## <a name="protocol-diagram"></a>Protokoll diagramja
 
-Az alábbi ábra a ROPC-folyamatot mutatja be.
+Az alábbi ábrán a ROPC folyamat látható.
 
-![Az erőforrás-tulajdonos jelszóhitelesítő adatfolyamát bemutató diagram](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Az erőforrás-tulajdonos jelszava hitelesítő folyamatát ábrázoló diagram](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Engedélyezési kérelem
 
-A ROPC-folyamat egyetlen kérelem: elküldi az ügyfélazonosítót és a felhasználó hitelesítő adatait az IDP-nek, majd jogkivonatokat kap cserébe. Az ügyfélnek ehhez meg kell kérnie a felhasználó e-mail címét (UPN) és jelszavát. Közvetlenül a sikeres kérés után az ügyfélnek biztonságosan fel kell szabadítania a felhasználó hitelesítő adatait a memóriából. Soha nem mentheti meg őket.
+A ROPC folyamat egyetlen kérelem: elküldi az ügyfél-azonosítót és a felhasználó hitelesítő adatait a IDENTITÁSSZOLGÁLTATÓ, majd visszaküldi a jogkivonatokat. Az ügyfélnek meg kell adnia a felhasználó e-mail-címét (UPN) és a jelszót. A sikeres kérelem után az ügyfélnek biztonságosan fel kell szabadítania a felhasználó hitelesítő adatait a memóriából. Soha nem kell mentenie őket.
 
 > [!TIP]
-> Próbálja meg végrehajtani ezt a kérést a Postman!
-> [![Próbálja meg futtatni ezt a kérést a Postman ben](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Próbálja meg végrehajtani a kérelmet postán!
+> [![Próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```HTTP
@@ -66,14 +66,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | Az a címtár-bérlő, amelybe a felhasználót be szeretné jelentkezni. Ez lehet GUID vagy rövid név formátumban. Ez a paraméter nem `common` állítható `consumers`be a vagy `organizations`a ikonra, de lehet. |
-| `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amely az [Azure Portal – App regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap az alkalmazáshoz rendelt. |
-| `grant_type` | Kötelező | A beállításnak `password`a beállítására kell beállítható. |
+| `tenant` | Kötelező | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy `consumers`értékre, de beállítható `organizations`a következőre:. |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. |
+| `grant_type` | Kötelező | Értékre kell állítani `password`. |
 | `username` | Kötelező | A felhasználó e-mail címe. |
 | `password` | Kötelező | A felhasználó jelszava. |
-| `scope` | Ajánlott | Az alkalmazás által [igényelt, térelválasztott hatókörök](v2-permissions-and-consent.md)vagy engedélyek listája. Egy interaktív folyamat, a rendszergazda vagy a felhasználó nak hozzá kell járulnia, hogy ezeket a hatóköröket előre. |
-| `client_secret`| Néha szükséges | Ha az alkalmazás nyilvános ügyfél, `client_secret` `client_assertion` akkor a vagy nem vehető fel.  Ha az alkalmazás bizalmas ügyfél, akkor azt is tartalmaznia kell. |
-| `client_assertion` | Néha szükséges | A tanúsítvány `client_secret`segítségével létrehozott, a alkalmazás egy másik formája.  További részleteket a [tanúsítványhitelesítő](active-directory-certificate-credentials.md) adatok ban talál. |
+| `scope` | Ajánlott | Az alkalmazás által igényelt [hatókörök](v2-permissions-and-consent.md)vagy engedélyek szóközzel tagolt listája. Egy interaktív folyamat során a rendszergazdának vagy a felhasználónak meg kell adnia a hatókörét az idő előtt. |
+| `client_secret`| Néha szükséges | Ha az alkalmazás nyilvános ügyfél, akkor a vagy `client_secret` `client_assertion` a nem vehető fel.  Ha az alkalmazás bizalmas ügyfél, akkor azt is tartalmaznia kell. |
+| `client_assertion` | Néha szükséges | Egy másik formája `client_secret`, amely egy tanúsítvány használatával lett létrehozva.  További részletekért tekintse meg a [tanúsítvány hitelesítő adatait](active-directory-certificate-credentials.md) . |
 
 ### <a name="successful-authentication-response"></a>Sikeres hitelesítési válasz
 
@@ -92,25 +92,25 @@ A következő példa egy sikeres jogkivonat-választ mutat be:
 
 | Paraméter | Formátum | Leírás |
 | --------- | ------ | ----------- |
-| `token_type` | Sztring | Mindig a `Bearer`beállítás . |
-| `scope` | Szóköz elválasztott karakterláncok | Ha egy hozzáférési jogkivonatot adott vissza, ez a paraméter felsorolja azokat a hatóköröket, amelyekre a hozzáférési jogkivonat érvényes. |
-| `expires_in`| int | Azon másodpercek száma, amerre a mellékelt hozzáférési jogkivonat érvényes. |
-| `access_token`| Átlátszatlan karakterlánc | A kért [hatókörökhöz](v2-permissions-and-consent.md) kiállítva. |
-| `id_token` | Jwt | Akkor van `scope` kiadva, `openid` ha az eredeti paraméter tartalmazza a hatókört. |
-| `refresh_token` | Átlátszatlan karakterlánc | Kiadva, `scope` ha `offline_access`az eredeti paraméter is benne van. |
+| `token_type` | Sztring | Mindig állítsa be `Bearer`a következőt:. |
+| `scope` | Szóközzel tagolt karakterláncok | Ha egy hozzáférési jogkivonatot adott vissza, akkor ez a paraméter felsorolja azokat a hatóköröket, amelyekhez a hozzáférési jogkivonat érvényes. |
+| `expires_in`| int | Azon másodpercek száma, ameddig a tartalmazott hozzáférési jogkivonat érvényes. |
+| `access_token`| Átlátszatlan karakterlánc | A kért [hatókörökhöz](v2-permissions-and-consent.md) lett kiállítva. |
+| `id_token` | JWT | Kiadva, ha `scope` az eredeti paraméter `openid` tartalmazza a hatókört. |
+| `refresh_token` | Átlátszatlan karakterlánc | Kiadva, ha `scope` az eredeti `offline_access`paraméter szerepel. |
 
-A frissítési jogkivonat segítségével új hozzáférési jogkivonatokat és frissítési jogkivonatokat szerezhet az [OAuth-kód folyamatdokumentációjában](v2-oauth2-auth-code-flow.md#refresh-the-access-token)leírt ugyanazon folyamat használatával.
+A frissítési jogkivonattal új hozzáférési jogkivonatok szerezhetők be, és a tokenek frissítése a [OAuth-programkód dokumentációjában](v2-oauth2-auth-code-flow.md#refresh-the-access-token)ismertetett folyamattal megegyező folyamat használatával végezhető el.
 
-### <a name="error-response"></a>Hibaválasz
+### <a name="error-response"></a>Hiba válasza
 
-Ha a felhasználó nem adta meg a megfelelő felhasználónevet vagy jelszót, vagy az ügyfél nem kapta meg a kért hozzájárulást, a hitelesítés sikertelen lesz.
+Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy az ügyfél nem kapta meg a kért beleegyezett, a hitelesítés sikertelen lesz.
 
-| Hiba | Leírás | Ügyfélművelet |
+| Hiba | Leírás | Ügyfél művelete |
 |------ | ----------- | -------------|
-| `invalid_grant` | A hitelesítés nem sikerült | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik a kért hatókörök höz. Ha a hatókörök nem adhatók meg, a `consent_required` rendszer hibát ad vissza. Ebben az esetben az ügyfélnek egy interaktív üzenetre kell küldenie a felhasználót egy webnézet vagy böngésző használatával. |
-| `invalid_request` | A kérelmet nem megfelelően építették | A támogatás típusa nem támogatott `/common` `/consumers` a vagy a hitelesítési környezetben.  Használja, `/organizations` vagy egy bérlői azonosító helyett. |
+| `invalid_grant` | A hitelesítés sikertelen | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik beleegyezik a kért hatókörökkel. Ha a hatókörök nem lettek megadva `consent_required` , a rendszer hibaüzenetet küld. Ha ez történik, az ügyfélnek egy interaktív üzenetbe kell küldenie a felhasználót egy webnézet vagy egy böngésző használatával. |
+| `invalid_request` | A kérés nem megfelelően lett kiépítve | A támogatás típusa nem támogatott a vagy `/common` `/consumers` a hitelesítési környezetekben.  Ehelyett `/organizations` használjon vagy egy bérlői azonosítót. |
 
 ## <a name="learn-more"></a>Részletek
 
-* Próbálja ki a ROPC-t saját maga a [mintakonzol alkalmazássegítségével.](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
-* Annak megállapításához, hogy a 2.0-s verziós végpontot kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
+* Próbálja ki a ROPC a [minta konzol alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)használatával.
+* Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt.

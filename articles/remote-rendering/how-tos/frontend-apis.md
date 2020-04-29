@@ -1,26 +1,26 @@
 ---
-title: Azure előtér-API-k a hitelesítéshez
-description: A C# előtér API hitelesítéshez való használata
+title: Azure frontend API-k hitelesítéshez
+description: A cikk azt ismerteti, hogyan használható a C# felületi API a hitelesítéshez
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.openlocfilehash: 04296a3dab61fdb569126abc1bc1f975d69e226d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681349"
 ---
-# <a name="use-the-azure-frontend-apis-for-authentication"></a>Az Azure előtér-API-k használata a hitelesítéshez
+# <a name="use-the-azure-frontend-apis-for-authentication"></a>Hitelesítés az Azure előtérbeli API-k használatával
 
-Ebben a szakaszban bemutatjuk, hogyan használhatja a C# API-t a hitelesítéshez.
+Ebben a szakaszban bemutatjuk, hogyan használható a C# API a hitelesítéshez.
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 
-Az AzureFrontendAccountInfo segítségével állítsa be az ```AzureFrontend``` SDK-ban egy példány hitelesítési adatait.
+A AzureFrontendAccountInfo egy ```AzureFrontend``` példány hitelesítési adatainak beállítására szolgál az SDK-ban.
 
-A legfontosabb területek a következők:
+A fontos mezők a következők:
 
 ```cs
 
@@ -41,29 +41,29 @@ A legfontosabb területek a következők:
 
 ```
 
-A tartomány _régiórészéhez_ használjon az [Ön közelében lévő régiót.](../reference/regions.md)
+A tartomány _régió_ részén használja az [Önhöz közeli régiót](../reference/regions.md).
 
-A fiókadatok a portálról szerezhetők be a [fiókadatok lekérése](create-an-account.md#retrieve-the-account-information) című bekezdésben leírtak szerint.
+A fiókadatok beszerezhetők a portálról a [fiókadatok beolvasása](create-an-account.md#retrieve-the-account-information) bekezdésben leírtak szerint.
 
-## <a name="azure-frontend"></a>Azure előtér
+## <a name="azure-frontend"></a>Azure-előtérbeli felület
 
-A vonatkozó osztályok ```AzureFrontend``` ```AzureSession```és . ```AzureFrontend```a fiókkezelés és a fiókszintű funkciók, amelyek magukban foglalják: eszközkonverzió és renderelés munkamenet létrehozása. ```AzureSession```a munkamenetszintű funkciókhoz használatos, és a következőket tartalmazza: munkamenet-frissítés, lekérdezések, megújítás és leszerelés.
+A megfelelő osztályok a ```AzureFrontend``` és ```AzureSession```a. ```AzureFrontend```a a fiókok felügyeletéhez és a fiókok szintjének működéséhez használatos, beleértve a következőket: eszközök átalakítása és renderelési munkamenetek létrehozása. ```AzureSession```a munkamenet-szintű funkciókhoz használatos, és a következőket tartalmazza: munkamenet frissítése, lekérdezések, megújítása és leszerelése.
 
-Minden megnyitott/létrehozott ```AzureSession``` megőrzi a létrehozott előtérre mutató hivatkozást. A tiszta leállításhoz az előtér felhívása előtt minden munkamenetet fel kell osztani.
+A rendszer minden megnyitott ```AzureSession``` /létrehozott, a létrehozott előtérre mutató hivatkozást vezet. A tisztításhoz az összes munkamenetet fel kell szabadítani, mielőtt a rendszer kiosztja a felületet.
 
-Deallocating egy munkamenet nem állítja le `AzureSession.StopAsync` a virtuális gép az Azure-ban, explicit módon meg kell hívni.
+A munkamenet felszabadítása nem állítja le a virtuális gépet az Azure- `AzureSession.StopAsync` ban, explicit módon meg kell hívni.
 
-Miután létrehozott egy munkamenetet, és állapota készen áll, csatlakozhat a távoli `AzureSession.ConnectToRuntime`renderelési futásidőhöz a segítségével.
+Miután létrehozta a munkamenetet, és az állapota készként van megjelölve, csatlakozhat a távoli renderelési futtatókörnyezethez a `AzureSession.ConnectToRuntime`következővel:.
 
-### <a name="threading"></a>Fonál
+### <a name="threading"></a>Threading
 
-Minden AzureSession és AzureFrontend async-hívás egy háttérszálon, nem pedig a fő alkalmazásszálban fejeződik be.
+Az összes AzureSession és AzureFrontend aszinkron hívás egy háttérben futó szálban fejeződik be, nem pedig a fő alkalmazás szála.
 
-### <a name="conversion-apis"></a>Konverziós API-k
+### <a name="conversion-apis"></a>Átalakítási API-k
 
-A konverziós szolgáltatásról további információt [a modellkonvertáló REST API című témakörben](conversion/conversion-rest-api.md)talál.
+Az átalakítási szolgáltatással kapcsolatos további információkért tekintse meg [a modell átalakítási REST API](conversion/conversion-rest-api.md).
 
-#### <a name="start-asset-conversion"></a>Eszközátalakítás megkezdése
+#### <a name="start-asset-conversion"></a>Eszköz átalakításának indítása
 
 ``` cs
 private StartConversionAsync _pendingAsync = null;
@@ -89,7 +89,7 @@ void StartAssetConversion(AzureFrontend frontend, string modelName, string model
 }
 ```
 
-#### <a name="get-conversion-status"></a>Konverziós állapot beszerezni
+#### <a name="get-conversion-status"></a>Konverziós állapot beolvasása
 
 ``` cs
 private ConversionStatusAsync _pendingAsync = null
@@ -113,11 +113,11 @@ void GetConversionStatus(AzureFrontend frontend, string assetId)
 }
 ```
 
-### <a name="rendering-apis"></a>API-k renderelése
+### <a name="rendering-apis"></a>Renderelési API-k
 
-A munkamenet-kezelés sel kapcsolatos részleteket a munkamenet-kezelés sel kapcsolatos részletekért tekintse meg [a munkamenet-kezelés.](session-rest-api.md)
+A munkamenetek kezelésével kapcsolatos részletekért tekintse meg [a munkamenet-felügyeleti REST API](session-rest-api.md) .
 
-A renderelési munkamenet dinamikusan is létrehozható a szolgáltatáson, vagy egy már meglévő munkamenet-azonosító "megnyitható" egy AzureSession-objektumba.
+A renderelési munkamenetek dinamikusan hozhatók létre a szolgáltatásban, vagy egy már meglévő munkamenet-azonosító is megnyitható egy AzureSession objektumban.
 
 #### <a name="create-rendering-session"></a>Renderelési munkamenet létrehozása
 
@@ -146,7 +146,7 @@ void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSiz
 
 #### <a name="open-an-existing-rendering-session"></a>Meglévő renderelési munkamenet megnyitása
 
-Egy meglévő munkamenet megnyitása szinkronhívás.
+Egy meglévő munkamenet megnyitása szinkron hívás.
 
 ``` cs
 void CreateRenderingSession(AzureFrontend frontend, string sessionId)
@@ -156,7 +156,7 @@ void CreateRenderingSession(AzureFrontend frontend, string sessionId)
 }
 ```
 
-#### <a name="get-current-rendering-sessions"></a>Aktuális megjelenítési munkamenetek beszereznie
+#### <a name="get-current-rendering-sessions"></a>Aktuális renderelési munkamenetek beolvasása
 
 ``` cs
 private SessionPropertiesArrayAsync _pendingAsync = null;
@@ -181,7 +181,7 @@ void GetCurrentRenderingSessions(AzureFrontend frontend)
 
 ### <a name="session-apis"></a>Munkamenet API-k
 
-#### <a name="get-rendering-session-properties"></a>Renderelési munkamenet tulajdonságainak beszereznie
+#### <a name="get-rendering-session-properties"></a>Renderelési munkamenet tulajdonságainak beolvasása
 
 ``` cs
 private SessionPropertiesAsync _pendingAsync = null;
@@ -228,7 +228,7 @@ void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 }
 ```
 
-#### <a name="stop-rendering-session"></a>Megjelenítés leállítása
+#### <a name="stop-rendering-session"></a>Renderelési munkamenet leállítása
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -251,7 +251,7 @@ void StopRenderingSession(AzureSession session)
 }
 ```
 
-#### <a name="connect-to-arr-inspector"></a>Csatlakozás az ARR-ellenőrhöz
+#### <a name="connect-to-arr-inspector"></a>Kapcsolódás az ARR Inspector-hoz
 
 ``` cs
 private ArrInspectorAsync _pendingAsync = null;
@@ -289,4 +289,4 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ## <a name="next-steps"></a>További lépések
 
 * [Fiók létrehozása](create-an-account.md)
-* [Példa PowerShell-parancsfájlokra](../samples/powershell-example-scripts.md)
+* [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)

@@ -1,6 +1,6 @@
 ---
-title: Több bérlői interakció jellemzői - Azure AD | Microsoft dokumentumok
-description: Az Azure Active Directory-bérlők ismertetése teljesen független szervezetként
+title: Több bérlői interakció jellemzői – Azure AD | Microsoft Docs
+description: Azure Active Directory bérlők teljes mértékben független szervezetekként való megismerése
 services: active-tenant
 documentationcenter: ''
 author: curtand
@@ -15,44 +15,44 @@ ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878119"
 ---
-# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Ismerje meg, hogyan működik együtt több Azure Active Directory-szervezet
+# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Ismerje meg, hogyan hatnak több Azure Active Directory szervezet
 
-Az Azure Active Directoryban (Azure AD) minden bérlő egy teljesen független szervezet: egy társ, amely logikailag független a többi Azure AD-szervezetek, amelyek et kezel. A szervezetek közötti függetlenség magában foglalja az erőforrások függetlenségét, a felügyeleti függetlenséget és a szinkronizálás függetlenségét. Nincs szülő-gyermek kapcsolat a szervezetek között.
+Az Azure Active Directory (Azure AD) minden bérlő egy teljesen független szervezet: olyan társ, amely logikailag független a felügyelt többi Azure AD-szervezettől. A szervezetek közötti függetlenség magában foglalja az erőforrások függetlenségét, a felügyelet függetlenségét és a szinkronizálás függetlenségét. A szervezetek között nincs szülő-gyermek kapcsolat.
 
 ## <a name="resource-independence"></a>Erőforrás-függetlenség
 
-* Ha létrehoz vagy töröl egy Azure AD-erőforrást az egyik szervezetben, az nincs hatással egy másik szervezet egyetlen erőforrására sem, a külső felhasználók részleges kivételével.
-* Ha regisztrál egy tartománynevet egy szervezetnél, azt más szervezet nem használhatja.
+* Ha egy szervezeten belül hoz létre vagy töröl egy Azure AD-erőforrást, az nem érinti a többi szervezet erőforrásait, a külső felhasználók részleges kivételével.
+* Ha egy szervezetnél regisztrálja az egyik tartománynevet, azt más szervezetek nem használhatják.
 
-## <a name="administrative-independence"></a>Közigazgatási függetlenség
+## <a name="administrative-independence"></a>Rendszergazdai függetlenség
 
-Ha a "Contoso" szervezet nem rendszergazda felhasználója létrehoz egy "Teszt" tesztszervezetet, akkor:
+Ha a "contoso" szervezet nem rendszergazda felhasználója létrehoz egy test Organization "test" tesztet, akkor:
 
-* Alapértelmezés szerint a szervezetet létrehozó felhasználó külső felhasználóként kerül hozzáadásra az új szervezetben, és hozzárendeli a globális rendszergazdai szerepkört az adott szervezetben.
-* A "Contoso" szervezet rendszergazdái nem rendelkeznek közvetlen rendszergazdai jogosultságokkal a "Test" szervezethez, kivéve, ha a "Test" rendszergazdája kifejezetten megadja nekik ezeket a jogosultságokat. A "Contoso" rendszergazdái azonban szabályozhatják a "Test" szervezethez való hozzáférést, ha ők irányítják a "Teszt" felhasználói fiókot.
-* Ha egy szervezet ben lévő felhasználóhoz hozzáad vagy eltávolít egy Azure AD-szerepkört, a módosítás nincs hatással a felhasználó bármely más Azure AD-szervezetben hozzárendelt szerepköreire.
+* Alapértelmezés szerint a szervezetet létrehozó felhasználó külső felhasználóként lesz hozzáadva az új szervezethez, és hozzárendelte a globális rendszergazdai szerepkört az adott szervezethez.
+* A "contoso" szervezet rendszergazdái nem rendelkeznek közvetlen rendszergazdai jogosultsággal a (z) "test" szervezethez, kivéve, ha a "test" rendszergazdája kifejezetten megadja nekik ezeket a jogosultságokat. A "contoso" rendszergazdái azonban szabályozhatják a "teszt" szervezet hozzáférését, ha a "test" nevű felhasználói fiókot vezérlik.
+* Ha egy szervezetben egy felhasználóhoz ad hozzá vagy távolít el egy Azure AD-szerepkört, a változás nem érinti azokat a szerepköröket, amelyeket a felhasználó más Azure AD-szervezethez rendelt.
 
-## <a name="synchronization-independence"></a>A szinkronizálás függetlensége
+## <a name="synchronization-independence"></a>Szinkronizálási függetlenség
 
-Az egyes Azure AD-szervezetek egymástól függetlenül konfigurálhatók az adatok egyetlen példányából történő szinkronizáláshoz:
+Az egyes Azure AD-szervezeteket egymástól függetlenül konfigurálhatja:
 
-* Az Azure AD Connect eszköz, az adatok szinkronizálásához egyetlen AD erdővel.
-* Az Azure Active Directory-összekötő forefront Identity Manager, adatok szinkronizálására egy vagy több helyszíni erdők és/vagy nem Azure AD adatforrások.
+* Az Azure AD Connect eszköz egyetlen AD-erdővel történő szinkronizáláshoz.
+* A Forefront Identity Manager Azure Active Directory-összekötője, amely egy vagy több helyszíni erdővel és/vagy nem Azure AD-adatforrásokkal szinkronizálja az adatokat.
 
 ## <a name="add-an-azure-ad-organization"></a>Azure AD-szervezet hozzáadása
 
-Ha azure AD-szervezetet szeretne hozzáadni az Azure Portalon, jelentkezzen be [az Azure Portalra](https://portal.azure.com) egy Azure AD globális rendszergazdai fiókkal, és válassza az **Új**lehetőséget.
+Ha Azure AD-szervezetet szeretne felvenni a Azure Portalba, jelentkezzen be [a Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely az Azure ad globális rendszergazdája, és válassza az **új**lehetőséget.
 
 > [!NOTE]
-> Más Azure-erőforrásokkal ellentétben az Azure AD-szervezetek nem azure-előfizetés gyermekerőforrásai. Ha az Azure-előfizetése levan mondva vagy lejárt, továbbra is hozzáférhet az Azure AD-szervezet adataihoz az Azure PowerShell, a Microsoft Graph API vagy a Microsoft 365 felügyeleti központ használatával. A [szervezethez másik előfizetést](../fundamentals/active-directory-how-subscriptions-associated-directory.md)is társíthat.
+> A többi Azure-erőforrástól eltérően az Azure AD-szervezetek nem az Azure-előfizetések alárendelt erőforrásai. Ha az Azure-előfizetését megszakították vagy lejártak, az Azure AD-szervezet adatait Azure PowerShell, a Microsoft Graph API-val vagy a Microsoft 365 felügyeleti központtal is elérheti. [Egy másik előfizetést is társíthat a szervezethez](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD licencelési szempontjait és gyakorlati tanácsait a [Mi az Azure Active Directory licencelése című témakörben.](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+Az Azure AD licencelési szempontjaival és az ajánlott eljárásokkal kapcsolatban lásd: [Mi a Azure Active Directory Licensing?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).

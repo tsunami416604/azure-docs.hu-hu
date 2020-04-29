@@ -1,36 +1,36 @@
 ---
-title: Olvasási replikák kezelése - Azure CLI, REST API - Azure Database for MariaDB
-description: Ez a cikk ismerteti, hogyan állíthatja be és kezelheti az olvasási replikákat az Azure Database for MariaDB-ben az Azure CLI és REST API használatával.
+title: Olvasási replikák kezelése – Azure CLI, REST API-Azure Database for MariaDB
+description: Ez a cikk bemutatja, hogyan állíthatja be és kezelheti az olvasási replikákat Azure Database for MariaDB az Azure CLI és a REST API használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/21/2020
 ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025050"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a MariaDB Azure Database-ben az Azure CLI és REST API használatával
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB az Azure CLI és a REST API használatával
 
-Ebben a cikkben megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat az Azure Database for MariaDB szolgáltatásban az Azure CLI és REST API használatával.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat a Azure Database for MariaDB szolgáltatásban az Azure CLI és a REST API használatával.
 
 ## <a name="azure-cli"></a>Azure CLI
-Az Azure CLI használatával olvasási replikákat hozhat létre és kezelhet.
+Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelheti.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- [Az Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- A Főkiszolgálóként használt [Azure-adatbázis a MariaDB-kiszolgálóhoz.](quickstart-create-mariadb-server-database-using-azure-portal.md) 
+- [Az Azure CLI 2,0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- Egy [Azure Database for MariaDB kiszolgáló](quickstart-create-mariadb-server-database-using-azure-portal.md) , amely főkiszolgálóként lesz felhasználva. 
 
 > [!IMPORTANT]
-> Az olvasási replika funkció csak az Azure Database for MariaDB-kiszolgálók az általános célú vagy a memória optimalizált tarifacsomagok hoz érhető el. Győződjön meg arról, hogy a főkiszolgáló a következő tarifacsomagok egyikében található.
+> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MariaDB-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
 
-### <a name="create-a-read-replica"></a>Olvasott kópia létrehozása
+### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 
-Az olvasási replikakiszolgáló a következő paranccsal hozható létre:
+A következő paranccsal hozhat létre olvasási replika-kiszolgálót:
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
@@ -40,25 +40,25 @@ A `az mariadb server replica create` parancshoz a következő paraméterek szük
 
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  Az az erőforráscsoport, ahová a replikakiszolgáló létre jön.  |
-| név | mydemoreplicaserver | A létrehozott új replikakiszolgáló neve. |
-| source-server | mydemoserver | A replikálandó meglévő főkiszolgáló neve vagy azonosítója. |
+| resource-group |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
+| név | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
+| source-server | mydemoserver | A replikálni kívánt létező főkiszolgáló neve vagy azonosítója. |
 
-Régióközi olvasási replika `--location` létrehozásához használja a paramétert. 
+Egy több régióból származó olvasási replika létrehozásához használja `--location` a paramétert. 
 
-Az alábbi CLI-példa létrehozza a replika az USA nyugati részén.
+Az alábbi CLI-példa létrehozza a replikát az USA nyugati régiójában.
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 > [!NOTE]
-> Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre kópiát, olvassa el a [replikaolvasással kapcsolatos útmutatóról szóló cikket.](concepts-read-replicas.md) 
+> Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
 
 > [!NOTE]
-> Az olvasási kópiák a főkiszolgálóval azonos kiszolgálókonfigurációval jönnek létre. A replikakiszolgáló konfigurációja a létrehozás után módosítható. Ajánlott, hogy a replikakiszolgáló konfigurációját a főkiszolgálóval azonos vagy nagyobb értékeken kell tartani annak biztosítása érdekében, hogy a replika lépést tud tartani a főkiszolgálóval.
+> Az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a főkiszolgáló. A replika-kiszolgáló konfigurációja a létrehozása után módosítható. Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a főkiszolgálónál egyenlő vagy nagyobb értékekkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
 
-### <a name="list-replicas-for-a-master-server"></a>Főkiszolgáló kópiáinak listázása
+### <a name="list-replicas-for-a-master-server"></a>Főkiszolgáló replikáinak listázása
 
 Egy adott főkiszolgáló összes replikájának megtekintéséhez futtassa a következő parancsot: 
 
@@ -70,15 +70,15 @@ A `az mariadb server replica list` parancshoz a következő paraméterek szüks�
 
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  Az az erőforráscsoport, ahová a replikakiszolgáló létre jön.  |
+| resource-group |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | server-name | mydemoserver | A főkiszolgáló neve vagy azonosítója. |
 
-### <a name="stop-replication-to-a-replica-server"></a>A replikakiszolgálóra irányuló replikáció leállítása
+### <a name="stop-replication-to-a-replica-server"></a>Replikálás megszakítása egy másodpéldány-kiszolgálón
 
 > [!IMPORTANT]
-> A kiszolgálóra irányuló replikáció leállítása visszafordíthatatlan. Ha a replikáció leállt a főkiszolgáló és a replika között, azt nem lehet visszavonni. A replikakiszolgáló ezután önálló kiszolgálóvá válik, és mostantól támogatja az olvasást és az írást is. Ez a kiszolgáló nem hozható elő újra kópiává.
+> A kiszolgálók replikálásának leállítása visszafordíthatatlan. Miután leállította a replikálást egy fő és egy replika között, nem vonható vissza. A replika-kiszolgáló ezután önálló kiszolgáló lesz, és már támogatja az olvasást és az írást is. Ez a kiszolgáló nem hozható létre újra replikába.
 
-Az olvasási replikakiszolgálóra történő replikáció a következő paranccsal leállítható:
+Az olvasási replika kiszolgálóra való replikálás a következő parancs használatával állítható le:
 
 ```azurecli-interactive
 az mariadb server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
@@ -88,12 +88,12 @@ A `az mariadb server replica stop` parancshoz a következő paraméterek szüks�
 
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  Az az erőforráscsoport, ahol a replikakiszolgáló létezik.  |
-| név | mydemoreplicaserver | A replikációt leállító replikakiszolgáló neve. |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a replika-kiszolgáló létezik.  |
+| név | mydemoreplicaserver | Annak a replika-kiszolgálónak a neve, amelyen a replikálást le kell állítani. |
 
-### <a name="delete-a-replica-server"></a>Replikakiszolgáló törlése
+### <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
 
-Az olvasási replikakiszolgáló törlése az **[az mariadb kiszolgáló törlési](/cli/azure/mariadb/server)** parancsának futtatásával végezhető el.
+Az olvasási replika kiszolgálójának törléséhez futtassa az az **[MariaDB Server delete](/cli/azure/mariadb/server)** parancsot.
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -104,17 +104,17 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoreplicase
 > [!IMPORTANT]
 > A főkiszolgáló törlése leállítja a replikálást az összes replikakiszolgálón, magát a főkiszolgálót pedig törli. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
 
-Főkiszolgáló törléséhez futtassa az **[az mariadb kiszolgáló törlési](/cli/azure/mariadb/server)** parancsát.
+A főkiszolgálók törléséhez futtassa az az **[MariaDB Server delete](/cli/azure/mariadb/server)** parancsot.
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
 ## <a name="rest-api"></a>REST API
-Az [Azure REST API használatával](/rest/api/azure/)olvasási replikákat hozhat létre és kezelhet.
+Az olvasási replikákat az [Azure REST API](/rest/api/azure/)használatával hozhatja létre és kezelheti.
 
-### <a name="create-a-read-replica"></a>Olvasott kópia létrehozása
-Az [API-létrehozás imént](/rest/api/mariadb/servers/create)létrehozhat egy olvasási replikát:
+### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
+Olvasási replikát a [create API](/rest/api/mariadb/servers/create)használatával hozhat létre:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{replicaName}?api-version=2017-12-01
@@ -131,27 +131,27 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!NOTE]
-> Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre kópiát, olvassa el a [replikaolvasással kapcsolatos útmutatóról szóló cikket.](concepts-read-replicas.md) 
+> Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
 
-Ha nem állította be `azure.replication_support` a **paramétert a REPLICA-ra** egy általános célú vagy memóriaoptimalizált főkiszolgálón, és újraindította a kiszolgálót, hibaüzenet jelenik meg. A kópia létrehozása előtt hajtsa végre ezt a két lépést.
+Ha nem állította be a `azure.replication_support` paramétert egy általános célú vagy memóriára optimalizált főkiszolgálón lévő **replika** számára, és újraindítja a kiszolgálót, hibaüzenetet kap. A replika létrehozása előtt végezze el a két lépést.
 
-A kópia a főkiszolgálóval azonos számítási és tárolási beállításokkal jön létre. A replika létrehozása után számos beállítás módosítható a fő kiszolgálótól függetlenül: számítási generálás, virtuális magok, tárolás és biztonsági másolat megőrzési időszak. A tarifacsomag is lehet változtatni egymástól függetlenül, kivéve, hogy vagy az alapszintű szintről.
+A replika ugyanazokkal a számítási és tárolási beállításokkal jön létre, mint a főkiszolgáló. A replika létrehozása után több beállítás is módosítható a főkiszolgálótól függetlenül: számítási generáció, virtuális mag, tárterület és biztonsági mentési megőrzési időszak. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
 
 
 > [!IMPORTANT]
-> Mielőtt a főkiszolgáló-beállítás új értékre frissülne, frissítse a replikabeállítást azonos vagy nagyobb értékre. Ez a művelet segít a kópiának lépést tartani a főkiszolgálón végzett módosításokkal.
+> A főkiszolgálói beállítás új értékre való frissítése előtt frissítse a replika beállításait egy egyenlő vagy nagyobb értékre. Ez a művelet segíti a replikát a főkiszolgálón végrehajtott bármilyen módosítással.
 
 ### <a name="list-replicas"></a>Replikák listázása
-A főkiszolgáló kópiáinak listáját a [replikalista API](/rest/api/mariadb/replicas/listbyserver)használatával tekintheti meg:
+A Master Server replikáinak listáját a [replika lista API](/rest/api/mariadb/replicas/listbyserver)használatával tekintheti meg:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>A replikakiszolgálóra irányuló replikáció leállítása
-A főkiszolgáló és az olvasási kópia közötti replikációleállítható a [frissítési API használatával.](/rest/api/mariadb/servers/update)
+### <a name="stop-replication-to-a-replica-server"></a>Replikálás megszakítása egy másodpéldány-kiszolgálón
+A [frissítési API](/rest/api/mariadb/servers/update)használatával leállíthatja a replikációt a főkiszolgáló és az olvasási replika között.
 
-Miután leállította a replikációt a főkiszolgálóra és az olvasási replikára, azt nem lehet visszavonni. Az olvasási replika önálló kiszolgálóvá válik, amely támogatja az olvasást és az írást. Az önálló kiszolgáló nem alakítható újra kópiává.
+Miután leállította a replikálást egy főkiszolgálóra és egy olvasási replikára, nem vonható vissza. Az olvasási replika önálló kiszolgáló lesz, amely támogatja az olvasást és az írást is. Az önálló kiszolgáló nem hozható létre újra replikába.
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}?api-version=2017-12-01
@@ -165,10 +165,10 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>Fő- vagy replikakiszolgáló törlése
-Fő- vagy replikakiszolgáló törléséhez használja a [delete API-t:](/rest/api/mariadb/servers/delete)
+### <a name="delete-a-master-or-replica-server"></a>Fő-vagy replika-kiszolgáló törlése
+A fő-vagy a replika-kiszolgáló törléséhez használja a [delete API](/rest/api/mariadb/servers/delete)-t:
 
-Főkiszolgáló törlésekor az összes olvasási replikára történő replikáció leáll. Az olvasási replikák önálló kiszolgálókká válnak, amelyek mostantól támogatják az olvasást és az írást is.
+Főkiszolgáló törlésekor a rendszer leállítja a replikálást az összes olvasási replikára. Az olvasási replikák olyan önálló kiszolgálók lesznek, amelyek már támogatják az olvasást és az írást is.
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}?api-version=2017-12-01
@@ -177,4 +177,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [olvasott a kópiákról](concepts-read-replicas.md)
+- További információ az [olvasási replikáról](concepts-read-replicas.md)

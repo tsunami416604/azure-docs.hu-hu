@@ -1,6 +1,6 @@
 ---
-title: OAuth 2.0 ügyfél hitelesítő adatok áramlását a Microsoft identitás platform | Azure
-description: Webalkalmazásokat hozhat létre az OAuth 2.0 hitelesítési protokoll Microsoft identitásplatform-implementációjával.
+title: OAuth 2,0 ügyfél-hitelesítő adatok folyamata a Microsoft Identity platformon | Azure
+description: Hozzon létre webalkalmazásokat a OAuth 2,0 hitelesítési protokoll Microsoft Identity platform-implementációjának használatával.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,82 +13,82 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 36a5fdf990432e3a41cf8fc578fa20b4910250b2
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868442"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>A Microsoft identity platform és az OAuth 2.0 ügyfélhitelesítő adatok folyamata
+# <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata
 
-Az [OAuth 2.0 ügyfél hitelesítő adatok megadása](https://tools.ietf.org/html/rfc6749#section-4.4) a 6749-es számú RFC-ben , más néven *kétlábú OAuth-ban*található ügyfélhitelesítő adatok használatával egy alkalmazás identitásának használatával érheti el a weben tárolt erőforrásokat. Az ilyen típusú támogatást gyakran használják a kiszolgálók közötti interakciókhoz, amelyeknek a háttérben kell futniuk, a felhasználóval való azonnali interakció nélkül. Az ilyen típusú alkalmazásokat gyakran démonnak vagy *szolgáltatásfióknak* *nevezik* .
+Használhatja az RFC 6749-ben megadott [OAuth 2,0 ügyfél-hitelesítő adatokat](https://tools.ietf.org/html/rfc6749#section-4.4) , más néven *kétlábú OAuth*, hogy a webkiszolgálók hozzáférhessenek az alkalmazások identitásának használatával. Ezt a típust általában olyan kiszolgálók közötti interakciók esetén használják, amelyeknek a háttérben kell futniuk, anélkül, hogy a felhasználóval való azonnali interakcióra lenne szükség. Ezeket az alkalmazásokat gyakran *démonoknak* vagy *szolgáltatásfiókoknek*nevezzük.
 
-Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen. Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
+Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját. Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
-Az OAuth 2.0 ügyfél hitelesítő adatok at flow lehetővé teszi a webszolgáltatás (bizalmas ügyfél) a saját hitelesítő adatait, ahelyett, hogy megszemélyesíteni a felhasználó, hitelesítése, ha egy másik webszolgáltatás hívása. Ebben a forgatókönyvben az ügyfél általában egy középső rétegű webszolgáltatás, egy démonszolgáltatás vagy egy webhely. A magasabb szintű biztonság érdekében a Microsoft identity platform azt is lehetővé teszi, hogy a hívó szolgáltatás egy tanúsítványt használjon (a közös titok helyett) hitelesítő adatként.
+A OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamata lehetővé teszi egy webszolgáltatás (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát a felhasználó megszemélyesítése helyett a hitelesítéshez egy másik webszolgáltatás hívásakor. Ebben az esetben az ügyfél általában egy közepes szintű webszolgáltatás, egy démon-szolgáltatás vagy egy webhely. A Microsoft Identity platform lehetővé teszi, hogy a hívó szolgáltatás hitelesítő adatként használjon tanúsítványokat (közös titok helyett).
 
-A tipikus *háromlábú OAuth-ban*egy ügyfélalkalmazás engedélyt kap egy erőforrás elérésére egy adott felhasználó nevében. Az engedélyt a felhasználó delegálja az alkalmazásnak, általában a [jóváhagyási](v2-permissions-and-consent.md) folyamat során. Az ügyfél hitelesítő adatai (*kétlábú OAuth)* folyamatában azonban az engedélyek közvetlenül magának az alkalmazásnak adnak meg engedélyeket. Amikor az alkalmazás egy jogkivonatot jelenít meg egy erőforrásnak, az erőforrás kényszeríti, hogy maga az alkalmazás rendelkezik engedéllyel egy művelet végrehajtására, és nem a felhasználó.
+A tipikusan *három lábon járó OAuth*egy ügyfélalkalmazás jogosult egy adott felhasználó nevében hozzáférni egy erőforráshoz. Az engedélyt a felhasználó delegálja az alkalmazásnak, általában a [beleegyezési](v2-permissions-and-consent.md) folyamat során. Az ügyfél hitelesítő adataiban (*kétlábú OAuth*) azonban az engedélyek közvetlenül az alkalmazás számára is megadhatók. Amikor az alkalmazás jogkivonatot jelenít meg egy erőforráshoz, az erőforrás azt kényszeríti, hogy maga az alkalmazás engedélyezte a művelet végrehajtását, és nem a felhasználót.
 
-## <a name="protocol-diagram"></a>Protokolldiagram
+## <a name="protocol-diagram"></a>Protokoll diagramja
 
-A teljes ügyfélhitelesítő adatfolyam az alábbi ábrához hasonlóan néz ki. A cikk későbbi lépéseit ismertetjük.
+A teljes ügyfél-hitelesítő adatok folyamata az alábbi ábrához hasonlóan néz ki. A cikk későbbi részében leírt lépéseket ismertetjük.
 
-![Az ügyfél hitelesítő adatainak folyamatát bemutató diagram](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
+![Az ügyfél-hitelesítő adatok folyamatát ábrázoló diagram](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
-## <a name="get-direct-authorization"></a>Közvetlen engedély beszerezni
+## <a name="get-direct-authorization"></a>Közvetlen engedély kérése
 
-Az alkalmazások általában közvetlen engedélyt kapnak egy erőforrás elérésére a következő két módszer egyikével:
+Az alkalmazások általában közvetlen engedélyt kapnak az erőforrásokhoz való hozzáférésre a következő két módszer egyikével:
 
-* [Hozzáférés-vezérlési listán (ACL) keresztül az erőforráson](#access-control-lists)
-* [Alkalmazásengedély-hozzárendelés az Azure AD-ben](#application-permissions)
+* [Hozzáférés-vezérlési lista (ACL) használatával az erőforráson](#access-control-lists)
+* [Alkalmazás-engedélyezési hozzárendelés az Azure AD-ben](#application-permissions)
 
-Ez a két módszer a leggyakoribb az Azure AD-ben, és azt javasoljuk, hogy az ügyfelek és az erőforrások, amelyek az ügyfél hitelesítő adatok áramlását. Egy erőforrás más módon is engedélyezheti ügyfeleit. Minden erőforrás-kiszolgáló kiválaszthatja azt a módszert, amely a legmegfelelőbb az alkalmazásszámára.
+Ez a két módszer a leggyakoribb az Azure AD-ben, és azt javasoljuk, hogy az ügyfél és a hitelesítő adatok folyamatát végző erőforrások számára. Egy erőforrás más módokon is dönthet az ügyfelek hitelesítéséhez. Minden erőforrás-kiszolgáló kiválaszthatja azt a metódust, amely a leginkább értelmezi az alkalmazását.
 
 ### <a name="access-control-lists"></a>Hozzáférés-vezérlési listák
 
-Az erőforrás-szolgáltató kényszerítheti az engedélyezési ellenőrzést az általa ismerik az alkalmazásazonosítók listáját, és adott szintű hozzáférést biztosítanak. Amikor az erőforrás jogkivonatot kap a Microsoft identity platform végpontról, dekódolhatja a jogkivonatot, és kinyerheti az ügyfél alkalmazásazonosítóját a és `appid` `iss` a jogcímek. Ezután összehasonlítja az alkalmazást egy általa fenntartott hozzáférés-vezérlési listával (ACL). Az ACL részletessége és módszere jelentősen eltérhet az erőforrások között.
+Egy erőforrás-szolgáltató érvényesítheti az engedélyezési ellenőrzési listát az általa ismert alkalmazás-(ügyfél-) azonosítók alapján, és egy adott hozzáférési szintet biztosít a számára. Ha az erőforrás jogkivonatot kap a Microsoft Identity platform végponttól, az képes dekódolni a jogkivonatot, és kinyerni az `appid` ügyfél `iss` alkalmazás-azonosítóját a és a jogcímek közül. Ezután összehasonlítja az alkalmazást egy általa fenntartott hozzáférés-vezérlési listával (ACL). Az ACL részletessége és metódusa jelentősen változhat az erőforrások között.
 
-Gyakori használati eset egy ACL használatával futtathat teszteket egy webalkalmazáshoz vagy egy webes API-hoz. Előfordulhat, hogy a webes API csak a teljes engedélyek egy részhalmazát adja meg egy adott ügyfélnek. Az API-n futó végpontok teszteléséhez hozzon létre egy tesztügyfelet, amely beszerzi a jogkivonatokat a Microsoft identity platform végpontjáról, majd elküldi azokat az API-nak. Az API ezután ellenőrzi az ACL a tesztügyfél alkalmazásazonosítóját az API teljes funkcionalitásához való teljes hozzáféréshez. Ha ilyen típusú ACL-t használ, győződjön meg `appid` róla, hogy nem `iss` csak a hívó értékét ellenőrzi, hanem azt is, hogy a token értéke megbízható-e.
+Gyakori használati eset az, ha egy ACL-t használ a webalkalmazásokhoz vagy webes API-hoz való tesztek futtatásához. A webes API a teljes engedélyek egy részhalmazát is megadhatja egy adott ügyfél számára. A végpontok közötti tesztek az API-on való futtatásához hozzon létre egy teszt-ügyfelet, amely a Microsoft Identity platform-végponttól szerzi be a jogkivonatokat, majd elküldi azokat az API-nak. Az API ezt követően ellenőrzi az ügyfél alkalmazás-AZONOSÍTÓJÁHOZ tartozó ACL-t az API teljes funkcionalitásának teljes körű eléréséhez. Ha ezt a típusú ACL-t használja, ügyeljen arra, hogy ne csak a hívó `appid` értékét ellenőrizze, hanem azt is, `iss` hogy a jogkivonat értéke megbízható-e.
 
-Az ilyen típusú engedélyezés gyakori a démonok és a szolgáltatásfiókok, amelyek személyes Microsoft-fiókkal rendelkező fogyasztói felhasználók tulajdonában lévő adatokhoz kell hozzáférniük. A szervezetek tulajdonában lévő adatok esetében azt javasoljuk, hogy a szükséges engedélyeket alkalmazásengedélyeken keresztül kapja meg.
+Az ilyen típusú hitelesítés olyan démonok és szolgáltatásfiókok esetében fordul elő, amelyek a személyes Microsoft-fiókkal rendelkező fogyasztói felhasználók tulajdonában lévő adatforgalomhoz szükségesek. A szervezetek által birtokolt adattárolók esetében javasoljuk, hogy az alkalmazás engedélyein keresztül szerezze be a szükséges engedélyeket.
 
-### <a name="application-permissions"></a>Alkalmazásengedélyek
+### <a name="application-permissions"></a>Alkalmazás engedélyei
 
-Az ACL-ek használata helyett az API-k segítségével elérhetővé teheti az **alkalmazásengedélyek készletét.** Az alkalmazásengedélyt a szervezet rendszergazdája ad meg egy alkalmazásnak, és csak az adott szervezet és alkalmazottai tulajdonában lévő adatok elérésére használható. A Microsoft Graph például több alkalmazásengedélyt tesz elérhetővé a következők höz:
+Az ACL-ek használata helyett API-k használatával teheti elérhetővé az **alkalmazások engedélyeit**. Egy alkalmazás engedélyt kap egy alkalmazás számára egy szervezet rendszergazdája, és csak az adott szervezet és alkalmazottai által birtokolt adathozzáféréshez használható. Microsoft Graph például több alkalmazás-engedélyt tesz elérhetővé a következők elvégzéséhez:
 
 * Levelek olvasása az összes postaládában
 * Levelek olvasása és írása az összes postaládában
 * E-mail küldése bármely felhasználóként
 * Címtáradatok olvasása
 
-Az alkalmazásengedélyekről a [Microsoft Graph című lapban](https://developer.microsoft.com/graph)talál további információt.
+Az alkalmazás engedélyeivel kapcsolatos további információkért nyissa meg a [Microsoft Graph](https://developer.microsoft.com/graph).
 
-Ha alkalmazásengedélyeket szeretne használni az alkalmazásban, kövesse a következő szakaszokban ismertetett lépéseket.
+Az alkalmazás engedélyeinek használatához kövesse a következő szakaszokban ismertetett lépéseket.
 
 
 > [!NOTE]
-> Ha a felhasználóval ellentétben alkalmazásként hitelesíti, nem használhatja a "delegált engedélyeket" (a felhasználó által megadott hatóköröket).  Az alkalmazáshoz (vagy a webes API előzetes hitelesítése) megadott "alkalmazásengedélyeket", más néven "szerepköröket" kell használnia.
+> Ha alkalmazásként végez hitelesítést, a felhasználóval ellentétben nem használhatja a "delegált engedélyek" (a felhasználó által megadott hatóköröket).  Az alkalmazás rendszergazdája (vagy a webes API általi előhitelesítésen keresztül) az "alkalmazás engedélyei" (más néven "szerepkörök") használatát kell megadnia.
 
 
-#### <a name="request-the-permissions-in-the-app-registration-portal"></a>Engedélyek kérése az alkalmazásregisztrációs portálon
+#### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az engedélyek igénylése az alkalmazás regisztrációs portálján
 
-1. Regisztráljon és hozzon létre egy alkalmazást az új [alkalmazásregisztrációk (előzetes verzió) felületén.](quickstart-register-app.md)
-2. Nyissa meg az alkalmazást az alkalmazásregisztrációk (előzetes verzió) élményben. Keresse meg a **Tanúsítványok & titkos kulcsok szakaszt,** és adjon hozzá egy új **ügyféltitkot,** mert a jogkivonat kéréséhez legalább egy ügyféltitokra lesz szüksége.
-3. Keresse meg az **API-engedélyek szakaszt,** majd adja hozzá az alkalmazás **szükséges alkalmazásengedélyeket.**
+1. Regisztráljon, és hozzon létre egy alkalmazást az új [Alkalmazásregisztrációk (előzetes verzió) felületén](quickstart-register-app.md).
+2. Nyissa meg az alkalmazást az Alkalmazásregisztrációk (előzetes verzió) felületén. Navigáljon a **tanúsítványok & Secrets** szakaszhoz, és vegyen fel egy **új ügyfél-titkot**, mert legalább egy ügyfél-titok szükséges a jogkivonat igényléséhez.
+3. Keresse meg az **API-engedélyek** szakaszt, majd adja hozzá az alkalmazás által igényelt alkalmazás- **engedélyeket** .
 4. **Mentse** az alkalmazás regisztrációját.
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: Írja alá a felhasználót az alkalmazásba
+#### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: a felhasználó aláírása az alkalmazásba
 
-Amikor alkalmazásengedélyeket használó alkalmazást hoz létre, az alkalmazásnak általában szüksége van egy olyan lapra vagy nézetre, amelyen a rendszergazda jóváhagyja az alkalmazás engedélyeit. Ez az oldal része lehet az alkalmazás bejelentkezési folyamatának, az alkalmazás beállításainak része, vagy lehet egy dedikált "connect" folyamat. Sok esetben célszerű, hogy az alkalmazás csak akkor jelenítse meg ezt a "connect" nézetet, ha a felhasználó bejelentkezett egy munkahelyi vagy iskolai Microsoft-fiókkal.
+Az alkalmazás-engedélyeket használó alkalmazások létrehozásakor általában az alkalmazásnak olyan oldalra vagy nézetre van szüksége, amelyen a rendszergazda jóváhagyja az alkalmazás engedélyeit. Ez az oldal lehet az alkalmazás bejelentkezési folyamatának része, az alkalmazás beállításainak egy része, vagy egy dedikált "kapcsolat" folyamat is. Sok esetben érdemes megmutatni, hogy az alkalmazás csak akkor jelenjen meg ez a "kapcsolódás" nézet, ha egy felhasználó munkahelyi vagy iskolai Microsoft-fiók bejelentkezett.
 
-Ha bejelentkezik a felhasználóaz alkalmazásba, azonosíthatja azt a szervezetet, amelyhez a felhasználó tartozik, mielőtt megkérné a felhasználót az alkalmazásengedélyek jóváhagyására. Bár nem feltétlenül szükséges, segíthet egy intuitívabb felhasználói élményt létrehozni. A felhasználó bejelentkezéséhez kövesse a [Microsoft identity platform protokoll oktatóanyagait.](active-directory-v2-protocols.md)
+Ha aláírja a felhasználót az alkalmazásba, azonosíthatja azt a szervezetet, amelyhez a felhasználó tartozik, mielőtt megkéri a felhasználót, hogy hagyja jóvá az alkalmazás engedélyeit. Bár ez nem feltétlenül szükséges, a segítségével könnyebben hozhat létre intuitív felhasználói élményt. A felhasználó aláírásához kövesse a [Microsoft Identity platform protokoll oktatóanyagokat](active-directory-v2-protocols.md).
 
-#### <a name="request-the-permissions-from-a-directory-admin"></a>Engedélyek kérése címtáradminisztrátortól
+#### <a name="request-the-permissions-from-a-directory-admin"></a>Engedélyek kérése egy címtár-rendszergazdától
 
-Ha készen áll arra, hogy engedélyeket kérjen a szervezet rendszergazdájától, átirányíthatja a felhasználót a Microsoft identity platform *rendszergazdájának hozzájárulási végpontjára.*
+Ha készen áll arra, hogy engedélyt kérjen a szervezet rendszergazdájától, átirányíthatja a felhasználót a Microsoft Identity platform *rendszergazdai engedélyezési végpontján*.
 
 > [!TIP]
-> Próbálja meg végrehajtani ezt a kérést a Postman! (A legjobb eredmény érdekében használja a saját alkalmazásazonosítóját – az oktatóanyag-alkalmazás nem kér hasznos engedélyeket.) [Próbálja meg futtatni ezt a kérést a Postman ben ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Próbálja meg végrehajtani a kérelmet postán! (Saját alkalmazás-azonosító használata a legjobb eredményekhez – az oktatóanyag alkalmazás nem kér hasznos engedélyeket.) [Próbálja meg futtatni ezt a kérelmet postán ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -99,7 +99,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http://localhost/myapp/permissions
 ```
 
-Pro tipp: Próbálja meg beilleszteni a következő kérést a böngészőben.
+Pro Tipp: próbálja meg beilleszteni a következő kérést egy böngészőben.
 
 ```
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
@@ -107,12 +107,12 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | Az a címtár-bérlő, amelytől engedélyt szeretne kérni. Ez lehet GUID vagy rövid név formátumban. Ha nem tudja, hogy a felhasználó melyik bérlőhöz tartozik, és szeretné, `common`hogy bármelyik bérlővel jelentkezzen be, használja a használatát. |
-| `client_id` | Kötelező | Az **Alkalmazás (ügyfél) azonosító,** amely az [Azure Portal – Alkalmazás regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt élmény. |
-| `redirect_uri` | Kötelező | Az átirányítási URI, ahol azt szeretné, hogy a választ kell küldeni az alkalmazás kezelni. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy URL-kódolva kell lennie, és további elérési útszegmensekkel is rendelkezhet. |
-| `state` | Ajánlott | A kérelemben szereplő érték, amely a jogkivonat-válaszban is visszaadja. Bármilyen tartalom karakterlánca lehet. Az állapot a felhasználó állapotára vonatkozó információk kódolására szolgál az alkalmazásban a hitelesítési kérelem bekövetkezése előtt, például az oldal vagy a nézet, amelyen voltak. |
+| `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ha nem tudja, hogy a felhasználó melyik bérlőhöz tartozik, és szeretne bejelentkezni bármelyik Bérlővel, használja `common`a következőt:. |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `redirect_uri` | Kötelező | Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-címet kell kódolni, és további elérésiút-szegmensekkel is rendelkezhet. |
+| `state` | Ajánlott | A kérelemben szereplő, a jogkivonat-válaszban is visszaadott érték. Bármely kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését. |
 
-Ezen a ponton az Azure AD kényszeríti, hogy csak egy bérlői rendszergazda jelentkezhet be a kérelem teljesítéséhez. A rendszergazdának jóvá kell hagynia az alkalmazáshoz kért összes közvetlen alkalmazásengedélyt az alkalmazás regisztrációs portálján.
+Ezen a ponton az Azure AD azt kényszeríti, hogy csak a bérlői rendszergazda jelentkezhet be a kérelembe. A rendszer felkéri a rendszergazdát, hogy fogadja el az alkalmazás regisztrálásához szükséges összes közvetlen alkalmazást az alkalmazás regisztrációs portálján.
 
 ##### <a name="successful-response"></a>Sikeres válasz
 
@@ -124,13 +124,13 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | Paraméter | Leírás |
 | --- | --- |
-| `tenant` | Az a címtár-bérlő, amely megadta az alkalmazásnak az általa kért engedélyeket GUID formátumban. |
-| `state` | Egy érték, amely szerepel a kérelemben, amely szintén visszaadja a jogkivonat-válasz. Bármilyen tartalom karakterlánca lehet. Az állapot a felhasználó állapotára vonatkozó információk kódolására szolgál az alkalmazásban a hitelesítési kérelem bekövetkezése előtt, például az oldal vagy a nézet, amelyen voltak. |
-| `admin_consent` | Értéke **Igaz**. |
+| `tenant` | A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva. |
+| `state` | A kérelemben szereplő, a jogkivonat-válaszban is visszaadott érték. Bármely kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését. |
+| `admin_consent` | Értéke **true (igaz**). |
 
-##### <a name="error-response"></a>Hibaválasz
+##### <a name="error-response"></a>Hiba válasza
 
-Ha a rendszergazda nem hagyja jóvá az alkalmazás engedélyeit, a sikertelen válasz a következőképpen néz ki:
+Ha a rendszergazda nem hagyja jóvá az alkalmazás engedélyeit, a sikertelen válasz a következőre hasonlít:
 
 ```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
@@ -138,19 +138,19 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Paraméter | Leírás |
 | --- | --- |
-| `error` | Hibakód-karakterlánc, amellyel hibatípusokat osztályozhat, és amelya hibákra való reagáláshoz használható. |
-| `error_description` | Egy adott hibaüzenet, amely segíthet a hiba kiváltó okának azonosításában. |
+| `error` | Hibakód-karakterlánc, amely a hibák típusának osztályozására használható, és amelyek segítségével reagálhat a hibákra. |
+| `error_description` | Egy adott hibaüzenet, amely segítséget nyújt a hiba kiváltó okának azonosításában. |
 
-Miután sikeres választ kapott az alkalmazáskiépítési végponttól, az alkalmazás megszerezte a kért közvetlen alkalmazásengedélyeket. Most már kérhet egy jogkivonatot a kívánt erőforráshoz.
+Miután sikeres választ kapott az App kiépítési végponttól, az alkalmazás megszerezte a kért közvetlen alkalmazás-engedélyeket. Most már igényelhet tokent a kívánt erőforráshoz.
 
-## <a name="get-a-token"></a>Token beszereznie
+## <a name="get-a-token"></a>Jogkivonat beszerzése
 
-Miután megszerezte az alkalmazáshoz szükséges engedélyt, folytassa az API-k hozzáférési jogkivonatai beszerzésével. Ha jogkivonatot szeretne beszerezni az ügyfél hitelesítő adatok `/token` megadásával, küldjön postai kérelmet a Microsoft identity platform végpontjára:
+Miután megszerezte az alkalmazáshoz szükséges engedélyeket, folytassa az API-k hozzáférési jogkivonatának beszerzésével. Ha a tokent az ügyfél hitelesítő adatainak megadása alapján szeretné lekérni, küldjön egy `/token` post-kérést a Microsoft Identity platform végpontjának:
 
 > [!TIP]
-> Próbálja meg végrehajtani ezt a kérést a Postman! (A legjobb eredmény érdekében használja a saját alkalmazásazonosítóját – az oktatóanyag-alkalmazás nem kér hasznos engedélyeket.) [Próbálja meg futtatni ezt a kérést a Postman ben ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Próbálja meg végrehajtani a kérelmet postán! (Saját alkalmazás-azonosító használata a legjobb eredményekhez – az oktatóanyag alkalmazás nem kér hasznos engedélyeket.) [Próbálja meg futtatni ezt a kérelmet postán ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: Hozzáférési jogkivonat-kérelem megosztott titkos titokkal
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: hozzáférési jogkivonat-kérelem közös titokkal
 
 ```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -170,13 +170,13 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | Az a címtár-bérlő, amely ellen az alkalmazás működni kíván, GUID vagy tartománynév formátumban. |
-| `client_id` | Kötelező | Az alkalmazáshoz rendelt alkalmazásazonosító. Ezeket az információkat abban a portálon találja, ahol regisztrálta az alkalmazást. |
-| `scope` | Kötelező | A kérelemben `scope` a paraméternek átadott értéknek a kívánt erőforrás erőforrás-azonosítójának (alkalmazásazonosító `.default` URI) kell lennie, amelyet az utótaggal kell elhelyezni. A Microsoft Graph példában `https://graph.microsoft.com/.default`az érték . <br/>Ez az érték közli a Microsoft identity platform végpontjával, hogy az alkalmazáshoz konfigurált összes közvetlen alkalmazásengedély közül a végpontnak jogkivonatot kell kiadnia a használni kívánt erőforráshoz társított aknak. A hatókörről `/.default` a [hozzájárulási dokumentációban](v2-permissions-and-consent.md#the-default-scope)olvashat bővebben. |
-| `client_secret` | Kötelező | Az alkalmazás regisztrációs portálján létrehozott ügyféltitok. Az ügyféltitok nak URL-kódolásúnak kell lennie az elküldés előtt. |
-| `grant_type` | Kötelező | A beállításnak `client_credentials`a beállítására kell beállítható. |
+| `tenant` | Kötelező | Az az alkalmazás, amely a (z) GUID-vagy tartománynév-formátumban való működésre tervezi a címtárat. |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt alkalmazás-azonosító. Ezt az információt a portálon találja, ahol regisztrálta az alkalmazást. |
+| `scope` | Kötelező | A kérelemben szereplő `scope` paraméternek átadott értéknek a használni kívánt erőforrás azonosítójának (alkalmazásspecifikus azonosítójának URI) kell lennie, amelyet az `.default` utótaggal kell ellátni. A Microsoft Graph példában az érték a következő: `https://graph.microsoft.com/.default`. <br/>Ez az érték közli a Microsoft Identity platform végpontját, amely az alkalmazáshoz konfigurált összes közvetlen alkalmazási engedélyre vonatkozik, a végpontnak a használni kívánt erőforráshoz társított tokent kell kiállítania. A `/.default` hatókörrel kapcsolatos további tudnivalókért tekintse meg a [beleegyezikés dokumentációját](v2-permissions-and-consent.md#the-default-scope). |
+| `client_secret` | Kötelező | Az alkalmazás regisztrációs portálján az alkalmazáshoz generált ügyfél-titkos kulcs. Az ügyfél titkos kódjának URL-kódolással kell rendelkeznie a küldés előtt. |
+| `grant_type` | Kötelező | Értékre kell állítani `client_credentials`. |
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat-kérelem tanúsítvánnyal
+### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: hozzáférési jogkivonat kérése tanúsítvánnyal
 
 ```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
@@ -192,14 +192,14 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | Az a címtár-bérlő, amely ellen az alkalmazás működni kíván, GUID vagy tartománynév formátumban. |
-| `client_id` | Kötelező |Az alkalmazáshoz rendelt alkalmazásazonosító (ügyfélazonosító). |
-| `scope` | Kötelező | A kérelemben `scope` a paraméternek átadott értéknek a kívánt erőforrás erőforrás-azonosítójának (alkalmazásazonosító `.default` URI) kell lennie, amelyet az utótaggal kell elhelyezni. A Microsoft Graph példában `https://graph.microsoft.com/.default`az érték . <br/>Ez az érték tájékoztatja a Microsoft identity platform végpontját, hogy az alkalmazáshoz konfigurált összes közvetlen alkalmazásengedély közül ki kell adnia egy jogkivonatot a használni kívánt erőforráshoz társítottak számára. A hatókörről `/.default` a [hozzájárulási dokumentációban](v2-permissions-and-consent.md#the-default-scope)olvashat bővebben. |
-| `client_assertion_type` | Kötelező | Az értéket a `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`értékre kell állítani. |
-| `client_assertion` | Kötelező | Egy állítás (egy JSON-webtoken), amelyet létre kell hoznia, és alá kell írnia az alkalmazás hitelesítő adataiként regisztrált tanúsítvánnyal. A [tanúsítvány hitelesítő adatairól megtudhatja,](active-directory-certificate-credentials.md) hogyan regisztrálhatja a tanúsítványt és a feltétel formátumát.|
-| `grant_type` | Kötelező | A beállításnak `client_credentials`a beállítására kell beállítható. |
+| `tenant` | Kötelező | Az az alkalmazás, amely a (z) GUID-vagy tartománynév-formátumban való működésre tervezi a címtárat. |
+| `client_id` | Kötelező |Az alkalmazáshoz hozzárendelt alkalmazás (ügyfél) azonosítója. |
+| `scope` | Kötelező | A kérelemben szereplő `scope` paraméternek átadott értéknek a használni kívánt erőforrás azonosítójának (alkalmazásspecifikus azonosítójának URI) kell lennie, amelyet az `.default` utótaggal kell ellátni. A Microsoft Graph példában az érték a következő: `https://graph.microsoft.com/.default`. <br/>Ez az érték tájékoztatja a Microsoft Identity platform végpontját, amely az alkalmazáshoz konfigurált összes közvetlen alkalmazási engedélyhez tartozik, és a használni kívánt erőforráshoz társított jogkivonatot kell kiállítania. A `/.default` hatókörrel kapcsolatos további tudnivalókért tekintse meg a [beleegyezikés dokumentációját](v2-permissions-and-consent.md#the-default-scope). |
+| `client_assertion_type` | Kötelező | Az értéket a következőre kell `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`beállítani:. |
+| `client_assertion` | Kötelező | Egy, az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező (JSON webes jogkivonat). Tudnivalók a [tanúsítvány hitelesítő adatairól](active-directory-certificate-credentials.md) : a tanúsítvány regisztrálásának és az állítás formátumának megismerése.|
+| `grant_type` | Kötelező | Értékre kell állítani `client_credentials`. |
 
-Figyelje meg, hogy a paraméterek majdnem megegyeznek a megosztott titok kérésének esetében, azzal a különbséggel, hogy a client_secret paramétert két paraméter váltja fel: a client_assertion_type és a client_assertion.
+Figyelje meg, hogy a paraméterek majdnem ugyanazok, mint a közös titok által benyújtott kérelem esetében, kivéve, ha a client_secret paramétert két paraméter helyettesíti: egy client_assertion_type és client_assertion.
 
 ### <a name="successful-response"></a>Sikeres válasz
 
@@ -215,13 +215,13 @@ A sikeres válasz így néz ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| `access_token` | A kért hozzáférési jogkivonat. Az alkalmazás használhatja ezt a jogkivonatot a biztonságos erőforrás, például egy webes API-t hitelesíteni. |
-| `token_type` | A token típusának értékét jelzi. A Microsoft identity platform csak `bearer`a programot támogatja. |
+| `access_token` | A kért hozzáférési jogkivonat. Az alkalmazás használhatja ezt a tokent a biztonságos erőforráshoz, például egy webes API-hoz való hitelesítéshez. |
+| `token_type` | Megadja a jogkivonat típusának értékét. Az egyetlen típus, amelyet a Microsoft Identity platform `bearer`támogat. |
 | `expires_in` | A hozzáférési jogkivonat érvényességi ideje (másodpercben). |
 
-### <a name="error-response"></a>Hibaválasz
+### <a name="error-response"></a>Hiba válasza
 
-A hibaválasz így néz ki:
+A hiba a következőképpen néz ki:
 
 ```json
 {
@@ -238,16 +238,16 @@ A hibaválasz így néz ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| `error` | Hibakód-karakterlánc, amelya felmerülő hibatípusok osztályozására és a hibákra való reagálásra használható. |
+| `error` | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására és a hibákra való reagálásra használható. |
 | `error_description` | Egy adott hibaüzenet, amely segíthet a hitelesítési hiba kiváltó okának azonosításában. |
-| `error_codes` | Az STS-specifikus hibakódok listája, amelyek segíthetnek a diagnosztikában. |
+| `error_codes` | Az STS-specifikus hibakódok listája, amelyek segíthetnek a diagnosztikaben. |
 | `timestamp` | A hiba bekövetkezésének időpontja. |
-| `trace_id` | A diagnosztikával kapcsolatban segítséget kérő kérelem egyedi azonosítója. |
-| `correlation_id` | Az összetevők közötti diagnosztika segítésére irányuló kérelem egyedi azonosítója. |
+| `trace_id` | A diagnosztika támogatásához szükséges kérelem egyedi azonosítója. |
+| `correlation_id` | Egy egyedi azonosító, amely az egyes összetevőkben a diagnosztika segítésére szolgál. |
 
 ## <a name="use-a-token"></a>Token használata
 
-Most, hogy beszerzett egy jogkivonatot, használja a jogkivonatot az erőforrásra vonatkozó kérelmek teljesítéséhez. Amikor a jogkivonat lejár, ismételje `/token` meg a kérést a végponthoz egy friss hozzáférési jogkivonat beszerzéséhez.
+Most, hogy megszerezte a jogkivonatot, a token használatával teheti meg a kéréseket az erőforrásnak. A jogkivonat lejárata után ismételje meg a kérést a `/token` végpontra egy új hozzáférési jogkivonat beszerzéséhez.
 
 ```HTTP
 GET /v1.0/me/messages
@@ -261,11 +261,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
-## <a name="code-samples-and-other-documentation"></a>Kódminták és egyéb dokumentációk
+## <a name="code-samples-and-other-documentation"></a>Példák a kódokra és egyéb dokumentációra
 
-Az [ügyfélhitelesítő adatok áttekintő dokumentációjának elolvasása](https://aka.ms/msal-net-client-credentials) a Microsoft hitelesítési tárából
+Olvassa el az [ügyfél hitelesítő adatai – áttekintés dokumentációját](https://aka.ms/msal-net-client-credentials) a Microsoft hitelesítési könyvtárából
 
 | Sample | Platform |Leírás |
 |--------|----------|------------|
-|[active-directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1 konzol | Egy egyszerű .NET Core alkalmazás, amely megjeleníti a felhasználók a bérlő lekérdezése a Microsoft Graph az alkalmazás identitását használva, nem pedig egy felhasználó nevében. A minta a hitelesítési tanúsítványok at használó változatot is szemlélteti. |
-|[active-directory-dotnet-démon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET, MVC | Olyan webalkalmazás, amely a Microsoft Graph adatait szinkronizálja az alkalmazás identitásával, nem pedig egy felhasználó nevében. |
+|[Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2,1 konzol | Egy egyszerű .NET Core-alkalmazás, amely egy adott bérlő felhasználóit jeleníti meg a Microsoft Graph az alkalmazás identitásával, a felhasználó nevében. A minta azt is szemlélteti, hogy a hitelesítés tanúsítványokat használ a hitelesítéshez. |
+|[Active-Directory-DotNet-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET, MVC | Egy webalkalmazás, amely a Microsoft Graph adatait az alkalmazás identitásával szinkronizálja, ahelyett, hogy a felhasználó nevében használja. |

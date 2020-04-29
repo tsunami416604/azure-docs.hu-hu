@@ -1,37 +1,252 @@
 ---
-title: Erőforrás-kezelősablonok a MongoDB-hoz készült Azure Cosmos DB API-hoz
-description: Azure Resource Manager-sablonok használatával hozhatja létre és konfigurálhatja az Azure Cosmos DB API-t a MongoDB számára.
-author: TheovanKraay
+title: Resource Manager-sablonok a MongoDB Azure Cosmos DB API-hoz
+description: Azure Resource Manager-sablonok használatával Azure Cosmos DB API-t hozhat létre és konfigurálhat a MongoDB.
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.author: thvankra
-ms.openlocfilehash: 531f122679c463b11c84eba2fca9f30b09e0935f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.author: mjbrown
+ms.openlocfilehash: e312b5d8b6052dafa4855afa035429ef06608f1b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063639"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82200785"
 ---
-# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Az Azure Cosmos DB MongoDB API-erőforrások kezelése az Azure Resource Manager-sablonokkal
+# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB MongoDB API-erőforrások kezelése Azure Resource Manager-sablonok használatával
 
-Ez a cikk ismerteti, hogyan hajthatja végre a különböző műveleteket az Azure Cosmos DB-fiókok, adatbázisok és tárolók felügyeletének automatizálására az Azure Resource Manager-sablonok használatával. Ez a cikk példákat az Azure Cosmos DB API-t a MongoDB csak példákat más API-típusú fiókok lásd: használja az Azure Resource Manager-sablonok at Azure Cosmos DB API [cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [Table](manage-table-with-resource-manager.md) cikkek.
+Ez a cikk bemutatja, hogyan hajthat végre különböző műveleteket a Azure Cosmos DB-fiókok,-adatbázisok és-tárolók felügyeletének automatizálásához Azure Resource Manager-sablonok használatával. Ez a cikk példákat tartalmaz a Azure Cosmos DB API-MongoDB csak az API-típusok más típusú fiókjainak megkereséséhez lásd: a Azure Resource Manager-sablonok használata a Azure Cosmos DB API-jával a [Cassandra](manage-cassandra-with-resource-manager.md), a [Gremlin](manage-gremlin-with-resource-manager.md), az [SQL](manage-sql-with-resource-manager.md)és a [Table](manage-table-with-resource-manager.md) cikkekhez.
 
-## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>Azure Cosmos DB API létrehozása MongoDB-fiókhoz, adatbázishoz és gyűjteményhez<a id="create-resource"></a>
+## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>MongoDB-fiók, adatbázis és gyűjtemény létrehozása Azure Cosmos DB API-val<a id="create-resource"></a>
 
-Hozzon létre Azure Cosmos DB-erőforrásokat egy Azure Resource Manager-sablon használatával. Ez a sablon létrehoz egy Azure Cosmos-fiókot a MongoDB API-hoz két olyan gyűjteménynel, amelyek adatbázis szinten 400 RU/s átviteli sebességgel rendelkeznek. Másolja a sablont, és telepítse az alábbiak szerint, vagy keresse fel az [Azure Gyorsútmutató galériát,](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) és telepítse az Azure Portalról. A sablont letöltheti a helyi számítógépre, vagy létrehozhat egy új `--template-file` sablont, és megadhatja a helyi elérési utat a paraméterrel.
+Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon használatával. Ez a sablon egy Azure Cosmos-fiókot hoz létre a MongoDB API-hoz két olyan gyűjteménysel, amelyek a 400 RU/s átviteli sebességet használják az adatbázis szintjén. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
 
 > [!NOTE]
-> A fiókneveknek kisbetűsnek és 44 vagy kevesebb karakternek kell lenniük.
-> A RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonságértékekkel.
->
-> Jelenleg csak 3.2-es verziót (azaz a végpontot `*.documents.azure.com`használó a datált a formátumban) az Azure Cosmos DB API-t a MongoDB-fiókok a PowerShell és a CLI használatával hozhat létre. A fiókok 3.6-os verziójának létrehozásához használja a Resource Manager-sablonokat (lent) vagy az Azure Portalt.
+> A fióknév csak kisbetűket és 44 karaktert tartalmazhat.
+> Az RU/s frissítéséhez telepítse újra a sablont a frissített átviteli tulajdonság-értékekkel.
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
+```json
+{
+"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+"contentVersion": "1.0.0.0",
+"parameters": {
+   "accountName": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+         "description": "Cosmos DB account name"
+      }
+   },
+   "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+         "description": "Location for the Cosmos DB account."
+      }
+   },
+   "primaryRegion":{
+      "type":"string",
+      "metadata": {
+         "description": "The primary replica region for the Cosmos DB account."
+      }
+   },
+   "secondaryRegion":{
+      "type":"string",
+      "metadata": {
+        "description": "The secondary replica region for the Cosmos DB account."
+     }
+   },
+   "defaultConsistencyLevel": {
+      "type": "string",
+      "defaultValue": "Session",
+      "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
+      "metadata": {
+         "description": "The default consistency level of the Cosmos DB account."
+      }
+   },
+   "serverVersion": {
+      "defaultValue": "3.6",
+      "allowedValues": [
+         "3.2",
+         "3.6"
+      ],
+      "type": "String",
+      "metadata": {
+         "description": "Specifies the MongoDB server version to use."
+      }
+   },
+   "maxStalenessPrefix": {
+      "type": "int",
+      "defaultValue": 100000,
+      "minValue": 10,
+      "maxValue": 1000000,
+      "metadata": {
+         "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
+      }
+   },
+   "maxIntervalInSeconds": {
+      "type": "int",
+      "defaultValue": 300,
+      "minValue": 5,
+      "maxValue": 86400,
+      "metadata": {
+         "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
+      }
+   },
+   "databaseName": {
+      "type": "string",
+      "defaultValue": "Database1",
+      "metadata": {
+         "description": "The name for the Mongo DB database"
+      }
+   },
+   "throughput": {
+      "type": "int",
+      "defaultValue": 400,
+      "minValue": 400,
+      "maxValue": 1000000,
+      "metadata": {
+         "description": "The shared throughput for the Mongo DB database"
+      }
+   },
+   "collection1Name": {
+      "type": "string",
+      "defaultValue": "Collection1",
+      "metadata": {
+         "description": "The name for the first Mongo DB collection"
+      }
+   },
+   "collection2Name": {
+      "type": "string",
+      "defaultValue": "Collection2",
+      "metadata": {
+         "description": "The name for the second Mongo DB collection"
+      }
+   }
+},
+"variables": {
+   "accountName": "[toLower(parameters('accountName'))]",
+   "consistencyPolicy": {
+      "Eventual": {
+         "defaultConsistencyLevel": "Eventual"
+      },
+      "ConsistentPrefix": {
+         "defaultConsistencyLevel": "ConsistentPrefix"
+      },
+      "Session": {
+         "defaultConsistencyLevel": "Session"
+      },
+      "BoundedStaleness": {
+         "defaultConsistencyLevel": "BoundedStaleness",
+         "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
+         "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
+      },
+      "Strong": {
+         "defaultConsistencyLevel": "Strong"
+      }
+   },
+   "locations":
+   [
+      {
+         "locationName": "[parameters('primaryRegion')]",
+         "failoverPriority": 0,
+         "isZoneRedundant": false
+      },
+      {
+         "locationName": "[parameters('secondaryRegion')]",
+         "failoverPriority": 1,
+         "isZoneRedundant": false
+      }
+   ]
+},
+"resources":
+[
+   {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('accountName')]",
+      "apiVersion": "2020-03-01",
+      "location": "[parameters('location')]",
+      "kind": "MongoDB",
+      "properties": {
+         "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+         "locations": "[variables('locations')]",
+         "databaseAccountOfferType": "Standard",
+         "apiProperties": {
+            "serverVersion": "[parameters('serverVersion')]"
+         }
+      }
+   },
+   {
+      "type": "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases",
+      "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
+      "apiVersion": "2020-03-01",
+      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
+      "properties":{
+         "resource":{
+            "id": "[parameters('databaseName')]"
+         },
+         "options": { "throughput": "[parameters('throughput')]" }
+      }
+   },
+   {
+      "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
+      "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection1Name'))]",
+      "apiVersion": "2020-03-01",
+      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'), parameters('databaseName'))]" ],
+      "properties":
+      {
+         "resource":{
+            "id":  "[parameters('collection1Name')]",
+            "shardKey": { "user_id": "Hash" },
+            "indexes": [
+               {
+                  "key": { "keys":["user_id", "user_address"] },
+                  "options": { "unique": "true" }
+               },
+               {
+                  "key": { "keys":["_ts"] },
+                  "options": { "expireAfterSeconds": "2629746" }
+               }
+            ],
+            "options": {
+               "If-Match": "<ETag>"
+            }
+         }
+      }
+   },
+   {
+      "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
+      "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection2Name'))]",
+      "apiVersion": "2020-03-01",
+      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'),  parameters('databaseName'))]" ],
+      "properties":
+      {
+         "resource":{
+            "id":  "[parameters('collection2Name')]",
+            "shardKey": { "company_id": "Hash" },
+            "indexes": [
+               {
+                  "key": { "keys":["company_id", "company_address"] },
+                  "options": { "unique": "true" }
+               },
+               {
+                  "key": { "keys":["_ts"] },
+                  "options": { "expireAfterSeconds": "2629746" }
+               }
+            ],
+            "options": {
+               "If-Match": "<ETag>"
+            }
+         }
+      }
+   }
+]
+}
+```
 
 ### <a name="deploy-via-the-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
 
-Az Azure Resource Manager-sablon azure CLI használatával történő üzembe helyezéséhez másolja a **parancsfájlt,** és válassza a **Próbálja ki az** Azure Cloud Shell megnyitásához lehetőséget. A parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés parancsot:**
+A Azure Resource Manager-sablon Azure CLI-vel történő üzembe helyezéséhez **másolja** a szkriptet, és válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
 
 ```azurecli-interactive
 
@@ -41,6 +256,7 @@ read -p 'Enter the account name: ' accountName
 read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
 read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
 read -p 'Enter the database name: ' databaseName
+read -p 'Enter the database throughput: ' throughput
 read -p 'Enter the first collection name: ' collection1Name
 read -p 'Enter the second collection name: ' collection2Name
 
@@ -48,18 +264,18 @@ az group create --name $resourceGroupName --location $location
 az group deployment create --resource-group $resourceGroupName \
   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-mongodb/azuredeploy.json \
   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion \
-  databaseName=$databaseName collection1Name=$collection1Name collection2Name=$collection2Name
+  databaseName=$databaseName throughput=$throughput collection1Name=$collection1Name collection2Name=$collection2Name
 
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-A `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg a kiépítés után. Ha úgy dönt, hogy az Azure CLI helyileg telepített verzióját használja a Cloud Shell használata helyett, tekintse meg az [Azure CLI](/cli/azure/) cikket.
+A `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg az üzembe helyezés után. Ha úgy dönt, hogy a Cloud Shell használata helyett az Azure CLI helyileg telepített verzióját használja, tekintse meg az [Azure CLI](/cli/azure/) -cikket.
 
 ## <a name="next-steps"></a>További lépések
 
 Néhány további információforrás:
 
-- [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager/)
-- [Az Azure Cosmos DB erőforrás-szolgáltatósémája](/azure/templates/microsoft.documentdb/allversions)
-- [Az Azure Cosmos DB rövid útmutató sablonjai](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Gyakori Azure Resource Manager-telepítési hibák elhárítási hibáinak elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)
+- [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
+- [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+- [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)

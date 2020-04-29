@@ -1,6 +1,6 @@
 ---
-title: Azure CDN POP helyek régiónként | Microsoft dokumentumok
-description: Ez a cikk az Azure CDN POP-helyeket sorolja fel régiónként az Azure CDN-termékekhez.
+title: POP-helyszínek Azure CDN régiónként | Microsoft Docs
+description: Ez a cikk Azure CDN POP-helyszíneket sorolja fel régiók szerint rendezve Azure CDN termékekhez.
 services: cdn
 documentationcenter: ''
 author: sohamnchatterjee
@@ -15,39 +15,39 @@ ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
 ms.openlocfilehash: 227aae23babbcd5d734a10821d9311f91532ea4e
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770979"
 ---
-# <a name="azure-cdn-coverage-by-metro"></a>Azure CDN lefedettség metróval 
+# <a name="azure-cdn-coverage-by-metro"></a>Lefedettség Azure CDN Metro szerint 
 > [!div class="op_single_selector"]
 > * [POP-helyek régiónként](cdn-pop-locations.md)
 > * [POP-helyek rövidítés alapján](cdn-pop-abbreviations.md)
 > 
 
 
-Ez a cikk az Azure Content Delivery Network (CDN) termékek hez tartozó, régió szerinti rendezési helyeket tartalmazó jelenlegi metrookat sorolja fel. Minden metró egynél több POP-ot tartalmazhat. A Microsoft Azure CDN-je például 130 POP-ot rendelkezik 82 metrón keresztül. 
+Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földrajzi elhelyezkedésének (POP) helyét tartalmazó aktuális metrókat. Mindegyik metró több POP-t is tartalmazhat. Például a Microsoft Azure CDN a 130-es, 82-es metróban található. 
 
 > [!IMPORTANT]
-> Az **Akamai Azure CDN-alapú POP-városhelyei** nem kerülnek külön-külön nyilvánosságra.  
+> A **Akamai Azure CDN** pop Városbeli helyei nem vannak egyedileg kizárva.  
 > 
-> Mivel minden Azure CDN-termék külön módon építi ki a CDN-infrastruktúráit, a Microsoft azt javasolja, hogy ne használja a POP-helyeket annak eldöntéséhez, hogy melyik Azure CDN-terméket használja. Ehelyett vegye figyelembe a funkciók és a végfelhasználói teljesítmény. Tesztelje a teljesítményt minden Egyes Azure CDN-termékkel, és válassza ki a megfelelő terméket a felhasználók számára. 
+> Mivel az egyes Azure CDN termékek különböző módon használják a CDN-infrastruktúrákat, a Microsoft javasolja, hogy a POP-helyszínek használatával döntse el, hogy melyik Azure CDN terméket kívánja használni. Ehelyett vegye figyelembe a funkcióit és a végfelhasználói teljesítményt. Tesztelje a teljesítményt minden Azure CDN termékkel, hogy kiválassza a megfelelő terméket a felhasználók számára. 
 > 
 
 | Régió | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Észak-Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexikó<br />San Juan, Puerto Rico<br />Ashburn, VA, Amerikai Egyesült Államok<br />Atlanta, GA, Amerikai Egyesült Államok<br />Boston, MA, Amerikai Egyesült Államok<br />Cheyenne, WY, Amerikai Egyesült Államok<br />Chicago, IL, Amerikai Egyesült Államok<br /> Dallas, TX, Amerikai Egyesült Államok<br />Denver, CO, Amerikai Egyesült Államok<br />Honolulu, HI, Amerikai Egyesült Államok<br />Houston, TX, Amerikai Egyesült Államok<br />Las Vegas, NV, Amerikai Egyesült Államok<br />Los Angeles, CA, Amerikai Egyesült Államok<br />Miami, FL, Amerikai Egyesült Államok<br />New York, NY, Amerikai Egyesült Államok<br />Newark, NJ, Amerikai Egyesült Államok<br />Phoenix, AZ, Amerikai Egyesült Államok<br />Portland, OR, Amerikai Egyesült Államok<br />San Antonio, TX, Amerikai Egyesült Államok<br />San Jose, CA, Amerikai Egyesült Államok<br />Seattle, WA, Egyesült Államok | Guadalajara, Mexikó<br />Mexikóváros, Mexikó<br />Puebla, Mexikó<br />Querétaro, Mexikó<br />Atlanta, GA, Amerikai Egyesült Államok<br />Boston, MA, Amerikai Egyesült Államok<br />Chicago, IL, Amerikai Egyesült Államok<br />Dallas, TX, Amerikai Egyesült Államok<br />Denver, CO, Amerikai Egyesült Államok<br />Detroit, MI, Amerikai Egyesült Államok<br />Los Angeles, CA, Amerikai Egyesült Államok<br />Miami, FL, Amerikai Egyesült Államok<br />New York, NY, Amerikai Egyesült Államok<br />Philadelphia, PA, Amerikai Egyesült Államok<br />San Jose, CA, Amerikai Egyesült Államok<br />Seattle, WA, Egyesült Államok<br />Washington, DC, Egyesült Államok | Kanada<br />Mexikó<br />USA |
+| Észak-Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexikó<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland, OR, USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexikó<br />Mexikóváros, Mexikó<br />Puebla, Mexikó<br />Querétaro, Mexikó<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexikó<br />USA |
 | Dél-Amerika | Campinas, Brazília<br />Rio de Janeiro, Brazília<br />Sao Paulo, Brazília<br />Santiago, Chile | Buenos Aires, Argentína<br />Rio de Janeiro, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chile<br />Bogota, Kolumbia<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Quito, Ecuador<br />Lima, Peru | Argentína<br />Brazília<br />Chile<br />Columbia<br />Ecuador<br />Peru<br />Uruguay |
-| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Szófia, Bulgária<br />Zagreb, Horvátország<br />Prága, Csehország<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br /> Oslo, Norvégia<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milan, Olaszország<br />Amsterdam, Hollandia<br />Varsó, Lengyelország<br />Lisszabon, Portugália<br />Bukarest, Románia<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />London, Egyesült Királyság<br />Manchester, Egyesült Királyság | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milan, Olaszország<br />Riga, Lettország<br />Amsterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
-| Afrika | Cape Town, Dél-afrikai Köztársaság<br />Johannesburg, Dél-afrikai Köztársaság<br />Lagos, Nigéria<br />Nairobi, Kenya | Johannesburg, Dél-afrikai Köztársaság | Dél-afrikai Köztársaság |
-| Közel-Kelet | Dubai, Egyesült Arab Emírségek<br />Tel Aviv, Izrael<br />Istanbul, Törökország | Muskotály, Omán<br />Fujirah, Egyesült Arab Emírségek | Katar<br />Egyesült Arab Emírségek |
-| India | Chennai, India<br />Hyderabad, India<br />Mumbai, India<br />Újdelhi, India | Bengaluru (Bangalore), India<br />Chennai, India<br />Mumbai, India<br />Újdelhi, India<br /> | India |
-| Ázsia | Hongkong<br />Oszaka, Japán<br />Tokyo, Japán<br />Kuala Lumpur, Malajzia<br />Jakarta, Indonézia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Tajpej, Tajvan<br />Bangkok, Thaiföld<br />Saigon, Vietnam | Hongkong<br />Batam, Indonézia<br />Jakarta, Indonézia<br />Oszaka, Japán<br />Tokyo, Japán<br />Szingapúr<br />Szöul, Dél-Korea<br />Kaohsiung, Tajvan<br />Tajpej, Tajvan | Hongkong<br />Indonézia<br />Izrael<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
+| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Szófia, Bulgária<br />Zágráb, Horvátország<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br /> Oslo, Norvégia<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Lisszabon, Portugália<br />Bukarest, Románia<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />London, Egyesült Királyság<br />Manchester, Egyesült Királyság | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
+| Afrika | Cape Town, Dél-Afrika<br />Johannesburg, Dél-Afrika<br />Lagos, Nigéria<br />Nairobi, Kenya | Johannesburg, Dél-Afrika | Dél-afrikai Köztársaság |
+| Közel-Kelet | Dubaj, Egyesült Arab Emírségek<br />Tel Aviv, Izrael<br />Isztambul, Törökország | Muscat, Omán<br />Fujirah, Egyesült Arab Emírségek | Katar<br />Egyesült Arab Emírségek |
+| India | Chennai, India<br />Hyderabad, India<br />Mumbai, India<br />Új-Delhi, India | Bengaluru (Bangalore), India<br />Chennai, India<br />Mumbai, India<br />Új-Delhi, India<br /> | India |
+| Ázsia | Hongkong<br />Osaka, Japán<br />Tokió, Japán<br />Kuala Lumpur, Malajzia<br />Jakarta, Indonézia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Taipei, Tajvan<br />Bangkok, Thaiföld<br />Saigon, Vietnam | Hongkong<br />Batam, Indonézia<br />Jakarta, Indonézia<br />Osaka, Japán<br />Tokió, Japán<br />Szingapúr<br />Szöul, Dél-Korea<br />Kaohsiung, Tajvan<br />Taipei, Tajvan | Hongkong<br />Indonézia<br />Izrael<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
 | Ausztrália és Új-Zéland | Brisbane, Ausztrália<br />Melbourne, Ausztrália<br />Perth, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 
 ## <a name="next-steps"></a>További lépések
-* Az engedélyezési listához való legújabb IP-címek beolvasásához tekintse meg az [Azure CDN Edge Nodes API-t.](https://docs.microsoft.com/rest/api/cdn/edgenodes)
+* Az engedélyezési lista legújabb IP-címeinek lekéréséhez tekintse meg az [Azure CDN Edge API](https://docs.microsoft.com/rest/api/cdn/edgenodes)-t.
 

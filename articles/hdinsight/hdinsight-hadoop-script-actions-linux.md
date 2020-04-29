@@ -1,6 +1,6 @@
 ---
-title: Parancsfájlműveletek fejlesztése az Azure HDInsight-fürtök testreszabásához
-description: Ismerje meg, hogyan bash parancsfájlok hdinsight-fürtök testreszabásához. A parancsfájlműveletek lehetővé teszik parancsfájlok futtatását a fürt létrehozása során vagy azt követően a fürt konfigurációs beállításainak módosításához vagy további szoftverek telepítéséhez.
+title: Parancsfájl-műveletek fejlesztése az Azure HDInsight-fürtök testreszabásához
+description: Ismerje meg, hogyan szabhatók testre a HDInsight-fürtök a bash-parancsfájlok használatával. A parancsfájl-műveletek lehetővé teszik parancsfájlok futtatását a fürt létrehozása során vagy után a fürt konfigurációs beállításainak módosításához vagy további szoftverek telepítéséhez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,23 +8,23 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767550"
 ---
-# <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight segítségével
+# <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
 
-Ismerje meg, hogyan szabhatja testre a HDInsight-fürtbash-parancsfájlok használatával. A parancsfájlműveletek a HDInsight testreszabásának egyik módját teszik lea fürt létrehozása során vagy azt követően.
+Megtudhatja, hogyan szabhatja testre a HDInsight-fürtöt bash-parancsfájlok használatával. A parancsfájlok műveletei lehetővé teszik a HDInsight testreszabását a fürt létrehozása során vagy után.
 
-## <a name="what-are-script-actions"></a>Mik azok a parancsfájlműveletek?
+## <a name="what-are-script-actions"></a>A parancsfájlok műveletei
 
-A parancsfájlműveletek olyan Bash-parancsfájlok, amelyeket az Azure a fürtcsomópontokon futtat a konfigurációs módosítások vagy a szoftverek telepítése érdekében futtat. A parancsfájl-művelet gyökérként kerül végrehajtásra, és teljes hozzáférési jogokat biztosít a fürtcsomópontokhoz.
+A parancsfájl-műveletek olyan bash-parancsfájlok, amelyeket az Azure futtat a fürtcsomópontok között a konfiguráció módosításához vagy a szoftverek telepítéséhez. A parancsfájl művelete gyökérként fut, és teljes hozzáférési jogosultságokat biztosít a fürtcsomópontok számára.
 
-A parancsfájlműveletek a következő módszerekkel alkalmazhatók:
+A parancsfájlok műveletei a következő módszerekkel alkalmazhatók:
 
-| Ezzel a módszerrel parancsfájlt alkalmazhat... | A fürt létrehozása során... | Futó fürtön... |
+| Ezzel a módszerrel alkalmazhat egy parancsfájlt... | Fürt létrehozása közben... | Futó fürtön... |
 | --- |:---:|:---:|
 | Azure Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
@@ -32,35 +32,35 @@ A parancsfájlműveletek a következő módszerekkel alkalmazhatók:
 | HDInsight .NET SDK |✓ |✓ |
 | Azure Resource Manager-sablon |✓ |&nbsp; |
 
-A parancsfájlműveletek alkalmazásának módszereiről a [HDInsight-fürtök testreszabása parancsfájlműveletek használatával című](hdinsight-hadoop-customize-cluster-linux.md)témakörben talál további információt.
+A parancsfájl-műveletek alkalmazásával kapcsolatos további információkért lásd: HDInsight- [fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="best-practices-for-script-development"></a><a name="bestPracticeScripting"></a>Gyakorlati tanácsok a parancsfájlok fejlesztéséhez
+## <a name="best-practices-for-script-development"></a><a name="bestPracticeScripting"></a>Ajánlott eljárások a parancsfájlok fejlesztéséhez
 
-Ha egy HDInsight-fürthöz egyéni parancsfájlt fejleszt ki, számos ajánlott eljárás nak kell megszokva:
+Ha egyéni szkriptet fejleszt ki egy HDInsight-fürthöz, az ajánlott eljárások többek között a következők:
 
-* [Az Apache Hadoop verzió célzása](#bPS1)
+* [A Apache Hadoop verziójának megcélzása](#bPS1)
 * [Az operációs rendszer verziójának megcélzása](#bps10)
-* [Stabil hivatkozások biztosítása parancsfájl-erőforrásokhoz](#bPS2)
+* [Stabil hivatkozások biztosítása a parancsfájl erőforrásaihoz](#bPS2)
 * [Előre lefordított erőforrások használata](#bPS4)
-* [Annak ellenőrzése, hogy a fürt testreszabási parancsfájlja idempotens-e](#bPS3)
-* [A fürtarchitektúra magas rendelkezésre állásának biztosítása](#bPS5)
-* [Az egyéni összetevők konfigurálása az Azure Blob storage használatára](#bPS6)
-* [Információk írása az STDOUT és az STDERR számára](#bPS7)
-* [Fájlok mentése ASCII-ként LF sorvégződéssel](#bps8)
-* [Az újrapróbálkozási logika használata az átmeneti hibák helyreállítása érdekében](#bps9)
+* [Győződjön meg arról, hogy a fürt testreszabási parancsfájlja idempotens](#bPS3)
+* [A fürt architektúrájának magas rendelkezésre állásának biztosítása](#bPS5)
+* [Az egyéni összetevők konfigurálása az Azure Blob Storage használatára](#bPS6)
+* [Adatok írása az STDOUT-ba és a STDERR](#bPS7)
+* [Fájlok mentése ASCII-ként LF-sorok végződésével](#bps8)
+* [Újrapróbálkozási logika használata az átmeneti hibákból való helyreállításhoz](#bps9)
 
 > [!IMPORTANT]  
-> A parancsfájlműveleteknek 60 percen belül be kell fejeződniük, különben a folyamat sikertelen lesz. A csomópont-kiépítés során a parancsfájl más telepítési és konfigurációs folyamatokkal egyidejűleg fut. Az erőforrásokért, például a processzoridőért vagy a hálózati sávszélességért folyó verseny miatt a parancsfájl befejezése hosszabb időt vehet igénybe, mint a fejlesztői környezetben.
+> A parancsfájl-műveletek végrehajtásának 60 percen belül kell lennie, vagy a folyamat meghiúsul. A csomópont-kiépítés során a parancsfájl egyidejűleg fut más beállítási és konfigurációs folyamatokkal. Az erőforrások, például a CPU-idő vagy a hálózati sávszélesség versenye miatt előfordulhat, hogy a szkript hosszabb ideig tart, mint a fejlesztési környezetben.
 
-### <a name="target-the-apache-hadoop-version"></a><a name="bPS1"></a>Az Apache Hadoop verzió célzása
+### <a name="target-the-apache-hadoop-version"></a><a name="bPS1"></a>A Apache Hadoop verziójának megcélzása
 
-A HDInsight különböző verziói a Hadoop-szolgáltatások és -összetevők különböző verzióival rendelkeznek. Ha a parancsfájl egy szolgáltatás vagy összetevő egy adott verzióját várja, csak a HDInsight a szükséges összetevőket tartalmazó verziójával használja a parancsfájlt. A HDInsight részét képező összetevő-verziókról a [HDInsight-összetevő verziószámozási](hdinsight-component-versioning.md) dokumentumsegítségével talál információt.
+A HDInsight különböző verziói a Hadoop Services és az összetevők különböző verzióit telepítették. Ha a parancsfájl egy szolgáltatás vagy összetevő egy adott verzióját várja, akkor a szkriptet csak a szükséges összetevőket tartalmazó HDInsight-verzióval kell használnia. A HDInsight-ben található összetevő-verziókkal kapcsolatos információkat a [HDInsight-összetevő verziószámozási](hdinsight-component-versioning.md) dokumentuma alapján találhatja meg.
 
 ### <a name="checking-the-operating-system-version"></a>Az operációs rendszer verziójának ellenőrzése
 
-A HDInsight különböző verziói az Ubuntu egyes verzióira támaszkodnak. Előfordulhat, hogy különbségek vannak az operációs rendszer verziói között, amelyeket ellenőriznie kell a parancsfájlban. Előfordulhat például, hogy telepítenie kell egy bináris fájlt, amely az Ubuntu verziójához van kötve.
+A HDInsight különböző verziói az Ubuntu adott verzióira támaszkodnak. A parancsfájlban esetlegesen szükséges operációsrendszer-verziók között eltérések lehetnek. Előfordulhat például, hogy olyan bináris fájlt kell telepítenie, amely az Ubuntu-verzióhoz van kötve.
 
-Az operációs rendszer verziójának ellenőrzéséhez használja a használatát. `lsb_release` A következő parancsfájl például bemutatja, hogyan hivatkozzon egy adott kátrányfájlra az operációs rendszer verziójától függően:
+Az operációs rendszer verziószámának vizsgálatához `lsb_release`használja a következőt:. A következő parancsfájl például bemutatja, hogyan hivatkozhat egy adott tar-fájlra az operációs rendszer verziójától függően:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -75,9 +75,9 @@ fi
 
 ### <a name="target-the-operating-system-version"></a><a name="bps10"></a>Az operációs rendszer verziójának megcélzása
 
-A HDInsight az Ubuntu Linux disztribúción alapul. A HDInsight különböző verziói az Ubuntu különböző verzióira támaszkodnak, ami megváltoztathatja a parancsfájl működését. A HDInsight 3.4-es és korábbi verziói például az Upstart ot használó Ubuntu-verziókon alapulnak. A 3.5-ös vagy újabb verziók az Ubuntu 16.04-en alapulnak, amely a Systemd-et használja. A Systemd és az Upstart különböző parancsokra támaszkodik, ezért a parancsfájlt úgy kell megírni, hogy mindkettővel működjön.
+A HDInsight a Ubuntu Linux eloszláson alapul. A HDInsight különböző verziói az Ubuntu különböző verzióira támaszkodnak, ami megváltoztathatja a szkript működésének módját. A HDInsight 3,4-es és korábbi verziói például az üzembe helyezést használó Ubuntu-verziókon alapulnak. A 3,5-es és újabb verziók a rendszer által használt Ubuntu 16,04-es verzión alapulnak. A rendszer és a Kiindulás különböző parancsokra támaszkodik, így a parancsfájlt úgy kell megírni, hogy mindkettővel működjön.
 
-Egy másik fontos különbség a HDInsight 3.4 és a 3.5 között, hogy `JAVA_HOME` most a Java 8-ra mutat. A következő kód bemutatja, hogyan állapítható meg, hogy a szkript ubuntu 14-en vagy 16-on fut-e:
+A HDInsight 3,4 és a 3,5 egy másik fontos különbség `JAVA_HOME` , hogy most már a Java 8-ra mutat. A következő kód azt mutatja be, hogyan állapítható meg, hogy a parancsfájl fut-e Ubuntu 14 vagy 16 rendszeren:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -108,89 +108,89 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-A kódrészleteket tartalmazó teljes parancsfájl a https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.shkövetkező helyen található: .
+A kódrészleteket tartalmazó teljes parancsfájlt a következő helyen találja: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
 
-Az Ubuntu HDInsight által használt verzióját lásd a [HDInsight összetevő](hdinsight-component-versioning.md) verziódokumentumában.
+A HDInsight által használt Ubuntu-verzió esetében tekintse meg a [HDInsight-összetevő verziószámát](hdinsight-component-versioning.md) ismertető dokumentumot.
 
-A Systemd és az Upstart közötti különbségeket a [Rendszerindítás kezdő felhasználók számára című](https://wiki.ubuntu.com/SystemdForUpstartUsers)témakörben olvassa el.
+A rendszerszintű és a kezdeti lépések közötti különbségek megismeréséhez tekintse meg a [rendszerindító felhasználók számára](https://wiki.ubuntu.com/SystemdForUpstartUsers)című témakört.
 
-### <a name="provide-stable-links-to-script-resources"></a><a name="bPS2"></a>Stabil hivatkozások biztosítása parancsfájl-erőforrásokhoz
+### <a name="provide-stable-links-to-script-resources"></a><a name="bPS2"></a>Stabil hivatkozások biztosítása a parancsfájl erőforrásaihoz
 
-A parancsfájlnak és a kapcsolódó erőforrásoknak a fürt teljes élettartama alatt elérhetőnek kell maradniuk. Ezekre az erőforrásokra akkor van szükség, ha a méretezési műveletek során új csomópontokat adhozzá a fürthöz.
+A parancsfájlnak és a kapcsolódó erőforrásoknak elérhetőnek kell maradniuk a fürt teljes élettartama alatt. Ezek az erőforrások akkor szükségesek, ha új csomópontokat adnak hozzá a fürthöz a skálázási műveletek során.
 
-Az ajánlott eljárás az, hogy töltse le és archiválja mindent egy Azure Storage-fiók az előfizetésben.
+Az ajánlott eljárás az, hogy minden Azure Storage-fiókban letöltse és archiválja az előfizetését.
 
 > [!IMPORTANT]  
-> A használt tárfióknak a fürt alapértelmezett tárfiókjának vagy bármely más tárfiók nyilvános, csak olvasható tárolójának kell lennie.
+> A használt Storage-fióknak az alapértelmezett Storage-fióknak kell lennie a fürthöz vagy egy nyilvános, írásvédett tárolóhoz bármely más Storage-fiókban.
 
-Például a Microsoft által biztosított minták [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) a tárfiókban tárolódnak. Ez a hely egy nyilvános, csak olvasható tároló, amelyet a HDInsight-csapat tart fenn.
+A Microsoft által biztosított mintákat például a [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) Storage-fiók tárolja. Ez a hely egy nyilvános, csak olvasható tároló, amelyet a HDInsight csapat tart fenn.
 
 ### <a name="use-pre-compiled-resources"></a><a name="bPS4"></a>Előre lefordított erőforrások használata
 
-A parancsfájl futtatásához szükséges idő csökkentése érdekében kerülje az erőforrásokat forráskódból fordító műveleteket. Például előre lefordítani az erőforrásokat, és tárolja őket egy Azure Storage-fiók blob ugyanabban az adatközpontban, mint a HDInsight.
+A parancsfájl futtatásához szükséges idő csökkentése érdekében kerülje az erőforrások forráskódból való fordítására szolgáló műveleteket. Például előre lefordíthatja az erőforrásokat, és tárolhatja őket egy Azure Storage-fiók blobjában ugyanabban az adatközpontban, mint a HDInsight.
 
-### <a name="ensure-that-the-cluster-customization-script-is-idempotent"></a><a name="bPS3"></a>Annak ellenőrzése, hogy a fürt testreszabási parancsfájlja idempotens-e
+### <a name="ensure-that-the-cluster-customization-script-is-idempotent"></a><a name="bPS3"></a>Győződjön meg arról, hogy a fürt testreszabási parancsfájlja idempotens
 
-A parancsfájlok nak idempotensnek kell lenniük. Ha a parancsfájl többször fut, a fürtnek minden alkalommal ugyanabba az állapotba kell visszatérnie.
+A szkripteknek idempotens kell lenniük. Ha a parancsfájl többször is fut, minden alkalommal ugyanazt az állapotot kell visszaadnia a fürtnek.
 
-Ha például egy parancsfájl módosítja a konfigurációs fájlokat, nem adhat hozzá ismétlődő bejegyzéseket, ha az többször is futott.
+Például egy parancsfájl, amely módosítja a konfigurációs fájlokat, ne adjon hozzá duplikált bejegyzéseket, ha többször is futott.
 
-### <a name="ensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>A fürtarchitektúra magas rendelkezésre állásának biztosítása
+### <a name="ensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>A fürt architektúrájának magas rendelkezésre állásának biztosítása
 
-A Linux-alapú HDInsight-fürtök két, a fürtön belül aktív főcsomópontot biztosítanak, és a parancsfájlműveletek mindkét csomóponton futnak. Ha a telepített összetevők csak egy főcsomópontot várnak, ne telepítse az összetevőket mindkét főcsomópontra.
+A Linux-alapú HDInsight-fürtök két, a fürtön belül aktív fő csomópontot biztosítanak, a parancsfájlok műveletei pedig mindkét csomóponton futnak. Ha a telepített összetevők csak egy fő csomópontot várnak, ne telepítse az összetevőket mindkét fő csomópontra.
 
 > [!IMPORTANT]  
-> A HDInsight részeként nyújtott szolgáltatások célja, hogy szükség szerint feladatátvételt hajtson elő a két főcsomópont között. Ez a funkció nem érhető el a parancsfájlműveleteken keresztül telepített egyéni összetevőkre. Ha az egyéni összetevők magas rendelkezésre állásra van szüksége, saját feladatátvételi mechanizmust kell megvalósítania.
+> A HDInsight részeként biztosított szolgáltatások úgy vannak kialakítva, hogy szükség szerint feladatátvételt végezzenek a két fő csomópont között. Ez a funkció nem terjeszthető ki a parancsfájlok műveletein keresztül telepített egyéni összetevőkre. Ha magas rendelkezésre állásra van szüksége az egyéni összetevőkhöz, saját feladatátvételi mechanizmust kell megvalósítani.
 
-### <a name="configure-the-custom-components-to-use-azure-blob-storage"></a><a name="bPS6"></a>Az egyéni összetevők konfigurálása az Azure Blob storage használatára
+### <a name="configure-the-custom-components-to-use-azure-blob-storage"></a><a name="bPS6"></a>Az egyéni összetevők konfigurálása az Azure Blob Storage használatára
 
-Előfordulhat, hogy a fürtre telepített összetevők alapértelmezett konfigurációja Apache Hadoop Distributed File System (HDFS) tárolót használ. A HDInsight az Azure Storage vagy a Data Lake Storage alapértelmezett tárolóként használja. Mindkettő hdfs-kompatibilis fájlrendszert biztosít, amely akkor is megőrzi az adatokat, ha a fürt et törlik. Előfordulhat, hogy a telepített összetevőket úgy kell konfigurálnia, hogy a HDFS helyett WASB vagy ADL-t használjanak.
+A fürtön telepített összetevőkhöz a Apache Hadoop elosztott fájlrendszer (HDFS) tárolót használó alapértelmezett konfiguráció is tartozhat. A HDInsight az Azure Storage-t vagy a Data Lake Storage használja alapértelmezett tárolóként. Mindkettő olyan HDFS-kompatibilis fájlrendszert biztosít, amely akkor is megőrzi az adattárolást, ha a fürtöt törölték. Előfordulhat, hogy a HDFS helyett a WASB vagy az ADL használatára telepített összetevőket kell konfigurálnia.
 
-A legtöbb művelethez nem kell megadnia a fájlrendszert. A következő adatok például a hadoop-common.jar fájlt a helyi fájlrendszerből a fürttárolóba másolja:
+A legtöbb művelet esetében nem kell megadnia a fájlrendszert. A következő példa például a Hadoop-Common. jar fájlt másolja a helyi fájlrendszerből a fürt tárterületére:
 
 ```bash
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
-Ebben a példában a `hdfs` parancs transzparens módon használja az alapértelmezett fürttárolót. Egyes műveletek esetén előfordulhat, hogy meg kell adnia az URI-t. Például `adl:///example/jars` az Azure Data Lake `abfs:///example/jars` Storage Gen1, a `wasb:///example/jars` Data Lake Storage Gen2 vagy az Azure Storage esetében.
+Ebben a példában a `hdfs` parancs transzparens módon használja az alapértelmezett fürtöt tárolót. Egyes műveletek esetében előfordulhat, hogy meg kell adnia az URI-t. Azure Data Lake Storage Gen1 `adl:///example/jars` `abfs:///example/jars` például a Data Lake Storage Gen2 vagy `wasb:///example/jars` az Azure Storage esetében.
 
-### <a name="write-information-to-stdout-and-stderr"></a><a name="bPS7"></a>Információk írása az STDOUT és az STDERR számára
+### <a name="write-information-to-stdout-and-stderr"></a><a name="bPS7"></a>Adatok írása az STDOUT-ba és a STDERR
 
-A HDInsight naplózza az STDOUT és az STDERR rendszerbe írt parancsfájlkimenetet. Ezeket az információkat az Ambari webes felhasználói felületén tekintheti meg.
+A HDInsight az STDOUT-ra és a STDERR-re írt parancsfájl-kimenetet naplózza. Ezeket az információkat a Ambari webes felhasználói felületének használatával tekintheti meg.
 
 > [!NOTE]  
-> Az Apache Ambari csak akkor érhető el, ha a fürt sikeresen létrejött. Ha parancsfájlműveletet használ a fürt létrehozása során, és a létrehozás sikertelen, olvassa el a [parancsfájlműveletek elhárítása című](./troubleshoot-script-action.md) témakört a naplózott adatok elérésének egyéb módjairól.
+> Az Apache Ambari csak akkor érhető el, ha a fürt létrehozása sikeres volt. Ha parancsfájl-műveletet használ a fürt létrehozása során, és a létrehozás meghiúsul, tekintse meg a [parancsfájl-műveletek hibakeresése](./troubleshoot-script-action.md) a naplózott adatok elérésének egyéb módjaihoz című témakört.
 
-A legtöbb segédprogram és telepítőcsomag már tartalmaz adatokat az STDOUT és az STDERR számára, azonban további naplózást is hozzáadhat. Ha szöveget szeretne küldeni az `echo`STDOUT-nak, használja a használatát. Például:
+A legtöbb segédprogram és telepítési csomag már adatokat ír az STDOUT-ba és a STDERR-be, azonban érdemes lehet további naplózást hozzáadni. Ha szöveget szeretne a STDOUT-ba `echo`küldeni, használja a következőt:. Például:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Alapértelmezés szerint `echo` elküldi a karakterláncot az STDOUT-nak. Az STDERR-hez való `>&2` `echo`átirányításhoz adja hozzá a before . Például:
+Alapértelmezés szerint a `echo` karakterláncot a következőre küldi: StdOut. A STDERR való közvetlen hozzáadáshoz adja `>&2` hozzá `echo`a következőt:. Például:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-Ez átirányítja az STDOUT-nak írt információkat az STDERR (2) helyett. Az IO átirányításáról további [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)információt a .
+Ez Ehelyett a STDOUT-ba írt adatokat STDERR (2) átirányítja. Az i/o-átirányítás részletes ismertetését lásd: [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html).
 
-A parancsfájlműveletek által naplózott információk megtekintéséről a [Parancsfájlműveletek elhárítása című](./troubleshoot-script-action.md)témakörben talál további információt.
+A parancsfájl-műveletek által naplózott információk megtekintésével kapcsolatos további információkért lásd: [parancsfájl-műveletek hibakeresése](./troubleshoot-script-action.md).
 
-### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Fájlok mentése ASCII-ként LF sorvégződéssel
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Fájlok mentése ASCII-ként LF-sorok végződésével
 
-A Bash parancsfájlokat ASCII formátumban kell tárolni, a sorokat pedig az LF szüntesse meg. Az UTF-8 néven tárolt fájlok, illetve a CRLF használata sorvégződésként a következő hibával sikertelen lehet:
+A bash-parancsfájlokat ASCII formátumban kell tárolni, az LF által leállított vonalakkal. Az UTF-8-ként tárolt fájlok vagy a CRLF használata, mert a sorok vége meghiúsulhat a következő hiba miatt:
 
 ```
 $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>Az újrapróbálkozási logika használata az átmeneti hibák helyreállítása érdekében
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>Újrapróbálkozási logika használata az átmeneti hibákból való helyreállításhoz
 
-Fájlok letöltésekor, csomagok telepítésekor apt-get használatával, vagy más, az interneten keresztül adatokat továbbító műveletek esetén a művelet átmeneti hálózati hibák miatt sikertelen lehet. Előfordulhat például, hogy a távoli erőforrás, amellyel kommunikál, egy biztonsági csomópontnak való átadás folyamatában van.
+Fájlok letöltésekor, az apt-get használatával vagy az interneten keresztül adatokat továbbító egyéb műveletekkel a csomagok telepítése során előfordulhat, hogy a művelet átmeneti hálózati hibák miatt meghiúsul. Előfordulhat például, hogy a távoli erőforrás, amellyel kommunikál, a biztonsági mentési csomópontra történő feladatátvétel folyamatában lehet.
 
-Ahhoz, hogy a parancsfájl rugalmas az átmeneti hibák, valósíthatja meg újrapróbálkozási logika. A következő függvény bemutatja, hogyan valósítható meg újrapróbálkozási logika. A műveletet háromszor újrapróbálkozik, mielőtt meghibásodna.
+Annak érdekében, hogy a parancsfájl rugalmas legyen az átmeneti hibákkal, megvalósíthatja az újrapróbálkozási logikát. Az alábbi függvény az újrapróbálkozási logika megvalósítását mutatja be. A művelet végrehajtása előtt háromszor újrapróbálkozik a művelettel.
 
 ```bash
 #retry
@@ -216,7 +216,7 @@ retry() {
 }
 ```
 
-Az alábbi példák bemutatják, hogyan kell használni ezt a funkciót.
+Az alábbi példák bemutatják, hogyan használhatja ezt a függvényt.
 
 ```bash
 retry ls -ltr foo
@@ -224,140 +224,140 @@ retry ls -ltr foo
 retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 ```
 
-## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>Segítő módszerek egyéni parancsfájlokhoz
+## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>Az egyéni parancsfájlok segítő módszerei
 
-A parancsfájlműveleteket segítő módszerek olyan segédprogramok, amelyeket egyéni parancsfájlok írásakor használhat. Ezek a módszerek [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) a parancsfájlban találhatók. Az alábbiak segítségével töltheti le és használhatja őket a parancsfájl részeként:
+A parancsfájl-művelet segítő módszerei olyan segédprogramok, amelyeket használhat egyéni parancsfájlok írásakor. Ezeket a metódusokat a [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) parancsfájl tárolja. A következő paranccsal töltheti le és használhatja őket a parancsfájl részeként:
 
 ```bash
 # Import the helper method module.
 wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
 ```
 
-A parancsfájlban használható alábbi segítők:
+A parancsfájlban a következő segítők használhatók:
 
 | Segítő használata | Leírás |
 | --- | --- |
-| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Letölt egy fájlt a forrás URI-ról a megadott fájl elérési útjára. Alapértelmezés szerint nem írja felül a meglévő fájlokat. |
-| `untar_file TARFILE DESTDIR` |Kátrányfájlt (használatával) `-xf`bont ki a célkönyvtárba. |
-| `test_is_headnode` |Ha fürtfőcsomóponton fut, 1-es visszaad. ellenkező esetben 0. |
-| `test_is_datanode` |Ha az aktuális csomópont adat (dolgozó) csomópont, akkor 1-es adata; ellenkező esetben 0. |
-| `test_is_first_datanode` |Ha az aktuális csomópont az első adat (dolgozó) csomópont (workernode0) 1-es visszaad; ellenkező esetben 0. |
-| `get_headnodes` |Adja vissza a fürtben lévő headnodes teljesen minősített tartománynevét. A nevek vesszővel vannak elválasztva. Hiba esetén egy üres karakterlánc ot ad vissza. |
-| `get_primary_headnode` |Leveszi az elsődleges csomópont teljesen minősített tartománynevét. Hiba esetén egy üres karakterlánc ot ad vissza. |
-| `get_secondary_headnode` |Leveszi a másodlagos csomópont teljesen minősített tartománynevét. Hiba esetén egy üres karakterlánc ot ad vissza. |
-| `get_primary_headnode_number` |Leveszi az elsődleges fejcsomópont numerikus utótagot. Hiba esetén egy üres karakterlánc ot ad vissza. |
-| `get_secondary_headnode_number` |Leveszi a másodlagos csomópont numerikus utótagot. Hiba esetén egy üres karakterlánc ot ad vissza. |
+| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Letölt egy fájlt a forrás URI-ból a megadott elérési útra. Alapértelmezés szerint nem írja felül a meglévő fájlt. |
+| `untar_file TARFILE DESTDIR` |Kibont egy tar-fájlt `-xf`(a használatával) a cél könyvtárába. |
+| `test_is_headnode` |Ha a fürt fő csomópontján futott, a Return 1; Ellenkező esetben 0. |
+| `test_is_datanode` |Ha az aktuális csomópont egy adat (feldolgozó) csomópont, egy 1; értéket ad vissza. Ellenkező esetben 0. |
+| `test_is_first_datanode` |Ha az aktuális csomópont az első adat (Worker) csomópont (workernode0), egy 1 értéket ad vissza. Ellenkező esetben 0. |
+| `get_headnodes` |A fürt átjárócsomópontokkal teljes tartománynevét adja vissza. A nevek vesszővel tagoltak. Hiba esetén üres karakterláncot ad vissza. |
+| `get_primary_headnode` |Lekéri az elsődleges átjárócsomóponthoz teljes tartománynevét. Hiba esetén üres karakterláncot ad vissza. |
+| `get_secondary_headnode` |Lekéri a másodlagos átjárócsomóponthoz teljes tartománynevét. Hiba esetén üres karakterláncot ad vissza. |
+| `get_primary_headnode_number` |Lekéri az elsődleges átjárócsomóponthoz numerikus utótagját. Hiba esetén üres karakterláncot ad vissza. |
+| `get_secondary_headnode_number` |Lekéri a másodlagos átjárócsomóponthoz numerikus utótagját. Hiba esetén üres karakterláncot ad vissza. |
 
 ## <a name="common-usage-patterns"></a><a name="commonusage"></a>Gyakori használati minták
 
-Ez a szakasz útmutatást nyújt a közös használati minták, amelyek előfordulhat, hogy a saját egyéni parancsfájl írása közben.
+Ez a szakasz útmutatást nyújt néhány olyan általános használati minta megvalósításához, amelyeket a saját egyéni szkriptének írásakor futtathat.
 
-### <a name="passing-parameters-to-a-script"></a>Paraméterek átadása parancsfájlhoz
+### <a name="passing-parameters-to-a-script"></a>Paraméterek átadása egy parancsfájlnak
 
-Bizonyos esetekben előfordulhat, hogy a parancsfájl paramétereket igényel. Előfordulhat például, hogy az Ambari REST API használatakor szüksége lehet a fürt rendszergazdai jelszavára.
+Bizonyos esetekben előfordulhat, hogy a szkript paramétereket kér. Előfordulhat például, hogy a Ambari REST API használatakor szükség van a fürt rendszergazdai jelszavára.
 
-A parancsfájlnak átadott *paramétereket pozícióparamétereknek nevezzük,* `$1` és az első `$2` paraméterhez, a másodikhoz és a so-on-hoz vannak rendelve. `$0`tartalmazza magának a szkriptnek a nevét.
+A parancsfájlnak átadott paraméterek *pozicionális paraméterekként*ismertek, és az első `$1` paraméterhez, `$2` a másodikhoz és a (z) rendszerhez vannak rendelve. `$0`a parancsfájl nevét tartalmazza.
 
-A parancsfájlnak paraméterekként átadott értékeket egyszeres idézőjelekkel (') kell mellékelve. Ezzel biztosítja, hogy az átadott érték konstansként legyen kezelve.
+A parancsfájlnak átadott értékeket paraméterként aposztrófok (') közé kell foglalni. Így biztosítható, hogy az átadott érték literálként legyen kezelve.
 
 ### <a name="setting-environment-variables"></a>Környezeti változók beállítása
 
-A környezeti változó beállítását a következő utasítás hajtja végre:
+A környezeti változók beállítását a következő utasítás hajtja végre:
 
     VARIABLENAME=value
 
-Ahol a VÁLTOZÓNÉV a változó neve. A változó eléréséhez `$VARIABLENAME`használja a használatát. Ha például egy pozícióparaméter által megadott értéket rendel a PASSWORD nevű környezeti változóhoz, a következő utasítást kell használnia:
+Ahol a VARIABLENAME a változó neve. A változó eléréséhez használja `$VARIABLENAME`a következőt:. Ha például egy, a jelszó nevű környezeti változóban egy pozíciós paraméter által megadott értéket szeretne hozzárendelni, használja a következő utasítást:
 
     PASSWORD=$1
 
-Ezt követően az információhoz való későbbi hozzáférés használható `$PASSWORD`.
+Ezt követően az adatokhoz való további hozzáférés `$PASSWORD`is használható.
 
-A parancsfájlon belül beállított környezeti változók csak a parancsfájl hatókörén belül léteznek. Bizonyos esetekben előfordulhat, hogy rendszerszintű környezeti változókat kell hozzáadnia, amelyek a parancsfájl befejezése után is megmaradnak. Rendszerszintű környezeti változók hozzáadásához adja hozzá `/etc/environment`a változót a hoz. Például a következő `HADOOP_CONF_DIR`utasítás hozzáteszi:
+A parancsfájlban beállított környezeti változók csak a parancsfájl hatókörén belül találhatók. Bizonyos esetekben előfordulhat, hogy olyan rendszerszintű környezeti változókat kell hozzáadnia, amelyek a szkript befejeződése után is megmaradnak. Rendszerszintű környezeti változók hozzáadásához adja hozzá a változót `/etc/environment`a következőhöz:. Az alábbi utasítás például a következőt `HADOOP_CONF_DIR`adja meg:
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 ```
 
-### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Hozzáférés azokhoz a helyekhez, ahol az egyéni parancsfájlok tárolódnak
+### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Hozzáférés az egyéni parancsfájlokat tároló helyekhez
 
-A fürt testreszabásához használt parancsfájlokat a következő helyek egyikén kell tárolni:
+A fürtök testreszabásához használt parancsfájlokat a következő helyekre kell tárolni:
 
-* A fürthöz társított __Azure Storage-fiók.__
+* A fürthöz társított __Azure Storage-fiók__ .
 
-* A fürthöz társított __további tárfiók.__
+* A fürthöz társított __további Storage-fiók__ .
 
-* Nyilvánosan __olvasható URI__. Például a OneDrive-on, a Dropboxban vagy más fájltároló szolgáltatásban tárolt adatok URL-címe.
+* __Nyilvánosan olvasható URI__. Például egy URL-cím a OneDrive-on, a Dropboxban vagy más file hosting szolgáltatásban tárolt adatelérési ponthoz.
 
-* Egy __Azure Data Lake Storage-fiók,__ amely a HDInsight-fürthöz van társítva. Az Azure Data Lake Storage HDInsight szolgáltatással való használatáról további információt a [Gyorsútmutató: Fürtök beállítása a HDInsightban című témakörben talál.](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* Egy __Azure Data Lake Storage fiók__ , amely a HDInsight-fürthöz van társítva. A Azure Data Lake Storage és a HDInsight használatával kapcsolatos további információkért lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]  
-    > A szolgáltatás egyszerű HDInsight a Data Lake Storage eléréséhez használt olvasási hozzáférést kell biztosítania a parancsfájlhoz.
+    > Az egyszerű szolgáltatásnak a HDInsight való Data Lake Storage eléréséhez olvasási hozzáféréssel kell rendelkeznie a parancsfájlhoz.
 
 A parancsfájl által használt erőforrásoknak is nyilvánosan elérhetőnek kell lenniük.
 
-A fájlok tárolása egy Azure Storage-fiókban vagy az Azure Data Lake Storage gyors hozzáférést biztosít, mivel mind az Azure-hálózaton belül.
+Ha egy Azure Storage-fiókban tárolja a fájlokat, vagy a Azure Data Lake Storage gyors hozzáférést biztosít az Azure-hálózaton belül.
 
 > [!NOTE]  
-> A parancsfájlra való hivatkozáshoz használt URI-formátum a használt szolgáltatástól függően eltérő lehet. A HDInsight-fürthöz társított tárfiókok esetén használja `wasb://` a vagyat. `wasbs://` Nyilvánosan olvasható URI-k `http://` esetén `https://`használja a vagy . A Data Lake `adl://`Storage használatához használja a használatát.
+> A parancsfájlra való hivatkozáshoz használt URI-formátum a használt szolgáltatástól függően eltérő. A HDInsight-fürthöz társított Storage-fiókok esetében `wasb://` használja `wasbs://`a vagy a t. Nyilvánosan olvasható URI-k esetén `http://` használja `https://`a következőt: vagy. Data Lake Storage esetén használja `adl://`a következőt:.
 
-## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>Parancsfájlművelet telepítésének ellenőrzőlistája
+## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>Ellenőrzőlista parancsfájl-művelet telepítéséhez
 
-A parancsfájl okának előkészítése során az alábbi lépéseket kell tenni:
+A következő lépésekkel végezheti el a parancsfájlok üzembe helyezésének előkészítését:
 
-* Helyezze az egyéni parancsfájlokat tartalmazó fájlokat olyan helyre, amely a fürtcsomópontok számára elérhető a telepítés során. Például a fürt alapértelmezett tárolója. A fájlok nyilvánosan olvasható tárhelyszolgáltatásokban is tárolhatók.
-* Ellenőrizze, hogy a parancsfájl idempotens-e. Ez lehetővé teszi, hogy a parancsfájl végrehajtása többször ugyanazon a csomóponton.
-* A parancsfájlok által használt letöltött fájlok megtartásához használjon ideiglenes fájlkönyvtárat /tmp, majd a parancsfájlok végrehajtása után törölje őket.
-* Ha az operációs rendszer szintű beállítások vagy a Hadoop szolgáltatás konfigurációs fájljai megváltoznak, érdemes újraindítani a HDInsight-szolgáltatásokat.
+* Helyezze az egyéni parancsfájlokat tartalmazó fájlokat olyan helyre, amelyet a fürtcsomópontok az üzembe helyezés során elérhetővé tesznek. Például a fürt alapértelmezett tárolója. A fájlok tárolhatók nyilvánosan olvasható üzemeltetési szolgáltatásokban is.
+* Ellenőrizze, hogy a parancsfájl idempotens van-e. Ez lehetővé teszi, hogy a parancsfájl többször is végrehajtva legyen ugyanazon a csomóponton.
+* Egy ideiglenes könyvtár/tmp megtarthatja a parancsfájlok által használt letöltött fájlokat, majd a parancsfájlok végrehajtása után megtisztíthatja őket.
+* Ha az operációsrendszer-szintű beállítások vagy az Hadoop szolgáltatás konfigurációs fájljai módosulnak, érdemes újraindítani a HDInsight-szolgáltatásokat.
 
 ## <a name="how-to-run-a-script-action"></a><a name="runScriptAction"></a>Parancsfájl-művelet futtatása
 
-Parancsfájlműveletek segítségével testreszabhatja a HDInsight-fürtöket a következő módszerekkel:
+A HDInsight-fürtöket a következő módszerekkel testreszabhatja parancsfájl-műveletek használatával:
 
 * Azure Portal
 * Azure PowerShell
 * Azure Resource Manager-sablonok
-* A HDInsight .NET SDK.
+* A HDInsight .NET SDK-t.
 
-Az egyes módszerek használatáról a [Parancsfájl-műveletek használata](hdinsight-hadoop-customize-cluster-linux.md)című témakörben talál további információt.
+További információ az egyes módszerek használatáról: a [parancsfájl-művelet használata](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="custom-script-samples"></a><a name="sampleScripts"></a>Egyéni parancsfájlminták
+## <a name="custom-script-samples"></a><a name="sampleScripts"></a>Egyéni parancsfájlok mintái
 
-A Microsoft mintaparancsfájlokat biztosít az összetevők HDInsight-fürtre való telepítéséhez. Lásd: [Hue telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md) példaparancsfájl-műveletként.
+A Microsoft példákat biztosít a HDInsight-fürtön található összetevők telepítéséhez. Lásd: [a Hue telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md) példaként szolgáló parancsfájl-művelet.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az alábbi hibák rakhatnak át a kifejlesztett parancsfájlok használatakor:
+A fejlesztett parancsfájlok használatakor a következő hibák merülhetnek fel:
 
-**Hiba** `$'\r': command not found`: . Néha követi `syntax error: unexpected end of file`.
+**Hiba**: `$'\r': command not found`. Időnként ezt követi `syntax error: unexpected end of file`.
 
-*Ok*: Ez a hiba akkor keletkezik, ha a parancsfájl sorai CRLF-re végződnek. Unix rendszerek várják csak LF, mint a vonal vége.
+*OK*: Ez a hiba akkor következik be, amikor egy parancsfájl SORAI a CRLF-sel végződik. A UNIX rendszerű rendszerek csak a TT-t várnak a sor végéig.
 
-Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájl Windows-környezetben készült, mivel a CRLF a Windows számos szövegszerkesztőjének közös vonala.
+Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájlt Windows-környezetben készíti el, mivel a CRLF egy, a Windows számos szövegszerkesztője számára végződő közös vonal.
 
-*Megoldás:* Ha ez egy lehetőség a szövegszerkesztőben, válassza a Unix formátumot vagy az LF lehetőséget a sor befejezéséhez. Unix rendszeren a következő parancsok segítségével a CRLF lf-re is módosítható:
+*Megoldás*: Ha a szövegszerkesztőben lehetőség van, válassza a Unix-formátum vagy a LF lehetőséget a sor befejezéséhez. A következő parancsokat is használhatja egy UNIX rendszeren a CRLF egy LF-re való módosításához:
 
 > [!NOTE]  
-> A következő parancsok nagyjából egyenértékűek, mivel a CRLF sorvégződéseket LF-re kell módosítaniuk. Válasszon egyet a rendszeren elérhető segédprogramok alapján.
+> A következő parancsok nagyjából egyenértékűek, ha módosítani kell a CRLF sort a LF értékre. Válasszon egyet a rendszeren elérhető segédprogramok alapján.
 
 | Parancs | Megjegyzések |
 | --- | --- |
-| `unix2dos -b INFILE` |Az eredeti fájlról biztonsági másolatot kell tenni egy . BAK kiterjesztés |
-| `tr -d '\r' < INFILE > OUTFILE` |Outfile tartalmaz egy változatot csak LF végződések |
+| `unix2dos -b INFILE` |Az eredeti fájl biztonsági mentése a-val történik. BAK bővítmény |
+| `tr -d '\r' < INFILE > OUTFILE` |A fájl verziószáma csak LF végződéssel rendelkező verziót tartalmaz |
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Közvetlenül módosítja a fájlt |
-| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |Az OUTFILE olyan verziót tartalmaz, amelycsak LF végződésekkel van elvégezve. |
+| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |A fájl egy olyan verziót tartalmaz, amely csak LF végződéssel rendelkezik. |
 
-**Hiba** `line 1: #!/usr/bin/env: No such file or directory`: .
+**Hiba**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*Ok*: Ez a hiba akkor fordul elő, amikor a parancsfájlutf-8 néven lett mentve bájtrendelés-jellel (AJ).
+*OK*: Ez a hiba akkor fordul elő, ha a parancsfájl UTF-8-as, bájtos rendelési JELLEL (BOM) lett mentve.
 
-*Megoldás*: Mentse a fájlt ASCII vagy UTF-8 néven anyagjegyzék nélkül. Linux vagy Unix rendszeren a következő parancs segítségével is létrehozhat egy fájlt az anyagjegyzék nélkül:
+*Megoldás*: mentse a fájlt ASCII-ként, vagy egy ANYAGJEGYZÉK nélküli UTF-8-ként. Az alábbi parancsot Linux vagy UNIX rendszerű rendszeren is használhatja az ANYAGJEGYZÉK nélküli fájl létrehozásához:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-Cserélje `INFILE` le az anyagjegyzéket tartalmazó fájlra. `OUTFILE`kell lennie egy új fájlnevet, amely tartalmazza a parancsfájl nélkül anyagjegyzék.
+Cserélje `INFILE` le az helyére az anyagjegyzéket tartalmazó fájlt. `OUTFILE`egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>További lépések
 
-* A [HDInsight-fürtök testreszabása parancsfájlművelettel](hdinsight-hadoop-customize-cluster-linux.md)
-* A [HDInsight .NET SDK hivatkozásának használatával](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) további információt nyújt a HDInsightot kezelő .NET-alkalmazások létrehozásáról
-* A [HDInsight REST API-val](https://msdn.microsoft.com/library/azure/mt622197.aspx) megtudhatja, hogyan használhatja a REST-et a HDInsight-fürtök felügyeleti műveletek végrehajtására.
+* Megtudhatja, hogyan [szabhatja testre a HDInsight-fürtöket parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md)
+* A [HDInsight .net SDK-referenciával](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) többet tudhat meg a HDInsight-t kezelő .NET-alkalmazások létrehozásáról
+* A [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) segítségével megtudhatja, hogyan használható a REST a felügyeleti műveletek végrehajtásához a HDInsight-fürtökön.

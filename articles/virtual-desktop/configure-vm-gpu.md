@@ -1,6 +1,6 @@
 ---
-title: GPU konfigurálása Windows virtuális asztalhoz – Azure
-description: A GPU-kat gyorsított renderelés és kódolás engedélyezése a Windows Virtual Desktop rendszerben.
+title: A GPU konfigurálása a Windows rendszerű virtuális asztali környezethez – Azure
+description: A GPU-gyorsított renderelés és a kódolás engedélyezése a Windows Virtual Desktopban.
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
@@ -8,87 +8,87 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
 ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767038"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Grafikus feldolgozóegység (GPU) gyorsításának konfigurálása a Windows Virtual Desktop rendszerhez
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>A grafikus processzor (GPU) gyorsításának beállítása a Windows rendszerű virtuális asztalhoz
 
-A Windows Virtual Desktop támogatja a GPU-gyorsítású renderelést és kódolást az alkalmazások jobb teljesítménye és méretezhetősége érdekében. A GPU gyorsítása különösen fontos a nagy grafikai igényű alkalmazások esetében.
+A Windows virtuális asztal támogatja a GPU-gyorsított renderelést és kódolást az alkalmazások teljesítményének és méretezhetőségének növelése érdekében. A GPU-gyorsítás különösen fontos a nagy grafikai igényű alkalmazások esetében.
 
-Kövesse az ebben a cikkben található utasításokat egy GPU-ra optimalizált Azure virtuális gép létrehozásához, adja hozzá a gazdakészlethez, és konfigurálja úgy, hogy a GPU-gyorsítást használja a rendereléshez és a kódoláshoz. Ez a cikk feltételezi, hogy már van konfigurálva egy Windows virtuális asztal bérlője.
+Az ebben a cikkben található utasítások alapján hozzon létre egy GPU-ra optimalizált Azure-beli virtuális gépet, adja hozzá a gazdagéphez, és konfigurálja úgy, hogy GPU-gyorsítást használjon a rendereléshez és a kódoláshoz. Ez a cikk azt feltételezi, hogy már van konfigurálva a Windows rendszerű virtuális asztali bérlő.
 
-## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>Válasszon gpu-ra optimalizált Azure virtuálisgép-méretet
+## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>A GPU-ra optimalizált Azure-beli virtuális gép méretének kiválasztása
 
-Az Azure számos [GPU-ra optimalizált virtuálisgép-méretet](/azure/virtual-machines/windows/sizes-gpu)kínál. A gazdakészlet megfelelő választása számos tényezőtől függ, például az adott alkalmazás-munkaterhelésektől, a kívánt felhasználói élménytől és a költségektől. Általánosságban elmondható, hogy a nagyobb és alkalmasabb GPU-k jobb felhasználói élményt nyújtanak egy adott felhasználói sűrűségnél.
+Az Azure számos GPU-val [optimalizált virtuálisgép-méretet](/azure/virtual-machines/windows/sizes-gpu)kínál. A gazdagép-készlet megfelelő választása számos tényezőtől függ, többek között az alkalmazás számítási feladataitól, a felhasználói élmény kívánt minőségétől és a költséghatékonyságtól. Általánosságban elmondható, hogy a nagyobb és jobban használható GPU-k jobb felhasználói élményt nyújtanak egy adott felhasználói sűrűségben.
 
-## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Gazdagépkészlet létrehozása, a virtuális gép kiépítése és alkalmazáscsoport konfigurálása
+## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Címkészlet létrehozása, a virtuális gép üzembe helyezése és az alkalmazás csoportjának konfigurálása
 
-Hozzon létre egy új gazdagép készlet segítségével a kiválasztott méretű virtuális gép. További információt az [Oktatóanyag: Állomáskészlet létrehozása az Azure Marketplace-en című témakörben talál.](/azure/virtual-desktop/create-host-pools-azure-marketplace)
+Hozzon létre egy új címkészletet a kiválasztott méretű virtuális géppel. Útmutatásért lásd [: oktatóanyag: állomáslista létrehozása az Azure Marketplace-szel](/azure/virtual-desktop/create-host-pools-azure-marketplace).
 
-A Windows Virtual Desktop a következő operációs rendszerekben támogatja a GPU-gyorsítású renderelést és kódolást:
+A Windows virtuális asztal támogatja a GPU-gyorsított renderelést és kódolást a következő operációs rendszereken:
 
 * Windows 10 1511-es vagy újabb verzió
 * Windows Server 2016 vagy újabb
 
-Be kell állítania egy alkalmazáscsoportot is, vagy az alapértelmezett asztali alkalmazáscsoportot ("Asztali alkalmazáscsoport") kell használnia, amely automatikusan létrejön egy új gazdagépkészlet létrehozásakor. További információt az [Oktatóanyag: Alkalmazáscsoportok kezelése windowsos virtuális asztalhoz](/azure/virtual-desktop/manage-app-groups).
+Az új címkészlet létrehozásakor is konfigurálnia kell egy alkalmazás-csoportot, vagy az alapértelmezett asztali alkalmazást ("asztali alkalmazáscsoport") kell használnia. Útmutatásért lásd [: oktatóanyag: alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztali gépeken](/azure/virtual-desktop/manage-app-groups).
 
-## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Támogatott grafikus illesztőprogramok telepítése a virtuális gépre
+## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Támogatott grafikus illesztőprogramok telepítése a virtuális gépen
 
-Az Azure N sorozatú virtuális gépek GPU-funkcióinak kihasználásához telepítenie kell a megfelelő grafikus illesztőprogramokat. Kövesse a [támogatott operációs rendszerek és illesztőprogramok](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) utasításokat a megfelelő grafikus gyártó illesztőprogramjainak telepítéséhez, manuálisan vagy egy Azure virtuálisgép-bővítmény használatával.
+Ahhoz, hogy kihasználhassa az Azure N sorozatú virtuális gépek GPU-képességeit a Windows Virtual Desktopban, telepítenie kell a megfelelő grafikus illesztőprogramokat. A [támogatott operációs rendszerek és illesztőprogramok](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) utasításait követve telepítse a megfelelő grafikus gyártótól származó illesztőprogramokat manuálisan vagy Azure virtuálisgép-bővítmény használatával.
 
-A Windows virtuális asztal csak az Azure által terjesztett illesztőprogramokat támogatja. Emellett az NVIDIA GPU-val rendelkező Azure-beli virtuális gépek esetében csak [az NVIDIA GRID-illesztőprogramok](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) támogatottak a Windows virtuális asztalon.
+Csak az Azure által terjesztett illesztőprogramok támogatottak a Windows rendszerű virtuális asztali gépeken. További információk az NVIDIA GPU-val rendelkező Azure-beli virtuális gépekhez csak az [NVIDIA Grid-illesztőprogramok](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) támogatottak a Windows Virtual Desktopban.
 
-Az illesztőprogram telepítése után a virtuális gép újraindítása szükséges. A fenti utasítások ban található ellenőrzési lépésekkel ellenőrizze, hogy a grafikus illesztőprogramok telepítése sikeresen megtörtént-e.
+Az illesztőprogram telepítése után szükség van egy virtuális gép újraindítására. A fenti utasításokban található ellenőrzési lépések segítségével ellenőrizze, hogy a grafikus illesztőprogramok telepítése sikeres volt-e.
 
-## <a name="configure-gpu-accelerated-app-rendering"></a>GPU-gyorsított alkalmazásrenderelés konfigurálása
+## <a name="configure-gpu-accelerated-app-rendering"></a>GPU-gyorsított alkalmazások renderelésének konfigurálása
 
-Alapértelmezés szerint a többmunkamenetes konfigurációkban futó alkalmazások és asztalok a processzorral jelennek meg, és nem használják ki a rendelkezésre álló GPU-kat a rendereléshez. Konfigurálja a munkamenetgazda csoportházirendjét a GPU-gyorsítású renderelés engedélyezéséhez:
+Alapértelmezés szerint a többmunkamenetes konfigurációkban futó alkalmazások és asztali számítógépek a PROCESSZORral jelennek meg, és nem használják fel a rendelkezésre álló GPU-ket a rendereléshez. Csoportházirend konfigurálása a munkamenet-gazdagép számára a GPU-gyorsított renderelés engedélyezéséhez:
 
-1. Csatlakozzon a virtuális gép asztalához helyi rendszergazdai jogosultságokkal rendelkező fiókkal.
-2. Nyissa meg a Start menüt, és írja be a "gpedit.msc" parancsot a Csoportházirend-szerkesztő megnyitásához.
-3. Navigáljon a fába **a Számítógép-konfiguráció** > **felügyeleti sablonjai** > **lapban A Windows-összetevők** > távoli**asztali szolgáltatások** > **távoli asztali munkamenetgazda** > **távoli munkamenetkörnyezetében.**
-4. Válassza a házirend **lehetőséget: Használja a hardveres alapértelmezett grafikus adaptert az összes Távoli asztali szolgáltatás munkamenetéhez,** és állítsa ezt a házirendet **Engedélyezve értékre** a GPU-renderelés engedélyezéséhez a távoli munkamenetben.
+1. Kapcsolódjon a virtuális gép asztalához helyi rendszergazdai jogosultságokkal rendelkező fiókkal.
+2. Nyissa meg a Start menüt, és írja be a "gpedit. msc" parancsot a Csoportházirend-szerkesztő megnyitásához.
+3. Navigáljon a fában a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **távoli munkamenet-környezete**.
+4. Válassza a házirend lehetőséget, majd **a hardver alapértelmezett grafikus adapterét használja az összes távoli asztali szolgáltatások munkamenethez** , és állítsa be ezt a házirendet **úgy, hogy engedélyezze** a GPU renderelést a távoli munkamenetben.
 
-## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-gyorsított képkocka-kódolás konfigurálása
+## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-gyorsított keret kódolásának konfigurálása
 
-A Távoli asztal kódolja az alkalmazások és asztali számítógépek által renderelt összes grafikát (akár GPU-val, akár CPU-val renderelte) a távoli asztali ügyfelekre történő átvitelhez. Alapértelmezés szerint a Távoli asztal nem használja ki a kódoláshoz rendelkezésre álló GPU-kat. Konfigurálja a munkamenetgazda csoportházirendjét a GPU-gyorsított képkocka-kódolás engedélyezéséhez. A fenti lépések folytatása:
+Távoli asztal kódolja az alkalmazások és az asztali számítógépek által megjelenített összes grafikát (akár GPU-val, akár CPU-val) a Távoli asztal ügyfeleknek való továbbításhoz. Alapértelmezés szerint a Távoli asztal nem használ elérhető GPU-ket ehhez a kódoláshoz. Konfigurálja Csoportházirend a munkamenet-gazdagép számára a GPU-gyorsított keret kódolásának engedélyezéséhez. Folytassa a fenti lépéseket:
 
-1. Válassza **a H.264/AVC 444 grafikus mód prioritása házirendet a távoli asztali kapcsolatokhoz,** és állítsa ezt a házirendet **Engedélyezve a** H.264/AVC 444 kodek távoli munkamenetben való kényszerítésére.
-2. Válassza a **H.264/AVC hardverkódolás konfigurálása a távoli asztali kapcsolatokhoz** beállítást, és állítsa ezt a házirendet **Engedélyezve értékre,** hogy engedélyezze az AVC/H.264 hardveres kódolását a távoli munkamenetben.
+1. Válassza ki a szabályzatot **prioritásként h. 264/avc 444 grafikus módban távoli asztal kapcsolatokhoz** , és állítsa be ezt a házirendet úgy, hogy az **engedélyezze** a h. 264/AVC 444 kodek kényszerítését a távoli munkamenetben.
+2. Válassza a házirend a **H. 264/AVC hardveres kódolás beállítása Távoli asztal kapcsolatok számára** lehetőséget, és állítsa be ezt a házirendet **úgy,** hogy engedélyezze az AVC/H. 264 hardveres kódolást a távoli munkamenetben.
 
     >[!NOTE]
-    >Windows Server 2016 rendszerben állítsa be az **AVC hardverkódolást előnyben részesítő** beállítást **a Mindig kíséreléshez.**
+    >A Windows Server 2016-ben állítsa be a beállítást, hogy a rendszer mindig az **AVC hardveres kódolást** **próbálja**meg használni.
 
-3. Most, hogy a csoportházirendek szerkesztésre kerültek, kényszerítse ki a csoportházirend frissítését. Nyissa meg a parancssort, és írja be a következőparancsot:
+3. Most, hogy a csoportházirendek szerkesztése megtörtént, kényszerítse a csoportházirend frissítését. Nyissa meg a parancssort és írja be a következőt:
 
     ```batch
     gpupdate.exe /force
     ```
 
-4. Jelentkezzen ki a Távoli asztal munkamenetből.
+4. Jelentkezzen ki a Távoli asztal-munkamenetből.
 
-## <a name="verify-gpu-accelerated-app-rendering"></a>Gpu-gyorsított alkalmazásrenderelés ellenőrzése
+## <a name="verify-gpu-accelerated-app-rendering"></a>GPU-gyorsított alkalmazások megjelenítésének ellenőrzése
 
-Annak ellenőrzéséhez, hogy az alkalmazások a GPU-t használják-e a megjelenítéshez, próbálkozzon az alábbiakkal:
+Annak ellenőrzéséhez, hogy az alkalmazások a GPU-t használják a rendereléshez, próbálkozzon a következők bármelyikével:
 
-* NVIDIA GPU-val rendelkező Azure-beli `nvidia-smi` virtuális gépek esetén használja az [illesztőprogram telepítésének ellenőrzése](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) című segédprogramot az alkalmazások futtatásakor a GPU-használat ellenőrzéséhez.
-* A támogatott operációsrendszer-verziókon a Feladatkezelő segítségével ellenőrizheti a GPU-kihasználtságot. Válassza ki a GPU-t a "Teljesítmény" lapon, hogy lássa, hogy az alkalmazások a GPU-t használnak-e.
+* Az NVIDIA GPU-val rendelkező Azure-beli virtuális `nvidia-smi` gépek esetében használja az [illesztőprogram-telepítés ellenőrzése](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) a GPU-használat ellenőrzéséhez az alkalmazások futtatásakor című témakörben leírtak szerint.
+* A támogatott operációsrendszer-verziók esetében a Feladatkezelő segítségével keresse meg a GPU-kihasználtságot. Válassza ki a GPU-t a "teljesítmény" lapon annak megtekintéséhez, hogy az alkalmazások használják-e a GPU-t.
 
-## <a name="verify-gpu-accelerated-frame-encoding"></a>Gpu-gyorsított képkockakódolás ellenőrzése
+## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU-gyorsított keret kódolásának ellenőrzése
 
 Annak ellenőrzése, hogy a Távoli asztal GPU-gyorsított kódolást használ-e:
 
-1. Csatlakozzon a virtuális gép asztalához a Windows virtuális asztali ügyfélhasználatával.
-2. Az Eseménynapló elindítása és a következő csomópont megnyitása: **Alkalmazások és szolgáltatások Naplózza** > **a Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **Operational alkalmazást**
-3. Annak megállapításához, hogy a GPU-gyorsított kódolást használja-e, keresse meg a 170-es eseményazonosítót. Ha az "AVC hardverkódoló engedélyezve van: 1" értéket látja, akkor a GPU kódolást használja.
-4. Annak megállapításához, hogy az AVC 444 mód van-e használatban, keresse meg a 162-es eseményazonosítót. Ha az "AVC Available: 1 Initial Profile: 2048" (AVC 444) jelenik meg, akkor az AVC 444-et használja.
+1. Kapcsolódjon a virtuális gép asztalához a Windows Virtual Desktop ügyfélprogram használatával.
+2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: az **alkalmazások és a szolgáltatások naplózzák** > a**Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **Operational**
+3. Annak megállapításához, hogy a GPU-gyorsított kódolás használatban van-e, keresse meg a 170-es AZONOSÍTÓJÚ eseményt. Ha a "AVC hardveres kódoló engedélyezve: 1" látható, akkor a rendszer GPU-kódolást használ.
+4. Annak megállapításához, hogy az AVC 444 mód használatban van-e, keresse meg a 162-es AZONOSÍTÓJÚ eseményt. Ha a "AVC elérhető: 1 kezdeti profil: 2048" jelenik meg, akkor az AVC 444 használatos.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezek nek az utasításoknak egy munkamenet-gazdagépen (egy virtuális gépen) a GPU-gyorsítással kell rendelkezniük. Néhány további szempont a GPU-gyorsítás nagyobb gazdagépkészleten történő engedélyezéséhez:
+Ezeknek az utasításoknak a GPU-gyorsítással együtt kell működniük egy adott munkamenet-gazdagépen (egy virtuális gépen). Néhány további megfontolandó szempont a GPU-gyorsítás nagyobb gazdagép-készleten való engedélyezéséhez:
 
-* Fontolja meg egy [virtuális gép bővítmény](/azure/virtual-machines/extensions/overview) használatával az illesztőprogram telepítésének és frissítéseinek egyszerűsítéséhez számos virtuális gépközött. Használja az [NVIDIA GPU illesztőprogram-bővítményt](/azure/virtual-machines/extensions/hpccompute-gpu-windows) NVIDIA GPU-val rendelkező virtuális gépekhez, és használja az AMD GPU-illesztőprogram-bővítményt (hamarosan) az AMD GPU-val rendelkező virtuális gépekhez.
-* Fontolja meg az Active Directory csoportházirend használatával egyszerűsíteni a csoportházirend-konfigurációt több virtuális gép között. A csoportházirend Active Directory tartományban történő központi telepítéséről a [Csoportházirend-objektumok használata](https://go.microsoft.com/fwlink/p/?LinkId=620889)című témakörben talál további információt.
+* Vegye fontolóra egy virtuálisgép-bővítmény használatát, amely leegyszerűsíti az illesztőprogramok telepítését és a frissítéseket a több virtuális [gépen](/azure/virtual-machines/extensions/overview) keresztül. Használja az NVIDIA [GPU illesztőprogram-bővítményt](/azure/virtual-machines/extensions/hpccompute-gpu-windows) az NVIDIA GPU-val rendelkező virtuális gépekhez, és használja az AMD GPU illesztőprogram-bővítményt (hamarosan) az AMD GPU-val rendelkező virtuális gépekhez.
+* Vegye fontolóra Active Directory Csoportházirend használatát a csoportházirend konfigurálásának leegyszerűsítéséhez több virtuális gép között. További információ a Csoportházirend telepítéséről a Active Directory tartományban: [csoportházirend objektumok használata](https://go.microsoft.com/fwlink/p/?LinkId=620889).

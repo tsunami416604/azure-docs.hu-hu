@@ -10,18 +10,18 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878391"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
 > [!IMPORTANT]
-> [Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) felváltja az Azure Scheduler programot, [amelyet megszüntetnek.](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Ha továbbra is szeretne dolgozni az Ütemezőben beállított feladatokkal, a lehető leghamarabb [telepítse át az Azure Logic Apps-alkalmazásokba.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 >
-> Az Ütemező már nem érhető el az Azure Portalon, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagok](scheduler-powershell-reference.md) jelenleg elérhetők maradnak, így kezelheti a feladatokat és a feladatgyűjteményeket.
+> Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
 
 ## <a name="entity-hierarchy"></a>Entitáshierarchia
 
@@ -40,7 +40,7 @@ A magasabb szinteken a Scheduler REST API ezeket a műveleteket teszi elérhető
 
 ### <a name="job-management"></a>Feladatkezelés
 
-Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). A műveletek URI-címe:
+Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). A következő műveletek URI-címe:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>A feladatgyűjtemény kezelése
 
-Feladatok és feladatgyűjtemények létrehozására és szerkesztésére szolgáló műveleteket támogat, amelyek kvótákra és megosztott beállításokra végeznek leképezéseket. Például a kvóták szabják meg a feladatok maximális számát és legkisebb ismétlődési időközt. További információ: [Scheduler REST API –- Feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections). A műveletek URI-címe:
+Feladatok és feladatgyűjtemények létrehozására és szerkesztésére szolgáló műveleteket támogat, amelyek kvótákra és megosztott beállításokra végeznek leképezéseket. Például a kvóták szabják meg a feladatok maximális számát és legkisebb ismétlődési időközt. További információ: [Scheduler REST API –- Feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections). A következő műveletek URI-címe:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Feladatelőzmények kezelése
 
-A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet támogatja, például a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési sztringek paramétereit. További információ: [Scheduler REST API – Feladatok – Feladatelőzmények listázása](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). A művelet URI-címe:
+A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet támogatja, például a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési sztringek paramétereit. További információ: [Scheduler REST API – Feladatok – Feladatelőzmények listázása](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). A művelet URI-címe a következő:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Az Azure Scheduler több feladattípust támogat: 
 
-* HTTP-feladatok, beleértve a TLS-t támogató HTTPS-feladatokat is, ha egy meglévő szolgáltatás vagy munkaterhelés végpontja
+* HTTP-feladatok, beleértve a TLS-t támogató HTTPS-feladatokat, ha meglévő szolgáltatáshoz vagy munkaterheléshez rendelkezik végponttal
 * Storage-üzenetsorbeli feladatok a tárolási üzenetsorokat használó alkalmazásokhoz és szolgáltatásokhoz, például a tárolási üzenetsorokba történő üzenetküldés
 * Service Bus-üzenetsorok feladatai olyan alkalmazásokhoz és szolgáltatásokhoz, amelyek Service Bus-üzenetsorokat használnak
 * Service Bus-témafeladatok olyan alkalmazásokhoz és szolgáltatásokhoz, amelyek Service Bus-témafeladatokat használnak
@@ -85,12 +85,12 @@ A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a k�
 | Elem | Kötelező | Leírás | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**Akció**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
+| [**művelet**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
 | [**errorAction**](#error-action) | Nem | Az elsődleges művelet meghiúsulása esetén futó másodlagos művelet részletei |
-| [**Ismétlődés**](#recurrence) | Nem | Egy ismétlődő feladat részletei, például a gyakoriság és az időköz | 
-| [**újrapróbálkozási házirend**](#retry-policy) | Nem | A művelet újrapróbálására vonatkozó szabályok | 
-| [**Állami**](#state) | Igen | A feladat aktuális állapotának részletei |
-| [**Állapot**](#status) | Igen | A feladat jelenlegi állapotának részletei, amelyeket a szolgáltatás vezérel |
+| [**megismétlődésének**](#recurrence) | Nem | Egy ismétlődő feladat részletei, például a gyakoriság és az időköz | 
+| [**retryPolicy**](#retry-policy) | Nem | A művelet újrapróbálására vonatkozó szabályok | 
+| [**állapot**](#state) | Igen | A feladat aktuális állapotának részletei |
+| [**állapota**](#status) | Igen | A feladat jelenlegi állapotának részletei, amelyeket a szolgáltatás vezérel |
 ||||
 
 Íme, egy példa egy HTTP-művelet átfogó feladatdefiníciójára, amelyhez a későbbi szakaszok részletesebb elemleírásokat is tartalmaznak: 
@@ -248,16 +248,16 @@ Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recu
 
 | Tulajdonság | Kötelező | Érték | Leírás | 
 |----------|----------|-------|-------------| 
-| **frequency** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
+| **frekvencia** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
 | **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
-| **Ütemezése** | Nem | Változó | Összetettebb és speciális ütemezések részletei. Lásd: **hours**, **minutes**, **weekDays**, **months** és **monthDays** (órák, percek, munkanapok, hónapok és hónap adott napjai) | 
-| **hours** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó órajelek | 
-| **minutes** | Nem | 0-tól 59-ig | A feladat futtatásának időpontját meghatározó percjelek | 
+| **menetrend** | Nem | Változó | Összetettebb és speciális ütemezések részletei. Lásd: **hours**, **minutes**, **weekDays**, **months** és **monthDays** (órák, percek, munkanapok, hónapok és hónap adott napjai) | 
+| **óra** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó órajelek | 
+| **perc** | Nem | 0 – 59 | A feladat futtatásának időpontját meghatározó percjelek | 
 | **months** | Nem | 1–12 | A feladat futtatásának időpontját meghatározó hónapok | 
 | **monthDays** | Nem | Változó | A feladat futtatásának időpontját meghatározó hónap napjai | 
 | **weekDays** | Nem | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday”, „Sunday” (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap) | A feladat futtatásának időpontját meghatározó hét napjai | 
-| **Számít** | Nem | <*Nincs*> | Az ismétlődések száma. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
-| **endTime** | Nem | <*Nincs*> | Az ismétlődés befejezésének dátuma és ideje. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
+| **száma** | Nem | <*nEz egy*> | Az ismétlődések száma. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
+| **endTime** | Nem | <*nEz egy*> | Az ismétlődés befejezésének dátuma és ideje. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
 ||||
 
 További információ az elemekről: [Komplex ütemezések és speciális ismétlődések létrehozása](../scheduler/scheduler-advanced-complexity.md).

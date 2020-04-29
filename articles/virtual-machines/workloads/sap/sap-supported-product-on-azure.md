@@ -1,6 +1,6 @@
 ---
-title: 'SAP az Azure-ban: Milyen SAP-szoftver támogatott az Azure-ban'
-description: Bemutatja, hogy milyen SAP-szoftverek támogatottak az Azure-ban való üzembe helyezéshez
+title: 'SAP az Azure-on: milyen SAP-szoftverek támogatottak az Azure-ban'
+description: Ismerteti, hogy milyen SAP-szoftverek telepíthetők az Azure-ban
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -17,133 +17,133 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086130"
 ---
-# <a name="what-sap-software-is-supported-for-azure-deployments"></a>Milyen SAP-szoftverek támogatottak az Azure-telepítésekhez?
-Ez a cikk bemutatja, hogyan megtudhatja, hogy milyen SAP-szoftverek támogatottak az Azure-telepítésekhez, és mik a szükséges operációsrendszer-kiadások vagy DBMS-kiadások.
+# <a name="what-sap-software-is-supported-for-azure-deployments"></a>Milyen SAP-szoftverek támogatottak az Azure-beli üzemelő példányok esetében
+Ez a cikk azt ismerteti, hogyan tudhatja meg, hogy milyen SAP-szoftverek támogatottak az Azure-környezetekben, valamint hogy a szükséges operációs rendszerek és az adatbázis-kezelők milyen kiadásokkal rendelkeznek.
 
-Kiértékelése, hogy a jelenlegi SAP-szoftver támogatott- e, és milyen operációsrendszer- és DBMS-kiadások támogatottak az Sap-szoftverrel az Azure-ban, hozzá kell férnie a következőkhöz:
+Annak kiértékelése, hogy a jelenlegi SAP-szoftver támogatott-e, és hogy az Azure-beli SAP-szoftverek milyen operációsrendszer-és adatbázis-verziókat támogatnak, a következőkre lesz szüksége:
 
-- SAP támogatási megjegyzések
+- SAP-támogatási megjegyzések
 - SAP-termék rendelkezésre állási mátrixa
 
 
 
-## <a name="general-restrictions-for-sap-workload"></a>Az SAP-munkaterhelés általános korlátozásai
-Az SAP-munkaterheléshez használható Azure IaaS-szolgáltatások x86-64 vagy x64 hardverre korlátozódnak. Nincs sparc vagy power CPU alapú ajánlatok, amelyek az SAP számítási feladatokra vonatkoznak. Azoknak az ügyfeleknek, akik olyan hardverarchitektúráknak megfelelő operációs rendszereken futtatják az alkalmazásaikat, mint az IBM nagyszámítógép vagy az AS400, vagy ahol a HP-UX, a Solaris vagy az AIX operációs rendszerek vannak használatban, sap-alkalmazásaikat, beleértve a DBMS-t is, a következő operációs rendszerek egyikére kell változtatniuk:
+## <a name="general-restrictions-for-sap-workload"></a>Az SAP számítási feladatok általános korlátozásai
+Az SAP-munkaterhelésekhez használható Azure IaaS-szolgáltatások x86-64 vagy x64-es hardverre korlátozódnak. Nincs olyan SPARC vagy Power CPU-alapú ajánlat, amely az SAP-munkaterhelésre vonatkozik. Azok az ügyfelek, akik a hardveres architektúrák, például az IBM mainframe vagy a AS400, illetve a HP-UX, a Solaris vagy az AIX operációs rendszerek által használt operációs rendszereken futnak, a következő operációs rendszerek egyikére kell módosítaniuk az SAP-alkalmazásaikat, például az adatbázis-kezelő rendszereket:
 
-- Windows server 64bit az x86-64 platformhoz
-- SUSE linux 64bit az x86-64 platformhoz
-- Red hat Linux 64Bit az x86-64 platform
+- Windows Server 64bit az x86-64 platformhoz
+- SUSE Linux 64bit az x86-64 platformhoz
+- Red Hat Linux 64Bit az x86-64 platformhoz
 - Oracle Linux 64bit az x86-64 platformhoz
 
-Az SAP-szoftverrel kombinálva más operációs rendszer-kiadások vagy Linux-disztribúciók nem támogatottak. Az egyes verziók és esetek pontos részleteit a dokumentum későbbi részében dokumentálják.
+Az SAP szoftverrel együtt nem támogatott más operációsrendszer-kiadás vagy Linux-disztribúció. Az egyes verziók és esetek pontos részleteit a dokumentum későbbi részében dokumentálja.
 
 
-## <a name="you-start-here"></a>Itt kezded.
-A kiindulási pont az [SAP támogatási megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533). Ahogy végig ezt az SAP-jegyzetet fentről lefelé, számos területen támogatott szoftver és virtuális gépek jelennek meg
+## <a name="you-start-here"></a>Itt indul
+A kiindulási pont az [SAP-támogatási megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533). Ahogy az SAP-jegyzetet felülről lefelé haladva, a támogatott szoftverek és virtuális gépek számos területe látható
 
-Az első szakasz felsorolja a minimális követelményeket a működési kiadások, amelyek támogatják az SAP-szoftverek az Azure-beli virtuális gépek általában. Ha nem éri el ezeket a minimális követelményeket, és futtatja ezeknek az operációs rendszereknek a régebbi kiadásait, frissítenie kell az operációs rendszer kiadását egy ilyen minimális kiadásra vagy még újabb kiadásokra. Helyes, hogy az Azure általában támogatná néhány ilyen operációs rendszer régebbi kiadásait. A felsorolt korlátozások vagy minimális kiadások azonban a végrehajtott teszteken és képesítéseken alapulnak, és nem fognak tovább kiterjeszteni. 
+Az első szakasz az Azure-beli virtuális gépeken az SAP-szoftverrel támogatott operációs kiadásokra vonatkozó minimális követelményeket sorolja fel. Ha nem éri el ezeket a minimális követelményeket, és ezen operációs rendszerek régebbi verzióit futtatja, frissítenie kell az operációs rendszer kiadását egy ilyen minimális kiadásra vagy még újabb kiadásokra. Helyes, hogy az Azure általánosságban támogatni fogja az egyes operációs rendszerek régebbi kiadásait. A felsorolt korlátozások vagy minimális kiadások azonban a végrehajtott tesztek és képesítések alapján futnak, és nem lesznek tovább bővítve. 
 
 
 > [!NOTE]
->Vannak bizonyos virtuálisgép-típusok, HANA nagy példányok vagy SAP-számítási feladatok, amelyek újabb operációsrendszer-kiadásokra lesznek szükség. Az ilyen esetek et az egész dokumentum ban megemlítik. Az ilyen esetek egyértelműen dokumentálva vannak az SAP-jegyzetekben vagy más SAP-kiadványokban.
+>Vannak bizonyos virtuálisgép-típusok, HANA nagyméretű példányok vagy SAP-munkaterhelések, amelyeken újabb operációsrendszer-kiadásokra lesz szükség. A dokumentumhoz hasonló példákat is megemlítünk. Például az SAP-megjegyzésekben vagy más SAP-kiadványokban egyértelműen dokumentált esetekben.
 
-Az alábbi szakasz az általános SAP-platformokat sorolja fel, amelyek támogatottak és fontosabbak a támogatott SAP kernelekkel. Felsorolja a NetWeaver/ABAP vagy Java halmokat, amelyek támogatottak, és amelyek minimális kernelkiadásokat igényelnek. Az Újabb ABAP-halmok támogatottak az Azure-ban, de nincs szükség minimális kernelkiadásokra, mivel az Azure-beli módosítások a legújabb halmok fejlesztésének kezdetétől bevezetve vannak.
+A következő szakasz azokat a általános SAP-platformokat sorolja fel, amelyek támogatottak a támogatott kiadásokban, és ami még fontosabb a támogatott SAP-kernelek esetében. A által támogatott NetWeaver/ABAP vagy Java stackeket listázza, amelyek minimális kernel-kiadásokat igényelnek. Az Azure-ban a legújabb ABAP-stackek támogatottak, de nem szükségesek a minimális kernel-kiadások, mivel az Azure-beli módosítások a legújabb stackek fejlesztésének elejéről lettek megvalósítva
 
-Ellenőriznie kell:
+A következőket kell ellenőriznie:
 
-- Függetlenül attól, hogy az SAP-alkalmazások futtatja, a megadott minimális kiadások hatálya alá tartozó. Ha nem, meg kell határoznia egy új célkiadást, ellenőrizze az SAP-termék rendelkezésre állási mátrixát, hogy milyen operációs rendszer-buildeket és DBMS-kombinációkat támogat az új célkiadás. Szóval, hogy kiválaszthatja a megfelelő operációs rendszer kiadása és DBMS kiadás
-- Az, hogy frissítenie kell-e az SAP-kerneleket az Azure-ba való áthelyezéskor
-- Hogy frissítenie kell-e az SAP támogatási csomagjait. Különösen alaptámogatási csomagok, amelyek szükségesek lehetnek olyan esetekben, amikor egy újabb DBMS kiadásra kell áthelyezni
+- Azt határozza meg, hogy a futtatott SAP-alkalmazások a megadott minimális kiadások hatálya alá tartoznak-e. Ha nem, meg kell határoznia egy új cél kiadást, az SAP-termékek rendelkezésre állási mátrixában kell megadnia, hogy milyen operációsrendszer-buildek és adatbázis-kezelői kombinációk támogatottak az új célként megadott kiadásban. Így kiválaszthatja az operációs rendszer és az adatbázis-kezelő megfelelő kiadását
+- Szükség van-e az SAP-kernelek frissítésére az Azure-ba való áttéréskor
+- Azt határozza meg, hogy frissíteni kell-e az SAP-támogatási csomagokat. Különösen olyan támogatási csomagok, amelyek szükségesek azokhoz az esetekhez, amikor egy újabb adatbázis-kezelői kiadásra kell áttérnie
 
 
-A következő szakasz további részleteket talál más SAP-termékekről és DBMS-kiadásokról, amelyeket az SAP támogat Windows és Linux Azure-ban. 
-
-> [!NOTE]
-> A különböző ADATBÁZIS-rendszer minimális kiadásait gondosan választják ki, és előfordulhat, hogy nem mindig tükrözik a különböző DBMS-szállítók által támogatott különböző adatbázis-gyártók által az Azure-ban általában. Számos SAP-munkaterheléssel kapcsolatos szempontot figyelembe vettek a minimális kiadások meghatározásához. Nincs erőfeszítés a régebbi DBMS-kiadások tesztelésére és minősítésre. 
+A következő szakasz részletesen ismerteti azokat az SAP-termékeket és adatbázis-kezelői kiadásokat, amelyeket az SAP az Azure-on Windows és Linux rendszeren is támogat. 
 
 > [!NOTE]
-> A felsorolt minimális kiadások az operációs rendszerek és az adatbázis-kiadások régebbi verzióját képviselik. Javasoljuk, hogy használja a legújabb operációs rendszer kiadások és adatbázis-kiadások. Sok esetben az újabb operációs rendszerek és az adatbázis-kiadások figyelembe vették a nyilvános felhőben való futtatás használati esetét, és a kódot úgy alakították ki, hogy optimalizálja a nyilvános felhőben vagy pontosabban az Azure-ban való futtatást.
+> A különböző adatbázis-kezelők minimális kiadásai körültekintően vannak kiválasztva, és előfordulhat, hogy nem mindig tükrözik az adatbázis-kezelők teljes spektrumát, így az Azure-ban általában a különböző adatbázis-szolgáltatók támogatása Számos SAP-munkaterhelés kapcsolatos szempontot figyelembe vettünk a minimális kiadások meghatározásához. A régebbi adatbázis-kezelői kiadások tesztelése és minősítése nem lehetséges. 
 
-## <a name="oracle-dbms-support"></a>Oracle DBMS támogatás
-Az operációs rendszer, az Oracle DBMS-kiadások és az Azure-ban támogatott Oracle funkciók külön felsorolva vannak az [SAP támogatási #2039619.](https://launchpad.support.sap.com/#/notes/2039619) Essence ki, hogy a megjegyzés lehet összefoglalni, mint:
+> [!NOTE]
+> A felsorolt minimális kiadások az operációs rendszerek régebbi verzióját és az adatbázis-kiadásokat jelölik. Javasoljuk, hogy a legújabb operációsrendszer-kiadásokat és adatbázis-kiadásokat használja. Sok esetben az újabb operációs rendszerek és adatbázisok kiadása a nyilvános felhőben történő futtatás használati esetét vette figyelembe és adaptált kódot a nyilvános felhőben vagy konkrétabban az Azure-ban való futtatásra való optimalizáláshoz
 
-- A NetWeaver minősítéssel rendelkező Azure virtuális gépeken támogatott minimális Oracle-kiadás az Oracle 11g Release 2 Patchset 3 (11.2.0.4)
-- Vendég operációs rendszerként csak a Windows és az Oracle Linux jogosult. Az operációs rendszer pontos kiadásai és a kapcsolódó minimális DBMS-kiadások a megjegyzésben találhatók.
-- Az Oracle Linux támogatása az Oracle DBMS kliensre is kiterjed. Ez azt jelenti, hogy az Összes SAP-összetevőnek, például az ABAP vagy a Java Stack párbeszédpéldányainak is oracle Linuxon kell futnia. Csak az ilyen SAP rendszeren belüli OLYAN SAP-összetevők futtathatnak egy másik Linux operációs rendszert, amelyek nem csatlakoznának az Oracle DBMS-hez.
+## <a name="oracle-dbms-support"></a>Oracle adatbázis-kezelői támogatás
+Az Azure-ban támogatott operációs rendszer, Oracle adatbázis-kezelői kiadások és Oracle-funkciók külön szerepelnek az [SAP-támogatási megjegyzésekben #2039619](https://launchpad.support.sap.com/#/notes/2039619). A Megjegyzés lényege a következőképpen összegezhető:
+
+- A NetWeaver számára hitelesített Azure-beli virtuális gépeken támogatott minimális Oracle-kiadás az Oracle 11g-kiadás 2 patchset 3 (11.2.0.4)
+- A vendég operációs rendszerek csak Windows és Oracle Linux minősítéssel rendelkeznek. Az operációs rendszer és a kapcsolódó minimális adatbázis-kezelői kiadások pontos kiadásait a Megjegyzés tartalmazza
+- A Oracle Linux támogatása az Oracle adatbázis-kezelői ügyfélre is kiterjed. Ez azt jelenti, hogy az összes SAP-összetevő, például a ABAP vagy a Java stack párbeszédpanel-példányainak Oracle Linux is futniuk kell. Csak olyan SAP-összetevők futhatnak, amelyek nem csatlakoznak az Oracle adatbázis-kezelő rendszerhez, hanem egy másik Linux operációs rendszert futtatnak.
 - Az Oracle RAC nem támogatott 
-- Az Oracle ASM néhány esetben támogatott. A részletek a jegyzetben vannak felsorolva
-- A nem Unicode SAP rendszereket csak a Windows vendég operációs rendszerrel futó alkalmazáskiszolgálók támogatják. A DBMS vendég operációs rendszere lehet Oracle Linux vagy Windows. Ennek a korlátozásnak az oka nyilvánvaló az SAP-termék rendelkezésre állási mátrixának (PAM) ellenőrzésekor. Az Oracle Linux esetében az SAP soha nem adott ki nem Unicode SAP kerneleket
+- Az Oracle ASM bizonyos esetekben támogatott. A részletek a megjegyzésben vannak felsorolva
+- A nem Unicode típusú SAP rendszerek csak a Windows vendég operációs rendszert futtató alkalmazás-kiszolgálókon támogatottak. Az adatbázis-kezelő rendszer vendég operációs rendszere lehet Oracle Linux vagy Windows. Ennek a korlátozásnak az oka az SAP-termék rendelkezésre állási mátrixának (PAM) ellenőrzésekor látható. A Oracle Linux esetében az SAP soha nem jelent meg Unicode-alapú SAP-kerneleket
 
-A megcélzott Azure-infrastruktúrával támogatott DBMS-kiadások ismerete érdekében ellenőriznie kell az SAP-termék rendelkezésre állási mátrixát, hogy az operációs rendszer kiadásai és a szükséges DBMS-ek támogatottak-e a futtatni kívánt SAP-termékkiadások. 
+A megcélzott Azure-infrastruktúrával támogatott adatbázis-kezelői kiadások ismeretében ellenőriznie kell az SAP-termékek rendelkezésre állási mátrixát, hogy támogatott-e a futtatni kívánt SAP-termék kiadása. 
 
 
 ## <a name="sap-hana-support"></a>SAP HANA támogatás
-Az Azure-ban két szolgáltatás, amely a HANA-adatbázis futtatásához használható:
+Az Azure-ban két szolgáltatás található, amelyek a HANA-adatbázisok futtatására használhatók:
 
 - Azure-alapú virtuális gépek
-- [HANA nagy példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [HANA nagyméretű példányai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
-Az SAP HANA futtatásához az SAP-nak több és erősebb feltételnek kell megfelelnie, mint a NetWeaver vagy más SAP-alkalmazások és DBMS futtatásához. Ennek eredményeképpen kisebb számú Azure-virtuális gépek jogosultak az SAP HANA DBMS futtatására. Az SAP HANA által támogatott támogatott Azure-infrastruktúra listája megtalálható az úgynevezett [SAP HANA hardverkönyvtárban.](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 
-
-> [!NOTE]
-> Az "S" betűvel kezdődő egységek [HANA nagy példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) egységek. 
+A SAP HANA futtatásához az SAP több és erősebb feltételekkel rendelkezik, és az infrastruktúrának meg kell felelnie, mint a NetWeaver vagy más SAP-alkalmazások és az adatbázis-kezelők futtatása Ennek eredményeképpen kisebb számú Azure-beli virtuális gép felel meg a SAP HANA adatbázis-kezelő rendszer futtatásának. A SAP HANA által támogatott Azure-infrastruktúra listája az úgynevezett [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)található. 
 
 > [!NOTE]
-> Az SAP nem rendelkezik az SAP HANA fő kiadásoktól függő specifikus minősítéssel. Ellentétben a közös vélemény, az oszlop **tanúsítási forgatókönyv** a [HANA tanúsított IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure), az oszlop nem tesz **nyilatkozatot a HANA nagy vagy kisebb kiadás tanúsított**. Azt kell feltételezni, hogy a HANA 1.0 és hana 2.0-hoz használható összes felsorolt egységek, mindaddig, amíg az adott egységek hitelesített operációs rendszer kiadásait a HANA 1.0 kiadások is támogatják. 
-
-Az SAP HANA használata, különböző minimális operációs rendszer kiadások vonatkozhatnak, mint az általános NetWeaver esetekben. Az egyes egységek támogatott operációs rendszereit külön-külön kell ellenőriznie, mivel ezek eltérőek lehetnek. Ön ezt kattintva minden egység. További részletek jelennek meg. A felsorolt részletek egyike az adott egységhez támogatott különböző operációs rendszerek.
+> A "betű" karakterrel kezdődő egység a [HANA Large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) egység. 
 
 > [!NOTE]
-> Az Azure HANA nagypéldány-egységek az Azure virtuális gépekhez képest szigorúbbak a támogatott operációs rendszerekkel. Másrészt az Azure virtuális gépek kényszerítheti újabb működési kiadások minimális kiadások. Ez különösen igaz néhány nagyobb virtuálisgép-egységre, amelyek a Linux kernelek módosítását igényelik
+> Az SAP nem rendelkezik a SAP HANA fő kiadásaitól függő speciális minősítéssel. A közös véleménysel ellentétben a [Hana Certified IaaS platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)az oszlop **minősítési forgatókönyve** nem tesz **utasítást a Hana Major vagy**az alverzió minősítésére. Azt feltételezheti, hogy a HANA 1,0 és a HANA 2,0 számára felhasználható összes egység a Hana 1,0 kiadásokban is támogatott, ha az adott egységekhez tartozó minősített operációsrendszer-kiadásokat is támogatja. 
 
-Az Azure-infrastruktúra támogatott operációs rendszerének ismerete érdekében ellenőriznie kell az [SAP támogatási megjegyzését #2235581](https://launchpad.support.sap.com/#/notes/2235581) a pontos SAP HANA-kiadásokés javítási szintek, amelyek támogatják a célzásáltal támogatott Azure-egységek. 
+SAP HANA használata esetén a különböző minimális operációsrendszer-kiadásokra lehet érvényes, mint az általános NetWeaver-esetekben. Az egyes egységekhez tartozó támogatott operációs rendszerek mindegyikét külön kell megtekinteni, mivel ezek eltérőek lehetnek. Ezt úgy teheti meg, hogy az egyes egységekre kattint. További részletek jelennek meg. A felsorolt részletek egyike az adott egységhez támogatott különböző operációs rendszerek.
+
+> [!NOTE]
+> Az Azure HANA nagyméretű példányai az Azure-beli virtuális gépekhez képest szigorúbban korlátozzák a támogatott operációs rendszereket. A másik Azure-beli virtuális gépeken a minimális kiadásoknak megfelelően lehet újabb operációs kiadásokat érvényesíteni. Ez különösen igaz a linuxos kernelek megváltoztatásához szükséges nagyobb virtuálisgép-egységek némelyikére
+
+Az Azure-infrastruktúra támogatott operációs rendszerének ismeretében ellenőriznie kell a [SAP támogatási megjegyzéseit #2235581](https://launchpad.support.sap.com/#/notes/2235581) a célzott Azure-egységekben támogatott pontos SAP HANA kiadásokhoz és javítási szintekhez. 
 
 > [!IMPORTANT]
-> A lépés a pontos SAP HANA kiadások és a támogatott javítási szintek ellenőrzése nagyon fontos. Sok esetben egy bizonyos operációs rendszer kiadásának támogatása az SAP HANA végrehajtható fájlok adott javítási szintjétől függ.
+> Nagyon fontos a pontos SAP HANA kiadások és a javítási szintek ellenőrzésének lépései. Sok esetben egy adott operációsrendszer-kiadás támogatása a SAP HANA végrehajtható fájl adott javítási szintjétől függ.
 
-Mivel tudja, hogy a célzott Azure-infrastruktúrán futtatható hana-kiadások, ellenőrizze az SAP-termék rendelkezésre állási mátrixát, hogy megtudja, vannak-e korlátozások az SAP-termékkiadásokkal, amelyek támogatják a kiszűrt HANA-kiadásokat
+Amint ismeri a megcélzott Azure-infrastruktúrában futtatott HANA-kiadásokat, be kell jelentkeznie az SAP-termékek rendelkezésre állási mátrixában annak megállapításához, hogy vannak-e korlátozások a kiszűrt HANA-kiadásokat támogató SAP-termékek kiadásaihoz
 
 
-## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>Hitelesített Azure-virtuális gépek és HANA nagypéldány-egységek és üzleti tranzakciós átviteli
-A támogatott operációsrendszer-kiadások, a DBMS-kiadások és az Azure-infrastruktúra-egységek függő sap-szoftverkiadásainak kiértékelése mellett szükség van arra, hogy ezeket az egységeket üzleti tranzakciós átviteli keresztültel minősítse, amelyet az SAP az "SAP" egységben fejez ki. Az SAP-méretezés az SAPS-számításoktól függ. A meglévő SAP-rendszerek kiértékelése, általában az infrastruktúra-szolgáltató segítségével kiszámíthatja az egységek SAPS-ét. A DBMS-réteghez és az alkalmazásréteghez egybeesve. Más esetekben, ahol új funkciók jönnek létre, az SAP-val végzett méretezési gyakorlat felfedheti az alkalmazásréteg és a DBMS-réteg szükséges SAPS-számait. Infrastruktúra-szolgáltatóként a Microsoft köteles biztosítani a NetWeaver és/vagy HANA tanúsítvánnyal rendelkező különböző egységek SAP átviteli jellemzőjét.
+## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>Hitelesített Azure-beli virtuális gépek és HANA nagyméretű példány-egységek és üzleti tranzakciók átviteli sebessége
+A támogatott operációs rendszerek kiadásainak kiértékelése mellett az adatbázis-kezelői kiadások és a függő támogatás az Azure-infrastruktúra egységei számára elérhető SAP-kiadásokat is igénybe vehetjük Az összes SAP-méretezés a nedv számításaitól függ. A meglévő SAP-rendszerek kiértékelése általában az infrastruktúra-szolgáltató segítségével számítja ki az egységek NEDVét. Az adatbázis-kezelő réteghez és az alkalmazás rétegéhez. Más esetekben, amikor új funkciók jönnek létre, az SAP-vel való méretezési gyakorlat felfedi az alkalmazási réteg és az adatbázis-kezelő réteg szükséges SAP-számát. Mivel az infrastruktúra-szolgáltató a Microsoft feladata, hogy biztosítsa az SAP átviteli sebességének jellemzését a NetWeaver és/vagy HANA tanúsítvánnyal rendelkező különböző egységek számára.
 
-Az Azure virtuális gépek esetében ezek az SAPS-átviteli műveletek számai az [SAP támogatási megjegyzése #1928533](https://launchpad.support.sap.com/#/notes/1928533)dokumentálva vannak. Az Azure HANA nagy példányegységek esetében az SAPS átviteli műveletek számai dokumentálva vannak az [SAP támogatási megjegyzésében #2316233](https://launchpad.support.sap.com/#/notes/2316233)
+Az Azure-beli virtuális gépek esetében ezek az SAP-átviteli sebességek az [SAP-támogatási megjegyzés #1928533ban](https://launchpad.support.sap.com/#/notes/1928533)vannak dokumentálva. Az Azure HANA nagyméretű példányai esetében az [SAP-támogatási megjegyzésekkel](https://launchpad.support.sap.com/#/notes/2316233) kapcsolatos dokumentációban #2316233
 
-Az [SAP támogatási megjegyzésének #1928533](https://launchpad.support.sap.com/#/notes/1928533)a következő megjegyzések érvényesek:
+Az [SAP-támogatási megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533)a következő megjegyzések érvényesek:
 
-- **M-sorozatú Azure virtuális gépek és Mv2 sorozatú Azure-virtuális gépek esetén különböző minimális operációsrendszer-kiadások érvényesek, mint más Azure virtuálisgép-típusok esetében.** Az újabb operációsrendszer-kiadások követelménye az operációs rendszer különböző szállítóiáltal az operációs rendszer kiadásaiban megadandó módosításokon alapul, hogy vagy engedélyezzék az operációs rendszerüket az adott Azure Virtuálisgép-típusokon, vagy optimalizálják az SAP-munkaterhelés teljesítményét és átviteli teljesítményét ezeken a virtuálisgép-típusokon
-- Két tábla, amely meghatározza a különböző virtuálisgép-típusok. A második tábla saps átviteli kapacitást határoz meg az Azure virtuálisgép-típusokhoz, amelyek csak az Azure standard storage-ot támogatják. A DBMS telepítése a feljegyzés második táblázatában megadott egységeken nem támogatott
+- **Az M-sorozatú Azure-beli virtuális gépek és a Mv2-sorozatú Azure-beli virtuális gépek esetében a különböző minimális operációsrendszer-kiadások érvényesek, mint a többi Azure-** beli A legújabb operációsrendszer-verziókra vonatkozó követelmény azon alapul, hogy a különböző operációs rendszerek gyártóinak az operációs rendszerük által kiadott kiadásaiban az adott Azure-beli virtuálisgép-típusokon futó operációs rendszerek, illetve a virtuális gépekre vonatkozó SAP-munkaterhelések teljesítményének és teljesítményének optimalizálása
+- Két tábla különböző virtuálisgép-típusokat határoz meg. A második táblázat a kizárólag az Azure standard Storage-t támogató Azure-beli virtuálisgép-típusok SAP átviteli sebességét határozza meg. Az adatbázis-kezelő üzembe helyezése a Megjegyzés második táblájában megadott egységeken nem támogatott.
 
 
 ## <a name="other-sap-products-supported-on-azure"></a>Az Azure-ban támogatott egyéb SAP-termékek
-Általában az a feltételezés, hogy az azure-hoz hasonló nagy kapacitású felhők állapotával az SAP-szoftverek nagy részének funkcionális problémák nélkül kell futnia az Azure-ban. Mindazonáltal, és a privát felhőmegjelenítés, az SAP továbbra is támogatja a különböző SAP-termékek kifejezetten a különböző hyerpscale felhőszolgáltatók. Ennek eredményeképpen különböző SAP-támogatási megjegyzések jelzik az Azure támogatását a különböző SAP-termékekhez. 
+A feltételezés általánosságban azt feltételezi, hogy a nagy kapacitású felhők (például az Azure) esetében a legtöbb SAP-szoftver működési problémák nélkül fut az Azure-ban. A saját Felhőbeli vizualizációkkal szemben azonban az SAP továbbra is támogatja a különböző SAP-termékeket kifejezetten a különböző hyerpscale-alapú felhőalapú szolgáltatók számára. Ennek eredményeképpen különböző SAP-támogatási megjegyzések jelennek meg, amelyek az Azure különböző SAP-termékekhez való támogatását jelzik. 
 
-Business Objects BI platform esetén [az SAP támogatási megjegyzése #2145537](https://launchpad.support.sap.com/#/notes/2145537) az Azure-ban támogatott SAP Business Objects-termékek listáját adja meg. Ha olyan kérdések merülnek fel a szoftverkiadások és operációsrendszer-kiadások összetevőivel vagy kombinációival kapcsolatban, amelyek látszólag nem szerepelnek a listán vagy nem támogatottak, és amelyek újabbak, mint a felsorolt minimális kiadások, meg kell nyitnia egy SAP támogatási kérelmet az összetevővel szemben, amelyhez támogatást kér.
+A Business Objects BI platform esetében az [SAP-támogatási megjegyzés #2145537](https://launchpad.support.sap.com/#/notes/2145537) az Azure-ban támogatott SAP Business Objects-termékek listáját tartalmazza. Ha kérdése van a szoftverek olyan összetevőire vagy verzióira, amelyek úgy tűnik, hogy nem szerepelnek a listához vagy a támogatáshoz, és amelyek a felsorolt minimális kiadásoknál frissebbek, akkor egy SAP-támogatási kérelmet kell megnyitnia az általa támogatott összetevővel kapcsolatban.
 
-Az Üzleti objektumok adatszolgáltatások esetén [az SAP támogatási megjegyzése #22288344](https://launchpad.support.sap.com/#/notes/2288344) ismerteti az Azure-on futó SAP Data Services minimális támogatását. 
+Üzleti objektumok Data Services esetén az [SAP-támogatási megjegyzés #22288344](https://launchpad.support.sap.com/#/notes/2288344) ismerteti az Azure-ban futó sap-Data Services minimális támogatását. 
 
 > [!NOTE]
-> Ahogy az SAP támogatási megjegyzés, be kell jelentkeznie az SAP PAM azonosítani a megfelelő támogatási csomag szintjét támogatni kell az Azure-ban
+> Ahogy azt az SAP-támogatási Megjegyzés jelzi, be kell jelentkeznie az SAP PAM-ban az Azure-ban támogatott megfelelő támogatási csomag szintjének azonosításához
 
-Az SAP Datahub/Vora támogatása az Azure Kubernetes-szolgáltatásokban (AKS) az [SAP támogatási megjegyzésében](https://launchpad.support.sap.com/#/notes/2464722) #2464722
+Az SAP Datahub/Vora-támogatás az Azure Kubernetes Servicesben (ak) részletesen szerepel az [SAP-támogatási megjegyzésben #2464722](https://launchpad.support.sap.com/#/notes/2464722)
 
-Az SAP BPC 10.1 SP08 támogatása az [SAP támogatási #2451795](https://launchpad.support.sap.com/#/notes/2451795)
+Az SAP bites 10,1 SP08 támogatását az [SAP támogatási megjegyzése #2451795](https://launchpad.support.sap.com/#/notes/2451795)
 
-Az SAP Hybris Commerce Platform azure-beli támogatását a [Hybris dokumentáció részletezi.](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) Mivel a támogatott DBMS az SAP Hybris Commerce Platform, felsorolja, mint:
+Az SAP Hybris kereskedelmi platformjának támogatása az Azure-ban részletesen szerepel a [Hybris dokumentációjában](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html). Az SAP Hybris kereskedelmi platform támogatott adatbázis-kezelője az alábbi, például:
 
-- SQL Server és oracle a Windows operációs rendszer platformján. Ugyanazok a minimális kiadások érvényesek, mint az SAP NetWeaver esetében. A részleteket az [SAP támogatási #1928533](https://launchpad.support.sap.com/#/notes/1928533) tartalmazza.
-- SAP HANA a Red Hat és a SUSE Linux. Sap HANA tanúsítvánnyal rendelkező virtuálisgép-típusok szükségesek a [dokumentum](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)korábbi dokumentumainak szerint. Az SAP (Hybris) Kereskedelmi Platform OLTP-munkaterhelésnek minősül
-- SQL Azure DB az SAP (Hybris) Commerce Platform 1811-es verziójához
+- SQL Server és Oracle a Windows operációs rendszer platformján. Az SAP NetWeaver esetében ugyanazok a minimális kiadások érvényesek. A részletekért lásd az [SAP támogatási megjegyzéseit #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- SAP HANA Red Hat és SUSE Linux rendszeren. SAP HANA Certified VM-típusok szükségesek a [jelen dokumentumban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)korábban dokumentált módon. Az SAP (Hybris) kereskedelmi platform OLTP számítási feladatnak számít
+- SQL Azure DB az SAP (Hybris) kereskedelmi platform 1811-es verziójával
 
 
 
 
 ## <a name="next-steps"></a>Következő lépések
-Olvassa el a következő lépéseket az [Azure virtuális gépek tervezésében és megvalósításában az SAP NetWeaver számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
+Az [Azure Virtual Machines tervezésének és megvalósításának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) következő lépéseinek elolvasása az SAP NetWeaver-ban
 

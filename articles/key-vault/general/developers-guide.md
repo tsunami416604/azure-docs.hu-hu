@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault fejlesztői útmutató
-description: A fejlesztők az Azure Key Vault segítségével kezelhetik a kriptográfiai kulcsokat a Microsoft Azure-környezetben.
+title: Az Azure Key Vault fejlesztői útmutatója
+description: A fejlesztők a Azure Key Vault segítségével kezelhetik a titkosítási kulcsokat a Microsoft Azure környezetben.
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 18e1ab1d01394d585cfb06ced8c5fbac04114177
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431955"
 ---
-# <a name="azure-key-vault-developers-guide"></a>Azure Key Vault fejlesztői útmutató
+# <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
-A Key Vault lehetővé teszi a bizalmas adatok biztonságos elérését az alkalmazásokból:
+Key Vault lehetővé teszi a bizalmas adatok biztonságos elérését az alkalmazásokon belülről:
 
-- Kulcsok és titkok védettanélkül, hogy írjon a kódot magad, és könnyen tudja használni őket az alkalmazások.
-- Ön tudja, hogy az ügyfelek saját és kezelheti a saját kulcsokat, így koncentrálni, amely az alapvető szoftver funkciókat. Ily módon az alkalmazások nem a saját felelőssége vagy potenciális felelőssége az ügyfelek bérlői kulcsok és titkok.
-- Az alkalmazás használhatja a kulcsokat az aláíráshoz és a titkosításhoz, de a kulcskezelést az alkalmazástól kívül tartja, lehetővé téve, hogy a megoldás földrajzilag elosztott alkalmazásként legyen megfelelő.
-- A Key Vault-tanúsítványok kezelése. További információ: [Certificates](../certificates/about-certificates.md)
+- A kulcsok és a titkos kulcsok védelme a kód írása nélkül történik, és az alkalmazások egyszerűen használhatók.
+- Saját ügyfelei és saját kulcsaik is kezelhetők, így az alapszintű szoftverek funkcióinak biztosítására koncentrálhat. Így az alkalmazásai nem felelnek meg az ügyfelek bérlői kulcsainak és titkos kulcsainak.
+- Az alkalmazás a kulcsokat az aláíráshoz és a titkosításhoz is használhatja, és az alkalmazáson kívül is tartja a kulcskezelő szolgáltatást, így a megoldás földrajzilag elosztott alkalmazásként is használható.
+- Key Vault tanúsítványok kezelése. További információ: [tanúsítványok](../certificates/about-certificates.md)
 
-Az Azure Key Vaultról további általános tudnivalókat a Mi a Key Vault című [témakörben talál.](overview.md)
+További általános információk a Azure Key Vaultről: [Mi az Key Vault](overview.md)).
 
-## <a name="public-previews"></a>Nyilvános előzetesek
+## <a name="public-previews"></a>Nyilvános előzetes verziók
 
-Rendszeresidőközönként közzétesszük egy új Key Vault-funkció nyilvános előzetes verzióját. Próbálja ki ezeket, és tudassa azurekeyvault@microsoft.comvelünk, mit gondol keresztül, a visszajelzés e-mail címét.
+Időnként új Key Vault szolgáltatás nyilvános előzetes verzióját bocsátjuk rendelkezésére. Próbálja ki ezeket, és tudassa velünk, hogy mit gondol azurekeyvault@microsoft.coma szolgáltatáson keresztül, a visszajelzési e-mail-címünk alapján.
 
 ## <a name="creating-and-managing-key-vaults"></a>Kulcstartók létrehozása és kezelése
 
-Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. Az Azure-erőforrások felügyelt identitásai egyszerűbbé teszik a probléma megoldását azáltal, hogy az Azure-szolgáltatások nak automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia. 
+Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. Az Azure-erőforrások felügyelt identitásai megkönnyítik a probléma megoldását azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak Azure Active Directory (Azure AD). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia. 
 
-Az Azure-erőforrások felügyelt identitásairól [a felügyelt identitások áttekintése című témakörben olvashat bővebben.](../../active-directory/managed-identities-azure-resources/overview.md) Az Azure AD-vel való együttműködésről az [Alkalmazások integrálása](../../active-directory/develop/active-directory-integrating-applications.md)az Azure Active Directoryval című témakörben talál további információt.
+Az Azure-erőforrások felügyelt identitásával kapcsolatos további információkért tekintse meg [a felügyelt identitások áttekintése](../../active-directory/managed-identities-azure-resources/overview.md)című témakört. Az Azure AD-vel való használatról további információt az [alkalmazások integrálása a Azure Active Directorysal](../../active-directory/develop/active-directory-integrating-applications.md)című témakörben talál.
 
-Mielőtt a kulcsokkal, titkos kulcsokkal vagy tanúsítványokkal dolgozna a kulcstartóban, létrehozza és kezeli a kulcstartót a CLI, a PowerShell, az Erőforrás-kezelő sablonok vagy a REST segítségével, az alábbi cikkekben leírtak szerint:
+A Key vaultban található kulcsok, titkok vagy tanúsítványok használata előtt a Key vaultot a CLI, a PowerShell, a Resource Manager-sablonok vagy a REST használatával hozhatja létre és kezelheti a következő cikkekben leírtak szerint:
 
-- [Kulcstartók létrehozása és kezelése CLI-vel](../secrets/quick-create-cli.md)
-- [Kulcstartók létrehozása és kezelése a PowerShell használatával](../secrets/quick-create-powershell.md)
-- [Kulcstárolók létrehozása és kezelése az Azure-porttal](../secrets/quick-create-portal.md)
-- [Kulcstárolók létrehozása és kezelése pythonnal](../secrets/quick-create-python.md)
-- [Kulcstartók létrehozása és kezelése Java-val](../secrets/quick-create-java.md)
-- [Kulcstartók létrehozása és kezelése a Node.js segítségével](../secrets/quick-create-node.md)
-- [Kulcstartók létrehozása és kezelése .NET (v4 SDK) segítségével](../secrets/quick-create-net.md)
-- [Hozzon létre egy kulcstartót, és adjon hozzá egy titkos kulcsot egy Azure Resource Manager-sablonon keresztül](../secrets/quick-create-template.md)
-- [Kulcstartók létrehozása és kezelése REST-el](/rest/api/keyvault/)
+- [Kulcstartók létrehozása és kezelése a CLI-vel](../secrets/quick-create-cli.md)
+- [Kulcstartók létrehozása és kezelése a PowerShell-lel](../secrets/quick-create-powershell.md)
+- [Kulcstartók létrehozása és kezelése az Azure porttal](../secrets/quick-create-portal.md)
+- [Kulcstartók létrehozása és kezelése a Pythonban](../secrets/quick-create-python.md)
+- [Key Vaultok létrehozása és kezelése Javával](../secrets/quick-create-java.md)
+- [Key Vaultok létrehozása és kezelése Node. js-sel](../secrets/quick-create-node.md)
+- [Kulcstartók létrehozása és kezelése .NET-tel (v4 SDK)](../secrets/quick-create-net.md)
+- [Kulcstartó létrehozása és titkos kód hozzáadása Azure Resource Manager sablon használatával](../secrets/quick-create-template.md)
+- [Kulcstartók létrehozása és kezelése a REST-tel](/rest/api/keyvault/)
 
 
-## <a name="coding-with-key-vault"></a>Kódolás a Key Vault segítségével
+## <a name="coding-with-key-vault"></a>Kódolás Key Vault
 
-A programozók key vault-kezelő rendszere több felületből áll. Ez a rész az összes nyelvre mutató hivatkozásokat, valamint néhány kódpéldát tartalmaz. 
+A programozók Key Vault felügyeleti rendszere több felületet is tartalmaz. Ez a szakasz az összes nyelvre mutató hivatkozásokat, valamint néhány kódrészletet tartalmaz. 
 
-### <a name="supported-programming-and-scripting-languages"></a>Támogatott programozási és parancsfájlnyelvek
+### <a name="supported-programming-and-scripting-languages"></a>Támogatott programozási és programozási nyelvek
 
 #### <a name="rest"></a>REST
 
-A Key Vault összes erőforrása elérhető a REST-felületen keresztül; boltozat, kulcsok, titkok, stb. 
+Az összes Key Vault erőforrás a REST-felületen keresztül érhető el; tárolók, kulcsok, titkos kódok stb. 
 
-[Key Vault REST API-referencia](/rest/api/keyvault/).
+[Key Vault REST API-hivatkozás](/rest/api/keyvault/).
 
 #### <a name="net"></a>.NET
 
-[.NET API-hivatkozás a Key Vaulthoz](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
+[A Key Vault .NET API-referenciája](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
 
-A .NET SDK 2.x verziójáról a [Kibocsátási megjegyzések című témakörben talál](dotnet2api-release-notes.md)további információt.
+A .NET SDK 2. x verziójával kapcsolatos további információkért tekintse meg a [kibocsátási megjegyzéseket](dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
-[Java SDK a key vaulthoz](/java/api/overview/azure/keyvault)
+[Key Vault Java SDK](/java/api/overview/azure/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
-A Node.js,a Key Vault felügyeleti API és a Key Vault objektum API-t külön. A következő áttekintő cikk mindkettőhöz hozzáférést biztosít. 
+A Node. js-ben a Key Vault Management API és a Key Vault Object API különállóak. A következő áttekintő cikk a mindkettőhöz biztosít hozzáférést. 
 
-[Azure Key Vault-modulok a Node.js-hez](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[A Node. js Azure Key Vault moduljai](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Azure Key Vault-kódtárak pythonhoz](/python/api/overview/azure/key-vault?view=azure-python)
+[Azure Key Vault kódtárak a Pythonhoz](/python/api/overview/azure/key-vault?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -87,53 +87,53 @@ A Node.js,a Key Vault felügyeleti API és a Key Vault objektum API-t külön. A
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 
-[Azure PowerShell key vaulthoz](/powershell/module/az.keyvault/?view=azps-3.6.1#key_vault)
+[Key Vault Azure PowerShell](/powershell/module/az.keyvault/?view=azps-3.6.1#key_vault)
 
 ### <a name="code-examples"></a>Kódpéldák
 
-A Key Vault alkalmazásokkal való használatának teljes példáit a következő témakörben talál:
+A Key Vault alkalmazással való használatának teljes példáit a következő témakörben tekintheti meg:
 
-- [Azure Key Vault-kódminták](https://azure.microsoft.com/resources/samples/?service=key-vault) – Az Azure Key Vault kódmintái. 
-- [Használja az Azure Key Vault egy webalkalmazásból](../secrets/quick-create-net.md) – oktatóanyag, amely segít megtanulni, hogyan használhatja az Azure Key Vault egy webes alkalmazás az Azure-ban. 
+- [Azure Key Vault kód mintái](https://azure.microsoft.com/resources/samples/?service=key-vault) – a Azure Key Vaulthoz tartozó példák. 
+- [Azure Key Vault használata webalkalmazásból](../secrets/quick-create-net.md) – oktatóanyag, amelyből megtudhatja, hogyan használhatók a Azure Key Vault egy webalkalmazásból az Azure-ban. 
 
 ## <a name="how-tos"></a>Használati útmutatók
 
-Az alábbi cikkek és forgatókönyvek feladatspecifikus útmutatást nyújtanak az Azure Key Vault használatával kapcsolatos munkához:
+A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújtanak a Azure Key Vault használatához:
 
-- [Kulcstároló bérlői azonosító módosítása az előfizetés áthelyezése után](subscription-move-fix.md) – Amikor az Azure-előfizetést az A bérlőről a B bérlőre helyezi át, a meglévő kulcstartók nem érhetők el a bérlők (felhasználók és alkalmazások) számára a B bérlőben.
-- [Key Vault tűzfal mögötti elérése](access-behind-firewall.md) – A key vault ügyfélalkalmazás eléréséhez képesnek kell lennie a különböző funkciók több végponteléréséhez.
-- [HSM-védelemmel ellátott kulcsok létrehozása és átvitele az Azure Key Vaulthoz](../keys/hsm-protected-keys.md) – Ez segít megtervezni, generálni és átvinni saját HSM-védelemmel ellátott kulcsait az Azure Key Vault használatával.
-- [Biztonságos értékek (például jelszavak) átvitele a központi telepítés során](../../azure-resource-manager/templates/key-vault-parameter.md) – Ha egy biztonságos értéket (például egy jelszót) paraméterként kell átadnia a központi telepítés során, ezt az értéket titkos ként tárolhatja egy Azure Key Vaultban, és hivatkozhat az értékre más Resource Manager-sablonokban.
-- [A Key Vault használata az SQL Server rel bővíthető kulcskezeléshez](https://msdn.microsoft.com/library/dn198405.aspx) – Az SQL Server Connector for Azure Key Vault lehetővé teszi az SQL Server és az SQL-in-a-VM használatát, hogy az Azure Key Vault szolgáltatást extensible key management (EKM) szolgáltatóként használják az alkalmazások titkosítási kulcsainak védelmére; Átlátszó adattitkosítás, biztonsági mentés titkosítása és oszlopszintű titkosítás.
-- [Tanúsítványok üzembe helyezése a Key Vault virtuális gépeken](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – Az Azure-beli virtuális gépben futó felhőalkalmazásnak tanúsítványra van szüksége. Hogyan juthat be még ma ebbe a virtuális gépbe?
-- [A Key Vault beállítása a kulcsrotáció és -naplózás végbe–](../secrets/key-rotation-log-monitoring.md) Ez bemutatja, hogyan állíthatja be a kulcsrotációt és a naplózást az Azure Key Vault használatával.
-- [Az Azure Web App-tanúsítvány key vaulton keresztüli üzembe helyezése]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) lépésenként ismerteti a Key Vaultban tárolt tanúsítványok üzembe helyezését az [App Service-tanúsítványajánlat](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) részeként.
-- [Engedély megadása számos alkalmazásnak a kulcstartó eléréséhez](group-permissions-for-apps.md) A Key Vault hozzáférés-vezérlési házirendje legfeljebb 1024 bejegyzést támogat. Azonban létrehozhat egy Azure Active Directory biztonsági csoportot. Adja hozzá az összes társított egyszerű szolgáltatásnévit ehhez a biztonsági csoporthoz, majd adjon hozzáférést ehhez a biztonsági csoporthoz a Key Vault számára.
-- A Key Vaultok Azure-beli integrálásával és használatával kapcsolatos további útmutatásért tekintse meg [a Ryan Jones Azure Resource Manager-sablonpéldáit a Key Vaulthoz.](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)
-- [A Key Vault soft-delete használata a CLI-vel](soft-delete-cli.md) végigvezeti a kulcstartó és a különböző kulcstartó-objektumok használatán és életciklusán, ha a soft-delete engedélyezve van.
-- [A Key Vault soft-delete használata a PowerShell használatával](soft-delete-powershell.md) végigvezeti a key vault és a különböző key vault-objektumok használatán és életciklusán, ha a soft-delete engedélyezve van.
+- A [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](subscription-move-fix.md) – ha áthelyezi az Azure-előfizetést az a bérlőtől a b bérlőhöz, a meglévő kulcstartók elérhetetlenné válnak a b bérlőhöz tartozó rendszerbiztonsági tag (felhasználók és alkalmazások) számára. javítsa ezt az útmutatót az útmutató használatával.
+- A [tűzfal mögötti Key Vault elérése](access-behind-firewall.md) – egy kulcstartó eléréséhez a Key Vault-ügyfélalkalmazás számára a különböző funkciókhoz több végpontot is el kell érnie.
+- [HSM-védelemmel ellátott kulcsok létrehozása és átvitele Azure Key Vaulthoz](../keys/hsm-protected-keys.md) – ez segít megtervezni, előállítani és továbbítani a saját HSM-védelemmel ellátott kulcsait, hogy azok a Azure Key Vault használatával legyenek használhatók.
+- [Biztonságos értékek (például jelszavak)](../../azure-resource-manager/templates/key-vault-parameter.md) átadása az üzembe helyezés során – ha egy biztonságos értéket (például jelszót) kell megadni paraméterként az üzembe helyezés során, az értéket tárolhatja titkosként egy Azure Key Vault, és hivatkozhat az értékre más Resource Manager-sablonokban.
+- A [Key Vault használata a bővíthető kulcsok felügyeletéhez a SQL Server használatával](https://msdn.microsoft.com/library/dn198405.aspx) – a SQL Server Connector Azure Key Vault lehetővé teszi, hogy a SQL Server és az SQL-a-a-VM kihasználja a Azure Key Vault szolgáltatást bővíthető kulcs-felügyeleti (EKM) szolgáltatóként, hogy megvédje a titkosítási kulcsait az alkalmazások hivatkozásához; Transzparens adattitkosítás, biztonsági másolatok titkosítása és az oszlopok szintjének titkosítása.
+- [Tanúsítványok telepítése virtuális gépekre Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – az Azure-beli virtuális gépen futó Felhőbeli alkalmazásnak tanúsítványra van szüksége. Hogyan szerezheti be ezt a tanúsítványt még ma a virtuális gépre?
+- Az [Key Vault beállítása a végpontok közötti kulcsfontosságú rotációs és naplózási szolgáltatással](../secrets/key-rotation-log-monitoring.md) – ez a lépés végigvezeti a kulcsfontosságú rotációs és naplózási funkció beállításán Azure Key Vaultokkal.
+- Az [Azure webalkalmazás-tanúsítványnak a Key Vault segítségével történő üzembe helyezése]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) részletes útmutatást nyújt a Key Vault tárolt tanúsítványok [app Service-tanúsítvány](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) ajánlat részeként történő telepítéséhez.
+- [Engedélyek megadása számos alkalmazás számára a kulcstartó eléréséhez](group-permissions-for-apps.md) Key Vault hozzáférés-vezérlési házirend legfeljebb 1024 bejegyzést támogat. Azonban létrehozhat egy Azure Active Directory biztonsági csoportot is. Adja hozzá az összes társított egyszerű szolgáltatást ehhez a biztonsági csoporthoz, majd engedélyezze a biztonsági csoport számára a Key Vaulthoz való hozzáférést.
+- A Key Vaultok Azure-beli integrálásával és használatával kapcsolatos további feladatra vonatkozó útmutatásért lásd: [Ryan Jones Azure Resource Manager sablon példák a Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
+- A [Key Vault Soft-delete használata a parancssori](soft-delete-cli.md) felülettel végigvezeti a kulcstartó használatának és életciklusának, valamint a helyreállítható törlést lehetővé tett különböző kulcstartó-objektumoknak a használatával.
+- A Key Vault helyreállítható [Törlés használata a PowerShell-](soft-delete-powershell.md) lel végigvezeti a kulcstartó használatának és életciklusának, valamint a helyreállítható törlést lehetővé tett különböző kulcstartó-objektumoknak a használatával.
 
-## <a name="integrated-with-key-vault"></a>Integrálva a Key Vault-ba
+## <a name="integrated-with-key-vault"></a>Integrálva van Key Vault
 
-Ezek a cikkek a Key Vaultot használó vagy a Key Vaultba integrálható egyéb forgatókönyvekről és szolgáltatásokról szólnak.
+Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolatosak, amelyek a Key Vault-t használják vagy integrálják.
 
-- [Az Azure Disk Encryption](../../security/fundamentals/encryption-overview.md) a Windows szabványos [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) szolgáltatását és a Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcióját használja az operációs rendszer és az adatlemezek kötettitkosításának biztosításához. A megoldás integrálva van az Azure Key Vaultszolgáltatással, hogy segítsen a kulcstároló-előfizetés lemeztitkosítási kulcsainak és titkos kulcsainak vezérlésében és kezelésében, miközben biztosítja, hogy a virtuálisgép-lemezeken lévő összes adat inaktív módon titkosítva legyen az Azure-tárolóban.
-- [Az Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) lehetőséget biztosít a fiókban tárolt adatok titkosításához. A kulcskezeléshez a Data Lake Store két módot biztosít a fő titkosítási kulcsok (MEKs) kezelésére, amelyek a Data Lake Store-ban tárolt adatok visszafejtéséhez szükségesek. A Data Lake Store kezelheti a MEK-ket, vagy dönthet úgy, hogy az Azure Key Vault-fiókjával megtartja a MEK-k tulajdonjogát. A Data Lake Store-fiók létrehozásakor adja meg a kulcskezelés módját.
-- [Az Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) lehetővé teszi a saját bérlői kulcs kezelője. Például ahelyett, hogy a Microsoft kezelése a bérlői kulcs (az alapértelmezett), kezelheti a saját bérlői kulcsot, hogy megfeleljen a szervezetre vonatkozó előírásoknak. A saját bérlőkulcs felügyelete más néven a saját kulcs használata (BYOK).
+- [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md) kihasználja a Windows iparági szabvány [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatását, hogy mennyiségi titkosítást biztosítson az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vault, hogy segítsen a lemez titkosítási kulcsainak és a titkos kulcsoknak a kulcstartó-előfizetésben való felügyeletében és kezelésében, miközben biztosítja, hogy a virtuálisgép-lemezek összes adatai titkosítva legyenek az Azure Storage-ban.
+- [Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) lehetőséget biztosít a fiókban tárolt adattitkosításhoz. A kulcskezelő szolgáltatásban a Data Lake Store két módot biztosít a fő titkosítási kulcsok (MEKs) kezelésére, amelyek a Data Lake Store tárolt adatok visszafejtéséhez szükségesek. Data Lake Store kezelheti a MEKs, vagy dönthet úgy, hogy megőrzi a MEKs tulajdonjogát a Azure Key Vault-fiók használatával. Data Lake Store fiók létrehozásakor megadhatja a kulcskezelő módot.
+- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) lehetővé teszi a saját bérlői kulcsának felettesét. Például ahelyett, hogy a Microsoft a bérlői kulcsát (az alapértelmezettet) kezelhesse, a saját bérlői kulcsát úgy kezelheti, hogy megfeleljen a szervezetére vonatkozó egyes előírásoknak. A saját bérlőkulcs felügyelete más néven a saját kulcs használata (BYOK).
 
-## <a name="key-vault-overviews-and-concepts"></a>A Key Vault áttekintései és fogalmai
+## <a name="key-vault-overviews-and-concepts"></a>Key Vault áttekintések és fogalmak
 
-- [Key Vault helyreállítható törlési viselkedése)](overview-soft-delete.md) olyan szolgáltatást ír le, amely lehetővé teszi a törölt objektumok helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
-- [Key Vault-ügyfél szabályozása](overview-throttling.md) irányítja Önt az alapvető fogalmak szabályozása, és egy megközelítést kínál az alkalmazáshoz.
-- [Key Vault tárfiók-kulcsok áttekintése)](../secrets/overview-storage-keys.md) ismerteti a Key Vault integrációs Azure Storage-fiókok kulcsok.
-- [A Key Vault biztonsági világai](overview-security-worlds.md) a régiók és a biztonsági területek közötti kapcsolatokat ismertetik.
+- [Key Vault-törlési viselkedés](overview-soft-delete.md)) egy olyan funkciót ismertet, amely lehetővé teszi a törölt objektumok helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
+- [Key Vault az ügyfelek szabályozása](overview-throttling.md) a szabályozás alapvető fogalmait, és az alkalmazás megközelítését kínálja.
+- [Key Vault Storage-fiók kulcsainak áttekintése](../secrets/overview-storage-keys.md)) ismerteti a Key Vault integrációs Azure Storage-fiókok kulcsait.
+- [Key Vault biztonsági világok](overview-security-worlds.md) ismertetik a régiók és a biztonsági területek közötti kapcsolatokat.
 
 ## <a name="social"></a>Közösségi tartalom
 
-- [Key Vault Blog](https://aka.ms/kvblog)
+- [Key Vault blog](https://aka.ms/kvblog)
 - [Key Vault fórum](https://aka.ms/kvforum)
 
-## <a name="supporting-libraries"></a>Könyvtárak támogatása
+## <a name="supporting-libraries"></a>Támogató kódtárak
 
-- [A Microsoft Azure Key Vault Core Library](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) **IKey** és **IKeyResolver** felületeket biztosít az azonosítókból származó kulcsok megkereséséhez és a kulcsokkal végzett műveletek végrehajtásához.
-- [A Microsoft Azure Key Vault-bővítmények](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) bővített lehetőségeket kínálnak az Azure Key Vault hoz.
+- A [Microsoft Azure Key Vault Core Library](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) **rendszerállapotkulcsot** és **IKeyResolver** felületet biztosít a kulcsok azonosítókkal való megkereséséhez és a kulcsok használatával végzett műveletek végrehajtásához.
+- A [Microsoft Azure Key Vault Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) a Azure Key Vault kibővített képességeit biztosítja.

@@ -1,6 +1,6 @@
 ---
-title: Jelszavak és telefonszámok kezelése a Saját személyzettel (előzetes verzió) - Azure AD | Microsoft dokumentumok
-description: Jelszavak és telefonszámok kezelése a felhasználók számára a Saját személyzet segítségével
+title: Jelszavak és telefonszámok kezelése a saját munkatársakkal (előzetes verzió) – Azure AD | Microsoft Docs
+description: A felhasználók jelszavainak és telefonszámának kezelése a munkatársakkal
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,103 +14,103 @@ ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 29c27c876e90bce6a38226f68adf44a26465cfea
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770852"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>Felhasználói kezelés delegálása a Saját személyzettel (előzetes verzió)
+# <a name="delegate-user-management-with-my-staff-preview"></a>Felhasználói felügyelet delegálása munkatársaival (előzetes verzió)
 
-A szervezet a **Saját személyzet** segítségével átruházhatja a felhasználókezelési feladatokat a hatósági adatokra, például egy üzletvezetőre vagy egy csoportvezetőre, hogy segítse a munkatársakat a szükséges alkalmazásokhoz való hozzáférésben. Ha a csapattag nem tud hozzáférni egy alkalmazáshoz, mert elfelejtik a jelszót, a hatékonyság elvész. Ez növeli a támogatási költségeket, és szűk keresztmetszetet okoz a felügyeleti folyamatokban.  A Saját személyzet segítségével a fiókjukhoz nem hozzáférő csapattag néhány kattintással visszanyerheti a hozzáférést, rendszergazdai segítség nélkül.
+A szervezet a **saját munkatársaival** delegálhatja a felhasználói felügyeleti feladatokat a hatóságok adataihoz, például egy áruház kezelőjéhez vagy a csoportvezető számára, hogy a személyzet tagjai hozzáférhessenek a szükséges alkalmazásokhoz. Ha a csapattag nem fér hozzá egy alkalmazáshoz, mert elfelejtik a jelszót, a termelékenység elvész. Ez a támogatási költségeket is felgyorsítja, és a felügyeleti folyamatokban szűk keresztmetszetet okoz.  A munkatársakkal egy csapattag, aki nem tud hozzáférni a fiókjához, mindössze néhány kattintással visszanyerheti a hozzáférést, és rendszergazdai segítségre sincs szükség.
 
-## <a name="manage-your-staff-in-my-staff"></a>A munkatársak kezelése a Saját személyzetben
+## <a name="manage-your-staff-in-my-staff"></a>Munkatársak kezelése
 
-A csapattagok kezelése a Saját személyzetben egyszerű. A kezdéshez [nyissa meg a Saját személyzet](https://aka.ms/mystaff)lehetőséget, jelöljön ki egy csapatot vagy helyet, majd jelöljön ki egy felhasználót. A helyeket és a csoporttagokat a rendszergazda határozza meg, és nem módosíthatja őket.
+A csapat tagjainak kezelése egyszerű. A kezdéshez [nyissa meg a saját munkatársakat](https://aka.ms/mystaff), válasszon egy csapatot vagy helyet, majd válasszon ki egy felhasználót. A helyeknek és a csoport tagjainak helyét a rendszergazda határozza meg, és ezeket nem lehet módosítani.
 
-Ha egynél több helyet kezel, a Saját személyzet megkerülésekénél ki kell választania egy helyet a helyhez rendelt csapattag megtekintéséhez.
+Ha egynél több helyet felügyel, a munkatársaihoz való ugráskor ki kell választania egy helyet, amely a helyhez rendelt csapattagot tartalmazza.
 
-Ha még nem rendelkezik a Saját személyzet eléréséhez szükséges engedélyekkel, a következő üzenet jelenik meg: "Hoppá, úgy tűnik, jelenleg nem jogosult a Saját személyzet megtekintésére. További információért forduljon az adminisztrátorhoz."
+Ha még nem rendelkezik megfelelő engedélyekkel a munkatársak eléréséhez, a következő üzenet jelenik meg: "Hoppá, úgy tűnik, hogy jelenleg nem jogosult a munkatársak megtekintésére. További információért forduljon a rendszergazdához. "
 
-### <a name="find-a-staff-member-in-my-staff"></a>Munkatárs keresése a Saját személyzetben
+### <a name="find-a-staff-member-in-my-staff"></a>Munkatársak megkeresése
 
-A kezelés megkezdése előtt meg kell nyitnia egy munkatárs profilját.
+A kezelés megkezdése előtt meg kell nyitnia a személyzet tagjainak profilját.
 
-1. [Nyissa meg a Saját személyzet et,](https://aka.ms/mystaff) és szükség esetén válasszon ki egy helyet.
+1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff) , és szükség esetén válasszon egy helyet.
 
-    ![A csapattag helyének kiválasztása a Saját személyzet ben](media/my-staff-team-manager/allaus.png)
+    ![Válasszon egy helyet a csapat tagjai számára a saját munkatársaiban](media/my-staff-team-manager/allaus.png)
 
-1. A csapattag profiljának megnyitása.
+1. Nyisson meg egy csapattag profilját.
 
-    ![Válassza ki az egyik felhasználót egy adott helyen a Saját személyzet ben](media/my-staff-team-manager/aupage.png)
+    ![Válasszon egy felhasználót a saját munkahelyén](media/my-staff-team-manager/aupage.png)
 
 ## <a name="reset-a-user-password"></a>Új felhasználói jelszó beállítása
 
-Ha a szervezet engedélyt adott Önnek, alaphelyzetbe állíthatja a munkatársak jelszavait.
+Ha a szervezete engedélyt adott Önnek, alaphelyzetbe állíthatja a munkatársak jelszavait.
 
-1. [Nyissa meg a munkatársaim .](https://aka.ms/mystaff)
-1. Nyissa meg a munkatársak profilját.
-1. Válassza **a Jelszó alaphelyzetbe állítása lehetőséget.**
+1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
+1. Nyisson meg egy munkatárs profilját.
+1. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
 
-    ![Felhasználói jelszó alaphelyzetbe állítása a munkatársak között](media/my-staff-team-manager/resetpassword1.png)
+    ![Felhasználói jelszó alaphelyzetbe állítása a munkatársakban](media/my-staff-team-manager/resetpassword1.png)
 
-1. Az új jelszó létrehozása vagy beírása. Előfordulhat, hogy egy automatikusan generált ideiglenes jelszó jelenik meg, vagy meg kell adnia egy ideiglenes jelszót a felhasználószámára.
+1. Az új jelszó előállítása vagy megadása. Előfordulhat, hogy megjelenik egy automatikusan létrehozott ideiglenes jelszó, vagy megkérheti, hogy adjon meg egy ideiglenes jelszót a felhasználó számára.
 
-    ![Az ideiglenes felhasználói jelszó másolása a Saját személyzet alaphelyzetbe állítása után](media/my-staff-team-manager/resetpassword2.png)
+    ![Az ideiglenes felhasználói jelszó másolása a munkatársaink alaphelyzetbe állítása után](media/my-staff-team-manager/resetpassword2.png)
 
-Miután visszaállította a felhasználó jelszavát, adja meg a felhasználónak az ideiglenes jelszót. Amikor a felhasználó bejelentkezik az ideiglenes jelszavával, módosítania kell azt.
+A felhasználó jelszavának alaphelyzetbe állítása után adja meg a felhasználó számára az ideiglenes jelszót. Ha a felhasználó ideiglenes jelszavával jelentkezik be, akkor módosítania kell azt.
 
 ## <a name="manage-a-users-phone-number"></a>Felhasználó telefonszámának kezelése
 
-Ha a szervezet engedélyt adott Önnek, kezelheti a munkatársak telefonszámait.
+Ha a szervezete engedélyt adott Önnek, a munkatársainak telefonszámait is kezelheti.
 
 ### <a name="add-a-phone-number"></a>Telefonszám hozzáadása
 
-1. [Nyissa meg a munkatársaim .](https://aka.ms/mystaff)
-1. Nyissa meg a munkatársak profilját.
-1. Válassza **a Telefonszám hozzáadása lehetőséget.**
+1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
+1. Nyisson meg egy munkatárs profilját.
+1. Válassza a **telefonszám hozzáadása**lehetőséget.
 
-    ![Felhasználói telefonszám hozzáadása a Munkatársak között](media/my-staff-team-manager/addphone1.png)
+    ![Felhasználói telefonszám hozzáadása a munkatársaim számára](media/my-staff-team-manager/addphone1.png)
 
-1. Adja meg a telefonszámot, és válassza a **Mentés gombot.**
+1. Adja meg a telefonszámot, majd válassza a **Mentés**lehetőséget.
 
-    ![A hozzáadott felhasználói telefonszám mentése a Saját személyzet ben](media/my-staff-team-manager/addphone2.png)
+    ![A felvett felhasználó telefonszámának mentése a saját munkatársaiban](media/my-staff-team-manager/addphone2.png)
 
-Miután regisztrált egy telefonszámot egy felhasználó számára, a szervezet beállításaitól függően betud jelentkezni SMS-ben, kétlépcsős ellenőrzést végezhet, vagy saját jelszóval állíthatja alaphelyzetbe a jelszavát.
+Miután regisztrált egy felhasználó telefonszámát, használhatja azt az SMS-be való bejelentkezéshez, a kétlépéses ellenőrzés végrehajtásához vagy a saját jelszavának alaphelyzetbe állításához a szervezet beállításaitól függően.
 
-![Új telefonszám regisztrálva a Saját személyzettel](media/my-staff-team-manager/addphone3.png)
+![A munkatársaim által regisztrált új telefonszám](media/my-staff-team-manager/addphone3.png)
 
 ### <a name="edit-a-phone-number"></a>Telefonszám szerkesztése
 
-1. [Nyissa meg a munkatársaim .](https://aka.ms/mystaff)
-1. Nyissa meg a munkatársak profilját.
-1. Válassza **a Telefonszám szerkesztése lehetőséget.**
+1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
+1. Nyisson meg egy munkatárs profilját.
+1. Válassza a **telefonszám szerkesztése**lehetőséget.
 
-    ![Válassza a Szerkesztés lehetőséget a felhasználói profilból a Saját munkatársak között](media/my-staff-team-manager/editphone2.png)
+    ![A saját munkatársak felhasználói profiljában válassza a szerkesztés lehetőséget](media/my-staff-team-manager/editphone2.png)
 
-1. Írja be az új telefonszámot, és válassza a **Mentés gombot.**
+1. Adja meg az új telefonszámot, és kattintson a **Mentés**gombra.
 
-    ![Munkatárs telefonszámának szerkesztése a Saját személyzetben](media/my-staff-team-manager/editphone1.png)
+    ![Munkatárs telefonszámának szerkesztése a munkatársaim számára](media/my-staff-team-manager/editphone1.png)
 
-### <a name="enable-phone-number-sign-in-for-a-user"></a>Felhasználó telefonszámának engedélyezése
+### <a name="enable-phone-number-sign-in-for-a-user"></a>Telefonszám bejelentkezésének engedélyezése a felhasználó számára
 
-Ha a felhasználónévként (SMS-bejelentkezés) egy telefonszám használatával történő bejelentkezés engedélyezve van a szervezetben, hozzáadhatja ezt a hitelesítést egy meglévő felhasználói telefonszámhoz.
+Ha a bejelentkezéskor a felhasználónévvel (SMS-alapú bejelentkezéssel) rendelkező telefonszámot engedélyez, ezt a hitelesítést egy meglévő felhasználói telefonszámhoz is hozzáadhatja.
 
-1. [Nyissa meg a munkatársaim .](https://aka.ms/mystaff)
-1. Nyissa meg a munkatársak profilját.
-1. Ha a képernyő alján megjelenik egy üzenet arról, hogy a telefonszámával felhasználónévként való bejelentkezés elérhető, válassza az **Engedélyezés** lehetőséget a folyamat megkezdéséhez. Ez az üzenet akkor jelenik meg, ha a felhasználó nak engedélyezve van a telefonszámmal való bejelentkezés.
+1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
+1. Nyisson meg egy munkatárs profilját.
+1. Ha a képernyő alján egy üzenet jelenik meg, amely azt jelzi, hogy a felhasználó telefonszámát használva bejelentkezik a felhasználónévként, válassza az **Engedélyezés** lehetőséget a folyamat megkezdéséhez. Ez az üzenet akkor jelenik meg, ha a felhasználó számára engedélyezve van a telefonszámmal való bejelentkezés.
 
-    ![Az üzenet megtekintése, ha a telefonbejelentkezés támogatott egy helyen a Saját személyzet ben](media/my-staff-team-manager/enableforms1.png)
+    ![Tekintse meg az üzenetet, amikor a telefonos bejelentkezés támogatott a saját munkatársak egyik helyén.](media/my-staff-team-manager/enableforms1.png)
 
-1. Ha elkészült, válassza az **OK gombot.**
+1. Ha elkészült, kattintson **az OK gombra** .
 
-    ![Munkatárs telefonszámának eltávolítása a Saját személyzetből](media/my-staff-team-manager/enableforms2.png)
+    ![Munkatárs telefonszámának eltávolítása a munkatársaim számára](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>Telefonszám eltávolítása
 
-1. [Nyissa meg a munkatársaim .](https://aka.ms/mystaff)
-1. Nyissa meg a munkatársak profilját.
-1. Válassza **a Telefonszám eltávolítása**lehetőséget.
+1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
+1. Nyisson meg egy munkatárs profilját.
+1. Válassza a **telefonszám eltávolítása**lehetőséget.
 1. Ha elkészült, válassza a **Törlés** lehetőséget.
 
-    ![Munkatárs telefonszámának eltávolítása a Saját személyzetből](media/my-staff-team-manager/deletephone1.png)
+    ![Munkatárs telefonszámának eltávolítása a munkatársaim számára](media/my-staff-team-manager/deletephone1.png)

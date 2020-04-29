@@ -6,19 +6,13 @@
     - name: Mi a Content Moderator?
       href: overview.md
       expanded: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: A Content Moderator kipróbálása az interneten
       href: quick-start.md
-    - name: Az ügyfél-SDK használata
-      items:
-        - name: A .NET SDK használata
-          href: dotnet-sdk-quickstart.md
-        - name: A Python SDK használata
-          href: python-sdk-quickstart.md
-        - name: A Java SDK használata
-          href: java-sdk-quickstart.md
-- name: oktatóanyagokat
+    - name: Az ügyfélkódtár használata
+      href: client-libraries.md
+- name: Oktatóanyagok
   items:
     - name: E-kereskedelmi képek moderálása
       href: ecommerce-retail-catalog-moderation.md

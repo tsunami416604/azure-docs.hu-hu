@@ -1,6 +1,6 @@
 ---
-title: Geték beszerzése webes API (démonalkalmazás) hívásához - Microsoft identity platform | Azure
-description: Megtudhatja, hogyan hozhat létre webes API-kat meghívja (tokenek beolvasása) démonalkalmazást
+title: Jogkivonatok beszerzése webes API-k meghívásához (Daemon-alkalmazás) – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre olyan Daemon-alkalmazást, amely webes API-kat hív meg (tokenek beszerzése)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868998"
 ---
-# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>A webes API-kat meghívjaDó Démon alkalmazás – token beszerzése
+# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
-Miután egy bizalmas ügyfélalkalmazást készített, beszerezhet egy jogkivonatot `AcquireTokenForClient`az alkalmazáshoz a hatókör hívásával, a hatókör átadásával, és szükség esetén kényszerítheti a jogkivonat frissítését.
+A bizalmas ügyfélalkalmazás létrehozása után megkeresheti az alkalmazás jogkivonatát, ha meghívja `AcquireTokenForClient`, átadja a hatókört, és igény szerint kényszeríti a token frissítését.
 
-## <a name="scopes-to-request"></a>A kért hatókörök
+## <a name="scopes-to-request"></a>Kérelmekre vonatkozó hatókörök
 
-Az ügyfél hitelesítő adatfolyamát kérő hatókör az erőforrás `/.default`neve, amelyet a követ. Ez a jelölés azt jelzi az Azure Active Directorynak (Azure AD), hogy az alkalmazásregisztráció során statikusan deklarált *alkalmazásszintű engedélyeket* használja. Emellett ezeket az API-engedélyeket egy bérlői rendszergazdának kell megadnia.
+Az ügyfél-hitelesítő adatokra vonatkozó kérelem hatóköre az erőforrás neve, majd a `/.default`. Ez a jelölés azt mutatja Azure Active Directory (Azure AD) számára, hogy az alkalmazás regisztrálása során statikusan deklarált *alkalmazási szintű engedélyeket* használjon. Emellett a bérlői rendszergazdának is meg kell adni ezeket az API-engedélyeket.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -35,7 +35,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az MSAL Pythonban a konfigurációs fájl a következő kódrészletnek tűnik:
+A MSAL Pythonban a konfigurációs fájl az alábbi kódrészlethez hasonlít:
 
 ```Json
 {
@@ -51,17 +51,17 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="azure-ad-v10-resources"></a>Azure AD (1.0-s) erőforrások
+### <a name="azure-ad-v10-resources"></a>Azure AD-erőforrások (v 1.0)
 
-Az ügyfél hitelesítő adataihoz használt hatókörnek mindig `/.default`a rendszernek kell lennie az erőforrás-azonosítónak, amelyet a követ.
+Az ügyfél hitelesítő adataihoz használt hatókörnek mindig az erőforrás-AZONOSÍTÓnak `/.default`kell lennie, amelyet követően.
 
 > [!IMPORTANT]
-> Amikor az MSAL hozzáférési jogkivonatot kér egy 1.0-s verziójú hozzáférési jogkivonatot fogadó erőforráshoz, az Azure AD úgy elemzi a kívánt közönséget a kért hatókörből, hogy mindent az utolsó perjel előtt vesz igénybe, és erőforrás-azonosítóként használja.
-> Tehát, mint az Azure SQL Database (**https:\//database.windows.net**), az erőforrás elvárja, `https://database.windows.net/`hogy a közönség, hogy `https://database.windows.net//.default`véget ér egy perjel (az Azure SQL Database, ), akkor meg kell kérni a hatókörét. (Megjegyzés: a kettős perjel.) Lásd még: [MSAL.NET #747: Az erőforrás url-jének záró perjelje kimarad, ami sql hitelesítési hibát okozott.](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)
+> Ha a MSAL hozzáférési jogkivonatot kér egy olyan erőforráshoz, amely 1,0 hozzáférési tokent fogad el, akkor az Azure AD a kért hatókörből elemezi a kívánt célközönséget, ha az utolsó perjel előtt mindent megtesz, és erőforrás-azonosítóként használja azt.
+> Tehát ha például Azure SQL Database (**https:\//Database.Windows.net**), az erőforrás egy olyan célközönséget vár, amely perjeltel végződik (Azure SQL Database esetén `https://database.windows.net/`), akkor a hatókörét kell kérnie `https://database.windows.net//.default`. (Jegyezze fel a dupla perjelet.) Lásd még: MSAL.NET probléma [#747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
-Az alkalmazás jogkivonatának beszerzéséhez a `AcquireTokenForClient` platformtól függően használni fogja vagy annak megfelelőjét.
+Az alkalmazáshoz tartozó token beszerzéséhez a platformtól `AcquireTokenForClient` függően a vagy annak megfelelőt kell használnia.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -118,7 +118,7 @@ else:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Ez a kód az [MSAL Java fejlesztői mintákból származik.](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)
+Ez a kód a [MSAL Java dev-mintákból](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)lett kinyerve.
 
 ```Java
 private static IAuthenticationResult acquireToken() throws Exception {
@@ -169,9 +169,9 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 ### <a name="protocol"></a>Protocol (Protokoll)
 
-Ha még nem rendelkezik könyvtárral a választott nyelvhez, célszerű lehet közvetlenül használni a protokollt:
+Ha még nem rendelkezik a választott nyelvhez tartozó könyvtárral, érdemes lehet közvetlenül a protokollt használni:
 
-#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>Első eset: A jogkivonat-kérelem elérése egy közös titkos kulcs használatával
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>Első eset: hozzáférés a jogkivonat-kérelemhez közös titok használatával
 
 ```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
@@ -184,7 +184,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>Második eset: A jogkivonat-kérelem elérése tanúsítvány használatával
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>Második eset: hozzáférés a jogkivonat-kérelemhez tanúsítvány használatával
 
 ```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
@@ -198,22 +198,22 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-További információt a protokoll dokumentációjában talál: [A Microsoft identity platform és az OAuth 2.0 ügyfélhitelesítő adatok áramlása](v2-oauth2-client-creds-grant-flow.md).
+További információkért tekintse meg a protokoll dokumentációját: [Microsoft Identity platform és a OAuth 2,0 Client hitelesítő adatok folyamata](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Alkalmazástoken-gyorsítótár
+## <a name="application-token-cache"></a>Alkalmazás-jogkivonat gyorsítótára
 
-A MSAL.NET `AcquireTokenForClient` az alkalmazásjogkivonat-gyorsítótárat használja. (Az összes többi AcquireToken*XX* metódus a felhasználói jogkivonat-gyorsítótárat használja.) Ne hívjon `AcquireTokenSilent` hívás `AcquireTokenForClient`előtt, `AcquireTokenSilent` mert a *felhasználói* jogkivonat-gyorsítótárat használja. `AcquireTokenForClient`ellenőrzi magát az *alkalmazástoken* gyorsítótárát, és frissíti azt.
+A MSAL.NET- `AcquireTokenForClient` ben az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken*XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) A hívás `AcquireTokenSilent` `AcquireTokenForClient`előtt ne telefonáljon, `AcquireTokenSilent` mert a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient`ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>Használta az erőforrás/.default hatókört?
+### <a name="did-you-use-the-resourcedefault-scope"></a>Használta az erőforrás/. alapértelmezett hatókört?
 
-Ha hibaüzenet jelenik meg arról, hogy érvénytelen hatókört használt, `resource/.default` valószínűleg nem használta a hatókört.
+Ha hibaüzenet jelenik meg arról, hogy érvénytelen hatókört használt, akkor valószínűleg nem használta a `resource/.default` hatókört.
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Elfelejtette megadni az admin beleegyezését? Daemon apps szükség ez!
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Elfelejtette, hogy rendszergazdai engedélyt adjon? Daemon-alkalmazások szükségesek!
 
-Ha az API-híváskor elégtelen jogosultságokat kap **a művelethiba végrehajtásához,** a bérlői rendszergazdának engedélyeket kell adnia az alkalmazásnak. Lásd a fenti Ügyfélalkalmazás regisztrálása című 6.
-Általában a következő hibának tűnő hiba jelenik meg:
+Ha az API meghívásakor nem **rendelkezik megfelelő jogosultsággal a művelet elvégzéséhez** , a bérlői rendszergazdának engedélyeket kell adnia az alkalmazás számára. Lásd a fenti ügyfélalkalmazás regisztrálásának 6. lépését.
+Általában a következőhöz hasonló hibaüzenet jelenik meg:
 
 ```json
 Failed to call the web API: Forbidden
@@ -234,16 +234,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Démonalkalmazás – webes API hívása](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+> [Daemon-alkalmazás – webes API meghívása](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Démonalkalmazás – webes API hívása](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+> [Daemon-alkalmazás – webes API meghívása](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Démonalkalmazás – webes API hívása](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+> [Daemon-alkalmazás – webes API meghívása](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
 
 ---

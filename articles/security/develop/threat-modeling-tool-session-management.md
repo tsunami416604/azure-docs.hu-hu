@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "73161508"
+ms.locfileid: "82203862"
 ---
 # <a name="security-frame-session-management"></a>Biztonsági keret: munkamenet-kezelés
 | Termék/szolgáltatás | Cikk |
@@ -221,7 +221,7 @@ A cookie-kat használó összes HTTP-alapú alkalmazásnak meg kell adnia a Http
 | **Alkalmazható technológiák** | Web Forms |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [FormsAuthentication. RequireSSL tulajdonság](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **Lépéseket** | A RequireSSL tulajdonság értéke egy ASP.NET-alkalmazás konfigurációs fájljában van beállítva a konfigurációs elem requireSSL attribútumának használatával. Megadhatja a ASP.NET alkalmazás Web. config fájljában, hogy az requireSSL attribútum beállításával az SSL (SSL) szükséges-e az űrlapalapú hitelesítési cookie-nak a kiszolgálóra való visszaküldéséhez.|
+| **Lépéseket** | A RequireSSL tulajdonság értéke egy ASP.NET-alkalmazás konfigurációs fájljában van beállítva a konfigurációs elem requireSSL attribútumának használatával. Megadhatja a ASP.NET alkalmazás Web. config fájljában, hogy Transport Layer Security (TLS), korábbi nevén SSL (SSL) van-e szükség az űrlapalapú hitelesítő cookie-nak a kiszolgálóra történő visszaküldéséhez a requireSSL attribútum beállításával.|
 
 ### <a name="example"></a>Példa 
 A következő mintakód a web. config fájlban állítja be a requireSSL attribútumot.

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142411"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>A IoT Edge modul technikai eszközeinek előkészítése
@@ -61,7 +61,7 @@ IoT Edge modul méretei (CPU/RAM/Storage/GPU/etc) a megcélozt IoT Edge eszköz�
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
   ```
 
-### <a name="configuration"></a>Konfiguráció
+### <a name="configuration"></a>Configuration
 
 Emellett az alapértelmezett konfigurációs beállításokat is tartalmazza, amelyekkel a központi telepítés IoT Edge eszközön a lehető legrövidebb továbbítással végezhető el. A tároló a IoT Edge modul SDK-val is rendelkezhet, amely lehetővé teszi a kommunikációt a edgeHub és a IoT Hubokkal.
 
@@ -104,8 +104,8 @@ A IoT modul SDK-t `PublisherId.OfferId.SkuId` használó moduloknak telemetria c
 
  A IoT modul SDK-k segítségével a következő módszerekkel állíthatja `ProductInfo` be az azonosítót:
 
-- [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
-- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [C#\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
+- [C#](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 

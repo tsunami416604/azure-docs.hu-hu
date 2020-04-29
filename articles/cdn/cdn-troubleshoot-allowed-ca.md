@@ -1,6 +1,6 @@
 ---
-title: Engedélyezett hitelesítésszolgáltató egyéni HTTPS engedélyezéséhez az Azure CDN-en
-description: Ha saját tanúsítványával engedélyezi a HTTPS protokollt egy egyéni tartományban, a létrehozásához egy engedélyezett hitelesítésszolgáltatót (CA) kell használnia.
+title: Engedélyezett HITELESÍTÉSSZOLGÁLTATÓ az egyéni HTTPS engedélyezéséhez Azure CDN
+description: Ha saját tanúsítványt használ a HTTPS engedélyezéséhez egy egyéni tartományon, a létrehozásához egy engedélyezett hitelesítésszolgáltatót (CA) kell használnia.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -16,18 +16,18 @@ ms.date: 10/18/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: faf51dbb1f1c3c0346b1ae9104494538efcc2ee7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259970"
 ---
-# <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Az egyéni HTTPS engedélyezése engedélyezett hitelesítésszolgáltatók az Azure CDN-en
+# <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Engedélyezett hitelesítésszolgáltatók az egyéni HTTPS engedélyezéséhez Azure CDN
 
-Meg kell felelnie a speciális tanúsítványkövetelményeknek, ha engedélyezi a HTTPS-szolgáltatást az Azure Content Delivery Network (CDN) egyéni [tartománysaját tanúsítványának használatával.](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) Az **Azure CDN Standard a Microsoft-profilhoz** az alábbi listában szereplő jóváhagyott hitelesítésszolgáltatók (CA) egyikének tanúsítványát igényli. Ha egy nem jóváhagyott hitelesítésszolgáltató tól származó tanúsítványt használ, vagy önaláírt tanúsítványt használ, a rendszer elutasítja a kérelmet. **A Verizon Azure CDN Standard és** **a Verizon-profilokból származó Azure CDN Premium** bármely érvényes tanúsítványt elfogad.
+Ha a HTTPS szolgáltatást egy Azure Content Delivery Network (CDN) egyéni tartományhoz tartozó [saját tanúsítvánnyal engedélyezi](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) , akkor meg kell felelnie bizonyos tanúsítványokra vonatkozó követelményeknek. A **Microsoft profil Azure CDN szabványának** az alábbi listán szereplő jóváhagyott HITELESÍTÉSSZOLGÁLTATÓK (CA) tanúsítványát kell megadnia. Ha egy tanúsítvány nem jóváhagyott HITELESÍTÉSSZOLGÁLTATÓTÓL származik, vagy ha önaláírt tanúsítványt használ, a rendszer elutasítja a kérelmet. **Azure CDN a** Verizon és **a prémium szintű Azure CDN a Verizon** -profilokból származó, érvényes tanúsítványokat bármely érvényes hitelesítésszolgáltatótól elfogadják.
 
 > [!NOTE]
-> A lehetőség, hogy a saját tanúsítványt, hogy az egyéni tartomány HTTPS-funkció *nem* érhető el az **Azure CDN Standard Akamai profilok.** 
+> A saját tanúsítvány használata az egyéni tartomány HTTPS-funkciójának engedélyezéséhez *nem* érhető el **Azure CDN standard Akamai-** profilokból. 
 >
 
 [!INCLUDE [cdn-front-door-allowed-ca](../../includes/cdn-front-door-allowed-ca.md)]

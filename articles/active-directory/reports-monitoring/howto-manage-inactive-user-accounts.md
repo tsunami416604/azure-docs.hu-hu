@@ -1,6 +1,6 @@
 ---
-title: Inaktív felhasználói fiókok kezelése az Azure AD-ben | Microsoft dokumentumok
-description: További információ az elavulttá vált Azure AD-ben található felhasználói fiókok észleléséről és kezeléséről
+title: Inaktív felhasználói fiókok kezelése az Azure AD-ben | Microsoft Docs
+description: További információ az Azure AD-beli felhasználói fiókok észleléséről és kezeléséről, amely elavulttá vált
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,34 +18,34 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886041"
 ---
-# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Útmutató: Inaktív felhasználói fiókok kezelése az Azure AD-ben
+# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Útmutató: inaktív felhasználói fiókok kezelése az Azure AD-ben
 
-Nagy környezetekben a felhasználói fiókok nem mindig törlődnek, amikor az alkalmazottak elhagyják a szervezetet. Informatikai rendszergazdaként fel szeretné deríteni és kezelni ezeket az elavult felhasználói fiókokat, mert azok biztonsági kockázatot jelentenek.
+Nagyméretű környezetekben a felhasználói fiókok nem törlődnek mindig, amikor az alkalmazottak elhagynak egy szervezetet. Rendszergazdaként szeretné felderíteni és kezelni ezeket az elavult felhasználói fiókokat, mivel azok biztonsági kockázatot jelentenek.
 
-Ez a cikk ismerteti az azure-beli AD elavult felhasználói fiókok kezelésére. 
+Ez a cikk az elavult felhasználói fiókok Azure AD-ben való kezelésére szolgáló metódust ismerteti. 
 
 ## <a name="what-are-inactive-user-accounts"></a>Mik azok az inaktív felhasználói fiókok?
 
-Az inaktív fiókok olyan felhasználói fiókok, amelyekre a szervezet tagjai már nem igényelnek az erőforrásokhoz való hozzáféréshez. Az inaktív fiókok egyik kulcsazonosítója, hogy *egy ideje* nem használták őket a környezetébe való bejelentkezéshez. Mivel az inaktív fiókok a bejelentkezési tevékenységhez vannak kötve, használhatja az utolsó bejelentkezés időbélyegét, amely sikeres volt észlelésükhöz. 
+Az inaktív fiókok olyan felhasználói fiókok, amelyek nem szükségesek többé a szervezet tagjai számára, hogy hozzáférjenek az erőforrásaihoz. Az inaktív fiókok egyik kulcsa, hogy *egy ideig* nem használták fel a bejelentkezést a környezetbe. Mivel az inaktív fiókok a bejelentkezési tevékenységhez vannak kötve, a legutóbbi bejelentkezés időbélyegét használhatja, amely sikeresen észlelte őket. 
 
-A kihívás ennek a módszernek az, hogy meghatározza, mit *jelent egy ideig* abban az esetben, a környezet. Előfordulhat például, hogy a felhasználók egy ideig nem jelentkeznek be egy *környezetbe,* mert szabadságon vannak. Az inaktív felhasználói fiókok különbözetének meghatározásakor figyelembe kell vennie az összes jogos okot, amiért nem jelentkezik be a környezetbe. Számos szervezetben az inaktív felhasználói fiókok különbözete 90 és 180 nap között van. 
+Ennek a módszernek a feladata annak meghatározása, hogy a környezet esetében milyen *egy ideig* . Előfordulhat például, hogy a felhasználók *egy ideig*nem jelentkezhetnek be egy környezetbe, mert a vakáción vannak. Az inaktív felhasználói fiókok különbözetének meghatározásakor a környezetbe való bejelentkezéshez szükséges összes jogos okot figyelembe kell vennie. Számos szervezetben az inaktív felhasználói fiókok különbözete 90 és 180 nap közé esik. 
 
-Az utolsó sikeres bejelentkezés potenciális betekintést nyújt a felhasználó továbbra is szükség van az erőforrásokhoz való hozzáférés.  Segíthet annak meghatározásában, hogy szükség van-e még csoporttagságra vagy alkalmazás-hozzáférésre, vagy eltávolítható-e. A külső felhasználó kezelése, megértheti, ha egy külső felhasználó még mindig aktív a bérlőn belül, vagy meg kell tisztítani. 
+A legutóbbi sikeres bejelentkezés lehetővé teszi, hogy a felhasználók továbbra is hozzáférjenek az erőforrásokhoz.  Segítséget nyújt annak meghatározásában, hogy a csoporttagság vagy az alkalmazás-hozzáférés továbbra is szükséges-e, vagy el lehet-e távolítani. A külső felhasználók felügyeletéhez megtudhatja, hogy egy külső felhasználó még aktív-e a bérlőn belül, vagy törölni kell. 
 
     
-## <a name="how-to-detect-inactive-user-accounts"></a>Az inaktív felhasználói fiókok észlelése
+## <a name="how-to-detect-inactive-user-accounts"></a>Inaktív felhasználói fiókok észlelése
 
-Az inaktív fiókokat a **Microsoft Graph** API **signInActivity** erőforrástípusa által elérhetővé tett **lastSignInDateTime** tulajdonság kiértékelésével észlelheti. Ezzel a tulajdonsággal a következő esetekben valósíthat meg megoldást:
+Az inaktív fiókok észleléséhez ki kell értékelni a **Microsoft Graph** API **signInActivity** -erőforrástípus által megjelenített **lastSignInDateTime** tulajdonságot. Ennek a tulajdonságnak a használatával a következő helyzetekben hozhat létre megoldást:
 
-- **Felhasználók név szerint:** Ebben az esetben egy adott felhasználót név szerint keres, amely lehetővé teszi a lastSignInDate kiértékelését:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Felhasználók név szerint**: ebben az esetben név alapján keres egy adott felhasználót, amely lehetővé teszi a lastSignInDate kiértékelését:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Felhasználók dátum szerint**: Ebben az esetben a megadott dátum előtt kéri a lastSignInDateTime lastSignInDateTime-mal rendelkező felhasználók listáját:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Felhasználók dátum szerint**: ebben a forgatókönyvben a megadott dátum előtt egy lastSignInDateTime rendelkező felhasználók listáját kéri le:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -54,42 +54,42 @@ Az inaktív fiókokat a **Microsoft Graph** API **signInActivity** erőforrást�
 
 ## <a name="what-you-need-to-know"></a>Amit még tudnia kell
 
-Ez a szakasz felsorolja, mit kell tudni a lastSignInDateTime tulajdonságról.
+Ez a szakasz felsorolja, hogy mit kell tudnia a lastSignInDateTime tulajdonságról.
 
-### <a name="how-can-i-access-this-property"></a>Hogyan érhetem el ezt a tulajdonságot?
+### <a name="how-can-i-access-this-property"></a>Hogyan lehet hozzáférni ehhez a tulajdonsághoz?
 
-A **lastSignInDateTime** tulajdonságot a Microsoft Graph REST [API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signInActivity erőforrástípusa](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) teszi elérhetővé.   
+A **lastSignInDateTime** tulajdonságot a [Microsoft Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signInActivity erőforrástípus](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) teszi elérhetővé.   
 
-### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>A LastSignInDateTime tulajdonság elérhető a Get-AzureAdUser parancsmagon keresztül?
+### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Elérhető a lastSignInDateTime tulajdonság a Get-AzureAdUser parancsmagon keresztül?
 
 Nem.
 
-### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Az Azure AD melyik kiadására van szükségem a tulajdonság eléréséhez?
+### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Milyen Azure AD-kiadásra van szükségem a tulajdonság eléréséhez?
 
 Ezt a tulajdonságot az Azure AD összes kiadásában elérheti.
 
-### <a name="what-permission-do-i-need-to-read-the-property"></a>Milyen engedélyre van szükségem a tulajdonság elolvasásához?
+### <a name="what-permission-do-i-need-to-read-the-property"></a>Milyen engedélyekre van szükségem a tulajdonság beolvasásához?
 
-A tulajdonság olvasásához a következő jogokat kell megadnia: 
+A tulajdonság olvasásához a következő jogosultságokat kell megadnia: 
 
-- AuditLogs.Read.All
-- Szervezet.Read.All  
+- AuditLogs. Read. All
+- Szervezet. Read. All  
 
 
 ### <a name="when-does-azure-ad-update-the-property"></a>Mikor frissíti az Azure AD a tulajdonságot?
 
-Minden interaktív bejelentkezés, amely sikeres volt, az alapul szolgáló adattár frissítését eredményezi. A sikeres bejelentkezések általában 10 percen belül megjelennek a kapcsolódó bejelentkezési jelentésben.
+Minden olyan interaktív bejelentkezés sikeres volt, amely a mögöttes adattár frissítését eredményezte. A sikeres bejelentkezések általában 10 percen belül megjelennek a kapcsolódó bejelentkezési jelentésben.
  
 
-### <a name="what-does-a-blank-property-value-mean"></a>Mit jelent az üres tulajdonságérték?
+### <a name="what-does-a-blank-property-value-mean"></a>Mit jelent az üres tulajdonság értéke?
 
-A lastSignInDateTime időbélyeg létrehozásához sikeres bejelentkezésre van szükség. Mivel a lastSignInDateTime tulajdonság egy új funkció, a lastSignInDateTime tulajdonság értéke üres lehet, ha:
+LastSignInDateTime timestamp létrehozásához sikeres bejelentkezés szükséges. Mivel a lastSignInDateTime tulajdonság egy új szolgáltatás, a lastSignInDateTime tulajdonság értéke üres is lehet, ha:
 
-- A felhasználó utolsó sikeres bejelentkezése a funkció megjelenése előtt történt (2019. december 1.).
-- Az érintett felhasználói fiók soha nem volt használva a sikeres bejelentkezéshez.
+- A felhasználó utolsó sikeres bejelentkezését a szolgáltatás kiadása előtt végezték el (2019. december 1-től).
+- Az érintett felhasználói fiókot soha nem használták sikeres bejelentkezéshez.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
-* [Naplózási API-hivatkozás](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Bejelentkezési tevékenység jelentés API-jának hivatkozása](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Naplózási API-referenciák](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [A bejelentkezési tevékenység jelentésének API-referenciája](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

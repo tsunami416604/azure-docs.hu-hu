@@ -1,6 +1,6 @@
 ---
-title: A Synapse SQL gyakorlati tanácsok
-description: Javaslatok és gyakorlati tanácsok, amelyeket a Synapse SQL fejlesztése korként ismernie kell.
+title: Fejlesztési ajánlott eljárások a szinapszis SQL-hez
+description: Javaslatok és ajánlott eljárások, amelyeket érdemes tudni a szinapszis SQL-hez való fejlesztéshez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086351"
 ---
-# <a name="development-best-practices-for-synapse-sql"></a>A Synapse SQL gyakorlati tanácsok
-Ez a cikk az adatraktár-megoldás fejlesztése során útmutatást és gyakorlati tanácsokat ismerteti. 
+# <a name="development-best-practices-for-synapse-sql"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-hez
+Ez a cikk útmutatást és ajánlott eljárásokat ismertet az adattárház-megoldás fejlesztése során. 
 
-## <a name="sql-pool-development-best-practices"></a>Az SQL-készlet fejlesztésének gyakorlati tanácsai
+## <a name="sql-pool-development-best-practices"></a>SQL Pool-fejlesztés – ajánlott eljárások
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>Költségek csökkentése felfüggesztés és méretezés által
 
@@ -28,51 +28,51 @@ A költségek felfüggesztéssel és skálázással való csökkentéséről tov
 
 ### <a name="maintain-statistics"></a>Statisztikák karbantartása
 
-Győződjön meg róla, hogy naponta vagy minden betöltés után frissíti a statisztikáit.  Mindig érdemes figyelembe venni, hogyan viszonyul egymáshoz a teljesítmény és a statisztikák létrehozásának és frissítésének költségei. Ha úgy találja, hogy túl sokáig tart az összes statisztika karbantartása, legyen szelektívebb arról, hogy mely oszlopok rendelkeznek statisztikákkal, vagy mely oszlopokat kell gyakran frissíteni.  
+Győződjön meg róla, hogy naponta vagy minden egyes terhelés után frissíti a statisztikát.  Mindig érdemes figyelembe venni, hogyan viszonyul egymáshoz a teljesítmény és a statisztikák létrehozásának és frissítésének költségei. Ha azt tapasztalja, hogy túl sokáig tart az összes statisztika fenntartása érdekében, érdemes lehet szelektívebb, hogy mely oszlopokban vannak statisztikai adatok, vagy mely oszlopoknak gyakori frissítésre van szükségük.  
 
-Előfordulhat például, hogy frissíteni szeretné a dátumoszlopokat, ahol naponta új értékekadhatók hozzá. 
+Előfordulhat például, hogy frissíteni kívánja a dátum oszlopokat, ahol napi szinten új értékek adhatók hozzá. 
 
 > [!NOTE]
-> A legnagyobb hasznot úgy nyerheti meg, ha statisztikával rendelkezik az illesztésekben részt vevő oszlopokról, a WHERE záradékban használt oszlopokról és a GROUP BY-ben található oszlopokról.
+> A legtöbb előnyt az összekapcsolások, a WHERE záradékban használt oszlopok, valamint a GROUP BY által megtalált oszlopok statisztikájának használatával szerezheti be.
 
-Lásd [még: Táblastatisztika kezelése](develop-tables-statistics.md), [STATISZTIKA LÉTREHOZÁSA](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), STATISZTIKA [FRISSÍTÉSE](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Lásd még: [táblák statisztikáinak kezelése](develop-tables-statistics.md), [statisztikák létrehozása](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [statisztikák frissítése](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="hash-distribute-large-tables"></a>Nagy táblák kivonatos elosztása
 
-Alapértelmezés szerint a táblák ciklikus időszeleteléssel vannak elosztva.  Ez megkönnyíti a felhasználók számára a táblák létrehozását anélkül, hogy el kellene dönteniük, hogyan kell elosztani a táblákat.  A ciklikus multiplexelési táblázatok bizonyos munkaterhelések esetén megfelelően teljesíthetnek. De a legtöbb esetben a terjesztési oszlop kiválasztása sokkal jobban fog teljesíteni.  
+Alapértelmezés szerint a táblák ciklikus időszeleteléssel vannak elosztva.  Ezzel megkönnyítheti a felhasználók számára a táblázatok létrehozását anélkül, hogy el kellene dönteniük a táblák elosztásának módját.  A ciklikus időszeletelésű táblázatok bizonyos munkaterhelések esetén megfelelően elvégezhetnek. Azonban a legtöbb esetben a terjesztési oszlop kiválasztása sokkal jobb teljesítményt tesz elérhetővé.  
 
 A leggyakoribb példája annak, amikor egy oszloppal elosztott tábla sokkal jobb teljesítményt nyújt egy ciklikus időszeletelésűnél, amikor két nagy tábla egyesül.  
 
-Ha például van egy rendelési táblája, amelyet order_id oszt szét, és egy tranzakciótábla, amelyet order_id is eloszt, amikor a rendelési táblát a tranzakciók táblához order_id illeszti, ez a lekérdezés átadó lekérdezéssé válik. 
+Ha például van egy orders (megrendelések) táblája, amelyet a order_id terjeszt el, és a tranzakciós tábla, amelyet a order_id is forgalmaz, akkor a orders (megrendelések) tábla a order_id tranzakciós táblájához való csatlakoztatásakor a lekérdezés továbbítási lekérdezés lesz. 
 
-Ez azt jelenti, hogy kiküszöböljük az adatmozgatási műveleteket.  Ha kevesebb lépést kell végrehajtani, felgyorsul a lekérdezési folyamat.  A kisebb mértékű adatmozgás is gyorsabb lekérdezéseket eredményez.
+Ez azt jelenti, hogy megkerüljük az adatáthelyezési műveleteket.  Ha kevesebb lépést kell végrehajtani, felgyorsul a lekérdezési folyamat.  A kisebb mértékű adatmozgás is gyorsabb lekérdezéseket eredményez.
 
 > [!TIP]
 > Elosztott tábla betöltésekor győződjön meg arról, hogy a bejövő adatok nem az elosztási kulcs alapján vannak rendezve, mivel ez lelassítja a betöltéseket.  
 
-Az alábbi hivatkozásokban további részleteket talál arról, hogy a terjesztési oszlopok kiválasztása hogyan javíthatja a teljesítményt, valamint hogyan határozhat meg egy elosztott táblát a CREATE TABLES utasítás WITH záradékában.
+A terjesztési oszlopok kiválasztásával kapcsolatos további részletekért tekintse meg a következő hivatkozásokat, valamint azt, hogyan határozhat meg egy elosztott táblát a CREATE TABLEs utasítás WITH záradékában.
 
-Lásd [még: Tábla áttekintése](develop-tables-overview.md), [Táblaeloszlás](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [Táblaeloszlás kiválasztása](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)és [TÁBLA LÉTREHOZÁSA, AHOGY VÁLASZTÓ KÉNT.](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+Lásd még: [táblák áttekintése](develop-tables-overview.md), [táblázat terjesztése](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), a [táblázat terjesztése](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)és [CREATE TABLE kiválasztása](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="do-not-over-partition"></a>Túl sok partíció használatának kerülése
-Míg az adatok particionálása hatékony lehet az adatok partícióváltással vagy a vizsgálatok optimalizálásával a partíció megszüntetése révén történő karbantartásához, a túl sok partíció lelassulhat a lekérdezések.  Gyakran egy nagy részletességű particionálási stratégia, amely jól működik az SQL Server nem működik jól az SQL-készlet.  
+Míg az adatparticionálás hatékonyan kezelheti az adatait a partíciók váltásával vagy a vizsgálatok optimalizálásával a partíciók eltávolításával, a túl sok partíció lelassíthatja a lekérdezéseket.  Gyakran olyan nagy részletességű particionálási stratégia, amely jól működik SQL Server előfordulhat, hogy nem működik megfelelően az SQL-készleten.  
 
 > [!NOTE]
-> Gyakran egy nagy részletességű particionálási stratégia, amely jól működik az SQL Server nem működik jól az SQL-készlet.  
+> Gyakran olyan nagy részletességű particionálási stratégia, amely jól működik SQL Server előfordulhat, hogy nem működik megfelelően az SQL-készleten.  
 
-A túl sok partíció a fürtözött oszlopcentrikus indexek hatékonyságát is csökkentheti, ha az egyes partíciók kevesebb mint 1 millió sorral rendelkeznek. Az SQL-készlet 60 adatbázisba particionálja az adatokat. 
+A túl sok partíció a fürtözött oszlopcentrikus indexek hatékonyságát is csökkentheti, ha az egyes partíciók kevesebb mint 1 millió sorral rendelkeznek. Az SQL Pool a 60 adatbázisba particionálja adatait. 
 
-Így ha 100 partíciót, az eredmény 6000 partíciókat.  Mindegyik számítási feladat különböző, így érdemes kísérletezni a particionálással, és kideríteni, hogy az adott számítási feladatnál melyik megoldás a célravezető.  
+Tehát ha 100 partíciót tartalmazó táblát hoz létre, akkor az eredmény 6000 partíció lesz.  Mindegyik számítási feladat különböző, így érdemes kísérletezni a particionálással, és kideríteni, hogy az adott számítási feladatnál melyik megoldás a célravezető.  
 
-Az egyik lehetőség, hogy fontolja meg a részletesség, amely alacsonyabb, mint amit esetleg dolgozott az SQL Server.  A napi partíciók helyett például érdemes lehet heti vagy havi partíciókat használni.
+Az egyik lehetőség az, hogy egy olyan részletességet használ, amely alacsonyabb, mint amit a SQL Serverban dolgozott.  A napi partíciók helyett például érdemes lehet heti vagy havi partíciókat használni.
 
-Lásd [még: Táblaparticionálás](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Lásd még: [tábla particionálás](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="minimize-transaction-sizes"></a>Tranzakcióméretek minimalizálása
 
 Az INSERT, UPDATE és DELETE utasítások tranzakcióban futnak, és amikor meghiúsulnak, vissza kell őket állítani.  A hosszú visszaállítások előfordulásának csökkentése érdekében mindig minimalizálja a tranzakciók méretét, ahol erre lehetősége van.  Ezt úgy teheti meg, hogy részekre osztja az INSERT, UPDATE és DELETE utasításokat.  
 
-Ha például van egy INSERT, amely várhatóan 1 órát vesz igénybe, az INSERT négy részre bontható, így minden futtatást 15 percre rövidít.
+Ha például egy olyan BETÉTtel rendelkezik, amely 1 órát vesz igénybe, akkor a BESZÚRÁSt négy részre bontja, így az egyes futtatások 15 percenként lerövidítve jelennek meg.
 
 > [!TIP]
 > Használja ki a minimális naplózást igénylő speciális eseteket, például a CTAS, TRUNCATE, DROP TABLE vagy INSERT utasításokat a táblák kiürítéséhez, hogy csökkentse a visszaállítással kapcsolatos kockázatokat.  
@@ -83,7 +83,7 @@ Ahelyett például, hogy DELETE utasítással törölné egy tábla összes olya
 
 A nem particionált táblák esetén érdemes lehet CTAS utasítással kiírni a táblában megőrizni kívánt adatokat a DELETE használata helyett.  Noha egy CTAS utasítás ugyanannyi időt vesz igénybe, sokkal biztonságosabban futtatható művelet, mivel minimális tranzakciónaplózást igényel, és szükség esetén gyorsan megszakítható.
 
-Lásd [még: A tranzakciók ismertetése](develop-transactions.md), [a tranzakciók optimalizálása](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [a táblaparticionálás](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [a TÁBLA csonkítása](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [az ALTER TÁBLA](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)és a Create table as [select (CTAS) ismertetése.](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Lásd még: [tranzakciók megismerése](develop-transactions.md), [tranzakciók optimalizálása](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [táblák particionálása](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [truncate Table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)és [CREATE TABLE as Select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="use-the-smallest-possible-column-size"></a>A lehető legkisebb oszlopméret használata
 
@@ -91,82 +91,82 @@ Ha a DDL meghatározásakor az adatokat támogató legkisebb adattípust haszná
 
 Ha egy oszlop leghosszabb értéke 25 karakterből áll, akkor VARCHAR(25) típusként határozza meg az oszlopot.  Ne határozza meg az összes karakteroszlopot nagy alapértelmezett hosszúságértékkel.  NVARCHAR helyett VARCHAR típusként határozza meg az oszlopokat, amikor ez is elegendő.
 
-Lásd [még: Táblázat áttekintése](develop-tables-overview.md), [Táblázat adattípusok](develop-tables-data-types.md)és [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Lásd még: [táblák áttekintése](develop-tables-overview.md), [tábla adattípusok](develop-tables-data-types.md)és [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="optimize-clustered-columnstore-tables"></a>Fürtözött oszlopcentrikus táblák optimalizálása
 
-Fürtözött oszlopcentrikus indexek az egyik leghatékonyabb módja az adatok sql készletben tárolható.  Alapértelmezés szerint az SQL-készletben lévő táblák fürtözött ColumnStore néven jönnek létre.  
+A fürtözött oszlopcentrikus indexek az egyik leghatékonyabb módszer az SQL-készletben tárolt adattároláshoz.  Alapértelmezés szerint az SQL-készletben lévő táblák fürtözött Oszlopcentrikus jönnek létre.  
 
 Annak érdekében, hogy az oszlopcentrikus táblák a lehető legjobb teljesítménnyel fussanak, fontos a jó szegmensminőség.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  
 
-A szegmensminőség a tömörített sorcsoportokban található sorok száma alapján mérhető fel.  Tekintse meg a [gyenge oszlopcentrikus index minőség](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality) és a táblázat [indexek](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket lépésről lépésre a fürtözött oszlopcentrikus táblák szegmensminőségének észleléséhez és javításához.  
+A szegmensminőség a tömörített sorcsoportokban található sorok száma alapján mérhető fel.  Tekintse meg a [gyenge oszlopcentrikus index minőségének okait](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality) és a [Table indexeket](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ismertető cikket, amely részletes útmutatást nyújt a fürtözött oszlopcentrikus-táblák szegmensek minőségének észleléséhez és javításához.  
 
-Mivel a kiváló minőségű oszlopcentrikus szegmensek fontosak, célszerű olyan felhasználói azonosítókat használni, amelyek a közepes vagy nagy erőforrásosztályban találhatók az adatok betöltéséhez. Az alacsonyabb [adattárház egységek](resource-consumption-models.md) használata azt jelenti, hogy nagyobb erőforrásosztályt szeretne hozzárendelni a betöltő felhasználóhoz.
+Mivel a kiváló minőségű oszlopcentrikus szegmensek fontosak, érdemes a közepes vagy nagy erőforrás-osztályba tartozó felhasználói azonosítókat használni az betöltéshez. Az alacsonyabb [adattárház-egységek](resource-consumption-models.md) használata azt jelenti, hogy nagyobb erőforrás-osztályt szeretne hozzárendelni a betöltési felhasználóhoz.
 
-Mivel az oszlopcentrikus táblák általában nem adnak le adatokat egy tömörített oszlopcentrikus szegmensbe, amíg táblaként több mint 1 millió sor nem történik, és minden SQL-készlettábla 60 táblára van felosztva, az oszlopcentrikus táblák csak akkor részesülnek a lekérdezés számára, ha a tábla több mint 60 millió sort tartalmaz.  
+Mivel a oszlopcentrikus-táblák általában nem küldenek le az adatlemezeket egy tömörített oszlopcentrikus, amíg a táblázat több mint 1 000 000 sort tartalmaz, és minden SQL Pool-tábla 60-táblázatba van particionálva, a oszlopcentrikus-táblák nem kapnak lekérdezést, kivéve, ha a tábla több mint 60 000 000 sorral rendelkezik.  
 
 > [!TIP]
-> A 60 millió nál kevesebb sort betartó táblák esetében a columstore index nem feltétlenül az optimális megoldás.  
+> Az 60 000 000-nál kevesebb sorral rendelkező táblák esetében előfordulhat, hogy a columstore index nem az optimális megoldás.  
 
-Ha particionálja az adatait, akkor azt is érdemes figyelembe venni, hogy minden partíciónak 1 millió sorral kell rendelkeznie a fürtözött oszlopcentrikus indexek előnyeinek kihasználása érdekében.  Ha egy tábla 100 partícióval rendelkezik, akkor legalább 6 milliárd sorral kell rendelkeznie ahhoz, hogy egy fürtözött oszlopok tárolója részesüljön (60 *disztribúció 100 partíció* 1 millió sor).  
+Ha particionálja az adatait, akkor azt is érdemes figyelembe venni, hogy minden partíciónak 1 millió sorral kell rendelkeznie a fürtözött oszlopcentrikus indexek előnyeinek kihasználása érdekében.  Ha egy tábla 100 partíciót tartalmaz, akkor legalább 6 000 000 000 sort kell használnia a fürtözött oszlopok tárolójának kihasználása érdekében (60 distributers *100 partitions* 1 000 000 sor).  
 
-Ha a tábla nem rendelkezik 6 milliárd sorral, vagy csökkentse a partíciók számát, vagy fontolja meg egy halommemória-tábla használata helyett.  Érdemes lehet kísérletezni, hogy jobb teljesítményt lehet-e szerezni egy halommemória-tábla másodlagos indexek helyett egy oszlopcentrikus tábla használatával.
+Ha a táblához nem tartozik 6 000 000 000 sor, csökkentse a partíciók számát, vagy használjon egy halom táblát.  Azt is érdemes lehet kísérletezni, hogy a jobb teljesítmény megszerezhető-e egy oszlopcentrikus tábla helyett a másodlagos indexekkel rendelkező heap tábla használatával.
 
 Oszlopcentrikus tábla lekérdezésekor a lekérdezések gyorsabban futnak, ha csak a szükséges oszlopokat választja ki.  
 
-Lásd [még: Táblaindexek](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [Oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [Oszlopcentrikus indexek újraépítése](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality).
+Lásd még: [Table indexek](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [oszlopcentrikus indexek újjáépítése](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality).
 
-## <a name="sql-on-demand-development-best-practices"></a>Az SQL igény szerinti fejlesztéssel kapcsolatos gyakorlati tanácsai
+## <a name="sql-on-demand-development-best-practices"></a>Igény szerinti SQL-fejlesztés – ajánlott eljárások
 
 ### <a name="general-considerations"></a>Általános megfontolások
 
-SQL igény szerinti lehetővé teszi, hogy az Azure storage-fiókok ban fájlok lekérdezése. Nem rendelkezik helyi tárolási vagy betöltési képességekkel, ami azt jelenti, hogy a lekérdezési célokat tartalmazó összes fájl az SQL igény szerinti külső fájlja. Ezért a fájlok tárolásból való olvasásával kapcsolatos minden hatással lehet a lekérdezés teljesítményére.
+Az SQL on-demand lehetővé teszi fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárterülettel vagy betöltési képességekkel, ami azt jelenti, hogy a lekérdezés által célként megadott összes fájl kívül van az SQL-on igény szerint. Ezért a fájlok tárolóból való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
 
-### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Az Azure Storage-fiók és az SQL igény szerinti közös áthelyezése
+### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Az Azure Storage-fiók és az SQL igény szerinti elhelyezése
 
-A késés minimalizálása érdekében helyezze el az Azure-tárfiókot és az SQL igény szerinti végpontját. A munkaterület létrehozása során kiépített tárfiókok és végpontok ugyanabban a régióban találhatók.
+A késés csökkentése érdekében helyezze el az Azure Storage-fiókját és az SQL igény szerinti végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
 
-Az optimális teljesítmény érdekében, ha az SQL igény szerinti más tárfiókokhoz is hozzáfér, győződjön meg arról, hogy ugyanabban a régióban vannak. Ellenkező esetben az adatok hálózati átvitele a távoli régióból a végpont régiójába nagyobb lesz.
+Az optimális teljesítmény érdekében, ha más Storage-fiókokhoz is hozzáfér az SQL igény szerint, ügyeljen arra, hogy ugyanabban a régióban legyenek. Ellenkező esetben a távoli régióról a végpont régiójára irányuló adatátvitel nagyobb késéssel jár.
 
-### <a name="azure-storage-throttling"></a>Az Azure Storage szabályozása
+### <a name="azure-storage-throttling"></a>Azure Storage-szabályozás
 
-Több alkalmazás és szolgáltatás is hozzáférhet a tárfiókhoz. Ha az alkalmazások, szolgáltatások és az SQL igény szerinti munkaterhelés e számítási feladatok által generált kombinált IOPS vagy átviteli kapacitás meghaladja a tárfiók korlátait, a storage-szabályozás történik. Tárolási szabályozás esetén jelentős negatív hatással van a lekérdezés teljesítményére.
+Több alkalmazás és szolgáltatás is hozzáférhet a Storage-fiókhoz. Ha az alkalmazások, szolgáltatások és az SQL igény szerinti munkaterhelése által generált kombinált IOPS vagy átviteli sebesség meghaladja a Storage-fiók korlátait, a tárterület-szabályozás történik. Tárolási sávszélesség esetén jelentős negatív hatással van a lekérdezés teljesítményére.
 
-A szabályozás észlelése után az SQL igény szerinti rendszer rendelkezik a forgatókönyv beépített kezelésével. SQL igény szerinti lesz, hogy a kérelmeket a tárolás lassabb ütemben, amíg a szabályozás feloldása. 
+A szabályozás észlelése után az SQL on-demand beépített kezeléssel rendelkezik ebben a forgatókönyvben. Az SQL igény szerint lassabban, a szabályozás feloldása után kéri a tárterületet. 
 
-Azonban az optimális lekérdezés-végrehajtás, azt javasoljuk, hogy ne stresszelje a tárfiókot más számítási feladatok lekérdezés végrehajtása során.
+Az optimális lekérdezés-végrehajtás érdekében azonban javasoljuk, hogy a lekérdezés végrehajtása során ne hangsúlyozza a Storage-fiókot más számítási feladatokkal.
 
-### <a name="prepare-files-for-querying"></a>Fájlok előkészítése lekérdezésre
+### <a name="prepare-files-for-querying"></a>Fájlok előkészítése lekérdezéshez
 
-Ha lehetséges, előkészítheti a fájlokat a jobb teljesítmény érdekében:
+Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
-- Konvertálja csv parketta - Parketta oszlopos formátumban. Mivel tömörített, kisebb fájlmérettel rendelkezik, mint az azonos adatokkal rendelkező CSV-fájlok, és az SQL igény szerinti olvasásához kevesebb időre és tárolási kérelemre lesz szüksége.
-- Ha egy lekérdezés egyetlen nagy fájlt céloz meg, előnyös lesz, ha több kisebb fájlra osztja fel.
-- Próbálja meg a CSV fájlméretét 10 GB alatt tartani.
-- Azt szeretné, hogy azonos méretű fájlokat egy OPENROWSET elérési út vagy egy külső tábla LOCATION.
-- Partisítsa az adatokat a partíciók különböző mappákba vagy fájlnevekbe való tárolásával - ellenőrizze [a fájlnév és a filepath függvények használatát adott partíciók célzásához.](#use-fileinfo-and-filepath-functions-to-target-specific-partitions)
+- CSV konvertálása a parkettára – a parketta oszlopos formátumú. Mivel tömörítve van, kisebb fájlméretet tartalmaz, mint a CSV-fájlok, és az igénybe vett SQL-kérések kevesebb időt és tárterületet igényelnek az olvasáshoz.
+- Ha egy lekérdezés egyetlen nagyméretű fájlt céloz meg, akkor a több kisebb fájlra való felosztása is hasznos lesz.
+- Próbálja megtartani a CSV-fájl méretét 10GB-ban.
+- Azt javasolt, hogy egyenlő méretű fájlokat lehessen használni egyetlen OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
+- Particionálja az adatait úgy, hogy a partíciókat különböző mappákba vagy fájlnevekre tárolja, [majd a fájlnév és a filepath függvények használatával adja meg az adott partíciókat](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Adott partíciók célzásához használjon fileinfo és filepath függvényeket
+### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Fileinfo és filepath függvények használata adott partíciók célzásához
 
-Az adatok gyakran partíciókba vannak rendezve. Utasíthatja az SQL-t, hogy bizonyos mappákat és fájlokat kérdezzen le. Ez csökkenti a lekérdezés olvasásához és feldolgozásához szükséges fájlok számát és adatmennyiségét. 
+Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez csökkenti a fájlok és az adatmennyiség mennyiségét, amelyet a lekérdezésnek olvasni és feldolgoznia kell. 
 
-Következésképpen jobb teljesítményt fog elérni. További információért ellenőrizze [a fájlnév-](develop-storage-files-overview.md#filename-function) és [fájlelérési funkciókat,](develop-storage-files-overview.md#filepath-function) valamint példákat arra vonatkozóan, hogyan [lehet lekérdezni bizonyos fájlokat.](query-specific-files.md)
+Így jobb teljesítményt érhet el. További információért olvassa el a [filename](develop-storage-files-overview.md#filename-function) és a [filepath](develop-storage-files-overview.md#filepath-function) függvények és példák című témakört a [megadott fájlok lekérdezéséhez](query-specific-files.md).
 
-Ha a tárolóban lévő adatok nincsenek particionálva, fontolja meg a particionálást, hogy ezeket a függvényeket a fájlokat célzó lekérdezések optimalizálásához használhassa.
+Ha a tárolóban lévő adatok particionálása nem történik meg, érdemes particionálni, hogy ezeket a függvényeket a fájlokra irányuló lekérdezések optimalizálására is használhatja.
 
-[Particionált Spark-táblák lekérdezésekor](develop-storage-files-spark-tables.md) az SQL igény szerint, a lekérdezés automatikusan csak a szükséges fájlokat célozza meg.
+Ha a [particionált Spark-táblákat](develop-storage-files-spark-tables.md) SQL-igény alapján kérdezi le, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 
-### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezési teljesítmény növeléséhez és az illesztéshez
+### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
-A [CETAS](develop-tables-cetas.md) az SQL igény szerinti egyik legfontosabb szolgáltatása. A CETAS egy párhuzamos művelet, amely külső táblametaadatokat hoz létre, és a SELECT lekérdezés eredményét a tárfiókban lévő fájlok készletébe exportálja.
+A [CETAS](develop-tables-cetas.md) az SQL igény szerint elérhető legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezés eredményét a Storage-fiókban lévő fájlok egy halmazára.
 
-A CETAS segítségével a lekérdezések gyakran használt részeinek, például az illesztett referenciatábláknak egy új fájlkészletben tárolhatók. Később csatlakozhat ehhez az egyetlen külső táblához ahelyett, hogy több lekérdezésben megismételné a gyakori illesztéseket. 
+A CETAS-t használhatja a lekérdezések gyakran használt részeinek tárolására, például az összekapcsolt hivatkozási táblákat egy új fájlra. Később is csatlakozhat ehhez az egyetlen külső táblához, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben. 
 
-Mivel a CETAS parattfájlokat hoz létre, a statisztika automatikusan létrejön, amikor az első lekérdezés ezt a külső táblát célozza meg, és jobb teljesítményt fog nyerni.
+Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan létrejönnek, amikor az első lekérdezés ezt a külső táblát célozza meg, és jobb teljesítményt fog nyerni.
 
 ### <a name="next-steps"></a>További lépések
 
-Ha a cikkben nem szereplő információkra van szüksége, a lap bal oldalán található "Docs keresése" segítségével keressen az összes SQL-készletdokumentumban.  Az [SQL pool fórum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) egy olyan hely, ahol kérdéseket tehet fel más felhasználóknak és az SQL pool termékcsoportnak.  
+Ha a jelen cikkben nem szereplő információkra van szüksége, használja a lap bal oldalán található "dokumentumok keresése" kifejezést az SQL-készlet összes dokumentumának kereséséhez.  Az [SQL-készlet fórumának](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) célja, hogy kérdéseket tegyen fel más felhasználók és az SQL Pool termékcsoport számára.  
 
-Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  Ha inkább kérdéseket szeretne feltenni a Veremtúlcsordulással kapcsolatban, akkor van egy [Azure SQL pool stack overflow fórumunk](https://stackoverflow.com/questions/tagged/azure-sqldw)is.
+Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  Ha szeretne kérdéseket feltenni a Stack Overflowra, egy [Azure SQL-készlettel](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezünk stack overflow fórumban.
  

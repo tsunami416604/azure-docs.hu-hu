@@ -1,6 +1,6 @@
 ---
-title: Bevezetési gépek az Azure Automation állapotkonfigurációja általi kezeléshez
-description: Gépek beállítása felügyeleti célokra az Azure Automation állapotkonfigurációjával
+title: Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez
+description: Gépek beállítása a Azure Automation állapot-konfigurációval való felügyelethez
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,115 +10,115 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
 ms.openlocfilehash: d4e008a0bd43f10b01d78a1c388f1ca6fee983ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457739"
 ---
-# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek az Azure Automation állapotkonfigurációja általi kezeléshez
+# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez
 
-## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Miért érdemes gépeket kezelni az Azure Automation állapotkonfigurációval?
+## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Miért érdemes a gépeket Azure Automation állapot-konfigurációval felügyelni?
 
-Az Azure Automation State Configuration egy konfigurációkezelő szolgáltatás a kívánt állapotkonfigurációs (DSC) csomópontokhoz bármely felhőbeli vagy helyszíni adatközpontban. Az Azure Portalon érhető el az **Állapotkonfiguráció (DSC)** **konfigurációs kezelés**csoportban. 
+Azure Automation állapot-konfiguráció a kívánt állapot-konfigurációs (DSC) csomópontok egyike a felhőben vagy a helyszíni adatközpontban. A Azure Portal az **állapot konfigurálása (DSC)** lehetőség kiválasztásával érhető el a **konfiguráció**felügyelete alatt. 
 
-Ez a szolgáltatás lehetővé teszi a több ezer gép közötti méretezhetőséget gyorsan és egyszerűen egy központi, biztonságos helyről. Könnyedén bedeszkázhatja a gépeket, deklaratív konfigurációkat rendelhet hozzájuk, és megtekintheti azokat a jelentéseket, amelyek megmutatják, hogy az egyes gépek megfelelnek-e a megadott állapotnak.
+Ez a szolgáltatás lehetővé teszi, hogy a központi és biztonságos helyről gyorsan és egyszerűen lehessen méretezni a több ezer gépen. Könnyedén beépítheti a gépeket, hozzárendelheti a deklaratív konfigurációkat, és megtekintheti azokat a jelentéseket, amelyek az egyes gépek megfelelőségét a megadott kívánt állapotnak megfelelően mutatják.
 
-Az Azure Automation állapotkonfigurációs szolgáltatás a DSC, amit az Azure Automation runbookok a PowerShell-parancsfájlok. Más szóval, ugyanúgy, ahogy az Azure Automation segít a PowerShell-parancsfájlok kezelésében, a DSC-konfigurációk kezelését is segíti. Ha többet szeretne megtudni az Azure Automation állapotkonfiguráció használatának előnyeiről, olvassa el az [Azure Automation állapotkonfiguráció – áttekintés című témakört.](automation-dsc-overview.md)
+A Azure Automation állapot-konfigurációs szolgáltatás azt a DSC-t adja meg, amit Azure Automation runbookok a PowerShell-parancsfájlok futtatásához. Más szóval ugyanúgy, ahogy a Azure Automation segíti a PowerShell-parancsfájlok kezelését, a DSC-konfigurációk kezelését is segíti. Ha többet szeretne megtudni a Azure Automation állapot konfigurációjának előnyeiről, tekintse meg [Azure Automation állapot-konfiguráció áttekintése](automation-dsc-overview.md)című témakört.
 
-Az Azure Automation állapotkonfigurációja számos gép kezelésére használható:
+Azure Automation állapot-konfiguráció számos gép felügyeletére használható:
 
 - Azure virtuális gépek
-- Azure virtuális gépek (klasszikus)
-- Fizikai/virtuális Windows-gépek a helyszínen vagy az Azure-tól eltérő felhőben (beleértve az AWS EC2-példányokat is)
-- Fizikai/virtuális Linux-gépek a helyszínen, az Azure-ban vagy az Azure-tól eltérő felhőben
+- Azure-beli virtuális gépek (klasszikus)
+- Fizikai/virtuális Windowsos gépek a helyszínen vagy az Azure-tól eltérő felhőben (beleértve az AWS EC2-példányokat)
+- Fizikai/virtuális Linux rendszerű számítógépek a helyszínen, az Azure-ban vagy az Azure-tól eltérő felhőben
 
-Ha nem áll készen a gépkonfiguráció kontrájának kezelésére a felhőből, használhatja az Azure Automation State Configuration csak jelentésvégpontként. Ez a funkció lehetővé teszi, hogy a DSC-n keresztül állítsa be (leküldéses) konfigurációkat, és tekintse meg a jelentéskészítési részleteket az Azure Automationben.
+Ha nem áll készen a számítógép-konfiguráció felhőből való kezelésére, akkor a Azure Automation állapot konfigurációját csak jelentési végpontként használhatja. Ezzel a funkcióval a DSC-n keresztül állíthatja be (leküldéses) konfigurációkat, és megtekintheti a jelentéskészítés részleteit Azure Automationban.
 
 > [!NOTE]
-> Az Azure-beli virtuális gépek kezelése az Azure Automation állapotkonfigurációval díjmentesen biztosított, ha a telepített Azure VM kívánt állapotkonfigurációs bővítmény verziója nagyobb, mint 2,70. További információ: [**Automation pricing page**](https://azure.microsoft.com/pricing/details/automation/).
+> Az Azure-beli virtuális gépek Azure Automation állapotú konfigurációval való kezelése külön díj nélkül történik, ha a telepített Azure-beli virtuális gép kívánt állapot-konfigurációs bővítményének verziója nagyobb, mint 2,70. További információ: Automation- [**díjszabási oldal**](https://azure.microsoft.com/pricing/details/automation/).
 
-A cikk következő szakaszai ismertetik, hogyan lehet a fent felsorolt gépeket az Azure Automation-állapot konfigurációba.
+A cikk következő fejezetei ismertetik, hogyan lehet bevezetni a fent felsorolt gépeket Azure Automation állapot-konfigurációhoz.
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
-## <a name="onboarding-azure-vms"></a>Bevezetés az Azure virtuális gépeibe
+## <a name="onboarding-azure-vms"></a>Azure-beli virtuális gépek előkészítése
 
-Az Azure Automation State Configuration segítségével egyszerűen beszervezheti az Azure-beli virtuális gépeket a konfigurációkezeléshez az Azure Portal, az Azure Resource Manager-sablonok vagy a PowerShell használatával. A motorháztető alatt, és anélkül, hogy a rendszergazda kelljen egy virtuális gép, az Azure vm kívánt állapot konfigurációs bővítmény regisztrálja a virtuális gépet az Azure Automation állapotkonfiguráció. Mivel az Azure-bővítmény aszinkron módon fut, a folyamat előrehaladásának nyomon követésére vagy a hibaelhárítási lépések a cikk [hibaelhárítása azure-beli virtuálisgép-bevezetési](#troubleshooting-azure-virtual-machine-onboarding) szakaszában találhatók.
-
-> [!NOTE]
->A DSC linuxos csomópontra történő telepítése a **/tmp** mappát használja. A modulokat, például `nxautomation` a rendszer ideiglenesen letölti őket ellenőrzésre, mielőtt a megfelelő helyükre telepítené őket. Annak érdekében, hogy a modulok megfelelően települjenek, a Linuxos Log Analytics-ügynöknek olvasási/írási engedélyeket kell kérnie a **/tmp** mappához.<br><br>
->A Log Analytics ügynök Linux `omsagent` fut, mint a felhasználó. Ha írási engedélyt `omsagent` szeretne adni >`setfacl -m u:omsagent:rwx /tmp`a felhasználónak, futtassa a parancsot.
-
-### <a name="onboard-a-vm-using-azure-portal"></a>Virtuális gép alaplapja az Azure Portal használatával
-
-Az Azure-beli virtuális gép az Azure Automation-állapot konfigurációja az [Azure Portalon](https://portal.azure.com/)keresztül:
-
-1. Keresse meg azt az Azure Automation-fiókot, amelyben a beépített virtuális gépeket. 
-
-2. Az Állapotkonfiguráció lapon válassza a **Csomópontok** lapot, majd kattintson a **Hozzáadás**gombra.
-
-3. Válasszon egy virtuális gép a fedélzeten.
-
-4. Ha a számítógépen nincs telepítve a kívánt PowerShell-állapotbővítmény, és az energiaállapot fut, kattintson a **Csatlakozás**gombra.
-
-5. A **Regisztráció csoportban**adja meg a [PowerShell DSC helyi konfigurációkezelő a](/powershell/scripting/dsc/managing-nodes/metaConfig) használati esethez szükséges értékeket. Szükség esetén megadhat egy csomópont-konfigurációt a virtuális géphez rendelve.
-
-![bevezetés](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
-
-### <a name="onboard-a-vm-using-azure-resource-manager-templates"></a>Virtuális gép alaplapja az Azure Resource Manager-sablonokkal
-
-Az Azure Resource Manager-sablonok használatával üzembe helyezheti és üzembe helyezheti az Azure Automation-állapot konfigurációját. Lásd: [A kívánt állapotkonfigurációs szolgáltatás által felügyelt kiszolgáló](https://azure.microsoft.com/resources/templates/101-automation-configuration/) egy példasablont, amely egy meglévő virtuális gép ről az Azure Automation-állapot konfigurációjára kerül. Ha egy virtuálisgép-méretezési készletet kezel, tekintse meg a példasablont az [Azure Automation által felügyelt virtuálisgép-méretezési csoport konfigurációjában.](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)
-
-### <a name="onboard-machines-using-powershell"></a>PowerShellt használó beépített gépek
-
-Használhatja a [Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) parancsmag a PowerShell-ben az Azure Automation állapotkonfigurációja alaplapi virtuális gépek. 
+Azure Automation állapot-konfiguráció lehetővé teszi az Azure-beli virtuális gépek üzembe helyezését a konfiguráció kezeléséhez a Azure Portal, a Azure Resource Manager sablonok vagy a PowerShell használatával. A motorháztető alatt, és anélkül, hogy a rendszergazdának távoli GÉPEN kellene lennie, az Azure-beli virtuális gép kívánt állapota konfigurációs bővítmény regisztrálja Azure Automation állapot konfigurációjában a virtuális gépet. Mivel az Azure-bővítmény aszinkron módon fut, az előrehaladásának nyomon követéséhez és a hibaelhárításhoz szükséges lépések a jelen cikk hibaelhárítás az Azure-beli [virtuális gépek](#troubleshooting-azure-virtual-machine-onboarding) bevezetésével foglalkozó részében találhatók.
 
 > [!NOTE]
->A `Register-AzAutomationDscNode` parancsmag jelenleg csak a Windows rendszert futtató gépeken van megvalósítva, mivel csak a Windows bővítményt indítja el.
+>A DSC Linux-csomópontra történő telepítése a **/tmp** mappát használja. Azokat a modulokat, `nxautomation` amelyek a megfelelő helyekre való telepítése előtt ideiglenesen letöltődnek az ellenőrzéshez. A modulok megfelelő telepítésének biztosításához a linuxos Log Analytics-ügynöknek írási/olvasási jogosultságra van szüksége a **/tmp** mappához.<br><br>
+>A Linux rendszerhez készült Log Analytics-ügynök `omsagent` felhasználóként fut. Ha >írási engedélyt szeretne adni a `omsagent` felhasználónak, futtassa a parancsot `setfacl -m u:omsagent:rwx /tmp`.
 
-### <a name="register-vms-across-azure-subscriptions"></a>Virtuális gépek regisztrálása az Azure-előfizetések között
+### <a name="onboard-a-vm-using-azure-portal"></a>Virtuális gép előkészítése Azure Portal használatával
 
-A más Azure-előfizetésekből származó virtuális gépek regisztrálásának legjobb módja a DSC-bővítmény használata egy Azure Resource Manager központi telepítési sablonban. Példák találhatók [a Kívánt állapot konfiguráció bővítmény az Azure Resource Manager sablonokat.](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)
+Azure-beli virtuális gép beléptetése Azure Automation állapot konfigurálásához a [Azure Portal](https://portal.azure.com/)használatával:
 
-A sablonban paraméterekként használandó regisztrációs kulcs és regisztrációs URL megkereséséhez tekintse meg a jelen cikk [Regisztráció biztonságos használatával](#onboarding-securely-using-registration) című szakaszában található Bevezetés című témakört.
+1. Navigáljon ahhoz a Azure Automation-fiókhoz, amelyben a virtuális gépeket be szeretné készíteni. 
 
-## <a name="onboarding-physicalvirtual-windows-machines"></a>Bevezetés fizikai/virtuális Windows-gépek
+2. Az állapot konfigurációja lapon válassza a **csomópontok** lapot, majd kattintson a **Hozzáadás**gombra.
 
-A helyszíni vagy más felhőalapú környezetekben (beleértve az AWS EC2-példányokat is) futó Windows-kiszolgálókat az Azure Automation állapotkonfigurációja szolgáltatásba is belehet- és bekapcsolhatja. A kiszolgálóknak kimenő hozzáféréssel kell rendelkezniük [az Azure-hoz.](automation-dsc-overview.md#network-planning)
+3. Válasszon ki egy virtuális gépet a bevezetéshez.
 
-1. Győződjön meg arról, hogy a [WMF 5](https://aka.ms/wmf5latest) legújabb verziója telepítve van a gépeken az Azure Automation state configuration alaplapra. Ezenkívül a WMF 5-öt a bevezetési művelethez használt számítógépre kell telepíteni.
-1. Kövesse a [DSC metakonfigurációk generálása](#generating-dsc-metaconfigurations) című szakasz utasításait a szükséges DSC-metakonfigurációkat tartalmazó mappa létrehozásához. 
-1. A következő parancsmag segítségével alkalmazza a PowerShell DSC metakonfigurációk távolról a gépek, amelyek a fedélzeten alkalmazni szeretné. 
+4. Ha a gépen nincs telepítve a PowerShell desired State bővítmény, és a tápellátási állapot fut, kattintson a **kapcsolat**gombra.
+
+5. A **regisztráció**alatt adja meg a [PowerShell DSC helyi Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig) a használati esethez szükséges értékeket. Opcionálisan megadhat egy csomópont-konfigurációt, amelyet a virtuális géphez szeretne rendelni.
+
+![bevezetési](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+
+### <a name="onboard-a-vm-using-azure-resource-manager-templates"></a>Virtuális gép előkészítése Azure Resource Manager-sablonok használatával
+
+A virtuális gépek üzembe helyezéséhez és bevezetéséhez Azure Resource Manager sablonok használatával Azure Automation állapot konfigurációját. Tekintse meg a [kiszolgáló által felügyelt, a kívánt állapot-konfigurációs szolgáltatást](https://azure.microsoft.com/resources/templates/101-automation-configuration/) egy olyan sablonhoz, amely egy meglévő virtuális gépet Azure Automation állapot konfigurációjának bevezetéséhez. Ha virtuálisgép-méretezési csoport kezelésére van szüksége, tekintse meg a [Azure Automation által felügyelt virtuálisgép-méretezési csoport konfigurációjának](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)példa sablonját.
+
+### <a name="onboard-machines-using-powershell"></a>Gépek előkészítése a PowerShell használatával
+
+A PowerShellben a [Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) parancsmaggal telepíthet virtuális gépeket Azure Automation állapot-konfigurációra. 
+
+> [!NOTE]
+>A `Register-AzAutomationDscNode` parancsmag jelenleg csak Windows rendszerű gépeken van implementálva, mivel csak a Windows-bővítményt indítja el.
+
+### <a name="register-vms-across-azure-subscriptions"></a>Virtuális gépek regisztrálása Azure-előfizetések között
+
+A virtuális gépek más Azure-előfizetésből való regisztrálásának legjobb módja a DSC-bővítmény használata egy Azure Resource Manager telepítési sablonban. Példákat a [Azure Resource Manager sablonokkal rendelkező, a kívánt állapotú konfigurációs bővítményben](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)talál.
+
+A sablonban paraméterként használandó regisztrációs kulcs és regisztrációs URL-cím megkereséséhez tekintse meg a jelen cikk a [regisztráció biztonságos használatával](#onboarding-securely-using-registration) című szakaszát.
+
+## <a name="onboarding-physicalvirtual-windows-machines"></a>Fizikai/virtuális Windows-gépek bevezetése
+
+A helyszíni vagy más felhőalapú környezetekben (például AWS EC2-példányokban) futó Windows-kiszolgálókat az állapot konfigurációjának Azure Automation. A kiszolgálóknak kimenő hozzáféréssel kell rendelkezniük az [Azure-hoz](automation-dsc-overview.md#network-planning).
+
+1. Győződjön meg arról, hogy a [WMF 5](https://aka.ms/wmf5latest) legújabb verziója van telepítve a gépekre Azure Automation állapot konfigurációjának bevezetéséhez. Emellett a WMF 5-et a bevezetési művelethez használt számítógépre kell telepíteni.
+1. Kövesse a [DSC-Metaconfigurations létrehozása](#generating-dsc-metaconfigurations) című szakasz utasításait, és hozzon létre egy mappát, amely tartalmazza a szükséges DSC-metaconfigurations. 
+1. Az alábbi parancsmag használatával a PowerShell DSC-metaconfigurations távolról is alkalmazhatja a bevezetéshez használni kívánt gépekre. 
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. Ha nem tudja távolról alkalmazni a PowerShell DSC metakonfigurációit, másolja a **metakonfigurációk** mappát a bevezetésre kerülő gépekre. Ezután adja hozzá a [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) helyi hívásához szükséges kódot a gépeken.
-1. Az Azure Portalon vagy a parancsmagok használatával ellenőrizze, hogy a beépített gépek az Azure Automation-fiókban regisztrált állapotkonfigurációs csomópontokként jelennek-e meg.
+1. Ha nem tudja távolról alkalmazni a PowerShell DSC-metaconfigurations, másolja a **metaconfigurations** mappát az előkészítés alatt álló gépekre. Ezután adjon hozzá kódot a [set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) helyi hívásához a gépeken.
+1. A Azure Portal vagy a parancsmagok használatával ellenőrizze, hogy a bevezetésre kerülő gépek a Azure Automation-fiókjában regisztrált állapot-konfigurációs csomópontként jelennek-e meg.
 
-## <a name="onboarding-physicalvirtual-linux-machines"></a>Bevezetés fizikai/virtuális Linux-gépek
+## <a name="onboarding-physicalvirtual-linux-machines"></a>Fizikai/virtuális Linux rendszerű gépek bevezetése
 
-A helyszíni vagy más felhőalapú környezetekben futó Linux-kiszolgálókat az Azure Automation state configuration szolgáltatásba is belehet, hogy beszálljon. A kiszolgálóknak kimenő hozzáféréssel kell rendelkezniük [az Azure-hoz.](automation-dsc-overview.md#network-planning)
+A helyszíni vagy más felhőalapú környezetekben futó Linux-kiszolgálókat az állapot konfigurációjának Azure Automation. A kiszolgálóknak kimenő hozzáféréssel kell rendelkezniük az [Azure-hoz](automation-dsc-overview.md#network-planning).
 
-1. Győződjön meg arról, hogy a [PowerShell kívánt állapotú linuxos konfigurációjának](https://github.com/Microsoft/PowerShell-DSC-for-Linux) legújabb verziója telepítve van a gépeken az Azure Automation állapotkonfigurációra való alaplaphoz.
-2. Ha a [PowerShell DSC Helyi Configuration Manager alapértelmezett egyezik](/powershell/scripting/dsc/managing-nodes/metaConfig4) a használati eset, és azt szeretné, hogy a gépek et úgy, hogy azok mind lekérése s és jelentést az Azure Automation állapot konfigurációja:
+1. Győződjön meg arról, hogy a Linux rendszerhez készült [PowerShell kívánt állapot-konfiguráció](https://github.com/Microsoft/PowerShell-DSC-for-Linux) legújabb verziója telepítve van a gépeken, hogy Azure Automation állapot konfigurációját.
+2. Ha a [POWERSHELL DSC helyi Configuration Manager alapértelmezett](/powershell/scripting/dsc/managing-nodes/metaConfig4) beállításai megfelelnek a használati esetnek, és a gépeket kívánja bevezetni, hogy mind lekérik, és jelenteni tudják Azure Automation állapot konfigurációját:
 
-   - Minden Linux-gépen az Azure Automation-állapot `Register.py` konfigurációja alaplapra, használja a beépített a PowerShell DSC helyi konfigurációkezelő alapértelmezett használatával.
+   - Minden Linux rendszerű gépen Azure Automation állapot konfigurációjának bevezetéséhez `Register.py` használja a következőt: a PowerShell DSC helyi Configuration Manager alapértelmezett értékeit használja.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - Az Automation-fiók regisztrációs kulcsának és regisztrációs URL-címének megkereséséhez tekintse meg a cikk [regisztrációbiztonságos használatával](#onboarding-securely-using-registration) című bevezetés című részét.
+   - Az Automation-fiók regisztrációs kulcsának és regisztrációs URL-címének megkereséséhez tekintse meg a jelen cikk [regisztrációjának biztonságos használata](#onboarding-securely-using-registration) című szakaszát.
 
-3. Ha a PowerShell DSC Helyi Configuration Manager (LCM) alapértelmezés e nem egyezik meg a használati eset, vagy szeretné, hogy a beépített gépek, amelyek csak az Azure Automation állapotkonfiguráció, kövesse a 4-7. Ellenkező esetben folytassa közvetlenül a 7.
+3. Ha a PowerShell DSC helyi Configuration Manager (LCD ChipOnGlas) alapértelmezett értéke nem felel meg a használati esetnek, vagy ha olyan gépeket kíván bevezetni, amelyek csak a Azure Automation állapot konfigurációját jelentik, kövesse az 4-7. lépést. Ellenkező esetben folytassa közvetlenül a 7. lépéssel.
 
-4. A [DSC-metakonfigurációk generálása](#generating-dsc-metaconfigurations) szakasz utasításainak követésével készítsen létre egy mappát, amely tartalmazza a szükséges DSC-metakonfigurációkat.
+4. Kövesse a [DSC Metaconfigurations létrehozása](#generating-dsc-metaconfigurations) szakasz utasításait, és hozzon létre egy mappát, amely tartalmazza a szükséges DSC-metaconfigurations.
 
-5. Győződjön meg arról, hogy a [WMF 5](https://aka.ms/wmf5latest) legújabb verziója telepítve van a bevezetésre használt gépen.
+5. Győződjön meg arról, hogy a [WMF 5](https://aka.ms/wmf5latest) legújabb verziója van telepítve a bevezetéshez használt gépen.
 
-6. Adja hozzá a kódot az alábbiak szerint a PowerShell DSC metaconfigurations távoli alkalmazásához a kívánt gépekre.
+6. Adja hozzá a következő kódot a PowerShell DSC-metaconfigurations távolról a bevezetéshez használni kívánt gépekre való alkalmazásához.
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String '<root password>' -AsPlainText -Force
@@ -131,30 +131,30 @@ A helyszíni vagy más felhőalapú környezetekben futó Linux-kiszolgálókat 
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-7. Ha nem tudja távolról alkalmazni a PowerShell DSC metakonfigurációit, másolja a távoli gépeknek megfelelő metakonfigurációkat a 4.
+7. Ha nem tudja távolról alkalmazni a PowerShell DSC-metaconfigurations, másolja a távoli gépeknek megfelelő metaconfigurations a 4. lépés a Linux rendszerű gépekhez című témakörben leírt mappából.
 
-8. Adjon hozzá `Set-DscLocalConfigurationManager.py` kódot, amelyet minden Linux-gépen helyileg hívhat az Azure Automation állapotkonfigurációjához.
+8. Az egyes Linux rendszerű gépeken helyileg hívható `Set-DscLocalConfigurationManager.py` kód hozzáadásával Azure Automation állapot konfigurációját.
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
-9. Az Azure Portalon vagy a parancsmagok használatával győződjön meg arról, hogy a gépek az alaplapi most megjelennek az Azure Automation-fiókban regisztrált DSC-csomópontok.
+9. A Azure Portal vagy a parancsmagok használatával győződjön meg arról, hogy a bevezetésre kerülő gépek most a Azure Automation-fiókban regisztrált DSC-csomópontként jelennek meg.
 
-## <a name="generating-dsc-metaconfigurations"></a>DSC-metakonfigurációk létrehozása
+## <a name="generating-dsc-metaconfigurations"></a>DSC-metaconfigurations generálása
 
-Bármely gép nek az Azure Automation állapotkonfigurációba való bedeszkázására [dsc-metakonfigurációt](/powershell/scripting/dsc/managing-nodes/metaConfig)hozhat létre. Ez a konfiguráció azt mondja a DSC-ügynök lekérése és/vagy jelentés az Azure Automation állapotkonfiguráció. DSC-metakonfigurálás az Azure Automation-állapot konfigurációja egy PowerShell DSC-konfiguráció vagy az Azure Automation PowerShell-parancsmagok használatával hozhat létre.
+Ha bármely gépet Azure Automation állapot-konfigurációba kíván bevezetni, létrehozhat egy [DSC-metaconfiguration](/powershell/scripting/dsc/managing-nodes/metaConfig). Ez a konfiguráció azt jelzi, hogy a DSC-ügynök lekéri és/vagy jelentést készít Azure Automation állapot-konfigurációról. A DSC-metaconfiguration a PowerShell DSC-konfiguráció vagy a Azure Automation PowerShell-parancsmagok használatával hozhatja Azure Automation állapot-konfigurációhoz.
 
 > [!NOTE]
-> A DSC-metakonfigurációk tartalmazzák a számítógép egy Automation-fiókfelügyeleti rendszerbe való beirányításához szükséges titkokat. Győződjön meg arról, hogy megfelelően védi a létrehozott DSC-metakonfigurációkat, vagy használat után törli azokat.
+> A DSC-metaconfigurations azokat a titkokat tartalmazzák, amelyek szükségesek ahhoz, hogy a gép egy Automation-fiókba kerüljön a felügyelethez. Ügyeljen arra, hogy megfelelően megvédje a létrehozott DSC-metaconfigurations, vagy törölje azokat a használat után.
 
-A metakonfigurációk proxytámogatását az LCM, a Windows PowerShell DSC-motorja szabályozza. Az LCM az összes célcsomóponton fut, és felelős a DSC metakonfigurációs parancsfájlban szereplő konfigurációs erőforrások hívásáért. A proxytámogatást a metakonfigurációba is beillesztheti, ha szükség szerint belefoglalja `ResourceRepositoryWeb`a `ReportServerWeb` proxy URL-címének és a proxyhitelesítő adatoknak a szükséges definícióit a , és a `ConfigurationRepositoryWeb`blokkokba. Lásd: [A helyi konfigurációkezelő konfigurálása](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+A metaconfigurations proxy-támogatását az LCD ChipOnGlas vezérli, amely a Windows PowerShell DSC motor. Az LCD ChipOnGlas az összes cél csomóponton fut, és felelős a DSC metaconfiguration-szkriptben található konfigurációs erőforrások meghívásához. A proxy támogatását a metaconfiguration is elvégezheti, ha a proxy URL-címét és a proxy hitelesítő adatait `ConfigurationRepositoryWeb`a `ResourceRepositoryWeb`, a `ReportServerWeb` , és a blokkokban szükség szerint tartalmazza. Lásd: [a helyi Configuration Manager konfigurálása](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
 
-### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC-metakonfigurációk létrehozása DSC-konfiguráció használatával
+### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC-metaconfigurations létrehozása DSC-konfiguráció használatával
 
-1. Nyissa meg a VSCode-ot (vagy kedvenc szerkesztőjét) rendszergazdaként a helyi környezetben lévő számítógépen. A készüléknek a [WMF 5](https://aka.ms/wmf5latest) legújabb verziójával kell rendelkeznie.
-1. Másolja a következő parancsfájlt helyileg. Ez a parancsfájl egy PowerShell DSC-konfigurációt tartalmaz a metakonfigurációk létrehozásához, és egy parancsot a metakonfiguráció létrehozásának indításához.
+1. Nyissa meg a VSCode (vagy a kedvenc szerkesztőjét) rendszergazdaként a helyi környezetben található gépen. A gépnek telepítve kell lennie a [WMF 5](https://aka.ms/wmf5latest) legújabb verziójával.
+1. Másolja a következő parancsfájlt helyileg. Ez a szkript egy PowerShell DSC-konfigurációt tartalmaz a metaconfigurations létrehozásához, valamint egy olyan parancsot, amely kirúgja a metaconfiguration létrehozását.
 
     > [!NOTE]
-    > Az állapotkonfigurációs csomópont konfigurációjának nevei az Azure Portalon a kis- és nagybetűket megkülönböztetők. Ha az eset nem egyezik, a csomópont nem jelenik meg a **Csomópontok** lapon.
+    > Az állapot-konfigurációs csomópontok konfigurációs nevei megkülönböztetik a kis-és nagybetűket a Azure Portal. Ha az eset nem egyezik, a csomópont nem jelenik meg a **csomópontok** lapon.
 
    ```powershell
    # The DSC configuration that will generate metaconfigurations
@@ -266,25 +266,25 @@ A metakonfigurációk proxytámogatását az LCM, a Windows PowerShell DSC-motor
    DscMetaConfigs @Params
    ```
 
-1. Töltse ki az Automation-fiók regisztrációs kulcsát és URL-címét, valamint a fedélzetre hozandó gépek nevét. Minden más paraméter nem kötelező. A regisztrációs kulcs és az Automation-fiók regisztrációs URL-címének megkereséséhez tekintse meg a [Regisztráció biztonságos használatával](#onboarding-securely-using-registration) című bevezetés című szakaszt.
+1. Adja meg az Automation-fiókjához tartozó regisztrációs kulcsot és URL-címet, valamint a bevezetéshez használt gépek nevét. Az összes többi paraméter megadása nem kötelező. Az Automation-fiók regisztrációs kulcsának és regisztrációs URL-címének megkereséséhez tekintse meg a [regisztráció biztonságos használatával](#onboarding-securely-using-registration) című szakaszt.
 
-1. Ha azt szeretné, hogy a gépek jelentsenek DSC-állapotinformációkat az Azure Automation State `ReportOnly` Configuration szolgáltatásnak, de ne kérjék le a konfigurációt vagy a PowerShell-modulokat, állítsa a paramétert true értékre.
+1. Ha azt szeretné, hogy a gépek jelentést készítsenek a DSC-állapotadatok Azure Automation állapot konfigurációjában, de ne legyenek lekéréses konfiguráció vagy PowerShell-modulok, állítsa igaz értékre a `ReportOnly` paramétert.
 
-1. Ha `ReportOnly` nincs beállítva, a gépek jelentik a DSC állapotadatait az Azure Automation állapotkonfigurációjának és lekéréses konfigurációjának vagy A PowerShell-moduloknak. Ennek megfelelően állítsa `ConfigurationRepositoryWeb`be `ResourceRepositoryWeb`a `ReportServerWeb` paramétereket a és a blokkban.
+1. Ha `ReportOnly` nincs beállítva, a gépek a DSC-állapotinformációkat Azure Automation állapot-konfigurációra és lekéréses konfigurációra vagy PowerShell-modulokra jelentik. Adja meg a paramétereket ennek `ConfigurationRepositoryWeb`megfelelően `ResourceRepositoryWeb`a, `ReportServerWeb` és blokkokban.
 
-1. Futtassa a szkriptet. Most már rendelkeznie kell egy **DscMetaConfigs**nevű működő könyvtármappával, amely tartalmazza a PowerShell DSC metakonfigurációit a gépek számára (rendszergazdaként).
+1. Futtassa a szkriptet. Most már rendelkeznie kell egy **DscMetaConfigs**nevű munkakönyvtár-mappával, amely a PowerShell DSC-metaconfigurations tartalmazza a gépekhez a bevezetéshez (rendszergazdaként).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
     ```
 
-### <a name="generate-dsc-metaconfigurations-using-azure-automation-cmdlets"></a>DSC-metakonfigurálások létrehozása az Azure Automation-parancsmagokkal
+### <a name="generate-dsc-metaconfigurations-using-azure-automation-cmdlets"></a>DSC-metaconfigurations előállítása Azure Automation-parancsmagok használatával
 
-Ha a PowerShell DSC LCM alapértelmezett beállításai megfelelnek a használati esetnek, és azt szeretné, hogy a gépek et az Azure Automation-állapot konfigurációjából való lekérése és jelentése egyaránt bekapcsolja, és a szükséges DSC-metakonfigurációkat egyszerűbben hozhatja létre az Azure Automation-parancsmagok használatával.
+Ha a PowerShell DSC LCD-alapértékei megfelelnek a használati esetnek, és azt szeretné, hogy a gépeket a beléptetéshez és a jelentéshez is Azure Automation az állapot konfigurációját, egyszerűen létrehozhatja a szükséges DSC-metaconfigurations az Azure Automation-parancsmagok használatával.
 
-1. Nyissa meg a PowerShell-konzolt vagy a VSCode-ot rendszergazdaként a helyi környezetben lévő számítógépen.
-2. Csatlakozzon az Azure Resource Managerhez a [Connect-AzAccount segítségével.](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)
-3. Töltse le a PowerShell DSC metaconfigurations a gépek kívánt a fedélzeti az Automation-fiók, amelyben a csomópontok beállítása.
+1. Nyissa meg a PowerShell-konzolt vagy a VSCode rendszergazdaként egy gépen a helyi környezetben.
+2. Kapcsolódás Azure Resource Manager a [AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)használatával.
+3. Töltse le a PowerShell DSC-metaconfigurations azon gépekhez, amelyekhez be szeretné állítani az Automation-fiókot, amelyben csomópontokat állít be.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
@@ -299,58 +299,58 @@ Ha a PowerShell DSC LCM alapértelmezett beállításai megfelelnek a használat
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. Most rendelkeznie kell egy **DscMetaConfigs** mappával, amely a PowerShell DSC metakonfigurációit tartalmazza a gépek számára (rendszergazdaként).
+1. Most már rendelkeznie kell egy **DscMetaConfigs** -mappával, amely a PowerShell DSC-metaconfigurations tartalmazza a gépekhez a bevezetéshez (rendszergazdaként).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
     ```
 
-## <a name="onboarding-securely-using-registration"></a>Bevezetés biztonságosan a regisztráció használatával
+## <a name="onboarding-securely-using-registration"></a>Biztonságos bevezetés a regisztrációval
 
-A gépek biztonságosan bevihetők egy Azure Automation-fiókba a WMF 5 DSC regisztrációs protokollon keresztül. Ez a protokoll lehetővé teszi, hogy egy DSC-csomópont hitelesítse magát egy PowerShell DSC-lekéréses vagy jelentéskészítő kiszolgálón, beleértve az Azure Automation állapotkonfigurációját is. A csomópont regisztrál a kiszolgálóval a regisztrációs URL-címen, és regisztrációs kulccsal hitelesíti magát. A regisztráció során a DSC-csomópont és a DSC lekéréses/jelentéskészítő kiszolgáló egyedi tanúsítványt egyeztet meg a kiszolgáló regisztráció utáni hitelesítéséhez. Ez a folyamat megakadályozza, hogy a fedélzeti csomópontok megszemélyesítsék egymást, például ha egy csomópont biztonsága sérül, és rosszindulatúan viselkedik. A regisztráció után a regisztrációs kulcs nem használható újra a hitelesítéshez, és törlődik a csomópontról.
+A gépek a WMF 5 DSC regisztrációs protokollon keresztül biztonságosan bejelentkezhetnek egy Azure Automation fiókba. Ez a protokoll lehetővé teszi a DSC-csomópontok hitelesítését egy PowerShell DSC-lekéréses vagy jelentéskészítő kiszolgálón, beleértve a Azure Automation állapot konfigurációját. A csomópont regisztrálja a kiszolgálót a regisztrációs URL-címen, és egy regisztrációs kulccsal hitelesíti magát. A regisztráció során a DSC-csomópont és a DSC-lekérési/jelentéskészítő kiszolgáló egyeztet egy egyedi tanúsítvánnyal ahhoz, hogy a csomópont hitelesítve legyen a regisztráció után. Ez a folyamat megakadályozza, hogy a beépített csomópontok megszemélyesítsék egymást, például ha egy csomópontot feltörtek és rosszindulatúan viselkednek. A regisztrációt követően a regisztrációs kulcsot nem használja újra a hitelesítéshez, és a rendszer törli a csomópontról.
 
-Az Állapotkonfiguráció regisztrációs protokollhoz szükséges információkat az Azure Portal **Fiókbeállítások** csoportban szerezheti be a **Kulcsok.** 
+Az állapot-konfigurációs regisztrációs protokollhoz szükséges adatokat a Azure Portalban található **Fiókbeállítások** **területen érheti el.** 
 
-![Azure automatizálási kulcsok és URL-cím](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
+![Azure Automation-kulcsok és URL-cím](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
-- A regisztrációs URL a Kulcsok lap URL-mezője.
-- A regisztrációs kulcs az **Elsődleges hozzáférési kulcs** mező vagy a Másodlagos hozzáférési **kulcs** mező értéke a Kulcsok lapon. Mindkét kulcs használható.
+- A regisztrációs URL-cím a kulcsok lap URL-mezője.
+- A regisztrációs kulcs az **elsődleges hozzáférési kulcs** mező vagy a kulcsok lapon található **másodlagos elérési kulcs** mező értéke. Bármelyik kulcsot használhatja.
 
-A nagyobb biztonság érdekében az Automation-fiók elsődleges és másodlagos hozzáférési kulcsait bármikor újragenerálhatja a Kulcsok lapon. A kulcs-regeneráció megakadályozza, hogy a jövőbeli csomópont-regisztrációk korábbi kulcsokat használjanak.
+A nagyobb biztonság érdekében a kulcsok oldalon bármikor újragenerálhatja egy Automation-fiók elsődleges és másodlagos hozzáférési kulcsait. A kulcs újragenerálása megakadályozza a későbbi csomópontok regisztrációját a korábbi kulcsok használatával.
 
-## <a name="re-registering-a-node"></a>Csomópont újbóli regisztrálása
+## <a name="re-registering-a-node"></a>Csomópont ismételt regisztrálása
 
-Miután egy gépet DSC-csomópontként regisztrált az Azure Automation-állapotkonfigurációban, számos oka lehet annak, hogy a jövőben újra regisztrálnia kell a csomópontot.
+Miután Azure Automation állapot konfigurációjában egy gépet DSC-csomópontként regisztrált, több oka lehet annak, hogy a későbbiekben újra regisztrálnia kell a csomópontot.
 
-- **Tanúsítvány megújítása.** A Windows Server 2019 előtti Windows Server-verziók esetében minden csomópont automatikusan egyeztet egy egyedi hitelesítési tanúsítványt, amely egy év elteltével lejár. Ha egy tanúsítvány megújítás nélkül lejár, a csomópont nem tud `Unresponsive`kommunikálni az Azure Automation szolgáltatással, és meg van jelölve. Jelenleg a PowerShell DSC regisztrációs protokoll nem tudja automatikusan megújítani a tanúsítványokat, amikor azok a lejárat idohez közelednek, és egy év elteltével újra regisztrálnia kell a csomópontokat. Az újbóli regisztrálás előtt győződjön meg arról, hogy minden csomóponton fut a WMF 5 RTM. 
+- **Tanúsítvány megújítása.** A Windows Server 2019 előtti verziói esetében minden egyes csomópont automatikusan egyeztet egy egyedi tanúsítványt a hitelesítéshez, amely egy év után lejár. Ha egy tanúsítvány megújítása nélkül lejár, a csomópont nem tud kommunikálni Azure Automation és meg van `Unresponsive`jelölve. Jelenleg a PowerShell DSC regisztrációs protokoll nem tudja automatikusan megújítani a tanúsítványokat, amikor közelednek a lejárathoz, és egy év múlva újra regisztrálnia kell a csomópontokat. Az újbóli regisztrálás előtt győződjön meg arról, hogy minden csomóponton WMF 5 RTM fut. 
 
-    Az újraregisztráció a tanúsítvány lejárati idejétől vagy a tanúsítvány lejárati ideje után bármikor 90 napig vagy annál rövidebb ideig történt, és új tanúsítvány jön létre és használ. A Windows Server 2019-es és újabb verziói ban megoldást találni a probléma megoldására.
+    Az újbóli regisztráció a tanúsítvány lejárati idejének 90 vagy kevesebb nap múlva, vagy a tanúsítvány lejárati idejének lejárta után bármikor új tanúsítványt hoz létre és használ. A probléma megoldása a Windows Server 2019-es és újabb verzióiban is megtalálható.
 
-- **A DSC LCM értékek módosítása.** Előfordulhat, hogy módosítania kell a [PowerShell DSC LCM](/powershell/scripting/dsc/managing-nodes/metaConfig4) beállított értékeit a csomópont kezdeti regisztrációja során, `ConfigurationMode`például. Jelenleg ezek a DSC-ügynökértékek csak újraregisztrálás útján módosíthatók. Az egyetlen kivétel a csomóponthoz rendelt csomópontkonfigurációs érték. Ezt közvetlenül az Azure Automation DSC-ben módosíthatja.
+- **A DSC LCD-értékek változásai.** Előfordulhat, hogy módosítania kell a [POWERSHELL DSC LCD-értékeket](/powershell/scripting/dsc/managing-nodes/metaConfig4) a csomópont kezdeti regisztrálása során, például `ConfigurationMode`:. Jelenleg csak a DSC-ügynök értékeit módosíthatja újbóli regisztráció útján. Az egyetlen kivétel a csomóponthoz rendelt csomópont-konfigurációs érték. Ezt közvetlenül Azure Automation DSC-ben is megváltoztathatja.
 
-A csomópontot ugyanúgy újra regisztrálhatja, ahogy először regisztrálta a csomópontot, a jelen dokumentumban leírt bevezetési módszerek bármelyikének használatával. Nem kell törölnie egy csomópontot az Azure Automation-állapotkonfigurációból, mielőtt újra regisztrálna.
+A csomópontot úgy is újra regisztrálhatja, ahogy először regisztrálta a csomópontot, a jelen dokumentumban ismertetett bevezetési módszerek bármelyikével. Az újbóli regisztrálás előtt nem kell megszüntetnie a csomópont regisztrációját Azure Automation állapot-konfigurációból.
 
-## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Az Azure virtuális gépek bevezetésével kapcsolatos hibák elhárítása
+## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Azure-beli virtuális gépek előkészítésének hibaelhárítása
 
-Az Azure Automation állapotkonfiguráció lehetővé teszi, hogy könnyen alaplapi Azure Windows virtuális gépek konfigurációkezeléshez. A motorháztető alatt az Azure VM kívánt állapotkonfigurációs bővítménye a virtuális gép regisztrálására szolgál az Azure Automation state configuration szolgáltatással. Mivel az Azure VM kívánt állapotkonfigurációs bővítmény aszinkron módon fut, a folyamat nyomon követése és a végrehajtás hibaelhárítása fontos lehet.
+Azure Automation állapot-konfiguráció lehetővé teszi az Azure Windows rendszerű virtuális gépek egyszerű üzembe helyezését a konfiguráció felügyeletéhez. A motorháztető alatt az Azure VM desired State Configuration bővítmény a virtuális gép Azure Automation állapot-konfigurációval való regisztrálására szolgál. Mivel az Azure-beli virtuális gép kívánt állapotának konfigurációs bővítménye aszinkron módon fut, fontos lehet az előrehaladás nyomon követése és a végrehajtásuk hibaelhárítása.
 
 > [!NOTE]
-> Az Azure-beli Windows virtuális gép Azure Automation-állapotkonfigurációba történő bevezetés bármely olyan módszere, amely az Azure VM kívánt állapotkonfigurációs bővítményét használja, akár egy órát is igénybe vehet, amíg az Azure Automation regisztráltként jeleníti meg. Ez a késés annak köszönhető, hogy a WMF 5 telepítése a virtuális gépen az Azure VM kívánt állapotkonfigurációs bővítmény, amely szükséges a virtuális gép az Azure Automation állapotkonfiguráció.
+> Az Azure-beli Windows rendszerű virtuális gépek bevezetésének bármely módszere az Azure-beli virtuális gép kívánt állapot-konfigurációs bővítményét használó Azure Automation állapot-konfigurációhoz akár egy óráig is eltarthat, amíg a Azure Automation regisztráltként jelenik meg. Ezt a késleltetést a virtuális gépeken az Azure-beli kívánt állapot konfigurációs bővítményének a WMF 5 telepítése okozza, amely a virtuális gép bevezetéséhez szükséges a Azure Automation állapotának konfigurálásához.
 
-Az Azure VM kívánt állapotkonfigurációs bővítményének hibaelhárítása vagy állapotának megtekintése:
+Az Azure-beli virtuális gép kívánt állapotához tartozó konfiguráció-bővítmény hibáinak megoldása vagy megtekintése:
 
-1. Az Azure Portalon keresse meg a beépített virtuális gép.
-2. Kattintson **a Bővítmények gombra a** Beállítások **csoportban.** 
-3. Most válassza a **DSC** vagy **a DSCForLinux**lehetőséget, az operációs rendszertől függően. 
-4. További részletekért kattintson **a Részletes állapot megtekintése gombra.**
+1. A Azure Portal navigáljon a bevezető virtuális géphez.
+2. Kattintson a **bővítmények** elemre a **Beállítások**területen. 
+3. Most válassza a **DSC** vagy a **DSCForLinux**lehetőséget az operációs rendszertől függően. 
+4. További részletekért kattintson a **részletes állapot megtekintése**lehetőségre.
 
-A hibaelhárításról az [Azure Automation kívánt állapotkonfigurációjával (DSC) kapcsolatos problémák elhárítása című](./troubleshoot/desired-state-configuration.md)témakörben talál további információt.
+A hibaelhárítással kapcsolatos további információkért lásd: [Azure Automation kívánt állapot-konfigurációval (DSC) kapcsolatos hibák elhárítása](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Első lépések: [Az Azure Automation állapotkonfigurációjának első lépései.](automation-dsc-getting-started.md)
-- A DSC-konfigurációk összeállításáról a célcsomópontokhoz való hozzárendelésről a [Konfigurációk összeállítása az Azure Automation állapotkonfigurációjában](automation-dsc-compile.md)témakörben olvashat.
-- A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
+- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
+- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
-- Díjszabási információkért lásd: [Azure Automation state configuration fortaring.](https://azure.microsoft.com/pricing/details/automation/)
-- Az Azure Automation State Configuration folyamatos üzembe helyezési folyamatban való használatának példáját a [Használati példa: Az Azure Automation állapotkonfigurációját és a Csokoládét használó virtuális gépeken történő folyamatos üzembe helyezés](automation-dsc-cd-chocolatey.md)című témakörben talál.
+- A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
+- A folyamatos üzembe helyezési folyamat során Azure Automation állapot konfigurációjának használatára példát a következő témakörben talál [: a virtuális gépek folyamatos üzembe helyezése Azure Automation állapot-konfigurációval és a csokoládés használatával](automation-dsc-cd-chocolatey.md).

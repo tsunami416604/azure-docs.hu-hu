@@ -1,6 +1,6 @@
 ---
-title: Ismert problémák az Azure Data Lake Storage Gen2 szolgáltatással | Microsoft dokumentumok
-description: Ismerje meg az Azure Data Lake Storage Gen2 korlátait és ismert problémáit.
+title: Ismert problémák a Azure Data Lake Storage Gen2kal | Microsoft Docs
+description: Ismerje meg Azure Data Lake Storage Gen2 korlátozásait és ismert problémáit.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,75 +9,75 @@ ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767975"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák az Azure Data Lake Storage Gen2 szolgáltatással kapcsolatban
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
-Ez a cikk az Azure Data Lake Storage Gen2 korlátait és ismert problémáit ismerteti.
+Ez a cikk a Azure Data Lake Storage Gen2 korlátozásait és ismert problémáit ismerteti.
 
 ## <a name="supported-blob-storage-features"></a>Támogatott Blob Storage-funkciók
 
-A Blob storage-szolgáltatások egyre növekvő száma működik hierarchikus névtérrel rendelkező fiókokkal. A teljes listát az [Azure Data Lake Storage Gen2 szolgáltatásában elérhető Blob Storage-funkciók című témakörben tartalmazza.](data-lake-storage-supported-blob-storage-features.md)
+A blob Storage-funkciók egyre több funkciója működik olyan fiókokkal, amelyek hierarchikus névtérrel rendelkeznek. A teljes listát lásd: [Blob Storage Azure Data Lake Storage Gen2 elérhető szolgáltatásai](data-lake-storage-supported-blob-storage-features.md).
 
-## <a name="supported-azure-service-integrations"></a>Támogatott Azure-szolgáltatásintegrációk
+## <a name="supported-azure-service-integrations"></a>Támogatott Azure-szolgáltatások integrációi
 
-Az Azure Data Lake Storage Gen2 számos Azure-szolgáltatást támogat, amelyek segítségével adatokat lehet beadni, elemzéseket végezhet, és vizuális ábrázolásokat hozhat létre. A támogatott Azure-szolgáltatások listáját az [Azure Data Lake Storage Gen2 szolgáltatást támogató Azure-szolgáltatások című](data-lake-storage-supported-azure-services.md)témakörben található.
+Azure Data Lake Storage Gen2 számos Azure-szolgáltatást támogat, amelyek segítségével adatok betöltésére, elemzések végrehajtására és vizuális ábrázolások létrehozására használható. A támogatott Azure-szolgáltatások listáját a [Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md)című témakörben tekintheti meg.
 
-Tekintse meg [az Azure Data Lake Storage Gen2 szolgáltatást támogató Azure-szolgáltatásokat.](data-lake-storage-supported-azure-services.md)
+Lásd: [Azure Data Lake Storage Gen2 támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md).
 
 ## <a name="supported-open-source-platforms"></a>Támogatott nyílt forráskódú platformok
 
-Számos nyílt forráskódú platform támogatja a Data Lake Storage Gen2-t. A teljes listát az [Azure Data Lake Storage Gen2-t támogató nyílt forráskódú platformok ról.](data-lake-storage-supported-open-source-platforms.md)
+Számos nyílt forráskódú platform támogatja a Data Lake Storage Gen2. A teljes listát lásd: a [Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
 
-Lásd: [Nyílt forráskódú platformok, amelyek támogatják az Azure Data Lake Storage Gen2-t.](data-lake-storage-supported-open-source-platforms.md)
+Lásd: [a Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
 
-## <a name="blob-storage-apis"></a>Blob tárolási API-k
+## <a name="blob-storage-apis"></a>BLOB Storage API-k
 
-A Blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adaton működhetnek.
+A blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adatközponton működhetnek.
 
-Ez a szakasz a blob API-k és a Data Lake Storage Gen2 API-k használatával kapcsolatos problémákat és korlátozásokat ismerteti ugyanazon adatok használatával.
+Ez a szakasz a blob API-k és a Data Lake Storage Gen2 API-k használatával kapcsolatos problémákat és korlátozásokat ismerteti ugyanazon az adatközponton.
 
-* A Blob API-k és a Data Lake Storage API-k nem használhatók a fájl ugyanazon példányába történő íráshoz. Ha a Data Lake Storage Gen2 API-k használatával ír egy fájlba, akkor a fájl blokkjai nem lesznek láthatók a [blokklista-blobba](https://docs.microsoft.com/rest/api/storageservices/get-block-list) érkező hívások számára. Felülírhat egy fájlt a Data Lake Storage Gen2 API-k vagy a Blob API-k használatával. Ez nincs hatással a fájltulajdonságokra.
+* A blob API-k és a Data Lake Storage API-k nem használhatók a fájlok ugyanazon példányára való íráshoz. Ha Data Lake Storage Gen2 API-k használatával ír fájlba egy fájlt, a rendszer nem fogja látni a fájl blokkokat a [letiltási lista](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API-jának meghívásához. A fájlokat Data Lake Storage Gen2 API-k vagy blob API-k használatával írhatja felül. Ez nem befolyásolja a fájl tulajdonságait.
 
-* Ha a [Listablobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények könyvtárakat és blobokat is tartalmaznak. Ha úgy dönt, hogy határolójelet használ,`/`csak perjel ( ). Ez az egyetlen támogatott határolójel.
+* Ha a [lista Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények a címtárakat és a blobokat is tartalmazzák. Ha elválasztót választ, csak egy perjelet (`/`) használjon. Ez az egyetlen támogatott elválasztó karakter.
 
-* Ha a [Blob törlése](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API-t használja egy könyvtár törléséhez, a könyvtár csak akkor törlődik, ha üres. Ez azt jelenti, hogy nem használhatja a Blob API-törlési könyvtárak rekurzívan.
+* Ha a [blob törlése](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API-t használja egy könyvtár törléséhez, akkor a rendszer csak akkor törli a könyvtárat, ha üres. Ez azt jelenti, hogy a blob API rekurzív törlése nem végezhető el.
 
-Ezek a Blob REST API-k nem támogatottak:
+Ezek a blob REST API-k nem támogatottak:
 
-* [Blob felrakása (lap)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Oldal berakása](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Oldaltartományok betöltése](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [BLOB (oldal) elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Oldal elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Oldalak tartományának beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [Növekményes másolási blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Oldal feltöltése URL-címből](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Blob felrakása (hozzáfűzés)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Hozzáfűző blokk](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Blokk hozzáfűzése URL-címből](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Oldal elhelyezése az URL-címről](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [BLOB elhelyezése (Hozzáfűzés)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Blokk hozzáfűzése](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Blokk hozzáfűzése URL-címről](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-A nem felügyelt virtuálisgép-lemezek nem támogatottak a hierarchikus névtérrel rendelkező fiókokban. Ha hierarchikus névteret szeretne engedélyezni egy tárfiókban, helyezzen nem felügyelt virtuálisgép-lemezeket egy olyan tárfiókba, amelynem rendelkezik a hierarchikus névtér funkció engedélyezésével.
+A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, amelyek hierarchikus névtérrel rendelkeznek. Ha egy hierarchikus névteret szeretne engedélyezni egy Storage-fiókban, helyezze a nem felügyelt virtuális gépek lemezeit olyan Storage-fiókba, amelyben nincs engedélyezve a hierarchikus névtér funkció.
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Fájlrendszer-támogatás az SDK-kban, a PowerShellben és az Azure CLI-ben
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Fájlrendszer-támogatás az SDK-k, a PowerShell és az Azure CLI-ben
 
-- Az ACL-műveletek beszerzése és beállítása jelenleg nem rekurzív.
-- [Az Azure CLI-támogatás](data-lake-storage-directory-file-acl-cli.md) nyilvános előzetes verzióban érhető el.
+- Az ACL-műveletek beolvasása és beállítása jelenleg nem rekurzív.
+- Az [Azure CLI](data-lake-storage-directory-file-acl-cli.md) -támogatás nyilvános előzetes verzióban érhető el.
 
 
-## <a name="lifecycle-management-policies"></a>Életciklus-kezelési irányelvek
+## <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-* A blob pillanatképek törlése még nem támogatott.  
+* A blob-Pillanatképek törlése még nem támogatott.  
 
 ## <a name="archive-tier"></a>Archiválási szint
 
-Jelenleg van egy hiba, amely hatással van az archív hozzáférési szint.
+Jelenleg van egy olyan hiba, amely hatással van az archív hozzáférési szintre.
 
 
-## <a name="blobfuse"></a>Blobfuse (Blobfuse)
+## <a name="blobfuse"></a>Blobfuse
 
 A Blobfuse nem támogatott.
 
@@ -85,32 +85,32 @@ A Blobfuse nem támogatott.
 
 ## <a name="azcopy"></a>AzCopy
 
-Csak az AzCopy ([AzCopy v10)](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)legújabb verzióját használja.Az AzCopy korábbi verziói, például az AzCopy v8.1, nem támogatottak.
+Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.
 
 <a id="storage-explorer" />
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-Csak verziókat vagy újabb verziókat `1.6.0` használjon.
+Csak a vagy `1.6.0` újabb verziókat használja.
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer az Azure portalon
+## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer a Azure Portal
 
-Az ACL-ok még nem támogatottak.
+Az ACL-ek még nem támogatottak.
 
 <a id="third-party-apps" />
 
 ## <a name="thirdpartyapplications"></a>Harmadik féltől származó alkalmazások
 
-A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha a Blob API-kat hívó Data Lake Storage Gen2 alkalmazásokkal használja őket, valószínűleg működni fognak.
+A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha a blob API-kat hívó Data Lake Storage Gen2 alkalmazásokkal valószínűleg működni fognak.
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Hozzáférés-vezérlési listák (ACL) és névtelen olvasási hozzáférés
 
-Ha egy tárolóhoz [névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) biztosított, akkor az ACL-ok nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
+Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) illesztőprogram (nem támogatott a Data Lake Storage Gen2 szolgáltatással)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) illesztőprogram (nem támogatott a Data Lake Storage Gen2)
 
-Jelenleg a WASB-illesztőprogram, amelyet csak a Blob API-val való együttműködésre terveztek, néhány gyakori forgatókönyvben problémákba ütközik. Pontosabban, ha egy hierarchikus névtér-kompatibilis tárfiók ügyfele. A Data Lake Storage többprotokollos hozzáférése nem enyhíti ezeket a problémákat. 
+Jelenleg a WASB-illesztőprogram, amely csak a blob API-val való együttműködésre lett tervezve, problémákba ütközik néhány gyakori forgatókönyvben. Pontosabban, ha az ügyfél egy hierarchikus névteret használó Storage-fiók. A multi-Protocol hozzáférés Data Lake Storage nem fogja enyhíteni ezeket a problémákat. 
 
-Egyelőre (és valószínűleg a belátható jövőben) nem támogatjuk azokat az ügyfeleket, akik a WASB-illesztőprogramot használják ügyfélként egy hierarchikus névtér-kompatibilis tárfiókhoz. Ehelyett azt javasoljuk, hogy az [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) illesztőprogramját használja a Hadoop-környezetben. Ha a Hadoop branch-3-nál korábbi verzióval próbál kitérni egy helyszíni Hadoop-környezetből, akkor nyisson meg egy Azure-támogatási jegyet, hogy kapcsolatba léphessünk Önnel a helyes úton az Ön és szervezete számára.
+Egyelőre (és a várható jövőbeli jövőben) az ügyfelek nem támogatják a WASB-illesztőprogram ügyfélként való használatát egy hierarchikus névteret használó Storage-fiókhoz. Ehelyett azt javasoljuk, hogy az [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) illesztőprogramját használja a Hadoop-környezetben. Ha olyan helyszíni Hadoop-környezetből próbál áttelepíteni, amely a Hadoop ág-3-nál korábbi verziónál régebbi, akkor nyisson meg egy Azure-támogatási jegyet, hogy kapcsolatba lépjen Önnel az Ön és a szervezete számára elérhető megfelelő elérési úton.

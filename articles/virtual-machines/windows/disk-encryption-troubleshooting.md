@@ -1,6 +1,6 @@
 ---
-title: Az Azure lemeztitkosításhiba-elhárítási útmutatója
-description: Ez a cikk hibaelhárítási tippeket tartalmaz a Microsoft Azure lemeztitkosítás windowsos virtuális gépekhez.
+title: Azure Disk Encryption hibaelhárítási útmutató
+description: Ez a cikk hibaelhárítási tippeket tartalmaz a Windows rendszerű virtuális gépek Microsoft Azure lemezes titkosításához.
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -9,17 +9,17 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085688"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure lemeztitkosításhiba-elhárítási útmutatója
+# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption hibaelhárítási útmutató
 
-Ez az útmutató informatikai szakembereknek, információbiztonsági elemzőknek és felhőrendszergazdáknak szól, akiknek a szervezetei az Azure Disk Encryption szolgáltatást használják. Ez a cikk a lemeztitkosítással kapcsolatos problémák elhárításában nyújt segítséget.
+Ez az útmutató olyan informatikai szakemberek, Információbiztonsági elemzők és Felhőbeli rendszergazdák számára készült, akiknek a vállalata Azure Disk Encryptiont használ. Ez a cikk segítséget nyújt a lemezes titkosítással kapcsolatos problémák elhárításában.
 
-Az alábbi lépések bármelyikének megtétele előtt először győződjön meg arról, hogy a titkosítani kívánt virtuális gépek a [támogatott virtuálisgép-méretek és operációs rendszerek](disk-encryption-overview.md#supported-vms-and-operating-systems)közé tartoznak, és hogy minden előfeltételnek megfelelt:
+Az alábbi lépések bármelyikének megkezdése előtt győződjön meg arról, hogy a titkosítani kívánt virtuális gépek a támogatott virtuálisgép- [méretek és operációs rendszerek](disk-encryption-overview.md#supported-vms-and-operating-systems)közé tartoznak, és az összes előfeltétel teljesült:
 
 - [Hálózati követelmények](disk-encryption-overview.md#networking-requirements)
 - [Csoportházirend-követelmények](disk-encryption-overview.md#group-policy-requirements)
@@ -27,25 +27,25 @@ Az alábbi lépések bármelyikének megtétele előtt először győződjön me
 
  
 
-## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Az Azure lemeztitkosítás tűzfal mögötti hibaelhárítása
+## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Hibaelhárítás Azure Disk Encryption tűzfal mögött
 
-Ha a kapcsolatot tűzfal, proxykövetelmény vagy hálózati biztonsági csoport (NSG) beállításai korlátozzák, a bővítmény szükséges feladatok végrehajtására való képessége megszakadhat. Ez a megszakítás állapotüzeneteket eredményezhet, például a "Bővítmény állapota nem érhető el a virtuális gépen." A várt esetekben a titkosítás nem fejeződik be. Az alábbi szakaszokban gyakori tűzfalproblémák merülhetnek fel, amelyeket megvizsgálhat.
+Ha a kapcsolatot tűzfal, proxy vagy hálózati biztonsági csoport (NSG) beállításai korlátozzák, előfordulhat, hogy a bővítménynek a szükséges feladatok elvégzésére való képessége megszakad. Ez a megszakítás olyan állapotüzenetek elvégzését eredményezheti, mint például a "bővítmény állapota nem érhető el a virtuális gépen". A várt helyzetekben a titkosítás nem fejeződik be. Az alábbi szakaszokban néhány gyakori tűzfallal kapcsolatos probléma merülhet fel.
 
 ### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
-Az alkalmazott hálózati biztonsági csoport beállításoknak továbbra is lehetővé kell tenniük, hogy a végpont megfeleljen a lemeztitkosítás dokumentált hálózati [konfigurációs előfeltételeinek.](disk-encryption-overview.md#networking-requirements)
+Az alkalmazott hálózati biztonsági csoportok beállításai továbbra is lehetővé teszik, hogy a végpont megfeleljen a lemez titkosításának dokumentált hálózati konfigurációs [előfeltételeinek](disk-encryption-overview.md#networking-requirements) .
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault tűzfal mögött
 
-Ha az Azure [AD-hitelesítő adatokkal](disk-encryption-windows-aad.md#)engedélyezve van a titkosítás, a célvirtuális gépnek engedélyeznie kell a kapcsolatot az Azure Active Directory végpontjaihoz és a Key Vault-végpontokhoz. Az Aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományainak](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56. A Key Vault-útmutató a [tűzfal mögötti Azure Key Vault elérésére](../../key-vault/general/access-behind-firewall.md)vonatkozó dokumentációban található.
+Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-windows-aad.md#), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
 
-### <a name="azure-instance-metadata-service"></a>Azure-példány metaadat-szolgáltatása 
-A virtuális gépnek hozzá kell tudnia férni az [Azure Instance metaadatszolgáltatás-végpontjához,](../windows/instance-metadata-service.md) amely egy jól ismert, nem irányítható IP-címet (`169.254.169.254`) használ, amely csak a virtuális gépen belül érhető el.  Nem támogatottak azok a proxykonfigurációk, amelyek módosítják a helyi HTTP-forgalmat erre a címre (például x-forwarded-for fejléc hozzáadása).
+### <a name="azure-instance-metadata-service"></a>Azure-Instance Metadata Service 
+A virtuális gépnek képesnek kell lennie elérni az [Azure-példány metaadatainak szolgáltatási](../windows/instance-metadata-service.md) végpontját, amely egy jól ismert, nem irányítható IP`169.254.169.254`-címet () használ, amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
 
-## <a name="troubleshooting-windows-server-2016-server-core"></a>A Windows Server 2016 Server Core hibáinak elhárítása
+## <a name="troubleshooting-windows-server-2016-server-core"></a>A Windows Server 2016 Server Core hibaelhárítása
 
-Windows Server 2016 Server Core rendszerben a bdehdcfg összetevő alapértelmezés szerint nem érhető el. Ezt az összetevőt az Azure Disk Encryption megköveteli. A rendszerkötet felosztására szolgál az operációs rendszer kötete, amely csak egyszer történik a virtuális gép élettartama. Ezek a bináris fájlok nem szükségesek a későbbi titkosítási műveletek során.
+A Windows Server 2016 Server Core rendszeren a bdehdcfg összetevő alapértelmezés szerint nem érhető el. Ezt az összetevőt Azure Disk Encryption kell megadnia. A rendszerkötet az operációs rendszer kötetéről való felosztására szolgál, amelyet csak egyszer kell elvégezni a virtuális gép élettartama során. Ezek a bináris fájlok a későbbi titkosítási műveletek során nem szükségesek.
 
-A probléma kerülő megoldásához másolja a következő négy fájlt a Windows Server 2016 Data Center virtuális gépről ugyanarra a helyre a Server Core szolgáltatásban:
+A probléma megkerüléséhez másolja a következő négy fájlt egy Windows Server 2016 adatközpontbeli virtuális gépről ugyanarra a helyre a Server Core-on:
 
    ```
    \windows\system32\bdehdcfg.exe
@@ -60,9 +60,9 @@ A probléma kerülő megoldásához másolja a következő négy fájlt a Window
    bdehdcfg.exe -target default
    ```
 
-1. Ez a parancs 550 MB-os rendszerpartíciót hoz létre. Indítsa újra a rendszert.
+1. Ez a parancs egy 550 MB rendszerpartíciót hoz létre. Indítsa újra a rendszerét.
 
-1. A Kötetek ellenőrzéséhez használja a DiskPart programot, majd folytassa a folytatást.  
+1. A DiskPart használatával jelölje ki a köteteket, majd folytassa a következővel:.  
 
 Például:
 
@@ -76,17 +76,17 @@ DISKPART> list vol
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
 
-## <a name="troubleshooting-encryption-status"></a>Titkosítási állapot elhárítása 
+## <a name="troubleshooting-encryption-status"></a>Titkosítási állapot hibaelhárítása 
 
-Előfordulhat, hogy a portál egy lemezt titkosítottként jelenít meg, még akkor is, ha a virtuális gépen belül titkosítatlan.  Ez akkor fordulhat elő, ha alacsony szintű parancsokat használnak a lemez közvetlen titkosításának feloldására a virtuális gépen belül, a magasabb szintű Azure Lemeztitkosítás-kezelési parancsok használata helyett.  A magasabb szintű parancsok nem csak a virtuális gépen belüli lemez titkosításának feloldása, hanem a virtuális gépen kívül is frissítik a fontos platformszintű titkosítási beállításokat és a virtuális géphez társított bővítménybeállításokat.  Ha ezek nem tartják az összehangolás, a platform nem lesz képes jelenteni a titkosítási állapot, vagy a virtuális gép kiépítése megfelelően.   
+A portál titkosított lemezként jelenhet meg, miután a virtuális gépen titkosítva lett.  Ez akkor fordulhat elő, ha az alacsony szintű parancsok használatával a rendszer a virtuális gépről közvetlenül titkosítja a lemezt a magasabb szintű Azure Disk Encryption felügyeleti parancsok használata helyett.  A magasabb szintű parancsok nem csak a virtuális gépről titkosítják a lemezt, hanem a virtuális GÉPEN kívül is frissítik a virtuális géphez tartozó fontos platform szintű titkosítási beállításokat és bővítmény-beállításokat.  Ha ezeket nem tartja összhangban, a platform nem fogja tudni bejelenteni a titkosítási állapotot, vagy megfelelően kiépíteni a virtuális gépet.   
 
-Az Azure Disk Encryption letiltásához a PowerShell segítségével használja [az Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsot, majd az [Remove-AzVMDiskEncryptionExtension parancsot.](/powershell/module/az.compute/remove-azvmdiskencryptionextension) Az Remove-AzVMDiskEncryptionExtension futtatása a titkosítás letiltása előtt sikertelen lesz.
+A Azure Disk Encryption PowerShell-lel való letiltásához használja a [disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsot, majd a [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). A Remove-AzVMDiskEncryptionExtension futtatása a titkosítás letiltása előtt sikertelen lesz.
 
-Az Azure Disk Encryption cli-vel történő letiltásához használja [az az vm titkosításletiltást.](/cli/azure/vm/encryption) 
+A CLI-vel való Azure Disk Encryption letiltásához használja [az az VM encryption disable](/cli/azure/vm/encryption)parancsot. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban többet megtudhat az Azure disk encryption néhány gyakori problémájáról, és arról, hogyan háríthatja el ezeket a problémákat. A szolgáltatásról és annak képességeiről az alábbi cikkekben talál további információt:
+Ebben a dokumentumban többet is megtudhat a Azure Disk Encryption és a problémák elhárításával kapcsolatos gyakori problémákról. A szolgáltatással és képességeivel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Lemeztitkosítás alkalmazása az Azure Security Centerben](../../security-center/security-center-apply-disk-encryption.md)
-- [Azure-adattitkosítás inaktív helyen](../../security/fundamentals/encryption-atrest.md)
+- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
+- [Az Azure-beli adattitkosítás inaktív állapotban](../../security/fundamentals/encryption-atrest.md)

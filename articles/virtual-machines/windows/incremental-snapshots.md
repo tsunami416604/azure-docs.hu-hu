@@ -1,6 +1,6 @@
 ---
-title: Növekményes pillanatképek használata a nem felügyelt Azure Windows VM-lemezek biztonsági mentéséhez és helyreállításához
-description: Hozzon létre egy egyéni megoldást az Azure Windows virtuálisgép-lemezek biztonsági mentéséhez és helyreállításához növekményes pillanatképek használatával.
+title: Növekményes Pillanatképek használata a nem felügyelt Azure Windows rendszerű virtuális gépek biztonsági mentéséhez és helyreállításához
+description: Egyéni megoldást hozhat létre az Azure Windows rendszerű virtuálisgép-lemezek biztonsági mentéséhez és helyreállításához növekményes Pillanatképek használatával.
 author: roygara
 manager: twooley
 ms.service: virtual-machines
@@ -10,11 +10,11 @@ ms.date: 01/23/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 5ace6017ce66bbaa8be71e23196823c1c1318902
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869478"
 ---
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Az Azure nem felügyelt virtuálisgép-lemezeinek biztonsági és biztonsági és biztonsági és biztonsági és biztonsági és biztonsági, növekményes pillanatképek
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Azure-beli nem felügyelt VM-lemezek biztonsági mentése növekményes pillanatképekkel
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

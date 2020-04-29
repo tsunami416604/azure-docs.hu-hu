@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133148"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub kifejezések glosszáriuma
@@ -94,7 +94,7 @@ A Cloud Gateway lehetővé teszi a csatlakozást olyan eszközökhöz, amelyek n
 
 Egy IoT hub-ból egy csatlakoztatott eszközre küldött üzenetekre hivatkozik. Ezek az üzenetek gyakran olyan parancsok, amelyek arra utasítja az eszközt, hogy végezze el a műveletet. További információ: [üzenetek küldése és fogadása IoT Hubsal](iot-hub-devguide-messaging.md).
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 Az [automatikus eszköz-konfiguráció](iot-hub-auto-device-config.md)kontextusában a IoT hub belüli konfiguráció határozza meg az eszközök egy készletének kívánt konfigurációját, és mérőszámokat biztosít az állapot és a folyamat jelentéséhez.
 

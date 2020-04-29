@@ -1,6 +1,6 @@
 ---
-title: JSON-fájlok lekérdezése az igény szerinti SQL használatával (előzetes verzió)
-description: Ez a szakasz bemutatja, hogyan olvashatja a JSON-fájlokat az Sql on-demand használatával az Azure Synapse Analytics szolgáltatásban.
+title: JSON-fájlok lekérdezése az SQL on-demand használatával (előzetes verzió)
+description: Ez a szakasz azt ismerteti, hogyan olvashatók be a JSON-fájlok az SQL igény szerinti használatával az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 645baf9102785d223fd1f23ae52a4609725f795b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770812"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése az SQL igény szerinti (előzetes verzió) használatával az Azure Synapse Analytics szolgáltatásban
+# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
-Ebben a cikkben megtudhatja, hogyan írhat lekérdezést az SQL igény szerinti (előzetes verzió) használatával az Azure Synapse Analytics szolgáltatásban. A lekérdezés célja a JSON-fájlok olvasása.
+Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A lekérdezés célja, hogy beolvassa a JSON-fájlokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk többi részének elolvasása előtt tekintse át a következő cikkeket:
+A cikk további részének beolvasása előtt tekintse át a következő cikkeket:
 
 - [Első beállítás](query-data-storage.md#first-time-setup)
 - [Előfeltételek](query-data-storage.md#prerequisites)
 
-## <a name="sample-json-files"></a>Minta JSON-fájlok
+## <a name="sample-json-files"></a>JSON-fájlok mintája
 
-Az alábbi szakasz mintaparancsfájlokat tartalmaz a JSON-fájlok olvasásához. A fájlok egy *json* tárolóban, *mappakönyvekben*tárolódnak, és egyetlen könyvbejegyzést tartalmaznak, amelynek szerkezete a következő:
+Az alábbi szakasz példákat tartalmaz a JSON-fájlok olvasásához. A fájlok *JSON* -tárolóban, *címjegyzékekben*tárolódnak, és a következő szerkezettel rendelkező egyetlen könyvből állhatnak:
 
 ```json
 {
@@ -49,7 +49,7 @@ Az alábbi szakasz mintaparancsfájlokat tartalmaz a JSON-fájlok olvasásához.
 
 ## <a name="read-json-files"></a>JSON-fájlok olvasása
 
-Ha a JSON-fájlokat JSON_VALUE és [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)használatával szeretné feldolgozni, a JSON-fájlt egyetlen oszlopban kell elolvasnia a tárolóból. A következő parancsfájl egyetlen oszlopban olvassa be a *book1.json* fájlt:
+A JSON-fájlok JSON_VALUE és [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)használatával történő feldolgozásához a JSON-fájlt egyetlen oszlopként kell beolvasnia a tárterületről. A következő parancsfájl egyetlen oszlopként olvassa be a *Munka1. JSON* fájlt:
 
 ```sql
 SELECT
@@ -68,11 +68,11 @@ FROM
 ```
 
 > [!NOTE]
-> A teljes JSON-fájlt egysorosként vagy oszlopként olvassa. Tehát a FIELDTERMINATOR, A FIELDQUOTE ÉS a ROWTERMINATOR beállítása 0x0b.
+> A teljes JSON-fájlt egyetlen sorra vagy oszlopba olvassa. Így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR értéke 0x0b.
 
-## <a name="query-json-files-using-json_value"></a>JSON-fájlok lekérdezése JSON_VALUE
+## <a name="query-json-files-using-json_value"></a>JSON-fájlok lekérdezése JSON_VALUE használatával
 
-Az alábbi lekérdezés bemutatja, hogyan lehet [használni JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) letölteni skaláris értékek (cím, kiadó) egy könyv című *valószínűségi és statisztikai módszerek cryptology, Bevezetés a kiválasztott cikkek:*
+Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a skaláris értékek (title, kiadó) egy olyan könyvből való lekéréséhez, amely egy *valószínűségi és statisztikai metódusokat használ a Cryptology-ben, a kiválasztott cikkek bemutatása*:
 
 ```sql
 SELECT
@@ -94,9 +94,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-json_query"></a>JSON-fájlok lekérdezése JSON_QUERY
+## <a name="query-json-files-using-json_query"></a>JSON-fájlok lekérdezése JSON_QUERY használatával
 
-A következő lekérdezés bemutatja, hogyan lehet [használni JSON_QUERY,](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) hogy lekérje tárgyak és tömbök (szerzők) egy könyv című *valószínűségi és statisztikai módszerek kriptológiában, Bevezetés a kiválasztott témák:*
+A következő lekérdezés azt mutatja be, hogyan használhatók a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) egy olyan könyvben lévő objektumok és tömbök (szerzők) lekéréséhez *, amelyek valószínűségi és statisztikai módszerei a Cryptology-ben, a kiválasztott témakörök bemutatása*:
 
 ```sql
 SELECT
@@ -117,9 +117,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-openjson"></a>JSON-fájlok lekérdezése OPENJSON használatával
+## <a name="query-json-files-using-openjson"></a>JSON-fájlok lekérdezése a OPENJSON UTASÍTÁSSAL használatával
 
-A következő lekérdezés [openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Ez letölteni tárgyak és tulajdonságok című könyv *valószínűségi és statisztikai módszerek cryptology, Bevezetés a kiválasztott cikkek:*
+A következő lekérdezés a [openjson utasítással](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-t használja. Az objektumok és tulajdonságok lekérése egy, a *Cryptology-ben a valószínűségi és statisztikai módszerekkel foglalkozó könyvben, a kiválasztott cikkek bemutatása*:
 
 ```sql
 SELECT
@@ -142,7 +142,7 @@ WHERE
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek ebben a sorozatban bemutatja, hogyan kell:
+A sorozat következő cikkei a következőket szemléltetik:
 
 - [Mappák és több fájl lekérdezése](query-folders-multiple-csv-files.md)
 - [Nézetek létrehozása és használata](create-use-views.md)

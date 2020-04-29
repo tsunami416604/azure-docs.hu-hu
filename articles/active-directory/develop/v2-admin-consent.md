@@ -1,6 +1,6 @@
 ---
-title: Microsoft identity platform felügyeleti hozzájárulási protokolljai
-description: A Microsoft identity platform végpontján az engedélyezés leírása, beleértve a hatóköröket, az engedélyeket és a hozzájárulást.
+title: A Microsoft Identity platform rendszergazdai engedélyezési protokolljai
+description: Az engedélyezés leírása a Microsoft Identity platform végpontján, beleértve a hatóköröket, az engedélyeket és a jóváhagyást.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,25 +13,25 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868667"
 ---
-# <a name="admin-consent-on-the-microsoft-identity-platform"></a>Rendszergazdai hozzájárulás a Microsoft identitásplatformján
+# <a name="admin-consent-on-the-microsoft-identity-platform"></a>Rendszergazdai engedély a Microsoft Identity platformon
 
-Egyes engedélyek hez a rendszergazda hozzájárulása szükséges ahhoz, hogy a bérlőn belül megadhatók legyenek.  A rendszergazdai hozzájárulási végpont használatával engedélyeket adhat a teljes bérlőnek.
+Bizonyos engedélyekhez a rendszergazdának kell beleegyeznie, mielőtt a bérlőn belül is megadhatók.  A rendszergazdai jogosultságok végpontját is használhatja, hogy engedélyeket adjon egy teljes bérlőnek.
 
-## <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: Írja alá a felhasználót az alkalmazásba
+## <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: a felhasználó aláírása az alkalmazásba
 
-Általában, ha olyan alkalmazást hoz létre, amely a rendszergazdai hozzájárulási végpontot használja, az alkalmazásnak szüksége van egy lapra vagy nézetre, amelyben a rendszergazda jóváhagyhatja az alkalmazás engedélyeit. Ez az oldal része lehet az alkalmazás regisztrációs folyamatának, az alkalmazás beállításainak része, vagy lehet egy dedikált "connect" folyamat. Sok esetben célszerű, hogy az alkalmazás csak akkor jelenítse meg ezt a "connect" nézetet, ha a felhasználó bejelentkezett egy munkahelyi vagy iskolai Microsoft-fiókkal.
+Ha olyan alkalmazást hoz létre, amely a rendszergazdai jogosultságok végpontját használja, akkor az alkalmazásnak szüksége van egy olyan oldalra vagy nézetre, amelyben a rendszergazda jóváhagyhatja az alkalmazás engedélyeit. Ezen a lapon lehet az alkalmazás regisztrációs folyamatának része, az alkalmazás beállításainak egy része, vagy egy dedikált "kapcsolat" folyamat is. Sok esetben érdemes megmutatni, hogy az alkalmazás csak akkor jelenjen meg ez a "kapcsolódás" nézet, ha egy felhasználó munkahelyi vagy iskolai Microsoft-fiók bejelentkezett.
 
-Amikor bejelentkezik a felhasználóaz alkalmazásba, azonosíthatja azt a szervezetet, amelyhez a rendszergazda tartozik, mielőtt megkérné őket a szükséges engedélyek jóváhagyására. Bár nem feltétlenül szükséges, segíthet egy intuitívabb felhasználói élmény létrehozásában. A felhasználó bejelentkezéséhez kövesse a [Microsoft identity platform protokoll oktatóanyagait.](active-directory-v2-protocols.md)
+Amikor aláírja a felhasználót az alkalmazásba, azonosíthatja azt a szervezetet, amelyhez a rendszergazda tartozik, mielőtt megkéri őket a szükséges engedélyek jóváhagyására. Bár ez nem feltétlenül szükséges, így könnyebben hozhat létre egy intuitív felhasználói élményt a szervezeti felhasználók számára. A felhasználó aláírásához kövesse a [Microsoft Identity platform protokoll oktatóanyagokat](active-directory-v2-protocols.md).
 
-## <a name="request-the-permissions-from-a-directory-admin"></a>Engedélyek kérése címtáradminisztrátortól
+## <a name="request-the-permissions-from-a-directory-admin"></a>Engedélyek kérése egy címtár-rendszergazdától
 
-Ha készen áll arra, hogy engedélyeket kérjen a szervezet rendszergazdájától, átirányíthatja a felhasználót a Microsoft identity platform *rendszergazdájának hozzájárulási végpontjára.*
+Ha készen áll arra, hogy engedélyt kérjen a szervezete rendszergazdájától, átirányíthatja a felhasználót a Microsoft Identity platform *rendszergazdai engedélyezési végpontján*.
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -47,14 +47,14 @@ https://graph.microsoft.com/mail.send
 
 | Paraméter     | Állapot     | Leírás                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Kötelező | Az a címtár-bérlő, amelytől engedélyt szeretne kérni. Guid vagy rövid névformátumban vagy általánosan `organizations` hivatkozott, amint az a példában látható, megadható. Ne használja a "közös", a személyes fiókok nem adhat rendszergazdai jóváhagyást, kivéve a bérlő ikörnyezetében. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás biztosítása érdekében, ha lehetséges, használja a bérlőazonosítót. |
-| `client_id` | Kötelező | Az **Alkalmazás (ügyfél) azonosító,** amely az [Azure Portal – Alkalmazás regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt élmény. |
-| `redirect_uri` | Kötelező |Az átirányítási URI, ahol azt szeretné, hogy a választ kell küldeni az alkalmazás kezelni. Pontosan meg kell egyeznie az alkalmazásregisztrációs portálon regisztrált átirányítási URI-k egyikével. |
-| `state` | Ajánlott | A kérelemben szereplő érték, amely a jogkivonat-válaszban is vissza kerül. Ez lehet egy sor bármilyen tartalmat akarsz. Az állapot segítségével kódolhat információkat a felhasználó állapotáról az alkalmazásban a hitelesítési kérelem bekövetkezése előtt, például azt az oldalt vagy nézetet, amelyen voltak. |
-|`scope`        | Kötelező      | Az alkalmazás által kért engedélyek készletét határozza meg. Ez lehet statikus (a /.default használatával) vagy dinamikus hatókörök.  Ez magában foglalhatja az`openid`OIDC hatóköröket ( , `profile`, `email`. ). |
+| `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A GUID vagy a felhasználóbarát név formátumban adható meg, vagy a példában látható `organizations` módon általános hivatkozással. Ne használja a "Common" kulcsszót, mert a személyes fiókok nem biztosíthatnak rendszergazdai jogosultságot, kivéve a bérlő kontextusát. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás érdekében használja a bérlői azonosítót, ha lehetséges. |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `redirect_uri` | Kötelező |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
+| `state` | Ajánlott | A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. A kívánt tartalom sztringje lehet. Az állapot használatával kódolja a felhasználó állapotára vonatkozó adatokat az alkalmazásban, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
+|`scope`        | Kötelező      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus (/.default használatával) vagy dinamikus hatókörök használata.  Ebbe beletartozhatnak a OIDC hatókörök`openid`( `profile`, `email`,) is. |
 
 
-Ezen a ponton az Azure AD megköveteli a bérlői rendszergazda a kérelem teljesítéséhez. A rendszergazdának jóvá kell hagynia a `scope` paraméterben kért összes engedélyt.  Ha statikus (`/.default`) értéket használt, az a v1.0-s rendszergazdai hozzájárulási végponthoz hasonlóan fog működni, és az alkalmazáshoz szükséges engedélyekben található összes hatókörhöz beleegyezést kér.
+Ezen a ponton az Azure AD-nek a bérlői rendszergazdának kell bejelentkeznie a kérelem teljesítéséhez. A rendszer felkéri a rendszergazdát, hogy hagyja jóvá a `scope` paraméterben kért összes engedélyt.  Ha statikus (`/.default`) értéket használt, úgy fog működni, mint a v 1.0 rendszergazdai engedélyezési végpont, és az alkalmazáshoz szükséges engedélyekben található összes hatókörre vonatkozó kérelem beleegyezése.
 
 ### <a name="successful-response"></a>Sikeres válasz
 
@@ -66,27 +66,27 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 | Paraméter         | Leírás                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
-| `tenant`| Az a címtár-bérlő, amely megadta az alkalmazásnak a kért engedélyeket GUID formátumban.|
-| `state`           | A kérelemben szereplő érték, amely a jogkivonat-válaszban is visszakerül. Ez lehet egy sor bármilyen tartalmat akarsz. Az állapot a felhasználó állapotára vonatkozó információk kódolására szolgál az alkalmazásban a hitelesítési kérelem bekövetkezése előtt, például az oldal vagy a nézet, amelyen voltak.|
-| `scope`          | Az alkalmazáshoz hozzáférést kapott engedélyek készlete.|
-| `admin_consent`   | Lesz beállítva, hogy `True`.|
+| `tenant`| A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva.|
+| `state`           | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
+| `scope`          | Az alkalmazáshoz való hozzáférést engedélyező engedélyek készlete.|
+| `admin_consent`   | A `True`következőre lesz beállítva:.|
 
-### <a name="error-response"></a>Hibaválasz
+### <a name="error-response"></a>Hiba válasza
 
 `http://localhost/myapp/permissions?error=consent_required&error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z&admin_consent=True&tenant=fa15d692-e9c7-4460-a743-29f2956fd429&state=12345`
 
-A sikeres válaszban látható paraméterekhez hozzáadva a hibaparaméterek az alábbiak szerint jelennek meg.
+A sikeres válaszban látható paraméterekhez való hozzáadáskor a hiba paramétereit az alábbi módon tekintheti meg.
 
 | Paraméter          | Leírás                                                                                      |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
-| `error`            | Hibakód-karakterlánc, amely a előforduló hibatípusok osztályozására használható, és a hibákra való reagálásra használható.|
-| `error_description`| Egy adott hibaüzenet, amely segíthet a fejlesztőnek a hiba kiváltó okának azonosításában.|
-| `tenant`| Az a címtár-bérlő, amely megadta az alkalmazásnak a kért engedélyeket GUID formátumban.|
-| `state`           | A kérelemben szereplő érték, amely a jogkivonat-válaszban is visszakerül. Ez lehet egy sor bármilyen tartalmat akarsz. Az állapot a felhasználó állapotára vonatkozó információk kódolására szolgál az alkalmazásban a hitelesítési kérelem bekövetkezése előtt, például az oldal vagy a nézet, amelyen voltak.|
-| `admin_consent`   | Úgy lesz `True` beállítva, hogy jelezze, hogy ez a válasz egy rendszergazdai hozzájárulási folyamaton történt.|
+| `error`            | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható, és felhasználható a hibákra való reagálásra.|
+| `error_description`| Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hibák kiváltó okának azonosításában.|
+| `tenant`| A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva.|
+| `state`           | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
+| `admin_consent`   | Úgy lesz beállítva `True` , hogy jelezze, hogy ez a válasz rendszergazdai engedélyezési folyamaton történt.|
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse [meg, hogyan alakíthat át egy alkalmazást több-bérlőssé](howto-convert-app-to-be-multi-tenant.md)
-- Ismerje meg, hogyan [támogatja a jóváhagyást az OAuth 2.0 protokollrétegen az engedélyezési kód engedélyezési folyamata során.](v2-oauth2-auth-code-flow.md#request-an-authorization-code)
-- Ismerje [meg, hogyan egy több-bérlős alkalmazás használhatja a jóváhagyási keretet](active-directory-devhowto-multi-tenant-overview.md) a "felhasználó" és a "rendszergazda" hozzájárulás megvalósításához, támogatva a fejlettebb többrétegű alkalmazásmintákat.
-- Az [Azure AD-alkalmazások hozzájárulási élményei](application-consent-experience.md)
+- Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
+- Ismerje meg [, hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll szintjén az engedélyezési kód engedélyezése során](v2-oauth2-auth-code-flow.md#request-an-authorization-code).
+- Ismerje meg, [Hogyan használhatják a több-bérlős alkalmazások a](active-directory-devhowto-multi-tenant-overview.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, ami fejlettebb többrétegű alkalmazási mintákat is támogat.
+- Az [Azure ad-alkalmazáshoz való beleegyezési tapasztalatok](application-consent-experience.md) ismertetése

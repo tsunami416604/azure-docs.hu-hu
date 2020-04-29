@@ -1,42 +1,42 @@
 ---
-title: Runbook-kimenet és üzenetek az Azure Automationben
-description: Bemutatja, hogyan hozhat létre és kérhet le kimeneti és hibaüzeneteket a runbookokból az Azure Automationben.
+title: Runbook kimenete és üzenetei Azure Automation
+description: Ismerteti, hogyan lehet kimeneti és hibaüzeneteket létrehozni és beolvasni a runbookok Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535536"
 ---
-# <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
+# <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook kimenete és üzenetei Azure Automation
 
-A legtöbb Azure Automation runbookok rendelkeznek valamilyen kimeneti formában. Ez a kimenet lehet egy hibaüzenet a felhasználó vagy egy összetett objektum, amelynek célja, hogy egy másik runbook. A Windows PowerShell [több adatfolyamot](/powershell/module/microsoft.powershell.core/about/about_redirection) biztosít a parancsfájlból vagy munkafolyamatból származó kimenet küldéséhez. Az Azure Automation az egyes adatfolyamokkal eltérően működik. Kövesse az adatfolyamok használatának ajánlott eljárásokat, amikor runbookot hoz létre.
+A legtöbb Azure Automation runbookok valamilyen típusú kimenettel rendelkezik. Ez a kimenet hibaüzenetet kaphat a felhasználónak vagy egy másik runbook használni kívánt összetett objektumnak. A Windows PowerShell [több streamet](/powershell/module/microsoft.powershell.core/about/about_redirection) biztosít a kimenetek parancsfájlokból vagy munkafolyamatokból való küldéséhez. A Azure Automation az egyes streamek esetében különbözőképpen működik. Ha runbook hoz létre, kövesse az ajánlott eljárásokat a streamek használatához.
 
-Az alábbi táblázat röviden ismerteti az egyes adatfolyamokat a közzétett runbookok azure-portálján és a [runbooktesztelése](automation-testing-runbook.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi adatfolyam üzenetfolyamként van besorolva, és az információ felhasználóval való közlésére szolgál. 
+Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedéssel rendelkeznek Azure Portal a közzétett runbookok és a [runbook tesztelése](automation-testing-runbook.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi stream üzenet-adatfolyamként van besorolva, amely a felhasználó felé irányuló információk közlésére szolgál. 
 
 | Stream | Leírás | Közzétett | Tesztelés |
 |:--- |:--- |:--- |:--- |
-| Hiba |A felhasználónak szóló hibaüzenet. A kivétellel ellentétben a runbook alapértelmezés szerint hibaüzenet után folytatódik. |Írásban a munka előzmények |Megjelenik a Teszt kimenet ablaktáblában |
-| Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható runbookokban. |Nem írt feladatelőzmények |Nem jelenik meg a Teszt kimenet ablaktáblában |
-| Kimenet |Másik runbookok számára készült objektum. |Írásban a munka előzmények |Megjelenik a Teszt kimenet ablaktáblában |
-| Előrehaladás |A runbook összes tevékenysége előtt és után automatikusan létrejövő rekordok. A runbook nem próbálja meg létrehozni a saját folyamatrekordokat, mivel azok egy interaktív felhasználó számára. |Csak akkor írva a feladatelőzményekbe, ha a runbook folyamatnaplózása be van kapcsolva |Nem jelenik meg a Teszt kimenet ablaktáblában |
-| Részletes |Általános vagy hibakeresési információkat tartalmazó üzenetek. |Csak akkor írva a feladatelőzményekbe, ha a runbook részletes naplózása be van kapcsolva |Csak akkor jelenik `VerbosePreference` meg a Teszt kimenet iatáblában, ha a változó a Runbookban való folytatás ra van beállítva |
-| Figyelmeztetés |A felhasználónak szóló figyelmeztető üzenet. |Írásban a munka előzmények |Megjelenik a Teszt kimenet ablaktáblában |
+| Hiba |A felhasználónak szóló hibaüzenet. A kivételtől eltérően a runbook alapértelmezés szerint egy hibaüzenet után is folytatódik. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
+| Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható a runbookok. |Nem írt a feladatok előzményeire |Nem jelenik meg a test output (kimenet) ablaktáblán |
+| Kimenet |Másik runbookok számára készült objektum. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
+| Előrehaladás |A runbook összes tevékenysége előtt és után automatikusan létrejövő rekordok. A runbook nem próbálja meg saját folyamatokat létrehozni, mivel azok interaktív felhasználók számára készültek. |Csak akkor íródik a feladatok előzményeibe, ha a runbook be van kapcsolva. |Nem jelenik meg a test output (kimenet) ablaktáblán |
+| Részletes |Általános vagy hibakeresési adatokat tartalmazó üzenetek. |Csak akkor íródott a feladatok előzményeire, ha a részletes naplózás be van kapcsolva a runbook |Csak akkor jelenik meg a test output `VerbosePreference` (tesztelés) ablaktáblán, ha a változó a folytatás runbook értékre van állítva. |
+| Figyelmeztetés |A felhasználónak szóló figyelmeztető üzenet. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="output-stream"></a>Kimeneti adatfolyam
 
-A kimeneti adatfolyam a parancsfájl vagy munkafolyamat által létrehozott objektumok kimenetére szolgál, ha az megfelelően fut. Az Azure Automation elsősorban ezt az adatfolyamot használja az [aktuális runbookot](automation-child-runbooks.md)hívó szülő runbookok által felhasznált objektumokhoz. Amikor egy szülő [egy runbook inline-t hív meg,](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution)a gyermek adatokat ad vissza a kimeneti adatfolyamból a szülőnek. 
+A kimeneti adatfolyam a parancsfájlok vagy a munkafolyamat megfelelő futtatásakor létrehozott objektumok kimenetéhez használatos. Azure Automation elsődlegesen ezt az adatfolyamot használja azon objektumok számára, amelyeket az [aktuális runbook](automation-child-runbooks.md)meghívó fölérendelt runbookok használ. Amikor egy szülő [meghívja a runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution), a gyermek visszaadja az adatokat a kimeneti adatfolyamból a szülőnek. 
 
-A runbook a kimeneti adatfolyam ot használja az általános információk kommunikálására az ügyféllel csak akkor, ha azt soha nem hívta meg egy másik runbook. Ajánlott eljárásként azonban a runbookok általában a [részletes adatfolyamot](#verbose-stream) kell használniuk az általános információk közléséhez a felhasználóval.
+A runbook a kimeneti adatfolyam használatával közli az általános információkat az ügyféllel, ha azt más runbook nem hívja meg. Az ajánlott eljárás szerint azonban a [részletes streamet](#verbose-stream) általában a runbookok kell használnia az általános információk a felhasználóhoz való továbbításához.
 
-A runbook adatokírási adatokat a kimeneti adatfolyam [write-output](https://technet.microsoft.com/library/hh849921.aspx)használatával. Azt is megteheti, hogy az objektumot a saját sorára helyezi a parancsfájlban.
+Írja be a runbook az adatokat a kimeneti adatfolyamba [írási kimenet](https://technet.microsoft.com/library/hh849921.aspx)használatával. Azt is megteheti, hogy az objektumot a parancsfájl saját sorába helyezi.
 
 ```powershell
 #The following lines both write an object to the output stream.
@@ -44,9 +44,9 @@ Write-Output –InputObject $object
 $object
 ```
 
-### <a name="handling-output-from-a-function"></a>Kimenet kezelése egy függvényből
+### <a name="handling-output-from-a-function"></a>Függvény kimenetének feldolgozása
 
-Amikor egy runbook-függvény a kimeneti streambe ír, a kimenet visszakerül a runbookba. Ha a runbook hozzárendeli, hogy a kimenet egy változóhoz, a kimenet nem íródik a kimeneti adatfolyamba. Írás bármely más stream a függvényen belül írja a megfelelő stream a runbook. Fontolja meg a következő minta PowerShell-munkafolyamat runbook.
+Amikor egy runbook függvény a kimeneti adatfolyamba ír, a kimenet vissza lesz adva a runbook. Ha a runbook a kimenetet egy változóhoz rendeli, a kimenet nem íródik a kimeneti adatfolyamba. A függvényen belüli bármely más streambe való írás a runbook tartozó megfelelő streambe ír. Vegye figyelembe a következő PowerShell-munkafolyamat-runbook.
 
 ```powershell
 Workflow Test-Runbook
@@ -64,34 +64,34 @@ Workflow Test-Runbook
 }
 ```
 
-A runbook-feladat kimeneti adatfolyama a következő:
+A runbook-feladatokhoz tartozó kimeneti adatfolyam a következő:
 
 ```output
 Output inside of function
 Output outside of function
 ```
 
-A részletes stream a runbook feladat:
+A runbook feladatsor részletes streamje a következő:
 
 ```output
 Verbose outside of function
 Verbose inside of function
 ```
 
-Miután közzétette a runbookot, és mielőtt elindítané, be kell kapcsolnia a részletes naplózást a runbook-beállításokban a részletes adatfolyam-kimenet lefoglalásához.
+Miután közzétette a runbook, és megkezdte a megkezdését, be kell kapcsolni a részletes naplózást a runbook-beállításokban a részletes adatfolyam kimenetének lekéréséhez.
 
-### <a name="declaring-output-data-type"></a>Kimeneti adattípus deklarálása
+### <a name="declaring-output-data-type"></a>A kimeneti adattípus deklarálása
 
-Az alábbi példák a kimeneti adattípusokra mutatnak be:
+A következő példák a kimeneti adattípusokra mutatnak:
 
 * `System.String`
 * `System.Int32`
 * `System.Collections.Hashtable`
 * `Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine`
 
-#### <a name="declare-output-data-type-in-a-workflow"></a>Kimeneti adattípus deklarálása munkafolyamatban
+#### <a name="declare-output-data-type-in-a-workflow"></a>Kimenet adattípusának deklarálása egy munkafolyamatban
 
-A munkafolyamat a [Kimenettípusa attribútum](https://technet.microsoft.com/library/hh847785.aspx)mal adja meg a kimenet adattípusát. Ez az attribútum nincs hatása futásidőben, de ez jelzi a tervezési időben a runbook várható kimenetét. A runbookok eszközkészletének előrehaladtával a kimeneti adattípusok tervezési időpontban történő deklarálásának fontossága nő. Ezért ajánlott ezt a deklarációt a létrehozott runbookokba foglalni.
+A munkafolyamat a kimenet adattípusát adja meg a [OutputType attribútum](https://technet.microsoft.com/library/hh847785.aspx)használatával. Ennek az attribútumnak nincs hatása a futtatókörnyezetben, de a runbook várt kimenetének tervezési ideje szerint jelzi. Mivel a runbookok eszközkészlete továbbra is fejlődik, a kimeneti adattípusok bejelentésének fontossága a tervezési időszakban nő. Ezért ajánlott ezt a deklarációt minden Ön által létrehozott runbookok belefoglalni.
 
 Az alábbi példában a runbook kimenete egy sztring típusú objektum, és megadja az elvárt kimenettípust. Amennyiben a runbook kimenete egy bizonyos típusú tömb, akkor is egy típust érdemes megadni, nem pedig a típusok egy tömbjét.
 
@@ -105,38 +105,38 @@ Workflow Test-Runbook
 }
  ```
 
-#### <a name="declare-output-data-type-in-a-graphical-runbook"></a>Kimeneti adattípus deklarálása grafikus runbookban
+#### <a name="declare-output-data-type-in-a-graphical-runbook"></a>Kimeneti adattípus deklarálása grafikus runbook
 
-Ha egy kimeneti típust deklarálni szeretne egy grafikus vagy grafikus PowerShell-munkafolyamat-runbookban, **kiválaszthatja** a Bemenet i és kimenet menüpontot, és megadhatja a kimenet típusát. Javasoljuk, hogy a teljes .NET osztálynevet használja a típus könnyen azonosíthatóvá tenni, amikor egy szülő runbook hivatkozik rá. A teljes név használatával az osztály összes tulajdonsága elérhetővé teszi a runbookban lévő databus számára, és növeli a rugalmasságot, ha a tulajdonságokfeltételes logika, naplózás és más runbook-tevékenységek értékeiként vannak használva.<br> ![Runbook bemeneti és kimeneti beállítás](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+Ha egy grafikus vagy grafikus PowerShell-munkafolyamat runbook szeretné deklarálni a kimeneti típust, válassza a **bemeneti és kimeneti** menü lehetőséget, és adja meg a kimeneti típust. Ajánlott a teljes .NET-osztály nevét használni, hogy a típus könnyen azonosítható legyen, ha egy szülő runbook hivatkozik rá. A teljes név használata az osztály összes tulajdonságát elérhetővé teszi a runbook lévő adatbuszba, és növeli a rugalmasságot, ha a tulajdonságok a feltételes logika, a naplózás és a más runbook tevékenységek értékeiként használatosak.<br> ![Runbook bemeneti és kimeneti beállítása](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
 >[!NOTE]
->Miután beírt egy értéket a Bemeneti és kimeneti tulajdonságok ablaktábla **Kimenettípusa** mezőjébe, mindenképpen kattintson a vezérlőn kívülre, hogy az felismerje a bejegyzést.
+>Miután megadott egy értéket a bemeneti és kimeneti Tulajdonságok ablaktáblán a **kimenet típusa** mezőben, ügyeljen rá, hogy a vezérlőn kívülre kattintson, hogy az felismerje a bejegyzést.
 
-A következő példa két grafikus runbookot mutat be a bemeneti és kimeneti funkció bemutatására. A moduláris runbook-tervezési modell alkalmazása, egy runbook, mint a Hitelesített Runbook sablon hitelesítése az Azure-ral a Futtatás másként fiók használatával. A második runbook, amely általában egy adott forgatókönyv automatizálásához alapvető logikát hajt végre, ebben az esetben végrehajtja a Runbook hitelesítése sablont. Megjeleníti az eredményeket a teszt kimeneti ablaktáblán. Normál körülmények között, akkor ez a runbook tenni valamit egy erőforrás kihasználva a kimenetet a gyermek runbook.
+Az alábbi példa két grafikus runbookok mutat be a bemeneti és kimeneti funkció bemutatására. A moduláris runbook kialakítási modell alkalmazása esetén egy runbook kell lennie, mint az Azure-ban a futtató fiókkal történő hitelesítést kezelő Runbook-sablon hitelesítése. A második runbook, amely általában alapvető logikát végez egy adott forgatókönyv automatizálásához, ebben az esetben a hitelesítő Runbook sablont hajtja végre. Megjeleníti az eredményeket a test output (kimenet) ablaktáblán. Normális körülmények között ez a runbook a gyermek runbook kimenetét kihasználó erőforráson végezhető el.
 
-Íme a **AuthenticateTo-Azure** runbook alapvető logikája.<br> ![Runbook-sablon](media/automation-runbook-output-and-messages/runbook-authentication-template.png)hitelesítése – példa .
+Itt látható a AuthenticateTo alapszintű logikája **– Az Azure** runbook.<br> ![Példa](media/automation-runbook-output-and-messages/runbook-authentication-template.png)a Runbook-sablon hitelesítésére.
 
-A runbook tartalmazza `Microsoft.Azure.Commands.Profile.Models.PSAzureContext`a kimeneti típust, amely a hitelesítési profil tulajdonságait adja vissza.<br> ![Példa a Runbook kimeneti típusra](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png)
+A runbook tartalmazza a kimeneti típust `Microsoft.Azure.Commands.Profile.Models.PSAzureContext`, amely a hitelesítési profil tulajdonságait adja vissza.<br> ![Példa a Runbook kimeneti típusára](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png)
 
-Bár ez a runbook egyszerű, van egy konfigurációs elem, amelyet itt ki kell hívni. Az utolsó tevékenység `Write-Output` végrehajtja a parancsmaparancsot, hogy profiladatokat `Inputobject` írjon egy változóba egy PowerShell-kifejezés használatával a paraméterhez. Ez a paraméter `Write-Output`szükséges a hoz.
+Habár ez a runbook egyszerű, itt egy konfigurációs elem is meghívja Önt. Az utolsó tevékenység végrehajtja a `Write-Output` parancsmagot, hogy a `Inputobject` paraméterhez egy PowerShell-kifejezés használatával írjon be egy változót a profil adataihoz. Ezt a paramétert kötelező `Write-Output`megadni a következőhöz:.
 
-A második runbook ebben a példában, **nevű Test-ChildOutputType,** egyszerűen két tevékenységet határoz meg.<br> ![Példa gyermekkimeneti típusú runbookra](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
+A példában a **test-ChildOutputType**nevű második runbook egyszerűen két tevékenységet határoz meg.<br> ![Példa gyermek kimeneti típus Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-Az első tevékenység meghívja a **AuthenticateTo-Azure** runbook. A második tevékenység `Write-Verbose` a parancsmast futtatja, **amelynek adatforrás-beállítása** **Tevékenység kimenet.** Emellett **a mező elérési útja** **context.Subscription.SubscriptionName**, a **AuthenticateTo-Azure** runbook környezetkimenete.<br> ![Részletes parancsmag paraméteradatforrása](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+Az első tevékenység meghívja a **AuthenticateTo-Azure-** runbook. A második tevékenység a `Write-Verbose` parancsmagot a **tevékenység kimenete**értékre beállított **adatforrással** futtatja. Emellett a **mező elérési útja** a **Context. Subscription. SubscriptionName**, a **AuthenticateTo-Azure** runbook környezeti kimenete.<br> ![Write-verbose parancsmag paraméterének adatforrása](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
-Az eredményül kapott kimenet az előfizetés neve.<br> ![Test-ChildOutputType Runbook eredmények](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
+Az eredményül kapott kimenet az előfizetés neve.<br> ![Test-ChildOutputType Runbook eredményei](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
-## <a name="message-streams"></a>Üzenetfolyamok
+## <a name="message-streams"></a>Üzenet streamek
 
-A kimeneti adatfolyamtól eltérően az üzenetfolyamok adatokat továbbítanak a felhasználónak. A különböző típusú információkhoz több üzenetadat létezik, és az Azure Automation az egyes adatfolyamokat eltérően kezeli.
+A kimeneti adatfolyamtól eltérően az üzenetek a felhasználó felé továbbítják az adatokat. Több üzenet-adatfolyam is létezik különböző típusú adatokhoz, és a Azure Automation az egyes streameket különbözőképpen kezeli.
 
-### <a name="warning-and-error-streams"></a>Figyelmeztetési és hibaadatfolyamok
+### <a name="warning-and-error-streams"></a>Figyelmeztetési és hiba-adatfolyamok
 
-A figyelmeztetés és hiba streameli a runbookban előforduló hibákat. Az Azure Automation ezeket az adatfolyamokat a feladatelőzményekbe írja egy runbook végrehajtásakor. Az automatizálás az Azure Portalon a Teszt kimeneti ablaktáblában lévő adatfolyamokat tartalmazza, ha egy runbookot tesztelnek. 
+A figyelmeztetési és hiba-adatfolyamok naplózása a runbook előforduló hibákat naplózza. A Azure Automation a runbook végrehajtásakor beírja ezeket a streameket a feladatok előzményeibe. Az Automation a runbook tesztelésekor a Azure Portal teszt kimenete ablaktábláján lévő adatfolyamokat is tartalmazza. 
 
-Alapértelmezés szerint a runbook továbbra is végrehajtja egy figyelmeztetés vagy hiba után. Megadhatja, hogy a runbook fel kell függeszteni egy figyelmeztetés vagy hiba, ha a runbook beállít egy [beállítási változó](#preference-variables) az üzenet létrehozása előtt. Ha például a runbook ot egy hiba miatt függeszti `ErrorActionPreference` fel, ahogy azt egy kivételesetében teszi, állítsa a változót Leállításra.
+Alapértelmezés szerint a runbook figyelmeztetés vagy hiba után folytatja a végrehajtást. Megadhatja, hogy a runbook figyelmeztessen egy figyelmeztetésre vagy hibára, ha a runbook az üzenet létrehozása előtt beállít egy [preferencia változót](#preference-variables) . Ha például egy kivétel miatt a runbook felfüggeszti a hibát, állítsa a `ErrorActionPreference` változót leállításra.
 
-Hozzon létre egy figyelmeztető vagy hibakérő üzenetet az [Írás-figyelmeztetés](https://technet.microsoft.com/library/hh849931.aspx) vagy [írási hiba](https://technet.microsoft.com/library/hh849962.aspx) parancsmag használatával. A tevékenységek a Figyelmeztetés és hiba adatfolyamokba is írhatnak.
+Figyelmeztetés vagy hibaüzenet létrehozása a [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) vagy a [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) parancsmag használatával. A tevékenységek a figyelmeztetési és a hiba-adatfolyamokra is írhatnak.
 
 ```powershell
 #The following lines create a warning message and then an error message that will suspend the runbook.
@@ -148,17 +148,17 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 
 ### <a name="debug-stream"></a>Hibakeresési adatfolyam
 
-Az Azure Automation a Hibakeresési üzenetfolyamot használja az interaktív felhasználók számára. Nem használható runbookokban.
+Azure Automation a hibakeresési üzenet streamjét használja az interaktív felhasználók számára. Nem használható a runbookok-ben.
 
 ### <a name="verbose-stream"></a>Részletes adatfolyam
 
-A részletes üzenetfolyam támogatja a Runbook-művelet általános adatait. Mivel a hibakeresési adatfolyam nem érhető el egy runbookhoz, a runbooknak részletes üzeneteket kell használnia a hibakeresési információkhoz. 
+A részletes üzenetküldési adatfolyam a runbook művelet általános információit támogatja. Mivel a hibakeresési adatfolyam nem érhető el egy runbook, a runbook részletes üzeneteket kell használnia a hibakeresési adatokhoz. 
 
-Alapértelmezés szerint a feladatelőzmények teljesítménybeli okokból nem tárolnak részletes üzeneteket a közzétett runbookokról. Részletes üzenetek tárolásához használja az Azure Portal **Konfigurálás** lapját a **Napló részletes rekordok** beállítással a közzétett runbookok részletes üzenetek naplózására történő konfigurálásához. Ezt a beállítást csak akkor érdemes bekapcsolni, ha hibát keres a runbookban, vagy ha hibaelhárításra van szükség. A legtöbb esetben meg kell tartani a részletes rekordok naplózásának elnem e-műveletek naplózásának alapértelmezett beállítását.
+Alapértelmezés szerint a feladatok előzményei nem tárolnak részletes üzeneteket a közzétett runbookok, a teljesítménnyel kapcsolatos okokból. A részletes üzenetek tárolásához használja a Azure Portal **Konfigurálás** lapot a részletes **rekordok naplózása** beállítással a közzétett runbookok konfigurálásához a részletes üzenetek naplózásához. Ezt a beállítást csak akkor érdemes bekapcsolni, ha hibát keres a runbookban, vagy ha hibaelhárításra van szükség. A legtöbb esetben érdemes megtartani a részletes rekordok naplózásának alapértelmezett beállítását.
 
-[Runbook tesztelése](automation-testing-runbook.md)során a részletes üzenetek nem jelennek meg, még akkor sem, ha a runbook részletes rekordok naplózására van konfigurálva. Ha részletes üzeneteket szeretne megjeleníteni [a runbook tesztelése](automation-testing-runbook.md)közben, a `VerbosePreference` változót continue (Folytatás) kell beállítania. Ezzel a változókészlettel részletes üzenetek jelennek meg az Azure Portal teszt kimeneti ablaktáblájában.
+[Runbook tesztelésekor](automation-testing-runbook.md)a részletes üzenetek akkor sem jelennek meg, ha a runbook a részletes rekordok naplózására van konfigurálva. A [runbook tesztelésekor](automation-testing-runbook.md)a részletes üzenetek megjelenítéséhez be kell állítania a `VerbosePreference` változót a folytatáshoz. Ha ez a változó be van állítva, a részletes üzenetek a Azure Portal teszt kimenet paneljén jelennek meg.
 
-A következő kód részletes üzenetet hoz létre a [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) parancsmag használatával.
+A következő kód egy részletes üzenetet hoz létre a [Write-verbose](https://technet.microsoft.com/library/hh849951.aspx) parancsmag használatával.
 
 ```powershell
 #The following line creates a verbose message.
@@ -166,18 +166,18 @@ A következő kód részletes üzenetet hoz létre a [Write-Verbose](https://tec
 Write-Verbose –Message "This is a verbose message."
 ```
 
-## <a name="progress-records"></a>Folyamatrekordok
+## <a name="progress-records"></a>Folyamatjelző rekordok
 
-Az Azure Portal **Konfigurálás** lapján konfigurálhat egy runbookot a folyamatrekordok naplózásához. Az alapértelmezett beállítás az, hogy nem naplózza a rekordokat, hogy maximalizálja a teljesítményt. A legtöbb esetben meg kell tartani az alapértelmezett beállítást. Ezt a beállítást csak akkor érdemes bekapcsolni, ha hibát keres a runbookban, vagy ha hibaelhárításra van szükség. 
+A Azure Portal configure ( **Konfigurálás** ) lapján konfigurálhatja a runbook naplózási folyamatát. Az alapértelmezett beállítás szerint a rendszer nem naplózza a rekordokat a teljesítmény maximalizálása érdekében. A legtöbb esetben érdemes megtartani az alapértelmezett beállítást. Ezt a beállítást csak akkor érdemes bekapcsolni, ha hibát keres a runbookban, vagy ha hibaelhárításra van szükség. 
 
-Ha engedélyezi a folyamatrekord-naplózást, a runbook minden tevékenység futtatása előtt és után egy rekordot ír a feladatelőzményekbe. A runbook tesztelése nem jeleníti meg a folyamatjelző üzeneteket, még akkor sem, ha a runbook a végrehajtási rekordok naplózására van konfigurálva.
+Ha engedélyezi a folyamat naplózását, a runbook az egyes tevékenységek futtatása előtt és után rekordokat ír a feladatok előzményeihez. A runbook tesztelése nem jeleníti meg az előrehaladási üzeneteket még akkor sem, ha a runbook naplózása folyamatban van.
 
 >[!NOTE]
->A [Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) parancsmag nem érvényes a runbookokban, mivel ez a parancsmag interaktív felhasználókszámára készült.
+>A [Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) parancsmag nem érvényes egy runbook, mert ez a parancsmag interaktív felhasználóval való használatra készült.
 
-## <a name="preference-variables"></a>Beállítási változók
+## <a name="preference-variables"></a>Preferencia változók
 
-Beállíthatja, hogy bizonyos Windows [PowerShell-beállítási változók](https://technet.microsoft.com/library/hh847796.aspx) a runbookok, hogy szabályozhassa a különböző kimeneti adatfolyamok küldött válaszokat. Az alábbi táblázat a runbookokban használható beállítási változókat sorolja fel az alapértelmezett és érvényes értékekkel. További értékek érhetők el a beállítási változók, ha az Azure Automationen kívül a Windows PowerShell ben használja.
+A runbookok bizonyos Windows PowerShell-beállításokat állíthat [be a különböző](https://technet.microsoft.com/library/hh847796.aspx) kimeneti adatfolyamoknak küldött adatválaszok szabályozására. A következő táblázat felsorolja a runbookok használható preferencia-változókat az alapértelmezett és érvényes értékekkel. Ha a Windows PowerShellben a Azure Automationon kívülre használja, további értékek érhetők el.
 
 | Változó | Alapértelmezett érték | Érvényes értékek |
 |:--- |:--- |:--- |
@@ -185,25 +185,25 @@ Beállíthatja, hogy bizonyos Windows [PowerShell-beállítási változók](http
 | `ErrorActionPreference` |Folytatás |Leállítás<br>Folytatás<br>FolytatásCsendben |
 | `VerbosePreference` |FolytatásCsendben |Leállítás<br>Folytatás<br>FolytatásCsendben |
 
-A következő táblázat a runbookokban érvényes beállítási változóértékek viselkedését sorolja fel.
+A következő táblázat felsorolja a runbookok-ben érvényes preferencia-változók értékeinek viselkedését.
 
 | Érték | Viselkedés |
 |:--- |:--- |
 | Folytatás |Naplózza az üzenetet, és folytatja a runbook futtatását. |
-| FolytatásCsendben |Az üzenet naplózása nélkül folytatja a runbook futtatását. Ennek az értéknek az a hatása, hogy figyelmen kívül hagyja az üzenetet. |
+| FolytatásCsendben |Az üzenet naplózása nélkül folytatja a runbook futtatását. Ennek az értéknek az a következménye, hogy figyelmen kívül hagyja az üzenetet. |
 | Leállítás |Naplózza az üzenetet, és felfüggeszti a runbook futtatását. |
 
-## <a name="retrieving-runbook-output-and-messages"></a><a name="runbook-output"></a>Runbook kimenetének és üzenetének beolvasása
+## <a name="retrieving-runbook-output-and-messages"></a><a name="runbook-output"></a>Runbook-kimenet és üzenetek beolvasása
 
-### <a name="retrieve-runbook-output-and-messages-in-azure-portal"></a>Runbook-kimenet és üzenetek lekérése az Azure Portalon
+### <a name="retrieve-runbook-output-and-messages-in-azure-portal"></a>Runbook-kimenet és-üzenetek lekérése Azure Portal
 
-Megtekintheti a runbook-feladat részleteit az Azure Portalon a **Runbook Feladatok** lapján. A feladat összegzése megjeleníti a bemeneti paramétereket és a [Kimeneti adatfolyamot,](#output-stream)a feladatra vonatkozó általános információkon és a felmerült kivételeken kívül. A feladatelőzmények a Kimeneti adatfolyamból, valamint a [Figyelmeztetési és Hibafolyamokból származó üzeneteket tartalmazzák.](#warning-and-error-streams) A [részletes adatfolyam-](#verbose-stream) és [folyamatrekordokból](#progress-records) származó üzeneteket is tartalmazza, ha a runbook részletes és végrehajtási rekordok naplózására van konfigurálva.
+Egy runbook-feladat részleteit a Azure Portal **feladatok** lapján tekintheti meg a runbook. A feladatok összegzése a bemeneti paramétereket és a [kimeneti adatfolyamot](#output-stream)jeleníti meg, valamint a feladattal kapcsolatos általános információkat és a bekövetkezett kivételeket. A feladatok előzményei a kimeneti adatfolyamból, valamint a [Figyelmeztetési és a hiba-adatfolyamokból](#warning-and-error-streams)származó üzeneteket tartalmaznak. Emellett a [részletes adatfolyam](#verbose-stream) -és [folyamatjelző rekordokból](#progress-records) származó üzeneteket is tartalmaz, ha a runbook a részletes és a folyamatjelző rekordok naplózására van konfigurálva.
 
-### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>Runbook-kimenet és üzenetek beolvasása a Windows PowerShellben
+### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>Runbook-kimenet és-üzenetek lekérése a Windows PowerShellben
 
-A Windows PowerShell ben a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) parancsmag használatával lekérheti a kimeneti és üzeneteket egy runbookból. Ez a parancsmag a feladat azonosítóját igényli, `Stream` és rendelkezik egy nevű paraméterrel, amelyben meg adható a beolvasni kívánt adatfolyam. Megadhat egy Any értéket ehhez a paraméterhez, hogy a feladathoz az összes adatfolyamot lekérje.
+A Windows PowerShellben a runbook kimenetét és üzeneteit a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) parancsmag használatával kérheti le. Ehhez a parancsmaghoz szükség van a feladatokhoz tartozó AZONOSÍTÓra `Stream` , és egy paramétert kell megadnia, amelyben meg kell adnia a beolvasandó adatfolyamot. A paraméter értékének megadásával lekérheti a feladatokhoz tartozó összes adatfolyamot.
 
-A következő példában elindul a runbook, majd a rendszer megvárja, amíg annak végrehajtása befejeződik. Miután a runbook végrehajtása befejeződött, a parancsfájl összegyűjti a runbook kimeneti stream a feladatból.
+A következő példában elindul a runbook, majd a rendszer megvárja, amíg annak végrehajtása befejeződik. Miután a runbook befejezte a végrehajtást, a parancsfájl gyűjti a runbook kimeneti adatfolyamot a feladatokból.
 
 ```powershell
 $job = Start-AzAutomationRunbook -ResourceGroupName "ResourceGroup01" `
@@ -225,43 +225,43 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzAutomationJobOutputRecord
 ```
 
-### <a name="retrieve-runbook-output-and-messages-in-graphical-runbooks"></a>Runbook-kimenet és üzenetek beolvasása grafikus runbookokban
+### <a name="retrieve-runbook-output-and-messages-in-graphical-runbooks"></a>Runbook-kimenet és-üzenetek lekérése grafikus runbookok
 
-Grafikus runbookok esetén a kimenetek és az üzenetek extra naplózása tevékenységszintű nyomkövetés formájában érhető el. A nyomon követésnek két szintje van: Alap szintű és részletes. Az alapszintű nyomkövetés megjeleníti a runbook egyes tevékenységének kezdési és befejezési idejét, valamint a tevékenység-újrapróbálkozásokkal kapcsolatos információkat. Néhány példa a kísérletek száma és a tevékenység kezdési időpontja. A részletes nyomkövetés alapvető nyomkövetési funkciókat, valamint az egyes tevékenységek bemeneti és kimeneti adatainak naplózását tartalmazza. 
+Grafikus runbookok esetében a kimenet és az üzenetek további naplózása tevékenység szintű nyomkövetés formájában érhető el. A nyomkövetésnek két szintje van: alapszintű és részletes. Az alapszintű nyomkövetés megjeleníti a runbook minden tevékenységének kezdési és befejezési időpontját, valamint a tevékenység újrapróbálkozásával kapcsolatos információkat. Ilyenek például a kísérletek száma és a tevékenység kezdési időpontja. A részletes nyomkövetés magában foglalja az alapszintű nyomkövetési funkciókat, valamint a bemeneti és kimeneti adatok naplózását az egyes tevékenységekhez. 
 
-Jelenleg a tevékenységszintű nyomkövetés a részletes adatfolyam használatával írja a rekordokat. Ezért a nyomkövetés engedélyezésekor engedélyeznie kell a részletes naplózást. A grafikus runbookok nyomkövetés engedélyezve van, nincs szükség a folyamatrekordok naplózására. Az alapvető nyomon követés ugyanazt a célt szolgálja, és informatívabb.
+A tevékenység szintű nyomkövetés jelenleg a részletes adatfolyam használatával ír rekordokat. Ezért a nyomkövetés engedélyezésekor engedélyeznie kell a részletes naplózást. A nyomkövetést engedélyező grafikus runbookok esetében nem kell naplózni a folyamatjelző rekordokat. Az alapszintű nyomkövetés ugyanazt a célt szolgálja, és több információt nyújt.
 
-![Grafikus szerzői feladatadatfolyamok nézete](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
+![Grafikus szerzői feladatok adatfolyam-nézete](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-A képből láthatja, hogy a részletes naplózás és a grafikus runbookok nyomon követése sokkal több információt tesz elérhetővé az éles **feladatstreamek** nézetben. Ez a további információ alapvető fontosságú lehet a runbookokkal kapcsolatos éles problémák elhárításához. 
+A grafikus runbookok részletes naplózást és nyomkövetést engedélyező rendszerképből sokkal több információ érhető el az üzemi **feladatok adatfolyamok** nézetében. Ez a további információ elengedhetetlen lehet a runbook kapcsolatos éles problémák elhárításához. 
 
-Azonban, ha nem kell ezt az információt a runbook hibaelhárítási folyamatának nyomon követéséhez, érdemes lehet a nyomkövetést általános gyakorlatként kikapcsolni. A nyomkövetési adatok különösen nagyok lehetnek. A grafikus runbook-nyomkövetés lelhető fel, tevékenységenként két-négy rekordot kaphat, az alapszintű vagy részletes nyomkövetés konfigurációjától függően.
+Ha azonban nem kívánja, hogy ezek az információk nyomon kövessék a runbook állapotát a hibaelhárításhoz, érdemes lehet a nyomkövetést általános gyakorlatként megtartani. A nyomkövetési rekordok különösen sokek lehetnek. A grafikus runbook nyomon követésével az alapszintű vagy részletes nyomkövetési konfigurációtól függően akár két-négy rekordot is megadhat tevékenységekhez.
 
-**A tevékenységszintű nyomkövetés engedélyezése:**
+**A tevékenység szintű nyomkövetés engedélyezése:**
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
-2. Válassza **a Runbookok** **a Folyamatautomatizálás** csoportban a runbookok listájának megnyitásához.
-3. A Runbookok lapon válasszon ki egy grafikus runbookot a runbookok listájából.
-4. A **Beállítások csoportban**kattintson **a Naplózás és nyomkövetés gombra.**
-5. A Naplózás és követés lap **Részletes rekordok naplózása**csoportban kattintson **a Be** gombra a részletes naplózás engedélyezéséhez.
-6. A **Tevékenységszintű nyomkövetés**csoportban módosítsa a nyomkövetési szintet **Alap szintű** vagy **Részletes**szintre a szükséges nyomkövetési szint alapján.<br>
+2. A runbookok listájának megnyitásához válassza a **runbookok** lehetőséget a **folyamat automatizálása** alatt.
+3. A Runbookok lapon válasszon egy grafikus runbook a runbookok listájából.
+4. A **Beállítások**területen kattintson a **naplózás és nyomkövetés**elemre.
+5. A naplózás és nyomkövetés lapon a **részletes**naplózás engedélyezéséhez kattintson **a bekapcsolás** elemre.
+6. A **tevékenység szintű nyomkövetés**területen módosítsa a nyomkövetési szintet **alapszintű vagy** **részletesre**a szükséges nyomkövetési szint alapján.<br>
 
-   ![Grafikus szerzői naplózás és nyomkövetés lap](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
+   ![Grafikus szerzői műveletek naplózása és nyomkövetése lap](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="retrieve-runbook-output-and-messages-in-microsoft-azure-monitor-logs"></a>Runbook-kimenet és üzenetek beolvasása a Microsoft Azure Figyelő naplóiban
+### <a name="retrieve-runbook-output-and-messages-in-microsoft-azure-monitor-logs"></a>Runbook-kimenet és-üzenetek lekérése Microsoft Azure figyelő naplóiban
 
-Az Azure Automation runbook-feladatállapotot és feladatstreameket küldhet a Log Analytics-munkaterületre. Az Azure Monitor támogatja a naplókat, amelyek lehetővé teszik, hogy:
+A Azure Automation a runbook feladatok állapotát és a feladatok streamjét a Log Analytics munkaterületre küldheti. Azure Monitor támogatja a következő naplók használatát:
 
-* Betekintést nyerhet az Automatizálási feladatokba.
-* E-mailt vagy riasztást aktiválanak a runbook-feladat állapota alapján, például sikertelen vagy felfüggesztett.
-* Speciális lekérdezések írása a feladatadatfolyamok között.
-* Feladatok korrelálása az Automation-fiókok között.
-* A feladatelőzmények megjelenítése.
+* Betekintést nyerhet az Automation-feladatokba.
+* A runbook-feladatok állapota alapján indítson el egy e-mailt vagy riasztást, például sikertelen vagy felfüggesztett.
+* Speciális lekérdezések írása a feladatok adatfolyamai között.
+* A feladatok összekapcsolása az Automation-fiókok között.
+* A feladatok előzményeinek megjelenítése.
 
-Az Azure Monitor-naplókkal való integráció konfigurálásáról a feladatadatok gyűjtésére, korrelációjával és az azokra való cselekvésre vonatkozótovábbi információért olvassa el a [Feladat állapotának továbbítása és feladatadatfolyamok továbbítása az Automationből az Azure Monitor-naplókba című témakört.](automation-manage-send-joblogs-log-analytics.md)
+További információ a Azure Monitor naplókkal való integráció konfigurálásáról a feladatok adatainak gyűjtéséhez, összekapcsolásához és működéséhez: a feladatok [állapotának és a feladatok adatfolyamának továbbítása az automatizálásból a Azure monitor naplókba](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni a runbook-végrehajtásról, a Runbook-feladatok figyeléséről és egyéb technikai részletekről, olvassa el [a Runbook-feladat nyomon követése című témakört.](automation-runbook-execution.md)
-* A gyermekrunbookok tervezésének és használatának megértéséhez olvassa el [a Gyermek runbookok az Azure Automationben.](automation-child-runbooks.md)
-* A PowerShellről további információt, beleértve a nyelvi referencia- és tanulási modulokat, tekintse meg a [PowerShell-dokumentumok című témakört.](/powershell/scripting/overview)
+* A runbook végrehajtásával, a runbook-feladatok figyelésével és egyéb technikai részletekkel kapcsolatos további tudnivalókért tekintse meg [a runbook-feladatok nyomon követése](automation-runbook-execution.md)című témakört.
+* A gyermek-runbookok kialakításával és használatával kapcsolatos tudnivalókat lásd: [gyermek runbookok Azure Automation](automation-child-runbooks.md).
+* A PowerShell-lel kapcsolatos további információk, beleértve a nyelvi referenciákat és a tanulási modulokat, lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).

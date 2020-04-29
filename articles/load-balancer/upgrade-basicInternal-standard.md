@@ -1,6 +1,6 @@
 ---
-title: Frissítés alapszintű belsőről standard belső - Azure load balancer
-description: Ez a cikk bemutatja, hogyan frissítheti az Azure belső terheléselosztóját alapszintű termékváltozatról standard termékváltozatra
+title: Frissítés alapszintű belsőről standard belsőre – Azure Load Balancer
+description: Ez a cikk bemutatja, hogyan frissítheti az Azure belső Load Balancereit alapszintű SKU-ról standard SKU-ra.
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
@@ -8,73 +8,73 @@ ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770389"
 ---
-# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Az Azure belső terheléselosztó jának frissítése – nincs szükség kimenő kapcsolatra
-[Az Azure Standard Load Balancer](load-balancer-overview.md) a funkciók és a magas rendelkezésre állás széles készletét kínálja a zónaredundancia révén. Ha többet szeretne megtudni a terheléselosztó termékváltozatáról, tekintse meg az [összehasonlító táblázatot.](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure belső Load Balancer frissítése – nincs szükség kimenő kapcsolatok megtételére
+Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
-Ez a cikk egy PowerShell-parancsfájlt vezet be, amely az alapszintű terheléselosztóval azonos konfigurációval hoz létre standard terheléselosztót, valamint az alapszintű terheléselosztóról a standard terheléselosztóra irányuló forgalmat.
+Ez a cikk egy PowerShell-szkriptet vezet be, amely egy standard Load Balancert hoz létre ugyanazzal a konfigurációval, mint az alapszintű Load Balancer, valamint az alapszintű Load Balancerról standard Load Balancerre történő áttelepítést
 
 ## <a name="upgrade-overview"></a>Frissítés áttekintése
 
-Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
+Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteket végzi el:
 
-* Szabványos belső termékváltozat-terheléselosztót hoz létre a megadott helyen. Vegye figyelembe, hogy a standard belső terheléselosztó nem biztosít [kimenő kapcsolatot.](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
-* Zökkenőmentesen másolja az alaptermékváltozat terheléselosztó konfigurációit az újonnan létrehozott standard terheléselosztóba.
-* Zökkenőmentesen helyezze át a privát IP-eket az alapszintű terheléselosztóról az újonnan létrehozott standard terheléselosztóra.
-* Zökkenőmentesen helyezze át a virtuális gépeket az alapszintű terheléselosztó háttérkészletéből a standard terheléselosztó háttérkészletébe
+* Létrehoz egy szabványos belső SKU Load Balancer a megadott helyen. Vegye figyelembe, hogy a szabványos belső Load Balancer nem biztosít [kimenő kapcsolatokat](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+* Zökkenőmentesen másolja az alapszintű SKU Load Balancer konfigurációit az újonnan létrehozott standard Load Balancerra.
+* A magánhálózati IP-címek zökkenőmentes mozgatása az alapszintű Load Balancer az újonnan létrehozott standard Load Balancerig.
+* Zökkenőmentesen helyezheti át a virtuális gépeket az alapszintű Load Balancer háttér-készletéből a standard Load Balancer háttér-készletéből.
 
-### <a name="caveatslimitations"></a>Kikötések\Korlátozások
+### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* A parancsfájl csak akkor támogatja a belső terheléselosztó frissítését, ahol nincs szükség kimenő kapcsolatra. Ha néhány virtuális géphez [kimenő kapcsolatra](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) van szüksége, olvassa el ezt az [oldalt](upgrade-InternalBasic-To-PublicStandard.md) az utasításokért. 
-* Ha a standard terheléselosztó egy másik régióban jön létre, nem fogja tudni társítani a régi régióban meglévő virtuális gépeket az újonnan létrehozott standard terheléselosztóhoz. A korlátozás megkerülése, győződjön meg róla, hogy hozzon létre egy új virtuális gép az új régióban.
-* Ha a terheléselosztó nem rendelkezik előtér-IP-konfigurációval vagy háttérkészlettel, valószínűleg hibát talál el a parancsfájl futtatásakor. Győződjön meg róla, hogy nem üres.
+* A parancsfájl csak a belső Load Balancer frissítését támogatja, ha nincs szükség kimenő kapcsolatok használatára. Ha egyes virtuális gépekhez [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) szükségesek, tekintse meg ezt az [oldalt](upgrade-InternalBasic-To-PublicStandard.md) . 
+* Ha a standard Load Balancer egy másik régióban lett létrehozva, akkor a régi régióban meglévő virtuális gépeket nem lehet az újonnan létrehozott standard Load Balancerhoz rendelni. A korlátozás megkerüléséhez hozzon létre egy új virtuális gépet az új régióban.
+* Ha a Load Balancer nem rendelkezik előtér-IP-konfigurációval vagy háttér-készlettel, valószínűleg a parancsfájl futtatásakor hiba lépett fel. Győződjön meg arról, hogy nem üresek.
 
-## <a name="download-the-script"></a>A szkript letöltése
+## <a name="download-the-script"></a>A parancsfájl letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-galériából.](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0)
+Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0).
 ## <a name="use-the-script"></a>A szkript használata
 
-A helyi PowerShell-környezet beállításától és beállításaitól függően két lehetőség közül választhat:
+A helyi PowerShell-környezet beállításaitól és beállításaitól függően két lehetőség közül választhat:
 
-* Ha nincs telepítve az Azure Az-modulok, vagy nem bánja az Azure Az-modulok eltávolítását, a `Install-Script` legjobb megoldás a parancsfájl futtatásához.
-* Ha meg kell tartania az Azure Az modulokat, a legjobb, ha letölti a parancsfájlt, és közvetlenül futtatja.
+* Ha nem rendelkezik az Azure az modulok telepítésével, vagy ne feledje eltávolítani az Azure-t, akkor a legjobb lehetőség a szkript futtatására szolgáló `Install-Script` lehetőség használata.
+* Ha meg kell őriznie az Azure az modulokat, a legjobb megoldás, ha letölti a szkriptet, és közvetlenül futtatja.
 
-Annak megállapításához, hogy telepítve vannak-e `Get-InstalledModule -Name az`az Azure Az modulok, futtassa a futtassa a futtassa a futtassa a programot. Ha nem látja a telepített Az modulokat, akkor `Install-Script` használhatja a módszert.
+Annak megállapításához, hogy telepítve van-e az Azure az `Get-InstalledModule -Name az`modulok, futtassa a parancsot. Ha a telepített modulok nem láthatók, akkor használhatja a `Install-Script` metódust.
 
-### <a name="install-using-the-install-script-method"></a>Telepítés a Install-Script metódussal
+### <a name="install-using-the-install-script-method"></a>Telepítés az install-script metódus használatával
 
-A beállítás használatához nem kell az Azure Az modulok telepítve a számítógépre. Ha telepítve vannak, a következő parancs hibát jelenít meg. Eltávolíthatja az Azure Az modulokat, vagy a másik lehetőséggel manuálisan letöltheti a parancsfájlt, és futtathatja azt.
+Ha ezt a beállítást szeretné használni, az Azure az modulokat nem kell telepítenie a számítógépre. Ha telepítve vannak, a következő parancs hibát jelez. Távolítsa el az Azure az modulokat, vagy használja a másik lehetőséget a szkript manuális letöltéséhez és futtatásához.
   
-Futtassa a parancsfájlt a következő paranccsal:
+Futtassa a szkriptet a következő paranccsal:
 
 `Install-Script -Name AzureILBUpgrade`
 
-Ez a parancs a szükséges Az modulokat is telepíti.  
+Ez a parancs telepíti a szükséges az modulokat is.  
 
-### <a name="install-using-the-script-directly"></a>Telepítés közvetlenül a parancsfájl használatával
+### <a name="install-using-the-script-directly"></a>Telepítés közvetlenül a szkript használatával
 
-Ha néhány Azure Az-modul telepítve van, és nem tudja eltávolítani őket (vagy nem szeretné eltávolítani őket), manuálisan letöltheti a parancsfájlt a parancsfájl **letöltési hivatkozásának Kézi letöltés** elapjával. A szkript letölthető, mint egy nyers nupkg fájlt. Ha erről a nupkg fájlból szeretné telepíteni a parancsfájlt, olvassa el a Kézi csomag letöltése című [témakört.](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)
+Ha van néhány Azure az modulok telepítve, és nem távolítható el (vagy nem szeretné eltávolítani őket), manuálisan letöltheti a szkriptet a parancsfájl letöltése hivatkozás **manuális Letöltés** lapján. A parancsfájl nyers nupkg-fájlként van letöltve. Ha a parancsfájlt erről a nupkg-fájlról szeretné telepíteni, olvassa el a [manuális csomagok letöltése](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)című témakört.
 
 A szkript futtatása:
 
-1. Az `Connect-AzAccount` Azure-hoz való csatlakozáshoz használható.
+1. Az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz használható.
 
-1. Az `Import-Module Az` Az modulok importálására használható.
+1. A `Import-Module Az` használatával importálhatja az az modulokat.
 
 1. Vizsgálja meg a szükséges paramétereket:
 
-   * **rgName: [String]: Kötelező** – Ez a meglévő alapszintű terheléselosztó és az új standard terheléselosztó erőforráscsoportja. A karakterlánc-érték megkereséséhez keresse meg az Azure Portalon, válassza ki az alapszintű terheléselosztó forrását, és kattintson a terheléselosztó **áttekintése** elemre. Az erőforráscsoport azon a lapon található.
-   * **oldLBName: [String]: Kötelező** – Ez a frissíteni kívánt meglévő alapszintű kiegyensúlyozó neve. 
-   * **newlocation: [String]: Kötelező** – Ez az a hely, ahol a standard terheléselosztó létrejön. Javasoljuk, hogy a kiválasztott alapszintű terheléselosztó ugyanazon helyét örökölje a standard terheléselosztóval a más meglévő erőforrásokkal való jobb társítás érdekében.
-   * **newLBName: [String]: Kötelező** – Ez a létrehozandó standard terheléselosztó neve.
-1. Futtassa a parancsfájlt a megfelelő paraméterek kel. 5-7 percig is eltarthat.
+   * **rgName: [string]: kötelező** – ez a meglévő alapszintű Load Balancer és az új standard Load Balancerhoz tartozó erőforráscsoport. A karakterlánc értékének megkereséséhez navigáljon Azure Portal, válassza ki az alapszintű Load Balancer forrását, és kattintson a terheléselosztó **áttekintésére** . Az erőforráscsoport ezen az oldalon található.
+   * **oldLBName: [string]: kötelező** – ez a meglévő alapszintű, frissíteni kívánt alapbalancer neve. 
+   * **newlocation: [string]: kötelező** – ez az a hely, ahol a standard Load Balancer létre lesz hozva. Javasoljuk, hogy a kiválasztott alapszintű Load Balancer ugyanazon helyét örökli a standard Load Balancer a többi meglévő erőforrással való jobb együttműködés érdekében.
+   * **newLBName: [string]: kötelező** – ez a létrehozandó standard Load Balancer neve.
+1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
 
-    **Példa**
+    **Például**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
@@ -82,18 +82,18 @@ A szkript futtatása:
 
 ## <a name="common-questions"></a>Gyakori kérdések
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Vannak-e korlátozások az Azure PowerShell-parancsfájl áttelepítése a konfiguráció v1 v2?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Vannak korlátozások a Azure PowerShell szkripttel a konfiguráció a v1-ről a v2-re való áttelepíteni?
 
-Igen. Lásd [a kifogásokat/korlátozásokat.](#caveatslimitations)
+Igen. Lásd a [figyelmeztetéseket és korlátozásokat](#caveatslimitations).
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Az Azure PowerShell-parancsfájl is átvált az alapszintű terheléselosztóról az újonnan létrehozott standard terheléselosztóra?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>A Azure PowerShell szkript az alapszintű Load Balancerról az újonnan létrehozott standard Load Balancerra is átváltja a forgalmat?
 
-Igen, áttelepíti a forgalmat. Ha személyesen szeretné áttelepíteni a forgalmat, használja [ezt a parancsfájlt,](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0) amely nem telepíti át a virtuális gépeket.
+Igen, áttelepíti a forgalmat. Ha a forgalmat személyesen szeretné áttelepíteni, használja [ezt a parancsfájlt](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0) , amely nem helyezi át a virtuális gépeket.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Belefutottam néhány probléma segítségével ezt a forgatókönyvet. Hogyan kaphatok segítséget?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Néhány probléma merült fel a szkript használatával. Hogyan Kérhetek segítséget?
   
-E-mailt küldhet slbupgradesupport@microsoft.coma, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt megteheti.
+E-mailt küldhet a slbupgradesupport@microsoft.comszolgáltatásnak, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt.
 
 ## <a name="next-steps"></a>További lépések
 
-[További információ a standard terheléselosztóról](load-balancer-overview.md)
+[Tudnivalók a standard Load Balancer](load-balancer-overview.md)

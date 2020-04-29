@@ -1,7 +1,7 @@
 ---
-title: Gyakori kérdések a Video Indexerről – Azure
+title: Gyakori kérdések a Video Indexer-Azure-ról
 titleSuffix: Azure Media Services
-description: Ez a cikk választ ad az Azure Media Services videoindexerével kapcsolatos gyakori kérdésekre.
+description: Ez a cikk választ ad a Azure Media Services Video Indexerekkel kapcsolatos gyakori kérdésekre.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,205 +11,205 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
 ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767199"
 ---
-# <a name="video-indexer-frequently-asked-questions"></a>A Video Indexer gyakran tesz fel kérdéseket
+# <a name="video-indexer-frequently-asked-questions"></a>Video Indexer gyakori kérdések
 
-Ez a cikk választ ad a Video Indexerről szóló gyakori kérdésekre.
+Ez a cikk a Video Indexerával kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general-questions"></a>Általános kérdések
 
 ### <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
-A Video Indexer egy mesterséges intelligencia szolgáltatás, amely a Microsoft Azure Media Services része. A Video Indexer több gépi tanulási modell vezénylését biztosítja, amelyek lehetővé teszik, hogy egyszerűen kinyerjen egy videóból a mély betekintést. A fejlett és pontos információk biztosítása érdekében a Video Indexer a videó több csatornáját használja: hang, beszéd és vizuális. A Video Indexer elemzési adatait számos módon fel lehet használni, például a tartalom felderíthetőségének és hozzáférhetőségének javítását, új monetizálási lehetőségek létrehozását vagy az elemzéseket használó új élmények létrehozását. A Video Indexer webalapú felületet biztosít a fiókjában lévő modellek teszteléséhez, konfigurálásához és testreszabásához. A fejlesztők rest-alapú API-val integrálhatják a Video Indexert az éles rendszerbe. 
+Video Indexer egy mesterséges intelligencia-szolgáltatás, amely Microsoft Azure Media Services részét képezi. Video Indexer több gépi tanulási modellt is biztosít, amelyek segítségével könnyedén kinyerheti a videóból a mélyebb betekintést. Ha speciális és pontos elemzéseket szeretne biztosítani, Video Indexer a videó több csatornáját is használja: hang, beszéd és vizualizáció. Video Indexer az ismeretek számos módon használhatók, például a tartalom felderíthetővé tétele és a kisegítő lehetőségek fejlesztése, új bevételi lehetőségek létrehozása vagy új, az adatgyűjtést használó tapasztalatok kiépítése. A Video Indexer webalapú felületet biztosít a fiókban található modellek teszteléséhez, konfigurálásához és testreszabásához. A fejlesztők REST-alapú API-t használhatnak a Video Indexer integrálásához az éles rendszerbe. 
 
-### <a name="what-can-i-do-with-video-indexer"></a>Mire használható a Video Indexer?
+### <a name="what-can-i-do-with-video-indexer"></a>Mire használhatom a Video Indexer?
 
-A Video Indexer a médiafájlokon a következő műveleteket hajthatja végre:
+A médiafájlok Video Indexer által elvégezhető műveletek némelyike többek között a következő műveleteket hajthatja végre:
 
-* Beszéd felismerése és kinyerése, valamint a felszólalók azonosítása.
+* A beszédfelismerés azonosítása és kinyerése és a hangszórók azonosítása.
 * A képernyőn megjelenő szöveg azonosítása és kibontása egy videóban.
-* Objektumok észlelése egy videofájlban.
-* Azonosítsa a márkákat (például: Microsoftot) a hangsávokból és a képernyőn megjelenő szövegből egy videóban.
-* Arcok észlelése és felismerése hírességek adatbázisából és az arcok felhasználó által definiált adatbázisából.
-* Kivonása témák tárgyalt, de nem feltétlenül említi a hang-és videotartalom.
-* A hangsávból feliratvagy felirat létrehozása.
+* Objektumok észlelése egy videofájl esetében.
+* A márkák (például a Microsoft) hangsávokból és a képernyőn megjelenő szöveg alapján azonosíthatók a videóban.
+* Az arcok észlelése és felismerése egy hírességből álló adatbázisból és az arcok felhasználó által definiált adatbázisa.
+* Kinyeri a tárgyalt témaköröket, de nem feltétlenül említi a hang-és videotartalom tartalmát.
+* Zárt feliratok vagy feliratok létrehozása a hangsávokból.
 
-További információt és további videoindexelő funkciókat az [Áttekintés című témakörben talál.](video-indexer-overview.md)
+További információt és további Video Indexer funkciókat a következő témakörben talál: [Áttekintés](video-indexer-overview.md).
 
-### <a name="how-do-i-get-started-with-video-indexer"></a>Hogyan kezdhetem el a Video Indexer t?
+### <a name="how-do-i-get-started-with-video-indexer"></a>Hogyan első lépések a Video Indexer?
 
-A Video Indexer egy ingyenes próbaverziót tartalmaz, amely 600 percet biztosít a webes felületen és 2400 percet az API-n keresztül. [Bejelentkezhet a Video Indexer webalapú felületére,](https://www.videoindexer.ai/) és kipróbálhatja azt bármilyen webes identitás használatával, azure-előfizetés beállítása nélkül. Kövesse [ezt az egyszerű bevezetési labort,](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md) hogy jobbképet kapjon a Video Indexer használatáról.
+Video Indexer tartalmaz egy ingyenes próbaverziós ajánlatot, amely 600 percet biztosít a webalapú felületen, és 2 400 percen belül az API-n keresztül. Bejelentkezhet [a video Indexer webes felületre](https://www.videoindexer.ai/) , és saját kezűleg is kipróbálhatja a webes identitások használatával, és anélkül, hogy Azure-előfizetést kellene beállítania. [Ezt az egyszerű bevezető labort](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md) követve jobban megismerheti a video Indexer használatát.
 
-A videók és audiolegyek nagy méretekben való indexeléséhez csatlakoztathatja a Video Indexert egy fizetős Microsoft Azure-előfizetéshez. Az árképzésről további információt az [árképzési](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) oldalon talál.
+A videók és a hanganyag nagy méretekben történő indexeléséhez Video Indexer csatlakozhat egy fizetős Microsoft Azure előfizetéshez. A díjszabással kapcsolatos további információkért tekintse meg [a díjszabást ismertető oldalt.](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)
 
-Az első lépésekről az [Első lépések](video-indexer-get-started.md)című részben talál további információt.
+További információt az [első lépések című](video-indexer-get-started.md)témakörben talál.
 
-### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Szükségem van kódolási ismeretekre a Video Indexer használatához?
+### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Szükségesek-e kódolási ismeretek a Video Indexer használatához?
 
-A Video Indexer webalapú felületen **kódolás nélkül**értékelheti, konfigurálhatja és kezelheti fiókját.  Ha készen áll az összetettebb alkalmazások fejlesztésére, a [Video Indexelő API-val](https://api-portal.videoindexer.ai/) integrálhatja a Video Indexert saját alkalmazásaiba, webhelyeibe vagy [egyéni munkafolyamataiba kiszolgáló nélküli technológiák, például az Azure Logic Apps](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) vagy az Azure Functions használatával.
+A Video Indexer webalapú kezelőfelülettel kiértékelheti, konfigurálhatja és kezelheti a fiókját, ha **nincs szükség kódolásra**.  Ha készen áll összetettebb alkalmazások fejlesztésére, a [video INDEXER API](https://api-portal.videoindexer.ai/) -val integrálhatja video Indexereit a saját alkalmazásaiba, webhelyeire vagy [Egyéni munkafolyamataiba olyan kiszolgáló nélküli technológiákkal, mint például a Azure Logic Apps vagy a](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) Azure functions.
 
-### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Gépi tanulási ismeretekre van szükségem a Video Indexer használatához?
+### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Szükségem van a gépi tanulási szaktudásra a Video Indexer használatához?
 
-Nem, a Video Indexer több gépi tanulási modell egyetlen folyamatba való integrálását biztosítja. A video- vagy hangfájl videoindexelőn keresztüli indexelése egy megosztott idővonalon kinyert elemzési adatok teljes készletét kéri le, anélkül, hogy gépi tanulási ismereteket vagy az ügyfél részéről szükséges algoritmusokról szóló ismereteket szerezne.
+Nem, Video Indexer több gépi tanulási modell integrálását is lehetővé teszi egyetlen folyamatba. A videó-vagy hangfájlok indexelése Video Indexer lekéri az egyik megosztott idővonalon kinyert elemzések teljes készletét anélkül, hogy gépi tanulási ismeretekkel vagy az ügyfél részéről szükséges algoritmusokkal kapcsolatos ismeretekkel rendelkezik.
 
-### <a name="what-media-formats-does-video-indexer-support"></a>Milyen médiaformátumokat támogat a Video Indexer?
+### <a name="what-media-formats-does-video-indexer-support"></a>Milyen adathordozó-formátumokat támogat Video Indexer?
 
-A Video Indexer támogatja a leggyakoribb médiaformátumokat. További részletekért tekintse meg az [Azure Media Kódoló szabványos formátumok](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) listáját.
+A Video Indexer a leggyakoribb adathordozó-formátumokat támogatja. További részletekért tekintse meg a [Azure Media Encoder standard formats (szabványos formátumok](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) ) listát.
 
-### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hogyan tölthetek fel médiafájlt a Video Indexerbe, és mik a korlátozások?
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hogyan feltölt egy médiafájlt a Video Indexerba, és mi a korlátozás?
 
-A Video Indexer webalapú portálon a fájlfeltöltési párbeszédpanelen vagy a forrásfájlt közvetlenül tartalmazó URL-címre mutatva tölthet fel médiafájlt (lásd [például](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Az iFrame-vagy beágyazási kód használatával a médiatartalmat tartalmazó URL-címek nem fognak működni (lásd a [példát).](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) 
+A Video Indexer webalapú portálon feltöltheti a médiafájlokat a fájlfeltöltés párbeszédpanellel, vagy egy olyan URL-re mutatva, amely közvetlenül a forrásfájlt futtatja (lásd a [példát](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Bármely olyan URL-cím, amely iFrame vagy beágyazási kód használatával futtatja az adathordozó tartalmát, nem fog működni (lásd a [példát](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). 
 
-További információkért kérjük, olvassa el ezt az [útmutatót](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+További információ: [útmutató](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
 
 #### <a name="limitations"></a>Korlátozások
 
-* A videó neve nem haladhatja meg a 80 karaktert.
-* Ha bájttömbön keresztül tölt eszmetömböt, a videó mérete legfeljebb 2 GB (URL használata esetén pedig 30 GB) lehet. 
+* A videó neve nem lehet hosszabb 80 karakternél.
+* Ha byte Array használatával tölt fel videót, a videó mérete 2 GB-ra (és 30 GB-ra van korlátozva az URL-cím használatakor). 
 
-Az átfogó listát a [Szempontok és korlátozások feltöltése című témakörben található.](upload-index-videos.md#uploading-considerations-and-limitations)
+Az átfogó listáról lásd: [szempontok és korlátozások feltöltése](upload-index-videos.md#uploading-considerations-and-limitations).
 
-### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Mennyi ideig tart a Video Indexer az elemzések kinyerése a médiából?
+### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Mennyi időt vesz igénybe Video Indexer az adatok adathordozóról való kinyerése?
 
-A video- vagy hangfájlok indexeléséhez szükséges idő , mind a Video Indexer API, mind a Video Indexer webalapú felület használatával, több paramétertől függ, például a fájl hosszától és minőségétől, a fájlban található elemzések számától, a rendelkezésre [álló fenntartott egységek](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) számától, valamint attól, hogy a [streamelési végpont](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) engedélyezve van-e vagy sem. Azt javasoljuk, hogy futtasson néhány tesztfájlt a saját tartalmával, és hozzon egy átlagot, hogy jobb ötlettel járjon el.
+A videó-vagy hangfájlok indexeléséhez szükséges idő, a Video Indexer API-t és a Video Indexer webes felületet is beleértve, több paramétertől függ, például a fájl hosszától és minőségétől, a fájlban talált elemzések számától, a rendelkezésre álló [fenntartott egységek](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) számától, valamint attól, hogy a [folyamatos átviteli végpont](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) engedélyezve van-e. Javasoljuk, hogy futtasson néhány tesztoldalt a saját tartalmával, és készítsen egy átlagot a jobb ötlet megszerzéséhez.
 
-### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Létrehozhatok testre szabott munkafolyamatokat a folyamatok automatizálásához a Video Indexer segítségével?
+### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Létrehozhatok testreszabott munkafolyamatokat a folyamatok automatizálásához a Video Indexer használatával?
 
-Igen, integrálhatja a Video Indexer-t olyan kiszolgáló nélküli technológiákba, mint a Logic Apps, a Flow és [az Azure Functions.](https://azure.microsoft.com/services/functions/) A [Logikai alkalmazás](https://azure.microsoft.com/services/logic-apps/) és a [Flow-összekötők](https://flow.microsoft.com/en-us/) a Video Indexerhez [itt](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)talál további részleteket. A [videoindexelő minták](https://github.com/Azure-Samples/media-services-video-indexer) tártárában a partnerek által végzett automatizálási projektek et láthatja.
+Igen, integrálhatja a Video Indexert olyan kiszolgáló nélküli technológiákba, mint például a Logic Apps, a flow és a [Azure functions](https://azure.microsoft.com/services/functions/). További részleteket a [Logic app](https://azure.microsoft.com/services/logic-apps/) és a [Flow](https://flow.microsoft.com/en-us/) összekötők video Indexer [itt](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)talál. Megtekintheti a partnerek által az [video Indexer Samples](https://github.com/Azure-Samples/media-services-video-indexer) tárházban végzett automatizálási projekteket.
 
-### <a name="in-which-azure-regions-is-video-indexer-available"></a>Mely Azure-régiókban érhető el a Video indexelő?
+### <a name="in-which-azure-regions-is-video-indexer-available"></a>Mely Azure-régiók érhetők el a video Indexer szolgáltatásban?
 
-Megtekintheti, hogy mely Azure-régiók videoindexelő érhető el a [régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) oldalon.
+Láthatja, hogy mely Azure-régiók érhetők el Video Indexer a [régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) lapon.
 
-### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Testre szabhatom a Video Indexer modelleket az adott használati esethez? 
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Testreszabhatók Video Indexer-modellek a konkrét használati esetekhez? 
 
-Igen. A Video Indexer testreszabhatja néhány rendelkezésre álló modellek jobban megfelel az Ön igényeinek. 
+Igen. Video Indexer a rendelkezésre álló modellek némelyikét testreszabhatja az igényeinek megfelelően. 
 
-Például a Személy modell támogatja out-of-the-box 1.000.000 arcok híresség felismerés, de azt is betaníthatja felismerni más arcok, amelyek nem szerepelnek az adatbázisban. 
+A person-modell például támogatja a Celebrity-felismeréshez készült, beépített 1 000 000 arcok használatát, de betaníthatja azt is, hogy felismerje a többi olyan arcot, amely nem található meg az adatbázisban. 
 
-További információt a [Személyek,](customize-person-model-overview.md) [márkák](customize-brands-model-overview.md)és [nyelvi](customize-language-model-overview.md) modellek testreszabásáról szóló cikkekben talál. 
+Részletekért tekintse meg a [személy](customize-person-model-overview.md), a [márkák](customize-brands-model-overview.md)és a [nyelvi](customize-language-model-overview.md) modellek testreszabásával foglalkozó cikkeket. 
 
-###  <a name="can-i-edit-the-videos-in-my-library"></a>Szerkeszthetem a videókat a könyvtáramban?
+###  <a name="can-i-edit-the-videos-in-my-library"></a>Módosíthatom a saját könyvtárában lévő videókat?
 
-Igen. Nyomja meg a **videó szerkesztése** gombot a tár kijelzőjén vagy a **megnyitás a szerkesztőben** gombot a lejátszó kijelzőjén, hogy eljusson a **Projektek** lapra. Létrehozhat egy új projektet, és további videókat adhat hozzá a könyvtárból, hogy együtt szerkeszthesse őket, miután végzett, megjelenítheti a videót és letöltheti. 
+Igen. A **Projects (projektek** ) lap megjelenítéséhez kattintson a **videó szerkesztése** gombra, vagy a lejátszó képernyőjén a **Megnyitás a szerkesztőben** gombra. Létrehozhat egy új projektet, és hozzáadhat további videókat a könyvtárból, és szerkesztheti őket, ha elkészült, a videó megjelenítéséhez és letöltéséhez. 
 
-Ha meg szeretné jelenlennie az új videóról, indexelje a Video Indexer segítségével, és az elemzési adatokkal együtt megjelenik a könyvtárban.
+Ha az új videóval kapcsolatos megállapításokat szeretne kapni, indexelje a Video Indexer, és az adatai megjelennek a könyvtárban.
 
-### <a name="what-is-the-sla-for-video-indexer"></a>Mi a videoindexelő SLA-ja?
+### <a name="what-is-the-sla-for-video-indexer"></a>Mi a Video Indexer SLA-ja?
 
-Az Azure Media Service SLA-ja lefedi a Video Indexelőt, és megtalálható az [SLA-oldalon.](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) Az SLA csak a Video Indexer fizetős fiókokra vonatkozik, és nem vonatkozik az ingyenes próbaverzióra.
+Az Azure Media Service SLA-ja kiterjed Video Indexerre, és az [SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) oldalon található. Az SLA csak Video Indexer fizetős fiókra vonatkozik, és nem vonatkozik az ingyenes próbaverzióra.
 
 ## <a name="privacy-questions"></a>Adatvédelmi kérdések
 
-### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>A video- és hangfájlokat a Video Indexer indexeli tárolja?
+### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>A videó-és hangfájlok Video Indexer tárolt adatokkal vannak indexelve?
 
-Igen, ha nem törli a fájlt a Video Indexer programból, akár a Video Indexer webhely, akár az API használatával, a rendszer tárolja a video- és hangfájlokat. Az ingyenes próbaverzióhoz az indexelt video- és hangfájlok az USA keleti régiójában tárolódnak. Ellenkező esetben a video- és hangfájlok az Azure-előfizetés tárfiókjában tárolódnak.
+Igen, hacsak nem törli a fájlt Video Indexerről, a Video Indexer webhelyet vagy API-t használva a rendszer a videó-és hangfájlokat tárolja. Az ingyenes próbaverzióhoz az Ön által indexelt videó-és hangfájlok az USA keleti régiójában található Azure-régióban tárolódnak. Ellenkező esetben a videó-és hangfájlok tárolása az Azure-előfizetés Storage-fiókjában történik.
 
-### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Törölhetem a Video Indexer Portalon tárolt fájljaimat?
+### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Törölhetem a Video Indexer portálon tárolt fájlokat?
 
-Igen, bármikor törölheti a video- és hangfájlokat, valamint a Video Indexer által kinyert metaadatokat és elemzéseket. Miután törölt egy fájlt a Video Indexerből, a fájl és annak metaadatai és elemzési adatai véglegesen törlődnek a Video Indexer programból. Ha azonban saját biztonsági mentési megoldást valósított meg az Azure storage-ban, a fájl az Azure-tárolóban marad.
+Igen, bármikor törölheti a videó-és hangfájlokat, valamint a belőlük kinyert metaadatokat és elemzéseket Video Indexer. Ha töröl egy fájlt a Video Indexer, a fájl és a hozzá tartozó metaadatok és az adatok véglegesen törlődnek a Video Indexerból. Ha azonban végrehajtotta saját biztonsági mentési megoldását az Azure Storage-ban, a fájl az Azure Storage-ban marad.
 
-### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Szabályozhatom a felhasználók hozzáférését a Video Indexer-fiókomhoz?
+### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Szabályozható a felhasználói hozzáférés a Video Indexer fiókomhoz?
 
-Igen, csak a fiókadminisztrátorok hívhatnak meg és vonhatnak vissza személyeket a fiókjukba, valamint hozzárendelést adhatnak hozzá azokhoz, akik szerkesztési jogosultságokkal rendelkeznek, és akik csak olvasási hozzáféréssel rendelkeznek.
+Igen, csak a rendszergazdák hívhatják meg és nem hívhatják meg a fiókjaikat, valamint hozzárendelhetők a szerkesztési jogosultságokkal rendelkezők és a csak olvasási hozzáféréssel rendelkező felhasználókhoz.
 
-### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Ki férhet hozzá a Video Indexer által indexelt és/vagy tárolt video- és hangfájljaimhoz, valamint a kinyert metaadatokhoz és elemzésekhez?
+### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Ki fér hozzá a videó-és hangfájlokhoz, amelyeket Video Indexer indexelt és/vagy tárolt, valamint a metaadatokat és a kinyert elemzéseket?
 
-A nyilvános adatvédelmi beállítással rendelkező video- vagy hangtartalmakhoz bárki hozzáférhet, aki rendelkezik a video- vagy hangtartalomra és annak elemzési adataira mutató hivatkozással. Az adatvédelmi beállításként privát ként tartalmazó video- vagy hangtartalmakhoz csak azok a felhasználók férhetnek hozzá, akiket meghívtak a video- vagy hangtartalom fiókjába. A tartalom adatvédelmi beállítása a Video Indexer által kinyert metaadatokra és elemzési adatokra is vonatkozik. Az adatvédelmi beállítást a video- vagy hangfájl feltöltésekor adhatja hozzá. Az indexelés után is módosíthatja az adatvédelmi beállítást.
+A saját adatvédelmi beállítással rendelkező videó-vagy hangtartalmat bárki elérheti, aki a videóra vagy hangtartalomra mutató hivatkozással rendelkezik. A személyes adatvédelmi beállítással rendelkező videó-vagy hangtartalom csak olyan felhasználók számára érhető el, akik a videó vagy a hangtartalom fiókját kérték. A tartalom adatvédelmi beállítása a Video Indexer kivonatokkal kapcsolatos metaadatokra és megállapításokra is vonatkozik. A videó-vagy hangfájl feltöltésekor az adatvédelmi beállításokat kell kiosztania. Az indexelés után is módosíthatja az adatvédelmi beállításokat.
 
-### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Milyen hozzáféréssel rendelkezik a Microsoft a Video Indexer által indexelt és/vagy tárolt video- vagy hangfájljaimhoz, valamint a kinyert metaadatokhoz és elemzésekhez?
+### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Milyen hozzáférésre van a Microsoft a videó-vagy hangfájlokhoz, amelyeket a Video Indexer indexelt és/vagy tárolt, valamint a metaadatokat és a kinyert elemzéseket?
 
-Az [Azure Online Services feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) értelmében Ön teljes mértékben a tartalom tulajdonában van, és a Microsoft csak az Ön tartalmaihoz, valamint a Video Indexelő által a tartalomból kinyert metaadatokhoz és elemzési adatokhoz fér hozzá az OST és a Microsoft adatvédelmi nyilatkozata szerint.
+Az [Azure Online Services használati feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) teljes mértékben saját tartalommal rendelkeznek, és a Microsoft csak a tartalmakat és a metaadatokat és bepillantást nyújtja, hogy az OST és a Microsoft adatvédelmi nyilatkozata alapján video Indexer kivonatokat a tartalomból.
 
-### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>A Videó indexelő-fiókomban általam létrehozandó egyéni modellek más fiókok számára is elérhetők?
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>A Video Indexer fiókomban felépített egyéni modellek más fiókok számára is elérhetők?
 
- Nem, a fiókjában létrehozott egyéni modellek nem érhetők el más fiók számára. A Video Indexer jelenleg lehetővé teszi egyéni [márkák,](customize-brands-model-overview.md) [nyelv](customize-language-model-overview.md)és [személymodellek](customize-person-model-overview.md) készítését a fiókjában. Ezek a modellek csak abban a fiókban érhetők el, amelyben létrehozta a modelleket.
+ Nem, a fiókban létrehozott egyéni modellek nem érhetők el más fiókok számára. Video Indexer jelenleg lehetővé teszi egyéni [márkák](customize-brands-model-overview.md), [nyelv](customize-language-model-overview.md)és [személy](customize-person-model-overview.md) modellek létrehozását a fiókban. Ezek a modellek csak abban a fiókban érhetők el, amelyben létrehozta a modelleket.
   
-### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>A tartalom indexelése a Video Indexer az Azure-régióban, ahol én használ video indexelő?
+### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Az Video Indexer indexelt tartalom az Azure-régióban, ahol Video Indexer használok?
 
-Igen, a tartalom és az elemzések az Azure-régióban maradnak, kivéve, ha rendelkezik egy manuális konfigurációval az Azure-előfizetésben, amely több Azure-régiót használ. 
+Igen, a tartalom és az adatai az Azure-régióban maradnak, hacsak nem rendelkezik olyan manuális konfigurációval az Azure-előfizetésben, amely több Azure-régiót használ. 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Mi a Video Indexer adatvédelmi irányelvei?
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Mi a Video Indexer adatvédelmi szabályzata?
 
-A Video Indexer re is vonatkozik a [Microsoft adatvédelmi nyilatkozata](https://privacy.microsoft.com/privacystatement). Az adatvédelmi nyilatkozat ismerteti a Microsoft által feldolgozott személyes adatokat, a Microsoft által azokat feldolgozott adatokat, valamint azt, hogy a Microsoft milyen célokra dolgozza fel azokat. Ha többet szeretne megtudni az adatvédelemről, látogasson el a [Microsoft Adatvédelmi központba.](https://www.microsoft.com/trustcenter)
+A Video Indexer a [Microsoft adatvédelmi nyilatkozata](https://privacy.microsoft.com/privacystatement)szabályozza. Az adatvédelmi nyilatkozat ismerteti a Microsoft által feldolgozott személyes adatokat, a Microsoft folyamatait és a Microsoft által feldolgozható célokat. Ha többet szeretne megtudni az adatvédelemről, látogasson el a [Microsoft adatvédelmi központba](https://www.microsoft.com/trustcenter).
 
-### <a name="what-certifications-does-video-indexer-have"></a>Milyen minősítésekkel rendelkezik a Video Indexer?
+### <a name="what-certifications-does-video-indexer-have"></a>Milyen minősítéseket Video Indexer?
 
-A Video Indexer jelenleg rendelkezik AZ SOC tanúsítvánnyal. A Video Indexer tanúsítványának áttekintéséhez olvassa el a [Microsoft Adatvédelmi központot.](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure)
+Video Indexer jelenleg a SOC-minősítéssel rendelkezik. Video Indexer minősítésének áttekintéséhez tekintse meg a [Microsoft adatvédelmi központját](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
 
-### <a name="what-is-the-difference-between-private-and-public-videos"></a>Mi a különbség a privát és a nyilvános videók között? 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Mi a különbség a magán-és a nyilvános videók között? 
 
-Amikor videókat tölt fel a Video Indexerbe, két adatvédelmi beállítás közül választhat: privát és nyilvános. A nyilvános videók bárki számára elérhetők, beleértve a névtelen és azonosítatlan felhasználókat is. A privát a fiók tagokra korlátozódik. 
+A videók Video Indexerba való feltöltésekor két adatvédelmi beállítás közül választhat: magán-és nyilvános. A nyilvános videók mindenki számára elérhetők, beleértve a névtelen és az azonosítatlan felhasználókat is. A magánjellegűek kizárólag a fiókok tagjaira korlátozódnak. 
 
-### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Megpróbáltam feltölteni egy videót nyilvánosként, és nem megfelelő vagy sértő tartalomra jelölték meg, mit jelent ez? 
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Megpróbáltam nyilvánosként feltölteni egy videót, és nem megfelelő vagy sértő tartalomra jelölték meg, mit jelent ez? 
 
-Amikor feltölt egy videót a Video Indexerbe, algoritmusok és modellek automatikus tartalomelemzést végeznek annak érdekében, hogy ne jelenjenek meg nyilvánosan nem megfelelő tartalmak. Ha egy videó gyanúsnak tűnik, és explicit tartalmat tartalmaz, akkor nem lehet nyilvánosként beállítani. A fióktagjai azonban továbbra is hozzáférhetnek privát videóként (megtekinthetiazt, letöltheti konklúdiés kinyert összetevők, és egyéb műveleteket végezhetnek a fióktagjai számára).   
+Amikor Video Indexer videót tölt fel, az algoritmusok és a modellek automatikusan elvégzik a tartalom elemzését annak érdekében, hogy a nem megfelelő tartalom ne legyen nyilvánosan elérhető. Ha egy videó gyanúsnak minősül, és explicit tartalmat tartalmaz, akkor nem lehet nyilvánosként beállítani. Azonban a fiókok tagjai továbbra is hozzáférhetnek privát videóként (megtekinthetik, le is tölthetik és kinyerték az összetevőket, és egyéb műveleteket is elvégezhetnek a fiókok tagjai számára).   
 
-A videó nyilvános hozzáférésre való beállításához a következőket teheti: 
+A videó nyilvános hozzáféréshez való beállításához a következők közül választhat: 
 
-* Hozzon létre saját felületi réteget (például alkalmazást vagy webhelyet), és használja azt a Video Indexer szolgáltatással való interakcióhoz. Így a videó privát marad a portálunkon, és a felhasználók az Ön felületén keresztül kommunikálhatnak vele. Például továbbra is megkaphatja az elemzéseket, vagy engedélyezheti a videó megtekintését a saját felületén. 
-* Kérje a tartalom emberi felülvizsgálatát, ami a korlátozás eltávolítását eredményezné, feltéve, hogy a tartalom nem egyértelmű. 
+* Hozzon létre saját felületet (például alkalmazás vagy webhely), és használja a Video Indexer szolgáltatással való interakcióhoz. Így a videó továbbra is magánjellegű a portálon, és a felhasználók a felületen keresztül kezelhetik azt. Így például továbbra is megtekintheti az eredményeket, vagy engedélyezheti a videó megtekintését a saját felületén. 
+* Kérje a tartalom emberi áttekintését, ami a korlátozás eltávolítását eredményezné, feltételezve, hogy a tartalom nem egyértelmű. 
 
-    Ez a beállítás akkor fedezhető fel, ha a Video Indexer webhelyet közvetlenül a felhasználók használják felületi rétegként, valamint nyilvános (nem hitelesített) megtekintésre. 
+    Ezt a lehetőséget akkor lehet megvizsgálni, ha a Video Indexer webhelyet közvetlenül a felhasználók használják felületi rétegként, illetve nyilvános (nem hitelesített) megtekintésre. 
 
-## <a name="api-questions"></a>API-val kapcsolatos kérdések
+## <a name="api-questions"></a>API-kérdések
 
-### <a name="what-apis-does-video-indexer-offer"></a>Milyen API-kat kínál a Video Indexer?
+### <a name="what-apis-does-video-indexer-offer"></a>Milyen API-kat Video Indexer ajánlatot?
 
-A Video Indexer API-jai lehetővé teszik az indexelést, a metaadatok kinyerését, az eszközkezelést, a fordítást, a beágyazást, a modellek testreszabását és még sok mást. A Video Indexer API használatával kapcsolatos részletesebb információkért tekintse meg a [Video Indexer Developer Portal](https://api-portal.videoindexer.ai/)webhelyen.
+A Video Indexer API-jai lehetővé teszik az indexelést, a metaadatok kinyerését, az eszközök kezelését, a fordítást, a beágyazást, a modellek testreszabását és egyebeket. A Video Indexer API használatával kapcsolatos részletesebb információkért tekintse meg a [video Indexer fejlesztői portált](https://api-portal.videoindexer.ai/).
 
-### <a name="what-client-sdks-does-video-indexer-offer"></a>Milyen ügyfél SDK-kat kínál a Video Indexer?
+### <a name="what-client-sdks-does-video-indexer-offer"></a>Milyen ügyféloldali SDK-kat Video Indexer ajánlatot?
 
-Jelenleg nincs elérhető ügyfél SDK.There are currently no client SDKs offered. A Video Indexer csapat dolgozik az SDK-k és azt tervezi, hogy hamarosan teljesíteni őket.
+Jelenleg nincsenek elérhető ügyféloldali SDK-k. A Video Indexer csapat az SDK-k és a tervek szerint hamarosan elérhetővé válik.
 
-### <a name="how-do-i-get-started-with-video-indexers-api"></a>Hogyan kezdhetem el a Video Indexer API-ját?
+### <a name="how-do-i-get-started-with-video-indexers-api"></a>Hogyan Ismerkedés a Video Indexer API-val?
 
-Kövesse [bemutató: első lépések a Video Indexer API](video-indexer-use-apis.md).
+Kövesse [az oktatóanyagot: Ismerkedés a video INDEXER API-val](video-indexer-use-apis.md).
 
-### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Mi a különbség a Video Indexer API és az Azure Media Service v3 API között?
+### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Mi a különbség a Video Indexer API és az Azure Media Service V3 API között?
 
-Jelenleg vannak átfedések a Video Indexer API és az Azure Media Service v3 API által kínált funkciók. A két [szolgáltatás](compare-video-indexer-with-media-services-presets.md)összehasonlításáról itt talál további információt.
+Jelenleg vannak átfedések a Video Indexer API és az Azure Media Service V3 API által kínált funkciókban. A szolgáltatások összehasonlításáról [itt](compare-video-indexer-with-media-services-presets.md)talál további információt.
 
 ### <a name="what-is-an-api-access-token-and-why-do-i-need-it"></a>Mi az API-hozzáférési jogkivonat, és miért van rá szükségem?
 
-A Video Indexer API egy engedélyezési API-t és egy Operations API-t tartalmaz. Az engedélyezési API olyan hívásokat tartalmaz, amelyek hozzáférési jogkivonatot biztosítanak. A Műveleti API-ba irányuló összes hívást társítani kell egy hozzáférési jogkivonathoz, amely megfelel a hívás engedélyezési hatókörének.
+A Video Indexer API egy engedélyezési API-t és egy operatív API-t tartalmaz. Az engedélyezési API olyan hívásokat tartalmaz, amelyek hozzáférési tokent biztosítanak. A Műveleti API-ba irányuló összes hívást társítani kell egy hozzáférési jogkivonathoz, amely megfelel a hívás engedélyezési hatókörének.
 
-Access jogkivonatok szükségesek a videoindexelő API-k biztonsági célokra való használatához. Ez biztosítja, hogy a hívások Öntől vagy a fiókjához hozzáférési engedéllyel rendelkező kedőktől érkezzenek. 
+Hozzáférési jogkivonatok szükségesek a Video Indexer API-k biztonsági célokra való használatához. Ezzel biztosíthatja, hogy minden hívás érkezik Önhöz, vagy azokhoz, akik hozzáférési jogosultságokkal rendelkeznek a fiókjához. 
 
-### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Mi a különbség a fiók-hozzáférési jogkivonat, a felhasználói hozzáférési jogkivonat és a video-hozzáférési jogkivonat között?
+### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Mi a különbség a fiók hozzáférési jogkivonata, a felhasználói hozzáférési jogkivonat és a videó-hozzáférési jogkivonat között?
 
-* Fiókszint – fiókszintű hozzáférési jogkivonatok segítségével fiók- vagy videószinten végezhet műveleteket. Például feltöltheti a videót, felsorolhatja az összes videót, videóelemzéseket kaphat.
-* Felhasználói szint – a felhasználói szintű hozzáférési jogkivonatok lehetővé teszik a felhasználói szintű műveletek elvégzését. Lekérhet például társított fiókokat.
+* Fiókszint – fiókszintű hozzáférési jogkivonatok segítségével fiók- vagy videószinten végezhet műveleteket. Például feltöltheti a videót, listázhatja az összes videót, és beolvashatja a video-felismeréseket.
+* Felhasználói szint – a felhasználói szintű hozzáférési tokenek lehetővé teszik a felhasználói szinten végzett műveletek végrehajtását. Lekérhet például társított fiókokat.
 * Videószint – videószintű hozzáférési jogkivonatok segítségével egy meghatározott videón végezhet műveleteket. Lekérhet például videóelemzéseket, letölthet feliratokat, kérhet vezérlőket stb.
 
-### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Milyen gyakran kell új hozzáférési jogkivonatot beszereznem? Mikor járnak le a hozzáférési jogkivonatok?
+### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Milyen gyakran van szükség új hozzáférési token beszerzésére? Mikor jár le a hozzáférési jogkivonatok érvényessége?
 
-A hozzáférési jogkivonatok óránként lejárnak, ezért óránként új hozzáférési jogkivonatot kell létrehoznia. 
+A hozzáférési tokenek óránként lejárnak, ezért minden órában új hozzáférési jogkivonatot kell létrehoznia. 
 
-### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Milyen bejelentkezési lehetőségek vannak a Video Indexer Fejlesztői portálon?
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Milyen bejelentkezési beállításokkal Video Indexer a fejlesztői portál?
 
-Az Azure AD, a Microsoft-fiók, a Google-fiók vagy a Facebook-fiók használatával is bejelentkezhet. 
+Az Azure AD, a Microsoft-fiók, a Google-fiók vagy a Facebook-fiók használatával jelentkezhet be. 
 
-Miután regisztrálta az e-mail fiókját egy identitásszolgáltató használatával, nem használhatja ezt az e-mail fiókot egy másik identitásszolgáltatónál.
+Miután regisztrálta az e-mail-fiókját egy identitás-szolgáltató használatával, nem használhatja ezt az e-mail-fiókot más identitás-szolgáltatóval.
 
 ## <a name="billing-questions"></a>Számlázással kapcsolatos kérdések
 
 ### <a name="how-much-does-video-indexer-cost"></a>Mennyibe kerül a Video Indexer?
 
-A Video Indexer egy egyszerű használatalapú díjszabási modellt használ az indexelt tartalombevitel időtartama alapján. További díjak merülhetnek fel a kódolásért, a streamelésért, a tárolásért, a hálózati használatért és a média számára fenntartott egységekért. További információt az [árképzési](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) oldalon talál.
+A Video Indexer egy egyszerű utólagos elszámolású díjszabási modellt használ az indexelt tartalom bevitelének időtartama alapján. A kódolásra, a folyamatos átvitelre, a tárterületre, a hálózati használatra és a Media szolgáltatás számára fenntartott egységekre további díjak vonatkozhatnak. További információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) oldalt.
 
-### <a name="when-am-i-billed-for-using-video-indexer"></a>Mikor kell fizetnia a Video Indexer használatáért?
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Mikor kell fizetnem a Video Indexer használatáról?
 
-Amikor indexelendő videót küld, a felhasználó meghatározza az indexelést videóelemzésnek, hangelemzésnek vagy mindkettőnek. Ez határozza meg, hogy mely sk-eket terhelik meg. Ha a feldolgozás során kritikus szintű hiba lép fel, válaszként egy hibakódot ad vissza. Ebben az esetben nem történik számlázás.  Kritikus hibát okozhat egy hiba a kódunkban, vagy egy kritikus hiba egy belső függőség a szolgáltatás. Hibák, például a hibás azonosítás vagy betekintést kinyerése nem tekinthető kritikusnak, és a válasz ad vissza. Minden olyan esetben, amikor érvényes (nem hibakód) választ ad vissza, számlázás történik.
+Ha indexelni kíván egy videót, a felhasználó megadhatja az indexelést a videó elemzése, a hang elemzése vagy mindkettő számára. Ez határozza meg, hogy mely SKU-ket számoljuk fel. Ha a feldolgozás során kritikus szintű hiba történt, a rendszer egy hibakódot ad vissza válaszként. Ilyen esetben nem történik számlázás.  Kritikus hiba oka lehet a kód hibája, vagy egy, a szolgáltatás belső függőségében kritikus hiba. A hibák, például a helytelen azonosítás vagy az elemzések kinyerése nem tekintendő kritikusnak, és a rendszer választ ad vissza. Minden olyan esetben, amikor érvényes (nem hibakód) választ ad vissza, a számlázás történik.
  
-### <a name="does-video-indexer-offer-a-free-trial"></a>A Video Indexer ingyenes próbaverziót kínál?
+### <a name="does-video-indexer-offer-a-free-trial"></a>Kínál Video Indexer ingyenes próbaverziót?
 
-Igen, a Video Indexer ingyenes próbaverziót kínál, amely teljes körű szolgáltatást és API-funkciókat biztosít. Van egy kvóta 600 perc értékű videók web-alapú felület felhasználók és 2400 perc API-felhasználók számára. 
+Igen, Video Indexer ingyenes próbaverziót kínál, amely teljes körű szolgáltatást és API-funkciókat biztosít. Az API-felhasználók számára a 600 perces számú, a webalapú felhasználói felülethez és a 2 400 percben található videó. 
 
 ## <a name="next-steps"></a>További lépések
 

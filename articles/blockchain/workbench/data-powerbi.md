@@ -5,23 +5,23 @@ ms.date: 04/22/2020
 ms.topic: article
 ms.reviewer: sunri
 ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082526"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench-adatok használata a Microsoft Power BI-ban
 
-A Microsoft Power BI lehetővé teszi, hogy a Power BI Desktop segítségével [https://www.powerbi.com](https://www.powerbi.com)egyszerűen generáljon hatékony jelentéseket az SQL DB-adatbázisokból, majd közzétegye azokat a rendszeren.
+A Microsoft Power BI lehetővé teszi, hogy az SQL DB-adatbázisokból könnyedén hozzon elő hatékony jelentéseket a Power BI Desktop [https://www.powerbi.com](https://www.powerbi.com), majd tegye közzé azokat a alkalmazásban.
 
 Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához a PowerBI Desktop alkalmazásból, illetve hogyan hozhat létre és tehet közzé jelentéseket a powerbi.com-on.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Power BI Desktop letöltése](https://powerbi.microsoft.com/desktop/).
+* [Power bi Desktop](https://powerbi.microsoft.com/desktop/)letöltése.
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>A Power BI csatlakoztatása adatokhoz az Azure Blockchain Workbench szolgáltatásban
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI csatlakoztatása az Azure Blockchain Workbench-beli adatkapcsolathoz
 
 1.  Nyissa meg a Power BI Desktopot.
 2.  Válassza az **Adatok lekérése** lehetőséget.
@@ -29,7 +29,7 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
     ![Adatok lekérése](./media/data-powerbi/get-data.png)
 3.  Válassza az **SQL Server** lehetőséget az adatforrástípusok listájából.
 
-4.  Adja meg a kiszolgáló és az adatbázis nevét a megjelenő párbeszédpanelen. Adja meg, hogy importálni akarja-e az adatokat, vagy **DirectQuery**-lekérdezést szeretne végrehajtani. Válassza **az OK gombot.**
+4.  Adja meg a kiszolgáló és az adatbázis nevét a megjelenő párbeszédpanelen. Adja meg, hogy importálni akarja-e az adatokat, vagy **DirectQuery**-lekérdezést szeretne végrehajtani. Kattintson az **OK** gombra.
 
     ![Select SQL Server](./media/data-powerbi/select-sql.png)
 
@@ -43,7 +43,7 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 
     ![Kezelő](./media/data-powerbi/navigator.png)
 
-7.  Jelölje ki a belefoglalni kívánt nézeteket. Demonstrációs célokra a **vwContractAction-t**is bevezetjük, amely részletesen ismerteti a szerződéssel kapcsolatos műveleteket.
+7.  Jelölje ki a belefoglalni kívánt nézeteket. Demonstrációs célokra a **vwContractAction**tartalmazza, amely részletesen ismerteti a szerződésben vállalt műveleteket.
 
     ![Nézetek kiválasztása](./media/data-powerbi/select-views.png)
 

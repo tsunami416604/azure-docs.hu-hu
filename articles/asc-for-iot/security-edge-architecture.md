@@ -1,6 +1,6 @@
 ---
-title: Az IoT Edge biztonsági modulja
-description: Ismerje meg az Azure Security Center for IoT biztonsági modul architektúráját és képességeit az IoT Edge-hez.
+title: Biztonsági modul a IoT Edge
+description: Ismerje meg IoT Edge IoT biztonsági moduljának architektúráját és képességeit Azure Security Center.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,52 +16,52 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310628"
 ---
-# <a name="azure-iot-edge-security-module"></a>Az Azure IoT Edge biztonsági modulja
+# <a name="azure-iot-edge-security-module"></a>Azure IoT Edge biztonsági modul
 
-[Az Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) hatékony lehetőségeket biztosít az üzleti munkafolyamatok kezeléséhez és végrehajtásához a peremhálózaton.
-Az IoT Edge kulcsfontosságú szerepe az IoT-környezetekben különösen vonzóvá teszi a rosszindulatú szereplők számára.
+A [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) hatékony képességeket biztosít az üzleti munkafolyamatok kezeléséhez és az Edge-ben való végrehajtásához.
+A IoT-környezetekben IoT Edge játszik, különösen vonzó a kártékony szereplők számára.
 
-Az Azure Security Center for IoT biztonsági modul átfogó biztonsági megoldást nyújt az IoT Edge-eszközökhöz.
-Az Azure Security Center for IoT-modul az operációs rendszerből és a tárolórendszerből származó nyers biztonsági adatokat művelete alapján megvalósítható biztonsági javaslatokés riasztások alapján gyűjti, összesíti és elemzi.
+A IoT biztonsági modul Azure Security Center átfogó biztonsági megoldást nyújt a IoT Edge-eszközökhöz.
+A IoT modul Azure Security Center a nyers biztonsági adatokat gyűjti, összesíti és elemzi az operációs rendszertől és a tároló rendszertől a gyakorlatban használható biztonsági javaslatokkal és riasztásokkal.
 
-Az IoT-eszközökhöz készült Azure Security Center for IoT biztonsági ügynökökhöz hasonlóan az Azure Security Center for IoT Edge modul nagymértékben testreszabható a modul ikermoduljával.
-További információ az [ügynök konfigurálása](how-to-agent-configuration.md) című témakörben olvashat bővebben.
+A IoT-eszközökhöz készült IoT biztonsági ügynökökhöz Azure Security Center hasonlóan a IoT Edge modulhoz tartozó Azure Security Center nagyméretűen testreszabható a modul Twin-en keresztül.
+További információért lásd: [az ügynök konfigurálása](how-to-agent-configuration.md) .
 
-Az IoT Edge-hez készült Azure Security Center for IoT biztonsági modul a következő funkciókat kínálja:
+A IoT Edge IoT biztonsági moduljának Azure Security Center a következő funkciókat kínálja:
 
-- Nyers biztonsági események gyűjtése az alapul szolgáló operációs rendszer (Linux) és az IoT Edge tárolórendszerek.
+- Az alapul szolgáló operációs rendszer (Linux) és a IoT Edge tároló rendszerek nyers biztonsági eseményeit gyűjti.
 
-  Tekintse meg [az Azure Security Center for IoT ügynök konfigurációját,](how-to-agent-configuration.md) ha többet szeretne megtudni az elérhető biztonsági adatgyűjtőkről.
+  A rendelkezésre álló biztonsági adatgyűjtők megismeréséhez tekintse meg [Azure Security Center a IoT-ügynök konfigurációját](how-to-agent-configuration.md) ismertető témakört.
 
-- IoT Edge-telepítés jegyzékfájljainak elemzése.
+- IoT Edge üzembe helyezési jegyzékek elemzése.
 
-- A nyers biztonsági eseményeket az [IoT Edge Hubon](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)keresztül küldött üzenetekbe összesíti.
+- Az [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)-on keresztül küldött üzenetekben összesíti a nyers biztonsági eseményeket.
 
-- A konfiguráció eltávolítása az ikerbiztonsági modul használatával.
+- Távolítsa el a konfigurációt a Twin biztonsági modul használatával.
 
-  További információ az [Azure Security Center ioT-ügynökhöz beállítása](how-to-agent-configuration.md) című témakörben.
+  További információért lásd: [Azure Security Center konfigurálása a IoT-ügynökhöz](how-to-agent-configuration.md) .
 
-Az IoT Edge-hez készült Azure Security Center for IoT Security Module egy kiváltságos módban fut ioT Edge alatt.
-Kiemelt mód szükséges ahhoz, hogy a modul figyelhesse az operációs rendszert és más IoT Edge-modulokat.
+A IoT Edge IoT biztonsági moduljának Azure Security Center a IoT Edge alatt a privilegizált módban futnak.
+A Kiemelt üzemmód szükséges ahhoz, hogy a modul figyelje az operációs rendszert és az egyéb IoT Edge modulokat.
 
 ## <a name="module-supported-platforms"></a>Modul által támogatott platformok
 
-Az IoT Edge-hez készült Azure Security Center for IoT Security Module jelenleg csak Linuxon érhető el.
+A IoT Edge IoT biztonsági moduljának Azure Security Center jelenleg csak Linux rendszeren érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben az Azure Security Center for IoT biztonsági modul IoT Edge architektúrájáról és képességeiről szerzett tudomást.
+Ebből a cikkből megtudhatta, milyen architektúrát és képességeket Azure Security Center a IoT Edge IoT biztonsági moduljának.
 
-Az Azure Security Center iot-telepítéshez való használatának megkezdéséhez használja az alábbi cikkeket:
+A IoT-telepítés Azure Security Centerának folytatásához használja a következő cikkeket:
 
-- Biztonsági modul üzembe helyezése [az IoT Edge-hez](how-to-deploy-edge.md)
-- A [biztonsági modul konfigurálása](how-to-agent-configuration.md)
-- Tekintse át az Azure Security Center az [IoT-szolgáltatás előfeltételeit](service-prerequisites.md)
-- Megtudhatja, hogyan engedélyezheti az [Azure Security Center for IoT-szolgáltatást az IoT Hubban](quickstart-onboard-iot-hub.md)
-- További információ a szolgáltatásról az [Azure Security Center for IoT –GYIK-ből](resources-frequently-asked-questions.md)
+- [IoT Edge biztonsági moduljának](how-to-deploy-edge.md) telepítése
+- Útmutató [a biztonsági modul konfigurálásához](how-to-agent-configuration.md)
+- A IoT [szolgáltatás előfeltételeinek](service-prerequisites.md) áttekintése Azure Security Center
+- Megtudhatja, hogyan [engedélyezheti Azure Security Center a IoT szolgáltatáshoz a IoT hub](quickstart-onboard-iot-hub.md)
+- További információ a szolgáltatásról a [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)

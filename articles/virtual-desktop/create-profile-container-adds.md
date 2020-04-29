@@ -1,6 +1,6 @@
 ---
-title: FSLogix profiltároló létrehozása Azure Files Active Directory tartományi szolgáltatások – Azure
-description: Ez a cikk ismerteti, hogyan hozhat létre egy FSLogix profiltároló az Azure Files és az Azure Active Directory tartományi szolgáltatások.
+title: FSLogix-profil tárolójának létrehozása Azure Files Active Directory tartományi szolgáltatások – Azure
+description: Ez a cikk azt ismerteti, hogyan hozható létre FSLogix-profil tároló Azure Files és Azure Active Directory Domain Services használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,93 +9,93 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81265771"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>FSLogix-profiltároló létrehozása az Azure Files segítségével
+# <a name="create-an-fslogix-profile-container-with-azure-files"></a>FSLogix-profil tároló létrehozása Azure Files
 
-Ez a cikk bemutatja, hogyan hozhat létre egy FSLogix profiltárolót az Azure Files és az Azure Active Directory tartományi szolgáltatások (AD DS) használatával.
+Ez a cikk bemutatja, hogyan hozhat létre egy FSLogix-profil tárolót Azure Files és Azure Active Directory Domain Services (AD DS) használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy már beállított egy Azure AD DS-példányt. Ha még nem rendelkezik ilyennel, először kövesse az [Alapszintű felügyelt tartomány létrehozása című](../active-directory-domain-services/tutorial-create-instance.md) rész utasításait, majd térjen vissza ide.
+Ez a cikk azt feltételezi, hogy már beállított egy Azure AD DS-példányt. Ha még nem rendelkezik ilyennel, kövesse az [alapszintű felügyelt tartomány létrehozása](../active-directory-domain-services/tutorial-create-instance.md) című részben leírtakat, majd térjen vissza ide.
 
 ## <a name="add-azure-ad-ds-admins"></a>Azure AD DS-rendszergazdák hozzáadása
 
-További rendszergazdák hozzáadásához hozzon létre egy új felhasználót, és adjon nekik engedélyeket.
+További rendszergazdák hozzáadásához hozzon létre egy új felhasználót, és adja meg nekik az engedélyeket.
 
 Rendszergazda hozzáadása:
 
-1. Válassza az **Azure Active Directory** elemet az oldalsávról, majd válassza a Minden **felhasználó**lehetőséget, majd az **Új felhasználó**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget az oldalsávon, majd válassza a **minden felhasználó**lehetőséget, majd válassza az **új felhasználó**lehetőséget.
 
-2.  Adja meg a felhasználó adatait a mezőkbe.
+2.  Adja meg a felhasználói adatokat a mezőkben.
 
-3. Az Azure Active Directory ablaktáblán a képernyő bal oldalán válassza a **Csoportok**lehetőséget.
+3. A képernyő bal oldalán található Azure Active Directory ablaktáblán válassza a **csoportok**lehetőséget.
 
-4. Jelölje ki az **AAD tartományvezérlő rendszergazdák csoportját.**
+4. Válassza a **HRE DC-rendszergazdák** csoportot.
 
-5. A bal oldali ablaktáblában válassza a **Tagok**lehetőséget, majd válassza a **Tagok hozzáadása** lehetőséget a főablaktáblán. Ez az Azure AD-ben elérhető összes felhasználó listáját jeleníti meg. Válassza ki az imént létrehozott felhasználói profil nevét.
+5. A bal oldali ablaktáblán válassza a **tagok**lehetőséget, majd válassza a **Tagok hozzáadása** elemet a fő ablaktáblán. Ez megjeleníti az Azure AD-ben elérhető összes felhasználó listáját. Válassza ki az imént létrehozott felhasználói profil nevét.
 
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage-fiók beállítása
 
-Most itt az ideje, hogy engedélyezze az Azure AD DS hitelesítését a kiszolgálói üzenetblokkon (SMB) keresztül. 
+Itt az ideje, hogy engedélyezi az Azure AD DS a hitelesítést a Server Message Block (SMB) protokollon keresztül. 
 
 A hitelesítés engedélyezése:
 
-1. Ha még nem tette meg, hozzon létre és telepítsen egy általános célú v2 Azure Storage-fiókot az [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md)című részben található utasításokat követve.
+1. Ha még nem tette meg, állítson be és helyezzen üzembe egy általános célú v2-es Azure Storage-fiókot az [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait követve.
 
-2. Miután befejezte a fiók beállítását, válassza az **Ugrás az erőforrásra**lehetőséget.
+2. Ha befejezte a fiók beállítását, válassza **az Ugrás az erőforráshoz**lehetőséget.
 
-3. Válassza a **konfiguráció a** képernyő bal oldalán lévő ablaktáblában válassza a Konfiguráció lehetőséget, majd engedélyezze az Azure **Active Directory-hitelesítést** az Azure Files számára a fő ablaktáblában. Amikor elkészült, válassza a **Mentés** lehetőséget.
+3. Válassza a **konfiguráció** elemet a képernyő bal oldalán, majd engedélyezze a **Azure Files Azure Active Directory hitelesítését** a fő ablaktáblán. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
-4. Válassza az **Áttekintés** lehetőséget a képernyő bal oldalán, majd a fájlok **lehetőséget** a főablaktáblán.
+4. Válassza az **Áttekintés** lehetőséget a képernyő bal oldalán, majd a fő ablaktáblán válassza a **fájlok** lehetőséget.
 
-5. Válassza a **Fájlmegosztás** lehetőséget, és írja be a **Név** és **kvóta értéket** a képernyő jobb oldalán megjelenő mezőkbe.
+5. Válassza a **fájlmegosztás** lehetőséget, és írja be a **nevet** és a **kvótát** a képernyő jobb oldalán megjelenő mezőkbe.
 
-## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek hozzárendelése identitáshoz
+## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek kiosztása identitáshoz
 
-A fájlmegosztás eléréséhez más felhasználóknak hozzáférési engedélyekre lesz szükségük. Ehhez minden felhasználónak hozzá kell rendelnie egy szerepkört a megfelelő hozzáférési engedélyekkel.
+Más felhasználóknak hozzáférési engedélyekre van szükségük a fájlmegosztás eléréséhez. Ehhez minden felhasználóhoz hozzá kell rendelnie egy szerepkört a megfelelő hozzáférési engedélyekkel.
 
-A felhasználók hozzáférési engedélyeinek hozzárendelése:
+Felhasználói hozzáférési engedélyek kiosztása:
 
-1. Az Azure Portalon nyissa meg az [Azure Storage-fiók beállítása](#set-up-an-azure-storage-account)kor létrehozott fájlmegosztást.
+1. A Azure Portal nyissa meg az [Azure Storage-fiók beállítása](#set-up-an-azure-storage-account)című részében létrehozott fájlmegosztást.
 
-2. Válassza **a Hozzáférés-vezérlés (IAM) lehetőséget.**
+2. Válassza a **Access Control (iam)** lehetőséget.
 
-3. Válassza **a Szerepkör-hozzárendelés hozzáadása**lehetőséget.
+3. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
-4. A **Szerepkör-hozzárendelés hozzáadása** lapon válassza ki a megfelelő beépített szerepkört a szerepkörlistából. A megfelelő engedélyek hez legalább a **Storage File Data SMB Share Contributor lehetőséget** kell választania a fiókhoz.
+4. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a megfelelő beépített szerepkört a szerepkör listából. A megfelelő engedélyek beszerzéséhez legalább a **Storage file-ADATsmb-megosztás közreműködőjét** kell választania a fiókhoz.
 
-5. A **Hozzáférés hozzárendelése a**területen lehetőséget választja az Azure Active Directory **felhasználói, csoport- vagy szolgáltatásnév elemre.**
+5. A **hozzáférésének hozzárendeléséhez**válassza ki **Azure Active Directory felhasználót, csoportot vagy egyszerű szolgáltatásnevet**.
 
-6. Válassza ki a cél Azure Active Directory-identitás nevét vagy e-mail címét.
+6. Válassza ki a cél Azure Active Directory identitás nevét vagy e-mail-címét.
 
 7. Kattintson a **Mentés** gombra.
 
-## <a name="get-the-storage-account-access-key"></a>A tárfiók hozzáférési kulcsának beszereznie
+## <a name="get-the-storage-account-access-key"></a>A Storage-fiók elérési kulcsának beolvasása
 
-Ezután be kell szereznie a tárfiók hozzáférési kulcsát.
+Ezután be kell szereznie a Storage-fiókhoz tartozó hozzáférési kulcsot.
 
-A tárfiók hozzáférési kulcsának leése:
+A Storage-fiók elérési kulcsának beszerzése:
 
-1. Az Azure Portal oldalsávján válassza **a Storage-fiókok**lehetőséget.
+1. A Azure Portal oldalsávon válassza a **Storage-fiókok**lehetőséget.
 
-2. A tárfiókok listájából válassza ki azt a fiókot, amelyhez engedélyezte az Azure AD DS-t, és a fenti lépésekben hozta létre az egyéni szerepköröket.
+2. A Storage-fiókok listájából válassza ki azt a fiókot, amelyhez engedélyezve van az Azure AD DS, és hozza létre az egyéni szerepköröket a fenti lépésekben.
 
-3. A **Beállítások csoportban**válassza az **Access-kulcsok lehetőséget,** és másolja a kulcsot a **billentyűből1.**
+3. A **Beállítások**területen válassza a **hozzáférési kulcsok** lehetőséget, és másolja a kulcsot a **key1**.
 
-4. Lépjen a **Virtuális gépek** lapra, és keresse meg a virtuális gépet, amely a gazdakészlet részévé válik.
+4. Lépjen a **Virtual Machines** lapra, és keresse meg a gazdagép-készlet részévé váló virtuális gépeket.
 
-5. Válassza ki a virtuális gép (VM) nevét a **Virtuális gépek (adVM)** csoportban, és válassza a **Csatlakozás** lehetőséget
+5. Válassza ki a virtuális gép (VM) nevét **Virtual Machines (adVM)** alatt, és válassza a **kapcsolat** lehetőséget.
 
-    Ez letölti az RDP-fájlt, amely lehetővé teszi, hogy a saját hitelesítő adataival jelentkezzen be a virtuális gépre.
+    Ezzel letölt egy RDP-fájlt, amely lehetővé teszi, hogy a saját hitelesítő adataival jelentkezzen be a virtuális gépre.
 
-    ![Képernyőkép a Csatlakozás a virtuális géphez ablak RDP lapjáról.](media/rdp-tab.png)
+    ![A virtuális gép kapcsolódása ablak RDP lapjának képernyőképe.](media/rdp-tab.png)
 
-6. Miután bejelentkezett a virtuális gépbe, futtasson egy parancssort rendszergazdaként.
+6. Amikor bejelentkezett a virtuális gépre, futtassa a parancssort rendszergazdaként.
 
 7. Futtassa az alábbi parancsot:
 
@@ -103,10 +103,10 @@ A tárfiók hozzáférési kulcsának leése:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Cserélje `<desired-drive-letter>` le az Ön által választott `y:`meghajtóbetűjelre (például ).
-    - Cserélje le az `<storage-account-name>` összes példányt a korábban megadott tárfiók nevére.
-    - Cserélje `<share-name>` le a korábban létrehozott megosztás nevére.
-    - Cserélje `<storage-account-key>` le az Azure-ból származó tárfiók kulcsát.
+    - Cserélje `<desired-drive-letter>` le a betűt a kívánt meghajtóbetűjelre (például: `y:`).
+    - Cserélje le az összes `<storage-account-name>` példányát a korábban megadott Storage-fiók nevére.
+    - Cserélje `<share-name>` le a helyére a korábban létrehozott megosztás nevét.
+    - Cserélje `<storage-account-key>` le a elemet az Azure Storage-fiók kulcsára.
 
     Például:  
   
@@ -114,14 +114,14 @@ A tárfiók hozzáférési kulcsának leése:
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. Futtassa a következő parancsot, hogy a felhasználó teljes hozzáférést biztosítson az Azure Files megosztáshoz.
+8. A következő parancs futtatásával teljes hozzáférést biztosíthat a felhasználónak a Azure Files megosztáshoz.
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - Cserélje `<mounted-drive-letter>` le annak a meghajtónak a betűjelét, amelyet a felhasználó használni szeretne.
-    - Cserélje `<user-email>` le annak a felhasználónak az upn-jára, aki ezt a profilt fogja használni a munkamenetgazda virtuális gépeinek eléréséhez.
+    - A `<mounted-drive-letter>` helyére írja be annak a meghajtónak a betűjelét, amelyet a felhasználó használni kíván.
+    - A `<user-email>` helyére írja be annak a felhasználónak a felhasználónevét, aki ezt a profilt fogja használni a munkamenet-gazda virtuális gépek eléréséhez.
 
     Például:
      
@@ -131,44 +131,44 @@ A tárfiók hozzáférési kulcsának leése:
 
 ## <a name="create-a-profile-container"></a>Profiltároló létrehozása
 
-Most, hogy a profilok készen állnak, hozzon létre egy FSLogix profiltárolót.
+Most, hogy a profilok készen állnak, hozzon létre egy FSLogix-profil tárolót.
 
-FSLogix profiltároló konfigurálása:
+FSLogix-profil tárolójának konfigurálása:
 
-1. Jelentkezzen be a cikk elején konfigurált munkamenetgazda virtuális gépbe, majd [töltse le és telepítse az FSLogix-ügynököt.](/fslogix/install-ht/)
+1. Jelentkezzen be a cikk elején konfigurált munkamenet-gazda virtuális gépre, majd [töltse le és telepítse a FSLogix-ügynököt](/fslogix/install-ht/).
 
-2. Csomagolja ki a letöltött FSLogix ügynökfájlt, és lépjen az **x64-es** > **kiadásokra,** majd nyissa meg **az FSLogixAppsSetup.exe fájlt.**
+2. Bontsa ki a letöltött FSLogix-ügynököt, és nyissa meg az **x64** > -es**kiadásokat**, majd nyissa meg a **FSLogixAppsSetup. exe**fájlt
 
-3. Miután a telepítő elindul, válassza **az Elfogadom a licenc feltételeket.** Adott esetben adjon meg egy új kulcsot.
+3. A telepítő elindítása után válassza az Elfogadom **a licencfeltételeket lehetőséget.** Ha van ilyen, adjon meg egy új kulcsot.
 
 4. Válassza az **Install** (Telepítés) lehetőséget.
 
-5. Nyissa **meg a C meghajtót,** majd nyissa meg az**FSLogix-alkalmazások** > **Apps** **programozása** > lapot, és ellenőrizze, hogy az FSLogix ügynök megfelelően van-e telepítve.
+5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files** > **FSLogix** > **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
 
      >[!NOTE]
-     > Ha több virtuális gép van a gazdakészletben, minden virtuális gépesetében meg kell ismételnie az 1–5.
+     > Ha több virtuális gép van a gazdagépen, az egyes virtuális gépekhez az 1 – 5. lépést kell megismételni.
 
-6. **Futtassa a Rendszerleíróadatbázis-szerkesztőt** (RegEdit) rendszergazdaként.
+6. Futtassa a **Beállításszerkesztőt** (Regedit) rendszergazdaként.
 
-7. Nyissa meg **a Computer** > **HKEY_LOCAL_MACHINE** > Software**FSLogix****elemet,** > kattintson a jobb gombbal az **FSLogix**elemre, válassza az **Új**parancsot, majd a **Kulcs parancsot.**
+7. Navigáljon a **számítógép** > **HKEY_LOCAL_MACHINE** > **szoftver** > **FSLogix**, kattintson a jobb gombbal a **FSLogix**elemre, válassza az **új**, majd a **kulcs**elemet.
 
-8. **Hozzon**létre egy profilok nevű új kulcsot.
+8. Hozzon létre egy új, **profilok**nevű kulcsot.
 
-9.  Kattintson a jobb gombbal a **Profilok**elemre, válassza az **Új**parancsot, majd a **Duplaszó (32 bites) értéket.** Nevezze el az **Engedélyezve értéket,** és állítsa az **Adat** értéket **1-re.**
+9.  Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**lehetőséget, majd válassza a **DWORD (32 bites) értéket.** Nevezze el az **engedélyezett** értéket, és állítsa az **adatértéket** **1-re**.
 
-    ![Képernyőkép a Profilok kulcsról. A REG_DWORD fájl ki van emelve, és az Adat értéke 1.](media/dword-value.png)
+    ![A profilok kulcs képernyőképe. A REG_DWORD fájl ki van emelve, és az adatérték értéke 1.](media/dword-value.png)
 
-10. Kattintson a jobb gombbal a **Profilok**elemre, válassza az **Új**parancsot, majd a **Többszörös karakterlánc értékét.** Nevezze el a **VHDLocations értéket,** és állítsa `\\fsprofile.file.core.windows.net\share` be az Azure Files megosztásuri-uri-értékét adatértékként.
+10. Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**, majd a **többkarakterláncos érték**elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás `\\fsprofile.file.core.windows.net\share` URI-ját adatértékként.
 
-    ![A Profilok kulcs képernyőképe a VHDLocations fájllal. Az adatok értéke az Azure Files megosztásuri-értékét jeleníti meg.](media/multi-string-value.png)
+    ![A VHDLocations fájlt bemutató profilok kulcs képernyőképe. Az adatértéke a Azure Files-megosztás URI-JÁT jeleníti meg.](media/multi-string-value.png)
 
-## <a name="assign-users-to-a-session-host"></a>Felhasználók hozzárendelése munkamenet-gazdagéphez
+## <a name="assign-users-to-a-session-host"></a>Felhasználók társítása egy munkamenet-gazdagéphez
 
 Most hozzá kell rendelnie a felhasználókat a munkamenet-gazdagéphez.
 
-Felhasználók hozzárendelése:
+Felhasználók kiosztása:
 
-1. Futtassa a Windows PowerShellt rendszergazdaként, majd futtassa a következő parancsmamot a Windows virtuális asztalra való bejelentkezéshez a PowerShell használatával:
+1. Futtassa a Windows PowerShellt rendszergazdaként, majd futtassa a következő parancsmagot a Windows rendszerű virtuális asztalra való bejelentkezéshez a PowerShell használatával:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -181,9 +181,9 @@ Felhasználók hozzárendelése:
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-   Amikor hitelesítő adatokat kér, adja meg ugyanazt a felhasználót, aki megkapta a TenantCreator, RDS-tulajdonos vagy RDS közreműködői szerepkört a Windows virtuális asztal bérlőjén.
+   Ha a rendszer a hitelesítő adatok megadását kéri, adja meg ugyanazt a felhasználót, aki a Windows rendszerű virtuális asztali bérlőn TenantCreator, RDS tulajdonosi vagy RDS-közreműködői szerepkört kapott.
 
-2. Futtassa a következő parancsmagokat a felhasználó távoli asztali csoporthoz rendeléséhez:
+2. A következő parancsmagok futtatásával rendelje hozzá a felhasználót a távoli asztali csoporthoz:
 
      ```powershell
      $tenant = "<your-wvd-tenant>"
@@ -197,7 +197,7 @@ Felhasználók hozzárendelése:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    A korábbi parancsmagokhoz hasonlóan a `<your-wvd-tenant>`, `<wvd-pool>`a `<user-principal>` , és a megfelelő értékeket cserélje ki.
+    A korábbi parancsmagokhoz hasonlóan a megfelelő értékeket cserélje le `<your-wvd-tenant>` `<wvd-pool>`a, a `<user-principal>` és a kifejezésre.
 
     Például:
 
@@ -213,31 +213,31 @@ Felhasználók hozzárendelése:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-## <a name="make-sure-your-profile-works"></a>A profil működésének biztosítása
+## <a name="make-sure-your-profile-works"></a>Ellenőrizze, hogy a profil működik-e
 
-Most mindössze annyit kell tennie, hogy győződjön meg róla, a profil létrehozott létezik, és működik a kívánt.
+Most mindössze annyit kell tennie, hogy a létrehozott profil létezik, és a kívánt módon működik.
 
-A profil igazolása:
+A profil ellenőrzése:
 
-1. Nyisson meg egy böngészőt, és lépjen [a Windows Virtual Desktop webes ügyfélprogramra.](https://rdweb.wvd.microsoft.com/webclient/index.html)
+1. Nyisson meg egy böngészőt, és nyissa meg [a Windows rendszerű virtuális asztali webes ügyfélprogramot](https://rdweb.wvd.microsoft.com/webclient/index.html).
 
-2. Jelentkezzen be a Távoli asztal csoporthoz rendelt felhasználói fiókkal.
+2. Jelentkezzen be az Távoli asztal csoporthoz rendelt felhasználói fiókkal.
 
-3. A felhasználói munkamenet létrehozása után nyissa meg az Azure Portalt, és jelentkezzen be egy rendszergazdai fiókkal.
+3. A felhasználói munkamenet létrehozása után nyissa meg a Azure Portal, és jelentkezzen be egy rendszergazdai fiókkal.
 
-4. Az oldalsávon válassza **a Storage-fiókok**lehetőséget.
+4. Az oldalsávon válassza a **Storage-fiókok**lehetőséget.
 
-5. Válassza ki a rendszerű tárolófiókot, amelyet a munkamenetgazda-készlet fájlmegosztásaként konfigurált, és amely engedélyezve van az Azure AD DS szolgáltatással.
+5. Válassza ki azt a Storage-fiókot, amelyet a munkamenet-gazdagéphez tartozó fájlmegosztásként konfigurált, és amelyen engedélyezve van az Azure AD DS.
 
-6. Válassza a **Fájlok** ikont, majd bontsa ki a megosztást.
+6. Válassza ki a **fájlok** ikont, majd bontsa ki a megosztást.
 
-    Ha minden megfelelően van beállítva, akkor a **következő** formátumú könyvtárat `<user SID>-<username>`kell látnia: .
+    Ha minden megfelelően van beállítva, a következőhöz hasonló nevű **könyvtárat** kell megjelennie: `<user SID>-<username>`.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha alternatív módszereket keres az FSLogix profiltárolók létrehozásához, tekintse meg az alábbi cikkeket:
+Ha alternatív módszereket keres a FSLogix-profilok létrehozásához, tekintse meg a következő cikkeket:
 
-- [Hozzon létre egy profiltárolót egy gazdagépkészlethez fájlmegosztás használatával.](create-host-pools-user-profile.md)
-- [FSLogix-profiltároló létrehozása gazdakészlethez az Azure NetApp-fájlok használatával](create-fslogix-profile-container.md)
+- [Hozzon létre egy fájlmegosztási tárolót egy gazdagéphez a fájlmegosztás használatával](create-host-pools-user-profile.md).
+- [FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával](create-fslogix-profile-container.md)
 
-Az [FSLogix-profiltárolókban és az Azure-fájlokban](fslogix-containers-azure-files.md)az FSlogix-tárolókkal kapcsolatos fogalmakkal kapcsolatos további információkat részletesebben is megtalálhatja.
+A [FSlogix-FSlogix és az Azure Files](fslogix-containers-azure-files.md)-ban az Azure Files-tárolókkal kapcsolatos fogalmakról részletesebb információkat talál.

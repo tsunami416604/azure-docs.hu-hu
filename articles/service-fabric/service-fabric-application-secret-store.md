@@ -1,20 +1,20 @@
 ---
-title: Az Azure Service Fabric központi titoktartási tárolója
-description: Ez a cikk ismerteti, hogyan használhatja a Központi titok tároló az Azure Service Fabric.
+title: Azure Service Fabric központi titkok tárolója
+description: Ez a cikk azt ismerteti, hogyan használható a központi titkok tárolása az Azure Service Fabricban.
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770414"
 ---
-# <a name="central-secrets-store-in-azure-service-fabric"></a>Központi titkok tárolója az Azure Service Fabricben 
-Ez a cikk ismerteti, hogyan használhatja a Központi titkos kulcsok tároló (CSS) az Azure Service Fabric-ben titkos kulcsok létrehozása a Service Fabric-alkalmazásokban. A CSS egy helyi titkos tároló gyorsítótár, amely bizalmas adatokat, például jelszót, jogkivonatokat és kulcsokat titkosítva tárol a memóriában.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Központi titkok tárolása az Azure-ban Service Fabric 
+Ez a cikk azt ismerteti, hogyan használható a Central Secrets Store (CSS) az Azure Service Fabricban a titkok létrehozásához Service Fabric alkalmazásokban. A CSS egy helyi titkos tároló-gyorsítótár, amely a memóriában titkosított bizalmas adatokat, például jelszavakat, jogkivonatokat és kulcsokat tárol.
 
-## <a name="enable-central-secrets-store"></a>Központi titkos kulcsok tárának engedélyezése
-A CSS `fabricSettings` engedélyezéséhez adja hozzá a következő parancsfájlt a fürtkonfigurációhoz. Azt javasoljuk, hogy a CSS fürttanúsítványáttól eltérő tanúsítványt használjon. Győződjön meg arról, hogy a titkosítási tanúsítvány minden csomópontra telepítve van, és amely `NetworkService` olvasási engedéllyel rendelkezik a tanúsítvány személyes kulcsához.
+## <a name="enable-central-secrets-store"></a>Központi titkok tárolójának engedélyezése
+Adja hozzá a következő parancsfájlt a fürt konfigurációjához `fabricSettings` a CSS engedélyezéséhez. Javasoljuk, hogy a CSS-fürtön kívül más tanúsítványt használjon. Győződjön meg arról, hogy a titkosítási tanúsítvány telepítve van az összes `NetworkService` csomóponton, és olvasási engedéllyel rendelkezik a tanúsítvány titkos kulcsához.
   ```json
     "fabricSettings": 
     [
@@ -47,11 +47,11 @@ A CSS `fabricSettings` engedélyezéséhez adja hozzá a következő parancsfáj
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>Titkos erőforrás deklarálása
-Létrehozhat egy titkos erőforrást a REST API használatával.
+A REST API használatával létrehozhat egy titkos erőforrást.
   > [!NOTE] 
-  > Ha a fürt windows-hitelesítést használ, a REST-kérelmet a rendszer nem biztonságos HTTP-csatornán keresztül küldi el. A javaslat az, hogy egy X509 alapú fürt biztonságos végpontok.
+  > Ha a fürt Windows-hitelesítést használ, a REST-kérelmet a rendszer a nem biztonságos HTTP-csatornán keresztül küldi el. Javasoljuk, hogy használjon egy X509-alapú fürtöt biztonságos végpontokkal.
 
-Titkos erőforrás `supersecret` létrehozásához a REST API használatával, `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`hogy egy PUT kérelmet. Titkos erőforrás létrehozásához fürt- vagy rendszergazdai ügyféltanúsítványra van szükség.
+Ha a REST API `supersecret` használatával szeretne létrehozni egy titkos erőforrást, tegyen fel kérelmet a `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`következőre:. Titkos erőforrás létrehozásához szükség van a fürt vagy a rendszergazdai ügyféltanúsítvány tanúsítványára.
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
@@ -60,7 +60,7 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 
 ## <a name="set-the-secret-value"></a>A titkos érték beállítása
 
-A következő parancsfájl használatával a REST API-t a titkos érték beállításához.
+A következő parancsfájl használatával állítsa be a titkos értéket a REST API használatával.
 ```powershell
 $Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
@@ -69,11 +69,11 @@ Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret
 ```powershell
 Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
-## <a name="use-the-secret-in-your-application"></a>Használja a titkos kulcsot az alkalmazásban
+## <a name="use-the-secret-in-your-application"></a>Az alkalmazásban található titkos kód használata
 
-Kövesse az alábbi lépéseket a titkos kulcsot a Service Fabric-alkalmazásban.
+Az alábbi lépéseket követve használhatja a titkos kulcsot a Service Fabric alkalmazásban.
 
-1. Adjon hozzá egy szakaszt a **settings.xml** fájlhoz a következő kódrészlettel. Itt vegye figyelembe, hogy az`secretname:version`érték {}.
+1. Vegyen fel egy szakaszt a **Settings. XML** fájlban a következő kódrészlettel. Vegye figyelembe, hogy az érték {`secretname:version`} formátumú.
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +81,7 @@ Kövesse az alábbi lépéseket a titkos kulcsot a Service Fabric-alkalmazásban
      </Section>
    ```
 
-1. Importálja a szakaszt az **ApplicationManifest.xml**fájlban.
+1. Importálja a szakaszt a **ApplicationManifest. xml fájlban**.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -94,12 +94,12 @@ Kövesse az alábbi lépéseket a titkos kulcsot a Service Fabric-alkalmazásban
      </ServiceManifestImport>
    ```
 
-   A környezeti `SecretPath` változó arra a könyvtárra mutat, ahol az összes titkos titok tárolódik. A `testsecrets` szakaszban felsorolt paraméterek külön fájlban tárolódnak. Az alkalmazás most már használhatja a titkot az alábbiak szerint:
+   A környezeti változó `SecretPath` arra a könyvtárra mutat, ahol az összes titkot tárolja. A `testsecrets` szakaszban felsorolt minden paraméter külön fájlban tárolódik. Az alkalmazás mostantól a következő módon használhatja a titkot:
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. A titkokat egy tárolóba szerelje fel. Az egyetlen változás szükséges, hogy a titkos `specify` kulcsok elérhető `<ConfigPackage>`a tárolóban, hogy egy csatlakoztatási pont.
-A következő kódrészlet a módosított **ApplicationManifest.xml**.  
+1. A titkok csatlakoztatása egy tárolóhoz. Az egyetlen, a tárolón `specify` belül elérhető titkokat a-ben lévő `<ConfigPackage>`csatlakoztatási pontra kell módosítani.
+A következő kódrészlet a módosított **ApplicationManifest. XML**.  
 
    ```xml
    <ServiceManifestImport>
@@ -115,9 +115,9 @@ A következő kódrészlet a módosított **ApplicationManifest.xml**.
        </Policies>
      </ServiceManifestImport>
    ```
-   Titkok állnak rendelkezésre a tárolón belüli csatlakoztatási pont alatt.
+   A Titkok a tárolón belüli csatlakoztatási pont alatt érhetők el.
 
-1. A program titkos kulcsot köthet egy `Type='SecretsStoreRef`folyamatkörnyezeti változóhoz. A következő kódrészlet egy példa arra, `supersecret` `ver1` hogyan lehet `MySuperSecret` a verziót a **ServiceManifest.xml**fájl környezeti változójához kötni.
+1. Megadhat egy titkos kulcsot egy folyamat környezeti változóhoz a következő megadásával: `Type='SecretsStoreRef`. Az alábbi kódrészlet egy példa arra, hogyan köthető `supersecret` a verzió `ver1` a környezeti változóhoz `MySuperSecret` a **ServiceManifest. xml fájlban**.
 
    ```xml
    <EnvironmentVariables>
@@ -126,4 +126,4 @@ A következő kódrészlet a módosított **ApplicationManifest.xml**.
    ```
 
 ## <a name="next-steps"></a>További lépések
-További információ [az alkalmazás- és szolgáltatásbiztonságról.](service-fabric-application-and-service-security.md)
+További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md).

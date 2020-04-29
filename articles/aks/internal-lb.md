@@ -1,35 +1,35 @@
 ---
 title: Hozzon létre egy belső terheléselosztót
 titleSuffix: Azure Kubernetes Service
-description: Ismerje meg, hogyan hozhat létre és használhat belső terheléselosztót a szolgáltatások azure Kubernetes-szolgáltatás (AKS) használatával való elérhetővé.
+description: Megtudhatja, hogyan hozhat létre és használhat belső Load balancert a szolgáltatások Azure Kubernetes szolgáltatással (ak) való elérhetővé tétele érdekében.
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 9c2966215d07c4ddf052d30a5757a2deee2e0b5c
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392776"
 ---
-# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó használata az Azure Kubernetes szolgáltatással (AKS)
+# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó használata az Azure Kubernetes szolgáltatással (ak)
 
-Az Azure Kubernetes-szolgáltatás (AKS) alkalmazásaihoz való hozzáférés korlátozásához létrehozhat és használhat belső terheléselosztót. A belső terheléselosztó a Kubernetes-szolgáltatást csak a Kubernetes-fürttel azonos virtuális hálózaton futó alkalmazások számára teszi elérhetővé. Ez a cikk bemutatja, hogyan hozhat létre és használhat belső terheléselosztót az Azure Kubernetes-szolgáltatással (AKS).
+Ha korlátozni szeretné az alkalmazásaihoz való hozzáférést az Azure Kubernetes szolgáltatásban (ak), létrehozhat és használhat belső Load balancert. A belső terheléselosztó csak a Kubernetes-fürttel azonos virtuális hálózaton futó alkalmazások számára teszi elérhetővé a Kubernetes szolgáltatást. Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat belső terheléselosztó szolgáltatást az Azure Kubernetes szolgáltatással (ak).
 
 > [!NOTE]
-> Az Azure Load Balancer két termékkódban érhető el – *alapszintű* és *standard*. Alapértelmezés szerint a standard termékváltozat az AKS-fürt létrehozásakor használatos.  LoadBalancer típusú szolgáltatás létrehozásakor ugyanazt az LB-típust kapja, mint amikor a fürtöt kiépíti. További információ: [Azure load balancer SKU comparison.][azure-lb-comparison]
+> Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a standard SKU-t használja a rendszer, amikor egy AK-fürtöt hoz létre.  Ha terheléselosztó típusú szolgáltatást hoz létre, ugyanazt az LB-típust fogja kapni, mint a fürt kiépítésekor. További információ: [Azure Load BALANCER SKU-összehasonlítás][azure-lb-comparison].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-Meglévő alhálózat vagy erőforráscsoport használata esetén az AKS-fürt egyszerű szolgáltatásának engedélyre van szüksége a hálózati erőforrások kezeléséhez. Általában rendelje hozzá a *hálózat közreműködői* szerepkört a szolgáltatásnévhez a delegált erőforrásokon. Egyszerű szolgáltatás helyett használhatja a rendszer hozzárendelt felügyelt identitás engedélyeket. További információ: [Felügyelt identitások használata.](use-managed-identity.md) Az engedélyekről további információt az [AKS-hozzáférés delegálása más Azure-erőforrásokhoz című témakörben talál.][aks-sp]
+Ha meglévő alhálózatot vagy erőforráscsoportot használ, a (z) alhálózati erőforrás-kezelőhöz a hálózati erőforrások kezeléséhez engedély szükséges. Általában rendelje hozzá a *hálózati közreműködő* szerepkört az egyszerű szolgáltatáshoz a delegált erőforrásokon. Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md). Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Hozzon létre egy belső terheléselosztót
 
-Belső terheléselosztó létrehozásához hozzon létre `internal-lb.yaml` egy *LoadBalancer* szolgáltatástípussal és az *azure-load-balancer-internal* megjegyzéssel elnevezett szolgáltatásjegyzéket, ahogy az a következő példában látható:
+Belső terheléselosztó létrehozásához hozzon létre egy nevű `internal-lb.yaml` szolgáltatási jegyzékfájlt a szolgáltatás típusa *terheléselosztó* és az *Azure-Load-Balancer – belső* jegyzettel az alábbi példában látható módon:
 
 ```yaml
 apiVersion: v1
@@ -46,15 +46,15 @@ spec:
     app: internal-app
 ```
 
-Telepítse a belső terheléselosztót a [kubectl alkalmazásával,][kubectl-apply] és adja meg a YAML-jegyzékfájl nevét:
+Helyezze üzembe a belső terheléselosztó-t a [kubectl alkalmazásával][kubectl-apply] , és adja meg a YAML-jegyzék nevét:
 
 ```console
 kubectl apply -f internal-lb.yaml
 ```
 
-Egy Azure-terheléselosztó jön létre a csomópont erőforráscsoportban, és ugyanahhoz a virtuális hálózathoz csatlakozik, mint az AKS-fürt.
+Az Azure Load Balancer a csomópont-erőforráscsoporthoz jön létre, és ugyanahhoz a virtuális hálózathoz csatlakozik, mint az AK-fürt.
 
-A szolgáltatás részleteinek megtekintésekor a belső terheléselosztó IP-címe az *EXTERNAL-IP* oszlopban jelenik meg. Ebben az összefüggésben a *Külső* a terheléselosztó külső felületéhez kapcsolódik, nem pedig nyilvános külső IP-címet kap. Az IP-cím * \<függőről tényleges\> * belső IP-címre való váltása egy-két percet is igénybe vehet, amint az a következő példában látható:
+A szolgáltatás részleteinek megtekintésekor a belső terheléselosztó IP-címe megjelenik a *külső IP-* oszlopban. Ebben a kontextusban a *külső* a terheléselosztó külső felületével kapcsolatos, nem pedig nyilvános, külső IP-címet kap. Előfordulhat, hogy az IP-cím egy percet vagy kettőt is igénybe vehet, hogy a * \<függőben lévő\> * belső IP-címekre váltson, ahogy az az alábbi példában is látható:
 
 ```
 $ kubectl get service internal-app
@@ -63,9 +63,9 @@ NAME           TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 ```
 
-## <a name="specify-an-ip-address"></a>IP-cím megadása
+## <a name="specify-an-ip-address"></a>IP-cím meghatározása
 
-Ha egy adott IP-címet szeretne használni a belső terheléselosztóval, adja hozzá a *loadBalancerIP* tulajdonságot a yaml-jegyzékfájl terheléselosztóhoz. A megadott IP-címnek ugyanabban az alhálózatban kell lennie, mint az AKS-fürtnek, és még nem rendelhető hozzá egy erőforráshoz.
+Ha egy adott IP-címet szeretne használni a belső terheléselosztó számára, adja hozzá a *loadBalancerIP* tulajdonságot a terheléselosztó YAML jegyzékfájlhoz. A megadott IP-címnek ugyanabban az alhálózatban kell lennie, mint az AK-fürtnek, és nem kell erőforráshoz rendelni.
 
 ```yaml
 apiVersion: v1
@@ -83,7 +83,7 @@ spec:
     app: internal-app
 ```
 
-Amikor üzembe helyezi, és megtekinti a szolgáltatás részleteit, az EXTERNAL-IP oszlopban lévő *IP-cím* a megadott IP-címet tükrözi:
+Üzembe helyezéskor és a szolgáltatás részleteinek megtekintéséhez a *külső IP* -cím OSZLOPBAN szereplő IP-cím a megadott IP-címet tükrözi:
 
 ```
 $ kubectl get service internal-app
@@ -92,11 +92,11 @@ NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
 
-## <a name="use-private-networks"></a>Magánhálózatok használata
+## <a name="use-private-networks"></a>Magánhálózati hálózatok használata
 
-Az AKS-fürt létrehozásakor speciális hálózati beállításokat adhat meg. Ez a megközelítés lehetővé teszi a fürt üzembe helyezését egy meglévő Azure virtuális hálózatés alhálózatok. Az egyik forgatókönyv az AKS-fürt központi telepítése a helyszíni környezethez csatlakoztatott magánhálózatba, és csak belsőleg elérhető szolgáltatások futtatása. További információ: Saját virtuális hálózati alhálózatok konfigurálása [kubenet][use-kubenet] vagy [az Azure CNI][advanced-networking]használatával.
+Az AK-fürt létrehozásakor megadhatja a speciális hálózati beállításokat. Ez a módszer lehetővé teszi, hogy a fürtöt egy meglévő Azure-beli virtuális hálózatba és alhálózatba telepítse. Az egyik forgatókönyv az AK-fürt üzembe helyezése a helyszíni környezethez csatlakoztatott magánhálózati hálózatban, és a szolgáltatások csak belsőleg érhetők el. További információ: saját virtuális hálózati alhálózatok konfigurálása a [Kubenet][use-kubenet] vagy az [Azure CNI][advanced-networking].
 
-Nincs szükség az előző lépések módosítására a belső terheléselosztó magánhálózatot használó AKS-fürtben történő üzembe helyezéséhez. A terheléselosztó ugyanabban az erőforráscsoportban jön létre, mint az AKS-fürt, de a magánvirtuális hálózathoz és az alhálózathoz csatlakozik, ahogy az a következő példában látható:
+Az előző lépések módosítása nem szükséges ahhoz, hogy egy belső terheléselosztó üzembe helyezése egy magánhálózatot használó AK-fürtön történjen. A terheléselosztó ugyanabban az erőforráscsoportban jön létre, mint az AK-fürt, de csatlakozik a privát virtuális hálózathoz és az alhálózathoz, ahogy az az alábbi példában is látható:
 
 ```
 $ kubectl get service internal-app
@@ -106,11 +106,11 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Előfordulhat, hogy az AKS-fürt szolgáltatásnévnek meg kell adnia a *hálózati közreműködői* szerepkört annak az erőforráscsoportnak, amelyben az Azure virtuális hálózati erőforrásai üzembe helyezése van. Az [aks show-val][az-aks-show]tekintse meg `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`a szolgáltatásnév , például . Szerepkör-hozzárendelés létrehozásához használja az [az szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancsot.
+> Előfordulhat, hogy a *hálózati közreműködő* szerepkört egy olyan erőforráscsoporthoz kell megadnia, ahol az Azure-beli virtuális hálózati erőforrásokat üzembe helyezi. Tekintse meg a szolgáltatásnevet az [az AK show][az-aks-show]paranccsal, `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`például:. Szerepkör-hozzárendelés létrehozásához használja az az [role-hozzárendelés létrehozása][az-role-assignment-create] parancsot.
 
-## <a name="specify-a-different-subnet"></a>Másik alhálózat megadása
+## <a name="specify-a-different-subnet"></a>Válasszon másik alhálózatot
 
-Adja meg a terheléselosztó alhálózatát, adja hozzá az *azure-load-balancer-internal-subnet* annotációt a szolgáltatáshoz. A megadott alhálózatnak ugyanabban a virtuális hálózatban kell lennie, mint az AKS-fürtnek. Üzembe helyezéskor az *EXTERNAL-IP-cím* a megadott alhálózat része.
+A terheléselosztó alhálózatának megadásához adja hozzá az *Azure-Load-Balancer – belső alhálózat* megjegyzését a szolgáltatáshoz. A megadott alhálózatnak ugyanabban a virtuális hálózatban kell lennie, mint az AK-fürtnek. Telepítésekor a terheléselosztó *külső IP-* címe a megadott alhálózat része.
 
 ```yaml
 apiVersion: v1
@@ -130,13 +130,13 @@ spec:
 
 ## <a name="delete-the-load-balancer"></a>A terheléselosztó törlése
 
-A belső terheléselosztót használó összes szolgáltatás törlésekor maga a terheléselosztó is törlődik.
+Ha a belső terheléselosztó által használt összes szolgáltatás törlődik, akkor a terheléselosztó is törlődik.
 
-Közvetlenül is törölheti a szolgáltatást, mint bármely Kubernetes-erőforrás, például `kubectl delete service internal-app`a , amely szintén törli az alapul szolgáló Azure load balancer.
+Közvetlenül is törölhet egy szolgáltatást, mint bármely Kubernetes-erőforrást, például a `kubectl delete service internal-app`(z)-t, amely a mögöttes Azure Load balancert is törli.
 
 ## <a name="next-steps"></a>További lépések
 
-A Kubernetes szolgáltatásairól a [Kubernetes-szolgáltatások dokumentációjában][kubernetes-services]olvashat bővebben.
+További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 
 <!-- LINKS - External -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
