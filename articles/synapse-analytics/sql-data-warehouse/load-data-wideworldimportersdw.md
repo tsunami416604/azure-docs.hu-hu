@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Adatok betöltése az Azure Portal & sSMS használatával'
-description: Az oktatóanyag az Azure Portal és az SQL Server Management Studio segítségével tölti be a WideWorldImportersDW adatraktárt egy globális Azure blobból egy Azure Synapse Analytics SQL-készletbe.
+title: 'Oktatóanyag: az adatterhelés Azure Portal & SSMS használatával'
+description: Az oktatóanyag Azure Portal és SQL Server Management Studio használatával tölti be a Wideworldimportersdw adattárházat-adattárházat egy globális Azure-blobból egy Azure szinapszis Analytics SQL-készletbe.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 16263a23c978e3486ff7c5d9281117f850cb885c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744360"
 ---
-# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Oktatóanyag: Adatok betöltése az Azure Synapse Analytics SQL-készletébe
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Oktatóanyag: az Azure szinapszis Analytics SQL-készletbe való betöltés
 
-Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW adatraktárt az Azure Blob storage-ból az Azure Synapse Analytics SQL-készletadattár-raktárába. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használja a következőkhöz:
+Ez az oktatóanyag a Base használatával tölti be a Wideworldimportersdw adattárházat-adattárházat az Azure Blob Storage-ból az adattárházba az Azure szinapszis Analytics SQL-készletben. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használja a következőkhöz:
 
 > [!div class="checklist"]
 >
-> * Adattárház létrehozása az Azure PortalSQL-készlethasználatával
+> * Adattárház létrehozása az SQL-készlet használatával a Azure Portalban
 > * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
-> * Csatlakozás az SQL-készlethez SSMS-sel
+> * Kapcsolódás az SQL-készlethez a SSMS használatával
 > * Adatok betöltésére kijelölt felhasználó létrehozása
 > * Azure-blobot adatforrásként használó külső táblák létrehozása
 > * Adatok betöltése az adattárházba a CTAS T-SQL-utasítás használatával
@@ -34,7 +34,7 @@ Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW a
 > * Egy évnyi adat létrehozása a dátumdimenzió és értékesítés ténytáblában
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -42,82 +42,82 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Üres adattárház létrehozása az SQL-készletben
 
-Az SQL-készlet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az SQL-készlet egy [Azure-erőforráscsoporton](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) belül és egy [Azure SQL logikai kiszolgálón](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)jön létre.
+A rendszer létrehoz egy SQL-készletet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével. Az SQL-készlet egy Azure- [erőforráscsoport](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és egy [Azure SQL logikai kiszolgáló](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)között jön létre.
 
-Üres SQL-készlet létrehozásához kövesse az alábbi lépéseket.
+Az alábbi lépéseket követve hozzon létre egy üres SQL-készletet.
 
-1. Válassza **az Erőforrás létrehozása** az Azure Portalon lehetőséget.
+1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal.
 
-1. Válassza ki az **adatbázisok** az **új** lapon, és válassza az **Azure Synapse Analytics** a **Kiemelt** az **új** lapon.
+1. Az **új oldalon válassza az** **adatbázisok** lehetőséget, majd az **új** oldal **Kiemelt** részén válassza az **Azure szinapszis Analytics** elemet.
 
     ![SQL-készlet létrehozása](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-1. Töltse ki a **Projekt részletei** szakaszt a következő információkkal:
+1. Töltse ki a **Project details** szakaszt a következő információkkal:
 
    | Beállítás | Példa | Leírás |
    | ------- | --------------- | ----------- |
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
 
-1. Az **SQL-készlet részletei**területen adja meg az SQL-készlet nevét. Ezután válasszon ki egy meglévő kiszolgálót a legördülő menüből, vagy válassza az **Új létrehozása lehetőséget** a **Kiszolgáló** beállításai alatt új kiszolgáló létrehozásához. Adja meg az alábbi adatokat az űrlapon:
+1. Az **SQL-készlet részletei**területen adja meg az SQL-készlet nevét. Ezután válasszon ki egy meglévő kiszolgálót a legördülő listából, vagy válassza az **új létrehozása** lehetőséget a **kiszolgáló** beállításai között egy új kiszolgáló létrehozásához. Adja meg az alábbi adatokat az űrlapon:
 
     | Beállítás | Ajánlott érték | Leírás |
     | ------- | --------------- | ----------- |
     |**SQL-készlet neve**|SampleDW| Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
     | **Kiszolgáló neve** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
-    | **Kiszolgálórendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket.|
+    | **Kiszolgáló-rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket.|
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
-    | **Helyen** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
+    | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
     ![adatbázis-kiszolgáló létrehozása](./media/load-data-wideworldimportersdw/create-database-server.png)
 
-1. **Válassza ki a teljesítményszintet**. A csúszka alapértelmezés szerint **DW1000c**. A csúszka felfelé és lefelé mozgatására válassza ki a kívánt teljesítményskálát.
+1. **Válassza a teljesítmény szintet**. Alapértelmezés szerint a csúszka a **DW1000c**értékre van állítva. Mozgassa a csúszkát felfelé és lefelé a kívánt teljesítmény-méretezés kiválasztásához.
 
     ![adatbázis-kiszolgáló létrehozása](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-1. A **További beállítások** lapon állítsa a **Meglévő adatok használata** nincs beállítást, és hagyja a Rendezés **t** az alapértelmezett *SQL_Latin1_General_CP1_CI_AS*.
+1. A **További beállítások** lapon állítsa be a **meglévő értékek használata** none értékre, és hagyja meg a **rendezést** az alapértelmezett *SQL_Latin1_General_CP1_CI_AS*.
 
-1. Válassza **a Véleményezés + létrehozás** lehetőséget a beállítások áttekintéséhez, majd a **Létrehozás gombra** az adattárház létrehozásához. A folyamat figyelheti a **telepítés folyamatban lévő** lapját az **Értesítések** menüből.
+1. A beállítások áttekintéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget, majd válassza a **Létrehozás** lehetőséget az adattárház létrehozásához. A folyamat nyomon követéséhez nyissa meg a **telepítés folyamatban** van lapon az **értesítések** menüből.
 
      ![értesítés](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
-Az Azure Synapse Analytics szolgáltatás tűzfalat hoz létre a kiszolgáló szintjén, amely megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgáló bármely adatbázisához. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az ügyfél IP-címéhez.
+Az Azure szinapszis Analytics szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az ügyfél IP-címéhez.
 
 > [!NOTE]
-> Az Azure Synapse Analytics SQL-készlet kommunikál porton keresztül 1433. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
+> Az Azure szinapszis Analytics SQL-készlet az 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
 >
 
-1. A telepítés befejezése után keresse meg a készlet nevét a navigációs menü keresőmezőjében, és válassza az SQL készlet erőforrást. Válassza ki a kiszolgálónevet.
+1. Az üzembe helyezés befejezése után keresse meg a készlet nevét a navigációs menü keresőmezőbe, és válassza ki az SQL-készlet erőforrását. Válassza ki a kiszolgálónevet.
 
-    ![ugrás az erőforráshoz](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
+    ![Keresse meg az erőforrást](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
 
 1. Válassza ki a kiszolgálónevet.
     ![kiszolgáló neve](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Válassza **a Tűzfalbeállítások megjelenítése**lehetőséget. Megnyílik az SQL-készletkiszolgáló **tűzfalbeállításai** lap.
+1. Válassza a **tűzfalbeállítások megjelenítése**lehetőséget. Megnyílik az SQL-készlet kiszolgálójának **tűzfalbeállítások** lapja.
 
     ![kiszolgáló beállításai](./media/load-data-wideworldimportersdw/server-settings.png)
 
-1. A **Tűzfalak és a virtuális hálózatok** lapon válassza az Ügyfél IP **hozzáadása** lehetőséget, ha hozzá szeretné adni az aktuális IP-címét egy új tűzfalszabályhoz. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
+1. A **tűzfalak és virtuális hálózatok** lapon válassza az **ügyfél IP-** címének hozzáadása lehetőséget az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
 
     ![kiszolgálói tűzfalszabály](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
 1. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
 
-Most már csatlakozhat az SQL-kiszolgálóhoz az ügyfél IP-címével. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.  
+Most már csatlakozhat az SQL Serverhez az ügyfél IP-címe alapján. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.  
 
 > [!IMPORTANT]
 > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. A tűzfal az összes Azure-szolgáltatásra vonatkozó letiltásához kattintson ezen az oldalon a **KI** gombra, majd a **Mentés** parancsra.
 
 ## <a name="get-the-fully-qualified-server-name"></a>A teljes kiszolgálónév lekérése
 
-A kiszolgálóhoz való csatlakozáshoz a teljesen minősített kiszolgálónév az. Nyissa meg az SQL-készlet erőforrását az Azure Portalon, és tekintse meg a teljesen minősített nevet a **Kiszolgáló név**alatt.
+A kiszolgálóhoz való kapcsolódáshoz használt teljes kiszolgálónév. Nyissa meg az SQL-készlet erőforrását a Azure Portalban, és tekintse meg a **kiszolgáló neve**alatt található teljes nevet.
 
 ![kiszolgáló neve](././media/load-data-wideworldimportersdw/find-server-name.png)
 
@@ -132,7 +132,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | Beállítás      | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-    | Kiszolgálónév | A teljes kiszolgálónév | A **sqlpoolservername.database.windows.net** például egy teljesen minősített kiszolgálónév. |
+    | Kiszolgálónév | A teljes kiszolgálónév | Például a **sqlpoolservername.database.Windows.net** egy teljesen minősített kiszolgálónév. |
     | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés | A kiszolgálói rendszergazdafiók | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
@@ -141,13 +141,13 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 3. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben.
 
-4. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki **a SampleDW** csomópontot az új adatbázis objektumainak megtekintéséhez.
+4. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **sampledw adatbázison** elemet az új adatbázisban található objektumok megtekintéséhez.
 
     ![adatbázis-objektumok](./media/load-data-wideworldimportersdw/connected.png)
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memóriamaximális értékek a használt SQL-készlet, az [adattárház-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)és az [erőforrásosztály](resource-classes-for-workload-management.md)szerint vannak definiálva.
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximális száma az Ön által használt SQL-készlet, az [adatraktár-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)és az [erőforrás-osztály](resource-classes-for-workload-management.md)létrehozása alapján van meghatározva.
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
@@ -170,7 +170,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
 
     ![Új lekérdezés futtatása a minta-adattárházon](./media/load-data-wideworldimportersdw/create-loading-user.png)
 
-5. A következő T-SQL-parancsok begépelésével hozzon létre egy LoaderRC60 nevű felhasználót a LoaderRC60-fiókhoz. A második sor az új adattárházra vonatkozó CONTROL (vezérlési) engedélyeket ad az új felhasználónak.  Ezen engedélyek megadása ahhoz hasonló, mintha az adatbázis tulajdonosává tenné a felhasználót. A harmadik sor hozzáadja az új `staticrc60` felhasználót az [erőforrásosztály](resource-classes-for-workload-management.md)tagjaként.
+5. A következő T-SQL-parancsok begépelésével hozzon létre egy LoaderRC60 nevű felhasználót a LoaderRC60-fiókhoz. A második sor az új adattárházra vonatkozó CONTROL (vezérlési) engedélyeket ad az új felhasználónak.  Ezen engedélyek megadása ahhoz hasonló, mintha az adatbázis tulajdonosává tenné a felhasználót. A harmadik sor hozzáadja az új felhasználót az `staticrc60` [erőforrás osztály](resource-classes-for-workload-management.md)tagjaként.
 
     ```sql
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
@@ -198,9 +198,9 @@ Az adatok betöltésének első lépése a LoaderRC60-ként való bejelentkezés
 
 ## <a name="create-external-tables-and-objects"></a>Külső táblák és objektumok létrehozása
 
-Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. A későbbi adatokról megtudhatja, hogy miként juthat el az Azure Blob storage-ba, illetve hogyan töltheti be őket közvetlenül a forrásból az SQL-készletbe, olvassa el a [betöltési áttekintést.](design-elt-data-loading.md)
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Ha szeretné megtudni, hogyan érheti el adatait az Azure Blob Storage-ba, vagy hogyan tölthető be közvetlenül a forrásból az SQL-készletbe, tekintse meg a [Betöltés áttekintését](design-elt-data-loading.md).
 
-Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. Az adatok egy globális Azure Blobban találhatók.
+Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. Az adatközpont egy globális Azure-blobban található.
 
 1. Az előző szakaszban LoaderRC60-ként jelentkezett be az adattárházba. Az SSMS-ben kattintson a jobb gombbal a LoaderRC60-kapcsolat alatt található **SampleDW** elemre, és válassza a **New Query** (Új lekérdezés) elemet.  Megnyílik egy új lekérdezési ablak.
 
@@ -214,7 +214,7 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     CREATE MASTER KEY;
     ```
 
-4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást az Azure blob helyének meghatározásához. Ez a külső, világszerte lévő importőrök adatainak helye.  A lekérdezési ablakhoz hozzáfűzött parancsok futtatásához jelölje ki a futtatni kívánt parancsokat, majd kattintson az **Execute** (Végrehajtás) elemre.
+4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást az Azure blob helyének meghatározásához. Ez a külső globális importőrök által tárolt adatmennyiség helye.  A lekérdezési ablakhoz hozzáfűzött parancsok futtatásához jelölje ki a futtatni kívánt parancsokat, majd kattintson az **Execute** (Végrehajtás) elemre.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -248,7 +248,7 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     CREATE SCHEMA wwi;
     ```
 
-7. Hozza létre a külső táblákat. A tábladefiníciók az adatbázisban tárolódnak, de a táblák az Azure blob storage-ban tárolt adatokra hivatkoznak. A következő T-SQL-parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
+7. Hozza létre a külső táblákat. A táblázat definíciói az adatbázisban vannak tárolva, de a táblák az Azure Blob Storage-ban tárolt adatszolgáltatásokra hivatkoznak. A következő T-SQL-parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -523,20 +523,20 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     );
     ```
 
-8. Az Objektumkezelőben bontsa ki a SampleDW csomópontot a létrehozott külső táblák listájának megtekintéséhez.
+8. A Object Explorer bontsa ki a Sampledw adatbázison elemet a létrehozott külső táblák listájának megtekintéséhez.
 
     ![Külső táblák megtekintése](./media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-sql-pool"></a>Az adatok betöltése az SQL-készletbe
+## <a name="load-the-data-into-sql-pool"></a>Az SQL-készletbe való betöltés
 
-Ez a szakasz a megadott külső táblákat használja a mintaadatok azure Blobból SQL-készletbe való betöltéséhez.  
+Ez a szakasz a mintaadatok Azure Blobból SQL-készletbe való betöltéséhez megadott külső táblázatokat használja.  
 
 > [!NOTE]
 > Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Éles környezetben általában a CREATE TABLE AS SELECT utasítás használatával végez betöltést egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. Az előkészítési táblában lévő adatok éles táblához való hozzáfűzéséhez használhatja az INSERT...SELECT utasítást. További információkért lásd: [Adatok beszúrása egy éles táblába](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 
-A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Amikor a select utasítás külső táblából választ, az adatok importálása az adatraktár ban lévő relációs táblába történik.
+A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Ha a SELECT utasítás egy külső táblából származik, az adatok az adattárházban található, egy rokon táblába kerülnek importálásra.
 
-Ez a szkript nem tölt be adatokat a wwi.dimension_Date és wwi.fact_Sale táblákba. Ezek a táblák egy későbbi lépésben jönnek létre, hogy a tábláknak megfelelő számú sora legyen.
+Ez a parancsfájl nem tölti be az adatbevitelt az első világháború. dimension_Date és az első világháború. fact_Sale tábláiba. Ezek a táblák egy későbbi lépésben jönnek létre, hogy a tábláknak megfelelő számú sora legyen.
 
 1. Futtassa a következő szkriptet az adatok betöltéséhez az adattárházban található új táblákba.
 
@@ -685,7 +685,7 @@ Ez a szkript nem tölt be adatokat a wwi.dimension_Date és wwi.fact_Sale tábl�
     ;
     ```
 
-2. A betöltés közben megtekintheti az adatokat. Több GB-nyi adatot tölt be, és nagy teljesítményt igénylő fürtözött oszlopcentrikus indexekbe tömöríti azokat. Nyisson meg egy új lekérdezési ablakot a SampleDW adatbázison, és futtassa az alábbi lekérdezést a betöltés állapotának megjelenítéséhez. Elindítása után a lekérdezés, megragad egy kávét és egy snack, míg az SQL pool nem néhány nehéz emelés.
+2. A betöltés közben megtekintheti az adatokat. Több GB-nyi adat betöltése és tömörítése nagy teljesítményű fürtözött oszlopcentrikus indexekre. Nyisson meg egy új lekérdezési ablakot a SampleDW adatbázison, és futtassa az alábbi lekérdezést a betöltés állapotának megjelenítéséhez. A lekérdezés elindítása után szerezzen be egy kávét és egy snacket, miközben az SQL-készlet nagy mennyiségű emelést hajt végre.
 
     ```sql
     SELECT
@@ -732,7 +732,7 @@ Ez a szkript nem tölt be adatokat a wwi.dimension_Date és wwi.fact_Sale tábl�
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Táblák és eljárások létrehozása a Date és Sales táblák létrehozásához
 
-Ez a rész létrehozza a wwi.dimension_Date és wwi.fact_Sale táblákat. Azt is létrehoz tárolt eljárásokat, amelyek generálhatnak több millió sor a wwi.dimension_Date és wwi.fact_Sale táblákat.
+Ez a szakasz létrehozza az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Emellett olyan tárolt eljárásokat is létrehoz, amelyek több millió sort hozhatnak létre az első világháború. dimension_Date és az első világháború. fact_Sale táblákban.
 
 1. Hozza létre a dimension_Date és a fact_Sale táblát.  
 
@@ -876,7 +876,7 @@ Ez a rész létrehozza a wwi.dimension_Date és wwi.fact_Sale táblákat. Azt is
     END;
     ```
 
-4. Hozzon létre ezt az eljárást, amely feltölti a wwi.dimension_Date és wwi.fact_Sale táblákat. Meghívja a [wwi].[PopulateDateDimensionForYear] eljárást a wwi.dimension_Date feltöltéséhez.
+4. Hozza létre ezt az eljárást, amely feltölti az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Meghívja a [wwi].[PopulateDateDimensionForYear] eljárást a wwi.dimension_Date feltöltéséhez.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +933,7 @@ Ez a rész létrehozza a wwi.dimension_Date és wwi.fact_Sale táblákat. Azt is
 
 ## <a name="generate-millions-of-rows"></a>Sorok millióinak előállítása
 
-Használja a létrehozott tárolt eljárásokat, hogy több millió sort hozzon létre a wwi.fact_Sale táblában, és a megfelelő adatokat a wwi.dimension_Date táblában.
+A létrehozott tárolt eljárások segítségével több millió sort hozhat létre az első világháború. fact_Sale táblázatban, valamint az első világháború. dimension_Date táblában található megfelelő értékekkel.
 
 1. Futtassa ezt az eljárást, hogy a [wwi].[seed_Sale] további sorokkal töltődjön fel.
 
@@ -941,7 +941,7 @@ Használja a létrehozott tárolt eljárásokat, hogy több millió sort hozzon 
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Futtassa ezt az eljárást a wwi.fact_Sale feltöltéséhez napi 100 000 sortal a 2000-es év minden napjára.
+2. Futtassa ezt az eljárást az fact_Sale első lépések elvégzéséhez a 100 000-as számú napon belül, a 2000-as év minden napján.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -961,7 +961,7 @@ Használja a létrehozott tárolt eljárásokat, hogy több millió sort hozzon 
 
 ## <a name="populate-the-replicated-table-cache"></a>A replikált táblák gyorsítótárának feltöltése
 
-AZ SQL-készlet replikálja a táblát úgy, hogy az adatokat az egyes számítási csomópontokhoz gyorsítótárazja. A gyorsítótárat akkor tölti fel a rendszer, amikor egy lekérdezés fut a táblán. Egy replikált tábla első lekérdezése hosszabb időt vehet igénybe a gyorsítótár feltöltése miatt. A gyorsítótár feltöltése után a replikált táblákon futó lekérdezések gyorsabbak lesznek.
+Az SQL-készlet replikálja a táblázatot az adatok gyorsítótárazásával az egyes számítási csomópontokon. A gyorsítótárat akkor tölti fel a rendszer, amikor egy lekérdezés fut a táblán. Egy replikált tábla első lekérdezése hosszabb időt vehet igénybe a gyorsítótár feltöltése miatt. A gyorsítótár feltöltése után a replikált táblákon futó lekérdezések gyorsabbak lesznek.
 
 Ezeket az SQL-lekérdezéseket futtatva feltöltheti a replikált tábla gyorsítótárát a Compute-csomópontokon.
 
@@ -1083,7 +1083,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
     ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás szüneteltetésével csak az adattárolásért kell fizetnie, és folytathatja a számítást, amikor készen áll az adatokkal való munkára. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
+2. Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az Adattárolásért kell fizetnie, és folytathatja a számítást, amikor készen áll az adatokkal való munkára. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
 
 3. Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
@@ -1098,16 +1098,16 @@ Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy 
 A következőket hajtotta végre:
 > [!div class="checklist"]
 >
-> * Adattárház létrehozása az Azure Portal SQL-készletével
+> * Létrehozott egy adattárházat az SQL-készlet használatával a Azure Portal
 > * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
-> * Az SQL-készlethez csatlakoztatva SSMS-sel
+> * Csatlakoztatva az SQL-készlethez a SSMS használatával
 > * Adatok betöltésére kijelölt felhasználó létrehozása
 > * Külső táblák létrehozása az Azure Storage-blobban található adatokhoz
 > * Adatok betöltése az adattárházba a CTAS T-SQL-utasítás használatával
 > * Az adatok állapotának megtekintése betöltés közben
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-A fejlesztési áttekintést megtudhatja, hogyan telepíthet át egy meglévő adatbázist az Azure Synapse SQL-készletbe.
+Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az Azure szinapszis SQL-készletbe.
 
 > [!div class="nextstepaction"]
->[Meglévő adatbázis SQL-készletbe való áttelepítésének tervezési döntései](sql-data-warehouse-overview-develop.md)
+>[Megtervezheti a meglévő adatbázisok SQL-készletbe való átépítésének döntéseit](sql-data-warehouse-overview-develop.md)

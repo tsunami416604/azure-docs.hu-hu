@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Node.js API, SDK & erőforrások'
-description: Tudjon meg mindent az SQL Node.js API-ról és az SDK-ról, beleértve a kiadási dátumokat, a megszüntetési dátumokat és az Azure Cosmos DB Node.js SDK egyes verziói között végrehajtott módosításokat.
+title: 'Azure Cosmos DB: SQL Node. js API, SDK &-erőforrások'
+description: Ismerkedjen meg az SQL Node. js API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a Azure Cosmos DB Node. js SDK egyes verzióiban végrehajtott módosításokat.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,16 +9,16 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982888"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK SQL API-hoz: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -27,57 +27,57 @@ ms.locfileid: "80982888"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Tömeges végrehajtó - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 |Erőforrás  |Hivatkozás  |
 |---------|---------|
 |SDK letöltése  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|API dokumentáció  |  [JavaScript SDK referenciadokumentáció](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|API-dokumentáció  |  [A JavaScript SDK dokumentációja](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK telepítési utasítások  |  [Telepítési utasítások](https://github.com/Azure/azure-cosmos-js#installation)
-|Hozzájárulás az SDK-hoz | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Példák | [Node.js kódminták](sql-api-nodejs-samples.md)
-| Első lépések oktatóanyag | [A JavaScript SDK – első lépések](sql-api-nodejs-get-started.md)
-| Webalkalmazás oktatóanyaga | [Node.js webalkalmazás létrehozása az Azure Cosmos DB használatával](sql-api-nodejs-application.md)
-| Jelenlegi támogatott platform | [Node.js v12.x](https://nodejs.org/en/blog/release/v12.7.0/) - SDK verzió 3.x.x<br/>[Node.js v10.x](https://nodejs.org/en/blog/release/v10.6.0/) - SDK verzió 3.x.x<br/>[Node.js v8.x](https://nodejs.org/en/blog/release/v8.16.0/) - SDK verzió 3.x.x<br/>[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - SDK verzió 2.x.x<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)- SDK 1.x.x verzió<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)- SDK verzió 1.x.x<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/)- SDK verzió 1.x.x
+|Közreműködés az SDK-val | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+| Példák | [Node. js-kód minták](sql-api-nodejs-samples.md)
+| Útmutató az első lépésekhez | [Ismerkedés a JavaScript SDK-val](sql-api-nodejs-get-started.md)
+| Webalkalmazás-oktatóanyag | [Node. js-alapú Webalkalmazás létrehozása Azure Cosmos DB használatával](sql-api-nodejs-application.md)
+| Jelenleg támogatott platform | [Node. js v12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK 3. x. x verzió<br/>[Node. js v10. x](https://nodejs.org/en/blog/release/v10.6.0/) – SDK 3-as verzió. x. x<br/>[Node. js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK 3. x. x verzió<br/>[Node. js v6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK 2. x. x verzió<br/>[Node. js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)– SDK 1-es verzió. x. x<br/> [Node. js v 0,12](https://nodejs.org/en/blog/release/v0.12.0/)– SDK 1-es verzió. x. x<br/> [Node. js v 0,10](https://nodejs.org/en/blog/release/v0.10.0/)– SDK 1-es verziójú. x. x
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name=""></a><a name="3.1.0"/>3.1.0</a>
-* Állítsa az alapértelmezett ResponseContinuationTokenLimitInKB értéket 1kb-ra. Alapértelmezés szerint ezt az 1 kb-ra korlátozzuk, hogy elkerüljük a hosszú fejléceket (a Node.js globális fejlécméret-korláttal rendelkezik). A felhasználó beállíthatja ezt a mezőt, hogy hosszabb fejléceket engedélyezze, ami segíthet a háttérrendszernek a lekérdezés végrehajtásának optimalizálásában.
-* Távolítsa el a disableSSLVerification parancsot. Ez a beállítás új alternatívákat ír le [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
+* Állítsa be az alapértelmezett ResponseContinuationTokenLimitInKB a 1kb értékre. Alapértelmezés szerint ez a 1kb a hosszú fejlécek elkerülésére van korlátozva (a Node. js globális fejlécének korlátja). A felhasználók megadhatják ezt a mezőt a hosszú fejlécek engedélyezéséhez, ami segíthet a háttérben a lekérdezés-végrehajtás optimalizálásában.
+* Távolítsa el a disableSSLVerification. Ez a beállítás új alternatívákat tartalmaz [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
 
 ### <a name=""></a><a name="3.0.4"/>3.0.4</a>
-* A initialHeaders metódusok explicit módon beállíthatják a partíciókulcs fejlécét
-* A package.json#files használata a felesleges fájlok közzétételének megakadályozására
-* Útválasztási térkép rendezési hibájának kijavítása a csomópont+v8 régebbi verzióján
-* Javítja a hibát, ha a felhasználó részleges újrapróbálkozási lehetőségeket biztosít
+* A partíciós kulcs fejlécének explicit módon történő beállításának engedélyezése a initialHeaders számára
+* A Package. JSON # fájlok használatával megakadályozhatja a külső fájlok közzétételét
+* Az útválasztási Térkép rendezési hibájának javítása a Node + V8 régebbi verziójában
+* Kijavítja a hibát, ha a felhasználó részleges újrapróbálkozási lehetőségeket biztosít
 
 ### <a name=""></a><a name="3.0.3"/>3.0.3</a>
-* A szükséges modulokkal megnevezett webpack feloldásának megakadályozása
+* A webpack használatának megakadályozása a Required nevű modulok feloldásával
 
 ### <a name=""></a><a name="3.0.2"/>3.0.2</a>
-* Kijavít egy régóta fennálló hibát, amelyben a felelős részeket mindig 0-ként jelentették az összesített lekérdezésekhez
+* Kijavítja a hosszú ideig fennálló hibát, amelyben az RUs az összesített lekérdezések esetében 0
 
 ### <a name=""></a><a name="3.0.0"/>3.0.0</a>
 
-🎉 v3 kiadás! 🎉 Számos új funkciót, hibajavítást és néhány apró változtatást. A jelen kiadás elsődleges céljai:
+🎉 v3 kiadás! 🎉 számos új funkciót, hibajavítást és néhány megszakítási változást. A kiadás elsődleges céljai:
 
-* A főbb új funkciók megvalósítása
-  * ELTÉRŐ lekérdezések
-  * LIMIT/OFFSET lekérdezések
-  * Felhasználó visszavonható kérései
-* Frissítés a legújabb Cosmos REST API-verzióra, ahol az összes tároló korlátlan méretű
-* A Cosmos használatának megkönnyítése a böngészőből
-* Jobban igazodjon az Azure JS SDK új irányelveihez
+* Jelentős új funkciók implementálása
+  * KÜLÖNBÖZŐ lekérdezések
+  * Lekérdezések korlátozása/ELTOLÁSa
+  * Felhasználó által megszakítható kérelmek
+* A legújabb Cosmos REST API verzió frissítése, ahol az összes tároló korlátlan méretű
+* A Cosmos használatának egyszerűbbé tétele a böngészőben
+* Az új Azure JS SDK-irányelvek jobb összehangolása
 
-#### <a name="migration-guide-for-breaking-changes"></a>Áttelepítési útmutató a módosítások megszakadásához
-##### <a name="improved-client-constructor-options"></a>Továbbfejlesztett ügyfélkonstruktor-beállítások
+#### <a name="migration-guide-for-breaking-changes"></a>Áttelepítési útmutató a változtatások megszüntetéséhez
+##### <a name="improved-client-constructor-options"></a>Továbbfejlesztett ügyféloldali konstruktor-beállítások
 
-A kivitelezői beállítások egyszerűsödtek:
+A konstruktor beállításait egyszerűsítettük:
 
-* a masterKey névre keresztelték a kulcsot, és a legfelső szintre került
-* Az options.auth alatt korábban a legmagasabb szintre kerültek a tulajdonságok
+* a masterKey átnevezték a kulcsot, és áthelyezték a legfelső szintre
+* Korábbi tulajdonságok a beállítások alatt. az Auth a legfelső szintre került
 
 ``` js
 // v2
@@ -96,14 +96,14 @@ const client = new CosmosClient({
 ```
 
 ##### <a name="simplified-queryiterator-api"></a>Egyszerűsített QueryIterator API
-A v2-ben számos különböző módon lehet iteitálni vagy lekérni egy lekérdezés eredményeit. Megpróbáltuk egyszerűsíteni a v3 API-t, és eltávolítani a hasonló vagy ismétlődő API-kat:
+A v2-ben számos különböző módon lehet megismételni vagy beolvasni az eredményeket egy lekérdezésből. Megpróbálta leegyszerűsíteni a V3 API-t, és távolítsa el a hasonló vagy ismétlődő API-kat:
 
-* Távolítsa el az iterátor.next() és iterator.current() A fetchNext() segítségével kapja meg az eredmények oldalait.
-* Távolítsa el az iterátort.forEach(). Használja inkább az aszinkron iterátorokat.
-* iterator.executeNext() átnevezve iterátor.fetchNext()
-* iterator.toArray() átnevezve iterátor.fetchAll()
-* Az oldalak mostantól megfelelő válaszobjektumok az egyszerű JS-objektumok helyett
-* const container = client.database(dbId).container(containerId)
+* Távolítsa el a következőt: iteráció. Next () és iteráció. Current (). A fetchNext () segítségével lekérdezheti a találati lapokat.
+* Távolítsa el az iterációt. forEach (). Használjon aszinkron iterációkat.
+* az iteráció. executeNext () átnevezve a következőre: iteráció. fetchNext ()
+* az iteráció. toArray () átnevezve a következőre: iteráció. fetchAll ()
+* Az oldalak mostantól megfelelő válasz-objektumok, egyszerű JS-objektumok helyett
+* CONST-tároló = Client. Database (dbId). Container (containerId)
 
 ``` js
 // v2
@@ -119,14 +119,14 @@ for await(const { result: item } in client.databases.readAll().getAsyncIterator(
 }
 ```
 
-##### <a name="fixed-containers-are-now-partitioned"></a>A rögzített tárolók particionálva vannak
-A Cosmos szolgáltatás mostantól támogatja a partíciós kulcsokat az összes tárolón, beleértve azokat is, amelyeket korábban rögzített tárolókként hoztak létre. A v3 SDK frissíti a legújabb API-verzió, amely végrehajtja ezt a módosítást, de nem törik. Ha nem adja meg a műveletekhez a partíciókulcsot, alapértelmezés szerint olyan rendszerkulcsot fogunk megadni, amely az összes meglévő tárolóval és dokumentummal működik.
+##### <a name="fixed-containers-are-now-partitioned"></a>A rögzített tárolók már particionálva vannak
+A Cosmos szolgáltatás mostantól támogatja a partíciós kulcsokat minden tárolón, beleértve azokat is, amelyek korábban rögzített tárolóként lettek létrehozva. A v3 SDK a legújabb API-verzióra frissül, amely megvalósítja ezt a változást, de nem szakad meg. Ha nem ad meg partíciós kulcsot a műveletekhez, a rendszer alapértelmezés szerint az összes meglévő tárolóval és dokumentummal együtt használható rendszerkulcsot fogja tartalmazni.
 
-##### <a name="upsert-removed-for-stored-procedures"></a>Upsert eltávolítva a tárolt eljárások
-Korábban upsert engedélyezték a nem particionált gyűjtemények, de az API-verzió frissítése, az összes gyűjtemény particionált, így teljesen eltávolítottuk.
+##### <a name="upsert-removed-for-stored-procedures"></a>Upsert eltávolítva a tárolt eljárásokhoz
+Korábban upsert volt engedélyezve a nem particionált gyűjtemények esetében, de az API-verzió frissítése esetén az összes gyűjtemény particionálva van, így teljes egészében eltávolították.
 
-##### <a name="item-reads-will-not-throw-on-404"></a>Az elem olvasása nem dobja a 404
-const container = client.database(dbId).container(containerId)
+##### <a name="item-reads-will-not-throw-on-404"></a>Az elemek beolvasása nem fog megjelenni a 404
+CONST-tároló = Client. Database (dbId). Container (containerId)
 
 ``` js
 // v2
@@ -142,14 +142,14 @@ if (item === undefined) { console.log('item not found') }
 ```
 
 ##### <a name="default-multi-region-write"></a>Alapértelmezett többrégiós írás
-Az SDK alapértelmezés szerint több régióba is ír, ha a Cosmos-konfiguráció támogatja azt. Ez korábban opt-in viselkedés.
+Az SDK alapértelmezés szerint több régióba is ír, ha a Cosmos-konfiguráció támogatja azt. Ez korábban nem volt engedélyezve.
 
-##### <a name="proper-error-objects"></a>Megfelelő hibaobjektumok
-A sikertelen kérelmek mostantól megfelelő hibát vagy hibaalosztályokat eredményeznek. Korábban dobtak sima JS tárgyakat.
+##### <a name="proper-error-objects"></a>Megfelelő hibák objektumai
+A sikertelen kérelmek mostantól megfelelő hibát vagy alosztályt dobjanak. Korábban egyszerű JS-objektumokat dobtak.
 
 #### <a name="new-features"></a>Új funkciók
 ##### <a name="user-cancelable-requests"></a>Felhasználó által visszavonható kérelmek
-Az áthelyezés lekérése belsőlehetővé teszi számunkra, hogy használja a böngésző AbortController API-t, hogy támogassa a felhasználó által megszakítható műveleteket. Olyan műveletek esetén, ahol több kérelem is folyamatban van (például a partíciók közötti lekérdezések), a műveletre vonatkozó összes kérelem megszakad. A modern böngésző felhasználók már rendelkeznek AbortController. A Node.js felhasználóknak polikitöltés-könyvtárat kell használniuk
+A belső beolvasásra való áttérés lehetővé teszi, hogy a böngésző AbortController API használatával támogassa a felhasználó által megszakítható műveleteket. Olyan műveletek esetén, ahol több kérelem is folyamatban van (például a több partíciós lekérdezéseknél), a művelethez tartozó összes kérelem meg lesz szakítva. A modern böngésző felhasználói már rendelkeznek AbortController. A Node. js-felhasználóknak egy kitöltési függvénytárat kell használniuk
 
 ``` js
  const controller = new AbortController()
@@ -157,20 +157,20 @@ Az áthelyezés lekérése belsőlehetővé teszi számunkra, hogy használja a 
  controller.abort()
 ```
 
-##### <a name="set-throughput-as-part-of-dbcontainer-create-operation"></a>Átviteli művelet beállítása a db/container create művelet részeként
+##### <a name="set-throughput-as-part-of-dbcontainer-create-operation"></a>Átviteli sebesség beállítása db/Container Create művelet részeként
 ``` js
 const { database }  = client.databases.create({ id: 'my-database', throughput: 10000 })
 database.containers.create({ id: 'my-container', throughput: 10000 })
 ```
 
 ##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
-A fejléctoken-létrehozás egy új @azure/cosmos-signkönyvtárra lett felosztva, . Bárki, aki hívja a Cosmos REST API-t közvetlenül használhatja ezt a fejlécek aláírására ugyanazt a kódot hívunk belül @azure/cosmos.
+A fejléc- @azure/cosmos-signjogkivonat generációját egy új könyvtárba osztották fel. Bárki, aki a Cosmos-REST API hívja fel a jelet, használhatja a fejléceket ugyanazzal a kóddal @azure/cosmos.
 
-##### <a name="uuid-for-generated-ids"></a>UUID a generált azonosítókhoz
-V2 volt egyéni kódot generálni elem azonosítók. Van kapcsolva, hogy a jól ismert és karbantartott közösségi könyvtár uuid.
+##### <a name="uuid-for-generated-ids"></a>A generált azonosítók UUID azonosítója
+a v2 egyéni kóddal rendelkezett az elemek azonosítóinak létrehozásához. A jól ismert és karbantartott közösségi könyvtár UUID-t váltottuk ki.
 
 ##### <a name="connection-strings"></a>Kapcsolati sztringek
-Most már át lehet adni egy kapcsolati karakterláncot az Azure Portalról másolt:
+Mostantól lehetséges a Azure Portalból másolt kapcsolódási karakterlánc átadása:
 
 ``` js
 const client = new CosmosClient("AccountEndpoint=https://test-account.documents.azure.com:443/;AccountKey=c213asdasdefgdfgrtweaYPpgoeCsHbpRTHhxuMsTaw==;")
@@ -179,304 +179,304 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
  const { results } = await items.query('SELECT * FROM root r OFFSET 1 LIMIT 2').fetchAll()
 ```
 
-#### <a name="improved-browser-experience"></a>Továbbfejlesztett böngészőélmény
-Bár a v2 SDK-t a böngészőben lehetett használni, nem volt ideális élmény. Több node.jbeépített könyvtárat kellett kitöltenie, és olyan kötegelőt kellett használnia, mint a Webpack vagy a Parcel. A v3 SDK teszi a ki a dobozból tapasztalat sokkal jobb a böngésző felhasználók számára.
+#### <a name="improved-browser-experience"></a>Továbbfejlesztett böngésző-élmény
+Habár a v2 SDK-t a böngészőben lehetett használni, nem volt ideális megoldás. Több Node. js beépített kódtárat kell kitöltenie, és a webpacket vagy a csomagot egy kötegként kell használnia. A v3 SDK sokkal hatékonyabban teszi elérhetővé a böngésző felhasználói számára.
 
-* A kérés belső immára (#245)
-* A puffer használatának eltávolítása (#330)
-* Távolítsa el a csomópont beépített használatát az univerzális csomagok/API-k javára (#328)
-* Váltás csomópont-megszakítás-vezérlőre (#294)
+* A kérések belső elemeinek cseréje a lekéréssel (#245)
+* Puffer használatának eltávolítása (#330)
+* Csomópontok beépített használatának eltávolítása az univerzális csomagok/API-k (#328) javára
+* Váltás csomópont-megszakítási vezérlőre (#294)
 
 #### <a name="bug-fixes"></a>Hibajavítások
-* Fix ajánlat olvasása és hozza vissza ajánlat tesztek (#224)
+* Kijavítási ajánlat – olvasási és visszahívási ajánlati tesztek (#224)
 * EnableEndpointDiscovery javítása (#207)
-* A hiányzó válaszországok javítása a kétoldalú eredményeken (#360)
-* SQL-lekérdezésparamétertípus kibontása (#346)
-* Ttl hozzáadása az ItemDefinition (#341)
-* Cp-lekérdezési mutatók javítása (#311)
-* ActivityId hozzáadása a FeedResponse-hoz (#293)
-* Váltás _ts karakterláncról számra (#252)(#295)
-* Kérelemdíj összesítésének javítása (#289)
-* Üres karakterláncpartíció-kulcsok engedélyezése (#277)
-* Karakterlánc hozzáadása az ütközési lekérdezéstípushoz (#237)
+* Hiányzó RUs kijavítása a többoldalas eredményekben (#360)
+* SQL-lekérdezési paraméter típusának kibontása (#346)
+* TTL hozzáadása a ItemDefinition (#341)
+* A CP lekérdezési metrikáinak javítása (#311)
+* Tevékenységazonosító hozzáadása a FeedResponse-hez (#293)
+* Váltás _ts típus karakterláncról számra (#252) (#295)
+* A kérések feltöltésének összesítése (#289)
+* Üres karakterlánc-partíciós kulcsok engedélyezése (#277)
+* Karakterlánc hozzáadása az ütközési lekérdezési típushoz (#237)
 * UniqueKeyPolicy hozzáadása a tárolóhoz (#234)
 
 #### <a name="engineering-systems"></a>Mérnöki rendszerek
-Nem mindig a leglátványosabb változások, de segítenek a csapatunk nak jobb kódot szállítani, gyorsabban.
+Nem mindig a leglátványosabb változások, de segítünk a csapatnak jobb kódot kiszolgálni, gyorsabban.
 
-* Összesítés használata termelési buildekhez (#104)
-* Frissítés typescript 3.5(#327)
-* Konvertálás TS-projektreferenciákká. Tesztmappa kibontása (#270)
+* Kumulatív használata éles buildekhez (#104)
+* Frissítés írógéppel 3,5 (#327)
+* Konvertálás a terminálszolgáltatási projekt hivatkozásaira. Teszt mappa kibontása (#270)
 * NoUnusedLocals és noUnusedParameters engedélyezése (#275)
-* Azure Pipelines YAML a CI buildek (#298)
+* A CI buildek Azure-YAML (#298)
 
 ### <a name=""></a><a name="2.1.5"/>2.1.5</a>
-* Nincs kódváltozás. Kijavít egy problémát, amely miatt néhány további fájl a 2.1.4-es csomagban található.
+* Nem változik a kód. Kijavít egy problémát, amelyben néhány további fájl szerepel a 2.1.4-csomagban.
 
 ### <a name=""></a><a name="2.1.4"/>2.1.4</a>
-* Regionális feladatátvétel javítása az újrapróbálkozási házirenden belül
-* Fix ChangeFeed hasMoreResults tulajdonság
-* Fejlesztői függőségi frissítések
-* PolicheckExclusions.txt hozzáadása
+* Regionális feladatátvétel javítása az újrapróbálkozási szabályzaton belül
+* A ChangeFeed hasMoreResults tulajdonságának javítása
+* Fejlesztői függőségek frissítései
+* PolicheckExclusions. txt hozzáadása
 
 ### <a name=""></a><a name="2.1.3"/>2.1.3</a>
-* Váltás _ts karakterláncról számra
+* Váltás _ts típus karakterláncról számra
 * Alapértelmezett indexelési tesztek javítása
-* Backport uniqueKeyPolicy a v2
-* A demó és a demó hibakeresési javításai
+* Vezetnie uniqueKeyPolicy – v2
+* Javítások a bemutató és a bemutató hibakereséséhez
 
 ### <a name=""></a><a name="2.1.2"/>2.1.2</a>
-* Backport ajánlat javítások v3 ág
-* Hiba kijavítása a executeNext() típusú aláírással
-* Elírás javítások
+* A vezetnie a v3 ág javításait kínálja
+* Hibajavítás a executeNext () típusú aláírásban
+* Sajtóhiba-javítások
 
 ### <a name=""></a><a name="2.1.1"/>2.1.1</a>
-* Szerkezetátalakítás kiépítése. Lehetővé teszi az SDK-verzió leépítését a létrehozás kor.
+* Készítse elő a szerkezetátalakítást. Lehetővé teszi az SDK verziójának kihúzását a felépítési időpontban.
 
 ### <a name=""></a><a name="2.1.0"/>2.1.0</a>
 #### <a name="new-features"></a>Új funkciók
-* Hozzáadott ChangeFeed támogatás (#196)
-* MultiPolygon adattípus hozzáadása indexeléshez (#191)
-* Adja hozzá a "key" tulajdonságot a konstruktorhoz a masterkey (#202) aliasaként
+* ChangeFeed-támogatás hozzáadva (#196)
+* Többsokszögű adattípus hozzáadva az indexeléshez (#191)
+* A "Key" tulajdonság hozzáadása a konstruktorhoz aliasként a masterKey (#202)
 
 #### <a name="fixes"></a>Javítások
-* Fix hiba, ahol next() vissza helytelen értéket iterátor
+* Javítsa ki a hibát, hogy a következő () helytelen értéket adott vissza az iterációnál
 
 #### <a name="engineering-improvements"></a>Mérnöki fejlesztések
-* A gépírási felhasználás integrációs tesztjének hozzáadása (#199)
-* Telepítés engedélyezése közvetlenül a GitHubról (#194)
+* Integrált teszt hozzáadása az írógéppel történő használathoz (#199)
+* Közvetlen telepítés engedélyezése a GitHubról (#194)
 
 ### <a name=""></a><a name="2.0.5"/>2.0.5</a>
-* Kapcsolat hozzáadása a csomópontügynök típushoz. A gépírásban a @types/node felhasználóknak már nem kell függőségként telepíteniük
-* Az előnyben részesített helyeket megfelelően tiszteletben tartják
-* Fejlesztések a közreműködő fejlesztői dokumentációhoz
-* Különböző elírásjavítások
+* A csomópont-ügynök típusához tartozó felületet adja meg. A géppel rendelkező felhasználóknak többé nem kell @types/node függőségként telepíteniük
+* Az előnyben részesített helyszínek mostantól megfelelőek
+* Fejlesztés a fejlesztői dokumentációban
+* Különböző typo-javítások
 
 ### <a name=""></a><a name="2.0.4"/>2.0.4</a>
-* A 2.0.3-ban bevezetett típusdefiníciós probléma javítása
+* A 2.0.3-ben bevezetett hibajavítások definíciós problémája
 
 ### <a name=""></a><a name="2.0.3"/>2.0.3</a>
 * Függőség `big-integer` eltávolítása
-* Váltson referenciadirektívákra az AsyncIterable típushoz. A gépírásban a felhasználóknak már nem kell testreszabniuk a "lib" beállítást.
-* Elírás javítások
+* Váltson a AsyncIterable típusra vonatkozó hivatkozási irányelvekre. Az írógéppel a felhasználóknak már nem kell testreszabnia a "lib" beállítást.
+* Sajtóhiba-javítások
 
 ### <a name=""></a><a name="2.0.2"/>2.0.2</a>
-* Readme hivatkozások javítása
+* Readme-hivatkozások javítása
 
 ### <a name=""></a><a name="2.0.1"/>2.0.1</a>
-* Az újrapróbálkozási felület megvalósításának javítása
+* Az újrapróbálkozási felület implementációjának javítása
 
 ### <a name=""></a><a name="2.0.0"/>2.0.0</a>
-* A JavaScript SDK 2.0.0-s verziójának GA-ja
-* Hozzáadott támogatás többrégiós írások.
+* A JavaScript SDK 2.0.0 verziója
+* A többrégiós írások támogatása hozzáadva.
 
-### <a name=""></a><a name="2.0.0-3"/>2.0.0-3</a>
-* A JavaScript SDK 2.0.0-s verziójának RC1-es verziója nyilvános előzetes verzióra.
-* Új objektummodell, legfelső szintű CosmosClient és metódusok a megfelelő adatbázis-, tároló- és elemosztályok között. 
-* Az [ígéretek](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)támogatása . 
-* Az SDK TypeScript-re konvertálva.
+### <a name=""></a><a name="2.0.0-3"/>2.0.0 – 3</a>
+* A nyilvános előzetes verzióhoz készült JavaScript SDK 2.0.0 verziója RC1.
+* Új objektummodell, amely a legfelső szintű CosmosClient és metódusokat a megfelelő adatbázis, tároló és elem osztályok között osztja szét. 
+* Az [ígéretek](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)támogatása. 
+* Az SDK formátuma írógéppel lett konvertálva.
 
 ### <a name=""></a><a name="1.14.4"/>1.14.4</a>
-* npm dokumentáció javítva.
+* a NPM dokumentációja kijavítva.
 
 ### <a name=""></a><a name="1.14.3"/>1.14.3</a>
-* A csatlakozási problémák alapértelmezett újrapróbálkozásai támogatással bővültek.
-* Támogatás hozzáadva a gyűjteménymódosítási hírcsatorna olvasásához.
-* Javítottuk a munkamenet konzisztenciahibáját, amely időnként "olvasási munkamenet nem érhető el" hibát okozott.
-* A lekérdezési mutatók támogatása hozzáadva.
-* Módosított http ügynök maximális kapcsolatok száma.
+* Az alapértelmezett újrapróbálkozások támogatása a kapcsolódási problémák esetén.
+* A gyűjtemény módosítási csatornájának olvasási támogatása.
+* Rögzített munkamenet-konzisztenciai hiba, amely időnként az "olvasási munkamenet nem érhető el" hibát okozott.
+* A lekérdezési metrikák támogatása hozzáadva.
+* Módosította a http-ügynök maximális számú kapcsolatát.
 
 ### <a name=""></a><a name="1.14.2"/>1.14.2</a>
-* Frissített dokumentáció az Azure Cosmos DB-re való hivatkozáshoz az Azure DocumentDB helyett.
-* Hozzáadott támogatás proxyUrl beállítás ConnectionPolicy.
+* Az Azure DocumentDB helyett a Azure Cosmos DB referenciára szolgáló dokumentáció frissítve.
+* A proxyUrl-beállítás támogatása a ConnectionPolicy-ben.
 
 ### <a name=""></a><a name="1.14.1"/>1.14.1</a>
-* Kisebb javítás a kis- és nagybetűket megkülönböztető fájlrendszerekhez.
+* Kis javítás a kis-és nagybetűket megkülönböztető fájlrendszerekhez.
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
-* Támogatja a munkamenet-konzisztenciát.
-* Ehhez az SDK-verzióhoz az [Azure Cosmos DB Emulátor](https://aka.ms/cosmosdb-emulator)legújabb verziója szükséges.
+* A munkamenet-konzisztencia támogatását adja meg.
+* Az SDK-verzióhoz a [Azure Cosmos db Emulator](https://aka.ms/cosmosdb-emulator)legújabb verziójára van szükség.
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
-* Megosztott egyezésű partíciós lekérdezések.
-* Támogatja az erőforrás-kapcsolatot a kezdő és a záró perjelekkel (és a megfelelő tesztekkel).
+* Megszakított több partíciós lekérdezés felosztása.
+* Támogatja az erőforrás-hivatkozáshoz vezető és záró perjelet (és a hozzájuk tartozó teszteket).
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*    npm dokumentáció javítva.
+*    a NPM dokumentációja kijavítva.
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
-* Javítva egy hiba az executeStoredProcedure-ban, ahol az érintett dokumentumok speciális Unicode karakterekkel (LS, PS) voltak.
-* Javítva egy hiba a dokumentumok unicode karakterekkel való kezelésében a partíciós kulcsban.
-* Rögzített támogatás létrehozására gyűjtemények a neve adathordozó. A GitHub #114.
-* Az engedélyengedélyezési jogkivonat támogatott. GitHub probléma #178.
+* Kijavított egy hibát a executeStoredProcedure, ahol az érintett dokumentumok speciális Unicode-karaktereket (LS, PS) tartalmaztak.
+* A partíciós kulcsban Unicode karaktereket tartalmazó dokumentumok kezelésére vonatkozó hiba javítva.
+* Rögzített támogatás az adathordozó nevű gyűjtemények létrehozásához. GitHub-probléma #114.
+* Az engedély-engedélyezési jogkivonat rögzített támogatása. GitHub-probléma #178.
 
 ### <a name=""></a><a name="1.12.0"/>1.12.0</a>
-* A [Konzisztens előtag nevű új konzisztenciaszint](consistency-levels.md) támogatása hozzáadva.
-* Hozzáadott támogatás UriFactory.
-* Javítva egy Unicode támogatási hiba. GitHub-probléma #171.
+* Egy új, ConsistentPrefix nevű [konzisztencia-szint](consistency-levels.md) támogatása.
+* A UriFactory támogatása.
+* Rögzített Unicode-támogatási hiba. GitHub-probléma #171.
 
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
-* Hozzáadva az összesítési lekérdezések támogatása (DARAB, MIN, MAX, SZUM és AVG).
-* Hozzáadva a párhuzamosság mértékének szabályozásának lehetősége a partíciók közötti lekérdezésekhez.
-* Hozzáadva a TLS-ellenőrzés letiltásának lehetősége az Azure Cosmos DB emulátor on-t.
-* A particionált gyűjtemények minimális átviteli hatása 10 100 RU/s-ról 2500 RU/s-ra csökkent.
-* Javítva az egypartíciós gyűjtemény folytatási tokenhibája. A GitHub-probléma #107.
-* Javítva a executeStoredProcedure hiba a 0 egyetlen param-ként való kezelésében. A GitHub #155.
+* Az összesítési lekérdezések támogatása (DARABSZÁM, MIN., MAX., SUM és AVG).
+* Ezzel a beállítással megadható a párhuzamossági fok a több partíciós lekérdezéseknél.
+* A TLS-ellenőrzés letiltásának lehetősége a Azure Cosmos DB emulátoron való futtatáskor.
+* A 10 100 RU/s és 2500 RU/s közötti particionált gyűjtemények minimális átviteli sebességének csökkentése.
+* Kijavította a folytatási token hibáját egy partíciós gyűjteményhez. GitHub-probléma #107.
+* A executeStoredProcedure-hiba javítva lett a 0 értékben, egyetlen param-ként. GitHub-probléma #155.
 
 ### <a name=""></a><a name="1.10.2"/>1.10.2</a>
-* Rögzített user-agent fejléc tartalmazza az SDK-verzió.
-* Kisebb kódtisztítás.
+* Rögzített felhasználói ügynök fejléce, amely tartalmazza az SDK verzióját.
+* Másodlagos kód karbantartása.
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* A TLS-ellenőrzés letiltása az SDK-val az emulátor(hostname=localhost) célzásához.
-* A parancsfájlnaplózás engedélyezésének támogatása a tárolt eljárás végrehajtása során.
+* A TLS-ellenőrzés letiltása, ha az SDK használatával célozza meg az emulátort (hostname = localhost).
+* A parancsfájl-naplózás engedélyezésének támogatása a tárolt eljárás végrehajtása során.
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>
-* A keresztpartíciós párhuzamos lekérdezések támogatása hozzáadva.
-* A TOP/ORDER BY lekérdezések támogatása hozzáadva a particionált gyűjtemények számára.
+* További támogatás a több partíciós párhuzamos lekérdezésekhez.
+* A TOP/ORDER szintű támogatás hozzáadva a particionált gyűjtemények lekérdezései alapján.
 
 ### <a name=""></a><a name="1.9.0"/>1.9.0</a>
-* Újrapróbálkozási szabályzat támogatása a szabályozott kérelmekhez hozzáadva. (A szabályozott kérelmek túl nagy kivételt kapnak, hibakód: 429.) Alapértelmezés szerint az Azure Cosmos DB újrapróbálkozik kilenc alkalommal minden kérelmet, ha hibakód 429-es hibakód merül fel, tiszteletben tartva az újrapróbálkozási idő után a válasz fejlécében. A rögzített újrapróbálkozási időmost már beállítható a ConnectionPolicy objektum Újrapróbálkozási tulajdonságának részeként, ha figyelmen kívül szeretné hagyni a kiszolgáló által az újrapróbálkozások között visszaadott újrapróbálkozási időt. Az Azure Cosmos DB most antól legfeljebb 30 másodpercet vár minden egyes szabályozás alatt álló kérelemre (az újrapróbálkozások számától függetlenül), és a 429-es hibakóddal adja vissza a választ. Ez az idő a ConnectionPolicy objektum ÚjrapróbálkozásI beállítások tulajdonságában is felülbírálható.
-* A Cosmos DB most antól x-ms-throttle-retry-count és x-ms-throttle-retry-wait-time-ms a válaszfejlécek minden kérelemben a szabályozás újrapróbálkozások számát és a kérelem által az újrapróbálkozások között várakozó összesített időt adja vissza.
-* A RetryOptions osztály hozzá lett adva, és a ConnectionPolicy osztály RetryOptions tulajdonságát tette ki, amely az alapértelmezett újrapróbálkozási beállítások felülbírálására használható.
+* Ismételt újrapróbálkozási szabályzat támogatása a szabályozott kérelmekhez. (A szabályozott kérelmek túl nagy kivételt kapnak, hibakód: 429.) Azure Cosmos DB alapértelmezés szerint a 429-es hibakód miatt a rendszer az egyes kérések esetében kilenc alkalommal újrapróbálkozik, a válasz fejlécében a retryAfter idő tiszteletben tartásával. A ConnectionPolicy objektum RetryOptions tulajdonságának részeként megadható a rögzített újrapróbálkozási időköz, ha figyelmen kívül hagyja az újrapróbálkozások között a kiszolgáló által visszaadott retryAfter időt. Azure Cosmos DB most legfeljebb 30 másodpercig vár minden szabályozott kérelem esetében (az újrapróbálkozások számától függetlenül), és visszaadja a 429-es hibakódú választ. Ez az idő felülbírálható a ConnectionPolicy objektum RetryOptions tulajdonságában is.
+* Cosmos DB most visszaadja az x-MS-szabályozás-újrapróbálkozások száma és az x-MS-szabályozás-újrapróbálkozás-WAIT-Time-MS értéket az összes kérelemben, hogy az újrapróbálkozások számának és a kérésnek az újrapróbálkozások között megvárt kumulatív időpontját jelöli.
+* A rendszer hozzáadta a RetryOptions osztályt, felfedte a RetryOptions tulajdonságot a ConnectionPolicy osztályban, amely az alapértelmezett újrapróbálkozási lehetőségek némelyikének felülbírálására használható.
 
 ### <a name=""></a><a name="1.8.0"/>1.8.0</a>
-* Hozzáadva a többrégiós adatbázisfiókok támogatása.
+* A többrégiós adatbázis-fiókok támogatása hozzáadva.
 
 ### <a name=""></a><a name="1.7.0"/>1.7.0</a>
-* Hozzáadva a Time To Live(TTL) funkció támogatása a dokumentumokhoz.
+* Az élettartam (TTL) szolgáltatás támogatása a dokumentumok számára.
 
 ### <a name=""></a><a name="1.6.0"/>1.6.0</a>
-* [Particionált gyűjtemények](partition-data.md) és [a felhasználó által definiált teljesítményszintek.](performance-levels.md)
+* A [particionált gyűjtemények](partition-data.md) és a [felhasználó által definiált teljesítményszint](performance-levels.md)implementálva.
 
 ### <a name=""></a><a name="1.5.6"/>1.5.6</a>
-* Javítva RangePartitionResolver.resolveForRead hiba, ahol nem adott vissza hivatkozásokat az eredmények rossz összeegyeztetése miatt.
+* Rögzített RangePartitionResolver. resolveForRead hiba, amely miatt nem tért vissza hivatkozások az eredmények rossz Összefűzés miatt.
 
 ### <a name=""></a><a name="1.5.5"/>1.5.5</a>
-* Javítottunk hashPartitionResolver resolveForRead(): Ha nem adott meg partíciókulcs, kivételt szór, ahelyett, hogy az összes regisztrált hivatkozás listáját visszaadná.
+* Rögzített hashPartitionResolver resolveForRead (): Ha nincs megadva partíciós kulcs, a rendszer az összes regisztrált hivatkozás listájának visszaadása helyett kivételt váltott ki.
 
 ### <a name=""></a><a name="1.5.4"/>1.5.4</a>
-* Javítások probléma [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - dedikált HTTPS-ügynök: Ne módosítsa a globális ügynök az Azure Cosmos DB célokra. Használjon dedikált ügynököt a lib összes kéréshez.
+* Javítások [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – dedikált HTTPS-ügynök: ne módosítsa a globális ügynököt Azure Cosmos db célokra. A lib összes kérelméhez használjon dedikált ügynököt.
 
 ### <a name=""></a><a name="1.5.3"/>1.5.3</a>
-* Javítások [#81](https://github.com/Azure/azure-documentdb-node/issues/81) - Megfelelően kezelje a kötőjeleket a médiaazonosítókban.
+* Kijavítja a problémát [#81](https://github.com/Azure/azure-documentdb-node/issues/81) – az adathordozó-azonosítókban megfelelően kezeli a kötőjeleket.
 
 ### <a name=""></a><a name="1.5.2"/>1.5.2</a>
-* Javítások probléma [#95](https://github.com/Azure/azure-documentdb-node/issues/95) - EventEmitter figyelő szivárgás figyelmeztetés.
+* Javítások [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -EventEmitter figyelő szivárgásával kapcsolatos figyelmeztetés.
 
 ### <a name=""></a><a name="1.5.1"/>1.5.1</a>
-* Javítja [a problémát #92](https://github.com/Azure/azure-documentdb-node/issues/90) - átnevezi a mappa kivonatát kivonatra a kis- és nagybetűket megkülönböztető rendszerekesetében.
+* Javítja a problémát [#92](https://github.com/Azure/azure-documentdb-node/issues/90) – mappa kivonatának átnevezése a kis-és nagybetűket megkülönböztető rendszerek esetében.
 
 ### <a name=""></a><a name="1.5.0"/>1.5.0</a>
-* A skálázás támogatása a tartománypartíció-feloldók & hozzáadásával valósítsa meg.
+* A felosztási támogatás megvalósításához kivonatoló &-tartomány partíció-feloldókat adhat hozzá.
 
 ### <a name=""></a><a name="1.4.0"/>1.4.0</a>
-* Valósítsa meg upsert. Új upsertXXX metódusok a documentClient.New upsertXXX methods on documentClient.
+* Upsert implementálása. Új upsertXXX metódusok a documentClient-on.
 
 ### <a name=""></a><a name="1.3.0"/>1.3.0</a>
-* Kihagyva, hogy a verziószámok a többi SDK-val egy vonalban kerüljenek.
+* A rendszer kihagyta a verziószámok más SDK-kal való igazítását.
 
 ### <a name=""></a><a name="1.2.2"/>1.2.2</a>
-* A Split Q burkolást ígér az új tárháznak.
-* Frissítés az npm rendszerleíró adatbázis csomagfájljára.
+* A Split Q megígéri a burkolót az új tárházhoz.
+* Frissítsen a csomagfájl NPM-beállításjegyzékbe.
 
 ### <a name=""></a><a name="1.2.1"/>1.2.1</a>
-* Azonosítóalapú útválasztást valósít meg.
-* Javítja a probléma [#49](https://github.com/Azure/azure-documentdb-node/issues/49) - az aktuális tulajdonság ütközik a metódus current().
+* Az azonosító alapú útválasztás implementálása.
+* Javítások [#49](https://github.com/Azure/azure-documentdb-node/issues/49) – az aktuális tulajdonság ütközik az aktuális metódussal ().
 
 ### <a name=""></a><a name="1.2.0"/>1.2.0</a>
-* A térinformatikai index támogatása hozzáadva.
-* Az összes erőforrás azonosítótulajdonságának ellenőrzése. Az erőforrások azonosítói nem tartalmazhatnak ?, /, #, &#47;&#47; karaktereket, és szóközökkel végződhetnek.
-* Új fejléc "index átalakítási folyamat" a ResourceResponse.
+* A térinformatikai index támogatása.
+* Érvényesíti az összes erőforrás azonosító tulajdonságát. Az erőforrások azonosítói nem tartalmazhatják a következő karaktereket:?,/, #,  &#47;&#47;, karakter, vagy egy szóközzel végződik.
+* Hozzáadja az új "index átalakítási folyamat" fejlécet a ResourceResponse.
 
 ### <a name=""></a><a name="1.1.0"/>1.1.0</a>
-* V2 indexelési házirendet valósít meg.
+* A v2 indexelési házirendet implementálja.
 
 ### <a name=""></a><a name="1.0.3"/>1.0.3</a>
-* #40 [#40](https://github.com/Azure/azure-documentdb-node/issues/40) probléma - A magban megvalósított eslint és morgás konfigurációk, és ígéret sdk.
+* [#40](https://github.com/Azure/azure-documentdb-node/issues/40) által megvalósított eslint-és morog-konfigurációk kiadása a Core és az Promise SDK-ban.
 
 ### <a name=""></a><a name="1.0.2"/>1.0.2</a>
-* A [#45](https://github.com/Azure/azure-documentdb-node/issues/45) - Promises wrapper nem tartalmazza a hibás fejlécet.
+* Probléma [#45](https://github.com/Azure/azure-documentdb-node/issues/45) – az ígéretek burkolója nem tartalmaz hibát tartalmazó fejlécet.
 
 ### <a name=""></a><a name="1.0.1"/>1.0.1</a>
-* Az ütközések lekérdezése a readConflicts, readConflictAsync és queryConflicts hozzáadásával valósítottmeg.
+* A readConflicts, a readConflictAsync és a queryConflicts hozzáadásával megvalósítható az ütközések lekérdezésének lehetősége.
 * Frissített API-dokumentáció.
-* A [#41](https://github.com/Azure/azure-documentdb-node/issues/41) - ügyfél.createDocumentAsync hiba.
+* Probléma [#41](https://github.com/Azure/azure-documentdb-node/issues/41) -Client. createDocumentAsync hiba.
 
 ### <a name=""></a><a name="1.0.0"/>1.0.0</a>
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
-A Microsoft legalább **12 hónappal** az SDK kicsomagolása előtt értesítést küld az újabb/támogatott verzióra való áttérés zökkenőmentessé.
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Az új funkciók és funkciók és optimalizálások csak az aktuális SDK-hoz kerülnek hozzáadásra, ezért ajánlott mindig a lehető leghamarabb frissíteni a legújabb SDK-verzióra.
+Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
-A Cosmos DB-nek a rendszer egy kivisszavonult SDK-t használó kérését a szolgáltatás elutasítja.
+A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
 
 > [!WARNING]
-> **2020. augusztus 30-án**a Node client SDK for SQL API **1.x** verziója megszűnik. Ez csak az ügyféloldali node SDK-t érinti, és nem érinti a kiszolgálóoldali parancsfájlokat (tárolt eljárásokat, eseményindítókat és UDF-eket).
+> Az SQL API-hoz készült Node Client SDK **1. x** verziójának összes verziója **2020 augusztus 30-** án megszűnik. Ez csak az ügyféloldali csomópont-SDK-ra vonatkozik, és nem érinti a kiszolgálóoldali parancsfájlokat (tárolt eljárások, eseményindítók és UDF).
 > 
 >
 <br/>
 
-| Verzió | Megjelenési dátum | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
-| [3.1.0](#3.1.0) |2019. július 26.July 26, 2019 |--- |
-| [3.0.4](#3.0.4) |2019. július 22.July 22, 2019 |--- |
-| [3.0.3](#3.0.3) |2019. július 17.July 17, 2019 |--- |
-| [3.0.2](#3.0.2) |2019. július 9.July 9, 2019 |--- |
-| [3.0.0](#3.0.0) |2019. június 28.June 28, 2019 |--- |
-| [2.1.5](#2.1.5) |2019. március 20.March 20, 2019 |--- |
-| [2.1.4](#2.1.4) |2019. március 15.March 15, 2019 |--- |
-| [2.1.3](#2.1.3) |2019. március 8., 2019. |--- |
-| [2.1.2](#2.1.2) |2019. január 28., 2019. január 28. |--- |
-| [2.1.1](#2.1.1) |2018. december 5., |--- |
-| [2.1.0](#2.1.0) |2018. december 4., |--- |
-| [2.0.5](#2.0.5) |2018. november 7., |--- |
-| [2.0.4](#2.0.4) |2018. október 30.October 30, 2018 |--- |
-| [2.0.3](#2.0.3) |2018. október 30.October 30, 2018 |--- |
-| [2.0.2](#2.0.2) |2018. október 10.October 10, 2018 |--- |
+| [3.1.0](#3.1.0) |2019. július 26. |--- |
+| [3.0.4](#3.0.4) |2019. július 22. |--- |
+| [3.0.3](#3.0.3) |Július 17., 2019 |--- |
+| [3.0.2](#3.0.2) |2019. július 9. |--- |
+| [3.0.0](#3.0.0) |Június 28., 2019 |--- |
+| [2.1.5](#2.1.5) |Március 20., 2019 |--- |
+| [2.1.4](#2.1.4) |Március 15., 2019 |--- |
+| [2.1.3](#2.1.3) |Március 8., 2019 |--- |
+| [2.1.2](#2.1.2) |2019. január 28. |--- |
+| [2.1.1](#2.1.1) |2018. december 5. |--- |
+| [2.1.0](#2.1.0) |2018. december 4. |--- |
+| [2.0.5](#2.0.5) |November 7., 2018 |--- |
+| [2.0.4](#2.0.4) |Október 30-ig 2018 |--- |
+| [2.0.3](#2.0.3) |Október 30-ig 2018 |--- |
+| [2.0.2](#2.0.2) |Október 10., 2018 |--- |
 | [2.0.1](#2.0.1) |2018. szeptember 25. |--- |
 | [2.0.0](#2.0.0) |24, 2018. szeptember |--- |
-| [2.0.0-3 (RC)](#2.0.0-3) |2018. augusztus 2.August 2, 2018 |--- |
-| [1.14.4](#1.14.4) |2018. május 03.May 03, 2018 |2020. augusztus 30. |
-| [1.14.3](#1.14.3) |2018. május 03.May 03, 2018 |2020. augusztus 30. |
-| [1.14.2](#1.14.2) |2017. december 21., 2017 |2020. augusztus 30. |
-| [1.14.1](#1.14.1) |2017. november 10., 2017. |2020. augusztus 30. |
-| [1.14.0](#1.14.0) |2017. november 9., |2020. augusztus 30. |
-| [1.13.0](#1.13.0) |2017. október 11.October 11, 2017 |2020. augusztus 30. |
-| [1.12.2](#1.12.2) |2017. augusztus 10.August 10, 2017 |2020. augusztus 30. |
-| [1.12.1](#1.12.1) |2017. augusztus 10.August 10, 2017 |2020. augusztus 30. |
-| [1.12.0](#1.12.0) |2017. május 10. |2020. augusztus 30. |
-| [1.11.0](#1.11.0) |2017. március 16.March 16, 2017 |2020. augusztus 30. |
-| [1.10.2](#1.10.2) |2017. január 27., az amerikai |2020. augusztus 30. |
-| [1.10.1](#1.10.1) |2016. január 25. |2020. augusztus 30. |
-| [1.10.0](#1.10.0) |2016. október 03. |2020. augusztus 30. |
-| [1.9.0](#1.9.0) |2016. július 07. |2020. augusztus 30. |
-| [1.8.0](#1.8.0) |2016. június 14. |2020. augusztus 30. |
-| [1.7.0](#1.7.0) |2016. április 26. |2020. augusztus 30. |
-| [1.6.0](#1.6.0) |2016. március 29. |2020. augusztus 30. |
-| [1.5.6](#1.5.6) |2016. március 08. |2020. augusztus 30. |
-| [1.5.5](#1.5.5) |2016. február 02. |2020. augusztus 30. |
-| [1.5.4](#1.5.4) |2016. február 01. |2020. augusztus 30. |
-| [1.5.2](#1.5.2) |2016. január 26. |2020. augusztus 30. |
-| [1.5.2](#1.5.2) |2016. január 22. |2020. augusztus 30. |
-| [1.5.1](#1.5.1) |2016. január 15. |2020. augusztus 30. |
-| [1.5.0](#1.5.0) |2015. augusztus 25. |2020. augusztus 30. |
-| [1.4.0](#1.4.0) |2015. augusztus 26. |2020. augusztus 30. |
-| [1.3.0](#1.3.0) |2015. augusztus 26. |2020. augusztus 30. |
-| [1.2.2](#1.2.2) |2015. szeptember 10. |2020. augusztus 30. |
-| [1.2.1](#1.2.1) |2015. augusztus 15. |2020. augusztus 30. |
-| [1.2.0](#1.2.0) |2015. augusztus 05. |2020. augusztus 30. |
-| [1.1.0](#1.1.0) |2015. július 09. |2020. augusztus 30. |
-| [1.0.3](#1.0.3) |2015. június 04. |2020. augusztus 30. |
-| [1.0.2](#1.0.2) |2015. május 23. |2020. augusztus 30. |
-| [1.0.1](#1.0.1) |2015. május 15. |2020. augusztus 30. |
-| [1.0.0](#1.0.0) |2015. augusztus 25. |2020. augusztus 30. |
+| [2.0.0-3 (RC)](#2.0.0-3) |2018. augusztus 2. |--- |
+| [1.14.4](#1.14.4) |2018. május 03. |2020. augusztus 30-ig |
+| [1.14.3](#1.14.3) |2018. május 03. |2020. augusztus 30-ig |
+| [1.14.2](#1.14.2) |December 21., 2017 |2020. augusztus 30-ig |
+| [1.14.1](#1.14.1) |November 10., 2017 |2020. augusztus 30-ig |
+| [1.14.0](#1.14.0) |November 9., 2017 |2020. augusztus 30-ig |
+| [1.13.0](#1.13.0) |Október 11.2017 |2020. augusztus 30-ig |
+| [1.12.2](#1.12.2) |Augusztus 10., 2017 |2020. augusztus 30-ig |
+| [1.12.1](#1.12.1) |Augusztus 10., 2017 |2020. augusztus 30-ig |
+| [1.12.0](#1.12.0) |2017. május 10. |2020. augusztus 30-ig |
+| [1.11.0](#1.11.0) |Március 16., 2017 |2020. augusztus 30-ig |
+| [1.10.2](#1.10.2) |2017. január 27. |2020. augusztus 30-ig |
+| [1.10.1](#1.10.1) |December 22., 2016 |2020. augusztus 30-ig |
+| [1.10.0](#1.10.0) |Október 03., 2016 |2020. augusztus 30-ig |
+| [1.9.0](#1.9.0) |2016. július 7. |2020. augusztus 30-ig |
+| [1.8.0](#1.8.0) |Június 14., 2016 |2020. augusztus 30-ig |
+| [1.7.0](#1.7.0) |2016. április 26. |2020. augusztus 30-ig |
+| [1.6.0](#1.6.0) |Március 29., 2016 |2020. augusztus 30-ig |
+| [1.5.6](#1.5.6) |Március 08., 2016 |2020. augusztus 30-ig |
+| [1.5.5](#1.5.5) |Február 02, 2016 |2020. augusztus 30-ig |
+| [1.5.4](#1.5.4) |Február 01., 2016 |2020. augusztus 30-ig |
+| [1.5.2](#1.5.2) |2016. január 26. |2020. augusztus 30-ig |
+| [1.5.2](#1.5.2) |2016. január 22. |2020. augusztus 30-ig |
+| [1.5.1](#1.5.1) |2016. január 4. |2020. augusztus 30-ig |
+| [1.5.0](#1.5.0) |December 31., 2015 |2020. augusztus 30-ig |
+| [1.4.0](#1.4.0) |Október 06.2015 |2020. augusztus 30-ig |
+| [1.3.0](#1.3.0) |Október 06.2015 |2020. augusztus 30-ig |
+| [1.2.2](#1.2.2) |Szeptember 10., 2015 |2020. augusztus 30-ig |
+| [1.2.1](#1.2.1) |Augusztus 15., 2015 |2020. augusztus 30-ig |
+| [1.2.0](#1.2.0) |Augusztus 05, 2015 |2020. augusztus 30-ig |
+| [1.1.0](#1.1.0) |Július 9., 2015 |2020. augusztus 30-ig |
+| [1.0.3](#1.0.3) |Június 04., 2015 |2020. augusztus 30-ig |
+| [1.0.2](#1.0.2) |2015. május 23. |2020. augusztus 30-ig |
+| [1.0.1](#1.0.1) |Május 15., 2015 |2020. augusztus 30-ig |
+| [1.0.0](#1.0.0) |2015. április 08. |2020. augusztus 30-ig |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-A Cosmos DB szolgáltatásról a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatáslapján olvashat bővebben.
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
 

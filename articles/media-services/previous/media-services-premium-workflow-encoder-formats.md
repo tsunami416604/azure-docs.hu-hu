@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Prémium munkafolyamat-formátumok és kodekek | Microsoft dokumentumok
-description: Ez a témakör áttekintést nyújt a Media Encoder Premium workflow formátumok formátumok és kodekek
+title: Media Encoder Premium Workflow formátumok és kodekek | Microsoft Docs
+description: Ez a témakör áttekintést nyújt Media Encoder Premium Workflow formátumok formátumáról és kodekekről
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,36 +15,36 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269756"
 ---
-# <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Prémium munkafolyamat-formátumok és kodekek
+# <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Formátumok és kodekek Media Encoder Premium Workflow
 
 > [!NOTE]
-> A témakörben tárgyalt Media Encoder Premium Workflow médiaprocesszor kínában nem érhető el. 
+> A jelen témakörben tárgyalt Media Encoder Premium Workflow adathordozó-feldolgozó Kínában nem érhető el. 
 
-Ez a dokumentum a **Media Encoder Premium Workflow** kódoló nyilvános előzetes verziójával támogatott bemeneti és kimeneti fájlformátumok és kodekek listáját tartalmazza.
+Ez a dokumentum tartalmazza a bemeneti és kimeneti fájlformátumokat és kodekeket, amelyeket a **Media Encoder Premium workflow** kódoló nyilvános előzetes verziója támogat.
 
-[Media Encoder Prémium munkafolyamat bemeneti formátumok és kodekek](#input_formats)
+[Bemeneti formátumok és kodekek Media Encoder Premium Workflow](#input_formats)
 
-Media Encoder Prémium munkafolyamat kimeneti formátumok és kodekek
+Kimeneti formátumok és kodekek Media Encoder Premium Workflow
 
-**A Media Encoder Premium Workflow** támogatja az [ebben](#closed_captioning) a szakaszban ismertetett feliratozást. 
+A **Media Encoder Premium workflow** támogatja a [jelen](#closed_captioning) szakaszban leírt kódolt feliratozást. 
 
-## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Prémium munkafolyamat bemeneti formátumok és kodekek
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Bemeneti formátumok és kodekek Media Encoder Premium Workflow
 
-A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, amelyeket ez a médiaprocesszor bemenetként támogat.
+A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, amelyeket a Media Processor bemenetként támogat.
 
 ### <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátum
 
 * Adobe® Flash® F4V
-* MXF/SMPTE 377m
+* MXF/SMPTE 377M
 * GXF
-* MPEG-2 átviteli adatfolyamok
-* MPEG-2 programadatfolyamok
+* MPEG-2 átviteli streamek
+* MPEG-2 program streamek
 * MPEG-4/MP4
 * Windows Media/ASF
 * AVI (tömörítetlen 8bit/10bit)
@@ -54,11 +54,11 @@ A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, ame
 * 8 bites/10 bites AVC, akár 4:2:2-esig, ideértve az AVCIntrát is
 * Avid DNxHD (MXF-ben)
 * DVCPro/DVCProHD (MXF-ben)
-* HEVC/H.265, Fő és Fő 10 Profil
+* HEVC/H. 265, Main és Main 10 profil
 * JPEG2000
-* MPEG-2 (422 profilig és magas szintűig; beleértve az olyan változatokat, mint az XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10)
+* MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs® és a D10 változatokat)
 * MPEG-1
-* Windows Media Videó/VC-1
+* Windows Media Video/VC-1
 
 ### <a name="input-audio-codecs"></a>Bemeneti hangkodekek
 
@@ -71,32 +71,32 @@ A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, ame
 * Windows Media Audio
 * WAV/PCM
 
-## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Prémium munkafolyamat kimeneti formátumok és kodekek
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Kimeneti formátumok és kodekek Media Encoder Premium Workflow
 
-A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, amelyeket az adathordozó-feldolgozó kimeneteként támogatnak.
+A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, amelyeket a rendszer a Media Processor kimenetként támogat.
 
 ### <a name="output-containerfile-formats"></a>Kimeneti tároló/fájlformátumok
 
 * Adobe® Flash® F4V
 * MXF (OP1a, XDCAM és AS02)
-* DPP (beleértve az AS11-et)
+* DPP (beleértve a AS11-t)
 * GXF
 * MPEG-4/MP4
 * Windows Media/ASF
 * AVI (tömörítetlen 8bit/10bit)
-* Zökkenőmentes streamelési fájlformátum (PIFF 1.3)
-* MPEG-TS 
+* Smooth Streaming fájl formátuma (PIFF 1,3)
+* MPEG – TS 
 
-### <a name="output-video-codecs"></a>Kimeneti videó kodekek
+### <a name="output-video-codecs"></a>Kimeneti videó codec-je
 
-* AVC (H.264; 8 bites; nagy profilú, 5.2-es szintű; 4K Ultra HD; AVC Intra)
+* AVC (H. 264; 8 bites; legfeljebb magas profil, 5,2-as szint; 4K Ultra HD; AVC-n belüli)
 * Avid DNxHD (MXF-ben)
 * DVCPro/DVCProHD (MXF-ben)
-* MPEG-2 (422 profilig és magas szintűig; beleértve az olyan változatokat, mint az XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10)
+* MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs® és a D10 változatokat)
 * MPEG-1
-* Windows Media Videó/VC-1
-* JPEG bélyegkép létrehozása
-* HEVC (H.265; 8 bites és 10 bites, Fő és Fő 10 profil)
+* Windows Media Video/VC-1
+* JPEG-miniatűr létrehozása
+* HEVC (H. 265; 8 bites és 10 bites, fő és fő 10 profil)
 
 
 ### <a name="output-audio-codecs"></a>Kimeneti hangkodekek
@@ -110,36 +110,36 @@ A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, ame
 * Windows Media Audio
 
 >[!NOTE]
->Ha dolby® Digital (AC3) kódolásra kódol, a kimenet csak ISO MP4 fájlba írható.
+>Ha a Dolby® Digital (AC3) kódolást végez, a kimenet csak ISO MP4-fájlba írható.
 
-## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>A feliratozás támogatása
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>A kódolt feliratok támogatása
 
-Betöltéskor a **Media Encoder Premium Workflow** a következőket támogatja:
+Betöltéskor **Media Encoder Premium workflow** a következőt támogatja:
 
 1. SCC-fájlok
-2. SMPTE-TT fájlok
-3. CEA-608/CEA-708 – felhasználói adatként (H.264 elemi streamek SEI üzenetei, ATSC/53, SCTE20) vagy MXF/GXF-fájlokkiegészítő adataiként
-4. STL felirat fájlok
+2. SMPTE-TT-fájlok
+3. CEA-608/CEA-708 – felhasználói adatként (H. 264 elemi streamek, ATSC/53, SCTE20) származó, illetve kiegészítő adatként elvégezve a MXF/GXF-fájlokban.
+4. STL alcím-fájlok
 
-Kimenetkor a következő lehetőségek állnak rendelkezésre:
+A kimeneten a következő lehetőségek érhetők el:
 
-1. CEA-608 a CEA-708 fordítás
-2. CEA-608/CEA-708 áthalad (beágyazott SEI üzenetek H.264 elemi patakok, vagy végzett kiegészítő adatok MXF fájlok)
-3. Scc
-4. SMPTE időzített szöveg (a CEA-608 forrásból SMPTE RP2052;beleértve a DFXP-fájlok létrehozását is)
-5. SRT Felirat fájl
-6. DVB feliratfolyamok
+1. CEA-608 – CEA-708 fordítás
+2. CEA-608/CEA-708 továbbítása (a H. 264 elemi streamek SEI-üzeneteibe ágyazva, vagy kiegészítő adatként MXF-fájlokban történik)
+3. SCC
+4. SMPTE időzített szöveg (forrás CEA-608/SMPTE RP2052, beleértve a DFXP-fájl létrehozását)
+5. SRT alcím fájl
+6. DVB alcíme streamek
 
 > [!NOTE]
-> Nem minden a fenti kimeneti formátumok támogatottak az Azure Media Services streamelésútján történő kézbesítéséhez.
+> A fenti kimeneti formátumok nem mindegyike támogatott a Azure Media Services adatfolyamon keresztüli továbbítására.
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Ha a bemeneti videó nem tartalmaz feliratozást, a kimeneti eszköz továbbra is tartalmaz egy üres TTML-fájlt. 
+Ha a bemeneti videó nem tartalmaz kódolt feliratozást, a kimeneti eszköz továbbra is tartalmaz egy üres TTML-fájlt. 
 
 ## <a name="need-help"></a>Segítségre van szüksége?
 
-Támogatási jegyet úgy nyithat meg, hogy az [Új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigál.
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

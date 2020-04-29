@@ -1,6 +1,6 @@
 ---
-title: Méretezhetőségi és teljesítménycélok a Windows virtuálisgép-lemezeihez
-description: Ismerje meg a Windows rendszert futtató virtuális gépekhez csatlakoztatott virtuálisgép-lemezek méretezhetőségét és teljesítménycéljait.
+title: Méretezhetőség és teljesítménybeli célok a Windows rendszerű virtuális gépek lemezei esetében
+description: Ismerje meg a Windows rendszerű virtuális gépekhez csatlakoztatott virtuálisgép-lemezek méretezhetőségét és teljesítménybeli céljait.
 author: roygara
 ms.author: rogarana
 ms.date: 11/15/2017
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: dee3da6b6aa38a60ed1109009ba5a292a131ce97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243353"
 ---
-# <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Méretezhetőségi és teljesítménycélok a Windows virtuálisgép-lemezeihez
+# <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Méretezhetőség és teljesítménybeli célok a Windows rendszerű virtuális gépek lemezei esetében
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-További részletek érti a [Windows virtuális gépek méreteit.](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+További részletekért tekintse meg a [Windows rendszerű virtuális gépek méretét](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
 
-## <a name="managed-virtual-machine-disks"></a>Felügyelt virtuálisgép-lemezek
+## <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
 
-A csillaggal jelölt méretek jelenleg előzetes verzióban jelennek meg. Tekintse meg [a GYIK-et,](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) hogy megtudja, milyen régiókban érhetők el.
+A csillaggal jelölt méretek jelenleg előzetes verzióban érhetők el. Tekintse meg a [Gyakori kérdések](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) című témakört, amelyből megtudhatja, mely régiókban érhetők el.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 
@@ -33,4 +33,4 @@ A csillaggal jelölt méretek jelenleg előzetes verzióban jelennek meg. Tekint
 
 ## <a name="see-also"></a>Lásd még
 
-[Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+[Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)

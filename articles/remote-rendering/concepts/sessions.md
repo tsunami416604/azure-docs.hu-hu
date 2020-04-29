@@ -1,36 +1,36 @@
 ---
-title: Távoli renderelési munkamenetek
-description: A távoli renderelési munkamenet leírása
+title: Remote Rendering-munkamenetek
+description: Leírja, hogy mi a távoli renderelési munkamenet?
 author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681687"
 ---
-# <a name="remote-rendering-sessions"></a>Távoli renderelési munkamenetek
+# <a name="remote-rendering-sessions"></a>Remote Rendering-munkamenetek
 
-Az Azure távoli renderelés (ARR) egy *munkamenet* kulcsfontosságú fogalom. Ez a cikk ismerteti, hogy pontosan mi is az a munkamenet.
+Az Azure távoli renderelés (ARR) esetében a *munkamenet* kulcsfontosságú fogalom. Ez a cikk azt ismerteti, hogy pontosan milyen a munkamenet.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure remote rendering működik a komplex renderelési feladatok a felhőbe. Ezeket a renderelési feladatokat nem tudja teljesíteni akármilyen kiszolgáló, mivel a legtöbb felhőkiszolgáló nem rendelkezik GPU-kkal. Az érintett adatok mennyisége és az interaktív képkockasebességen elért eredmények szigorú követelménye miatt a felhasználói kérést kezelő kiszolgáló felelőssége nem adható át egy másik gépnek menet közben, mivel a gyakoribb webes forgalom lehetséges.
+Az Azure-alapú távoli renderelés összetett renderelési feladatok felhőbe szervezésével működik. Ezek a renderelési feladatok nem teljesíthetők egyetlen kiszolgálóval sem, mivel a legtöbb felhőalapú kiszolgálónak nincsenek GPU-k. Az érintett adatok mennyisége és az eredményeknek az interaktív képarányok alapján történő létrehozásával kapcsolatos követelmények miatt az a feladata, hogy a kiszolgáló milyen módon kezelje a felhasználói kéréseket, és nem lehet átadni egy másik, menet közbeni gépre, ahogy az a leggyakoribb webes adatforgalom esetében is lehetséges.
 
-Ez azt jelenti, hogy az Azure Remote Rendering használatakor a szükséges hardverképességekkel rendelkező felhőkiszolgálót kizárólag a leképezési kérelmek kezeléséhez kell fenntartani. A *munkamenet* a kiszolgálóval való interakcióval kapcsolatban érintett minden reked. A kezdeti kéréssel kezdődik, hogy lefoglalja *(lízing)* egy gépet az Ön számára, folytatja a modellek betöltésére és kezelésére vonatkozó összes parancsot, és a felhőkiszolgálón a bérlet felszabadításával végződik.
+Ez azt jelenti, hogy az Azure Remote rendering használatakor a szükséges hardver-képességekkel rendelkező felhőalapú kiszolgálót kizárólag a renderelési kérelmek kezelésére kell fenntartani. A *munkamenetek* a kiszolgálóval való interakció során felmerülő mindenre vonatkoznak. A szolgáltatás a használatra kész gép lefoglalására (*bérletére*) vonatkozó kezdeti kéréssel kezdődik, és folytatja a modellek betöltésére és módosítására vonatkozó összes parancsot, és a bérletnek a felhőalapú kiszolgálón való kiadása után fejeződik be.
 
 ## <a name="managing-sessions"></a>Munkamenetek kezelése
 
-A munkamenetek kezelésére és kezelésére többféleképpen is kommunikálhat. A munkamenetek létrehozásának, frissítésének és leállításának nyelvfüggetlen módja [a munkamenet-kezelés REST API-n](../how-tos/session-rest-api.md)keresztül történik. A C# és C++ csoportban ezek a `AzureFrontend` műveletek `AzureSession`az osztályokon és a . Unity alkalmazások, vannak további segédprogram funkciók `ARRServiceUnity` által biztosított alkatrész.
+A munkamenetek kezelésének és kezelésének több módja is van. A munkamenetek [felügyeleti Rest APIon](../how-tos/session-rest-api.md)keresztüli létrehozása, frissítése és leállítása egymástól független módon történik. A C# és a C++ nyelvben ezek a műveletek az osztályok `AzureFrontend` és `AzureSession`a használatával érhetők el. Az Unity-alkalmazások esetében az `ARRServiceUnity` összetevő további segédprogram-funkciókat is biztosít.
 
-Miután *csatlakozott* egy aktív munkamenethez, az olyan műveletek, mint a modellek `AzureSession` [betöltése](models.md) és a jelenettel való interakció az osztályon keresztül.
+Ha aktív munkamenethez *kapcsolódott* , akkor a rendszer az `AzureSession` osztályon keresztül teszi elérhetővé a műveleteket, például a [modellek betöltését](models.md) és a jelenettel való interakciót.
 
-### <a name="managing-multiple-sessions-simultaneously"></a>Több munkamenet egyidejű kezelése
+### <a name="managing-multiple-sessions-simultaneously"></a>Egyszerre több munkamenet kezelése
 
-Nem lehet teljes mértékben *csatlakozni* több munkamenethez egy eszközről. Azonban létrehozhat, megfigyelhet és leállíthatj a kívánt munkamenetek közül egyetlen alkalmazásból. Mindaddig, amíg az alkalmazás nak nem célja, hogy valaha is csatlakozzon egy munkamenethez, nem kell futtatnia egy olyan eszközön, mint a HoloLens 2. Egy ilyen implementáció használati esete lehet, ha az üléseket egy központi mechanizmuson keresztül szeretné vezérelni. Létrehozhatunk például egy webalkalmazást, ahol több táblagép és HoloLens is bejelentkezhet. Ezután az alkalmazás megjelenítheti a táblagépeken a beállításokat, például azt, hogy melyik CAD-modellt jelenítse meg. Ha egy felhasználó kiválaszt egy beállítást, ezt az információt az összes HoloLenses közli, hogy közös élményt hozzon létre.
+Egyetlen eszközről nem lehet teljes mértékben *csatlakozni* több munkamenethez. Azonban létrehozhat, megfigyelheti és leállíthat annyi munkamenetet, amennyit csak szeretne egyetlen alkalmazásból. Mindaddig, amíg az alkalmazás nem a munkamenethez való kapcsolódásra szolgál, nem szükséges olyan eszközön futtatni, mint a HoloLens 2. Ilyen implementáció esetén előfordulhat, hogy egy központi mechanizmus segítségével szeretné vezérelni a munkameneteket. Például létrehozhat egy webalkalmazást, ahol több tabletta és HoloLenses is bejelentkezhet. Ezután az alkalmazás megjelenítheti a tabletták beállításait, például azt, hogy melyik CAD-modellt szeretné megjeleníteni. Ha a felhasználó kiválaszt egy választ, a rendszer ezeket az információkat közli az összes HoloLenses, hogy közös felhasználói élményt hozzon létre.
 
 ## <a name="session-phases"></a>Munkamenet-fázisok
 
@@ -38,49 +38,49 @@ Minden munkamenet több fázison megy keresztül.
 
 ### <a name="session-startup"></a>Munkamenet indítása
 
-Amikor új munkamenet [létrehozására](../how-tos/session-rest-api.md#create-a-session)kéri az ARR-t , az első dolog, amit tesz, hogy visszaadja a munkamenet [UUID azonosítót.](https://en.wikipedia.org/wiki/Universally_unique_identifier) Ez az UUID lehetővé teszi a munkamenetre vonatkozó információk lekérdezését. Az UUID és a munkamenettel kapcsolatos néhány alapvető információ 30 napig megmarad, így a munkamenet leállítása után is lekérdezheti ezeket az információkat. Ezen a ponton a **munkamenet-állapot** indításkor lesz **jelentve.**
+Ha az ARR-t arra kéri, hogy [hozzon létre egy új munkamenetet](../how-tos/session-rest-api.md#create-a-session), akkor az első dolog, ha egy munkamenet [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-t ad vissza. Ez az UUID lehetővé teszi a munkamenet adatainak lekérdezését. Az UUID-t és a munkamenet alapszintű információit 30 napig őrzi meg a rendszer, így a munkamenet leállítása után is lekérdezheti az adatokat. Ezen a ponton a **munkamenet-állapotot** a rendszer az **induláskor**fogja jelenteni.
 
-Ezután az Azure Remote Rendering megpróbálja megtalálni a munkamenetet üzemeltető kiszolgálót. A keresésnek két paramétere van. Először is, ez csak a tartalék szerverek a [régióban](../reference/regions.md). Ennek az az oka, hogy a régiók közötti hálózati késés túl magas lehet ahhoz, hogy tisztességes élményt biztosítson. A második tényező a megadott kívánt *méret.* Minden régióban korlátozott számú kiszolgáló, amely képes teljesíteni a *standard* vagy *prémium* méretű kérelmet. Következésképpen, ha a kért méretű kiszolgálók jelenleg használatban vannak a régióban, a munkamenet létrehozása sikertelen lesz. A hiba [oka lekérdezhető](../how-tos/session-rest-api.md#get-sessions-properties).
-
-> [!IMPORTANT]
-> Ha egy *szabványos* virtuális gép méretét kéri, és a kérelem nagy igény miatt sikertelen, ez nem jelenti azt, hogy a *prémium szintű* kiszolgáló kérése sikertelen lesz is. Tehát, ha ez egy lehetőség az Ön számára, akkor próbálja meg visszaesik egy *prémium* virtuális gép.
-
-Amikor a szolgáltatás megfelelő kiszolgálót talál, a megfelelő virtuális gépet (VM) át kell másolnia rá, hogy az Azure Remote-leképezési állomássá alakítsa. Ez a folyamat több percig is eltarthat. Ezt követően a virtuális gép elindul, és a **munkamenet állapota** átkerül **a Ready**.
-
-Ezen a ponton a kiszolgáló kizárólag a bemenetre vár. Ez is az a pont, ahonnan kapsz számlázott a szolgáltatást.
-
-### <a name="connecting-to-a-session"></a>Csatlakozás munkamenethez
-
-Miután a munkamenet *készen*áll, *csatlakozhat* hozzá. A kapcsolat alatt az eszköz parancsokat küldhet a modellek betöltéséhez és módosításához. Minden ARR-állomás egyszerre csak egy ügyféleszközt szolgál ki, így amikor egy ügyfél csatlakozik egy munkamenethez, kizárólagos ellenőrzést gyakorol a megjelenített tartalom felett. Ez azt is jelenti, hogy a renderelési teljesítmény soha nem változik az ön hatáskörén kívül álló okok miatt.
+Ezt követően az Azure Remote rendering megpróbál olyan kiszolgálót találni, amely képes a munkamenet üzemeltetésére. A keresésnek két paramétere van. Először csak a [régiójában](../reference/regions.md)lévő kiszolgálókat fogja fenntartani. Ennek oka, hogy a régiók közötti hálózati késés túl magas lehet a tisztességes felhasználói élmény garantálása érdekében. A második tényező a megadott kívánt *méret* . Az egyes régiókban korlátozott számú kiszolgáló érhető el, amelyek megfelelnek a standard vagy a *prémium* *szintű* kérésnek. Ennek következtében, ha a kért méret összes kiszolgálója jelenleg használatban van a régiójában, a munkamenet létrehozása sikertelen lesz. A hiba oka lehet a [lekérdezés](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Bár csak egy ügyfél *tud csatlakozni* egy munkamenethez, a munkamenetekkel kapcsolatos alapvető információk, például az aktuális állapotuk, lekérdezhetők csatlakozás nélkül.
+> Ha *standard* virtuálisgép-méretet kér, és a kérés magas kereslet miatt meghiúsul, akkor a nem jelenti azt, hogy a *prémium* szintű kiszolgáló igénylése is sikertelen lesz. Ha így van, lehetősége van arra, hogy egy *prémium* szintű virtuális gépre visszaessen.
 
-Amíg egy eszköz munkamenethez csatlakozik, más eszközök csatlakozási kísérletei sikertelenek lesznek. Ha azonban a csatlakoztatott eszköz bontja a kapcsolatot, akár önként, akár valamilyen hiba miatt, a munkamenet elfogad egy másik csatlakozási kérelmet. Az összes korábbi állapot (betöltött modellek és az ilyen) úgy kerül kidobásra, hogy a következő csatlakozó eszköz tiszta lappal induljon. Így a munkamenetek többször is felhasználhatók különböző eszközökkel, és a legtöbb esetben elrejtheti a munkamenet indítási terhelését a végfelhasználó elől.
+Ha a szolgáltatás megfelelő kiszolgálót talál, a megfelelő virtuális gépet (VM) át kell másolnia egy Azure távoli renderelési gazdagépre való bekapcsolásához. Ez a folyamat több percig is eltarthat. Ezt követően a virtuális gép elindult, és a **munkamenet állapota** **készre**vált.
+
+Ezen a ponton a kiszolgáló kizárólag a bemenetre vár. Ez azt is megteheti, hogy a szolgáltatásért díjat számítunk fel.
+
+### <a name="connecting-to-a-session"></a>Csatlakozás egy munkamenethez
+
+Ha a munkamenet *elkészült*, *csatlakozhat* hozzá. A csatlakozás közben az eszköz parancsokat tud küldeni a modellek betöltéséhez és módosításához. Minden ARR-gazdagép egyszerre csak egy ügyféleszközök kiszolgálására szolgál, így amikor egy ügyfél egy munkamenethez csatlakozik, kizárólagos felügyeletet gyakorol a renderelt tartalom felett. Ez azt is jelenti, hogy a renderelési teljesítmény soha nem változik a vezérlőn kívüli okokból.
 
 > [!IMPORTANT]
-> A távoli kiszolgáló soha nem változtatja meg az ügyféloldali adatok állapotát. Az ügyfélalkalmazásnak az adatok összes mutációját (például az átalakítási frissítéseket és a betöltési kérelmeket) kell végrehajtania. Minden művelet azonnal frissíti az ügyfél állapotát.
+> Bár csak egy ügyfél tud *csatlakozni* egy munkamenethez, a munkamenetek alapvető információi, például a jelenlegi állapotuk, csatlakozás nélkül kérhetők le.
+
+Amíg az eszköz egy munkamenethez csatlakozik, a más eszközök csatlakozási próbálkozásai sikertelenek lesznek. Ha azonban a csatlakoztatott eszköz kapcsolata megszakad, akár önként, akár valamilyen hiba miatt, a munkamenet egy másik csatlakozási kérelmet fog fogadni. A rendszer elveti az összes korábbi állapotot (a betöltött modelleket és az ilyeneket), így a következő csatlakoztatási eszköz tiszta lappal rendelkezik. Így a munkamenetek többször is felhasználhatók a különböző eszközökön, és előfordulhat, hogy a végfelhasználók a legtöbb esetben el tudják rejteni a munkamenet indítási terhelését.
+
+> [!IMPORTANT]
+> A távoli kiszolgáló soha nem változtatja meg az ügyféloldali adat állapotát. Az ügyfélalkalmazás minden adatmutációt (például átalakítási frissítéseket és betöltési kérelmeket) kell végrehajtania. Minden művelet azonnal frissíti az ügyfél állapotát.
 
 ### <a name="session-end"></a>Munkamenet vége
 
-Amikor új munkamenetet kér, meg kell adnia egy *maximális bérleti időt,* általában egy-nyolc óra tartományban. Ez az az időtartam, amely alatt a gazdagép elfogadja a bemenetet.
+Új munkamenet igénylése esetén a *címbérlet maximális idejét*kell megadnia, jellemzően az egy és nyolc óra közötti tartományban. Ez az az időtartam, ameddig a gazdagép el fogja fogadni a bemenetet.
 
-Két rendszeres oka van annak, hogy egy munkamenet véget ér. Manuálisan kéri a munkamenet leállítását, vagy a maximális bérleti idő lejár. Mindkét esetben az állomással való aktív kapcsolat azonnal megszakad, és a szolgáltatás le áll azon a kiszolgálón. A kiszolgáló ezután visszakerül az Azure-készletbe, és más célokra is lekérheti. A munkamenet leállítása nem vonható vissza vagy nem vonható vissza. A **munkamenet-állapot** lekérdezése egy leállított munkameneten vagy **leállítva** vagy **lejárt**értéket ad vissza attól függően, hogy manuálisan állították-e le, vagy mert elérte a maximális címbérleti időt.
+A munkamenet befejezésének két rendszeres oka van. Manuálisan kérheti le a munkamenet leállítását vagy a címbérlet maximális idejét. A gazdagépre irányuló aktív kapcsolatok mindkét esetben azonnal le vannak zárva, és a szolgáltatás le van állítva a kiszolgálón. A kiszolgálót ezután visszaadja az Azure-készletnek, és más célra is visszaigénylést kaphat. A munkamenet leállítása nem vonható vissza vagy szakítható meg. A munkamenet- **állapot** leállítási munkameneten való lekérdezése vagy **leállt** vagy **lejárt**, attól függően, hogy manuálisan leállították-e, vagy elérte a címbérlet maximális idejét.
 
-A munkamenet meghibásodás miatt is leállítható.
+Néhány hiba miatt előfordulhat, hogy egy munkamenet le is állítható.
 
-A munkamenet leállítása után nem kell további díjat fizetnie.
+A munkamenet leállítása után minden esetben nem számítunk fel díjat.
 
 > [!WARNING]
-> Az, hogy csatlakozik-e egy munkamenethez, és mennyi ideig, nincs hatással a számlázásra. A szolgáltatásért fizetett fizetés a *munkamenet időtartamától*függ, ami azt jelenti, hogy a kiszolgáló csak az Ön számára van fenntartva, és a kért hardverképességektől (a virtuális gép méretétől). Ha elindítja a munkamenetet, öt percig csatlakozik, majd nem állítja le a munkamenetet, hogy a bérlet lejártáig továbbra is működjön, a teljes munkamenet-bérleti idő számlázása. Ezzel szemben a *maximális bérleti idő* többnyire biztonsági háló. Nem számít, hogy nyolc órás bérleti idővel rendelkező munkamenetet kér-e, majd csak öt percig használja, ha ezt követően manuálisan leállítja a munkamenetet.
+> Azt jelzi, hogy egy munkamenethez kapcsolódik-e, és hogy mennyi ideig, nem befolyásolja a számlázást. A szolgáltatásért fizetendő díj a *munkamenet időtartamától*függ, ami azt jelenti, hogy egy kiszolgáló kizárólag az Ön számára van fenntartva, és a kért hardveres képességek (a virtuális gép mérete). Ha elindít egy munkamenetet, öt percig kapcsolódjon, majd ne állítsa le a munkamenetet, hogy az a bérlet lejárta előtt is fusson, a teljes munkamenet címbérletének idejére. Ezzel szemben a *címbérlet maximális időtartama* többnyire biztonsági háló. Nem számít, hogy a munkamenetet nyolc órás bérlettel kéri-e, majd csak öt percig használja, ha ezt követően manuálisan leállítja a munkamenetet.
 
-#### <a name="extend-a-sessions-lease-time"></a>Munkamenet bérleti idejének meghosszabbítása
+#### <a name="extend-a-sessions-lease-time"></a>Munkamenet címbérleti idejének meghosszabbítása
 
-Meghosszabbíthatja egy aktív munkamenet [bérleti idejét,](../how-tos/session-rest-api.md#update-a-session) ha kiderül, hogy hosszabb időre van szüksége.
+Kiterjesztheti egy aktív munkamenet [címbérleti idejét](../how-tos/session-rest-api.md#update-a-session) , ha kiderül, hogy továbbra is szüksége van rá.
 
 ## <a name="example-code"></a>Mintakód
 
-Az alábbi kód egy egyszerű megvalósítása a munkamenet indítása, várja a *kész* állapot, csatlakozás, majd a leválasztás és leállítás újra.
+Az alábbi kód a munkamenet indításának egyszerű megvalósítását, a *készenléti* állapotra, a csatlakozásra, majd a leválasztásra és a Leállítás visszakapcsolására való várakozást mutatja be.
 
 ``` cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
@@ -136,13 +136,13 @@ await session.StopAsync().AsTask();
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Több `AzureFrontend` `AzureSession` és példányok lehet karbantartani, manipulálni, és lekérdezni a kódot. De egyszerre csak egy eszköz `AzureSession` csatlakozhat egy eszközhöz.
+Több `AzureFrontend` és `AzureSession` példány is kezelhető, módosítható és lekérdezhető a kódból. Egyszerre azonban csak egyetlen eszköz csatlakozhat `AzureSession` egyszerre.
 
-A virtuális gép élettartama nem kötődik `AzureFrontend` a `AzureSession` példányhoz vagy a példányhoz. `AzureSession.StopAsync`kell hívni a munkamenet leállítására.
+A virtuális gép élettartama nincs a `AzureFrontend` példányhoz vagy a `AzureSession` példányhoz kötve. `AzureSession.StopAsync`a munkamenet leállítására kell hívni.
 
-Az állandó munkamenet-azonosító helyileg `AzureSession.SessionUUID()` lekérdezhető és gyorsítótárazható. Ezzel az azonosítóval az `AzureFrontend.OpenSession` alkalmazás meghívhat, hogy kötődjenek az adott munkamenethez.
+Az állandó munkamenet-azonosító lekérdezhető helyileg `AzureSession.SessionUUID()` a-n keresztül és gyorsítótárazva. Ezzel az AZONOSÍTÓval az alkalmazás meghívja `AzureFrontend.OpenSession` a kötést az adott munkamenethez.
 
-Ha `AzureSession.IsConnected` igaz, `AzureSession.Actions` a függvény `RemoteManager`egy példányát adja vissza, amely a [modellek betöltéséhez,](models.md) [az entitások](entities.md)kezeléséhez és a megjelenített jelenet [adatainak lekérdezéséhez](../overview/features/spatial-queries.md) szükséges függvényeket tartalmazza.
+Ha `AzureSession.IsConnected` a értéke true `AzureSession.Actions` (igaz), `RemoteManager`a egy példányát adja vissza, amely a [modellek betöltésére](models.md), az [entitások](entities.md)manipulálására és a megjelenített jelenet [adatainak lekérdezésére](../overview/features/spatial-queries.md) szolgáló függvényeket tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 

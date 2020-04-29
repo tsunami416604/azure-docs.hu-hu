@@ -1,6 +1,6 @@
 ---
-title: Adatbázis kiszélesedése
-description: A ShardMapManager, rugalmas adatbázis-ügyfélkódtár használata
+title: Adatbázis felskálázása
+description: A ShardMapManager és a rugalmas adatbázis-ügyféloldali kódtár használata
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,64 +12,64 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256262"
 ---
-# <a name="scale-out-databases-with-the-shard-map-manager"></a>Adatbázisok horizontális felskálázása a shard térképkezelővel
+# <a name="scale-out-databases-with-the-shard-map-manager"></a>Adatbázisok horizontális felskálázása a szegmenses Térkép kezelőjével
 
-Az SQL Azure-adatbázisok egyszerű horizontális felskálázásához használjon shard map managert. A shard map manager egy speciális adatbázis, amely egy szegmensek (adatbázisok) globális leképezési adatait egy szegmenskészletben tartja karban. A metaadatok lehetővé teszik, hogy egy alkalmazás a **szegmenskulcs**értéke alapján csatlakozzon a megfelelő adatbázishoz. Emellett a készlet minden szegmense olyan térképeket tartalmaz, amelyek nyomon követik a helyi szegmensadatokat (más néven **shardlets).**
+A SQL Azure adatbázisok egyszerű horizontális felskálázásához használjon egy szegmens Térkép-kezelőt. A szegmenses Térkép-kezelő egy olyan speciális adatbázis, amely globális leképezési információkat tart fenn a szegmensben lévő összes szegmensről (adatbázisról). A metaadatok lehetővé teszik, hogy az alkalmazások a megfelelő adatbázishoz kapcsolódjanak a horizontális Felskálázási **kulcs**értéke alapján. Emellett a készletben lévő összes szegmens olyan térképeket is tartalmaz, amelyek nyomon követik a helyi szegmensek ( **shardletek**) adatkészleteit.
 
 ![A szilánkleképezés kezelése](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
 
-A térképek létrehozásának megértése elengedhetetlen a szegmenstérkép-kezeléshez. Ez a ShardMapManager osztály ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) használatával történik, amely a [rugalmas adatbázis-ügyféltárban](sql-database-elastic-database-client-library.md) található a szegmensleképezések kezeléséhez.  
+A térképek összeépítésének megértése elengedhetetlen a szegmensek közötti Térkép-felügyelethez. Ez a ShardMapManager osztály ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) használatával történik, amely a [Elastic Database ügyféloldali függvénytárában](sql-database-elastic-database-client-library.md) található a szegmenses térképek kezeléséhez.  
 
-## <a name="shard-maps-and-shard-mappings"></a>Shard térképek és shard leképezések
+## <a name="shard-maps-and-shard-mappings"></a>Szegmenses térképek és szegmens megfeleltetések
 
-Minden shard, ki kell választania a létrehozását hozandó shard térkép típusát. A választás az adatbázis architektúrájáttól függ:
+Minden szegmens esetében ki kell választania a létrehozandó szegmens-hozzárendelés típusát. A választás az adatbázis-architektúrától függ:
 
-1. Egyetlen bérlő adatbázisonként  
-2. Adatbázisonként több bérlő (két típus):
-   1. Lista leképezése
-   2. Tartomány leképezése
+1. Egyetlen bérlő/adatbázis  
+2. Több bérlő/adatbázis (két típus):
+   1. Lista megfeleltetése
+   2. Tartomány-hozzárendelés
 
-Egybérlős modell esetén hozzon létre egy **listaleképezési** szegmensleképezési térképet. Az egybérlős modell bérlőnként egy adatbázist rendel hozzá. Ez egy hatékony modell a SaaS-fejlesztők számára, mivel leegyszerűsíti a felügyeletet.
+Egybérlős modell esetén hozzon létre egy **lista-hozzárendelési** szegmens térképet. Az egybérlős modell bérlőként egy adatbázist rendel hozzá. Ez egy hatékony modell az SaaS-fejlesztők számára, mivel leegyszerűsíti a felügyeletet.
 
-![Lista leképezése][1]
+![Lista megfeleltetése][1]
 
-A több-bérlős modell több bérlőt rendel egy adott adatbázishoz (és a bérlők csoportjait több adatbázis között is eloszthatja). Akkor használja ezt a modellt, ha azt várja, hogy minden bérlőnek kis adatigénye legyen. Ebben a modellben rendeljen bérlői tartományt egy adatbázishoz **tartományleképezés**használatával.
+A több-bérlős modell több bérlőt rendel egy adott adatbázishoz (és több adatbázisból is terjesztheti a bérlők csoportjait). Akkor használja ezt a modellt, ha várható, hogy az egyes bérlők kis mennyiségű adatra van szükségük. Ebben a modellben a **tartomány-hozzárendelés**használatával rendeljen hozzá bérlőket egy adatbázishoz.
 
-![Tartomány leképezése][2]
+![Tartomány-hozzárendelés][2]
 
-Vagy valósíthat meg egy több-bérlős adatbázis-modell egy *lista leképezés* segítségével több bérlő hozzárendelése egy adott adatbázishoz. A DB1 például az 1-es és 5-ös bérlői azonosító adatainak tárolására szolgál, a DB2 pedig a 7-es és a 10-es bérlő adatait tárolja.
+Akár több-bérlős adatbázis-modellt is alkalmazhat egy *lista-hozzárendeléssel* , hogy több bérlőt rendeljen hozzá egy adott adatbázishoz. A DB1 például az 1. és az 5. bérlői azonosító adatainak tárolására szolgál, a DB2 pedig a 7. Bérlő és a bérlő 10 adatait tárolja.
 
-![Több bérlő egyetlen adatbázison][3]
+![Több bérlő egyetlen ADATBÁZISon][3]
 
-### <a name="supported-types-for-sharding-keys"></a>Támogatott típusú szilánkok kulcsok
+### <a name="supported-types-for-sharding-keys"></a>Felskálázási kulcsok támogatott típusai
 
-A Rugalmas méretezés a következő típusokat támogatja horizontális kulcsként:
+A rugalmas méretezés a következő típusokat támogatja a horizontális Felskálázási kulcsokként:
 
 | .NET | Java |
 | --- | --- |
 | egész szám |egész szám |
-| long |long |
-| Guid |uuid |
-| bájt[]  |bájt[] |
+| hosszú |hosszú |
+| guid |uuid |
+| bájt []  |bájt [] |
 | dátum/idő | időbélyeg |
 | időtartomány | duration|
-| datetimeoffset |eltolásdátumidő |
+| DateTimeOffset |offsetdatetime |
 
-### <a name="list-and-range-shard-maps"></a>Shard térképek listázása és tartománytérképei
+### <a name="list-and-range-shard-maps"></a>Szegmensek listája és tartománya
 
-A szegmenstérképek az **egyes skálázási kulcsértékek listáival,** illetve **a skálázási kulcsértékek tartományai**val is létrehozhatók.
+**A szegmenses**térképek létrehozhatók az egyes horizontális Felskálázási kulcsok listájával, vagy a kiépíthető **kulcsok értékének tartománya**alapján.
 
-### <a name="list-shard-maps"></a>Szilánktérképek listázása
+### <a name="list-shard-maps"></a>Szegmens térképek listázása
 
-**A szegmensek** **shardlets-t tartalmaznak,** és a szegmensek shards leképezését egy shard térkép tartja karban. A **lista szegmensleképezés** egy társítás a shardlets azonosító egyes kulcsértékek és a szilánkokként szolgáló adatbázisok közötti társítás.  **A listaleképezések** explicitek, és különböző kulcsértékek et lehet leképezni ugyanahhoz az adatbázishoz. Például az 1-es kulcsérték leképezi az A adatbázist, a 3-as és a 6-os kulcsértékek pedig a B adatbázist.
+A szegmensek **shardletek** **tartalmaznak,** és a shardletek a szegmensekre való hozzárendelését egy szegmenses Térkép tartja karban. A szegmensek **listájának leképezése** a shardletek és a szegmensként szolgáló adatbázisok azonosítására szolgáló egyedi kulcs értékeinek társítása.  A **lista-hozzárendelések** explicitek, és a különböző kulcs típusú értékeket ugyanahhoz az adatbázishoz lehet hozzárendelni. Például a Key Value 1 az A adatbázisra, A 3. és a 6. kulcs pedig a B adatbázisra mutat.
 
-| Kulcs | Shard helye |
+| Kulcs | Szegmens helye |
 | --- | --- |
 | 1 |Database_A |
 | 3 |Database_B |
@@ -77,37 +77,37 @@ A szegmenstérképek az **egyes skálázási kulcsértékek listáival,** illetv
 | 6 |Database_B |
 | ... |... |
 
-### <a name="range-shard-maps"></a>Tartományszilánk-térképek
+### <a name="range-shard-maps"></a>Tartományhoz tartozó szegmens térképek
 
-A **tartomány shard térképen**a kulcstartományt egy **[Alacsony érték, Magas érték)** pár írja le, ahol az *alacsony érték* a tartomány minimális kulcsa, a *Magas érték* pedig az első érték magasabb, mint a tartomány.
+A **tartományon belüli szegmensek leképezésében**a kulcs tartományát egy pár **[alacsony érték, magas érték)** jellemzi, ahol az *alacsony érték* a tartomány minimális kulcsa, a *magas érték* pedig az első érték, amely a tartománynál nagyobb.
 
-A **[0, 100)** például minden 0-nál nagyobb vagy annál kisebb és 100-nál kisebb egész szám. Ne feledje, hogy több tartomány is ugyanarra az adatbázisra mutathat, és a különálló tartományok támogatottak (például [100 200) és [400 600) mindkettő a C adatbázisra mutat a következő példában.)
+Például a **[0, 100)** az összes olyan egész számot tartalmazza, amely nagyobb vagy egyenlő, mint 0, és kisebb, mint 100. Vegye figyelembe, hogy több tartomány ugyanarra az adatbázisra mutathat, és a különálló tartományok (például a [100 200) és a [400 600) egyaránt a C adatbázisra mutatnak a következő példában.)
 
-| Kulcs | Shard helye |
+| Kulcs | Szegmens helye |
 | --- | --- |
-| [1,50) |Database_A |
-| [50,100) |Database_B |
-| [100,200) |Database_C |
-| [400,600) |Database_C |
+| [1, 50) |Database_A |
+| [50 100) |Database_B |
+| [100 200) |Database_C |
+| [400 600) |Database_C |
 | ... |... |
 
-A fenti táblák mindegyike egy **fogalmi** példa egy ShardMap-objektumra. Minden sor egy egyszerűsített példa egy egyedi **PointMapping** (a lista shard térkép) vagy **RangeMapping** (a tartomány shard térkép) objektum.
+A fent látható táblák mindegyike egy **ShardMap** objektum fogalmi példája. Minden sor egy egyszerűsített példa az egyes **PointMapping** (a szegmensek felsorolása) vagy a **RangeMapping** (tartományhoz tartozó felosztási leképezés) objektumra.
 
 ## <a name="shard-map-manager"></a>Szilánkleképezés-kezelő
 
-Az ügyfélkönyvtárban a shard map manager shard térképek gyűjteménye. A **ShardMapManager-példány** által kezelt adatok három helyen tárolódnak:
+Az ügyféloldali függvénytárban a szegmens Térkép-kezelő a szegmens térképek gyűjteménye. A **ShardMapManager** -példány által kezelt adat három helyen tart:
 
-1. **Globális shard térkép (GSM)**: Meg kell adnia egy adatbázist, amely az összes shard leképezések és leképezések tárházaként szolgál. Az adatok kezeléséhez automatikusan létrejönnek speciális táblák és tárolt eljárások. Ez általában egy kis adatbázis, és enyhén elérhető, és nem használható az alkalmazás más igényeinek. A táblák egy speciális sémában, **a __ShardManagement.**
-2. **Helyi shard térkép (LSM)**: Minden adatbázis, amely a shard határozza meg, hogy több kis táblák és speciális tárolt eljárások, amelyek tartalmazzák és kezelik a szegmensre jellemző szegmenstérkép-információkat. Ez az információ felesleges a GSM-ben lévő információkkal, és lehetővé teszi az alkalmazás számára, hogy érvényesítse a gyorsítótárazott shard térképadatokat anélkül, hogy bármilyen terhelést helyezne el a GSM-en; az alkalmazás az LSM segítségével határozza meg, hogy a gyorsítótárazott leképezés érvényes-e még. Az egyes szegmensek LSM-jének megfelelő táblák is a __ShardManagement sémában **találhatók.**
-3. **Alkalmazás-gyorsítótár:** A **ShardMapManager** objektumot elérő minden alkalmazáspéldány a leképezések helyi memórián belüli gyorsítótárát tartja fenn. A közelmúltban lekért útválasztási információkat tárolja.
+1. **Globális szegmenses Térkép (GSM)**: megadhat egy adatbázist, amely az összes szegmensének térképéhez és leképezéséhez tartozó tárházként szolgál. A speciális táblák és tárolt eljárások automatikusan létrejönnek az adatok kezeléséhez. Ez általában egy kisméretű adatbázis, és nem használható az alkalmazás más igényeihez. A táblák egy **__ShardManagement**nevű speciális sémában találhatók.
+2. **Helyi szegmenses Térkép (LSM)**: minden olyan adatbázis, amelyet szegmensként határoz meg, úgy módosul, hogy több kisméretű táblázatot és speciális tárolt eljárásokat tartalmazzon, amelyek az adott szegmensre vonatkozó, a szegmensekre vonatkozó térképi információkat tartalmaznak és felügyelnek. Ezek az információk redundánsak a GSM-vel kapcsolatos információkkal, és lehetővé teszik az alkalmazás számára a gyorsítótárazott szegmensek leképezési adatainak érvényesítését anélkül, hogy terhelést kellene elhelyezni a GSM-ben. az alkalmazás a LSM használatával határozza meg, hogy a gyorsítótárazott hozzárendelések továbbra is érvényesek-e. Az egyes szegmensek LSM megfelelő táblázatok a séma **__ShardManagement**is.
+3. **Alkalmazás-gyorsítótár**: a **ShardMapManager** -objektumhoz hozzáférő egyes alkalmazás-példányok a leképezések helyi memóriában tárolt gyorsítótárát kezelik. A nemrég lekért útválasztási adatokat tárolja.
 
-## <a name="constructing-a-shardmapmanager"></a>ShardMapManager összeállítása
+## <a name="constructing-a-shardmapmanager"></a>ShardMapManager építése
 
-A **ShardMapManager** objektum gyári[(Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)) minta felhasználásával készült. A **ShardMapManagerFactory.GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) metódus a hitelesítő adatokat (beleértve a GSM-et tartalmazó kiszolgálónevet és adatbázisnevet) **ConnectionString** formájában veszi fel, és egy **ShardMapManager**példányt ad vissza.  
+A **ShardMapManager** -objektumok gyári ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)) minta használatával készültek. A **ShardMapManagerFactory. GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) metódus a hitelesítő adatokat (beleértve a GSM-t tároló kiszolgáló nevét és az adatbázis nevét) **, és egy** **ShardMapManager**egy példányát adja vissza.  
 
-**Kérjük, vegye figyelembe:** A **ShardMapManager** kell példányosítást csak egyszer egy alkalmazás tartományban, az alkalmazás inicializálási kódját. A ShardMapManager további példányainak létrehozása ugyanabban az alkalmazástartományban az alkalmazás megnövekedett memóriáját és processzorkihasználtságát eredményezi. A **ShardMapManager** tetszőleges számú shard leképezést tartalmazhat. Bár egyetlen shard térkép elegendő lehet számos alkalmazás, vannak esetek, amikor különböző adatbáziskészletek különböző séma vagy egyedi célokra használják; ezekben az esetekben több shard térképek előnyösebb lehet.
+Vegye **figyelembe:** Az **ShardMapManager** csak egyszer kell példányként létrehozni az alkalmazások inicializálási kódjában. Az ShardMapManager további példányainak létrehozása ugyanabban az alkalmazás-tartományban az alkalmazás megnövekedett memóriáját és CPU-kihasználtságát eredményezi. Egy **ShardMapManager** tetszőleges számú szegmenses térképet tartalmazhat. Habár számos alkalmazás esetében elegendő lehet egy szegmenses Térkép, előfordulhat, hogy a különböző adatbázisok különböző készletei eltérő sémához vagy egyedi célokra használatosak. Ezekben az esetekben előfordulhat, hogy több szegmens Térkép is előnyösebb.
 
-Ebben a kódban egy alkalmazás megpróbál megnyitni egy meglévő **ShardMapManager-t** a TryGetSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) metódussal. Ha a globális **ShardMapManager** (GSM) képviselő objektumok még nem léteznek az adatbázison belül, az ügyfélkódtár a CreateSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.createsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) metódussal hozza létre őket.
+Ebben a kódban az alkalmazás megpróbál megnyitni egy meglévő **ShardMapManager** a TryGetSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.trygetsqlshardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) metódussal). Ha a globális **ShardMapManager** (GSM) jelképező objektumok még nem léteznek az adatbázisban, az ügyféloldali kódtár a CreateSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.createsqlshardmapmanager), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) metódussal hozza létre őket.
 
 ```Java
 // Try to get a reference to the Shard Map Manager in the shardMapManager database.
@@ -153,11 +153,11 @@ else
 }
 ```
 
-A .NET verzió, a PowerShell segítségével hozzon létre egy új Shard Map Manager. Egy példa [itt](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)érhető el .
+A .NET verzióban a PowerShell használatával hozhat létre új szegmenses Térkép-kezelőt. [Itt](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)egy példa érhető el.
 
-## <a name="get-a-rangeshardmap-or-listshardmap"></a>RangeShardMap vagy ListShardMap beszerezni
+## <a name="get-a-rangeshardmap-or-listshardmap"></a>RangeShardMap vagy ListShardMap beszerzése
 
-Shard map manager létrehozása után a RangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) vagy a ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) a TryGetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), a TryGetListShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) vagy a GetShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) metódushasználatával szerezhető be.
+A szegmensek közötti Térkép-kezelő létrehozása után a[RangeShardMap (](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap)[Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap) [, .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) [),](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)a TryGetListShardMap ( [Java, .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1) [),](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)illetve a GetShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap)[, .net](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap) [) metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)használatával szerezheti be[a következőt](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap):.
 
 ```Java
 // Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
@@ -210,62 +210,62 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 }
 ```
 
-### <a name="shard-map-administration-credentials"></a>Shard térkép felügyeleti hitelesítő adatok
+### <a name="shard-map-administration-credentials"></a>A szegmens Térkép felügyeleti hitelesítő adatai
 
-A szegmenstérképeket felügyelő és kezelő alkalmazások eltérnek azoktól, amelyek a shard térképeket használják a kapcsolatok irányításához.
+A szegmens térképek felügyeletére és kezelésére szolgáló alkalmazások különböznek azoktól, amelyek a szegmens térképeket használják a kapcsolatok irányításához.
 
-Shard leképezések felügyeletéhez (hozzáadása vagy módosítása szilánkok, shard térképek, shard leképezések, stb) példányosítania kell a **ShardMapManager** **hitelesítő adatokhasználatával, amelyek olvasási/írási jogosultsággal mind a GSM-adatbázis és minden adatbázis, amely shard szolgál.** A hitelesítő adatoknak lehetővé kell tenniük a GSM és az LSM tábláira vonatkozó írásokat, mivel a szegmenstérkép-adatok at beírják vagy módosítják, valamint lsm-táblákat kell létrehozni az új szegmenseken.  
+A szegmenses térképek felügyeletéhez (szegmensek, szegmens térképek, szegmens leképezések stb.) a **ShardMapManager** példányát olyan hitelesítő adatok használatával kell létrehoznia, **amelyek olvasási/írási jogosultsággal rendelkeznek mind a GSM-adatbázis,** mind pedig a szegmensként szolgáló minden adatbázis esetében. A hitelesítő adatoknak lehetővé kell tenniük, hogy az írásokat a GSM-és LSM lévő táblákon is meg lehessen adni vagy módosítani, valamint a LSM-táblákat az új szegmenseken.  
 
-Lásd: [A rugalmas adatbázis-ügyfélkódtár eléréséhez használt hitelesítő adatok.](sql-database-elastic-scale-manage-credentials.md)
+Tekintse [meg az Elastic Database ügyféloldali függvénytár eléréséhez használt hitelesítő adatokat](sql-database-elastic-scale-manage-credentials.md).
 
 ### <a name="only-metadata-affected"></a>Csak az érintett metaadatok
 
-A **ShardMapManager-adatok** feltöltéséhez vagy módosításához használt módszerek nem módosítják a szegmensekben tárolt felhasználói adatokat. Például a **CreateShard**, **DeleteShard**, **UpdateMapping**stb. Nem távolítják el, nem adják hozzá vagy módosítják a szegmensekben található felhasználói adatokat. Ehelyett ezeket a módszereket úgy tervezték, hogy a tényleges adatbázisok létrehozásához vagy eltávolításához végzett külön műveletekkel együtt használhatók, vagy amelyek sorokat helyeznek át az egyik szegmensből a másikba a szilánkos környezet egyensúlyának helyreállításához.  (A rugalmas adatbázis-eszközökben található **felosztásos egyesítési** eszköz ezeket az API-kat használja a szegmensek közötti tényleges adatmozgás vezénylésével együtt.) Lásd: [Méretezés a Rugalmas adatbázis felosztásos egyesítése eszközzel.](sql-database-elastic-scale-overview-split-and-merge.md)
+A **ShardMapManager** adatok feltöltéséhez vagy módosításához használt metódusok nem módosítják magukat a szegmensekben tárolt felhasználói adatokat. Például a **CreateShard**, a **DeleteShard**, a **UpdateMapping**stb. hasonló metódusok csak a szilánkokra vonatkozó térképi metaadatokat érintik. Nem távolítják el, nem vehetik fel vagy nem változtathatják meg a szegmensekben található felhasználói adategységeket. Ehelyett ezeket a metódusokat úgy tervezték, hogy a tényleges adatbázisok létrehozásához vagy eltávolításához, illetve az egyik szegmensből a másikra történő áthelyezést végző különálló műveletekkel legyenek felhasználva.  (A rugalmas adatbázis-eszközökhöz mellékelt **felosztott egyesítési** eszköz ezeket az API-kat használja, valamint a szegmensek közötti tényleges adatáthelyezést.) Lásd: [Méretezés a Elastic Database felosztási-egyesítési eszköz használatával](sql-database-elastic-scale-overview-split-and-merge.md).
 
 ## <a name="data-dependent-routing"></a>Adatfüggő útválasztás
 
-A shard map manager olyan alkalmazásokban használatos, amelyek az alkalmazásspecifikus adatműveletek végrehajtásához adatbázis-kapcsolatokat igényelnek. Ezeket a kapcsolatokat a megfelelő adatbázishoz kell társosítani. Ezt **adatfüggő útválasztásnak nevezzük.** Ezekhez az alkalmazásokhoz példányosítani egy shard map manager objektumot a gyárból olyan hitelesítő adatokhasználatával, amelyek csak olvasható hozzáféréssel rendelkeznek a GSM-adatbázisban. A későbbi kapcsolatok egyéni kérelmei a megfelelő shard-adatbázishoz való csatlakozáshoz szükséges hitelesítő adatokat szolgáltatnak.
+A szegmenses Térkép kezelője olyan alkalmazásokban használatos, amelyekhez adatbázis-kapcsolatokra van szükség az alkalmazásspecifikus adatműveletek végrehajtásához. Ezeket a kapcsolatokat a megfelelő adatbázishoz kell társítani. Ez az **adatkezelési útvonal**. Ezeknek az alkalmazásoknak a használatával a gyári kiosztású Térkép-kezelő objektumot egy olyan hitelesítő adatokkal hozza létre, amelyek csak olvasási hozzáféréssel rendelkeznek a GSM-adatbázishoz. A későbbi kapcsolatokra vonatkozó egyedi kérések biztosítják a megfelelő szegmens adatbázishoz való csatlakozáshoz szükséges hitelesítő adatokat.
 
-Vegye figyelembe, hogy ezek az alkalmazások (a **ShardMapManager** írásvédett hitelesítő adatokkal megnyitott) nem módosíthatják a leképezéseket vagy a hozzárendeléseket. Ezekre az igényekre, hozzon létre rendszergazdai adott alkalmazások vagy PowerShell-parancsfájlok, amelyek magasabb szintű jogosultsággal rendelkező hitelesítő adatokat, korábban tárgyalt. Lásd: [A rugalmas adatbázis-ügyfélkódtár eléréséhez használt hitelesítő adatok.](sql-database-elastic-scale-manage-credentials.md)
+Vegye figyelembe, hogy ezek az alkalmazások (a csak olvasható hitelesítő adatokkal megnyitott **ShardMapManager** használatával) nem módosíthatják a térképeket és a leképezéseket. Ezeknek az igényeknek megfelelően hozzon létre olyan felügyeleti specifikus alkalmazásokat vagy PowerShell-parancsfájlokat, amelyek a korábban tárgyalt magasabb szintű jogosultságú hitelesítő adatokat biztosítanak. Tekintse [meg az Elastic Database ügyféloldali függvénytár eléréséhez használt hitelesítő adatokat](sql-database-elastic-scale-manage-credentials.md).
 
-További információ: [Data dependent routing](sql-database-elastic-scale-data-dependent-routing.md).
+További információ: [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md).
 
-## <a name="modifying-a-shard-map"></a>Shard térkép módosítása
+## <a name="modifying-a-shard-map"></a>Szegmens Térkép módosítása
 
-A shard térkép különböző módokon módosítható. Az alábbi módszerek mindegyike módosítja a metaadatokat, amelyek leírják a szegmenseket és azok leképezését, de fizikailag nem módosítják az adatokat a szegmenseken belül, és nem hoznak létre vagy törölnek a tényleges adatbázisokat.  Az alábbiakban ismertetett shard térképen végrehajtott műveletek egy részét össze kell hangolni olyan felügyeleti műveletekkel, amelyek fizikailag áthelyezik az adatokat, vagy amelyek szegmensként szolgáló adatbázisokat adnak hozzá és távolítanak el.
+A szegmenses Térkép többféleképpen módosítható. Az alábbi módszerek mindegyike módosítja a szegmenseket és a hozzájuk tartozó hozzárendeléseket leíró metaadatokat, de nem módosítja fizikailag a szegmensekben lévő adatokat, és nem hozza létre vagy törli a tényleges adatbázisokat.  Előfordulhat, hogy az alább ismertetett szegmens-Térkép egyes műveleteit össze kell hangolni olyan rendszergazdai műveletekkel, amelyek fizikailag áthelyezik az adatok átvitelét, vagy amelyek a szegmensként szolgáló adatbázisok hozzáadására és eltávolítására szolgálnak.
 
-Ezek a módszerek együtt működnek, mint a szilánkos adatbázis-környezetben az adatok általános eloszlásának módosításához rendelkezésre álló építőelemek.  
+Ezek a módszerek együttesen működnek, mint a felosztott adatbázis-környezetekben tárolt adatmennyiségek teljes eloszlásának módosítására szolgáló építőelemek.  
 
-* Szegmensek hozzáadásához vagy eltávolításához: használja a **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) és **deleteShard** ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)) a shardmap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap)) osztály.
+* Szegmensek hozzáadása vagy eltávolítása: használja a shardmap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap) [, .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap)) osztály **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) és **DeleteShard** [(Java,](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard) [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)).
   
-    A célszegmenst képviselő kiszolgálónak és adatbázisnak már léteznie kell ezeknek a műveleteknek a végrehajtásához. Ezek a módszerek nincsenek hatással magukra az adatbázisokra, csak a shard térkép metaadataira.
-* A szegmensekhez leképezett pontok vagy tartományok létrehozásához vagy eltávolításához használja a ListShardMap[Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping)( [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)Java[,](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping) [.NET](https://docs.microsoft.com/previous-versions/azure/dn841993(v=azure.100))) (ListShardMap ( Java , .NET ) ClassShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) és **a** ListShardMap ( Java , [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) csoport CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping), .NET ) osztályának **CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) osztályát. **DeleteMapping**
+    Ezen műveletek végrehajtásához már léteznie kell a célként megadott szegmenst jelképező kiszolgálónak és adatbázisnak. Ezek a módszerek nincsenek hatással az adatbázisokra, csak a szegmensek közötti térképen található metaadatokon.
+* A szegmensekre leképezett pontok vagy tartományok létrehozásához vagy eltávolításához használja a **CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/previous-versions/azure/dn841993(v=azure.100))), **DeleteMapping** a DeleteMapping[(Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping) [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) és a[ListShardMap (Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap) [,](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1) [.net)](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)osztályt **, valamint a (Java** [, .net)](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)osztály[RangeShardMapping (Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)[, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping)) osztályát.
   
-    Számos különböző pont vagy tartomány leképezhető ugyanahhoz a szegmenshez. Ezek a módszerek csak a metaadatokat érintik – nem befolyásolják azokat az adatokat, amelyek már megtalálhatók a szegmensekben. Ha az adatokat el kell távolítani az adatbázisból, hogy konzisztensek legyenek a **DeleteMapping** műveletekkel, ezeket a műveleteket külön kell végrehajtani, de ezekkel a módszerekkel együtt.  
-* Ha a meglévő tartományokat két részre szeretné osztani, vagy a szomszédos tartományokat egybe szeretné egyesíteni: használja a **SplitMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping), [.NET](https://msdn.microsoft.com/library/azure/dn824205.aspx)) és **a MergeMappings** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings), [.NET](https://msdn.microsoft.com/library/azure/dn824201.aspx)) mezőt.  
+    Számos különböző pont vagy tartomány képezhető le ugyanahhoz a szegmenshez. Ezek a módszerek csak a metaadatokat érintik – nem érintik azokat az adatokat, amelyek esetleg már szerepelnek a szegmensekben. Ha a **DeleteMapping** -műveletekkel való konzisztencia érdekében el kell távolítani az adatait az adatbázisból, ezeket a műveleteket külön kell végrehajtani, de a módszerek használatával együtt.  
+* A meglévő tartományok két értékre való felosztásához vagy a szomszédos tartományok egyesítéséhez: használja a **SplitMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping), [.net](https://msdn.microsoft.com/library/azure/dn824205.aspx)) és a **MergeMappings** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings), [.net](https://msdn.microsoft.com/library/azure/dn824201.aspx)).  
   
-    Ne feledje, hogy a felosztási és egyesítési műveletek **nem módosítják azt a szegmenst, amelyre a kulcsértékek le vannak képezve.** A felosztás egy meglévő tartományt két részre bont, de mindkettőt ugyanahhoz a szegmenshez rendeli. Az egyesítés két szomszédos tartományon működik, amelyek már ugyanahhoz a szegmenshez vannak leképezve, és egyetlen tartományba egyesítik őket.  A pontok vagy tartományok áthelyezése a szegmensek között kell koordinálni **az UpdateMapping** használatával együtt a tényleges adatmozgás.  Használhatja a **Split/Merge** szolgáltatás, amely része a rugalmas adatbázis-eszközök a shard térkép változások koordinálása az adatok mozgatása, ha mozgásra van szükség.
-* Az egyes pontok vagy tartományok különböző szegmensekhez való újraleképezéséhez (vagy áthelyezéséhez) használja az **UpdateMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.updatemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) használatát.  
+    Vegye figyelembe, hogy a felosztási és egyesítési műveletek **nem változtatják meg azt a szegmenst, amelybe a fő értékek le vannak képezve**. A felosztott két részre bontja a meglévő tartományt, de mindkettőt ugyanahhoz a szegmenshez leképezve hagyja. Az egyesítés két szomszédos tartományon működik, amelyek már ugyanahhoz a szegmenshez vannak rendelve, coalescing őket egyetlen tartományba.  A pontok vagy tartományok egymás közötti áthelyezését össze kell hangolni a **UpdateMapping** és a tényleges adatáthelyezés együttes használatával.  A rugalmas adatbázis-eszközök részét képező **felosztási/egyesítési** szolgáltatással összehangolhatja a szegmensek közötti Térkép változásait az adatáthelyezéssel, ha a mozgásra van szükség.
+* Az egyes pontok vagy tartományok ismételt leképezése (vagy áthelyezése) a különböző szegmensekre: a **UpdateMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.updatemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) használata.  
   
-    Mivel az adatokat át kell helyezni az egyik szegmensből a másikba, hogy konzisztensek legyenek **az UpdateMapping-műveletekkel,** ezt a mozgást külön kell végrehajtani, de ezekkel a módszerekkel együtt.
+    Mivel előfordulhat, hogy az adatoknak az egyik szegmensről a másikra kell áthelyezniük, hogy konzisztensek legyenek a **UpdateMapping** -műveletekkel, ezt a módszert külön kell végrehajtani, de az ilyen módszerek használatával együtt.
 
-* A leképezések online és offline használatához: használja a **MarkMappingOffline** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingoffline), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) és a **MarkMappingOnline** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingonline), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) hozzárendelések online állapotát.
+* A leképezések online és offline állapotba helyezéséhez használja a **MarkMappingOffline** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingoffline), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) és a **MarkMappingOnline** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingonline), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) lehetőséget a leképezés online állapotának szabályozásához.
   
-    A szegmensleképezések bizonyos műveletei csak akkor engedélyezettek, ha a leképezés "offline" állapotban van, beleértve az **UpdateMapping** és **a DeleteMapping állapotot.** Ha egy leképezés offline állapotban van, a leképezésben szereplő kulcson alapuló adatfüggő kérelem hibát ad vissza. Emellett, amikor egy tartomány először offline állapotba kerül, az érintett szegmenshez való összes kapcsolat automatikusan leáll, hogy megakadályozza a tartományok ellen irányuló lekérdezések inkonzisztens vagy hiányos eredményeit.
+    A szegmenses hozzárendelések bizonyos műveletei csak akkor engedélyezettek, ha a leképezés "offline" állapotban van, beleértve a **UpdateMapping** és a **DeleteMapping**. Ha a leképezés offline állapotú, a leképezésben szereplő egyik kulcson alapuló, Adatfüggő kérelem hibát ad vissza. Emellett, ha a tartomány először offline állapotba kerül, a rendszer automatikusan lekéri az érintett szegmens összes kapcsolatát, hogy megakadályozza az inkonzisztens vagy hiányos eredményeket a módosult tartományokra irányított lekérdezéseknél.
 
-A leképezések nem módosítható objektumok a .Net objektumban.  A fenti összes módszer, hogy a változás leképezések is érvényteleníti a rájuk mutató hivatkozásokat a kódot. A leképezés állapotát módosító műveletek sorozatainak könnyebb végrehajtása érdekében a leképezést módosító összes módszer új leképezési hivatkozást ad vissza, így a műveletek láncolhatók. Ha például törölni szeretne egy meglévő leképezést a shardmap sm-ben, amely a 25-ös kulcsot tartalmazza, a következőket hajthatja végre:
+A leképezések nem változtatható objektumok a .net-ben.  Az összes fenti módszer, amely módosítja a leképezéseket, érvényteleníti a kódban lévő rájuk mutató hivatkozásokat is. Annak érdekében, hogy könnyebb legyen ellátni a leképezés állapotát megváltoztató műveletek folyamatait, a leképezést módosító összes módszer új leképezési referenciát ad vissza, így a műveletek láncba helyezhetők. Ha például törölni szeretne egy meglévő leképezést a shardmap SM-ben, amely a 25. kulcsot tartalmazza, a következőket végezheti el:
 
 ```
     sm.DeleteMapping(sm.MarkMappingOffline(sm.GetMappingForKey(25)));
 ```
 
-## <a name="adding-a-shard"></a>Shard hozzáadása
+## <a name="adding-a-shard"></a>Szegmens hozzáadása
 
-Az alkalmazásoknak gyakran új szegmenseket kell hozzáadniuk az új kulcsoktól vagy kulcstartományoktól elvárt adatok kezeléséhez, egy már létező szegmensleképezéshez. Például egy bérlői azonosító által skálázott alkalmazás előfordulhat, hogy egy új shard egy új bérlő, vagy a havonta skálázott adatok szükség lehet egy új shard kiépített kezdete előtt minden új hónap.
+Az alkalmazásoknak gyakran új szegmenseket kell felvenniük ahhoz, hogy kezelni tudják az új kulcsokból vagy a kulcsok tartományokból várt adatok kezelését. Előfordulhat például, hogy egy, a bérlői azonosító által áthelyezett alkalmazásnak új szegmenst kell kiépítenie, vagy a havonta felhasznált adatokat egy új, minden új hónap kezdete előtt létre kell hozni.
 
-Ha a kulcsértékek új tartománya még nem része egy meglévő leképezésnek, és nincs szükség adatáthelyezésre, egyszerűen hozzáadhatja az új szegmenst, és társíthatja az új kulcsot vagy tartományt a szegmenshez. Az új szegmensek hozzáadásáról további információt az [Új szegmens hozzáadása (Adding a new shard) (Új szegmens hozzáadása) (Új szegmens hozzáadása) (Új szegmens hozzáadása) (Új szegmens hozzáadása) témakörben](sql-database-elastic-scale-add-a-shard.md)talál.
+Ha a kulcsfontosságú értékek új tartománya még nem része egy meglévő leképezésnek, és nincs szükség adatáthelyezésre, egyszerűen hozzáadhatja az új szegmenst, és az új kulcsot vagy tartományt hozzárendelheti a szegmenshez. Az új szegmensek hozzáadásával kapcsolatos részletekért lásd: [új szegmens hozzáadása](sql-database-elastic-scale-add-a-shard.md).
 
-Az adatáthelyezést igénylő forgatókönyvek esetében azonban a felosztásos egyesítési eszköz re van szükség a szegmensek közötti adatáthelyezés és a szükséges szegmenstérkép-frissítések együttes vezényléséhez. A felosztott egyesítési eszköz használatáról a [Felosztott egyesítés áttekintése című témakörben olvashat részletesen.](sql-database-elastic-scale-overview-split-and-merge.md)
+Az adatáthelyezést igénylő forgatókönyvek esetében azonban a felosztott egyesítés eszközre van szükség a szegmensek közötti adatáthelyezés előkészítéséhez a szükséges szegmenses Térkép-frissítésekkel együtt. A felosztás-egyesítés eszköz használatáról további részleteket a [Split-Merge áttekintése](sql-database-elastic-scale-overview-split-and-merge.md) című témakörben talál.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

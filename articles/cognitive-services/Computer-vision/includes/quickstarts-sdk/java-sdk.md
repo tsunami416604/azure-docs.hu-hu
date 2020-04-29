@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Computer Vision ügyfélkönyvtár Java-hoz'
-description: Ebben a rövid útmutatóban ismerkedje meg a Computer Vision java-ügyfélkódtárral.
+title: 'Gyors útmutató: Computer Vision a Javához készült ügyféloldali kódtár'
+description: Ebben a rövid útmutatóban megismerheti a Javához készült Computer Vision ügyféloldali kódtárat.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,42 +10,42 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.author: pafarley
 ms.openlocfilehash: dbe986145a223f1958f1945abfa189de90952f4a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80272812"
 ---
 <a name="HOLTop"></a>
 
-[Referenciadokumentáció](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [-műtermék (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentációs](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | anyagok[(Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [mintái](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
-* A [Gradle build eszköz](https://gradle.org/install/)vagy egy másik függőségi menedzser.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* A [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
+* A [Gradle Build eszköz](https://gradle.org/install/)vagy egy másik függőségi kezelő.
 
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Computer Vision Azure-erőforrás létrehozása
 
-Az Azure Cognitive Servicest olyan Azure-erőforrások képviselik, amelyekre előfizet. Hozzon létre egy erőforrást a Computer Vision az [Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) a helyi gépen. További lehetőségek:
+Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást Computer Vision a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. További lehetőségek:
 
-* Kap egy [próbakulcs](https://azure.microsoft.com/try/cognitive-services/#decision) érvényes részére hét napok részére szabad. A regisztráció után elérhető lesz az [Azure webhelyén.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
-* Tekintse meg az erőforrást az [Azure Portalon.](https://portal.azure.com/)
+* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
-Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs- és szolgáltatásvégpont-karakterlánchoz, amelyet elnevezett, illetve `COMPUTER_VISION_ENDPOINT`a.
+Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
 
 ### <a name="create-a-new-gradle-project"></a>Új Gradle-projekt létrehozása
 
-Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg azt. 
+Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `gradle init` parancsot a munkakönyvtárából. Ez a parancs alapvető buildfájlokat hoz létre a Gradle számára, beleértve a *build.gradle.kts fájlt,* amely et futásidőben az alkalmazás létrehozásához és konfigurálásához használják.
+Futtassa a `gradle init` parancsot a munkakönyvtárból. Ez a parancs alapvető Build-fájlokat hoz létre a Gradle számára, beleértve a *Build. Gradle. KTS*fájlt, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához.
 
 ```console
 gradle init --type basic
@@ -53,7 +53,7 @@ gradle init --type basic
 
 Amikor a rendszer rákérdez a **DSL**kiválasztására, válassza a **Kotlin**lehetőséget.
 
-Keresse *meg a build.gradle.kts fájlt,* és nyissa meg a kívánt IDE-vel vagy szövegszerkesztővel. Ezután másolja a következő buildkonfiguráció. Ez a konfiguráció Java-alkalmazásként definiálja a projektet, amelynek belépési pontja a **ComputerVisionQuickstarts**osztály. Importálja a Computer Vision könyvtárat.
+Keresse meg a *Build. gradle. KTS* , és nyissa meg a kívánt ide-vagy szövegszerkesztővel. Ezután másolja a következő Build-konfigurációba. Ez a konfiguráció definiálja a projektet olyan Java-alkalmazásként, amelynek belépési pontja a **ComputerVisionQuickstarts**osztály. Importálja a Computer Vision könyvtárat.
 
 ```kotlin
 plugins {
@@ -68,23 +68,23 @@ repositories {
 }
 ```
 
-A munkakönyvtárból futtassa a következő parancsot a projekt forrásmappájának létrehozásához:
+A munkakönyvtárból futtassa a következő parancsot egy projekt forrás mappájának létrehozásához:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Nyissa meg az új mappát, és hozzon létre egy *ComputerVisionQuickstarts.java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy `import` IDE-ben, és adja hozzá a következő állításokat:
+Navigáljon az új mappára, és hozzon létre egy *ComputerVisionQuickstarts. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja `import` hozzá a következő utasításokat:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
 
-Ezután adjon hozzá egy osztálydefiníciót a **ComputerVisionQuickstarts eszközhez.**
+Ezután adja hozzá a **ComputerVisionQuickstarts**osztály definícióját.
 
-### <a name="install-the-client-library"></a>Az ügyféltár telepítése
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Ez a rövid útmutató a Gradle-függőségkezelőt használja. Az ügyfélkönyvtárat és a többi függőségi kezelő adatait a [Maven központi adattárban](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)találja.
+Ez a rövid útmutató a Gradle függőség-kezelőt használja. Megtalálhatja az ügyféloldali függvénytárat és az egyéb függőségi kezelők információit a [Maven központi adattárában](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
 
-A projekt *build.gradle.kts* fájljában adja meg függőségként a Computer Vision ügyfélkönyvtárat.
+A projekt *Build. gradle. KTS* fájljában adja meg a Computer Vision ügyféloldali függvénytárat függőségként.
 
 ```kotlin
 dependencies {
@@ -94,150 +94,150 @@ dependencies {
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és interfészek kezelik a Computer Vision Java SDK néhány főbb jellemzőjét.
+A következő osztályok és felületek a Computer Vision Java SDK főbb funkcióit kezelik.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-| [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Ez az osztály szükséges az összes Computer Vision funkcióhoz. Az előfizetési adatokkal azonnal létrehozhatja azt, és más osztályok példányainak létrehozásához használhatja őket.|
-|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Ez az osztály az ügyfélobjektumból származik, és közvetlenül kezeli az összes képműveletet, például a képelemzést, a szövegfelismerést és a miniatűrök létrehozását.|
-|[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Ez a felsorítás határozza meg a különböző típusú képelemzés, hogy lehet tenni egy szabványos Elemzés művelet. A VisualFeatureTypes értékek et az igényektől függően adhatja meg. |
+| [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
+|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Ez az osztály az ügyfél objektumból származik, és közvetlenül kezeli az összes képműveletet, például a képek elemzését, a szöveg észlelését és a miniatűr létrehozását.|
+|[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Ez az enumerálás a képelemzés különböző típusait határozza meg, amelyeket szabványos elemzési műveletekben lehet elvégezni. Az igényeinek megfelelően adja meg a VisualFeatureTypes-értékek készletét. |
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek bemutatják, hogyan kell elvégezni a következő feladatokat a Computer Vision java ügyfélkódtárban:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Javához készült Computer Vision ügyféloldali kódtár használatával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Kép elemzése](#analyze-an-image)
-* [Nyomtatott és kézzel írt szöveg elolvasása](#read-printed-and-handwritten-text)
+* [Nyomtatott és kézzel írt szöveg olvasása](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató feltételezi, hogy létrehozott egy környezeti `COMPUTER_VISION_SUBSCRIPTION_KEY` [változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a Computer Vision kulcshoz, amelynek neve .
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a ( `COMPUTER_VISION_SUBSCRIPTION_KEY`z) nevű Computer Vision kulcshoz.
 
-A következő kód `main` hozzáad egy metódust az osztályhoz, és változókat hoz létre az erőforrás Azure-végpontjának és kulcsának. Meg kell adnia a saját végpont-karakterláncát, amelyet az Azure Portal **Áttekintés** szakaszának ellenőrzésével találhat meg. 
+A következő kód hozzáad egy `main` metódust az osztályhoz, és változókat hoz létre az erőforrás Azure-végpontja és kulcsa számára. Meg kell adnia a saját végponti karakterláncot, amelyet a Azure Portal **Áttekintés** szakaszának ellenőrzésével talál. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_mainvars)]
 
-Ezután adja hozzá a következő kódot egy [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) objektum létrehozásához, és adja át más metódus(ok)nak, amelyet később definiál.
+Ezután adja hozzá a következő kódot egy [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) objektum létrehozásához, és továbbítsa azt más metódus (ok) ra, amelyet később meg fog határozni.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_client)]
 
 > [!NOTE]
-> Ha az alkalmazás elindítása után hozta létre a környezeti változót, be kell zárnia, majd újra meg kell nyitnia a változót futtató szerkesztőt, IDE-t vagy rendszerhéjat.
+> Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
 
 ## <a name="analyze-an-image"></a>Rendszerkép elemzése
 
-A következő kód egy `AnalyzeLocalImage`metódust határoz meg, amely az ügyfélobjektummal elemzi a helyi lemezképet, és kinyomtatja az eredményeket. A metódus szöveges leírást, kategorizálást, címkék listáját, észlelt arcokat, felnőtt tartalomjelzőket, főszíneket és képtípust ad vissza.
+A következő kód egy metódust határoz `AnalyzeLocalImage`meg, amely az ügyfél-objektumot használja egy helyi rendszerkép elemzéséhez és az eredmények kinyomtatásához. A metódus a szöveges leírást, a kategorizálást, a címkék listáját, az észlelt arcokat, a felnőtt tartalom jelzőit, a fő színeket és a képtípust adja vissza.
 
-### <a name="set-up-test-image"></a>Tesztkép beállítása
+### <a name="set-up-test-image"></a>Tesztelési rendszerkép beállítása
 
-Először hozzon létre egy **erőforrást /** mappát a projekt **src / main /** mappájában, és adjon hozzá egy képet, amelyet elemezni szeretne. Ezután adja hozzá a következő metódusdefiníciót a **ComputerVisionQuickstarts** osztályhoz. Ha szükséges, módosítsa a `pathToLocalImage` képfájlértékének megfelelőértéket. 
+Először hozzon létre egy **erőforrást/** mappát a projekt **src/Main/** mappájába, és adjon hozzá egy elemezni kívánt rendszerképet. Ezután adja hozzá a következő metódus-definíciót a **ComputerVisionQuickstarts** osztályhoz. Ha szükséges, módosítsa a értékét a `pathToLocalImage` képfájlnak megfelelő értékre. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
 > [!NOTE]
-> A távoli képeket az URL-cím használatával is elemezheti. Tekintse meg a mintakódot a [GitHubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) a távoli lemezképeket érintő forgatókönyvek.
+> A távoli rendszerképeket az URL-cím használatával is elemezheti. A távoli rendszerképeket érintő forgatókönyvek a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) találhatók.
 
-### <a name="specify-visual-features"></a>Vizuális szolgáltatások megadása
+### <a name="specify-visual-features"></a>Vizuális funkciók meghatározása
 
-Ezután adja meg, hogy mely vizuális funkciókat szeretné kivonni az elemzéssorán. A teljes listát a [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) enum című témakörben láthatja.
+Ezután adja meg, hogy mely vizuális funkciókat szeretné kibontani az elemzésbe. A teljes listát a [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) enumerálásban tekintheti meg.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>Elemzés
-Ez a módszer részletes eredményeket nyomtat a konzolra a képelemzés minden hatóköréhez. Azt javasoljuk, hogy vegye körül ezt a metódust hívás egy try/catch blokk. Az **analysisImageInStream** metódus egy **Olyan ImageAnalysis** objektumot ad vissza, amely az összes kinyert információt tartalmazza.
+Ez a metódus részletes eredményeket jelenít meg a konzolon a képelemzés egyes hatókörei esetében. Javasoljuk, hogy ezt a metódust a try/catch blokkban hívja meg. A **analyzeImageInStream** metódus egy **ImageAnalysis** objektumot ad vissza, amely az összes kinyert információt tartalmazza.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
 
-A következő szakaszok bemutatják, hogyan elemezze részletesen ezeket az információkat.
+Az alábbi részek azt mutatják be, hogyan elemezheti ezeket az információkat részletesen.
 
-### <a name="get-image-description"></a>Kép leírásának beszerezése
+### <a name="get-image-description"></a>Rendszerkép lekérése – Leírás
 
-A következő kód lekéri a képhez létrehozott feliratok listáját. További információt a Képek leírása című témakörben [talál.](../../concept-describing-images.md)
+A következő kód beolvassa a rendszerképhez létrehozott feliratok listáját. További információ: [képek leírása](../../concept-describing-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
 
-### <a name="get-image-category"></a>Képkategória beszereznie
+### <a name="get-image-category"></a>Rendszerkép beolvasása kategória
 
-A következő kód leteszi a kép észlelt kategóriáját. További információ: [Képek kategorizálása](../../concept-categorizing-images.md).
+A következő kód lekéri a rendszerkép észlelt kategóriáját. További információt a [képek kategorizálása](../../concept-categorizing-images.md)című témakörben talál.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
 
-### <a name="get-image-tags"></a>Képcímkék beszerezése
+### <a name="get-image-tags"></a>Képcímkék beolvasása
 
-A következő kód leveszi az észlelt címkék készletét a képen. További információt a Tartalomcímkék című [témakörben](../../concept-tagging-images.md)talál.
+A következő kód beolvassa az észlelt címkék készletét a képen. További információ: [tartalom címkék](../../concept-tagging-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
 ### <a name="detect-faces"></a>Arcfelismerés
 
-A következő kód a képen lévő észlelt arcokat adja vissza a téglalap koordinátáival, és kiválasztja az arcjellemzőket. További információ: [Face detection](../../concept-detecting-faces.md).
+A következő kód az észlelt arcokat adja vissza a képen a téglalap koordinátáival, és kijelöli a Face attribútumok elemet. További információ: [Arcfelismerés](../../concept-detecting-faces.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
-### <a name="detect-adult-racy-or-gory-content"></a>Felnőtt, pikáns vagy véres tartalom észlelése
+### <a name="detect-adult-racy-or-gory-content"></a>Felnőtt, zamatos vagy véres tartalom észlelése
 
-A következő kód kinyomtatja a felnőtt tartalom észlelt jelenlétét a képen. További információ: [Felnőtt, pikáns, véres tartalom](../../concept-detecting-adult-content.md).
+A következő kód kinyomtatja a felnőtt tartalom észlelt jelenlétét a képen. További információkért tekintse meg a [felnőtt, a zamatos és a véres tartalom](../../concept-detecting-adult-content.md)című témakört.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
 
-### <a name="get-image-color-scheme"></a>Képszínséma beszerezése
+### <a name="get-image-color-scheme"></a>Rendszerképek színsémájának beolvasása
 
-A következő kód kinyomtatja a kép észlelt színjellemzőit, például a domináns színeket és a kiemelőszínt. További információt a [Színsémák](../../concept-detecting-color-schemes.md)című témakörben talál.
+A következő kód az észlelt színattribútumokat nyomtatja ki a képen, például a domináns színeket és a kiejtés színét. További információ: [Színsémák](../../concept-detecting-color-schemes.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
 
-### <a name="get-domain-specific-content"></a>Tartományspecifikus tartalom beszereznie
+### <a name="get-domain-specific-content"></a>Tartományhoz tartozó tartalom beolvasása
 
-Computer Vision segítségével speciális modell további elemzést a képeken. További információt a Tartományspecifikus tartalom című [témakörben talál.](../../concept-detecting-domain-content.md) 
+A Computer Vision speciális modellt használhat a képek további elemzéséhez. További információ: [tartományra vonatkozó tartalom](../../concept-detecting-domain-content.md). 
 
-A következő kód elemzi a képen észlelt hírességek adatait.
+A következő kód az észlelt hírességek adatait elemzi a képen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
 
-A következő kód elemzi a lemezkép észlelt tájékozódási pontjainak adatait.
+A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
-### <a name="get-the-image-type"></a>A képtípus beszereznie
+### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő kód a kép&mdash;típusára vonatkozó információkat nyomtatja ki, függetlenül attól, hogy ClipArt-elemről vagy vonalrajzról van-e szó.
+A következő kód a képtípussal kapcsolatos információkat jeleníti meg,&mdash;legyen szó ClipArt vagy vonalas rajzolásról.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
-## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg elolvasása
+## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
 
-A Computer Vision képes olvasni a kép látható szövegét, és karakterfolyammá alakítani.
+A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba.
 
 > [!NOTE]
-> A távoli kép szövegét az URL-cím használatával is elolvashatja. Tekintse meg a mintakódot a [GitHubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) a távoli lemezképeket érintő forgatókönyvek.
+> Az URL-cím használatával egy távoli rendszerképben is olvashat szöveget. A távoli rendszerképeket érintő forgatókönyvek a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) találhatók.
 
-### <a name="call-the-recognize-api"></a>Hívja meg az Recognize API-t
+### <a name="call-the-recognize-api"></a>Az felismerő API meghívása
 
-Először a következő kódot használja az adott kép **recognizePrintedTextInStream** metódusának hívásához. Amikor hozzáadja ezt a kódot a projekthez, `localTextImagePath` le kell cserélnie az értéket a helyi lemezkép elérési útvonalára. 
+Először használja a következő kódot a **recognizePrintedTextInStream** metódus meghívásához az adott képhez. Ha hozzáadja ezt a kódot a projekthez, a értéket `localTextImagePath` a helyi rendszerkép elérési útjára kell cserélnie. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
-### <a name="print-recognize-results"></a>Nyomtatási eredmények felismerése
+### <a name="print-recognize-results"></a>Felismerési eredmények nyomtatása
 
-A következő kódblokk feldolgozza a visszaadott szöveget, és elemzi azt, hogy kinyomtassa az egyes sorok első szavát. Ezzel a kóddal gyorsan megismerheti az **OcrResult** példány szerkezetét.
+A következő kódrészlet dolgozza fel a visszaadott szöveget, és elemzi, hogy kinyomtassa az első szót az egyes sorokban. A kód segítségével gyorsan megismerheti egy **OcrResult** -példány struktúráját.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_print)]
 
-Végül zárja be a try/catch blokkot és a metódusdefiníciót.
+Végül zárjuk le a try/catch blokkot és a metódus definícióját.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Az alkalmazást a következő kkel hozhatja létre:
+Az alkalmazást az alábbiakkal hozhatja létre:
 
 ```console
 gradle build
 ```
 
-Futtassa az `gradle run` alkalmazást a következő paranccsal:
+Futtassa az alkalmazást a `gradle run` paranccsal:
 
 ```console
 gradle run
@@ -245,17 +245,17 @@ gradle run
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt szeretné, hogy tisztítsák meg, és távolítsa el a Cognitive Services-előfizetés, törölheti az erőforrás vagy erőforráscsoport. Az erőforráscsoport törlése a hozzá társított egyéb erőforrásokat is törli.
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Computer Vision Java függvénytárat alapfeladatok elvégzésére. Ezután tekintse meg a referenciadokumentációt, ha többet szeretne megtudni a könyvtárról.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Computer Vision Java-függvénytárat a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 
 > [!div class="nextstepaction"]
->[Computer Vision referencia (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+>[Computer Vision referenciája (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
 
 * [Mi a Computer Vision?](../../Home.md)
-* A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)
+* A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)található.

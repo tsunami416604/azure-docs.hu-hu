@@ -1,43 +1,43 @@
 ---
-title: Nyersanyagok
-description: Renderelés imátanyag-leírás és anyagtulajdonságok
+title: Anyagok
+description: Renderelési anyagok leírása és az anyagok tulajdonságai
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681843"
 ---
-# <a name="materials"></a>Nyersanyagok
+# <a name="materials"></a>Anyagok
 
-Az anyagok [megosztott erőforrások,](../concepts/lifetime.md) amelyek meghatározzák [a közvetlen műveletek](meshes.md) megjelenítésének módját. Az anyagok segítségével határozható meg, hogy mely [textúrákat](textures.md) kell alkalmazni, hogy az objektumok átlátszóak legyenek-e, és hogyan számítják ki a világítást.
+Az anyagok olyan [megosztott erőforrások](../concepts/lifetime.md) , amelyek meghatározzák a [Rácsvonalak](meshes.md) megjelenítésének módját. Az anyagok segítségével megadhatja, hogy mely [textúrákat](textures.md) kell alkalmazni, hogy az objektumok transzparensek legyenek, és a rendszer hogyan számítsa ki a világítást.
 
-Az anyagok automatikusan létrejönnek a [modellátalakítás](../how-tos/conversion/model-conversion.md) során, és futásidőben érhetők el. Egyéni anyagokat is létrehozhat a kódból, és lecserélheti a meglévőket. Ez a forgatókönyv különösen akkor van értelme, ha ugyanazt az anyagot szeretné megosztani sok szem között. Mivel egy anyag módosításai minden arra hivatkozó hálón láthatók, ez a módszer a módosítások egyszerű alkalmazására használható.
+Az anyagok automatikusan létrejönnek a [modell átalakítása](../how-tos/conversion/model-conversion.md) során, és elérhetők futásidőben. Létrehozhat egyéni anyagokat is a kódban, és lecserélheti a meglévőket. Ez a forgatókönyv különösen akkor hasznos, ha ugyanazt az anyagot több rácsvonalon szeretné megosztani. Mivel az anyagok módosítása minden olyan rácsvonalon látható, amely hivatkozik rá, ezzel a módszerrel egyszerűen alkalmazhatja a módosításokat.
 
 > [!NOTE]
-> Egyes használati esetek, például a kitárolt objektum kiemelése, az anyagok módosításával elvégezhetők, de sokkal könnyebben megvalósíthatók a [HierarchicalStateOverrideComponent segítségével.](../overview/features/override-hierarchical-state.md)
+> Egyes használati esetek, például a kiválasztott objektumok kiemelése az anyagok módosításával végezhető el, de sokkal könnyebben megvalósítható a [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md).
 
-## <a name="material-types"></a>Anyagtípusok
+## <a name="material-types"></a>Anyagok típusai
 
-Az Azure távoli renderelésének két különböző anyagtípusa van:
+Az Azure távoli renderelés két különböző típusú anyagot tartalmaz:
 
-* [A PBR-anyagokat](../overview/features/pbr-materials.md) olyan felületekhez használják, amelyeket a lehető legfizikailag megfelelővé kell tenni. A valósághű megvilágítást fizikai *alapú renderelés* (PBR) segítségével számítják ki ezekhez az anyagokhoz. Ahhoz, hogy a legtöbbet hozhassa ki ebből az anyagtípusból, fontos, hogy kiváló minőségű bemeneti adatokat, például érdességet és normál térképeket biztosítson.
+* A [pbr-anyagokat](../overview/features/pbr-materials.md) olyan felületek használják, amelyeket a lehető legpontosabban kell megjeleníteni. A reális megvilágítás kiszámítása ezen anyagok esetében *fizikai alapú renderelés* (pbr) használatával történik. Ahhoz, hogy a lehető legtöbbet hozza ki az anyag típusától, fontos, hogy magas színvonalú bemeneti adatokat adjon meg, például a durva és a normál térképeket.
 
-* [Színes anyagokat](../overview/features/color-materials.md) használnak azokban az esetekben, ahol nincs szükség további világítás. Ezek az anyagok mindig teljes fényes és könnyebb beállítani. A színes anyagokolyan adatokhoz használatosak, amelyeknek egyáltalán nem kell világítással rendelkezniük, vagy már statikus megvilágítást is tartalmaznak, például [a fotogrammetria](https://en.wikipedia.org/wiki/Photogrammetry)i modelljével.
+* A [színanyagokat](../overview/features/color-materials.md) olyan esetekre használja a rendszer, amikor nincs szükség további megvilágítás megvilágítására. Ezek az anyagok mindig teljes mértékben világosak, és egyszerűbben állíthatók be. A színanyagokat olyan adatforrások használják, amelyeknek nincs megvilágítás egyáltalán, vagy már tartalmaz statikus megvilágítás, például a [photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry)keresztül beszerzett modellek.
 
-## <a name="mesh-vs-meshcomponent-material-assignment"></a>Háló és MeshComponent anyaghozzárendelés
+## <a name="mesh-vs-meshcomponent-material-assignment"></a>Háló és MeshComponent anyagok hozzárendelése
 
-[A menek](meshes.md) egy vagy több submeshes. Minden részháló egy anyagra hivatkozik. Módosíthatja azt az anyagot, amelyet közvetlenül a hálón szeretne használni, vagy felülbírálhatja, hogy melyik anyagot használja a [MeshComponent alhálójának.](meshes.md#meshcomponent)
+A [Rácsvonalak](meshes.md) egy vagy több alhálóval rendelkeznek. Mindegyik alháló egy anyagra hivatkozik. Az anyagot közvetlenül a rácsvonalon is módosíthatja, vagy felülbírálhatja, hogy mely anyagokat kell használni egy [MeshComponent](meshes.md#meshcomponent)alhálóhoz.
 
-Ha egy anyagot közvetlenül a hálóerőforráson módosít, ez a módosítás a háló összes példányára hatással van. A MeshComponent összetevőn való módosítása azonban csak egy hálópéldányra van hatással. Az, hogy melyik módszer megfelelőbb, a kívánt viselkedéstől függ, de a MeshComponent módosítása a leggyakoribb megközelítés.
+Ha közvetlenül a Mesh erőforráson módosít egy anyagot, ez a változás a rácsvonal összes példányát érinti. A MeshComponent módosítása azonban csak az egyik rácsvonal-példányt érinti. A legmegfelelőbb módszer a kívánt viselkedéstől függ, de a MeshComponent módosítása a gyakoribb megközelítés.
 
-## <a name="material-classes"></a>Anyagosztályok
+## <a name="material-classes"></a>Anyagelszámolású osztályok
 
-Az API által biztosított összes anyag `Material`az alaposztályból származik. Típusuk lehet kérdezni keresztül, `Material.MaterialSubType` vagy öntés őket közvetlenül:
+Az API által biztosított összes anyag az alaposztályból `Material`származik. A típusuk közvetlenül a következő módon `Material.MaterialSubType` kérdezhető le:
 
 ``` cs
 void SetMaterialColorToGreen(Material material)
@@ -61,5 +61,5 @@ void SetMaterialColorToGreen(Material material)
 
 ## <a name="next-steps"></a>További lépések
 
-* [PBR anyagok](../overview/features/pbr-materials.md)
+* [PBR-anyagok](../overview/features/pbr-materials.md)
 * [Színes anyagok](../overview/features/color-materials.md)

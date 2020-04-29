@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Computer Vision ügyfélkönyvtár | Microsoft dokumentumok'
+title: 'Gyors útmutató: Computer Vision ügyféloldali kódtár | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval csatlakoztathatja alkalmazásait az Azure Cognitive Services Computer Vision API-jához.
+description: Ezzel a rövid útmutatóval összekapcsolhatók az alkalmazások az Azure Cognitive Services Computer Vision API.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,20 +12,20 @@ ms.date: 03/12/2020
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4ac9f4bcaed5400846bf94f7db6ea6c143c101d6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80136027"
 ---
-# <a name="quickstart-use-the-computer-vision-client-library"></a>Rövid útmutató: A Computer Vision ügyfélkódtár használata
+# <a name="quickstart-use-the-computer-vision-client-library"></a>Gyors útmutató: az Computer Vision ügyféloldali kódtár használata
 
-Ismerkedés a Computer Vision ügyfélkönyvtárral. Az alábbi lépésekkel telepítheti a csomagot, és kipróbálhatja az alapvető feladatok példakódját. A Computer Vision hozzáférést biztosít a képek feldolgozásához és az információk visszaküldéséhez szükséges fejlett algoritmusokhoz
+Ismerkedjen meg az Computer Vision ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Computer Vision a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz
 
-A Computer Vision ügyfélkönyvtár segítségével:
+Az Computer Vision ügyféloldali kódtár használata a következőhöz:
 
-* Kép elemzése címkékhez, szöveges leíráshoz, arcokhoz, felnőtteknek szóló tartalmakhoz stb.
-* A nyomtatott és kézzel írt szöveg felismerése a Kötegelt olvasás API-val.
+* Elemezheti a címkéket, a szöveges leírást, az arcokat, a felnőtt tartalmakat és egyebeket.
+* A nyomtatott és a kézírásos szöveg felismerése a Batch olvasási API-val.
 
 ::: zone pivot="programming-language-csharp"
 

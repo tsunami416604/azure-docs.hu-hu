@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A Bing News Search ügyféltár használata'
+title: 'Gyors útmutató: az Bing News Search ügyféloldali kódtár használata'
 titleSuffix: Azure Cognitive Services
-description: A News Search API ügyfélkönyvtárakat kínál, amelyek megkönnyítik a keresési képességek integrálását az alkalmazásokba. Ezzel a rövid útmutatóval elindíthatja a keresési kérelmek küldését, és visszaszerezheti az eredményeket.
+description: A News Search API olyan ügyféloldali kódtárakat kínál, amelyek megkönnyítik a keresési funkciók integrálását az alkalmazásokba. Ezzel a rövid útmutatóval megkezdheti a keresési kérelmek küldését, és visszatekintheti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: fcfd12455ceabf6c705cd1949205f680e427f5bc
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503901"
 ---
-# <a name="quickstart-use-the-bing-news-search-client-library"></a>Rövid útmutató: A Bing News Search ügyféltár használata
+# <a name="quickstart-use-the-bing-news-search-client-library"></a>Gyors útmutató: az Bing News Search ügyféloldali kódtár használata
 
 ::: zone pivot="programming-language-csharp"
 

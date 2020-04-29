@@ -9,20 +9,20 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80117075"
 ---
-A Windows 10 VPN-ügyfél új funkciója, az Always On, a VPN-kapcsolat fenntartásának képessége. Az Always On beállítással az aktív VPN-profil automatikusan csatlakozhat, és az eseményindítók , például a felhasználói bejelentkezés, a hálózati állapot módosítása vagy az eszköz képernyője aktív marad.
+A Windows 10 VPN-ügyfél új funkciója, a always on, a VPN-kapcsolat fenntartásának lehetősége. A always on használatával az aktív VPN-profil automatikusan csatlakozhat, és az eseményindítók alapján csatlakoztatva maradhat, például a felhasználói bejelentkezés, a hálózati állapot módosítása vagy az eszközbeállítások aktív állapota.
 
-A Windows 10 Always On rendszerrel rendelkező átjárók használatával állandó felhasználói alagutakat és eszközalagutakat hozhat létre az Azure-ba. Ez a cikk segít a mindig bekapcsolt VPN felhasználói alagút konfigurálása.
+Az átjárók és a Windows 10 always on használatával állandó felhasználói alagutak és eszköz-alagutak hozhatók létre az Azure-ba. Ez a cikk segítséget nyújt az Always On VPN felhasználói alagút konfigurálásához.
 
-A Mindig bekapcsolt VPN-kapcsolatok kétféle alagúttípust tartalmaznak:
+Az Always On VPN-kapcsolatok a következő két típusú alagutat tartalmazzák:
 
-* **Eszközalagút**: A felhasználók bejelentkezése előtt csatlakozik a megadott VPN-kiszolgálókhoz. Bejelentkezés előtti kapcsolódási forgatókönyvek és az eszközkezelés eszközbújtatvezetést használ.
+* **Eszköz-alagút**: csatlakozás a megadott VPN-kiszolgálókhoz, mielőtt a felhasználók bejelentkeznek az eszközre. A Bejelentkezés előtti kapcsolódási forgatókönyvek és az eszközkezelés egy eszköz-alagutat használnak.
 
-* **Felhasználói alagút**: Csak a felhasználók eszközre való bejelentkezése után csatlakozik. A felhasználói alagutak használatával vpn-kiszolgálókon keresztül érheti el a szervezeti erőforrásokat.
+* **Felhasználói alagút**: csak azt követően csatlakozik, hogy a felhasználók bejelentkeznek az eszközre. A felhasználói alagutak használatával VPN-kiszolgálókon keresztül érheti el a szervezeti erőforrásokat.
 
-Az eszközalagutak és a felhasználói alagutak a VPN-profiloktól függetlenül működnek. Egyszerre is csatlakoztathatók, és szükség szerint különböző hitelesítési módszereket és más VPN-konfigurációs beállításokat is használhatnak.
+Az eszköz-alagutak és a felhasználói alagutak a VPN-profiljaik függetlenül működnek. Egyszerre csatlakozhatnak egymáshoz, és szükség szerint különböző hitelesítési módszereket és egyéb VPN-konfigurációs beállításokat használhatnak.

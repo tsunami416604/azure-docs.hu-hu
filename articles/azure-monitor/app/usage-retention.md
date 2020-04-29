@@ -1,65 +1,65 @@
 ---
-title: Webalkalmazás-felhasználók megőrzésének elemzése az Azure Application Insights segítségével
-description: Hány felhasználó tér vissza az alkalmazáshoz?
+title: Webalkalmazások felhasználó általi megőrzésének elemzése az Azure Application Insights
+description: Hány felhasználó tért vissza az alkalmazásba?
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80892410"
 ---
-# <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Felhasználómegőrzési elemzés webes alkalmazásokhoz az Application Insights segítségével
+# <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>A webalkalmazások felhasználói adatmegőrzési elemzése Application Insights
 
-Az Azure [Application Insights](../../azure-monitor/app/app-insights-overview.md) megőrzési szolgáltatása segítségével elemezheti, hogy hány felhasználó tér vissza az alkalmazásba, és milyen gyakran hajtanak végre bizonyos feladatokat vagy érnek el célokat. Ha például egy játékwebhelyet futtat, összehasonlíthatja azoknak a felhasználóknak a számát, akik egy játék elvesztése után térnek vissza a webhelyre, azzal a számmal, amely a győzelem után tér vissza. Ez a tudás segíthet mind a felhasználói élmény, mind az üzleti stratégia fejlesztésében.
+Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) megőrzési funkciója segítségével elemezheti, hogy hány felhasználó tér vissza az alkalmazásba, és hogy milyen gyakran hajtanak végre bizonyos feladatokat, vagy hogyan érik el a célokat. Ha például egy játék helyét futtat, összehasonlíthatja azokat a felhasználókat, akik a nyeremény után visszatérnek a webhelyhez. Ez a tudás segíthet a felhasználói élmény és az üzleti stratégia tökéletesítésében.
 
 ## <a name="get-started"></a>Bevezetés
 
-Ha még nem látja az adatokat az Alkalmazáselemzési portál adatmegőrzési eszközében, [olvassa el, hogyan kezdheti el a használati eszközöket.](usage-overview.md)
+Ha még nem látja az adatokat a Application Insights-portál megőrzési eszközében, [Ismerkedjen meg a használati eszközök használatába](usage-overview.md).
 
-## <a name="the-retention-tool"></a>A Retenciós eszköz
+## <a name="the-retention-tool"></a>Az adatmegőrzési eszköz
 
 ![Megtartási eszköz](./media/usage-retention/retention.png)
 
-1. Az eszköztár lehetővé teszi a felhasználók számára, hogy új adatmegőrzési jelentéseket hozzanak létre, meglévő adatmegőrzési jelentéseket nyissanak meg, mentsenek az aktuális adatmegőrzési jelentést, mentsenek, visszaállíthatják a mentett jelentések módosításait, frissítsék a jelentés adatait, megosszák a jelentést e-mailben vagy közvetlen hivatkozással, és hozzáférjenek a dokumentációs laphoz. 
-2. Alapértelmezés szerint a megőrzés imitálta az összes felhasználót, aki bármit is tett, majd visszajött, és bármi mást tett egy idő alatt. Az események különböző kombinációját választhatja ki, hogy az adott felhasználói tevékenységekre összpontosítson.
-3. Adjon hozzá egy vagy több szűrőt a tulajdonságokhoz. Fókuszálhat például egy adott ország vagy régió felhasználóira. A szűrők beállítása után kattintson a **Frissítés** gombra. 
-4. A teljes megőrzési diagram a felhasználó megtartásának összegzését jeleníti meg a kiválasztott időszakban. 
-5. A rács a #2 lekérdezésszerkesztő szerint megőrzött felhasználók számát jeleníti meg. Minden sor olyan felhasználók kohorszát jelöli, akik a megjelenített időszakban bármilyen eseményt végrehajtottak. A sor minden cellája azt mutatja, hogy a kohorszból hányat adott vissza legalább egyszer egy későbbi időszakban. Egyes felhasználók egynél több időszakban is visszatérhetnek. 
-6. Az insights-kártyák az öt legfontosabb eseménysorozatot mutatják, és az öt legfontosabb visszaadott eseményt, hogy a felhasználók jobban megértsék a megőrzési jelentést. 
+1. Az eszköztár lehetővé teszi a felhasználók számára új adatmegőrzési jelentések létrehozását, a meglévő adatmegőrzési jelentések megnyitását, a jelenlegi adatmegőrzési jelentés mentését vagy a Mentés másként beállítását, a mentett jelentésekben tárolt adatok módosítását, a jelentés adatfrissítését, a jelentés megosztását e-mailben vagy közvetlen hivatkozással, valamint a dokumentáció 
+2. Alapértelmezés szerint az adatmegőrzés megjeleníti az összes olyan felhasználót, aki bármit is visszakapott, és egy adott időszakon belül bármi mást tett. Az események különböző kombinációjának kiválasztásával szűkítheti a fókuszt adott felhasználói tevékenységekre.
+3. Adjon hozzá egy vagy több szűrőt a tulajdonságokhoz. Például egy adott országban vagy régióban lévő felhasználókra lehet összpontosítani. A szűrők beállítása után kattintson a **frissítés** gombra. 
+4. A teljes adatmegőrzési diagram a felhasználó adatmegőrzésének összegzését jeleníti meg a kiválasztott időszakban. 
+5. A rács a #2 lekérdezés-szerkesztője szerint megőrzött felhasználók számát jeleníti meg. Minden sor olyan felhasználók kohorszát jelöli, akik a megjelenített időszakban bármilyen eseményt hajtottak végre. A sor minden cellája azt mutatja, hogy egy adott kohorsz közül hányan tért vissza legalább egyszer egy későbbi időszakban. Egyes felhasználók több időszakot is visszatérhetnek. 
+6. Az adatelemzési kártyák az első öt kezdeményező eseményt és öt visszatérő eseményt mutatják, hogy a felhasználók könnyebben megértsék az adatmegőrzési jelentéseket. 
 
-![Megőrzési egér rámutatása](./media/usage-retention/hover.png)
+![Megőrzött egér hover](./media/usage-retention/hover.png)
 
-A felhasználók a retenciós eszköz cellái fölé mutatót fértve érhetik el az elemzési gombot és az eszköztippeket, amelyek elmagyarázzák, mit jelent a cella. Az Analytics gomb egy előre kitöltött lekérdezéssel az Analytics eszközhöz viszi a felhasználókat, hogy felhasználókat hozzon létre a cellából. 
+A felhasználók az adatmegőrzési eszközön lévő cellák fölé helyezhetik az elemzés gombot, és az eszközhöz tartozó tippek elmagyarázzák, hogy mit jelent a cella. Az elemzés gomb a felhasználókat az elemzési eszközre egy előre feltöltött lekérdezéssel hozza a felhasználók számára a cellából. 
 
-## <a name="use-business-events-to-track-retention"></a>Üzleti események használata a megőrzés nyomon követésére
+## <a name="use-business-events-to-track-retention"></a>Üzleti események használata a megőrzés nyomon követéséhez
 
-A leghasznosabb megőrzési elemzés hez mérje a jelentős üzleti tevékenységeket képviselő eseményeket. 
+A leghasznosabb adatmegőrzési elemzés érdekében mérje fel a jelentős üzleti tevékenységeket jelölő eseményeket. 
 
-Előfordulhat például, hogy sok felhasználó anélkül nyit meg egy oldalt az alkalmazásban, hogy ne játszaná meg az általa megjelenített játékot. Ha csak az oldalmegtekintések nyomon követését követné, az pontatlan becslést adna arról, hogy hányan térnek vissza a játékba, miután korábban élvezték. Ahhoz, hogy tiszta képet kapj a visszatérő játékosokról, az alkalmazásnak egyéni eseményt kell küldenie, amikor a felhasználó ténylegesen játszik.  
+Előfordulhat például, hogy számos felhasználó megnyithat egy oldalt az alkalmazásban, és nem játssza le a megjelenített játékot. Az oldal nézeteinek nyomon követése ezért pontatlan becslést ad arról, hogy hányan térnek vissza a játékra, miután a szolgáltatás már korábban is elvégezte a lejátszást. Ha tiszta képet szeretne kapni a játékosok visszaküldéséről, az alkalmazásnak egyéni eseményt kell küldenie, amikor egy felhasználó ténylegesen játszik.  
 
-Célszerű kódolni a kulcsfontosságú üzleti műveleteket képviselő egyéni eseményeket, és ezeket használni a megőrzési elemzéshez. A játék eredményének rögzítéséhez meg kell írnia egy kódsort, hogy egyéni eseményt küldjön az Application Insightsnak. Ha írsz, hogy a weboldal kódját, vagy Node.JS, úgy néz ki, mint ez:
+Célszerű a kulcsfontosságú üzleti műveleteket jelképező egyéni eseményeket felvenni, és ezeket az adatmegőrzési elemzéshez használni. A játék eredményének rögzítéséhez meg kell írnia egy kódrészletet, hogy egy egyéni eseményt küldjön Application Insights. Ha a weblap kódjában vagy a Node. JS-ben írja, a következőképpen néz ki:
 
 ```JavaScript
     appinsights.trackEvent("won game");
 ```
 
-Vagy ASP.NET szerver kód:
+Vagy a ASP.NET-kiszolgáló kódjában:
 
 ```csharp
    telemetry.TrackEvent("won game");
 ```
 
-[További információ az egyéni események írásáról.](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
+[További információ az egyéni események írásához](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 
 ## <a name="next-steps"></a>További lépések
-- A használati élmény engedélyezéséhez kezdje el elküldeni [az egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalnézeteket.](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)
-- Ha már küld egyéni eseményeket vagy oldalnézeteket, fedezze fel a Használati eszközöket, hogy megtudja, hogyan használják a felhasználók a szolgáltatást.
+- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
+- Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Felhasználók, munkamenetek, események](usage-segmentation.md)
     - [Tölcsérek](usage-funnels.md)
     - [Felhasználói folyamatok](usage-flows.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A Bing egyéni keresési végpontjának felhívása a Node.js használatával | Microsoft dokumentumok'
+title: 'Rövid útmutató: a Bing Custom Search végpont meghívása a Node. js használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval elkezdheti a keresési eredmények et a Bing egyéni keresési példányából a Node.js használatával
+description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérését a Node. js használatával
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 1c7bd97de4e46e1c8da467840006fe2520851caf
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80238865"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rövid útmutató: A Bing egyéni keresési végpontjának hívása a Node.js használatával
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rövid útmutató: a Bing Custom Search végpont meghívása a Node. js használatával
 
-Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a Bing egyéni keresési példányából. Bár ez az alkalmazás JavaScript nyelven íródott, a Bing Egyéni keresési API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js)
+Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérelmezését. Az alkalmazás JavaScriptben való megírásakor a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Bing egyéni keresési példánya. További információ: További információ [az első Bing egyéni keresési példány létrehozása](quick-start.md) című témakörben.
+- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
 
 - [Node.js](https://www.nodejs.org/)
 
@@ -33,7 +33,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a `require()` kedvenc IDE-ben vagy szerkesztőjében, és adjon hozzá egy utasítást a kéréstárhoz. Hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs azonosítóhoz és egy keresési kifejezéshez. 
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, `require()` és adjon hozzá egy utasítást a kérelmek könyvtárához. Hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs AZONOSÍTÓhoz és a keresési kifejezéshez. 
 
     ```javascript
     var request = require("request");
@@ -45,7 +45,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
 
 ## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása 
 
-1. Hozzon létre egy változót a kérelemben küldött adatok tárolására. A kérelem URL-címét úgy hozhatja `q=` létre, hogy hozzáfűzi a keresési `customconfig=`kifejezést a lekérdezési paraméterhez, és a keresési példány egyéni konfigurációazonosítóját a hoz. a paramétereket egy `&` karakterrel válassza el. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+1. Hozzon létre egy változót a kérelemben elküldött információk tárolásához. Hozza létre a kérelem URL-címét úgy, hogy hozzáfűzi `q=` a keresési kifejezést a lekérdezési paraméterhez, a keresési példány `customconfig=`egyéni konfigurációs azonosítóját pedig a következőre:. a paramétereket a `&` karakterrel válassza el. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```javascript
     var info = {
@@ -58,7 +58,7 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
     }
     ```
 
-1. A JavaScript-kérelemtár segítségével keresési kérelmet küldhet a Bing egyéni keresési példányának, és kinyomtathatja az eredményekre vonatkozó információkat, például a nevét, az URL-címét és a weblap legutóbbi feltérképezésének dátumát.
+1. A JavaScript-kérelem könyvtárával keresési kérést küldhet a Bing Custom Search példányának, és kinyomtathatja az eredményekre vonatkozó információkat, beleértve annak nevét, URL-címét és a weblap utolsó bejárásának dátumát.
 
     ```javascript
     request(info, function(error, response, body){
@@ -77,4 +77,4 @@ Ezzel a rövid útmutatóval megkezdheti a keresési eredmények keresését a B
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni keresési webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)
+> [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

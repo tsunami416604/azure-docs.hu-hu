@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory csatlakozásállapot-alapú műveletei
-description: Ez a cikk az Azure AD Connect Health üzembe helyezése után elvégezhető további műveleteket ismerteti.
+title: Azure Active Directory Connect Health műveletek
+description: Ez a cikk azokat a további műveleteket ismerteti, amelyek a Azure AD Connect Health üzembe helyezése után végezhetők el.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
@@ -16,161 +16,161 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261514"
 ---
-# <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory csatlakozásállapot-alapú műveletei
-Ez a témakör ismerteti a különböző műveleteket az Azure Active Directory (Azure AD) Connect Health használatával hajthatja végre.
+# <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health műveletek
+Ez a témakör az Azure Active Directory (Azure AD) kapcsolati állapotának használatával végrehajtható különböző műveleteket ismerteti.
 
-## <a name="enable-email-notifications"></a>E-mailértesítések engedélyezése
-Konfigurálhatja az Azure AD Connect Health szolgáltatás e-mail értesítések küldésére, ha riasztások azt jelzik, hogy az identitás-infrastruktúra nem kifogástalan. Ez akkor fordul elő, ha egy riasztás jön létre, és ha feloldódik.
+## <a name="enable-email-notifications"></a>E-mail-értesítések engedélyezése
+A Azure AD Connect Health szolgáltatás beállítható úgy, hogy e-mail-értesítéseket küldjön, ha a riasztások azt jelzik, hogy az identitás-infrastruktúra nem kifogástalan. Ez akkor fordul elő, ha riasztás jön létre, és megoldódott.
 
-![Képernyőkép az Azure AD Connect Health e-mail értesítési beállításairól](./media/how-to-connect-health-operations/email_noti_discover.png)
+![Képernyőkép a Azure AD Connect Health e-mail értesítési beállításairól](./media/how-to-connect-health-operations/email_noti_discover.png)
 
 > [!NOTE]
-> Az e-mail értesítések alapértelmezés szerint engedélyezve vannak.
+> Az e-mail-értesítések alapértelmezés szerint engedélyezve vannak.
 >
 
-### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Az Azure AD Connect Health e-mail értesítések engedélyezése
-1. Nyissa **meg** annak a szolgáltatásnak a Riasztások paneljét, amelyről e-mailben értesítést szeretne kapni.
-2. A műveletsávon kattintson az **Értesítési beállítások gombra.**
-3. Az e-mail értesítési kapcsolón válassza **a BE**lehetőséget.
-4. Jelölje be a jelölőnégyzetet, ha azt szeretné, hogy az összes globális rendszergazda e-mailben értesítéseket kapjon.
-5. Ha bármely más e-mail-címen szeretne e-mailértesítéseket kapni, adja meg őket a **További e-mail címzettek** mezőben. Ha el szeretne távolítani egy e-mail címet a listából, kattintson a jobb gombbal a bejegyzésre, és válassza a **Törlés parancsot.**
-6. A módosítások véglegesítéséhez kattintson a **Mentés gombra.** A módosítások csak a mentés után lépnek érvénybe.
+### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Azure AD Connect Health e-mail-értesítések engedélyezése
+1. Nyissa meg a **riasztások** panelt ahhoz a szolgáltatáshoz, amelyhez e-mailes értesítést szeretne kapni.
+2. A műveleti sávon kattintson az **értesítési beállítások**elemre.
+3. Az e-mail értesítési kapcsolónál válassza **a**be lehetőséget.
+4. Jelölje be a jelölőnégyzetet, ha azt szeretné, hogy az összes globális rendszergazda fogadja az e-mailes értesítéseket.
+5. Ha más e-mail-címekről szeretne e-mail-értesítéseket kapni, akkor a **további e-mail-címzettek** mezőben adhatja meg azokat. Ha el szeretne távolítani egy e-mail-címet ebből a listáról, kattintson a jobb gombbal a bejegyzésre, és válassza a **Törlés**lehetőséget.
+6. A módosítások véglegesítéséhez kattintson a **Mentés**gombra. A módosítások csak a mentés után lépnek életbe.
 
 >[!NOTE] 
-> Ha a háttérszolgáltatásban problémák merülnek fel a szinkronizálási kérelmek feldolgozásával kapcsolatban, a szolgáltatás egy értesítő e-mailt küld a hiba részleteivel a bérlő felügyeleti kapcsolattartójának e-mail címére(i). Hallottuk az ügyfelek visszajelzéseit, hogy bizonyos esetekben az ilyen üzenetek mennyisége megfizethetetlenül nagy, ezért megváltoztatjuk az üzenetek küldésének módját. 
+> Ha probléma merül fel a szinkronizálási kérések feldolgozásakor a háttér-szolgáltatásban, ez a szolgáltatás értesítő e-mailt küld a bérlő adminisztratív kapcsolattartási e-mail-címére (i). Meghallottuk az ügyfelek visszajelzéseit, hogy bizonyos esetekben az üzenetek mennyisége megfizethetetlenül nagy, így az üzenetek elküldésének módját módosítjuk. 
 >
-> Ahelyett, hogy minden szinkronizálási hibához küldenénk egy üzenetet, minden alkalommal, amikor bekövetkezik, napi kivonatot küldünk ki a háttérszolgáltatás által visszaadott összes hibáról. Ez lehetővé teszi az ügyfelek számára, hogy hatékonyabban dolgozzák fel ezeket a hibákat, és csökkenti az ismétlődő hibaüzenetek számát.
+> Ahelyett, hogy minden alkalommal elküldje az üzenetet minden szinkronizálási hibához, a háttér-szolgáltatás által visszaadott összes hiba napi kivonatát küldi el a rendszer. Ez lehetővé teszi, hogy az ügyfelek hatékonyabban dolgozzák fel ezeket a hibákat, és csökkentik az ismétlődő hibaüzenetek számát.
 >
-> Azt tervezzük, hogy ezt a változtatást 2020.
+> Ezt a változást a 2020. január 15-én tervezzük meg.
 
-## <a name="delete-a-server-or-service-instance"></a>Kiszolgáló vagy szolgáltatáspéldány törlése
-
->[!NOTE] 
-> A törlési lépésekhez Azure AD prémium licenc szükséges.
-
-Bizonyos esetekben előfordulhat, hogy el szeretne távolítani egy kiszolgálót a figyelésből. Az alábbiakban kell tudnia, hogy eltávolítson egy kiszolgálót az Azure AD Connect állapotszolgáltatásból.
-
-Kiszolgáló törlésekor vegye figyelembe az alábbiakat:
-
-* Ez a művelet leállítja a további adatok gyűjtését a kiszolgálóról. Ez a kiszolgáló törlődik a figyelési szolgáltatásból. A művelet után nem tekintheti meg a kiszolgáló új riasztási, figyelési vagy használati elemzési adatait.
-* Ez a művelet nem távolítja el az állapotügynököt a kiszolgálóról. Ha a lépés végrehajtása előtt nem távolítja el az állapotügynököt, a kiszolgálón az állapotügynökkel kapcsolatos hibák jelenhetnek meg.
-* Ez a művelet nem törli a kiszolgálóról már összegyűjtött adatokat. Ezek az adatok törlődnek az Azure adatmegőrzési szabályzatának megfelelően.
-* A művelet végrehajtása után, ha újra meg szeretné figyelni ugyanazt a kiszolgálót, el kell távolítania, majd újra kell telepítenie az állapotügynököt ezen a kiszolgálón.
-
-### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Kiszolgáló törlése az Azure AD Connect health szolgáltatásból
+## <a name="delete-a-server-or-service-instance"></a>Kiszolgáló vagy szolgáltatás példányának törlése
 
 >[!NOTE] 
-> A törlési lépésekhez Azure AD prémium licenc szükséges.
+> A törlési lépésekhez prémium szintű Azure AD-licenc szükséges.
 
-Azure AD Connect Health az Active Directory összevonási szolgáltatásokhoz (AD FS) és az Azure AD Connect (Szinkronizálás):
+Bizonyos esetekben előfordulhat, hogy el szeretné távolítani a kiszolgálót a figyelésből. A következő lépésekkel tudnia kell, hogyan távolíthat el egy kiszolgálót a Azure AD Connect Health szolgáltatásból.
 
-1. Nyissa meg a **Kiszolgáló** panelt a **Kiszolgálólista** panelen az eltávolítandó kiszolgáló nevének kiválasztásával.
-2. A **Kiszolgáló** panelen, a műveletsávon kattintson a **Törlés gombra.**
-![Képernyőkép az Azure AD Connect állapotának törlési kiszolgálójáról](./media/how-to-connect-health-operations/DeleteServer2.png)
-3. Erősítse meg a kiszolgáló nevének beírásával a megerősítő mezőbe.
+A kiszolgálók törlésekor ügyeljen a következőkre:
+
+* Ez a művelet leállítja az adott kiszolgálóról származó további adatok gyűjtését. A rendszer eltávolítja a kiszolgálót a figyelési szolgáltatásból. A művelet elvégzése után nem tudja megtekinteni a kiszolgáló új riasztásait, figyelési vagy használati elemzési adatait.
+* Ez a művelet nem távolítja el az állapotfigyelő ügynököt a kiszolgálóról. Ha nem távolítja el az állapotfigyelő ügynököt a lépés végrehajtása előtt, akkor a kiszolgálón található állapotfigyelő ügynökhöz kapcsolódó hibák jelenhetnek meg.
+* Ez a művelet nem törli a kiszolgálóról gyűjtött adatokat. Az adatok törlődnek az Azure adatmegőrzési szabályzatának megfelelően.
+* Miután elvégezte a műveletet, ha újra meg szeretné kezdeni ugyanazt a kiszolgálót, el kell távolítania és újra kell telepítenie az állapotfigyelő ügynököt ezen a kiszolgálón.
+
+### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Kiszolgáló törlése a Azure AD Connect Health szolgáltatásból
+
+>[!NOTE] 
+> A törlési lépésekhez prémium szintű Azure AD-licenc szükséges.
+
+Azure AD Connect Health a Active Directory összevonási szolgáltatások (AD FS) (AD FS) és a Azure AD Connect (Sync) számára:
+
+1. Az eltávolítandó kiszolgálónév kiválasztásával nyissa meg a **kiszolgáló** panelt a **kiszolgáló lista** paneljén.
+2. A **kiszolgáló** paneljén, a műveleti sávon kattintson a **Törlés**elemre.
+![Képernyőkép a Azure AD Connect Health delete Serverről](./media/how-to-connect-health-operations/DeleteServer2.png)
+3. Erősítse meg a kiszolgáló nevének beírásával a megerősítő mezőben.
 4. Kattintson a **Törlés** gombra.
 
-Azure AD Connect Health for Azure Active Directory tartományi szolgáltatások:
+Azure Active Directory Domain Services Azure AD Connect Health:
 
-1. Nyissa meg a **Tartományvezérlők irányítópultot.**
+1. Nyissa meg a **tartományvezérlők** irányítópultot.
 2. Válassza ki az eltávolítandó tartományvezérlőt.
-3. A műveletsávon kattintson a **Kijelölt törlése gombra.**
+3. A műveleti sávon kattintson a **Kijelöltek törlése**elemre.
 4. Erősítse meg a kiszolgáló törlésére irányuló műveletet.
 5. Kattintson a **Törlés** gombra.
 
-### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Szolgáltatáspéldány törlése az Azure AD Connect health szolgáltatásból
-Bizonyos esetekben előfordulhat, hogy el szeretne távolítani egy szolgáltatáspéldányt. Az alábbiakban kell tudnia egy szolgáltatáspéldány eltávolításához az Azure AD Connect állapotszolgáltatásból.
+### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Szolgáltatási példány törlése Azure AD Connect Health szolgáltatásból
+Bizonyos esetekben érdemes lehet eltávolítani egy szolgáltatási példányt. A következő lépésekkel tudnia kell, hogyan távolíthat el egy szolgáltatási példányt a Azure AD Connect Health szolgáltatásból.
 
-Szolgáltatáspéldány törlésekor vegye figyelembe a következőket:
+A szolgáltatási példányok törlésekor vegye figyelembe a következőket:
 
-* Ez a művelet eltávolítja az aktuális szolgáltatáspéldányt a figyelési szolgáltatásból.
-* Ez a művelet nem távolítja el és nem távolítja el az állapotügynököt a szolgáltatáspéldány részeként figyelt kiszolgálókról. Ha a lépés végrehajtása előtt nem távolítja el az állapotügynököt, a kiszolgálókon az állapotügynökkel kapcsolatos hibák jelenhetnek meg.
-* A szolgáltatáspéldány összes adatát az Azure adatmegőrzési szabályzatának megfelelően törli.
-* A művelet végrehajtása után, ha meg szeretné kezdeni a szolgáltatás figyelését, távolítsa el és telepítse újra az állapotügynököt az összes kiszolgálón. A művelet végrehajtása után, ha újra meg szeretné figyelni ugyanazt a kiszolgálót, távolítsa el, telepítse újra és regisztrálja az állapotügynököt a kiszolgálón.
+* Ez a művelet eltávolítja az aktuális szolgáltatási példányt a figyelési szolgáltatásból.
+* Ez a művelet nem távolítja el és nem távolítja el az állapotfigyelő ügynököt a szolgáltatási példány részeként figyelt kiszolgálókról. Ha nem távolítja el az állapotfigyelő ügynököt a lépés végrehajtása előtt, akkor a kiszolgálókon található állapotfigyelő ügynökhöz kapcsolódó hibák jelenhetnek meg.
+* A szolgáltatási példány összes adatait az Azure adatmegőrzési szabályzatának megfelelően törli a rendszer.
+* Ha elvégezte a műveletet, a szolgáltatás figyelésének megkezdéséhez távolítsa el, majd telepítse újra az állapotfigyelő ügynököt az összes kiszolgálón. Miután elvégezte a műveletet, ha újra meg szeretné kezdeni ugyanazt a kiszolgálót, távolítsa el, telepítse újra, majd regisztrálja az állapotfigyelő ügynököt az adott kiszolgálón.
 
-#### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Szolgáltatáspéldány törlése az Azure AD Connect health szolgáltatásból
-1. Nyissa meg a **Szolgáltatás** panelt a **Szolgáltatáslista** panelen az eltávolítani kívánt szolgáltatásazonosító (farmnév) kiválasztásával. 
-2. A **Szolgáltatás** panelen, a műveletsávon kattintson a **Törlés gombra.** 
-![Képernyőkép az Azure AD Connect állapottörlési szolgáltatásáról](./media/how-to-connect-health-operations/DeleteServer.png)
-3. Erősítse meg a szolgáltatás nevét a megerősítő mezőbe (például: sts.contoso.com).
+#### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Szolgáltatási példány törlése a Azure AD Connect Health szolgáltatásból
+1. Nyissa meg **a szolgáltatás** panelt a **szolgáltatások listájának** paneljén az eltávolítani kívánt szolgáltatás-azonosító (Farm neve) kiválasztásával. 
+2. A **szolgáltatás** panelen, a műveleti sávon kattintson a **Törlés**elemre. 
+![Képernyőkép a Azure AD Connect Health delete szolgáltatásról](./media/how-to-connect-health-operations/DeleteServer.png)
+3. Erősítse meg a szolgáltatás nevének beírásával a megerősítő mezőben (például: sts.contoso.com).
 4. Kattintson a **Törlés** gombra.
    <br><br>
 
-[//]: # (Az RBAC szakasz kezdete)
+[//]: # (A RBAC szakasz kezdete)
 ## <a name="manage-access-with-role-based-access-control"></a>Hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/role-assignments-portal.md) az Azure AD Connect Health hozzáférést biztosít a felhasználók és csoportok nem a globális rendszergazdák számára. Az RBAC szerepköröket rendel a tervezett felhasználókhoz és csoportokhoz, és lehetővé teszi a címtárglobális rendszergazdáinak korlátozását.
+A Azure AD Connect Health [szerepköralapú Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) hozzáférést biztosít a globális rendszergazdáktól eltérő felhasználókhoz és csoportokhoz. A RBAC szerepköröket rendel hozzá a kívánt felhasználókhoz és csoportokhoz, és lehetővé teszi a címtárban lévő globális rendszergazdák korlátozását.
 
 ### <a name="roles"></a>Szerepkörök
-Az Azure AD Connect Health a következő beépített szerepköröket támogatja:
+Azure AD Connect Health a következő beépített szerepköröket támogatja:
 
 | Szerepkör | Engedélyek |
 | --- | --- |
-| Tulajdonos |A tulajdonosok *kezelhetik a hozzáférést* (például szerepkört rendelhetnek egy felhasználóhoz vagy csoporthoz), megtekinthetik a *portálon* található összes információt (például a riasztásokmegtekintését), és módosíthatják a *beállításokat* (például e-mail értesítéseket) az Azure AD Connect Health szolgáltatáson belül. <br>Alapértelmezés szerint az Azure AD globális rendszergazdák vannak rendelve ezt a szerepkört, és ez nem módosítható. |
-| Közreműködő |A közreműködők *megtekinthetik* az összes információt (például a riasztásokmegtekintését) a portálról, és módosíthatják a *beállításokat* (például e-mail értesítéseket) az Azure AD Connect Health-ben. |
-| Olvasó |Az olvasók *megtekinthetik* az összes információt (például a riasztásokat) az Azure AD Connect Health portálon belül. |
+| Tulajdonos |A tulajdonosok *kezelhetik a hozzáférést* (például hozzárendelhet egy szerepkört egy felhasználóhoz vagy csoportjához), *megtekintheti az összes információt* (például a riasztások megtekintése) a portálról, és *módosíthatja a beállításokat* (például az e-mailes értesítéseket) a Azure ad Connect Healthon belül. <br>Alapértelmezés szerint az Azure AD globális rendszergazdái ehhez a szerepkörhöz vannak rendelve, és ez nem módosítható. |
+| Közreműködő |A közreműködők megtekinthetik az *összes információt* (például a riasztások megtekintése) a portálról, és *módosíthatják a beállításokat* (például az e-mailes értesítéseket) a Azure ad Connect Healthon belül. |
+| Olvasó |Az olvasók *megtekinthetik az összes információt* (például a riasztások megtekintése) a portálon Azure ad Connect Healthon belül. |
 
-Az összes többi szerepkör (például a felhasználói hozzáférés rendszergazdái vagy a DevTest Labs-felhasználók) nincs hatással az Azure AD Connect Health elérésére, még akkor sem, ha a szerepkörök elérhetők a portálkörnyezetben.
+Az összes többi szerepkör (például a felhasználói hozzáférés-rendszergazdák vagy a DevTest Labs-felhasználók) nem érinti a Azure AD Connect Healthon belüli hozzáférést, még akkor is, ha a szerepkörök elérhetők a portálon.
 
 ### <a name="access-scope"></a>Hozzáférési hatókör
-Az Azure AD Connect Health két szinten támogatja a hozzáférés kezelését:
+A Azure AD Connect Health két szinten támogatja a hozzáférések kezelését:
 
-* **Minden szolgáltatáspéldány :** A legtöbb esetben ez az ajánlott elérési út. Szabályozza a hozzáférést az összes szolgáltatáspéldány (például egy AD FS-farm) az Összes szerepkör-típusok, amelyek az Azure AD Connect Health által figyelt.
-* **Szolgáltatáspéldány**: Bizonyos esetekben előfordulhat, hogy szerepkörtípusok vagy egy szolgáltatáspéldány alapján kell elkülönítenia a hozzáférést. Ebben az esetben kezelheti a hozzáférést a szolgáltatáspéldány szintjén.  
+* **Minden szolgáltatási példány**: ez az ajánlott elérési út a legtöbb esetben. Az összes szolgáltatási példány (például egy AD FS Farm) hozzáférését szabályozza a Azure AD Connect Health által figyelt összes szerepkör esetében.
+* **Service-példány**: bizonyos esetekben előfordulhat, hogy a hozzáférést a szerepkör típusa vagy a szolgáltatási példány alapján kell elkülöníteni. Ebben az esetben a hozzáférést a szolgáltatás példányának szintjén kezelheti.  
 
-Az engedély akkor adható meg, ha a végfelhasználó a címtár vagy a szolgáltatáspéldány szintjén rendelkezik hozzáféréssel.
+Az engedély akkor adható meg, ha egy végfelhasználó hozzáfér a címtár vagy a szolgáltatás példányának szintjéhez.
 
-### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Felhasználók vagy csoportok hozzáférésének engedélyezése az Azure AD Connect Health szolgáltatáshoz
-A következő lépések bemutatják, hogyan engedélyezheti a hozzáférést.
-#### <a name="step-1-select-the-appropriate-access-scope"></a>1. lépés: Válassza ki a megfelelő hozzáférési hatókört
-Ha engedélyezni szeretné a felhasználói hozzáférést az Azure AD Connect Health *összes szolgáltatáspéldányszintjén,* nyissa meg az Azure AD Connect Health fő paneljét.<br>
+### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Felhasználók vagy csoportok hozzáférésének engedélyezése Azure AD Connect Health
+A következő lépések bemutatják, hogyan engedélyezhető a hozzáférés.
+#### <a name="step-1-select-the-appropriate-access-scope"></a>1. lépés: válassza ki a megfelelő hozzáférési hatókört
+Ha engedélyezni szeretné, hogy a felhasználói hozzáférés a Azure AD Connect Health *összes szolgáltatási példányának* szintjén megtörténjen, nyissa meg Azure ad Connect Health fő paneljét.<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: Felhasználók és csoportok hozzáadása és szerepkörök hozzárendelése
-1. A **Konfigurálás** csoportban kattintson a **Felhasználók gombra.**<br>
-   ![Képernyőkép az Azure AD Connect Health erőforrás oldalsávjáról](./media/how-to-connect-health-operations/startRBAC.png)
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: felhasználók és csoportok hozzáadása és szerepkörök társítása
+1. A **Konfigurálás** szakaszban kattintson a **felhasználók**elemre.<br>
+   ![Képernyőkép a Azure AD Connect Health Resource Sidebarról](./media/how-to-connect-health-operations/startRBAC.png)
 2. Válassza a **Hozzáadás** lehetőséget.
-3. A **Szerepkör kiválasztása** ablaktáblában jelöljön ki egy szerepkört (például **Tulajdonos).**<br>
-   ![Képernyőkép az Azure AD Connect Health RBAC-felhasználók ablakáról](./media/how-to-connect-health-operations/RBAC_add.png)
-4. Írja be a megcélzott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre egy vagy több felhasználót vagy csoportot is kijelölhet. Kattintson a **Kiválasztás** gombra.
-   ![Képernyőkép az Azure AD Connect Health RBAC-felhasználók ablakáról](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. Válassza **az OK gombot.**<br>
+3. A **szerepkör kiválasztása** panelen válasszon ki egy szerepkört (például **tulajdonos**).<br>
+   ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_add.png)
+4. Írja be a célként megadott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre csak egy vagy több felhasználót vagy csoportot választhat ki. Kattintson a **Kiválasztás** gombra.
+   ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_select_users.png)
+5. Kattintson az **OK** gombra.<br>
 6. A szerepkör-hozzárendelés befejezése után a felhasználók és csoportok megjelennek a listában.<br>
-   ![Képernyőkép az Azure AD Connect Health RBAC-felhasználók ablakáról, kiemelve az új felhasználókkal](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![Képernyőkép Azure AD Connect Health RBAC-felhasználók ablakról, új felhasználók kiemelésével](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
-Most a felsorolt felhasználók és csoportok a hozzárendelt szerepkörök szerint férhetnek hozzá.
+Most a felsorolt felhasználók és csoportok hozzáférnek a hozzájuk rendelt szerepköröknek megfelelően.
 
 > [!NOTE]
-> * A globális rendszergazdák mindig teljes hozzáféréssel rendelkeznek az összes művelethez, de a globális rendszergazdai fiókok nem szerepelnek az előző listában.
-> * A Felhasználók meghívása funkció nem támogatott az Azure AD Connect Health.
+> * A globális rendszergazdák mindig teljes hozzáféréssel rendelkeznek az összes művelethez, de a globális rendszergazdai fiókok nem jelennek meg az előző listában.
+> * A felhasználók meghívása funkció nem támogatott Azure AD Connect Healthon belül.
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: A panel helyének megosztása felhasználókkal vagy csoportokkal
-1. Az engedélyek hozzárendelése után a felhasználó hozzáférhet az Azure AD Connect Health szolgáltatáshoz, ha [itt](https://aka.ms/aadconnecthealth)jár.
-2. A panelen a felhasználó rögzítheti a panelt vagy annak különböző részeit a műszerfalra. Egyszerűen kattintson a **Pin a műszerfalhoz** ikonra.<br>
-   ![Képernyőkép az Azure AD Connect Health RBAC pin panelről, kiemelve a pinikonnal](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: a panel helyének megosztása felhasználókkal vagy csoportokkal
+1. Az engedélyek kiosztása után a felhasználó a következő lépésekkel [here](https://aka.ms/aadconnecthealth)férhet hozzá Azure ad Connect Healthhoz.
+2. A panelen a felhasználó rögzítheti a panelt vagy annak különböző részeit az irányítópulton. Egyszerűen kattintson a **rögzítés az irányítópulton** ikonra.<br>
+   ![Képernyőkép a Azure AD Connect Health RBAC PIN-kódjáról, a PIN ikon kiemelésével](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
-> A Reader szerepkörrel rendelkező felhasználó nem tudja beolvasni az Azure AD Connect Health bővítményt az Azure Piactérről. A felhasználó nem tudja végrehajtani a szükséges "create" műveletet ehhez. A felhasználó továbbra is eljut a panel megy az előző linkre. Későbbi használatra a felhasználó rögzítheti a panelt az irányítópulton.
+> A hozzárendelt olvasó szerepkörrel rendelkező felhasználók nem tudnak Azure AD Connect Health bővítményt beolvasni az Azure piactéren. A felhasználó nem tudja végrehajtani a szükséges "létrehozás" műveletet. A felhasználó továbbra is elérheti a panelt az előző hivatkozásra kattintva. A későbbi használat érdekében a felhasználó rögzítheti a panelt az irányítópulton.
 >
 >
 
 ### <a name="remove-users-or-groups"></a>Felhasználók vagy csoportok eltávolítása
-Eltávolíthatja az Azure AD Connect Health RBAC-hoz hozzáadott felhasználót vagy csoportot. Egyszerűen kattintson a jobb gombbal a felhasználóra vagy csoportra, és válassza **az Eltávolítás parancsot.**<br>
-![Képernyőkép az Azure AD Connect Health RBAC-felhasználók ablakáról, kiemelve az Eltávolítás lehetőséggel](./media/how-to-connect-health-operations/RBAC_remove.png)
+Azure AD Connect Health RBAC felvett felhasználót vagy csoportot is eltávolíthat. Egyszerűen kattintson a jobb gombbal a felhasználóra vagy csoportra, majd válassza az **Eltávolítás**lehetőséget.<br>
+![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról, a Kiemelt eltávolítással](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (RBAC szakasz vége)
 
 ## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Az Azure AD Connect állapotügynök telepítése](how-to-connect-health-agent-install.md)
+* [Azure AD Connect Health ügynök telepítése](how-to-connect-health-agent-install.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)
-* [Az Azure AD Connect Health használata szinkronizáláshoz](how-to-connect-health-sync.md)
+* [Szinkronizálás Azure AD Connect Health használata](how-to-connect-health-sync.md)
 * [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md)
-* [Azure AD Connect Health – gyakori kérdések](reference-connect-health-faq.md)
+* [Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)](reference-connect-health-faq.md)
 * [Az Azure AD Connect Health verzióelőzményei](reference-connect-health-version-history.md)

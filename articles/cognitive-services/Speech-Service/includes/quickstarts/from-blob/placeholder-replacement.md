@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: A blobstorageban tárolt beszédfelismerés – Beszédszolgáltatás'
+title: 'Gyors útmutató: a blob Storage szolgáltatásban tárolt beszéd felismerése'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: cb5b14bd5585c85947ef0dafeae1fb41cb8a4a5c
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887459"
 ---
 A következő értékeket kell lecserélnie:
 
- - `YourSubscriptionKey`: a Beszéderőforrás Azure **Portalkeys** lapján található
- - `YourServiceRegion`: a beszédfelismerési erőforrás Azure **portaljának áttekintése** lapján található
- - `YourFileUrl`: a Blob szolgáltatás / A Storage-fiók erőforráshoz az Azure Portal **tárolók** lapján található
+ - `YourSubscriptionKey`: a beszédfelismerési erőforrás Azure Portal **kulcsok** lapján található.
+ - `YourServiceRegion`: a beszédfelismerési erőforrás Azure Portal **Áttekintés** lapján található.
+ - `YourFileUrl`: a Storage-fiók erőforrásának Azure Portal **blob Service/tárolók** lapján található.
      - Válassza ki a megfelelő tárolót
      - Válassza ki a kívánt blobot
-     - Az **URL másolása** a **Tulajdonságok** lap alatt
+     - Az **URL-cím** másolása a **Tulajdonságok** lapon

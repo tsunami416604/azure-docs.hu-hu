@@ -1,6 +1,6 @@
 ---
-title: Az Azure klasszikus CLI-parancsai
-description: Az Azure parancssori felületének (CLI) parancsai az erőforrások kezeléséhez.
+title: Klasszikus Azure CLI-parancsok
+description: Az Azure parancssori felület (CLI) parancsai az erőforrások kezeléséhez.
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,42 +9,42 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
 ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250880"
 ---
-# <a name="azure-classic-cli-commands"></a>Az Azure klasszikus CLI-parancsai 
+# <a name="azure-classic-cli-commands"></a>Klasszikus Azure CLI-parancsok 
 
 [!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
-Ez a témakör az Azure klasszikus parancssori felületének telepítését ismerteti. A klasszikus parancssori felület elavult, és csak a klasszikus üzemi modellel használható. Az összes többi központi telepítéshez használja az [Azure CLI.For](https://docs.microsoft.com/cli/azure/)all other deployments, use the Azure CLI .
+Ez a témakör az Azure klasszikus parancssori felületének telepítését ismerteti. A klasszikus parancssori felület elavult, és csak a klasszikus üzemi modellel használható. Az összes többi központi telepítéshez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/)-t.
 
-Ez a cikk az Azure klasszikus parancssori felületének (CLI) parancsainak szintaxisát és beállításait tartalmazza, amelyeket általánosan azure-erőforrások létrehozásához és kezeléséhez használna. Ez nem teljes hivatkozás, és a CLI-verzió kissé eltérő parancsokat vagy paramétereket jeleníthet meg. 
+Ez a cikk a klasszikus Azure parancssori felület (CLI) azon parancsainak szintaxisát és beállításait ismerteti, amelyeket általában Azure-erőforrások létrehozására és kezelésére használhat. Ez nem egy teljes hivatkozás, és a CLI-verziója némileg eltérő parancsokat vagy paramétereket is megjeleníthet. 
 
-Első lépésekhez először [telepítse az Azure klasszikus CLI-t,](../cli-install-nodejs.md) és [csatlakozzon azure-előfizetéséhez.](/cli/azure/authenticate-azure-cli)
+Első lépésként [telepítse a klasszikus Azure CLI](../cli-install-nodejs.md) -t, és [kapcsolódjon az Azure-előfizetéséhez](/cli/azure/authenticate-azure-cli).
 
-Az Erőforrás-kezelő mód parancssorában található aktuális parancsszintaxis és beállítások esetén írja be, `azure help` vagy egy adott parancs súgójának megjelenítéséhez írja be a parancsot. `azure help [command]` Cli-példákat is találhat az adott Azure-szolgáltatások létrehozásához és kezeléséhez szükséges dokumentációban.
+Az aktuális parancs szintaxisa és a parancssorban a Resource Manager módban írja be `azure help` a (z) vagy parancsot, ha egy adott parancs `azure help [command]`súgóját szeretné megjeleníteni. Az adott Azure-szolgáltatások létrehozásához és kezeléséhez használt dokumentációban is található CLI-példák.
 
-A választható paraméterek szögletes zárójelben `[parameter]`jelennek meg (például ). Minden más paraméter szükséges.
+A választható paraméterek szögletes zárójelben jelennek meg (például: `[parameter]`). Minden egyéb paraméter megadása kötelező.
 
-Az itt dokumentált parancsspecifikus választható paraméterek mellett három választható paraméter is használható részletes kimenet megjelenítésére, például kérési beállítások és állapotkódok megjelenítésére. A `-v` paraméter részletes kimenetet biztosít, és a `-vv` paraméter még részletesebb részletes kimenetet biztosít. A `--json` beállítás nyers json formátumban adja ki az eredményt.
+Az itt dokumentált parancs-specifikus paraméterek mellett három opcionális paraméter is használható a részletes kimenet, például a kérelmek és az állapotkódok megjelenítéséhez. A `-v` paraméter részletes kimenetet biztosít, és a `-vv` paraméter még részletesebb részletes kimenetet biztosít. A `--json` kapcsoló nyers JSON formátumban jeleníti meg az eredményt.
 
-## <a name="setting-the-resource-manager-mode"></a>Az Erőforrás-kezelő mód beállítása
-Az Azure CLI Resource Manager mode parancsainak engedélyezéséhez használja a következő parancsot.
+## <a name="setting-the-resource-manager-mode"></a>A Resource Manager üzemmód beállítása
+Az alábbi parancs használatával engedélyezheti az Azure CLI Resource Manager üzemmód parancsait.
 
     azure config mode arm
 
 > [!NOTE]
-> A CLI Azure Resource Manager és az Azure Service Management mód kölcsönösen kizárják egymást. Ez azt illeti, az egyik módban létrehozott erőforrások nem kezelhetők a másik módból.
+> A CLI Azure Resource Manager mód és az Azure Service Management mód kölcsönösen kizárják egymást. Ez azt eredményezi, hogy az egyik módban létrehozott erőforrások nem kezelhetők a másik módból.
 >
 
 
 ## <a name="account-information"></a>Fiók adatai
-Az Eszköz az Azure-előfizetési adatait használja a fiókjához való csatlakozáshoz.
+Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcsolódáshoz.
 
-**Az importált előfizetések felsorolása**
+**Az importált előfizetések listázása**
 
     account list [options]
 
@@ -56,11 +56,11 @@ Az Eszköz az Azure-előfizetési adatait használja a fiókjához való csatlak
 
     account set [options] <subscriptionNameOrId>
 
-**Előfizetés vagy környezet eltávolítása, illetve a tárolt fiók- és környezetadatok törlése**  
+**Előfizetés vagy környezet eltávolítása, illetve az összes tárolt fiók és környezeti információ törlése**  
 
     account clear [options]
 
-**A fiókkörnyezet kezelésére szolgáló parancsok**  
+**A fiók környezetét kezelő parancsok**  
 
     account env list [options]
     account env show [options] [environment]
@@ -68,47 +68,47 @@ Az Eszköz az Azure-előfizetési adatait használja a fiókjához való csatlak
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="active-directory-objects"></a>Active Directory-objektumok
-**Az active directory alkalmazások megjelenítésének parancsai**
+## <a name="active-directory-objects"></a>Objektumok Active Directory
+**Az Active Directory-alkalmazások megjelenítésére szolgáló parancsok**
 
     ad app create [options]
     ad app delete [options] <object-id>
 
-**Az active directorycsoportok megjelenítésére irányuló parancsok**
+**Az Active Directory-csoportok megjelenítésére szolgáló parancsok**
 
     ad group list [options]
     ad group show [options]
 
-**Active directory alcsoport- vagy tagadatok megadására vonatkozó parancsok**
+**Az Active Directory alcsoportot vagy a tagok adatait biztosító parancsok**
 
     ad group member list [options] [objectId]
 
-**Az active directory szolgáltatásnévi tagok megjelenítésére irányuló parancsok**
+**Az Active Directory egyszerű szolgáltatásait megjelenítő parancsok**
 
     ad sp list [options]
     ad sp show [options]
     ad sp create [options] <application-id>
     ad sp delete [options] <object-id>
 
-**Az active directory-felhasználók megjelenítésére irányuló parancsok**
+**Az Active Directory-felhasználók megjelenítésére szolgáló parancsok**
 
     ad user list [options]
     ad user show [options]
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-**Erőforráscsoporton belül rendelkezésre állási készlet létrehozása**
+**Rendelkezésre állási csoport létrehozása egy erőforráscsoporthoz**
 
     availset create [options] <resource-group> <name> <location> [tags]
 
-**Az erőforráscsoporton belüli rendelkezésre állási csoportok listája**
+**Az erőforráscsoporthoz tartozó rendelkezésre állási csoportok felsorolása**
 
     availset list [options] <resource-group>
 
-**Egy erőforráscsoporton belüli rendelkezésre állási csoport bekerülési elemének beggyele**
+**Egy erőforráscsoport egy rendelkezésre állási csoportjának beolvasása**
 
     availset show [options] <resource-group> <name>
 
-**Egy erőforráscsoporton belüli rendelkezésre állási csoport törlése**
+**Egy erőforráscsoport összes rendelkezésre állási csoportjának törlése**
 
     availset delete [options] <resource-group> <name>
 
@@ -125,30 +125,30 @@ Az Eszköz az Azure-előfizetési adatait használja a fiókjához való csatlak
 
     config set <name> <value>
 
-**Az Azure CLI munkamódot `arm``asm`**
+**Beállítja az Azure CLI munkamódszerét `arm` vagy`asm`**
 
     config mode [options] <modename>
 
 
-## <a name="account-features"></a>Fiók funkciók
+## <a name="account-features"></a>Fiók funkciói
 **Az előfizetéshez elérhető összes funkció listázása**
 
     feature list [options]
 
-**Egy funkció megjelenítése**
+**Egy szolgáltatás megjelenítése**
 
     feature show [options] <providerName> <featureName>
 
-**Erőforrás-szolgáltató előzetes funkciójának regisztrálása**
+**Egy erőforrás-szolgáltató előzetesen megtekintett funkciójának regisztrálása**
 
     feature register [options] <providerName> <featureName>
 
 ## <a name="resource-groups"></a>Erőforráscsoportok
-**Erőforráscsoport létrehozása**
+**Létrehoz egy erőforráscsoportot**
 
     group create [options] <name> <location>
 
-**Címkék beállítása erőforráscsoportra**
+**Címkék beállítása erőforráscsoporthoz**
 
     group set [options] <name> <tags>
 
@@ -156,11 +156,11 @@ Az Eszköz az Azure-előfizetési adatait használja a fiókjához való csatlak
 
     group delete [options] <name>
 
-**Az előfizetés erőforráscsoportjainak listája**
+**Az előfizetéshez tartozó erőforráscsoportok listája**
 
     group list [options]
 
-**Erőforráscsoport megjelenítése az előfizetéshez**
+**Az előfizetéshez tartozó erőforráscsoport megjelenítése**
 
     group show [options] <name>
 
@@ -168,14 +168,14 @@ Az Eszköz az Azure-előfizetési adatait használja a fiókjához való csatlak
 
     group log show [options] [name]
 
-**A központi telepítés erőforráscsoportban történő kezelésére szolgáló parancsok**
+**Az üzemelő példányok erőforráscsoporthoz való felügyeletére szolgáló parancsok**
 
     group deployment create [options] [resource-group] [name]
     group deployment list [options] <resource-group> [state]
     group deployment show [options] <resource-group> [deployment-name]
     group deployment stop [options] <resource-group> [deployment-name]
 
-**A helyi vagy katalóguserőforrás-csoportsablon kezelésére szolgáló parancsok**
+**A helyi vagy a katalógus erőforráscsoport-sablonjának kezelésére szolgáló parancsok**
 
     group template list [options]
     group template show [options] <name>
@@ -183,19 +183,19 @@ Az Eszköz az Azure-előfizetési adatait használja a fiókjához való csatlak
     group template validate [options] <resource-group>
 
 ## <a name="hdinsight-clusters"></a>HDInsight-fürtök
-**Fürtkonfigurációs fájl létrehozásához vagy hozzáadásához szükséges parancsok**
+**A fürt konfigurációs fájljának létrehozásához vagy hozzáadásához szükséges parancsok**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
 
-Példa: Hozzon létre egy konfigurációs fájlt, amely fürt létrehozásakor futtatandó parancsfájlműveletet tartalmaz.
+Példa: hozzon létre egy konfigurációs fájlt, amely tartalmazza a fürt létrehozásakor futtatandó parancsfájl-műveletet.
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
 
-**Fürt létrehozása erőforráscsoportban**
+**Parancs fürt létrehozásához egy erőforráscsoporthoz**
 
     hdinsight cluster create [options] <clusterName>
 
@@ -207,7 +207,7 @@ Példa: Storm létrehozása Linux-fürtön
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-Példa: Fürt létrehozása parancsfájlművelettel
+Példa: hozzon létre egy fürtöt parancsfájl-művelettel.
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 
@@ -215,7 +215,7 @@ Példa: Fürt létrehozása parancsfájlművelettel
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                                 output usage information
     -v, --verbose                                              use verbose output
@@ -269,7 +269,7 @@ Paraméterbeállítások:
     For example, --tags tag1=value1;tag2
 
 
-**Fürt törlésére irányuló parancs**
+**A fürt törlésére szolgáló parancs**
 
     hdinsight cluster delete [options] <clusterName>
 
@@ -277,45 +277,45 @@ Paraméterbeállítások:
 
     hdinsight cluster show [options] <clusterName>
 
-**Parancs az összes fürt listázásához (adott erőforráscsoportban, ha van ilyen)**
+**Parancs az összes fürt listázásához (adott erőforráscsoporthoz, ha meg van adni)**
 
     hdinsight cluster list [options]
 
-**Fürt átméretezésének parancsa**
+**A fürt átméretezésére szolgáló parancs**
 
     hdinsight cluster resize [options] <clusterName> <targetInstanceCount>
 
-**Parancs a fürt HTTP-hozzáférésének engedélyezéséhez**
+**A fürt HTTP-hozzáférésének engedélyezésére szolgáló parancs**
 
     hdinsight cluster enable-http-access [options] <clusterName> <userName> <password>
 
-**Parancs a fürt HTTP-hozzáférésének letiltásához**
+**A fürt HTTP-hozzáférésének letiltására szolgáló parancs**
 
     hdinsight cluster disable-http-access [options] <clusterName>
 
-**Parancs az RDP-hozzáférés engedélyezéséhez fürthöz**
+**A fürt RDP-hozzáférésének engedélyezésére szolgáló parancs**
 
     hdinsight cluster enable-rdp-access [options] <clusterName> <rdpUserName> <rdpPassword> <rdpExpiryDate>
 
-**Parancs a fürt HTTP-hozzáférésének letiltásához**
+**A fürt HTTP-hozzáférésének letiltására szolgáló parancs**
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Elemzések (események, riasztási szabályok, automatikus méretezési beállítások, metrikák)
-**Előfizetés, korrelációs azonosító, erőforráscsoport, erőforrás- vagy erőforrás-szolgáltató működési naplóinak lekérése**
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Bepillantások (események, riasztási szabályok, autoskálázási beállítások, metrikák)
+**Egy előfizetéshez, correlationId, erőforráscsoporthoz, erőforráshoz vagy erőforrás-szolgáltatóhoz tartozó műveleti naplók beolvasása**
 
     insights logs list [options]
 
 ## <a name="locations"></a>Helyek 
-**Az elérhető helyek felsorolása**
+**Az elérhető helyszínek listázása**
 
     location list [options]
 
 ## <a name="network-resources"></a>Hálózati erőforrások
-**A virtuális hálózatok kezelésére szolgáló parancsok**
+**Virtuális hálózatok kezelésére szolgáló parancsok**
 
     network vnet create [options] <resource-group> <name> <location>
-Virtuális hálózatot hoz létre. A következő példában hozzunk létre egy virtuális hálózat nevű newvnet erőforráscsoport myresourcegroup az USA nyugati régiójában.
+Virtuális hálózatot hoz létre. A következő példában létrehozunk egy newvnet nevű virtuális hálózatot az erőforráscsoport myresourcegroup az USA nyugati régiójában.
 
     azure network vnet create myresourcegroup newvnet "west us"
     info:    Executing command network vnet create
@@ -336,7 +336,7 @@ Virtuális hálózatot hoz létre. A következő példában hozzunk létre egy v
     info:    network vnet create command OK
 
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
      -h, --help                                 output usage information
      -v, --verbose                              use verbose output
@@ -358,7 +358,7 @@ Paraméterbeállítások:
 
     network vnet set [options] <resource-group> <name>
 
-Egy erőforráscsoporton belüli virtuális hálózati konfiguráció frissítése.
+Egy erőforráscsoport virtuális hálózati konfigurációjának frissítése.
 
     azure network vnet set myresourcegroup newvnet
 
@@ -379,7 +379,7 @@ Egy erőforráscsoporton belüli virtuális hálózati konfiguráció frissíté
     data:
     info:    network vnet set command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
        -h, --help                                 output usage information
        -v, --verbose                              use verbose output
@@ -406,7 +406,7 @@ Paraméterbeállítások:
 
     network vnet list [options] <resource-group>
 
-A parancs felsorolja az erőforráscsoport összes virtuális hálózatát.
+A parancs az erőforráscsoport összes virtuális hálózatát listázza.
 
     C:\>azure network vnet list myresourcegroup
 
@@ -420,7 +420,7 @@ A parancs felsorolja az erőforráscsoport összes virtuális hálózatát.
     wvnet   newvnet   westus    10.0.0.0/8
     info:    network vnet list command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
       -h, --help                             output usage information
       -v, --verbose                          use verbose output
@@ -431,7 +431,7 @@ Paraméterbeállítások:
 <BR>
 
     network vnet show [options] <resource-group> <name>
-A parancs egy erőforráscsoport virtuális hálózati tulajdonságait jeleníti meg.
+A parancs egy erőforráscsoport virtuális hálózatának tulajdonságait jeleníti meg.
 
     azure network vnet show -g myresourcegroup -n newvnet
 
@@ -462,7 +462,7 @@ A parancs eltávolítja a virtuális hálózatot.
     + Deleting virtual network "newvnetX"
     info:    network vnet delete command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -473,11 +473,11 @@ Paraméterbeállítások:
      -s, --subscription <subscription>      the subscription identifier
 
 
-**A virtuális hálózati alhálózatok kezelésére szolgáló parancsok**
+**Virtuális hálózati alhálózatok kezelésére szolgáló parancsok**
 
     network vnet subnet create [options] <resource-group> <vnet-name> <name>
 
-Egy másik alhálózatot ad hozzá egy meglévő virtuális hálózathoz.
+Egy másik alhálózatot rendel egy meglévő virtuális hálózathoz.
 
     azure network vnet subnet create -g myresourcegroup --vnet-name newvnet -n subnet --address-prefix 10.0.1.0/24
 
@@ -492,7 +492,7 @@ Egy másik alhálózatot ad hozzá egy meglévő virtuális hálózathoz.
     data:    Address prefix:            10.0.1.0/24
     info:    network vnet subnet create command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
      -h, --help                                                       output usage information
      -v, --verbose                                                    use verbose output
@@ -510,7 +510,7 @@ Paraméterbeállítások:
 
     network vnet subnet set [options] <resource-group> <vnet-name> <name>
 
-Egy adott virtuális hálózati alhálózatot állít be egy erőforráscsoporton belül.
+Egy erőforráscsoport adott virtuális hálózati alhálózatának beállítása.
 
     C:\>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -528,7 +528,7 @@ Egy adott virtuális hálózati alhálózatot állít be egy erőforráscsoporto
 
     network vnet subnet list [options] <resource-group> <vnet-name>
 
-Egy erőforráscsoporton belül egy adott virtuális hálózat összes virtuális hálózati alhálózatának listája.
+Az erőforráscsoport egy adott virtuális hálózatának összes virtuális hálózati alhálózatát listázza.
 
     azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -545,7 +545,7 @@ Egy erőforráscsoporton belül egy adott virtuális hálózat összes virtuáli
 <BR>
 
     network vnet subnet show [options] <resource-group> <vnet-name> <name>
-A virtuális hálózat alhálózati tulajdonságainak megjelenítése
+Virtuális hálózati alhálózat tulajdonságainak megjelenítése
 
     azure network vnet subnet show -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -559,7 +559,7 @@ A virtuális hálózat alhálózati tulajdonságainak megjelenítése
     data:    Address prefix:            10.0.1.0/24
     info:    network vnet subnet show command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -571,7 +571,7 @@ Paraméterbeállítások:
 <BR>
 
     network vnet subnet delete [options] <resource-group> <vnet-name> <subnet-name>
-Alhálózat eltávolítása meglévő virtuális hálózatból.
+Eltávolít egy alhálózatot egy meglévő virtuális hálózatból.
 
     azure network vnet subnet delete -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -581,7 +581,7 @@ Alhálózat eltávolítása meglévő virtuális hálózatból.
     + Deleting subnet "subnet1"
     info:    network vnet subnet delete command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -592,10 +592,10 @@ Paraméterbeállítások:
      -s, --subscription <subscription>      the subscription identifier
      -q, --quiet                            quiet mode, do not ask for delete confirmation
 
-**A terheléselosztók kezelésére szolgáló parancsok**
+**A terheléselosztó kezelésére szolgáló parancsok**
 
     network lb create [options] <resource-group> <name> <location>
-Terheléselosztó készletet hoz létre.
+Létrehoz egy terheléselosztó-készletet.
 
     azure network lb create -g myresourcegroup -n mylb -l westus
 
@@ -610,7 +610,7 @@ Terheléselosztó készletet hoz létre.
     data:    Provisioning state:           Succeeded
     info:    network lb create command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -625,7 +625,7 @@ Paraméterbeállítások:
 <BR>
 
     network lb list [options] <resource-group>
-Az erőforráscsoporton belüli terheléselosztó-erőforrások listája.
+A terheléselosztó erőforrásait sorolja fel egy erőforráscsoporthoz.
 
     azure network lb list myresourcegroup
 
@@ -636,7 +636,7 @@ Az erőforráscsoporton belüli terheléselosztó-erőforrások listája.
     data:    mylb  westus
     info:    network lb list command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -647,7 +647,7 @@ Paraméterbeállítások:
 
     network lb show [options] <resource-group> <name>
 
-Egy erőforráscsoporton belüli adott terheléselosztó terheléselosztóadatainak megjelenítése
+Egy adott terheléselosztó terheléselosztási információit jeleníti meg egy adott erőforráson belül
 
     azure network lb show myresourcegroup mylb -v
 
@@ -660,7 +660,7 @@ Egy erőforráscsoporton belüli adott terheléselosztó terheléselosztóadatai
     data:    Provisioning state:           Succeeded
     info:    network lb show command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -673,7 +673,7 @@ Paraméterbeállítások:
 
     network lb delete [options] <resource-group> <name>
 
-Terheléselosztó-erőforrások törlése.
+A terheléselosztó erőforrásainak törlése.
 
     azure network lb delete  myresourcegroup mylb
 
@@ -683,7 +683,7 @@ Terheléselosztó-erőforrások törlése.
     + Deleting load balancer "mylb"
     info:    network lb delete command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -693,11 +693,11 @@ Paraméterbeállítások:
      -q, --quiet                            quiet mode, do not ask for delete confirmation
      -s, --subscription <subscription>      the subscription identifier
 
-**A terheléselosztó szondáinak kezelésére szolgáló parancsok**
+**A Load Balancer szondáinak kezelésére szolgáló parancsok**
 
     network lb probe create [options] <resource-group> <lb-name> <name>
 
-Hozza létre a mintavételkonfigurációt a terheléselosztó állapotának állapotához. Ne feledje, hogy a parancs futtatásához a terheléselosztó hoz egy frontend-ip erőforrás (Check out parancs "azure network frontend-ip" ip-cím hozzárendeléséhez terheléselosztó).
+Hozza létre a mintavételi konfigurációt az állapothoz a terheléselosztó számára. Ne feledje, hogy a parancs futtatásához a terheléselosztó egy előtér-IP-erőforrást igényel (az "Azure Network frontend-IP" paranccsal rendeljen hozzá egy IP-címet a terheléselosztó számára).
 
     azure network lb probe create -g myresourcegroup --lb-name mylb -n mylbprobe --protocol tcp --port 80 -i 300
 
@@ -706,7 +706,7 @@ Hozza létre a mintavételkonfigurációt a terheléselosztó állapotának áll
     + Updating load balancer "mylb"
     info:    network lb probe create command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -725,7 +725,7 @@ Paraméterbeállítások:
 
     network lb probe set [options] <resource-group> <lb-name> <name>
 
-Egy meglévő terheléselosztó-mintavételt új értékekkel frissít.
+Frissíti egy meglévő terheléselosztó-mintavételt új értékekkel.
 
     azure network lb probe set -g myresourcegroup -l mylb -n mylbprobe -p mylbprobe1 -p TCP -o 443 -i 300
 
@@ -734,7 +734,7 @@ Egy meglévő terheléselosztó-mintavételt új értékekkel frissít.
     + Updating load balancer "mylb"
     info:    network lb probe set command OK
 
-Paraméterbeállítások
+Paraméterek beállításai
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -753,7 +753,7 @@ Paraméterbeállítások
 
     network lb probe list [options] <resource-group> <lb-name>
 
-A terheléselosztó készlet mintavételi tulajdonságainak listázása.
+A terheléselosztó-készlet mintavételi tulajdonságainak listázása.
 
     C:\>azure network lb probe list -g myresourcegroup -l mylb
 
@@ -764,7 +764,7 @@ A terheléselosztó készlet mintavételi tulajdonságainak listázása.
     data:    mylbprobe  Tcp       443         300       2
     info:    network lb probe list command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -775,7 +775,7 @@ Paraméterbeállítások:
 
 
     network lb probe delete [options] <resource-group> <lb-name> <name>
-Eltávolítja a terheléselosztóhoz létrehozott mintavételt.
+Eltávolítja a terheléselosztó számára létrehozott mintavételt.
 
     azure network lb probe delete -g myresourcegroup -l mylb -n mylbprobe
 
@@ -785,10 +785,10 @@ Eltávolítja a terheléselosztóhoz létrehozott mintavételt.
     + Updating load balancer "mylb"
     info:    network lb probe delete command OK
 
-**A terheléselosztó előtér ip-konfigurációinak kezelésére szolgáló parancsok**
+**Parancsok a terheléselosztó előtér-IP-konfigurációinak kezeléséhez**
 
     network lb frontend-ip create [options] <resource-group> <lb-name> <name>
-Előtér-IP-konfigurációt hoz létre egy meglévő terheléselosztó készlethez.
+Előtérbeli IP-konfigurációt hoz létre egy meglévő terheléselosztó-készlethez.
 
     azure network lb frontend-ip create -g myresourcegroup --lb-name mylb -n myfrontendip -o Dynamic -e subnet -m newvnet
 
@@ -816,7 +816,7 @@ Előtér-IP-konfigurációt hoz létre egy meglévő terheléselosztó készleth
 
     network lb frontend-ip set [options] <resource-group> <lb-name> <name>
 
-Az előtér IP-cím meglévő konfigurációjának frissítése. Az alábbi parancs hozzáad egy nyilvános IP nevű mypubip5 egy meglévő terheléselosztó frontend IP nevű myfrontendip.
+Frissíti egy előtérbeli IP-cím meglévő konfigurációját. Az alábbi parancs egy mypubip5 nevű nyilvános IP-címet hoz létre egy meglévő, myfrontendip nevű Load Balancer-előtérbeli IP-címhez.
 
     azure network lb frontend-ip set -g myresourcegroup --lb-name mylb -n myfrontendip -i mypubip5
 
@@ -839,7 +839,7 @@ Az előtér IP-cím meglévő konfigurációjának frissítése. Az alábbi para
     data:
     info:    network lb frontend-ip set command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                                         output usage information
     -v, --verbose                                                      use verbose output
@@ -866,7 +866,7 @@ Paraméterbeállítások:
 
     network lb frontend-ip list [options] <resource-group> <lb-name>
 
-A terheléselosztóhoz konfigurált összes előtér-IP-erőforrás t.
+Felsorolja a terheléselosztó számára konfigurált összes előtér-IP-erőforrást.
 
     azure network lb frontend-ip list -g myresourcegroup -l mylb
 
@@ -877,7 +877,7 @@ A terheléselosztóhoz konfigurált összes előtér-IP-erőforrás t.
     data:    myprivateip  Succeeded           Dynamic
     info:    network lb frontend-ip list command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -888,7 +888,7 @@ Paraméterbeállítások:
 <BR>
 
     network lb frontend-ip delete [options] <resource-group> <lb-name> <name>
-A terheléselosztóhoz társított előtér-IP-objektum törlése
+A Load Balancerhez társított előtéri IP-objektum törlése
 
     network lb frontend-ip delete -g myresourcegroup -l mylb -n myfrontendip
     info:    Executing command network lb frontend-ip delete
@@ -896,7 +896,7 @@ A terheléselosztóhoz társított előtér-IP-objektum törlése
     Delete frontend ip configuration "myfrontendip"? [y/n] y
     + Updating load balancer "mylb"
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -907,11 +907,11 @@ Paraméterbeállítások:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**A terheléselosztó háttércímkészleteinek kezelésére szolgáló parancsok**
+**A terheléselosztó háttérbeli címkészlet kezelésére szolgáló parancsok**
 
     network lb address-pool create [options] <resource-group> <lb-name> <name>
 
-Hozzon létre egy háttér-címkészletet egy terheléselosztóhoz.
+Hozzon létre egy háttér-címkészletet a terheléselosztó számára.
 
     azure network lb address-pool create -g myresourcegroup --lb-name mylb -n myaddresspool
 
@@ -928,7 +928,7 @@ Hozzon létre egy háttér-címkészletet egy terheléselosztóhoz.
     data:
     info:    network lb address-pool create command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -942,7 +942,7 @@ Paraméterbeállítások:
 
     network lb address-pool list [options] <resource-group> <lb-name>
 
-Háttérprogram IP-címkészletének listázása egy adott erőforráscsoporthoz
+Egy adott erőforráscsoport háttérbeli IP-címkészlet-tartományának listázása
 
     azure network lb address-pool list -g myresourcegroup -l mylb
 
@@ -953,7 +953,7 @@ Háttérprogram IP-címkészletének listázása egy adott erőforráscsoporthoz
     data:    mybackendpool  Succeeded
     info:    network lb address-pool list command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -966,7 +966,7 @@ Paraméterbeállítások:
 
     network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
-Eltávolítja a háttér-IP-készlettartomány-erőforrást a terheléselosztóból.
+Eltávolítja a háttérbeli IP-készlet tartományának erőforrását a Load balancerből.
 
     azure network lb address-pool delete -g myresourcegroup -l mylb -n mybackendpool
 
@@ -976,7 +976,7 @@ Eltávolítja a háttér-IP-készlettartomány-erőforrást a terheléselosztób
     + Updating load balancer "mylb"
     info:    network lb address-pool delete command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -990,11 +990,11 @@ Paraméterbeállítások:
 **A terheléselosztó szabályainak kezelésére szolgáló parancsok**
 
     network lb rule create [options] <resource-group> <lb-name> <name>
-Terheléselosztó szabályok létrehozása.
+Hozzon létre terheléselosztó-szabályokat.
 
-Létrehozhat egy terheléselosztó szabályt, amely konfigurálja az előtér-végpontot a terheléselosztóhoz és a háttércímkészlet tartományához a bejövő hálózati forgalom fogadásához. A beállítások tartalmazzák az előtér-IP-végpont portjait és a háttércímkészlet-tartomány portjait is.
+Létrehozhat egy terheléselosztó-szabályt, amely a Load Balancer és a háttérbeli címkészlet végpontját konfigurálja a bejövő hálózati forgalom fogadásához. A beállítások a háttérbeli címkészlet tartományához tartozó előtérbeli IP-végpontok és portok portjait is tartalmazzák.
 
-A következő példa bemutatja, hogyan hozhat létre egy terheléselosztó szabályt, az előtér-végpontot, amely a 80 TCP portot hallgatja, és a terheléselosztási hálózati forgalmat a háttérrendszer címkészlettartományának 8080-as portjára küldve.
+Az alábbi példa bemutatja, hogyan hozhat létre egy terheléselosztó-szabályt, az előtér-végpont a 80-as TCP-portra és a 8080-es portra küldött terheléselosztási hálózati forgalmat a háttérbeli címkészlet tartományához.
 
     azure network lb rule create -g myresourcegroup -l mylb -n mylbrule -p tcp -f 80 -b 8080 -i 10
 
@@ -1022,7 +1022,7 @@ A következő példa bemutatja, hogyan hozhat létre egy terheléselosztó szab�
 
     network lb rule set [options] <resource-group> <lb-name> <name>
 
-Egy adott erőforráscsoportban beállított meglévő terheléselosztó szabályfrissítése. A következő példában megváltoztattuk a szabály nevét mylbrule-ről mynewlbrule-re.
+Egy meglévő terheléselosztó-szabályt frissít egy adott erőforráscsoporthoz. A következő példában a szabály nevét módosítottuk a mylbrule és a mynewlbrule között.
 
     azure network lb rule set -g myresourcegroup -l mylb -n mylbrule -r mynewlbrule -p tcp -f 80 -b 8080 -i 10 -t myfrontendip -o mybackendpool
 
@@ -1045,7 +1045,7 @@ Egy adott erőforráscsoportban beállított meglévő terheléselosztó szabál
     data:
     info:    network lb rule set command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                         output usage information
     -v, --verbose                                      use verbose output
@@ -1067,7 +1067,7 @@ Paraméterbeállítások:
 
     network lb rule list [options] <resource-group> <lb-name>
 
-Egy adott erőforráscsoport terheléselosztóhoz konfigurált összes terheléselosztó-szabály listázása.
+Felsorolja az adott erőforráscsoport terheléselosztó számára konfigurált terheléselosztó-szabályokat.
 
     azure network lb rule list -g myresourcegroup -l mylb
 
@@ -1078,7 +1078,7 @@ Egy adott erőforráscsoport terheléselosztóhoz konfigurált összes terhelés
     data:    mynewlbrule  Succeeded           Tcp       80             8080          false               10                       /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/mybackendpool
     info:    network lb rule list command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1089,7 +1089,7 @@ Paraméterbeállítások:
 
     network lb rule delete [options] <resource-group> <lb-name> <name>
 
-Egy terheléselosztó szabály törlése.
+Töröl egy terheléselosztó-szabályt.
 
     azure network lb rule delete -g myresourcegroup -l mylb -n mynewlbrule
 
@@ -1099,7 +1099,7 @@ Egy terheléselosztó szabály törlése.
     + Updating load balancer "mylb"
     info:    network lb rule delete command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1110,12 +1110,12 @@ Paraméterbeállítások:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**A terheléselosztó bejövő NAT-szabályainak kezelésére szolgáló parancsok**
+**A terheléselosztó bejövő NAT-szabályainak kezeléséhez szükséges parancsok**
 
     network lb inbound-nat-rule create [options] <resource-group> <lb-name> <name>
-Bejövő NAT-szabályt hoz létre a terheléselosztóhoz.
+Létrehoz egy bejövő NAT-szabályt a terheléselosztó számára.
 
-A következő példában létrehoztunk egy NAT-szabályt az előtér-IP-címről (amelyet korábban az "azure network frontend-ip" paranccsal definiáltunk) egy bejövő figyelőporttal és kimenő porttal, amelyet a terheléselosztó a hálózati forgalom küldéséhez használ.
+A következő példában létrehozunk egy NAT-szabályt az előtér-IP-címről (amely korábban az "Azure Network frontend-IP" paranccsal lett definiálva) egy bejövő figyelő porttal és kimenő porttal, amelyet a terheléselosztó a hálózati forgalom elküldéséhez használ.
 
     azure network lb inbound-nat-rule create -g myresourcegroup -l mylb -n myinboundnat -p tcp -f 80 -b 8080 -i myfrontendip
 
@@ -1135,7 +1135,7 @@ A következő példában létrehoztunk egy NAT-szabályt az előtér-IP-címről
     data:    Enable floating IP         false
     info:    network lb inbound-nat-rule create command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                     output usage information
     -v, --verbose                                  use verbose output
@@ -1157,7 +1157,7 @@ Paraméterbeállítások:
 <BR>
 
     network lb inbound-nat-rule set [options] <resource-group> <lb-name> <name>
-Egy meglévő bejövő nat-szabály frissítése. A következő példában a bejövő figyelőport80-ról 81-re módosítottuk.
+Frissíti egy meglévő bejövő NAT-szabályt. A következő példában a 80 és 81 közötti bejövő figyelési portot módosítottuk.
 
     azure network lb inbound-nat-rule set -g group-1 -l mylb -n myinboundnat -p tcp -f 81 -b 8080 -i myfrontendip
 
@@ -1177,7 +1177,7 @@ Egy meglévő bejövő nat-szabály frissítése. A következő példában a bej
     data:    Enable floating IP         false
     info:    network lb inbound-nat-rule set command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                     output usage information
     -v, --verbose                                  use verbose output
@@ -1200,7 +1200,7 @@ Paraméterbeállítások:
 
     network lb inbound-nat-rule list [options] <resource-group> <lb-name>
 
-A terheléselosztó összes bejövő nat-szabályának listája.
+Felsorolja a Load Balancer összes bejövő NAT-szabályát.
 
     azure network lb inbound-nat-rule list -g myresourcegroup -l mylb
 
@@ -1213,7 +1213,7 @@ A terheléselosztó összes bejövő nat-szabályának listája.
 
     info:    network lb inbound-nat-rule list command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1225,7 +1225,7 @@ Paraméterbeállítások:
 
     network lb inbound-nat-rule delete [options] <resource-group> <lb-name> <name>
 
-Egy adott erőforráscsoport terheléselosztójának NAT-szabálytörlése.
+Törli a terheléselosztó NAT-szabályát egy adott erőforráscsoport esetében.
 
     azure network lb inbound-nat-rule delete -g myresourcegroup -l mylb -n myinboundnat
 
@@ -1235,7 +1235,7 @@ Egy adott erőforráscsoport terheléselosztójának NAT-szabálytörlése.
     + Updating load balancer "mylb"
     info:    network lb inbound-nat-rule delete command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1246,10 +1246,10 @@ Paraméterbeállítások:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Nyilvános IP-címek kezelésére szolgáló parancsok**
+**A nyilvános IP-címek kezelésére szolgáló parancsok**
 
     network public-ip create [options] <resource-group> <name> <location>
-Nyilvános ip-erőforrást hoz létre. Létre fogja hozni a nyilvános IP-erőforrást, és egy tartománynévhez társítja.
+Létrehoz egy nyilvános IP-erőforrást. Létrehoz egy nyilvános IP-erőforrást, és hozzárendeli a tartománynevet.
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
     info:    Executing command network public-ip create
@@ -1268,7 +1268,7 @@ Nyilvános ip-erőforrást hoz létre. Létre fogja hozni a nyilvános IP-erőfo
     info:    network public-ip create command OK
 
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                   output usage information
     -v, --verbose                                use verbose output
@@ -1289,7 +1289,7 @@ Paraméterbeállítások:
 <br>
 
     network public-ip set [options] <resource-group> <name>
-Egy meglévő nyilvános IP-erőforrás tulajdonságait frissíti. A következő példában a nyilvános IP-címet dinamikusról statikusra módosítottuk.
+Egy meglévő nyilvános IP-erőforrás tulajdonságainak frissítése. A következő példában a nyilvános IP-címet Dinamikusról statikusra módosították.
 
     azure network public-ip set -g group-1 -n mytestpublicip1 -d azureclitest -a "Static"
     info:    Executing command network public-ip set
@@ -1308,7 +1308,7 @@ Egy meglévő nyilvános IP-erőforrás tulajdonságait frissíti. A következő
     data:    FQDN:                 azureclitest.eastus.cloudapp.azure.com
     info:    network public-ip set command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                   output usage information
     -v, --verbose                                use verbose output
@@ -1330,7 +1330,7 @@ Paraméterbeállítások:
 <br>
 
     network public-ip list [options] <resource-group>
-Az erőforráscsoporton belüli összes nyilvános IP-erőforrás felsorasztása.
+Az erőforráscsoporthoz tartozó összes nyilvános IP-erőforrás felsorolása.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1343,7 +1343,7 @@ Az erőforráscsoporton belüli összes nyilvános IP-erőforrás felsorasztása
     data:    mytestpublicip   eastus    Dynamic                   4             "domain name".eastus.cloudapp.azure.com
     data:    mytestpublicip1  eastus   Static (Static IP address) 4             azureclitest.eastus.cloudapp.azure.com
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1355,7 +1355,7 @@ Paraméterbeállítások:
 
     network public-ip show [options] <resource-group> <name>
 
-Nyilvános IP-tulajdonságok megjelenítése egy erőforráscsoporton belüli nyilvános IP-erőforráshoz.
+Egy erőforráscsoport nyilvános IP-erőforrásának nyilvános IP-tulajdonságait jeleníti meg.
 
     azure network public-ip show -g myresourcegroup -n mytestpublicip
 
@@ -1373,7 +1373,7 @@ Nyilvános IP-tulajdonságok megjelenítése egy erőforráscsoporton belüli ny
     data:    FQDN:                 azureclitest.eastus.cloudapp.azure.com
     info:    network public-ip show command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1385,7 +1385,7 @@ Paraméterbeállítások:
 
     network public-ip delete [options] <resource-group> <name>
 
-Törli a nyilvános ip-erőforrást.
+Törli a nyilvános IP-erőforrást.
 
     azure network public-ip delete -g group-1 -n mypublicipname
     info:    Executing command network public-ip delete
@@ -1394,7 +1394,7 @@ Törli a nyilvános ip-erőforrást.
     + Deleting public ip address "mypublicipname"
     info:    network public-ip delete command OK
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1408,7 +1408,7 @@ Paraméterbeállítások:
 **A hálózati adapterek kezelésére szolgáló parancsok**
 
     network nic create [options] <resource-group> <name> <location>
-Létrehoz egy hálózati adapternevű erőforrást, amely terheléselosztókhoz vagy virtuális géphez társítható.
+Létrehoz egy hálózati adapter (NIC) nevű erőforrást, amely terheléselosztáshoz vagy virtuális géphez való hozzárendeléshez használható.
 
     azure network nic create -g myresourcegroup -l eastus -n testnic1 --subnet-name subnet-1 --subnet-vnet-name myvnet
 
@@ -1429,7 +1429,7 @@ Létrehoz egy hálózati adapternevű erőforrást, amely terheléselosztókhoz 
     data:       Private IP Allocation Method: Dynamic
     data:       Subnet:                       /subscriptions/c4a17ddf-aa84-491c-b6f9-b90d882299f7/resourceGroups/group-1/providers/Microsoft.Network/virtualNetworks/myVNET/subnets/Subnet-1
 
-Paraméterbeállítások:
+Paraméter beállításai:
 
     -h, --help                                                       output usage information
     -v, --verbose                                                    use verbose output
@@ -1476,7 +1476,7 @@ Paraméterbeállítások:
     network nsg show [options] <resource-group> <name>
     network nsg delete [options] <resource-group> <name>
 
-**A hálózati biztonsági csoport szabályainak kezelésére szolgáló parancsok**
+**A hálózati biztonsági csoport szabályainak kezeléséhez szükséges parancsok**
 
     network nsg rule create [options] <resource-group> <nsg-name> <name>
     network nsg rule set [options] <resource-group> <nsg-name> <name>
@@ -1484,7 +1484,7 @@ Paraméterbeállítások:
     network nsg rule show [options] <resource-group> <nsg-name> <name>
     network nsg rule delete [options] <resource-group> <nsg-name> <name>
 
-**A forgalomkezelő profiljának kezelésére szolgáló parancsok**
+**A Traffic Manager-profil kezelésére szolgáló parancsok**
 
     network traffic-manager profile create [options] <resource-group> <name>
     network traffic-manager profile set [options] <resource-group> <name>
@@ -1493,7 +1493,7 @@ Paraméterbeállítások:
     network traffic-manager profile delete [options] <resource-group> <name>
     network traffic-manager profile is-dns-available [options] <resource-group> <relative-dns-name>
 
-**A forgalomkezelő végpontjainak kezelésére szolgáló parancsok**
+**A Traffic Manager-végpontok kezelésére szolgáló parancsok**
 
     network traffic-manager profile endpoint create [options] <resource-group> <profile-name> <name> <endpoint-location>
     network traffic-manager profile endpoint set [options] <resource-group> <profile-name> <name>
@@ -1503,12 +1503,12 @@ Paraméterbeállítások:
 
     network gateway list [options] <resource-group>
 
-## <a name="resource-provider-registrations"></a>Erőforrás-szolgáltató regisztrációi
-**Jelenleg regisztrált szolgáltatók listázása az Erőforrás-kezelőben**
+## <a name="resource-provider-registrations"></a>Erőforrás-szolgáltatói regisztrációk
+**Jelenleg regisztrált szolgáltatók listázása a Resource Managerben**
 
     provider list [options]
 
-**A kért szolgáltató névterének részleteinek megjelenítése**
+**A kért szolgáltatói névtér részleteinek megjelenítése**
 
     provider show [options] <namespace>
 
@@ -1516,33 +1516,33 @@ Paraméterbeállítások:
 
     provider register [options] <namespace>
 
-**Szolgáltató regisztrációjának megszüntetése az előfizetéssel**
+**Szolgáltató regisztrációjának törlése az előfizetéssel**
 
     provider unregister [options] <namespace>
 
-## <a name="resources"></a>Források
-**Erőforrás létrehozása erőforráscsoportban**
+## <a name="resources"></a>További források
+**Erőforrás-csoport létrehozása**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
 
-**Erőforráscsoport egyik erőforrásának frissítése sablonok és paraméterek nélkül**
+**Egy erőforráscsoport erőforrásának frissítése sablon vagy paraméterek nélkül**
 
     resource set [options] <resource-group> <name> <resource-type> <properties> <api-version>
 
-**Felsorolja az erőforrásokat**
+**Az erőforrások listája**
 
     resource list [options] [resource-group]
 
-**Egy erőforrás lekifizetése egy erőforráscsoporton vagy előfizetésen belül**
+**Egy erőforráscsoport vagy előfizetés egy erőforrásának beolvasása**
 
     resource show [options] <resource-group> <name> <resource-type> <api-version>
 
-**Erőforráscsoport erőforrásának törlése**
+**Erőforrás törlése egy erőforráscsoporthoz**
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
 ## <a name="azure-roles"></a>Azure-szerepkörök
-**Az összes elérhető szerepkör-definíció beszerzése**
+**Az összes elérhető szerepkör-definíció beolvasása**
 
     role list [options]
 
@@ -1556,7 +1556,7 @@ Paraméterbeállítások:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="storage-objects"></a>Tárolóobjektumok
+## <a name="storage-objects"></a>Tárolási objektumok
 **A Storage-fiókok kezelésére szolgáló parancsok**
 
     storage account list [options]
@@ -1565,16 +1565,16 @@ Paraméterbeállítások:
     storage account set [options] <name>
     storage account delete [options] <name>
 
-**A Tárfiók kulcsainak kezeléséhez szükséges parancsok**
+**A Storage-fiók kulcsainak kezelésére szolgáló parancsok**
 
     storage account keys list [options] <name>
     storage account keys renew [options] <name>
 
-**A Storage-kapcsolati karakterlánc megjelenítésére szolgáló parancsok**
+**A tárolási kapcsolati karakterlánc megjelenítésére szolgáló parancsok**
 
     storage account connectionstring show [options] <name>
 
-**A tárolótárolók kezelésére szolgáló parancsok**
+**A tároló-tárolók kezelésére szolgáló parancsok**
 
     storage container list [options] [prefix]
     storage container show [options] [container]
@@ -1582,11 +1582,11 @@ Paraméterbeállítások:
     storage container delete [options] [container]
     storage container set [options] [container]
 
-**A Storage tároló megosztott hozzáférésű aláírásai kezelésére szolgáló parancsok**
+**A Storage-tároló közös hozzáférésű aláírásait kezelő parancsok**
 
     storage container sas create [options] [container] [permissions] [expiry]
 
-**A Storage tároló tárolt hozzáférési házirendjeinek kezelésére szolgáló parancsok**
+**A Storage-tároló tárolt hozzáférési házirendjeinek kezelésére szolgáló parancsok**
 
     storage container policy create [options] [container] [name]
     storage container policy show [options] [container] [name]
@@ -1594,7 +1594,7 @@ Paraméterbeállítások:
     storage container policy set [options] [container] [name]
     storage container policy delete [options] [container] [name]
 
-**A storage-blobok kezelésére szolgáló parancsok**
+**A tárolási Blobok kezelésére szolgáló parancsok**
 
     storage blob list [options] [container] [prefix]
     storage blob show [options] [container] [blob]
@@ -1602,31 +1602,31 @@ Paraméterbeállítások:
     storage blob upload [options] [file] [container] [blob]
     storage blob download [options] [container] [blob] [destination]
 
-**A blobmásolási műveletek kezeléséhez szükséges parancsok**
+**A blob-másolási műveletek kezelésére szolgáló parancsok**
 
     storage blob copy start [options] [sourceUri] [destContainer]
     storage blob copy show [options] [container] [blob]
     storage blob copy stop [options] [container] [blob] [copyid]
 
-**A Storage blob megosztott hozzáférésű aláírásának kezelésére szolgáló parancsok**
+**A tárolási blob közös hozzáférésű aláírását kezelő parancsok**
 
     storage blob sas create [options] [container] [blob] [permissions] [expiry]
 
-**A Storage-fájlmegosztások kezelésére szolgáló parancsok**
+**A tárolási fájlmegosztás kezelésére szolgáló parancsok**
 
     storage share create [options] [share]
     storage share show [options] [share]
     storage share delete [options] [share]
     storage share list [options] [prefix]
 
-**A tárolófájlok kezeléséhez szükséges parancsok**
+**A tárolási fájlok kezelésére szolgáló parancsok**
 
     storage file list [options] [share] [path]
     storage file delete [options] [share] [path]
     storage file upload [options] [source] [share] [path]
     storage file download [options] [share] [path] [destination]
 
-**A storage-fájlkönyvtár kezelésére szolgáló parancsok**
+**A tárolási fájlok könyvtárának kezelésére szolgáló parancsok**
 
     storage directory create [options] [share] [path]
     storage directory delete [options] [share] [path]
@@ -1638,11 +1638,11 @@ Paraméterbeállítások:
     storage queue show [options] [queue]
     storage queue delete [options] [queue]
 
-**A Storage-várólista megosztott hozzáférési aláírásai kezelésére szolgáló parancsok**
+**A tárolási üzenetsor közös hozzáférésű aláírásait kezelő parancsok**
 
     storage queue sas create [options] [queue] [permissions] [expiry]
 
-**A storage-várólista tárolt hozzáférési házirendjeinek kezelésére szolgáló parancsok**
+**A tárolási üzenetsor tárolt hozzáférési házirendjeinek kezelésére szolgáló parancsok**
 
     storage queue policy create [options] [queue] [name]
     storage queue policy show [options] [queue] [name]
@@ -1650,28 +1650,28 @@ Paraméterbeállítások:
     storage queue policy set [options] [queue] [name]
     storage queue policy delete [options] [queue] [name]
 
-**A storage naplózási tulajdonságainak kezelésére szolgáló parancsok**
+**A tárolási naplózási tulajdonságok kezelésére szolgáló parancsok**
 
     storage logging show [options]
     storage logging set [options]
 
-**A Storage-metrikák tulajdonságainak kezelésére szolgáló parancsok**
+**Parancsok a tárolási metrikák tulajdonságainak kezeléséhez**
 
     storage metrics show [options]
     storage metrics set [options]
 
-**A Storage-táblák kezelésére szolgáló parancsok**
+**A tárolási táblák kezelésére szolgáló parancsok**
 
     storage table create [options] [table]
     storage table list [options] [prefix]
     storage table show [options] [table]
     storage table delete [options] [table]
 
-**A Storage tábla megosztott hozzáférésű aláírásai kezelésére szolgáló parancsok**
+**A Storage-tábla közös hozzáférésű aláírásait kezelő parancsok**
 
     storage table sas create [options] [table] [permissions] [expiry]
 
-**A Storage tábla tárolt hozzáférési házirendjeinek kezelésére szolgáló parancsok**
+**A Storage-tábla tárolt hozzáférési házirendjeinek kezelésére szolgáló parancsok**
 
     storage table policy create [options] [table] [name]
     storage table policy show [options] [table] [name]
@@ -1684,15 +1684,15 @@ Paraméterbeállítások:
 
     tag create [options] <name> <value>
 
-**Teljes címke vagy címkeérték eltávolítása**
+**Teljes címke vagy címke értékének eltávolítása**
 
     tag delete [options] <name> <value>
 
-**A címkeinformációk listázása**
+**A címke információinak felsorolása**
 
     tag list [options]
 
-**Címke beszerezni**
+**Címke beolvasása**
 
     tag show [options] [name]
 
@@ -1701,83 +1701,83 @@ Paraméterbeállítások:
 
     vm create [options] <resource-group> <name> <location> <os-type>
 
-**Virtuális gép létrehozása alapértelmezett erőforrásokkal**
+**Alapértelmezett erőforrásokkal rendelkező virtuális gép létrehozása**
 
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> A CLI 0.10-es verziójától kezdve rövid aliast adhat meg, például "UbuntuLTS" `image-urn` vagy "Win2012R2Datacenter", mint néhány népszerű Marketplace-lemezkép. Fuss `azure help vm quick-create` a lehetőségekért. Emellett a 0.10-es `azure vm quick-create` verziótól kezdve alapértelmezés szerint prémium szintű tárhelyet használ, ha az elérhető a kiválasztott régióban.
+> A CLI 0,10-es verziójától kezdve egy rövid aliast is megadhat, például a "UbuntuLTS" vagy a `image-urn` "Win2012R2Datacenter" nevet, amely néhány népszerű Piactéri rendszerképet tartalmaz. Futtatás `azure help vm quick-create` a beállításokhoz. Emellett a 0,10- `azure vm quick-create` es verziótól kezdődően a Premium Storage alapértelmezés szerint a kiválasztott régióban érhető el.
 > 
 > 
 
-**A fiókon belüli virtuális gépek listázása**
+**Fiókon belüli virtuális gépek listázása**
 
     vm list [options]
 
-**Egy virtuális gép beszereznie egy erőforráscsoporton belül**
+**Egy erőforráscsoport-beli virtuális gép beolvasása**
 
     vm show [options] <resource-group> <name>
 
-**Egy virtuális gép törlése egy erőforráscsoporton belül**
+**Egy erőforráscsoport-beli virtuális gép törlése**
 
     vm delete [options] <resource-group> <name>
 
-**Egy virtuális gép leállítása egy erőforráscsoporton belül**
+**Egy virtuális gép leállítása egy erőforráscsoport belül**
 
     vm stop [options] <resource-group> <name>
 
-**Erőforráscsoporton belüli virtuális gép újraindítása**
+**Egy erőforráscsoport egy virtuális gép újraindítása**
 
     vm restart [options] <resource-group> <name>
 
-**Egy virtuális gép indítása egy erőforráscsoporton belül**
+**Egy virtuális gép elindítása egy erőforráscsoport belül**
 
     vm start [options] <resource-group> <name>
 
-**Egy virtuális gép leállítása egy erőforráscsoporton belül, és felszabadítja a számítási erőforrásokat**
+**Egy adott erőforráscsoport egy virtuális gép leállítása és a számítási erőforrások felszabadítása**
 
     vm deallocate [options] <resource-group> <name>
 
-**Az elérhető virtuális gépméretek listája**
+**Elérhető virtuálisgép-méretek listázása**
 
     vm sizes [options]
 
-**A virtuális gép rögzítése operációsrendszer-lemezképként vagy virtuálisgép-lemezképként**
+**A virtuális gép rögzítése operációsrendszer-lemezképként vagy virtuálisgép-rendszerképként**
 
     vm capture [options] <resource-group> <name> <vhd-name-prefix>
 
-**Állítsa a virtuális gép állapotát általánossá**
+**A virtuális gép állapotának beállítása általánosított értékre**
 
     vm generalize [options] <resource-group> <name>
 
-**A virtuális gép példánynézetének beszereznie**
+**A virtuális gép példány nézetének beolvasása**
 
     vm get-instance-view [options] <resource-group> <name>
 
-**A Távoli asztali hozzáférés vagy az SSH-beállítások alaphelyzetbe állításának lehetővé tétele a virtuális gépen, valamint a rendszergazdai vagy sudo jogosultsággal rendelkező fiók jelszavának alaphelyzetbe állítása**
+**Lehetővé teszi a virtuális gép Távoli asztal hozzáférési vagy SSH-beállításainak alaphelyzetbe állítását, valamint a rendszergazda vagy a sudo-hatóság által felügyelt fiók jelszavának alaphelyzetbe állítását.**
 
     vm reset-access [options] <resource-group> <name>
 
-**Virtuális gép frissítése új adatokkal**
+**Virtuális gép frissítése új adattal**
 
     vm set [options] <resource-group> <name>
 
-**A virtuális gép adatlemezei kezelésére szolgáló parancsok**
+**A virtuális gép adatlemezeit kezelő parancsok**
 
     vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]
     vm disk detach [options] <resource-group> <vm-name> <lun>
     vm disk attach [options] <resource-group> <vm-name> [vhd-url]
 
-**Virtuálisgép-erőforrás-bővítmények kezelésére szolgáló parancsok**
+**A virtuális gépek erőforrás-bővítményeinek kezelésére szolgáló parancsok**
 
     vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>
     vm extension get [options] <resource-group> <vm-name>
 
-**A Docker virtuális gép kezelésére szolgáló parancsok**
+**A Docker-virtuális gép kezelésére szolgáló parancsok**
 
     vm docker create [options] <resource-group> <name> <location> <os-type>
 
-**A virtuális géplemezei kezelésére szolgáló parancsok**
+**A virtuálisgép-rendszerképek kezelésére szolgáló parancsok**
 
     vm image list-publishers [options] <location>
     vm image list-offers [options] <location> <publisher>

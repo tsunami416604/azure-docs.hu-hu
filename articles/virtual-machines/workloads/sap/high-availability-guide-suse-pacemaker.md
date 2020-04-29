@@ -1,6 +1,6 @@
 ---
-title: Pacemaker beállítása az SLES-en az Azure-ban | Microsoft dokumentumok
-description: Pacemaker beállítása az Azure-beli SUSE Linux Enterprise Server en
+title: A pacemaker beállítása a SLES az Azure-ban | Microsoft Docs
+description: A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2020
 ms.author: radeltch
 ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811571"
 ---
-# <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker beállítása az Azure-beli SUSE Linux Enterprise Server en
+# <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
 
 [planning-guide]:planning-guide.md
 [deployment-guide]:deployment-guide.md
@@ -32,46 +32,46 @@ ms.locfileid: "80811571"
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
-Két lehetőség van egy pacemaker-fürt beállítására az Azure-ban. Használhatja a kerítésügynök, amely gondoskodik a sikertelen csomópont újraindítása az Azure API-kon keresztül, vagy használhatja az SBD-eszköz.
+Az Azure-ban két lehetőség van egy pacemaker-fürt beállítására. Használhat egy kerítési ügynököt is, amely gondoskodik a meghibásodott csomópontok Azure API-kon keresztüli újraindításáról, vagy használhat egy SBD-eszközt.
 
-Az SBD-eszköznek legalább egy további virtuális gépre van szüksége, amely iSCSI-tárolókiszolgálóként működik, és SBD-eszközt biztosít. Ezek az iSCSI-tárolókiszolgálók azonban megoszthatók más Pacemaker-fürtökkel. Az SBD-eszközök használatának előnye a gyorsabb feladatátvételi idő, és ha a helyszíni SBD-eszközöket használja, nincs szükség a pacemaker-fürt működésének módosítására. A Pacemaker-fürthöz legfeljebb három SBD-eszközt használhat annak engedélyezéséhez, hogy egy SBD-eszköz elérhetetlenné váljon, például az iSCSI-tárolókiszolgáló operációsrendszer-javítása során. Ha pacemakerenként egynél több SBD-eszközt szeretne használni, telepítsen több iSCSI-tárolókiszolgálót, és minden iSCSI-tárolókiszolgálóról egy SBD-t csatlakoztasson. Javasoljuk, hogy használjon egy SBD eszközt vagy hármat. A pacemaker nem lesz képes automatikusan lekeríteni egy fürtcsomópontot, ha csak két SBD-eszközt konfigurál, és az egyik nem érhető el. Ha azt szeretné, hogy egy iSCSI-tárolókiszolgáló nem sérült meg, három SBD-eszközt, és így három iSCSI-tárolókiszolgálót kell használnia.
+A SBD-eszközhöz legalább egy további virtuális gép szükséges, amely iSCSI-célkiszolgálóként működik, és SBD-eszközt biztosít. Ezek az iSCSI-célkiszolgáló azonban más pacemaker-fürtökkel is megoszthatók. A SBD-eszközök használatának előnye gyorsabb feladatátvételi idő, és ha helyszíni SBD-eszközöket használ, nem szükséges módosítania a pacemaker-fürt működését. Akár három SBD eszközt is használhat a pacemaker-fürthöz, hogy egy SBD-eszköz elérhetetlenné váljon, például az iSCSI-célkiszolgáló operációs rendszerének javítása során. Ha a SBD egynél több eszközt szeretne használni, győződjön meg arról, hogy több iSCSI-célkiszolgáló üzembe helyezése és egy SBD csatlakoztatása minden iSCSI-célkiszolgálón. Javasoljuk, hogy használjon egy SBD-eszközt vagy háromat. A pacemaker nem fogja tudni automatikusan elkeríteni a fürtcsomópont-csomópontot, ha csak két SBD-eszközt konfigurál, és ezek egyike nem érhető el. Ha azt szeretné, hogy az egyik iSCSI-célkiszolgáló leálljon, három SBD eszközt kell használnia, ezért három iSCSI-célkiszolgáló használatát.
 
-Ha nem szeretne befektetni egy további virtuális gépbe, használhatja az Azure Fence-ügynököt is. A hátránya az, hogy a feladatátvétel 10–15 percet is igénybe vehet, ha egy erőforrás leállítása sikertelen, vagy a fürtcsomópontok nem tudnak kommunikálni, amelyek et többé kommunikálnak.
+Ha nem szeretne befektetni egy további virtuális gépre, akkor használhatja az Azure kerítés-ügynököt is. A hátránya, hogy a feladatátvétel 10 – 15 percet vesz igénybe, ha egy erőforrás leállítása sikertelen, vagy a fürtcsomópontok nem tudnak kommunikálni egymással.
 
-![Pacemaker az SLES áttekintése](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+![Pacemaker on SLES – áttekintés](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Linux-pacemaker fürtözött csomópontok és SBD-eszközök tervezésekor és telepítésekor elengedhetetlen a teljes fürtkonfiguráció általános megbízhatósága szempontjából, hogy az érintett virtuális gépek és az SBD-eszközt üzemeltető virtuális gép(ek) közötti útválasztás nem halad át más eszközökön, például [nva-kon.](https://azure.microsoft.com/solutions/network-appliances/) Ellenkező esetben az NVA-val kapcsolatos problémák és karbantartási események negatív hatással lehetnek a teljes fürtkonfiguráció stabilitására és megbízhatóságára. Az ilyen akadályok elkerülése érdekében ne határozza meg az NVA-k vagy [a felhasználó által definiált útválasztási szabályok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) útválasztási szabályait, amelyek a fürtözött csomópontok és az SBD-eszközök közötti forgalmat nva-kon és hasonló eszközökön keresztül irányítják a Linux-pacemaker fürtözött csomópontok és SBD-eszközök tervezése és üzembe helyezése során. 
+> A Linux pacemaker fürtözött csomópontok és SBD tervezése és üzembe helyezése során elengedhetetlen a teljes fürtkonfiguráció teljes megbízhatósága, amely az érintett virtuális gépek és a SBD-eszközt üzemeltető virtuális gép (ek) közötti útválasztás nem halad át semmilyen más eszközön, például a [NVA](https://azure.microsoft.com/solutions/network-appliances/)-en keresztül. Ellenkező esetben a NVA kapcsolatos problémák és karbantartási események negatív hatással lehetnek a fürt általános konfigurációjának stabilitására és megbízhatóságára. Az ilyen akadályok elkerülése érdekében ne határozzon meg olyan NVA vagy [felhasználó által definiált útválasztási szabályok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) útválasztási szabályait, amelyek a fürtözött csomópontok és a SBD eszközök közötti forgalmat irányítják a NVA és hasonló eszközökön a Linux pacemaker fürtözött csomópontok és SBD-eszközök tervezése és telepítése során. 
 >
 
-## <a name="sbd-fencing"></a>SBD kerítés
+## <a name="sbd-fencing"></a>SBD-kerítés
 
-Kövesse az alábbi lépéseket, ha SBD eszközt szeretne használni a kerítéshez.
+Kövesse az alábbi lépéseket, ha SBD-eszközt kíván használni a kerítéshez.
 
-### <a name="set-up-iscsi-target-servers"></a>ISCSI-tárolókiszolgálók beállítása
+### <a name="set-up-iscsi-target-servers"></a>ISCSI-tároló kiszolgálók beállítása
 
-Először létre kell hoznia az iSCSI-tároló virtuális gépeket. Az iSCSI-tárolókiszolgálók több pacemaker-fürttel is megoszthatók.
+Először létre kell hoznia az iSCSI cél virtuális gépeket. az iSCSI-célkiszolgáló több pacemaker-fürttel is megoszthatók.
 
-1. Telepítsen új SLES 12 SP1 vagy újabb virtuális gépeket, és csatlakozzon hozzájuk ssh-n keresztül. A gépeknek nem kell nagynak lenniük. A virtuális gép mérete, mint a Standard_E2s_v3 vagy Standard_D2s_v3 elegendő. Győződjön meg arról, hogy a Prémium szintű tároló az operációs rendszer lemeze.
+1. Helyezzen üzembe új SLES 12 SP1 vagy újabb virtuális gépet, és csatlakozzon hozzájuk SSH-n keresztül. A gépeknek nem kell nagy méretűeknek lenniük. A virtuális gép mérete (például Standard_E2s_v3 vagy Standard_D2s_v3) elegendő. Ügyeljen arra, hogy a Premium Storage-ot használja az operációsrendszer-lemezen.
 
-Futtassa a következő parancsokat az összes **iSCSI-tároló virtuális gépen.**
+Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépen**.
 
-1. Frissítés SLES
+1. SLES frissítése
 
    <pre><code>sudo zypper update
    </code></pre>
 
    > [!NOTE]
-   > Előfordulhat, hogy újra kell indítania az operációs rendszert az operációs rendszer frissítése vagy frissítése után. 
+   > Előfordulhat, hogy az operációs rendszer frissítése vagy frissítése után újra kell indítania az operációs rendszert. 
 
 1. Csomagok eltávolítása
 
-   A targetcli és az SLES 12 SP3 ismert problémája elkerülése érdekében távolítsa el a következő csomagokat. Figyelmen kívül hagyhatja a nem található csomagok hibáit
+   Ha el szeretné kerülni a targetcli és a SLES 12 SP3 ismert problémáját, távolítsa el a következő csomagokat. Figyelmen kívül hagyhatja a nem található csomagokkal kapcsolatos hibákat.
 
    <pre><code>sudo zypper remove lio-utils python-rtslib python-configshell targetcli
    </code></pre>
 
-1. ISCSI-tárolócsomagok telepítése
+1. ISCSI-tárolók telepítése
 
    <pre><code>sudo zypper install targetcli-fb dbus-1-python
    </code></pre>
@@ -82,11 +82,11 @@ Futtassa a következő parancsokat az összes **iSCSI-tároló virtuális gépen
    sudo systemctl start targetcli
    </code></pre>
 
-### <a name="create-iscsi-device-on-iscsi-target-server"></a>ISCSI-eszköz létrehozása iSCSI-tárolókiszolgálón
+### <a name="create-iscsi-device-on-iscsi-target-server"></a>ISCSI-eszköz létrehozása az iSCSI-célkiszolgálón
 
-Futtassa a következő parancsokat az összes **iSCSI-tároló virtuális gépen** az SAP-rendszerek által használt fürtök iSCSI-lemezei létrehozásához. A következő példában több fürt SBD-eszközei jönnek létre. Bemutatja, hogyan használhat na egy iSCSI-tárolókiszolgálót több fürthöz. Az SBD-eszközök az operációs rendszer lemezére kerülnek. Győződjön meg róla, hogy van elég hely.
+Futtassa az alábbi parancsokat az összes **iSCSI-tároló virtuális gépen** az SAP-rendszerek által használt fürtök iSCSI-lemezének létrehozásához. A következő példában a több fürthöz tartozó SBD-eszközök jönnek létre. Ez azt mutatja be, hogyan érdemes egyetlen iSCSI-célkiszolgáló használatát több fürthöz használni. A SBD-eszközök az operációsrendszer-lemezen vannak elhelyezve. Győződjön meg arról, hogy elegendő lemezterülettel rendelkezik.
 
-**`nfs`** az NFS-fürt azonosítására szolgál, az **ascsnw1** az **NW1,** **dbnw1** ASCS-fürt azonosítására szolgál az **NW1**, **nfs-0** és **nfs-1** adatbázis-fürt azonosítására az NFS-fürtcsomópontok állomásnevei, **Az nw1-xscs-0** és **az nw1-xscs-1** az **NW1** ASCS fürtcsomópontok állomásnevei, az **nw1-db-0** és az **nw1-db-1** pedig az adatbázis-fürtcsomópontok állomásnevei. Cserélje le őket a fürtcsomópontok állomásneveire és az SAP-rendszer biztonsági azonosítójára.
+**`nfs`** az NFS-fürt azonosítására szolgál, **a ascsnw1** a **NW1**ASCS-fürt azonosítására szolgál. a **dbnw1** a **NW1**, az **NFS-0** és az **NFS-1 adatbázis-** fürtjének azonosítására szolgál. az NFS-fürtcsomópontok állomásneve, a **NW1-xscs-0** és a **NW1-xscs-1** a **NW1** ASCS-fürtcsomópontok állomásneve, a NW1- **db-0** és a NW1- **db-** 1 pedig az adatbázis-fürt csomópontjainak állomásneve. Cserélje le őket a fürtcsomópontok állomásneve és az SAP-System SID azonosítóra.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -116,7 +116,7 @@ sudo targetcli iscsi/iqn.2006-04.db<b>nw1</b>.local:db<b>nw1</b>/tpg1/acls/ crea
 sudo targetcli saveconfig
 </code></pre>
 
-Ellenőrizheti, hogy minden megfelelően van-e beállítva a
+Megtekintheti, hogy minden beállítás megfelelően van-e beállítva
 
 <pre><code>sudo targetcli ls
 
@@ -176,48 +176,48 @@ o- / ...........................................................................
 
 ### <a name="set-up-sbd-device"></a>SBD-eszköz beállítása
 
-Csatlakozzon ahhoz az iSCSI-eszközhöz, amelyet a fürt utolsó lépésében hoztak létre.
+Kapcsolódjon a fürt utolsó lépéseként létrehozott iSCSI-eszközhöz.
 Futtassa a következő parancsokat a létrehozni kívánt új fürt csomópontjain.
-A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópontra vonatkozóan, **[1]** - csak az 1- es vagy **a [2]** csomópontra vonatkozik, és csak a 2-es csomópontra vonatkoznak.
+A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
-1. **[A]** Csatlakozás az iSCSI-eszközökhöz
+1. **[A]** kapcsolódás az iSCSI-eszközökhöz
 
-   Először engedélyezze az iSCSI- és SBD-szolgáltatásokat.
+   Először engedélyezze az iSCSI-és SBD-szolgáltatásokat.
 
    <pre><code>sudo systemctl enable iscsid
    sudo systemctl enable iscsi
    sudo systemctl enable sbd
    </code></pre>
 
-1. **[1]** A kezdeményező nevének módosítása az első csomóponton
+1. **[1]** a kezdeményező nevének módosítása az első csomóponton
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   Módosítsa a fájl tartalmát úgy, hogy az megfeleljen az iSCSI-eszköz nek az iSCSI-tárolókiszolgálón , például az NFS-kiszolgálón történő létrehozásakor használt ACL-knak.
+   Módosítsa a fájl tartalmát úgy, hogy azok megfeleljenek az iSCSI-eszköz iSCSI-célkiszolgálón, például az NFS-kiszolgálón való létrehozásakor használt ACL-ekkel.
 
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-0.local:nfs-0</b>
    </code></pre>
 
-1. **[2]** A kezdeményező nevének módosítása a második csomóponton
+1. **[2]** a kezdeményező nevének módosítása a második csomóponton
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   A fájl tartalmának módosítása az iSCSI-tárolókiszolgálón az iSCSI-eszköz létrehozásakor használt ACL-knak megfelelően
+   Módosítsa a fájl tartalmát úgy, hogy azok megfeleljenek az iSCSI-eszköz iSCSI-célkiszolgálón való létrehozásakor használt ACL-ekkel
 
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-1.local:nfs-1</b>
    </code></pre>
 
-1. **[A]** Az iSCSI-szolgáltatás újraindítása
+1. **[A]** az iSCSI szolgáltatás újraindítása
 
-   Most indítsa újra az iSCSI-szolgáltatást a módosítás alkalmazásához
+   Most indítsa újra az iSCSI szolgáltatást a módosítás alkalmazásához
 
    <pre><code>sudo systemctl restart iscsid
    sudo systemctl restart iscsi
    </code></pre>
 
-   Csatlakoztassa az iSCSI-eszközöket. Az alábbi példában a 10.0.0.17 az iSCSI-tároló kiszolgáló IP-címe, a 3260 pedig az alapértelmezett port. <b>az iqn.2006-04.nfs.local:nfs</b> az alábbi első parancs futtatásakor felsorolt célnevek egyike (iscsiadm -m discovery).
+   Az iSCSI-eszközök csatlakoztatása. Az alábbi példában a 10.0.0.17 az iSCSI-célkiszolgáló IP-címe, a 3260 pedig az alapértelmezett port. <b>IQN. 2006-04. NFS. local: az NFS</b> az egyik cél neve, amely az alábbi első parancs futtatásakor jelenik meg (iscsiadm-m felderítés).
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
@@ -234,7 +234,7 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
-   Győződjön meg arról, hogy az iSCSI-eszközök elérhetők, és jegyezze fel az eszköz nevét (a következő példában /dev/sde)
+   Győződjön meg arról, hogy az iSCSI-eszközök elérhetők, és jegyezze fel az eszköz nevét (a következő példában/dev/Sde)
 
    <pre><code>lsscsi
    
@@ -247,7 +247,7 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    # <b>[8:0:0:0]    disk    LIO-ORG  sbdnfs           4.0   /dev/sdf</b>
    </code></pre>
 
-   Most olvassa be az iSCSI-eszközök azonosítóit.
+   Most kérje le az iSCSI-eszközök azonosítóit.
 
    <pre><code>ls -l /dev/disk/by-id/scsi-* | grep <b>sdd</b>
    
@@ -268,15 +268,15 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    # lrwxrwxrwx 1 root root  9 Aug  9 13:32 /dev/disk/by-id/scsi-SLIO-ORG_sbdnfs_f88f30e7-c968-4678-bc87-fe7bfcbdb625 -> ../../sdf
    </code></pre>
 
-   A parancs három eszközazonosítót sorol fel minden SBD eszközhöz. Javasoljuk, hogy a scsi-3-mal kezdődő azonosítót használja, a fenti példában a
+   A parancs három eszköz azonosítóját sorolja fel minden SBD-eszközhöz. Javasoljuk, hogy használja a SCSI-3 kezdetű azonosítót, a fenti példában látható módon:
 
    * **/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03**
-   * **/dev/disk/byd/scsi-360014053fe4da371a5a4bb69a419a4df**
-   * **/dev/disk/byd/scsi-36001405f88f30e7c9684678bc87fe7bf**
+   * **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
+   * **/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf**
 
-1. **[1]** Az SBD eszköz létrehozása
+1. **[1]** a SBD-eszköz létrehozása
 
-   Az iSCSI-eszközök eszközazonosítójával hozza létre az új SBD-eszközöket az első fürtcsomóponton.
+   Az iSCSI-eszközök AZONOSÍTÓjának használatával hozza létre az új SBD-eszközöket az első fürtcsomóponton.
 
    <pre><code>sudo sbd -d <b>/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03</b> -1 60 -4 120 create
 
@@ -285,14 +285,14 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    sudo sbd -d <b>/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf</b> -1 60 -4 120 create
    </code></pre>
 
-1. **[A]** Az SBD konfiguráció adaptálása
+1. **[A]** a SBD konfigurációjának átalakítása
 
-   Az SBD konfigurációs fájl megnyitása
+   A SBD konfigurációs fájl megnyitása
 
    <pre><code>sudo vi /etc/sysconfig/sbd
    </code></pre>
 
-   Módosítsa az SBD-eszköz tulajdonságát, engedélyezze a pacemaker-integrációt, és módosítsa az SBD indítási módját.
+   Módosítsa a SBD eszköz tulajdonságát, engedélyezze a pacemaker-integrációt, és módosítsa a SBD indítási módját.
 
    <pre><code>[...]
    <b>SBD_DEVICE="/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf"</b>
@@ -315,31 +315,31 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
 
 ## <a name="cluster-installation"></a>Fürt telepítése
 
-A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópontra vonatkozóan, **[1]** - csak az 1- es vagy **a [2]** csomópontra vonatkozik, és csak a 2-es csomópontra vonatkoznak.
+A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
-1. **[A]** Frissítés SLES
+1. **[A]** SLES frissítése
 
    <pre><code>sudo zypper update
    </code></pre>
 
-1. **[A]** Fürterőforrásokhoz szükséges összetevő telepítése
+1. **[A]** a fürt erőforrásaihoz szükséges telepítési összetevő
 
    <pre><code>sudo zypper in socat
    </code></pre>
 
-1. **[A]** Telepítse az azure-lb összetevőt, amely fürterőforrásokhoz szükséges
+1. **[A]** a fürt erőforrásaihoz szükséges Azure-LB összetevő telepítése
 
    <pre><code>sudo zypper in resource-agents
    </code></pre>
 
    > [!NOTE]
-   > Ellenőrizze a csomag erőforrás-ügynökök verzióját, és győződjön meg arról, hogy a minimális verziókövetelmények teljesülnek:  
-   > - Az SLES 12 SP4/SP5 esetében a verziónak legalább erőforrás-ügynököknek kell lennie-4.3.018.a7fb5035-3.30.1.  
-   > - Az SLES 15/15 SP1 esetében a verziónak legalább erőforrás-ügynököknek kell lennie-4.3.0184.6ee15eb2-4.13.1.  
+   > Ellenőrizze a csomag erőforrás-ügynökének verzióját, és győződjön meg arról, hogy teljesülnek a minimális verzióra vonatkozó követelmények:  
+   > - A SLES 12 SP4/SP5 esetében a verziónak legalább Resource-Agent-4.3.018. a7fb5035-3.30.1 kell lennie.  
+   > - A SLES 15/15 SP1 esetében a verziónak legalább Resource-Agent-4.3.0184.6 ee15eb2-4.13.1 kell lennie.  
 
-1. **[A]** Az operációs rendszer konfigurálása
+1. **[A]** az operációs rendszer konfigurálása
 
-   Bizonyos esetekben a Pacemaker számos folyamatot hoz létre, és ezáltal kimeríti a folyamatok megengedett számát. Ebben az esetben a fürtcsomópontok közötti szívverés sikertelen lehet, és az erőforrások feladatátvételhez vezethet. Javasoljuk, hogy növelje a maximálisan engedélyezett folyamatokat a következő paraméter beállításával.
+   Bizonyos esetekben a pacemaker számos folyamatot hoz létre, így kimeríti az engedélyezett számú folyamatot. Ilyen esetben előfordulhat, hogy a fürtcsomópontok közötti szívverés meghiúsul, és az erőforrások feladatátvételét eredményezi. Javasoljuk, hogy a következő paraméter beállításával növelje a maximálisan engedélyezett folyamatokat.
 
    <pre><code># Edit the configuration file
    sudo vi /etc/systemd/system.conf
@@ -355,7 +355,7 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    sudo systemctl --no-pager show | grep DefaultTasksMax
    </code></pre>
 
-   Csökkentse a piszkos gyorsítótár méretét. További információ: [Alacsony írási teljesítmény nagy RAM memóriával rendelkező SLES 11/12 kiszolgálókon.](https://www.suse.com/support/kb/doc/?id=7010287)
+   Csökkentse a piszkos gyorsítótár méretét. További információ: [alacsony írási teljesítmény a SLES 11/12-kiszolgálókon nagyméretű RAM-mal](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -364,12 +364,12 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]** Felhő-netconfig-azure konfigurálása a HA-fürthöz
+1. **[A]** a Cloud-netconfig konfigurálása – Azure a ha-fürthöz
 
    >[!NOTE]
-   > Ellenőrizze a telepített változata csomag **cloud-netconfig-azure** futtatásával **zypper info cloud-netconfig-azure**. Ha a környezetben lévő verzió 1.3 vagy újabb, akkor már nem szükséges letiltja a hálózati interfészek kezelését a felhőhálózati bővítmény által. Ha a verzió 1.3-nál alacsonyabb, javasoljuk, hogy frissítse a csomagot **cloud-netconfig-azure** a legújabb elérhető verzióra.  
+   > A Cloud **-netconfig-Azure** csomag telepített verziójának ellenőrzéséhez futtassa a **Zypper info Cloud-netconfig-Azure**alkalmazást. Ha a környezete 1,3-es vagy újabb verziójú, a hálózati adapterek a Cloud Network beépülő modullal való felügyeletét már nem szükséges letiltani. Ha a verzió 1,3-nál kisebb, javasoljuk, hogy frissítse a **Cloud-netconfig-Azure** csomagot a legújabb elérhető verzióra.  
 
-   Módosítsa a hálózati adapter konfigurációs fájlját az alábbiak szerint, hogy megakadályozza a felhőhálózati bővítmény eltávolítását a virtuális IP-címből (a Pacemakernek ellenőriznie kell a VIP-hozzárendelést). További információ: [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+   Módosítsa a hálózati adapter konfigurációs fájlját az alább látható módon, hogy megakadályozza, hogy a Cloud Network beépülő modul eltávolítsa a virtuális IP-címet (a pacemakernek meg kell határoznia a VIP-hozzárendelést). További információ: [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 
    <pre><code># Edit the configuration file
    sudo vi /etc/sysconfig/network/ifcfg-eth0 
@@ -413,17 +413,17 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** Kerítésügynökök telepítése
+1. **[A]** kerítés-ügynökök telepítése
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > Ha a Suse Linux Enterprise Server for SAP 15, vegye figyelembe, hogy további modul aktiválása és további összetevő telepítése, amely az Azure Fence Agent használatának előfeltétele. A SUSE modulokról és bővítményekről a [Modulok és bővítmények ismertetése](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Kövesse az utasításokat ordít az Azure Python SDK telepítéséhez. 
+   > Ha a SUSE Linux Enterprise Server for SAP 15 szolgáltatást használja, vegye figyelembe, hogy további modult kell aktiválnia, és telepítenie kell egy további összetevőt, amely az Azure kerítési ügynök használatának előfeltétele. Ha többet szeretne megtudni a SUSE modulok és bővítményekről, tekintse meg a [modulok és bővítmények magyarázatát](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Kövesse az alábbi utasításokat az Azure Python SDK telepítéséhez. 
 
-   Az Azure Python SDK telepítésével kapcsolatos alábbi utasítások csak az SAP **15-höz**készült Suse Enterprise Server kiszolgálóra vonatkoznak.  
+   Az Azure Python SDK telepítésével kapcsolatos alábbi utasítások csak a SUSE Enterprise Server for SAP **15**esetén alkalmazhatók.  
 
-    - Ha bring-your-own-subscription előfizetést használ, kövesse az alábbi  
+    - Ha saját előfizetést használ, kövesse az alábbi utasításokat  
 
     <pre><code>
     #Activate module PackageHub/15/x86_64
@@ -432,7 +432,7 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
     sudo zypper in python3-azure-sdk
     </code></pre>
 
-     - Ha használatalapú fizetéses előfizetést használ, kövesse az alábbi  
+     - Ha utólagos elszámolású előfizetést használ, kövesse az alábbi utasításokat  
 
     <pre><code>#Activate module PackageHub/15/x86_64
     zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
@@ -440,15 +440,15 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
     sudo zypper in python3-azure-sdk
     </code></pre>
 
-1. **[A]** Állomásnév feloldása
+1. **[A]** telepítési állomásnév feloldása
 
-   Használhatja a DNS-kiszolgálót, vagy módosíthatja az /etc/hosts kapcsolót az összes csomóponton. Ez a példa az /etc/hosts fájl használatát mutatja be.
-   Cserélje le az IP-címet és az állomásnevet a következő parancsokban. Az /etc/hosts használatának előnye, hogy a fürt függetlenné válik a DNS-től, ami a hibák egyetlen pontja is lehet.
+   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
+   Cserélje le az IP-címet és a gazdagépet a következő parancsokra. A/etc/hosts használatának előnye, hogy a fürt független lesz a DNS-től, ami egyetlen meghibásodási pont lehet.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Szúrja be a következő sorokat az /etc/hosts könyvtárba. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően   
+   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően   
 
    <pre><code># IP address of the first cluster node
    <b>10.0.0.6 prod-cl1-0</b>
@@ -456,7 +456,7 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[1]** Fürt telepítése
+1. **[1]** fürt telepítése
 
    <pre><code>sudo ha-cluster-init -u
    
@@ -469,7 +469,7 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-1. **[2]** Csomópont hozzáadása a fürthöz
+1. **[2]** csomópont hozzáadása a fürthöz
 
    <pre><code>sudo ha-cluster-join
    
@@ -479,17 +479,17 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
    </code></pre>
 
-1. **[A]** A hacluster jelszó módosítása ugyanarra a jelszóra
+1. **[A]** hacluster jelszavának módosítása ugyanarra a jelszóra
 
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]** Állítsa be a corosync beállításokat.  
+1. **[A] módosítsa A** Corosync beállításait.  
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az értékek nem léteznek vagy nem különböznek. Győződjön meg arról, hogy módosítsa a jogkivonatot 30000-re, hogy a memória megőrizhesse a karbantartást. További információt ebben a Linux vagy Windows [rendszerben olvasható cikkben][virtual-machines-linux-maintenance] talál. [Windows][virtual-machines-windows-maintenance]
+   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az értékek nem léteznek vagy eltérőek. Győződjön meg arról, hogy a tokent 30000 értékre módosítja, hogy a memóriát megőrizve karbantartást lehessen végezni. További információt a Linux vagy a [Windows rendszerhez][virtual-machines-windows-maintenance]készült [cikkben][virtual-machines-linux-maintenance] talál.
 
    <pre><code>[...]
      <b>token:          30000
@@ -523,33 +523,33 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    }
    </code></pre>
 
-   Ezután indítsa újra a corosync szolgáltatást
+   Ezután indítsa újra a Corosync szolgáltatást
 
    <pre><code>sudo service corosync restart
    </code></pre>
 
-## <a name="create-azure-fence-agent-stonith-device"></a>Azure Fence ügynök STONITH-eszköz létrehozása
+## <a name="create-azure-fence-agent-stonith-device"></a>Azure kerítés-ügynök STONITH-eszközének létrehozása
 
-A STONITH-eszköz egy egyszerű szolgáltatás használatával engedélyezi a Microsoft Azure-t. Az egyszerű szolgáltatás létrehozásához kövesse az alábbi lépéseket.
+A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi a Microsoft Azure. Egy egyszerű szolgáltatásnév létrehozásához kövesse az alábbi lépéseket.
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
-1. Az Azure Active Directory panel megnyitása  
-   Nyissa meg a Tulajdonságok felet, és írja le a címtárazonosítót. Ez a **bérlőazonosítója.**
-1. Kattintson az Alkalmazásregisztrációk elemre
-1. Kattintson az Új regisztráció gombra
-1. Írjon be egy nevet, és válassza a "Csak ebben a szervezeti címtárban lévő fiókok" lehetőséget. 
-2. Válassza a "Web" alkalmazástípust, adjon meg egy\/bejelentkezési URL-címet (például http: /localhost), és kattintson a Hozzáadás gombra  
-   A bejelentkezési URL nem használatos, és bármely érvényes URL-cím lehet
-1. Válassza a Tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az Új ügyféltitok elemre.
-1. Adjon meg egy új kulcsot, válassza a "Soha nem jár le" lehetőséget, és kattintson a Hozzáadás gombra.
-1. Írja le az Érték. A szolgáltatásegyszerű **jelszóként** szolgál.
-1. Válassza az Áttekintés lehetőséget. Írja le az alkalmazásazonosítót. A Szolgáltatásnév felhasználóneveként (az alábbi lépésekben**bejelentkezési azonosító)**
+1. A Azure Active Directory panel megnyitása  
+   Válassza a tulajdonságok lehetőséget, és jegyezze fel a címtár-azonosítót. Ez a **bérlő azonosítója**.
+1. Kattintson Alkalmazásregisztrációk
+1. Kattintson az új regisztráció elemre.
+1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
+2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például\/http:/localhost), és kattintson a Hozzáadás gombra.  
+   A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet
+1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
+1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
+1. Jegyezze fel az értéket. Az egyszerű szolgáltatás **jelszavaként** van használatban
+1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás AZONOSÍTÓját. A szolgáltatás felhasználóneveként (**Bejelentkezési azonosítóként** az alábbi lépésekben) használatos az egyszerű szolgáltatásnév számára
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Egyéni szerepkör létrehozása a kerítésügynök számára
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** egyéni szerepkör létrehozása a kerítés ügynökéhez
 
-Az egyszerű szolgáltatás nem rendelkezik az Azure-erőforrások eléréséhez alapértelmezés szerint nem rendelkezik engedéllyel. Meg kell adnia a Szolgáltatás egyszerű engedélyeket a fürt összes virtuális gépének indításához és leállításához (felszabadításához). Ha még nem hozták létre az egyéni szerepkört, létrehozhatja azt [a PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) vagy az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) használatával
+Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik engedéllyel az Azure-erőforrások eléréséhez. A fürt összes virtuális gépe elindításához és leállításához (felszabadításához) engedélyeket kell adni a szolgáltatásnak. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) vagy az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) használatával hozhatja létre
 
-Használja a következő tartalmat a bemeneti fájlhoz. Meg kell igazítani a tartalmat, hogy az előfizetések, azaz cserélje c276fc76-9cd4-44c9-99a7-4fd71546436e és e91d47c4-76f3-4271-a796-21b4ecfe3624 az azonosítót az előfizetés. Ha csak egy előfizetéssel rendelkezik, távolítsa el a második bejegyzést a AssignableScopes alkalmazásból.
+Használja az alábbi tartalmat a bemeneti fájlhoz. A tartalmat az előfizetéséhez kell igazítania, a c276fc76-9cd4-44c9-99a7-4fd71546436e és a e91d47c4-76f3-4271-a796-21b4ecfe3624 helyére az előfizetés azonosítóit kell cserélnie. Ha csak egy előfizetéssel rendelkezik, távolítsa el a második bejegyzést a AssignableScopes-ben.
 
 ```json
 {
@@ -572,24 +572,24 @@ Használja a következő tartalmat a bemeneti fájlhoz. Meg kell igazítani a ta
 }
 ```
 
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Az egyéni szerepkör hozzárendelése az egyszerű szolgáltatáshoz
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** az egyéni szerepkör társítása az egyszerű szolgáltatáshoz
 
-Rendelje hozzá az egyéni szerepkör "Linux kerítésügynök szerepkör", amely az utolsó fejezetben létrehozott a szolgáltatásnév. Ne használja többé a Tulajdonos szerepkört!
+Rendelje hozzá az előző fejezetben az egyszerű szolgáltatásnév számára létrehozott "Linux kerítési ügynök szerepkör" egyéni szerepkört. Ne használja többé a tulajdonosi szerepkört!
 
 1. odamegy[https://portal.azure.com](https://portal.azure.com)
-1. A Minden erőforrás panel megnyitása
-1. Az első fürtcsomópont virtuális gépének kiválasztása
-1. Kattintson a Hozzáférés-vezérlés (IAM) elemre
-1. Kattintson a Szerepkör-hozzárendelés hozzáadása gombra.
-1. Válassza ki a "Linux kerítésügynök szerepkör" szerepkört
-1. Adja meg a fent létrehozott alkalmazás nevét.
+1. Nyissa meg az összes erőforrás panelt
+1. Válassza ki az első fürtcsomópont virtuális gépét.
+1. Kattintson a hozzáférés-vezérlés (IAM) elemre.
+1. Kattintson a szerepkör-hozzárendelés hozzáadása elemre.
+1. Válassza ki a "Linux kerítési ügynök szerepkör" szerepkört
+1. Adja meg a fent létrehozott alkalmazás nevét
 1. Kattintson a Save (Mentés) gombra.
 
-Ismételje meg a fenti lépéseket a második fürtcsomóponthoz.
+Ismételje meg a fenti lépéseket a második fürtcsomóponton.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]** A STONITH eszközök létrehozása
+### <a name="1-create-the-stonith-devices"></a>**[1]** a STONITH-eszközök létrehozása
 
-Miután szerkesztette a virtuális gépek engedélyeit, konfigurálhatja a STONITH-eszközöket a fürtben.
+A virtuális gépek engedélyeinek szerkesztése után a fürtben konfigurálhatja a STONITH-eszközöket.
 
 <pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
@@ -599,9 +599,9 @@ sudo crm configure property stonith-timeout=900
 sudo crm configure property stonith-enabled=true
 </code></pre>
 
-## <a name="default-pacemaker-configuration-for-sbd"></a>Az SBD alapértelmezett pacemaker-konfigurációja
+## <a name="default-pacemaker-configuration-for-sbd"></a>Alapértelmezett pacemaker-konfiguráció a SBD
 
-1. **[1]** Engedélyezze a STONITH eszköz használatát, és állítsa be a kerítés késleltetését
+1. **[1]** STONITH-eszköz használatának engedélyezése és a kerítés késleltetésének beállítása
 
 <pre><code>sudo crm configure property stonith-timeout=144
 sudo crm configure property stonith-enabled=true
@@ -615,16 +615,16 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    op monitor interval="15" timeout="15"
 </code></pre>
 
-## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker konfiguráció az Azure ütemezett események
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-konfiguráció az Azure ütemezett eseményeihez
 
-Az Azure [ütemezett eseményeket](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)kínál. Az ütemezett események meta-adatszolgáltatáson keresztül kerülnek rendelkezésre, és időt hagynak az alkalmazásszámára az olyan eseményekre való felkészülésre, mint a virtuális gépek leállítása, a virtuális gépek újratelepítése stb. Erőforrás-ügynök **[azure-események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyeli az ütemezett Azure-események. Események észlelése esetén az ügynök megpróbálja leállítani az összes erőforrást az érintett virtuális gépen, és áthelyezni őket a fürt egy másik csomópontjára. Ennek elérése érdekében további Pacemaker-erőforrásokat kell konfigurálni. 
+Az Azure [ütemezett eseményeket](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)kínál. Az ütemezett események a meta-adatszolgáltatáson keresztül érhetők el, és lehetővé teszik, hogy az alkalmazás előkészítse az eseményeket, például a virtuális gépek leállítását, a virtuális gépek újratelepítését stb. Erőforrás **[-ügynök Azure – események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyelők az ütemezett Azure-eseményekhez. Ha a rendszer eseményeket észlel, az ügynök megkísérli leállítani az érintett virtuális gép összes erőforrását, és áthelyezi őket a fürt egy másik csomópontjára. A további pacemaker-erőforrások eléréséhez konfigurálni kell. 
 
-1. **[A]** Győződjön meg arról, hogy az **azure-events** ügynök csomagja már telepítve van és naprakész. 
+1. **[A]** ellenőrizze, hogy az **Azure-Events** Agent csomag már telepítve van-e és naprakész-e. 
 
 <pre><code>sudo zypper info resource-agents
 </code></pre>
 
-2. **[1]** Konfigurálja az erőforrásokat a Pacemaker ben. 
+2. **[1]** adja meg az erőforrásokat a pacemakerben. 
 
 <pre><code>
 #Place the cluster in maintenance mode
@@ -639,17 +639,17 @@ sudo crm configure property maintenance-mode=false
 </code></pre>
 
    > [!NOTE]
-   > Miután konfigurálta a Pacemaker-erőforrásokat az azure-events ügynökhöz, amikor a fürtet karbantartási módban helyezi el, vagy ki van helyezve a karbantartási módból, figyelmeztető üzenetekjelenhetnek meg, például:  
-     FIGYELEM: cib-bootstrap-options: ismeretlen attribútum "hostName_ <strong>hostname</strong>"  
-     FIGYELEM: cib-bootstrap-options: ismeretlen attribútum "azure-events_globalPullState"  
-     FIGYELEM: cib-bootstrap-options: ismeretlen attribútum "hostName_ <strong>hostname</strong>"  
+   > Miután konfigurálta a pacemaker erőforrásait az Azure-Events Agent szolgáltatáshoz, amikor a fürtöt karbantartási módba vagy kifelé helyezi, a következőhöz hasonló figyelmeztető üzenetek jelenhetnek meg:  
+     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>állomásnév</strong>" attribútum  
+     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "Azure-events_globalPullState" attribútum  
+     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>állomásnév</strong>" attribútum  
    > Ezek a figyelmeztető üzenetek figyelmen kívül hagyhatók.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz][planning-guide]
-* [Az Azure virtuális gépek üzembe helyezése az SAP-hoz][deployment-guide]
-* [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz][dbms-guide]
-* [Magas rendelkezésre állás az NFS számára az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server rendszeren][sles-nfs-guide]
-* [Az SAP NetWeaver magas rendelkezésre állása az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server SAP-alkalmazásokhoz szolgáltatásban][sles-guide]
-* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure virtuális gépeken, olvassa el [az SAP HANA magas rendelkezésre állását az Azure virtuális gépeken (VM-ek) című témakört.][sap-hana-ha]
+* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
+* [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken][sles-nfs-guide]
+* [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz][sles-guide]
+* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]

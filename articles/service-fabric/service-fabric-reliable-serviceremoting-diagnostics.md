@@ -1,95 +1,95 @@
 ---
-title: Azure ServiceFabric diagnosztika és figyelés
-description: Ez a cikk ismerteti a szolgáltatásfabric megbízható serviceRemoting futásidejű teljesítményfigyelési funkciók, például az általa kibocsátott teljesítményszámlálók.
+title: Azure ServiceFabric diagnosztika és monitorozás
+description: Ez a cikk a Service Fabric megbízható ServiceRemoting futtatókörnyezet (például az általa kibocsátott teljesítményszámlálók) Teljesítményfigyelő funkcióit ismerteti.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282275"
 ---
-# <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és teljesítményfigyelés a megbízható szolgáltatás-átmatolók számára
-A Megbízható ServiceRemoting futásidő [teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működésébe, és segítenek a hibaelhárításban és a teljesítményfigyelésben.
+# <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és Teljesítményfigyelés a megbízható szolgáltatás táveléréséhez
+A megbízható ServiceRemoting futtatókörnyezet [teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-A Megbízható ServiceRemoting futásidő a következő teljesítményszámláló-kategóriákat határozza meg:
+A megbízható ServiceRemoting-futtatókörnyezet a következő teljesítményszámláló-kategóriákat határozza meg:
 
 | Kategória | Leírás |
 | --- | --- |
-| Szolgáltatás fabric szolgáltatás |Az Azure Service Fabric szolgáltatás hívásátorának számlálói, például a kérés feldolgozásához szükséges átlagos idő |
-| Szolgáltatásfabric szolgáltatás metódusa |A Service Fabric-remoting szolgáltatás által megvalósított metódusok számlálói, például a szolgáltatásmetódusok meghívásának gyakran |
+| Service Fabric szolgáltatás |Az Azure Service Fabric szolgáltatás táveléréséhez kapcsolódó számlálók, például a kérelem feldolgozásához átlagosan szükséges idő |
+| Service Fabric szolgáltatási módszer |Service Fabric távelérési szolgáltatás által megvalósított módszerekre jellemző számlálók, például a szolgáltatási módszer meghívásának gyakorisága |
 
-Az előző kategóriák mindegyike rendelkezik egy vagy több számlálóval.
+Az előző kategóriák mindegyike egy vagy több számlálóval rendelkezik.
 
-A Windows operációs rendszerben alapértelmezés szerint elérhető [Windows Teljesítményfigyelő](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás használható teljesítményszámláló-adatok gyűjtésére és megtekintésére. [Az Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és feltöltésére az Azure-táblákba.
+A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás, amely alapértelmezés szerint elérhető a Windows operációs rendszerben, a teljesítményszámláló-adatok gyűjtésére és megtekintésére használható. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és az Azure-táblákba való feltöltésére.
 
-### <a name="performance-counter-instance-names"></a>Teljesítményszámláló-példánynevek
-A fürt, amely nagyszámú ServiceRemoting szolgáltatások vagy partíciók nagy számú teljesítményszámláló példányok. A teljesítményszámláló-példány nevei segíthetnek a teljesítményszámláló-példány társított adott partíciójának és szolgáltatásmetódusának azonosításában.
+### <a name="performance-counter-instance-names"></a>Teljesítményszámláló-példányok nevei
+A nagy mennyiségű ServiceRemoting-szolgáltatással vagy partícióval rendelkező fürtök nagy számú teljesítményszámláló-példánnyal rendelkeznek. A teljesítményszámláló-példányok nevei segíthetnek azonosítani a teljesítményszámláló-példányhoz társított adott partíciót és szolgáltatási módszert (ha van ilyen).
 
-#### <a name="service-fabric-service-category"></a>Szolgáltatásfabric szolgáltatás kategória
-A kategória `Service Fabric Service`esetében a számlálópéldányok nevei a következő formátumúak:
+#### <a name="service-fabric-service-category"></a>Service Fabric szolgáltatáskategória
+A kategória `Service Fabric Service`esetében a számláló példányainak neve a következő formátumú:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* a Service Fabric partícióazonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló példány társítva van. A partícióazonosító guid azonosító, és karakterlánc-ábrázolása a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metóduson keresztül jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metódussal jön létre.
 
-*ServiceReplicaOrInstanceId* a Service Fabric Replika/Példányazonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló példány társítva van.
+A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
-*ServiceRuntimeInternalID* egy 64 bites egész karakterlánc-ábrázolása, amelyet a Fabric Service futásidejű belső használatra hoz létre. Ez szerepel a teljesítményszámláló-példány nevében, hogy biztosítsa annak egyediségét, és elkerülje a többi teljesítményszámláló-példány nevével való ütközést. A felhasználók nak nem szabad megpróbálni értelmezni a teljesítményszámláló példánynevének ezt a részét.
+A *ServiceRuntimeInternalID* egy 64 bites egész szám karakterlánc-ábrázolása, amelyet a háló szolgáltatás futtatókörnyezete hoz létre belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-Az alábbi példa egy számlálópéldány nevét mutat be a `Service Fabric Service` kategóriához tartozó számlálóhoz:
+A következőkben egy példa látható egy számláló példányának nevére a `Service Fabric Service` kategóriához tartozó számlálóhoz:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-Az előző példában `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric partícióazonosító karakterlánc-ábrázolása, a Replika/InstanceId karakterlánc-ábrázolása, `635650083799324046` és `5008379932` a 64 bites azonosító, amely a futásidejű belső használatra jön létre.
+Az előző példában `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric partíció-azonosító karakterlánc-ábrázolása a replika/ `635650083799324046` InstanceId `5008379932` karakterlánc-ábrázolása, amely a FUTÁSIDEJŰ belső használatra generált 64 bites azonosító.
 
-#### <a name="service-fabric-service-method-category"></a>Szolgáltatásfabric szolgáltatásmetódus kategóriája
-A kategória `Service Fabric Service Method`esetében a számlálópéldányok nevei a következő formátumúak:
+#### <a name="service-fabric-service-method-category"></a>Service Fabric szolgáltatási módszer kategóriája
+A kategória `Service Fabric Service Method`esetében a számláló példányainak neve a következő formátumú:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*A Metódusnév* annak a szolgáltatásmetódusnak a neve, amelyhez a teljesítményszámláló példány társítva van. A metódus nevének formátuma a Fabric Service futásidejű valamilyen logikája alapján kerül meghatározásra, amely kiegyenlíti a név olvashatóságát a Windows teljesítményszámláló-példánynevének maximális hosszára vonatkozó korlátozásokkal.
+A *MethodName* annak a szolgáltatási módszernek a neve, amelyhez a teljesítményszámláló-példány társítva van. A metódus nevének formátuma a háló szolgáltatás futtatókörnyezetének néhány logikája alapján van meghatározva, amely kiegyensúlyozza a név olvashatóságát a Windowson a teljesítményszámláló-példányok neveinek maximális hosszára vonatkozó korlátozásokkal.
 
-*ServiceRuntimeMethodId* egy 32 bites egész karakterlánc-ábrázolása, amelyet a Fabric Service futásideje hoz létre belső használatra. Ez szerepel a teljesítményszámláló-példány nevében, hogy biztosítsa annak egyediségét, és elkerülje a többi teljesítményszámláló-példány nevével való ütközést. A felhasználók nak nem szabad megpróbálni értelmezni a teljesítményszámláló példánynevének ezt a részét.
+A *ServiceRuntimeMethodId* egy 32 bites egész szám karakterlánc-ábrázolása, amelyet a háló szolgáltatás futtatókörnyezete hoz létre belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-*ServiceFabricPartitionID* a Service Fabric partícióazonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló példány társítva van. A partícióazonosító guid azonosító, és karakterlánc-ábrázolása a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metóduson keresztül jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metódussal jön létre.
 
-*ServiceReplicaOrInstanceId* a Service Fabric Replika/Példányazonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló példány társítva van.
+A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
-*ServiceRuntimeInternalID* egy 64 bites egész karakterlánc-ábrázolása, amelyet a Fabric Service futásidejű belső használatra hoz létre. Ez szerepel a teljesítményszámláló-példány nevében, hogy biztosítsa annak egyediségét, és elkerülje a többi teljesítményszámláló-példány nevével való ütközést. A felhasználók nak nem szabad megpróbálni értelmezni a teljesítményszámláló példánynevének ezt a részét.
+A *ServiceRuntimeInternalID* egy 64 bites egész szám karakterlánc-ábrázolása, amelyet a háló szolgáltatás futtatókörnyezete hoz létre belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-Az alábbi példa egy számlálópéldány nevét mutat be a `Service Fabric Service Method` kategóriához tartozó számlálóhoz:
+A következőkben egy példa látható egy számláló példányának nevére a `Service Fabric Service Method` kategóriához tartozó számlálóhoz:
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-Az `ivoicemailboxservice.leavemessageasync` előző példában a metódus `2` neve, a 32 bites azonosító t generált a `89383d32-e57e-4a9b-a6ad-57c6792aa521` runtime belső használatra, a string`635650083804480486` ábrázolása a Service Fabric partíció azonosító, `5008380` a string ábrázolása a Service Fabric Replika/Példányazonosító, és a 64 bites azonosító t a futásidejű belső használatra létrehozott.
+Az előző példában `ivoicemailboxservice.leavemessageasync` a metódus neve `2` a futtatókörnyezet belső használatára `89383d32-e57e-4a9b-a6ad-57c6792aa521` generált 32 bites azonosító, a Service Fabric partíció azonosítójának karakterlánc-ábrázolása,`635650083804480486` a Service Fabric replika/példány azonosítójának karakterláncos ábrázolása, és `5008380` a futtatókörnyezet belső használatára generált 64 bites azonosító.
 
 ## <a name="list-of-performance-counters"></a>Teljesítményszámlálók listája
-### <a name="service-method-performance-counters"></a>A szolgáltatásmetódus teljesítményszámlálói
+### <a name="service-method-performance-counters"></a>Szolgáltatási módszer teljesítményszámlálói
 
-A Megbízható szolgáltatás futásidejű közzéteszi a következő teljesítményszámlálók a szolgáltatás módszerek végrehajtásával kapcsolatos.
-
-| Kategória neve | Számláló neve | Leírás |
-| --- | --- | --- |
-| Szolgáltatásfabric szolgáltatás metódusa |Meghívás/mp |A szolgáltatásmetódus másodpercenkénti meghívásának száma |
-| Szolgáltatásfabric szolgáltatás metódusa |Átlagos ezredmásodperc meghívásonként |A szolgáltatásmetódus ezredmásodpercben való végrehajtásához szükséges idő |
-| Szolgáltatásfabric szolgáltatás metódusa |Másodpercenként idúló kivételek |Azon alkalmak száma, ahányszor a szolgáltatásmetódus kivételt okozott másodpercenként |
-
-### <a name="service-request-processing-performance-counters"></a>Szolgáltatáskérés-feldolgozási teljesítményszámlálók
-Amikor egy ügyfél meghívja a metódust egy szolgáltatás proxyobjektumon keresztül, azt eredményezi, hogy egy kérésüzenetet küld a hálózaton keresztül a kapcsolathívási szolgáltatásnak. A szolgáltatás feldolgozza a kérési üzenetet, és választ küld az ügyfélnek. A Megbízható ServiceRemoting futásidejű közzéteszi a következő teljesítményszámlálók kapcsolatos szolgáltatáskérelmek feldolgozása.
+A megbízható szolgáltatási futtatókörnyezet a szolgáltatási módszerek végrehajtásával kapcsolatos következő teljesítményszámlálók közzétételét teszi közzé.
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Szolgáltatás fabric szolgáltatás |# a fennálló kérelmek |A szolgáltatásban feldolgozott kérelmek száma |
-| Szolgáltatás fabric szolgáltatás |Kérésenkénti átlagos ezredmásodperc |A szolgáltatás által a kérelem feldolgozásához szükséges idő (ezredmásodpercben) |
-| Szolgáltatás fabric szolgáltatás |A kérelem deszerializálásának átlagos ezredmásodpercei |A szolgáltatáshoz érkező szolgáltatáskérési üzenet deszerializálásához szükséges idő (ezredmásodpercben) |
-| Szolgáltatás fabric szolgáltatás |A válasz szerializálásának átlagos ezredmásodpercei |A szolgáltatás válaszüzenetének szerializálásához szükséges idő (ezredmásodpercben) a válasz ügyfélnek való küldése előtt |
+| Service Fabric szolgáltatási módszer |Hívás/mp |A szolgáltatás metódusának meghívásakor meghívott idő másodpercenkénti száma |
+| Service Fabric szolgáltatási módszer |Hívás átlagos száma ezredmásodpercben |A szolgáltatás metódusának végrehajtásához szükséges idő ezredmásodpercben |
+| Service Fabric szolgáltatási módszer |Kivételek száma másodpercenként |Az a szám, ahányszor a szolgáltatás metódusa kivételt okozott másodpercenként |
+
+### <a name="service-request-processing-performance-counters"></a>Szolgáltatási kérelmek feldolgozási teljesítményszámlálói
+Ha egy ügyfél Service proxy-objektumon keresztül hív meg egy metódust, akkor a rendszer a hálózaton keresztül küldi el a távelérési szolgáltatásnak küldött kérési üzenetet. A szolgáltatás feldolgozza a kérelem üzenetét, és visszaküldi a választ az ügyfélnek. A megbízható ServiceRemoting-futtatókörnyezet a következő teljesítményszámlálók közzétételét teszi közzé a szolgáltatási kérelmek feldolgozásával kapcsolatban.
+
+| Kategória neve | Számláló neve | Leírás |
+| --- | --- | --- |
+| Service Fabric szolgáltatás |függőben lévő kérelmek száma |A szolgáltatásban feldolgozott kérelmek száma |
+| Service Fabric szolgáltatás |Kérelmek átlagos száma ezredmásodpercben |A szolgáltatás által a kérelem feldolgozásához szükséges idő (ezredmásodpercben) |
+| Service Fabric szolgáltatás |Kérelem deszerializálásának átlagos ezredmásodperce |A szolgáltatási kérelem üzenetének deszerializálásához szükséges idő (ezredmásodpercben), amikor a szolgáltatás megkapja a szolgáltatást |
+| Service Fabric szolgáltatás |Válasz szerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben) a szolgáltatás válaszüzenetének szerializálásához, mielőtt a rendszer elküldi a választ az ügyfélnek |
 
 ## <a name="next-steps"></a>További lépések
 * [Mintakód](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
-* [EventSource-szolgáltatók a PerfView-ban](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [EventSource-szolgáltatók a Perfview eszköz-ben](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

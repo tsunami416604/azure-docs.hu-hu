@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: magattus
 ms.openlocfilehash: 7dd97fa49931168b9a42b5c9ac7887b84298a5f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335054"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
-| Azure tartalomkézbesítési hálózati profilok |25 |
-| Tartalomkézbesítési hálózati végpontok profilonként |25 |
-| Egyéni tartományok végpontonként |25 |
+| Azure Content Delivery Network-profilok |25 |
+| Content Delivery Network végpontok száma |25 |
+| Egyéni tartományok/végpont |25 |
 
-A Content Delivery Network-előfizetés egy vagy több Content Delivery Network-profilt is tartalmazhat. A Content Delivery Network-profilok egy vagy több Content Delivery Network végpontot tartalmazhatnak. Előfordulhat, hogy több profilt szeretne használni a Content Delivery Network végpontjainak internetes domain, webalkalmazás vagy más feltételek szerint történő rendszerezésére. 
+A Content Delivery Network-előfizetés egy vagy több Content Delivery Network profilt is tartalmazhat. Egy Content Delivery Network profil egy vagy több Content Delivery Network végpontot tartalmazhat. Előfordulhat, hogy több profilt szeretne használni az Content Delivery Network-végpontok internetes tartomány, webalkalmazás vagy más feltétel alapján történő rendszerezéséhez. 
 
 

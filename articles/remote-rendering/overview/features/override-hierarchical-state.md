@@ -6,56 +6,56 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680790"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
-Sok esetben dinamikusan meg kell változtatni a [modell](../../concepts/models.md)részeinek megjelenését , például el kell takargatni az algráfokat, vagy át kell állítani az alkatrészeket átlátszó renderelésre. Az egyes érintett részek anyagainak módosítása nem praktikus, mivel az egész jelenetgrafikonon végig kell étkeznie, és minden csomóponton kezelni kell az anyagklónozást és -hozzárendelést.
+Sok esetben szükség van a [modell](../../concepts/models.md)részeinek megjelenésének dinamikus módosítására, például az algráfok elrejtésére vagy a részek átváltására transzparens megjelenítésre. Az egyes részekben található anyagok módosítása nem praktikus, mivel a teljes jelenet gráfon való iterációra, valamint az egyes csomópontokon az anyagok klónozásának és hozzárendelésének kezelésére van szükség.
 
-Ha ezt a használati esetet a `HierarchicalStateOverrideComponent`lehető legkisebb többletterheléssel szeretné elvégezni, használja a . Ez az összetevő hierarchikus állapotfrissítéseket valósít meg a jelenetdiagram tetszőleges ágain. Ez azt jelenti, hogy egy állapot a jelenetdiagram bármely szintjén definiálható, és addig szivárog le a hierarchiában, amíg egy új állapot felül nem bírálja, vagy egy levélobjektumra nem alkalmazza.
+Ha a lehető legkevesebb terheléssel szeretné elérni a használati esetet `HierarchicalStateOverrideComponent`, használja a következőt:. Ez az összetevő hierarchikus állapotú frissítéseket valósít meg a jelenet gráf tetszőleges ágain. Ez azt jelenti, hogy az állapot bármilyen szinten meghatározható a Scene Graphban, és a hierarchiában leszivárog, egészen addig, amíg egy új állapot felülbírálja, vagy egy levél objektumra van alkalmazva.
 
-Példaként, úgy a modell egy autó, és azt szeretné, hogy kapcsolja be az egész autót, hogy átlátható legyen, kivéve a belső motor része. Ez a használati eset az összetevőnek csak két példányát érinti:
+Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső motor részének kivételével át kívánja váltani az egész autót. Ez a használati eset az összetevő két példányát foglalja magában:
 
-* Az első összetevő a modell gyökércsomópontjához van rendelve, és bekapcsolja az átlátszó renderelést az egész autószámára.
-* A második összetevő a motor gyökércsomópontjához van rendelve, és az átlátszó üzemmód kifejezett kikapcsolásával újra felülbírálja az állapotot.
+* Az első összetevő a modell legfelső szintű csomópontjára van rendelve, és a teljes autó transzparens megjelenítését kapcsolja be.
+* A második összetevő a motor gyökérszintű csomópontjára van hozzárendelve, és ismét felülbírálja az állapotot, ha explicit módon kikapcsolja a megtekintési módot.
 
 ## <a name="features"></a>Szolgáltatások
 
-A felülbírálható állapotok rögzített készletei a következők:
+A felülbírálható állapotok rögzített halmaza:
 
-* **Rejtett**: A jelenetdiagramon lévő megfelelő felvételek rejtettek vagy láthatók.
-* **Színárnyalat szín:** A renderelt objektum színárnyalattal színezhető az egyes színekkel és színvastagsággal. Az alábbi képen a kerék peremének színárnyalata látható.
+* **Rejtett**: a jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
+* **Színárnyalat színe**: egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
   
   ![Színárnyalat](./media/color-tint.png)
 
-* **Átlátszó**: A geometria félig átlátszóvá válik, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen az egész autó átlátszó üzemmódban jelenik meg, kivéve a piros féknyergét:
+* **Áttekinthető**: a geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
 
-  ![Átlátszó](./media/see-through.png)
+  ![Áttekintő](./media/see-through.png)
 
   > [!IMPORTANT]
-  > Az átlátszó hatás csak a *TileBasedComposition* [renderelési mód](../../concepts/rendering-modes.md) használata esetén működik.
+  > A megtekintési effektus csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
 
-* **Kiválasztva**: A geometria [kijelölési körvonallal](outlines.md)jelenik meg.
+* **Kiválasztva**: a geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
 
   ![Kijelölési körvonal](./media/selection-outline.png)
 
-* **DisableCollision**: A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **Rejtett** jelző nem kapcsolja ki az ütközéseket, így ez a két jelző gyakran együtt van beállítva.
+* **DisableCollision**: a geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **rejtett** jelző nem kapcsolja ki az ütközéseket, így a két jelzőt gyakran együtt kell beállítani.
 
 ## <a name="hierarchical-overrides"></a>Hierarchikus felülbírálások
 
-Az `HierarchicalStateOverrideComponent` objektumhierarchia több szintjén is csatolható. Mivel egy entitáson minden típusnak csak egy `HierarchicalStateOverrideComponent` összetevője lehet, mindegyik kezeli a rejtett, átlátszó, kiválasztott, színárnyalat és ütközés állapotát.
+A `HierarchicalStateOverrideComponent` csatolható egy objektum-hierarchia több szintjén is. Mivel az entitásokban csak egyetlen összetevő lehet, a rendszer a rejtett, a `HierarchicalStateOverrideComponent` megjelenő, a kijelölt, a színárnyalatok és az ütközések állapotait kezeli.
 
-Ezért minden állam a következők egyikére állítható:
+Ezért az egyes állapotok az alábbiak egyikére állíthatók be:
 
-* `ForceOn`- az állapot engedélyezve van az összes hálóhoz ezen a csomóponton és alatt
-* `ForceOff`- az állapot le van tiltva az összes olyan és az alatt lévő vagy az alatt lévő
-* `InheritFromParent`- az állapotot nem befolyásolja ez a felülbírálási összetevő
+* `ForceOn`– az állapot engedélyezve van az összes rácsvonal számára ezen a csomóponton.
+* `ForceOff`– az állapot le van tiltva az összes rácsvonalon ezen a csomóponton.
+* `InheritFromParent`– Ez a felülbírálási összetevő nem érinti az állapotot
 
-Az állapotokat közvetlenül `SetState` vagy a funkción keresztül módosíthatja:
+Az állapotokat közvetlenül vagy a `SetState` függvény használatával módosíthatja:
 
 ```cs
 HierarchicalStateOverrideComponent component = ...;
@@ -72,16 +72,16 @@ component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollisi
 
 ### <a name="tint-color"></a>Színárnyalat színe
 
-A színárnyalat színfelülírása kissé különleges, mivel egyszerre van be/ki/öröklődik, és egy színárnyalat-tulajdonság. A színszín alfa-része határozza meg a színezőhatás súlyát: Ha 0,0-ra van állítva, akkor nem látható színszín, és ha 1,0-ra van állítva, az objektum színszínnel jelenik meg. A köztes értékek esetében a végső szín keveredik a színszínnel. A színárnyalat színe képkockánként módosítható a színanimáció elérése érdekében.
+Az árnyalatok színe felülbírálása kis mértékben különleges, ha a be-és kikapcsolás/öröklési állapot és az árnyalat színe tulajdonság is szerepel. Az árnyalat színének alfa része határozza meg az árnyalatos hatás súlyozását: Ha a 0,0 értékre van állítva, a színárnyalat nem látható, és ha a értéke 1,0, az objektum tiszta tónusú színnel jelenik meg. Az értékek között a végső szín az árnyalat színével lesz keverve. A színárnyalatok színének megváltoztatásához a színárnyalat a képkockák alapján módosítható.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
-Egy példány `HierarchicalStateOverrideComponent` önmagában nem ad sok futásidejű terhelést. Azonban mindig jó gyakorlat, hogy az aktív összetevők száma alacsony. Ha például olyan kijelölési rendszert valósít meg, amely kiemeli a kitárolt objektumot, a csúcsfény eltávolításakor ajánlott törölni az összetevőt. Az alkatrészek semleges funkciókkal való megtartása gyorsan összeadódhat.
+`HierarchicalStateOverrideComponent` Maga egy példánya nem ad hozzá sok futásidejű terhelést. Azonban mindig érdemes megtartani az aktív összetevők számát. Ha például olyan kiválasztási rendszer megvalósítását tervezi, amely kiemeli a kiválasztott objektumot, akkor azt javasoljuk, hogy törölje az összetevőt a kiemelés eltávolításakor. Az összetevők és a semleges funkciók megtartása gyorsan felvehető.
 
-Az átlátszó renderelés nagyobb terhelést helyez el a kiszolgáló GPU-in, mint a normál renderelés. Ha a jelenetdiagram nagy része *átlátszóra*vált, és a geometria számos rétege látható, akkor az teljesítményszűk keresztmetszetté válhat. Ugyanez vonatkozik a [kijelöléskörvonallal](../../overview/features/outlines.md#performance)rendelkező objektumokra is.
+Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor*a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kijelölési körvonalakkal](../../overview/features/outlines.md#performance)rendelkező objektumok esetében is.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Felvázolja](../../overview/features/outlines.md)
+* [Ismerteti](../../overview/features/outlines.md)
 * [Renderelési módok](../../concepts/rendering-modes.md)
 * [Térbeli lekérdezések](../../overview/features/spatial-queries.md)

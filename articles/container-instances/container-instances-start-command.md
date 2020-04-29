@@ -1,67 +1,67 @@
 ---
-title: Belépési pont felülbírálása a tárolópéldányban
-description: Állítson be egy parancssort, amely felülbírálja a belépési pontot egy tárolólemezképben, amikor egy Azure-tárolópéldányt telepít
+title: BelépésiPont felülbírálása a tároló-példányban
+description: Parancssor beállítása a BelépésiPont felülbírálására egy Azure Container-példány telepítésekor
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247123"
 ---
-# <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>A tárolópéldány parancssorának beállítása az alapértelmezett parancssori művelet felülbírálására
+# <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>A parancssor beállítása tároló-példányban az alapértelmezett parancssori művelet felülbírálásához
 
-Amikor tárolópéldányt hoz létre, adja meg azt a parancsot, amely felülbírálja a tárolólemezképbe sütött alapértelmezett parancssori utasítást. Ez a viselkedés `--entrypoint` hasonló a parancssori argumentumhoz. `docker run`
+Tároló-példány létrehozásakor opcionálisan megadhat egy parancsot, amely felülbírálja az alapértelmezett parancssori utasításokat a tároló képére. Ez a viselkedés hasonló a `--entrypoint` parancssori argumentumhoz. `docker run`
 
-A [tárolópéldányok környezeti változóinak](container-instances-environment-variables.md) beállításához hasonlóan a kezdő parancssor megadása is hasznos a kötegelt feladatokhoz, ahol minden tárolót dinamikusan kell előkészíteni feladatspecifikus konfigurációval.
+Például a [környezeti változók](container-instances-environment-variables.md) beállítása a Container instances esetében, a kezdő parancssor megadása olyan batch-feladatok esetében hasznos, ahol az egyes tárolókat a feladat-specifikus konfigurációval dinamikusan kell előkészíteni.
 
 ## <a name="command-line-guidelines"></a>Parancssori irányelvek
 
-* Alapértelmezés szerint a parancssor *egyetlen folyamatot* ad meg, amely a tárolóban lévő rendszerhéj nélkül indul el. Előfordulhat például, hogy a parancssor python-parancsfájlt vagy végrehajtható fájlt futtat. A folyamat további paramétereket vagy argumentumokat adhat meg.
+* Alapértelmezés szerint a parancssor egyetlen folyamatot határoz meg, amely a tárolóban lévő *rendszerhéj nélkül indul* el. Előfordulhat például, hogy a parancssor egy Python-parancsfájlt vagy egy végrehajtható fájlt futtat. A folyamat további paramétereket vagy argumentumokat adhat meg.
 
-* Több parancs végrehajtásához kezdje el a parancssort a tárolóoperációs rendszerben támogatott rendszerhéj-környezet beállításával. Példák:
+* Több parancs végrehajtásához indítsa el a parancssort a tároló operációs rendszer által támogatott rendszerhéj-környezet beállításával. Példák:
 
   |Operációs rendszer  |Alapértelmezett rendszerhéj  |
   |---------|---------|
   |Ubuntu     |   `/bin/bash`      |
-  |Alpesi     |   `/bin/sh`      |
+  |Alpine     |   `/bin/sh`      |
   |Windows     |    `cmd`     |
 
-  Kövesse a rendszerhéj konvencióit, és több parancsot egyesítsen egymás után.
+  A rendszerhéj konvencióinak követésével több parancsot is egyesíthet a sorozatokban való futtatáshoz.
 
-* A tároló konfigurációjától függően előfordulhat, hogy be kell állítania egy teljes elérési utat a parancssori végrehajtható fájlhoz vagy argumentumhoz.
+* Előfordulhat, hogy a tároló konfigurációjától függően meg kell adnia a parancssori végrehajtható fájl vagy argumentumok teljes elérési útját.
 
-* Állítsa be a megfelelő [újraindítási házirendet](container-instances-restart-policy.md) a tárolópéldányhoz, attól függően, hogy a parancssor hosszú ideig futó vagy egy egyszeri feladatot ad-e meg. Például egy egyszeri `Never` feladat `OnFailure` újraindítási házirendje, vagy ajánlott. 
+* Állítson be egy megfelelő [Újraindítási szabályzatot](container-instances-restart-policy.md) a tároló-példányhoz attól függően, hogy a parancssor egy hosszan futó feladatot vagy egyszeri futtatású feladatot határoz meg. Például a `Never` vagy `OnFailure` a rendszer újraindítási szabályzata javasolt egy egyszeri futtatású feladathoz. 
 
-* Ha információra van szüksége a tárolórendszerkép alapértelmezett belépési pontjáról, használja a [docker-rendszerkép-vizsgálat](https://docs.docker.com/engine/reference/commandline/image_inspect/) parancsot.
+* Ha információra van szüksége a tároló-rendszerképben beállított alapértelmezett BelépésiPont, használja a [Docker-rendszerkép vizsgálata](https://docs.docker.com/engine/reference/commandline/image_inspect/) parancsot.
 
 ## <a name="command-line-syntax"></a>Parancssori szintaxis
 
-A parancssori szintaxis a példányok létrehozásához használt Azure API-tól vagy eszköztől függ. Ha parancshéj-környezetet ad meg, tartsa be a parancs szintaxisának konvencióit is.
+A parancssori szintaxis a példányok létrehozásához használt Azure API vagy eszköztől függően változhat. Ha a rendszerhéj-környezetet is megadja, figyelje meg a rendszerhéj parancs szintaxisát is.
 
-* [az container create][az-container-create] parancs: Adjon `--command-line` át egy karakterláncot a paraméterrel. Példa: `--command-line "python myscript.py arg1 arg2"`).
+* az [az Container Create][az-container-create] parancs: adjon meg egy karakterláncot a `--command-line` paraméterrel. Példa: `--command-line "python myscript.py arg1 arg2"`).
 
-* [Új-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell-parancsmag: Adja át `-Command` a paramétert. Példa: `-Command "echo hello"`.
+* [Új – AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell parancsmag: adjon meg egy karakterláncot `-Command` a paraméterrel. Példa: `-Command "echo hello"`.
 
-* Azure Portal: A **parancs felülbírálása** tulajdonsága a tároló konfiguráció, adjon meg egy vesszővel tagolt karakterláncok listáját, idézőjelek nélkül. Példa: `python, myscript.py, arg1, arg2`). 
+* Azure Portal: a tároló konfigurációjának **parancs felülbírálása** tulajdonságában adja meg a karakterláncok vesszővel tagolt listáját, idézőjelek nélkül. Példa: `python, myscript.py, arg1, arg2`). 
 
-* Resource Manager-sablon vagy YAML-fájl, vagy az Azure SDK-k egyike: Adja meg a parancssori tulajdonságot karakterláncok tömbjeként. Példa: a JSON-tömb `["python", "myscript.py", "arg1", "arg2"]` egy Erőforrás-kezelő sablonban. 
+* Resource Manager-sablon vagy YAML-fájl, vagy egy Azure SDK-k: a parancssori tulajdonságot karakterláncok tömbje kell megadni. Példa: a JSON- `["python", "myscript.py", "arg1", "arg2"]` tömb egy Resource Manager-sablonban. 
 
-  Ha ismeri a [Dockerfile](https://docs.docker.com/engine/reference/builder/) szintaxisát, ez a formátum hasonló a CMD utasítás *exec* formájához.
+  Ha már ismeri a [Docker](https://docs.docker.com/engine/reference/builder/) szintaxist, ez a formátum a cmd utasítás *exec* formájához hasonlóan fog megjelenni.
 
 ### <a name="examples"></a>Példák
 
 |    |  Azure CLI   | Portál | Sablon | 
 | ---- | ---- | --- | --- |
-| Egyetlen parancs | `--command-line "python myscript.py arg1 arg2"` | **Parancs felülbírálása:**`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Több parancs | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Parancs felülbírálása:**`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| Egyetlen parancs | `--command-line "python myscript.py arg1 arg2"` | **Parancs felülbírálása**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| Több parancs | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Parancs felülbírálása**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
-## <a name="azure-cli-example"></a>Példa az Azure CLI-re
+## <a name="azure-cli-example"></a>Azure CLI-példa
 
-Például módosítsa a [microsoft/aci-wordcount][aci-wordcount] tárolókép viselkedését, amely shakespeare-i *hamletszöveget* elemez, hogy megtalálja a leggyakrabban előforduló szavakat. A *Hamlet*elemzése helyett beállíthat egy parancssort, amely egy másik szövegforrásra mutat.
+Tegyük fel például, hogy módosítja a [Microsoft/ACI-WordCount][aci-wordcount] tároló rendszerképének viselkedését, amely elemzi a szöveget a Shakespeare *Hamletben* , hogy megtalálja a leggyakrabban előforduló szavakat. A *Hamlet*elemzése helyett olyan parancssort állíthat be, amely egy másik szöveges forrásra mutat.
 
-Ha meg szeretné tekinteni a [microsoft/aci-wordcount][aci-wordcount] tároló kimenetét, amikor az az alapértelmezett szöveget elemzi, futtassa azt a következő [az container create][az-container-create] paranccsal. Nincs megadva indítási parancssor, így az alapértelmezett tárolóparancs fut. Szemléltetésképpen ez a példa [beállítja a környezeti változókat,](container-instances-environment-variables.md) hogy megtalálják a legalább öt betűhosszú első 3 szót:
+Ha meg szeretné tekinteni a [Microsoft/ACI-WordCount][aci-wordcount] tároló kimenetét, amikor elemzi az alapértelmezett szöveget, futtassa azt a következő az [Container Create][az-container-create] paranccsal. Nincs megadva indítási parancssor, ezért az alapértelmezett tároló parancs fut. Illusztrációs célokra ez a példa [környezeti változókat](container-instances-environment-variables.md) állít be a legalább öt betűből álló első három szó megkereséséhez:
 
 ```azurecli-interactive
 az container create \
@@ -72,7 +72,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Miután a tároló állapota *megállítva* jelenik meg (használja [az container show][az-container-show] állapot ellenőrzéséhez), [jelenítse][az-container-logs] meg a naplót az az tároló naplók a kimenet megtekintéséhez.
+Miután a tároló állapota *Leálltként* jelenik meg (az az [Container show][az-container-show] paranccsal ellenőrizze az állapotot), a kimenet megtekintéséhez jelenítse meg a naplót az [az Container logs][az-container-logs] használatával.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -84,9 +84,9 @@ Kimenet:
 [('HAMLET', 386), ('HORATIO', 127), ('CLAUDIUS', 120)]
 ```
 
-Most állítson be egy második példatárolót a különböző szövegek elemzéséhez egy másik parancssor megadásával. A tároló által végrehajtott Python-parancsfájl, *wordcount.py*, egy URL-címet fogad el argumentumként, és az alapértelmezett helyett feldolgozza az oldal tartalmát.
+Most állítson be egy második példát tárolót egy másik parancssor megadásával a különböző szövegek elemzéséhez. A tároló által végrehajtott Python-szkript, a *WordCount.py*, elfogad egy URL-címet argumentumként, és a lap tartalmát dolgozza fel az alapértelmezett érték helyett.
 
-Például, hogy meghatározza a top 3 szó, amely legalább öt betű hosszú *Rómeó és Júlia:*
+Például a *Rómeó és Júlia*közül legalább öt betűből álló első három szó meghatározásához:
 
 ```azurecli-interactive
 az container create \
@@ -98,7 +98,7 @@ az container create \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
 ```
 
-Ismét, ha a tároló *leállítva,* tekintse meg a kimenetet a tároló naplóinak megjelenítésével:
+Ha a tárolót *leállították*, akkor a tároló naplóinak megjelenítésével megtekintheti a kimenetet:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2
@@ -112,7 +112,7 @@ Kimenet:
 
 ## <a name="next-steps"></a>További lépések
 
-A feladatalapú forgatókönyvek, például a több tárolóval rendelkező nagy adatkészlet kötegelt feldolgozása, futásidőben egyéni parancssorok előnyeit élvezhetik. A feladatalapú tárolók futtatásáról további információt a [Tárolóalapú feladatok futtatása újraindítási házirendekkel című témakörben talál.](container-instances-restart-policy.md)
+A feladat-alapú forgatókönyvek, például a Batch több tárolóval rendelkező nagyméretű adathalmazok feldolgozására alkalmasak, a futtatáskor az egyéni parancssorok is hasznosak lehetnek. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [a tárolózott feladatok futtatása újraindítási szabályzatokkal](container-instances-restart-policy.md).
 
 <!-- LINKS - External -->
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

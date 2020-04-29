@@ -1,6 +1,6 @@
 ---
 title: Virtuális hálózat létrehozása felügyelt példányhoz
-description: Ez a cikk ismerteti, hogyan hozhat létre egy virtuális hálózatot, ahol az Azure SQL Database felügyelt példány üzembe helyezhető.
+description: Ez a cikk azt ismerteti, hogyan hozhat létre olyan virtuális hálózatot, amelyen Azure SQL Database felügyelt példányt telepíthet.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,29 +12,29 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
 ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878850"
 ---
-# <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Virtuális hálózat létrehozása az Azure SQL Database felügyelt példányához
+# <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Virtuális hálózat létrehozása Azure SQL Database felügyelt példányhoz
 
-Ez a cikk bemutatja, hogyan hozhat létre egy érvényes virtuális hálózatot és alhálózatot, ahol telepítheti az Azure SQL Database felügyelt példány.
+Ez a cikk azt ismerteti, hogyan lehet létrehozni egy érvényes virtuális hálózatot és alhálózatot, ahol Azure SQL Database felügyelt példányt telepíthet.
 
-Az Azure SQL Database felügyelt példányát egy Azure [virtuális hálózaton](../virtual-network/virtual-networks-overview.md)belül kell telepíteni. Ez a központi telepítés a következő eseteket teszi lehetővé:
+Azure SQL Database felügyelt példányt egy Azure-beli [virtuális hálózaton](../virtual-network/virtual-networks-overview.md)belül kell üzembe helyezni. Ez a központi telepítés a következő forgatókönyveket teszi lehetővé:
 
-- Magánjellegű IP-cím biztonságossá tétele
-- Csatlakozás felügyelt példányhoz közvetlenül a helyszíni hálózatról
-- Felügyelt példány csatlakoztatása csatolt kiszolgálóhoz vagy más helyszíni adattárhoz
-- Felügyelt példány csatlakoztatása Azure-erőforrásokhoz  
+- Biztonságos magánhálózati IP-cím
+- Csatlakozás felügyelt példányhoz közvetlenül egy helyszíni hálózatról
+- Felügyelt példány csatlakoztatása csatolt kiszolgálóhoz vagy egy másik helyszíni adattárhoz
+- Felügyelt példány csatlakoztatása az Azure-erőforrásokhoz  
 
 > [!NOTE]
-> Az első példány telepítése előtt meg kell [határoznia a felügyelt példány alhálózatának méretét.](sql-database-managed-instance-determine-size-vnet-subnet.md) Az alhálózat nem méretezhető át, miután az erőforrásokat behelyezte.
+> Az első példány üzembe helyezése előtt meg kell [határoznia a felügyelt példány alhálózatának méretét](sql-database-managed-instance-determine-size-vnet-subnet.md) . Az alhálózatot az erőforrások belső elhelyezése után nem lehet átméretezni.
 >
-> Ha meglévő virtuális hálózatot kíván használni, módosítania kell a hálózati konfigurációt a felügyelt példány nak megfelelően. További információt a [Felügyelt példány meglévő virtuális hálózatának módosítása című témakörben talál.](sql-database-managed-instance-configure-vnet-subnet.md)
+> Ha meglévő virtuális hálózat használatát tervezi, akkor módosítania kell a hálózati konfigurációt, hogy az megfeleljen a felügyelt példánynak. További információ: [meglévő virtuális hálózat módosítása felügyelt példányhoz](sql-database-managed-instance-configure-vnet-subnet.md).
 >
-> Felügyelt példány létrehozása után a felügyelt példány vagy virtuális hálózat áthelyezése egy másik erőforráscsoportba vagy előfizetésbe nem támogatott.  A felügyelt példány áthelyezése egy másik alhálózatba szintén nem támogatott.
+> Felügyelt példány létrehozása után a felügyelt példány vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.  A felügyelt példány másik alhálózatra való áthelyezése szintén nem támogatott.
 >
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
@@ -43,25 +43,25 @@ A virtuális hálózat létrehozásának és konfigurálásának legegyszerűbb 
 
 1. Jelentkezzen be az Azure portálra.
 
-2. Válassza a **Telepítés az Azure-ba** gombot:
+2. Válassza az **üzembe helyezés az Azure-** ban gombot:
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
-   Ez a gomb megnyit egy űrlapot, amely segítségével konfigurálhatja a hálózati környezetet, ahol a felügyelt példány telepíthető.
+   Ezzel a gombbal megnyithatja a hálózati környezet konfigurálásához használható űrlapot, ahol felügyelt példányt telepíthet.
 
    > [!Note]
-   > Ez az Azure Resource Manager-sablon két alhálózattal rendelkező virtuális hálózatot telepít. Egy felügyelt **példánynak**nevezett alhálózat van fenntartva a felügyelt példány számára, és előre konfigurált útvonaltáblával rendelkezik. A másik alhálózat, az **alapértelmezett**, más erőforrásokhoz használható, amelyek nek hozzá kell férniük a felügyelt példányhoz (például az Azure virtuális gépekhez).
+   > Ez a Azure Resource Manager-sablon két alhálózattal rendelkező virtuális hálózatot fog telepíteni. Egy **ManagedInstances**nevű alhálózat felügyelt példány számára van fenntartva, és előre konfigurált útválasztási táblázattal rendelkezik. A másik, **alapértelmezett**nevű alhálózat más erőforrásokhoz is használatos, amelyeknek hozzáférést kell biztosítania a felügyelt példányhoz (például Azure Virtual machines).
 
 3. Konfigurálja a hálózati környezetet. A következő űrlapon konfigurálhatja a hálózati környezet paramétereit:
 
-   ![Erőforrás-kezelő sablon az Azure-hálózat konfigurálásához](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
+   ![Resource Manager-sablon az Azure-hálózat konfigurálásához](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
-   Módosíthatja a virtuális hálózat és az alhálózatok nevét, és módosíthatja a hálózati erőforrásokhoz társított IP-tartományokat. Miután kiválasztotta a **Vásárlás** gombot, ez az űrlap létrehozza és konfigurálja a környezetet. Ha nincs szüksége két alhálózatra, törölheti az alapértelmezettet.
+   Módosíthatja a virtuális hálózat és az alhálózatok nevét, és módosíthatja a hálózati erőforrásokhoz társított IP-tartományokat. Miután kiválasztotta a **vásárlás** gombot, az űrlap létrehozza és konfigurálja a környezetet. Ha nincs szüksége két alhálózatra, törölheti az alapértelmezettet.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az áttekintést a [Mi a felügyelt példány?](sql-database-managed-instance.md)
-- Ismerje meg [a felügyelt példány kapcsolódási architektúráját.](sql-database-managed-instance-connectivity-architecture.md)
-- További információ a [felügyelt példány meglévő virtuális hálózatának módosításáról.](sql-database-managed-instance-configure-vnet-subnet.md)
-- A virtuális hálózat létrehozásáról, felügyelt példány létrehozásáról és az adatbázis adatbázis-biztonsági mentésből történő visszaállításáról az [Azure SQL Database Managed Instance létrehozása című](sql-database-managed-instance-get-started.md)témakörben található.
-- A DNS-sel kapcsolatos problémákról az [Egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md)című témakörben van.
+- Tekintse át a [Mi az a felügyelt példány?](sql-database-managed-instance.md)című témakört.
+- Ismerje meg a [felügyelt példány kapcsolati architektúráját](sql-database-managed-instance-connectivity-architecture.md).
+- Megtudhatja, hogyan [módosíthat egy meglévő virtuális hálózatot a felügyelt példányok számára](sql-database-managed-instance-configure-vnet-subnet.md).
+- A virtuális hálózatok létrehozásával, felügyelt példány létrehozásával és adatbázis biztonsági másolatból való visszaállításával kapcsolatos oktatóanyagért lásd: [Azure SQL Database felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
+- DNS-problémák esetén tekintse meg az [Egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md)című témakört.

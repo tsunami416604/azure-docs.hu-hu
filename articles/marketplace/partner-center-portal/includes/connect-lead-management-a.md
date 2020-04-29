@@ -10,22 +10,22 @@ ms.date: 10/09/2019
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: f79b25c98ae2e764f607fc5a12bc311ed0edacae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286183"
 ---
-Lépjen kapcsolatba ügyfeleivel közvetlenül az ajánlat nak a piactereken való listázásával és az ügyfélkapcsolat-kezelés (CRM) rendszerének összekapcsolásával, hogy az ügyfél érdeklődésének kifejezése vagy üzembe helyezése után azonnal megkaphassa az ügyfél elérhetőségét. Termék.
+Közvetlenül kapcsolódhat az ügyfelekhez, ha az ajánlatát a piactéren listázza, és összekapcsolja az Ügyfélkapcsolat-kezelési (CRM) rendszerét, hogy az ügyfél kapcsolattartási adatait azonnal megkapja, miután a vásárló megtekinti az érdeklődését vagy üzembe helyezi a terméket.
 
-- **Válasszon érdeklődői célt** (legördülő menü): Adja meg a CRM-rendszerrel való kapcsolat részleteit, ahová azt szeretné, hogy ügyfélérdeklődőket küldjünk. 
+- **Válasszon egy érdeklődő célhelyet** (legördülő menü): adja meg a kapcsolati adatokat arra a CRM-rendszerre, ahol az ügyfél-érdeklődőket el szeretné küldeni. 
 
-A Partnerközpont a következő CRM rendszereket támogatja az érdeklődőkezeléshez. Válassza ki a telepítési utasításokhoz a hivatkozást.
+A partner Center a következő CRM-rendszereket támogatja az érdeklődők felügyeletéhez. Válassza ki a telepítési utasítások hivatkozását.
 
-- [Azure Blob](../commercial-marketplace-lead-management-instructions-azure-blob.md) – Adja meg a kapcsolattartó e-mail-, tárolónév és a tárfiók kapcsolati karakterláncát. 
-- [Azure Table](../commercial-marketplace-lead-management-instructions-azure-table.md) – Adja meg a kapcsolattartó e-mail és a tárfiók kapcsolati karakterlánc. 
-- [Dynamics CRM Online](../commercial-marketplace-lead-management-instructions-dynamics.md) – Kapcsolattartási e-mail, URL és hitelesítési mód (Office 365 vagy Azure Active Directory) biztosítása.
-- [Https Endpoint](../commercial-marketplace-lead-management-instructions-https.md) – Kapcsolattartó e-mail és HTTPS-végpont URL-címének megadására. 
-- [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md) - Adja meg a kapcsolattartó e-mail, űrlap azonosító, Munchkin fiók azonosító, és a szerver azonosítója.
-- [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md) – kapcsolattartási e-mail és szervezeti azonosító biztosítása. 
+- [Azure-Blob](../commercial-marketplace-lead-management-instructions-azure-blob.md) – adja meg a kapcsolattartási e-mailt, a tároló nevét és a Storage-fiók kapcsolati karakterláncát. 
+- [Azure-tábla](../commercial-marketplace-lead-management-instructions-azure-table.md) – adja meg a kapcsolattartási e-mail és a Storage-fiók kapcsolati sztringjét. 
+- [Dynamics CRM Online](../commercial-marketplace-lead-management-instructions-dynamics.md) – kapcsolattartási e-mail, URL-cím és hitelesítési mód megadása (Office 365 vagy Azure Active Directory).
+- [Https-végpont](../commercial-marketplace-lead-management-instructions-https.md) – adja meg a kapcsolattartási e-mail és a https-végpont URL-címét. 
+- [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md) – adja meg a kapcsolattartási e-mailt, az űrlap azonosítóját, a Munchkin-fiókot és a kiszolgáló azonosítóját.
+- [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md) – adja meg a kapcsolattartási e-mailt és a szervezet azonosítóját. 
 

@@ -1,6 +1,6 @@
 ---
 title: Számítási feladat fontossága
-description: Útmutató a Synapse SQL-készlet lekérdezéseinek fontosságának beállításához az Azure Synapse Analytics szolgáltatásban.
+description: Útmutatás a szinapszis SQL Pool-lekérdezések fontosságának beállításához az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,58 +12,58 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744042"
 ---
-# <a name="azure-synapse-analytics-workload-importance"></a>Az Azure Synapse Analytics munkaterhelésének fontossága
+# <a name="azure-synapse-analytics-workload-importance"></a>Az Azure szinapszis Analytics számítási feladatának fontossága
 
-Ez a cikk bemutatja, hogyan számítási feladatok fontossága hogyan befolyásolhatja a synapse SQL-készlet kérelmek az Azure Synapse végrehajtásának sorrendjét.
+Ez a cikk azt ismerteti, hogyan befolyásolható a számítási feladatok fontossága a szinapszis SQL Pool-kérelmek végrehajtásának sorrendjében az Azure Szinapszisban.
 
 ## <a name="importance"></a>Fontosság
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-Az üzleti igények megkövetelhetik, hogy az adattárház-számítási feladatok fontosabbak legyenek, mint mások.  Vegyünk egy olyan forgatókönyvet, amelyben a kritikus fontosságú értékesítési adatok betöltődnek a pénzügyi időszak lezárása előtt.  Más források, például az időjárási adatok adattöltése i. Az értékesítési adatok betöltésére irányuló kérelmek nagy jelentőségének beállítása és az időjárási adatok betöltésére vonatkozó kérelmek alacsony fontossága biztosítja, hogy az értékesítési adatok betöltése elsőként hozzáférjen az erőforrásokhoz, és gyorsabban befejeződjön.
+Az üzleti igényeknek az adattárházas számítási feladatoknál nagyobb jelentőséggel kell rendelkezniük, mint mások.  Vegyünk egy olyan forgatókönyvet, amelyben a kritikus értékesítési adat betöltődik a pénzügyi időszak lezárása előtt.  Az egyéb forrásokhoz, például időjárási értékekhez tartozó adatterhelések nem rendelkeznek szigorú SLA-val. Az értékesítési adatforgalom betöltésére irányuló kérések nagy fontosságának beállítása, valamint az időjárási információk betöltésére irányuló kérések alacsony fontossága biztosítja, hogy az értékesítési adatterhelés első alkalommal hozzáférjen az erőforrásokhoz, és gyorsabban befejeződjön.
 
 ## <a name="importance-levels"></a>Fontossági szintek
 
-Öt fontossági szint van: alacsony, below_normal, normál, above_normal és magas.  A nem fontosságot nem tartalmazó kérelmek a normál alapértelmezett szintjét kapják. Az azonos fontossági szinttel rendelkező kérelmek ütemezési viselkedése megegyezik a mai ütemezési viselkedéssel.
+A fontosságnak öt szintje van: alacsony, below_normal, normál, above_normal és magas.  Azok a kérések, amelyek nem határozzák meg a fontosságot, a normál alapértelmezett szintet kapják meg. Az azonos fontossági szintű kérelmek esetében ugyanaz az ütemezési viselkedés, amely ma már létezik.
 
-## <a name="importance-scenarios"></a>Fontossági forgatókönyvek
+## <a name="importance-scenarios"></a>Fontossági helyzetek
 
-Az értékesítési és időjárási adatokkal a fent ismertetett alapvető fontosságú forgatókönyvön túl más forgatókönyvek is vannak, ahol a számítási feladatok fontossága segít az adatfeldolgozási és lekérdezési igények kielégítésében.
+Az értékesítési és időjárási adatokkal kapcsolatos alapvető fontossági forgatókönyvön túl más forgatókönyvek is vannak, amelyekben a számítási feladatok fontossága segíti az adatfeldolgozási és-lekérdezési igények kielégítését.
 
 ### <a name="locking"></a>Zárolás
 
-Hozzáférés zárak olvasási és írási tevékenység egyik területe a természetes versengés. Az olyan tevékenységek, mint [a partícióváltás](sql-data-warehouse-tables-partition.md) vagy [az OBJEKTUM ÁTNEVEZÉSe](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) emelt szintű zárolást igényelnek.  Számítási feladatok fontossága nélkül az Azure Synapse Synapse Synapse synapse-i SQL-készlete az átviteli terhelést optimalizálja. Az átviteli forgalom optimalizálása azt jelenti, hogy ha a futó és a várólistára helyezett kérelmek azonos zárolási igényekkel rendelkeznek, és az erőforrások rendelkezésre állnak, a várólistára helyezett kérelmek megkerülhetik a kérésvárólistába korábban megérkezett magasabb zárolási igényekkel rendelkező kérelmeket. Miután a számítási feladatok fontosságát alkalmazza a kérelmek nagyobb zárolási igényeket. A nagyobb fontosságú kéréseket a kérelem előtt alacsonyabb fontossági kérdéssel futtatja.
+Az olvasási és írási tevékenységek zárolásának elérése a természetes tartalom egyik területe. A [partíciók váltását](sql-data-warehouse-tables-partition.md) vagy [átnevezését](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) igénylő tevékenységek esetében emelt szintű zárolásra van szükség.  A számítási feladatok fontossága nélkül a szinapszis SQL-készlet az Azure Szinapszisban optimalizálja az átviteli sebességet. Az adatátviteli teljesítmény optimalizálása azt jelenti, hogy ha a futtatott és a várólistára helyezett kérelmek azonos zárolási igényekkel és erőforrásokkal rendelkeznek, az üzenetsor-kezelési kérelmek megkerülhetik a kérések várólistáján megjelenő, magasabb zárolási igényekkel rendelkező kérelmeket. Ha a számítási feladatok fontossága nagyobb a zárolási igényeket kielégítő kérelmek esetében. Az alacsonyabb fontosságú kérelem előtt a rendszer a nagyobb jelentőségű kérést fogja futtatni.
 
 Tekintse meg a következő példát:
 
-- A Q1 aktívan futtatja és kiválasztja az adatokat a SalesFact-ből.
-- Q2 várólistára vár Q1 befejezéséhez.  Reggel 9-kor küldték el, és megpróbálja felosztani az új adatokat a SalesFact-be.
-- A Q3 9:01-kor kerül elküldésre, és adatokat szeretne kiválasztani a SalesFact-ből.
+- A Q1 aktívan fut, és kiválasztja az SalesFact-ből származó adatok közül.
+- A Q2 várólistára várakozik, amíg a Q1 befejeződik.  A szolgáltatás 9 órakor lett elküldve, és az új adatváltást a SalesFact-be kísérli meg.
+- A Q3 a következő címen érhető el: 01am, és szeretné kijelölni a SalesFact adatait.
 
-Ha a Q2 és q3-nak ugyanaz a fontossága, és a Q1 végrehajtása még folyamatban van, a Q3 megkezdi a végrehajtást. A Q2 továbbra is megvárja a SalesFact kizárólagos zárolását.  Ha a Q2 nagyobb jelentőséggel bír, mint a Q3, a Q3 megvárja, amíg a Q2 befejeződik, mielőtt megkezdené a végrehajtást.
+Ha a Q2 és a Q3 is ugyanolyan fontossággal bír, és a Q1 még mindig végrehajtja a végrehajtást, akkor a Q3 megkezdődik. A Q2 továbbra is várni fogja a SalesFact kizárólagos zárolását.  Ha a Q2 nagyobb jelentőséggel bír a Q3nál, a Q3 megvárja, amíg a Q2 be nem fejeződik a végrehajtás megkezdése előtt.
 
 ### <a name="non-uniform-requests"></a>Nem egységes kérelmek
 
-Egy másik forgatókönyv, ahol fontosság segíthet az igények lekérdezése, amikor a kérelmek különböző erőforrásosztályok at küldik el.  Mint korábban említettük, ugyanilyen fontos, synapse SQL-készlet az Azure Synapse optimalizálja az átviteli. Vegyes méretű kérelmek (például smallrc vagy mediumrc) várólistára, synapse SQL-készlet választja ki a legkorábbi érkező kérelmet, amely illeszkedik a rendelkezésre álló erőforrásokat. Ha a számítási feladatok fontossága van alkalmazva, a legnagyobb fontos kérés van ütemezve a következő.
+Egy másik forgatókönyv, ahol a fontosság segíthet a lekérdezési igények kielégítésében, ha különböző erőforrás-osztályokkal rendelkező kérelmeket küld el.  Ahogy azt korábban említettük, ugyanilyen fontos, hogy a szinapszis SQL-készlet az Azure Szinapszisban optimalizálja az átviteli sebességet. Ha a vegyes méretre vonatkozó kérések (például a smallrc vagy a mediumrc) várólistára kerülnek, a szinapszis SQL-készlet kiválasztja az elérhető erőforrásokon belüli legkorábbi érkező kéréseket. Ha a számítási feladatok fontosságát alkalmazza, a rendszer a legnagyobb jelentőségű kérést ütemezi.
   
-Tekintsük a következő példát a DW500c-en:
+Vegye figyelembe a következő példát a DW500c:
 
-- Q1, Q2, Q3 és Q4 smallrc lekérdezéseket futtatnak.
-- Q5 küldik a mediumrc erőforrás osztály 09:00.
-- Q6 van elküldve smallrc erőforrás osztály 9:01.
+- A Q1, Q2, Q3 és Q4 smallrc-lekérdezéseket futtatnak.
+- A (z) Q5 a mediumrc erőforrás-osztállyal van elküldve 9 órakor.
+- A K6 a következő címen érhető el: smallrc Resource osztály, 9.01am.
 
-Mivel a Q5 közepes, két egyidejűségi bővítőhelyet igényel. Q5 meg kell várnia, amíg két futó lekérdezés befejeződik.  Ha azonban az egyik futó lekérdezés (Q1-Q4) befejeződik, a Q6 ütemezése azonnal megtörténik, mert a lekérdezés végrehajtásához rendelkezésre álló erőforrások léteznek.  Ha a Q5 nagyobb jelentőséggel bír, mint a Q6, a Q6 megvárja, amíg az 5.
+Mivel a Q5 mediumrc, két párhuzamossági tárolóhelyre van szükség. A Q5-nek várnia kell, hogy a futó lekérdezések közül kettő befejeződjön.  Ha azonban az egyik futó lekérdezés (Q1-Q4) befejeződik, a K6 azonnal ütemezve van, mert az erőforrások a lekérdezés végrehajtásához léteznek.  Ha a Q5 nagyobb jelentőséggel bír, mint K6, a K6 addig vár, amíg az Q5 nem fut a végrehajtás megkezdése előtt.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az osztályozó konszern létrehozásáról további információt a [CREATE WORKLOAD CLASSIFIER (Transact-SQL) című témakörben talál.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
-- A számítási feladatok besorolásáról további információt a [Számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)  
-- Tekintse meg a gyorsindítás [létrehozása számítási feladatok osztályozó,](quickstart-create-a-workload-classifier-tsql.md) hogyan hozhat létre egy számítási feladatok osztályozó.
-- Tekintse meg a [számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md) című útmutatócikkeket, valamint a [Munkaterhelés-kezelés kezelésének és figyelésének módját.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
-- A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) című témakört.
+- Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című témakört.  
+- A számítási feladatok besorolásával kapcsolatos további információkért lásd: [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md).  
+- A számítási feladatok besorolásának létrehozásához tekintse meg a gyors üzembe helyezési adatok [létrehozása](quickstart-create-a-workload-classifier-tsql.md) című témakört.
+- Tekintse meg az útmutatókat a számítási [feladatok fontosságának konfigurálásához](sql-data-warehouse-how-to-configure-workload-importance.md) , valamint a számítási [feladatok felügyeletének kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- A lekérdezések és a hozzárendelt fontosság megtekintéséhez lásd: [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .

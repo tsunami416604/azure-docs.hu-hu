@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 sorozatú áttelepítés az Azure File Sync szolgáltatásba
-description: Ismerje meg, hogyan telepítheti át a StorSimple 8100 vagy 8600 készüléket az Azure File Sync szolgáltatásba.
+title: StorSimple 8000 sorozat migrálása Azure File Syncre
+description: Megtudhatja, hogyan telepíthet át egy StorSimple 8100-es vagy 8600-es készüléket Azure File Syncba.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,342 +8,342 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755043"
 ---
-# <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 áttelepítés az Azure File Sync
+# <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
-A StorSimple 8000 sorozatot a 8100-as vagy a 8600-as fizikai, helyszíni berendezések és felhőszolgáltatás-összetevőik képviselik. Lehetőség van az adatok áttelepítése ezek közül bármelyik készülék egy Azure File Sync környezetbe. Az Azure File Sync az alapértelmezett és stratégiai hosszú távú Azure-szolgáltatás, amelya StorSimple-készülékek áttelepíthető.
+Az StorSimple 8000 sorozatot a 8100, a 8600 fizikai, a helyszíni készülékek és a Cloud Service-összetevők jelölik. Az adatok bármelyik készülékről egy Azure File Sync környezetbe telepíthetők át. A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
 
-A StorSimple 8000 sorozat 2022 decemberében éri el [az élettartama végét.](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) Fontos, hogy a lehető leghamarabb megkezdje a migráció tervezését. Ez a cikk a szükséges háttérismereteket és áttelepítési lépéseket az Azure File Sync sikeres áttelepítéséhez. 
+A StorSimple 8000-es sorozat [életciklusa](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) december 2022-ig ér véget. Fontos, hogy a lehető leghamarabb megkezdje az áttelepítés megtervezését. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti. 
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 > [!IMPORTANT]
-> A Microsoft elkötelezett az ügyfelek áttelepítésének segítése mellett. E-mail AzureFilesMigration@microsoft .com egy személyre szabott áttelepítési terv, valamint a segítséget az áttelepítés során.
+> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. E AzureFilesMigration@microsoft -mail-cím a testreszabott áttelepítési tervhez, valamint segítségnyújtás az áttelepítés során.
 
-Az Azure File Sync a Microsoft felhőszolgáltatása, amely két fő összetevőn alapul:
+A Azure File Sync egy Microsoft Cloud Service, amely két fő összetevő alapján érhető el:
 
-* Fájlszinkronizálás és felhőrétegezés.
-* Fájlmegosztások natív tárolóként az Azure-ban, amely több protokollon, például az SMB-n és a REST fájlon keresztül érhető el. Az Azure-fájlmegosztás hasonló a Windows Serveren lévő fájlmegosztáshoz, amelyet natív módon csatlakoztathat hálózati meghajtóként. Támogatja a fontos fájlhűségi szempontokat, például az attribútumokat, az engedélyeket és az időbélyegeket. Az Azure-fájlmegosztások, már nincs szükség egy alkalmazás vagy szolgáltatás a felhőben tárolt fájlok és mappák értelmezéséhez. Natív módon elérheti őket az ismerős protokollokon és ügyfeleken, például a Windows Fájlkezelőben. Ez teszi az Azure-fájlmegosztások az ideális, és legrugalmasabb megközelítés tárolására általános célú fájl kiszolgáló adatait, valamint néhány alkalmazás adatok, a felhőben.
+* A fájlok szinkronizálása és a felhő szintjei.
+* A fájlmegosztás natív tárolóként az Azure-ban, amely több protokollon keresztül érhető el, például az SMB és a file REST használatával. Az Azure-fájlmegosztás összehasonlítható a Windows Server egy fájlmegosztási fájljával, amelyet a hálózati meghajtóként natív módon csatlakoztathat. Támogatja a fontos fájl-megbízhatósági szempontokat, például az attribútumokat, az engedélyeket és az időbélyegeket. Az Azure-fájlmegosztás esetében már nincs szükség egy alkalmazásra vagy szolgáltatásra a felhőben tárolt fájlok és mappák értelmezéséhez. Ezeket natív módon érheti el az ismerős protokollokkal és az ügyfelekkel, például a Windows fájlkezelővel. Ez lehetővé teszi, hogy az Azure-fájlmegosztás ideális és legrugalmasabb megközelítést biztosítson az általános célú fájlkiszolgáló-adathalmazok, valamint néhány alkalmazásadatok tárolásához a felhőben.
 
-Ez a cikk az áttelepítési lépésekre összpontosít. Ha az áttelepítés előtt szeretne többet megtudni az Azure File Sync szolgáltatásról, a következő cikkeket javasoljuk:
+Ez a cikk az áttelepítési lépésekre összpontosít. Ha az áttelepítés előtt szeretne többet megtudni a Azure File Syncről, javasoljuk a következő cikkeket:
 
 * [Azure File Sync – áttekintés](https://aka.ms/AFS "Áttekintés")
-* [Azure File Sync – telepítési útmutató](storage-sync-files-deployment-guide.md)
+* [Azure File Sync – üzembe helyezési útmutató](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Migrálási célok
 
-A cél a termelési adatok integritásának garantálása, valamint a rendelkezésre állás garantálása. Ez utóbbi minimálisra kell szorítani az állásidőt, hogy beférjen a szokásos karbantartási időszakokba, vagy csak kis mértékben haladja meg azt.
+A cél a termelési adatok integritásának garantálása, valamint a rendelkezésre állás garantálása. Az utóbbi megköveteli, hogy a leállások minimálisra kerüljenek, így az csak kis mértékben meghaladhatja a normál karbantartási időszakokat.
 
-## <a name="storsimple-8000-series-migration-path-to-azure-file-sync"></a>StorSimple 8000 sorozatáttelepítési útvonal az Azure File Sync alkalmazáshoz
+## <a name="storsimple-8000-series-migration-path-to-azure-file-sync"></a>StorSimple 8000 sorozat áttelepítési útvonala Azure File Sync
 
-Az Azure File Sync ügynök futtatásához helyi Windows Server szükséges. A Windows Server legalább 2012R2 kiszolgáló lehet, de ideális esetben Windows Server 2019.
+Azure File Sync-ügynök futtatásához helyi Windows Server szükséges. A Windows Server legalább 2012R2-kiszolgáló lehet, de ideális esetben a Windows Server 2019.
 
-Számos alternatív áttelepítési útvonal létezik, és túl hosszú cikket hozna létre ahhoz, hogy mindegyiket dokumentálja, és bemutassa, hogy miért viselik a kockázatot vagy hátrányokat az általunk ajánlott útvonalon keresztül, mint a cikkben ajánlott legjobb gyakorlat.
+Számos alternatív áttelepítési útvonal létezik, és az is előfordulhat, hogy túl sok cikket hoz létre, és bemutatjuk, hogy miért viselik a kockázatot vagy hátrányt az útvonalon az ajánlott eljárásnak megfelelően ebben a cikkben.
 
-![StorSimple 8000 sorozatú áttelepítési fázisok áttekintése](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-overview.png "StorSimple 8000 sorozat áttelepítési útvonal áttekintése a fázisok tovább alább ebben a cikkben.")
+![A StorSimple 8000 sorozat áttelepítési fázisainak áttekintése](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-overview.png "A StorSimple 8000 sorozat áttelepítési útvonalának áttekintése a jelen cikkben lejjebb található fázisokról.")
 
-Az előző kép a cikk szakaszainak megfelelő fázisokat ábrázol.
-Felhőoldali áttelepítést használunk, hogy elkerüljük a fájlok szükségtelen visszahívását a helyi StorSimple készülékre. Ez a megközelítés elkerüli a helyi gyorsítótárazási viselkedés vagy a hálózati sávszélesség-használat befolyásolását, amelyek bármelyikhatással lehet az éles számítási feladatokra.
-A felhőoldali áttelepítés az adatok pillanatképén (kötetklónozáson) működik. Így a termelési adatok elkülönítve vannak ettől a folyamattól - amíg az áttelepítés végén át nem csökken. Dolgozik le, ami lényegében egy biztonsági mentés, teszi a migráció biztonságos és könnyen megismételhető, ha befut bármilyen nehézséget.
+Az előző rendszerkép a cikk szakaszainak megfelelő fázisokat ábrázolja.
+A Felhőbeli áttelepítéssel elkerülhető, hogy a fájlok ne legyenek a helyi StorSimple-készülékre emlékeztetve. Ezzel a módszerrel elkerülhető a helyi gyorsítótárazási viselkedés vagy a hálózati sávszélesség használatának hatása, ami hatással lehet az éles számítási feladatokra.
+A felhőalapú áttelepítés az adatok egy pillanatképén (egy kötet klónján) működik. Így a termelési adatok el vannak különítve ebből a folyamatból – az áttelepítés végén a kivágásig. Az alapvetően biztonsági mentésből kiindulva a Migrálás biztonságos és könnyen ismételhető, ha bármilyen problémába ütközik.
 
 ## <a name="considerations-around-existing-storsimple-backups"></a>A meglévő StorSimple biztonsági mentések szempontjai
 
-StorSimple lehetővé teszi, hogy biztonsági mentések formájában kötet klónok. Ez a cikk egy új kötetklónt használ az élő fájlok áttelepítéséhez.
-Ha az élő adatok mellett biztonsági másolatokat is át kell telepítenie, akkor a jelen cikkben szereplő összes útmutatás továbbra is érvényes. Az egyetlen különbség az, hogy ahelyett, hogy egy új kötet klónnal kezdené, a legrégebbi biztonsági mentési kötet klónjával kezdi, amelyet át kell telepítenie.
+A StorSimple lehetővé teszi, hogy kötetek klónozása formájában készítsen biztonsági másolatokat. Ez a cikk egy új kötet-klónozást használ az élő fájlok migrálása érdekében.
+Ha az élő adatok mellett át kell telepítenie a biztonsági mentéseket, a cikkben szereplő összes útmutatás továbbra is érvényes. Az egyetlen különbség, hogy az új kötet klónozása helyett az áttelepíteni kívánt legrégebbi biztonsági mentési kötet klónját kell kezdenie.
 
-A sorrend a következő:
+A folyamat a következő:
 
-* Határozza meg az áttelepítendő kötetklónok minimális készletét. Azt javasoljuk, hogy a lista a lehető legkisebb legyen, mert minél több biztonsági mentést telepít át, annál hosszabb ideig tart a teljes áttelepítési folyamat.
-* Az áttelepítési folyamat során kezdje az áttelepítésre kívánt legrégebbi kötetklónnal, és minden további áttelepítéskor használja a következő legrégebbit.
-* Amikor minden kötet klónáttelepítés befejeződik, el kell végeznie egy Azure-fájlmegosztás pillanatkép. [Az Azure-fájlmegosztási pillanatképek](storage-snapshots-files.md) hogyan őrizheti meg az Azure-fájlmegosztások fájljainak és mappastruktúrájának a fájlok és mappastruktúra pontos biztonsági mentéseit. Az áttelepítés befejezése után szüksége lesz ezekre a pillanatképekre, hogy az áttelepítés során minden egyes kötetklónok megőrzött verzióival rendelkezzen.
-* Győződjön meg arról, hogy az Azure-fájlmegosztás pillanatképeit az összes Azure-fájlmegosztáshoz, amelyek ugyanazt a StorSimple-kötetet szolgálják ki. Kötet klónok a kötet szintjén, az Azure-fájlmegosztás-pillanatképek a megosztás szintjén vannak. A kötetklónok áttelepítése után el kell tartania egy megosztási pillanatképet (minden Egyes Azure-fájlmegosztáson).
-* Ismételje meg az áttelepítési folyamatot egy kötetklónesetében, és minden kötetklónozás után ossza meg a pillanatképeket, amíg el nem kapja az élő adatok pillanatképét. A kötetklónok áttelepítésének folyamatát az alábbi fázisokban ismertetjük. 
+* Határozza meg az áttelepítendő kötet-klónozások minimális készletét. Javasoljuk, hogy a lista minimálisan megtartása, ha lehetséges, mert minél több biztonsági mentést telepít, annál hosszabb ideig tart a teljes áttelepítési folyamat.
+* Az áttelepítési folyamat elvégzése után kezdje az áttelepíteni kívánt legrégebbi kötet-klónozással, és minden további áttelepítéskor használja a következő legrégebbi elemet.
+* Ha minden kötet klónozása befejeződik, el kell végeznie egy Azure-fájlmegosztás pillanatképét. Az [Azure file share-Pillanatképek](storage-snapshots-files.md) az Azure-fájlmegosztás fájljainak és a mappák struktúrájának időponthoz kapcsolódó biztonsági mentéseit ismertetik. Az áttelepítés befejeződése után ezekre a pillanatképekre szüksége lesz, így biztosítva, hogy az áttelepítés során az egyes kötet-klónok megmaradt verziói megmaradjanak.
+* Győződjön meg arról, hogy az Azure-fájlmegosztás pillanatképei minden olyan Azure-fájlmegosztás esetében elérhetők, amelyet ugyanaz a StorSimple-kötet szolgáltat. A kötetek klónozása a kötet szintjén történik, az Azure fájlmegosztás pillanatképei a megosztási szinten vannak. A kötet klónozásának áttelepítése után el kell végeznie egy megosztási pillanatképet (mindegyik Azure-fájlmegosztás esetében).
+* Ismételje meg a kötet klónozásának áttelepítési folyamatát, és az egyes kötetek klónozása után ossza meg a megosztási pillanatképeket, amíg az élő adatok pillanatképére nem kerül sor. A kötetek klónozásának áttelepítésének folyamatát az alábbi fázisok ismertetik. 
 
-Ha egyáltalán nem kell áthelyeznie a biztonsági másolatokat, és az Azure fájlmegosztási oldalán egy új biztonsági mentésláncot indíthat el, miután csak az élő adatok áttelepítése történik, akkor ez hasznos az áttelepítés összetettségének és az áttelepítés által igénybe vesz. Eldöntheti, hogy áthelyezi-e a biztonsági másolatokat, és hogy az egyes kötetek (nem az egyes megosztások) hány at rendelkezik a StorSimple-ben.
+Ha a biztonsági mentéseket egyáltalán nem kell áthelyeznie, és a csak az élő adatokat áttelepítését követően új biztonsági mentési láncot indíthat el az Azure-fájlmegosztás oldalain, akkor ez hasznos lehet a migráció összetettségének csökkentése és az áttelepítés elvégzése során. Eldöntheti, hogy áthelyezi-e a biztonsági másolatokat, és hogy hány kötetre (nem az egyes megosztásokra) van-e szüksége a StorSimple.
 
-## <a name="phase-1-get-ready"></a>1. fázis: Felkészülés
+## <a name="phase-1-get-ready"></a>1. fázis: felkészülés
 
 :::row:::
     :::column:::
-        ![A korábbi áttekintő kép egy részét bemutató kép, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-1.png)
+        ![Egy képet, amely a korábbi, áttekintő rendszerkép egy részét illusztrálja, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-1.png)
     :::column-end:::
     :::column:::
-        Az áttelepítés alapja egy kötetklón és egy virtuális felhőalapú berendezés, az úgynevezett StorSimple 8020.
-Ez a fázis ezeknek az erőforrásoknak az Azure-ban való üzembe helyezésére összpontosít.
+        A Migrálás alapja a kötet klónja, valamint egy StorSimple 8020 nevű virtuális felhőalapú berendezés.
+Ebben a fázisban ezeknek az erőforrásoknak az üzembe helyezésére koncentrálunk az Azure-ban.
     :::column-end:::
 :::row-end:::
 
-### <a name="deploy-a-storsimple-8020-virtual-appliance"></a>StorSimple 8020 virtuális berendezés telepítése
+### <a name="deploy-a-storsimple-8020-virtual-appliance"></a>StorSimple 8020 virtuális készülék üzembe helyezése
 
-A felhőalapú berendezés telepítése olyan folyamat, amely biztonságot, hálózatépítést és néhány egyéb szempontot igényel.
-
-> [!IMPORTANT]
-> A következő útmutató néhány felesleges szakaszt tartalmaz. Olvassa el és kövesse a cikket az elejétől a "3. Ezután térjen vissza ehhez a cikkhez. Nem kell befejezni "Step 3", vagy bármi azon túl, hogy az útmutató, ebben az időben.
-
-[StorSimple 8020 virtuális berendezés telepítése](../../storsimple/storsimple-8000-cloud-appliance-u2.md)
-
-### <a name="determine-a-volume-clone-to-use"></a>A használandó kötetklón meghatározása
-
-Amikor készen áll az áttelepítés megkezdésére, az első lépés egy új kötetklónozás – ugyanúgy, mint a biztonsági mentés –, amely rögzíti a StorSimple felhőalapú tárhelyének aktuális állapotát. Vegyünk egy klón minden storsimple kötetek rendelkezik.
-Ha áthelyezésre van szüksége, akkor az első kötetklón nem egy újonnan létrehozott klón, hanem a legrégebbi kötetklón (legrégebbi biztonsági másolat), amelyet át kell telepítenie.
-A részletes útmutatásért tekintse meg [a "Meglévő StorSimple biztonsági mentések szempontjai"](#considerations-around-existing-storsimple-backups) című szakaszt.
+A felhőalapú berendezések üzembe helyezése olyan folyamat, amely biztonságot, hálózatkezelést és néhány egyéb szempontot igényel.
 
 > [!IMPORTANT]
-> A következő útmutató néhány felesleges szakaszt tartalmaz. Olvassa el és kövesse csak a csatolt szakaszban ismertetett lépéseket. Ezután térjen vissza ehhez a cikkhez. Nem kell követnie a "Következő lépések" című szakaszt.
+> A következő útmutató néhány szükségtelen szakaszt tartalmaz. Olvassa el és kövesse a kezdetektől egészen a "3. lépésig" című cikket. Ezután térjen vissza ehhez a cikkhez. Ebben az útmutatóban nem kell végrehajtania a "3. lépés" vagy az azt meghaladó minden mást.
 
-[Kötet klónjának létrehozása](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
+[StorSimple 8020 virtuális készülék üzembe helyezése](../../storsimple/storsimple-8000-cloud-appliance-u2.md)
 
-### <a name="use-the-volume-clone"></a>A kötetklón használata
+### <a name="determine-a-volume-clone-to-use"></a>A használni kívánt kötet klónozásának meghatározása
 
-Az első fázis utolsó fázisa az, hogy a kiválasztott kötetklónt elérhetővé tegye az Azure 8020-as virtuális berendezésén.
+Amikor készen áll az áttelepítés megkezdésére, az első lépés egy új kötet klónozása – akárcsak a Backup esetében –, amely rögzíti a StorSimple Felhőbeli tárhelyének aktuális állapotát. Készítsen egy klónt az összes StorSimple-kötethez.
+Ha szüksége van a biztonsági mentések áthelyezésére, akkor a használt első kötet-klón nem egy újonnan létrehozott klón, hanem a legrégebbi kötet klón (legrégebbi biztonsági mentés), amelyet át kell telepítenie.
+Részletes útmutatásért tekintse meg a ["meglévő StorSimple biztonsági mentések körüli megfontolások"](#considerations-around-existing-storsimple-backups) című szakaszt.
 
 > [!IMPORTANT]
-> A következő útmutató tartalmazza a szükséges lépéseket, hanem - a végén - egy utasítást, hogy formázza a kötetet. **NE FORMÁZZA A KÖTETET** Olvassa el és kövesse a linkelt szakasz 7 az elejétől az utasításig: "10. Formázni egy egyszerű kötet, ..."  Állítsa le, mielőtt ezt a lépést követne, és térjen vissza ehhez a cikkhez.
+> A következő útmutató néhány szükségtelen szakaszt tartalmaz. Olvassa el és kövesse a csatolt szakasz lépéseit. Ezután térjen vissza ehhez a cikkhez. Nem kell követnie a "következő lépések" szakaszt.
 
-[Kötetklón ozása az Azure 8020-as virtuális készülékére](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
+[Kötet klónozásának létrehozása](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
 
-### <a name="phase-1-summary"></a>1. fázis összefoglalása
+### <a name="use-the-volume-clone"></a>A kötet klónozásának használata
 
-Most, hogy befejezte az 1.
+Az 1. fázis utolsó fázisában az Azure-beli 8020 virtuális készüléken elérhető kötet-klónozást kell elvégeznie.
 
-* Telepített egy StorSimple 8020 virtuális berendezést az Azure-ban.
-* Meghatározva, hogy melyik kötetklónnal kezdi az áttelepítést.
-* A kötetklón(ok) (minden élő kötethez) csatlakoztatva az Azure-beli StorSimple virtuális berendezéshez, a további használatra rendelkezésre álló adatokkal.
+> [!IMPORTANT]
+> A következő útmutató tartalmazza a szükséges lépéseket, de – a kötet formázására szolgáló utasítással is. ne **FORMÁZZA a kötetet** Olvassa el és kövesse az elejétől kezdve a csatolt "7. szakasz" kifejezést a "10" utasításig. Egyszerű kötet formázása... "  A lépés követése előtt állítsa le a lépést, és térjen vissza ehhez a cikkhez.
 
-## <a name="phase-2-cloud-vm"></a>2. fázis: Felhőalapú virtuális gép
+[Kötet klónozásának csatlakoztatása az Azure-beli 8020 virtuális készüléken](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
+
+### <a name="phase-1-summary"></a>1. fázis – összefoglalás
+
+Most, hogy elvégezte az 1. fázist, a következő lépéseket hajtja végre:
+
+* Üzembe helyezett egy StorSimple 8020 virtuális készüléket az Azure-ban.
+* Határozza meg, hogy melyik kötet klónja fogja megkezdeni az áttelepítést.
+* Csatlakoztatta a kötet klón (oka) t (az egyes élő kötetek közül egyet) az Azure-beli StorSimple virtuális készülékhez, és az adatai további használatra is rendelkezésre állnak.
+
+## <a name="phase-2-cloud-vm"></a>2. fázis: Felhőbeli virtuális gép
 
 :::row:::
     :::column:::
-        ![A korábbi áttekintő kép egy részét bemutató kép, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
+        ![Egy képet, amely a korábbi, áttekintő rendszerkép egy részét illusztrálja, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
     :::column-end:::
     :::column:::
-        Miután a kezdeti klón elérhető a StorSimple 8020 virtuális berendezés az Azure-ban, most itt az ideje, hogy egy virtuális gép kiépítése, és tegye elérhetővé a kötet klón (vagy több) az adott virtuális gép iSCSI-n keresztül.
+        Miután a kezdeti klónozás elérhető volt az Azure-beli StorSimple 8020 virtuális készüléken, most ideje egy virtuális gépet kiépíteni, és a kötet klónozását (vagy több) a virtuális GÉPHEZ iSCSI-kapcsolaton keresztül.
     :::column-end:::
 :::row-end:::
 
 ### <a name="deploy-an-azure-vm"></a>Azure-beli virtuális gép üzembe helyezése
 
-A Windows Server virtuális gép az Azure-ban, mint a StorSimple 8020, egy ideiglenes infrastruktúra, amely csak akkor szükséges az áttelepítés során.
-A telepített virtuális gép konfigurációja főként a szinkronizálandó elemek (fájlok és mappák) számától függ. Javasoljuk, hogy ha bármilyen problémája van, menjen magasabb teljesítménykonfigurációval.
+Az Azure-beli Windows Server rendszerű virtuális gép ugyanúgy, mint a StorSimple 8020, egy ideiglenes infrastruktúra, amely csak az áttelepítés során szükséges.
+Az üzembe helyezett virtuális gép konfigurációja a szinkronizálni kívánt elemek (fájlok és mappák) számától függ. Ha bármilyen probléma merül fel, javasoljuk, hogy nagyobb teljesítmény-konfigurációt végezzen.
 
-Egyetlen Windows Server legfeljebb 30 Azure-fájlmegosztást szinkronizálhat.
-A specifikációk úgy dönt, hogy magában kell foglalnia minden megosztás / elérési út, vagy a gyökér a StorSimple kötet és számít az elemek (fájlok és mappák).
+Egyetlen Windows-kiszolgáló legfeljebb 30 Azure-fájlmegosztást tud szinkronizálni.
+Az Ön által eldöntött specifikációk minden megosztást/elérési utat vagy a StorSimple-kötet gyökerét, valamint az elemek (fájlok és mappák) megszámlálását szeretnék felölelni.
 
-Az adatok teljes mérete kisebb szűk keresztmetszet - ez a gép specifikációinak személyre szabásához szükséges elemek száma.
+Az adatok összesített mérete kisebb a szűk keresztmetszetnél – ez az elemek száma, amelyekre szüksége van a gépi specifikációk a szolgáltatáshoz való testreszabásához.
 
-* [Megtudhatja, hogy miként méretezheti a Windows Serverrendszert a szinkronizálandó elemek (fájlok és mappák) száma alapján.](storage-sync-files-planning.md#recommended-system-resources)
+* [Megtudhatja, hogyan méretezhető a Windows Server a szinkronizálni kívánt elemek (fájlok és mappák) száma alapján.](storage-sync-files-planning.md#recommended-system-resources)
 
-    **Kérjük, vegye figyelembe:** A korábban csatolt cikk egy kiszolgálói memória (RAM) tartományt jelző táblázatot jelenít meg. Orientálja az Azure virtuális gép nagy száma felé. A helyszíni gép kisebb száma felé orientálható.
+    Vegye **figyelembe:** A korábban csatolt cikk egy olyan táblázatot mutat be, amely a kiszolgáló memóriájának (RAM) tartományát tartalmazza. Az Azure-beli virtuális gép nagy számának iránya. A helyszíni gép kisebb számára irányíthatja a figyelmét.
 
-* [Ismerje meg, hogyan telepítheti a Windows Sever virtuális gép.](../../virtual-machines/windows/quick-create-portal.md)
-
-> [!IMPORTANT]
-> Győződjön meg arról, hogy a virtuális gép ugyanabban az Azure-régióban van telepítve, mint a StorSimple 8020 virtuális berendezés. Ha ennek az áttelepítésnek a részeként módosítania kell a felhőadatok régióját a mai régióból, ezt egy későbbi lépésben megteheti, amikor Azure-fájlmegosztásokat létesít.
+* [Megtudhatja, hogyan helyezhet üzembe egy Windows Server rendszerű virtuális gépet.](../../virtual-machines/windows/quick-create-portal.md)
 
 > [!IMPORTANT]
-> Gyakran előfordul, hogy egy helyszíni Windows Server a helyszíni StorSimple-készülék elülső állapotának. Egy ilyen konfigurációban engedélyezheti az "[Adatdeduplikáció](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" szolgáltatást az adott Windows Server rendszeren. **Ha a StorSimple-adatokkal adatdeduplikációt használt, győződjön meg arról, hogy ezen az Azure-beli virtuális gépen is engedélyezi az adatdeduplikációt.** Ne keverje össze ezt a fájlszintű deduplikációt a StorSimples beépített blokkszintű deduplikációjával, amelyhez nincs szükség műveletre.
+> Győződjön meg arról, hogy a virtuális gép ugyanabban az Azure-régióban van telepítve, mint a StorSimple 8020 virtuális készülék. Ha a Migrálás részeként a Felhőbeli adatok régióját is módosítania kell a ma tárolt régióból, ezt később is megteheti, ha kiépíti az Azure-fájlmegosztást.
 
 > [!IMPORTANT]
-> A teljesítmény optimalizálása érdekében telepítsen egy **gyors operációsrendszer-lemezt** a felhőbeli virtuális géphez. A szinkronizálási adatbázist az összes adatkötet operációsrendszer-lemezén tárolja. Győződjön meg arról is, hogy **nagy operációsrendszer-lemezt**hoz létre. A StorSimple köteteken lévő elemek (fájlok és mappák) számától függően előfordulhat, hogy az operációs rendszer lemezének **több száz GiB-helyre** van szüksége a szinkronizálási adatbázis befogadásához.
-
-### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>A StorSimple 8020 kötetek elérhetővé az Azure virtuális gép
-
-Ebben a fázisban egy vagy több StorSimple kötetet csatlakoztat a 8020-as virtuális készülékről az iSCSI-n keresztül a kiépített Windows Server virtuális géphez.
+> A helyszíni StorSimple-berendezést gyakran egy helyszíni Windows Server rendszerre kell használni. Ilyen konfiguráció esetén engedélyezheti az "[deduplikálás](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" funkciót a Windows Serveren. **Ha a StorSimple adataival együtt használta a deduplikált, győződjön meg arról, hogy az Azure-beli virtuális gépen is engedélyezte az Adatmásolást.** Ne keverje össze ezt a fájl szintű lemásolást a StorSimples beépített blokkolási szintjének megkettőzésével, amelyhez nincs szükség beavatkozásra.
 
 > [!IMPORTANT]
-> Az alábbi cikkekben csak a **Felhőalapú készülék privát IP-címének beküldése** és az **iSCSI-szakaszokon való csatlakozás,** majd térjen vissza ehhez a cikkhez.
+> A teljesítmény optimalizálása érdekében helyezzen üzembe egy **gyors operációsrendszer-lemezt** a FELHŐBELI virtuális géphez. A szinkronizálási adatbázist az operációsrendszer-lemezen fogja tárolni az összes adatkötet esetében. Továbbá győződjön meg arról, hogy egy **nagyméretű operációsrendszer-lemezt**hoz létre. A StorSimple-köteteken lévő elemek (fájlok és mappák) számától függően előfordulhat, hogy az operációsrendszer-lemeznek **több száz GIB** tárterületre van szüksége a szinkronizálási adatbázishoz való alkalmazkodáshoz.
+
+### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>A StorSimple 8020-kötetek elérhetővé tétele az Azure-beli virtuális gépen
+
+Ebben a fázisban egy vagy több StorSimple-kötetet csatlakoztat az 8020 virtuális készülékről az iSCSI-kapcsolaton keresztül az üzembe helyezett Windows Server-alapú virtuális GÉPRE.
+
+> [!IMPORTANT]
+> A következő cikkek esetében csak a **Get Private IP-cím beszerzése a felhőalapú készülékhez** és az iSCSI-szakasszal való **kapcsolódáshoz** és a cikkhez való visszatéréshez.
 
 1. [Magánhálózati IP-cím lekérése a felhőalapú berendezéshez](../../storsimple/storsimple-8000-cloud-appliance-u2.md#get-private-ip-for-the-cloud-appliance)
-2. [Csatlakozás iSCSI-n keresztül](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
+2. [Összekapcsolás iSCSI-kapcsolaton keresztül](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
 
-### <a name="phase-2-summary"></a>2. fázis összefoglalása
+### <a name="phase-2-summary"></a>2. fázis – összefoglalás
 
-Most, hogy befejezte a második fázist, a következőket teszi: 
+Most, hogy elvégezte a 2. fázist, a következőket teheti: 
 
-* Windows Server virtuális gép kiépítése a 8020-as virtuális StorSimple-készülékrégiójában
-* A 8020-as készülék összes vonatkozó kötete elérhetővé téve a Windows Server virtuális gép számára iSCSI-n keresztül.
-* Ekkor látnia kell a fájl- és mappatartalmat, amikor a kiszolgálói virtuális gépen a Fájlkezelőt használja a csatlakoztatott köteteken.
+* Windows Server rendszerű virtuális gép üzembe helyezése ugyanabban a régióban, mint az 8020 Virtual StorSimple készülék
+* Az 8020-ből a Windows Server rendszerű virtuális gépre iSCSI-kapcsolaton keresztül elérhető összes kötet kitéve.
+* Ekkor meg kell jelennie a fájl-és mappa tartalmának, amikor a fájlkezelőt használja a kiszolgálói virtuális gépen a csatlakoztatott köteteken.
 
-Csak akkor folytassa a 3.
+Csak akkor folytassa a 3. fázissal, ha végrehajtotta ezeket a lépéseket az összes áttelepítést igénylő köteten.
 
-## <a name="phase-3-set-up-azure-file-shares-and-get-ready-for-azure-file-sync"></a>3. fázis: Az Azure-fájlmegosztások beállítása és az Azure File Sync-re való felkészülés
+## <a name="phase-3-set-up-azure-file-shares-and-get-ready-for-azure-file-sync"></a>3. fázis: Azure-fájlmegosztás beállítása és felkészülés a Azure File Syncra
 
 :::row:::
     :::column:::
-        ![A korábbi áttekintő kép egy részét bemutató kép, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
+        ![Egy képet, amely a korábbi, áttekintő rendszerkép egy részét illusztrálja, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
     :::column-end:::
     :::column:::
-        Ebben a fázisban számos Azure-fájlmegosztást fog meghatározni és kiépíteni, létrehozva egy Windows Server-t a StorSimple-berendezés cseréjeként, és konfigurálhatja a kiszolgálót az Azure File Sync számára. 
+        Ebben a fázisban számos Azure-fájlmegosztás meghatározására és kiépítésére, valamint a helyi Windows Server-kiszolgáló StorSimple-készülékre való lecserélésére és a Azure File Sync-kiszolgáló konfigurálására szolgál. 
     :::column-end:::
 :::row-end:::
 
-### <a name="map-your-existing-namespaces-to-azure-file-shares"></a>Meglévő névterek hozzárendelése az Azure-fájlmegosztásokhoz
+### <a name="map-your-existing-namespaces-to-azure-file-shares"></a>Meglévő névterek leképezése az Azure-fájlmegosztás
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
-### <a name="deploy-azure-file-shares"></a>Azure-fájlmegosztások telepítése
+### <a name="deploy-azure-file-shares"></a>Azure-fájlmegosztás üzembe helyezése
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
 > [!TIP]
-> Ha módosítania kell az Azure-régiót az aktuális régióból, amelyben a StorSimple-adatok találhatók, majd üzembe kell építenie az Azure-fájlmegosztásokat a használni kívánt új régióban. Határozza meg a régió kiválasztásával, amikor az Azure-fájlmegosztásokat tároló tárfiókok kiépítésekor. Győződjön meg arról, hogy az Azure File Sync erőforrás is kiépíti az alábbi, ugyanabban az új régióban van.
+> Ha módosítania kell az Azure-régiót az aktuális régióból a StorSimple-adatokkal, akkor az Azure-fájlmegosztást a használni kívánt új régióban kell kiépíteni. Az Azure-fájlmegosztás tárolására szolgáló Storage-fiókok kiépítésekor a régiót a kiválasztásával határozhatja meg. Győződjön meg arról, hogy az alábbi Azure File Sync erőforrás is ugyanezt az új régiót fogja létrehozni.
 
-### <a name="deploy-the-azure-file-sync-cloud-resource"></a>Az Azure File Sync felhőalapú erőforrásának üzembe helyezése
+### <a name="deploy-the-azure-file-sync-cloud-resource"></a>A Azure File Sync felhőalapú erőforrás üzembe helyezése
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
 > [!TIP]
-> Ha módosítania kell az Azure-régiót a StorSimple-adatok jelenlegi régiójából, majd kiépítette az Azure-fájlmegosztások tárfiókokat az új régióban. Győződjön meg arról, hogy a Storage Sync Szolgáltatás telepítésekor ugyanazt a régiót választotta.
+> Ha módosítania kell az Azure-régiót az aktuális régióból a StorSimple-adatokkal, akkor az új régióban üzembe helyezi az Azure-fájlmegosztás tárolási fiókját. Győződjön meg arról, hogy ugyanezt a régiót választotta a Storage Sync szolgáltatás telepítésekor.
 
-### <a name="deploy-an-on-premises-windows-server"></a>Helyszíni Windows Server telepítése
+### <a name="deploy-an-on-premises-windows-server"></a>Helyszíni Windows Server üzembe helyezése
 
-* Hozzon létre egy Windows Server 2019 - legalább 2012R2 - virtuális gépként vagy fizikai kiszolgálóként. A Windows Server feladatátvételi fürtje is támogatott. Ne használja újra a storSimple 8100 vagy 8600 előlapi kiszolgálóját.
-* Közvetlen csatlakoztatott tároló kiépítése vagy hozzáadása (DAS a NAS-hoz képest, amely nem támogatott).
+* Hozzon létre egy Windows Server 2019-at a minimális 2012R2 virtuális gép vagy fizikai kiszolgálóként. A Windows Server feladatátvételi fürt is támogatott. Ne használja újra a kiszolgálót, mert a StorSimple 8100 vagy 8600.
+* Hozzon létre vagy adjon hozzá közvetlenül csatlakoztatott tárolót (a DAS-t a NAS-hez képest, amely nem támogatott).
 
-Ajánlott eljárás, hogy az új Windows Server ugyanolyan vagy nagyobb mennyiségű tárhelyet biztosítson, mint aStorSimple 8100 vagy 8600 készülék helyileg elérhető gyorsítótárazáshoz. A Windows Servert ugyanúgy fogja használni, mint a StorSimple készüléket, ha ugyanolyan mennyiségű tárolóval rendelkezik, mint a készülék, akkor a gyorsítótárazási élménynek hasonlónak kell lennie, ha nem ugyanaz.
-A Windows Serverből tetszés szerint hozzáadhat vagy eltávolíthat tárhelyet. Ez lehetővé teszi a helyi kötet méretének és a gyorsítótárazáshoz rendelkezésre álló helyi tárterület méretének méretezését.
+Az ajánlott eljárás, hogy az új Windows Server-kiszolgálót egyenlő vagy nagyobb mennyiségű tárhelyet adjon meg, mint amennyi a StorSimple 8100-es vagy 8600-es készüléke helyileg elérhető a gyorsítótárazáshoz. A Windows Servert ugyanúgy kell használnia, ahogy az StorSimple berendezést használta, ha a berendezés mérete azonos, akkor a gyorsítótárazási élménynek hasonlónak kell lennie, ha nem ugyanaz a tárterület.
+A (z) a Windows-kiszolgálóról is hozzáadhat vagy eltávolíthat tárolót. Ez lehetővé teszi a helyi kötet méretének és a gyorsítótárazáshoz elérhető helyi tárterület mennyiségének a méretezését.
 
-### <a name="prepare-the-windows-server-for-file-sync"></a>A Windows Server előkészítése a fájlszinkronizálásra
+### <a name="prepare-the-windows-server-for-file-sync"></a>A Windows Server előkészítése fájl-szinkronizálásra
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-### <a name="configure-azure-file-sync-on-the-windows-server"></a>Az Azure File Sync konfigurálása a Windows Server rendszeren
+### <a name="configure-azure-file-sync-on-the-windows-server"></a>Azure File Sync konfigurálása a Windows Serveren
 
-A regisztrált helyszíni Windows Server rendszernek készen kell lennie, és csatlakoznia kell az internethez ehhez a folyamathoz.
+A regisztrált helyszíni Windows Servernek késznek kell lennie az internethez való csatlakozásra ehhez a folyamathoz.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
 > [!WARNING]
-> **Ügyeljen arra, hogy kapcsolja be a felhőrétegezést!** A felhőrétegezés az AFS-szolgáltatás, amely lehetővé teszi, hogy a helyi kiszolgáló kevesebb tárolókapacitással rendelkezik, mint a felhőben, de a teljes névtér elérhető. A helyileg érdekes adatok helyi gyorsítótárba helyezhetőak a gyors, helyi hozzáférési teljesítmény érdekében. Egy másik ok, hogy kapcsolja be a felhőrétegezés ebben a lépésben az, hogy nem akarjuk szinkronizálni a fájltartalmát ebben a szakaszban, csak a névtér kell mozgatni ebben az időben.
+> **Ügyeljen arra, hogy bekapcsolja a Felhőbeli rétegek bekapcsolását.** A felhő-rétegek az AFS szolgáltatás, amely lehetővé teszi, hogy a helyi kiszolgáló kevesebb tárolókapacitással rendelkezzen, mint amennyit a felhőben tárol, de a teljes névtér elérhetővé válik. A helyileg érdekes adat a gyors, helyi hozzáférési teljesítmény érdekében helyileg is gyorsítótárazható. Egy másik ok a Felhőbeli rétegek bekapcsolására ebben a lépésben, hogy jelenleg nem szeretnénk szinkronizálni a fájl tartalmát ebben a fázisban, csak a névteret kell áthelyezni.
 
-## <a name="phase-4-configure-the-azure-vm-for-sync"></a>4. fázis: Konfigurálja az Azure virtuális gép szinkronizálásra
+## <a name="phase-4-configure-the-azure-vm-for-sync"></a>4. fázis: az Azure-beli virtuális gép konfigurálása szinkronizáláshoz
 
 :::row:::
     :::column:::
-        ![A korábbi áttekintő kép egy részét bemutató kép, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
+        ![Egy képet, amely a korábbi, áttekintő rendszerkép egy részét illusztrálja, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
     :::column-end:::
     :::column:::
-        Ez a fázis az Azure Virtuális gépre vonatkozik az iSCSI-hez csatlakoztatott, első kötetes klónokkal. Ebben a fázisban a virtuális gép az Azure File Sync-en keresztül csatlakozik, és elindítja a fájlok áthelyezésének első körét a StorSimple kötetklón(ok)ból.
+        Ebben a fázisban az Azure-beli virtuális gép az iSCSI-csatlakoztatott, az első kötet klónozásával foglalkozik. Ebben a fázisban a virtuális gépet Azure File Sync-on keresztül csatlakoztatja, és elindít egy első kört a StorSimple kötet klón (ok) ból.
         
     :::column-end:::
 :::row-end:::
 
-Már konfigurálta a helyszíni kiszolgálót, amely lecseréli a StorSimple 8100 vagy 8600 készüléket az Azure File Sync számára. 
+Már konfigurálta a helyszíni kiszolgálót, amely lecseréli a StorSimple 8100-es vagy 8600-es készüléket a Azure File Sync. 
 
-Az Azure virtuális gép konfigurálása egy majdnem azonos folyamat, egy további lépéssel. A következő lépések végigvezetik a folyamaton.
+Az Azure-beli virtuális gép konfigurálása majdnem azonos folyamat, egy további lépéssel. A következő lépések végigvezetik a folyamaton.
 
 > [!IMPORTANT]
-> Fontos, hogy az Azure virtuális gép **nincs konfigurálva a felhőrétegezés engedélyezve van!** A kiszolgáló kötetét újabb kötetklónokkal fogja cserélni az áttelepítés során. A felhőrétegezés nek nincs előnye, és a cpu-használat értendő többletterhelést.
+> Fontos, hogy az Azure-beli virtuális gép **ne legyen engedélyezve a felhőalapú rétegek** beállításával! Ennek a kiszolgálónak a kötetét az áttelepítés során újabb kötet-klónokkal kell kicserélni. A Felhőbeli rétegek nem rendelkeznek előnyökkel és terheléssel a CPU-használat elkerüléséhez.
 
-1. [Telepítse az AFS-ügynököt. (lásd az előző szakaszt)](#prepare-the-windows-server-for-file-sync)
-2. [A virtuális gép felindulása az Azure File Sync szolgáltatásra.](#get-the-vm-ready-for-azure-file-sync)
+1. [Az AFS-ügynök üzembe helyezése. (lásd az előző szakaszt)](#prepare-the-windows-server-for-file-sync)
+2. [A virtuális gép lekérése Azure File Syncre készen áll.](#get-the-vm-ready-for-azure-file-sync)
 3. [Szinkronizálás konfigurálása](#configure-azure-file-sync-on-the-azure-vm)
 
-### <a name="get-the-vm-ready-for-azure-file-sync"></a>A virtuális gép felindulása az Azure File Sync szolgáltatásra
+### <a name="get-the-vm-ready-for-azure-file-sync"></a>A virtuális gép lekérése Azure File Sync használatra kész
 
-Az Azure File Sync segítségével a fájlokat a csatlakoztatott iSCSI StorSimple kötetek a cél Azure-fájlmegosztások.
-Az áttelepítési folyamat során több kötetklónt fog csatlakoztatni a virtuális géphez, ugyanazon meghajtóbetűjel alatt. Az Azure File Sync-et úgy kell konfigurálni, hogy a fájlok és mappák újabb verziójaként csatlakoztatott következő kötetklónt láthassa, és frissítse az Azure File Sync-en keresztül csatlakoztatott Azure-fájlmegosztásokat. 
+Azure File Sync használatával helyezheti át a fájlokat a csatlakoztatott iSCSI StorSimple-kötetekről a cél Azure-fájlmegosztás felé.
+Az áttelepítési folyamat során több kötet-klónt fog csatlakoztatni a virtuális géphez ugyanazon a meghajtóbetűjelen. Azure File Synct úgy kell konfigurálni, hogy megtekintse a fájlok és mappák újabb verziójához csatlakoztatott következő kötet-klónt, és frissítse a Azure File Sync használatával csatlakoztatott Azure-fájlmegosztást. 
 
 > [!IMPORTANT]
-> Ahhoz, hogy ez működjön, az Azure File Sync konfigurálása előtt be kell állítani a beállításkulcsot a kiszolgálón.
+> Ahhoz, hogy működjön, meg kell adni egy beállításkulcsot a kiszolgálón, mielőtt a Azure File Sync konfigurálva lenne.
 
-1. Hozzon létre egy új könyvtárat a virtuális gép rendszermeghajtóján. Az Azure File Sync-adatokat ott kell megóvni a csatlakoztatott kötetklónok helyett. Például:`"C:\syncmetadata"`
-2. Nyissa meg a regedit et, és keresse meg a következő beállításstruktúrát:`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
-3. Új Karakterlánc típusú kulcs létrehozása, melynek ***neve: MetadataRootPath***
-4. Állítsa be a teljes elérési utat a rendszerköteten létrehozott könyvtárhoz, például:`C:\syncmetadata"`
+1. Hozzon létre egy új könyvtárat a virtuális gép rendszermeghajtóján. A csatlakoztatott kötetek klónozása helyett Azure File Sync adatokat is meg kell őrizni. Például:`"C:\syncmetadata"`
+2. Nyissa meg a regeditt, és keresse meg a következő beállításkulcsot:`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
+3. Hozzon létre egy string típusú új kulcsot, amelynek neve: ***MetadataRootPath***
+4. Állítsa be a rendszerköteten létrehozott könyvtár teljes elérési útját, például:`C:\syncmetadata"`
 
-### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Az Azure File Sync konfigurálása az Azure virtuális gépen
+### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure File Sync konfigurálása az Azure-beli virtuális gépen
 
 Ez a lépés hasonló az előző szakaszhoz, amely bemutatja, hogyan konfigurálja az AFS-t a helyszíni kiszolgálón.
 
-A különbség az, hogy nem engedélyezheti a felhőrétegezésezen a kiszolgálón, és hogy meg kell győződnie arról, hogy a megfelelő mappák kapcsolódnak a megfelelő Azure-fájlmegosztások. Ellenkező esetben az Azure-fájlmegosztások és az adattartalom elnevezése nem egyezik, és nincs mód a felhőbeli erőforrások vagy a helyi mappák átnevezésére a szinkronizálás újrakonfigurálása nélkül.
+A különbség az, hogy nem engedélyezheti a Felhőbeli rétegek bekapcsolását ezen a kiszolgálón, és meg kell győződnie arról, hogy a megfelelő mappák csatlakoznak a megfelelő Azure-fájlmegosztáshoz. Ellenkező esetben az Azure-fájlmegosztás és az adattartalom neve nem egyezik, és nincs lehetőség a Felhőbeli erőforrások vagy a helyi mappák átnevezésére a szinkronizálás újrakonfigurálása nélkül.
 
-Az [Azure File Sync Windows Server rendszeren való konfigurálásáról szóló előző szakaszban](#configure-azure-file-sync-on-the-windows-server)található.
+Tekintse át a [Azure file Sync konfigurálása Windows Serveren című szakaszt az előző szakaszban](#configure-azure-file-sync-on-the-windows-server).
 
-### <a name="step-4-summary"></a>4. lépés összefoglalása
+### <a name="step-4-summary"></a>4. lépés – összefoglalás
 
-Ezen a ponton sikeresen konfigurálta az Azure File Sync-et az On Azure Virtuális gépen, amelyhez a StorSimple kötetklón(ok)at iSCSI-n keresztül csatlakoztatta.
-Az adatok most az Azure virtuális gépről a különböző Azure-fájlmegosztásokra áramlanak, és onnan egy teljesen fáradt névtér jelenik meg a helyszíni Windows Serveren.
+Ezen a ponton sikeresen konfigurálta Azure File Synct azon az Azure-beli virtuális gépen, amelyhez a StorSimple-kötet klónozását iSCSI-n keresztül csatlakoztatta.
+Az adatok mostantól az Azure-beli virtuális gépről a különböző Azure-fájlmegosztás felé áramlanak, és onnan teljesen megfáradt névtér jelenik meg a helyszíni Windows Serveren.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy jelenleg nincsenek módosítások vagy felhasználói hozzáférés a Windows Server számára.
+> Győződjön meg arról, hogy jelenleg nem történt módosítás vagy felhasználói hozzáférés a Windows Server számára.
 
-A kezdeti kötet klónozási adatok az Azure virtuális gép az Azure-fájlmegosztások hosszú időt, esetleg heteket is igénybe vehet. Becslése az idő ez lesz trükkös, és számos tényezőtől függ. Leginkább az a sebesség, amellyel az Azure virtuális gép hozzáférhet a StorSimple-köteteken lévő fájlokhoz, és hogy az Azure File Sync milyen gyorsan tudja feldolgozni a szinkronizálást igénylő fájlokat és mappákat. 
+Az Azure-beli virtuális gépen az Azure-fájlmegosztás felé haladó kezdeti kötet klónozása hosszú időt vehet igénybe, akár hetekig is. A következő idő megbecslése bonyolult, és számos tényezőtől függ. A legtöbb esetben az Azure-beli virtuális gép a StorSimple-köteteken található fájlokhoz fér hozzá, és hogy milyen gyors Azure File Sync képes feldolgozni a szinkronizálást igénylő fájlokat és mappákat. 
 
-Tapasztalatból kiindulva feltételezhetjük, hogy a sávszélesség – ezért a tényleges adatméret – alárendelt szerepet tölt be. Az az időpont, amerre ez vagy bármely későbbi áttelepítési kör tart, főként a másodpercenként feldolgozható elemek számától függ. Így például 1 TiB 100 000 fájllal és mappával valószínűleg lassabban fejeződik be, mint az 1 TiB, mindössze 50 000 fájllal és mappával.
+A tapasztalatok alapján feltételezhető, hogy a sávszélesség – ezért a tényleges adatméret – alárendelt szerepet játszik. Az ilyen vagy az azt követő áttelepítési kör elvégzésének időpontja többnyire a másodpercenként feldolgozható elemek számától függ. Így például az 1 TiB 100 000-fájlokkal és-mappákkal a legvalószínűbb, hogy az 1 TiB-nál lassabban fog futni, csak 50 000 fájlokkal és mappákkal.
 
-## <a name="phase-5-iterate-through-multiple-volume-clones"></a>5. fázis: Több kötetes klónon keresztül itat
+## <a name="phase-5-iterate-through-multiple-volume-clones"></a>5. fázis: iteráció több kötet klónozásán keresztül
 
 :::row:::
     :::column:::
-        ![A korábbi áttekintő kép egy részét bemutató kép, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
+        ![Egy képet, amely a korábbi, áttekintő rendszerkép egy részét illusztrálja, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
     :::column-end:::
     :::column:::
-        Az előző fázisban tárgyalt módon a kezdeti szinkronizálás hosszú időt vehet igénybe. A felhasználók és az alkalmazások továbbra is hozzáférnek a helyszíni StorSimple 8100 vagy 8600 készülékhez. Ez azt jelenti, hogy a változások halmozódnak, és minden nap egy nagyobb delta között az élő adatok és a kezdeti kötet klón, ön jelenleg migráció, formák. Ebben a szakaszban megtudhatja, hogyan minimalizálhatja az állásidőt több kötetklón használatával, és megtudhatja, hogy mikor történik a szinkronizálás.
+        Ahogy az előző szakaszban is látható, a kezdeti szinkronizálás hosszú időt is igénybe vehet. A felhasználók és az alkalmazások továbbra is hozzáférnek a helyszíni StorSimple 8100 vagy 8600 készülékhez. Ez azt jelenti, hogy a változások felhalmozódnak, és az élő és a kezdeti kötetek klónozása közötti minden nap nagyobb különbözettel rendelkeznek, jelenleg Migrálás, űrlapok. Ebből a szakaszból megtudhatja, hogyan csökkentheti az állásidőt több kötet klónozásával, és mondja el, hogy mikor történik a szinkronizálás.
     :::column-end:::
 :::row-end:::
 
-Sajnos a migrációs folyamat nem azonnali. Ez azt jelenti, hogy az élő adatok fent említett deltájának elkerülhetetlen következménye. A jó hír az, hogy meg lehet ismételni a folyamatot szerelési új kötet klónok. Minden kötet klón delta lesz fokozatosan kisebb. Így végül a szinkronizálás olyan időtartamon keresztül fejeződik be, amelyet ön elfogadhatónak tart ahhoz, hogy a felhasználók és az alkalmazások offline állapotba kerülhessenek a helyszíni Windows-kiszolgálóra való átvágáshoz.
+Sajnos az áttelepítési folyamat nem azonnali. Ez azt jelenti, hogy az élő adatváltozások esetében a fent említett különbözet elkerülhetetlen következmény. A jó hír az, hogy megismételheti az új kötet-klónok csatlakoztatásának folyamatát. A kötetek klónozásának Delta-kötetei fokozatosan kisebbek lesznek. Így végül a szinkronizálás az idő múlásával fejeződik be, hogy a felhasználók és az alkalmazások offline állapotba helyezése a helyszíni Windows Serverre való kivágást követően is elfogadható.
 
-Ismételje meg a következő lépéseket, amíg a szinkronizálás nem fejeződik be elég gyorsan, hogy a felhasználók és az alkalmazások offline állapotba kerülése kényelmes legyen:
+Ismételje meg az alábbi lépéseket, amíg a szinkronizálás nem fejeződik be elég gyorsan, hogy a felhasználók és az alkalmazások offline állapotba helyezése megtörténjen:
 
-1. [Határozza meg, hogy a szinkronizálás befejeződött egy adott kötetklónesetében.](#determine-when-sync-is-done)
-2. [Vegyünk egy új kötet klón (ok), és csatlakoztassa a 8020 virtuális készülék.](#the-next-volume-clones)
-3. [Határozza meg, hogy mikor készült el a szinkronizálás.](#determine-when-sync-is-done)
-4. [Cut-over stratégia](#cut-over-strategy)
+1. [Megadhatja, hogy a szinkronizálás befejeződjön-e egy adott kötet klónozásakor.](#determine-when-sync-is-done)
+2. [Vegyen fel egy új kötet-klónt, és csatlakoztassa az 8020 virtuális készülékhez.](#the-next-volume-clones)
+3. [A szinkronizálás megtörténtének meghatározása.](#determine-when-sync-is-done)
+4. [Feldarabolt stratégia](#cut-over-strategy)
 
-### <a name="the-next-volume-clones"></a>A következő kötet klón(ok)
+### <a name="the-next-volume-clones"></a>A következő kötet-klón (ok)
 
-Már tárgyalt vesz egy kötet klón (ok) korábban ebben a cikkben.
-Ennek a fázisnak két művelete van:
+A jelen cikk korábbi részében a kötet klón (ok) beszedését tárgyaljuk.
+Ebben a fázisban két művelet van:
 
-1. [Vegyünk egy kötet klón](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
-2. [Csatlakoztassa a kötet klón (lásd fent)](#use-the-volume-clone)
+1. [Kötet klónozása](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
+2. [A kötet klónozásának csatlakoztatása (lásd fent)](#use-the-volume-clone)
 
-### <a name="determine-when-sync-is-done"></a>A szinkronizálás időpontjának meghatározása
+### <a name="determine-when-sync-is-done"></a>A szinkronizálás megtörténtének meghatározása
 
-Amikor a szinkronizálás befejeződött, leállíthatja az időmérést, és meghatározhatja, hogy meg kell-e ismételnie a kötetklón és a csatlakoztatás folyamatát, vagy ha az utolsó kötetklónlal való szinkronizálás elég kicsi volt.
+A szinkronizálás elvégzése után leállíthatja az időmérést, és meghatározhatja, hogy meg kell-e ismételnie a kötetek klónozásának folyamatát, illetve azt, hogy az idő szinkronizálása az utolsó kötet klónozása során is elég kicsi volt-e.
 
-Annak megállapításához, hogy a szinkronizálás befejeződött:
+A szinkronizálás befejezésének megállapításához:
 
-1. Az Eseménynapló megnyitása és az **Alkalmazások és szolgáltatások** megnyitása
-2. Navigálás és a **Microsoft\FileSync\Agent\Telemetria megnyitása**
-3. Keresse meg a legutóbbi **9102-es eseményt,** amely egy befejezett szinkronizálási munkamenetnek felel meg
-4. Válassza a **Részletek** lehetőséget, és ellenőrizze, hogy a **SyncDirection** érték **Feltöltés**
-5. Ellenőrizze a **HResult és** ellenőrizze, hogy azt **mutatja, 0**. Ez azt jelenti, hogy a szinkronizálási munkamenet sikeres volt. Ha a HResult értéke nem nulla, akkor hiba történt a szinkronizálás során. Ha a **PerItemErrorCount** nagyobb, mint 0, akkor néhány fájl vagy mappa szinkronizálása nem megfelelő. Lehetséges, hogy a HResult 0, de a PerItemErrorCount, amely nagyobb, mint 0. Ezen a ponton nem kell aggódnia a PerItemErrorCount. Majd később elkapjuk ezeket az aktákat. Ha ez a hibaszám jelentős, több ezer elem, forduljon az ügyfélszolgálathoz, és kérje, hogy csatlakozik az Azure File Sync termékcsoporthoz a legjobb útmutatást, a következő fázisok.
-6. Ellenőrizze, hogy több 9102 esemény van a HResult 0-val egy sorban. Ez azt jelzi, hogy a szinkronizálás befejeződött ehhez a kötetklónozáshoz.
+1. Nyissa meg a Eseménynapló és navigáljon az **alkalmazásokhoz és a szolgáltatásokhoz**
+2. A **Microsoft\FileSync\Agent\Telemetry** navigálása és megnyitása
+3. Keresse meg a legutóbbi, **9102**-as eseményt, amely megfelel egy befejezett szinkronizálási munkamenetnek.
+4. Válassza a **részletek** lehetőséget, és győződjön meg arról, hogy a **SyncDirection** érték **fel van feltöltve**
+5. Ellenőrizze a **HResult** , és ellenőrizze, hogy a **0**érték jelenik-e meg. Ez azt jelenti, hogy a szinkronizálási munkamenet sikeres volt. Ha a HResult értéke nem nulla, akkor hiba történt a szinkronizálás során. Ha a **PerItemErrorCount** nagyobb, mint 0, akkor egyes fájlok vagy mappák nem voltak megfelelően szinkronizálva. Lehetséges, hogy HResult 0, de a PerItemErrorCount értéke 0-nál nagyobb. Ezen a ponton nem kell aggódnia a PerItemErrorCount. Ezeket a fájlokat később fogjuk megfogni. Ha ez a hiba jelentős, több ezer elemet tartalmaz, forduljon az ügyfélszolgálathoz, és kérje meg, hogy kapcsolódjon a Azure File Sync termékcsoport közvetlen útmutatóként a legjobb, következő fázisokban.
+6. Ellenőrizze, hogy több 9102 eseményt HResult 0 értékkel egy sorba. Ez azt jelzi, hogy a kötet klónozásának szinkronizálása befejeződött.
 
-### <a name="cut-over-strategy"></a>Cut-over stratégia
+### <a name="cut-over-strategy"></a>Feldarabolt stratégia
 
-1. Állapítsa meg, hogy a kötetklónból történő szinkronizálás elég gyors-e. (Delta elég kicsi.)
-2. Állítsa offline állapotba a StorSimple készüléket.
-3. Egy utolsó RoboCopy.
+1. Annak megállapítása, hogy a kötet klónozásának szinkronizálása most már elég gyors-e. (A Delta elég kicsi.)
+2. A StorSimple készülék offline állapotba helyezése.
+3. Egy végső RoboCopy.
 
-Mérje meg az időt, és állapítsa meg, hogy egy legutóbbi kötetklónszinkronizálás a rendszerben állásidőként megengedhető-e egy olyan időszakon belül, amelyet leállásként engedhet meg magának.
+Mérje fel az időt, és állapítsa meg, hogy a legutóbbi kötetek klónozása egy adott időkereten belül befejeződik-e, és hogy a rendszer leállást biztosít-e.
 
-Itt az ideje, hogy tiltsa le a felhasználó hozzáférését a StorSimple készülékhez. Nincs több változás. Az állásidő elkezdődött.
-A készüléket online állapotban kell hagynia, de most meg kell akadályoznia a rajta történő módosításokat.
+Most letilthatja a felhasználói hozzáférést a StorSimple készülékhez. Nincs több változás. A leállás megkezdődött.
+A készüléket online és csatlakoztatott állapotban kell hagyni, de most meg kell akadályoznia a módosításokat.
 
-Fázis 6 lesz felzárkózni minden delta az élő adatok, mivel az utolsó kötet klón.
+A 6. fázisban az utolsó kötet klónozása óta az élő adatforgalomban bármilyen különbözetet megtalál.
 
 ## <a name="phase-6-a-final-robocopy"></a>6. fázis: A végső RoboCopy
 
-Jelenleg két különbség van a helyszíni Windows Server és a StorSimple 8100 vagy 8600 készülék között:
+Ezen a ponton két különbség van a helyszíni Windows Server és a StorSimple 8100-es vagy a 8600-es készülék között:
 
-1. Lehetnek olyan fájlok, amelyek nem szinkronizálódtak **(lásd: PerItemErrors** a fenti eseménynaplóból)
-2. A StorSimple-készülék feltöltött gyorsítótárral rendelkezik, szemben a Windows Server kiszolgálóval, amely jelenleg nem tárol helyileg tárolt fájltartalmat.
+1. Lehetséges, hogy nem szinkronizált fájlok (lásd: **PerItemErrors** a fenti eseménynaplóból)
+2. A StorSimple készülék egy feltöltött gyorsítótárral és a Windows Serverrel csak olyan névtérrel rendelkezik, amely nem helyileg tárolt tartalmat tartalmaz.
 
-![A korábbi áttekintő kép egy részét bemutató kép, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
+![Egy képet, amely a korábbi, áttekintő rendszerkép egy részét illusztrálja, amely segít a cikk ezen alszakaszának fókuszában.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
 
-Tudjuk, hogy a cache a Windows Server akár az állam a készülék, és biztosítja, hogy nem fájl marad a végső RoboCopy.
+A Windows-kiszolgáló gyorsítótárát akár a berendezés állapotára is felhasználhatja, így a végső RoboCopy nem marad a fájlban.
 
 > [!CAUTION]
-> Rendkívül fontos, hogy a RoboCopy parancsot követi, pontosan az alábbiakszerint. Csak olyan fájlokat szeretnénk másolni, amelyek helyiek, és olyan fájlokat, amelyek korábban nem haladtak át a kötetklón+szinkronizálási megközelítésen. Megoldhatjuk a problémákat, hogy miért nem szinkronizáltak később, miután az áttelepítés befejeződött. (Lásd: [Azure File Sync hibaelhárítás](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing). Valószínűleg nem nyomtatható karakterek a fájlnevekben, amelyek nem fognak hiányozni, amikor törli őket.)
+> Fontos, hogy az Ön által követett RoboCopy-parancs pontosan az alább leírtak szerint történjen. Csak azokat a fájlokat szeretnénk másolni, amelyek helyi és olyan fájlok, amelyek nem a Volume Clone + Sync megközelítéssel lettek áthelyezve. A Migrálás befejezése után megoldhatók a problémák, hogy miért nem voltak szinkronizálva később. (Lásd [Azure file Sync hibaelhárítást](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing). Ez valószínűleg nem nyomtatható karakter a fájlnevekben, amelyeket a rendszer nem fog kihagyni a törléskor.)
 
 RoboCopy parancs:
 
@@ -351,14 +351,14 @@ RoboCopy parancs:
 Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-Háttér:
+Háttér
 
 :::row:::
    :::column span="1":::
       /MT
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi a RoboCopy többszálas futtatását. Az alapértelmezett érték 8, max 128.
+      Lehetővé teszi, hogy a RoboCopy több szálon fusson. Az alapértelmezett érték 8, Max 128.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -366,7 +366,7 @@ Háttér:
       /UNILOG:<file name>
    :::column-end:::
    :::column span="1":::
-      Unicode-ként adja ki a LOG fájl állapotát (felülírja a meglévő naplót).
+      Az állapotot a NAPLÓFÁJLba UNICODE-ként adja vissza (felülírja a meglévő naplót).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -374,7 +374,7 @@ Háttér:
       /TEE
    :::column-end:::
    :::column span="1":::
-      Kimenetek a konzolablakba. A naplófájlkimenettel együtt használva.
+      A konzol ablakának kimenete. Egy naplófájlban a kimenettel együtt használatos.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -382,7 +382,7 @@ Háttér:
       /B
    :::column-end:::
    :::column span="1":::
-      Futtatja a RoboCopy-t ugyanabban az üzemmódban, amelyet egy biztonsági másolat készítő alkalmazás használna. Ez lehetővé teszi RoboCopy átfájlokat, hogy az aktuális felhasználó nem rendelkezik engedélyekkel.
+      A RoboCopy szolgáltatást ugyanazon a módban futtatja, amikor a biztonságimásolat-készítő alkalmazás használni fogja. Lehetővé teszi, hogy a RoboCopy olyan fájlokat helyezzen át, amelyekhez az aktuális felhasználónak nincs engedélye.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -390,15 +390,15 @@ Háttér:
       /MIR
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi, hogy a RoboCopy csak a forrás (StorSimple-készülék) és a cél (Windows Server-könyvtár) közötti különbözeteket vegye figyelembe.
+      Lehetővé teszi, hogy a RoboCopy csak a forrás (StorSimple-készülék) és a cél (Windows Server Directory) közötti különbözeteket vegye figyelembe.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /COPY:copyflag[s]
+      /COPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      a fájlmásolás hűsége (alapértelmezett: /COPY:DAT), másolási jelzők: D=Data, A=Attributes, T=Timestamps, S=Security=NTFS ACLs, O=Owner info, U=aUditing info
+      a fájlmásolás hűsége (az alapértelmezett érték a/COPY: DAT), a másolási jelzők: D = adat, A = attribútumok, T = időbélyeg, S = biztonság = NTFS ACL, O = tulajdonos adatai, U = naplózási információ
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -406,57 +406,57 @@ Háttér:
       /COPYALL
    :::column-end:::
    :::column span="1":::
-      AZ ÖSSZES fájlinformáció MÁSOLÁSA (egyenértékű a /COPY:DATSOU kapcsolóval)
+      A fájl összes adatának másolása (egyenértékű a következő/COPY: DATSOU)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /DCOPY:copyflag[s]
+      /DCOPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      könyvtárak másolásának hűsége (alapértelmezett: /DCOPY:DA), másolási jelzők: D=Adatok, A=Attribútumok, T=Időbélyegek
+      a címtárak másolásának hűsége (az alapértelmezett érték a/DCOPY: DA), a másolási jelzők: D = az adat, A = attribútumok, A T = timestamps
    :::column-end:::
 :::row-end:::
 
-Ezt a RoboCopy parancsot a Windows Server minden olyan könyvtárához kell futtatnia célként, amelyet egy Azure-fájlhoz való fájlszinkronizálással konfigurált.
+Ezt a RoboCopy-parancsot célként kell futtatnia a Windows Server minden egyes könyvtárához, ha a fájl-szinkronizálással konfigurálta az Azure-fájlt.
 
-Ezek közül több parancsot párhuzamosan is futtathat.
-Miután ez a RoboCopy lépés befejeződött, engedélyezheti a felhasználók nak és az alkalmazásoknak, hogy úgy férjenek hozzá a Windows Serverhez, mint a StorSimple készülékelőtt.
+Ezeket a parancsokat párhuzamosan is futtathatja.
+A RoboCopy lépés befejezése után lehetővé teheti, hogy a felhasználók és az alkalmazások hozzáférjenek a Windows Serverhez, például a StorSimple-berendezés előtt.
 
-Tekintse meg a robocopy naplófájl(ok) annak megtekintéséhez, hogy a fájlok at hátrahagyott. Ha problémák merülnek fel, a legtöbb esetben az áttelepítés befejezése után megoldhatja azokat, és a felhasználók és az alkalmazások újra a Windows Server kiszolgálóra kerültek. Ha bármilyen problémát meg kell oldania, tegye meg a 7.
+Tekintse át a Robocopy naplófájl (oka) t, és ellenőrizze, hogy a fájlok le vannak-e maradva. Ha problémákra van szüksége, akkor a legtöbb esetben a Migrálás befejezése után fel lehet oldani őket, és a felhasználók és az alkalmazások a Windows Serverre lettek újra felhasználva. Ha bármilyen problémát ki kell javítania, akkor a 7. fázis előtt tegye meg.
 
-Valószínűleg létre kell hoznia az SMB-megosztásokat a Windows Serveren, amelykorábban korábban a StorSimple-adatokon volt. Ezt a lépést előre betöltheti, és korábban megteheti, hogy ne veszítse el az idejét itt, de biztosítania kell, hogy ezen a ponton megelőzően ne történjen a fájlok módosítása a Windows kiszolgálón.
+Valószínűleg létre kell hoznia az SMB-megosztásokat azon a Windows Serveren, amelyet korábban a StorSimple-on tárolt. Ezt a lépést előre betöltheti, és megteheti, hogy nem veszít időt ide, de ezt megelőzően mindenképpen meg kell győződnie arról, hogy a Windows Server nem módosítja a fájlokat.
 
-Ha DFS-N központi telepítéssel rendelkezik, a DFN-Namespaces-t az új kiszolgálómappa-helyekre irányíthatja. Ha nem rendelkezik DFS-N központi telepítéssel, és a 8100 8600-as készüléket helyileg egy Windows Server rel előadta, akkor a kiszolgálót leveheti a tartományból, és tartományhoz csatlakozhat az új Windows Server hez az AFS-sel a tartományhoz, ugyanazt a kiszolgálónevet adja meg, mint a régi kiszolgáló, és ugyanazt a megosztásnevet, akkor az új kiszolgálóra való átépítés átlátszó marad a felhasználók számára. , csoportházirend vagy parancsfájlok.
+Ha van DFS-N üzemelő példánya, a DFN-névtereket az új kiszolgálói mappák helyeire irányíthatja. Ha nem rendelkezik DFS-N üzemelő példányokkal, és a 8100 8600-es készüléket helyileg, egy Windows Serveren keresztül telepítette, akkor a kiszolgálót kikapcsolhatja a tartományból, és a tartományhoz csatlakoztathatja az új Windows Servert az AFS-vel a tartományhoz, adja meg ugyanazt a kiszolgálónevet, mint a régi kiszolgálót, és ugyanazokat a neveket, majd az új kiszolgálóhoz való kivágás , csoportházirend vagy parancsfájlok.
 
-## <a name="phase-7-deprovision"></a>7. szakasz: Megszüntetés
+## <a name="phase-7-deprovision"></a>7. fázis: megszüntetés
 
-Az utolsó fázisban több kötetklónon keresztül iterált, és végül sikerült csökkentenie a felhasználói hozzáférést az új Windows Serverhez, miután offline állapotba helyezte a StorSimple-készüléket.
+Az utolsó fázisban több kötet klónozása is megtörtént, és végül a StorSimple készülék offline állapotba helyezése után kihasználhatja a felhasználói hozzáférést az új Windows Server-kiszolgálóhoz.
 
-Most már megkezdheti a felesleges erőforrások kioldását.
-Mielőtt elkezdené, ajánlott megfigyelni az új Azure File Sync-telepítés éles környezetben, egy kicsit. Ez lehetőséget ad arra, hogy kijavítsa az esetlegesen felmerülő problémákat.
+Most már elkezdheti a szükségtelen erőforrások megszüntetését.
+Mielőtt elkezdené, érdemes megfigyelni az új Azure File Sync üzembe helyezését éles környezetben, egy kicsit. Ez lehetőséget biztosít az esetlegesen felmerülő problémák kijavítására.
 
-Miután elégedett, és legalább néhány napig megfigyelte az AFS-telepítést, a következő sorrendben kezdheti meg az erőforrások kiteljesítését:
+Ha meggyőződött róla, hogy legalább néhány napig megfigyelte az AFS üzembe helyezését, megkezdheti az erőforrások kiépítését ebben a sorrendben:
 
-1. Kapcsolja ki az Azure virtuális gép, amely már használt adatok áthelyezése a kötet klónok az Azure-fájlmegosztások fájlszinkronizálás sal.
-2. Nyissa meg a Storage Sync Service-erőforrást az Azure-ban, és törölje az Azure virtuális gép regisztrációját. Ezzel eltávolítja az összes szinkronizálási csoportból.
+1. Kapcsolja ki azt az Azure-beli virtuális gépet, amelyet a kötetek klónozásának az Azure-ba való áthelyezéséhez használtunk a file Sync használatával.
+2. Lépjen a Storage Sync Service-erőforráshoz az Azure-ban, és szüntesse meg az Azure-beli virtuális gép regisztrációját. Ez eltávolítja az összes szinkronizálási csoportból.
 
     > [!WARNING]
-    > **Győződjön meg róla, hogy a megfelelő gépet választja.** Kikapcsolta a felhőalapú virtuális gép kikapcsolását, ami azt jelenti, hogy a regisztrált kiszolgálók listájában csak offline kiszolgálóként kell megjelennie. Ebben a lépésben nem választhatja ki a helyszíni Windows Server t, mert ezzel nem regisztrálhatja azt.
+    > **Győződjön meg arról, hogy a megfelelő gépet választotta.** A Felhőbeli virtuális gép ki van kapcsolva, ami azt jelenti, hogy az egyetlen kapcsolat nélküli kiszolgálóként jelenik meg a regisztrált kiszolgálók listáján. Ebben a lépésben nem kell kiválasztania a helyszíni Windows Server kiszolgálót, így a regisztrációja törlődik.
 
-3. Törölje az Azure virtuális gép és az erőforrások.
-4. Tiltsa le a 8020 virtuális StorSimple készüléket.
-5. Az Azure-beli Összes StorSimple-erőforrás kiirtása.
-6. Húzza ki a StorSimple fizikai készüléket az adatközpontból.
+3. Törölje az Azure-beli virtuális gépet és annak erőforrásait.
+4. Tiltsa le a 8020 virtuális StorSimple berendezést.
+5. Az összes StorSimple erőforrás kiépítése az Azure-ban.
+6. Húzza ki a StorSimple fizikai berendezést az adatközpontból.
 
-Az áttelepítés befejeződött.
+A Migrálás befejeződött.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg az Azure File Sync szolgáltatással. Különösen a felhőrétegezési szabályzatok rugalmasságával.
+Ismerkedjen meg Azure File Syncával. Különösen a felhő-előteret biztosító házirendek rugalmasságával.
 
-Ha az Azure Portalon vagy a korábbi eseményekből azt látja, hogy egyes fájlok véglegesen nem szinkronizálódnak, tekintse át a hibaelhárítási útmutatót a problémák megoldásához szükséges lépésekért.
+Ha a Azure Portalban vagy a korábbi eseményekben látható, hogy egyes fájlok véglegesen nem szinkronizálhatók, tekintse át a hibaelhárítási útmutatót a hibák elhárításához.
 
-* [Az Azure File Sync áttekintése: aka.ms/AFS](https://aka.ms/AFS)
-* [Felhőrétegezés](storage-sync-cloud-tiering.md) 
-* [Útmutató az Azure File Sync hibaelhárítási útmutatójához](storage-sync-files-troubleshoot.md)
+* [Azure File Sync áttekintése: aka.ms/AFS](https://aka.ms/AFS)
+* [Felhőbeli rétegek](storage-sync-cloud-tiering.md) 
+* [Azure File Sync hibaelhárítási útmutató](storage-sync-files-troubleshoot.md)

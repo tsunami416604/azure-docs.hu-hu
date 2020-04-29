@@ -1,5 +1,5 @@
 ---
-title: Bing News Search Python-ügyféltár – rövid útmutató
+title: Bing News Search Python ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: c1bd0d86a3fd9d19d67d84b9b05955421373e01e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503880"
 ---
-Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Bing News Search ügyféltárpythonhoz. Bár a Bing News Search a legtöbb programozási nyelvvel kompatibilis REST API-val rendelkezik, az ügyfélkódtár egyszerű módot kínál a szolgáltatás alkalmazásokba való integrálására. A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)
+Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Pythonhoz készült Bing News Search ügyféloldali kódtár használatával. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Piton](https://www.python.org/) 2.x vagy 3.x
+* [Python](https://www.python.org/) 2. x vagy 3. x
 
-Javasoljuk, hogy egy [virtuális környezetet](https://docs.python.org/3/tutorial/venv.html) a python fejlesztés. A virtuális környezetet a [venv modullal](https://pypi.python.org/pypi/virtualenv)telepítheti és inicializálhatja. Telepítenie kell egy virtualenv python 2.7. Virtuális környezetet a következő kkel hozhat létre:
+Javasoljuk, hogy használjon egy [virtuális környezetet](https://docs.python.org/3/tutorial/venv.html) a Python-fejlesztéshez. A virtuális környezetet a [venv modul](https://pypi.python.org/pypi/virtualenv)használatával telepítheti és inicializálhatja. Telepítenie kell egy virtualenv a Python 2,7-hez. Létrehozhat egy virtuális környezetet a használatával:
 
 ```console
 python -m venv mytestenv
 ```
 
-A Bing News Search ügyfélkönyvtár-függőségeit a következő paranccsal telepítheti:
+A Bing News Search ügyféloldali függvénytár függőségei a következő paranccsal telepíthetők:
     
 ```console
 python -m pip install azure-cognitiveservices-search-newssearch
@@ -37,7 +37,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE-ben vagy szerkesztőjében, és importálja a következő könyvtárakat. Hozzon létre egy változót az előfizetési kulcshoz és a keresési kifejezéshez.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat. Hozzon létre egy változót az előfizetési kulcshoz és a keresett kifejezéshez.
 
     ```python
     from azure.cognitiveservices.search.newssearch import NewsSearchClient
@@ -55,7 +55,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     client = NewsSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
-2. Küldjön egy keresési lekérdezést a Hírkeresés API-ba, tárolja a választ.
+2. Keresési lekérdezés küldése a News Search API-nak, tárolja a választ.
 
     ```python
     news_result = client.news.search(query=search_term, market="en-us", count=10)
@@ -63,7 +63,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="parse-the-response"></a>A válasz feldolgozása
 
-Ha a keresési eredmények et talál, nyomtassa ki az első weblap eredményét:
+Ha keresési eredmények találhatók, nyomtassa ki az első weblap eredményét:
 
 ```python
 if news_result.value:

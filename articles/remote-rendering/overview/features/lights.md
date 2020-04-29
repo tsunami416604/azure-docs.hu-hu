@@ -1,76 +1,76 @@
 ---
-title: Lámpa
-description: Fényforrás leírása és tulajdonságai
+title: Fények
+description: A fényforrás leírása és tulajdonságai
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680946"
 ---
-# <a name="lights"></a>Lámpa
+# <a name="lights"></a>Fények
 
-Alapértelmezés szerint a távolról renderelt objektumok [égi fénnyel](sky.md)világítanak. A legtöbb alkalmazás esetében ez már elegendő, de további fényforrásokat adhat a jelenethez.
+Alapértelmezés szerint a távolról megjelenített objektumok egy [Sky-fénnyel](sky.md)vannak kivilágítva. A legtöbb alkalmazás esetében ez már elegendő, de további fényforrásokat is hozzáadhat a jelenethez.
 
 > [!IMPORTANT]
-> A fényforrások csak [a PBR-anyagokat](pbr-materials.md) érintik. [A színes anyagok](color-materials.md) mindig teljesen világosnak tűnnek.
+> A fényforrások csak a [pbr-anyagokat](pbr-materials.md) érintik. A [színanyagok](color-materials.md) mindig teljesen világos színnel jelennek meg.
 
 > [!NOTE]
-> Az árnyékok öntése jelenleg nem támogatott. Az Azure remote rendering úgy van optimalizálva, hogy hatalmas mennyiségű geometriát jelenítsen meg, szükség esetén több GPU-t használva. Az árnyéköntés hagyományos megközelítései nem működnek jól az ilyen helyzetekben.
+> Az árnyékok öntése jelenleg nem támogatott. Az Azure távoli renderelés nagy mennyiségű geometria renderelésére van optimalizálva, ha szükséges, több GPU-t is felhasználva. A Shadow Casting hagyományos megközelítései ilyen helyzetekben nem működnek megfelelően.
 
-## <a name="common-light-component-properties"></a>Gyakori fénykomponens-tulajdonságok
+## <a name="common-light-component-properties"></a>Gyakori világos összetevő tulajdonságai
 
-Minden fénytípus az absztrakt `LightComponent` alaposztályból származik, és megosztja ezeket a tulajdonságokat:
+Minden világos típus az absztrakt alaposztályból `LightComponent` származik, és megosztja ezeket a tulajdonságokat:
 
-* **Szín:** A fény színe a [Gamma térben.](https://en.wikipedia.org/wiki/SRGB) Az Alfát figyelmen kívül hagyjuk.
+* **Szín:** A fény színe a gamma- [térben](https://en.wikipedia.org/wiki/SRGB). Az Alpha figyelmen kívül lesz hagyva.
 
-* **Intenzitás:** A fény fényereje. A pont- és spotlámpák esetében az intenzitás azt is meghatározza, hogy a fény milyen messzire ragyog.
+* **Intenzitás:** A fény fényessége A pont-és direktszínek esetében az intenzitás azt is meghatározza, hogy a fény milyen messzire ragyog.
 
-## <a name="point-light"></a>Pontfény
+## <a name="point-light"></a>Pont fénye
 
-Az Azure Remote `PointLightComponent` Renderelés a nem csak fényt bocsát ki egyetlen pontból, hanem egy kis gömb vagy egy kis cső, lágyabb fényforrások szimulálására.
+Az Azure távoli renderelés során `PointLightComponent` a nem csak egyetlen pontról, hanem egy kis gömbből vagy egy kis csőből is képes fényt kibocsátani a lágyabb fényforrások szimulálása érdekében.
 
 ### <a name="pointlightcomponent-properties"></a>PointLightComponent tulajdonságai
 
-* **Sugár:** Az alapértelmezett sugár nulla, ebben az esetben a fény pontfényként működik. Ha a sugár nagyobb, mint nulla, akkor gömb alakú fényforrásként működik, ami megváltoztatja a fényvisszaverő di.
+* **RADIUS:** Az alapértelmezett sugár nulla, ebben az esetben a fény pont fényként működik. Ha a sugár nullánál nagyobb, a gömb alakú fényforrásként funkcionál, amely megváltoztatja a visszaverődési csúcsfények megjelenését.
 
-* **Hossza:** Ha `Length` mindkettő, és `Radius` nem nulla, a fény működik, mint egy cső fény. Ezt fel lehet használni, hogy szimulálja neon csövek.
+* **Hossz:** Ha mindkettő `Length` és `Radius` nem nulla, a fény cső fényként működik. Ez a neon-csövek szimulálására használható.
 
-* **Csillapításlevágás:** Ha hagyjuk , hogy (0,0) a csillapítás `Intensity`a fény csak attól függ, hogy . Azonban egyéni min/max távolságokat is megadhat, amelyek felett a fény intenzitása lineárisan 0-ra csökken. Ez a funkció egy adott fény kisebb hatástartományának kikényszerítésére használható.
+* **AttenuationCutoff:** Ha a bal oldali (0, 0) értékre áll, a fény gyengülése csak a `Intensity`sajáttól függ. Megadhat azonban olyan egyéni minimális/maximális távolságot, ameddig a fény intenzitása lineárisan 0-ra van méretezve. Ezzel a funkcióval egy adott fény befolyásának kisebb körét lehet kikényszeríteni.
 
-* **TervezettKockatérkép:** Ha érvényes [kockatérképre](../../concepts/textures.md)van állítva, a textúra a fény környező geometriájára lesz vetítve. A kockatérkép színe a fény színével van modulálva.
+* **ProjectedCubemap:** Ha érvényes [cubemap](../../concepts/textures.md)van beállítva, a textúrát a rendszer a fény környező geometriáján vetíti. A cubemap színe a fény színével van modulálva.
 
-## <a name="spot-light"></a>Spot fény
+## <a name="spot-light"></a>Helyszíni fény
 
-A `SpotLightComponent` hasonló a, `PointLightComponent` de a fény van korlátozva, hogy az alakja egy kúp. A kúp tájolását a *tulajdonos entitás negatív z tengelye*határozza meg .
+A `SpotLightComponent` hasonló a következőhöz `PointLightComponent` , de a fény korlátozza a kúp alakját. A kúp tájolását a *tulajdonosi entitás negatív z-tengelye határozza meg*.
 
 ### <a name="spotlightcomponent-properties"></a>SpotLightComponent tulajdonságai
 
-* **Sugár:** Ugyanaz, mint `PointLightComponent`a .
+* **RADIUS:** Ugyanaz, mint a `PointLightComponent`esetében.
 
-* **SpotAngleDeg:** Ez az intervallum határozza meg a kúp belső és külső szögét, fokban mérve. A belső szögben minden teljes fényerővel világít. A falloff felé alkalmazzák a külső szög, amely létrehoz egy penumbra-szerű hatást.
+* **SpotAngleDeg:** Ez az intervallum a kúp belső és külső szögét határozza meg fokban mérve. A belső szögen belül minden a teljes fényerővel világít. A rendszer egy hatókört alkalmaz a Penumbra-effektust generáló külső szög irányába.
 
-* **FalloffExponent:** Azt határozza meg, hogy a belső és a külső kúpszög között milyen élesen alakuljon át a lesibe. A magasabb érték élesebb átmenetet eredményez. Az 1.0 alapértelmezett beállítása lineáris átmenetet eredményez.
+* **FalloffExponent:** Meghatározza, hogy a belső és a külső kúp szöge között a fakulási átmenetek milyen élesben legyenek. A magasabb érték élesebb átmenetet eredményez. Az alapértelmezett 1,0 a lineáris átmenetet eredményezi.
 
-* **Csillapításlevágás:** Ugyanaz, mint `PointLightComponent`a .
+* **AttenuationCutoff:** Ugyanaz, mint a `PointLightComponent`esetében.
 
-* **Tervezett2dTextúra:** Ha érvényes [2D textúrára](../../concepts/textures.md)van állítva, a kép olyan geometriára vetítődik, amelyen a fény ragyog. A textúra színe modulált a fény színe.
+* **Projected2dTexture:** Ha érvényes [2D-textúrára](../../concepts/textures.md)van beállítva, a rendszer a képet a geometriában ábrázolja, és a fény ragyog. A textúra színe a fény színével van modulálva.
 
 ## <a name="directional-light"></a>Irányított fény
 
-Egy `DirectionalLightComponent` végtelenül távoli fényforrást szimulál. A fény a *tulajdonos entitás negatív z tengelyének*irányába világít. Az entitás pozícióját a rendszer figyelmen kívül hagyja.
+A `DirectionalLightComponent` egy olyan fényforrás szimulálása, amely végtelenül távol van. A fény a *tulajdonos entitás negatív z tengelyének*irányába mutat. Az entitás pozícióját a rendszer figyelmen kívül hagyja.
 
 Nincsenek további tulajdonságok.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
-A fényforrások jelentős hatással vannak a renderelési teljesítményre. Használja őket óvatosan, és csak akkor, ha az alkalmazás megköveteli. Bármilyen statikus globális megvilágítási feltétel, beleértve a statikus irányított komponenst is, [egyéni égbolt-textúrával](sky.md)érhető el, további renderelési költség nélkül.
+A fényforrások jelentős hatással vannak a renderelési teljesítményre. Körültekintően használhatja őket, és csak akkor, ha az alkalmazás igényli. Bármilyen statikus globális megvilágítási feltétel, beleértve a statikus irányú összetevőket is, az [Egyéni égbolt textúrával](sky.md)is megvalósítható, amely nem tartalmaz további renderelési költségeket.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Nyersanyagok](../../concepts/materials.md)
+* [Anyagok](../../concepts/materials.md)
 * [Ég](sky.md)

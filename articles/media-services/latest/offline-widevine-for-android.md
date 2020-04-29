@@ -1,8 +1,8 @@
 ---
-title: Streamelés a Widevine Android offline szolgáltatásával az Azure Media Services v3-as verzióval
-description: Ez a témakör bemutatja, hogyan konfigurálhatja az Azure Media Services-fiókot a Widevine által védett tartalmak offline streameléséhez.
+title: Stream Widevine Android offline Azure Media Services v3
+description: Ez a témakör bemutatja, hogyan konfigurálhatja a Azure Media Services-fiókját a Widevine által védett tartalmak offline folyamatos átviteléhez.
 services: media-services
-keywords: DASH, DRM, Widevine Offline mód, ExoPlayer, Android
+keywords: DASH, DRM, Widevine offline üzemmód, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -15,53 +15,53 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: willzhan
 ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887197"
 ---
-# <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming Androidra a Media Services v3-as verzióval
+# <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming az Androidhoz Media Services v3
 
-Az online adatfolyamok védelmén kívül a médiatartalom-előfizetési és -kölcsönzési szolgáltatások olyan letölthető tartalmakat is kínálnak, amelyek akkor is működnek, ha ön nem csatlakozik az internethez. Előfordulhat, hogy a hálózatról leválasztott repülés esetén a telefonra vagy táblagépre tartalmat kell letöltenie a repülőgép üzemmódban való lejátszáshoz. További forgatókönyvek, amelyekben érdemes lehet letölteni a tartalmat:
+Az online streaming-tartalmak védelme mellett a Media Content előfizetés és a Rental Services olyan letölthető tartalmakat is kínál, amelyek akkor működnek, ha nem csatlakozik az internethez. Előfordulhat, hogy a hálózati kapcsolat megszakadása esetén a tartalmat le kell töltenie a telefonra vagy a Tablet-ra. További forgatókönyvek, amelyekben előfordulhat, hogy le szeretné tölteni a tartalmat:
 
-- Egyes tartalomszolgáltatók leengedélyezhetik a DRM-licenc kézbesítését az ország/régió határain túl. Ha a felhasználó külföldre utazva szeretne tartalmat nézni, offline letöltésre van szükség.
-- Egyes országokban/régiókban az internet elérhetősége és/vagy sávszélessége korlátozott. A felhasználók dönthetnek úgy, hogy letöltik a tartalmat, hogy elég nagy felbontásban nézhessék a megfelelő vizuális élmény érdekében.
+- Egyes tartalomszolgáltatók nem engedélyezhetik az ország/régió szegélyén túli DRM-licencek kézbesítését. Ha a felhasználó a külföldön való utazás közben szeretné megtekinteni a tartalmat, offline letöltésre van szükség.
+- Egyes országokban/régiókban az Internet rendelkezésre állása és/vagy sávszélessége korlátozott. A felhasználók úgy dönthetnek, hogy letöltik a tartalmat, hogy elég nagy felbontásban tudják megtekinteni a megfelelő megjelenítési élményt.
 
-Ez a cikk bemutatja, hogyan valósítható meg offline módú lejátszás a Widevine által védett DASH-tartalmakhoz Android-eszközökön. Az offline DRM lehetővé teszi, hogy előfizetési, bérleti és vásárlási modelleket biztosítson a tartalomhoz, lehetővé téve a szolgáltatások ügyfelei számára, hogy könnyedén vigyenek velük tartalmakat, ha le vannak választva az internetről.
+Ez a cikk azt ismerteti, hogyan lehet az Android-eszközökön a Widevine által védett DASH-tartalmak offline módú lejátszását megvalósítani. Az offline DRM lehetővé teszi, hogy előfizetést, bérletet és vásárlási modelleket biztosítson a tartalomhoz, és lehetővé teszi a szolgáltatások ügyfelei számára, hogy az internetről való leválasztáskor könnyedén fogadják a tartalmakat.
 
-Az Android player alkalmazások létrehozásához három lehetőséget vázolunk fel:
+Az androidos lejátszó alkalmazások létrehozásához három lehetőség áll rendelkezésre:
 
 > [!div class="checklist"]
-> * Építs játékost az ExoPlayer SDK Java API-jával
-> * Építs egy játékost az ExoPlayer SDK Xamarin-kötésével
-> * Lejátszó létrehozása titkosított médiakiterjesztéssel (EME) és médiaforrás-kiterjesztéssel (MSE) a Chrome mobilböngészőv62-es vagy újabb böngészőjében
+> * A ExoPlayer SDK Java API-ját használó játékosok létrehozása
+> * A ExoPlayer SDK Xamarin-kötését használó lejátszó létrehozása
+> * Lejátszó létrehozása titkosított Media Extension (EME) és Media Source Extension (MSE) használatával a Chrome Mobile Browser v62 vagy újabb verziójában
 
-A cikk a Widevine által védett tartalmak offline streamelésével kapcsolatos néhány gyakori kérdésre is választ ad.
+A cikk a Widevine által védett tartalom offline adatfolyamával kapcsolatos gyakori kérdésekre is választ ad.
 
 > [!NOTE]
-> Az offline DRM-nek csak a tartalom letöltésekor kell fizetnie egyetlen licenckérelemért. A hibákat a rendszer nem számlázja.
+> Az offline DRM-t csak akkor számítjuk fel, ha egy licencre vonatkozó kérést készítenek a tartalom letöltésekor. A hibák számlázása nem történik meg.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Mielőtt offline DRM-et valósítana meg widevine-ra Android-eszközökön, először a következőket kell tennie:
+Mielőtt offline DRM-t implementál a Widevine Android-eszközökön, először a következőket kell tennie:
 
-- Ismerkedjen meg az online tartalomvédelem melómiával bevezetett fogalmakkal. Ezt részletesen a következő dokumentumok/minták ismertetik:
+- Ismerkedjen meg az online tartalomvédelem Widevine DRM használatával bevezetett fogalmakkal. Ezt részletesen a következő dokumentumok/minták tartalmazzák:
     - [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
     - [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](protect-with-drm.md)
-- Klón https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
+- Klónozás https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
 
-    A Widevine-konfigurációk hozzáadásához módosítania kell a kódot a [DRM titkosítása a DRM használatával.](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)  
-- Ismerkedjen meg a Google ExoPlayer SDK for Android, egy nyílt forráskódú videó lejátszó SDK támogató offline Widevine DRM lejátszás. 
+    A Widevine-konfigurációk hozzáadásához módosítania kell a kódot a [DRM-titkosítással a .NET használatával](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) .  
+- Ismerkedjen meg az Androidhoz készült Google ExoPlayer SDK-val, amely az offline Widevine DRM-lejátszást támogató nyílt forráskódú videolejátszó SDK-t támogatja. 
     - [ExoPlayer SDK](https://github.com/google/ExoPlayer)
     - [ExoPlayer fejlesztői útmutató](https://google.github.io/ExoPlayer/guide.html)
-    - [EoPlayer Fejlesztői Blog](https://medium.com/google-exoplayer)
+    - [EoPlayer fejlesztői blog](https://medium.com/google-exoplayer)
 
-## <a name="configure-content-protection-in-azure-media-services"></a>Tartalomvédelem konfigurálása az Azure Media Servicesszolgáltatásban
+## <a name="configure-content-protection-in-azure-media-services"></a>Tartalomvédelem konfigurálása a Azure Media Servicesban
 
-A [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) metódusban a következő szükséges lépések állnak fenn:
+A [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) metódusban a következő szükséges lépések jelennek meg:
 
-1. Adja meg, hogyan engedélyezett a tartalomkulcs-kézbesítés a licenckézbesítési szolgáltatásban: 
+1. Annak meghatározása, hogyan legyen engedélyezve a tartalmi kulcs kézbesítése a licenc kézbesítési szolgáltatásában: 
 
     ```csharp
     ContentKeyPolicySymmetricTokenKey primaryKey = new ContentKeyPolicySymmetricTokenKey(tokenSigningKey);
@@ -73,7 +73,7 @@ A [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-serv
     ContentKeyPolicyTokenRestriction restriction 
         = new ContentKeyPolicyTokenRestriction(Issuer, Audience, primaryKey, ContentKeyPolicyRestrictionTokenType.Jwt, alternateKeys, requiredClaims);
     ```
-2. Widevine licencsablon konfigurálása:  
+2. Widevine-licenc sablonjának konfigurálása:  
 
     ```csharp
     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
@@ -90,77 +90,77 @@ A [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-serv
         });
     ```
 
-## <a name="enable-offline-mode"></a>Kapcsolat nélküli mód engedélyezése
+## <a name="enable-offline-mode"></a>Offline mód engedélyezése
 
-A Widevine-licencek **offline** üzemmódjának engedélyezéséhez konfigurálnia kell a [Widevine licencsablont.](widevine-license-template-overview.md) A **policy_overrides** objektumban állítsa a **can_persist** tulajdonságot **igaz** értékre (az alapértelmezett értéke hamis), ahogy az a [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563). 
+A Widevine-licencek **Offline** módjának engedélyezéséhez konfigurálnia kell a [Widevine-licenc sablonját](widevine-license-template-overview.md). A **policy_overrides** objektumban állítsa **igaz** értékre a **can_persist** tulajdonságot (az alapértelmezett érték a False), ahogyan az a [ConfigureWidevineLicenseTempateben](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563)látható. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 
 ## <a name="configuring-the-android-player-for-offline-playback"></a>Az Android-lejátszó konfigurálása offline lejátszáshoz
 
-A legegyszerűbb módja annak, hogy dolgozzon ki egy natív játékos app Android készülékek, hogy a [Google ExoPlayer SDK](https://github.com/google/ExoPlayer), egy nyílt forráskódú videó lejátszó SDK. Az ExoPlayer olyan funkciókat támogat, amelyeket jelenleg nem támogat az Android natív MediaPlayer API-ja, beleértve az MPEG-DASH és a Microsoft Smooth Streaming kézbesítési protokollokat.
+Az Android-eszközökhöz készült natív alkalmazások fejlesztésének legegyszerűbb módja, ha a [Google EXOPLAYER SDK](https://github.com/google/ExoPlayer)-t, egy nyílt forráskódú videolejátszó SDK-t használja. A ExoPlayer az Android natív Media Player API-ját jelenleg nem támogató funkciókat támogatja, beleértve az MPEG-DASH és a Microsoft Smooth Streaming kézbesítési protokollokat.
 
-ExoPlayer 2.6-os vagy újabb verzió sok olyan osztályt tartalmaz, amelyek támogatják az offline Widevine DRM lejátszást. Különösen az OfflineLicenseHelper osztály biztosít segédprogram-funkciókat, amelyek megkönnyítik a DefaultDrmSessionManager használatát az offline licencek letöltéséhez, megújításához és kiadásához. A "library/core/src/main/java/com/google/android/exoplayer2/offline/" mappában található osztályok támogatják az offline videotartalmak letöltését.
+A ExoPlayer 2,6-es és újabb verziója számos olyan osztályt tartalmaz, amelyek támogatják az offline Widevine DRM lejátszását. A OfflineLicenseHelper osztály olyan segédprogram-funkciókat biztosít, amelyek megkönnyítik a DefaultDrmSessionManager használatát az offline licencek letöltéséhez, megújításához és felszabadításához. A "Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/" SDK mappában megadott osztályok támogatják az offline videotartalom letöltését.
 
-Az alábbi osztályok listája megkönnyíti az offline módot az Android ExoPlayer SDK-ban:
+Az alábbi osztályok az Androidhoz készült ExoPlayer SDK-ban az offline üzemmódot teszik lehetővé:
 
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/drm/OfflineLicenseHelper.java  
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSession.java
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSessionManager.java
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/drm/DrmSession.java
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/drm/ErrorStateDrmSession.java
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/offline/SegmentDownloader.java
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/offline/DownloaderConstructorHelper.java 
-- könyvtár/core/src/main/java/com/google/android/exoplayer2/offline/Downloader.java
-- könyvtár/kötőjel/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/OfflineLicenseHelper. Java  
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/DefaultDrmSession. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/DefaultDrmSessionManager. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/DrmSession. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/ErrorStateDrmSession. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/ExoMediaDrm. Java
+- könyvtár/mag/src/Main/Java/com/Google/Android/exoplayer2/offline/SegmentDownloader. Java
+- könyvtár/mag/src/Main/Java/com/Google/Android/exoplayer2/offline/DownloaderConstructorHelper. Java 
+- könyvtár/mag/src/Main/Java/com/Google/Android/exoplayer2/offline/Downloader. Java
+- könyvtár/kötőjel/src/Main/Java/com/Google/Android/exoplayer2/Source/Dash/offline/DashDownloader. Java 
 
-A fejlesztőknek hivatkozniuk kell az [ExoPlayer fejlesztői útmutatóra](https://google.github.io/ExoPlayer/guide.html) és a megfelelő [fejlesztői blogra](https://medium.com/google-exoplayer) az alkalmazás fejlesztése során. A Google jelenleg nem adott ki teljes körűen dokumentált referenciaimplementációt vagy mintakódot a Widevine offline támogató ExoPlayer alkalmazáshoz, így az információ a fejlesztők útmutatójára és blogjára korlátozódik. 
+Az alkalmazások fejlesztése során a fejlesztőknek hivatkoznia kell a [ExoPlayer fejlesztői útmutatóra](https://google.github.io/ExoPlayer/guide.html) és a megfelelő [fejlesztői blogra](https://medium.com/google-exoplayer) . A Google nem bocsátott ki teljes körűen dokumentált referenciát a ExoPlayer alkalmazáshoz, amely jelenleg a Widevine-et támogatja, így az információk a fejlesztői útmutatóra és blogra korlátozódnak. 
 
-### <a name="working-with-older-android-devices"></a>Régebbi Android-eszközök kel való együttműködés
+### <a name="working-with-older-android-devices"></a>A régebbi androidos eszközök használata
 
-Egyes régebbi Android-eszközök esetén a következő **policy_overrides** tulajdonságok (a [Widevine licencsablonban](widevine-license-template-overview.md)definiálva: **rental_duration_seconds**, **playback_duration_seconds**és **license_duration_seconds**értékeket kell beállítania. Másik lehetőségként beállíthatja őket nullára, ami végtelen/korlátlan időtartamot jelent.  
+Egyes régebbi Android-eszközök esetén a következő **policy_overrides** tulajdonságok értékeit kell megadnia ( [Widevine-licenc sablonban](widevine-license-template-overview.md)definiálva: **rental_duration_seconds**, **playback_duration_seconds**és **license_duration_seconds**. Azt is megteheti, hogy nullára állítja őket, ami végtelen/korlátlan időtartamot jelent.  
 
-Az értékeket úgy kell beállítani, hogy elkerüljék az egész túlcsordulási hibákat. A problémával kapcsolatos további https://github.com/google/ExoPlayer/issues/3150 https://github.com/google/ExoPlayer/issues/3112magyarázatért lásd a és a témakört. <br/>Ha nem állítja be explicit módon az értékeket, akkor a **playbackDurationRemaining** és a **LicenseDurationRemaining** nagyon nagy értékei lesznek hozzárendelve (például 9223372036854775807, amely egy 64 bites egész szám maximális pozitív értéke). Ennek eredményeképpen a Widevine licenc lejártnak tűnik, és így a visszafejtés nem fog megtörténni. 
+Az értékeket úgy kell beállítani, hogy elkerülje az egész túlcsordulási hibát. A probléma részletes ismertetését lásd: https://github.com/google/ExoPlayer/issues/3150 és. https://github.com/google/ExoPlayer/issues/3112 <br/>Ha nem adja meg explicit módon az értékeket, a **PlaybackDurationRemaining** és a **LicenseDurationRemaining** nagyon nagy érték lesz hozzárendelve (például 9223372036854775807, amely a 64 bites egész szám maximális pozitív értéke). Ennek eredményeképpen a Widevine-licenc lejárt, ezért a visszafejtés nem fog történni. 
 
-Ez a probléma nem fordul elő az Android 5.0 Lollipop vagy újabb, mivel az Android 5.0 az első Android verzió, amelyet úgy terveztek, hogy teljes mértékben támogassa az ARMv8[(Advanced RISC Machine)](https://en.wikipedia.org/wiki/ARM_architecture)és a 64 bites platformokat, míg az Android 4.4 KitKat eredetileg az ARMv7 és a 32 bites platformok támogatására készült, mint más régebbi Android verziók.
+Ez a probléma az Android 5,0-es vagy újabb verziójában nem fordul elő, mivel az Android 5,0 az első Android-verzió, amelyet a ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) és a 64 bites platform teljes körű támogatására terveztek, míg az Android 4,4 KitKat eredetileg a ARMv7 és a 32-bites platformok támogatásához lett tervezve, más régebbi Android-verziókhoz hasonlóan.
 
-## <a name="using-xamarin-to-build-an-android-playback-app"></a>A Xamarin használata Android-lejátszási alkalmazás létrehozásához
+## <a name="using-xamarin-to-build-an-android-playback-app"></a>Androidos lejátszási alkalmazás létrehozása a Xamarin használatával
 
-Xamarin kötések az ExoPlayer számára az alábbi linkek használatával találhatók:
+A ExoPlayer Xamarin-kötéseit az alábbi hivatkozásokkal érheti el:
 
-- [Xamarin kötések könyvtár a Google ExoPlayer könyvtár](https://github.com/martijn00/ExoPlayerXamarin)
-- [Xamarin kötések az ExoPlayer NuGet számára](https://www.nuget.org/packages/Xam.Plugins.Android.ExoPlayer/)
+- [Xamarin-kötések könyvtára a Google ExoPlayer könyvtárához](https://github.com/martijn00/ExoPlayerXamarin)
+- [Xamarin-kötések a ExoPlayer-NuGet](https://www.nuget.org/packages/Xam.Plugins.Android.ExoPlayer/)
 
-Lásd még a következő szálat: [Xamarin kötés](https://github.com/martijn00/ExoPlayerXamarin/pull/57). 
+Továbbá tekintse meg a következő szálat: [Xamarin-kötés](https://github.com/martijn00/ExoPlayerXamarin/pull/57). 
 
-## <a name="chrome-player-apps-for-android"></a>Androidra készült Chrome Player-alkalmazások
+## <a name="chrome-player-apps-for-android"></a>Chrome Player-alkalmazások Android rendszerhez
 
-Kezdve a kiadás a [Chrome for Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates), állandó licenc EME támogatott. [A Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) mostantól az Android Chrome-ban is támogatott. Ez lehetővé teszi, hogy offline lejátszóalkalmazásokat hozzon létre a Chrome-ban, ha a végfelhasználók a Chrome ezen (vagy újabb) verziójával rendelkeznek. 
+A [Chrome for Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)verziójának megjelenése után a rendszer támogatja az állandó licencet az eme-ben. Az [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) mostantól az Androidhoz készült Chrome-ban is támogatott. Ez lehetővé teszi offline lejátszási alkalmazások létrehozását a Chrome-ban, ha a végfelhasználók a Chrome ezen (vagy újabb) verzióját használja. 
 
-Ezen túlmenően, a Google készített egy Progressive Web App (PWA) minta és nyílt forráskódú azt: 
+Emellett a Google létrehozta a progresszív Web App-(PWA-) mintát és a nyílt forráskódú IT-t: 
 
 - [Forráskód](https://github.com/GoogleChromeLabs/sample-media-pwa)
-- [A Google üzemeltetett verziója](https://biograf-155113.appspot.com/ttt/episode-2/) (csak Chrome v 62-es vagy újabb verziókban működik Android-eszközökön)
+- A [Google által üzemeltetett verzió](https://biograf-155113.appspot.com/ttt/episode-2/) (csak a Chrome v 62-es és újabb verzióiban működik Android-eszközökön)
 
-Ha androidos telefonon frissíti a mobil Chrome-böngészőt v62-re (vagy újabbra), és teszteli a fenti üzemeltetett mintaalkalmazást, látni fogja, hogy mind az online streaming, mind az offline lejátszás működik.
+Ha Android-telefonon frissíti a Mobile Chrome böngészőt a v62 (vagy újabb verzióra), és teszteli a fent üzemeltetett minta alkalmazást, látni fogja, hogy az online streaming és az offline lejátszás is működik-e.
 
-A fenti nyílt forráskódú PWA alkalmazás szerzője a Node.js. Ha saját verzióját szeretné üzemeltetni egy Ubuntu kiszolgálón, tartsa szem előtt a következő gyakori problémákat, amelyek megakadályozhatják a lejátszást:
+A fenti nyílt forráskódú PWA alkalmazás a Node. js-ben lett létrehozva. Ha Ubuntu-kiszolgálón szeretné üzemeltetni a saját verzióját, vegye figyelembe a következő gyakori problémákat, amelyek megakadályozhatják a lejátszást:
 
-1. CORS-probléma: A mintaalkalmazásban lévő https://storage.googleapis.com/biograf-video-files/videos/mintavideó a alkalmazásban található. A Google beállította a CORS-t a Google Cloud Storage gyűjtőben tárolt összes tesztmintához. Ezek kézbesítik a CORS fejlécek, megadva kifejezetten a CORS bejegyzés: `https://biograf-155113.appspot.com` (a domain, ahol a Google házigazdák a minta) megakadályozza a hozzáférést bármely más oldalakon. Ha megpróbálja, a következő HTTP-hiba jelenik meg:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
-2. Tanúsítvány kiállítása: A Chrome v 58-tól kezdve az EME for Widevine https-t igényel. Ezért a mintaalkalmazást HTTPS-kapcsolaton keresztül, X509-tanúsítvánnyal kell üzemeltetnie. A szokásos vizsgálati tanúsítvány a következő követelmények miatt nem működik: A következő minimumkövetelményeknek megfelelő tanúsítványt kell beszereznie:
-    - A Chrome és a Firefox megköveteli, hogy a TANÚSÍTVÁNYban létezzen a SAN-Subject Alternatív név beállítás
-    - A tanúsítványnak megbízható hitelesítésszolgáltatóval kell rendelkeznie, és az önaláírt fejlesztési tanúsítvány nem működik
-    - A tanúsítványnak olyan CN-rel kell rendelkeznie, amely megfelel a webkiszolgáló vagy az átjáró DNS-nevének.
+1. CORS probléma: a minta alkalmazásban található minta videó a (z https://storage.googleapis.com/biograf-video-files/videos/) rendszerben található. A Google CORS állított be a Google Cloud Storage-gyűjtőben üzemeltetett összes tesztelési mintához. Ezek a CORS-fejlécekkel együtt, explicit módon határozzák meg a CORS `https://biograf-155113.appspot.com` bejegyzést: (a tartomány, amelyben a Google a mintát tárolja) megakadályozza a hozzáférést bármely más hely számára. Ha próbálkozik, a következő HTTP-hiba jelenik meg:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+2. Tanúsítványra vonatkozó probléma: a Chrome v 58-től kezdődően a Widevine-hez szükséges, HTTPS-t igényel. Ezért a minta alkalmazást HTTPS-en keresztül kell üzemeltetni egy X509-tanúsítvánnyal. A szokásos tesztelési tanúsítvány a következő követelmények miatt nem működik: be kell szereznie egy tanúsítványt, amely megfelel a következő minimális követelményeknek:
+    - A Chrome és a Firefox megköveteli, hogy a tanúsítványban létezik a SAN-tulajdonos alternatív neve beállítás
+    - A tanúsítványnak megbízható HITELESÍTÉSSZOLGÁLTATÓval kell rendelkeznie, és az önaláírt fejlesztési tanúsítvány nem működik.
+    - A tanúsítványnak rendelkeznie kell egy, a webkiszolgáló vagy az átjáró DNS-nevével egyező KN-névvel.
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-További információ: [Widevine GYIK](frequently-asked-questions.md#widevine-streaming-for-android).
+További információ: [Widevine gyakori kérdések](frequently-asked-questions.md#widevine-streaming-for-android).
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
+A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="summary"></a>Összefoglalás
 
-Ez a cikk a Widevine által védett DASH-tartalom offline módú lejátszásának androidos eszközökön történő megvalósítását ismerteti.  Megválaszolt néhány gyakori kérdést is a Widevine védett tartalmak offline streamelésével kapcsolatban.
+Ez a cikk azt ismerteti, hogyan lehet az Android-eszközökön a Widevine által védett DASH-tartalmak offline módú lejátszását megvalósítani.  Emellett a Widevine által védett tartalom offline adatfolyamával kapcsolatos gyakori kérdésekre is válaszolt.

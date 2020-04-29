@@ -1,6 +1,6 @@
 ---
-title: Adatlemez hozzáadása linuxos virtuális géphez az Azure CLI használatával
-description: Ismerje meg, hogyan adhat hozzá állandó adatlemezt a Linux virtuális géphez az Azure CLI-vel
+title: Adatlemez hozzáadása Linux rendszerű virtuális géphez az Azure CLI használatával
+description: Megtudhatja, hogyan vehet fel állandó adatlemezt a linuxos virtuális gépre az Azure CLI-vel
 author: roygara
 manager: twooley
 ms.service: virtual-machines-linux
@@ -9,19 +9,19 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250412"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
-Ez a cikk bemutatja, hogyan csatolhat egy állandó lemezt a virtuális géphez, hogy az adatok megőrzése – még akkor is, ha a virtuális gép karbantartás vagy átméretezés miatt újra kiépítés.
+Ez a cikk bemutatja, hogyan csatolhat állandó lemezt a virtuális géphez, így megőrizheti adatait – még akkor is, ha a virtuális gépet karbantartás vagy átméretezés miatt újra kiépítik.
 
 
-## <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása virtuális géphez
+## <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása egy virtuális géphez
 
-Ha új, üres adatlemezt szeretne hozzáadni a virtuális géphez, használja az `--new` [az vm lemezcsatolási](/cli/azure/vm/disk?view=azure-cli-latest) parancsot a paraméterrel. Ha a virtuális gép egy rendelkezésre állási zónában van, a lemez automatikusan létrejön ugyanabban a zónában, mint a virtuális gép. További információt [a Rendelkezésre állási zónák áttekintése című témakörben talál.](../../availability-zones/az-overview.md) A következő példa egy 50 Gb *méretű, myDataDisk* nevű lemezt hoz létre:
+Ha új, üres adatlemezt szeretne hozzáadni a virtuális géphez, használja az az [VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsot a `--new` paraméterrel. Ha a virtuális gép rendelkezésre állási zónában van, a rendszer automatikusan létrehozza a lemezt a virtuális géppel megegyező zónában. További információ: [Availability Zones áttekintése](../../availability-zones/az-overview.md). A következő példa egy *myDataDisk* nevű lemezt hoz létre, amely 50 GB méretű:
 
 ```azurecli
 az vm disk attach \
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása
 
-Meglévő lemez csatlakoztatásához keresse meg a lemezazonosítót, és adja át az azonosítót az [az vm lemezcsatolási](/cli/azure/vm/disk?view=azure-cli-latest) parancsnak. A következő példa egy *myDataDisk* nevű lemez lekérdezése a *myResourceGroup*alkalmazásban, majd csatolja azt a *myVM*nevű virtuális géphez:
+Meglévő lemez csatolásához keresse meg a lemez AZONOSÍTÓját, és adja át az azonosítót az [az VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsnak. A következő példa egy *myDataDisk* nevű lemezt kérdez le a *myResourceGroup*-ben, majd csatolja a *myVM*nevű virtuális géphez:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -42,15 +42,15 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Csatlakozás a Linux virtuális géphez az új lemez csatlakoztatásához
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Csatlakozás a Linux rendszerű virtuális géphez az új lemez csatlakoztatásához
 
-Particionálás, formátum, és csatlakoztassa az új lemezt, így a Linux virtuális gép használhatja, SSH a virtuális gép. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). A következő példa csatlakozik egy virtuális géphez a *mypublicdns.westus.cloudapp.azure.com* nyilvános DNS-bejegyzésével az *azureuser*felhasználónévvel:
+Az új lemez particionálásához, formázásához és csatlakoztatásához, így a linuxos virtuális gép használhatja az SSH-t a virtuális géphez. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). A következő példa egy olyan virtuális géphez csatlakozik, amelyen a *mypublicdns.westus.cloudapp.Azure.com* nyilvános DNS-bejegyzése szerepel a Felhasználónév *azureuser*használatával:
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Miután csatlakozott a virtuális géphez, készen áll a lemez csatlakoztatására. Először keresse meg `dmesg` a lemezt (az új lemez felderítéséhez használt módszer eltérő lehet). A következő példa a dmesg segítségével szűri az *SCSI-lemezeket:*
+A virtuális géphez való csatlakozás után készen áll a lemez csatlakoztatására. Először keresse meg a lemezt a `dmesg` használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a dmesg-et használja az *SCSI* -lemezek szűrésére:
 
 ```bash
 dmesg | grep SCSI
@@ -67,15 +67,15 @@ A kimenet a következő példához hasonló:
 ```
 
 > [!NOTE]
-> Javasoljuk, hogy az fdisk vagy a szétválás legújabb, a szétvezető készülékhez elérhető verziót használja.
+> Azt javasoljuk, hogy használja az fdisk legújabb verzióit, illetve azokat, amelyek elérhetők a disztribúcióhoz.
 
-Itt, *sdc* van a korong amit mi akar. Particionálja `parted`a lemezt a , ha a lemez mérete 2 tebibyte (TiB) vagy nagyobb, akkor gpt particionálást kell használnia, ha 2TiB alatt van, akkor mbr vagy GPT particionálást használhat. Ha MBR-particionálást használ, `fdisk`használhatja a használatát. Legyen elsődleges lemez az 1-es partíción, és fogadja el a többi alapértelmezést. A következő példa `fdisk` elindítja a folyamatot a */dev/sdc oldalon:*
+Itt a *SDC* a kívánt lemez. Particionálja a lemezt `parted`, ha a lemez mérete 2 Tebibájt (TiB) vagy nagyobb, akkor a GPT particionálást kell használnia, ha az 2TiB alatt van, akkor az MBR-vagy a GPT-particionálást is használhatja. Ha MBR-particionálást használ, használhatja a t `fdisk`. Legyen az 1. partíció elsődleges lemeze, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatot a */dev/SDC*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Az `n` paranccsal adhat hozzá egy új partíciót. Ebben a példában `p` is választhat egy elsődleges partíciót, és elfogadja a többi alapértelmezett értékeket. A kimenet az alábbi példához hasonló lesz:
+Az `n` paranccsal adhat hozzá egy új partíciót. Ebben a példában az elsődleges partíciót is `p` választjuk, és elfogadjuk a többi alapértelmezett értéket. A kimenet az alábbi példához hasonló lesz:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -97,7 +97,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Nyomtassa ki `p` a partíciós táblát gépeléssel, majd `w` írja meg a táblát lemezre, majd lépjen ki. A kimenetnek a következő példához hasonlóan kell kinéznie:
+A partíciós tábla kinyomtatásához írja `p` be `w` a parancsot, majd írja be a táblát a lemezre, és lépjen ki. A kimenetnek az alábbi példához hasonlóan kell kinéznie:
 
 ```bash
 Command (m for help): p
@@ -118,12 +118,12 @@ The partition table has been altered!
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-Az alábbi paranccsal frissítheti a rendszermagot:
+A kernel frissítéséhez használja az alábbi parancsot:
 ```
 partprobe 
 ```
 
-Most írjon egy fájlrendszert a `mkfs` partícióra a paranccsal. Adja meg a fájlrendszer típusát és az eszköz nevét. A következő példa létrehoz egy *ext4* fájlrendszert a */dev/sdc1* partíción, amelyet az előző lépésekben hoztak létre:
+Most írjon egy fájlrendszert a partícióra a `mkfs` paranccsal. Adja meg a fájlrendszer típusát és az eszköz nevét. Az alábbi példa egy *ext4* fájlrendszert hoz létre az előző lépésekben létrehozott */dev/sdc1* -partíción:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -154,19 +154,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Most hozzon létre egy könyvtárat `mkdir`a fájlrendszer csatlakoztatására a használatával. A következő példa létrehoz egy könyvtárat a */datadrive-on:*
+Most hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához a `mkdir`használatával. A következő példa egy könyvtárat hoz létre a */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Ezután `mount` csatlakoztatja a fájlrendszert. A következő példa a */dev/sdc1* partíciót a */datadrive* csatlakoztatási ponthoz csatlakoztatja:
+Ezzel `mount` a paranccsal csatlakoztathatja a fájlrendszert. Az alábbi példa a */dev/sdc1* partíciót csatlakoztatja a */datadrive* csatlakoztatási ponthoz:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Annak érdekében, hogy a meghajtó újraindítás után automatikusan újra fellegyen szerelve, hozzá kell adni az */etc/fstab* fájlhoz. Erősen ajánlott továbbá, hogy az UUID (Univerzálisan egyedi azonosító) az */etc/fstab* kapcsolóban a meghajtóra hivatkozzon, ne csak az eszköz nevére (például */dev/sdc1).* Ha indítás közben az operációs rendszer lemezhibát észlel, az UUID használatával elkerülhető egy nem megfelelő lemez a megadott helyre történő csatolása. A többi adatlemez ettől még ugyanazokat az eszközazonosítókat kapja. Az új meghajtó UUID-jének megkereséséhez használja a `blkid` segédprogramot:
+Annak biztosítása érdekében, hogy a meghajtó újracsatlakoztatása újraindítás után automatikusan megtörténjen, hozzá kell adni az */etc/fstab* fájlhoz. Emellett erősen ajánlott az UUID (univerzálisan egyedi azonosító) használata az */etc/fstab* -ben a meghajtóra, nem csak az eszköz neve (például */dev/sdc1*). Ha indítás közben az operációs rendszer lemezhibát észlel, az UUID használatával elkerülhető egy nem megfelelő lemez a megadott helyre történő csatolása. A többi adatlemez ettől még ugyanazokat az eszközazonosítókat kapja. Az új meghajtó UUID-jének megkereséséhez használja a `blkid` segédprogramot:
 
 ```bash
 sudo blkid
@@ -181,38 +181,38 @@ A kimenet a következő példához hasonlóan néz ki:
 ```
 
 > [!NOTE]
-> Az **/etc/fstab** fájl helytelen szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy az /etc/fstab fájl biztonsági mentése szerkesztés előtt létrejön.
+> Az **/etc/fstab** fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre az/etc/fstab fájl biztonsági másolatát.
 
-Ezután nyissa meg az */etc/fstab* fájlt egy szövegszerkesztőben az alábbiak szerint:
+Ezután nyissa meg az */etc/fstab* fájlt egy szövegszerkesztőben a következőképpen:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-Ebben a példában használja az UUID értéket az előző lépésekben létrehozott */dev/sdc1* eszközhöz, valamint a /datadrive csatlakoztatási *pontját.* Adja hozzá a következő sort az */etc/fstab* fájl végéhez:
+Ebben a példában használja az előző lépésekben létrehozott */dev/sdc1* -eszköz UUID értékét, valamint a */datadrive*csatlakoztatási pont. Adja hozzá a következő sort az */etc/fstab* fájl végéhez:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Később eltávolítása adatlemez szerkesztés nélkül fstab okozhat a virtuális gép nem indul el. A legtöbb disztribúció vagy a *nofail* és/vagy *nobootwait* fstab beállításokat biztosítja. Ezek a beállítások lehetővé teszik a rendszer indítását akkor is, ha a lemez nem csatlakoztatva van a rendszerindításkor. Ezekről a paraméterekről további információt a disztribúció dokumentációjában talál.
+> Ha később eltávolít egy adatlemezt az fstab szerkesztése nélkül, a virtuális gép nem tud elindulni. A legtöbb disztribúció a *sikertelen* és/vagy *nobootwait* fstab-beállításokat tartalmazza. Ezek a beállítások lehetővé teszik a rendszer rendszerindítását akkor is, ha a lemez nem csatlakoztatható a rendszerindítási időpontban. A paraméterekkel kapcsolatos további információkért olvassa el a terjesztés dokumentációját.
 >
-> A *nofail* beállítás biztosítja, hogy a virtuális gép akkor is elindul, ha a fájlrendszer sérült, vagy a lemez nem létezik a rendszerindításkor. E lehetőség nélkül [fstab hibák miatt a Cannot SSH–Linux VM című](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) részben leírtak szerint előfordulhat viselkedés.
+> A *nem sikertelen* beállítás biztosítja, hogy a virtuális gép akkor is elindul, ha a fájlrendszer sérült, vagy ha a lemez nem létezik a rendszerindítási időpontban. Ha ezt a lehetőséget választja, a következő témakörben leírtak szerint [nem lehet SSH-t Linux virtuális gépre az FSTAB-hibák miatt](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) .
 >
-> Az Azure VM soros konzol konzolon érhető el a virtuális gép konzolhoz való hozzáférés, ha az fstab módosítása rendszerindítási hibát eredményezett. További részletek a [Soros konzol dokumentációjában](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)találhatók.
+> Az Azure virtuális gép soros konzolja a virtuális géphez való hozzáféréshez használható, ha az fstab módosítása rendszerindítási hibát eredményezett. További részletek a [soros konzol dokumentációjában](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)olvashatók.
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP támogatás Linuxhoz az Azure-ban
-Egyes Linux kernelek támogatják a TRIM/UNMAP műveleteket a nem használt blokkok elvetéséhez a lemezen. Ez a funkció elsősorban a szabványos tárolás, hogy tájékoztassa az Azure-t, hogy a törölt lapok már nem érvényesek, és eldobhatók, és pénzt takaríthat meg, ha nagy fájlokat hoz létre, majd törli őket.
+### <a name="trimunmap-support-for-linux-in-azure"></a>A Linux az Azure-ban történő LEKÉPEZÉSÉNEK megszüntetése-támogatása
+Egyes linuxos kernelek támogatják a TRIM/LEKÉPEZÉSÉNEK megszüntetése műveleteket a lemezen lévő nem használt blokkok elvetéséhez. Ez a funkció elsősorban a standard szintű tárolásban hasznos, hogy tájékoztassa az Azure-t arról, hogy a törölt lapok már nem érvényesek, és el lehet dobni, és pénzt takaríthat meg, ha nagyméretű fájlokat hoz létre, majd törli őket.
 
-A LINUX virtuális gépben kétféleképpen engedélyezheti a TRIM-támogatást. Mint mindig, konzultáljon a forgalmazás az ajánlott megközelítés:
+A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-támogatás. A szokásos módon tekintse meg az ajánlott módszert az eloszlásban:
 
-* Használja `discard` a csatlakoztatási lehetőséget az */etc/fstab kapcsolóban,* például:
+* Használja a `discard` csatlakoztatási lehetőséget az */etc/fstab*-ben, például:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bizonyos esetekben `discard` a lehetőség nek teljesítménybeli következményei lehetnek. Azt is megteheti, `fstrim` hogy a parancsot manuálisan futtatja a parancssorból, vagy hozzáadja a crontab-hoz, hogy rendszeresen fusson:
+* Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, `fstrim` hogy manuálisan futtatja a parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
 
     **Ubuntu**
 
@@ -234,5 +234,5 @@ A LINUX virtuális gépben kétféleképpen engedélyezheti a TRIM-támogatást.
 
 ## <a name="next-steps"></a>További lépések
 
-* Győződjön meg arról, hogy a Linux virtuális gép megfelelően van konfigurálva, tekintse át [a Linux-gép teljesítményre vonatkozó javaslatainak optimalizálása.](optimization.md)
-* Bővítse a tárolókapacitást további lemezek hozzáadásával, és konfigurálja a [RAID-et](configure-raid.md) a további teljesítmény érdekében.
+* A linuxos virtuális gép megfelelő konfigurálásának biztosítása érdekében tekintse át a Linux rendszerű [gépek teljesítményével kapcsolatos javaslatok optimalizálását](optimization.md) ismertető oktatóanyagot.
+* Bővítse a tárolókapacitást további lemezek hozzáadásával és a [RAID konfigurálásával](configure-raid.md) a további teljesítmény érdekében.

@@ -1,6 +1,6 @@
 ---
-title: Lekérdezéspárhuzamosítás és méretezés használata az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk ismerteti, hogyan skálázható stream analytics-feladatok a bemeneti partíciók konfigurálásával, a lekérdezésdefiníció finomhangolásával és a feladat streamelési egységek beállításával.
+title: Lekérdezési párhuzamos és méretezés használata Azure Stream Analytics
+description: Ez a cikk azt ismerteti, hogyan méretezhetők Stream Analytics feladatok a bemeneti partíciók konfigurálásával, a lekérdezés definíciójának finomhangolásával és a feladat-átviteli egységek beállításával.
 author: JSeb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,74 +8,74 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: 31ac43ec796d305b8a8f4b62ea09481e262b6b3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80256980"
 ---
-# <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>A lekérdezések párhuzamosításának kihasználása az Azure Stream Analytics szolgáltatásban
-Ez a cikk bemutatja, hogyan használhatja ki a párhuzamosság előnyeit az Azure Stream Analytics-ben. Megtudhatja, hogyan skálázhatja a Stream Analytics-feladatokat a bemeneti partíciók konfigurálásával és az analytics-lekérdezésdefiníció finomhangolásával.
-Előfeltételként érdemes lehet ismernie a Streaming Unit fogalmát, amelyet a [Streamelési egységek megértése és beállítása](stream-analytics-streaming-unit-consumption.md)ismertet.
+# <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>A lekérdezési párhuzamos kihasználása Azure Stream Analytics
+Ez a cikk bemutatja, hogyan veheti igénybe a párhuzamos előnyeit a Azure Stream Analyticsban. Megtudhatja, hogyan méretezheti Stream Analytics feladatokat a bemeneti partíciók konfigurálásával és az elemzési lekérdezés definíciójának finomhangolásával.
+Előfeltételként érdemes megismerni a [folyamatos átviteli egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md)című témakörben ismertetett folyamatos átviteli egység fogalmát.
 
-## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Melyek a Stream Analytics-feladat részei?
-A Stream Analytics feladatdefiníciója bemeneteket, lekérdezéseket és kimeneteket tartalmaz. Bemenetek, ahol a feladat beolvassa az adatfolyamot. A lekérdezés az adatbeviteli adatfolyam átalakítására szolgál, és a kimenet az, amerre a feladat elküldi a feladat eredményeit.
+## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Mik a Stream Analytics feladatok részei?
+A Stream Analytics-feladatdefiníció bemeneteket, lekérdezéseket és kimeneteket tartalmaz. Bemenetek: a feladatból beolvassa az adatfolyamot a rendszerből. A lekérdezés az adatbeviteli adatfolyam átalakítására szolgál, és a kimenet, ahol a feladatot a rendszer a feladatnak küldi.
 
-Egy feladathoz legalább egy bemeneti forrás szükséges az adatfolyam-továbbításhoz. Az adatfolyam-bemeneti forrás tárolható egy Azure-eseményközpontban vagy az Azure blob storage-ban. További információ: [Bevezetés az Azure Stream Analytics szolgáltatásba](stream-analytics-introduction.md) és [az Azure Stream Analytics használatának első lépései című témakörben.](stream-analytics-real-time-fraud-detection.md)
+Egy feladathoz legalább egy bemeneti forrás szükséges az adatátvitelhez. Az adatfolyam bemeneti forrása az Azure Event hub-ban vagy az Azure Blob Storage-ban is tárolható. További információ: [a Azure stream Analytics bemutatása](stream-analytics-introduction.md) és a [Azure stream Analytics használatának első lépései](stream-analytics-real-time-fraud-detection.md).
 
-## <a name="partitions-in-sources-and-sinks"></a>Partíciók forrásokban és fogadókban
-A Stream Analytics-feladat méretezése kihasználja a bemeneti vagy kimeneti partíciók előnyeit. A particionálás lehetővé teszi az adatok felosztását partíciókulcs alapján részhalmazokra. Az adatokat felhasználó folyamat (például egy Streamanalytics-feladat) különböző partíciókat használhat fel és írhat párhuzamosan, ami növeli az átviteli forgalmat. 
+## <a name="partitions-in-sources-and-sinks"></a>Források és nyelők partíciói
+A Stream Analyticsi feladatok skálázása kihasználja a bemeneti vagy kimeneti partíciók előnyeit. A particionálás lehetővé teszi, hogy egy partíciós kulcs alapján csoportosítsa az adathalmazokat. Az adatmennyiséget (például egy streaming Analytics-feladatot) feldolgozó folyamat párhuzamosan képes használni a különböző partíciókat, ami növeli az átviteli sebességet. 
 
 ### <a name="inputs"></a>Bemenetek
-Minden Azure Stream Analytics-bemenet kihasználhatja a particionálás előnyeit:
--   EventHub (a partíciókulcsot explicit módon kell beállítani a PARTITION BY kulcsszósegítségével)
--   IoT Hub (a partíciókulcsot explicit módon kell beállítani a PARTITION BY kulcsszóhasználatával)
+Az összes Azure Stream Analytics-bemenet kihasználhatja a particionálás előnyeit:
+-   EventHub (a particionálási kulcsot explicit módon kell beállítani a PARTITION BY kulcsszó alapján)
+-   IoT Hub (a partíciós kulcsot explicit módon kell beállítani a PARTITION BY kulcsszó alapján)
 -   Blob Storage
 
 ### <a name="outputs"></a>Kimenetek
 
-Amikor a Stream Analytics szolgáltatással dolgozik, kihasználhatja a kimenetek particionálásának előnyeit:
+Stream Analytics használata esetén kihasználhatja a particionálást a kimenetekben:
 -   Azure Data Lake Storage
 -   Azure Functions
 -   Azure-tábla
--   Blob storage (explicit módon beállíthatja a partíciókulcsot)
--   Cosmos DB (explicit módon kell beállítani a partíciókulcsot)
--   Eseményközpontok (a partíciókulcsot explicit módon kell beállítani)
--   IoT Hub (explicit módon kell beállítani a partíciókulcsot)
+-   BLOB Storage (a partíciós kulcs explicit módon állítható be)
+-   Cosmos DB (explicit módon be kell állítania a partíció kulcsát)
+-   Event Hubs (explicit módon be kell állítania a partíció kulcsát)
+-   IoT Hub (explicit módon be kell állítania a partíció kulcsát)
 -   Service Bus
-- SQL és SQL Data Warehouse opcionális particionálással: további információ a [Kimenet az Azure SQL Database-be lapon.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)
+- SQL és SQL Data Warehouse választható particionálással: További információ a [kimenetről Azure SQL Database lapra](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
-A Power BI nem támogatja a particionálást. Azonban továbbra is particionálhatja a bemenetet az ebben a [szakaszban](#multi-step-query-with-different-partition-by-values) leírtak szerint 
+A Power BI nem támogatja a particionálást. A bemenet azonban továbbra is particionálható a [jelen szakaszban](#multi-step-query-with-different-partition-by-values) leírtak szerint. 
 
-A partíciókról további információt az alábbi cikkekben talál:
+A partíciókkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Az Event Hubs-szolgáltatások áttekintése](../event-hubs/event-hubs-features.md#partitions)
 * [Adatparticionálás](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
 
 
-## <a name="embarrassingly-parallel-jobs"></a>Kínosan párhuzamos munkák
-A *kínosan párhuzamos* feladat a leginkább skálázható forgatókönyv, amely az Azure Stream Analytics-ben van. A bemenet egy partícióját a lekérdezés egy példányához csatlakoztatja a kimenet egy partíciójával. Ez a párhuzamosság a következő követelményekkel rendelkezik:
+## <a name="embarrassingly-parallel-jobs"></a>Zavaróan párhuzamos feladatok
+Egy *kínosan párhuzamos* feladatokkal a leginkább méretezhető forgatókönyv van Azure stream Analyticsban. A bemenet egy partícióját a lekérdezés egy példányához kapcsolja a kimenet egyik partíciója számára. Ez a párhuzamosság az alábbi követelményekkel rendelkezik:
 
-1. Ha a lekérdezési logika attól függ, hogy ugyanazt a kulcsot dolgozza fel ugyanaz a lekérdezési példány, meg kell győződnie arról, hogy az események megy az azonos partícióra a bemeneti. Az Event Hubs vagy az IoT Hub esetén ez azt jelenti, hogy az eseményadatoknak meg kell határozniuk a **PartitionKey-értéket.** Másik lehetőségként particionált küldőket is használhat. Blob storage esetén ez azt jelenti, hogy az események ugyanabba a partíciómappába kerülnek. Ha a lekérdezési logika nem igényli ugyanazt a kulcsot, hogy ugyanazt a lekérdezési példány, figyelmen kívül hagyhatja ezt a követelményt. Erre a logikára példa egy egyszerű select-project-filter lekérdezés.  
+1. Ha a lekérdezési logikája ugyanazon lekérdezési példány által feldolgozott kulcstól függ, meg kell győződnie arról, hogy az események a bemenet azonos partícióján mennek. Event Hubs vagy IoT Hub esetén ez azt jelenti, hogy az események **PartitionKey** értékének meg kell egyeznie. Azt is megteheti, hogy particionált küldőket is használhat. A blob Storage esetében ez azt jelenti, hogy az eseményeket ugyanarra a partíciós mappába küldik. Ha a lekérdezési logikának nincs szüksége ugyanazon kulcs feldolgozására ugyanazzal a lekérdezési példánnyal, figyelmen kívül hagyhatja ezt a követelményt. Ilyen logika például egy egyszerű Select-Project-Filter lekérdezés lehet.  
 
-2. Miután az adatok a bemeneti oldalon vannak elhelyezve, meg kell győződnie arról, hogy a lekérdezés particionálva van. Ehhez a **PARTITION BY-t** kell használnia az összes lépésben. Több lépés megengedett, de mindegyiknek ugyanazzal a kulccsal kell particionálnia őket. Az 1.0-s és 1.1-es kompatibilitási szint alatt a particionálási kulcsot **PartitionId-ra** kell állítani ahhoz, hogy a feladat teljesen párhuzamos legyen. Az 1.2-es vagy újabb kompatibilitási szintű feladatok esetén az egyéni oszlop partíciókulcsként adható meg a bemeneti beállításokban, és a feladat automatikusan paralellizálódik a PARTITION BY záradék nélkül is. Az eseményközpont kimeneténa a "Partíciókulcs oszlop" tulajdonságot a "PartitionId" használatára kell beállítani.
+2. Ha az adatok bekerülnek a bemeneti oldalon, meg kell győződnie arról, hogy a lekérdezés particionálva van-e. Ehhez a **partíciókat** kell használnia az összes lépésben. Több lépés is engedélyezett, de mindegyiket ugyanazzal a kulccsal kell particionálni. A 1,0 és a 1,1 kompatibilitási szint alatt a particionálási kulcsot a **PartitionID** értékre kell beállítani ahhoz, hogy a feladatnak teljesen párhuzamosnak kell lennie. A 1,2-es és magasabb kompatibilitási szintű feladatokhoz egyéni oszlop adható meg partíciós kulcsként a bemeneti beállításokban, és a feladat automatikusan paralellized, még a PARTITION BY záradék nélkül is. Az Event hub kimenete esetében a "Partition Key Column" tulajdonságot "PartitionId" értékre kell beállítani.
 
-3. A legtöbb kimenetünk kihasználhatja a particionálás előnyeit, azonban ha olyan kimeneti típust használ, amely nem támogatja a feladat particionálását, nem lesz teljesen párhuzamos. Az Event Hub kimenetek esetén győződjön meg arról, hogy a **partíciókulcs oszlopa** megegyezik a lekérdezési partíciókulcséval. További részletekért tekintse meg a [kimeneti szakaszt.](#outputs)
+3. A legtöbb kimenet kihasználhatja a particionálás előnyeit, azonban ha olyan kimeneti típust használ, amely nem támogatja a particionálást, nem lesz teljesen párhuzamos. Az Event hub-kimenetek esetében győződjön meg arról, hogy a **partíciós kulcs oszlopa** megegyezik a lekérdezési partíciós kulccsal. További részletekért tekintse meg a [kimenet szakaszt](#outputs) .
 
-4. A bemeneti partíciók számának meg kell egyeznie a kimeneti partíciók számával. Blob storage-kimenet támogatja a partíciókat, és örökli a particionálási sémát a felsőstream lekérdezés. Ha meg van adva egy partíciókulcs a Blob storage-hoz, az adatok bemeneti partíciónként particionálnak, így az eredmény továbbra is teljesen párhuzamos. Íme néhány példa partícióértékekre, amelyek teljesen párhuzamos feladatot engedélyeznek:
+4. A bemeneti partíciók számának meg kell egyeznie a kimeneti partíciók számával. A blob Storage-kimenet képes támogatni a partíciókat, és örökli a felsőbb rétegbeli lekérdezés particionálási sémáját. Ha meg van adva a blob Storage-hoz tartozó partíciós kulcs, a rendszer bemeneti partíción particionálja az adatokat, így az eredmény továbbra is teljesen párhuzamos. Íme néhány példa olyan partíciós értékekre, amelyek lehetővé teszik egy teljesen párhuzamos feladatot:
 
-   * 8 eseményközpont-bemeneti partíció és 8 eseményközpont kimeneti partíciója
-   * 8 eseményközpont bemeneti partíciója és blobstorage-kimenete
-   * 8 eseményközpont-bemeneti partíció és blobstorage-kimenet, amelyet tetszőleges számossággal particionált egy egyéni mező
-   * 8 blob storage bemeneti partíciók és blob storage kimenet
-   * 8 blob storage bemeneti partíciók és 8 eseményközpont kimeneti partíciók
+   * 8 Event hub bemeneti partíció és 8 Event hub kimeneti partíció
+   * 8 Event hub bemeneti partíció és blob Storage-kimenet
+   * 8 Event hub bemeneti partíció és blob Storage-kimenet particionálva egy egyéni mezővel, tetszőleges időponttal
+   * 8 blob Storage bemeneti partíció és blob Storage kimenet
+   * 8 blob Storage bemeneti partíció és 8 Event hub kimeneti partíció
 
-A következő szakaszok néhány példaforgatókönyveket vitatnak meg, amelyek kínosan párhuzamosak.
+Az alábbi részekben olyan példákat ismertetünk, amelyek zavaróan párhuzamosak.
 
 ### <a name="simple-query"></a>Egyszerű lekérdezés
 
-* Bemenet: 8 partícióval rendelkező eseményközpont
-* Kimenet: 8 partícióval rendelkező eseményközpont ("Partíciós kulcsoszlop" a "PartitionId" használatára kell beállítani)
+* Bemenet: Event hub 8 partícióval
+* Kimenet: az Event hub 8 partícióval rendelkezik (a partíciós kulcs oszlopát a "PartitionId" érték használatára kell beállítani)
 
 Lekérdezés:
 
@@ -85,12 +85,12 @@ Lekérdezés:
     WHERE TollBoothId > 100
 ```
 
-Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia az eseményközpontba küldött bemenet particionálása miatt. Figyelje meg, hogy az 1.2 előtti kompatibilitási szinttel rendelkező feladatoknak tartalmazniuk kell **a PARTITION BY PartitionId záradékot,** így #2 a korábbi követelménynek. A kimenet, meg kell konfigurálni az eseményközpont kimenetét a feladatban, hogy a partíciókulcs **partitionid**. Az utolsó ellenőrzés annak ellenőrzése, hogy a bemeneti partíciók száma megegyezik-e a kimeneti partíciók számával.
+Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia az Event hub-ba küldött bemenet particionálásakor. Figyelje meg, hogy az 1,2 előtt a kompatibilitási szinttel rendelkező feladatok között szerepelnie kell a **Partition by PartitionID** záradéknak, így a korábbitól #2 követelménynek eleget tesz. A kimenethez konfigurálnia kell az Event hub kimenetét a feladatokban, hogy a partíciós kulcs **PartitionID**legyen beállítva. Egy utolsó ellenőrzéssel győződjön meg arról, hogy a bemeneti partíciók száma egyenlő a kimeneti partíciók számával.
 
 ### <a name="query-with-a-grouping-key"></a>Lekérdezés csoportosítási kulccsal
 
-* Bemenet: 8 partícióval rendelkező eseményközpont
-* Kimenet: Blob storage
+* Bemenet: Event hub 8 partícióval
+* Kimenet: blob Storage
 
 Lekérdezés:
 
@@ -100,27 +100,27 @@ Lekérdezés:
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-Ez a lekérdezés csoportosítási kulccsal rendelkezik. Ezért az együttesen csoportosított eseményeket ugyanahhoz az Event Hub-partícióhoz kell küldeni. Mivel ebben a példában a TollBoothID szerint csoportosítjuk, biztosnak kell lennünk abban, hogy a TollBoothID partíciókulcsként van-e használva, amikor az eseményeket az Event Hubra küldi. Ezután az ASA-ban használhatjuk **a PARTITION BY PartitionId-ot,** hogy örököljük ezt a partíciósémát, és engedélyezzük a teljes párhuzamosítást. Mivel a kimenet blob storage, nem kell aggódnia a partíciókulcs-érték konfigurálása miatt, a #4 követelménynek megfelelően.
+A lekérdezésnek van egy csoportosítási kulcsa. Ezért az együtt csoportosított eseményeket ugyanarra az Event hub-partícióra kell elküldeni. Mivel ebben a példában a TollBoothID csoportba tartozunk, a TollBoothID az Event hub eseményeinek elküldésekor partíciós kulcsként kell használni. Ebben az ASA-ben a **Partition by PartitionID** használatával örökölheti a partíciós sémát, és engedélyezheti a teljes párhuzamos. Mivel a kimenet blob Storage, nem kell aggódnia a partíciós kulcs értékének konfigurálásával kapcsolatban, mint követelmény #4.
 
-## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>Példa olyan forgatókönyvekre, amelyek *nem* kínosan párhuzamosak
+## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>Példa olyan forgatókönyvekre, amelyek *nem* zavaróan párhuzamosak
 
-Az előző részben néhány kínosan párhuzamos forgatókönyvet mutattunk be. Ebben a szakaszban olyan forgatókönyveket vitatünk meg, amelyek nem felelnek meg az összes követelménynek, hogy kínosan párhuzamosak legyenek. 
+Az előző szakaszban néhány kínosan párhuzamos forgatókönyvet mutatunk be. Ebben a szakaszban olyan forgatókönyveket ismertetünk, amelyek nem felelnek meg az összes követelménynek. 
 
 ### <a name="mismatched-partition-count"></a>Nem egyező partíciók száma
-* Bemenet: 8 partícióval rendelkező eseményközpont
-* Kimenet: 32 partícióval rendelkező eseményközpont
+* Bemenet: Event hub 8 partícióval
+* Kimenet: az Event hub 32 partícióval rendelkezik
 
-Ebben az esetben nem számít, mi a lekérdezés. Ha a bemeneti partíciók száma nem felel meg a kimeneti partíciók száma, a topológia nem kínosan párhuzamos.+ Azonban továbbra is kaphatunk valamilyen szintet vagy párhuzamosítást.
+Ebben az esetben nem számít, hogy mi a lekérdezés. Ha a bemeneti partíciók száma nem egyezik meg a kimeneti partíciók számával, a topológia nem zavaróan párhuzamos. + azonban továbbra is elérheti a szintet vagy a párhuzamos.
 
-### <a name="query-using-non-partitioned-output"></a>Nem particionált kimenettel rendelkező lekérdezés
-* Bemenet: 8 partícióval rendelkező eseményközpont
+### <a name="query-using-non-partitioned-output"></a>Lekérdezés nem particionált kimenet használatával
+* Bemenet: Event hub 8 partícióval
 * Kimenet: Power BI
 
-A Power BI-kimenet jelenleg nem támogatja a particionálást. Ezért ez a forgatókönyv nem kínosan párhuzamos.
+Power BI a kimenet jelenleg nem támogatja a particionálást. Ezért ez a forgatókönyv nem zavaró módon párhuzamos.
 
-### <a name="multi-step-query-with-different-partition-by-values"></a>Többlépéses lekérdezés különböző PARTITION BY értékekkel
-* Bemenet: 8 partícióval rendelkező eseményközpont
-* Kimenet: 8 partícióval rendelkező eseményközpont
+### <a name="multi-step-query-with-different-partition-by-values"></a>Többlépéses lekérdezés különböző PARTÍCIÓkkal értékek alapján
+* Bemenet: Event hub 8 partícióval
+* Kimenet: Event hub 8 partícióval
 
 Lekérdezés:
 
@@ -136,13 +136,13 @@ Lekérdezés:
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-Mint látható, a második lépés a **TollBoothId** a particionálási kulcs. Ez a lépés nem ugyanaz, mint az első lépés, és ezért megköveteli tőlünk, hogy nem shuffle. 
+Ahogy láthatja, a második lépés a **TollBoothId** használja a particionálási kulcsként. Ez a lépés nem egyezik meg az első lépéssel, ezért a Shuffle-t kell elvégeznie. 
 
-Az előző példák néhány Stream Analytics-feladatot mutatnak be, amelyek megfelelnek (vagy nem) egy kínosan párhuzamos topológiának. Ha megfelelnek, akkor megvan a lehetőség a maximális skála. A feladatok, amelyek nem felelnek meg az egyik ilyen profilok, méretezési útmutatást lesz elérhető a jövőbeli frissítések. Egyelőre használja az általános útmutatást a következő szakaszokban.
+Az előző példák olyan Stream Analytics feladatokat mutatnak be, amelyek megfelelnek a (vagy nem) kínos párhuzamos topológiának. Ha ezek megfelelnek a megfelelőségnek, akkor a maximális skálázás lehetséges. Azon feladatok esetében, amelyek nem felelnek meg ezen profilok egyikének, a skálázási útmutató a jövőbeli frissítésekben lesz elérhető. Egyelőre a következő részben ismertetett általános útmutatást használhatja.
 
-### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>Kompatibilitási szint 1.2 - Többlépéses lekérdezés különböző PARTITION BY értékekkel 
-* Bemenet: 8 partícióval rendelkező eseményközpont
-* Kimenet: 8 partícióval rendelkező eseményközpont ("A partíciókulcs oszlopát" a "TollBoothId" használatára kell beállítani)
+### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>Kompatibilitási szint 1,2 – többlépéses lekérdezés eltérő PARTÍCIÓval értékek alapján 
+* Bemenet: Event hub 8 partícióval
+* Kimenet: az Event hub 8 partícióval rendelkezik (a partíciós kulcs oszlopát a "TollBoothId" érték használatára kell beállítani)
 
 Lekérdezés:
 
@@ -158,13 +158,13 @@ Lekérdezés:
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-Az 1.2-es kompatibilitási szint alapértelmezés szerint lehetővé teszi a párhuzamos lekérdezések végrehajtását. Például az előző szakasz lekérdezése particionálódik, amíg a "TollBoothId" oszlop bemeneti partíciókulcsként van beállítva. Partition by PartitionId záradék nem szükséges.
+A 1,2 kompatibilitási szint alapértelmezés szerint lehetővé teszi a párhuzamos lekérdezés-végrehajtást. Például az előző szakaszból származó lekérdezés particionálva lesz, amíg a "TollBoothId" oszlop bemeneti partíciós kulcsként van beállítva. A PARTITION BY PartitionId záradék használata nem kötelező.
 
-## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Egy feladat maximális streamelési egységének kiszámítása
-A Stream Analytics-feladat által használható streamelési egységek teljes száma a feladathoz definiált lekérdezésben megadott lépések számától és az egyes lépésekhez szükséges partíciók számától függ.
+## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Egy adott feladatokhoz tartozó maximális átviteli egységek kiszámítása
+A Stream Analytics-feladatok által felhasználható folyamatos átviteli egységek teljes száma függ a feladatokhoz definiált lekérdezés és az egyes lépések partícióinak számától.
 
 ### <a name="steps-in-a-query"></a>A lekérdezés lépései
-A lekérdezésnek lehet egy vagy több lépése. Minden lépés a **WITH** kulcsszó által meghatározott segédlekérdezés. A **WITH** kulcsszón kívül lévő lekérdezés (csak egy lekérdezés) szintén lépésnek számít, például a KÖVETKEZŐ lekérdezés **SELECT** utasítása:
+Egy lekérdezésnek egy vagy több lépése lehet. Az egyes lépések a **with** kulcsszó által definiált allekérdezések. **A (z) kulcsszón** kívüli lekérdezés (csak egy lekérdezés) szintén lépésként számít, például a **Select** utasítás a következő lekérdezésben:
 
 Lekérdezés:
 
@@ -179,7 +179,7 @@ Lekérdezés:
     GROUP BY TumblingWindow(minute,3), TollBoothId
 ```
 
-Ez a lekérdezés két lépésből áll.
+A lekérdezés két lépésből áll.
 
 > [!NOTE]
 > Ezt a lekérdezést a cikk későbbi részében részletesebben tárgyaljuk.
@@ -189,25 +189,25 @@ Ez a lekérdezés két lépésből áll.
 Egy lépés particionálásához a következő feltételek szükségesek:
 
 * A bemeneti forrást particionálni kell. 
-* A lekérdezés **SELECT** utasításának particionált bemeneti forrásból kell olvasnia.
-* A lépésen belüli lekérdezésnek rendelkeznie kell a **PARTITION BY** kulcsszóval.
+* A lekérdezés **Select** utasítását particionált bemeneti forrásból kell olvasni.
+* A lépésen belüli lekérdezésnek a **partíció kulcsszó alapján** kell szerepelnie.
 
-A lekérdezés particionálásakor a bemeneti események feldolgozása és összesítése külön partíciócsoportokban történik, és a kimeneti események az egyes csoportokhoz jönnek létre. Ha kombinált összesítést szeretne, létre kell hoznia egy második, nem particionált lépést az összesítéshez.
+Ha egy lekérdezés particionálva van, a rendszer feldolgozza és összesíti a bemeneti eseményeket külön partíciós csoportokba, és az egyes csoportokhoz generálja a kimenetek eseményeit. Ha összetett összesítést szeretne, hozzon létre egy második, nem particionált lépést az összesítéshez.
 
-### <a name="calculate-the-max-streaming-units-for-a-job"></a>A feladat maximális streamelési egységeinek kiszámítása
-Az összes nem particionált lépés együttesen legfeljebb hat streamelési egység (SUs) skálázható egy Stream Analytics-feladathoz. Ezen kívül 6 SUs-t adhat hozzá minden partícióhoz egy particionált lépésben.
-Néhány **példát** az alábbi táblázatban láthat.
+### <a name="calculate-the-max-streaming-units-for-a-job"></a>Egy adott feladatokhoz tartozó maximális átviteli egységek kiszámítása
+A nem particionált lépések együttesen akár hat folyamatos átviteli egység (SUs) is méretezhetők egy Stream Analytics feladatokhoz. Emellett 6 SUs-t is hozzáadhat a particionált lépésekben található minden egyes partícióhoz.
+Az alábbi táblázatban néhány **példát** láthat.
 
-| Lekérdezés                                               | Max SUs a feladathoz |
+| Lekérdezés                                               | Maximális SUs a feladatokhoz |
 | --------------------------------------------------- | ------------------- |
 | <ul><li>A lekérdezés egy lépést tartalmaz.</li><li>A lépés nincs particionálva.</li></ul> | 6 |
-| <ul><li>A bemeneti adatfolyam particionált 16.</li><li>A lekérdezés egy lépést tartalmaz.</li><li>A lépés particionálva van.</li></ul> | 96 (6 * 16 partíció) |
-| <ul><li>A lekérdezés két lépést tartalmaz.</li><li>Egyik lépés sincs particionálva.</li></ul> | 6 |
-| <ul><li>A bemeneti adatfolyamot 3 particionálja.</li><li>A lekérdezés két lépést tartalmaz. A bemeneti lépés particionált, a második lépés pedig nem.</li><li>A <strong>SELECT</strong> utasítás a particionált bemenetről olvas.</li></ul> | 24 (18 particionált lépések + 6 a nem particionált lépések |
+| <ul><li>A bemeneti adatfolyamot a rendszer 16-ra particionálja.</li><li>A lekérdezés egy lépést tartalmaz.</li><li>A lépés particionálva van.</li></ul> | 96 (6 * 16 partíció) |
+| <ul><li>A lekérdezés két lépést tartalmaz.</li><li>A lépések egyike sincs particionálva.</li></ul> | 6 |
+| <ul><li>A bemeneti adatfolyamot 3-ra particionálja a rendszer.</li><li>A lekérdezés két lépést tartalmaz. A bemeneti lépés particionálva van, és a második lépés nem.</li><li>A <strong>Select</strong> utasítás beolvassa a particionált bemenetből.</li></ul> | 24 (18 – particionált lépések + 6 a nem particionált lépésekhez |
 
-### <a name="examples-of-scaling"></a>Példák méretezésre
+### <a name="examples-of-scaling"></a>Példák a skálázásra
 
-A következő lekérdezés kiszámítja az autók számát egy három perces ablakon belül, amely három fizetőállomással rendelkezik. Ez a lekérdezés legfeljebb hat SUs skálázható.
+A következő lekérdezés kiszámítja az autók számát egy három perces időszakon belül egy olyan autópályadíj-állomáson, amely három tollbooths rendelkezik. A lekérdezés legfeljebb hat SUs méretű lehet.
 
 ```SQL
     SELECT COUNT(*) AS Count, TollBoothId
@@ -215,7 +215,7 @@ A következő lekérdezés kiszámítja az autók számát egy három perces abl
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-Ha több SUs-t szeretne használni a lekérdezéshez, mind a bemeneti adatfolyamot, mind a lekérdezést particionálni kell. Mivel az adatfolyam-partíció 3-ra van állítva, a következő módosított lekérdezés legfeljebb 18 SUs-ra skálázható:
+Ha több SUs-t szeretne használni a lekérdezéshez, a bemeneti adatfolyamot és a lekérdezést is particionálni kell. Mivel az adatfolyam-partíció 3 értékre van állítva, a következő módosított lekérdezés akár 18 SUs-ra is méretezhető:
 
 ```SQL
     SELECT COUNT(*) AS Count, TollBoothId
@@ -223,9 +223,9 @@ Ha több SUs-t szeretne használni a lekérdezéshez, mind a bemeneti adatfolyam
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-A lekérdezés particionálásakor a bemeneti események feldolgozása és összesítése külön partíciócsoportokban történik. Kimeneti események is jönnek létre az egyes csoportok. A particionálás váratlan eredményeket okozhat, ha a **GROUP BY** mező nem a bemeneti adatfolyam partíciókulcsa. Például az előző lekérdezés **TollBoothId mezője** nem az **Input1**partíciókulcsa. Az eredmény az, hogy a TollBooth #1 adatai több partícióra is terjeszthetők.
+Ha egy lekérdezés particionálva van, a bemeneti események feldolgozása és összesítése külön partíciós csoportokba történik. A rendszer az egyes csoportok kimeneti eseményeit is létrehozta. A particionálás bizonyos váratlan eredményekhez vezethet, ha a **Group By** mező nem a bemeneti adatfolyamban található partíciós kulcs. Például az előző lekérdezés **TollBoothId** mezője nem a **Input1**partíciós kulcsa. Ennek eredményeképpen a TollBooth #1 származó adatok több partíción is elterjedhetnek.
 
-Az **Input1** partíciók mindegyikét a Stream Analytics külön dolgozza fel. Ennek eredményeképpen az ugyanazon a tumbling ablakban az azonos fizetőkapu hoz létre több rekordot az autószámról. Ha a bemeneti partíciókulcs nem módosítható, ez a probléma megoldható egy nem partíciós lépéssel a partíciók közötti értékek összesítéséhez, mint például a következő példában:
+Az egyes **Input1** -partíciókat stream Analytics külön dolgozza fel a rendszer. Ennek eredményeképpen a rendszer az azonos Tollbooth tartozó számlálók több rekordját is létrehozhatja ugyanabban a kiesési ablakban. Ha a bemeneti partíció kulcsa nem módosítható, ez a probléma kijavítható úgy, hogy egy nem partíciós lépést ad hozzá a partíciók között, az alábbi példában látható módon:
 
 ```SQL
     WITH Step1 AS (
@@ -239,48 +239,48 @@ Az **Input1** partíciók mindegyikét a Stream Analytics külön dolgozza fel. 
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-Ez a lekérdezés 24 SUs-ra méretezhető.
+Ezt a lekérdezést 24 SUs-re lehet méretezni.
 
 > [!NOTE]
-> Ha két adatfolyamhoz csatlakozik, győződjön meg arról, hogy az adatfolyamokat az illesztések létrehozásához használt oszlop partíciókulcsa particionálja. Győződjön meg arról is, hogy mindkét adatfolyamban azonos számú partícióvan.
+> Ha két streamet csatlakoztat, győződjön meg arról, hogy a streamek particionálva lesznek az illesztések létrehozásához használt oszlop partíciós kulcsával. Győződjön meg arról is, hogy azonos számú partíció található mindkét adatfolyamban.
 > 
 > 
 
-## <a name="achieving-higher-throughputs-at-scale"></a>Nagyobb átmenők elérése nagy léptékben
+## <a name="achieving-higher-throughputs-at-scale"></a>Nagyobb átviteli sebességek elérése a skálán
 
-Egy [kínosan párhuzamos](#embarrassingly-parallel-jobs) feladat szükséges, de nem elegendő a nagyobb átviteli nagy léptékű fenntartani. Minden tárolórendszer és a hozzá tartozó Stream Analytics-kimenet a lehető legjobb írási átviteli teljesítmény elérésének módját is eltérően adja meg. Mint minden skálázási forgatókönyv, vannak olyan kihívások, amelyek a megfelelő konfigurációk használatával megoldhatók. Ez a szakasz néhány gyakori kimenet konfigurációját ismerteti, és mintákat biztosít az 1K, 5K és 10K események másodpercenkénti lenyelési sebességének fenntartásához.
+Egy [zavaróan párhuzamos](#embarrassingly-parallel-jobs) feladatokra van szükség, de nem elegendő a nagyobb átviteli sebesség fenntartásához a skálán. Minden tárolási rendszer és a hozzá tartozó Stream Analytics kimenete a lehető legjobb írási sebesség eléréséhez szükséges változatokkal rendelkezik. A méretezési forgatókönyvekhez hasonlóan bizonyos kihívások is megoldhatók a megfelelő konfigurációk használatával. Ez a szakasz néhány gyakori kimenet konfigurációját ismerteti, és mintákat biztosít a másodpercenkénti 1K, 5K és 10K események betöltési arányának fenntartásához.
 
-A következő megfigyelések egy Stream Analytics-feladatot használnak állapotnélküli (áteresztő) lekérdezéssel, egy alapvető JavaScript UDF-et, amely az Event Hub, az Azure SQL DB vagy a Cosmos DB rendszerbe ír.
+A következő megjegyzések egy állapot nélküli (átadó) lekérdezéssel rendelkező Stream Analytics feladatot használnak, amely egy alapszintű JavaScript UDF, amely az Event hub, az Azure SQL DB vagy a Cosmos DBba ír.
 
 #### <a name="event-hub"></a>Eseményközpont
 
-|Benyelési arány (események másodpercenként) | Streamelési egységek | Kimeneti erőforrások  |
+|Betöltési arány (események másodpercenként) | Folyamatos átviteli egységek | Kimeneti erőforrások  |
 |--------|---------|---------|
 | 1E     |    1    |  2 TU   |
 | 5E     |    6    |  6 TU   |
 | 10 E    |    12   |  10 TU  |
 
-Az [Event Hub-megoldás](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) lineárisan skálázható a streamelési egységek (SU) és az átviteli teljesítmény tekintetében, így ez a leghatékonyabb és legeredményesebb módja az adatok elemzésének és a Stream Analytics-ből való streamelésének. A feladatok akár 192 SU-ra is méretezhetők, ami nagyjából 200 MB/s vagy napi 19 billió esemény feldolgozását jelenti.
+Az [Event hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) -megoldás lineárisan méretezhető a folyamatos átviteli egységek (su) és az átviteli sebesség tekintetében, így a leghatékonyabb és a teljesítménybeli módszer a stream Analyticsból származó adatok elemzéséhez és továbbításához. A feladatok akár 192 SU-re is felméretezhetők, ami nagyjából 200 MB/s vagy napi 19 000 000 000 000 eseményt dolgoz fel.
 
 #### <a name="azure-sql"></a>Azure SQL
-|Benyelési arány (események másodpercenként) | Streamelési egységek | Kimeneti erőforrások  |
+|Betöltési arány (események másodpercenként) | Folyamatos átviteli egységek | Kimeneti erőforrások  |
 |---------|------|-------|
 |    1E   |   3  |  S3   |
 |    5E   |   18 |  P4   |
 |    10 E  |   36 |  P6   |
 
-[Az Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) támogatja a párhuzamos írást, amelyet particionálás öröklésnek neveznek, de alapértelmezés szerint nincs engedélyezve. Azonban a particionálás öröklésének engedélyezése egy teljesen párhuzamos lekérdezéssel együtt nem feltétlenül elegendő a nagyobb átviteli eredmények eléréséhez. Az SQL-írási átviteli műveletek jelentősen függnek az SQL Azure-adatbázis konfigurációjától és a táblasémától. Az [SQL output teljesítmény](./stream-analytics-sql-output-perf.md) cikk részletesebben ismerteti a paramétereket, amelyek maximalizálják az írási átviteli. Amint azt az [Azure Stream Analytics kimenet](./stream-analytics-sql-output-perf.md#azure-stream-analytics) az Azure SQL Database cikkében, ez a megoldás nem skálázható lineárisan, mint egy teljesen párhuzamos folyamat túl 8 partíciót, és szükség lehet újraparticionálás előtt SQL kimenet (lásd [INTO).](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) Prémium szintű sk-ek szükségesek a magas I/O-díjak fenntartásához, valamint a naplóbiztonsági mentések néhány percenként történő terhelésének fenntartásához.
+Az [Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) támogatja az írást párhuzamosan, a particionálás öröklése néven, de alapértelmezés szerint nincs engedélyezve. A particionálás öröklésének engedélyezése azonban egy teljesen párhuzamos lekérdezéssel együtt nem elegendő a nagyobb átviteli sebesség eléréséhez. Az SQL írási átviteli sebessége jelentősen függ a SQL Azure adatbázis-konfigurációtól és a tábla sémájától. Az [SQL kimeneti teljesítményről](./stream-analytics-sql-output-perf.md) szóló cikk részletesebben ismerteti azokat a paramétereket, amelyek segítségével maximalizálható az írási sebesség. Ahogy az a [Azure stream Analytics kimenet Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) cikkben látható, ez a megoldás nem méretezhető lineárisan, mint a 8 partíción túli teljes párhuzamos feldolgozási folyamat, és szükség lehet az SQL-kimenet (lásd: [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) újraparticionálására. A prémium SKU-kat a magas i/o-díjak fenntartásához, valamint a naplók biztonsági mentésével járó terheléshez kell elkészíteni néhány percenként.
 
 #### <a name="cosmos-db"></a>Cosmos DB
-|Benyelési arány (események másodpercenként) | Streamelési egységek | Kimeneti erőforrások  |
+|Betöltési arány (események másodpercenként) | Folyamatos átviteli egységek | Kimeneti erőforrások  |
 |-------|-------|---------|
-|  1E   |  3    | 20K RU  |
-|  5E   |  24   | 60k RU  |
-|  10 E  |  48   | 120ezer RU |
+|  1E   |  3    | 20000 RU  |
+|  5E   |  24   | 60K RU  |
+|  10 E  |  48   | 120K RU |
 
-A Stream Analytics [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) kimenete frissítve lett, hogy az [1.2-es kompatibilitási szinten](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)natív integrációt használjon. Az 1.2-es kompatibilitási szint jelentősen nagyobb átviteli értéket tesz lehetővé, és csökkenti a vt.-fogyasztást az 1.1-hez képest, ami az új feladatok alapértelmezett kompatibilitási szintje. A megoldás a /deviceId partíciós CosmosDB-tárolókat használja, és a megoldás többi része azonos módon van konfigurálva.
+A Stream Analytics [Cosmos db](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) kimenete frissítve lett, hogy natív integrációt használjon a [1,2 kompatibilitási szint](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)alatt. A 1,2-es kompatibilitási szint jelentősen nagyobb átviteli sebességet tesz lehetővé, és csökkenti a 1,1-hoz képesti RU-felhasználást, amely az új feladatok alapértelmezett kompatibilitási szintje. A megoldás a/deviceId particionált CosmosDB-tárolókat használ, a többi megoldás pedig azonos módon van konfigurálva.
 
-Minden [streamelés scale azure-minták](https://github.com/Azure-Samples/streaming-at-scale) egy Event Hub adagolással a tesztügyfelek bemeneti szimulálásával. Minden bemeneti esemény egy 1 KB-os JSON-dokumentum, amely a konfigurált betöltési sebességet könnyen átviteli sebességre (1 MB/s, 5MB/s és 10MB/s) fordítja le. Az események a következő JSON-adatokat küldő IoT-eszközt szimulálják (rövidített formában) legfeljebb 1K-eszközökön:
+Az [Azure skálán lévő összes adatfolyam-továbbítási](https://github.com/Azure-Samples/streaming-at-scale) szolgáltatás a tesztelési ügyfeleket bemenetként szimuláló betöltéssel egy Event hub-t használ. Minden bemeneti esemény egy 1KB JSON-dokumentum, amely a konfigurált betöltési sebességet az átviteli sebesség (1MB/s, 5MB/s és 10 MB/s) alapján könnyedén lefordítja. Az események szimulálnak egy IoT-eszközt, amely a következő JSON-adatokat (rövidített formában) küldi el akár 1K-eszközökre:
 
 ```
 {
@@ -297,18 +297,18 @@ Minden [streamelés scale azure-minták](https://github.com/Azure-Samples/stream
 ```
 
 > [!NOTE]
-> A konfigurációk változhatnak a megoldásban használt különböző összetevők miatt. A pontosabb becslésérdekében testre szabhatja a mintákat a forgatókönyvnek megfelelően.
+> A konfigurációk a megoldásban használt különböző összetevők miatt változhatnak. A pontosabb becslés érdekében szabja testre a mintákat úgy, hogy illeszkedjenek a forgatókönyvhöz.
 
-### <a name="identifying-bottlenecks"></a>A szűk keresztmetszetek azonosítása
+### <a name="identifying-bottlenecks"></a>Szűk keresztmetszetek azonosítása
 
-Az Azure Stream Analytics-feladat Metrikák ablaktáblája segítségével azonosíthatja a folyamat szűk keresztmetszeteit. Tekintse át **a bemeneti/kimeneti eseményeket** az átviteli sebességhez és a ["Vízjel késleltetése"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy **az eldugott eseményeket,** és nézze meg, hogy a feladat lépést tart-e a bemeneti sebességgel. Az Event Hub-metrikák esetében keresse **meg a szabályozott kérelmeket,** és ennek megfelelően módosítsa a küszöbértékegységeket. A Cosmos DB metrikák, tekintse át **a maximális felhasznált RU/s partíciókulcs-tartományban** az átviteli sebesség, győződjön meg arról, hogy a partíciókulcs-tartományok egyenletesen fogyasztva. Az Azure SQL DB esetén figyelheti **a Log IO** és a CPU **monitorát.**
+A Azure Stream Analytics feladatok mérőszámok paneljén azonosíthatja a folyamat szűk keresztmetszeteit. Tekintse át a **bemeneti/kimeneti eseményeket** az átviteli sebesség és a "küszöbértékek [késleltetése"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy a **várakozó események** között, és ellenőrizze, hogy a feladatban szerepel-e a bemeneti sebesség. Az Event hub mérőszámai esetében keresse meg a **szabályozott kérelmeket** , és ennek megfelelően módosítsa a küszöbértékeket. Cosmos DB metrikák esetében tekintse át a **maximálisan felhasznált ru/s** értékeit az átviteli sebesség alatt, hogy a partíciós kulcsok tartománya egységesen legyen felhasználva. Az Azure SQL DB esetében figyelje a **log IO** és a **CPU**-t.
 
 ## <a name="get-help"></a>Segítségkérés
 
-További segítségért próbálja ki [az Azure Stream Analytics fórumunkat.](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
-* [Bevezetés az Azure Stream Analytics szolgáltatásba](stream-analytics-introduction.md)
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
