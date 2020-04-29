@@ -9,12 +9,12 @@ ms.date: 07/17/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 79dfa1d0cd4286b430d6c6e23ecb0335f37bed3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68403242"
 ---
 <!-- This contains intro text for the "Get an IoT hub connection string" section in the iot-hub-lang-lang-device-management-get-started.md files-->
 
-Ebben a cikkben hozzon létre egy háttérszolgáltatás, amely meghívja a közvetlen metódust egy eszközön. Közvetlen metódus meghívásához egy eszközön az IoT Hubon keresztül, a szolgáltatásnak szüksége van a **szolgáltatás csatlakozási engedélyére.** Alapértelmezés szerint minden IoT Hub jön létre egy megosztott hozzáférési szabályzat nevű **szolgáltatás,** amely megadja ezt az engedélyt.
+Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely egy eszközön közvetlen metódust hív meg. Ha IoT Hub használatával szeretne közvetlen metódust meghívni egy eszközön, a szolgáltatásnak szüksége van a **szolgáltatás kapcsolódási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.

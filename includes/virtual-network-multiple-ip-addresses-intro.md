@@ -9,15 +9,15 @@ ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
 ms.openlocfilehash: c63160d7514dccb0d2a9c2879db6d3fd614e1a96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646388"
 ---
 > [!div class="op_single_selector"]
-> * [Azure-portál](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
-> * [Powershell](../articles/virtual-network/virtual-network-multiple-ip-addresses-powershell.md)
+> * [Azure Portal](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
+> * [PowerShell](../articles/virtual-network/virtual-network-multiple-ip-addresses-powershell.md)
 > * [Azure CLI](../articles/virtual-network/virtual-network-multiple-ip-addresses-cli.md)
 >
 
@@ -29,4 +29,4 @@ Egy Azure virtuális géphez (VM) egy vagy több hálózati adapter (NIC) van cs
 
 A virtuális géphez csatolt minden hálózati adapter egy vagy több hozzárendelt IP-konfigurációval rendelkezik. Az egyes konfigurációkhoz egy statikus vagy dinamikus magánhálózati IP-cím van hozzárendelve. Az egyes konfigurációkhoz egy nyilvános IP-cím erőforrás is hozzárendelhető. Egy nyilvános IP-cím erőforráshoz egy dinamikus vagy statikus nyilvános IP-cím van hozzárendelve. Ha többet szeretne megtudni az Azure-ban használt IP-címekről, olvassa el az [IP-címek az Azure-ban](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) című cikket. 
 
-A hálózati adapterhez korlátozva van, hogy hány privát IP-cím rendelhető hozzá. Az Azure-előfizetésben használható nyilvános IP-címek közül is korlátozva van. A részletekért tekintse meg az [Azure korlátairól](../articles/azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szóló cikket.
+A hálózati adapterekhez legfeljebb egy magánhálózati IP-cím rendelhető. Az Azure-előfizetésekben használható nyilvános IP-címek száma is korlátozott. A részletekért tekintse meg az [Azure korlátairól](../articles/azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szóló cikket.
