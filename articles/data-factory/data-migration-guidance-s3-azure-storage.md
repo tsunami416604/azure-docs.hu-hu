@@ -1,6 +1,6 @@
 ---
 title: Adatok migrálása az Amazon S3-ból az Azure Storage-ba
-description: Az Azure Data Factory segítségével áttelepítheti az adatokat az Amazon S3-ról az Azure Storage-ba.
+description: Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -12,148 +12,148 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416413"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Adatok áttelepítése az Amazon S3-ról az Azure Storage-ba az Azure Data Factory használatával 
+# <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Az Azure Data Factory egy teljesítményalapú, robusztus és költséghatékony mechanizmust biztosít az Amazon S3-ról az Azure Blob Storage-ra vagy az Azure Data Lake Storage Gen2-re nagy méretekben történő áttelepítéséhez.  Ez a cikk a következő információkat tartalmazza az adatmérnökök és -fejlesztők számára: 
+A Azure Data Factory az Amazon S3-ból az Azure-ba való áttelepítéshez nagy teljesítményű, robusztus és költséghatékony mechanizmust biztosít az Azure Blob Storage vagy a Azure Data Lake Storage Gen2 számára.  Ez a cikk a következő információkat tartalmazza az adatmérnökök és a fejlesztők számára: 
 
 > [!div class="checklist"]
 > * Teljesítmény 
 > * Rugalmasság másolása
 > * Hálózati biztonság
-> * Magas szintű megoldásarchitektúra 
-> * A végrehajtás sal kapcsolatos bevált gyakorlatai  
+> * Magas szintű megoldás-architektúra 
+> * Gyakorlati tanácsok a megvalósításhoz  
 
 ## <a name="performance"></a>Teljesítmény
 
-Az ADF kiszolgáló nélküli architektúrát kínál, amely lehetővé teszi a párhuzamosságokat különböző szinteken, ami lehetővé teszi a fejlesztők számára, hogy csővezetékeket építsenek a hálózati sávszélesség, valamint a tárolási IOPS és sávszélesség teljes kihasználásához a környezet ben lévő adatátviteli sebesség maximalizálása érdekében. 
+Az ADF olyan kiszolgáló nélküli architektúrát kínál, amely különböző szinteken teszi lehetővé a párhuzamosságot, ami lehetővé teszi a fejlesztők számára, hogy teljes mértékben kihasználják a hálózati sávszélességet, valamint a tárolási IOPS és sávszélességet, hogy maximalizálják az adatátviteli sebességet a környezet számára. 
 
-Az ügyfelek sikeresen áttelepítettek több száz millió fájlt tartalmazó petabájtnyi adatot az Amazon S3-ról az Azure Blob Storage-ba, amelynek folyamatos átviteli sebessége 2 GBps és újabb. 
+Az ügyfelek sikeresen áttelepítették az Amazon S3-ból az Azure-ba Blob Storage több száz millió fájlból álló petabájt, és a folyamatos átviteli sebesség 2 GB/s. 
 
 ![teljesítmény](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
-A fenti képen látható, hogyan lehet elérni a nagy adatmozgási sebességet a különböző szintű párhuzamosság:
+A fenti képen azt mutatjuk be, hogyan érheti el a nagy adatátviteli sebességet a különböző párhuzamossági szinteken:
  
-- Egyetlen másolási tevékenység kihasználhatja a méretezhető számítási erőforrások előnyeit: az Azure-integrációs futásidő használatakor kiszolgáló nélküli módon [legfeljebb 256 DNS-t](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) adhat meg minden egyes másolási tevékenységhez; saját üzemeltetésű integrációs futásidő használataesetén manuálisan skálázhatja a gépet, vagy horizontális felskálázhatja több gépre[(legfeljebb 4 csomópontra),](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)és egyetlen másolási tevékenység particionálja a fájlkészletét az összes csomóponton. 
-- Egyetlen másolási tevékenység beolvasása az adattárból, és több szál használatával ír az adattárba. 
-- Az ADF vezérlőfolyamat több másolási tevékenységet is indíthat párhuzamosan, például a [Minden ciklushoz parancsot](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)használva. 
+- Egy másolási tevékenység kihasználhatja a skálázható számítási erőforrások előnyeit: Azure Integration Runtime használata esetén [akár 256 DIUs-t](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) is megadhat az egyes másolási tevékenységekhez kiszolgáló nélküli módon. saját üzemeltetésű Integration Runtime használatakor manuálisan is méretezheti a gépet, vagy akár több gépre is kibővíthető ([legfeljebb 4 csomópont](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), és egyetlen másolási tevékenység fogja particionálni az összes csomóponton beállított fájlt. 
+- Egy másolási tevékenység több szál használatával olvas be és ír az adattárba. 
+- Az ADF-vezérlési folyamat egyszerre több másolási tevékenységet is elindíthat, például az [egyes hurkok esetében](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
 ## <a name="resilience"></a>Rugalmasság
 
-Egyetlen másolási tevékenység futtatása, ADF beépített újrapróbálkozási mechanizmus, így képes kezelni egy bizonyos szintű átmeneti hibák az adattárakban vagy az alapul szolgáló hálózatban. 
+Egy másolási tevékenység futtatásakor az ADF beépített újrapróbálkozási mechanizmussal rendelkezik, így képes az adattárakban vagy a mögöttes hálózaton lévő átmeneti hibák bizonyos szintjének kezelésére. 
 
-Az S3-ról a Blobba és az S3-ról az ADLS Gen2-re történő bináris másolás során az ADF automatikusan ellenőrzőpontokat hajt végre.  Ha egy másolási tevékenység futtatása sikertelen vagy időlett el, egy későbbi újrapróbálkozáskor a másolat az utolsó hibapontról folytatódik, nem pedig az elejétől kezdve. 
+Ha az S3-ról Blobra, illetve S3-ról ADLS Gen2re történő bináris másolást végez, az ADF automatikusan végrehajtja az ellenőrzőpontokat.  Ha egy másolási tevékenység futtatása meghiúsult vagy időtúllépés miatt megszakadt, egy későbbi újrapróbálkozáskor a másolás az utolsó meghibásodási ponttól folytatódik az elejétől kezdődően. 
 
 ## <a name="network-security"></a>Hálózati biztonság 
 
-Alapértelmezés szerint az ADF az Amazon S3-ról az Azure Blob Storage-ba vagy az Azure Data Lake Storage Gen2-be továbbítja az adatokat a HTTPS protokollon keresztüli titkosított kapcsolat használatával.  A HTTPS adattitkosítást biztosít az átvitel során, és megakadályozza a lehallgatást és a köztes támadásokat. 
+Alapértelmezés szerint az ADF az Amazon S3-ből az Azure-ba Blob Storage vagy a HTTPS protokollon keresztüli titkosított kapcsolaton keresztül Azure Data Lake Storage Gen2.  A HTTPS adattitkosítást biztosít az átvitel során, és megakadályozza a lehallgatást és a belső támadásokat. 
 
-Ha nem szeretné, hogy az adatok átvitele nyilvános interneten keresztül kerülhessen továbbításra, nagyobb biztonságot érhet el, ha az AWS Direct Connect és az Azure Express Route közötti privát társviszony-létesítési kapcsolaton keresztül továbbítja az adatokat.  Tekintse meg az alábbi megoldásarchitektúrát arról, hogyan érhető el ez. 
+Ha nem szeretné, hogy az adatátvitel nyilvános interneten keresztül történjen, magasabb szintű biztonságot érhet el, ha az AWS Direct-kapcsolat és az Azure Express Route közötti privát kapcsolaton keresztül továbbítja az adatátvitelt.  Tekintse át az alábbi megoldás-architektúrát, hogy ez hogyan érhető el. 
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
-Adatok áttelepítése nyilvános interneten keresztül:
+Az adatáttelepítés nyilvános interneten keresztül:
 
-![megoldás-architektúra-nyilvános hálózat](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![megoldás – architektúra – nyilvános hálózat](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
-- Ebben az architektúrában az adatok biztonságosátvitele https-en keresztül nyilvános interneten keresztül történik. 
-- Mind a forrás Amazon S3, valamint a cél Az Azure Blob Storage vagy az Azure Data Lake Storage Gen2 vannak konfigurálva, hogy a forgalom az összes hálózati IP-címek.  Tekintse meg az alábbi második architektúrát arról, hogyan korlátozhatja a hálózati hozzáférést egy adott IP-tartományra. 
-- Könnyedén felskálázhatja a lóerő takarásban, hogy teljes mértékben kihasználja a hálózati és tárolási sávszélességet, így a lehető legjobb teljesítményt érheti el a környezetében. 
-- Ezzel az architektúrával mind a kezdeti pillanatkép-áttelepítés, mind a különbözeti adatok áttelepítése elérhető. 
+- Ebben az architektúrában a rendszer biztonságosan továbbítja az adatátvitelt a HTTPS-en keresztül a nyilvános interneten keresztül. 
+- Mind a forrás Amazon S3, mind a cél Azure Blob Storage vagy Azure Data Lake Storage Gen2 úgy vannak konfigurálva, hogy engedélyezzék az összes hálózati IP-címről érkező forgalmat.  Tekintse meg az alábbi második architektúrát, amely azt ismerteti, hogyan korlátozható a hálózati hozzáférés adott IP-tartományhoz. 
+- A hálózat és a tároló sávszélességének teljes kihasználásához könnyedén méretezheti a lóerős mennyiségét, hogy a lehető legjobb átviteli sebességet kapja a környezet számára. 
+- Ez az architektúra a kezdeti pillanatkép-áttelepítés és a különbözeti adatok áttelepítését is megvalósíthatja. 
 
-Adatok áttelepítése privát hivatkozáson keresztül: 
+Az adatáttelepítés privát kapcsolaton keresztül: 
 
-![megoldás-architektúra-magán-hálózat](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![megoldás-architektúra-private-Network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
-- Ebben az architektúrában az adatok áttelepítése az AWS Direct Connect és az Azure Express Route közötti privát társviszony-létesítési kapcsolaton keresztül történik, így az adatok soha nem haladnak át nyilvános interneten.  Az AWS VPC és az Azure Virtual network használatát igényli. 
-- Az architektúra eléréséhez telepítenie kell az ADF saját üzemeltetésű integrációs futásidejét egy Windows virtuális gépen az Azure virtuális hálózaton belül.  Manuálisan skálázhatja fel a saját üzemeltetésű rendszerépítő virtuális gépeket, vagy horizontális felskálázhatja több virtuális gépre (legfeljebb 4 csomópontra) a hálózat és a tárolási IOPS/sávszélesség teljes kihasználásához. 
-- Ha elfogadható az adatátvitel HTTPS-en keresztül, de le szeretné zárni az S3 forráshoz való hálózati hozzáférést egy adott IP-tartományba, az AWS VPC eltávolításával és a privát kapcsolat HTTPS-re való lecserélésével elfogadhatja ennek az architektúrának egy változatát.  Érdemes megtartani az Azure Virtuális és saját üzemeltetésű ir az Azure virtuális gépen, így egy statikus nyilvánosan irányítható IP engedélyezési célra. 
-- Ezzel az architektúrával mind a kezdeti pillanatkép-adatok áttelepítése, mind a különbözeti adatok áttelepítése elérhető. 
+- Ebben az architektúrában az adatáttelepítés az AWS Direct csatlakozás és az Azure Express Route közötti privát kapcsolaton keresztül történik, így az adatforgalom soha nem halad át a nyilvános interneten.  Az AWS VPC és az Azure Virtual Network használatát igényli. 
+- Az architektúra eléréséhez telepítenie kell az ADF saját üzemeltetésű integrációs modulját egy Windows rendszerű virtuális GÉPRE az Azure Virtual Networkben.  A saját üzemeltetésű IR virtuális gépeket manuálisan, vagy akár több virtuális gépre is kibővítheti (legfeljebb 4 csomópont), így teljes mértékben kihasználhatja a hálózat és a tárhely IOPS/sávszélességét. 
+- Ha a HTTPS-kapcsolaton keresztüli adatátvitelre elfogadható, de a forrás S3 hálózati hozzáférését egy adott IP-tartományhoz kívánja zárolni, akkor az AWS VPC eltávolításával és a privát hivatkozás HTTPS-vel való cseréjével elfogadhatja az architektúra egy változatát.  Szeretné megőrizni az Azure virtuális és saját üzemeltetésű integrációs modulját az Azure-beli virtuális GÉPEN, így statikus, nyilvánosan irányítható IP-címmel is rendelkezhet az engedélyezési célra. 
+- Ez az architektúra a kezdeti pillanatkép-adatáttelepítés és a Delta-adatáttelepítés során is elérhető. 
 
-## <a name="implementation-best-practices"></a>A végrehajtás sal kapcsolatos bevált gyakorlatai 
+## <a name="implementation-best-practices"></a>Gyakorlati tanácsok a megvalósításhoz 
 
-### <a name="authentication-and-credential-management"></a>Hitelesítés- és hitelesítő adatok kezelése 
+### <a name="authentication-and-credential-management"></a>Hitelesítés és hitelesítőadat-kezelés 
 
-- Az Amazon S3-fiókhitelesítéshez [az IAM-fiók hozzáférési kulcsát kell használnia.](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties) 
-- Az Azure Blob Storage-hoz való csatlakozáshoz több hitelesítési típus is támogatott.  Felügyelt [identitások használata az Azure-erőforrások](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) erősen ajánlott: épül egy automatikusan felügyelt ADF-azonosítás az Azure AD, lehetővé teszi, hogy konfigurálja a folyamatok hitelesítő adatok megadása nélkül a csatolt szolgáltatás definíciójában.  Másik lehetőségként hitelesítheti magát az Azure Blob Storage [szolgáltatásegyszerű,](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication) [a megosztott hozzáférés-aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy [a tárfiók kulcshasználatával.](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication) 
-- Több hitelesítési típus is támogatott az Azure Data Lake Storage Gen2-hez való csatlakozáshoz.  Felügyelt [identitások használata az Azure-erőforrások](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) használata erősen ajánlott, bár [egyszerű szolgáltatás vagy](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) [tárfiók kulcs](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) is használható. 
-- Ha nem használja a felügyelt identitások az Azure-erőforrások, [a hitelesítő adatok tárolása az Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) erősen ajánlott, hogy megkönnyítse a kulcsok központi kezelése és elforgatása nélkül ADF-csatolt szolgáltatások módosítása nélkül.  Ez a [CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)egyik legjobb gyakorlata is. 
+- Ha az Amazon S3-fiókkal szeretne hitelesítést végezni, [hozzáférési kulcsot kell használnia a iam-fiókhoz](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties). 
+- Több hitelesítési típus is támogatott az Azure Blob Storagehoz való kapcsolódáshoz.  A [felügyelt identitások Azure-erőforrásokhoz való](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) használata erősen ajánlott: az Azure ad-ben automatikusan felügyelt ADF azonosítására épülő megoldás lehetővé teszi a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadnia a társított szolgáltatás definíciójában.  Azt is megteheti, hogy az Azure-Blob Storage az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), a [közös hozzáférési aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)segítségével hitelesíti. 
+- Több hitelesítési típus is támogatott a Azure Data Lake Storage Gen2hoz való kapcsolódáshoz.  Az [Azure-erőforrásokhoz felügyelt identitások](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) használata kifejezetten ajánlott, bár az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) is használható. 
+- Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, [a hitelesítő adatok tárolása Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) erősen ajánlott, hogy könnyebb legyen a kulcsok központi kezelése és elforgatása az ADF-hez társított szolgáltatások módosítása nélkül.  Ez a [CI/CD-vel kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)egyike is. 
 
 ### <a name="initial-snapshot-data-migration"></a>Kezdeti pillanatkép-adatok áttelepítése 
 
-Az adatpartíció különösen 100 TB-nál több adat áttelepítésekor ajánlott.  Az adatok particionálásához használja ki az "előtag" beállítást az Amazon S3 mappáinak és fájljainak név szerinti szűréséhez, majd minden ADF másolási feladat egyszerre egy partíciót másolhat.  A jobb átviteli rendszer érdekében egyidejűleg több ADF-másolási feladatot is futtathat. 
+Az adatpartíció különösen akkor ajánlott, ha több mint 100 TB-os adatmennyiséget telepít át.  Az adatok particionálásához használja az "előtag" beállítást a mappák és fájlok szűréséhez az Amazon S3-ban név szerint, majd az egyes ADF-másolási feladatok egyszerre csak egy partíciót másolhatnak.  Több ADF-másolási feladatot is futtathat párhuzamosan a jobb teljesítmény érdekében. 
 
-Ha a másolási feladatok bármelyike hálózati vagy adattár-átmeneti probléma miatt sikertelen, újrafuttathatja a sikertelen másolási feladatot, hogy újra betöltse az adott partíciót az AWS S3-ból.  Az összes többi más partíciót betöltő másolási feladatoknem érinti. 
+Ha a másolási feladatok egyike a hálózat vagy az adattár átmeneti hibája miatt meghiúsul, újra lefuttathatja a sikertelen másolási feladatot, hogy az adott partíciót újra újra lehessen tölteni az AWS S3-ból.  Az egyéb partíciókat betöltő többi másolási feladatot nem érinti a rendszer. 
 
-### <a name="delta-data-migration"></a>Különbözeti adatok áttelepítése 
+### <a name="delta-data-migration"></a>Különbözeti adatáttelepítés 
 
-Az Új vagy módosított fájlok Azonosításának legeredményesebb módja az AWS S3-ból az időparticionált elnevezési konvenció használata – amikor az AWS S3-ban lévő adatokat időszelet-információkkal particionálták a fájl vagy mappa nevében (például /yyyy/mm/dd/file.csv), akkor a folyamat könnyen azonosíthatja, hogy mely fájlokat/mappákat kell fokozatosan másolni. 
+Az AWS S3-ból származó új vagy módosított fájlok azonosításának legtöbbje az idő-particionált elnevezési konvenció használatával történik. Ha az AWS S3-ban lévő adatok időszelet-információval vannak particionálva a fájl-vagy mappanév (például/yyyy/MM/DD/file.csv) számára, akkor a folyamat könnyen azonosítható, hogy mely fájlokat és mappákat másolja a növekményes másolásra. 
 
-Másik lehetőségként, Ha az adatok AWS S3 nem idő particionált, ADF képes azonosítani az új vagy módosított fájlokat a LastModifiedDate.   Úgy működik, hogy az ADF átkutatja az összes fájlt az AWS S3-ból, és csak az új és frissített fájlt másolja, amelynek utolsó módosított időbélyege nagyobb, mint egy bizonyos érték.  Ne feledje, hogy ha nagy számú fájl van az S3-ban, a kezdeti fájlellenőrzés hosszú időt vehet igénybe, függetlenül attól, hogy hány fájl felel meg a szűrőfeltételnek.  Ebben az esetben javasoljuk, hogy először particionálja az adatokat, ugyanazt az "előtagot" a kezdeti pillanatkép-áttelepítéshez, hogy a fájlvizsgálat párhuzamosan történjen.  
+Azt is megteheti, hogy ha az AWS S3-ban lévő adatai particionálva vannak, az ADF képes azonosítani az új vagy módosított fájlokat a LastModifiedDate.   Úgy működik, hogy az ADF megvizsgálja az AWS S3 összes fájlját, és csak azt az új és frissített fájlt másolja, amelynek utolsó módosításának időbélyeg-értéke nagyobb, mint egy bizonyos érték.  Vegye figyelembe, hogy ha az S3-ban nagy számú fájl található, akkor a kezdeti fájl vizsgálata hosszú időt is igénybe vehet, függetlenül attól, hogy hány fájl felel meg a szűrési feltételnek.  Ebben az esetben azt javasoljuk, hogy először particionálja az adatokhoz ugyanazt az "előtag" beállítást használja a pillanatkép-áttelepítés kezdeti áttelepítéséhez, hogy a fájl vizsgálata párhuzamosan történjen.  
 
-### <a name="for-scenarios-that-require-self-hosted-integration-runtime-on-azure-vm"></a>Az Azure VM-en saját üzemeltetésű integrációs futásidejű forgatókönyvek esetén 
+### <a name="for-scenarios-that-require-self-hosted-integration-runtime-on-azure-vm"></a>A saját üzemeltetésű integrációs modult igénylő forgatókönyvek az Azure-beli virtuális gépen 
 
-Akár privát kapcsolaton keresztül telepíti át az adatokat, akár az Amazon S3 tűzfalon szeretne engedélyezni egy adott IP-tartományt, telepítenie kell az Azure Windows VM-re üzemeltetett integrációs futásidőt. 
+Akár privát kapcsolaton keresztül végzi az adatáttelepítést, akár adott IP-címtartományt szeretne engedélyezni az Amazon S3 tűzfalon, telepítenie kell a saját üzemeltetésű integrációs modult az Azure Windows rendszerű virtuális gépen. 
 
-- Az egyes Azure virtuális gépekhez javasolt konfigurációt 32 vCPU és 128 GB memóriával Standard_D32s_v3.  Az adatáttelepítés során folyamatosan figyelheti a PROCESSZOR- és memóriakihasználtságot, és ellenőrizheti, hogy a jobb teljesítmény érdekében tovább kell-e bővítenie a virtuális gép méretét, vagy a költségek csökkentése érdekében csökkentenie kell a virtuális gép méretét. 
-- Horizontális felskálázhatja akár 4 virtuálisgép-csomópontok egyetlen saját üzemeltetésű infravörös társításával.  Egy önkiszolgáló infravörös rendszeren futó egyetlen másolási feladat automatikusan particionálja a fájlkészletet, és az összes virtuálisgép-csomópontot használja a fájlok párhuzamos másolásához.  A magas rendelkezésre állás érdekében ajánlott 2 virtuális gép csomópontokkal kezdeni, hogy elkerülje az egyetlen meghibásodási pontot az adatáttelepítés során. 
+- Az egyes Azure-beli virtuális gépekhez való kezdéshez javasolt konfiguráció a 32 vCPU és a 128 GB memóriával Standard_D32s_v3.  Az adatáttelepítés során továbbra is megtarthatja a processzor és a memória kihasználtságának figyelését, és megtekintheti, hogy a virtuális gép nagyobb teljesítményhez vagy a virtuális gép méretezéséhez szükséges-e a költség megtakarítás érdekében. 
+- Akár 4 virtuálisgép-csomópont társításával is felskálázást hajthat végre, egyetlen saját üzemeltetésű IR-vel.  A saját üzemeltetésű integrációs modulon futó egyetlen másolási feladatot a rendszer automatikusan particionálja, és minden virtuálisgép-csomóponton kihasználja a fájlok párhuzamos másolását.  A magas rendelkezésre állás érdekében ajánlott 2 virtuálisgép-csomóponttal kezdeni, hogy elkerülje az adatáttelepítés során előforduló meghibásodási pontokat. 
 
 ### <a name="rate-limiting"></a>Sebességkorlátozás 
 
-Ajánlott eljárásként hajtson végre egy teljesítmény POC egy reprezentatív minta adatkészlettel, így meghatározhatja a megfelelő partícióméretet. 
+Ajánlott eljárásként a teljesítmény POC-t egy reprezentatív minta adatkészlettel kell elvégeznie, hogy meg tudja határozni a partíciók megfelelő méretét. 
 
-Kezdje egyetlen partícióval és egyetlen másolási tevékenységgel az alapértelmezett DIU-beállítással.  Fokozatosan növelje a DIU-beállítást, amíg el nem éri az adattárak sávszélesség-korlátját vagy az IOPS/sávszélesség-korlátot, vagy el nem éri az egyetlen másolási tevékenységen engedélyezett maximális 256 DIU értéket. 
+Kezdje egyetlen partícióval és egyetlen másolási tevékenységgel az alapértelmezett DIU beállítással.  Fokozatosan növelje a DIU beállítást, amíg el nem éri az adattárolók hálózati vagy IOPS vagy sávszélességi korlátját, vagy elérte a maximális 256 DIU egyetlen másolási tevékenységnél. 
 
 Ezután fokozatosan növelje az egyidejű másolási tevékenységek számát, amíg el nem éri a környezet korlátait. 
 
-Ha az ADF másolási tevékenység által jelentett szabályozási hibákat észlel, csökkentse az ADF egyidejűségi vagy DIU-beállítását, vagy fontolja meg a hálózati és adattárak sávszélesség-/IOPS-korlátjának növelését.  
+Ha az ADF másolási tevékenység által jelentett szabályozási hibákba ütközik, csökkentse a párhuzamosságot vagy az DIU-beállítást az ADF-ben, vagy növelje a hálózat és az adattárak sávszélesség-/IOPS-korlátait.  
 
 ### <a name="estimating-price"></a>Az ár becslése 
 
 > [!NOTE]
-> Ez egy hipotetikus árképzési példa.  A tényleges díjszabás a környezet tényleges átviteli átmenő eszköztől függ.
+> Ez egy feltételezett árképzési példa.  A tényleges díjszabás a környezet tényleges átviteli sebességével függ.
 
-Vegye figyelembe a következő, az S3-ból az Azure Blob Storage-ba történő áttelepítéshez kialakított folyamatot: 
+Vegye figyelembe a következő, az S3-ból az Blob Storage Azure-ba való Migrálás során felépített folyamatot: 
 
-![árképzési folyamat](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![díjszabás – folyamat](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
-Tegyük fel, hogy a következőket tegyük fel: 
+Tegyük fel a következőket: 
 
-- A teljes adatmennyiség 2 PB 
-- Adatok áttelepítése HTTPS-en keresztül az első megoldásarchitektúrával 
-- 2 PB van osztva 1 K partíciók és minden példány mozog egy partíciót 
-- Minden példány DIU=256 értékkel van konfigurálva, és 1 GBps átviteli sebességet ér el 
-- ForEach egyidejűség van beállítva 2 és összesített átviteli sebesség 2 GBps 
-- Összesen 292 órát vesz igénybe az áttelepítés 
+- Az adatmennyiség összesen 2 PB 
+- Adatáttelepítés HTTPS protokollon keresztül az első megoldási architektúrával 
+- 2 a PB 1 K partícióra van osztva, és mindegyik másolat egy partíciót helyez át 
+- Minden másolat DIU = 256 értékkel van konfigurálva, és 1 GB/s átviteli sebességet érhet el. 
+- A ForEach Egyidejűség értéke 2, az összesített átviteli sebesség pedig 2 GB/s 
+- Összesen 292 órát vesz igénybe az áttelepítés befejezése 
 
-Itt van a becsült ár alapján a fenti feltételezések: 
+A fenti feltételezések alapján a becsült ár a következő: 
 
-![árképzési tábla](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![díjszabás – tábla](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>További referenciák 
-- [Amazon Simple Storage Service csatlakozó](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
+- [Amazon Simple Storage szolgáltatás-összekötő](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
 - [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Tevékenységteljesítmény-hangolási útmutató másolása](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Saját üzemeltetésű integrációs futásidő létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Self-hosted integrációs futásidejű HA és méretezhetőség](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
+- [Másolási tevékenység teljesítményének hangolási útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [Saját üzemeltetésű Integration Runtime létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+- [Saját üzemeltetésű integrációs modul, HA és méretezhetőség](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [Az adatáthelyezés biztonsági szempontjai](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 - [Hitelesítő adatok tárolása az Azure Key Vaultban](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Fájl másolása növekményesen az idő particionált fájlneve alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
+- [A fájl növekményes másolása az idő particionált fájljának neve alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [Új és módosított fájlok másolása a LastModifiedDate alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
-- [ADF árképzési lap](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+- [Az ADF díjszabási lapja](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="template"></a>Sablon
 
-Itt van a [sablon](solution-template-migration-s3-azure.md) kezdeni, hogy migrálja petabájtnyi adatok, amelyek több száz millió fájlt amazon S3 az Azure Data Lake Storage Gen2.
+Itt látható az a [sablon](solution-template-migration-s3-azure.md) , amellyel az Amazon S3-ból Azure Data Lake Storage Gen2 több száz millió fájlból álló petabájt migrálhat.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Fájlok másolása több tárolóból az Azure Data Factory segítségével](solution-template-copy-files-multiple-containers.md)
+- [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

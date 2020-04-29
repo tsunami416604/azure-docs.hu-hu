@@ -1,5 +1,5 @@
 ---
-title: A key vault bérlői azonosítójának módosítása előfizetés áthelyezése után – Azure Key Vault | Microsoft dokumentumok
+title: A Key Vault-bérlő AZONOSÍTÓjának módosítása az előfizetés áthelyezése után – Azure Key Vault | Microsoft Docs
 description: A cikkből megtudhatja, hogyan módosíthatja a kulcstartó bérlőazonosítóját, miután egy előfizetést másik bérlőhöz helyezett át.
 services: key-vault
 author: amitbapat
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
 ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422892"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
@@ -24,13 +24,13 @@ ms.locfileid: "81422892"
 
 Amikor új kulcstartót hoz létre egy előfizetésben, az automatikusan annak az előfizetésnek az alapértelmezett Azure Active Directory-bérlőazonosítójához kötődik. A hozzáférési szabályzatok minden bejegyzése is ehhez a bérlőazonosítóhoz kapcsolódik. 
 
-Ha az Azure-előfizetést az A bérlőről a B bérlőre helyezi át, a meglévő kulcstartók nem érhetők el a b bérlőben lévő egyszerű (felhasználók és alkalmazások) számára. A probléma megoldásához a következőket kell a következőkre tudnia:
+Ha áthelyezi az Azure-előfizetését az A bérlőtől a B bérlőhöz, a meglévő kulcstartók elérhetetlenné válnak a B bérlőhöz tartozó rendszerbiztonsági tag (felhasználók és alkalmazások) számára. A probléma megoldásához a következőket kell tennie:
 
-* Módosítsa a bérlői azonosítót társított összes meglévő kulcstartók a B bérlői előfizetésben.
+* Módosítsa az előfizetésben lévő összes meglévő kulcstartóhoz tartozó bérlői azonosítót a B bérlőre.
 * Törölnie kell minden meglévő hozzáférésiszabályzat-bejegyzést.
-* Új hozzáférési házirend-bejegyzések hozzáadása a B bérlőhöz.
+* Adja hozzá a B bérlőhöz társított új hozzáférési szabályzatok bejegyzéseit.
 
-Ha például a "myvault" key vault egy előfizetésben, amely át került az A bérlőről a B bérlőre, az Azure PowerShell segítségével módosíthatja a bérlőazonosítót, és eltávolíthatja a régi hozzáférési szabályzatokat.
+Ha például egy "myvault" kulcstartó található egy olyan előfizetésben, amely az A bérlőtől a B bérlőhöz lett áthelyezve, akkor a Azure PowerShell használatával módosíthatja a bérlői azonosítót, és eltávolíthatja a régi hozzáférési házirendeket.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -43,7 +43,7 @@ $vault.Properties.AccessPolicies = @()                                     # Acc
 Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Modifies the key vault's properties.
 ````
 
-Vagy használhatja az Azure CLI.Or you can use the Azure CLI.
+Vagy használhatja az Azure CLI-t is.
 
 ```azurecli
 az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
@@ -52,12 +52,12 @@ az keyvault update -n myvault --remove Properties.accessPolicies           # Rem
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
 
-Most, hogy a tároló a megfelelő bérlőazonosítóval és a régi hozzáférési szabályzat-bejegyzésekkel van társítva, állítson be új hozzáférési szabályzat-bejegyzéseket az Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) parancsmaggal vagy az Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal.
+Most, hogy a tároló hozzá van rendelve a megfelelő bérlői AZONOSÍTÓhoz és a régi hozzáférési szabályzatok bejegyzéseihez, az új hozzáférési szabályzat bejegyzéseit a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) parancsmaggal vagy az Azure CLI az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal teheti meg.
 
-Ha felügyelt identitást használ az Azure-erőforrásokhoz, frissítenie kell azt az új Azure AD-bérlőre is. A felügyelt identitásokkal kapcsolatos további információkért [lásd: Key Vault-hitelesítés felügyelt identitással.](managed-identity.md)
+Ha felügyelt identitást használ az Azure-erőforrásokhoz, azt is frissítenie kell az új Azure AD-bérlőre. A felügyelt identitásokkal kapcsolatos további információkért lásd: [Key Vault hitelesítés biztosítása felügyelt identitással](managed-identity.md).
 
 
-Ha MSI-t használ, az MSI-identitást is frissítenie kell, mivel a régi identitás már nem lesz a megfelelő AAD-bérlőben.
+Ha az MSI-t használja, frissítenie kell az MSI-identitást is, mivel a régi identitás többé nem lesz a megfelelő HRE-bérlőben.
 
 ## <a name="next-steps"></a>További lépések
 

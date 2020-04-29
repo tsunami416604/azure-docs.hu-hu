@@ -1,6 +1,6 @@
 ---
-title: Titkos alkalmazásbeállítások biztonságos mentése egy webalkalmazáshoz – Azure Key Vault | Microsoft dokumentumok
-description: Titkos alkalmazásbeállítások, például Azure-hitelesítő adatok vagy harmadik féltől származó API-kulcsok biztonságos mentése ASP.NET alapvető Key Vault-szolgáltató, felhasználói titok vagy a .NET 4.7.1 konfigurációkészítők használatával
+title: A titkos alkalmazás beállításainak biztonságos mentése webalkalmazásokhoz – Azure Key Vault | Microsoft Docs
+description: Titkos alkalmazások beállításainak, például az Azure-beli hitelesítő adatoknak vagy harmadik féltől származó API-kulcsok biztonságos mentése a ASP.NET Core Key Vault Provider, a felhasználói titok vagy a .NET 4.7.1 konfigurációs építők használatával
 services: visualstudio
 author: cawaMS
 manager: paulyuk
@@ -11,58 +11,58 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429758"
 ---
-# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazásbeállítások biztonságos mentése egy webalkalmazáshoz
+# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazás-beállítások biztonságos mentése webalkalmazásokhoz
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk ismerteti, hogyan biztonságosan mentheti a titkos alkalmazáskonfigurációs beállításokat az Azure-alkalmazásokhoz.
+Ez a cikk azt ismerteti, hogyan lehet biztonságosan menteni a titkos alkalmazások konfigurációs beállításait az Azure-alkalmazásokhoz.
 
-Hagyományosan minden webalkalmazás-konfigurációs beállítás a konfigurációs fájlokba , például a Web.config fájlba kerül. Ez a gyakorlat a titkos beállítások, például a felhőbeli hitelesítő adatok nyilvános forrásvezérlő rendszerek, például a GitHub ellenőrzése. Eközben nehéz lehet követni a biztonság ajánlott eljárás, mert a terhelés szükséges a forráskód módosítása és a fejlesztési beállítások újrakonfigurálása.
+A webalkalmazások konfigurációs beállításait hagyományosan a web. config fájlba menti a rendszer. Ezzel a gyakorlattal ellenőrizheti a titkos beállításokat, például a Felhőbeli hitelesítő adatokat a nyilvános forráskódú vezérlő rendszerekhez, például a GitHubhoz. Eközben nehéz lehet követni a legjobb biztonsági gyakorlatot, mert a forráskód módosításához és a fejlesztési beállítások újrakonfigurálásához szükséges terhek is megváltozhatnak.
 
-Annak érdekében, hogy a fejlesztési folyamat biztonságos legyen, eszközkészítő és keretkódtárak jönnek létre az alkalmazástitkos beállítások minimális vagy semmilyen forráskód-módosítással történő biztonságos mentéséhez.
+Annak érdekében, hogy a fejlesztési folyamat biztonságos legyen, az eszközök és a keretrendszer kódtárai úgy jönnek létre, hogy az alkalmazás titkos beállításait biztonságosan, minimális vagy forráskód-módosítás nélkül mentse.
 
-## <a name="aspnet-and-net-core-applications"></a>ASP.NET és .NET Core alkalmazások
+## <a name="aspnet-and-net-core-applications"></a>ASP.NET és .NET Core-alkalmazások
 
-### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Titkos beállítások mentése a forrásvezérlő mappán kívüli Felhasználótitkos tárolóban
-Ha csinálsz egy gyors prototípus, vagy ha nincs internet-hozzáféréssel, kezdje mozog a titkos beállításokat kívül forrásvezérlő mappát User Secret tárolni. A User Secret tároló a felhasználói profilozó mappájába mentett fájl, így a rendszer nem ad be titkos kulcsokat a forrásvezérlőbe. Az alábbi ábra bemutatja, hogyan működik [a felhasználói titkos kulcsot.](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio)
+### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Titkos beállítások mentése a felhasználói titkos tárolóban, amely a verziókövetés mappáján kívül esik
+Ha gyors prototípust végez, vagy nem rendelkezik internet-hozzáféréssel, kezdje a titkos beállítások áthelyezését a verziókövetés mappáján kívül a felhasználói titkos tárolóba. A felhasználói titkos tároló egy, a User Profiler mappában mentett fájl, ezért a rendszer nem ellenőrzi, hogy nincsenek-e bejelentkezve a forrás vezérlőelembe. Az alábbi ábra bemutatja, hogyan működik a [felhasználói titok](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) .
 
-![A User Secret a titkos beállításokat a forrásellenőrzésen kívül tartja](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
+![A felhasználói titok a forrás vezérlőelemen kívül tartja a titkos beállításokat](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
-Ha a .NET core konzolalkalmazást futtatja, a Key Vault segítségével mentse biztonságosan a titkos kulcsot.
+Ha a .NET Core Console alkalmazást futtatja, akkor a Key Vault használatával biztonságosan mentheti a titkot.
 
-### <a name="save-secret-settings-in-azure-key-vault"></a>Titkos beállítások mentése az Azure Key Vaultban
-Ha projektet fejleszt, és a forráskódot biztonságosan kell megosztania, használja az [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)ot.
+### <a name="save-secret-settings-in-azure-key-vault"></a>Titkos beállítások mentése a Azure Key Vaultban
+Ha projektet fejleszt, és a forráskódot biztonságosan kell megosztania, használja a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-1. Hozzon létre egy Key Vault az Azure-előfizetésben. Töltse ki az összes szükséges mezőt a felhasználói felületen, és kattintson a panel alján található *Létrehozás* gombra.
+1. Hozzon létre egy Key Vault az Azure-előfizetésében. Töltse ki az összes kötelező mezőt a felhasználói felületen, és kattintson a panel alján található *Létrehozás* gombra.
 
     ![Azure Key Vault létrehozása](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Hozzáférést biztosíthat Önnek és a csapattagjainak a Key Vaulthoz. Ha nagy csapat, létrehozhat egy [Azure Active Directory-csoportot,](../../active-directory/active-directory-groups-create-azure-portal.md) és adja hozzá, hogy a biztonsági csoport hozzáférést a Key Vault. A *Titkos engedélyek* legördülő listában jelölje be a *Bekerülési* és *lista jelölőnégyzetet* a *Titkos kezelési műveletek csoportban.*
-Ha már létrehozta a webalkalmazást, adjon hozzáférést a webalkalmazásnak a Key Vaulthoz, hogy a titkos konfiguráció tanak a titkos konfiguráció tvagy a fájlokban való tárolása nélkül is hozzáférhessen a key vaulthoz. Keresse meg a webalkalmazást a neve alapján, és adja hozzá ugyanúgy, ahogy a felhasználóknak hozzáférést biztosít.
+2. A Key Vaulthoz való hozzáférés biztosítása Önnek és a csoport tagjainak. Ha nagyméretű csapattal rendelkezik, létrehozhat egy [Azure Active Directory csoportot](../../active-directory/active-directory-groups-create-azure-portal.md) , és hozzáadhatja a biztonsági csoportnak a Key Vaulthoz való hozzáférését. A *titkos engedélyek* legördülő menüben tekintse meg a *beolvasás* és *Listázás* a *titkos felügyeleti műveletekben*részt.
+Ha már létrehozta a webalkalmazást, adja meg a webalkalmazáshoz való hozzáférést a Key Vault számára, hogy az alkalmazás beállításaiban és fájljaiban ne tárolja titkos konfigurációját. Keresse meg a webalkalmazás nevét, és adja hozzá a felhasználók hozzáférésének megadásához.
 
-    ![Kulcstartó hozzáférési házirendjének hozzáadása](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
+    ![Key Vault hozzáférési szabályzat hozzáadása](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Adja hozzá a titkos kulcsot a Key Vault az Azure Portalon. Egymásba ágyazott konfigurációs beállítások esetén cserélje le a ':'-t a '--' helyett, hogy a Key Vault titkos neve érvényes. A ':' nem lehet key vault-titok nevében.
+3. Adja hozzá a titkot, hogy Key Vault a Azure Portal. A beágyazott konfigurációs beállításoknál cserélje le a ":" és a "--" kifejezésre, hogy a Key Vault titkos név érvényes legyen. a (z) ":" nem szerepelhet Key Vault titkos kód nevében.
 
-    ![Kulcstartó titkos kulcsának hozzáadása](../media/vs-secure-secret-appsettings/add-keyvault-secret.png)
+    ![Key Vault titkos kód hozzáadása](../media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE]
-    > A Visual Studio 2017 V15.6 előtt az Azure Services hitelesítési bővítményének telepítését javasoljuk a Visual Studio számára. De ez elavult most, mint a funkció integrálva van a Visual Studio . Ezért ha a Visual Studio 2017 egy régebbi verzióját használja, javasoljuk, hogy legalább a VS 2017 15.6-os vagy újabb verziójára frissítsen, hogy ezt a funkciót natív módon használhassa, és a Visual Studio bejelentkezési identitásának használatával hozzáférjen a key-vaulthoz.
+    > A Visual Studio 2017 V 15,6 előtt javasoljuk, hogy telepítse a Visual studióhoz készült Azure Services-alapú hitelesítési bővítményt. Ez azonban már elavult, mivel a funkció integrálva van a Visual Studióban. Ezért ha a Visual Studio 2017 egy régebbi verzióját használja, javasoljuk, hogy frissítsen legalább VS 2017 15,6-ra vagy akár úgy, hogy ezt a funkciót natív módon használhassa, és a Key-vaultot a Visual Studio bejelentkezési identitásának használatával is elérheti.
     >
 
-4. Adja hozzá a következő NuGet csomagokat a projekthez:
+4. Adja hozzá a következő NuGet-csomagokat a projekthez:
 
     ```
     Microsoft.Azure.KeyVault
     Microsoft.Azure.Services.AppAuthentication
     Microsoft.Extensions.Configuration.AzureKeyVault
     ```
-5. Adja hozzá a következő kódot Program.cs fájlhoz:
+5. Adja hozzá a következő kódot a Program.cs fájlhoz:
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -87,26 +87,26 @@ Ha már létrehozta a webalkalmazást, adjon hozzáférést a webalkalmazásnak 
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Adja hozzá a Key Vault URL-címét a launchsettings.json fájlhoz. A környezeti változó *KEYVAULT_ENDPOINT nevét* a 6.
+6. Adja hozzá a Key Vault URL-címét a launchsettings. JSON fájlhoz. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kódban van meghatározva.
 
-    ![A Key Vault URL-címének hozzáadása projektkörnyezeti változóként](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
+    ![Key Vault URL-cím hozzáadása projekt környezeti változóként](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. Indítsa el a projekt hibakeresését. Sikeresen kell futnia.
+7. A projekt hibakeresésének megkezdése. A futtatásának sikeresnek kell lennie.
 
-## <a name="aspnet-and-net-applications"></a>ASP.NET és .NET alkalmazások
+## <a name="aspnet-and-net-applications"></a>ASP.NET és .NET-alkalmazások
 
-A .NET 4.7.1 támogatja a Key Vault és a Titkos konfiguráció készítőit, így a titkos kulcsok kódmódosítás nélkül áthelyezhetők a forrásvezérlő mappán kívülre.
-A folytatáshoz [töltse le a .NET 4.7.1-es verziót,](https://www.microsoft.com/download/details.aspx?id=56115) és telepítse át az alkalmazást, ha az a .NET keretrendszer régebbi verzióját használja.
+A .NET 4.7.1 támogatja a Key Vault és a titkos konfigurációs építőket, amelyek biztosítják, hogy a titkokat a verziókövetés mappán kívül is át lehessen helyezni a kód módosítása nélkül.
+A folytatáshoz [töltse le a .net-4.7.1](https://www.microsoft.com/download/details.aspx?id=56115) , és telepítse át az alkalmazást, ha a .NET-keretrendszer régebbi verzióját használja.
 
-### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Titkos beállítások mentése a forrásvezérlő mappán kívüli titkos fájlba
-Ha egy gyors prototípust ír, és nem szeretne Azure-erőforrásokat kiépíteni, folytassa ezzel a lehetőséggel.
+### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Titkos beállítások mentése a forrás-ellenőrzési mappán kívüli titkos fájlba
+Ha gyors prototípust ír, és nem szeretné kiépíteni az Azure-erőforrásokat, folytassa ezt a lehetőséget.
 
-1. Telepítse a következő NuGet csomagot a projektbe
+1. Telepítse a következő NuGet-csomagot a projektbe
     ```
     Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
-2. Hozzon létre egy hasonló fájlt, amely hasonlít a következőhöz. Mentse a projektmappán kívüli helyre.
+2. Hozzon létre egy, a következőhöz hasonló fájlt. Mentse azt a projekt mappáján kívüli helyre.
 
     ```xml
     <root>
@@ -117,7 +117,7 @@ Ha egy gyors prototípust ír, és nem szeretne Azure-erőforrásokat kiépíten
     </root>
     ```
 
-3. Adja meg, hogy a titkos fájl konfigurációszerkesztő legyen a Web.config fájlban. Helyezze ezt a szakaszt *az appBeállítások* szakasz elé.
+3. Adja meg a titkos fájlt, hogy a Configuration Builder legyen a web. config fájlban. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el.
 
     ```xml
     <configBuilders>
@@ -129,7 +129,7 @@ Ha egy gyors prototípust ír, és nem szeretne Azure-erőforrásokat kiépíten
     </configBuilders>
     ```
 
-4. Adja meg appSettings szakasz a titkos konfiguráció szerkesztője. Győződjön meg arról, hogy van egy bejegyzés a titkos beállításhoz, amelynek üres értéke van.
+4. A appSettings szakasz megadásával a titkos konfigurációs szerkesztőt használja. Ellenőrizze, hogy van-e bejegyzés a titkos beállításhoz egy dummy értékkel.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -141,17 +141,17 @@ Ha egy gyors prototípust ír, és nem szeretne Azure-erőforrásokat kiépíten
         </appSettings>
     ```
 
-5. Hibakeresés az alkalmazás. Sikeresen kell futnia.
+5. Az alkalmazás hibakeresése. A futtatásának sikeresnek kell lennie.
 
-### <a name="save-secret-settings-in-an-azure-key-vault"></a>Titkos beállítások mentése Azure Key Vaultban
-Kövesse ASP.NET alapszakasz utasításait a projekt key vault-konfigurálásához.
+### <a name="save-secret-settings-in-an-azure-key-vault"></a>Titkos beállítások mentése egy Azure Key Vaultban
+A projekthez tartozó Key Vault konfigurálásához kövesse az ASP.NET Core szakasz utasításait.
 
-1. Telepítse a következő NuGet csomagot a projektbe
+1. Telepítse a következő NuGet-csomagot a projektbe
    ```
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Kulcstartó konfigurációszerkesztőjének definiálása a Web.config fájlban. Helyezze ezt a szakaszt *az appBeállítások* szakasz elé. Cserélje *le a VaultName-t* a Key Vault nevére, ha a Key Vault nyilvános Azure-ban van, vagy teljes URI-t, ha A Sovereign cloud használata.
+2. Adja meg Key Vault Configuration Builder a web. config fájlban. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el. Cserélje le a *vaultName* nevet a Key Vault nevére, ha a Key Vault nyilvános Azure-ban van, vagy ha szuverén felhőt használ, a teljes URI-t használja.
 
     ```xml
     <configSections>
@@ -163,7 +163,7 @@ Kövesse ASP.NET alapszakasz utasításait a projekt key vault-konfigurálásáh
         </builders>
     </configBuilders>
     ```
-3. Adja meg appSettings szakasz a Key Vault konfigurációszerkesztője. Győződjön meg arról, hogy a titkos beállításhoz van-e próbaértékkel rendelkező bejegyzés.
+3. A appSettings szakasz megadásával a Key Vault Configuration Builder használatával. Győződjön meg arról, hogy a titkos beállításnak van-e bejegyzése egy dummy értékkel.
 
    ```xml
    <appSettings configBuilders="AzureKeyVault">
@@ -175,4 +175,4 @@ Kövesse ASP.NET alapszakasz utasításait a projekt key vault-konfigurálásáh
    </appSettings>
    ```
 
-4. Indítsa el a projekt hibakeresését. Sikeresen kell futnia.
+4. A projekt hibakeresésének megkezdése. A futtatásának sikeresnek kell lennie.

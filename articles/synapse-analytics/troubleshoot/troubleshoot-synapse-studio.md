@@ -1,6 +1,6 @@
 ---
-title: Az Azure Synapse Studio hibáinak elhárítása (előzetes verzió)
-description: Az Azure Synapse Studio hibáinak elhárítása
+title: Az Azure szinapszis Studio (előzetes verzió) hibáinak megoldása
+description: Az Azure szinapszis Studio hibáinak megoldása
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -8,95 +8,95 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: ede38317762e5aac5562c9bb3494713c3edacc69
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431318"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Az Azure Synapse Studio (előzetes verzió) hibaelhárítása
+# <a name="azure-synapse-studio-preview-troubleshooting"></a>Az Azure szinapszis Studio (előzetes verzió) hibaelhárítása
 
-Ez a hibaelhárítási útmutató arról nyújt tájékoztatást, hogy milyen információkat kell megadni a hálózati kapcsolódási problémákra vonatkozó támogatási jegy megnyitásakor. A megfelelő információkkal gyorsabban megoldhatjuk a problémát.
+Ez a hibaelhárítási útmutató útmutatást nyújt arról, hogy milyen információkat kell megadnia a hálózati kapcsolattal kapcsolatos támogatási jegyek megnyitásakor. A megfelelő információkkal a probléma gyorsabban oldható fel.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL igény szerinti (előzetes verziójú) szolgáltatás kapcsolódási problémája
+## <a name="sql-on-demand-preview-service-connectivity-issue"></a>Az SQL on-demand (előzetes verzió) szolgáltatás kapcsolódási problémája
 
 ### <a name="symptom-1"></a>1. tünet
 
-Az "SQL on-demand" beállítás szürkén jelenik meg a "Csatlakozás" legördülő menüben.
+Az "SQL on-demand" beállítás szürkén jelenik meg a "kapcsolódás a legördülő listához".
 
-![tünet1](media/troubleshooting-synapse-studio/symptom1v2.png)
+![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>2. tünet
 
-Ha a lekérdezést "SQL on-demand" állapotban futtatja, a "Nem sikerült kapcsolatot létesíteni a kiszolgálóval" hibaüzenet jelenik meg.
+A lekérdezés "SQL on-demand" használatával történő futtatásával "nem sikerült kapcsolatot létesíteni a kiszolgálóval" hibaüzenet jelenik meg.
 
-![tünet2](media/troubleshooting-synapse-studio/symptom2.png)
+![symptom2](media/troubleshooting-synapse-studio/symptom2.png)
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
 > [!NOTE] 
->    A következő hibaelhárítási lépések a Chromium Edge és a Chrome esetében találhatók. Használhat más böngészőket (például a FireFox-ot) ugyanazzal a hibaelhárítási lépésekkel, de a "Fejlesztői eszköz" ablak elrendezése eltérhet a TSG képernyőképeitől. Ha lehetséges, NE használja a klasszikus Edge-et a hibaelhárításhoz, mert bizonyos helyzetekben pontatlan információkat mutathat.
+>    A következő hibaelhárítási lépések a Chromium Edge és a Chrome. Használhat más böngészőket is (például a FireFoxot) ugyanazzal a hibaelhárítási lépéssel, de a "fejlesztői eszköz" ablak eltérő elrendezéssel rendelkezhet az ebben a HKT-ben található képernyőképből. Ha lehetséges, ne használja a klasszikus Edge-t a hibaelhárításhoz, mivel bizonyos helyzetekben pontatlan információkat jeleníthet meg.
 
-Nyissa meg a "Diagnosztikai információ" panelt, és válassza a "Diagnosztika letöltése" gombot. A hibajelentéshez letöltött információk megtartása. Ehelyett másolja a "Session ID"-t, és csatolja a támogatási jegy megnyitásakor.
+Nyissa meg a "diagnosztikai adatok" panelt, és válassza a "diagnosztika letöltése" gombot. Tartsa meg a letöltött adatokat a hibajelentéshez. Ehelyett másolja a "munkamenet-azonosítót", és csatolja a támogatási jegy megnyitásakor.
 
-![diagnosztikai-info](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
+![diagnosztikai adatok](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
 
-A hibaelhárítás megkezdéséhez próbálkozzon újra az Azure Synapse Studio-ban végrehajtott művelettel.
+A hibaelhárítás megkezdéséhez próbálja megismételni az Azure szinapszis Studióban végrehajtott műveletet.
 
-- Az 1- es tünet nél válassza az "Adatbázis használata" legördülő menü "Adatbázis használata" legördülő menüjének jobb oldalán található "Frissítés" gombot az "SQL script" lapon, és ellenőrizze, hogy látható-e az "SQL on-demand".
-- A 2-es tünet esetén próbálja meg újra futtatni a lekérdezést, és nézze meg, hogy sikeresen végrehajtja-e.
+- Az 1. tünet esetében válassza az "adatbázis használata" legördülő menüből jobbra található "frissítés" gombot az "SQL-parancsfájl" lapon, és ellenőrizze, hogy látható-e az "SQL on-demand".
+- A 2. tünet esetében próbálkozzon újra a lekérdezés futtatásával, és ellenőrizze, hogy sikeresen végrehajtja-e a műveletet.
 
-Ha a probléma továbbra is fennáll, nyomja le az F12 billentyűt a böngészőben a "Fejlesztői eszközök" (Fejlesztői eszközök) megnyitásához.
+Ha a probléma továbbra is fennáll, nyomja meg az F12 billentyűt a böngészőben a "Fejlesztői eszközök" (DevTools) megnyitásához.
 
-A "Fejlesztői eszközök" ablakban váltson a "Hálózat" panelre. Szükség esetén válassza a "Hálózat" panel eszköztárának "Törlés" gombját.
-Győződjön meg arról, hogy a "Hálózat" panelen a "Gyorsítótár letiltása" jelölőnégyzet be van jelölve.
+A "Fejlesztői eszközök" ablakban váltson a "hálózat" panelre. Ha szükséges, válassza a "hálózat" panel eszköztárának "Törlés" gombját.
+Győződjön meg arról, hogy a "hálózati" panelen a "gyorsítótár letiltása" lehetőség be van jelölve.
 
-Próbálkozzon újra az Azure Synapse Studio-ban végrehajtott művelettel. Az új elemek a "Fejlesztői eszközök" "Hálózat" listájában jelenhetnek meg. Jegyezze fel a jelenlegi rendszeridőt, hogy a támogatási jegyben megadhassa.
+Próbálja megismételni az Azure szinapszis Studióban végrehajtott műveletet. Előfordulhat, hogy a "Fejlesztői eszközök" hálózat listájában látható új elemek jelennek meg. Jegyezze fel a jelenlegi rendszeridőt, hogy a támogatási jegyet megadja.
 
-![hálózati panel](media/troubleshooting-synapse-studio/network-panel.png)
+![hálózat – panel](media/troubleshooting-synapse-studio/network-panel.png)
 
-Keresse meg azt az elemet, amelynek URL-oszlopa megegyezik a következő mintával:
+Keresse meg azt az elemet, amelynek URL-oszlopa megfelel a következő mintának:
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Ahol *[A]* a munkaterület neve, és a "-ondemand" lehet "-sqlod", és ahol *[B]* lehet adatbázisnév, például "master". Legtöbb esetben legtöbb elem nek kell lennie, amelyek URL-értéke azonos, de eltérő metódusértékek; OPCIÓK és postai úton. Ellenőrizze, hogy ez a két elem "200" vagy "20x" betűvel rendelkezik-e az állapotoszlop alatt, ahol az "x" lehet egy számjegy.
+Ahol [*A*] a munkaterület neve, és a "-OnDemand" lehet "-sqlod", és A [*B*] nevet kell megadni, például: "Master". Legfeljebb két elemnek kell lennie ugyanazzal az URL-címmel, de eltérő metódusi értékekkel; BEÁLLÍTÁSOK és POST. Győződjön meg arról, hogy a két elem "200" vagy "20x" értékkel rendelkezik az Állapot oszlopban, ahol az "x" egyetlen számjegy lehet.
 
-Ha bármelyikük nek van valami más, mint a "20x", és:
+Ha egyikük sem a "20x", sem a következőhöz tartozik:
 
-- az állapot a "(failed)" szöveggel kezdődik, vagy szélesíti az "Állapot" oszlopot, vagy vigye az egérmutatót az állapotszöveg fölé a teljes szöveg megtekintéséhez. Adja meg a szöveget és/vagy a képernyőképet a támogatási jegy megnyitásakor.
+- az állapot "(sikertelen)" értékkel kezdődik, vagy szélesítse az "állapot" oszlopot, vagy vigye a mutatót az állapot szövege fölé a teljes szöveg megjelenítéséhez. A támogatási jegy megnyitásakor adja meg a szöveget és/vagy a képernyőképet.
 
-    ![állapot-szöveg](media/troubleshooting-synapse-studio/status-text.png)
+    ![állapot – szöveg](media/troubleshooting-synapse-studio/status-text.png)
 
-    - Ha látja ERR_NAME_NOT_RESOLVED, és 10 percen belül létrehozta a munkaterületet, várjon 10 percet, majd próbálja meg újra látni, hogy a probléma továbbra is fennáll-e.
-    - Ha ERR_INTERNET_DISCONNECTED vagy ERR_NETWORK_CHANGED lát, az azt jelezheti, hogy a számítógép hálózati kapcsolata problémákat jelez. Ellenőrizze a hálózati kapcsolatot, majd próbálkozzon újra a művelettel.
-    - Ha ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR vagy más " SSL"-t tartalmazó hibakódot lát, az azt jelezheti, hogy a helyi SSL-konfiguráció problémákat okoz, vagy a hálózati rendszergazda letiltotta az SQL igény szerinti kiszolgálóhoz való hozzáférést. Nyisson meg egy támogatási jegyet, és csatolja a hibakódot a leíráshoz.
-    - Ha ERR_NETWORK_ACCESS_DENIED lát, előfordulhat, hogy a rendszergazdával kell megbeszélnie, hogy a helyi tűzfalházirend letiltotta-e a hozzáférést a *.database.windows.net tartományhoz vagy az 1443-as távoli porthoz.
-    - Szükség esetén próbálja meg azonnal ugyanazt a műveletet egy másik gépen és/vagy hálózati környezetben, hogy kizárja a hálózati konfigurációs problémát a számítógépen.
+    - Ha megjelenik a ERR_NAME_NOT_RESOLVED, és 10 percen belül létrehozta a munkaterületet, várjon 10 percet, és próbálkozzon újra annak megtekintésével, hogy a probléma továbbra is fennáll-e.
+    - Ha ERR_INTERNET_DISCONNECTED vagy ERR_NETWORK_CHANGED jelenik meg, akkor előfordulhat, hogy a számítógép hálózati kapcsolataival kapcsolatban problémák léptek fel. Győződjön meg a hálózati kapcsolatban, majd próbálja megismételni a műveletet.
+    - Ha ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR vagy más, SSL-t tartalmazó hibakód jelenik meg, akkor előfordulhat, hogy a helyi SSL-konfiguráció problémákba ütközik, vagy a hálózati rendszergazda letiltotta az SQL igény szerinti kiszolgálójának elérését. Nyisson meg egy támogatási jegyet, és csatolja a hibakódot a leírásban.
+    - Ha ERR_NETWORK_ACCESS_DENIED jelenik meg, előfordulhat, hogy a rendszergazdával kell ellenőriznie, hogy a helyi tűzfal házirendje letiltotta-e a (z) *. database.windows.net tartomány elérését vagy a 1443-es távoli portot.
+    - Ha szeretné, próbálja megismételni ugyanezt a műveletet egy másik gépen és/vagy hálózati környezetben, hogy kizárja a hálózati konfigurációs problémát a SZÁMÍTÓGÉPén.
 
-- állapot "40x", "50x", vagy más számok, válassza ki a tétel (ek) a részletek megtekintéséhez. Az elem részleteinek jobbra kell látnia. Keresse meg a "Válaszfejléc" szakaszt; ezután ellenőrizze, hogy létezik-e "hozzáférés-vezérlés-engedélyező-eredete" nevű elem. Ha igen, ellenőrizze, hogy rendelkezik-e az alábbi értékek egyikével:
+- az állapot "40x", "50x" vagy más szám, és az elem (ek) ra kattintva megtekintheti a részleteket. Az elem részleteinek a jobb oldalon kell megjelennie. A "válasz fejléc" szakasz megkeresése Ezután győződjön meg arról, hogy létezik-e "hozzáférés-vezérlés – engedélyezés – forrás" nevű elem. Ha igen, ellenőrizze, hogy az alábbi értékek valamelyike szerepel-e:
 
-    - `*`(egycsillag)
-    - https://web.azuresynapse.net/(vagy más érték, amellyel a böngésző címsorában lévő szöveg kezdődik)
+    - `*`(egy csillag)
+    - https://web.azuresynapse.net/(vagy más olyan érték, amelyet a böngésző címsorának szövege a következővel kezdődik:)
 
-Ha a válaszfejléc a fenti értékek egyikét tartalmazza, az azt jelenti, hogy már össze kellett volna gyűjtenünk a hibaadatokat. Szükség esetén megnyithat egy támogatási jegyet, és szükség esetén csatolhatja az elem részleteiről készült képernyőképet.
+Ha a válasz fejléce a fenti értékek egyikét tartalmazza, akkor azt jelenti, hogy már összegyűjtöttük a hiba adatait. Ha szükséges, megnyithatja a támogatási jegyet, és opcionálisan csatolhatja az elem részleteinek képernyőképét is.
 
-Ha nem látja a fejlécet, vagy a fejlécnem rendelkezik a fent felsorolt értékek egyikével, csatoljon egy képernyőképet az elem részleteiről a jegy megnyitásakor.
+Ha nem látja a fejlécet, vagy a fejléc nem rendelkezik a fent felsorolt értékek egyikével, csatolja az elem részleteit a jegy megnyitásakor.
 
-![cikk részletei](media/troubleshooting-synapse-studio/item-details.png)
+![tétel – részletek](media/troubleshooting-synapse-studio/item-details.png)
 
-Ha a fenti lépések nem oldják meg a problémát, előfordulhat, hogy meg kell nyitnia egy támogatási jegyet. A támogatási jegy elküldésekor adja meg az útmutató elején letöltött "Munkamenet-azonosító" vagy "Diagnosztikai információ" kifejezést.
+Ha a fenti lépések nem oldják meg a problémát, lehetséges, hogy meg kell nyitnia egy támogatási jegyet. A támogatási jegy elküldésekor az útmutató elején letöltött "munkamenet-azonosító" vagy "diagnosztikai információ" szerepel.
 
-A probléma bejelentésekor tetszés szerint képernyőképet készíthet a "Fejlesztői eszközök" lapon található "Konzol" fülről, és csatolhatja a támogatási jegyhez. Görgessen a tartalommal, és szükség esetén több képernyőképet is készítsen a teljes üzenet rögzítéséhez.
+A probléma jelentésekor lehetősége van arra, hogy a "Fejlesztői eszközök" konzoljának lapfülét, és csatolja a támogatási jegyhez. Görgesse a tartalmat, és ha szükséges, a teljes üzenet rögzítéséhez vegyen fel több képernyőképet.
 
-![fejlesztő-eszközkonzol](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![fejlesztői – eszköz – konzol](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
-Ha screenshotokat csatol, adja meg a képernyőképek elkészítésének idejét (vagy becsült időtartományát). Segíteni fog nekünk, ha megvizsgáljuk a problémát.
+Ha képernyőképeket csatol, adja meg az időt (vagy a becsült időtartományt), amikor elvégezte a képernyőképeket. A probléma megoldásához segítséget nyújt nekünk.
 
-Egyes böngészők támogatják az időbélyegek megjelenítését a "Konzol" lapon. Krómszegély/Chrome esetén nyissa meg a "Beállítások" párbeszédpanelt a "Fejlesztői eszközök" párbeszédpanelen, és jelölje be az "Időbélyegek megjelenítése" jelölőnégyzetet a "Beállítások" lapon.
+Bizonyos böngészők támogatják az időbélyegek megjelenítését a "konzol" lapon. A Chromium Edge/Chrome esetében nyissa meg a "beállítások" párbeszédpanelt a "Fejlesztői eszközök" részben, és a "beállítások" lapon tekintse meg a "időbélyegek megjelenítése" lapot.
 
-![fejlesztő-eszköz-konzol-beállítások](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![fejlesztői – eszköz-konzol – beállítások](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![show-idő-bélyegző](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![időbélyegző megjelenítése](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>További lépések
-Ha az előző lépések nem segítenek megoldani a támogatási [jegy létrehozása](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Ha az előző lépések nem segítenek feloldani a [támogatási jegy létrehozásával](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kapcsolatos problémákat

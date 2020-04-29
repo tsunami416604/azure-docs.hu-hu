@@ -1,6 +1,6 @@
 ---
 title: REST API-hibakódok – Azure Key Vault
-description: Ezeket a hibakódokat egy Azure Key Vault-webszolgáltatáson végzett művelet visszaadhatja.
+description: Ezeket a hibakódokat egy Azure Key Vault webszolgáltatáson végzett művelet is visszaküldheti.
 keywords: ''
 services: machine-learning
 author: msmbaldwin
@@ -11,30 +11,30 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81432059"
 ---
-# <a name="azure-key-vault-rest-api-error-codes"></a>Az Azure Key Vault REST API-hibakódjai
+# <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hibakódok
  
-A következő hibakódokat egy Azure Key Vault webszolgáltatáson végzett művelet visszaadhatja.
+Egy Azure Key Vault webszolgáltatáson végzett művelet a következő hibakódokat küldheti vissza.
  
-## <a name="http-401-unauthenticated-request"></a>HTTP 401: Nem hitelesített kérelem
+## <a name="http-401-unauthenticated-request"></a>HTTP 401: nem hitelesített kérelem
 
-A 401 azt jelenti, hogy a kérelem nincs hitelesítve a Key Vault számára. 
+401 azt jelenti, hogy a kérést nem hitelesítik Key Vault. 
 
-A kérelem hitelesítése akkor történik meg, ha:
+A kérést a rendszer hitelesíti, ha:
 
-- A kulcstartó ismeri a hívó identitását; És
-- A hívó megkísérelhet hozzáférni a Key Vault erőforrásaihoz. 
+- A Key Vault ismeri a hívó identitását; és
+- A hívónak meg kell próbálnia Key Vault erőforrásokhoz való hozzáférést. 
 
-Számos különböző oka lehet annak, hogy a kérelem visszaadhat 401-et.
+Az 401-as kérések több különböző okból is visszatérhetnek.
 
-### <a name="no-authentication-token-attached-to-the-request"></a>Nincs hitelesítési jogkivonat csatolva a kérelemhez. 
+### <a name="no-authentication-token-attached-to-the-request"></a>Nincs hozzárendelve hitelesítési jogkivonat a kérelemhez. 
 
-Íme egy példa put kérés, amely az érték egy titkos:
+Íme egy példa PUT kérelem, amely egy titkos kulcs értékét állítja be:
 
 ``` 
 PUT https://putreqexample.vault.azure.net//secrets/DatabaseRotatingPassword?api-version=7.0 HTTP/1.1
@@ -51,15 +51,15 @@ Content-Length: 31
 }
 ```
 
-Az "Engedélyezés" fejléc a hozzáférési jogkivonat, amely szükséges minden hívás a Key Vault adatsík műveletek. Ha a fejléc hiányzik, akkor a válasznak 401-nek kell lennie.
+Az "engedélyezés" fejléc a hozzáférési jogkivonat, amely az adatsík műveletek Key Vault minden hívásához szükséges. Ha a fejléc hiányzik, akkor a válasznak 401-nek kell lennie.
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>A jogkivonat nem rendelkezik a hozzá társított megfelelő erőforrással. 
 
-Amikor egy hozzáférési jogkivonatot kér az Azure OAUTH-végpontról, az "erőforrás" nevű paraméter kötelező. Az érték fontos a jogkivonat-szolgáltató számára, mert a jogkivonatot a tervezett használatra hatóköre ként méretezi. A Key Vault eléréséhez **szükséges összes** jogkivonat erőforrása *https:\//vault.keyvault.net* (záró perjel nélkül).
+Amikor hozzáférési jogkivonatot kér az Azure OAUTH végponttól, az "erőforrás" nevű paramétert kötelező megadni. Az érték fontos a jogkivonat-szolgáltató esetében, mert a jogkivonat hatókörét a kívánt célra alkalmazza. Az Key Vaulthoz való hozzáférést biztosító **összes** jogkivonat erőforrása *https\/:/Vault.keyvault.net* (záró perjel nélkül).
 
-### <a name="the-token-is-expired"></a>A token lejárt
+### <a name="the-token-is-expired"></a>A jogkivonat lejárt
 
-A tokenek base64 kódolásúak, és az értékek [http://jwt.calebb.net](http://jwt.calebb.net)dekódolhatók olyan webhelyeken, mint a. Itt van a fenti token dekódolt:
+A tokenek Base64 kódolással vannak kódolva, és az értékek dekódolva lesznek a webhelyeken, [http://jwt.calebb.net](http://jwt.calebb.net)például:. A fenti token dekódolva:
 
 ```
     {
@@ -87,20 +87,20 @@ A tokenek base64 kódolásúak, és az értékek [http://jwt.calebb.net](http://
 [signature]
 ```
 
-Számos fontos részt láthatunk ebben a tokenben:
+Ebben a tokenben számos fontos rész látható:
 
-- aud (közönség): A token forrása. Figyelje meg, hogy ez <https://vault.azure.net>. Ez a jogkivonat nem fog működni minden olyan erőforrás, amely nem kifejezetten egyezik meg ezt az értéket, például a grafikon.
-- iat (kiadva): A kullancsok száma a token kiállításának kora óta.
-- nbf (nem korábban): A kullancsok száma a korszak kezdete óta, amikor ez a token érvényessé válik.
-- exp (lejárat): A tickek száma a korszak kezdete óta, amikor ez a token lejár.
-- appid (alkalmazásazonosító): A kérelmet küldő alkalmazásazonosító GUID azonosítója.
-- tid (bérlőazonosító): A kérést küldő megbízó bérlőazonosítójának GUID azonosítója
+- AUD (hallgatóság): a token erőforrása. Figyelje meg, hogy <https://vault.azure.net>ez a következő:. Ez a jogkivonat nem fog működni minden olyan erőforrás esetében, amely nem felel meg explicit módon az értéknek, például gráfnak.
+- IAT (kiadás időpontja): az időpontok száma a jogkivonat kiállítása óta.
+- NBF (nem korábban): az időpontok száma az időszak kezdete óta, amikor a token érvényes lesz.
+- exp (lejárat): az időpontok száma a token lejárata óta.
+- AppID (alkalmazás azonosítója): a kérést alkotó alkalmazás AZONOSÍTÓjának GUID azonosítója.
+- TID (bérlői azonosító): a kérést készítő résztvevő bérlői AZONOSÍTÓjának GUID azonosítója
 
-Fontos, hogy a kérelem működéséhez az összes érték megfelelően azonosítható legyen a jogkivonatban. Ha minden rendben van, akkor a kérelem nem eredményez 401-et.
+Fontos, hogy az összes érték megfelelően legyen azonosítva a jogkivonatban, hogy a kérés működjön. Ha minden helyes, akkor a kérelem nem fog 401-et eredményezni.
 
 ### <a name="troubleshooting-401"></a>Hibaelhárítás 401
 
-401s kell vizsgálni a jogkivonat-generálási ponttól, mielőtt a kérelem a key vault. Általában kód van használatban a token kéréséhez. A jogkivonat beérkezése után a key vault-kérelem. Ha a kód helyileg fut, a Fiddler segítségével rögzítheti a kérést/választ. `https://login.microsoftonline.com` A kérelem így néz ki:
+a 401s a jogkivonat-létrehozási pontról kell megvizsgálni, mielőtt a rendszer a kulcstartóra kéri a kérést. Általában a token igénylésére szolgáló kód használatos. A jogkivonat fogadása után a rendszer átadja a Key Vault kérelemnek. Ha a kód helyileg fut, akkor a Hegedűs használatával rögzítheti a kérést/választ a `https://login.microsoftonline.com`következőre:. A kérés így néz ki:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1
@@ -112,59 +112,59 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-A felhasználó által megadott alábbi információk helyesek:
+A következő, felhasználó által megadott információ-pép helyes:
 
-- A kulcstartó bérlői azonosítója
-- Az erőforrás-érték https%3A%2F%2Fvault.azure.net (URL-kódolású)
+- A Key Vault-bérlő azonosítója
+- Erőforrás-érték beállítva a https %3 A %2 F %2 F Vault. Azure. net (URL-kódolású)
 - Ügyfél-azonosító
 - Titkos ügyfélkulcs
 
-Győződjön meg arról, hogy a kérelem többi része közel azonos.
+Győződjön meg arról, hogy a kérés többi része közel azonos.
 
-Ha csak a válasz-hozzáférési jogkivonatot tudja beszerezni, dekódolhatja azt (ahogy fent látható), biztosítva a bérlői azonosítót, az ügyfélazonosítót (alkalmazásazonosítót) és az erőforrást.
+Ha csak a válasz hozzáférési jogkivonatot szeretné beszerezni, akkor dekódolhatja (a fenti ábrán látható módon), hogy biztosítsa a bérlő AZONOSÍTÓját, az ügyfél-azonosítót (alkalmazás-azonosítót) és az erőforrást.
 
-## <a name="http-403-insufficient-permissions"></a>HTTP 403: Elégtelen engedélyek
+## <a name="http-403-insufficient-permissions"></a>HTTP 403: nem megfelelő engedélyek
 
-A HTTP 403 azt jelenti, hogy a kérelem hitelesített (ismeri a kérelmező identitást), de az identitás nem rendelkezik engedéllyel a kért erőforrás eléréséhez. Ennek két oka van:
+A HTTP 403 azt jelenti, hogy a kérés hitelesítése megtörtént (ismeri a kérelmező identitást), de az identitásnak nincs engedélye a kért erőforrás elérésére. Két ok van:
 
 - Nincs hozzáférési házirend az identitáshoz.
-- A kérelmező erőforrás IP-címe nem szerepel a key vault tűzfalbeállításaiban.
+- A kérelmező erőforrás IP-címe nem engedélyezett a Key Vault tűzfalának beállításaiban.
 
-A HTTP 403 gyakran akkor fordul elő, ha az ügyfél alkalmazása nem az ügyfél által elmedett ügyfélazonosítót használja. Ez általában azt jelenti, hogy a hozzáférési szabályzatok nincsenek megfelelően beállítva a tényleges hívó identitáshoz.
+A HTTP 403 gyakran akkor fordul elő, ha az ügyfél alkalmazása nem használja azt az ügyfél-azonosítót, amelyet az ügyfél gondol. Ez általában azt jelenti, hogy a hozzáférési házirendek nem megfelelően vannak beállítva a tényleges hívó identitáshoz.
 
 ### <a name="troubleshooting-403"></a>Hibaelhárítás 403
 
-Először kapcsolja be a naplózást. Ennek módjáról az Azure [Key Vault naplózása című](logging.md)témakörben talál.
+Először kapcsolja be a naplózást. Ennek módjáról a [Azure Key Vault naplózása](logging.md)című témakörben talál útmutatást.
 
-A naplózás bekapcsolása után megállapíthatja, hogy a 403-as hozzáférési szabályzat vagy tűzfalházirend miatt történt-e.
+Miután bekapcsolta a naplózást, megadhatja, hogy a 403 a hozzáférési házirend vagy a tűzfal házirendje okozza-e.
 
-#### <a name="error-due-to-firewall-policy"></a>Tűzfalházirend miatti hiba
+#### <a name="error-due-to-firewall-policy"></a>Hiba a tűzfalszabályok miatt
 
-"Az ügyfélcím (00.00.00.00) nincs engedélyezve, és a hívó nem megbízható szolgáltatás"
+"Az ügyfél címe (00.00.00.00) nincs hitelesítve, és a hívó nem megbízható szolgáltatás"
 
-Az "Azure megbízható szolgáltatások" korlátozott listája található. Az Azure-webhelyek **nem** megbízható Azure-szolgáltatás. További információt az Azure [App Services Key Vault firewall hozzáférése](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)című blogbejegyzésben talál.
+Korlátozott számú "Azure megbízható szolgáltatás" szerepel. Az Azure webhelyek **nem** megbízható Azure-szolgáltatás. További információ: [Key Vault tűzfal hozzáférése az Azure app Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)-ban című blogbejegyzésben.
 
-Ahhoz, hogy működjön, hozzá kell adnia az Azure-webhely IP-címét a Key Vaulthoz.
+Ahhoz, hogy működjön, fel kell vennie az Azure-webhely IP-címét a Key Vaultba.
 
-Ha hozzáférési házirend miatt: keresse meg a kérelem objektumazonosítóját, és győződjön meg arról, hogy az objektumazonosító megegyezik azzal az objektummal, amelyhez a felhasználó a hozzáférési szabályzatot próbálja hozzárendelni. Gyakran több objektum lesz az AAD-ben, amelyek azonos nevűek, ezért nagyon fontos a megfelelő kiválasztása. A hozzáférési házirend törlésével és újbóli hozzáadásával ellenőrizheti, hogy több objektum létezik-e ugyanazzal a névvel.
+Ha a hozzáférési házirend miatt: keresse meg a kérelem objektumazonosítóát, és győződjön meg arról, hogy az objektumazonosító megegyezik azzal az objektummal, amelyhez a felhasználó megpróbálja hozzárendelni a hozzáférési házirendet. A HRE több olyan objektum is létezik, amelynek a neve megegyezik, ezért a megfelelő kiválasztása nagyon fontos. A hozzáférési szabályzat törlésével és újbóli hozzáadásával megtekintheti, hogy létezik-e több objektum ugyanazzal a névvel.
 
-Emellett a legtöbb hozzáférési szabályzat nem igényli az "Engedélyezett alkalmazás" használatát a portálon látható módon. Az engedélyezett alkalmazások ritka "a nevében" hitelesítési forgatókönyvekhez használatosak. 
+Emellett a legtöbb hozzáférési szabályzatnak nincs szüksége a "jogosult alkalmazás" használatára a portálon látható módon. A rendszer a jogosult alkalmazást az olyan "nem használt" hitelesítési forgatókönyvek esetében használja, amelyek ritkák. 
 
 
-## <a name="http-429-too-many-requests"></a>HTTP 429: Túl sok kérés
+## <a name="http-429-too-many-requests"></a>HTTP 429: túl sok kérelem
 
-Szabályozás akkor történik, ha a kérelmek száma meghaladja a megadott maximális az időkeretben. Szabályozás esetén a Key Vault válasza HTTP 429 lesz. A kérelmek típusaira vonatkozóan a megadott maximumok szerepelnek. Például: egy HSM 2048 bites kulcs létrehozása 10 másodpercenként 5 kérelem, de minden más HSM-tranzakció 1000 kérelem/10 másodperces korláttal rendelkezik. Ezért fontos megérteni, hogy milyen típusú hívások történnek a szabályozás okának meghatározásakor.
-A Key Vaultba irányuló kérelmek általában legfeljebb 2000 kérelmek/10 másodperc. Kivételek a kulcsműveletek, a [Key Vault szolgáltatáskorlátaiban](service-limits.md) dokumentált módon
+A szabályozás akkor következik be, amikor a kérelmek száma meghaladja az adott időkerethez megadott maximális értéket. Ha a szabályozás bekövetkezik, a Key Vault válasza a HTTP 429 lesz. A kérések típusaihoz maximális érték van megadva. Például: egy HSM 2048 bites kulcs létrehozása 10 másodpercenként 5 kérelem, de minden más HSM-tranzakcióhoz 1000 kérelem/10 másodperc korlát tartozik. Ezért fontos tisztában lennie azzal, hogy milyen típusú hívások történnek a szabályozás okának meghatározásakor.
+Általánosságban elmondható, hogy a Key Vaultra irányuló kérések száma 2000 kérelem/10 másodperc. A kivételek a [Key Vault szolgáltatási korlátaiban](service-limits.md) dokumentált fő műveletek
 
 ### <a name="troubleshooting-429"></a>Hibaelhárítás 429
-A szabályozás taszaaaaaaatot a következő technikákkal:
+A szabályozás a következő technikák használatával működik:
 
-- Csökkentse a Key Vaultba irányuló kérelmek számát annak meghatározásával, hogy vannak-e minták a kért erőforráshoz, és megpróbálja gyorsítótárazni őket a hívó alkalmazásban. 
+- Csökkentse a Key Vault felé irányuló kérések számát azáltal, hogy meghatározza, hogy vannak-e mintázatok egy kért erőforráshoz, és hogyan kell azokat gyorsítótárazni a hívó alkalmazásban. 
 
-- Key Vault szabályozása esetén, igazítsa a kérelmező kódot, hogy egy exponenciális backoff az újrapróbálkozáshoz. Az algoritmus itt ismertetésre: [Hogyan kell szabályozni az alkalmazást](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
+- Ha Key Vault szabályozást, a kérelem kódját úgy kell módosítani, hogy exponenciális leállítási használjon az újrapróbálkozáshoz. Az algoritmus magyarázata itt található: az [alkalmazás szabályozása](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
-- Ha a kérelmek száma nem csökkenthető a gyorsítótárazás és az időzített kihátrálás nem működik, majd fontolja meg a kulcsok felosztása több key vaults. Egyetlen előfizetés szolgáltatáskorlátja az egyes Key Vault-korlát 5-szerese. Ha 5-nél több key vaultot használ, érdemes több előfizetést használni. 
+- Ha a kérések száma nem csökkenthető a gyorsítótárazással és az időzített leállítási, akkor érdemes lehet több Kulcstartóba osztani a kulcsokat. Egy előfizetéshez tartozó szolgáltatási korlát ötszöröse az egyéni Key Vault korlát. Ha több mint 5 kulcstartót használ, több előfizetés használatát is figyelembe kell venni. 
 
-Részletes útmutatást, beleértve a korlátozások növelésére irányuló kérést, itt található: [Key Vault szabályozási útmutató](overview-throttling.md)
+A határértékek növelésére irányuló kérést tartalmazó részletes útmutató itt található: [Key Vault szabályozási útmutató](overview-throttling.md)
 
 

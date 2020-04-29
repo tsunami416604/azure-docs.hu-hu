@@ -1,6 +1,6 @@
 ---
-title: T-SQL hurkok használata
-description: Tippek a T-SQL hurkok használatához, a kurzorok cseréjéhez és a kapcsolódó megoldások fejlesztéséhez a Synapse SQL-ben lévő SQL-készlettel.
+title: T-SQL-hurkok használata
+description: Tippek a T-SQL-hurkok használatához, a kurzorok cseréjéhez és a kapcsolódó megoldások fejlesztéséhez az SQL-készlettel a szinapszis SQL-ben.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429953"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>T-SQL hurkok használata a Synapse SQL-ben
-Ez a cikk alapvető tippeket ad a T-SQL hurkok használatához, a kurzorok cseréjéhez és a kapcsolódó megoldások fejlesztéséhez a Synapse SQL-ben.
+# <a name="using-t-sql-loops-in-synapse-sql"></a>T-SQL-hurkok használata a szinapszis SQL-ben
+Ez a cikk a T-SQL-hurkok használatával, a kurzorok cseréjével és az SQL-készlettel kapcsolatos kapcsolódó megoldások fejlesztésével kapcsolatos alapvető tippeket tartalmaz a szinapszis SQL-ben.
 
-## <a name="purpose-of-while-loops"></a>A WHILE hurkok célja
+## <a name="purpose-of-while-loops"></a>Hurkok célja
 
-A Synapse SQL támogatja a [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) ciklust a kimutatásblokkok ismételt végrehajtásához. Ez a WHILE ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten le nem állítja a ciklust a BREAK kulcsszó használatával. 
+A szinapszis SQL a [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) ciklust is támogatja az utasítások ismételt végrehajtásához. Ez a ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten leállítja a hurkot a BREAK kulcsszó használatával. 
 
-Az SQL-készletben lévő hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére, szinte minden kurzorok, amelyek írt SQL-kód a gyors előre, csak olvasható fajta. Tehát a [WHILE] hurkok nagyszerű alternatívát jelentenek a kurzorok cseréjére.
+Az SQL-készletben található hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére az SQL Code-ban írt összes kurzor a gyors továbbítás, csak olvasható fajta. Tehát a [WHILE] hurkok nagyszerű alternatíva a kurzorok cseréjéhez.
 
 ## <a name="replacing-cursors-in-sql-pool"></a>Kurzorok cseréje az SQL-készletben
 
-A merülés előtt a következő kérdést kell figyelembe venni: "Átírható-e ez a kurzor set-alapú műveletek használatára?" Sok esetben a válasz igen, és gyakran a legjobb megközelítés. A set-alapú művelet gyakran gyorsabban hajtható végre, mint egy iteratív, sorról sorra megközelítés.
+A bekövetkezett merülés előtt a következő kérdést kell figyelembe venni: "lehetséges, hogy ez a kurzor a beállított műveletek használatára lett átírva?" Sok esetben a válasz igen, és gyakran a legjobb megoldás. A készleten alapuló művelet gyakran gyorsabb, mint egy iterációs, soron belüli módszer.
 
-A gyors előremutató írásvédett kurzorok könnyen helyettesíthetők egy hurokszerkezettel. A következő kód egy egyszerű példa. Ez a példakód frissíti az adatbázis minden táblájának statisztikáit. A ciklusban lévő táblák ismétlésével minden parancs sorrendben hajtható végre.
+A gyors továbbítást csak olvasható kurzorok egyszerűen lecserélhető hurkos szerkezettel. A következő kód egy egyszerű példa. Ez a kódrészlet frissíti az adatbázis minden táblájának statisztikáit. Ha megismétli a hurokban lévő táblákat, az egyes parancsok végrehajtása sorban történik.
 
-Először hozzon létre egy ideiglenes táblát, amely egyedi sorszámot tartalmaz az egyes kimutatások azonosítására:
+Először hozzon létre egy ideiglenes táblázatot, amely egy egyedi sorszámot tartalmaz, amely az egyes utasítások azonosítására szolgál:
 
 ```sql
 CREATE TABLE #tbl
@@ -47,7 +47,7 @@ FROM    sys.tables
 ;
 ```
 
-Másodszor inicializálja a ciklus végrehajtásához szükséges változókat:
+Másodszor, inicializálja a hurok végrehajtásához szükséges változókat:
 
 ```sql
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
@@ -55,7 +55,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ;
 ```
 
-Most hurok alatt nyilatkozatok végrehajtó őket egyenként:
+Most a következő utasításokon keresztül hajtja végre az egyes utasításokat:
 
 ```sql
 WHILE   @i <= @nbr_statements
@@ -74,4 +74,4 @@ DROP TABLE #tbl;
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](develop-overview.md)
+További fejlesztési tippek: a [fejlesztés áttekintése](develop-overview.md).

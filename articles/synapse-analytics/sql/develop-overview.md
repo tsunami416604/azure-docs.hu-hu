@@ -1,6 +1,6 @@
 ---
-title: Források a Synapse SQL-funkciók fejlesztéséhez
-description: Fejlesztési koncepciók, tervezési döntések, ajánlások és kódolási technikák a Synapse SQL számára.
+title: Erőforrások a szinapszis SQL-funkciók fejlesztéséhez
+description: Fejlesztési fogalmak, tervezési döntések, javaslatok és kódolási technikák a szinapszis SQL-hez.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,29 +11,29 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6ceec3064c5c876ca899ab58881e23913b9701
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429017"
 ---
-# <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák a Synapse SQL-funkciókhoz az Azure Synapse Analytics szolgáltatásban
-In this article, you'll find a list of resources for SQL pool and SQL on-demand (preview) functions of Synapse SQL. Az ajánlott cikkek két részre oszthatók: Kulcsfontosságú tervezési döntések és fejlesztési és kódolási technikák.
+# <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák a szinapszis SQL-funkciókhoz az Azure szinapszis Analyticsben
+Ebből a cikkből megtudhatja, hogyan használhatók az SQL Pool és az SQL on-demand (előzetes verzió) funkciói a szinapszis SQL-ben. Az ajánlott cikkek két szakaszra oszlanak: a legfontosabb tervezési döntések, a fejlesztési és kódolási technikák.
 
-Ezeknek a cikkeknek a célja, hogy segítsen a Synapse SQL-összetevők optimális technikai megközelítésének kialakításában a Synapse Analytics-en belül.
+Ennek a cikknek a célja, hogy segítséget nyújtson az optimális technikai megközelítés kialakításában a szinapszis Analytics szolgáltatásban található szinapszis SQL-összetevőkhöz.
 
-## <a name="key-design-decisions"></a>Legfontosabb tervezési döntések
-Az alábbi cikkek kiemelik a Synapse SQL fejlesztéshez készült fogalmakat és tervezési döntéseket:
+## <a name="key-design-decisions"></a>Kulcsfontosságú tervezési döntések
+Az alábbi cikkek kiemelik a szinapszisok SQL-fejlesztésével kapcsolatos fogalmakat és tervezési döntéseket:
 
-|                                                          |   SQL-készlet   | SQL igény szerint |
+|                                                          |   SQL-készlet   | Igény szerinti SQL |
 | -----------------------------------------------------    | ---- | ---- |
 | [Kapcsolatok](connect-overview.md)                    | Igen | Igen |
-| [Erőforrásosztályok és egyidejűség](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Igen    | Nem |
+| [Erőforrás-osztályok és Egyidejűség](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Igen    | Nem |
 | [Tranzakciók](develop-transactions.md)              | Igen | Nem |
 | [Felhasználó által definiált sémák](develop-user-defined-schemas.md) | Igen | Igen |
 | [a táblaelosztással](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | Igen | Nem |
 | [táblaindexekkel](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                           | Igen | Nem |
-| [Táblapartíciók](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | Igen | Nem |
+| [Tábla partíciói](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | Igen | Nem |
 | [Statisztika](develop-tables-statistics.md)            | Igen | Igen |
 | [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                                             | Igen | Nem |
 | [Külső táblák](develop-tables-external-tables.md) | Igen | Igen |
@@ -42,9 +42,9 @@ Az alábbi cikkek kiemelik a Synapse SQL fejlesztéshez készült fogalmakat és
 
 ## <a name="recommendations"></a>Javaslatok
 
-Az alábbiakban olyan alapvető cikkeket talál, amelyek konkrét kódolási technikákat, tippeket és fejlesztési javaslatokat emelnek ki:
+Az alábbiakban megtalálhatja azokat az alapvető cikkeket, amelyek kiemelik az egyes kódolási technikákat, tippeket és javaslatokat a fejlesztéshez:
 
-|                                            | SQL-készlet | SQL igény szerint |
+|                                            | SQL-készlet | Igény szerinti SQL |
 | ------------------------------------------ | ------------------ | ----------------------- |
 | [Tárolt eljárások](develop-stored-procedures.md)  | Igen                | Nem                      |
 | [Címkék](develop-label.md)                           | Igen                | Nem                      |
@@ -56,5 +56,5 @@ Az alábbiakban olyan alapvető cikkeket talál, amelyek konkrét kódolási tec
 | [Változó-hozzárendelés](develop-variable-assignment.md) | Igen                | Igen                     |
 
 ## <a name="next-steps"></a>További lépések
-További információt az [SQL-készlet T-SQL utasítások című témakörében talál.](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+További információ: [SQL Pool T-SQL-utasítások](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 

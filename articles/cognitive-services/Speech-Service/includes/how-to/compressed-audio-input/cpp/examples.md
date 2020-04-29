@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: b565bf3bae61cf92133b957bb75fdae9545c030e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81421711"
 ---
-Ha tömörített hangformátumban szeretne streamelni `PullAudioInputStream` a `PushAudioInputStream`Beszédszolgáltatásba, hozzon létre vagy hozzon létre. Ezután hozzon létre egy `AudioConfig` példányt a stream osztály, megadva a tömörítési formátumot az adatfolyam.
+Tömörített hangformátum továbbítása a beszédfelismerési szolgáltatásba, létrehozás `PullAudioInputStream` vagy. `PushAudioInputStream` Ezután hozzon létre `AudioConfig` egy példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
-Tegyük fel, hogy van egy `pushStream` bemeneti stream osztály neve, és opus/OGG-t használ. A kód a következőkre néz ki:
+Tegyük fel, hogy rendelkezik egy nevű `pushStream` bemeneti stream-osztállyal, és az Opus/OGG-t használja. A kód így néz ki:
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech;

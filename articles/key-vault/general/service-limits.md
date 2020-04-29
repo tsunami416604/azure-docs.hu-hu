@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault szolgáltatás korlátai – Azure Key Vault | Microsoft dokumentumok
-description: Ismerje meg az Azure Key Vault szolgáltatáskorlátait.
+title: Azure Key Vault szolgáltatási korlátok – Azure Key Vault | Microsoft Docs
+description: Ismerkedjen meg a Azure Key Vault szolgáltatási korlátaival.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 75fec93be9b43785a91c93b7c609231e37188602
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429823"
 ---
-# <a name="azure-key-vault-service-limits"></a>Az Azure Key Vault szolgáltatáskorlátai
+# <a name="azure-key-vault-service-limits"></a>Azure Key Vault szolgáltatási korlátok
 
-Íme az Azure Key Vault szolgáltatáskorlátai.
+Itt láthatók a Azure Key Vault szolgáltatásra vonatkozó korlátozások.
 
 [!INCLUDE [key-vault-limits](../../../includes/key-vault-limits.md)]
 

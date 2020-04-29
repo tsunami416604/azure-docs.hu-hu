@@ -1,6 +1,6 @@
 ---
-title: A .NET használata az Apache Sparkhoz az Azure Synapse Analytics segítségével
-description: Ismerje meg a .NET és az Apache Spark használatával a kötegelt feldolgozást, a valós idejű streamelést, a gépi tanulást és az ad hoc lekérdezések írását az Azure Synapse Analytics-jegyzetfüzetekben.
+title: A .NET használata Apache Sparkhoz az Azure szinapszis Analytics használatával
+description: Ismerje meg, hogyan használhatja a .NET és a Apache Spark a kötegelt feldolgozásra, a valós idejű folyamatos átvitelre, a gépi tanulásra és az Azure szinapszis Analytics jegyzetfüzetekben az alkalmi lekérdezések írására.
 author: mamccrea
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -9,71 +9,71 @@ ms.date: 04/15/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6943be033653d88b272817d2dcf58042aaaab616
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430512"
 ---
-# <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>A .NET használata az Apache Sparkhoz az Azure Synapse Analytics segítségével
+# <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>A .NET használata Apache Sparkhoz az Azure szinapszis Analytics használatával
 
-[A .NET for Apache Spark](https://dot.net/spark) ingyenes, nyílt forráskódú és platformfüggetlen .NET támogatás a Sparkhoz. Az .NET for Apache Spark .NET-kötéseket biztosít a Spark számára, amelyek lehetővé teszik a Spark API-k c# és f# keresztüli elérését. A .NET for Apache Spark használatával a .NET használatával a Spark felhasználó által definiált függvényeit is megírhatja és végrehajthatja. A Spark .
+A [.net for Apache Spark](https://dot.net/spark) ingyenes, nyílt forráskódú és platformfüggetlen .net-támogatás a sparkhoz. A .NET for Apache Spark olyan .NET-kötéseket biztosít a Sparkhoz, amelyek lehetővé teszik a Spark API-k C# és F # használatával való elérését. A .NET for Apache Spark lehetővé teszi, hogy a .NET használatával a Spark felhasználó által definiált függvényeit tudja írni és végrehajtani. A Sparkhoz készült .NET API-k lehetővé teszik a Spark összes aspektusának elérését, amely megkönnyíti az adatelemzést, beleértve a Spark SQL és a Structured streaming szolgáltatásait is.
 
-A .NET for Apache Spark használatával elemezheti az adatokat a Spark kötegelt feldolgozásdefinícióin vagy az interaktív Azure Synapse Analytics-jegyzetfüzetek segítségével. Ebben a cikkben megtudhatja, hogyan használhatja a .NET for Apache Spark az Azure Synapse mindkét technikával. 
+Az adatok elemzéséhez a .NET-tel Apache Spark a Spark batch-feladatdefiníciók vagy az interaktív Azure szinapszis Analytics-jegyzetfüzetek használatával. Ebből a cikkből megtudhatja, hogyan használhatja a .NET-et az Azure szinapszis-vel való Apache Sparkére mindkét módszer használatával. 
 
-## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Kötegelt feladatok küldése a Spark feladatdefiníció használatával
+## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Batch-feladatok elküldése a Spark-feladat definíciójának használatával
 
-Látogasson el az oktatóanyagba, amelyből megtudhatja, hogyan hozhat [létre Apache Spark-feladatdefiníciókat a Synapse Spark-készletekhez.](apache-spark-job-definitions.md) Ha nem csomagolta be az alkalmazást az Azure Synapse-nak való elküldéshez, hajtsa végre az alábbi lépéseket.
+Az oktatóanyagból megtudhatja, hogyan [hozhat létre Apache Spark-feladatdefiníciók létrehozásához a szinapszis Spark-készleteket](apache-spark-job-definitions.md)az Azure szinapszis Analytics használatával. Ha nem csomagolta be az alkalmazást az Azure Szinapszisba való küldéshez, hajtsa végre az alábbi lépéseket.
 
-1. Az alkalmazás közzétételéhez futtassa a következő parancsokat. Ügyeljen arra, hogy cserélje le *a mySparkApp-ot* az alkalmazás elérési útjára.
+1. Az alkalmazás közzétételéhez futtassa az alábbi parancsokat. Ügyeljen arra, hogy a *mySparkApp* az alkalmazás elérési útjára cserélje.
 
-   **Windows rendszerben:**
+   **Windows rendszeren:**
 
    ```dotnetcli
    cd mySparkApp
    dotnet publish -c Release -f netcoreapp3.0 -r ubuntu.16.04-x64
    ```
 
-   **Linuxalatt:**
+   **Linux rendszeren:**
 
-### <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET az Apache Sparkhoz az Azure Synapse Analytics-jegyzetfüzetekben
+### <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET Apache Spark az Azure szinapszis Analytics-jegyzetfüzetekben
 
-Új jegyzetfüzet létrehozásakor olyan nyelvi rendszermagot kell választania, amelyet az üzleti logikájának kifejezésére kíván fordítani. A kernel számos nyelvet támogat, beleértve a C#-ot is.
+Új jegyzetfüzet létrehozásakor ki kell választania az üzleti logikát kifejező nyelvi kernelt. Több nyelven is van kernel-támogatás, beleértve a C#-ot is.
 
-Ha a .NET for Apache Sparkot szeretné használni az Azure Synapse Analytics-jegyzetfüzetében, válassza a **.NET Spark (C#)** elemet kernelként, és csatolja a jegyzetfüzetet egy meglévő Spark-készlethez.
+Ha a .NET-et szeretné használni az Azure szinapszis Analytics-jegyzetfüzetben lévő Apache Sparkhoz, válassza a **.net Spark (C#)** lehetőséget kernelként, és csatolja a notebookot egy meglévő Spark-készlethez.
 
    ```bash
    zip -r publish.zip
    ```
 
-## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET az Apache Sparkhoz az Azure Synapse Analytics-jegyzetfüzetekben 
+## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET Apache Spark az Azure szinapszis Analytics-jegyzetfüzetekben 
 
-A notebookok nagyszerű lehetőséget jelentenek a .NET Apache Spark-folyamatokhoz és forgatókönyvekhez való prototípusához. Az adatok gyors és hatékony működésével, megértésével, szűrésével, megjelenítésével és megjelenítésével is megkezdheti a munkát. Adatmérnökök, adatszakértők, üzleti elemzők és gépi tanulási mérnökök egy megosztott, interaktív dokumentumon keresztül is együttműködhetnek. Az adatok feltárásának azonnali eredményeit láthatja, és az adatokat ugyanabban a jegyzetfüzetben jelenítheti meg.
+A jegyzetfüzetek nagyszerű lehetőséget biztosítanak a .NET Apache Spark folyamatokhoz és forgatókönyvekhez való prototípusának megadására. Megkezdheti az adatfeldolgozást, az ismeretek megismerését, szűrését, megjelenítését és megjelenítését gyorsan és hatékonyan. Az adatmérnökök, az adatszakértők, az üzleti elemzők és a gépi tanulási mérnökök képesek együttműködni egy megosztott, interaktív dokumentumon. Láthatja az adatok feltárásának azonnali eredményeit, és megtekintheti az adatait ugyanabban a jegyzetfüzetben.
 
-### <a name="how-to-use-notebooks"></a>A jegyzetfüzetek használata
+### <a name="how-to-use-notebooks"></a>Jegyzetfüzetek használata
 
-Új jegyzetfüzet létrehozásakor olyan nyelvi rendszermagot választunk, amelyet az üzleti logikád kifejezésére kívánunk fordítani. A kernel számos nyelvet támogat, beleértve a C#-ot is. 
+Új jegyzetfüzet létrehozásakor ki kell választania az üzleti logikát kifejező nyelvi kernelt. Több nyelven is van kernel-támogatás, beleértve a C#-ot is. 
 
-Ha a .NET for Apache Sparkot szeretné használni az Azure Synapse Analytics-jegyzetfüzetében, válassza a **.NET Spark (C#)** elemet kernelként, és csatolja a jegyzetfüzetet egy meglévő Spark-készlethez. 
+Ha a .NET-et szeretné használni az Azure szinapszis Analytics-jegyzetfüzetben lévő Apache Sparkhoz, válassza a **.net Spark (C#)** lehetőséget kernelként, és csatolja a notebookot egy meglévő Spark-készlethez. 
 
-A .NET Spark notebook a .NET interaktív élményen alapul, és interaktív C# élményt nyújt a .NET `spark` a Spark számára a dobozból, a Spark munkamenet-változó előre definiált használatával.
+A .net Spark notebook a .NET interaktív felületén alapul, és interaktív C#-élményt biztosít, amely lehetővé teszi a .NET for Spark használatát a már előre definiált Spark- `spark` munkamenet változóval rendelkező dobozon.
 
-### <a name="sparknet-c-kernel-features"></a>Spark.NET C# kernel szolgáltatásai
+### <a name="sparknet-c-kernel-features"></a>Spark.NET C# kernel-funkciók
 
-A következő funkciók érhetők el, ha a .NET for Apache Spark ot használja az Azure Synapse Analytics notebookban:
+A következő szolgáltatások érhetők el, ha a .NET-et használja a Apache Sparkhoz az Azure szinapszis Analytics jegyzetfüzetben:
 
-* Deklaratív HTML: A cellákból kimenetet hozhat létre HTML-szintaxissal, például fejlécekkel, listajeles listákkal, sőt képek megjelenítésével.
-* Egyszerű C# utasítások (például hozzárendelések, nyomtatás konzolra, kivételek kidobása és így tovább).
-* Többsoros C# kódblokkok (például ha utasítások, foreach hurkok, osztálydefiníciók és így tovább).
-* Hozzáférés a szabványos C# könyvtárhoz (például System, LINQ, Enumerables és így tovább).
-* A [C# 8.0 nyelvi funkcióinak](/dotnet/csharp/whats-new/csharp-8?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)támogatása .
-* "spark" egy előre definiált változó, amely hozzáférést biztosít az Apache Spark-munkamenethez.
-* Az Apache [Sparkon belül futtatható .NET felhasználó által definiált függvények](https://github.com/dotnet/spark/blob/master/examples/Microsoft.Spark.CSharp.Examples/Sql)definiálásának támogatása.
-* Támogatja a Spark-feladatok kimenetének megjelenítését különböző diagramok (például vonal, sáv vagy hisztogram) és elrendezések (például egy, eltakart, és így tovább) használatával a `XPlot.Plotly` könyvtár használatával.
-* NuGet csomagok beillesztése a C# noteszgépbe.
+* Deklaratív HTML: kimenetet hozhat létre a cellákból HTML-szintaxissal, például fejlécekkel, listajeles listákkal, sőt képeket is megjelenítve.
+* Egyszerű C#-utasítások (például hozzárendelések, konzolra történő nyomtatás, kivételek ledobása stb.).
+* Többsoros C# kódok (például ha utasítások, foreach hurkok, osztály-definíciók stb.).
+* Hozzáférés a szabványos C#-könyvtárhoz (például rendszer, LINQ, Enumerables stb.).
+* A [C# 8,0 nyelvi funkcióinak](/dotnet/csharp/whats-new/csharp-8?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)támogatása.
+* a "Spark" egy előre definiált változó, amely hozzáférést biztosít a Apache Spark-munkamenethez.
+* A [Apache Sparkon belül futtatható .net-felhasználó által definiált függvények](https://github.com/dotnet/spark/blob/master/examples/Microsoft.Spark.CSharp.Examples/Sql)definiálásának támogatása.
+* A Spark-feladatok kimenetének a különböző diagramok (például a vonal, a sáv vagy a hisztogram) és az elrendezés (például egyetlen, átfedésben lévő stb.) használatával történő megjelenítésének `XPlot.Plotly` támogatása a könyvtár segítségével.
+* NuGet-csomagok belefoglalása a C# jegyzetfüzetbe.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Apache Spark dokumentációja .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 * [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-* [.NET Interaktív](https://devblogs.microsoft.com/dotnet/creating-interactive-net-documentation/)
+* [.NET interaktív](https://devblogs.microsoft.com/dotnet/creating-interactive-net-documentation/)

@@ -1,6 +1,6 @@
 ---
-title: Mi az a Delta-tó
-description: A Delta-tó és annak az Azure Synapse Analytics részeként való működésének áttekintése
+title: Mi az a Delta Lake?
+description: A Delta Lake áttekintése és az Azure szinapszis Analytics részeként való működése
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,36 +10,36 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 52758eab645fa0bb89cb499a5c617df62c21279e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429199"
 ---
-# <a name="what-is-delta-lake"></a>Mi az a Delta-tó?
+# <a name="what-is-delta-lake"></a>Mi a Delta Lake?
 
-Az Azure Synapse Analytics kompatibilis a Linux Foundation Delta Lake szolgáltatással. A Delta Lake egy nyílt forráskódú tárolási réteg, amely acid (atomi, konzisztencia, elkülönítés és tartósság) tranzakciókat hoz az Apache Sparkés a big data számítási feladatokhoz.
+Az Azure szinapszis Analytics kompatibilis a Linux Foundation Delta Lake-szel. A Delta Lake egy nyílt forráskódú tárolási réteg, amely sav (atomi, konzisztencia, elkülönítés és tartósság) tranzakciókat hoz Apache Spark és big data munkaterhelések számára.
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
 | Szolgáltatás | Leírás |
 | --- | --- |
-| **SAVAS tranzakciók** | Az adattavak at általában több folyamat és folyamat segítségével töltik fel, amelyek közül néhány olvasással egyidejűleg írja az adatokat. A Delta-tó előtt és a tranzakciók hozzáadása előtt az adatmérnököknek manuális hibaérzékeny folyamaton kellett átesnie az adatok integritásának biztosítása érdekében. A Delta Lake ismerős ACID tranzakciókat hoz az adattavakhoz. Szerializálást biztosít, a legerősebb szintű elkülönítési szintet. Tudjon meg többet a [Búvárkodás a Delta-tó: Kicsomagolás a tranzakciós napló](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
-| **Méretezhető metaadatok kezelése** | A big data-ban még maga a metaadatok is "big data" lehetnek. A Delta Lake ugyanúgy kezeli a metaadatokat, mint az adatokat, kihasználva a Spark elosztott feldolgozási erejét az összes metaadat kezeléséhez. Ennek eredményeképpen a Delta Lake képes kezelni a petabyte-méretű táblákat több milliárd partícióval és fájllal. |
-| **Időutazás (adatverziószámozás)** | A tranzakciók egyik legfontosabb jellemzője az a képesség, hogy "visszavonja" a módosításokat, vagy visszatérjen egy korábbi verzióra. A Delta Lake pillanatképeket biztosít az adatokról, amelyek lehetővé teszik, hogy visszaállítsa az adatok korábbi verzióit auditok, visszaállítások vagy kísérletek reprodukálása érdekében. További [információ: Bemutatkozás Delta Lake Time Travel for Large Scale Data Lakes](https://databricks.com/blog/2019/02/04/introducing-delta-time-travel-for-large-scale-data-lakes.html). |
-| **Formátum megnyitása** | Az Apache Parquet a Delta-tó alapformátuma, amely lehetővé teszi a formátumban őshonos hatékony tömörítési és kódolási sémák kihasználását. |
-| **Egyesített kötegelt és streamelési forrás és -fogadó** | A Delta-tó ban lévő tábla kötegelő tábla, valamint egy streamelési forrás és a fogadó. Az adatok streamelése, a kötegelt korábbi háttérkitöltés és az interaktív lekérdezések csak úgy kidolgoznak a dobozból. |
-| **Séma kényszerítése** | A sémakényszerítés segít biztosítani, hogy az adattípusok helyesek legyenek, és a szükséges oszlopok jelen vannak, megakadályozva, hogy a hibás adatok adatinkonzisztenciát okozzanak. További információ: [Diving Into Delta Lake: Schema Enforcement & Evolution](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
-| **Séma evolution** | A Delta Lake lehetővé teszi, hogy az automatikusan alkalmazható táblaséma módosításai az áttelepítési DDL írása nélkül is ellátható módosításokat hajtson végre. További információ: [Diving Into Delta Lake: Schema Enforcement & Evolution](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
-| **Naplózási előzmények** | A Delta Lake tranzakciós naplója rögzíti az adatok on-át végzett minden módosításának részleteit, amely a módosítások teljes naplózási nyomvonalát biztosítja. |
-| **Frissítések és törlések** | A Delta Lake támogatja a Scala / Java / Python és SQL API-kat a különböző funkciókhoz. Az egyesítési, frissítési és törlési műveletek támogatása segít a megfelelőségi követelmények teljesítésében. További információ: [A Delta-tó bejelentése 0.4.0 kiadás](https://delta.io/news/delta-lake-0-4-0-released/) és [egyszerű, megbízható upserts és törlések a Delta Lake-táblák python API-k használatával,](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html)amely tartalmazza a kódrészletek egyesítése, frissítése és törlése DML-parancsok. |
-| **100%-ban kompatibilis az Apache Spark API-val** | A fejlesztők minimális módosítással használhatják a Delta Lake-et a meglévő adatfolyamataikkal, mivel teljes mértékben kompatibilisek a meglévő Spark-implementációkkal. |
+| **SAVAS tranzakciók** | Az adattavak jellemzően több folyamaton és folyamaton keresztül vannak feltöltve, amelyek némelyike az olvasással párhuzamosan ír adatokat. A Delta Lake és a tranzakciók hozzáadását megelőzően az adatmérnököknek az adatok integritásának biztosítására szolgáló manuális hiba miatt kellett átesniük. A Delta Lake ismerős savas tranzakciókat biztosít az adattavak számára. Szerializált, az elkülönítési szint legerősebb szintjét biztosítja. Ismerkedjen meg [a Delta Lake-be: a tranzakciónapló kicsomagolásával](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
+| **Méretezhető metaadatok kezelésére** | A big data még a metaadatok is lehetnek "big data". A Delta Lake az adatokhoz hasonlóan kezeli a metaadatokat, és kihasználja a Spark elosztott feldolgozási teljesítményét az összes metaadatának kezeléséhez. Ennek eredményeképpen a Delta Lake könnyedén kezelheti a több milliárd partíciót és fájlt tartalmazó petabyte táblázatokat. |
+| **Utazási idő (adatverziószámozás)** | A tranzakciók egyik fő funkciója a "Visszavonás", illetve a korábbi verzióra való visszalépés lehetősége. A Delta-tó olyan adatpillanatképeket biztosít, amelyek lehetővé teszik a korábbi adatverziók visszaállítását a vizsgálatok, a visszagörgetések vagy a kísérletek reprodukálása céljából. További információ a [Delta Lake Time Travel nagy léptékű Adattavakhoz való bevezetéséről](https://databricks.com/blog/2019/02/04/introducing-delta-time-travel-for-large-scale-data-lakes.html). |
+| **Nyílt formátum** | Az Apache Parquet a Delta Lake alapformátuma, amely lehetővé teszi a formátumra natív, hatékony tömörítési és kódolási sémák kihasználása. |
+| **Egyesített batch és streaming forrás és fogadó** | A Delta Lake egyik táblája a Batch-tábla, valamint a streaming forrás és a fogadó. Az adatfolyamok betöltését, a Batch-backfill és az interaktív lekérdezéseket csak a dobozból kell kidolgozni. |
+| **Séma kényszerítése** | A séma kényszerítése révén biztosítható, hogy az adattípusok helyesek és kötelező oszlopok legyenek, ami megakadályozza, hogy az adatok inkonzisztenciát okozzanak. További információkért lásd [: a változás a Delta Lake-ben: a séma kényszerítése & evolúciója](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
+| **Séma-evolúció** | A Delta Lake lehetővé teszi egy olyan táblázatos séma módosítását, amely automatikusan alkalmazható, anélkül, hogy az áttelepítési DDL-t kellene írnia. További információkért lásd [: a változás a Delta Lake-ben: a séma kényszerítése & evolúciója](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
+| **Naplózási előzmények** | A Delta Lake Transaction napló rögzíti a módosítások teljes naplózási nyomvonalát biztosító adatokon végrehajtott összes módosítás részleteit. |
+| **Frissítések és törlések** | A Delta Lake számos funkció esetében támogatja a Scala/Java/Python és az SQL API-kat. Az egyesítési, frissítési és törlési műveletek támogatása segíti a megfelelőségi követelmények teljesítését. További információkért lásd: [a Delta Lake 0.4.0 kiadásának bejelentése](https://delta.io/news/delta-lake-0-4-0-released/) , valamint az [egyszerű, megbízható upsert és a a Python API-k használatával történő törlése a Delta Lake-táblázatokban](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html), beleértve a DML-parancsok egyesítéséhez, frissítéséhez és törléséhez szükséges kódrészleteket. |
+| **100%-kompatibilis a Apache Spark API-val** | A fejlesztők a meglévő adatfolyamatokkal és a meglévő Spark-implementációkkal teljes mértékben kompatibilis módon használhatják a Delta Lake-et. |
 
-A teljes dokumentációt a [Delta Lake dokumentációs oldalán találja.](https://docs.delta.io/latest/delta-intro.html)
+A teljes dokumentációért lásd a [Delta Lake dokumentációs oldalát](https://docs.delta.io/latest/delta-intro.html) .
 
 További információ: [Delta Lake Project](https://lfprojects.org).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Apache Spark dokumentációja .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

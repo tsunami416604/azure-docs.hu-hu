@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault felügyelt tárfiók – PowerShell-verzió
-description: A felügyelt tárfiók funkció zökkenőmentes integrációt biztosít az Azure Key Vault és egy Azure storage-fiók között.
+title: Azure Key Vault felügyelt Storage-fiók – PowerShell-verzió
+description: A felügyelt tár fiók funkciója zökkenőmentes integrációt biztosít Azure Key Vault és egy Azure Storage-fiók között.
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: secrets
@@ -9,19 +9,19 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.openlocfilehash: 7307741e56c7fc912f60d0496979243eb4be77a4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431266"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Közös hozzáférésű jogosultságkód lexikális elemeinek beolvasása kódból
 
-A tárfiókot a kulcstartóban lévő [megosztott hozzáférésű aláírás-jogkivonatokkal](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) kezelheti. Ez a cikk példákat tartalmaz a C# kód, amely lekéri a SAS-jogkivonatot, és műveleteket hajt végre vele.  A SAS-jogkivonatok létrehozásáról és tárolásáról a [Tárfiók-kulcsok kezelése a Key Vaultés az Azure CLI segítségével,](overview-storage-keys.md) illetve a [Tárfiók-kulcsok kezelése key vaulttal és Az Azure PowerShell használatával](overview-storage-keys-powershell.md)című témakörben talál további információt.
+A Storage-fiókját a kulcstartó [közös hozzáférés-aláírási jogkivonatával](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) kezelheti. Ez a cikk olyan C#-kód példáit mutatja be, amely egy SAS-tokent olvas be, és műveleteket végez vele.  Az SAS-tokenek létrehozásával és tárolásával kapcsolatos információkért lásd: a [Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI](overview-storage-keys.md) -vel, illetve a [Storage-fiókok kulcsainak kezelése Key Vault és Azure PowerShell](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Kódminták
 
-Ebben a példában a kód lekéri a SAS-jogkivonatot a key vaultból, egy új tárfiókot hoz létre, és létrehoz egy új Blob szolgáltatás ügyfelet.  
+Ebben a példában a kód beolvas egy SAS-jogkivonatot a kulcstartóból, ezzel új Storage-fiókot hoz létre, és létrehoz egy új Blob service ügyfelet.  
 
 ```cs
 // After you get a security token, create KeyVaultClient with vault credentials.
@@ -40,7 +40,7 @@ var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("htt
 var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
 ```
 
-Ha a megosztott hozzáférésű aláírás-jogkivonat hamarosan lejár, lehívhatja a megosztott hozzáférésű aláírás jogkivonatot a key vaultból, és frissítheti a kódot.
+Ha a megosztott hozzáférési aláírási token hamarosan lejár, a közös hozzáférésű aláírási tokent a kulcstartóból kérheti le, és frissítheti a kódot.
 
 ```cs
 // If your shared access signature token is about to expire,
@@ -51,6 +51,6 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 
 ## <a name="next-steps"></a>További lépések
-- Megtudhatja, hogyan [kezelheti a tárfiók kulcsait a Key Vault és az Azure CLI](overview-storage-keys.md) vagy az [Azure PowerShell](overview-storage-keys-powershell.md)segítségével.
-- Lásd: [Felügyelt tárfiókkulcs-minták](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
-- [Key Vault PowerShell-hivatkozás](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
+- Ismerje meg, hogyan [kezelheti a Storage-fiókok kulcsait Key Vault és az Azure CLI](overview-storage-keys.md) vagy [Azure PowerShell](overview-storage-keys-powershell.md)használatával.
+- Lásd: [felügyelt Storage-fiók kulcsainak mintái](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
+- [PowerShell-útmutató Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

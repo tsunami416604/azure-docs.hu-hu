@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault biztonsági vezérlői
-description: Az Azure Key Vault kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
+title: A Azure Key Vault biztonsági vezérlői
+description: A Azure Key Vault értékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429862"
 ---
-# <a name="security-controls-for-azure-key-vault"></a>Az Azure Key Vault biztonsági vezérlői
+# <a name="security-controls-for-azure-key-vault"></a>A Azure Key Vault biztonsági vezérlői
 
-Ez a cikk az Azure Key Vaultba beépített biztonsági vezérlőket dokumentálja. 
+Ez a cikk a Azure Key Vault beépített biztonsági vezérlőket dokumentálja. 
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -25,43 +25,43 @@ Ez a cikk az Azure Key Vaultba beépített biztonsági vezérlőket dokumentálj
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| A szolgáltatás végpontjának támogatása| Igen | Virtuális hálózat (VNet) szolgáltatásvégpontok használata. |
-| A VNet injekciózás támogatása| Nem |  |
-| Hálózati elkülönítés és tűzfaltámogatás| Igen | A Virtuálishálózat tűzfalszabályainak használata. |
-| Kényszerített bújtatástámogatása| Nem |  |
+| Szolgáltatás végpontjának támogatása| Igen | Virtual Network (VNet) szolgáltatási végpontok használata. |
+| VNet-befecskendezés támogatása| Nem |  |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen | VNet tűzfalszabályok használata. |
+| Kényszerített bújtatás támogatása| Nem |  |
 
-## <a name="monitoring--logging"></a>Naplózás & figyelése
+## <a name="monitoring--logging"></a>& naplózás figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure figyelési támogatás (Naplóelemzés, Alkalmazáselemzések stb.)| Igen | A Log Analytics használatával. |
-| Vezérlő/menedzsment sík naplózása és naplózása| Igen | A Log Analytics használatával. |
-| Adatsík naplózása és naplózása| Igen | A Log Analytics használatával. |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Log Analytics használata. |
+| Vezérlési/felügyeleti síkok naplózása és naplózása| Igen | Log Analytics használata. |
+| Adatsíkok naplózása és naplózása| Igen | Log Analytics használata. |
 
 ## <a name="identity"></a>Identitás
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | A hitelesítés az Azure Active Directoryn keresztül történik. |
-| Engedélyezés| Igen | A Key Vault hozzáférési házirend használata. |
+| Hitelesítés| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |
+| Engedélyezés| Igen | Key Vault hozzáférési házirend használatával. |
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok | Igen | Minden objektum titkosítva van. |
-| Kiszolgálóoldali titkosítás inaktív állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél vezérli a kulcstartóban lévő összes kulcsot. Ha hardveres biztonsági modul (HSM) biztonsági másolatot készíteni, a FIPS Level 2 HSM védi a kulcsot, a tanúsítványt vagy a titkos kulcsot. |
-| Oszlopszintű titkosítás (Azure Data Services)| N/A |  |
-| Titkosítás átvitel közben (például ExpressRoute-titkosítás, virtuális hálózat-titkosítás és Virtuálishálózati titkosítás)| Igen | Minden kommunikáció titkosított API-hívásokon keresztül történik |
-| TITKOSÍTOTT API-hívások| Igen | HTTPS használatával. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Minden objektum titkosítva van. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél a Key Vault összes kulcsát vezérli. Ha a hardveres biztonsági modul (HSM) által támogatott kulcsok meg vannak adva, akkor a 2. FIPS szintű HSM védi a kulcsot, a tanúsítványt vagy a titkos kulcsot. |
+| Oszlop szintű titkosítás (Azure Data Services)| N/A |  |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Minden kommunikáció titkosított API-hívásokon keresztül történik |
+| Titkosított API-hívások| Igen | HTTPS használatával. |
 
 ## <a name="access-controls"></a>Hozzáférés-vezérlés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/kezelés sík hozzáférés-vezérlők | Igen | Az Azure Resource Manager szerepköralapú hozzáférés-vezérlése (RBAC) |
-| Adatsík-hozzáférési vezérlők (minden szolgáltatási szinten) | Igen | A Key Vault hozzáférési irányelvei |
+| Vezérlő/felügyeleti sík hozzáférés-vezérlése | Igen | Az Azure Resource Manager szerepköralapú hozzáférés-vezérlése (RBAC) |
+| Adatsíkok hozzáférés-vezérlése (minden szolgáltatási szinten) | Igen | Hozzáférési szabályzat Key Vault |
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure-szolgáltatások beépített biztonsági vezérlőiről.](../../security/fundamentals/security-controls.md)
+- További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../../security/fundamentals/security-controls.md).

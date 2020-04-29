@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: trbye
 ms.openlocfilehash: 8abd520a7bb80f1f9a2d8ebcbe46b90fe59a96ec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422362"
 ---
 ## <a name="create-a-speech-resource"></a>Beszédfelismerési erőforrás létrehozása
 
-1. Bejelentkezés az [Azure-portálra](https://portal.azure.com)
-1. Kattintson [a **Beszédfelismerés** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) ierőforrás elemre.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Kattintson [a **beszédfelismerési** erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) elemre.
 1. Adja meg az összes szükséges beállítást:
 
     |Beállítás|Érték|
     |--|--|
     |Name (Név)|Kívánt név (2-64 karakter)|
     |Előfizetés|Válassza ki a megfelelő előfizetést|
-    |Hely|Válassza ki a közeli és elérhető helyeket|
-    |Tarifacsomag|`F0`- a minimális tarifaszint|
-    |Erőforráscsoport|Elérhető erőforráscsoport kiválasztása|
+    |Hely|Válasszon ki egy közeli és elérhető helyet|
+    |Tarifacsomag|`F0`– a minimális díjszabási réteg|
+    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot|
 
-1. Kattintson a **Létrehozás gombra,** és várja meg az erőforrás létrehozását. Létrehozása után keresse meg az erőforráslapot
-1. A `endpoint` konfigurált és egy API-kulcs összegyűjtése:
+1. Kattintson a **Létrehozás** gombra, és várja meg az erőforrás létrehozását. A létrehozást követően navigáljon az erőforrás lapra
+1. Összegyűjtése `endpoint` KONFIGURÁLT és API-kulcs:
 
     |Erőforrás lap a portálon|Beállítás|Érték|
     |--|--|--|
-    |**Áttekintés**|Végpont|Másolja a végpontot. Úgy néz ki, hasonló`https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
-    |**Kulcsok**|API-kulcs|A két kulcs 1. Ez egy 32 alfanumerikus karakterből álló karakterlánc `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`szóközök és kötőjelek nélkül.|
+    |**Áttekintés**|Végpont|Másolja a végpontot. A következőhöz hasonlóan néz ki`https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
+    |**Kulcsok**|API-kulcs|A két kulcs 1. másolása. Egy 32 alfanumerikus karakterből álló karakterlánc, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`szóköz vagy kötőjel nélkül.|

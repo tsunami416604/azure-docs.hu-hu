@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault beállítása végpontok közötti kulcsrotációval és naplózással | Microsoft dokumentumok
-description: Ezzel az útmutatóval segítséget nyújt a kulcselforgatás beállításához és a kulcstartó naplóinak figyeléséhez.
+title: A végpontok közötti kulcsfontosságú rotációs és naplózási Azure Key Vault beállítása | Microsoft Docs
+description: Ez a útmutató segítséget nyújt a kulcsok elforgatásának beállításához és a Key Vault-naplók figyeléséhez.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430252"
 ---
-# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Az Azure Key Vault beállítása kulcsrotációval és naplózással
+# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault beállítása a kulcsfontosságú rotációs és naplózási szolgáltatással
 
 ## <a name="introduction"></a>Introduction (Bevezetés)
 
-Miután rendelkezik egy key vault, megkezdheti a kulcsok és titkos kulcsok tárolására. Az alkalmazások nak már nem kell megtartania a kulcsokat vagy a titkos kulcsokat, de szükség szerint kérheti őket a tárolóból. A kulcstartó lehetővé teszi a kulcsok és a titkos kulcsok frissítését anélkül, hogy befolyásolná az alkalmazás viselkedését, amely a kulcs- és titkos kezelés lehetőségeinek széles tárkait nyitja meg.
+A Key Vault használata után elkezdheti a kulcsok és titkok tárolására. Az alkalmazásai többé nem kell megőrizniük a kulcsokat vagy a titkokat, de igény szerint kérhetik őket a tárból. A Key Vault lehetővé teszi a kulcsok és a titkos kódok frissítését anélkül, hogy az hatással lenne az alkalmazás viselkedésére, ami a kulcs-és titkos felügyeleti lehetőségek széles körét nyitja meg.
 
-Ez a cikk bemutatja, hogyan valósíthatja meg a tárfiók kulcsok ütemezett rotációját, figyelheti a key vault naplózási naplókat, és riasztást a váratlan kérelmek esetén. 
+Ez a cikk bemutatja, hogyan valósítható meg a Storage-fiók kulcsainak ütemezett rotációja, hogyan figyelhetők meg a Key Vault-naplók, és hogyan lehet riasztásokat felvenni váratlan kérelmek esetén. 
 
-Először létre kell hoznia egy key vaultot az Ön által választott módszerrel:
+Először létre kell hoznia egy Key vaultot a választott módszer használatával:
 
-- [Az Azure Key Vault titkos adatainak beállítása és lekérése az Azure CLI használatával](quick-create-cli.md)
-- [Az Azure Key Vault titkos adatainak beállítása és lekérése az Azure PowerShell használatával](quick-create-powershell.md)
-- [Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával](quick-create-portal.md)
+- [Azure Key Vault titkos kód beállítása és beolvasása az Azure CLI használatával](quick-create-cli.md)
+- [Azure Key Vault titkos kulcsának beállítása és beolvasása Azure PowerShell használatával](quick-create-powershell.md)
+- [Azure Key Vault titkos kulcsának beállítása és beolvasása Azure Portal használatával](quick-create-portal.md)
 
 
-## <a name="store-a-secret"></a>Titkos tárolása
+## <a name="store-a-secret"></a>Titkos kód tárolása
 
-Ahhoz, hogy egy alkalmazás lekérje a titkos kulcsot a Key Vaultból, először létre kell hoznia a titkos kulcsot, és fel kell töltenie azt a tárolóba.
+Annak engedélyezéséhez, hogy az alkalmazás Key Vault titkos kulcsot kérjen, először létre kell hoznia a titkot, és fel kell töltenie a tárolóba.
 
 Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:
 
@@ -42,27 +42,27 @@ Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fi�
 Connect-AzAccount
 ```
 
-Az előugró böngészőablakban adja meg az Azure-fiókjához megadott felhasználónevet és jelszót. A PowerShell leteszi a fiókhoz társított összes előfizetést. A PowerShell alapértelmezés szerint az elsőt használja.
+Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. A PowerShell megkapja az ehhez a fiókhoz társított összes előfizetést. A PowerShell alapértelmezés szerint az elsőt használja.
 
-Ha több előfizetéssel rendelkezik, előfordulhat, hogy meg kell adnia a key vault létrehozásához használt. A fiók előfizetései megtekintéséhez adja meg az alábbiakat:
+Ha több előfizetéssel rendelkezik, előfordulhat, hogy meg kell adnia a kulcstartó létrehozásához használtt. Adja meg a következőt a fiókhoz tartozó előfizetések megtekintéséhez:
 
 ```powershell
 Get-AzSubscription
 ```
 
-A naplózni kívánt kulcstartóhoz társított előfizetés megadásához írja be a következőt:
+A naplózni kívánt kulcstartóhoz tartozó előfizetés megadásához írja be a következőt:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
-Mivel ez a cikk titkos kulcsként bemutatja a tárfiók kulcsának tárolását, be kell szereznie a tárfiók kulcsát.
+Mivel ez a cikk azt mutatja be, hogy a Storage-fiók kulcsa titkosként van tárolva, a Storage-fiók kulcsát kell megszereznie.
 
 ```powershell
 Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-A titkos kulcs (ebben az esetben a tárfiók kulcsa) beolvasása után a kulcsot biztonságos karakterláncba kell konvertálnia, majd létre kell hoznia egy titkos kulcsot ezzel az értékkel a kulcstartóban.
+A titkos kulcs (ebben az esetben a Storage-fiók kulcsa) beolvasása után a kulcsot egy biztonságos karakterláncra kell konvertálnia, majd létre kell hoznia egy titkos kulcsot a kulcstartóban.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
@@ -70,7 +70,7 @@ $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
-Ezután az URI-t a létrehozott titkos kulcsot. Szüksége lesz erre az URI-ra egy későbbi lépésben a key vault hívásához és a titkos kulcs beolvasásához. Futtassa a következő PowerShell-parancsot, és jegyezze fel az azonosító értéket, amely a titkos titok URI-ja:
+Ezután szerezze be a létrehozott titok URI-JÁT. Erre az URI-ra szüksége lesz egy későbbi lépésben a Key Vault meghívásához és a titkos kód lekéréséhez. Futtassa a következő PowerShell-parancsot, és jegyezze fel az azonosító értékét, amely a titok URI-ja:
 
 ```powershell
 Get-AzKeyVaultSecret –VaultName <vaultName>
@@ -78,36 +78,36 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 
 ## <a name="set-up-the-application"></a>Az alkalmazás beállítása
 
-Most, hogy egy titkos tárolt, használhatja a kódot letölteni és használni, miután néhány további lépést.
+Most, hogy rendelkezik egy titkos kulccsal, a kód használatával kérheti le és használhatja azt néhány további lépés végrehajtása után.
 
-Először regisztrálnia kell az alkalmazást az Azure Active Directoryval. Ezután mondja el a Key Vault nak az alkalmazás adatait, hogy engedélyezze az alkalmazásból érkező kérelmeket.
+Először regisztrálnia kell az alkalmazást Azure Active Directory. Ezután tájékoztassa Key Vault az alkalmazás adatait, hogy az alkalmazástól érkező kéréseket engedélyezze.
 
 > [!NOTE]
-> Az alkalmazást ugyanazon az Azure Active Directory-bérlőn kell létrehozni, mint a key vault.
+> Az alkalmazást a Key vaulttal megegyező Azure Active Directory bérlőn kell létrehozni.
 
-1. Nyissa meg **az Azure Active Directoryt**.
-2. Válassza **az Alkalmazásregisztrációk lehetőséget.** 
-3. Válassza **az Új alkalmazás regisztráció az** Azure Active Directoryhoz való hozzáadásához válassza az új alkalmazás regisztrációját.
+1. Nyissa meg **Azure Active Directory**.
+2. Válassza a **Alkalmazásregisztrációk**lehetőséget. 
+3. Válassza az **új alkalmazás regisztrálása** lehetőséget az alkalmazás Azure Active Directoryhoz való hozzáadásához.
 
-    ![Alkalmazások megnyitása az Azure Active Directoryban](../media/keyvault-keyrotation/azure-ad-application.png)
+    ![Alkalmazások megnyitása Azure Active Directory](../media/keyvault-keyrotation/azure-ad-application.png)
 
-4. A **Létrehozás csoportban**hagyja az alkalmazás típusát **webalkalmazásként / API-ként,** és adjon nevet az alkalmazásnak. Adjon meg az alkalmazásnak egy **bejelentkezési URL-címet.** Ez az URL bármi lehet, amit akarsz ehhez a demóhoz.
+4. A **Létrehozás**területen hagyja meg az alkalmazás típusát **webalkalmazásként vagy API** -ként, és adjon nevet az alkalmazásnak. Adja meg az alkalmazásnak a **bejelentkezési URL-címet**. Ez az URL-cím lehet bármi, amit a bemutatóhoz szeretne használni.
 
-    ![Alkalmazásregisztráció létrehozása](../media/keyvault-keyrotation/create-app.png)
+    ![Alkalmazás-regisztráció létrehozása](../media/keyvault-keyrotation/create-app.png)
 
-5. Miután az alkalmazást hozzáadta az Azure Active Directoryhoz, megnyílik az alkalmazáslap. Válassza a **Beállítások**lehetőséget, majd a **Tulajdonságok**lehetőséget. Másolja az **alkalmazásazonosító** értékét. Szüksége lesz rá a későbbi lépésekben.
+5. Az alkalmazás Azure Active Directoryhoz való hozzáadása után megnyílik az alkalmazás lap. Válassza a **Beállítások**, majd a **Tulajdonságok**elemet. Másolja az **alkalmazás-azonosító** értékét. A későbbi lépésekben szüksége lesz rá.
 
-Ezután hozzon létre egy kulcsot az alkalmazáshoz, hogy kommunikálhassa az Azure Active Directoryt. Kulcs létrehozásához válassza a **Billentyűk** lehetőséget a **Beállítások csoportban.** Jegyezze fel az Azure Active Directory-alkalmazás újonnan létrehozott kulcsát. Egy későbbi lépésben szüksége lesz rá. A kulcs nem lesz elérhető, miután elhagyta ezt a szakaszt. 
+Ezután állítson be egy kulcsot az alkalmazáshoz, hogy az interakcióba lépjen a Azure Active Directory használatával. Kulcs létrehozásához válassza a **Beállítások**területen a **kulcsok** elemet. Jegyezze fel az újonnan generált kulcsot a Azure Active Directory alkalmazáshoz. Egy későbbi lépésben szüksége lesz rá. A kulcs a szakasz elhagyása után nem lesz elérhető. 
 
-![Az Azure Active Directory alkalmazáskulcsai](../media/keyvault-keyrotation/create-key.png)
+![Azure Active Directory alkalmazás kulcsai](../media/keyvault-keyrotation/create-key.png)
 
-Mielőtt bármilyen hívást hozna létre az alkalmazásból a key vaultba, meg kell mondania a key vault az alkalmazás és az engedélyek. A következő parancs a tároló nevét és az Azure Active Directory-alkalmazásalkalmazásbeli alkalmazásazonosítót használja az alkalmazás **hozzáférésének** biztosításához a key vaulthoz.
+Mielőtt bármilyen hívást hozna létre az alkalmazásból a kulcstartóba, meg kell adnia a Key vaultot az alkalmazásról és annak engedélyeiről. A következő parancs a tár nevét és az alkalmazás AZONOSÍTÓját használja a Azure Active Directory alkalmazásból, hogy az **alkalmazás hozzáférjen** a kulcstartóhoz.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-Most már készen áll az alkalmazáshívások létrehozásának megkezdésére. Az alkalmazásban telepítenie kell a NuGet-csomagokat, amelyek szükségesek az Azure Key Vault és az Azure Active Directory együttműködéséhez. A Visual Studio Package Manager konzolján adja meg a következő parancsokat. A cikk írásában az Azure Active Directory-csomag jelenlegi verziója 3.10.30.305231913, így erősítse meg a legújabb verziót, és szükség szerint frissítse.
+Most már készen áll az alkalmazások létrehozásának megkezdésére. Az alkalmazásban telepítenie kell a Azure Key Vault és Azure Active Directory használatához szükséges NuGet-csomagokat. A Visual Studio Package Manager konzolon adja meg a következő parancsokat. A cikk írásakor a Azure Active Directory csomag aktuális verziója 3.10.305231913, ezért szükség szerint erősítse meg a legújabb verziót és a frissítést.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -115,13 +115,13 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Az alkalmazáskódban hozzon létre egy osztályt az Azure Active Directory-hitelesítés metódusának tárolására. Ebben a példában, hogy az osztály neve **Utils**. Adja hozzá `using` a következő utasítást:
+Az alkalmazás kódjában hozzon létre egy osztályt a Azure Active Directory-hitelesítés metódusának tárolására. Ebben a példában ez az osztály **utils**. Adja hozzá a `using` következő utasítást:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Ezután adja hozzá a következő módszert a JWT-jogkivonat azure-beli Active Directoryból való lekéréséhez. A karbantarthatóság érdekében érdemes lehet áthelyezni a kódolt karakterlánc-értékeket a web- vagy alkalmazáskonfigurációba.
+Ezután adja hozzá a következő metódust az JWT-jogkivonat lekéréséhez Azure Active Directoryból. A karbantartáshoz érdemes lehet áthelyezni a rögzített karakterlánc-értékeket a webes vagy az alkalmazás-konfigurációba.
 
 ```csharp
 public async static Task<string> GetToken(string authority, string resource, string scope)
@@ -140,13 +140,13 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Adja hozzá a kulcstároló hívásához szükséges kódot, és kérje le a titkos értéket. Először a következő `using` utasítást kell hozzáadnia:
+Adja hozzá a Key Vault meghívásához és a titkos érték beolvasásához szükséges kódot. Először hozzá kell adnia a következő `using` utasítást:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Adja hozzá a metódushívások at a Key Vault meghívásához és a titkos kulcs lekéréséhez. Ebben a módszerben adja meg a titkos URI,amely egy előző lépésben mentett. Vegye figyelembe a **GetToken** metódus használatát a korábban létrehozott **Utils** osztályból.
+Adja hozzá a metódus hívásait a Key Vault meghívásához és a titkos kód lekéréséhez. Ebben a metódusban megadhatja az előző lépésben mentett titkos URI-t. Jegyezze fel a **GetToken** metódus használatát a korábban létrehozott **utils** osztályból.
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -154,26 +154,26 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetT
 var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ```
 
-Az alkalmazás futtatásakor most már hitelesítse az Azure Active Directoryt, majd a titkos érték beolvasása az Azure Key Vaultból.
+Ha futtatja az alkalmazást, most hitelesítenie kell Azure Active Directory, majd le kell kérnie a titkos értéket a Azure Key Vault.
 
-## <a name="key-rotation-using-azure-automation"></a>Kulcsrotáció az Azure Automation használatával
+## <a name="key-rotation-using-azure-automation"></a>Kulcs elforgatása Azure Automation használatával
 
 > [!IMPORTANT]
-> Az Azure Automation runbookok `AzureRM` továbbra is megkövetelik a modul használatát.
+> Azure Automation runbookok továbbra is szükség van a `AzureRM` modul használatára.
 
-Most már készen áll egy rotációs stratégia beállítására a Key Vault-titokként tárolt értékekhez. A titkok többféleképpen forgathatók:
+Most már készen áll egy rotációs stratégia beállítására a Key Vault titokként tárolt értékekhez. A titkok több módon is elforgathatók:
 
-- A manuális folyamat részeként
+- Manuális folyamat részeként
 - Programozott módon API-hívások használatával
-- Egy Azure Automation-parancsfájlon keresztül
+- Egy Azure Automation parancsfájlon keresztül
 
-Ebben a cikkben a PowerShell és az Azure Automation használatával módosíthatja az Azure storage-fiók hozzáférési kulcsát. Ezután frissíteni fogja a kulcstartó titkos kulcsát az új kulccsal.
+Ebben a cikkben a PowerShell és a Azure Automation együttes használatával módosíthatja az Azure Storage-fiók hozzáférési kulcsát. Ezt követően új kulccsal frissíti a Key Vault titkos kulcsát.
 
-Ahhoz, hogy az Azure Automation titkos értékeket állíthasson be a key vaultban, be kell szereznie az **AzureRunAsConnection**nevű kapcsolat ügyfélazonosítóját. Ez a kapcsolat az Azure Automation-példány létrehozásakor jött létre. Az azonosító megkereséséhez válassza **az Eszközök** lehetőséget az Azure Automation-példányból. Itt válassza a **Kapcsolatok**lehetőséget, majd válassza ki az **AzureRunAsConnection** egyszerű szolgáltatást. Jegyezze fel az **ApplicationId** értéket.
+Annak engedélyezéséhez, Azure Automation hogy a Key vaultban meg lehessen adni a titkos értékeket, le kell kérnie a **azurerunasconnection elemet**nevű kapcsolódás ügyfél-azonosítóját. Ez a Kapcsolódás a Azure Automation példányának létrehozásakor jött létre. Az azonosító megkereséséhez válassza ki az **eszközök** elemet a Azure Automation-példányból. Onnan válassza a **kapcsolatok**lehetőséget, majd válassza ki a **azurerunasconnection elemet** egyszerű szolgáltatásnevet. Jegyezze fel a **ApplicationId** értékét.
 
-![Azure Automation-ügyfélazonosító](../media/keyvault-keyrotation/Azure_Automation_ClientID.png)
+![Azure Automation ügyfél-azonosító](../media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-Az **Eszközök**alkalmazásban válassza a **Modulok**lehetőséget. Válassza **a Galéria**lehetőséget, majd keresse meg és importálja az alábbi modulok frissített verzióit:
+Az **eszközök**területen válassza a **modulok**elemet. Válassza **a**katalógus lehetőséget, majd keresse meg és importálja a következő modulok frissített verzióit:
 
     Azure
     Azure.Storage
@@ -183,19 +183,19 @@ Az **Eszközök**alkalmazásban válassza a **Modulok**lehetőséget. Válassza 
     AzureRM.Storage
 
 > [!NOTE]
-> A cikk írásakor csak a korábban említett modulokat kellett frissíteni a következő parancsfájlhoz. Ha az automatizálási feladat sikertelen, ellenőrizze, hogy importálta-e az összes szükséges modult és azok függőségeit.
+> A cikk írásakor csak a korábban feljegyzett modulok szükségesek a következő parancsfájlhoz való frissítéshez. Ha az Automation-feladatok sikertelenek, ellenőrizze, hogy az összes szükséges modult és függőségeit importálta-e.
 
-Miután lekérte az azure automation-kapcsolat alkalmazásazonosítóját, meg kell mondania a key vaultnak, hogy az alkalmazás rendelkezik engedéllyel a trezor ban a titkos kulcsok frissítésére. Használja a következő PowerShell parancsot:
+A Azure Automation-kapcsolatok alkalmazás-AZONOSÍTÓjának lekérése után meg kell adnia a kulcstartónak, hogy az alkalmazás jogosult-e a titkos kódok frissítésére a tárolóban. Használja a következő PowerShell-parancsot:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-Ezután válassza a **Runbookok** lehetőséget az Azure Automation-példány alatt, majd a **Runbook hozzáadása**lehetőséget. Kattintson a **Gyors létrehozás** gombra. Nevezze el a runbookot, és válassza a **PowerShell** a runbook típusát. Leírást adhat hozzá. Végül válassza a **Létrehozás gombot.**
+Ezután válassza a **runbookok** elemet a Azure Automation példány alatt, majd válassza a **Runbook hozzáadása**elemet. Kattintson a **Gyors létrehozás** gombra. Nevezze el a runbook, és válassza a **PowerShell** lehetőséget a runbook típusaként. Leírást adhat hozzá. Végül válassza a **Létrehozás**lehetőséget.
 
 ![Runbook létrehozása](../media/keyvault-keyrotation/Create_Runbook.png)
 
-Illessze be a következő PowerShell-parancsfájlt az új runbook szerkesztőablakába:
+Illessze be a következő PowerShell-szkriptet a szerkesztő ablaktáblában az új runbook:
 
 ```powershell
 $connectionName = "AzureRunAsConnection"
@@ -238,13 +238,13 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-A szerkesztő ablaktáblán válassza a **Teszt ablaktábla** lehetőséget a parancsfájl teszteléséhez. Miután a parancsfájl hiba nélkül fut, **kiválaszthatja a Közzététel**lehetőséget, majd a runbook konfigurációs ablaktáblájában alkalmazhatja a runbook ütemezését.
+A szkript teszteléséhez a szerkesztő ablaktáblán kattintson a **teszt panel** elemre. A parancsfájl hiba nélküli futtatása után kiválaszthatja a **Közzététel**lehetőséget, majd a runbook-konfiguráció ablaktáblán alkalmazhat egy ütemezett runbook is.
 
 ## <a name="key-vault-auditing-pipeline"></a>Key Vault naplózási folyamat
 
-Amikor beállít egy key vault, bekapcsolhatja a naplózási naplók gyűjtése a key vault hozzáférési kérelmek. Ezek a naplók egy kijelölt Azure-tárfiókban tárolódnak, és kihúzhatók, figyelhetők és elemezhetők. A következő forgatókönyv az Azure-függvények, az Azure-logikai alkalmazások és a kulcs-vault naplózási naplók létrehozása egy folyamat, amely e-mailt küld, ha egy alkalmazás, amely nem felel meg a webalkalmazás alkalmazásazonosítója lekéri a trezorból titkokat.
+A kulcstartó beállításakor bekapcsolhatja a naplózást, hogy összegyűjtse a Key vaulthoz benyújtott hozzáférési kérelmek naplóit. Ezek a naplók egy kijelölt Azure Storage-fiókban tárolódnak, és kihúzhatók, megfigyelhetők és elemezhetők. Az alábbi forgatókönyv az Azure functions, az Azure Logic apps és a Key-Vault naplókat használja egy olyan folyamat létrehozásához, amely e-mailt küld, ha egy alkalmazás, amely nem felel meg a webalkalmazás alkalmazás-AZONOSÍTÓjának, beolvassa a titkos kulcsokat a tárból.
 
-Először engedélyeznie kell a bejelentkezést a key vault. Használja a következő PowerShell-parancsokat. (A [kulcstartó naplózásáról szóló cikkben](../general/logging.md)található részletek láthatók.)
+Először engedélyeznie kell a naplózást a kulcstartón. Használja a következő PowerShell-parancsokat. (A cikk részletesen ismerteti a [Key-Vault-naplózást](../general/logging.md).)
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -252,27 +252,27 @@ $kv = Get-AzKeyVault -VaultName '<vaultName>'
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-A naplózás engedélyezése után a naplónaplók a kijelölt tárfiókban tárolódnak. Ezek a naplók eseményeket tartalmaznak arról, hogyan és mikor érhetők el a kulcstartók, és ki által.
+A naplózás engedélyezése után a rendszer a naplókat a kijelölt Storage-fiókban tárolja. Ezek a naplók azokat az eseményeket tartalmazzák, amelyekkel és a kulcstartók elérésével, valamint a kivel.
 
 > [!NOTE]
-> A naplózási adatok at 10 perccel a key vault-művelet után érheti el. Ez gyakran elérhető hamarabb, mint ezt.
+> A naplózási adatokat 10 perccel a kulcstartó művelet után érheti el. Ez gyakran ennél hamarabb elérhető lesz.
 
-A következő lépés [egy Azure Service Bus-várólista létrehozása.](../../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md) Ez a várólista, ahol a kulcstartó naplózási naplók leküldéses. Amikor a naplóüzenetek a várólistában vannak, a logikai alkalmazás felveszi őket, és fellép rajtuk. Hozzon létre egy Service Bus-példányt a következő lépésekkel:
+A következő lépés [egy Azure Service Bus üzenetsor létrehozása](../../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Ez a várólista a Key-Vault naplók leküldésének helyét jelenti. Ha a naplózási napló üzenetei a várólistán vannak, a logikai alkalmazás felveszi őket, és elvégez rajtuk műveleteket. Hozzon létre egy Service Bus példányt a következő lépésekkel:
 
-1. Hozzon létre egy Service Bus-névteret (ha már rendelkezik használni kívánt névtérrel, ugorjon a 2. lépésre).
-2. Tallózással keresse meg a Service Bus-példányt az Azure Portalon, és válassza ki a várólistát létrehozni kívánt névteret.
-3. Válassza **az Erőforrás** > **létrehozása vállalati integrációs** > **szolgáltatásbusz**lehetőséget, majd adja meg a szükséges adatokat.
-4. Keresse meg a Service Bus kapcsolat adatait a névtér kiválasztásával, majd a **Kapcsolatadatai**lehetőségkiválasztásával. Erre az információra a következő szakaszhoz szüksége lesz.
+1. Hozzon létre egy Service Bus névteret (ha már rendelkezik egy használni kívánttal, ugorjon a 2. lépésre).
+2. Keresse meg a Azure Portal Service Bus példányát, és válassza ki azt a névteret, amelyben létre kívánja hozni a várólistát.
+3. Válassza az **erőforrás** > létrehozása**Vállalati integráció** > **Service Bus**lehetőséget, majd adja meg a szükséges adatokat.
+4. Keresse meg a Service Bus a kapcsolatok adatait a névtér kiválasztásával, majd a **kapcsolatok adatainak**kiválasztásával. Ezekre az információkra szüksége lesz a következő szakaszhoz.
 
-Ezután [hozzon létre egy Azure-függvényt](../../azure-functions/functions-create-first-azure-function.md) a tárfiókon belüli key vault-naplók lekérdezéséhez és az új események felvételéhez. Ez a funkció ütemezés szerint aktiválódik.
+Ezután [hozzon létre egy Azure-függvényt](../../azure-functions/functions-create-first-azure-function.md) a Key Vault-naplók lekérdezéséhez a Storage-fiókon belül, és vegyen fel új eseményeket. Ezt a függvényt egy ütemezett időpontban indítja el a rendszer.
 
-Azure-függvényalkalmazás létrehozásához válassza **az Erőforrás létrehozása**lehetőséget, keresse meg a piactéren a **Függvényalkalmazást,** majd válassza a **Létrehozás lehetőséget.** A létrehozás során használhat egy meglévő tárhelycsomagot, vagy létrehozhat egy újat. Azt is választhatja a dinamikus tárhely. Az Azure Functions üzemeltetési beállításairól az [Azure Functions méretezése](../../azure-functions/functions-scale.md)című témakörben talál további információt.
+Azure Function-alkalmazás létrehozásához válassza az **erőforrás létrehozása**lehetőséget, keresse meg a piactéren a **függvényalkalmazás**, majd válassza a **Létrehozás**lehetőséget. A létrehozás során használhat egy meglévő üzemeltetési csomagot, vagy létrehozhat egy újat. Dönthet úgy is, hogy dinamikus üzemeltetést végez. További információ a Azure Functions üzemeltetési lehetőségeiről: [Azure functions skálázása](../../azure-functions/functions-scale.md).
 
-Az Azure függvényalkalmazás létrehozása után nyissa meg, és válassza ki az **időzítő** forgatókönyvet és a **C\# ** a nyelvet. Ezután válassza **a Funkció létrehozása**lehetőséget.
+Az Azure Function alkalmazás létrehozása után nyissa meg a következőt:, és válassza ki az **időzítő** forgatókönyvet, és a **C betűt\# ** a nyelvhez. Ezután válassza **a függvény létrehozása**lehetőséget.
 
-![Az Azure Functions Start panelje](../media/keyvault-keyrotation/Azure_Functions_Start.png)
+![Azure Functions Start panel](../media/keyvault-keyrotation/Azure_Functions_Start.png)
 
-A **Fejlesztés** lapon cserélje le a run.csx kódot a következőre:
+A **fejlesztés** lapon cserélje le a Run. CSX kódot a következőre:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -384,19 +384,19 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ```
 
 > [!NOTE]
-> Módosítsa az előző kódban lévő változókat úgy, hogy a tárfiókra mutasson, ahol a key vault naplók vannak írva, a korábban létrehozott Service Bus-példányra és a key-vault storage-naplók adott elérési útvonalára.
+> Módosítsa az előző kódban szereplő változókat úgy, hogy az a Storage-fiókra mutasson, ahol a Key Vault-naplók meg vannak írva, a korábban létrehozott Service Bus példányra, valamint a Key-Vault Storage-naplók megadott elérési útjára.
 
-A függvény felveszi a legújabb naplófájlt a tárfiókból, ahol a key vault naplók vannak írva, megragadja a legújabb eseményeket, hogy a fájlból, és leküldéses őket egy Service Bus-várólistába. 
+A függvény felveszi a legújabb naplófájlt abból a Storage-fiókból, ahol a Key Vault-naplók meg vannak írva, megragadja a fájl legutóbbi eseményeit, és leküldi őket egy Service Bus-várólistára. 
 
-Mivel egyetlen fájlnak több eseménye is lehet, hozzon létre egy sync.txt fájlt, amelyet a függvény is megnéz az utoljára felvett esemény időbélyegzőjének meghatározásához. A fájl használata biztosítja, hogy ne nyomja meg ugyanazt az eseményt többször. 
+Mivel egyetlen fájl több eseménnyel is rendelkezhet, létre kell hoznia egy Sync. txt fájlt, amelyet a függvény a legutóbbi esemény időbélyegének meghatározására is rákeres. A fájl használata biztosítja, hogy ne kelljen többször leküldeni ugyanazt az eseményt. 
 
-A sync.txt fájl az utoljára észlelt esemény időbélyegzőjét tartalmazza. A naplók betöltésekor az időbélyegzőik alapján kell rendezni őket, hogy megbizonyosodjanak a megfelelő sorrendről.
+A Sync. txt fájl a legutóbbi esemény időbélyegzőjét tartalmazza. A naplók betöltését követően a rendszer az időbélyegük alapján rendezi a naplókat, hogy a megfelelő sorrendben legyenek rendezve.
 
-Ehhez a funkcióhoz hivatkozunk egy pár további könyvtárak, amelyek nem érhetők el a dobozon kívül az Azure Functions. Ahhoz, hogy ezeket a könyvtárakat, szükségünk van az Azure Functions lekéri őket a NuGet használatával. A **Kód** mezőben válassza a **Fájlok megtekintése**lehetőséget.
+Ebben a függvényben egy pár további, a Azure Functions található dobozból nem elérhető függvénytárra hivatkozunk. A kódtárak felvételéhez Azure Functions kell őket a NuGet használatával történő lekéréséhez. A **kód** mezőben válassza a **fájlok megtekintése**lehetőséget.
 
-!["Fájlok megtekintése" beállítás](../media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
+!["Fájlok megtekintése" lehetőség](../media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-Project.json nevű fájl hozzáadása a következő tartalommal:
+Vegyen fel egy Project. JSON nevű fájlt a következő tartalommal:
 
 ```json
     {
@@ -411,38 +411,38 @@ Project.json nevű fájl hozzáadása a következő tartalommal:
     }
 ```
 
-Miután **kiválasztotta**a Mentés lehetőséget, az Azure Functions letölti a szükséges bináris fájlokat.
+A **Mentés**gombra kattintva Azure functions letölti a szükséges bináris fájlokat.
 
-Váltson az **Integráció** lapra, és adjon értelmes nevet az időzítő paraméternek a függvényen belül. Az előző kódban a függvény elvárja, hogy az időzítőt *myTimer-nek*hívják. Az [időzítőcron-kifejezésének](../../app-service/webjobs-create.md#CreateScheduledCRON) megadása a `0 * * * * *`következőképpen: . Ez a kifejezés hatására a függvény percenként egyszer fut.
+Váltson az **integráció** lapra, és adjon meg egy értelmes nevet a függvényen belül. Az előző kódban a függvény a *myTimer*nevű időzítőt várja. A következőképpen adja meg az időzítőhöz tartozó [cron](../../app-service/webjobs-create.md#CreateScheduledCRON) - `0 * * * * *`kifejezést:. Ez a kifejezés azt eredményezi, hogy a függvény percenként egyszer fut.
 
-Ugyanazon az **Integráció** lapon adjon hozzá egy **Azure Blob storage**típusú bemenetet. Ez a bemenet a sync.txt fájlra mutat, amely a függvény által megtekintett utolsó esemény időbélyegzőjét tartalmazza. Ez a bemenet a függvényen belül érhető el a paraméter név használatával. Az előző kódban az Azure Blob storage bemeneti elvárja, hogy a paraméter neve *inputBlob*lesz. Válassza ki azt a tárfiókot, ahol a sync.txt fájl található (lehet ugyanaz vagy egy másik tárfiók). A görbemezőben adja meg a fájl `{container-name}/path/to/sync.txt`elérési útját formátumban.
+Az **integráció** lapon adja meg az **Azure Blob Storage**típus bemenetét. Ez a bemenet arra a Sync. txt fájlra mutat, amely a függvény által a legutóbbi esemény időbélyegét tartalmazza. Ez a bemenet a függvényen belül lesz elérhető a paraméter nevével. Az előző kódban az Azure Blob Storage-bemenet a *inputBlob*paraméter nevét várja. Válassza ki azt a Storage-fiókot, ahol a Sync. txt fájl található (ez lehet ugyanaz vagy egy másik Storage-fiók). Az elérési út mezőben adja meg a fájl elérési útját a `{container-name}/path/to/sync.txt`következő formátumban:.
 
-**Azure Blob storage**típusú kimenet hozzáadása. Ez a kimenet a bemenetben megadott sync.txt fájlra mutat. Ezt a kimenetet a függvény az utolsó megtekintett esemény időbélyegzőjének írására használja. Az előző kód azt várja, hogy ezt a paramétert *outputBlob-nak*hívják.
+Adja hozzá az **Azure Blob Storage**típusú kimenetet. Ez a kimenet a bemenetben megadott Sync. txt fájlra mutat. Ezt a kimenetet a függvény a legutóbbi esemény időbélyegének megírására használja. Az előző kód azt várja, hogy ezt a paramétert *outputBlob*nevezzük.
 
-A funkció készen áll. Ügyeljen arra, hogy visszaváltson a **Fejlesztés** lapra, és mentse a kódot. Ellenőrizze a kimeneti ablakban az esetleges fordítási hibákat, és szükség szerint javítsa ki azokat. Ha a kód lefordítja, majd a kódot kell ellenőriznia a key vault naplók percenként, és leadott új eseményeket a megadott Service Bus-várólistába. A naplózási adatokat minden alkalommal, amikor a függvény aktiválódik, a naplóablakba kell írnia a naplózási adatokat.
+A függvény most már készen áll. Ügyeljen arra, hogy a **fejlesztés** lapra váltson vissza, és mentse a kódot. A fordítási hibákért tekintse meg a kimeneti ablakot, és szükség szerint javítsa ki azokat. Ha a kód fordítása megtörtént, a kódnak most be kell néznie a Key Vault-naplókat percenként, és minden új eseményt be kell tolnia a megadott Service Bus várólistára. A naplózási információkat a függvény minden indításakor a napló ablakba kell írni.
 
-### <a name="azure-logic-app"></a>Azure-logikai alkalmazás
+### <a name="azure-logic-app"></a>Azure logikai alkalmazás
 
-Ezután létre kell hoznia egy Azure-logikai alkalmazást, amely felveszi az eseményeket, amelyek a függvény leküldéses a Service Bus-várólistába, elemzi a tartalmat, és küld egy e-mailt egy feltétel alapján egyezés.
+Ezután létre kell hoznia egy Azure Logic app-alkalmazást, amely felveszi a függvény által az Service Bus várólistára irányuló eseményeket, elemzi a tartalmat, és egy megegyező feltétel alapján küld e-mailt.
 
-[Logikai alkalmazás létrehozása](../../logic-apps/quickstart-create-first-logic-app-workflow.md) az**Erőforrás-integrációs** >  **Create a resource** > **logikai alkalmazás**létrehozása lehetőséget választva.
+[Hozzon létre egy logikai alkalmazást](../../logic-apps/quickstart-create-first-logic-app-workflow.md) az **erőforrás** > -**integrációs** > **logikai alkalmazás**létrehozása lehetőség kiválasztásával.
 
-A logikai alkalmazás létrehozása után nyissa meg, és válassza **a Szerkesztés**lehetőséget. A logikai alkalmazás szerkesztőjében válassza a **Service Bus-várólista** lehetőséget, és adja meg a Service Bus hitelesítő adatait a várólistához való csatlakoztatáshoz.
+A logikai alkalmazás létrehozása után nyissa meg a elemet, és válassza a **Szerkesztés**lehetőséget. A Logic app Editorban válassza a **Service Bus üzenetsor** lehetőséget, és adja meg a Service Bus hitelesítő adatait, hogy az a várólistához kapcsolódjon.
 
 ![Azure Logic App Service Bus](../media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-Válassza **a Feltétel hozzáadása**lehetőséget. Ebben az állapotban váltson a speciális szerkesztőre, és írja be a következő kódot. Cserélje le *APP_ID* a webalkalmazás tényleges alkalmazásazonosítójára:
+Válassza **a feltétel hozzáadása**lehetőséget. A feltételben váltson a speciális szerkesztőre, és adja meg a következő kódot. Cserélje le a *APP_IDt* a webalkalmazás tényleges alkalmazás-azonosítójával:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
 ```
 
-Ez a kifejezés lényegében **hamis** értéket ad vissza, ha a bejövő eseményből származó *alkalmazás (amely* a Service Bus-üzenet törzse) nem az alkalmazás *appidja.*
+Ez a kifejezés lényegében **hamis** értéket ad vissza, ha a bejövő esemény *AppID* (amely az Service Bus üzenet törzse) nem az alkalmazás *AppID* .
 
-Most hozzon létre egy **műveletet, ha nem, nem csinál semmit**.
+Most hozzon létre egy műveletet, **Ha nem, semmit sem**.
 
-![Az Azure Logic Apps válaszd a műveletet](../media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
+![Azure Logic Apps válassza a művelet lehetőséget](../media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-A művelethez válassza az **Office 365 – e-mail küldése**lehetőséget. Töltse ki a mezőket, hogy e-mailt hozzon létre, ha a megadott feltétel **hamis**értéket ad vissza. Ha nem rendelkezik Office 365-tel, keressen alternatívákat ugyanannak az eredménynek a eléréséhez.
+A művelethez válassza az **Office 365 – e-mail küldése**lehetőséget. Ha a megadott feltétel **hamis**értéket ad vissza, töltse ki a mezőket, és hozzon létre egy e-mailt, amelyet el szeretne küldeni. Ha még nem rendelkezik Office 365-mel, keresse meg az azonos eredmények eléréséhez szükséges alternatívákat.
 
-Most már rendelkezik egy végpontok között futó folyamat, amely megkeresi az új key-vault naplózási naplók percenként egyszer. Leküldéses új naplók at talál egy Service Bus-várólistába. A logikai alkalmazás akkor aktiválódik, amikor egy új üzenet landol a várólistában. Ha az eseményen belüli *alkalmazásnem* egyezik meg a hívó alkalmazás azonosítójával, e-mailt küld.
+Mostantól egy teljes körű folyamattal rendelkezik, amely percenként egyszer új Key-Vault naplókat keres. Leküldi az új naplókat, amelyeket megtalál egy Service Bus üzenetsor számára. A logikai alkalmazás akkor aktiválódik, amikor új üzenet kerül a várólistába. Ha az eseményen belüli *AppID* nem felel meg a hívó alkalmazás alkalmazás-azonosítójának, e-mailt küld.

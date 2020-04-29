@@ -1,6 +1,6 @@
 ---
-title: Várakozási tevékenység az Azure Data Factoryban
-description: A Várakozás tevékenység felfüggeszti a folyamat végrehajtását a megadott időszakra.
+title: Várakozási tevékenység Azure Data Factory
+description: A várakozási tevékenység szünetelteti a folyamat végrehajtását a megadott időszakra vonatkozóan.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417912"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Várakozási tevékenység végrehajtása az Azure Data Factoryban
+# <a name="execute-wait-activity-in-azure-data-factory"></a>Várakozási tevékenység végrehajtása a Azure Data Factoryban
 Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -42,16 +42,16 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 név | A `Wait` tevékenység neve. | Sztring | Igen
-type | A Várakozás **beállításnak**kell lennie. | Sztring | Igen
-waitTimeInSeconds | Az a másodpercszám, ameddig a folyamat várakozik a feldolgozás folytatása előtt. | Egész szám | Igen
+type | **Várakozási**értékre kell beállítani. | Sztring | Igen
+waitTimeInSeconds | Azon másodpercek száma, ameddig a folyamat várakozik a feldolgozás folytatása előtt. | Egész szám | Igen
 
 ## <a name="example"></a>Példa
 
 > [!NOTE]
-> Ez a szakasz JSON-definíciókat és minta PowerShell-parancsokat biztosít a folyamat futtatásához. A Data Factory-folyamat Azure PowerShell- és JSON-definíciók használatával történő létrehozásához részletes útmutatót az oktatóanyag ban [talál: adatgyár létrehozása az Azure PowerShell használatával](quickstart-create-data-factory-powershell.md)című témakörben.
+> Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-wait-activity"></a>Folyamat várakozási tevékenységgel
-Ebben a példában a folyamat két tevékenységet rendelkezik: **Ig** és **Várjon**. A Várakozás tevékenység úgy van beállítva, hogy várjon egy másodpercet. A folyamat egy ciklusban futtatja a webes tevékenységet, és minden futtatás között egy másodperc várakozási idő áll. 
+### <a name="pipeline-with-wait-activity"></a>Várakozási tevékenységgel rendelkező folyamat
+Ebben a példában a folyamat két tevékenységgel rendelkezik: **eddig** és **várni**. A várakozási tevékenység úgy van konfigurálva, hogy várjon egy másodpercig. A folyamat egy ciklusban futtatja a webes tevékenységet egy másodperces várakozási idővel az egyes futtatások között. 
 
 ```json
 {
@@ -102,7 +102,7 @@ Ebben a példában a folyamat két tevékenységet rendelkezik: **Ig** és **Vá
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevékenységeket: 
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

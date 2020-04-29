@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory vizuális figyelése
-description: Ismerje meg, hogyan figyelheti vizuálisan az Azure-adatgyárakat
+title: Vizuális monitorozás Azure Data Factory
+description: Ismerje meg, hogyan figyelheti vizuálisan az Azure-beli adatüzemeket
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,159 +11,159 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419442"
 ---
-# <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális figyelése
+# <a name="visually-monitor-azure-data-factory"></a>Vizuális monitorozás Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Miután létrehozott és közzétett egy folyamatot az Azure Data Factoryban, társíthatja azt egy eseményindítóval, vagy manuálisan elindíthategy ad hoc futtatást. Az Azure Data Factory felhasználói élményében az összes folyamat natív módon figyelheti. A figyelési élmény megnyitásához válassza a **Figyelő & kezelése** csempét az Azure [Portal](https://portal.azure.com/)adatgyári paneljén. Ha már az ADF-felhasználói felületen van, kattintson a bal oldali oldalsáv **Monitor** ikonjára.
+Miután létrehozta és közzétett egy folyamatot Azure Data Factoryban, társíthatja egy triggerhez, vagy manuálisan elindíthatja az ad hoc futtatást. Az összes folyamatot a Azure Data Factory felhasználói élményben natív módon figyelheti. A figyelési élmény megnyitásához válassza a **figyelő & kezelés** csempét a [Azure Portal](https://portal.azure.com/)adatgyár paneljén. Ha már szerepel az ADF UX-ben, kattintson a bal oldali oldalsávon látható **figyelés** ikonra.
 
-Minden adat-előállító futtatás a böngésző helyi időzónájában jelenik meg. Ha módosítja az időzónát, az összes dátum-idő mező a kijelölt mezőhöz igazodik.
+Az összes adatfeldolgozó-Futtatás a böngésző helyi időzónájában jelenik meg. Ha megváltoztatja az időzónát, az összes dátum/idő mező a kiválasztotthoz van igazítva.
 
 ## <a name="monitor-pipeline-runs"></a>Folyamatfuttatások monitorozása
 
-Az alapértelmezett figyelési nézet a kijelölt időszakban futó folyamatfuttatások listája. A következő oszlopok jelennek meg:
+Az alapértelmezett figyelési nézet a folyamat futtatásának listáját tartalmazza a kiválasztott időszakban. A következő oszlopok jelennek meg:
 
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
-| Folyamat neve | A csővezeték neve |
-| Műveletek | A folyamat megtekintését, megszakítását vagy újrafuttatását lehetővé tévő ikonok |
-| Indítás futtatása | A csővezeték futtatásának kezdő dátuma és időpontja (HH/DD/ÉÉÉÉ, ÓÓ:MM:SS AM/PM) |
-| Időtartam | Futás időtartama (Óó:PP:SS) |
-| Által kiváltott | A folyamatot indító eseményindító neve |
-| status | **Sikertelen**, **sikerült**, **folyamatban,** **megszakítva**vagy **várólistán** |
-| Széljegyzetek | Csővezetékhez társított szűrhető címkék  |
-| Paraméterek | A folyamat futtatásának paraméterei (név/értékpárok) |
+| Folyamat neve | A folyamat neve |
+| Műveletek | A folyamat részleteinek megtekintését, megszakítását vagy újrafuttatását lehetővé tevő ikonok |
+| Futtatás indítása | A folyamat futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
+| Időtartam | Futtatás időtartama (óó: PP: SS) |
+| Aktiválta: | A folyamatot elindító trigger neve |
+| status | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva**vagy **várólistán** lévő |
+| Széljegyzetek | Egy folyamathoz társított szűrhető Címkék  |
+| Paraméterek | A folyamat futtatásának paraméterei (név/érték párok) |
 | Hiba | Ha a folyamat nem sikerült, a futtatási hiba |
-| Futtatási azonosító | A folyamatfutás azonosítója |
+| Futtatási azonosító | A folyamat futtatásának azonosítója |
 
-![Listanézet a figyelési folyamat futtatásaihoz](media/monitor-visually/pipeline-runs.png)
+![A figyelési folyamat futtatási listájának nézete](media/monitor-visually/pipeline-runs.png)
 
-A folyamat- és tevékenységfuttatások listájának frissítéséhez manuálisan kell kiválasztania a **Frissítés** gombot. Az automatikus frissítés jelenleg nem támogatott.
+A folyamat-és tevékenység-futtatások listájának frissítéséhez manuálisan kell kijelölnie a **frissítés** gombot. Az AutoFrissítés jelenleg nem támogatott.
 
 ![Frissítés gomb](media/monitor-visually/refresh.png)
 
 ## <a name="monitor-activity-runs"></a>Tevékenységfuttatások monitorozása
 
-Az egyes folyamatfuttatások tevékenységfutásának megtekintéséhez válassza a Műveletek oszlopban a **Tevékenységfuttatások megtekintése** ikont. **Actions** A listanézet az egyes folyamatfuttatásoknak megfelelő tevékenységfuttatásokat jeleníti meg.
+Ha a tevékenységek futtatását szeretné megtekinteni az egyes folyamatokhoz, válassza a **műveletek** oszlop **Megtekintés tevékenység futtatása** ikonját. A listanézet azokat a tevékenység-futtatásokat jeleníti meg, amelyek megfelelnek az egyes folyamatoknak.
 
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
 | Tevékenységnév | A folyamaton belüli tevékenység neve |
 | Művelettípus | A tevékenység típusa, például **Másolás**, **ExecuteDataFlow**vagy **AzureMLExecutePipeline** |
-| Műveletek | Ikonok, amelyek lehetővé teszik a JSON bemeneti információk, A JSON kimeneti információk vagy a részletes tevékenységspecifikus figyelési élmények megtekintését | 
-| Indítás futtatása | A tevékenység futtatásának kezdő dátuma és időpontja (HH/DD/ÉÉÉÉ, ÓÓ:MM:SS AM/PM) |
-| Időtartam | Futás időtartama (Óó:PP:SS) |
-| status | **Sikertelen**, **sikerült**, **folyamatban**van , vagy **megszakítva** |
-| Integrációs futásidejű | Melyik integrációs futásidejű en futott a tevékenység? |
+| Műveletek | Ikonok, amelyekkel megtekintheti a JSON bemeneti adatait, a JSON kimeneti adatait vagy a tevékenységekre vonatkozó részletes figyelési tapasztalatokat | 
+| Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
+| Időtartam | Futtatás időtartama (óó: PP: SS) |
+| status | **Sikertelen**, **sikeres**, **folyamatban**vagy **megszakítva** |
+| Integration Runtime | Integration Runtime a tevékenység futtatása |
 | Felhasználói tulajdonságok | A tevékenység felhasználó által definiált tulajdonságai |
 | Hiba | Ha a tevékenység nem sikerült, a futtatási hiba |
-| Futtatási azonosító | A tevékenységfuttatás azonosítója |
+| Futtatási azonosító | A tevékenység futtatásának azonosítója |
 
-![Listanézet a tevékenységfuttatások figyeléséhez](media/monitor-visually/activity-runs.png)
+![Figyelési tevékenység futtatási listájának megjelenítése](media/monitor-visually/activity-runs.png)
 
-### <a name="promote-user-properties-to-monitor"></a>A figyelésre szolgáló felhasználói tulajdonságok előléptetése
+### <a name="promote-user-properties-to-monitor"></a>A figyelni kívánt felhasználói tulajdonságok előléptetése
 
-A folyamatfolyamatok tulajdonságát felhasználói tulajdonságként léptetheti elő, hogy az egy figyelt entitássá válik. Például a folyamat ban lévő másolási tevékenység **forrás** és **cél** tulajdonságait felhasználói tulajdonságként reklámozhatja. Válassza az **Automatikus létrehozás** lehetőséget a másolási tevékenység **forrás-** és **célfelhasználói** tulajdonságainak létrehozásához.
+Minden folyamat tevékenység tulajdonságának előléptetése felhasználói tulajdonságként, hogy az a figyelő entitás legyen. Például előléptetheti a folyamat másolási tevékenységének **forrás** -és **cél** tulajdonságait felhasználói tulajdonságokként. Válassza az **Automatikus létrehozás** lehetőséget, ha a **forrás** és a **cél** felhasználói tulajdonságokat elő szeretné állítani egy másolási tevékenységhez.
 
 ![Felhasználói tulajdonságok létrehozása](media/monitor-visually/monitor-user-properties-image1.png)
 
 > [!NOTE]
-> Legfeljebb öt folyamattevékenység-tulajdonság ot léptethet elő felhasználói tulajdonságként.
+> Felhasználói tulajdonságokként legfeljebb öt folyamat tevékenység-tulajdonságokat lehet előléptetni.
 
-Miután létrehozta a felhasználói tulajdonságokat, figyelheti őket a figyelési lista nézetekben. Ha a másolási tevékenység forrása táblanév, a forrástábla nevét oszlopként figyelheti a listanézetben a tevékenységfuttatások esetében.
+Miután létrehozta a felhasználói tulajdonságokat, megfigyelheti őket a figyelési lista nézeteiben. Ha a másolási tevékenység forrása egy tábla neve, akkor a forrástábla neve a tevékenység futtatásához tartozó listanézet oszlopával figyelhető meg.
 
-![A tevékenység felhasználói tulajdonságok nélkül futtatja a listát](media/monitor-visually/monitor-user-properties-image2.png)
+![A tevékenység-futtatások listája felhasználói tulajdonságok nélkül](media/monitor-visually/monitor-user-properties-image2.png)
 
-![A felhasználói tulajdonságok oszlopainak hozzáadása a tevékenységfuttatások listájához](media/monitor-visually/monitor-user-properties-image3.png)
+![Oszlopok hozzáadása a felhasználói tulajdonságokhoz a tevékenység-futtatási listához](media/monitor-visually/monitor-user-properties-image3.png)
 
-![A tevékenység fut lista a felhasználói tulajdonságok oszlopaival](media/monitor-visually/monitor-user-properties-image4.png)
+![Tevékenység-futtatási lista a felhasználói tulajdonságok oszlopaival](media/monitor-visually/monitor-user-properties-image4.png)
 
 ## <a name="configure-the-list-view"></a>A listanézet konfigurálása
 
-### <a name="order-and-filter"></a>Rendelés és szűrés
+### <a name="order-and-filter"></a>Sorrend és szűrés
 
-Ha be van-e kapcsolva, hogy a folyamatfuttatások csökkenő vagy növekvő sorrendben legyenek-e a futtatási kezdési időnek megfelelően. A szűrőfolyamat a következő oszlopok használatával fut:
+Annak a bekapcsolása, hogy a folyamat futása a Futtatás kezdő időpontja szerint csökkenő vagy növekvő legyen. A folyamat a következő oszlopok használatával fut:
 
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
-| Folyamat neve | Szűrje a folyamat neve alapján. |
-| Indítás futtatása |  Határozza meg a megjelenített folyamatfuttatások időtartományát. A beállítások közé tartoznak az **Elmúlt 24 óra**, **A múlt hét**és az **Elmúlt 30 nap** gyorsszűrői, illetve egyéni dátum és idő kiválasztása. |
-| Futtatás állapota | A szűrő állapota szerint fut: **Sikeres**, **Sikertelen**, **Várólistán,** **Megszakítva**vagy **Folyamatban**. |
-| Széljegyzetek | Szűrés az egyes folyamatokra alkalmazott címkék szerint |
-| Futtatás | Annak szűrése, hogy szeretné-e látni az újrafutózált folyamatokat |
+| Folyamat neve | Szűrés a folyamat nevével. |
+| Futtatás indítása |  Határozza meg a folyamat futási idejének időtartományát. A lehetőségek közé tartoznak a gyors szűrők az **elmúlt 24 órában**, a **múlt héten**és az **elmúlt 30 napban** , illetve az egyéni dátum és idő kiválasztásához. |
+| Futtatás állapota | Szűrő futtatása állapot szerint: **sikeres**, **sikertelen**, **várólistára helyezett**, **megszakított**vagy **folyamatban**. |
+| Széljegyzetek | Szűrés az egyes folyamatokra alkalmazott címkék alapján |
+| Futtatás | Szűrés, hogy meg szeretné-e jeleníteni a reran-folyamatokat |
 
-![Szűrési lehetőségek](media/monitor-visually/filter.png)
+![Szűrési beállítások](media/monitor-visually/filter.png)
 
 ### <a name="add-or-remove-columns"></a>Oszlopok hozzáadása vagy eltávolítása
-Kattintson a jobb gombbal a listanézet fejlécére, és válassza ki a listanézetben megjeleníteni kívánt oszlopokat.
+Kattintson a jobb gombbal a listanézet fejlécre, és válassza ki azokat az oszlopokat, amelyeket meg szeretne jeleníteni a listanézetban.
 
 ![Oszlopok beállításai](media/monitor-visually/columns.png)
 
-### <a name="adjust-column-widths"></a>Oszlopszélesség beállítása
-A listanézetoszlop-szélesség növelése és csökkentése az oszlopfejléc fölé egérgombolással.
+### <a name="adjust-column-widths"></a>Oszlopszélességek igazítása
+Növelje és csökkentse a listanézet oszlopszélességét az oszlop fejlécének fölé húzva.
 
-## <a name="rerun-activities-inside-a-pipeline"></a>Tevékenységek újrafuttatása folyamaton belül
+## <a name="rerun-activities-inside-a-pipeline"></a>Tevékenységek újrafuttatása egy folyamaton belül
 
-A folyamatokon belül újrafuttathatja a tevékenységeket. Válassza a **Tevékenységfuttatások megtekintése**lehetőséget, majd válassza ki azt a tevékenységet a folyamatban, amelytől a folyamatot újra szeretné futtatni.
+A tevékenységeket egy folyamaton belül futtathatja újra. Válassza a **tevékenységek megtekintése futtatása**lehetőséget, majd válassza ki azt a tevékenységet a folyamaton belül, amelyből a folyamatot újra szeretné futtatni.
 
 ![Tevékenységfuttatások megtekintése](media/monitor-visually/rerun-activities-image1.png)
 
-![Tevékenységfuttatás kiválasztása](media/monitor-visually/rerun-activities-image2.png)
+![Tevékenység futtatásának kiválasztása](media/monitor-visually/rerun-activities-image2.png)
 
-### <a name="rerun-from-failed-activity"></a>Ismétlés sikertelen tevékenységből
+### <a name="rerun-from-failed-activity"></a>Újrafuttatás sikertelen tevékenységből
 
-Ha egy tevékenység meghibásodik, idővel megjár, vagy megszakad, újra futtathatja a folyamatot a sikertelen tevékenységből, ha a sikertelen tevékenységből való ismétlés lehetőséget **választja.**
+Ha egy tevékenység meghiúsul, időtúllépés vagy megszakítva, a folyamat a **sikertelen tevékenységből**való újrafuttatásával újrafuttathatja a folyamatot.
 
-![Sikertelen ismétlődő tevékenység](media/monitor-visually/rerun-failed-activity.png)
+![Sikertelen művelet újrafuttatása](media/monitor-visually/rerun-failed-activity.png)
 
-### <a name="view-rerun-history"></a>Ismétlési előzmények megtekintése
+### <a name="view-rerun-history"></a>Újrafuttatási előzmények megtekintése
 
-Megtekintheti az újrafuttatási előzményeket az összes folyamatfuttatáshoz a listanézetben.
+A lista nézetben megtekintheti az összes folyamat futtatási előzményeit.
 
 ![Előzmények megtekintése](media/monitor-visually/rerun-history-image1.png)
 
-Megtekintheti egy adott folyamat futtatása újrafuttatási előzményeit is.
+Egy adott folyamat futtatásához is megtekintheti az újrafuttatási előzményeket.
 
-![Folyamatfuttatás előzményeinek megtekintése](media/monitor-visually/rerun-history-image2.png)
+![Folyamat futtatási előzményeinek megtekintése](media/monitor-visually/rerun-history-image2.png)
 
-## <a name="gantt-views"></a>Gantt nézetek
+## <a name="gantt-views"></a>Gantt-nézetek
 
-Gantt-nézetek használatával gyorsan vizualizálhatja a folyamatokat és a tevékenységfuttatásokat.
+Gantt-nézetek használatával gyorsan megjelenítheti a folyamatokat és a tevékenységek futtatását.
 
-![Gantt-diagram példa](media/monitor-visually/gantt1.png)
+![Példa Gantt-diagramra](media/monitor-visually/gantt1.png)
 
-Megtekintheti a Gantt nézet et folyamatonként vagy csoportonként a folyamatokon létrehozott jegyzetek/címkék alapján.
+Megtekintheti a folyamatok Gantt-nézetét vagy a folyamatokban létrehozott megjegyzéseket/címkéket.
 
-![Gantt-diagram-jegyzetek](media/monitor-visually/gantt2.png)
+![Gantt-diagram megjegyzései](media/monitor-visually/gantt2.png)
 
-A sáv hossza tájékoztatja a csővezeték időtartamát. A további részletek megtekintéséhez a sávra is kijelölve.
+A sáv hossza tájékoztatja a folyamat időtartamát. A sáv kiválasztásával további részleteket is megtudhat.
 
 ![Gantt-diagram időtartama](media/monitor-visually/gantt3.png)
 
-## <a name="guided-tours"></a>Vezetett túrák
-Válassza az **Információ ikont** a bal alsó sarokban. Ezután válassza **az Irányított túrák** lehetőséget, ha részletes útmutatást szeretne kapni a folyamat és a tevékenységfuttatások figyeléséhez.
+## <a name="guided-tours"></a>Interaktív túrák
+Válassza ki az **információs** ikont a bal alsó sarokban. Ezután válassza az **interaktív túrák** lehetőséget, hogy részletes útmutatást kapjon a folyamat és a tevékenységek futtatásának figyeléséhez.
 
-![Vezetett túrák](media/monitor-visually/guided-tours.png)
+![Interaktív túrák](media/monitor-visually/guided-tours.png)
 
 ## <a name="alerts"></a>Riasztások
 
-A Data Factory támogatott metrikákra vonatkozó riasztásokat kaphat. A kezdéshez válassza a > **Riasztások figyelése & metrikák at** a Data Factory figyelési oldalon. **Monitor**
+Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A kezdéshez válassza a riasztások **figyelése** > **& mérőszámok** lehetőséget a Data Factory figyelése lapon.
 
-![Adatgyár figyelő lapja](media/monitor-visually/alerts01.png)
+![A adatgyár-figyelő lapja](media/monitor-visually/alerts01.png)
 
-A funkció hétperces bemutatásához és bemutatásához tekintse meg az alábbi videót:
+A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Monitor-your-Azure-Data-Factory-pipelines-proactively-with-alerts/player]
 
 ### <a name="create-alerts"></a>Riasztások létrehozása
 
-1.  Új riasztási szabály létrehozásához válassza az **Új riasztási szabályt.**
+1.  Új riasztás létrehozásához válassza az **új riasztási szabály** lehetőséget.
 
     ![Új riasztási szabály gomb](media/monitor-visually/alerts02.png)
 
@@ -173,24 +173,24 @@ A funkció hétperces bemutatásához és bemutatásához tekintse meg az alább
 
 1.  Válassza ki a riasztási feltételeket.
 
-    ![A célfeltételek mezője](media/monitor-visually/alerts04.png)
+    ![A célként megadott feltételekhez tartozó mező](media/monitor-visually/alerts04.png)
 
-    ![A kritériumok listája](media/monitor-visually/alerts05.png)
+    ![Feltételek listája](media/monitor-visually/alerts05.png)
 
-1.  Konfigurálja a riasztási logikát. A kiválasztott metrikához riasztást hozhat létre az összes folyamathoz és a megfelelő tevékenységekhez. Kiválaszthat egy adott tevékenységtípust, tevékenységnevet, folyamatnevet vagy hibatípust is.
+1.  Adja meg a riasztási logikát. Riasztást hozhat létre a kijelölt metrikához az összes folyamathoz és a kapcsolódó tevékenységekhez. Kiválaszthat egy adott tevékenység típusát, a tevékenység nevét, a folyamat nevét vagy a hiba típusát is.
 
-    ![A riasztási logika konfigurálásának beállításai](media/monitor-visually/alerts06.png)
+    ![A riasztási logika konfigurálásának lehetőségei](media/monitor-visually/alerts06.png)
 
-1.  Konfigurálja az e-mail, SMS, push és hangértesítéseket a riasztáshoz. Hozzon létre egy műveletcsoportot, vagy válasszon egy meglévőt a riasztási értesítésekhez.
+1.  Az e-mailek, SMS-, leküldéses és hangalapú értesítések konfigurálása a riasztáshoz. Hozzon létre egy műveleti csoportot, vagy válasszon ki egy meglévőt a riasztási értesítésekhez.
 
-    ![Az értesítések konfigurálásának lehetőségei](media/monitor-visually/alerts07.png)
+    ![Az értesítések konfigurálásának beállításai](media/monitor-visually/alerts07.png)
 
-    ![Értesítés hozzáadásának lehetőségei](media/monitor-visually/alerts08.png)
+    ![Értesítések hozzáadásának beállításai](media/monitor-visually/alerts08.png)
 
-1.  Hozza létre a riasztási szabályt.
+1.  Hozzon létre egy riasztási szabályt.
 
     ![Riasztási szabály létrehozásának lehetőségei](media/monitor-visually/alerts09.png)
 
 ## <a name="next-steps"></a>További lépések
 
-A folyamatok figyeléséről és kezeléséről a [Folyamatok figyelése és kezelése programozott módon](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) című cikkben olvashat.
+A folyamatok figyelésével és kezelésével kapcsolatos információkért tekintse meg a [folyamatok programozott figyelése és kezelése](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) című cikket.

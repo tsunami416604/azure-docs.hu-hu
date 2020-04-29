@@ -1,6 +1,6 @@
 ---
-title: Adatok áttelepítése az adattóból és az adattárházból az Azure-ba
-description: Az Azure Data Factory segítségével áttelepítheti az adatokat az adattóból és az adattárházból az Azure-ba.
+title: Adatok migrálása a adatközpontból és az adatraktárból az Azure-ba
+description: Az adatok áttelepíthetők az Azure-ba a Azure Data Factory használatával.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,54 +12,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416426"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Az Azure Data Factory segítségével áttelepítheti az adatokat az adattóból vagy az adattárházból az Azure-ba
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ha át szeretné telepíteni a data lake vagy a vállalati adattárházat (EDW) a Microsoft Azure-ba, fontolja meg az Azure Data Factory használatát. Az Azure Data Factory a következő esetekben is jól illeszkedik:
+Ha át szeretné telepíteni a (Microsoft Azure) vagy a vállalati adattárházat (EDW), vegye fontolóra Azure Data Factory használatát. A Azure Data Factory a következő esetekben alkalmas:
 
-- Big data-számítási feladatok áttelepítése az Amazon Simple Storage Service -ből (Amazon S3) vagy egy helyszíni Hadoop Distributed File System (HDFS) rendszerből az Azure-ba
-- EDW áttelepítés az Oracle Exadata, a Netezza, a Teradata vagy az Amazon Redshift alkalmazásból az Azure-ba
+- Big adatmunkaterhelés-áttelepítés az Amazon Simple Storage szolgáltatásból (Amazon S3) vagy egy helyszíni Hadoop elosztott fájlrendszer (HDFS) az Azure-ba
+- EDW-áttelepítés Oracle-Exadata, Netezza, Teradata vagy Amazon vöröseltolódásról az Azure-ba
 
-Az Azure Data Factory áthelyezheti a petabájt (PB) adatok adattótó-áttelepítés, és több tíz terabájt (TB) adatok adattárház áttelepítése.
+A Azure Data Factory áthelyezheti a petabájt (PB) adatait a Lake Migration adatforgalmához, és több tízezer terabájt (TB) adat adattárház-áttelepítéshez.
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Miért használható az Azure Data Factory adatáttelepítéshez?
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Miért Azure Data Factory használható az adatáttelepítéshez
 
-- Az Azure Data Factory könnyedén felskálázhatja a feldolgozási teljesítményt az adatok kiszolgáló nélküli, nagy teljesítmény, rugalmasság és méretezhetőség érdekében történő mozgatásához. És csak azért fizetsz, amit használsz. Is vegye figyelembe a következőket: 
-  - Az Azure Data Factory nincs korlátozás az adatmennyiség re vagy a fájlok számára.
-  - Az Azure Data Factory teljes mértékben használhatja a hálózati és tárolási sávszélességet a környezetében a legnagyobb mennyiségű adatátviteli átviteli sebesség eléréséhez.
-  - Az Azure Data Factory használatalapú fizetési módot használ, így csak az Azure-ba való adatáttelepítés tényleges futtatásához használt időért kell fizetnie.  
-- Az Azure Data Factory egyszeri előzmény- és ütemezett terheléseket is végrehajthat.
-- Az Azure Data Factory az Azure-integrációs futásidejű (IR) használatával mozgatja az adatokat a nyilvánosan elérhető adattó- és raktári végpontok között. Saját üzemeltetésű infravörös kapcsolaton kívül is használhatja az adatok tó- és raktárvégpontjainak áthelyezését az Azure virtuális hálózaton (VNet) belül vagy egy tűzfal mögött.
-- Az Azure Data Factory nagyvállalati szintű biztonsággal rendelkezik: használhatja a Windows Installer (MSI) vagy a Service Identity biztonságos szolgáltatás-szolgáltatás integráció, vagy az Azure Key Vault a hitelesítő adatok kezeléséhez.
-- Az Azure Data Factory kódmentes szerzői élményt és gazdag, beépített figyelési irányítópultot biztosít.  
+- A Azure Data Factory könnyedén méretezheti a feldolgozási teljesítmény mennyiségét, hogy kiszolgáló nélküli módon helyezze át az adatátvitelt a nagy teljesítmény, a rugalmasság és a méretezhetőség révén. És csak a ténylegesen használt funkciókért kell fizetnie. Vegye figyelembe a következőket is: 
+  - Azure Data Factory nem rendelkezik az adatmennyiséggel vagy a fájlok számával kapcsolatos korlátozásokkal.
+  - A Azure Data Factory teljes mértékben használhatja a hálózat és a tároló sávszélességét, hogy a lehető legnagyobb mennyiségű adatátviteli sebességet tudja elérni a környezetben.
+  - A Azure Data Factory utólagos elszámolású módszert használ, így csak az Azure-ba történő adatáttelepítés során ténylegesen használt idő után kell fizetnie.  
+- Azure Data Factory egyszerre egy egyszeri betöltést és ütemezett növekményes terhelést is végrehajthat.
+- A Azure Data Factory az Azure Integration Runtime (IR) használatával helyezi át az adatátvitelt a nyilvánosan elérhető adattó és a raktári végpontok között. Emellett saját üzemeltetésű integrációs modult is használhat az Azure Virtual Network (VNet) vagy egy tűzfal mögött található adattó-és raktár-végpontok adatáthelyezéséhez.
+- A Azure Data Factory nagyvállalati szintű biztonsággal rendelkezik: az Windows Installer (MSI) vagy a szolgáltatás identitását használhatja a biztonságos szolgáltatások közötti integrációhoz, vagy használhat Azure Key Vault a hitelesítő adatok kezeléséhez.
+- A Azure Data Factory egy ingyenes, beépített monitorozási irányítópultot biztosít a kód nélküli szerzői műveletekhez.  
 
 ## <a name="online-vs-offline-data-migration"></a>Online és offline adatáttelepítés
 
-Az Azure Data Factory egy szabványos online adatáttelepítési eszköz az adatok hálózaton (interneten, ER-n vagy VPN-en) keresztül történő átviteléhez. Mivel az offline adatáttelepítés, a felhasználók fizikailag szállít adatátviteli eszközök a szervezet egy Azure Data Center.  
+A Azure Data Factory egy szabványos Online áttelepítési eszköz, amely hálózaton keresztül (Internet, er vagy VPN) továbbítja az adatok átvitelét. Míg az offline adatok áttelepítése esetén a felhasználók fizikailag szállítanak adatátviteli eszközöket a szervezetéről egy Azure-adatközpontba.  
 
-Az online és offline áttelepítési megközelítés kiválasztásakor három fő szempontot kell figyelembe venni:  
+Az online és az offline áttelepítési módszer közül három fő szempontot kell figyelembe venni:  
 
-- Az áttelepítendő adatok mérete
+- Migrálni kívánt adatméret
 - Hálózati sávszélesség
 - Áttelepítési ablak
 
-Tegyük fel például, hogy az Azure Data Factory használatával két héten belül befejezi az adatáttelepítést (az *áttelepítési ablakot).* Figyelje meg a rózsaszín/kék vágási vonalat az alábbi táblázatban. Az adott oszlop legalacsonyabb rózsaszín cellája azt az adatméretet/hálózati sávszélesség-párosítást mutatja, amelynek áttelepítési ablaka a legközelebb van, de kevesebb, mint két hét. (A kék cellában lévő bármely méret/sávszélesség párosítás több mint két hetes online áttelepítési ablakkal rendelkezik.) 
+Tegyük fel például, hogy az adatáttelepítés két héten belül történő elvégzéséhez tervezi Azure Data Factory használatát (az *áttelepítési ablak*). Figyelje meg a rózsaszín/kék határvonalat a következő táblázatban. Az adott oszlop legalacsonyabb rózsaszín cellája azt az adatméretet/hálózati sávszélesség-párosítást jeleníti meg, amelynek áttelepítési ablaka a legközelebb van, de kevesebb, mint két hét. (A kék cellában lévő bármilyen méretű vagy sávszélességű párosítás Online áttelepítési időszaka több mint két hétig tart.) 
 
-![online és](media/data-migration-guidance-overview/online-offline.png) offline Ez a táblázat segítségével meghatározhatja, hogy az adatok mérete és a rendelkezésre álló hálózati sávszélesség alapján megfelelhet-e a tervezett áttelepítési ablaknak az online áttelepítés (Azure Data Factory) segítségével. Ha az online áttelepítési ablak több mint két hét, érdemes használni offline áttelepítés.
+![online vagy offline](media/data-migration-guidance-overview/online-offline.png) – ez a táblázat segít eldönteni, hogy a tervezett áttelepítési időszakot az adatforgalom és a rendelkezésre álló hálózati sávszélesség alapján tudja-e teljesíteni az online áttelepítéssel (Azure Data Factory). Ha az online áttelepítési ablak kettőnél több hetet használ, offline áttelepítést érdemes használni.
 
 > [!NOTE]
-> Az online áttelepítés használatával a korábbi adatbetöltést és a növekményes hírcsatornákat is elérheti egyetlen eszközön keresztül.  Ezzel a módszersel az adatok a teljes áttelepítési időszakban szinkronizálhatók a meglévő és az új tároló között. Ez azt jelenti, hogy az ETL-logika az új tároló frissített adatokkal újraépíthető.
+> Az online áttelepítés használatával a korábbi és a növekményes adatbevitelt is elérheti egyetlen eszközön keresztül.  Ezzel a megközelítéssel az adatokat szinkronizálni lehet a meglévő tároló és az új áruház között a teljes áttelepítési időszak alatt. Ez azt jelenti, hogy újraépítheti az ETL-logikát az új tárolóban a frissített adatértékekkel.
 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Adatok migrálása az AWS S3-ból az Azure-ba](data-migration-guidance-s3-azure-storage.md)
-- [Adatok áttelepítése a helyszíni hadoop-fürtről az Azure-ba](data-migration-guidance-hdfs-azure-storage.md)
+- [Adatok migrálása helyszíni Hadoop-fürtről az Azure-ba](data-migration-guidance-hdfs-azure-storage.md)
 - [Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba](data-migration-guidance-netezza-azure-sqldw.md)

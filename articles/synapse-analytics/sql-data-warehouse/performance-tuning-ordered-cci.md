@@ -1,6 +1,6 @@
 ---
 title: Teljesítmény-finomhangolás rendezett fürtözött oszlopcentrikus index használatával
-description: Javaslatok és szempontok, amelyeket tudnia kell, ahogy a rendezett fürtözött oszlopcentrikus index a lekérdezési teljesítmény javítása érdekében.
+description: A lekérdezési teljesítmény javítása érdekében érdemes megfontolni, hogy a rendezett fürtözött oszlopcentrikus index használata során milyen javaslatokat és szempontokat kell figyelembe vennie.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417043"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-finomhangolás rendezett fürtözött oszlopcentrikus index használatával  
 
-Amikor a felhasználók lekérdeznek egy oszlopcentrikus táblát a Synapse SQL-készletben, az optimalizáló ellenőrzi az egyes szegmensekben tárolt minimális és maximális értékeket.  A lekérdezési predikátum határain kívül lévő szegmenseket a rendszer nem olvassa be lemezről a memóriára.  A lekérdezés ekképpen gyorsabb teljesítményt érhet el, ha az olvasmányok száma és teljes mérete kicsi.   
+Amikor a felhasználók egy oszlopcentrikus-táblázatot kérdeznek le a szinapszis SQL-készletben, a-optimalizáló ellenőrzi az egyes szegmensekben tárolt minimális és maximális értékeket.  A lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a memóriába.  A lekérdezés gyorsabb teljesítményt érhet el, ha a beolvasandó szegmensek száma és a teljes mérete kicsi.   
 
-## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Rendezett és nem rendezett fürtözött oszlopcentrikus index
+## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Rendezett és nem rendezett, fürtözött oszlopcentrikus index
 
-Alapértelmezés szerint minden indexbeállítás nélkül létrehozott tábla esetében egy belső összetevő (indexszerkesztő) nem rendezett fürtözött oszlopcentrikus indexet (CCI) hoz létre rajta.  Az egyes oszlopokban lévő adatok külön CCI sorcsoportszegmensbe vannak tömörítve.  Az egyes szegmensek értéktartományában metaadatok találhatók, így a lekérdezési predikátum határain kívül lévő szegmensek nem kerülnek olvasásra a lemezről a lekérdezés végrehajtása során.  A CCI a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, így a lekérdezések gyorsabban futnak. Mivel azonban az indexszerkesztő nem rendezi az adatokat, mielőtt szegmensekbe tömörítené őket, egymást átfedő értéktartományokkal rendelkező szegmensek fordulhatnak elő, így a lekérdezések több szegmenst olvasnak a lemezről, és hosszabb időt vesz igénybe a befejezésük.  
+Alapértelmezés szerint minden olyan tábla esetében, amely index-beállítás nélkül lett létrehozva, a belső összetevő (index Builder) nem rendezett, fürtözött oszlopcentrikus indexet (CCI) hoz létre.  Az egyes oszlopokban lévő összes adathalmaz egy külön CCI sorcsoport-szegmensbe van tömörítve.  Vannak metaadatok az egyes szegmensek érték-tartományán, így a lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a lekérdezés végrehajtása során.  A KKU a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, hogy a lekérdezések gyorsabban fussanak. Mivel azonban az index-szerkesztő nem rendezi az adatait, mielőtt tömöríti őket a szegmensekre, az átfedésben lévő értékekkel rendelkező szegmensek felmerülhetnek, ami miatt a lekérdezések több szegmenst olvasnak be a lemezről, és hosszabb ideig tartanak.  
 
-Rendezett CCI létrehozásakor a Synapse SQL motor a rendelési kulcs(ok) szerint rendezi a memóriában lévő meglévő adatokat, mielőtt az indexszerkesztő indexszegmensekbe tömöríti azokat.  Rendezett adatok esetén a szegmensátfedések csökkentése csökken, így a lekérdezések hatékonyabb szegmenseltávolítással rendelkeznek, és így gyorsabb a teljesítmény, mivel a lemezről olvasandó szegmensek száma kisebb.  Ha az összes adat egyszerre rendezhető a memóriában, akkor elkerülhető a szegmensátfedés.  Az adatraktárak nagy táblái miatt ez a forgatókönyv nem gyakran fordul elő.  
+Rendezett CCI létrehozásakor a szinapszis SQL Engine a meglévő, memóriában tárolt adatok alapján rendezi a rendelkezésre álló, a megrendelési kulcs (ok) et, mielőtt az index builde az index-szegmensbe tömöríti őket.  A rendezett adatok esetében a szegmens átfedésben van, ami lehetővé teszi a lekérdezések hatékonyabb szegmensének megszüntetését, és így gyorsabb teljesítményt, mivel a lemezről beolvasott szegmensek száma kisebb.  Ha az összes adatmennyiséget egyszerre rendezheti a memóriában, akkor a szegmens átfedése elkerülhető lehet.  Az adattárházak nagyméretű táblái miatt ez a forgatókönyv nem fordul elő gyakran.  
 
-Ha ellenőrizni szeretné egy oszlop szegmenstartományait, futtassa a következő parancsot a tábla nevével és oszlopnevével:
+Egy oszlop szegmens tartományának vizsgálatához futtassa a következő parancsot a tábla nevével és az oszlop nevével:
 
 ```sql
 SELECT o.name, pnp.index_id, 
@@ -50,18 +50,18 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Egy rendezett CCI-táblában az ugyanazon köteg DML-ből vagy adatbetöltési műveletekből származó új adatok az adott kötegen belül vannak rendezve, nincs globális rendezés a táblázatösszes adata között.  A felhasználók a rendezett CCI-t a táblázatban szereplő összes adat rendezéséhez építhetik át.  A Synapse SQL-ben az oszlopcentrikus index REBUILD egy offline művelet.  Particionált tábla esetén a REBUILD egyszerre egy partícióra történik.  Az újraépítendő partícióadatai "offline" állapotúak, és nem érhetők el, amíg a REBUILD el nem készül az adott partícióra vonatkozóan. 
+> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok a kötegen belül vannak rendezve, a tábla összes adathalmaza esetében nincs globális rendezés.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  A szinapszis SQL-ben a oszlopcentrikus index újraépítése offline művelet.  Particionált tábla esetén az Újraépítés egyszerre egy partíciót hajt végre.  Az újraépített partícióban lévő adatkapcsolat "offline" állapotú, és nem érhető el, amíg a partíció újraépítése be nem fejeződik. 
 
 ## <a name="query-performance"></a>Lekérdezési teljesítmény
 
-A lekérdezés teljesítménynyeresége egy rendezett CCI-ből a lekérdezési mintáktól, az adatok méretétől, az adatok rendezésének módjától, a szegmensek fizikai szerkezetétől, valamint a lekérdezés végrehajtásához kiválasztott DWU-tól és erőforrásosztálytól függ.  A megrendelt CCI-tábla tervezésekor a felhasználóknak át kell tekinteniük ezeket a tényezőket, mielőtt kiválasztanák a rendelési oszlopokat.
+Egy lekérdezésnek a rendezett CCI-ből származó teljesítménybeli nyeresége a lekérdezési mintáktól, az adatok méretétől, az adatok rendezési módjától, a szegmensek fizikai struktúrájától, valamint a DWU és az erőforrás osztálytól függ.  A felhasználóknak át kell tekinteniük ezeket a tényezőket, mielőtt kiválasztja a rendezési oszlopokat a rendezett CCI-táblázat tervezésekor.
 
-Az összes ilyen mintával rendelkező lekérdezések általában gyorsabban futnak a rendezett CCI-vel.  
-1. A lekérdezések egyenlőségi, egyenlőtlenségi vagy tartomány-predikátumokkal rendelkeznek
-1. Az predikátumoszlopok és a megrendelt CCI oszlopok megegyeznek.  
-1. Az predikátumoszlopok ugyanabban a sorrendben használatosak, mint a rendezett CCI oszlopok oszlopsora.  
+Az ezekkel a mintázatokkal rendelkező lekérdezések általában gyorsabban futnak a rendezett KKU-val.  
+1. A lekérdezések egyenlőséggel, egyenlőtlenséggel vagy tartományon alapuló predikátumokkal rendelkeznek
+1. A predikátum oszlopai és a rendezett CCI-oszlopok azonosak.  
+1. A predikátum oszlopai a rendezett CCI-oszlopok oszlopának sorszámával azonos sorrendben használatosak.  
  
-Ebben a példában a T1 tábla fürtözött oszlopcentrikus indexe Col_C, Col_B és Col_A sorrendben van rendezve.
+Ebben a példában a T1 tábla egy fürtözött oszlopcentrikus indextel rendelkezik, Col_C, Col_B és Col_A sorrendje szerint rendezve.
 
 ```sql
 
@@ -70,7 +70,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-A lekérdezés 1 teljesítménye több hasznot húzhat a rendezett CCI-ből, mint a másik három lekérdezés. 
+Az 1. lekérdezés teljesítménye jobban kihasználhatja a megrendelt KKU-t, mint a többi három lekérdezést. 
 
 ```sql
 -- Query #1: 
@@ -89,27 +89,27 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ```
 
-## <a name="data-loading-performance"></a>Adatbetöltési teljesítmény
+## <a name="data-loading-performance"></a>Adattöltési teljesítmény
 
-A rendezett CCI-táblába történő adatbetöltés teljesítménye hasonló a particionált táblához.  Az adatok betöltése egy rendezett CCI táblába hosszabb időt vehet igénybe, mint egy nem rendezett CCI tábla az adatrendezési művelet miatt, azonban a lekérdezések gyorsabban futhatnak a rendezett CCI-vel.  
+A rendezett CCI-táblázatba betöltött adatmennyiség hasonló egy particionált táblához.  A rendezett CCI-táblázatba betöltött adatbetöltések az adatrendezési művelet miatt hosszabb időt vehetnek igénybe, de a lekérdezések gyorsabban futhatnak a rendezett CCI-mel.  
 
-Íme egy példa a különböző sémákat rendelkező táblákba történő betöltési adatok teljesítmény-összehasonlítására.
+Az alábbi példa egy olyan teljesítménybeli összehasonlítást mutat be, amely a különböző sémákkal rendelkező táblákba való betöltést hasonlítja
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
-Íme egy példa a CCI és a rendezett CCI lekérdezési teljesítményének összehasonlítása.
+Íme egy példa a lekérdezés teljesítményének összehasonlítására a KKU és a rendezett CCI között.
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/occi_query_performance.png)
 
  
-## <a name="reduce-segment-overlapping"></a>Szegmensátfedés csökkentése
+## <a name="reduce-segment-overlapping"></a>Szegmens átfedésének csökkentése
 
-Az egymást átfedő szegmensek száma a rendezendő adatok méretétől, a rendelkezésre álló memóriától és a párhuzamosság (MAXDOP) maximális mértékétől függ a rendezett CCI létrehozása során. Az alábbiakban a rendezett CCI létrehozásakor csökkentheti a szegmensátfedéseket.
+Az átfedésben lévő szegmensek száma a rendezni kívánt adatok méretétől, a rendelkezésre álló memóriától és a maximális párhuzamossági fok (MAXDOP) beállítástól függ. Az alábbiakban megtalálhatja azokat a lehetőségeket, amelyekkel csökkenthető a rendezett CCI létrehozásakor a szegmens átfedés.
 
-- Használja az xlargerc erőforrásosztályt egy magasabb DWU-n, hogy több memóriát engedélyezze az adatok rendezéséhez, mielőtt az indexszerkesztő szegmensekbe tömöríti az adatokat.  Az indexszegmensben az adatok fizikai helye nem módosítható.  Nincs adatrendezés egy szegmensen belül vagy szegmensek között.  
+- A xlargerc-erőforrás osztályának használata magasabb DWU, így több memória is engedélyezhető az adatok rendezéséhez, mielőtt az index-szerkesztő tömöríti az adatszegmenseket.  Az index szegmensben az adatfizikai hely nem módosítható.  Egy szegmensen vagy szegmensen belül nincs Adatrendezés.  
 
-- Rendezett CCI létrehozása MAXDOP = 1 értékkel.  A rendezett CCI-létrehozáshoz használt szál az adatok egy részhalmazán működik, és helyileg rendezi azt.  Nincs globális rendezés a különböző szálak szerint rendezett adatok között.  A párhuzamos szálak használata csökkentheti a rendezett CCI létrehozásának idejét, de több egymást átfedő szegmenst generál, mint egyetlen szál használata.  Jelenleg a MAXDOP beállítás csak a CREATE TABLE AS SELECT paranccsal létrehozott rendezett CCI tábla létrehozásában támogatott.  A rendezett CCI létrehozása CREATE INDEX vagy CREATE TABLE parancsokkal nem támogatja a MAXDOP beállítást. Például:
+- Rendezett CCI létrehozása a MAXDOP = 1 paranccsal.  A rendezett CCI-létrehozáshoz használt minden szál az adathalmazon működik, és helyileg rendezi.  Nincs globális rendezés a különböző szálak között rendezve.  A párhuzamos szálak használatával csökkentheti a rendezett CCI létrehozásának idejét, de több átfedésben lévő szegmenst fog létrehozni, mint egyetlen szál használata esetén.  Jelenleg a MAXDOP beállítás csak olyan rendezett CCI-táblázat létrehozásakor támogatott, CREATE TABLE AS SELECT parancs használatával.  A rendezett CCI LÉTREHOZÁSi INDEXen vagy CREATE TABLE parancsok használatával történő létrehozása nem támogatja a MAXDOP beállítást. Például:
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -117,26 +117,26 @@ AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
 
-- Az adatokat előre rendezheti a rendezési kulcs(ok) szerint, mielőtt táblákba betölti őket.
+- A rendezési kulcs (ok) alapján a táblázatokba való betöltés előtt előre rendezheti az adathalmazt.
 
-Íme egy példa egy rendezett CCI tábla eloszlására, amelynek a fenti javaslatok szerint nulla szegmensátfedése van. A rendezett CCI-tábla egy DWU1000c adatbázisban jön létre ctas-on keresztül egy 20 GB-os halomtáblából maxdop 1 és xlargerc használatával.  A CCI egy BIGINT oszlopban van megrendezve, ismétlődések nélkül.  
+Itt látható egy példa arra, hogy egy rendezett CCI-táblázat eloszlása nulla szegmenst tartalmaz, amely a fenti ajánlásokat követve átfedésben van. A rendezett CCI-táblázat egy DWU1000c-adatbázisban jön létre a CTAS-on keresztül egy 20 GB-os halom-táblából, amely az 1. és a xlargerc-t használja.  A KKU nem duplikált BIGINT oszlopra van rendezve.  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
-## <a name="create-ordered-cci-on-large-tables"></a>Rendezett CCI létrehozása nagy asztalokon
+## <a name="create-ordered-cci-on-large-tables"></a>Rendezett CCI létrehozása nagyméretű táblákon
 
-A rendezett kkuk létrehozása offline művelet.  Partíciók nélküli táblák esetén az adatok nem lesznek elérhetők a felhasználók számára, amíg a rendezett CCI létrehozási folyamat be nem fejeződik.   Particionált táblák, mivel a motor létrehozza a rendezett CCI partíció partíció, a felhasználók továbbra is elérhetik az adatokat partíciókat, ahol a rendezett CCI létrehozása nem folyamatban van.   Ezzel a beállítással minimalizálhatja az állásidőt a nagy asztalokon rendezett CCI létrehozása során: 
+A rendezett CCI létrehozása offline művelet.  A partíciókat nem tartalmazó táblák esetében az adathozzáférés nem lesz elérhető a felhasználók számára, amíg a rendezett CCI-létrehozási folyamat be nem fejeződik.   A particionált táblák esetében, mivel a motor partíció alapján hozza létre a rendezett CCI-partíciót, a felhasználók továbbra is hozzáférhetnek az olyan partíciókban lévő adatbázisokhoz, ahol a rendezett CCI-létrehozás nincs folyamatban.   Ezzel a beállítással minimálisra csökkentheti az állásidőt a nagy táblákon a rendezett CCI-létrehozás során: 
 
-1.    Hozzon létre partíciókat a cél nagy tábla (Table_A).
-2.    Hozzon létre egy üres, rendezett CCI táblát (Table_B) ugyanazzal a táblával és partíciósémával, mint az A table.
-3.    Váltás egy partíciót az A tábláról a B táblára.
-4.    Futtassa az ALTER INDEX <Ordered_CCI_Index>> on <Table_B> REBUILD PARTITION = <Partition_ID> táblázatban a kapcsolópartíció újraépítéséhez.  
-5.    Ismételje meg Table_A a 3.
-6.    Miután az összes partíció tátvált Table_A Table_B, és újraépítették, dobja Table_A, és nevezze át Table_B Table_A. 
+1.    Hozzon létre partíciókat a célként megadott nagyméretű táblán (Table_A néven).
+2.    Hozzon létre egy üres rendezett CCI-táblázatot (Table_B) ugyanazzal a tábla-és partíciós sémával az A táblázattal.
+3.    Váltson át egy partíciót az A táblából a B táblázatba.
+4.    Futtassa az ALTER INDEX <Ordered_CCI_Index> a <Table_B> Újraépítés PARTITION = <Partition_ID> a B táblázatban a bekapcsolt partíció újraépítéséhez.  
+5.    Ismételje meg a 3. és a 4. lépést a Table_A minden partícióján.
+6.    Ha az összes partíciót Table_Aról Table_Bre váltották át, a rendszer újraépíti, elvetette Table_A, majd átnevezi Table_B Table_Are. 
 
 ## <a name="examples"></a>Példák
 
-**A. A megrendelt oszlopok és a rendelési sormező ellenőrzése:**
+**A. a rendezett oszlopok és a sorrend sorszámának keresése:**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -145,7 +145,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. Oszlopsor módosítása, oszlopok hozzáadása vagy eltávolítása a rendelési listából, vagy a CCI-ről a megrendelt CCI-re:**
+**B. az oszlopok sorszámának módosításához, oszlopok hozzáadásához vagy eltávolításához a sorrend listából, vagy a CCI-ből a rendezett CCI-re való váltáshoz:**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
@@ -155,4 +155,4 @@ WITH (DROP_EXISTING = ON)
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

@@ -1,5 +1,5 @@
 ---
-title: Gyakorlati tanácsok az Azure Analysis Services hosszú ideig futó műveleteihez | Microsoft dokumentumok
+title: Ajánlott eljárások a hosszú ideig futó műveletekhez Azure Analysis Servicesban | Microsoft Docs
 description: Ez a cikk a hosszú ideig futó műveletek ajánlott eljárásait ismerteti.
 author: minewiskan
 ms.service: analysis-services
@@ -7,42 +7,42 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428107"
 ---
-# <a name="best-practices-for-long-running-operations"></a>Gyakorlati tanácsok a hosszú ideig futó műveletekhez
+# <a name="best-practices-for-long-running-operations"></a>Ajánlott eljárások a hosszú ideig futó műveletekhez
 
-Az Azure Analysis Services-ben egy *csomópont* egy olyan gazdavirtuális gépet jelöl, amelyben egy kiszolgálói erőforrás fut. Egyes műveletek, például a hosszú ideig futó lekérdezések, a frissítési műveletek és a lekérdezési horizontális felskálázás sikertelenek lehetnek, ha egy kiszolgálói erőforrás egy másik csomópontra kerül. Ebben a forgatókönyvben gyakori hibaüzenetek a következők:
+Azure Analysis Services a *csomópont* egy olyan gazdagép virtuális gépet jelöl, amelyben a kiszolgálói erőforrás fut. Bizonyos műveletek, például a hosszan futó lekérdezések, a frissítési műveletek és a lekérdezési Felskálázási szinkronizálás meghiúsulhat, ha egy kiszolgálói erőforrás egy másik csomópontra kerül át. A forgatókönyv gyakori hibaüzenetei a következők:
 
-- "Hiba történt egy hosszú ideig futó XMLA-kérelem keresése közben. Lehet, hogy a kérést a szolgáltatás frissítése vagy a kiszolgáló újraindítása szakította meg."
-- A "Model '<guid><database>' azonosítóval rendelkező feladat szolgáltatáshiba (inaktivitás) miatt megszakadt a "Frissítési kérelem megszakítása, mivel frissítés nélkül ragadt". Ez egy belső szolgáltatási probléma. Kérjük, küldje el újra a feladatot, vagy nyújtson be egy jegyet, hogy segítséget kapjon, ha a probléma ismételten előfordul."
+- "Hiba történt egy hosszú ideig futó XMLA-kérelem keresése közben. Előfordulhat, hogy a kérést a szolgáltatás frissítése vagy a kiszolgáló újraindítása megszakította. "
+- A (z) "<guid><database>" azonosítójú feladat a (z) "" modellhez tartozó szolgáltatási hiba miatt megszakadt, a következő üzenettel: "a frissítési kérelem megszakítása, mivel a frissítés nélkül elakadt. Ez egy belső szolgáltatási probléma. Ha a probléma többször is előfordul, küldje el újra a feladatot, vagy küldjön egy jegyet a segítségre. "
 
-Számos oka lehet annak, hogy a hosszú ideig futó műveletek megszakadhatnak. Például az Azure-ban, például: 
-- Az operációs rendszer javításai 
+Számos oka lehet annak, hogy a hosszan futó műveletek megszakadnak. Például az Azure-ban, például a következő frissítésekkel: 
+- Operációs rendszer javításai 
 - Biztonsági frissítések
-- Az Azure Analysis Services szolgáltatásfrissítései
-- Service Fabric-frissítések. A Service Fabric egy platformösszetevő, amelyet számos Microsoft felhőszolgáltatás, köztük az Azure Analysis Services használ.
+- Azure Analysis Services szolgáltatás frissítései
+- Service Fabric frissítések. A Service Fabric egy több Microsoft Cloud Services által használt platform-összetevő, beleértve a Azure Analysis Services is.
 
-A szolgáltatásban előforduló frissítések mellett a szolgáltatások természetes mozgása van a csomópontok között a terheléselosztás miatt. A csomópontmozgások egy felhőszolgáltatás várható részét képezik. Az Azure Analysis Services megpróbálja minimalizálni a csomópontmozgásokból származó hatásokat, de lehetetlen teljesen kiküszöbölni őket. 
+A szolgáltatásban megjelenő frissítések mellett a terheléselosztás miatt a szolgáltatások csomópontok közötti természetes mozgása is fennáll. A csomópontok áthelyezése a Cloud Service várt részét képezi. Azure Analysis Services megpróbálja csökkenteni a csomópontok mozgásának hatásait, de nem lehet teljesen kiküszöbölni őket. 
 
-A csomópontmozgások mellett más hibák is előfordulhatnak. Előfordulhat például, hogy egy adatforrás-adatbázis-rendszer offline állapotban van, vagy a hálózati kapcsolat megszakad. Ha a frissítés során egy partíció 10 millió sort tartalmaz, és hiba történik a 9 milliomodik sorban, nincs mód a frissítés újraindítására a hibapont. A szolgáltatásnak az elejétől kell újrakezdenie. 
+A csomópontok forgalmán kívül más hibák is előfordulhatnak. Előfordulhat például, hogy az adatforrás adatbázis-rendszere offline állapotban van, vagy a hálózati kapcsolat megszakad. Ha a frissítés során a partícióhoz 10 000 000 sor tartozik, és a 9 milliomodik során hiba történik, a rendszer nem indítja újra a frissítést a meghibásodási ponton. A szolgáltatásnak újra kell kezdődnie az elejétől. 
 
-## <a name="refresh-rest-api"></a>Rest API frissítése
+## <a name="refresh-rest-api"></a>REST API frissítése
 
-A szolgáltatás megszakítása kihívást jelenthet a hosszú ideig futó műveletek, például az adatfrissítés esetén. Az Azure Analysis Services tartalmaz egy REST API-t, amely segít enyhíteni a szolgáltatás megszakításai ból eredő negatív hatásokat. További információ: [Aszinkron frissítés a REST API-val című témakörben.](analysis-services-async-refresh.md)
+A szolgáltatás megszakításai nagy kihívást jelenthetnek a hosszú ideig futó műveletek, például az Adatfrissítés esetén. Azure Analysis Services tartalmaz egy REST API, amely segít csökkenteni a szolgáltatások megszakításának negatív hatásait. További információ: [aszinkron frissítés a REST API](analysis-services-async-refresh.md).
  
-A REST API mellett más módszerek keltheti a hosszú ideig futó frissítési műveletek során felmerülő problémák minimalizálására is. A fő cél az, hogy ne kelljen újraindítani a frissítési műveletet az elejétől, és ehelyett kisebb kötegekben hajtson végre frissítéseket, amelyek szakaszokban véglegesíthetők. 
+A REST APIon kívül más módszerek is használhatók a lehetséges problémák minimalizálására a hosszú ideig futó frissítési műveletek során. A fő cél az, hogy ne kelljen újraindítani a frissítési műveletet az elejétől, hanem a kisebb kötegekben végezheti el a frissítését, amelyeket a fázisokban lehet véglegesíteni. 
  
-A REST API lehetővé teszi az ilyen újraindítást, de nem teszi lehetővé a partíció létrehozásának és törlésének teljes rugalmasságát. Ha egy forgatókönyv összetett adatkezelési műveleteket igényel, a megoldásnak tartalmaznia kell valamilyen kötegelési formát a logikájában. Ha például tranzakciókat használ az adatok több ként történő feldolgozásához, a különálló kötegek lehetővé teszik, hogy a hiba ne az elejétől, hanem egy köztes ellenőrzőpontról igényeljen újraindítást. 
+A REST API lehetővé teszi az ilyen újraindítást, de nem teszi lehetővé a partíciók létrehozásának és törlésének teljes rugalmasságát. Ha egy forgatókönyvhöz összetett adatkezelési műveletekre van szükség, a megoldásnak tartalmaznia kell a batchbe való beágyazás valamilyen formáját a logikájában. Ha például tranzakciókat használ az adatok több, különálló kötegekben történő feldolgozására, akkor a nem igényelheti az újraindítást az elejétől, hanem egy köztes ellenőrzőponttól. 
  
-## <a name="scale-out-query-replicas"></a>Kibővített lekérdezési replikák
+## <a name="scale-out-query-replicas"></a>Felskálázási lekérdezés replikái
 
-Akár REST, akár egyéni logikát használ, az ügyfélalkalmazás-lekérdezések továbbra is inkonzisztens vagy köztes eredményeket adhatnak vissza a kötegek feldolgozása közben. Ha az ügyfélalkalmazás-lekérdezések által visszaadott konzisztens adatokra van szükség a feldolgozás során, és a modelladatok köztes állapotban vannak, [használhatja a horizontális felskálázást](analysis-services-scale-out.md) csak olvasható lekérdezésreplikákkal.
+Akár REST-, akár egyéni logikát használ, az ügyfélalkalmazások lekérdezései továbbra is inkonzisztens vagy közbenső eredményeket adhatnak vissza a kötegek feldolgozásakor. Ha a feldolgozás során az ügyfélalkalmazás által visszaadott konzisztens adatmennyiségre van szükség, és a modell adatainak közbenső [állapotban vannak, a](analysis-services-scale-out.md) kibővített lekérdezési replikákat használhatja.
 
-Írásvédett lekérdezési replikák használatával, miközben a frissítések kötegekben vannak végrehajtva, az ügyfélalkalmazás felhasználói továbbra is lekérdezhetik az írásvédett kópiák adatainak régi pillanatképét. A frissítések befejezése után egy Szinkronizálási művelet hajtható végre az írásvédett kópiák naprakészen írása érdekében.
+Ha csak olvasható lekérdezési replikákat használ, míg a frissítések kötegekben vannak elvégezve, az ügyfélalkalmazás felhasználói továbbra is lekérhetik az adatok régi pillanatképét az írásvédett replikák esetében. A frissítések befejeződése után egy szinkronizálási művelet végrehajtásával a csak olvasható replikák naprakészen helyezhetők.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -50,5 +50,5 @@ Akár REST, akár egyéni logikát használ, az ügyfélalkalmazás-lekérdezés
 [Aszinkron frissítés a REST API-val](analysis-services-async-refresh.md)  
 [Az Azure Analysis Services horizontális felskálázása](analysis-services-scale-out.md)  
 [Analysis Services magas rendelkezésre állás](analysis-services-bcdr.md)  
-[Az Azure-szolgáltatások újrapróbálkozási útmutatója](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)   
+[Újrapróbálkozási útmutató az Azure-szolgáltatásokhoz](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)   
 

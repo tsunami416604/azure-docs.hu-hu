@@ -1,6 +1,6 @@
 ---
-title: CSV-fájlok lekérdezése az IGÉNY szerinti SQL használatával (előzetes verzió)
-description: Ebből a cikkből megtudhatja, hogyan lehet lekérdezni egyetlen CSV-fájlokat különböző fájlformátumokkal az SQL on-demand (előzetes verzió) használatával.
+title: CSV-fájlok lekérdezése az SQL on-demand használatával (előzetes verzió)
+description: Ebből a cikkből megtudhatja, hogyan kérdezheti le az önálló CSV-fájlokat különböző fájlformátumokban az SQL on-demand (előzetes verzió) használatával.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,37 +10,37 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431591"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
-Ebben a cikkben megtudhatja, hogyan lehet lekérdezni egyetlen CSV-fájlt az SQL igény szerinti (előzetes verzió) használatával az Azure Synapse Analytics szolgáltatásban. A CSV-fájlok különböző formátumúak lehetnek: 
+Ebből a cikkből megtudhatja, hogyan kérdezheti le egyetlen CSV-fájlt az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben. A CSV-fájlok formátuma eltérő lehet: 
 
-- Fejlécsorral és anélkül
+- Fejléc-sorral és anélkül
 - Vesszővel és tabulátorral tagolt értékek
-- Windows és Unix stílusvonal végződések
-- Nem jegyzett és idézett értékek, valamint kiáramló karakterek
+- Windows-és Unix-stílusú sorok vége
+- Nem idézett és idézett értékek, valamint Escape-karakterek
 
-A fenti változatok mindegyikét az alábbiakban fedjük le.
+Az alábbiakban az összes fenti változatot tárgyaljuk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk többi részének elolvasása előtt tekintse át a következő cikkeket:
+A cikk további részének beolvasása előtt tekintse át a következő cikkeket:
 
 - [Első beállítás](query-data-storage.md#first-time-setup)
 - [Előfeltételek](query-data-storage.md#prerequisites)
 
-## <a name="windows-style-new-line"></a>Windows stílusú új vonal
+## <a name="windows-style-new-line"></a>Windows stílusú új sor
 
-A következő lekérdezés bemutatja, hogyan lehet fejlécsor nélküli CSV-fájlt olvasni windowsos stílusú új sorral és vesszővel tagolt oszlopokkal.
+A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy olyan CSV-fájlt, amely egy fejlécsor nélkül, egy Windows-stílusú új sorral és vesszővel tagolt oszlopokkal rendelkezik.
 
 Fájl előnézete:
 
-![A CSV fájl első 10 sora fejléc nélkül, a Windows új sort stílusa.](./media/query-single-csv-file/population.png)
+![A CSV-fájl első 10 sora fejléc nélkül, Windows stílusú új sor.](./media/query-single-csv-file/population.png)
 
 ```sql
 SELECT *
@@ -61,13 +61,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="unix-style-new-line"></a>Unix stílusú új vonal
+## <a name="unix-style-new-line"></a>Unix stílusú új sor
 
-A következő lekérdezés bemutatja, hogyan lehet fejlécsor nélküli fájlt olvasni Unix stílusú új sorral és vesszővel tagolt oszlopokkal. Figyelje meg a fájl különböző helyét a többi példához képest.
+A következő lekérdezés azt mutatja be, hogyan lehet egy olyan fájlt beolvasni, amely nem tartalmaz fejlécet, Unix stílusú új sorral és vesszővel tagolt oszlopokkal. Figyelje meg a fájl különböző helyét a többi példához képest.
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora fejlécsor nélkül és Unix-Style új sorral.](./media/query-single-csv-file/population-unix.png)
+![A CSV-fájl első 10 sora fejlécsor nélkül és Unix stílusú új sorral.](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -90,11 +90,11 @@ WHERE
 
 ## <a name="header-row"></a>Fejlécsor
 
-A következő lekérdezés bemutatja, hogyan lehet fejlécsorral, Unix stílusú új sorral és vesszővel tagolt oszlopokkal olvasni a fájlt. Figyelje meg a fájl különböző helyét a többi példához képest.
+A következő lekérdezés azt mutatja be, hogyan lehet egy fejlécet tartalmazó olvasási fájl egy Unix stílusú új sorral és vesszővel tagolt oszlopokkal. Figyelje meg a fájl különböző helyét a többi példához képest.
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora fejlécsorral és Unix-Style új sorral.](./media/query-single-csv-file/population-unix-hdr.png)
+![A CSV-fájl első 10 sora a fejléc sorával és Unix stílusú új sorral.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -115,13 +115,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="custom-quote-character"></a>Egyéni idézőjel
+## <a name="custom-quote-character"></a>Egyéni idézőjel karakter
 
-A következő lekérdezés bemutatja, hogyan lehet fejlécsorral, Unix stílusú új sorral, vesszővel tagolt oszlopokkal és idézett értékekkel olvasni. Figyelje meg a fájl különböző helyét a többi példához képest.
+A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet tartalmazó fájlt egy Unix-stílusú új vonallal, vesszővel tagolt oszlopokkal és az idézőjeles értékekkel. Figyelje meg a fájl különböző helyét a többi példához képest.
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora fejlécsorral és Unix-Style új sorral és idézett értékekkel.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![A CSV-fájl első 10 sora a fejléc sorával, valamint a Unix stílusú új sor és az idézett értékekkel.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -145,15 +145,15 @@ WHERE
 ```
 
 > [!NOTE]
-> Ez a lekérdezés ugyanazt az eredményt adja vissza, ha kihagyta a FIELDQUOTE paramétert, mivel a FIELDQUOTE alapértelmezett értéke dupla idézőjel.
+> A lekérdezés ugyanezeket az eredményeket adja vissza, ha kihagyta a FIELDQUOTE paramétert, mivel a FIELDQUOTE alapértelmezett értéke dupla idézőjel.
 
-## <a name="escaping-characters"></a>Menekülő karakterek
+## <a name="escaping-characters"></a>Escape-karakterek
 
-A következő lekérdezés bemutatja, hogyan lehet fejlécsorral, Unix stílusú új sorral, vesszővel tagolt oszlopokkal és az értékeken belüli mezőhatárolóhoz (vesszőhöz) használt escape-karakterrel olvasni. Figyelje meg a fájl különböző helyét a többi példához képest.
+A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet tartalmazó fájlt egy Unix-stílusú új sorral, vesszővel tagolt oszlopokkal, valamint egy Escape-karaktert, amely az értékeken belüli elválasztó (vessző) mezőkhöz használható. Figyelje meg a fájl különböző helyét a többi példához képest.
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora fejlécsorral és Unix-Style új sorral és a mezőhatárolóhoz használt escape karakterrel.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![A CSV-fájl első 10 sora a fejléc sorával és a mező elválasztójának Unix stílusú, új vonallal és Escape karakterrel való használatával.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -176,15 +176,15 @@ WHERE
 ```
 
 > [!NOTE]
-> Ez a lekérdezés sikertelen lenne, ha az ESCAPECHAR nincs megadva, mivel a "Slov,enia" vesszője mezőhatárolóként lenne kezelve az országnév része helyett. "Slov, enia" lenne kezelni, mint két oszlop. Ezért az adott sor egy oszlopával több, mint a többi, és egy oszlopmal több, mint amit a WITH záradékban meghatározott.
+> Ez a lekérdezés meghiúsul, ha a ESCAPECHAR nincs megadva, mert a "Slov, enia" vessző nem az ország neve, hanem mező elválasztója lenne. A "Slov, enia" két oszlopként lesz kezelve. Ezért az adott sornak több oszlopa is lehet, mint a többi sor, és egy oszlop a WITH záradékban megadott értékkel.
 
 ## <a name="tab-delimited-files"></a>Tabulátorral tagolt fájlok
 
-A következő lekérdezés bemutatja, hogyan lehet fejlécsorral, Unix stílusú új sorral és tabulátorral tagolt oszlopokkal olvasni a fájlt. Figyelje meg a fájl különböző helyét a többi példához képest.
+A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet tartalmazó fájlt egy Unix stílusú új sorral és tabulátorral tagolt oszlopokkal. Figyelje meg a fájl különböző helyét a többi példához képest.
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora fejlécsorral és Unix-Style új vonallal és tabulátorral.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![A CSV-fájl első 10 sora a fejléc sorával, valamint a Unix stílusú új sor és tabulátor elválasztóval.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
@@ -206,14 +206,14 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Oszlopok részhalmazának visszaadása
+## <a name="returning-subset-of-columns"></a>Oszlopok visszaadott részhalmaza
 
-Eddig a CSV-fájlsémát a WITH használatával adta meg, és felsorolja az összes oszlopot. A lekérdezésben csak akkor adhat meg oszlopokat, amelyekre ténylegesen szüksége van, ha minden szükséges oszlophoz sorszámot használ. Akkor is kihagyja oszlopok nem érdekel.
+Eddig a CSV-fájl sémáját a és az összes oszlop listázásával adtuk meg. A lekérdezésben ténylegesen szükséges oszlopokat csak sorszám alapján adhatja meg a szükséges oszlopokhoz. Emellett az oszlopok nem érdeklik.
 
-A következő lekérdezés a fájlban lévő különböző országnevek számát adja vissza, és csak a szükséges oszlopokat adja meg:
+A következő lekérdezés visszaadja a fájlban szereplő különböző országok neveinek számát, csak a szükséges oszlopokat adja meg:
 
 > [!NOTE]
-> Vessen egy pillantást az alábbi lekérdezés WITH záradékára, és vegye figyelembe, hogy a sor végén a sor végén "2" (idézőjelek nélkül) található, ahol megadhatja a *[country_name]* oszlopot. Ez azt jelenti, hogy a *[country_name]* oszlop a fájl második oszlopa. A lekérdezés a második kivételével figyelmen kívül hagyja a fájl összes oszlopát.
+> Tekintse meg a WITH záradékot az alábbi lekérdezésben, és vegye figyelembe, hogy a sor végén található "2" (idézőjelek nélkül) a (z) *[country_name]* oszlopot határozza meg. Ez azt jelenti, hogy a *[country_name]* oszlop a fájl második oszlopa. A lekérdezés figyelmen kívül hagyja a fájl összes oszlopát, kivéve a másodikat.
 
 ```sql
 SELECT
@@ -234,7 +234,7 @@ WITH (
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek megmutatják, hogyan:
+A következő cikkek a következőkre mutatnak:
 
 - [Parquet-fájlok lekérdezése](query-parquet-files.md)
 - [Mappák és több fájl lekérdezése](query-folders-multiple-csv-files.md)

@@ -1,6 +1,6 @@
 ---
-title: Támogatott fájlformátumok az Azure Data Factoryban
-description: Ez a témakör ismerteti a fájlalapú összekötők által támogatott fájlalapú összekötők által támogatott fájlformátumok és tömörítési kódok at.
+title: A Azure Data Factory támogatott fájlformátumai
+description: Ez a témakör azokat a fájlformátumokat és tömörítési kódokat ismerteti, amelyeket a Azure Data Factory található fájl alapú összekötők támogatnak.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: dbcfad3dd3db9f5c9431e07d85d77a77a10283c4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419034"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és tömörítési kodekek az Azure Data Factoryban
+# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és tömörítési kodekek a Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*Ez a cikk a következő összekötőkre vonatkozik: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), Azure Data Lake [Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), File [System](connector-file-system.md), [FTP](connector-ftp.md), Google [Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)és [SFTP](connector-sftp.md).*
+*Ez a cikk az alábbi összekötőket érinti [: Amazon S3](connector-amazon-simple-storage-service.md), [azure blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).*
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-A Másolás [tevékenységgel](copy-activity-overview.md) fájlokat másolhat két fájlalapú adattár között, amely esetben az adatok másolása szerializálás vagy deszerializálás nélkül történik. 
+A [másolási tevékenységgel](copy-activity-overview.md) fájlok másolását végezheti el két fájl alapú adattár között, ebben az esetben az Adatmásolást a szerializálás vagy a deszerializálás nélkül is hatékonyan másolja a rendszer. 
 
-Ezenkívül elemezheti vagy létrehozhatja egy adott formátumú fájlokat is. A következőket hajthatja végre például:
+Emellett egy adott formátumú fájlokat is elemezheti vagy létrehozhatja. Például a következőket végezheti el:
 
-* Adatok másolása egy helyszíni SQL Server-adatbázisból, és írjon az Azure Data Lake Storage Gen2-be Parketta formátumban.
-* Fájlok másolása szöveges (CSV) formátumban egy helyszíni fájlrendszerből, és írjon az Azure Blob storage Avro formátumban.
-* Tömörített fájlok másolása egy helyszíni fájlrendszerből, kibonthatja őket menet közben, és kibontott fájlokat írhat az Azure Data Lake Storage Gen2-be.
-* Adatok másolása Gzip tömörített szöveg (CSV) formátumban az Azure Blob storage-ból, és írja meg az Azure SQL Database-be.
-* Sokkal több olyan tevékenység, amely szerializálást/deszerializációt vagy tömörítést/dekompressziót igényel.
+* Adatok másolása helyszíni SQL Server-adatbázisból, és a Azure Data Lake Storage Gen2ba való írás parketta formátumban.
+* Szövegfájlok (CSV) formátumának másolása helyszíni fájlrendszerből és az Azure Blob Storage-ba való írás Avro formátumban.
+* Másolhatja a tömörített fájlokat egy helyszíni fájlrendszerből, kibonthatja azokat menet közben, és kibontott fájlokat írhat a Azure Data Lake Storage Gen2ba.
+* Adatok másolása gzip tömörített szövegfájlba (CSV) az Azure Blob Storage-ból, és a Azure SQL Databasebe írás.
+* Számos további tevékenység, amelyek szerializálást/deszerializálást vagy tömörítést/kibontást igényelnek.
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd a többi Másolási tevékenység cikkeket:
+Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Tevékenység másolása – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Másolási tevékenység teljesítménye](copy-activity-performance.md)

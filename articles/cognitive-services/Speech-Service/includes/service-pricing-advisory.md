@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: trbye
 ms.openlocfilehash: 5d1ec3fcc817431622c4f50a49afe8d61797c690
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81421824"
 ---
 > [!NOTE]
-> A tesztelés során a rendszer átírást hajt végre. Ezt fontos szem előtt tartani, mivel az árak szolgáltatásajánlatonként és előfizetési szintenként eltérőek lehetnek. A [legfrissebb részletekért](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)mindig tekintse meg az Azure Cognitive Services hivatalos díjszabását.
+> A tesztelés során a rendszer átírást hajt végre. Ezt fontos szem előtt tartani, mivel a díjszabás a szolgáltatási ajánlat és az előfizetés szintjén változik. [A legfrissebb részletekért](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)tekintse meg a hivatalos Azure Cognitive Services díjszabása – Speech szolgáltatást.

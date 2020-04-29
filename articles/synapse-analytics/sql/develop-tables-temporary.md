@@ -1,6 +1,6 @@
 ---
-title: Ideiglenes táblák használata a Synapse SQL-t használva
-description: Alapvető útmutatás a synapse SQL ideiglenes tábláinak használatához.
+title: Ideiglenes táblák használata a szinapszis SQL-sel
+description: Alapvető útmutató az ideiglenes táblák használatához a szinapszis SQL-ben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,29 +11,29 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428757"
 ---
-# <a name="temporary-tables-in-synapse-sql"></a>Ideiglenes táblák a Synapse SQL-ben
+# <a name="temporary-tables-in-synapse-sql"></a>Ideiglenes táblák a szinapszis SQL-ben
 
-Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatával, és kiemeli a munkamenetszintű ideiglenes táblák alapelveit a Synapse SQL-en belül. 
+Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatához, és kiemeli a munkamenetek szintjének ideiglenes tábláinak alapelveit a szinapszis SQL-en belül. 
 
-Az SQL-készlet és az SQL igény szerinti (előzetes verzió) erőforrások is használhatják az ideiglenes táblákat. Sql on-demand korlátozások, amelyek a cikk végén tárgyalt. 
+Az SQL-készlet és az igény szerinti SQL-(előzetes verzió) erőforrások is használhatják az ideiglenes táblákat. Az SQL on-demand korlátozásait a cikk végén tárgyaljuk. 
 
 ## <a name="what-are-temporary-tables"></a>Mik azok az ideiglenes táblák?
 
-Az ideiglenes táblák akkor hasznosak, ha adatokat dolgoz fel, különösen az átalakítás során, ahol a köztes eredmények átmenetiek. A Synapse SQL,ideiglenes táblák léteznek a munkamenet szintjén.  Csak az on-dikált munkamenet számára láthatók. Így a rendszer automatikusan eldobja őket, amikor a munkamenet kijelentkezik. 
+Az ideiglenes táblák hasznosak az adatfeldolgozás során, különösen az átalakítás során, ahol a közbenső eredmények átmenetiek. A szinapszis SQL esetében ideiglenes táblák találhatók a munkamenet szintjén.  Csak abban a munkamenetben láthatók, amelyben létrehozták őket. Ilyenkor a rendszer automatikusan elveti őket, amikor a munkamenet kijelentkezik. 
 
 ## <a name="temporary-tables-in-sql-pool"></a>Ideiglenes táblák az SQL-készletben
 
-Az SQL-készlet erőforrás ideiglenes táblák teljesítményelőnyt kínálnak, mert az eredmények írása a helyi, nem pedig a távtároló.
+Az SQL Pool-erőforrásban az ideiglenes táblák teljesítménybeli előnyt biztosítanak, mert az eredményeket a rendszer a távoli tárterület helyett helyire írja.
 
 ### <a name="create-a-temporary-table"></a>Ideiglenes tábla létrehozása
 
-Az ideiglenes táblák úgy jönnek létre, hogy a táblanevét előrögzítik egy `#`.  Például:
+Az ideiglenes táblákat a táblanév előtaggal való előállításával `#`hozza létre a rendszer.  Például:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -53,7 +53,7 @@ WITH
 )
 ```
 
-Ideiglenes táblák is létrehozhatók `CTAS` pontosan ugyanazzal a módszerrel:
+Az ideiglenes táblák is létrehozhatók a `CTAS` használatával, pontosan ugyanazzal a módszerrel:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -94,12 +94,12 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS`egy erős parancs, és a hozzáadott előnye, hogy hatékony annak használata tranzakciónapló helyet. 
+> `CTAS`a egy hatékony parancs, és az előnye, hogy hatékony a tranzakciós napló területének használatakor. 
 > 
 > 
 
 ### <a name="dropping-temporary-tables"></a>Ideiglenes táblák eldobása
-Új munkamenet létrehozásakor nem létezhetnek ideiglenes táblák.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely ideiglenes, azonos `CREATE TABLE` nevű eljárást hoz létre, hogy megbizonyosodjon `DROP`arról, hogy a kimutatások sikeresek, használjon egy egyszerű, a létezés előtti ellenőrzést a következővel: 
+Új munkamenet létrehozásakor nem létezhet ideiglenes tábla.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely egy ideiglenest hoz létre ugyanazzal a névvel, akkor győződjön meg arról `CREATE TABLE` , hogy az utasítások sikeresek, és egy egyszerű, előfeltétel-ellenőrzéssel ellenőrizze az alábbiakat `DROP`: 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,16 +108,16 @@ BEGIN
 END
 ```
 
-A konzisztencia kódolásához célszerű ezt a mintát használni a táblák hoz és az ideiglenes táblákhoz.  Érdemes az ideiglenes táblák eltávolításához is használni, `DROP TABLE` ha végzett velük.  
+A kódolási konzisztencia esetében érdemes ezt a mintát használni a táblák és az ideiglenes táblák esetében is.  Azt is érdemes használni `DROP TABLE` , hogy az ideiglenes táblákat is távolítsa el, ha elkészült velük.  
 
-A tárolt eljárások fejlesztése, gyakori, hogy a csepp parancsok at kötegelt együtt az eljárás végén annak biztosítása érdekében, ezek az objektumok törlődnek.
+A tárolt eljárások fejlesztése során gyakran előfordul, hogy az eljárások végén a legördülő parancsok együttesen jelennek meg, így biztosítva az objektumok tisztítását.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>Modularizáló kód
-Az ideiglenes táblák a felhasználói munkamenetben bárhol használhatók. Ez a képesség ezután kihasználható az alkalmazáskód modularizálásához.  A következők ben a következő tárolt eljárás generáld DDL-t az adatbázis összes statisztikájának statisztikai név szerint való frissítésére:
+### <a name="modularizing-code"></a>Modularizing-kód
+Az ideiglenes táblák bárhol használhatók egy felhasználói munkamenetben. Ezt a képességet azután kihasználhatja, hogy modularize az alkalmazás kódját.  A következő tárolt eljárással lehet bemutatni a DDL-et az adatbázis összes statisztikájának a statisztikai név alapján történő frissítéséhez:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -191,11 +191,11 @@ FROM    t1
 GO
 ```
 
-Ebben a szakaszban az egyetlen végrehajtott művelet egy tárolt eljárás létrehozása, amely létrehozza a #stats_ddl ideiglenes tábla.  A tárolt eljárás #stats_ddl, ha már létezik. Ez a csökkenés biztosítja, hogy nem sikertelen, ha egy munkameneten belül egynél többször fut.  
+Ebben a szakaszban az egyetlen művelet történt egy olyan tárolt eljárás létrehozásakor, amely létrehozza a #stats_ddl ideiglenes táblát.  Ha már létezik, a tárolt eljárás elveszíti #stats_ddl. Ez a csökkenés gondoskodik arról, hogy az ne legyen sikertelen, ha egy munkameneten belül többször fut.  
 
-Mivel a tárolt `DROP TABLE` eljárás végén nincs, a tárolt eljárás befejezésekor a létrehozott tábla megmarad, és a tárolt eljáráson kívül is olvasható.  
+Mivel a tárolt eljárás `DROP TABLE` végén nem található a tárolt eljárás, a létrehozott tábla továbbra is elérhető marad, és a tárolt eljáráson kívül is olvasható.  
 
-Más SQL Server-adatbázisokkal ellentétben a Synapse SQL lehetővé teszi az ideiglenes tábla használatát a létrehozó eljáráson kívül.  Az SQL-készleten keresztül létrehozott ideiglenes táblák **a munkameneten** belül bárhol használhatók. Ennek eredményeképpen több moduláris és kezelhető kódot kap, amint azt az alábbi minta mutatja:
+Más SQL Server-adatbázisokkal szemben a szinapszis SQL lehetővé teszi az ideiglenes tábla használatát az azt létrehozó eljáráson kívül.  Az SQL-készleten keresztül létrehozott ideiglenes táblák a munkameneten belül **bárhol** használhatók. Ennek eredményeképpen több moduláris és felügyelhető kóddal fog rendelkezni, ahogy azt az alábbi minta mutatja:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -216,21 +216,21 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-### <a name="temporary-table-limitations"></a>Ideiglenes táblakorlátozások
+### <a name="temporary-table-limitations"></a>Ideiglenes táblák korlátozásai
 
-Az SQL-készlet rendelkezik néhány megvalósítási korlátozással az ideiglenes táblákhoz:
+Az SQL-készletnek van néhány implementációs korlátja az ideiglenes táblákhoz:
 
-- Csak a munkamenet hatókörrel tartozó ideiglenes táblái támogatottak.  A globális ideiglenes táblák nem támogatottak.
-- Ideiglenes táblákon nem hozhatók létre nézetek.
-- Ideiglenes táblák csak kivonatoló vagy ciklikus multiplexeléssel hozhatók létre.  A replikált ideiglenes táblaterjesztés nem támogatott. 
+- Csak a munkamenet-hatókörű ideiglenes táblák támogatottak.  A globális ideiglenes táblák nem támogatottak.
+- Nem hozhatók létre nézetek ideiglenes táblákon.
+- Ideiglenes táblákat csak kivonattal vagy ciklikus multiplexelés eloszlással lehet létrehozni.  A replikált ideiglenes tábla eloszlása nem támogatott. 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>Ideiglenes táblák az SQL igény szerinti verziójában (előzetes verzió)
+## <a name="temporary-tables-in-sql-on-demand-preview"></a>Ideiglenes táblák az igény szerinti SQL-ben (előzetes verzió)
 
-Az SQL igény szerinti ideiglenes táblái támogatottak, de használatuk korlátozott. Nem használhatók olyan lekérdezésekben, amelyek fájlokat céloznak meg. 
+Az SQL igény szerinti ideiglenes táblái támogatottak, de a használatuk korlátozott. Nem használhatók olyan lekérdezésekben, amelyek megcélozják a fájlokat. 
 
-Például nem illeszthet össze ideiglenes táblát a tárolóban lévő fájlokból származó adatokkal. Az ideiglenes táblák száma 100-ra korlátozódik, és teljes méretük 100 MB-ra korlátozódik.
+Nem lehet például olyan ideiglenes táblát csatlakoztatni, amely a tárolóban lévő fájlokból származó adatokkal rendelkezik. Az ideiglenes táblák száma 100, a teljes méretük pedig 100 MB-ra van korlátozva.
 
 ## <a name="next-steps"></a>További lépések
 
-A táblák fejlesztéséről a [Táblák tervezése a Synapse SQL-erőforrások cikkben](develop-tables-overview.md) olvashat bővebben.
+A táblázatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [táblák tervezése a SZINAPSZIS SQL-erőforrások használatával](develop-tables-overview.md) című cikket.
 

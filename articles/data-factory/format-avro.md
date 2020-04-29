@@ -1,6 +1,6 @@
 ---
-title: Avro formátum az Azure Data Factoryban
-description: Ez a témakör ismerteti, hogyan kell kezelni az Avro formátumot az Azure Data Factoryban.
+title: Avro formátuma Azure Data Factory
+description: Ez a témakör azt ismerteti, hogyan kezelhető a Avro formátuma Azure Data Factoryban.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 931287fa2a4104069b101236bec9f76bb7193e8d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416353"
 ---
-# <a name="avro-format-in-azure-data-factory"></a>Avro formátum az Azure Data Factoryban
+# <a name="avro-format-in-azure-data-factory"></a>Avro formátuma Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Kövesse ezt a cikket, ha elemezni szeretné **az Avro fájlokat, vagy az adatokat Avro formátumba írni.** 
+Kövesse ezt a cikket, ha **elemezni szeretné a Avro-fájlokat, vagy Avro formátumban kell írnia azokat**. 
 
-Az Avro formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob,](connector-azure-blob-storage.md) [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), File [System,](connector-file-system.md) [FTP,](connector-ftp.md) [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)és [SFTP](connector-sftp.md).
+A Avro formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek](concepts-datasets-linked-services.md) című cikkben olvashatja. Ez a szakasz az Avro-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Avro adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Az adatkészlet típustulajdonságát **Avro**-ra kell állítani. | Igen      |
-| location         | A fájl(ok) helybeállításai. Minden fájlalapú összekötő saját helytípussal és `location`támogatott tulajdonságokkal rendelkezik a csoportban. **További részletek az összekötő -> adatkészlet tulajdonságai szakaszban.** | Igen      |
-| avroCompression Codec | Az Avro fájlokíráshoz használt tömörítési kodek. Amikor Avro fájlokból olvas, a Data Factory automatikusan meghatározza a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: "**none**" (alapértelmezett), "**deflate**", "**lendületes**". Megjegyzés: Jelenleg másolási tevékenység nem támogatja a Snappy olvasása / írása Avro fájlokat. | Nem       |
+| type             | Az adatkészlet Type tulajdonságát **Avro**értékre kell állítani. | Igen      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location`. **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
+| avroCompressionCodec | A Avro-fájlok írásakor használandó tömörítési kodek. A Avro-fájlokból való olvasáskor Data Factory automatikusan meghatározza a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: "**none**" (alapértelmezett), "**deflate**", "**Snappy**". Megjegyzés: a másolási tevékenység jelenleg nem támogatja a Snappy-t az Avro-fájlok olvasásakor/írásakor. | Nem       |
 
 > [!NOTE]
-> Az Avro-fájlok nem támogatják az oszlopnévben lévő szóközt.
+> A Avro-fájlok nem támogatják az oszlopnév üres területét.
 
-Az alábbiakban egy példa az Avro adatkészlet az Azure Blob Storage:
+Alább látható egy példa az Azure Blob Storage Avro adatkészletére:
 
 ```json
 {
@@ -62,36 +62,36 @@ Az alábbiakban egy példa az Avro adatkészlet az Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz az Avro-forrás és -fogadó által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Avro forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="avro-as-source"></a>Avro forrásként
 
-A következő tulajdonságokat a másolási tevékenység *** \*forrása\* *** szakasz támogatja.
+A másolási tevékenység *** \*forrása\* *** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenységforrás típustulajdonságát **AvroSource (AvroSource )** tulajdonságra kell állítani. | Igen      |
-| storeSettings (tárolóbeállítások) | Tulajdonságok csoportja az adattárból történő adatok olvasásáról. Minden fájlalapú összekötő saját támogatott olvasási beállításokkal rendelkezik a területen. `storeSettings` **További részletek az összekötő cikkében -> a tevékenység tulajdonságainak másolása szakaszban.** | Nem       |
+| type          | A másolási tevékenység forrásának Type tulajdonságát **AvroSource**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings`. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
-### <a name="avro-as-sink"></a>Avro mint mosogató
+### <a name="avro-as-sink"></a>Avro fogadóként
 
-A következő tulajdonságokat a *** \*\* *** másolási tevékenység fogadó szakasza támogatja.
+A másolási *** \*\* tevékenység*** fogadója szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenységforrás típustulajdonságának **AvroSink (AvroSink ) típusú tulajdonságát AvroSink (AvroSink**) tulajdonságra kell állítani. | Igen      |
-| storeSettings (tárolóbeállítások) | Tulajdonságok csoportja az adatok adattárba való írásának módjáról. Minden fájlalapú összekötő saját támogatott írási beállításokkal rendelkezik a területen. `storeSettings` **További részletek az összekötő cikkében -> a tevékenység tulajdonságainak másolása szakaszban.** | Nem       |
+| type          | A másolási tevékenység forrásának Type tulajdonságát **AvroSink**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings`. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
-## <a name="data-type-support"></a>Adattípus-támogatás
+## <a name="data-type-support"></a>Adattípusok támogatása
 
 ### <a name="copy-activity"></a>Másolási tevékenység
-Az Avro [összetett adattípusai](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, felsorakatok, tömbök, térképek, tagoltak és rögzítettek) a Másolási tevékenységben.
+A Avro [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, térképek, szakszervezetek és rögzített) a másolási tevékenységben.
 
 ### <a name="data-flows"></a>Adatfolyamok
-Amikor az Avro-fájlokkal dolgozik az adatfolyamokban, összetett adattípusokat olvashat és írhat, de először törölje a fizikai sémát az adatkészletből. Az adatfolyamokban beállíthatja a logikai vetületet, és összetett struktúrákat eredményező oszlopokat hozhat létre, majd automatikusan leképezheti ezeket a mezőket egy Avro-fájlhoz.
+Az adatfolyamatok Avro-fájljainak használatakor az összetett adattípusok olvashatók és írhatók, de ügyeljen rá, hogy először törölje a fizikai sémát az adatkészletből. Az adatfolyamatokban beállíthatja a logikai kivetítést, és kiszármaztathatja az összetett struktúrákat tartalmazó oszlopokat, majd automatikusan leképezheti ezeket a mezőket egy Avro-fájlra.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tevékenység másolása – áttekintés](copy-activity-overview.md)
-- [Keress tevékenységet](control-flow-lookup-activity.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)

@@ -1,6 +1,6 @@
 ---
-title: Egyéni nézetek megosztása paraméterezett URL-ekkel – Azure Time Series Insights | Microsoft dokumentumok
-description: Ismerje meg, hogyan hozhat létre paraméterezett URL-címeket, hogy egyszerűen megoszthassa a testreszabott felfedezőnézeteket az Azure Time Series Insightsban.
+title: Egyéni nézetek megosztása paraméteres URL-címekkel – Azure Time Series Insights | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre paraméteres URL-címeket a Azure Time Series Insights testreszabott Explorer-nézeteinek egyszerű megosztásához.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,25 +11,25 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417001"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
-Ha egyéni nézetet szeretne megosztani a Time Series Insights Explorerben, programozott módon létrehozhatja az egyéni nézet paraméterezett URL-címét.
+Az egyéni nézetek Time Series Insights Explorerben való megosztásához programozott módon hozhatja létre az egyéni nézet paraméteres URL-címét.
 
-A Time Series Insights Explorer támogatja az URL-lekérdezési paramétereket, hogy közvetlenül az URL-címből adja meg a nézeteket a felhasználói élményben. Például kizárólag az URL-cím használatával adhatja meg a célkörnyezetet, a keresési predikátumot és a kívánt időtartományt is. Amikor egy felhasználó kiválasztja a testreszabott URL-címet, a felület közvetlenül az adott eszközre mutató hivatkozást biztosít a Time Series Insights portálon. Adathozzáférési szabályzatok érvényesek.
+A Time Series Insights Explorer támogatja az URL-lekérdezési paramétereket, amelyek közvetlenül az URL-címről határozzák meg a nézeteket. Például kizárólag az URL-cím használatával adhatja meg a célkörnyezetet, a keresési predikátumot és a kívánt időtartományt is. Amikor a felhasználó kiválasztja a testreszabott URL-címet, az illesztőfelület közvetlenül az adott eszközre mutató hivatkozást biztosít a Time Series Insights portálon. Adathozzáférési szabályzatok érvényesek.
 
 > [!TIP]
-> * Tekintse meg az ingyenes [Time Series Insights demót.](https://insights.timeseries.azure.com/samples)
-> * Olvassa el a [Time Series Insights Explorer](./time-series-insights-explorer.md) dokumentációját.
+> * Tekintse meg az ingyenes [Time Series Insights bemutatót](https://insights.timeseries.azure.com/samples).
+> * Olvassa el a mellékelt [Time Series Insights Explorer](./time-series-insights-explorer.md) dokumentációját.
 
 ## <a name="environment-id"></a>Környezetazonosító
 
-A célkörnyezet azonosítóját az `environmentId=<guid>` paraméter adja meg. Ez egy összetevője az adatelérési teljes tartományn, és megtalálja azt a környezet áttekintésének jobb felső sarkában az Azure Portalon. Ez minden, ami `env.timeseries.azure.com`megelőzi .
+A célkörnyezet azonosítóját az `environmentId=<guid>` paraméter adja meg. Ez az adatelérési teljes tartománynév összetevője, és a Azure Portal környezetének jobb felső sarkában található. Ez minden, ami megelőzi `env.timeseries.azure.com`.
 
 Példa környezetazonosító paraméterre: `?environmentId=10000000-0000-0000-0000-100000000108`.
 
@@ -45,95 +45,95 @@ Abszolút időértékek megadásához használja a következő paramétereket: `
 * A `to=<integer>` egy olyan érték, amely JavaScript-ezredmásodpercben adja meg a keresés befejezési időpontját.
 
 > [!TIP]
-> A dátumok JavaScript ezredmásodpercre történő egyszerű lefordításához próbálja ki az [Epoch & Unix Timestamp Converter](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html).
+> A dátumok JavaScript ezredmásodpercbe való egyszerű lefordításához próbálkozzon az [Epoch & Unix timestamp átalakítóval](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html).
 
 ### <a name="relative-time-values"></a>Relatív időértékek
 
-Relatív időérték esetén `relativeMillis=<value>`használja a , ahol az *érték* JavaScript ezredmásodpercben van az API-ból kapott legutóbbi időbélyegtől.
+A relatív idő értékéhez használja `relativeMillis=<value>`a értéket, ahol az *érték* a JavaScript ezredmásodpercben az API-ból kapott legutóbbi időbélyegtől.
 
 A `&relativeMillis=3600000` például a legutóbbi 60 perc adatait jeleníti meg.
 
-Az elfogadott értékek megfelelnek a Time Series Insights explorer **gyorsidő** menüjének, és a következőket tartalmazzák:
+Az elfogadott értékek a Time Series Insights Explorer **gyors idő** menüjének felelnek meg, és a következők:
 
-* `1800000`(Utolsó 30. év)
-* `3600000`(Utolsó 60. év)
-* `10800000`(Utolsó 3 óra)
-* `21600000`(Elmúlt 6 óra)
-* `43200000`(Utolsó 12 óra)
-* `86400000`(Utolsó 24 óra)
-* `604800000`(Elmúlt 7 nap)
-* `2592000000`(Utolsó 30 óra)
+* `1800000`(Az elmúlt 30 perc)
+* `3600000`(Utolsó 60 perc)
+* `10800000`(Az elmúlt 3 óra)
+* `21600000`(Az elmúlt 6 óra)
+* `43200000`(Az elmúlt 12 óra)
+* `86400000`(Az elmúlt 24 óra)
+* `604800000`(Az elmúlt 7 nap)
+* `2592000000`(Az elmúlt 30 óra)
 
 ### <a name="optional-parameters"></a>Választható paraméterek
 
-A `timeSeriesDefinitions=<collection of term objects>` paraméter olyan predikátumkifejezéseket ad meg, amelyek a Time Series Insights nézetben jelennek meg:
+A `timeSeriesDefinitions=<collection of term objects>` paraméter olyan predikátum-kifejezéseket határoz meg, amelyek egy Time Series Insights nézetben fognak megjelenni:
 
-| Paraméter | URL-elem | Leírás |
+| Paraméter | URL-tétel | Leírás |
 | --- | --- | --- |
 | **név** | `\<string>` | A *kifejezés* neve. |
 | **splitBy** | `\<string>` | A *felosztás* alapjául szolgáló oszlop neve. |
-| **measureName (measureName)** | `\<string>` | A *mérték* oszlopneve. |
-| **Predikátum** | `\<string>` | A kiszolgálóoldali szűrés *where* záradéka. |
-| **useSum** | `true` | Nem kötelező paraméter, amely a mérték összegének használatával határozza meg. |
+| **measureName** | `\<string>` | A *mérték* oszlopneve. |
+| **predikátum** | `\<string>` | A kiszolgálóoldali szűrés *where* záradéka. |
+| **useSum** | `true` | Egy opcionális paraméter, amely a mérték összegének használatát határozza meg. |
 
 > [!NOTE]
-> Ha `Events` a **kiválasztott useSum** mérték, akkor a darabszám alapértelmezés szerint be van jelölve.  
-> Ha `Events` nincs bejelölve, az átlag beállítás alapértelmezés szerint be van jelölve. |
+> Ha `Events` a a kiválasztott **useSum** mérték, a darabszám alapértelmezés szerint ki van választva.  
+> Ha `Events` nincs bejelölve, az átlag alapértelmezés szerint ki van választva. |
 
-* A `multiChartStack=<true/false>` kulcs-érték pár lehetővé teszi a halmozást a diagramon.
-* A `multiChartSameScale=<true/false>` kulcs-érték pár lehetővé teszi ugyanazt az Y-tengely skálázás kifejezések között egy választható paraméter.  
-* A `timeBucketUnit=<Unit>&timeBucketSize=<integer>` lehetővé teszi az intervallum csúszka beállítását, hogy a diagram részletesebb vagy simább, összesítettebb nézetét biztosítsa.  
-* A `timezoneOffset=<integer>` paraméter lehetővé teszi, hogy a diagram időzónáját UTC-eltolásként állítsa be.
+* A `multiChartStack=<true/false>` kulcs-érték párok lehetővé teszik a diagramon belüli halmozást.
+* A `multiChartSameScale=<true/false>` kulcs-érték pár lehetővé teszi, hogy ugyanaz az Y tengely skálája a feltételek között egy opcionális paraméteren belül legyen.  
+* A `timeBucketUnit=<Unit>&timeBucketSize=<integer>` lehetővé teszi az intervallum csúszkájának módosítását, hogy a diagram részletesebb vagy simább legyen.  
+* A `timezoneOffset=<integer>` paraméter lehetővé teszi, hogy beállítsa a diagram időzónáját, amelyet az UTC szerint kell megtekinteni.
 
-| Pár(ok) | Leírás |
+| Pár (ok) | Leírás |
 | --- | --- |
-| `multiChartStack=false` | `true`engedélyezve van alapértelmezés `false` szerint így át verem. |
-| `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  Ez `false` alapértelmezés szerint, így `true` a tompított lehetővé teszi ezt a funkciót. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Egységek `days`= `hours` `minutes`, `seconds` `milliseconds`, , , .  Az egység nevét mindig nagybetűvel írja. </br> Adja meg az egységek számát a timeBucketSize kívánt egész számának **átadásával.**  |
+| `multiChartStack=false` | `true`Alapértelmezés szerint engedélyezve van, ezért `false` adja át a stack-nek. |
+| `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  `false` Alapértelmezés szerint ez a funkció `true` lehetővé teszi ezt a funkciót. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Egység = `days`, `hours`, `minutes`, `seconds`, `milliseconds`.  Az egység nevét mindig nagybetűvel írja. </br> Adja meg az egységek számát az **timeBucketSize**kívánt egész számának átadásával.  |
 | `timezoneOffset=-<integer>` | Az egész számot mindig ezredmásodpercben kell megadnia. |
 
 > [!NOTE]
-> **timeBucketUnit** értékek legfeljebb 7 napig simíthatók.
-> **a timezoneOffset** értékek nem UTC és helyi idő.
+> a **timeBucketUnit** értékeit akár 7 napig is elvégezheti.
+> a **timezoneOffset** értékei sem UTC, sem helyi idő szerint nem használhatók.
 
 ### <a name="examples"></a>Példák
 
-Ha idősorozat-definíciókat szeretne hozzáadni egy Time Series Insights-környezethez URL-paraméterként, fűzz hozzá:
+Ha idősorozat-definíciókat szeretne hozzáadni egy Time Series Insights-környezethez URL-paraméterként, fűzze hozzá a következőt:
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
 {"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-Használja a példa idősorozat-definíciókat a következőkre:
+Az idősorozat-definíciók használata a következőhöz:
 
 * A környezeti azonosító
-* Az utolsó 60 perc adat
-* A választható paramétereket tartalmazó kifejezések (**F1PressureID**, **F2TempStation**és **F3VibrationPL**)
+* Az utolsó 60 perc
+* A választható paramétereket tartalmazó feltételek (**F1PressureID**, **F2TempStation**és **F3VibrationPL**)
 
-A következő paraméterezett URL-címet hozhatja létre egy nézethez:
+A nézethez a következő paraméteres URL-címet hozhatja létre:
 
 ```URL
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![A Time Series Insights-kezelő paraméteres URL-címe](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![Time Series Insights Explorer paraméteres URL-címe](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
-> Tekintse meg az Explorer élő ben a fenti [URL-példát.](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}])
+> Tekintse meg az Explorer Live [-t a fenti URL-cím használatával](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) .
 
-A fenti URL ismerteti és megjeleníti a paraméteres Time Series Insights explorer nézetet. 
+A fenti URL-cím leírja és megjeleníti a paraméteres Time Series Insights Explorer nézetet. 
 
-* A paraméterezett predikátumok.
+* A paraméteres predikátumok.
 
-  [![A Time Series Insights felfedezőparaméteresített predikátumai.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![Time Series Insights Explorer paraméteres predikátumai.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
-* A megosztott teljes diagramnézet.
+* A megosztott teljes diagram nézet.
 
-  [![A megosztott teljes diagramnézet.](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
+  [![A megosztott teljes diagram nézet.](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [adatok c# használatával történő lekérdezéséről.](time-series-insights-query-data-csharp.md)
+* Útmutató az [adatlekérdezéshez a C# használatával](time-series-insights-query-data-csharp.md).
 
-* További információ a [Time Series Insights Explorer ről.](./time-series-insights-explorer.md)
+* Ismerkedjen meg a [Time Series Insights Explorerrel](./time-series-insights-explorer.md).

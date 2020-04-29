@@ -1,6 +1,6 @@
 ---
-title: Metaadat-tevékenység beszereznie az Azure Data Factoryban
-description: Ismerje meg, hogyan használhatja a Metaadat-folyamat beszereznie tevékenységet egy Data Factory-folyamatban.
+title: Metaadatok beolvasása tevékenység Azure Data Factory
+description: Megtudhatja, hogyan használhatja a metaadatok beolvasása tevékenységet egy Data Factory folyamaton.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,37 +13,37 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417109"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadat-tevékenység beszereznie az Azure Data Factoryban
+# <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A Metaadat-szolgáltatás beolvasása tevékenység segítségével lekérheti az Azure Data Factory bármely adatmetaadatait. Ezt a tevékenységet a következő esetekben használhatja:
+A metaadatok beolvasása tevékenység segítségével lekérheti a Azure Data Factoryban található adatok metaadatait. Ezt a tevékenységet a következő esetekben használhatja:
 
-- Bármely adat metaadatainak ellenőrzése.
-- Folyamat ot indít, ha az adatok készen állnak/elérhetők.
+- Ellenőrizze az adatok metaadatait.
+- Folyamat elindítása, ha az adatgyűjtés kész/elérhető.
 
-A vezérlőfolyamat a következő funkciókat elérhető:
+A következő funkciók érhetők el a vezérlési folyamatban:
 
-- A Metaadat-műveletek becsatornázása feltételes kifejezésekben az ellenőrzés végrehajtásához használhatja a Metaadat-tevékenység beírása kimenetét.
-- Akkor indíthat el egy folyamatot, ha egy feltétel teljesül a Do Until hurkolásig keresztül.
+- Az érvényesítés végrehajtásához használhatja a metaadatok beolvasása tevékenységből a feltételes kifejezésekben szereplő kimenetet.
+- A folyamat akkor aktiválható, ha a feltételt a "Do" utasításon keresztül, a hurok nélkül kell megtenni.
 
 ## <a name="capabilities"></a>Funkciók
 
-A Metaadat beszerezése tevékenység egy adatkészletet vesz fel bemenetként, és metaadat-információt ad vissza kimenetként. Jelenleg a következő összekötők és a megfelelő leolvasható metaadatok támogatottak. A visszaadott metaadatok maximális mérete 2 MB.
+A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, és a metaadatok adatait adja vissza kimenetként. Jelenleg a következő összekötők és a megfelelő lekérdezhető metaadatok támogatottak. A visszaadott metaadatok maximális mérete 2 MB.
 
 >[!NOTE]
->Ha a Metaadatok beolvasása tevékenységet saját üzemeltetésű integrációs futásidőben futtatja, a legújabb funkciók at 3.6-os vagy újabb verzió támogatja.
+>Ha a metaadatok lekérése tevékenységet egy saját üzemeltetésű integrációs modulon futtatja, a legújabb funkciók a 3,6-es vagy újabb verziókban támogatottak.
 
 ### <a name="supported-connectors"></a>Támogatott összekötők
 
-**Fájltárolás**
+**File Storage**
 
-| Összekötő/metaadatok | itemName elem<br>(fájl/mappa) | Itemtype<br>(fájl/mappa) | size<br>(fájl) | Létrehozott<br>(fájl/mappa) | lastModified (utolsó módosítás: )<br>(fájl/mappa) |childItems (gyermekelemek)<br>(mappa) |contentMD5<br>(fájl) | Szerkezet<br/>(fájl) | oszlopszáma<br>(fájl) | Létezik<br>(fájl/mappa) |
+| Összekötő/metaadatok | itemName<br>(fájl/mappa) | itemType<br>(fájl/mappa) | size<br>fájl | létrehozott<br>(fájl/mappa) | lastModified<br>(fájl/mappa) |childItems<br>mappa |contentMD5<br>fájl | szerkezet<br/>fájl | columnCount<br>fájl | létezik<br>(fájl/mappa) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
@@ -55,47 +55,47 @@ A Metaadat beszerezése tevékenység egy adatkészletet vesz fel bemenetként, 
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
-- Ha metaadat-tevékenység beszedése van egy mappában, győződjön meg arról, hogy list/EXECUTE engedéllyel rendelkezik az adott mappához.
-- Az Amazon S3 és `lastModified` a Google Cloud Storage, vonatkozik a vödröt és a kulcsot, de nem a virtuális mappát, és `exists` vonatkozik a vödör és a kulcs, de nem az előtag vagy virtuális mappát.
-- Az Azure Blob `lastModified` storage, vonatkozik a tároló és a blob, de nem a virtuális mappát.
-- `lastModified`a szűrő jelenleg a gyermekelemek szűrésére vonatkozik, de magára a mappára/fájlra nem.
-- A mappákon/fájlokon lévő helyettesítő karakter szűrő nem támogatott a Metaadat-tevékenység bekésése esetén.
+- Ha a metaadatok lekérése tevékenységgel egy mappára kattint, győződjön meg arról, hogy az adott mappához a lista/végrehajtás engedély van megadva.
+- Az Amazon S3 és a Google Cloud Storage `lastModified` esetében a gyűjtőre és a kulcsra, de nem a virtuális mappára vonatkozik `exists` , és a gyűjtőre és a kulcsra, de nem az előtagra vagy a virtuális mappára vonatkozik.
+- Az Azure Blob Storage esetében `lastModified` a tárolóra és a blobra vonatkozik, de a virtuális mappára nem.
+- `lastModified`a szűrő jelenleg az alárendelt elemek szűrésére vonatkozik, de a megadott mappa vagy fájl nem.
+- A mappák/fájlok helyettesítő szűrője nem támogatott a metaadatok beolvasása tevékenység esetén.
 
 **Relációs adatbázis**
 
-| Összekötő/metaadatok | Szerkezet | oszlopszáma | Létezik |
+| Összekötő/metaadatok | szerkezet | columnCount | létezik |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
-| [Azure SQL Database felügyelt példánya](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
-| [Azure SQL adattárház](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
+| [Felügyelt példány Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Metaadatok beállításai
 
-A metaadatok beolvasása mezőben a következő metaadat-típusokat adhatja meg a megfelelő információk beolvasásához:
+A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység mezőinek listájában a megfelelő információk lekéréséhez:
 
-| Metaadat-típus | Leírás |
+| Metaadat típusa | Leírás |
 |:--- |:--- |
-| itemName elem | A fájl vagy mappa neve. |
-| Itemtype | A fájl vagy mappa típusa. A visszaadott `Folder`érték vagy `File` . |
-| size | A fájl mérete bájtban. Csak fájlokra alkalmazható. |
-| Létrehozott | A fájl vagy mappa dátumának létrehozása. |
-| lastModified (utolsó módosítás: ) | A fájl vagy mappa utolsó módosításdátuma. |
-| childItems (gyermekelemek) | Az adott mappában lévő almappák és fájlok listája. Csak mappákra alkalmazható. A visszaadott érték az egyes gyermekelemek nevének és típusának listája. |
-| contentMD5 | A fájl MD5-ös részében. Csak fájlokra alkalmazható. |
-| Szerkezet | A fájl- vagy relációs adatbázistábla adatszerkezete. A visszaadott érték az oszlopnevek és az oszloptípusok listája. |
-| oszlopszáma | A fájl- vagy relációs tábla oszlopainak száma. |
-| Létezik| Azt jelzi, hogy létezik-e fájl, mappa vagy tábla. Ne feledje, hogy ha `exists` meg van adva a Metaadatok bekerülési adatai nak listájában, a tevékenység akkor sem fog sikertelen, ha a fájl, mappa vagy tábla nem létezik. Ehelyett `exists: false` a kimenetben ad vissza. |
+| itemName | A fájl vagy mappa neve. |
+| itemType | A fájl vagy mappa típusa. A visszaadott `File` érték `Folder`a következő: vagy. |
+| size | A fájl mérete bájtban megadva. Csak a fájlokra érvényes. |
+| létrehozott | A fájl vagy mappa dátum és idő (datetime) létrehozása. |
+| lastModified | A fájl vagy mappa utolsó módosításának datetime értéke. |
+| childItems | A megadott mappában található almappák és fájlok listája. Csak a mappákra érvényes. A visszaadott érték az egyes alárendelt elemek nevének és típusának listája. |
+| contentMD5 | A fájl MD5-je. Csak a fájlokra érvényes. |
+| szerkezet | A fájl vagy a viszonyítási adatbázis táblázatának adatstruktúrája. A visszaadott érték az oszlopnevek és az oszlopok típusának listája. |
+| columnCount | A fájl vagy a rokon tábla oszlopainak száma. |
+| létezik| Azt határozza meg, hogy létezik-e fájl, mappa vagy tábla. Vegye figyelembe, `exists` hogy ha a metaadatok beolvasása mezők listájában meg van adva, akkor a tevékenység nem fog működni, még akkor sem, ha a fájl, mappa vagy tábla nem létezik. Ehelyett a `exists: false` rendszer visszaadja a kimenetet. |
 
 >[!TIP]
->Ha ellenőrizni szeretné, hogy létezik-e fájl, `exists` mappa vagy tábla, adja meg a Metaadatok bekerülése mezőlistában. Ezután ellenőrizheti `exists: true/false` az eredményt a tevékenység kimenetében. Ha `exists` nincs megadva a mezőlistában, a Metaadat bekerülési adatai nak bekerülési értéke sikertelen lesz, ha az objektum nem található.
+>Ha szeretné ellenőrizni, hogy egy fájl, mappa vagy tábla létezik-e, a `exists` metaadatok beolvasása tevékenység mezők listájában adhatja meg. Ezt követően a tevékenység kimenetében is megtekintheti az `exists: true/false` eredményt. Ha `exists` nincs megadva a mezőlista, a metaadatok beolvasása tevékenység sikertelen lesz, ha az objektum nem található.
 
 >[!NOTE]
->Amikor metaadatokat kap a `modifiedDatetimeStart` fájltárolókból, és konfigurálja a vagy `modifiedDatetimeEnd`a kimenetet, akkor csak azok a `childItems` fájlok lesznek az adott elérési úton, amelyek utolsó módosítási ideje a megadott tartományon belül van. Az in nem tartalmazza az almappákban lévő elemeket.
+>Ha a fájl tárolja a metaadatokat, és `modifiedDatetimeStart` konfigurálja `modifiedDatetimeEnd`a vagy `childItems` a-t, a kimenetben csak a megadott tartományon belüli utolsó módosítási időt tartalmazó fájlok jelennek meg. A nem tartalmazza az almappákban található elemeket.
 
 ## <a name="syntax"></a>Szintaxis
 
-**Metaadat-tevékenység beszereznie**
+**Metaadatok beolvasása tevékenység**
 
 ```json
 {
@@ -135,20 +135,20 @@ A metaadatok beolvasása mezőben a következő metaadat-típusokat adhatja meg 
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Jelenleg a Metaadat beküldése tevékenység a következő metaadat-adatokat adja vissza:
+A metaadatok beolvasása tevékenység jelenleg a következő típusú metaadatokat tudja visszaadni:
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-fieldList | A szükséges metaadat-adatok típusai. A támogatott metaadatokról a cikk [Metaadatok beállításai](#metadata-options) című szakaszában olvashat részletesen. | Igen 
-Adatkészlet | Az a referencia-adatkészlet, amelynek metaadatait a Metaadat beolvasása tevékenység nek kell beolvasnia. A támogatott [összekötőkről](#capabilities) a Képességek című szakaszban talál tájékoztatást. Tekintse meg az adatkészlet szintaxisának részleteit az összekötő konkrét témakörei. | Igen
-formatSettings (Beállítások) | Alkalmazás formátumtípus-adatkészlet használataesetén. | Nem
-storeSettings (tárolóbeállítások) | Alkalmazás formátumtípus-adatkészlet használataesetén. | Nem
+Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Igen 
+adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Igen
+formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
+storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
 
 ## <a name="sample-output"></a>Példa kimenet
 
-A Metaadat-eredmények bekésése a tevékenység kimenetében jelenik meg. Az alábbiakban két minta látható kiterjedt metaadat-beállításokat. Ha az eredményeket egy későbbi tevékenységben `@{activity('MyGetMetadataActivity').output.itemName}`szeretné használni, használja ezt a mintát: .
+A metaadatok beolvasása eredmények a tevékenység kimenetében jelennek meg. A következő két minta kiterjedt metaadat-beállításokat jelenít meg. Ha az eredményeket egy későbbi tevékenységben szeretné használni, használja a következő `@{activity('MyGetMetadataActivity').output.itemName}`mintát:.
 
-### <a name="get-a-files-metadata"></a>Fájl metaadatainak beszereznie
+### <a name="get-a-files-metadata"></a>Fájl metaadatainak beolvasása
 
 ```json
 {
@@ -173,7 +173,7 @@ A Metaadat-eredmények bekésése a tevékenység kimenetében jelenik meg. Az a
 }
 ```
 
-### <a name="get-a-folders-metadata"></a>Mappa metaadatainak beszereznie
+### <a name="get-a-folders-metadata"></a>Mappa metaadatainak beolvasása
 
 ```json
 {
@@ -196,9 +196,9 @@ A Metaadat-eredmények bekésése a tevékenység kimenetében jelenik meg. Az a
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információ a Data Factory által támogatott egyéb vezérlési folyamattevékenységekről:
+További információ a Data Factory által támogatott egyéb irányítási folyamatokról:
 
-- [Folyamattevékenység végrehajtása](control-flow-execute-pipeline-activity.md)
+- [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
 - [ForEach tevékenység](control-flow-for-each-activity.md)
-- [Keress tevékenységet](control-flow-lookup-activity.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

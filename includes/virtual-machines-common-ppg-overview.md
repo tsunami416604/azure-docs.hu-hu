@@ -9,48 +9,48 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81421794"
 ---
-Virtuális gépek elhelyezése egyetlen régióban csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónán belül helyezi el őket, fizikailag közelebb kerülnek egymáshoz. Azonban az Azure-lábnyom növekedésével egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazásra hatással lehet a hálózati késés. 
+A virtuális gépek egyetlen régióban való elhelyezése csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónába helyezi őket, az is fizikailag szorosabban fog működni. Mivel azonban az Azure-lábnyom növekszik, az egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazást érintő hálózati késést eredményezhet. 
 
-A virtuális gépek lehető legközelebb, a lehető legalacsonyabb késés elérése érdekében, telepítenie kell őket egy közelség elhelyezési csoporton belül.
+Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy közelségi elhelyezési csoporton belül kell telepítenie.
 
-A közelségelhelyezési csoport egy logikai csoportosítás, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag egymáshoz közel helyezkednek el. A közelségelhelyezési csoportok olyan számítási feladatokhoz hasznosak, ahol az alacsony késés követelmény.
-
-
-- Alacsony késleltetés az önálló virtuális gépek között.
-- Alacsony késés a virtuális gépek között egyetlen rendelkezésre állási csoportban vagy egy virtuálisgép-méretezési csoportban. 
-- Alacsony késés az önálló virtuális gépek, több rendelkezésre állási csoportban lévő virtuális gépek vagy több méretezési csoport között. Egy többrétegű alkalmazás egyesítéséhez több számítási erőforrás is lehet egyetlen elhelyezési csoportban. 
-- Alacsony késés több alkalmazásréteg között, különböző hardvertípusok használatával. Például fut a háttér-a háttér-használatával M-sorozat egy rendelkezésre állási csoport ban és az előtér egy D-sorozat példány, egy méretezési csoportban, egyetlen közelség elhelyezési csoportban.
+A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. A közelségi csoportok olyan munkaterhelések esetén hasznosak, ahol az alacsony késés követelmény.
 
 
-![A közelségelhelyezési csoportok ábrája](./media/virtual-machines-common-ppg/ppg.png)
+- Kis késleltetés az önálló virtuális gépek között.
+- Kis késleltetés egyetlen rendelkezésre állási csoportba tartozó virtuális gépek és egy virtuálisgép-méretezési csoport között. 
+- Kis késleltetés az önálló virtuális gépek, több rendelkezésre állási csoportba tartozó virtuális gépek vagy több méretezési csoport között. A többrétegű alkalmazások összevonásához több számítási erőforrás is tartozhat egyetlen elhelyezési csoportban. 
+- Kis késleltetés több alkalmazás-réteg között különböző típusú hardvereszközök használatával. Például, ha a hátteret a rendelkezésre állási csoportban található M-sorozattal és a D sorozatú példányon lévő előtérrel futtatja, egy méretezési csoport egyetlen közelségi elhelyezési csoportjában.
 
-## <a name="using-proximity-placement-groups"></a>Közelségelhelyezési csoportok használata 
 
-A közelségelhelyezési csoport egy új erőforrástípus az Azure-ban. Létre kell hoznia egyet, mielőtt más erőforrásokkal használná. Létrehozása után virtuális gépekkel, rendelkezésre állási készletekkel vagy virtuálisgép-méretezési készletekkel használható. A közelségelhelyezési csoport megadása a közelségelhelyezési csoport azonosítójának megadásához szükséges számítási erőforrások létrehozásakor. 
+![Proximity elhelyezési csoportok grafikája](./media/virtual-machines-common-ppg/ppg.png)
 
-Egy meglévő erőforrást egy közelségelhelyezési csoportba is áthelyezhet. Amikor egy erőforrást egy közelségelhelyezési csoportba helyez át, először le kell állítania (felkell osztania) az eszközt, mivel potenciálisan átlesz telepítve a régió egy másik adatközpontjába, így kielégítheti a helymegosztási korlátozást. 
+## <a name="using-proximity-placement-groups"></a>Proximity elhelyezési csoportok használata 
 
-Rendelkezésre állási csoportok és a virtuálisgép-méretezési csoportok esetén a közelség-elhelyezési csoportot az erőforrás szintjén kell beállítani, nem pedig az egyes virtuális gépek. 
+A közelségi elhelyezési csoport egy új erőforrástípus az Azure-ban. Először létre kell hoznia egyet, mielőtt más erőforrásokkal kellene használnia. A létrehozást követően a virtuális gépekkel, rendelkezésre állási csoportokkal vagy virtuálisgép-méretezési csoportokkal használható. Ha a közelségi elhelyezési csoport AZONOSÍTÓját biztosító számítási erőforrásokat hoz létre, a közelségi elhelyezési csoportot kell megadnia. 
 
-A közelségelhelyezési csoport inkább helymegosztási kényszer, mint rögzítési mechanizmus. Egy adott adatközponthoz van rögzítve az első erőforrás üzembe helyezésével. Miután a közelségelhelyezési csoportot használó összes erőforrás leállt (felszabadított) vagy törölt, a továbbiakban nem lesz rögzítve. Ezért ha több virtuálisgép-sorozattal rendelkező közelségelhelyezési csoportot használ, fontos, hogy az összes szükséges típust előre adja meg egy sablonban, ha lehetséges, vagy kövessen egy központi telepítési sorozatot, amely javítja a sikeres üzembe helyezés esélyét. Ha a központi telepítés sikertelen, indítsa újra a központi telepítést a virtuális gép mérete, amely nem sikerült az első telepítendő méret.
+Egy meglévő erőforrást is át lehet helyezni egy közelségi elhelyezési csoportba. Ha az erőforrást egy közelségi elhelyezési csoportba helyezi át, akkor először állítsa le (szabadítsa fel) az eszközt, mert a régió egy másik adatközpontjában is elérhetővé válik, hogy az megfeleljen az elhelyezési korlátozásnak. 
 
-## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Mire számíthat a közelségelhelyezési csoportok használata esetén? 
-A közelségelhelyezési csoportok közös elhelyezést kínálnak ugyanabban az adatközpontban. Mivel azonban a közelségi elhelyezési csoportok további telepítési megkötést jelentenek, foglalási hibák fordulhatnak elő. Kevés olyan használati eset van, amikor a közelségi elhelyezési csoportok használatakor foglalási hibák jelenhetnek meg:
+A rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok esetében az egyes virtuális gépek helyett az erőforrás szintjén kell beállítani a közelségi elhelyezési csoportot. 
 
-- Amikor a közelségelhelyezési csoport első virtuális gépét kéri, az adatközpont automatikusan kiválasztásra kerül. Bizonyos esetekben egy másik virtuális gép termékváltozatának második kérése sikertelen lehet, ha nem létezik az adott adatközpontban. Ebben az esetben egy **OverconstrainedAllocationRequest** hibát ad vissza. Ennek elkerülése érdekében próbálja meg módosítani a sk-ek üzembe helyezésének sorrendjét, vagy mindkét erőforrás egyetlen ARM-sablon használatával üzembe helyezése.
--   Rugalmas számítási feladatok esetén, ahol virtuálisgép-példányok hozzáadása és eltávolítása, amelynek közelségelhelyezési csoport korlátozás a központi telepítés sikertelenlehet a kérés teljesítése miatt **AllocationFailure** hiba. 
-- Leállítása (felszabadítása) és a virtuális gépek szükség szerint indítása egy másik módja a rugalmasság elérésének. Mivel a kapacitás nem marad meg, ha leállítja (felszabadítja) a virtuális gép, újraindítása eredményezhet **AllocationFailure** hiba.
+A közelségi elhelyezési csoport a rögzítési mechanizmus helyett egy elhelyezési megkötés. Egy adott adatközpontba van rögzítve, amely az első erőforrás központi telepítését használja. Ha a közelségi elhelyezési csoportot használó összes erőforrás le lett állítva (fel van foglalva) vagy törölve lett, már nem rögzített. Ezért, ha a közelségi elhelyezési csoportot több virtuálisgép-sorozattal használja, fontos, hogy az összes szükséges típust megadja a sablonban, amikor lehetséges, vagy egy központi telepítési sorozatot követve, amely javítja a sikeres üzembe helyezés esélyét. Ha a telepítés sikertelen, indítsa újra a telepítést a virtuálisgép-mérettel, amely az első üzembe helyezési méretnél meghiúsult.
+
+## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Mire számíthat a közelségi elhelyezési csoportok használatakor 
+A közelségi elhelyezési csoportok közös helyet foglalnak el ugyanabban az adatközpontban. Mivel azonban a közelségi elhelyezési csoportok további központi telepítési korlátozást jelentenek, lefoglalási hibák léphetnek fel. Néhány felhasználási esetet láthat, ha foglalási hibák merülnek fel a közelségi csoportok használatakor:
+
+- Ha az első virtuális gépet a közelségi elhelyezési csoportban kéri, a rendszer automatikusan kiválasztja az adatközpontot. Bizonyos esetekben előfordulhat, hogy a másik virtuális gép SKU-jának második kérése meghiúsul, ha az nem létezik az adatközpontban. Ebben az esetben a rendszer **OverconstrainedAllocationRequest** -hibát ad vissza. Ennek elkerüléséhez próbálja meg módosítani azt a sorrendet, amelyben az SKU-ket üzembe helyezi, vagy mindkét erőforrást egyetlen ARM-sablonnal telepíti.
+-   Rugalmas munkaterhelések esetén, ahol virtuálisgép-példányokat adhat hozzá és távolíthat el, a központi telepítéshez való közelségi csoport megkötése miatt előfordulhat, hogy a kérelem nem felel meg a **AllocationFailure** hibájának. 
+- A rugalmasság elérésének egy másik módja a virtuális gépek leállítása (felszabadítása) és szükség szerint történő elindítása. Mivel a rendszer nem tartja fenn a kapacitást, ha leállítja (felszabadítja) a virtuális gépet, az újraindítással **AllocationFailure** hibát okozhat.
 
 
 ## <a name="best-practices"></a>Ajánlott eljárások 
-- A legkisebb késés érdekében használjon közelségelhelyezési csoportokat a gyorsított hálózatkezeléssel együtt. További információ: [Create a Linux virtual machine with Accelerated Networking](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or [Create a Windows virtual machine with Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Telepítse az összes virtuálisgép-méretet egyetlen sablonban. Annak elkerülése érdekében, hogy a szükséges virtuálisgép-termékközponti műveleteket és méreteket nem támogató hardverekre való leszállásne így elkerülhető legyen, az összes alkalmazásréteget egyetlen sablonba kell foglalni, hogy azok egyszerre legyenek telepítve.
-- Ha a központi telepítést PowerShell, CLI vagy az SDK használatával `OverconstrainedAllocationRequest`írja le, foglalási hiba jelenhet meg. Ebben az esetben le kell állítania/fel kell osztania az összes meglévő virtuális gépet, és módosítania kell a központi telepítési parancsfájl ban a virtuális gép termékváltozatának/méretének, amelyek sikertelenek kezdődnek. 
-- Amikor újra felhasznál egy meglévő elhelyezési csoportot, amelyből a virtuális gépeket törölték, várja meg, amíg a törlés teljesen befejeződik, mielőtt virtuális gépeket ad hozzá.
-- Ha a késés az elsődleges prioritás, tegye a virtuális gépek egy közelség elhelyezési csoport és a teljes megoldás egy rendelkezésre állási zónában. De ha a rugalmasság a legfontosabb prioritás, a példányokat több rendelkezésre állási zónára is el kell osztania (egyetlen közelségelhelyezési csoport nem terjedhet ki a zónákra).
+- A legkisebb késés érdekében használja a közeli elhelyezési csoportokat a gyorsított hálózatkezeléssel együtt. További információ: [Linux rendszerű virtuális gép gyorsított hálózatkezeléssel való létrehozása](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Minden virtuálisgép-méret üzembe helyezése egyetlen sablonban. Ha el szeretné kerülni, hogy a hardver nem támogatja a szükséges összes virtuálisgép-t és méretet, vegye fel az összes alkalmazási szintet egyetlen sablonba, hogy azok mind egyszerre legyenek telepítve.
+- Ha az üzembe helyezést a PowerShell, a CLI vagy az SDK használatával végezi el, lefoglalási hibaüzenetet `OverconstrainedAllocationRequest`kaphat. Ebben az esetben le kell állítania/fel kell szabadítania az összes meglévő virtuális GÉPET, és módosítania kell a telepítési parancsfájlban szereplő sorozatot, hogy a sikertelen virtuálisgép-SKU/-méretekkel kezdődjön. 
+- Ha olyan meglévő elhelyezési csoportot kíván újra használni, amelyből a virtuális gépek törölve lettek, várjon, amíg a törlés teljes mértékben befejeződik, mielőtt hozzáadja a virtuális gépeket.
+- Ha a késés az első prioritás, a virtuális gépeket egy közelségi elhelyezési csoportba és a teljes megoldásba helyezheti egy rendelkezésre állási zónában. Ha azonban a rugalmasság a legfontosabb prioritás, a példányokat több rendelkezésre állási zónában is eloszthatja (az egyetlen közelségi elhelyezési csoport nem terjedhet ki a zónákra).

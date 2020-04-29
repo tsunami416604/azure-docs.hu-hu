@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 0f73095f72d07989cdfa309454a2b54efa8e5f95
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418762"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
@@ -44,15 +44,15 @@ Ebben a forgatókönyvben az Azure SQL Database-ben lévő egyes táblákat át 
 * Az első folyamat megkeresi azoknak a tábláknak a listáját, amelyeket át kell másolni a fogadó adattárakba.  Másik megoldásként fenntarthat egy metaadattáblát, amely felsorolja az összes, a fogadó adattárba másolandó táblát. A folyamat ezután elindít egy másik folyamatot, amely végigiterál az adatbázis összes tábláján, és elvégzi az adatmásolási műveletet.
 * A második folyamat hajtja végre a tényleges másolást. A táblák listáját használja paraméterként. A legjobb teljesítmény érdekében a lista minden egyes Azure SQL Database-tábláját másolja át az SQL Data Warehouse megfelelő táblájába [szakaszos másolással a Blob Storage és a PolyBase segítségével](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Ebben a példában az első folyamat a táblák listáját adja át a paraméter értékeként. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Az Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
-* **Az Azure Storage-fiók.** Az Azure Storage-fiók a tömeges másolási műveletben átmeneti blobtárolóként működik. 
-* **Az Azure SQL Database .** Ez az adatbázis tartalmazza a forrásadatokat. 
+* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
+* **Azure Storage-fiók**. Az Azure Storage-fiók a tömeges másolási műveletben átmeneti blobtárolóként működik. 
+* **Azure SQL Database**. Ez az adatbázis tartalmazza a forrásadatokat. 
 * **Azure SQL Data Warehouse**. Ez az adattárház tárolja az SQL Database-ből átmásolt adatokat. 
 
 ### <a name="prepare-sql-database-and-sql-data-warehouse"></a>Az SQL Database és az SQL Data Warehouse előkészítése
@@ -89,12 +89,12 @@ Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Ser
     ```powershell
     Get-AzSubscription
     ```
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId azonosítóját** az Azure-előfizetésazonosítójára:
+    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az **SubscriptionId** -t az Azure-előfizetés azonosítójával:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Futtassa a **Set-AzDataFactoryV2** parancsmag adatgyár létrehozásához. A parancs végrehajtása előtt cserélje le a helyőrzőket a saját értékeire. 
+2. A **set-AzDataFactoryV2** parancsmag futtatásával hozzon létre egy adatelőállítót. A parancs végrehajtása előtt cserélje le a helyőrzőket a saját értékeire. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -138,7 +138,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
 
 2. Az **Azure PowerShellben** váltson az **ADFv2TutorialBulkCopy** mappára.
 
-3. Futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot a csatolt szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
+3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -172,7 +172,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
     }
     ```
 
-2. A csatolt szolgáltatás létrehozásához: **AzureSqlDWLinkedService**, futtassa a **Set-AzDataFactoryV2LinkedService** parancsmag.
+2. A társított szolgáltatás létrehozásához: **AzureSqlDWLinkedService**futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -208,7 +208,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     }
     ```
 
-2. A csatolt szolgáltatás létrehozásához: **AzureStorageLinkedService**, futtassa a **Set-AzDataFactoryV2LinkedService** parancsmag.
+2. A társított szolgáltatás létrehozásához: **AzureStorageLinkedService**futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -247,7 +247,7 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     }
     ```
 
-2. Az adatkészlet létrehozásához: **AzureSqlDatabaseDataset**, futtassa a **Set-AzDataFactoryV2Dataset** parancsmag.
+2. A következő adatkészlet létrehozásához futtassa a **set-AzDataFactoryV2Dataset** parancsmagot: **AzureSqlDatabaseDataset**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -291,7 +291,7 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     }
     ```
 
-2. Az adatkészlet létrehozásához: **AzureSqlDWDataset**, futtassa a **Set-AzDataFactoryV2Dataset** parancsmag.
+2. A következő adatkészlet létrehozásához futtassa a **set-AzDataFactoryV2Dataset** parancsmagot: **AzureSqlDWDataset**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -383,7 +383,7 @@ Ez a folyamat a táblák listáját használja paraméterként. A lista minden e
     }
     ```
 
-2. A folyamat létrehozásához: **IterateAndCopySQLTables**, Futtassa a **Set-AzDataFactoryV2Pipeline** parancsmag.
+2. A folyamat létrehozása: **IterateAndCopySQLTables**, futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -459,7 +459,7 @@ Ez a folyamat két lépést hajt végre:
     }
     ```
 
-2. A folyamat létrehozásához: **GetTableListAndTriggerCopyData**, Futtassa a **Set-AzDataFactoryV2Pipeline** parancsmag.
+2. A folyamat létrehozása: **GetTableListAndTriggerCopyData**, futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"

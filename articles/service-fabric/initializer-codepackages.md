@@ -1,34 +1,34 @@
 ---
-title: Initializer codepackages a Service Fabric
-description: A Service Fabric initializer codepackages című témakörének ismertetése.
+title: Inicializáló CodePackages a Service Fabricban
+description: A Service Fabric inicializálási CodePackages ismertetése.
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430629"
 ---
-# <a name="initializer-codepackages"></a>Initializer CodePackages
+# <a name="initializer-codepackages"></a>Inicializáló kódcsomagok
 
-A 7.1-es verziótól kezdve a Service Fabric támogatja **a inicializáló codepackages** [tárolók][containers-introduction-link] és [a vendég végrehajtható][guest-executables-introduction-link] alkalmazások. Initializer CodePackages lehetőséget biztosít arra, hogy végre inicializálása a ServicePackage hatókörelőtt más CodePackages végrehajtás megkezdése előtt. Kapcsolatuk a ServicePackage hasonló ahhoz, amit a [SetupEntryPoint][setup-entry-point-link] egy CodePackage.
+Az 7,1-es verziótól kezdődően Service Fabric támogatja az **inicializálási CodePackages** a [tárolók][containers-introduction-link] és a [vendég végrehajtható][guest-executables-introduction-link] alkalmazások számára. Az inicializáló CodePackages lehetőséget biztosít az inicializálások végrehajtásához a szervizcsomag hatókörében, mielőtt más CodePackages megkezdi a végrehajtást. A szervizcsomaggal való kapcsolatuk hasonló ahhoz, amit egy [SetupEntryPoint][setup-entry-point-link] egy CodePackage.
 
-Mielőtt folytatná ezt a cikket, javasoljuk, hogy ismerkedjen meg a [Service Fabric alkalmazásmodell][application-model-link] és a [Service Fabric üzemeltetési modell.][hosting-model-link]
+A cikk folytatása előtt javasoljuk, hogy ismerkedjen meg a [Service Fabric alkalmazás modelljével][application-model-link] és a [Service Fabric üzemeltetési modellel][hosting-model-link].
 
 > [!NOTE]
-> Initializer CodePackages jelenleg nem támogatott a [Reliable Services][reliable-services-link] programozási modell használatával írt szolgáltatások.
+> Az inicializáló CodePackages jelenleg nem támogatottak az [Reliable Services][reliable-services-link] programozási modellel írt szolgáltatások esetében.
  
 ## <a name="semantics"></a>Szemantika
 
-Az Initializer CodePackage várhatóan sikeres befejezésre fut **(kilépési kód 0)**. A sikertelen inicializáló codepackage újraindul, amíg sikeresen befejeződik. Több Initializer CodePackages megengedett, és végre **a sikeres befejezését**, **egymás után**, egy **meghatározott sorrendben,** mielőtt más CodePackages a ServicePackage végrehajtás megkezdése.
+A rendszer inicializáló CodePackage fog futni a **sikeres befejezéshez (kilépési kód: 0)**. A sikertelen inicializálási CodePackage a sikeres befejezésig újraindulnak. Több inicializáló CodePackages is engedélyezve van, és végrehajtása a **sikeres Befejezés**érdekében, **sorrendben**, **egy meghatározott sorrendben** történik, mielőtt más CodePackages is megkezdődik a szervizcsomagok végrehajtásában.
 
-## <a name="specifying-initializer-codepackages"></a>Initializer codepackages megadása
-A CodePackage-t inicializálóként jelölheti meg, ha az **Initializer** attribútumot **true** értékre állítja a ServiceManifest-ben. Ha több Initializer CodePackages, azok végrehajtási sorrendje megadható az **ExecOrder** attribútum. **Az ExecOrder** nem negatív egész szám lehet, és csak initializer codepackages esetén érvényes. Initializer CodePackages alacsonyabb értékeket **ExecOrder** végre először. Ha az **ExecOrder** nincs megadva az Initializer CodePackage csomaghoz, a program 0 alapértelmezett értéket feltételez. Az **ExecOrder** azonos értékű Initializer CodePackages relatív végrehajtási sorrendje nincs megadva.
+## <a name="specifying-initializer-codepackages"></a>Inicializálási CodePackages megadásához
+A CodePackage megadható inicializáló úgy, hogy az **inicializálás** attribútumát **true** értékre állítja a ServiceManifest. Ha több inicializáló CodePackages van, a végrehajtásuk sorrendje a **ExecOrder** attribútumon keresztül adható meg. A **ExecOrder** nem negatív egész számnak kell lennie, és csak inicializáló CodePackages esetén érvényes. Először a **ExecOrder** alacsonyabb értékkel rendelkező inicializáló CodePackages hajtja végre. Ha a **ExecOrder** nincs megadva az inicializálási CodePackage, a rendszer a 0 alapértelmezett értéket feltételezi. A **ExecOrder** azonos értékkel rendelkező inicializáló CodePackages relatív végrehajtási sorrendje nincs meghatározva.
 
-A következő ServiceManifest kódrészlet három CodePackages két jelölt inicializáló. A ServicePackage aktiválásakor az *InitCodePackage0* kerül végrehajtásra, mivel az **ExecOrder**legalacsonyabb értékkel rendelkezik. Az *InitCodePackage0*sikeres befejezésekor (0-as kilépési kód) az *InitCodePackage1* végrehajtása történik. Végül az *InitCodePackage1*sikeres befejezésekor a *WorkloadCodePackage* végrehajtásra kerül.
+A következő ServiceManifest-kódrészlet három CodePackages tartalmaz, amelyek közül kettőt inicializáló jelöl meg. Ha ez a szervizcsomag aktiválva van, a rendszer először a *InitCodePackage0* hajtja végre, mivel a legalacsonyabb **ExecOrder**értékkel rendelkezik. A *InitCodePackage0*sikeres befejezésekor (0. kilépési kód) a *InitCodePackage1* végrehajtása történik. Végül a *InitCodePackage1*sikeres befejezésekor a rendszer végrehajtja a *WorkloadCodePackage* .
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -43,16 +43,16 @@ A következő ServiceManifest kódrészlet három CodePackages két jelölt inic
   ...
 </CodePackage>
 ```
-## <a name="complete-example-using-initializer-codepackages"></a>Példa befejezése initializer codepackages használatával
+## <a name="complete-example-using-initializer-codepackages"></a>Példa az inicializálási CodePackages használatával
 
-Nézzünk meg egy teljes példát initializer codepackages használatával.
+Nézzük meg a teljes példát az inicializálási CodePackages használatával.
 
 > [!IMPORTANT]
-> A következő példa feltételezi a [Windows-tárolóalkalmazások service fabric és docker használatával történő létrehozásának ismereteit.][containers-getting-started-link]
+> Az alábbi példa azt feltételezi, hogy a [Windows-tároló alkalmazások Service Fabric és a Docker használatával történő][containers-getting-started-link]létrehozásának ismerete.
 >
-> Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdaoperációs rendszer minden verziójában. További információ: [Windows container version compatibility](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. További információ: a [Windows-tároló verziójának kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-A következő ServiceManifest.xml a korábban ismertetett ServiceManifest kódrészletre épül. *InitCodePackage0*, *InitCodePackage1* és *WorkloadCodePackage* olyan codepackages, amelyek a tárolókat képviselik. Aktiváláskor először az *InitCodePackage0* kerül végrehajtásra. Naplózza az üzenetet egy fájlba, és kilép. Ezután *az InitCodePackage1 végrehajtásra* kerül, amely egy üzenetet is naplóz egy fájlba, és kilép. Végül a *WorkloadCodePackage* megkezdi a végrehajtást. Azt is bejelentkezik egy üzenetet egy fájlt, kimenetek tartalmát a fájl **stdout,** majd pingörökre.
+A következő ServiceManifest. XML a korábban ismertetett ServiceManifest-kódrészletre épül fel. A *InitCodePackage0*, a *InitCodePackage1* és a *WorkloadCodePackage* a tárolókat jelképező CodePackages. Aktiváláskor a rendszer először a *InitCodePackage0* hajtja végre. Egy üzenetet naplóz egy fájlba, és kilép. Ezután a *InitCodePackage1* végrehajtja a fájlt, amely egy üzenetet is naplóz egy fájlba, és kilép. Végül a *WorkloadCodePackage* megkezdi a végrehajtást. Egy üzenetet is naplóz egy fájlba, kiírja a fájl tartalmát az **StdOut** -ba, majd örökre Pingeli.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ A következő ServiceManifest.xml a korábban ismertetett ServiceManifest kódr�
 </ServiceManifest>
 ```
 
-A következő ApplicationManifest.xml a fent tárgyalt ServiceManifest.xml fájlon alapuló alkalmazást írja le. Ne feledje, hogy **Volume** ugyanazt a kötetcsatlakoztatást adja meg az összes tárolóhoz, azaz a **C:\WorkspaceOnHost** mindhárom tárolón a **C:\WorkspaceOnContainer tárolóhoz** van csatlakoztatva. A nettó hatás az, hogy az összes tároló ugyanabba a naplófájlba ír, abban a sorrendben, ahogyan azok aktiválva vannak.
+A következő ApplicationManifest. XML a fent ismertetett ServiceManifest. XML fájlon alapuló alkalmazást ismertet. Vegye figyelembe, hogy az összes tárolóhoz ugyanazt a **kötet** -csatlakoztatást adja meg, a **C:\WorkspaceOnHost** pedig mindhárom tároló **C:\WorkspaceOnContainer** van csatlakoztatva. A nettó hatás az, hogy minden tároló ugyanarra a naplófájlba írja az aktiválási sorrendben.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ A következő ApplicationManifest.xml a fent tárgyalt ServiceManifest.xml fájl
   </DefaultServices>
 </ApplicationManifest>
 ```
-A ServicePackage sikeres aktiválása után a **C:\WorkspaceOnHost\log.txt** fájl tartalmának a következőnek kell lennie.
+A szervizcsomag sikeres aktiválása után a **C:\WorkspaceOnHost\log.txt** tartalmának a következőnek kell lennie.
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt
@@ -138,10 +138,10 @@ Hi from WorkloadCodePackage.
 
 ## <a name="next-steps"></a>További lépések
 
-A kapcsolódó információkat az alábbi cikkekben talál.
+A kapcsolódó információkról a következő cikkekben olvashat.
 
-* [Szolgáltatás fabric és tárolók.][containers-introduction-link]
-* [A Service Fabric és a vendég végrehajtható fájlok.][guest-executables-introduction-link]
+* [Service Fabric és tárolók.][containers-introduction-link]
+* [Service Fabric és vendég végrehajtható fájlok.][guest-executables-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

@@ -1,6 +1,6 @@
 ---
 title: Ajánlott adatbetöltési eljárások
-description: Javaslatok és teljesítményoptimalizálás az adatok Szinapszis SQL-be való betöltéséhez
+description: Javaslatok és teljesítmény-optimalizálás az adat szinapszis SQL-be való betöltéséhez
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431045"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Gyakorlati tanácsok az adatok adattárházhoz való betöltéséhez
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott eljárások az adattárházak betöltéséhez
 
-Javaslatok és teljesítményoptimalizálás az adatok betöltéséhez
+Javaslatok és teljesítmény-optimalizálás az adat betöltéséhez
 
 ## <a name="preparing-data-in-azure-storage"></a>Adatok előkészítése az Azure Storage-ban
 
@@ -36,9 +36,9 @@ A nagy tömörített fájlokat ossza fel kisebb tömörített fájlokra.
 
 ## <a name="running-loads-with-enough-compute"></a>Betöltések futtatása elegendő számítási teljesítménnyel
 
-A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem lehetséges, egyszerre a lehető legkevesebb betöltést futtassa. Ha nagy betöltési feladatra számít, fontolja meg az SQL-készlet felskálázását a betöltés előtt.
+A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem lehetséges, egyszerre a lehető legkevesebb betöltést futtassa. Ha nagy betöltési feladatot vár, érdemes megfontolnia az SQL-készlet méretezését a terhelés előtt.
 
-A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt felhasználókat. Rendeljen hozzá minden egyes betöltő felhasználót egy adott erőforrásosztályhoz vagy munkaterhelési csoporthoz. A betöltés futtatásához jelentkezzen be a betöltő felhasználók egyikeként, majd futtassa a terhelést. A betöltés a felhasználó erőforrásosztályával fut.  Ez a módszer egyszerűbb, mint a felhasználó erőforrásosztályának módosításával próbálkozni, hogy az megfeleljen az aktuális erőforrásosztály-igénynek.
+A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt felhasználókat. Rendelje hozzá az egyes betöltési felhasználókat egy adott erőforrás-osztályhoz vagy munkaterhelési csoporthoz. Betöltés futtatásához jelentkezzen be az egyik betöltési felhasználóként, majd futtassa a betöltést. A betöltés a felhasználó erőforrásosztályával fut.  Ez a módszer egyszerűbb, mint a felhasználó erőforrásosztályának módosításával próbálkozni, hogy az megfeleljen az aktuális erőforrásosztály-igénynek.
 
 ### <a name="example-of-creating-a-loading-user"></a>Példa egy betöltést végző felhasználó létrehozására
 
@@ -58,13 +58,13 @@ Kapcsolódjon az adattárházhoz, majd hozzon létre egy felhasználót. A köve
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
 
-A statikusRC20 erőforrásosztályok erőforrásaival való terhelés futtatásához jelentkezzen be LoaderRC20 néven, és futtassa a terhelést.
+Ha a Staticrc20 erőforrásosztályhoz erőforrás-osztályaihoz erőforrásokkal rendelkező terhelést szeretne futtatni, jelentkezzen be LoaderRC20 néven, és futtassa a terhelést.
 
-A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrásosztályok használata ugyanazokat az erőforrásokat garantálja, függetlenül az [adattárház egységektől.](resource-consumption-models.md) Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
+A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrás-osztályok használata ugyanazokat az erőforrásokat garantálja, függetlenül az [adattárház-egységektől](resource-consumption-models.md). Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
 
 ## <a name="allowing-multiple-users-to-load"></a>Betöltés engedélyezése több felhasználó számára
 
-Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A [CREATE TABLE AS SELECT (Transact-SQL) betöltéséhez](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) az adatbázis CONTROL engedélyei szükségesek.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
+Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A [(Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
 
 Vegyünk például két adatbázissémát: schema_A az A részleghez, és schema_B a B részleghez. Legyen user_A és user_B két PolyBase-betöltést végző adatbázis-felhasználó az A, illetve a B részlegen. Mindkét felhasználó kapott adatbázisszintű CONTROL jogosultságokat. Az A és B séma létrehozói zárolják a sémáikat a DENY utasítás segítségével:
 
@@ -73,7 +73,7 @@ Vegyünk például két adatbázissémát: schema_A az A részleghez, és schema
    DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
-User_A és user_B most ki vannak zárva a másik részleg sémájából.
+A User_A és user_B mostantól ki vannak zárva a másik részleg sémájában.
 
 ## <a name="loading-to-a-staging-table"></a>Betöltés előkészítési táblába
 
@@ -88,9 +88,9 @@ Az oszlopcentrikus indexek sok memóriát igényelnek az adatok jó minőségű 
 - Annak érdekben, hogy elég memória álljon a betöltést végző felhasználók rendelkezésére a maximális tömörítési sebesség eléréséhez, használjon olyan betöltést végző felhasználókat, akik közepes vagy nagy erőforrásosztály tagjai.
 - Töltsön be elég sort az új sorcsoportok teljes feltöltéséhez. Kötegelt betöltés során minden 1 048 576. sor teljes sorcsoportként közvetlenül az oszloptárba van tömörítve. A 102 400 sornál kisebb betöltések a deltatárba küldik a sorokat, ahol a sorok B-fában vannak tárolva. Ha kevesebb sort tölt be, előfordulhat, hogy mind a deltatárba kerül, és a rendszer nem tömöríti azokat azonnal oszloptár formátumba.
 
-## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Kötegméret növelése SQLBulkCopy API vagy BCP használata esetén
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>A Batch méretének növeléséhez a SQLBulkCopy API vagy a BCP használata esetén
 
-Mint már említettük, a PolyBase betöltése biztosítja a legmagasabb átviteli synapse SQL-készlet. Ha nem tudja használni a PolyBase betöltéséhez, és az SQLBulkCopy API-t (vagy BCP-t) kell használnia, fontolja meg a kötegméret növelését a jobb átviteli igény érdekében - jó ökölszabály a kötegméret 100K és 1M sorok között.
+Ahogy korábban említettük, a "Base" betöltéssel a legmagasabb átviteli sebesség lesz elérhető a szinapszis SQL-készlettel. Ha a SQLBulkCopy API-t (vagy BCP-t) nem lehet betöltésre használni, érdemes megfontolnia a köteg méretének növelését a jobb teljesítmény érdekében – a jó ökölszabály a 100 000 – 1 000-es sorok közötti batch-méret.
 
 ## <a name="handling-loading-failures"></a>Betöltési hibák kezelése
 
@@ -106,9 +106,9 @@ Ha több ezer egyszeres beszúrást hajt végre egy nap, kötegelje a beszúrás
 
 ## <a name="creating-statistics-after-the-load"></a>Statisztika létrehozása a betöltés után
 
-A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  Ez manuálisan is elvégezhető, vagy engedélyezheti [az automatikus létrehozási statisztikákat.](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  Ezt manuálisan is megteheti, vagy engedélyezheti az [automatikus létrehozási statisztikát](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-A statisztika részletes ismertetése: [Statisztika](develop-tables-statistics.md). A következő példa bemutatja, hogyan hozhat létre manuálisan statisztikákat a Customer_Speed tábla öt oszlopára.
+A statisztika részletes ismertetése: [Statisztika](develop-tables-statistics.md). Az alábbi példa bemutatja, hogyan hozhat létre manuálisan statisztikákat a Customer_Speed tábla öt oszlopán.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

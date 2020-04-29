@@ -1,6 +1,6 @@
 ---
-title: Fájlmetaadatok használata lekérdezésekben
-description: Az OPENROWSET függvény fájl- és elérésiút-adatokat biztosít a lekérdezésben használt összes fájlról az adatok szűrésére vagy elemzésére a fájlnév és/vagy mappa elérési útja alapján.
+title: Fájl metaadatainak használata a lekérdezésekben
+description: A OPENROWSET függvény fájl-és elérési útvonalat biztosít a lekérdezésben használt összes fájlról az adatok fájlnév és/vagy mappa elérési útján történő szűréséhez és elemzéséhez.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,34 +10,34 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 40a8e2c153ec3d8e7b4007340b9433a38f9ccc89
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431552"
 ---
-# <a name="using-file-metadata-in-queries"></a>Fájlmetaadatok használata lekérdezésekben
+# <a name="using-file-metadata-in-queries"></a>Fájl metaadatainak használata a lekérdezésekben
 
-Az SQL igény szerinti lekérdezési szolgáltatás a [Query mappákban és](query-folders-multiple-csv-files.md) több fájlról szóló cikkben leírtak szerint több fájlt és mappát is meg tud címezni. Ebből a cikkből megtudhatja, hogy miként használhatja a fájl- és mappanevek metaadat-adatait a lekérdezésekben.
+Az SQL igény szerinti lekérdezési szolgáltatása több fájlt és mappát is képes kezelni a [lekérdezési mappák és a több fájl](query-folders-multiple-csv-files.md) című cikkben leírtak szerint. Ebből a cikkből megtudhatja, hogyan használhatja a lekérdezésekben a fájl-és mappanevek metaadat-információit.
 
-Néha előfordulhat, hogy tudnia kell, hogy melyik fájl- vagy mappaforrás kapcsolódik az eredményhalmaz egy adott sorához.
+Előfordulhat, hogy tudnia kell, hogy melyik fájl-vagy mappa-forrás korrelál az eredményhalmaz egy adott sorával.
 
-Használhatja a `filepath` `filename` függvényt, és visszaadhatja a fájlneveket és/vagy az elérési utat az eredményhalmazban. Vagy használhatja őket az adatok szűrésére a fájl név és/vagy mappa elérési útja alapján. Ezeket a függvényeket a szintaktikai szakasz [fájlnév és](develop-storage-files-overview.md#filename-function) [filepath függvény](develop-storage-files-overview.md#filepath-function)ismerteti. Az alábbiakban rövid leírásokat talál a minták mentén.
+Használhatja a függvényt `filepath` , `filename` és visszaállíthatja a fájlneveket és/vagy az elérési utat az eredményhalmazban. Vagy használhatja őket az adatszűréshez a fájlnév és/vagy a mappa elérési útja alapján. Ezeket a függvényeket a szintaxis szakasz [filename függvénye](develop-storage-files-overview.md#filename-function) és a [filepath függvény](develop-storage-files-overview.md#filepath-function)ismerteti. Alább rövid leírásokat talál a minták mentén.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk többi részének elolvasása előtt tekintse át az alábbi előfeltételeket:
+A cikk további részének beolvasása előtt tekintse át a következő előfeltételeket:
 
 - [Első beállítás](query-data-storage.md#first-time-setup)
 - [Előfeltételek](query-data-storage.md#prerequisites)
 
 ## <a name="functions"></a>Functions
 
-### <a name="filename"></a>Fájlnév
+### <a name="filename"></a>Filename
 
 Ez a függvény azt a fájlnevet adja vissza, amelyből a sor származik.
 
-A következő minta beolvassa a NYC Yellow Taxi adatfájljait 2017 utolsó három hónapjában, és visszaadja a fájlonkénti fuvarok számát. A lekérdezés OPENROWSET része határozza meg, hogy mely fájlokat olvassa be a program.
+A következő minta beolvassa a NYC Yellow taxi adatfájljait az 2017-as utolsó három hónapban, és visszaadja a másodpercenkénti túrák számát. A lekérdezés OPENROWSET része határozza meg, hogy mely fájlok lesznek beolvasva.
 
 ```sql
 SELECT
@@ -52,9 +52,9 @@ ORDER BY
     [filename];
 ```
 
-A következő példa bemutatja, hogyan használható a *fájlnév()* a WHERE záradékban az olvasandó fájlok szűréséhez. A lekérdezés OPENROWSET részében lévő teljes mappához hozzáfér, és szűri a WHERE záradékban lévő fájlokat.
+Az alábbi példa azt szemlélteti, hogyan használható a *filename ()* a WHERE záradékban az olvasni kívánt fájlok szűréséhez. A lekérdezés OPENROWSET részében a teljes mappát éri el, a WHERE záradékban pedig szűri a fájlokat.
 
-Az eredmények ugyanazok lesznek, mint az előző példában.
+Az eredmények az előző példával megegyezőek lesznek.
 
 ```sql
 SELECT
@@ -71,14 +71,14 @@ ORDER BY
     [filename];
 ```
 
-### <a name="filepath"></a>Fájlelérési út
+### <a name="filepath"></a>Filepath
 
 A filepath függvény teljes vagy részleges elérési utat ad vissza:
 
-- Ha paraméter nélkül hívják meg, a teljes fájlelérési utat adja vissza, amelyből a sor származik.
-- Ha egy paraméterrel hívják meg, az elérési út egy részét adja vissza, amely megegyezik a paraméterben megadott beosztásban lévő helyettesítő karakterrel. Az 1-es paraméterérték például az első helyettesítő karakternek megfelelő elérési út egy részét adja vissza.
+- Ha paraméter nélkül hívja meg a metódust, az a teljes fájl elérési útját adja vissza, amelyből a sor származik.
+- Ha paraméterrel hívja meg a metódust, az az elérési út azon részét adja vissza, amely megfelel a paraméterben megadott pozícióban szereplő helyettesítő karakternek. Például az 1. paraméter értéke az első helyettesítő karakternek megfelelő elérési út egy részét fogja visszaadni.
 
-A következő minta a NYC Yellow Taxi adatfájljait olvassa fel 2017 utolsó három hónapjában. A fájlok elérési útjánkénti fuvarok számát adja vissza. A lekérdezés OPENROWSET része határozza meg, hogy mely fájlokat olvassa be a program.
+A következő minta a NYC Yellow taxi adatfájljait olvassa be az elmúlt három hónapban 2017-as értékben. A fájlok elérési útjának számát adja vissza. A lekérdezés OPENROWSET része határozza meg, hogy mely fájlok lesznek beolvasva.
 
 ```sql
 SELECT
@@ -114,9 +114,9 @@ ORDER BY
     filepath;
 ```
 
-A következő példa bemutatja, hogyan használható a *filepath()* a WHERE záradékban az olvasandó fájlok szűréséhez.
+Az alábbi példa azt szemlélteti, hogyan használható a *filepath ()* a WHERE záradékban az olvasni kívánt fájlok szűréséhez.
 
-Használhatja a helyettesítő karaktereket a lekérdezés OPENROWSET részében, és szűrheti a FÁJLOKAT a WHERE záradékban. Az eredmények ugyanazok lesznek, mint az előző példában.
+Használhatja a lekérdezés OPENROWSET részében található helyettesítő karaktereket, és szűrheti a WHERE záradékban található fájlokat. Az eredmények az előző példával megegyezőek lesznek.
 
 ```sql
 SELECT
@@ -161,4 +161,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkben megtudhatja, hogyan [lehet lekérdezni a Parkettafájlokat.](query-parquet-files.md)
+A következő cikkben megtudhatja, hogyan lehet [lekérdezni a parketta-fájlokat](query-parquet-files.md).

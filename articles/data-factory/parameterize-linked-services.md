@@ -1,6 +1,6 @@
 ---
-title: Csatolt szolgáltatások paraméterezése az Azure Data Factoryban
-description: Ismerje meg, hogyan paraméterezhet össze csatolt szolgáltatásokat az Azure Data Factoryban, és hogyan adhatja át a dinamikus értékeket futásidőben.
+title: Parametrizálja társított szolgáltatások Azure Data Factory
+description: Megtudhatja, hogyan parametrizálja a társított szolgáltatásokat a Azure Data Factoryban, és hogyan adhat át dinamikus értékeket a futási időben.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,29 +11,29 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 8fa8603f2bee7e42db0f085d78117d61bd14ce5c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419391"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Csatolt szolgáltatások paraméterezése az Azure Data Factoryban
+# <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Most már paraméterezhet egy összekapcsolt szolgáltatást, és futásidőben dinamikus értékeket adhat át. Ha például ugyanazon az Azure SQL Database-kiszolgálón lévő különböző adatbázisokhoz szeretne csatlakozni, most már paraméterezheti az adatbázis nevét a csatolt szolgáltatásdefinícióban. Ez megakadályozza, hogy az Azure SQL-adatbázis-kiszolgálón minden egyes adatbázishoz hozzon létre egy csatolt szolgáltatást. A csatolt szolgáltatásdefinícióban más tulajdonságokat is paraméterezhet – például *felhasználónév.*
+Mostantól parametrizálja egy társított szolgáltatást, és átadhatja a dinamikus értékeket a futási időben. Ha például ugyanazon a Azure SQL Database-kiszolgálón lévő különböző adatbázisokhoz szeretne csatlakozni, most már parametrizálja az adatbázis nevét a társított szolgáltatás definíciójában. Ezzel megakadályozható, hogy az Azure SQL Database-kiszolgálón minden adatbázishoz hozzon létre egy társított szolgáltatást. A társított szolgáltatás definíciójában más tulajdonságokat is parametrizálja, például a *felhasználónevet.*
 
-Használhatja a Data Factory felhasználói felületaz Azure Portalon vagy egy programozási felület paraméterezése csatolt szolgáltatások.
+A Data Factory felhasználói felületét a Azure Portal vagy egy programozási felületen is használhatja a társított szolgáltatások parametrizálja.
 
 > [!TIP]
-> Azt javasoljuk, hogy ne paraméterezje a jelszavakat és a titkos kulcsokat. Az összes kapcsolati karakterláncot az Azure Key Vaultban tárolja, és paraméterezi a *titkos nevet.*
+> Azt javasoljuk, hogy ne parametrizálja jelszavakat vagy titkos kódokat. A Azure Key Vault az összes kapcsolódó karakterláncot tárolja, és parametrizálja a *titkos nevet*.
 
-A funkció hétperces bemutatásához és bemutatásához tekintse meg az alábbi videót:
+A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
-Jelenleg a csatolt szolgáltatás paraméterezése az Azure Portalon található Data Factory felhasználói felülete a következő adattárakban támogatott. Az összes többi adattárak esetében paraméterezheti a csatolt szolgáltatást, ha a Kapcsolatok lapon a **Kód** ikont **választja,** és használja a JSON-szerkesztőt.
+A társított szolgáltatás paraméterezés jelenleg a Azure Portal Data Factory felhasználói felületén, a következő adattárakban támogatott. Minden más adattár esetében a társított szolgáltatás parametrizálja a **kapcsolatok** lapon, a JSON-szerkesztővel pedig a **kód** ikonra kattintva.
 - Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server
@@ -45,7 +45,7 @@ Jelenleg a csatolt szolgáltatás paraméterezése az Azure Portalon található
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
-![Dinamikus tartalom hozzáadása a csatolt szolgáltatás definíciójához](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+![Dinamikus tartalom hozzáadása a társított szolgáltatás definíciója](media/parameterize-linked-services/parameterize-linked-services-image1.png)
 
 ![Új paraméter létrehozása](media/parameterize-linked-services/parameterize-linked-services-image2.png)
 

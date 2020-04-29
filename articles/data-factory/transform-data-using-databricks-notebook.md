@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418983"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
@@ -34,7 +34,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
   - A folyamat futásának monitorozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
@@ -54,7 +54,7 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 
 1.  Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
 
-    Az Azure-adat-előállító nevének *globálisan egyedinek*kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például használja ** \<a\>nevét ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](https://docs.microsoft.com/azure/data-factory/naming-rules) ismertető cikkben találja.
+    Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például használja ** \<a sajátneve\>ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](https://docs.microsoft.com/azure/data-factory/naming-rules) ismertető cikkben találja.
 
     ![Az új adat-előállító elnevezése](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -100,7 +100,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
 1.  Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
     
-    1.  A **Név mezőbe**írja be az ***\_AzureDatabricks LinkedService értéket.***
+    1.  A **név**mezőbe írja be a következőt: ***AzureDatabricks\_LinkedService***
     
     1.  Válassza ki a megfelelő **Databricks-munkaterületet**, amelyen a jegyzetfüzetet futtatni fogja
 
@@ -110,19 +110,19 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
     1.  A **Hozzáférési jogkivonatot** hozza létre az Azure Databricks-munkaterületről. A lépéseket [itt](https://docs.databricks.com/api/latest/authentication.html#generate-token) találhatja meg.
 
-    1.  **Fürtverzió**esetén válassza a **4.2** lehetőséget (Apache Spark 2.3.1, Scala 2.11)
+    1.  A **fürt verziója**esetében válassza a **4,2** elemet (Apache Spark 2.3.1, Scala 2,11)
 
     1.  A **Fürtcsomópont típusa** mezőben válassza a **Standard\_D3\_v2** lehetőséget az **Általános célú (HDD)** területen ehhez az oktatóanyaghoz. 
     
     1.  A **Feldolgozók** mezőben adja meg a **2** mennyiséget.
     
-    1.  **Befejezés** kiválasztása
+    1.  Válassza a **Befejezés** lehetőséget
 
         ![A társított szolgáltatás létrehozásának befejezése](media/transform-data-using-databricks-notebook/new-databricks-linkedservice.png)
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-1.  Válassza **+** a (plusz) gombot, majd válassza a **menü Folyamat** parancsát.
+1.  Válassza a **+** (plusz) gombot, majd válassza a menü **folyamat** elemét.
 
     ![Új folyamat létrehozására szolgáló gombok](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
@@ -152,7 +152,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
           ![Új mappa létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Hozzon létre egy új jegyzetfüzetet](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), nevezzük **mynotebook** alatt **adftutorial** mappa, kattintson **a Create.**
+       1. [Hozzon létre egy új jegyzetfüzetet](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), hívjuk meg **mynotebook** a **adftutorial** mappában, és kattintson a **Létrehozás gombra.**
 
           ![Új jegyzetfüzet létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -179,9 +179,9 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
        ![Paraméter hozzáadása](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Nevezze el a paramétert **bemenetként,** és adja meg az értéket ** \@kifejezéspipeline(.parameters.name**.
+    b.  Adjon nevet a paraméternek **bemenetként** , és adja meg az értéket kifejezés ** \@-feldolgozási (). Parameters. name**néven.
 
-1.  A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak ** \> ** bezárásához kattintson a (jobbra nyíl) gombra.
+1.  A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a ** \> ** (jobbra mutató nyíl) gombra.
 
     ![A folyamat érvényesítése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 
@@ -195,13 +195,13 @@ Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiv
 
 ![Az Aktiválás most parancs kiválasztása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image20.png)
 
-A **Folyamatfuttatás** párbeszédpanel kéri a **név** paramétert. Itt paraméterként használja a következőt: **/path/filename**. Kattintson **a Befejezés gombra.**
+A **Folyamatfuttatás** párbeszédpanel kéri a **név** paramétert. Itt paraméterként használja a következőt: **/path/filename**. Kattintson a **Befejezés gombra.**
 
 ![Érték megadása a név paraméterekhez](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image21.png)
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1.  Váltson a **Figyelő** lapra. Egy, a jegyzetfüzetet végrehajtó Databricks feladatfürt létrehozása körülbelül 5–8 percet vesz igénybe.
+1.  Váltson a **figyelés** lapra. Ellenőrizze, hogy megjelenik-e a folyamat futása. Egy, a jegyzetfüzetet végrehajtó Databricks feladatfürt létrehozása körülbelül 5–8 percet vesz igénybe.
 
     ![A folyamat figyelése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 

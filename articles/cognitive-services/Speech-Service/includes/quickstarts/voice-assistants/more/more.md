@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: b84db9eee473b14f2ba078ed1be77f6165a5f3b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81421877"
 ---
-## <a name="additional-language-and-platform-support"></a>További nyelvi és platformtámogatás
+## <a name="additional-language-and-platform-support"></a>További nyelvi és platform-támogatás
 
-Ha erre a lapra kattintott, valószínűleg nem látott rövid útmutatót a kedvenc programozási nyelvén. Ne aggódjon, további rövid útmutató anyagokat és kódmintákat is elérhetők a GitHubon. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
+Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutató a kedvenc programozási nyelvén. Ne aggódjon, a GitHubon további gyors üzembe helyezési anyagok és mintakód-minták is elérhetők. A táblázat segítségével megtalálhatja a programozási nyelv és a platform/operációs rendszer kombinációjának megfelelő mintát.
 
 | Nyelv    | Kódminták                                                                                   |
 |-------------|------------------------------------------------------------------------------------------------|
-| C#          | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++         | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac]                                   |
+| C#          | [.NET-keretrendszer][dotnet], [.net Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++         | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac]                                   |
 | Java        | [Android][java-android], [JRE][java-jre]                                                       |
-| JavaScript  | [Böngésző, Node.js][js-code]                                                                    |
-| Objective-C | [iOS][obj-iOS], [macOS][obj-macOS]                                                             |
+| JavaScript  | [Böngésző, Node. js][js-code]                                                                    |
+| Objective-C | [iOS][obj-iOS], [MacOS][obj-macOS]                                                             |
 | Python      | [Windows, Linux, macOS][python]                                                                |
-| Swift       | [iOS][swift-iOS], [macOS][swift-macOS]                                                         |
+| Swift       | [iOS][swift-iOS], [MacOS][swift-macOS]                                                         |
 
 [dotnet]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet
 [netcore]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnetcore

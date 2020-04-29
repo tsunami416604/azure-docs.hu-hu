@@ -1,6 +1,6 @@
 ---
-title: Változótevékenység beállítása az Azure Data Factoryban
-description: Ismerje meg, hogyan állítható be a Változó beállítása tevékenység egy Data Factory-folyamatban definiált meglévő változó értékének beállítása
+title: Változó tevékenység beállítása Azure Data Factoryban
+description: Megtudhatja, hogyan állíthatja be egy Data Factory-folyamatban definiált meglévő változó értékét a változó beállítása tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,32 +12,32 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417980"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>Változótevékenység beállítása az Azure Data Factoryban
+# <a name="set-variable-activity-in-azure-data-factory"></a>Változó tevékenység beállítása Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A Változó beállítása tevékenység segítségével állítsa be a Data Factory-folyamatban definiált Karakterlánc, Bool vagy Tömb típusú meglévő változó értékét.
+A változó beállítása tevékenységgel egy Data Factory-folyamatban definiált karakterlánc, bool vagy Array típusú változó értékét állíthatja be.
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-név | A folyamatban lévő tevékenység neve | igen
-leírás | A tevékenység tevékenységét leíró szöveg | nem
-type | **SetVariable (SetVariable)** beállításnak kell lennie. | igen
-érték | A változóhoz rendelt karakterlánc-konstans vagy kifejezésobjektum-érték | igen
-változóNév | A tevékenység által beállítandó változó neve | igen
+név | A tevékenység neve a folyamatban | igen
+leírás | A tevékenység működését leíró szöveg | nem
+type | **SetVariable** értékre kell állítani | igen
+érték | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá lesz rendelve | igen
+variableName | A tevékenység által beállított változó neve | igen
 
-## <a name="incrementing-a-variable"></a>Változó növekményének megforgatása
+## <a name="incrementing-a-variable"></a>Változó növelése
 
-Az Azure Data Factory változóit érintő gyakori forgatókönyv egy változót használ iterátorként egy-vagy foreach tevékenységen belül. Halmazváltozó-tevékenységben nem lehet hivatkozni a `value` mezőben beállított változóra. A korlátozás megkerüléséhez állítson be egy ideiglenes változót, majd hozzon létre egy második halmazváltozó-tevékenységet. A második halmazváltozó-tevékenység az iterátor értékét az ideiglenes változóra állítja be. 
+Az Azure Data Factory változóit érintő gyakori forgatókönyvek egy-egy változót használnak egy-egy vagy foreach-tevékenységen belül. A set változó tevékenységben nem hivatkozhat a `value` mezőben beállított változóra. A korlátozás megkerülő megoldásához állítson be egy ideiglenes változót, majd hozzon létre egy második set változó tevékenységet. A második set változó tevékenység beállítja az iteráció értékét az ideiglenes változóra. 
 
-Az alábbiakban egy példa erre a mintára:
+Az alábbiakban egy példa látható erre a mintára:
 
 ![Növekmény változó](media/control-flow-set-variable-activity/increment-variable.png "Növekmény változó")
 
@@ -97,6 +97,6 @@ Az alábbiakban egy példa erre a mintára:
 
 
 ## <a name="next-steps"></a>További lépések
-További információ a Data Factory által támogatott kapcsolódó vezérlési folyamattevékenységről: 
+A Data Factory által támogatott kapcsolódó vezérlési folyamatokkal kapcsolatos tevékenységek ismertetése: 
 
 - [Változó tevékenység hozzáfűzése](control-flow-append-variable-activity.md)

@@ -1,6 +1,6 @@
 ---
-title: SQL-parancsfájlok az Azure Synapse Studio-ban (előzetes verzió)
-description: Bevezetés az Azure Synapse Studio (előzetes verzió) SQL-parancsfájlok
+title: SQL-parancsfájlok az Azure szinapszis Studióban (előzetes verzió)
+description: Az Azure szinapszis Studio (előzetes verzió) SQL-parancsfájljainak bemutatása
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,84 +9,84 @@ ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
 ms.openlocfilehash: 940c6d6d96c5c1aa062397d21ea96dace2c09bae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431071"
 ---
-# <a name="using-sql-script-in-azure-synapse-studio-preview"></a>SQL-parancsfájl használata az Azure Synapse Studio-ban (előzetes verzió)
+# <a name="using-sql-script-in-azure-synapse-studio-preview"></a>SQL-szkript használata az Azure szinapszis Studióban (előzetes verzió)
 
-Az Azure Synapse Studio (előzetes verzió) egy SQL-parancsfájl webes felületet biztosít az SQL-lekérdezések számára. Csatlakozhat az SQL-készlethez (előzetes verzió) vagy az IGÉNY szerinti SQL-hez (előzetes verzió). 
+Az Azure szinapszis Studio (előzetes verzió) egy SQL-parancsfájl webes felületét kínálja az SQL-lekérdezések létrehozásához. Csatlakozhat az SQL-készlethez (előzetes verzió) vagy az SQL on-demand (előzetes verzió) szolgáltatáshoz. 
 
-## <a name="begin-authoring-in-sql-script"></a>A szerzői jog az SQL-parancsfájlban 
+## <a name="begin-authoring-in-sql-script"></a>Szerzői műveletek megkezdése az SQL-szkriptben 
 
-Az SQL-parancsfájlban számos módon indíthatja el a szerzői élményt. Új SQL-parancsfájlt az alábbi módszerek egyikével hozhat létre.
+A szerzői műveletek többféleképpen is elindíthatók az SQL-szkriptekben. A következő módszerek egyikével hozhat létre új SQL-parancsfájlt.
 
-1. Jelölje ki a "+" ikont, és válassza az SQL-parancsfájl t.
+1. Válassza a "+" ikont, és válassza az SQL-szkriptet.
 
     > [!div class="mx-imgBorder"] 
     >![newsqlscript](./media/author-sql-script/newsqlscript.png)
 
-2. Az SQL-parancsfájlok fejlesztése csoport Műveletek menüjében Válassza az "Új SQL-parancsfájl" lehetőséget az "Sql-parancsfájlok fejlesztése" menü "Műveletek" menüjében. 
+2. Az SQL-parancsfájlok fejlesztése területen található Műveletek menüből válassza az SQL-szkriptek fejlesztése alatt a "műveletek" menü "új SQL-parancsfájl" elemét. 
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlscript2actions.png)
 
 vagy 
 
-3. Válassza az "Importálás" lehetőséget az SQL-parancsfájlok fejlesztése csoport "Műveletek" menüjében, és válasszon ki egy meglévő SQL-parancsfájlt a helyi tárolóból.
+3. Válassza az "Importálás" lehetőséget a "műveletek" menü SQL-parancsfájlok fejlesztése területén, és válasszon ki egy meglévő SQL-parancsfájlt a helyi tárolóból.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlscript3actions.png)
 
-## <a name="create-your-sql-script"></a>Az SQL-parancsfájl létrehozása
+## <a name="create-your-sql-script"></a>SQL-parancsfájl létrehozása
 
-1. Válassza ki az SQL-parancsfájl nevét a "Tulajdonság" gombra kattintva, és cserélje le az SQL-parancsfájlhoz rendelt alapértelmezett nevet.
+1. Válassza ki az SQL-parancsfájl nevét a "tulajdonság" gomb kiválasztásával, és cserélje le az SQL-szkripthez rendelt alapértelmezett nevet.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlscriptrename.png)
 
-1. Válassza ki az adott SQL-készletet vagy az IGÉNY szerinti SQL-t a "Csatlakozás" legördülő menüből. Vagy ha szükséges, válassza ki az adatbázist az "Adatbázis használata" szóból.
+1. Válassza ki az adott SQL-készletet vagy az igény szerinti SQL-t a "kapcsolódás a következőhöz" legördülő menüből. Vagy ha szükséges, válassza a Database (adatbázis használata) lehetőséget.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlchoosepool.png)
 
-1. Indítsa el az SQL-szkript szerzői használatát az intellisense funkcióval.
+1. Indítsa el az SQL-szkriptet az IntelliSense szolgáltatás használatával.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlintellisense.png)
 
-## <a name="run-your-sql-script"></a>Az SQL-parancsfájl futtatása
+## <a name="run-your-sql-script"></a>SQL-parancsfájl futtatása
 
-Az SQL-parancsfájl végrehajtásához kattintson a "Futtatás" gombra. Az eredmények alapértelmezés szerint egy táblázatban jelennek meg.
+Az SQL-szkript végrehajtásához kattintson a Futtatás gombra. Az eredmények alapértelmezés szerint egy táblában jelennek meg.
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newsqlscriptresultstable.png)
 
 ## <a name="export-your-results"></a>Az eredmények exportálása
 
-Az eredményeket különböző formátumokban (például CSV, Excel, JSON, XML) exportálhatja a helyi tárolóba az "Eredmények exportálása" és a bővítmény kiválasztásával.
+Az eredményeket a helyi tárhelyre különböző formátumokban (beleértve a CSV, az Excel, a JSON és az XML) is exportálhatja, ha az "exportálás eredménye" lehetőséget választja, és kiválasztja a bővítményt.
 
-Az SQL-parancsfájl eredményeit a "Diagram" gombra kattintva is megjelenítheti a diagramon. Válassza ki a "Diagram típusa" és a "Kategória oszlop". A diagramot a "Mentés képként" lehetőség kiválasztásával exportálhatja egy képbe. 
+Az SQL-szkript eredményei egy diagramon is megjeleníthetők a "diagram" gomb kiválasztásával. Válassza a "diagram típusa" és a "kategória oszlop" lehetőséget. A diagramot egy képbe exportálhatja a "Mentés képként" lehetőség kiválasztásával. 
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newsqlscriptresultschart.png)
 
-## <a name="explore-data-from-a-parquet-file"></a>Tárja fel a parkettafájl adatait.
+## <a name="explore-data-from-a-parquet-file"></a>Adatok megismerése egy parketta-fájlból.
 
-A tárfiókban lévő parquet fájlokat sql-parancsfájlsegítségével fedezheti fel a fájl tartalmának megtekintéséhez. 
+A Storage-fiókokban lévő parketta-fájlokat az SQL-szkript használatával tekintheti meg a fájl tartalmának megtekintéséhez. 
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newscriptsqlodparquet.png)
 
 ## <a name="sql-tables-external-tables-views"></a>SQL-táblák, külső táblák, nézetek
 
-Az adatok alatt található "Műveletek" menü kiválasztásával több műveletet is választhat, például: "Új SQL script", "Select TOP 1000 rows", "CREATE", "DROP and CREATE". Fedezze fel a rendelkezésre álló kézmozdulatot, ha a jobb gombbal kattint az SQL-készlet és az IGÉNY szerinti SQL csomópontjaira.
+Az "Actions" (műveletek) menü az adat területen való kiválasztásával több műveletet is kiválaszthat, például: "új SQL-parancsfájl", "válassza a TOP 1000 sort", a "létrehozás", az "eldobás és létrehozás" lehetőséget. Az elérhető kézmozdulatok megismeréséhez kattintson a jobb gombbal az SQL-készlet és az SQL igény szerinti csomópontjaira.
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newscriptdatabase.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL-parancsfájlok írásával kapcsolatos további tudnivalókért az [Azure Synapse Analytics című témakörben](https://docs.microsoft.com/azure/synapse-analytics)talál további információt.
+Az SQL-parancsfájlok létrehozásával kapcsolatos további információkért lásd: az [Azure szinapszis Analytics](https://docs.microsoft.com/azure/synapse-analytics).

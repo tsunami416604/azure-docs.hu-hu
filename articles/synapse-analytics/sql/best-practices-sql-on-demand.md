@@ -1,6 +1,6 @@
 ---
-title: Gyakorlati tanácsok az SQL igény szerinti (előzetes verzióhoz) az Azure Synapse Analytics szolgáltatásban
-description: Javaslatok és gyakorlati tanácsok, amelyeket az SQL igény szerinti (előzetes verzió) rendszerrel való munka közben ismernie kell.
+title: Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+description: Javaslatok és ajánlott eljárások az SQL igény szerinti használata esetén (előzetes verzió).
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,61 +11,61 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429069"
 ---
-# <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Gyakorlati tanácsok az SQL igény szerinti (előzetes verzióhoz) az Azure Synapse Analytics szolgáltatásban
+# <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
-Ebben a cikkben az SQL igény szerinti (előzetes verzió) használatával kapcsolatos gyakorlati tanácsok gyűjteményét találja. Az SQL igény szerinti egy további erőforrás az Azure Synapse Analytics szolgáltatásban.
+Ebben a cikkben megtalálja az ajánlott eljárások gyűjteményét az SQL on-demand (előzetes verzió) használatához. Az SQL on-demand egy további erőforrás az Azure szinapszis Analyticsben.
 
 ## <a name="general-considerations"></a>Általános megfontolások
 
-SQL igény szerinti lehetővé teszi, hogy az Azure storage-fiókok ban fájlok lekérdezése. Nem rendelkezik helyi tároló- vagy betöltési képességekkel. Mint ilyen, minden olyan fájl, amelya lekérdezési célok külső SQL on-demand. A fájlok tárolásból való olvasásával kapcsolatos minden hatással lehet a lekérdezés teljesítményére.
+Az SQL on-demand lehetővé teszi fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárolási vagy betöltési képességekkel. Ennek megfelelően az összes olyan fájl, amely a lekérdezés célja, az SQL igény szerint kívül van. A fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
 
-## <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Az Azure Storage-fiók és az SQL igény szerinti közös áthelyezése
+## <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Az Azure Storage-fiók és az SQL igény szerinti elhelyezése
 
-A késés minimalizálása érdekében helyezze el az Azure-tárfiókot és az SQL igény szerinti végpontját. A munkaterület létrehozása során kiépített tárfiókok és végpontok ugyanabban a régióban találhatók.
+A késés csökkentése érdekében helyezze el az Azure Storage-fiókját és az SQL igény szerinti végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
 
-Az optimális teljesítmény érdekében, ha az SQL igény szerinti más tárfiókokhoz is hozzáfér, győződjön meg arról, hogy ugyanabban a régióban vannak. Ha nem ugyanabban a régióban, az adatok közötti hálózati adatátvitel a távoli és a végpont régiói között nagyobb lesz.
+Az optimális teljesítmény érdekében, ha más Storage-fiókokhoz is hozzáfér az SQL igény szerint, ügyeljen arra, hogy ugyanabban a régióban legyenek. Ha nem ugyanabban a régióban találhatók, az adatok hálózati átvitele nagyobb késéssel jár a távoli és a végpont régiói között.
 
-## <a name="azure-storage-throttling"></a>Az Azure Storage szabályozása
+## <a name="azure-storage-throttling"></a>Azure Storage-szabályozás
 
-Több alkalmazás és szolgáltatás is hozzáférhet a tárfiókhoz. A tárolási szabályozás akkor történik, amikor az alkalmazások, szolgáltatások és az SQL-alapú számítási feladatok által létrehozott kombinált IOPS vagy átviteli kapacitás meghaladja a tárfiók korlátait. Ennek eredményeképpen jelentős negatív hatással lesz a lekérdezés teljesítményére.
+Több alkalmazás és szolgáltatás is hozzáférhet a Storage-fiókhoz. A tárolási szabályozás akkor fordul elő, ha az alkalmazások, szolgáltatások és az SQL igény szerinti munkaterhelése által generált kombinált IOPS vagy átviteli sebesség meghaladja a Storage-fiók korlátait. Ennek eredményeképpen jelentős negatív hatást tapasztal a lekérdezési teljesítményre.
 
-A szabályozás észlelése után az SQL igény szerinti rendszer rendelkezik a forgatókönyv beépített kezelésével. SQL igény szerinti lesz, hogy a kérelmeket a tárolás lassabb ütemben, amíg a szabályozás feloldása.
+A szabályozás észlelése után az SQL on-demand beépített kezeléssel rendelkezik ebben a forgatókönyvben. Az SQL igény szerint lassabban, a szabályozás feloldása után kéri a tárterületet.
 
 > [!TIP]
-> Az optimális lekérdezés-végrehajtás érdekében ne terhelje ki a tárfiókot más számítási feladatokkal a lekérdezés végrehajtása során.
+> Az optimális lekérdezési műveletek végrehajtásához a Storage-fiókot más számítási feladatokkal kell kihangsúlyozni a lekérdezés végrehajtása során.
 
-## <a name="prepare-files-for-querying"></a>Fájlok előkészítése lekérdezésre
+## <a name="prepare-files-for-querying"></a>Fájlok előkészítése lekérdezéshez
 
-Ha lehetséges, előkészítheti a fájlokat a jobb teljesítmény érdekében:
+Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
-- A CSV átalakítása parketta - A parketta oszlopos formátum. Mivel tömörített, a fájlméretek kisebbek, mint az azonos adatokkal rendelkező CSV-fájlok. Az SQL igény szerinti olvasásához kevesebb időre és tárolási kérelmekre van szükség.
-- Ha egy lekérdezés egyetlen nagy fájlt céloz meg, előnyös, ha több kisebb fájlra osztja fel.
-- Próbálja meg a CSV fájlméretét 10 GB alatt tartani.
-- Jobb, ha azonos méretű fájlokat egyetlen OPENROWSET elérési úthoz vagy egy külső tábla HELYÉHEZ.
-- Partisítsa az adatokat a partíciók különböző mappákba vagy fájlnevekbe való tárolásával - ellenőrizze [a fájlnév és a filepath függvények használatát adott partíciók célzásához.](#use-fileinfo-and-filepath-functions-to-target-specific-partitions)
+- CSV konvertálása a parkettára – a parketta oszlopos formátumú. Mivel tömörítve van, a fájlméretek kisebbek, mint a CSV-fájlok, amelyek ugyanazokat az adatmennyiségeket használják. Az SQL on-demand kevesebb időt és tárolási kérést igényel a beolvasáshoz.
+- Ha egy lekérdezés egyetlen nagyméretű fájlt céloz meg, akkor a több kisebb fájlra is kihasználhatja.
+- Próbálja meg a CSV-fájl méretét 10 GB alatt tartani.
+- Jobb, ha azonos méretű fájlokat szeretne egy OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
+- Particionálja az adatait úgy, hogy a partíciókat különböző mappákba vagy fájlnevekre tárolja, [majd a fájlnév és a filepath függvények használatával adja meg az adott partíciókat](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Adott partíciók célzásához használjon fileinfo és filepath függvényeket
+## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Fileinfo és filepath függvények használata adott partíciók célzásához
 
-Az adatok gyakran partíciókba vannak rendezve. Utasíthatja az SQL-t, hogy bizonyos mappákat és fájlokat kérdezzen le. Ez a funkció csökkenti a lekérdezés olvasásához és feldolgozásához szükséges fájlok számát és adatmennyiségét. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
+Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez a függvény csökkenti a fájlok számát és az adatmennyiséget, amelyet a lekérdezésnek olvasni és feldolgoznia kell. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
 
-További információért ellenőrizze [a fájlnév-](develop-storage-files-overview.md#filename-function) és [fájlelérési funkciókat,](develop-storage-files-overview.md#filepath-function) valamint példákat arra vonatkozóan, hogyan [lehet lekérdezni bizonyos fájlokat.](query-specific-files.md)
+További információért olvassa el a [filename](develop-storage-files-overview.md#filename-function) és a [filepath](develop-storage-files-overview.md#filepath-function) függvények és példák című témakört a [megadott fájlok lekérdezéséhez](query-specific-files.md).
 
-Ha a tárolt adatok nincsenek particionálva, fontolja meg a particionálást, hogy ezekkel a függvényekkel optimalizálhassa a fájlokat célzó lekérdezéseket. [Particionált Spark-táblák lekérdezésekor](develop-storage-files-spark-tables.md) az SQL igény szerint, a lekérdezés automatikusan csak a szükséges fájlokat célozza meg.
+Ha a tárolt adatok nincsenek particionálva, érdemes particionálni, hogy ezek a függvények a fájlokra irányuló lekérdezések optimalizálására legyenek optimalizálva. Ha a [particionált Spark-táblákat](develop-storage-files-spark-tables.md) SQL-igény alapján kérdezi le, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 
-## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezési teljesítmény növeléséhez és az illesztéshez
+## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
-A [CETAS](develop-tables-cetas.md) az SQL igény szerinti egyik legfontosabb szolgáltatása. A CETAS egy párhuzamos művelet, amely külső táblametaadatokat hoz létre, és a SELECT lekérdezés eredményeit a tárfiókban lévő fájlok készletébe exportálja.
+A [CETAS](develop-tables-cetas.md) az SQL igény szerint elérhető legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezési eredményeket a Storage-fiókban lévő fájlok készletére.
 
-A CETAS segítségével a lekérdezések gyakran használt részeit, például az illesztett referenciatáblákat egy új fájlkészletben tárolhatja. Ezután csatlakozhat ehhez az egyetlen külső táblához ahelyett, hogy több lekérdezésben megismételné a gyakori illesztéseket.
+A CETAS használatával a lekérdezések gyakran használt részeit (például az összekapcsolt hivatkozási táblákat) a fájlok új készletéhez is tárolhatja. Ezután csatlakozhat ehhez az egyetlen külső táblához, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben.
 
-Mivel a CETAS parattfájlokat hoz létre, a statisztika automatikusan létrejön, amikor az első lekérdezés ezt a külső táblát célozza meg, ami jobb teljesítményt eredményez.
+Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan létrejönnek, amikor az első lekérdezés ezt a külső táblázatot célozza meg, ami jobb teljesítményt eredményez.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket a gyakori problémákért és megoldásokért. Ha az SQL-készlet telje, nem pedig az SQL-on-demand, tekintse meg az [SQL-készlet gyakorlati tanácsai](best-practices-sql-pool.md) cikket a konkrét útmutatást.
+Tekintse át a gyakori problémákkal és megoldásokkal kapcsolatos [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha SQL-készlet helyett SQL-készlettel dolgozik, tekintse meg az [ajánlott eljárásokat az SQL-készlethez](best-practices-sql-pool.md) című cikkben a konkrét útmutatásért.

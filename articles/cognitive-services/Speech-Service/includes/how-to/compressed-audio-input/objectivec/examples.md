@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: f0baac79bfbfc06b24d692caef87a20013c4654c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422168"
 ---
-Ha tömörített hangformátumban szeretne streamelni a `SPXPullAudioInputStream` `SPXPushAudioInputStream`beszédfelismerési szolgáltatásba, hozzon létre egy vagy .
+Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre egy `SPXPullAudioInputStream` vagy `SPXPushAudioInputStream`.
 
-A következő kódrészlet bemutatja, `SPXAudioConfiguration` hogyan lehet `SPXPushAudioInputStream`létrehozni egy példányt, amely mp3-at ad meg az adatfolyam tömörítési formátumaként.
+Az alábbi kódrészletből megtudhatja, `SPXAudioConfiguration` hogyan hozhat létre egy példányt `SPXPushAudioInputStream`az a-példányból, és hogyan lehet MP3-ként megadnia az adatfolyam tömörítési formátumát.
 
 [!code-objectivec[Set up the input stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=67-76&highlight=2-11)]
 
-A következő kódrészlet bemutatja, hogyan lehet a tömörített hangadatokat olvasni egy fájlból, és hogyan kell a `SPXPushAudioInputStream`rendszerbe pumpálni.
+A következő kódrészlet azt mutatja be, hogyan olvashatók be a tömörített hangadatok egy fájlból, `SPXPushAudioInputStream`és hogyan tölthetők be a alkalmazásba.
 
 [!code-objectivec[Push compressed audio data into the stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=106-150&highlight=19-44)]

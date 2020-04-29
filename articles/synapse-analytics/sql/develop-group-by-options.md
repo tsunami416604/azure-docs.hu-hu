@@ -1,6 +1,6 @@
 ---
-title: Csoportszerint beállítás használata a Synapse SQL-ben
-description: A Synapse SQL lehetővé teszi a megoldások fejlesztését különböző GROUP BY beállítások megvalósításával.
+title: CSOPORTOSÍTÁSi lehetőségek használata a szinapszis SQL-ben
+description: A szinapszis SQL lehetővé teszi a megoldások fejlesztését különböző CSOPORTOSÍTÁSi beállításokkal.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,34 +12,34 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429043"
 ---
-# <a name="group-by-options-in-synapse-sql"></a>CSOPORTOSÍTÁSi beállítások a Synapse SQL-ben
-A Synapse SQL lehetővé teszi a megoldások fejlesztését különböző GROUP BY beállítások megvalósításával. 
+# <a name="group-by-options-in-synapse-sql"></a>CSOPORTOSÍTÁSi lehetőségek a szinapszis SQL-ben
+A szinapszis SQL lehetővé teszi a megoldások fejlesztését különböző CSOPORTOSÍTÁSi beállításokkal. 
 
-## <a name="what-does-group-by-do"></a>Mit tesz a GROUP BY?
+## <a name="what-does-group-by-do"></a>Mit tesz a GROUP BY do
 
-A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL záradék összesítő sorokba összesíti az adatokat.
+A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával.
 
-Az SQL igény szerinti beállítás a GROUP BY beállítások teljes skáláját támogatja. Az SQL-készlet korlátozott számú GROUP BY beállítást támogat.
+Az SQL on-demand a CSOPORTOSÍTÁSi lehetőségek teljes körét támogatja. Az SQL-készlet korlátozott számú CSOPORTOSÍTÁSi lehetőséget támogat.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>Az SQL-készlet által támogatott GROUP BY beállítások
+## <a name="group-by-options-supported-in-sql-pool"></a>Csoportosítás az SQL-készletben támogatott lehetőségek alapján
 
-A GROUP BY néhány olyan beállítással rendelkezik, amelyet az SQL-készlet nem támogat. Ezek a lehetőségek a következő kerülő megoldásokat tartalmaznak:
+A CSOPORTOSÍTÁSi lehetőségek az SQL-készlet által nem támogatott beállítások. Ezek a beállítások megkerülő megoldásokkal rendelkeznek, amelyek a következők:
 
-* CSOPORTOSÍTÁS A ROLLUP-MAL
-* CSOPORTOSÍTÓ KÉSZLETEK
-* CSOPORTOSÍTÁS A KOCKA SEGÍTSÉGÉVEL
+* Csoportosítás ÖSSZESÍTÉSsel
+* CSOPORTOSÍTÁSI KÉSZLETEK
+* Csoportosítás a KOCKÁval
 
-### <a name="rollup-and-grouping-sets-options"></a>Összesítő és csoportosítási beállítások
+### <a name="rollup-and-grouping-sets-options"></a>Kumulatív és csoportosítási beállítások
 
-A legegyszerűbb lehetőség itt az, hogy az UNION ALL használatával hajtsa végre az összesítést, ahelyett, hogy az explicit szintaxisra támaszkodna. Az eredmény pontosan ugyanaz
+A legegyszerűbb lehetőség az, ha az Unió összes elemét használja a kumulatív végrehajtáshoz, és nem az explicit szintaxisra támaszkodik. Az eredmény pontosan ugyanaz
 
-A következő példa a GROUP BY utasítást használja a ROLLUP beállítással:
+A következő példa a GROUP BY utasítást használja a kumulatív beállítással:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -54,13 +54,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Az ÖSSZESÍTŐ használatával az előző példa a következő összesítéseket kéri:
+A kumulatív használatával az előző példa a következő összesítéseket kéri:
 
 * Ország és régió
 * Ország
 * Végösszeg
 
-Az ÖSSZESÍTŐ lecseréléséhez és ugyanazt az eredményt adhatja vissza, használhatja az UNION ALL-t, és kifejezetten megadhatja a szükséges összesítéseket:
+Ha az ÖSSZESÍTÉSt cserélni szeretné, és ugyanazokat az eredményeket adja vissza, használhatja a UNION ALL utasítást, és explicit módon megadhatja a szükséges összesítéseket:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -87,13 +87,13 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-A GROUPING SETS lecseréléséhez a minta elve vonatkozik. Csak létre kell hoznia az UNION ALL szakaszokat a látni kívánt összesítési szintekhez.
+A CSOPORTOSÍTÁSi készletek lecseréléséhez a minta elve érvényes. Csak a megtekinteni kívánt összesítési szintekhez kell létrehoznia a UNION összes szakaszt.
 
-### <a name="cube-options"></a>Kocka beállításai
+### <a name="cube-options"></a>Adatkocka-beállítások
 
-Az UNION ALL megközelítés sel létrehozhat egy GROUP BY WITH CUBE-ot. A probléma az, hogy a kód gyorsan válhat nehézkes és nehézkes. A probléma enyhítése érdekében használhatja ezt a fejlettebb megközelítést.
+Létrehozhat egy CSOPORTOT az adatkockával a UNION ALL megközelítés használatával. A probléma az, hogy a kód gyors és nehézkes lehet. A probléma megoldásához ezt a fejlettebb megközelítést használhatja.
 
-Az első lépés a "kocka" meghatározása, amely meghatározza a létrehozni kívánt összesítési szintet. Vegye figyelembe a CROSS JOIN a két származtatott táblák, mert generál minden szinten. A kód többi része formázásra vár.
+Az első lépés a "Cube" meghatározása, amely meghatározza a létrehozni kívánt összesítési szinteket. Jegyezze fel a két származtatott tábla több ILLESZTÉSét, mivel az összes szintet létrehozta. A kód további része a formázáshoz.
 
 ```sql
 CREATE TABLE #Cube
@@ -124,11 +124,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Az alábbi képen a CREATE TABLE AS SELECT eredménye [látható:](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+Az alábbi képen a [CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)eredményei láthatók:
 
-![Csoportosítás kockák szerint](./media/develop-group-by-options/develop-group-by-cube.png)
+![Csoportosítás adatkockával](./media/develop-group-by-options/develop-group-by-cube.png)
 
-A második lépés az időközi eredmények tárolására szolgáló céltábla meghatározása:
+A második lépés egy cél tábla megadása a közbenső eredmények tárolásához:
 
 ```sql
 DECLARE
@@ -151,7 +151,7 @@ WITH
 ;
 ```
 
-A harmadik lépés az összesítést végző oszlopok kockája feletti hurok. A lekérdezés az #Cube ideiglenes tábla minden sorának egyszer fog futni. Az eredmények a #Results ideiglenes táblázatban tárolódnak:
+A harmadik lépés az összesítést végző oszlopok adatkockájának áthurkolása. A lekérdezés egyszer fog futni a #Cube ideiglenes tábla minden sorában. Az eredmények a #Results Temp táblában tárolódnak:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -175,7 +175,7 @@ BEGIN
 END
 ```
 
-Végül az eredményeket az #Results ideiglenes táblázatból való felolvasással küldheti vissza:
+Végül visszaállíthatja az eredményeket az #Results ideiglenes táblából való olvasással:
 
 ```sql
 SELECT *
@@ -184,8 +184,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-A kód szakaszokra bontásával és egy hurkolt szerkezet létrehozásával a kód kezelhetőbbé és karbantarthatóbbá válik.
+A kód szakaszokra bontásával és a hurkos szerkezet létrehozásával a kód hatékonyabban kezelhető és karbantartható lesz.
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](develop-overview.md)
+További fejlesztési tippek: a [fejlesztés áttekintése](develop-overview.md).

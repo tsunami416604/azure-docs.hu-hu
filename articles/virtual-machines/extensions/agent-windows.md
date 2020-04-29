@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuálisgép-ügynök – áttekintés
-description: Az Azure virtuálisgép-ügynök – áttekintés
+title: Az Azure Virtual Machine Agent áttekintése
+description: Az Azure Virtual Machine Agent áttekintése
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: mimckitt
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: f29a20ddeb93ec3d4aa98bbcb36f50456b543667
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81452570"
 ---
-# <a name="azure-virtual-machine-agent-overview"></a>Az Azure virtuálisgép-ügynök – áttekintés
-A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, könnyű folyamat, amely kezeli a virtuális gép (VM) interakció az Azure Fabric Controller. A virtuálisgép-ügynök elsődleges szerepkörrel rendelkezik az Azure virtuálisgép-bővítmények engedélyezésében és végrehajtásában. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép üzembe helyezés utáni konfigurációját, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is engedélyeznek, mint például a virtuális gép felügyeleti jelszavának alaphelyzetbe állítása. Az Azure virtuálisgép-ügynök nélkül a virtuálisgép-bővítmények nem futtathatók.
+# <a name="azure-virtual-machine-agent-overview"></a>Az Azure Virtual Machine Agent áttekintése
+A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, egyszerű folyamat, amely a virtuális gép (VM) interakcióját kezeli az Azure Fabric-vezérlővel. A virtuálisgép-ügynök elsődleges szerepköre az Azure-beli virtuális gépek bővítményeinek engedélyezése és végrehajtása. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép telepítés utáni konfigurálását, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is lehetővé tesznek, mint például egy virtuális gép rendszergazdai jelszavának alaphelyzetbe állítása. Az Azure VM-ügynök nélkül nem futtathatók a virtuálisgép-bővítmények.
 
-Ez a cikk az Azure virtuálisgép-ügynök telepítését és észlelését részletezi.
+Ez a cikk az Azure-beli virtuális gépek ügynökének telepítését és észlelését ismerteti.
 
 ## <a name="install-the-vm-agent"></a>A virtuálisgép-ügynök telepítése
 
-### <a name="azure-marketplace-image"></a>Azure Piactér lemezképe
+### <a name="azure-marketplace-image"></a>Azure Marketplace-rendszerkép
 
-Az Azure Virtuálisgép-ügynök alapértelmezés szerint telepítve van az Azure Piactér-lemezképből telepített bármely Windows virtuális gépre. Amikor üzembe helyez egy Azure Marketplace-lemezképet a portálról, a PowerShellből, a parancssori felületről vagy egy Azure Resource Manager-sablonból, az Azure VM-ügynök is telepítve lesz.
+Az Azure-beli virtuálisgép-ügynök alapértelmezés szerint az Azure Marketplace-rendszerképből üzembe helyezett összes Windows rendszerű virtuális gépen telepítve van. Ha a portálról, a PowerShellből, a parancssori felületből vagy egy Azure Resource Manager sablonból telepít Azure Marketplace-rendszerképet, az Azure-beli virtuálisgép-ügynök is telepítve lesz.
 
-A Windows vendégügynök-csomag két részre van osztva:
+A Windows vendég ügynök csomag két részből áll:
 
 - Kiépítési ügynök (PA)
-- Windows vendégügynök (WinGA)
+- Windows vendég ügynök (WinGa)
 
-A virtuális gép indításához a virtuális gépre telepítve kell lennie a pa-nak, de a WinGA-t nem kell telepíteni. Virtuális gép üzembe helyezésekor kiválaszthatja, hogy ne telepítse a WinGA.At VM deploy time, you can select not to install the WinGA. A következő példa bemutatja, hogyan választhatja ki a *provisionVmAgent* beállítást egy Azure Resource Manager-sablonnal:
+Egy virtuális gép elindításához a PA-nak telepítve kell lennie a virtuális gépen, de a WinGa nem szükséges a telepítéshez. A virtuális gép üzembe helyezésének ideje lehetőség kiválasztásával a WinGa telepítése nem végezhető el. Az alábbi példa bemutatja, hogyan választhatja ki a *provisionVmAgent* beállítást egy Azure Resource Manager sablonnal:
 
 ```json
 "resources": [{
@@ -55,13 +55,13 @@ A virtuális gép indításához a virtuális gépre telepítve kell lennie a pa
 }
 ```
 
-Ha nincs telepítve az ügynökök, nem használhat bizonyos Azure-szolgáltatásokat, például az Azure Backup vagy az Azure Security. Ezeknek a szolgáltatásoknak egy bővítmény telepítéséhez van szükség. Ha a WinGA nélkül telepített virtuális gép, később telepítheti az ügynök legújabb verzióját.
+Ha nincsenek telepítve az ügynökök, nem használhat bizonyos Azure-szolgáltatásokat, például a Azure Backup vagy az Azure Security szolgáltatást. Ezeknek a szolgáltatásoknak telepíteniük kell egy bővítményt. Ha a WinGa nélküli virtuális gépet helyezett üzembe, akkor később is telepítheti az ügynök legújabb verzióját.
 
 ### <a name="manual-installation"></a>Manuális telepítés
-A Windows virtuálisgép-ügynök manuálisan telepíthető egy Windows telepítőcsomaggal. Manuális telepítés re lehet szükség, ha létrehoz egy egyéni virtuálisgép-lemezképet, amely telepítve van az Azure-ban. A Windows virtuálisgép-ügynök manuális telepítéséhez [töltse le a VM-ügynök telepítőt.](https://go.microsoft.com/fwlink/?LinkID=394789) A virtuálisgép-ügynök windows Server 2008 R2 és újabb rendszer által támogatott.
+A Windows rendszerű virtuális gép ügynöke manuálisan is telepíthető Windows Installer-csomaggal. Az Azure-ban üzembe helyezett egyéni virtuálisgép-lemezkép létrehozásakor szükség lehet manuális telepítésre. A Windows rendszerű virtuális gép ügynökének manuális telepítéséhez [töltse le a virtuálisgép-ügynök telepítőjét](https://go.microsoft.com/fwlink/?LinkID=394789). A virtuálisgép-ügynök a Windows Server 2008 R2 és újabb rendszereken támogatott.
 
 > [!NOTE]
-> Fontos, hogy frissítse az AllowExtensionOperations beállítást, miután manuálisan telepítette a VMAgent-et egy olyan virtuális gépre, amely a ProvisionVMAgent engedélyezése nélkül lett telepítve.
+> Fontos, hogy frissítse a AllowExtensionOperations beállítást, miután manuálisan telepítette a VMAgent egy olyan virtuális gépre, amely a ProvisionVMAgent engedélyezése nélkül lett üzembe helyezve a lemezképből.
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true
@@ -69,21 +69,21 @@ $vm | Update-AzVM
 ```
 
 ### <a name="prerequisites"></a>Előfeltételek
-- A Windows virtuálisgép-ügynök futtatásához legalább Windows Server 2008 R2 (64 bites) szükséges a . Lásd: [Virtuálisgép-ügynökök minimális verziótámogatása az Azure-ban](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- A Windows rendszerű virtuális gép ügynökének legalább a Windows Server 2008 R2 (64-BITS) futtatásához szükségesnek kell lennie a .NET-keretrendszer 4,0-as verziójával. Lásd: [Az Azure-beli virtuálisgép-ügynökök minimális verziójának támogatása](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
-- Győződjön meg arról, hogy a virtuális gép hozzáfér a 168.63.129.16 IP-címhez. További információ: [Mi az IP-cím 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+- Győződjön meg arról, hogy a virtuális gép rendelkezik hozzáféréssel az IP-168.63.129.16. További információ: [Mi az IP-168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
 ## <a name="detect-the-vm-agent"></a>A virtuálisgép-ügynök észlelése
 
 ### <a name="powershell"></a>PowerShell
 
-Az Azure Resource Manager PowerShell modul azure-beli virtuális gépek adatainak lekéréséhez használható. A virtuális gépekkel kapcsolatos információk megtekintéséhez, például az Azure Virtuálisgép-ügynök létesítési állapotának megtekintéséhez használja a [Get-AzVM-et:](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)
+Az Azure-beli virtuális gépekkel kapcsolatos információk lekéréséhez a Azure Resource Manager PowerShell-modul használható. Ha szeretné megtekinteni a virtuális gépekre vonatkozó információkat, például az Azure virtuálisgép-ügynök kiépítési állapotát, használja a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm):
 
 ```powershell
 Get-AzVM
 ```
 
-A következő tömörített példa kimenet az *OSProfile-ba*ágyazott *ProvisionVMAgent* tulajdonságot jeleníti meg. Ezzel a tulajdonsággal megállapítható, hogy a virtuálisgép-ügynök telepítve van-e a virtuális gépre:
+A következő összesűrített példa kimenet a *OSProfile*-ben beágyazott *ProvisionVMAgent* tulajdonságot mutatja be. Ezzel a tulajdonsággal határozható meg, hogy a virtuálisgép-ügynök telepítve van-e a virtuális gépen:
 
 ```powershell
 OSProfile                  :
@@ -94,7 +94,7 @@ OSProfile                  :
     EnableAutomaticUpdates : True
 ```
 
-A következő parancsfájl segítségével a virtuális gép nevek tömör listáját és a virtuális gép ügynökállapotát adja vissza:
+A következő szkript használható a virtuális gépek neveinek és a virtuálisgép-ügynök állapotának tömör megjelenítéséhez:
 
 ```powershell
 $vms = Get-AzVM
@@ -105,16 +105,16 @@ foreach ($vm in $vms) {
 }
 ```
 
-### <a name="manual-detection"></a>Kézi észlelés
+### <a name="manual-detection"></a>Manuális észlelés
 
-Windows virtuális gépre bejelentkezve a Feladatkezelő használható a futó folyamatok vizsgálatára. Az Azure VM-ügynök ellenőrzéséhez nyissa meg a *Feladatkezelőt,* kattintson a Részletek fülre, és keresse meg a **WindowsAzureGuestAgent.exe**folyamatnevet. A folyamat jelenléte azt jelzi, hogy a virtuális gép ügynök telepítve van.
+Windows rendszerű virtuális gépre való bejelentkezéskor a Feladatkezelő segítségével megvizsgálhatja a futó folyamatokat. Az Azure-beli virtuálisgép-ügynök kereséséhez nyissa meg a Feladatkezelő eszközt, kattintson a *részletek* fülre, és keresse meg a **WindowsAzureGuestAgent. exe**nevű folyamatot. A folyamat jelenléte azt jelzi, hogy a virtuálisgép-ügynök telepítve van.
 
 
-## <a name="upgrade-the-vm-agent"></a>A virtuális gépügynök frissítése
-Az Azure VM Agent for Windows automatikusan frissül. Az új virtuális gépek üzembe helyezése az Azure-ban, a virtuális gép üzembe helyezése a virtuális gép üzembe helyezési idő. Egyéni virtuálisgép-rendszerképek manuálisan kell frissíteni, hogy tartalmazza az új virtuálisgép-ügynök a lemezkép létrehozása kor.
+## <a name="upgrade-the-vm-agent"></a>A virtuálisgép-ügynök frissítése
+A Windows rendszerhez készült Azure VM-ügynök automatikusan frissül. Mivel az új virtuális gépek üzembe helyezése az Azure-ban történik, a virtuálisgép-kiépítési idő szerint kapják meg a legújabb virtuálisgép-ügynököt. Az egyéni virtuálisgép-rendszerképeket manuálisan kell frissíteni, hogy az új virtuálisgép-ügynököt a lemezkép létrehozási idején is tartalmazza.
 
-## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows vendégügynök automatikus naplók gyűjtése
-A Windows vendégügynök rendelkezik egy szolgáltatással, amely automatikusan összegyűjti a naplókat. Ezt a szolgáltatást a CollectGuestLogs.exe folyamat vezérlője. A PaaS Cloud Services és az IaaS virtuális gépek számára is létezik, és célja, hogy gyorsan & automatikusan összegyűjtsön néhány diagnosztikai naplót egy virtuális gépről , így azok offline elemzéshez használhatók. Az összegyűjtött naplók eseménynaplók, operációs rendszer naplók, Azure-naplók és néhány beállításkulcsok. Ez létrehoz egy ZIP-fájlt, amely át a virtuális gép gazdagép. Ezt a ZIP-fájlt ezután a mérnöki csapatok és a támogatási szakemberek megvizsgálhatják a virtuális gép tulajdonában lévő ügyfél kérésére felmerülő problémák kivizsgálásához.
+## <a name="windows-guest-agent-automatic-logs-collection"></a>A Windows vendég ügynökének automatikus naplófájljainak gyűjteménye
+A Windows vendég ügynökének van egy funkciója, amellyel automatikusan gyűjthet néhány naplót. Ezt a funkciót a CollectGuestLogs. exe folyamat végzi. Mind a Péter Cloud Services, mind a IaaS Virtual Machines, és a célja, hogy gyorsan & automatikusan gyűjtsön néhány diagnosztikai naplót egy virtuális gépről, így offline elemzéshez is használhatók. Az összegyűjtött naplók az eseménynaplók, az operációs rendszer naplói, az Azure-naplók és egyes beállításkulcsok. Létrehoz egy ZIP-fájlt, amely a virtuális gép Gazdagépére kerül át. Ebben a ZIP-fájlban a mérnöki csapatok és a támogatási szakemberek a virtuális gép tulajdonosának kérelmére vonatkozó problémák kivizsgálására is rámutatnak.
 
 ## <a name="next-steps"></a>További lépések
-A virtuálisgép-bővítményekről az [Azure virtuálisgép-bővítmények és -szolgáltatások áttekintése című témakörben olvashat bővebben.](overview.md)
+További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

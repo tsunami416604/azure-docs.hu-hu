@@ -1,6 +1,6 @@
 ---
-title: Összekapcsolt szolgáltatás kiépítése és biztonságossá tétele az Azure Synapse Analytics szolgáltatásban
-description: A felügyelt virtuális hálózattal összekapcsolt szolgáltatás kiépítése és biztonságossá tétele
+title: Társított szolgáltatás kiépítése és biztonságossá tétele az Azure szinapszis Analytics szolgáltatásban
+description: Ismerje meg, hogyan hozhat létre és biztosíthat biztonságossá egy társított szolgáltatást a felügyelt vnet
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -10,64 +10,64 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430551"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Csatolt szolgáltatás biztonságossá tétele privát hivatkozásokkal 
+# <a name="securing-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal 
 
-Ebben a cikkben megtudhatja, hogyan biztonságossá egy csatolt szolgáltatás a synapsze-ban egy privát végpont.
+Ebből a cikkből megtudhatja, hogyan védheti egy társított szolgáltatást a Szinapszisban egy privát végponttal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés:** Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
-* **Azure Storage-fiók:** Az Azure Data Lake Gen *2-t használja* forrásadattárként. Ha nem rendelkezik tárfiókkal, olvassa [el az Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md) című témakört a létrehozási lépésekért. Győződjön meg arról, hogy a tárfiók rendelkezik a Synapse Studio IP-szűrés eléréséhez, és hogy csak a **kiválasztott hálózatok** számára engedélyezi a Storage-fiók eléréséhez. A beállítás a panel alatt **tűzfalak és a virtuális hálózatok** kell kinéznie az alábbi képen.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
+* **Azure Storage-fiók**: a 2. generációs Azure Data Lake használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md) lépéseit. Győződjön meg arról, hogy a Storage-fiók rendelkezik a szinapszis Studio IP-szűréssel a hozzáféréshez, és hogy csak a **kiválasztott hálózatok** férhetnek hozzá a Storage-fiókhoz. A panel alatti **tűzfalak és a virtuális hálózatok** beállításának az alábbi ábrához hasonlóan kell kinéznie.
 
-![Biztonságos tárfiók](./media/secure-storage-account.png)
+![Biztonságos Storage-fiók](./media/secure-storage-account.png)
 
-## <a name="create-a-linked-service-with-private-links"></a>Csatolt szolgáltatás létrehozása privát hivatkozásokkal
+## <a name="create-a-linked-service-with-private-links"></a>Társított szolgáltatás létrehozása privát hivatkozásokkal
 
-Az Azure Synapse Analytics egy összekapcsolt szolgáltatás, ahol meghatározza a kapcsolat adatait más szolgáltatásokkal. Ebben a szakaszban az Azure Synapse Analytics és az Azure Data Lake Gen 2 csatolt szolgáltatásokként.
+Az Azure szinapszis Analyticsben a társított szolgáltatás a kapcsolati adatok más szolgáltatásokhoz való definiálására szolgál. Ebben a szakaszban az Azure szinapszis Analytics és a 2. generációs Azure Data Lake fogja hozzáadni társított szolgáltatásként.
 
-1. Nyissa meg az Azure Synapse Studio alkalmazást, és lépjen a **Kezelés** lapra.
-1. A **Külső kapcsolatok csoportban**válassza a **Csatolt szolgáltatások**lehetőséget.
-1. Csatolt szolgáltatás hozzáadásához kattintson az **Új**gombra.
-1. Válassza ki az Azure Data Lake Storage Gen2 csempét a listából, és kattintson a **Folytatás**gombra.
-1. Győződjön meg arról, hogy engedélyezi **az interaktív szerzői lehetőséget.** Az engedélyezés körülbelül 1 percet vehet igénybe. 
-1. Adja meg a hitelesítési hitelesítő adatokat. A fiókkulcs, az egyszerű szolgáltatás és a felügyelt identitás jelenleg támogatott hitelesítési típusok. Kattintson a kapcsolat tesztelésére, és ellenőrizze, hogy a hitelesítő adatok helyesek-e.
-1. Válassza a **Kapcsolat tesztelése**lehetőséget, mert a tárfiók nem engedélyezi a hozzáférést egy privát végpont létrehozása és jóváhagyása nélkül. A hibaüzenetben meg kell jelennie egy hivatkozást, amely egy **privát végpontlétrehozásához,** amely követheti, hogy menjen a következő részhez. Ha követi ezt a linket, hagyja ki a következő részt.
+1. Nyissa meg az Azure szinapszis Studio alkalmazást, és lépjen a **kezelés** lapra.
+1. A **külső kapcsolatok**területen válassza a **társított szolgáltatások**elemet.
+1. Társított szolgáltatás hozzáadásához kattintson az **új**elemre.
+1. Válassza ki a Azure Data Lake Storage Gen2 csempét a listából, majd kattintson a **Folytatás**gombra.
+1. Győződjön meg arról, hogy az **interaktív szerzői műveletek**engedélyezve vannak. Előfordulhat, hogy az engedélyezése körülbelül 1 percet vesz igénybe. 
+1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. A hitelesítő adatok helyességének ellenőrzéséhez kattintson a kapcsolódás tesztelése elemre.
+1. Válassza a **kapcsolat tesztelése**lehetőséget, mert a Storage-fiók nem engedélyezi a hozzáférést egy privát végpont létrehozása és jóváhagyása nélkül. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy **privát végpontot** , amelyet követve a következő részre léphet. Ha követi ezt a hivatkozást, ugorja át a következő részt.
 1. Miután végzett, válassza a **Létrehozás** lehetőséget.
 
-## <a name="create-a-managed-private-endpoint"></a>Felügyelt magánvégpont létrehozása
+## <a name="create-a-managed-private-endpoint"></a>Felügyelt privát végpont létrehozása
 
-Abban az esetben, ha a fenti kapcsolat tesztelése során nem kattintott a hivatkozásra, kövesse az alábbi elérési utat. Most létre kell hoznia egy felügyelt magánvégpontot, amely csatlakozik a fent létrehozott csatolt szolgáltatáshoz.
+Abban az esetben, ha a fenti kapcsolat tesztelésekor nem kattintott a hiperhivatkozásra, kövesse az alábbi elérési utat. Most létre kell hoznia egy felügyelt magánhálózati végpontot, amelyhez csatlakozni fog a fent létrehozott társított szolgáltatáshoz.
 
-1. Nyissa meg a **Kezelés** lapot.
-1. Nyissa meg a **Felügyelt virtuális hálózatok szakaszt.**
-1. Válassza a **+ Új** lehetőséget a Felügyelt magánvégpont csoportban.
-1. Válassza ki az Azure Data Lake Storage Gen2 csempét a listából, és válassza a **Folytatás**lehetőséget.
-1. Adja meg a fent létrehozott tárfiók nevét.
-1. Válassza a **Létrehozás lehetőséget**
-1. Néhány másodperc várakozás után látnia kell, hogy a létrehozott privát hivatkozásnak jóváhagyásra van szüksége.
+1. Lépjen a **kezelés** lapra.
+1. Lépjen a **felügyelt virtuális hálózatok** szakaszra.
+1. Válassza a **+ új** lehetőséget a felügyelt privát végpont alatt.
+1. Válassza ki a listából a Azure Data Lake Storage Gen2 csempét, és válassza a **Folytatás**lehetőséget.
+1. Adja meg a fent létrehozott Storage-fiók nevét.
+1. **Létrehozás** kiválasztása
+1. Néhány másodperc várakozás után kell megjelennie, hogy a privát kapcsolat létrehozása jóváhagyást igényel.
 
 ## <a name="approval-of-a-private-link"></a>Privát hivatkozás jóváhagyása
-1. Válassza ki a fent létrehozott privát végpontot. Láthatja a hivatkozást, amely lehetővé teszi, hogy jóváhagyja a privát végpont a tárfiók szintjén. *Egy másik lehetőség, hogy közvetlenül az Azure Portal storage-fiók, és lépjen be a **privát végpont kapcsolatok** panel.*
-1. Jelölje be a Stúdióban létrehozott privát végpontot, és válassza a **Jóváhagyás lehetőséget.**
-1. Leírás hozzáadása és az **igen** gombra kattintva
-1. Lépjen vissza a Synapse Studio-ba a **Kezelés**lap **Felügyelt virtuális hálózatok** szakaszában.
-1. Körülbelül 1 percet vesz igénybe, hogy a jóváhagyás tükröződjön a saját végpont.
+1. Válassza ki a fent létrehozott privát végpontot. Megtekintheti azt a hiperhivatkozást, amely lehetővé teszi a magánhálózati végpont jóváhagyását a Storage-fiók szintjén. *Egy másik lehetőség, hogy közvetlenül a Azure Portal Storage-fiókba lép, és bemegy a **privát Endpoint Connections** panelre.*
+1. Jelölje be a stúdióban létrehozott privát végpontot, és válassza a **jóváhagyás**lehetőséget.
+1. Adja meg a leírást, és kattintson az **Igen** gombra.
+1. Lépjen vissza a szinapszis studióhoz a **kezelés**lap **felügyelt virtuális hálózatok** szakaszában.
+1. Ahhoz, hogy a jóváhagyás megjelenjen a privát végponton, körülbelül 1 percnek kell lennie.
 
-## <a name="check-the-connection-works"></a>Ellenőrizze, hogy működik-e a kapcsolat
-1. Nyissa meg a **Kezelés** lapot, és jelölje ki a létrehozott csatolt szolgáltatást.
-1. Győződjön meg arról, hogy az **interaktív szerzői szolgáltatás** aktív.
-1. Válassza a **Kapcsolat tesztelése** elemet. Látnia kell, hogy a kapcsolat sikeres lesz.
+## <a name="check-the-connection-works"></a>A kapcsolatok működésének ellenõrzése
+1. Lépjen a **kezelés** lapra, és válassza ki a létrehozott társított szolgáltatást.
+1. Győződjön meg arról, hogy az **interaktív szerzői műveletek** aktívak.
+1. Válassza a **Kapcsolat tesztelése** elemet. Látnia kell a sikeres kapcsolatokat.
 
-Most biztonságos és privát kapcsolatot létesített a Synapse és a kapcsolódó szolgáltatás között!
+Ezzel létrehozott egy biztonságos és privát kapcsolatot a szinapszis és a társított szolgáltatás között!
 
 ## <a name="next-steps"></a>További lépések
 
-A Synapse Analytics felügyelt magánvégpontjának további megértéséhez tekintse meg a [Synapse által felügyelt](data-integration-data-lake.md) magánvégpont-témakört.
+Ha további ismereteket szeretne megtudni a saját felügyelt privát végpontról a szinapszis Analyticsben, tekintse meg a [következő koncepciót: szinapszis felügyelt privát végpontja](data-integration-data-lake.md)
 
-A Synapse Analytics adatintegrációjával kapcsolatos további információkért tekintse meg az [adatok betöltését egy Data Lake-cikkbe.](data-integration-data-lake.md)
+A szinapszis Analytics adatintegrálásával kapcsolatos további információkért tekintse meg az adatok betöltését [Data Lake](data-integration-data-lake.md) cikkben.

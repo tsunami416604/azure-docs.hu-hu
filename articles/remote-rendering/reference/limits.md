@@ -1,52 +1,52 @@
 ---
 title: Korlátozások
-description: Az SDK-szolgáltatások kódkorlátai
+description: Az SDK-funkciók kódjainak korlátai
 author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417691"
 ---
 # <a name="limitations"></a>Korlátozások
 
 Számos szolgáltatás mérete, száma vagy egyéb korlátai vannak.
 
-## <a name="azure-frontend"></a>Azure előtér
+## <a name="azure-frontend"></a>Azure-előtérbeli felület
 
-* AzureFrontend-példányok összesen folyamatonként: 16.
+* AzureFrontend-példányok összesen: 16.
 * AzureSession-példányok összesen AzureFrontend: 16.
 
 ## <a name="objects"></a>Objektumok
 
-* Egyetlen típusú engedélyezett objektumok összesen (Entity, CutPlaneComponent stb.): 16 777 215.
-* Teljes megengedett aktív vágási síkok: 8.
+* Egyetlen típus összes engedélyezett objektuma (entitás, CutPlaneComponent stb.): 16 777 215.
+* Engedélyezett aktív kivágott síkok összesen: 8.
 
 ## <a name="materials"></a>Anyagok
 
-* Teljes engedélyezett anyagok egy eszköz: 65.535.
+* Az eszközön engedélyezett összes anyag: 65 535.
 
-## <a name="overall-number-of-polygons"></a>A sokszögek teljes száma
+## <a name="overall-number-of-polygons"></a>Sokszögek összesített száma
 
-Az összes betöltött modellhez engedélyezett sokszögek száma a [munkamenet-kezelés REST API-nak](../how-tos/session-rest-api.md#create-a-session)átadott virtuális gép méretétől függ:
+Az összes betöltött modell számára engedélyezett számú sokszög a virtuális gép méretétől függ a [munkamenet-felügyeleti REST API](../how-tos/session-rest-api.md#create-a-session):
 
 | Virtuális gép mérete | Sokszögek maximális száma |
 |:--------|:------------------|
-|Standard| 20 millió |
-|Prémium| nincs korlátozás |
+|Standard| 20 000 000 |
+|prémium szintű| korlátlan |
 
 
-## <a name="platform-limitations"></a>A platform korlátai
+## <a name="platform-limitations"></a>A platformra vonatkozó korlátozások
 
-**Windows 10 asztal**
+**Windows 10 asztali verzió**
 
-* A Unity "PC Standalone" telepítése nem támogatott. Használja inkább az UWP-t.
-* Az UWP/x86 az egyetlen támogatott UWP platform. Az UWP/x64 nem támogatott.
+* A "PC önálló" központi telepítés az egységből nem támogatott. Használja helyette a UWP.
+* A UWP/x86 az egyetlen támogatott UWP-platform. A UWP/x64 nem támogatott.
 
-**Hololens 2**
+**2. Hololens**
 
-* A PV kamera funkció [renderelése](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) nem támogatott.
+* A [renderelés a PV-kamerából](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) funkció nem támogatott.

@@ -8,95 +8,95 @@ ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 4063751a71cd9cecc424dfe3daddaecfd9ea4071
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81422255"
 ---
-A spot virtuális gépek használatával jelentős költségmegtakarítást eredményezhet a kihasználatlan kapacitás kihasználása. Bármikor, amikor az Azure-nak szüksége van a kapacitás vissza, az Azure-infrastruktúra kilakoltatja spot virtuális gépek. Ezért a direkt virtuális gépek kiválóan szolgálnak olyan számítási feladatokhoz, amelyek kezelni tudják a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási számítási feladatokat és egyebeket.
+A helyszíni virtuális gépek használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
-A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a napszaktól és egyebektől függően változhat. A direkt virtuális gépek üzembe helyezésekor az Azure lefoglalja a virtuális gépeket, ha van kapacitás, de ezeka virtuális gépek nem rendelkeznek SLA-val. A Spot virtuális gép nem nyújt magas rendelkezésre állási garanciát. Bármikor, amikor az Azure-nak szüksége van a kapacitás vissza, az Azure-infrastruktúra kilakoltatja spot virtuális gépek 30 másodperces értesítéssel. 
+A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a napszaktól és egyebektől függően változhat. A helyszíni virtuális gépek üzembe helyezésekor az Azure kiosztja a virtuális gépeket, ha rendelkezésre áll kapacitás, de ezekhez a virtuális gépekhez nem biztosítunk SLA-t. A helyszíni virtuális gépek nem biztosítanak magas rendelkezésre állású garanciákat. Az Azure-infrastruktúra minden olyan időpontban, amikor az Azure-nak szüksége van a kapacitásra, 30 másodperces figyelmeztetéssel kizárja a helyszíni virtuális gépeket. 
 
 
-## <a name="eviction-policy"></a>Kilakoltatási politika
+## <a name="eviction-policy"></a>Kizárási szabályzat
 
-A virtuális gépek a kapacitás vagy a beállított maximális ár alapján kilakoltathatók. A virtuális gépek, a kilakoltatási szabályzat beállítása *Felszabadítása,* amely áthelyezi a kilakoltatott virtuális gépek a leállított felszabadított állapotba, amely lehetővé teszi a kilakoltatott virtuális gépek egy későbbi időpontban újratelepítése. A virtuális gépek újraelosztása azonban a rendelkezésre álló azonnali kapacitástól függ. A felszabadított virtuális gépek beleszámítanak a helyszíni vCPU-kvótába, és az alapul szolgáló lemezekért díjat számítunk fel. 
+A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján lehet kizárni. A virtuális gépek esetében a kizárási szabályzat úgy van beállítva, hogy *felszabadítsa* a kizárt virtuális gépeket a leállított, lefoglalt állapotba, így később újra üzembe helyezheti a kizárt virtuális gépeket. A helyszíni virtuális gépek újbóli kiosztása azonban attól függ, hogy elérhető-e a hely kapacitása. A fel nem osztott virtuális gépek a helyszíni vCPU-kvótába kerülnek, és a mögöttes lemezekért díjat számítunk fel. 
 
-A felhasználók engedélyezhetik, hogy az [Azure-ban megadott eseményeken](../articles/virtual-machines/linux/scheduled-events.md)keresztül fogadjanak a virtuális gépen keresztüli értesítéseket. Ez értesíti, ha a virtuális gépek kivannak zárva, és 30 másodpercáll majd a feladatok befejezésére és a leállítási feladatok végrehajtására a kilakoltatás előtt. 
+A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)használatával kapják meg. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
 
 
 | Beállítás | Eredmény |
 |--------|---------|
-| A maximális ár >= az aktuális ár. | Virtuális gép telepítve van, ha a kapacitás és a kvóta áll rendelkezésre. |
-| A maximális ár az aktuális ár < van beállítva. | A virtuális gép nincs telepítve. Hibaüzenetet kap, hogy a maximális árnak >= aktuális árnak kell lennie. |
-| A virtuális gép leállításának/felszabadításának újraindítása, ha a maximális ár >= az aktuális ár | Ha van kapacitás és kvóta, majd a virtuális gép üzembe helyezése. |
-| A virtuális gép leállításának/felszabadításának újraindítása, ha a maximális ár < az aktuális árra | Hibaüzenetet kap, hogy a maximális árnak >= aktuális árnak kell lennie. | 
-| A virtuális gép ára felment, és most > a maximális árat. | A virtuális gép kilakoltatva lesz. Kapsz egy 30-as értesítést a tényleges kilakoltatás előtt. | 
-| A kilakoltatás után a virtuális gép ára visszaáll a maximális ár <. | A virtuális gép nem indul újra automatikusan. A virtuális gép saját maga is újraindítható, és az aktuális áron kerül felszámolásra. |
-| Ha a maximális ár`-1` | A virtuális gép díjszabási okokból nem lesz kizárva. A maximális ár az aktuális ár lesz, a szabványos virtuális gépek áráig. Soha nem kell fizetnie a szokásos ár felett.| 
-| A maximális ár módosítása | A maximális ár módosításához fel kell osztania a virtuális gép felszabadítását. Szabadítsa fel a virtuális gép, állítsa be az új maximális ár, majd frissítse a virtuális gép. |
+| A maximális díj értéke >= a jelenlegi díj. | A virtuális gép üzembe helyezése esetén a kapacitás és a kvóta elérhető. |
+| A maximális árat úgy kell beállítani, hogy az aktuális árat <. | A virtuális gép nincs telepítve. Hibaüzenetet kap arról, hogy a maximális árat >= aktuális áron kell megadnia. |
+| Leállítás/felszabadítási virtuális gép újraindítása, ha a maximális díj >= a jelenlegi díj | Ha van kapacitása és kvóta, akkor a rendszer telepíti a virtuális gépet. |
+| Leállítás/felszabadítási virtuális gép újraindítása, ha a maximális díj < a jelenlegi áron | Hibaüzenetet kap arról, hogy a maximális árat >= aktuális áron kell megadnia. | 
+| A virtuális gép ára felment, és most már > a maximális árat. | A virtuális gép el lesz távolítva. A tényleges kizárást megelőzően egy 30%-os értesítést kap. | 
+| A kizárás után a virtuális gép ára visszatérhet, hogy < a maximális árat. | A virtuális gép nem indul el automatikusan újra. Saját maga is újraindíthatja a virtuális gépet, és az aktuális áron kell fizetnie. |
+| Ha a maximális díj értéke`-1` | A virtuális gép díjszabása nem kerül kizárásra. A maximális díj a jelenlegi díj, amely a standard szintű virtuális gépek árával függ. A standard díj felett soha nem számítunk fel díjat.| 
+| A maximális ár módosítása | A maximális díj megváltoztatásához fel kell szabadítania a virtuális gépet. Szabadítsa fel a virtuális gépet, állítson be egy új maximális árat, majd frissítse a virtuális gépet. |
 
 ## <a name="limitations"></a>Korlátozások
 
-A következő virtuális gépméretek nem támogatottak a direkt virtuális gépek nél:
- - B-sorozat
- - Promo verziók bármilyen méretű (mint a Dv2, NV, NC, H promo méretben)
+A következő virtuálisgép-méretek nem támogatottak a Direktszínű virtuális gépek esetében:
+ - B sorozat
+ - Bármilyen méretű promóciós verzió (például Dv2, NV, NC, H promo-méretek)
 
-A direkt virtuális gépek jelenleg nem használhatják az ideiglenes operációsrendszer-lemezeket.
+A helyszíni virtuális gépek jelenleg nem használhatnak ideiglenes operációsrendszer-lemezeket.
 
-A direkt virtuális gépek a Microsoft Azure China 21Vianet kivételével bármely régióban telepíthetők.
+A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve Microsoft Azure China 21Vianet.
 
 ## <a name="pricing"></a>Díjszabás
 
-A direkt virtuális gépek díjszabása változó, a régió és a termékváltozat alapján. További információ: VM-díjszabás [Linuxra](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windowsra.](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 
+A helyszíni virtuális gépek díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
 
-A változó árképzés, akkor lehetősége van arra, hogy állítsa be a maximális ár, USA dollárban (USD), akár 5 tizedesjegy. Az érték `0.98765`például óránként $0,98765 USD max ár. Ha a maximális árat `-1`állítja be, a virtuális gép nem lesz kizárva az ár alapján. A virtuális gép ára az azonnali aktuális ár vagy egy szabványos virtuális gép ára lesz, amely valaha is kevesebb, mindaddig, amíg van kapacitás és kvóta áll rendelkezésre.
+A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. Az érték `0.98765`például a maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1`, a virtuális gép ára nem kerül kizárásra. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta.
 
 
 ##  <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K:** Miután létrehozta, egy spot virtuális gép ugyanaz, mint a normál szabványos virtuális gép?
+**K:** A létrehozása után a egy direkt virtuális gép, amely azonos a normál szabványos virtuális géppel?
 
-**A.** Igen, kivéve, hogy nincs SLA a direkt virtuális gépekhez, és bármikor kilakoltathatók.
-
-
-**K:** Mi a teendő, ha kilakoltatnak, de még mindig kapacitásra van szüksége?
-
-**A.** Azt javasoljuk, hogy a direkt virtuális gépek helyett szabványos virtuális gépeket használjon, ha azonnal kapacitásra van szüksége.
+**A:** Igen, a helyszíni virtuális gépekhez nem biztosítunk SLA-t, és a szolgáltatás bármikor kizárható.
 
 
-**K:** Hogyan történik a kvóta kezelése a direkt virtuális gépekhez?
+**K:** Mi a teendő, ha kizárja, de továbbra is kapacitásra van szüksége?
 
-**A.** A direkt virtuális gépek külön kvótakészletet kapnak. A direkthelykvóta meg lesz osztva a virtuális gépek és a méretezési csoport példányai között. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-
-
-**K:** Kérhetek további kvótát a Spot-ra?
-
-**A.** Igen, a [szabványos kvótakérelem-folyamaton](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)keresztül elküldheti a direkt virtuális gépekre vonatkozó kvóta növelésére irányuló kérelmet.
+**A:** Javasoljuk, hogy a virtuális gépek helyett használjon szabványos virtuális gépeket, ha a kapacitásra azonnal szükség van.
 
 
-**K:** Milyen csatornák támogatják a spot virtuális gépeket?
+**K:** Hogyan kezelik a kvóta a helyszíni virtuális gépeket?
 
-**A.** Tekintse meg az alábbi táblázatot a virtuális gépek rendelkezésre állásáról.
+**A:** A helyszíni virtuális gépek külön kvóta-készlettel rendelkeznek. A helyszíni kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+
+
+**K:** Igényelhetek további kvótát a helyszínen?
+
+**A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)keresztül.
+
+
+**K:** Milyen csatornák támogatják a helyszíni virtuális gépeket?
+
+**A:** Tekintse meg az alábbi táblázatot a helyszíni virtuális gépek rendelkezésre állásához.
 
 <a name="channel"></a>
 
-| Azure-csatornák               | Az Azure spot virtuális gépek elérhetősége       |
+| Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
 |------------------------------|-----------------------------------|
 | Nagyvállalati Szerződés         | Igen                               |
 | Használatalapú fizetés                | Igen                               |
-| Felhőszolgáltató (CSP) | [Vegye fel a kapcsolatot partnerével](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Microsoft-ügyfélszerződés | Igen                               |
 | Előnyök                     | Nem érhető el                     |
 | Szponzorált                    | Nem érhető el                     |
 | Ingyenes próbaverzió                   | Nem érhető el                     |
 
 
-**K:** Hol tehetek fel kérdéseket?
+**K:** Hol tehetek közzé kérdéseket?
 
-**A.** Tudod felad és tag `azure-spot` a kérdést a [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
+**A:** A kérdését a `azure-spot` következő címen teheti közzé és címkézheti: [Q&a](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
 
 

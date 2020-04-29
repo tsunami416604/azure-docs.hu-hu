@@ -1,70 +1,70 @@
 ---
-title: X.509 tanúsítványalapú hitelesítés szolgáltatásháló-fürtben
-description: Ismerje meg a tanúsítványalapú hitelesítést a Service Fabric-fürtökben, és hogyan észlelheti, enyhítheti és javíthatja a tanúsítványokkal kapcsolatos problémákat.
+title: X. 509 tanúsítványalapú hitelesítés Service Fabric fürtben
+description: Ismerje meg a tanúsítványalapú hitelesítést Service Fabric-fürtökben, valamint a tanúsítványokkal kapcsolatos problémák észlelését, enyhítését és javítását.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
 ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429667"
 ---
-# <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X.509 Tanúsítványalapú hitelesítés a Service Fabric-fürtökben
+# <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 tanúsítványalapú hitelesítés Service Fabric-fürtökben
 
-Ez a cikk kiegészíti a [Service Fabric-fürt biztonságának](service-fabric-cluster-security.md)bevezetését, és a Service Fabric-fürtök tanúsítványalapú hitelesítésének részleteit ismerteti. Feltételezzük, hogy az olvasó ismeri az alapvető biztonsági fogalmakat, valamint a service fabric által a fürt biztonságának szabályozásához elérhető vezérlőket.  
+Ez a cikk a [Service Fabric-fürt biztonságának](service-fabric-cluster-security.md)bevezetését egészíti ki, és bekerül a tanúsítványalapú hitelesítés részleteibe Service Fabric-fürtökben. Feltételezzük, hogy az olvasó ismeri az alapvető biztonsági fogalmakat, valamint azokat a vezérlőket is, amelyeket a Service Fabric a fürt biztonságának szabályozására tesz elérhetővé.  
 
-Az e cím alatt tárgyalt témakörök:
+A cím alá tartozó témakörök:
 
-* A tanúsítványalapú hitelesítés alapjai
-* Identitások és szerepük
-* Tanúsítványkonfigurációs szabályok
-* Hibaelhárítás és gyakori kérdések
+* Tanúsítványalapú hitelesítés alapjai
+* Identitások és saját szerepkörök
+* Tanúsítvány-konfigurációs szabályok
+* Hibaelhárítás és gyakran ismételt kérdések
 
-## <a name="certificate-based-authentication-basics"></a>A tanúsítványalapú hitelesítés alapjai
-Rövid frissítésként a biztonság területén a tanúsítvány olyan eszköz, amely egy entitásra (tárgyra) vonatkozó információkat egy pár aszimmetrikus kriptográfiai kulcs birtoklásához köti, és így a nyilvános kulcsú titkosítás alapvető felépítését képezi. A tanúsítvány által képviselt kulcsok felhasználhatók az adatok védelmére vagy a kulcsbirtokosok személyazonosságának igazolására; Ha nyilvános kulcsú infrastruktúra (PKI) rendszerrel együtt használják, a tanúsítvány a tulajdonos további jellemzőit is jelentheti, például egy internetes tartomány tulajdonjogát, vagy a tanúsítvány kibocsátója (hitelesítésszolgáltató vagy hitelesítésszolgáltató) által számára biztosított bizonyos jogosultságokat. A tanúsítványok közös alkalmazása a Transport Layer Security (TLS) kriptográfiai protokoll támogatása, amely lehetővé teszi a biztonságos kommunikációt a számítógépes hálózaton keresztül. Pontosabban, az ügyfél és a kiszolgáló tanúsítványokat használ kommunikációjuk védelmének és integritásának biztosítására, valamint a kölcsönös hitelesítés végrehajtására.
+## <a name="certificate-based-authentication-basics"></a>Tanúsítványalapú hitelesítés alapjai
+Rövid Frissítőként a tanúsítvány egy olyan eszköz, amely egy entitásra (a tárgyra) vonatkozó információk kötését jelenti, amelyek egy pár aszimmetrikus titkosítási kulcs birtokában vannak, és így a nyilvános kulcsú titkosítás alapszintű szerkezetét képezik. A tanúsítvány által képviselt kulcsok az adatok védelmére, illetve a kulcstárolók identitásának igazolására használhatók. a nyilvános kulcsokra épülő infrastruktúra (PKI) rendszerével együtt használva a tanúsítványok a tulajdonos további funkcióit is jelezhetik, például az internetes tartomány tulajdonjogát, vagy a tanúsítvány kibocsátója által biztosított bizonyos jogosultságokat (más néven hitelesítésszolgáltató, CA). A tanúsítványok közös alkalmazása a Transport Layer Security (TLS) titkosítási protokollt támogatja, amely lehetővé teszi a biztonságos kommunikációt a számítógépes hálózaton keresztül. Az ügyfél és a kiszolgáló pedig tanúsítványokat használ a kommunikáció titkosságának és integritásának biztosításához, valamint a kölcsönös hitelesítés végrehajtásához is.
 
-A Service Fabric, a fürt (Összevonás) alapvető rétege is épül a TLS (többek között protokollok) a részt vevő csomópontok megbízható, biztonságos hálózatának elérése érdekében. A fürthöz a Service Fabric-ügyfél API-kon keresztül a kapcsolatot használja a TLS is a forgalom védelme érdekében, valamint a felek identitásának megállapításához. Pontosabban, ha a Service Fabric hitelesítésére használják, a tanúsítvány a következő jogcímek igazolására használható: a) a tanúsítvány hitelesítő adatainak előadója rendelkezik a tanúsítvány titkos kulcsával b) a tanúsítvány SHA-1 kivonata ("ujjlenyomat") megegyezik a fürtdefinícióban szereplő deklarációval, vagy c) a tanúsítvány megkülönböztető tulajdonosi közneve megegyezik a fürtdefinícióban szereplő nyilatkozattal. , és a tanúsítvány kibocsátója ismert vagy megbízható.
+Service Fabric a fürt alapvető rétege (összevonás) a TLS-t (más protokollok között) is létrehozza a résztvevő csomópontok megbízható és biztonságos hálózatának eléréséhez. A fürthöz Service Fabric ügyfél API-kon keresztül létesített kapcsolatok a TLS-t is használják a forgalom elleni védelemhez, valamint a felek identitásának létrehozásához is. Pontosabban, ha a Service Fabric hitelesítéshez használatos, a tanúsítvány a következő jogcímek bizonyítására használható: a) a tanúsítvány hitelesítő adatainak tulajdonosa rendelkezik a tanúsítvány "b" titkos kulcsával. a tanúsítvány SHA-1 kivonata ("ujjlenyomata") megfelel a fürt definíciójában szereplő deklarációnak, vagy c) a tanúsítvány megkülönböztető tulajdonos köznapi neve megegyezik a fürt definíciójában szereplő deklarációval , és a tanúsítvány kiállítója ismert vagy megbízható.
 
-A fenti listában a "b" köznyelvben "ujjlenyomat-rögzítésnek" nevezik; ebben az esetben a nyilatkozat egy adott tanúsítványra hivatkozik, és a hitelesítési rendszer erőssége azon a feltevésen alapul, hogy számításilag kivitelezhetetlen olyan tanúsítványt hamisítani, amely ugyanazt a kivonatértéket állítja elő, mint egy másik, miközben minden más tekintetben továbbra is érvényes, jól formázott objektum. A "c" tétel a bizonyítvány bejelentésének alternatív formáját jelenti, ahol a rendszer erőssége a tanúsítvány tárgyát képező alany és a kibocsátó hatóság kombinációján alapul. Ebben az esetben a nyilatkozat a tanúsítványok egy osztályára vonatkozik – bármely két, azonos jellemzőkkel rendelkező tanúsítvány teljesen egyenértékűnek minősül. 
+A fenti listában a "b" az "ujjlenyomat-rögzítés" néven ismert. Ebben az esetben a deklaráció egy adott tanúsítványra hivatkozik, és a hitelesítési séma erőssége arra a feltételezésre támaszkodik, hogy a számítási feladatokkal nem valósítható meg egy olyan tanúsítvány hamisítása, amely ugyanazt a kivonatoló értéket állítja elő, miközben az összes többi tekintetben érvényes, jól formázott objektum marad. A "c" elem a tanúsítvány deklarálása egy másik formáját jelöli, ahol a séma erőssége a tanúsítvány és a kiállító hatóság kombinációján nyugszik. Ebben az esetben a deklaráció egy tanúsítvány osztályára vonatkozik – az azonos tulajdonságokkal rendelkező két tanúsítvány teljes mértékben egyenértékűnek tekintendő. 
 
-A következő szakaszok részletesen ismerteti, hogyan használja a Service Fabric futásidejű és érvényesíti a tanúsítványokat a fürt biztonságának biztosítása érdekében.
+A következő szakaszokban részletesen ismertetjük, hogy az Service Fabric futtatókörnyezet hogyan használja és érvényesíti a tanúsítványokat a fürt biztonságának biztosítása érdekében.
 
-## <a name="identities-and-their-respective-roles"></a>Identitások és szerepük
-Mielőtt belemerülne a hitelesítés részleteibe vagy a kommunikációs csatornák védelmébe, fontos felsorolni a részt vevő szereplőket és a fürtben betöltött megfelelő szerepüket:
-- a Service Fabric futásidejű, a továbbiakban "rendszer": a szolgáltatások, amelyek a fürt absztrakciók és funkciók. Amikor a rendszerpéldányok közötti fürtön keresztüli kommunikációra hivatkozunk, a "fürtidentitás" kifejezést használjuk; amikor a fürtre hivatkozik a fürtön kívüli forgalom címzettjeként/célként, a "kiszolgálóidentitás" kifejezést használjuk.
-- üzemeltetett alkalmazások, a továbbiakban:"alkalmazások": a fürt tulajdonosa által megadott kód, amelyet a fürtben vezényelnek és hajtanak végre
-- ügyfelek: a fürt konfigurációjának megfelelően a fürthöz való kapcsolódás és a funkciók végrehajtása. Két jogosultsági szintet különböztetünk meg - a "felhasználó" és az "admin". A "felhasználói" ügyfél elsősorban írásvédett műveletekre korlátozódik (de nem minden írásvédett funkcióra), míg egy "rendszergazda" ügyfél korlátlan hozzáféréssel rendelkezik a fürt funkcióihoz. (További részletekért olvassa el a [Service Fabric-fürt biztonsági szerepköreit.)](service-fabric-cluster-security-roles.md)
-- (Csak Azure)a Service Fabric-szolgáltatások, amelyek vezényli és elérhetővé szabályozza a Service Fabric-fürtök üzemeltetését és felügyeletét, a továbbiakban egyszerűen "szolgáltatás". A környezettől függően a "szolgáltatás" az Azure Service Fabric erőforrás-szolgáltató, vagy más erőforrás-szolgáltatók tulajdonosa és üzemeltetője a Service Fabric csapat tulajdonában van.
+## <a name="identities-and-their-respective-roles"></a>Identitások és saját szerepkörök
+A hitelesítés részleteinek vagy a kommunikációs csatornák biztonságossá tételének megkezdése előtt fontos a résztvevő szereplők és a fürtben játszott megfelelő szerepkörök listázása:
+- a Service Fabric futtatókörnyezet, amelyet "rendszernek" nevezünk: azoknak a szolgáltatásoknak a készletét, amelyek a fürtöt jelképező absztrakciókat és funkciókat biztosítanak. Amikor a rendszer-példányok közötti kommunikációra hivatkozik, a "fürt identitása" kifejezést fogjuk használni; Ha a fürtre a fürtön kívülről címzettként vagy a forgalom céljaként hivatkozik, a "kiszolgáló identitása" kifejezést fogjuk használni.
+- üzemeltetett alkalmazások ("alkalmazások"): a fürt tulajdonosa által megadott kód, amely a fürtben van összehangolva és végrehajtva
+- ügyfelek: az entitások a fürtkonfiguráció alapján csatlakozhatnak a fürthöz, és futtathatnak működést a fürtben. Megkülönböztetjük a két jogosultsági szint ("user" és "admin'") közötti különbséget. A "felhasználó" ügyfél elsődlegesen csak olvasási műveletekre korlátozódik (de nem az összes írásvédett funkcióra), míg az "admin'-ügyfél korlátlan hozzáféréssel rendelkezik a fürt működéséhez. (További részletekért tekintse meg a [Service Fabric-fürt biztonsági szerepköreit](service-fabric-cluster-security-roles.md).)
+- (Csak az Azure-ban) a Service Fabric-szolgáltatások, amelyek összehangolják és teszik lehetővé a Service Fabric-fürtök működésének és felügyeletének irányítását, amelyet egyszerűen "szolgáltatásnak" nevezünk. A környezettől függően a "szolgáltatás" hivatkozhat az Azure Service Fabric erőforrás-szolgáltatóra vagy más, a Service Fabric csapata által birtokolt és üzemeltetett erőforrás-szolgáltatóra.
 
-Egy biztonságos fürtben ezek a szerepkörök konfigurálhatók saját, különálló identitással, amely egy előre definiált szerepkörnév és a hozzá tartozó hitelesítő adatok párosításaként deklarálható. A Service Fabric támogatja a hitelesítő adatok tanúsítványként vagy tartományalapú egyszerű szolgáltatásként való deklarálását. (A Windows-/Kerberos-alapú identitások is támogatottak, de nem tartoznak a jelen cikk hatálya alá; lásd a [Windows-alapú biztonság a Service Fabric-fürtökben](service-fabric-windows-cluster-windows-security.md).) Az Azure-fürtökben az ügyfélszerepkörök [Azure Active Directory-alapú identitásként](service-fabric-cluster-creation-setup-aad.md)is deklarálhatók.
+Egy biztonságos fürtben ezek a szerepkörök az előre meghatározott szerepkör neve és a hozzá tartozó hitelesítő adatok párosításával konfigurálhatók saját, különálló identitással. A Service Fabric támogatja a hitelesítő adatok tanúsítványként vagy tartományalapú szolgáltatásnévként való deklarálása. (A Windows-/Kerberos-based identitások is támogatottak, de a jelen cikk hatókörén kívül esnek a [Windows-alapú biztonság Service Fabric-fürtökben](service-fabric-windows-cluster-windows-security.md).) Az Azure-fürtökben az ügyfelek szerepkörei [Azure Active Directory-alapú identitásként](service-fabric-cluster-creation-setup-aad.md)is deklarálva lehetnek.
 
-Ahogy a fentiekre utalt, a Service Fabric futásidejű két jogosultsági szintet határoz meg egy fürtben: "admin" és "felhasználó". A rendszergazdai ügyfél és a "rendszer" összetevő egyaránt működik "admin" jogosultságokat, és így nem megkülönböztethető egymástól. A fürtön való kapcsolat/fürt höz való csatlakozás esetén a Service Fabric futásidejű egy hitelesített hívót kap a következő engedélyezés alapjaként. A hitelesítést a következő szakaszokban vizsgáljuk meg részletesen.
+A fentieknek megfelelően a Service Fabric Runtime két jogosultsági szintet határoz meg egy fürtben: "admin'" és "user". A rendszergazda ügyfél és a "rendszer" összetevő is a "admin' jogosultságokkal" működik, így nem különböztethetők meg egymástól. A fürtön belüli kapcsolatok létrehozásakor a rendszer egy hitelesített hívót biztosít a két szerepkör Service Fabric futtatókörnyezete, amely a következő engedélyezés alapja. A következő fejezetekben részletesen megvizsgáljuk a hitelesítést.
 
-## <a name="certificate-configuration-rules"></a>Tanúsítványkonfigurációs szabályok
+## <a name="certificate-configuration-rules"></a>Tanúsítvány-konfigurációs szabályok
 ### <a name="validation-rules"></a>Érvényesítési szabályok
-A Service Fabric-fürtök biztonsági beállításai elvben a következő szempontokat írják le:
-- a hitelesítés típusa; ez a fürt létrehozási idejű, megváltoztathatatlan jellemzője. Ilyen beállítások például a "ClusterCredentialType", a "ServerCredentialType", az engedélyezett értékek pedig a "none", az "x509" vagy a "windows". Ez a cikk az x509-típusú hitelesítésre összpontosít.
-- a (hitelesítési) érvényesítési szabályok; ezeket a beállításokat a fürt tulajdonosa állítja be, és leírják, hogy egy adott szerepkörhöz mely hitelesítő adatokat kell elfogadni. A példákat közvetlenül az alábbiakban vizsgáljuk meg részletesen.
-- a hitelesítés eredményének finom módosítására használt beállítások; ilyenpéldák a visszavont tanúsítványok listájának érvényesítését korlátozó jelzők (visszavonás)stb.
+Egy Service Fabric-fürt biztonsági beállításai a következő szempontokat írják le:
+- a hitelesítés típusa; Ez egy létrehozási idő, a fürt nem módosítható jellemzője. Ilyen beállítások például a következők: "ClusterCredentialType", "ServerCredentialType", és megengedett értékek: "None", "x509" vagy "Windows". Ez a cikk a x509-típus hitelesítésére koncentrál.
+- a (hitelesítés) érvényesítési szabályok; ezeket a beállításokat a fürt tulajdonosa állítja be, és meghatározza, hogy mely hitelesítő adatokat fogadja el egy adott szerepkör. A példákat a rendszer közvetlenül az alábbi részletesen vizsgálja meg.
+- a hitelesítés eredményének megváltoztatásához vagy finomhangolásához használt beállítások ilyenek például a tanúsítvány-visszavonási listák kényszerítését korlátozó jelzők (de-).
 
 > [!NOTE]
-> Az alábbi fürtkonfigurációs példák a fürtjegyzék ből származó részletek XML formátumban, mint a leginkább emésztett formátum, amely közvetlenül támogatja a Service Fabric ebben a cikkben leírt funkciókat. Ugyanazok a beállítások fejezhetők ki közvetlenül a fürtdefiníció JSON-ábrázolásaiban, függetlenül attól, hogy önálló json-fürtjegyzékről vagy Egy Azure Resource Mangement sablonról van-e szó.
+> Az alábbiakban ismertetett fürtkonfiguráció a fürt jegyzékfájljának XML-formátumában található részletekből áll, mivel ez a legtöbb kivonatoló formátum, amely közvetlenül támogatja az ebben a cikkben leírt Service Fabric funkciót. Ugyanezek a beállítások közvetlenül is megadhatók egy fürt definíciójának JSON-ábrázolásában, akár egy önálló JSON-fürt jegyzékfájljában, akár egy Azure Resource Mangement-sablonban.
 
-A tanúsítványérvényesítési szabály a következő elemekből áll:
-- a megfelelő szerepkör: ügyfél, rendszergazdai ügyfél (kiemelt szerepkör)
-- a szerepkörhöz elfogadott hitelesítő adat, amelyet ujjlenyomatvagy a téma köznapi neve deklarál
+A tanúsítvány-ellenőrzési szabály a következő elemekből áll:
+- a megfelelő szerepkör: ügyfél, rendszergazdai ügyfél (Kiemelt szerepkör)
+- a szerepkör számára elfogadott hitelesítő adat ujjlenyomat vagy tulajdonos köznapi név alapján deklarálva
 
-#### <a name="thumbprint-based-certificate-validation-declarations"></a>Ujjlenyomat-alapú tanúsítványérvényesítési nyilatkozatok
-Az ujjlenyomat-alapú érvényesítési szabályok esetében a fürtbe/a fürtbe kapcsolatot kérő hívó által benyújtott hitelesítő adatok a következőképpen lesznek érvényesítve:
-  - a hitelesítő adat egy érvényes, jól formázott tanúsítvány: lánca felépíthető, az aláírások
-  - a tanúsítvány érvényes (NotBefore <= most < NotAfter)
-  - a tanúsítvány SHA-1 kivonata megegyezik a deklarációval, mint a kis- és nagybetűk et nem megkülönböztető karakterlánc-összehasonlítás, kivéve az összes szóközt
+#### <a name="thumbprint-based-certificate-validation-declarations"></a>Ujjlenyomat-alapú tanúsítvány-ellenőrzési nyilatkozatok
+Ujjlenyomat-alapú érvényesítési szabályok esetén a fürtön vagy a-ben való kapcsolódást kérő hívó által megjelenített hitelesítő adatok a következőképpen lesznek érvényesítve:
+  - a hitelesítő adat érvényes, jól formázott tanúsítvány: a lánca felépíthető, az aláírások egyeztetése
+  - a tanúsítvány ideje érvényes (NotBefore <= most <
+  - a tanúsítvány SHA-1 kivonata megfelel a deklarációnak, kis-és nagybetűk megkülönböztetése nélkül, az összes szóköz kivételével
 
-A láncépítés vagy -érvényesítés során előforduló megbízhatósági hibákat a rendszer letiltja az ujjlenyomatalapú deklarációk esetében, kivéve a lejárt tanúsítványokat – bár erre az esetre vonatkozóan is léteznek rendelkezések. Pontosabban a következő hibák: a visszavonási állapot ismeretlen vagy offline állapot, nem megbízható gyökér, érvénytelen kulcshasználat, részleges lánc nem végzetes hibának minősülnek; a feltevés, ebben az esetben az, hogy a tanúsítvány csupán egy borítékot egy kulcspár - a biztonság abban a tényben rejlik, hogy a fürt tulajdonosa állított be olyan intézkedéseket, hogy megvédje a személyes kulcsot.
+A lánc létrehozásakor vagy érvényesítéskor észlelt megbízhatósági hibákat a rendszer letiltja az ujjlenyomat-alapú deklarációk esetében, kivéve a lejárt tanúsítványokat – Noha az adott esethez a céltartalékok is léteznek. A következőhöz kapcsolódó hibák: ismeretlen vagy offline állapotú, nem megbízható gyökér, érvénytelen kulcshasználat, a részleges lánc nem végzetes hibáknak minősül; Ebben az esetben az, hogy a tanúsítvány csupán egy kulcspár borítékja – a biztonság abban rejlik, hogy a fürt tulajdonosa a helyek területen beállította a titkos kulcs védelmét.
 
-A fürtjegyzék következő részlete példázza az ujjlenyomat-alapú érvényesítési szabályok ilyen készletét:
+A fürt jegyzékfájljának következő részlete az ujjlenyomat-alapú érvényesítési szabályok egy részét példázza:
 
 ```xml
 <Section Name="Security">
@@ -77,25 +77,25 @@ A fürtjegyzék következő részlete példázza az ujjlenyomat-alapú érvénye
 </Section>
 ```
 
-A fenti bejegyzések mindegyike egy adott identitásra hivatkozik, ahogy azt korábban leírtuk; minden bejegyzés lehetővé teszi több érték megadását is, vesszővel tagolt karakterlánclistaként. Ebben a példában a bejövő hitelesítő adatok sikeres érvényesítése után az SHA-1 ujjlenyomatú tanúsítvány előadója d5ec... 4264" kapja meg az "admin" szerepet; ezzel szemben, a hívó hitelesítése a tanúsítvány "7c8f ... 01b0" kap egy "felhasználói" szerepkört, amely elsősorban írásvédett műveletekre korlátozódik. Egy bejövő hívó, aki egy olyan tanúsítványt mutat be, amelynek ujjlenyomata vagy "abcd... 1234" vagy "ef01... 5678' a fürt társcsomópontjaként fogadható el. Végül a fürt felügyeleti végpontjához csatlakozó ügyfél a kiszolgálótanúsítvány ujjlenyomatát "ef01... 5678'. 
+A fenti bejegyzések mindegyike egy adott identitásra hivatkozik, a korábban leírtak szerint. az egyes bejegyzések több érték megadását is lehetővé teszik a karakterláncok vesszővel tagolt listájaként. Ebben a példában a beérkező hitelesítő adatok sikeres ellenőrzése után az SHA-1 ujjlenyomattal rendelkező tanúsítvány előadója 5ec... 4264 "a admin' szerepkört kapja meg; Ezzel szemben a hívó a következő tanúsítvánnyal hitelesíti a tanúsítványt: 7c8f... a 01b0 "felhasználói" szerepkört kap, amely kizárólag olvasási műveletekre korlátozódik. Egy bejövő hívó, amely olyan tanúsítványt mutat be, amelynek ujjlenyomata az "ABCD... 1234 "vagy" ef01... 5678 "a fürtben található társ-csomópontként lesz elfogadva. Végül pedig a fürt felügyeleti végpontját összekötő ügyfél a kiszolgálói tanúsítvány ujjlenyomatát a következőre fogja várni: "ef01... 5678 ". 
 
-Mint korábban említettük, a Service Fabric nem rendelkezik a lejárt tanúsítványok elfogadásáról; Ennek az az oka, hogy a tanúsítványok élettartama korlátozott, és ha az ujjlenyomat (amely egy adott tanúsítványpéldányra hivatkozik) deklarálva, a tanúsítvány lejáratának engedélyezése vagy a fürthöz való csatlakozás sikertelenségét, vagy a fürt teljes összeomlását eredményezi. Ez túl könnyű elfelejteni, vagy figyelmen kívül hagyni forgó ujjlenyomat-rögzített tanúsítvány, és sajnos a hasznosítás egy ilyen helyzet nehéz.
+Ahogy korábban említettük, Service Fabric a lejárt tanúsítványok fogadására vonatkozó rendelkezéseket tesz. Ennek az az oka, hogy a tanúsítványok korlátozott élettartammal rendelkeznek, és ha az ujjlenyomat (amely egy adott tanúsítvány-példányra hivatkozik) alapján van deklarálva, a tanúsítvány lejáratának engedélyezése a fürthöz való csatlakozás vagy a fürt egy megfelelő összeomlása miatt sikertelen lesz. Az ujjlenyomattal rögzített tanúsítvány elforgatása vagy mellőzése túl egyszerű, és sajnos az ilyen helyzetből való helyreállítás nehéz.
 
-E célból a fürt tulajdonosa kifejezetten kijelentheti, hogy az ujjlenyomattal bejelentett, önaláírt tanúsítványok at érvényesnek kell tekinteni, az alábbiak szerint:
+Ebből a célból a fürt tulajdonosa explicit módon meghatározhatja, hogy az ujjlenyomattal deklarált önaláírt tanúsítványok érvényesnek minősülnek-e, az alábbiak szerint:
 
 ```xml
   <Section Name="Security">
     <Parameter Name="AcceptExpiredPinnedClusterCertificate" Value="true" />
   </Section>
 ```
-Ez a viselkedés nem terjed ki a hitelesítésszolgáltató által kiállított tanúsítványokra; Ha ez a helyzet, a visszavont, ismerten feltört lejárt tanúsítvány "érvényessé" válhat, amint az már nem szerepel a hitelesítésszolgáltató tanúsítvány-visszavonási listáján, és így biztonsági kockázatot jelent. Az önaláírt tanúsítványok esetében a fürt tulajdonosa az egyetlen olyan fél, aki felelős a tanúsítvány titkos kulcsának védelméért, ami nem áll fenn a hitelesítésszolgáltató által kiállított tanúsítványok esetében – előfordulhat, hogy a fürt tulajdonosa nem tudja, hogyan és mikor deklarálták a tanúsítványukat.
+Ez a viselkedés nem terjed ki a CA által kiállított tanúsítványokra; Ebben az esetben egy visszavont, ismert – sérült lejárt tanúsítvány "érvényes" lehet, amint a HITELESÍTÉSSZOLGÁLTATÓ visszavont tanúsítványok listájában már nem szerepel, és így biztonsági kockázatot jelent. Önaláírt tanúsítványokkal a fürt tulajdonosa az egyetlen, a tanúsítvány titkos kulcsának védelméért felelős fél, amely nem a CA által kiállított tanúsítványok esetében fordul elő – a fürt tulajdonosa nem tudhatja, hogy a tanúsítványa hogyan vagy mikor lett bejelentve.
 
-#### <a name="common-name-based-certificate-validation-declarations"></a>Közös névalapú tanúsítvány-érvényesítési nyilatkozatok
-A közös névalapú deklarációk a következő formák egyikét öltik:
+#### <a name="common-name-based-certificate-validation-declarations"></a>Köznapi név-alapú tanúsítvány-ellenőrzési deklarációk
+A köznapi név alapú deklarációk a következő formák egyikét vehetik igénybe:
 - tulajdonos köznapi neve (csak)
-- téma köznapi neve a kibocsátó rögzítésével
+- tulajdonosi rögzítéssel rendelkező köznapi név
 
-Először is vegyünk egy részletet egy fürtjegyzékből, amely mindkét deklarációs stílust példázza:
+Először vegyünk fel egy részletet egy exemplifying a fürt jegyzékfájljában:
 ```xml
     <Section Name="Security/ServerX509Names">
       <Parameter Name="server.demo.system.servicefabric.azure-int" Value="" />
@@ -104,18 +104,18 @@ Először is vegyünk egy részletet egy fürtjegyzékből, amely mindkét dekla
       <Parameter Name="cluster.demo.system.servicefabric.azure-int" Value="1b45...844d,d7fe...26c8,3ac7...6960,96ea...fb5e" />
     </Section>
 ```
-A deklarációk a kiszolgálóra és a fürtidentitásra vonatkoznak; vegye figyelembe, hogy a KN-alapú deklarációk saját szakaszokkal rendelkeznek a fürtjegyzékben, amelyek elkülönülnek a "Biztonság" szabványtól. Mindkét nyilatkozatban a "Név" a tanúsítvány megkülönböztető tulajdonosi köznapi nevét, az "Érték" mező pedig a várt kiállítót jelöli, az alábbiak szerint:
+A deklarációk a kiszolgáló és a fürt identitására vonatkoznak; vegye figyelembe, hogy a CN-alapú deklarációk a fürt jegyzékfájljának saját részeivel rendelkeznek, és elkülönítik a standard biztonsági szintet. Mindkét deklarációban a "név" a tanúsítvány megkülönböztető tulajdonos köznapi nevét jelöli, és az "érték" mező a várt kiállítót jelöli, az alábbiak szerint:
 
-- az első esetben a deklaráció kimondja, hogy a kiszolgálói tanúsítvány megkülönböztető tulajdonosának köznapi néveleme várhatóan megegyezik a "server.demo.system.servicefabric.azure-int" karakterlánccal; az üres "Érték" mező azt az elvárást jelzi, hogy a tanúsítványlánc gyökere megbízható azon a csomóponton/számítógépen, ahol a kiszolgálótanúsítványt érvényesítik; Windows rendszerben ez azt jelenti, hogy a tanúsítvány a "Megbízható legfelső szintű hitelesítésszolgáltató" tárolóban telepített tanúsítványok bármelyikéhez képes;
-- a második esetben a nyilatkozat kimondja, hogy a tanúsítvány előadója a fürtben társcsomópontként kerül elfogadásra, ha a tanúsítvány köznapi neve megegyezik a "cluster.demo.system.servicefabric.azure-int" karakterlánccal, *és* a tanúsítvány közvetlen kibocsátójának ujjlenyomata megegyezik az "Érték" mezőben szereplő vesszővel tagolt bejegyzések egyikével. (Ezt a szabálytípust köznyelvben "a kibocsátó rögzítésével közös névnek" nevezik.)
+- az első esetben a deklaráció azt jelzi, hogy a kiszolgálói tanúsítvány megkülönböztető tulajdonosának köznapi név elemének meg kell egyeznie a "Server. demo. System. servicefabric. Azure-int" karakterlánccal. az üres "érték" mező azt jelzi, hogy a tanúsítványlánc gyökerének megbízhatónak kell lennie azon a csomóponton/gépen, amelyen a kiszolgálói tanúsítvány érvényesítve van; Windows rendszeren ez azt jelenti, hogy a tanúsítvány képes a "megbízható legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ" tárolóban telepített összes tanúsítvány összekapcsolására.
+- a második esetben a deklaráció azt jelzi, hogy egy tanúsítvány előadója a fürt egyik társ csomópontja, ha a tanúsítvány köznapi neve megegyezik a "cluster. bemutató. System. servicefabric. Azure-int" karakterláncmal, *és* a tanúsítvány közvetlen kiállítójának ujjlenyomata megegyezik az "érték" mezőben található vesszővel tagolt bejegyzések egyikével. (Ez a Szabálytípus "köznapi név a kiállítói rögzítéssel" néven ismert.)
 
-A tanúsítvány lánca mindkét esetben megépül, és várhatóan hibamentes lesz; ez azt jelenti, hogy a visszavonási hibák, a részleges láncvagy az idő-érvénytelen megbízhatósági hibák végzetesnek minősülnek, és a tanúsítvány érvényesítése sikertelen lesz. A kibocsátók rögzítésével a "nem megbízható legfelső szintű" állapot nem végzetes hibaként jelenik meg; a látszat ellenére ez az érvényesítés szigorúbb formája, mivel lehetővé teszi a fürt tulajdonosának, hogy az engedélyezett/elfogadott kibocsátók készletét a saját PKI-jükre korlátozza.
+A tanúsítvány lánca mindkét esetben felépíthető, és a rendszer a várhatóan hibamentes lesz. Ez azt jelenti, hogy a visszavonási hibák, a részleges lánc vagy az idő – érvénytelen megbízhatósági hibák minősülnek végzetesnek, és a tanúsítvány ellenőrzése sikertelen lesz. A kiállítók rögzítése azt eredményezi, hogy a "nem megbízható legfelső szintű" állapotot nem végzetes hibaként veszi figyelembe. a megjelenések ellenére ez egy szigorúbb ellenőrzési űrlap, mivel lehetővé teszi, hogy a fürt tulajdonosa a saját PKI-re korlátozza a jogosult/elfogadott kiállítók készletét.
 
-A tanúsítványlánc megépítése után a rendszer egy szabványos TLS/SSL-házirend alapján érvényesíti, amelynek a deklarált tulajdonos a távoli neve; a tanúsítvány akkor tekinthető egyezésnek, ha a tulajdonos köznapi neve vagy bármely más alanya megegyezik a fürtjegyzék KN-deklarációjával. Ebben az esetben a helyettesítő karakterek támogatottak, és a karakterlánc egyeztetése nem i.
+A tanúsítványlánc felépítése után a rendszer ellenőrzi, hogy a tanúsítvány egy szabványos TLS/SSL-házirenddel van-e érvényesítve, és a deklarált tulajdonos távoli névvel van-e ellátva. a tanúsítvány akkor minősül megfelelőnek, ha a tulajdonos köznapi neve vagy a tulajdonos alternatív neve megegyezik a fürt jegyzékfájljában található KN-deklarációval. A helyettesítő karakterek ebben az esetben támogatottak, és a karakterláncok egyeztetése a kis-és nagybetűk megkülönböztetése nélkül történik.
 
-(Egyértelművé kell tennünk, hogy a fent leírt sorrend a tanúsítvány által deklarált kulcshasználat minden típusához végrehajtható; ha a tanúsítvány megadja az ügyfélhitelesítési kulcs használatát, a lánc először egy ügyfélszerepkörhöz épül fel és értékelésre kerül. Sikeresség esetén az értékelés befejeződik, és az érvényesítés sikeres. Ha a tanúsítvány nem rendelkezik az ügyfélhitelesítési használattal, vagy az érvényesítés sikertelen, a Service Fabric futásidejű létrehozza és kiértékeli a láncot a kiszolgáló hitelesítéséhez.)
+(Tisztázni kell, hogy a fent ismertetett sorozatot a tanúsítvány által deklarált egyes kulcshasználat típusoknál lehet végrehajtani; Ha a tanúsítvány megadja az ügyfél-hitelesítési kulcs használatát, a láncot először egy ügyfél-szerepkörhöz kell felépíteni és kiértékelni. Siker esetén a kiértékelés befejeződik, és az érvényesítés sikeres. Ha a tanúsítvány nem rendelkezik ügyfél-hitelesítéssel, vagy az ellenőrzés nem sikerült, a Service Fabric futtatókörnyezet létrehozza és kiértékeli a kiszolgáló hitelesítésének láncát.)
 
-A példa befejezéséhez a következő részlet az ügyféltanúsítványok köznapi névvel történő deklarálását mutatja be:
+A példa elvégzéséhez az alábbi részlet szemlélteti az Ügyféltanúsítványok köznapi név szerinti deklarálása:
 ```xml
     <Section Name="Security/AdminClientX509Names">
       <Parameter Name="admin.demo.client.servicefabric.azure-int" Value="1b45...844d,d7fe...26c8,3ac7...6960,96ea...fb5e" />
@@ -125,26 +125,26 @@ A példa befejezéséhez a következő részlet az ügyféltanúsítványok köz
     </Section>
 ```
 
-A fenti deklarációk megfelelnek az admin és a felhasználói identitások, illetve; az ilyen módon deklarált tanúsítványok érvényesítése pontosan megegyezik a fürt- és kiszolgálótanúsítványok előző példáiban leírtakkal.
+A fenti deklarációk megfelelnek a rendszergazda és a felhasználói identitásnak; az ily módon deklarált tanúsítványok érvényesítése pontosan az előző példákkal, a fürt és a kiszolgáló tanúsítványainak leírásával történik.
 
 > [!NOTE]
-> A gyakori névalapú deklarációk célja a fürttanúsítványok elforgatásának és általában kezelésének egyszerűsítése. A fürt folyamatos rendelkezésre állásának és biztonságának biztosítása érdekében azonban ajánlott betartani az alábbi ajánlásokat:
-  * inkább kibocsátó pinning támaszkodva megbízható gyökerek
-  * kerülje a különböző pki-k kibocsátóinak keverését
-  * biztosítja, hogy minden várható kibocsátó szerepel a tanúsítványnyilatkozatban; nem megfelelő kibocsátó sikertelen érvényesítést eredményez
-  * győződjön meg arról, hogy a PKI tanúsítványházirend-végpontjai felderíthetők, elérhetők és hozzáférhetők – ez azt jelenti, hogy az AIA, a CRL vagy az OCSP végpontok a levéltanúsítványon vannak deklarálva, és hogy azok hozzáférhetők legyenek, hogy a tanúsítványlánc-építés befejeződhessen.
+> Az általános név-alapú deklarációk célja, hogy leegyszerűsítse az elforgatást, és általánosságban a fürtözött tanúsítványok kezelését. A fürt folyamatos rendelkezésre állásának és biztonságának biztosításához azonban ajánlott a következő javaslatok betartása:
+  * a kiállítói rögzítés előnyben részesített a megbízható gyökerekre való támaszkodás esetén
+  * a kibocsátók különböző Erdőmbe való keveredésének elkerülése
+  * Győződjön meg arról, hogy az összes várt kiállító szerepel a tanúsítvány deklarációjában. egy nem egyező kiállító hibát eredményez, ha az érvényesítés sikertelen lesz.
+  * Győződjön meg arról, hogy a PKI tanúsítvány-házirend-végpontok felderíthetők, elérhetők és hozzáférhetők – ez azt jelenti, hogy az AIA, a CRL vagy az OCSP-végpontok deklarálva vannak a levél tanúsítványán, és elérhetők, hogy a tanúsítványlánc kiépítése befejeződjön.
 
-Az X.509-es tanúsítványokkal védett fürtben lévő kapcsolatra vonatkozó kérelem fogadása után a Service Fabric futásidejű a fürt biztonsági beállításait fogja használni a távoli fél fent leírt hitelesítő adatainak ellenőrzéséhez; ha sikeres, a hívó/távoli fél hitelesítve lesz. Ha a hitelesítő adatok több érvényesítési szabálynak felelnek meg, a futásidejű a hívónak az egyező szabályok bármelyikének legmagasabb szintű jogosultsággal rendelkező szerepkörét adja meg. 
+A Service Fabric Runtime az X. 509 tanúsítványokkal védett fürthöz való csatlakozásra vonatkozó kérelem fogadása mellett a fürt biztonsági beállításait fogja használni a távoli fél hitelesítő adatainak ellenőrzéséhez a fent leírtak szerint. Ha ez sikeres, a hívó/távoli fél hitelesítésnek minősül. Ha a hitelesítő adat több érvényesítési szabálynak is megfelel, a futtatókörnyezet megadja a hívónak a megfeleltetett szabályok legmagasabb jogosultsági szintű szerepkörét. 
 
-### <a name="presentation-rules"></a>Bemutatószabályai
-Az előző szakasz leírja, hogyan működik a hitelesítés egy tanúsítványáltal védett fürtben; ez a szakasz bemutatja, hogy maga a Service Fabric futásidejű hogyan deríti fel és tölti be a fürtön belül i kommunikációhoz használt tanúsítványokat; ezeket "prezentációs" szabályoknak nevezzük.
+### <a name="presentation-rules"></a>Megjelenítési szabályok
+Az előző szakasz azt ismerteti, hogyan működik a hitelesítés a tanúsítványokkal védett fürtben; Ez a szakasz azt ismerteti, hogy a Service Fabric futtatókörnyezet hogyan felfedezzék és betölti a fürtön belüli kommunikációhoz használt tanúsítványokat. ezeket a "bemutató" szabályokat nevezzük.
 
-Az érvényességi szabályokhoz hasonlóan a megjelenítési szabályok is megadnak egy szerepkört és a kapcsolódó hitelesítő adatok deklarációját, amelyet ujjlenyomat vagy közös név fejez ki. Az érvényesítési szabályokkal ellentétben a közös névalapú nyilatkozatok nem tartalmaznak rendelkezéseket a kibocsátó rögzítésére vonatkozóan; ez nagyobb rugalmasságot és jobb teljesítményt tesz lehetővé. A megjelenítési szabályok a fürtjegyzék "NodeType" szakaszában vannak deklarálva minden egyes csomóponttípusra; a beállítások fel vannak osztva a fürt Biztonsági szakaszaiból, hogy minden csomóponttípus teljes konfigurációja egyetlen szakaszban legyen. Az Azure Service Fabric-fürtök, a csomópont típustanúsítvány-deklarációk alapértelmezett a megfelelő beállításokat a fürt definíciójának Biztonság szakaszában.
+Az érvényesítési szabályokhoz hasonlóan a megjelenítési szabályok határozzák meg a szerepkört és a kapcsolódó hitelesítő adatokat, amelyek ujjlenyomat vagy köznapi név alapján vannak megadva. Az érvényesítési szabályoktól eltérően a köznapi név-alapú deklarációk nem rendelkeznek a kiállítói rögzítésre vonatkozó rendelkezésekkel; Ez nagyobb rugalmasságot és jobb teljesítményt tesz lehetővé. A megjelenítési szabályok deklarálva vannak a fürt jegyzékfájljának "NodeType" szakaszában, minden egyes különböző csomópont-típus esetében. a beállítások a fürt biztonsági szakaszaiból vannak felosztva, így az egyes csomópont-típusok teljes konfigurációját egyetlen szakaszban lehet megtenni. Az Azure Service Fabric-fürtökben a csomópont típusú tanúsítvány deklarációi alapértelmezés szerint a fürt definíciójának biztonság szakaszában a megfelelő beállításokra vonatkoznak.
 
-#### <a name="thumbprint-based-certificate-presentation-declarations"></a>Ujjlenyomat-alapú tanúsítványbemutatási deklarációk
-A hogy korábban leírták, a Service Fabric futásidejű különbséget tesz a fürt más csomópontjainak társaként és a fürtkezelési műveletek kiszolgálójaként betöltött szerepe között. Elvileg ezek a beállítások jól konfigurálhatók, de a gyakorlatban hajlamosak igazodni. A cikk további részében az egyszerűség kedvéért feltételezzük, hogy a beállítások megegyeznek.
+#### <a name="thumbprint-based-certificate-presentation-declarations"></a>Ujjlenyomat-alapú tanúsítvány-megjelenítési nyilatkozatok
+Az előzőekben leírtaknak megfelelően a Service Fabric futtatókörnyezet megkülönbözteti a szerepkört a fürt más csomópontjainak társának és a fürt felügyeleti műveleteinek a kiszolgálója között. Elvileg ezeket a beállításokat külön lehet konfigurálni, de a gyakorlatban általában össze vannak igazítva. A cikk hátralévő részében feltételezzük, hogy az egyszerűség kedvéért megegyeznek a beállítások.
 
-Nézzük meg a következő részlet egy fürt jegyzékfájl:
+Tegyük fel, hogy a következő részletet vesszük figyelembe a fürt jegyzékfájljában:
 ```xml
   <NodeTypes>
     <NodeType Name="nt1vm">
@@ -156,10 +156,10 @@ Nézzük meg a következő részlet egy fürt jegyzékfájl:
     </NodeType>
   </NodeTypes>
 ```
-A "ClusterCertificate" elem a teljes sémát mutatja, beleértve a választható paramétereket ('X509FindValueSecondary') vagy a megfelelő alapértelmezett paramétereket ("X509StoreName"). a többi nyilatkozat rövidített formanyomtatványt mutat. A fenti fürttanúsítvány-deklaráció kimondja, hogy az "nt1vm" típusú csomópontok biztonsági beállításait a "cc71" tanúsítvánnyal inicializálják. 1984", mint az elsődleges, és a "49e2.. 19d6" bizonyítvány másodlagos; mindkét tanúsítvány várhatóan megtalálható a\'LocalMachine My tanúsítványtárolójában (vagy a Linux egyenértékű elérési út, *var/ lib/sfcerts).*
+A "ClusterCertificate" elem a teljes sémát mutatja be, beleértve a választható paramétereket ("X509FindValueSecondary") vagy a megfelelő alapértékekkel rendelkezőket ("X509StoreName"); a többi deklaráció rövidített űrlapot mutat be. A fürt tanúsítványa a fentiekben kijelenti, hogy a "nt1vm" típusú csomópontok biztonsági beállításai inicializálva lettek a következő tanúsítvánnyal: "cc71.. 1984 "elsődlegesként, a" 49e2... 19d6 "tanúsítványa másodlagosként; mindkét tanúsítványnak szerepelnie kell a LocalMachine\'saját tanúsítványtárolójában (vagy a Linux-megfelelő elérési úton, a *var/lib/sfcerts*).
 
-#### <a name="common-name-based-certificate-presentation-declarations"></a>Közös névalapú tanúsítványbemutatási nyilatkozatok
-A csomóponttípus-tanúsítványok a tulajdonos köznapi neve alapján is deklarálhatók, az alábbiak szerint:
+#### <a name="common-name-based-certificate-presentation-declarations"></a>Köznapi név alapú tanúsítvány-megjelenítési deklarációk
+A csomópont típusú tanúsítványokat a tulajdonos köznapi neve is deklarálhatja, az alábbi példának megfelelően:
 
 ```xml
   <NodeTypes>
@@ -171,134 +171,134 @@ A csomóponttípus-tanúsítványok a tulajdonos köznapi neve alapján is dekla
   </NodeTypes>
 ```
 
-A Deklaráció bármelyik típusa esetén a Service Fabric-csomópont beolvassa a konfigurációt indításkor, megkeresi és betölti a megadott tanúsítványokat, és a NotAfter attribútum csökkenő sorrendjében rendezi őket; a rendszer figyelmen kívül hagyja a lejárt tanúsítványokat, és a lista első eleme lesz a csomópont által megkísérelt Service Fabric-kapcsolat ügyfélhitelesítő adataiként. (A Service Fabric valójában a legtávolabbi lejáró tanúsítványt részesíti előnyben.)
+Bármelyik deklaráció esetében egy Service Fabric csomópont beolvassa a konfigurációt az indításkor, megkeresi és betölti a megadott tanúsítványokat, és rendezi őket csökkenő sorrendben. a lejárt tanúsítványokat a rendszer figyelmen kívül hagyja, és a lista első eleme van kiválasztva az ügyfél hitelesítő adataiként a csomópont által megkísérelt bármely Service Fabric-kapcsolatban. (Ennek hatására Service Fabric a legtávolabbi lejáró tanúsítványt részesíti előnyben.)
 
-Ne feledje, hogy a köznévalapú bemutatódeklarációk esetében a tanúsítvány akkor tekinthető egyezésnek, ha a tulajdonos köznapi neve megegyezik a deklaráció X509FindValueSecondary (vagy X509FindValueSecondary) mezőjével, mint kis- és nagybetűket megkülönböztető, pontos karakterlánc-összehasonlítás. Ez ellentétben áll az érvényességi szabályokkal, amelyek támogatják a helyettesítő karakter egyeztetését, valamint a kis- és nagybetűk megkülönböztetését.  
+Vegye figyelembe, hogy a köznapi név alapú megjelenítési deklarációk esetében a tanúsítvány akkor minősül megfelelőnek, ha a tulajdonos köznapi neve megkülönbözteti a kis-és nagybetűket megkülönböztető X509FindValue (vagy X509FindValueSecondary). Ez ellentétben áll az érvényesítési szabályokkal, amely támogatja a helyettesítő karakterek egyeztetését, valamint a kis-és nagybetűk megkülönböztetését.  
 
-### <a name="miscellaneous-certificate-configuration-settings"></a>Egyéb tanúsítványkonfigurációs beállítások
-Korábban már említettük, hogy a Service Fabric-fürt biztonsági beállításai lehetővé teszik a hitelesítési kód viselkedésének finom módosítását is. Míg a [Service Fabric fürtbeállításairól](service-fabric-cluster-fabric-settings.md) szóló cikk a beállítások átfogó és legfrissebb listáját jelöli, a tanúsítványalapú hitelesítés néhány biztonsági beállítás jelentésének jelentésére kibővítjük a teljes feljelentést. Minden beállításhoz ismertetjük a szándékot, az alapértelmezett értéket/viselkedést, a hitelesítés befolyásolásának és az elfogadható értékeknek a módját.
+### <a name="miscellaneous-certificate-configuration-settings"></a>Egyéb tanúsítvány-konfigurációs beállítások
+Korábban már említettük, hogy egy Service Fabric-fürt biztonsági beállításai is lehetővé teszik a hitelesítési kód viselkedésének finom megváltoztatását. A [Service Fabric fürtkonfiguráció](service-fabric-cluster-fabric-settings.md) című cikk a beállítások átfogó és legnaprakészebb listáját jeleníti meg, és az itt látható néhány biztonsági beállítás kiválasztásával bővítjük a tanúsítvány alapú hitelesítés teljes elérhetővé tételét. Minden beállításhoz meg fogjuk magyarázni a szándékot, az alapértelmezett értéket/viselkedést, a hitelesítést, valamint az elfogadható értékeket.
 
-Mint említettük, a tanúsítvány érvényesítése mindig magában foglalja a tanúsítvány láncának kiépítését és kiértékelését. A hitelesítésszolgáltató által kiadott tanúsítványok esetében ez a látszólag egyszerű operációsrendszer-API-hívás általában több kimenő hívást von maga után a kiállító PKI különböző végpontjaihoz, a válaszok gyorsítótárazását és így tovább. A tanúsítvány-érvényesítési hívások gyakorisága miatt a Service Fabric-fürtben a PKI végpontjaiban felmerülő problémák a fürt korlátozott rendelkezésre állását vagy végleges lebontását eredményezhetik. Bár a kimenő hívásokat nem lehet lenyomni (erről a gyakori kérdések ről bővebben lásd alább), a következő beállítások kal elfedhetők a visszavont tanúsítványok listájának sikertelen hívásai által okozott érvényesítési hibák.
+Ahogy említettük, a tanúsítvány ellenőrzése mindig magában foglalja a tanúsítvány láncának kiépítése és kiértékelése. A CA által kiállított tanúsítványok esetében ez a látszólag egyszerű operációsrendszer-API-hívás általában több kimenő hívást eredményez a nyilvános kulcsokra épülő PKI különböző végpontjai, a válaszok gyorsítótárazása és így tovább. A tanúsítvány-ellenőrzési hívások gyakorisága Service Fabric-fürtben a PKI-végpontok bármely problémája csökkentheti a fürt rendelkezésre állását, vagy lerövidítheti a lebontást. Amíg a kimenő hívásokat nem lehet letiltani (lásd alább a gyakori kérdések című szakaszt), a következő beállításokkal elvégezhető a CRL-hívások meghibásodása által okozott érvényesítési hibák maszkolása.
 
-  * CrlCheckingFlag - a "Biztonság" szakaszban a karakterlánc ot UINT-re konvertálja. Ennek a beállításnak az értékét a Service Fabric a tanúsítványlánc állapothibáinak maszkolására használja a láncépítés viselkedésének módosításával; a Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) hívás "dwFlags" paraméterként kerül átadásra, és a függvény által elfogadott jelzők bármely érvényes kombinációjára állítható be. A 0 érték kényszeríti a Service Fabric futásidejű figyelmen kívül hagyja a megbízhatósági állapot hibákat – ez nem ajánlott, mivel annak használata jelentős biztonsági kitettséget jelentene. Az alapértelmezett érték: 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag – a "biztonság" szakaszban a sztring UINT konvertálva. Ennek a beállításnak az értékét a Service Fabric a tanúsítványlánc állapotával kapcsolatos hibák kiszűrésére használja a lánc kiépítése viselkedésének megváltoztatásával; a rendszer átadja a Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) hívásának a "dwFlags" paraméternek, és a függvény által elfogadott jelzők érvényes kombinációja lehet. A 0 érték kikényszeríti a Service Fabric futtatókörnyezetet, hogy figyelmen kívül hagyja a megbízhatósági állapottal kapcsolatos hibákat – ez nem ajánlott, mivel a használata jelentős biztonsági kockázatot jelenthet. Az alapértelmezett érték a 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
-  Mikor kell használni: a helyi teszteléshez, önaláírt tanúsítványok vagy fejlesztői tanúsítványok, amelyek nem teljesen formázott/ nem rendelkezik a megfelelő nyilvános kulcs ú infrastruktúra a tanúsítványok támogatásához. A pki-k közötti átmenet során a léghiántú környezetekben is használható.
+  Mikor érdemes használni: helyi teszteléshez olyan önaláírt tanúsítványokkal vagy fejlesztői tanúsítványokkal, amelyek nincsenek teljesen kialakítva/nem rendelkeznek megfelelő nyilvános kulcsokra épülő infrastruktúrával a tanúsítványok támogatásához. A Erdőmbe közötti váltás során a gapped környezetekben is használhatja a megoldást.
 
-  Hogyan kell használni: egy példát, amely kényszeríti a visszavonás ellenőrzése eléréséhez csak a gyorsítótárazott URL-eket. Feltételezve:
+  Használat: egy példa arra, hogy a visszavonási vizsgálat csak a gyorsítótárazott URL-címek elérését kényszeríti. Feltételezve
   ```C++
   #define CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY         0x80000000
   ```
-  akkor a fürtjegyzékben lévő deklaráció a következővé válik:
+  Ezután a fürt jegyzékfájljának deklarációja a következőket eredményezi:
   ```xml
     <Section Name="Security">
       <Parameter Name="CrlCheckingFlag" Value="0x80000000" />
     </Section>
   ```
 
-  * IgnoreCrlOfflineError - a "Biztonság" szakaszban a logikai érték alapértelmezett értéke "false". A "visszavonás offline" láncépítési hibaállapot (vagy egy későbbi láncházirend-érvényesítési hiba állapot) letiltására szolgáló parancsikont jelöli.
+  * IgnoreCrlOfflineError – a "biztonság" szakaszban a logikai érték a "false" alapértelmezett értéke. A "visszavont kapcsolat nélküli" lánc kiépítési hibájának állapota (vagy egy további lánc házirend-érvényesítési hiba állapota) letiltására szolgáló parancsikont jelöl.
 
-  Mikor kell használni: helyi tesztelés, vagy olyan fejlesztői tanúsítványokkal, amelyeket nem támogat a megfelelő PKI. A léghiántor környezetben vagy a PKI-ről ismert, hogy nem érhető el.
+  Mikor kell használni: helyi tesztelés, vagy a megfelelő PKI által nem támogatott fejlesztői tanúsítványokkal. Gapped-környezetekben, vagy ha a nyilvános kulcsokra épülő infrastruktúra nem érhető el, a megoldást használja.
 
-  Hogyan kell használni:
+  Használat:
   ```xml
     <Section Name="Security">
       <Parameter Name="IgnoreCrlOfflineError" Value="true" />
     </Section>
   ```
 
-  Egyéb említésre méltó beállítások (mind ezt a "Biztonság" részben találhatóak):
-  * AcceptExpiredPinnedClusterCertificate – az ujjlenyomat-alapú tanúsítványellenőrzéssel foglalkozó szakaszban tárgyalt; lehetővé teszi a lejárt, önaláírt fürttanúsítványok elfogadását. 
-  * CertificateExpirySafetyMargin - interval, percekkel a tanúsítvány NotAfter időbélyege előtt kifejezve, és amely alatt a tanúsítvány lejárati kockázatnak minősül. A Service Fabric figyeli a fürttanúsítvány(oka)t, és rendszeres időközönként állapotjelentéseket bocsát ki a fennmaradó rendelkezésre állásukról. A "biztonsági" intervallumon belül ezek az állapotjelentések "figyelmeztető" állapotra emelkednek. Az alapértelmezett érték 30 nap.
-  * CertificateHealthReportingInterval - szabályozza a fürttanúsítványok hátralévő időérvényességére vonatkozó állapotjelentések gyakoriságát. A jelentések et csak egyszer bocsátjuk ki ebben az intervallumban. Az értéket másodpercben fejezik ki, az alapértelmezett érték 8 óra.
-  * EnforcePrevalidationOnSecurityChanges – logikai érték, szabályozza a fürtfrissítés viselkedését a biztonsági beállítások változásainak észlelésekor. Ha a beállítás "true", a fürt frissítése megpróbálja biztosítani, hogy legalább egy tanúsítvány megfelel a bemutató szabályok bármelyikének képessé teszi a megfelelő érvényességi szabályt. Az ellenőrzés megtörténik, mielőtt az új beállítások bármely csomópontra vonatkozna, de csak a Fürtkezelő szolgáltatás elsődleges replikáját üzemeltető csomóponton fut a frissítés megkezdésekor. Mivel az írás, a beállítás alapértelmezett "hamis", és lesz beállítva, hogy "igaz" az új Azure Service Fabric-fürtök egy futásidejű verzió kezdődő 7.1.
+  Egyéb jelentős beállítások (az összes "biztonság" szakaszban):
+  * AcceptExpiredPinnedClusterCertificate – az ujjlenyomat-alapú tanúsítvány ellenőrzéséhez dedikált szakaszban tárgyalva; lehetővé teszi a lejárt önaláírt tanúsítványok fogadását. 
+  * CertificateExpirySafetyMargin – intervallum, percben kifejezve a tanúsítvány még nem megfelelő időbélyegzője előtt, és amely alatt a tanúsítvány a lejárat kockázatának minősül. Service Fabric figyeli a fürtözött tanúsítvány (oka) t, és rendszeres időközönként kibocsátja az állapotjelentést a fennmaradó rendelkezésre állásuk alapján. A "biztonsági" intervallumban ezek az állapot-jelentések a "figyelmeztetés" állapotra vannak felemelve. Az alapértelmezett érték 30 nap.
+  * CertificateHealthReportingInterval – a fürtcsomópontok hátralévő időtartamára vonatkozó állapotjelentés gyakoriságának szabályozása. A jelentések ezen az intervallumon belül csak egyszer lesznek kibocsátva. Az érték másodpercben kifejezve, alapértelmezett értéke pedig 8 óra.
+  * EnforcePrevalidationOnSecurityChanges – Boolean (logikai) – a fürt frissítésének viselkedését szabályozza a biztonsági beállítások változásainak észlelése után. Ha a értéke "true" (igaz), a fürt frissítése megkísérli annak biztosítását, hogy legalább az egyik megjelenítési szabálynak megfelelő tanúsítvány is átadhat egy megfelelő érvényesítési szabályt. Az előérvényesítést az új beállítások bármely csomópontra való alkalmazása előtt hajtja végre a rendszer, de a frissítés megkezdésének időpontjában csak a Fürtfelügyelő szolgáltatás elsődleges replikáját futtató csomóponton fut. Ebben az írásban a beállítás alapértelmezett értéke "false", és az új Azure Service Fabric-fürtök esetében "true" értékre lesz állítva, amelynek futtatókörnyezet-verziója 7,1-től kezdődő.
  
-### <a name="end-to-end-scenario-examples"></a>Végponttól végpontig forgatókönyv (példák)
-Átnéztük a prezentációs szabályokat, az érvényesítési szabályokat és a jelzők finomhangolását, de hogyan működik ez együtt? Ebben a szakaszban két végponttól végpontig tartó példán dolgozunk, amelyek bemutatják, hogyan használhatók ki a biztonsági beállítások a biztonságos fürtfrissítésekhez. Vegye figyelembe, hogy ez nem célja, hogy egy átfogó disszertáció a megfelelő tanúsítványkezelés a Service Fabric, keressen egy társ cikket a témában.
+### <a name="end-to-end-scenario-examples"></a>Végpontok közötti forgatókönyv (példák)
+Megvizsgáltuk a megjelenítési szabályokat, az érvényesítési szabályokat és a csípés jelzőket, de ez hogyan működik együtt? Ebben a szakaszban két végpontok közötti példát dolgozunk fel, amelyek azt mutatják be, hogyan használhatók a biztonsági beállítások a biztonságos fürtök frissítései számára. Vegye figyelembe, hogy ez nem a Service Fabric megfelelő tanúsítványainak teljes körű disszertációja, hanem a témakörben talál egy kiegészítő cikket.
 
-A bemutatási és érvényesítési szabályok szétválasztása felveti azt a nyilvánvaló kérdést (vagy aggályt), hogy eltérhetnek-e egymástól, és milyen következményekkel járna. Valóban lehetséges, hogy egy csomópont hitelesítési tanúsítvány kiválasztása nem felel meg egy másik csomópont érvényességi szabályainak. Valójában ez az eltérés a hitelesítéssel kapcsolatos incidensek elsődleges oka. Ugyanakkor ezeknek a szabályoknak a elkülönítése lehetővé teszi, hogy a fürt továbbra is működne a frissítés során, amely módosítja a fürt biztonsági beállításait. Vegye figyelembe, hogy az érvényesítési szabályok első lépéseként történő bővítésével a fürt összes csomópontja az új beállításokhoz fog közeledni, miközben továbbra is használja az aktuális hitelesítő adatokat. 
+A bemutatási és érvényesítési szabályok elkülönítése az egyértelmű kérdés (vagy aggodalom), hogy eltérhetnek-e, és milyen következményekkel járhat. Valójában lehetséges, hogy a csomópontok hitelesítési tanúsítványának kiválasztása nem felel meg egy másik csomópont érvényesítési szabályainak. Valójában ez az eltérés a hitelesítéssel kapcsolatos incidensek elsődleges oka. Ugyanakkor a szabályok elkülönítése lehetővé teszi, hogy a fürt a frissítés során továbbra is működőképes maradjon, ami megváltoztatja a fürt biztonsági beállításait. Gondolja át, hogy az első lépésként az érvényesítési szabályok első lépéseként kibővítve az összes fürt csomópontjai az új beállításokon lesznek átszervezve, miközben továbbra is az aktuális hitelesítő adatokat használják. 
 
-Emlékezzünk vissza, hogy egy Service Fabric-fürtben a frissítés (legfeljebb 5) "frissítési tartományok" vagy ud-k között halad előre. Csak az aktuális UD-ban lévő csomópontok frissülnek/módosulnak egy adott időpontban, és a frissítés csak akkor folytatódik a következő UD-re, ha a fürt rendelkezésre állása ezt lehetővé teszi. (További részletekért tekintse meg a [Service Fabric-fürt frissítéseit](service-fabric-cluster-upgrade.md) és az ugyanak a témával kapcsolatos egyéb cikkeket.) A tanúsítvány-biztonsági módosítások különösen kockázatosak, mivel elkülöníthetik a csomópontokat a fürttől, vagy a fürtet a kvórumveszteség szélén hagyhatják.
+Ne felejtse el, hogy egy Service Fabric-fürtön a frissítés a (legfeljebb 5) "frissítési tartományon vagy frissítési keresztül halad át. A rendszer csak az aktuális UD csomópontokat frissíti/módosítja egy adott időpontban, és a frissítés csak akkor fog folytatódni a következő UD, ha a fürt rendelkezésre állása lehetővé teszi. (További részletekért tekintse meg [Service Fabric fürt frissítéseit](service-fabric-cluster-upgrade.md) és a további cikkeket.) A tanúsítvány/biztonsági változások különösen kockázatos, mivel elkülönítik a csomópontokat a fürtből, vagy meghagyják a fürtöt a kvórum elvesztésének szélén.
 
-A következő jelöléssel fogjuk leírni a csomópont biztonsági beállításait:
+A csomópont biztonsági beállításainak leírásához a következő jelölést fogjuk használni:
 
-Nk: {P:{TP=A}, V:{TP=A}}, ahol:
-  - Az "Nk" egy csomópontot jelöl a *k* frissítési tartományban
-  - A "P" a csomópont jelenlegi megjelenítési szabályait jelöli (feltéve, hogy csak fürttanúsítványokra hivatkozunk); 
-  - A "V" a csomópont aktuális érvényességi szabályait jelöli (csak fürttanúsítványesetén)
-  - A "TP=A" egy ujjlenyomat-alapú deklarációt (TP) jelöl, az "A" pedig a tanúsítvány ujjlenyomata
-  - A "CN=B" egy közös névalapú nyilatkozatot (CN) jelöl, amelynek a "B" a tanúsítvány tulajdonosának köznapi neve 
+NK: {P:{TP = A}, V:{TP = A}}, ahol:
+  - Az "nk" a frissítési tartomány ( *k* ) csomópontját jelöli.
+  - A "P" a csomópont aktuális megjelenítési szabályait jelöli (feltéve, hogy csak a fürtözött tanúsítványokra hivatkozunk); 
+  - A "V" a csomópont aktuális ellenőrzési szabályait jelöli (csak a fürt tanúsítványa).
+  - A "TP = A" ujjlenyomat-alapú deklarációt (TP) jelöl, amelynek "A" Tanúsítvány-ujjlenyomata
+  - A "CN = B" nevű köznapi név-alapú deklaráció (CN) a tanúsítvány tulajdonos köznapi nevével rendelkező "B" névvel van ellátva. 
 
-#### <a name="rotating-a-cluster-certificate-declared-by-thumbprint"></a>Az ujjlenyomattal deklarált fürttanúsítvány elforgatása
-A következő sorozat azt ismerteti, hogy a kétlépcsős frissítés hogyan használható egy ujjlenyomattal deklarált másodlagos fürttanúsítvány biztonságos bevezetésére; az első szakasz bevezeti az új tanúsítványnyilatkozatot az érvényesítési szabályokba, a második szakasz pedig bevezeti azt a bemutatási szabályokba:
-  - kezdeti állapot: N0 = {P:{TP=A}, V:{TP=A}}, ... Nk = {P:{TP=A}, V:{TP=A}} - a fürt inverészett, minden csomópont közös konfigurációval rendelkezik
-  - 0. frissítési tartomány befejezésekor: N0 = {P:{TP=A}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A}, V:{TP=A}} - az UD0 csomópontjai bemutatják az A tanúsítványt, és elfogadják az A vagy B tanúsítványokat; az összes többi csomópont, amely csak az A bizonyítványt fogadja el és fogadja el
-  - az utolsó frissítési tartomány befejezésekor: N0 = {P:{TP=A}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A}, V:{TP=A, TP=B}} – minden olyan csomópont, amely az A tanúsítványt mutatja, minden csomópont elfogadná az A vagy a B tanúsítványt
+#### <a name="rotating-a-cluster-certificate-declared-by-thumbprint"></a>Az ujjlenyomattal deklarált fürtözött tanúsítvány elforgatása
+A következő sorozat azt ismerteti, hogyan használható a kétfázisú frissítés az ujjlenyomattal deklarált másodlagos fürt biztonságos bevezetéséhez. az első fázisban be van vezetve az új tanúsítvány deklarációja az ellenőrzési szabályokban, a második fázis pedig a megjelenítési szabályokban mutatja be a következőket:
+  - kezdeti állapot: N0 = {P:{TP = A}, V:{TP = A}},... NK = {P:{TP = A}, V:{TP = A}} – a fürt nyugalmi állapotban van, és minden csomópont közös konfigurációt oszt meg
+  - A frissítési tartomány (0) befejezése után: N0 = {P:{TP = A}, V:{TP = A, TP = B}},... NK = {P:{TP = A}, V:{TP = A}} – a UD0 csomópontjai bemutatják az A tanúsítványt, és elfogadják A vagy B tanúsítványokat; minden más csomópont jelen van, és csak A tanúsítványt fogadja el
+  - a legutóbbi frissítési tartomány befejezése után: N0 = {P:{TP = A}, V:{TP = A, TP = B}},... NK = {P:{TP = A}, V:{TP = A, TP = B}} – minden csomópont bemutat egy tanúsítványt, minden csomópont fogadja az A vagy A B tanúsítványt
       
-Ezen a ponton a fürt ismét egyensúlyban van, és a frissítés/a biztonsági beállítások módosítása második fázisa megkezdődhet:
-  - 0 frissítési tartomány befejezésekor: N0 = {P:{TP=A, TP=B}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A}, V:{TP=A, TP=B}} – az UD0 csomópontjai megkezdik a B bemutatót, amelyet a fürt bármely más csomópontja elfogad.
-  - az utolsó frissítési tartomány befejezésekor: N0 = {P:{TP=A, TP=B}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A, TP=B}, V:{TP=A, TP=B}} – minden csomópont áttért a B tanúsítvány bemutatására.
+Ekkor a fürt ismét egyensúlyban van, és a frissítés/módosítás biztonsági beállításainak második fázisa is megkezdődhet:
+  - a frissítési tartomány (0) befejezése után: N0 = {P:{TP = A, TP = B}, V:{TP = A, TP = B}},... NK = {P:{TP = A}, V:{TP = A, TP = B}} – a UD0 csomópontjai elkezdik a B bemutatót, amelyet a fürt bármely más csomópontja elfogad.
+  - a legutóbbi frissítési tartomány befejezése után: N0 = {P:{TP = A, TP = B}, V:{TP = A, TP = B}},... NK = {P:{TP = A, TP = B}, V:{TP = A, TP = B}} – az összes csomópont átváltott a B tanúsítvány bemutatására. az A tanúsítvány mostantól kivonható/eltávolítható a fürt definíciójában egy későbbi verziófrissítéssel.
 
-#### <a name="converting-a-cluster-from-thumbprint--to-common-name-based-certificate-declarations"></a>Fürt átalakítása ujjlenyomatból köznapi névalapú tanúsítványdeklarációkká
-Hasonlóképpen, a tanúsítványdeklaráció típusának módosítása (ujjlenyomatról közönséges névre) ugyanazt a mintát fogja követni, mint fent. Vegye figyelembe, hogy az érvényességi szabályok lehetővé teszik egy adott szerepkör tanúsítványainak deklarálását ujjlenyomattal és közös névvel ugyanabban a fürtdefinícióban. Ezzel szemben a bemutatási szabályok csak egy nyilatkozatformát engedélyeznek. A fürttanúsítvány ujjlenyomatról köznapi névre történő átalakításának biztonságos megközelítése egyébként a tervezett céltanúsítvány bevezetése először ujjlenyomattal, majd a deklaráció módosítása egy közös névalapúra. A következő példában azt feltételezzük, hogy az "A" ujjlenyomat és a "B" tulajdonos köznapi neve ugyanarra a tanúsítványra vonatkozik. 
+#### <a name="converting-a-cluster-from-thumbprint--to-common-name-based-certificate-declarations"></a>Fürt átalakítása az ujjlenyomatról a common-name-based Certificate deklarációba
+Hasonlóképpen, ha megváltoztatja a tanúsítvány deklarációjának típusát (az ujjlenyomatról a köznapi névre), a fentieknek megfelelően fogja követni a mintát. Vegye figyelembe, hogy az érvényesítési szabályok lehetővé teszik, hogy egy adott szerepkör tanúsítványait ujjlenyomattal és köznapi névvel deklarálja ugyanabban a fürt-definícióban. Ezzel szemben azonban a megjelenítési szabályok csak egyetlen formáját teszik lehetővé a deklarációban. Egyébként a fürtözött tanúsítvány ujjlenyomatról köznapi névre történő átalakításának biztonságos megközelítése az, hogy először az ujjlenyomattal kell bevezetni a kívánt célt, majd ezt a deklarációt egy köznapi névre kell módosítani. Az alábbi példában feltételezzük, hogy az "A" ujjlenyomat és a tulajdonos köznapi neve "B" kifejezés ugyanarra a tanúsítványra hivatkozik. 
 
-  - kezdeti állapot: N0 = {P:{TP=A}, V:{TP=A}}, ... Nk = {P:{TP=A}, V:{TP=A}} - a fürt inverészett, minden csomópont közös konfigurációban van, és az A az elsődleges tanúsítvány ujjlenyomata
-  - 0. frissítési tartomány befejezésekor: N0 = {P:{TP=A}, V:{TP=A, CN=B}}, ... Nk = {P:{TP=A}, V:{TP=A}} - az UD0 csomópontjai bemutatják az A tanúsítványt, és elfogadják az A ujjlenyomatú vagy B nevű tanúsítványokat; az összes többi csomópont, amely csak az A bizonyítványt fogadja el és fogadja el
-  - az utolsó frissítési tartomány befejezésekor: N0 = {P:{TP=A}, V:{TP=A, CN=B}}, ... Nk = {P:{TP=A}, V:{TP=A, CN=B}} – minden olyan csomópont, amely az A tanúsítvánnyal van jelen, minden csomópont elfogadná az A (TP) vagy a B (CN) tanúsítványt
+  - kezdeti állapot: N0 = {P:{TP = A}, V:{TP = A}},... NK = {P:{TP = A}, V:{TP = A}} – a fürt nyugalmi állapotban van, minden csomópont közös konfigurációval rendelkezik, és az elsődleges Tanúsítvány ujjlenyomata
+  - A frissítési tartomány (0) befejezése után: N0 = {P:{TP = A}, V:{TP = A, CN = B}},... NK = {P:{TP = A}, V:{TP = A}} – a UD0 csomópontjai bemutatják az A tanúsítványt, és elfogadják A (z) "A" vagy A "köznapi" névvel rendelkező tanúsítványokat is. minden más csomópont jelen van, és csak A tanúsítványt fogadja el
+  - a legutóbbi frissítési tartomány befejezése után: N0 = {P:{TP = A}, V:{TP = A, CN = B}},... NK = {P:{TP = A}, V:{TP = A, CN = B}} – minden csomópont bemutat egy tanúsítványt, minden csomópont elfogadja vagy A (TP) vagy B (CN) tanúsítványt.
 
-Ezen a ponton folytathatjuk a bemutató szabályok módosítását egy későbbi frissítéssel:
-  - 0. frissítési tartomány befejezésekor: N0 = {P:{CN=B}, V:{TP=A, CN=B}}, ... Nk = {P:{TP=A}, V:{TP=A, CN=B}} - az UD0 csomópontjai bemutatják a CN által talált B tanúsítványt, és elfogadják az A ujjlenyomatú vagy a B betűs nyomatú tanúsítványokat; az ujjlenyomattal kiválasztott összes többi csomópont, amely csak az A tanúsítványt fogadja el
-  - az utolsó frissítési tartomány befejezésekor: N0 = {P:{CN=B}, V:{TP=A, CN=B}}, ... Nk = {P:{CN=B}, V:{TP=A, CN=B}} - a CN által talált B tanúsítványt kiállító összes csomópont, az összes csomópont elfogadná az A (TP) vagy a B (CN) tanúsítványt.
+Ezen a ponton a következő frissítéssel folytathatja a megjelenítési szabályok módosítását:
+  - a frissítési tartomány (0) befejezése után: N0 = {P:{CN = B}, V:{TP = A, CN = B}},... NK = {P:{TP = A}, V:{TP = A, CN = B}} – a UD0 csomópontjai a CN által talált B tanúsítványt fogják tartalmazni, és elfogadják A (z) "A" vagy A "köznapi" nevet tartalmazó tanúsítványokat. minden más csomópont jelen van, és csak az "A" tanúsítványt fogadja el, ujjlenyomat alapján kiválasztva
+  - a legutóbbi frissítési tartomány befejezése után: N0 = {P:{CN = B}, V:{TP = A, CN = B}}... NK = {P:{CN = B}, V:{TP = A, CN = B}} – minden olyan csomópont, amely a CN által talált B tanúsítvány, minden csomópont elfogadja vagy A (TP) vagy B (CN) tanúsítványt.
     
-a második fázis befejezése egyben a fürt közös névalapú tanúsítványokra való átalakítását is jelzi; az ujjlenyomat-alapú érvényesítési deklarációk egy későbbi fürtfrissítés során eltávolíthatók.
+A 2. fázis befejezése azt is jelzi, hogy a fürt átalakítása köznapi név alapú tanúsítványokra is vonatkozik; az ujjlenyomat-alapú érvényesítési deklarációk eltávolíthatók egy későbbi fürt frissítésében.
 
 > [!NOTE]
-> Az Azure Service Fabric-fürtökben a fent bemutatott munkafolyamatokat a Service Fabric erőforrás-szolgáltató vezényli; A fürt tulajdonosa továbbra is felelős a tanúsítványok fürtbe való kiépítéséért a jelzett szabályok (megjelenítés vagy érvényesítés) szerint, és arra ösztönzik, hogy több lépésben hajtson végre módosításokat.
+> Az Azure Service Fabric-fürtökben a fent bemutatott munkafolyamatokat a Service Fabric erőforrás-szolgáltató hangolja össze. a fürt tulajdonosa továbbra is felelős a tanúsítványok fürtben való kihelyezésében a jelzett szabályok (megjelenítés vagy érvényesítés) alapján, és javasoljuk, hogy hajtsa végre a módosításokat több lépésben.
 
-Egy külön cikkben foglalkozik a témakör a tanúsítványok kezelése és kiépítése egy Service Fabric-fürtbe.
+Egy külön cikkben egy Service Fabric-fürthöz tartozó tanúsítványok kezelésével és kiépítési témakörével foglalkozunk.
 
-## <a name="troubleshooting-and-frequently-asked-questions"></a>Hibaelhárítás és gyakori kérdések
-Bár a Service Fabric-fürtök hitelesítéssel kapcsolatos problémáinak hibakeresése nem könnyű, reméljük, hogy a következő tippek és tippek segíthetnek. A legegyszerűbb módja a vizsgálatok megkezdésének, hogy vizsgálja meg a Service Fabric eseménynaplók a fürt csomópontjain - nem feltétlenül csak a tüneteket mutató, hanem a csomópontok, amelyek fel, de nem tudnak csatlakozni az egyik a szomszédok. A Windows rendszerben a fontos események általában az "Alkalmazások és szolgáltatások naplói\Microsoft-ServiceFabric\Admin" vagy "Működési" csatornákon vannak bejelentkezve. Néha hasznos [lehet, hogy lehetővé CAPI2 fakitermelés](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), hogy elfog további részleteket illetően a tanúsítvány érvényesítése, visszakeresése CRL / CTL stb (Ne feledje, hogy tiltsa le befejezése után a repro, akkor elég részletes.)
+## <a name="troubleshooting-and-frequently-asked-questions"></a>Hibaelhárítás és gyakran ismételt kérdések
+A Service Fabric fürtök hitelesítéssel kapcsolatos problémáinak hibakeresése nem egyszerű, ezért a következő útmutatók és tippek segíthetnek. A vizsgálatok megkezdésének legegyszerűbb módja az Service Fabric eseménynaplók vizsgálata a fürt csomópontjain – nem feltétlenül csak a tüneteket mutató, de a csomópontok is, amelyek nem tudnak csatlakozni az egyik szomszédaihoz. Windows rendszeren a fontossági eseményeket általában az "alkalmazások és szolgáltatások Logs\Microsoft-ServiceFabric\Admin" vagy a "működési" csatornák alatt naplózza a rendszer. Esetenként hasznos lehet a [CAPI2 naplózásának engedélyezése](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), hogy további részleteket rögzítsen a tanúsítvány érvényesítésével, a CRL/CTL-ek lekérésével, stb. (ne felejtse el letiltani a Reprodukálási befejezése után.)
 
-A hitelesítési problémákkal küzdő fürtben jelentkező tipikus tünetek a következők: 
-  - a csomópontok nem/kerékpároznak 
-  - a rendszer elutasítja a csatlakozási kísérleteket
-  - csatlakozási kísérletek időtúllépés
+A hitelesítési problémákat tapasztaló fürtökben előforduló jellemző tünetek a következők: 
+  - csomópontok leállítása/kerékpározás 
+  - a csatlakozási kísérletek elutasítása
+  - a csatlakozási kísérletek időtúllépést mutatnak
 
-Minden tünetet különböző problémák okozhatnak, és ugyanaz a kiváltó ok különböző megnyilvánulásokat mutathat; mint ilyen, akkor csak felsorolni egy kis mintát a tipikus problémák, ajánlásokat rögzítő őket. 
+Előfordulhat, hogy az egyes tüneteket különböző problémák okozzák, és a kiváltó okok különböző megnyilvánulásokat is tartalmazhatnak. Ebben az esetben a tipikus problémák kis példáját fogjuk kilistázni, és javaslatokat teszünk a kijavítására. 
 
-* A csomópontok üzeneteket válthatnak, de nem tudnak csatlakozni. A kapcsolatmegszakítások lehetséges oka a "tanúsítvány nem egyeztetett" hiba – a Service Fabric-service Fabric-kapcsolatok egyik fele olyan tanúsítványt mutat be, amely nem felel meg a címzett ellenőrzési szabályainak. A következő hibák bármelyike kísérheti: 
+* A csomópontok képesek Exchange üzeneteket cserélni, de nem tudnak kapcsolatot létesíteni. A kapcsolódási kísérletek leállításának lehetséges okai a "nem egyező tanúsítvány" hibaüzenet – az egyik fél egy Service Fabric – Service Fabric kapcsolaton olyan tanúsítványt mutat be, amely nem felel meg a címzett ellenőrzési szabályainak. A következő hibák bármelyikével együtt lehet kísérni: 
   ```C++
   0x80071c44    -2147017660 FABRIC_E_SERVER_AUTHENTICATION_FAILED
   ```
-  További diagnosztizálás/vizsgálat: a kapcsolatot megkísérelő csomópontok mindegyikén határozza meg, hogy melyik tanúsítvány jelenik meg; megvizsgálja a tanúsítványt, és megpróbálja emulálni az érvényesítési szabályokat (ellenőrizze az ujjlenyomatot vagy a köznapi névegyenlőséget, ellenőrizze a kiállító ujjlenyomatait, ha meg van adva).
+  További Diagnosztizálás/vizsgálat: a kapcsolódást megkísérlő összes csomóponton határozza meg, hogy melyik tanúsítvány jelenik meg. vizsgálja meg a tanúsítványt, és próbálja meg emulálni az ellenőrzési szabályokat (ellenőrizze az ujjlenyomatot vagy a köznapi név egyenlőségét, ellenőrizze a kiállítói ujjlenyomatai megfelelnek, ha meg van adva).
 
-  Egy másik gyakori kísérő hibakód lehet:
+  Egy másik gyakori kísérő hibakód a következő lehet:
   ```C++
   0x800b0109    -2146762487 CERT_E_UNTRUSTEDROOT
   ```
-  Ebben az esetben a tanúsítványt köznapi névvel deklarálják, és a következők bármelyike alkalmazandó:
+  Ebben az esetben a tanúsítványt köznapi név deklarálja, és a következők valamelyike érvényes:
     - a kibocsátók nincsenek rögzítve, és a főtanúsítvány nem megbízható, vagy
-    - a kibocsátókat rögzítik, de a nyilatkozat nem tartalmazza a tanúsítvány közvetlen kibocsátójának ujjlenyomatát
+    - a kiállítók rögzítettek, de a deklaráció nem tartalmazza a tanúsítvány közvetlen kiállítójának ujjlenyomatát.
 
-* A csomópont fel van kapcsolva, de nem tud csatlakozni más csomópontokhoz; más csomópontok nem fogadnak bejövő forgalmat a meghibásodott csomóponttól. Ebben az esetben lehetséges, hogy a tanúsítvány betöltése sikertelen a helyi csomóponton. Keresse meg a következő hibákat:
-  - tanúsítvány nem található - győződjön meg arról, hogy a megjelenítési szabályokban deklarált tanúsítványokat a LocalMachine\My (vagy a megadott) tanúsítványtároló tartalma feloldhatja. 
+* Egy csomópont működik, de nem tud csatlakozni más csomópontokhoz; más csomópontok nem kapnak bejövő forgalmat a hibás csomóponttól. Ebben az esetben lehetséges, hogy a tanúsítvány betöltése sikertelen a helyi csomóponton. Keresse meg a következő hibákat:
+  - a tanúsítvány nem található – gondoskodjon arról, hogy a megjelenítési szabályokban deklarált tanúsítványokat a LocalMachine\My (vagy a megadott) tanúsítványtárolójának tartalma feloldja. 
     A hiba lehetséges okai a következők lehetnek: 
-      - érvénytelen karakterek az ujjlenyomat-deklarációban
+      - érvénytelen karakterek szerepelnek az ujjlenyomat-deklarációban
       - a tanúsítvány nincs telepítve
       - a tanúsítvány lejárt
-      - a köznév-deklaráció tartalmazza a "CN=" előtagot
-      - a deklaráció helyettesítő karaktert ad meg, és nincs pontos egyezés a tanúsítványtárolóban (deklaráció: CN=*.mydomain.com, tényleges tanúsítvány: CN=server.mydomain.com)
+      - a common-name deklaráció tartalmazza a következő előtagot: "CN =".
+      - a deklaráció megad egy helyettesítő karaktert, és nem tartalmaz pontos egyezést a tanúsítvány-tárolóban (deklaráció: CN = *. SajátTartomány. com, aktuális tanúsítvány: CN = Server. SajátTartomány. com)
 
-  - ismeretlen hitelesítő adatok - a tanúsítványnak megfelelő hiányzó személyes kulcsot jelöl, amelyet általában hibakód kísér: 
+  - ismeretlen hitelesítő adatok – a tanúsítványhoz tartozó hiányzó titkos kulcsot jelez, jellemzően a következő hibakóddal együtt: 
     ```C++ 
     0x8009030d  -2146893043 SEC_E_UNKNOWN_CREDENTIALS
     0x8009030e  -2146893042 SEC_E_NO_CREDENTIALS
     ```
-    A megoldásérdekében ellenőrizze a személyes kulcs létezését; ellenőrizze, hogy az SFAdmins "read|execute" hozzáférést kap-e a személyes kulcshoz.
+    A megoldáshoz vizsgálja meg a titkos kulcs létezését; Győződjön meg arról, hogy a SFAdmins "READ | Execute" hozzáférése van megadva a titkos kulcshoz.
 
-  - rossz szolgáltatótípus - új kriptográfiai tanúsítványt ("Microsoft Software Key Storage Provider") jelöl; ebben az időben a Service Fabric csak a CAPI1 tanúsítványokat támogatja. Általában hibakód kíséri:
+  - rossz szolgáltató típusa – a kriptográfiai új generációs (CNG) tanúsítvány ("Microsoft szoftveres kulcstároló-szolgáltató") jelzése; jelenleg a Service Fabric csak a CAPI1-tanúsítványokat támogatja. Jellemzően a következő hibakóddal kíséri:
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    A hiba orvoslásához hozza létre újra a fürttanúsítványt capi1 (pl. "Microsoft Enhanced RSA és AES kriptográfiai szolgáltató") szolgáltató használatával. A kriptográfiai szolgáltatókkal kapcsolatos további részletekért olvassa el [a Kriptográfiai szolgáltatók ismertetése című témakört.](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers)
+    A CAPI1 létrehozásához hozza létre újra a fürtöt (például "Microsoft Enhanced RSA and AES kriptográfiai szolgáltató") szolgáltatót. A kriptográfiai szolgáltatókkal kapcsolatos további részletekért tekintse meg a [kriptográfiai szolgáltatók ismertetése](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers) című témakört.
 

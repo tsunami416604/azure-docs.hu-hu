@@ -1,6 +1,6 @@
 ---
-title: A figyelőfolyamat az Azure Synapse Studio-t futtatja (előzetes verzió)
-description: Az Azure Synapse Studio segítségével figyelheti a munkaterületi folyamat fut.
+title: Figyelő folyamat futtatja az Azure szinapszis Studio (előzetes verzió)
+description: Az Azure szinapszis Studio használatával figyelheti a munkaterület-folyamat futtatását.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,46 +9,46 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: 712dc62e29229f03dec12afdf18edbf55667dbdf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430785"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Az Azure Synapse Studio segítségével figyelheti a munkaterületi folyamat futásait
+# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>A munkaterület-folyamat futtatásának figyelése az Azure szinapszis Studio használatával
 
-Az Azure Synapse Analytics segítségével összetett folyamatokat hozhat létre, amelyek automatizálhatják és koordinálhatják az adatmozgatást, az adatátalakítást és a számítási tevékenységeket a megoldáson belül. Ezeket a folyamatokat az Azure Synapse Studio használatával (előzetes verzió) hozhatja létre és figyelheti.
+Az Azure szinapszis Analytics segítségével összetett folyamatokat hozhat létre, amelyek automatizálják és összehangolják az adatáthelyezést, az adatátalakítást és a számítási tevékenységeket a megoldáson belül. Ezeket a folyamatokat az Azure szinapszis Studio (előzetes verzió) használatával hozhatja létre és figyelheti.
 
-Ez a cikk ismerteti, hogyan figyelheti a folyamat fut, amely lehetővé teszi, hogy tartsa szemmel a legújabb állapotát, a problémákat és a folyamatok előrehaladását.
+Ez a cikk ismerteti, hogyan figyelheti meg a folyamat futásait, így nyomon követheti a folyamatok legújabb állapotát, problémáit és előrehaladását.
 
-## <a name="access-the-list-of-pipeline-runs"></a>A folyamatfuttatások listájának elérése
+## <a name="access-the-list-of-pipeline-runs"></a>A folyamat-futtatások listájának elérése
 
-A munkaterületen futó folyamatlistájának megtekintéséhez nyissa [meg először az Azure Synapse Studio-t,](https://web.azuresynapse.net/) és válassza ki a munkaterületet.
+A munkaterületen futó folyamatok listájának megtekintéséhez először [nyissa meg az Azure szinapszis Studio](https://web.azuresynapse.net/) alkalmazást, és válassza ki a munkaterületet.
 
 ![Bejelentkezés a munkaterületre](./media/common/login-workspace.png)
 
-Miután megnyitotta a munkaterületet, válassza a bal oldali **Figyelő** szakaszt.
+Miután megnyitotta a munkaterületet, kattintson a bal oldalon található **figyelő** szakaszra.
 
-![A Figyelő központ kiválasztása](./media/common/left-nav.png)
+![Figyelő központ kiválasztása](./media/common/left-nav.png)
 
-Válassza **a Folyamatfuttatások** lehetőséget a folyamatfuttatások listájának megtekintéséhez.
+Válassza a **folyamat futtatása** lehetőséget a folyamat-futtatások listájának megtekintéséhez.
 
-![Folyamatfuttatások kiválasztása](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
+![Folyamat futtatásának kiválasztása](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
 ## <a name="filtering-your-pipeline-runs"></a>A folyamat futtatásának szűrése
 
-Szűrheti a folyamatfuttatások listáját az önt érdeklő folyamatokra. A képernyő tetején lévő szűrők lehetővé teszik, hogy megadjon egy mezőt, amelyre szűrni szeretne.
+A folyamatok listájának szűrésével megtekintheti azokat, amelyekre kíváncsi. A képernyő felső részén található szűrők segítségével megadhat egy mezőt, amely alapján szűrni szeretne.
 
-Szűrheti például a nézetet, hogy csak a "holiday" nevű folyamat folyamatfuttatása jelenjen meg:
+A nézetet szűrheti például úgy, hogy csak a "Holiday" nevű folyamathoz tartozó folyamat fusson.
 
 ![Szűrő gomb](./media/common/filter-button.png)
 
-![Mintaszűrő](./media/how-to-monitor-pipeline-runs/filter-example.png)
+![Minta szűrő](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>Adott folyamatfuttatás részleteinek megtekintése
+## <a name="viewing-details-about-a-specific-pipeline-run"></a>Adott folyamat futtatási részleteinek megtekintése
 
-A folyamatfuttatásával kapcsolatos részletek megtekintéséhez válassza ki a folyamatfuttatást. Ezután tekintse meg a folyamatfuttatásához társított tevékenységfuttatásokat. Ha a folyamat még mindig fut, figyelheti a folyamatot. 
+A folyamat futtatásával kapcsolatos részletek megtekintéséhez válassza ki a folyamat futtatását. Ezután tekintse meg a folyamat futtatásához társított tevékenységek futtatását. Ha a folyamat továbbra is fut, nyomon követheti a folyamatot. 
   
 ## <a name="next-steps"></a>További lépések
 
-Az alkalmazások figyeléséről az [Apache Spark-alkalmazások figyelése](how-to-monitor-spark-applications.md) című cikkben olvashat bővebben. 
+Az alkalmazások figyelésével kapcsolatos további tudnivalókért tekintse meg a [Apache Spark alkalmazások figyelése](how-to-monitor-spark-applications.md) című cikket. 

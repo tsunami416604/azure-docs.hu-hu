@@ -1,6 +1,6 @@
 ---
 title: Tárolt eljárások használata
-description: Tippek a tárolt eljárások megvalósításához a Synapse SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
+description: Tippek a tárolt eljárások megvalósításához a szinapszis SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,43 +11,43 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430980"
 ---
 # <a name="using-stored-procedures-in-sql-pool"></a>Tárolt eljárások használata az SQL-készletben
 
-Tippek a tárolt eljárások megvalósításához a Synapse SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
+Tippek a tárolt eljárások megvalósításához a szinapszis SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
 
 ## <a name="what-to-expect"></a>Mire számíthat
 
-Az SQL-készlet számos, az SQL Server ben használt T-SQL-szolgáltatást támogat. Ennél is fontosabb, hogy vannak horizontális felskálázási speciális funkciók, amelyek segítségével maximalizálhatja a megoldás teljesítményét.
+Az SQL-készlet számos olyan T-SQL-funkciót támogat, amelyek a SQL Serverben használatosak. Még ennél is fontosabb, hogy a megoldás teljesítményének maximalizálása érdekében Felskálázási funkciók érhetők el.
 
-Az SQL-készlet méretének és teljesítményének fenntartásához azonban vannak olyan funkciók és funkciók is, amelyek viselkedésbeli különbségekkel rendelkeznek, és mások, amelyek nem támogatottak.
+Az SQL-készlet méretezésének és teljesítményének fenntartása érdekében azonban vannak olyan funkciók és funkciók is, amelyek viselkedési különbségekkel és másokkal nem támogatottak.
 
-## <a name="introducing-stored-procedures"></a>A tárolt eljárások bevezetése
+## <a name="introducing-stored-procedures"></a>Tárolt eljárások bevezetése
 
-A tárolt eljárások nagyszerű megoldást jelentenek az SQL-kód beágyazására; az adatok közelében tárolhatja az adattárházban. A tárolt eljárások segítségével a fejlesztők modulárissá teszik megoldásaikat azáltal, hogy a kódot kezelhető egységekbe ágyazják; a kód nagyobb újrafelhasználhatóságának elősegítése. Minden tárolt eljárás is elfogadja paramétereket, hogy azok még rugalmasabb.
+A tárolt eljárások nagyszerű lehetőséget biztosítanak az SQL-kód beágyazására; az adatraktárban tárolt adataihoz való közelsége. A tárolt eljárások segítségével a fejlesztők felügyelhető egységekre ágyazva modularize a megoldásaikat. a kód nagyobb újrahasználhatóságának elősegítése. Az egyes tárolt eljárások is elfogadják a paramétereket, hogy azok még rugalmasabbak legyenek.
 
-Az SQL-készlet egyszerűsített és egyszerűsített tárolt eljárásmegvalósítást biztosít. Az SQL Server hez képest a legnagyobb különbség az, hogy a tárolt eljárás nem előre lefordított kód. Az adatraktárakban a fordítási idő kicsi a nagy adatkötetek lekérdezéseinek futtatásához szükséges időhöz képest. Sokkal fontosabb, hogy a tárolt eljáráskód megfelelően legyen optimalizálva a nagy lekérdezésekhez. A cél az, hogy mentse óra, perc és másodperc, nem ezredmásodperc. Ezért hasznosabb a tárolt eljárásokat az SQL-logika tárolóiként gondolni.
+Az SQL-készlet egyszerűsített és egyszerűsített tárolt eljárás-megvalósítást biztosít. SQL Server képest a legnagyobb különbség az, hogy a tárolt eljárás nem előre lefordított kód. Az adattárházak esetében a fordítási idő kisebb, mint a nagyméretű adatköteteken végzett lekérdezések futtatásához szükséges idő. Fontos, hogy a tárolt eljárás kódja megfelelően legyen optimalizálva a nagyméretű lekérdezésekhez. A cél az óra, perc és másodperc megtakarítása, nem ezredmásodperc. Ezért hasznos, ha a tárolt eljárásokat SQL Logic tárolóként szeretné meggondolni.
 
-Amikor az SQL-készlet végrehajtja a tárolt eljárást, az SQL-utasítások elemzésre kerülnek, lefordítva és optimalizálva futásidőben. A folyamat során minden utasítás elosztott lekérdezésekké alakul át. Az adatokkal végrehajtott SQL-kód eltér a beküldött lekérdezéstől.
+Amikor az SQL-készlet végrehajtja a tárolt eljárást, az SQL-utasítások elemzése, lefordítása és futási ideje optimalizált. A folyamat során minden utasítás elosztott lekérdezésekre lesz konvertálva. Az adatbázison végrehajtott SQL-kód eltér az elküldött lekérdezéstől.
 
 ## <a name="nesting-stored-procedures"></a>Tárolt eljárások beágyazása
 
-Ha a tárolt eljárások más tárolt eljárásokat hívnak meg, vagy dinamikus SQL-t hajtanak végre, akkor a belső tárolt eljárás vagy kódmeghívás a beágyazottnak lesz kitéve.
+Ha a tárolt eljárás más tárolt eljárásokat hív meg, vagy dinamikus SQL-t hajt végre, akkor a belső tárolt eljárás vagy a kód meghívása beágyazottnak mondható.
 
-Az SQL-készlet legfeljebb nyolc beágyazási szintet támogat. Ez némileg eltér az SQL Server kiszolgálótól. Az SQL Server fészekszintje 32.
+Az SQL-készlet legfeljebb nyolc beágyazási szintet támogat. Ez némileg eltér a SQL Server. A SQL Server beágyazási szintje 32.
 
-A legfelső szintű tárolt eljáráshívás megegyezik az 1-es fészekszinttel.
+A legfelső szintű tárolt eljárás az 1. szintű beágyazásnak felel meg.
 
 ```sql
 EXEC prc_nesting
 ```
 
-Ha a tárolt eljárás egy másik EXEC hívást is kezdeményez, a fészek szintje kettőre nő.
+Ha a tárolt eljárás egy másik EXEC hívást is végrehajt, a beágyazási szint két értékre nő.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -57,7 +57,7 @@ GO
 EXEC prc_nesting
 ```
 
-Ha a második eljárás végrehajtja a dinamikus SQL-t, a fészekszint háromra nő.
+Ha a második eljárás elvégez néhány dinamikus SQL-műveletet, a beágyazási szint háromra nő.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -68,30 +68,30 @@ EXEC prc_nesting
 ```
 
 > [!NOTE]
-> Az SQL-készlet jelenleg nem támogatja [a @@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)karaktert. Le kell nyomoznia a fészek szintjét. Nem valószínű, hogy túllépi a nyolc fészekszint korlátját, de ha igen, át kell dolgoznia a kódot, hogy elférjen a beágyazási szintek ezen a korláton belül.
+> Az SQL-készlet jelenleg nem támogatja a [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-t. Követnie kell a beágyazási szintet. Nem valószínű, hogy túllépi a nyolcnál nagyobb korlátot, de ha igen, újra kell dolgoznia a kódot, hogy az illeszkedjen a korláton belüli beágyazási szintre.
 
-## <a name="insertexecute"></a>Beszúrása.. Végre
+## <a name="insertexecute"></a>Beszúrás.. VÉGREHAJTÁSA
 
-Az SQL-készlet nem teszi lehetővé az INSERT utasítással tárolt eljárás eredménykészletének felhasználását. Van azonban egy alternatív megközelítés, amelyet használhat. Például az [ideiglenes táblákról](develop-tables-temporary.md)szóló cikket.
+Az SQL-készlet nem teszi lehetővé egy tárolt eljárás eredmény-készletének felhasználását INSERT utasítással. Van azonban egy alternatív megközelítés, amelyet használhat. Példaként tekintse meg az [ideiglenes táblákról](develop-tables-temporary.md)szóló cikket.
 
 ## <a name="limitations"></a>Korlátozások
 
-Vannak olyan szempontok a Transact-SQL tárolt eljárások, amelyek nem valósíthatók meg az SQL-készletben.
+Az SQL-készletben nem implementált Transact-SQL tárolt eljárások néhány aspektusa van.
 
 Ezek a következők:
 
-* ideiglenestárolt eljárások
+* ideiglenes tárolt eljárások
 * számozott tárolt eljárások
 * kiterjesztett tárolt eljárások
-* CLR tárolt eljárások
+* CLR tárolt eljárásai
 * titkosítási beállítás
-* replikációs beállítás
-* táblaértékű paraméterek
-* írásvédett paraméterek
+* replikálási beállítás
+* tábla értékű paraméterek
+* csak olvasható paraméterek
 * alapértelmezett paraméterek
 * végrehajtási környezetek
-* visszáru-kimutatás
+* visszatérési utasítás
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](develop-overview.md)
+További fejlesztési tippek: a [fejlesztés áttekintése](develop-overview.md).

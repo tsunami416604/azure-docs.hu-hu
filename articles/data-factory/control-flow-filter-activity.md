@@ -1,6 +1,6 @@
 ---
-title: Tevékenység szűrése az Azure Data Factoryban
-description: A Szűrő tevékenység szűri a bemeneteket.
+title: Szűrési tevékenység Azure Data Factory
+description: A szűrő tevékenység szűri a bemeneteket.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417213"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Tevékenység szűrése az Azure Data Factoryban
-A folyamat szűrőtevékenységével szűrőkifejezést alkalmazhat egy bemeneti tömbre. 
+# <a name="filter-activity-in-azure-data-factory"></a>Szűrési tevékenység Azure Data Factory
+Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy bemeneti tömbre. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="syntax"></a>Szintaxis
@@ -40,13 +40,13 @@ A folyamat szűrőtevékenységével szűrőkifejezést alkalmazhat egy bemeneti
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 név | A `Filter` tevékenység neve. | Sztring | Igen
-type | A **szűrőbeállításra**kell beállítani. | Sztring | Igen
-Feltétel | A bemenet szűréséhez használandó feltétel. | Kifejezés | Igen
-Elemek | Bemeneti tömb, amelyre szűrőt kell alkalmazni. | Kifejezés | Igen
+type | **Szűrésre**kell beállítani. | Sztring | Igen
+feltétel | A bemenet szűréséhez használandó feltétel. | Kifejezés | Igen
+elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Kifejezés | Igen
 
 ## <a name="example"></a>Példa
 
-Ebben a példában a folyamat két tevékenységet rendelkezik: **Szűrő** és **ForEach**. A Szűrő tevékenység úgy van beállítva, hogy szűrje a bemeneti tömböt a 3-nál nagyobb értékű elemekhez. A ForEach tevékenység ezután a szűrt értékekfelett itat, és a **változótesztet** az aktuális értékre állítja be.
+Ebben a példában a folyamat két tevékenységgel rendelkezik: **Filter** és **foreach**. A szűrési tevékenység úgy van konfigurálva, hogy a bemeneti tömböt a 3 értéknél nagyobb értékű elemekre szűrje. A ForEach tevékenység ekkor megismétli a szűrt értékeket, és beállítja a változó **tesztet** az aktuális értékre.
 
 ```json
 {
@@ -113,7 +113,7 @@ Ebben a példában a folyamat két tevékenységet rendelkezik: **Szűrő** és 
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevékenységeket: 
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

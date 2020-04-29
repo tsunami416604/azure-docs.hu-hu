@@ -1,6 +1,6 @@
 ---
-title: Adatelemzői oktatóanyag – Az SQL igény szerinti (előzetes verzió) használata az Azure Open Datasets elemzéséhez az Azure Synapse Studio-ban (előzetes verzió)
-description: Ebben az oktatóanyagban megtudhatja, hogyan végezhet könnyen feltáró adatelemzést a különböző Azure Open adatkészletek kombinálásával az SQL igény szerinti (előzetes verzió) használatával, és vizualizálhatja az eredményeket az Azure Synapse Studióban.
+title: Adatelemzői oktatóanyag – az SQL on-demand (előzetes verzió) használata az Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studióban (előzetes verzió)
+description: Ebből az oktatóanyagból megtudhatja, hogyan lehet egyszerűen elvégezni a felderítő adatelemzést, amely különböző Azure Open-adatkészleteket használ az SQL on-demand (előzetes verzió) használatával, és megjelenítheti az eredményeket az Azure szinapszis Studióban.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 1080001cb222f91503080914d7fb253e5ee82626
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423228"
 ---
-# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Az SQL igény szerinti (előzetes verzió) használatával elemezheti az Azure Open Datasets adatkészleteket, és megjelenítheti az eredményeket az Azure Synapse Studio-ban (előzetes verzió)
+# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Az SQL on-demand (előzetes verzió) használata az Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban (előzetes verzió)
 
-Ebben az oktatóanyagban megtudhatja, hogyan végezhet feltáró adatok elemzését a különböző Azure Open adatkészletek kombinálásával az SQL igény szerinti használatával, majd az eredmények megjelenítése az Azure Synapse Studio-ban.
+Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a felderítő adatok elemzését, ha különböző Azure Open-adatkészleteket egyesít az SQL igény szerinti használatával, majd megjeleníti az eredményeket az Azure szinapszis Studióban.
 
-Különösen a New [York-i (NYC) Taxi adatkészletet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) elemezheti, amely tartalmazza a felvételi és átadási dátumokat/időpontokat, a felvételi és leadási helyeket, az utazási távolságokat, a tételes viteldíjakat, a díjtípusokat, a fizetési típusokat és a járművezető által jelentett utasszámokat.
+A [New York City (NYC) taxi-adatkészletet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) elemezzük, amely magában foglalja a pick-up és a drop-off dátum/idő, a pick-up és a drop-off helyszínek, az utazási távolságok, a részletezett viteldíjak, a díjszabási típusok, a fizetési típusok és a járművezető által jelentett utasok számát.
 
-Az elemzés középpontjában a taxitúrák számának időbeli változása idoszakai ban vannak. Két másik Azure Open Datasets[(munkaszüneti napok](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) és [időjárási adatok)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)elemzéséhez a taxifuvarok kiugró értékének megértéséhez.
+Az elemzés célja, hogy megkeresse a taxi-túrák számának időbeli változásával kapcsolatos trendeket. Két másik Azure Open-adatkészletet (a[munkaszüneti napokat](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) és [az időjárási adatokat](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)) elemezve megtudhatja, hogy a taxik hányan vannak kiugróan.
 
 ## <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
@@ -44,11 +44,11 @@ SECRET = ''
 GO
 ```
 
-## <a name="automatic-schema-inference"></a>Automatikus sémakövetkeztetés
+## <a name="automatic-schema-inference"></a>Automatikus séma-következtetés
 
-Mivel az adatok parquet fájlformátumban tárolódnak, automatikus sémakövetkeztetés áll rendelkezésre, így könnyen lekérdezhető az adatok anélkül, hogy fel kellene sorolni a fájlok összes oszlopának adattípusait. Továbbá, lehet használni a virtuális oszlop mechanizmus és filepath funkció kiszűrni egy bizonyos részhalmaza fájlokat.
+Mivel a rendszer az adattárolást a parketta fájlformátumában tárolja, az automatikus séma-következtetés elérhetővé válik, így az adatlekérdezés nem szükséges a fájlok összes oszlopának adattípusának listázásához. Emellett a virtuális oszlop mechanizmusa és a filepath függvény használatával kiszűrheti a fájlok bizonyos részhalmazát.
 
-Először ismerkedjen meg a NYC Taxi adataival a következő lekérdezés futtatásával:
+Először Ismerkedjen meg a New York-i taxi-adattal a következő lekérdezés futtatásával:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -58,11 +58,11 @@ SELECT TOP 100 * FROM
     ) AS [nyc]
 ```
 
-A következőkben a NYC Taxi adatainak eredménykódrészletét mutatja:
+A következő ábrán a New York-i taxik adatrészlete látható:
 
-![eredménykódrészlet](./media/tutorial-data-analyst/1.png)
+![eredmény részlete](./media/tutorial-data-analyst/1.png)
 
-Hasonlóképpen lekérdezhetjük a munkaszüneti napok adatkészletét a következő lekérdezéssel:
+Hasonlóképpen a következő lekérdezéssel tudjuk lekérdezni a nyilvános ünnepek adatkészletét:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -72,11 +72,11 @@ SELECT TOP 100 * FROM
     ) AS [holidays]
 ```
 
-Az alábbiakban a munkaszüneti napok adatkészletének eredménykódrészletét mutatja be:
+Az alábbi ábrán a nyilvános ünnepek adatkészletének eredményét láthatja:
 
-![eredmény részlet 2](./media/tutorial-data-analyst/2.png)
+![2. eredmény](./media/tutorial-data-analyst/2.png)
 
-Végül az időjárási adatkészletet a következő lekérdezéssel is lekérdezhetjük:
+Végül a következő lekérdezéssel is lekérdezheti az időjárási adatkészletet:
 
 ```sql
 SELECT
@@ -88,15 +88,15 @@ FROM
     ) AS [weather]
 ```
 
-A következőkben az időjárási adatkészlet eredménykódrészletét mutatja be:
+Az alábbi ábrán az időjárási adatkészlet eredményének részlete látható:
 
-![eredmény részlet 3](./media/tutorial-data-analyst/3.png)
+![3. eredmény-kódrészlet](./media/tutorial-data-analyst/3.png)
 
-Az egyes oszlopok jelentéséről a [NYC Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/), [munkaszüneti napok](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)és időjárási [adatkészletek](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) leírásában olvashat bővebben.
+További információt az egyes oszlopok jelentéséről a [New York](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)-i taxi, a [Public Holidays](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)és az [időjárási](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) adathalmazok leírásában olvashat.
 
-## <a name="time-series-seasonality-and-outlier-analysis"></a>Idősorok, szezonalitás és kiugró értékek elemzése
+## <a name="time-series-seasonality-and-outlier-analysis"></a>Idősorozat, szezonális és kiugró elemzés
 
-A taxitúrák éves számát a következő lekérdezéssel könnyen összegezheti:
+A következő lekérdezéssel egyszerűen összefoglalhatja a taxis szolgáltatás éves számát:
 
 ```sql
 SELECT
@@ -112,20 +112,20 @@ GROUP BY YEAR(tpepPickupDateTime)
 ORDER BY 1 ASC
 ```
 
-A következő mutatja az eredményrészlet et az éves taxiállomások számára:
+Az alábbi ábrán a taxik éves számának eredményét láthatja:
 
-![eredményrészlet 4](./media/tutorial-data-analyst/4.png)
+![4. eredmény](./media/tutorial-data-analyst/4.png)
 
-Az adatok a Synapse Studio alkalmazásban is megjelenhetnek a Táblázat nézetről a Diagram nézetre való váltással. Különböző diagramtípusok közül választhat (Terület, Sáv, Oszlop, Vonal, Kör és Pont). Ebben az esetben ábrázoljuk az Oszlopdiagramot úgy, hogy a Kategória oszlop "current_year" lesz:
+Az adatok a szinapszis Studióban jeleníthetők meg a tábla diagram nézetbe való váltásával. A különböző típusú diagramok közül választhat (a körzet, a sáv, az oszlop, a vonal, a torta és a pontdiagram). Ebben az esetben az oszlopdiagram "current_year" értékre állítása a kategória oszloppal:
 
-![eredmény megjelenítés 5](./media/tutorial-data-analyst/5.png)
+![eredmény vizualizáció 5](./media/tutorial-data-analyst/5.png)
 
-Ebből a vizualizáció, a tendencia a csökkenő számú túrák az évek során jól látható, feltehetően a közelmúltban megnövekedett népszerűsége ride megosztása cégek.
+Ebből a vizualizációból kiderül, hogy az évek során csökkenő számú túrákra mutató tendencia egyértelműen látható, ami valószínűleg a Ride Sharing vállalatoknak a közelmúltban megnövekedett népszerűségének köszönhető.
 
 > [!NOTE]
-> A bemutató megírásakor a 2019-es adatok hiányosak, így az adott évben hatalmas csökkenés torkig van a túrák számával.
+> A jelen oktatóanyag írásakor a 2019-es adatmennyiség hiányos, így az adott évben számos utazásra van lehetőség.
 
-Ezután összpontosítsuk elemzésünket egyetlen évre, például 2016-ra. A következő lekérdezés az adott évben a napi fuvarok számát adja vissza:
+Ezután az elemzést egyetlen évre koncentráljuk, például 2016. Az alábbi lekérdezés az év folyamán napi számú túrákat ad vissza:
 
 ```sql
 SELECT
@@ -141,17 +141,17 @@ GROUP BY CAST([tpepPickupDateTime] AS DATE)
 ORDER BY 1 ASC
 ```
 
-A következő a lekérdezés eredménykódrészletét mutatja be:
+Az alábbi táblázat a lekérdezés eredményének részletét jeleníti meg:
 
-![eredmény részlet 6](./media/tutorial-data-analyst/6.png)
+![eredmény 6. kódrészlet](./media/tutorial-data-analyst/6.png)
 
-Ismét könnyen megjeleníthetjük az adatokat az Oszlopdiagram ábrázolásával a "current_day" kategória oszlopával és a "rides_per_day" jelmagyarázat (adatsor) oszlopával.
+A "current_day" kategóriát tartalmazó oszlopdiagram és a "rides_per_day" Jelmagyarázat (sorozat) oszlop ábrázolásával egyszerűen megjelenítheti az adatdiagramot.
 
-![eredmény megjelenítés 7](./media/tutorial-data-analyst/7.png)
+![eredmény vizualizációja 7](./media/tutorial-data-analyst/7.png)
 
-A telek, megfigyelhető, hogy van egy heti minta, a szombati csúcs. A nyári hónapokban kevesebb taxiút van a nyaralási időszak miatt. Van azonban néhány jelentős csepp a taxiutak számában is, anélkül, hogy egyértelmű mintát kapnának, amikor és miért fordulnak elő.
+A mintaterületen megfigyelhető, hogy heti minta van a szombat csúcsával. A nyári hónapokban a vakáció időtartama miatt kevesebb taxi-utazásra van lehetőség. Van azonban néhány jelentős mennyiségű, a taxival való elfordulás, amely nem egyértelmű mintázatot jelent, és hogy miért is jelentkeznek.
 
-Következő, lássuk, ha ezek a cseppek potenciálisan korrelál a munkaszüneti napokon csatlakozott NYC taxi túrák a munkaszüneti napok adatkészlet:
+Következő lépésként lássuk, hogy ezek a cseppek a nyilvános munkaszüneti napokhoz csatlakoznak-e a New York-i és a Public Holidays-adatkészlettel:
 
 ```sql
 WITH taxi_rides AS
@@ -186,13 +186,13 @@ LEFT OUTER JOIN public_holidays p on t.current_day = p.date
 ORDER BY current_day ASC
 ```
 
-![eredmény megjelenítés 8](./media/tutorial-data-analyst/8.png)
+![eredmény vizualizáció 8](./media/tutorial-data-analyst/8.png)
 
-Ezúttal szeretnénk kiemelni a taxitúrák számát munkaszüneti napokon. Ebből a célból a "nincs" lehetőséget választjuk a Kategória oszlophoz, a "rides_per_day" és a "ünnep" jelmagyarázat (sorozat) oszlopokat.
+Ezúttal azt szeretnénk kiemelni, hogy a nyilvános munkaszüneti napokon milyen számú taxit kell használni. Erre a célra a kategória oszlop és a "rides_per_day" és a "Holiday" Jelmagyarázat (adatsorozat) oszlopai közül a "None" elemet választjuk.
 
-![eredmény megjelenítés 9](./media/tutorial-data-analyst/9.png)
+![eredmény vizualizáció 9](./media/tutorial-data-analyst/9.png)
 
-A telek, akkor jól látható, hogy munkaszüneti napokon számos taxi túrák alacsonyabb. Január 23-án azonban még mindig van egy megmagyarázhatatlan hatalmas visszaesés. Nézzük meg az időjárás NYC azon a napon lekérdezésével az időjárás adatkészlet:
+A mintaterületből egyértelműen látható, hogy a nyilvános ünnepek során a taxik száma alacsonyabb. Január 23-án azonban még egy megmagyarázhatatlan hatalmas csökkenés van. Az időjárási adatkészlet lekérdezésével nézzük meg a New York-i időjárási időt:
 
 ```sql
 SELECT
@@ -219,17 +219,17 @@ FROM
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'
 ```
 
-![eredmény megjelenítés 10](./media/tutorial-data-analyst/10.png)
+![eredmény vizualizáció 10](./media/tutorial-data-analyst/10.png)
 
-A lekérdezés eredményei azt mutatják, hogy a számos taxizás csökkenése a következőknek köszönhető:
+A lekérdezés eredményei azt jelzik, hogy a több taxis túrák csökkenése az alábbiak miatt volt:
 
-- hóvihar azon a napon NYC, mivel nem volt erős hó (~ 30 cm)
-- hideg volt (hőmérséklet nulla Celsius fok alatt)
-- és szeles (~10m/s)
+- a Blizzard ezen a napon NYC-ben, mivel nagy volt a hó (~ 30 cm)
+- hideg volt (0 Celsius-fok alatti hőmérséklet)
+- és szeles (~ 10M/s)
 
-Ez az oktatóanyag bemutatja, hogy az adatelemző hogyan végezhet gyorsan feltáró adatelemzést, egyszerűen kombinálhatja a különböző adatkészleteket az SQL igény szerinti használatával, és hogyan jelenítheti meg az eredményeket az Azure Synapse Studio használatával.
+Ebből az oktatóanyagból megtudhatta, hogy az adatelemző hogyan képes gyorsan elvégezni a felderítő adatok elemzését, és könnyen egyesítheti a különböző adatkészleteket az SQL igény szerinti használatával, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át az [SQL igény szerinti csatlakoztatása a Power BI Desktophoz című cikket, & jelentéslétrehozása](tutorial-connect-power-bi-desktop.md) című cikkből megtudhatja, hogyan csatlakoztathatja az SQL-t igény szerint a Power BI Desktophoz, és hogyan hozhat létre jelentéseket.
+Tekintse át az [igény szerinti kapcsolódás az SQL-hez Power BI Desktop & jelentés létrehozása című](tutorial-connect-power-bi-desktop.md) cikket, amelyből megtudhatja, hogyan csatlakoztathatók az SQL on-demand a Power bi Desktophoz és a jelentések létrehozásához.
  

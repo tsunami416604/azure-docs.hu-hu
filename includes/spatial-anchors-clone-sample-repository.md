@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
 ms.openlocfilehash: 5c1e076406ba774f5abe056e05b8af1b574c9d0f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81421886"
 ---
-Klónozza a [mintatárolót](https://github.com/Azure/azure-spatial-anchors-samples) a következő parancsok futtatásával:
+A [minták tárházának](https://github.com/Azure/azure-spatial-anchors-samples) klónozásához futtassa a következő parancsokat:
 
 ```console
 git clone https://github.com/Azure/azure-spatial-anchors-samples.git
