@@ -1,52 +1,52 @@
 ---
-title: Riasztások beállítása az Azure Application Insightsban
-description: Értesítést kaphat a lassú válaszidőkről, a kivételekről és a webalkalmazás egyéb teljesítmény- vagy használati változásairól.
+title: Riasztások beállítása az Azure Application Insights
+description: Értesítést kaphat a lassú válaszidő, a kivételek és a webalkalmazás más teljesítmény-és használati változásairól.
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
 ms.subservice: alerts
 ms.openlocfilehash: 28fd59556a586b85a6d3caf188d9e02c11d31e3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295085"
 ---
-# <a name="set-alerts-in-application-insights"></a>Riasztások beállítása az Application Insightsban
+# <a name="set-alerts-in-application-insights"></a>Riasztások beállítása Application Insightsban
 
-[Az Azure Application Insights][start] figyelmezteti a webes alkalmazás teljesítmény- vagy használati metrikák változásaira. 
+Az [Azure Application Insights][start] riasztást küld a webalkalmazás teljesítmény-és használati metrikáinak változásairól. 
 
-Az Application Insights az élő alkalmazást számos [platformon][platforms] figyeli, hogy segítsen diagnosztizálni a teljesítménnyel kapcsolatos problémákat és megérteni a használati mintákat.
+Application Insights figyeli az élő alkalmazást a [különböző platformokon][platforms] , hogy segítsen a teljesítménnyel kapcsolatos problémák diagnosztizálásában és a használati minták értelmezésében.
 
-Többféle riasztás létezik:
+Több típusú riasztás létezik:
 
-* [**Metrikariasztások**](../../azure-monitor/platform/alerts-metric-overview.md) azt adják meg, ha egy metrika átlép egy küszöbértéket egy adott időszakban – például a válaszidők, a kivételek száma, a CPU-használat vagy az oldalmegtekintések.
-* [**A naplóriasztások**](../../azure-monitor/platform/alerts-unified-log.md) olyan riasztások leírására szolgálnak, ahol a riasztási jelzés egy egyéni Kusto-lekérdezésen alapul.
-* [**A webes tesztek**][availability] azt adják meg, ha webhelye nem érhető el az interneten, vagy lassan válaszol. [További információ][availability].
-* [**A proaktív diagnosztika**](../../azure-monitor/app/proactive-diagnostics.md) automatikusan be van állítva, hogy értesítést küldjön a szokatlan teljesítménymintákról.
+* A [**metrikai riasztások**](../../azure-monitor/platform/alerts-metric-overview.md) jelzik, ha egy metrika egy adott időszak küszöbértékét (például a válaszadási időt, a kivételek számát, a CPU-használatot vagy a lapok nézeteit) haladja meg.
+* A [**naplózási riasztások**](../../azure-monitor/platform/alerts-unified-log.md) olyan riasztások leírására szolgálnak, amelyekben a riasztási jel egy egyéni Kusto-lekérdezésen alapul.
+* A [**webes tesztek**][availability] arról tájékoztatnak, hogy a webhely nem érhető el az interneten, vagy lassan válaszol. [További információ][availability].
+* Az előjelzéses [**diagnosztika**](../../azure-monitor/app/proactive-diagnostics.md) automatikusan be van állítva, hogy jelezze a szokatlan teljesítménybeli mintákat.
 
-## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>A kivételriasztás beállítása egyéni naplókereséssel
+## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Kivételek riasztásának beállítása egyéni naplók használatával
 
-Ebben a szakaszban végighaladunk a lekérdezésalapú kivételriasztás beállításán. Ebben a példában tegyük fel, hogy riasztást szeretnénk, ha a sikertelen arány nagyobb, mint 10% az elmúlt 24 órában.
+Ebben a szakaszban bemutatjuk a lekérdezés-alapú kivételek riasztásának beállítását. Ebben a példában tegyük fel, hogy riasztást szeretne kapni, ha a sikertelen sebesség nagyobb, mint 10% az elmúlt 24 órában.
 
-1. Nyissa meg az Application Insight-erőforrást az Azure Portalon.
-2. A bal oldalon, a konfigurálása kattintson a **Alert**.
+1. Nyissa meg az alkalmazás Insight-erőforrását a Azure Portal.
+2. A bal oldalon a konfigurálás alatt kattintson a **riasztás**elemre.
 
-    ![A bal oldalon a click alert konfigurálása csoportban](./media/alerts/1appinsightalert.png)
+    ![A bal oldali beállításnál kattintson a riasztás elemre.](./media/alerts/1appinsightalert.png)
 
-3. A riasztási lap tetején válassza az **Új riasztási szabály**lehetőséget.
+3. A riasztás lap tetején válassza az **új riasztási szabály**lehetőséget.
 
-     ![A riasztási lap tetején kattintson az új riasztási szabályra](./media/alerts/2createalert.png)
+     ![A riasztás lap tetején kattintson az új riasztási szabály elemre.](./media/alerts/2createalert.png)
 
-4. Az erőforrást automatikusan ki kell jelölni. Feltétel beállításához kattintson a **Feltétel hozzáadása gombra.**
+4. Az erőforrást automatikusan ki kell jelölni. Feltétel beállításához kattintson a **feltétel hozzáadása**elemre.
 
-    ![Kattintson a Feltétel hozzáadása gombra](./media/alerts/3addcondition.png)
+    ![Kattintson a feltétel hozzáadása elemre.](./media/alerts/3addcondition.png)
 
-5. A Jellogika konfigurálása lapon válassza az **Egyéni naplókeresés** lehetőséget.
+5. A jel logikai beállítása lapon válassza az **egyéni naplók keresése** lehetőséget.
 
-    ![Kattintson az egyéni naplókeresésre](./media/alerts/4customlogsearch.png)
+    ![Kattintson az egyéni naplók keresése elemre.](./media/alerts/4customlogsearch.png)
 
-6. Az egyéni naplókeresés lapon írja be a lekérdezést a "Lekérdezés keresése" mezőbe. Ebben a példában az alábbi Kusto lekérdezést fogjuk használni.
+6. Az egyéni naplók keresése lapon adja meg a lekérdezést a "keresési lekérdezés" mezőben. Ebben a példában az alábbi Kusto-lekérdezést fogjuk használni.
     ```kusto
     let percentthreshold = 10;
     let period = 24h;
@@ -59,61 +59,61 @@ Ebben a szakaszban végighaladunk a lekérdezésalapú kivételriasztás beáll�
 
     ```
 
-    ![Lekérdezés beírása a keresési lekérdezés mezőbe](./media/alerts/5searchquery.png)
+    ![Írja be a lekérdezést a keresési lekérdezés mezőbe](./media/alerts/5searchquery.png)
     
     > [!NOTE]
-    > Ezeket a lépéseket más típusú lekérdezésalapú riasztásokra is alkalmazhatja. Ha többet szeretne megtudni a Kusto lekérdezési nyelv ebből [Kusto első lépések doc](https://docs.microsoft.com/azure/kusto/concepts/) vagy ez [az SQL A Kusto cheat sheet](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet)
+    > Ezeket a lépéseket más típusú lekérdezés-alapú riasztásokra is alkalmazhatja. A Kusto lekérdezési nyelvével kapcsolatos további információkért tekintse meg a [Kusto első lépések doc](https://docs.microsoft.com/azure/kusto/concepts/) vagy ez az [SQL to Kusto Cheat Sheet](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet)
 
-7. A "Riasztási logika" területen válassza ki, hogy az eredmények száma vagy metrikamérés alapján. Ezután válassza ki a feltételt (nagyobb, egyenlő, kisebb, mint) és egy küszöbértéket. Az értékek módosítása közben észreveheti, hogy a feltétel előnézeti mondata megváltozik. Ebben a példában az "egyenlő".
+7. A "riasztás logikája" alatt válassza ki, hogy az eredmények vagy a metrika mértékének megfelelően van-e kiválasztva. Ezután válassza ki a feltételt (nagyobb, mint, egyenlő, kisebb, mint) és egy küszöbértéket. Ha megváltoztatja ezeket az értékeket, észreveheti, hogy a feltétel előnézet mondata megváltozik. Ebben a példában a "egyenlő" lehetőséget használjuk.
 
-    ![A Riasztási logika csoportban válasszon a megadott beállítások alapján és a feltétellel, majd írjon be egy küszöbértéket](./media/alerts/6alertlogic.png)
+    ![A riasztási logika területen válasszon a (z) és a feltétel alapján megadott beállítások közül, majd írjon be egy küszöbértéket.](./media/alerts/6alertlogic.png)
 
-8. Az "Értékelés alapján" területen állítsa be az időszakot és a gyakoriságot. Az itt lévő időszaknak meg kell egyeznie a fenti lekérdezésben az időszakra vonatkozóan feltett értékkel. Ezután kattintson **a kész gombra.**
+8. A "kiértékelés alapja" alatt állítsa be az időszakot és a gyakoriságot. Az itt megadott időszaknak egyeznie kell azzal az értékkel, amelyet a fenti lekérdezés időszakára tettünk. Ezután kattintson a **kész**gombra.
 
-    ![Állítsa be az időszakot és a gyakoriságot alul, majd kattintson a kész](./media/alerts/7evaluate.png)
+    ![Állítsa be az időszakot és a gyakoriságot alulra, majd kattintson a kész gombra.](./media/alerts/7evaluate.png)
 
-9. Most már látjuk a feltételt hoztunk létre a becsült havi költség. Az alábbiakban a ["Műveletcsoportok"](../platform/action-groups.md) alatt új csoportot hozhat létre, vagy kiválaszthat egy meglévőt. Ha szeretné, testreszabhatja a műveleteket.
+9. Az általunk létrehozott feltételt a becsült havi költséggel látjuk. Alább a ["műveleti csoportok"](../platform/action-groups.md) alatt létrehozhat egy új csoportot, vagy kijelölhet egy meglévőt. Ha szeretné, testreszabhatja a műveleteket.
 
-    ![kattintson a kijelölésre vagy hozzon létre gombokat a műveletcsoportban](./media/alerts/8actiongroup.png)
+    ![kattintson a kiválasztás vagy Létrehozás gombra a művelet csoportban.](./media/alerts/8actiongroup.png)
 
-10. Végül adja meg a riasztás részleteit (riasztási szabály neve, leírása, súlyossága). Ha elkészült, kattintson a **Figyelmeztetési szabály létrehozása** alján.
+10. Végül adja meg a riasztás részleteit (riasztási szabály neve, leírás, súlyosság). Ha elkészült, kattintson a lenti **riasztási szabály létrehozása** elemre.
 
-    ![A riasztás részletei mezőbe írja be a riasztási szabály nevét, írjon leírást, és válasszon súlyosságot](./media/alerts/9alertdetails.png)
+    ![A riasztás részletei területen adja meg a riasztási szabály nevét, írja be a leírást, és válasszon ki egy súlyosságot.](./media/alerts/9alertdetails.png)
 
-## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Hogyan lehet leiratkozni a klasszikus figyelmeztető e-mail értesítésekről
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Leiratkozás a klasszikus riasztási értesítő e-mailekről
 
-Ez a szakasz **a klasszikus rendelkezésre állási riasztásokra**, **a klasszikus Application Insights-metrikariasztásokra**és a **klasszikus hibaanomáliákriasztásokra vonatkozik.**
+Ez a szakasz a **klasszikus rendelkezésre állási riasztásokra**, a **klasszikus Application Insights metrikai riasztásokra**, valamint a **klasszikus meghibásodási rendellenességekre vonatkozó riasztásokra**vonatkozik.
 
-E-mail értesítéseket kap ezekről a klasszikus értesítésekről, ha az alábbiak bármelyike érvényes:
+E-mail-értesítéseket kap a klasszikus riasztásokról, ha a következők valamelyike érvényes:
 
-* Az e-mail cím a riasztási szabály beállításaiközött található Értesítés e-mail címzettjei mezőben.
+* Az e-mail-cím a riasztási szabály beállításai között található értesítő e-mail címzettjei mezőben szerepel.
 
-* Az a lehetőség, hogy e-mail értesítéseket küldjön a bizonyos szerepkörökkel rendelkező felhasználók az előfizetés aktiválva van, és rendelkezik egy megfelelő szerepkört az adott Azure-előfizetés.
+* Az e-mailes értesítések küldésének lehetősége az előfizetéshez tartozó bizonyos szerepköröket birtokló felhasználók számára aktiválódik, és az adott Azure-előfizetéshez tartozó megfelelő szerepkört kell tárolnia.
 
-![Értesítésképernyő-képernyőkép](./media/alerts/alert-notification.png)
+![Riasztási értesítés képernyőképe](./media/alerts/alert-notification.png)
 
-A biztonság és az adatvédelem jobb szabályozása érdekében általában azt javasoljuk, hogy az **Értesítés e-mail címzettjei** mezőben adja meg kifejezetten a klasszikus riasztások értesítési címzettjeit. A bizonyos szerepköröket betöltő összes felhasználó értesítésének lehetősége a visszamenőleges kompatibilitást biztosítja.
+A biztonság és az adatvédelem jobb szabályozása érdekében általában azt javasoljuk, hogy explicit módon adja meg az értesítés címzettjeit a klasszikus riasztásokhoz az **értesítő e-mail címzettjei** mezőben. A visszamenőleges kompatibilitás érdekében az összes olyan felhasználót értesíteni kell, amely bizonyos szerepkörökkel rendelkezik.
 
-Ha le szeretne iratkozni egy bizonyos figyelmeztető szabály által létrehozott e-mail értesítésekről, távolítsa el az e-mail címét az **Értesítés e-mail címzettjei** mezőből.
+Egy adott riasztási szabály által létrehozott e-mail értesítések lemondásához távolítsa el az e-mail címét az **értesítő e-mail címzettjei** mezőből.
 
-Ha az e-mail címe nem szerepel kifejezetten a listában, javasoljuk, hogy tiltsa le azt a lehetőséget, hogy bizonyos szerepkörök minden tagját automatikusan értesítse, és ehelyett sorolja fel az összes olyan felhasználói e-mailt, amelynek értesítést kell kapnia az adott értesítési szabályról az Értesítés e-mailben. címzettek mezőjében.
+Ha az e-mail-címe explicit módon nem szerepel a listában, javasoljuk, hogy tiltsa le a bizonyos szerepkörök összes tagjának automatikus értesítését, hanem azon felhasználói e-mailek listázása, akiknek a riasztási szabályra vonatkozó értesítéseket kell kapniuk az értesítő e-mail címzettjei mezőben.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja meg a (klasszikus) riasztási értesítéseket?
+## <a name="who-receives-the-classic-alert-notifications"></a>Kik kapják meg a (klasszikus) riasztási értesítéseket?
 
-Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizálni a riasztási értesítéseket annak érdekében, hogy csak a kívánt címzettek kapjanak értesítéseket. Ha többet szeretne megtudni a [klasszikus riasztások](../platform/alerts-classic.overview.md) és az új riasztások közötti különbségről, olvassa el a [riasztások áttekintéséről szóló cikket.](../platform/alerts-overview.md) Ha szabályozni szeretné a riasztási értesítést az új riasztások ban, használja a [műveletcsoportokat.](../platform/action-groups.md)
+Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizálni a riasztási értesítéseket, így biztosítva, hogy csak a kívánt címzettek kapják meg az értesítéseket. Ha többet szeretne megtudni a [klasszikus riasztások](../platform/alerts-classic.overview.md) és az új riasztási élmény közötti különbségről, tekintse meg a [riasztások áttekintése című cikket](../platform/alerts-overview.md). A riasztási értesítések vezérléséhez az új riasztások felületén használjon [műveleti csoportokat](../platform/action-groups.md).
 
-* Azt javasoljuk, hogy a klasszikus riasztási értesítések adott címzettek használatát.
+* A klasszikus riasztási értesítések esetében javasoljuk, hogy adott címzetteket használjon.
 
-* Az Application Insights-metrikákra vonatkozó riasztások (beleértve a rendelkezésre állási mutatókat is) esetén a **tömeges/csoport** jelölőnégyzet, ha engedélyezve van, elküldi az előfizetésben tulajdonosi, közreműködői vagy olvasói szerepkörrel rendelkező felhasználóknak. Valójában _az Application_ Insights-erőforrás hoz az előfizetéshez hozzáféréssel rendelkező összes felhasználó hatóköre van, és értesítéseket kap.
+* A Application Insights metrikákkal kapcsolatos riasztásokhoz (beleértve a rendelkezésre állási metrikákat is), a **csoportos** küldés jelölőnégyzetét, ha engedélyezve van, a tulajdonos, közreműködő vagy olvasó szerepkörrel rendelkező felhasználóknak küldi el az előfizetést. _Minden_ olyan felhasználó, aki hozzáféréssel rendelkezik az előfizetéshez, a Application Insights erőforrás hatókörben van, és értesítést fog kapni.
 
 > [!NOTE]
-> Ha jelenleg a **tömeges/csoport** jelölőnégyzetet használja, és letiltja azt, akkor nem tudja visszaállítani a módosítást.
+> Ha jelenleg a **tömeges/csoportos** jelölőnégyzetet használja, és letiltja, akkor nem fogja tudni visszaállítani a változást.
 
-Használja az új riasztási élményt/közel valós idejű riasztásokat, ha a szerepkörük alapján értesítenie kell a felhasználókat. A [műveletcsoportok](../platform/action-groups.md)segítségével beállíthatja az e-mail értesítéseket a közreműködői/tulajdonosi/olvasói szerepkörrel rendelkező felhasználók számára (nem kombinálva egyetlen lehetőségként).
+Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../platform/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
 
 ## <a name="automation"></a>Automation
-* [A PowerShell használata a riasztások beállításának automatizálásához](../../azure-monitor/app/powershell-alerts.md)
-* [Webhookok használata a riasztásokra adott válasz automatizálásához](../../azure-monitor/platform/alerts-webhooks.md)
+* [A riasztások beállításának automatizálása a PowerShell használatával](../../azure-monitor/app/powershell-alerts.md)
+* [Webhookok használata a riasztásokra való válaszadás automatizálására](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>Lásd még
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB-erőforrások kezelése az Azure Storage Explorer használatával
-description: Ismerje meg, hogyan csatlakozhat az Azure Cosmos DB-hez, és hogyan kezelheti erőforrásait az Azure Storage Explorer használatával.
+title: Azure Cosmos DB erőforrások kezelése a Azure Storage Explorer használatával
+description: Megtudhatja, hogyan csatlakozhat a Azure Cosmos DBhoz, és hogyan kezelheti erőforrásait Azure Storage Explorer használatával.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,20 +8,20 @@ ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
 ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411669"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
 
-Az Azure Cosmos DB Azure Storage Explorerben történő használata lehetővé teszi a felhasználók számára az Azure Cosmos DB-entitások kezelését, az adatok módosítását, valamint a tárolt eljárások és eseményindítók frissítését olyan Azure-entitások mellett, mint a tárolóblobok és üzenetsorok. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat. Ebben az időben az Azure Storage Explorer támogatja az SQL, MongoDB, Graph és table API-khoz konfigurált Cosmos-fiókokat.
+Az Azure Cosmos DB Azure Storage Explorerben történő használata lehetővé teszi a felhasználók számára az Azure Cosmos DB-entitások kezelését, az adatok módosítását, valamint a tárolt eljárások és eseményindítók frissítését olyan Azure-entitások mellett, mint a tárolóblobok és üzenetsorok. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat. Jelenleg Azure Storage Explorer támogatja az SQL, a MongoDB, a Graph és a Table API-khoz konfigurált Cosmos-fiókokat.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Cosmos-fiók SQL API-val vagy az Azure Cosmos DB MongoDB-hoz készült API-jával. Ha nem rendelkezik fiókkal, az Azure Portalon létrehozhat egyet az [Azure Cosmos DB: SQL API-webalkalmazás létrehozása .NET-tel és az Azure Portallal](create-sql-api-dotnet.md) című cikkben leírtaknak megfelelően.
+Egy MongoDB SQL API-val vagy Azure Cosmos DB API-val rendelkező Cosmos-fiók. Ha nem rendelkezik fiókkal, az Azure Portalon létrehozhat egyet az [Azure Cosmos DB: SQL API-webalkalmazás létrehozása .NET-tel és az Azure Portallal](create-sql-api-dotnet.md) című cikkben leírtaknak megfelelően.
 
 ## <a name="installation"></a>Telepítés
 
@@ -59,7 +59,7 @@ Az Azure Cosmos DB-hez történő csatlakozás másik módja a kapcsolati sztrin
 
     ![Csatlakozás a Cosmos DB-hez kapcsolati sztringgel](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Egyelőre csak az SQL és a Table API-t támogatja. Válassza ki az API-t, illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. Az elsődleges kapcsolati karakterlánc beolvasásáról a [Kapcsolati karakterlánc beolvasása](manage-with-powershell.md#list-keys)című témakörben talál további információt.
+2. Egyelőre csak az SQL és a Table API-t támogatja. Válassza ki az API-t, illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. Az elsődleges kapcsolatok karakterláncának beolvasásával kapcsolatos információkért lásd: [a kapcsolatok karakterláncának](manage-with-powershell.md#list-keys)beolvasása.
 
     ![Kapcsolati karakterlánc](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ A következő lépésekkel csatlakozhat az Azure Cosmos DB-hez az Emulator haszn
 
     ![Csatlakozás a Cosmos DB-hez az Emulatorral](./media/storage-explorer/emulator-entry.png)
 
-3. Egyelőre csak az SQL API-t támogatja. Illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. Az elsődleges kapcsolati karakterlánc beolvasásáról a [Kapcsolati karakterlánc beolvasása](manage-with-powershell.md#list-keys)című témakörben talál további információt.
+3. Egyelőre csak az SQL API-t támogatja. Illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. Az elsődleges kapcsolatok karakterláncának beolvasásával kapcsolatos információkért lásd: [a kapcsolatok karakterláncának](manage-with-powershell.md#list-keys)beolvasása.
 
     ![Csatlakozás a Cosmos DB-hez az Emulatorral párbeszédpanel](./media/storage-explorer/emulator-dialog.png)
 
@@ -116,7 +116,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
     ![2. adatbázis törlése](./media/storage-explorer/delete-database2.png) 
 
 #### <a name="create-a-collection"></a>Gyűjtemény létrehozása
-1. Kattintson a jobb gombbal az adatbázisra, válassza a **Gyűjtemény létrehozása parancsot,** majd adja meg a következő információkat, például **a Gyűjteményazonosítót**, **a Tárolókapacitást**stb. A befejezéshez kattintson az **OK** gombra. 
+1. Kattintson a jobb gombbal az adatbázisra, válassza a **gyűjtemény létrehozása**lehetőséget, majd adja meg a következő információkat, például a **gyűjtemény azonosítóját**, a **tárolási kapacitást**stb. A befejezéshez kattintson **az OK** gombra. 
 
     ![1. gyűjtemény létrehozása](./media/storage-explorer/create-collection.png)
 
@@ -213,9 +213,9 @@ Mielőtt továbblépne, indítsa újra az alkalmazást, és ellenőrizze, hogy m
 
 Ennek a hibának többféle oka is lehet, a leggyakoribbak a következők:
 
-+ Egy *átlátszó proxy*mögött van, ami azt jelenti, hogy valaki (például az informatikai részleg) https-forgalmat fog el, visszafejti, majd önaláírt tanúsítvánnyal titkosítja azt.
++ Egy *transzparens proxy*mögött van, ami azt jelenti, hogy valaki (például az informatikai részleg) elfogja a https-forgalmat, visszafejti, majd egy önaláírt tanúsítvánnyal titkosítja.
 
-+ Olyan szoftvert futtat, például víruskereső szoftvert, amely önaláírt TLS/SSL-tanúsítványokat juttat a kapott HTTPS-üzenetekbe.
++ Olyan szoftvereket futtat, mint például a víruskereső szoftver, amely egy önaláírt TLS/SSL-tanúsítványokat szúr be a kapott HTTPS-üzenetbe.
 
 Amikor a Storage Explorer egy ilyen „önaláírt tanúsítványt” észlel, onnantól nem tudja megállapítani, hogy a fogadott HTTPS-üzenetet módosították-e. Ha azonban rendelkezik az önaláírt tanúsítvány egy példányával, akkor beállíthatja, hogy a Storage Explorer megbízzon benne. Ha nem tudja biztosan, hogy ki szúrja be a tanúsítványt, akkor megpróbálhatja kideríteni az alábbi lépések végrehajtásával:
 
@@ -228,7 +228,7 @@ Amikor a Storage Explorer egy ilyen „önaláírt tanúsítványt” észlel, o
 3. Hajtsa végre az `s_client -showcerts -connect microsoft.com:443` parancsot.
 4. Keresse meg az önaláírt tanúsítványokat. Ha nem tudja biztosan, melyik tanúsítvány önaláírt, akkor figyeljen arra, hogy melyiknél azonos a tárgy („s:”) és a kiállító („i:”).
 5.  Ha talált önaláírt tanúsítványokat, másolja ki egyenként a tartalmukat a **---BEGIN CERTIFICATE---** sorral kezdve és az **---END CERTIFICATE---** sorral bezárólag egy-egy új .cer fájlba.
-6.  Nyissa meg a Tárolókezelőt, majd nyissa meg az > **SSL-tanúsítványok** > **importálási tanúsítványainak szerkesztése című területet.** **Edit** A fájlkeresővel keresse meg és nyissa meg a létrehozott .cer-fájlokat.
+6.  Nyissa meg Storage Explorer, majd lépjen az**SSL-tanúsítványok** > **importálása tanúsítványok importálása** **menüpontra** > . A fájlkeresővel keresse meg és nyissa meg a létrehozott .cer-fájlokat.
 
 Ha a fenti lépésekkel nem talál önaláírt tanúsítványokat, küldjön visszajelzést, hogy további segítséget kapjon.
 
@@ -266,7 +266,7 @@ Ha nem tud eltávolítani egy fiókot, vagy ha az újrahitelesítési hivatkozá
   - .extaccounts
 - Ha szeretné eltávolítani az SAS-hez csatolt Storage-erőforrásokat, törölje a következőket:
   - Windows rendszeren az %AppData%/StorageExplorer mappát
-  - /Users/<your_name>/Library/Application SUpport/StorageExplorer for Mac
+  - /Users/<your_name>/Library/Application Support-támogatás/StorageExplorer Mac rendszerhez
   - Linux rendszeren a ~/.config/StorageExplorer mappát
   - Ha ezeket a fájlokat törli, **újra meg kell adnia minden hitelesítő adatát**.
 
@@ -300,7 +300,7 @@ Próbálkozzon a következőkkel:
 
 ## <a name="contact-us"></a>Kapcsolat
 
-Ha egyik megoldás sem működik az Ön számára, küldjön e-mailt az Azure Cosmos DB Dev Tooling Team ()[cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)a probléma részleteivel a problémák megoldásához.
+Ha a megoldások egyike sem működik Önnek, küldjön e-mailt az Azure Cosmos DB fejlesztői szerszámozási[cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)csapatának () a probléma részleteiről, a problémák elhárításához.
 
 ## <a name="next-steps"></a>További lépések
 

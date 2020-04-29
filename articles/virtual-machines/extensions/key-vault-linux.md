@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault virtuálisgép-bővítmény Linuxra
-description: Telepítsen egy ügynököt a Key Vault-tanúsítványok automatikus frissítését a virtuális gépbővítményhasználatával működő virtuális gépeken.
+title: A Linux rendszerhez készült virtuálisgép-bővítmény Azure Key Vault
+description: Telepítsen egy ügynököt, amely a virtuális gépek Key Vault tanúsítványainak automatikus frissítését végzi a virtuálisgép-bővítmény használatával.
 services: virtual-machines-linux
 author: msmbaldwin
 tags: keyvault
@@ -9,33 +9,33 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410867"
 ---
-# <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault virtuális gép kiterjesztése Linuxhoz
+# <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
-A Key Vault virtuális gép bővítmény az Azure key vaultban tárolt tanúsítványok automatikus frissítését biztosítja. Pontosabban a bővítmény a key vaultokban tárolt megfigyelt tanúsítványok listáját figyeli.  A módosítás észlelésekor a bővítmény lekéri és telepíti a megfelelő tanúsítványokat. A Key Vault virtuális gép bővítményét a Microsoft teszi közzé és támogatja, jelenleg Linux-alapú virtuális gépeken. Ez a dokumentum részletezi a támogatott platformok, konfigurációk és üzembe helyezési lehetőségek a Key Vault virtuális gép bővítmény Linux. 
+A Key Vault virtuálisgép-bővítmény az Azure Key vaultban tárolt tanúsítványok automatikus frissítését teszi lehetővé. Pontosabban a bővítmény figyeli a Key vaultban tárolt megfigyelt tanúsítványok listáját.  A módosítás észlelése után a bővítmény lekéri és telepíti a megfelelő tanúsítványokat. A Key Vault VM-bővítményt a Microsoft közzétette és támogatja, jelenleg Linux rendszerű virtuális gépeken. Ez a dokumentum részletesen ismerteti a Linux rendszerhez készült Key Vault virtuálisgép-bővítmény támogatott platformokat, konfigurációkat és telepítési lehetőségeit. 
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Key Vault virtuális gép bővítménye a következő Linux-disztribúciákat támogatja:
+A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúciókat:
 
-- Ubuntu-1604
-- Ubuntu-1804
-- Debian-9
-- Suse-15 között 
+- Ubuntu – 1604
+- Ubuntu – 1804
+- Debian – 9
+- SUSE – 15 
 
-### <a name="supported-certificate-content-types"></a>Támogatott tanúsítványtartalom-típusok
+### <a name="supported-certificate-content-types"></a>Támogatott tanúsítvány-tartalomtípusok
 
 - PKCS #12
 - PEM
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Key Vault virtuálisgép-bővítmény sémáját mutatja be. A bővítmény nem igényel védett beállításokat - minden beállítás biztonsági hatás nélkül információnak minősül. A bővítmény megköveteli a figyelt titkos kulcsok listáját, a lekérdezés gyakoriságát és a céltanúsítvány-tárolót. Ezek a következők:  
+A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti meg. A kiterjesztéshez nincs szükség védett beállításokra – az összes beállítás biztonsági hatás nélkül tekinthető információnak. A bővítményhez meg kell adni a figyelt titkok listáját, a lekérdezés gyakoriságát és a célhely tanúsítványtárolóját. Ezek a következők:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -65,14 +65,14 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját mutatja be
 ```
 
 > [!NOTE]
-> A megfigyelt tanúsítványok URL-címeinek `https://myVaultName.vault.azure.net/secrets/myCertName`a képernyőn kell lennie.
+> A megfigyelt tanúsítványok URL-címeinek `https://myVaultName.vault.azure.net/secrets/myCertName`űrlapnak kell lenniük.
 > 
-> Ennek az `/secrets` az oka, hogy az elérési út `/certificates` a teljes tanúsítványt adja vissza, beleértve a személyes kulcsot is, míg az elérési út nem. A tanúsítványokról további információt itt talál: [Key Vault-tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Ennek az az oka `/secrets` , hogy az elérési út a teljes tanúsítványt adja vissza, beleértve `/certificates` a titkos kulcsot is, míg az elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
-### <a name="property-values"></a>Tulajdonság értékek
+### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték / Példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
@@ -81,16 +81,16 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját mutatja be
 | pollingIntervalInS | 3600 | sztring |
 | certificateStoreName | MY | sztring |
 | linkOnRenewal | hamis | logikai |
-| certificateStoreLocation  | LocalMachine (Helyi gépgép) | sztring |
+| certificateStoreLocation  | LocalMachine | sztring |
 | requiredInitialSync | igaz | logikai |
-| observedCertificates (megfigyelt tanúsítványok)  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonokkal telepíthetők. A sablonok ideálisak egy vagy több olyan virtuális gép telepítésekor, amelyek a tanúsítványok üzembe helyezés utáni frissítését igénylik. A bővítmény telepíthető az egyes virtuális gépek vagy a virtuális gép méretezési csoportok. A séma és a konfiguráció mindkét sablontípusban közös. 
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a tanúsítványok telepítés utáni frissítését igénylik. A bővítmény az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra is telepíthető. A séma és a konfiguráció a sablonok típusainál is gyakori. 
 
-A virtuálisgép-bővítmény JSON-konfigurációját a sablon virtuálisgép-erőforrás-töredékébe kell ágyazni, különösen `"resources": []` a virtuálisgép-sablon objektumába, és az objektum alatt `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` beállított virtuálisgép-méretezés esetén.
+A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-erőforrás szilánkján belül kell beágyazni, kifejezetten `"resources": []` a virtuálisgép-sablonhoz, és az objektum alatt `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` található virtuálisgép-méretezési csoport esetében.
 
 ```json
     {
@@ -119,11 +119,11 @@ A virtuálisgép-bővítmény JSON-konfigurációját a sablon virtuálisgép-er
 ```
 
 
-## <a name="azure-powershell-deployment"></a>Az Azure PowerShell telepítése
+## <a name="azure-powershell-deployment"></a>Azure PowerShell üzemelő példány
 
-Az Azure PowerShell segítségével üzembe helyezheti a Key Vault virtuális gép bővítményegy meglévő virtuális gép vagy virtuális gép méretezési csoport. 
+A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bővítményt egy meglévő virtuális gépre vagy virtuálisgép-méretezési csoportba. 
 
-* A bővítmény üzembe helyezése virtuális gépen:
+* A bővítmény üzembe helyezése egy virtuális gépen:
     
     ```powershell
         # Build settings
@@ -165,11 +165,11 @@ Az Azure PowerShell segítségével üzembe helyezheti a Key Vault virtuális g�
     
     ```
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI üzembe helyezése
+## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
-Az Azure CLI használható a Key Vault virtuális gép bővítményének üzembe helyezéséhez egy meglévő virtuális gépre vagy virtuálisgép-méretezési csoportra. 
+Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítményt egy meglévő virtuális gépre vagy virtuálisgép-méretezési csoportba. 
  
-* A bővítmény üzembe helyezése virtuális gépen:
+* A bővítmény üzembe helyezése egy virtuális gépen:
     
     ```azurecli
        # Start the deployment
@@ -191,17 +191,17 @@ Az Azure CLI használható a Key Vault virtuális gép bővítményének üzembe
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-Kérjük, vegye figyelembe a következő korlátozásokat/követelményeket:
-- A Key Vault korlátozásai:
-  - A telepítés időpontjában léteznie kell. 
-  - A Key Vault hozzáférési házirendje az MSI használatával virtuális gép/VMSS identitáshoz van beállítva
+Vegye figyelembe a következő korlátozásokat/követelményeket:
+- Key Vault korlátozások:
+  - A telepítés időpontjában léteznie kell 
+  - Key Vault hozzáférési szabályzat a VM/VMSS identitáshoz van beállítva az MSI használatával
 
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A bővítmény-üzembe helyezések állapotára vonatkozó adatok az Azure Portalról és az Azure PowerShell használatával is lekérdezhetők. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell használatával.
+A bővítmények állapotával kapcsolatos adatok beolvashatók a Azure Portalból és a Azure PowerShell használatával. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot a Azure PowerShell használatával.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
@@ -215,4 +215,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>Támogatás
 
-Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel az [MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/) Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza a Támogatás beszerezni lehetőséget. Az Azure-támogatás használatáról a [Microsoft Azure támogatási gyIK](https://azure.microsoft.com/support/faq/)című területén olvashat.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

@@ -1,62 +1,62 @@
 ---
-title: Integrációs szolgáltatási környezetek (ISEs-ek) létrehozása a Logic Apps REST API-val
-description: Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API használatával, így az Azure-beli virtuális hálózatok (VNET-k) az Azure Logic Apps-ből érhetők el
+title: Integrációs szolgáltatási környezetek (ISEs) létrehozása Logic Apps REST API
+description: Hozzon létre egy integrációs szolgáltatási környezetet (ISE) a Logic Apps REST API használatával, hogy elérhető legyen az Azure Virtual Networks (virtuális hálózatok) az Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478834"
 ---
-# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API használatával
+# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps használatával REST API
 
-Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic Apps REST API-n keresztül olyan forgatókönyvekhez, ahol a logikai alkalmazásoknak és az integrációs fiókoknak hozzáférésre van szükségük egy [Azure virtuális hálózathoz.](../virtual-network/virtual-networks-overview.md) Az ISE egy elszigetelt környezet, amely dedikált tárolót és más erőforrásokat használ, amelyek elkülönülnek a "globális" több-bérlős Logic Apps szolgáltatástól. Ez a szétválasztás is csökkenti a más Azure-bérlők esetleges hatása az alkalmazások teljesítményét. Az ISE saját statikus IP-címeket is biztosít. Ezek az IP-címek elkülönülnek a statikus IP-címek, amelyek a nyilvános, több-bérlős szolgáltatás logikai alkalmazások által megosztott.
+Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic apps REST API olyan helyzetekben, ahol a logikai alkalmazások és az integrációs fiókok hozzáférést igényelnek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md). Az ISE egy elszigetelt környezet, amely dedikált tárolót és más erőforrásokat használ, amelyeket a "globális" több-bérlős Logic Apps szolgáltatástól elkülönítve tartanak. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Az ISE a saját statikus IP-címeivel is rendelkezik. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
 
-Ise-t is létrehozhat az [Azure Resource Manager-minta-gyorskezelési sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) vagy az Azure [Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)használatával.
+Az ISE-t a [minta Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) gyors üzembe helyezési sablonnal vagy az [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)használatával is létrehozhatja.
 
 > [!IMPORTANT]
-> A logikai alkalmazások, a beépített eseményindítók, a beépített műveletek és az ISE-ben futó összekötők a fogyasztásalapú díjcsomagtól eltérő díjszabási tervet használnak. Ha meg szeretné tudni, hogyan működik az ise-k díjszabása és számlázása, olvassa el a [Logic Apps díjszabási modelljét.](../logic-apps/logic-apps-pricing.md#fixed-pricing) Az árak, lásd: [Logic Apps árképzés.](../logic-apps/logic-apps-pricing.md)
+> A Logic apps, a beépített triggerek, a beépített műveletek és az ISE-ben futó összekötők a fogyasztáson alapuló díjszabási csomagtól eltérő díjszabási csomagot használnak. A ISEs díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatban lásd: [Logic apps díjszabása](../logic-apps/logic-apps-pricing.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ugyanazok [az előfeltételek](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) és [követelmények az ISE-hez való hozzáférés engedélyezéséhez,](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) mint amikor ise-t hoz létre az Azure Portalon
+* Ugyanazok az [Előfeltételek](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) és [követelmények, amelyek lehetővé teszik az ISE hozzáférését](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) , mint amikor egy ISE-t hoz létre a Azure Portal
 
-* Az ise létrehozásához használható eszköz a Logic Apps REST API https PUT-kérelemmel történő hívásával. Használhatja például [a Postman](https://www.getpostman.com/downloads/)alkalmazást, vagy létrehozhat egy logikai alkalmazást, amely végrehajtja ezt a feladatot.
+* Egy eszköz, amellyel létrehozhatja az ISE-t úgy, hogy meghívja a Logic Apps REST API egy HTTPS PUT-kéréssel. Használhatja például a [Poster](https://www.getpostman.com/downloads/)-t, vagy létrehozhat egy logikai alkalmazást, amely elvégzi ezt a feladatot.
 
 ## <a name="send-the-request"></a>A kérelem elküldése
 
-Az ISE létrehozásához hívja meg a Logic Apps REST API-t, tegye meg ezt a HTTPS PUT-kérelmet:
+Az ISE létrehozásához a Logic Apps REST API meghívásával végezze el ezt a HTTPS PUT-kérelmet:
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> A Logic Apps REST API 2019-05-01 verzió megköveteli, hogy saját HTTP PUT-kérelmet ISE-összekötők.
+> A Logic Apps REST API 2019-05-01-es verziójának a saját HTTP PUT-kérelmét kell használnia az ISE-összekötők számára.
 
-A telepítés általában két órán belül befejeződik. Esetenként a telepítés akár négy órát is igénybe vehet. A központi telepítés állapotának ellenőrzéséhez az [Azure Portalon](https://portal.azure.com)az Azure eszköztáron válassza ki az értesítések ikonját, amely megnyitja az értesítések ablaktábláját.
+Az üzembe helyezés általában két órán belül befejeződik. Alkalmanként az üzembe helyezés akár négy órát is igénybe vehet. A központi telepítés állapotának megtekintéséhez a [Azure Portal](https://portal.azure.com)az Azure eszköztárán válassza az értesítések ikont, amely megnyitja az értesítések panelt.
 
 > [!NOTE]
-> Ha az üzembe helyezés sikertelen, vagy törli az ISE-t, az Azure-nak akár egy órába is telhet, mielőtt felszabadítja az alhálózatokat. Ez a késleltetés azt jelenti, hogy előfordulhat, hogy várnia kell, mielőtt újra felhasználná ezeket az alhálózatokat egy másik ISE-ben.
+> Ha az üzembe helyezés sikertelen, vagy törli az ISE-t, az Azure akár egy órát is igénybe vehet az alhálózatok felszabadítása előtt. Ez azt jelenti, hogy előfordulhat, hogy várnia kell, mielőtt újra felhasználja ezeket az alhálózatokat egy másik ISE-ben.
 >
-> Ha törli a virtuális hálózatot, az Azure általában akár két órát is igénybe vehet az alhálózatok felszabadítása előtt, de ez a művelet hosszabb időt vehet igénybe. 
-> Virtuális hálózatok törlésekor győződjön meg arról, hogy nincs enek erőforrások csatlakoztatva. 
-> Lásd: [Virtuális hálózat törlése](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
+> Ha törli a virtuális hálózatot, az Azure általában akár két órával az alhálózatok felszabadítása előtt is eltarthat, de ez a művelet hosszabb időt is igénybe vehet. 
+> A virtuális hálózatok törlésekor győződjön meg arról, hogy egyetlen erőforrás sincs még csatlakoztatva. 
+> Lásd: [virtuális hálózat törlése](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ## <a name="request-header"></a>Kérelem fejléce
 
 A kérelem fejlécében adja meg a következő tulajdonságokat:
 
-* `Content-type`: Állítsa ezt `application/json`a tulajdonságot a értékre.
+* `Content-type`: Állítsa ezt a tulajdonságot `application/json`értékre.
 
-* `Authorization`: Állítsa be ezt a tulajdonságértékét a tulajdonosi jogkivonatra a használni kívánt Azure-előfizetéshez vagy erőforráscsoporthoz hozzáféréssel rendelkező ügyfél számára.
+* `Authorization`: Állítsa ezt a tulajdonságot annak az ügyfélnek a tulajdonosi jogkivonatára, aki hozzáfér a használni kívánt Azure-előfizetéshez vagy erőforráscsoporthoz.
 
 ### <a name="request-body-syntax"></a>Kérelem törzsének szintaxisa
 
-Az ISE létrehozásakor használandó tulajdonságokat az alábbi hivatkozási alapként ismerteti:
+Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehozásakor használandó tulajdonságokat:
 
 ```json
 {
@@ -93,9 +93,9 @@ Az ISE létrehozásakor használandó tulajdonságokat az alábbi hivatkozási a
 }
 ```
 
-### <a name="request-body-example"></a>Törzs igénylése példa
+### <a name="request-body-example"></a>Példa a kérelem szövegtörzsére
 
-Ez a példa kérelem törzse a mintaértékeket mutatja:
+A példaként szolgáló kérelem törzse a következő minta értékeket jeleníti meg:
 
 ```json
 {
@@ -134,6 +134,6 @@ Ez a példa kérelem törzse a mintaértékeket mutatja:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Erőforrások hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
 

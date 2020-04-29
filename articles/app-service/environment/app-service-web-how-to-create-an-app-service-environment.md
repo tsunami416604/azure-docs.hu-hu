@@ -1,6 +1,6 @@
 ---
-title: ASE 1-es eszköz létrehozása
-description: Létrehozási folyamat leírása egy alkalmazásszolgáltatási környezet v1. Ez a dokumentum csak az örökölt v1 ASE-t használó ügyfelek számára érhető el.
+title: Bemutató v1 létrehozása
+description: Az App Service Environment v1-környezet létrehozási folyamatának leírása. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: ccompy
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
 ms.topic: article
@@ -8,66 +8,66 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80477799"
 ---
-# <a name="how-to-create-an-app-service-environment-v1"></a>App Service-környezet létrehozása 1-es v1-ben 
+# <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása 
 
 > [!NOTE]
-> Ez a cikk az App Service-környezet 1-es v1-es programjáról szól. Az App Service-környezet egy újabb verziója könnyebben használható, és hatékonyabb infrastruktúrán fut. Ha többet szeretne megtudni az új verzió kezdődik az [App Service-környezet bemutatása](intro.md).
+> Ez a cikk a App Service Environment v1-es verzióról szól. A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment bevezetésével](intro.md).
 > 
 
 ### <a name="overview"></a>Áttekintés
-Az App Service Environment (ASE) az Azure App Service prémium szintű szolgáltatása, amely olyan továbbfejlesztett konfigurációs képességet biztosít, amely nem érhető el a több-bérlős bélyegzőkben. Az ASE szolgáltatás lényegében telepíti az Azure App Service-t az ügyfél virtuális hálózatába. Az App Service-környezetek által kínált képességek jobb megértéséhez olvassa el a [Mi az App Service-környezet][WhatisASE] dokumentációját.
+A App Service Environment (a bevezetési mód) olyan prémium szintű Azure App Service, amely a több-bérlős bélyegekben nem elérhető, továbbfejlesztett konfigurációs képességet biztosít. A bevezetési funkció lényegében központilag telepíti a Azure App Servicet az ügyfél virtuális hálózatán. A App Service környezetek által kínált képességek jobb megismeréséhez olvassa el a [Mi az a app Service Environment][WhatisASE] dokumentációt.
 
-### <a name="before-you-create-your-ase"></a>Az ASE létrehozása előtt
-Fontos, hogy tudatában legyünk azoknak a dolgoknak, amelyeken nem lehet változtatni. Azok a szempontok, amelyeket nem lehet módosítani az ASE létrehozása után a következők:
+### <a name="before-you-create-your-ase"></a>A bekészítés előtt
+Fontos, hogy tisztában legyenek a nem módosítható dolgokkal. A következő szempontok nem változtathatják meg a saját bevonását a létrehozása után:
 
 * Hely
 * Előfizetés
 * Erőforráscsoport
-* Használt virtuális hálózat
+* Használt VNet
 * Használt alhálózat 
 * Alhálózat mérete
 
-Virtuális hálózat kiválasztásakor és alhálózat megadásakor győződjön meg arról, hogy elég nagy ahhoz, hogy a jövőbeli növekedés hez. 
+A VNet kiválasztásakor és az alhálózat megadásakor győződjön meg arról, hogy elég nagy a jövőbeli növekedéshez. 
 
-### <a name="creating-an-app-service-environment-v1"></a>App Service-környezet létrehozása 1-es v1-es
-App Service-környezet 1-es eszközének létrehozásához keressen az Azure Marketplace for ***App Service Environment v1 alkalmazásban,*** vagy lépjen be az **Erőforrás** -> létrehozása**web + mobilalkalmazás-szolgáltatás** -> **környezetében.** ASEv1 létrehozása:
+### <a name="creating-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása
+App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en ***app Service Environment v1***-re, vagy átléphet az **erőforrás** -> létrehozása**web és mobil** -> **app Service Environment**. ASEv1 létrehozása:
 
-1. Adja meg az ASE nevét. Az ASE-hez megadott nevet a lesz használva az ASE-ben létrehozott alkalmazásokhoz. Ha az ASE neve appsvcenvdemo, az altartomány neve a következő lenne: *appsvcenvdemo.p.azurewebsites.net*. Ha így létrehozott egy app nevű *mytestapp*, lenne címezhető *mytestapp.appsvcenvdemo.p.azurewebsites.net*. Az ASE nevében nem használhat szóközt. Ha a névben nagybetűket használ, a tartománynév lesz a név teljes kisbetűs változata. Ha ILB-t használ, az ASE-név nem az altartományban használatos, hanem explicit módon szerepel az ASE létrehozása során.
+1. Adja meg a beadás nevét. A központhoz megadott nevet a központhoz tartozó elősegítő alkalmazásban létrehozott alkalmazások használják. Ha a appsvcenvdemo neve a következő lesz: *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre egy *mytestapp*nevű alkalmazást, a *mytestapp.appsvcenvdemo.p.azurewebsites.net*címen lehet címezni. A szolgáltató neve nem használható üresen. Ha nagybetűket használ a névben, a tartománynév a név teljes kisbetűs változata lesz. Ha ILB használ, a rendszer nem használja a beléptetési nevet az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
    
     ![][1]
-2. Válassza ki előfizetését. Az ASE-hez használt előfizetés az adott ASE-ben létrehozott összes alkalmazásra is vonatkozik. Az ASE nem helyezhető el egy másik előfizetésben lévő virtuális hálózatban.
-3. Új erőforráscsoport kijelölése vagy megadása. Az ASE-hez használt erőforráscsoportnak meg kell egyeznie a virtuális hálózathoz használt erőforráscsoporttal. Ha egy már meglévő virtuális hálózatot választ, az ASE erőforráscsoport-kiválasztása frissül, hogy tükrözze a virtuális hálózat.
+2. Válassza ki előfizetését. A benyújtó csomaghoz használt előfizetés az adott kiegészítő csomagban létrehozott összes alkalmazásra is érvényes lesz. Egy másik előfizetésben található VNet nem helyezheti üzembe a Bea-t.
+3. Válasszon ki vagy adjon meg egy új erőforráscsoportot. A kiegészítő szolgáltatáshoz használt erőforráscsoporthoz meg kell egyeznie a VNet. Ha már meglévő VNet választ, a rendszer frissíti az erőforráscsoport-kiválasztást a saját VNet.
    
     ![][2]
-4. Adja meg a virtuális hálózat és a hely kiválasztása. Választhat, hogy hozzon létre egy új virtuális hálózatot, vagy válasszon ki egy már meglévő virtuális hálózatot. Ha új virtuális hálózatot választ, megadhatja a nevet és a helyet. Az új virtuális hálózat címtartománya 192.168.250.0/23, és egy **alapértelmezett** nevű alhálózat, amely 192.168.250.0/24. Egyszerűen kiválaszthat egy már meglévő klasszikus vagy erőforrás-kezelő virtuális hálózatot is. A VIP-típus kiválasztása határozza meg, hogy az ASE közvetlenül elérhető-e az internetről (külső), vagy belső terheléselosztót (ILB) használ. Ha többet szeretne megtudni róluk, olvassa el [A belső terheléselosztó használata App Service-környezettel][ILBASE]című részt. Ha kiválaszt egy VIP típusú külső, akkor kiválaszthatja, hogy hány külső IP-címek a rendszer jön létre az IP SSL célokra. Ha a Belső lehetőséget választja, akkor meg kell adnia az ASE által használni kívánt altartományt. Az ASE-k olyan virtuális hálózatokba is telepíthetők, amelyek *nyilvános* címtartományokat *vagy* RFC1918 címtereket (azaz magáncímeket) használnak. Ahhoz, hogy egy nyilvános címtartományú virtuális hálózatot használhasson, előre létre kell hoznia a virtuális hálózatot. Ha kiválaszt egy már meglévő virtuális hálózatot, létre kell hoznia egy új alhálózatot az ASE létrehozása során. **A portálon nem használható előre létrehozott alhálózat. Hozzon létre egy ASE egy már meglévő alhálózat, ha az ASE egy erőforrás-kezelő sablon használatával hoz létre.** AsE sablonból való létrehozásához használja az itt található információkat, [az App Service-környezet létrehozása sablonból][ILBAseTemplate] és itt [az ILB App Service-környezet létrehozása sablonból][ASEfromTemplate].
+4. Adja meg a Virtual Network és a hely beállításait. Dönthet úgy, hogy új VNet hoz létre, vagy egy már meglévő VNet választ. Ha kiválaszt egy új VNet, akkor megadhatja a nevet és a helyet. Az új VNet a 192.168.250.0/23 címtartományt és egy **alapértelmezett** nevű alhálózatot fog tartalmazni, amely 192.168.250.0/24 néven van meghatározva. Egyszerűen kiválaszthat egy már létező klasszikus vagy Resource Manager-VNet is. A virtuális IP-cím típusának meghatározása meghatározza, hogy a központilag elérhető-e közvetlenül az internetről (külső), vagy belső Load Balancert (ILB) használ. Ha többet szeretne megtudni róluk, olvassa el a [belső Load Balancer egy app Service Environment használatával][ILBASE]című témakört. Ha a külső VIP-típust választja, kiválaszthatja, hogy a rendszer hány külső IP-címet hoz létre IP SSL célokra. Ha a belső lehetőséget választja, akkor meg kell adnia azt az altartományt, amelyet a szolgáltató használni fog. A ASE olyan virtuális hálózatokban is üzembe helyezhetők, *amelyek nyilvános címtartományt* *vagy* RFC1918 (például magánhálózati címeket) használnak. Ha nyilvános címtartományt használó virtuális hálózatot szeretne használni, az idő előtt létre kell hoznia a VNet. Egy már meglévő VNet kiválasztásakor létre kell hoznia egy új alhálózatot a beléptetési folyamat létrehozása során. **A portálon nem használhat előre létrehozott alhálózatot. Ha egy Resource Manager-sablonnal hozza létre a bevezetőt, létrehozhat egy meglévő alhálózattal rendelkező bevezetőt is.** Ha egy sablonból szeretne létrehozni egy adatforrást, használja az itt található információkat, [hozzon létre egy app Service Environment a sablonból][ILBAseTemplate] , és itt hozzon létre [egy ILB-app Service Environment a sablonból][ASEfromTemplate].
 
 ### <a name="details"></a>Részletek
-Az ASE 2 előtér-végződéssel és 2 dolgozóval jön létre. Az előtér-végpontok HTTP/HTTPS-végpontként működnek, és forgalmat küldenek a dolgozóknak, amelyek az alkalmazásokat üzemeltető szerepkörök. Módosíthatja a mennyiséget az ASE létrehozása után, és még automatikus skálázási szabályokat is beállíthat ezeken az erőforráskészleteken. Az App Service-környezet manuális skálázásával, kezelésével és figyelésével kapcsolatos további részletekért látogasson el ide: [Az App Service-környezet konfigurálása][ASEConfig] 
+A bekészítés két előtérből és 2 feldolgozóból áll. A kezelőfelületek HTTP/HTTPS-végpontként működnek, és elküldik a forgalmat az alkalmazásokat futtató szerepköröknek. A mennyiséget a bekapcsolás utáni létrehozás után módosíthatja, és beállíthatja az ezen erőforráskészlet-eszközökre vonatkozó automatikusan méretezhető szabályokat is. Az App Service Environment manuális skálázásával, kezelésével és figyelésével kapcsolatos további információkért látogasson el ide: [app Service Environment konfigurálása][ASEConfig] 
 
-Csak az egy ASE létezhet az ASE által használt alhálózatban. Az alhálózat nem használható másra, mint az ASE
+A szolgáltató által használt alhálózatban csak az egyik kiegészítő szolgáltatás létezhet. Az alhálózat nem használható a központhoz tartozó
 
-### <a name="after-app-service-environment-v1-creation"></a>Az App Service-környezet v1 létrehozása után
-Az ASE létrehozása után módosíthatja:
+### <a name="after-app-service-environment-v1-creation"></a>App Service Environment v1 létrehozása után
+A kiegészítő környezet létrehozása után a következőket állíthatja be:
 
-* Az elülső végek mennyisége (minimum: 2)
-* A munkavállalók mennyisége (minimum: 2)
-* Az IP SSL-hez rendelkezésre álló IP-címek mennyisége
-* Az előtér-végződések vagy a dolgozók által használt erőforrásméretek számítása (az előtér minimális mérete P2)
+* Elülső végek mennyisége (minimum: 2)
+* Feldolgozók mennyisége (minimum: 2)
+* IP SSL számára elérhető IP-címek mennyisége
+* Az előtér-és a feldolgozók által használt számítási erőforrások mérete (az előtér minimális mérete P2)
 
-További részletek a manuális skálázás, az App Service-környezetek kezelése és figyelése körül itt: [Az App Service-környezet konfigurálása][ASEConfig] 
+További részletek a App Service környezetek manuális skálázásával, kezelésével és figyelésével kapcsolatban: [app Service Environment konfigurálása][ASEConfig] 
 
-Az automatikus skálázásról itt talál egy útmutatót: [Az automatikus skálázás konfigurálása egy App Service-környezetben][ASEAutoscale]
+Az automatikus skálázással kapcsolatos információkért tekintse meg a következő útmutatót: az automatikus skálázás [konfigurálása app Service Environment][ASEAutoscale]
 
-Vannak további függőségek, amelyek nem érhetők el a testreszabáshoz, például az adatbázis és a tároló. Ezeket az Azure kezeli, és a rendszerhez tartoznak. A rendszertároló legfeljebb 500 GB-ot támogat a teljes App Service-környezetben, és az adatbázist az Azure szükség szerint módosítja a rendszer mérete miatt.
+Vannak olyan további függőségek, amelyek nem érhetők el a testreszabáshoz, például az adatbázishoz és a tároláshoz. Ezeket az Azure kezeli, és a rendszerbe kerül. A rendszer tárterülete legfeljebb 500 GB-ot támogat a teljes App Service Environment számára, és az adatbázist az Azure a rendszer skálázása által igénybe veszik.
 
 ## <a name="getting-started"></a>Első lépések
-Az App Service-környezet v1-es alkalmazásával való ismerkedés: [Bevezetés az App Service-környezet v1-be című témakörben][WhatisASE]
+A App Service Environment v1 használatának megkezdéséhez lásd: [a app Service Environment v1 bemutatása][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

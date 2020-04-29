@@ -1,6 +1,6 @@
 ---
-title: Alhálózat delegálása az Azure NetApp-fájlokba | Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy miként delegálhat alhálózatot az Azure NetApp-fájlokban.
+title: Alhálózat delegálása Azure NetApp Filesra | Microsoft Docs
+description: Leírja, hogyan delegálhat egy alhálózatot Azure NetApp Filesra.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,40 +15,40 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: b-juche
 ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054469"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Alhálózat delegálása az Azure NetApp Fileshoz 
 
-Alhálózatot kell delegálnia az Azure NetApp-fájlokhoz.   Kötet létrehozásakor meg kell adnia a delegált alhálózatot.
+Az alhálózatot Azure NetApp Filesre kell delegálni.   Kötet létrehozásakor meg kell adnia a delegált alhálózatot.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-* Az új alhálózat létrehozásához használt varázsló alapértelmezés szerint /24 hálózati maszkot használ, amely 251 rendelkezésre álló IP-címet biztosít. A /28 hálózati maszk használata, amely 16 használható IP-címet biztosít, elegendő a szolgáltatáshoz.
-* Minden Egyes Azure virtuális hálózat (VNet) csak egy alhálózat delegálható az Azure NetApp-fájlok.   
-   Az Azure lehetővé teszi, hogy több delegált alhálózatot hozzon létre egy virtuális hálózatban.  Ha azonban egynél több delegált alhálózatot használ, az új kötet létrehozására tett kísérletek sikertelenek lesznek.
-* A delegált alhálózatban nem jelölhet ki hálózati biztonsági csoportot vagy szolgáltatásvégpontot. Ha így tesz, az alhálózati delegálás sikertelen lesz.
-* A kötetek globális társviszony-létesítési virtuális hálózatról való hozzáférése jelenleg nem támogatott.
-* Az Azure NetApp-fájlok által delegált alhálózathoz címelőtaggal (cél) rendelkező, [felhasználó által definiált egyéni útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) létrehozása nem támogatott. Ha így tesz, hatással lesz a virtuális gép kapcsolatára.
+* A varázsló egy új alhálózat alapértelmezett értékének egy/24 hálózati maszkban való létrehozására szolgál, amely 251 elérhető IP-címekkel rendelkezik. A/28 hálózati maszk használatával, amely 16 használható IP-címet biztosít, elegendő a szolgáltatáshoz.
+* Minden egyes Azure-Virtual Network (VNet) esetében csak egy alhálózat delegálható Azure NetApp Fileshoz.   
+   Az Azure lehetővé teszi, hogy több delegált alhálózatot hozzon létre egy VNet.  Az új kötetek létrehozására tett kísérletek azonban sikertelenek lesznek, ha egynél több delegált alhálózatot használ.
+* A delegált alhálózatban nem lehet hálózati biztonsági csoportot vagy szolgáltatási végpontot kijelölni. Ennek hatására az alhálózat-delegálás sikertelen lesz.
+* A globálisan összetartozó virtuális hálózatokból származó kötetek hozzáférése jelenleg nem támogatott.
+* A [felhasználó által definiált egyéni útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) létrehozása a (z) előtaggal rendelkező virtuálisgép-alhálózatokon a következőhöz delegált alhálózatok nem támogatottak: Azure NetApp files. Ez hatással lesz a virtuális gép kapcsolatára.
 
 ## <a name="steps"></a>Lépések 
-1.  Nyissa meg a **virtuális hálózatok** panelt az Azure Portalon, és válassza ki az Azure NetApp-fájlokhoz használni kívánt virtuális hálózatot.    
+1.  Lépjen a Azure Portal **virtuális hálózatok** paneljére, és válassza ki a Azure NetApp Files használni kívánt virtuális hálózatot.    
 
-1. Válassza **az Alhálózatok elemet** a Virtuális hálózat panelen, és kattintson az **+Alhálózat** gombra. 
+1. Válassza ki az **alhálózatok** elemet a virtuális hálózat panelen, és kattintson a **+ alhálózat** gombra. 
 
-1. Hozzon létre egy új alhálózatot az Azure NetApp-fájlok számára az Alhálózat hozzáadása lap következő szükséges mezőinek kitöltésével:
-    * **Név**: Adja meg az alhálózat nevét.
-    * **Címtartomány**: Adja meg az IP-címtartományt.
-    * **Alhálózat delegálása**: Válassza a **Microsoft.NetApp/volumes lehetőséget.** 
+1. Hozzon létre egy új alhálózatot, amelyet a Azure NetApp Files használhat az alhálózat hozzáadása lapon a következő kötelező mezők kitöltésével:
+    * **Név**: adja meg az alhálózat nevét.
+    * **Címtartomány**: az IP-címtartomány megadására szolgáló tartomány.
+    * **Alhálózat delegálása**: válassza a **Microsoft. NetApp/kötetek**lehetőséget. 
 
       ![Alhálózat delegálása](../media/azure-netapp-files/azure-netapp-files-subnet-delegation.png)
     
-Alhálózatot is létrehozhat és delegálhat, amikor [kötetet hoz létre az Azure NetApp Files számára.](azure-netapp-files-create-volumes.md) 
+Létrehozhat és delegálhat egy alhálózatot is, amikor [kötetet hoz létre a Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md). 
 
 ## <a name="next-steps"></a>További lépések  
 * [Kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)
-* [További információ az Azure-szolgáltatások virtuális hálózati integrációjáról](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 
 

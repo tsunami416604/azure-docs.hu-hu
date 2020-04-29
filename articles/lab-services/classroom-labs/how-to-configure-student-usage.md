@@ -1,6 +1,6 @@
 ---
-title: Használati beállítások konfigurálása az Azure Lab Services tantermi laboratóriumaiban
-description: Ismerje meg, hogyan konfigurálhatja a diákok számát egy labor, kap őket regisztrált a laborban, szabályozhatja, hogy hány órát használhatják a virtuális gép, és így tovább.
+title: Használati beállítások konfigurálása a tanterem Labs-ban Azure Lab Services
+description: Megtudhatja, hogyan konfigurálhatja a tanulók számát a laborban, regisztrálhatja őket a laborban, meghatározhatja, hogy hány órát használhatnak a virtuális gép, és így tovább.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,206 +14,206 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 2697bed77263bb5b8349898765851a9b87992279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159455"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 
-Ez a cikk ismerteti, hogyan adhat hozzá tanuló felhasználókat egy laborba, regisztrálja őket a laborban, szabályozhatja, hogy hány további órákat használhatják a virtuális gép (VM), és így tovább. 
+Ez a cikk azt ismerteti, hogyan lehet tanuló felhasználókat felvenni egy laborba, regisztrálni őket a laborban, szabályozni a virtuális gépet (VM) használó további órák számát, és így tovább. 
 
 ## <a name="add-users-to-a-lab"></a>Felhasználók hozzáadása laborhoz
 
-Ebben a szakaszban manuálisan vagy CSV-fájl feltöltésével adhat hozzá diákokat egy laborhoz. Tegye a következőket:
+Ebben a szakaszban a tanulókat manuálisan vagy egy CSV-fájl feltöltésével adja hozzá a laborhoz. Tegye a következőket:
 
-1. A bal oldali ablaktáblában válassza a **Felhasználók**lehetőséget. 
+1. A bal oldali ablaktáblán válassza a **felhasználók**lehetőséget. 
 
-    Alapértelmezés szerint a **Hozzáférés korlátozása** beállítás be van kapcsolva, és ha csak a felhasználók listájában szerepelnek, a diákok nem regisztrálhatnak a tesztkörnyezetben, még akkor sem, ha rendelkeznek regisztrációs hivatkozással. Csak a felsorolt felhasználók regisztrálhatnak a tesztkörnyezetben az elküldött regisztrációs hivatkozás használatával. Ebben az eljárásban felhasználókat vesz fel a listára. Másik lehetőségként kikapcsolhatja **a Hozzáférés korlátozása**lehetőséget, amely lehetővé teszi a diákok számára, hogy regisztráljanak a laborban, feltéve, hogy rendelkeznek a regisztrációs hivatkozással. 
+    Alapértelmezés szerint a **hozzáférés korlátozása** beállítás be van kapcsolva, és ha a felhasználók listáján szerepelnek, a tanulók nem regisztrálhatnak a laborba, még akkor sem, ha regisztrációs hivatkozással rendelkeznek. Csak a felsorolt felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával. Ebben az eljárásban felhasználókat vesz fel a listára. Azt is megteheti, hogy kikapcsolja a **hozzáférés korlátozása**lehetőséget, amely lehetővé teszi a tanulók számára, hogy regisztráljanak a laborban, amennyiben rendelkeznek a regisztrációs hivatkozással. 
 
-1. A **Felhasználók** ablaktábla tetején válassza a **Felhasználók hozzáadása**lehetőséget, majd a **Hozzáadás e-mail cím szerint**lehetőséget. 
+1. A **felhasználók** ablaktábla tetején válassza a **felhasználók hozzáadása**lehetőséget, majd válassza a **Hozzáadás e-mail-cím alapján**lehetőséget. 
 
-    ![A "Felhasználók hozzáadása" gomb](../media/how-to-configure-student-usage/add-users-button.png)
+    ![A "felhasználók hozzáadása" gomb](../media/how-to-configure-student-usage/add-users-button.png)
 
-1. A **Felhasználók hozzáadása** ablaktáblán adja meg a diákok e-mail címét külön sorokban vagy pontosvesszővel elválasztott egysorban. 
+1. A **felhasználók hozzáadása** panelen adja meg a tanulók e-mail-címeit külön vonalakon, vagy egyetlen sorban pontosvesszővel elválasztva. 
 
     ![Felhasználók e-mail címeinek hozzáadása](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 
 1. Kattintson a **Mentés** gombra. 
 
-    A lista megjeleníti az aktuális felhasználók e-mail címét és állapotát, függetlenül attól, hogy regisztrálva vannak-e a tesztkörnyezetben vagy sem. 
+    A lista megjeleníti az aktuális felhasználók e-mail-címeit és állapotát, függetlenül attól, hogy regisztrálva vannak-e a laborban. 
 
     ![Felhasználók listája](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
-    > Miután a diákok regisztráltak a laborban, a lista megjeleníti a nevüket. A listában látható név az Azure Active Directoryban a diákok vezeték- és keresztnevei alapján épül fel. 
+    > Miután a tanulók regisztrálva lettek a laborban, a lista megjeleníti a nevüket. A listában megjelenő név a Azure Active Directory tanulóinak vezetékneve és vezetékneve alapján jön létre. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Felhasználók hozzáadása CSV-fájl feltöltésével
 
-A felhasználókat az e-mail címüket tartalmazó CSV-fájl feltöltésével is hozzáadhatja.
+Hozzáadhat felhasználókat úgy is, hogy feltölt egy CSV-fájlt, amely tartalmazza az e-mail-címüket.
 
-1. A Microsoft Excelben hozzon létre egy CSV-fájlt, amely egy oszlopban sorolja fel a diákok e-mail címeit.
+1. A Microsoft Excelben hozzon létre egy CSV-fájlt, amely egy oszlopban a tanulók e-mail-címeit listázza.
 
-    ![CsV-fájlban lévő felhasználók listája](../media/how-to-configure-student-usage/csv-file-with-users.png)
+    ![CSV-fájlban lévő felhasználók listája](../media/how-to-configure-student-usage/csv-file-with-users.png)
 
-1. A **Felhasználók** ablaktábla tetején válassza a **Felhasználók hozzáadása**lehetőséget, majd a **CSV feltöltése**lehetőséget.
+1. A **felhasználók** ablaktábla tetején válassza a **felhasználók hozzáadása**lehetőséget, majd válassza a CSV-fájl **feltöltése**lehetőséget.
 
     ![A "CSV feltöltése" gomb](../media/how-to-configure-student-usage/upload-csv-button.png)
 
-1. Jelölje ki a diákok e-mail címeit tartalmazó CSV-fájlt, majd válassza a **Megnyitás**gombot.
+1. Válassza ki a diákok e-mail-címeit tartalmazó CSV-fájlt, majd kattintson a **Megnyitás**gombra.
 
-    A **Felhasználók hozzáadása** ablak ban a CSV-fájlból származó e-mail címlista jelenik meg. 
+    A **felhasználók hozzáadása** ablakban megjelenik az e-mail-címek listája a csv-fájlból. 
 
-    ![A "Felhasználók hozzáadása" ablak a CSV-fájlból származó e-mail címekkel](../media/how-to-configure-student-usage/add-users-window.png)
+    ![A "felhasználók hozzáadása" ablak a CSV-fájlból származó e-mail-címekkel](../media/how-to-configure-student-usage/add-users-window.png)
 
 1. Kattintson a **Mentés** gombra. 
 
-1. A **Felhasználók** ablaktáblán tekintse meg a hozzáadott diákok listáját. 
+1. A **felhasználók** ablaktáblán tekintse meg a felvett diákok listáját. 
 
-    ![A hozzáadott felhasználók listája a "Felhasználók" ablaktáblán](../media/how-to-configure-student-usage/list-of-added-users.png)
+    ![A "felhasználók" ablaktáblán felvett felhasználók listája](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="send-invitations-to-users"></a>Meghívók küldése a felhasználóknak
 
-Ha regisztrációs hivatkozást szeretne küldeni az új felhasználóknak, használja az alábbi módszerek egyikét. 
+Az új felhasználóknak szóló regisztrációs hivatkozás elküldéséhez használja az alábbi módszerek egyikét. 
 
-Ha a **hozzáférés korlátozása** beállítás engedélyezve van a tesztkörnyezetben, csak a felsorolt felhasználók használhatják a regisztrációs hivatkozást a tesztkörnyezetbe való regisztrációhoz. A beállítás alapértelmezés szerint engedélyezett. 
+Ha a **hozzáférés korlátozása** beállítás engedélyezve van a laborban, csak a felsorolt felhasználók használhatják a regisztrációs hivatkozást a laborba való regisztrációhoz. A beállítás alapértelmezés szerint engedélyezett. 
 
-### <a name="invite-all-users"></a>Az összes felhasználó meghívása
+### <a name="invite-all-users"></a>Minden felhasználó meghívása
 
-Ez a módszer bemutatja, hogyan küldhet e-mailt egy regisztrációs linkkel és egy választható üzenetet az összes felsorolt diáknak.
+Ez a módszer azt mutatja be, hogyan küldhet e-mailt egy regisztrációs hivatkozással, és egy opcionális üzenetet az összes felsorolt tanulónak.
 
-1. A **Felhasználók** ablaktáblán válassza az **Összes meghívása**lehetőséget. 
+1. A **felhasználók** ablaktáblán válassza az **összes meghívása**lehetőséget. 
 
-    ![A "Mindenki meghívása" gomb](../media/tutorial-setup-classroom-lab/invite-all-button.png)
+    ![Az "összes meghívása" gomb](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-1. A **Meghívó küldése e-mailben** ablakban írjon be egy nem kötelező üzenetet, majd válassza **a Küldés lehetőséget.** 
+1. A **Meghívás küldése e-mailben** ablakban adjon meg egy opcionális üzenetet, majd válassza a **Küldés**lehetőséget. 
 
-    Az e-mail automatikusan tartalmazza a regisztrációs linket. A regisztrációs hivatkozás külön-külön történő beírásához és mentéséhez jelölje ki a három pontot (**...**) a **Felhasználók** ablaktábla tetején, majd a Regisztrációs **hivatkozás t**. 
+    Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. A regisztrációs hivatkozás külön beszerzéséhez és mentéséhez válassza a **felhasználók** ablaktábla tetején található három pontot (**..**.), majd válassza a **regisztrációs hivatkozás**lehetőséget. 
 
-    ![A "Regisztrációs hivatkozás küldése e-mailben" ablak](../media/tutorial-setup-classroom-lab/send-email.png)
+    ![A "regisztrációs hivatkozás küldése e-mailben" ablak](../media/tutorial-setup-classroom-lab/send-email.png)
 
-    A **Felhasználók** lista **Meghívó** oszlopa minden hozzáadott felhasználó meghívási állapotát megjeleníti. Az állapotnak **Küldés,** majd **Elküldés \<dátuma>** lesz. 
+    A **felhasználók** lista **Meghívási** oszlopa megjeleníti az egyes hozzáadott felhasználók Meghívási állapotát. Az állapotnak a **Küldés** gombra kell váltania, majd el kell **küldenie \<a dátumot>**. 
 
-### <a name="invite-selected-users"></a>Kijelölt felhasználók meghívása
+### <a name="invite-selected-users"></a>Kiválasztott felhasználók meghívása
 
-Ez a módszer megmutatja, hogyan hívhat szanaát csak bizonyos diákokra, és hogyan kaphat egy regisztrációs linket, amelyet megoszthat másokkal.
+Ez a módszer azt mutatja be, hogyan hívhat meg csak bizonyos tanulókat, és hogyan szerezhet be olyan regisztrációs hivatkozást, amelyet másokkal is megoszthat.
 
-1. A **Felhasználók** ablaktáblán jelöljön ki egy vagy több tanulót a listában. 
+1. A **felhasználók** ablaktáblán válasszon ki egy tanulót vagy több tanulót a listában. 
 
-1. A kijelölt tanuló sorában jelölje ki a **boríték** ikont, vagy az eszköztáron válassza a **Meghívás lehetőséget.** 
+1. A kiválasztott diák sorában válassza a **boríték** ikont, vagy az eszköztáron válassza a **meghívás**lehetőséget. 
 
-    ![Kijelölt felhasználók meghívása](../media/how-to-configure-student-usage/invite-selected-users.png)
+    ![Kiválasztott felhasználók meghívása](../media/how-to-configure-student-usage/invite-selected-users.png)
 
-1. A **Meghívó küldése e-mailben** ablakban írjon be egy nem kötelező **üzenetet**, majd válassza **a Küldés lehetőséget.** 
+1. A **Meghívás küldése e-mailben** ablakban adjon meg egy opcionális **üzenetet**, majd válassza a **Küldés**lehetőséget. 
 
-    ![E-mail küldése a kijelölt felhasználóknak](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
+    ![E-mail küldése a kiválasztott felhasználóknak](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
-    A **Felhasználók** ablaktábla a művelet állapotát jeleníti meg a tábla **Meghívó** oszlopában. A meghívó e-mail tartalmazza a regisztrációs linket, amelyet a diákok a laborban való regisztrációhoz használhatnak.
+    A **felhasználók** ablaktábla a tábla **meghívás** oszlopában jeleníti meg a művelet állapotát. A meghívó e-mail-címe tartalmazza azt a regisztrációs hivatkozást, amelyet a tanulók a laborban használhatnak a regisztráláshoz.
 
-## <a name="get-the-registration-link"></a>A regisztrációs hivatkozás beszereznie
+## <a name="get-the-registration-link"></a>Regisztrációs hivatkozás beszerzése
 
-Ebben a szakaszban a regisztrációs linket a portálról szerezheti be, és elküldheti a saját e-mail alkalmazásából. 
+Ebben a szakaszban a portálról kérheti le a regisztrációs hivatkozást, és elküldheti azt a saját e-mail alkalmazásával. 
 
-1. A **Felhasználók** ablaktáblán válassza a **Regisztrációs hivatkozás lehetőséget.**
+1. A **felhasználók** ablaktáblán válassza a **regisztrációs hivatkozás**lehetőséget.
 
     ![A diákok regisztrációs hivatkozása](../media/how-to-configure-student-usage/registration-link-button.png)
 
-1. A **Felhasználó regisztrációja** ablakban válassza a **Másolás**lehetőséget, majd a **Kész**lehetőséget. 
+1. A **felhasználó regisztrálása** ablakban válassza a **Másolás**lehetőséget, majd válassza a **kész**lehetőséget. 
 
-    ![A "Felhasználói regisztráció" ablak](../media/how-to-configure-student-usage/registration-link.png)
+    ![A "felhasználói regisztráció" ablak](../media/how-to-configure-student-usage/registration-link.png)
 
     A rendszer a vágólapra másolja a hivatkozást. 
     
-1. Az e-mail alkalmazásban illessze be a regisztrációs hivatkozást, majd küldje el az e-mailt egy tanulónak, hogy a tanuló regisztrálhasson az osztályra. 
+1. Az e-mail-alkalmazásban illessze be a regisztrációs hivatkozást, majd küldje el az e-mailt egy tanulónak, hogy a tanuló regisztráljon az osztályra. 
 
 ## <a name="view-registered-users"></a>Regisztrált felhasználók megtekintése
 
-1. Nyissa meg az [Azure Lab Services](https://labs.azure.com) webhelyét. 
-1. Válassza **a Bejelentkezés**lehetőséget, majd adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is.
-1. A **Saját laborok** lapon válassza ki azt a tesztkörnyezetet, amelynek használatát nyomon szeretné követni. 
-1. A bal oldali ablaktáblában válassza a **Felhasználók**lehetőséget, vagy válassza a **Felhasználók csempét.** 
+1. Lépjen a [Azure Lab Services](https://labs.azure.com) webhelyére. 
+1. Válassza a **Bejelentkezés**lehetőséget, majd adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is.
+1. A **saját laborok** oldalon válassza ki azt a labort, amelynek a felhasználását nyomon szeretné követni. 
+1. A bal oldali ablaktáblán válassza a **felhasználók**lehetőséget, vagy válassza a **felhasználók** csempét. 
 
-    A **Felhasználók** ablaktábla megjeleníti azoknak a diákoknak a listáját, akik regisztráltak a laborban.  
+    A **felhasználók** ablaktáblán megjelenik azoknak a tanulóknak a listája, akik regisztrálva vannak a laborban.  
 
     ![Regisztrált felhasználók listája](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Kvóták beállítása a felhasználók számára
 
-Minden tanulóhoz az alábbi módon állíthatsz be egy órakvótát: 
+Az egyes tanulók számára a következő módon állíthat be egy órás kvótát: 
 
-1. A **Felhasználók** ablaktáblán válassza a **Felhasználónkénti kvóta: \<az eszköztáron> óra(ok) számát.** 
-1. A **Felhasználónkénti kvóta** ablakban adja meg, hogy hány órát szeretne adni minden tanulónak az ütemezett óraidőn kívül, majd válassza a **Mentés gombot.**
+1. A **felhasználók** ablaktáblán válassza a **kvóta felhasználónként: \<szám> óra** lehetőséget az eszköztáron. 
+1. A **kvóta felhasználónként** ablakban adja meg, hogy hány órát szeretne adni az egyes tanulóknak az ütemezett osztály időpontján kívül, majd válassza a **Mentés**lehetőséget.
 
-    ![A "Kvóta felhasználónként" ablak](../media/how-to-configure-student-usage/quota-per-user.png)    
+    ![A "kvóta felhasználónként" ablak](../media/how-to-configure-student-usage/quota-per-user.png)    
 
-    A módosított értékek mostantól megjelennek a **felhasználónkénti \<kvótán: az** eszköztáron és a felhasználók listájában>gomb száma, az itt látható módon:
+    A módosított értékek mostantól a **kvóta felhasználónként: \<órák száma>** gomb az eszköztáron és a felhasználók listájában jelennek meg, ahogy az itt látható:
 
-    ![Kvótaórák felhasználónként](../media/how-to-configure-student-usage/quot-per-user-after.png)
+    ![Kvóta órája felhasználónként](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
     > [!IMPORTANT]
-    > A [virtuális gépek ütemezett futási ideje](how-to-create-schedules.md) nem számít bele a diákoknak kiosztott kvótába. A kvóta a diákok által a virtuális gépekre fordított ütemezett órákon kívül töltött időre vonatkozik. 
+    > A [virtuális gépek ütemezett futási ideje](how-to-create-schedules.md) nem számít bele a tanulók számára kiosztott kvótába. A kvóta az ütemezett órákon kívüli időre szól, amelyet a tanuló a virtuális gépeken tölt. 
 
 ## <a name="set-additional-quotas-for-specific-users"></a>További kvóták beállítása adott felhasználók számára
 
-Az előző szakaszban az összes felhasználószámára beállított közös kvótákon túl is megadhat kvótákat bizonyos diákok számára. Ha például oktatóként 10 órára állítja be az összes tanuló kvótáját, és további 5 órás kvótát állít be egy adott tanulóra vonatkozóan, akkor az a tanuló 15 (10 + 5) óra kvótát kap. Ha később módosítja a közös kvótát, például 15-re, a tanuló 20 (15 + 5) óra kvótát kap. Ne feledje, hogy ez a teljes kvóta kívül esik az ütemezett időponton. Az az idő, amelyet egy diák egy tesztkörnyezetvirtuális gépen tölt az ütemezett időpontban, nem számít bele ebbe a kvótába. 
+Bizonyos tanulók számára megadhat kvótákat az előző szakaszban szereplő összes felhasználóhoz beállított általános kvótán kívül. Ha például oktatóként állítja be a kvótát az összes tanuló számára 10 órára, és egy adott diák esetében 5 óra további kvótát állít be, a tanuló 15 (10 + 5) órányi kvótát kap. Ha később módosítja a közös kvótát, mondjuk 15, a tanuló 20 (15 + 5) kvótát kap. Ne feledje, hogy ez az általános kvóta kívül esik az ütemezett időponton. Az az idő, ameddig a tanuló egy laboratóriumi virtuális gépen az ütemezett időpontra költ, nem számít bele a kvótába. 
 
 További kvóták beállításához tegye a következőket:
 
-1. A **Felhasználók** ablaktáblán jelöljön ki egy tanulót a listából, majd válassza a **Kvóta beállítása lehetőséget** az eszköztáron. 
+1. A **felhasználók** ablaktáblán válasszon ki egy tanulót a listából, majd válassza a **kvóta módosítása** lehetőséget az eszköztáron. 
 
-    ![A "Kvóta beállítása" gomb](../media/how-to-configure-student-usage/adjust-quota-button.png)
+    ![A "kvóta módosítása" gomb](../media/how-to-configure-student-usage/adjust-quota-button.png)
 
-1. A **kijelölt felhasználó \<vagy felhasználók e-mail-címének módosítása>** adja meg a kijelölt tanulónak vagy diákoknak megadni kívánt további laborórák számát, majd válassza az **Alkalmaz**lehetőséget. 
+1. A **kiválasztott felhasználó vagy felhasználók \<e-mail-címére vonatkozó kvóta módosítása>** adja meg a kiválasztott tanuló vagy tanulók számára biztosítani kívánt további labor-órák számát, majd válassza az **alkalmaz**lehetőséget. 
 
-    ![A "Kvóta módosítása ..." Ablak](../media/how-to-configure-student-usage/additional-quota.png)
+    ![A "kvóta módosítása..." ablak](../media/how-to-configure-student-usage/additional-quota.png)
 
-    A **Használat** oszlop a kijelölt diákok frissített kvótáját jeleníti meg. 
+    A **használat** oszlopban látható a kiválasztott tanulók frissített kvótája. 
 
-    ![Új használat a felhasználó számára](../media/how-to-configure-student-usage/new-usage-hours.png)
+    ![A felhasználó új használata](../media/how-to-configure-student-usage/new-usage-hours.png)
 
-## <a name="student-accounts"></a>Diákfiókok
+## <a name="student-accounts"></a>Tanulói fiókok
 
-Ha tanulókat szeretne felvenni egy tanterem-laborba, használja az e-mail fiókjukat. A diákok a következő típusú e-mail fiókkal rendelkezhetnek:
+Ha tanulókat szeretne felvenni egy osztályterem laborba, használja az e-mail-fiókjait. A diákok a következő típusú e-mail-fiókokkal rendelkezhetnek:
 
-- A hallgatói e-mail-fiók, amelyet a universitys Azure Active Directory-példánya biztosít az Office 365-be. 
-- Microsoft-tartományos e-mail fiók, például *outlook.com,* *hotmail.com,* *msn.com*vagy *live.com.*
-- Nem microsoftos e-mail fiók, például a Yahoo! vagy a Google. Az ilyen típusú fiókokat azonban microsoftos fiókkal kell összekapcsolni.
-- Egy GitHub-fiók. Ezt a fiókot Microsoft-fiókkal kell összekapcsolni.
+- A Student-féle e-mail-fiók, amelyet az egyetemi Azure Active Directory Office 365-példánya biztosít. 
+- Egy Microsoft-tartományi e-mail-fiók, például a *Outlook.com*, a *hotmail.com*, a *MSN.com*vagy a *Live.com*.
+- Nem a Microsofttól származó e-mail-fiók, például egy Yahoo! által biztosított vagy a Google. Az ilyen típusú fiókoknak azonban Microsoft-fiókhoz kell kapcsolódniuk.
+- Egy GitHub-fiók. Ennek a fióknak egy Microsoft-fiók-vel kell összekapcsolnia.
 
-### <a name="use-a-non-microsoft-email-account"></a>Nem Microsoft os e-mail fiók használata
-A diákok nem microsoftos e-mail fiókok használatával regisztrálhatnak és bejelentkezhetnek egy tantermi laborba.  A regisztráció hoz azonban először létre egy Microsoft-fiókot, amely a nem microsoftos e-mail címükhöz kapcsolódik.
+### <a name="use-a-non-microsoft-email-account"></a>Nem a Microsofttól származó e-mail-fiók használata
+A tanulók a nem a Microsofttól származó e-mail-fiókokkal regisztrálhatnak és bejelentkezhetnek egy osztályterem laborba.  A regisztrációhoz azonban először létre kell hoznia egy Microsoft-fiók, amely a nem a Microsoft e-mail-címéhez van csatolva.
 
-Előfordulhat, hogy sok diák rendelkezik már olyan Microsoft-fiókkal, amely a nem microsoftos e-mail címéhez kapcsolódik. A diákok például már rendelkeznek Microsoft-fiókkal, ha más Microsoft-termékekkel vagy -szolgáltatásokkal , például az Office-szal, a Skype-pal, a OneDrive-val vagy a Windows-szal használták az e-mail címüket.  
+Előfordulhat, hogy számos tanuló már rendelkezik egy Microsoft-fiók, amely nem a Microsoft e-mail-címéhez van csatolva. Például a tanulóknak már van Microsoft-fiókuk, ha az e-mail-címüket más Microsoft-termékekkel vagy-szolgáltatásokkal (például Office, Skype, OneDrive vagy Windows) használták.  
 
-Amikor a diákok a regisztrációs linksegítségével jelentkeznek be egy osztályterembe, a rendszer kéri az e-mail címük és a jelnevük megírására. Azok a diákok, akik nem Microsoft-fiókkal próbálnak bejelentkezni, nem microsoftos fiókkal, a következő hibaüzenetet kapják: 
+Ha a tanulók a regisztrációs hivatkozásra kattintva bejelentkeznek egy osztályterembe, a rendszer kéri az e-mail-címük és jelszavuk megadását. Azok a tanulók, akik nem a Microsoft-fiókhoz kapcsolódó nem Microsoft-fiókkal próbálnak bejelentkezni, a következő hibaüzenetet kapják: 
 
-![Hibaüzenet a bejelentkezéskor](../media/how-to-configure-student-usage/cant-find-account.png)
+![Bejelentkezéskor megjelenő hibaüzenet](../media/how-to-configure-student-usage/cant-find-account.png)
 
-Az alábbiakban egy linket olvashat, amelyen a diákok [regisztrálhatnak egy Microsoft-fiókra.](http://signup.live.com)  
+A diákoknak itt egy hivatkozása van a [Microsoft-fiókra való feliratkozáshoz](http://signup.live.com).  
 
 > [!IMPORTANT]
-> Amikor a diákok bejelentkeznek egy tantermi laborba, nem kapnak lehetőséget Microsoft-fiók létrehozására. Ezért azt javasoljuk, hogy ezt a regisztrációs http://signup.live.comhivatkozást, az osztályteremben a labor regisztrációs e-mailben, amelyet nem Microsoft-fiókokat használó diákoknak küld.
+> Ha a tanulók bejelentkeznek egy osztályterem laborba, nem kapnak lehetőséget a Microsoft-fiók létrehozására. Ezért javasoljuk, hogy ezt a regisztrációs hivatkozást, http://signup.live.coma nem Microsoft-fiókokat használó tanulók számára elküldött tantermi labor regisztrációs e-mailben adja meg.
 
 ### <a name="use-a-github-account"></a>GitHub-fiók használata
-A diákok egy meglévő GitHub-fiók használatával is regisztrálhatnak, és bejelentkezhetnek egy tantermi laborba. Ha már rendelkeznek a GitHub-fiókjukhoz kapcsolt Microsoft-fiókkal, a diákok bejelentkezhetnek, és megadhatják a jelszavukat az előző szakaszban látható módon. 
+A tanulók egy meglévő GitHub-fiókkal is regisztrálhatnak és bejelentkezhetnek egy osztályterem laborba. Ha már rendelkezik egy Microsoft-fiók a GitHub-fiókjával, a tanulók bejelentkezhetnek, és megadhatják a jelszavukat az előző szakaszban látható módon. 
 
-Ha még nem kapcsolták össze GitHub-fiókjukat egy Microsoft-fiókkal, a következőket tehetik:
+Ha még nem csatolták GitHub-fiókját egy Microsoft-fiókhoz, a következőket teheti:
 
-1. Válassza a **Bejelentkezési beállítások** hivatkozást, ahogy az itt látható:
+1. Válassza ki a **bejelentkezési beállítások** hivatkozást, ahogy az itt látható:
 
-    ![A "Bejelentkezési beállítások" hivatkozás](../media/how-to-configure-student-usage/signin-options.png)
+    ![A "bejelentkezési beállítások" hivatkozás](../media/how-to-configure-student-usage/signin-options.png)
 
-1. A **Bejelentkezési beállítások ablakban** válassza a **Bejelentkezés a GitHubbal**lehetőséget.
+1. A **bejelentkezési beállítások** ablakban válassza a **Bejelentkezés a githubkal**lehetőséget.
 
-    ![A "Bejelentkezés a GitHubbal" hivatkozás](../media/how-to-configure-student-usage/signin-github.png)
+    ![A "Bejelentkezés a GitHubtal" hivatkozás](../media/how-to-configure-student-usage/signin-github.png)
 
-    A kérdésben a diákok létrehoznak egy Microsoft-fiókot, amely a GitHub-fiókjukhoz kapcsolódik. A csatolás automatikusan megtörténik, amikor a **Tovább**lehetőséget választják. Ezután azonnal bejelentkeznek, és csatlakoznak az osztálytermi laborhoz.
+    Ekkor a tanulók a GitHub-fiókhoz kapcsolódó Microsoft-fiók hozhatnak létre. A csatolás automatikusan megtörténik, amikor a **tovább**gombra kattintanak. Ezután azonnal bejelentkeznek és csatlakoznak az osztályterem laborhoz.
 
 ## <a name="export-a-list-of-users-to-a-csv-file"></a>Felhasználók listájának exportálása CSV-fájlba
 
-1. Nyissa meg a **Felhasználók** ablaktáblát.
-1. Az eszköztáron jelölje ki a három pontot (**...**), majd kattintson **a CSV exportálása gombra.** 
+1. Nyissa meg a **felhasználók** ablaktáblát.
+1. Az eszköztáron válassza a három pontot (**..**.), majd válassza a **CSV exportálása**lehetőséget. 
 
     ![A "CSV exportálása" gomb](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
@@ -221,6 +221,6 @@ Ha még nem kapcsolták össze GitHub-fiókjukat egy Microsoft-fiókkal, a köve
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- Rendszergazdáknak: [Laborfiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)
-- Labortulajdonosok nak: [Laborok létrehozása és kezelése,](how-to-manage-classroom-labs.md) sablonok [beállítása és közzététele](how-to-create-manage-template.md)
-- Laborfelhasználók számára: [Tantermi laborok elérése](how-to-use-classroom-lab.md)
+- Rendszergazdáknak: [labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)
+- Labor tulajdonosainak: [Labs létrehozása és kezelése](how-to-manage-classroom-labs.md) , [sablonok beállítása és közzététele](how-to-create-manage-template.md)
+- Labor-felhasználók számára: [Access tanterem Labs](how-to-use-classroom-lab.md)

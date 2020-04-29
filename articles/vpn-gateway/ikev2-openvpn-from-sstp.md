@@ -1,6 +1,6 @@
 ---
-title: Átmenet az OpenVPN-re vagy az IKEv2-re az SSTP-ből | Azure VPN-átjáró
-description: Ez a cikk segít megérteni az SSTP 128 egyidejű kapcsolati korlátjának leküzdésének módjait.
+title: Áttérés az OpenVPN-re vagy a IKEv2-re az SSTP-ből | Azure-VPN Gateway
+description: Ez a cikk segít megismerni az SSTP 128 egyidejű kapcsolódási korlátjának leküzdésének módjait.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,95 +8,95 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: alzam
 ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398361"
 ---
-# <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Áttérés openVPN protokollra vagy IKEv2-re az SSTP-ből
+# <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Áttérés az OpenVPN protokollra vagy az SSTP-IKEv2
 
-A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a cikk az Erőforrás-kezelő telepítési modelljére vonatkozik, és az SSTP 128 egyidejű kapcsolati korlátjának az OpenVPN protokollra vagy az IKEv2 protokollra való áttéréssel történő leküzdési módjairól beszél.
+A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és arról beszél, hogyan lehet leküzdeni a 128 egyidejű kapcsolati korlátját az OpenVPN protokollra vagy a IKEv2 való áttéréssel.
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>Milyen protokollt használ a P2S?
 
-A pont-hely VPN az alábbi protokollok egyikét használhatja:
+A pont – hely típusú VPN a következő protokollok egyikét használhatja:
 
-* **OpenVPN&reg; Protocol**, egy SSL/TLS alapú VPN protokoll. Az SSL VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet az SSL használ. OpenVPN lehet használni, hogy csatlakozzon az Android, iOS (11.0-s és újabb verziók), Windows, Linux és Mac eszközök (OSX verzió10.13 és újabb).
+* **OpenVPN&reg; protokoll**, SSL/TLS-alapú VPN protokoll. Az SSL VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-es TCP-portot nyitja meg, amelyet az SSL használ. Az OpenVPN az Android, az iOS (11,0-es és újabb verziók), a Windows, a Linux és a Mac rendszerű eszközök (OSX 10,13-es és újabb verziók) használatával való kapcsolódásra használható.
 
-* **Secure Socket Tunneling Protocol (SSTP),** egy saját SSL-alapú VPN protokoll. Az SSL VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet az SSL használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure támogatja a Windows összes SSTP-vel (Windows 7 és újabb) verzióit. **Az SSTP legfeljebb 128 egyidejű kapcsolatot támogat, függetlenül az átjáró termékváltozatától.**
+* A **Secure Socket Tunneling Protocol (SSTP)** egy saját SSL-alapú VPN-protokoll. Az SSL VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-es TCP-portot nyitja meg, amelyet az SSL használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure a Windows összes olyan verzióját támogatja, amely SSTP-t (Windows 7 és újabb) tartalmaz. **Az SSTP legfeljebb 128 egyidejű kapcsolatot támogat, függetlenül az ÁTJÁRÓ SKU**-tól.
 
 * IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén).
 
 
 >[!NOTE]
->Az IKEv2 és az OpenVPN for P2S csak az Erőforrás-kezelő telepítési modelljéhez érhető el. Ezek nem érhetők el a klasszikus üzembe helyezési modellhez. Az egyszerű átjáró termékváltozata nem támogatja az IKEv2 vagy OpenVPN protokollokat. Ha az alapvető termékváltozat, törölnie kell, és újra létre kell hoznia egy éles SKU virtuális hálózati átjáró.
+>A IKEv2 és az OpenVPN for P2S csak a Resource Manager-alapú üzemi modellhez érhető el. A klasszikus üzemi modell esetében nem érhetők el. Az alapszintű átjáró SKU nem támogatja a IKEv2 vagy az OpenVPN protokollokat. Ha alapszintű SKU-t használ, törölnie kell, majd újra létre kell hoznia egy éles SKU Virtual Network átjárót.
 >
 
-## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>Áttelepítés Az SSTP-ről az IKEv2-re vagy az OpenVPN-re
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>Migrálás SSTP-ről IKEv2 vagy OpenVPN-re
 
-Előfordulhatnak olyan esetek, amikor több mint 128 egyidejű P2S-kapcsolatot szeretne támogatni egy VPN-átjáróval, de SSTP-t használ. Ebben az esetben át kell helyeznie az IKEv2 vagy openvpn protokollra.
+Előfordulhatnak olyan esetek, amikor több mint 128 egyidejű P2S-kapcsolat használatát szeretné támogatni egy VPN-átjáróhoz, de az SSTP-t használja. Ilyen esetben a IKEv2 vagy az OpenVPN protokollt kell áthelyeznie.
 
-### <a name="option-1---add-ikev2-in-addition-to-sstp-on-the-gateway"></a>1. lehetőség - Az SSTP mellett az IKEv2 hozzáadása az átjáróhoz
+### <a name="option-1---add-ikev2-in-addition-to-sstp-on-the-gateway"></a>1. lehetőség – IKEv2 hozzáadása az SSTP-on kívül az átjárón
 
-Ez a legegyszerűbb megoldás. Az SSTP és az IKEv2 együtt létezhetnek ugyanazon az átjárón, és nagyobb számú egyidejű kapcsolatot biztosíthatnak. Egyszerűen engedélyezheti az IKEv2-t a meglévő átjárón, és újra letöltheti az ügyfelet.
+Ez a legegyszerűbb lehetőség. Az SSTP és a IKEv2 ugyanazon az átjárón létezhetnek, és nagyobb számú egyidejű kapcsolatot biztosít. Egyszerűen engedélyezheti a IKEv2 a meglévő átjárón, és újra letöltheti az ügyfelet.
 
-Az IKEv2 hozzáadása egy meglévő SSTP VPN-átjáróhoz nincs hatással a meglévő ügyfelekre, és beállíthatja őket úgy, hogy az IKEv2-t kis kötegekben használják, vagy egyszerűen csak konfigurálják az új ügyfeleket az IKEv2 használatára. Ha egy Windows-ügyfél sstp-hez és IKEv2-hez is konfigurálva van, akkor először az IKEV2 használatával próbál csatlakozni, és ha ez nem sikerül, akkor visszaáll az SSTP-re.
+A IKEv2 meglévő SSTP VPN-átjáróhoz való hozzáadása nem érinti a meglévő ügyfeleket, és beállíthatja, hogy a IKEv2 kis kötegekben használják, vagy csak konfigurálja az új ügyfeleket a IKEv2 használatára. Ha egy Windows-ügyfél az SSTP-hez és a IKEv2-hez is konfigurálva van, először a IKEV2 használatával próbál csatlakozni, és ha ez nem sikerül, a rendszer az SSTP-re lép vissza.
 
-**Az IKEv2 nem szabványos UDP-portokat használ, ezért biztosítania kell, hogy ezek a portok ne legyenek letiltva a felhasználó tűzfalán. A használt portok UDP 500 és 4500.**
+**A IKEv2 nem szabványos UDP-portokat használ, ezért biztosítania kell, hogy ezek a portok ne legyenek letiltva a felhasználó tűzfalán. A használatban lévő portok a következők: UDP 500 és 4500.**
 
-Ha az IKEv2-t egy meglévő átjáróhoz szeretné hozzáadni, egyszerűen lépjen a "pont-hely konfiguráció" fülre a virtuális hálózati átjáró alatt a portálon, és válassza az **IKEv2 és az SSTP (SSTP)** lehetőséget a legördülő mezőből.
+Ha IKEv2 szeretne hozzáadni egy meglévő átjáróhoz, egyszerűen nyissa meg a "pont – hely konfiguráció" lapot a portál Virtual Network Átjárójában, és válassza a **IKEv2 és az SSTP (SSL)** lehetőséget a legördülő listából.
 
-![pontról helyre](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![pont – hely kapcsolat](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
-### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>2. lehetőség - Az SSTP eltávolítása és az OpenVPN engedélyezése az átjárón
+### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>2. lehetőség – az SSTP eltávolítása és az OpenVPN engedélyezése az átjárón
 
-Mivel az SSTP és az OpenVPN egyaránt TLS-alapú protokoll, nem létezhetnek egymás mellett ugyanazon az átjárón. Ha úgy dönt, hogy eltávolodik az SSTP-től az OpenVPN-ig, le kell tiltania az SSTP-t, és engedélyeznie kell az OpenVPN-t az átjárón. Ez a művelet hatására a meglévő ügyfelek elveszítik a kapcsolatot a VPN-átjáróval, amíg az új profil nincs konfigurálva az ügyfélen.
+Mivel az SSTP és az OpenVPN is TLS-alapú protokoll, nem létezhetnek ugyanazon az átjárón. Ha úgy dönt, hogy az SSTP-ből az OpenVPN-be lép, le kell tiltania az SSTP-t, és engedélyeznie kell az OpenVPN-t az átjárón. Ez a művelet azt eredményezi, hogy a meglévő ügyfelek elveszítik a kapcsolatot a VPN-átjáróval, amíg az új profil be nem lett állítva az ügyfélen.
 
-Engedélyezheti OpenVPN mellett IKEv2, ha szeretné. OpenVPN TLS-alapú, és használja a szabványos TCP 443 port. Az OpenVPN-re való váltáshoz lépjen a "point-to-site configuration" fülre a virtuális hálózati átjáró alatt a portálon, és válassza az **OpenVPN (SSL)** vagy az **IKEv2 és openVPN (SSL)** lehetőséget a legördülő lista.
+Ha kívánja, az OpenVPN mellett is engedélyezheti a IKEv2. Az OpenVPN TLS-alapú, és a szabványos TCP 443 portot használja. Az OpenVPN-re való váltáshoz nyissa meg a portál Virtual Network átjárójának "pont – hely konfiguráció" lapját, és válassza az **OpenVPN (SSL)** vagy a **IKEv2 és az OpenVPN (SSL)** lehetőséget a legördülő listából.
 
-![pontról helyre](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
+![pont – hely kapcsolat](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-Az átjáró konfigurálása után a meglévő ügyfelek nem tudnak csatlakozni, [amíg nem telepíti és nem konfigurálja az OpenVPN-ügyfeleket.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients)
+Az átjáró konfigurálását követően a meglévő ügyfelek nem fognak tudni csatlakozni, amíg nem [telepíti és nem konfigurálja az OpenVPN-ügyfeleket](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients).
 
-Windows 10 használata esetén használhatja az [Azure VPN-ügyfelet is A Windows rendszerhez](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client)
+Ha Windows 10 rendszert használ, használhatja a [Windows rendszerhez készült Azure VPN-ügyfelet](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client) is
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-### <a name="what-are-the-client-configuration-requirements"></a>Mik az ügyfél konfigurációs követelményei?
+### <a name="what-are-the-client-configuration-requirements"></a>Mik az ügyfél-konfigurációs követelmények?
 
 >[!NOTE]
->Windows-ügyfelek esetén rendszergazdai jogokkal kell rendelkeznie az ügyféleszközön ahhoz, hogy kezdeményezze a VPN-kapcsolatot az ügyféleszközről az Azure-ba.
+>Windows-ügyfelek esetén rendszergazdai jogosultságokkal kell rendelkeznie az ügyfélszámítógépen ahhoz, hogy kezdeményezzen VPN-kapcsolat az ügyfél-eszközről az Azure-ba.
 >
 
-A felhasználók a natív VPN-ügyfeleket használják a Windows és a Mac p2s-eszközökön. Az Azure egy VPN-ügyfélkonfigurációs zip-fájlt biztosít, amely tartalmazza az azure-hoz való csatlakozáshoz szükséges natív ügyfelek által igényelt beállításokat.
+A felhasználók a natív VPN-ügyfeleket használják a Windows-és Mac-eszközökön a P2S. Az Azure olyan VPN-ügyfél-konfigurációs zip-fájlt biztosít, amely a natív ügyfelek által az Azure-hoz való csatlakozáshoz szükséges beállításokat tartalmazza.
 
-* Windows-eszközök esetén a VPN-ügyfél konfigurációja egy telepítőcsomagból áll, amelyet a felhasználók telepítenek az eszközeikre.
-* Mac-eszközök esetében ez a mobilkonfigurációs fájlból áll, amelyet a felhasználók telepítenek az eszközeikre.
+* Windows-eszközök esetén a VPN-ügyfél konfigurációja egy olyan telepítőcsomagot tartalmaz, amelyet a felhasználók az eszközeiket telepítenek.
+* Mac-eszközök esetén a a felhasználók által az eszközökön telepített mobileconfig-fájlból áll.
 
-A zip-fájl is biztosítja az értékeket néhány fontos beállítások at the Azure oldalon, amely segítségével hozzon létre saját profilt ezekhez az eszközökhöz. Az értékek közé tartozik a VPN-átjáró címe, a konfigurált bújtatástípusai, az útvonalak és az átjáró érvényesítéséhez szükséges főtanúsítvány.
+A zip-fájl az Azure-oldal néhány fontos beállításának értékeit is megadja, amelyek segítségével saját profilt hozhat létre ezekhez az eszközökhöz. Néhány érték például a VPN-átjáró címe, a konfigurált bújtatási típusok, az útvonalak és a főtanúsítvány az átjáró érvényesítéséhez.
 
 >[!NOTE]
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-### <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>Mely átjárótermék-kiszolgálók támogatják a P2S VPN-t?
+### <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>Mely átjárók támogatják a P2S VPN-t?
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-* Az átjáró termékváltozatára vonatkozó [javaslatokról a VPN-átjáró beállításairól olvashat.](vpn-gateway-about-vpn-gateway-settings.md#gwsku)
+* Az átjáró SKU-javaslatait itt tekintheti meg: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 >[!NOTE]
 >Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
 >
 
-### <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>Milyen IKE/IPsec-házirendek vannak konfigurálva a P2S VPN-átjáróin?
+### <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>Milyen IKE/IPsec-házirendek vannak konfigurálva a P2S VPN-átjárón?
 
 
 **IKEv2**
 
-|**Rejtjel** | **Integritás** | **PRF** | **DH-csoport** |
+|**Titkosítási** | **Integritás** | **PRF** | **DH-csoport** |
 |---        | ---            | ---        | ---     |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_24 |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_14 |
@@ -118,7 +118,7 @@ A zip-fájl is biztosítja az értékeket néhány fontos beállítások at the 
 
 **IPsec**
 
-|**Rejtjel** | **Integritás** | **PFS-csoport** |
+|**Titkosítási** | **Integritás** | **PFS-csoport** |
 |---        | ---            | ---        |
 |GCM_AES256    | GCM_AES256 | GROUP_NONE |
 |GCM_AES256    | GCM_AES256 | GROUP_24 |
@@ -132,7 +132,7 @@ A zip-fájl is biztosítja az értékeket néhány fontos beállítások at the 
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Milyen TLS-házirendek vannak konfigurálva a VpN-átjárók p2s?
+### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Milyen TLS-házirendek vannak konfigurálva a P2S VPN-átjárón?
 **TLS**
 
 |**Házirendek** |
@@ -150,20 +150,20 @@ A zip-fájl is biztosítja az értékeket néhány fontos beállítások at the 
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-### <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>Hogyan konfigurálhatók a P2S-kapcsolat?
+### <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>Hogyan konfigurálni a P2S-kapcsolatokat?
 
-A P2S-konfiguráció hoz szükség jó néhány konkrét lépést. Az alábbi cikkek a P2S-konfiguráción való végigvezető lépéseket, valamint a VPN-ügyféleszközök konfigurálásához szükséges hivatkozásokat tartalmazzák:
+Egy P2S-konfigurációhoz elég néhány konkrét lépés szükséges. A következő cikkek a P2S konfigurációjának lépéseit és a VPN-ügyféleszközök konfigurálására mutató hivatkozásokat tartalmazzák:
 
-* [P2S-kapcsolat konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
+* [P2S-alapú kapcsolatok konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
 
-* [P2S-kapcsolat konfigurálása – Azure natív tanúsítványhitelesítése](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S-kapcsolatok konfigurálása – Azure natív tanúsítványalapú hitelesítés](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 * [Az OpenVPN konfigurálása](vpn-gateway-howto-openvpn.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [P2S-kapcsolat konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
+* [P2S-alapú kapcsolatok konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
 
-* [P2S-kapcsolat konfigurálása – Azure natív tanúsítványhitelesítése](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S-kapcsolatok konfigurálása – Azure natív tanúsítványalapú hitelesítés](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-**Az "OpenVPN" az OpenVPN Inc. védjegye.**
+**Az "OpenVPN" az OpenVPN Inc védjegye.**

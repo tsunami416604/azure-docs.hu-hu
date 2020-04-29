@@ -1,31 +1,31 @@
 ---
-title: Micro Focus fejlesztési és tesztelési környezetek az Azure-ban | Microsoft dokumentumok
-description: Az IBM z/OS nagyszámítógépes számítási feladatainak újraüzemeltetése Micro Focus-megoldások használatával azure-beli virtuális gépeken (VM-ek).
+title: Micro Focus fejlesztési/tesztelési környezetek az Azure-ban | Microsoft Docs
+description: A Micro Focus-megoldásokkal az Azure Virtual Machines (VM) használatával helyezheti át az IBM z/OS mainframe-alapú számítási feladatokat.
 author: njray
 ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 62d3f7cc75a887605cdd3c19ac2e45990e541d5e
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410987"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Micro Focus fejlesztési és tesztelési környezetek az Azure-ban
 
-Az Azure fejlesztési és tesztelési környezetével való első lépések nagyszerű módja annak, hogy növelje a modernizációs erőfeszítéseket. Az olyan régebbi rendszerektől függő nagyszámítógépes alkalmazások, mint az IBM CICS (Customer Information Control System) és az IMS (Information Management System) partnermegoldásokkal újraüzemeltethetők az Azure-ban.
+A fejlesztési és tesztelési környezetet biztosító Azure-beli első lépések nagyszerű megoldást mutatnak a modernizációs erőfeszítések fellendítésére. A régebbi rendszerekről (például az IBM CICS (Customer Information Control System) és az IMS-ről (Information Management System) függő Nagyvállalati alkalmazások az Azure-ban a partneri megoldásokkal helyezhetők át.
 
-A Micro Focus a Microsofttal együttműködve lenyűgöző nagyszámítógépes áttelepítést és újraüzemeltetési eszközöket kínál. Nagyszámítógépes alkalmazásokat futtathat fejlesztési, tesztelési és éles forgatókönyveken keresztül az Azure-ban és a Microsoft Windows platformon.
+A Micro Focus a Microsofttal együttműködve kínál vonzó nagyszámítógép-áttelepítést és eszközöket. Az Azure-ban és a Microsoft Windows platformon is futtathat nagyvállalati alkalmazásokat fejlesztési, tesztelési és éles környezetekben.
 
-A Micro Focus olyan fejlesztéssel bővíti újraüzemeltetési és tesztelési rehosting megoldásokat, amelyek kiterjesztik a meglévő COBOL és PL/I üzleti alkalmazásokat az Azure-ra.
+A Micro Focus olyan fejlesztési és tesztelési megoldások fejlesztését kínálja, amelyek kibővítik a meglévő COBOL és a vállalati alkalmazásokat az Azure-ba.
 
 > [!NOTE]
-> Hamarosan: Útmutató a [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) beállításához az Azure virtuális gépeken.
+> Hamarosan elérhető: útmutató a [Micro Focus Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) Azure-beli virtuális gépeken való beállításához.
 
 **További lépések**
 
-- [A Micro Focus Enterprise Server 4.0 és az Enterprise Developer 4.0 telepítése az Azure-ra](./set-up-micro-focus-azure.md)
-- [Micro Focus CICS BankDemo beállítása micro focus enterprise developer 4.0-hoz az Azure-ban](./demo.md)
-- [Enterprise Server futtatása Docker-tárolókban az Azure-ban](./run-enterprise-server-container.md)
+- [A Micro Focus Enterprise Server 4,0 és Enterprise Developer 4,0 telepítése az Azure-ban](./set-up-micro-focus-azure.md)
+- [A Micro Focus CICS BankDemo beállítása a Micro Focus Enterprise fejlesztői 4,0-hez az Azure-ban](./demo.md)
+- [Vállalati kiszolgáló futtatása Docker-tárolókban az Azure-ban](./run-enterprise-server-container.md)

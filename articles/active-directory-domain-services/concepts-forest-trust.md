@@ -1,6 +1,6 @@
 ---
-title: A bizalmi kapcsolatok működésének megoldása az Azure AD tartományi szolgáltatásokban | Microsoft dokumentumok
-description: További információ az erdőszintű bizalmi kapcsolat azure AD tartományi szolgáltatásokkal való működéséről
+title: Hogyan működik a megbízhatóság a Azure AD Domain Servicesban? | Microsoft Docs
+description: További információ arról, hogyan működik az erdőszintű megbízhatóság a Azure AD Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,272 +11,272 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476439"
 ---
-# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>A megbízhatósági kapcsolatok működése az erőforráserdőkben az Azure Active Directory tartományi szolgáltatásokban
+# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hogyan működik a megbízhatósági kapcsolatok a Azure Active Directory Domain Services erőforrás-erdőkön
 
-Az Active Directory tartományi szolgáltatások (AD DS) több tartomány vagy erdő közötti biztonságot nyújt a tartomány- és erdőszintű bizalmi kapcsolatokon keresztül. Mielőtt a hitelesítés a bizalmi kapcsolatok között megtörténne, a Windows rendszernek először ellenőriznie kell, hogy a felhasználó, számítógép vagy szolgáltatás által kért tartomány nak van-e megbízhatósági kapcsolata a kérelmező fiók tartományával.
+A Active Directory tartományi szolgáltatások (AD DS) a tartományi és erdőszintű megbízhatósági kapcsolatokon keresztül több tartományra vagy erdőre kiterjedő biztonságot nyújt. A megbízhatósági kapcsolaton keresztüli hitelesítés előtt a Windowsnak először ellenőriznie kell, hogy a felhasználó, számítógép vagy szolgáltatás által kért tartomány megbízhatósági kapcsolatban áll-e a kérelmező fiók tartományával.
 
-A megbízhatósági kapcsolat ellenőrzéséhez a Windows biztonsági rendszer bizalmi útvonalat számít ki a kérést fogadó kiszolgáló tartományvezérlője és a kérelmező fiók tartományában lévő tartományvezérlő között.
+A megbízhatósági kapcsolat kereséséhez a Windows biztonsági rendszer a kérelmet fogadó kiszolgáló tartományvezérlője és a kérést kérő fiók tartományában lévő tartományvezérlő közötti megbízhatósági útvonalat számítja ki.
 
-Az AD DS és a Windows elosztott biztonsági modellje által biztosított hozzáférés-vezérlési mechanizmusok környezetet biztosítanak a tartományi és erdőszintű bizalmi kapcsolatok működéséhez. Ahhoz, hogy ezek a bizalmi kapcsolatok megfelelően működjenek, minden erőforrásnak vagy számítógépnek rendelkeznie kell egy közvetlen megbízhatósági útvonalat egy tartományvezérlőhöz abban a tartományban, amelyben található.
+A AD DS és a Windows elosztott biztonsági modellje által biztosított hozzáférés-vezérlési mechanizmusok biztosítják a tartomány-és erdőszintű megbízhatósági kapcsolatok működtetésének környezetét. Ahhoz, hogy ezek a megbízhatósági kapcsolatok megfelelően működjenek, minden erőforrásnak vagy számítógépnek közvetlen megbízhatósági úttal kell rendelkeznie a tartományvezérlőhöz abban a tartományban, amelyben található.
 
-A megbízhatósági elérési utat a Hálózati bejelentkezés szolgáltatás valósítja meg a megbízható tartományi hatósággal létesített hitelesített távoli eljáráshívási (RPC) kapcsolattal. A biztonságos csatorna a tartományok közötti megbízhatósági kapcsolatokon keresztül más AD DS-tartományokra is kiterjed. Ez a biztonságos csatorna a felhasználók és csoportok biztonsági információinak beszerzésére és ellenőrzésére szolgál, beleértve a biztonsági azonosítókat (SID-ket).
+A megbízhatósági útvonalat a Net Logon szolgáltatás valósítja meg a megbízható tartományi szolgáltatónak hitelesített távoli eljáráshívás (RPC) kapcsolaton keresztül. A biztonságos csatornák a tartományok közötti megbízhatósági kapcsolatokon keresztül is kiterjeszthetők más AD DS tartományokra. Ez a biztonságos csatorna a biztonsági információk, például a felhasználók és csoportok biztonsági azonosítóinak (SID-ek) beszerzésére és ellenőrzésére szolgál.
 
-## <a name="trust-relationship-flows"></a>Bizalmi kapcsolati folyamatok
+## <a name="trust-relationship-flows"></a>Megbízhatósági kapcsolatok folyamatai
 
-A bizalmi kapcsolatok feletti biztonságos kommunikáció folyamata határozza meg a bizalmi kapcsolat rugalmasságát. A bizalmi kapcsolat létrehozásának vagy konfigurálásának módját határozza meg, hogy a kommunikáció milyen mértékben terjedjen ki az erdőkön belül vagy erdők között.
+A bizalmi kapcsolaton keresztüli biztonságos kommunikáció folyamata meghatározza a megbízhatóság rugalmasságát. A megbízhatóság létrehozásának és konfigurálásának módja határozza meg, hogy a kommunikáció meddig terjed ki az erdőkön belül vagy azok között.
 
-A bizalmi kapcsolatok feletti kommunikáció áramlását a bizalmi kapcsolat iránya határozza meg. A bizalmi kapcsolatok lehetnek egyirányúak vagy kétirányúak, és lehetnek tranzitívak vagy nem tranzitívak.
+A megbízhatósági kapcsolatok áramlását a megbízhatóság iránya határozza meg. A bizalmi kapcsolatok lehetnek egyirányú vagy kétirányúak, és tranzitívak vagy nem tranzitívak is lehetnek.
 
-Az alábbi ábra azt mutatja, hogy *Tree 2* az *1.* Ennek eredményeképpen *az 1.* *Tree 2* *Tree 1* *Tree 2*
+Az alábbi ábra azt mutatja, hogy az *1* . és *2* . fa összes tartománya alapértelmezés szerint tranzitív megbízhatósági kapcsolattal rendelkezik. Ennek eredményeképpen az *1. fában* lévő felhasználók hozzáférhetnek a *2* . fában lévő tartományok erőforrásaihoz, és az *1* . fában lévő felhasználók hozzáférhetnek az erőforrásokhoz a *2. fában*, ha a megfelelő engedélyek hozzá vannak rendelve az erőforráshoz.
 
-![Két erdő közötti bizalmi kapcsolatok diagramja](./media/concepts-forest-trust/trust-relationships.png)
+![Két erdő közötti megbízhatósági kapcsolatok diagramja](./media/concepts-forest-trust/trust-relationships.png)
 
-### <a name="one-way-and-two-way-trusts"></a>Egyirányú és kétirányú bizalmi kapcsolatok
+### <a name="one-way-and-two-way-trusts"></a>Egyirányú és kétirányú megbízhatósági kapcsolatok
 
-Az erőforrásokhoz való hozzáférést lehetővé tevő bizalmi kapcsolatok lehetnek egyirányúak vagy kétirányúak.
+A megbízhatósági kapcsolatok lehetővé teszik az erőforrásokhoz való hozzáférést, akár egyirányú, akár kétirányú is lehet.
 
-Az egyirányú megbízhatósági kapcsolat egy egyirányú hitelesítési útvonal, amelyet két tartomány között hoztak létre. Az A és *a B* *tartomány* közötti egyirányú bizalmi kapcsolatban az A *tartomány* felhasználói hozzáférhetnek a B *tartomány*erőforrásaihoz. A B *tartomány* felhasználói azonban nem férhetnek hozzá az *A tartomány*erőforrásaihoz.
+Az egyirányú megbízhatósági kapcsolat egy egyirányú hitelesítési útvonal, amely két tartomány között jön létre. Az *a tartomány és a* *b*tartomány közötti egyirányú megbízhatósági kapcsolaton keresztül az *a* tartományba tartozó felhasználók hozzáférhetnek a *b tartomány*erőforrásaihoz. A *B tartományban* lévő felhasználók azonban nem férhetnek hozzá az *a tartomány*erőforrásaihoz.
 
-Egyes egyirányú bizalmi kapcsolatok lehetnek nem tranzitívak vagy tranzitívak a létrehozott bizalmi kapcsolat típusától függően.
+Néhány egyirányú megbízhatósági kapcsolat nem tranzitív vagy tranzitív lehet a létrehozandó megbízhatóság típusától függően.
 
-Kétirányú bizalmi kapcsolatban *az A tartomány* megbízik a B *tartományban,* a *B tartomány* pedig az *A tartományban*. Ez a konfiguráció azt jelenti, hogy a hitelesítési kérelmek mindkét irányban továbbíthatók a két tartomány között. Egyes kétirányú kapcsolatok a létrehozott bizalmi kapcsolat típusától függően nem tranzitívak vagy tranzitívak lehetnek.
+Kétirányú megbízhatósági kapcsolat esetén a *tartomány a* *b tartományba* , a *b tartomány* pedig az *a*tartományt bízik meg. Ez a konfiguráció azt jelenti, hogy a két tartomány közötti hitelesítési kérések mindkét irányban átadhatók. Néhány kétirányú kapcsolat nem tranzitív vagy tranzitív lehet a létrehozandó megbízhatóság típusától függően.
 
-Az AD DS-erdőben lévő összes tartománykapcsolat kétirányú, tranzitív megbízhatósági kapcsolat. Új gyermektartomány létrehozásakor a rendszer automatikusan kétirányú, tranzitív bizalmi kapcsolatot hoz létre az új gyermektartomány és a szülőtartomány között.
+Egy AD DS erdőben lévő összes tartományi megbízhatóság kétirányú, tranzitív megbízhatósági kapcsolat. Új gyermektartomány létrehozásakor a rendszer automatikusan létrehoz egy kétirányú, tranzitív megbízhatósági kapcsolatot az új gyermektartomány és a szülő tartomány között.
 
-### <a name="transitive-and-non-transitive-trusts"></a>Tranzitív és nem tranzitív bizalmi kapcsolatok
+### <a name="transitive-and-non-transitive-trusts"></a>Tranzitív és nem tranzitív megbízhatósági kapcsolatok
 
-A tranzitivitás határozza meg, hogy a bizalmi kapcsolat kiterjeszthető-e azon a két tartományon kívül, amellyel létrehozták.
+A tranzitivitás meghatározza, hogy a megbízhatóság kiterjeszthető-e azon két tartományon kívül, amelyekkel létrehozták.
 
-* A tranzitív bizalmi kapcsolat a más tartományokkal fennálló bizalmi kapcsolatok kiterjesztésére használható.
-* A nem tranzitív bizalmi kapcsolat a más tartománnyal fennálló bizalmi kapcsolatok megtagadására használható.
+* Tranzitív megbízhatósági kapcsolat lehet a más tartományokkal való megbízhatósági kapcsolatok kiterjesztésére.
+* Nem tranzitív megbízhatósági kapcsolat használható a más tartományokkal való megbízhatósági kapcsolatok megtagadására.
 
-Minden alkalommal, amikor új tartományt hoz létre egy erdőben, a rendszer automatikusan kétirányú, tranzitív bizalmi kapcsolatot hoz létre az új tartomány és a szülőtartomány között. Ha gyermektartományokat ad hozzá az új tartományhoz, a megbízhatósági útvonal felfelé halad a tartományhierarchián keresztül, kiterjesztve az új tartomány és a szülőtartomány között létrehozott kezdeti megbízhatósági útvonalat. A tranzitív bizalmi kapcsolatok felfelé haladnak a tartományfán keresztül, ahogy létrejön, tranzitív bizalmi kapcsolatokat hozva létre a tartományfa összes tartománya között.
+Minden alkalommal, amikor új tartományt hoz létre egy erdőben, a rendszer automatikusan létrehoz egy kétirányú, tranzitív megbízhatósági kapcsolatot az új tartomány és a szülő tartománya között. Ha a gyermektartomány hozzá lett adva az új tartományhoz, a megbízhatósági útvonal felfelé halad a tartományi hierarchián keresztül, és kiterjeszti az új tartomány és a szülőtartomány tartománya között létrejött kezdeti megbízhatósági útvonalat. A tranzitív megbízhatósági kapcsolatok a tartomány fáján keresztül haladnak át, így tranzitív megbízhatósági kapcsolatot hoznak létre a tartományfa összes tartománya között.
 
-A hitelesítési kérelmek követik ezeket a megbízhatósági útvonalakat, így az erdő bármely tartományából származó fiókokat az erdő bármely más tartománya hitelesítheti. Egyetlen bejelentkezési folyamattal a megfelelő engedélyekkel rendelkező fiókok hozzáférhetnek az erdő bármely tartományának erőforrásaihoz.
+A hitelesítési kérelmek követik ezeket a megbízhatósági útvonalakat, így az erdő bármely tartományának fiókjait az erdő bármely másik tartománya hitelesítheti. Egyetlen bejelentkezési folyamat esetén a megfelelő engedélyekkel rendelkező fiókok hozzáférhetnek az erdőben található bármely tartomány erőforrásaihoz.
 
 ## <a name="forest-trusts"></a>Erdőszintű megbízhatóságok
 
-Az erdőszintű bizalmi kapcsolatok segítenek a szegmentált AD DS-infrastruktúrák kezelésében, valamint az erőforrásokhoz és más objektumokhoz való hozzáférés támogatásában több erdőben. Az erdőbizalmi kapcsolatok hasznosak a szolgáltatók, az egyesülésen vagy felvásárláson átesett vállalatok, az együttműködésen alapuló üzleti extranetek és az adminisztratív autonómia megoldását kereső vállalatok számára.
+Az erdőszintű megbízhatósági kapcsolatok segítségével felügyelheti a szegmentált AD DS infrastruktúrákat, és támogathatja az erőforrásokhoz és más objektumokhoz való hozzáférést több erdőn keresztül. Az erdőszintű megbízhatósági kapcsolatok a szolgáltatók számára hasznosak, az egyesüléseket vagy beszerzéseket végző vállalatokat, az együttműködésen alapuló üzleti extraneteket és az adminisztratív önállóságot igénylő vállalatokat.
 
-Az erdőszintű bizalmi kapcsolatok használatával két különböző erdőt kapcsolhat össze egyirányú vagy kétirányú tranzitív bizalmi kapcsolat kialakításához. Az erdőszintű megbízhatósági kapcsolat lehetővé teszi a rendszergazdák számára, hogy két AD DS-erdőt egyetlen megbízhatósági kapcsolattal kapcsoljanak össze, hogy zökkenőmentes hitelesítési és engedélyezési élményt nyújtsanak az erdőkben.
+Az erdőszintű megbízhatósági kapcsolatok használatával két különböző erdőt kapcsolhat össze egy egyirányú vagy kétirányú tranzitív megbízhatósági kapcsolat formájában. Az erdőszintű megbízhatósági kapcsolat lehetővé teszi, hogy a rendszergazdák két AD DS erdőhöz csatlakozzanak egyetlen megbízhatósági kapcsolatban, hogy zökkenőmentes hitelesítési és engedélyezési élményt nyújtsanak az erdőkben.
 
-Erdőszintű bizalmi kapcsolat csak az egyik erdő erdő gyökértartománya és egy másik erdő gyökértartománya között hozható létre. Az erdőszintű bizalmi kapcsolatok csak két erdő között hozhatók létre, és implicit módon nem terjeszthetők ki egy harmadik erdőre. Ez a viselkedés azt jelenti, hogy ha *Forest 2*erdőszintű bizalmi kapcsolat jön létre *Forest 3*az *1.* *Forest 2* *Forest 1* *Forest 3*
+Erdőszintű megbízhatósági kapcsolat csak az egyik erdőben lévő erdő gyökértartományában és egy másik erdőben lévő erdő gyökértartományában hozható létre. Az erdőszintű megbízhatósági kapcsolatok csak két erdő között hozhatók létre, és nem terjeszthetők ki implicit módon harmadik erdőre. Ez azt jelenti, hogy ha erdőszintű megbízhatóság jön létre az *1* . erdő és a *2*. erdő között, és egy másik erdőszintű megbízhatósági kapcsolat jön létre a *2* . erdő és a *3*. erdő között, az *erdő 1* nem rendelkezik implicit megbízhatósággal a *3. erdővel*.
 
-Az alábbi ábra két különálló erdőszintű megbízhatósági kapcsolatot mutat be három AD DS-erdő között egy szervezetben.
+A következő ábra két különálló erdőszintű megbízhatósági kapcsolatot mutat be egyetlen szervezet három AD DS erdője között.
 
-![Erdőszintű bizalmi kapcsolatok diagramja egyetlen szervezeten belül](./media/concepts-forest-trust/forest-trusts.png)
+![Az erdőszintű megbízhatósági kapcsolatok diagramja egyetlen szervezeten belül](./media/concepts-forest-trust/forest-trusts.png)
 
-Ez a példa konfigurációja a következő hozzáférést biztosítja:
+A példában szereplő konfiguráció a következő hozzáférést biztosítja:
 
-* A *2-es erdő* felhasználói az *1.* *Forest 3*
-* A *3-as erdő* felhasználói a *2.*
-* Az *1.* *Forest 2*
+* A *2. erdőben* lévő felhasználók bármelyik tartományban hozzáférhetnek az erőforrásokhoz az *1* . vagy *erdő 3* . erdőben
+* A *3. erdő* felhasználói hozzáférhetnek a *2. erdőben* található bármely tartomány erőforrásaihoz
+* Az *1. erdőben* lévő felhasználók hozzáférhetnek a 2. *erdőben* található bármely tartomány erőforrásaihoz
 
-Ez a konfiguráció nem teszi lehetővé az *1-es erdő* felhasználói számára a *3-as erdő* erőforrásainak elérését, vagy fordítva. Ahhoz, hogy az *1-es* és a *3-as erdő* felhasználói megoszthassák az erőforrásokat, kétirányú tranzitív megbízhatósági kapcsolatot kell létrehozni a két erdő között.
+Ez a konfiguráció nem engedélyezi, hogy az *1. erdőben* lévő felhasználók hozzáférhessenek az erőforrásokhoz a *3. erdőben* , vagy fordítva. Ahhoz, hogy a felhasználók mind az *1* . erdő, mind a *3* . erdőben lehetővé tegyék az erőforrások megosztását, kétirányú tranzitív megbízhatósági kapcsolatot kell létrehozni a két erdő között.
 
-Ha két erdő között egyirányú erdőszintű bizalmi kapcsolat jön létre, a megbízható erdő tagjai használhatják a megbízó erdőben található erőforrásokat. A bizalmi kapcsolat azonban csak egy irányban működik.
+Ha egyirányú erdőszintű megbízhatósági kapcsolat jön létre két erdő között, a megbízható erdő tagjai a megbízó erdőben lévő erőforrásokat használhatják. A megbízhatóság azonban csak egy irányba működik.
 
-Ha például egyirányú erdőszintű bizalmi kapcsolat jön létre az *Forest 2* *1.*
+Ha például egy egyirányú, erdőszintű megbízhatósági kapcsolat jön létre az *1. erdő* (a megbízható erdő) és a *2. erdő* (a megbízó erdő) között:
 
-* Az *1-es erdő* tagjai hozzáférhetnek a *2-es erdőben*található erőforrásokhoz.
-* A *2-es erdő* tagjai nem férhetnek hozzá az *1-es erdőben* található erőforrásokhoz ugyanazzal a megbízhatósági kapcsolatsal.
+* Az *1. erdő* tagjai hozzáférhetnek a *2. erdőben*található erőforrásokhoz.
+* A *2. erdő* tagjai nem férnek hozzá az *1. erdőben* található erőforrásokhoz ugyanazzal a megbízhatósággal.
 
 > [!IMPORTANT]
-> Az Azure AD tartományi szolgáltatások erőforráserdő csak támogatja az egyirányú erdőszintű bizalmi helyszíni Active Directory.
+> Azure AD Domain Services az erőforrás-erdő csak egyirányú erdőszintű megbízhatósági kapcsolatot támogat a helyszíni Active Directory számára.
 
-### <a name="forest-trust-requirements"></a>Erdőszintű bizalmi kapcsolatokra vonatkozó követelmények
+### <a name="forest-trust-requirements"></a>Erdőszintű megbízhatósági követelmények
 
-Az erdőszintű bizalmi kapcsolat létrehozása előtt ellenőriznie kell, hogy a megfelelő DNS-infrastruktúrával rendelkezik-e. Az erdőszintű bizalmi kapcsolatok csak akkor hozhatók létre, ha az alábbi DNS-konfigurációk egyike érhető el:
+Erdőszintű megbízhatóság létrehozása előtt ellenőriznie kell, hogy a megfelelő tartománynévrendszer (DNS) infrastruktúra van-e érvényben. Az erdőszintű megbízhatósági kapcsolatok csak akkor hozhatók létre, ha a következő DNS-konfigurációk valamelyike elérhető:
 
-* Az egyetlen gyökér DNS-kiszolgáló mindkét erdő DNS-névterének gyökér DNS-kiszolgálója – a gyökérzóna minden DNS-névtérre delegálást tartalmaz, és az összes DNS-kiszolgáló gyökértippje tartalmazza a gyökér DNS-kiszolgálót.
-* Ahol nincs megosztott gyökér DNS-kiszolgáló, és az egyes erdődns-névtér gyökér DNS-kiszolgálói minden DNS-névtérhez dns feltételes továbbítókat használnak a másik névtérben lévő nevek lekérdezéseinek irányításához.
+* Egyetlen legfelső szintű DNS-kiszolgáló a legfelső szintű DNS-kiszolgáló mind az erdő DNS-névterekhez – a legfelső szintű zóna minden DNS-névtérhez és az összes DNS-kiszolgálóhoz tartozó gyökérútmutató-delegálást tartalmaz, beleértve a legfelső szintű DNS-kiszolgálót is.
+* Ha nincs megosztott gyökér DNS-kiszolgáló, és az egyes erdő DNS-névteréhez tartozó legfelső szintű DNS-kiszolgálók az egyes DNS-névterek DNS feltételes továbbítóit használják a más névtérben található nevekre irányuló lekérdezések irányítására.
 
     > [!IMPORTANT]
-    > Az Azure AD tartományi szolgáltatások erőforráserdőkell használniezt a DNS-konfigurációt. Az erőforráserdő DNS-névterétől eltérő DNS-névtér üzemeltetése nem az Azure AD tartományi szolgáltatások szolgáltatása. Feltételes továbbítók a megfelelő konfigurációt.
+    > Azure AD Domain Services az erőforrás-erdőben ezt a DNS-konfigurációt kell használnia. Az erőforrás-erdő DNS-névterén kívül más DNS-névtér nem a Azure AD Domain Services egyik funkciója. A feltételes továbbító a megfelelő konfiguráció.
 
-* Ahol nincs megosztott gyökér DNS-kiszolgáló, és az egyes erdődns-névtér gyökér DNS-kiszolgálói dns-zónákat használnak, amelyek minden DNS-névtérben úgy vannak konfigurálva, hogy a másik névtérben lévő nevek lekérdezéseit továbbítsa.
+* Ha nincs megosztott gyökértartomány DNS-kiszolgálója, és az egyes erdő DNS-névteréhez tartozó legfelső szintű DNS-kiszolgálók a DNS másodlagos zónáit használják, a többi névtérben lévő nevekre irányuló lekérdezéseket a rendszer az egyes DNS-névterekben konfigurálja.
 
-Erdőszintű bizalmi kapcsolat létrehozásához a Tartománygazdák csoport (az erdő gyökértartományában) vagy a Vállalati rendszergazdák csoport tagjának kell lennie az Active Directoryban. Minden bizalmi kapcsolathoz olyan jelszó van rendelve, amelyet mindkét erdő rendszergazdáinak ismerniük kell. A vállalati rendszergazdák mindkét erdőben lévő tagjai egyszerre hozhatnak létre bizalmi kapcsolatokat mindkét erdőben, és ebben a forgatókönyvben a rendszer automatikusan létrehoz és ír egy titkosításilag véletlenszerű jelszót mindkét erdőhöz.
+Erdőszintű megbízhatóság létrehozásához a Tartománygazdák csoport (az erdő gyökértartományában) vagy a vállalati rendszergazdák csoport tagjának kell lennie Active Directory. Minden megbízhatósághoz hozzá van rendelve egy jelszó, amelyet mindkét erdőben a rendszergazdáknak ismerniük kell. Mindkét erdőben a vállalati rendszergazdák tagjai egyszerre is létrehozhatják a megbízhatósági kapcsolatokat mindkét erdőben, és ebben az esetben a titkosítási szempontból véletlenszerű jelszó automatikusan létrejön és íródik mindkét erdőhöz.
 
-Az Azure AD tartományi szolgáltatások kimenő erdőszintű bizalmi kapcsolata az Azure Portalon jön létre. A bizalmi kapcsolatot nem hozza létre manuálisan magával a felügyelt tartománnyal. A bejövő erdőszintű bizalmi kapcsolatot a helyszíni Active Directoryban korábban megjegyzett jogosultságokkal rendelkező felhasználónak kell konfigurálnia.
+A Azure AD Domain Serviceshoz tartozó kimenő erdőszintű megbízhatósági kapcsolat létrejön a Azure Portal. Nem hozhatja létre manuálisan a megbízhatóságot a felügyelt tartományhoz. A bejövő erdőszintű megbízhatóságot a helyszíni Active Directory korábban feljegyzett jogosultságokkal rendelkező felhasználónak kell konfigurálnia.
 
-## <a name="trust-processes-and-interactions"></a>Bizalmi folyamatok és interakciók
+## <a name="trust-processes-and-interactions"></a>Megbízhatósági folyamatok és interakciók
 
-Számos tartományok közötti és erdők közötti tranzakció függ a tartomány- vagy erdőszintű bizalmi kapcsolatoktól a különböző feladatok elvégzéséhez. Ez a szakasz azokat a folyamatokat és interakciókat ismerteti, amelyek az erőforrások megbízhatósági kapcsolatok között való elérésekor és a hitelesítési átirányítások kiértékelése során fordulnak elő.
+Számos tartományok közötti és erdők közötti tranzakció függ a tartomány-vagy erdőszintű megbízhatóságtól a különböző feladatok elvégzése érdekében. Ez a szakasz azokat a folyamatokat és interakciókat ismerteti, amelyeket az erőforrásokkal kapcsolatban a rendszer a Megbízhatóságok és a hitelesítési átirányítások kiértékelésével biztosít.
 
-### <a name="overview-of-authentication-referral-processing"></a>A hitelesítési átirányítási feldolgozás áttekintése
+### <a name="overview-of-authentication-referral-processing"></a>A hitelesítés-átirányítási feldolgozás áttekintése
 
-Ha egy hitelesítési kérelmet tartományra hivatkoznak, a tartomány tartományvezérlőjének meg kell határoznia, hogy létezik-e megbízhatósági kapcsolat azzal a tartománnyal, amelyről a kérelem érkezett. A megbízhatósági kapcsolat irányát és azt, hogy a bizalmi kapcsolat tranzitív vagy nem tranzitív-e, szintén meg kell határozni, mielőtt hitelesíti a felhasználót a tartomány erőforrásainak eléréséhez. A megbízható tartományok közötti hitelesítési folyamat a használt hitelesítési protokolltól függően változik. A Kerberos V5 és NTLM protokollok eltérőmódon dolgozzák fel a tartományhitelesítésre vonatkozó átirányításokat
+Ha a hitelesítésre vonatkozó kérelmet egy tartományhoz utalnak, akkor az adott tartományban lévő tartományvezérlőnek meg kell határoznia, hogy van-e megbízhatósági kapcsolat a kérést tartalmazó tartománnyal. Meg kell határozni a megbízhatóság irányát, valamint azt, hogy a bizalmi kapcsolat tranzitív vagy nem tranzitív-e, mielőtt hitelesíti a felhasználót a tartomány erőforrásainak eléréséhez. A megbízható tartományok között megjelenő hitelesítési folyamat a használatban lévő hitelesítési protokolltól függően változik. A Kerberos V5 és az NTLM protokollok különböző tartományokra való hitelesítésre irányuló átirányítási folyamatokat
 
-### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 átirányítási feldolgozás
+### <a name="kerberos-v5-referral-processing"></a>Kerberos V5-hivatkozás feldolgozása
 
-A Kerberos V5 hitelesítési protokoll az ügyfél hitelesítési és engedélyezési információihoz a tartományvezérlők hálózati bejelentkezési szolgáltatásától függ. A Kerberos protokoll egy online kulcselosztó központhoz (KDC) és a munkamenetjegyek Active Directory-fióktárolójához csatlakozik.
+A Kerberos V5 hitelesítési protokoll a tartományvezérlőkön lévő hálózati bejelentkezési szolgáltatástól függ az ügyfél-hitelesítéshez és az engedélyezési információkhoz. A Kerberos protokoll csatlakozik egy online kulcsszolgáltatóhoz (KDC) és a Active Directory Account Store-hoz a munkamenet-jegyek számára.
 
-A Kerberos protokoll megbízhatósági kapcsolatokat is használ a több birodalombeli jegymegadási szolgáltatásokhoz (TGS) és a jogosultsági attribútumtanúsítványok (PAC-k) érvényesítéséhez egy biztonságos csatornán keresztül. A Kerberos protokoll csak nem Windows márkájú Kerberos-rendszerekkel, például MIT Kerberos-birodalommal hajt végre többbirodalom-hitelesítést, és nem kell együttműködnie a Hálózati bejelentkezés szolgáltatással.
+A Kerberos protokoll megbízhatósági kapcsolatot is használ a tartományok közötti TGS, valamint a jogosultsági attribútumok tanúsítványainak (PAC) érvényesítésére egy biztonságos csatornán keresztül. A Kerberos protokoll több tartományon belüli hitelesítést hajt végre a nem Windows rendszerű, Kerberos-tartományokat, például az MIT Kerberos-tartományokat, és nem kell a Net Logon szolgáltatással kommunikálnia.
 
-Ha az ügyfél a Kerberos V5-öt használja hitelesítésre, a fióktartományában lévő tartományvezérlőtől jegyet kér a céltartomány kiszolgálójára. A Kerberos KDC megbízható közvetítőként működik az ügyfél és a kiszolgáló között, és olyan munkamenetkulcsot biztosít, amely lehetővé teszi a két fél számára egymás hitelesítését. Ha a céltartomány eltér az aktuális tartománytól, a kulcsszolgáltató logikai eljárást követ annak megállapítására, hogy a hitelesítési kérelem hivatkozható-e:
+Ha az ügyfél Kerberos V5 protokollt használ a hitelesítéshez, a fiók tartományának egyik tartományvezérlőjén kér egy jegyet a célkiszolgálóra. A Kerberos KDC megbízható közvetítőként működik az ügyfél és a kiszolgáló között, és olyan munkamenetkulcsot biztosít, amely lehetővé teszi a két fél számára, hogy hitelesítsék egymást. Ha a céltartomány eltér az aktuális tartománytól, a KDC egy logikai folyamattal határozza meg, hogy lehet-e hivatkozni a hitelesítési kérelemre:
 
-1. Az aktuális tartományt közvetlenül a kért kiszolgáló tartománya megbízhatónak kezeli?
-    * Ha igen, küldjön az ügyfélnek egy átirányítást a kért tartományra.
+1. Az aktuális tartomány közvetlenül a kért kiszolgáló tartománya alapján van-e megbízni?
+    * Ha igen, küldje el az ügyfelet egy hivatkozónak a kért tartományba.
     * Ha nem, folytassa a következő lépéssel.
 
-2. Van tranzitív bizalmi kapcsolat az aktuális tartomány és a megbízhatósági útvonal következő tartománya között?
-    * Ha igen, küldjön az ügyfélnek egy átirányítást a megbízhatósági útvonal következő tartományára.
-    * Ha nem, küldjön az ügyfélnek egy bejelentkezési megtagadott üzenetet.
+2. Létezik tranzitív megbízhatósági kapcsolat az aktuális tartomány és a következő tartomány között a megbízhatósági útvonalon?
+    * Ha igen, küldje el az ügyfelet a megbízhatósági útvonalon a következő tartományra.
+    * Ha nem, küldjön egy bejelentkezési üzenetet az ügyfélnek.
 
-### <a name="ntlm-referral-processing"></a>NTLM átirányítási feldolgozás
+### <a name="ntlm-referral-processing"></a>NTLM-hivatkozó feldolgozása
 
-Az NTLM hitelesítési protokoll az ügyfél hitelesítési és engedélyezési információihoz a tartományvezérlők hálózati bejelentkezési szolgáltatásától függ. Ez a protokoll hitelesíti azokat az ügyfeleket, amelyek nem használnak Kerberos-hitelesítést. Az NTLM bizalmi kapcsolatokat használ a hitelesítési kérelmek tartományok közötti fogadásához.
+Az NTLM hitelesítési protokoll a tartományvezérlőkön lévő hálózati bejelentkezési szolgáltatástól függ az ügyfél-hitelesítéshez és az engedélyezési információkhoz. Ez a protokoll hitelesíti a Kerberos-hitelesítést nem használó ügyfeleket. Az NTLM megbízhatósági kapcsolatok használatával továbbítja a hitelesítési kérelmeket a tartományok között.
 
-Ha az ügyfél NTLM-et használ a hitelesítéshez, a kezdeti hitelesítési kérelem közvetlenül az ügyféltől a céltartomány erőforrás-kiszolgálójáig kerül. Ez a kiszolgáló olyan kihívást hoz létre, amelyre az ügyfél válaszol. A kiszolgáló ezután elküldi a felhasználó válaszát a számítógépfiók-tartománytartományvezérlőnek. Ez a tartományvezérlő összeveti a felhasználói fiókot a biztonsági fiókok adatbázisával.
+Ha az ügyfél NTLM protokollt használ a hitelesítéshez, akkor a hitelesítés kezdeti kérelme közvetlenül az ügyfélről a céltartományban lévő erőforrás-kiszolgálóra kerül. Ez a kiszolgáló egy olyan kihívást hoz létre, amelyhez az ügyfél válaszol. A kiszolgáló ezután elküldi a felhasználónak a számítógép fiókja tartományában lévő tartományvezérlőre adott választ. Ez a tartományvezérlő ellenőrzi a felhasználói fiókot a biztonsági fiókok adatbázisán.
 
-Ha a fiók nem létezik az adatbázisban, a tartományvezérlő a következő logikával határozza meg, hogy végrehajtsa-e az átadó hitelesítést, továbbítsa-e a kérelmet, vagy megtagadja-e a kérelmet:
+Ha a fiók nem létezik az adatbázisban, a tartományvezérlő meghatározza, hogy el kell-e végezni az átmenő hitelesítést, továbbítania kell a kérést, vagy el kell utasítania a kérelmet a következő logika használatával:
 
 1. Az aktuális tartomány közvetlen megbízhatósági kapcsolatban áll a felhasználó tartományával?
-    * Ha igen, a tartományvezérlő elküldi az ügyfél hitelesítő adatait a felhasználó tartományának tartományvezérlőjének áthaladási hitelesítésre.
+    * Ha igen, a tartományvezérlő továbbítja az ügyfél hitelesítő adatait a felhasználó tartományának egyik tartományvezérlőjére az átmenő hitelesítéshez.
     * Ha nem, folytassa a következő lépéssel.
 
 2. Az aktuális tartomány tranzitív megbízhatósági kapcsolatban áll a felhasználó tartományával?
-    * Ha igen, adja át a hitelesítési kérelmet a megbízhatósági útvonal következő tartományának. Ez a tartományvezérlő megismétli a folyamatot, ha a felhasználó hitelesítő adatait a saját biztonsági fiókok adatbázisához ellenőrzi.
-    * Ha nem, küldjön az ügyfélnek egy bejelentkezési megtagadott üzenetet.
+    * Ha igen, adja át a hitelesítési kérést a következő tartományra a megbízhatósági útvonalon:. Ez a tartományvezérlő megismétli a folyamatot, ha ellenőrzi a felhasználó hitelesítő adatait a saját biztonsági fiókjainak adatbázisán.
+    * Ha nem, küldjön egy bejelentkezési üzenetet az ügyfélnek.
 
-### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>A hitelesítési kérelmek Kerberos-alapú feldolgozása erdőszintű bizalmi kapcsolatokon keresztül
+### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>A hitelesítési kérések Kerberos-alapú feldolgozása erdőszintű megbízhatósági kapcsolatokon keresztül
 
-Ha két erdőt köt össze erdőszintű bizalmi kapcsolat, a Kerberos V5 vagy NTLM protokollok használatával végrehajtott hitelesítési kérelmek et az erdők között lehet átirányítani, hogy mindkét erdő erőforrásaihoz hozzáférést biztosítsanak.
+Ha két erdőt erdőszintű megbízhatósági kapcsolat köti össze, a Kerberos V5 vagy az NTLM protokoll használatával végrehajtott hitelesítési kérések átirányíthatók az erdők között, hogy mindkét erdőben elérhetők legyenek az erőforrások.
 
-Az erdőszintű bizalmi kapcsolatok első létrehozásakor minden erdő összegyűjti a partnererdő összes megbízható névterét, és az adatokat [egy megbízható tartományobjektumban](#trusted-domain-object)tárolja. A megbízható névterek közé tartoznak a tartományfanevek, az egyszerű felhasználónév (UPN) utótagok, az egyszerű szolgáltatásnév (SPN) utótagok és a másik erdőben használt biztonsági azonosító (SID) névterek. A TDO-objektumok replikálódnak a globális katalógusba.
+Amikor először létrehoznak egy erdőszintű megbízhatósági kapcsolatot, az egyes erdők összegyűjtik a partner erdőben lévő összes megbízható névteret, és egy [megbízható tartomány objektumban](#trusted-domain-object)tárolják az adatokat. A megbízható névterek közé tartoznak a tartományfa neve, az egyszerű felhasználónév (UPN) utótagok, az egyszerű szolgáltatásnév (SPN) utótagok és a másik erdőben használt biztonsági azonosító (SID) névterek. A rendszer replikálja a TDO objektumokat a globális katalógusba.
 
-Mielőtt a hitelesítési protokollok követhetik az erdő megbízhatósági útvonalát, az erőforrásszámítógép egyszerű szolgáltatásnevét (SPN) fel kell oldani a másik erdő egy helyére. Az spn a következők egyike lehet:
+Ahhoz, hogy a hitelesítési protokollok követni tudják az erdőszintű megbízhatósági kapcsolatot, az erőforrás-számítógép egyszerű szolgáltatásnév (SPN) fel kell oldani a másik erdőben található helyre. Az egyszerű szolgáltatásnév a következők egyike lehet:
 
-* Egy állomás DNS-neve.
+* Egy gazdagép DNS-neve.
 * Egy tartomány DNS-neve.
-* A szolgáltatás csatlakozási pontobjektumának megkülönböztető neve.
+* A szolgáltatási kapcsolódási pont objektumának megkülönböztető neve.
 
-Amikor egy erdő munkaállomása megpróbál hozzáférni egy másik erdő erőforrásszámítógépének adataihoz, a Kerberos hitelesítési folyamat kapcsolatba lép a tartományvezérlővel, hogy az erőforrásszámítógép spn-jéhez jusson. Miután a tartományvezérlő lekérdezi a globális katalógust, és megállapítja, hogy az spn nem ugyanabban az erdőben van, mint a tartományvezérlő, a tartományvezérlő visszaküldi a szülőtartományát a munkaállomásra. Ezen a ponton a munkaállomás lekérdezi a szolgáltatásjegy szülőtartományát, és továbbra is követi az átirányítási láncot, amíg el nem éri azt a tartományt, ahol az erőforrás található.
+Ha az egyik erdőben lévő munkaállomás egy másik erdőben lévő erőforrás-számítógépen kísérli meg elérni az adatelérést, akkor a Kerberos-hitelesítési folyamat az erőforrás-számítógép SPN-je felé irányuló szolgáltatási jegyhez kapcsolódik a tartományvezérlőhöz. Miután a tartományvezérlő lekérdezte a globális katalógust, és megállapítja, hogy az egyszerű szolgáltatásnév nem ugyanabban az erdőben található, mint a tartományvezérlő, a tartományvezérlő a fölérendelt tartományra hivatkozó hivatkozást küld vissza a munkaállomásnak. Ezen a ponton a munkaállomás lekérdezi a szolgáltatási jegy szülőtartomány tartományát, és folytatja az átirányítási lánc követését, amíg el nem éri az erőforrást tartalmazó tartományt.
 
-Az alábbi ábra és lépések részletesen ismertetik a Kerberos hitelesítési folyamatot, amelyet akkor alkalmaznak, amikor a Windows rendszert futtató számítógépek egy másik erdőben található számítógépről próbálnak hozzáférni az erőforrásokhoz.
+A következő ábra és lépések részletes leírást nyújtanak a Kerberos hitelesítési folyamatról, amelyet akkor használ a rendszer, ha a Windows rendszert futtató számítógépek erőforrásokat próbálnak elérni egy másik erdőben található számítógépről.
 
-![A Kerberos-folyamat diagramja erdőszintű bizalmi kapcsolaton keresztül](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![A Kerberos-folyamat diagramja erdőszintű megbízhatósági kapcsolaton keresztül](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
 
-1. *A User1* a europe.tailspintoys.com tartományból származó hitelesítő adatokkal jelentkezik be a *Workstation1-be.* *europe.tailspintoys.com* A felhasználó ezután megpróbál hozzáférni egy megosztott erőforráshoz a *usa.wingtiptoys.com* erdőben található *FileServer1-en.*
+1. A *Felhasználó1* bejelentkezik a *Munkaallomas1 nevű munkaállomásnak* a *Europe.tailspintoys.com* tartomány hitelesítő adatainak használatával. A felhasználó ezután megpróbál hozzáférni egy megosztott erőforráshoz a *USA.wingtiptoys.com* erdőben található *Fajlkiszolgalo1 nevű kiszolgálónak* .
 
-2. *A Workstation1* kapcsolatba lép a Kerberos KDC-vel a tartományában lévő *tartományvezérlőn, a ChildDC1*- és szolgáltatási jegyet kér a *FileServer1* spn-hez.
+2. A *Munkaallomas1 nevű munkaállomásnak* megkeresi a Kerberos KDC-t a tartományában lévő tartományvezérlőn, *GyermekTV1*, és a *Fajlkiszolgalo1 nevű kiszolgálónak* SPN-re vonatkozó szolgáltatási jegyet kér.
 
-3. *A ChildDC1* nem találja az spn-t a tartományi adatbázisában, és lekérdezi a globális katalógust, hogy megtudja, a *tailspintoys.com* erdőben található tartományok tartalmazzák-e ezt az spn-t. Mivel a globális katalógus a saját erdőjére korlátozódik, az spn nem található.
+3. A *GyermekTV1* nem találja az egyszerű szolgáltatásnevet a tartományi adatbázisban, és lekérdezi a globális katalógust annak megállapítására, hogy a *tailspintoys.com* erdőben található bármely tartomány tartalmazza-e ezt az egyszerű szolgáltatásnevet. Mivel a globális katalógus a saját erdőre korlátozódik, az egyszerű szolgáltatásnév nem található.
 
-    A globális katalógus ezután ellenőrzi az adatbázisban az erdővel létrehozott erdőszintű bizalmi kapcsolatokra vonatkozó információkat. Ha megtalálható, összehasonlítja az erdő megbízható tartományobjektumban (TDO) felsorolt névutótagokat a cél spn utótagjával, hogy egyezést találjon. Ha egyezést talál, a globális katalógus útválasztási emlékeztetőt ad vissza a *ChildDC1-nek.*
+    A globális katalógus ezután megkeresi az adatbázisát az erdővel létesített erdőszintű megbízhatósági kapcsolatokról. Ha a rendszer megtalálta, összehasonlítja az erdőszintű megbízhatósági kapcsolat megbízható tartomány objektumában (TDO) felsorolt névutótagok utótagját a cél SPN utótagjának megfelelően. Ha megtalálta a egyezést, a globális katalógus egy útválasztási célzást biztosít a *GyermekTV1*.
 
-    Az útválasztási tanácsok segítenek a hitelesítési kérelmeknek a célerdő felé való irányításában. A tippek csak akkor használatosak, ha az összes hagyományos hitelesítési csatorna, például a helyi tartományvezérlő, majd a globális katalógus nem találja az spn-t.
+    Az útválasztási útmutatók segítik a közvetlen hitelesítési kérelmeket a cél erdő felé. A rendszer csak akkor használja a mutatókat, ha az összes hagyományos hitelesítési csatorna, például a helyi tartományvezérlő, majd a globális katalógus nem talál egyszerű szolgáltatásnevet.
 
-4. *A ChildDC1* visszaküldi a szülőtartományát a *Workstation1-nek.*
+4. A *GyermekTV1* visszaküldi a *Munkaallomas1 nevű munkaállomásnak*a fölérendelt tartományra mutató hivatkozást.
 
-5. *A Workstation1* kapcsolatba lép a *ForestRootDC1* (szülőtartománya) tartományvezérlőjével, hogy a *wingtiptoys.com* erdő erdőgyökér-tartományában tartományvezérlőre *(ForestRootDC2)* hivatkozik.
+5. A *Munkaallomas1 nevű munkaállomásnak* a *ErdoGyokerTV1* (a szülőtartomány tartományában) lévő tartományvezérlővel csatlakozik egy, a *wingtiptoys.com* erdőben lévő erdő gyökértartományában lévő tartományvezérlőhöz (*ForestRootDC2*).
 
-6. *Workstation1* kapcsolatba *ForestRootDC2* a *wingtiptoys.com* erdőben egy szolgáltatási jegyet a kért szolgáltatás.
+6. A kért szolgáltatáshoz tartozó *Munkaallomas1 nevű munkaállomásnak* névjegyek *ForestRootDC2* a *wingtiptoys.com* erdőben.
 
-7. *A ForestRootDC2* felveszi a kapcsolatot a globális katalógussal, hogy megtalálja az spn-t, a globális katalógus pedig megtalálja az spn egyezését, és visszaküldi a *ForestRootDC2 rendszernek.*
+7. A *ForestRootDC2* megkeresi a globális katalógust az egyszerű szolgáltatásnév megtalálásához, és a globális katalógus egyezést talál az egyszerű szolgáltatásnév számára, és visszaküldi a *ForestRootDC2*.
 
-8. *A ForestRootDC2* ezután *usa.wingtiptoys.com* visszaküldi az usa.wingtiptoys.com a *Workstation1-nek.*
+8. A *ForestRootDC2* ezután a *USA.wingtiptoys.com* vissza küldi az átirányítást a *Munkaallomas1 nevű munkaállomásnak*.
 
-9. *A Workstation1* kapcsolatba lép a KDC-vel a *ChildDC2-n,* és egyezteti a jegyet a *User1* számára, hogy hozzáférjen a *FileServer1*rendszerhez.
+9. A *Munkaallomas1 nevű munkaállomásnak* kapcsolatba lép a KDC-val a *ChildDC2* -on, és egyezteti a *Fajlkiszolgalo1 nevű kiszolgálónak*-hez való hozzáférést a *Felhasználó1* -jegyet.
 
-10. Miután *a Workstation1* rendelkezik egy szolgáltatásjegyszel, elküldi a szolgáltatásjegyet a *FileServer1-nek,* amely beolvassa *a User1*biztonsági hitelesítő adatait, és ennek megfelelően létrehoz egy hozzáférési jogkivonatot.
+10. Miután a *Munkaallomas1 nevű munkaállomásnak* rendelkezik, a *Fajlkiszolgalo1 nevű kiszolgálónak*küldi a szolgáltatási jegyet, amely beolvassa a *Felhasználó1*biztonsági hitelesítő adatait, és ennek megfelelően létrehozza a hozzáférési jogkivonatot.
 
-## <a name="trusted-domain-object"></a>Megbízható tartományobjektum
+## <a name="trusted-domain-object"></a>Megbízható tartományi objektum
 
-A szervezeten belüli minden tartomány- vagy erdőszintű bizalmi kapcsolatot egy megbízható tartományobjektum (TDO) képvisel, amely a *tartományrendszertárolóban* van tárolva.
+A szervezeten belüli minden tartományi vagy erdőszintű megbízhatósági kapcsolatot egy, a tartományon belüli *rendszertárolóban* tárolt megbízható tartományi objektum (TDO) képvisel.
 
-### <a name="tdo-contents"></a>TDO-tartalom
+### <a name="tdo-contents"></a>TDO tartalma
 
-A TDO-ban található információk attól függően változnak, hogy a TDO-t tartomány- vagy erdőszintű bizalmi kapcsolat hozta-e létre.
+A TDO található információk attól függően változnak, hogy a TDO tartományi megbízhatóság vagy erdőszintű megbízhatóság hozta-e létre.
 
-Tartománymegbízhatósági kapcsolat létrehozásakor a TDO-ban megjelennek az olyan attribútumok, mint a DNS-tartománynév, a tartomány sid-je, a megbízhatóság típusa, a megbízhatóság tranzitivitása és a kölcsönös tartománynév. Az erdőszintű bizalmi tdo-k további attribútumokat tárolnak a partnererdő összes megbízható névterének azonosításához. Ezek közé az attribútumok közé tartoznak a tartományfanevek, az egyszerű felhasználónév (UPN) utótagok, az egyszerű szolgáltatásnév (SPN) utótagok és a biztonsági azonosító (SID) névterei.
+Tartományi megbízhatóság létrehozásakor a rendszer az attribútumokat (például a DNS-tartománynevet, a tartomány biztonsági azonosítóját, a megbízhatóság típusát, a megbízhatósági tranzitivitás és a kölcsönös tartománynevet) jeleníti meg a TDO. Az erdőszintű megbízhatósági kapcsolat TDOs további attribútumokat tárol a partner erdő összes megbízható névtérének azonosításához. Ezek az attribútumok a következők: tartományfa neve, egyszerű felhasználónév (UPN) utótagok, egyszerű szolgáltatásnév (SPN) utótagok és biztonsági azonosító (SID) névterek.
 
-Mivel a bizalmi kapcsolatok tdo-kként tárolódnak az Active Directoryban, az erdő összes tartománya ismeri az erdőben működő megbízhatósági kapcsolatokat. Hasonlóképpen, ha két vagy több erdő tanyán keresztül csatlakozik egymáshoz, az egyes erdők erdőgyökér-tartományai ismerik azokat a megbízhatósági kapcsolatokat, amelyek a megbízható erdők összes tartományában érvényben vannak.
+Mivel a megbízhatósági kapcsolatok tárolása Active Directory TDOs történik, az erdő összes tartománya ismeri az erdőn belül érvényben lévő megbízhatósági kapcsolatokat. Hasonlóképpen, ha két vagy több erdő az erdő megbízhatósági kapcsolatain keresztül csatlakozik egymáshoz, az egyes erdőkben található erdőszintű gyökértartomány a megbízható erdők összes tartományában lévő megbízhatósági kapcsolatokkal kapcsolatos ismeretekkel rendelkezik.
 
-### <a name="tdo-password-changes"></a>A TDO jelszó módosításai
+### <a name="tdo-password-changes"></a>TDO
 
-A megbízhatósági kapcsolat mindkét tartománya megosztja a jelszót, amely az Active Directory TDO objektumában található. A fiókkarbantartási folyamat részeként a megbízó tartományvezérlő 30 naponta módosítja a TDO-ban tárolt jelszót. Mivel az összes kétirányú bizalmi kapcsolat valójában két egyirányú bizalmi kapcsolat, amelyek ellentétes irányba haladnak, a folyamat kétszer fordul elő a kétirányú bizalmi kapcsolatok esetében.
+A megbízhatósági kapcsolat mindkét tartománya egy jelszót is megoszt, amely a Active Directory TDO objektumában van tárolva. A fiók-karbantartási folyamat részeként minden 30 nap a megbízó tartományvezérlő megváltoztatja a TDO tárolt jelszót. Mivel az összes kétirányú megbízhatósági kapcsolat valójában 2 1-as irányú megbízhatósági kapcsolattal rendelkezik, a folyamat kétszer zajlik a kétirányú megbízhatósági kapcsolatok esetében.
 
-A bizalmi kapcsolatnak van egy megbízható és megbízható oldala. A megbízható oldalon bármely írható tartományvezérlő használható a folyamathoz. A megbízó oldalon az elsődleges tartományvezérlő emulátora végrehajtja a jelszómódosítást.
+A megbízhatóság megbízható és megbízható oldalon van. A megbízható oldalon minden írható tartományvezérlő használható a folyamathoz. A megbízó oldalon az elsődleges tartományvezérlő emulátora végrehajtja a jelszó módosítását.
 
-A jelszó módosításához a tartományvezérlők a következő eljárást hajtják végre:
+A jelszavak módosításához a tartományvezérlők a következő folyamatot hajtják végre:
 
-1. A megbízó tartomány elsődleges tartományvezérlő-emulátora új jelszót hoz létre. A megbízható tartomány tartományvezérlője soha nem kezdeményezi a jelszómódosítást. Mindig a megbízó tartomány PDC emulátora kezdeményezi.
+1. A megbízó tartomány elsődleges tartományvezérlő (PDC) emulátora új jelszót hoz létre. A megbízható tartomány egyik tartományvezérlője soha nem indítja el a jelszó módosítását. Mindig a megbízó tartomány PDC-emulátora indítja el.
 
-2. A megbízhatósági tartomány elsődleges tartományvezérlő-emulátora a TDO objektum *OldPassword* mezőjét az aktuális NewPassword mezőre *állítja.*
+2. A megbízó tartomány PDC-emulátora a TDO objektum *OldPassword* mezőjét az aktuális *ÚjJelszó* mezőre állítja be.
 
-3. A megbízó tartomány elsődleges tartományvezérlő-emulátora a TDO objektum *NewPassword* mezőjét az új jelszóra állítja be. Az előző jelszó másolatának megtartása lehetővé teszi a régi jelszó visszaállítását, ha a megbízható tartomány tartományvezérlője nem kapja meg a módosítást, vagy ha a módosítás nem replikálódik az új megbízhatósági jelszót használó kérelem előtt.
+3. A megbízó tartomány PDC-emulátora a TDO objektum *ÚjJelszó* mezőjét az új jelszóra állítja be. Az előző jelszó másolatának megőrzése lehetővé teszi a régi jelszó visszavonását, ha a megbízható tartomány tartományvezérlője nem tudja fogadni a változást, vagy ha a módosítás nem replikálódik az új megbízhatósági jelszót használó kérelem előtt.
 
-4. A megbízó tartomány elsődleges tartományvezérlő-emulátora távoli hívást kezdeményez a megbízható tartomány tartományvezérlőjére, és arra kéri, hogy állítsa be a megbízhatósági fiók jelszavát az új jelszóra.
+4. A megbízó tartomány PDC-emulátora távoli hívást kezdeményez a megbízható tartomány egyik tartományvezérlője számára, amely arra kéri, hogy állítsa be a jelszót a megbízhatósági fiókban az új jelszóra.
 
-5. A megbízható tartomány tartományvezérlője a megbízhatósági jelszót az új jelszóra módosítja.
+5. A megbízható tartomány tartományvezérlője módosítja a megbízhatósági jelszót az új jelszóra.
 
-6. A megbízhatósági kapcsolat mindkét oldalán a rendszer replikálja a frissítéseket a tartomány többi tartományvezérlőjére. A megbízó tartományban a módosítás a megbízható tartományobjektum sürgős replikációját indítja el.
+6. A rendszer a megbízhatóság mindkét oldalán replikálja a frissítéseket a tartomány többi tartományvezérlőjére. A meghatalmazó tartományban a változás a megbízható tartomány objektum sürgős replikálását indítja el.
 
-A jelszó most mindkét tartományvezérlőn módosul. A normál replikáció elosztja a TDO-objektumokat a tartomány többi tartományvezérlőjének. A megbízó tartomány tartományvezérlője azonban módosíthatja a jelszót anélkül, hogy a megbízható tartományban lévő tartományvezérlőt sikeresen frissítené. Ez a forgatókönyv azért fordulhat elő, mert a jelszómódosítás feldolgozásához szükséges biztonságos csatorna nem jött létre. Az is lehetséges, hogy a megbízható tartomány tartományvezérlője a folyamat egy bizonyos pontján nem érhető el, és nem kapja meg a frissített jelszót.
+A jelszó mostantól mindkét tartományvezérlőn módosul. A normál replikáció a TDO objektumokat a tartomány többi tartományvezérlőjére osztja el. Azonban lehetséges, hogy a tartományvezérlő a meghatalmazó tartományban a megbízható tartományban lévő tartományvezérlő sikeres frissítése nélkül módosítja a jelszót. Ez a forgatókönyv akkor fordulhat elő, ha a jelszó módosításának feldolgozásához szükséges biztonságos csatorna nem hozható létre. Előfordulhat, hogy a megbízható tartomány tartományvezérlője nem érhető el a folyamat egyes pontjain, és előfordulhat, hogy nem kapja meg a frissített jelszót.
 
-Az olyan helyzetek kezeléséhez, amikor a jelszómódosítás nem történt sikeresen kommunikálva, a megbízó tartomány tartományvezérlője soha nem módosítja az új jelszót, hacsak nem hitelesítette sikeresen (biztonságos csatornát állított be) az új jelszó használatával. Ez a viselkedés az oka annak, hogy mind a régi, mind az új jelszavak a megbízó tartomány TDO objektumában vannak.
+Olyan helyzetekben, amikor a jelszó módosítása nem sikerült, a meghatalmazó tartomány tartományvezérlője soha nem módosítja az új jelszót, kivéve, ha sikeresen hitelesítette (biztonságos csatorna beállítása) az új jelszó használatával. Ennek a viselkedésnek az az oka, hogy a régi és az új jelszavak a megbízó tartomány TDO objektumában maradnak.
 
-A jelszómódosítása nem véglegesítve, amíg a jelszó használatával történő hitelesítés sikeres nem lesz. A régi, tárolt jelszó használható a biztonságos csatornán keresztül, amíg a megbízható tartomány tartományvezérlője meg nem kapja az új jelszót, így lehetővé teszi a folyamatos szolgáltatást.
+A jelszó módosítása nem fejeződött be, amíg a jelszóval való hitelesítés nem sikerül. A régi, tárolt jelszó a védett csatornán keresztül is használható, amíg a megbízható tartomány tartományvezérlője megkapja az új jelszót, így lehetővé téve a zavartalan szolgáltatást.
 
-Ha az új jelszóval történő hitelesítés sikertelen, mert a jelszó érvénytelen, a megbízó tartományvezérlő a régi jelszóval próbál hitelesítést használni. Ha sikeresen hitelesíti magát a régi jelszóval, 15 percen belül folytatja a jelszómódosítási folyamatot.
+Ha az új jelszóval történő hitelesítés sikertelen, mert a jelszó érvénytelen, a megbízó tartományvezérlő a régi jelszóval kísérli meg a hitelesítést. Ha a régi jelszóval sikeresen hitelesíti magát, a jelszó-módosítási folyamatot 15 percen belül folytatja.
 
-A megbízhatósági jelszó frissítéseinek 30 napon belül replikálódniuk kell a bizalmi kapcsolat mindkét oldalának tartományvezérlőire. Ha a megbízhatósági jelszót 30 nap elteltével módosítják, és a tartományvezérlő csak az N-2 jelszót használja, akkor nem használhatja a megbízható oldalról a bizalmi kapcsolatot, és nem tud biztonságos csatornát létrehozni a megbízható oldalon.
+A megbízhatósági kapcsolatok jelszavas frissítéseinek 30 napon belül replikálni kell a megbízhatóság mindkét oldalának tartományvezérlőjére. Ha a megbízhatósági jelszó 30 nap után módosul, és a tartományvezérlőnek csak az N-2 jelszava van, akkor nem használhatja a megbízhatósági kapcsolatot a megbízó oldalról, és nem tud biztonságos csatornát létrehozni a megbízható oldalon.
 
-## <a name="network-ports-used-by-trusts"></a>Bizalmi kapcsolatok által használt hálózati portok
+## <a name="network-ports-used-by-trusts"></a>A Megbízhatóságok által használt hálózati portok
 
-Mivel a bizalmi kapcsolatokat különböző hálózati határokon keresztül kell telepíteni, előfordulhat, hogy egy vagy több tűzfalra kell átnyúlniuk. Ebben az esetben a tűzfalon keresztüli megbízható forgalmat alagutat áshat, vagy megnyithat a tűzfal adott portjait, hogy a forgalom áthaladjon.
+Mivel a megbízhatósági kapcsolatokat a különböző hálózati határokon belül kell telepíteni, előfordulhat, hogy egy vagy több tűzfalat kell kiterjedniük. Ebben az esetben vagy a tűzfalon keresztüli megbízhatósági kapcsolat, vagy a tűzfal adott portjainak megnyitása lehetővé teszi a forgalom továbbítását.
 
 > [!IMPORTANT]
-> Az Active Directory tartományi szolgáltatások nem támogatják az Active Directory RPC-forgalom adott portokra való korlátozását.
+> A Active Directory tartományi szolgáltatások nem támogatja az RPC-forgalom adott portokra való korlátozását Active Directory.
 
-Olvassa el a Microsoft támogatási cikkének **Windows Server 2008 és újabb verziók című** szakaszát: A tűzfal [konfigurálása az Active Directory-tartományokhoz és a bizalmi kapcsolatokhoz](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) az erdőszintű megbízhatósági kapcsolatokhoz szükséges portokról.
+Olvassa el a Microsoft ügyfélszolgálata cikk **Windows Server 2008-es és újabb verziói** című szakaszát, amely [bemutatja, hogyan konfigurálhat tűzfalat Active Directory tartományokhoz és megbízhatósági kapcsolatokhoz](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) , hogy megismerje az erdőszintű megbízhatósághoz szükséges portokat.
 
 ## <a name="supporting-services-and-tools"></a>Támogató szolgáltatások és eszközök
 
-A megbízhatósági kapcsolatok és a hitelesítés támogatása érdekében néhány további szolgáltatást és felügyeleti eszközt használ.
+A megbízhatósági kapcsolatok és a hitelesítés támogatásához néhány további funkció és felügyeleti eszköz is használatos.
 
 ### <a name="net-logon"></a>Hálózati bejelentkezés
 
-A Hálózati bejelentkezés szolgáltatás biztonságos csatornát tart fenn egy Windows-alapú számítógépről egy tartományvezérlőre. A következő megbízhatósági folyamatokban is használatos:
+A Net Logon szolgáltatás biztonságos csatornát tart fenn egy Windows-alapú számítógépről a TARTOMÁNYVEZÉRLŐre. A megbízhatósággal kapcsolatos következő folyamatokban is használható:
 
-* Megbízhatóság beállítása és kezelése – A Net Logon segít a megbízhatósági jelszavak fenntartásában, a megbízhatósági információk összegyűjtésében és a megbízhatósági kapcsolatok ellenőrzésében az LSA-folyamattal és a TDO-val való interakcióval.
+* A megbízhatóság beállítása és a felügyelet – net-bejelentkezés segít megőrizni a megbízhatósági jelszavakat, összegyűjti a megbízhatósági adatokat, és ellenőrzi a megbízhatósági kapcsolatot az LSA-folyamattal és a TDO való interakcióval.
 
-    Erdőszintű bizalmi kapcsolatok esetén a megbízhatósági adatok közé tartozik az Erdei megbízhatósági információ (*FTInfo*) rekord, amely tartalmazza a megbízható erdő által kezelendő névterek készletét, amely egy olyan mezővel van eltüntetve, amely jelzi, hogy a megbízó erdő minden jogcímet megbízhatónak tart-e.
+    Az erdőszintű megbízhatósági kapcsolatok esetében a megbízhatósági adatok tartalmazzák az erdőszintű megbízhatósági adatok (*FTInfo*) rekordját, amely magában foglalja a megbízható erdő által felügyelt jogcímek készletét, amely azt jelzi, hogy az egyes jogcímeket a megbízó erdő megbízhatónak tekinti.
 
-* Hitelesítés – A felhasználói hitelesítő adatokat egy védett csatornán keresztül egy tartományvezérlőnek adja át, és visszaadja a tartomány biztonsági azonosítóit és a felhasználó felhasználói jogait.
+* Hitelesítés – a felhasználó hitelesítő adatait egy biztonságos csatornán keresztül egy tartományvezérlőre továbbítja, és visszaadja a felhasználó tartományi biztonsági azonosítóit és felhasználói jogosultságait.
 
-* Tartományvezérlő helye – Segít a tartományban vagy tartományokban lévő tartományvezérlők megkeresésében vagy megkeresésében.
+* Tartományvezérlő helye – segítséget nyújt a tartományvezérlők tartományon vagy tartományon belüli keresésében vagy keresésében.
 
-* Áthaladási ellenőrzés – A más tartományok felhasználóinak hitelesítő adatait a Net Logon dolgozza fel. Ha egy megbízható tartománynak ellenőriznie kell egy felhasználó identitását, a felhasználó hitelesítő adatait a hálózati bejelentkezésen keresztül továbbítja a megbízható tartománynak ellenőrzésre.
+* Átmenő ellenőrzés – a más tartományokban lévő felhasználók hitelesítő adatait a rendszer a net-bejelentkezéssel dolgozza fel. Ha egy megbízó tartománynak ellenőriznie kell a felhasználó identitását, a hitelesítő adatokat a megbízható tartományba való hálózati bejelentkezésen keresztül továbbítja ellenőrzésre.
 
-* Jogosultsági attribútumtanúsítvány (PAC) ellenőrzése – Ha egy Kerberos protokollt a hitelesítéshez használó kiszolgálónak ellenőriznie kell a PAC-ot egy szolgáltatásjegyben, a PAC-ot a biztonságos csatornán keresztül elküldi a tartományvezérlőnek ellenőrzésre.
+* Jogosultsági attribútum tanúsítványa (PAC) ellenőrzése – ha a hitelesítéshez Kerberos protokollt használó kiszolgálónak ellenőriznie kell a PAC-t egy szolgáltatási jegyben, a PAC-t a biztonságos csatornán keresztül továbbítja a tartományvezérlőnek ellenőrzés céljából.
 
 ### <a name="local-security-authority"></a>Helyi biztonsági szervezet
 
-A helyi biztonsági hatóság (LSA) egy védett alrendszer, amely a rendszer helyi biztonságának minden aspektusáról információt tart fenn. Az LSA együttesen helyi biztonsági házirendként ismert, különböző szolgáltatásokat nyújt a nevek és azonosítók közötti fordításhoz.
+A helyi biztonsági szervezet (LSA) egy védett alrendszer, amely a rendszer helyi biztonságának minden aspektusával kapcsolatos információt tárol. A helyi biztonsági házirend néven ismert, hogy az LSA különböző szolgáltatásokat biztosít a nevek és azonosítók közötti fordításhoz.
 
-Az LSA biztonsági alrendszer kernel és felhasználói módban egyaránt nyújt szolgáltatásokat az objektumokhoz való hozzáférés érvényesítéséhez, a felhasználói jogosultságok ellenőrzéséhez és a naplózási üzenetek létrehozásához. Az LSA felelős a megbízható vagy nem megbízható tartományokban lévő szolgáltatások által bemutatott munkamenetjegyek érvényességének ellenőrzéséért.
+Az LSA biztonsági alrendszer kernel módban és felhasználói módban is biztosít szolgáltatásokat az objektumokhoz való hozzáférés ellenőrzéséhez, a felhasználói jogosultságok ellenőrzéséhez és a naplózási üzenetek létrehozásához. Az LSA feladata a megbízható vagy nem megbízható tartományokban lévő szolgáltatások által bemutatott összes munkamenet-jegy érvényességének ellenőrzése.
 
 ### <a name="management-tools"></a>Felügyeleti eszközök
 
-A rendszergazdák az *Active Directory – tartományok és megbízhatósági kapcsolatok*, a *Netdom* és *az Nltest* címtárban lévő, létrehozási, eltávolítási vagy módosítási kapcsolatok at használhatják.
+A rendszergazdák *Active Directory tartományokat és megbízhatóságokat*, *Netdom* és *nltest* használhatják a megbízhatósági kapcsolatok elérhetővé tételéhez, létrehozásához, eltávolításához vagy módosításához.
 
-* *Az Active Directory – tartományok és megbízhatósági kapcsolatok* a Microsoft Management Console (MMC) a tartományi megbízhatósági kapcsolatok, a tartomány- és erdőműködési szintek, valamint a felhasználó egyszerű névutótagjainak felügyeletére szolgál.
-* A *Netdom* és *az Nltest* parancssori eszközök segítségével megbízható kapcsolatokat kereshet, jeleníthet meg, hozhat létre és kezelhet. Ezek az eszközök közvetlenül kommunikálnak a tartományvezérlő LSA-jogosultságával.
+* *Active Directory tartományok és megbízhatósági kapcsolatok* a Microsoft Management Console (MMC), amely a tartományi Megbízhatóságok, a tartomány és az erdő működési szintjeinek, valamint az egyszerű felhasználónevek utótagjának felügyeletére szolgál.
+* A *Netdom* és a *nltest* parancssori eszközöket a megbízhatósági kapcsolatok kereséséhez, megjelenítéséhez, létrehozásához és kezeléséhez használhatja. Ezek az eszközök közvetlenül kommunikálnak az LSA-szolgáltatóval egy tartományvezérlőn.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az erőforrás-erdőkről, olvassa el a [Hogyan működnek az erdőszintű bizalmi kapcsolatok az Azure AD DS-ben?][concepts-trust]
+További információ az erőforrás-erdőkről: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 
-Az Azure AD DS felügyelt tartomány erőforráserdővel való létrehozásának első [lépései az Azure AD DS felügyelt tartományának létrehozása és konfigurálása][tutorial-create-advanced]című témakörben található. Ezután [létrehozhat egy kimenő erdőszintű bizalmi kapcsolatot egy helyszíni tartományban (előzetes verzió)][create-forest-trust].
+Az Azure AD DS felügyelt tartomány erőforrás-erdővel való létrehozásának megkezdéséhez tekintse meg [az azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

@@ -1,7 +1,7 @@
 ---
 title: Mi az elosztott képzés?
 titleSuffix: Azure Machine Learning
-description: Ismerje meg az elosztott oktatást, és azt, hogy az Azure Machine Learning hogyan támogatja azt.
+description: Ismerje meg az elosztott képzést, valamint azt, hogy a Azure Machine Learning hogyan támogatja.
 services: machine-learning
 ms.service: machine-learning
 author: nibaccam
@@ -10,45 +10,45 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80385544"
 ---
-# <a name="distributed-training-with-azure-machine-learning"></a>Elosztott képzés az Azure Machine Learning segítségével
+# <a name="distributed-training-with-azure-machine-learning"></a>Elosztott képzés Azure Machine Learning
 
-Ebben a cikkben megismerheti az elosztott oktatást, és azt, hogy az Azure Machine Learning hogyan támogatja azt a deep learning-modellekhez. 
+Ebben a cikkben megismerheti az elosztott képzéseket, és azt, hogy a Azure Machine Learning hogyan támogatja az IT-modelleket. 
 
-Elosztott betanítása során a számítási feladatok a modell betanításához felvan osztva, és több miniprocesszor, az úgynevezett munkavégző csomópontok között oszlik meg. Ezek a munkavégző csomópontok párhuzamosan dolgoznak a modellbetanítás felgyorsítása érdekében. Az elosztott betanítás hagyományos ML-modellekhez használható, de jobban megfelel a számítási és időigényes feladatokhoz, [például](concept-deep-learning-vs-machine-learning.md) a mély neurális hálózatok betanításához.
+Az elosztott képzésben a modell betanításához szükséges számítási feladatok felosztása és megosztása több, feldolgozó csomópontnak nevezett mini-processzor között történik. Ezek a feldolgozói csomópontok párhuzamosan működnek a modell betanításának felgyorsításához. Az elosztott képzések hagyományos ML-modellekhez használhatók, de jobban alkalmazkodnak a számítási és időigényes feladatokhoz, például a mély [tanulás](concept-deep-learning-vs-machine-learning.md) a mély neurális hálózatok betanításához.
 
-## <a name="deep-learning-and-distributed-training"></a>Mélytanulás és elosztott képzés 
+## <a name="deep-learning-and-distributed-training"></a>Mélyreható tanulás és elosztott képzés 
 
-Az elosztott képzésnek két fő típusa van: [az adatpárhuzamosság](#data-parallelism) és [a modell párhuzamosság](#model-parallelism). A deep learning modelleken elosztott képzéshez az [Azure Machine Learning SDK python-ban](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) támogatja a népszerű keretrendszerekkel, a PyTorch és a TensorFlow integrációt. Mindkét keretrendszer adatpárhuzamosságot alkalmaz az elosztott betanításhoz, és a [horovod-ot](https://horovod.readthedocs.io/en/latest/summary_include.html) a számítási sebesség optimalizálásához használhatja. 
+Az elosztott képzésnek két fő típusa van: az [adatpárhuzamosság](#data-parallelism) és a [modell párhuzamossága](#model-parallelism). A részletes tanulási modelleken a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) támogatja a népszerű keretrendszerek, a PyTorch és a TensorFlow integrációját. Mindkét keretrendszer adatpárhuzamosságot alkalmaz az elosztott képzések esetében, és a számítási sebesség optimalizálása érdekében [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) is képes kihasználni. 
 
-* [Elosztott képzés a PyTorch-val](how-to-train-pytorch.md#distributed-training)
+* [Elosztott képzés a PyTorch](how-to-train-pytorch.md#distributed-training)
 
-* [Elosztott képzés a TensorFlow-val](how-to-train-tensorflow.md#distributed-training)
+* [Elosztott képzés a TensorFlow](how-to-train-tensorflow.md#distributed-training)
 
-Az elosztott betanítást nem igénylő ML-modellek esetében tekintse meg az [Azure Machine Learning gel rendelkező modellek betanítását](concept-train-machine-learning-model.md#python-sdk) a Python SDK használatával a modellek betanításának különböző módjairól.
+Az elosztott képzést nem igénylő ML-modelleknél tekintse meg a modellek [betanítása a Azure Machine learning](concept-train-machine-learning-model.md#python-sdk) segítségével című témakört, amely a Python SDK használatával különböző modelleket tanít.
 
 ## <a name="data-parallelism"></a>Adatpárhuzamosság
 
-Az adatok párhuzamossága a két elosztott képzési megközelítés közül a legkönnyebben valósítható meg, és a legtöbb használati esethez elegendő.
+Az adatpárhuzamosság a legegyszerűbben a két elosztott képzési módszer megvalósítása, és a legtöbb felhasználási esethez elegendő.
 
-Ebben a megközelítésben az adatok partíciókra vannak osztva, ahol a partíciók száma megegyezik a számítási fürtben rendelkezésre álló csomópontok teljes számával. A modell minden ilyen munkavégző csomópontban másolódik, és minden dolgozó az adatok saját részhalmazán működik. Ne feledje, hogy minden csomópontnak rendelkeznie kell a betanított modell támogatásához szükséges kapacitással, azaz a modellnek teljes mértékben el kell férnie az egyes csomópontokon.
+Ebben a megközelítésben az adatok felosztva vannak osztva, ahol a partíciók száma megegyezik az elérhető csomópontok teljes számával a számítási fürtben. A modellt a rendszer átmásolja a munkavégző csomópontok mindegyikében, és mindegyik feldolgozó a saját részhalmazán működik. Ne feledje, hogy minden csomópontnak rendelkeznie kell a betanított modell támogatásához szükséges kapacitással, azaz a modellnek teljes mértékben el kell férnie az egyes csomópontokon.
 
-Minden csomópont egymástól függetlenül kiszámítja a hibákat a betanítási minták és a címkézett kimenetek közötti hibákat. Viszont minden csomópont frissíti a modell a hibák alapján, és közölnie kell az összes módosítást a többi csomópontgal a megfelelő modellek frissítéséhez. Ez azt jelenti, hogy a munkavégző csomópontoknak szinkronizálniuk kell a modellparamétereket vagy színátmeneteket a kötegszámítás végén, hogy konzisztens modellt képezzenek be. 
+Mindegyik csomópont egymástól függetlenül kiszámítja a betanítási minták és a címkézett kimenetek közötti hibákat. Az egyes csomópontok pedig a hibák alapján frissítik a modelljét, és a többi csomóponton lévő összes módosítást tájékoztatni kell a megfelelő modelljeik frissítéséhez. Ez azt jelenti, hogy a feldolgozó csomópontoknak szinkronizálnia kell a modell paramétereit vagy színátmeneteit a Batch kiszámításának végén, így biztosítva, hogy egységes modellt tanítanak. 
 
-## <a name="model-parallelism"></a>Modell párhuzamosság
+## <a name="model-parallelism"></a>Modell párhuzamossága
 
-A modell párhuzamosság, más néven hálózati párhuzamosság, a modell vannak szegmentálva különböző részekre, amelyek egyidejűleg futtathatók a különböző csomópontok, és mindegyik fog futni ugyanazon az adaton. A módszer méretezhetősége az algoritmus feladatpárhuzamosságának mértékétől függ, és bonyolultabb az adatpárhuzamosságnál. 
+A modell párhuzamossága, más néven hálózati párhuzamosság, a modell különböző részekre oszlik, amelyek párhuzamosan futhatnak különböző csomópontokon, és mindegyik ugyanazon az adatain fut le. Ennek a módszernek a méretezhetősége az algoritmus párhuzamos mértékétől függ, és összetettebb az adatpárhuzamosságok megvalósításához. 
 
-A modell párhuzamossága esetén a munkavégző csomópontoknak csak a megosztott paramétereket kell szinkronizálniuk, általában egyszer minden előre- vagy visszamenőleges propagálási lépésnél. Emellett a nagyobb modellek nem jelentenek problémát, mivel minden csomópont a modell ugyanazon a betanítási adatokon lévő alszakaszán működik.
+A modell párhuzamossága esetében a feldolgozó csomópontoknak csak egyszer kell szinkronizálnia a megosztott paramétereket, általában egyszer az egyes továbbítási vagy visszamenőleges terjesztési lépésekhez. Emellett a nagyobb modellek nem érintik a problémát, mivel az egyes csomópontok a modell egy alszakaszán működnek ugyanazon a betanítási adaton.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan állíthatja be a python SDK-val a [képzési környezeteket.](how-to-set-up-training-targets.md)
-* Technikai példát a [referenciaarchitektúra-forgatókönyvben láthat.](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)
-* [Az ML modellek betanítása a TensorFlow segítségével.](how-to-train-tensorflow.md)
-* [Vonat ML modellek PyTorch](how-to-train-pytorch.md). 
+* Ismerje meg, hogyan [állíthatja be a képzési környezeteket](how-to-set-up-training-targets.md) a Python SDK-val.
+* Technikai példákért tekintse meg a [hivatkozási architektúra forgatókönyvét](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
+* [Ml modellek betanítása a TensorFlow](how-to-train-tensorflow.md).
+* [Ml modellek betanítása a PyTorch](how-to-train-pytorch.md). 

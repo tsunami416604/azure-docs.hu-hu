@@ -9,41 +9,41 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437135"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Az Azure Data Lake Storage Gen2 URI használata
 
-Az Azure Data Lake Storage Gen2-vel kompatibilis [Hadoop fájlrendszer-illesztőprogram](https://www.aosabook.org/en/hdfs.html) a rendszerazonosítója `abfs` (Azure Blob File System) alapján ismert. A Hadoop fájlrendszer többi illesztőprogramjával összhangban az ABFS illesztőprogram URI-formátumot alkalmaz a Data Lake Storage Gen2 képes fiókon belüli fájlok és könyvtárak címzésére.
+A Azure Data Lake Storage Gen2 kompatibilis [Hadoop fájlrendszer](https://www.aosabook.org/en/hdfs.html) -illesztőprogramot a séma-azonosítója `abfs` (Azure Blob fájlrendszer) ismeri. Más Hadoop fájlrendszer-illesztőprogramokkal összhangban a ABFS-illesztőprogram egy URI-formátumot alkalmaz a fájlok és könyvtárak egy Data Lake Storage Gen2 képes fiókon belüli kezelésére.
 
-## <a name="uri-syntax"></a>URI szintaxis
+## <a name="uri-syntax"></a>URI-szintaxis
 
-A Data Lake Storage Gen2 URI-szintaxisa attól függ, hogy a tárfiók beállítása a Data Lake Storage Gen2 az alapértelmezett fájlrendszer.
+Data Lake Storage Gen2 URI-szintaxisa attól függ, hogy a Storage-fiók úgy van-e beállítva, hogy az alapértelmezett fájlrendszerként Data Lake Storage Gen2.
 
-Ha a címezni kívánt Data Lake Storage Gen2 képes fiók **nincs** beállítva alapértelmezett fájlrendszerként a fiók létrehozása során, akkor a gyorsírási URI szintaxis a következő:
+Ha a kezelni kívánt Data Lake Storage Gen2-fiók nem alapértelmezett fájlrendszerként **van** beállítva a fiók létrehozása során, akkor a Gyorsírás URI-szintaxisa a következő:
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Sémaazonosító**: A `abfs` protokoll rendszerazonosítóként szolgál. Lehetősége van arra, hogy csatlakozzon a Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), kapcsolattal vagy anélkül. TLS-kapcsolathoz való csatlakozásra használható. `abfss`
+1. **Séma azonosítója**: a `abfs` rendszer a protokollt használja séma-azonosítóként. Lehetősége van a kapcsolódásra Transport Layer Security (TLS), korábbi nevén SSL (SSL) kapcsolattal vagy anélkül. TLS `abfss` -kapcsolattal való kapcsolódáshoz használható.
 
-2. **Fájlrendszer**: A fájlokat és mappákat tartalmazó szülőhely. Ez megegyezik az Azure Storage Blobs szolgáltatás tárolóival.
+2. **Fájlrendszer**: a fájlokat és mappákat tároló szülő hely. Ez ugyanaz, mint az Azure Storage-Blobok szolgáltatás tárolói.
 
-3. **Fióknév**: A tárfióknak a létrehozás során megadott név.
+3. **Fiók neve**: a létrehozás során a Storage-fióknak adott név.
 
-4. **Elérési utak**: A könyvtárstruktúra perjellel (`/`) tagolt ábrázolása.
+4. **Elérési utak**: a címtár struktúrájának`/`perjel tagolt () ábrázolása.
 
-5. **Fájlnév**: Az egyes fájl neve. Ez a paraméter nem kötelező, ha egy könyvtárat címez.
+5. **Fájlnév**: az egyedi fájl neve. Ez a paraméter nem kötelező, ha egy könyvtárat intéz.
 
-Ha azonban a címezni kívánt fiók van beállítva alapértelmezett fájlrendszerként a fiók létrehozása során, akkor a gyorsírásuri szintaxisa a következő:
+Ha azonban a kezelni kívánt fiók alapértelmezett fájlrendszerként van beállítva a fiók létrehozása során, akkor a Gyorsírás URI-szintaxisa a következő:
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **Elérési út**: A`/`könyvtárstruktúra perjellel ( ) tagolt ábrázolása.
+1. **Elérési út**: a címtár struktúrájának`/`perjel tagolt () ábrázolása.
 
-2. **Fájlnév**: Az egyes fájl neve.
+2. **Fájlnév**: az egyedi fájl neve.
 
 
 ## <a name="next-steps"></a>További lépések

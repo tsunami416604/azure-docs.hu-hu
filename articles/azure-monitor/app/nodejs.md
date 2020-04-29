@@ -4,19 +4,19 @@ description: Teljesítmény figyelése és problémák diagnosztizálása a Node
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411583"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
-[Az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) a háttérszolgáltatások és -összetevők üzembe helyezése után figyeli a háttérszolgáltatásokat és az összetevőket, hogy segítsen a teljesítmény és egyéb problémák gyors felismerésében. Az Application Insights használható bármilyen Node.js-szolgáltatáshoz, amely futhat az adatközpontban, egy Azure-beli virtuális gépen vagy webalkalmazáson, vagy akár egy nyilvános felhőn is.
+Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) az üzembe helyezést követően figyeli a háttérbeli szolgáltatásokat és összetevőket, hogy segítsen felderíteni és gyorsan diagnosztizálni a teljesítményt és egyéb problémákat. Az Application Insights használható bármilyen Node.js-szolgáltatáshoz, amely futhat az adatközpontban, egy Azure-beli virtuális gépen vagy webalkalmazáson, vagy akár egy nyilvános felhőn is.
 
 A megfigyelési adatok fogadásához, tárolásához és vizsgálatához építse be az SDK-t a programkódba, majd állítson be egy megfelelő Application Insights-erőforrást az Azure-ban. Az SDK ennek az erőforrásnak küldi az adatokat további elemzés és vizsgálat céljából.
 
-A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kéréseket, kivételeket és bizonyos rendszermérőszámokat. A 0.20-as verziótól kezdve az SDK figyelhet néhány közös [harmadik féltől származó csomagot](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)is, például a MongoDB-t, a MySQL-t és a Redis-t. Az egyes bejövő HTTP-kérésekhez kapcsolódó összes eseményt összekapcsolja a gyorsabb hibaelhárítás érdekében.
+A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kéréseket, kivételeket és bizonyos rendszermérőszámokat. Az SDK a 0,20-es verziótól kezdődően bizonyos gyakori [külső csomagokat](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)is képes figyelni, például a MongoDB-t, a MySQL-t és a Redis-t. Az egyes bejövő HTTP-kérésekhez kapcsolódó összes eseményt összekapcsolja a gyorsabb hibaelhárítás érdekében.
 
 A TelemetryClient API használatával manuálisan beállíthatók és monitorozhatók az alkalmazás és a rendszer további részletei. A TelemetryClient API-t a jelen cikk egy későbbi részében részletesebben ismertetjük.
 
@@ -35,8 +35,8 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Application Insights-erőforrás beállítása
 
 
-1. Jelentkezzen be az [Azure Portalra.][portal]
-2. Válassza az > **Erőforrás-fejlesztői eszközök** >  **létrehozása****Alkalmazáselemzési**lehetőséget. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
+1. Jelentkezzen be az [Azure Portalra][portal].
+2. Válassza **az erőforrás** > **létrehozása fejlesztői eszközök** > **Application Insights**elemet. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
 
 3. Az erőforrás-létrehozási oldalon az **Alkalmazás típusa** mezőben válassza a **Node.js-alkalmazás** elemet. Az alkalmazástípus határozza meg, hogy milyen alapértelmezett irányítópultokat és jelentéseket hoz létre a rendszer. (Bármely Application Insights-erőforrás képes bármilyen nyelvből és platformból adatot gyűjteni.)
 

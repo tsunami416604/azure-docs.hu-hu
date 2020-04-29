@@ -1,6 +1,6 @@
 ---
-title: A partícióterhelés elosztása több példányközött – Azure Event Hubs | Microsoft dokumentumok
-description: Bemutatja, hogyan lehet kiegyensúlyozni a partícióterhelést az alkalmazás több példányát egy eseményfeldolgozó és az Azure Event Hubs SDK használatával.
+title: Partíciók terhelésének elosztása több példány között – Azure Event Hubs | Microsoft Docs
+description: Ismerteti, hogyan lehet terheléselosztást végezni az alkalmazás több példánya között egy eseményvezérelt processzor és az Azure Event Hubs SDK használatával.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -13,89 +13,89 @@ ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
 ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398301"
 ---
-# <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>A partícióterhelés elosztása az alkalmazás több példányában
-Az eseményfeldolgozó alkalmazás méretezéséhez futtathatja az alkalmazás több példányát, és kiegyensúlyozhatja a terhelést egymás között. A régebbi verziókban az [EventProcessorHost](event-hubs-event-processor-host.md) lehetővé tette a program több példánya és az ellenőrzőpont-események közötti terhelés egyensúlyát a fogadáskor. Az újabb verziókban (5.0-tól kezdve) az **EventProcessorClient** (.NET és Java) vagy az **EventHubConsumerClient** (Python és JavaScript) lehetővé teszi, hogy ugyanezt tegye. A fejlesztési modell egyszerűbbé vált az események használatával. Előfizet az eseményekre, amelyek érdeklik egy eseménykezelő regisztrálásával.
+# <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>A partíciók terhelésének elosztása az alkalmazás több példánya között
+Az Event Processing-alkalmazás méretezéséhez az alkalmazás több példánya is futtatható, és saját maguk is elérhetik a terhelést. A régebbi verziókban a [EventProcessorHost](event-hubs-event-processor-host.md) lehetővé tette a program több példánya közötti terhelés elosztását és az ellenőrzőpont-események fogadását. Az újabb verziókban (5,0-ig) a **EventProcessorClient** (.net és Java) vagy a **EventHubConsumerClient** (Python és JavaScript) is lehetővé teszi ugyanezt. A fejlesztési modellt az események használatával egyszerűbbé teszik. Előfizet az Önt érdeklő eseményekre egy eseménykezelő regisztrálásával.
 
-Ez a cikk egy mintaforgatókönyv segítségével több példányt egy eseményközpontból származó események olvasására, majd adja meg az eseményfeldolgozó-ügyfél szolgáltatásainak részleteit, amely lehetővé teszi, hogy egyszerre több partícióról érkező események fogadása és terheléselosztás más, ugyanazt az eseményközpontot és fogyasztói csoportot használó ügyfelekkel.
+Ez a cikk azt szemlélteti, hogyan lehet több példányt használni az Event hub eseményeinek beolvasásához, majd az Event Processor-ügyfél funkcióinak részletes ismertetését, amely lehetővé teszi, hogy egyszerre több partícióról fogadjon eseményeket, és a terheléselosztást más, ugyanazon az Event hub-t és a fogyasztói csoportot használó fogyasztókkal.
 
 > [!NOTE]
-> Az Event Hubs skálázásának kulcsa a particionált fogyasztók ötlete. A versengő [fogyasztói](https://msdn.microsoft.com/library/dn568101.aspx) mintával ellentétben a particionált fogyasztói minta lehetővé teszi a nagy léptékű azáltal, hogy megszünteti a versengés szűk keresztmetszetét, és megkönnyíti a végpontok közötti párhuzamosság.
+> A Event Hubs méretezésének kulcsa a particionált fogyasztók ötlete. A [versengő fogyasztók](https://msdn.microsoft.com/library/dn568101.aspx) mintával ellentétben a particionált fogyasztói minta nagy méretekben teszi lehetővé a szűk keresztmetszetet, és megkönnyíti a végpontok közötti párhuzamosságot.
 
 ## <a name="example-scenario"></a>Példaforgatókönyv
 
-Példaként, fontolja meg egy otthoni biztonsági cég, amely figyeli 100.000 otthonok. Percenként különböző érzékelőktől kap adatokat, például mozgásérzékelőből, ajtó/ablak nyitott érzékelőből, üvegtörés-érzékelőből és így tovább, minden otthonban telepítve. A cég egy weboldalt biztosít a lakosok számára, hogy közel valós időben figyelemmel kísérjék otthonuk tevékenységét.
+Példaként vegyünk egy olyan otthoni biztonsági vállalatot, amely az 100 000-es otthonok figyelését végzi. Minden percben különböző érzékelőkből, például egy mozgásérzékelőből, egy ajtó/ablak nyitott érzékelőből, az üvegből történő kiderítés és így tovább. A vállalat olyan webhelyet biztosít a lakosok számára, amely közel valós időben figyeli a saját otthonuk tevékenységeit.
 
-Minden érzékelő adatokat ad egy eseményközpontba. Az eseményközpont 16 partícióval van konfigurálva. A fogyasztó végén szüksége van egy olyan mechanizmusra, amely képes olvasni ezeket az eseményeket, konszolidálni őket (szűrés, összesítés, és így tovább), és az összesítést egy tárolóblobba, amelyet ezután egy felhasználóbarát weblapra vetít.
+Minden érzékelő egy Event hub-ba küldi az adatküldést. Az Event hub 16 partícióval van konfigurálva. A felhasználás végén olyan mechanizmusra van szüksége, amely képes beolvasni ezeket az eseményeket, összevonja őket (szűrés, összesítés stb.), és kiírja az összesítést egy Storage-blobba, amelyet aztán egy felhasználóbarát weboldalra terveztek.
 
 ## <a name="write-the-consumer-application"></a>A fogyasztói alkalmazás írása
 
 A fogyasztó elosztott környezetben történő tervezésekor a forgatókönyvnek a következő követelményeket kell kezelnie:
 
-1. **Skála:** Hozzon létre több fogyasztót, és minden egyes fogyasztó saját tulajdonba veszi az olvasásnéhány Event Hubs partíciók.
-2. **Terhelési mérleg:** Növelje vagy csökkentse a fogyasztókdinamikusan. Ha például minden otthonhoz új érzékelőtípust (például szén-monoxid-érzékelőt) adnak hozzá, az események száma nő. Ebben az esetben az üzemeltető (egy ember) növeli a fogyasztói példányok számát. Ezután a felhasználók készlete újraegyensúlyozhatja a saját partíciók számát, hogy megossza a terhelést az újonnan hozzáadott fogyasztókkal.
-3. **Zökkenőmentes folytatás a hibákról:** Ha egy fogyasztó **("A" fogyasztó)** meghibásodik (például a fogyasztót üzemeltető virtuális gép hirtelen összeomlik), akkor más fogyasztók is felvehetik az **"A" fogyasztó** tulajdonában lévő partíciókat, és folytathatják. Emellett a folytatási pontnak, az úgynevezett *ellenőrzőpontnak* vagy *eltolásnak*pontosan azon a ponton kell lennie, ahol az **A fogyasztó** meghibásodott, vagy valamivel előtte.
-4. **Események felhasználása:** Míg az előző három pont foglalkozik a menedzsment a fogyasztó, ott kell lennie kódot fogyasztani az eseményeket, és nem valami hasznosvele. Például összesítse, és töltse fel a blob storage-ba.
+1. **Skála:** Több fogyasztót is létrehozhat, és minden fogyasztónak több Event Hubs partícióból kell elolvasnia a tulajdonjogát.
+2. **Terheléselosztás:** Növelje vagy csökkentse dinamikusan a fogyasztókat. Ha például egy új érzékelő típusa (például egy szén-monoxid-detektor) hozzá van adva az egyes kezdőlapokhoz, az események száma nő. Ebben az esetben az operátor (emberi) növeli a fogyasztói példányok számát. Ezután a felhasználók készlete megoszthatja a saját maga által birtokolt partíciók számát, hogy megosszák a terhelést az újonnan hozzáadott fogyasztókkal.
+3. **Zökkenőmentes folytatás a hibáknál:** Ha a fogyasztó (**a fogyasztó**) nem sikerül (például a fogyasztót futtató virtuális gép hirtelen összeomlik), akkor a többi fogyasztó az **a felhasználó** által birtokolt és folytatott partíciókat is felveheti. Emellett a folytatási pontnak, amely *ellenőrzőpontnak* vagy *eltolásnak*nevezhető, pontosan olyan ponton kell lennie, ahol a **fogyasztó** sikertelen volt, vagy valamivel azelőtt.
+4. **Események felhasználása:** Míg az előző három pont a fogyasztó felügyeletével foglalkozik, az események felhasználásához programkódot kell használni, és ehhez hasznos lehet. Például összesítheti és feltöltheti a blob Storage-ba.
 
-## <a name="event-processor-or-consumer-client"></a>Eseményfeldolgozó vagy -ügyfél
+## <a name="event-processor-or-consumer-client"></a>Event processzor vagy fogyasztói ügyfél
 
-Nem kell saját megoldást készítenie ahhoz, hogy megfeleljen ezeknek a követelményeknek. Az Azure Event Hubs SDK-k biztosítják ezt a funkciót. A .NET vagy a Java SDK-kban egy eseményfeldolgozó ügyfelet (EventProcessorClient), a Python és a Java Script SDK-kban pedig az EventHubConsumerClient-t használja. Az SDK régi verziójában az eseményprocesszor-állomás (EventProcessorHost) támogatta ezeket a szolgáltatásokat.
+A követelmények teljesítéséhez nem kell saját megoldást létrehoznia. Az Azure Event Hubs SDK-k biztosítják ezt a funkciót. .NET-vagy Java SDK-k esetén az EventHubConsumerClient-t használja a EventProcessorClient, valamint a Python-és Java-parancsfájlok SDK-ban. Az SDK régi verziójában ez volt az a funkciókat támogató EventProcessorHost-gazda.
 
-Az éles környezetek többségéhez azt javasoljuk, hogy az eseményfeldolgozó ügyfelet használja az események olvasására és feldolgozására. A processzorügyfél célja, hogy egy eseményközpont összes partícióján egy teljesítmény- és hibatűrő módon hatékony élményt nyújtson az események feldolgozásához, miközben biztosítja a folyamat ellenőrzőpontjának ellenőrzőpontját. Az eseményfeldolgozó ügyfelek egy adott eseményközpont fogyasztói csoportjának környezetében is képesek együttműködni. Az ügyfelek automatikusan kezelik a szolgáltatások elosztását és kiegyensúlyozását, amint a példányok elérhetővé válnak vagy nem érhetők el a csoport számára.
+Az éles környezetek többsége számára azt javasoljuk, hogy az Event Processor-ügyfelet az események olvasására és feldolgozására használja. A processzor-ügyfél hatékony élményt biztosít az Event hub összes partícióján lévő események teljesítménybeli és hibatűrő módon történő feldolgozásához, miközben a folyamat előrehaladását is lehetővé teszi. Az Event Processor-ügyfelek az adott Event hub felhasználói csoportjainak kontextusában is képesek együttműködni. Az ügyfelek automatikusan kezelik a munka eloszlását és kiegyensúlyozását, mivel a példányok elérhetővé válnak, vagy nem lesznek elérhetők a csoport számára.
 
 ## <a name="partition-ownership-tracking"></a>Partíció tulajdonjogának nyomon követése
 
-Az eseményfeldolgozó példány általában egy vagy több partíció eseményeit birtokolja és dolgozza fel. A partíciók tulajdonjoga egyenletesen oszlik el az eseményközponthoz és a fogyasztói csoport kombinációhoz társított összes aktív eseményprocesszor-példány között. 
+Egy esemény-feldolgozó példány általában egy vagy több partícióról származó eseményeket birtokol és dolgoz fel. A partíciók tulajdonjoga egyenletesen oszlik el az Event hub és a fogyasztói csoport kombinációhoz társított aktív Event Processor-példányok között. 
 
-Minden eseményfeldolgozó egyedi azonosítót kap, és egy ellenőrzőpont-tárolóban egy bejegyzés hozzáadásával vagy frissítésével jogcímeket állít a partíciók tulajdonjogára. Az összes eseményfeldolgozó példány rendszeresen kommunikál ezzel a tárral, hogy frissítse saját feldolgozási állapotát, valamint hogy megismerjék az egyéb aktív példányokat. Ezeket az adatokat ezután az aktív processzorok közötti terhelés kiegyenlítésére használják. Új példányok csatlakozhatnak a feldolgozási készlet hez a felskálázáshoz. Ha a példányok hibák miatt leállnak, vagy a méretezés idotartama miatt, a partíció tulajdonjoga kecsesen átkerül más aktív processzorokra.
+Minden eseményvezérelt processzor egyedi azonosítót kap, és a partíciók tulajdonjogát egy ellenőrzőpont-tárolóban lévő bejegyzés hozzáadásával vagy frissítésével állítja be. Az összes Event Processor-példány rendszeresen kommunikál a tárolóval, hogy frissítse a saját feldolgozási állapotát, valamint az egyéb aktív példányok megismerését. Ezt követően a rendszer az aktív processzorok közötti terhelés elosztására használja fel ezeket az adatkészleteket. Az új példányok a felskálázáshoz csatlakozhatnak a feldolgozó készlethez. Ha a példányok leállnak, a meghibásodások vagy a vertikális leskálázás miatt, a partíciók tulajdonjoga szabályosan átkerül más aktív processzorokra.
 
-Az ellenőrzőpont-tárolóban lévő partíciótulajdonosi rekordok nyomon követik az Event Hubs névterét, az eseményközpont nevét, a fogyasztói csoportot, az eseményfeldolgozó-azonosítót (más néven tulajdonost), a partícióazonosítót és az utolsó módosítás időpontját.
+Az ellenőrzőpont-tárolóban található partíciós tulajdonosi rekordok nyomon követik Event Hubs névteret, az Event hub nevét, a fogyasztói csoportot, az eseményvezérelt processzor azonosítóját (más néven tulajdonost), a partíció azonosítóját és az utolsó módosítás időpontját.
 
 
 
 | Event Hubs-névtér               | Eseményközpont neve | **Fogyasztói csoport** | Tulajdonos                                | Partícióazonosító | Utolsó módosítás időpontja  |
 | ---------------------------------- | -------------- | :----------------- | :----------------------------------- | :----------- | :------------------ |
-| mynamespace.servicebus.windows.net | myeventhub     | sajátfogyasztói csoport    | 3be3f9d3-9d9e-4c50-9491-85ece8334ff6 | 0            | 2020-01-15T01:22:15 |
-| mynamespace.servicebus.windows.net | myeventhub     | sajátfogyasztói csoport    | f5cc5176-ce96-4bb4-bbaa-a0e3a9054ecf | 1            | 2020-01-15T01:22:17 |
-| mynamespace.servicebus.windows.net | myeventhub     | sajátfogyasztói csoport    | 72b980e9-2efc-4ca7-ab1b-ffd7bece8472 | 2            | 2020-01-15T01:22:10 |
+| mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 3be3f9d3-9d9e-4c50-9491-85ece8334ff6 | 0            | 2020 – 01-15T01:22:15 |
+| mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | f5cc5176-ce96-4bb4-bbaa-a0e3a9054ecf | 1            | 2020 – 01-15T01:22:17 |
+| mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 72b980e9-2efc-4ca7-ab1b-ffd7bece8472 | 2            | 2020 – 01-15T01:22:10 |
 |                                    |                | :                  |                                      |              |                     |
 |                                    |                | :                  |                                      |              |                     |
-| mynamespace.servicebus.windows.net | myeventhub     | sajátfogyasztói csoport    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020-01-15T01:22:00 |
+| mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020 – 01-15T01:22:00 |
 
-Minden eseményprocesszor-példány megszerzi egy partíció tulajdonjogát, és megkezdi a partíció feldolgozását az utolsó ismert [ellenőrzőpontról.](# Checkpointing) Ha egy processzor meghibásodik (a virtuális gép leáll), akkor más példányok észlelik ezt az utolsó módosítás időpontjának megnézésével. Más példányok az inaktív példány korábban tulajdonában lévő partíciók tulajdonjogát próbálják meg beszerezni, és az ellenőrzőpont-tároló garantálja, hogy csak az egyik példány nak sikerül megszereznie egy partíció tulajdonjogát. Tehát egy adott időpontban legbőleg egy processzor fogadja az eseményeket egy partícióról.
+Minden Event Processor-példány egy partíció tulajdonjogát szerzi be, és elindítja az utolsó ismert [ellenőrzőpontról](# Checkpointing)a partíció feldolgozását. Ha a processzor meghibásodik (a virtuális gép leáll), akkor a többi példány ezt az utolsó módosítás időpontja alapján észlelte. Más példányok megpróbálják megszerezni az inaktív példány által korábban birtokolt partíciók tulajdonjogát, és az ellenőrzőpont-tároló garantálja, hogy csak az egyik példány sikerül a partíció tulajdonjogának igénylésében. Tehát egy adott időpontban egy processzor legfeljebb egy partíción fogad eseményeket.
 
 ## <a name="receive-messages"></a>Üzenetek fogadása
 
-Eseményfeldolgozó létrehozásakor megadhatja az eseményeket és hibákat feldolgozó függvényeket. Az eseményeket feldolgozó függvény minden egyes hívása egyetlen eseményt biztosít egy adott partícióról. A te felelősséged, hogy kezeld ezt az eseményt. Ha azt szeretné, hogy a fogyasztó legalább egyszer minden üzenetet feldolgoz, meg kell írnia a saját kódját újrapróbálkozási logikával. De légy óvatos a mérgezett üzenetekkel kapcsolatban.
+Eseményvezérelt processzor létrehozásakor meg kell adnia azokat a függvényeket, amelyek feldolgozzák az eseményeket és a hibákat. Az eseményeket feldolgozó függvények minden hívása egyetlen eseményt biztosít egy adott partícióról. Ezt az eseményt az Ön felelőssége kezelni. Ha azt szeretné, hogy a fogyasztó minden üzenetet legalább egyszer feldolgozzon, újra kell írnia a saját kódját az újrapróbálkozási logikával. Legyen óvatos a mérgezett üzenetekkel kapcsolatban.
 
-Javasoljuk, hogy viszonylag gyorsan végezze el a dolgokat. Ez azt, hogy nem a lehető legkisebb feldolgozás. Ha írnia kell a tárolóba, és némi útválasztást kell végeznie, akkor jobb, ha két fogyasztói csoportot használ, és két eseményfeldolgozóval rendelkezik.
+Javasoljuk, hogy a dolgokat viszonylag gyorsan végezze. Ez a lehető legkevesebb feldolgozás. Ha a tárhelyre kell írnia, és el kell végeznie az útválasztást, érdemes két fogyasztói csoportot használnia, és két eseménykezelővel kell rendelkeznie.
 
 ## <a name="checkpointing"></a>Ellenőrzőpontok használata
 
-*Az ellenőrzőpontok* olyan folyamat, amelynek során egy eseményfeldolgozó megjelöli vagy véglegesíti az utoljára sikeresen feldolgozott esemény pozícióját egy partíción belül. Az ellenőrzőpontok megjelölése általában az eseményeket feldolgozza, és egy fogyasztói csoporton belül partíciónként történik. 
+Az *ellenőrzőpontok* olyan folyamat, amellyel egy adott esemény processzora megjelöli vagy véglegesíti az utolsó sikeresen feldolgozott esemény pozícióját egy partíción belül. Az ellenőrzőpontok megjelölése általában a függvényen belül történik, amely feldolgozza az eseményeket, és a felhasználói csoporton belül partíciós alapon történik. 
 
-Ha egy eseményfeldolgozó bontja a kapcsolatot egy partícióval, egy másik példány folytathatja a partíció feldolgozását azon az ellenőrzőponton, amelyet az adott partíció utolsó processzora véglegesített az adott fogyasztói csoportban. Amikor a processzor csatlakozik, átmegy az eltolásaz eseményközpontba, hogy megadja azt a helyet, ahol el szeretné kezdeni az olvasást. Ily módon az ellenőrzőpontok használatával mindkét eseményt "teljes" ként jelölheti meg az alsóbb rétegbeli alkalmazások által, és rugalmasságot biztosíthat, ha egy eseményfeldolgozó leáll. Lehetséges visszatérni a régebbi adatokhoz egy alacsonyabb értékű eltolás megadásával az ellenőrzőpontok használata során. 
+Ha egy esemény-feldolgozó egy partícióról bontja a kapcsolatot, egy másik példány folytathatja a partíció feldolgozását az ellenőrzőponton, amelyet korábban az adott felhasználói csoportban lévő partíció utolsó processzora véglegesített. Amikor a processzor csatlakozik, átadja az eltolást az Event hub-nak, hogy megadja azt a helyet, ahol az olvasást el szeretné indítani. Ily módon az ellenőrzőpontok segítségével megadhatja az eseményeket "befejezettként" az alárendelt alkalmazások számára, és biztosíthatja a rugalmasságot, ha az esemény processzora leáll. Lehetséges visszatérni a régebbi adatokhoz egy alacsonyabb értékű eltolás megadásával az ellenőrzőpontok használata során. 
 
-Amikor az ellenőrzőpontot egy esemény feldolgozottként való megjelölésére hajtja végre, az ellenőrzőpont-tárolóban egy bejegyzés kerül hozzáadásra vagy frissítésre az esemény eltolásával és sorszámával. A felhasználóknak kell eldönteniük az ellenőrzőpont frissítésének gyakoriságát. Minden sikeresen feldolgozott esemény után frissítés teljesítmény- és költséghatással járhat, mivel írási műveletet indít el az alapul szolgáló ellenőrzőpont-tárolóba. Továbbá ellenőrzőpontok minden egyes esemény jelzi a várólistára helyezett üzenetkezelési minta, amely a Service Bus-várólista lehet jobb választás, mint egy eseményközpont. Az Event Hubs ötlete az, hogy "legalább egyszer" nagy méretű kézbesítést kap. Azáltal, hogy a későbbi rendszerek idempotent, könnyen helyreállítható a hibák vagy újraindítások, amelyek eredményeként ugyanazokat az eseményeket többször kapták.
+Ha az ellenőrzőpontot egy esemény feldolgozottként való megjelölésére hajtja végre, az ellenőrzőpont-tárolóban egy bejegyzés kerül hozzáadásra vagy frissítésre az esemény eltolásával és sorszámával. A felhasználóknak el kell dönteniük az ellenőrzőpont frissítésének gyakoriságát. Az egyes sikeres feldolgozott események utáni frissítés teljesítményre és költséghatékonyságra is hatással lehet, mivel írási műveletet indít el az alapul szolgáló ellenőrzőpont-tárolóba. Emellett az ellenőrzőpontok minden egyes eseménynél egy várólistán lévő üzenetküldési mintát jelezhetnek, amelyhez egy Service Bus üzenetsor jobb megoldás lehet, mint az Event hub. A Event Hubs mögötti ötlet az, hogy "legalább egyszer" kézbesítést kap nagy léptékben. Az alsóbb rétegbeli rendszerek idempotens egyszerűen helyreállítható a hibák vagy újraindítások, amelyek ugyanazt az eseményt többször kapják meg.
 
 > [!NOTE]
-> Ha az Azure Blob Storage-t használja ellenőrzőpont-tárolóként egy olyan környezetben, amely a Storage Blob SDK egy másik verzióját támogatja, mint az Azure-ban általában elérhető, kódot kell használnia a Storage service API-verziójának az adott környezet által támogatott verzióra való módosításához. Ha például az [Event Hubs szolgáltatást egy 2002-es Azure Stack Hub-verzión futtatja,](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)a Storage szolgáltatás legmagasabb elérhető verziója a 2017-11-09-es verzió. Ebben az esetben a Storage service API-verziójának 2017-11-09-re való célzásához kódot kell használnia. Egy adott Storage API-verzió célzásával kapcsolatos példát tekintse meg ezeket a mintákat a GitHubon: 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> Ha Azure Blob Storaget használ az ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK egy másik verzióját, mint az Azure-ban, akkor a Storage szolgáltatás API-verziójának az adott környezet által támogatott verzióra való módosításához programkódot kell használnia. Ha például [egy 2002-es Azure stack hub-os verzióban](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
+> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) vagy [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) vagy [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
-## <a name="thread-safety-and-processor-instances"></a>Menetbiztonsági és processzorpéldányok
+## <a name="thread-safety-and-processor-instances"></a>A szál biztonsági és processzor-példányai
 
-Alapértelmezés szerint az eseményfeldolgozó vagy -fogyasztó szálbiztos, és szinkron módon viselkedik. Amikor események érkeznek egy partícióra, az eseményeket feldolgozó függvény neve meg lesz hívva. A függvény további üzenetei és hívásai a színfalak mögött, ahogy az üzenetszivattyú továbbra is fut a háttérben más szálakon. Ez a menetbiztonság szükségtelent jelent a menetbiztos gyűjtemények számára, és jelentősen növeli a teljesítményt.
+Alapértelmezés szerint az eseményvezérelt processzor vagy a fogyasztó a szál biztonságos, és szinkron módon viselkedik. Amikor az események megérkeznek egy partícióra, a rendszer az eseményeket feldolgozó függvényt hívja meg. A függvény további üzenetei és hívásai a jelenetek mögött, az üzenet-szivattyú pedig továbbra is a háttérben futnak a többi szálon. Ez a szál biztonsága megszünteti a szál-biztonságos gyűjtemények szükségességét, és jelentősen növeli a teljesítményt.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő rövid útmutatókat:
+Tekintse meg az alábbi rövid útmutatókat:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)

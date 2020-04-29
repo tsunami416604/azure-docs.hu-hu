@@ -1,6 +1,6 @@
 ---
-title: A PerfInsights Linux használata a Microsoft Azure-ban| Microsoft dokumentumok
-description: Megtudhatja, hogyan használhatja a PerfInsights segítségével a Linux-virtuális gépek teljesítményével kapcsolatos problémák elhárításához.
+title: A PerfInsights Linux használata a Microsoft Azureban | Microsoft Docs
+description: Megtudhatja, hogyan használható a PerfInsights a linuxos virtuális gépek teljesítményével kapcsolatos problémák elhárításához.
 services: virtual-machines-linux'
 documentationcenter: ''
 author: anandhms
@@ -14,82 +14,82 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266987"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
-[A PerfInsights Linux](https://aka.ms/perfinsightslinuxdownload) egy önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést készít a Linux virtuális gépek teljesítményproblémáinak elhárításához az Azure-ban. A PerfInsights önálló eszközként vagy közvetlenül a portálról futtatható a támogatott virtuális gépeken az [Azure virtuális gépek teljesítménydiagnosztika](performance-diagnostics.md)használatával.
+A [PerfInsights Linux](https://aka.ms/perfinsightslinuxdownload) egy önsegítő diagnosztikai eszköz, amely a diagnosztikai adatok gyűjtésére és elemzésére szolgál, és jelentést nyújt a linuxos virtuális gépek teljesítményével kapcsolatos problémák megoldásához az Azure-ban. A PerfInsights futtathatók a támogatott virtuális gépeken önálló eszközként, vagy közvetlenül a portálról az [Azure Virtual Machines teljesítmény-diagnosztika](performance-diagnostics.md)használatával.
 
-Ha teljesítményproblémákat tapasztal a virtuális gépekkel kapcsolatban, mielőtt kapcsolatba lépne az ügyfélszolgálattal, futtassa ezt az eszközt.
+Ha teljesítménnyel kapcsolatos problémákat tapasztal a virtuális gépekkel kapcsolatban, akkor a támogatáshoz való kapcsolatfelvétel előtt futtassa ezt az eszközt.
 
 ## <a name="supported-troubleshooting-scenarios"></a>Támogatott hibaelhárítási forgatókönyvek
 
-A PerfInsights többféle információt gyűjthet és elemezhet. A következő szakaszok a gyakori forgatókönyveket ismertetik.
+A PerfInsights több fajta információt gyűjthet és elemez. A következő szakaszban a gyakori forgatókönyvek jelennek meg.
 
-### <a name="quick-performance-analysis"></a>Gyors teljesítményelemzés
+### <a name="quick-performance-analysis"></a>Gyors teljesítmény elemzése
 
-Ez a forgatókönyv olyan alapvető információkat gyűjt, mint például a virtuális gép tárolása és hardverkonfigurációja, különböző naplók, többek között:
+Ez a forgatókönyv olyan alapszintű adatokat gyűjt, mint például a virtuális gép tárolója és hardveres konfigurációja, különböző naplók, beleértve a következőket:
 
-- Az operációs rendszer adatai
+- Operációs rendszer adatai
 
 - PCI-eszköz adatai
 
-- Általános vendég operációs rendszer naplók
+- A vendég operációs rendszer általános naplói
 
 - Konfigurációs fájlok
 
-- Tárolási adatok
+- Tárolási információk
 
-- Azure virtuálisgép-konfiguráció [(az Azure-példány metaadatszolgáltatása használatával gyűjtve)](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- Azure-beli virtuális gépek konfigurálása (az [azure instance metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)használatával gyűjtöttük össze)
 
-- A futó folyamatok, a lemez-, a memória- és a processzorhasználat listája
+- Futó folyamatok, lemezek, memória és CPU-használat listája
 
-- Hálózati információk
+- Hálózatkezelési információk
 
-Ez egy passzív információgyűjtemény, amely nem befolyásolhatja a rendszert.
+Ez az információ passzív gyűjteménye, amely nem érinti a rendszerét.
 
 >[!Note]
->A gyorsteljesítmény-elemzési forgatókönyv automatikusan bekerül az alábbi esetek mindegyikébe:
+>A gyors teljesítmény-elemzési forgatókönyv a következő esetekben automatikusan szerepel:
 
-### <a name="performance-analysis"></a>Teljesítményelemzés
+### <a name="performance-analysis"></a>Teljesítmény elemzése
 
-Ez a forgatókönyv hasonló a gyors teljesítményelemzéshez, de lehetővé teszi a diagnosztikai információk hosszabb ideig történő rögzítését.
+Ez a forgatókönyv hasonlít a gyors teljesítmény elemzéséhez, de lehetővé teszi a diagnosztikai adatok hosszabb időtartamra történő rögzítését.
 
-## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Milyen információkat gyűjt a PerfInsights?
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Milyen típusú információkat gyűjt a PerfInsights
 
-A Linux virtuális gép, az operációs rendszer, a blokk eszközök, a nagy erőforrás-fogyasztók, a konfiguráció és a különböző naplók gyűjtése. További részletek:
+A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök letiltására, a magas erőforrás-felhasználókra, a konfigurációra és a különböző naplókra vonatkozó információk gyűjtése. További részletek:
 
 - Operációs rendszer
-  - Linux disztribúció és verzió
-  - Kernel információ
-  - Járművezetői információk
+  - Linux-disztribúció és-verzió
+  - Kernel-információk
+  - Illesztőprogram-információk
 
 - Hardver
-  - PCI-eszközök`*`[ ]
+  - PCI-eszközök`*`[]
 
 - Folyamatok és memória
-  - Folyamatok listája (feladat neve, használt memória, megnyitott fájlok)
-  - Összes, rendelkezésre álló és szabad fizikai memória
-  - Összes, rendelkezésre álló és szabad lapozómemória
-  - A CPU és a CPU-használat profilkészítési rögzítése 5 másodperces időközzel
-  - A folyamatok memóriahasználatának profilkészítési rögzítése 5 másodperces időközzel
+  - Folyamatok listája (feladat neve, felhasznált memória, megnyitott fájlok)
+  - Teljes, elérhető és szabad fizikai memória
+  - Teljes, elérhető és szabad swap memória
+  - Profilkészítési rögzítés a PROCESSZORon és a CPU-használat feldolgozása 5 másodperces intervallumban
+  - Profilkészítés – a folyamatok memória-használatának 5 másodperces intervallumon belüli rögzítése
 
 - Hálózat  
-  - Adapterekkel rendelkező hálózati adapterek statisztikáinak listája
-  - Hálózati útválasztási tábla
-  - Megnyitott portok és állapot
+  - Adapterek statisztikáit tartalmazó hálózati adapterek listája
+  - Hálózati útválasztási táblázat
+  - Nyitott portok és állapot
 
 - Storage
   - Eszközök listájának letiltása
   - Partíciók listája
-  - Pontok csatlakoztatása
-  - MDADM kötetinformáció
-  - LVM-kötet adatai
-  - Profilkészítési rögzítés az összes lemezen 5 másodperces időközzel
+  - Csatlakoztatási pontok listája
+  - MDADM-kötet adatai
+  - LVM kötet adatai
+  - Profilkészítés rögzítése az összes lemezen 5 másodperces intervallumban
 
 - Naplók
   - /var/log/messages
@@ -103,67 +103,67 @@ A Linux virtuális gép, az operációs rendszer, a blokk eszközök, a nagy er�
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/azure/[kiterjesztésmappa]/\*napló\*
+  - /var/log/Azure/[bővítmény mappája]\*/napló\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
-  - Az elmúlt öt nap naplóctl-kibocsátása
+  - A journalctl kimenete az elmúlt öt napban
 
-- [Az Azure virtuálisgép-példány metaadatai](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Azure virtuálisgép-példány metaadatainak](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] PCI-adatokat még nem gyűjtenek a Debian és az SLES disztribúciókról
+>[`*`] A PCI-információk gyűjtése még nem történt meg a Debian és a SLES disztribúcióban
 
-## <a name="run-the-perfinsights-linux-on-your-vm"></a>Futtassa a PerfInsights Linuxot a virtuális gépen
+## <a name="run-the-perfinsights-linux-on-your-vm"></a>A PerfInsights Linux futtatása a virtuális gépen
 
-### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Mit kell tudnom, mielőtt futtatom az eszközt
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Tudnivalók az eszköz futtatása előtt
 
-#### <a name="tool-requirements"></a>A szerszámra vonatkozó követelmények
+#### <a name="tool-requirements"></a>Eszközre vonatkozó követelmények
 
-- Ezt az eszközt a teljesítményproblémát okozó virtuális számítógépen kell futtatni.
-- A Python 2.7-et telepíteni kell a virtuális gépre
+- Ezt az eszközt a teljesítménnyel kapcsolatos problémát biztosító virtuális gépen kell futtatni.
+- A Python 2,7-et telepíteni kell a virtuális gépre.
 
-- A következő disztribúciók jelenleg támogatottak:
+- A következő eloszlások jelenleg támogatottak:
 
     | Disztribúció               | Verzió                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux szerver        | 6.10`*`[ ], 7.3, 7.6, 7.5 (Oracle-Database-Ee 13.8 piactér imázsa)|
-    | CentOS                     | 6,5`*`[ ], 7,6                                    |
-    | RHEL                       | 7.2, 7.5, 8.0 [`*`]                               |
+    | Oracle Linux kiszolgáló        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-EE 13,8 Marketplace-rendszerkép)|
+    | CentOS                     | 6,5 [`*`], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
     | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4`*`[ ]                                      |
+    | SLES                       | 12 SP4 [`*`]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Kérjük, olvassa el [az Ismert problémák](#known-issues) című részt
+>[`*`] Tekintse meg az [ismert problémák](#known-issues) szakaszt.
 
 ### <a name="known-issues"></a>Ismert problémák
 
-- Az RHEL 8 alapértelmezés szerint nincs telepítve a Python. A PerfInsights Linux futtatásához először telepítenie kell a Python 2.7-et
+- A RHEL 8 alapértelmezés szerint nem telepítette a Pythont. A PerfInsights Linux futtatásához először telepítenie kell a Python 2,7
 
-- A vendégügynök adatainak gyűjtése sikertelen lehet a CentOS 6.x rendszeren
+- A vendég ügynök információinak gyűjtése sikertelen lehet a CentOS 6. x-ben
 
-- A PCI-eszközök adatait nem gyűjtjük a Debian alapú disztribúciókon
+- A PCI-eszközök adatait a rendszer nem gyűjti a Debian-alapú disztribúciókban
 
-- Az LVM-adatokat részben gyűjtik egyes disztribúciók
+- Az LVM-adatokat részben gyűjti a rendszer egyes disztribúciókban
 
-### <a name="how-do-i-run-perfinsights"></a>Hogyan futtathatom a PerfInsights-et?
+### <a name="how-do-i-run-perfinsights"></a>PerfInsights Hogyan futtatása
 
-A PerfInsights virtuális gépen futtatható az Azure Performance Diagnostics azure-portálról történő telepítésével. Önálló eszközként is futtathatja.
+A PerfInsights-et virtuális gépen is futtathatja az Azure Performance Diagnostics Azure Portalból történő telepítésével. Önálló eszközként is futtatható.
 
 >[!Note]
->A PerfInsights egyszerűen gyűjti és elemzi az adatokat. Nem módosítja a rendszert.
+>A PerfInsights egyszerűen összegyűjti és elemzi az adatokat. Nem végez módosításokat a rendszeren.
 
-#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>A PerfInsights telepítése és futtatása az Azure Portalról
+#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>A PerfInsights telepítése és futtatása a Azure Portal
 
-Erről a beállításról az [Azure performance diagnostics](performance-diagnostics.md)című témakörben talál további információt.  
+További információ erről a lehetőségről: [Azure Performance Diagnostics](performance-diagnostics.md).  
 
 #### <a name="run-perfinsights-in-standalone-mode"></a>PerfInsights futtatása önálló módban
 
-A PerfInsights eszköz futtatásához hajtsa végre az alábbi lépéseket:
+A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
 
-1. Töltse le [a PerfInsights.tar.gz fájlt](https://aka.ms/perfinsightslinuxdownload) a virtuális gép egy mappájába, és bontsa ki a tartalmát a terminál alábbi parancsaival.
+1. Töltse le a [PerfInsights. tar. gz](https://aka.ms/perfinsightslinuxdownload) mappát a virtuális gép egyik mappájába, és bontsa ki a tartalmat a terminálon az alábbi parancsokkal.
 
    ```bash
    wget https://download.microsoft.com/download/9/F/8/9F80419C-D60D-45F1-8A98-718855F25722/PerfInsights.tar.gz
@@ -173,14 +173,14 @@ A PerfInsights eszköz futtatásához hajtsa végre az alábbi lépéseket:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Nyissa meg a `perfinsights.py` fájlt tartalmazó mappát, majd futtassa `perfinsights.py` az elérhető parancssori paraméterek megtekintéséhez.
+2. Keresse meg a fájlt tartalmazó `perfinsights.py` mappát, majd futtassa a parancsot `perfinsights.py` az elérhető parancssori paraméterek megtekintéséhez.
 
     ```bash
     cd <the path of PerfInsights folder>
     sudo python perfinsights.py
     ```
 
-    ![Képernyőkép a PerfInsights Linux parancssori kimenetéről](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
+    ![Képernyőkép a PerfInsights Linux parancssori kimenetről](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
 
     A PerfInsights-forgatókönyvek futtatásának alapvető szintaxisa a következő:
 
@@ -188,70 +188,70 @@ A PerfInsights eszköz futtatásához hajtsa végre az alábbi lépéseket:
     sudo python perfinsights.py -r <ScenarioName> -d [duration]<H | M | S> [AdditionalOptions]
     ```
 
-    Az alábbi példában 1 percig futtathatja a Gyors teljesítményelemzési forgatókönyvet, és létrehozhatja az eredményeket a /tmp/output mappában:
+    Az alábbi példát követve futtathat gyors teljesítmény-elemzési forgatókönyvet 1 percig, és létrehozhatja az eredményeket a/tmp/output mappában:
 
     ```bash
     sudo python perfinsights.py -r quick -d 1M -a -o /tmp/output
     ```
 
-    Az alábbi példában 5 napig futtathatja a teljesítményelemzési forgatókönyvet, és feltöltheti az eredményt a tárfiókba:
+    Az alábbi példát követve futtasson teljesítmény-elemzési forgatókönyvet 5 percen keresztül, és töltse fel az eredmény-tar labdát a Storage-fiókba:
 
     ```bash
     sudo python perfinsights.py -r vmslow -d 300S -a -t <StorageAccountName> -k <StorageAccountKey> -i <full resource Uri of the current VM>
     ```
 
     >[!Note]
-    >A perfInsights egy forgatókönyv futtatása előtt felszólítja a felhasználót, hogy egyezzen bele a diagnosztikai információk megosztásába, és fogadja el a végfelhasználói licencszerződés elfogadását. Az **-a vagy --accept-disclaimer-and-share-diagnostics** kapcsolóval kihagyhatja ezeket az utasításokat.
+    >Egy forgatókönyv futtatása előtt a PerfInsights felszólítja a felhasználót, hogy fogadja el a diagnosztikai adatok megosztását, és fogadja el a végfelhasználói licencszerződést. Használja az **-a vagy az--Accept-Disclaimer-and-share-Diagnostics** lehetőséget az ilyen kérések kihagyásához.
     >
-    >Ha aktív támogatási jegye van a Microsoftnál, és a PerfInsights futtatása a támogatási szakember kérésére, akivel együtt dolgozik, győződjön meg arról, hogy megadja a támogatási jegy számát az **-s vagy a --support-request** kapcsoló használatával.
+    >Ha aktív támogatási jegyet használ a Microsofttal, és PerfInsights-t futtat a támogatási szakember kérelmére, akkor ügyeljen arra, hogy a támogatási jegy számát a **-s vagy a--support-Request** kapcsoló használatával adja meg.
 
-A futtatás befejezéseután egy új kátrányfájl jelenik meg ugyanabban a mappában, mint a PerfInsights, kivéve, ha nincs megadva kimeneti mappa. A fájl neve **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.tar.gz.** Ezt a fájlt elküldheti a támogatási ügynöknek elemzésre, vagy megnyithatja a jelentést a fájlon belül a megállapítások és javaslatok áttekintéséhez.
+Ha a Futtatás befejeződött, egy új tar-fájl ugyanabban a mappában jelenik meg, mint a PerfInsights, kivéve, ha nincs megadva kimeneti mappa. A fájl neve **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz.** Ezt a fájlt elküldheti a támogatási ügynöknek elemzésre, vagy megnyithatja a jelentést a fájlon belül a megállapítások és javaslatok áttekintéséhez.
 
 ## <a name="review-the-diagnostics-report"></a>A diagnosztikai jelentés áttekintése
 
-A **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.tar.gz** fájlban talál egy HTML-jelentést, amely részletezi a PerfInsights megállapításait. A jelentés áttekintéséhez **bontsa\_ki a PerformanceDiagnostics\_yyyy-MM-dd hh-mm-ss-fff.tar.gz** fájlt, majd nyissa meg a **PerfInsights Report.html** fájlt.
+A **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki **a\_PERFORMANCEDIAGNOSTICS éééé-hh-\_nn hh-mm-SS-fff. tar. gz** fájlt, majd nyissa meg a **PerfInsights report. html** fájlt.
 
 ### <a name="overview-tab"></a>Áttekintés lap
 
-Az **Áttekintés** lap alapvető futtatási részleteket és virtuális gépadatokat tartalmaz. A **Megállapítások** lapon a PerfInsights-jelentés összes különböző szakaszának ajánlásait tartalmazza.
+Az **Áttekintés** lapon az alapszintű Futtatás részletei és a virtuális gép adatai láthatók. Az **eredmények** lapon a PerfInsights-jelentés különböző részeiből származó javaslatok összegzése látható.
 
 ![Képernyőkép a PerfInsights-jelentésről](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
 ![Képernyőkép a PerfInsights-jelentésről](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
-> A magasként kategorizált megállapítások olyan ismert problémák, amelyek teljesítményproblémákat okozhatnak. A közepesként kategorizált megállapítások nem optimális konfigurációkat képviselnek, amelyek nem feltétlenül okoznak teljesítményproblémákat. Az alacsonyként kategorizált megállapítások csak tájékoztató jellegű megállapítások.
+> A magas kategóriába sorolt megállapítások olyan ismert problémák, amelyek teljesítménnyel kapcsolatos problémákat okozhatnak. A közepesként kategorizált eredmények olyan nem optimális konfigurációkat jelentenek, amelyek nem szükségszerűen okoznak teljesítménnyel kapcsolatos problémákat. Az alacsonyként kategorizált eredmények csak tájékoztató utasítások.
 
-Tekintse át az ajánlásokat és a linkeket az összes magas és közepes megállapításokat. Ismerje meg, hogyan befolyásolhatják a teljesítményt, valamint a teljesítményre optimalizált konfigurációkra vonatkozó gyakorlati tanácsok.
+Tekintse át az ajánlásokat és a hivatkozásokat az összes magas és közepes eredményhez. Ismerje meg, hogy miként befolyásolhatják a teljesítményt és az ajánlott eljárásokat a teljesítményre optimalizált konfigurációk esetében.
 
 ### <a name="cpu-tab"></a>CPU lap
 
-**A CPU** lap a PerfInsights futtatása során a rendszerszintű processzorfogyasztásról nyújt tájékoztatást. A magas processzorhasználati időszakokról és a felső, hosszú ideig futó CPU-fogyasztókról szóló információk hasznosak lehetnek a magas CPU-val kapcsolatos problémák elhárításához.
+A **CPU** lap a PerfInsights futtatása során a rendszerszintű CPU-használatról nyújt információkat. A magas CPU-használati időszakokra és a nagy teljesítményű CPU-felhasználókra vonatkozó információk hasznosak lehetnek a PROCESSZORral kapcsolatos problémák elhárításában.
 
-![Képernyőkép a PerfInsights jelentés PROCESSZORlapjáról](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
+![Képernyőfelvétel a PerfInsights jelentés CPU lapjáról](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
 
-### <a name="storage-tab"></a>Tárolás lap
+### <a name="storage-tab"></a>Tároló lap
 
-A **Megállapítások** szakasz a tárolással kapcsolatos különböző megállapításokat és ajánlásokat jeleníti meg.
+Az **eredmények** szakasz a tárolással kapcsolatos különböző eredményeket és javaslatokat jeleníti meg.
 
-Az **Eszközök blokkolása** és más kapcsolódó szakaszok, például **a partíciók,** **az LVM**és az **MDADM** lapok azt írják le, hogy a blokkeszközök hogyan vannak konfigurálva és kapcsolódnak egymáshoz.
+Az eszközök és egyéb kapcsolódó szakaszok, például a **Partitions**, az **LVM**és a **MDADM** lapok **letiltják** , hogy az eszközök hogyan vannak konfigurálva és hogyan kapcsolódnak egymáshoz.
 
-![Képernyőkép a Tárhely lapról](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
-![Képernyőkép az MDADM lapról](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
+![Képernyőfelvétel a Storage lapról](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
+![Képernyőkép a MDADM lapról](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
 
 ### <a name="linux-tab"></a>Linux lap
 
-A **Linux** lap információkat tartalmaz a hardver és az operációs rendszer fut a virtuális gép. A részletek közé tartozik a futó folyamatok listája és a vendégügynökre, a PCI-re, a PROCESSZORRA, az illesztőprogramokra és a LIS-illesztőprogramokra vonatkozó információk.
+A **Linux** lapon a virtuális gépen futó hardverre és operációs rendszerre vonatkozó információk találhatók. A részletek tartalmazzák a futó folyamatok listáját és a vendég ügynök, a PCI, a CPU, az illesztőprogramok és a LIS illesztőprogramok információit.
 
-![Képernyőkép a Linux lapról](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
+![A Linux lap képernyőképe](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További ellenőrzés céljából diagnosztikai naplókat és jelentéseket tölthet fel a Microsoft támogatási szolgálatának. Amikor a Microsoft támogatási munkatársaival dolgozik, kérhetik, hogy továbbítsa a PerfInsights által létrehozott kimenetet, hogy segítse a hibaelhárítási folyamatot.
+A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. Ha a Microsoft ügyfélszolgálata munkatársaival dolgozik, kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 
-A következő képernyőképen a kapotthoz hasonló üzenet jelenik meg:
+Az alábbi képernyőképen egy, a következőhöz hasonló üzenet látható:
 
-![Képernyőkép a Microsoft támogatási szolgálatától származó mintaüzenetről](media/how-to-use-perfinsights-linux/support-email.png)
+![Képernyőkép a Microsoft ügyfélszolgálataról](media/how-to-use-perfinsights-linux/support-email.png)
 
-A fájlátviteli munkaterület eléréséhez kövesse az üzenetutasításait. A nagyobb biztonság érdekében az első használatkor meg kell változtatnia a jelszavát.
+Az üzenetben található utasításokat követve férhet hozzá a fájlátviteli munkaterülethez. A további biztonság érdekében meg kell változtatnia a jelszavát az első használatkor.
 
-Miután bejelentkezett, talál egy párbeszédpanelt a PerfInsights által gyűjtött **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.tar.gz** fájl feltöltéséhez.
+A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **PerformanceDiagnostics\_éééé-hh\_-nn hh-mm-SS-fff. tar. gz** fájlt.

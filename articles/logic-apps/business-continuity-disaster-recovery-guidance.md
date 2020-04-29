@@ -1,356 +1,356 @@
 ---
 title: Folyamatos üzletmenet és vészhelyreállítás
-description: Tervezze meg stratégiáját az adatok védelme érdekében, gyorsan helyreállítva a zavaró eseményektől, a kritikus üzleti funkciók által igényelt erőforrások helyreállításához és az Azure Logic Apps üzletmenetfolytonosságának fenntartásához
+description: Tervezze meg a stratégiát az adatok védelme érdekében, gyorsan helyreállíthatja a zavaró eseményektől, visszaállíthatja a kritikus üzleti funkciókhoz szükséges erőforrásokat, és megőrizheti az üzletmenet folytonosságát Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437705"
 ---
-# <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Üzletmenet-folytonosság és vészhelyreállítás az Azure Logic Apps alkalmazásokhoz
+# <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Üzletmenet-folytonosság és vész-helyreállítási Azure Logic Apps
 
-Az előre nem látható események nek az üzletre és az ügyfelekre gyakorolt hatásának és hatásainak csökkentése érdekében győződjön meg arról, hogy [ *vész-helyreállítási* (DR)](https://en.wikipedia.org/wiki/Disaster_recovery) megoldás van érvényben az adatok védelme érdekében, gyorsan visszaállíthatja a kritikus üzleti funkciókat támogató erőforrásokat, és a műveleteket az [ *üzletmenet folytonosságának* (BC)](https://en.wikipedia.org/wiki/Business_continuity_planning)fenntartása érdekében. A fennakadások közé tartozhatpéldául az alapinfrastruktúra vagy az összetevők , például a tárolás, a hálózat vagy a számítási erőforrások, a helyreállíthatatlan alkalmazáshibák vagy akár az adatközpont teljes elvesztése. Az üzletmenet-folytonossági és vész-helyreállítási (BCDR) megoldás sal való készen való felkészüléssel a vállalat vagy a szervezet gyorsabban reagálhat a megszakításokra, a tervezett vagy nem tervezett re, és csökkentheti az ügyfelek állásidejét.
+Annak érdekében, hogy csökkentse a nem előre jelezhető események hatásait és hatásait a vállalatra és az ügyfelekre, győződjön meg arról, hogy van egy vész- [ *helyreállítási* (Dr)](https://en.wikipedia.org/wiki/Disaster_recovery) megoldás, amely lehetővé teszi az adatok védelméhez, a kritikus üzleti funkciókat támogató erőforrások gyors helyreállításához, valamint az [ *üzletmenet folytonosságának* ](https://en.wikipedia.org/wiki/Business_continuity_planning)fenntartásához szükséges műveletek megtartását. Például a fennakadások lehetnek kimaradások, az alapul szolgáló infrastruktúra vagy összetevők, például a tárterület, a hálózat vagy a számítási erőforrások, a helyreállítható alkalmazások meghibásodása vagy akár egy teljes adatközpont elvesztése miatti veszteségek. Ha egy üzletmenet-folytonossági és vész-helyreállítási (BCDR) megoldás áll készen, a vállalata vagy szervezete gyorsabban reagálhat a megszakításokra, a tervezett és a nem tervezett állapotokra, és csökkentheti az ügyfelek leállását.
 
-Ez a cikk bcdr útmutatást és stratégiákat tartalmaz, amelyeket az [Azure Logic Apps](../logic-apps/logic-apps-overview.md)használatával automatizált munkafolyamatok létrehozásakor alkalmazhat. A logikai alkalmazások munkafolyamatai segítségével könnyebben integrálhatja és vezényelheti az adatokat az alkalmazások, a felhőszolgáltatások és a helyszíni rendszerek között azáltal, hogy csökkenti az íráshoz szükséges kód mennyiségének csökkentését. Ha a BCDR-t tervezi, ügyeljen arra, hogy ne csak a logikai alkalmazásokat vegye figyelembe, hanem a logikai alkalmazásokkal használt Azure-erőforrásokat is:
+Ez a cikk BCDR útmutatást és stratégiákat tartalmaz, amelyek akkor alkalmazhatók, ha [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával hoz létre automatizált munkafolyamatokat. A Logic app-munkafolyamatok segítségével könnyebben integrálhatja és koordinálhatja az alkalmazásokat, a Cloud Servicest és a helyszíni rendszereket az alkalmazások között, így csökkentve az írási kód mennyiségét. A BCDR tervezésekor ügyeljen arra, hogy ne csak a logikai alkalmazásait, hanem a logikai alkalmazásokkal használt Azure-erőforrásokat is vegye figyelembe:
 
-* A logikai alkalmazásokból más alkalmazásokba, szolgáltatásokba és rendszerekbe létrehozott [kapcsolatok.](../connectors/apis-list.md) További információt a témakör későbbi témakörében, az [Erőforrásokkal való kapcsolatok](#resource-connections) című témakörben talál.
+* A Logic appsből más alkalmazásokra, szolgáltatásokra és rendszerekre létrehozott [kapcsolatok](../connectors/apis-list.md) . További információkért lásd a témakör későbbi, az [erőforrásokhoz való kapcsolódását](#resource-connections) ismertető szakaszt.
 
-* [Helyszíni adatátjárók,](../logic-apps/logic-apps-gateway-connection.md) amelyek Azure-erőforrások, amelyeket a logikai alkalmazásokban hoz létre és használ a helyszíni rendszerekben lévő adatok eléréséhez. Minden átjáróerőforrás egy külön [adatátjáró-telepítést](../logic-apps/logic-apps-gateway-install.md) jelent a helyi számítógépen. További információ: A témakör [későbbi, helyszíni adatátjárói.](#on-premises-data-gateways)
+* [A helyszíni adatátjárók](../logic-apps/logic-apps-gateway-connection.md) , amelyek olyan Azure-erőforrások, amelyeket a logikai alkalmazásokban hoz létre és használ a helyszíni rendszerekben lévő információk eléréséhez. Minden átjáró-erőforrás egy különálló [adatátjáró-telepítést](../logic-apps/logic-apps-gateway-install.md) jelöl a helyi számítógépen. További információkért lásd a jelen témakör későbbi, helyszíni [adatátjárók című szakaszát](#on-premises-data-gateways) .
 
-* [Integrációs fiókok,](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) ahol meghatározza és tárolja az összetevők, amelyek et a logikai alkalmazások a [vállalati integrációs](../logic-apps/logic-apps-enterprise-integration-overview.md) forgatókönyvek logikai alkalmazások használata. Beállíthat például [régiók közötti vészhelyreállítást az integrációs fiókokhoz.](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md)
+* [Integrációs fiókok](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , ahol meghatározhatja és tárolhatja a Logic apps által a [vállalatközi (B2B) vállalati integrációs](../logic-apps/logic-apps-enterprise-integration-overview.md) forgatókönyvekhez használt összetevőket. [Beállíthatja például a régiók közötti vész-helyreállítást az integrációs fiókokhoz](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md).
 
-* [Integrációs szolgáltatáskörnyezetek (ISEs),](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ahol hozzon létre logikai alkalmazásokat, amelyek egy elszigetelt Logic Apps futásidejű példányban fut nak egy Azure virtuális hálózaton belül. Ezek a logikai alkalmazások ezután hozzáférhetnek az adott virtuális hálózat tűzfala mögött védett erőforrásokhoz.
+* [Integrációs szolgáltatási környezet (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) , ahol olyan logikai alkalmazásokat hozhat létre, amelyek egy Azure-beli virtuális hálózaton belül elkülönített Logic apps Runtime-példányban futnak. Ezek a logikai alkalmazások ezután hozzáférhetnek a virtuális hálózat tűzfala mögött védett erőforrásokhoz.
 
 <a name="primary-secondary-locations"></a>
 
-## <a name="primary-and-secondary-locations"></a>Elsődleges és másodlagos helyek
+## <a name="primary-and-secondary-locations"></a>Elsődleges és másodlagos helyen
 
-Minden logikai alkalmazásnak meg kell adnia a központi telepítéshez használni kívánt helyet. Ez a hely vagy egy nyilvános régió a globális több-bérlős Azure-ban, például a "West USA", vagy egy integrációs szolgáltatási környezet (ISE), amely korábban létrehozott és üzembe helyezett egy Azure virtuális hálózatba. Logikai alkalmazások futtatása egy ISE hasonló a globális Azure-régióban futó logikai alkalmazások, ami azt jelenti, hogy a vész-helyreállítási stratégia mindkét forgatókönyvre alkalmazható. Az internet-hozzáférést igénybe vevő szervezeteknek azonban más szempontok is vannak, például a csak az ISE-k számára elérhető erőforrásokhoz való hozzáférés konfigurálása.
+Minden logikai alkalmazásnak meg kell adnia az üzembe helyezéshez használni kívánt helyet. Ez a hely vagy egy nyilvános régió a több-bérlős Azure-ban, mint például a "West US", vagy egy integrációs szolgáltatási környezet (ISE), amelyet korábban létrehozott és üzembe helyezett egy Azure-beli virtuális hálózatban. A Logic apps egy ISE-ben való futtatása hasonló a logikai alkalmazások globális Azure-régióban való futtatásához, ami azt jelenti, hogy a vész-helyreállítási stratégia mindkét forgatókönyvre alkalmazható. A ISEs azonban más szempontokat is figyelembe kell vennie, mint például a csak ISEs számára elérhető erőforrásokhoz való hozzáférés konfigurálása.
 
 > [!NOTE]
-> Ha a logikai alkalmazás b2B-összetevőkkel is működik, például a kereskedelmi partnerekkel, a megállapodásokat, a sémákat, a leképezéseket és a tanúsítványokat, amelyek egy integrációs fiókban tárolódnak, mind az integrációs fióknak, mind a logikai alkalmazásoknak meg kell adniuk ugyanazt a helyet.
+> Ha a logikai alkalmazás olyan B2B-összetevőkkel is működik, mint például a kereskedelmi partnerek, szerződések, sémák, térképek és tanúsítványok, amelyek egy integrációs fiókban tárolódnak, akkor az integrációs fióknak és a Logic apps-nek is ugyanazt a helyet kell megadnia.
 
-Ez a vész-helyreállítási stratégia az elsődleges logikai alkalmazás [*feladatátvételi*](https://en.wikipedia.org/wiki/Failover) beállítása egy készenléti vagy biztonsági mentési logikai alkalmazásra egy másik helyen, ahol az Azure Logic Apps is elérhető. Így, ha az elsődleges veszteségeket, zavarokat vagy hibákat szenved, a másodlagos átveheti a munkát. Ez a stratégia megköveteli, hogy a másodlagos logikai alkalmazás és a függő erőforrások már üzembe vannak helyezve, és készen áll a másik helyen.
+Ez a vész-helyreállítási stratégia arra összpontosít, hogy egy másik helyen állítsa be az elsődleges logikai alkalmazás [*feladatátvételét*](https://en.wikipedia.org/wiki/Failover) egy készenléti vagy biztonsági mentési logikai alkalmazásba, ahol Azure Logic apps is elérhető. Így ha az elsődlegesen veszteségek, fennakadások vagy meghibásodások merülnek fel, a másodlagos folyamat elvégezheti a munkát. Ehhez a stratégiához az szükséges, hogy a másodlagos logikai alkalmazás és a függő erőforrások már telepítve legyenek, és készen álljanak a másik helyre.
 
-Ha a helyes DevOps-eljárásokat követi, már használja [az Azure Resource Manager-sablonokat](../azure-resource-manager/management/overview.md) a logikai alkalmazások és a függő erőforrások definiálására és üzembe helyezésére. Az Erőforrás-kezelő sablonjai lehetővé teszik egyetlen központi telepítés definíciójának használatát, majd paraméterfájlok használatát az egyes központi telepítési célokhoz használandó konfigurációs értékek megadásához. Ez a képesség azt jelenti, hogy ugyanazt a logikai alkalmazást különböző környezetekben, például fejlesztésre, tesztelésre és éles környezetre is telepítheti. Ugyanazt a logikai alkalmazást különböző Azure-régiókban vagy IS-e-kben is telepítheti, amelyek támogatják a [párosított régiókat](../best-practices-availability-paired-regions.md)használó vész-helyreállítási stratégiákat.
+Ha követi a megfelelő DevOps gyakorlatokat, a logikai alkalmazások és a függő erőforrások definiálásához és üzembe helyezéséhez már [Azure Resource Manager sablonokat](../azure-resource-manager/management/overview.md) is használhat. A Resource Manager-sablonok lehetővé teszik egyetlen központi telepítési definíció használatát, majd a paraméterek használatával megadják az egyes telepítési célhelyekhez használandó konfigurációs értékeket. Ez a funkció azt jelenti, hogy ugyanazt a logikai alkalmazást különböző környezetekben, például fejlesztési, tesztelési és éles környezetben is üzembe helyezheti. Ugyanezt a logikai alkalmazást különböző Azure-régiókba vagy ISEs is üzembe helyezheti, amely támogatja a [párosított régiókat](../best-practices-availability-paired-regions.md)használó vész-helyreállítási stratégiákat.
 
-A feladatátvételi stratégia, a logikai alkalmazások és helyek meg kell felelnie ezeknek a követelményeknek:
+A feladatátvételi stratégia esetében a logikai alkalmazásoknak és helyeknek meg kell felelniük az alábbi követelményeknek:
 
-* A másodlagos logikai alkalmazáspéldány ugyanazokhoz az alkalmazásokhoz, szolgáltatásokhoz és rendszerekhez fér hozzá, mint az elsődleges logikai alkalmazáspéldány.
+* A másodlagos logikai alkalmazás példánya ugyanazon alkalmazásokhoz, szolgáltatásokhoz és rendszerekhez fér hozzá, mint az elsődleges logikai alkalmazás példánya.
 
-* Mindkét logikai alkalmazáspéldány azonos gazdagéptípussal rendelkezik. Így vagy mindkét példány a globális több-bérlős Azure régióiban van telepítve, vagy mindkét példány telepítve van az IS-e-kszámára, amelyek lehetővé teszik a logikai alkalmazások számára, hogy közvetlenül hozzáférjenek az Azure virtuális hálózat erőforrásaihoz. Az ajánlott eljárásokat és a BCDR párosított régióival kapcsolatos további információkat az [Üzletmenet folytonossága és a vész-helyreállítás (BCDR): Azure párosított régiók című témakörben](../best-practices-availability-paired-regions.md)talál.
+* Mindkét logikai alkalmazás példányának ugyanaz a gazdagép-típusa. Így mindkét példány üzembe helyezése a globális több-bérlős Azure-beli régiókban történik, vagy mindkét példány üzembe helyezése a ISEs-ben történik, amely lehetővé teszi, hogy a Logic apps közvetlenül hozzáférjen az erőforrásokhoz egy Azure-beli virtuális hálózaton. Az ajánlott eljárások és a BCDR párosított régióival kapcsolatos további információkért lásd [: Üzletmenet-folytonosság és vész-helyreállítási (BCDR): az Azure párosított régiói](../best-practices-availability-paired-regions.md).
 
-  Például mind az elsődleges, mind a másodlagos helyek nek isi-be kell jenek, amikor az elsődleges logikai alkalmazás egy ISE-ben fut, és [ISE-verziójú összekötőket](../connectors/apis-list.md#ise-connectors)használ, HTTP-műveleteket az Azure virtuális hálózat erőforrásainak hívásához, vagy mindkettő. Ebben a forgatókönyvben a másodlagos logikai alkalmazás is rendelkeznie kell egy hasonló beállítás a másodlagos helyen, mint az elsődleges logikai alkalmazás.
+  Például mind az elsődleges, mind a másodlagos helyen ISEs kell lennie, amikor az elsődleges logikai alkalmazás egy ISE-ben fut, és [ISE-verzióval ellátott összekötőket](../connectors/apis-list.md#ise-connectors), http-műveleteket használ az Azure virtuális hálózatban lévő erőforrások meghívásához, vagy mindkettőt. Ebben az esetben a másodlagos logikai alkalmazásnak is hasonló beállítással kell rendelkeznie a másodlagos helyen, mint az elsődleges logikai alkalmazás.
 
   > [!NOTE]
-  > A speciálisabb forgatókönyvek, több-bérlős Azure és egy ISE helyként is keverheti. Győződjön meg azonban arról, hogy figyelembe veszi és megértette a [logikai alkalmazások ISE-ben és a több-bérlős Azure-ban való futtatásának közötti különbségeket.](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)
+  > A fejlettebb forgatókönyvek esetében a több-bérlős Azure-t és az ISE-t is összekeverheti. Azonban ügyeljen arra, hogy a [logikai alkalmazások hogyan futnak az ISE és a több-bérlős Azure között](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference).
 
-* Ha ises-eket használ, [győződjön meg arról, hogy azok horizontálisan ki vannak méretezve, vagy elegendő kapacitással rendelkeznek](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) a terhelés kezeléséhez.
+* Ha a ISEs-t használja, ügyeljen arra, [hogy a rendszer kibővítse vagy elegendő kapacitással rendelkezzen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) a terhelés kezeléséhez.
 
-#### <a name="example-multi-tenant-azure"></a>Példa: Több-bérlős Azure
+#### <a name="example-multi-tenant-azure"></a>Példa: több-bérlős Azure
 
-Ebben a példában az elsődleges és másodlagos logikai alkalmazáspéldányok, amelyek a globális több-bérlős Azure-ban ebben a forgatókönyvben üzembe helyezett külön régiókban. Egyetlen [Erőforrás-kezelő sablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) határozza meg a logikai alkalmazáspéldányok és a függő erőforrások at is, amelyeket ezek a logikai alkalmazások igényelnek. A különálló paraméterfájlok határozzák meg az egyes telepítési helyeken használandó konfigurációs értékeket:
+Ez a példa azokat az elsődleges és másodlagos logikai alkalmazás-példányokat mutatja be, amelyek a globális, több-bérlős Azure-ban külön régiókban vannak üzembe helyezve ehhez a forgatókönyvhöz. Egyetlen [Resource Manager-sablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) határozza meg a logikai alkalmazás példányait és a logikai alkalmazások által igényelt függő erőforrásokat. Külön paraméter-fájlok: az egyes telepítési helyekhez használandó konfigurációs értékeket határozza meg:
 
-![Elsődleges és másodlagos logikai alkalmazáspéldányok különböző helyeken](./media/business-continuity-disaster-recovery-guidance/primary-secondary-locations.png)
+![Az elsődleges és a másodlagos logikai alkalmazás példányai külön helyen](./media/business-continuity-disaster-recovery-guidance/primary-secondary-locations.png)
 
-#### <a name="example-integration-service-environment"></a>Példa: Integrációs szolgáltatás környezete
+#### <a name="example-integration-service-environment"></a>Példa: integrációs szolgáltatási környezet
 
-Ebben a példában az előző elsődleges és másodlagos logikai alkalmazáspéldányokat mutatja be, de külön ISE-kbe van telepítve. Egyetlen Erőforrás-kezelő sablon határozza meg mind a logikai alkalmazáspéldányok, a függő erőforrások által igényelt logikai alkalmazások, és az ise-k, mint a központi telepítési helyek. A különálló paraméterfájlok határozzák meg az egyes helyeken a központi telepítéshez használandó konfigurációs értékeket:
+Ez a példa az előző elsődleges és másodlagos logikai alkalmazás példányait mutatja be, de külön ISEs van telepítve. Egyetlen Resource Manager-sablon határozza meg a logikai alkalmazás példányait, a logikai alkalmazások által igényelt függő erőforrásokat, valamint a ISEs a telepítési helyként. A különböző paraméterek fájljai a központi telepítéshez használandó konfigurációs értékeket határozzák meg az egyes helyeken:
 
-![Elsődleges és másodlagos logikai alkalmazások különböző helyeken](./media/business-continuity-disaster-recovery-guidance/primary-secondary-locations-ise.png)
+![Elsődleges és másodlagos logikai alkalmazások különböző helyszíneken](./media/business-continuity-disaster-recovery-guidance/primary-secondary-locations-ise.png)
 
 <a name="resource-connections"></a>
 
-## <a name="connections-to-resources"></a>Az erőforrásokkal való kapcsolatok
+## <a name="connections-to-resources"></a>Erőforrások kapcsolatai
 
-Az Azure Logic Apps [beépített eseményindítókat és műveleteket, valamint több száz felügyelt összekötőt](../connectors/apis-list.md) biztosít, amelyeket a logikai alkalmazás más alkalmazásokkal, szolgáltatásokkal, rendszerekkel és más erőforrásokkal, például Azure Storage-fiókokkal, SQL Server-adatbázisokkal, Office 365 Outlook-e-mail fiókokkal és így tovább használhat. Ha a logikai alkalmazásnak hozzáférésre van szüksége ezekhez az erőforrásokhoz, hozzon létre kapcsolatokat, amelyek hitelesítik az erőforrásokhoz való hozzáférést. Minden kapcsolat egy külön Azure-erőforrás, amely egy adott helyen létezik, és más helyeken lévő erőforrások nem használhatók.
+A Azure Logic Apps [beépített eseményindítókat és műveleteket biztosít, valamint több száz felügyelt összekötőt](../connectors/apis-list.md) , amelyeket a logikai alkalmazás használhat más alkalmazásokkal, szolgáltatásokkal, rendszerekkel és egyéb erőforrásokkal, például Azure Storage-fiókokkal, SQL Server adatbázisokkal, Office 365 Outlook e-mail fiókokkal és így tovább. Ha a logikai alkalmazásnak hozzá kell férnie ezekhez az erőforrásokhoz, olyan kapcsolatokat hoz létre, amelyek hitelesítik a hozzáférést ezekhez az erőforrásokhoz. Az egyes kapcsolatok egy különálló Azure-erőforrás, amely egy adott helyen található, és más hely erőforrásai nem használhatók.
 
-A vész-helyreállítási stratégia, fontolja meg a helyeket, ahol függő erőforrások léteznek a logikai alkalmazás példányai:
+A vész-helyreállítási stratégia esetében vegye figyelembe azokat a helyeket, ahol a függő erőforrások a logikai alkalmazás példányaihoz képest léteznek:
 
-* Az elsődleges példány és a függő erőforrások különböző helyeken léteznek. Ebben az esetben a másodlagos példány csatlakozhat ugyanazokhoz a függő erőforrásokhoz vagy végpontokhoz. Azonban létre kell hoznia kapcsolatokat kifejezetten a másodlagos példányhoz. Így, ha az elsődleges hely elérhetetlenné válik, a másodlagos kapcsolatok nem érinti.
+* Az elsődleges példány és a függő erőforrások különböző helyszíneken találhatók. Ebben az esetben a másodlagos példány ugyanahhoz a függő erőforrásokhoz vagy végpontokhoz is csatlakozhat. A kapcsolatokat azonban kifejezetten a másodlagos példányhoz kell létrehoznia. Így ha az elsődleges hely elérhetetlenné válik, a másodlagos kapcsolatok nem érintettek.
 
-  Tegyük fel például, hogy az elsődleges logikai alkalmazás egy külső szolgáltatáshoz, például a Salesforce-hoz csatlakozik. Általában a külső szolgáltatás rendelkezésre állása és helye független a logikai alkalmazás rendelkezésre állásától. Ebben az esetben a másodlagos példány csatlakozhat ugyanahhoz a szolgáltatáshoz, de rendelkeznie kell a saját kapcsolat.
+  Tegyük fel például, hogy az elsődleges logikai alkalmazás egy külső szolgáltatáshoz (például Salesforce) csatlakozik. A külső szolgáltatás rendelkezésre állása és helye általában független a logikai alkalmazás rendelkezésre állásával. Ebben az esetben a másodlagos példány csatlakozni tud ugyanahhoz a szolgáltatáshoz, de saját kapcsolattal kell rendelkeznie.
 
-* Az elsődleges példány és a függő erőforrások is ugyanazon a helyen léteznek. Ebben az esetben a függő erőforrások nak rendelkezniük kell biztonsági másolatokkal vagy replikált verziókkal egy másik helyen, hogy a másodlagos példány továbbra is hozzáférhessen ezekhez az erőforrásokhoz.
+* Az elsődleges és a függő erőforrások is ugyanabban a helyen vannak. Ebben az esetben a függő erőforrásoknak egy másik helyen lévő biztonsági másolatokkal vagy replikált verziókkal kell rendelkezniük, hogy a másodlagos példány továbbra is hozzáférhessen ezekhez az erőforrásokhoz.
 
-  Tegyük fel például, hogy az elsődleges logikai alkalmazás csatlakozik egy szolgáltatáshoz, amely ugyanabban a helyen vagy régióban található, például az Azure SQL Database. Ha ez a teljes régió elérhetetlenné válik, az Azure SQL Database szolgáltatás az adott régióban is valószínűleg nem érhető el. Ebben az esetben azt szeretné, hogy a másodlagos példány egy replikált vagy biztonsági másolat adatbázist, valamint egy külön kapcsolatot az adatbázishoz.
+  Tegyük fel például, hogy az elsődleges logikai alkalmazás egy olyan szolgáltatáshoz csatlakozik, amely ugyanabban a helyen vagy régióban található, például Azure SQL Database. Ha ez a teljes régió elérhetetlenné válik, az adott régióban lévő Azure SQL Database szolgáltatás valószínűleg nem érhető el. Ebben az esetben azt szeretné, hogy a másodlagos példánya replikált vagy biztonsági mentési adatbázist használjon, és ezzel külön kapcsolatban legyen az adatbázissal.
 
 <a name="on-premises-data-gateways"></a>
 
 ## <a name="on-premises-data-gateways"></a>Helyszíni adatátjárók
 
-Ha a logikai alkalmazás több-bérlős Azure-ban fut, és hozzáférést igényel a helyszíni erőforrásokhoz, például az SQL Server-adatbázisokhoz, telepítenie kell a [helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) egy helyi számítógépre. Ezután létrehozhat egy adatátjáró-erőforrást az Azure Portalon, hogy a logikai alkalmazás használhassa az átjárót, amikor kapcsolatot hoz létre az erőforrással.
+Ha a logikai alkalmazás a több-bérlős Azure-ban fut, és hozzá kell férnie a helyszíni erőforrásokhoz, például SQL Server adatbázisokhoz, telepítenie kell a [helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) egy helyi számítógépre. Ezután létrehozhat egy adatátjáró-erőforrást a Azure Portalban, így a logikai alkalmazás használhatja az átjárót, amikor létrehozza az erőforráshoz való kapcsolódást.
 
-Az adatátjáró-erőforrás egy helyhez vagy Az Azure-régióhoz van társítva, csakúgy, mint a logikai alkalmazás-erőforrás. A vész-helyreállítási stratégia győződjön meg arról, hogy az adatátjáró továbbra is elérhető a logikai alkalmazás számára használható. Engedélyezheti [az átjáró magas rendelkezésre állását,](../logic-apps/logic-apps-gateway-install.md#high-availability) ha több átjáró-telepítéssel rendelkezik.
+Az adatátjáró-erőforrás egy helyhez vagy egy Azure-régióhoz van társítva, ugyanúgy, mint a Logic app-erőforráshoz. A vész-helyreállítási stratégiában győződjön meg arról, hogy az adatátjáró elérhető marad a logikai alkalmazás számára. Az [átjáró magas rendelkezésre állása](../logic-apps/logic-apps-gateway-install.md#high-availability) több átjáró telepítése esetén is engedélyezhető.
 
 > [!NOTE]
-> Ha a logikai alkalmazás integrációs szolgáltatási környezetben (ISE) fut, és csak ISE-verziójú összekötőket használ a helyszíni adatforrásokhoz, nincs szüksége az adatátjáróra, mert az ISE-összekötők közvetlen hozzáférést biztosítanak a helyszíni erőforráshoz.
+> Ha a logikai alkalmazás egy integrációs szolgáltatási környezetben (ISE) fut, és csak az ISE-verzióval ellátott összekötőket használ a helyszíni adatforrásokhoz, nincs szüksége az adatátjáróra, mivel az ISE-összekötők közvetlen hozzáférést biztosítanak a helyszíni erőforráshoz.
 >
-> Ha a kívánt helyszíni erőforráshoz nem érhető el ISE-verziójú összekötő, a logikai alkalmazás továbbra is létrehozhatja a kapcsolatot egy nem ISE-összekötő használatával, amely a globális több-bérlős Azure-ban fut, nem az ISE-ben. Ez a kapcsolat azonban a helyszíni adatátjárót igényli.
+> Ha nem érhető el ISE-verzióval rendelkező összekötő a kívánt helyszíni erőforráshoz, a logikai alkalmazás a nem ISE összekötővel is létrehozhatja a csatlakozást, amely a globális, több-bérlős Azure-ban fut, nem az ISE-t. Azonban ehhez a kapcsolathoz a helyszíni adatátjáróra van szükség.
 
 <a name="roles"></a>
 
 ## <a name="active-active-versus-active-passive-roles"></a>Aktív-aktív és aktív-passzív szerepkörök
 
-Beállíthatja az elsődleges és másodlagos helyeket, hogy a logikai alkalmazáspéldányok ezeken a helyeken a következő szerepköröket játszhassák:
+Beállíthatja az elsődleges és a másodlagos helyet, hogy a logikai alkalmazás példányai ezekben a helyekben le tudják játszani ezeket a szerepköröket:
 
-| Elsődleges-másodlagos szerepkör | Leírás |
+| Elsődleges – másodlagos szerepkör | Leírás |
 |------------------------|-------------|
-| *Aktív-aktív* | Az elsődleges és másodlagos logikai alkalmazáspéldányok mindkét helyen aktívan kezelik a kérelmeket a következő minták valamelyikével: <p><p>- *Terheléselosztás:* Mindkét példány figyelheti a végpontot, és szükség szerint minden példányra vonatkozó terheléselosztási forgalmat. <p>- *Versengő fogyasztók:* Mindkét példány versengő fogyasztóként működhet, így a példányok versenghetnek a várólistából érkező üzenetekért. Ha egy példány meghibásodik, a másik példány veszi át a számítási feladatot. |
-| *Aktív-passzív* | Az elsődleges logikai alkalmazáspéldány aktívan kezeli a teljes számítási feladatot, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos vár egy jel, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy hiba miatt, és átveszi a számítási feladatok, mint az aktív példány. |
-| Kombináció | Egyes logikai alkalmazások aktív-aktív szerepkört játszanak, míg más logikai alkalmazások aktív-passzív szerepkört játszanak. |
+| *Aktív – aktív* | Az elsődleges és a másodlagos logikai alkalmazás példányai mindkét helyen aktívan kezelik a kérelmeket a következő minták bármelyikének követésével: <p><p>- *Terheléselosztás*: mindkét példányban szükség esetén megfigyelheti a végpontot, és az egyes példányok forgalmának elosztását is. <p>- *Versengő fogyasztók*: mindkét példány versengő fogyasztóként működhet, így a példányok versengenek az üzenetsor üzeneteihez. Ha egy példány meghibásodik, a másik példány átveszi a munkaterhelést. |
+| *Aktív-passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
+| Kombinációja | Egyes logikai alkalmazások aktív-aktív szerepkört játszanak, míg más logikai alkalmazások aktív-passzív szerepet játszanak. |
 |||
 
 <a name="active-active-examples"></a>
 
-### <a name="active-active-examples"></a>Aktív-aktív példák
+### <a name="active-active-examples"></a>Aktív – aktív példák
 
-Ezek a példák az aktív-aktív telepítést mutatják be, ahol mindkét logikai alkalmazáspéldány aktívan kezeli a kérelmeket vagy üzeneteket. Más rendszer vagy szolgáltatás elosztja a kérelmeket vagy üzeneteket a példányok között, például az alábbi lehetőségek egyike:
+Ezek a példák azt az aktív-aktív beállítást mutatják be, ahol a logikai alkalmazás példányai aktívan kezelik a kérelmeket vagy az üzeneteket. Egy másik rendszer vagy szolgáltatás a példányok között osztja el a kérelmeket vagy üzeneteket, például az alábbi lehetőségek egyikét:
 
-* Egy "fizikai" terheléselosztó, például egy hardver, amely a forgalmat
+* Egy "fizikai" terheléselosztó, például egy olyan hardver, amely átirányítja a forgalmat
 
-* Egy "puha" terheléselosztó, például [az Azure Load Balancer](../load-balancer/load-balancer-overview.md) vagy az [Azure API Management.](../api-management/api-management-key-concepts.md) Az API Management segítségével olyan házirendeket adhat meg, amelyek meghatározzák a bejövő forgalom terhelésének terhelését. Vagy használhat olyan szolgáltatást is, amely támogatja az állapotkövetést, például az [Azure Service Bus.](../service-bus-messaging/service-bus-messaging-overview.md)
+* Egy "Soft" terheléselosztó, például [Azure Load Balancer](../load-balancer/load-balancer-overview.md) vagy az [Azure API Management](../api-management/api-management-key-concepts.md). A API Management segítségével megadhatja azokat a házirendeket, amelyek meghatározzák a bejövő forgalom elosztásának módját. Vagy használhat olyan szolgáltatást is, amely támogatja az állapot-követést, például [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
-  Bár ez a példa elsősorban az Azure Load Balancer-t mutatja, használhatja a forgatókönyv igényeinek leginkább megfelelő lehetőséget:
+  Bár ez a példa elsősorban a Azure Load Balancer mutatja be, a forgatókönyv igényeihez legjobban illő lehetőséget használhatja:
 
-  !["Aktív-aktív" beállítás, amely terheléselosztót vagy állapotalapú szolgáltatást használ](./media/business-continuity-disaster-recovery-guidance/active-active-setup-load-balancer.png)
+  !["Aktív-aktív" beállítás, amely egy terheléselosztó vagy állapot-nyilvántartó szolgáltatást használ](./media/business-continuity-disaster-recovery-guidance/active-active-setup-load-balancer.png)
 
-* Minden logikai alkalmazáspéldány fogyasztóként működik, és mindkét példány verseng a várólistából érkező üzenetekért:
+* Minden logikai alkalmazás-példány fogyasztóként működik, és mindkét példány verseng az üzenetsor üzeneteiben:
 
-  !["Aktív-aktív" beállítás, amely "versengő fogyasztókat" használ](./media/business-continuity-disaster-recovery-guidance/active-active-competing-consumers-pattern.png)
+  !["Versengő fogyasztókat" használó "aktív-aktív" beállítás](./media/business-continuity-disaster-recovery-guidance/active-active-competing-consumers-pattern.png)
 
 <a name="active-passive-examples"></a>
 
-### <a name="active-passive-examples"></a>Aktív-passzív példák
+### <a name="active-passive-examples"></a>Aktív – passzív példák
 
-Ebben a példában az aktív-passzív beállítás, ahol az elsődleges logikai alkalmazáspéldány aktív egy helyen, míg a másodlagos példány inaktív marad egy másik helyen. Ha az elsődleges megszakítást vagy hibát tapasztal, egy operátor futtathat egy parancsfájlt, amely aktiválja a másodlagos a számítási feladatok at.
+Ez a példa azt az aktív-passzív beállítást mutatja be, amelyben az elsődleges logikai alkalmazás példánya aktív egy helyen, míg a másodlagos példány inaktív marad egy másik helyen. Ha az elsődleges megszakadást vagy meghibásodást tapasztal, akkor futtathat egy olyan parancsfájlt, amely aktiválja a másodlagos feladatot a számítási feladat elvégzéséhez.
 
 !["Aktív-passzív" beállítás, amely "versengő fogyasztókat" használ](./media/business-continuity-disaster-recovery-guidance/active-passive-setup.png)
 
 <a name="active-active-active-passive-examples"></a>
 
-### <a name="combination-with-active-active-and-active-passive"></a>Kombinálva aktív-aktív és aktív-passzív
+### <a name="combination-with-active-active-and-active-passive"></a>Aktív-aktív és aktív-passzív kombináció
 
-Ebben a példában egy kombinált beállítás, ahol az elsődleges hely rendelkezik mindkét aktív logikai alkalmazáspéldányok, míg a másodlagos hely aktív-passzív logikai alkalmazáspéldányok. Ha az elsődleges hely megszakítást vagy hibát tapasztal, a másodlagos helyen lévő aktív logikai alkalmazás, amely már részleges számítási feladatokat kezel, átveheti a teljes számítási feladatot.
+Ez a példa egy kombinált telepítést mutat be, ahol az elsődleges hely az aktív Logic app-példányokat is tartalmazza, míg a másodlagos hely aktív-passzív logikai alkalmazás-példányokkal rendelkezik. Ha az elsődleges hely megszakadást vagy hibát tapasztal, a másodlagos helyen lévő aktív logikai alkalmazás, amely már a részleges számítási feladatokat kezeli, átveheti a teljes munkaterhelést.
 
-* Az elsődleges helyen egy aktív logikai alkalmazás figyeli az Azure Service Bus várólistáját az üzenetekhez, míg egy másik aktív logikai alkalmazás az Office 365 Outlook lekérdezési eseményindítójával ellenőrzi az e-maileket.
+* Az elsődleges helyen az aktív logikai alkalmazás egy Azure Service Bus üzenetsor számára figyeli az üzeneteket, míg egy másik aktív logikai alkalmazás az Office 365 Outlook lekérdezési trigger használatával ellenőrzi az e-maileket.
 
-* A másodlagos helyen egy aktív logikai alkalmazás együttműködik a logikai alkalmazás az elsődleges helyen figyelve és versengő üzenetek et ugyanabból a Service Bus-várólistából. Eközben egy passzív inaktív logikai alkalmazás készenléti állapotban várja az e-mailek ellenőrzését, amikor az elsődleges hely elérhetetlenné válik, de le van *tiltva* az e-mailek újraolvasásának elkerülése érdekében.
+* A másodlagos helyen az aktív logikai alkalmazás a logikai alkalmazással működik az elsődleges helyen azáltal, hogy figyeli és verseng az azonos Service Bus üzenetsor üzeneteit. Eközben a passzív inaktív logikai alkalmazás készenléti állapotra várakozik az e-mailek kereséséhez, ha az elsődleges hely elérhetetlenné válik, de *le van tiltva* az e-mailek újraolvasásának elkerülése érdekében.
 
-!["Aktív-passzív" és "aktív-passzív" kombináció, amely ismétlődési eseményindítókat használ](./media/business-continuity-disaster-recovery-guidance/combo-active-active-active-passive-setup.png)
+![Ismétlődő eseményindítókat használó "aktív-passzív" és "aktív-passzív" kombináció](./media/business-continuity-disaster-recovery-guidance/combo-active-active-active-passive-setup.png)
 
 <a name="state-history"></a>
 
-## <a name="logic-app-state-and-history"></a>Logikai alkalmazás állapota és előzményei
+## <a name="logic-app-state-and-history"></a>Logic app-állapot és-előzmények
 
-Amikor a logikai alkalmazás aktiválódik, és elindul, az alkalmazás állapota ugyanazon a helyen tárolódik, ahol az alkalmazás elindult, és nem átruházható egy másik helyre. Ha hiba vagy megszakítás történik, a folyamatban lévő munkafolyamat-példányok megszűnnek. Ha beállított egy elsődleges és másodlagos helyet, az új munkafolyamat-példányok a másodlagos helyen kezdenek futni.
+A logikai alkalmazás indításakor és futtatásakor az alkalmazás állapota ugyanazon a helyen tárolódik, ahol az alkalmazás elindult, és nem vihető át egy másik helyre. Ha hiba vagy megszakítás történik, az összes folyamatban lévő munkafolyamat-példány elhagyható. Ha az elsődleges és a másodlagos hely van beállítva, az új munkafolyamat-példányok a másodlagos helyen futnak.
 
 <a name="reduce-abandoned-in-progress"></a>
 
-### <a name="reduce-abandoned-in-progress-instances"></a>Elhagyott folyamatban lévő példányok csökkentése
+### <a name="reduce-abandoned-in-progress-instances"></a>Az elhagyott folyamatban lévő példányok csökkentése
 
-Az elhagyott folyamatban lévő munkafolyamat-példányok számának minimalizálása érdekében különböző üzenetminták közül választhat, például:
+Az elhagyott folyamatban lévő munkafolyamat-példányok számának minimalizálásához különböző, a megvalósításra alkalmas üzenet-mintákat választhat, például:
 
-* [Rögzített útválasztási bizonylatmintázata](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [Rögzített útválasztási SLIP minta](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
-  Ez a vállalati üzenetminta, amely egy üzleti folyamatot kisebb szakaszokra oszt fel. Minden fázisban egy logikai alkalmazást állít be, amely kezeli az adott szakasz munkaterhelését. Az egymással való kommunikációhoz a logikai alkalmazások egy aszinkron üzenetkezelési protokollt, például az Azure Service Bus-várólistákat vagy témaköröket használnak. Ha egy folyamatot kisebb szakaszokra oszt, csökkenti azoknak az üzleti folyamatoknak a számát, amelyek elakadhatnak egy sikertelen logikai alkalmazáspéldányon. Erről a mintáról további általános információt a [Vállalati integrációs minták – Útválasztási levél .](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html)
+  Ez a vállalati üzenet minta, amely az üzleti folyamatokat kisebb fázisokra osztja fel. Minden egyes szakaszhoz beállíthat egy logikai alkalmazást, amely kezeli az adott fázis munkaterhelését. Az egymással való kommunikációhoz a logikai alkalmazások aszinkron üzenetküldési protokollt használnak, például Azure Service Bus várólistákat vagy témaköröket. Ha kisebb szakaszokra osztja a folyamatot, csökkentheti az üzleti folyamatok számát, amelyek elakadnak egy sikertelen logikai alkalmazás-példányon. A mintával kapcsolatos további általános információkért lásd: [vállalati integrációs minták – útválasztási SLIP](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html).
 
-  Ez a példa egy útválasztási slip mintát mutat be, amelyben minden logikai alkalmazás egy szakaszt jelöl, és egy Service Bus-várólistát használ a folyamat következő logikai alkalmazásával való kommunikációhoz.
+  Ez a példa egy útválasztási SLIP-mintát mutat be, amelyben minden logikai alkalmazás egy szakaszt képvisel, és egy Service Bus üzenetsor használatával kommunikál a folyamat következő logikai alkalmazásával.
 
-  ![Az üzleti folyamat felosztása logikai alkalmazások által képviselt szakaszokra, amelyek az Azure Service Bus-várólisták használatával kommunikálnak egymással](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
+  ![Üzleti folyamat felosztása a Logic apps által képviselt szakaszokra, amelyek Azure Service Bus várólisták használatával kommunikálnak egymással](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  Ha mind az elsődleges, mind a másodlagos logikai alkalmazáspéldányok ugyanazt az útválasztási slip mintát követik a helyükön, a [versengő fogyasztói minta](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) megvalósíthatja az [aktív-aktív szerepkörök](#roles) beállításával ezeket a példányokat.
+  Ha mind az elsődleges, mind a másodlagos logikai alkalmazás példánya ugyanazt a kísérőlevél-mintát követi a helyükön, akkor a [versengő fogyasztók mintát](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) úgy is végrehajthatja, hogy [aktív-aktív szerepköröket](#roles) állít be ezekhez a példányokhoz.
 
-* [Folyamatkezelő (bróker) minta](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
+* [A Process Manager (Broker) mintája](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
-* [Betekintés-zárolás időbeli meghosszabbítási minta nélkül](https://social.technet.microsoft.com/wiki/contents/articles/50022.azure-service-bus-how-to-peek-lock-a-message-from-queue-using-azure-logic-apps.aspx)
+* [Betekintési zárolás időkorlát-minta nélkül](https://social.technet.microsoft.com/wiki/contents/articles/50022.azure-service-bus-how-to-peek-lock-a-message-from-queue-using-azure-logic-apps.aspx)
 
 <a name="access-trigger-runs-history"></a>
 
-### <a name="access-to-trigger-and-runs-history"></a>Hozzáférés az előzmények aktiválásához és futtatásához
+### <a name="access-to-trigger-and-runs-history"></a>Hozzáférés az triggerhez és a futtatási előzményekhez
 
-Ha további információt szeretne kapni a logikai alkalmazás korábbi munkafolyamat-végrehajtásairól, tekintse át az alkalmazás eseményindítóját, és futassa az előzményeket. A logikai alkalmazás előzményvégrehajtási előzményei ugyanabban a helyen vagy régióban vannak tárolva, ahol a logikai alkalmazás futott, ami azt jelenti, hogy nem telepítheti át ezt az előzményeket egy másik helyre. Ha az elsődleges példány átadja a feladatát egy másodlagos példány, csak az egyes példányok eseményindítójának eléréséhez férhet hozzá, és az előzményeket futtatja a megfelelő helyeken, ahol ezek a példányok futottak. Azonban a logikai alkalmazás előzményeiről helyfüggetlen információkat kaphat, ha beállítja a logikai alkalmazásokat diagnosztikai események küldésére egy Azure Log Analytics-munkaterületre. Ezután tekintse át az állapotát és az előzményeket a több helyen futó logikai alkalmazások között.
+Ha további információkra van szüksége a logikai alkalmazás korábbi munkafolyamat-végrehajtásáról, tekintse át az alkalmazás triggerét és futtatási előzményeit. A logikai alkalmazás előzményeinek előzményei ugyanabban a helyen vagy régióban tárolódnak, ahol a logikai alkalmazás futott, ami azt jelenti, hogy nem tudja áttelepíteni ezeket az előzményeket egy másik helyre. Ha az elsődleges példány feladatátvételt hajt végre egy másodlagos példányra, csak az egyes példányok triggereit érheti el, és a megfelelő helyen futtathatja az előzményeket. A logikai alkalmazások előzményeivel kapcsolatban azonban a Logic apps szolgáltatással kapcsolatos információkat is megtudhatja, hogy a diagnosztikai eseményeket egy Azure Log Analytics-munkaterületre küldje. Ezután áttekintheti az állapotot és az előzményeket a több helyen futó logikai alkalmazások között.
 
 <a name="trigger-types-guidance"></a>
 
-## <a name="trigger-type-guidance"></a>Eseményindító típusának útmutatása
+## <a name="trigger-type-guidance"></a>Trigger típusú útmutató
 
-A logikai alkalmazásokban használt eseményindító-típus határozza meg a logikai alkalmazások beállításának lehetőségeit a vész-helyreállítási stratégia különböző helyeken. A logikai alkalmazásokban az elérhető eseményindító-típusok a következők:
+A logikai alkalmazásokban használt trigger típusa határozza meg, hogy a vész-helyreállítási stratégia hogyan állíthatja be a logikai alkalmazásokat a különböző helyszíneken. Itt láthatók a Logic Appsben használható elérhető trigger-típusok:
 
-* [Ismétlődés iszaktiválása](#recurrence-trigger)
-* [Lekérdezési eseményindító](#polling-trigger)
-* [Kérelem eseményindító](#request-trigger)
-* [Webhook-eseményindító](#webhook-trigger)
+* [Ismétlődési eseményindító](#recurrence-trigger)
+* [Lekérdezési trigger](#polling-trigger)
+* [Kérelem triggere](#request-trigger)
+* [Webhook-trigger](#webhook-trigger)
 
 <a name="recurrence-trigger"></a>
 
-### <a name="recurrence-trigger"></a>Ismétlődés iszaktiválása
+### <a name="recurrence-trigger"></a>Ismétlődési eseményindító
 
-Az **Ismétlődés** eseményindító független bármely adott szolgáltatástól vagy végponttól, és kizárólag egy megadott ütemezés alapján aktiválódik, és nincs más feltétel, például:
+Az **ismétlődési** eseményindító független bármely adott szolgáltatástól vagy végponttól, és kizárólag a megadott ütemezésen alapul, más feltételek nélkül, például:
 
 * Rögzített gyakoriság és időköz, például 10 percenként
-* Fejlettebb ütemterv, mint például minden hónap utolsó hétfője 17:00-kor
+* Egy fejlettebb ütemterv, például az utolsó hétfő minden hónapban, 5:00 ÓRAKOR
 
-Amikor a logikai alkalmazás egy ismétlődési eseményindítóval kezdődik, be kell állítania az elsődleges és másodlagos logikai alkalmazáspéldányokat az [aktív-passzív szerepkörökkel.](#roles) A *helyreállítási idő célkitűzésének* (RTO) csökkentése érdekében, amely egy üzleti folyamat megszakítás vagy katasztrófa utáni visszaállításának célidőtartamára utal, beállíthatja a logikai alkalmazáspéldányokat [az aktív-passzív és](#roles) a [passzív-aktív szerepkörök](#roles)kombinációjával. Ebben a beállításban az ütemezést különböző helyek között osztja fel.
+Ha a logikai alkalmazás ismétlődési eseményindítóval kezdődik, be kell állítania az elsődleges és másodlagos logikai alkalmazás példányait az [aktív-passzív szerepkörökkel](#roles). Annak érdekében, hogy csökkentse a *helyreállítási idő célkitűzését* (RTO), amely az üzleti folyamatok megszakítás vagy katasztrófa utáni visszaállításának céljára vonatkozik, [aktív-passzív szerepkörök](#roles) és [passzív-aktív szerepkörök](#roles)kombinációjával állíthatja be a logikai alkalmazás példányait. Ebben a telepítőben az ütemtervet felosztja a különböző helyekre.
 
-Tegyük fel például, hogy rendelkezik egy logikai alkalmazás, amely 10 percenként kell futtatni. A logikai alkalmazásokat és helyeket beállíthatja úgy, hogy ha az elsődleges hely elérhetetlenné válik, a másodlagos hely átveheti a munkát:
+Tegyük fel például, hogy rendelkezik egy logikai alkalmazással, amelynek 10 percenként kell futnia. Beállíthatja a logikai alkalmazásokat és a helyeket úgy, hogy ha az elsődleges hely elérhetetlenné válik, a másodlagos hely átveheti a munkát:
 
-!["Aktív-passzív" és "passzív-aktív" kombináció, amely ismétlődési eseményindítókat használ](./media/business-continuity-disaster-recovery-guidance/combo-active-passive-passive-active-setup.png)
+![Ismétlődő eseményindítókat használó "aktív-passzív" és "passzív-aktív" kombináció](./media/business-continuity-disaster-recovery-guidance/combo-active-passive-passive-active-setup.png)
 
-* Az elsődleges helyen állítson be [aktív-passzív szerepköröket](#roles) ezekhez a logikai alkalmazásokhoz:
+* Az elsődleges helyen állítsa be a logikai alkalmazások [aktív-passzív szerepköreit](#roles) :
 
-  * Az *aktív* engedélyezett logikai alkalmazás esetén állítsa be az Ismétlődés eseményindítót az óra tetején, és ismételje meg 20 percenként, például 9:00, 9:20 és így tovább.
+  * Az *aktív* logikai alkalmazás esetében állítsa be az ismétlődési eseményindítót úgy, hogy az óra tetején kezdődjön, és 20 percenként ismételje meg a műveletet, például 9:00, 9:20 és így tovább.
 
-  * A *passzív* letiltott logikai alkalmazás, állítsa be az ismétlődési eseményindító azonos ütemezés, de 10 perccel az óra után kezdődik, és ismételje meg 20 percenként, például 9:10, 9:30 AM, és így tovább.
+  * A *passzívan* letiltott logikai alkalmazás esetében állítsa az ismétlődési eseményindítót ugyanarra az ütemtervre, de kezdjen hozzá 10 perccel az óra után, és ismételje meg a 20 percenként, például 9:10, 9:30 és így tovább.
 
-* A másodlagos helyen állítsa be a [passzív-aktív](#roles) ezeket a logikai alkalmazásokat:
+* A másodlagos helyen állítsa be a [passzív-aktívt](#roles) a következő logikai alkalmazások esetében:
 
-  * A *passzív* letiltott logikai alkalmazás, állítsa be az ismétlődési eseményindító ugyanazon ütemezésszerint, mint az aktív logikai alkalmazás az elsődleges helyen, amely az óra tetején, és ismételje meg 20 percenként, például 9:00, 9:10 AM, és így tovább.
+  * A *passzívan* letiltott logikai alkalmazás esetében állítsa az ismétlődési eseményindítót ugyanarra az ütemtervre, mint az elsődleges helyen lévő aktív logikai alkalmazás, amely az óra elején található, és ismételje meg 20 percenként, például 9:00, 9:10 és így tovább.
 
-  * Az *aktív* engedélyezett logikai alkalmazás esetében állítsa be az Ismétlődés eseményindítót ugyanarra az ütemezésre, mint az elsődleges helyen lévő passzív logikai alkalmazást, amely az óra után 10 perccel kezdődik, és 20 percenként ismétlődik, például 9:10, 9:20 aM és így tovább.
+  * Az *aktív* logikai alkalmazás esetében állítsa be az ismétlődési eseményindítót az elsődleges helyen található passzív logikai alkalmazással megegyező időpontra, amely 10 perccel az óra végén kezdődik, majd 20 percenként ismétlődik, például 9:10, 9:20 és így tovább.
 
-Most, ha egy zavaró esemény történik az elsődleges helyen, aktiválja a passzív logikai alkalmazást a másik helyen. Így, ha a hiba megtalálása időt vesz igénybe, ez a beállítás korlátozza a késleltetett időszakban nem fogadott ismétlődések számát.
+Most, ha egy zavaró esemény történik az elsődleges helyen, aktiválja a passzív logikai alkalmazást a másik helyen. Így ha a hiba megkeresése időt vesz igénybe, akkor ez a beállítás korlátozza az elmulasztott ismétlődések számát a késés során.
 
 <a name="polling-trigger"></a>
 
-### <a name="polling-trigger"></a>Lekérdezési eseményindító
+### <a name="polling-trigger"></a>Lekérdezési trigger
 
-Rendszeresen ellenőrizze, hogy egy adott szolgáltatásból vagy végpontból elérhető-e új adatok, a logikai alkalmazás használhat egy *lekérdezési* eseményindítót, amely egy rögzített ismétlődési ütemezés alapján ismételten meghívja a szolgáltatást vagy a végpontot. A szolgáltatás vagy a végpont által biztosított adatok a következő típusok valamelyikével rendelkezhetnek:
+Annak rendszeres vizsgálatához, hogy egy adott szolgáltatástól vagy végponttól származó új adatok feldolgozása elérhető-e, a logikai alkalmazás olyan *lekérdezési* eseményindítót használhat, amely ismételten meghívja a szolgáltatást vagy a végpontot egy rögzített ismétlődési ütemterv alapján. A szolgáltatás vagy végpont által biztosított adattípusok a következők lehetnek:
 
-* Statikus adatok, amelyek az olvasáshoz mindig elérhető adatokat írják le
-* Volatilis adatok, amelyek az olvasás után már nem elérhető adatokat írnak le
+* Statikus információk, amelyek az olvasásra mindig rendelkezésre álló információkat ismertetik
+* Illékony információk, amelyek az olvasás után már nem elérhetővé vált információkat ismertetik
 
-Ahhoz, hogy ne olvassa el újra ugyanazokat az adatokat, a logikai alkalmazásnak emlékeznie kell arra, hogy mely adatokat olvasták korábban az ügyféloldalon vagy a kiszolgálón, a szolgáltatáson vagy a rendszeroldalon.
+Az azonos adat ismételt olvasásának elkerülése érdekében a logikai alkalmazásnak meg kell jegyeznie, hogy mely adatait használták korábban az ügyfél vagy a kiszolgáló, a szolgáltatás vagy a rendszer oldalának karbantartásával.
 
-* Az ügyféloldali állapottal dolgozó logikai alkalmazások olyan eseményindítókat használnak, amelyek fenntartják az állapotot.
+* Az ügyféloldali állapottal dolgozó logikai alkalmazások olyan eseményindítókat használnak, amelyek kezelhetik az állapotot.
 
-  Például egy eseményindító, amely egy új üzenetet olvas egy e-mail postafiókjából, megköveteli, hogy az eseményindító emlékezzen a legutóbb olvasott üzenetre. Így az eseményindító csak akkor indítja el a logikai alkalmazást, amikor a következő olvasatlan üzenet megérkezik.
+  Például egy olyan trigger, amely egy új üzenetet olvas be egy e-mailből, megkövetelheti, hogy az trigger jegyezze fel a legutóbb olvasott üzenetet. Így az trigger csak akkor indítja el a logikai alkalmazást, ha a következő olvasatlan üzenet érkezik.
 
-* A kiszolgálóval, szolgáltatással vagy rendszeroldali állapottal dolgozó logikai alkalmazások a kiszolgálón, a szolgáltatáson vagy a rendszeroldalon található tulajdonságértékeket vagy -beállításokat használják.
+* A kiszolgálóval, szolgáltatással vagy rendszerszintű állapottal dolgozó logikai alkalmazások a kiszolgálón, a szolgáltatáson vagy a rendszeroldalon lévő tulajdonságértékeket vagy beállításokat használják.
 
-  Például egy lekérdezésalapú eseményindító, amely egy sorot olvas `isRead` be egy adatbázisból, olyan oszlopot kell létrehoznia, amelynek `FALSE`beállítása. Minden alkalommal, amikor az eseményindító beolvas egy sort, `FALSE` a `TRUE`logikai alkalmazás frissíti a sort az `isRead` oszlop módosításával.
+  Például egy olyan lekérdezés-alapú trigger, amely az adatbázisból egy sort olvas, megköveteli, hogy a sorban `isRead` legyen `FALSE`egy oszlop, amely a következőre van beállítva:. Minden alkalommal, amikor az trigger beolvas egy sort, a logikai alkalmazás frissíti a sort úgy `isRead` , hogy `FALSE` az `TRUE`oszlopot a verzióról a értékre módosítja.
 
-  Ez a kiszolgálóoldali megközelítés hasonlóan működik a Service Bus-várólisták vagy témakörök, amelyek sorban állásszemantika, ahol egy eseményindító képes olvasni és zárolni egy üzenetet, miközben a logikai alkalmazás feldolgozza az üzenetet. Amikor a logikai alkalmazás befejezi a feldolgozást, az eseményindító törli az üzenetet a várólistából vagy a témakörből.
+  Ez a kiszolgálóoldali megközelítés hasonlóan működik Service Bus várólistákhoz vagy olyan témakörökhöz, amelyekben üzenetsor-kezelő szemantika található, ahol egy trigger képes olvasni és zárolni egy üzenetet, miközben a logikai alkalmazás feldolgozza az üzenetet. Amikor a logikai alkalmazás befejezi a feldolgozást, az trigger törli az üzenetet a sorból vagy a témakörből.
 
-Vész-helyreállítási szempontból, amikor beállítja a logikai alkalmazás elsődleges és másodlagos példányait, győződjön meg arról, hogy figyelembe ezeket a viselkedéseket attól függően, hogy a logikai alkalmazás nyomon követi állapotát az ügyféloldalon vagy a kiszolgáló oldalon:
+A vész-helyreállítási perspektívából a logikai alkalmazás elsődleges és másodlagos példányainak beállításakor ügyeljen arra, hogy a logikai alkalmazás az ügyfél oldalán vagy a kiszolgálóoldali oldalon nyomon követi az adott viselkedést.
 
-* Egy logikai alkalmazás, amely együttműködik az ügyféloldali állapot, győződjön meg arról, hogy a logikai alkalmazás nem olvassa el ugyanazt az üzenetet egynél többször. Csak egy hely rendelkezhet egy aktív logikai alkalmazáspéldánysal egy adott időpontban. Győződjön meg arról, hogy a logikai alkalmazás példánya az alternatív helyen inaktív vagy le van tiltva, amíg az elsődleges példány átadja a másik helyre.
+* Az ügyféloldali állapottal működő logikai alkalmazások esetében ügyeljen arra, hogy a logikai alkalmazás egyszerre ne olvassa ugyanazt az üzenetet. Egy adott időpontban csak egy hely lehet aktív logikai alkalmazás-példánnyal. Győződjön meg arról, hogy a logikai alkalmazás példánya inaktív vagy le van tiltva, amíg az elsődleges példány átadja a feladatátvételt a másik helyre.
 
-  Az Office 365 Outlook-eseményindító például fenntartja az ügyféloldali állapotot, és nyomon követi a legutóbb olvasott e-mailek időbélyegét, hogy elkerülje a duplikátumok olvasását.
+  Az Office 365 Outlook trigger például az ügyféloldali állapotot tartja karban, és nyomon követi a legutóbb olvasott e-mailek időbélyegét, hogy elkerülje a duplikált üzenetek olvasását.
 
-* A kiszolgálóoldali állapottal működő logikai alkalmazások esetében beállíthatja, hogy a logikai alkalmazáspéldányok [aktív-aktív szerepköröket](#roles) játsszanak, ahol versengő fogyasztóként működnek, vagy [aktív-passzív szerepköröket,](#roles) ahol az alternatív példány megvárja, amíg az elsődleges példány átadja a feladatokat az alternatív helyre.
+* A kiszolgálóoldali állapottal működő logikai alkalmazások esetében beállíthatja, hogy a logikai alkalmazás példányai olyan [aktív-aktív szerepköröket](#roles) játsszanak, ahol versengő fogyasztóként vagy [aktív-passzív szerepkörökként](#roles) működnek, ahol a másodlagos példány megvárja, amíg az elsődleges példány átadja a feladatokat a másik helyre.
 
-  Például egy üzenetvárólistából, például egy Azure Service Bus-várólistából történő olvasás kiszolgálóoldali állapotot használ, mert a sorszolgálat zárolja az üzeneteket, hogy megakadályozza, hogy más ügyfelek ugyanazokat az üzeneteket olvassák.
+  Például egy üzenetsor beolvasása (például egy Azure Service Bus üzenetsor) kiszolgálóoldali állapotot használ, mivel a várólista-kezelő szolgáltatás zárolja az üzeneteket, így megakadályozva, hogy más ügyfelek is olvassák ugyanezeket az üzeneteket.
 
   > [!NOTE]
-  > Ha a logikai alkalmazásnak meghatározott sorrendben kell olvasnia az üzeneteket, például egy Service Bus-várólistából, használhatja a versengő fogyasztói mintát, de csak akkor, ha a Service Bus-munkamenetekkel kombinálja, [ *amelyet szekvenciális konvojmintának* ](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)is neveznek. Ellenkező esetben be kell állítania a logikai alkalmazáspéldányok az aktív-passzív szerepkörök.
+  > Ha a logikai alkalmazásnak egy adott sorrendben kell elolvasnia az üzeneteket, például egy Service Bus sorból, használhatja a versengő fogyasztói mintát, de csak akkor, ha Service Bus-munkamenetekkel együtt, azaz [ *szekvenciális konvojként* ](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)is ismert. Ellenkező esetben be kell állítania a logikai alkalmazás példányait az aktív-passzív szerepkörökkel.
 
 <a name="request-trigger"></a>
 
-### <a name="request-trigger"></a>Kérelem eseményindító
+### <a name="request-trigger"></a>Kérelem triggere
 
-A **kérelem** eseményindító teszi a logikai alkalmazás hívható más alkalmazások, szolgáltatások és rendszerek, és általában az alábbi képességek biztosításához használt:
+A **kérelem** triggere lehetővé teszi a logikai alkalmazás más alkalmazásokból, szolgáltatásokból és rendszerekből való meghívását, és általában a következő funkciók biztosítására szolgál:
 
-* Közvetlen REST API a logikai alkalmazáshoz, amelyet mások hívhatnak
+* A más által hívható logikai alkalmazás közvetlen REST API
 
-  Például használja a kérelem eseményindító a logikai alkalmazás elindításához, így más logikai alkalmazások hívhatja meg az eseményindító segítségével a **hívási munkafolyamat - Logic Apps** művelet.
+  Használja például a triggert a logikai alkalmazás elindításához, hogy más logikai alkalmazások is meghívják az triggert a **munkafolyamat-Logic apps hívási** művelettel.
 
 * [Webhook](#webhook-trigger) vagy visszahívási mechanizmus a logikai alkalmazáshoz
 
-* A logikai alkalmazás hívásához manuálisan futtatható felhasználói műveletek vagy rutinok, például egy adott feladatot elvégző PowerShell-parancsfájl használatával
+* A felhasználói műveletek vagy rutinok manuális futtatásával meghívhatja a logikai alkalmazást, például egy adott feladatot végrehajtó PowerShell-parancsfájl használatával.
 
-Vész-helyreállítási szempontból a kérelem eseményindító egy passzív fogadó, mert a logikai alkalmazás nem végez semmilyen munkát, és megvárja, amíg egy másik szolgáltatás vagy rendszer explicit módon meghívja az eseményindítót. Passzív végpontként az elsődleges és másodlagos példányokat a következő módokon állíthatja be:
+Vész-helyreállítási perspektívából a kérelem trigger passzív fogadó, mivel a logikai alkalmazás nem végez munkát, és addig vár, amíg egy másik szolgáltatás vagy rendszer kifejezetten nem hívja meg az triggert. Passzív végpontként beállíthatja az elsődleges és másodlagos példányokat a következő módokon:
 
-* [Aktív-aktív](#roles): Mindkét példány aktívan kezeli a kérelmeket vagy hívásokat. A hívó vagy az útválasztó kiegyenlíti vagy elosztja a forgalmat a példányok között.
+* [Aktív-aktív](#roles): mindkét példány aktívan kezeli a kérelmeket és a hívásokat. A hívó vagy útválasztó kiegyenlíti vagy elosztja a forgalmat az adott példányok között.
 
-* [Aktív-passzív:](#roles)Csak az elsődleges példány aktív, és kezeli az összes munkát, míg a másodlagos példány megvárja, amíg az elsődleges megszakítás vagy hiba. A hívó vagy az útválasztó határozza meg, hogy mikor kell hívni a másodlagos példányt.
+* [Aktív – passzív](#roles): csak az elsődleges példány aktív, és kezeli az összes munkát, míg a másodlagos példány megvárja az elsődleges élmény megszakadását vagy meghibásodását. A hívó vagy útválasztó határozza meg, hogy mikor kell meghívnia a másodlagos példányt.
 
-Ajánlott architektúraként használhatja az Azure API Management proxyként a logikai alkalmazások, amelyek a kérelem eseményindítók. Az API Management beépített régiók közötti rugalmasságot biztosít, [és képes a forgalmat több végpontra irányítani.](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
+Ajánlott architektúraként használhatja az Azure API Management proxyként a kérelmek eseményindítóit használó logikai alkalmazásokhoz. A API Management [beépített régiók közötti rugalmasságot biztosít, és lehetővé teszi, hogy több végponton keresztül irányítsa a forgalmat](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region).
 
 <a name="webhook-trigger"></a>
 
-### <a name="webhook-trigger"></a>Webhook-eseményindító
+### <a name="webhook-trigger"></a>Webhook-trigger
 
-A *webhook-eseményindító* lehetővé teszi a logikai alkalmazás számára, hogy előfizessen egy szolgáltatásra egy *visszahívási URL-címet* a szolgáltatásnak. A logikai alkalmazás ezután figyelheti, és megvárja, amíg egy adott esemény történik, hogy a szolgáltatás végpontján. Amikor az esemény bekövetkezik, a szolgáltatás meghívja a webhook-eseményindító a visszahívási URL-címet, amely ezután futtatja a logikai alkalmazást. Ha engedélyezve van, a webhook-eseményindító előfizet a szolgáltatásra. Ha le van tiltva, az eseményindító leiratkozik a szolgáltatásról.
+A *webhook* -trigger lehetővé teszi, hogy a logikai alkalmazás előfizessen a szolgáltatásra a *visszahívási URL-cím* átadásával. A logikai alkalmazás ezután figyelheti és megvárhatja, hogy egy adott esemény megtörténjen az adott szolgáltatási végponton. Ha az esemény történik, a szolgáltatás meghívja a webhook eseményindítóját a visszahívási URL-cím használatával, amely ezután futtatja a logikai alkalmazást. Ha engedélyezve van, a webhook-trigger előfizet a szolgáltatásra. Ha le van tiltva, az trigger lemond a szolgáltatástól.
 
-Vész-helyreállítási szempontból állítsa be az elsődleges és másodlagos példányok, amelyek webhook-eseményindítók aktív-passzív szerepkörök lejátszásához, mert csak egy példány nak kell fogadnia eseményeket vagy üzeneteket az előfizetett végpontról.
+Vész-helyreállítási perspektívából állítson be olyan elsődleges és másodlagos példányokat, amelyek webhook-eseményindítókat használnak aktív-passzív szerepkörök lejátszásához, mert csak egy példánynak kell eseményeket vagy üzeneteket kapnia az előfizetett végponttól.
 
-## <a name="assess-primary-instance-health"></a>Elsődleges példány állapotának felmérése
+## <a name="assess-primary-instance-health"></a>Az elsődleges példány állapotának felmérése
 
-A vész-helyreállítási stratégia működéséhez a megoldásnak szüksége van az alábbi feladatok végrehajtására:
+A vész-helyreállítási stratégia működéséhez a megoldásnak a következő feladatokat kell elvégeznie:
 
-* [Az elsődleges példány elérhetőségének ellenőrzése](#check-primary-availability)
+* [Az elsődleges példány rendelkezésre állásának keresése](#check-primary-availability)
 * [Az elsődleges példány állapotának figyelése](#monitor-primary-health)
 * [A másodlagos példány aktiválása](#activate-secondary)
 
-Ez a rész egy olyan megoldást ismertet, amelyet közvetlenül vagy a saját tervezés alapjaként használhat. Az alábbiakban a megoldás magas szintű vizuális áttekintését olvashatja:
+Ez a szakasz egy olyan megoldást ismertet, amelyet a saját kialakításának megfelelően vagy a saját tervezés alapjaként használhat. Ez a megoldás a következő magas szintű vizuális áttekintést nyújtja:
 
-![Watchdog logikai alkalmazás létrehozása, amely egy állapot-ellenőrzési logikai alkalmazást figyel az elsődleges helyen](./media/business-continuity-disaster-recovery-guidance/check-location-health-watchdog.png)
+![Állapot-ellenőrzési logikai alkalmazás figyelése az elsődleges helyen a házőrző logikai alkalmazás létrehozása](./media/business-continuity-disaster-recovery-guidance/check-location-health-watchdog.png)
 
 <a name="check-primary-availability"></a>
 
-### <a name="check-primary-instance-availability"></a>Az elsődleges példány elérhetőségének ellenőrzése
+### <a name="check-primary-instance-availability"></a>Elsődleges példány rendelkezésre állásának keresése
 
-Annak megállapításához, hogy az elsődleges példány elérhető, futó és képes-e dolgozni, létrehozhat egy "állapot-ellenőrzés" logikai alkalmazást, amely ugyanazon a helyen található, mint az elsődleges példány. Ezután ezt az állapot-ellenőrző alkalmazást egy másik helyről hívhatja fel. Ha az állapot-ellenőrzési alkalmazás sikeresen válaszol, az azure logic apps szolgáltatás alapjául szolgáló infrastruktúra az adott régióban elérhető és működik. Ha az állapot-ellenőrzési alkalmazás nem válaszol, feltételezheti, hogy a hely már nem kifogástalan.
+Annak megállapításához, hogy az elsődleges példány elérhető-e, fut-e, és képes-e működni, létrehozhat egy "állapot-ellenőrzési" logikai alkalmazást, amely az elsődleges példánnyal azonos helyen található. Ezt az állapot-ellenőrzési alkalmazást egy másik helyről is meghívhatja. Ha az állapot-ellenőrzési alkalmazás sikeresen válaszol, az adott régióban található Azure Logic Apps szolgáltatás mögöttes infrastruktúrája elérhető és működik. Ha az állapot-ellenőrzési alkalmazás nem válaszol, feltételezheti, hogy a hely már nem kifogástalan állapotban van.
 
-Ehhez a feladathoz hozzon létre egy alapvető állapot-ellenőrzési logikai alkalmazást, amely a következő feladatokat hajtja végre:
+Ehhez a feladathoz hozzon létre egy alapszintű állapot-ellenőrzési logikai alkalmazást, amely a következő feladatokat hajtja végre:
 
-1. Hívás fogadása a figyelő alkalmazásból a Kérelem eseményindító használatával.
+1. Hívást kap a watchdog alkalmazástól a kérelem-trigger használatával.
 
-1. Válaszoljon egy állapottal, amely jelzi, hogy a bejelölt logikai alkalmazás továbbra is működik-e a Válasz művelet használatával.
+1. Válaszoljon olyan állapottal, amely azt jelzi, hogy a kijelölt logikai alkalmazás továbbra is működik-e a válasz művelet használatával.
 
    > [!IMPORTANT]
-   > Az állapot-ellenőrzési logikai alkalmazás nak egy válaszműveletet kell használnia, hogy az alkalmazás szinkron módon reagáljon, ne aszinkron módon.
+   > Az állapot-ellenőrzési logikai alkalmazásnak egy válasz műveletet kell használnia, hogy az alkalmazás szinkronban, aszinkron módon válaszoljon.
 
-1. Ha további meghatározásához, hogy az elsődleges hely kifogástalan állapotban van-e, figyelembe veheti bármely más olyan szolgáltatás állapotát, amely ezen a helyen kommunikál a céllogikai alkalmazással. Csak bontsa ki az állapot-ellenőrzési logikai alkalmazást, hogy felmérje az állapotát ezen egyéb szolgáltatások is.
+1. Ha szeretné megállapítani, hogy az elsődleges hely kifogástalan állapotú-e, az ezen a helyen található, a cél logikai alkalmazással kommunikáló egyéb szolgáltatások állapotát is befolyásolhatja. Egyszerűen bontsa ki az állapot-ellenőrzési logikai alkalmazást, hogy a többi szolgáltatás állapotát is felmérje.
 
 <a name="monitor-primary-health"></a>
 
 ### <a name="create-a-watchdog-logic-app"></a>Watchdog logikai alkalmazás létrehozása
 
-Az elsődleges példány állapotának figyeléséhez és az állapot-ellenőrzési logikai alkalmazás hívásához hozzon létre egy "figyelő" logikai alkalmazást egy *másik helyen.* Beállíthatja például a figyelő logikai alkalmazást, hogy ha az állapot-ellenőrzési logika hívása sikertelen, a figyelő riasztást küldhet az operatív csapatnak, hogy kivizsgálhassák a hibát, és miért az elsődleges példány nem válaszol.
+Az elsődleges példány állapotának figyeléséhez és az állapot-ellenőrzés logikai alkalmazás meghívásához hozzon létre egy "watchdog" logikai alkalmazást egy *másik helyen*. Beállíthatja például a watchdog Logic app alkalmazást, hogy ha az állapot-ellenőrzés logikájának meghívása sikertelen, a watchdog riasztást küldhet az operatív csapatnak, hogy megvizsgálják a hibát, és hogy az elsődleges példány miért nem válaszol.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a figyelő logikai alkalmazása az *elsődleges helytől eltérő helyen*található. Ha a Logic Apps szolgáltatás az elsődleges helyen problémákat tapasztal, a figyelő logikai alkalmazás nem futtathatja.
+> Győződjön meg arról, hogy a házőrző logikai alkalmazás olyan *helyen található, amely eltér az elsődleges helytől*. Ha az elsődleges helyen lévő Logic Apps szolgáltatás problémákat tapasztal, előfordulhat, hogy a házőrző logikai alkalmazás nem fut.
 
-Ehhez a feladathoz a másodlagos helyen hozzon létre egy figyelő logikai alkalmazást, amely végrehajtja ezeket a feladatokat:
+Ehhez a feladathoz a másodlagos helyen hozzon létre egy watchdog logikai alkalmazást, amely a következő feladatokat hajtja végre:
 
-1. Az Ismétlődés eseményindító használatával rögzített vagy ütemezett ismétlődés alapján futtassa.
+1. Futtatás rögzített vagy ütemezett ismétlődés alapján az ismétlődési eseményindító használatával.
 
-   Az ismétlődést olyan értékre állíthatja be, amely a helyreállítási idő célkitűzés (RTO) tűréshatára alatt van.
+   Megadhatja az ismétlődést olyan értékre, amely a helyreállítási időre vonatkozó célkitűzés (RTO) tűréshatára alatt marad.
 
-1. Hívja meg az állapot-ellenőrzési logikai alkalmazást az elsődleges helyen a HTTP-művelet használatával, például:
+1. Hívja meg az állapot-ellenőrzés logikai alkalmazást az elsődleges helyen a HTTP-művelet használatával, például:
 
 <a name="activate-secondary"></a>
 
-### <a name="activate-your-secondary-instance"></a>A másodlagos példány aktiválása
+### <a name="activate-your-secondary-instance"></a>Másodlagos példány aktiválása
 
-A másodlagos példány automatikus aktiválásához létrehozhat egy logikai alkalmazást, amely meghívja a felügyeleti API-t, például az [Azure Resource Manager-összekötőt](https://docs.microsoft.com/connectors/arm/) a megfelelő logikai alkalmazások aktiválásához a másodlagos helyen. Bonthatja ki a figyelő alkalmazást, hogy hívja meg ezt az aktiválási logikai alkalmazást, miután egy adott számú hiba történt.
+A másodlagos példány automatikus aktiválásához létrehozhat egy logikai alkalmazást, amely meghívja a felügyeleti API-t, például az [Azure Resource Manager-összekötőt](https://docs.microsoft.com/connectors/arm/) a megfelelő logikai alkalmazások aktiválásához a másodlagos helyen. A watchdog alkalmazás kibontásával meghívhatja ezt az aktiválási logikai alkalmazást egy adott számú hiba után.
 
 <a name="collect-diagnostic-data"></a>
 
 ## <a name="collect-diagnostic-data"></a>Diagnosztikai adatok gyűjtése
 
-Beállíthatja a naplózása a logikai alkalmazás fut, és küldje el az eredményül kapott diagnosztikai adatokat a szolgáltatások, például az Azure Storage, az Azure Event Hubs és az Azure Log Analytics további kezelés és feldolgozás érdekében.
+Beállíthat naplózást a logikai alkalmazás futtatásához, és elküldheti az eredményül kapott diagnosztikai adatait olyan szolgáltatásokhoz, mint például az Azure Storage, az Azure Event Hubs és az Azure Log Analytics a további kezelés és feldolgozás érdekében.
 
-* Ha szeretné használni ezeket az adatokat az Azure Log Analytics, az adatok elérhetővé mind az elsődleges és másodlagos helyeken a logikai alkalmazás **diagnosztikai beállításait,** és elküldi az adatokat több Log Analytics-munkaterületekre. További információ: Az Azure Monitor naplók beállítása és diagnosztikai adatok gyűjtése az Azure Logic Apps.for more information, for [Set up Azure Monitor logs and collect diagnostics data for Azure Logic Apps.](../logic-apps/monitor-logic-apps-log-analytics.md)
+* Ha ezeket az adatokat az Azure Log Analytics használatával szeretné használni, az adatokat az elsődleges és a másodlagos hely számára is elérhetővé teheti, ha beállítja a logikai alkalmazás **diagnosztikai beállításait** , és több log Analytics munkaterületre küldi az adatokat. További információ: [Azure monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Appshoz](../logic-apps/monitor-logic-apps-log-analytics.md).
 
-* Ha az adatokat az Azure Storage-ba vagy az Azure Event Hubs-ba szeretné küldeni, az adatokat elérhetővé teheti mind az elsődleges, mind a másodlagos helyeken a georedundancia beállításával. További információval a következő cikkek szolgálnak:<p>
+* Ha az Azure Storage-ba vagy az Azure Event Hubsba kívánja elküldeni az adatküldés célját, a Geo-redundancia beállításával mind az elsődleges, mind a másodlagos helyen elérhetővé teheti az adatgyűjtést. További információval a következő cikkek szolgálnak:<p>
 
-  * [Az Azure Blob Storage vész-helyreállítási és fiókfeladat-átvétele](../storage/common/storage-disaster-recovery-guidance.md)
-  * [Az Azure Event Hubs geokatasztrófa-helyreállítása](../event-hubs/event-hubs-geo-dr.md)
+  * [Azure Blob Storage vész-helyreállítási és-fiók feladatátvétele](../storage/common/storage-disaster-recovery-guidance.md)
+  * [Azure Event Hubs geo – vész-helyreállítás](../event-hubs/event-hubs-geo-dr.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rugalmasság – áttekintés az Azure-hoz](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
+* [A rugalmasság áttekintése az Azure-ban](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
 * [Az egyes Azure-szolgáltatások rugalmasságára vonatkozó ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Adatkezelés az Azure rugalmassága érdekében](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Biztonsági mentés és vészhelyreállítás az Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Adatkezelés a rugalmassághoz az Azure-ban](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
+* [Biztonsági mentési és vész-helyreállítási Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
 * [Helyreállítás egész régióra kiterjedő szolgáltatáskimaradás esetén](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
-* [Microsoft szolgáltatásiszint-szerződések (SLOS-ok) az Azure-szolgáltatásokhoz](https://azure.microsoft.com/support/legal/sla/)
+* [Microsoft szolgáltatói szerződések (SLA-kat) az Azure-szolgáltatásokhoz](https://azure.microsoft.com/support/legal/sla/)

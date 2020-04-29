@@ -1,6 +1,6 @@
 ---
-title: Metrikák megtekintése az Azure Monitor segítségével
-description: Ez a cikk bemutatja, hogyan figyelheti a metrikák az Azure Portal diagramok és az Azure CLI.
+title: Metrikák megtekintése Azure Monitor
+description: Ez a cikk bemutatja, hogyan figyelheti a metrikákat a Azure Portal-diagramokkal és az Azure CLI-vel.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382936"
 ---
 # <a name="monitor-media-services-metrics"></a>A Media Services metrikáinak monitorozása
 
-[Az Azure Monitor](../../azure-monitor/overview.md) lehetővé teszi, hogy a metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hogyan teljesítenek az alkalmazások. A szolgáltatás részletes leírását és azt, hogy miért szeretné használni az Azure Media Services metrikák és diagnosztikai naplók, [lásd: Media Services-metrikák és diagnosztikai naplók figyelése.](media-services-metrics-diagnostic-logs.md)
+[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
 
-Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakcióra, beleértve a portálon való ábrázolásukat, a REST API-n keresztüli hozzáférésüket vagy az Azure CLI használatával történő lekérdezésüket. Ez a cikk bemutatja, hogyan figyelheti a metrikák az Azure Portal diagramok és az Azure CLI.
+A Azure Monitor számos lehetőséget kínál a metrikák használatára, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy az Azure CLI használatával történő lekérdezésre. Ez a cikk bemutatja, hogyan figyelheti a metrikákat a Azure Portal-diagramokkal és az Azure CLI-vel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Media Services-fiók létrehozása](create-account-cli-how-to.md)
-- [A Media Services monitorának mutatóinak és diagnosztikai naplóinak áttekintése](media-services-metrics-diagnostic-logs.md)
+- [Figyelő Media Services mérőszámok és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md) áttekintése
 
-## <a name="view-metrics-in-azure-portal"></a>Metrikák megtekintése az Azure Portalon
+## <a name="view-metrics-in-azure-portal"></a>Metrikák megtekintése Azure Portal
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-1. Nyissa meg az Azure Media Services-fiókját, és válassza **a Metrikák**lehetőséget.
-1. Kattintson az **ERŐFORRÁS** mezőre, és válassza ki azt az erőforrást, amelynek a metrikákat figyelni szeretné.
+1. Navigáljon a Azure Media Services-fiókjához, és válassza a **metrikák**lehetőséget.
+1. Kattintson az **erőforrás** mezőre, és válassza ki azt az erőforrást, amelynek a metrikáit figyelni szeretné.
 
-    Az **Erőforrás kiválasztása** ablak a jobb oldalon jelenik meg, és az erőforrások listája elérhető. Ebben az esetben a következőket látja:
+    Az **erőforrás kiválasztása** ablak jobb oldalán megjelenik az elérhető erőforrások listája. Ebben az esetben a következőket látja:
 
-    * &lt;Media Services-fiók neve&gt;
-    * &lt;Media Services-fiók neve&gt;/&lt;streamelési végpont neve&gt;
+    * &lt;Media Services fiók neve&gt;
+    * &lt;Media Services fiók neve&gt;/&lt;streaming Endpoint neve&gt;
     * &lt;tárfiók neve&gt;
 
-    Jelölje ki az erőforrást, és nyomja **le az Apply billentyűt.** A támogatott erőforrásokkal és mérőszámokkal kapcsolatos részleteka [Media Services-mutatók figyelése című témakörben talál.](media-services-metrics-diagnostic-logs.md)
+    Válassza ki az erőforrást, és nyomja le az **alkalmaz**gombot. A támogatott erőforrásokkal és mérőszámokkal kapcsolatos részletekért lásd: [Media Services mérőszámok figyelése](media-services-metrics-diagnostic-logs.md).
 
     ![Mérőszámok](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
-    > Ha váltani szeretne az erőforrások között, amelyeknél figyelni szeretné a mutatókat, kattintson ismét az **ERŐFORRÁS** mezőre, és ismételje meg ezt a lépést.
-1. (Opcionálisan) adjon nevet a diagramnak (a név szerkesztése a tetején lévő ceruza megnyomásával).
-1. Adja hozzá a megtekinteni kívánt mutatókat.
+    > Ha váltani szeretne a metrikákat figyelő erőforrások között, kattintson ismét az **erőforrás** mezőre, és ismételje meg ezt a lépést.
+1. (Opcionálisan) adjon nevet a diagramnak (szerkessze a nevet a tetején lévő ceruza megnyomásával).
+1. Adja meg a megtekinteni kívánt metrikákat.
 
     ![Mérőszámok](media/media-services-metrics/metrics03.png)
 1. A diagramot rögzítheti az irányítópulton.
 
 ## <a name="view-metrics-with-azure-cli"></a>Metrikák megtekintése az Azure CLI-vel
 
-Az "Egres" metrikák beszerezéséhez az `az monitor metrics` Azure CLI-vel a következő parancsot kell futtatnia:
+Az Azure CLI-vel való "kimenő" metrikák eléréséhez futtassa a következő `az monitor metrics` parancsot:
 
 ```azurecli-interactive
 az monitor metrics list --resource \
@@ -65,12 +65,12 @@ az monitor metrics list --resource \
    --metric "Egress"
 ```
 
-Más metrikák lekérni, helyettesítse a "Kimenő" a metrika neve érdekli.
+Más mérőszámok beszerzéséhez helyettesítse be a "kimenő forgalom" kifejezést a metrika neve érdekli.
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
-* [Metrikariasztásoklétrehozása, megtekintése és kezelése az Azure Monitor használatával.](../../azure-monitor/platform/alerts-metric.md)
+* [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
+* [Metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>További lépések
 

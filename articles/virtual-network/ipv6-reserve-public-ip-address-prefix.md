@@ -1,7 +1,7 @@
 ---
-title: Nyilvános IPv6-címek és címtartományok lefoglalása Azure-beli virtuális hálózatban
+title: Nyilvános IPv6-címek és címtartományok foglalása egy Azure-beli virtuális hálózaton
 titlesuffix: Azure Virtual Network
-description: Ismerje meg, hogyan foglalhat le nyilvános IPv6-címeket és címtartományokat egy Azure virtuális hálózatban.
+description: Megtudhatja, hogyan foglalhat le nyilvános IPv6-címeket és-címtartományt egy Azure-beli virtuális hálózaton.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420543"
 ---
-# <a name="reserve-public-ipv6-address-prefix"></a>Nyilvános IPv6-címelőtag lefoglalása
-Az IPv6 for Azure Virtual Network (VNet) lehetővé teszi, hogy az Azure-ban iPv6- és IPv4-kapcsolattal rendelkező alkalmazásokat üzemeltetjen virtuális hálózaton belül, valamint az internetről és az internetről. Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is lefoglalhatja a használatra. Ez a cikk ismerteti, hogyan hozhat létre IPv6 nyilvános IP-címeket és címtartományokat az Azure PowerShell és a CLI használatával.
+# <a name="reserve-public-ipv6-address-prefix"></a>Nyilvános IPv6-cím előtagjának foglalása
+Az IPv6 for Azure Virtual Network (VNet) lehetővé teszi, hogy az Azure-ban IPv6-és IPv4-kapcsolaton keresztül is üzemeltetheti az alkalmazásokat a virtuális hálózaton belül és az internetről. Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is fenntarthatja a használatra. Ez a cikk bemutatja, hogyan hozhat létre IPv6 nyilvános IP-címeket és címtartományt a Azure PowerShell és a parancssori felület használatával.
 
 
-## <a name="create-a-single-reserved-ipv6-public-ip"></a>Egyetlen fenntartott IPv6-nyilvános IP-cím létrehozása
+## <a name="create-a-single-reserved-ipv6-public-ip"></a>Egyetlen fenntartott IPv6 nyilvános IP-cím létrehozása
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-Egyetlen fenntartott (statikus) IPv6 nyilvános IP-címet hozhat létre az Azure PowerShell és [a New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használatával az alábbiak szerint:
+Egy fenntartott (statikus) IPv6 nyilvános IP-címet a következő módon hozhat létre a [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) Azure PowerShell használatával:
 
 ```azurepowershell  
  $myOwnIPv6Address = New-AzPublicIpAddress `
@@ -41,7 +41,7 @@ Egyetlen fenntartott (statikus) IPv6 nyilvános IP-címet hozhat létre az Azure
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
- Egyetlen fenntartott (statikus) IPv6 nyilvános IP-címet hozhat létre az Azure CLI az [hálózati nyilvános ip-létrehozással](/cli/azure/network/public-ip) az alábbiak szerint:
+ Létrehozhat egyetlen fenntartott (statikus) IPv6 nyilvános IP-címet az Azure CLI-vel az [az Network Public-IP Create](/cli/azure/network/public-ip) paranccsal:
   
 ```azurecli
  az network public-ip create \
@@ -53,13 +53,13 @@ Egyetlen fenntartott (statikus) IPv6 nyilvános IP-címet hozhat létre az Azure
  --version IPv6
 ```
 
-## <a name="create-a-reserved-ipv6-prefix-range"></a>Fenntartott IPv6-előtag (tartomány) létrehozása
+## <a name="create-a-reserved-ipv6-prefix-range"></a>Fenntartott IPv6-előtag létrehozása (tartomány)
 
-IPv6-előtag lefoglalásához adja hozzá az IPv6 IP-címcsaládját ugyanahhoz a parancshoz, amelyet az IPv4-előtagok létrehozásához használt. A következő parancsok /125 (8 IPv6-cím) méretű előtagot hoznak létre.  
+IPv6-előtag foglalásához adja hozzá az IPv6 IP-címét ugyanahhoz a parancshoz, amely az IPv4-előtagok létrehozásához használatos. A következő parancsok létrehoznak egy méret/125 (8 IPv6-cím) előtagot.  
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-Nyilvános IPv6-címet hozhat létre az Azure CLI használatával [az az hálózati nyilvános ip-létrehozással](/powershell/module/az.network/new-azpublicipprefix) az alábbiak szerint:
+Nyilvános IPv6-címet az [az Network Public-IP Create](/powershell/module/az.network/new-azpublicipprefix) paranccsal hozhat létre az Azure CLI használatával az alábbi módon:
 ```azurepowershell  
  $myOwnIPv6Prefix = New-AzPublicIpPrefix `
  -name IPv6PrefixWestUS `
@@ -72,7 +72,7 @@ Nyilvános IPv6-címet hozhat létre az Azure CLI használatával [az az hálóz
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-Nyilvános IPv6-címet az Azure CLI használatával az alábbiak szerint hozhat létre:
+Az Azure CLI-vel az alábbi módon hozhat létre nyilvános IPv6-címeket:
 
 ```azurecli  
 az network public-ip prefix create \
@@ -83,11 +83,11 @@ az network public-ip prefix create \
 --length 125
 ```
 
-## <a name="allocate-a-public-ip-address-from-a-reserved-ipv6-prefix"></a>Nyilvános IP-cím lefoglalása fenntartott IPv6-előtagból
+## <a name="allocate-a-public-ip-address-from-a-reserved-ipv6-prefix"></a>Nyilvános IP-cím lefoglalása egy fenntartott IPv6-előtagból
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
- Hozzon létre egy statikus IPv6 nyilvános IP-cím egy fenntartott előtag hozzáadásával az `-PublicIpPrefix` argumentumot, amikor létrehozza a nyilvános IP-t az Azure PowerShell használatával. A következő példa feltételezi, hogy egy előtagot hoztak létre és tároltak egy PowerShell-változóban, amelynek *neve: $myOwnIPv6Előtag*.
+ Egy fenntartott előtaggal rendelkező statikus IPv6 nyilvános IP-címet úgy hozhat `-PublicIpPrefix` létre, hogy hozzáadja az argumentumot a nyilvános IP-cím a Azure PowerShell használatával történő létrehozásakor. Az alábbi példa azt feltételezi, hogy egy előtag létrehozása és tárolása egy nevű PowerShell-változóban történik: *$MyOwnIPv 6prefix*.
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \
@@ -102,7 +102,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
  
-A következő példa feltételezi, hogy egy előtagot hoztak létre és tároltak egy *IPv6PrefixWestUS*nevű CLI változóban.
+Az alábbi példa feltételezi, hogy egy előtagot hoztak létre és tároltak egy nevű CLI-változóban: *IPv6PrefixWestUS*.
 
 ```azurecli 
 az network public-ip create \
@@ -116,5 +116,5 @@ az network public-ip create \
 ```
 
 ## <a name="next-steps"></a>További lépések
-- További információ az [IPv6-címelőtagról.](ipv6-public-ip-address-prefix.md)
-- További információ az [IPv6-címekről.](ipv6-overview.md)
+- További információ az [IPv6-cím előtagjáról](ipv6-public-ip-address-prefix.md).
+- További információ az [IPv6-címekről](ipv6-overview.md).

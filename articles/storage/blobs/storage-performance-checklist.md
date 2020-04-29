@@ -1,6 +1,6 @@
 ---
-title: Teljesítmény- és méretezhetőségi ellenőrzőlista a Blob storage-hoz - Azure Storage
-description: A Blob storage-szal a nagy teljesítményű alkalmazások fejlesztéséhez használt bevált gyakorlatok ellenőrzőlistája.
+title: Teljesítmény-és skálázhatósági ellenőrzőlista a blob Storage-hoz – Azure Storage
+description: A nagy teljesítményű alkalmazások fejlesztése során a blob Storage-hoz való használatra bevált eljárások ellenőrzőlistája.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,282 +9,282 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80473935"
 ---
-# <a name="performance-and-scalability-checklist-for-blob-storage"></a>Teljesítmény- és méretezhetőségi ellenőrzőlista a Blob storage-hoz
+# <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
-A Microsoft számos bevált gyakorlatot fejlesztett ki a blob-tárolóval rendelkező nagy teljesítményű alkalmazások fejlesztéséhez. Ez az ellenőrzőlista azonosítja azokat a kulcsfontosságú gyakorlatokat, amelyeket a fejlesztők követhetnek a teljesítmény optimalizálása érdekében. Tartsa szem előtt ezeket a gyakorlatokat, miközben az alkalmazás tervezése és a folyamat során.
+A Microsoft számos bevált gyakorlatot fejlesztett ki a nagy teljesítményű alkalmazások blob Storage-alapú fejlesztéséhez. Ez az ellenőrzőlista azokat a kulcsfontosságú eljárásokat azonosítja, amelyeket a fejlesztők követhetnek a teljesítmény optimalizálása érdekében. Tartsa szem előtt ezeket a gyakorlatokat az alkalmazás tervezésekor és a folyamat során.
 
-Az Azure Storage méretezhetőségi és teljesítménycélokat biztosít a kapacitás, a tranzakciós díj és a sávszélesség számára. Az Azure Storage méretezhetőségi céljairól további információt a [méretezhetőségi és teljesítménycélok a szabványos tárfiókokhoz,](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) valamint [a Blob storage méretezhetőségi és teljesítménycéljai című témakörben](scalability-targets.md)talál.
+Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: [skálázhatósági és teljesítményi célok a standard szintű Storage-fiókokhoz](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) , valamint [méretezhetőség és teljesítménybeli célok a blob Storage-](scalability-targets.md)hoz.
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
-Ez a cikk a teljesítménybizonyított gyakorlatait egy ellenőrzőlistába rendezi, amelyet a Blob storage-alkalmazás fejlesztése során követhet.
+Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob Storage-alkalmazás fejlesztése során követendő ellenőrzőlistán.
 
-| Kész | Kategória | Tervezési szempontok |
+| Kész | Kategória | Tervezési szempont |
 | --- | --- | --- |
-| &nbsp; |Méretezhetőségi célok |[Meg tudja tervezni az alkalmazást úgy, hogy legfeljebb a tárfiókok maximális számát használja?](#maximum-number-of-storage-accounts) |
-| &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitás- és tranzakciós korlátok közeledését?](#capacity-and-transaction-targets) |
-| &nbsp; |Méretezhetőségi célok |[Nagyszámú ügyfél egyidejűleg fér hozzá egy blobhoz?](#multiple-clients-accessing-a-single-blob-concurrently) |
-| &nbsp; |Méretezhetőségi célok |[Az alkalmazás egyetlen blob méretezhetőségi célokon belül marad?](#bandwidth-and-operations-per-blob) |
-| &nbsp; |Particionálás |[Az elnevezési konvenció takara a jobb terheléselosztásérdekében?](#partitioning) |
-| &nbsp; |Hálózat |[Az ügyféloldali eszközök elegendően nagy sávszélességgel és alacsony késleltetéssel rendelkeznek a szükséges teljesítmény eléréséhez?](#throughput) |
-| &nbsp; |Hálózat |[Az ügyféloldali eszközök kiváló minőségű hálózati kapcsolattal rendelkeznek?](#link-quality) |
-| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban, mint a tárfiók?](#location) |
-| &nbsp; |Közvetlen ügyfélhozzáférés |[Megosztott hozzáférésű aláírásokat (SAS) és több forrásból származó erőforrás-megosztást (CORS) használ az Azure Storage közvetlen elérésének engedélyezéséhez?](#sas-and-cors) |
-| &nbsp; |Gyorsítótárazás |[Az alkalmazás gyorsítótárazási adatok, amelyek gyakran elérhető, és ritkán változott?](#reading-data) |
-| &nbsp; |Gyorsítótárazás |[Az alkalmazás kötegelési frissítések gyorsítótárazásával az ügyfél, majd feltölti őket a nagyobb készletek?](#uploading-data-in-batches) |
-| &nbsp; |.NET-konfiguráció |[A .NET Core 2.1-es vagy újabb verziót használja az optimális teljesítmény érdekében?](#use-net-core) |
-| &nbsp; |.NET-konfiguráció |[Úgy állította be az ügyfelet, hogy elegendő számú egyidejű kapcsolatot használjon?](#increase-default-connection-limit) |
-| &nbsp; |.NET-konfiguráció |[A .NET alkalmazások esetében a .NET érték megfelelő számú szálat használt?](#increase-minimum-number-of-threads) |
-| &nbsp; |Párhuzamosság |[Biztosította, hogy a párhuzamosság megfelelően legyen határolódva, hogy ne terhelje túl az ügyfél képességeit, és ne közelítse meg a méretezhetőségi célokat?](#unbounded-parallelism) |
-| &nbsp; |Eszközök |[A Microsoft által biztosított ügyfélkódtárak és -eszközök legújabb verzióját használja?](#client-libraries-and-tools) |
-| &nbsp; |Újrapróbálkozások |[Az újrapróbálkozási szabályzatot exponenciális visszalépéssel használja a szabályozási hibák és időmegadások esetén?](#timeout-and-server-busy-errors) |
-| &nbsp; |Újrapróbálkozások |[Elkerüli az alkalmazás az újrapróbálkozásokat a nem újrapróbálható hibák miatt?](#non-retryable-errors) |
-| &nbsp; |Blobok másolása |[A leghatékonyabb módon másolja a blobokat?](#blob-copy-apis) |
-| &nbsp; |Blobok másolása |[Az AzCopy legújabb verzióját használja a tömeges másolási műveletekhez?](#use-azcopy) |
-| &nbsp; |Blobok másolása |[Az Azure Data Box család nagy mennyiségű adat importálásához használja?](#use-azure-data-box) |
+| &nbsp; |Méretezhetőségi célok |[Megtervezheti, hogy az alkalmazás ne legyen több, mint a Storage-fiókok maximális száma?](#maximum-number-of-storage-accounts) |
+| &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitást és a tranzakciós korlátokat?](#capacity-and-transaction-targets) |
+| &nbsp; |Méretezhetőségi célok |[Egyszerre több ügyfél fér hozzá egyetlen blobhoz?](#multiple-clients-accessing-a-single-blob-concurrently) |
+| &nbsp; |Méretezhetőségi célok |[Az alkalmazása a méretezhetőségi célokon belül marad egyetlen blob esetében?](#bandwidth-and-operations-per-blob) |
+| &nbsp; |Particionálás |[Az elnevezési konvenció úgy lett kialakítva, hogy jobb terheléselosztást lehessen kialakítani?](#partitioning) |
+| &nbsp; |Hálózat |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
+| &nbsp; |Hálózat |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
+| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
+| &nbsp; |Közvetlen ügyfél-hozzáférés |[Közös hozzáférésű aláírásokat (SAS) és több eredetű erőforrás-megosztást (CORS) használ az Azure Storage-hoz való közvetlen hozzáférés engedélyezéséhez?](#sas-and-cors) |
+| &nbsp; |Gyorsítótárazás |[Az alkalmazás gyorsítótárazza a gyakran használt és ritkán módosított adatait?](#reading-data) |
+| &nbsp; |Gyorsítótárazás |[Az alkalmazás batch-frissítése az ügyfélen végzett gyorsítótárazással történik, majd feltölti őket nagyobb készletekbe?](#uploading-data-in-batches) |
+| &nbsp; |.NET-konfiguráció |[A .NET Core 2,1-as vagy újabb verzióját használja az optimális teljesítmény érdekében?](#use-net-core) |
+| &nbsp; |.NET-konfiguráció |[Konfigurálta az ügyfelet az egyidejű kapcsolatok megfelelő számának használatára?](#increase-default-connection-limit) |
+| &nbsp; |.NET-konfiguráció |[A .NET-alkalmazások esetében megfelelő számú szál használatára konfigurálta a .NET-et?](#increase-minimum-number-of-threads) |
+| &nbsp; |Párhuzamosság |[Gondoskodott arról, hogy a párhuzamosságok megfelelően legyenek kötve, hogy ne legyenek túlterhelve az ügyfél képességei, vagy közelítse meg a méretezhetőségi célokat?](#unbounded-parallelism) |
+| &nbsp; |Eszközök |[A Microsoft által biztosított ügyféloldali kódtárak és eszközök legújabb verzióit használja?](#client-libraries-and-tools) |
+| &nbsp; |Újrapróbálkozások |[Újrapróbálkozási szabályzatot használ egy exponenciális leállítási a hibák és időtúllépések szabályozásához?](#timeout-and-server-busy-errors) |
+| &nbsp; |Újrapróbálkozások |[Az alkalmazás elkerüli a nem újrapróbálkozást okozó hibák újrapróbálkozását?](#non-retryable-errors) |
+| &nbsp; |Blobok másolása |[A lehető leghatékonyabb módon másolja a blobokat?](#blob-copy-apis) |
+| &nbsp; |Blobok másolása |[A AzCopy legújabb verzióját használja a tömeges másolási műveletekhez?](#use-azcopy) |
+| &nbsp; |Blobok másolása |[A Azure Data Box családot használja nagy adatmennyiségek importálására?](#use-azure-data-box) |
 | &nbsp; |Tartalom terjesztése |[CDN-t használ a tartalom terjesztéséhez?](#content-distribution) |
-| &nbsp; |Metaadatok használata |[Gyakran használt metaadatokat tárol a blobokról a metaadataikban?](#use-metadata) |
-| &nbsp; |Gyors feltöltés |[Amikor megpróbál feltölteni egy blobot gyorsan, párhuzamosan tölt fel blokkokat?](#upload-one-large-blob-quickly) |
-| &nbsp; |Gyors feltöltés |[Amikor megpróbál feltölteni sok blobok gyorsan, ön feltöltése blobok párhuzamosan?](#upload-many-blobs-quickly) |
-| &nbsp; |Blobtípus |[Oldalblobokat vagy blokkblobokat használ, ha szükséges?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Metaadatok használata |[Tárolja a Blobok gyakran használt metaadatait a metaadatokban?](#use-metadata) |
+| &nbsp; |Gyors feltöltés |[Amikor egy blob gyors feltöltését kísérli meg, párhuzamosan kell feltölteni a blokkokat?](#upload-one-large-blob-quickly) |
+| &nbsp; |Gyors feltöltés |[Sok blob gyors feltöltésének megkísérlésekor a blobokat párhuzamosan kell feltölteni?](#upload-many-blobs-quickly) |
+| &nbsp; |Blobtípus |[Az oldal blobokat használja, vagy ha szükséges, a Blobok blokkolása?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Méretezhetőségi célok
 
-Ha az alkalmazás megközelíti vagy meghaladja a skálázhatósági célok bármelyikét, megnövekedett tranzakció-késésekkel vagy szabályozással találkozhat. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás 503 (kiszolgáló foglalt) vagy 500 (operation timeout) hibakódokat ad vissza. Ezek a hibák elkerülése a skálázhatósági célok határain belül való tartózkodással fontos része az alkalmazás teljesítményének növelésének.
+Ha az alkalmazás megközelíti vagy túllépi a méretezhetőségi célokat, akkor a tranzakciós késések vagy a szabályozás nagyobb mértékben merülhet fel. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás megkezdi a 503 (foglalt kiszolgáló) vagy a 500 (művelet időtúllépése) hibakódok visszaadását. A méretezhetőségi célok korlátain belül maradó hibák elkerülésének fontos része az alkalmazás teljesítményének növelése.
 
-A várólista-szolgáltatás méretezhetőségi céljairól az [Azure Storage méretezhetőségi és teljesítménycélok című](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)témakörben talál további információt.
+További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
-### <a name="maximum-number-of-storage-accounts"></a>Tárfiókok maximális száma
+### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
-Ha megközelíti az adott előfizetés/régió kombinációhoz engedélyezett tárfiókok maximális számát, értékelje ki a forgatókönyvet, és állapítsa meg, hogy az alábbi feltételek bármelyike érvényes-e:
+Ha egy adott előfizetés/régió kombináció számára engedélyezett tárolási fiókok maximális számát keresi, értékelje ki a forgatókönyvet, és állapítsa meg, hogy az alábbi feltételek bármelyike teljesül-e:
 
-- A nem felügyelt lemezek tárolására és a lemezek virtuális gépekhez való hozzáadására használja a tárfiókokat? Ebben az esetben a Microsoft felügyelt lemezek használatát javasolja. A felügyelt lemezek automatikusan és az egyes tárfiókok létrehozása és kezelése nélkül méretezhetők. További információ: [Bevezetés az Azure által felügyelt lemezekbe](../../virtual-machines/windows/managed-disks-overview.md)
-- Ügyfélenként egy tárfiókot használ az adatok elkülönítése céljából? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy egy blob tároló minden ügyfél, ahelyett, hogy egy teljes tárfiók. Az Azure Storage mostantól lehetővé teszi, hogy szerepköralapú hozzáférés-vezérlési (RBAC) szerepköröket rendeljen tárolónként. További információ: [Hozzáférés megadása az Azure blobés várólista-adatok rbac az Azure portalon.](../common/storage-auth-aad-rbac-portal.md)
-- Több tárfiókok at shard a kimenő forgalom növelése, kimenő forgalom, I/O-műveletek másodpercenként (IOPS) vagy kapacitás. Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a tárfiókok megnövekedett korlátainak kihasználásával csökkentse a számítási feladatokhoz szükséges tárfiókok számát, ha lehetséges. Lépjen kapcsolatba [az Azure-támogatással,](https://azure.microsoft.com/support/options/) és kérjen megnövelt korlátozásokat a tárfiókhoz. További információ: [Nagyobb, nagyobb méretű tárfiókok bejelentése.](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)
+- A Storage-fiókok segítségével tárolja a nem felügyelt lemezeket, és hozzáadja ezeket a lemezeket a virtuális gépekhez? Ebben az esetben a Microsoft a felügyelt lemezek használatát javasolja. A felügyelt lemezek méretezése automatikusan történik, és nincs szükség egyéni Storage-fiókok létrehozására és felügyeletére. További információ: [Bevezetés az Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) szolgáltatásba
+- Felhasználónként használ egy Storage-fiókot az adatelkülönítés érdekében? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy minden ügyfélhez BLOB-tárolót használjon, a teljes Storage-fiók helyett. Az Azure Storage mostantól lehetővé teszi szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök hozzárendelését egy tároló alapján. További információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a üzenetsor-adatokhoz a Azure Portal RBAC](../common/storage-auth-aad-rbac-portal.md).
+- Több Storage-fiókot használ a szilánkok számára a bejövő forgalom, a kimenő I/O-műveletek másodpercenkénti (IOPS) vagy kapacitásának növelésére? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a Storage-fiókok megnövekedett korlátainak kihasználásával csökkentse a munkaterhelés számára szükséges tárolási fiókok számát, ha lehetséges. Vegye fel a kapcsolatot az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , és kérjen nagyobb korlátokat a Storage-fiókjához. További információ: [nagyobb méretű, magasabb szintű Storage-fiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
-### <a name="capacity-and-transaction-targets"></a>Kapacitás- és tranzakciócélok
+### <a name="capacity-and-transaction-targets"></a>Kapacitás-és tranzakciós célok
 
-Ha az alkalmazás megközelíti a skálázhatósági célok at egy tárfiók, fontolja meg az alábbi megközelítések:  
+Ha az alkalmazása közeledik egyetlen Storage-fiók skálázhatósági céljaihoz, vegye figyelembe az alábbi módszerek egyikét:  
 
-- Ha az alkalmazás eléri a tranzakciós célt, fontolja meg a blokkblob-tárfiókok használatát, amelyek magas tranzakciós arányokra és alacsony és konzisztens konzisztens késésre vannak optimalizálva. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
-- Gondolja át újra a számítási feladatok, amely miatt az alkalmazás megközelíti vagy meghaladja a méretezhetőségi cél. Meg tudja tervezni másképpen, hogy kevesebb sávszélességet vagy kapacitást használjon, vagy kevesebb tranzakciót?
-- Ha az alkalmazás nak meg kell haladnia a méretezhetőségi célok egyikét, majd hozzon létre több tárfiókot, és particionálja az alkalmazásadatait a több tárfiókok között. Ha ezt a mintát használja, akkor ügyeljen arra, hogy tervezze meg az alkalmazást, hogy a jövőben további tárfiókokat adhat hozzá a terheléselosztáshoz. A tárfiókok maguk nak nincs más költsége, mint a használat a tárolt adatok, tranzakciók vagy átvitt adatok tekintetében.
-- Ha az alkalmazás megközelíti a sávszélesség-célokat, fontolja meg az adatok tömörítése az ügyféloldalon, hogy csökkentse az adatok küldéséhez szükséges az Azure Storage-ba.
-    Az adatok tömörítése sávszélességet takaríthat meg és javíthatja a hálózati teljesítményt, ezért negatív hatással lehet a teljesítményre is. Értékelje ki az adattömörítésre és a dekompresszióra vonatkozó további feldolgozási követelmények teljesítményhatását az ügyféloldalon. Ne feledje, hogy a tömörített adatok tárolása megnehezítheti a hibaelhárítást, mivel az adatok szabványos eszközökkel történő megtekintése nagyobb kihívást jelenthet.
-- Ha az alkalmazás közeledik a méretezhetőségi célokat, majd győződjön meg arról, hogy exponenciális visszamaradást használ az újrapróbálkozások. A legjobb, ha megpróbálja elkerülni a méretezhetőségi célok elérését az ebben a cikkben ismertetett javaslatok végrehajtásával. Azonban egy exponenciális backoff újrapróbálkozások megakadályozza, hogy az alkalmazás gyorsan újrapróbálkozik, ami ronthatja a szabályozást. További információt az [Időelési és kiszolgálói foglaltsági hibák](#timeout-and-server-busy-errors)című szakaszban talál.
+- Ha az alkalmazás eléri a tranzakció célját, érdemes lehet blokkolni a blob Storage-fiókokat, amelyek magas tranzakciós sebességre és alacsony és konzisztens késésre vannak optimalizálva. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
+- Gondolja át a számítási feladatokat, amelyek hatására az alkalmazás megközelíti vagy túllépi a méretezhetőségi célt. Másképpen is megtervezhető, hogy kevesebb sávszélességet vagy kapacitást vagy kevesebb tranzakciót használjon?
+- Ha az alkalmazásnak meg kell haladnia a méretezhetőségi célok valamelyikét, hozzon létre több Storage-fiókot, és particionálja az alkalmazásadatok körét a több Storage-fiók között. Ha ezt a mintát használja, ügyeljen arra, hogy tervezze meg az alkalmazását, hogy a jövőben további Storage-fiókokat lehessen hozzáadni a terheléselosztáshoz. A Storage-fiókok önmagukban a tárolt adatok, a tranzakciók vagy az átvitt adatok alapján nem számítanak bele a használati díjakba.
+- Ha az alkalmazás közeledik a sávszélesség-célokhoz, érdemes lehet az ügyfél oldalán lévő adatok tömörítését az adatok Azure Storage-ba való küldéséhez szükséges sávszélesség csökkentése érdekében.
+    Az adatok tömörítése csökkentheti a sávszélességet, és javíthatja a hálózati teljesítményt, továbbá negatív hatással lehet a teljesítményre. Értékelje ki a további feldolgozási követelmények teljesítményére gyakorolt hatást az adattömörítés és a kibontás az ügyféloldali oldalon. Ne feledje, hogy a tömörített adattárolók megnehezítik a hibaelhárítást, mivel a szabványos eszközök használatával nagyobb kihívást jelenthet az adatmegtekintés.
+- Ha az alkalmazás közeledik a méretezhetőségi célokhoz, akkor győződjön meg arról, hogy exponenciális leállítási használ az újrapróbálkozásokhoz. A legjobb megoldás, ha a jelen cikkben ismertetett javaslatok végrehajtásával el szeretné kerülni a méretezhetőségi célok elérését. Az újrapróbálkozások exponenciális leállítási használata azonban megakadályozza, hogy az alkalmazás gyorsan újrapróbálkozjon, ami még rosszabb szabályozást eredményezhet. További információ: az [időtúllépés és a kiszolgáló foglalt hibák](#timeout-and-server-busy-errors)című szakasza.
 
-### <a name="multiple-clients-accessing-a-single-blob-concurrently"></a>Több ügyfél egyidejűleg fér hozzá egy blobhoz
+### <a name="multiple-clients-accessing-a-single-blob-concurrently"></a>Egyszerre több ügyfél fér hozzá egyetlen blobhoz
 
-Ha egy blob egyidejű legkülönbözőb-ben egy blob hoz elérhető nagy számú ügyfél, akkor figyelembe kell vennie a blobonként és a tárfiók méretezhetőségi célokonként is. Az egyetlen blobhoz hozzáférő ügyfelek pontos száma olyan tényezőktől függően változik, mint például a blobot egyidejűleg kérő ügyfelek száma, a blob mérete és a hálózati feltételek.
+Ha nagy számú ügyfél fér hozzá egyszerre egy blobhoz, akkor a blobok és a tárolási fiókok méretezhetőségére vonatkozó célokat is figyelembe kell venni. Az egyetlen blobhoz hozzáférő ügyfelek pontos száma attól függően változhat, hogy milyen tényezők, például a blobot egyidejűleg kérő ügyfelek száma, a blob mérete és a hálózati feltételek.
 
-Ha a blob cdn-en keresztül terjeszthető, például egy webhelyről kiszolgált képek vagy videók, akkor cdn-t is használhat. További információt a [Tartalomterjesztés](#content-distribution)című szakaszban talál.
+Ha a blob olyan CDN-en keresztül terjeszthető, mint például a webhelyek által szolgáltatott képek vagy videók, akkor használhat egy CDN-t is. További információt a [Tartalom terjesztése](#content-distribution)című szakaszban talál.
 
-Más esetekben, például tudományos szimulációk, ahol az adatok bizalmasak, két lehetőség közül választhat. Az első az, hogy a számítási feladatok hozzáférését úgy, hogy a blob érhető el egy ideig, illetve egyidejűleg érhető el. Azt is megteheti, hogy ideiglenesen másolja a blob több tárfiókok blobonként és a storage-fiókok között a teljes IOPS növelése érdekében. Az eredmények az alkalmazás viselkedésétől függően változnak, ezért győződjön meg róla, hogy a tervezés során teszteli az egyidejűségi mintákat.
+Más forgatókönyvekben, például olyan tudományos szimulációkban, amelyekben az adatok bizalmasak, két lehetőség közül választhat. Az első a munkaterhelések hozzáférésének felosztása úgy, hogy a blob egy adott időtartamon keresztül legyen elérhető, és egyidejűleg legyen elérhető. Azt is megteheti, hogy ideiglenesen átmásolja a blobot több Storage-fiókba, hogy növelje a Blobok teljes IOPS és a különböző tárolási fiókok számát. Az eredmények az alkalmazás működésének függvényében változnak, ezért ügyeljen arra, hogy a kialakítás során tesztelje a párhuzamossági mintákat.
 
-### <a name="bandwidth-and-operations-per-blob"></a>Sávszélesség és műveletek blobonként
+### <a name="bandwidth-and-operations-per-blob"></a>Sávszélesség és műveletek blobon
 
-Egyetlen blob másodpercenként legfeljebb 500 kérelmet támogat. Ha több ügyfél, amelynek kell olvasni ugyanazt a blobot, és lehet, hogy túllépi ezt a korlátot, majd fontolja meg egy blokk blob storage-fiók használata. A blokkblob-tárfiók nagyobb kérési arányt biztosít, vagy i/o-műveletek másodpercenként (IOPS).
+Egyetlen blob másodpercenként legfeljebb 500 kérelmet támogat. Ha több ügyféllel is el kell olvasnia ugyanazt a blobot, és előfordulhat, hogy túllépi ezt a korlátot, érdemes lehet egy blokk blob Storage-fiókot használni. A blokk blob Storage-fiók nagyobb kérelmeket vagy I/O-műveleteket biztosít másodpercenként (IOPS).
 
-A tartalomkézbesítési hálózat (CDN) például az Azure CDN is használhatja a blobon lévő műveletek terjesztéséhez. Az Azure CDN-ről az [Azure CDN áttekintése című témakörben olvashat bővebben.](../../cdn/cdn-overview.md)  
+A blobon keresztüli műveletek terjesztéséhez egy Content Delivery Network (CDN) (például Azure CDN) is használható. További információ a Azure CDNről: [Azure CDN áttekintése](../../cdn/cdn-overview.md).  
 
 ## <a name="partitioning"></a>Particionálás
 
-A blobadatok azure storage-partíciók ismertetése a teljesítmény növelése érdekében. Az Azure Storage gyorsabban szolgálhatja ki az adatokat egyetlen partíción, mint a több partíciót felölelő adatok. A blobok megfelelő elnevezésével javíthatja az olvasási kérelmek hatékonyságát.
+Annak megismerése, hogy az Azure Storage hogyan particionálja a blob adatait a teljesítmény növelése érdekében. Az Azure Storage-ban a több partícióra kiterjedő adattárolók gyorsabban, egyetlen partíción belül is kiszolgálják az adategységeket. A Blobok megfelelő elnevezésével növelheti az olvasási kérelmek hatékonyságát.
 
-A Blob Storage tartományalapú particionálási sémát használ a méretezéshez és a terheléselosztáshoz. Minden blob rendelkezik egy partíciós kulcs áll a teljes blob neve (account+container+blob). A partíciós kulcs blobadatok tartományokba való particionálására szolgál. A tartományok ezután a blob storage között a terhelés elosztása.
+A blob Storage egy tartományon alapuló particionálási sémát használ a skálázáshoz és a terheléselosztáshoz. Minden blobhoz tartozik egy partíciós kulcs, amely tartalmazza a blob teljes nevét (fiók + tároló + blob). A partíciós kulcs a blob-adattartományokra való particionálásra szolgál. A tartományok ezután terheléselosztást kapnak a blob Storage-ban.
 
-A tartományalapú particionálás azt jelenti, hogy a lexikai sorrendet (például *mypayroll,* *myperformance*, *myemployees*stb.) vagy időbélyegeket *(log20160101*, *log20160102*, *log20160102*stb.) használó elnevezési konvenciók nagyobb valószínűséggel eredményeznek a partíciók ugyanazon a kiszolgálópartíción való közös elhelyezkedését. , amíg a megnövekedett terhelés megköveteli, hogy kisebb tartományokra váljanak. A blobok ugyanazon a partíciókiszolgálón való közös elhelyezése növeli a teljesítményt, ezért a teljesítmény javítása fontos része a blobok elnevezése oly módon, hogy a leghatékonyabban rendszerezze őket.
+A tartományon alapuló particionálás azt jelenti, hogy a lexikális sorrendet (például *mypayroll*, *myperformance*, *myemployees*stb.) vagy időbélyegeket (*log20160101*, *log20160102*, *log20160102*stb.) használó elnevezési konvenciók nagyobb valószínűséggel eredményezik, hogy a partíciók ugyanazon a partíció-kiszolgálón helyezkednek el. , amíg a megnövekedett terhelésnek kisebb tartományokra kell bontania. A Blobok ugyanazon a partíciós kiszolgálón való közös elhelyezése javítja a teljesítményt, ezért a teljesítmény fokozásának fontos része a Blobok a leghatékonyabb módon történő megszervezését is magában foglalja.
 
-Például a tárolón belüli összes blobot egyetlen kiszolgáló is kiszolgálhatja, amíg a blobok terhelése további újraegyensúlyozást igényel a partíciótartományokban. Hasonlóképpen, egy csoport enyhén betöltött fiókok nevüket lexikai sorrendben lehet kézbesíteni egy kiszolgáló, amíg a terhelés egy vagy az összes ilyen fiókok megkövetelik, hogy fel kell osztani több partíciós kiszolgálók.
+Egy tárolóban lévő összes blobot például egyetlen kiszolgáló is kiszolgálhat, amíg a Blobok terhelése a partíció-tartományok további kiegyensúlyozását igényli. Hasonlóképpen, a lexikális sorrendben elrendezett fiókokat tartalmazó csoportokat egyetlen kiszolgáló is kiszolgálhatja, amíg az egyik vagy az összes fiók terhelését meg kell osztani több partíciós kiszolgáló között.
 
-Minden terheléselosztási művelet hatással lehet a tárolási hívások késésére a művelet során. A szolgáltatás képes kezelni a partíció hirtelen tört a forgalom korlátozott a méretezhetősége egyetlen partíciókiszolgáló, amíg a terheléselosztási művelet elindul, és újraegyensúlyozza a partíciókulcs-tartományban.
+Minden terheléselosztási művelet hatással lehet a tárolási hívások késésére a művelet során. A szolgáltatásnak a partícióra irányuló hirtelen adatforgalmának kezelésére korlátozódik egy partíciós kiszolgáló skálázhatósága, amíg a terheléselosztási művelet befejeződik, és kiegyenlíti a partíciós kulcs tartományát.
 
-Néhány ajánlott eljárás követésével csökkentheti az ilyen műveletek gyakoriságát.  
+Az ilyen műveletek gyakoriságának csökkentéséhez kövesse az ajánlott eljárásokat.  
 
-- Ha lehetséges, használjon 4 Millió nál nagyobb blob- vagy blokkméreteket a normál tárfiókokhoz, és nagyobb, mint 256 KiB a prémium szintű tárfiókokhoz. A nagyobb blob- vagy blokkméretek automatikusan aktiválják a nagy átviteli sebességű blokkblobokat. A nagy átviteli sebességű blokkblobok olyan nagy teljesítményű betöltést biztosítanak, amelyet a partíciók elnevezése nem befolyásol.
-- Vizsgálja meg a fiókok, tárolók, blobok, táblák és várólisták elnevezési konvencióját. Fontolja meg a fiók-, tároló- vagy blobnevek előtolását egy háromjegyű kivonatoló val, amely az igényeinek leginkább megfelelő kivonatoló függvényt használ.
-- Ha időbélyegekkel vagy numerikus azonosítókkal rendezi az adatokat, győződjön meg arról, hogy nem csak hozzáfűző (vagy csak előleg) forgalmi mintát használ. Ezek a minták nem alkalmasak tartományalapú particionálási rendszerhez. Ezek a minták vezethet az összes forgalom megy egy partícióra, és korlátozza a rendszer hatékony terheléselosztás.
+- Ha lehetséges, használjon 4 MiB-nél nagyobb blob-vagy blokkolási méretet a standard szintű Storage-fiókok esetében, és a Premium Storage-fiókoknál nagyobb, mint 256 KiB. A nagyobb blob-vagy blokk-méretek automatikusan aktiválja a nagy átviteli sebességű blokk blobokat. A nagy átviteli sebességű blokk Blobok nagy teljesítményű betöltést biztosítanak, amelyet a partíciók elnevezése nem érint.
+- Vizsgálja meg a fiókok, tárolók, blobok, táblák és várólisták elnevezési konvencióját. Vegye fontolóra a fiók, a tároló vagy a blob nevének előjavítását egy háromjegyű kivonattal, amely az igényeinek leginkább megfelelő kivonatoló függvényt használja.
+- Ha időbélyegek vagy numerikus azonosítók használatával rendezi az adatokat, ügyeljen arra, hogy ne használjon csak Hozzáfűzés (vagy csak előtag) típusú forgalmi mintát. Ezek a minták nem alkalmasak tartomány alapú particionálási rendszerekhez. Ezek a minták az egyetlen partícióra irányuló összes forgalomhoz vezethetnek, és a rendszernek a hatékony terheléselosztással való korlátozását eredményezhetik.
 
-    Például ha a napi műveletek, amelyek egy blob ot használ egy időbélyeg, például *yyyymmdd,* majd az adott napi művelet összes forgalmat kell irányítani egy blob, amely egyetlen partíciókiszolgáló által kiszolgált. Fontolja meg, hogy a blobonkénti korlátok és partíciónkénti korlátok megfelelnek-e az igényeinek, és fontolja meg a művelet több blobra bontását, ha szükséges. Hasonlóképpen, ha az idősorozat-adatokat a táblákban tárolja, az összes forgalom a kulcsnévtér utolsó részébe irányítható. Ha numerikus azonosítókat használ, az azonosító előtagja egy háromjegyű kivonattal. Ha időbélyegeket használ, előtagolja az időbélyeget a másodpercértékkel, például *ssyyyymmdd.* Ha az alkalmazás rendszeresen végez lista- és lekérdezési műveleteket, válasszon egy kivonatoló függvényt, amely korlátozza a lekérdezések számát. Bizonyos esetekben egy véletlenszerű előtag elegendő lehet.
+    Ha például olyan napi műveletekkel rendelkezik, amelyek a blobot egy időbélyeggel (például *ééééhhnn*) használják, akkor az adott napi művelet minden forgalmát egyetlen blobra irányítja a rendszer, amelyet egyetlen partíciós kiszolgáló szolgáltat. Gondolja át, hogy a blob-korlátok és a partíciós korlátok megfelelnek-e az igényeinek, és szükség esetén vegye fontolóra a művelet több blobba való megtörését. Hasonlóképpen, ha a táblázatokban tárolja az idősoros adatokat, a rendszer az összes forgalmat a kulcs névterének utolsó részére irányítja. Ha numerikus azonosítókat használ, az azonosítót egy háromjegyű kivonattal kell előtagja. Ha timestamps-t használ, az időbélyeget a másodperc értékkel, például a *ssyyyymmdd*előtaggal kell elválasztani. Ha az alkalmazás rendszeresen végrehajtja a listázási és lekérdezési műveleteket, akkor válasszon egy kivonatoló függvényt, amely korlátozza a lekérdezések számát. Bizonyos esetekben elegendő lehet egy véletlenszerű előtag.
   
-- Az Azure Storage-ban használt particionálási sémáról az [Azure Storage: A highly available Cloud Storage Service with Strong Consistency című](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)témakörben talál további információt.
+- Az Azure Storage-ban használt particionálási sémával kapcsolatos további információkért lásd [: Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)használatával.
 
 ## <a name="networking"></a>Hálózat
 
-Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok néhány olyan korlátozást ismertetik, amelyekkel a felhasználók találkozhatnak.  
+Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok ismertetik néhány korlátozást a felhasználók számára.  
 
-### <a name="client-network-capability"></a>Ügyfélhálózati képesség
+### <a name="client-network-capability"></a>Ügyfél hálózati funkciója
 
-A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazások teljesítményében, akövetkező szakaszokban leírtak szerint.
+A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Teljesítmény
+#### <a name="throughput"></a>Átviteli sebesség
 
-A sávszélesség esetében a probléma gyakran az ügyfél képességei. A nagyobb Azure-példányok hálózati adapterek nagyobb kapacitással rendelkeznek, ezért érdemes egy nagyobb példányt vagy több virtuális gépet használni, ha egyetlen gépről magasabb hálózati korlátokra van szüksége. Ha az Azure Storage-t egy helyszíni alkalmazásból éri el, akkor ugyanaz a szabály vonatkozik: ismerje meg az ügyféleszköz hálózati képességeit és az Azure Storage-helyhez való hálózati kapcsolatot, és szükség szerint javítsa őket, vagy tervezze meg az alkalmazást, hogy a képességeiknek megfelelően működjön.
+A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa azokat igény szerint, vagy tervezze meg az alkalmazását a képességein belül.
 
 #### <a name="link-quality"></a>Kapcsolat minősége
 
-Mint minden hálózati használat, ne feledje, hogy a hálózati feltételeket eredményező hibák és csomagvesztés lassítja a hatékony átviteli.  A WireShark vagy a NetMon használata segíthet a probléma diagnosztizálásában.  
+Ahogy bármilyen hálózati használat esetében, ne feledje, hogy a hibákat eredményező hálózati feltételek és a csomagok elvesztése lassú működést eredményez.  A WireShark vagy a NetMon használata segíthet a probléma diagnosztizálásában.  
 
 ### <a name="location"></a>Hely
 
-Bármely elosztott környezetben az ügyfél kiszolgáló közelében történő elhelyezése a legjobb teljesítményt nyújtja. A legalacsonyabb késleltetéssel rendelkező Azure Storage eléréséhez az ügyfél számára a legjobb hely ugyanabban az Azure-régióban található. Ha például egy Azure-webalkalmazás, amely az Azure Storage-t használja, keresse meg őket egy régióban, például az USA nyugati vagy délkeleti régióban. Az erőforrások közös helytcsoportosítása csökkenti a késést és a költségeket, mivel a sávszélesség-használat egyetlen régión belül ingyenes.  
+Minden elosztott környezetben, a-ügyfél közel a kiszolgálóhoz, a legjobb teljesítményt nyújtja. Ha az Azure Storage-t a legalacsonyabb késéssel szeretné elérni, az ügyfél számára a legjobb hely ugyanazon az Azure-régión belül van. Ha például van egy Azure-webalkalmazása, amely az Azure Storage szolgáltatást használja, akkor mindkettőt egyetlen régióban, például az USA nyugati régiójában vagy Délkelet-Ázsiában is megtalálhatja. Az erőforrások közös elhelyezése csökkenti a késést és a költségeket, mivel az egyetlen régión belüli sávszélesség-használat ingyenes.  
 
-Ha az ügyfélalkalmazások hozzáférnek az Azure Storage-hoz, de nem találhatók az Azure-ban, például mobileszköz-alkalmazásokban vagy helyszíni vállalati szolgáltatásokban, akkor a tárfiók az ügyfelek közelében lévő régióban való helytkeresése csökkentheti a késést. Ha az ügyfelek széles körben elosztott (például néhány Észak-Amerikában, és néhány Európában), akkor fontolja meg egy tárfiók régiónként. Ez a megközelítés könnyebben megvalósítható, ha az alkalmazás által tárolt adatok az egyes felhasználók számára, és nem igényel adatok replikálása a tárfiókok között.
+Ha az ügyfélalkalmazások hozzáférnek az Azure Storage-hoz, de nem az Azure-ban, például a mobileszköz-alkalmazásokban vagy a helyszíni vállalati szolgáltatásokban vannak tárolva, akkor a Storage-fiók az ügyfelek közelében lévő régiókban is csökkentheti a késést. Ha az ügyfeleket széles körben terjesztik (például néhány Észak-Amerika és néhány európai), akkor érdemes lehet régiónként egy Storage-fiókot használni. Ez a megközelítés könnyebben megvalósítható, ha az alkalmazás által tárolt adattárolók egyediek az egyes felhasználók számára, és nem igénylik az adatreplikálást a Storage-fiókok között.
 
-A blobtartalom széles körű terjesztéséhez használjon tartalomkézbesítési hálózatot, például az Azure CDN-t. Az Azure CDN-ről további információt az [Azure CDN](../../cdn/cdn-overview.md)című témakörben talál.  
+A Blobok tartalmának széles körű elosztásához használjon egy tartalmat a hálózaton, például Azure CDN. További információ a Azure CDNről: [Azure CDN](../../cdn/cdn-overview.md).  
 
 ## <a name="sas-and-cors"></a>SAS és CORS
 
-Tegyük fel, hogy engedélyeznie kell a kódot, például a JavaScript, amely fut a felhasználó webböngészőben vagy egy mobiltelefon-alkalmazásban az Adatok eléréséhez az Azure Storage-ban. Az egyik megközelítés az, hogy hozzon létre egy szolgáltatásalkalmazást, amely proxyként működik. A felhasználó eszköze hitelesíti magát a szolgáltatással, amely viszont engedélyezi az Azure Storage-erőforrásokhoz való hozzáférést. Ily módon elkerülheti a tárfiók kulcsainak felfedését a nem biztonságos eszközökön. Ez a megközelítés azonban jelentős terhelést ró a szolgáltatásalkalmazásra, mivel a felhasználó eszköze és az Azure Storage között átvitt összes adatnak át kell haladnia a szolgáltatásalkalmazáson.
+Tegyük fel, hogy engedélyezni kell a kódot, például a JavaScriptet, amely egy felhasználó webböngészőjében vagy egy mobiltelefon-alkalmazásban fut az Azure Storage-ban tárolt adateléréshez. Az egyik módszer egy olyan szolgáltatásalkalmazás létrehozása, amely proxyként működik. A felhasználó eszköze hitelesíti magát a szolgáltatással, amely viszont engedélyezi az Azure Storage-erőforrásokhoz való hozzáférést. Így elkerülhető, hogy a Storage-fiók kulcsa nem biztonságos eszközökön legyen kitéve. Ez a megközelítés azonban jelentős terhelést jelent a szolgáltatásalkalmazás számára, mivel a felhasználó eszközén és az Azure Storage-ban továbbított összes adatmennyiségnek továbbítania kell a szolgáltatásalkalmazás alkalmazásán.
 
-A megosztott hozzáférésű aláírások (SAS) használatával elkerülheti, hogy egy szolgáltatásalkalmazást az Azure Storage proxyjaként használjon. A SAS használatával engedélyezheti, hogy a felhasználó eszköze kéréseket küldjön közvetlenül az Azure Storage-ba egy korlátozott hozzáférési jogkivonat használatával. Ha például egy felhasználó szeretne feltölteni egy fényképet az alkalmazásba, majd a szolgáltatásalkalmazás létrehozhat egy SAS-t, és elküldheti azt a felhasználó eszközére. A SAS-jogkivonat engedélyt adhat egy Azure Storage-erőforrásnak egy megadott ideig, amely után a SAS-jogkivonat lejár. A SAS-ről további információt az [Azure Storage-erőforrásokhoz megosztott hozzáférésű aláírások (SAS) használatával való korlátozott hozzáférés megadása](../common/storage-sas-overview.md)című témakörben talál.  
+A megosztott hozzáférési aláírások (SAS) használatával elkerülhető, hogy a szolgáltatásalkalmazás proxyként legyen használatban az Azure Storage-ban. A SAS használatával engedélyezheti a felhasználó eszközének, hogy közvetlenül az Azure Storage-ba irányuló kéréseket hozzon igénybe korlátozott hozzáférési jogkivonat használatával. Ha például egy felhasználó egy fényképet szeretne feltölteni az alkalmazásba, a szolgáltatásalkalmazás létrehozhat egy SAS-t, és elküldheti azt a felhasználó eszközére. Az SAS-jogkivonat engedélyezheti az Azure Storage-erőforrásoknak adott időtartamra való írást, amely után az SAS-jogkivonat lejár. Az SAS-vel kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférési aláírások (SAS) használatával](../common/storage-sas-overview.md).  
 
-A webböngészők általában nem engedélyezik a JavaScript et az egyik tartomány egyik webhelye által üzemeltetett lapon, hogy bizonyos műveleteket, például írási műveleteket hajtson végre egy másik tartományban. Az azonos eredetű házirendként ismert házirend megakadályozza, hogy egy rosszindulatú parancsfájl az egyik oldalon hozzáférjen egy másik weblapon lévő adatokhoz. Az azonos eredetű szabályzat azonban korlátozás lehet a felhőben történő megoldás létrehozásakor. A kereszteredetű erőforrás-megosztás (CORS) egy olyan böngészőszolgáltatás, amely lehetővé teszi, hogy a céltartomány kommunikáljon a böngészővel arról, hogy megbízik a forrástartományból származó kérelmekben.
+A webböngésző általában nem engedélyezi a JavaScript használatát egy olyan oldalon, amelyet egy adott tartomány webhelye futtat bizonyos műveletek, például írási műveletek végrehajtásához egy másik tartományba. Ez a házirend megakadályozza, hogy az egyik lapon lévő rosszindulatú parancsfájlok hozzáférjenek egy másik weblapon lévő adatokhoz. Ugyanakkor a felhőben a megoldás kiépítésekor is megadható korlátozás. A több eredetű erőforrás-megosztás (CORS) egy böngésző-szolgáltatás, amely lehetővé teszi a célként megadott tartomány számára, hogy kommunikáljon a forrás tartományból származó kérelmeket megbízható böngészővel.
 
-Tegyük fel például, hogy egy Azure-ban futó webalkalmazás egy azure Storage-fiókhoz kér egy erőforrást. A webalkalmazás a forrástartomány, a tárfiók pedig a céltartomány. A CORS konfigurálhatja az Azure Storage-szolgáltatások bármely kommunikálni a webböngésző, amely a kérelmeket a forrástartomány megbízható az Azure Storage. A CORS szolgáltatásról további információt az [Azure Storage több forrásból származó erőforrás-megosztási (CORS) támogatása című témakörben talál.](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)  
+Tegyük fel például, hogy egy Azure-ban futó webalkalmazás egy Azure Storage-fiókhoz kér egy erőforrást. A webalkalmazás a forrástartomány, a Storage-fiók pedig a célként megadott tartomány. A CORS bármely Azure Storage-szolgáltatáshoz beállíthatja úgy, hogy az Azure Storage által megbízhatónak tekintse azt a böngészőt, amelyet a forrástartománytól érkező kérések biztosítanak. A CORS kapcsolatos további információkért lásd: [Az Azure Storage-hoz készült több eredetű erőforrás-megosztás (CORS) támogatása](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services).  
   
-A SAS és a CORS egyaránt segít elkerülni a webes alkalmazás szükségtelen terhelését.  
+Az SAS és a CORS is segíthet elkerülni a webalkalmazás szükségtelen terhelését.  
 
 ## <a name="caching"></a>Gyorsítótárazás
 
-A gyorsítótárazás fontos szerepet játszik a teljesítményben. A következő szakaszok a gyorsítótárazás sal kapcsolatos gyakorlati tanácsait ismertetik.
+A gyorsítótárazás fontos szerepet játszik a teljesítményben. Az alábbi fejezetek a gyorsítótárazási ajánlott eljárásokat tárgyalják.
 
-### <a name="reading-data"></a>Adatok olvasása
+### <a name="reading-data"></a>Az adatolvasás
 
-Általánosságban elmondható, hogy az adatok egyszer olvasása előnyösebb, mint kétszer olvasni. Fontolja meg egy olyan webalkalmazás példáját, amely lekért egy 50 MiB-blobot az Azure Storage-ból, hogy tartalomként szolgáljon a felhasználó számára. Ideális esetben az alkalmazás helyileg gyorsítótárazza a blobot a lemezre, majd lekéri a gyorsítótárazott verziót a későbbi felhasználói kérelmekhez.
+Általánosságban elmondható, hogy az adatolvasás egyszer érdemes kétszer beolvasni. Vegyünk például egy olyan webalkalmazás példáját, amely egy 50 MiB-blobot adott vissza az Azure Storage-ból, hogy tartalmat szolgáltasson a felhasználó számára. Ideális esetben az alkalmazás helyi gyorsítótárba helyezi a blobot a lemezre, majd lekéri a gyorsítótárazott verziót a későbbi felhasználói kérésekhez.
 
-Az egyik módja annak, hogy elkerüljék a blob beolvasása, ha nem módosították, mivel a gyorsítótárba, hogy jogosult a GET művelet egy feltételes fejléc módosítási idő. Ha az utolsó módosított idő a blob gyorsítótárazása után van, majd a blob beolvasása és újra gyorsítótárazása lesz. Ellenkező esetben a gyorsítótárazott blob lekérésre az optimális teljesítmény érdekében.
+A blob lekérésének egyik módja, ha még nem módosították, mert a gyorsítótárba került, hogy a lekérési művelet a módosítási idő feltételes fejlécével legyen érvényes. Ha az utolsó módosítás időpontja a BLOB gyorsítótárba helyezésének időpontja után történik, akkor a rendszer beolvassa és újra gyorsítótárazza a blobot. Ellenkező esetben a rendszer lekéri a gyorsítótárazott blobot az optimális teljesítmény érdekében.
 
-Dönthet úgy is, hogy úgy tervezze meg az alkalmazást, hogy feltételezze, hogy a blob a beolvasásután rövid ideig változatlan marad. Ebben az esetben az alkalmazásnak nem kell ellenőriznie, hogy a blob módosult-e az adott időszakban.
+Dönthet úgy is, hogy úgy tervezi az alkalmazást, hogy azt feltételezi, hogy a blob a beolvasás után rövid ideig változatlan marad. Ebben az esetben az alkalmazásnak nem kell ellenőriznie, hogy a blob módosult-e az adott intervallumban.
 
-A konfigurációs adatok, a keresett adatok és az alkalmazás által gyakran használt egyéb adatok jó jelöltek a gyorsítótárazásra.  
+A konfigurációs, a keresési és az alkalmazás által gyakran használt egyéb adatértékek a gyorsítótárazásra alkalmasak.  
 
-A feltételes fejlécek használatáról a [Feltételes fejlécek megadása a Blob szolgáltatásműveleteihez](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)című témakörben talál további információt.  
+További információ a feltételes fejlécek használatáról: [feltételes fejlécek megadása blob Service műveletekhez](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).  
 
-### <a name="uploading-data-in-batches"></a>Adatok feltöltése kötegekben
+### <a name="uploading-data-in-batches"></a>Adatfeltöltés kötegekben
 
-Bizonyos esetekben az adatokat helyileg összesítheti, majd rendszeresen feltöltheti kötegben ahelyett, hogy minden egyes adatdarabot azonnal feltöltene. Tegyük fel például, hogy egy webalkalmazás naplófájlt vezet a tevékenységekről. Az alkalmazás vagy feltölti a részleteket minden tevékenység, mint ez történik, hogy egy tábla (amely számos tárolási műveleteket igényel), vagy mentheti tevékenység részleteit egy helyi naplófájlt, és majd rendszeresen feltölti az összes tevékenység részleteit, mint egy blob. Ha minden naplóbejegyzés mérete 1 KB, több ezer bejegyzést tölthet fel egyetlen tranzakcióba. Egyetlen tranzakció támogatja egy legfeljebb 64 MiB méretű blob feltöltését. Az alkalmazás fejlesztőjének meg kell terveznie az ügyféleszköz vagy a feltöltési hibák lehetőségét. Ha a tevékenységadatokat kell letölteni egy ideig, nem pedig egyetlen tevékenység, majd blob storage használata ajánlott tábla tároló n.
+Bizonyos esetekben az adatokat helyileg összesítheti, majd időnként feltöltheti egy kötegbe ahelyett, hogy az egyes adatmennyiségeket azonnal fel kellene töltenie. Tegyük fel például, hogy egy webalkalmazás megtartja a tevékenységek naplófájlját. Az alkalmazás feltöltheti az összes tevékenység részleteit egy olyan táblára (amely sok tárolási műveletet igényel), vagy mentheti a tevékenység részleteit egy helyi naplófájlba, majd rendszeres időközönként feltölti a tevékenység részleteit egy blobba. Ha minden naplóbejegyzés 1 KB méretű, egyetlen tranzakcióban több ezer bejegyzést is feltölthet. Egyetlen tranzakció támogatja a Blobok feltöltését akár 64 MiB méretekben. Az alkalmazás fejlesztőinek meg kell tervezniük az ügyféleszközök vagy a feltöltési hibák lehetőségét. Ha a tevékenységre vonatkozó adatmennyiséget nem egyetlen tevékenység esetében kell letöltenie, és a blob Storage használata ajánlott a Table Storage szolgáltatásban.
 
 ## <a name="net-configuration"></a>.NET-konfiguráció
 
-A .  Ha más nyelveket használ, ellenőrizze, hogy hasonló fogalmak vonatkoznak-e a választott nyelvre.  
+A .NET-keretrendszer használata esetén ez a szakasz több gyors konfigurációs beállítást tartalmaz, amelyek segítségével jelentős teljesítmény-növelést végezhet.  Ha más nyelveket használ, ellenőrizze, hogy a választott nyelven a hasonló fogalmak érvényesek-e.  
 
 ### <a name="use-net-core"></a>A .NET Core használata
 
-A teljesítménybeli fejlesztések előnyeinek kihasználásához fejlesztheti Azure Storage-alkalmazásait a .NET Core 2.1-es vagy újabb verzióival. A .NET Core 3.x használata lehetőség szerint ajánlott.
+Fejlessze Azure Storage-alkalmazásait a .NET Core 2,1-es vagy újabb verziójával, hogy kihasználhassa a teljesítménnyel kapcsolatos fejlesztéseket. Ha lehetséges, a .NET Core 3. x használata javasolt.
 
-A .NET Core teljesítményjavulásáról az alábbi blogbejegyzésekben talál további információt:
+A .NET Core teljesítményével kapcsolatos újdonságokról a következő blogbejegyzésekben olvashat bővebben:
 
-- [Teljesítménybeli fejlesztések a .NET Core 3.0-ban](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
-- [Teljesítménybeli fejlesztések a .NET Core 2.1-ben](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
+- [Teljesítménnyel kapcsolatos újdonságok a .NET Core 3,0-ben](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
+- [Teljesítménnyel kapcsolatos újdonságok a .NET Core 2,1-ben](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
 
-### <a name="increase-default-connection-limit"></a>Az alapértelmezett kapcsolatkorlát növelése
+### <a name="increase-default-connection-limit"></a>Az alapértelmezett kapcsolatok korlátjának megemelése
 
-A .NET rendszerben a következő kód 100-ra növeli az alapértelmezett kapcsolatkorlátot (amely általában kettő ügyfélkörnyezetben vagy tíz kiszolgálói környezetben). Általában az értéket az alkalmazás által használt szálak számának megfelelően kell beállítani. A kapcsolatok megnyitása előtt állítsa be a kapcsolatkorlátot.
+A .NET-ben a következő kód növeli az alapértelmezett kapcsolódási korlátot (amely általában kettő egy ügyfél-környezetben, vagy tíz a kiszolgálói környezetben) a 100-re. Az értéket általában az alkalmazás által használt szálak számának körülbelül értékre kell állítani. A kapcsolatok megnyitása előtt állítsa be a kapcsolati korlátot.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-Más programozási nyelvek esetében a csatlakozási korlát beállításának meghatározásához a dokumentációban tájékozódhat.  
+Más programozási nyelvek esetében tekintse meg a dokumentációt, amely meghatározza, hogyan kell beállítani a kapcsolódási korlátot.  
 
-További információt a Web [Services: Concurrent Connections](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)című blogbejegyzésben talál.  
+További információ [: a webszolgáltatások közzétételét ismertető webszolgáltatások: egyidejű kapcsolatok](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
 
-### <a name="increase-minimum-number-of-threads"></a>A szálak minimális számának növelése
+### <a name="increase-minimum-number-of-threads"></a>A szálak minimális számának megemelése
 
-Ha szinkron hívásokat és aszinkron feladatokat használ, érdemes lehet növelni a szálak számát a szálkészletben:
+Ha a szinkron hívásokat aszinkron feladatokkal együtt használja, érdemes megnövelni a szálak számát a szál készletében:
 
 ```csharp
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-További információt a [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) metódusban talál.  
+További információ: [szálkészlet munkaszála belépett. SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) metódus.  
 
-## <a name="unbounded-parallelism"></a>Határtalan párhuzamosság
+## <a name="unbounded-parallelism"></a>Nem kötött párhuzamosság
 
-Míg a párhuzamosság nagyszerű lehet a teljesítményhez, legyen óvatos a nem kötött párhuzamosság használatával kapcsolatban, ami azt jelenti, hogy nincs korlátozva a szálak vagy a párhuzamos kérelmek száma. Ügyeljen arra, hogy korlátozza az adatok feltöltésére vagy letöltésére, az ugyanazon tárfiók több partíciójának elérésére, vagy ugyanazon partíció több elemének elérésére vonatkozó párhuzamos kérelmeket. Ha a párhuzamosság nincs korlátozva, az alkalmazás meghaladhatja az ügyféleszköz képességeit vagy a tárfiók méretezhetőségi céljait, ami hosszabb késéseket és szabályozást eredményez.  
+Míg a párhuzamosság kiválóan használható a teljesítmény szempontjából, ügyeljen a nem korlátozott párhuzamosságok használatára, ami azt jelenti, hogy a szálak vagy a párhuzamos kérelmek száma nem kényszerített. Ügyeljen arra, hogy korlátozza a párhuzamos kérelmek feltöltését vagy letöltését, hogy ugyanazon a Storage-fiókban több partíciót lehessen elérni, vagy ugyanabban a partícióban több elemhez is hozzáférhessen. Ha a párhuzamosság feloldva, az alkalmazás túllépheti az ügyféleszközök képességeit vagy a tárolási fiók skálázhatósági céljait, ami hosszabb késést és szabályozást eredményez.  
 
-## <a name="client-libraries-and-tools"></a>Ügyfélkönyvtárak és -eszközök
+## <a name="client-libraries-and-tools"></a>Ügyféloldali kódtárak és eszközök
 
-A legjobb teljesítmény érdekében mindig a Microsoft által biztosított legújabb ügyfélkönyvtárakat és eszközöket használja. Az Azure Storage ügyfélkódtárak számos nyelven érhetők el. Az Azure Storage támogatja a PowerShellt és az Azure CLI-t is. A Microsoft aktívan fejleszti ezeket az ügyfélkönyvtárakat és -eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja őket a legújabb szolgáltatásverziókkal, és biztosítja, hogy a bevált teljesítménygyakorlatok nagy részét belsőleg kezeljék. További információt az [Azure Storage referenciadokumentációjában](/azure/storage/#reference)talál.
+A legjobb teljesítmény érdekében mindig használja a Microsoft által biztosított legújabb ügyféloldali kódtárakat és eszközöket. Az Azure Storage ügyféloldali kódtárai különböző nyelveken érhetők el. Az Azure Storage a PowerShellt és az Azure CLI-t is támogatja. A Microsoft aktívan fejleszti ezeket az ügyfélszoftvereket és eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja a legújabb verziókat, és gondoskodik arról, hogy a bevált teljesítményekkel kapcsolatos gyakorlatokat belsőleg kezeljék. További információt az [Azure Storage dokumentációjában](/azure/storage/#reference)talál.
 
-## <a name="handle-service-errors"></a>Szolgáltatási hibák kezelése
+## <a name="handle-service-errors"></a>Szolgáltatás hibáinak kezelése
 
-Az Azure Storage hibaüzenetet ad vissza, ha a szolgáltatás nem tud feldolgozni egy kérelmet. Az Azure Storage által egy adott forgatókönyvben visszaadható hibák megértése hasznos a teljesítmény optimalizálásához.
+Az Azure Storage hibát jelez, ha a szolgáltatás nem tud feldolgozni egy kérést. Az Azure Storage által az adott forgatókönyvben visszaadott hibák megismerése hasznos lehet a teljesítmény optimalizálása érdekében.
 
-### <a name="timeout-and-server-busy-errors"></a>Idő- és kiszolgálófoglalt sági hibák
+### <a name="timeout-and-server-busy-errors"></a>Időtúllépés és a kiszolgáló foglalt hibái
 
-Az Azure Storage szabályozhatja az alkalmazást, ha megközelíti a méretezhetőségi korlátokat. Bizonyos esetekben előfordulhat, hogy az Azure Storage nem tudja kezelni a kérelmet valamilyen átmeneti állapot miatt. Mindkét esetben a szolgáltatás 503 (kiszolgáló foglalt) vagy 500 (Időmegadás) hibát adhat vissza. Ezek a hibák akkor is előfordulhatnak, ha a szolgáltatás újraegyensúlyozza az adatpartíciókat, hogy nagyobb átviteli terhelést tegyen lehetővé. Az ügyfélalkalmazásnak általában újra meg kell próbálnia azt a műveletet, amely a hibák egyikét okozza. Ha azonban az Azure Storage szabályozása az alkalmazás, mert meghaladja a méretezhetőségi célokat, vagy akkor is, ha a szolgáltatás nem tudta kiszolgálni a kérelmet valamilyen más okból, agresszív újrapróbálkozások ronthatja a problémát. Exponenciális biztonsági másolatot aretry házirend használata ajánlott, és az ügyfélkódtárak alapértelmezés szerint ezt a viselkedést. Előfordulhat például, hogy az alkalmazás 2 másodperc, majd 4 másodperc, majd 10 másodperc, majd 30 másodperc után újrapróbálkozik, majd teljesen feladja. Ily módon az alkalmazás jelentősen csökkenti a terhelést a szolgáltatás, ahelyett, hogy súlyosbítja a viselkedést, amely oda vezethet, hogy a szabályozás.  
+Az Azure Storage szabályozhatja az alkalmazást, ha az megközelíti a méretezhetőségi korlátokat. Bizonyos esetekben előfordulhat, hogy az Azure Storage bizonyos átmeneti feltételek miatt nem tudja kezelni a kérést. A szolgáltatás mindkét esetben egy 503 (foglalt kiszolgáló) vagy 500 (időtúllépési) hibát adhat vissza. Ezek a hibák akkor is előfordulhatnak, ha a szolgáltatás az adatpartíciók újrakiegyensúlyozását teszi lehetővé a magasabb átviteli sebesség érdekében. Az ügyfélalkalmazás általában próbálja megismételni a műveletet, amely a hibák egyikét okozza. Ha azonban az Azure Storage szabályozza az alkalmazást, mert az meghaladja a skálázhatósági célokat, vagy ha a szolgáltatás nem tudta kiszolgálni a kérelmet valamilyen más okból, az agresszív újrapróbálkozások rosszabbul tehetik a problémát. Az exponenciális visszahívási újrapróbálkozási házirend használata ajánlott, és az ügyféloldali kódtárak ezt a viselkedést használják. Előfordulhat például, hogy az alkalmazás 2 másodperc, 4 másodperc, 10 másodperc, majd 30 másodperc múlva újra próbálkozik. Így az alkalmazása jelentősen csökkenti a szolgáltatás terhelését, és nem súlyosbítja a szabályozáshoz vezethető viselkedést.  
 
-A kapcsolódási hibák azonnal újrapróbálkozhatók, mert nem szabályozás eredménye, és várhatóan átmenetiek lesznek.  
+A kapcsolódási hibákat azonnal újra lehet próbálni, mert nem a szabályozás eredménye, és a várt átmeneti állapotú.  
 
-### <a name="non-retryable-errors"></a>Nem újrapróbálható hibák
+### <a name="non-retryable-errors"></a>Nem újrapróbálkozást lehetővé tevő hibák
 
-Az ügyféltárak úgy kezelik az újrapróbálkozásokat, hogy mely hibák kísérhetők meg újra, és melyek nem. Azonban ha közvetlenül hívja meg az Azure Storage REST API-t, vannak olyan hibák, amelyeket nem szabad újra megpróbálnia. Például egy 400 (Hibás kérelem) hiba azt jelzi, hogy az ügyfélalkalmazás olyan kérelmet küldött, amelyet nem lehetett feldolgozni, mert nem volt a várt formában. A kérelem újraküldése minden alkalommal ugyanazt a választ eredményezi, így nincs értelme újrakipróbálni. Ha közvetlenül hívja meg az Azure Storage REST API-t, vegye figyelembe a lehetséges hibákat, és hogy meg kell-e próbálni őket.
+Az ügyféloldali kódtárak kezelik az újrapróbálkozásokat, és megismerik, hogy mely hibákat lehet újrapróbálni, és melyek nem. Ha azonban közvetlenül hívja meg az Azure Storage-REST API, néhány hiba miatt nem kell újrapróbálkoznia. Például egy 400-as (hibás kérelem) hiba azt jelzi, hogy az ügyfélalkalmazás olyan kérelmet küld, amely nem dolgozható fel, mert nem volt a várt formában. A kérelem újraküldése minden alkalommal ugyanazt a választ eredményezi, így a rendszer nem próbálkozik újra. Ha közvetlenül hívja meg az Azure Storage-REST API, vegye figyelembe a lehetséges hibákat, valamint azt, hogy újra kell-e próbálni.
 
-Az Azure Storage hibakódjairól az [Állapot- és hibakódok című témakörben](/rest/api/storageservices/status-and-error-codes2)talál további információt.
+Az Azure Storage-hibakódokkal kapcsolatos további információkért lásd: [állapot-és hibakódok](/rest/api/storageservices/status-and-error-codes2).
 
 ## <a name="copying-and-moving-blobs"></a>Blobok másolása és áthelyezése
 
-Az Azure Storage számos megoldást kínál a blobok másolásához és áthelyezéséhez egy tárfiókon belül, a tárfiókok között, valamint a helyszíni rendszerek és a felhő között. Ez a szakasz néhány ilyen lehetőséget ismertet a teljesítményre gyakorolt hatásuk szempontjából. A Blob storage-ba vagy onnan történő adatok hatékony átviteléről az [Azure-megoldás kiválasztása adatátvitelhez](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)című témakörben talál további információt.
+Az Azure Storage számos megoldást kínál a Blobok másolására és áthelyezésére egy Storage-fiókban, a Storage-fiókok, valamint a helyszíni rendszerek és a felhő között. Ez a szakasz a teljesítményre gyakorolt hatásuk alapján ismerteti ezeket a lehetőségeket. További információ a blob Storage-ból vagy-ból való adatátvitelről: [Azure-megoldás kiválasztása adatátvitelhez](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="blob-copy-apis"></a>Blob másolási API-k
+### <a name="blob-copy-apis"></a>BLOB-másolási API-k
 
-Blobok tárfiókok közötti másolásához használja a [Blokk url-címből eladása](/rest/api/storageservices/put-block-from-url) műveletet. Ez a művelet szinkron módon másolja az adatokat bármely URL-forrásból egy blokkblobba. A `Put Block from URL` művelet használata jelentősen csökkentheti a szükséges sávszélességet, amikor adatokat telepít át a tárfiókok között. Mivel a másolási művelet a szolgáltatási oldalon történik, nem kell letöltenie és újra feltöltenie az adatokat.
+Ha a blobokat a Storage-fiókok között szeretné másolni, használja a [put blokkot az URL-](/rest/api/storageservices/put-block-from-url) címről művelettel. A művelet szinkron módon másolja az adatforrásokat bármely URL-címről egy blokk-blobba. A művelet `Put Block from URL` használata jelentősen csökkentheti a szükséges sávszélességet, ha a Storage-fiókok között telepíti át az adatforgalmat. Mivel a másolási művelet a szolgáltatás oldalán zajlik, nem kell letöltenie és újra feltöltenie az adatfájlokat.
 
-Ha ugyanabban a tárfiókban szeretné másolni az adatokat, használja a [Blob másolása](/rest/api/storageservices/Copy-Blob) műveletet. Az adatok másolása ugyanazon a tárfiókon belül általában gyorsan befejeződött.  
+Ha ugyanazon a Storage-fiókon belül szeretne Adatmásolást készíteni, használja a [blob másolása](/rest/api/storageservices/Copy-Blob) műveletet. Az adatok ugyanabban a Storage-fiókban való másolása általában gyorsan elvégezhető.  
 
 ### <a name="use-azcopy"></a>Az AzCopy használata
 
-Az AzCopy parancssori segédprogram egy egyszerű és hatékony lehetőség a blobok tömeges átviteléhez a tárfiókokba, a tárolófiókokba és a teljes tárfiókok között. AzCopy van optimalizálva ebben a forgatókönyvben, és magas átviteli sebességet érhet el. Az1Copy 10-es verzió a művelet segítségével másolja a `Put Block From URL` blob adatokat a tárfiókok között. További információ: [Adatok másolása vagy áthelyezése az Azure Storage-ba az AzCopy v10 használatával című témakörben.](/azure/storage/common/storage-use-azcopy-v10)  
+A AzCopy parancssori segédprogram egyszerű és hatékony megoldás a Blobok tömeges átvitelére a, a-ból és a különböző Storage-fiókokba. A AzCopy erre a forgatókönyvre van optimalizálva, és magas adatátviteli sebességet érhet el. A AzCopy 10-es verziója a `Put Block From URL` művelettel másolja át a blob-fájlokat a Storage-fiókok között. További információ: [adatok másolása vagy áthelyezése az Azure Storage-ba az AzCopy v10 használatával](/azure/storage/common/storage-use-azcopy-v10).  
 
-### <a name="use-azure-data-box"></a>Az Azure Data Box használata
+### <a name="use-azure-data-box"></a>Azure Data Box használata
 
-Nagy mennyiségű adat blob storage-ba importálásához fontolja meg az Azure Data Box család offline átviteléhez való használatát. A Microsoft által biztosított Data Box-eszközök jó választást jelentenek nagy mennyiségű adat Azure-ba való áthelyezéséhez, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. További információt az [Azure DataBox dokumentációjában](/azure/databox/)talál.
+Nagyméretű adatmennyiségek blob Storage-ba történő importálásához érdemes lehet a Azure Data Box családot használni az offline átvitelekhez. A Microsoft által biztosított Data Box eszközök használata jó választás a nagy mennyiségű adatforgalom Azure-ba történő áthelyezéséhez, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. További információt az [Azure DataBox dokumentációjában](/azure/databox/)talál.
 
 ## <a name="content-distribution"></a>Tartalom terjesztése
 
-Előfordulhat, hogy egy alkalmazásnak ugyanazt a tartalmat kell kiszolgálnia sok felhasználónak (például egy webhely kezdőlapján használt termékbemutató videónak), amely ugyanabban a vagy több régióban található. Ebben a forgatókönyvben használjon tartalomkézbesítési hálózat (CDN) például az Azure CDN blobtartalom földrajzi terjesztéséhez. Az Azure Storage-fiókkal ellentétben, amely egyetlen régióban létezik, és amely nem tud alacsony késleltetéssel más régiókba kis késleltetéssel tartalommal szolgálni, az Azure CDN a világ több adatközpontjában használ kiszolgálókat. Emellett a CDN általában sokkal magasabb kimenő forgalom korlátokat, mint egy tárfiók.  
+Előfordulhat, hogy egy alkalmazásnak ugyanazokat a tartalmakat kell kiszolgálnia sok felhasználó számára (például egy, a webhely kezdőlapján használt termék-bemutató videó), amely a vagy a több régióban található. Ebben a forgatókönyvben egy Content Delivery Network (CDN), például Azure CDN használatával terjesztheti a Blobok tartalmát földrajzilag. Az egyetlen régióban található Azure Storage-fiókkal ellentétben, amely nem tud a tartalmat alacsony késéssel kézbesíteni más régiók számára, Azure CDN több adatközpontban lévő kiszolgálókat használ a világ különböző pontjain. Emellett a CDN általában sokkal magasabb kimenő forgalomra vonatkozó korlátozásokat is támogat, mint egyetlen Storage-fiók.  
 
-Az Azure CDN-ről további információt az [Azure CDN](../../cdn/cdn-overview.md)című témakörben talál.
+További információ a Azure CDNről: [Azure CDN](../../cdn/cdn-overview.md).
 
 ## <a name="use-metadata"></a>Metaadatok használata
 
-A Blob szolgáltatás támogatja a HEAD-kérelmeket, amelyek blobtulajdonságokat vagy metaadatokat tartalmazhatnak. Ha például az alkalmazásnak szüksége van az Exif (exchangable image format) adatokra egy fényképről, akkor lekérheti a fényképet, és kibonthatja azt. A sávszélesség megtakarítása és a teljesítmény javítása érdekében az alkalmazás tárolhatja az Exif-adatokat a blob metaadataiban, amikor az alkalmazás feltölti a fényképet. Ezután az Exif-adatokat csak HEAD-kérelemmel kérheti be a metaadatokban. Csak metaadatok beolvasása, és nem a blob teljes tartalma jelentős sávszélességet takarít meg, és csökkenti az Exif-adatok kinyeréséhez szükséges feldolgozási időt. Ne feledje, hogy 8 KiB metaadat tárolható blobonként.  
+A Blob service támogatja a fő kérelmeket, amelyek tartalmazhatnak blob-tulajdonságokat vagy-metaadatokat is. Ha például az alkalmazásnak egy fényképből származó EXIF (képformátumos) adatokra van szüksége, lekérheti a fényképet, és kinyerheti azt. A sávszélesség mentéséhez és a teljesítmény javításához az alkalmazás képes tárolni az EXIF-adatokat a blob metaadataiban, amikor az alkalmazás feltölti a fényképet. Ezután csak egy HEAD kérelem használatával kérheti le az EXIF-adatokat a metaadatokban. A csak metaadatok beolvasása és a blob teljes tartalma nem ment jelentős sávszélességet, és csökkenti az EXIF-adatok kinyeréséhez szükséges feldolgozási időt. Ne feledje, hogy blobban 8 KiB-nál több metaadat is tárolható.  
 
 ## <a name="upload-blobs-quickly"></a>Blobok gyors feltöltése
 
-Blobok gyors feltöltéséhez először határozza meg, hogy egy blobot vagy több blobot fog-e feltölteni. Az alábbi útmutatással határozza meg a forgatókönyvtől függően a megfelelő módszert.  
+A Blobok gyors feltöltéséhez először el kell döntenie, hogy egy blobot vagy sok mást tölt fel. Az alábbi útmutatás segítségével határozza meg a forgatókönyvtől függően a helyes módszert.  
 
-### <a name="upload-one-large-blob-quickly"></a>Töltsön fel egy nagy blobot gyorsan
+### <a name="upload-one-large-blob-quickly"></a>Egy nagyméretű blob gyors feltöltése
 
-Egyetlen nagy blob gyors feltöltéséhez az ügyfélalkalmazás párhuzamosan töltheti fel a blokkokat vagy az oldalakat, figyelembe véve az egyes blobok méretezhetőségi céljait és a tárfiók egészét. Az Azure Storage-ügyfélkódtárak támogatják a párhuzamos feltöltést. A következő tulajdonságok kal például megadhatja a .NET vagy a Java rendszerben engedélyezett egyidejű kérelmek számát. Más támogatott nyelvek ügyféltárai hasonló beállításokat biztosítanak.
+Egy nagyméretű blob gyors feltöltéséhez az ügyfélalkalmazások párhuzamosan tölthetik fel a blokkokat vagy lapokat, szem előtt tartva az egyes Blobok méretezhetőségi célkitűzéseit és a Storage-fiók egészét. Az Azure Storage ügyféloldali kódtárai támogatják a párhuzamos feltöltést. A következő tulajdonságokkal például megadhatja a .NET-ben vagy a Java-ban engedélyezett egyidejű kérelmek számát. A más támogatott nyelvekhez készült ügyféloldali kódtárak hasonló lehetőségeket nyújtanak.
 
-- A .NET beállításhoz állítsa be a [BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) tulajdonságot.
-- Java/Android esetén hívja meg a [BlobRequestOptions.setConcurrentRequestCount(végső integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount) metódust.
+- A .NET esetében állítsa be a [BlobRequestOptions. ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) tulajdonságot.
+- A Java/Android esetében hívja meg a [BlobRequestOptions. setConcurrentRequestCount (Final Integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount) metódust.
 
-### <a name="upload-many-blobs-quickly"></a>Töltsön fel sok blobot gyorsan
+### <a name="upload-many-blobs-quickly"></a>Sok blob feltöltése gyorsan
 
-Sok blob gyors feltöltéséhez töltsön fel blobokat párhuzamosan. A párhuzamos feltöltés gyorsabb, mint az egyes blobok feltöltése párhuzamos blokkfeltöltésekkel, mivel a feltöltés a tárolási szolgáltatás több partíciójára terjed. AzAzCopy alapértelmezés szerint párhuzamosan hajtja végre a feltöltéseket, és ebben a forgatókönyvben ajánlott. További információ: [A Copy – első lépések.](../common/storage-use-azcopy-v10.md)  
+Sok blob gyors feltöltéséhez töltse fel a blobokat párhuzamosan. Az egyidejű feltöltés párhuzamosan gyorsabb, mint a párhuzamos blokkok feltöltésével töltött egyazon Blobok feltöltése, mert a feltöltés a Storage szolgáltatás több partícióján keresztül terjed. A AzCopy alapértelmezés szerint párhuzamosan hajtja végre a feltöltéseket, és ezt a forgatókönyvet javasolja. További információ: Ismerkedés [a AzCopy](../common/storage-use-azcopy-v10.md)szolgáltatással.  
 
-## <a name="choose-the-correct-type-of-blob"></a>Válassza ki a blob megfelelő típusát
+## <a name="choose-the-correct-type-of-blob"></a>A megfelelő típusú blob kiválasztása
 
-Az Azure Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. Egy adott használati forgatókönyv, a választott blob típus befolyásolja a teljesítményt és a méretezhetőségét a megoldás.
+Az Azure Storage támogatja a Blobok blokkolását, a Blobok hozzáfűzését és az oldal blobokat. Egy adott használati forgatókönyv esetén a kiválasztott blob-típus hatással lesz a megoldás teljesítményére és méretezhetőségére.
 
-A blokkblobok akkor megfelelőek, ha nagy mennyiségű adatot szeretne hatékonyan feltölteni. Például egy ügyfélalkalmazás, amely feltölti a fényképeket vagy a videót a Blob storage-ba, blokkblobokat célozmeg.
+A blokk-Blobok akkor megfelelőek, ha nagy mennyiségű adatok hatékony feltöltését szeretné. Például egy olyan ügyfélalkalmazás, amely fényképeket vagy videót tölt fel a blob Storage-ba, a blokk blobokat célozza meg.
 
-Hozzáfűző blobok hasonlóak a blokk blobok, hogy azok blokkokból állnak. Ha módosít egy hozzáfűző blobot, a blokkok csak a blob végére kerülnek. Hozzáfűző blobok olyan esetekben, mint a naplózás, amikor egy alkalmazás nak kell adatokat hozzáadni egy meglévő blobhoz.
+A hozzáfűzési Blobok hasonlók a blokkokból álló Blobok blokkolásához. Hozzáfűző blob módosításakor a rendszer csak a blob végéhez adja hozzá a blokkokat. A hozzáfűzési Blobok olyan forgatókönyvek esetén hasznosak, mint a naplózás, amikor egy alkalmazásnak hozzá kell adnia egy meglévő blobot.
 
-A lapblobok akkor megfelelőek, ha az alkalmazásnak véletlenszerű írásokat kell végrehajtania az adatokon. Például az Azure virtuális gép lemezei lapblobokként tárolódnak. További információt a [Blokkblobok, hozzáfűző kajások és lapblobok ismertetése című témakörben talál.](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)  
+Az oldal Blobok akkor megfelelőek, ha az alkalmazásnak véletlenszerű írást kell végeznie az adatokon. Az Azure-beli virtuális gépek lemezeit például blobként tárolja a rendszer. További információkért lásd: a [Blobok, a blobok és a Blobok hozzáfűzésének ismertetése](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).  
 
 ## <a name="next-steps"></a>További lépések
 
-- [Méretezhetőségi és teljesítménycélok a Blob storage-hoz](scalability-targets.md)
-- [Méretezhetőségi és teljesítménycélok a szabványos tárfiókokhoz](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Állapot- és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)
+- [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
+- [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

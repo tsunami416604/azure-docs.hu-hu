@@ -1,42 +1,42 @@
 ---
-title: GPU-k használata az Azure Kubernetes szolgáltatásban (AKS)
-description: Megtudhatja, hogyan használhatja a GPU-kat nagy teljesítményű számítási vagy nagy teljesítményű számítási feladatokhoz az Azure Kubernetes szolgáltatásban (AKS)
+title: GPU használata az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg, hogyan használhatók a GPU-k nagy teljesítményű számítási vagy grafikus igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80383990"
 ---
-# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>GPU-k használata nagy számítási feladatokhoz az Azure Kubernetes szolgáltatás (AKS) szolgáltatásban
+# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
-Grafikus feldolgozási egységek (GPU-k) gyakran használják a számítási nagy munkaterhelések, például a grafikus és vizualizációs számítási feladatok. Az AKS támogatja a GPU-kompatibilis csomópontkészletek létrehozását a kubernetes-i nagy számítási nagy számítási feladatok futtatásához. A rendelkezésre álló GPU-kompatibilis virtuális gépekről további információt az [Azure-ban optimalizált VIRTUÁLISGÉPEK-méretek című témakörben talál.][gpu-skus] AKS-csomópontok esetén azt javasoljuk, hogy a *Standard_NC6*minimális mérete.
+A grafikus feldolgozási egységek (GPU-k) gyakran nagy számítási igényű munkaterhelésekhez, például grafikus és vizualizációs munkaterhelésekhez használatosak. Az AK támogatja a GPU-kompatibilis csomópont-készletek létrehozását a nagy számítási igényű munkaterhelések Kubernetes való futtatásához. További információ a GPU-t használó elérhető virtuális gépekről: GPU-ra optimalizált virtuálisgép- [méretek az Azure-ban][gpu-skus]. AK-csomópontok esetén a *Standard_NC6*minimális mérete javasolt.
 
 > [!NOTE]
-> A GPU-kompatibilis virtuális gépek olyan speciális hardvereket tartalmaznak, amelyek magasabb díjszabási és régióelérhetőségi szintűek. További információt az [árképzési][azure-pricing] eszköz és a [régió elérhetősége című témakörben talál.][azure-availability]
+> A GPU-kompatibilis virtuális gépek olyan speciális hardvert tartalmaznak, amely magasabb díjszabási és régióbeli rendelkezésre állást biztosít. További információt a [díjszabási][azure-pricing] eszköz és a [régió rendelkezésre állása][azure-availability]című témakörben talál.
 
-Jelenleg a GPU-kompatibilis csomópontkészletek használata csak Linux-csomópontkészletekhez érhető el.
+Jelenleg a GPU-t használó csomópont-készletek használata csak Linux-csomópontos készletek esetén érhető el.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürt gpusokat támogató csomópontokkal. Az AKS-fürtnek kubernetes 1.10-es vagy újabb futtatást kell futtatnia. Ha olyan AKS-fürtre van szüksége, amely megfelel ezeknek a követelményeknek, tekintse meg a cikk első részét [az AKS-fürt létrehozásához.](#create-an-aks-cluster)
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel a GPU-t támogató csomópontokkal. Az AK-fürtnek a 1,10-es vagy újabb Kubernetes kell futnia. Ha szüksége van egy AK-fürtre, amely megfelel ezeknek a követelményeknek, tekintse meg a cikk első szakaszát [egy AK-fürt létrehozásához](#create-an-aks-cluster).
 
-Az Azure CLI 2.0.64-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
+Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Ha olyan AKS-fürtre van szüksége, amely megfelel a minimális követelményeknek (GPU-kompatibilis csomópont és Kubernetes 1.10-es vagy újabb verziója), hajtsa végre az alábbi lépéseket. Ha már rendelkezik olyan AKS-fürttel, amely megfelel ezeknek a követelményeknek, [ugorjon a következő szakaszra.](#confirm-that-gpus-are-schedulable)
+Ha olyan AK-fürtre van szüksége, amely megfelel a minimális követelményeknek (GPU-kompatibilis csomópont-és Kubernetes-verzió 1,10 vagy újabb), hajtsa végre az alábbi lépéseket. Ha már rendelkezik olyan AK-fürttel, amely megfelel ezeknek a követelményeknek, [ugorjon a következő szakaszra](#confirm-that-gpus-are-schedulable).
 
-Először hozzon létre egy erőforráscsoportot a fürt számára az [az csoport létrehozása][az-group-create] paranccsal. A következő példa létrehoz egy sajka *erőforráscsoport* nevet az *eastus* régióban:
+Először hozzon létre egy erőforráscsoportot a fürthöz az az [Group Create][az-group-create] paranccsal. A következő példa létrehoz egy erőforráscsoport-nevet *myResourceGroup* a *eastus* régióban:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy AKS-fürtöt az [aks create][az-aks-create] paranccsal. A következő példa egyetlen csomópontméretű `Standard_NC6`fürtöt hoz létre:
+Most hozzon létre egy AK-fürtöt az az [AK Create][az-aks-create] paranccsal. A következő példa egy olyan fürtöt hoz létre, amely egyetlen `Standard_NC6`méretű csomóponttal rendelkezik:
 
 ```azurecli-interactive
 az aks create \
@@ -46,7 +46,7 @@ az aks create \
     --node-count 1
 ```
 
-Az AKS-fürt hitelesítő adatainak beszereznie az [aks get-credentials][az-aks-get-credentials] paranccsal:
+Kérje le az AK-fürt hitelesítő adatait az az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancs használatával:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -54,15 +54,15 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="install-nvidia-drivers"></a>NVIDIA-illesztőprogramok telepítése
 
-Mielőtt a csomópontokban lévő GPU-k használhatók lennének, telepítenie kell egy DaemonSet-et az NVIDIA eszköz beépülő modulhoz. Ez a DaemonSet minden csomóponton futtat egy podot, hogy biztosítsa a GPU-k szükséges illesztőprogramjait.
+Mielőtt a csomópontokon a GPU-k használhatók legyenek, telepítenie kell egy Daemonset elemet az NVIDIA-eszköz beépülő modulhoz. Ez a Daemonset elemet minden csomóponton futtat egy Pod-t, hogy megadja a GPU-k számára szükséges illesztőprogramokat.
 
-Először hozzon létre egy névteret a [kubectl create névtér][kubectl-create] paranccsal, például *gpu-resources:*
+Először hozzon létre egy névteret a [kubectl Create Namespace][kubectl-create] paranccsal, például a *GPU-erőforrások*használatával:
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-Hozzon létre egy fájlt nevű *nvidia-device-plugin-ds.yaml* és illessze be a következő YAML jegyzékfájl. Ez a jegyzékfájl a [Kubernetes projekt NVIDIA eszközbővítményének][nvidia-github]részeként érhető el.
+Hozzon létre egy *NVIDIA-Device-plugin-DS. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a jegyzékfájl a [Kubernetes projekthez készült NVIDIA-eszköz beépülő modul][nvidia-github]részeként van megadva.
 
 ```yaml
 apiVersion: apps/v1
@@ -110,7 +110,7 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-Most használja a [kubectl alkalmazni][kubectl-apply] parancsot, hogy megteremtse a DaemonSet és erősítse meg az NVIDIA eszköz plugin sikeresen létre, amint az a következő példa kimenet:
+Most a [kubectl Apply][kubectl-apply] paranccsal hozza létre a daemonset elemet, és győződjön meg róla, hogy az NVIDIA-eszköz beépülő modul sikeresen létrejött, ahogy az a következő példában látható:
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
@@ -118,9 +118,9 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 daemonset "nvidia-device-plugin" created
 ```
 
-## <a name="confirm-that-gpus-are-schedulable"></a>Annak ellenőrzése, hogy a GPU-k schedulable
+## <a name="confirm-that-gpus-are-schedulable"></a>Ellenőrizze, hogy a GPU-k ütemezhető-e
 
-Az AKS-fürt létrehozása, győződjön meg arról, hogy gpu-k schedulable a Kubernetes. Először sorolja fel a csomópontokat a fürtben a [kubectl get csomópontok][kubectl-get] paranccsal:
+A létrehozott AK-fürttel ellenőrizze, hogy a GPU-k ütemezhető-e a Kubernetes-ben. Először sorolja fel a fürt csomópontjait a [kubectl Get Nodes][kubectl-get] parancs használatával:
 
 ```console
 $ kubectl get nodes
@@ -129,9 +129,9 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Most használja a [kubectl írja le a csomópont parancsot][kubectl-describe] annak megerősítéséhez, hogy a GPU-k schedulable. A *Kapacitás* szakaszban a GPU-nak a . `nvidia.com/gpu:  1`
+Most a [kubectl leíró csomópont][kubectl-describe] paranccsal ellenőrizze, hogy a GPU-k ütemezhető-e. A *kapacitás* szakaszban a GPU-nak a következőképpen `nvidia.com/gpu:  1`kell szerepelnie.
 
-A következő sűrített példa azt mutatja, hogy a GPU elérhető a csomópont nevű *aks-nodepool1-18821093-0*:
+A következő tömörített példa azt mutatja, hogy a GPU elérhető a (z) *nodepool1-18821093-0*nevű csomóponton:
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -181,14 +181,14 @@ Non-terminated Pods:         (9 in total)
 [...]
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>GPU-kompatibilis számítási feladatok futtatása
+## <a name="run-a-gpu-enabled-workload"></a>GPU-t használó munkaterhelés futtatása
 
-A GPU működés közbeni megtekintéséhez ütemezzen egy GPU-kompatibilis számítási feladatot a megfelelő erőforrás-kérelemmel. Ebben a példában futtassunk egy [Tensorflow-feladatot](https://www.tensorflow.org/) az [MNIST adatkészleten.](http://yann.lecun.com/exdb/mnist/)
+A GPU működés közbeni megtekintéséhez ütemezzen egy GPU-t használó munkaterhelést a megfelelő erőforrás-kéréssel. Ebben a példában egy [Tensorflow](https://www.tensorflow.org/) -feladatot futtatunk a [MNIST adatkészleten](http://yann.lecun.com/exdb/mnist/).
 
-Hozzon létre egy *mintát-tf-mnist-demo.yaml* nevű fájlt, és illessze be a következő YAML-jegyzékfájlt. A következő feladatjegyzék a `nvidia.com/gpu: 1`következő erőforráskorlátot tartalmazza:
+Hozzon létre egy *Samples-TF-mnist-demo. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. A következő feladattípus egy erőforrás-korlátot `nvidia.com/gpu: 1`tartalmaz:
 
 > [!NOTE]
-> Ha verzióeltérési hibaüzenetet kap az illesztőprogramok behívásakor, például a CUDA illesztőprogram verziója nem elegendő a CUDA futásidejű verziójához, tekintse át az NVIDIA illesztőprogram mátrixkompatibilitási táblázatát -[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Ha az eszközillesztők meghívásakor hibaüzenetet kap, például a CUDA-illesztőprogram verziószáma nem elegendő a CUDA futtatókörnyezet verziójához, tekintse át az NVIDIA illesztőprogram-mátrix kompatibilitási diagramját –[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -214,15 +214,15 @@ spec:
       restartPolicy: OnFailure
 ```
 
-A feladat futtatásához használja a [kubectl apply parancsot.][kubectl-apply] Ez a parancs elemzi a jegyzékfájl, és létrehozza a definiált Kubernetes objektumok:
+Futtassa a feladatot a [kubectl Apply][kubectl-apply] parancs használatával. Ez a parancs elemzi a jegyzékfájlt, és létrehozza a definiált Kubernetes objektumokat:
 
 ```console
 kubectl apply -f samples-tf-mnist-demo.yaml
 ```
 
-## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>A GPU-kompatibilis munkaterhelés állapotának és kimenetének megtekintése
+## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>A GPU-t használó munkaterhelés állapotának és kimenetének megtekintése
 
-Figyelje a feladat előrehaladását a [kubectl][kubectl-get] `--watch` get jobs paranccsal az argumentummal. Eltarthat néhány percig, amíg először lekéri a lemezképet, és feldolgozza az adatkészletet. Ha a *KIEGÉSZÍTÉSEK* *oszlopban 1/1*látható, a feladat sikeresen befejeződött. Kilépés `kubetctl --watch` a parancsból a *Ctrl-C billentyűkombinációval:*
+Figyelje meg a feladat előrehaladását a [kubectl Get Jobs][kubectl-get] paranccsal az `--watch` argumentummal. Eltarthat néhány percig, amíg először lekéri a rendszerképet, és feldolgozza az adatkészletet. Ha a *Befejezés* oszlopban a *1/1*látható, a feladatot sikeresen befejezte. Kilépés a `kubetctl --watch` parancsból a *CTRL-C*paranccsal:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -233,7 +233,7 @@ samples-tf-mnist-demo   0/1           3m29s      3m29s
 samples-tf-mnist-demo   1/1   3m10s   3m36s
 ```
 
-A GPU-kompatibilis számítási feladatok kimenetének megtekintéséhez először a [kubectl get pods][kubectl-get] paranccsal kapja meg a podok nevét:
+A GPU-t használó munkaterhelés kimenetének megjelenítéséhez először szerezze be a pod nevét a [kubectl Get hüvely][kubectl-get] paranccsal:
 
 ```console
 $ kubectl get pods --selector app=samples-tf-mnist-demo
@@ -242,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Most használja a [kubectl naplók parancsot][kubectl-logs] a pod naplók megtekintéséhez. A következő példa pod naplók megerősítik, hogy `Tesla K80`a megfelelő GPU-eszköz fedezte fel, . Adja meg a saját pod nevét:
+Most a [kubectl logs][kubectl-logs] paranccsal tekintheti meg a pod-naplókat. Az alábbi példában szereplő Pod-naplók megerősítik, hogy a megfelelő GPU `Tesla K80`-eszköz fel lett derítve. Adja meg a saját Pod nevét:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6
@@ -321,7 +321,7 @@ Adding run metadata for 499
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A cikkben létrehozott társított Kubernetes-objektumok eltávolításához használja a [kubectl delete feladatparancsot][kubectl delete] az alábbiak szerint:
+A cikkben létrehozott társított Kubernetes-objektumok eltávolításához használja a [kubectl delete Job][kubectl delete] parancsot a következő módon:
 
 ```console
 kubectl delete jobs samples-tf-mnist-demo
@@ -329,9 +329,9 @@ kubectl delete jobs samples-tf-mnist-demo
 
 ## <a name="next-steps"></a>További lépések
 
-Az Apache Spark-feladatok futtatásáról az [Apache Spark-feladatok futtatása az AKS-en.][aks-spark]
+Apache Spark feladatok futtatásához tekintse [meg Apache Spark feladatok futtatása az AK][aks-spark]-ban című témakört.
 
-A Kubernetes gépi tanulási (ML) számítási feladatai futtatásáról a [Kubeflow Labs című témakörben][kubeflow-labs]talál további információt.
+A Machine learning (ML) számítási feladatainak Kubernetes való futtatásával kapcsolatos további információkért lásd: [Kubeflow Labs][kubeflow-labs].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

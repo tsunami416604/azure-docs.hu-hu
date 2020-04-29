@@ -1,25 +1,25 @@
 ---
-title: Az Azure Backup megfelelőségi ajánlatai
-description: Az Azure Backup megfelelőségi ajánlatainak összefoglalása
+title: Azure Backup megfelelőségi ajánlatok
+description: A Azure Backup megfelelőségi ajánlatának összefoglalása
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80423118"
 ---
-# <a name="azure-backup-compliance-offerings"></a>Az Azure Backup megfelelőségi ajánlatai
+# <a name="azure-backup-compliance-offerings"></a>Azure Backup megfelelőségi ajánlatok
 
-Annak érdekében, hogy a szervezetek megfeleljenek az egyének adatainak gyűjtésére és felhasználására vonatkozó nemzeti, regionális és iparág-specifikus követelményeknek, a Microsoft Azure & az Azure Backup a tanúsítványok és tanúsítványok átfogó készletét kínálja.
+Annak érdekében, hogy a szervezetek megfeleljenek az egyéni adatgyűjtésre és-felhasználásra vonatkozó nemzeti, regionális és iparági követelményeknek, Microsoft Azure & Azure Backup a minősítések és igazolások átfogó készletét kínálja.
 
-Az azure backup megfelelőségi ajánlatai alatt biztosíthatja, hogy a szolgáltatás az Azure Backup szolgáltatás használatakor szabályozott legyen.
+A megfelelőségi ajánlatokat alább találja Azure Backup, hogy a szolgáltatás a Azure Backup szolgáltatás használatakor is szabályozható legyen.
 
 ## <a name="global"></a>Globális
 
-* [CSA-STAR-tanúsítvány](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-attestation)
-* [CSA-Star-tanúsítás](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-certification)
+* [CSA-STAR-igazolás](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-attestation)
+* [CSA-Star-minősítés](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-certification)
 * [CSA-STAR-önértékelés](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-self-assessment)
 * [ISO 20000-1:2011](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-20000-1-2011)
 * [ISO 22301](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-22301)
@@ -27,7 +27,7 @@ Az azure backup megfelelőségi ajánlatai alatt biztosíthatja, hogy a szolgál
 * [ISO 27017](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27017)
 * [ISO 27018](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27018)
 * [ISO 9001](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-9001)
-* [SOC 1,2,3](https://docs.microsoft.com/microsoft-365/compliance/offering-soc)
+* [SOC 1, 2, 3](https://docs.microsoft.com/microsoft-365/compliance/offering-soc)
 
 ## <a name="us-government"></a>Egyesült Államok – Államigazgatás
 
@@ -37,8 +37,8 @@ Az azure backup megfelelőségi ajánlatai alatt biztosíthatja, hogy a szolgál
 
 ## <a name="industry"></a>Iparág
 
-* [Hipaa](https://docs.microsoft.com/microsoft-365/compliance/offering-hipaa-hitech)
-* [HITRUST (HITRUST)](https://docs.microsoft.com/microsoft-365/compliance/offering-hitrust)
+* [HIPAA](https://docs.microsoft.com/microsoft-365/compliance/offering-hipaa-hitech)
+* [HITRUST](https://docs.microsoft.com/microsoft-365/compliance/offering-hitrust)
 * [PCI DSS](https://docs.microsoft.com/microsoft-365/compliance/offering-pci-dss)
 
 ## <a name="regional"></a>Regionális
@@ -48,4 +48,4 @@ Az azure backup megfelelőségi ajánlatai alatt biztosíthatja, hogy a szolgál
 
 ## <a name="next-steps"></a>További lépések
 
-A [microsoft trustcenterben](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)megtalálja a megfelelőségre vonatkozó legújabb részleteket és részleteket.
+Tekintse meg a [Microsoft TrustCenter](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)legújabb lefedettségét és a megfelelőség részleteit.

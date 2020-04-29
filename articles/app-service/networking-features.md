@@ -1,6 +1,6 @@
 ---
 title: Hálózatkezelési funkciók
-description: Ismerje meg az Azure App Service hálózati szolgáltatásait, valamint azt, hogy a hálózati igényeknek megfelelően mely funkciókra van szüksége a biztonság hoz vagy a funkciókhoz.
+description: Ismerkedjen meg a Azure App Service hálózati szolgáltatásaival, és hogy mely funkciók szükségesek a hálózat biztonságához vagy működéséhez.
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
@@ -8,219 +8,219 @@ ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474904"
 ---
-# <a name="app-service-networking-features"></a>Az App Service hálózati szolgáltatásai
+# <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
-Az Azure App Service-ben az alkalmazások többféleképpen is telepíthetők. Alapértelmezés szerint az App Service által üzemeltetett alkalmazások közvetlenül elérhetők az interneten, és csak az internetes üzemeltetett végpontokat érhetik el. Számos ügyfélalkalmazásnak azonban szabályoznia kell a bejövő és kimenő hálózati forgalmat. Az App Service számos olyan funkcióval rendelkezik, amelyek kielégítik ezeket az igényeket. A kihívás az, hogy tudjuk, milyen funkciót kell használni egy adott probléma megoldására. Ez a dokumentum célja, hogy segítsen az ügyfeleknek meghatározni, hogy milyen funkciót kell használni néhány példa használati eset alapján.
+A Azure App Service alkalmazásai több módon is üzembe helyezhetők. Alapértelmezés szerint App Service üzemeltetett alkalmazások közvetlenül az internetről elérhetők, és csak az internetről futtatott végpontok elérésére képesek. Számos ügyfél-alkalmazásnak azonban a bejövő és a kimenő hálózati forgalmat is szabályoznia kell. A App Service több funkciója is rendelkezésre áll, hogy megfeleljenek az igényeknek. A kihívás az adott probléma megoldására szolgáló szolgáltatás ismerete. Ez a dokumentum arra szolgál, hogy segítsen az ügyfeleknek meghatározni, hogy milyen szolgáltatást kell használni bizonyos példa használati esetek alapján.
 
-Az Azure App Service két elsődleges központi telepítési típusa van. Ott van a több-bérlős közszolgáltatás, amely az Ingyenes, megosztott, alapszintű, standard, prémium és premiumv2 árképzési termékkészletben üzemeltetI az App Service-csomagokat. Ezután ott van az egybérlős App Service Environment(ASE), amely üzemelteti az elkülönített SKU App Service-csomagok közvetlenül az Azure virtuális hálózat (VNet). A használt funkciók a ttól függően változnak, ha a több-bérlős szolgáltatás vagy egy ASE. 
+A Azure App Service két elsődleges központi telepítési típust tartalmaz. Létezik a több-bérlős nyilvános szolgáltatás, amely az ingyenes, közös, alapszintű, standard, prémium és Premiumv2 díjszabási SKU-ban App Service csomagokat üzemeltet. Ebben az esetben az egyetlen bérlői App Service Environment (bemutató), amely az elkülönített SKU-App Service csomagokat közvetlenül az Azure Virtual Networkban (VNet) üzemelteti. A használt funkciók attól függően változnak, hogy a több-bérlős szolgáltatásban vagy egy szolgáltatóban van. 
 
-## <a name="multi-tenant-app-service-networking-features"></a>Több-bérlős App Service hálózati funkciók 
+## <a name="multi-tenant-app-service-networking-features"></a>Több-bérlős App Service hálózatkezelési funkciók 
 
-Az Azure App Service egy elosztott rendszer. A bejövő HTTP/HTTPS-kérelmeket kezelő szerepköröket előtérnek nevezzük. Az ügyfél-munkaterhelést fogadó szerepköröket dolgozóknak nevezzük. Az App Service-telepítés ben az összes szerepkör létezik egy több-bérlős hálózatban. Mivel ugyanabban az App Service-méretezési egységben sok különböző ügyfél van, az App Service-hálózat nem csatlakoztatható közvetlenül a hálózathoz. A hálózatok csatlakoztatása helyett olyan funkciókra van szükségünk, amelyek az alkalmazáskommunikáció különböző aspektusait kezelik. Az alkalmazásba irányuló kéréseket kezelő funkciók nem használhatók az alkalmazásból érkező hívások hívásai során felmerülő problémák megoldására. Hasonlóképpen, az alkalmazásból érkező hívások problémáit megoldó funkciók nem használhatók az alkalmazás problémáinak megoldására.  
+A Azure App Service egy elosztott rendszer. A bejövő HTTP/HTTPS-kérelmeket kezelő szerepköröket előtér-végpontoknak nevezzük. Az ügyfél munkaterhelését üzemeltető szerepköröket feldolgozónak nevezzük. Egy App Service üzemelő példány összes szerepköre több-bérlős hálózaton található. Mivel a App Service skálázási egységben sok különböző ügyfél található, a App Service hálózat nem csatlakoztatható közvetlenül a hálózathoz. A hálózatok csatlakoztatása helyett az alkalmazások kommunikációjának különböző szempontjait kezelő funkciókra van szükségünk. Az alkalmazásra irányuló kéréseket kezelő funkciók nem használhatók problémák megoldására az alkalmazásból indított hívások során. Hasonlóképpen, az alkalmazással kapcsolatos hívások problémáit megoldó funkciók nem használhatók az alkalmazással kapcsolatos problémák megoldásához.  
 
-| Bejövő funkciók | Kimenő szolgáltatások |
+| Bejövő funkciók | Kimenő funkciók |
 |---------------------|-------------------|
-| Alkalmazáshoz rendelt cím | Hibrid kapcsolatok |
-| Hozzáférési korlátozások | Átjáró szükséges virtuális hálózati integráció |
+| Alkalmazáshoz rendelt címe | Hibrid kapcsolatok |
+| Hozzáférési korlátozások | Átjáró szükséges VNet-integráció |
 | Szolgáltatásvégpontok | VNet-integráció |
 
-Eltérő rendelkezés hiányában az összes funkció együtt használható. Keverheti a funkciókat, hogy megoldja a különböző problémákat.
+Ha másként nincs megadva, az összes funkció együtt használható. A különböző problémák megoldásához kombinálhatja a szolgáltatásokat.
 
-## <a name="use-case-and-features"></a>Használati eset és funkciók használata
+## <a name="use-case-and-features"></a>Használati eset és funkciók
 
-Bármely adott használati esetben, nem lehet néhány módja, hogy megoldja a problémát.  A megfelelő funkció használata néha miatt okok túl csak a használati eset is. A következő bejövő használati esetek azt javasolják, hogyan használhatja az App Service hálózati funkciókat az alkalmazáshoz irányuló forgalom szabályozásával kapcsolatos problémák megoldásához. 
+A probléma megoldásához bizonyos használati eseteket is használhat.  A megfelelő szolgáltatást esetenként a használati eseten kívüli okok miatt is érdemes használni. A következő bejövő használati esetek azt sugallják, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazásra irányuló forgalom szabályozásával kapcsolatos problémák megoldásához. 
  
 | Bejövő használati esetek | Szolgáltatás |
 |---------------------|-------------------|
-| Az alkalmazás IP-alapú SSL-igényeinek támogatása | alkalmazáshoz rendelt cím |
-| Nem megosztott, dedikált bejövő cím az alkalmazáshoz | alkalmazáshoz rendelt cím |
-| Az alkalmazáshoz való hozzáférés korlátozása jól definiált címekből | Hozzáférési korlátozások |
-| Az alkalmazáshoz való hozzáférés korlátozása virtuális hálózat erőforrásaiból | Szolgáltatásvégpontok </br> ILB ASE </br> Privát végpont (előzetes verzió) |
-| Az alkalmazás felfedése privát IP-címén a virtuális hálózatban | ILB ASE </br> privát IP a szolgáltatásvégpontokkal rendelkező application gateway-re érkező konszern számára </br> Szolgáltatásvégpont (előzetes verzió) |
-| Az alkalmazás védelme WAF-fel | Alkalmazásátjáró + ILB ASE </br> Application Gateway szolgáltatásvégpontokkal </br> Azure bejárati ajtó hozzáférési korlátozásokkal |
-| Terheléselosztási forgalom az alkalmazásaimhoz a különböző régiókban | Azure bejárati ajtó hozzáférési korlátozásokkal | 
-| Terheléselosztási forgalom ugyanabban a régióban | [Application Gateway szolgáltatásvégpontokkal][appgwserviceendpoints] | 
+| Az alkalmazás IP-alapú SSL-igényeinek támogatása | alkalmazáshoz rendelt címe |
+| Nem megosztott, dedikált bejövő címe az alkalmazáshoz | alkalmazáshoz rendelt címe |
+| Az alkalmazáshoz való hozzáférés korlátozása jól meghatározott címekből | Hozzáférési korlátozások |
+| Az alkalmazáshoz való hozzáférés korlátozása VNet lévő erőforrásokkal | Szolgáltatásvégpontok </br> ILB </br> Privát végpont (előzetes verzió) |
+| Saját alkalmazás közzététele privát IP-VNet | ILB </br> magánhálózati IP-cím bejövő Application Gateway szolgáltatási végpontokkal </br> Szolgáltatási végpont (előzetes verzió) |
+| Az alkalmazás védetté WAF | Application Gateway + ILB </br> Application Gateway szolgáltatásvégpontokkal </br> Azure bejárati ajtó hozzáférési korlátozásokkal |
+| A különböző régiókban lévő alkalmazások forgalmának elosztása | Azure bejárati ajtó hozzáférési korlátozásokkal | 
+| Azonos régióban lévő forgalom terheléselosztása | [Application Gateway szolgáltatásvégpontokkal][appgwserviceendpoints] | 
 
-A következő kimenő használati esetek azt javasolják, hogyan használhatja az App Service hálózati funkciókat az alkalmazás kimenő hozzáférési igényeinek megoldásához. 
+A következő kimenő használati esetek azt mutatják be, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazás kimenő hozzáférési igényeinek megoldásához. 
 
 | Kimenő használati esetek | Szolgáltatás |
 |---------------------|-------------------|
-| Erőforrások elérése egy Azure virtuális hálózatban ugyanabban a régióban | VNet-integráció </br> Ase |
-| Erőforrások elérése egy másik régióban lévő Azure virtuális hálózatban | Átjáró szükséges virtuális hálózati integráció </br> ASE és virtuális hálózat társviszony-létesítése |
-| Szolgáltatásvégekkel védett erőforrások elérése | VNet-integráció </br> Ase |
-| Az Azure-hoz nem kapcsolódó magánhálózat erőforrásainak elérése | Hibrid kapcsolatok |
-| Erőforrások elérése az ExpressRoute-áramkörök között | VNet-integráció </br> Ase | 
-| A kimenő forgalom biztonságossá tétele a webalkalmazásból | Virtuális hálózat integrációs és hálózati biztonsági csoportjai </br> Ase | 
-| Kimenő forgalom átirányítása a webalkalmazásból | Virtuális hálózat integrációs és útvonaltáblái </br> Ase | 
+| Egy adott régióban található Azure-Virtual Network erőforrásainak elérése | VNet-integráció </br> ASE |
+| Erőforrásokhoz való hozzáférés egy másik régióban lévő Azure-Virtual Network | Átjáró szükséges VNet-integráció </br> VNet-társítás |
+| A szolgáltatási végpontokkal védett erőforrások elérése | VNet-integráció </br> ASE |
+| Hozzáférés az Azure-hoz nem csatlakozó magánhálózat erőforrásaihoz | Hibrid kapcsolatok |
+| Erőforrások elérése ExpressRoute-áramkörök között | VNet-integráció </br> ASE | 
+| Biztonságos kimenő forgalom a webalkalmazásból | VNet-integrációs és hálózati biztonsági csoportok </br> ASE | 
+| A kimenő forgalom irányítása a webalkalmazásból | VNet-integráció és-útválasztási táblák </br> ASE | 
 
 
-### <a name="default-networking-behavior"></a>Alapértelmezett hálózati viselkedés
+### <a name="default-networking-behavior"></a>Alapértelmezett hálózatkezelési viselkedés
 
-Az Azure App Service méretezési egységek számos ügyfelet támogatnak az egyes telepítésekben. Az ingyenes és megosztott termékváltozat-csomagok több-bérlős dolgozók ügyfél-munkaterheléseit üzemeltetik. Az alapszintű és a fenti csomagok csak egy App Service-csomaghoz (ASP) dedikált ügyfél-munkaterheléseket üzemeltetnek. Ha standard App Service-csomaggal volt, akkor a csomagban lévő összes alkalmazás ugyanazon a dolgozón fog futni. Ha horizontális felskálázza a dolgozót, majd az adott ASP-ben lévő összes alkalmazás replikálódik egy új dolgozón az ASP minden egyes példányához. A Premiumv2-hez használt dolgozók különböznek a többi csomaghoz használt dolgozóktól. Minden App Service-telepítés rendelkezik egy IP-címet, amely az app service-telepítésben lévő alkalmazások összes bejövő forgalomhoz használatos. Vannak azonban bárhol 4-11 címeket használt kimenő hívásokat. Ezeket a címeket az adott App Service-telepítésben lévő összes alkalmazás megosztja. A kimenő címek a különböző munkavégző típusoktól függően eltérőek. Ez azt jelenti, hogy az ingyenes, megosztott, alapszintű, standard és prémium szintű aszp-k által használt címek eltérnek a Premiumv2 AP-k kimenő hívásaihoz használt címektől. Ha megnézi az alkalmazás tulajdonságait, láthatja az alkalmazás által használt bejövő és kimenő címeket. Ha egy IP-acl-lel rendelkező függőséget kell lezárnia, használja a lehetségesOutboundAddresses címet. 
+A Azure App Service skálázási egységek számos ügyfelet támogatnak az egyes telepítések során. Az ingyenes és a közös SKU-csomagok a több-bérlős feldolgozók esetében az ügyfelek munkaterheléseit üzemeltetik. Az alapszintű és a fenti csomagok olyan felhasználói munkaterheléseket üzemeltetnek, amelyek csak egy App Service csomagra (ASP) vannak kijelölve. Ha standard App Service csomaggal rendelkezett, akkor a tervben szereplő összes alkalmazás ugyanazon a munkavégzőn fog futni. Ha kibővíti a munkavégzőt, akkor az adott ASP-ben lévő összes alkalmazás replikálva lesz egy új feldolgozón az ASP minden példánya számára. A Premiumv2 használt munkavégzők eltérnek a többi csomaghoz használt munkatársaitól. Minden App Service központi telepítésnek van egy IP-címe, amelyet a rendszer az adott App Service üzemelő alkalmazásokhoz tartozó összes bejövő forgalomhoz használ. A kimenő hívások végrehajtásához azonban 4 – 11 cím van használatban. Ezeket a címeket a App Service üzemelő példány összes alkalmazása osztja meg. A kimenő címek különböző munkavégző típusok alapján különböznek. Ez azt jelenti, hogy az ingyenes, a megosztott, az alapszintű, a standard és a prémium ASP által használt címek eltérnek a Premiumv2 ASP kimenő hívásai által használt címektől. Ha megtekinti az alkalmazás tulajdonságait, láthatja az alkalmazás által használt bejövő és kimenő címeket. Ha egy IP ACL-sel kell lezárnia egy függőséget, használja a possibleOutboundAddresses. 
 
 ![Alkalmazás tulajdonságai](media/networking-features/app-properties.png)
 
-Az App Service számos végpontot használ a szolgáltatás kezeléséhez használt.  Ezek a címek egy külön dokumentumban vannak közzétéve, és az AppServiceManagement IP szolgáltatáscímkéjében is szerepelnek. Az AppServiceManagement címke csak egy App Service-környezet (ASE) használatával használható, ahol engedélyeznie kell az ilyen forgalmat. Az App Service bejövő címeit az AppService IP-szolgáltatáscímkéje követi nyomon. Nincs olyan IP-szolgáltatáscímke, amely az App Service által használt kimenő címeket tartalmazza. 
+App Service a szolgáltatás felügyeletéhez használt végpontok száma.  Ezeket a címeket külön dokumentumban tesszük közzé, és a AppServiceManagement IP-szolgáltatás címkéjén is szerepelnek. A AppServiceManagement címkét csak olyan App Service Environment (bemutató) használja, ahol engedélyezni kell az ilyen forgalmat. A App Service bejövő címeket a AppService IP-szolgáltatás címkéjén követjük nyomon. Nincs olyan IP-szolgáltatás címkéje, amely az App Service által használt kimenő címeket tartalmazza. 
 
-![Az App Service bejövő és kimenő diagramja](media/networking-features/default-behavior.png)
+![App Service bejövő és kimenő diagram](media/networking-features/default-behavior.png)
 
-### <a name="app-assigned-address"></a>Alkalmazáshoz rendelt cím 
+### <a name="app-assigned-address"></a>Alkalmazáshoz rendelt címe 
 
-Az alkalmazáshoz rendelt címfunkció az IP-alapú SSL-képesség utódja, és az SSL alkalmazással való beállításával érhető el. Ez a funkció használható IP-alapú SSL-hívásokhoz, de arra is használható, hogy az alkalmazásnak olyan címet adjon, amellyel csak ő rendelkezik. 
+Az alkalmazáshoz rendelt cím funkció az IP-alapú SSL-képesség indaja, és az SSL az alkalmazással való beállításával érhető el. Ez a funkció IP-alapú SSL-hívásokhoz használható, de az alkalmazás csak azt a címet használhatja, amely csak az adott. 
 
-![Alkalmazáshoz rendelt címdiagram](media/networking-features/app-assigned-address.png)
+![Alkalmazáshoz rendelt címek diagramja](media/networking-features/app-assigned-address.png)
 
-Ha egy alkalmazáshoz rendelt címet használ, a forgalom továbbra is ugyanazokon az előtér-szerepkörökön megy keresztül, amelyek az App Service méretezési egységbe érkező összes bejövő forgalmat kezelik. Az alkalmazáshoz rendelt címet azonban csak az alkalmazás használja. A funkció használati esetei a következők:
+Ha egy alkalmazáshoz rendelt címeket használ, a forgalom továbbra is ugyanazokat az előtér-szerepköröket használja, amelyek az összes bejövő forgalmat a App Service skálázási egységben kezelik. Az alkalmazáshoz rendelt címeket azonban csak az alkalmazás használja. A szolgáltatás használati esetei a következők:
 
 * Az alkalmazás IP-alapú SSL-igényeinek támogatása
-* Az alkalmazáshoz olyan dedikált cím beállítása, amely nincs megosztva másokkal
+* Olyan dedikált IP-címek beállítása az alkalmazáshoz, amely nem osztható meg semmi mással
 
-Megtudhatja, hogyan állíthat be egy címet az alkalmazásban az Azure [App Service-ben TLS/SSL-tanúsítvány hozzáadása][appassignedaddress]című oktatóanyaggal. 
+Megtudhatja, hogyan állíthatja be az alkalmazáshoz tartozó címeket a [TLS/SSL-tanúsítvány hozzáadása Azure app Serviceban][appassignedaddress]című oktatóanyagban. 
 
 ### <a name="access-restrictions"></a>Hozzáférési korlátozások 
 
-A hozzáférési korlátozások funkció lehetővé teszi **a bejövő** kérelmek szűrését az originációs IP-cím alapján. A szűrési művelet az előtér-szerepkörökön történik, amelyek az alkalmazások at futtató feldolgozói szerepköröktől feljebb vannak. Mivel az előtér-szerepkörök a dolgozóktól feljebb vannak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A szolgáltatás lehetővé teszi, hogy listát hozzon létre az engedélyezett és megtagadási címblokkokról, amelyek et prioritási sorrendben értékelik ki. Hasonló a Network Security Group (NSG) szolgáltatás, amely az Azure Networking.  Ezt a funkciót használhatja egy ASE vagy a több-bérlős szolgáltatás. Ha ILB ASE-vel használja, korlátozhatja a hozzáférést a privát címblokkokból.
+A hozzáférési korlátozások funkció lehetővé teszi a **bejövő** kérések szűrését a forrás IP-címe alapján. A szűrési művelet azon előtér-szerepkörökön történik, amelyek az alkalmazások futtatását végző feldolgozói szerepkörökből származnak. Mivel az előtér-szerepkörök a feldolgozóktól származnak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyezési és megtagadási címek listájának összeállítását. Ehhez hasonló az Azure Networking hálózati biztonsági csoport (NSG) szolgáltatásához.  Ezt a funkciót a több-bérlős szolgáltatásban is használhatja. A ILB-beadási szolgáltatással való használat esetén korlátozhatja a hozzáférést a privát címekről.
 
 ![Hozzáférési korlátozások](media/networking-features/access-restrictions.png)
 
-A Hozzáférési korlátozások szolgáltatás segítséget nyújt olyan esetekben, amikor korlátozni szeretné az alkalmazás eléréséhez használható IP-címeket. A funkció használati esetei közé tartoznak a következők:
+A hozzáférési korlátozások szolgáltatás olyan helyzetekben nyújt segítséget, amelyekben korlátozni szeretné az alkalmazás eléréséhez használható IP-címeket. A szolgáltatás használati esetei közé a következők tartoznak:
 
-* Az alkalmazáshoz való hozzáférés korlátozása jól definiált címekből 
-* Korlátozza a hozzáférést egy terheléselosztási szolgáltatáson keresztül, például az Azure Bejárati ajtaján keresztül. Ha le szeretné zárni az Azure Bejárati ajtajába irányuló bejövő forgalmat, hozzon létre szabályokat a 147.243.0.0/16 és a 2a01:111:2050:/44 forgalom engedélyezéséhez. 
+* Az alkalmazáshoz való hozzáférés korlátozása jól meghatározott címekből 
+* Korlátozza a hozzáférést a terheléselosztási szolgáltatáson keresztül, például az Azure bejárati ajtón keresztül. Ha azt szeretné, hogy a bejövő forgalom az Azure bejárati ajtón legyen zárolva, hozzon létre olyan szabályokat, amelyek engedélyezik a forgalmat a 147.243.0.0/16 és a 2a01:111:2050::/44. 
 
-![Hozzáférési korlátozások a bejárati ajtóval](media/networking-features/access-restrictions-afd.png)
+![Hozzáférési korlátozások a bejárati ajtónál](media/networking-features/access-restrictions-afd.png)
 
-Ha szeretné lezárni az alkalmazáshoz való hozzáférést, hogy az csak az Azure virtuális hálózat (VNet) erőforrásaiból érhető el, statikus nyilvános címre van szüksége, függetlenül a forrás a virtuális hálózatban. Ha az erőforrások nem rendelkeznek nyilvános címmel, használja inkább a Szolgáltatásvégpontok szolgáltatást. Ismerje meg, hogyan engedélyezheti ezt a funkciót a [hozzáférési korlátozások konfigurálásáról][iprestrictions]szóló oktatóanyaggal.
+Ha le szeretné zárni az alkalmazáshoz való hozzáférést úgy, hogy az csak az Azure-Virtual Network (VNet) erőforrásaiból legyen elérhető, akkor a forráshoz tartozó VNet statikus nyilvános címnek kell lennie. Ha az erőforrások nem rendelkeznek nyilvános címen, használja helyette a szolgáltatás-végpontok funkciót. Ebből a funkcióból megtudhatja, hogyan engedélyezheti ezt a funkciót a [hozzáférési korlátozások konfigurálásával][iprestrictions]kapcsolatos oktatóanyagban.
 
 ### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-A szolgáltatásvégpontok lehetővé teszik az alkalmazás **bejövő** hozzáférésének zárolását, így a forráscímnek a kiválasztott alhálózatok készletéből kell származnia. Ez a szolgáltatás az IP-hozzáférési korlátozásokkal együtt működik. A szolgáltatásvégpontok az IP-hozzáférési korlátozásokkal azonos felhasználói élményben vannak beállítva. Létrehozhat egy engedélyezési/megtagadási listát a hozzáférési szabályok, amely tartalmazza a nyilvános címeket, valamint a virtuális hálózatok alhálózatok. Ez a szolgáltatás támogatja a forgatókönyveket, mint például:
+A szolgáltatási végpontok lehetővé teszik az alkalmazáshoz való **bejövő** hozzáférés zárolását úgy, hogy a forrás címének a kiválasztott alhálózatokból kell származnia. Ez a funkció az IP-hozzáférési korlátozásokkal együtt működik. A szolgáltatási végpontok az IP-hozzáférési korlátozásokkal megegyező felhasználói élményben vannak beállítva. Létrehozhat olyan hozzáférési szabályok engedélyezési/megtagadási listáját, amelyek nyilvános címeket és alhálózatokat is tartalmaznak a virtuális hálózatok. Ez a funkció olyan forgatókönyveket támogat, mint például a következők:
 
-![szolgáltatásvégpontok](media/networking-features/service-endpoints.png)
+![szolgáltatási végpontok](media/networking-features/service-endpoints.png)
 
-* Alkalmazásátjáró beállítása az alkalmazással az alkalmazás bejövő forgalmának zárolására
-* Az alkalmazáshoz való hozzáférés korlátozása a virtuális hálózat erőforrásaihoz. Ez magában foglalhatja a virtuális gépeket, az ASEs-eket vagy akár más alkalmazásokat, amelyek virtuális hálózati integrációt használnak 
+* Application Gateway beállítása az alkalmazással a bejövő forgalom zárolására az alkalmazáshoz
+* Az alkalmazáshoz való hozzáférés korlátozása a VNet lévő erőforrásokra. Ebbe beletartozhatnak a virtuális gépek, ASE vagy más olyan alkalmazások is, amelyek VNet-integrációt használnak 
 
-![szolgáltatásvégpontok alkalmazásátjáróval](media/networking-features/service-endpoints-appgw.png)
+![szolgáltatási végpontok az Application Gateway használatával](media/networking-features/service-endpoints-appgw.png)
 
-A szolgáltatásvégpontok alkalmazással történő konfigurálásáról a [szolgáltatásvégpontok hozzáférési korlátozásainak konfigurálásáról][serviceendpoints] szóló oktatóanyagban olvashat bővebben.
+A szolgáltatási végpontok az alkalmazással való konfigurálásával kapcsolatos további információkért tekintse meg a [szolgáltatási végpontok hozzáférési korlátozásainak konfigurálását][serviceendpoints] ismertető oktatóanyagot.
 
-### <a name="private-endpoint-preview"></a>Saját végpont (előzetes verzió)
+### <a name="private-endpoint-preview"></a>Privát végpont (előzetes verzió)
 
-A Private Endpoint egy olyan hálózati felület, amely az Azure Private Link által privát és biztonságos kapcsolatot biztosít a webalkalmazással. A privát végpont egy privát IP-címet használ a virtuális hálózatból, így a webalkalmazás hatékonyan hozza a virtuális hálózatba. Ez a funkció csak a **webalkalmazásba irányuló bejövő** folyamatokra szolgál.
-[Privát végpontok használata az Azure Web Apphoz (előzetes verzió)][privateendpoints]
+A privát végpont egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül csatlakozik a webalkalmazáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a webalkalmazást a VNet. Ez a funkció csak a webalkalmazás **bejövő** folyamatai számára érhető el.
+[Privát végpontok használata az Azure Web App-hoz (előzetes verzió)][privateendpoints]
  
 ### <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
-Az App Service hibrid kapcsolatok lehetővé teszi, hogy az alkalmazások **kimenő** hívásokat kezdeményezzenek a megadott TCP-végpontok számára. A végpont lehet a helyszínen, egy virtuális hálózatban, vagy bárhol, amely lehetővé teszi a kimenő forgalmat az Azure-ba a 443-as porton. A szolgáltatáshoz egy hibrid kapcsolatkezelő (HCM) nevű továbbítóügynök telepítésére van szükség Windows Server 2012 vagy újabb gazdagépen. A HCM-nek képesnek kell lennie az Azure Relay elérésére a 443-as porton. A HCM letölthető az App Service hibrid kapcsolatok felhasználói felületéről a portálon. 
+App Service Hibrid kapcsolatok lehetővé teszi, hogy az alkalmazások **kimenő** hívásokat hajtanak végre a megadott TCP-végpontokon. A végpont lehet helyszíni, VNet vagy bárhonnan, amely lehetővé teszi az Azure-ba irányuló kimenő forgalmat az 443-es porton. A szolgáltatáshoz egy hibridkapcsolat-kezelő (HCM) nevű továbbító ügynök telepítése szükséges a Windows Server 2012-es vagy újabb gazdagépén. Az HCM-nek képesnek kell lennie az 443-as porton való Azure Relay elérésére. A HCM letölthető a portál App Service Hibrid kapcsolatok felhasználói felületéről. 
 
-![Hibrid kapcsolatok hálózati folyamata](media/networking-features/hybrid-connections.png)
+![Hibrid kapcsolatok hálózati folyamat](media/networking-features/hybrid-connections.png)
 
-Az App Service hibrid kapcsolatok szolgáltatás az Azure Relay hibrid kapcsolatok funkcióra épül. Az App Service a szolgáltatás egy speciális formáját használja, amely csak az alkalmazásból a TCP-állomásra és a portra irányuló kimenő hívásokat támogatja. Ezt az állomást és portot csak azon az állomáson kell feloldani, ahol a HCM telepítve van. Amikor az alkalmazás az App Service-ben DNS-kereséset végez a hibrid kapcsolatban definiált gazdagépen és porton, a rendszer automatikusan átirányítja a forgalmat a hibrid kapcsolaton keresztül, és kiakad a hibrid kapcsolatkezelőn. Ha többet szeretne megtudni a hibrid kapcsolatokról, olvassa el az [App Service hibrid kapcsolatok dokumentációját][hybridconn]
+A App Service Hibrid kapcsolatok funkció az Azure Relay Hibrid kapcsolatok képességre épül. A App Service a szolgáltatás egy speciális formáját használja, amely csak a kimenő hívásokat támogatja az alkalmazásból egy TCP-gazdagépre és-portra. Ezt a gazdagépet és portot csak azon a gazdagépen kell feloldani, amelyen a HCM telepítve van. Ha az alkalmazás a App Serviceban a DNS-lekérdezést hajtja végre a hibrid kapcsolatban megadott gazdagépen és porton, a rendszer automatikusan átirányítja a forgalmat, hogy átugorjon a hibrid és a hibridkapcsolat-kezelő. Ha többet szeretne megtudni a Hibrid kapcsolatokről, olvassa el [app Service][hybridconn] dokumentációját hibrid kapcsolatok
 
-Ezt a funkciót általában a következőkre használják:
+Ez a funkció általában a következőket használja:
 
-* Erőforrások elérése olyan magánhálózatokban, amelyek nem csatlakoznak az Azure-hoz VPN-nel vagy ExpressRoute-tal
-* Támogatja a helyszíni alkalmazások áthelyezését az App Service szolgáltatásba anélkül, hogy a támogató adatbázisokat is át kellene helyeznie  
-* Biztonságos hozzáférést biztosít egyetlen állomáshoz és porthoz hibrid kapcsolatonként. A legtöbb hálózati szolgáltatás nyílt hozzáférést biztosít a hálózathoz, és a hibrid kapcsolatok csak az egyetlen állomás és port érhető el.
-* Más kimenő kapcsolódási módszerek által nem lefedett forgatókönyvek lefedése
-* Fejlesztés végrehajtása az App Service-ben, ahol az alkalmazások könnyen kihasználhatják a helyszíni erőforrásokat 
+* Hozzáférés az Azure-hoz VPN-vagy ExpressRoute-kapcsolattal nem rendelkező magánhálózatok erőforrásaihoz
+* A helyszíni alkalmazások App Serviceának és átváltásának támogatása a támogatási adatbázisok áthelyezésének szükségessége nélkül  
+* Biztonságos hozzáférést biztosít egy gazdagéphez és egy hibrid kapcsolaton keresztüli porthoz. A legtöbb hálózati szolgáltatás nyitott hozzáférést biztosít egy hálózathoz, és Hibrid kapcsolatok csak egyetlen gazdagép és port érhető el.
+* Más kimenő kapcsolati módszerek által nem tárgyalt forgatókönyvek
+* Fejlesztés végrehajtása App Serviceban, ahol az alkalmazások egyszerűen használhatják a helyszíni erőforrásokat 
 
-Mivel a szolgáltatás lehetővé teszi a hozzáférést a helyszíni erőforrásokhoz bejövő tűzfallyuk nélkül, népszerű a fejlesztők számára. A többi kimenő App Service hálózati funkciók nagyon Azure virtuális hálózattal kapcsolatos. A hibrid kapcsolatok nem függ a virtuális hálózaton keresztül, és a hálózati igények szélesebb köréhez használható. Fontos megjegyezni, hogy az App Service hibrid kapcsolatok funkció nem érdekel, vagy tudja, mit csinál a tetején. Ez azt jelenti, hogy használhatja egy adatbázis, egy webszolgáltatás vagy egy tetszőleges TCP szoftvercsatorna eléréséhez a nagyszámítógépen. A szolgáltatás lényegében atcp-csomagokat aktasz. 
+Mivel a funkció lehetővé teszi a helyszíni erőforrásokhoz való hozzáférést bejövő tűzfal nélküli furat nélkül, népszerű a fejlesztők számára. A többi kimenő App Service hálózatkezelési funkció nagyon Azure virtuális hálózatkezeléssel kapcsolatos. Hibrid kapcsolatok nem függ a VNet, és több hálózati igényt is igénybe vehet. Fontos megjegyezni, hogy a App Service Hibrid kapcsolatok funkció nem érdekli, és nem tudja, mit csinál. Ez azt jelenti, hogy használhatja egy adatbázis, egy webszolgáltatás vagy egy tetszőleges TCP-szoftvercsatorna elérésére a nagyszámítógépeken. A szolgáltatás lényegében a TCP-csomagokat alagutakra irányítja. 
 
-Míg a hibrid kapcsolatok népszerű a fejlesztés, azt is használják számos termelési alkalmazások is. Kiválóan alkalmas egy webszolgáltatás vagy adatbázis elérésére, de nem megfelelő olyan helyzetekben, amelyek sok kapcsolatot hoznak létre. 
+Habár a Hibrid kapcsolatok népszerű a fejlesztéshez, számos éles alkalmazásban is használható. Kiválóan alkalmas webszolgáltatások vagy adatbázisok elérésére, de a sok kapcsolat létrehozásával kapcsolatos helyzetekben nem megfelelő. 
 
-### <a name="gateway-required-vnet-integration"></a>Átjáró szükséges virtuális hálózati integráció 
+### <a name="gateway-required-vnet-integration"></a>Átjáró szükséges VNet-integráció 
 
-Az átjáró szükséges App Service VNet-integrációs funkció lehetővé teszi, hogy az alkalmazás **kimenő** kérelmeket egy Azure virtuális hálózatba. A szolgáltatás úgy működik, hogy csatlakoztatja a gazdagép az alkalmazás fut egy virtuális hálózati átjáró a virtuális hálózat egy pont-hely VPN. A szolgáltatás konfigurálásakor az alkalmazás megkapja az egyes példányokhoz rendelt helyek közötti címek egyikét. Ez a szolgáltatás lehetővé teszi, hogy a klasszikus vagy az erőforrás-kezelő virtuális hálózatai erőforrásait bármely régióban. 
+Az átjáró szükséges App Service VNet integrációs funkciója lehetővé teszi, hogy az alkalmazás **kimenő** kéréseket hozzon egy Azure-Virtual Networkba. A szolgáltatás úgy működik, hogy csatlakoztatja a gazdagépet, amely egy pont – hely típusú VPN-kapcsolattal rendelkező VNet Virtual Network átjáróján fut. A szolgáltatás konfigurálásakor az alkalmazás megkapja az egyes példányokhoz rendelt pont – hely címek egyikét. Ez a funkció lehetővé teszi az erőforrások elérését bármely régióban a klasszikus vagy a Resource Manager-virtuális hálózatok. 
 
-![Átjáró szükséges virtuális hálózati integráció](media/networking-features/gw-vnet-integration.png)
+![Átjáró szükséges VNet-integráció](media/networking-features/gw-vnet-integration.png)
 
-Ez a szolgáltatás megoldja a más virtuális hálózatok erőforrásainak elérésével kapcsolatos problémát, és akár egy virtuális hálózaton keresztül más virtuális hálózatokhoz vagy akár a helyszínen is használható. Nem működik az ExpressRoute-alapú csatlakoztatott virtuális hálózatokkal, de a helyek közötti VPN-csatlakoztatott hálózatokkal igen. Általában nem megfelelő, hogy ezt a funkciót egy alkalmazásból egy App Service-környezetben (ASE), mert az ASE már a virtuális hálózatban. A szolgáltatás által megoldott használati esetek a következők:
+Ez a funkció megoldja a más virtuális hálózatok lévő erőforrások elérésének problémáját, és akár egy VNet keresztül csatlakozhat más virtuális hálózatok, vagy akár a helyszínen is. Nem működik a ExpressRoute csatlakoztatott virtuális hálózatok, hanem a helyek közötti VPN-kapcsolattal rendelkező hálózatokkal. Általában nem célszerű ezt a funkciót egy App Service Environment (betanító) alkalmazásból használni, mert a betanító már szerepel a VNet. A funkció által megoldott használati esetek a következők:
 
-* Erőforrások elérése privát IP-ken az Azure virtuális hálózataiban 
-* Erőforrások elérése a helyszínen, ha van helyről webhelyre VPN 
-* Erőforrások elérése társtársi hálózatokban 
+* A magánhálózati IP-címek erőforrásainak elérése Azure-beli virtuális hálózatokban 
+* Helyszíni erőforrásokhoz való hozzáférés, ha helyek közötti VPN van 
+* Erőforrások elérése a társ virtuális hálózatok 
 
-Ha ez a szolgáltatás engedélyezve van, az alkalmazás azt a DNS-kiszolgálót fogja használni, amelyhez a célvirtuális hálózat konfigurálva van. Erről a funkcióról az [App Service virtuális hálózat integrációja][vnetintegrationp2s]című dokumentumban olvashat bővebben. 
+Ha ez a funkció engedélyezve van, az alkalmazás azt a DNS-kiszolgálót fogja használni, amelyhez a cél VNet konfigurálva van. Erről a szolgáltatásról a [app Service VNet-integráció][vnetintegrationp2s]dokumentációjában olvashat bővebben. 
 
 ### <a name="vnet-integration"></a>VNet-integráció
 
-A szükséges virtuális hálózat integrációs szolgáltatás a szükséges, de még mindig nem oldja meg az erőforrások elérését az ExpressRoute-on keresztül. Az ExpressRoute-kapcsolatokon keresztüli elérés mellett az alkalmazásoknak is tudniuk kell hívásokat kezdeményezni a szolgáltatásvégpont-alapú biztonságos szolgáltatásokhoz. Mindkét további igény megoldásához egy másik virtuális hálózat integrációs képesség került hozzáadásra. Az új virtuális hálózat integrációs szolgáltatás lehetővé teszi, hogy helyezze el az alkalmazás háttér-egy alhálózat egy Erőforrás-kezelő virtuális hálózat ugyanabban a régióban. Ez a szolgáltatás nem érhető el egy App Service-környezetben, amely már a virtuális hálózatban. Ez a funkció lehetővé teszi:
+Az átjáró szükséges VNet-integrációs funkciója nagyon hasznos, de továbbra sem oldja meg az erőforrások elérését a ExpressRoute között. Ahhoz, hogy az alkalmazások ExpressRoute-kapcsolatokon keresztül is elérhetők legyenek, az alkalmazásoknak meg kell tudniuk hívni a végpontok által biztosított szolgáltatásait. A további igények megoldásához egy másik VNet integrációs képesség lett hozzáadva. Az új VNet-integrációs funkció lehetővé teszi, hogy az alkalmazás hátterét egy ugyanabban a régióban található Resource Manager-VNet egy alhálózatán helyezze el. Ez a funkció nem érhető el egy olyan App Service Environmentból, amely már egy VNet van. Ez a funkció lehetővé teszi a következőket:
 
-* Erőforrások elérése az erőforrás-kezelő virtuális hálózataiban ugyanabban a régióban
-* Szolgáltatásvégpontokkal védett erőforrások elérése 
-* Az ExpressRoute- vagy VPN-kapcsolatokon keresztül elérhető erőforrások elérése
+* Erőforrások elérése erőforrás-kezelő virtuális hálózatok ugyanabban a régióban
+* A szolgáltatás-végpontokkal védett erőforrások elérése 
+* ExpressRoute-vagy VPN-kapcsolaton keresztül elérhető erőforrások elérése
 * Az összes kimenő forgalom biztonságossá tétele 
 * Az összes kimenő forgalom bújtatásának kényszerítése. 
 
 ![VNet-integráció](media/networking-features/vnet-integration.png)
 
-A funkcióról az [App Service virtuális hálózat integrációjáról][vnetintegration]szóló dokumentumokban olvashat bővebben.
+Ha többet szeretne megtudni erről a szolgáltatásról, olvassa el [app Service VNet integrációjának][vnetintegration]dokumentációját.
 
-## <a name="app-service-environment"></a>App Service Environment 
+## <a name="app-service-environment"></a>App Service-környezet 
 
-Az App Service-környezet (ASE) az Azure App Service egyetlen bérlői telepítése, amely a virtuális hálózaton fut. Az ASE lehetővé teszi a használati esetek, mint például:
+Az App Service Environment (bevezetési) a VNet futó Azure App Service egyetlen bérlős példánya. A kiegészítő szolgáltatás a következőket teszi lehetővé:
 
-* Erőforrások elérése a virtuális hálózatban
-* Erőforrások elérése az ExpressRoute-on keresztül
-* Az alkalmazások felfedése privát címmel a virtuális hálózatban 
-* Erőforrások elérése a szolgáltatás végpontjai között 
+* Erőforrások elérése a VNet
+* Erőforrások elérése ExpressRoute között
+* Tegye elérhetővé alkalmazásait privát címként a VNet 
+* Erőforrások elérése szolgáltatási végpontok között 
 
-Egy ASE, nem kell használni a funkciókat, például a virtuális hálózat integrációja vagy a szolgáltatás végpontok, mert az ASE már a virtuális hálózatban. Ha szolgáltatások végpontokon keresztül szeretné elérni az olyan erőforrásokat, mint az SQL vagy a Storage, engedélyezze a szolgáltatásvégpontokat az ASE-alhálózaton. Ha a virtuális hálózat erőforrásaihoz szeretne hozzáférni, nincs szükség további konfigurációra.  Ha az ExpressRoute-on keresztül szeretne erőforrásokat elérni, már a virtuális hálózatban van, és nem kell konfigurálnia semmit az ASE-n vagy a benne lévő alkalmazásokon. 
+A bevezetési szolgáltatással nem kell olyan szolgáltatásokat használnia, mint a VNet-integráció vagy a szolgáltatási végpontok, mert a szolgáltató már szerepel a VNet. Ha olyan erőforrásokat szeretne elérni, mint például az SQL vagy a Storage szolgáltatásbeli végpontok, engedélyezze a szolgáltatási végpontokat a szolgáltatói alhálózaton. Ha a VNet erőforrásaihoz szeretne hozzáférni, nincs szükség további konfigurálásra.  Ha a ExpressRoute-on keresztül szeretné elérni az erőforrásokat, akkor már szerepel a VNet, és nem kell semmit konfigurálnia a betanító vagy a benne lévő alkalmazásokhoz. 
 
-Mivel az ILB ASE-ben lévő alkalmazások privát IP-címen is elérhetők lehetnek, egyszerűen hozzáadhat WAF-eszközöket, hogy csak a kívánt alkalmazásokat tetszhet ki az internetre, és tartsa a többit biztonságban. Ez alkalmas arra, hogy könnyen fejlesztése többszintű alkalmazások. 
+Mivel a ILB-beadásban lévő alkalmazások elérhetővé tehetők egy magánhálózati IP-címen, egyszerűen hozzáadhat WAF-eszközöket az internethez használni kívánt alkalmazások és a REST biztonság fenntartása érdekében. A többrétegű alkalmazások könnyű fejlesztéséhez is alkalmas. 
 
-Vannak olyan dolgok, amelyek még nem lehetségesek a több-bérlős szolgáltatásból, amelyek egy ASE-ből származnak. Ezek közé tartozik a dolgok, mint például:
+Vannak olyan dolgok, amelyek még nem lehetségesek a bemutató több-bérlős szolgáltatásból. Ilyenek például a következők:
 
-* Az alkalmazások megjelenítése privát IP-címen
+* Alkalmazások közzététele privát IP-címen
 * Az összes kimenő forgalom biztonságossá tétele olyan hálózati vezérlőkkel, amelyek nem részei az alkalmazásnak 
-* Az alkalmazások egyetlen bérlői szolgáltatásban való üzemeltetése 
-* A több-bérlős szolgáltatásban lehetségesnél sokkal több példányra skálázható 
-* Privát hitelesítésszolgáltatói ügyféltanúsítványok betöltése az alkalmazások által iminált használatra a saját hitelesítésszolgáltató által védett végpontokkal 
-* A TLS 1.1 kényszerítése a rendszerben tárolt összes alkalmazásra anélkül, hogy le tiltaná az alkalmazás szintjén 
-* Adjon meg egy dedikált kimenő címet az ASE összes olyan alkalmazásához, amely nincs megosztva egyetlen ügyféllel sem 
+* Alkalmazások üzemeltetése egyetlen bérlős szolgáltatásban 
+* Vertikális felskálázás több példányra, mint amennyi lehetséges a több-bérlős szolgáltatásban 
+* Privát HITELESÍTÉSSZOLGÁLTATÓI Ügyféltanúsítványok betöltése az alkalmazások számára privát HITELESÍTÉSSZOLGÁLTATÓI biztonságos végpontokkal való használatra 
+* A TLS 1,1 kényszerítése a rendszerben üzemeltetett összes alkalmazáson anélkül, hogy le kellene tiltani az alkalmazás szintjén. 
+* Adjon meg egy dedikált kimenő IP-címeket a beadásban lévő összes olyan alkalmazáshoz, amely nincs megosztva az ügyfelekkel 
 
-![ASE egy virtuális hálózatban](media/networking-features/app-service-environment.png)
+![VNet](media/networking-features/app-service-environment.png)
 
-Az ASE biztosítja a legjobb történet körül elszigetelt és dedikált app hosting, de nem jön néhány kezelési kihívásokat. Néhány dolog, hogy fontolja meg, mielőtt egy működő ASE a következők:
+A benyújtó a legjobb történet az elkülönített és a dedikált alkalmazások üzemeltetése mellett, de bizonyos felügyeleti problémákkal is jár. Az operatív kiegészítő szolgáltatás használata előtt megfontolandó szempontok a következők:
  
- * Az ASE a virtuális hálózaton belül fut, de a virtuális hálózaton kívüli függőségekkel rendelkezik. Ezeket a függőségeket engedélyezni kell. További információ: [Az App Service-környezet hálózati szempontjai][networkinfo]
- * Az ASE nem skálázódik azonnal, mint a több-bérlős szolgáltatás. A méretezési igényeket kell előre jeleznie, nem pedig újraésen skálázás. 
- * Az ASE-nek magasabb előzetes költsége van. Annak érdekében, hogy a legtöbbet hozza ki az ASE, meg kell terveznie üzembe sok számítási feladatok egy ASE helyett azt használják a kis erőfeszítések
- * Az ASE-ben lévő alkalmazások nem korlátozhatják a hozzáférést az ASE egyes alkalmazásaihoz, és nem másokhoz.
- * Az ASE egy alhálózatban van, és a hálózati szabályok az adott ASE-be irányuló és onnan érkező összes forgalomra vonatkoznak. Ha csak egy alkalmazáshoz szeretne bejövő forgalmi szabályokat hozzárendelni, használja a hozzáférési korlátozásokat. 
+ * A VNet-en belül, de a VNet kívüli függőségekkel is rendelkezik. Ezeket a függőségeket engedélyezni kell. További információ a [hálózatkezelési megfontolásokról app Service Environment][networkinfo]
+ * A kiegészítő szolgáltatások nem méretezhetők azonnal, mint a több-bérlős szolgáltatás. A skálázási igényeket a reaktív méretezés helyett előre kell mérni. 
+ * A benyújtó bekerülési díja magasabb a hozzá tartozó előfizetéssel. Annak érdekében, hogy a lehető legtöbbet hozza ki a bevezetésből, érdemes nagy mennyiségű számítási feladatot üzembe helyezést végeznie, ahelyett, hogy kis erőfeszítésekhez kellene használni
+ * A kiszolgált alkalmazásokban lévő alkalmazások nem korlátozhatják az egyes alkalmazásokhoz való hozzáférést egy központon belül, másokat nem.
+ * A Bekapcsolási pont alhálózatban található, és minden hálózati szabály az adott központba irányuló és onnan érkező összes forgalomra érvényes. Ha csak egy alkalmazás bejövő forgalmi szabályait szeretné hozzárendelni, használja a hozzáférési korlátozásokat. 
 
-## <a name="combining-features"></a>Jellemzők egyesítése 
+## <a name="combining-features"></a>Szolgáltatások egyesítése 
 
-A több-bérlős szolgáltatás megjegyezte, hogy együtt lehet megoldani bonyolultabb használati esetek. A leggyakoribb használati esetek közül kettőt itt ismertetett, de ezek csak példák. A különböző funkciók megértésével szinte az összes rendszerarchitektúrára szüksége van.
+A több-bérlős szolgáltatáshoz feljegyzett funkciók a bonyolultabb használati esetek megoldásához is használhatók. A leggyakoribb használati esetek közül kettőt itt ismertetünk, de ezek csak példák. A különféle funkciók megismerésével szinte minden rendszerarchitektúra-szükségletet megtalálhat.
 
-### <a name="inject-app-into-a-vnet"></a>Alkalmazás befecskendezése virtuális hálózatba
+### <a name="inject-app-into-a-vnet"></a>Alkalmazás behelyezése egy VNet
 
-Gyakori kérés, hogyan helyezheti el az alkalmazást egy virtuális hálózatban. Az alkalmazás virtuális hálózatba helyezése azt jelenti, hogy az alkalmazás bejövő és kimenő végpontjai egy virtuális hálózaton belül vannak. Az ASE a legjobb megoldást a probléma megoldására, de a funkciók kombinálásával a legtöbb, amire szükség van a több-bérlős szolgáltatás kombinálásával. Például csak a magánbejövő és kimenő címekkel rendelkező intranetes alkalmazásokat üzemeltethet:
+Gyakori kérés, hogy hogyan helyezheti üzembe az alkalmazást egy VNet. Az alkalmazás VNet való elhelyezése azt jelenti, hogy az alkalmazás bejövő és kimenő végpontjai egy VNet belül találhatók. A benyújtó a legjobb megoldás a probléma megoldására, de a funkciók összevonásával a több-bérlős szolgáltatásban szükségesek többsége is elérhető. Például csak intranetes, privát bejövő és kimenő címmel rendelkező alkalmazásokat tárolhat a következő módon:
 
-* Alkalmazásátjáró létrehozása privát bejövő és kimenő címmel
-* Az alkalmazásba irányuló bejövő forgalom biztonságossá tétele szolgáltatásvégekkel 
-* Használja az új virtuális hálózat-integrációt, hogy az alkalmazás háttérrendszere a virtuális hálózatban 
+* Privát bejövő és kimenő IP-címekkel rendelkező Application Gateway létrehozása
+* Az alkalmazás felé irányuló bejövő adatforgalom biztonságossá tétele szolgáltatási végpontokkal 
+* Használja az új VNet-integrációt, hogy az alkalmazás háttere a VNet legyen 
 
-Ez a telepítési stílus nem ad dedikált címet az internetre irányuló kimenő forgalomhoz, és nem teszi lehetővé az alkalmazásból érkező összes kimenő forgalom zárolását.  Ez a telepítési stílus adna egy nagy, amit csak egyébként kap egy ASE. 
+Ez a telepítési stílus nem biztosít dedikált IP-címeket az internetre irányuló kimenő forgalom számára, vagy lehetővé teszi az alkalmazásból érkező összes kimenő forgalom zárolását.  Ez az üzembe helyezési stílus nagyban kipróbálhatja, hogy a szolgáltatáshoz csak a beszerzést kéri. 
 
 ### <a name="create-multi-tier-applications"></a>Többrétegű alkalmazások létrehozása
 
-A többrétegű alkalmazás olyan alkalmazás, ahol az API-háttéralkalmazások csak az előtér-rétegből érhetők el. Többrétegű alkalmazás létrehozásához a következőket teheti:
+A többrétegű alkalmazások olyan alkalmazások, amelyek esetében az API-háttérbeli alkalmazások csak az előtér-rétegből érhetők el. Többrétegű alkalmazások létrehozásához a következőket teheti:
 
-* A Virtuálishálózat-integráció használata az előtér-webalkalmazás háttérrendszerének csatlakoztatásához egy virtuális hálózat alhálózatához
-* Szolgáltatásvégpontok használatával biztonságos sáb-mentes bejövő forgalmat az API-alkalmazás csak az előtér-webalkalmazás által használt alhálózatból érkezik
+* VNet-integráció használata az előtér-webalkalmazás hátterének egy VNet lévő alhálózattal való összekapcsolásához
+* A szolgáltatás-végpontok használatával biztosíthatja, hogy az API-alkalmazás bejövő forgalma csak az előtér-webalkalmazás által használt alhálózatról legyen elérhető
 
 ![többrétegű alkalmazás](media/networking-features/multi-tier-app.png)
 
-Több előtér-alkalmazás is használhatja ugyanazt az API-alkalmazást a vnet-integráció használatával a többi előtér-alkalmazások és az API-alkalmazás szolgáltatásvégpontok az alhálózatok.  
+Több előtér-alkalmazás is használhatja ugyanazt az API-alkalmazást az API-alkalmazás és az alhálózatok közötti VNet integráció használatával.  
 
 <!--Links-->
 [appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate

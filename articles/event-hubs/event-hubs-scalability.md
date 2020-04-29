@@ -1,6 +1,6 @@
 ---
-title: Méretezhetőség – Azure Event Hubs | Microsoft dokumentumok
-description: Ez a cikk az Azure Event Hubs partíciók és átviteli egységek használatával történő méretezésével kapcsolatos információkat tartalmaz.
+title: Skálázhatóság – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk az Azure-Event Hubs partíciók és átviteli egységek használatával történő skálázását ismerteti.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,44 +15,44 @@ ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
 ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280949"
 ---
-# <a name="scaling-with-event-hubs"></a>Méretezés eseményközpontokkal
+# <a name="scaling-with-event-hubs"></a>Méretezés Event Hubs
 
-Két tényező befolyásolja a méretezést az Event Hubs segítségével.
+Két tényező befolyásolja a skálázást Event Hubs.
 *   Átviteli egységek
 *   Partíciók
 
 ## <a name="throughput-units"></a>Átviteli egységek
 
-Az Event Hubs átviteli kapacitását *átviteli egységek*szabályozzák. Az átviteli egységek előre megvásárolt kapacitásegységek. Egyetlen átviteli parancs lehetővé teszi:
+A Event Hubs átviteli kapacitását az *átviteli egységek*vezérlik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egyetlen átviteli sebesség A következőket teszi lehetővé:
 
-* Be- és be- és 1000 esemény másodpercenként (amelyik előbb következik be).
-* Kimenő forgalom: Másodpercenként legfeljebb 2 MB vagy 4096 esemény másodpercenként.
+* Bejövő forgalom: másodpercenként legfeljebb 1 MB vagy 1000 esemény másodpercenként (amelyik előbb bekövetkezik).
+* Kimenő forgalom: másodpercenként legfeljebb 2 MB vagy 4096 esemény másodpercenként.
 
-A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek kezelése a névterek **Méretezés** panelén történik az [Azure Portalon](https://portal.azure.com). Az átviteli egységeket programozott módon is kezelheti az [Event Hubs API-k](event-hubs-api-overview.md)használatával.
+A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek kezelése a névterek **Méretezés** panelén történik az [Azure Portalon](https://portal.azure.com). Az átviteli egységeket programozott módon is kezelheti a [Event Hubs API](event-hubs-api-overview.md)-k használatával.
 
-Az átviteli egységek előre megvannak vásárolva, és óránként kerülnek számlázásra. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Egy Event Hubs névtérhez legfeljebb 20 átviteli egység vásárolható meg, és azok az adott névtér összes eseményközpontjában meg oszthatók.
+Az átviteli egységek előzetes megvásárlása és óránkénti számlázása. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Egy Event Hubs névtérhez legfeljebb 20 átviteli egység vásárolható meg, és az adott névtérben található összes Event hub esetében meg van osztva.
 
-Az Event Hubs **automatikus felfújási** funkciója automatikusan felskálázódik az átviteli egységek számának növelésével, a használati igények nek megfelelően. Az átviteli egységek növelése megakadályozza a sávszélesség-szabályozási forgatókönyveket, amelyekben:
+A Event Hubs **automatikus** feltöltési funkciója automatikusan méretezi az átviteli egységek számának növelésével, hogy megfeleljen a használati igényeknek. Az átviteli egységek növelése megakadályozza a szabályozást, amelyben:
 
-- Az adatbe- és be- és adatátviteli sebességek meghaladják a beállított átviteli egységeket.
-- Az adatforgalom kérési sebessége meghaladja a beállított átviteli egységeket.
+- A bejövő adatforgalom aránya meghaladja a beállított átviteli egységeket.
+- A kimenő adatforgalomra vonatkozó kérelmek aránya meghaladja a set átviteli egységeket.
 
-Az Event Hubs szolgáltatás növeli az átviteli terhelést, ha a terhelés meghaladja a minimális küszöbértéket, anélkül, hogy a ServerBusy hibákkal kapcsolatos kérelmek sikertelenek lennenek. 
+A Event Hubs szolgáltatás növeli az átviteli sebességet, ha a terhelés a minimális küszöbértéknél nagyobb mértékben növekszik, anélkül, hogy a ServerBusy hibákkal kapcsolatos kérések sikertelenek lesznek. 
 
-Az automatikus felfújás funkcióról az [Átviteli egységek automatikus méretezése](event-hubs-auto-inflate.md)című témakörben talál további információt.
+További információ az automatikus kiosztási szolgáltatásról: az [átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md).
 
 ## <a name="partitions"></a>Partíciók
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 ### <a name="partition-key"></a>Partíciókulcs
 
-A [partíciókulcs](event-hubs-programming-guide.md#partition-key) segítségével a bejövő eseményadatokat adott partíciókra képezheti le az adatszervezés céljából. A partíciókulcs az eseményközpontnak átadott, a küldő által megadott érték. A feldolgozása egy statikus kivonatoló függvénnyel történik, amely létrehozza a partíció-hozzárendelést. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ.
+A [partíciós kulcs](event-hubs-programming-guide.md#partition-key) használatával a bejövő események adatait meghatározott partíciókhoz rendelheti az adatszervezet céljára. A partíciókulcs az eseményközpontnak átadott, a küldő által megadott érték. A feldolgozása egy statikus kivonatoló függvénnyel történik, amely létrehozza a partíció-hozzárendelést. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ.
 
 Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem, amelyre az esemény közzé lesz téve. A kulcs és a partíció szétválasztása révén a küldőnek nem szükséges behatóan ismernie az alárendelt feldolgozási folyamatokat. Az eszközszintű vagy egyedi felhasználói identitás remek partíciókulcs lehet, de más tulajdonságok, például a földrajzi hely alapján szintén lehetséges az események csoportosítása egyetlen partícióra.
 
@@ -61,4 +61,4 @@ Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem,
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 - [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)
-- [Az Eseményközpontok szolgáltatás áttekintése](event-hubs-what-is-event-hubs.md)
+- [Event Hubs szolgáltatás áttekintése](event-hubs-what-is-event-hubs.md)

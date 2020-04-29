@@ -1,6 +1,6 @@
 ---
-title: Erőforráserdő-fogalmak az Azure AD tartományi szolgáltatásokhoz | Microsoft dokumentumok
-description: Ismerje meg, hogy mi az az erőforráserdő az Azure Active Directory tartományi szolgáltatásokban, és hogy ezek milyen előnyökkel járnak a szervezet számára a korlátozott felhasználói hitelesítési beállításokkal vagy biztonsági problémákkal rendelkező hibrid környezetben.
+title: Erőforrás-erdővel kapcsolatos fogalmak a Azure AD Domain Serviceshoz | Microsoft Docs
+description: Megtudhatja, hogy milyen erőforrás-erdő van Azure Active Directory Domain Servicesban, és hogy miként használják a céget a korlátozott felhasználói hitelesítési lehetőségekkel vagy biztonsági kérdésekkel rendelkező hibrid környezetben.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,112 +11,112 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: e0e5dde246dbcd5e5cb2e4ae923872a59a539d87
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476400"
 ---
-# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Erőforráserdő-fogalmak és -szolgáltatások az Azure Active Directory tartományi szolgáltatásokhoz
+# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Az erőforrás-erdőhöz kapcsolódó fogalmak és szolgáltatások Azure Active Directory Domain Services
 
-Az Azure Active Directory tartományi szolgáltatások (AD DS) bejelentkezési élményt nyújt az örökölt, helyszíni és üzletági alkalmazások hoz. A helyszíni és a felhőbeli felhasználók felhasználói, csoportjai és jelszókiszavai szinkronizálódnak az Azure AD DS felügyelt tartományával. Ezek a szinkronizált jelszókivétek biztosítják a felhasználók számára a helyszíni Active Directory, az Office 365 és az Azure Active Directory számára használható hitelesítő adatok egyetlen készletét.
+A Azure Active Directory Domain Services (AD DS) bejelentkezési élményt nyújt az örökölt, helyszíni és üzletági alkalmazásokhoz. A helyszíni és a Felhőbeli felhasználók felhasználóinak, csoportjainak és jelszavainak kivonatai szinkronizálva lesznek az Azure AD DS felügyelt tartományával. Ezek a szinkronizált jelszó-kivonatok lehetővé teszi a felhasználók számára, hogy a helyszíni AD DS, az Office 365 és a Azure Active Directory számára egyetlen hitelesítő adatot használjanak.
 
-Bár biztonságos és további biztonsági előnyöket biztosít, egyes szervezetek nem szinkronizálhatják ezeket a felhasználói jelszavakat az Azure AD vagy az Azure AD DS. Előfordulhat, hogy a szervezet felhasználói nem ismerik a jelszavukat, mert csak intelligens kártyás hitelesítést használnak. Ezek a korlátozások megakadályozzák, hogy egyes szervezetek az Azure AD DS segítségével emelje fel és helyezze át a helyszíni klasszikus alkalmazásokat az Azure-ba.
+Bár a biztonságos és további biztonsági előnyöket biztosít, egyes szervezetek nem tudják szinkronizálni ezeket a felhasználói jelszavakat az Azure AD-be vagy az Azure AD DSba. Előfordulhat, hogy a szervezetben lévő felhasználók nem ismerik a jelszavukat, mert csak az intelligens kártyás hitelesítést használják. Ezek a korlátozások megakadályozzák, hogy egyes szervezetek az Azure AD DS használatával felemelik és áthelyezhetik a helyi klasszikus alkalmazásokat az Azure-ba.
 
-Ezeknek az igényeknek és korlátozásoknak a kielégítésére létrehozhat egy Azure AD DS felügyelt tartományt, amely egy erőforráserdőt használ. Ez az általános könyv ismerteti, hogy mik azok az erdők, és hogyan bíznak más erőforrásokban a biztonságos hitelesítési módszer biztosításához. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban.
+Ezeknek az igényeknek és korlátozásoknak a megoldásához létrehozhat egy erőforrás-erdőt használó Azure AD DS felügyelt tartományt. Ez a fogalmi cikk a biztonságos hitelesítési módszer biztosításához szükséges erdőket ismerteti, valamint azt, hogy miként bíznak más erőforrásokban. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
 
 > [!IMPORTANT]
-> Az Azure AD DS erőforrás-erdők jelenleg nem támogatják az Azure HDInsight vagy az Azure Files. Az alapértelmezett Azure AD DS felhasználói erdők mindkét további szolgáltatást támogatja.
+> Az Azure AD DS erőforrás-erdők jelenleg nem támogatják az Azure HDInsight vagy a Azure Files. Az alapértelmezett Azure AD DS felhasználói erdők mindkét további szolgáltatást támogatják.
 
 ## <a name="what-are-forests"></a>Mik azok az erdők?
 
-Az *erdő* egy logikai konstrukció, amelyet az Active Directory tartományi szolgáltatások (AD DS) egy vagy több *tartomány csoportosítására*használnak. A tartományok ezután tárolóobjektumokat tárolnak a felhasználók vagy csoportok számára, és hitelesítési szolgáltatásokat nyújtanak.
+Az *erdők* Active Directory tartományi szolgáltatások (AD DS) által használt logikai szerkezetek egy vagy több *tartomány*csoportosításához. A tartományok ezután objektumokat tárolnak a felhasználók vagy csoportok számára, és biztosítják a hitelesítési szolgáltatásokat.
 
-Az Azure AD DS-ben az erdő csak egy tartományt tartalmaz. A helyszíni AD DS-erdők gyakran sok tartományt tartalmaznak. A nagy szervezetek, különösen az egyesülések és felvásárlások után, előfordulhat, hogy a végén több helyszíni erdők, amelyek mindegyike több tartományt tartalmaz.
+Az Azure AD DSban az erdő csak egy tartományt tartalmaz. A helyszíni AD DS erdők gyakran sok tartományt tartalmaznak. A nagyméretű szervezeteknél – különösen az összevonások és a beszerzések után – előfordulhat, hogy több helyszíni erdővel is rendelkezik, amelyek mindegyike több tartományt tartalmaz.
 
-Alapértelmezés szerint egy Azure AD DS felügyelt tartomány jön *létre,* mint egy felhasználói erdő. Ez az erdőtípus szinkronizálja az Azure AD összes objektumát, beleértve a helyszíni Activeád-ds környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetik magukat az Azure AD DS felügyelt tartományával szemben, például bejelentkezhetnek egy tartományhoz csatlakozó virtuális gépbe. A felhasználói erdő akkor működik, ha a jelszókivonatok szinkronizálhatók, és a felhasználók nem használnak kizárólagos bejelentkezési módszereket, például intelligens kártya hitelesítést.
+Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetők az Azure AD DS felügyelt tartományon, például egy tartományhoz csatlakoztatott virtuális gépre való bejelentkezéshez. A felhasználói erdő akkor működik, ha a jelszó-kivonatok szinkronizálhatók, és a felhasználók nem használnak exkluzív bejelentkezési módszereket, például az intelligens kártyás hitelesítést.
 
-Egy Azure AD *DS-erőforrás-erdőben* a felhasználók hitelesítik egy egyirányú *erdőszintű bizalmi kapcsolat* a helyszíni AD DS-ből. Ezzel a módszerrel a felhasználói objektumok és a jelszó kimondott kibék nem szinkronizálva az Azure AD DS. A felhasználói objektumok és hitelesítő adatok csak a helyszíni AD DS-ben találhatók. Ez a megközelítés lehetővé teszi, hogy a vállalatok erőforrásokat és alkalmazásplatformokat üzemeltetjenek az Azure-ban, amelyek a klasszikus hitelesítéstől, például az LDAPS-től, a Kerberos-tól vagy az NTLM-től függenek, de a hitelesítési problémák vagy problémák törlődnek. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban.
+Egy Azure-AD DS *erőforrás* -erdőben a felhasználók egy egyirányú erdőszintű *megbízhatósági kapcsolaton* keresztül hitelesíthetők a helyszíni AD DS. Ezzel a módszerrel a felhasználói objektumok és jelszavak kivonatai nem szinkronizálhatók az Azure AD DS. A felhasználói objektumok és a hitelesítő adatok csak a helyszíni AD DSban találhatók. Ez a megközelítés lehetővé teszi, hogy a vállalatok az Azure-ban olyan erőforrásokat és alkalmazás-platformokat működtessenek, amelyek a klasszikus hitelesítéstől (például LDAPs, Kerberos vagy NTLM) függenek, de a hitelesítési problémák és a problémák el Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
 
-Az erőforráserdők azt is lehetővé teszik, hogy az alkalmazásokat összetevőként emelje fel és elmozdítsa. Számos régebbi helyszíni alkalmazás többrétegű, gyakran webkiszolgálót vagy előtér-kiszolgálót és számos adatbázissal kapcsolatos összetevőt használ. Ezek a szintek megnehezítik a teljes alkalmazás egy lépésben történő felemelése és a felhőre való áthelyezését. Az erőforráserdőkkel fokozatosan emelheti az alkalmazást a felhőbe, ami megkönnyíti az alkalmazás áthelyezését az Azure-ba.
+Az erőforrás-erdők azt is lehetővé teszik, hogy egyszerre több összetevőt lehessen feloldani az alkalmazások számára. Számos örökölt helyszíni alkalmazás többrétegű, gyakran webkiszolgálót, előtér-adatbázist és sok adatbázissal kapcsolatos összetevőt használ. Ezek a szintek megnehezítik a teljes alkalmazás a felhőbe való átváltását egy lépésben. A Resource Forests használatával a felhőbe felemelhető az alkalmazás fokozatos megközelítése, amely megkönnyíti az alkalmazások áthelyezését az Azure-ba.
 
-## <a name="what-are-trusts"></a>Mik azok a bizalmi kapcsolatok?
+## <a name="what-are-trusts"></a>Mi a megbízhatóság?
 
-Az egynél több tartománnyal rendelkező szervezeteknek gyakran szükségük van a felhasználókra egy másik tartomány megosztott erőforrásainak eléréséhez. A megosztott erőforrásokhoz való hozzáféréshez az egyik tartomány felhasználóinak hitelesíteniük kell magukat egy másik tartományban. A hitelesítési és engedélyezési lehetőségek biztosításához a különböző tartományokban lévő ügyfelek és kiszolgálók között *megbízhatósági kapcsolatnak* kell lennie a két tartomány között.
+Az egynél több tartománnyal rendelkező szervezeteknek gyakran kell a felhasználókhoz hozzáférni egy másik tartományban található megosztott erőforrásokhoz. A megosztott erőforrásokhoz való hozzáféréshez az szükséges, hogy az egyik tartományban lévő felhasználók egy másik tartományban legyenek hitelesítve. A különböző tartományokban lévő ügyfelek és kiszolgálók közötti hitelesítési és engedélyezési képességek biztosítása érdekében a két tartomány között *megbízhatósági kapcsolatnak* kell lennie.
 
-Tartományi megbízhatósági kapcsolatok esetén az egyes tartományok hitelesítési mechanizmusai megbíznak a másik tartományból érkező hitelesítésekben. A bizalmi kapcsolatok segítségével szabályos hozzáférést biztosítanak az erőforrás-tartomány (a *meghatalmazó* tartomány) megosztott erőforrásaihoz, ha ellenőrzik, hogy a bejövő hitelesítési kérelmek megbízható hatóságtól (a *megbízható* tartománytól) származnak-e. A bizalmi kapcsolatok hidakként működnek, amelyek csak a tartományok közötti érvényesített hitelesítési kérelmeket engedélyezik.
+A tartományi megbízhatósági kapcsolatok esetében az egyes tartományok hitelesítési mechanizmusai megbíznak a másik tartománytól érkező hitelesítésekkel. A megbízhatósági kapcsolatok segítségével szabályozható hozzáférést biztosíthat az erőforrás-tartományokban lévő megosztott erőforrásokhoz (a *megbízó* tartományhoz), ha ellenőrzi, hogy a bejövő hitelesítési kérelmek megbízható hitelesítésszolgáltatótól ( *megbízható* tartományból) származnak-e. A megbízhatósági kapcsolatok olyan hidakként működnek, amelyek csak az érvényesített hitelesítési kérelmeket engedélyezik a tartományok közötti utazáshoz.
 
-Az, hogy a bizalmi kapcsolat hogyan adja át a hitelesítési kérelmeket, a konfigurálásmódjától függ. A bizalmi kapcsolatok az alábbi módokon konfigurálhatók:
+A hitelesítési kérelmek megbízhatóságának módja a konfigurálásának módjától függ. A megbízhatósági kapcsolatok az alábbi módszerek egyikével konfigurálhatók:
 
 * **Egyirányú** – hozzáférést biztosít a megbízható tartományból a megbízó tartomány erőforrásaihoz.
 * **Kétirányú** – hozzáférést biztosít az egyes tartományokból a másik tartomány erőforrásaihoz.
 
-A bizalmi kapcsolatok úgy is konfigurálva vannak, hogy további bizalmi kapcsolatokat kezeljenek az alábbi módok egyikén:
+A megbízhatósági kapcsolatok úgy is konfigurálhatók, hogy a további megbízhatósági kapcsolatokat a következő módszerek egyikével kezeljék:
 
-* **Nem tranzitív** – A bizalmi kapcsolat csak a két megbízhatósági partner tartomány között létezik.
-* **Tranzitív** – A megbízhatóság automatikusan kiterjed bármely más olyan tartományra, amelyben bármelyik partner megbízik.
+* Nem **tranzitív** – a megbízhatóság csak a két megbízhatósági partner tartománya között létezik.
+* A **tranzitív** megbízhatósági kapcsolat automatikusan kiterjeszthető minden olyan tartományra, amelyet a partnerek bármelyike megbízhatónak tart.
 
-Bizonyos esetekben a megbízhatósági kapcsolatok automatikusan létrejönnek a tartományok létrehozásakor. Máskor ki kell választania egy megbízhatósági típust, és kifejezetten létre kell hoznia a megfelelő kapcsolatokat. A használt bizalmi kapcsolatok konkrét típusai és a bizalmi kapcsolatok szerkezete attól függ, hogy az Active Directory címtárszolgáltatás hogyan van rendszerezve, és hogy a Windows különböző verziói léteznek-e a hálózaton.
+Bizonyos esetekben a rendszer automatikusan létrehozza a megbízhatósági kapcsolatokat a tartományok létrehozásakor. Máskor ki kell választania egy megbízhatósági típust, és explicit módon meg kell határoznia a megfelelő kapcsolatokat. A használt megbízhatósági kapcsolatok és a megbízhatósági kapcsolatok szerkezete függ a Active Directory címtárszolgáltatás szervezésének módjától, valamint attól, hogy a Windows különböző verziói léteznek-e a hálózaton.
 
-## <a name="trusts-between-two-forests"></a>Bizalmi kapcsolatok két erdő között
+## <a name="trusts-between-two-forests"></a>Két erdő közötti megbízhatóság
 
-Egyetlen erdőn belüli tartományi bizalmi kapcsolatokat egy másik erdőre is kiterjesztheti, ha manuálisan hoz létre egyirányú vagy kétirányú erdőszintű bizalmi kapcsolatot. Az erdőszintű bizalmi kapcsolat olyan tranzitív bizalmi kapcsolat, amely csak egy erdő gyökértartománya és egy második erdőgyökér-tartomány között létezik.
+A tartományi megbízhatósági kapcsolatok kiterjeszthetők egyetlen erdőn belül egy másik erdőre, ha manuálisan létrehoz egy egyirányú vagy kétirányú erdőszintű megbízhatóságot. Az erdőszintű megbízhatóság olyan tranzitív megbízhatóság, amely csak az erdő gyökértartományának és egy második erdőszintű gyökértartomány között létezik.
 
-* Az egyirányú erdőszintű bizalmi kapcsolat lehetővé teszi, hogy az egyik erdő összes felhasználója megbízzon a másik erdő összes tartományában.
-* A kétirányú erdőszintű bizalmi kapcsolat tranzitív bizalmi kapcsolatot képez mindkét erdő összes tartománya között.
+* Egy egyirányú erdőszintű megbízhatósági kapcsolat lehetővé teszi, hogy az egyik erdőben lévő összes felhasználó megbízzon a másik erdőben lévő összes tartományban.
+* A kétirányú erdőszintű megbízhatóság tranzitív megbízhatósági kapcsolatot alakít ki mindkét erdő minden tartománya között.
 
-Az erdőbizalmi trösztök tranzititása a két erdészeti partnerre korlátozódik. Az erdőszintű bizalmi kapcsolat nem terjed ki a partnerek által megbízhatónak vetett további erdőkre.
+Az erdőszintű megbízhatósági kapcsolatok tranzitivitás a két erdős partnerre korlátozódik. Az erdőszintű megbízhatóság nem terjed ki a partnerek egyike által megbízhatónak tartott további erdőkre.
 
-![Az Azure AD DS és a helyszíni AD DS közötti erdőszintű bizalmi kapcsolat diagramja](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Az Azure AD DS és a helyszíni AD DS közötti erdőszintű megbízhatóság diagramja](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-A szervezet Active Directory-struktúrájától függően különböző tartományi és erdőszintű megbízhatósági konfigurációkat hozhat létre. Az Azure AD DS csak egyirányú erdőszintű megbízhatósági kapcsolatot támogat. Ebben a konfigurációban az Azure AD DS erőforrásai megbízhatnak a helyszíni erdő összes tartományában.
+A szervezet Active Directory struktúrájától függően különböző tartományi és erdőszintű megbízhatósági konfigurációkat hozhat létre. Az Azure AD DS csak egyirányú erdőszintű megbízhatósági kapcsolatot támogat. Ebben a konfigurációban az Azure AD DS erőforrásai megbíznak a helyszíni erdőben található összes tartományban.
 
-## <a name="supporting-technology-for-trusts"></a>A bizalmi kapcsolatok technológiájának támogatása
+## <a name="supporting-technology-for-trusts"></a>A megbízhatósági kapcsolatok támogató technológiája
 
-A bizalmi kapcsolatok különböző szolgáltatásokat és szolgáltatásokat használnak, például a DNS-t a tartományvezérlők partneri erdőkben való megkereséséhez. A megbízhatósági kapcsolatok az NTLM és a Kerberos hitelesítési protokolloktól, valamint a Windows alapú engedélyezési és hozzáférés-vezérlési mechanizmusoktól is függenek, hogy biztonságos kommunikációs infrastruktúrát biztosítsanak az Active Directory-tartományokban és erdőkben. Az alábbi szolgáltatások és szolgáltatások segítik a sikeres bizalmi kapcsolatokat.
+A megbízhatósági kapcsolatok különféle szolgáltatásokat és szolgáltatásokat használnak, például a DNS-t a tartományvezérlők megkereséséhez a partneri erdőkben. A megbízhatósági kapcsolatok az NTLM-és Kerberos-hitelesítési protokolloktól, valamint a Windows-alapú engedélyezési és hozzáférés-vezérlési mechanizmusoktól függenek, így biztosítva a biztonságos kommunikációs infrastruktúra használatát Active Directory tartományok és erdők között. A következő szolgáltatások és funkciók segítenek a sikeres megbízhatósági kapcsolatok támogatásában.
 
 ### <a name="dns"></a>DNS
 
-Az AD DS-nek DNS-re van szüksége a tartományvezérlő (DC) helyéhez és elnevezéséhez. Az AD DS sikeres működéséhez a DNS következő támogatása áll rendelkezésre:
+AD DS DNS-t igényel a tartományvezérlő (DC) helyéhez és elnevezéséhez. A következő DNS-támogatás biztosítva a AD DS sikeres működéséhez:
 
-* Olyan névfeloldási szolgáltatás, amely lehetővé teszi, hogy a hálózati állomások és szolgáltatások megkeressék a tartományvezérlőket.
-* Olyan elnevezési struktúra, amely lehetővé teszi, hogy a vállalat tükrözze szervezeti felépítését a címtárszolgáltatási tartományainak nevében.
+* Névfeloldási szolgáltatás, amely lehetővé teszi a hálózati gazdagépek és szolgáltatások számára a tartományvezérlők megkeresését.
+* Elnevezési struktúra, amely lehetővé teszi a vállalat számára, hogy tükrözze a szervezeti struktúráját a címtárszolgáltatás-tartományok neveiben.
 
-A DNS-tartomány névtere általában az AD DS tartománynévteret tükröz. Ha az Active Directory tartományi szolgáltatások központi telepítése előtt van egy meglévő DNS-névtér, a DNS-névtér általában particionált az Active Directory számára, és létrejön egy DNS-altartomány és delegálás az Active Directory erdőgyökérszámára. Ezután minden Active Directory gyermektartományhoz további DNS-tartományneveket ad hozzá.
+A DNS-tartomány névterét általában a AD DS tartományi névtér tükrözésére használják. Ha van egy meglévő DNS-névtér a AD DS központi telepítés előtt, a DNS-névtér általában Active Directoryre van particionálva, és létrejön egy DNS-altartomány és delegálás az Active Directory erdő gyökeréhez. Ezután további DNS-tartományneveket adnak hozzá minden Active Directory gyermektartomány számára.
 
-A DNS az Active Directory tartományvezérlők helyének támogatására is használható. A DNS-zónák olyan DNS-erőforrásrekordokat népesítenek fel, amelyek lehetővé teszik a hálózati állomások és szolgáltatások számára az Active Directory tartományvezérlők megkeresését.
+A DNS a Active Directory tartományvezérlők helyének támogatására is használható. A DNS-zónák olyan DNS-erőforrásrekordok használatával vannak feltöltve, amelyek lehetővé teszik a hálózati gazdagépek és szolgáltatások számára Active Directory tartományvezérlők megkeresését.
 
 ### <a name="applications-and-net-logon"></a>Alkalmazások és hálózati bejelentkezés
 
-Mind az alkalmazások, mind a Hálózati bejelentkezés szolgáltatás a Windows elosztott biztonsági csatornamodelljének összetevői. A Windows Server és az Active Directory integrálására integrált alkalmazások hitelesítési protokollokat használnak a Hálózati bejelentkezés szolgáltatással való kommunikációhoz, hogy biztonságos elérési út jön létre, amelyen keresztül hitelesítés fordulhat elő.
+Mindkét alkalmazás és a Net Logon szolgáltatás a Windows Distributed Security Channel modell összetevői. A Windows Server rendszerbe integrált alkalmazások és a Active Directory hitelesítési protokollok használatával kommunikálnak a hálózati bejelentkezési szolgáltatással, így biztonságos elérési utat hozhat létre a hitelesítéshez.
 
 ### <a name="authentication-protocols"></a>Hitelesítési protokollok
 
-Az Active Directory tartományvezérlők az alábbi protokollok egyikével hitelesítik a felhasználókat és az alkalmazásokat:
+Active Directory tartományvezérlők a következő protokollok egyikével hitelesítik a felhasználókat és az alkalmazásokat:
 
 * **Kerberos 5-ös verziójú hitelesítési protokoll**
-    * A Kerberos 5-ös verziójú protokoll a Windows rendszert futtató és külső operációs rendszereket támogató helyszíni számítógépek által használt alapértelmezett hitelesítési protokoll. Ez a protokoll az 1510-es számú RFC-dokumentumban van megadva, és teljes mértékben integrálva van az Active Directory, a kiszolgálói üzenetblokk (SMB), a HTTP és a távoli eljáráshívás (RPC), valamint az ezeket a protokollokat használó ügyfél- és kiszolgálóalkalmazásokba.
-    * A Kerberos protokoll használata esetén a kiszolgálónak nem kell kapcsolatba lépnie a tartományvezérlővel. Ehelyett az ügyfél kap egy jegyet a kiszolgálóhoz, ha a kiszolgálófiók tartományában lévő tartományvezérlőről kér egyet. A kiszolgáló ezután más hatóság megkérdezése nélkül érvényesíti a jegyet.
-    * Ha egy tranzakcióban részt vevő számítógép nem támogatja a Kerberos 5-ös verzióját, a rendszer az NTLM protokollt használja.
+    * A Kerberos 5-ös verziója a Windows rendszerű és a külső gyártótól származó operációs rendszereket támogató helyi számítógépek által használt alapértelmezett hitelesítési protokoll. Ez a protokoll az RFC 1510-ben van meghatározva, és teljes mértékben integrálva van a Active Directory, a Server Message Block (SMB), a HTTP és a távoli eljáráshívás (RPC) szolgáltatással, valamint az ezeket a protokollokat használó ügyfél-és kiszolgálói alkalmazásokkal.
+    * A Kerberos protokoll használata esetén a kiszolgálónak nem kell kapcsolódnia a TARTOMÁNYVEZÉRLŐhöz. Ehelyett az ügyfél a kiszolgáló fiók tartományában lévő egyik TARTOMÁNYVEZÉRLŐtől kapja meg a jegyet. A kiszolgáló ezt követően érvényesíti a jegyet anélkül, hogy bármilyen más hatósággal kellene konzultálnia.
+    * Ha a tranzakcióban részt vevő számítógépek nem támogatják a Kerberos 5-ös verzióját, akkor a rendszer az NTLM protokollt használja.
 
 * **NTLM hitelesítési protokoll**
-    * Az NTLM protokoll egy klasszikus hálózati hitelesítési protokoll, amelyet a régebbi operációs rendszerek használnak. Kompatibilitási okokból az Active Directory-tartományok a korábbi Windows-alapú ügyfelekhez és kiszolgálókhoz, valamint külső operációs rendszerekhez tervezett alkalmazásokból származó hálózati hitelesítési kérelmek feldolgozására használják.
-    * Ha az NTLM protokollt egy ügyfél és egy kiszolgáló között használja, a kiszolgálónak kapcsolatba kell lépnie egy tartományvezérlő tartományhitelesítési szolgáltatásával az ügyfél hitelesítő adatainak ellenőrzése érdekében. A kiszolgáló úgy hitelesíti az ügyfelet, hogy továbbítja az ügyfél hitelesítő adatait egy tartományvezérlőnek az ügyfélfiók-tartományban.
-    * Ha két Active Directory-tartományt vagy -erdőt bizalmi kapcsolat köt össze, az ezekkel a protokollokkal végrehajtott hitelesítési kérelmek et úgy lehet átirányítani, hogy mindkét erdő erőforrásaihoz hozzáférést biztosítsanak.
+    * Az NTLM protokoll a régebbi operációs rendszerek által használt klasszikus hálózati hitelesítési protokoll. Kompatibilitási okokból Active Directory tartományok használják a korábbi Windows-alapú ügyfelekhez és kiszolgálókhoz, illetve harmadik féltől származó operációs rendszerekhez készült alkalmazásokból érkező hálózati hitelesítési kérelmek feldolgozását.
+    * Ha az NTLM protokollt az ügyfél és a kiszolgáló között használja, a kiszolgálónak csatlakoznia kell egy tartományi hitelesítési szolgáltatáshoz a tartományvezérlőn, hogy ellenőrizze az ügyfél hitelesítő adatait. A kiszolgáló úgy hitelesíti az ügyfelet, hogy az ügyfél hitelesítő adatait továbbítja az ügyfél fiókjának tartományában lévő tartományvezérlőnek.
+    * Ha két Active Directory tartomány vagy erdő megbízhatósági kapcsolattal rendelkezik, a protokollok használatával küldött hitelesítési kérések átirányíthatók úgy, hogy mindkét erdőben elérhetők legyenek az erőforrások.
 
-## <a name="authorization-and-access-control"></a>Engedélyezés és hozzáférés-vezérlés
+## <a name="authorization-and-access-control"></a>Engedélyezési és hozzáférés-vezérlés
 
-Az engedélyezési és megbízhatósági technológiák együttműködnek, hogy biztonságos kommunikációs infrastruktúrát biztosítsanak az Active Directory-tartományokban vagy erdőkben. Az engedélyezés határozza meg, hogy a felhasználó milyen szintű hozzáféréssel rendelkezik a tartomány erőforrásaihoz. A bizalmi kapcsolatok megkönnyítik a felhasználók tartományok közötti engedélyezését azáltal, hogy utat biztosítanak a felhasználók hitelesítéséhez más tartományokban, így az ezekben a tartományokban megosztott erőforrásokra vonatkozó kéréseik engedélyezhetők.
+Az engedélyezési és megbízhatósági technológiák együttműködve biztosítják a biztonságos kommunikációs infrastruktúrát Active Directory tartományok vagy erdők között. Az engedélyezés meghatározza, hogy a felhasználók milyen szintű hozzáférési jogosultságokkal rendelkeznek a tartomány erőforrásaihoz. A megbízhatósági kapcsolatok megkönnyítik a felhasználók tartományok közötti engedélyezését azáltal, hogy a más tartományokban lévő felhasználókat hitelesítő utat biztosítanak, így a tartományokban lévő megosztott erőforrásokra irányuló kérések is engedélyezhetők.
 
-Ha egy megbízható tartományban egy hitelesítési kérelmet a megbízható tartomány érvényesít, az átkerül a célerőforráshoz. A célerőforrás ezután meghatározza, hogy engedélyezi-e a felhasználó, a szolgáltatás vagy a számítógép által a megbízható tartományban a hozzáférés-vezérlési konfiguráció alapján tett konkrét kérést.
+Ha a megbízható tartomány ellenőrzi egy megbízható tartomány hitelesítési kérelmét, azt a rendszer átadja a célként megadott erőforrásnak. A cél erőforrás ezután meghatározza, hogy a rendszer engedélyezi-e a megbízható tartományban lévő felhasználó, szolgáltatás vagy számítógép által a hozzáférés-vezérlési konfiguráció alapján végzett kérést.
 
-A bizalmi kapcsolatok biztosítják ezt a mechanizmust a megbízó tartománynak átadott hitelesítési kérelmek érvényesítéséhez. Az erőforrás-számítógépen található hozzáférés-vezérlési mechanizmusok határozzák meg a megbízható tartományban a kérelmező számára biztosított végső hozzáférési szintet.
+A megbízhatósági kapcsolatok biztosítják ezt a mechanizmust a megbízó tartománynak átadott hitelesítési kérelmek érvényesítéséhez. Az erőforrás-számítógép hozzáférés-vezérlési mechanizmusai határozzák meg a megbízható tartományban a kérelmezőnek biztosított hozzáférés végső szintjét.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a bizalmi kapcsolatokról, olvassa el a [Hogyan működnek az erdőszintű bizalmi kapcsolatok az Azure AD DS-ben?][concepts-trust]
+További információ a megbízhatóságokról: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 
-Az Azure AD DS felügyelt tartomány erőforráserdővel való létrehozásának első [lépései az Azure AD DS felügyelt tartományának létrehozása és konfigurálása][tutorial-create-advanced]című témakörben található. Ezután [létrehozhat egy kimenő erdőszintű bizalmi kapcsolatot egy helyszíni tartományban (előzetes verzió)][create-forest-trust].
+Az Azure AD DS felügyelt tartomány erőforrás-erdővel való létrehozásának megkezdéséhez tekintse meg [az azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

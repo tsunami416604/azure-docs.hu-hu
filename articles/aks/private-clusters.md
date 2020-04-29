@@ -1,42 +1,42 @@
 ---
-title: Privát Azure Kubernetes-szolgáltatásfürt létrehozása
-description: Ismerje meg, hogyan hozhat létre privát Azure Kubernetes-fürt (AKS) fürtöt
+title: Privát Azure Kubernetes Service-fürt létrehozása
+description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Service-(ak-) fürtöt
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
 ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398040"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes-szolgáltatásfürt létrehozása
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
-Egy privát fürtben a vezérlősík vagy AZ API-kiszolgáló rendelkezik az [RFC1918 – A magáninternet-címek címei](https://tools.ietf.org/html/rfc1918) dokumentumban meghatározott belső IP-címekkel. Egy privát fürt használatával biztosíthatja, hogy az API-kiszolgáló és a csomópontkészletek közötti hálózati forgalom csak a magánhálózaton maradjon.
+Egy privát fürtben a vezérlő síkja vagy az API-kiszolgáló belső IP-címekkel rendelkezik, amelyek a [magánhálózati internetes dokumentumok RFC1918](https://tools.ietf.org/html/rfc1918) vannak meghatározva. Privát fürt használatával biztosíthatja, hogy az API-kiszolgáló és a csomópont-készletek közötti hálózati forgalom csak a magánhálózaton maradjon.
 
-A vezérlősík vagy API-kiszolgáló egy Azure Kubernetes-szolgáltatás (AKS) által felügyelt Azure-előfizetésben található. Az ügyfél fürt- vagy csomópontkészlete az ügyfél előfizetésében található. A kiszolgáló és a fürt vagy csomópontkészlet kommunikálhat egymással az [Azure Private Link szolgáltatáson][private-link-service] keresztül az API-kiszolgáló virtuális hálózatában és egy privát végponton keresztül, amely az ügyfél AKS-fürtjének alhálózatában van elérhető.
+A vezérlő síkja vagy az API-kiszolgáló egy Azure Kubernetes szolgáltatásban (ak) felügyelt Azure-előfizetésben található. Az ügyfél fürtje vagy csomópont-készlete az ügyfél előfizetésében található. A kiszolgáló és a fürt vagy a csomópont-készlet képes kommunikálni egymással az API-kiszolgáló virtuális hálózatának [Azure Private link szolgáltatásával][private-link-service] , valamint egy olyan privát végponttal, amely az ügyfél AK-fürt alhálózatán van kitéve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure CLI 2.2.0-s vagy újabb verziója
+* Az Azure CLI 2.2.0 vagy újabb verziója
 
-## <a name="create-a-private-aks-cluster"></a>Saját AKS-fürt létrehozása
+## <a name="create-a-private-aks-cluster"></a>Privát AK-fürt létrehozása
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévő erőforráscsoportot az AKS-fürthöz.
+Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévő erőforráscsoportot az AK-fürthöz.
 
 ```azurecli-interactive
 az group create -l westus -n MyResourceGroup
 ```
 
-### <a name="default-basic-networking"></a>Alapértelmezett alaphálózati kapcsolat 
+### <a name="default-basic-networking"></a>Alapértelmezett alapszintű hálózatkezelés 
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
-Ahol *--enable-private-cluster* kötelező jelző egy privát fürthöz. 
+Where *--enable-Private-cluster* kötelező jelző egy privát fürthöz. 
 
 ### <a name="advanced-networking"></a>Speciális hálózatkezelés  
 
@@ -52,63 +52,63 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 
 ```
-Ahol *--enable-private-cluster* kötelező jelző egy privát fürthöz. 
+Where *--enable-Private-cluster* kötelező jelző egy privát fürthöz. 
 
 > [!NOTE]
-> Ha a Docker-híd cidr (172.17.0.1/16) ütközik az alhálózat CIDR, módosítsa a Docker-híd címét megfelelően.
+> Ha a Docker-híd CIDR (172.17.0.1/16) ütközne az alhálózati CIDR, módosítsa a Docker-híd megfelelőjét.
 
-## <a name="options-for-connecting-to-the-private-cluster"></a>A magánfürthöz való csatlakozás lehetőségei
+## <a name="options-for-connecting-to-the-private-cluster"></a>A privát fürthöz való csatlakozás lehetőségei
 
-Az API-kiszolgáló végpontja nem rendelkezik nyilvános IP-címmel. Az API-kiszolgáló kezeléséhez egy virtuális gépet kell használnia, amely hozzáfér az AKS-fürt Azure virtuális hálózatához (VNet). A magánfürthöz való hálózati kapcsolat létrehozására számos lehetőség kínálkodik.
+Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgáló kezeléséhez olyan virtuális gépet kell használnia, amely hozzáféréssel rendelkezik az AK-fürt Azure-Virtual Networkához (VNet). Több lehetőség is van a magánhálózati kapcsolat létrehozására a privát fürthöz.
 
-* Hozzon létre egy virtuális gépet ugyanabban az Azure virtuális hálózatban (VNet) az AKS-fürttel.
-* Használjon virtuális gépet egy külön hálózatban, és állítsa be [a virtuális hálózati társviszony-létesítést.][virtual-network-peering]  Erről a lehetőségről az alábbi szakaszban olvashat bővebben.
-* Használjon [expressz útvonal- vagy VPN-kapcsolatot.][express-route-or-VPN]
+* Hozzon létre egy virtuális gépet ugyanabba az Azure-Virtual Networkba (VNet), mint az AK-fürtöt.
+* Használjon különálló hálózatban található virtuális GÉPET, és állítsa be a [virtuális hálózatok][virtual-network-peering]közötti társítást.  Erről a lehetőségről az alábbi szakaszban talál további információt.
+* [Express Route-vagy VPN-][express-route-or-VPN] kapcsolat használata.
 
-Virtuális gép létrehozása ugyanabban a virtuális hálózatban, mint az AKS-fürt a legegyszerűbb megoldás.  Az Expressz útvonal és a VPN-ek növelik a költségeket, és további hálózati összetettséget igényelnek.  A virtuális hálózati társviszony-létesítéshez meg kell terveznie a hálózati CIDR-tartományokat, hogy megbizonyosodjon arról, hogy nincsenek átfedések.
+A legegyszerűbb lehetőség a virtuális gép létrehozása ugyanabban a VNET, mint az AK-fürt.  Az expressz útvonal és a VPN-EK növelik a költségeket és további hálózati bonyolultságot igényelnek.  A virtuális hálózat társításához meg kell terveznie a hálózati CIDR-tartományokat, hogy ne legyenek átfedésben lévő tartományok.
 
 ## <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-Mint említettük, a virtuális hálózat társviszony-létesítés egyik módja a privát fürt eléréséhez. A virtuális hálózati társviszony-létesítés használatához létre kell hoznia egy kapcsolatot a virtuális hálózat és a magán DNS-zóna között.
+Ahogy említettük, a VNet-társítás az egyik módja a privát fürt elérésének. A VNet-társítás használatához létre kell hoznia egy kapcsolatot a virtuális hálózat és a magánhálózati DNS-zóna között.
     
-1. Nyissa meg a MC_* erőforráscsoportot az Azure Portalon.  
-2. Válassza ki a privát DNS-zónát.   
-3. A bal oldali ablaktáblában jelölje ki a **Virtuális hálózati** kapcsolatot.  
-4. Hozzon létre egy új hivatkozást a virtuális gép virtuális hálózatának a privát DNS-zónához való hozzáadásához. A DNS-zóna hivatkozása néhány percet vesz igénybe.  
-5. Lépjen vissza a MC_* erőforráscsoportaz Azure Portalon.  
-6. A jobb oldali ablaktáblában jelölje ki a virtuális hálózatot. A virtuális hálózat neve *aks-vnet-\** formában van.  
-7. A bal oldali ablaktáblában válassza a **Társviszony-létesítések**lehetőséget.  
-8. Válassza **a Hozzáadás**lehetőséget, adja hozzá a virtuális gép virtuális hálózatát, majd hozza létre a társviszony-létesítést.  
-9. Nyissa meg azt a virtuális hálózatot, ahol a virtuális gép rendelkezik, válassza a **Társviszony-létesítések**lehetőséget, válassza ki az AKS virtuális hálózatot, majd hozza létre a társviszony-létesítést. Ha a cím tartományok az AKS virtuális hálózat és a virtuális gép virtuális hálózati összecsapása, társviszony-létesítés sikertelen lesz. További információt a [Virtuális hálózati társviszony-létesítés][virtual-network-peering]című témakörben talál.
+1. Lépjen a Azure Portal MC_ * erőforráscsoporthoz.  
+2. Válassza ki a magánhálózati DNS-zónát.   
+3. A bal oldali ablaktáblán válassza ki a **virtuális hálózati** kapcsolatot.  
+4. Hozzon létre egy új hivatkozást, amely hozzáadja a virtuális gép virtuális hálózatát a magánhálózati DNS-zónához. Néhány percet vesz igénybe, amíg a DNS-zóna hivatkozása elérhetővé válik.  
+5. Térjen vissza a Azure Portal MC_ * erőforráscsoporthoz.  
+6. A jobb oldali ablaktáblában válassza ki a virtuális hálózatot. A virtuális hálózat neve: *AK-vnet-\**.  
+7. A bal oldali ablaktáblán válassza **a**társítások lehetőséget.  
+8. Válassza a **Hozzáadás**lehetőséget, adja hozzá a virtuális gép virtuális hálózatát, majd hozza létre a társítást.  
+9. Nyissa meg a virtuális hálózatot, ahol a virtuális gép rendelkezik **, válassza a társítások lehetőséget,** válassza ki az AK-beli virtuális hálózatot, majd hozza létre a társítást. Ha a címtartomány az AK-beli virtuális hálózaton és a virtuális gép virtuális hálózatának összevonásán alapul, a társítás sikertelen lesz. További információ: [Virtual Network peering][virtual-network-peering].
 
-## <a name="hub-and-spoke-with-custom-dns"></a>Hub és beszélt az egyéni DNS
+## <a name="hub-and-spoke-with-custom-dns"></a>A hub és a küllő egyéni DNS-sel
 
-[A hub- és küllős architektúrákat](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) gyakran használják hálózatok azure-beli üzembe helyezésére. A küllővirtuális hálózatok DNS-beállításai sok ilyen telepítésben úgy vannak konfigurálva, hogy egy központi DNS-továbbítóra hivatkozzon, amely lehetővé teszi a helyszíni és az Azure-alapú DNS-feloldást. Amikor egy AKS-fürtöt ilyen hálózati környezetbe telepít, van néhány speciális szempont, amelyet figyelembe kell venni.
+A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) gyakran használják az Azure-beli hálózatok üzembe helyezésére. Ezen telepítések többségében a küllős virtuális hálózatok DNS-beállításai úgy vannak konfigurálva, hogy egy központi DNS-továbbítóra hivatkozzon, amely lehetővé teszi a helyszíni és az Azure-alapú DNS-feloldást. Ha egy AK-fürtöt egy ilyen hálózati környezetben helyez üzembe, néhány speciális szempontot figyelembe kell venni.
 
-![Privát fürtközpont és küllő](media/private-clusters/aks-private-hub-spoke.png)
+![Privát fürt hub és küllő](media/private-clusters/aks-private-hub-spoke.png)
 
-1. Alapértelmezés szerint egy privát fürt kiépítésekor egy privát végpont (1) és egy privát DNS-zóna (2) jön létre a fürt felügyelt erőforráscsoportjában. A fürt a privát zónában lévő A rekordot használja a privát végpont IP-címének feloldásához az API-kiszolgálóval való kommunikációhoz.
+1. Alapértelmezés szerint a rendszer a fürt által felügyelt erőforráscsoporthoz (1) és egy privát DNS-zónát (2) hoz létre egy privát fürt üzembe helyezésekor. A fürt egy rekordot használ a privát zónában az API-kiszolgálóval való kommunikációhoz használt privát végpont IP-címének feloldásához.
 
-2. A privát DNS-zóna csak ahhoz a virtuális hálózathoz kapcsolódik, amelyhez a fürtcsomópontok (3) kapcsolódnak. Ez azt jelenti, hogy a privát végpontot csak az adott csatolt virtuális hálózat állomásai oldhatják fel. Azokban az esetekben, ahol nincs egyéni DNS konfigurálva a virtuális hálózaton (alapértelmezett), ez probléma nélkül működik, mint állomások pont 168.63.129.16 A DNS, amely képes feloldani rekordok a privát DNS-zóna miatt a kapcsolatot.
+2. A magánhálózati DNS-zóna csak azon VNet van csatolva, amelyhez a fürtcsomópontok csatlakoznak (3). Ez azt jelenti, hogy a magánhálózati végpontot csak az adott csatolt VNet lévő gazdagépek oldják fel. Olyan esetekben, amikor nincs egyéni DNS konfigurálva a VNet (alapértelmezett), ez nem jelent problémát, mert a 168.63.129.16 for DNS-ben a gazdagépek is feloldják a rekordokat a magánhálózati DNS-zónában, a hivatkozás miatt.
 
-3. Azokban az esetekben, amikor a fürtöt tartalmazó virtuális hálózat egyéni DNS-beállításokkal (4) rendelkezik, a fürt telepítése sikertelen, kivéve, ha a magánDNS-zóna az egyéni DNS-feloldókat (5) tartalmazó virtuális hálózathoz van csatolva. Ez a kapcsolat manuálisan hozható létre a fürt kiépítése során vagy automatizálás on automation létrehozása után a zóna létrehozása az Azure Policy vagy más eseményalapú telepítési mechanizmusok (például az Azure Event Grid és az Azure Functions).
+3. Olyan esetekben, amikor a fürtöt tartalmazó VNet egyéni DNS-beállításokkal rendelkezik (4), a fürt üzembe helyezése meghiúsul, ha a magánhálózati DNS-zóna az egyéni DNS-feloldókat (5) tartalmazó VNet van társítva. Ez a hivatkozás manuálisan hozható létre, miután a privát zóna létrejött a fürt kiépítése során vagy az automatizáláson keresztül, ha Azure Policy vagy más eseményvezérelt központi telepítési mechanizmus (például Azure Event Grid és Azure Functions) használatával észleli a zóna létrehozását.
 
 ## <a name="dependencies"></a>Függőségek  
 
-* A Private Link szolgáltatás csak a standard Azure load balancer támogatott. Az egyszerű Azure load balancer nem támogatott.  
-* Egyéni DNS-kiszolgáló használatához adja hozzá az Azure DNS IP 168.63.129.16-ot az egyéni DNS-kiszolgáló felső áramú DNS-kiszolgálójaként.
+* A Private link Service csak a standard Azure Load Balancer esetén támogatott. Az alapszintű Azure Load Balancer nem támogatott.  
+* Ha egyéni DNS-kiszolgálót szeretne használni, adja hozzá a Azure DNS IP-168.63.129.16 a felsőbb rétegbeli DNS-kiszolgálóként az egyéni DNS-kiszolgálón.
 
 ## <a name="limitations"></a>Korlátozások 
-* Az IP-engedélyezett tartományok nem alkalmazhatók a privát API-kiszolgáló végpontjára, csak a nyilvános API-kiszolgálóra vonatkoznak
-* A rendelkezésre állási zónák jelenleg bizonyos régiókban támogatottak, lásd a dokumentum kezdetét 
-* [Az Azure Private Link szolgáltatás korlátozásai][private-link-service] a privát fürtökre, az Azure privát végpontjaira és a virtuális hálózati szolgáltatás végpontjaira vonatkoznak, amelyek jelenleg nem támogatottak ugyanabban a virtuális hálózatban.
-* Nincs támogatás a privát fürtvirtuális csomópontjaihoz a privát Azure Container Instances (ACI) privát Azure virtuális hálózatban való pörgetéséhez
-* Nincs támogatás az Azure DevOps-integrációhoz a magánfürtökkel
-* Az ügyfelek, amelyek nek engedélyezniük kell az Azure Container Registry, hogy működjön együtt a privát AKS, a Container Registry virtuális hálózat társviszonyt kell létesíteni az ügynök fürt virtuális hálózat.
-* Nincs aktuális támogatás az Azure dev spaces
-* Nem támogatott a meglévő AKS-fürtök magánfürtökké alakítása
-* A privát végpont törlése vagy módosítása az ügyfél alhálózatában a fürt működésének leállását eredményezi. 
-* Az Azure Monitor a tárolók live data jelenleg nem támogatott.
+* Az IP-címekre jogosult tartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
+* A Availability Zones jelenleg bizonyos régiókban támogatott, tekintse meg a dokumentum elejét 
+* Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre, az Azure privát végpontokra és a virtuális hálózati szolgáltatás-végpontokra vonatkoznak, amelyek jelenleg nem támogatottak ugyanabban a virtuális hálózatban.
+* A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokon lévő Azure Container Instances (ACI) használatát
+* Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból
+* Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
+* Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz
+* Meglévő AK-fürtök privát fürtökre való konvertálása nem támogatott
+* Ha törli vagy módosítja a magánhálózati végpontot az ügyfél alhálózatán, a fürt működése leáll. 
+* A tárolók élő adatAzure Monitor jelenleg nem támogatottak.
 
 
 <!-- LINKS - internal -->

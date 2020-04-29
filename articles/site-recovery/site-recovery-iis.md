@@ -1,6 +1,6 @@
 ---
-title: Vészhelyreállítás beállítása Egy IIS-webalkalmazáshoz az Azure Site Recovery használatával
-description: Ismerje meg, hogyan replikálható az IIS webfarm virtuális gépei az Azure Site Recovery használatával.
+title: Az IIS-webalkalmazás vész-helyreállításának beállítása Azure Site Recovery használatával
+description: Ismerje meg, hogyan replikálhatja az IIS webfarm-alapú virtuális gépeket Azure Site Recovery használatával.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,53 +8,53 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478292"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vészhelyreállítás beállítása többrétegű IIS-alapú webalkalmazáshoz
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vész-helyreállítás beállítása többrétegű IIS-alapú webalkalmazáshoz
 
-Alkalmazás szoftver a motor az üzleti termelékenység egy szervezetben. A különböző webes alkalmazások különböző célokat szolgálhatnak egy szervezetben. Egyes alkalmazások, például a bérszámfejtéshez használt alkalmazások, a pénzügyi alkalmazások és az ügyfélfelé néző webhelyek kritikus fontosságúak lehetnek a szervezet számára. A termelékenység csökkenésének elkerülése érdekében fontos, hogy a szervezet folyamatosan működjön és működjön. Ennél is fontosabb, hogy ezek az alkalmazások következetesen elérhetők, segíthetnek megelőzni a szervezet márkájának vagy arculatának károsodását.
+Az alkalmazás szoftvere a szervezet üzleti hatékonyságának motorja. Különböző webalkalmazások különböző célokat szolgálhatnak a szervezetekben. Egyes alkalmazások, például a bérszámfejtési feldolgozáshoz, a pénzügyi alkalmazásokhoz és az ügyfelekhez kapcsolódó webhelyekhez használt alkalmazások kritikus fontosságúak lehetnek a szervezet számára. A hatékonyság megromlásának megelőzése érdekében fontos, hogy a szervezet folyamatosan felhasználja ezeket az alkalmazásokat. Még ennél is fontosabb, hogy ezek az alkalmazások folyamatosan elérhetők a szervezet márkájának vagy rendszerképének károsodásának megelőzése érdekében.
 
-A kritikus fontosságú webalkalmazások általában többrétegű alkalmazásokként vannak beállítva: a web, az adatbázis és az alkalmazás különböző szinteken vannak. Amellett, hogy különböző szintek között oszlik meg, az alkalmazások is használhatnak több kiszolgálót minden rétegben a forgalom terheléselosztása. Ezenkívül a különböző rétegek és a webkiszolgáló közötti leképezések statikus IP-címeken alapulhatnak. Feladatátvételkor néhány ilyen leképezést frissíteni kell, különösen akkor, ha több webhely van konfigurálva a webkiszolgálón. Ha a webalkalmazások TLS-t használnak, frissítenie kell a tanúsítványkötéseket.
+A kritikus webalkalmazások jellemzően többrétegű alkalmazásokként vannak beállítva: a web, az adatbázis és az alkalmazás különböző szinteken található. A különböző szinteken való elosztás mellett az alkalmazások az egyes szinteken több kiszolgálót is használhatnak a forgalom elosztása érdekében. Emellett a különböző rétegek és a webkiszolgálók közötti leképezések statikus IP-címeken alapulnak. A feladatátvétel során a leképezések némelyikét frissíteni kell, különösen akkor, ha több webhely van konfigurálva a webkiszolgálón. Ha a webalkalmazások TLS protokollt használnak, frissítenie kell a tanúsítvány kötéseit.
 
-A nem replikáción alapuló hagyományos helyreállítási módszerek különböző konfigurációs fájlok, beállításjegyzék-beállítások, kötések, egyéni összetevők (COM vagy .NET), tartalom és tanúsítványok biztonsági mentését foglalják magukban. A fájlok at manuális lépések sorozata állítja helyre. A fájlok biztonsági mentésének és manuális helyreállításának hagyományos helyreállítási módszerei nehézkesek, hibalehetőségek, és nem méretezhetők. Előfordulhat például, hogy egyszerűen elfelejt biztonsági másolatot tenni a tanúsítványokról. A feladatátvétel után nem marad más választása, mint új tanúsítványokat vásárolni a kiszolgálóhoz.
+A nem replikáción alapuló hagyományos helyreállítási módszerek a különböző konfigurációs fájlok, a beállításjegyzék-beállítások, a kötések, az egyéni összetevők (COM vagy .NET), a tartalom és a tanúsítványok biztonsági mentését is magukban foglalják. A fájlok manuális lépésekkel állíthatók helyre. A fájlok biztonsági mentésének és manuális helyreállításának hagyományos helyreállítási módszerei nehézkesek, a hibákra hajlamosak, és nem méretezhetők. Előfordulhat például, hogy könnyen elfelejti a tanúsítványok biztonsági mentését. A feladatátvételt követően nem választhat, de új tanúsítványokat is vásárolhat a kiszolgálóhoz.
 
-Egy jó vész-helyreállítási megoldás támogatja a modellezéshelyreállítási tervek összetett alkalmazásarchitektúrák. Emellett testre szabott lépéseket is hozzáadhat a helyreállítási tervhez a rétegek közötti alkalmazásleképezések kezeléséhez. Katasztrófa esetén az alkalmazásleképezések egykattintásos, biztos megoldást biztosítanak, amely alacsonyabb RTO-hoz vezet.
+A jó vész-helyreállítási megoldás támogatja az összetett alkalmazás-architektúrák modellezésére szolgáló helyreállítási terveket. Emellett a helyreállítási tervhez is hozzáadhat testreszabott lépéseket a rétegek közötti alkalmazás-hozzárendelések kezeléséhez. Ha katasztrófa van, az alkalmazás-hozzárendelések egyetlen kattintással, biztos-shot megoldással szolgálnak, amely segít az alacsonyabb RTO.
 
-Ez a cikk azt ismerteti, hogy miként védheti meg az Internet Information Services (IIS) szolgáltatáson alapuló webalkalmazásokat az [Azure Site Recovery](site-recovery-overview.md)használatával. A cikk ismerteti a háromrétegű, IIS-alapú webalkalmazás Azure-ba replikálásának ajánlott, és hogyan lehet feladatátvételt az alkalmazás az Azure-ba.
+Ez a cikk azt ismerteti, hogyan lehet védelemmel ellátni egy webalkalmazást Internet Information Services (IIS) alapján [Azure site Recovery](site-recovery-overview.md)használatával. A cikk az ajánlott eljárásokat mutatja be egy háromrétegű, IIS-alapú webalkalmazás az Azure-ba történő replikálásához, a vész-helyreállítási gyakorlat elvégzéséhez, valamint az alkalmazás Azure-ba történő feladatátvételéhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy tudja, hogyan kell elvégezni a következő feladatokat:
+Mielőtt elkezdené, győződjön meg arról, hogy tudja, hogyan végezheti el a következő feladatokat:
 
 * [Virtuális gép replikálása az Azure-ba](vmware-azure-tutorial.md)
-* [Helyreállítási hálózat tervezése](site-recovery-network-design.md)
-* [Tesztfeladat-átvétel az Azure-ba](site-recovery-test-failover-to-azure.md)
+* [Helyreállítási hálózat kialakítása](site-recovery-network-design.md)
+* [Végezzen feladatátvételi tesztet az Azure-ba](site-recovery-test-failover-to-azure.md)
 * [Feladatátvétel az Azure-ba](site-recovery-failover.md)
 * [Tartományvezérlő replikálása](site-recovery-active-directory.md)
 * [SQL Server replikálása](site-recovery-sql.md)
 
-## <a name="deployment-patterns"></a>Telepítési minták
-Az IIS-alapú webalkalmazások általában az alábbi telepítési minták egyikét követik:
+## <a name="deployment-patterns"></a>Üzembe helyezési minták
+Az IIS-alapú webalkalmazások jellemzően a következő telepítési minták egyikét követik:
 
-**1. telepítési minta**
+**1. üzembe helyezési minta**
 
-IIS-alapú webfarm alkalmazáskérelem-útválasztással (ARR), IIS-kiszolgálóval és SQL Server kiszolgálóval.
+Egy, az Application Request Routing (ARR), egy IIS-kiszolgáló és SQL Server használatával rendelkező IIS-alapú webfarm.
 
-![Három rétegből álló IIS-alapú webfarm diagramja](./media/site-recovery-iis/deployment-pattern1.png)
+![Egy három rétegből álló IIS-alapú webfarm diagramja](./media/site-recovery-iis/deployment-pattern1.png)
 
-**Üzembe helyezési minta 2**
+**2. üzembe helyezési minta**
 
-IIS-alapú webfarm ARR-rel, IIS-kiszolgálóval, alkalmazáskiszolgálóval és SQL Server kiszolgálóval.
+Egy, az ARR-t, egy IIS-kiszolgálót, egy alkalmazáskiszolgáló és egy SQL Servert tartalmazó IIS-alapú webfarm.
 
-![Négy rétegből álló IIS-alapú webfarm diagramja](./media/site-recovery-iis/deployment-pattern2.png)
+![Egy négy rétegből álló IIS-alapú webfarm diagramja](./media/site-recovery-iis/deployment-pattern2.png)
 
 ## <a name="site-recovery-support"></a>Site Recovery támogatása
 
-A jelen cikkben szereplő példákat a Windows Server 2012 R2 Enterprise rendszeren az IIS 7.5-ös virtuális gépekkel rendelkező virtuális gépeket használjuk. Mivel a Site Recovery replikációja nem alkalmazásspecifikus, a jelen cikkben szereplő javaslatok nak az alábbi táblázatban felsorolt esetekben és az IIS különböző verzióiban kell alkalmazniuk.
+A cikkben szereplő példák esetében a VMware virtuális gépeket az IIS 7,5-es verziójával használjuk a Windows Server 2012 R2 Enterprise rendszeren. Mivel Site Recovery replikáció nem alkalmazásspecifikus, a cikkben szereplő ajánlásokat a következő táblázatban szereplő forgatókönyvekben és az IIS különböző verzióiban kell alkalmazni.
 
 ### <a name="source-and-target"></a>Forrás és cél
 
@@ -67,40 +67,40 @@ Azure|NA|Igen
 
 ## <a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
 
-Az összes IIS-webfarm-virtuális gép Azure-ba történő replikálásának megkezdéséhez kövesse a [Feladatátvétel tesztelése az Azure-ba a Site Recovery szolgáltatásban](site-recovery-test-failover-to-azure.md)című útmutatót.
+Az összes IIS-webfarm virtuális gép az Azure-ba történő replikálásának megkezdéséhez kövesse a [feladatátvétel tesztelése az Azure-ban](site-recovery-test-failover-to-azure.md)című témakör útmutatását site Recovery.
 
-Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet a virtuális gépnek el kell vennie. Az IP-cím beállításához nyissa meg a TARGET**IP** **számítási és hálózati beállításokat.** > 
+Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások** > **cél IP**-címet.
 
-![Képernyőkép, amely bemutatja, hogyan állítható be a cél IP a Site Recovery Compute and Network ablaktáblán](./media/site-recovery-active-directory/dns-target-ip.png)
+![A cél IP-cím megadását bemutató képernyőkép a Site Recovery számítási és hálózati ablaktáblán](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>Helyreállítási terv létrehozása
-A helyreállítási terv támogatja a különböző szintek szekvenálása egy többrétegű alkalmazás feladatátvétel során. A szekvenálás segít fenntartani az alkalmazások konzisztenciáját. Amikor helyreállítási tervet hoz létre egy többrétegű webalkalmazáshoz, hajtsa végre a Helyreállítási terv létrehozása a Site Recovery használatával című részben [ismertetett](site-recovery-create-recovery-plans.md)lépéseket.
+A helyreállítási terv a feladatátvétel során a többrétegű alkalmazások különböző szintjeinek sorrendjét támogatja. Az előkészítés segíti az alkalmazások konzisztenciájának fenntartását. Ha többrétegű webalkalmazáshoz hoz létre helyreállítási tervet, hajtsa végre a [helyreállítási terv létrehozása a site Recovery használatával](site-recovery-create-recovery-plans.md)című témakörben ismertetett lépéseket.
 
-### <a name="add-virtual-machines-to-failover-groups"></a>Virtuális gépek hozzáadása feladatátvételi csoportokhoz
-Egy tipikus többrétegű IIS webalkalmazás a következő összetevőkből áll:
-* SQL virtuális gépekkel rendelkező adatbázisszint.
-* A webes szint, amely egy IIS-kiszolgálóból és egy alkalmazásszintből áll. 
+### <a name="add-virtual-machines-to-failover-groups"></a>Virtuális gépek hozzáadása a feladatátvételi csoportokhoz
+Egy tipikus többrétegű IIS-webalkalmazás a következő összetevőkből áll:
+* SQL-alapú virtuális gépeket tartalmazó adatbázis-rétegek.
+* A webes csomag, amely egy IIS-kiszolgálót és egy alkalmazási szintet tartalmaz. 
 
-Virtuális gépek hozzáadása különböző csoportokhoz a réteg alapján:
+Adja hozzá a virtuális gépeket különböző csoportokhoz a következő szintek alapján:
 
-1. Hozzon létre egy helyreállítási tervet. Adja hozzá az adatbázisréteg virtuális gépeit az 1. Ez biztosítja, hogy az adatbázisrétegvirtuális gépei utolsó leállítása és először a létrehozott.
-1. Adja hozzá az alkalmazásréteg virtuális gépeit a 2. Ez biztosítja, hogy az alkalmazásréteg virtuális gépei az adatbázisréteg létrehozása után jelenjenek meg.
-1. Adja hozzá a webes réteg virtuális gépeit a 3- as csoportban. Ez biztosítja, hogy a webes rétegbeli virtuális gépek az alkalmazásszint feladása után jelenjenek meg.
-1. Terheléselosztási virtuális gépek hozzáadása a 4-es csoportban. Ez biztosítja, hogy a terheléselosztási virtuális gépek a webes szint feladása után jelenjenek meg.
+1. Hozzon létre egy helyreállítási tervet. Adja hozzá az adatbázis szintű virtuális gépeket az 1. csoportban. Ezzel biztosíthatja, hogy az adatbázis-rétegek virtuális gépei le legyenek állítva utoljára, és elsőként.
+1. Adja hozzá az alkalmazás szintű virtuális gépeket a 2. csoportban. Ez biztosítja, hogy az alkalmazási rétegek virtuális gépei az adatbázis-rétegek felállítása után legyenek felkészülve.
+1. Adja hozzá a webes rétegek virtuális gépeket a 3. csoportban. Ezzel biztosíthatja, hogy a webes rétegek virtuális gépei az alkalmazási szintet meghoztak.
+1. Terheléselosztási virtuális gépek hozzáadása a 4. csoportban. Ez biztosítja, hogy a virtuális gépek terheléselosztását a rendszer a webes rétegek felállítása után hozza létre.
 
-További információt [a Helyreállítási terv testreszabása](site-recovery-runbook-automation.md#customize-the-recovery-plan)című témakörben talál.
+További információ: [a helyreállítási terv testreszabása](site-recovery-runbook-automation.md#customize-the-recovery-plan).
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>Parancsfájl hozzáadása a helyreállítási tervhez
-Az IIS-webfarm megfelelő működéséhez előfordulhat, hogy bizonyos műveleteket kell végeznie az Azure virtuális gépeken a feladatátvétel után vagy egy teszt feladatátvétel során. A feladatátvételt követő egyes műveletek automatizálhatók. Frissítheti például a DNS-bejegyzést, módosíthatja a helykötést, vagy módosíthatja a kapcsolati karakterláncot a megfelelő parancsfájlok helyreállítási tervhez való hozzáadásával. [VMM-parancsfájl hozzáadása a helyreállítási tervhez](site-recovery-how-to-add-vmmscript.md) azt ismerteti, hogyan állíthatók be automatikus feladatok parancsfájl használatával.
+Ahhoz, hogy az IIS-webfarm megfelelően működjön, előfordulhat, hogy műveleteket kell végrehajtania az Azure-beli virtuális gépeken feladatátvétel utáni vagy feladatátvételi teszt során. Automatizálhat néhány feladatátvétel utáni műveletet. Frissítheti például a DNS-bejegyzést, módosíthatja a hely kötését, vagy megváltoztathatja a kapcsolati karakterláncot úgy, hogy a megfelelő parancsfájlokat hozzáadja a helyreállítási tervhez. [VMM-parancsfájl hozzáadása helyreállítási tervhez](site-recovery-how-to-add-vmmscript.md) az automatizált feladatok parancsfájl használatával történő beállítását ismerteti.
 
 #### <a name="dns-update"></a>DNS-frissítés
-Ha a DNS dinamikus DNS-frissítésre van konfigurálva, a virtuális gépek általában az indításkor frissítik a DNS-t az új IP-címmel. Ha a DNS új IP-címekkel való frissítéséhez explicit lépést szeretne hozzáadni, adjon hozzá egy parancsfájlt az [IP-cím frissítéséhez a DNS-ben](https://aka.ms/asr-dns-update) a helyreállításiterv-csoportok feladatátvétel utáni műveleteként.  
+Ha a DNS dinamikus DNS-frissítésre van konfigurálva, a virtuális gépek általában az új IP-címmel frissítik a DNS-t az indításkor. Ha explicit lépést szeretne hozzáadni a DNS-nek a virtuális gépek új IP-címeivel való frissítéséhez, adjon hozzá egy [parancsfájlt a DNS IP-](https://aka.ms/asr-dns-update) címének frissítés utáni feladatátvételi művelete helyreállítási terv csoportjain.  
 
-#### <a name="connection-string-in-an-applications-webconfig"></a>Kapcsolati karakterlánc az alkalmazás web.config fájljában
-A kapcsolati karakterlánc azt az adatbázist határozza meg, amelyhez a webhely kommunikál. Ha a kapcsolati karakterlánc az adatbázis virtuális gépének nevét hordozza, nincs szükség további lépésekre a feladatátvétel után. Az alkalmazás automatikusan kommunikálhat az adatbázissal. Továbbá, ha az adatbázis virtuális gép IP-címét megőrzi, nem kell frissíteni a kapcsolati karakterláncot. 
+#### <a name="connection-string-in-an-applications-webconfig"></a>Kapcsolati sztring az alkalmazás Web. config fájljában
+A kapcsolatok karakterlánca határozza meg azt az adatbázist, amellyel a webhely kommunikál. Ha a kapcsolatok karakterlánca a virtuális gép nevét adja meg, a feladatátvételt követő további lépések nem szükségesek. Az alkalmazás automatikusan tud kommunikálni az adatbázissal. Továbbá, ha a virtuális gép IP-címe megmarad, nem kell frissítenie a kapcsolódási karakterláncot. 
 
-Ha a kapcsolati karakterlánc ip-cím használatával hivatkozik az adatbázis virtuális gépére, azt a feladatátvétel után frissíteni kell. A következő kapcsolati karakterlánc például a 127.0.1.2 IP-címmel rendelkező adatbázisra mutat:
+Ha a kapcsolódási karakterlánc IP-cím használatával hivatkozik az adatbázis virtuális gépre, frissíteni kell a feladatátvételt követően. A következő kapcsolódási karakterlánc például a-adatbázisra mutat az IP-127.0.1.2:
 
         <?xml version="1.0" encoding="utf-8"?>
         <configuration>
@@ -109,54 +109,54 @@ Ha a kapcsolati karakterlánc ip-cím használatával hivatkozik az adatbázis v
         </connectionStrings>
         </configuration>
 
-A webes rétegben lévő kapcsolati karakterlánc frissítéséhez adjon hozzá egy [IIS-kapcsolatfrissítési parancsfájlt](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) a 3.
+A webes szinten lévő kapcsolati sztring frissítéséhez adjon hozzá egy [IIS-kapcsolat frissítési parancsfájlt](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) a 3. csoport után a helyreállítási tervben.
 
-#### <a name="site-bindings-for-the-application"></a>Helykötések az alkalmazáshoz
-Minden oldal kötelező érvényű információból áll. A kötési információ tartalmazza a kötés típusát, azt az IP-címet, amelyen az IIS-kiszolgáló figyeli a hely reklamálását, a portszámot és a hely állomásnevét. A feladatátvétel során szükség lehet frissíteni ezeket a kötéseket, ha van egy változás az IP-cím, amely a hozzájuk társított.
+#### <a name="site-bindings-for-the-application"></a>Az alkalmazáshoz tartozó hely kötései
+Minden hely kötési adatokat tartalmaz. A kötési információ magában foglalja a kötés típusát, az IP-címet, amelyen az IIS-kiszolgáló figyeli a helyre irányuló kéréseket, a portszámot és a helyhez tartozó állomásnevek nevét. Előfordulhat, hogy a feladatátvétel során frissítenie kell ezeket a kötéseket, ha módosul a hozzájuk társított IP-cím.
 
 > [!NOTE]
 >
-> Ha a helykötést az Összes ki nem osztott elemre **állítja,** nem kell frissítenie ezt a kötelező érvényű feladatátvétel után. Továbbá, ha a helyhez társított IP-cím nem módosul a feladatátvétel után, nem kell frissítenie a helykötést. (Az IP-cím megőrzése az elsődleges és helyreállítási helyekhez rendelt hálózati architektúrától és alhálózatoktól függ. Előfordulhat, hogy a frissítésük nem valósítható meg a szervezet számára.)
+> Ha a helyhez tartozó kötést az **összes hozzá nem rendelt**értékre állítja be, nem kell frissítenie ezt a kötést a feladatátvétel után. Továbbá, ha a helyhez társított IP-cím nem módosul a feladatátvétel után, nem kell frissítenie a hely kötését. (Az IP-cím megőrzése az elsődleges és a helyreállítási helyekhez rendelt hálózati architektúrától és alhálózattól függ. Előfordulhat, hogy a frissítése nem valósítható meg a szervezet számára.)
 
-![Képernyőkép a TLS/SSL kötés beállítását bemutató képernyőkép](./media/site-recovery-iis/sslbinding.png)
+![A TLS/SSL-kötés beállítását bemutató képernyőkép](./media/site-recovery-iis/sslbinding.png)
 
-Ha az IP-címet egy helyhez társította, frissítse az összes helykötést az új IP-címmel. A helykötések módosításához adjon hozzá egy [IIS webréteg-frissítési parancsfájlt](https://aka.ms/asr-web-tier-update-runbook-classic) a 3.
+Ha az IP-címet egy helyhez társította, akkor az összes hely kötését az új IP-címmel frissítse. A hely kötéseinek módosításához adjon hozzá egy [IIS webes szintű frissítési parancsfájlt](https://aka.ms/asr-web-tier-update-runbook-classic) a 3. csoport után a helyreállítási tervben.
 
 #### <a name="update-the-load-balancer-ip-address"></a>A terheléselosztó IP-címének frissítése
-Ha Rendelkezik ARR virtuális géppel, az IP-cím frissítéséhez adjon hozzá egy [IIS ARR feladatátvételi parancsfájlt](https://aka.ms/asr-iis-arrtier-failover-script-classic) a 4- es csoport után.
+Ha ARR virtuális géppel rendelkezik, az IP-cím frissítéséhez adjon hozzá egy [IIS ARR feladatátvételi parancsfájlt](https://aka.ms/asr-iis-arrtier-failover-script-classic) a 4. csoport után.
 
-#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>TLS/SSL tanúsítványkötés HTTPS-kapcsolathoz
-Előfordulhat, hogy egy webhely hez olyan TLS/SSL-tanúsítvány tartozik, amely biztosítja a biztonságos kommunikációt a webkiszolgáló és a felhasználó böngészője között. Ha a webhely HTTPS-kapcsolattal rendelkezik, és rendelkezik egy Kapcsolódó HTTPS-helykötéssel az IIS-kiszolgáló IP-címéhez TLS/SSL tanúsítványkötéssel, új helykötést kell hozzáadnia a tanúsítványhoz az IIS virtuális gép feladatátvétel utáni IP-címével.
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>TLS/SSL-tanúsítvány kötése HTTPS-kapcsolathoz
+Előfordulhat, hogy egy webhelyhez tartozik egy, a webkiszolgáló és a felhasználó böngészője közötti biztonságos kommunikációt biztosító TLS/SSL-tanúsítvány. Ha a webhely HTTPS-kapcsolattal rendelkezik, és az IIS-kiszolgáló IP-címéhez társított HTTPS-hely kötést is tartalmaz egy TLS/SSL-tanúsítvány kötéssel, akkor új hely kötést kell hozzáadnia a tanúsítványhoz az IIS-alapú virtuális gép feladatátvétel utáni közzétételének IP-címével.
 
-A TLS/SSL tanúsítvány az alábbi összetevőkre adható ki:
+A TLS/SSL-tanúsítvány a következő összetevőkkel állítható ki:
 
-* A teljesen minősített domain név a honlapon.
+* A webhely teljes tartományneve.
 * A kiszolgáló neve.
-* Helyettesítő karakter a tartománynévhez.  
-* Egy IP-cím. Ha a TLS/SSL tanúsítvány t az IIS-kiszolgáló IP-címével szemben van kiadva, egy másik TLS/SSL-tanúsítványt kell kiállítani az Azure-webhelyen lévő IIS-kiszolgáló IP-címével szemben. Ehhez a tanúsítványhoz létre kell hozni egy további TLS-kötést. Emiatt azt javasoljuk, hogy ne használjon az IP-cím hez kiadott TLS/SSL tanúsítványt. Ez az opció kevésbé széles körben használják, és hamarosan elavult szerint az új hitelesítésszolgáltató / böngésző fórum változásokat.
+* A tartománynévhez tartozó helyettesítő tanúsítvány.  
+* Egy IP-cím. Ha a TLS/SSL-tanúsítványt az IIS-kiszolgáló IP-címére állítja ki, akkor egy másik TLS-/SSL-tanúsítványt kell kiállítani az Azure-beli IIS-kiszolgáló IP-címére. A tanúsítványhoz további TLS-kötést kell létrehozni. Ezért javasoljuk, hogy ne használjon TLS/SSL-tanúsítványt az IP-címen. Ez a lehetőség kevésbé széles körben használatos, és hamarosan elavulttá válik az új hitelesítésszolgáltató/böngésző Fórum módosításaival összhangban.
 
-#### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>A webes réteg és az alkalmazásszint közötti függőség frissítése
-Ha olyan alkalmazásspecifikus függősége van, amely a virtuális gépek IP-címén alapul, frissítenie kell ezt a függőséget a feladatátvétel után.
+#### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>A webes rétegek és az alkalmazási rétegek közötti függőség frissítése
+Ha a virtuális gépek IP-címén alapuló alkalmazásspecifikus függőség van, akkor frissítenie kell ezt a függőséget a feladatátvétel után.
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
-1. Az Azure Portalon válassza ki a Recovery Services-tároló.
-2. Válassza ki az IIS webfarmhoz létrehozott helyreállítási tervet.
+1. A Azure Portal válassza ki a Recovery Services-tárolót.
+2. Válassza ki az IIS-webfarmhoz létrehozott helyreállítási tervet.
 3. Kattintson a **Feladatátvétel tesztelése** elemre.
-4. A teszt feladatátvételi folyamat elindításához válassza ki a helyreállítási pontot és az Azure virtuális hálózatot.
-5. Ha a másodlagos környezet ben, akkor végre érvényesítések.
-6. Ha az ellenőrzések befejeződtek, a teszt feladatátvételi környezet tisztításához válassza az **Érvényesítésbefejeződés**lehetőséget.
+4. A feladatátvételi teszt folyamatának elindításához válassza ki a helyreállítási pontot és az Azure-beli virtuális hálózatot.
+5. Ha a másodlagos környezet működik, elvégezheti az érvényesítést.
+6. Az érvényesítések befejezése után a feladatátvételi teszt környezet tisztításához válassza az **érvényesítések kész**lehetőséget.
 
-További információ: [Feladatátvétel tesztelése az Azure-ban a Site Recovery.for](site-recovery-test-failover-to-azure.md)more information, see Test failover to Azure in Site Recovery .
+További információ: a [feladatátvétel tesztelése az Azure-ban site Recovery](site-recovery-test-failover-to-azure.md).
 
 ## <a name="run-a-failover"></a>Feladatátvétel futtatása
 
-1. Az Azure Portalon válassza ki a Recovery Services-tároló.
-1. Válassza ki az IIS webfarmhoz létrehozott helyreállítási tervet.
+1. A Azure Portal válassza ki a Recovery Services-tárolót.
+1. Válassza ki az IIS-webfarmhoz létrehozott helyreállítási tervet.
 1. Válassza a **Feladatátvétel** lehetőséget.
 1. A feladatátvételi folyamat elindításához válassza ki a helyreállítási pontot.
 
-További információ: [Feladatátvétel a Site Recovery alkalmazásban.](site-recovery-failover.md)
+További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>További lépések
-* További információ a [többi alkalmazás replikálásáról](site-recovery-workload.md) a Site Recovery használatával.
+* További információ [más alkalmazások replikálásáról](site-recovery-workload.md) site Recovery használatával.

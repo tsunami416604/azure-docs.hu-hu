@@ -1,6 +1,6 @@
 ---
-title: A leküldéses értesítések fontossága a mobilalkalmazásokban a Visual Studio App Center és az Azure Értesítési központok segítségével
-description: Ismerje meg az olyan szolgáltatásokat, mint például a Visual Studio App Center, amelynek segítségével kapcsolatba léphet a mobilalkalmazás-felhasználókkal.
+title: A leküldéses értesítések fontossága Visual Studio App Center és az Azure Notification Hubs
+description: Ismerkedjen meg az olyan szolgáltatásokkal, mint a Visual Studio App Center, amelyekkel felhasználhatja a mobil alkalmazás felhasználóit.
 author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,66 +8,66 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: bc59857cdb843dfff54e69f2226f13cfe70df8f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235334"
 ---
-# <a name="engage-with-your-application-users-by-sending-push-notifications"></a>Lépjen kapcsolatba az alkalmazás felhasználóival leküldéses értesítések küldésével
+# <a name="engage-with-your-application-users-by-sending-push-notifications"></a>Leküldéses értesítések küldése az alkalmazás felhasználóinak
 
-Akár fogyasztói, akár vállalati alkalmazásokat hoz, azt szeretné, hogy a felhasználók aktívan használják az alkalmazást. Gyakran előfordul, hogy meg szeretné osztani a legfrissebb híreket, játékfrissítéseket, izgalmas ajánlatokat, termékfrissítéseket vagy bármilyen más releváns információt a felhasználókkal. A felhasználókkal való elköteleződés növeléséhez és az alkalmazáshoz való visszatéréshez szükséges módon valós időben kell kommunikálnia a felhasználókkal.
+Akár fogyasztói, akár vállalati alkalmazásokat készít, azt szeretné, hogy a felhasználók aktívan használják az alkalmazást. Gyakran előfordul, hogy meg szeretné osztani a feltört híreket, a játékok frissítéseit, az izgalmas ajánlatokat, a termékfrissítéseket, vagy bármely más releváns információt a felhasználókkal. A felhasználók és az alkalmazáshoz való visszatérés megnövekedéséhez a felhasználóknak valós időben kell kommunikálni a felhasználókkal.
 
-A leküldéses értesítések gyors és hatékony módot biztosítanak az alkalmazás felhasználóival való kommunikációra. A megfelelő időben felveheti a felhasználókat, és értesítheti őket a kívánt információkról, általában egy mobileszközön lévő előugró elemben vagy párbeszédpanelen, függetlenül attól, hogy mit csinálnak.
+A leküldéses értesítések gyors és hatékony módot biztosítanak az alkalmazás felhasználóival való kommunikációra. A megfelelő időben elérheti a felhasználókat, és értesítheti őket a kívánt információkról, általában egy előugró elemben vagy egy mobileszközön, függetlenül attól, hogy mit csinálnak.
 
 ## <a name="value-of-push-notifications"></a>Leküldéses értesítések értéke
-A leküldéses értesítések értéket biztosítanak a felhasználók és a vállalkozások számára.
+A leküldéses értesítések értéket biztosítanak a felhasználóknak és a vállalkozásoknak.
 
-A vállalkozások:
-- Közvetlenül kommunikáljon a felhasználókkal a támogatott platformokon a megfelelő időben küldött üzenetekkel.
-- Növelje a felhasználói elköteleződést azáltal, hogy valós idejű frissítéseket és emlékeztetőket küld a felhasználóknak, és arra ösztönzi őket, hogy rendszeresen vegyenek részt az alkalmazással.
-- Őrizze meg a felhasználókat, és vegye fel újra az alkalmazást letöltött, de ne használja azt, hogy újra aktívvá váljon.
-- Növelje a konverziós arányokat a felhasználói viselkedés elemzésével, a felhasználók szegmentálásával és a mobilleküldéses értesítések alapján a kampányok kihasználásával.
-- Termékeit és szolgáltatásait leküldéses üzenetek küldésével és a felhasználók nak történő időben történő frissítéssel népszerűsítheti.
-- A felhasználókat személyre szabott leküldéses üzenetek küldésével célozhatja meg.
+A vállalatok a következőket tehetik:
+- A megfelelő időben a támogatott platformokon küldött üzenetek küldésével közvetlenül kommunikálhat a felhasználókkal.
+- A felhasználók bevonásának növelésével valós idejű frissítéseket és emlékeztetőket küldhet a felhasználóknak, és arra bátoríthatja őket, hogy rendszeresen vegyenek részt az alkalmazásban.
+- Megtarthatja a felhasználókat, és újból felhasználhatja az alkalmazást letöltő inaktív felhasználókat, de ne használja újra az aktív állapotba.
+- A felhasználói viselkedés elemzésével, a felhasználók szegmentálásával és a kampányok a mobil leküldéses értesítések alapján történő kihasználásával növelheti a konverziós arányt.
+- Termékek és szolgáltatások reklámozása leküldéses üzenetek és időben történő frissítések küldésével a felhasználók számára.
+- Személyre szabott leküldéses üzenetek küldésével megcélozhatja a felhasználókat.
 
-Alkalmazásfelhasználók számára leküldéses értesítések:
-- Adjon értéket és információt valós időben.
+Alkalmazás felhasználóinak leküldéses értesítések:
+- Valós időben adja meg az értéket és az információt.
 - Emlékeztesse a felhasználókat az alkalmazás használatára.
 
-Az alábbi szolgáltatásoksegítségével engedélyezheti a leküldéses értesítéseket a mobilalkalmazásokban.
+A következő szolgáltatások segítségével engedélyezheti a leküldéses értesítéseket a Mobile apps szolgáltatásban.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-Az [App Center Push](/appcenter/push/)segítségével célzott üzeneteket küldhet iOS, Android és Windows rendszerű felhasználóknak anélkül, hogy a leküldéses értesítési szolgáltatások (PNS) használatával kellene kezelnie az értesítések eszközökre történő küldésének folyamatát. Az Azure Értesítési központokra épülő szolgáltatás hatékony irányítópult biztosításával kiküszöböli a manuális leküldéses értesítések hez kapcsolódó bonyodalmakat.
+A [app Center leküldéses](/appcenter/push/)szolgáltatással az iOS-, Android-és Windows-felhasználók számára megcélozható üzeneteket küldhet anélkül, hogy a leküldéses értesítési szolgáltatások (PNS) használatával kellene kezelnie az értesítések küldésének folyamatát. Az Azure Notification Hubs-ra épülő szolgáltatás a hatékony irányítópult megadásával kiküszöböli az értesítések manuális leküldésével kapcsolatos bonyodalmakat.
 
 **A legfontosabb jellemzők**
-- Leküldéses értesítéseket küldhet mobileszközökre különböző platformokon.
-- Az értesítésekkel adatokat küldhet egy alkalmazásnak, üzenetet jeleníthet meg a felhasználónak, vagy aktiválhatja az alkalmazás műveletét.
-- Értesítési célok használatával: 
-    - Üzenetek közvetítése az összes regisztrált eszközre.
-    - Értesítésekküldése a közönségeknek az eszközadatok és az egyéni tulajdonságok alapján.
+- Leküldéses értesítések küldése a mobileszközök számára különböző platformokon.
+- Értesítéseket használhat az alkalmazásba való adatküldéshez, a felhasználónak küldött üzenet megjelenítéséhez vagy az alkalmazás által indított művelet elindításához.
+- Értesítési célok használata a következőhöz: 
+    - Üzenetek küldése az összes regisztrált eszközre.
+    - Értesítések küldése a célközönségnek az eszköz adatai és az egyéni tulajdonságok alapján.
     - Értesítések küldése adott felhasználóknak.
     - Értesítések küldése adott eszközökre.
-- Használja ki a gazdag telemetriai adatok at leküldések, eszközök és hibák, amelyek az App Center portálon elérhető.
-- Platformtámogatás az iOS, Android, macOS, Xamarin, React Native, Unity és Cordova rendszerhez.
+- Használja ki a App Center portálon elérhető leküldések, eszközök és hibák gazdag telemetria.
+- Az iOS, az Android, a macOS, a Xamarin, a Native, az Unity és a Cordova platform támogatását veheti igénybe.
 
 **Referencia**
-- [Regisztráció a Visual Studio App Center alkalmazásközpontjában](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Az App Center push alkalmazásokkal való ismerkedése](/appcenter/push/)
+- [Regisztráció Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+- [Ismerkedés a App Center leküldéssel](/appcenter/push/)
 
 ## <a name="azure-notification-hubs"></a>Azure Notification Hubs
-[Az Értesítési központok](/azure/notification-hubs/notification-hubs-push-notification-overview) könnyen használható és kicsinyített leküldéses motort biztosít. Segítségével értesítéseket küldhet bármely platformra és a felhőben vagy a helyszíni háttértartalékból.
+A [Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) egy könnyen használható és méretezhető leküldéses motort biztosít. A használatával értesítéseket küldhet bármilyen platformra, illetve a felhőben vagy a helyszínen lévő összes háttérből is.
 
 **A legfontosabb jellemzők**
-- Leküldéses értesítésekküldéses értesítéseket küldhet bármely platformra bármely háttértartalékból, a felhőből vagy a helyszíni adatokból.
-- Egyetlen API-hívással gyors szórásküldése több millió mobileszközre.
-- Személyre szabhatja a leküldéses értesítéseket az ügyfél, a nyelv és a hely szerint.
-- A vevői szegmensek dinamikus meghatározása és értesítése.
-- Azonnal több millió mobileszközre méretezhető.
-- Platformtámogatás az iOS, Android, Windows, Kindle és Baidu rendszerhez.
+- Leküldéses értesítések küldése bármilyen platformra bármilyen háttérből, a felhőben vagy a helyszínen.
+- Gyors szórásos küldés több millió mobil eszközre egyetlen API-hívással.
+- Leküldéses értesítések kiszabása az ügyfél, a nyelv és a hely alapján.
+- Az ügyfelek szegmensének dinamikus definiálása és értesítése.
+- A méretezést azonnal elvégzi több millió mobileszköz számára.
+- Platformfüggetlen támogatás iOS, Android, Windows, Kindle és Baidu platformokhoz.
         
 **Referencia**
-- [Azure-portál](https://portal.azure.com) 
-- [Ismerkedés az Azure Értesítési központtal](/azure/notification-hubs/)
+- [Azure Portal](https://portal.azure.com) 
+- [Ismerkedés az Azure Notification Hubs](/azure/notification-hubs/)
 - [Rövid útmutatók](/azure/notification-hubs/create-notification-hub-portal)
-- [Minták](/azure/notification-hubs/samples)
+- [Példák](/azure/notification-hubs/samples)

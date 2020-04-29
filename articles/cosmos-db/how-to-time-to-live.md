@@ -1,55 +1,55 @@
 ---
-title: Az Azure Cosmos DB élőélő idejének konfigurálása és kezelése
-description: Megtudhatja, hogyan konfigurálhatja és kezelheti az Azure Cosmos DB-ben lévő tárolón és elemen való élethez való időt
+title: Az idő konfigurálása és kezelése Azure Cosmos DB
+description: Megtudhatja, hogyan konfigurálhatja és kezelheti az időt egy tárolón és egy elemen a Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: anfeldma
 ms.openlocfilehash: 72653a3b28181316a2bf7dd7e73f2685c3afcf73
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384262"
 ---
-# <a name="configure-time-to-live-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben való életidő beállítása
+# <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
-Az Azure Cosmos DB-ben beállíthatja az élő idő (TTL) a tároló szintjén, vagy felülbírálhatja azt egy elem szinten a tároló beállítása után. TTL-t konfigurálhat egy tárolóhoz az Azure Portal vagy a nyelvspecifikus SDK-k használatával. A cikkszintű TTL-felülbírálások konfigurálhatók az SDK-k használatával.
+A Azure Cosmos DBban beállíthatja, hogy az élettartam (TTL) a tároló szintjén legyen beállítva, vagy egy elem szintjén felülbírálhatja a tároló beállítása után. A tárolók ÉLETTARTAMát Azure Portal vagy a nyelvfüggő SDK-k használatával konfigurálhatja. Az elemszintű TTL-felülbírálások az SDK-k használatával konfigurálhatók.
 
-## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Az Azure Portal használatával időt kell adni a tárolón való életre
+## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Az Azure Portal-t használó tárolón való élő idő engedélyezése
 
-Az alábbi lépésekkel lehetővé teszi, hogy lejárt nélkül lévő tárolón éljenek. Engedélyezze, hogy a TTL felülbírálható legyen az elem szintjén. A TTL-t úgy is beállíthatja, hogy másodpercre nem nulla értéket ad meg.
+A következő lépésekkel engedélyezheti, hogy a lejárati idő nélkül egy tárolón lehessen élni. Ezzel a beállítással engedélyezheti, hogy az élettartam felülbírálható legyen az elemszintű szinten. Az ÉLETTARTAMot úgy is beállíthatja, hogy nem nulla értéket adjon meg másodpercben.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
-3. Nyissa meg az **Adatkezelő** ablaktáblát.
+3. Nyissa meg a **adatkezelő** ablaktáblát.
 
-4. Jelöljön ki egy meglévő tárolót, bontsa ki, és módosítsa a következő értékeket:
+4. Válasszon ki egy meglévő tárolót, bontsa ki, majd módosítsa a következő értékeket:
 
-   * Nyissa meg a **Méretezés & beállítások ablakot.**
-   * A **Keresés beállítása csoportban** **az Ideje élni**.
-   * Válassza **a Be lehetőséget (nincs alapértelmezett)** vagy válassza a **Be** lehetőséget, és állítson be egy TTL értéket
+   * Nyissa meg a **méretezési & beállítások** ablakát.
+   * A keresés, **élettartam** **beállítása** területen.
+   * Válassza **a be (nincs alapértelmezett)** lehetőséget, vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-   ![Az Azure Portalon való életidő beállítása](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   ![Állítsa be az élettartamot Azure Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
-* Ha a DefaultTimeToLive null értékű, akkor az Ideje, hogy élőben ki van kapcsolva
-* Ha a DefaultTimeToLive -1, akkor az Élő idő beállítás be van kapcsolva (nincs alapértelmezett)
-* Ha a DefaultTimeToLive-nak bármilyen más Int értéke van (kivéve 0) az élő adásban beállítás be van kapcsolva
+* Ha a DefaultTimeToLive értéke null, akkor az élettartama ki van kapcsolva
+* Ha a DefaultTimeToLive értéke-1, akkor az élettartam beállítás értéke (nincs alapértelmezett)
+* Ha a DefaultTimeToLive bármely más int értékkel rendelkezik (kivéve a 0 értéket), az élettartam beállítás értéke
 
-## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>Az Azure CLI vagy a PowerShell használatával a tárolón való életre való idő engedélyezése
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>Az Azure CLI vagy a PowerShell használatával engedélyezheti az időt egy tárolón való működésre
 
-A TTL létrehozásához vagy engedélyezéséhez a
+TTL létrehozása vagy engedélyezése tárolóban lásd:
 
-* [Tároló létrehozása TTL-lel az Azure CLI használatával](manage-with-cli.md#create-a-container-with-ttl)
-* [Tároló létrehozása TTL-lel a PowerShell használatával](manage-with-powershell.md#create-container-unique-key-ttl)
+* [TTL-tároló létrehozása az Azure CLI használatával](manage-with-cli.md#create-a-container-with-ttl)
+* [Hozzon létre egy tárolót az ÉLETTARTAMmal a PowerShell használatával](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Az SDK használatával a tárolón való életre való idő engedélyezése
+## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Az SDK-t használó tárolón való élő idő engedélyezése
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK V2 (Microsoft.Azure.DocumentDB)
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -63,7 +63,7 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     collectionDefinition);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK V3 (Microsoft.Azure.Cosmos)
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -75,7 +75,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 });
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-noexpiry"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-noexpiry"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
 ```java
 CosmosAsyncContainer container;
@@ -86,7 +86,7 @@ containerProperties.setDefaultTimeToLiveInSeconds(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-noexpiry"></a>Java SDK V3 (Maven com.microsoft.azure::azure-cosmos)
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-noexpiry"></a>Java SDK v3 (Maven com. microsoft. Azure:: Azure-Cosmos)
 
 ```java
 CosmosContainer container;
@@ -97,11 +97,11 @@ containerProperties.defaultTimeToLive(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().container();
 ```
 
-## <a name="set-time-to-live-on-a-container-using-sdk"></a>Állítsa be az időt, hogy él egy tárolón sdk használatával
+## <a name="set-time-to-live-on-a-container-using-sdk"></a>Időtartam beállítása egy tárolón az SDK használatával
 
-A tárolón való életidő beállításához meg kell adnia egy nem nulla pozitív számot, amely az időtartamot másodpercben jelzi. A konfigurált TTL-érték alapján a tárolóban lévő összes elem `_ts` törlődik az elem utolsó módosított időbélyege után.
+Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia egy nullától eltérő pozitív számot, amely a másodpercben megadott időtartamot jelzi. A beállított TTL-érték alapján a tárolóban lévő összes elem törlődik az elem `_ts` utolsó módosításának időbélyegzője után.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK V2 (Microsoft.Azure.DocumentDB)
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -115,7 +115,7 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     collectionDefinition;
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK V3 (Microsoft.Azure.Cosmos)
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -141,7 +141,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 }
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-defaultexpiry"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-defaultexpiry"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
 ```java
 CosmosAsyncContainer container;
@@ -152,7 +152,7 @@ containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-defaultexpiry"></a>Java SDK V3 (Maven com.microsoft.azure::azure-cosmos)
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-defaultexpiry"></a>Java SDK v3 (Maven com. microsoft. Azure:: Azure-Cosmos)
 
 ```java
 CosmosContainer container;
@@ -163,34 +163,34 @@ containerProperties.defaultTimeToLive(90 * 60 * 60 * 24);
 container = database.createContainerIfNotExists(containerProperties, 400).block().container();
 ```
 
-## <a name="set-time-to-live-on-an-item"></a>Elemen való életidő beállítása
+## <a name="set-time-to-live-on-an-item"></a>Élettartam beállítása egy elemen
 
-Az alapértelmezett, tárolón való életidő beállítása mellett beállíthatja az elem életidejét is. Az elem szintjén való életre való beállítás felülbírálja a tárolóban lévő elem alapértelmezett TTL-ját.
+A tárolók alapértelmezett élettartamának beállítása mellett beállíthatja, hogy az egyes elemek Mikor éljünk. Az elemszintű élettartam beállítása felülbírálja az adott tárolóban lévő elemek alapértelmezett ÉLETTARTAMát.
 
-* Ha egy cikken be szeretné állítani a TTL-t, meg kell adnia egy nem nulla pozitív számot, amely azt `_ts`jelzi, hogy az elem másodpercben megadva az elemet az elem utolsó módosított időbélyege után.
+* Egy elem ÉLETTARTAMának beállításához meg kell adnia egy nullától eltérő pozitív számot, amely azt jelzi, hogy a másodpercben az elem utolsó módosításának időbélyegzője után hány pontot kell lejárni `_ts`.
 
-* Ha a cikk nem rendelkezik TTL mezővel, akkor alapértelmezés szerint a tárolóra beállított TTL lesz a cikkre.
+* Ha az elem nem rendelkezik TTL mezővel, akkor alapértelmezés szerint a tárolóra beállított TTL-érték lesz érvényes az elemre.
 
-* Ha a TTL le van tiltva a tároló szintjén, az elem TTL mezője figyelmen kívül lesz hagyva, amíg a TTL újra nem engedélyezhető a tárolón.
+* Ha az élettartam le van tiltva a tároló szintjén, a rendszer figyelmen kívül hagyja az elem TTL mezőjét, amíg az élettartam újra engedélyezve nem lesz a tárolón.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure-portál
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure Portal
 
-Az alábbi lépésekkel időt kell adni egy elemen való életre:
+A következő lépésekkel engedélyezheti az élettartamot egy elemen:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
-3. Nyissa meg az **Adatkezelő** ablaktáblát.
+3. Nyissa meg a **adatkezelő** ablaktáblát.
 
-4. Jelöljön ki egy meglévő tárolót, bontsa ki, és módosítsa a következő értékeket:
+4. Válasszon ki egy meglévő tárolót, bontsa ki, majd módosítsa a következő értékeket:
 
-   * Nyissa meg a **Méretezés & beállítások ablakot.**
-   * A **Keresés beállítása csoportban** **az Ideje élni**.
-   * Válassza **a Be (nincs alapértelmezett)** lehetőséget, vagy válassza **a Be** lehetőséget, és állítson be egy TTL értéket. 
+   * Nyissa meg a **méretezési & beállítások** ablakát.
+   * A keresés, **élettartam** **beállítása** területen.
+   * Válassza **a be lehetőséget (nincs alapértelmezett)** , vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket. 
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-5. Ezután keresse meg azt az elemet, amelynek `ttl` az életidejét be szeretné állítani, adja hozzá a tulajdonságot, és válassza a **Frissítés lehetőséget.** 
+5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá `ttl` a tulajdonságot, és válassza a **frissítés**lehetőséget. 
 
    ```json
    {
@@ -204,7 +204,7 @@ Az alábbi lépésekkel időt kell adni egy elemen való életre:
    }
    ```
 
-### <a name="net-sdk-any"></a><a id="dotnet-set-ttl-item"></a>.NET SDK (bármely)
+### <a name="net-sdk-any"></a><a id="dotnet-set-ttl-item"></a>.NET SDK (bármilyen)
 
 ```csharp
 // Include a property that serializes to "ttl" in JSON
@@ -240,7 +240,7 @@ const itemDefinition = {
         };
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemexpiry"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemexpiry"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -275,7 +275,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemexpiry"></a>Java SDK V3 (Maven com.microsoft.azure::azure-cosmos)
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemexpiry"></a>Java SDK v3 (Maven com. microsoft. Azure:: Azure-Cosmos)
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -310,11 +310,11 @@ SalesOrder salesOrder = new SalesOrder(
 
 ```
 
-## <a name="reset-time-to-live"></a>Az életidő visszaállítása
+## <a name="reset-time-to-live"></a>Élettartam visszaállítása
 
-Az elemen való életidő alaphelyzetbe állítása írási vagy frissítési művelet végrehajtásával. Az írási vagy frissítési művelet az `_ts` aktuális időre állítja be, és az elem lejáratához a TTL újra kezdődik. Ha módosítani szeretné egy cikk TTL-jét, a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
+Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával visszaállíthatja az élettartamot egy adott elemen. Az írási vagy frissítési művelet az aktuális időpontot állítja be `_ts` , a lejárati idő élettartama pedig újra elindul. Ha módosítani szeretné egy elem ÉLETTARTAMát, akkor a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK V2 (Microsoft.Azure.DocumentDB)
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -328,7 +328,7 @@ readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK V3 (Microsoft.Azure.Cosmos)
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -339,7 +339,7 @@ itemResponse.Resource.ttl = 60 * 30 * 30; // update time to live
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-modifyitemexpiry"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-modifyitemexpiry"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -352,7 +352,7 @@ CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", ne
 }).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-modifyitemexpiry"></a>Java SDK V3 (Maven com.microsoft.azure::azure-cosmos)
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-modifyitemexpiry"></a>Java SDK v3 (Maven com. microsoft. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -370,11 +370,11 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 }).block();
 ```
 
-## <a name="turn-off-time-to-live"></a>Az életidő kikapcsolása
+## <a name="turn-off-time-to-live"></a>Az élettartam kikapcsolása
 
-Ha az élettartam be van állítva egy elemen, és nem szeretné, hogy az elem lejárjon, akkor beszerezheti az elemet, eltávolíthatja a TTL mezőt, és lecserélheti az elemet a kiszolgálón. Amikor a TTL mezőt eltávolítja a cikkből, a tárolóhoz rendelt alapértelmezett TTL érték lesz alkalmazva a cikkre. Állítsa a TTL-értéket -1 értékre, hogy megakadályozza egy elem lejáratát, és ne örökölje a TTL értéket a tárolóból.
+Ha az élettartam értéke be van állítva egy elemre, és már nem szeretné, hogy az elem lejárjon, akkor lekérheti az adott tételt, eltávolíthatja a TTL mezőt, és lecserélheti a kiszolgálón lévő elemre. Ha a TTL mező el lett távolítva az elemből, a rendszer a tárolóhoz rendelt alapértelmezett TTL-értéket alkalmazza az elemre. Állítsa a TTL értéket a-1 értékre, hogy megakadályozza egy elem lejáratát, és nem örökli a TTL értékét a tárolóból.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK V2 (Microsoft.Azure.DocumentDB)
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -389,7 +389,7 @@ readDocument.ttl = null; // inherit the default TTL of the container
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK V3 (Microsoft.Azure.Cosmos)
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -400,7 +400,7 @@ itemResponse.Resource.ttl = null; // inherit the default TTL of the container
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemdefaultexpiry"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemdefaultexpiry"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -413,7 +413,7 @@ CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", ne
 }).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemdefaultexpiry"></a>Java SDK V3 (Maven com.microsoft.azure::azure-cosmos)
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemdefaultexpiry"></a>Java SDK v3 (Maven com. microsoft. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -431,11 +431,11 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 }).block();
 ```
 
-## <a name="disable-time-to-live"></a>Az életidő letiltása
+## <a name="disable-time-to-live"></a>Élettartam letiltása
 
-Ha le szeretné tiltani a tárolón való életidő letiltását, és le szeretné állítani, hogy a háttérfolyamat ellenőrizze a lejárt elemeket, a `DefaultTimeToLive` tárolóban lévő tulajdonságot törölni kell. A tulajdonság törlése nem a -1 beállítástól eltérő. Ha -1 értékre állítja, a tárolóhoz hozzáadott új elemek örökké fognak élni, azonban felülírhatja ezt az értéket a tároló ban lévő egyes elemeken. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor is, ha azok kifejezetten felülbírálták az előző alapértelmezett TTL értéket.
+Ha le szeretné tiltani az időt egy tárolóban, és leállítja a háttérben futó folyamatot a lejárt elemek `DefaultTimeToLive` ellenőrzésével, a tárolóban lévő tulajdonságot törölni kell. A tulajdonság törlése eltér az-1 értéktől. Ha a-1 értékre állítja, a tárolóhoz hozzáadott új elemek örökre életbe kerülnek, de felülbírálhatja ezt az értéket a tároló adott elemein. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor sem, ha az előző alapértelmezett TTL-értéket explicit módon felülbírálták.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-disable-ttl"></a>.NET SDK V2 (Microsoft.Azure.DocumentDB)
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-disable-ttl"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null
@@ -445,7 +445,7 @@ collection.DefaultTimeToLive = null;
 await client.ReplaceDocumentCollectionAsync(collection);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-disable-ttl"></a>.NET SDK V3 (Microsoft.Azure.Cosmos)
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-disable-ttl"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null
@@ -455,7 +455,7 @@ containerResponse.Resource.DefaultTimeToLive = null;
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-disableexpiry"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-disableexpiry"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
 ```java
 CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
@@ -465,7 +465,7 @@ containerProperties.setDefaultTimeToLiveInSeconds(null);
 container.replace(containerProperties).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-disableexpiry"></a>Java SDK V3 (Maven com.microsoft.azure::azure-cosmos)
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-disableexpiry"></a>Java SDK v3 (Maven com. microsoft. Azure:: Azure-Cosmos)
 
 ```java
 CosmosContainer container;
@@ -480,6 +480,6 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az élethez való időről a következő cikkben olvasható:
+További információ a következő cikkben található idő megadásáról:
 
 * [Élettartam](time-to-live.md)

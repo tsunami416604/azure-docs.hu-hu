@@ -1,6 +1,6 @@
 ---
 title: Beépített edgeAgent közvetlen metódusok – Azure IoT Edge
-description: IoT Edge-telepítés figyelése és kezelése az IoT Edge-ügynök futásidejű modulbeépített közvetlen metódusai használatával
+description: IoT Edge üzemelő példány figyelése és kezelése beépített közvetlen módszerekkel az IoT Edge Agent Runtime modulban
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,43 +10,43 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240349"
 ---
-# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Kommunikáció az edgeAgent-el beépített közvetlen módszerekkel
+# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Kommunikáció a edgeAgent a beépített közvetlen módszerek használatával
 
-Az IoT Edge-alkalmazások figyelése és kezelése az IoT Edge-ügynök modulban található közvetlen módszerek használatával. Közvetlen metódusok vannak megvalósítva az eszközön, és ezután meghívható a felhőből. Az IoT Edge-ügynök közvetlen metódusok, amelyek segítségével figyelheti és kezelheti az IoT Edge-eszközök távolról.
+IoT Edge központi telepítések figyelése és kezelése az IoT Edge Agent modulban foglalt közvetlen módszerek használatával. A közvetlen metódusok implementálva vannak az eszközön, majd a felhőből is meghívhatók. A IoT Edge ügynök olyan közvetlen metódusokat tartalmaz, amelyek segítségével távolról figyelheti és kezelheti IoT Edge eszközeit.
 
-A közvetlen módszerekről, azok használatáról és a saját modulokban való megvalósításukról az [IoT Hub ból származó közvetlen metódusok megértése és meghívása](../iot-hub/iot-hub-devguide-direct-methods.md)című témakörben talál további információt.
+További információ a közvetlen módszerekről, a használatáról és a saját modulok megvalósításáról: [közvetlen módszerek megismerése és meghívása a IoT hubból](../iot-hub/iot-hub-devguide-direct-methods.md).
 
-Ezeknek a közvetlen metódusok neveinél a kis- és nagybetűk nem különböznek.
+Ezeknek a közvetlen metódusoknak a neve a kis-és nagybetűket nem megkülönböztető módon kezeli.
 
 ## <a name="ping"></a>Ping
 
-A **ping** módszer akkor hasznos, ha ellenőrzi, hogy az IoT Edge fut-e egy eszközön, vagy hogy az eszköz nyitott kapcsolat tal rendelkezik-e az IoT Hubhoz. Ezzel a közvetlen módszerrel pingeli az IoT Edge-ügynököt, és leszeretné az állapotát. A sikeres ping üres hasznos terhet és **"állapotot" ad vissza: 200**.
+A **pingelési** módszer hasznos annak ellenőrzéséhez, hogy IoT Edge fut-e az eszközön, vagy hogy az eszköz rendelkezik-e nyitott internetkapcsolattal IoT hub. Ezzel a közvetlen módszerrel pingelheti a IoT Edge-ügynököt, és lekérheti annak állapotát. A sikeres pingelés üres adattartalmat ad vissza, és **"status": 200**.
 
-Példa:
+Például:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
 ```
 
-Az Azure Portalon hívja meg a `ping` metódust a metódus `{}`nevével és egy üres JSON-tartalommal.
+A Azure Portalban hívja meg a metódust a metódus nevével `ping` és egy üres JSON `{}`-adattartalommal.
 
-![A "ping" közvetlen metódus meghívása az Azure Portalon](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
+![Közvetlen "ping" metódus meghívása Azure Portal](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
 
-## <a name="restart-module"></a>Újrakezdési modul
+## <a name="restart-module"></a>Modul újraindítása
 
-A **RestartModule** metódus lehetővé teszi az IoT Edge-eszközön futó modulok távoli kezelését. Ha egy modul hibás állapotot vagy más nem megfelelő állapotot jelent, aktiválhatja az IoT Edge-ügynök újraindítását. A sikeres újraindítási parancs üres hasznos adattal és **"állapottal" ad vissza: 200**.
+A **RestartModule** metódus lehetővé teszi a IoT Edge eszközön futó modulok távoli felügyeletét. Ha egy modul hibás állapotot vagy más nem kifogástalan viselkedést jelent, akkor a IoT Edge-ügynök kiváltható az újraindításhoz. Egy sikeres újraindítási parancs üres adattartalmat ad vissza, és **"status": 200**.
 
-A RestartModule metódus az IoT Edge 1.0.9-es és újabb verziójában érhető el. 
+A RestartModule metódus a IoT Edge 1.0.9 és újabb verziókban érhető el. 
 
-A RestartModule közvetlen metódust bármely IoT Edge-eszközön futó modulon használhatja, beleértve magát az edgeAgent modult is. Ha azonban ezt a közvetlen módszert használja az edgeAgent leállításához, nem kap sikeres eredményt, mivel a kapcsolat megszakad, miközben a modul újraindul.
+A RestartModule Direct metódust bármely IoT Edge eszközön futó modulon használhatja, beleértve a edgeAgent modult is. Ha azonban ezt a közvetlen módszert használja a edgeAgent leállítására, nem fog sikeres eredményt kapni, mert a rendszer megszakította a kapcsolódást a modul újraindításakor.
 
-Példa:
+Például:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <device name> -m '$edgeAgent' --method-payload \
@@ -58,7 +58,7 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 '
 ```
 
-Az Azure Portalon hívja meg a `RestartModule` metódust a metódus nevével és a következő JSON-tartalommal:
+A Azure Portal hívja meg a metódust a metódus nevével `RestartModule` és a következő JSON-adattartalommal:
 
 ```json
 {
@@ -67,16 +67,16 @@ Az Azure Portalon hívja meg a `RestartModule` metódust a metódus nevével és
 }
 ```
 
-![A "RestartModule" közvetlen metódus meghívása az Azure Portalon](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
+![Közvetlen "RestartModule" metódus hívása Azure Portal](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
 ## <a name="experimental-methods"></a>Kísérleti módszerek
 
-Új közvetlen módszer lehetőségek állnak rendelkezésre kísérleti funkciók tesztelésére, beleértve a következőket:
+Az új közvetlen metódus-beállítások a teszteléshez használható kísérleti funkciókként érhetők el, beleértve a következőket:
 
-* [UploadLogs:](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md)A modulnaplók lekérése és feltöltése az Azure Blob Storage-ba.
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): Ellenőrizze a feltöltési naplók kérésének állapotát.
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): A modulnaplók beolvasása a közvetlen metódus válaszában.
+* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): beolvassa a modul naplófájljait, és feltölti őket az Azure Blob Storageba.
+* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): a feltöltési naplókra vonatkozó kérelem állapotának beadása.
+* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): a közvetlen metódus válaszában beágyazott modul-naplók beolvasása.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az IoT Edge-ügynök és az IoT Edge hub modul twins tulajdonságai](module-edgeagent-edgehub.md)
+[A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai](module-edgeagent-edgehub.md)

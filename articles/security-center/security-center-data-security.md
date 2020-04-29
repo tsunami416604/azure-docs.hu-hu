@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80435848"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
@@ -47,11 +47,11 @@ Az Azure Security Center az alábbi forrásokból kapott adatok elemzésével bi
 
 | Virtuális gép geo                              | Munkaterület geo |
 |-------------------------------------|---------------|
-| Egyesült Államok, Brazília, Dél-afrikai Köztársaság | Egyesült Államok |
+| Egyesült Államok, Brazília, Dél-Afrika | Egyesült Államok |
 | Kanada                              | Kanada        |
-| Európa (az Egyesült Királyság kivételével)   | Európa        |
+| Európa (kivéve az Egyesült Királyságot)   | Európa        |
 | Egyesült Királyság                      | Egyesült Királyság |
-| Ázsia (India, Japán, Korea, Kína kivételével)   | Ázsia és a Csendes-óceáni térség  |
+| Ázsia (kivéve India, Japán, Korea, Kína)   | Ázsia és a Csendes-óceáni térség  |
 | Dél-Korea                              | Ázsia és a Csendes-óceáni térség  |
 | India                               | India         |
 | Japán                               | Japán         |
@@ -71,8 +71,8 @@ A gépösszetevők tárolása központilag történik, ugyanabban a régióban, 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Az adatgyűjtés kezelése a virtuális gépeken
 
-Ha bekapcsolja a Security Centert az Azure-ban, az adatgyűjtés bekapcsolódik minden előfizetésénél. Az előfizetések adatgyűjtését az Azure Security Center Biztonsági szabályzat részén is bekapcsolhatja. Ha az adatgyűjtés be van kapcsolva, az Azure Security Center a Log Analytics-ügynököt az összes meglévő támogatott Azure virtuális gépen és a létrehozott újgépeken írja elő.
-A Log Analytics-ügynök megkeresi a különböző biztonsággal kapcsolatos konfigurációkat és eseményeket [a Windows eseménykövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) nyomkövetésekbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics-ügynök beolvassa az eseménynapló-bejegyzéseket, és az ETW nyomon követi őket, és elemzésre átmásolja azokat a munkaterület(ek)re. A Log Analytics-ügynök az összeomlási memóriakép-fájlokat is átmásolja a munkaterület(ek)re, engedélyezi a folyamatlétrehozási eseményeket, és engedélyezi a parancssori naplózást.
+Ha bekapcsolja a Security Centert az Azure-ban, az adatgyűjtés bekapcsolódik minden előfizetésénél. Az előfizetések adatgyűjtését az Azure Security Center Biztonsági szabályzat részén is bekapcsolhatja. Amikor az adatgyűjtés be van kapcsolva, Azure Security Center kiépíti az Log Analytics ügynököt az összes meglévő támogatott Azure-beli virtuális gépen és a létrehozott újakon.
+A Log Analytics ügynök különböző biztonsággal kapcsolatos konfigurációkat vizsgál, és azokat az eseményeket [Windows esemény-nyomkövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) nyomkövetésbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics ügynök beolvassa az Eseménynapló-bejegyzéseket és a ETW-nyomkövetéseket, és átmásolja őket a munkaterületre (ok) elemzésre. Az Log Analytics ügynök az összeomlási memóriaképeket is átmásolja a munkaterületére, lehetővé teszi a folyamat-létrehozási események és a parancssori naplózás engedélyezését.
 
 Ha az Azure Security Center ingyenes verzióját használja, le is tilthatja a virtuális gépekről történő adatgyűjtést a biztonsági szabályzatban. A Standard szintű előfizetésekhez az adatgyűjtés kötelező. A virtuálisgép-lemez pillanatképeinek és összetevőinek gyűjtése akkor is engedélyezve lesz, ha letiltotta az adatgyűjtést.
 
@@ -80,8 +80,8 @@ Ha az Azure Security Center ingyenes verzióját használja, le is tilthatja a v
 
 Az ügyfelek különböző adatstreamekből származó Security Center-adatokat használhatnak, az alábbiak szerint:
 
-* **Azure Activity:** az összes biztonsági riasztás, a jóváhagyott Security Center [just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) kérelmek és az [adaptív alkalmazásvezérlők](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)által generált összes riasztás.
-* **Az Azure Monitor naplói:** az összes biztonsági riasztást.
+* **Azure-tevékenység**: minden biztonsági riasztás, jóváhagyott [Security Center igény](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) szerinti kérelmek, valamint az [adaptív alkalmazások](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)által létrehozott összes riasztás.
+* **Azure monitor naplók**: minden biztonsági riasztás.
 
 
 > [!NOTE]
@@ -90,8 +90,8 @@ Az ügyfelek különböző adatstreamekből származó Security Center-adatokat 
 ## <a name="see-also"></a>Lásd még
 Ebből a dokumentumból megtudta, hogyan kezeli az Azure Security Center az adatokat, és hogyan gondoskodik azok védelméről. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) – Ismerje meg, hogyan tervezheti meg és ismerheti meg az Azure Security Center bevezetésének tervezési szempontjait.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Ismerje meg, hogyan figyelheti az Azure-erőforrások állapotát
-* [Biztonsági riasztások kezelése és megválaszolása az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – További információ a biztonsági riasztások kezeléséről és az azokra való válaszadásról
-* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ismerje meg, hogyan figyelheti a partnermegoldások állapotát.
+* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) – megtudhatja, hogyan tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához
+* [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md) – útmutató a biztonsági riasztások kezeléséhez és megválaszolásához
+* [Partneri megoldások monitorozása Azure Security Centerokkal](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti a partneri megoldások állapotát.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

@@ -1,72 +1,72 @@
 ---
-title: Szenzoradatok beszedése a partnerektől
-description: Ez a cikk bemutatja, hogyan szerezhetsz be érzékelőadatokat a partnerektől.
+title: Érzékelők adatainak beolvasása a partnerektől
+description: Ez a cikk azt ismerteti, hogyan lehet beolvasni az érzékelők adatait a partnerektől.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398233"
 ---
-# <a name="get-sensor-data-from-sensor-partners"></a>Érzékelőadatok beszereznie az érzékelőpartnerektől
+# <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
-Az Azure FarmBeats segítségével streamelési adatokat hozhat létre ioT-eszközeiről és érzékelőiről a Datahubba. Jelenleg a következő érzékelőeszköz-partnerek támogatottak.
+Az Azure FarmBeats segítségével a IoT-eszközökről és-érzékelőkről átviheti a streamet a Datahub-be. Jelenleg a következő érzékelő-eszköz partnerek támogatottak.
 
-  ![FarmBeats partnerek](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
+  ![FarmBeats-partnerek](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-Az eszközadatok Azure FarmBeats-rel való integrálása segít a farmban üzembe helyezett IoT-érzékelők földi adatainak be- és leküzdése az adatközpontba. Az adatok, amint elérhetővé válnak, a FarmBeats gyorsítón keresztül jeleníthetők meg. Az adatok felhasználhatók az adatok fúziós és gépi tanulás/mesterséges intelligencia (ML/AI) modell épület segítségével FarmBeats.
+Az eszköz adatainak az Azure FarmBeats való integrálásával a farmon üzembe helyezett IoT-érzékelőkből az adatközpontba helyezheti a terepi adatait. A rendelkezésre álló, a FarmBeats-gyorsító használatával megjeleníthető adatelemek. Az adatok a FarmBeats használatával adatfúziós és gépi tanulási/mesterséges intelligencia (ML/AI) modellek létrehozásához használhatók.
 
-Az érzékelő adatfolyam-átvitelének elindításához győződjön meg a következőkről:
+Az érzékelő adatfolyamának elindításához a következőket kell biztosítani:
 
--  A FarmBeats szolgáltatást telepítette az Azure Marketplace-en.
--  Ön döntött az érzékelők és eszközök, hogy telepíteni szeretné a gazdaságban.
--  Ha talajnedvesség-érzékelőket szeretne használni, használja a FarmBeats talajnedvesség-érzékelő elhelyezési térképét, hogy ajánlást kapjon az érzékelők számáról és apontosról, hogy pontosan hova kell helyeznie őket. További információ: [Térképek létrehozása](generate-maps-in-azure-farmbeats.md).
-- Eszközöket vagy érzékelőket vásárolhat és helyezhet üzembe eszközpartnerétől a farmon. Győződjön meg róla, hogy az eszközpartnerek megoldásán keresztül hozzáférhet az érzékelő adataihoz.
+-  Telepítette a FarmBeats az Azure Marketplace-en.
+-  Ön dönti el, hogy milyen érzékelőkkel és eszközökkel kívánja telepíteni a farmon.
+-  Ha a talaj nedvességtartalmának érzékelőit kívánja használni, használja a FarmBeats-szennyeződési érzékelő elhelyezési térképét, hogy javaslatot tegyen az érzékelők számára, és hogy pontosan hol kell elhelyezni azokat. További információ: Maps- [Létrehozás](generate-maps-in-azure-farmbeats.md).
+- A farmján megvásárolhatja és üzembe helyezheti eszközeit és érzékelőit. Győződjön meg arról, hogy az eszköz partnereinek megoldásán keresztül éri el az érzékelő adatait.
 
-## <a name="enable-device-integration-with-farmbeats"></a>Eszközintegráció engedélyezése a FarmBeats alkalmazással
+## <a name="enable-device-integration-with-farmbeats"></a>Eszköz-integráció engedélyezése a FarmBeats
 
-Az érzékelőadatok streamelésének megkezdése után megkezdheti az adatok FarmBeats rendszerbe való bejutásának folyamatát. Adja meg a következő adatokat az eszközszolgáltatónak a FarmBeats-integráció engedélyezéséhez:
+Az érzékelők adatközvetítésének megkezdése után megkezdheti az adatgyűjtési folyamat beszerzését a FarmBeats-rendszeren. Adja meg a következő információkat az eszköz szolgáltatójának az FarmBeats való integráció engedélyezéséhez:
 
  - API-végpont
  - Bérlőazonosító
  - Ügyfél-azonosító
  - Titkos ügyfélkulcs
- - EventHub-kapcsolati karakterlánc
+ - EventHub-kapcsolatok karakterlánca
 
 A fenti információk létrehozásához kövesse az alábbi lépéseket:
 
 > [!NOTE]
-> Ezeket a lépéseket el kell végezni az Azure-ban az Azure-előfizetés eléréséhez, ahol a FarmBeats telepítve van.
+> Ezeket a lépéseket az Azure-ban kell végrehajtani ahhoz, hogy hozzáférjenek az Azure-előfizetéshez, ahol a FarmBeats üzembe lett helyezve.
 
 1. Jelentkezzen be itt: https://portal.azure.com/.
 
-2. **Ha a FarmBeats 1.2.7-es vagy újabb verzióját használja, hagyja ki az a, b és c lépéseket, és folytassa a 3.** A FarmBeats verziót a FarmBeats felhasználói felületének jobb felső sarkában található **Beállítások** ikonra kattintva ellenőrizheti.
+2. **Ha a FarmBeats 1.2.7 vagy újabb verzióval rendelkezik, hagyja ki az a, b és c lépést, és folytassa a 3. lépéssel.** A FarmBeats-verziót a FarmBeats felhasználói felület jobb felső sarkában található **Beállítások** ikonra kattintva tekintheti meg.
 
-      a.  Látogasson el az **Azure Active Directory** > **alkalmazásregisztrációira**
+      a.  **Azure Active Directory** > **alkalmazás regisztrációjának** megugrása
 
-      b. Válassza ki a FarmBeats központi telepítésének részeként létrehozott **alkalmazásregisztrációt.** Ugyanaz lesz a neve, mint a FarmBeats datahub.
+      b. Válassza ki a FarmBeats-telepítés részeként létrehozott **alkalmazás-regisztrációt** . Ez a neve megegyezik a FarmBeats datahub.
 
-      c. Válassza **az API->** válassza **az Ügyfélalkalmazás hozzáadása** lehetőséget, és írja be a **04b07795-8ddb-461a-bbee-02f9e1bf7b46 parancsot,** és jelölje be a Hatókör engedélyezése **jelölőnégyzetet.** Ez hozzáférést biztosít az Azure CLI -hez (Cloud Shell) az alábbi lépések végrehajtásához:
+      c. Válassza ki **az API közzététele** lehetőséget > válassza az **ügyfélalkalmazás hozzáadása** lehetőséget, és adja meg a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az **Engedélyezés hatókört**. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához:
 
-3. Nyissa meg a Cloud Shellt. Ez a beállítás az Azure Portal jobb felső sarkában található eszköztáron érhető el.
+3. Nyissa meg a Cloud Shellt. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
 
-    ![Az Azure Portal eszköztára](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Azure Portal eszköztár](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. Győződjön meg arról, hogy a környezet **PowerShell-re**van állítva. Alapértelmezés szerint Bash értékre van állítva.
+4. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
 
-    ![A PowerShell eszköztárának beállítása](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+    ![PowerShell eszköztár-beállítás](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-5. Nyissa meg a kezdőkönyvtárat.
+5. Nyissa meg a saját címtárát.
 
     ```azurepowershell-interactive 
     cd  
     ```
 
-6. Futtassa a következő parancsot. Ezzel parancsfájlt tölt le a kezdőkönyvtárba.
+6. Futtassa a következő parancsot. Ezzel letölt egy parancsfájlt a saját könyvtárába.
 
     ```azurepowershell-interactive 
 
@@ -74,7 +74,7 @@ A fenti információk létrehozásához kövesse az alábbi lépéseket:
 
     ```
 
-7. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlői azonosítót, amely beszerezhető az **Azure Active Directory** > **áttekintése** lapon.
+7. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory** > **áttekintő** oldalról kérhető le.
 
     ```azurepowershell-interactive 
 
@@ -82,43 +82,43 @@ A fenti információk létrehozásához kövesse az alábbi lépéseket:
 
     ```
 
-8. A képernyőn megjelenő utasításokat követve rögzítse az **API-végpont,** **a bérlőazonosító,** **az ügyfélazonosító**, **az ügyféltitkos kulcs**és az **EventHub-kapcsolati karakterlánc értékeit.**
+8. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
 
-### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Eszközadatok integrálása a létrehozott hitelesítő adatok használatával
+### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Az eszközök adatainak integrálása a generált hitelesítő adatok használatával
 
-Most már a következő információkat generált az előző szakaszban.
+Most a következő információk jönnek létre az előző szakaszban.
  - API-végpont
- - EventHub-kapcsolati karakterlánc
+ - EventHub-kapcsolatok karakterlánca
  - Ügyfél-azonosító
  - Titkos ügyfélkulcs
  - Bérlőazonosító
 
-Ezt meg kell adnia az eszközpartnerének a FarmBeats összekapcsolásához. Ugyanezt az eszközpartneri portálon keresztül. Például abban az esetben, ha davis i hangszereken használ, a Teralytic vagy a Pessl Instruments (Metos.at) az alábbi megfelelő oldalakra lép:
+Ezt a FarmBeats összekapcsolásához meg kell adnia az eszköz partnerének. Ha ugyanezt teszi, nyissa meg az eszköz partner portálját. Ha például a Davis Instruments, a Teralytic vagy a Pessl Instruments Instruments (Metos.at) eszközeit használja, ugorjon a megfelelő lapokra az alább említettek szerint:
 
-1. [Davis Instruments](https://weatherlink.github.io/azure-farmbeats/setup)
+1. [Davis-eszközök](https://weatherlink.github.io/azure-farmbeats/setup)
 
-2. [Teralitikus](https://app.teralytic.com/)
+2. [Teralytic](https://app.teralytic.com/)
 
-3. [Pessl Instruments](https://ng.fieldclimate.com/user-api-services)
+3. [Pessl Instruments-eszközök](https://ng.fieldclimate.com/user-api-services)
 
-Az eszközszolgáltató megerősíti a sikeres integrációt. A megerősítést követően megtekintheti az Azure FarmBeats összes eszközét és érzékelőjét.
+Az eszköz szolgáltatója megerősíti a sikeres integrációt. A megerősítést követően megtekintheti az összes eszközt és érzékelőt az Azure FarmBeats.
 
 ## <a name="view-devices-and-sensors"></a>Eszközök és érzékelők megtekintése
 
-A következő szakaszban megtekintheti a farm eszközeit és érzékelőit.
+A következő szakasz segítségével megtekintheti a farm eszközeit és érzékelőit.
 
 ### <a name="view-devices"></a>Eszközök megtekintése
 
 A FarmBeats jelenleg a következő eszközöket támogatja:
 
-- **Csomópont**: Olyan eszköz, amelyhez egy vagy több érzékelő csatlakozik.
-- **Átjáró**: Olyan eszköz, amelyhez egy vagy több csomópont csatlakozik.
+- **Csomópont**: egy eszköz, amelyhez egy vagy több érzékelő csatlakozik.
+- **Átjáró**: egy eszköz, amelyhez egy vagy több csomópont csatlakozik.
 
 Kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza a menü **Eszközök** elemét.
-  Az **Eszközök** lap megjeleníti az eszköz típusát, típusát, állapotát, azt a farmot, amelybe bekerül, valamint a metaadatok utolsó frissített dátumát. Alapértelmezés szerint a farm oszlopértéke *NULL*. Választhat, hogy egy eszközt egy farmhoz rendel. További információt az [Eszközök hozzárendelése című](#assign-devices)témakörben talál.
-2. Válassza ki az eszközt az eszköz tulajdonságainak, telemetriai és gyermekeszközeinek megtekintéséhez.
+1. A kezdőlapon válassza az **eszközök** lehetőséget a menüből.
+  Az **eszközök** lap megjeleníti az eszköz típusát, a modellt, az állapotot, a behelyezett farmot és a metaadatok utolsó frissítésének dátumát. Alapértelmezés szerint a farm oszlop értéke *Null*. Dönthet úgy, hogy hozzárendel egy eszközt egy farmhoz. További információ: [eszközök kiosztása](#assign-devices).
+2. Válassza ki az eszközt, amely az eszközhöz csatlakoztatott eszköz tulajdonságait, telemetria és alárendelt eszközeit szeretné megtekinteni.
 
     ![Eszközök lap](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
@@ -126,61 +126,61 @@ Kövesse az alábbi lépéseket:
 
 Kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza a menü **Érzékelők** elemét.
-  Az **Érzékelők** lap részletesen ismerteti az érzékelő típusát, a farmot, amelyhez csatlakozik, a szülőeszközre, a port nevére, a port típusára és a legutóbbi frissített állapotra.
-2. Válassza ki az érzékelőt az érzékelő tulajdonságainak, az aktív riasztásoknak és az érzékelőttt.
+1. A kezdőlapon válassza a menü **érzékelők** elemét.
+  Az **érzékelők** lap az érzékelő típusával, a hozzá kapcsolódó farmtal, a szülő eszközzel, a port nevével, a port típusával és az utolsó frissített állapottal kapcsolatos részleteket jeleníti meg.
+2. Válassza ki az érzékelő tulajdonságait, az aktív riasztásokat és a telemetria az érzékelőből.
 
-    ![Érzékelők oldal](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Érzékelők lap](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="assign-devices"></a>Eszközök hozzárendelése  
+## <a name="assign-devices"></a>Eszközök kiosztása  
 
-Miután az érzékelő adatai beáramlanak, hozzárendelheti azt ahhoz a farmhoz, ahol az érzékelőket telepítette.
+Az érzékelők bevezetésének folyamata után hozzárendelheti azt a farmhoz, ahol az érzékelőket üzembe helyezte.
 
-1. A kezdőlapon válassza a menü **Farmok** elemét. Megjelenik **a Farmok** listaoldala.
-2. Jelölje ki azt a farmot, amelyhez hozzá szeretné rendelni az eszközt, és válassza az **Eszközök hozzáadása**lehetőséget.
-3. **Megjelenik az Eszközök hozzáadása** ablak. Jelölje ki a farmhoz rendelni kívánt eszközt.
+1. A kezdőlapon válassza a **farmok** lehetőséget a menüből. Megjelenik a **farmok** listája lap.
+2. Válassza ki azt a farmot, amelyhez hozzá szeretné rendelni az eszközt, majd válassza az **eszközök hozzáadása**lehetőséget.
+3. Megjelenik az **eszközök hozzáadása** ablak. Válassza ki azt az eszközt, amelyet hozzá szeretne rendelni a farmhoz.
 
     ![Eszközök hozzáadása ablak](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Válassza **az Eszközök hozzáadása**lehetőséget. Másik lehetőségként lépjen az **Eszközök** menübe, jelölje ki a farmhoz rendelni kívánt eszközöket, és válassza **az Eszközök társítása**lehetőséget.
-5. Az **Eszközök társítása** ablakban válassza ki a farmot a legördülő listából, és válassza az **Alkalmazás az összesre** lehetőséget, ha a farmot az összes kijelölt eszközhöz szeretné társítani.
+4. Válassza az **eszközök hozzáadása**lehetőséget. Másik lehetőségként lépjen az **eszközök** menüre, válassza ki a farmhoz hozzárendelni kívánt eszközöket, majd válassza az **eszközök társítása**lehetőséget.
+5. Az **eszközök hozzárendelése** ablakban válassza ki a farm elemet a legördülő listából, és válassza az **összes alkalmazása** lehetőséget a farm összes kiválasztott eszközhöz való hozzárendeléséhez.
 
-    ![Eszközök társítása ablak](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+    ![Eszközök hozzárendelése ablak](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
-6. Ha az egyes eszközöket egy másik farmhoz szeretné társítani, jelölje ki a **Farmhoz hozzárendelés** oszlopban lévő legördülő nyilat, és jelöljön ki egy farmot az egyes eszközsorokhoz.
+6. Ha az egyes eszközöket egy másik farmhoz szeretné társítani, válassza a **hozzárendelés farmhoz** oszlop legördülő nyilát, és válasszon ki egy farmot az egyes eszközök sorához.
 
-7. Az eszközhozzárendelés befejezéséhez válassza a **Hozzárendelés** lehetőséget.
+7. Válassza a **hozzárendelés** lehetőséget az eszköz hozzárendelésének befejezéséhez.
 
 ### <a name="visualize-sensor-data"></a>Érzékelőadatok megjelenítése
 
 Kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza a **Farmok** parancs menüelem parancsát a **Farmok** lap megtekintéséhez.
-2. Válassza ki azt a **farmot,** amelynek az érzékelő adatait meg szeretné tekinteni.
-3. A **Farm** irányítópulton megtekintheti a telemetriai adatokat. Megtekintheti az élő telemetriai adatokat, vagy **az Egyéni tartomány** használatával megtekintheti egy adott dátumtartományt.
+1. A Kezdőlap lapon válassza a **farmok** lehetőséget a menüből a **farmok** oldal megtekintéséhez.
+2. Válassza ki azt a **farmot** , amelynek az érzékelőjét meg szeretné jeleníteni.
+3. A **Farm** irányítópultján megtekintheti a telemetria-adatbázisokat. Megtekintheti az élő telemetria, vagy az **egyéni tartomány** használatával megtekintheti a kívánt dátumtartományt.
 
-    ![Farm irányítópultja](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+    ![Farm irányítópult](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
 
 ## <a name="delete-a-sensor"></a>Érzékelő törlése
 
 Kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza az **Érzékelők** lehetőséget a menüből az **Érzékelők** oldal megtekintéséhez.
-2. Jelölje ki a törölni kívánt eszközt, és a megerősítést kérő ablakban válassza a **Törlés** lehetőséget.
+1. A kezdőlapon válassza az **érzékelők** lehetőséget a menüből az **érzékelők** lap megtekintéséhez.
+2. Válassza ki a törölni kívánt eszközt, és válassza a **Törlés** lehetőséget a megerősítő ablakban.
 
     ![Törlés gomb](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
-Egy megerősítő üzenet jelzi, hogy az érzékelő sikeresen törlődött.
+Egy megerősítő üzenet azt mutatja, hogy az érzékelő sikeresen törölve lett.
 
 ## <a name="delete-devices"></a>Eszközök törlése
 
 Kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza a menü **Eszközök parancsát** az **Eszközök** lap megtekintéséhez.
-2. Jelölje ki a törölni kívánt eszközt, és a megerősítést kérő ablakban válassza a **Törlés** lehetőséget.
+1. A kezdőlapon válassza az **eszközök** lehetőséget a menüben az **eszközök** lap megtekintéséhez.
+2. Válassza ki a törölni kívánt eszközt, és válassza a **Törlés** lehetőséget a megerősítő ablakban.
 
     ![Törlés gomb](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most már az Azure FarmBeats-példányba áramló érzékelőadatokkal rendelkezik. Most, megtanulják, hogyan kell [létrehozni térképeket](generate-maps-in-azure-farmbeats.md#generate-maps) a gazdaságok.
+Most már rendelkezik érzékelővel az Azure FarmBeats-példányba. Most megismerheti, hogyan [hozhatja](generate-maps-in-azure-farmbeats.md#generate-maps) ki a térképeket a farmokhoz.

@@ -1,7 +1,7 @@
 ---
-title: IPv6-alapú kétveremű alkalmazás üzembe helyezése alapszintű terheléselosztóval az Azure virtuális hálózatában – Erőforrás-manger sablon
+title: IPv6-alapú kettős stack-alkalmazás üzembe helyezése alapszintű Load Balancer az Azure Virtual Networkben – Resource Manager-sablon
 titlesuffix: Azure Virtual Network
-description: Ez a cikk bemutatja, hogyan telepíthet egy IPv6-alapú kettős veremű alkalmazást az Azure Resource Manager virtuálisgép-sablonjainak használatával az Azure Resource Manager virtuálisgép-sablonjainak használatával.
+description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú kettős verem alkalmazást az Azure Virtual Networkben Azure Resource Manager virtuálisgép-sablonok használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,25 +13,25 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 7c2f66d92597801aa7c6b0b32f86f594d3effb05
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420597"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>IPv6-alapú kétveremű alkalmazás üzembe helyezése alapszintű terheléselosztóval az Azure-ban – Sablon
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>IPv6-alapú Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer az Azure-ban – sablon
 
-Ez a cikk az IPv6-konfigurációs feladatok listáját tartalmazza az Azure Resource Manager virtuálisgép-sablon nak a vonatkozó részével. Az ebben a cikkben ismertetett sablon segítségével üzembe helyezhet egy kétverű (IPv4 + IPv6) alkalmazást alapszintű terheléselosztóval, amely kétverű virtuális hálózatot tartalmaz IPv4 és IPv6 alhálózatokkal, egy alapszintű terheléselosztót kettős (IPv4 + IPv6) előtér-konfigurációval, kettős IP-konfigurációval rendelkező hálózati adapterekkel rendelkező virtuális számítógépeket, hálózati biztonsági csoportot és nyilvános IP-címeket.
+Ez a cikk a Azure Resource Manager virtuálisgép-sablon részét képező IPv6-konfigurációs feladatok listáját tartalmazza. Az ebben a cikkben ismertetett sablon használatával helyezzen üzembe egy olyan alapszintű Load Balancer, amely egy IPv4-és IPv6-alhálózattal rendelkező kettős Veremes virtuális hálózatot tartalmaz, egy alapszintű Load Balancer kettős (IPv4 + IPv6) előtér-konfigurációkkal, valamint két IP-konfigurációval, hálózati biztonsági csoporttal és nyilvános IP-címmel rendelkező virtuális gépekkel.
 
-Ha kétverű (IPV4 + IPv6) alkalmazást szeretne telepíteni a Standard Load Balancer használatával, olvassa [el az IPv6-alapú kettős veremalkalmazás telepítése standard terheléselosztóval – sablon című témakört.](ipv6-configure-standard-load-balancer-template-json.md)
+A kettős verem (IPV4 + IPv6) alkalmazás standard Load Balancer használatával történő üzembe helyezését lásd: [IPv6 kettős verem alkalmazás üzembe helyezése standard Load Balancer sablonnal](ipv6-configure-standard-load-balancer-template-json.md).
 
 ## <a name="required-configurations"></a>Szükséges konfigurációk
 
-Keresse meg a sablon sablonszakaszait, hogy lássa, hol kell történniük.
+Keresse meg a sablonhoz tartozó szakaszt, és ellenőrizze, hogy hol történnek.
 
-### <a name="ipv6-addressspace-for-the-virtual-network"></a>IPv6 addressSpace a virtuális hálózathoz
+### <a name="ipv6-addressspace-for-the-virtual-network"></a>A virtuális hálózat IPv6-addressSpace
 
-Hozzáadandó sablonszakasz:
+A sablon szakasza, melyet hozzá szeretne adni:
 
 ```JSON
         "addressSpace": {
@@ -40,9 +40,9 @@ Hozzáadandó sablonszakasz:
             "[variables('vnetv6AddressRange')]"    
 ```
 
-### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6-alhálózat az IPv6 virtuális hálózati címbenTér
+### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6-alhálózat az IPv6 virtuális hálózat addressSpace
 
-Hozzáadandó sablonszakasz:
+A sablon szakasza, melyet hozzá szeretne adni:
 ```JSON
           {
             "name": "V6Subnet",
@@ -52,9 +52,9 @@ Hozzáadandó sablonszakasz:
 
 ```
 
-### <a name="ipv6-configuration-for-the-nic"></a>IPv6-konfiguráció a hálózati adapterhez
+### <a name="ipv6-configuration-for-the-nic"></a>A hálózati adapter IPv6-konfigurációja
 
-Hozzáadandó sablonszakasz:
+A sablon szakasza, melyet hozzá szeretne adni:
 ```JSON
           {
             "name": "ipconfig-v6",
@@ -70,7 +70,7 @@ Hozzáadandó sablonszakasz:
                 }
 ```
 
-### <a name="ipv6-network-security-group-nsg-rules"></a>NSG-szabályok Az IPv6 hálózati biztonsági csoport (NSG) szabályai
+### <a name="ipv6-network-security-group-nsg-rules"></a>IPv6 hálózati biztonsági csoport (NSG) szabályai
 
 ```JSON
           {
@@ -90,7 +90,7 @@ Hozzáadandó sablonszakasz:
 
 ## <a name="conditional-configuration"></a>Feltételes konfiguráció
 
-Ha hálózati virtuális berendezést használ, adja hozzá az IPv6-útvonalakat az útvonaltáblához. Ellenkező esetben ez a konfiguráció nem kötelező.
+Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalakat az útválasztási táblázatban. Ellenkező esetben ez a konfiguráció nem kötelező.
 
 ```JSON
     {
@@ -111,7 +111,7 @@ Ha hálózati virtuális berendezést használ, adja hozzá az IPv6-útvonalakat
 
 ## <a name="optional-configuration"></a>Választható konfiguráció
 
-### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6 internet-hozzáférés a virtuális hálózathoz
+### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6-alapú internet-hozzáférés a virtuális hálózathoz
 
 ```JSON
 {
@@ -136,7 +136,7 @@ Ha hálózati virtuális berendezést használ, adja hozzá az IPv6-útvonalakat
       }
 ```
 
-### <a name="ipv6-front-end-for-load-balancer"></a>IPv6 előtér a terheléselosztóhoz
+### <a name="ipv6-front-end-for-load-balancer"></a>IPv6-előtér Load Balancerhoz
 
 ```JSON
           {
@@ -147,7 +147,7 @@ Ha hálózati virtuális berendezést használ, adja hozzá az IPv6-útvonalakat
               }
 ```
 
-### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>IPv6 háttércímkészlet a terheléselosztóhoz
+### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>IPv6-alapú háttér-címkészlet Load Balancer
 
 ```JSON
               "backendAddressPool": {
@@ -160,7 +160,7 @@ Ha hálózati virtuális berendezést használ, adja hozzá az IPv6-útvonalakat
             "name": "lbrule-v6"
 ```
 
-### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>IPv6-os terheléselosztó-szabályok a bejövő és kimenő portok társítására
+### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>IPv6 Load Balancer-szabályok a bejövő és a kimenő portok hozzárendeléséhez
 
 ```JSON
           {
@@ -177,9 +177,9 @@ Ha hálózati virtuális berendezést használ, adja hozzá az IPv6-útvonalakat
                 }
 ```
 
-## <a name="sample-vm-template-json"></a>JSON mintavmsablon
-Ha az Azure Resource Manager-sablon használatával üzembe szeretne helyezni egy IPv6-alapú kettős veremű alkalmazást az Azure virtuális hálózatában az alapszintű terheléselosztóval, tekintse meg [itt](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)a mintasablont.
+## <a name="sample-vm-template-json"></a>Minta virtuálisgép-sablon JSON
+Ha Azure Resource Manager sablonnal szeretne üzembe helyezni egy IPv6-alapú kettős verembeli alkalmazást, amely alapszintű Load Balancer az Azure Virtual Network szolgáltatásban, tekintse meg a [minta sablont.](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)
 
 ## <a name="next-steps"></a>További lépések
 
-A [nyilvános IP-címek](https://azure.microsoft.com/pricing/details/ip-addresses/), a [hálózati sávszélesség](https://azure.microsoft.com/pricing/details/bandwidth/)vagy a [terheléselosztó](https://azure.microsoft.com/pricing/details/load-balancer/)díjszabásáról részletesen ismertheti.
+A [nyilvános IP-címekre](https://azure.microsoft.com/pricing/details/ip-addresses/), a [hálózati sávszélességre](https://azure.microsoft.com/pricing/details/bandwidth/)vagy a [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)díjszabására vonatkozó részletekért tekintse meg a következőt:.

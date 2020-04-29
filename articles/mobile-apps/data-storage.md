@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240911"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Mobile Application-adatok tárolása, szinkronizálása és lekérdezése a felhőből

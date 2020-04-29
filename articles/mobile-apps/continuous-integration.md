@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazások életciklusának automatizálása a Visual Studio App Center és az Azure-szolgáltatások segítségével
-description: Ismerje meg azokat a szolgáltatásokat, például az App Centert, amelyek segítenek a folyamatos építés és integráció beállításában a mobilalkalmazásokszámára.
+title: Az alkalmazások életciklusának automatizálása Visual Studio App Center és Azure-szolgáltatásokkal
+description: Ismerkedjen meg az olyan szolgáltatásokkal, mint a App Center, amelyek segítenek beállítani a mobil alkalmazásai folyamatos összeállítását és integrálását.
 author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,61 +8,61 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 0560f47b832ec2965d9b567e1aeff78baa9c247c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240927"
 ---
-# <a name="automate-the-lifecycle-of-your-apps-with-continuous-build-and-integration"></a>Automatizálja alkalmazásai életciklusát a folyamatos építés és integráció révén
+# <a name="automate-the-lifecycle-of-your-apps-with-continuous-build-and-integration"></a>Az alkalmazások életciklusának automatizálása folyamatos létrehozással és integrációval
 
-Fejlesztőkként kódot ír, és becsekkolja a kódtárházba, de előfordulhat, hogy a tárházba ellenőrzött véglegesítések nem mindig konzisztensek. Ha több fejlesztő dolgozik ugyanazon a projekten, problémák merülhetnek fel az integrációval. A csapatok olyan helyzetekbe ütközhetnek, ahol a dolgok nem működnek, a hibák felhalmozódnak, és a projektfejlesztés késik. A fejlesztőknek meg kell várniuk, amíg a teljes szoftverkód megépül és teszteli, hogy ellenőrizzék a hibákat, ami lassúvá és kevésbé ismétlődővé teszi a folyamatot. 
+A fejlesztőknek kódot kell írnia, és ellenőriznie kell a kódot a tárházban, de előfordulhat, hogy az adattárban bejelölt véglegesítek nem mindig konzisztensek. Ha több fejlesztő dolgozik ugyanazon a projekten, a problémák az integrációval is találkozhatnak. Előfordulhat, hogy a csapatok olyan helyzetekben futnak, ahol a dolgok nem működnek, a felhalmozott hibák és a projektek fejlesztése késleltetve lesz. A fejlesztőknek meg kell várniuk a teljes programkód felépítését és tesztelését, hogy ellenőrizze a hibákat, így a folyamat lassú és kevésbé ismétlődővé válik. 
 
-A folyamatos építés és integráció révén a fejlesztők egyszerűsíthetik a buildeket, és tesztelhetik a kódjukat azáltal, hogy lekötelezik a módosításokat a forráskód tárházán, és teszteket és ellenőrzéseket helyeznek el a buildkörnyezetben. Ily módon, ők mindig fut tesztek ellen a kódot. A forráskód minden módosítása folyamatosan épül, amikor véglegesítés történik a tárházban. Minden bejelentkezéssel a folyamatos integrációs (CI) kiszolgáló érvényesíti és végrehajtja a fejlesztő által létrehozott teszteket. Ha a tesztek nem felelnek meg, a rendszer visszaküldi a kódot további módosításokra. Ily módon a fejlesztők nem törik meg a létrehozott buildeket. Nem kell az összes tesztet helyileg futtatniuk a számítógépükön, ami növeli a fejlesztők termelékenységét. 
+A folyamatos kiépítéssel és integrációval a fejlesztők leegyszerűsítik a kód összeállítását és tesztelését azáltal, hogy elvégzik a forráskód-tárház módosításait, és teszteket és ellenőrzéseket végeznek a Build-környezetbe. Így mindig tesztek futnak a kódban. A forráskódon végrehajtott összes módosítás folyamatosan készül, amikor véglegesítik a tárházat. A folyamatos integrációs (CI) kiszolgáló minden bejelentkezéskor érvényesíti és végrehajtja a fejlesztő által létrehozott összes tesztet. Ha a tesztek nem haladnak át, a rendszer visszaküldi a kódot a további változtatásokhoz. Így a fejlesztők nem bontják le a létrehozott buildeket. Emellett nem kell az összes tesztet helyileg futtatni a számítógépükön, ami növeli a fejlesztői hatékonyságot. 
 
 ## <a name="key-benefits"></a>Főbb előnyök
-- Automatizálhatja a folyamatok buildjeit, tesztjeit és üzembe helyezését.
-- A gyorsabb kiadási arány biztosítása érdekében korán észlelheti a hibákat, és kijavíthatja a problémákat.
-- Gyakrabban véglegesítse a kódot, és gyorsan hozzon létre alkalmazásokat.
-- Rugalmasan módosíthatja a kódot problémák nélkül.
-- Nyereség gyorsabb idő-to-market, hogy csak a jó minőségű kódot teszi végig.
-- A kis kódmódosítások hatékonyabb átolását, mivel a kis kóddarabok egyszerre vannak integrálva.
-- Növelje a csapat átláthatóságát és elszámoltathatóságát, hogy folyamatos visszajelzést kapjon ügyfeleitől és csapatától.
+- Automatizálhatja a folyamatok felépítését, tesztelését és üzembe helyezését.
+- Észlelheti a hibákat és kijavíthatja a problémákat a gyorsabb kiadási díjak biztosítása érdekében.
+- Gyakrabban véglegesítheti a kódot, és gyorsan hozhat létre alkalmazásokat.
+- A kód gyors megváltozása a hibák nélkül.
+- Gyorsabban juthat el a piacra, hogy csak a jó minőségű kód legyen elérhető.
+- A kisméretű kódok hatékonyabb módosítása, mivel a kis kódrészletek egyszerre vannak integrálva.
+- Növelje a csapat átláthatóságát és elszámoltathatóságát, hogy folyamatos visszajelzést kapjon ügyfelei és csapata számára.
 
-Az alábbi szolgáltatások segítségével folyamatos integrációs folyamatot engedélyezanek a mobilalkalmazásokban.
+A következő szolgáltatások használatával engedélyezheti a folyamatos integrációs folyamatot a Mobile apps szolgáltatásban.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[Az App Center Build](/appcenter/build/) segítségével olyan natív és platformfüggetlen alkalmazásokat hozhat létre, amelyeken a csapata egy biztonságos felhőalapú infrastruktúra használatával dolgozik. A tárház könnyedén csatlakoztatható a Visual Studio App Center alkalmazásban, és minden véglegesítéskor elkezdheti az alkalmazást a felhőben építeni. Nem kell aggódnia a buildkiszolgálók helyi, bonyolult konfigurációk és a munkatárs gépére épülő kód konfigurálása miatt, de a tiéd miatt nem.
+A [app Center Build](/appcenter/build/) segítségével natív és platformfüggetlen alkalmazásokat hozhat létre, amelyeket a csapata biztonságos felhőalapú infrastruktúrával használ. A tárházat könnyedén összekapcsolhatja Visual Studio App Centerban, és megkezdheti a felhőben felépíteni az alkalmazást minden egyes véglegesítés során. Nem kell aggódnia a Build-kiszolgálók helyi, bonyolult konfigurációinak és a munkatársainak, de nem a saját számítógépére épülő kód konfigurálásával kapcsolatban.
 
-A Visual Studio App Center szolgáltatásainak nagyobb teljesítményével tovább automatizálhatja a munkafolyamatot. Az App Center Distribute segítségével automatikusan felszabadíthatja a teszteket és a nyilvános alkalmazásáruházakat. Az App Center-teszttel automatikus felhasználói felületi teszteket is futtathat a felhőben lévő több ezer valódi eszköz- és operációsrendszer-konfiguráción.
+A Visual Studio App Center szolgáltatások hozzáadott ereje révén tovább automatizálhatja a munkafolyamatot. A buildeket automatikusan kibocsáthatja a tesztelők és a nyilvános alkalmazások tárolói számára a App Center Distribute használatával. Az automatizált felhasználói felületi teszteket több ezer valódi eszközön és operációsrendszer-konfiguráción is futtathatja a felhőben App Center teszteléssel.
 
 **A legfontosabb jellemzők**
-- Állítsa be a folyamatos integrációt percek alatt, és hozzon létre alkalmazásokat gyakrabban és gyorsabban.
-- Integrálható a GitHub, a BitBucket, az Azure DevOps és a GitLab szolgáltatással.
-- Gyors és biztonságos buildeket hozhat létre felügyelt, felhőalapú gépeken.
-- Engedélyezze a buildek indítását a teszt elindításához, és ellenőrizze, hogy az alkalmazás valós iOS- és Android-eszközökön épül-e fel.
-- Natív és platformfüggetlen támogatás az iOS, Android, macOS, Windows, Xamarin és React Native rendszerhez.
-- Testreszabhatja a buildeket a klónozás utáni, az előre megépítendő és a létrehozás utáni parancsfájlok hozzáadásával.
+- Percek alatt állíthatja be a folyamatos integrációt, és gyakrabban és gyorsabban hozhat létre alkalmazásokat.
+- Integrálhatja a GitHub, a BitBucket, az Azure DevOps és a GitLab.
+- Gyors és biztonságos buildek létrehozása felügyelt, felhőben üzemeltetett gépeken.
+- A buildek lehetővé teszik a tesztek indítását, valamint annak ellenőrzését, hogy az alkalmazás a valós idejű iOS-és Android-eszközökön épül-e fel.
+- Natív és platformfüggetlen támogatás az iOS, az Android, a macOS, a Windows, a Xamarin és a natív reagáláshoz.
+- A buildeket a klónozás utáni, a Build előtti és utáni parancsfájlok hozzáadásával szabhatja testre.
 
 **Referencia**
-- [Regisztráció a Visual Studio App Center alkalmazásközpontjában](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Az App Center Build – első lépések](/appcenter/build/)
+- [Regisztráció Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+- [Ismerkedés a App Center Buildtel](/appcenter/build/)
 
 ## <a name="azure-pipelines"></a>Azure Pipelines
- [Az Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/), az Azure DevOps szolgáltatás a teljes körű folyamatos integrációés folyamatos kézbesítés (CD) szolgáltatás, amely együttműködik a kívánt Git-szolgáltatóval. Üzembe helyezheti a legtöbb főbb felhőszolgáltatások, amely magában foglalja az Azure-t. A kódot a GitHubon, a GitHub Enterprise Serveren, a GitLaben, a Bitbucket Cloudon vagy az Azure Repos-on kezdheti. Ezután automatizálhatja a kód összeállítását, tesztelését és telepítését a Microsoft Azure, a Google Cloud Platform vagy az Amazon Web Services (AWS) szolgáltatásba.
+ Az Azure DevOps-ben üzemelő [Azure-folyamatok](https://azure.microsoft.com/services/devops/pipelines/)egy teljes körűen elérhető folyamatos integrációs és folyamatos teljesítési (CD) szolgáltatás, amely az Ön által preferált git-szolgáltatóval működik. Üzembe helyezhető a legtöbb nagy felhőalapú szolgáltatásban, beleértve az Azure-t is. A kód a GitHubon, a GitHub Enterprise Server, a GitLab, a bitbucket Cloud vagy az Azure Repos használatával kezdődhet. Ezután automatizálhatja a kód kiépítését, tesztelését és üzembe helyezését Microsoft Azure, Google Cloud Platform vagy Amazon Web Services (AWS) használatával.
 
 **A legfontosabb jellemzők**
-- **Egyszerűsített feladatalapú felület a CI-kiszolgáló beállításához:** A Microsoft és a nem Microsoft (Node.js, Java) alapú kiszolgálótechnológiák mellett hozzon létre ci-kiszolgálót natív (Android, iOS és Windows) és platformfüggetlen (Xamarin, Cordova és React Native) mobilalkalmazásokhoz is.
-- **Bármilyen nyelv, platform és felhő:** Node.js, Python, Java, PHP, Ruby, Go, C/C++, C#, Android és iOS alkalmazások at hozhat létre, tesztelhet és helyezhet üzembe. Párhuzamosan futtassa Linuxon, macOS-en és Windows rendszeren. Üzembe helyezheti az olyan felhőszolgáltatókat, mint az Azure, az AWS és a Google Cloud Platform. Mobilalkalmazások terjesztése bétacsatornákon és alkalmazásáruházakon keresztül.
-- **Natív tárolótámogatás:** Hozzon létre új tárolókat könnyedén, és tolja őket bármely rendszerleíró adatbázisba. Telepítse a tárolókat független állomásokra vagy Kubernetes-re.
-- **Speciális munkafolyamatok:** Egyszerűen hozhat létre építési láncokat és többfázisú buildeket. Támogatást kaphat a YAML-hez, a tesztelési integrációhoz, a kiadási kapukhoz, a jelentéskészítéshez és egyebekhez.
-- **Bővíthető:** A közösség által készített build-, tesztelési és üzembe helyezési feladatok széles skáláját használhatja, amelyek több száz bővítményt tartalmaznak a Slacktől a SonarCloudig. Akár más CI-rendszerekből is telepíthet, például a Jenkins-ből. A webhorgok és a REST API-k segítségével integrálható.
-- **Ingyenes felhőalapú buildek:** Ezek a buildek nyilvános és magántárolók számára érhetők el.
-- **Más felhőszolgáltatóknak történő telepítés támogatása:** A szállítók közé tartozik az AWS és a Google Cloud Platform.
+- **Egyszerűsített, feladaton alapuló felület a CI-kiszolgáló beállításához:** A Microsoft és a nem Microsoft (node. js, Java) alapú kiszolgálói technológiák mellett hozzon létre egy CI-kiszolgálót a natív (Android, iOS és Windows rendszerű) és platformfüggetlen (Xamarin, Cordova és Native) mobil alkalmazásokhoz.
+- **Bármilyen nyelv, platform és felhő:** A Node. js, a Python, a Java, a PHP, a Ruby, a go, a C/C++, a C#, az Android és az iOS rendszerű alkalmazások létrehozása, tesztelése és üzembe helyezése. Párhuzamosan futtatható Linux, macOS és Windows rendszeren. Üzembe helyezhet olyan felhőalapú szolgáltatókat, mint például az Azure, az AWS és a Google Cloud Platform. Mobil alkalmazások terjesztése a bétaverziós csatornákon és az alkalmazás-áruházakon keresztül.
+- **Natív tároló támogatása:** Egyszerűen hozhat létre új tárolókat, és leküldheti azokat bármely beállításjegyzékbe. Tárolók üzembe helyezése független gazdagépekre vagy Kubernetes.
+- **Speciális munkafolyamatok:** Egyszerűen létrehozhat Build láncok és többfázisú buildek. Támogatás a YAML, a tesztelési integráció, a kiadási kapuk, a jelentéskészítés és más szolgáltatásokhoz.
+- **Bővíthető:** A Közösség által készített felépítési, tesztelési és üzembe helyezési feladatok széles skáláját használhatja, amely több száz bővítményt tartalmaz a Slackből a SonarCloud. Akár más CI-rendszerekből is üzembe helyezhetők, például a Jenkins-től. A webhookok és a REST API-k segítségével integrálhat.
+- **Ingyenes felhőben üzemeltetett buildek:** Ezek a buildek nyilvános és privát adattárakhoz is elérhetők.
+- **Más felhőalapú szállítókba való központi telepítés támogatása:** A szállítók közé tartozik az AWS és a Google Cloud Platform.
 
 **Referencia**
-- [Ismerkedés az Azure Pipelines útmutatójával](/azure/devops/pipelines/get-started/pipelines-get-started?view=azure-devops)
+- [Ismerkedés az Azure-folyamatok útmutatójának használatába](/azure/devops/pipelines/get-started/pipelines-get-started?view=azure-devops)
 - [Bevezetés az Azure DevOps használatába](https://app.vsaex.visualstudio.com/signup/) 
 - [Rövid útmutatók](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)
 
-Az alkalmazásbuildek megfelelő szolgáltatásának kiválasztásához tekintse meg az App Center Build és az [Azure Pipelines összehasonlításáról szóló cikket.](/appcenter/build/choose-between-services)
+Az alkalmazás által létrehozott megfelelő szolgáltatás kiválasztásához tekintse meg a [app Center Build](/appcenter/build/choose-between-services)és az Azure-folyamatok összevetését ismertető cikket.

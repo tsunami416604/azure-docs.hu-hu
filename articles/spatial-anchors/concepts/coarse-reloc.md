@@ -1,6 +1,6 @@
 ---
-title: Durva relokalizáció
-description: További információ a durva áttelepülés használatáról az Ön közelében lévő horgonyok keresésére.
+title: Durva újrahonosítás
+description: Ismerje meg, hogyan használhat durva áthonosítást a közeli horgonyok megtalálásához.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,33 +9,33 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844394"
 ---
 # <a name="coarse-relocalization"></a>Durva helyzet-újrameghatározás
 
-Durva relocalization egy olyan funkció, amely kezdeti választ a kérdésre: *Hol van a készülék most / Milyen tartalmat kell megfigyelni?* A válasz nem pontos, hanem a következő formában: Közel vagy ezekhez a *horgonyokhoz; próbálja meg megtalálni az egyiket.*
+A durva újrahonosítás egy olyan szolgáltatás, amely kezdeti választ ad a kérdésre: *Hol van az eszközem?* A válasz nem pontos, hanem a következő formában van: a *horgonyokhoz közeledik; próbáljon meg az egyiket*megkeresni.
 
-A durva újralokáció úgy működik, hogy különböző eszközön lévő érzékelőértékeket társít a horgonyok létrehozásához és lekérdezéséhez. Kültéri esetekben az érzékelő adatai általában az eszköz GPS (Global Positioning System) pozíciója. Ha a GPS nem érhető el vagy nem megbízható (például beltérben), az érzékelő adatai a WiFi hozzáférési pontokból és a hatótávolságon belül lévő Bluetooth-jelzőkből állnak. Az összes összegyűjtött érzékelőadatok hozzájárulnak egy térbeli index fenntartásához, amelyet az Azure Spatial Anchors használ az eszköz körülbelül 100 méteres körzetében lévő horgonyok gyors meghatározásához.
+A durva újrahonosítás úgy működik, hogy a különböző eszköz-érzékelőket társítja a horgonyok létrehozásával és lekérdezésével. A kültéri forgatókönyvek esetében az érzékelő adatok általában az eszköz GPS (globális helymeghatározási rendszer) pozíciója. Ha a GPS nem érhető el vagy nem megbízható (például beltérben), az érzékelői információ a hatótávolságon belül található WiFi hozzáférési pontokból és Bluetooth-figyelőből áll. Az összes összegyűjtött érzékelői adat hozzájárul a térbeli index fenntartásához. ezt az Azure térbeli horgonyok használják az eszköz körülbelül 100 méterén belüli horgonyok gyors meghatározásához.
 
-A durva újrakallokalizáció által engedélyezett horgonyok gyors felkelődése leegyszerűsíti az alkalmazások fejlesztését, amelyet világméretű (mondjuk több millió földrajzi lagúna) gyűjtemény támogat. A horgonykezelés összetettsége el van rejtve, így jobban összpontosíthat a félelmetes alkalmazáslogikára. Az Azure Spatial Anchors a színfalak mögött végzi el a horgonyok minden nehéz emelését.
+A durva újrahonosítást használó horgonyok gyors kinézete leegyszerűsíti az olyan alkalmazások fejlesztését, amelyeknek a globális gyűjteményei (azaz több millió földrajzilag elosztott) horgonyt támogatnak. A horgonyok kezelésének összetettsége teljesen el van rejtve, így jobban összpontosíthat a félelmetes alkalmazás-logikára. Az Azure térbeli horgonyok a színfalak mögött is megtalálhatók.
 
-## <a name="collected-sensor-data"></a>Összegyűjtött érzékelőadatok
+## <a name="collected-sensor-data"></a>Gyűjtött érzékelők adatok
 
-A horgonyszolgáltatásnak küldhető érzékelőadatok a következők egyike:
+A horgony szolgáltatásnak küldendő érzékelő-adatmennyiség az alábbiak egyike:
 
-* GPS pozíció: szélesség, hosszúság, magasság.
-* A WiFi hozzáférési pontok jelerőssége hatótávolságon belül van.
-* A Bluetooth-jeladók jelerőssége hatótávolságon belül.
+* GPS-pozíció: szélesség, hosszúság, magasság.
+* A WiFi-hozzáférési pontok jelerőssége a tartományon belül.
+* A hatótávolságon belül a Bluetooth-figyelő jelerőssége.
 
-Általánosságban elmondható, hogy az alkalmazásnak eszközspecifikus engedélyeket kell szereznie a GPS-, WiFi- vagy BLE-adatok eléréséhez. Emellett a fenti érzékelőadatok egy része nem érhető el tervezés szerint bizonyos platformokon. Az ilyen helyzetek figyelembevétele érdekében az érzékelőadatok gyűjtése nem kötelező, és alapértelmezés szerint ki van kapcsolva.
+Általánosságban elmondható, hogy az alkalmazásnak az eszközre vonatkozó engedélyeket kell megadnia a GPS-, Wi-Fi-vagy kapcsolati adateléréshez. Emellett a fenti érzékelők közül néhány nem érhető el bizonyos platformokon. Az ilyen helyzetek kiszámításához az érzékelőre vonatkozó adatgyűjtést nem kötelező megadni, és alapértelmezés szerint ki van kapcsolva.
 
 ## <a name="set-up-the-sensor-data-collection"></a>Az érzékelő adatgyűjtésének beállítása
 
-Kezdjük azzal, hogy létrehoz egy érzékelő ujjlenyomat-szolgáltatót, és tudatja a munkamenettel:
+Első lépésként hozzon létre egy érzékelő ujjlenyomat-szolgáltatót, és tegye meg a munkamenetet:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -50,7 +50,7 @@ cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
 cloudSpatialAnchorSession.LocationProvider = sensorProvider;
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 // Create the sensor fingerprint provider
@@ -118,19 +118,19 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 ```
 ---
 
-Ezután el kell döntenie, hogy mely érzékelőket szeretné használni a durva áthelyezéshez. Ez a döntés a jelenleg fejlesztett alkalmazásra vonatkozik, de az alábbi táblázatban szereplő ajánlásoknak jó kiindulópontot kell adniuk:
+Ezután el kell döntenie, hogy mely érzékelőket szeretné használni a durva újrahonosításhoz. Ez a döntés a fejleszthető alkalmazásra jellemző, de a következő táblázatban szereplő javaslatok jó kiindulási pontot adnak:
 
 
 |             | Beltéri | Szabadban |
 |-------------|---------|----------|
-| Gps         | Ki | Bekapcsolva |
-| Wifi        | Bekapcsolva | Be (nem kötelező) |
-| BLE jelzők | Be (nem kötelező a kikötésekkel, lásd alább) | Ki |
+| GPS         | Ki | Bekapcsolva |
+| Fi        | Bekapcsolva | Bekapcsolva (nem kötelező) |
+| Egyazon figyelő | Bekapcsolva (nem kötelező a kikötésekkel kapcsolatban lásd alább) | Ki |
 
 
 ### <a name="enabling-gps"></a>A GPS engedélyezése
 
-Feltéve, hogy az alkalmazás már rendelkezik engedéllyel az eszköz GPS-pozíciójának eléréséhez, beállíthatja az Azure Spatial Anchors-t a használatára:
+Feltételezve, hogy az alkalmazásnak már van engedélye az eszköz GPS-pozíciójának elérésére, az Azure térbeli Horgonyait a következő használatára állíthatja be:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -138,7 +138,7 @@ Feltéve, hogy az alkalmazás már rendelkezik engedéllyel az eszköz GPS-pozí
 sensorProvider.Sensors.GeoLocationEnabled = true;
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 ASASensorCapabilities *sensors = locationProvider.sensors;
@@ -175,18 +175,18 @@ sensors.GeoLocationEnabled(true);
 
 ---
 
-Amikor gps-t használ az alkalmazásban, ne feledje, hogy a hardver által szolgáltatott értékek általában a következők:
+Ha a GPS-t az alkalmazásban használja, vegye figyelembe, hogy a hardver által megadott olvasások jellemzően a következők:
 
-* aszinkron és alacsony frekvenciájú (kevesebb, mint 1 Hz).
-* megbízhatatlan / zajos (átlagosan 7 m-es szórás).
+* aszinkron és alacsony gyakoriságú (kevesebb mint 1 Hz).
+* megbízhatatlan/zajos (átlagosan 7 méteres szórás).
 
-Általában mind az eszköz operációs rendszer és az Azure Spatial Anchors némi szűrést és extrapolációt a nyers GPS-jel, hogy megpróbálja enyhíteni ezeket a problémákat. Ez az extra feldolgozás további időt igényel a konvergenciához, ezért a legjobb eredmény érdekében próbálkozzon a következőkkel:
+Általánosságban elmondható, hogy az eszköz operációs rendszere és az Azure térbeli horgonyai is kiszűrik és kikövetkeztetik a nyers GPS-jelet a problémák enyhítésére tett kísérlet során. Ez a további feldolgozás további időt igényel a konvergenciához, ezért a legjobb eredmények érdekében a következőket kell tennie:
 
-* hozzon létre egy érzékelő ujjlenyomat-szolgáltatót a lehető leghamarabb az alkalmazásban
+* a lehető leghamarabb hozzon létre egy érzékelő ujjlenyomat-szolgáltatót az alkalmazásban
 * az érzékelő ujjlenyomat-szolgáltatójának életben tartása több munkamenet között
 * az érzékelő ujjlenyomat-szolgáltatójának megosztása több munkamenet között
 
-Ha azt tervezi, hogy az érzékelő ujjlenyomat-szolgáltatóját egy horgonymunkameneten kívül használja, győződjön meg róla, hogy elindítja, mielőtt az érzékelő becslését kérné. Például a következő kód gondoskodik a készülék pozíciójának valós idejű frissítéséről a térképen:
+Ha az érzékelő ujjlenyomat-szolgáltatóját egy rögzített munkameneten kívül szeretné használni, mindenképpen indítsa el az érzékelő becslése előtt. Például az alábbi kód gondoskodik az eszköz valós idejű pozíciójának frissítéséről a térképen:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -211,7 +211,7 @@ while (m_isRunning)
 sensorProvider.Stop();
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 // Game about to start, start tracking the sensors
@@ -314,9 +314,9 @@ sensorProvider.Stop();
 
 ---
 
-### <a name="enabling-wifi"></a>Wi-Fi engedélyezése
+### <a name="enabling-wifi"></a>WiFi engedélyezése
 
-Feltéve, hogy az alkalmazás már rendelkezik engedéllyel az eszköz Wi-Fi-állapotának eléréséhez, konfigurálhatja az Azure Spatial Anchors-t a használatára:
+Feltételezve, hogy az alkalmazásnak már van engedélye az eszköz WiFi-állapotának elérésére, az Azure térbeli Horgonyait az alábbiak használatára állíthatja be:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -324,7 +324,7 @@ Feltéve, hogy az alkalmazás már rendelkezik engedéllyel az eszköz Wi-Fi-ál
 sensorProvider.Sensors.WifiEnabled = true;
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 ASASensorCapabilities *sensors = locationProvider.sensors;
@@ -361,20 +361,20 @@ sensors.WifiEnabled(true);
 
 ---
 
-Amikor wi-fi-t használ az alkalmazásban, ne feledje, hogy a hardver által biztosított értékek általában a következők:
+Ha az alkalmazásban Wi-Fi-t használ, vegye figyelembe, hogy a hardver által megadott olvasások jellemzően a következők:
 
-* alacsony frekvenciájú (0,1 Hz-nél kisebb).
-* potenciálisan az operációs rendszer szintjén.
-* megbízhatatlan / zajos (átlagosan 3-dBm szórás).
+* aszinkron és alacsony gyakoriságú (kevesebb mint 0,1 Hz).
+* potenciálisan szabályozható az operációs rendszer szintjén.
+* megbízhatatlan/zajos (átlagosan 3 dBm standard szórás).
 
-Az Azure Spatial Anchors megkísérli egy szűrt Wi-Fi jelerősség-leképezést egy munkamenet során, hogy megpróbálja enyhíteni ezeket a problémákat. A legjobb eredmény érdekében próbálja meg:
+Az Azure térbeli horgonyok megkísérlik kiépíteni a szűrt WiFi jel erősségének leképezését egy munkamenet során a problémák enyhítésére tett kísérlet során. A legjobb eredmények érdekében a következőket kell megpróbálkoznia:
 
 * az első horgony elhelyezése előtt hozza létre a munkamenetet.
-* tartsa életben a munkamenetet, ameddig csak lehetséges (azaz hozza létre az összes horgonyt és lekérdezést egy munkamenetben).
+* tartsa életben a munkamenetet a lehető leghosszabbra (azaz hozzon létre minden horgonyt és lekérdezést egy munkamenetben).
 
-### <a name="enabling-bluetooth-beacons"></a>Bluetooth-jeladók engedélyezése
+### <a name="enabling-bluetooth-beacons"></a>Bluetooth-figyelő engedélyezése
 
-Feltéve, hogy az alkalmazás már rendelkezik engedéllyel az eszköz Bluetooth-állapotának eléréséhez, konfigurálhatja az Azure Spatial Anchors-t a használatára:
+Feltéve, hogy az alkalmazásnak már van engedélye az eszköz Bluetooth-állapotának elérésére, az Azure térbeli Horgonyait az alábbiak használatára állíthatja be:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -382,7 +382,7 @@ Feltéve, hogy az alkalmazás már rendelkezik engedéllyel az eszköz Bluetooth
 sensorProvider.Sensors.BluetoothEnabled = true;
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 ASASensorCapabilities *sensors = locationProvider.sensors;
@@ -419,11 +419,11 @@ sensors.BluetoothEnabled(true);
 
 ---
 
-A jelzők jellemzően sokoldalú eszközök, ahol minden konfigurálható – beleértve az UUID-kat és a MAC-címeket is. Ez a rugalmasság problémás lehet az Azure Spatial Anchors számára, mivel úgy véli, hogy a jelzőket az UUID-k egyedileg azonosítják. Ennek az egyediségnek a biztosítása valószínűleg térbeli féreglyukakat okoz. A legjobb eredmény érdekében:
+A figyelők általában sokoldalú eszközök, ahol minden – beleértve az UUID-ket és a MAC-címeket – is konfigurálható. Ez a rugalmasság problémás lehet az Azure térbeli horgonyok esetében, mivel a figyelőket a saját UUID-azonosítóik alapján egyedileg azonosíthatónak tekinti. Ha nem biztos benne, hogy ez az egyediség valószínűleg a térbeli féreglyuk okozza. A legjobb eredmények érdekében a következőket kell tennie:
 
-* egyedi UUID-kat rendelhet a jeladókhoz.
-* üzembe helyezni őket - általában egy normál mintában, például egy rácsban.
-* adja át az egyedi beacon UUID-k listáját az érzékelő ujjlenyomat-szolgáltatójának:
+* rendeljen egyedi UUID-ket a figyelőhöz.
+* üzembe helyezheti őket – jellemzően normál mintában, például rácsban.
+* adja át az egyedi Beacon UUID-azonosítók listáját az érzékelő ujjlenyomat-szolgáltatójának:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -436,7 +436,7 @@ sensorProvider.Sensors.KnownBeaconProximityUuids = new[]
 };
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 NSArray *uuids = @[@"22e38f1a-c1b3-452b-b5ce-fdb0f39535c1", @"a63819b9-8b7b-436d-88ec-ea5d8db2acb0"];
@@ -491,13 +491,13 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Az Azure Spatial Anchors csak azokat a Bluetooth-jeladókat követi nyomon, amelyek szerepelnek az ismert azonosítók közelségi UUID-k listáján. Rosszindulatú jelzők programozott, hogy az engedélyezett felsorolt UUID-k továbbra is negatívan befolyásolhatja a szolgáltatás minőségét mégis. Ezért csak olyan kurátori helyeken használjon jelzőket, ahol szabályozhatja a telepítésüket.
+Az Azure térbeli horgonyok csak azokat a Bluetooth-figyelőket fogják követni, amelyek az ismert Beacon közelségi UUID-listán vannak. Azok a rosszindulatú figyelők, amelyeken engedélyezve vannak a felsorolt UUID-azonosítók, továbbra is negatívan befolyásolhatják a szolgáltatás minőségét. Ezért a figyelőket csak a kihelyezett helyeken kell használni, ahol szabályozhatja az üzembe helyezést.
 
-## <a name="querying-with-sensor-data"></a>Lekérdezés érzékelőadatokkal
+## <a name="querying-with-sensor-data"></a>Az érzékelővel való lekérdezés
 
-Miután létrehozott horgonyokat a kapcsolódó érzékelőadatokkal, megkezdheti azok beolvasását az eszköz által jelentett érzékelőleolvasások segítségével. Már nem kell megadnia a szolgáltatásnak az ismert horgonyok listáját, amelyeket várhatóan megtalál - ehelyett csak tudatja a szolgáltatással az eszköz helyét a beépített érzékelők jelentése szerint. Az Azure Spatial Anchors ezután kitalálja az eszköz közelében lévő horgonyok készletét, és megpróbálja vizuálisan egyeztetni őket.
+Miután létrehozta a kapcsolódó érzékelők adataival rendelkező horgonyokat, megkezdheti a beolvasását az eszköz által jelentett szenzorok használatával. Már nem kell megadnia a szolgáltatást a keresett ismert horgonyok listájával, ehelyett a szolgáltatás a bevezetési érzékelők által jelentett módon ismeri az eszköz helyét. Az Azure térbeli horgonyok ezután megtalálják az eszközhöz közeledő horgonyokat, és megpróbálják vizuálisan egyeztetni őket.
 
-Ha azt szeretné, hogy a lekérdezések az érzékelő adatait használják, először hozza létre a "közeli eszköz" feltételeket:
+Ha a lekérdezésekhez az érzékelőt szeretné használni, kezdje a "közeli eszköz" feltételek létrehozásával:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -514,7 +514,7 @@ anchorLocateCriteria = new AnchorLocateCriteria();
 anchorLocateCriteria.NearDevice = nearDeviceCriteria;
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 ASANearDeviceCriteria *nearDeviceCriteria = [[ASANearDeviceCriteria alloc] init];
@@ -592,11 +592,11 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-A `DistanceInMeters` paraméter határozza meg, hogy milyen messzire fogjuk vizsgálni a horgony grafikon lekérni tartalmat. Tegyük fel például, hogy egy kis helyet töltött fel horgonyokkal, amelyek állandó sűrűsége 2 minden méter. Továbbá, a kamera a készüléken figyeli egyetlen horgonyt, és a szolgáltatás sikeresen megtalálta azt. Valószínűleg az érdekli, hogy visszaszerezzék az összes horgonyt, amit a közelben helyeztek el, nem pedig az egyetlen horgony, amit éppen megfigyelsz. Feltételezve, hogy az elhelyezett horgonyok egy grafikonon vannak csatlakoztatva, a szolgáltatás a diagram széleit követve lekérheti az összes közeli horgonyt. A megtett grafikon-bejárás mértékét `DistanceInMeters`a; az összes olyan horgonyt megkapja, amely a találthoz csatlakozik, `DistanceInMeters`és amely közelebb van, mint a.
+A `DistanceInMeters` paraméter határozza meg, hogy a rendszer milyen mértékben vizsgálja meg a horgony gráfot a tartalom lekéréséhez. Tegyük fel, hogy olyan helyet töltött fel, amely a 2. számú állandó sűrűségű horgonyokkal van feltöltve. Emellett az eszközön lévő kamera egyetlen horgonyt figyel, és a szolgáltatás sikeresen megtalálta. Legvalószínűbb, hogy az éppen megfigyelt egyedi horgony helyett az összes közeli horgonyt beolvassa. Feltéve, hogy a rögzített horgonyok egy gráfban vannak csatlakoztatva, a szolgáltatás a diagram széleinek követésével lekérheti az összes közeli horgonyt. A gráf bejárási elvégezte mennyiségét `DistanceInMeters`a vezérli. a rendszer az Ön által birtokolt összes horgonyt megkapja, amelyek közelebb vannak a következőhöz: `DistanceInMeters`.
 
-Ne feledje, hogy `MaxResultCount` a nagy értékek negatívan befolyásolhatják a teljesítményt. Állítsa be, hogy egy értelmes értéket az alkalmazás.
+Ne feledje, hogy a nagy értékek `MaxResultCount` negatív hatással lehetnek a teljesítményre. Állítsa az alkalmazás ésszerű értékére.
 
-Végül meg kell mondania a munkamenetnek, hogy használja az érzékelőalapú feltekintést:
+Végezetül meg kell adnia a munkamenetet, hogy használja az érzékelőn alapuló megkeresést:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -604,7 +604,7 @@ Végül meg kell mondania a munkamenetnek, hogy használja az érzékelőalapú 
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 ```
 
-# <a name="objc"></a>[ObjC között](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 [cloudSpatialAnchorSession createWatcher:anchorLocateCriteria];
@@ -638,42 +638,42 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 ## <a name="expected-results"></a>Várt eredmények
 
-Fogyasztói minőségű GPS eszközök általában meglehetősen pontatlan. A tanulmány [zandenbergen és Barbeau (2011)][6] jelentések a medián pontossága mobiltelefonok támogatott GPS (A-GPS), hogy körülbelül 7 méter - elég nagy értéket kell figyelmen kívül hagyni! Ezeknek a mérési hibáknak a figyelembevétele érdekében a szolgáltatás a horgonyokat valószínűségi eloszlásként kezeli a GPS-térben. Mint ilyen, egy horgony van most a terület -ból hely amit a leg--bb valószínű ( vagyis, -val több mint 95% bizalom) tartalmaz -a igaz, ismeretlen GPS helyzet.
+A fogyasztói minőségű GPS-eszközök általában eléggé pontatlanok. A [Zandenbergen és Barbeau (2011)][6] által készített tanulmány a mobil telefonok közepes pontosságát jelenti a támogatott GPS-vel (A-GPS) körülbelül 7 méterre – elég nagy értéket kell figyelmen kívül hagyni! Ezeknek a mérési hibáknak a kiszámításához a szolgáltatás a GPS-térben a valószínűségi Eloszlásként kezeli a horgonyokat. Ennek megfelelően a horgony mostantól a legnagyobb valószínűséggel (azaz a több mint 95%-os megbízhatósággal rendelkező) területnek az igaz, ismeretlen GPS-pozícióját tartalmazza.
 
-Ugyanez az érvelés vonatkozik a GPS lekérdezésekor is. A készülék egy másik térbeli megbízhatósági régióként jelenik meg a valódi, ismeretlen GPS-pozíciója körül. A közeli horgonyok felfedezése azt jelenti, hogy egyszerűen csak olyan magabiztos anamzárdal találjuk meg a horgonyokat, amelyek *elég közel vannak* az eszköz megbízhatósági régiójához, amint azt az alábbi képen látható:
+Ugyanezt az indoklást alkalmazza a rendszer a GPS lekérdezése során. Az eszköz egy másik térbeli megbízhatósági régióként jelenik meg a valódi, ismeretlen GPS-pozíciója körül. A közeli horgonyok felderítésével a rendszer egyszerűen megkeresi a megbízhatósági *régiókban található* horgonyokat, az alábbi képen látható módon:
 
-![Kiválasztása horgony jelöltek GPS](media/coarse-reloc-gps-separation-distance.png)
+![Horgony jelöltek kiválasztása GPS-sel](media/coarse-reloc-gps-separation-distance.png)
 
-A GPS-jel pontossága, mind a horgony létrehozása, mind a lekérdezések során, nagy hatással van a visszaadott horgonyok készletére. Ezzel szemben a WiFi / jelzőkön alapuló lekérdezések figyelembe veszik az összes olyan horgonyt, amely legalább egy hozzáférési ponttal / jeladóval rendelkezik a lekérdezéssel. Ebben az értelemben a WiFi / beacons-en alapuló lekérdezés eredményét leginkább a hozzáférési pontok / jelzők fizikai tartománya és a környezeti akadályok határozzák meg.
+A GPS-jel pontossága, a horgonyok létrehozásán és a lekérdezések során is nagy hatással van a visszaadott horgonyok készletére. Ezzel szemben a WiFi/figyelőn alapuló lekérdezések figyelembe veszik az összes olyan horgonyt, amelynek legalább egy hozzáférési pontja/Beacon-je közös a lekérdezéssel. Ebben az értelemben a Wi-Fi/figyelőn alapuló lekérdezések eredményét többnyire a hozzáférési pontok/figyelők fizikai tartománya, valamint a környezeti akadályok határozzák meg.
 
-Az alábbi táblázat megbecsüli az egyes érzékelőtípusok várható keresési területét:
+Az alábbi táblázat a várt keresési helyet becsüli meg az egyes érzékelők típusainál:
 
 | Érzékelő      | Keresési terület sugara (kb.) | Részletek |
 |-------------|:-------:|---------|
-| Gps         | 20 m - 30 m | A GPS-bizonytalanság határozza meg, többek között. A jelentett számok becsült medián GPS pontossága mobiltelefonok A-GPS, azaz 7 méter. |
-| Wifi        | 50 m - 100 m | A vezeték nélküli hozzáférési pontok hatótávolsága határozza meg. A frekvenciától, az adó erősségététől, fizikai elzáródásától, interferenciájától és így tovább. |
-| BLE jelzők |  70 m | A jeladó hatótávolsága határozza meg. A frekvenciától, az átviteli erőtől, a fizikai akadályoktól, az interferenciától és így tovább. |
+| GPS         | 20 m – 30 m | A többi tényező között a GPS-bizonytalanság határozza meg. A jelentett számok a-GPS-vel ellátott mobiltelefonok medián GPS-pontosságának becslése, amely 7 méter. |
+| Fi        | 50 m – 100 m | A vezeték nélküli hozzáférési pontok tartománya határozza meg. A gyakoriságtól, az adó erősségtől, a fizikai akadályoktól, a beavatkozástól és így tovább függ. |
+| Egyazon figyelő |  70 m | A jeladó tartománya határozza meg. A gyakoriságtól, az átviteli erősségtől, a fizikai akadályoktól, a beavatkozástól és egyebektől függ. |
 
-## <a name="per-platform-support"></a>Platformonkénti támogatás
+## <a name="per-platform-support"></a>Platformon belüli támogatás
 
-Az alábbi táblázat összefoglalja az egyes támogatott platformokon gyűjtött érzékelőadatokat, valamint a platformspecifikus kikötéseket:
+A következő táblázat összefoglalja az egyes támogatott platformokon összegyűjtött érzékelők adatait, valamint a platformra vonatkozó kikötéseket:
 
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| Gps         | N/A | [LocationManager][3] API-kon keresztül támogatott (GPS és NETWORK egyaránt) | [CLLocationManager][4] API-kon keresztül támogatott |
-| Wifi        | 3 másodpercenként körülbelül egy beszkés sebességgel támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi-letapogatások 2 percenként 4 hívásra vannak szabályozva. Az Android 10-ből a szabályozás letiltható a Fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A - nincs nyilvános API |
-| BLE jelzők | Az [Eddystone][1] és az [iBeacon][2] | Az [Eddystone][1] és az [iBeacon][2] | Az [Eddystone][1] és az [iBeacon][2] |
+| GPS         | N/A | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
+| Fi        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
+| Egyazon figyelő | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik |
 
 ## <a name="next-steps"></a>További lépések
 
-Használjon durva áthelyezést egy alkalmazásban.
+Használjon durva újrahonosítást egy alkalmazásban.
 
 > [!div class="nextstepaction"]
 > [Unity](../how-tos/set-up-coarse-reloc-unity.md)
 
 > [!div class="nextstepaction"]
-> [Célkitűzés-C](../how-tos/set-up-coarse-reloc-objc.md)
+> [Objective-C](../how-tos/set-up-coarse-reloc-objc.md)
 
 > [!div class="nextstepaction"]
 > [Swift](../how-tos/set-up-coarse-reloc-swift.md)

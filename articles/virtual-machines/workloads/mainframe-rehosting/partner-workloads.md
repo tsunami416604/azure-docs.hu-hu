@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban támogatott nagyszámítógépes számítási feladatok | Microsoft dokumentumok
-description: A nagyszámítógépes emulátor és a Microsoft-partnerek egyéb szolgáltatásai segítségével újraüzemeltetheti a nagyszámítógépes számítási feladatokat, például a Microsoft Azure-t használó IBM Z-alapú rendszereket.
+title: Az Azure-ban támogatott mainframe-munkaterhelések | Microsoft Docs
+description: A Microsoft partnereitől származó mainframe-emulátorral és más szolgáltatásokkal a nagyvállalati munkaterheléseket, például az IBM Z-alapú rendszereket Microsoft Azure használatával helyezheti át.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -11,49 +11,49 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: cf02ff7078fe5d33f220c0abc2d941d483e5c125
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76293504"
 ---
-# <a name="mainframe-workloads-supported-on-azure"></a>Az Azure-ban támogatott nagyszámítógépes számítási feladatok
+# <a name="mainframe-workloads-supported-on-azure"></a>Az Azure-ban támogatott nagyszámítógépi munkaterhelések
 
-Az itt felsorolt megoldások segítségével áttelepítheti a nagyszámítógépes számítási feladatokat a Microsoft Azure-ba. Egyes számítási feladatok viszonylag könnyen áttelepíthetők. Az örökölt rendszerszoftverektől függő egyéb munkaterhelések újraüzemeltethetők. 
+Az itt felsorolt megoldások segítségével áttelepítheti a mainframe-munkaterhelést Microsoft Azurera. Bizonyos számítási feladatok migrálása viszonylag egyszerű. A régi rendszerszoftvertől függő egyéb munkaterhelések is áthelyezhetők. 
 
-A nagyszámítógépes emulációval és szolgáltatásokkal kapcsolatban további segítségért tekintse meg az [Azure Mainframe Migration center](https://azure.microsoft.com/migration/mainframe/)t.
+Ha további segítségre van a nagyszámítógépi emuláció és a szolgáltatások terén, tekintse meg az [Azure mainframe Migration centert](https://azure.microsoft.com/migration/mainframe/).
 
-## <a name="migrate-mainframe-closer-to-azure"></a>Nagyszámítógép áttelepítése közelebb az Azure-hoz
+## <a name="migrate-mainframe-closer-to-azure"></a>Nagyszámítógépek migrálása az Azure-ba
 
-- [Micro Focus Visual COBOL](https://www.microfocus.com/products/visual-cobol/) fejlesztői és integrációs eszközök.
-- [Micro Focus PL/I](https://www.microfocus.com/campaign/download/pli-modernization/) örökölt fordító a .NET platformhoz, amely támogatja a nagyszámítógépes PL/I szintaxist, az adattípusokat és a viselkedést.
-- [Micro Focus Enterprise Server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) nagyszámítógépes integrációs platform.
-- [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/) fejlesztési és integrációs eszközök.
-- [NTT Data Enterprise COBOL](https://us.nttdata.com/en/digital/application-development-and-modernization) fejlesztési és integrációs eszközök.
-- [NTT Open PL/I](https://us.nttdata.com/en/digital/application-development-and-modernization) örökölt fordító a .NET platformhoz, amely támogatja a nagyszámítógépes PL/I szintaxist, az adattípusokat és a viselkedést.
-- [Raincode COBOL fordító](https://www.raincode.com/products/cobol/) fejlesztési és integrációs eszközök.
-- [A .NET platform Raincode PL/I fordítója](https://www.raincode.com/products/pli/) támogatja a mainframe PL/I szintaxist, az adattípusokat és a viselkedést.
-- [Raincode ASM370 fordító](https://www.raincode.com/technical-landscape/asm370/) a mainframe Assembler 370 és HLASM szintaxishoz.
-- [ASNA Visual RPG for .](https://asna.com/us/products/visual-rpg)
-- [Modern Systems CTU (COBOL-To-Universal)](https://modernsystems.com/automatic-cobol-to-java-conversion/) fejlesztési és integrációs eszközök.
+- A [Micro Focus Visual Cobol](https://www.microfocus.com/products/visual-cobol/) fejlesztési és integrációs eszközei.
+- [Micro Focus pl/i](https://www.microfocus.com/campaign/download/pli-modernization/) örökölt fordítóprogram a .net platformhoz, amely támogatja a nagyszámítógépeken a pl/i szintaxist, az adattípusokat és a viselkedést.
+- [Micro Focus Enterprise Server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) mainframe integrációs platform.
+- A [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/) fejlesztési és integrációs eszközei.
+- [Az NTT-Adatvállalat Cobol](https://us.nttdata.com/en/digital/application-development-and-modernization) -fejlesztési és-integrációs eszközei.
+- [NTT Open pl/i](https://us.nttdata.com/en/digital/application-development-and-modernization) örökölt fordítóprogram a .net platformhoz, amely támogatja a nagyszámítógépeken a pl/i szintaxist, az adattípusokat és a viselkedést.
+- [RAINCODE Cobol-fordító](https://www.raincode.com/products/cobol/) fejlesztési és integrációs eszközei.
+- A .NET platformhoz készült [RAINCODE pl/i fordítóprogram](https://www.raincode.com/products/pli/) támogatja a nagyszámítógépi (pl/i) szintaxist, az adattípusokat és a viselkedést.
+- [RAINCODE ASM370-fordító](https://www.raincode.com/technical-landscape/asm370/) a nagyszámítógépi szerelvény 370 és HLASM szintaxisa.
+- [Szabó Visual RPG for .net](https://asna.com/us/products/visual-rpg) -fordító a .net-keretrendszerhez a Visual Studio beépülő modul használatával.
+- [Modern rendszerek CTU (Cobol-univerzális)](https://modernsystems.com/automatic-cobol-to-java-conversion/) fejlesztési és integrációs eszközök.
 
-## <a name="deploy-an-emulation-environment-for-online-and-batch-processing"></a>Emulációs környezet telepítése online és kötegelt feldolgozáshoz
+## <a name="deploy-an-emulation-environment-for-online-and-batch-processing"></a>Emulációs környezet üzembe helyezése online és kötegelt feldolgozáshoz
 
-- [Micro Focus Enterprise Server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) nagyszámítógépes integrációs platform.
-- [NTT DATA Mainframe Rehosting Development Environment](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) natív tranzakciófeldolgozási környezet.
-- [NTT DATA Batch Processing Environment](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) (BPE) beleértve a JCL tranzakciós képességeit.
-- [Raincode CICS](https://www.raincode.com/technical-landscape/cics/) emulátor .NET és Azure platformokon.
-- [Raincode JCL](https://www.raincode.com/products/jcl/) plug-kompatibilis JCL tolmács.
+- [Micro Focus Enterprise Server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) mainframe integrációs platform.
+- A fejlesztői környezet natív tranzakció-feldolgozási környezetét [átüzemeltető NTT-alapú adatmainframe](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) .
+- [Az NTT adatköteg-feldolgozási környezet](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) (bpe szolgáltatáskapcsoló), beleértve a JCL tranzakciós képességeket.
+- [RAINCODE CICS](https://www.raincode.com/technical-landscape/cics/) Emulator .net-és Azure-platformokhoz.
+- [RAINCODE JCL](https://www.raincode.com/products/jcl/) beépülő MODULLAL kompatibilis JCL-értelmező.
 
 ## <a name="code-conversion"></a>Kód átalakítása
 
-- [Asysco](https://www.asysco.com/azure-cloud/) forráskód átalakítás.
-- [LzLabs Software Defined Mainframe](https://www.lzlabs.com/) felügyelt szoftvertároló a nagyszámítógépes alkalmazások Linux számítógépekre vagy privát, nyilvános és hibrid felhőkörnyezetekbe történő áttelepítéséhez.
-- [Blu Age](https://www.bluage.com/) eszközök az örökölt üzleti alkalmazások és adatbázisok digitalizálásához.
-- [A Heirloom Computing](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/) szolgáltatásai a cobol, cics és vsam nagyszámítógép Java-ra történő átalakítására.
+- [Asysco](https://www.asysco.com/azure-cloud/) konvertálása.
+- A [LzLabs nagyszámítógép által](https://www.lzlabs.com/) felügyelt szoftveres tárolót biztosít a nagyszámítógépi alkalmazások Linux rendszerű számítógépekre vagy privát, nyilvános és hibrid felhőalapú környezetbe való áttelepítéséhez.
+- [Blu Age](https://www.bluage.com/) -eszközök a régi üzleti alkalmazások és adatbázisok digitalizálásához.
+- [Ereklye számítástechnikai](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/) szolgáltatások a Cobol, a CICS és a VSAM konvertálása javára.
 
-## <a name="modernization-services"></a>Korszerűsítési szolgáltatások
+## <a name="modernization-services"></a>Modernizációs szolgáltatások
 
-A Microsoft globális rendszerintegrátorokkal (GSI-kkel) együttműködve segít a nagy szervezeteknek a megoldások tervezésében, kialakításában és kezelésében. 
+Microsoft-partnerek globális rendszerintegrátorokkal (GSIs), akik segíthetnek a nagyméretű szervezetek számára a megoldások tervezésében, létrehozásában és kezelésében. 
 
-- [Az Azure mainframe-i áttelepítési központ](https://azure.microsoft.com/migration/mainframe/)
+- [Azure mainframe áttelepítési központ](https://azure.microsoft.com/migration/mainframe/)

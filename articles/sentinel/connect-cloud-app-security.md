@@ -1,6 +1,6 @@
 ---
-title: A Cloud App Security adatainak összekapcsolása az Azure Sentinelhez| Microsoft dokumentumok
-description: Ismerje meg, hogyan kapcsolhatja össze a Cloud App Security adatait az Azure Sentinelhez.
+title: Cloud App Security-adatkapcsolat összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Megtudhatja, hogyan csatlakoztatható Cloud App Security-adatkapcsolat az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,49 +15,49 @@ ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
 ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422146"
 ---
-# <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok csatlakoztatása a Microsoft Cloud App Security alkalmazásbiztonságból 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok összekapcsolásának Microsoft Cloud App Security 
 
 
 
-A [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) összekötő lehetővé teszi a riasztások és a Cloud Discovery naplók streamelése az MCAS-ből az Azure Sentinelbe. [Cloud Discovery logs](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) Ez lehetővé teszi, hogy betekintést nyerjen a felhőalapú alkalmazásokba, kifinomult elemzéseket kapjon a kiberfenyegetések azonosításához és leküzdéséhez, valamint az adatok utazásának szabályozásához.
+A [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) összekötővel riasztásokat és [Cloud Discovery naplókat](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) továbbíthat a MCAS-ből az Azure sentinelbe. Ez lehetővé teszi a felhőalapú alkalmazások láthatóságát, a kifinomult elemzéseket a előforduló kiberfenyegetésekkel kapcsolatban azonosításához és leküzdéséhez, valamint az adattovábbítások szabályozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A felhasználónak olvasási és írási engedéllyel kell rendelkeznie a munkaterületen.
-- A felhasználónak globális rendszergazdai vagy biztonsági rendszergazdai engedélyekkel kell rendelkeznie a munkaterület bérlőjéhez.
-- A Cloud Discovery-naplók Azure Sentinelbe való streameléséhez [engedélyezze az Azure Sentinelt SIEM-ként a Microsoft Cloud App Security szolgáltatásban.](https://aka.ms/AzureSentinelMCAS)
+- A felhasználónak olvasási és írási engedélyekkel kell rendelkeznie a munkaterületen.
+- A felhasználónak globális rendszergazdai vagy biztonsági rendszergazdai engedélyekkel kell rendelkeznie a munkaterület bérlője számára.
+- Cloud Discovery naplók Azure Sentinelbe való továbbításához [engedélyezze az Azure sentinelt Siem-ként Microsoft Cloud app Securityban](https://aka.ms/AzureSentinelMCAS).
 
 > [!IMPORTANT]
-> A Cloud Discovery-naplók betöltése jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Cloud Discovery naplók betöltése jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-## <a name="connect-to-cloud-app-security"></a>Csatlakozás a Cloud App Security alkalmazásbiztonsághoz
+## <a name="connect-to-cloud-app-security"></a>Kapcsolódás Cloud App Securityhoz
 
-Ha már rendelkezik cloud app security, győződjön meg arról, hogy engedélyezve van [a hálózaton.](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security)
-Ha a Cloud App Security telepítve van, és betöltése az adatokat, a riasztási adatok könnyen streamelhető az Azure Sentinel.
+Ha már rendelkezik Cloud App Security, győződjön meg arról, hogy az engedélyezve van a [hálózaton](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security).
+Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a riasztási adatot könnyen továbbíthatja az Azure Sentinelbe.
 
 
-1. Az Azure Sentinel navigációs menüjében válassza az **Adatösszekötők**lehetőséget. Az összekötők listájában kattintson a **Microsoft Cloud App Security** csempére, majd a Jobb alsó ablakösszekötő **lapgombjára.**
+1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők**lehetőséget. Az összekötők listájában kattintson a **Microsoft Cloud app Security** csempére, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra.
 
-1. Válassza ki, hogy mely naplókat szeretné streamelni az Azure Sentinelbe; választhat **riasztások** és **felhőfelderítési naplók** (előzetes verzió). 
+1. Válassza ki, hogy mely naplókba kívánja továbbítani az Azure Sentinel alkalmazást; a **riasztások** és a **Cloud Discovery naplók** (előzetes verzió) közül választhat. 
 
-1. Kattintson **a Módosítások alkalmazása gombra.**
+1. Kattintson a **módosítások alkalmazása**lehetőségre.
 
-1. Ha a megfelelő sémát szeretné használni a Log `SecurityAlert` Analytics a Cloud App Security riasztásokhoz, írja be a lekérdezési ablakban. A Cloud Discovery naplók séma, írja be a következőt. `McasShadowItReporting`
+1. Ha Cloud App Security riasztásokhoz a Log Analytics vonatkozó sémát szeretné használni, `SecurityAlert` írja be a következőt a lekérdezési ablakba:. A Cloud Discovery naplók sémája mezőbe írja `McasShadowItReporting`be a következőt:.
 
 > [!NOTE]
-> A Cloud Discovery segít észlelni és azonosítani a trendeket azáltal, hogy összesíti az adatokat, amelyek a felhasználók felhőalapú alkalmazásokkal való kapcsolatait alapjául szolgáló adatok összesítik.
+> Cloud Discovery segít a trendek észlelésében és azonosításában azáltal, hogy összesíti az adatokat használó felhasználók kapcsolatait a felhőalapú alkalmazásokkal.
 >
-> Mivel a Cloud Discovery-adatok napi alapon összesítve vannak, vegye figyelembe, hogy a legfrissebb adatok akár 24 órányi értéke nem jelenik meg az Azure Sentinelben. Abban az esetben, ha egy alacsony szintű vizsgálat azonnali adatokat igényel, azt közvetlenül a forrásberendezésben vagy a nyers adatokat tartalmazó szolgáltatásban kell elvégezni.
+> Mivel Cloud Discovery adatokat összesítenek napi rendszerességgel, vegye figyelembe, hogy a legfrissebb adatokat akár 24 órányi érték nem fogja tükrözni az Azure Sentinelben. Abban az esetben, ha egy alacsony szintű vizsgálat több azonnali adatra van szüksége, közvetlenül a forrás berendezésben vagy olyan szolgáltatásban kell elvégezni, ahol a nyers adat található.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Microsoft Cloud App Securityt az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- A [beépített](tutorial-detect-threats.md) vagy [egyéni](tutorial-detect-threats-custom.md) szabályok használatával első lépések észlelheti a fenyegetéseket az Azure Sentinel segítségével.
+Ebből a dokumentumból megtanulta, hogyan csatlakozhat Microsoft Cloud App Security az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerkedjen meg a fenyegetések észlelésével az Azure Sentinel használatával, [beépített](tutorial-detect-threats.md) vagy [Egyéni](tutorial-detect-threats-custom.md) szabályokkal.

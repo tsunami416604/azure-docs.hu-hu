@@ -1,90 +1,90 @@
 ---
 title: Ajánlott eljárások az Azure Cache for Redis használatához
-description: Ismerje meg, hogyan használhatja az Azure-gyorsítótárat a Redis számára az alábbi gyakorlati tanácsok követésével.
+description: Az ajánlott eljárások követésével megtudhatja, hogyan használhatja hatékonyan az Azure cache-t a Redis.
 author: joncole
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478609"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
-Az ajánlott eljárások követésével maximalizálhatja az Azure-gyorsítótár a Redis-példány teljesítményét és költséghatékony használatát.
+Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljesítményének és költséghatékony felhasználásának hatékonyságát a Redis-példány esetében.
 
-## <a name="configuration-and-concepts"></a>Konfiguráció és koncepciók
- * **Használja a standard vagy prémium szintű termelési rendszerek.**  Az alapszintű szint egy egycsomópontos rendszer, amelynek nincs adatreplikációja és SLA-ja. Ezen kívül használjon legalább C1 szintű gyorsítótárat.  A C0-gyorsítótárak egyszerű fejlesztési/tesztelési forgatókönyvekhez szolgálnak, mivel megosztott CPU-maggal, kevés memóriával rendelkeznek, és hajlamosak a "zajos szomszéd" problémákra.
+## <a name="configuration-and-concepts"></a>Konfigurálás és fogalmak
+ * **Használjon standard vagy prémium szintű üzemi rendszereket.**  Az alapszintű csomag egyetlen csomópontos rendszer, amely nem rendelkezik adatreplikálással, és nem biztosít SLA-t. Ezen kívül használjon legalább C1 szintű gyorsítótárat.  A C0 cache-gyorsítótárak egyszerű fejlesztési és tesztelési forgatókönyvekhez készültek, mivel közös CPU-mag, kevés memória és a "zajos szomszédok" problémái vannak.
 
- * **Ne feledje, hogy a Redis egy memórián belüli adattár.**  [Ez](cache-troubleshoot-data-loss.md) a cikk néhány olyan forgatókönyvet vázol fel, ahol adatvesztés fordulhat elő.
+ * **Ne feledje, hogy a Redis egy memóriában tárolt adattároló.**  [Ez a cikk az](cache-troubleshoot-data-loss.md) adatvesztést okozó egyes forgatókönyveket ismerteti.
 
- * **Fejlessze a rendszert úgy, hogy a** [javítás és a feladatátvétel miatt](cache-failover.md)kezelni tudja a csatlakozási blips-et.
+ * Fejlessze a rendszerét úgy, hogy a [javítás és a feladatátvétel miatt](cache-failover.md) **képes legyen kezelni a kapcsolatok visszavert adatait** .
 
- * **Állítsa be a [maxmemory-fenntartott beállítást,](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) hogy javítsa a rendszer válaszképességét** memórianyomás-körülmények között.  A megfelelő foglalási beállítás különösen fontos az írási nehéz számítási feladatok, vagy ha nagyobb értékeket (100 KB vagy több) a Redis tárolja. A gyorsítótár méretének 10%-ával kell kezdenie, és növelnie kell ezt a százalékot, ha írási terhelése van.
+ * **Konfigurálja a [maxmemory fenntartott beállítást](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , hogy javítsa a rendszerrugalmasságot** a memória nyomási körülményei között.  A megfelelő foglalási beállítás különösen fontos a nagy írási terhelésű számítási feladatokhoz, vagy ha nagyobb értékeket (100 KB) tárol a Redis-ben. A gyorsítótár méretének 10%-ában kell kezdődnie, és ha írási – nagy terheléssel rendelkezik, növelje a százalékos arányt.
 
- * **A Redis kisebb értékekkel működik a legjobban,** ezért fontolja meg a nagyobb adatok több kulcsra történő feldarabolását.  Ebben [a Redis vita](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/), néhány szempont szerepel, hogy meg kell fontolnia alaposan.  Olvassa el ezt a [cikket](cache-troubleshoot-client.md#large-request-or-response-size) egy példa probléma, amely által okozott nagy értékek.
+ * **A Redis kisebb értékekkel működik a legjobban**, ezért érdemes lehet nagyobb mennyiségű kulcsot feldarabolni több kulcsra.  [Ebben a Redis-vitában](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)néhány szempontot figyelembe kell venni, hogy alaposan meg kell fontolnia.  Olvassa el [ezt a cikket](cache-troubleshoot-client.md#large-request-or-response-size) egy olyan problémával kapcsolatban, amelyet nagy értékek okozhatnak.
 
- * **Keresse meg a gyorsítótár-példányt és az alkalmazást ugyanabban a régióban.**  Ha más régióban lévő gyorsítótárhoz csatlakozik, az jelentősen megnövelheti a késést, így a megoldás megbízhatósága is csökkenhet.  Bár az Azure-on kívülről is csatlakozhat, nem ajánlott, *különösen a Redis gyorsítótárként való használata esetén.*  Ha a Redis-t csak kulcs/értéktárolóként használja, előfordulhat, hogy nem a késés az elsődleges szempont. 
+ * **Keresse meg a gyorsítótár-példányt és az alkalmazást ugyanabban a régióban.**  Ha más régióban lévő gyorsítótárhoz csatlakozik, az jelentősen megnövelheti a késést, így a megoldás megbízhatósága is csökkenhet.  Habár az Azure-on kívülről is csatlakozhat, nem ajánlott *különösen a Redis gyorsítótárként való használatakor*.  Ha a Redis-t csak kulcs/érték tárolóként használja, akkor a késés nem lehet az elsődleges szempont. 
 
- * **Kapcsolatok újrafelhasználása.**  Az új kapcsolatok létrehozása költséges, és növeli a késést, ezért a lehető legnagyobb mértékben használja fel a kapcsolatokat. Ha új kapcsolatok at hoz létre, a feloldás előtt zárja be a régi kapcsolatokat (még a felügyelt memórianyelveken is, például .NET vagy Java nyelven).
+ * **Kapcsolatok újrafelhasználása.**  Az új kapcsolatok létrehozása költséges, és növeli a késést, így a lehető legnagyobb mértékben újrahasznosíthatja a kapcsolatokat. Ha úgy dönt, hogy új kapcsolatokat hoz létre, győződjön meg róla, hogy lezárta a régi kapcsolatokat (még a felügyelt memória nyelvein is, például a .NET vagy a Java esetében).
 
- * **Állítsa be úgy az ügyfélműsortárat, hogy legalább 15 *másodperces csatlakozási időmeghosszabbítást* használjon,** így a rendszernek még magasabb cpu-körülmények között is lesz ideje csatlakozni.  Egy kis kapcsolat időtúllépési érték nem garantálja, hogy a kapcsolat ebben az időkeretben jön létre.  Ha valami elromlik (magas ügyfél-CPU, magas kiszolgálóprocesszor és így tovább), akkor egy rövid kapcsolati időtúllépési érték a csatlakozási kísérlet sikertelensítéséhez vezet. Ez a viselkedés gyakran teszi a rossz helyzet rosszabb.  Ahelyett, hogy segítenének, a rövidebb időmeghosszabbítások súlyosbítják a problémát azáltal, hogy a rendszert az újrakapcsolódási folyamat újraindítására kényszerítik, ami a *csatlakozás -> fail -> újrapróbálkozási* ciklushoz vezethet. Általában azt javasoljuk, hogy a kapcsolat időtúllépési idejét 15 másodpercvagy magasabb. Jobb, ha a csatlakozási kísérlet 15 vagy 20 másodperc után sikeres lesz, mint hogy gyorsan meghibásodjon, csak próbálja meg újra. Egy ilyen újrapróbálkozási ciklus a kimaradás hosszabb ideig tarthat, mint ha hagyja, hogy a rendszer kezdetben tovább tart.  
+ * **Konfigurálja az ügyféloldali függvénytárat úgy, hogy legalább 15 másodperces *csatlakozási időkorlátot* használjon**, így a rendszeridőt még nagyobb CPU-feltételek mellett is csatlakozhat.  A kis kapcsolat időtúllépési értéke nem garantálja, hogy a kapcsolat az adott időkereten belül van-e.  Ha valami probléma merül fel (magas szintű ügyfél-CPU, magas kiszolgálói processzor stb.), akkor egy rövid kapcsolat időtúllépési értéke miatt sikertelen lesz a kapcsolódási kísérlet. Ez a viselkedés gyakran rosszabb helyzetet tesz lehetővé.  A rövidebb időtúllépések támogatása helyett a rendszer arra kényszeríti a rendszert, hogy indítsa újra a kapcsolódási kísérlet folyamatát, ami egy *csatlakozási > sikertelen > újrapróbálkozási* hurokhoz vezethet. Általánosságban azt javasoljuk, hogy a kapcsolat időkorlátját 15 másodperc vagy annál nagyobb értékre hagyja. Jobb, ha a kapcsolódási kísérletet 15 vagy 20 másodperc után nem sikerül végrehajtani, mint hogy a művelet gyorsan meghiúsuljon. Egy ilyen újrapróbálkozási hurok miatt a leállás tovább tart, mint ha a rendszer már csak hosszabb ideig tart.  
      > [!NOTE]
-     > Ez az útmutató a *csatlakozási kísérletre* vonatkozik, és nem kapcsolódik ahhoz az időponthoz, amikor hajlandó várni egy *műveletre,* például a GET vagy a SET befejeződésre.
+     > Ez az útmutató a *kapcsolódási kísérletre* vonatkozik, és nem kapcsolódik ahhoz az időponthoz, ameddig várni szeretne egy *műveletre* , például a Get vagy a Complete értékre.
  
- * **Kerülje a költséges műveleteket** – Egyes Redis-műveletek, például a [KEYS](https://redis.io/commands/keys) *parancs, nagyon* drágák, és el kell kerülni.  További információt a [hosszú ideig futó parancsokkal](cache-troubleshoot-server.md#long-running-commands) kapcsolatos további tudnivalókban talál.
+ * **Kerülje a költséges műveleteket** – bizonyos Redis műveletek, például a [Keys](https://redis.io/commands/keys) parancs *nagyon* drágák, és el kell kerülni őket.  További információ: néhány megfontolandó szempont a [hosszan futó parancsokról](cache-troubleshoot-server.md#long-running-commands)
 
- * **TLS-titkosítás használata** – az Azure Cache for Redis alapértelmezés szerint TLS-titkosítást igényel.  A TLS 1.0-s, 1.1-es és 1.2-es verziója jelenleg támogatott.  A TLS 1.0 és az 1.1 azonban az egész iparágra kiterjedő eprecáció felé halad, ezért használja a TLS 1.2-t, ha egyáltalán lehetséges.  Ha az ügyféltár vagy eszköz nem támogatja a TLS-t, akkor a titkosítatlan kapcsolatok engedélyezése [az Azure Portalon](cache-configure.md#access-ports) vagy a felügyeleti [API-kon](https://docs.microsoft.com/rest/api/redis/redis/update)keresztül végezhető el.  Ilyen esetekben, amikor a titkosított kapcsolatok nem lehetséges, a gyorsítótár és az ügyfélalkalmazás virtuális hálózatba helyezése ajánlott lenne.  Arról, hogy mely portokat használja a rendszer a virtuális hálózati gyorsítótár-forgatókönyvben, tekintse meg ezt a [táblázatot.](cache-how-to-premium-vnet.md#outbound-port-requirements)
+ * **TLS titkosítás használata** – az Azure cache for Redis ALAPÉRTELMEZÉS szerint TLS titkosítású kommunikációt igényel.  A TLS 1,0, 1,1 és 1,2 verziók jelenleg támogatottak.  Azonban a TLS 1,0 és a 1,1 egy olyan útvonalon van, amely az iparágra kiterjedő elavult, ezért a TLS 1,2-et használja, ha ez egyáltalán lehetséges.  Ha az ügyféloldali kódtár vagy eszköz nem támogatja a TLS-t, akkor a titkosítatlan kapcsolatok engedélyezése [a Azure Portal vagy a](cache-configure.md#access-ports) [felügyeleti API](https://docs.microsoft.com/rest/api/redis/redis/update)-kon keresztül végezhető el.  Olyan esetekben, ahol a titkosított kapcsolatok nem lehetségesek, ajánlott a gyorsítótár és az ügyfélalkalmazás virtuális hálózatra helyezése.  A virtuális hálózati gyorsítótár-forgatókönyvben használt portokkal kapcsolatos további információkért tekintse meg ezt a [táblázatot](cache-how-to-premium-vnet.md#outbound-port-requirements).
  
-## <a name="memory-management"></a>Memóriakezelés
-A Redis-kiszolgálópéldányon belüli memóriahasználattal kapcsolatban számos dolog rakható össze, amelyeket érdemes lehet figyelembe venni.  Íme néhány:
+## <a name="memory-management"></a>Memória kezelése
+A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet érdemes figyelembe venni.  Íme néhány:
 
- * **Válasszon egy [kilakoltatási szabályzatot,](https://redis.io/topics/lru-cache) amely működik az alkalmazáshoz.**  Az Azure Redis alapértelmezett szabályzata *az illékony-lru,* ami azt jelenti, hogy csak a TTL-értékkészletű kulcsok jogosultak lesznek a kilakoltatásra.  Ha egyetlen kulcs sem rendelkezik TTL értékkel, akkor a rendszer nem oltja ki a kulcsokat.  Ha azt szeretné, hogy a rendszer lehetővé tegye a kulcs kilakoltatását, ha memórianyomás alatt van, akkor érdemes megfontolni az *allkeys-lru* házirendet.
+ * **Válasszon ki egy [kizárási szabályzatot](https://redis.io/topics/lru-cache) , amely az alkalmazáshoz használható.**  Az Azure Redis alapértelmezett házirendje a *felejtő LRU*, ami azt jelenti, hogy csak a TTL-értékkel rendelkező kulcsok jogosultak a kizárásra.  Ha egyetlen kulcs sem rendelkezik TTL-értékkel, akkor a rendszer nem távolítja el a kulcsokat.  Ha azt szeretné, hogy a rendszer bármilyen kulcsot kizárjon a memória nyomása alatt, érdemes megfontolnia a *allkeys-LRU* szabályzat használatát.
 
- * **Állítson be egy lejárati értéket a kulcsokon.**  A lejárati adatok proaktív módon távolítják el a kulcsokat, ahelyett, hogy megvárnák a memórianyomásig.  Ha a kilakoltatás a memórianyomás miatt beindul, az további terhelést okozhat a kiszolgálón.  További információt a [LEJÁRT](https://redis.io/commands/expire) és [LEJÁRT ÉS LEJÁRT](https://redis.io/commands/expireat) PARANCSOK dokumentációjában talál.
+ * **Állítsa be a lejárati értéket a kulcsokra.**  A lejáratok a kulcsok proaktív módon történő eltávolítása helyett a memória nyomására várnak.  Ha a kizárás a memória nyomása miatt nem indul el, a kiszolgáló további terhelést okozhat.  További információkért tekintse meg a [lejárati](https://redis.io/commands/expire) és [EXPIREAT](https://redis.io/commands/expireat) parancsok dokumentációját.
  
-## <a name="client-library-specific-guidance"></a>Ügyféltár-specifikus útmutatás
- * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
- * [Java - Melyik ügyfelet használjam?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
+## <a name="client-library-specific-guidance"></a>Ügyféloldali függvénytár-specifikus útmutató
+ * [StackExchange. Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
+ * [Java – melyik ügyfelet kell használnia?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
  * [Saláta (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
- * [Jedik (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
+ * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net munkamenet-állapotszolgáltató](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+ * [Asp.Net munkamenet-szolgáltató](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
-## <a name="when-is-it-safe-to-retry"></a>Mikor biztonságos újra próbálkozni?
-Sajnos, nincs könnyű válasz.  Minden alkalmazásnak el kell döntenie, hogy mely műveletek kísérhetők meg újra, és melyek nem.  Minden művelet különböző követelményekkel és kulcsközi függőségekkel rendelkezik.  Íme néhány dolog, amit érdemes figyelembe venni:
+## <a name="when-is-it-safe-to-retry"></a>Mikor biztonságos az Újrapróbálkozás?
+Sajnos nincs egyszerű válasz.  Minden alkalmazásnak el kell döntenie, hogy milyen műveleteket lehet újrapróbálni, és nem.  Az egyes műveletek különböző követelményekkel és a kulcsok közötti függőségekkel rendelkeznek.  Íme néhány dolog, amit érdemes figyelembe vennie:
 
- * Ügyféloldali hibákat kaphat annak ellenére, hogy a Redis sikeresen futtatta a parancsot, amelyet kért.  Példa:
-     - Az időtúl-meghosszabbítás ügyféloldali fogalom.  Ha a művelet elérte a kiszolgálót, a kiszolgáló akkor is futtatja a parancsot, ha az ügyfél feladja a várakozást.  
-     - Ha hiba történik a szoftvercsatorna-kapcsolaton, nem lehet tudni, hogy a művelet valóban futott-e a kiszolgálón.  A csatlakozási hiba például akkor fordulhat elő, ha a kiszolgáló feldolgozta a kérést, de még azelőtt, hogy az ügyfél megkapta volna a választ.
- *  Hogyan reagál az alkalmazásom, ha véletlenül kétszer futtatom ugyanazt a műveletet?  Például, mi van, ha egy egész szám kétszer növekszik, nem pedig egyszer?  Az alkalmazásom több helyről is ugyanarra a kulcsra ír?  Mi a teendő, ha az újrapróbálkozási logika felülír egy, az alkalmazás egy másik része által beállított értéket?
+ * Az ügyféloldali hibák akkor is beszerezhetők, ha a Redis sikeresen futtatta a futtatni kívánt parancsot.  Például:
+     - Az időtúllépés egy ügyféloldali fogalom.  Ha a művelet elérte a kiszolgálót, a kiszolgáló akkor is futtatja a parancsot, ha az ügyfél várakozik.  
+     - Ha a szoftvercsatorna-kapcsolaton hiba történik, nem lehet tudni, hogy a művelet ténylegesen futott-e a kiszolgálón.  A kapcsolati hiba például akkor fordulhat elő, ha a kiszolgáló feldolgozta a kérést, de az ügyfél megkapja a választ.
+ *  Hogyan reagál az alkalmazás, ha véletlenül kétszer ugyanazt a műveletet futtatom?  Például mi a teendő, ha egy egész számot kétszer kell megnövelni a helyett?  Az alkalmazásom ugyanarra a kulcsra ír több helyről?  Mi a teendő, ha az újrapróbálkozási logika felülírja az alkalmazás egy másik része által beállított értéket?
 
-Ha szeretné tesztelni, hogyan működik a kód hibakörülmények között, fontolja meg az [Újraindítás funkciót.](cache-administration.md#reboot) Az újraindítás lehetővé teszi annak megtekintését, hogy a kapcsolati blips hogyan befolyásolja az alkalmazást.
+Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehet az [Újraindítás funkciót](cache-administration.md#reboot)használni. Az újraindítás lehetővé teszi, hogy megtekintse, hogyan befolyásolja a kapcsolódási visszavertség az alkalmazást.
 
 ## <a name="performance-testing"></a>Teljesítménytesztelés
- * **Kezdje azzal, `redis-benchmark.exe` ** hogy megérezte a lehetséges átviteli/késési, mielőtt megírja a saját perf tesztek.  Redis-benchmark dokumentáció [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a redis-benchmark nem támogatja a TLS-t, ezért a teszt futtatása előtt engedélyeznie kell [a nem TLS-portot a portálon keresztül.](cache-configure.md#access-ports)  [A redis-benchmark.exe windows-kompatibilis verziója itt található.](https://github.com/MSOpenTech/redis/releases)
- * A teszteléshez használt ügyfél virtuális gépnek **ugyanabban a régióban** kell lennie, mint a Redis gyorsítótár-példánynak.
- * **Javasoljuk, hogy a Dv2 VM sorozat** az ügyfél, mivel azok jobb hardver, és a legjobb eredményt.
- * Győződjön meg arról, hogy a használt ügyfél virtuális gép **legalább annyi számítási és sávszélesség,* mint a vizsgált gyorsítótár. 
- * **Engedélyezze a VRSS-t** az ügyfélszámítógépen, ha Windows rendszert szeretne.  [Lásd itt a részleteket](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Példa powershell-parancsfájlra:
-     >PowerShell -ExecutionPolicy Korlátlan enable-NetAdapterRSS -Name ( Get-NetAdapter). név 
+ * **Kezdje a használatával `redis-benchmark.exe` ** , és tapasztalja meg a lehetséges átviteli sebességet/késést a saját Perf-tesztek írása előtt.  Redis – a teljesítményteszt dokumentációja [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a Redis-benchmark nem támogatja a TLS-t, ezért a teszt futtatása előtt [engedélyeznie kell a nem TLS portot a portálon](cache-configure.md#access-ports) .  [Itt található a Redis-benchmark. exe Windows-kompatibilis verziója.](https://github.com/MSOpenTech/redis/releases)
+ * A teszteléshez használt ügyfél virtuális gépnek **ugyanabban a régióban** kell lennie, mint a Redis cache-példánynak.
+ * **Azt javasoljuk** , hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez hasonlóan használja, mivel ezek a hardverek jobbak, és a lehető legjobb eredményeket fogják biztosítani.
+ * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
+ * **Engedélyezze a VRSS** az ügyfélszámítógépen, ha Windows rendszeren van.  [Részletekért lásd itt](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Példa PowerShell-parancsfájlra:
+     >PowerShell-ExecutionPolicy korlátozás nélküli engedélyezés-NetAdapterRSS-Name (Get-NetAdapter). név 
      
- * **Fontolja meg a prémium szintű Redis-példányok használatát.**  Ezek a gyorsítótár-méretek jobb hálózati késést és átviteli csatornát, mert futnak a jobb hardver mind a CPU és a hálózat.
+ * **Érdemes lehet prémium szintű Redis-példányokat használni**.  Ezek a gyorsítótár-méretek jobb hálózati késést és átviteli sebességet biztosítanak, mivel a processzor és a hálózat számára is jobb hardveren futnak.
  
      > [!NOTE]
-     > Megfigyelt teljesítményeredményeinket [itt tetszésünkre itt tesszük közzé.](cache-faq.md#azure-cache-for-redis-performance)   Azt is vegye figyelembe, hogy az SSL/TLS többletterhelést ad hozzá, így eltérő késéseket és/vagy átviteli értéket kaphat, ha átviteli titkosítást használ.
+     > A megfigyelt teljesítmény eredményei [itt jelennek](cache-faq.md#azure-cache-for-redis-performance) meg a referenciában.   Ügyeljen arra is, hogy az SSL/TLS felvesz némi terhelést, így eltérő késést és/vagy átviteli sebességet érhet el, ha átviteli titkosítást használ.
  
-### <a name="redis-benchmark-examples"></a>Példák a Redis-Benchmark
-**Teszt előtti beállítás:** Készítse elő a gyorsítótár-példányt az alábbiakban felsorolt késési és átviteli tesztelési parancsokhoz szükséges adatokkal.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
+### <a name="redis-benchmark-examples"></a>Redis – teljesítményteszt-példák
+**Tesztelés előtti beállítás**: Készítse elő a gyorsítótár-példányt az alább felsorolt késési és átviteli sebesség-tesztelési parancsokhoz szükséges adatokkal.
+> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
-**A késés tesztelése:** Tesztelje a GET-kérelmeket 1k hasznos adat használatával.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a-accesskey -t GET -d 1024 -P 50 -c 4
+**A késés tesztelése**: a Get-kérések tesztelése egy 1k hasznos adat használatával.
+> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
 
-**Az átviteli eredmények tesztelése:** Futószalagos GET-kérelmek 1k hasznos adattal.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a-aAccesskey -t GET -n 1000000 -d 1024 -P 50 -c 50
+**Az átviteli sebesség tesztelése:** A folyamattal rendelkező GET-kérések 1k hasznos adatokkal rendelkeznek.
+> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

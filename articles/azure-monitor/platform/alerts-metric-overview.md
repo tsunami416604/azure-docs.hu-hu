@@ -1,162 +1,162 @@
 ---
-title: Ismerje meg, hogyan működnek a metrikariasztások az Azure Monitorban.
-description: Áttekintést kaphat arról, hogy mit tehet a metrikariasztásokkal, és hogyan működnek az Azure Monitorban.
+title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
+description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80397977"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
-Metrikariasztások az Azure Monitorban többdimenziós metrikákon dolgoznak. Ezek a metrikák lehetnek [platform metrikák](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [egyéni metrikák](../../azure-monitor/platform/metrics-custom-overview.md), [népszerű naplók az Azure Monitor metrikák és](../../azure-monitor/platform/alerts-metric-logs.md) Application Insights metrikák. Metrikariasztások rendszeres időközönként kiértékeli, hogy ellenőrizze, hogy egy vagy több metrika-idősorozat feltételei teljesülnek-e, és értesítik, ha a kiértékelések teljesülnek. Metrika riasztások állapotalapú, azaz csak akkor küld értesítést, ha az állapot megváltozik.
+A Azure Monitor metrikus riasztások a többdimenziós mérőszámok felett működnek. Ezek a metrikák lehetnek [platform-metrikák](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [Egyéni metrikák](../../azure-monitor/platform/metrics-custom-overview.md), [népszerű naplók Azure monitor konvertálva mérőszámokra](../../azure-monitor/platform/alerts-metric-logs.md) és Application Insights mérőszámokra. A metrikai riasztások rendszeres időközönként értékelik ki, hogy egy vagy több metrikai idősorozatra vonatkozó feltételek igazak-e, és értesítjük, ha teljesülnek az értékelések. A metrikai riasztások állapota, azaz csak akkor küldenek értesítéseket, ha az állapot megváltozik.
 
-## <a name="how-do-metric-alerts-work"></a>Hogyan működnek a metrikariasztások?
+## <a name="how-do-metric-alerts-work"></a>Hogyan működnek a metrikus riasztások?
 
-Metrikariasztási szabályt úgy határozhat meg, hogy megadja a figyelni kívánt célerőforrást, a metrika nevét, a feltétel típusát (statikus vagy dinamikus), valamint a feltételt (operátor és küszöbérték/érzékenység) és egy műveletcsoportot, amelyet a riasztási szabály aktiválódásakor aktivál. A feltételtípusok befolyásolják a küszöbértékek meghatározási módját. [További információ a dinamikus küszöbértékek feltételtípusáról és érzékenységi beállításairól.](alerts-dynamic-thresholds.md)
+Meghatározhatja a metrika riasztási szabályát úgy, hogy megadhatja a figyelni kívánt cél erőforrást, a metrika nevét, a feltétel típusát (statikus vagy dinamikus), valamint a feltételt (egy operátort és egy küszöbértéket/érzékenységet), valamint egy, a riasztási szabály által kiváltott műveleti csoportot. A feltételtípusok befolyásolják a küszöbértékek meghatározási módját. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
 
-### <a name="alert-rule-with-static-condition-type"></a>Statikus feltételtípussal rendelkező riasztási szabály
+### <a name="alert-rule-with-static-condition-type"></a>Riasztási szabály statikus feltétel típussal
 
-Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbértéket metrika riasztási szabályt az alábbiak szerint:
+Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbérték-metrika riasztási szabályt a következőképpen:
 
-- Célerőforrás (a figyelni kívánt Azure-erőforrás): myVM
-- Metrika: Százalékos CPU
-- Feltétel típusa: Statikus
-- Idő összesítése (A nyers metrikaértékeken futó statisztika. A támogatott időösszesítések: Min, Max, Átlagos, Összes, Darabszám): Átlag
-- Időszak (Az a visszatekintési ablak, amelyen a mérőszámok értékei be vannak jelölve): Az elmúlt 5 mins
-- Gyakoriság (A metrikariasztás gyakorisága ellenőrzi, hogy a feltételek teljesülnek-e): 1 min
-- Operátor: Nagyobb, mint
+- Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
+- Metrika: százalékos CPU
+- Feltétel típusa: statikus
+- Idő összesítése (a nyers metrika értékeit futtató statisztika. A támogatott időösszesítések a következők: min., max., átlag, összeg, darabszám): átlag
+- Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
+- Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
+- Operátor: nagyobb, mint
 - Küszöbérték: 70
 
-A riasztási szabály létrehozásától kezdve a figyelő 1 percenként fut, és megvizsgálja az elmúlt 5 perc metrikaértékeit, és ellenőrzi, hogy ezen értékek átlaga meghaladja-e a 70-et. Ha a feltétel teljesül, azaz az átlagos százalékos CPU az elmúlt 5 percben meghaladja a 70, a riasztási szabály aktiválódik egy aktivált értesítés. Ha beállított egy e-mailt vagy egy webhook-műveletet a riasztási szabályhoz társított műveletcsoportban, mindkettőről aktivált értesítést fog kapni.
+A riasztási szabály létrehozásakor a figyelő 1 percenként fut, és az elmúlt 5 perc metrikai értékeit vizsgálja, és ellenőrzi, hogy az értékek átlaga meghaladja-e a 70 értéket. Ha a feltétel teljesül, az utolsó 5 perc átlagos CPU-értéke meghaladja az 70-as értéket, a riasztási szabály aktivált értesítést indít el. Ha e-mailt vagy webhook-műveletet konfigurált a riasztási szabályhoz társított műveleti csoportban, akkor mindkettőn aktiválva lesz egy értesítés.
 
-Ha több feltételt használ egy szabályban, az "ands" szabály együtt.  Ez azt, hogy a riasztás akkor aktiválódik, ha a riasztás minden feltétele igaznak számít, és megoldja, ha az egyik feltétel már nem teljesül. Az ilyen típusú riasztások például akkor lehet riasztást, ha "a 90%-nál magasabb PROCESSZOR" és a "várólista hossza meghaladja a 300 elemet". 
+Ha egy szabályban több feltételt használ, a "and" szabály együttesen szerepel a feltételekben.  Ez azt eredményezi, hogy a riasztás akkor aktiválódik, ha a riasztás minden feltétele igaz értékre van kiértékelve, és akkor oldódik fel, ha az egyik feltétel már nem igaz. Az ilyen típusú riasztás például akkor riasztás, ha a "CPU nagyobb, mint 90%" és a "várólista hossza több mint 300 elem". 
 
-### <a name="alert-rule-with-dynamic-condition-type"></a>Riasztási szabály dinamikus feltételtípussal
+### <a name="alert-rule-with-dynamic-condition-type"></a>Riasztási szabály dinamikus feltétel típussal
 
-Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek metrika riasztási szabályt az alábbiak szerint:
+Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek mérőszámának riasztási szabályát az alábbiak szerint:
 
-- Célerőforrás (a figyelni kívánt Azure-erőforrás): myVM
-- Metrika: Százalékos CPU
-- Feltétel típusa: Dinamikus
-- Idő összesítése (A nyers metrikaértékeken futó statisztika. A támogatott időösszesítések: Min, Max, Átlagos, Összes, Darabszám): Átlag
-- Időszak (Az a visszatekintési ablak, amelyen a mérőszámok értékei be vannak jelölve): Az elmúlt 5 mins
-- Gyakoriság (A metrikariasztás gyakorisága ellenőrzi, hogy a feltételek teljesülnek-e): 1 min
-- Operátor: Nagyobb, mint
-- Érzékenység: Közepes
-- Visszatekintés időszakok: 4
+- Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
+- Metrika: százalékos CPU
+- Feltétel típusa: dinamikus
+- Idő összesítése (a nyers metrika értékeit futtató statisztika. A támogatott időösszesítések a következők: min., max., átlag, összeg, darabszám): átlag
+- Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
+- Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
+- Operátor: nagyobb, mint
+- Érzékenység: közepes
+- Visszatérési időszakok: 4
 - Szabálysértések száma: 4
 
-A riasztási szabály létrehozása után a dinamikus küszöbértékek gépi tanulási algoritmus beszerzi a rendelkezésre álló előzményadatokat, kiszámítja a metrikasorozat viselkedési mintájához leginkább illeszkedő küszöbértéket, és folyamatosan megtanulja az új adatok alapján a küszöbérték et, hogy pontosabb legyen.
+A riasztási szabály létrehozása után a dinamikus küszöbértékek gépi tanulási algoritmusa a rendelkezésre álló korábbi adatokat fogja beszerezni, kiszámítja a metrikus adatsorozat viselkedési mintájának legjobban megfelelő küszöbértéket, és az új adatok alapján folyamatosan tanul, hogy a küszöbérték pontosabb legyen.
 
-A riasztási szabály létrehozásától kezdve a figyelő 1 percenként fut, és az elmúlt 20 perc metrikaértékeit 5 percidőszakokba csoportosítva megvizsgálja, és ellenőrzi, hogy a 4 időszak időszakértékeinek átlaga meghaladja-e a várt küszöbértéket. Ha a feltétel teljesül, azaz az átlagos százalékos CPU az elmúlt 20 percben (négy 5 perc időszakok) eltért a várható viselkedés négyszer, a riasztási szabály aktiválódik egy aktivált értesítés. Ha beállított egy e-mailt vagy egy webhook-műveletet a riasztási szabályhoz társított műveletcsoportban, mindkettőről aktivált értesítést fog kapni.
+A riasztási szabály létrehozásának időpontjában a figyelő 1 percenként fut, és az elmúlt 20 percben 5 perces időszakra csoportosított metrikus értékeket keres, és ellenőrzi, hogy az egyes 4 időszakokban mért időszakok átlaga meghaladja-e a várt küszöbértéket. Ha a feltétel teljesül, az elmúlt 20 percben (négy 5 perces időszak) az átlagos CPU-érték négyszer eltér a várt viselkedéstől, a riasztási szabály aktivált értesítést indít. Ha e-mailt vagy webhook-műveletet konfigurált a riasztási szabályhoz társított műveleti csoportban, akkor mindkettőn aktiválva lesz egy értesítés.
 
-### <a name="view-and-resolution-of-fired-alerts"></a>A kilőtt riasztások megtekintése és feloldása
+### <a name="view-and-resolution-of-fired-alerts"></a>Kilőtt riasztások megtekintése és megoldása
 
-A fenti példák a riasztási szabályok tüzelési is megtekinthető kérhető az Azure Portalon az **Összes riasztás** panelen.
+A riasztási szabályok elégetésének fenti példái a **minden riasztás** panel Azure Portal is megtekinthetők.
 
-Tegyük fel, hogy a "myVM" használata továbbra is a küszöbérték felett van a későbbi ellenőrzések során, a riasztási szabály nem fog újra elsülni, amíg a feltételek meg nem oldódnak.
+Tegyük fel, hogy a "myVM" használata a későbbi ellenőrzések során továbbra is a küszöbérték felett marad, a riasztási szabály a feltételek feloldása előtt nem indul újra.
 
-Egy idő után, a használat a "myVM" jön vissza a normál (megy a küszöbérték alatt). A riasztási szabály figyeli a feltétel még két alkalommal, hogy küldjön egy feloldott értesítést. A riasztási szabály egy feloldott/inaktivált üzenetet küld, ha a riasztási feltétel három egymást követő időszakban nem teljesül, hogy csökkentse a zajt csapkodó körülmények esetén.
+Egy kis idő elteltével a "myVM" használata visszakerül a normál értékre (a küszöbérték alá esik). A riasztási szabály két alkalommal figyeli a feltételt, hogy elküldjék a megoldott értesítéseket. A riasztási szabály elküld egy megoldott/inaktivált üzenetet, ha a riasztási feltétel nem teljesül három egymást követő időszakon belül a zaj csökkentése érdekében.
 
-A megoldott értesítés webes horgokon vagy e-mailen keresztül történő küldése kor, a riasztási példány (monitor állapot) állapota az Azure Portalon is megoldódott.
+Mivel a megoldott értesítést webhookok vagy e-mailek útján küldi el a rendszer, a riasztási példány állapota (figyelő állapota) a Azure Portalban is megoldottra van állítva.
 
-### <a name="using-dimensions"></a>Dimenziók használata
+### <a name="using-dimensions"></a>Méretek használata
 
-Metrikariasztások az Azure Monitorban is támogatja a figyelés több dimenziós érték kombinációk egy szabálysal. Nézzük meg, miért használhat több dimenziókombinációt egy példa segítségével.
+A Azure Monitor metrikai riasztások is támogatják a több dimenziós érték kombinációjának figyelését egyetlen szabállyal. Lássuk, miért érdemes több dimenzió kombinációt használni egy példa segítségével.
 
-Tegyük fel, hogy rendelkezik egy App Service-csomaggal a webhelyéhez. A webhelyet/alkalmazást futtató több példányban is figyelni szeretné a processzorhasználatot. Ezt metrikariasztási szabály használatával a következőképpen teheti meg:
+Tegyük fel, hogy van egy App Service terve a webhelyhez. Szeretné figyelni a CPU-használatot a webhelyet vagy alkalmazást futtató több példányon. Ezt egy metrikus riasztási szabály használatával teheti meg a következőképpen:
 
-- Célerőforrás: myAppServicePlan
-- Metrika: Százalékos CPU
-- Feltétel típusa: Statikus
+- Cél erőforrás: myAppServicePlan
+- Metrika: százalékos CPU
+- Feltétel típusa: statikus
 - Dimenziók
-  - Instance = InstanceName1, InstanceName2
-- Összesítés i.aggregáció: Átlag
-- Időszak: Az elmúlt 5 évben
-- Frekvencia: 1 min
+  - Példány = InstanceName1, InstanceName2
+- Idő összesítése: átlag
+- Időszak: az elmúlt 5 percben
+- Gyakoriság: 1 perc
 - Operátor: GreaterThan
 - Küszöbérték: 70
 
-A korábhoz hasonlóan ez a szabály figyeli, hogy az átlagos CPU-használat az elmúlt 5 percben meghaladja-e a 70%-ot. Ugyanazzal a szabállyal azonban két, a webhelyet futtató példányt figyelhet. Minden példány külön-külön lesz figyelve, és külön-külön kap értesítéseket.
+Mint korábban, ez a szabály figyeli, hogy az elmúlt 5 percben az átlagos CPU-használat meghaladja-e a 70%-ot. Ugyanakkor ugyanazzal a szabállyal két, a webhelyét futtató példányt is figyelheti. Minden példány külön lesz megfigyelve, és a rendszer külön értesítést fog kapni.
 
-Tegyük fel, hogy van egy webes alkalmazás, amely látja a hatalmas kereslet, és szüksége lesz, hogy adjunk további példányok. A fenti szabály továbbra is csak két példányt figyel. A szabályokat azonban a következőképpen is létrehozhatja:
+Tegyük fel, hogy van egy webalkalmazása, amely nagy mennyiségű igényt lát, és további példányokat kell hozzáadnia. A fenti szabály továbbra is csak két példányt figyeli. Azonban a következőképpen hozhat létre szabályt:
 
-- Célerőforrás: myAppServicePlan
-- Metrika: Százalékos CPU
-- Feltétel típusa: Statikus
+- Cél erőforrás: myAppServicePlan
+- Metrika: százalékos CPU
+- Feltétel típusa: statikus
 - Dimenziók
   - Példány = *
-- Összesítés i.aggregáció: Átlag
-- Időszak: Az elmúlt 5 évben
-- Frekvencia: 1 min
+- Idő összesítése: átlag
+- Időszak: az elmúlt 5 percben
+- Gyakoriság: 1 perc
 - Operátor: GreaterThan
 - Küszöbérték: 70
 
-Ez a szabály automatikusan figyeli a példány összes értékét, azaz figyelheti a példányokat, ahogy jönnek létre anélkül, hogy módosítsa a metrika riasztási szabály újra.
+Ez a szabály automatikusan figyeli a példány összes értékét, azaz a példányokat úgy figyelheti, hogy a rendszer a metrikus riasztási szabály újbóli módosítása nélkül is feldolgozza őket.
 
-Több dimenzió figyelése esetén a dinamikus küszöbértékek riasztási szabály egyszerre több száz metrikasorozathoz hozhat létre testreszabott küszöbértékeket. A dinamikus küszöbértékek kevesebb riasztási szabályt eredményeznek, és jelentős időmegtakarítást eredményeznek a felügyeleti és riasztási szabályok létrehozása korban.
+Több dimenzió figyelése esetén a dinamikus küszöbértékek riasztási szabálya egyszerre több száz metrikus adatsorozatra szabott küszöbértékeket hozhat létre. A dinamikus küszöbértékek kevesebb riasztási szabályt eredményeznek a felügyelethez és a riasztási szabályok létrehozásához szükséges jelentős idő megtakarításához.
 
-Tegyük fel, hogy van egy webalkalmazás, sok példányban, és nem tudja, mi a legmegfelelőbb küszöbértéket. A fenti szabályok mindig 70%-os küszöbértéket alkalmaznak. A szabályokat azonban a következőképpen is létrehozhatja:
+Tegyük fel, hogy van egy webalkalmazása, amely sok példánnyal rendelkezik, és nem tudja, mi a legmegfelelőbb küszöbérték. A fenti szabályok mindig a 70%-os küszöbértéket fogják használni. Azonban a következőképpen hozhat létre szabályt:
 
-- Célerőforrás: myAppServicePlan
-- Metrika: Százalékos CPU
-- Feltétel típusa: Dinamikus
+- Cél erőforrás: myAppServicePlan
+- Metrika: százalékos CPU
+- Feltétel típusa: dinamikus
 - Dimenziók
   - Példány = *
-- Összesítés i.aggregáció: Átlag
-- Időszak: Az elmúlt 5 évben
-- Frekvencia: 1 min
+- Idő összesítése: átlag
+- Időszak: az elmúlt 5 percben
+- Gyakoriság: 1 perc
 - Operátor: GreaterThan
-- Érzékenység: Közepes
-- Visszatekintés iderei: 1
+- Érzékenység: közepes
+- Visszatérési időszakok: 1
 - Szabálysértések száma: 1
 
-Ez a szabály figyeli, ha az átlagos CPU-használat az elmúlt 5 percben meghaladja az egyes példányok várt viselkedését. Ugyanazt a szabályt figyelheti a példányok, ahogy jönnek létre anélkül, hogy módosítsa a metrika riasztási szabály újra. Minden példány kap egy küszöbértéket, amely illeszkedik a metrikasorozat viselkedési minta, és folyamatosan változik az új adatok alapján, hogy a küszöbérték pontosabb. Mint korábban, minden példány külön-külön lesz figyelve, és értesítést kap külön-külön.
+Ez a szabály figyeli, hogy az elmúlt 5 percben az átlagos CPU-használat meghaladja-e az egyes példányok várt viselkedését. Ugyanezt a szabályt követheti a példányok figyelése, anélkül, hogy újra kellene módosítania a metrikus riasztási szabályt. Az egyes példányok egy küszöbértéket kapnak, amely megfelel a metrikus adatsorozat viselkedési mintájának, és folyamatosan változik az új adatok alapján, hogy a küszöbérték pontosabb legyen. A fentiekhez hasonlóan az egyes példányok külön lesznek figyelve, és a rendszer külön értesítést fog kapni.
 
-A visszatekintési időszakok és a szabálysértések számának növelése azt is lehetővé teheti, hogy a szűrési riasztások csak a jelentős eltérés definíciója alapján jelenjenek meg. [További információ a dinamikus küszöbértékek speciális beállításairól.](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)
+A visszapillantási időszakok és a szabálysértések számának növelése is lehetővé teszi a riasztások szűrését, hogy csak a jelentős eltérés definíciójában figyelmeztessen. [További információ a dinamikus küszöbértékekkel kapcsolatos speciális beállításokról](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Figyelés skálán metrikariasztások használatával az Azure Monitorban
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Méretezés a metrikus riasztások használatával Azure Monitor
 
-Eddig azt tapasztalta, hogy egyetlen metrikariasztás használható egy vagy több metrika-idősorozat egyetlen Azure-erőforráshoz kapcsolódó figyelésére. Sokszor előfordulhat, hogy ugyanazt a riasztási szabályt szeretné alkalmazni számos erőforrásra. Az Azure Monitor is támogatja a figyeléstöbb erőforrás (azonos típusú) egy metrikariasztási szabály, az erőforrások, amelyek ugyanabban az Azure-régióban léteznek. 
+Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy több, egyetlen Azure-erőforráshoz kapcsolódó metrikai idősorozat figyelésére. Sokszor előfordulhat, hogy ugyanaz a riasztási szabály sok erőforrásra vonatkozik. A Azure Monitor az ugyanazon az Azure-régióban található erőforrások esetében is támogatja több erőforrás (azonos típusú) figyelését egy metrikai riasztási szabállyal. 
 
-Ez a funkció jelenleg támogatott platform metrikák (nem egyéni metrikák) a következő szolgáltatások a következő Azure-felhők:
+Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
 | Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
-| SQL-kiszolgáló-adatbázisok | **Igen** | **Igen** | Nem |
-| SQL-kiszolgáló rugalmas készletei | **Igen** | **Igen** | Nem |
-| Adatdoboz széléről lévő eszközök | **Igen** | **Igen** | Nem |
+| SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
+| SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
+| Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
 
-Megadhatja a figyelés hatókörét egyetlen metrika riasztási szabály három módon. A virtuális gépek esetében például a következőképpen adhatja meg a hatókört:  
+A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metrikai riasztási szabály segítségével. A Virtual Machines használatával például a következő módon adhatja meg a hatókört:  
 
-- virtuális gépek listája egy Azure-régióban egy előfizetésen belül
-- az összes virtuális gép (egy Azure-régióban) egy vagy több erőforráscsoportban egy előfizetésben
-- az összes virtuális gép (egy Azure-régióban) egyetlen előfizetésben
+- egy előfizetésen belül egy Azure-régióban található virtuális gépek listája
+- az előfizetésben lévő egy vagy több erőforráscsoport összes virtuális gépe (egy Azure-régióban)
+- minden virtuális gép (egy Azure-régióban) egy előfizetésben
 
-Metrikariasztási szabályok létrehozása, amelyek több erőforrást figyelnek, olyan, mint [bármely más metrikariasztás létrehozása,](alerts-metric.md) amely egyetlen erőforrást figyel. Az egyetlen különbség az, hogy ki kell választania az összes figyelni kívánt erőforrást. Ezeket a szabályokat [az Azure Resource Manager-sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden figyelt erőforrásról külön értesítéseket fog kapni.
+Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes megfigyelt erőforráshoz külön értesítést fog kapni.
 
 > [!NOTE]
 >
-> Egy metrika riasztási szabály, amely több erőforrást figyel, csak egy feltétel engedélyezett.
+> A több erőforrást figyelő metrikai riasztási szabályban csak egy feltétel engedélyezett.
 
-## <a name="typical-latency"></a>Tipikus késleltetés
+## <a name="typical-latency"></a>Jellemző késés
 
-Metrikariasztások esetén általában 5 percen belül értesítést kap, ha a riasztási szabály gyakoriságát 1 percre állítja be. Az értesítési rendszerek nagy terhelése esetén előfordulhat, hogy hosszabb késés jelenik meg.
+A metrikus riasztások esetében általában 5 percen belül értesítést fog kapni, ha a riasztási szabály gyakorisága 1 perc. Az értesítési rendszerek nagy terhelésű betöltése esetén előfordulhat, hogy hosszú késést tapasztal.
 
-## <a name="supported-resource-types-for-metric-alerts"></a>Támogatott erőforrástípusok metrikariasztásokhoz
+## <a name="supported-resource-types-for-metric-alerts"></a>A metrikus riasztások által támogatott erőforrástípusok
 
 A támogatott erőforrástípusok teljes listáját ebben a [cikkben](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerje meg, hogyan hozhat létre, tekinthet meg és kezelhet metrikariasztásokat az Azure-ban](alerts-metric.md)
-- [Ismerje meg, hogyan helyezhető üzembe metrikariasztások az Azure Resource Manager-sablonok használatával](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [További információ a műveletcsoportokról](action-groups.md)
-- [További információ a dinamikus küszöbértékek feltételtípusról](alerts-dynamic-thresholds.md)
+- [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
+- [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [További információ a műveleti csoportokról](action-groups.md)
+- [További információ a dinamikus küszöbértékek feltételének típusáról](alerts-dynamic-thresholds.md)

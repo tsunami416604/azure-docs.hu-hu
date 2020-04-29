@@ -1,7 +1,7 @@
 ---
-title: Hálózati behatolásészlelés végrehajtása nyílt forráskódú eszközökkel
+title: Hálózati behatolás-észlelés végrehajtása nyílt forráskódú eszközökkel
 titleSuffix: Azure Network Watcher
-description: Ez a cikk azt ismerteti, hogy miként használhatók az Azure Network Watcher és a nyílt forráskódú eszközök a hálózati behatolásészleléshez
+description: Ez a cikk azt ismerteti, hogyan használható az Azure Network Watcher és a nyílt forráskódú eszközök a hálózati behatolás észleléséhez
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,31 +14,31 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474925"
 ---
-# <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolásészlelés végrehajtása a Network Watcher és a nyílt forráskódú eszközök segítségével
+# <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel
 
-A csomagrögzítés kulcsfontosságú összetevő a hálózati behatolásérzékelő rendszerek (IDS) megvalósításához és a hálózati biztonsági figyelés (NSM) végrehajtásához. Számos nyílt forráskódú IDS-eszköz létezik, amelyek feldolgozzák a csomagrögzítéseket, és megkeresik a lehetséges hálózati behatolások és rosszindulatú tevékenységek aláírását. A Network Watcher által biztosított csomagrögzítések segítségével elemezheti a hálózatot a káros behatolások és biztonsági rések szempontjából.
+A csomagok rögzítése kulcsfontosságú összetevő a hálózati behatolás-észlelési rendszerek (AZONOSÍTÓk) megvalósításához és a hálózati biztonsági monitorozás (NSM) végrehajtásához. Több nyílt forráskódú azonosító eszköz is feldolgozza a csomagok rögzítését, és megkeresi a lehetséges hálózati behatolások és rosszindulatú tevékenységek aláírásait. A Network Watcher által biztosított csomagok rögzítései segítségével elemezheti a hálózatot az ártalmas behatolások vagy sebezhetőségek tekintetében.
 
-Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy IDS-motor, amely szabálykészleteket használ a hálózati forgalom figyelésére, és riasztást ad ki, ha gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy nagyobb sebességgel és hatékonysággal képes hálózati forgalomelemzést végezni. További részletek a Suricata és annak képességeit, https://suricata-ids.org/látogasson el a honlapon a .
+Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy szabályrendszerek használó azonosító motor, amely figyeli a hálózati forgalmat, és riasztást küld, amikor gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy a hálózati forgalom elemzése nagyobb sebességgel és hatékonysággal végezhető. A Suricata és képességeivel kapcsolatos további információkért látogasson el a webhelyére a webhelyén https://suricata-ids.org/.
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Ez a cikk bemutatja, hogyan állíthatja be a környezetet a hálózati behatolásészlelés hálózati figyelő, a Suricata és a rugalmas verem használatával történő végrehajtásához. A Network Watcher biztosítja a hálózati behatolásészleléshez használt csomagrögzítéseket. A Suricata feldolgozza a csomag rögzítése és riasztásait olyan csomagok alapján, amelyek megfelelnek a fenyegetések adott szabálykészletének. Ezek a riasztások a helyi számítógépen egy naplófájlban tárolódnak. A rugalmas verem használatával a Suricata által létrehozott naplók indexelhetők és használhatók kibana irányítópult létrehozásához, amely lehetővé teszi a naplók vizuális megjelenítését, és olyan eszközöket biztosít, amelyek segítségével gyorsan betekintést nyerhet a potenciális hálózati biztonsági résekbe.  
+Ez a cikk azt ismerteti, hogyan állíthatja be a környezetet hálózati behatolás-észlelés végrehajtásához Network Watcher, Suricata és a rugalmas verem használatával. Network Watcher biztosítja a hálózati behatolás-észlelés végrehajtásához használt csomagok rögzítését. A Suricata feldolgozza a csomagot, és elindítja a riasztásokat az adott fenyegetéseknek megfelelő csomagok alapján. Ezeket a riasztásokat a helyi számítógépen található naplófájlban tárolja a rendszer. A rugalmas verem használatával a Suricata által generált naplók indexelve lehetnek, és felhasználhatók egy Kibana-irányítópult létrehozására, amely lehetővé teszi a naplók vizuális megjelenítését, valamint az esetleges hálózati biztonsági rések gyors elemzését.  
 
-![egyszerű webes alkalmazás forgatókönyv][1]
+![egyszerű webalkalmazási forgatókönyv][1]
 
-Mindkét nyílt forráskódú eszköz beállítható egy Azure virtuális gép, amely lehetővé teszi, hogy ezt az elemzést a saját Azure hálózati környezetben.
+A nyílt forráskódú eszközöket egy Azure-beli virtuális gépen is beállíthatja, így az elemzést saját Azure-beli hálózati környezetében hajthatja végre.
 
 ## <a name="steps"></a>Lépések
 
-### <a name="install-suricata"></a>Suricata telepítése
+### <a name="install-suricata"></a>A Suricata telepítése
 
-Minden más telepítési módszer esetén látogasson el ahttps://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Az egyéb telepítési módszerekért látogasson el a következő webhelyre:https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. A virtuális gép parancssori terminálján futtassa a következő parancsokat:
 
@@ -50,11 +50,11 @@ Minden más telepítési módszer esetén látogasson el ahttps://suricata.readt
 
 1. A telepítés ellenőrzéséhez futtassa a parancsot `suricata -h` a parancsok teljes listájának megtekintéséhez.
 
-### <a name="download-the-emerging-threats-ruleset"></a>Az Új onnan kifelmerülő fenyegetések szabályrendszerének letöltése
+### <a name="download-the-emerging-threats-ruleset"></a>A feltörekvő fenyegetések alapszabályának letöltése
 
-Ebben a szakaszban nincsenek szabályaink, hogy Suricatát irányítsa. Létrehozhat saját szabályokat, ha a hálózatot konkrét fenyegetéseket szeretne észlelni, vagy számos szolgáltatótól, például az Új fenyegetésektől vagy a Snort VRT-szabályaitól származó fejlett szabálykészleteket is használhat. Használjuk a szabadon hozzáférhető Új fenyegetések ruleset itt:
+Ebben a szakaszban nem rendelkezünk a Suricata futtatására vonatkozó szabályokkal. Létrehozhatja saját szabályait, ha vannak olyan veszélyforrások a hálózaton, amelyeket észlelni szeretne, vagy több szolgáltatóból is használhat kifejlesztett szabálykészlet, például a felmerülő fenyegetések vagy a VRT szabályok. A szabadon hozzáférhető, újonnan elérhető fenyegetésekkel kapcsolatos szabályokat itt találja:
 
-Töltse le a szabálykészletet, és másolja őket a könyvtárba:
+Töltse le a szabályt, és másolja őket a könyvtárba:
 
 ```
 wget https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
@@ -62,27 +62,27 @@ tar zxf emerging.rules.tar.gz
 sudo cp -r rules /etc/suricata/
 ```
 
-### <a name="process-packet-captures-with-suricata"></a>Csomagrögzítés feldolgozása a Suricata segítségével
+### <a name="process-packet-captures-with-suricata"></a>A Suricata-mel dolgozza fel a csomagok rögzítését
 
-A csomagrögzítéss műveletek Suricata használatával történő feldolgozásához futtassa a következő parancsot:
+Ha a Suricata használatával szeretné feldolgozni a csomagok rögzítését, futtassa a következő parancsot:
 
 ```
 sudo suricata -c /etc/suricata/suricata.yaml -r <location_of_pcapfile>
 ```
-Az eredményül kapott riasztások ellenőrzéséhez olvassa el a fast.log fájlt:
+Az eredményül kapott riasztások vizsgálatához olvassa el a Fast. log fájlt:
 ```
 tail -f /var/log/suricata/fast.log
 ```
 
 ### <a name="set-up-the-elastic-stack"></a>A rugalmas verem beállítása
 
-Míg a Suricata által termelt naplók értékes információkat tartalmaznak arról, hogy mi történik a hálózatunkon, ezek a naplófájlok nem a legkönnyebben olvashatók és érthetőek. A Suricata és az elasztikus verem összekapcsolásával létrehozhatunk egy Kibana irányítópultot, amely lehetővé teszi számunkra a keresést, grafikont, elemzést és a naplókból származó elemzéseket.
+Míg a Suricata által előállított naplók értékes információkat tartalmaznak arról, hogy mi történik a hálózaton, ezek a naplófájlok nem a legkönnyebb olvasni és értelmezni. A Suricata és a rugalmas verem összekapcsolásával létrehozhatunk egy Kibana-irányítópultot, amely lehetővé teszi számunkra, hogy megkeresse, megrajzolja, elemezze és származtatja a naplókat.
 
-#### <a name="install-elasticsearch"></a>Rugalmas keresés telepítése
+#### <a name="install-elasticsearch"></a>A Elasticsearch telepítése
 
-1. Az 5.0-s és újabb verziórugalmas verem java 8-as verzióját igényli. Futtassa `java -version` a parancsot, hogy ellenőrizze a verziót. Ha nincs telepítve java, olvassa el az [Azure által támogatott JDK-k dokumentációját.](https://aka.ms/azure-jdks)
+1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot `java -version` a verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
 
-1. Töltse le a megfelelő bináris csomagot a rendszer:
+1. Töltse le a rendszerének megfelelő bináris csomagot:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
@@ -90,15 +90,15 @@ Míg a Suricata által termelt naplók értékes információkat tartalmaznak ar
     sudo /etc/init.d/elasticsearch start
     ```
 
-    Egyéb telepítési módszerek találhatók [Elasticsearch telepítés](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)
+    További telepítési módszerek találhatók a Elasticsearch- [telepítésben](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)
 
-1. Ellenőrizze, hogy az Elasticsearch fut-e a következő paranccsal:
+1. Ellenőrizze, hogy a Elasticsearch fut-e a paranccsal:
 
     ```
     curl http://127.0.0.1:9200
     ```
 
-    Meg kell látni a választ hasonló ez:
+    Ehhez a következőhöz hasonló válasznak kell megjelennie:
 
     ```
     {
@@ -115,9 +115,9 @@ Míg a Suricata által termelt naplók értékes információkat tartalmaznak ar
     }
     ```
 
-A Rugalmas keresés telepítésével kapcsolatos további útmutatásért olvassa el a [Telepítési](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)
+A rugalmas keresés telepítésével kapcsolatos további információkért tekintse meg az oldal [telepítését](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html) ismertető témakört.
 
-### <a name="install-logstash"></a>Logstash telepítése
+### <a name="install-logstash"></a>A Logstash telepítése
 
 1. A Logstash telepítéséhez futtassa a következő parancsokat:
 
@@ -125,13 +125,13 @@ A Rugalmas keresés telepítésével kapcsolatos további útmutatásért olvass
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Ezután be kell állítanunk a Logstash-t, hogy olvasson az eve.json fájl kimenetéből. Logstash.conf fájl létrehozása a következő használatával:
+1. Ezután be kell állítania a Logstash, hogy beolvassa a Eve. JSON fájl kimenetét. Hozzon létre egy logstash. conf fájlt a használatával:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Adja hozzá a következő tartalmat a fájlhoz (ellenőrizze, hogy az eve.json fájl elérési útja helyes-e):
+1. Adja hozzá a következő tartalmat a fájlhoz (ellenőrizze, hogy helyes-e a Eve. JSON fájl elérési útja):
 
     ```ruby
     input {
@@ -203,7 +203,7 @@ A Rugalmas keresés telepítésével kapcsolatos további útmutatásért olvass
     }
     ```
 
-1. Győződjön meg arról, hogy a megfelelő engedélyeket adja meg az eve.json fájlnak, hogy a Logstash be tudja adni a fájlt.
+1. Ügyeljen arra, hogy a megfelelő engedélyeket adja a Eve. JSON fájlnak, hogy a Logstash képes legyen a fájl betöltésére.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json
@@ -215,11 +215,11 @@ A Rugalmas keresés telepítésével kapcsolatos további útmutatásért olvass
     sudo /etc/init.d/logstash start
     ```
 
-A Logstash telepítésével kapcsolatos további utasításokért tekintse meg a [hivatalos dokumentációt](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)
+A Logstash telepítésével kapcsolatos további információkért tekintse meg a [hivatalos dokumentációt](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html) .
 
 ### <a name="install-kibana"></a>A Kibana telepítése
 
-1. A Kibana telepítéséhez futtassa a következő parancsokat:
+1. Futtassa a következő parancsokat a Kibana telepítéséhez:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
@@ -233,58 +233,58 @@ A Logstash telepítésével kapcsolatos további utasításokért tekintse meg a
     ./bin/kibana
     ```
 
-1. A Kibana webes felületének megtekintéséhez keresse meg a`http://localhost:5601`
-1. Ebben a forgatókönyvben a Suricata naplókhoz használt indexminta "logstash-*"
+1. A Kibana webes felületének megtekintéséhez navigáljon a`http://localhost:5601`
+1. Ebben a forgatókönyvben a Suricata naplókhoz használt index minta a következő: "logstash-*"
 
-1. Ha távolról szeretné megtekinteni a Kibana irányítópultot, hozzon létre egy bejövő NSG-szabályt, amely lehetővé teszi az **5601-es port**elérését.
+1. Ha távolról szeretné megtekinteni a Kibana-irányítópultot, hozzon létre egy bejövő NSG-szabályt, amely engedélyezi a hozzáférést a 5601-es **porthoz**.
 
-### <a name="create-a-kibana-dashboard"></a>Kibana irányítópult létrehozása
+### <a name="create-a-kibana-dashboard"></a>Kibana-irányítópult létrehozása
 
-Ebben a cikkben egy minta irányítópultot biztosítottunk a riasztások ban szereplő trendek és részletek megtekintéséhez.
+Ebben a cikkben egy minta-irányítópultot kaptunk a riasztások trendjeinek és részleteinek megtekintéséhez.
 
-1. Töltse le az irányítópult-fájlt [itt](https://aka.ms/networkwatchersuricatadashboard), a vizualizációs fájlt [itt](https://aka.ms/networkwatchersuricatavisualization)és a mentett keresési fájlt [itt.](https://aka.ms/networkwatchersuricatasavedsearch)
+1. Töltse [le itt az irányítópult-fájlt,](https://aka.ms/networkwatchersuricatadashboard)a vizualizációs fájlt [itt, és](https://aka.ms/networkwatchersuricatavisualization)a mentett keresési fájlt [itt](https://aka.ms/networkwatchersuricatasavedsearch).
 
-1. A Kibana **Kezelés** lapján keresse meg a **Mentett objektumok lapot,** és importálja mindhárom fájlt. Ezután az **Irányítópult** lapon megnyithatja és betöltheti a mintairányítópultot.
+1. A Kibana **felügyelet** lapján navigáljon a **mentett objektumokhoz** , és importálja mindhárom fájlt. Ezután az **irányítópult** lapon megnyithatja és betöltheti a minta irányítópultot.
 
-Saját vizualizációkat és irányítópultokat is létrehozhat, amelyek a saját érdeklődésre számot tartó mutatókra vannak szabva. További információ a Kibana-képi megjelenítések létrehozásáról a Kibana [hivatalos dokumentációjából.](https://www.elastic.co/guide/en/kibana/current/visualize.html)
+Saját igényei szerint saját vizualizációkat és irányítópultokat is létrehozhat. További információ a Kibana-vizualizációk létrehozásáról a Kibana [hivatalos dokumentációjában](https://www.elastic.co/guide/en/kibana/current/visualize.html)olvasható.
 
-![kibana műszerfal][2]
+![kibana-irányítópult][2]
 
-### <a name="visualize-ids-alert-logs"></a>IDS-riasztási naplók megjelenítése
+### <a name="visualize-ids-alert-logs"></a>AZONOSÍTÓk riasztási naplófájljainak megjelenítése
 
-A mintairányítópult a Suricata riasztási naplók számos vizualizációját tartalmazza:
+A minta irányítópult több vizualizációt biztosít a Suricata riasztási naplóihoz:
 
-1. Figyelmeztetések geoip – egy térkép, amely bemutatja a riasztások eloszlását a származási ország/régió szerint a földrajzi elhelyezkedés alapján (ip szerint meghatározva)
+1. Riasztások GeoIP szerint – Térkép: a riasztások eloszlása az országuk vagy régiójuk szerint, földrajzi hely alapján (IP alapján meghatározva)
 
-    ![geo ip][3]
+    ![földrajzi IP-cím][3]
 
-1. Top 10 riasztások – a 10 leggyakoribb aktivált riasztások összegzése és azok leírása. Az adott riasztásra vonatkozó információk az irányítópulton lefelé szűri az irányítópultot.
+1. Az első 10 riasztás – a 10 leggyakoribb aktivált riasztás és azok leírásának összefoglalása. Ha az adott riasztásra kattint, az irányítópulton az adott riasztásra vonatkozó információk szerepelnek.
 
-    ![4. kép][4]
+    ![4. rendszerkép][4]
 
-1. Riasztások száma – a szabályrendszer által kiváltott riasztások teljes száma
+1. Riasztások száma – a szabályrendszert által aktivált riasztások teljes száma
 
-    ![5. kép][5]
+    ![5. rendszerkép][5]
 
-1. Top 20 Forrás/Cél IP/Port – kördiagramok, amelyek a 20 legnépszerűbb IP-t és portot mutatják, amelyeken a riasztások aktiválódtak. Szűrheti az egyes IP-k/portok szűrését, hogy hány és milyen típusú riasztások aktiválódjanak.
+1. Az első 20 forrás/cél IP-címek/portok – a legfontosabb 20 IP-címeket és a riasztásokat kiváltó portokat bemutató kördiagramok. Az egyes IP-címekre/portokra szűkítheti a szűrést, hogy megtudja, hány és milyen típusú riasztást indít el a rendszer.
 
-    ![6. kép][6]
+    ![6. ábra][6]
 
-1. Riasztás összegzése – egy táblázat, amely az egyes riasztások konkrét részleteit foglalja össze. A táblázat testreszabásával az egyes riasztások hoz egyéb fontos paramétereket jeleníthet meg.
+1. Riasztások összegzése – az egyes riasztások konkrét részleteit Összefoglaló táblázat. A táblázat testreszabható úgy, hogy az egyes riasztásokhoz kapcsolódó egyéb paramétereket is megjelenítse.
 
-    ![kép 7][7]
+    ![7. rendszerkép][7]
 
-Az egyéni vizualizációk és irányítópultok létrehozásáról további dokumentációt [a Kibana hivatalos dokumentációjában](https://www.elastic.co/guide/en/kibana/current/introduction.html)talál.
+Az egyéni vizualizációk és irányítópultok létrehozásával kapcsolatos további információkért tekintse [meg a Kibana hivatalos dokumentációját](https://www.elastic.co/guide/en/kibana/current/introduction.html).
 
 ## <a name="conclusion"></a>Összegzés
 
-A Network Watcher és a nyílt forráskódú IDS-eszközök, például a Suricata által biztosított csomagrögzítések kombinálásával a fenyegetések széles köréhez hálózati behatolásészlelést végezhet. Ezek az irányítópultok lehetővé teszik a trendek és anomáliák gyors észlelését a hálózaton belül, valamint az adatokba való betekintést a riasztások, például a rosszindulatú felhasználói ügynökök vagy a sebezhető portok alapvető okainak felderítéséhez. Ezzel a kinyert adatokkal megalapozott döntéseket hozhat arról, hogyan reagáljon a hálózatra, és hogyan védje meg a hálózatot a káros behatolási kísérletektől, és hozzon létre szabályokat a hálózat ba való jövőbeli behatolások megakadályozására.
+A Network Watcher és a nyílt forráskódú azonosító eszközök, például a Suricata által biztosított csomagok rögzítésének kombinálásával a fenyegetések széles köre miatt hálózati behatolás-észlelést is végezhet. Ezek az irányítópultok lehetővé teszik a hálózaton belüli trendek és anomáliák gyors észlelését, valamint az adatgyűjtést a riasztások, például rosszindulatú felhasználói ügynökök vagy sebezhető portok kiváltó okainak felderítésére. Ezzel a kinyert adatokkal tájékozott döntéseket hozhat arról, hogyan reagálhat a hálózatra, és hogyan védhető meg a kártékony behatolási kísérletek, és hogyan hozhat létre szabályokat a hálózatra irányuló jövőbeli behatolások megelőzése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan aktiválhatja a csomagrögzítéseket a riasztások alapján, ha ellátogat [a Csomagrögzítés használata proaktív hálózati figyeléshez](network-watcher-alert-triggered-packet-capture.md) az Azure Functions funkcióval című oldalba.
+Megtudhatja, hogyan válthat ki a riasztások alapján a csomagok rögzítése a következővel: [proaktív hálózati figyelés a Azure functions](network-watcher-alert-triggered-packet-capture.md)
 
-Megtudhatja, hogy miként jelenítheti meg az NSG-folyamatnaplókat a Power BI-val a [Visualize NSG-folyamatok naplóinak megjelenítéséhez a Power BI-val](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Ismerje meg, hogyan jelenítheti meg a NSG-flow-naplókat a Power BI a [NSG flow-naplók megjelenítése a Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 
 

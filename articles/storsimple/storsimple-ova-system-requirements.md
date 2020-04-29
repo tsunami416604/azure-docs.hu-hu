@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure StorSimple virtuális tömb rendszerkövetelményei
-description: Ismerje meg a StorSimple virtuális tömb szoftver- és hálózati követelményeit
+title: Microsoft Azure StorSimple virtuális tömb rendszerkövetelményei
+description: A StorSimple virtuális tömb szoftver-és hálózati követelményeinek megismerése
 author: alkohli
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298821"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
@@ -20,114 +20,114 @@ ms.locfileid: "80298821"
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk ismerteti a fontos rendszerkövetelmények a Microsoft Azure StorSimple virtuális tömb és a tároló ügyfelek a tömbhöz való hozzáférés. Azt javasoljuk, hogy figyelmesen tekintse át az információkat a StorSimple-rendszer üzembe helyezése előtt, majd szükség szerint hivatkozzon rá az üzembe helyezés és az azt követő művelet során.
+Ez a cikk ismerteti a Microsoft Azure StorSimple virtuális tömb és a tömbhöz hozzáférő Storage-ügyfelek fontos rendszerkövetelményeit. Javasoljuk, hogy a StorSimple rendszer üzembe helyezése előtt gondosan tekintse át az információkat, majd az üzembe helyezés és az azt követő művelet során szükség szerint küldje vissza az adatokat.
 
 A rendszerkövetelmények a következők:
 
-* **A tárolóügyfelek szoftverkövetelményei** – ismertetik a támogatott virtualizációs platformokat, webböngészőket, iSCSI-kezdeményezőket, SMB-ügyfeleket, a virtuális eszközök minimális követelményeit és az ezen operációs rendszerekre vonatkozó további követelményeket.
-* **A StorSimple-eszköz hálózati követelményei** – tájékoztatást nyújt azokról a portokról, amelyeknek meg kell nyitva lenniük a tűzfalon, hogy lehetővé tegyék az iSCSI, a felhő vagy a felügyeleti forgalmat.
+* A **Storage-ügyfelekkel kapcsolatos szoftverek** – ismerteti a támogatott virtualizációs platformokat, a webböngészőket, az iSCSI-kezdeményezőket, az SMB-ügyfeleket, a virtuális eszközök minimális követelményeit, valamint az adott operációs rendszerek további követelményeit.
+* **A StorSimple eszköz hálózati követelményei** – információt nyújt azokról a portokról, amelyeket meg kell nyitni a tűzfalon az iSCSI-, felhő-vagy felügyeleti forgalom engedélyezéséhez.
 
-A storSimple rendszerkövetelmények ebben a cikkben közzétett információk csak a StorSimple virtuális tömbök.
+Az ebben a cikkben közzétett StorSimple rendszerkövetelményekkel kapcsolatos információk csak a StorSimple virtuális tömbökre vonatkoznak.
 
-* 8000-es sorozatú eszközök esetén keresse fel [a StorSimple 8000 sorozatú eszköz rendszerkövetelményeit.](storsimple-system-requirements.md)
-* 7000-es sorozatú eszközök esetén keresse fel [a StorSimple 5000-7000 sorozatú eszköz rendszerkövetelményeit.](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)
+* Az 8000 sorozatú eszközökhöz lépjen a [StorSimple 8000 Series eszköz rendszerkövetelményei](storsimple-system-requirements.md)között.
+* Az 7000 sorozatú eszközökhöz lépjen a [StorSimple 5000-7000 Series eszköz rendszerkövetelményei](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)között.
 
 ## <a name="software-requirements"></a>Szoftverkövetelmények
-A szoftverkövetelmények tartalmazzák a támogatott webböngészőkre, az SMB-verziókra, a virtualizációs platformokra és a virtuális eszközökre vonatkozó minimális követelményekre vonatkozó információkat.
+A szoftverre vonatkozó követelmények tartalmazzák a támogatott webböngészőkkel, az SMB-verziókkal, a virtualizációs platformokkal és a virtuális eszközök minimális követelményeivel kapcsolatos információkat.
 
 ### <a name="supported-virtualization-platforms"></a>Támogatott virtualizációs platformok
 | **Hipervizor** | **Verzió** |
 | --- | --- |
-| Hyper-V |Windows Server 2008 R2 SP1 és újabb rendszer |
-| VMware ESXi |5.0, 5.5, 6.0 és 6.5. |
+| Hyper-V |Windows Server 2008 R2 SP1 és újabb verziók |
+| VMware ESXi |5,0, 5,5, 6,0 és 6,5. |
 
 > [!IMPORTANT]
-> Ne telepítse a VMware-eszközöket a StorSimple virtuális tömbre; ez nem támogatott konfigurációt eredményez.
+> Ne telepítse a VMware-eszközöket a StorSimple virtuális tömbbe; Ez nem támogatott konfigurációt eredményez.
 
 ### <a name="virtual-device-requirements"></a>Virtuális eszközre vonatkozó követelmények
 | **Összetevő** | **Követelmény** |
 | --- | --- |
-| A virtuális processzorok (magok) minimális száma |4 |
-| Minimális memória (RAM) |8 GB <br> Fájlkiszolgáló esetén 8 GB kevesebb, mint 2 millió fájl, 16 GB 2-4 millió fájl esetén|
-| <sup>1.</sup> lemezterület |OPERÁCIÓS RENDSZER lemeze – 80 GB <br></br>Adatlemez - 500 GB és 8 TB között |
-| A hálózati adapter(ek) minimális száma |1 |
-| Internetes sávszélesség<sup>2</sup> |Minimális sávszélesség szükséges: 5 Mbps <br> Ajánlott sávszélesség: 100 Mbps <br> Az adatátvitel sebessége az internetes sávszélességgel méretezhető. Például 100 GB-os adatok 2 napot vesz igénybe az 5 Mb/s sebességű átvitel, ami biztonsági mentési hibákhoz vezethet, mivel a napi biztonsági mentések nem fejeződnek be egy nap alatt. A 100 Mbps sávszélességnek a 100 GB-os adatátvitel 2,5 óra alatt átvihető.   |
+| Virtuális processzorok minimális száma (magok) |4 |
+| Minimális memória (RAM) |8 GB <br> Fájlkiszolgálón, 8 GB-nál kevesebb, mint 2 000 000 fájl és 16 GB 2-4 millió fájl esetén|
+| <sup>1</sup> . lemezterület |OPERÁCIÓSRENDSZER-lemez – 80 GB <br></br>Adatlemez – 500 GB – 8 TB |
+| Hálózati adapterek minimális száma |1 |
+| Internetes sávszélesség<sup>2</sup> |Minimális sávszélesség szükséges: 5 Mbps <br> Ajánlott sávszélesség: 100 Mbps <br> Az adatátviteli sebesség az Internet sávszélességének megfelelően méretezhető. Például 100 GB adat 2 nap alatt átvihető 5 Mbps-ra, ami biztonsági mentési hibákhoz vezethet, mert a napi biztonsági mentések nem fejeződnek be naponta. 100 Mbps sávszélességgel 100 GB adatforgalom 2,5 órán belül átvihető.   |
 
-<sup>1</sup> - Vékony kiépített
+<sup>1</sup> – dinamikus kiépítve
 
-<sup>2</sup> - A hálózati követelmények a napi adatváltozási sebességtől függően változhatnak. Ha például egy eszköznek egy nap alatt 10 GB vagy több módosításról kell biztonsági másolatot készítenie, akkor az 5 Mb/s sebességű kapcsolaton keresztüli napi biztonsági mentés akár 4,25 órát is igénybe vehet (ha az adatokat nem lehet tömöríteni vagy deduplikálni).
+<sup>2</sup> – a hálózati követelmények a napi adatváltozási aránytól függően változhatnak. Ha például egy eszköznek egy nap alatt 10 GB-nyi vagy több módosítást kell biztonsági mentést végeznie, akkor a napi biztonsági mentés 5 Mbps-kapcsolaton keresztül akár 4,25 órát is igénybe vehet (ha az adat nem tömöríthető vagy deduplikált).
 
 ### <a name="supported-web-browsers"></a>Támogatott webböngészők
 | **Összetevő** | **Verzió** | **További követelmények/megjegyzések** |
 | --- | --- | --- |
 | Microsoft Edge |Legújabb verzió | |
-| Internet Explorer |Legújabb verzió |Tesztelve az Internet Explorer 11-ben |
-| Google Chrome |Legújabb verzió |Tesztelve chrome 46-tal |
+| Internet Explorer |Legújabb verzió |Az Internet Explorer 11 tesztelése |
+| Google Chrome |Legújabb verzió |Tesztelték a Chrome 46-mel |
 
-### <a name="supported-storage-clients"></a>Támogatott tárolóügyfelek
-Az alábbi szoftverkövetelmények a StorSimple virtuális tömbhöz (iSCSI-kiszolgálóként konfigurált) iSCSI-kezdeményezőire vonatkoznak.
+### <a name="supported-storage-clients"></a>Támogatott Storage-ügyfelek
+A következő szoftver-követelmények azon iSCSI-kezdeményezők esetében szükségesek, amelyek hozzáférnek a StorSimple virtuális tömbhöz (iSCSI-kiszolgálóként konfigurálva).
 
-| **Támogatott operációs rendszerek** | **Verzió szükséges** | **További követelmények/megjegyzések** |
+| **Támogatott operációs rendszerek** | **Szükséges verzió** | **További követelmények/megjegyzések** |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1, 2012, 2012R2 |A StorSimple vékonyan kiépített és teljesen kiépített köteteket hozhat létre. Nem hozhat létre részlegesen kiépített köteteket. A StorSimple iSCSI-kötetek csak a következőkre támogatottak: <ul><li>Egyszerű kötetek a Windows alaplemezein.</li><li>Windows NTFS a kötet formázásához.</li> |
+| Windows Server |2008R2 SP1, 2012, 2012R2 |A StorSimple dinamikusan kiosztott és teljesen kiosztott köteteket hozhat létre. Nem lehet részben kiosztott köteteket létrehozni. A StorSimple iSCSI-kötetek csak a következők esetén támogatottak: <ul><li>Egyszerű kötetek a Windows alaplemezeken.</li><li>A kötetek formázásának Windows NTFS.</li> |
 
-A következő szoftverkövetelmények a StorSimple virtuális tömbhöz (fájlkiszolgálóként konfigurált) smb-ügyfelekre vonatkoznak.
+A következő szoftver-követelmények azokra az SMB-ügyfelekre vonatkoznak, amelyek hozzáférnek a StorSimple virtuális tömbhöz (fájlkiszolgálóként konfigurálva).
 
 | **SMB-verzió** |
 | --- |
-| SMB 2.x |
+| SMB 2. x |
 | SMB 3.0 |
 | SMB 3,02 |
 
 > [!IMPORTANT]
-> Ne másolja és tárolja a Windows titkosított fájlrendszer (EFS) által védett fájlokat a StorSimple Virtual Array fájlkiszolgálóra; ez nem támogatott konfigurációt eredményez.
+> Ne másolja és ne tárolja a Windows titkosított fájlrendszer (EFS) által védett fájlokat a StorSimple Virtual Array fájlkiszolgáló számára; Ez nem támogatott konfigurációt eredményez.
 
 
 ### <a name="supported-storage-format"></a>Támogatott tárolási formátum
-Csak az Azure blokkblob-tároló támogatott. A lapblobok nem támogatottak. További információ [a blokkblobokról és a lapblobokról.](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+Csak az Azure Block blob Storage támogatott. Az oldal Blobok nem támogatottak. További információ [a blobok és a Blobok blokkolásáról](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
-Az alábbi táblázat azokat a portokat sorolja fel, amelyeket meg kell nyitni a tűzfalon az iSCSI, az SMB, a felhő vagy a felügyeleti forgalom engedélyezéséhez. Ebben a *táblában a bejövő* vagy *bejövő* arra az irányra utal, amelyből a bejövő ügyfélkérések hozzáférhetnek az eszközhöz. *Kimenő* vagy *kimenő* utal, amelyben a StorSimple-eszköz adatokat küld külsőleg, a központi telepítésen túl: például kimenő az internetre.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az iSCSI-, SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
-| **<sup>1-es</sup> kikötő** | **Be- vagy ki** | **Port hatóköre** | **Szükséges** | **Megjegyzések** |
+| **<sup>1</sup> . port** | **Be vagy ki** | **Port hatóköre** | **Szükséges** | **Megjegyzések** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Ki |WAN |Nem |A kimenő port az internet-hozzáféréshez használatos a frissítések lekéréséhez. <br></br>A kimenő webproxy a felhasználó által konfigurálható. |
-| TCP 443 (HTTPS) |Ki |WAN |Igen |A kimenő port a felhőben lévő adatok elérésére szolgál. <br></br>A kimenő webproxy a felhasználó által konfigurálható. |
-| UDP 53 (DNS) |Ki |WAN |Egyes esetekben; lásd a jegyzeteket. |Ez a port csak akkor szükséges, ha internetalapú DNS-kiszolgálót használ. <br></br> Ne feledje, hogy fájlkiszolgáló telepítéseesetén a helyi DNS-kiszolgáló használatát javasoljuk. |
-| UDP 123 (NTP) |Ki |WAN |Egyes esetekben; lásd a jegyzeteket. |Ez a port csak akkor szükséges, ha internetalapú NTP-kiszolgálót használ.<br></br> Ne feledje, hogy fájlkiszolgáló telepítéseesetén javasoljuk az idő szinkronizálását az Active Directory tartományvezérlőivel. |
-| TCP 80 (HTTP) |A |LAN |Igen |Ez a helyi felhasználói felület bejövő portja a StorSimple eszközön a helyi felügyelethez. <br></br> Vegye figyelembe, hogy a http-n keresztüli helyi felhasználói felület elérése automatikusan átirányítja a HTTPS-re. |
-| TCP 443 (HTTPS) |A |LAN |Igen |Ez a helyi felhasználói felület bejövő portja a StorSimple eszközön a helyi felügyelethez. |
-| TCP 3260 (iSCSI) |A |LAN |Nem |Ez a port az iSCSI-n keresztüli adatok elérésére szolgál. |
+| TCP 80 (HTTP) |Ki |WAN |Nem |A rendszer a kimenő portot használja az internet-hozzáféréshez a frissítések lekéréséhez. <br></br>A kimenő webes proxy a felhasználó által konfigurálható. |
+| TCP 443 (HTTPS) |Ki |WAN |Igen |A kimenő port a felhőben tárolt adatok elérésére szolgál. <br></br>A kimenő webes proxy a felhasználó által konfigurálható. |
+| UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet alapú DNS-kiszolgálót használ. <br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezését végzi, javasoljuk a helyi DNS-kiszolgáló használatát. |
+| UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet-alapú NTP-kiszolgálót használ.<br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezését javasolja, javasoljuk, hogy az időt szinkronizálja Active Directory tartományvezérlőkkel. |
+| TCP 80 (HTTP) |A |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület HTTP protokollon keresztüli elérése automatikusan a HTTPS-re lesz átirányítva. |
+| TCP 443 (HTTPS) |A |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. |
+| TCP 3260 (iSCSI) |A |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
 
-<sup>1</sup> A nyilvános interneten nem kell bejövő portokat nyitni.
+<sup>1</sup> nem szükséges bejövő portot megnyitni a nyilvános interneten.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a tűzfal nem módosítja vagy nem fejti vissza a StorSimple-eszköz és az Azure közötti TLS-forgalmat.
+> Győződjön meg arról, hogy a tűzfal nem módosítja vagy visszafejti a StorSimple-eszköz és az Azure közötti TLS-forgalmat.
 > 
 > 
 
-### <a name="url-patterns-for-firewall-rules"></a>A tűzfalszabályok URL-mintái
-A hálózati rendszergazdák gyakran konfigurálhatnak speciális tűzfalszabályokat az URL-minták alapján a bejövő és a kimenő forgalom szűréséhez. A virtuális tömb és a StorSimple Eszközkezelő szolgáltatás más Microsoft-alkalmazásoktól, például az Azure Service Bustól, az Azure Active Directory hozzáférés-vezérléstől, a tárfiókoktól és a Microsoft Update-kiszolgálóktól függ. Az ezekhez az alkalmazásokhoz társított URL-minták a tűzfalszabályok konfigurálására használhatók. Fontos megérteni, hogy az ezekhez az alkalmazásokhoz társított URL-minták változhatnak. Ez viszont megköveteli, hogy a hálózati rendszergazda figyelje és frissítse a StorSimple tűzfalszabályait, ahogy és amikor szükséges. 
+### <a name="url-patterns-for-firewall-rules"></a>Tűzfalszabályok URL-mintái
+A hálózati rendszergazdák gyakran konfigurálhatják a speciális tűzfalszabályok alapján a bejövő és a kimenő forgalom szűrésére szolgáló URL-mintákat. A virtuális tömb és a StorSimple Eszközkezelő szolgáltatás más Microsoft-alkalmazásokkal (például Azure Service Bus, Azure Active Directory Access Control, Storage-fiókokkal és Microsoft Update-kiszolgálókkal függ. Az ezekhez az alkalmazásokhoz társított URL-mintákat a tűzfalszabályok konfigurálására lehet használni. Fontos megérteni, hogy az alkalmazásokhoz társított URL-minták megváltoztathatók. Ehhez a hálózati rendszergazdának meg kell figyelnie és frissítenie kell a StorSimple vonatkozó tűzfalszabályok beállításait a és ha szükséges. 
 
-Azt javasoljuk, hogy a tűzfal szabályok at kimenő forgalom alapján StorSimple rögzített IP-címek, a legtöbb esetben. Az alábbi információk segítségével azonban speciális tűzfalszabályokat állíthat be, amelyek a biztonságos környezetek létrehozásához szükségesek.
+Javasoljuk, hogy a legtöbb esetben a StorSimple rögzített IP-címek alapján állítsa be a tűzfal szabályait a kimenő forgalomra vonatkozóan. Az alábbi információk segítségével azonban megadhatja a biztonságos környezetek létrehozásához szükséges speciális tűzfalszabályok beállításait is.
 
 > [!NOTE]
 > 
-> * Az eszköz (forrás) IP-k mindig be kell állítani, hogy az összes felhő-kompatibilis hálózati adapterek. 
-> * A cél IP-címeket [az Azure adatközpont IP-tartományaira](https://www.microsoft.com/download/confirmation.aspx?id=41653)kell állítani.
+> * Az eszköz (forrás) IP-címeit mindig az összes felhőalapú hálózati adapterre kell beállítani. 
+> * A cél IP-címeket az [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653)értékre kell beállítani.
 > 
 > 
 
-| URL-minta | Összetevő/funkcionalitás |
+| URL-minta | Összetevő/funkció |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-eszközkezelő szolgáltatás<br>Hozzáférés-vezérlési szolgáltatás<br>Azure Service Bus<br>Hitelesítési szolgáltatás|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás|
 | `http://*.backup.windowsazure.com` |Eszközregisztráció |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Tanúsítvány visszavonása |
-| `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure storage-fiókok és figyelés |
-| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update kiszolgálók<br> |
+| `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure Storage-fiókok és-figyelés |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Kiszolgálók Microsoft Update<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Támogatási csomag |
-| `https://*.data.microsoft.com` |Telemetriai szolgáltatás a Windows rendszerben, tekintse meg az [ügyfélélményés a diagnosztikai telemetria i. frissítését](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.data.microsoft.com` |Telemetria szolgáltatás a Windowsban: [frissítés a felhasználói élmény és a diagnosztikai telemetria](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>További lépések
-* [A portál előkészítése a StorSimple virtuális tömb telepítéséhez](storsimple-virtual-array-deploy1-portal-prep.md)
+* [A portál előkészítése a StorSimple virtuális tömb üzembe helyezéséhez](storsimple-virtual-array-deploy1-portal-prep.md)
